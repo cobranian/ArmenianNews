@@ -9,11 +9,9 @@ on:
 
 permissions:
   contents: write # commit refreshed data
-  pages: write # deploy to Pages
-  id-token: write # OIDC for Pages
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: true
 
 jobs:
@@ -48,19 +46,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: dist
-
-      # --- Firebase Hosting ---
-      # Firebase serves from the domain root, so rebuild with base '/'
-      # (the default '/ArmenianNews/' base is only for GitHub Pages).
-      - name: Build for Firebase (root base)
-        run: npm run build
-        env:
-          BASE_PATH: /
-
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
@@ -80,13 +65,3 @@ jobs:
             exit 0
           fi
           exit $code
-
-  deploy:
-    needs: snapshot
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
