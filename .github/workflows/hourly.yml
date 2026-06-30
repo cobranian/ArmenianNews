@@ -1,8 +1,8 @@
-name: Daily snapshot & deploy
+name: Hourly snapshot & deploy
 
 on:
   schedule:
-    - cron: '0 5 * * *' # every day at 05:00 UTC
+    - cron: '0 * * * *' # every hour, on the hour (UTC)
   workflow_dispatch: {} # allow manual runs
   push:
     branches: [main]
@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
 
       # Refresh news + agenda. Instagram/Facebook are curated and untouched.
-      - name: Scrape daily snapshot
+      - name: Scrape hourly snapshot
         run: npm run scrape
 
       - name: Commit refreshed data
@@ -41,7 +41,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No data changes."
           else
-            git commit -m "data: daily snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git commit -m "data: hourly snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push
           fi
 
