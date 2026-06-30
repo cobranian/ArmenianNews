@@ -46,6 +46,17 @@ async function main() {
   if (!news.length && prevNews?.sections?.length) {
     console.warn(`  ↺ keeping ${prevNews.sections.length} previous news sections`)
     news = prevNews.sections
+  } else if (prevNews?.sections?.length) {
+    // Backfill any individual section that came back empty.
+    const prevBySection = Object.fromEntries(
+      prevNews.sections.map((s) => [s.sectionKey, s.articles || []]),
+    )
+    for (const sec of news) {
+      if (!sec.articles?.length && prevBySection[sec.sectionKey]?.length) {
+        console.warn(`  ↺ keeping ${prevBySection[sec.sectionKey].length} previous ${sec.sectionKey} articles`)
+        sec.articles = prevBySection[sec.sectionKey]
+      }
+    }
   }
 
   console.log('\nArmRadio (en.armradio.am):')

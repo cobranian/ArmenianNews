@@ -20,10 +20,12 @@ const STRINGS = {
     'nav.instagram': 'Instagram',
 
     'news.title': 'Actualites',
-    'news.subtitle': "La derniere publication de chaque rubrique du Courrier d'Erevan",
+    'news.subtitle': "Les dernieres publications de chaque rubrique du Courrier d'Erevan",
     'news.armradio': "En direct d'Armenie · Public Radio of Armenia",
     'news.readmore': 'Lire la suite',
     'news.lead': 'À la une',
+    'news.prev': 'Précédent',
+    'news.next': 'Suivant',
     'news.source': 'Source',
     'news.empty': 'Aucun article pour le moment.',
 
@@ -68,10 +70,12 @@ const STRINGS = {
     'nav.instagram': 'Instagram',
 
     'news.title': 'News',
-    'news.subtitle': "The latest story from each section of Le Courrier d'Erevan",
+    'news.subtitle': "The latest stories from each section of Le Courrier d'Erevan",
     'news.armradio': 'Live from Armenia · Public Radio of Armenia',
     'news.readmore': 'Read more',
     'news.lead': 'Lead story',
+    'news.prev': 'Previous',
+    'news.next': 'Next',
     'news.source': 'Source',
     'news.empty': 'No articles yet.',
 
@@ -116,10 +120,12 @@ const STRINGS = {
     'nav.instagram': 'Instagram',
 
     'news.title': 'Լուրեր',
-    'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումը',
+    'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումները',
     'news.armradio': 'Ուղիղ Հայաստանից · Հանրային ռադիո',
     'news.readmore': 'Կարդալ ավելին',
     'news.lead': 'Գլխավոր',
+    'news.prev': 'Նախորդ',
+    'news.next': 'Հաջորդ',
     'news.source': 'Աղբյուր',
     'news.empty': 'Դեռ հոդվածներ չկան։',
 

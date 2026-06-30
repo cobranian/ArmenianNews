@@ -16,38 +16,46 @@ export const SECTIONS = [
   { key: 'diasporas', slug: 'diasporas' },
 ]
 
-async function latestForSection({ key, slug }) {
+// Pull the most recent `limit` articles of a section's Drupal Views grid.
+async function articlesForSection({ key, slug }, limit = 10) {
   const html = await fetchText(`${BASE}/fr/${slug}`)
   const $ = cheerio.load(html)
 
-  // Drupal Views grid: the first .column is the most recent article.
-  const col = $('.views-bootstrap-grid-plugin-style .column').first()
-  let titleEl = col.find('.views-field-title-field-et a').first()
-  if (!titleEl.length) titleEl = col.find('a').filter((_, a) => clean($(a).text())).first()
+  const articles = []
+  const seen = new Set()
+  $('.views-bootstrap-grid-plugin-style .column').each((_, c) => {
+    if (articles.length >= limit) return
+    const col = $(c)
+    let titleEl = col.find('.views-field-title-field-et a').first()
+    if (!titleEl.length) titleEl = col.find('a').filter((_, a) => clean($(a).text())).first()
 
-  const title = clean(titleEl.text())
-  const href = titleEl.attr('href')
-  const img = col.find('.views-field-field-image img').first().attr('src')
+    const title = clean(titleEl.text())
+    const href = titleEl.attr('href')
+    if (!title || !href || seen.has(href)) return
+    seen.add(href)
 
-  if (!title || !href) throw new Error(`No article parsed for section ${slug}`)
+    const img = col.find('.views-field-field-image img').first().attr('src')
+    articles.push({
+      title,
+      url: absUrl(href, BASE),
+      image: img ? absUrl(img, BASE) : null,
+    })
+  })
 
-  return {
-    sectionKey: key,
-    title,
-    url: absUrl(href, BASE),
-    image: img ? absUrl(img, BASE) : null,
-  }
+  if (!articles.length) throw new Error(`No articles parsed for section ${slug}`)
+  return { sectionKey: key, articles }
 }
 
 export async function scrapeCourrier() {
   const out = []
   for (const section of SECTIONS) {
     try {
-      out.push(await latestForSection(section))
-      console.log(`  ✓ courrier/${section.slug}`)
+      const sec = await articlesForSection(section)
+      out.push(sec)
+      console.log(`  ✓ courrier/${section.slug} (${sec.articles.length})`)
     } catch (err) {
       console.warn(`  ✗ courrier/${section.slug}: ${err.message}`)
-      out.push({ sectionKey: section.key, title: null, url: `${BASE}/fr/${section.slug}`, image: null })
+      out.push({ sectionKey: section.key, articles: [] })
     }
   }
   return out
