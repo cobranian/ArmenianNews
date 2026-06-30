@@ -92,7 +92,7 @@ async function main() {
   console.log('\nInstagram (curated · re-randomised):')
   let igPosts = []
   try {
-    igPosts = await selectInstagram(12)
+    igPosts = await selectInstagram(30)
   } catch (err) {
     console.error('  instagram failed:', err.message)
   }

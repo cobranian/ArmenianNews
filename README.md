@@ -70,8 +70,8 @@ fresh random selection + order each hour); the carousel renders from it.
    never hotlinks or expires. **Without an image, the tile shows a deterministic
    Armenian motif** (still on-brand) — so a permalink alone is enough.
 
-The snapshot selects up to **12** posts per hour (`selectInstagram(12)` in
-`scripts/sources/instagram.mjs`); bump that number if the pool grows beyond 12.
+The snapshot selects up to **30** posts per hour (`selectInstagram(30)` in
+`scripts/sources/instagram.mjs`); bump that number if the pool grows beyond 30.
 Accounts with no permalinks simply appear as a profile chip linking to Instagram.
 
 ### Facebook — `src/data/facebook.json`

@@ -16,7 +16,7 @@ function shuffle(arr) {
 // Instagram blocks scraping (like armradio behind Cloudflare), so the post
 // pool is curated by hand in instagram.json. Each snapshot just re-randomises
 // which posts are shown and in what order — a fresh random "chronology" hourly.
-export async function selectInstagram(limit = 12) {
+export async function selectInstagram(limit = 30) {
   const src = JSON.parse(await readFile(join(DATA_DIR, 'instagram.json'), 'utf-8'))
   const all = (src.accounts || []).flatMap((acc) =>
     (acc.permalinks || []).map((url) => ({ url, handle: acc.handle, name: acc.name })),
