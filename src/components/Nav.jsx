@@ -1,10 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
 import { KnotMark } from './Ornament.jsx'
 
 export function Nav() {
   const { t, lang, setLang } = useI18n()
   const [open, setOpen] = useState(false)
+  const [theme, setTheme] = useState(
+    () => document.documentElement.dataset.theme || 'dark',
+  )
+
+  // Apply + persist the day/night theme (set on <html> so CSS variables cascade).
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      /* ignore */
+    }
+  }, [theme])
 
   const links = [
     ['#actualites', t('nav.news')],
@@ -32,6 +45,15 @@ export function Nav() {
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <button
+            className="theme-toggle"
+            onClick={() => setTheme((c) => (c === 'dark' ? 'light' : 'dark'))}
+            aria-pressed={theme === 'light'}
+            aria-label={theme === 'dark' ? 'Mode jour' : 'Mode nuit'}
+            title={theme === 'dark' ? 'Mode jour' : 'Mode nuit'}
+          >
+            {theme === 'dark' ? '☀' : '☾'}
+          </button>
           <div className="lang" role="group" aria-label="Language">
             {LANGS.map((l) => (
               <button
