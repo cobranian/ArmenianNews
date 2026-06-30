@@ -23,6 +23,7 @@ const STRINGS = {
     'news.subtitle': "La derniere publication de chaque rubrique du Courrier d'Erevan",
     'news.armradio': "En direct d'Armenie · Public Radio of Armenia",
     'news.readmore': 'Lire la suite',
+    'news.lead': 'À la une',
     'news.source': 'Source',
     'news.empty': 'Aucun article pour le moment.',
 
@@ -70,6 +71,7 @@ const STRINGS = {
     'news.subtitle': "The latest story from each section of Le Courrier d'Erevan",
     'news.armradio': 'Live from Armenia · Public Radio of Armenia',
     'news.readmore': 'Read more',
+    'news.lead': 'Lead story',
     'news.source': 'Source',
     'news.empty': 'No articles yet.',
 
@@ -117,6 +119,7 @@ const STRINGS = {
     'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումը',
     'news.armradio': 'Ուղիղ Հայաստանից · Հանրային ռադիո',
     'news.readmore': 'Կարդալ ավելին',
+    'news.lead': 'Գլխավոր',
     'news.source': 'Աղբյուր',
     'news.empty': 'Դեռ հոդվածներ չկան։',
 
