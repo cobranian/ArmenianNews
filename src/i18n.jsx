@@ -42,6 +42,7 @@ const STRINGS = {
     'ig.subtitle': "Un mur d'inspiration armenienne, au hasard",
     'ig.shuffle': 'Melanger',
     'ig.visit': 'Voir le profil',
+    'ig.view': 'Voir sur Instagram',
 
     'footer.built': "Instantane statique · sources liees a leurs sites d'origine",
     'footer.sources': 'Sources',
@@ -88,6 +89,7 @@ const STRINGS = {
     'ig.subtitle': 'A wall of Armenian inspiration, at random',
     'ig.shuffle': 'Shuffle',
     'ig.visit': 'View profile',
+    'ig.view': 'View on Instagram',
 
     'footer.built': 'Static snapshot · sources linked to their original sites',
     'footer.sources': 'Sources',
@@ -134,6 +136,7 @@ const STRINGS = {
     'ig.subtitle': 'Հայկական ոգեշնչման պատ՝ պատահական',
     'ig.shuffle': 'Խառնել',
     'ig.visit': 'Դիտել պրոֆիլը',
+    'ig.view': 'Դիտել Instagram-ում',
 
     'footer.built': 'Ստատիկ պատկեր · աղբյուրները կապված են իրենց կայքերին',
     'footer.sources': 'Աղբյուրներ',

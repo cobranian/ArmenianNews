@@ -634,16 +634,161 @@ img {
 }
 .ig-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
-  gap: 22px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+  gap: 24px;
 }
-.ig-cell {
+
+/* --- Illuminated postcard ------------------------------------------ */
+.ig-card {
+  --c1: var(--pomegranate);
+  --c2: var(--pomegranate-bright);
+  --ink: var(--gold-bright);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
-.ig-cell .instagram-media {
-  box-shadow: var(--shadow) !important;
+.ig-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.ig-card__cover {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background:
+    radial-gradient(120% 120% at 20% 0%, rgba(255, 255, 255, 0.16), transparent 55%),
+    linear-gradient(150deg, var(--c1), var(--c2));
+  overflow: hidden;
+}
+/* faint engraved guilloche behind the motif */
+.ig-card__cover::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background-image: radial-gradient(currentColor 1px, transparent 1.4px);
+  background-size: 16px 16px;
+  opacity: 0.1;
+}
+.ig-card__motif {
+  position: relative;
+  width: 56%;
+  height: 56%;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  transition: transform 0.4s ease;
+}
+.ig-card:hover .ig-card__motif {
+  transform: rotate(8deg) scale(1.06);
+}
+
+/* Real post photo: fills the cover, motif gradient hidden behind it. */
+.ig-card__cover--photo::before {
+  display: none;
+}
+.ig-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.ig-card:hover .ig-card__photo {
+  transform: scale(1.05);
+}
+/* top scrim so the badge + corners stay legible over bright photos */
+.ig-card__cover--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32), transparent 38%);
+  pointer-events: none;
+}
+.ig-card__cover--photo .ig-card__kind,
+.ig-card__cover--photo .ig-card__corner {
+  z-index: 1;
+}
+.ig-card__cover--photo .ig-card__kind {
+  color: #fff;
+}
+.ig-card__kind {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-text);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+/* gilt manuscript corner flourishes */
+.ig-card__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: currentColor;
+  opacity: 0.7;
+}
+.ig-card__corner--tl {
+  top: 8px;
+  left: 8px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.ig-card__corner--br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+.ig-card__body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ig-card__handle {
+  font-family: var(--font-text);
+  font-size: 0.82rem;
+  color: var(--pomegranate);
+  letter-spacing: 0.02em;
+}
+.ig-card__name {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  line-height: 1.15;
+  color: var(--ink-soft);
+}
+.ig-card__cta {
+  margin-top: 8px;
+  font-family: var(--font-text);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.ig-card__cta span {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.ig-card:hover .ig-card__cta span {
+  transform: translateX(5px);
 }
 .ig-accounts {
   display: flex;

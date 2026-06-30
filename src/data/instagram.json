@@ -1,5 +1,5 @@
 {
-  "_comment": "Curated Instagram sources. Auto-scraping Instagram is unreliable and against ToS, so the wall renders OFFICIAL post embeds from the permalinks you list here. To add a post: open it on instagram.com, copy its URL (https://www.instagram.com/p/XXXXXXX/ or /reel/XXXXXXX/), and paste it into the matching account's `permalinks` array. The wall shuffles all permalinks on each load for the 'au hasard' effect. Accounts with no permalinks yet show as a profile chip linking to Instagram.",
+  "_comment": "Curated Instagram sources. Instagram's official embeds are unreliable (blank cells behind ad-blockers/region locks/rate limits), so the wall renders each permalink as an on-brand 'illuminated postcard' that always paints and links out to the real post. Cover art (Armenian motif + colourway) is derived deterministically from the permalink. To add a post: open it on instagram.com, copy its URL (https://www.instagram.com/p/XXXXXXX/ or /reel/XXXXXXX/), and paste it into the matching account's `permalinks` array. The wall shuffles all permalinks on each load for the 'au hasard' effect. Accounts with no permalinks yet show as a profile chip linking to Instagram.",
   "accounts": [
     {
       "handle": "ig_armenia",
@@ -42,6 +42,26 @@
       "name": "Armenian Trend",
       "url": "https://www.instagram.com/popular/armenian-trend/",
       "permalinks": []
+    },
+    {
+      "handle": "explorearmenia",
+      "name": "Explore Armenia",
+      "url": "https://www.instagram.com/explorearmenia/",
+      "permalinks": [
+        "https://www.instagram.com/p/DC4CxGrInKa/",
+        "https://www.instagram.com/p/CydlJi7IhTF/",
+        "https://www.instagram.com/p/DBDw9r3otm1/",
+        "https://www.instagram.com/p/CtmOcAvoMFG/"
+      ]
+    },
+    {
+      "handle": "theusarmenians",
+      "name": "The US Armenians",
+      "url": "https://www.instagram.com/theusarmenians/",
+      "permalinks": [
+        "https://www.instagram.com/p/C8u9FJkyt5r/",
+        "https://www.instagram.com/p/CgC7_BOqcs8/"
+      ]
     }
   ]
 }
