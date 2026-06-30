@@ -54,7 +54,7 @@ jobs:
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
           set +e
           out=$(npx --yes firebase-tools@latest deploy \
-            --only hosting --project le-mur-darmenie --non-interactive 2>&1)
+            --only hosting --project armenie-info --non-interactive 2>&1)
           code=$?
           echo "$out"
           # Firebase rejects a release whose content is identical to the

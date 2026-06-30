@@ -20,7 +20,7 @@ async function writeJson(name, data) {
 
 async function main() {
   const generatedAt = new Date().toISOString()
-  console.log(`\n📜 Le Mur d'Armenie — snapshot ${generatedAt}\n`)
+  console.log(`\n📜 Arménie Info — snapshot ${generatedAt}\n`)
 
   console.log('Actualites (courrier.am):')
   let news = []

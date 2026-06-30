@@ -1,4 +1,4 @@
-# Le Mur d'Arménie · Հայաստանի պատը
+# Arménie Info · Արմենիա Ինֆո
 
 A beautiful **daily snapshot** of Armenian life — news, events, and social media —
 in the visual language of Armenian illuminated manuscripts (pomegranate, gold,
@@ -30,12 +30,12 @@ npm run preview
 `npm run scrape` only refreshes **news + agenda**. The Instagram and Facebook
 data are curated by hand (see below) and are never overwritten.
 
-## Curating the social walls
+## Curating the social feeds
 
 ### Instagram — `src/data/instagram.json`
 
 Instagram blocks automated scraping and embeds require real post URLs, so the
-wall renders from a curated list. To add posts:
+mosaic renders from a curated list. To add posts:
 
 1. Open a post on instagram.com and copy its URL
    (`https://www.instagram.com/p/XXXXXXX/` or `/reel/XXXXXXX/`).
@@ -52,7 +52,7 @@ wall renders from a curated list. To add posts:
 }
 ```
 
-The wall shuffles all permalinks across every account on each load (the
+The mosaic shuffles all permalinks across every account on each load (the
 "au hasard" effect) and shows up to 9 at a time. Accounts with no permalinks
 yet simply appear as a profile chip linking to Instagram.
 

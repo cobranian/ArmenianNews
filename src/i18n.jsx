@@ -10,7 +10,7 @@ export const LANGS = [
 
 const STRINGS = {
   fr: {
-    'site.title': "Le Mur d'Armenie",
+    'site.title': 'Arménie Info',
     'site.tagline': "Un instantane quotidien de l'Armenie et de sa diaspora",
     'site.snapshot': 'Instantane du',
 
@@ -39,7 +39,7 @@ const STRINGS = {
     'fb.fallback': 'Voir la page sur Facebook',
 
     'ig.title': 'Instagram',
-    'ig.subtitle': "Un mur d'inspiration armenienne, au hasard",
+    'ig.subtitle': "Une mosaïque d'inspiration arménienne, au hasard",
     'ig.shuffle': 'Melanger',
     'ig.visit': 'Voir le profil',
     'ig.view': 'Voir sur Instagram',
@@ -57,7 +57,7 @@ const STRINGS = {
     'sections.diasporas': 'Diasporas',
   },
   en: {
-    'site.title': 'The Wall of Armenia',
+    'site.title': 'Armenia Info',
     'site.tagline': 'A daily snapshot of Armenia and its diaspora',
     'site.snapshot': 'Snapshot of',
 
@@ -86,7 +86,7 @@ const STRINGS = {
     'fb.fallback': 'View the page on Facebook',
 
     'ig.title': 'Instagram',
-    'ig.subtitle': 'A wall of Armenian inspiration, at random',
+    'ig.subtitle': 'A mosaic of Armenian inspiration, at random',
     'ig.shuffle': 'Shuffle',
     'ig.visit': 'View profile',
     'ig.view': 'View on Instagram',
@@ -104,7 +104,7 @@ const STRINGS = {
     'sections.diasporas': 'Diasporas',
   },
   hy: {
-    'site.title': 'Հայաստանի պատը',
+    'site.title': 'Արմենիա Ինֆո',
     'site.tagline': 'Հայաստանի եւ սփյուռքի ամենօրյա պատկերը',
     'site.snapshot': 'Պատկեր՝',
 
@@ -133,7 +133,7 @@ const STRINGS = {
     'fb.fallback': 'Դիտել էջը Facebook-ում',
 
     'ig.title': 'Instagram',
-    'ig.subtitle': 'Հայկական ոգեշնչման պատ՝ պատահական',
+    'ig.subtitle': 'Հայկական ոգեշնչման խճանկար՝ պատահական',
     'ig.shuffle': 'Խառնել',
     'ig.visit': 'Դիտել պրոֆիլը',
     'ig.view': 'Դիտել Instagram-ում',
