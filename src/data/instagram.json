@@ -1,41 +1,119 @@
 {
-  "_comment": "Curated Instagram POOL. Instagram blocks scraping, so permalinks are added by hand here. The hourly snapshot job re-randomises which posts show and in what order into instagram-feed.json (a fresh 'au hasard' mix each hour); the carousel renders from that. Each permalink renders as an on-brand tile that always paints and links out to the real post: it shows the post photo if src/data/ig/<shortcode>.jpg exists, otherwise a deterministic Armenian motif. To add a post: copy its URL (https://www.instagram.com/p/XXXXXXX/ or /reel/XXXXXXX/) into the matching account's `permalinks` array; optionally save its image as src/data/ig/XXXXXXX.jpg. Accounts with no permalinks yet show as a profile chip linking to Instagram.",
+  "_comment": "Instagram POOL — recent public posts, harvested periodically with a headless browser (IG blocks plain scraping/APIs). It's a point-in-time snapshot, static between harvests; the hourly job re-randomises which posts show and in what order into instagram-feed.json (a fresh 'au hasard' mix each hour). Each tile shows the post photo from src/data/ig/<shortcode>.jpg (downloaded at harvest time), else a deterministic Armenian motif. To add/refresh by hand: put the post URL (https://www.instagram.com/p/XXXXXXX/ or /reel/XXXXXXX/) in the account's `permalinks` array and save its image as src/data/ig/XXXXXXX.jpg. Accounts with no permalinks show as a profile chip linking to Instagram.",
   "accounts": [
     {
       "handle": "ig_armenia",
       "name": "Armenia",
       "url": "https://www.instagram.com/ig_armenia/",
-      "permalinks": ["https://www.instagram.com/p/CsoYnMsKEn8/"]
+      "permalinks": [
+        "https://www.instagram.com/p/Ctrt1AbKBmv/",
+        "https://www.instagram.com/p/Cto5B-4qoF1/",
+        "https://www.instagram.com/p/CthSnWwKGVg/",
+        "https://www.instagram.com/p/Cter_tWqrSy/",
+        "https://www.instagram.com/p/CtMmiqmqq1_/",
+        "https://www.instagram.com/p/CtE9eyVKUZ3/",
+        "https://www.instagram.com/p/Cs6zvCNKFRk/",
+        "https://www.instagram.com/p/CsoYnMsKEn8/",
+        "https://www.instagram.com/p/CshAkF7KpTK/",
+        "https://www.instagram.com/p/CseE8O-KYl5/",
+        "https://www.instagram.com/p/CsZaMdOKJz2/",
+        "https://www.instagram.com/p/CsWWkYJqFbi/"
+      ]
     },
     {
       "handle": "armeniancreators",
       "name": "Armenian Creators",
       "url": "https://www.instagram.com/armeniancreators/",
-      "permalinks": ["https://www.instagram.com/p/C9cmIrhMZnm/"]
+      "permalinks": [
+        "https://www.instagram.com/p/DaNzMyJMGwN/",
+        "https://www.instagram.com/p/DaNyqYFsGig/",
+        "https://www.instagram.com/p/DaNYeXSMFri/",
+        "https://www.instagram.com/p/DaLNznbMCVx/",
+        "https://www.instagram.com/p/DaLL0ZYswhG/",
+        "https://www.instagram.com/p/DaLFQKVsXgZ/",
+        "https://www.instagram.com/p/DaIu82_MKVI/",
+        "https://www.instagram.com/p/DaIXATksGmX/",
+        "https://www.instagram.com/p/DaIFyXlsTTL/",
+        "https://www.instagram.com/p/DaD7_JkMcyl/",
+        "https://www.instagram.com/p/DaD7fyxsjcH/",
+        "https://www.instagram.com/p/DaD32iqMHib/"
+      ]
     },
     {
       "handle": "armenianinstitute",
       "name": "Armenian Institute",
       "url": "https://www.instagram.com/armenianinstitute/",
-      "permalinks": []
+      "permalinks": [
+        "https://www.instagram.com/p/DZstx4BDPJ8/",
+        "https://www.instagram.com/p/DZcgakLiC1a/",
+        "https://www.instagram.com/p/DZNqxXFkQ38/",
+        "https://www.instagram.com/p/DY5F_CXoias/",
+        "https://www.instagram.com/p/DYkj3ehEZ7g/",
+        "https://www.instagram.com/p/DYSlYhWRE8A/",
+        "https://www.instagram.com/reel/DYAj7N3xV25/",
+        "https://www.instagram.com/reel/DXotE9piPfh/",
+        "https://www.instagram.com/p/DXhiMpKiJ30/",
+        "https://www.instagram.com/p/DXe_ZVAjnfN/",
+        "https://www.instagram.com/reel/DXPeiFMiOTw/",
+        "https://www.instagram.com/p/DXNB7OCkVZV/"
+      ]
     },
     {
       "handle": "armeniancuisine",
       "name": "Armenian Cuisine",
       "url": "https://www.instagram.com/armeniancuisine/",
-      "permalinks": []
+      "permalinks": [
+        "https://www.instagram.com/reel/DQjyLNdCOGN/",
+        "https://www.instagram.com/p/DQbaSXYDd_B/",
+        "https://www.instagram.com/reel/DQZsnYCDXNq/",
+        "https://www.instagram.com/p/DQZHMg_jcse/",
+        "https://www.instagram.com/reel/DQWrqFVCJlU/",
+        "https://www.instagram.com/p/DQWDtcCDdNN/",
+        "https://www.instagram.com/reel/DCKDurOsGZY/",
+        "https://www.instagram.com/p/DCHXvcAMJdW/",
+        "https://www.instagram.com/p/DCGWN0Fsj-1/",
+        "https://www.instagram.com/p/C9Nxt7PsANt/",
+        "https://www.instagram.com/reel/C9McwFAM4H8/",
+        "https://www.instagram.com/p/C9AVRecszTl/"
+      ]
     },
     {
       "handle": "margarit.armeniandance",
       "name": "Margarit · Armenian Dance",
       "url": "https://www.instagram.com/margarit.armeniandance/",
-      "permalinks": ["https://www.instagram.com/reel/DJMuFB2tU91/"]
+      "permalinks": [
+        "https://www.instagram.com/p/DZBDZJ5MWhp/",
+        "https://www.instagram.com/p/DYSziosDP7D/",
+        "https://www.instagram.com/p/DYLOhF5jBbR/",
+        "https://www.instagram.com/p/DYAksrtDO2w/",
+        "https://www.instagram.com/reel/DRaZoBZjClv/",
+        "https://www.instagram.com/reel/DQmEfaZjB-G/",
+        "https://www.instagram.com/reel/DOb5EEkjLUM/",
+        "https://www.instagram.com/p/DM0lGBdo7EP/",
+        "https://www.instagram.com/reel/DLN3o9yN8J6/",
+        "https://www.instagram.com/reel/DLMRiZuNX3j/",
+        "https://www.instagram.com/p/DLKllTZNyy2/",
+        "https://www.instagram.com/p/DK-UNa7smj4/"
+      ]
     },
     {
       "handle": "eglise.armenienne.geneve",
       "name": "Église arménienne de Genève",
       "url": "https://www.instagram.com/eglise.armenienne.geneve/",
-      "permalinks": []
+      "permalinks": [
+        "https://www.instagram.com/p/DaM-8fiOQfB/",
+        "https://www.instagram.com/p/DaJT7Z7DktD/",
+        "https://www.instagram.com/p/DaJQgV-jpOo/",
+        "https://www.instagram.com/p/DaBLGUNOz1i/",
+        "https://www.instagram.com/p/DZ0p_kxjlPt/",
+        "https://www.instagram.com/p/DZVxz4tuUyY/",
+        "https://www.instagram.com/p/DZBOsh7uM1n/",
+        "https://www.instagram.com/p/DYxe3cIucdA/",
+        "https://www.instagram.com/p/DYfttuuDB0U/",
+        "https://www.instagram.com/p/DYaQ1lHOuI0/",
+        "https://www.instagram.com/p/DYUT9nIM2Qy/",
+        "https://www.instagram.com/p/DYSEpjzMqXc/"
+      ]
     },
     {
       "handle": "armenian-trend",
