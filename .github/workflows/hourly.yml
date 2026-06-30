@@ -53,6 +53,22 @@ jobs:
         with:
           path: dist
 
+      # --- Firebase Hosting ---
+      # Firebase serves from the domain root, so rebuild with base '/'
+      # (the default '/ArmenianNews/' base is only for GitHub Pages).
+      - name: Build for Firebase (root base)
+        run: npm run build
+        env:
+          BASE_PATH: /
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: armeniensdelausanne
+          channelId: live
+
   deploy:
     needs: snapshot
     runs-on: ubuntu-latest
