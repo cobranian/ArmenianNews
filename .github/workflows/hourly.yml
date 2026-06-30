@@ -28,10 +28,14 @@ jobs:
       - run: npm ci
 
       # Refresh news + agenda. Instagram/Facebook are curated and untouched.
+      # Only the hourly schedule (or a manual run) takes a snapshot — a push
+      # to main just rebuilds & redeploys, so there is exactly 1 snapshot/hour.
       - name: Scrape hourly snapshot
+        if: github.event_name != 'push'
         run: npm run scrape
 
       - name: Commit refreshed data
+        if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
