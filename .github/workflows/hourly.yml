@@ -67,8 +67,19 @@ jobs:
         run: |
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
-          npx --yes firebase-tools@latest deploy \
-            --only hosting --project armeniensdelausanne --non-interactive
+          set +e
+          out=$(npx --yes firebase-tools@latest deploy \
+            --only hosting --project armeniensdelausanne --non-interactive 2>&1)
+          code=$?
+          echo "$out"
+          # Firebase rejects a release whose content is identical to the
+          # currently live version (e.g. an hour with no data change).
+          # That's a successful no-op, not a failure.
+          if [ $code -ne 0 ] && echo "$out" | grep -q "is the current active version"; then
+            echo "::notice::Content unchanged — already live. Skipping."
+            exit 0
+          fi
+          exit $code
 
   deploy:
     needs: snapshot
