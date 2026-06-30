@@ -1,0 +1,6 @@
+{
+  "_comment": "Facebook Don Narek wall. Uses the official Facebook Page Plugin, which auto-shows the page's latest posts (no per-post curation needed) as long as the page is public. If the page is private or Meta blocks the plugin, the site falls back to a link.",
+  "page": "DonNarek",
+  "url": "https://www.facebook.com/DonNarek",
+  "tabs": "timeline"
+}

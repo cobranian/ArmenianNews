@@ -1,0 +1,47 @@
+{
+  "_comment": "Curated Instagram sources. Auto-scraping Instagram is unreliable and against ToS, so the wall renders OFFICIAL post embeds from the permalinks you list here. To add a post: open it on instagram.com, copy its URL (https://www.instagram.com/p/XXXXXXX/ or /reel/XXXXXXX/), and paste it into the matching account's `permalinks` array. The wall shuffles all permalinks on each load for the 'au hasard' effect. Accounts with no permalinks yet show as a profile chip linking to Instagram.",
+  "accounts": [
+    {
+      "handle": "ig_armenia",
+      "name": "Armenia",
+      "url": "https://www.instagram.com/ig_armenia/",
+      "permalinks": []
+    },
+    {
+      "handle": "armeniancreators",
+      "name": "Armenian Creators",
+      "url": "https://www.instagram.com/armeniancreators/",
+      "permalinks": []
+    },
+    {
+      "handle": "armenianinstitute",
+      "name": "Armenian Institute",
+      "url": "https://www.instagram.com/armenianinstitute/",
+      "permalinks": []
+    },
+    {
+      "handle": "armeniancuisine",
+      "name": "Armenian Cuisine",
+      "url": "https://www.instagram.com/armeniancuisine/",
+      "permalinks": []
+    },
+    {
+      "handle": "margarit.armeniandance",
+      "name": "Margarit · Armenian Dance",
+      "url": "https://www.instagram.com/margarit.armeniandance/",
+      "permalinks": []
+    },
+    {
+      "handle": "eglise.armenienne.geneve",
+      "name": "Église arménienne de Genève",
+      "url": "https://www.instagram.com/eglise.armenienne.geneve/",
+      "permalinks": []
+    },
+    {
+      "handle": "armenian-trend",
+      "name": "Armenian Trend",
+      "url": "https://www.instagram.com/popular/armenian-trend/",
+      "permalinks": []
+    }
+  ]
+}
