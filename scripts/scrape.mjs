@@ -1,13 +1,15 @@
 // Daily snapshot orchestrator.
-// Scrapes news + agenda and writes them into src/data/*.json.
-// NOTE: instagram.json and facebook.json are *curated* (see README) and are
-// intentionally NOT overwritten here.
+// Scrapes news + agenda and writes them into src/data/*.json. The Instagram
+// post pool (instagram.json) and facebook.json are *curated* (see README) and
+// are NOT overwritten — but each snapshot re-randomises which IG posts show
+// (instagram-feed.json) so the wall changes hourly.
 import { writeFile, readFile, mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { scrapeCourrier } from './sources/courrier.mjs'
 import { scrapeArmradio } from './sources/armradio.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
+import { selectInstagram } from './sources/instagram.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = join(__dirname, '..', 'src', 'data')
@@ -35,6 +37,7 @@ async function main() {
   // Last-good snapshot, used to backfill any source that comes back empty.
   const prevNews = await readJson('news.json')
   const prevAgenda = await readJson('agenda.json')
+  const prevIg = await readJson('instagram-feed.json')
 
   console.log('Actualites (courrier.am):')
   let news = []
@@ -86,8 +89,21 @@ async function main() {
     }
   }
 
+  console.log('\nInstagram (curated · re-randomised):')
+  let igPosts = []
+  try {
+    igPosts = await selectInstagram(12)
+  } catch (err) {
+    console.error('  instagram failed:', err.message)
+  }
+  if (!igPosts.length && prevIg?.posts?.length) {
+    console.warn(`  ↺ keeping ${prevIg.posts.length} previous instagram posts`)
+    igPosts = prevIg.posts
+  }
+
   await writeJson('news.json', { generatedAt, sections: news, armradio })
   await writeJson('agenda.json', { generatedAt, ...agenda })
+  await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })
 
   console.log('\n✅ Snapshot complete.\n')

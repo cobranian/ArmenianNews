@@ -570,6 +570,7 @@ h3:lang(hy) {
   display: flex;
   gap: 8px;
   flex: none;
+  margin-left: auto; /* keep arrows right-aligned even with no title (IG) */
 }
 .shelf__arrow {
   appearance: none;
@@ -641,6 +642,12 @@ h3:lang(hy) {
   background: var(--surface-raised);
   border-color: var(--line-apricot);
   transform: translateY(-3px);
+}
+
+/* Instagram postcards reuse the same horizontal track */
+.shelf__track > .ig-card {
+  flex: 0 0 clamp(238px, 74vw, 272px);
+  scroll-snap-align: start;
 }
 .card__media {
   position: relative;
@@ -1304,7 +1311,8 @@ h3:lang(hy) {
     height: 36px;
     font-size: 1.35rem;
   }
-  .card {
+  .card,
+  .shelf__track > .ig-card {
     flex-basis: clamp(220px, 80vw, 270px);
   }
 }

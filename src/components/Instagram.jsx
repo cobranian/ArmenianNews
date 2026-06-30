@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
+import { Carousel } from './Carousel.jsx'
 import ig from '../data/instagram.json'
+import feed from '../data/instagram-feed.json'
 
 /* Locally stored post previews (og:image), keyed by shortcode. Refreshed
  * by the snapshot job; bundled at build time so they never expire or hit
@@ -25,9 +27,9 @@ const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || null
  * Instagram's official embed.js refuses to hydrate in many real-world
  * conditions (ad-blockers, region locks, rate limits) — leaving blank
  * cells. Instead of depending on it, every curated permalink renders as
- * an on-brand manuscript tile that ALWAYS paints and links out to the
- * real post. Cover art (motif + colourway) is derived deterministically
- * from the permalink, so each post keeps a stable, distinct face.
+ * an on-brand tile that ALWAYS paints and links out to the real post.
+ * Which posts show, and in what order, is re-randomised hourly by the
+ * snapshot job (instagram-feed.json).
  * ------------------------------------------------------------------ */
 
 function hash(str) {
@@ -39,16 +41,7 @@ function hash(str) {
   return Math.abs(h)
 }
 
-function shuffle(arr) {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-/* Four colourways drawn from the illuminated-manuscript palette. */
+/* Four colourways drawn from the palette. */
 const THEMES = [
   { c1: '#6e0e1a', c2: '#9a1b2b', ink: '#e0bd6a' }, // pomegranate
   { c1: '#1c3d5a', c2: '#2a577d', ink: '#e0bd6a' }, // lapis
@@ -169,22 +162,21 @@ function PostCard({ url, handle, name, view, img }) {
 export function Instagram() {
   const { t } = useI18n()
 
-  // Flatten every curated permalink across accounts.
-  const allPosts = useMemo(
-    () =>
-      ig.accounts.flatMap((acc) =>
-        (acc.permalinks || []).map((url) => ({
-          url,
-          handle: acc.handle,
-          name: acc.name,
-          img: imgMap[shortcode(url)] || null,
-        })),
-      ),
-    [],
-  )
-
-  const [posts, setPosts] = useState(() => shuffle(allPosts).slice(0, 9))
-  const reshuffle = () => setPosts(shuffle(allPosts).slice(0, 9))
+  // Use the hourly-baked random selection; fall back to flattening the
+  // curated accounts (e.g. before the first snapshot exists).
+  const posts = useMemo(() => {
+    const base =
+      feed.posts && feed.posts.length
+        ? feed.posts
+        : ig.accounts.flatMap((acc) =>
+            (acc.permalinks || []).map((url) => ({
+              url,
+              handle: acc.handle,
+              name: acc.name,
+            })),
+          )
+    return base.map((p) => ({ ...p, img: imgMap[shortcode(p.url)] || null }))
+  }, [])
 
   return (
     <section className="section section--alt" id="instagram">
@@ -192,25 +184,18 @@ export function Instagram() {
         <SectionHead eyebrow="Instagram" title={t('ig.title')} subtitle={t('ig.subtitle')} />
 
         {posts.length > 0 && (
-          <>
-            <div className="ig-toolbar reveal">
-              <button className="btn-gold" onClick={reshuffle}>
-                ✦ {t('ig.shuffle')}
-              </button>
-            </div>
-            <div className="ig-grid">
-              {posts.map((p) => (
-                <PostCard
-                  key={p.url}
-                  url={p.url}
-                  handle={p.handle}
-                  name={p.name}
-                  img={p.img}
-                  view={t('ig.view')}
-                />
-              ))}
-            </div>
-          </>
+          <Carousel label={t('ig.title')}>
+            {posts.map((p) => (
+              <PostCard
+                key={p.url}
+                url={p.url}
+                handle={p.handle}
+                name={p.name}
+                img={p.img}
+                view={t('ig.view')}
+              />
+            ))}
+          </Carousel>
         )}
 
         {/* Account chips: entry points + graceful fallback for accounts
