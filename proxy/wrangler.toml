@@ -1,0 +1,7 @@
+# Deploy the armradio proxy from the repo:  cd proxy && npx wrangler deploy
+# (auth once with `npx wrangler login`). workers_dev = true publishes it at
+# https://armradio-proxy.<your-subdomain>.workers.dev
+name = "armradio-proxy"
+main = "armradio-worker.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
