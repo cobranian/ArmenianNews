@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T08:10:17.023Z",
+  "generatedAt": "2026-07-01T11:20:36.626Z",
   "sections": [
     {
       "sectionKey": "actualite",
@@ -115,6 +115,11 @@
       "sectionKey": "economie",
       "articles": [
         {
+          "title": "La promotion des produits arméniens sur le marché français à l'ordre du jour",
+          "url": "https://courrier.am/fr/la-promotion-des-produits-armeniens-sur-le-marche-francais-a-l-ordre-du-jour",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/economie/images_2.jpg?itok=MSaH_-9y"
+        },
+        {
           "title": "« Telecom Armenia » et « Azertelecom » ont signé un accord sur le transit du trafic Internet",
           "url": "https://courrier.am/fr/-telecom-armenia-et-azertelecom-ont-signe-un-accord-sur-le-transit-du-trafic-internet",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/economie/1782221623612_178.jpeg?itok=BacD3SSr"
@@ -158,11 +163,6 @@
           "title": "Un nouveau centre technologique au sein de la Ville d'ingénierie",
           "url": "https://courrier.am/fr/un-nouveau-centre-technologique-au-sein-de-la-ville-d-ingenierie",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/economie/c0d9f8d6008f11471e4be995fc2224ef.jpeg?itok=zcTdVxub"
-        },
-        {
-          "title": "Erevan et Paris ont signé des accords dans les domaines de l'intelligence artificielle et de la sécurité",
-          "url": "https://courrier.am/fr/erevan-et-paris-ont-signe-des-accords-dans-les-domaines-de-l-intelligence-artificielle-et-de-la-securite",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/economie/screenshot_1_0.jpg?itok=7WFo8SCv"
         }
       ]
     },
@@ -444,29 +444,29 @@
   ],
   "armradio": [
     {
-      "title": "Trump made more than $1bn from crypto in first year back in office",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQalh3VWE4RWdlZXBXdnZPR2dmNzYwbGJxRVJtWDNCQml4VHBENVV4TlpIVzhaVWxmN3BNQ3Q5cGJHSDhnNlR5SlUxdFg3Y0hMSV9URW8zUmFLWUROeFdLUHNwdVdhZDVKRURsZlR1QU9lQURaVVZ5cjVXQmtSUmJRQzNQeFo2U2NXS0xWZ2g2SU16Xy11dWh3TTBid1RZeGpmS0E?oc=5",
-      "date": "2026-07-01T06:41:50.000Z"
+      "title": "TRIPP project will operate under EAEU rules, Deputy FM says",
+      "url": "https://en.armradio.am/2026/07/01/tripp-project-will-operate-under-eaeu-rules-deputy-fm-says/",
+      "date": "2026-07-01T10:31:18.000Z"
     },
     {
-      "title": "Armenia, EU explore deeper cooperation on reforms, energy and regional peace",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQUjZ5MjJZYm15VVVKRUtIV2hGZ1VRSjFwODhmc1JCa3VLeGs2R3IxeWE5X3lxdGota3ppNXNPeFVIb2dGcmo4elBkOGhEeXVqQTZUMjhNdXNtVnd1WjEteld6czRLMFZBTFN1RERrdEhHUG5iLW5jZ1d6WGFjXzhxejl2Q01fZ3BYZXR2T0ZNQzU4OFJZanFHTjU1ektkYTJBSjNid2Z0RFJqY2NfUXc?oc=5",
-      "date": "2026-06-30T16:06:40.000Z"
+      "title": "Matenadaran’s Armenian manuscript exhibition draws 13,000 visitors in Spain",
+      "url": "https://en.armradio.am/2026/07/01/matenadarans-armenian-manuscript-exhibition-draws-13000-visitors-in-spain/",
+      "date": "2026-07-01T10:01:52.000Z"
     },
     {
-      "title": "Armenia, Georgia seek to deepen cooperation on internal security",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNaWwzVl80TUQ5MG9pV05vS214aHBHYnVBcFhRUnVPVldsWTNOUkhuZjcwaURZc24zemdNa2VpVGJyV0hUeDc3bnk0akVmSjV2aDJBUnFtcTdSb2FHREVEVnpSb1RHa2Iyb1I2OHVSczhXekw5NUxia1gzX0MydUc0YjZRRDRnX2dieFJHby0xZ1ZyaGFVQ3BwcXN4RkwxM28?oc=5",
-      "date": "2026-06-30T13:52:25.000Z"
+      "title": "German Bundestag delegation visits Armenian Genocide Memorial",
+      "url": "https://en.armradio.am/2026/07/01/german-bundestag-delegation-visits-armenian-genocide-memorial/",
+      "date": "2026-07-01T09:01:33.000Z"
     },
     {
-      "title": "Azatutyun TV to cease broadcasting following license termination",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOblpsVk5ZX20wSGY0MW9qdWlZSFVKa1g3LUl4WkF4ZFNmYmFFWUJ0TkItNnJRMmlzcHNzQ1dmSURHSTAydzJvNWRIS3U3bkwtdlVzanFPX0R2QkJNNzQtOFB5MWJfcjBMS3Q5UFB4YmZPQ1FZVzBKdWFlOUlXOXZha0JFY01oUkhKRU9xdzdoSXgzOUtSOWVZNmRBY0xkVFFn?oc=5",
-      "date": "2026-06-30T10:30:18.000Z"
+      "title": "Georgian Interior Minister visits Armenia’s 112 Operational Management Center and Patrol Service",
+      "url": "https://en.armradio.am/2026/07/01/georgian-interior-minister-visits-armenias-112-operational-management-center-and-patrol-service/",
+      "date": "2026-07-01T07:55:38.000Z"
     },
     {
-      "title": "Armenia highlights fight against environmental crime ahead of COP17",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPb1U0ZTRaaWgzZWhTVFdIMHF1NGNpeTRKZzR3d21ub2h3MEVNS3E2YWowSk5kUndmNWtTY0UwQUZGQ3RmdUFsMmloTXEwekpTb1M0OWdGMWFxSXBaZGFDdGoxSHVxOG82YUItd0w2MzRoWWlGZkZSUlNRNE9qQkVqUXcteHN5OG1mcERUMkstNF90dFJTdndfMTVhWV9Mek41VzBJYQ?oc=5",
-      "date": "2026-06-30T09:45:09.000Z"
+      "title": "Made in Armenia Expo opens in Tallinn to advance Armenia–Estonia economic cooperation",
+      "url": "https://en.armradio.am/2026/07/01/made-in-armenia-expo-opens-in-tallinn-to-advance-armenia-estonia-economic-cooperation/",
+      "date": "2026-07-01T07:48:05.000Z"
     }
   ]
 }
