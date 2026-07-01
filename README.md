@@ -15,8 +15,8 @@ Vite + React app that renders those files. No backend at runtime.
 | Section | Source | How |
 |---|---|---|
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. |
-| **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched **via Google News** (`site:en.armradio.am`) because armradio.am sits behind Cloudflare, which 403s CI datacenter IPs. |
-| **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Chronological agenda, Switzerland first. |
+| **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
+| **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
 | **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | Official Facebook **Page Plugin** — auto-shows the latest posts (no curation). |
 | **Instagram** | 9 curated accounts | A swipeable **carousel** (‹ › arrows) of curated post tiles. Which posts show, and in what order, is **re-randomised every hour** by the snapshot job. |
 
@@ -80,6 +80,34 @@ Uses the official Page Plugin, which shows the latest posts of a **public** page
 automatically. Nothing to curate. If the Don Narek page is private or Meta
 blocks the plugin, the section falls back to a link.
 
+## Newswire source chain (armradio)
+
+`en.armradio.am` is a WordPress site behind Cloudflare, which serves an
+**intermittent 403 "managed challenge"** to datacenter IPs (GitHub Actions
+runners). `scripts/sources/armradio.mjs` therefore tries several sources in
+order and uses the first that responds — the log prints which one won
+(`✓ armradio (N headlines via <source>)`):
+
+| Order | Source | Notes |
+|---|---|---|
+| 1 | **Cloudflare Worker proxy** (`ARMRADIO_PROXY`) | Always-on; runs *inside* Cloudflare's network so it isn't challenged. Optional — skipped if the env var is unset. |
+| 2 | **WordPress REST API** (`/wp-json`) | Clean JSON, real permalinks. Usually 403s from CI. |
+| 3 | **Direct RSS feed** (`/feed/`) | Richest, but often 403s from CI. |
+| 4 | **Google News RSS** | Always reachable, but lags and drops the freshest items. |
+
+The proxy is what makes the wire fresh **every** hour instead of only the hours
+CI happens to get through. It's a small Cloudflare Worker — code and one-time
+setup are in [`proxy/`](./proxy/). Once deployed, its URL is stored in the
+`ARMRADIO_PROXY` **repo variable** and passed to the scrape step by the workflow.
+
+To (re)deploy the worker after editing `proxy/armradio-worker.js`:
+
+```bash
+cd proxy
+npx wrangler login      # once
+npx wrangler deploy     # prints https://armradio-proxy.<subdomain>.workers.dev
+```
+
 ## Deployment (GitHub Actions → Firebase Hosting)
 
 `.github/workflows/hourly.yml` runs **every hour** on the hour (UTC), plus on
@@ -94,6 +122,13 @@ The site deploys to **Firebase Hosting** (project `armenie-info`,
 https://armenie-info.web.app). The Firebase service-account JSON is stored in the
 `FIREBASE_SERVICE_ACCOUNT` repo secret.
 
+**CI configuration:**
+
+| Name | Kind | Purpose |
+|---|---|---|
+| `FIREBASE_SERVICE_ACCOUNT` | secret | Firebase Hosting deploy credentials. |
+| `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
+
 Vite `base` defaults to `/` (Firebase serves from the domain root); override with
 `BASE_PATH=/subpath` when building for a subpath.
 
@@ -102,8 +137,9 @@ Vite `base` defaults to `/` (Firebase serves from the domain root); override wit
 - Scrapers depend on the source sites' current HTML; if a site redesigns, the
   matching scraper in `scripts/sources/` may need new selectors.
 - `armradio.am` and Instagram are both blocked from CI datacenter IPs
-  (Cloudflare / anti-scraping), which is why the newswire is fetched via Google
-  News and the Instagram pool is curated by hand.
+  (Cloudflare / anti-scraping). The newswire works around this with the
+  [source chain](#newswire-source-chain-armradio) (Cloudflare Worker proxy first,
+  then REST/RSS/Google News fallbacks); the Instagram pool is curated by hand.
 - GitHub Actions scheduled runs can be delayed a few minutes under load — the
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
