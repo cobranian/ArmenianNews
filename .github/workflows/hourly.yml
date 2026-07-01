@@ -32,6 +32,10 @@ jobs:
       # to main just rebuilds & redeploys, so there is exactly 1 snapshot/hour.
       - name: Scrape hourly snapshot
         if: github.event_name != 'push'
+        env:
+          # Always-on Cloudflare Worker proxy for armradio (optional; the
+          # scraper falls back to direct/Google News if unset). See proxy/.
+          ARMRADIO_PROXY: ${{ vars.ARMRADIO_PROXY }}
         run: npm run scrape
 
       - name: Commit refreshed data

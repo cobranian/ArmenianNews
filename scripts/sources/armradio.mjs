@@ -17,6 +17,11 @@ const DIRECT_FEED = 'https://en.armradio.am/feed/'
 const GNEWS_FEED =
   'https://news.google.com/rss/search?q=site:en.armradio.am%20when:7d&hl=en-US&gl=US&ceid=US:en'
 
+// Optional always-on Cloudflare Worker proxy (see proxy/armradio-worker.js).
+// When ARMRADIO_PROXY is set it is tried first — it sits on a Cloudflare IP the
+// origin doesn't challenge, so it succeeds when a direct datacenter fetch 403s.
+const PROXY = (process.env.ARMRADIO_PROXY || '').trim()
+
 // Decode HTML entities (&#8217; &amp; …) that WordPress leaves in titles.
 function decodeEntities(html) {
   return clean(cheerio.load(`<x>${html || ''}</x>`)('x').text())
@@ -74,7 +79,14 @@ function parseGoogleNews(xml) {
   return items
 }
 
+// The proxy returns either REST JSON or RSS XML — auto-detect and parse.
+function parseProxy(body) {
+  const t = (body || '').trimStart()
+  return t.startsWith('[') || t.startsWith('{') ? parseRest(body) : parseRss(body)
+}
+
 const SOURCES = [
+  ...(PROXY ? [{ via: 'proxy', url: PROXY, parse: parseProxy }] : []),
   { via: 'REST API', url: REST_API, parse: parseRest },
   { via: 'direct feed', url: DIRECT_FEED, parse: parseRss },
   { via: 'Google News', url: GNEWS_FEED, parse: parseGoogleNews },
