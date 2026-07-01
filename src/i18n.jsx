@@ -38,7 +38,8 @@ const STRINGS = {
     'agenda.more': "Voir sur armenopole",
 
     'fb.title': 'Don Narek',
-    'fb.subtitle': 'Les dernieres publications de la page Facebook',
+    'fb.subtitle': 'Les 10 dernieres publications, en images',
+    'fb.view': 'Voir la publication',
     'fb.fallback': 'Voir la page sur Facebook',
 
     'ig.title': 'Instagram',
@@ -88,7 +89,8 @@ const STRINGS = {
     'agenda.more': 'See on armenopole',
 
     'fb.title': 'Don Narek',
-    'fb.subtitle': 'The latest posts from the Facebook page',
+    'fb.subtitle': 'The 10 latest posts, in pictures',
+    'fb.view': 'View the post',
     'fb.fallback': 'View the page on Facebook',
 
     'ig.title': 'Instagram',
@@ -138,7 +140,8 @@ const STRINGS = {
     'agenda.more': 'Տեսնել armenopole-ում',
 
     'fb.title': 'Տօն Նարեկ',
-    'fb.subtitle': 'Facebook էջի վերջին հրապարակումները',
+    'fb.subtitle': 'Վերջին 10 հրապարակումները՝ նկարներով',
+    'fb.view': 'Դիտել հրապարակումը',
     'fb.fallback': 'Դիտել էջը Facebook-ում',
 
     'ig.title': 'Instagram',

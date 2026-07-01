@@ -54,6 +54,22 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Regenerate the Don Narek carousel preview each hour and drop it into
+      # dist/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png).
+      # Best-effort: a screenshot failure must never block the deploy.
+      - name: Set up Chrome (for screenshot)
+        id: chrome
+        continue-on-error: true
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Screenshot Don Narek carousel into dist/
+        continue-on-error: true
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: npm run screenshot
+
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}

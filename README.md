@@ -17,7 +17,7 @@ Vite + React app that renders those files. No backend at runtime.
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. |
 | **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
 | **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
-| **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | Official Facebook **Page Plugin** — auto-shows the latest posts (no curation). |
+| **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 10 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
 | **Instagram** | 9 curated accounts | A swipeable **carousel** (‹ › arrows) of curated post tiles. Which posts show, and in what order, is **re-randomised every hour** by the snapshot job. |
 
 Each source **fails independently and degrades gracefully**: on an empty/failed
@@ -28,10 +28,11 @@ instead of blanking it, so a transient upstream failure never wipes a section.
 
 ```bash
 npm install
-npm run scrape   # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
-npm run dev      # http://localhost:5173/
-npm run build    # production build into dist/
+npm run scrape      # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
+npm run dev         # http://localhost:5173/
+npm run build       # production build into dist/
 npm run preview
+npm run screenshot  # after build: capture the Don Narek carousel into dist/don-narek-{desktop,mobile}.png
 ```
 
 `npm run scrape` refreshes **news + agenda**, and re-randomises the **Instagram
@@ -74,11 +75,34 @@ The snapshot selects up to **30** posts per hour (`selectInstagram(30)` in
 `scripts/sources/instagram.mjs`); bump that number if the pool grows beyond 30.
 Accounts with no permalinks simply appear as a profile chip linking to Instagram.
 
-### Facebook — `src/data/facebook.json`
+### Facebook (Don Narek) — `src/data/facebook.json`
 
-Uses the official Page Plugin, which shows the latest posts of a **public** page
-automatically. Nothing to curate. If the Don Narek page is private or Meta
-blocks the plugin, the section falls back to a link.
+Facebook blocks automated scraping and the official Page Plugin drags in the
+whole page shell (cover, header, Like box), so the Don Narek wall is a
+hand-curated carousel that shows **only each post's picture and its author**.
+
+**To add a post:** put a new entry at the **top** of the `posts` array (newest
+first — only the first 10 are shown):
+
+```json
+{ "id": "dn-11", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek/posts/…", "image": "my-photo.jpg" }
+```
+
+- `id` — any stable, unique string (also seeds the fallback motif).
+- `author` — the person who made the post (shown as a gilded monogram + name).
+- `url` — the post permalink (the card links out to it).
+- `image` *(optional)* — a file dropped in `src/data/fb/` (`.jpg/.jpeg/.png/.webp`).
+  It's bundled at build time, so it never hotlinks or expires. **Without an
+  image, the card shows a deterministic Armenian motif** (still on-brand) — so a
+  permalink alone is enough.
+
+An up-to-date **preview of the carousel** is regenerated every hour by the
+deploy (`scripts/shoot.mjs`, driven by `browser-actions/setup-chrome`) and
+published alongside the site at
+[`/don-narek-desktop.png`](https://armenie-info.web.app/don-narek-desktop.png)
+and [`/don-narek-mobile.png`](https://armenie-info.web.app/don-narek-mobile.png).
+It writes into `dist/` (gitignored), so hourly image churn never enters git
+history. Run `npm run build && npm run screenshot` to regenerate it locally.
 
 ## Newswire source chain (armradio)
 

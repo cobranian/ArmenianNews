@@ -1007,17 +1007,149 @@ h3:lang(hy) {
 /* ============================================================
    Social — Facebook + Instagram
    ============================================================ */
-.fb-wrap {
-  display: flex;
-  justify-content: center;
+/* --- Don Narek post card — picture + author, no Facebook chrome --- */
+.shelf__track > .fb-card {
+  flex: 0 0 clamp(238px, 74vw, 264px);
+  scroll-snap-align: start;
 }
-.fb-wrap .fb-page,
-.fb-wrap iframe {
-  max-width: 100%;
-  box-shadow: var(--shadow);
+.fb-card {
+  --c1: var(--basalt-4);
+  --c2: var(--basalt-3);
+  --ink: var(--apricot);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease),
+    border-color 0.28s var(--ease);
+}
+.fb-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: var(--line-apricot);
+}
+.fb-card__cover {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background:
+    radial-gradient(120% 120% at 20% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+    linear-gradient(150deg, var(--c1), var(--c2));
+  overflow: hidden;
+}
+.fb-card__cover::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background-image: radial-gradient(currentColor 1px, transparent 1.4px);
+  background-size: 16px 16px;
+  opacity: 0.12;
+}
+.fb-card__motif {
+  position: relative;
+  width: 52%;
+  height: 52%;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.45s var(--ease);
+}
+.fb-card:hover .fb-card__motif {
+  transform: rotate(-8deg) scale(1.07);
+}
+.fb-card__cover--photo::before {
+  display: none;
+}
+.fb-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92);
+  transition: transform 0.6s var(--ease), filter 0.5s var(--ease);
+}
+.fb-card:hover .fb-card__photo {
+  transform: scale(1.06);
+  filter: saturate(1.05);
+}
+.fb-card__cover--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 45%);
+  pointer-events: none;
+}
+.fb-card__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: currentColor;
+  opacity: 0.7;
+  z-index: 1;
+}
+.fb-card__corner--tl {
+  top: 8px;
+  left: 8px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.fb-card__corner--br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+/* Byline: gilded monogram of whoever posted + their name + link out. */
+.fb-card__body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 3px 13px;
+  padding: 14px 16px 16px;
+}
+.fb-card__mark {
+  grid-row: span 2;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--on-apricot);
+  background: linear-gradient(180deg, var(--apricot-bright), var(--apricot));
+  box-shadow: 0 0 0 1px var(--apricot-deep), 0 6px 16px -10px var(--apricot-glow);
+}
+.fb-card__author {
+  align-self: end;
+  font-family: var(--font-display);
+  font-size: 1.16rem;
+  line-height: 1.1;
+  color: var(--text);
+}
+.fb-card__cta {
+  align-self: start;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.fb-card__cta span {
+  display: inline-block;
+  transition: transform 0.2s var(--ease);
+  color: var(--apricot);
+}
+.fb-card:hover .fb-card__cta span {
+  transform: translateX(5px);
 }
 .fb-fallback {
   text-align: center;
@@ -1376,6 +1508,7 @@ h3:lang(hy) {
   }
   .card,
   .shelf__track > .ig-card,
+  .shelf__track > .fb-card,
   .agenda-card {
     flex-basis: clamp(220px, 80vw, 270px);
   }

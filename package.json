@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "scrape": "node scripts/scrape.mjs"
+    "scrape": "node scripts/scrape.mjs",
+    "screenshot": "node scripts/shoot.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "cheerio": "^1.0.0",
+    "puppeteer-core": "^25.3.0",
     "vite": "^6.0.7"
   }
 }

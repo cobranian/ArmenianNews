@@ -1,6 +1,17 @@
 {
-  "_comment": "Facebook Don Narek wall. Uses the official Facebook Page Plugin, which auto-shows the page's latest posts (no per-post curation needed) as long as the page is public. If the page is private or Meta blocks the plugin, the site falls back to a link.",
+  "_comment": "Don Narek Facebook wall — curated by hand (Facebook blocks automated scraping). The carousel shows ONLY each post's picture and its author; no Facebook page chrome/cover. Keep the newest 10 posts at the top of `posts`. Each post: `id` (stable key + motif seed), `author` (person who posted), `url` (permalink, opens the real post), and optionally `image` — a file dropped in src/data/fb/ (e.g. \"myphoto.jpg\"), bundled at build time so it never hotlinks/expires. A post with no image falls back to an on-brand Armenian motif, so a permalink alone is enough.",
   "page": "DonNarek",
   "url": "https://www.facebook.com/DonNarek",
-  "tabs": "timeline"
+  "posts": [
+    { "id": "dn-01", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-02", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-03", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-04", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-05", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-06", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-07", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-08", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-09", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" },
+    { "id": "dn-10", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek" }
+  ]
 }
