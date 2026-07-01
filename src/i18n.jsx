@@ -16,7 +16,7 @@ const STRINGS = {
 
     'nav.news': 'Actualites',
     'nav.agenda': 'Agenda',
-    'nav.facebook': 'Don Narek',
+    'nav.facebook': 'Art arménien',
     'nav.instagram': 'Instagram',
 
     'news.title': 'Actualites',
@@ -37,7 +37,8 @@ const STRINGS = {
     'agenda.empty': 'Aucun evenement annonce.',
     'agenda.more': "Voir sur armenopole",
 
-    'fb.title': 'Don Narek',
+    'fb.title': 'Art arménien',
+    'fb.by': 'par Don Narek',
     'fb.subtitle': 'Les 10 dernieres publications, en images',
     'fb.view': 'Voir la publication',
     'fb.fallback': 'Voir la page sur Facebook',
@@ -67,7 +68,7 @@ const STRINGS = {
 
     'nav.news': 'News',
     'nav.agenda': 'Events',
-    'nav.facebook': 'Don Narek',
+    'nav.facebook': 'Armenian Art',
     'nav.instagram': 'Instagram',
 
     'news.title': 'News',
@@ -88,7 +89,8 @@ const STRINGS = {
     'agenda.empty': 'No events announced.',
     'agenda.more': 'See on armenopole',
 
-    'fb.title': 'Don Narek',
+    'fb.title': 'Armenian Art',
+    'fb.by': 'by Don Narek',
     'fb.subtitle': 'The 10 latest posts, in pictures',
     'fb.view': 'View the post',
     'fb.fallback': 'View the page on Facebook',
@@ -118,7 +120,7 @@ const STRINGS = {
 
     'nav.news': 'Լուրեր',
     'nav.agenda': 'Միջոցառումներ',
-    'nav.facebook': 'Տօն Նարեկ',
+    'nav.facebook': 'Հայկական արվեստ',
     'nav.instagram': 'Instagram',
 
     'news.title': 'Լուրեր',
@@ -139,7 +141,8 @@ const STRINGS = {
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
     'agenda.more': 'Տեսնել armenopole-ում',
 
-    'fb.title': 'Տօն Նարեկ',
+    'fb.title': 'Հայկական արվեստ',
+    'fb.by': 'Տօն Նարեկի կողմից',
     'fb.subtitle': 'Վերջին 10 հրապարակումները՝ նկարներով',
     'fb.view': 'Դիտել հրապարակումը',
     'fb.fallback': 'Դիտել էջը Facebook-ում',

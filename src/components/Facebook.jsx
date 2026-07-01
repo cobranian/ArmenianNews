@@ -94,7 +94,16 @@ export function Facebook() {
   return (
     <section className="section" id="facebook">
       <div className="container">
-        <SectionHead eyebrow="Facebook" title={t('fb.title')} subtitle={t('fb.subtitle')} />
+        <SectionHead
+          eyebrow="Facebook"
+          title={
+            <>
+              <span className="fb-title__main">{t('fb.title')}</span>
+              <span className="fb-title__by">{t('fb.by')}</span>
+            </>
+          }
+          subtitle={t('fb.subtitle')}
+        />
 
         {posts.length > 0 && (
           <Carousel label={t('fb.title')}>
