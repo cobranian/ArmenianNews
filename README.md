@@ -78,10 +78,12 @@ Accounts with no permalinks simply appear as a profile chip linking to Instagram
 ### Facebook (Don Narek) — `src/data/facebook.json`
 
 Facebook blocks automated scraping and the official Page Plugin drags in the
-whole page shell (cover, header, Like box), so the Don Narek wall is a
-hand-curated carousel that shows **only each post's picture and its author**.
+whole page shell (cover, header, Like box), so the Don Narek wall is a curated
+carousel — populated by a local scraper (see [Refreshing Don
+Narek](#refreshing-don-narek) below) or by hand — that shows **only each post's
+picture and its author**.
 
-**To add a post:** put a new entry at the **top** of the `posts` array (newest
+**To add a post by hand:** put a new entry at the **top** of the `posts` array (newest
 first — only the first 10 are shown):
 
 ```json
@@ -103,6 +105,44 @@ published alongside the site at
 and [`/don-narek-mobile.png`](https://armenie-info.web.app/don-narek-mobile.png).
 It writes into `dist/` (gitignored), so hourly image churn never enters git
 history. Run `npm run build && npm run screenshot` to regenerate it locally.
+
+### Refreshing Don Narek
+
+Facebook can't be scraped from CI (it requires a logged-in session and blocks
+datacenter IPs), so refreshing the **post content** is a **manual local step**
+— unlike news/agenda, it does *not* run hourly. `scripts/fb-scrape.mjs` drives
+your own logged-in Chrome to read the public profile, keeps only the posts under
+Facebook's **"Other posts"** heading (skips pinned/featured), opens each post
+for its full-resolution image, and rewrites `src/data/fb/*.jpg` +
+`facebook.json` (newest first, capped at 10).
+
+```bash
+# 1. Launch a dedicated Chrome with remote debugging + its own profile.
+#    (Separate from your everyday Chrome — no profile-lock clash.)
+"C:/Program Files/Google/Chrome/Application/chrome.exe" \
+  --remote-debugging-port=9222 \
+  --user-data-dir=".cache/fb-chrome-profile" \
+  https://www.facebook.com/login
+
+# 2. Log into Facebook in that window (ONE time — the session persists in
+#    .cache/, which is gitignored, so cookies never get committed).
+
+# 3. Scrape (attaches to that Chrome via the debug port):
+node scripts/fb-scrape.mjs --connect --dry   # preview what it finds, writes nothing
+node scripts/fb-scrape.mjs --connect         # download images + rewrite facebook.json
+
+# 4. Verify, then publish:
+npm run build && npm run screenshot           # eyeball dist/don-narek-*.png
+git add src/data/facebook.json src/data/fb/dn-*.jpg && git commit && git push
+```
+
+Notes:
+- The one-time login persists across runs — later refreshes are just steps 1, 3, 4.
+- Posts with no downloadable image keep the on-brand Armenian motif fallback.
+- Facebook's markup is obfuscated, so the scraper is **best-effort**; if a
+  redesign breaks it, the selectors in `scripts/fb-scrape.mjs` may need updating.
+- `--connect` requires the debug Chrome to be running; without it the script
+  launches its own (logged-out) Chrome, which Facebook redirects to a login wall.
 
 ## Newswire source chain (armradio)
 
