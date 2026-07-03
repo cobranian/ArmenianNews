@@ -1,9 +1,14 @@
 {
-  "generatedAt": "2026-07-03T12:08:51.943Z",
+  "generatedAt": "2026-07-03T15:09:01.978Z",
   "sections": [
     {
       "sectionKey": "actualite",
       "articles": [
+        {
+          "title": "Le Courrier d'Erevan franchit une nouvelle étape dans son développement",
+          "url": "https://courrier.am/fr/le-courrier-d-erevan-franchit-une-nouvelle-etape-dans-son-developpement",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/736997294_1201385872114241_8225638643575202181_n.jpg?itok=66k9V_h-"
+        },
         {
           "title": "Aliyev : « La paix est de fait rétablie entre l'Azerbaïdjan et l'Arménie »",
           "url": "https://courrier.am/fr/aliyev-la-paix-est-de-fait-retablie-entre-l-azerbaidjan-et-l-armenie-",
@@ -48,11 +53,6 @@
           "title": "La Cour constitutionnelle arménienne examinera l'affaire concernant la contestation des résultats des élections législatives",
           "url": "https://courrier.am/fr/la-cour-constitutionnelle-armenienne-examinera-l-affaire-concernant-la-contestation-des-resultats-des-elections-legislatives",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/0b02a9ffa4.jpg?itok=Wvqi06Ep"
-        },
-        {
-          "title": "CEDH: L'Azerbaïdjan a violé le droit à la vie et l'interdiction de la torture à l'encontre d'un militaire arménien",
-          "url": "https://courrier.am/fr/cedh-l-azerbaidjan-a-viole-le-droit-a-la-vie-et-l-interdiction-de-la-torture-a-l-encontre-d-un-militaire-armenien",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/338678-_x363-quality90.jpg?itok=KAUcwf6U"
         }
       ]
     },
@@ -444,6 +444,11 @@
   ],
   "armradio": [
     {
+      "title": "Armenian PM attends farewell ceremony for Iran’s Supreme Leader Ali Khamenei",
+      "url": "https://en.armradio.am/2026/07/03/armenian-pm-attends-farewell-ceremony-for-irans-supreme-leader-ali-khamenei/",
+      "date": "2026-07-03T12:34:59.000Z"
+    },
+    {
       "title": "Nasa launches mission to save falling space telescope",
       "url": "https://en.armradio.am/2026/07/03/nasa-launches-mission-to-save-falling-space-telescope/",
       "date": "2026-07-03T11:40:40.000Z"
@@ -462,11 +467,6 @@
       "title": "Ruben Rubinyan says he will step down as Armenia’s special envoy for Türkiye normalization if elected Parliament Speaker",
       "url": "https://en.armradio.am/2026/07/03/ruben-rubinyan-says-he-will-step-down-as-armenias-special-envoy-for-turkiye-normalization-if-elected-parliament-speaker/",
       "date": "2026-07-03T09:09:25.000Z"
-    },
-    {
-      "title": "FLYONE Armenia launches direct flights between Yerevan and Kazan",
-      "url": "https://en.armradio.am/2026/07/03/flyone-armenia-launches-direct-flights-between-yerevan-and-kazan/",
-      "date": "2026-07-03T08:52:52.000Z"
     }
   ]
 }
