@@ -1,9 +1,14 @@
 {
-  "generatedAt": "2026-07-07T04:50:32.324Z",
+  "generatedAt": "2026-07-07T08:21:25.937Z",
   "sections": [
     {
       "sectionKey": "actualite",
       "articles": [
+        {
+          "title": "Première visite internationale du Premier ministre récemment réélu, en Russie",
+          "url": "https://courrier.am/fr/premiere-visite-internationale-du-premier-ministre-recemment-reelu-en-russie-",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/une_7.7_0.jpg?itok=0ld3-bbl"
+        },
         {
           "title": "Cinq forces politiques ont annoncé une nouvelle phase de résistance",
           "url": "https://courrier.am/fr/cinq-forces-politiques-ont-annonce-une-nouvelle-phase-de-resistance",
@@ -48,11 +53,6 @@
           "title": "La réouverture des liaisons pourrait avoir lieu bientôt",
           "url": "https://courrier.am/fr/la-reouverture-des-liaisons-pourrait-avoir-lieu-bientot",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/hlfw9zhwkaacrav-1086x724.jpg?itok=rl_8HTkA"
-        },
-        {
-          "title": "Rencontre avec le commissaire européen chargé de l'élargissement",
-          "url": "https://courrier.am/fr/rencontre-avec-le-commissaire-europeen-charge-de-l-elargissement",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/5tx1qizi7guvh8tgkyqigm8dvcsvqbpl9jl9vzww.jpg?itok=QyUnaZbd"
         }
       ]
     },
@@ -444,6 +444,11 @@
   ],
   "armradio": [
     {
+      "title": "Blasts rock Damascus during Macron visit",
+      "url": "https://en.armradio.am/2026/07/07/blasts-rock-damascus-during-macron-visit/",
+      "date": "2026-07-07T08:06:49.000Z"
+    },
+    {
       "title": "Armenian, Russian Prime Ministers meet on sidelines of INNOPROM 2026",
       "url": "https://en.armradio.am/2026/07/06/armenian-russian-prime-ministers-meet-on-sidelines-of-innoprom-2026/",
       "date": "2026-07-06T14:17:00.000Z"
@@ -462,11 +467,6 @@
       "title": "First U.S. Armenian Apostolic church named for St. Hripsime consecrated in Denver",
       "url": "https://en.armradio.am/2026/07/06/first-u-s-armenian-apostolic-church-named-for-st-hripsime-consecrated-in-denver/",
       "date": "2026-07-06T10:53:24.000Z"
-    },
-    {
-      "title": "PM Pashinyan arrives in Yekaterinburg",
-      "url": "https://en.armradio.am/2026/07/06/pm-pashinyan-arrives-in-yekaterinburg/",
-      "date": "2026-07-06T10:44:40.000Z"
     }
   ]
 }
