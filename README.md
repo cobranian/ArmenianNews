@@ -114,7 +114,7 @@ datacenter IPs), so refreshing the **post content** is a **manual local step**
 your own logged-in Chrome to read the public profile, keeps only the posts under
 Facebook's **"Other posts"** heading (skips pinned/featured), opens each post
 for its full-resolution image, and rewrites `src/data/fb/*.jpg` +
-`facebook.json` (newest first, capped at 10).
+`facebook.json` (newest first, capped at 20).
 
 ```bash
 # 1. Launch a dedicated Chrome with remote debugging + its own profile.

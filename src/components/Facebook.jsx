@@ -85,9 +85,9 @@ function PostCard({ post, author, view, img }) {
 export function Facebook() {
   const { t } = useI18n()
 
-  // Newest first; cap at the last 10 posts.
+  // Newest first; cap at the last 20 posts.
   const posts = useMemo(
-    () => (fb.posts || []).slice(0, 10).map((p) => ({ ...p, img: imgMap[p.image] || null })),
+    () => (fb.posts || []).slice(0, 20).map((p) => ({ ...p, img: imgMap[p.image] || null })),
     [],
   )
 

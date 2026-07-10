@@ -38,7 +38,7 @@ const STRINGS = {
 
     'fb.title': 'Art arménien',
     'fb.by': 'par Don Narek',
-    'fb.subtitle': 'Les 10 dernieres publications, en images',
+    'fb.subtitle': 'Les 20 dernieres publications, en images',
     'fb.view': 'Voir la publication',
     'fb.fallback': 'Voir la page sur Facebook',
 
@@ -89,7 +89,7 @@ const STRINGS = {
 
     'fb.title': 'Armenian Art',
     'fb.by': 'by Don Narek',
-    'fb.subtitle': 'The 10 latest posts, in pictures',
+    'fb.subtitle': 'The 20 latest posts, in pictures',
     'fb.view': 'View the post',
     'fb.fallback': 'View the page on Facebook',
 
@@ -140,7 +140,7 @@ const STRINGS = {
 
     'fb.title': 'Հայկական արվեստ',
     'fb.by': 'Տօն Նարեկի կողմից',
-    'fb.subtitle': 'Վերջին 10 հրապարակումները՝ նկարներով',
+    'fb.subtitle': 'Վերջին 20 հրապարակումները՝ նկարներով',
     'fb.view': 'Դիտել հրապարակումը',
     'fb.fallback': 'Դիտել էջը Facebook-ում',
 
