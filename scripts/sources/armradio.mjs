@@ -153,3 +153,54 @@ export async function scrapeArmradio(limit = 5) {
   console.log(`  ✓ armradio (${top.length} headlines via ${via})`)
   return top
 }
+
+const BASE = 'https://en.armradio.am'
+
+// The ArmRadio rubrics offered in the news browser, paired with their
+// WordPress category slug. `key` matches i18n 'armcats.*'.
+export const ARMRADIO_SECTIONS = [
+  { key: 'politics', slug: 'politics' },
+  { key: 'society', slug: 'society' },
+  { key: 'economics', slug: 'economics' },
+  { key: 'analytics', slug: 'analytics' },
+  { key: 'world', slug: 'world' },
+  { key: 'culture', slug: 'culture' },
+  { key: 'sport', slug: 'sport' },
+]
+
+// Per-category articles for the browser. The posts endpoint filters by numeric
+// category id (not slug), so we resolve slug→id once, then pull each rubric's
+// latest `limit` posts picture-ready via _embed. Only the REST API can do this
+// (the RSS fallbacks have no per-category feed), so a blocked REST call yields
+// empty rubrics that scrape.mjs backfills from the previous snapshot.
+export async function scrapeArmradioSections(limit = 10) {
+  const wanted = new Set(ARMRADIO_SECTIONS.map((s) => s.slug))
+  const catsUrl = `${BASE}/wp-json/wp/v2/categories?per_page=100&_fields=id,slug`
+  const idBySlug = {}
+  try {
+    for (const c of JSON.parse(await fetchText(catsUrl))) {
+      if (wanted.has(c.slug)) idBySlug[c.slug] = c.id
+    }
+  } catch (err) {
+    console.warn(`  ↺ armradio categories lookup failed (${err.message})`)
+  }
+
+  const out = []
+  for (const section of ARMRADIO_SECTIONS) {
+    const id = idBySlug[section.slug]
+    if (!id) {
+      out.push({ categoryKey: section.key, articles: [] })
+      continue
+    }
+    try {
+      const url = `${BASE}/wp-json/wp/v2/posts?categories=${id}&per_page=${limit}&_embed=1`
+      const articles = parseRest(await fetchText(url))
+      out.push({ categoryKey: section.key, articles })
+      console.log(`  ✓ armradio/${section.slug} (${articles.length})`)
+    } catch (err) {
+      console.warn(`  ✗ armradio/${section.slug}: ${err.message}`)
+      out.push({ categoryKey: section.key, articles: [] })
+    }
+  }
+  return out
+}

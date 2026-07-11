@@ -7,7 +7,7 @@ import { writeFile, readFile, mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { scrapeCourrier } from './sources/courrier.mjs'
-import { scrapeArmradio } from './sources/armradio.mjs'
+import { scrapeArmradio, scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -74,6 +74,31 @@ async function main() {
     armradio = prevNews.armradio
   }
 
+  console.log('\nArmRadio rubrics (per category):')
+  let armradioSections = []
+  try {
+    armradioSections = await scrapeArmradioSections(10)
+  } catch (err) {
+    console.error('  armradio sections failed:', err.message)
+  }
+  if (prevNews?.armradioSections?.length) {
+    const prevByCat = Object.fromEntries(
+      prevNews.armradioSections.map((s) => [s.categoryKey, s.articles || []]),
+    )
+    if (!armradioSections.length) {
+      console.warn(`  ↺ keeping ${prevNews.armradioSections.length} previous armradio rubrics`)
+      armradioSections = prevNews.armradioSections
+    } else {
+      // Backfill any rubric that came back empty (partial REST failure).
+      for (const sec of armradioSections) {
+        if (!sec.articles?.length && prevByCat[sec.categoryKey]?.length) {
+          console.warn(`  ↺ keeping ${prevByCat[sec.categoryKey].length} previous ${sec.categoryKey} articles`)
+          sec.articles = prevByCat[sec.categoryKey]
+        }
+      }
+    }
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -101,7 +126,7 @@ async function main() {
     igPosts = prevIg.posts
   }
 
-  await writeJson('news.json', { generatedAt, sections: news, armradio })
+  await writeJson('news.json', { generatedAt, sections: news, armradio, armradioSections })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })

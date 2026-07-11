@@ -183,7 +183,13 @@ export function HeroCarousel() {
                 >
                   <div className="lead__media">
                     {s.image ? (
-                      <img src={s.image} alt="" loading={i === 0 ? 'eager' : 'lazy'} />
+                      // no Referer: ArmRadio's CDN 403s hotlinked images otherwise
+                      <img
+                        src={s.image}
+                        alt=""
+                        loading={i === 0 ? 'eager' : 'lazy'}
+                        referrerPolicy="no-referrer"
+                      />
                     ) : (
                       <Waveform />
                     )}

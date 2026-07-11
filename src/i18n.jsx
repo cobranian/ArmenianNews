@@ -67,6 +67,20 @@ const STRINGS = {
     'sections.opinions': 'Opinions',
     'sections.region': 'Region',
     'sections.diasporas': 'Diasporas',
+
+    'armcats.politics': 'Politique',
+    'armcats.society': 'Societe',
+    'armcats.economics': 'Economie',
+    'armcats.analytics': 'Analyses',
+    'armcats.world': 'Monde',
+    'armcats.culture': 'Culture',
+    'armcats.sport': 'Sport',
+
+    'browser.subtitle': 'Choisissez une source et une rubrique',
+    'browser.armradio': 'Radio publique d’Armenie',
+    'browser.courrier': 'Courrier d’Erevan',
+    'browser.empty': 'Aucun article dans cette rubrique pour le moment.',
+    'browser.pick': 'Choisir la rubrique',
   },
   en: {
     'site.title': 'Armenia Info',
@@ -126,6 +140,20 @@ const STRINGS = {
     'sections.opinions': 'Opinions',
     'sections.region': 'Region',
     'sections.diasporas': 'Diasporas',
+
+    'armcats.politics': 'Politics',
+    'armcats.society': 'Society',
+    'armcats.economics': 'Economics',
+    'armcats.analytics': 'Analytics',
+    'armcats.world': 'World',
+    'armcats.culture': 'Culture',
+    'armcats.sport': 'Sport',
+
+    'browser.subtitle': 'Choose a source and a section',
+    'browser.armradio': 'Public Radio of Armenia',
+    'browser.courrier': 'Le Courrier d’Erevan',
+    'browser.empty': 'No articles in this section yet.',
+    'browser.pick': 'Choose section',
   },
   hy: {
     'site.title': 'Արմենիա Ինֆո',
@@ -185,6 +213,20 @@ const STRINGS = {
     'sections.opinions': 'Կարծիքներ',
     'sections.region': 'Տարածաշրջան',
     'sections.diasporas': 'Սփյուռք',
+
+    'armcats.politics': 'Քաղաքականություն',
+    'armcats.society': 'Հասարակություն',
+    'armcats.economics': 'Տնտեսություն',
+    'armcats.analytics': 'Վերլուծություն',
+    'armcats.world': 'Աշխարհ',
+    'armcats.culture': 'Մշակույթ',
+    'armcats.sport': 'Սպորտ',
+
+    'browser.subtitle': 'Ընտրեք աղբյուր եւ բաժին',
+    'browser.armradio': 'Հայաստանի հանրային ռադիո',
+    'browser.courrier': '«Կուրիեր դ’Էրեւան»',
+    'browser.empty': 'Այս բաժնում դեռ հոդվածներ չկան։',
+    'browser.pick': 'Ընտրել բաժինը',
   },
 }
 
