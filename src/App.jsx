@@ -2,6 +2,7 @@ import { useReveal } from './hooks/useReveal.js'
 import { useI18n } from './i18n.jsx'
 import { Nav } from './components/Nav.jsx'
 import { Hero } from './components/Hero.jsx'
+import { HeroCarousel } from './components/HeroCarousel.jsx'
 import { News } from './components/News.jsx'
 import { Agenda } from './components/Agenda.jsx'
 import { Facebook } from './components/Facebook.jsx'
@@ -18,6 +19,7 @@ export default function App() {
       <Nav />
       <Hero />
       <main>
+        <HeroCarousel />
         <News />
         <Agenda />
         <Facebook />

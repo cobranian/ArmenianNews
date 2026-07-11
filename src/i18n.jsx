@@ -29,6 +29,14 @@ const STRINGS = {
     'news.source': 'Source',
     'news.empty': 'Aucun article pour le moment.',
 
+    'lead.tagline': 'En direct des redactions — Courrier d’Erevan & Radio publique',
+    'lead.carousel': 'À la une — carrousel des dépêches',
+    'lead.onair': 'En direct',
+    'lead.pause': 'Mettre le défilement en pause',
+    'lead.play': 'Reprendre le défilement',
+    'lead.station': 'Dépêche',
+    'lead.tune': 'Accorder sur',
+
     'agenda.title': 'Agenda',
     'agenda.subtitle': 'Evenements armeniens en Suisse et dans le monde',
     'agenda.switzerland': 'Suisse',
@@ -80,6 +88,14 @@ const STRINGS = {
     'news.source': 'Source',
     'news.empty': 'No articles yet.',
 
+    'lead.tagline': 'Live from the newsrooms — Courrier d’Erevan & Public Radio',
+    'lead.carousel': 'Front page — dispatch carousel',
+    'lead.onair': 'On air',
+    'lead.pause': 'Pause autoplay',
+    'lead.play': 'Resume autoplay',
+    'lead.station': 'Dispatch',
+    'lead.tune': 'Tune to',
+
     'agenda.title': 'Events',
     'agenda.subtitle': 'Armenian events in Switzerland and around the world',
     'agenda.switzerland': 'Switzerland',
@@ -130,6 +146,14 @@ const STRINGS = {
     'news.next': 'Հաջորդ',
     'news.source': 'Աղբյուր',
     'news.empty': 'Դեռ հոդվածներ չկան։',
+
+    'lead.tagline': 'Ուղիղ խմբագրություններից — «Կուրիեր» եւ Հանրային ռադիո',
+    'lead.carousel': 'Գլխավոր — լրահոսի կարուսել',
+    'lead.onair': 'Ուղիղ',
+    'lead.pause': 'Դադարեցնել ինքնաթերթումը',
+    'lead.play': 'Վերսկսել ինքնաթերթումը',
+    'lead.station': 'Լրահոս',
+    'lead.tune': 'Անցնել',
 
     'agenda.title': 'Միջոցառումներ',
     'agenda.subtitle': 'Հայկական միջոցառումներ Շվեյցարիայում եւ աշխարհում',

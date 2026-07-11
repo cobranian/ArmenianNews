@@ -846,6 +846,405 @@ h3:lang(hy) {
 }
 
 /* ============================================================
+   À la une — broadcast lead carousel
+   One dispatch at a time. Print (Courrier) slides are photo-led;
+   radio (ArmRadio) slides fall back to a waveform bulletin. The
+   signature is the analog "tuning dial" pager below the stage.
+   ============================================================ */
+.lead {
+  margin: clamp(28px, 5vw, 52px) 0 clamp(40px, 6vw, 72px);
+}
+.lead__head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.lead__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--apricot);
+}
+.lead__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.lead__frame {
+  position: relative;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* --- the stage: slides stacked, cross-fading --- */
+.lead__stage {
+  position: relative;
+  height: clamp(380px, 58vh, 580px);
+}
+.lead__slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s var(--ease), visibility 0s linear 0.7s;
+}
+.lead__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s var(--ease);
+  z-index: 2;
+}
+
+.lead__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--basalt-4), var(--basalt));
+}
+.lead__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.86) contrast(1.02);
+  transform: scale(1.01);
+}
+.lead__slide.is-active.is-photo .lead__media img {
+  animation: leadKenBurns 8s var(--ease) forwards;
+}
+@keyframes leadKenBurns {
+  from { transform: scale(1.01); }
+  to { transform: scale(1.09); }
+}
+/* readability scrim + apricot duotone, echoing the article cards */
+.lead__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(6deg, rgba(16, 15, 13, 0.94) 4%, rgba(16, 15, 13, 0.5) 34%, rgba(16, 15, 13, 0) 62%),
+    rgba(201, 125, 30, 0.14);
+  mix-blend-mode: multiply;
+}
+/* radio bulletins: no photo → a quiet waveform on basalt */
+.lead__slide.is-bulletin .lead__media {
+  background:
+    radial-gradient(120% 120% at 80% 0%, rgba(242, 169, 59, 0.1), transparent 55%),
+    linear-gradient(160deg, var(--basalt-3), var(--basalt));
+}
+.lead__slide.is-bulletin .lead__media::after {
+  background: linear-gradient(6deg, var(--basalt) 2%, rgba(16, 15, 13, 0) 60%);
+  mix-blend-mode: normal;
+}
+.lead__wave {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 62%;
+  opacity: 0.16;
+  fill: var(--apricot);
+}
+
+/* --- overlaid copy --- */
+.lead__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  padding: clamp(22px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lead__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lead__outlet {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-apricot);
+  background: var(--apricot);
+  padding: 4px 10px;
+}
+.lead__badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  border: 1px solid var(--line-strong);
+  padding: 3px 9px;
+}
+.lead__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blood);
+}
+.lead__live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blood);
+  box-shadow: 0 0 0 0 rgba(224, 73, 47, 0.7);
+  animation: pulse 1.8s infinite;
+}
+.lead__title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4.4vw, 3.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text); /* bulletin slides ride the theme-aware basalt ground */
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.lead__slide.is-bulletin .lead__title {
+  max-width: 20ch;
+}
+.lead__more {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--apricot);
+}
+.lead__more::after {
+  content: ' →';
+  display: inline-block;
+  transition: transform 0.25s var(--ease);
+}
+.lead__slide:hover .lead__more::after,
+.lead__slide:focus-visible .lead__more::after {
+  transform: translateX(6px);
+}
+.lead__slide:hover .lead__title {
+  color: var(--apricot-bright);
+}
+.lead__slide:focus-visible {
+  outline: 2px solid var(--apricot-bright);
+  outline-offset: -6px;
+}
+
+/* Photo slides always overlay a dark scrim, so their copy stays light in both
+   themes; bulletin slides keep the theme-aware colours set above. */
+.lead__slide.is-photo .lead__title {
+  color: #f3ecdb;
+}
+.lead__slide.is-photo:hover .lead__title {
+  color: var(--apricot-bright);
+}
+.lead__slide.is-photo .lead__badge {
+  color: rgba(243, 236, 219, 0.86);
+  border-color: rgba(243, 236, 219, 0.28);
+}
+
+/* --- controls: prev / pause / next, top-right over the stage --- */
+.lead__controls {
+  position: absolute;
+  z-index: 4;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+.lead__btn {
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(16, 15, 13, 0.5);
+  backdrop-filter: blur(6px);
+  color: var(--apricot);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease), background 0.18s var(--ease),
+    color 0.18s var(--ease);
+}
+.lead__btn--play {
+  font-size: 0.82rem;
+  letter-spacing: -0.05em;
+}
+.lead__btn:hover {
+  border-color: var(--line-apricot);
+  background: rgba(242, 169, 59, 0.16);
+  color: var(--apricot-bright);
+}
+.lead__btn:focus-visible {
+  outline: 2px solid var(--apricot-bright);
+  outline-offset: 2px;
+}
+
+/* --- signature: the analog tuning dial --- */
+.lead__dial {
+  position: relative;
+  z-index: 3;
+  height: 66px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--basalt-2), var(--basalt-3));
+}
+/* fine frequency ruler behind the stations */
+.lead__ruler {
+  position: absolute;
+  inset: 0 0 auto 0;
+  top: 12px;
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--line-strong) 0 1px,
+    transparent 1px 13px
+  );
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.lead__needle {
+  position: absolute;
+  top: 6px;
+  bottom: 18px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--apricot-bright);
+  box-shadow: 0 0 10px var(--apricot-glow);
+  transition: left 0.45s var(--ease);
+}
+.lead__needle::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -4px;
+  border: 5px solid transparent;
+  border-top-color: var(--apricot-bright);
+}
+.lead__stations {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 0 2px;
+}
+.lead__station {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding-top: 12px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.lead__station-tick {
+  width: 2px;
+  height: 14px;
+  background: var(--line-strong);
+  transition: height 0.25s var(--ease), background 0.25s var(--ease);
+}
+.lead__station:hover .lead__station-tick {
+  background: var(--apricot-deep);
+  height: 18px;
+}
+.lead__station.is-active .lead__station-tick {
+  background: var(--apricot-bright);
+  height: 22px;
+}
+.lead__station-label {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  opacity: 0;
+  transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+}
+.lead__station-label b {
+  color: var(--apricot);
+  margin-left: 3px;
+}
+.lead__station.is-active .lead__station-label,
+.lead__station:hover .lead__station-label,
+.lead__station:focus-visible .lead__station-label {
+  opacity: 1;
+}
+.lead__station.is-active .lead__station-label {
+  color: var(--text-soft);
+}
+.lead__station:focus-visible {
+  outline: 2px solid var(--apricot-bright);
+  outline-offset: -3px;
+}
+/* countdown sweep to the next auto-advance */
+.lead__sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--line);
+}
+.lead__sweep-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--apricot-deep), var(--apricot-bright));
+}
+
+@media (max-width: 640px) {
+  .lead__station-label { display: none; }
+  .lead__controls { top: 12px; right: 12px; }
+  .lead__btn { width: 38px; height: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead__slide { transition: opacity 0.001s; }
+  .lead__slide.is-active.is-photo .lead__media img { animation: none; transform: scale(1.03); }
+  .lead__live-dot { animation: none; }
+  .lead__sweep { display: none; }
+  .lead__needle { transition: none; }
+}
+
+/* Light "bone" theme. The controls sit over photos in both themes, so they
+   stay dark for legibility; only the dial (on the bone frame) is re-skinned. */
+[data-theme='light'] .lead__dial {
+  background: linear-gradient(180deg, var(--basalt-2), var(--basalt-4));
+}
+
+/* ============================================================
    Agenda
    ============================================================ */
 /* The two carousels (Suisse / Monde) stack; each is a .shelf internally. */

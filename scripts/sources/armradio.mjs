@@ -11,8 +11,11 @@ import { clean } from '../lib/util.mjs'
 //      the Cloudflare challenge that blocks /feed/, so it works from CI.
 //   2. Direct RSS feed (/feed/) — richest, but often 403 from datacenters.
 //   3. Google News RSS — always reachable, but lags and drops fresh items.
-const REST_API =
-  'https://en.armradio.am/wp-json/wp/v2/posts?per_page=12&_fields=title,link,date_gmt'
+// `_embed` pulls the featured image (wp:featuredmedia) and category terms
+// (wp:term) alongside each post, so a headline arrives picture-ready and
+// category-tagged for the "À la une" carousel. `_fields` is dropped because it
+// would strip the `_embedded` payload.
+const REST_API = 'https://en.armradio.am/wp-json/wp/v2/posts?per_page=12&_embed=1'
 const DIRECT_FEED = 'https://en.armradio.am/feed/'
 const GNEWS_FEED =
   'https://news.google.com/rss/search?q=site:en.armradio.am%20when:7d&hl=en-US&gl=US&ceid=US:en'
@@ -27,7 +30,33 @@ function decodeEntities(html) {
   return clean(cheerio.load(`<x>${html || ''}</x>`)('x').text())
 }
 
-// WordPress REST API → {title, url, date}. date_gmt has no zone suffix.
+// Featured image from an _embedded post. Prefer a mid-size rendition (lighter
+// than the full original) and fall back to the source URL.
+function embeddedImage(p) {
+  const media = p._embedded?.['wp:featuredmedia']?.[0]
+  if (!media) return null
+  const sizes = media.media_details?.sizes || {}
+  const pick = sizes.medium_large || sizes.large || sizes.medium
+  return clean(pick?.source_url || media.source_url) || null
+}
+
+// Real topic for a post. WordPress tags most items into a generic "Top"
+// (featured) or "Uncategorized" bucket that means nothing as a badge, so we
+// prefer a genuine topic (Sport, Economics, Society…) and only fall back to the
+// generic buckets returning null — a clean "ARMRADIO" badge beats "TOP".
+const GENERIC_CATS = new Set(['uncategorized', 'top', 'featured', 'news'])
+function embeddedCategory(p) {
+  const groups = p._embedded?.['wp:term'] || []
+  const cats = groups
+    .flat()
+    .filter((t) => t?.taxonomy === 'category')
+    .map((t) => decodeEntities(t.name))
+    .filter(Boolean)
+  return cats.find((name) => !GENERIC_CATS.has(name.toLowerCase())) || null
+}
+
+// WordPress REST API → {title, url, date, image, category}. date_gmt has no
+// zone suffix. image/category are null when the post carries neither.
 function parseRest(json) {
   const posts = JSON.parse(json)
   if (!Array.isArray(posts)) throw new Error('REST API did not return a list')
@@ -37,7 +66,13 @@ function parseRest(json) {
       const url = clean(p.link)
       const d = p.date_gmt ? new Date(`${p.date_gmt}Z`) : null
       if (!title || !url) return null
-      return { title, url, date: d && !Number.isNaN(d.getTime()) ? d.toISOString() : null }
+      return {
+        title,
+        url,
+        date: d && !Number.isNaN(d.getTime()) ? d.toISOString() : null,
+        image: embeddedImage(p),
+        category: embeddedCategory(p),
+      }
     })
     .filter(Boolean)
 }
