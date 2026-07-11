@@ -1411,7 +1411,7 @@ h3:lang(hy) {
 /* --- stack on narrow screens: rail becomes a horizontal rubric bar --- */
 @media (max-width: 820px) {
   .browser {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
   .browser__rail {
