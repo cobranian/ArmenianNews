@@ -695,6 +695,26 @@ h3:lang(hy) {
 .card:hover .card__media::after {
   opacity: 0.7;
 }
+/* image-less cards (all of armenews): an Armenian motif on a themed panel */
+.card__media--motif {
+  background: linear-gradient(135deg, var(--c1, var(--basalt-4)), var(--c2, var(--basalt)));
+}
+.card__media--motif::after {
+  display: none; /* the photo wash would muddy the motif colours */
+}
+.card__motif {
+  position: absolute;
+  inset: 0;
+  width: 54%;
+  height: 54%;
+  margin: auto;
+  color: var(--ink, var(--apricot));
+  opacity: 0.9;
+  transition: transform 0.5s var(--ease);
+}
+.card:hover .card__motif {
+  transform: scale(1.05);
+}
 .card__section {
   position: absolute;
   z-index: 1;

@@ -1,19 +1,37 @@
 import { useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { Carousel } from './Carousel.jsx'
+import { Motif, hash, THEMES } from './motifs.jsx'
 import news from '../data/news.json'
 
 // One article card, sized to sit inside a shelf track (see .card in CSS).
-function ArticleCard({ item, catLabel }) {
+// `showImage` is false for sources whose images can't be hotlinked (armenews.com
+// serves no thumbnail sizes and its WAF ORB-blocks all but the first request),
+// so those render as clean text cards on the gradient panel instead of broken.
+function ArticleCard({ item, catLabel, showImage = true }) {
   const { t } = useI18n()
+  const hasPhoto = showImage && !!item.image
+  const seed = hash(item.url || item.title || '')
+  const theme = THEMES[seed % THEMES.length]
   return (
     <article className="card">
-      <a className="card__media" href={item.url} target="_blank" rel="noopener noreferrer">
+      <a
+        className={`card__media${hasPhoto ? '' : ' card__media--motif'}`}
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={hasPhoto ? undefined : { '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
+      >
         {/* ArmRadio's CDN 403s hotlinked images when a Referer is sent, so
-            suppress it — with no Referer it serves the image normally. */}
-        {item.image ? (
+            suppress it — with no Referer it serves the image normally. Cards
+            with no usable image (all of armenews) get an Armenian motif. */}
+        {hasPhoto ? (
           <img src={item.image} alt="" loading="lazy" referrerPolicy="no-referrer" />
-        ) : null}
+        ) : (
+          <svg className="card__motif" viewBox="0 0 100 100" aria-hidden="true">
+            <Motif index={seed} />
+          </svg>
+        )}
         {catLabel && <span className="card__section">{catLabel}</span>}
       </a>
       <div className="card__body">
@@ -40,6 +58,7 @@ function buildSources(t, lang) {
     name: t('browser.armradio'),
     lang: armLang.toUpperCase(),
     live: true,
+    images: true,
     cats: (news.armradio?.[armLang] || [])
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`armcats.${s.categoryKey}`), articles: s.articles })),
@@ -50,11 +69,23 @@ function buildSources(t, lang) {
     name: t('browser.courrier'),
     lang: 'FR',
     live: false,
+    images: true,
     cats: (news.courrier || [])
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.sectionKey, label: t(`sections.${s.sectionKey}`), articles: s.articles })),
   }
-  return [armradio, courrier].filter((s) => s.cats.length)
+  const armenews = {
+    id: 'armenews',
+    brand: "Nouvelles d'Arménie",
+    name: t('browser.armenews'),
+    lang: 'FR',
+    live: false,
+    images: false,
+    cats: (news.armenews || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: t(`namcats.${s.categoryKey}`), articles: s.articles })),
+  }
+  return [armradio, courrier, armenews].filter((s) => s.cats.length)
 }
 
 export function NewsBrowser() {
@@ -120,7 +151,7 @@ export function NewsBrowser() {
         {active.cats.map((c) => (
           <Carousel key={c.key} title={c.label} reveal={false}>
             {c.articles.map((a, i) => (
-              <ArticleCard key={a.url || i} item={a} catLabel={c.label} />
+              <ArticleCard key={a.url || i} item={a} catLabel={c.label} showImage={active.images} />
             ))}
           </Carousel>
         ))}

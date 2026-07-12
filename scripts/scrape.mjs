@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { scrapeCourrier } from './sources/courrier.mjs'
 import { scrapeArmradioSections } from './sources/armradio.mjs'
+import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -81,6 +82,16 @@ async function main() {
     armradio[lang] = backfillSections(secs, prevNews?.armradio?.[lang], 'categoryKey')
   }
 
+  // Nouvelles d'Arménie (armenews.com) — French-only, six WordPress rubrics.
+  console.log('\nNouvelles d\'Arménie — armenews.com:')
+  let armenewsSecs = []
+  try {
+    armenewsSecs = await scrapeArmenews(10)
+  } catch (err) {
+    console.error('  armenews failed wholesale:', err.message)
+  }
+  const armenews = backfillSections(armenewsSecs, prevNews?.armenews, 'categoryKey')
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -108,7 +119,7 @@ async function main() {
     igPosts = prevIg.posts
   }
 
-  await writeJson('news.json', { generatedAt, courrier, armradio })
+  await writeJson('news.json', { generatedAt, courrier, armradio, armenews })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })

@@ -68,9 +68,17 @@ const STRINGS = {
     'armcats.culture': 'Culture',
     'armcats.sport': 'Sport',
 
+    'namcats.actualites': 'Actualités',
+    'namcats.sport': 'Sport',
+    'namcats.communaute': 'Communauté',
+    'namcats.culture': 'Culture',
+    'namcats.lifestyle': 'Lifestyle',
+    'namcats.magazine': 'Magazines',
+
     'browser.subtitle': 'Toutes les rubriques, source par source',
     'browser.armradio': 'Radio publique d’Arménie',
     'browser.courrier': 'Courrier d’Erevan',
+    'browser.armenews': 'armenews.com',
 
     'radio.eyebrow': 'Erevan · 128 kbps',
     'radio.title': 'En direct',
@@ -148,9 +156,17 @@ const STRINGS = {
     'armcats.culture': 'Culture',
     'armcats.sport': 'Sport',
 
+    'namcats.actualites': 'News',
+    'namcats.sport': 'Sport',
+    'namcats.communaute': 'Community',
+    'namcats.culture': 'Culture',
+    'namcats.lifestyle': 'Lifestyle',
+    'namcats.magazine': 'Magazines',
+
     'browser.subtitle': 'Every rubric, source by source',
     'browser.armradio': 'Public Radio of Armenia',
     'browser.courrier': 'Le Courrier d’Erevan',
+    'browser.armenews': 'armenews.com',
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
@@ -228,9 +244,17 @@ const STRINGS = {
     'armcats.culture': 'Մշակույթ',
     'armcats.sport': 'Սպորտ',
 
+    'namcats.actualites': 'Լուրեր',
+    'namcats.sport': 'Սպորտ',
+    'namcats.communaute': 'Համայնք',
+    'namcats.culture': 'Մշակույթ',
+    'namcats.lifestyle': 'Ապրելակերպ',
+    'namcats.magazine': 'Ամսագրեր',
+
     'browser.subtitle': 'Բոլոր բաժինները՝ ըստ աղբյուրի',
     'browser.armradio': 'Հայաստանի հանրային ռադիո',
     'browser.courrier': '«Կուրիեր դ’Էրեւան»',
+    'browser.armenews': 'armenews.com',
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',
