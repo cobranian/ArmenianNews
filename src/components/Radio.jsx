@@ -14,8 +14,13 @@ import { SectionHead } from './SectionHead.jsx'
  *
  * Radio Mariam Armenia (radiomariam.am) also streams only over plain HTTP
  * (http://bkmx.euriconsult.eu:8000/RadioMariam), so it goes through an HTTPS
- * Cloudflare Worker proxy (see proxy/radio-mariam-worker.js). */
+ * Cloudflare Worker proxy (see proxy/radio-mariam-worker.js).
+ *
+ * Voice of Van (voiceofvan.net) already streams over HTTPS, so it is used
+ * directly. Its host blocks datacenter IPs, so it can't be proxied — it only
+ * plays from real (residential) browsers. */
 const MARIAM_PROXY = 'https://radio-mariam-proxy.cobranian.workers.dev/'
+const VOV_STREAM = 'https://vovan.s3ming.com/vovan.mp3?_=1'
 
 const STATIONS = [
   { id: 'public', stream: 'https://eu1.stream4cast.com/proxy/publicra/stream' },
@@ -23,6 +28,7 @@ const STATIONS = [
   { id: 'arevik', stream: 'https://eu1.stream4cast.com/proxy/aamiryan/stream' },
   { id: 'culture', stream: 'https://eu1.stream4cast.com/proxy/aamiry01/stream' },
   { id: 'mariam', stream: MARIAM_PROXY },
+  { id: 'vov', stream: VOV_STREAM },
 ]
 
 const prefersReducedMotion = () =>
