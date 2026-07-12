@@ -854,30 +854,6 @@ h3:lang(hy) {
 .lead {
   margin: clamp(28px, 5vw, 52px) 0 clamp(40px, 6vw, 72px);
 }
-.lead__head {
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
-}
-.lead__eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--apricot);
-}
-.lead__tagline {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
-}
-
 .lead__frame {
   position: relative;
   border: 1px solid var(--line-strong);

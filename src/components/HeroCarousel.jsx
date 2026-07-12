@@ -139,15 +139,8 @@ export function HeroCarousel() {
   }
 
   return (
-    <section className="lead" aria-labelledby="lead-eyebrow">
+    <section className="lead" aria-label={t('lead.carousel')}>
       <div className="container">
-        <div className="lead__head">
-          <span className="lead__eyebrow" id="lead-eyebrow">
-            {t('news.lead')}
-          </span>
-          <span className="lead__tagline">{t('lead.tagline')}</span>
-        </div>
-
         <div
           className="lead__frame reveal"
           role="group"
