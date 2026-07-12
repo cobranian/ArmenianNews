@@ -28,7 +28,10 @@ const STATIONS = [
   { id: 'arevik', stream: 'https://eu1.stream4cast.com/proxy/aamiryan/stream' },
   { id: 'culture', stream: 'https://eu1.stream4cast.com/proxy/aamiry01/stream' },
   { id: 'mariam', stream: MARIAM_PROXY },
-  { id: 'vov', stream: VOV_STREAM },
+  // `plain`: no CORS headers, so it can't feed the Web Audio graph (that would
+  // require crossOrigin and mute it). It plays through a bare <audio> element
+  // instead — no live spectrum, just the calm idle pulse.
+  { id: 'vov', stream: VOV_STREAM, plain: true },
 ]
 
 const prefersReducedMotion = () =>
@@ -63,7 +66,8 @@ export function Radio() {
   const { t } = useI18n()
   const time = useYerevanClock()
 
-  const audioRef = useRef(null)
+  const audioRef = useRef(null) // CORS streams → Web Audio graph (live spectrum)
+  const plainAudioRef = useRef(null) // CORS-less streams → bare playback, no graph
   const canvasRef = useRef(null)
   const ctxRef = useRef(null)
   const analyserRef = useRef(null)
@@ -76,6 +80,11 @@ export function Radio() {
   const [volume, setVolume] = useState(0.85)
 
   const station = STATIONS.find((s) => s.id === stationId) || STATIONS[0]
+  const isPlain = !!station.plain
+  // The <audio> a station uses: CORS streams run through the analyser graph;
+  // CORS-less ones use a bare element that is never fed to Web Audio (feeding a
+  // non-CORS source to Web Audio would mute it), so they still play.
+  const elFor = (s) => (s?.plain ? plainAudioRef.current : audioRef.current)
 
   // --- Web Audio wiring (built once, on first user gesture) ---
   function ensureGraph() {
@@ -98,14 +107,24 @@ export function Radio() {
   }
 
   async function play() {
-    const audio = audioRef.current
+    const audio = elFor(station)
     if (!audio) return
+    // only one element ever plays
+    ;(isPlain ? audioRef.current : plainAudioRef.current)?.pause()
     setError(false)
     setLoading(true)
     if (audio.src !== station.stream) audio.src = station.stream
-    ensureGraph()
+    if (!isPlain) {
+      ensureGraph()
+      if (ctxRef.current?.state === 'suspended') {
+        try {
+          await ctxRef.current.resume()
+        } catch {
+          /* ignore */
+        }
+      }
+    }
     try {
-      if (ctxRef.current?.state === 'suspended') await ctxRef.current.resume()
       await audio.play()
     } catch {
       setLoading(false)
@@ -114,7 +133,7 @@ export function Radio() {
   }
 
   function pause() {
-    audioRef.current?.pause()
+    elFor(station)?.pause()
   }
 
   function toggle() {
@@ -124,14 +143,20 @@ export function Radio() {
 
   function pick(id) {
     if (id === stationId) return
-    setStationId(id)
-    const audio = audioRef.current
-    if (!audio) return
+    const prev = station
     const next = STATIONS.find((s) => s.id === id)
+    setStationId(id)
+    elFor(prev)?.pause() // stop whatever the previous station was using
+    const audio = next.plain ? plainAudioRef.current : audioRef.current
+    if (!audio) return
     audio.src = next.stream
     if (playing || loading) {
       setLoading(true)
       setError(false)
+      if (!next.plain) {
+        ensureGraph()
+        if (ctxRef.current?.state === 'suspended') ctxRef.current.resume().catch(() => {})
+      }
       audio.play().catch(() => {
         setLoading(false)
         setError(true)
@@ -139,15 +164,16 @@ export function Radio() {
     }
   }
 
-  // Keep the element volume in sync.
+  // Keep both elements' volume in sync.
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume
+    if (plainAudioRef.current) plainAudioRef.current.volume = volume
   }, [volume])
 
-  // Wire <audio> events to UI state.
+  // Wire <audio> events to UI state. Both elements share the handlers; only one
+  // ever plays at a time, so the state always reflects the active stream.
   useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return
+    const els = [audioRef.current, plainAudioRef.current].filter(Boolean)
     const onPlaying = () => {
       setPlaying(true)
       setLoading(false)
@@ -160,18 +186,21 @@ export function Radio() {
       setLoading(false)
       setError(true)
     }
-    audio.addEventListener('playing', onPlaying)
-    audio.addEventListener('waiting', onWaiting)
-    audio.addEventListener('pause', onPause)
-    audio.addEventListener('stalled', onWaiting)
-    audio.addEventListener('error', onError)
-    return () => {
-      audio.removeEventListener('playing', onPlaying)
-      audio.removeEventListener('waiting', onWaiting)
-      audio.removeEventListener('pause', onPause)
-      audio.removeEventListener('stalled', onWaiting)
-      audio.removeEventListener('error', onError)
-    }
+    els.forEach((el) => {
+      el.addEventListener('playing', onPlaying)
+      el.addEventListener('waiting', onWaiting)
+      el.addEventListener('pause', onPause)
+      el.addEventListener('stalled', onWaiting)
+      el.addEventListener('error', onError)
+    })
+    return () =>
+      els.forEach((el) => {
+        el.removeEventListener('playing', onPlaying)
+        el.removeEventListener('waiting', onWaiting)
+        el.removeEventListener('pause', onPause)
+        el.removeEventListener('stalled', onWaiting)
+        el.removeEventListener('error', onError)
+      })
   }, [])
 
   // --- Spectrum visualizer ---
@@ -204,18 +233,21 @@ export function Radio() {
       ctx2d.clearRect(0, 0, width, height)
       const bw = (width - gap * (bars - 1)) / bars
       const col = accent()
+      // Plain (CORS-less) stations never feed the analyser, so they show the
+      // calm live pulse rather than a real spectrum.
+      const spectral = !!analyserRef.current && playing && !reduced && !isPlain
       const analyser = analyserRef.current
       const data = analyser ? new Uint8Array(analyser.frequencyBinCount) : null
-      if (analyser && playing && !reduced) analyser.getByteFrequencyData(data)
+      if (spectral) analyser.getByteFrequencyData(data)
 
       for (let i = 0; i < bars; i++) {
         let v
-        if (analyser && playing && !reduced) {
+        if (spectral) {
           // sample across the spectrum, weight the low-mids
           const idx = Math.floor((i / bars) * (data.length * 0.8))
           v = data[idx] / 255
         } else if (playing) {
-          // reduced-motion but live: a calm steady pulse
+          // live but no spectrum (reduced-motion or CORS-less): a calm pulse
           v = 0.28 + 0.12 * Math.sin(i * 0.6)
         } else {
           // idle baseline
@@ -236,13 +268,14 @@ export function Radio() {
       cancelAnimationFrame(rafRef.current)
       window.removeEventListener('resize', resize)
     }
-  }, [playing])
+  }, [playing, isPlain])
 
   // Teardown on unmount.
   useEffect(() => {
     return () => {
       cancelAnimationFrame(rafRef.current)
       audioRef.current?.pause()
+      plainAudioRef.current?.pause()
       ctxRef.current?.close?.()
     }
   }, [])
@@ -347,8 +380,11 @@ export function Radio() {
           </div>
         </div>
 
-        {/* one shared element; crossOrigin lets the analyser read the stream */}
+        {/* CORS element: crossOrigin lets the analyser read the stream (spectrum) */}
         <audio ref={audioRef} crossOrigin="anonymous" preload="none" />
+        {/* Plain element: no crossOrigin, never fed to Web Audio, for CORS-less
+            streams (e.g. Voice of Van) that would otherwise fail or be muted. */}
+        <audio ref={plainAudioRef} preload="none" />
       </div>
     </section>
   )
