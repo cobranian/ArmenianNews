@@ -1645,6 +1645,270 @@ h3:lang(hy) {
 }
 
 /* ============================================================
+   Live radio — broadcast console
+   ============================================================ */
+.radio-section {
+  position: relative;
+}
+.radio-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 60% at 50% 0%,
+    var(--apricot-glow),
+    transparent 62%
+  );
+  opacity: 0.14;
+  pointer-events: none;
+}
+.radio {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.radio__console {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(16px, 3vw, 30px);
+  padding: clamp(18px, 3vw, 26px) clamp(18px, 3.4vw, 30px);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-top: 2px solid var(--line-apricot);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+/* round transport button */
+.radio__play {
+  flex: none;
+  width: clamp(60px, 12vw, 74px);
+  height: clamp(60px, 12vw, 74px);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: radial-gradient(circle at 34% 30%, var(--apricot-bright), var(--apricot-deep));
+  color: var(--on-apricot);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 0 var(--apricot-glow);
+  transition: transform 0.25s var(--ease), box-shadow 0.4s var(--ease);
+}
+.radio__play:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px -10px var(--apricot-glow);
+}
+.radio__play.is-playing {
+  animation: radio-pulse 2.4s var(--ease) infinite;
+}
+.radio__play-glyph {
+  font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+  letter-spacing: 0.06em;
+  transform: translateX(1px);
+}
+.radio__play.is-playing .radio__play-glyph {
+  transform: none;
+  letter-spacing: -0.08em;
+}
+@keyframes radio-pulse {
+  0% { box-shadow: 0 0 0 0 var(--apricot-glow); }
+  70% { box-shadow: 0 0 0 16px rgba(242, 169, 59, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 169, 59, 0); }
+}
+
+.radio__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.radio__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.radio__onair {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.radio__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+.radio__onair.is-live {
+  color: var(--blood);
+}
+.radio__onair.is-live .radio__dot {
+  background: var(--blood);
+  box-shadow: 0 0 0 0 var(--blood);
+  animation: radio-blink 1.6s ease-in-out infinite;
+}
+@keyframes radio-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(224, 73, 47, 0.6); }
+  50% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(224, 73, 47, 0); }
+}
+.radio__now {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  font-weight: 500;
+  color: var(--text);
+}
+.radio__clock {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.radio__viz {
+  width: 100%;
+  height: 54px;
+  display: block;
+}
+.radio__status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  min-height: 1.2em;
+}
+.radio__retry {
+  border: 1px solid var(--line-apricot);
+  background: transparent;
+  color: var(--apricot);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.25s var(--ease);
+}
+.radio__retry:hover {
+  background: rgba(242, 169, 59, 0.12);
+}
+
+/* volume */
+.radio__volume {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-faint);
+}
+.radio__volume-icon {
+  font-size: 0.95rem;
+}
+.radio__volume input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: clamp(84px, 12vw, 120px);
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  cursor: pointer;
+}
+.radio__volume input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--apricot);
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+.radio__volume input[type='range']::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: var(--apricot);
+}
+.radio__volume input[type='range']:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 4px;
+}
+
+/* station selector */
+.radio__stations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  justify-content: center;
+}
+.radio__chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease),
+    background 0.25s var(--ease);
+}
+.radio__chip:hover {
+  border-color: var(--line-apricot);
+  color: var(--text);
+}
+.radio__chip.is-active {
+  background: var(--apricot);
+  border-color: var(--apricot);
+  color: var(--on-apricot);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radio__play.is-playing,
+  .radio__onair.is-live .radio__dot {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .radio__console {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'play body'
+      'vol  vol';
+    row-gap: 16px;
+  }
+  .radio__play { grid-area: play; }
+  .radio__body { grid-area: body; }
+  .radio__volume {
+    grid-area: vol;
+    justify-content: flex-end;
+    padding-top: 4px;
+    border-top: 1px solid var(--line);
+  }
+  .radio__clock { margin-left: 0; }
+  .radio__stations {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    margin-left: -4px;
+    padding: 4px;
+    scrollbar-width: none;
+  }
+  .radio__stations::-webkit-scrollbar { display: none; }
+}
+
+/* ============================================================
    Social — Facebook + Instagram
    ============================================================ */
 /* --- Don Narek post card — picture + author, no Facebook chrome --- */

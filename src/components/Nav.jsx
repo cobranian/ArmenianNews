@@ -20,6 +20,7 @@ export function Nav() {
   }, [theme])
 
   const links = [
+    ['#direct', t('nav.radio')],
     ['#actualites', t('nav.news')],
     ['#agenda', t('nav.agenda')],
     ['#facebook', t('nav.facebook')],
