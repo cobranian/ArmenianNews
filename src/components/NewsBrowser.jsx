@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
+import { Carousel } from './Carousel.jsx'
 import news from '../data/news.json'
 
 // One article card in the right-hand grid. Reuses the shared .card styling.
@@ -154,11 +155,11 @@ export function NewsBrowser() {
           <span className="browser__panel-count">{articles.length}</span>
         </div>
         {articles.length ? (
-          <div className="browser__grid" key={active}>
+          <Carousel key={active} label={activeCat.label}>
             {articles.map((a, i) => (
               <BrowserCard key={a.url || i} item={a} catLabel={activeCat.label} />
             ))}
-          </div>
+          </Carousel>
         ) : (
           <p className="browser__empty">{t('browser.empty')}</p>
         )}

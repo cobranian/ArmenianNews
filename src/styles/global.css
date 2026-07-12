@@ -989,19 +989,6 @@ h3:lang(hy) {
   content: '№ ';
   color: var(--apricot-deep);
 }
-.browser__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 228px), 1fr));
-  gap: clamp(16px, 2vw, 22px);
-  animation: browserFade 0.5s var(--ease);
-}
-.browser__grid .card {
-  width: 100%;
-}
-@keyframes browserFade {
-  from { opacity: 0; transform: translateY(7px); }
-  to { opacity: 1; transform: none; }
-}
 .browser__empty {
   font-family: var(--font-mono);
   font-size: 0.82rem;
@@ -1039,9 +1026,6 @@ h3:lang(hy) {
     border-left: 0;
     border-bottom-color: var(--apricot);
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .browser__grid { animation: none; }
 }
 
 /* ============================================================
