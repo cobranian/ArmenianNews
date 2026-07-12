@@ -10,12 +10,19 @@ import { SectionHead } from './SectionHead.jsx'
  *
  * Stream URLs come from player.armradio.am/index.php?c=all. The upstream also
  * lists "Yezidi Radio" on http://46.182.174.131:8002/music — deliberately left
- * out: a plain-HTTP stream would be blocked as mixed content on our HTTPS site. */
+ * out: a plain-HTTP stream would be blocked as mixed content on our HTTPS site.
+ *
+ * Radio Mariam Armenia (radiomariam.am) also streams only over plain HTTP
+ * (http://bkmx.euriconsult.eu:8000/RadioMariam), so it goes through an HTTPS
+ * Cloudflare Worker proxy (see proxy/radio-mariam-worker.js). */
+const MARIAM_PROXY = 'https://radio-mariam-proxy.cobranian.workers.dev/'
+
 const STATIONS = [
   { id: 'public', stream: 'https://eu1.stream4cast.com/proxy/publicra/stream' },
   { id: 'im', stream: 'https://eu1.stream4cast.com/proxy/aamiry02/stream' },
   { id: 'arevik', stream: 'https://eu1.stream4cast.com/proxy/aamiryan/stream' },
   { id: 'culture', stream: 'https://eu1.stream4cast.com/proxy/aamiry01/stream' },
+  { id: 'mariam', stream: MARIAM_PROXY },
 ]
 
 const prefersReducedMotion = () =>

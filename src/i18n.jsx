@@ -96,6 +96,7 @@ const STRINGS = {
     'radio.st.im': 'Im Radio',
     'radio.st.arevik': 'Radio Arevik',
     'radio.st.culture': 'Radio Culture',
+    'radio.st.mariam': 'Radio Mariam',
   },
   en: {
     'site.title': 'Armenia Info',
@@ -184,6 +185,7 @@ const STRINGS = {
     'radio.st.im': 'Im Radio',
     'radio.st.arevik': 'Radio Arevik',
     'radio.st.culture': 'Radio Culture',
+    'radio.st.mariam': 'Radio Mariam',
   },
   hy: {
     'site.title': 'Արմենիա Ինֆո',
@@ -272,6 +274,7 @@ const STRINGS = {
     'radio.st.im': 'Իմ ռադիո',
     'radio.st.arevik': 'Ռադիո Արևիկ',
     'radio.st.culture': 'Ռադիո Մշակույթ',
+    'radio.st.mariam': 'Ռադիո Մարիամ',
   },
 }
 

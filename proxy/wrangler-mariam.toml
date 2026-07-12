@@ -1,0 +1,8 @@
+# Deploy the Radio Mariam HTTPS audio proxy from the repo:
+#   cd proxy && npx wrangler deploy -c wrangler-mariam.toml
+# (auth once with `npx wrangler login`). workers_dev = true publishes it at
+# https://radio-mariam-proxy.<your-subdomain>.workers.dev
+name = "radio-mariam-proxy"
+main = "radio-mariam-worker.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
