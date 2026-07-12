@@ -20,6 +20,17 @@ function parseEventsPage(html) {
   const locations = $('.location-container').toArray()
   const boxes = $('.date-time-box').toArray()
 
+  // Each event's featured image sits in a separate image link (main list uses
+  // .image-container a, the top carousel uses .carousel-image-link) whose href
+  // matches the title link's href — so map by href rather than by index, which
+  // survives events that have no image.
+  const imgByHref = {}
+  $('.image-container a, .carousel-image-link').each((_, a) => {
+    const href = $(a).attr('href')
+    const src = $(a).find('img').first().attr('src')
+    if (href && src && !imgByHref[href]) imgByHref[href] = absUrl(src, BASE)
+  })
+
   const events = []
   for (let i = 0; i < titles.length; i++) {
     const link = $(titles[i])
@@ -38,6 +49,7 @@ function parseEventsPage(html) {
       location: locations[i] ? clean($(locations[i]).text()) : '',
       date: isoFromMonthDay(month, day, time || '00:00'),
       rawDate: clean([month, day, time].filter(Boolean).join(' ')),
+      image: href && imgByHref[href] ? imgByHref[href] : null,
     })
   }
   return events
