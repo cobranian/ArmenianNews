@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { Carousel } from './Carousel.jsx'
 import news from '../data/news.json'
@@ -59,28 +60,71 @@ function buildSources(t, lang) {
 export function NewsBrowser() {
   const { t, lang } = useI18n()
   const sources = buildSources(t, lang)
+  const tabRefs = useRef({})
+  const [activeId, setActiveId] = useState(sources[0]?.id)
+
   if (!sources.length) return null
+  const active = sources.find((s) => s.id === activeId) || sources[0]
+
+  // Roving-tab keyboard nav across the two source tabs.
+  const onKeyDown = (e) => {
+    const i = sources.findIndex((s) => s.id === active.id)
+    let next = null
+    if (e.key === 'ArrowRight') next = (i + 1) % sources.length
+    else if (e.key === 'ArrowLeft') next = (i - 1 + sources.length) % sources.length
+    else if (e.key === 'Home') next = 0
+    else if (e.key === 'End') next = sources.length - 1
+    if (next == null) return
+    e.preventDefault()
+    setActiveId(sources[next].id)
+    tabRefs.current[sources[next].id]?.focus()
+  }
+
+  const panelId = `newsfeed-panel-${active.id}`
 
   return (
     <div className="newsfeed">
-      {sources.map((src) => (
-        <section className="newsfeed__source" key={src.id} aria-label={src.name}>
-          <header className="newsfeed__head">
-            <span className="newsfeed__brand">{src.brand}</span>
-            {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
-            <span className="newsfeed__lang">{src.lang}</span>
-            <span className="newsfeed__desc">{src.name}</span>
-          </header>
+      <div className="newsfeed__tabs" role="tablist" aria-label={t('news.title')}>
+        {sources.map((src) => {
+          const isActive = src.id === active.id
+          return (
+            <button
+              key={src.id}
+              ref={(el) => (tabRefs.current[src.id] = el)}
+              type="button"
+              role="tab"
+              id={`newsfeed-tab-${src.id}`}
+              aria-selected={isActive}
+              aria-controls={isActive ? panelId : undefined}
+              tabIndex={isActive ? 0 : -1}
+              className={`newsfeed__tab ${isActive ? 'is-active' : ''}`}
+              onClick={() => setActiveId(src.id)}
+              onKeyDown={onKeyDown}
+            >
+              <span className="newsfeed__tab-brand">{src.brand}</span>
+              {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
+              <span className="newsfeed__tab-lang">{src.lang}</span>
+            </button>
+          )
+        })}
+      </div>
 
-          {src.cats.map((c) => (
-            <Carousel key={c.key} title={c.label}>
-              {c.articles.map((a, i) => (
-                <ArticleCard key={a.url || i} item={a} catLabel={c.label} />
-              ))}
-            </Carousel>
-          ))}
-        </section>
-      ))}
+      <section
+        className="newsfeed__source"
+        role="tabpanel"
+        id={panelId}
+        aria-labelledby={`newsfeed-tab-${active.id}`}
+        key={active.id}
+      >
+        <p className="newsfeed__intro">{active.name}</p>
+        {active.cats.map((c) => (
+          <Carousel key={c.key} title={c.label} reveal={false}>
+            {c.articles.map((a, i) => (
+              <ArticleCard key={a.url || i} item={a} catLabel={c.label} />
+            ))}
+          </Carousel>
+        ))}
+      </section>
     </div>
   )
 }

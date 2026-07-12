@@ -846,42 +846,61 @@ h3:lang(hy) {
 }
 
 /* ============================================================
-   News feed — stacked carousels, one per rubric
-   Two source groups (ArmRadio EN/HY, Courrier FR); each rubric
-   is a .shelf carousel of article .card items.
+   News feed — two source tabs (ArmRadio / Courrier), each a
+   stack of per-rubric .shelf carousels of article .card items.
    ============================================================ */
 .newsfeed {
   display: flex;
   flex-direction: column;
-  gap: clamp(38px, 5.5vw, 64px);
 }
-.newsfeed__source {
+/* --- source tabs --- */
+.newsfeed__tabs {
   display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 3.5vw, 38px);
-}
-/* the shelf owns a bottom margin elsewhere; here the flex gap spaces them */
-.newsfeed__source .shelf {
-  margin-bottom: 0;
-}
-.newsfeed__head {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
+  justify-content: center;
   flex-wrap: wrap;
-  padding-bottom: 12px;
+  gap: clamp(6px, 3vw, 44px);
+  margin-bottom: clamp(22px, 3.5vw, 36px);
   border-bottom: 1px solid var(--line-strong);
 }
-.newsfeed__brand {
+.newsfeed__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px 15px;
+  margin-bottom: -1px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: var(--text-faint);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.newsfeed__tab:hover {
+  color: var(--text);
+}
+.newsfeed__tab.is-active {
+  border-bottom-color: var(--apricot);
+}
+.newsfeed__tab-brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: inherit;
+}
+.newsfeed__tab.is-active .newsfeed__tab-brand {
+  color: var(--apricot-bright);
+}
+.newsfeed__tab-lang {
   font-family: var(--font-mono);
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--apricot);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1px 6px;
 }
 .newsfeed__live-dot {
-  align-self: center;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -893,23 +912,31 @@ h3:lang(hy) {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(224, 73, 47, 0.55); }
   50% { opacity: 0.55; box-shadow: 0 0 0 6px rgba(224, 73, 47, 0); }
 }
-.newsfeed__lang {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  padding: 1px 6px;
+/* --- active source panel: stacked rubric carousels --- */
+.newsfeed__source {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vw, 38px);
+  animation: newsfeed-fade 0.4s var(--ease);
 }
-.newsfeed__desc {
+.newsfeed__source .shelf {
+  margin-bottom: 0;
+}
+@keyframes newsfeed-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.newsfeed__intro {
+  margin: 0 0 6px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--text-faint);
+  text-align: center;
 }
 @media (prefers-reduced-motion: reduce) {
   .newsfeed__live-dot { animation: none; }
+  .newsfeed__source { animation: none; }
 }
 
 /* ============================================================
