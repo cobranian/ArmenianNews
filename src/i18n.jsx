@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 // Supported interface languages. Content (articles, posts) stays in its
 // original language; only the chrome is translated.
 export const LANGS = [
-  { code: 'fr', label: 'FR', name: 'Francais' },
+  { code: 'fr', label: 'FR', name: 'Français' },
   { code: 'en', label: 'EN', name: 'English' },
   { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
 ]
@@ -11,17 +11,17 @@ export const LANGS = [
 const STRINGS = {
   fr: {
     'site.title': 'Arménie Info',
-    'site.tagline': "Un instantane quotidien de l'Armenie et de sa diaspora",
-    'site.snapshot': 'Instantane du',
+    'site.tagline': "Un instantané quotidien de l'Arménie et de sa diaspora",
+    'site.snapshot': 'Instantané du',
 
-    'nav.news': 'Actualites',
+    'nav.news': 'Actualités',
     'nav.agenda': 'Agenda',
     'nav.facebook': 'Art arménien',
     'nav.instagram': 'Instagram',
 
-    'news.title': 'Actualites',
-    'news.subtitle': "Les dernieres publications de chaque rubrique du Courrier d'Erevan",
-    'news.armradio': "En direct d'Armenie · Public Radio of Armenia",
+    'news.title': 'Actualités',
+    'news.subtitle': "Les dernières publications de chaque rubrique du Courrier d'Erevan",
+    'news.armradio': "En direct d'Arménie · Public Radio of Armenia",
     'news.readmore': 'Lire la suite',
     'news.lead': 'À la une',
     'news.prev': 'Précédent',
@@ -29,7 +29,7 @@ const STRINGS = {
     'news.source': 'Source',
     'news.empty': 'Aucun article pour le moment.',
 
-    'lead.tagline': 'En direct des redactions — Courrier d’Erevan & Radio publique',
+    'lead.tagline': 'En direct des rédactions — Courrier d’Erevan & Radio publique',
     'lead.carousel': 'À la une — carrousel des dépêches',
     'lead.onair': 'En direct',
     'lead.pause': 'Mettre le défilement en pause',
@@ -38,46 +38,46 @@ const STRINGS = {
     'lead.tune': 'Accorder sur',
 
     'agenda.title': 'Agenda',
-    'agenda.subtitle': 'Evenements armeniens en Suisse et dans le monde',
+    'agenda.subtitle': 'Événements arméniens en Suisse et dans le monde',
     'agenda.switzerland': 'Suisse',
     'agenda.world': 'Monde',
-    'agenda.empty': 'Aucun evenement annonce.',
+    'agenda.empty': 'Aucun événement annoncé.',
     'agenda.more': "Voir sur armenopole",
 
     'fb.title': 'Art arménien',
     'fb.by': 'par Don Narek',
-    'fb.subtitle': 'Les 20 dernieres publications, en images',
+    'fb.subtitle': 'Les 20 dernières publications, en images',
     'fb.view': 'Voir la publication',
     'fb.fallback': 'Voir la page sur Facebook',
 
     'ig.title': 'Instagram',
     'ig.subtitle': "Une mosaïque d'inspiration arménienne, au hasard",
-    'ig.shuffle': 'Melanger',
+    'ig.shuffle': 'Mélanger',
     'ig.visit': 'Voir le profil',
     'ig.view': 'Voir sur Instagram',
 
-    'footer.built': "Instantane statique · sources liees a leurs sites d'origine",
+    'footer.built': "Instantané statique · sources liées à leurs sites d'origine",
     'footer.sources': 'Sources',
 
-    'sections.actualite': 'Actualites',
-    'sections.societe': 'Societe',
-    'sections.economie': 'Economie',
+    'sections.actualite': 'Actualités',
+    'sections.societe': 'Société',
+    'sections.economie': 'Économie',
     'sections.arts-et-culture': 'Arts et culture',
-    'sections.francophonie': 'Armenie francophone',
+    'sections.francophonie': 'Arménie francophone',
     'sections.opinions': 'Opinions',
-    'sections.region': 'Region',
+    'sections.region': 'Région',
     'sections.diasporas': 'Diasporas',
 
     'armcats.politics': 'Politique',
-    'armcats.society': 'Societe',
-    'armcats.economics': 'Economie',
+    'armcats.society': 'Société',
+    'armcats.economics': 'Économie',
     'armcats.analytics': 'Analyses',
     'armcats.world': 'Monde',
     'armcats.culture': 'Culture',
     'armcats.sport': 'Sport',
 
     'browser.subtitle': 'Choisissez une source et une rubrique',
-    'browser.armradio': 'Radio publique d’Armenie',
+    'browser.armradio': 'Radio publique d’Arménie',
     'browser.courrier': 'Courrier d’Erevan',
     'browser.empty': 'Aucun article dans cette rubrique pour le moment.',
     'browser.pick': 'Choisir la rubrique',
