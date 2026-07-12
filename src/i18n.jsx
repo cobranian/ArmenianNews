@@ -68,11 +68,9 @@ const STRINGS = {
     'armcats.culture': 'Culture',
     'armcats.sport': 'Sport',
 
-    'browser.subtitle': 'Choisissez une source et une rubrique',
+    'browser.subtitle': 'Toutes les rubriques, source par source',
     'browser.armradio': 'Radio publique d’Arménie',
     'browser.courrier': 'Courrier d’Erevan',
-    'browser.empty': 'Aucun article dans cette rubrique pour le moment.',
-    'browser.pick': 'Choisir la rubrique',
 
     'radio.eyebrow': 'Erevan · 128 kbps',
     'radio.title': 'En direct',
@@ -150,11 +148,9 @@ const STRINGS = {
     'armcats.culture': 'Culture',
     'armcats.sport': 'Sport',
 
-    'browser.subtitle': 'Choose a source and a section',
+    'browser.subtitle': 'Every rubric, source by source',
     'browser.armradio': 'Public Radio of Armenia',
     'browser.courrier': 'Le Courrier d’Erevan',
-    'browser.empty': 'No articles in this section yet.',
-    'browser.pick': 'Choose section',
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
@@ -232,11 +228,9 @@ const STRINGS = {
     'armcats.culture': 'Մշակույթ',
     'armcats.sport': 'Սպորտ',
 
-    'browser.subtitle': 'Ընտրեք աղբյուր եւ բաժին',
+    'browser.subtitle': 'Բոլոր բաժինները՝ ըստ աղբյուրի',
     'browser.armradio': 'Հայաստանի հանրային ռադիո',
     'browser.courrier': '«Կուրիեր դ’Էրեւան»',
-    'browser.empty': 'Այս բաժնում դեռ հոդվածներ չկան։',
-    'browser.pick': 'Ընտրել բաժինը',
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',

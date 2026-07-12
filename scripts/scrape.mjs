@@ -7,9 +7,27 @@ import { writeFile, readFile, mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { scrapeCourrier } from './sources/courrier.mjs'
-import { scrapeArmradio, scrapeArmradioSections } from './sources/armradio.mjs'
+import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
+
+// Backfill each empty category from the previous snapshot, so a transient
+// upstream block never wipes a rubric. `keyName` is 'sectionKey' | 'categoryKey'.
+function backfillSections(fresh, prev, keyName) {
+  if (!prev?.length) return fresh
+  if (!fresh.length) {
+    console.warn(`  ↺ keeping ${prev.length} previous ${keyName} groups`)
+    return prev
+  }
+  const prevByKey = Object.fromEntries(prev.map((s) => [s[keyName], s.articles || []]))
+  for (const sec of fresh) {
+    if (!sec.articles?.length && prevByKey[sec[keyName]]?.length) {
+      console.warn(`  ↺ keeping ${prevByKey[sec[keyName]].length} previous ${sec[keyName]} articles`)
+      sec.articles = prevByKey[sec[keyName]]
+    }
+  }
+  return fresh
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = join(__dirname, '..', 'src', 'data')
@@ -39,64 +57,28 @@ async function main() {
   const prevAgenda = await readJson('agenda.json')
   const prevIg = await readJson('instagram-feed.json')
 
-  console.log('Actualites (courrier.am):')
-  let news = []
+  // News. Courrier d'Erevan is French-only — courrier.am/hy serves the identical
+  // French articles — so we scrape it once. ArmRadio has real EN and HY editions,
+  // so the UI shows en for fr/en and hy for hy.
+  console.log('\nCourrier — courrier.am/fr:')
+  let courrierSecs = []
   try {
-    news = await scrapeCourrier()
+    courrierSecs = await scrapeCourrier('fr')
   } catch (err) {
     console.error('  courrier failed wholesale:', err.message)
   }
-  if (!news.length && prevNews?.sections?.length) {
-    console.warn(`  ↺ keeping ${prevNews.sections.length} previous news sections`)
-    news = prevNews.sections
-  } else if (prevNews?.sections?.length) {
-    // Backfill any individual section that came back empty.
-    const prevBySection = Object.fromEntries(
-      prevNews.sections.map((s) => [s.sectionKey, s.articles || []]),
-    )
-    for (const sec of news) {
-      if (!sec.articles?.length && prevBySection[sec.sectionKey]?.length) {
-        console.warn(`  ↺ keeping ${prevBySection[sec.sectionKey].length} previous ${sec.sectionKey} articles`)
-        sec.articles = prevBySection[sec.sectionKey]
-      }
-    }
-  }
+  const courrier = backfillSections(courrierSecs, prevNews?.courrier, 'sectionKey')
 
-  console.log('\nArmRadio (en.armradio.am):')
-  let armradio = []
-  try {
-    armradio = await scrapeArmradio(5)
-  } catch (err) {
-    console.error('  armradio failed:', err.message)
-  }
-  if (!armradio.length && prevNews?.armradio?.length) {
-    console.warn(`  ↺ keeping ${prevNews.armradio.length} previous armradio headlines`)
-    armradio = prevNews.armradio
-  }
-
-  console.log('\nArmRadio rubrics (per category):')
-  let armradioSections = []
-  try {
-    armradioSections = await scrapeArmradioSections(10)
-  } catch (err) {
-    console.error('  armradio sections failed:', err.message)
-  }
-  if (prevNews?.armradioSections?.length) {
-    const prevByCat = Object.fromEntries(
-      prevNews.armradioSections.map((s) => [s.categoryKey, s.articles || []]),
-    )
-    if (!armradioSections.length) {
-      console.warn(`  ↺ keeping ${prevNews.armradioSections.length} previous armradio rubrics`)
-      armradioSections = prevNews.armradioSections
-    } else {
-      // Backfill any rubric that came back empty (partial REST failure).
-      for (const sec of armradioSections) {
-        if (!sec.articles?.length && prevByCat[sec.categoryKey]?.length) {
-          console.warn(`  ↺ keeping ${prevByCat[sec.categoryKey].length} previous ${sec.categoryKey} articles`)
-          sec.articles = prevByCat[sec.categoryKey]
-        }
-      }
+  const armradio = {}
+  for (const lang of ['en', 'hy']) {
+    console.log(`\nArmRadio (${lang}) — ${lang}.armradio.am:`)
+    let secs = []
+    try {
+      secs = await scrapeArmradioSections(10, lang)
+    } catch (err) {
+      console.error(`  armradio/${lang} failed:`, err.message)
     }
+    armradio[lang] = backfillSections(secs, prevNews?.armradio?.[lang], 'categoryKey')
   }
 
   console.log('\nAgenda (armenopole.com):')
@@ -126,7 +108,7 @@ async function main() {
     igPosts = prevIg.posts
   }
 
-  await writeJson('news.json', { generatedAt, sections: news, armradio, armradioSections })
+  await writeJson('news.json', { generatedAt, courrier, armradio })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })

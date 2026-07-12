@@ -154,10 +154,13 @@ export async function scrapeArmradio(limit = 5) {
   return top
 }
 
-const BASE = 'https://en.armradio.am'
+const BASE_BY_LANG = {
+  en: 'https://en.armradio.am',
+  hy: 'https://hy.armradio.am',
+}
 
-// The ArmRadio rubrics offered in the news browser, paired with their
-// WordPress category slug. `key` matches i18n 'armcats.*'.
+// The ArmRadio rubrics offered in the news feed, paired with their WordPress
+// category slug (English site). `key` matches i18n 'armcats.*'.
 export const ARMRADIO_SECTIONS = [
   { key: 'politics', slug: 'politics' },
   { key: 'society', slug: 'society' },
@@ -168,37 +171,57 @@ export const ARMRADIO_SECTIONS = [
   { key: 'sport', slug: 'sport' },
 ]
 
-// Per-category articles for the browser. The posts endpoint filters by numeric
-// category id (not slug), so we resolve slug→id once, then pull each rubric's
-// latest `limit` posts picture-ready via _embed. Only the REST API can do this
-// (the RSS fallbacks have no per-category feed), so a blocked REST call yields
-// empty rubrics that scrape.mjs backfills from the previous snapshot.
-export async function scrapeArmradioSections(limit = 10) {
+// The Armenian site (hy.armradio.am) names its categories in Armenian, so the
+// English slugs don't resolve there. These are its stable core WordPress term
+// IDs, mapped to our keys by the rubric each represents (verified by name):
+//   politics=Քաղաքական society=Հասարակություն economics=Տնտեսական
+//   analytics=Վերլուծական world=Միջազգային culture=Մշակույթ sport=Սպորտ
+const HY_CATEGORY_IDS = {
+  politics: 12, society: 4, economics: 11, analytics: 9, world: 5, culture: 6, sport: 1,
+}
+
+// Resolve each rubric key → numeric category id for a given language site.
+async function categoryIdsByKey(lang, base) {
+  if (lang === 'hy') return { ...HY_CATEGORY_IDS }
+  // English site: resolve slug→id from the categories endpoint.
   const wanted = new Set(ARMRADIO_SECTIONS.map((s) => s.slug))
-  const catsUrl = `${BASE}/wp-json/wp/v2/categories?per_page=100&_fields=id,slug`
   const idBySlug = {}
   try {
+    const catsUrl = `${base}/wp-json/wp/v2/categories?per_page=100&_fields=id,slug`
     for (const c of JSON.parse(await fetchText(catsUrl))) {
       if (wanted.has(c.slug)) idBySlug[c.slug] = c.id
     }
   } catch (err) {
-    console.warn(`  ↺ armradio categories lookup failed (${err.message})`)
+    console.warn(`  ↺ armradio/${lang} categories lookup failed (${err.message})`)
   }
+  return Object.fromEntries(
+    ARMRADIO_SECTIONS.map((s) => [s.key, idBySlug[s.slug]]).filter(([, id]) => id),
+  )
+}
+
+// Per-category articles for the news feed, in `lang` (en | hy). The posts
+// endpoint filters by numeric category id, so we resolve key→id first, then
+// pull each rubric's latest `limit` posts picture-ready via _embed. Only the
+// REST API can do this, so a blocked call yields empty rubrics that scrape.mjs
+// backfills from the previous snapshot.
+export async function scrapeArmradioSections(limit = 10, lang = 'en') {
+  const base = BASE_BY_LANG[lang] || BASE_BY_LANG.en
+  const idByKey = await categoryIdsByKey(lang, base)
 
   const out = []
   for (const section of ARMRADIO_SECTIONS) {
-    const id = idBySlug[section.slug]
+    const id = idByKey[section.key]
     if (!id) {
       out.push({ categoryKey: section.key, articles: [] })
       continue
     }
     try {
-      const url = `${BASE}/wp-json/wp/v2/posts?categories=${id}&per_page=${limit}&_embed=1`
+      const url = `${base}/wp-json/wp/v2/posts?categories=${id}&per_page=${limit}&_embed=1`
       const articles = parseRest(await fetchText(url))
       out.push({ categoryKey: section.key, articles })
-      console.log(`  ✓ armradio/${section.slug} (${articles.length})`)
+      console.log(`  ✓ armradio/${lang}/${section.slug} (${articles.length})`)
     } catch (err) {
-      console.warn(`  ✗ armradio/${section.slug}: ${err.message}`)
+      console.warn(`  ✗ armradio/${lang}/${section.slug}: ${err.message}`)
       out.push({ categoryKey: section.key, articles: [] })
     }
   }

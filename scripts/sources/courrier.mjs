@@ -17,8 +17,10 @@ export const SECTIONS = [
 ]
 
 // Pull the most recent `limit` articles of a section's Drupal Views grid.
-async function articlesForSection({ key, slug }, limit = 10) {
-  const html = await fetchText(`${BASE}/fr/${slug}`)
+// The FR and HY editions share the same slugs and grid markup — only the
+// /fr vs /hy path prefix differs.
+async function articlesForSection({ key, slug }, lang = 'fr', limit = 10) {
+  const html = await fetchText(`${BASE}/${lang}/${slug}`)
   const $ = cheerio.load(html)
 
   const articles = []
@@ -46,15 +48,15 @@ async function articlesForSection({ key, slug }, limit = 10) {
   return { sectionKey: key, articles }
 }
 
-export async function scrapeCourrier() {
+export async function scrapeCourrier(lang = 'fr') {
   const out = []
   for (const section of SECTIONS) {
     try {
-      const sec = await articlesForSection(section)
+      const sec = await articlesForSection(section, lang)
       out.push(sec)
-      console.log(`  ✓ courrier/${section.slug} (${sec.articles.length})`)
+      console.log(`  ✓ courrier/${lang}/${section.slug} (${sec.articles.length})`)
     } catch (err) {
-      console.warn(`  ✗ courrier/${section.slug}: ${err.message}`)
+      console.warn(`  ✗ courrier/${lang}/${section.slug}: ${err.message}`)
       out.push({ sectionKey: section.key, articles: [] })
     }
   }
