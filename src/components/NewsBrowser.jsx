@@ -4,13 +4,19 @@ import { Carousel } from './Carousel.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import news from '../data/news.json'
 
+// armenews.com serves only heavy full-size originals and its WAF ORB-blocks
+// hotlinked images, so those go through the wsrv.nl image CDN — fetched
+// server-side, resized, and re-served with CORS. Other sources hotlink directly.
+const wsrv = (url, w = 640) =>
+  `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${w}&output=jpg&q=80`
+
 // One article card, sized to sit inside a shelf track (see .card in CSS).
-// `showImage` is false for sources whose images can't be hotlinked (armenews.com
-// serves no thumbnail sizes and its WAF ORB-blocks all but the first request),
-// so those render as clean text cards on the gradient panel instead of broken.
-function ArticleCard({ item, catLabel, showImage = true }) {
+// A card with no usable image — or one that fails to load — falls back to a
+// deterministic Armenian motif so every card always paints.
+function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
   const { t } = useI18n()
-  const hasPhoto = showImage && !!item.image
+  const [broken, setBroken] = useState(false)
+  const hasPhoto = showImage && !!item.image && !broken
   const seed = hash(item.url || item.title || '')
   const theme = THEMES[seed % THEMES.length]
   return (
@@ -23,10 +29,15 @@ function ArticleCard({ item, catLabel, showImage = true }) {
         style={hasPhoto ? undefined : { '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
       >
         {/* ArmRadio's CDN 403s hotlinked images when a Referer is sent, so
-            suppress it — with no Referer it serves the image normally. Cards
-            with no usable image (all of armenews) get an Armenian motif. */}
+            suppress it — with no Referer it serves the image normally. */}
         {hasPhoto ? (
-          <img src={item.image} alt="" loading="lazy" referrerPolicy="no-referrer" />
+          <img
+            src={proxy ? wsrv(item.image) : item.image}
+            alt=""
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            onError={() => setBroken(true)}
+          />
         ) : (
           <svg className="card__motif" viewBox="0 0 100 100" aria-hidden="true">
             <Motif index={seed} />
@@ -80,7 +91,8 @@ function buildSources(t, lang) {
     name: t('browser.armenews'),
     lang: 'FR',
     live: false,
-    images: false,
+    images: true,
+    proxy: true,
     cats: (news.armenews || [])
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`namcats.${s.categoryKey}`), articles: s.articles })),
@@ -151,7 +163,13 @@ export function NewsBrowser() {
         {active.cats.map((c) => (
           <Carousel key={c.key} title={c.label} reveal={false}>
             {c.articles.map((a, i) => (
-              <ArticleCard key={a.url || i} item={a} catLabel={c.label} showImage={active.images} />
+              <ArticleCard
+                key={a.url || i}
+                item={a}
+                catLabel={c.label}
+                showImage={active.images}
+                proxy={active.proxy}
+              />
             ))}
           </Carousel>
         ))}
