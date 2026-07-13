@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Arménie Info">
+  <!-- Ararat's twin peaks — Masis and Sis — in apricot on basalt, the site's
+       own palette. The nav's khachkar knot is a fine-line ornament and turns
+       to mush at 16px; the mountain silhouette survives it. -->
+  <rect width="64" height="64" rx="13" fill="#100f0d"/>
+  <path d="M3 51 L23.5 12 L34 30.5 L43.5 19 L61 51 Z" fill="#f2a93b"/>
+  <!-- snow facets: basalt cut into the apricot, invisible at 16px, alive at 64 -->
+  <path d="M23.5 12 L28.8 21.5 L21.6 23.6 L26.8 28.8 L34 30.5 Z" fill="#100f0d" opacity="0.32"/>
+  <path d="M43.5 19 L46.6 25 L41.4 26.2 L45.6 30 Z" fill="#100f0d" opacity="0.32"/>
+  <rect x="3" y="53.6" width="58" height="2.8" rx="1.4" fill="#c97d1e"/>
+</svg>
