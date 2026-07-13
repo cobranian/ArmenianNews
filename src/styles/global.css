@@ -19,6 +19,14 @@
   --apricot-glow: rgba(242, 169, 59, 0.5);
   --on-apricot: #1c1408; /* constant dark ink for text on apricot fills */
 
+  /* The accent plays two jobs that pull opposite ways: it FILLS (chips, the
+     active language pill — must stay luminous, with dark ink on top) and it
+     WRITES (eyebrows, bylines, links — must be legible on its ground). On
+     basalt one value serves both, so the ink tokens simply alias the accent.
+     On paper they part ways: see the day variant below. */
+  --apricot-ink: var(--apricot);
+  --apricot-ink-strong: var(--apricot-bright);
+
   /* --- Secondary signals --- */
   --blood: #e0492f;      /* "live" only */
   --ararat: #79b0cf;     /* cool whisper */
@@ -26,7 +34,8 @@
   /* --- Type colours on dark --- */
   --text: #f3ecdb;
   --text-soft: #b9af9a;
-  --text-faint: #837a68;
+  /* was #837a68 — 4.34:1 on a card, a hair under AA for the CTAs it carries */
+  --text-faint: #8f8674;
 
   /* --- Hairlines --- */
   --line: rgba(243, 236, 219, 0.1);
@@ -67,12 +76,22 @@
   --apricot-deep: #9c5a10;
   --apricot-glow: rgba(207, 125, 24, 0.4);
 
+  /* Written apricot, not filled apricot. #cf7d18 as type on the bone ground
+     reads at 2.7:1 — well under the 4.5:1 small text needs. These two carry
+     every accent *word* (eyebrows, bylines, links); the fills above keep
+     their glow so dark ink still sits on them at 5.7:1. Burnt, not bright. */
+  --apricot-ink: #8f5209;
+  --apricot-ink-strong: #6f3d05;
+
   --blood: #c0381f;
   --ararat: #3f7d9e;
 
   --text: #241b10;
   --text-soft: #5f5340;
-  --text-faint: #8a7b62;
+  /* was #8a7b62 — 3.2:1 on a card, below AA for the metadata it carries.
+     Dark enough to clear 4.5:1 on all three paper surfaces, the raised one
+     (the radio console) being the demanding case. */
+  --text-faint: #685b44;
 
   --line: rgba(36, 27, 16, 0.12);
   --line-strong: rgba(36, 27, 16, 0.24);
@@ -165,12 +184,12 @@ h3 {
 }
 
 a {
-  color: var(--apricot);
+  color: var(--apricot-ink);
   text-decoration: none;
   transition: color 0.18s var(--ease);
 }
 a:hover {
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 
 img {
@@ -276,7 +295,7 @@ h3:lang(hy) {
 .nav__brand .ornament {
   flex: none;
   gap: 0;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .nav__brand .ornament::before,
 .nav__brand .ornament::after {
@@ -360,7 +379,7 @@ h3:lang(hy) {
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.25);
-  color: var(--apricot);
+  color: var(--apricot-ink);
   font-size: 0.96rem;
   line-height: 1;
   cursor: pointer;
@@ -417,7 +436,7 @@ h3:lang(hy) {
   letter-spacing: 0.46em;
   text-transform: uppercase;
   font-size: 0.7rem;
-  color: var(--apricot);
+  color: var(--apricot-ink);
   margin-bottom: 24px;
   opacity: 0;
   animation: rise 0.9s var(--ease) 0.05s forwards;
@@ -475,7 +494,7 @@ h3:lang(hy) {
   animation: rise 1s var(--ease) 0.42s forwards;
 }
 .hero__date strong {
-  color: var(--apricot);
+  color: var(--apricot-ink);
   font-weight: 700;
 }
 /* re-skin the silhouette as a glowing apricot ridgeline:
@@ -524,7 +543,7 @@ h3:lang(hy) {
   letter-spacing: 0.34em;
   text-transform: uppercase;
   font-size: 0.7rem;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .section__eyebrow::before {
   content: '// ';
@@ -571,7 +590,7 @@ h3:lang(hy) {
   font-size: 0.66rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .strand__name {
   font-family: var(--font-display);
@@ -584,7 +603,7 @@ h3:lang(hy) {
   font-weight: 400;
   font-size: 0.72em;
   letter-spacing: 0.005em;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .strand__by::before {
   content: ' ';
@@ -626,7 +645,7 @@ h3:lang(hy) {
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--surface);
-  color: var(--apricot);
+  color: var(--apricot-ink);
   font-family: var(--font-display);
   font-size: 1.5rem;
   line-height: 1;
@@ -637,7 +656,7 @@ h3:lang(hy) {
 .shelf__arrow:not(:disabled):hover {
   border-color: var(--line-apricot);
   background: rgba(242, 169, 59, 0.1);
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 .shelf__arrow:disabled {
   opacity: 0.3;
@@ -789,7 +808,7 @@ h3:lang(hy) {
   color: var(--text);
 }
 .card a.card__title:hover {
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 .card__more {
   margin-top: auto;
@@ -797,7 +816,7 @@ h3:lang(hy) {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .card__more::after {
   content: ' →';
@@ -891,7 +910,7 @@ h3:lang(hy) {
   color: var(--text);
 }
 .armradio__item:hover .armradio__link {
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 
 /* ============================================================
@@ -929,7 +948,7 @@ h3:lang(hy) {
   color: var(--text);
 }
 .newsfeed__tab.is-active {
-  border-bottom-color: var(--apricot);
+  border-bottom-color: var(--apricot-ink);
 }
 .newsfeed__tab-brand {
   font-family: var(--font-display);
@@ -939,7 +958,7 @@ h3:lang(hy) {
   color: inherit;
 }
 .newsfeed__tab.is-active .newsfeed__tab-brand {
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 .newsfeed__tab-lang {
   font-family: var(--font-mono);
@@ -1109,7 +1128,7 @@ h3:lang(hy) {
   font-size: 1.9rem;
   font-weight: 600;
   line-height: 1;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .agenda-card__month {
   display: block;
@@ -1129,7 +1148,7 @@ h3:lang(hy) {
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--apricot);
+  color: var(--apricot-ink);
   background: color-mix(in srgb, var(--basalt-3) 82%, transparent);
   border: 1px solid var(--line-apricot);
   border-radius: 999px;
@@ -1163,7 +1182,7 @@ h3:lang(hy) {
   transition: color 0.25s var(--ease);
 }
 .agenda-card:hover .agenda-card__title {
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 .agenda-card__foot {
   display: flex;
@@ -1183,7 +1202,7 @@ h3:lang(hy) {
 }
 .agenda-card__go {
   font-size: 1.05rem;
-  color: var(--apricot);
+  color: var(--apricot-ink);
   transition: transform 0.25s var(--ease);
 }
 .agenda-card:hover .agenda-card__go {
@@ -1335,7 +1354,7 @@ h3:lang(hy) {
 .radio__retry {
   border: 1px solid var(--line-apricot);
   background: transparent;
-  color: var(--apricot);
+  color: var(--apricot-ink);
   border-radius: 999px;
   padding: 3px 12px;
   font: inherit;
@@ -1415,7 +1434,7 @@ h3:lang(hy) {
 }
 .radio__chip.is-active {
   background: var(--apricot);
-  border-color: var(--apricot);
+  border-color: var(--apricot-ink);
   color: var(--on-apricot);
 }
 
@@ -1596,7 +1615,7 @@ h3:lang(hy) {
 .fb-card__cta span {
   display: inline-block;
   transition: transform 0.2s var(--ease);
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .fb-card:hover .fb-card__cta span {
   transform: translateX(5px);
@@ -1766,7 +1785,7 @@ h3:lang(hy) {
   font-family: var(--font-mono);
   font-size: 0.74rem;
   letter-spacing: 0.02em;
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .ig-card__name {
   font-family: var(--font-display);
@@ -1785,7 +1804,7 @@ h3:lang(hy) {
 .ig-card__cta span {
   display: inline-block;
   transition: transform 0.2s var(--ease);
-  color: var(--apricot);
+  color: var(--apricot-ink);
 }
 .ig-card:hover .ig-card__cta span {
   transform: translateX(5px);
@@ -1812,7 +1831,7 @@ h3:lang(hy) {
 }
 .ig-chip:hover {
   border-color: var(--line-apricot);
-  color: var(--apricot);
+  color: var(--apricot-ink);
   transform: translateY(-2px);
 }
 
@@ -1833,7 +1852,7 @@ h3:lang(hy) {
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
-  color: var(--apricot);
+  color: var(--apricot-ink);
   margin-top: 8px;
   margin-bottom: 18px;
   letter-spacing: -0.02em;
@@ -1854,7 +1873,7 @@ h3:lang(hy) {
   padding-bottom: 2px;
 }
 .footer__sources a:hover {
-  color: var(--apricot-bright);
+  color: var(--apricot-ink-strong);
 }
 .footer__note {
   font-family: var(--font-mono);
