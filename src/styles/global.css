@@ -1936,8 +1936,18 @@ h3:lang(hy) {
   .nav__toggle {
     display: inline-block;
   }
-  .nav__brand span {
+  /* Drop the wordmark, keep the knot: the mark alone is the mobile logo.
+     :not(.ornament) matters — KnotMark is itself a <span>, so a bare
+     `.nav__brand span` hides the knot too and collapses the whole brand
+     (and its home link) to a 0×0, untappable box. */
+  .nav__brand span:not(.ornament) {
     display: none;
+  }
+  /* The 26px knot is the whole home link once the wordmark is gone; padded
+     out (and pulled back by the same margin) to a 44px touch target. */
+  .nav__brand {
+    padding: 9px;
+    margin: -9px;
   }
 }
 @media (max-width: 480px) {
