@@ -20,12 +20,7 @@
   <body>
     <div id="root"></div>
     <!-- set saved day/night theme before paint to avoid a flash -->
-    <script>
-      try {
-        var t = localStorage.getItem('theme')
-        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
-      } catch (e) {}
-    </script>
+    <script src="/theme-init.js"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
