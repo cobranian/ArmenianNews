@@ -77,7 +77,10 @@ jobs:
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
           set +e
-          out=$(npx --yes firebase-tools@latest deploy \
+          # Pinned, not @latest: this runs with the deploy service account in
+          # its environment, so a single malicious release would hand over the
+          # credential. Bump deliberately.
+          out=$(npx --yes firebase-tools@15.23.0 deploy \
             --only hosting --project armenie-info --non-interactive 2>&1)
           code=$?
           echo "$out"
