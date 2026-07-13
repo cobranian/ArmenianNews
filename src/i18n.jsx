@@ -217,7 +217,7 @@ const STRINGS = {
     'agenda.more': 'Տեսնել armenopole-ում',
 
     'fb.title': 'Հայկական արվեստ',
-    'fb.by': 'Տօն Նարեկի կողմից',
+    'fb.by': 'Դօն Նարեկի կողմից',
     'fb.subtitle': 'Վերջին 20 հրապարակումները՝ նկարներով',
     'fb.view': 'Դիտել հրապարակումը',
     'fb.fallback': 'Դիտել էջը Facebook-ում',
