@@ -72,7 +72,11 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         env:
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          # Dedicated deploy identity (github-action-*), Firebase Hosting Admin
+          # and nothing else. The old secret held the firebase-adminsdk key,
+          # which could also bypass database security rules and mint tokens for
+          # other service accounts — far more than publishing a static site needs.
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
         run: |
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
