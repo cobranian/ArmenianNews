@@ -1963,3 +1963,36 @@ h3:lang(hy) {
     flex-basis: clamp(220px, 80vw, 270px);
   }
 }
+
+/* ============================================================
+   Touch targets — a finger is ~44px wide, a cursor is one pixel.
+   Keyed on the pointing device, not the screen width: a touchscreen
+   laptop deserves this as much as a phone, and a narrow desktop
+   window does not. Last block in the file so it outranks the width
+   queries above (which shrink the shelf arrows to 36px).
+   Type scale and visual weight are untouched — only the hit area grows.
+   ============================================================ */
+@media (pointer: coarse) {
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
+  .nav__toggle {
+    padding: 11px 14px;
+  }
+  /* 15px of side padding, not 13: the shortest label ("FR") would otherwise
+     come out 42px wide. The tallest ("ՀԱՅ") sets the row height. */
+  .lang button {
+    padding: 14px 15px;
+  }
+  .shelf__arrow {
+    width: 44px;
+    height: 44px;
+  }
+  .radio__chip {
+    padding: 13px 16px;
+  }
+  .ig-chip {
+    padding: 12px 16px;
+  }
+}
