@@ -545,20 +545,53 @@ h3:lang(hy) {
   margin: 0 auto;
 }
 
-/* "Armenian Art" over an italic gold "by Don Narek" — an editorial title
-   lockup for the Don Narek section (title prop is JSX; see Facebook.jsx). */
-.fb-title__main {
+/* ============================================================
+   Réseaux sociaux — Facebook + Instagram behind the source-tab
+   rail (.newsfeed__*, shared with the news browser). See Social.jsx.
+   ============================================================ */
+/* Legacy #facebook / #instagram deep links land on the merged section. */
+.social__anchor {
   display: block;
+  position: absolute;
+  top: 0;
 }
-.fb-title__by {
+/* Each panel introduces its own network before the shelf. */
+.social__panel-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.social__panel-head .newsfeed__intro {
+  margin: 0;
+}
+/* "Armenian Art" over an italic gold "by Don Narek" — Facebook has an author,
+   Instagram is a crowd, so only the Facebook panel carries a byline. */
+.social__lede {
+  margin: 0;
+}
+.social__lede-main {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.4vw, 1.9rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.social__lede-by {
   display: block;
   margin-top: 2px;
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.05rem, 2.4vw, 1.7rem);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
   letter-spacing: 0.005em;
   color: var(--apricot);
+}
+/* Inside a tab panel the flex gap already spaces the outbound links. */
+.newsfeed__source .fb-fallback,
+.newsfeed__source .ig-accounts {
+  margin-top: 0;
 }
 
 /* ============================================================
@@ -866,8 +899,12 @@ h3:lang(hy) {
 }
 
 /* ============================================================
-   News feed — two source tabs (ArmRadio / Courrier), each a
-   stack of per-rubric .shelf carousels of article .card items.
+   Source-tab rail — a brand in the display face, a mono meta chip,
+   an apricot rule under the active tab, and a panel of .shelf
+   carousels below. Used twice: the news feed picks a newswire
+   (ArmRadio / Courrier / Nouvelles d'Arménie, chip = language), and
+   the social section picks a network (Facebook / Instagram, chip =
+   post count). See NewsBrowser.jsx and Social.jsx.
    ============================================================ */
 .newsfeed {
   display: flex;

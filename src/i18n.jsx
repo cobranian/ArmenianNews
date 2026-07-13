@@ -17,8 +17,7 @@ const STRINGS = {
     'nav.news': 'Actualités',
     'nav.radio': 'En direct',
     'nav.agenda': 'Agenda',
-    'nav.facebook': 'Art arménien',
-    'nav.instagram': 'Instagram',
+    'nav.social': 'Réseaux',
 
     'news.title': 'Actualités',
     'news.subtitle': "Les dernières publications de chaque rubrique du Courrier d'Erevan",
@@ -35,6 +34,10 @@ const STRINGS = {
     'agenda.world': 'Monde',
     'agenda.empty': 'Aucun événement annoncé.',
     'agenda.more': "Voir sur armenopole",
+
+    'social.title': 'Réseaux sociaux',
+    'social.subtitle':
+      "Deux fils : l'art que partage Don Narek sur Facebook, et une sélection Instagram retirée au sort chaque heure",
 
     'fb.title': 'Art arménien',
     'fb.by': 'par Don Narek',
@@ -107,8 +110,7 @@ const STRINGS = {
     'nav.news': 'News',
     'nav.radio': 'Live',
     'nav.agenda': 'Events',
-    'nav.facebook': 'Armenian Art',
-    'nav.instagram': 'Instagram',
+    'nav.social': 'Social',
 
     'news.title': 'News',
     'news.subtitle': "The latest stories from each section of Le Courrier d'Erevan",
@@ -125,6 +127,10 @@ const STRINGS = {
     'agenda.world': 'World',
     'agenda.empty': 'No events announced.',
     'agenda.more': 'See on armenopole',
+
+    'social.title': 'Social networks',
+    'social.subtitle':
+      'Two feeds: the art Don Narek shares on Facebook, and an Instagram selection drawn afresh every hour',
 
     'fb.title': 'Armenian Art',
     'fb.by': 'by Don Narek',
@@ -197,8 +203,7 @@ const STRINGS = {
     'nav.news': 'Լուրեր',
     'nav.radio': 'Ուղիղ',
     'nav.agenda': 'Միջոցառումներ',
-    'nav.facebook': 'Հայկական արվեստ',
-    'nav.instagram': 'Instagram',
+    'nav.social': 'Ցանցեր',
 
     'news.title': 'Լուրեր',
     'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումները',
@@ -215,6 +220,10 @@ const STRINGS = {
     'agenda.world': 'Աշխարհ',
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
     'agenda.more': 'Տեսնել armenopole-ում',
+
+    'social.title': 'Սոցիալական ցանցեր',
+    'social.subtitle':
+      'Երկու հոսք՝ Դօն Նարեկի կիսած արվեստը Facebook-ում և Instagram-ի ընտրանին՝ վերաշաղախված ամեն ժամ',
 
     'fb.title': 'Հայկական արվեստ',
     'fb.by': 'Դօն Նարեկի կողմից',

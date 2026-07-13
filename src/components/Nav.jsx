@@ -23,8 +23,7 @@ export function Nav() {
     ['#direct', t('nav.radio')],
     ['#actualites', t('nav.news')],
     ['#agenda', t('nav.agenda')],
-    ['#facebook', t('nav.facebook')],
-    ['#instagram', t('nav.instagram')],
+    ['#reseaux', t('nav.social')],
   ]
 
   return (

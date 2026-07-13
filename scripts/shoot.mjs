@@ -2,7 +2,8 @@
  * Screenshot the Don Narek carousel from the built site.
  *
  * Serves ./dist with Vite's preview server, opens the page in a headless
- * browser, and captures the #facebook section at desktop + mobile widths.
+ * browser, and captures the #reseaux section — which opens on its Facebook
+ * tab — at desktop + mobile widths.
  * PNGs are written back into ./dist so the hourly deploy publishes them to
  * the live site (armenie-info.web.app/don-narek-desktop.png) — dist/ is
  * gitignored, so nothing large ever lands in git history.
@@ -59,9 +60,9 @@ try {
     await page.setViewport({ width: v.width, height: v.height, deviceScaleFactor: 2 })
     await page.goto(url, { waitUntil: 'networkidle0' })
     // Trigger the reveal-on-scroll animation, then let it settle.
-    await page.evaluate(() => document.querySelector('#facebook')?.scrollIntoView())
+    await page.evaluate(() => document.querySelector('#reseaux')?.scrollIntoView())
     await new Promise((r) => setTimeout(r, 1200))
-    const el = await page.$('#facebook')
+    const el = await page.$('#reseaux')
     await el.screenshot({ path: path.join(OUT, `don-narek-${v.name}.png`) })
     console.log(`✓ dist/don-narek-${v.name}.png`)
     await page.close()
