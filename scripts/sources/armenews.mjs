@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio'
 import { fetchText } from '../lib/http.mjs'
-import { clean } from '../lib/util.mjs'
+import { clean, safeUrl } from '../lib/util.mjs'
 
 // Nouvelles d'Arménie (armenews.com) is a French WordPress site, so we pull each
 // rubric's latest posts through the REST API — picture-ready via _embed — exactly
@@ -28,7 +28,7 @@ function embeddedImage(p) {
   if (!media) return null
   const sizes = media.media_details?.sizes || {}
   const pick = sizes.medium_large || sizes.large || sizes.medium
-  return clean(pick?.source_url || media.source_url) || null
+  return safeUrl(clean(pick?.source_url || media.source_url))
 }
 
 // WordPress REST posts → {title, url, date, image}.
@@ -38,7 +38,7 @@ function parseRest(json) {
   return posts
     .map((p) => {
       const title = decodeEntities(p.title?.rendered)
-      const url = clean(p.link)
+      const url = safeUrl(clean(p.link))
       const d = p.date_gmt ? new Date(`${p.date_gmt}Z`) : null
       if (!title || !url) return null
       return {

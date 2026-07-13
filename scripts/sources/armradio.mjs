@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio'
 import { fetchText } from '../lib/http.mjs'
-import { clean } from '../lib/util.mjs'
+import { clean, safeUrl } from '../lib/util.mjs'
 
 // Public Radio of Armenia (en.armradio.am) is a WordPress site behind
 // Cloudflare, which serves a 403 "managed challenge" to datacenter IPs (e.g.
@@ -37,7 +37,7 @@ function embeddedImage(p) {
   if (!media) return null
   const sizes = media.media_details?.sizes || {}
   const pick = sizes.medium_large || sizes.large || sizes.medium
-  return clean(pick?.source_url || media.source_url) || null
+  return safeUrl(clean(pick?.source_url || media.source_url))
 }
 
 // Real topic for a post. WordPress tags most items into a generic "Top"
@@ -63,7 +63,7 @@ function parseRest(json) {
   return posts
     .map((p) => {
       const title = decodeEntities(p.title?.rendered)
-      const url = clean(p.link)
+      const url = safeUrl(clean(p.link))
       const d = p.date_gmt ? new Date(`${p.date_gmt}Z`) : null
       if (!title || !url) return null
       return {
@@ -84,7 +84,7 @@ function parseRss(xml) {
   $('item').each((_, el) => {
     const item = $(el)
     const title = clean(item.find('title').first().text())
-    const link = clean(item.find('link').first().text())
+    const link = safeUrl(clean(item.find('link').first().text()))
     const pubDate = clean(item.find('pubDate').first().text())
     if (!title || !link) return
     const d = pubDate ? new Date(pubDate) : null
@@ -101,7 +101,7 @@ function parseGoogleNews(xml) {
   $('item').each((_, el) => {
     const item = $(el)
     let title = clean(item.find('title').first().text())
-    const link = clean(item.find('link').first().text())
+    const link = safeUrl(clean(item.find('link').first().text()))
     const pubDate = clean(item.find('pubDate').first().text())
     const source = clean(item.find('source').first().text())
     if (source && title.endsWith(`- ${source}`)) {

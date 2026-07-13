@@ -34,14 +34,28 @@ export function isoFromMonthDay(monthAbbr, day, time = '00:00', now = new Date()
   return date.toISOString()
 }
 
-export function absUrl(href, base) {
+/* Every URL in the snapshot comes from a third-party page we do not control,
+ * and lands in an <a href> / <img src> at build time. `new URL()` happily
+ * preserves a `javascript:` or `data:` scheme, and React 18 renders such an
+ * href with only a console warning — so a compromised source could plant a
+ * stored XSS in news.json. The site's CSP (script-src 'self') blocks it, but
+ * that is the last line of defence, not the first: only http(s) gets through
+ * here. Anything else is dropped, and the item is skipped upstream.
+ *
+ * `base` is optional: RSS feeds hand us absolute links already. */
+const SAFE_SCHEMES = new Set(['http:', 'https:'])
+
+export function safeUrl(href, base) {
   if (!href) return null
   try {
-    return new URL(href, base).toString()
+    const url = new URL(href, base)
+    return SAFE_SCHEMES.has(url.protocol) ? url.toString() : null
   } catch {
     return null
   }
 }
+
+export const absUrl = safeUrl
 
 export function clean(str) {
   return (str || '').replace(/\s+/g, ' ').trim()
