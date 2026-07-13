@@ -98,11 +98,19 @@ if (diag.loginForm) {
   process.exit(1)
 }
 
-// Extract post {permalink, image} pairs currently in the DOM. Facebook
-// VIRTUALIZES the feed (offscreen posts are removed), so we run this after
-// every scroll and accumulate — extracting only once would miss most posts.
-const extractVisible = () =>
-  page.evaluate(() => {
+// Read the "Other posts" boundary + every post currently in the DOM. Facebook
+// VIRTUALIZES the feed (offscreen posts are removed, only ~2-3 articles exist at
+// any moment), so we run this after every scroll and accumulate — extracting
+// once would only ever see the top of the wall.
+const survey = () =>
+  page.evaluate((boundarySrc) => {
+    // Posts above the "Other posts" heading are pinned/featured — excluded.
+    const rx = new RegExp(boundarySrc, 'i')
+    const heading = [...document.querySelectorAll('h2,h3,h4,span,div[role="heading"]')].find((e) =>
+      rx.test((e.textContent || '').trim()),
+    )
+    const boundaryY = heading ? heading.getBoundingClientRect().top + window.scrollY : null
+
     const POST_RX = /pfbid|\/posts\/|story_fbid|[?&]fbid=|\/videos\/|\/reel\//
     const permalinkFor = (node) => {
       let el = node
@@ -122,7 +130,7 @@ const extractVisible = () =>
         h.match(/\/(?:videos|reel)\/(\d+)/)
       return m ? m[0] : h
     }
-    const out = []
+    const posts = []
     for (const im of document.querySelectorAll('img')) {
       // Only real content photos (t39...); skip profile/cover pics (t1.6435-9)
       // and small avatars/icons/reaction thumbs.
@@ -134,34 +142,44 @@ const extractVisible = () =>
       const permalink = permalinkFor(im)
       if (!permalink) continue
       const absY = rect.top + window.scrollY // stable document position
-      out.push({ id: idOf(permalink), permalink, image: im.src, absY })
+      posts.push({ id: idOf(permalink), permalink, image: im.src, absY })
     }
-    return out
-  })
-
-// Absolute Y of the "Other posts" heading; posts above it are pinned/featured
-// and are excluded. Locked the first time the heading is seen (it may later be
-// removed from the DOM by virtualization).
-const findBoundary = () =>
-  page.evaluate((src) => {
-    const rx = new RegExp(src, 'i')
-    const el = [...document.querySelectorAll('h2,h3,h4,span,div[role="heading"]')].find(
-      (e) => rx.test((e.textContent || '').trim()),
-    )
-    return el ? el.getBoundingClientRect().top + window.scrollY : null
+    return { posts, boundaryY, y: window.scrollY, docHeight: document.documentElement.scrollHeight }
   }, OTHER_POSTS_RX.source)
+
+// Scroll with REAL wheel events on the focused tab. window.scrollBy() does not
+// drive Facebook's infinite loader — the document just runs to its current
+// bottom (~900px) and the wall never grows past the first post. A wheel event on
+// a foregrounded page does, and the document height climbs into the tens of
+// thousands as the feed pages in.
+await page.bringToFront()
+await page.mouse.move(640, 800)
 
 const acc = new Map()
 let boundaryY = null
-for (let i = 0; i < 50 && acc.size < WANT + 5; i++) {
-  if (boundaryY === null) boundaryY = await findBoundary()
-  for (const p of await extractVisible()) if (!acc.has(p.id)) acc.set(p.id, p)
-  await page.evaluate(() => window.scrollBy(0, window.innerHeight * 1.2))
-  await sleep(1800)
+let lastY = -1
+let stuck = 0
+for (let i = 0; i < 60 && acc.size < WANT + 5; i++) {
+  const r = await survey()
+  if (boundaryY === null) boundaryY = r.boundaryY
+  for (const p of r.posts) if (!acc.has(p.id)) acc.set(p.id, p)
+  process.stdout.write(`\r   scrolling… y=${Math.round(r.y)} of ${r.docHeight}, ${acc.size} posts `)
+  // Bottom of the wall: the viewport stops advancing. Facebook pages in lazily,
+  // so give it a few rounds before believing it.
+  if (Math.abs(r.y - lastY) < 2) {
+    if (++stuck >= 4) break
+  } else {
+    stuck = 0
+  }
+  lastY = r.y
+  await page.mouse.wheel({ deltaY: 1200 })
+  await sleep(1500)
   await dismiss()
 }
-if (boundaryY === null) boundaryY = await findBoundary()
-for (const p of await extractVisible()) if (!acc.has(p.id)) acc.set(p.id, p)
+process.stdout.write('\n')
+const last = await survey()
+if (boundaryY === null) boundaryY = last.boundaryY
+for (const p of last.posts) if (!acc.has(p.id)) acc.set(p.id, p)
 await page.screenshot({ path: path.join(root, '.cache/fb-debug.png') }).catch(() => {})
 
 if (boundaryY === null) {
