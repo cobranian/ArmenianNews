@@ -546,52 +546,48 @@ h3:lang(hy) {
 }
 
 /* ============================================================
-   Réseaux sociaux — Facebook + Instagram behind the source-tab
-   rail (.newsfeed__*, shared with the news browser). See Social.jsx.
+   Réseaux sociaux — two strands, both on screen. Facebook and
+   Instagram stack as .shelf carousels, the way the Agenda stacks
+   Switzerland and the world. Nothing hides behind a tab.
+   See Social.jsx.
    ============================================================ */
-/* Legacy #facebook / #instagram deep links land on the merged section. */
-.social__anchor {
-  display: block;
-  position: absolute;
-  top: 0;
-}
-/* Each panel introduces its own network before the shelf. */
-.social__panel-head {
+.social {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
+  gap: clamp(46px, 6vw, 76px);
 }
-.social__panel-head .newsfeed__intro {
-  margin: 0;
+/* #facebook / #instagram anchor their own strand; the nav offset comes from
+   the root's scroll-padding-top, so no scroll-margin is needed here. */
+
+/* A shelf title in two registers: the network in the wire face above, what it
+   carries in the display face below. The network is the source, not the subject. */
+.strand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
-/* "Armenian Art" over an italic gold "by Don Narek" — Facebook has an author,
-   Instagram is a crowd, so only the Facebook panel carries a byline. */
-.social__lede {
-  margin: 0;
+.strand__net {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--apricot);
 }
-.social__lede-main {
-  display: block;
+.strand__name {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3.4vw, 1.9rem);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--text);
 }
-.social__lede-by {
-  display: block;
-  margin-top: 2px;
-  font-family: var(--font-display);
+/* Facebook has an author; Instagram is a crowd. Only one gets a byline. */
+.strand__by {
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: 0.72em;
   letter-spacing: 0.005em;
   color: var(--apricot);
 }
-/* Inside a tab panel the flex gap already spaces the outbound links. */
-.newsfeed__source .fb-fallback,
-.newsfeed__source .ig-accounts {
-  margin-top: 0;
+.strand__by::before {
+  content: ' ';
 }
 
 /* ============================================================
@@ -899,12 +895,9 @@ h3:lang(hy) {
 }
 
 /* ============================================================
-   Source-tab rail — a brand in the display face, a mono meta chip,
-   an apricot rule under the active tab, and a panel of .shelf
-   carousels below. Used twice: the news feed picks a newswire
-   (ArmRadio / Courrier / Nouvelles d'Arménie, chip = language), and
-   the social section picks a network (Facebook / Instagram, chip =
-   post count). See NewsBrowser.jsx and Social.jsx.
+   News feed — source tabs (ArmRadio / Courrier / Nouvelles
+   d'Arménie), each a stack of per-rubric .shelf carousels of
+   article .card items. See NewsBrowser.jsx.
    ============================================================ */
 .newsfeed {
   display: flex;

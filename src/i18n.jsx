@@ -47,6 +47,7 @@ const STRINGS = {
 
     'ig.title': 'Instagram',
     'ig.subtitle': "Une mosaïque d'inspiration arménienne, au hasard",
+    'ig.strand': 'Mosaïque arménienne',
     'ig.shuffle': 'Mélanger',
     'ig.visit': 'Voir le profil',
     'ig.view': 'Voir sur Instagram',
@@ -140,6 +141,7 @@ const STRINGS = {
 
     'ig.title': 'Instagram',
     'ig.subtitle': 'A mosaic of Armenian inspiration, at random',
+    'ig.strand': 'Armenian mosaic',
     'ig.shuffle': 'Shuffle',
     'ig.visit': 'View profile',
     'ig.view': 'View on Instagram',
@@ -233,6 +235,7 @@ const STRINGS = {
 
     'ig.title': 'Instagram',
     'ig.subtitle': 'Հայկական ոգեշնչման խճանկար՝ պատահական',
+    'ig.strand': 'Հայկական խճանկար',
     'ig.shuffle': 'Խառնել',
     'ig.visit': 'Դիտել պրոֆիլը',
     'ig.view': 'Դիտել Instagram-ում',

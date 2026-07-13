@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
@@ -8,12 +8,14 @@ import ig from '../data/instagram.json'
 import feed from '../data/instagram-feed.json'
 
 /* ------------------------------------------------------------------ *
- * Réseaux sociaux — one section, two networks.
+ * Réseaux sociaux — one section, two strands, both on screen.
  *
- * Facebook (Don Narek) and Instagram used to be two separate sections.
- * They answer the same question — "what is the Armenian internet posting
- * right now?" — so they now share one section and the site's existing
- * source-tab idiom (.newsfeed__*, the same rail the news browser uses).
+ * Facebook (Don Narek) and Instagram answer the same question — "what is
+ * the Armenian internet posting right now?" — so they share one section.
+ * They sit as two stacked shelves, the way the Agenda stacks Switzerland
+ * and the world: nothing is hidden behind a tab, you scroll and you see
+ * both. Each shelf names its network in the mono eyebrow and its content
+ * in the display title, because the network is the source, not the subject.
  *
  * Neither network's official embed is used: the Facebook Page Plugin drags
  * in the whole FB chrome and Instagram's embed.js refuses to hydrate behind
@@ -23,9 +25,10 @@ import feed from '../data/instagram-feed.json'
  * so they never hotlink or expire; a post with no image falls back to a
  * deterministic Armenian motif (./motifs.jsx).
  *
- * Cards inside a tab panel must NOT carry .reveal: the scroll observer is
- * one-shot and runs before the inactive panel mounts, so a revealed-gated
- * card would stay invisible forever after a tab switch.
+ * Cards carry no .reveal: inside a horizontally scrolling track, the cards to
+ * the right of the fold never intersect the viewport, so a reveal-gated card
+ * would stay invisible until swiped into view. The shelf itself reveals, which
+ * is what News and Agenda do — the cards ride along.
  * ------------------------------------------------------------------ */
 
 const FB_IMAGES = import.meta.glob('../data/fb/*.{jpg,jpeg,png,webp}', {
@@ -57,6 +60,20 @@ function initials(name = '') {
   const first = parts[0][0]
   const last = parts.length > 1 ? parts[parts.length - 1][0] : ''
   return (first + last).toUpperCase()
+}
+
+/* A shelf title: the network above, in the wire face; what it carries below,
+   in the display face. Facebook has an author, so it gets a byline. */
+function StrandTitle({ network, name, by }) {
+  return (
+    <span className="strand">
+      <span className="strand__net">{network}</span>
+      <span className="strand__name">
+        {name}
+        {by && <em className="strand__by">{by}</em>}
+      </span>
+    </span>
+  )
 }
 
 function FacebookCard({ post, author, view, img }) {
@@ -150,25 +167,8 @@ function InstagramCard({ url, handle, name, view, img }) {
   )
 }
 
-/* The two networks were linked to as #facebook and #instagram for months, so
-   those anchors keep working: they still scroll here, and they open their own
-   tab rather than dumping the reader on whichever tab happened to be active. */
-const TAB_FOR_HASH = { '#facebook': 'fb', '#instagram': 'ig' }
-const tabFromHash = () => TAB_FOR_HASH[window.location.hash] || 'fb'
-
 export function Social() {
   const { t } = useI18n()
-  const tabRefs = useRef({})
-  const [active, setActive] = useState(tabFromHash)
-
-  useEffect(() => {
-    const onHash = () => {
-      const tab = TAB_FOR_HASH[window.location.hash]
-      if (tab) setActive(tab)
-    }
-    window.addEventListener('hashchange', onHash)
-    return () => window.removeEventListener('hashchange', onHash)
-  }, [])
 
   // Newest first; cap at the last 20 posts.
   const fbPosts = useMemo(
@@ -192,31 +192,8 @@ export function Social() {
     return base.map((p) => ({ ...p, img: igImg[shortcode(p.url)] || null }))
   }, [])
 
-  const tabs = [
-    { id: 'fb', brand: 'Facebook', count: fbPosts.length },
-    { id: 'ig', brand: 'Instagram', count: igPosts.length },
-  ]
-
-  // Roving-tab keyboard nav across the two networks.
-  const onKeyDown = (e) => {
-    const i = tabs.findIndex((s) => s.id === active)
-    let next = null
-    if (e.key === 'ArrowRight') next = (i + 1) % tabs.length
-    else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length
-    else if (e.key === 'Home') next = 0
-    else if (e.key === 'End') next = tabs.length - 1
-    if (next == null) return
-    e.preventDefault()
-    setActive(tabs[next].id)
-    tabRefs.current[tabs[next].id]?.focus()
-  }
-
-  const panelId = `social-panel-${active}`
-
   return (
     <section className="section" id="reseaux">
-      <span className="social__anchor" id="facebook" aria-hidden="true" />
-      <span className="social__anchor" id="instagram" aria-hidden="true" />
       <div className="container">
         <SectionHead
           eyebrow="Facebook · Instagram"
@@ -224,110 +201,72 @@ export function Social() {
           subtitle={t('social.subtitle')}
         />
 
-        <div className="newsfeed">
-          <div className="newsfeed__tabs" role="tablist" aria-label={t('social.title')}>
-            {tabs.map((tab) => {
-              const isActive = tab.id === active
-              return (
-                <button
-                  key={tab.id}
-                  ref={(el) => (tabRefs.current[tab.id] = el)}
-                  type="button"
-                  role="tab"
-                  id={`social-tab-${tab.id}`}
-                  aria-selected={isActive}
-                  aria-controls={isActive ? panelId : undefined}
-                  tabIndex={isActive ? 0 : -1}
-                  className={`newsfeed__tab ${isActive ? 'is-active' : ''}`}
-                  onClick={() => setActive(tab.id)}
-                  onKeyDown={onKeyDown}
-                >
-                  <span className="newsfeed__tab-brand">{tab.brand}</span>
-                  <span className="newsfeed__tab-lang">{tab.count}</span>
-                </button>
-              )
-            })}
-          </div>
+        <div className="social">
+          {/* The networks were linked to as #facebook and #instagram for months.
+              Those anchors now land on their own strand, not just the section. */}
+          {fbPosts.length > 0 && (
+            <div className="social__strand" id="facebook">
+              <Carousel
+                label={t('fb.title')}
+                title={
+                  <StrandTitle network="Facebook" name={t('fb.title')} by={t('fb.by')} />
+                }
+              >
+                {fbPosts.map((p) => (
+                  <FacebookCard
+                    key={p.id || p.url}
+                    post={p}
+                    author={fb.page}
+                    img={p.img}
+                    view={t('fb.view')}
+                  />
+                ))}
+              </Carousel>
 
-          <section
-            className="newsfeed__source"
-            role="tabpanel"
-            id={panelId}
-            aria-labelledby={`social-tab-${active}`}
-            key={active}
-          >
-            {active === 'fb' ? (
-              <>
-                {/* Facebook has an author; the section title no longer names him,
-                    so the "Art arménien / par Don Narek" lockup lives here. */}
-                <header className="social__panel-head">
-                  <p className="social__lede">
-                    <span className="social__lede-main">{t('fb.title')}</span>
-                    <span className="social__lede-by">{t('fb.by')}</span>
-                  </p>
-                  <p className="newsfeed__intro">{t('fb.subtitle')}</p>
-                </header>
+              <p className="fb-fallback">
+                <a href={fb.url} target="_blank" rel="noopener noreferrer">
+                  {t('fb.fallback')} →
+                </a>
+              </p>
+            </div>
+          )}
 
-                {fbPosts.length > 0 && (
-                  <Carousel label={t('fb.title')} reveal={false}>
-                    {fbPosts.map((p) => (
-                      <FacebookCard
-                        key={p.id || p.url}
-                        post={p}
-                        author={fb.page}
-                        img={p.img}
-                        view={t('fb.view')}
-                      />
-                    ))}
-                  </Carousel>
-                )}
+          {igPosts.length > 0 && (
+            <div className="social__strand" id="instagram">
+              <Carousel
+                label="Instagram"
+                title={<StrandTitle network="Instagram" name={t('ig.strand')} />}
+              >
+                {igPosts.map((p) => (
+                  <InstagramCard
+                    key={p.url}
+                    url={p.url}
+                    handle={p.handle}
+                    name={p.name}
+                    img={p.img}
+                    view={t('ig.view')}
+                  />
+                ))}
+              </Carousel>
 
-                <p className="fb-fallback">
-                  <a href={fb.url} target="_blank" rel="noopener noreferrer">
-                    {t('fb.fallback')} →
+              {/* Account chips: entry points, and a graceful fallback for
+                  accounts with no curated permalinks yet. */}
+              <div className="ig-accounts">
+                {ig.accounts.map((acc) => (
+                  <a
+                    key={acc.handle}
+                    className="ig-chip"
+                    href={acc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={t('ig.visit')}
+                  >
+                    <span aria-hidden="true">◎</span> @{acc.handle}
                   </a>
-                </p>
-              </>
-            ) : (
-              <>
-                <header className="social__panel-head">
-                  <p className="newsfeed__intro">{t('ig.subtitle')}</p>
-                </header>
-
-                {igPosts.length > 0 && (
-                  <Carousel label="Instagram" reveal={false}>
-                    {igPosts.map((p) => (
-                      <InstagramCard
-                        key={p.url}
-                        url={p.url}
-                        handle={p.handle}
-                        name={p.name}
-                        img={p.img}
-                        view={t('ig.view')}
-                      />
-                    ))}
-                  </Carousel>
-                )}
-
-                {/* Account chips: entry points, and a graceful fallback for
-                    accounts with no curated permalinks yet. */}
-                <div className="ig-accounts">
-                  {ig.accounts.map((acc) => (
-                    <a
-                      key={acc.handle}
-                      className="ig-chip"
-                      href={acc.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={t('ig.visit')}
-                    >
-                      <span aria-hidden="true">◎</span> @{acc.handle}
-                    </a>
-                  ))}
-                </div>
-              </>
-            )}
-          </section>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

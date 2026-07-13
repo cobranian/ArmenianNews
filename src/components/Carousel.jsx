@@ -34,7 +34,9 @@ export function Carousel({ title, label, children, reveal = true }) {
     el.scrollBy({ left: dir * Math.max(el.clientWidth * 0.85, 240), behavior: 'smooth' })
   }
 
-  const name = (title || label || '').trim()
+  // `title` may be a node (see Social.jsx), which cannot name the arrows —
+  // fall back to `label` for the accessible name in that case.
+  const name = String(typeof title === 'string' ? title : label || '').trim()
 
   return (
     <div className={`shelf${reveal ? ' reveal' : ''}`}>
