@@ -170,9 +170,10 @@ function InstagramCard({ url, handle, name, view, img }) {
 export function Social() {
   const { t } = useI18n()
 
-  // Newest first; cap at the last 20 posts.
+  // Newest first; cap at the last 30 posts — matches WANT in scripts/fb-scrape.mjs,
+  // so a slice here never silently hides posts the scraper bothered to harvest.
   const fbPosts = useMemo(
-    () => (fb.posts || []).slice(0, 20).map((p) => ({ ...p, img: fbImg[p.image] || null })),
+    () => (fb.posts || []).slice(0, 30).map((p) => ({ ...p, img: fbImg[p.image] || null })),
     [],
   )
 
