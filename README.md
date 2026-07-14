@@ -18,7 +18,7 @@ Vite + React app that renders those files. No backend at runtime.
 | **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
 | **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
 | **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 10 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
-| **Instagram** | 9 curated accounts | A swipeable **carousel** (‹ › arrows) of curated post tiles. Which posts show, and in what order, is **re-randomised every hour** by the snapshot job. |
+| **Instagram** | 8 curated accounts | A swipeable **carousel** (‹ › arrows) of post tiles. The **9 latest posts** of each account are harvested by a local script (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job. |
 
 Each source **fails independently and degrades gracefully**: on an empty/failed
 scrape, the orchestrator backfills that source from the previous snapshot
@@ -29,6 +29,7 @@ instead of blanking it, so a transient upstream failure never wipes a section.
 ```bash
 npm install
 npm run scrape      # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
+npm run ig-scrape   # refresh the Instagram pool (local, logged-in Chrome — never in CI)
 npm run dev         # http://localhost:5173/
 npm run build       # production build into dist/
 npm run preview
@@ -36,44 +37,55 @@ npm run screenshot  # after build: capture the Don Narek carousel into dist/don-
 ```
 
 `npm run scrape` refreshes **news + agenda**, and re-randomises the **Instagram
-selection** (`instagram-feed.json`) from the curated pool. The Instagram post
-**pool** (`instagram.json`) and Facebook data are curated by hand (see below) and
-are never overwritten.
+selection** (`instagram-feed.json`) from the pool. It never touches the pool
+itself.
+
+The two social walls are refreshed by **manual, local, logged-in-session steps**
+— `npm run ig-scrape` (Instagram) and `scripts/fb-scrape.mjs` (Don Narek) — because
+both networks block CI datacenter IPs. Neither runs hourly; see below.
 
 ## Curating the social feeds
 
 ### Instagram — `src/data/instagram.json`
 
-Instagram blocks automated scraping, so the post **pool** is a hand-curated list
-of permalinks. The hourly job shuffles that pool into `instagram-feed.json` (a
-fresh random selection + order each hour); the carousel renders from it.
+Instagram blocks scraping from CI, so the post **pool** is built locally by
+`npm run ig-scrape` (see [Refreshing the Instagram
+pool](#refreshing-the-instagram-pool)). The **account list** is hand-curated and
+the scraper never touches it; each account's **posts** are harvested — currently
+**8 accounts × 9 posts = 72**. The hourly job shuffles that pool into
+`instagram-feed.json` (a fresh random selection + order each hour); the carousel
+renders from it.
 
-**To add a post:**
-
-1. Open the post on instagram.com and copy its URL
-   (`https://www.instagram.com/p/XXXXXXX/` or `/reel/XXXXXXX/`).
-2. Paste it into the matching account's `permalinks` array.
+Each post is a `{url, date}` pair, the date being the post's real timestamp:
 
 ```json
 {
   "handle": "armeniancuisine",
+  "name": "Armenian Cuisine",
   "url": "https://www.instagram.com/armeniancuisine/",
-  "permalinks": [
-    "https://www.instagram.com/p/ABC123/",
-    "https://www.instagram.com/reel/DEF456/"
+  "posts": [
+    { "url": "https://www.instagram.com/p/ABC123/", "date": "2026-07-12T04:51:48.000Z" },
+    { "url": "https://www.instagram.com/reel/DEF456/", "date": "2026-07-09T18:02:11.000Z" }
   ]
 }
 ```
 
-3. *(Optional, for a real photo)* save the post's image as
-   `src/data/ig/<shortcode>.jpg` — the shortcode is the code after `/p/`,
-   `/reel/` or `/tv/` (e.g. `ABC123.jpg`). It's bundled at build time, so it
-   never hotlinks or expires. **Without an image, the tile shows a deterministic
-   Armenian motif** (still on-brand) — so a permalink alone is enough.
+**To add a post by hand** (the harvest will overwrite it on the next run, so this
+is for one-offs): add a `{url, date}` entry to the matching account's `posts`
+array, and *(optional, for a real photo)* save the post's image as
+`src/data/ig/<shortcode>.jpg` — the shortcode is the code after `/p/`, `/reel/`
+or `/tv/` (e.g. `ABC123.jpg`). It's bundled at build time, so it never hotlinks
+or expires. **Without an image, the tile shows a deterministic Armenian motif**
+(still on-brand) — so a permalink alone is enough.
+
+**To add an account**, add it to the `accounts` array by hand, then re-run the
+harvest to populate its posts. Note that an Instagram handle **cannot contain a
+hyphen** — a handle with one (e.g. `armenian-trend`) 404s and the account is
+dropped from the run.
 
 The snapshot selects up to **30** posts per hour (`selectInstagram(30)` in
-`scripts/sources/instagram.mjs`); bump that number if the pool grows beyond 30.
-Accounts with no permalinks simply appear as a profile chip linking to Instagram.
+`scripts/sources/instagram.mjs`); bump that number if the pool grows well beyond
+30. Accounts with no posts simply appear as a profile chip linking to Instagram.
 
 ### Facebook (Don Narek) — `src/data/facebook.json`
 
@@ -144,6 +156,62 @@ Notes:
 - `--connect` requires the debug Chrome to be running; without it the script
   launches its own (logged-out) Chrome, which Facebook redirects to a login wall.
 
+### Refreshing the Instagram pool
+
+The hourly job only **re-shuffles** the pool: without a harvest, the wall re-serves
+the same posts forever *while looking fresh*. Re-run this every few weeks.
+
+Instagram can't be scraped from CI (it requires a logged-in session and blocks
+datacenter IPs), so — exactly like Don Narek — the harvest is a **manual local
+step**. `scripts/ig-scrape.mjs` drives your own logged-in Chrome and calls
+Instagram's profile-grid feed from *inside* the logged-in page: one request per
+account, which keeps it under Instagram's rate limiter and yields exact
+timestamps.
+
+```bash
+# 1. Launch a dedicated Chrome with remote debugging + its own profile.
+"C:/Program Files/Google/Chrome/Application/chrome.exe" \
+  --remote-debugging-port=9222 \
+  --user-data-dir=".cache/ig-chrome-profile" \
+  https://www.instagram.com/
+
+# 2. Log into Instagram in that window (ONE time — the session persists in
+#    .cache/, which is gitignored, so cookies never get committed).
+
+# 3. Harvest (attaches to that Chrome via the debug port):
+npm run ig-scrape -- --connect --dry   # report what it finds, writes nothing
+npm run ig-scrape -- --connect         # download images + rewrite the pool
+
+# 4. Verify, then publish:
+npm run scrape && npm run build
+git add src/data/instagram.json src/data/instagram-feed.json src/data/ig && git commit && git push
+```
+
+It rewrites `src/data/instagram.json` with the **9 latest posts** of each account
+(dated, newest first) plus their images in `src/data/ig/`, and deletes images no
+post points at any more. A failing account **keeps its previous posts**; if *no*
+account succeeds, nothing is written and it exits non-zero — an intact pool beats
+a gutted one.
+
+Notes:
+- Without a logged-in session the script stops up front (`✗ Not logged in`)
+  rather than reporting eight independent failures.
+- **The wall's freshness is capped by how active the accounts actually are.** Two
+  of the eight are dormant — `ig_armenia` hasn't posted since **June 2023**,
+  `armeniancuisine` since **November 2025** — so their old posts show up on the
+  wall and *no amount of re-harvesting will change that*: the script faithfully
+  reports what the account publishes. To genuinely freshen the wall, **remove or
+  replace those accounts by hand** in the `accounts` array. This is a deliberate
+  editorial choice, not a bug.
+- It calls the profile-grid feed (`/api/v1/feed/user/<handle>/username/`), **not**
+  `web_profile_info`. The latter is the endpoint every guide online suggests, and
+  it's a trap: it still answers `200` with the account's bio and post *count*, but
+  its `edges` array comes back **empty** — which reads as a working call that found
+  no posts, rather than as a breakage. Don't "fix" the script by switching to it.
+- Instagram's markup and endpoints shift; if a run starts returning
+  `unexpected payload shape`, the endpoint moved — fix it there, don't fall back
+  to scraping the DOM.
+
 ## Newswire source chain (armradio)
 
 `en.armradio.am` is a WordPress site behind Cloudflare, which serves an
@@ -203,7 +271,8 @@ Vite `base` defaults to `/` (Firebase serves from the domain root); override wit
 - `armradio.am` and Instagram are both blocked from CI datacenter IPs
   (Cloudflare / anti-scraping). The newswire works around this with the
   [source chain](#newswire-source-chain-armradio) (Cloudflare Worker proxy first,
-  then REST/RSS/Google News fallbacks); the Instagram pool is curated by hand.
+  then REST/RSS/Google News fallbacks); the Instagram pool is harvested **locally**
+  ([`npm run ig-scrape`](#refreshing-the-instagram-pool)), like Don Narek.
 - GitHub Actions scheduled runs can be delayed a few minutes under load — the
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
