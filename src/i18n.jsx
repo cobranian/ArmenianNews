@@ -54,6 +54,7 @@ const STRINGS = {
     'ig.view': 'Voir sur Instagram',
 
     'footer.built': "Instantané statique · sources liées à leurs sites d'origine",
+    'footer.write': 'Écrivez-nous',
     'footer.sources': 'Sources',
 
     'sections.actualite': 'Actualités',
@@ -149,6 +150,7 @@ const STRINGS = {
     'ig.view': 'View on Instagram',
 
     'footer.built': 'Static snapshot · sources linked to their original sites',
+    'footer.write': 'Write to us',
     'footer.sources': 'Sources',
 
     'sections.actualite': 'News',
@@ -244,6 +246,7 @@ const STRINGS = {
     'ig.view': 'Դիտել Instagram-ում',
 
     'footer.built': 'Ստատիկ պատկեր · աղբյուրները կապված են իրենց կայքերին',
+    'footer.write': 'Գրեք մեզ',
     'footer.sources': 'Աղբյուրներ',
 
     'sections.actualite': 'Լուրեր',

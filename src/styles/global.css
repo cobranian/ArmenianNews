@@ -1875,6 +1875,29 @@ h3:lang(hy) {
 .footer__sources a:hover {
   color: var(--apricot-ink-strong);
 }
+/* The address is the only thing in the footer you are invited to act on, so it
+   takes the apricot the sources and the colophon deliberately don't. */
+.footer__contact {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  margin: 0 0 14px;
+}
+.footer__contact a {
+  color: var(--apricot-ink-strong);
+  border-bottom: 1px solid var(--line-apricot);
+  padding-bottom: 2px;
+  margin-left: 6px;
+}
+.footer__contact a:hover {
+  border-bottom-color: currentColor;
+}
+.footer__contact a:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 .footer__note {
   font-family: var(--font-mono);
   font-size: 0.72rem;

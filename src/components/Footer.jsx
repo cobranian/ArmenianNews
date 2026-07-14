@@ -9,6 +9,8 @@ const SOURCES = [
   ['Don Narek', 'https://www.facebook.com/DonNarek'],
 ]
 
+const CONTACT = 'contact@armenieinfo.ch'
+
 export function Footer() {
   const { t } = useI18n()
   return (
@@ -23,6 +25,12 @@ export function Footer() {
             </a>
           ))}
         </nav>
+        {/* The one thing here you can act on, so it carries the apricot — the
+            sources are dim, the colophon fainter still. */}
+        <p className="footer__contact">
+          {t('footer.write')}{' '}
+          <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
+        </p>
         <p className="footer__note">{t('footer.built')}</p>
       </div>
     </footer>
