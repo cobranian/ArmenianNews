@@ -51,10 +51,18 @@ l'historique des comptes peu actifs qu'on réintroduirait des posts anciens.
 
 ## Approche : l'endpoint JSON, pas le DOM
 
-Instagram alimente son propre front avec `web_profile_info`, qui renvoie pour un
-compte, en **une requête**, ses derniers posts avec `shortcode`,
-`taken_at_timestamp` et l'URL de l'image. On l'appelle depuis le contexte de la
-page connectée : les cookies de session partent avec la requête.
+Instagram alimente son propre front avec `/api/v1/feed/user/<handle>/username/`,
+qui renvoie pour un compte, en **une requête**, ses derniers posts avec `code`
+(le shortcode), `taken_at` et l'URL de l'image, déjà triés du plus récent au plus
+ancien. On l'appelle depuis le contexte de la page connectée : les cookies de
+session partent avec la requête.
+
+> **Piège, vérifié en le prenant en pleine face.** L'endpoint que documente tout
+> l'Internet est `web_profile_info`. Il répond toujours **200**, avec la bio du
+> compte et son **nombre** de posts — mais son tableau `edges` revient désormais
+> **vide**. Ça ne se lit pas comme une panne : ça se lit comme un compte sans
+> publication. C'est le mode d'échec le plus dangereux qui soit, et c'est
+> exactement celui qu'on vient de corriger sur armradio. Ne pas y revenir.
 
 L'alternative — calquer `fb-scrape.mjs` et scraper le DOM — demanderait d'ouvrir
 les 9 profils **puis chacun des 81 posts** pour lire sa date, soit ~90

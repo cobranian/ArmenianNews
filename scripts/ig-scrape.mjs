@@ -85,22 +85,31 @@ if (!cookies.some((c) => c.name === 'sessionid' && c.value)) {
 
 // One request per account, issued from the page so the session cookies ride
 // along. Throws on a non-200 — the caller degrades that account.
+//
+// This is the profile-grid feed. Its sibling `web_profile_info` is the endpoint
+// you'll find in every guide online, and it still answers 200 with the account's
+// bio and post COUNT — but its `edges` array now comes back empty, so it reads as
+// a working call that found no posts. Don't go back to it.
 const harvest = (handle) =>
   page.evaluate(
     async (h, appId) => {
       const res = await fetch(
-        `/api/v1/users/web_profile_info/?username=${encodeURIComponent(h)}`,
+        `/api/v1/feed/user/${encodeURIComponent(h)}/username/?count=12`,
         { headers: { 'x-ig-app-id': appId }, credentials: 'include' },
       )
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const json = await res.json()
-      const edges = json?.data?.user?.edge_owner_to_timeline_media?.edges
-      if (!Array.isArray(edges)) throw new Error('unexpected payload shape')
-      return edges.map(({ node }) => ({
-        shortcode: node.shortcode,
-        ts: node.taken_at_timestamp,
-        image: node.display_url,
-        isVideo: !!node.is_video,
+      if (!Array.isArray(json?.items)) throw new Error('unexpected payload shape')
+      return json.items.map((it) => ({
+        shortcode: it.code,
+        ts: it.taken_at,
+        // A carousel post carries no image of its own — its first slide does.
+        image:
+          it.image_versions2?.candidates?.[0]?.url ||
+          it.carousel_media?.[0]?.image_versions2?.candidates?.[0]?.url ||
+          null,
+        // 1 = photo, 2 = video/reel, 8 = carousel.
+        isVideo: it.media_type === 2,
       }))
     },
     handle,
