@@ -85,15 +85,13 @@ await sleep(4000)
 await dismiss()
 await sleep(2000)
 
-const diag = await page.evaluate(() => ({
-  title: document.title,
-  url: location.href,
-  loginForm: !!document.querySelector('input[name="email"], input[type="password"]'),
-  bodyText: document.body.innerText.replace(/\s+/g, ' ').slice(0, 160),
-}))
-console.log('DIAG', JSON.stringify(diag))
-if (diag.loginForm) {
-  console.log('Not logged in — log into Facebook in the debug Chrome window, then retry.')
+// Test the session COOKIE, not the DOM. Logged out, Facebook may serve a
+// "Continue as…" chooser with no email field in it — so hunting for one concludes
+// we ARE logged in, and the run then scrolls a login page, finds zero posts, and
+// dies on a navigation instead of saying the one thing that is wrong.
+const cookies = await page.cookies('https://www.facebook.com')
+if (!cookies.some((c) => c.name === 'c_user' && c.value)) {
+  console.log('✗ Not logged in — log into Facebook in the debug Chrome window, then retry.')
   await finish()
   process.exit(1)
 }
