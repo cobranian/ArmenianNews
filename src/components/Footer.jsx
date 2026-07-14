@@ -6,6 +6,7 @@ const SOURCES = [
   ['Public Radio of Armenia', 'https://en.armradio.am/'],
   ['Armenopole', 'https://armenopole.com/armenian/events/switzerland'],
   ['Arméniens de Lausanne', 'https://armeniensdelausanne.ch/#evenements'],
+  ['École arménienne de Lausanne', 'https://ecolearmeniennedelausanne.ch/'],
   ['Don Narek', 'https://www.facebook.com/DonNarek'],
 ]
 
