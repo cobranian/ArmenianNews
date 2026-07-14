@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "scrape": "node scripts/scrape.mjs",
+    "ig-scrape": "node scripts/ig-scrape.mjs",
     "screenshot": "node scripts/shoot.mjs"
   },
   "dependencies": {
