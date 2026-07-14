@@ -188,10 +188,20 @@ export function Social() {
               url: p.url,
               handle: acc.handle,
               name: acc.name,
+              group: acc.group || 'institutions',
             })),
           )
     return base.map((p) => ({ ...p, img: igImg[shortcode(p.url)] || null }))
   }, [])
+
+  // The wall reads as two strands: the places and institutions that carry
+  // Armenian life, and the people who are its face. Each account declares its
+  // own strand in instagram.json; anything unlabelled falls in with the former.
+  const igStrands = [
+    { id: 'instagram', group: 'institutions', title: t('ig.strand') },
+    { id: 'instagram-visages', group: 'personnalites', title: t('ig.strand.people') },
+  ]
+  const inGroup = (group) => (p) => (p.group || 'institutions') === group
 
   return (
     <section className="section" id="reseaux">
@@ -232,13 +242,16 @@ export function Social() {
             </div>
           )}
 
-          {igPosts.length > 0 && (
-            <div className="social__strand" id="instagram">
+          {igStrands.map(({ id, group, title }) => {
+            const posts = igPosts.filter(inGroup(group))
+            if (!posts.length) return null
+            return (
+            <div className="social__strand" id={id} key={id}>
               <Carousel
                 label="Instagram"
-                title={<StrandTitle network="Instagram" name={t('ig.strand')} />}
+                title={<StrandTitle network="Instagram" name={title} />}
               >
-                {igPosts.map((p) => (
+                {posts.map((p) => (
                   <InstagramCard
                     key={p.url}
                     url={p.url}
@@ -253,7 +266,7 @@ export function Social() {
               {/* Account chips: entry points, and a graceful fallback for
                   accounts with no harvested posts yet. */}
               <div className="ig-accounts">
-                {ig.accounts.map((acc) => (
+                {ig.accounts.filter((acc) => inGroup(group)(acc)).map((acc) => (
                   <a
                     key={acc.handle}
                     className="ig-chip"
@@ -267,7 +280,8 @@ export function Social() {
                 ))}
               </div>
             </div>
-          )}
+            )
+          })}
         </div>
       </div>
     </section>

@@ -186,7 +186,7 @@ const accounts = []
 for (const { acc, posts, ok } of results) {
   if (!ok) {
     // Degrade this account alone, exactly as scrape.mjs backfills a dead source.
-    accounts.push({ handle: acc.handle, name: acc.name, url: acc.url, posts: previousPosts(acc) })
+    accounts.push({ ...acc, posts: previousPosts(acc) })
     continue
   }
   const kept = []
@@ -199,7 +199,9 @@ for (const { acc, posts, ok } of results) {
     }
     kept.push({ url: permalink(p), date: new Date(p.ts * 1000).toISOString() })
   }
-  accounts.push({ handle: acc.handle, name: acc.name, url: acc.url, posts: kept })
+  // Spread the curated account so hand-maintained fields (name, url, group…)
+  // survive the rewrite — the scraper owns `posts`, and nothing else.
+  accounts.push({ ...acc, posts: kept })
 }
 
 const json = {
