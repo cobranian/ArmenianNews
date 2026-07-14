@@ -1,138 +1,348 @@
 {
-  "_comment": "Instagram POOL — recent public posts, harvested periodically with a headless browser (IG blocks plain scraping/APIs). It's a point-in-time snapshot, static between harvests; the hourly job re-randomises which posts show and in what order into instagram-feed.json (a fresh 'au hasard' mix each hour). Each tile shows the post photo from src/data/ig/<shortcode>.jpg (downloaded at harvest time), else a deterministic Armenian motif. To add/refresh by hand: put the post URL (https://www.instagram.com/p/XXXXXXX/ or /reel/XXXXXXX/) in the account's `permalinks` array and save its image as src/data/ig/XXXXXXX.jpg. Accounts with no permalinks show as a profile chip linking to Instagram.",
+  "_comment": "Instagram POOL — the recent posts of each curated account, harvested by `npm run ig-scrape` (drives a local logged-in Chrome; Instagram blocks CI). The hourly job re-randomises which of these show and in what order into instagram-feed.json. Each tile shows src/data/ig/<shortcode>.jpg, else a deterministic Armenian motif. The `accounts` list is hand-curated — the scraper rewrites their `posts`, never the list itself. Hand-editing a post is fine: add {url, date} and save its image as src/data/ig/<shortcode>.jpg.",
   "accounts": [
     {
       "handle": "ig_armenia",
       "name": "Armenia",
       "url": "https://www.instagram.com/ig_armenia/",
-      "permalinks": [
-        "https://www.instagram.com/p/Ctrt1AbKBmv/",
-        "https://www.instagram.com/p/Cto5B-4qoF1/",
-        "https://www.instagram.com/p/CthSnWwKGVg/",
-        "https://www.instagram.com/p/Cter_tWqrSy/",
-        "https://www.instagram.com/p/CtMmiqmqq1_/",
-        "https://www.instagram.com/p/CtE9eyVKUZ3/",
-        "https://www.instagram.com/p/Cs6zvCNKFRk/",
-        "https://www.instagram.com/p/CsoYnMsKEn8/",
-        "https://www.instagram.com/p/CshAkF7KpTK/",
-        "https://www.instagram.com/p/CseE8O-KYl5/",
-        "https://www.instagram.com/p/CsZaMdOKJz2/",
-        "https://www.instagram.com/p/CsWWkYJqFbi/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/p/Ctrt1AbKBmv/",
+          "date": "2023-06-19T19:06:00.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Cto5B-4qoF1/",
+          "date": "2023-06-18T16:46:10.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/CthSnWwKGVg/",
+          "date": "2023-06-15T17:55:48.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Cter_tWqrSy/",
+          "date": "2023-06-14T17:39:52.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/CtMmiqmqq1_/",
+          "date": "2023-06-07T17:05:52.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/CtE9eyVKUZ3/",
+          "date": "2023-06-04T17:52:24.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Cs6zvCNKFRk/",
+          "date": "2023-05-31T19:14:50.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/CsoYnMsKEn8/",
+          "date": "2023-05-24T15:31:30.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/CshAkF7KpTK/",
+          "date": "2023-05-21T18:46:41.000Z"
+        }
       ]
     },
     {
       "handle": "armeniancreators",
       "name": "Armenian Creators",
       "url": "https://www.instagram.com/armeniancreators/",
-      "permalinks": [
-        "https://www.instagram.com/p/DaNzMyJMGwN/",
-        "https://www.instagram.com/p/DaNyqYFsGig/",
-        "https://www.instagram.com/p/DaNYeXSMFri/",
-        "https://www.instagram.com/p/DaLNznbMCVx/",
-        "https://www.instagram.com/p/DaLL0ZYswhG/",
-        "https://www.instagram.com/p/DaLFQKVsXgZ/",
-        "https://www.instagram.com/p/DaIu82_MKVI/",
-        "https://www.instagram.com/p/DaIXATksGmX/",
-        "https://www.instagram.com/p/DaIFyXlsTTL/",
-        "https://www.instagram.com/p/DaD7_JkMcyl/",
-        "https://www.instagram.com/p/DaD7fyxsjcH/",
-        "https://www.instagram.com/p/DaD32iqMHib/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/p/DarhhX3sCv9/",
+          "date": "2026-07-12T04:51:48.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Daqdh2ZjAqe/",
+          "date": "2026-07-11T18:57:04.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaqGh6pMQUL/",
+          "date": "2026-07-11T15:36:20.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DalVoi2Mf8s/",
+          "date": "2026-07-09T19:11:55.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DalQ60mszfY/",
+          "date": "2026-07-09T18:31:23.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Dak_JHHMriZ/",
+          "date": "2026-07-09T15:55:23.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaiBA9-MjEi/",
+          "date": "2026-07-08T12:14:04.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DahsO_SsXXE/",
+          "date": "2026-07-08T09:12:32.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DahfR6GMdhS/",
+          "date": "2026-07-08T07:19:14.000Z"
+        }
       ]
     },
     {
       "handle": "armenianinstitute",
       "name": "Armenian Institute",
       "url": "https://www.instagram.com/armenianinstitute/",
-      "permalinks": [
-        "https://www.instagram.com/p/DZstx4BDPJ8/",
-        "https://www.instagram.com/p/DZcgakLiC1a/",
-        "https://www.instagram.com/p/DZNqxXFkQ38/",
-        "https://www.instagram.com/p/DY5F_CXoias/",
-        "https://www.instagram.com/p/DYkj3ehEZ7g/",
-        "https://www.instagram.com/p/DYSlYhWRE8A/",
-        "https://www.instagram.com/reel/DYAj7N3xV25/",
-        "https://www.instagram.com/reel/DXotE9piPfh/",
-        "https://www.instagram.com/p/DXhiMpKiJ30/",
-        "https://www.instagram.com/p/DXe_ZVAjnfN/",
-        "https://www.instagram.com/reel/DXPeiFMiOTw/",
-        "https://www.instagram.com/p/DXNB7OCkVZV/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/reel/Das-pXHxOD5/",
+          "date": "2026-07-12T18:28:17.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DZstx4BDPJ8/",
+          "date": "2026-06-17T19:26:09.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DZcgakLiC1a/",
+          "date": "2026-06-11T12:21:32.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DZNqxXFkQ38/",
+          "date": "2026-06-05T18:03:25.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DY5F_CXoias/",
+          "date": "2026-05-28T18:17:15.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DYkj3ehEZ7g/",
+          "date": "2026-05-20T18:54:13.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DYSlYhWRE8A/",
+          "date": "2026-05-13T19:21:11.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DYAj7N3xV25/",
+          "date": "2026-05-06T19:27:54.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DXotE9piPfh/",
+          "date": "2026-04-27T13:03:18.000Z"
+        }
       ]
     },
     {
       "handle": "armeniancuisine",
       "name": "Armenian Cuisine",
       "url": "https://www.instagram.com/armeniancuisine/",
-      "permalinks": [
-        "https://www.instagram.com/reel/DQjyLNdCOGN/",
-        "https://www.instagram.com/p/DQbaSXYDd_B/",
-        "https://www.instagram.com/reel/DQZsnYCDXNq/",
-        "https://www.instagram.com/p/DQZHMg_jcse/",
-        "https://www.instagram.com/reel/DQWrqFVCJlU/",
-        "https://www.instagram.com/p/DQWDtcCDdNN/",
-        "https://www.instagram.com/reel/DCKDurOsGZY/",
-        "https://www.instagram.com/p/DCHXvcAMJdW/",
-        "https://www.instagram.com/p/DCGWN0Fsj-1/",
-        "https://www.instagram.com/p/C9Nxt7PsANt/",
-        "https://www.instagram.com/reel/C9McwFAM4H8/",
-        "https://www.instagram.com/p/C9AVRecszTl/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/reel/DQjyLNdCOGN/",
+          "date": "2025-11-02T15:34:00.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DQbaSXYDd_B/",
+          "date": "2025-10-30T09:26:12.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DQZsnYCDXNq/",
+          "date": "2025-10-29T17:31:03.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DQZHMg_jcse/",
+          "date": "2025-10-29T12:00:53.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DQWrqFVCJlU/",
+          "date": "2025-10-28T13:26:41.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DQWDtcCDdNN/",
+          "date": "2025-10-28T07:32:43.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DCKDurOsGZY/",
+          "date": "2024-11-09T16:23:30.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DCHXvcAMJdW/",
+          "date": "2024-11-08T15:19:37.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DCGWN0Fsj-1/",
+          "date": "2024-11-08T05:47:03.000Z"
+        }
       ]
     },
     {
       "handle": "margarit.armeniandance",
       "name": "Margarit · Armenian Dance",
       "url": "https://www.instagram.com/margarit.armeniandance/",
-      "permalinks": [
-        "https://www.instagram.com/p/DZBDZJ5MWhp/",
-        "https://www.instagram.com/p/DYSziosDP7D/",
-        "https://www.instagram.com/p/DYLOhF5jBbR/",
-        "https://www.instagram.com/p/DYAksrtDO2w/",
-        "https://www.instagram.com/reel/DRaZoBZjClv/",
-        "https://www.instagram.com/reel/DQmEfaZjB-G/",
-        "https://www.instagram.com/reel/DOb5EEkjLUM/",
-        "https://www.instagram.com/p/DM0lGBdo7EP/",
-        "https://www.instagram.com/reel/DLN3o9yN8J6/",
-        "https://www.instagram.com/reel/DLMRiZuNX3j/",
-        "https://www.instagram.com/p/DLKllTZNyy2/",
-        "https://www.instagram.com/p/DK-UNa7smj4/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/p/DZBDZJ5MWhp/",
+          "date": "2026-05-31T20:31:50.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DYSziosDP7D/",
+          "date": "2026-05-13T21:24:51.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DYLOhF5jBbR/",
+          "date": "2026-05-10T23:10:19.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DYAksrtDO2w/",
+          "date": "2026-05-06T20:10:40.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DRaZoBZjClv/",
+          "date": "2025-11-23T20:33:49.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DQmEfaZjB-G/",
+          "date": "2025-11-03T12:49:14.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DOb5EEkjLUM/",
+          "date": "2025-09-10T20:55:34.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DM0lGBdo7EP/",
+          "date": "2025-08-01T17:56:04.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DLN3o9yN8J6/",
+          "date": "2025-06-22T20:52:45.000Z"
+        }
       ]
     },
     {
       "handle": "eglise.armenienne.geneve",
       "name": "Église arménienne de Genève",
       "url": "https://www.instagram.com/eglise.armenienne.geneve/",
-      "permalinks": [
-        "https://www.instagram.com/p/DaM-8fiOQfB/",
-        "https://www.instagram.com/p/DaJT7Z7DktD/",
-        "https://www.instagram.com/p/DaJQgV-jpOo/",
-        "https://www.instagram.com/p/DaBLGUNOz1i/",
-        "https://www.instagram.com/p/DZ0p_kxjlPt/",
-        "https://www.instagram.com/p/DZVxz4tuUyY/",
-        "https://www.instagram.com/p/DZBOsh7uM1n/",
-        "https://www.instagram.com/p/DYxe3cIucdA/",
-        "https://www.instagram.com/p/DYfttuuDB0U/",
-        "https://www.instagram.com/p/DYaQ1lHOuI0/",
-        "https://www.instagram.com/p/DYUT9nIM2Qy/",
-        "https://www.instagram.com/p/DYSEpjzMqXc/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/p/Dav9GP0judt/",
+          "date": "2026-07-13T22:09:08.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Dau4cKNOlEp/",
+          "date": "2026-07-13T12:09:37.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DabWzxnjqNp/",
+          "date": "2026-07-05T22:09:45.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DabS6AmOi4x/",
+          "date": "2026-07-05T21:37:48.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaM-8fiOQfB/",
+          "date": "2026-06-30T08:14:13.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaJT7Z7DktD/",
+          "date": "2026-06-28T21:58:15.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaJQgV-jpOo/",
+          "date": "2026-06-28T21:28:20.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaBLGUNOz1i/",
+          "date": "2026-06-25T18:08:04.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DZ0p_kxjlPt/",
+          "date": "2026-06-20T21:27:00.000Z"
+        }
       ]
     },
     {
       "handle": "explorearmenia",
       "name": "Explore Armenia",
       "url": "https://www.instagram.com/explorearmenia/",
-      "permalinks": [
-        "https://www.instagram.com/p/DC4CxGrInKa/",
-        "https://www.instagram.com/p/CydlJi7IhTF/",
-        "https://www.instagram.com/p/DBDw9r3otm1/",
-        "https://www.instagram.com/p/CtmOcAvoMFG/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/reel/DasK2kouV9B/",
+          "date": "2026-07-12T10:57:04.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DadF5drMitp/",
+          "date": "2026-07-06T14:22:05.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DZ7bHTuM169/",
+          "date": "2026-06-23T12:32:31.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DZVeGPZOvzR/",
+          "date": "2026-06-08T18:50:22.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DZS5vXoOMLm/",
+          "date": "2026-06-07T18:52:52.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DZM8I1HOxmQ/",
+          "date": "2026-06-05T11:21:01.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DZC86jFMFrf/",
+          "date": "2026-06-01T14:12:25.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DY4NGGYOBfD/",
+          "date": "2026-05-28T10:00:48.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DYwppcEu58b/",
+          "date": "2026-05-25T11:39:49.000Z"
+        }
       ]
     },
     {
       "handle": "theusarmenians",
       "name": "The US Armenians",
       "url": "https://www.instagram.com/theusarmenians/",
-      "permalinks": [
-        "https://www.instagram.com/p/C8u9FJkyt5r/",
-        "https://www.instagram.com/p/CgC7_BOqcs8/"
+      "posts": [
+        {
+          "url": "https://www.instagram.com/reel/DaxqRwxAoad/",
+          "date": "2026-07-14T14:04:42.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Daxm6AngJqF/",
+          "date": "2026-07-14T13:33:42.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DaxjxOkADAB/",
+          "date": "2026-07-14T13:06:17.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/Daw2AJxA349/",
+          "date": "2026-07-14T06:26:56.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DavPuWxlNoD/",
+          "date": "2026-07-13T15:32:39.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DauHllQCLUd/",
+          "date": "2026-07-13T05:02:18.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/p/DauE1QPoJnU/",
+          "date": "2026-07-13T04:39:20.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/DauB18SIm5_/",
+          "date": "2026-07-13T04:13:27.000Z"
+        },
+        {
+          "url": "https://www.instagram.com/reel/Dat_MRIIaXX/",
+          "date": "2026-07-13T03:49:40.000Z"
+        }
       ]
     }
   ]

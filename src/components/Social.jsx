@@ -183,8 +183,8 @@ export function Social() {
       feed.posts && feed.posts.length
         ? feed.posts
         : ig.accounts.flatMap((acc) =>
-            (acc.permalinks || []).map((url) => ({
-              url,
+            (acc.posts || []).map((p) => ({
+              url: p.url,
               handle: acc.handle,
               name: acc.name,
             })),
@@ -250,7 +250,7 @@ export function Social() {
               </Carousel>
 
               {/* Account chips: entry points, and a graceful fallback for
-                  accounts with no curated permalinks yet. */}
+                  accounts with no harvested posts yet. */}
               <div className="ig-accounts">
                 {ig.accounts.map((acc) => (
                   <a

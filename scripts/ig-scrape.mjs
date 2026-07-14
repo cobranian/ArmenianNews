@@ -6,11 +6,11 @@
  * re-shuffles the pool this script writes; without a run, the wall re-serves the
  * same posts forever while looking fresh.
  *
- * It drives a real Chrome on your machine and calls Instagram's own
- * `web_profile_info` endpoint from inside the logged-in page, so the session
- * cookies ride along. That is ONE request per account, where scraping the grid
- * and then each post for its date would be ~90 navigations — enough for
- * Instagram to cut us off with "Please wait a few minutes".
+ * It drives a real Chrome on your machine and calls Instagram's own profile-grid
+ * feed from inside the logged-in page, so the session cookies ride along. That is
+ * ONE request per account, where scraping the grid and then each post for its
+ * date would be ~90 navigations — enough for Instagram to cut us off with
+ * "Please wait a few minutes".
  *
  * Start a Chrome logged into Instagram once (same debug window fb-scrape uses):
  *
@@ -21,7 +21,7 @@
  *   node scripts/ig-scrape.mjs --connect --dry   # report what it finds, write nothing
  *   node scripts/ig-scrape.mjs --connect         # download images + rewrite the pool
  */
-import { readFile } from 'node:fs/promises'
+import { readdir, readFile, unlink, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
@@ -37,6 +37,7 @@ const IG_APP_ID = '936619743392459'
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const POOL = path.join(root, 'src/data/instagram.json')
+const IG_DIR = path.join(root, 'src/data/ig')
 // Dedicated profile so we never clash with your open Chrome (no profile lock).
 const PROFILE = path.join(root, '.cache/ig-chrome-profile')
 
@@ -154,5 +155,72 @@ if (DRY) {
   process.exit(0)
 }
 
-// Task 2 adds the writes here.
+// Nothing worked — the endpoint moved, or the session died mid-run. An intact
+// pool beats a gutted one.
+if (!okCount) {
+  console.log('✗ No account harvested — nothing written.')
+  await finish()
+  process.exit(1)
+}
+
+// Reels live at /reel/<shortcode>/ and photos at /p/<shortcode>/. Social.jsx
+// reads the shortcode out of either, and Instagram redirects between them.
+const permalink = (p) =>
+  `https://www.instagram.com/${p.isVideo ? 'reel' : 'p'}/${p.shortcode}/`
+
+// Instagram's CDN serves the image to anyone with the URL, but wants a plausible
+// referer. A failed download is NOT fatal: the post stays in the pool and its
+// tile falls back to the deterministic Armenian motif (src/components/motifs.jsx).
+async function download(p) {
+  const res = await fetch(p.image, {
+    headers: { referer: 'https://www.instagram.com/', 'user-agent': 'Mozilla/5.0' },
+  })
+  if (!res.ok) throw new Error(`HTTP ${res.status}`)
+  const buf = Buffer.from(await res.arrayBuffer())
+  if (buf.length < 10000) throw new Error(`too small (${buf.length}B)`)
+  await writeFile(path.join(IG_DIR, `${p.shortcode}.jpg`), buf)
+  return buf.length
+}
+
+const accounts = []
+for (const { acc, posts, ok } of results) {
+  if (!ok) {
+    // Degrade this account alone, exactly as scrape.mjs backfills a dead source.
+    accounts.push({ handle: acc.handle, name: acc.name, url: acc.url, posts: previousPosts(acc) })
+    continue
+  }
+  const kept = []
+  for (const p of posts) {
+    try {
+      const bytes = await download(p)
+      console.log(`  ✓ ${p.shortcode}.jpg (${(bytes / 1024).toFixed(0)} KB)`)
+    } catch (err) {
+      console.log(`  ✗ ${p.shortcode}.jpg: ${err.message} — keeping motif fallback`)
+    }
+    kept.push({ url: permalink(p), date: new Date(p.ts * 1000).toISOString() })
+  }
+  accounts.push({ handle: acc.handle, name: acc.name, url: acc.url, posts: kept })
+}
+
+const json = {
+  _comment:
+    'Instagram POOL — the recent posts of each curated account, harvested by `npm run ig-scrape` (drives a local logged-in Chrome; Instagram blocks CI). The hourly job re-randomises which of these show and in what order into instagram-feed.json. Each tile shows src/data/ig/<shortcode>.jpg, else a deterministic Armenian motif. The `accounts` list is hand-curated — the scraper rewrites their `posts`, never the list itself. Hand-editing a post is fine: add {url, date} and save its image as src/data/ig/<shortcode>.jpg.',
+  accounts,
+}
+await writeFile(POOL, JSON.stringify(json, null, 2) + '\n')
+console.log(`\n✓ wrote src/data/instagram.json (${accounts.reduce((n, a) => n + a.posts.length, 0)} posts)`)
+
+// Drop images no post points at any more, so replacing the pool doesn't leave
+// the bundle carrying every photo we have ever harvested.
+const live = new Set(
+  accounts.flatMap((a) => a.posts.map((p) => p.url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1])),
+)
+let dropped = 0
+for (const file of await readdir(IG_DIR)) {
+  if (!file.endsWith('.jpg') || live.has(file.replace(/\.jpg$/, ''))) continue
+  await unlink(path.join(IG_DIR, file))
+  dropped++
+}
+console.log(`✓ removed ${dropped} orphaned image(s) from src/data/ig/`)
+
 await finish()
