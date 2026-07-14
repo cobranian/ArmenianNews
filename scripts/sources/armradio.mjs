@@ -55,25 +55,43 @@ function embeddedCategory(p) {
   return cats.find((name) => !GENERIC_CATS.has(name.toLowerCase())) || null
 }
 
-// WordPress REST API → {title, url, date, image, category}. date_gmt has no
-// zone suffix. image/category are null when the post carries neither.
-function parseRest(json) {
+// One WordPress post → {title, url, date, image, category}, or null if it
+// carries no usable headline. date_gmt has no zone suffix. image/category are
+// null when the post has neither.
+function toItem(p) {
+  const title = decodeEntities(p.title?.rendered)
+  const url = safeUrl(clean(p.link))
+  const d = p.date_gmt ? new Date(`${p.date_gmt}Z`) : null
+  if (!title || !url) return null
+  return {
+    title,
+    url,
+    date: d && !Number.isNaN(d.getTime()) ? d.toISOString() : null,
+    image: embeddedImage(p),
+    category: embeddedCategory(p),
+  }
+}
+
+function parseRestList(json) {
   const posts = JSON.parse(json)
   if (!Array.isArray(posts)) throw new Error('REST API did not return a list')
   return posts
-    .map((p) => {
-      const title = decodeEntities(p.title?.rendered)
-      const url = safeUrl(clean(p.link))
-      const d = p.date_gmt ? new Date(`${p.date_gmt}Z`) : null
-      if (!title || !url) return null
-      return {
-        title,
-        url,
-        date: d && !Number.isNaN(d.getTime()) ? d.toISOString() : null,
-        image: embeddedImage(p),
-        category: embeddedCategory(p),
-      }
-    })
+}
+
+function parseRest(json) {
+  return parseRestList(json).map(toItem).filter(Boolean)
+}
+
+// Same, but keeps only the posts that really carry category `id`. A rubric
+// request must come back with that rubric's posts; if a relay ever answers with
+// something else (a Worker deployed before it understood ?path returned the
+// newswire for every request), every rubric would fill with the same articles
+// and look plausible. Filtering on the category the post declares turns that
+// into an empty rubric, which backfills, instead of silently wrong data.
+function parseRestCategory(json, id) {
+  return parseRestList(json)
+    .filter((p) => Array.isArray(p.categories) && p.categories.includes(id))
+    .map(toItem)
     .filter(Boolean)
 }
 
@@ -159,6 +177,19 @@ const BASE_BY_LANG = {
   hy: 'https://hy.armradio.am',
 }
 
+// Build the URL for one WordPress REST call. When ARMRADIO_PROXY is set the
+// call is relayed through the Worker, which reaches the origin from inside
+// Cloudflare's network. Calling the origin directly from a CI IP earns a 403 on
+// every rubric, and a rubric that 403s is backfilled from the previous snapshot
+// — so without the proxy the whole feed silently freezes on its last good day.
+function wpUrl(lang, path) {
+  if (!PROXY) return `${BASE_BY_LANG[lang] || BASE_BY_LANG.en}${path}`
+  const url = new URL(PROXY)
+  url.searchParams.set('lang', lang)
+  url.searchParams.set('path', path)
+  return url.toString()
+}
+
 // The ArmRadio rubrics offered in the news feed, paired with their WordPress
 // category slug (English site). `key` matches i18n 'armcats.*'.
 export const ARMRADIO_SECTIONS = [
@@ -181,13 +212,13 @@ const HY_CATEGORY_IDS = {
 }
 
 // Resolve each rubric key → numeric category id for a given language site.
-async function categoryIdsByKey(lang, base) {
+async function categoryIdsByKey(lang) {
   if (lang === 'hy') return { ...HY_CATEGORY_IDS }
   // English site: resolve slug→id from the categories endpoint.
   const wanted = new Set(ARMRADIO_SECTIONS.map((s) => s.slug))
   const idBySlug = {}
   try {
-    const catsUrl = `${base}/wp-json/wp/v2/categories?per_page=100&_fields=id,slug`
+    const catsUrl = wpUrl(lang, '/wp-json/wp/v2/categories?per_page=100&_fields=id,slug')
     for (const c of JSON.parse(await fetchText(catsUrl))) {
       if (wanted.has(c.slug)) idBySlug[c.slug] = c.id
     }
@@ -202,11 +233,11 @@ async function categoryIdsByKey(lang, base) {
 // Per-category articles for the news feed, in `lang` (en | hy). The posts
 // endpoint filters by numeric category id, so we resolve key→id first, then
 // pull each rubric's latest `limit` posts picture-ready via _embed. Only the
-// REST API can do this, so a blocked call yields empty rubrics that scrape.mjs
-// backfills from the previous snapshot.
+// REST API can do this — hence wpUrl(), which routes it through the proxy. A
+// rubric that still fails yields empty articles, which scrape.mjs backfills
+// from the previous snapshot.
 export async function scrapeArmradioSections(limit = 10, lang = 'en') {
-  const base = BASE_BY_LANG[lang] || BASE_BY_LANG.en
-  const idByKey = await categoryIdsByKey(lang, base)
+  const idByKey = await categoryIdsByKey(lang)
 
   const out = []
   for (const section of ARMRADIO_SECTIONS) {
@@ -216,8 +247,9 @@ export async function scrapeArmradioSections(limit = 10, lang = 'en') {
       continue
     }
     try {
-      const url = `${base}/wp-json/wp/v2/posts?categories=${id}&per_page=${limit}&_embed=1`
-      const articles = parseRest(await fetchText(url))
+      const url = wpUrl(lang, `/wp-json/wp/v2/posts?categories=${id}&per_page=${limit}&_embed=1`)
+      const articles = parseRestCategory(await fetchText(url), id)
+      if (!articles.length) throw new Error(`no posts in category ${id}`)
       out.push({ categoryKey: section.key, articles })
       console.log(`  ✓ armradio/${lang}/${section.slug} (${articles.length})`)
     } catch (err) {

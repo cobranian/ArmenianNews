@@ -11,6 +11,27 @@ gives the scraper a stable path to the feed. `scripts/sources/armradio.mjs`
 tries it first (via the `ARMRADIO_PROXY` env var) and still falls back to the
 REST API → direct feed → Google News if it's unset or fails.
 
+The worker answers two kinds of request:
+
+| Request | Serves |
+| --- | --- |
+| `GET /` | the newswire headlines (REST, falling back to RSS) |
+| `GET /?lang=en&path=/wp-json/wp/v2/…` | one WordPress REST call, relayed verbatim |
+
+The **relay** is what the per-rubric news feed needs: the origin 403s
+`/wp-json/wp/v2/categories` and `/wp-json/wp/v2/posts?categories=<id>` from CI,
+and a rubric that fails is backfilled from the previous snapshot — so without
+the relay every rubric silently freezes on its last good day. It is not an open
+proxy: `lang` picks between two fixed hosts and `path` must resolve to a
+WordPress REST path on that host.
+
+> **Upgrading:** a worker deployed before the relay existed ignores `?path` and
+> answers every request with the headlines. Redeploy it (step 4 below) after
+> pulling this change. The scraper checks that returned posts really carry the
+> rubric it asked for, so a stale worker leaves rubrics empty rather than
+> filling them all with the same articles — but they stay stale until you
+> redeploy.
+
 ## One-time setup (dashboard, no CLI)
 
 1. Create a free account at <https://dash.cloudflare.com> (no domain needed).
