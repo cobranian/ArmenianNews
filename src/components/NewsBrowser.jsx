@@ -97,7 +97,19 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`namcats.${s.categoryKey}`), articles: s.articles })),
   }
-  return [armradio, courrier, armenews].filter((s) => s.cats.length)
+  const artzakank = {
+    id: 'artzakank',
+    brand: 'Artzakank',
+    name: t('browser.artzakank'),
+    lang: 'FR',
+    live: false,
+    images: true,
+    proxy: true,
+    cats: (news.artzakank || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: t(`azkcats.${s.categoryKey}`), articles: s.articles })),
+  }
+  return [armradio, courrier, armenews, artzakank].filter((s) => s.cats.length)
 }
 
 export function NewsBrowser() {

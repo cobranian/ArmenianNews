@@ -12,7 +12,7 @@ export function News() {
     <section className="section" id="actualites">
       <div className="container">
         <SectionHead
-          eyebrow="ArmRadio · Courrier d'Erevan · Nouvelles d'Arménie"
+          eyebrow="ArmRadio · Courrier d'Erevan · Nouvelles d'Arménie · Artzakank"
           title={t('news.title')}
           subtitle={t('browser.subtitle')}
         />

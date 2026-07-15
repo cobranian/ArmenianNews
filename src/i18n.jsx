@@ -81,10 +81,15 @@ const STRINGS = {
     'namcats.lifestyle': 'Lifestyle',
     'namcats.magazine': 'Magazines',
 
+    'azkcats.armenie-artsakh': 'Arménie & Artsakh',
+    'azkcats.communaute': 'Communauté',
+    'azkcats.divers': 'Divers',
+
     'browser.subtitle': 'Toutes les rubriques, source par source',
     'browser.armradio': 'Radio publique d’Arménie',
     'browser.courrier': 'Courrier d’Erevan',
     'browser.armenews': 'armenews.com',
+    'browser.artzakank': 'Écho des Arméniens de Suisse',
 
     'radio.eyebrow': 'Erevan · 128 kbps',
     'radio.title': 'En direct',
@@ -177,10 +182,15 @@ const STRINGS = {
     'namcats.lifestyle': 'Lifestyle',
     'namcats.magazine': 'Magazines',
 
+    'azkcats.armenie-artsakh': 'Armenia & Artsakh',
+    'azkcats.communaute': 'Community',
+    'azkcats.divers': 'Miscellany',
+
     'browser.subtitle': 'Every rubric, source by source',
     'browser.armradio': 'Public Radio of Armenia',
     'browser.courrier': 'Le Courrier d’Erevan',
     'browser.armenews': 'armenews.com',
+    'browser.artzakank': 'Echo of Armenians in Switzerland',
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
@@ -273,10 +283,15 @@ const STRINGS = {
     'namcats.lifestyle': 'Ապրելակերպ',
     'namcats.magazine': 'Ամսագրեր',
 
+    'azkcats.armenie-artsakh': 'Հայաստան և Արցախ',
+    'azkcats.communaute': 'Համայնք',
+    'azkcats.divers': 'Զանազան',
+
     'browser.subtitle': 'Բոլոր բաժինները՝ ըստ աղբյուրի',
     'browser.armradio': 'Հայաստանի հանրային ռադիո',
     'browser.courrier': '«Կուրիեր դ’Էրեւան»',
     'browser.armenews': 'armenews.com',
+    'browser.artzakank': 'Շվեյցարիայի հայերի արձագանք',
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',

@@ -9,6 +9,7 @@ import { dirname, join } from 'node:path'
 import { scrapeCourrier } from './sources/courrier.mjs'
 import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeArmenews } from './sources/armenews.mjs'
+import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -92,6 +93,17 @@ async function main() {
   }
   const armenews = backfillSections(armenewsSecs, prevNews?.armenews, 'categoryKey')
 
+  // Artzakank / Écho des Arméniens de Suisse (artzakank-echo.ch) — French-only,
+  // two WordPress rubrics (Arménie & Artsakh, Communauté).
+  console.log('\nArtzakank — artzakank-echo.ch:')
+  let artzakankSecs = []
+  try {
+    artzakankSecs = await scrapeArtzakank(10)
+  } catch (err) {
+    console.error('  artzakank failed wholesale:', err.message)
+  }
+  const artzakank = backfillSections(artzakankSecs, prevNews?.artzakank, 'categoryKey')
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -119,7 +131,7 @@ async function main() {
     igPosts = prevIg.posts
   }
 
-  await writeJson('news.json', { generatedAt, courrier, armradio, armenews })
+  await writeJson('news.json', { generatedAt, courrier, armradio, armenews, artzakank })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })
