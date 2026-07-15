@@ -27,6 +27,42 @@
     <meta name="twitter:description" content="Actualités, agenda et réseaux sociaux arméniens, mis à jour chaque heure." />
     <meta name="twitter:image" content="https://armenieinfo.ch/og-image.jpg" />
 
+    <!-- Structured data (schema.org) — helps Google understand the site's
+         identity. Static in the initial HTML so crawlers see it without JS. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://armenieinfo.ch/#website",
+            "url": "https://armenieinfo.ch/",
+            "name": "Arménie Info",
+            "alternateName": "Արմենիա Ինֆո",
+            "description": "Actualités, agenda et réseaux sociaux arméniens de Suisse et du monde, mis à jour chaque heure.",
+            "inLanguage": ["fr", "en", "hy"],
+            "publisher": { "@id": "https://armenieinfo.ch/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://armenieinfo.ch/#organization",
+            "name": "Arménie Info",
+            "alternateName": "Արմենիա Ինֆո",
+            "url": "https://armenieinfo.ch/",
+            "email": "contact@armenieinfo.ch",
+            "description": "Un instantané horaire de la vie arménienne : actualités, agenda et réseaux sociaux, en français, English et Հայերեն.",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://armenieinfo.ch/apple-touch-icon.png",
+              "width": 180,
+              "height": 180
+            },
+            "image": "https://armenieinfo.ch/og-image.jpg"
+          }
+        ]
+      }
+    </script>
+
     <!-- Ararat's twin peaks, apricot on basalt. SVG for modern browsers,
          32px PNG for the ones that ignore it, 180px for the iOS home screen. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
