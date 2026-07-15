@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T12:12:49.770Z",
+  "generatedAt": "2026-07-15T13:19:17.446Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -170,6 +170,11 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
+          "title": "Un séisme musical au Syunik",
+          "url": "https://courrier.am/fr/un-seisme-musical-au-syunik",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/eea0bd_b64d38cf86fb40d0a6a56041db9c1994mv2.png?itok=J74eKK7A"
+        },
+        {
           "title": "Au Golden Apricot, la diplomatie culturelle s’invite sur grand écran",
           "url": "https://courrier.am/fr/au-golden-apricot-la-diplomatie-culturelle-s-invite-sur-grand-ecran",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/screenshot_5.jpg?itok=yuo-Lxfo"
@@ -213,11 +218,6 @@
           "title": "Un musée du tapis va voir le jour en Arménie",
           "url": "https://courrier.am/fr/un-musee-du-tapis-va-voir-le-jour-en-armenie",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/705474612_1311183294537215_5564848478766907136_n.jpg?itok=z6_HbPyx"
-        },
-        {
-          "title": "Le journal espagnol El País recommande de visiter l'Arménie avant la fin de l'année",
-          "url": "https://courrier.am/fr/le-journal-espagnol-el-pa-s-recommande-de-visiter-l-armenie-avant-la-fin-de-l-annee",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/4_9.jpg?itok=65Wc3KyI"
         }
       ]
     },
@@ -335,6 +335,11 @@
       "sectionKey": "region",
       "articles": [
         {
+          "title": "L’auberge des vies bousculées : à Tbilissi, le refuge secret des exilés",
+          "url": "https://courrier.am/fr/l-auberge-des-vies-bousculees-a-tbilissi-le-refuge-secret-des-exiles-",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/screenshot_2_29.png?itok=rjnjFx7V"
+        },
+        {
           "title": "Aliyev déclare que l'Azerbaïdjan pourrait se retirer de l'Assemblée européenne",
           "url": "https://courrier.am/fr/aliyev-declare-que-l-azerbaidjan-pourrait-se-retirer-de-l-assemblee-europeenne",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/1783921813.jpg?itok=m7PuQha2"
@@ -378,11 +383,6 @@
           "title": "Bakou, Ankara et Tbilissi se mettent d'accord à Istanbul",
           "url": "https://courrier.am/fr/bakou-ankara-et-tbilissi-se-mettent-d-accord-a-istanbul",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/thumb.jpg?itok=IbxDMUEd"
-        },
-        {
-          "title": "La Russie va restreindre les importations d'aubergines, de pommes de terre et de fruits secs en provenance d'Arménie",
-          "url": "https://courrier.am/fr/la-russie-va-restreindre-les-importations-d-aubergines-de-pommes-de-terre-et-de-fruits-secs-en-provenance-d-armenie",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/bienfaits-fruits-legumes-1920.jpg?itok=7yeIm8S_"
         }
       ]
     },
@@ -748,6 +748,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "One dead and three missing after boat sinks near Alcatraz",
+            "url": "https://en.armradio.am/2026/07/15/one-dead-and-three-missing-after-boat-sinks-near-alcatraz/",
+            "date": "2026-07-15T12:57:42.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/b0b48750-8031-11f1-b976-0b9c15b0ccfc.jpg-768x432.webp",
+            "category": "World"
+          },
+          {
             "title": "Trump threatens to bomb bridges and power plants unless Iran resumes talks",
             "url": "https://en.armradio.am/2026/07/15/trump-threatens-to-bomb-bridges-and-power-plants-unless-iran-resumes-talks/",
             "date": "2026-07-15T08:18:42.000Z",
@@ -808,13 +815,6 @@
             "url": "https://en.armradio.am/2026/07/10/travel-to-europe-continues-to-grow-in-2026-with-greece-italy-and-malta-leading-the-way/",
             "date": "2026-07-10T11:43:30.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/Italy-768x474.webp",
-            "category": "World"
-          },
-          {
-            "title": "Florida’s Palm Beach airport renamed for Trump",
-            "url": "https://en.armradio.am/2026/07/10/floridas-palm-beach-airport-renamed-for-trump/",
-            "date": "2026-07-10T09:40:13.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/07/Donald-Trump-airport-768x432.webp",
             "category": "World"
           }
         ]
@@ -1050,6 +1050,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Մարզվել առանց առողջությունը վնասելու. ինչպե՞ս կփոխվի ֆիթնես ոլորտը նոր կարգավորումներով",
+            "url": "https://hy.armradio.am/archives/746899",
+            "date": "2026-07-15T13:08:03.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/fitness-1-300x196.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Փլուզվել է շինության բետոնե ծածկը․ տուժածները դուրս են բերվել փլատակներից",
             "url": "https://hy.armradio.am/archives/746878",
             "date": "2026-07-15T11:27:05.000Z",
@@ -1110,13 +1117,6 @@
             "url": "https://hy.armradio.am/archives/746794",
             "date": "2026-07-15T05:22:08.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/748133777_1357647049887557_4094482602229431589_n-768x511.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Շվեյցարիայի պատվիրակությունն այցելել է Մատենադարան. քննարկվել են համագործակցության ծրագրեր",
-            "url": "https://hy.armradio.am/archives/746775",
-            "date": "2026-07-14T18:59:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3649-300x205.png",
             "category": "Կարևոր"
           }
         ]
@@ -1503,10 +1503,28 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "De janvier à juin 2026, l’Azerbaïdjan a exporté des marchandises vers l’Arménie pour une valeur de plus de 17 millions de dollars",
+          "url": "https://www.armenews.com/de-janvier-a-juin-2026-lazerbaidjan-a-exporte-des-marchandises-vers-larmenie-pour-une-valeur-de-plus-de-17-millions-de-dollars/",
+          "date": "2026-07-15T13:18:34.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/9899.jpg"
+        },
+        {
+          "title": "Le Président de la République d’Arménie Vahagn Khachaturyan a salué à Doha au Qatar la contribution de Cheikh Hamad bin Khalifa Al Thani aux relations arméno-qataries",
+          "url": "https://www.armenews.com/le-president-de-la-republique-darmenie-vahagn-khachaturyan-a-salue-a-doha-au-qatar-la-contribution-de-cheikh-hamad-bin-khalifa-al-thani-aux-relations-armeno-qataries/",
+          "date": "2026-07-15T13:12:21.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/9886.jpg"
+        },
+        {
+          "title": "Le ministre turc des Affaires étrangères Hakan Fidan se rend mercredi et jeudi en Ukraine et rencontrera le président Volodymyr Zelensky, ont annoncé ses services.",
+          "url": "https://www.armenews.com/335751-2/",
+          "date": "2026-07-15T13:11:43.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-15-a-15.10.33.png"
+        },
+        {
           "title": "Le gouvernement arménien lance le processus de ratification de la TRIPP : le projet de résolution sera soumis à la Cour constitutionnelle",
           "url": "https://www.armenews.com/le-gouvernement-armenien-lance-le-processus-de-ratification-de-la-tripp-le-projet-de-resolution-sera-soumis-a-la-cour-constitutionnelle/",
           "date": "2026-07-15T11:02:18.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/5564.jpg"
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/6778.jpeg"
         },
         {
           "title": "La Turquie continuera de soutenir le processus de paix entre l’Arménie et l’Azerbaïdjan indique le ministère turc des Affaires étrangères",
@@ -1543,24 +1561,6 @@
           "url": "https://www.armenews.com/fitch-prevoit-un-ralentissement-de-la-croissance-economique-de-larmenie-a-52-en-2026/",
           "date": "2026-07-15T06:30:52.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/1lzy8i9qnrlsd5s3xm9quivc2haqwrfy.jpg"
-        },
-        {
-          "title": "Karekin II rend hommage au dirigeant iranien assassiné",
-          "url": "https://www.armenews.com/karekin-ii-rend-hommage-au-dirigeant-iranien-assassine/",
-          "date": "2026-07-15T06:30:47.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/a3276e47-3cb9-4dbd-5f37-08decd277110_w1597_n_r1_s_s.jpg"
-        },
-        {
-          "title": "Décryptage de Hakob Badalyan – Le jeu ambigu du Kremlin : Pachinian l’irrite, mais pas Aliev ?",
-          "url": "https://www.armenews.com/decryptage-de-hakob-badalyan-le-jeu-ambigu-du-kremlin-pachinian-lirrite-mais-pas-aliev/",
-          "date": "2026-07-15T06:30:45.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/News_conference_of_Vladimir_Putin_2012-12-20_11.jpeg"
-        },
-        {
-          "title": "Au forum de Chouchi occupé, Ilham Aliev affiche un apaisement avec Moscou et règle ses comptes avec l’Europe",
-          "url": "https://www.armenews.com/au-forum-de-chouchi-occupe-ilham-aliev-affiche-un-apaisement-avec-moscou-et-regle-ses-comptes-avec-leurope/",
-          "date": "2026-07-15T06:30:41.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-07-32-40-Aliyev-talks-reconciliation-with-Russia-tensions-with-EU-and-France-in-lengthy-forum-QA.png"
         }
       ]
     },
@@ -2071,6 +2071,396 @@
           "url": "https://artzakank-echo.ch/2014/03/15/larmenien-occidental-un-inestimable-heritage-en-peril/",
           "date": "2014-03-15T00:00:00.000Z",
           "image": "https://artzakank-echo.ch/wp-content/uploads/2014/03/Alphabet.jpg"
+        }
+      ]
+    }
+  ],
+  "armenieinfotv": [
+    {
+      "categoryKey": "armenie",
+      "articles": [
+        {
+          "title": "Pachinian félicite Macron pour la Fête nationale française",
+          "url": "https://armenieinfo.tv/pachinian-felicite-macron-pour-la-fete-nationale-francaise/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1784111539-7525.jpg"
+        },
+        {
+          "title": "Le 23e Festival international du film Golden Apricot de Yerevan s’ouvre avec une coproduction arméno-française",
+          "url": "https://armenieinfo.tv/le-23e-festival-international-du-film-golden-apricot-de-yerevan-souvre-avec-une-coproduction-armeno-francaise/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1784025221-5396.jpg"
+        },
+        {
+          "title": "Le vice-ministre arménien des Affaires étrangères rencontre la sous-secrétaire générale de l’ONU",
+          "url": "https://armenieinfo.tv/le-vice-ministre-armenien-des-affaires-etrangeres-rencontre-la-sous-secretaire-generale-de-lonu/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1784025192-8489.jpg"
+        },
+        {
+          "title": "Salaires, classes sociales, travail informel et migrations dans l’Arménie contemporaine",
+          "url": "https://armenieinfo.tv/salaires-classes-sociales-travail-informel-et-migrations-dans-larmenie-contemporaine/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-12-juil.-2026-20_06_58.png"
+        },
+        {
+          "title": "L’acteur Simon Abkarian invité d’honneur au Festival du Film Golden Apricot",
+          "url": "https://armenieinfo.tv/lacteur-simon-abkarian-invite-dhonneur-au-festival-du-film-golden-apricot/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1784025212-4250.jpg"
+        },
+        {
+          "title": "L’eau arménienne ne coule pas de source",
+          "url": "https://armenieinfo.tv/leau-armenienne-ne-coule-pas-de-source/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-12-juil.-2026-19_49_38.png"
+        },
+        {
+          "title": "Lancement de la Mission de Partenariat de l’Union Européenne en Arménie",
+          "url": "https://armenieinfo.tv/lancement-de-la-mission-de-partenariat-de-lunion-europeenne-en-armenie/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783996335-3648.jpg"
+        },
+        {
+          "title": "La Cour anti-corruption d’Arménie autorise l’absence de Serzh Sargsyan aux audiences",
+          "url": "https://armenieinfo.tv/la-cour-anti-corruption-darmenie-autorise-labsence-de-serzh-sargsyan-aux-audiences/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783996355-3383.jpg"
+        },
+        {
+          "title": "Vote sur la reconnaissance du génocide arménien suspendu à la Knesset",
+          "url": "https://armenieinfo.tv/vote-sur-la-reconnaissance-du-genocide-armenien-suspendu-a-la-knesset/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783996342-4635.jpg"
+        },
+        {
+          "title": "La fatigue militante",
+          "url": "https://armenieinfo.tv/la-fatigue-militante/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/27068ca4-8a09-4553-b36c-d47f6d2cae1b.png"
+        }
+      ]
+    },
+    {
+      "categoryKey": "art-culture",
+      "articles": [
+        {
+          "title": "Au pied du mur, l’Arménie apporte une chaise",
+          "url": "https://armenieinfo.tv/au-pied-du-mur-larmenie-apporte-une-chaise/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-11-juil.-2026-17_17_35.png"
+        },
+        {
+          "title": "L’Arménie prend son temps",
+          "url": "https://armenieinfo.tv/larmenie-prend-son-temps/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-10-juil.-2026-01_37_18.png"
+        },
+        {
+          "title": "Vardavar : 19 ans de statistiques météorologiques en Arménie",
+          "url": "https://armenieinfo.tv/vardavar-19-ans-de-statistiques-meteorologiques-en-armenie/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783852395-9687.jpg"
+        },
+        {
+          "title": "« Un morceau de ciel », la politique à table ?",
+          "url": "https://armenieinfo.tv/un-morceau-de-ciel-la-politique-a-table/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-7-juil.-2026-13_13_24.png"
+        },
+        {
+          "title": "L’ « aesthetic » arménienne: des grenades à la grenade, fruit défendu du feed",
+          "url": "https://armenieinfo.tv/l-aesthetic-armenienne-des-grenades-a-la-grenade-fruit-defendu-du-feed/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-7-juil.-2026-11_14_36.png"
+        },
+        {
+          "title": "L’Arménie qui rit pour ne pas rompre",
+          "url": "https://armenieinfo.tv/larmenie-qui-rit-pour-ne-pas-rompre/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/e2815132-e8a4-4e3f-9d3c-4bc6f227d334.png"
+        },
+        {
+          "title": "Les jeunes Arméniens et la Russie, après le grand désenchantement",
+          "url": "https://armenieinfo.tv/les-jeunes-armeniens-et-la-russie-apres-le-grand-desenchantement/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/c240178b-def5-426a-95bf-b16610ccd107.png"
+        },
+        {
+          "title": "Espoir et Déception : Exposition à Erevan dédiée à la Grande Repatriation",
+          "url": "https://armenieinfo.tv/espoir-et-deception-exposition-a-erevan-dediee-a-la-grande-repatriation/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783218781-5256.jpg"
+        }
+      ]
+    },
+    {
+      "categoryKey": "artsakh",
+      "articles": [
+        {
+          "title": "La Cour d’appel de Bakou examine les recours des prisonniers arméniens",
+          "url": "https://armenieinfo.tv/la-cour-dappel-de-bakou-examine-les-recours-des-prisonniers-armeniens/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783737105-1425.jpg"
+        },
+        {
+          "title": "La femme de Ruben Vardanyan publie une déclaration sur la visite prévue de la délégation humanitaire internationale à Bakou",
+          "url": "https://armenieinfo.tv/la-femme-de-ruben-vardanyan-publie-une-declaration-sur-la-visite-prevue-de-la-delegation-humanitaire-internationale-a-bakou/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783679575-1114.jpg"
+        },
+        {
+          "title": "Le génome arménien contre l’effacement",
+          "url": "https://armenieinfo.tv/le-genome-armenien-contre-leffacement/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/pp.png"
+        },
+        {
+          "title": "L’Arménie des corps entre cartographie sensible des traumatismes collectifs",
+          "url": "https://armenieinfo.tv/larmenie-des-corps-entre-cartographie-sensible-des-traumatismes-collectifs/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/1d46d4ca-02cb-41df-825c-7993f6312b8e.png"
+        },
+        {
+          "title": "Le vote des déplacés du Haut-Karabakh au cœur des tensions politiques",
+          "url": "https://armenieinfo.tv/le-vote-des-deplaces-du-haut-karabakh-au-coeur-des-tensions-politiques/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/05/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-7-7.png"
+        },
+        {
+          "title": "Arménie : une campagne de désinformation prorusse cible les élections législatives",
+          "url": "https://armenieinfo.tv/armenie-une-campagne-de-desinformation-prorusse-cible-les-elections-legislatives/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/05/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-1-9.png"
+        },
+        {
+          "title": "Arménie et Azerbaïdjan échangent des projets de délimitation",
+          "url": "https://armenieinfo.tv/armenie-et-azerbaidjan-echangent-des-projets-de-delimitation/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1777521726-9911.jpg"
+        },
+        {
+          "title": "Haut-Karabagh : la cathédrale de Stepanakert détruite, un symbole effacé",
+          "url": "https://armenieinfo.tv/haut-karabagh-la-cathedrale-de-stepanakert-detruite-un-symbole-efface/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/04/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien-6.png"
+        },
+        {
+          "title": "Discussion sur les déplacés du Haut-Karabagh",
+          "url": "https://armenieinfo.tv/discussion-sur-les-deplaces-du-haut-karabagh/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1777348930-4915.jpg"
+        },
+        {
+          "title": "Décès de la mère du héros d’Artsakh",
+          "url": "https://armenieinfo.tv/deces-de-la-mere-du-heros-dartsakh/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/04/cream-minimalist-illustrative-social-media-graphic-18.png"
+        }
+      ]
+    },
+    {
+      "categoryKey": "diaspora",
+      "articles": [
+        {
+          "title": "Moitié de rien, double de soi",
+          "url": "https://armenieinfo.tv/moitie-de-rien-double-de-soi/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-11-juil.-2026-04_19_33.png"
+        },
+        {
+          "title": "“Quand est-ce que tu nous ramènes quelqu’un ?”",
+          "url": "https://armenieinfo.tv/quand-est-ce-que-tu-nous-ramenes-quelquun/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-9-juil.-2026-18_50_12.png"
+        }
+      ]
+    },
+    {
+      "categoryKey": "france",
+      "articles": [
+        {
+          "title": "La ministre arménienne de l’Éducation rencontre son homologue française",
+          "url": "https://armenieinfo.tv/la-ministre-armenienne-de-leducation-rencontre-son-homologue-francaise/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783650757-2972.jpg"
+        },
+        {
+          "title": "Mystérieuse et pourtant facile à aimer",
+          "url": "https://armenieinfo.tv/mysterieuse-et-pourtant-facile-a-aimer/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/img_1035.jpg"
+        },
+        {
+          "title": "Les responsables arméniens et français soulignent la nécessité d’élargir la coopération commerciale",
+          "url": "https://armenieinfo.tv/les-responsables-armeniens-et-francais-soulignent-la-necessite-delargir-la-cooperation-commerciale/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782527609-6835.jpg"
+        },
+        {
+          "title": "Le vice-ministre arménien des Affaires étrangères s’entretient avec le ministre délégué français pour l’Europe",
+          "url": "https://armenieinfo.tv/le-vice-ministre-armenien-des-affaires-etrangeres-sentretient-avec-le-ministre-delegue-francais-pour-leurope/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782387980-5746.jpg"
+        },
+        {
+          "title": "Le ministre arménien de l’Industrie de haute technologie s’exprime à l’exposition Eurosatory 2026",
+          "url": "https://armenieinfo.tv/le-ministre-armenien-de-lindustrie-de-haute-technologie-sexprime-a-lexposition-eurosatory-2026/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1781865171-3578.jpg"
+        },
+        {
+          "title": "Emmanuel Macron salue la victoire de Nikol Pachinian",
+          "url": "https://armenieinfo.tv/emmanuel-macron-salue-la-victoire-de-nikol-pachinian/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-9-10.png"
+        },
+        {
+          "title": "Hommage à Missak et Mélinée Manouchian au Panthéon de Paris",
+          "url": "https://armenieinfo.tv/hommage-a-missak-et-melinee-manouchian-au-pantheon-de-paris/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/05/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-8.png"
+        },
+        {
+          "title": "Neuf Azerbaïdjanais jugés en France pour complot de meurtre",
+          "url": "https://armenieinfo.tv/neuf-azerbaidjanais-juges-en-france-pour-complot-de-meurtre/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1779810555-2482.jpg"
+        }
+      ]
+    },
+    {
+      "categoryKey": "geopolitique",
+      "articles": [
+        {
+          "title": "Von der Leyen : L’UE ouvrira son marché aux produits arméniens si la Russie impose une interdiction",
+          "url": "https://armenieinfo.tv/von-der-leyen-lue-ouvrira-son-marche-aux-produits-armeniens-si-la-russie-impose-une-interdiction/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783218786-4507.jpg"
+        },
+        {
+          "title": "Les élections en Arménie illustrent la force de la démocratie",
+          "url": "https://armenieinfo.tv/les-elections-en-armenie-illustrent-la-force-de-la-democratie/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988350-7078.jpg"
+        },
+        {
+          "title": "La présidente de la Commission européenne commente la libéralisation des visas pour l’Arménie",
+          "url": "https://armenieinfo.tv/la-presidente-de-la-commission-europeenne-commente-la-liberalisation-des-visas-pour-larmenie/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988344-2718.jpg"
+        },
+        {
+          "title": "L’Union européenne, un partenaire fiable pour l’Arménie, selon Pachinian",
+          "url": "https://armenieinfo.tv/lunion-europeenne-un-partenaire-fiable-pour-larmenie-selon-pachinian/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988366-1685.jpg"
+        },
+        {
+          "title": "La présidente de la Commission européenne qualifie l’accord de paix Arménie-Azerbaïdjan d’événement historique",
+          "url": "https://armenieinfo.tv/la-presidente-de-la-commission-europeenne-qualifie-laccord-de-paix-armenie-azerbaidjan-devenement-historique/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988328-1220.jpg"
+        },
+        {
+          "title": "L’Arménie souhaite renforcer sa coopération avec l’Union européenne",
+          "url": "https://armenieinfo.tv/larmenie-souhaite-renforcer-sa-cooperation-avec-lunion-europeenne/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988337-2605.jpg"
+        },
+        {
+          "title": "La présidente de la Commission européenne annonce un investissement de l’UE dans le Caucase du Sud",
+          "url": "https://armenieinfo.tv/la-presidente-de-la-commission-europeenne-annonce-un-investissement-de-lue-dans-le-caucase-du-sud/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782959508-1987.jpg"
+        },
+        {
+          "title": "RECONNAISSANCE DU GÉNOCIDE ARMÉNIEN PAR ISRAËL : QUAND LA RÉALPOLITIQUE OUVRE UNE BRÈCHE HISTORIQUE",
+          "url": "https://armenieinfo.tv/reconnaissance-du-genocide-armenien-par-israel-quand-la-realpolitique-ouvre-une-breche-historique/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/ab4292e9-484b-47a7-8f35-af8ebcf313ea.png"
+        },
+        {
+          "title": "Le Conseil de l’Union européenne approuve les engagements tarifaires de l’accord commercial UE-États-Unis",
+          "url": "https://armenieinfo.tv/le-conseil-de-lunion-europeenne-approuve-les-engagements-tarifaires-de-laccord-commercial-ue-etats-unis/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782441191-8244.jpg"
+        }
+      ]
+    },
+    {
+      "categoryKey": "politique",
+      "articles": [
+        {
+          "title": "L’archevêque Galstanyan poursuit Pachinian pour diffamation",
+          "url": "https://armenieinfo.tv/larcheveque-galstanyan-poursuit-pachinian-pour-diffamation/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783478015-8948.jpg"
+        },
+        {
+          "title": "Le président du Parlement arménien Simonyan quitte ses fonctions après avoir perdu le soutien du parti au pouvoir",
+          "url": "https://armenieinfo.tv/le-president-du-parlement-armenien-simonyan-quitte-ses-fonctions-apres-avoir-perdu-le-soutien-du-parti-au-pouvoir/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783305397-1863.jpg"
+        },
+        {
+          "title": "La « défense » de Medvedev : le secrétaire du Conseil de sécurité russe soutient Tsaroukian",
+          "url": "https://armenieinfo.tv/la-defense-de-medvedev-le-secretaire-du-conseil-de-securite-russe-soutient-tsaroukian/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782642803-2714.jpg"
+        },
+        {
+          "title": "Le vice-président de l’Assemblée nationale Ruben Rubinyan commenté sa nomination",
+          "url": "https://armenieinfo.tv/le-vice-president-de-lassemblee-nationale-ruben-rubinyan-commente-sa-nomination/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782441212-7036.jpg"
+        },
+        {
+          "title": "Les élections législatives de 2026 apportent une nouvelle agenda révolutionnaire, annonce Pachinian",
+          "url": "https://armenieinfo.tv/les-elections-legislatives-de-2026-apportent-une-nouvelle-agenda-revolutionnaire-annonce-pachinian/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1781749983-6387.jpg"
+        },
+        {
+          "title": "Arménie : Les mandats parlementaires seront répartis entre trois forces",
+          "url": "https://armenieinfo.tv/armenie-les-mandats-parlementaires-seront-repartis-entre-trois-forces/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-9-9.png"
+        },
+        {
+          "title": "Élections 2026 : le parti de Pachinian largement en tête",
+          "url": "https://armenieinfo.tv/elections-2026-le-parti-de-pachinian-largement-en-tete/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-9-8.png"
+        },
+        {
+          "title": "Dans quel cas et comment « Arménie forte » pourrait être exclue de la course électorale",
+          "url": "https://armenieinfo.tv/dans-quel-cas-et-comment-armenie-forte-pourrait-etre-exclue-de-la-course-electorale/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-10-1.png"
+        },
+        {
+          "title": "Le pouvoir frappe l’opposition comme un punching-ball : il faut stopper le tas d’ordures, selon Mehrabyan",
+          "url": "https://armenieinfo.tv/le-pouvoir-frappe-lopposition-comme-un-punching-ball-il-faut-stopper-le-tas-dordures-selon-mehrabyan/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1780548864-6923.jpg"
+        },
+        {
+          "title": "Alen Simonyan : « Les questions profondes et critiques m’intéressent »",
+          "url": "https://armenieinfo.tv/alen-simonyan-les-questions-profondes-et-critiques-minteressent/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/05/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-7-5.png"
+        }
+      ]
+    },
+    {
+      "categoryKey": "un-autre-regard",
+      "articles": [
+        {
+          "title": "L’Arménie entre progrès médicaux, pénuries silencieuses et promesse d’universalité",
+          "url": "https://armenieinfo.tv/larmenie-entre-progres-medicaux-penuries-silencieuses-et-promesse-duniversalite/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-11-juil.-2026-04_30_18.png"
         }
       ]
     }
