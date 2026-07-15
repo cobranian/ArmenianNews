@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "scrape": "node scripts/scrape.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
+    "fb-scrape": "node scripts/fb-scrape.mjs",
     "screenshot": "node scripts/shoot.mjs"
   },
   "dependencies": {

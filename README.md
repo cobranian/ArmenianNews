@@ -17,7 +17,7 @@ Vite + React app that renders those files. No backend at runtime.
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. |
 | **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
 | **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
-| **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 10 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
+| **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 30 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
 | **Instagram** | 8 curated accounts | A swipeable **carousel** (‹ › arrows) of post tiles. The **9 latest posts** of each account are harvested by a local script (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job. |
 
 Each source **fails independently and degrades gracefully**: on an empty/failed
@@ -30,6 +30,7 @@ instead of blanking it, so a transient upstream failure never wipes a section.
 npm install
 npm run scrape      # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
 npm run ig-scrape   # refresh the Instagram pool (local, logged-in Chrome — never in CI)
+npm run fb-scrape   # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
 npm run dev         # http://localhost:5173/
 npm run build       # production build into dist/
 npm run preview
@@ -41,7 +42,7 @@ selection** (`instagram-feed.json`) from the pool. It never touches the pool
 itself.
 
 The two social walls are refreshed by **manual, local, logged-in-session steps**
-— `npm run ig-scrape` (Instagram) and `scripts/fb-scrape.mjs` (Don Narek) — because
+— `npm run ig-scrape` (Instagram) and `npm run fb-scrape` (Don Narek) — because
 both networks block CI datacenter IPs. Neither runs hourly; see below.
 
 ## Curating the social feeds
@@ -122,11 +123,13 @@ history. Run `npm run build && npm run screenshot` to regenerate it locally.
 
 Facebook can't be scraped from CI (it requires a logged-in session and blocks
 datacenter IPs), so refreshing the **post content** is a **manual local step**
-— unlike news/agenda, it does *not* run hourly. `scripts/fb-scrape.mjs` drives
+— unlike news/agenda, it does *not* run hourly. `npm run fb-scrape` drives
 your own logged-in Chrome to read the public profile, keeps only the posts under
 Facebook's **"Other posts"** heading (skips pinned/featured), opens each post
 for its full-resolution image, and rewrites `src/data/fb/*.jpg` +
-`facebook.json` (newest first, capped at 20).
+`facebook.json` (newest first, capped at 30). Images are downloaded **through the
+logged-in tab** (not an anonymous fetch), so Facebook's session-gated CDN
+variants come back as the real photo instead of a placeholder.
 
 ```bash
 # 1. Launch a dedicated Chrome with remote debugging + its own profile.
@@ -140,8 +143,8 @@ for its full-resolution image, and rewrites `src/data/fb/*.jpg` +
 #    .cache/, which is gitignored, so cookies never get committed).
 
 # 3. Scrape (attaches to that Chrome via the debug port):
-node scripts/fb-scrape.mjs --connect --dry   # preview what it finds, writes nothing
-node scripts/fb-scrape.mjs --connect         # download images + rewrite facebook.json
+npm run fb-scrape -- --connect --dry   # preview what it finds, writes nothing
+npm run fb-scrape -- --connect         # download images + rewrite facebook.json
 
 # 4. Verify, then publish:
 npm run build && npm run screenshot           # eyeball dist/don-narek-*.png
