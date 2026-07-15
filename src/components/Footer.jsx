@@ -4,9 +4,11 @@ import { KnotMark } from './Ornament.jsx'
 const SOURCES = [
   ['Le Courrier d’Erevan', 'https://courrier.am/fr'],
   ['Public Radio of Armenia', 'https://en.armradio.am/'],
+  ['Artzakank', 'https://artzakank-echo.ch/'],
   ['Armenopole', 'https://armenopole.com/armenian/events/switzerland'],
   ['Arméniens de Lausanne', 'https://armeniensdelausanne.ch/#evenements'],
   ['École arménienne de Lausanne', 'https://ecolearmeniennedelausanne.ch/'],
+  ['Centre arménien de Genève', 'https://www.centre-armenien-geneve.ch/'],
   ['Don Narek', 'https://www.facebook.com/DonNarek'],
 ]
 
