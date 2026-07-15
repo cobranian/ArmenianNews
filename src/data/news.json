@@ -1,9 +1,14 @@
 {
-  "generatedAt": "2026-07-15T05:28:26.177Z",
+  "generatedAt": "2026-07-15T08:04:23.260Z",
   "courrier": [
     {
       "sectionKey": "actualite",
       "articles": [
+        {
+          "title": "L'état de santé de Ludwig Mkrtchyan detenu à la prison de Bakou s'aggrave",
+          "url": "https://courrier.am/fr/l-etat-de-sante-de-ludwig-mkrtchyan-detenu-a-la-prison-de-bakou-s-aggrave",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/screenshot_1_60.png?itok=kUBPV-lK"
+        },
         {
           "title": "L'UE a approuvé une nouvelle mission consacrée aux menaces hybrides en Arménie",
           "url": "https://courrier.am/fr/l-ue-a-approuve-une-nouvelle-mission-consacree-aux-menaces-hybrides-en-armenie",
@@ -48,11 +53,6 @@
           "title": "Aliyev : « La paix est de fait rétablie entre l'Azerbaïdjan et l'Arménie »",
           "url": "https://courrier.am/fr/aliyev-la-paix-est-de-fait-retablie-entre-l-azerbaidjan-et-l-armenie-",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/qota2admyzqverwv.jpg?itok=BFX36OBQ"
-        },
-        {
-          "title": "À Bakou, les prisonniers arméniens ont fait part de leur désaccord",
-          "url": "https://courrier.am/fr/a-bakou-les-prisonniers-armeniens-ont-fait-part-de-leur-desaccord-",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/geriner5.jpg?itok=xDHotDLF"
         }
       ]
     },
@@ -598,6 +598,13 @@
         "categoryKey": "economics",
         "articles": [
           {
+            "title": "EU Parliament Committee backs simplified procedure for Armenia trade measures",
+            "url": "https://en.armradio.am/2026/07/15/eu-parliament-committee-backs-simplified-procedure-for-armenia-trade-measures/",
+            "date": "2026-07-15T06:39:40.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/FB_IMG_1784097472784-768x524.jpg",
+            "category": "Economics"
+          },
+          {
             "title": "Armenia named Best International Destination for Business and Corporate Events at MICE Excellence 2026 Awards",
             "url": "https://en.armradio.am/2026/07/14/armenia-named-best-international-destination-for-business-and-corporate-events-at-mice-excellence-2026-awards/",
             "date": "2026-07-14T14:46:00.000Z",
@@ -658,13 +665,6 @@
             "url": "https://en.armradio.am/2026/07/02/emarat-officially-enters-armenia-with-opening-of-first-service-station-in-yerevan/",
             "date": "2026-07-02T06:26:01.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/3f4c67fc47684e3f2d4934e544ee484f-1536x1024-1-768x512.jpg",
-            "category": "Economics"
-          },
-          {
-            "title": "Armenia, EU explore deeper cooperation on reforms, energy and regional peace",
-            "url": "https://en.armradio.am/2026/06/30/armenia-eu-explore-deeper-cooperation-on-reforms-energy-and-regional-peace/",
-            "date": "2026-06-30T12:15:00.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/06/67161_b-768x512.jpg",
             "category": "Economics"
           }
         ]
@@ -748,6 +748,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Billionaire Warren Buffett stops donations to Bill Gates charity",
+            "url": "https://en.armradio.am/2026/07/15/billionaire-warren-buffett-stops-donations-to-bill-gates-charity/",
+            "date": "2026-07-15T06:50:49.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/574e7da0-7fa1-11f1-a5f4-433bb9aa2e5a.jpg-768x433.webp",
+            "category": "World"
+          },
+          {
             "title": "Hungary parliament votes to remove president from office",
             "url": "https://en.armradio.am/2026/07/14/hungary-parliament-votes-to-remove-president-from-office/",
             "date": "2026-07-14T11:06:02.000Z",
@@ -808,13 +815,6 @@
             "url": "https://en.armradio.am/2026/07/10/twelve-die-in-spain-wildfire-as-heatwave-continues-in-southern-europe/",
             "date": "2026-07-10T06:54:24.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/cb2200c0-7c05-11f1-9510-1546718f668b.jpg-768x432.webp",
-            "category": "World"
-          },
-          {
-            "title": "Andy Burnham set to be next PM as 322 Labour MPs back him in first nomination tally",
-            "url": "https://en.armradio.am/2026/07/10/andy-burnham-set-to-be-next-pm-as-322-labour-mps-back-him-in-first-nomination-tally/",
-            "date": "2026-07-10T06:48:13.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/07/3d36d150-7bf6-11f1-b5ce-7d0a3779e31e.jpg-768x432.webp",
             "category": "World"
           }
         ]
@@ -979,7 +979,7 @@
             "url": "https://hy.armradio.am/archives/746785",
             "date": "2026-07-15T04:09:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/l-108x667wh-1349x786z-0.5825-768x447.jpeg",
-            "category": "Կարևոր"
+            "category": "Քաղաքական"
           },
           {
             "title": "Մեր ցանկությունն է, որ հայ-ֆրանսիական գործընկերությունը տարեցտարի առավել ամրապնդվի. փոխվարչապետի ելույթը",
@@ -1050,6 +1050,27 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Մարզերում և Երևանում ակտիվորեն ընթանում են դպրոցների կառուցման ու նորոգման աշխատանքներ",
+            "url": "https://hy.armradio.am/archives/746808",
+            "date": "2026-07-15T06:45:42.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3653-300x168.png",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "33 վարչական իրավախախտում՝ «88» սուպերմարկետում. Երևանի քաղաքապետարանի ստուգումների արդյունքները",
+            "url": "https://hy.armradio.am/archives/746803",
+            "date": "2026-07-15T06:20:19.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3652-300x181.png",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Կենսաչափական նոր անձնագրերի լայնածավալ տպագրության մեկնարկը տրված է․ ՆԳ նախարար",
+            "url": "https://hy.armradio.am/archives/746800",
+            "date": "2026-07-15T05:41:52.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3651-300x188.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Յուրաքանչյուր քաղաքացի պետք է հավասարապես պաշտպանված լինի՝ անկախ բնակության վայրից․ ՄԻՊ",
             "url": "https://hy.armradio.am/archives/746794",
             "date": "2026-07-15T05:22:08.000Z",
@@ -1096,27 +1117,6 @@
             "url": "https://hy.armradio.am/archives/746742",
             "date": "2026-07-14T13:55:53.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/67415_b-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Փորձանոթների մոգությունը. 17-ամյա հայ դպրոցականը քիմիայի միջազգային մրցույթից վերադարձել է բացառիկ արդյունքով",
-            "url": "https://hy.armradio.am/archives/746709",
-            "date": "2026-07-14T13:30:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/121b252d-fe99-4051-9231-a373f6c40807-768x576.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Սակագներ, ներդրումներ և շուկայի մոդել. տեղի է ունեցել ՀԾԿՀ և ԱՄՀ ներկայացուցիչների հանդիպումը",
-            "url": "https://hy.armradio.am/archives/746722",
-            "date": "2026-07-14T13:27:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/l-0x171wh-2048x1194z-0.3838-768x448.jpeg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Արմավիրում ավելանում է վերանորոգված մանկապարտեզների թիվը",
-            "url": "https://hy.armradio.am/archives/746676",
-            "date": "2026-07-14T12:45:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/IMG_20260710_170717-768x576.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1425,6 +1425,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Գրոսմայստեր Զավեն Անդրիասյանը երկրորդն է «World Open 2026» կայծակնային շախմատի մրցաշարում",
+            "url": "https://hy.armradio.am/archives/746822",
+            "date": "2026-07-15T07:24:21.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3654-300x239.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Իսպանիան հաղթեց Ֆրանսիային և դուրս եկավ Աշխարհի առաջնության եզրափակիչ (2:0)",
             "url": "https://hy.armradio.am/archives/746781",
             "date": "2026-07-14T21:00:12.000Z",
@@ -1486,13 +1493,6 @@
             "date": "2026-07-10T08:00:12.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/HOV_3195-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Մբապեն հասավ Մեսսիին. Ֆրանսիան շարունակում է պայքարը",
-            "url": "https://hy.armradio.am/archives/746066",
-            "date": "2026-07-10T03:34:10.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/e6b00b87542188921597aa5f298a3-768x512.webp",
-            "category": "Կարևոր"
           }
         ]
       }
@@ -1503,64 +1503,64 @@
       "categoryKey": "actualites",
       "articles": [
         {
-          "title": "Le parti Arménie Prospère de Gaguik Tsarukyan dément les rumeurs de suspension de la construction de la statue géante de Jésus-Christ",
-          "url": "https://www.armenews.com/le-parti-armenie-prospere-de-gaguik-tsarukyan-dement-les-rumeurs-de-suspension-de-la-construction-de-la-statue-geante-de-jesus-christ/",
-          "date": "2026-07-14T13:50:19.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Caricature-2023-32-La-statue-de-Jesus-Christ-sur-le-mont-Ararat-et-Pachinian.png"
+          "title": "Une conférence consacrée à la question des prisonniers arméniens détenus illégalement à Bakou s’est tenue au Parlement européen",
+          "url": "https://www.armenews.com/une-conference-consacree-a-la-question-des-prisonniers-armeniens-detenus-illegalement-a-bakou-sest-tenue-au-parlement-europeen/",
+          "date": "2026-07-15T06:30:59.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/dVqjwLL5h9MPlLncKYMQS7ggilx8bqIOMKO4pDOC.jpg"
         },
         {
-          "title": "HayPost la poste d’Arménie honore le 150e anniversaire de la naissance du linguiste Hrachia Acharyan",
-          "url": "https://www.armenews.com/haypost-la-poste-darmenie-honore-le-150e-anniversaire-de-la-naissance-du-linguiste-hrachya-adjarian/",
-          "date": "2026-07-14T11:35:14.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/9899.png"
+          "title": "L’UE approuve une nouvelle mission de sécurité pour l’Arménie",
+          "url": "https://www.armenews.com/lue-approuve-une-nouvelle-mission-de-securite-pour-larmenie/",
+          "date": "2026-07-15T06:30:55.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-14-a-22.12.31.png"
         },
         {
-          "title": "L’Église arménienne Sourp Garabed du quartier d’Usküdar à Istanbul rénovée et réouverte",
-          "url": "https://www.armenews.com/eglise-armenienne-sourp-garabed-du-quartier-duskudar-a-istanbul-renovee-et-rouverte/",
-          "date": "2026-07-14T11:17:44.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/8899.png"
+          "title": "Un candidat de « Arménie forte » renonce à son mandat : les discussions se poursuivent au sein des alliances d’opposition",
+          "url": "https://www.armenews.com/un-candidat-de-armenie-forte-renonce-a-son-mandat-les-discussions-se-poursuivent-au-sein-des-alliances-dopposition/",
+          "date": "2026-07-15T06:30:54.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/10040000-0aff-0242-9a80-08da4ee40fe5_w1597_n_r1_s_s.jpg"
         },
         {
-          "title": "32 042 naissances en Arménie en 2025 contre 33 593 en 2023 : Le taux de natalité continue de baisser en Arménie indique le ministre du Travail et des Affaires sociales",
-          "url": "https://www.armenews.com/32-042-naissances-en-armenie-en-2025-contre-33-593-en-2023-le-taux-de-natalite-continue-de-baisser-en-armenie-indique-le-ministre-du-travail-et-des-affaires-sociales/",
-          "date": "2026-07-14T11:07:08.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/340057.jpg"
+          "title": "Fitch prévoit un ralentissement de la croissance économique de l’Arménie à 5,2 % en 2026",
+          "url": "https://www.armenews.com/fitch-prevoit-un-ralentissement-de-la-croissance-economique-de-larmenie-a-52-en-2026/",
+          "date": "2026-07-15T06:30:52.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/1lzy8i9qnrlsd5s3xm9quivc2haqwrfy.jpg"
         },
         {
-          "title": "Les chevaux de Gaguik Tsarukyan ne seront pas confisqués, le Comité d’enquête dément les informations concernant leur transfert",
-          "url": "https://www.armenews.com/les-chevaux-de-gaguik-tsarukyan-ne-seront-pas-confisques-le-comite-denquete-dement-les-informations-concernant-leur-transfert/",
-          "date": "2026-07-14T08:51:24.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/340044.jpg"
+          "title": "Karekin II rend hommage au dirigeant iranien assassiné",
+          "url": "https://www.armenews.com/karekin-ii-rend-hommage-au-dirigeant-iranien-assassine/",
+          "date": "2026-07-15T06:30:47.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/a3276e47-3cb9-4dbd-5f37-08decd277110_w1597_n_r1_s_s.jpg"
         },
         {
-          "title": "Le ministre de l’Intérieur et le chargé d’affaires américain en Arménie ont participé à la cérémonie d’inauguration de la station de sauvetage aquatique à Sevan",
-          "url": "https://www.armenews.com/le-ministre-de-linterieur-et-le-charge-daffaires-americain-en-armenie-ont-participe-a-la-ceremonie-dinauguration-de-la-station-de-sauvetage-aquatique-a-sevan/",
-          "date": "2026-07-14T08:35:34.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/5663-4.webp"
+          "title": "Décryptage de Hakob Badalyan – Le jeu ambigu du Kremlin : Pachinian l’irrite, mais pas Aliev ?",
+          "url": "https://www.armenews.com/decryptage-de-hakob-badalyan-le-jeu-ambigu-du-kremlin-pachinian-lirrite-mais-pas-aliev/",
+          "date": "2026-07-15T06:30:45.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/News_conference_of_Vladimir_Putin_2012-12-20_11.jpeg"
         },
         {
-          "title": "Nikol Pachinian a félicité Emmanuel Macron à l’occasion du 14 juillet : Nous apprécions grandement le soutien de la France et le vôtre personnellement",
-          "url": "https://www.armenews.com/nikol-pachinian-a-felicite-emmanuel-macron-a-loccasion-du-14-juillet-nous-apprecions-grandement-le-soutien-de-la-france-et-le-votre-personnellement/",
-          "date": "2026-07-14T08:18:03.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/6774.webp"
+          "title": "Au forum de Chouchi occupé, Ilham Aliev affiche un apaisement avec Moscou et règle ses comptes avec l’Europe",
+          "url": "https://www.armenews.com/au-forum-de-chouchi-occupe-ilham-aliev-affiche-un-apaisement-avec-moscou-et-regle-ses-comptes-avec-leurope/",
+          "date": "2026-07-15T06:30:41.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-07-32-40-Aliyev-talks-reconciliation-with-Russia-tensions-with-EU-and-France-in-lengthy-forum-QA.png"
         },
         {
-          "title": "Les conséquences de la guerre contre l’Iran pour le Caucase du Sud et l’Arménie (2e partie), par Alec Yenikomshian",
-          "url": "https://www.armenews.com/les-consequences-de-la-guerre-contre-liran-pour-le-caucase-du-sud-et-larmenie-2e-partie/",
-          "date": "2026-07-14T06:31:43.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Alec-01.jpeg"
+          "title": "L’Arménie est de plus en plus perçue en Europe comme un pilier central du projet « Europe élargie », affirme un expert hongrois",
+          "url": "https://www.armenews.com/larmenie-est-de-plus-en-plus-percue-en-europe-comme-un-pilier-central-du-projet-europe-elargie-affirme-un-expert-hongrois/",
+          "date": "2026-07-15T06:30:37.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-14-a-22.04.47.png"
         },
         {
-          "title": "Quand les abricots arméniens deviennent un champ de bataille avec la Russie (REPORTAGE) Par Irakli METREVELI",
-          "url": "https://www.armenews.com/quand-les-abricots-armeniens-deviennent-un-champ-de-bataille-avec-la-russie-reportage-par-irakli-metreveli/",
-          "date": "2026-07-14T06:31:08.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-14-a-07.16.55.png"
+          "title": "Le gouvernement fait face à de nouvelles revendications en faveur de la réouverture des entreprises de Tsarukian",
+          "url": "https://www.armenews.com/le-gouvernement-fait-face-a-de-nouvelles-revendications-en-faveur-de-la-reouverture-des-entreprises-de-tsarukian/",
+          "date": "2026-07-15T06:30:33.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Screenshot-2026-07-15-at-06-59-37-Armenian-Government-Faces-More-Demands-To-Reopen-Tsarukians-Firms.png"
         },
         {
-          "title": "Décryptage – L’ « arme » asymétrique de l’Arménie inquiète Ilham Aliev, par Hakob Badalyan",
-          "url": "https://www.armenews.com/l-arme-asymetrique-de-larmenie-inquiete-ilham-aliev/",
-          "date": "2026-07-14T06:30:54.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/17839402344734653099_1200x630.jpeg"
+          "title": "Le Conseil de l’Europe enquête sur l’interdiction d’entrée en Arménie du blogueur Lapshin",
+          "url": "https://www.armenews.com/le-conseil-de-leurope-enquete-sur-linterdiction-dentree-en-armenie-du-blogueur-lapshin/",
+          "date": "2026-07-15T06:30:16.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/a867bc87-2536-4034-8246-47c205377d5b-Lapshin-YouTube.jpg"
         }
       ]
     },
@@ -1633,6 +1633,12 @@
       "categoryKey": "communaute",
       "articles": [
         {
+          "title": "Soirée arménienne festive le 18 juillet à Antibes",
+          "url": "https://www.armenews.com/soiree-armenienne-festive-le-18-juin-a-antibes/",
+          "date": "2026-07-15T06:32:58.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Young-pro.jpg"
+        },
+        {
           "title": "Conférence annuelle 2026 de l’Armenian Society of Fellows",
           "url": "https://www.armenews.com/conference-annuelle-2026-de-larmenian-society-of-fellows/",
           "date": "2026-07-13T06:30:25.000Z",
@@ -1685,18 +1691,18 @@
           "url": "https://www.armenews.com/fete-champetre-de-la-jaf-le-5-juillet-a-clamart/",
           "date": "2026-07-03T10:00:23.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/06/707678490_1415833787254421_1728024751055891278_n.jpg"
-        },
-        {
-          "title": "Repas champêtre et journée festive à la Ciotat le 26 juillet",
-          "url": "https://www.armenews.com/repas-champetre-et-journee-festive-a-la-ciotat-le-26-juillet/",
-          "date": "2026-07-02T06:30:33.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/IMG_6785.png"
         }
       ]
     },
     {
       "categoryKey": "culture",
       "articles": [
+        {
+          "title": "Simon Abkarian : Charles de Gaulle a restauré l’honneur de la France",
+          "url": "https://www.armenews.com/simon-abkarian-charles-de-gaulle-a-restaure-lhonneur-de-la-france/",
+          "date": "2026-07-15T06:30:31.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-14-a-21.54.11.png"
+        },
         {
           "title": "« Musique en vacances » avec Nicolas Mazmanian le 18 juillet à La Ciotat",
           "url": "https://www.armenews.com/musique-en-vacances-avec-nicolas-mazmanian-le-18-juillet-a-la-ciotat/",
@@ -1750,12 +1756,6 @@
           "url": "https://www.armenews.com/richard-findykian-recoit-franz-olivier-giesbert/",
           "date": "2026-07-03T16:41:53.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/rf-fog-2026.png"
-        },
-        {
-          "title": "Essaï Altounian élevé au grade de Chevalier dans l’Ordre des Arts et Lettres",
-          "url": "https://www.armenews.com/essai-altounian-eleve-au-grade-de-chevalier-dans-lordre-des-arts-et-lettres/",
-          "date": "2026-07-03T06:31:28.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/736798593_122165849426958210_8288260707696834235_n.jpg"
         }
       ]
     },
