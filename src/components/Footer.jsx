@@ -5,6 +5,7 @@ const SOURCES = [
   ['Le Courrier d’Erevan', 'https://courrier.am/fr'],
   ['Public Radio of Armenia', 'https://en.armradio.am/'],
   ['Artzakank', 'https://artzakank-echo.ch/'],
+  ['ArménieInfo.tv', 'https://armenieinfo.tv/'],
   ['Armenopole', 'https://armenopole.com/armenian/events/switzerland'],
   ['Arméniens de Lausanne', 'https://armeniensdelausanne.ch/#evenements'],
   ['École arménienne de Lausanne', 'https://ecolearmeniennedelausanne.ch/'],
