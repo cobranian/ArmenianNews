@@ -1,0 +1,8 @@
+# Deploy the Radio Yeraz HTTPS audio proxy from the repo:
+#   cd proxy && npx wrangler deploy -c wrangler-yeraz.toml
+# (auth once with `npx wrangler login`). workers_dev = true publishes it at
+# https://radio-yeraz-proxy.<your-subdomain>.workers.dev
+name = "radio-yeraz-proxy"
+main = "radio-yeraz-worker.js"
+compatibility_date = "2026-07-01"
+workers_dev = true

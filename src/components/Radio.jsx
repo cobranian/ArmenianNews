@@ -21,6 +21,9 @@ import { SectionHead } from './SectionHead.jsx'
  * plays from real (residential) browsers. */
 const MARIAM_PROXY = 'https://radio-mariam-proxy.cobranian.workers.dev/'
 const VOV_STREAM = 'https://vovan.s3ming.com/vovan.mp3?_=1'
+// Radio Yeraz streams only over plain HTTP from streaming05.liveboxstream.uk:8008,
+// so it goes through an HTTPS Cloudflare Worker proxy (see proxy/radio-yeraz-worker.js).
+const YERAZ_PROXY = 'https://radio-yeraz-proxy.cobranian.workers.dev/'
 
 const STATIONS = [
   { id: 'public', stream: 'https://eu1.stream4cast.com/proxy/publicra/stream' },
@@ -40,6 +43,7 @@ const STATIONS = [
   { id: 'fama', stream: 'https://eu.stream4cast.com/proxy/rmirzakh/stream' },
   { id: 'yerevannights', stream: 'https://icecast.worldweb.services/Web' },
   { id: 'gospel', stream: 'https://s8.myradiostream.com/15554/listen.mp3' },
+  { id: 'yeraz', stream: YERAZ_PROXY },
 ]
 
 const prefersReducedMotion = () =>

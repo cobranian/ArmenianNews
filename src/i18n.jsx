@@ -113,6 +113,7 @@ const STRINGS = {
     'radio.st.fama': 'Radio Fama',
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
+    'radio.st.yeraz': 'Radio Yeraz',
   },
   en: {
     'site.title': 'Armenia Info',
@@ -218,6 +219,7 @@ const STRINGS = {
     'radio.st.fama': 'Radio Fama',
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
+    'radio.st.yeraz': 'Radio Yeraz',
   },
   hy: {
     'site.title': 'Արմենիա Ինֆո',
@@ -323,6 +325,7 @@ const STRINGS = {
     'radio.st.fama': 'Ռադիո Ֆամա',
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
+    'radio.st.yeraz': 'Radio Yeraz',
   },
 }
 
