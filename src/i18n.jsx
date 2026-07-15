@@ -109,6 +109,10 @@ const STRINGS = {
     'radio.st.culture': 'Radio Culture',
     'radio.st.mariam': 'Radio Mariam',
     'radio.st.vov': 'Voice of Van',
+    'radio.st.lav': 'Lav Radio',
+    'radio.st.fama': 'Radio Fama',
+    'radio.st.yerevannights': 'Yerevan Nights',
+    'radio.st.gospel': 'Armenian Gospel Radio',
   },
   en: {
     'site.title': 'Armenia Info',
@@ -210,6 +214,10 @@ const STRINGS = {
     'radio.st.culture': 'Radio Culture',
     'radio.st.mariam': 'Radio Mariam',
     'radio.st.vov': 'Voice of Van',
+    'radio.st.lav': 'Lav Radio',
+    'radio.st.fama': 'Radio Fama',
+    'radio.st.yerevannights': 'Yerevan Nights',
+    'radio.st.gospel': 'Armenian Gospel Radio',
   },
   hy: {
     'site.title': 'Արմենիա Ինֆո',
@@ -311,6 +319,10 @@ const STRINGS = {
     'radio.st.culture': 'Ռադիո Մշակույթ',
     'radio.st.mariam': 'Ռադիո Մարիամ',
     'radio.st.vov': 'Վանա ձայն',
+    'radio.st.lav': 'Լավ Ռադիո',
+    'radio.st.fama': 'Ռադիո Ֆամա',
+    'radio.st.yerevannights': 'Yerevan Nights',
+    'radio.st.gospel': 'Armenian Gospel Radio',
   },
 }
 

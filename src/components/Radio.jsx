@@ -32,6 +32,14 @@ const STATIONS = [
   // require crossOrigin and mute it). It plays through a bare <audio> element
   // instead — no live spectrum, just the calm idle pulse.
   { id: 'vov', stream: VOV_STREAM, plain: true },
+  // Independent Armenian stations. All four stream over HTTPS and send
+  // Access-Control-Allow-Origin: *, so they run through the analyser like the
+  // stream4cast mounts above (verified live). Radio Fama's stream4cast account
+  // is 'rmirzakh'; Yerevan Nights and Armenian Gospel Radio use their own hosts.
+  { id: 'lav', stream: 'https://eu.stream4cast.com/proxy/lavradio/stream' },
+  { id: 'fama', stream: 'https://eu.stream4cast.com/proxy/rmirzakh/stream' },
+  { id: 'yerevannights', stream: 'https://icecast.worldweb.services/Web' },
+  { id: 'gospel', stream: 'https://s8.myradiostream.com/15554/listen.mp3' },
 ]
 
 const prefersReducedMotion = () =>
