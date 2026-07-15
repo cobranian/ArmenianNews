@@ -42,7 +42,9 @@ const STATIONS = [
   { id: 'lav', stream: 'https://eu.stream4cast.com/proxy/lavradio/stream' },
   { id: 'fama', stream: 'https://eu.stream4cast.com/proxy/rmirzakh/stream' },
   { id: 'yerevannights', stream: 'https://icecast.worldweb.services/Web' },
-  { id: 'gospel', stream: 'https://s8.myradiostream.com/15554/listen.mp3' },
+  // Direct port URL: the path form (/15554/listen.mp3) 302-redirects here, and
+  // the CSP host-source must name the non-default port explicitly.
+  { id: 'gospel', stream: 'https://s8.myradiostream.com:15554/listen.mp3' },
   { id: 'yeraz', stream: YERAZ_PROXY },
 ]
 
