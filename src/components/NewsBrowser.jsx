@@ -109,7 +109,19 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`azkcats.${s.categoryKey}`), articles: s.articles })),
   }
-  return [armradio, courrier, armenews, artzakank].filter((s) => s.cats.length)
+  const armenieinfotv = {
+    id: 'armenieinfotv',
+    brand: 'ArménieInfo.tv',
+    name: t('browser.armenieinfotv'),
+    lang: 'FR',
+    live: false,
+    images: true,
+    proxy: true,
+    cats: (news.armenieinfotv || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: t(`aitcats.${s.categoryKey}`), articles: s.articles })),
+  }
+  return [armradio, courrier, armenews, artzakank, armenieinfotv].filter((s) => s.cats.length)
 }
 
 export function NewsBrowser() {

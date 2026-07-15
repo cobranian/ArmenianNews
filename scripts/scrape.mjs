@@ -10,6 +10,7 @@ import { scrapeCourrier } from './sources/courrier.mjs'
 import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeArtzakank } from './sources/artzakank.mjs'
+import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -104,6 +105,17 @@ async function main() {
   }
   const artzakank = backfillSections(artzakankSecs, prevNews?.artzakank, 'categoryKey')
 
+  // Arménie Info TV (armenieinfo.tv) — French, HTML-scraped (REST is locked),
+  // eight rubrics, deduped across rubrics by URL.
+  console.log('\nArménie Info TV — armenieinfo.tv:')
+  let aitvSecs = []
+  try {
+    aitvSecs = await scrapeArmenieInfoTv(10)
+  } catch (err) {
+    console.error('  armenieinfotv failed wholesale:', err.message)
+  }
+  const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -131,7 +143,14 @@ async function main() {
     igPosts = prevIg.posts
   }
 
-  await writeJson('news.json', { generatedAt, courrier, armradio, armenews, artzakank })
+  await writeJson('news.json', {
+    generatedAt,
+    courrier,
+    armradio,
+    armenews,
+    artzakank,
+    armenieinfotv,
+  })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })
