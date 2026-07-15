@@ -213,7 +213,10 @@ const fullImageFor = async (permalink, fallback) => {
       let best = null
       let area = 0
       for (const im of document.querySelectorAll('img')) {
-        if (!/t39\.30808/.test(im.src)) continue
+        // Content photos: t39.30808 (classic full-res), t39.99422 (newer
+        // format) and t51.* ; skip profile/cover pics (t1.*).
+        if (!/fbcdn|scontent/.test(im.src) || /\/t1\.\d/.test(im.src)) continue
+        if (!/\/t39\.|\/t51\./.test(im.src)) continue
         const a = (im.naturalWidth || 0) * (im.naturalHeight || 0)
         if (a > area) {
           area = a
@@ -237,11 +240,13 @@ for (const p of found.slice(0, WANT)) {
   const file = `${id}.jpg`
   try {
     const src = await fullImageFor(p.permalink, p.image)
-    const res = await fetch(src, {
-      headers: { referer: PAGE_URL, 'user-agent': 'Mozilla/5.0' },
-    })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    const buf = Buffer.from(await res.arrayBuffer())
+    // Download THROUGH the logged-in browser, not a bare fetch(). Facebook now
+    // serves many images (t39.99422 / t51) only to a session with cookies; an
+    // anonymous fetch gets a ~3KB access-denied placeholder. Navigating the tab
+    // sends the session, so we read the real bytes off the response.
+    const res = await page.goto(src, { waitUntil: 'load', timeout: 45000 })
+    if (!res || !res.ok()) throw new Error(`HTTP ${res ? res.status() : 'no response'}`)
+    const buf = await res.buffer()
     if (buf.length < 15000) throw new Error(`too small (${buf.length}B)`)
     await writeFile(path.join(FB_DIR, file), buf)
     posts.push({ id, author: AUTHOR, url: cleanLink(p.permalink), image: file })
