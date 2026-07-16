@@ -156,9 +156,19 @@ Ce qui pèsera le plus, et qu'aucun commit ne fera :
 
 Le site étant déjà indexé, le succès se mesure hors du dépôt :
 
-1. **Prérendu** — `curl https://armenieinfo.ch/ | grep` sur un titre d'article :
-   le texte doit apparaître dans le HTML brut, sans exécution de JS. C'est le
-   test décisif, et il est immédiat après déploiement.
+1. **Prérendu** — `curl https://armenieinfo.ch/ | grep` sur un titre d'article
+   **d'ArmRadio** (l'onglet par défaut — voir « Couverture » plus haut) : le
+   texte doit apparaître dans le HTML brut, sans exécution de JS. C'est le test
+   décisif, et il est immédiat après déploiement.
+
+   **Mesuré en production le 2026-07-16, après fusion** : 70/70 articles
+   ArmRadio et 10/10 événements de l'agenda suisse présents dans le HTML servi ;
+   HTML de 182 657 octets contre ~13 Ko sans prérendu. La taille est le
+   coup d'œil le plus rapide.
+
+   Pour compter les `.reveal` marqués, utilisez `grep -o "is-visible" | wc -l`
+   (attendu : 11) et **non** `grep -c`, qui compte les lignes et répond `1` sur
+   un HTML servi en ~92 lignes.
 2. **Titre** — l'inspection d'URL dans Search Console montre le nouveau
    `<title>`.
 3. **Requêtes** — le rapport « Performances » de Search Console, filtré sur

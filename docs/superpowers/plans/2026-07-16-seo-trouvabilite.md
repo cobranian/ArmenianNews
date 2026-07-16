@@ -769,13 +769,20 @@ Ces trois tâches ne se prouvent qu'en production. Une fois `main` déployé (le
 
 ```bash
 curl -s https://armenieinfo.ch/ | grep -o "<title>[^<]*</title>"
-curl -s https://armenieinfo.ch/ | grep -c "is-visible"
+curl -s https://armenieinfo.ch/ | grep -o "is-visible" | wc -l
+curl -s https://armenieinfo.ch/ | wc -c
 ```
 
-Attendu : le nouveau titre, et un compte `is-visible` supérieur à 0. Si le second renvoie 0, le prérendu a échoué silencieusement en CI (`continue-on-error` masque l'échec **par conception**) — allez lire les logs de l'étape « Prerender dist/index.html ».
+Attendu : le nouveau titre, **11** occurrences de `is-visible`, et un HTML d'environ **180 Ko** (contre ~13 Ko sans prérendu — c'est l'écart le plus lisible d'un coup d'œil).
+
+**N'utilisez pas `grep -c` ici.** Il compte les *lignes*, pas les occurrences : le HTML servi tient sur ~92 lignes et une seule contient `is-visible`, donc `grep -c` répond `1` alors que les 11 éléments sont bien marqués. Le test « supérieur à 0 » passait, mais par accident, et son résultat se lit comme un prérendu à moitié cassé. Vérifié en production le 2026-07-16.
+
+Si le compte est 0 et le HTML autour de 13 Ko, le prérendu a échoué silencieusement en CI (`continue-on-error` masque l'échec **par conception**) — allez lire les logs de l'étape « Prerender dist/index.html ».
 
 - [ ] **Search Console** — Inspection d'URL sur `https://armenieinfo.ch/` : le HTML testé doit contenir les articles, et le titre doit être le nouveau. Puis demander une réindexation.
-- [ ] **Le sitemap** — `https://armenieinfo.ch/sitemap.xml` porte un `lastmod` de l'heure courante.
+- [ ] **Le sitemap** — `https://armenieinfo.ch/sitemap.xml` porte un `lastmod`.
+
+  **Attention** : après une fusion, il portera encore l'horodatage du **dernier snapshot**, pas l'heure courante — et c'est voulu. Une fusion déclenche un run `push`, qui saute le scrape (`if: github.event_name != 'push'`) précisément pour ne pas annoncer une fraîcheur qui n'a pas eu lieu. C'est le **prochain snapshot horaire** qui l'actualise. Un `lastmod` « en retard » juste après un déploiement n'est pas une panne.
 
 **Les classements ne se vérifient pas ici.** Le rapport « Performances » de Search Console, filtré sur `Suisse`, sur **plusieurs semaines**. Personne ne doit déclarer ce travail « réussi » sur la foi d'une recherche Google faite le lendemain.
 
