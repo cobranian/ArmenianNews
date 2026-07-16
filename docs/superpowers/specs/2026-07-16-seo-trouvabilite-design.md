@@ -99,6 +99,28 @@ React reprend la main pour l'utilisateur.
 **Fraîcheur.** Le build tourne déjà toutes les heures : chaque snapshot est
 prérendu, donc le HTML brut porte toujours les articles du moment.
 
+**Couverture — limite découverte à l'implémentation (2026-07-16).** Le prérendu
+ne capture que ce que le DOM contient, et `NewsBrowser` est une interface à
+onglets : seule la source active est rendue. Mesure réelle : **70/366 articles
+(19 %)**, tous d'ArmRadio, l'onglet par défaut. Le Courrier d'Erevan, Nouvelles
+d'Arménie, Artzakank et Arménie Info TV sont derrière un clic et n'atteignent
+jamais le HTML.
+
+En revanche l'agenda est rendu en entier — **10/10 événements suisses, 10/10
+monde** — de même que le titre, le tagline et l'identité du site.
+
+**Décision du propriétaire, 2026-07-16 : on s'arrête là.** Le raisonnement : les
+81 % manquants sont des gros titres agrégés depuis d'autres médias, sur lesquels
+l'original battra toujours l'agrégateur — les baker n'apporterait rien aux
+requêtes cibles. Ce qui les vise (le tagline « de Suisse », l'agenda suisse) est
+prérendu. Rendre les onglets inactifs en CSS pour gagner les 81 % changerait le
+comportement de l'application et quintuplerait le DOM pour du contenu dupliqué
+que Google pondère faiblement.
+
+Ma spec initiale affirmait que le prérendu rendait « les articles » lisibles,
+sans avoir vérifié ce que le DOM contenait. C'était faux. Le résultat tient
+quand même, mais pour une raison différente de celle que j'avais écrite.
+
 **CI** (`.github/workflows/hourly.yml`) : une étape après le screenshot,
 réutilisant le Chrome déjà installé par `browser-actions/setup-chrome`, en
 **`continue-on-error: true`**. Si le prérendu échoue, on déploie la SPA telle

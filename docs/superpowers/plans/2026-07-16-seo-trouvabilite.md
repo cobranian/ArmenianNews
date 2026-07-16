@@ -484,13 +484,36 @@ C'est **le test décisif de tout ce plan**. Prendre un titre d'article réel du 
 
 React échappe `&` en `&amp;` dans le HTML : une comparaison naïve donnerait un faux négatif sur un titre contenant une esperluette. On dés-échappe donc avant de comparer.
 
+**Le titre doit venir d'`armradio.en`, et voici pourquoi.** `NewsBrowser` est une
+interface à onglets qui ne rend que la source active (`const active =
+sources.find(…)`) : les quatre autres — Courrier, Nouvelles d'Arménie,
+Artzakank, Arménie Info TV — ne sont **pas** dans le DOM tant qu'on n'a pas
+cliqué, donc jamais dans le HTML prérendu. Une version antérieure de ce plan
+testait un titre du Courrier ; elle échouait à jamais et ressemblait à une panne
+du prérendu. Ce n'en est pas une (voir « Couverture réelle » ci-dessous).
+
 ```bash
-node -e "const fs=require('fs');const t=JSON.parse(fs.readFileSync('src/data/news.json','utf8')).courrier[0].articles[0].title;const u=(s)=>s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,\"'\").replace(/&quot;/g,'\"');console.log('cherche:',t);console.log(u(fs.readFileSync('dist/index.html','utf8')).includes(t)?'✓ TROUVÉ dans le HTML brut':'✗ ABSENT')"
+node -e "const fs=require('fs');const t=JSON.parse(fs.readFileSync('src/data/news.json','utf8')).armradio.en[0].articles[0].title;const u=(s)=>s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,\"'\").replace(/&quot;/g,'\"');console.log('cherche:',t);console.log(u(fs.readFileSync('dist/index.html','utf8')).includes(t)?'✓ TROUVÉ dans le HTML brut':'✗ ABSENT')"
 ```
 
 Attendu : `✓ TROUVÉ dans le HTML brut`.
 
 Cette commande a été exécutée sur un `dist/` **non** prérendu pendant la rédaction du plan : elle répond `✗ ABSENT`. Le test sait donc échouer — c'est ce qui rend son succès signifiant.
+
+**Couverture réelle, mesurée le 2026-07-16** — 70/366 articles (19 %), mais
+10/10 des événements de l'agenda suisse et 10/10 de l'agenda monde :
+
+| Source | Dans le HTML brut |
+|---|---|
+| ArmRadio (onglet par défaut) | 70/70 |
+| Courrier, Armenews, Artzakank, ArménieInfoTV | 0 — derrière un clic |
+| Agenda Suisse / monde | 10/10 et 10/10 |
+
+**C'est une limite acceptée, décidée par le propriétaire du site le 2026-07-16**,
+pas un bug à corriger : ce qui manque, ce sont des gros titres agrégés d'autres
+médias, sur lesquels l'original battra toujours l'agrégateur. Ce qui vise les
+requêtes cibles — le titre, le tagline, l'agenda suisse — **est** prérendu. Ne
+« corrigez » pas `NewsBrowser` pour rendre les onglets cachés sans redemander.
 
 Vérifier aussi que les `.reveal` sont visibles et pas transparents :
 
