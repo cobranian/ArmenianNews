@@ -32,6 +32,8 @@
 |---|---|---|
 | `index.html` | `<title>`, `og:title`, `twitter:title` | 1 |
 | `src/i18n.jsx` | `site.tagline` (fr) | 1 |
+| `scripts/lib/chrome.mjs` | **nouveau** — `findChrome()`, seule source des chemins de navigateur | 2 |
+| `scripts/shoot.mjs` | consomme `findChrome()` au lieu de sa liste locale | 2 |
 | `scripts/prerender.mjs` | **nouveau** — rend `dist/` et réinjecte le HTML | 2 |
 | `package.json` | script npm `prerender` | 2 |
 | `.github/workflows/hourly.yml` | étape de prérendu ; sitemap dans le commit | 2, 3 |
@@ -191,20 +193,164 @@ JSON-LD alternateName."
 Le cœur du plan, et la seule tâche risquée. Aujourd'hui `curl https://armenieinfo.ch/` ne renvoie que `<div id="root"></div>` : les articles n'existent que pour un crawler qui exécute le JavaScript, ce que Google fait dans une seconde passe plus lente et moins fiable.
 
 **Files:**
+- Create: `scripts/lib/chrome.mjs`
+- Modify: `scripts/shoot.mjs` (remplace sa liste locale par `findChrome()`)
 - Create: `scripts/prerender.mjs`
 - Modify: `package.json` (bloc `scripts`)
 - Modify: `.github/workflows/hourly.yml` (une étape après le screenshot)
 
 **Interfaces:**
-- Consumes: `dist/` produit par `npm run build`. Le motif de détection Chrome est copié de `scripts/shoot.mjs:28-42`.
-- Produces: `npm run prerender`, qui réécrit `dist/index.html` sur place. La tâche 3 n'en dépend pas.
+- Consumes: `dist/` produit par `npm run build`.
+- Produces:
+  - `scripts/lib/chrome.mjs` → `export function findChrome(): string | undefined` — renvoie le chemin du premier navigateur trouvé, ou `undefined`. **Ne quitte pas le processus** : c'est à l'appelant de décider quoi faire d'un échec.
+  - `npm run prerender`, qui réécrit `dist/index.html` sur place. La tâche 3 n'en dépend pas.
+
+**Décision humaine (2026-07-16) — remplace toute instruction contraire ci-dessous.**
+La détection de Chrome est **extraite** dans `scripts/lib/chrome.mjs` et partagée
+par `shoot.mjs` et `prerender.mjs`. Ne recopiez pas le bloc `CANDIDATES` : deux
+listes de chemins de navigateur qui divergent, c'est un doublon qui se venge le
+jour où un navigateur change de place.
 
 **Deux pièges à connaître avant d'écrire le code :**
 
 1. **`.reveal { opacity: 0 }`** (`src/styles/global.css:1911`). Le contenu est transparent tant que `useReveal` n'a pas ajouté `.is-visible` au scroll. Sérialiser sans corriger ça livre à Google une page invisible. Le script **doit** stamper `is-visible` sur tous les `.reveal` avant de sérialiser.
 2. **Pas d'hydratation.** `src/main.jsx` utilise `createRoot`, qui **vide** le conteneur et re-rend de zéro. React ne tentera jamais de réconcilier le HTML prérendu : il n'y a donc aucun risque de mismatch, et c'est voulu. Ne le remplacez **pas** par `hydrateRoot` — ça introduirait une classe de bugs entière pour un gain nul ici.
 
-- [ ] **Step 1: Écrire `scripts/prerender.mjs`**
+- [ ] **Step 1: Extraire `scripts/lib/chrome.mjs`**
+
+Créer le fichier avec exactement ce contenu. La liste est celle de
+`scripts/shoot.mjs`, déplacée sans y toucher :
+
+```js
+import { existsSync } from 'node:fs'
+
+/**
+ * Path to an installed Chrome/Edge, or undefined if none is found.
+ *
+ * puppeteer-core ships no browser of its own, so both the screenshot and the
+ * prerender need one that is already on the machine. First existing browser
+ * wins; the env overrides take precedence — that is how CI passes the Chrome
+ * that browser-actions/setup-chrome installed.
+ *
+ * Returns rather than exits: the caller decides whether a missing browser is
+ * fatal.
+ */
+export function findChrome() {
+  return [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    process.env.CHROME_PATH,
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+    'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+  ]
+    .filter(Boolean)
+    .find((p) => existsSync(p))
+}
+```
+
+- [ ] **Step 2: Faire consommer `findChrome()` par `shoot.mjs`**
+
+Dans `scripts/shoot.mjs`, supprimer le commentaire `// First existing browser
+wins…`, la constante `CANDIDATES` et la ligne `const executablePath =
+CANDIDATES.find(…)`, puis remplacer par un appel au helper.
+
+Remplacer ce bloc :
+
+```js
+// First existing browser wins; env override takes precedence.
+const CANDIDATES = [
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  process.env.CHROME_PATH,
+  '/usr/bin/google-chrome',
+  '/usr/bin/google-chrome-stable',
+  '/usr/bin/chromium-browser',
+  '/usr/bin/chromium',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+].filter(Boolean)
+
+const executablePath = CANDIDATES.find((p) => existsSync(p))
+if (!executablePath) {
+  console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
+  process.exit(1)
+}
+```
+
+par :
+
+```js
+const executablePath = findChrome()
+if (!executablePath) {
+  console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
+  process.exit(1)
+}
+```
+
+et ajouter l'import auprès des autres imports en tête du fichier :
+
+```js
+import { findChrome } from './lib/chrome.mjs'
+```
+
+**Attention à `existsSync`** : `shoot.mjs` l'importe (`import { existsSync } from
+'node:fs'`) uniquement pour `CANDIDATES`. Une fois le bloc parti, vérifiez si
+`existsSync` sert encore ailleurs dans le fichier — sinon **retirez l'import**,
+sous peine d'un avertissement de lint pour import inutilisé.
+
+Le commentaire d'en-tête de `shoot.mjs` mentionne « uses puppeteer-core against
+an already-installed Chrome/Edge » — il reste vrai, ne le touchez pas.
+
+- [ ] **Step 3: Vérifier que le screenshot marche toujours**
+
+C'est le seul code existant que cette tâche modifie : il doit être prouvé
+intact, pas supposé.
+
+```bash
+npm run build && npm run screenshot
+```
+
+Attendu :
+
+```
+✓ dist/don-narek-desktop.png
+✓ dist/don-narek-mobile.png
+```
+
+Vérifier aussi que les PNG ne sont pas vides ou noirs — ouvrez-les :
+
+```bash
+ls -la dist/don-narek-desktop.png dist/don-narek-mobile.png
+```
+
+Attendu : deux fichiers de taille non nulle (typiquement > 100 Ko).
+
+- [ ] **Step 4: Lint et commit de l'extraction**
+
+```bash
+npm run lint
+```
+
+Attendu : aucune erreur. (Si un import `existsSync` inutilisé traîne dans
+`shoot.mjs`, c'est ici qu'il se signale.)
+
+```bash
+git add scripts/lib/chrome.mjs scripts/shoot.mjs
+git commit -m "refactor(scripts): extract findChrome() shared by the puppeteer scripts
+
+The prerender script needs the same browser lookup shoot.mjs does. Two
+copies of a browser-path list is the kind of duplicate that bites the day
+a browser moves — so it moves to scripts/lib/chrome.mjs before the second
+consumer exists rather than after.
+
+Returns undefined instead of exiting: the caller decides."
+```
+
+- [ ] **Step 5: Écrire `scripts/prerender.mjs`**
 
 Créer le fichier avec exactement ce contenu :
 
@@ -234,24 +380,12 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { preview } from 'vite'
 import puppeteer from 'puppeteer-core'
+import { findChrome } from './lib/chrome.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const INDEX = path.join(root, 'dist', 'index.html')
 
-// First existing browser wins; env override takes precedence.
-const CANDIDATES = [
-  process.env.PUPPETEER_EXECUTABLE_PATH,
-  process.env.CHROME_PATH,
-  '/usr/bin/google-chrome',
-  '/usr/bin/google-chrome-stable',
-  '/usr/bin/chromium-browser',
-  '/usr/bin/chromium',
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-].filter(Boolean)
-
-const executablePath = CANDIDATES.find((p) => existsSync(p))
+const executablePath = findChrome()
 if (!executablePath) {
   console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
   process.exit(1)
@@ -301,7 +435,7 @@ Points de conception à ne pas « simplifier » :
 - **Le garde-fou `#root` vide** : sans lui, un rendu raté écrirait une page blanche par-dessus une SPA qui marchait. Mieux vaut planter.
 - **Le garde-fou du marqueur** : si Vite change sa sortie, on veut une erreur bruyante, pas un remplacement silencieux qui ne fait rien.
 
-- [ ] **Step 2: Ajouter le script npm**
+- [ ] **Step 6: Ajouter le script npm**
 
 Dans `package.json`, remplacer :
 
@@ -316,7 +450,7 @@ par :
     "prerender": "node scripts/prerender.mjs"
 ```
 
-- [ ] **Step 3: Vérifier qu'il échoue proprement sans build**
+- [ ] **Step 7: Vérifier qu'il échoue proprement sans build**
 
 ```bash
 rm -rf dist && npm run prerender
@@ -324,7 +458,7 @@ rm -rf dist && npm run prerender
 
 Attendu : sortie `dist/index.html not found. Run \`npm run build\` first.` et code de sortie non nul. C'est le garde-fou qui parle — il fonctionne.
 
-- [ ] **Step 4: Le faire réussir**
+- [ ] **Step 8: Le faire réussir**
 
 ```bash
 npm run build && npm run prerender
@@ -338,7 +472,7 @@ Attendu — une ligne du genre (le nombre exact variera avec le snapshot) :
 
 Si le nombre est proche de zéro ou si le script plante sur « refusing to bake a blank page », le rendu n'a pas eu lieu : ne contournez pas le garde-fou, trouvez pourquoi.
 
-- [ ] **Step 5: Vérifier que le contenu est vraiment dans le HTML brut**
+- [ ] **Step 9: Vérifier que le contenu est vraiment dans le HTML brut**
 
 C'est **le test décisif de tout ce plan**. Prendre un titre d'article réel du snapshot et le chercher dans le fichier, sans navigateur.
 
@@ -360,7 +494,7 @@ grep -c 'class="[^"]*reveal[^"]*is-visible' dist/index.html
 
 Attendu : un nombre **supérieur à 0**. Si c'est 0, l'étape 2 du script n'a pas fait son travail et vous livrez une page à `opacity: 0`.
 
-- [ ] **Step 6: Vérifier que le site marche toujours pour un humain**
+- [ ] **Step 10: Vérifier que le site marche toujours pour un humain**
 
 ```bash
 npm run preview
@@ -370,7 +504,7 @@ Ouvrir `http://localhost:4173`. Le site doit s'afficher et se comporter **exacte
 
 Arrêter le serveur (Ctrl+C).
 
-- [ ] **Step 7: Lint**
+- [ ] **Step 11: Lint**
 
 ```bash
 npm run lint
@@ -378,7 +512,7 @@ npm run lint
 
 Attendu : aucune erreur.
 
-- [ ] **Step 8: Commit du script**
+- [ ] **Step 12: Commit du script**
 
 ```bash
 git add scripts/prerender.mjs package.json
@@ -394,7 +528,7 @@ would otherwise ship a transparent page. Bails rather than baking a blank
 #root over a working SPA."
 ```
 
-- [ ] **Step 9: Brancher le prérendu dans la CI**
+- [ ] **Step 13: Brancher le prérendu dans la CI**
 
 Dans `.github/workflows/hourly.yml`, après l'étape `Screenshot Don Narek carousel into dist/` et **avant** `Deploy to Firebase Hosting`, insérer :
 
@@ -412,7 +546,7 @@ Dans `.github/workflows/hourly.yml`, après l'étape `Screenshot Don Narek carou
 
 Le `id: chrome` existe déjà sur l'étape `Set up Chrome (for screenshot)` : on réutilise ce Chrome, on n'en installe pas un second.
 
-- [ ] **Step 10: Vérifier le YAML**
+- [ ] **Step 14: Vérifier le YAML**
 
 ```bash
 node -e "const {readFileSync}=require('fs');const y=readFileSync('.github/workflows/hourly.yml','utf8');const i=y.indexOf('Prerender dist/index.html'),s=y.indexOf('Screenshot Don Narek'),d=y.indexOf('Deploy to Firebase');console.log(i>s && i<d ? '✓ ordre correct : screenshot < prerender < deploy' : '✗ mauvais ordre')"
@@ -422,7 +556,7 @@ Attendu : `✓ ordre correct : screenshot < prerender < deploy`.
 
 Relire à l'œil que `continue-on-error: true` est bien présent sur la nouvelle étape.
 
-- [ ] **Step 11: Commit de la CI**
+- [ ] **Step 15: Commit de la CI**
 
 ```bash
 git add .github/workflows/hourly.yml
