@@ -595,8 +595,9 @@ par :
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
   - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
     WordPress, francophone.
-  - `artzakank.mjs` — Artzakank / Écho des Arméniens de Suisse, deux rubriques
-    WordPress, francophone.
+  - `artzakank.mjs` — Artzakank / Écho des Arméniens de Suisse, francophone,
+    **trois** rubriques : Arménie & Artsakh et Communauté via l'API WordPress,
+    plus Divers, gratté depuis la page HTML `/divers-p/`.
   - `armenieinfotv.mjs` — armenieinfo.tv, francophone, par rubrique.
 ```
 
@@ -622,7 +623,7 @@ Dans le tableau « Sections », remplacer la ligne commençant par `| **Actualit
 | **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency's latest **16 headlines per language** (fr / en / hy), as a single **Fil / Wire / Հոսք** shelf. **The default tab** — and deliberately so: `NewsBrowser` renders only the active tab, so the default source is what the prerender bakes into the raw HTML for crawlers, and Armenpress is the only source with a real French edition. Armenpress is an Inertia.js app, so its feed arrives as embedded JSON — **no CSS selectors**. Read from the homepage, not the rubric pages (those embed an empty feed and load client-side), with three spaced requests: the site rate-limits hard. |
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. |
 | **Actualités** | [Nouvelles d'Arménie](https://www.armenews.com) | The latest **10 articles per rubric** across 6 WordPress rubrics, French-only, as shelves. |
-| **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across 2 WordPress rubrics, French-only, as shelves. |
+| **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across **3 rubrics**, French-only, as shelves: Arménie & Artsakh and Communauté come from the WordPress REST API, Divers is scraped from the site's `/divers-p/` page. |
 | **Actualités** | [ArménieInfo.tv](https://armenieinfo.tv) | The latest **10 articles per rubric**, French-only, as shelves. |
 ```
 
