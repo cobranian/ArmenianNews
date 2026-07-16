@@ -70,6 +70,16 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run screenshot
 
+      # Bake the rendered app into dist/index.html so crawlers get the
+      # snapshot's articles in raw HTML instead of an empty #root.
+      # Best-effort, like the screenshot: a prerender failure must never
+      # block the deploy — worst case we ship the plain SPA, as before.
+      - name: Prerender dist/index.html
+        continue-on-error: true
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: npm run prerender
+
       - name: Deploy to Firebase Hosting
         env:
           # Dedicated deploy identity (github-action-*), Firebase Hosting Admin
