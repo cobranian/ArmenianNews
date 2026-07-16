@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T08:08:48.557Z",
+  "generatedAt": "2026-07-16T10:57:05.505Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -170,6 +170,11 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
+          "title": "Le ministre de l'Éducation, de la Culture et des Sports a effectué une visite de routine au mémorial consacré aux victimes du génocide arménien",
+          "url": "https://courrier.am/fr/le-ministre-de-l-education-de-la-culture-et-des-sports-a-effectue-une-visite-de-routine-au-memorial-consacre-aux-victimes-du-genocide-armenien",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/thumbnail_4_1.jpg?itok=o2Kg7wGX"
+        },
+        {
           "title": "Un séisme musical au Syunik",
           "url": "https://courrier.am/fr/un-seisme-musical-au-syunik",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/eea0bd_b64d38cf86fb40d0a6a56041db9c1994mv2.png?itok=J74eKK7A"
@@ -213,17 +218,17 @@
           "title": "Martiros Saryan, l'inconnu : une exposition consacrée à la mémoire du maître a ouvert ses portes à Erevan",
           "url": "https://courrier.am/fr/martiros-saryan-l-inconnu-une-exposition-consacree-a-la-memoire-du-maitre-a-ouvert-ses-portes-a-erevan",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/rq9lumw91ry2cofq48v7f2cp3elc4hya.jpg?itok=DmDY0dxs"
-        },
-        {
-          "title": "Un musée du tapis va voir le jour en Arménie",
-          "url": "https://courrier.am/fr/un-musee-du-tapis-va-voir-le-jour-en-armenie",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/705474612_1311183294537215_5564848478766907136_n.jpg?itok=z6_HbPyx"
         }
       ]
     },
     {
       "sectionKey": "francophonie",
       "articles": [
+        {
+          "title": "Mme Zhanna Andreasyan s'entretient avec la ministre française de la Culture",
+          "url": "https://courrier.am/fr/mme-zhanna-andreasyan-s-entretient-avec-la-ministre-francaise-de-la-culture",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/screenshot_1_62.png?itok=4wtcxxPN"
+        },
         {
           "title": "La ministre de la Culture et des Sports a rencontré le directeur général adjoint de l'UNESCO, chargé de la culture",
           "url": "https://courrier.am/fr/la-ministre-de-la-culture-et-des-sports-a-rencontre-le-directeur-general-adjoint-de-l-unesco-charge-de-la-culture",
@@ -268,11 +273,6 @@
           "title": "Communiqué de la mission électorale de la Francophonie (MEF) en République d’Arménie",
           "url": "https://courrier.am/fr/-communique-de-la-mission-electorale-de-la-francophonie-mef-en-republique-d-armenie",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/louise-mushikiwabo-prend-officiellement-ses-fonctions-a-la-tete-de-la-francophonie.jpg?itok=-Y2Hqw5A"
-        },
-        {
-          "title": "Bientôt 30 ans de Francophonie en Arménie grâce à la Fondation KASA",
-          "url": "https://courrier.am/fr/bientot-30-ans-de-francophonie-en-armenie-grace-a-la-fondation-kasa",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/705529433_1429210329249392_1839189697252827557_n_0.jpg?itok=fQ3qx3zg"
         }
       ]
     },
@@ -448,6 +448,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Russia reaffirms readiness to support Armenia-Azerbaijan normalization",
+            "url": "https://en.armradio.am/2026/07/16/russia-reaffirms-readiness-to-support-armenia-azerbaijan-normalization/",
+            "date": "2026-07-16T10:25:51.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2025/06/Russia-MFA-768x475.jpg",
+            "category": "Politics"
+          },
+          {
             "title": "Armenian, Qatari leaders discuss bilateral agenda, regional issues",
             "url": "https://en.armradio.am/2026/07/15/armenian-qatari-leaders-discuss-bilateral-agenda-regional-issues/",
             "date": "2026-07-15T11:30:55.000Z",
@@ -509,19 +516,26 @@
             "date": "2026-07-13T07:00:27.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2025/06/Kaja-Kallas-1-768x528.jpg",
             "category": "Politics"
-          },
-          {
-            "title": "TRIPP project will expand Armenia-Iran trade and serve Iran’s interests",
-            "url": "https://en.armradio.am/2026/07/09/tripp-project-will-expand-armenia-iran-trade-and-serve-irans-interests/",
-            "date": "2026-07-09T11:29:03.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/07/MHM0165382-1536x1001-1-768x501.jpg",
-            "category": "Politics"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Armenia takes control of AraratCement as court grants Prosecutor General’s request",
+            "url": "https://en.armradio.am/2026/07/16/armenia-takes-control-of-ararat-cement-as-court-grants-prosecutor-generals-request/",
+            "date": "2026-07-16T10:04:46.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/araratcement-300x197.jpeg",
+            "category": "Society"
+          },
+          {
+            "title": "GRECO says Armenia has made progress on anti-corruption reforms, calls for further action",
+            "url": "https://en.armradio.am/2026/07/16/greco-says-armenia-has-made-progress-on-anti-corruption-reforms-calls-for-further-action/",
+            "date": "2026-07-16T08:13:08.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/QMHbVPiKPqEohk_7WOWvhdBRBomAW5LYlfNQeQeevpOTVumlbhHlRBrgrJrNx-Td8xsQ_SbY1EkHy_Cq5DLgilRaRiX8rcl0VZTzrajYMFTaWTAb23Yo0ixEpJTIZTon9fjJvsYuQDVZEG4YN3f634Bl5ge-UnR1N_NmJJ0cREEmMV2T1zP3mOkayjMz-0BB-768x403.jpg",
+            "category": "Society"
+          },
           {
             "title": "Armenia launches mass production of new generation passports",
             "url": "https://en.armradio.am/2026/07/16/armenia-launches-mass-production-of-new-generation-passports/",
@@ -530,7 +544,7 @@
             "category": "Society"
           },
           {
-            "title": "Armenian Education Minister Inspects Ongoing Renovation at Genocide Memorial Complex",
+            "title": "Armenian Education Minister inspects ongoing renovation at Genocide Memorial Complex",
             "url": "https://en.armradio.am/2026/07/16/armenian-education-minister-inspects-ongoing-renovation-at-genocide-memorial-complex/",
             "date": "2026-07-16T07:50:50.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/4G3A6814-768x512.jpg",
@@ -576,20 +590,6 @@
             "url": "https://en.armradio.am/2026/07/09/court-extends-samvel-karapetyans-house-arrest-by-two-more-months/",
             "date": "2026-07-09T16:42:04.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/img_1752-480x359-1-300x224.jpeg",
-            "category": "Society"
-          },
-          {
-            "title": "Council of Europe praises Armenia’s anti-money laundering progress, highlights remaining gaps",
-            "url": "https://en.armradio.am/2026/07/09/council-of-europe-praises-armenias-anti-money-laundering-progress-highlights-remaining-gaps/",
-            "date": "2026-07-09T11:35:13.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2024/05/Council-of-Europe-768x512.jpg",
-            "category": "Society"
-          },
-          {
-            "title": "Armenia showcases AI strategy at UN-backed Global Forums in Geneva",
-            "url": "https://en.armradio.am/2026/07/08/armenia-showcases-ai-strategy-at-un-backed-global-forums-in-geneva/",
-            "date": "2026-07-08T13:28:54.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/07/741619925_1010159585058151_6701599918478502427_n-1-768x432.jpg",
             "category": "Society"
           }
         ]
@@ -975,6 +975,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Ինչպե՞ս է գործելու հայ-ամերիկյան TRIPP նախագիծը. Կառավարության որոշման մանրամասները",
+            "url": "https://hy.armradio.am/archives/747059",
+            "date": "2026-07-16T08:24:51.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3658-768x422.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ՀՀ ԱԳ փոխնախարարը Նյու Յորքում ներկայացրել է ԹՐԻՓՓ ծրագիրը",
             "url": "https://hy.armradio.am/archives/746984",
             "date": "2026-07-15T17:24:00.000Z",
@@ -1036,19 +1043,26 @@
             "date": "2026-07-14T13:05:49.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/748330927_1342178854671373_8878872732780864098_n-768x471.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Նիկոլ Փաշինյանը շնորհավորական ուղերձ է հղել Էմանուել Մակրոնին",
-            "url": "https://hy.armradio.am/archives/746603",
-            "date": "2026-07-14T06:48:14.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/66511_b-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Օդի ջերմաստիճանը կնվազի 3-5 աստիճանով",
+            "url": "https://hy.armradio.am/archives/747103",
+            "date": "2026-07-16T10:25:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/735845436_1963402330960819_877727444610037952_n-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "«Արարատցեմենտ»-ը հանձնվել է ՀՀ կառավարմանն ու պահպանմանը. Գլխավոր դատախազության միջնորդությունը բավարարվել է",
+            "url": "https://hy.armradio.am/archives/747073",
+            "date": "2026-07-16T09:18:36.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/160726-768x576.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Ծիծեռնակաբերդի բարեկարգում. երկրորդ փուլում կնորոգվեն տաճարի մույթերն ու թանգարանը",
             "url": "https://hy.armradio.am/archives/747056",
@@ -1104,26 +1118,19 @@
             "date": "2026-07-15T15:45:45.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/geri-768x382.jpeg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "«Ռադիոլուր»-ի հիմնական թողարկումը. 15.07.2026",
-            "url": "https://hy.armradio.am/archives/746953",
-            "date": "2026-07-15T15:38:38.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2021/01/lilith-lurer-768x402.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "Գործարկվել է CBD COP17-ի պաշտոնական կայքը",
-            "url": "https://hy.armradio.am/archives/746950",
-            "date": "2026-07-15T15:30:49.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/747931553_3003969079807580_3257073009885712242_n-e1784129434381-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "economics",
         "articles": [
+          {
+            "title": "Հայաստանը և Օմանը քննարկել են թարմ պտուղ- բանջարեղենի արտահանման հնարավորությունները",
+            "url": "https://hy.armradio.am/archives/747086",
+            "date": "2026-07-16T10:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/747307240_1545910710663684_8769719375470180563_n-768x512.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Հայկական գյուղմթերքի արտահանումը դեպի ԱՄՆ. նոր հեռանկարներ",
             "url": "https://hy.armradio.am/archives/747020",
@@ -1185,13 +1192,6 @@
             "url": "https://hy.armradio.am/archives/746147",
             "date": "2026-07-10T12:13:12.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/ScreenShot-3542-300x169.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Շուկաների դիվերսիֆիկացումը առաջնահերթ է․ կառավարությունը կաջակցի արտահանողներին",
-            "url": "https://hy.armradio.am/archives/745932",
-            "date": "2026-07-09T14:48:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/resource-detail-page-feature-768x479.webp",
             "category": "Կարևոր"
           }
         ]
@@ -1275,6 +1275,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Բայրամովի այցին ընդառաջ. Մոսկվան պատրաստ է աջակցել Հայաստանի եւ Ադրբեջանի հարաբերությունների կարգավորմանը",
+            "url": "https://hy.armradio.am/archives/747087",
+            "date": "2026-07-16T10:33:38.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2021/01/mid-768x488.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Ուկրաինայի նոր վարչապետը նշանակվեց պաշտպանության նախարարի պաշտոնանկության դեմ բողոքի ակցիաների ուղեկցությամբ",
+            "url": "https://hy.armradio.am/archives/747070",
+            "date": "2026-07-16T09:44:24.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/images-3-1-300x176.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ռուսական ուժերը բալիստիկ հրթիռներով հարվածել են Կիևին. կան զոհեր և վիրավորներ",
             "url": "https://hy.armradio.am/archives/747032",
             "date": "2026-07-16T06:18:18.000Z",
@@ -1328,20 +1342,6 @@
             "url": "https://hy.armradio.am/archives/746788",
             "date": "2026-07-15T04:29:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/0640f7a0-7fc2-11f1-b890-9bba15144891.jpg-768x432.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Թրամփը Նեթանյահուին կոչ է արել դուրս բերել զորքերը Սիրիայից և Լիբանանից",
-            "url": "https://hy.armradio.am/archives/746772",
-            "date": "2026-07-14T18:46:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/2047957531_0_0_3072_1728_768x0_80_0_0_d0b079ca62c605f030ad115eae95993b.jpg-300x169.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Թրամփը հրաժարվել է Հորմուզի նեղուցով անցնող նավերից 20% փոխհատուցում գանձելու գաղափարից",
-            "url": "https://hy.armradio.am/archives/746756",
-            "date": "2026-07-14T15:55:34.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/1750357645127300__JyTslco-768x513.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1503,6 +1503,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Le gouvernement arménien allouera une subvention supplémentaire de 65,2 millions de drams aux Chemins de fer du Caucase du Sud",
+          "url": "https://www.armenews.com/le-gouvernement-armenien-allouera-une-subvention-supplementaire-de-652-millions-de-drams-aux-chemins-de-fer-du-caucase-du-sud/",
+          "date": "2026-07-16T09:54:37.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/340170.jpg"
+        },
+        {
           "title": "Treize nouvelles sculptures seront inaugurées demain au parc Missak Manouchian à Erevan",
           "url": "https://www.armenews.com/treize-nouvelles-sculptures-seront-inaugurees-demain-au-parc-missak-manouchian-a-erevan/",
           "date": "2026-07-16T07:35:39.000Z",
@@ -1555,12 +1561,6 @@
           "url": "https://www.armenews.com/un-homme-daffaires-americain-a-la-tete-du-fonds-trump-route/",
           "date": "2026-07-16T06:30:27.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-16-a-07.04.22.png"
-        },
-        {
-          "title": "Le Parlement européen débat du sort des Arméniens détenus à Bakou",
-          "url": "https://www.armenews.com/le-parlement-europeen-debat-du-sort-des-armeniens-detenus-a-bakou/",
-          "date": "2026-07-16T06:30:08.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-15-a-22.05.06.png"
         }
       ]
     },
@@ -2333,6 +2333,12 @@
       "categoryKey": "geopolitique",
       "articles": [
         {
+          "title": "Aliyev déclare que l’Azerbaïdjan envisage de quitter le Conseil de l’Europe",
+          "url": "https://armenieinfo.tv/aliyev-declare-que-lazerbaidjan-envisage-de-quitter-le-conseil-de-leurope/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1784111534-5645.jpg"
+        },
+        {
           "title": "Lancement de la Mission de Partenariat de l’Union Européenne en Arménie",
           "url": "https://armenieinfo.tv/lancement-de-la-mission-de-partenariat-de-lunion-europeenne-en-armenie/",
           "date": null,
@@ -2385,12 +2391,6 @@
           "url": "https://armenieinfo.tv/reconnaissance-du-genocide-armenien-par-israel-quand-la-realpolitique-ouvre-une-breche-historique/",
           "date": null,
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/06/ab4292e9-484b-47a7-8f35-af8ebcf313ea.png"
-        },
-        {
-          "title": "Le Conseil de l’Union européenne approuve les engagements tarifaires de l’accord commercial UE-États-Unis",
-          "url": "https://armenieinfo.tv/le-conseil-de-lunion-europeenne-approuve-les-engagements-tarifaires-de-laccord-commercial-ue-etats-unis/",
-          "date": null,
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782441191-8244.jpg"
         }
       ]
     },
