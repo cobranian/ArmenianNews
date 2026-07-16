@@ -139,15 +139,15 @@ async function main() {
 
   // Armenpress — the national news agency, and the only trilingual source here
   // (fr/en/hy map 1:1). It does not lead the news tabs: Courrier is French-only
-  // and five times larger. Its own module spaces the three requests: the site
-  // rate-limits hard. Backfilled per language, exactly like armradio.
-  console.log('\nArmenpress — armenpress.am (fr/en/hy):')
+  // and prerenders more French copy. Seven rubrics x three languages = 21 pages,
+  // spaced by its own module. Backfilled per language, exactly like armradio.
+  console.log('\nArmenpress — armenpress.am (fr/en/hy, 7 rubriques):')
   // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
   // undefined here would throw and take the whole snapshot down — every other
   // source in this file seeds [] for exactly that reason.
   let apLangs = { fr: [], en: [], hy: [] }
   try {
-    apLangs = await scrapeArmenpress(16)
+    apLangs = await scrapeArmenpress(10)
   } catch (err) {
     console.error('  armenpress failed wholesale:', err.message)
   }
