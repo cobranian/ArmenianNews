@@ -24,7 +24,7 @@ export function Footer() {
         <div className="footer__title">{t('site.title')}</div>
         <nav className="footer__sources" aria-label={t('footer.sources')}>
           {SOURCES.map(([label, url]) => (
-            <a key={url} href={url} target="_blank" rel="noopener noreferrer">
+            <a key={url} href={url} rel="noopener noreferrer">
               {label}
             </a>
           ))}

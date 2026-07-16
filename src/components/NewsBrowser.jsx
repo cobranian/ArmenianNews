@@ -24,7 +24,6 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
       <a
         className={`card__media${hasPhoto ? '' : ' card__media--motif'}`}
         href={item.url}
-        target="_blank"
         rel="noopener noreferrer"
         style={hasPhoto ? undefined : { '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
       >
@@ -46,10 +45,10 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
         {catLabel && <span className="card__section">{catLabel}</span>}
       </a>
       <div className="card__body">
-        <a className="card__title" href={item.url} target="_blank" rel="noopener noreferrer">
+        <a className="card__title" href={item.url} rel="noopener noreferrer">
           {item.title || t('news.empty')}
         </a>
-        <a className="card__more" href={item.url} target="_blank" rel="noopener noreferrer">
+        <a className="card__more" href={item.url} rel="noopener noreferrer">
           {t('news.readmore')}
         </a>
       </div>

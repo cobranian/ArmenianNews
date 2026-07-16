@@ -87,7 +87,6 @@ function FacebookCard({ post, author, view, img }) {
     <a
       className="fb-card"
       href={post.url}
-      target="_blank"
       rel="noopener noreferrer"
       style={{ '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
     >
@@ -132,7 +131,6 @@ function InstagramCard({ url, handle, name, view, img }) {
     <a
       className="ig-card"
       href={url}
-      target="_blank"
       rel="noopener noreferrer"
       style={{ '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
     >
@@ -235,7 +233,7 @@ export function Social() {
               </Carousel>
 
               <p className="fb-fallback">
-                <a href={fb.url} target="_blank" rel="noopener noreferrer">
+                <a href={fb.url} rel="noopener noreferrer">
                   {t('fb.fallback')} →
                 </a>
               </p>
@@ -271,7 +269,6 @@ export function Social() {
                     key={acc.handle}
                     className="ig-chip"
                     href={acc.url}
-                    target="_blank"
                     rel="noopener noreferrer"
                     title={t('ig.visit')}
                   >

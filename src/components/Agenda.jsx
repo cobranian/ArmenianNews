@@ -27,7 +27,6 @@ function EventCard({ ev, locale, place }) {
     <a
       className="agenda-card"
       href={ev.url || '#'}
-      target="_blank"
       rel="noopener noreferrer"
     >
       <div
