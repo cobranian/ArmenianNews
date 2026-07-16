@@ -92,10 +92,20 @@ composants importent au build :
   - `armenpress.mjs` — Armenpress, l'agence de presse nationale, et la seule
     source **trilingue** (fr/en/hy) : les trois éditions correspondent 1:1 à la
     langue de l'interface. Application Inertia.js : le JSON du flux est
-    embarqué dans la page, donc **aucun sélecteur CSS**. Lit l'accueil et non
-    les pages de rubrique, qui embarquent un flux vide — et parce que le site
-    **limite agressivement le débit** (403 sur tout le site après ~30
-    requêtes). Trois requêtes espacées par snapshot ; n'en ajoutez pas.
+    embarqué dans la page, donc **aucun sélecteur CSS**. **Sept rubriques ×
+    trois langues = 21 pages** par snapshot, espacées de 800 ms.
+    - **Le piège du payload** : les articles d'une page de rubrique vivent dans
+      `props.data.data.hits`, pas dans `props.feed.data.hits` (le chemin de
+      l'accueil). Lire le chemin de l'accueil sur une page de rubrique renvoie
+      « vide » — c'est de là que venait la légende « les pages de rubrique
+      embarquent un flux vide ». Elles rendent 12 à 36 articles, tous datés et
+      illustrés.
+    - **Ce module utilise `node:https`, pas `fetchText`**, et c'est délibéré :
+      les pages de rubrique répondent **403 au `fetch` de Node (undici)** et 200
+      à `node:https` — même machine, même TLS OpenSSL, même HTTP/1.1, quels que
+      soient les en-têtes. La raison est dans le module. Basculer sur
+      `fetchText` ferait échouer les 21 rubriques, que le backfill masquerait
+      ensuite en silence.
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
   - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
     WordPress, francophone.
@@ -189,14 +199,17 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   `NewsBrowser` ne rend que l'onglet actif : la source par défaut est donc la
   seule que le prérendu injecte dans le HTML, et la seule que Google lit sans
   exécuter de JS. Courrier d'Erevan est en tête parce qu'il est francophone et
-  qu'il prérend le plus de texte français (80 articles, contre 16 pour
-  Armenpress — armenews, artzakank et armenieinfotv sont aussi francophones,
-  mais plus petits). Armenpress est la seule source **trilingue** (fr/en/hy)
-  mais ne mène pas l'ordre. Avant Armenpress, ArmRadio (éditions `en`/`hy`
-  seulement) faisait servir 70 titres **anglais** sous `<html lang="fr">`. Ne
-  réordonnez pas les onglets sans mesurer ce que devient le HTML prérendu.
-- **Armenpress peut se périmer en silence.** Si une langue échoue, le module
-  renvoie une rubrique `fil` vide et `backfillSections` restitue les articles du
+  qu'il prérend le plus de texte français (80 articles, contre 70 pour
+  Armenpress depuis le passage aux 7 rubriques — armenews, artzakank et
+  armenieinfotv sont aussi francophones, mais plus petits). Armenpress est la
+  seule source **trilingue** (fr/en/hy) mais ne mène pas l'ordre. **La marge
+  est désormais mince (80 vs 70)** : si le nombre d'articles bouge d'un côté ou
+  de l'autre, remesurez avant de conclure que Courrier doit rester en tête.
+  Avant Armenpress, ArmRadio (éditions `en`/`hy` seulement) faisait servir 70
+  titres **anglais** sous `<html lang="fr">`. Ne réordonnez pas les onglets sans
+  mesurer ce que devient le HTML prérendu.
+- **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
+  la renvoie vide et `backfillSections` restitue les articles du
   snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc
   resservir les mêmes dépêches pendant que `meta.generatedAt` et le `lastmod` du
   sitemap continuent d'annoncer de la fraîcheur. Le seul signal est un

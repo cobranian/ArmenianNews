@@ -70,8 +70,8 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
 function buildSources(t, lang) {
   const armLang = lang === 'hy' ? 'hy' : 'en'
   // Armenpress maps 1:1 to the UI language — the only source that does. It does
-  // not lead: Courrier prerenders 5x more French copy. Kept for its live
-  // trilingual wire, which no other source provides.
+  // not lead: Courrier prerenders more French copy. Seven rubrics per language,
+  // each its own shelf.
   const armenpress = {
     id: 'armenpress',
     brand: 'Armenpress',
