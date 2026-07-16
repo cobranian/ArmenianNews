@@ -11,6 +11,7 @@ import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
+import { scrapeArmenpress } from './sources/armenpress.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -136,6 +137,21 @@ async function main() {
   }
   const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
 
+  // Armenpress — the national news agency, and the only source with a real
+  // French edition. Its own module spaces the three requests: the site
+  // rate-limits hard. Backfilled per language, exactly like armradio.
+  console.log('\nArmenpress — armenpress.am (fr/en/hy):')
+  let apLangs = {}
+  try {
+    apLangs = await scrapeArmenpress(16)
+  } catch (err) {
+    console.error('  armenpress failed wholesale:', err.message)
+  }
+  const armenpress = {}
+  for (const lang of ['fr', 'en', 'hy']) {
+    armenpress[lang] = backfillSections(apLangs[lang], prevNews?.armenpress?.[lang], 'categoryKey')
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -170,6 +186,7 @@ async function main() {
     armenews,
     artzakank,
     armenieinfotv,
+    armenpress,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
