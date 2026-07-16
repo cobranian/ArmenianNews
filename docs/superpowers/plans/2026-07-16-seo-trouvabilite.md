@@ -694,7 +694,45 @@ npm run build && cat dist/sitemap.xml
 
 Attendu : `dist/sitemap.xml` est identique à `public/sitemap.xml` — Vite copie `public/` tel quel.
 
-- [ ] **Step 6: Ajouter le sitemap au commit horaire**
+- [ ] **Step 6: Rendre le sitemap cohérent avec les données commitées**
+
+`npm run scrape` vient de réécrire `src/data/*.json` avec un snapshot frais. **Ce
+snapshot ne doit pas partir dans cette branche** : c'est une branche de code, et
+le job horaire commite les données sur `main` de son côté. Mais si on jette les
+données en gardant le sitemap, le `lastmod` annonce un `generatedAt` qui n'existe
+plus nulle part.
+
+L'invariant à tenir au moment du commit : **`lastmod` == le `generatedAt` du
+`meta.json` commité.**
+
+Restaurer les données :
+
+```bash
+git checkout -- src/data/
+```
+
+Puis réaligner le sitemap sur le `meta.json` restauré — éditez `public/sitemap.xml`
+à la main pour que `<lastmod>` porte exactement la valeur affichée par :
+
+```bash
+node -e "console.log(JSON.parse(require('fs').readFileSync('src/data/meta.json','utf8')).generatedAt)"
+```
+
+Vérifier l'invariant :
+
+```bash
+node -e "const fs=require('fs');const m=JSON.parse(fs.readFileSync('src/data/meta.json','utf8')).generatedAt;const s=fs.readFileSync('public/sitemap.xml','utf8');console.log(s.includes('<lastmod>'+m+'</lastmod>')?'✓ lastmod == meta.json : '+m:'✗ incohérent')"
+```
+
+Attendu : `✓ lastmod == meta.json : 2026-…`
+
+```bash
+git status --porcelain src/data/
+```
+
+Attendu : **aucune sortie** — les données sont revenues à l'état commité.
+
+- [ ] **Step 7: Ajouter le sitemap au commit horaire**
 
 Dans `.github/workflows/hourly.yml`, étape « Commit refreshed data », remplacer :
 
@@ -710,7 +748,7 @@ par :
 
 Sans ça, le `lastmod` régénéré chaque heure ne serait jamais committé, et la CI travaillerait sur un arbre sale.
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 8: Commit**
 
 ```bash
 git add scripts/scrape.mjs public/sitemap.xml .github/workflows/hourly.yml
