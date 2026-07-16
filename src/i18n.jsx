@@ -11,7 +11,7 @@ export const LANGS = [
 const STRINGS = {
   fr: {
     'site.title': 'Arménie Info',
-    'site.tagline': "Un instantané quotidien de l'Arménie et de sa diaspora",
+    'site.tagline': 'Un instantané horaire de la vie arménienne, de Suisse et du monde',
     'site.snapshot': 'Instantané du',
 
     'nav.news': 'Actualités',

@@ -13,29 +13,16 @@
  *
  *   npm run screenshot            # after `npm run build`
  */
-import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { preview } from 'vite'
 import puppeteer from 'puppeteer-core'
+import { findChrome } from './lib/chrome.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = path.join(root, 'dist')
 
-// First existing browser wins; env override takes precedence.
-const CANDIDATES = [
-  process.env.PUPPETEER_EXECUTABLE_PATH,
-  process.env.CHROME_PATH,
-  '/usr/bin/google-chrome',
-  '/usr/bin/google-chrome-stable',
-  '/usr/bin/chromium-browser',
-  '/usr/bin/chromium',
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-].filter(Boolean)
-
-const executablePath = CANDIDATES.find((p) => existsSync(p))
+const executablePath = findChrome()
 if (!executablePath) {
   console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
   process.exit(1)

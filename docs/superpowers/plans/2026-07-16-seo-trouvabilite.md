@@ -13,6 +13,7 @@
 ## Global Constraints
 
 - **Il n'y a pas de suite de tests dans ce dépôt** (`CLAUDE.md`). N'en introduisez pas : chaque tâche se vérifie en exécutant le build ou le script et en observant la sortie réelle. Les étapes de vérification ci-dessous sont les tests.
+- **`npm run lint` ne fonctionne pas** — constaté pendant l'exécution du plan, le 2026-07-16. ESLint n'est ni installé ni configuré : `package.json` ne le mentionne que dans la ligne de script, il n'y a aucune config, et la commande échoue avec « `eslint` n'est pas reconnu ». Le `CLAUDE.md` la documente à tort. **Ne lancez pas `npm run lint`, ne l'installez pas** (hors périmètre) : là où le plan comptait sur lui, vérifiez à la main. En particulier, **un import inutilisé ne sera signalé par rien** — ni par le lint, ni à l'exécution.
 - **Le français porte tous ses accents** (é, è, à, ê, ç…) — `CLAUDE.md`.
 - **Ne touchez pas au H1.** `site.title` reste `Arménie Info` dans les trois langues. Seul le **tagline français** change.
 - **Ne touchez pas aux taglines `en` et `hy`.** Le ciblage « Suisse » vise une requête française.
@@ -32,6 +33,8 @@
 |---|---|---|
 | `index.html` | `<title>`, `og:title`, `twitter:title` | 1 |
 | `src/i18n.jsx` | `site.tagline` (fr) | 1 |
+| `scripts/lib/chrome.mjs` | **nouveau** — `findChrome()`, seule source des chemins de navigateur | 2 |
+| `scripts/shoot.mjs` | consomme `findChrome()` au lieu de sa liste locale | 2 |
 | `scripts/prerender.mjs` | **nouveau** — rend `dist/` et réinjecte le HTML | 2 |
 | `package.json` | script npm `prerender` | 2 |
 | `.github/workflows/hourly.yml` | étape de prérendu ; sitemap dans le commit | 2, 3 |
@@ -191,20 +194,169 @@ JSON-LD alternateName."
 Le cœur du plan, et la seule tâche risquée. Aujourd'hui `curl https://armenieinfo.ch/` ne renvoie que `<div id="root"></div>` : les articles n'existent que pour un crawler qui exécute le JavaScript, ce que Google fait dans une seconde passe plus lente et moins fiable.
 
 **Files:**
+- Create: `scripts/lib/chrome.mjs`
+- Modify: `scripts/shoot.mjs` (remplace sa liste locale par `findChrome()`)
 - Create: `scripts/prerender.mjs`
 - Modify: `package.json` (bloc `scripts`)
 - Modify: `.github/workflows/hourly.yml` (une étape après le screenshot)
 
 **Interfaces:**
-- Consumes: `dist/` produit par `npm run build`. Le motif de détection Chrome est copié de `scripts/shoot.mjs:28-42`.
-- Produces: `npm run prerender`, qui réécrit `dist/index.html` sur place. La tâche 3 n'en dépend pas.
+- Consumes: `dist/` produit par `npm run build`.
+- Produces:
+  - `scripts/lib/chrome.mjs` → `export function findChrome(): string | undefined` — renvoie le chemin du premier navigateur trouvé, ou `undefined`. **Ne quitte pas le processus** : c'est à l'appelant de décider quoi faire d'un échec.
+  - `npm run prerender`, qui réécrit `dist/index.html` sur place. La tâche 3 n'en dépend pas.
+
+**Décision humaine (2026-07-16) — remplace toute instruction contraire ci-dessous.**
+La détection de Chrome est **extraite** dans `scripts/lib/chrome.mjs` et partagée
+par `shoot.mjs` et `prerender.mjs`. Ne recopiez pas le bloc `CANDIDATES` : deux
+listes de chemins de navigateur qui divergent, c'est un doublon qui se venge le
+jour où un navigateur change de place.
 
 **Deux pièges à connaître avant d'écrire le code :**
 
 1. **`.reveal { opacity: 0 }`** (`src/styles/global.css:1911`). Le contenu est transparent tant que `useReveal` n'a pas ajouté `.is-visible` au scroll. Sérialiser sans corriger ça livre à Google une page invisible. Le script **doit** stamper `is-visible` sur tous les `.reveal` avant de sérialiser.
 2. **Pas d'hydratation.** `src/main.jsx` utilise `createRoot`, qui **vide** le conteneur et re-rend de zéro. React ne tentera jamais de réconcilier le HTML prérendu : il n'y a donc aucun risque de mismatch, et c'est voulu. Ne le remplacez **pas** par `hydrateRoot` — ça introduirait une classe de bugs entière pour un gain nul ici.
 
-- [ ] **Step 1: Écrire `scripts/prerender.mjs`**
+- [ ] **Step 1: Extraire `scripts/lib/chrome.mjs`**
+
+Créer le fichier avec exactement ce contenu. La liste est celle de
+`scripts/shoot.mjs`, déplacée sans y toucher :
+
+```js
+import { existsSync } from 'node:fs'
+
+/**
+ * Path to an installed Chrome/Edge, or undefined if none is found.
+ *
+ * puppeteer-core ships no browser of its own, so both the screenshot and the
+ * prerender need one that is already on the machine. First existing browser
+ * wins; the env overrides take precedence — that is how CI passes the Chrome
+ * that browser-actions/setup-chrome installed.
+ *
+ * Returns rather than exits: the caller decides whether a missing browser is
+ * fatal.
+ */
+export function findChrome() {
+  return [
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    process.env.CHROME_PATH,
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+    'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+  ]
+    .filter(Boolean)
+    .find((p) => existsSync(p))
+}
+```
+
+- [ ] **Step 2: Faire consommer `findChrome()` par `shoot.mjs`**
+
+Dans `scripts/shoot.mjs`, supprimer le commentaire `// First existing browser
+wins…`, la constante `CANDIDATES` et la ligne `const executablePath =
+CANDIDATES.find(…)`, puis remplacer par un appel au helper.
+
+Remplacer ce bloc :
+
+```js
+// First existing browser wins; env override takes precedence.
+const CANDIDATES = [
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  process.env.CHROME_PATH,
+  '/usr/bin/google-chrome',
+  '/usr/bin/google-chrome-stable',
+  '/usr/bin/chromium-browser',
+  '/usr/bin/chromium',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+].filter(Boolean)
+
+const executablePath = CANDIDATES.find((p) => existsSync(p))
+if (!executablePath) {
+  console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
+  process.exit(1)
+}
+```
+
+par :
+
+```js
+const executablePath = findChrome()
+if (!executablePath) {
+  console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
+  process.exit(1)
+}
+```
+
+et ajouter l'import auprès des autres imports en tête du fichier :
+
+```js
+import { findChrome } from './lib/chrome.mjs'
+```
+
+**Attention à `existsSync`** : `shoot.mjs` l'importe (`import { existsSync } from
+'node:fs'`) uniquement pour `CANDIDATES`. Une fois le bloc parti, l'import
+devient orphelin. **Rien ne vous le signalera** — `npm run lint` est cassé dans
+ce dépôt (voir les Global Constraints) et un import inutilisé ne fait pas
+échouer Node. Vérifiez donc à la main :
+
+```bash
+grep -n "existsSync" scripts/shoot.mjs
+```
+
+Si la seule occurrence restante est la ligne d'import, **retirez l'import**. S'il
+en reste d'autres, gardez-le.
+
+Le commentaire d'en-tête de `shoot.mjs` mentionne « uses puppeteer-core against
+an already-installed Chrome/Edge » — il reste vrai, ne le touchez pas.
+
+- [ ] **Step 3: Vérifier que le screenshot marche toujours**
+
+C'est le seul code existant que cette tâche modifie : il doit être prouvé
+intact, pas supposé.
+
+```bash
+npm run build && npm run screenshot
+```
+
+Attendu :
+
+```
+✓ dist/don-narek-desktop.png
+✓ dist/don-narek-mobile.png
+```
+
+Vérifier aussi que les PNG ne sont pas vides ou noirs — ouvrez-les :
+
+```bash
+ls -la dist/don-narek-desktop.png dist/don-narek-mobile.png
+```
+
+Attendu : deux fichiers de taille non nulle (typiquement > 100 Ko).
+
+- [ ] **Step 4: Commit de l'extraction**
+
+`npm run lint` est cassé dans ce dépôt : la vérification de l'étape 3 (le
+screenshot tourne réellement et produit deux PNG) est la preuve qui compte, et
+le `grep` de l'étape 2 couvre l'import orphelin.
+
+```bash
+git add scripts/lib/chrome.mjs scripts/shoot.mjs
+git commit -m "refactor(scripts): extract findChrome() shared by the puppeteer scripts
+
+The prerender script needs the same browser lookup shoot.mjs does. Two
+copies of a browser-path list is the kind of duplicate that bites the day
+a browser moves — so it moves to scripts/lib/chrome.mjs before the second
+consumer exists rather than after.
+
+Returns undefined instead of exiting: the caller decides."
+```
+
+- [ ] **Step 5: Écrire `scripts/prerender.mjs`**
 
 Créer le fichier avec exactement ce contenu :
 
@@ -234,24 +386,12 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { preview } from 'vite'
 import puppeteer from 'puppeteer-core'
+import { findChrome } from './lib/chrome.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const INDEX = path.join(root, 'dist', 'index.html')
 
-// First existing browser wins; env override takes precedence.
-const CANDIDATES = [
-  process.env.PUPPETEER_EXECUTABLE_PATH,
-  process.env.CHROME_PATH,
-  '/usr/bin/google-chrome',
-  '/usr/bin/google-chrome-stable',
-  '/usr/bin/chromium-browser',
-  '/usr/bin/chromium',
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-].filter(Boolean)
-
-const executablePath = CANDIDATES.find((p) => existsSync(p))
+const executablePath = findChrome()
 if (!executablePath) {
   console.error('No Chrome/Edge found. Set PUPPETEER_EXECUTABLE_PATH.')
   process.exit(1)
@@ -301,7 +441,7 @@ Points de conception à ne pas « simplifier » :
 - **Le garde-fou `#root` vide** : sans lui, un rendu raté écrirait une page blanche par-dessus une SPA qui marchait. Mieux vaut planter.
 - **Le garde-fou du marqueur** : si Vite change sa sortie, on veut une erreur bruyante, pas un remplacement silencieux qui ne fait rien.
 
-- [ ] **Step 2: Ajouter le script npm**
+- [ ] **Step 6: Ajouter le script npm**
 
 Dans `package.json`, remplacer :
 
@@ -316,7 +456,7 @@ par :
     "prerender": "node scripts/prerender.mjs"
 ```
 
-- [ ] **Step 3: Vérifier qu'il échoue proprement sans build**
+- [ ] **Step 7: Vérifier qu'il échoue proprement sans build**
 
 ```bash
 rm -rf dist && npm run prerender
@@ -324,7 +464,7 @@ rm -rf dist && npm run prerender
 
 Attendu : sortie `dist/index.html not found. Run \`npm run build\` first.` et code de sortie non nul. C'est le garde-fou qui parle — il fonctionne.
 
-- [ ] **Step 4: Le faire réussir**
+- [ ] **Step 8: Le faire réussir**
 
 ```bash
 npm run build && npm run prerender
@@ -338,19 +478,42 @@ Attendu — une ligne du genre (le nombre exact variera avec le snapshot) :
 
 Si le nombre est proche de zéro ou si le script plante sur « refusing to bake a blank page », le rendu n'a pas eu lieu : ne contournez pas le garde-fou, trouvez pourquoi.
 
-- [ ] **Step 5: Vérifier que le contenu est vraiment dans le HTML brut**
+- [ ] **Step 9: Vérifier que le contenu est vraiment dans le HTML brut**
 
 C'est **le test décisif de tout ce plan**. Prendre un titre d'article réel du snapshot et le chercher dans le fichier, sans navigateur.
 
 React échappe `&` en `&amp;` dans le HTML : une comparaison naïve donnerait un faux négatif sur un titre contenant une esperluette. On dés-échappe donc avant de comparer.
 
+**Le titre doit venir d'`armradio.en`, et voici pourquoi.** `NewsBrowser` est une
+interface à onglets qui ne rend que la source active (`const active =
+sources.find(…)`) : les quatre autres — Courrier, Nouvelles d'Arménie,
+Artzakank, Arménie Info TV — ne sont **pas** dans le DOM tant qu'on n'a pas
+cliqué, donc jamais dans le HTML prérendu. Une version antérieure de ce plan
+testait un titre du Courrier ; elle échouait à jamais et ressemblait à une panne
+du prérendu. Ce n'en est pas une (voir « Couverture réelle » ci-dessous).
+
 ```bash
-node -e "const fs=require('fs');const t=JSON.parse(fs.readFileSync('src/data/news.json','utf8')).courrier[0].articles[0].title;const u=(s)=>s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,\"'\").replace(/&quot;/g,'\"');console.log('cherche:',t);console.log(u(fs.readFileSync('dist/index.html','utf8')).includes(t)?'✓ TROUVÉ dans le HTML brut':'✗ ABSENT')"
+node -e "const fs=require('fs');const t=JSON.parse(fs.readFileSync('src/data/news.json','utf8')).armradio.en[0].articles[0].title;const u=(s)=>s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,\"'\").replace(/&quot;/g,'\"');console.log('cherche:',t);console.log(u(fs.readFileSync('dist/index.html','utf8')).includes(t)?'✓ TROUVÉ dans le HTML brut':'✗ ABSENT')"
 ```
 
 Attendu : `✓ TROUVÉ dans le HTML brut`.
 
 Cette commande a été exécutée sur un `dist/` **non** prérendu pendant la rédaction du plan : elle répond `✗ ABSENT`. Le test sait donc échouer — c'est ce qui rend son succès signifiant.
+
+**Couverture réelle, mesurée le 2026-07-16** — 70/366 articles (19 %), mais
+10/10 des événements de l'agenda suisse et 10/10 de l'agenda monde :
+
+| Source | Dans le HTML brut |
+|---|---|
+| ArmRadio (onglet par défaut) | 70/70 |
+| Courrier, Armenews, Artzakank, ArménieInfoTV | 0 — derrière un clic |
+| Agenda Suisse / monde | 10/10 et 10/10 |
+
+**C'est une limite acceptée, décidée par le propriétaire du site le 2026-07-16**,
+pas un bug à corriger : ce qui manque, ce sont des gros titres agrégés d'autres
+médias, sur lesquels l'original battra toujours l'agrégateur. Ce qui vise les
+requêtes cibles — le titre, le tagline, l'agenda suisse — **est** prérendu. Ne
+« corrigez » pas `NewsBrowser` pour rendre les onglets cachés sans redemander.
 
 Vérifier aussi que les `.reveal` sont visibles et pas transparents :
 
@@ -360,7 +523,7 @@ grep -c 'class="[^"]*reveal[^"]*is-visible' dist/index.html
 
 Attendu : un nombre **supérieur à 0**. Si c'est 0, l'étape 2 du script n'a pas fait son travail et vous livrez une page à `opacity: 0`.
 
-- [ ] **Step 6: Vérifier que le site marche toujours pour un humain**
+- [ ] **Step 10: Vérifier que le site marche toujours pour un humain**
 
 ```bash
 npm run preview
@@ -370,15 +533,22 @@ Ouvrir `http://localhost:4173`. Le site doit s'afficher et se comporter **exacte
 
 Arrêter le serveur (Ctrl+C).
 
-- [ ] **Step 7: Lint**
+- [ ] **Step 11: Vérifier qu'aucun import n'est orphelin dans `prerender.mjs`**
+
+`npm run lint` est cassé dans ce dépôt (voir les Global Constraints) : rien ne
+signalera un import inutilisé. Vérifiez que chaque import du fichier sert
+réellement :
 
 ```bash
-npm run lint
+for s in existsSync readFile writeFile path fileURLToPath preview puppeteer findChrome; do
+  echo "$s: $(grep -c "\b$s\b" scripts/prerender.mjs)"
+done
 ```
 
-Attendu : aucune erreur.
+Attendu : **chaque symbole compte au moins 2** (la ligne d'import, plus au moins
+un usage). Un symbole à 1 est un import orphelin — retirez-le.
 
-- [ ] **Step 8: Commit du script**
+- [ ] **Step 12: Commit du script**
 
 ```bash
 git add scripts/prerender.mjs package.json
@@ -394,7 +564,7 @@ would otherwise ship a transparent page. Bails rather than baking a blank
 #root over a working SPA."
 ```
 
-- [ ] **Step 9: Brancher le prérendu dans la CI**
+- [ ] **Step 13: Brancher le prérendu dans la CI**
 
 Dans `.github/workflows/hourly.yml`, après l'étape `Screenshot Don Narek carousel into dist/` et **avant** `Deploy to Firebase Hosting`, insérer :
 
@@ -412,7 +582,7 @@ Dans `.github/workflows/hourly.yml`, après l'étape `Screenshot Don Narek carou
 
 Le `id: chrome` existe déjà sur l'étape `Set up Chrome (for screenshot)` : on réutilise ce Chrome, on n'en installe pas un second.
 
-- [ ] **Step 10: Vérifier le YAML**
+- [ ] **Step 14: Vérifier le YAML**
 
 ```bash
 node -e "const {readFileSync}=require('fs');const y=readFileSync('.github/workflows/hourly.yml','utf8');const i=y.indexOf('Prerender dist/index.html'),s=y.indexOf('Screenshot Don Narek'),d=y.indexOf('Deploy to Firebase');console.log(i>s && i<d ? '✓ ordre correct : screenshot < prerender < deploy' : '✗ mauvais ordre')"
@@ -422,7 +592,7 @@ Attendu : `✓ ordre correct : screenshot < prerender < deploy`.
 
 Relire à l'œil que `continue-on-error: true` est bien présent sur la nouvelle étape.
 
-- [ ] **Step 11: Commit de la CI**
+- [ ] **Step 15: Commit de la CI**
 
 ```bash
 git add .github/workflows/hourly.yml
@@ -524,7 +694,45 @@ npm run build && cat dist/sitemap.xml
 
 Attendu : `dist/sitemap.xml` est identique à `public/sitemap.xml` — Vite copie `public/` tel quel.
 
-- [ ] **Step 6: Ajouter le sitemap au commit horaire**
+- [ ] **Step 6: Rendre le sitemap cohérent avec les données commitées**
+
+`npm run scrape` vient de réécrire `src/data/*.json` avec un snapshot frais. **Ce
+snapshot ne doit pas partir dans cette branche** : c'est une branche de code, et
+le job horaire commite les données sur `main` de son côté. Mais si on jette les
+données en gardant le sitemap, le `lastmod` annonce un `generatedAt` qui n'existe
+plus nulle part.
+
+L'invariant à tenir au moment du commit : **`lastmod` == le `generatedAt` du
+`meta.json` commité.**
+
+Restaurer les données :
+
+```bash
+git checkout -- src/data/
+```
+
+Puis réaligner le sitemap sur le `meta.json` restauré — éditez `public/sitemap.xml`
+à la main pour que `<lastmod>` porte exactement la valeur affichée par :
+
+```bash
+node -e "console.log(JSON.parse(require('fs').readFileSync('src/data/meta.json','utf8')).generatedAt)"
+```
+
+Vérifier l'invariant :
+
+```bash
+node -e "const fs=require('fs');const m=JSON.parse(fs.readFileSync('src/data/meta.json','utf8')).generatedAt;const s=fs.readFileSync('public/sitemap.xml','utf8');console.log(s.includes('<lastmod>'+m+'</lastmod>')?'✓ lastmod == meta.json : '+m:'✗ incohérent')"
+```
+
+Attendu : `✓ lastmod == meta.json : 2026-…`
+
+```bash
+git status --porcelain src/data/
+```
+
+Attendu : **aucune sortie** — les données sont revenues à l'état commité.
+
+- [ ] **Step 7: Ajouter le sitemap au commit horaire**
 
 Dans `.github/workflows/hourly.yml`, étape « Commit refreshed data », remplacer :
 
@@ -540,7 +748,7 @@ par :
 
 Sans ça, le `lastmod` régénéré chaque heure ne serait jamais committé, et la CI travaillerait sur un arbre sale.
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 8: Commit**
 
 ```bash
 git add scripts/scrape.mjs public/sitemap.xml .github/workflows/hourly.yml

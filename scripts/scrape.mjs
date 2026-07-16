@@ -41,6 +41,26 @@ async function writeJson(name, data) {
   console.log(`→ wrote src/data/${name}`)
 }
 
+const PUBLIC_DIR = join(__dirname, '..', 'public')
+
+// The sitemap claims changefreq: hourly — lastmod is what backs the claim.
+// Written here, not at build time: a push to main rebuilds without scraping,
+// and a lastmod from that build would announce a freshness that never happened.
+async function writeSitemap(generatedAt) {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://armenieinfo.ch/</loc>
+    <lastmod>${generatedAt}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+`
+  await writeFile(join(PUBLIC_DIR, 'sitemap.xml'), xml, 'utf-8')
+  console.log('→ wrote public/sitemap.xml')
+}
+
 // Read the previous snapshot so a failed/blocked source (e.g. an upstream
 // Cloudflare 403 from CI) reuses its last-good data instead of wiping it.
 async function readJson(name) {
@@ -154,6 +174,7 @@ async function main() {
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })
+  await writeSitemap(generatedAt)
 
   console.log('\n✅ Snapshot complete.\n')
 }

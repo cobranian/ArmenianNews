@@ -12,7 +12,8 @@
     "scrape": "node scripts/scrape.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
     "fb-scrape": "node scripts/fb-scrape.mjs",
-    "screenshot": "node scripts/shoot.mjs"
+    "screenshot": "node scripts/shoot.mjs",
+    "prerender": "node scripts/prerender.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
