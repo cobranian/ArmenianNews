@@ -620,7 +620,7 @@ Toujours dans `CLAUDE.md`, à la fin de la section « À savoir », ajouter :
 Dans le tableau « Sections », remplacer la ligne commençant par `| **Actualités** | [Le Courrier d'Erevan]` par les deux lignes suivantes (la ligne Courrier est conservée telle quelle, une ligne Armenpress la précède) :
 
 ```markdown
-| **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency's latest **16 headlines per language** (fr / en / hy), as a single **Fil / Wire / Հոսք** shelf. **The default tab** — and deliberately so: `NewsBrowser` renders only the active tab, so the default source is what the prerender bakes into the raw HTML for crawlers, and Armenpress is the only source with a real French edition. Armenpress is an Inertia.js app, so its feed arrives as embedded JSON — **no CSS selectors**. Read from the homepage, not the rubric pages (those embed an empty feed and load client-side), with three spaced requests: the site rate-limits hard. |
+| **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency's latest **16 headlines per language** (fr / en / hy), as a single **Fil / Wire / Հոսք** shelf. The only **trilingual** source — the others are French-only or en/hy. Not the default tab: Courrier is French-only and five times larger, so it prerenders more French copy for crawlers. Armenpress is an Inertia.js app, so its feed arrives as embedded JSON — **no CSS selectors**. Read from the homepage, not the rubric pages (those embed an empty feed and load client-side), with three spaced requests: the site rate-limits hard. |
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. |
 | **Actualités** | [Nouvelles d'Arménie](https://www.armenews.com) | The latest **10 articles per rubric** across 6 WordPress rubrics, French-only, as shelves. |
 | **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across **3 rubrics**, French-only, as shelves: Arménie & Artsakh and Communauté come from the WordPress REST API, Divers is scraped from the site's `/divers-p/` page. |
@@ -676,6 +676,26 @@ curl -s https://armenieinfo.ch/ | wc -c                          # attendu : ~18
 ```
 
 Puis vérifier qu'un titre français d'Armenpress apparaît dans le HTML servi. **N'utilisez pas `grep -c`** : il compte les lignes, pas les occurrences (voir la spec SEO du 2026-07-16).
+
+## ⚠️ Correction — 2026-07-16, après la revue finale
+
+**Ce plan reposait sur une affirmation fausse** : qu'Armenpress serait la seule
+source à avoir une vraie édition française. Quatre sources sont déjà
+francophones — courrier (**80** articles), armenews (60), armenieinfotv (59),
+artzakank (28) — contre **16** pour Armenpress.
+
+**Courrier mène donc les onglets, pas Armenpress** : 80 articles français
+prérendus au lieu de 16, en une ligne, sans nouvel hôte. Armenpress reste un
+onglet pour son fil trilingue en direct, que rien d'autre ne fournit.
+
+Le plan a aussi promis « trois requêtes espacées » alors que `fetchText` retente
+2 fois par défaut : c'étaient jusqu'à **neuf** requêtes, tirées exactement quand
+le site bloque déjà. Corrigé par `retries: 0`.
+
+Les tâches ci-dessous sont conservées telles qu'exécutées ; les correctifs
+vivent dans les commits `8a86963` et suivants. Voir la spec pour l'analyse
+complète, y compris le levier manqué : c'est le **rendu à onglet unique** qui est
+la contrainte, pas le choix de l'onglet par défaut.
 
 ## Ce que ce plan ne promet pas
 
