@@ -100,6 +100,8 @@ const STRINGS = {
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Écho des Arméniens de Suisse',
     'browser.armenieinfotv': 'armenieinfo.tv',
+    'browser.armenpress': 'Armenpress',
+    'apcats.fil': 'Fil',
 
     'radio.eyebrow': 'Erevan · 128 kbps',
     'radio.title': 'En direct',
@@ -216,6 +218,8 @@ const STRINGS = {
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Echo of Armenians in Switzerland',
     'browser.armenieinfotv': 'armenieinfo.tv',
+    'browser.armenpress': 'Armenpress',
+    'apcats.fil': 'Wire',
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
@@ -332,6 +336,8 @@ const STRINGS = {
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Շվեյցարիայի հայերի արձագանք',
     'browser.armenieinfotv': 'armenieinfo.tv',
+    'browser.armenpress': 'Արմենպրես',
+    'apcats.fil': 'Հոսք',
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',
