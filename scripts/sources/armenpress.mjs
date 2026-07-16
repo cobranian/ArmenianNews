@@ -3,9 +3,9 @@ import { fetchText } from '../lib/http.mjs'
 import { clean, safeUrl } from '../lib/util.mjs'
 
 // Armenpress (armenpress.am) is Armenia's national news agency, and the only
-// source here with a real French edition — which is why it leads the tab order:
-// NewsBrowser renders only the active tab, so the default source is what gets
-// prerendered and indexed. See docs/superpowers/specs/2026-07-16-armenpress-*.
+// trilingual source here: fr/en/hy map 1:1 to the UI language. It does not lead
+// the tab order — Courrier d'Erevan is French-only and five times larger, so it
+// prerenders more French copy for crawlers.
 //
 // It is an Inertia.js app: every page embeds its payload as JSON. We read the
 // homepage feed rather than the per-rubric pages, which embed an empty feed and
@@ -56,7 +56,10 @@ function parseHits(hits, lang, limit) {
 }
 
 async function scrapeLang(lang, limit) {
-  const page = pagePayload(await fetchText(`${BASE}/${lang}`))
+  // retries: 0 — fetchText retries twice by default, which would make this 9
+  // requests, not 3, exactly when the site is already rate-limiting us. A 403
+  // here cannot be retried away; the backfill is the recovery path.
+  const page = pagePayload(await fetchText(`${BASE}/${lang}`, { retries: 0 }))
   const hits = page.props?.feed?.data?.hits
   if (!Array.isArray(hits)) throw new Error('payload has no props.feed.data.hits')
   // Serving Armenian copy under the French tab would be worse than serving
