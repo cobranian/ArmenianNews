@@ -181,7 +181,10 @@ et **avant** `console.log('\nAgenda (armenopole.com):')`, insérer :
   // French edition. Its own module spaces the three requests: the site
   // rate-limits hard. Backfilled per language, exactly like armradio.
   console.log('\nArmenpress — armenpress.am (fr/en/hy):')
-  let apLangs = {}
+  // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
+  // undefined here would throw and take the whole snapshot down — every other
+  // source in this file seeds [] for exactly that reason.
+  let apLangs = { fr: [], en: [], hy: [] }
   try {
     apLangs = await scrapeArmenpress(16)
   } catch (err) {
