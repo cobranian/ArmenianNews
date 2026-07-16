@@ -57,12 +57,32 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
   )
 }
 
-// Build the two source groups. ArmRadio has real EN and HY editions (shown per
-// the UI language); Courrier d'Erevan is French-only (courrier.am/hy serves the
-// same French articles), so it stays French in every language. Every rubric is
-// its own carousel — nothing is merged, and empty rubrics are dropped.
+// Build the source groups. Courrier d'Erevan leads, and that is load-bearing:
+// NewsBrowser renders only the active tab, so the default source is the only
+// news the prerender bakes into the HTML for crawlers. Courrier is French-only
+// and the largest French rubric set (80 articles), so it is what a French
+// query should find. ArmRadio led before and has no French edition (en/hy
+// only), which shipped English headlines under lang="fr".
+// Armenpress is the only *trilingual* source (fr/en/hy map 1:1); the others are
+// French-only (courrier.am/hy serves the same French articles) or en/hy.
+// Every rubric is its own carousel — nothing is merged, and empty rubrics are
+// dropped.
 function buildSources(t, lang) {
   const armLang = lang === 'hy' ? 'hy' : 'en'
+  // Armenpress maps 1:1 to the UI language — the only source that does. It does
+  // not lead: Courrier prerenders 5x more French copy. Kept for its live
+  // trilingual wire, which no other source provides.
+  const armenpress = {
+    id: 'armenpress',
+    brand: 'Armenpress',
+    name: t('browser.armenpress'),
+    lang: lang.toUpperCase(),
+    live: true,
+    images: true,
+    cats: (news.armenpress?.[lang] || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: t(`apcats.${s.categoryKey}`), articles: s.articles })),
+  }
   const armradio = {
     id: 'armradio',
     brand: 'ArmRadio',
@@ -121,7 +141,7 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`aitcats.${s.categoryKey}`), articles: s.articles })),
   }
-  return [armradio, courrier, armenews, artzakank, armenieinfotv].filter((s) => s.cats.length)
+  return [courrier, armenpress, armradio, armenews, artzakank, armenieinfotv].filter((s) => s.cats.length)
 }
 
 export function NewsBrowser() {

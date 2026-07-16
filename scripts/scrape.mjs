@@ -11,6 +11,7 @@ import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
+import { scrapeArmenpress } from './sources/armenpress.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -136,6 +137,25 @@ async function main() {
   }
   const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
 
+  // Armenpress — the national news agency, and the only trilingual source here
+  // (fr/en/hy map 1:1). It does not lead the news tabs: Courrier is French-only
+  // and five times larger. Its own module spaces the three requests: the site
+  // rate-limits hard. Backfilled per language, exactly like armradio.
+  console.log('\nArmenpress — armenpress.am (fr/en/hy):')
+  // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
+  // undefined here would throw and take the whole snapshot down — every other
+  // source in this file seeds [] for exactly that reason.
+  let apLangs = { fr: [], en: [], hy: [] }
+  try {
+    apLangs = await scrapeArmenpress(16)
+  } catch (err) {
+    console.error('  armenpress failed wholesale:', err.message)
+  }
+  const armenpress = {}
+  for (const lang of ['fr', 'en', 'hy']) {
+    armenpress[lang] = backfillSections(apLangs[lang], prevNews?.armenpress?.[lang], 'categoryKey')
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -170,6 +190,7 @@ async function main() {
     armenews,
     artzakank,
     armenieinfotv,
+    armenpress,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })

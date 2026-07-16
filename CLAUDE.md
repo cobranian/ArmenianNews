@@ -89,7 +89,20 @@ composants importent au build :
   si un scrape revient vide (ex. un 403 Cloudflare depuis la CI), le fichier
   précédent est réutilisé (backfill) au lieu d'être effacé.
 - **`scripts/sources/`** — un module par source :
+  - `armenpress.mjs` — Armenpress, l'agence de presse nationale, et la seule
+    source **trilingue** (fr/en/hy) : les trois éditions correspondent 1:1 à la
+    langue de l'interface. Application Inertia.js : le JSON du flux est
+    embarqué dans la page, donc **aucun sélecteur CSS**. Lit l'accueil et non
+    les pages de rubrique, qui embarquent un flux vide — et parce que le site
+    **limite agressivement le débit** (403 sur tout le site après ~30
+    requêtes). Trois requêtes espacées par snapshot ; n'en ajoutez pas.
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
+  - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
+    WordPress, francophone.
+  - `artzakank.mjs` — Artzakank / Écho des Arméniens de Suisse, francophone,
+    **trois** rubriques : Arménie & Artsakh et Communauté via l'API WordPress,
+    plus Divers, gratté depuis la page HTML `/divers-p/`.
+  - `armenieinfotv.mjs` — armenieinfo.tv, francophone, par rubrique.
   - `armradio.mjs` — Public Radio of Armenia. Passe par une **chaîne de sources
     multi-niveaux** (proxy Cloudflare Worker → API REST → flux RSS → Google News)
     car armradio.am est derrière Cloudflare, qui renvoie par intermittence un 403
@@ -172,5 +185,24 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   que le compte publie. Pour rafraîchir vraiment, il faut retirer ou remplacer
   ces comptes à la main dans le tableau `accounts`. C'est un choix assumé, pas un
   bug.
+- **L'ordre des onglets du fil est porteur de sens, pas cosmétique.**
+  `NewsBrowser` ne rend que l'onglet actif : la source par défaut est donc la
+  seule que le prérendu injecte dans le HTML, et la seule que Google lit sans
+  exécuter de JS. Courrier d'Erevan est en tête parce qu'il est francophone et
+  qu'il prérend le plus de texte français (80 articles, contre 16 pour
+  Armenpress — armenews, artzakank et armenieinfotv sont aussi francophones,
+  mais plus petits). Armenpress est la seule source **trilingue** (fr/en/hy)
+  mais ne mène pas l'ordre. Avant Armenpress, ArmRadio (éditions `en`/`hy`
+  seulement) faisait servir 70 titres **anglais** sous `<html lang="fr">`. Ne
+  réordonnez pas les onglets sans mesurer ce que devient le HTML prérendu.
+- **Armenpress peut se périmer en silence.** Si une langue échoue, le module
+  renvoie une rubrique `fil` vide et `backfillSections` restitue les articles du
+  snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc
+  resservir les mêmes dépêches pendant que `meta.generatedAt` et le `lastmod` du
+  sitemap continuent d'annoncer de la fraîcheur. Le seul signal est un
+  `console.warn` dans les logs. C'est le même piège que celui documenté pour
+  Instagram, mais Armenpress n'a **aucun repli** — là où armradio en a quatre.
+  Si le mur Armenpress semble figé, vérifiez les logs du job horaire avant de
+  soupçonner le code.
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
