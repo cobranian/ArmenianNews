@@ -137,8 +137,9 @@ async function main() {
   }
   const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
 
-  // Armenpress — the national news agency, and the only source with a real
-  // French edition. Its own module spaces the three requests: the site
+  // Armenpress — the national news agency, and the only trilingual source here
+  // (fr/en/hy map 1:1). It does not lead the news tabs: Courrier is French-only
+  // and five times larger. Its own module spaces the three requests: the site
   // rate-limits hard. Backfilled per language, exactly like armradio.
   console.log('\nArmenpress — armenpress.am (fr/en/hy):')
   // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
