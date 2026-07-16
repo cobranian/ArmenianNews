@@ -14,10 +14,18 @@ Une tâche planifiée récupère les sources une fois par heure dans des fichier
 JSON ; le site est une application statique **Vite + React** qui affiche ces
 fichiers. **Aucun backend à l'exécution.**
 
-Ce dossier est un projet parmi d'autres dans le dépôt parent
-`C:\Users\nareg\Documents\Claude code` (la racine git est le parent, pas ce
-dossier). Les projets voisins (ArmeniensDeLausanne, pltr-dashboard, etc.) sont
-indépendants — ne mélangez pas leur outillage ici.
+**Ce dossier est son propre dépôt git** — racine `ArmenianNews/`, remote
+`github.com/cobranian/ArmenianNews`. Il se trouve à l'intérieur de
+`C:\Users\nareg\Documents\Claude code`, qui est **un autre dépôt git**
+(`armenian-songs`) et qui ne suit pas ce dossier.
+
+**Le piège** : une commande git lancée depuis le dossier parent agit sur
+`armenian-songs`, pas ici. Vérifiez toujours avec `git rev-parse --show-toplevel`,
+et lancez `git check-ignore` depuis **ce** dossier — sinon vous validez une règle
+du mauvais dépôt.
+
+Les projets voisins (pltr-dashboard, comparateur2, etc.) sont indépendants — ne
+mélangez pas leur outillage ici.
 
 ## Commandes
 
@@ -26,13 +34,44 @@ npm install         # installer les dépendances
 npm run dev         # serveur de développement sur http://localhost:5173
 npm run build       # build de production dans dist/
 npm run preview     # prévisualiser le build de production
-npm run lint        # ESLint
+npm run lint        # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 6 avertissements connus
 npm run scrape      # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape   # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
 npm run screenshot  # après un build : capturer le carrousel Don Narek dans dist/don-narek-{desktop,mobile}.png
 ```
 
-Il n'y a **pas de suite de tests**.
+Il n'y a **pas de suite de tests**. Le lint et l'exécution réelle des scripts
+tiennent lieu de vérification.
+
+### Lint : ce qu'il faut savoir avant d'y toucher
+
+`eslint.config.js` déclare **trois mondes**, parce que le dépôt exécute du code à
+trois endroits : `src/` dans un navigateur, `scripts/` dans Node, et
+`public/theme-init.js` dans un navigateur avant tout module (donc `sourceType:
+'script'`, pas `module`).
+
+- **`react/jsx-uses-vars` porte la config à bout de bras.** Sans cette règle, le
+  `no-unused-vars` du cœur d'ESLint ne voit pas que `<Carousel />` utilise
+  `Carousel` : il réclame la suppression de **tous** les imports de composants,
+  y compris `React` et `App` dans `main.jsx`. 46 fausses erreurs, et un `--fix`
+  qui détruit l'application. Ne retirez pas `eslint-plugin-react`.
+- **`scripts/` a les globales navigateur en plus de celles de Node**, et c'est
+  voulu : les callbacks passés à `page.evaluate()` sont sérialisés et exécutés
+  dans le navigateur piloté par Puppeteer. `document` et `window` y sont réels.
+- **`.cache/` est ignoré** : il contient les profils Chrome connectés des scrapes
+  manuels — du code d'extension tierce, pas le nôtre.
+
+**Les 6 avertissements restants sont connus et assumés** — ne les « corrigez »
+pas mécaniquement :
+
+- `Radio.jsx` (×2, `react-hooks/exhaustive-deps`) — le correctif que suggère la
+  règle (capturer `audioRef.current` au montage) **introduirait un bug** : ce
+  `useEffect` de démontage veut la référence au moment du démontage, pas celle
+  figée au montage.
+- `i18n.jsx` et `motifs.jsx` (×4, `react-refresh/only-export-components`) — ces
+  fichiers exportent un composant **et** un hook ou des constantes. C'est le
+  motif React standard pour un contexte ; l'avertissement ne concerne que le
+  rafraîchissement à chaud en développement.
 
 ## Architecture
 

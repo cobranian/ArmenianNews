@@ -4,6 +4,6 @@
 try {
   var t = localStorage.getItem('theme')
   if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
-} catch (e) {
-  /* ignore */
+} catch {
+  /* no localStorage (private mode, blocked cookies) — keep the default theme */
 }

@@ -25,7 +25,6 @@ export function Carousel({ title, label, children, reveal = true }) {
     update()
     window.addEventListener('resize', update)
     return () => window.removeEventListener('resize', update)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const scroll = (dir) => {
