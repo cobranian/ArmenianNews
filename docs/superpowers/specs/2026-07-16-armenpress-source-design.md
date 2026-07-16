@@ -28,6 +28,39 @@ jamais une requête française.
 contenu prérendu devient français. C'est le premier changement depuis la PR #2
 qui améliore réellement le contenu indexé, et il tient en une ligne.
 
+> ### ⚠️ Correction — 2026-07-16, après la revue finale
+>
+> **Le raisonnement ci-dessus repose sur une affirmation fausse**, répétée dans
+> toute cette spec : qu'Armenpress serait « la seule source à avoir une vraie
+> édition française ». Il n'en est rien. **Quatre sources sont déjà
+> francophones.** Compté sur le snapshot committé :
+>
+> | source | articles français |
+> |---|---|
+> | courrier | **80** |
+> | armenews | 60 |
+> | armenieinfotv | 59 |
+> | artzakank | 28 |
+> | armenpress | **16** |
+>
+> Mettre **Courrier** en tête prérend donc **80** articles français au lieu de
+> 16 — cinq fois plus — en une ligne, sans nouveau module, sans nouvel hôte et
+> sans exposition au blocage. C'est ce qui a été fait ; Armenpress reste un
+> onglet, non le premier.
+>
+> L'affirmation se contredisait dans le même paragraphe : le commentaire de
+> `NewsBrowser.jsx` disait « la seule source à avoir une vraie édition
+> française » deux lignes au-dessus de « Courrier d'Erevan is French-only ».
+>
+> **Ce qui reste vrai** : Armenpress est la seule source **trilingue**
+> (fr/en/hy en correspondance 1:1). C'est sa valeur réelle, et elle est mince.
+>
+> **Le vrai levier, manqué ici** : l'onglet par défaut n'a jamais été la
+> contrainte — c'est le **rendu à onglet unique** qui l'est. `NewsBrowser` ne
+> rend que l'onglet actif, donc **227 articles français restent invisibles** à
+> un crawler sans JS. Les rendre tous dans le DOM rendrait tout ce débat sans
+> objet. C'est le sujet de la prochaine branche, pas de celle-ci.
+
 ## Contexte technique — ce qui a été vérifié le 2026-07-16
 
 **Le site est accessible avec l'outillage existant.** Les 403 initiaux venaient
