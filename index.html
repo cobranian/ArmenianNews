@@ -64,10 +64,19 @@
       }
     </script>
 
-    <!-- Ararat's twin peaks, apricot on basalt. SVG for modern browsers,
-         32px PNG for the ones that ignore it, 180px for the iOS home screen. -->
+    <!-- Ararat's twin peaks, apricot on basalt. SVG for modern browsers, PNG
+         for the ones that ignore it, 180px for the iOS home screen.
+         Google only accepts a favicon whose side is a multiple of 48px, so the
+         raster sizes are 48/96/192 — a 32px icon is silently skipped and the
+         search result falls back to a generic globe. /favicon.ico exists for
+         the same reason: Google fetches that path whether or not it is
+         declared, and Firebase's SPA rewrite answers any missing file with
+         index.html — a 200 of text/html, which reads as a broken icon rather
+         than as an absent one. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- "Apricot Press" typography: Fraunces (optical display serif),
