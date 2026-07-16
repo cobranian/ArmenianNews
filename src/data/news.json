@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T15:07:22.182Z",
+  "generatedAt": "2026-07-16T16:23:23.074Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1050,6 +1050,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Նավուր-Բերդ ճանապարհի 11.3կմ հատվածի հիմնանորոգումն ընթացքի մեջ է",
+            "url": "https://hy.armradio.am/archives/747191",
+            "date": "2026-07-16T15:43:45.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/2-1-768x576.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ՀՀ-ԵՄ վիզաների ազատականացման գործընթացում քննարկվել են սահմանների կառավարման բարեփոխումները",
             "url": "https://hy.armradio.am/archives/747180",
             "date": "2026-07-16T14:40:36.000Z",
@@ -1110,13 +1117,6 @@
             "url": "https://hy.armradio.am/archives/747051",
             "date": "2026-07-16T07:21:35.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/8-1-300x200.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ինչպե՞ս լուծել ընտանեկան բռնության ենթարկված անձանց պաշտպանության խնդիրը. ՄԻՊ-ը և գերմանական IRZ-ն աշխատաժողով են սկսել",
-            "url": "https://hy.armradio.am/archives/747029",
-            "date": "2026-07-16T05:49:35.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/748160879_1358520963133499_845523740713946397_n-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1350,6 +1350,13 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Ամենապատասխանատուն հայրենի բեմն է. Հայկ Կազազյան",
+            "url": "https://hy.armradio.am/archives/747183",
+            "date": "2026-07-16T16:15:09.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/ScreenShot-3573-768x369.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "13 նոր քանդակ՝ Միսաք Մանուշյանի անվան այգում",
             "url": "https://hy.armradio.am/archives/747038",
             "date": "2026-07-16T06:29:44.000Z",
@@ -1410,13 +1417,6 @@
             "url": "https://hy.armradio.am/archives/745949",
             "date": "2026-07-09T17:18:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/ScreenShot-3537-300x231.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "«Փառերգել Փարաջանովին». Հայաստանի պետական ֆիլհարմոնիայի երաժշտական նախագիծը",
-            "url": "https://hy.armradio.am/archives/745593",
-            "date": "2026-07-07T16:49:08.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/%D0%9F%D0%B0%D1%80%D0%B0%D0%B4%D0%B6%D0%B0%D0%BD%D0%BE%D0%B2-300x162.webp",
             "category": "Կարևոր"
           }
         ]
@@ -2375,16 +2375,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988366-1685.jpg"
         },
         {
-          "title": "La présidente de la Commission européenne qualifie l’accord de paix Arménie-Azerbaïdjan d’événement historique",
-          "url": "https://armenieinfo.tv/la-presidente-de-la-commission-europeenne-qualifie-laccord-de-paix-armenie-azerbaidjan-devenement-historique/",
-          "date": null,
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988328-1220.jpg"
-        },
-        {
           "title": "L’Arménie souhaite renforcer sa coopération avec l’Union européenne",
           "url": "https://armenieinfo.tv/larmenie-souhaite-renforcer-sa-cooperation-avec-lunion-europeenne/",
           "date": null,
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988337-2605.jpg"
+        },
+        {
+          "title": "La présidente de la Commission européenne qualifie l’accord de paix Arménie-Azerbaïdjan d’événement historique",
+          "url": "https://armenieinfo.tv/la-presidente-de-la-commission-europeenne-qualifie-laccord-de-paix-armenie-azerbaidjan-devenement-historique/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988328-1220.jpg"
         },
         {
           "title": "La présidente de la Commission européenne annonce un investissement de l’UE dans le Caucase du Sud",
@@ -2586,6 +2586,12 @@
         "categoryKey": "fil",
         "articles": [
           {
+            "title": "Armenian ambassador to the UK meets EBRD president",
+            "url": "https://armenpress.am/en/article/1255756",
+            "date": "2026-07-16T15:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/h1Ikyofv7R0eEUqkFJ3vVRh8xK1MjlNePFX9Wike.webp"
+          },
+          {
             "title": "Armenian deputy foreign minister meets Irish Minister of State in New York",
             "url": "https://armenpress.am/en/article/1255752",
             "date": "2026-07-16T14:40:00.000Z",
@@ -2674,12 +2680,6 @@
             "url": "https://armenpress.am/en/article/1255690",
             "date": "2026-07-16T10:21:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/16/FqyxsGbYWO8uLppfJ36cVxc1b8MZsiGiL6XQiV7w.webp"
-          },
-          {
-            "title": "At least 500 refugees feared dead after boats sink in the Bay of Bengal",
-            "url": "https://armenpress.am/en/article/1255706",
-            "date": "2026-07-16T10:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/TNRtUQffwwpTxAco5GbRjXahT6YHBoDjC9wDMdum.webp"
           }
         ]
       }
@@ -2688,6 +2688,30 @@
       {
         "categoryKey": "fil",
         "articles": [
+          {
+            "title": "Հարավային Կորեան քննարկում է սոցիալական ցանցերից մինչև 14 տարեկան երեխաների օգտվելը սահմանափակելու հնարավորությունը",
+            "url": "https://armenpress.am/hy/article/1255759",
+            "date": "2026-07-16T16:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/piACDM1aOUNiZGtYSKaDQ59SDEVmY2nqppxgiRfj.webp"
+          },
+          {
+            "title": "Երևանի պարեկները գիշերային ծառայության ժամանակ թմրանյութ պահելու և օգտագործելու դեպքեր են բացահայտել",
+            "url": "https://armenpress.am/hy/article/1255758",
+            "date": "2026-07-16T16:04:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/nHMYr6W0v94qHM0U2RbbShlAcdjGow3gvj18FmVu.webp"
+          },
+          {
+            "title": "ՖԻՖԱ-ն Արգենտինայի հավաքականի ֆուտբոլիստների նկատմամբ կարգապահական վարույթ կսկսի աշխարհի առաջնության ավարտից հետո. COPE",
+            "url": "https://armenpress.am/hy/article/1255757",
+            "date": "2026-07-16T15:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/rg4oByiMBCdxISIeeyQUfrMIHXDRoorL0LCsNB7T.webp"
+          },
+          {
+            "title": "Միացյալ Թագավորությունում ՀՀ դեսպանը հանդիպել է ՎԶԵԲ նախագահի հետ",
+            "url": "https://armenpress.am/hy/article/1255756",
+            "date": "2026-07-16T15:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/h1Ikyofv7R0eEUqkFJ3vVRh8xK1MjlNePFX9Wike.webp"
+          },
           {
             "title": "Տիգրան Պետրոսյան փողոցում շարունակվում է նորոգումը",
             "url": "https://armenpress.am/hy/article/1255755",
@@ -2759,30 +2783,6 @@
             "url": "https://armenpress.am/hy/article/1255742",
             "date": "2026-07-16T13:27:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/16/L7lPw2UXyt9LCahjRb4IALPhjvien7lmJlsJ0x5v.webp"
-          },
-          {
-            "title": "Հայաստանի ամենամեծ հարստությունը կրթված քաղաքացիներն են․ ՀՀ նախագահն ընդունել է ԿԳՄՍ նախարարին",
-            "url": "https://armenpress.am/hy/article/1255741",
-            "date": "2026-07-16T13:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/JmZMx6NyWGspk3hnhPLb5rygNhrJYbcaZZ7xYlou.webp"
-          },
-          {
-            "title": "«Լուսաբաց» մանկական ճամբարի խոհանոցի արտադրական գործունեությունը կասեցվել է",
-            "url": "https://armenpress.am/hy/article/1255740",
-            "date": "2026-07-16T13:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/yIPAa2iqCnBDcjmB9JjMXZHqaebjW21xurmyBV1r.webp"
-          },
-          {
-            "title": "Ծաղկաձոր համայնքում գործող սպորտային ճամբարի խոհանոցի արտադրական գործունեությունը կասեցվել է",
-            "url": "https://armenpress.am/hy/article/1255739",
-            "date": "2026-07-16T13:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/ZDirBGcGIDAVRYIVQjzho8bpZU3RWFLqrJgCmnei.webp"
-          },
-          {
-            "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ- 16/07/26",
-            "url": "https://armenpress.am/hy/article/1255738",
-            "date": "2026-07-16T12:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/NS9Sl1mw0Gs8hW52KDcq3k9UAM5KNAgvNBSRxRkw.webp"
           }
         ]
       }
