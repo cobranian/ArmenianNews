@@ -13,6 +13,7 @@
 ## Global Constraints
 
 - **Il n'y a pas de suite de tests dans ce dépôt** (`CLAUDE.md`). N'en introduisez pas : chaque tâche se vérifie en exécutant le build ou le script et en observant la sortie réelle. Les étapes de vérification ci-dessous sont les tests.
+- **`npm run lint` ne fonctionne pas** — constaté pendant l'exécution du plan, le 2026-07-16. ESLint n'est ni installé ni configuré : `package.json` ne le mentionne que dans la ligne de script, il n'y a aucune config, et la commande échoue avec « `eslint` n'est pas reconnu ». Le `CLAUDE.md` la documente à tort. **Ne lancez pas `npm run lint`, ne l'installez pas** (hors périmètre) : là où le plan comptait sur lui, vérifiez à la main. En particulier, **un import inutilisé ne sera signalé par rien** — ni par le lint, ni à l'exécution.
 - **Le français porte tous ses accents** (é, è, à, ê, ç…) — `CLAUDE.md`.
 - **Ne touchez pas au H1.** `site.title` reste `Arménie Info` dans les trois langues. Seul le **tagline français** change.
 - **Ne touchez pas aux taglines `en` et `hy`.** Le ciblage « Suisse » vise une requête française.
@@ -298,9 +299,17 @@ import { findChrome } from './lib/chrome.mjs'
 ```
 
 **Attention à `existsSync`** : `shoot.mjs` l'importe (`import { existsSync } from
-'node:fs'`) uniquement pour `CANDIDATES`. Une fois le bloc parti, vérifiez si
-`existsSync` sert encore ailleurs dans le fichier — sinon **retirez l'import**,
-sous peine d'un avertissement de lint pour import inutilisé.
+'node:fs'`) uniquement pour `CANDIDATES`. Une fois le bloc parti, l'import
+devient orphelin. **Rien ne vous le signalera** — `npm run lint` est cassé dans
+ce dépôt (voir les Global Constraints) et un import inutilisé ne fait pas
+échouer Node. Vérifiez donc à la main :
+
+```bash
+grep -n "existsSync" scripts/shoot.mjs
+```
+
+Si la seule occurrence restante est la ligne d'import, **retirez l'import**. S'il
+en reste d'autres, gardez-le.
 
 Le commentaire d'en-tête de `shoot.mjs` mentionne « uses puppeteer-core against
 an already-installed Chrome/Edge » — il reste vrai, ne le touchez pas.
@@ -329,14 +338,11 @@ ls -la dist/don-narek-desktop.png dist/don-narek-mobile.png
 
 Attendu : deux fichiers de taille non nulle (typiquement > 100 Ko).
 
-- [ ] **Step 4: Lint et commit de l'extraction**
+- [ ] **Step 4: Commit de l'extraction**
 
-```bash
-npm run lint
-```
-
-Attendu : aucune erreur. (Si un import `existsSync` inutilisé traîne dans
-`shoot.mjs`, c'est ici qu'il se signale.)
+`npm run lint` est cassé dans ce dépôt : la vérification de l'étape 3 (le
+screenshot tourne réellement et produit deux PNG) est la preuve qui compte, et
+le `grep` de l'étape 2 couvre l'import orphelin.
 
 ```bash
 git add scripts/lib/chrome.mjs scripts/shoot.mjs
@@ -504,13 +510,20 @@ Ouvrir `http://localhost:4173`. Le site doit s'afficher et se comporter **exacte
 
 Arrêter le serveur (Ctrl+C).
 
-- [ ] **Step 11: Lint**
+- [ ] **Step 11: Vérifier qu'aucun import n'est orphelin dans `prerender.mjs`**
+
+`npm run lint` est cassé dans ce dépôt (voir les Global Constraints) : rien ne
+signalera un import inutilisé. Vérifiez que chaque import du fichier sert
+réellement :
 
 ```bash
-npm run lint
+for s in existsSync readFile writeFile path fileURLToPath preview puppeteer findChrome; do
+  echo "$s: $(grep -c "\b$s\b" scripts/prerender.mjs)"
+done
 ```
 
-Attendu : aucune erreur.
+Attendu : **chaque symbole compte au moins 2** (la ligne d'import, plus au moins
+un usage). Un symbole à 1 est un import orphelin — retirez-le.
 
 - [ ] **Step 12: Commit du script**
 
