@@ -98,8 +98,9 @@ composants importent au build :
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
   - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
     WordPress, francophone.
-  - `artzakank.mjs` — Artzakank / Écho des Arméniens de Suisse, deux rubriques
-    WordPress, francophone.
+  - `artzakank.mjs` — Artzakank / Écho des Arméniens de Suisse, francophone,
+    **trois** rubriques : Arménie & Artsakh et Communauté via l'API WordPress,
+    plus Divers, gratté depuis la page HTML `/divers-p/`.
   - `armenieinfotv.mjs` — armenieinfo.tv, francophone, par rubrique.
   - `armradio.mjs` — Public Radio of Armenia. Passe par une **chaîne de sources
     multi-niveaux** (proxy Cloudflare Worker → API REST → flux RSS → Google News)
