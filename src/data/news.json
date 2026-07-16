@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T16:23:23.074Z",
+  "generatedAt": "2026-07-16T18:04:33.843Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1350,6 +1350,13 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Տեղի կունենա Հայաստանի պետական սիմֆոնիկ նվագախմբի համերգը",
+            "url": "https://hy.armradio.am/archives/747210",
+            "date": "2026-07-16T16:45:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/symphonic-768x429.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ամենապատասխանատուն հայրենի բեմն է. Հայկ Կազազյան",
             "url": "https://hy.armradio.am/archives/747183",
             "date": "2026-07-16T16:15:09.000Z",
@@ -1410,13 +1417,6 @@
             "url": "https://hy.armradio.am/archives/746075",
             "date": "2026-07-10T04:32:45.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/voske-ciran-768x506.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Մշակութային վերածնունդ Դիլիջանում. առաջին համերգը կնվիրվի կոմպոզիտոր Արամ Խաչատրյանին",
-            "url": "https://hy.armradio.am/archives/745949",
-            "date": "2026-07-09T17:18:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/ScreenShot-3537-300x231.png",
             "category": "Կարևոր"
           }
         ]
@@ -1503,6 +1503,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Un vol Moscou-Gumri a effectué des manœuvres au-dessus du territoire arménien, frôlant l’espace aérien turc indique « Sputnik Arménie »",
+          "url": "https://www.armenews.com/un-vol-moscou-gumri-a-effectue-des-manoeuvres-au-dessus-du-territoire-armenien-frolant-lespace-aerien-turc-indique-sputnik-armenie/",
+          "date": "2026-07-16T16:52:56.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/8899.webp"
+        },
+        {
           "title": "Découvrir Krikor Narekatsi sous un nouveau jour avec la Publication du livre « J’ai habillé Dieu de l’intérieur comme de l’extérieur »",
           "url": "https://www.armenews.com/decouvrir-krikor-narekatsi-sous-un-nouveau-jour-avec-la-publication-du-livre-jai-habille-dieu-de-linterieur-comme-de-lexterieur/",
           "date": "2026-07-16T13:02:18.000Z",
@@ -1555,18 +1561,18 @@
           "url": "https://www.armenews.com/decryptage-la-decision-de-pachinian-entre-washington-et-teheran-dans-un-contexte-postelectoral-complexe-par-hakob-badalyan/",
           "date": "2026-07-16T06:30:49.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/67305_b.jpeg"
-        },
-        {
-          "title": "Pourquoi le Défenseur des droits de l’homme garde-t-il le silence ?",
-          "url": "https://www.armenews.com/pourquoi-le-defenseur-des-droits-de-lhomme-garde-t-il-le-silence/",
-          "date": "2026-07-16T06:30:42.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-16-a-07.51.23.png"
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "L’international arménien Hrant-Leon Ranos transféré du Borussia Mönchengladbach vers le club espagnol de poursuivra sa carrière en Espagne à Tenerife",
+          "url": "https://www.armenews.com/linternational-armenien-hrant-leon-ranos-transfere-du-borussia-monchengladbach-vers-le-club-espagnol-de-poursuivra-sa-carriere-en-espagne-a-tenerife/",
+          "date": "2026-07-16T16:32:40.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/8998.jpg"
+        },
         {
           "title": "Ligue des Champions : Ararat-Armenia s’incline face à Riga (2-3), mais se qualifie pour le deuxième tour de qualification pour la première fois de son histoire",
           "url": "https://www.armenews.com/ligue-des-champions-ararat-armenia-sincline-face-a-riga-2-3-mais-se-qualifie-pour-le-deuxieme-tour-de-qualification-pour-la-premiere-fois-de-son-histoire/",
@@ -1620,12 +1626,6 @@
           "url": "https://www.armenews.com/une-nouvelle-etape-pour-le-rugby-armenien/",
           "date": "2026-07-09T06:30:40.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/B0846A92-1001.jpg"
-        },
-        {
-          "title": "Samvel Terteryan (Arménie) est champion d’Europe junior de lutte gréco-romaine en s’imposant en finale sur un azerbaïdjanais à Skopje",
-          "url": "https://www.armenews.com/samvel-terteryan-armenie-est-champion-deurope-junior-de-lutte-greco-romaine-en-simposant-en-finale-sur-un-azerbaidjanais-a-skopje/",
-          "date": "2026-07-08T07:24:44.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/339713.jpg"
         }
       ]
     },
@@ -2080,6 +2080,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "En Arménie, le village attend toujours la route",
+          "url": "https://armenieinfo.tv/en-armenie-le-village-attend-toujours-la-route/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-12-juil.-2026-20_53_28.png"
+        },
+        {
           "title": "L’Agence américaine de commerce et de développement poursuit sa collaboration avec l’Arménie",
           "url": "https://armenieinfo.tv/lagence-americaine-de-commerce-et-de-developpement-poursuit-sa-collaboration-avec-larmenie/",
           "date": null,
@@ -2132,12 +2138,6 @@
           "url": "https://armenieinfo.tv/salaires-classes-sociales-travail-informel-et-migrations-dans-larmenie-contemporaine/",
           "date": null,
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-12-juil.-2026-20_06_58.png"
-        },
-        {
-          "title": "L’eau arménienne ne coule pas de source",
-          "url": "https://armenieinfo.tv/leau-armenienne-ne-coule-pas-de-source/",
-          "date": null,
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-12-juil.-2026-19_49_38.png"
         }
       ]
     },
@@ -2269,6 +2269,12 @@
       "categoryKey": "diaspora",
       "articles": [
         {
+          "title": "L’eau arménienne ne coule pas de source",
+          "url": "https://armenieinfo.tv/leau-armenienne-ne-coule-pas-de-source/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-12-juil.-2026-19_49_38.png"
+        },
+        {
           "title": "La fatigue militante",
           "url": "https://armenieinfo.tv/la-fatigue-militante/",
           "date": null,
@@ -2375,16 +2381,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988366-1685.jpg"
         },
         {
-          "title": "L’Arménie souhaite renforcer sa coopération avec l’Union européenne",
-          "url": "https://armenieinfo.tv/larmenie-souhaite-renforcer-sa-cooperation-avec-lunion-europeenne/",
-          "date": null,
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988337-2605.jpg"
-        },
-        {
           "title": "La présidente de la Commission européenne qualifie l’accord de paix Arménie-Azerbaïdjan d’événement historique",
           "url": "https://armenieinfo.tv/la-presidente-de-la-commission-europeenne-qualifie-laccord-de-paix-armenie-azerbaidjan-devenement-historique/",
           "date": null,
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988328-1220.jpg"
+        },
+        {
+          "title": "L’Arménie souhaite renforcer sa coopération avec l’Union européenne",
+          "url": "https://armenieinfo.tv/larmenie-souhaite-renforcer-sa-cooperation-avec-lunion-europeenne/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1782988337-2605.jpg"
         },
         {
           "title": "La présidente de la Commission européenne annonce un investissement de l’UE dans le Caucase du Sud",
@@ -2586,6 +2592,24 @@
         "categoryKey": "fil",
         "articles": [
           {
+            "title": "Luke Skywalker’s lightsaber from Star Wars sells for $3.75 million at auction",
+            "url": "https://armenpress.am/en/article/1255765",
+            "date": "2026-07-16T17:59:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/NwFnLsVzUwLW2Xfzv1a9ZGkpawabgM2uVxsgYEKI.webp"
+          },
+          {
+            "title": "Brazil says it will respond to new U.S. tariffs",
+            "url": "https://armenpress.am/en/article/1255762",
+            "date": "2026-07-16T17:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/iAGjhGoWBiCkxPFtR8PvjJZnaPEmjO4fLzROqmsn.webp"
+          },
+          {
+            "title": "Aliyev thanks Trump for role in advancing Armenia-Azerbaijan peace",
+            "url": "https://armenpress.am/en/article/1255760",
+            "date": "2026-07-16T16:50:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/lwLwdl4lXdXKovD7xsgtGM4A00mtQwAZ1rPBjXeE.webp"
+          },
+          {
             "title": "Armenian ambassador to the UK meets EBRD president",
             "url": "https://armenpress.am/en/article/1255756",
             "date": "2026-07-16T15:45:00.000Z",
@@ -2662,24 +2686,6 @@
             "url": "https://armenpress.am/en/article/1255722",
             "date": "2026-07-16T12:13:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/16/eTbOgpSXZFMiFV1UuNNsiCU5ILl5XNt4wmMDj1Ez.webp"
-          },
-          {
-            "title": "KV Group interested in importing fresh fruit and vegetables from Armenia",
-            "url": "https://armenpress.am/en/article/1255719",
-            "date": "2026-07-16T11:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/lKirV8HTEnbP1cXzDxvAVzDNAJlU6xvwk1lthqDS.webp"
-          },
-          {
-            "title": "Türkiye opposes spillover of Russia-Ukraine conflict into the Black Sea, Hakan Fidan says",
-            "url": "https://armenpress.am/en/article/1255702",
-            "date": "2026-07-16T10:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/HPp2oySWoUy9nx9oQirI4NgFYF3hzjAiwCRG3Xbo.webp"
-          },
-          {
-            "title": "Sam Neill's cause of death revealed",
-            "url": "https://armenpress.am/en/article/1255690",
-            "date": "2026-07-16T10:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/FqyxsGbYWO8uLppfJ36cVxc1b8MZsiGiL6XQiV7w.webp"
           }
         ]
       }
@@ -2688,6 +2694,60 @@
       {
         "categoryKey": "fil",
         "articles": [
+          {
+            "title": "«Ալաշկերտ»-ը հաղթահարեց «Ելիմայ»-ի արգելքը և Կոնֆերենցիաների լիգայի որակավորման երկրորդ փուլի ուղեգիր նվաճեց",
+            "url": "https://armenpress.am/hy/article/1255768",
+            "date": "2026-07-16T18:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/TENg2bfbLI8vsWp5mtJIgdAlHbQ6BG6NC4NloncY.webp"
+          },
+          {
+            "title": "«Փյունիկ»-ը հաղթեց «Մարսաշլոկ»-ին և Կոնֆերենցիաների լիգայի որակավորման երկրորդ փուլում է",
+            "url": "https://armenpress.am/hy/article/1255767",
+            "date": "2026-07-16T18:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/noofu2mQELD7uGBrAxbYnzgVt0RTtj49TyJpoEEA.webp"
+          },
+          {
+            "title": "Դուբայի իշխանությունները հերքել են քաղաքի կենտրոնում պայթյունների մասին հաղորդագրությունները",
+            "url": "https://armenpress.am/hy/article/1255766",
+            "date": "2026-07-16T17:55:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/W0BFzucW4uF02M2TrctJYMlNO3BN6Z2R0NRmZRnh.webp"
+          },
+          {
+            "title": "«Աստղային պատերազմներ» ֆրանշիզի հերոս Լյուկ Սքայուոքերի թուրն աճուրդում վաճառվել է 3.75 մլն դոլարով",
+            "url": "https://armenpress.am/hy/article/1255765",
+            "date": "2026-07-16T17:49:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/NwFnLsVzUwLW2Xfzv1a9ZGkpawabgM2uVxsgYEKI.webp"
+          },
+          {
+            "title": "Վանաձորի Բոհեմ թատրոնում տեղի է ունեցել «Վերջին հանգրվան» ներկայացման փակ դիտումը",
+            "url": "https://armenpress.am/hy/article/1255764",
+            "date": "2026-07-16T17:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/NQHgaiNJiUtdiR5F2tiD1TnA6t6gWw6VzaBhlmXv.webp"
+          },
+          {
+            "title": "ԱՄՆ-ն 2 թմրակարտելների ներառել է օտարերկրյա ահաբեկչական կազմակերպությունների ցանկում",
+            "url": "https://armenpress.am/hy/article/1255763",
+            "date": "2026-07-16T17:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/pxLJ6YzhYqdfTMYx5MUFtNxuMkUV1e1BflG81QKx.webp"
+          },
+          {
+            "title": "Բրազիլիան կպատասխանի ԱՄՆ-ի սահմանած նոր մաքսատուրքերին",
+            "url": "https://armenpress.am/hy/article/1255762",
+            "date": "2026-07-16T17:04:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/iAGjhGoWBiCkxPFtR8PvjJZnaPEmjO4fLzROqmsn.webp"
+          },
+          {
+            "title": "Իրանական Քեշմ կղզու մոտակայքում ամերիկյան արկեր են ընկնել․Mehr",
+            "url": "https://armenpress.am/hy/article/1255761",
+            "date": "2026-07-16T16:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/KowQopYNWSWRtLPDn47eoLJw6fh7rnoylNjrjaY5.webp"
+          },
+          {
+            "title": "Ալիևը Թրամփին շնորհակալություն է հայտնել Հայաստանի և Ադրբեջանի միջև խաղաղության հաստատման գործում ունեցած ներդրման համար",
+            "url": "https://armenpress.am/hy/article/1255760",
+            "date": "2026-07-16T16:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/16/lwLwdl4lXdXKovD7xsgtGM4A00mtQwAZ1rPBjXeE.webp"
+          },
           {
             "title": "Հարավային Կորեան քննարկում է սոցիալական ցանցերից մինչև 14 տարեկան երեխաների օգտվելը սահմանափակելու հնարավորությունը",
             "url": "https://armenpress.am/hy/article/1255759",
@@ -2729,60 +2789,6 @@
             "url": "https://armenpress.am/hy/article/1255753",
             "date": "2026-07-16T14:49:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/16/SfO7knE4xw58qtPJbmGJp82UtJyAwBCbt3k9ub0k.webp"
-          },
-          {
-            "title": "Նյու Յորքում հանդիպել են ՀՀ ԱԳ փոխնախարարն ու Իռլանդիայի կլիմայի, էներգետիկայի և շրջակա միջավայրի պետքարտուղարը",
-            "url": "https://armenpress.am/hy/article/1255752",
-            "date": "2026-07-16T14:22:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/tBcValwsoitiX5zzqyD0oOVlik8D0gg4BtqPseVL.webp"
-          },
-          {
-            "title": "ՀՀ ԱԳ փոխնախարարը հանդիպել է ՄԱԿ գլխավոր քարտուղարի՝ խաղաղությանն ուղղված գործողությունների գծով տեղակալի հետ",
-            "url": "https://armenpress.am/hy/article/1255751",
-            "date": "2026-07-16T14:18:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/KMvUKqwswQrh4rNXDPVwZiNZ1oKlVU2NqTDKsPzA.webp"
-          },
-          {
-            "title": "Հայաստանի ազգային գրադարանում բացվել է իրանական գրականության անկյուն",
-            "url": "https://armenpress.am/hy/article/1255749",
-            "date": "2026-07-16T14:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/UcUW1r5DkJnsJOho51DvkxMLeRvTgc4yZWzMxUrt.webp"
-          },
-          {
-            "title": "ՀՀ - ԵՄ վիզաների ազատականացման երկխոսության շրջանակներում քննարկվել են սահմանների համալիր կառավարման հիմնախնդիրները",
-            "url": "https://armenpress.am/hy/article/1255748",
-            "date": "2026-07-16T14:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/SRk3O2hsHC1XE7jpCFKef6EbpGbQfU8KAvXfujGq.webp"
-          },
-          {
-            "title": "Ձգտում եմ ստեղծել ֆիլմեր, որոնց յուրաքանչյուր բաղադրիչ, աղյուս ամուր կլինի և իր ճիշտ տեղում. Պավել Պավլիկովսկի",
-            "url": "https://armenpress.am/hy/article/1255746",
-            "date": "2026-07-16T14:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/tGceUnlzQLpqT95VFwfjr5A9fdtJqE1rvwJxbRTC.webp"
-          },
-          {
-            "title": "Reuters․ Իրանը հութիներին ասել է փակել Կարմիր ծովի դարպասը, եթե ԱՄՆ-ն հարվածի իր էներգետիկ ենթակառուցվածքներին",
-            "url": "https://armenpress.am/hy/article/1255745",
-            "date": "2026-07-16T13:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/e2XBNj4UR6YDB5E5JXwyrVq6n2ZviqzAi3j28FCB.webp"
-          },
-          {
-            "title": "Հուլիսի 17-ի միջոցառումների անոնս",
-            "url": "https://armenpress.am/hy/article/1255744",
-            "date": "2026-07-16T13:42:00.000Z",
-            "image": null
-          },
-          {
-            "title": "Նեթանյահուն չեղարկել է իր այցն ԱՄՆ",
-            "url": "https://armenpress.am/hy/article/1255743",
-            "date": "2026-07-16T13:41:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/izgQMMbEuff6SGt6l5JZxZTrRE95erIW3biyHkYc.webp"
-          },
-          {
-            "title": "Զելենսկին մեկնաբանել է ՊՆ ղեկավար Ֆեդորովի պաշտոնանկությունը և դրա դեմ անցկացվող ցույցերը",
-            "url": "https://armenpress.am/hy/article/1255742",
-            "date": "2026-07-16T13:27:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/16/L7lPw2UXyt9LCahjRb4IALPhjvien7lmJlsJ0x5v.webp"
           }
         ]
       }
