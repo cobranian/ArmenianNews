@@ -28,6 +28,31 @@ Each source **fails independently and degrades gracefully**: on an empty/failed
 scrape, the orchestrator backfills that source from the previous snapshot
 instead of blanking it, so a transient upstream failure never wipes a section.
 
+## Language switcher
+
+A pill in the top-right of the nav switches the interface language — one chip per
+language (**FR · EN · ՀԱՅ · РУ**). It is driven entirely by the `LANGS` array in
+[`src/i18n.jsx`](./src/i18n.jsx): the nav renders whatever's in that array, so a
+language is added or removed as **data**, not by editing a component. The choice
+persists in `localStorage` (key `lang`), sets `<html lang>`, and defaults to
+French.
+
+Only the interface **chrome** is translated — article and post content stays in
+its source language (see [Notes](#notes--caveats)). Armenpress is the one source
+with a matching edition per UI language (fr/en/hy/ru) and ArmRadio follows in
+en/hy/ru; the French-only sources stay French under any UI.
+
+**To add a language**, three edits in `src/i18n.jsx`:
+
+1. an entry in `LANGS` — `{ code, label, name }` (`label` is the chip text);
+2. a full `STRINGS[code]` block with **exactly the same keys as `fr`** — a missing
+   key silently falls back to French, so key parity is what matters most;
+3. a `LOCALES[code]` (e.g. `ru-RU`) for date formatting.
+
+The prerendered HTML is always **French** (the headless render has no
+`localStorage`), so the crawler-facing baseline stays French whatever the switcher
+does — which is also why per-language tab ordering is SEO-safe.
+
 ## Develop
 
 ```bash
