@@ -137,22 +137,23 @@ async function main() {
   }
   const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
 
-  // Armenpress — the national news agency, and the only trilingual source here
-  // (fr/en/hy map 1:1). It does not lead the news tabs: Courrier is French-only
-  // and prerenders more French copy. Seven rubrics x three languages = 21 pages,
-  // spaced by its own module. Backfilled per language, exactly like armradio.
-  console.log('\nArmenpress — armenpress.am (fr/en/hy, 7 rubriques):')
+  // Armenpress — the national news agency, and the only quadrilingue
+  // (fr/en/hy/ru) source here (fr/en/hy/ru map 1:1). It does not lead the news
+  // tabs: Courrier is French-only and prerenders more French copy.
+  // Sept rubriques × quatre langues = 28 pages, spaced by its own module.
+  // Backfilled per language, exactly like armradio.
+  console.log('\nArmenpress — armenpress.am (fr/en/hy/ru, 7 rubriques):')
   // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
   // undefined here would throw and take the whole snapshot down — every other
   // source in this file seeds [] for exactly that reason.
-  let apLangs = { fr: [], en: [], hy: [] }
+  let apLangs = { fr: [], en: [], hy: [], ru: [] }
   try {
     apLangs = await scrapeArmenpress(10)
   } catch (err) {
     console.error('  armenpress failed wholesale:', err.message)
   }
   const armenpress = {}
-  for (const lang of ['fr', 'en', 'hy']) {
+  for (const lang of ['fr', 'en', 'hy', 'ru']) {
     armenpress[lang] = backfillSections(apLangs[lang], prevNews?.armenpress?.[lang], 'categoryKey')
   }
 

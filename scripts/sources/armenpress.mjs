@@ -3,26 +3,28 @@ import https from 'node:https'
 import { clean, safeUrl } from '../lib/util.mjs'
 
 // Armenpress (armenpress.am) is Armenia's national news agency, and the only
-// trilingual source here: fr/en/hy map 1:1 to the UI language. It does not lead
-// the tab order — Courrier d'Erevan is French-only and prerenders more French
-// copy for crawlers.
+// quadrilingue (fr/en/hy/ru) source here: fr/en/hy/ru map 1:1 to the UI
+// language. It does not lead the tab order — Courrier d'Erevan is French-only
+// and prerenders more French copy for crawlers.
 //
 // It is an Inertia.js app: every page embeds its payload as JSON, so there are
 // no CSS selectors here. This breaks if the payload changes shape, not on a
 // redesign.
 //
 // Seven rubrics per language, read from the rubric pages. Two things that the
-// page's own history got wrong, both measured (21/21 pages, 2026-07-16):
+// page's own history got wrong, both measured (28 pages (7 rubriques × 4
+// langues), 2026-07-16):
 //   - The rubric pages are NOT empty. Their articles live at
 //     props.data.data.hits — the homepage's props.feed.data.hits path reads as
 //     an empty rubric, which is what "the rubric pages embed an empty feed"
 //     came from. Every rubric returns 12-36 articles, all dated and imaged.
-//   - There is no aggressive rate limit. All 21 pages load back to back.
+//   - There is no aggressive rate limit. All 28 pages load back to back.
 const BASE = 'https://armenpress.am'
 const HOST = 'armenpress.am'
 
-// The UI language maps 1:1 — unlike ArmRadio, which has no French edition.
-export const ARMENPRESS_LANGS = ['fr', 'en', 'hy']
+// Quatre éditions — fr/en/hy/ru — qui mappent 1:1 à la langue de l'interface,
+// contrairement à ArmRadio (pas d'édition française).
+export const ARMENPRESS_LANGS = ['fr', 'en', 'hy', 'ru']
 
 // The seven rubrics of the site's own main nav, in its order. The key is the
 // URL slug and doubles as the i18n key (see `apcats.*` in src/i18n.jsx).
