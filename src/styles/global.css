@@ -2043,3 +2043,320 @@ h3:lang(hy) {
     padding: 12px 16px;
   }
 }
+
+/* ============================================================
+   Plaques & lightbox — the social cards enlarge in place.
+   The peintres#movses mechanic (frame lifts on hover, click opens
+   an enlarged view browsable with ‹ ›) in Arménie Info's own skin:
+   basalt/abricot that flips with the day/night toggle. The cards are
+   now <button>s; the lightbox mounts in a portal on <body>.
+   See Lightbox.jsx / Social.jsx.
+   ============================================================ */
+
+/* The cards became buttons — strip the UA chrome, keep the plate feel. */
+.fb-card,
+.ig-card {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: zoom-in;
+}
+.fb-card:focus-visible,
+.ig-card:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 3px;
+}
+
+/* "Click to enlarge" — a ghost expand glyph centred on the cover, waking on
+   hover / keyboard focus. Touch has the body's "Agrandir" text instead. */
+.card-zoom {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  margin: auto;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--on-apricot);
+  background: color-mix(in srgb, var(--apricot) 90%, transparent);
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  pointer-events: none;
+}
+.card-zoom svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fb-card:hover .card-zoom,
+.fb-card:focus-visible .card-zoom,
+.ig-card:hover .card-zoom,
+.ig-card:focus-visible .card-zoom {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- the enlarged view ---------------------------------------------------- */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: color-mix(in srgb, var(--basalt) 90%, transparent);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  animation: lbFade 0.35s var(--ease);
+}
+@keyframes lbFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.lb__stage {
+  position: relative;
+  width: min(1040px, 94vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  outline: none;
+}
+.lb__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.lb__img {
+  display: block;
+  max-width: 100%;
+  max-height: 74vh;
+  object-fit: contain;
+}
+.lb__frame--motif {
+  aspect-ratio: 4 / 5;
+  width: min(440px, 78vw);
+  color: var(--ink, var(--apricot));
+  background:
+    radial-gradient(120% 120% at 20% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+    linear-gradient(150deg, var(--c1, var(--basalt-4)), var(--c2, var(--basalt-3)));
+}
+.lb__frame--motif::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background-image: radial-gradient(currentColor 1px, transparent 1.4px);
+  background-size: 16px 16px;
+  opacity: 0.12;
+}
+.lb__motif {
+  position: relative;
+  width: 55%;
+  height: 55%;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+.lb__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  color: var(--apricot);
+  opacity: 0.8;
+  z-index: 1;
+}
+.lb__corner--tl {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.lb__corner--br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+.lb__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  flex-wrap: wrap;
+}
+.lb__cap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0;
+  min-width: 0;
+}
+.lb__net {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+}
+.lb__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.1;
+  color: var(--text);
+}
+.lb__out {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-apricot);
+  background: linear-gradient(180deg, var(--apricot-bright), var(--apricot));
+  border-radius: 999px;
+  padding: 11px 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px var(--apricot-deep), 0 10px 24px -14px var(--apricot-glow);
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.lb__out span {
+  display: inline-block;
+  transition: transform 0.2s var(--ease);
+}
+.lb__out:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px var(--apricot-bright), 0 16px 30px -14px var(--apricot-glow);
+}
+.lb__out:hover span {
+  transform: translateX(4px);
+}
+.lb__close {
+  position: absolute;
+  top: clamp(10px, 2.5vw, 22px);
+  right: clamp(10px, 2.5vw, 22px);
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--apricot-ink);
+  cursor: pointer;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+    transform 0.35s var(--ease);
+}
+.lb__close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.lb__close:hover {
+  border-color: var(--line-apricot);
+  background: rgba(242, 169, 59, 0.12);
+  transform: rotate(90deg);
+}
+.lb__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--apricot-ink);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+.lb__nav:hover {
+  border-color: var(--line-apricot);
+  background: rgba(242, 169, 59, 0.12);
+  color: var(--apricot-ink-strong);
+}
+.lb__nav--prev {
+  left: clamp(6px, 2vw, 20px);
+}
+.lb__nav--next {
+  right: clamp(6px, 2vw, 20px);
+}
+.lb__count {
+  position: absolute;
+  bottom: clamp(8px, 2.5vw, 18px);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  color: var(--text-faint);
+}
+.lb__count span {
+  color: var(--apricot-ink);
+  margin: 0 0.3em;
+}
+.lb__close:focus-visible,
+.lb__nav:focus-visible,
+.lb__out:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 3px;
+}
+
+@media (max-width: 620px) {
+  .lb__nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+  .lb__meta {
+    justify-content: center;
+    text-align: center;
+  }
+  .lb__count {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb {
+    animation: none;
+  }
+  .card-zoom,
+  .lb__close,
+  .lb__nav,
+  .lb__out,
+  .lb__out span {
+    transition: none;
+  }
+  .lb__close:hover {
+    transform: none;
+  }
+}

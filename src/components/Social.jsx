@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
+import { Lightbox } from './Lightbox.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import fb from '../data/facebook.json'
 import ig from '../data/instagram.json'
@@ -17,13 +18,21 @@ import feed from '../data/instagram-feed.json'
  * both. Each shelf names its network in the mono eyebrow and its content
  * in the display title, because the network is the source, not the subject.
  *
+ * The shelves stay horizontal, swipeable carousels with ‹ › arrows — desktop
+ * and mobile alike. What changed: a card no longer navigates away on click.
+ * It is a framed "plate" (the peintres#movses mechanic) that lifts on hover
+ * and OPENS A LIGHTBOX (./Lightbox.jsx) — an enlarged view that stays on the
+ * site, with ‹ › to browse the whole strand and a link out to the real post.
+ * The way to Facebook / Instagram lives inside that lightbox, and the strand
+ * still carries its own crawlable link (the FB-page fallback, the IG chips).
+ *
  * Neither network's official embed is used: the Facebook Page Plugin drags
  * in the whole FB chrome and Instagram's embed.js refuses to hydrate behind
  * ad-blockers and region locks, both leaving blank cells. Every curated post
- * instead renders as an on-brand card that ALWAYS paints and links out to
- * the real post. Images are bundled at build time (src/data/fb/, src/data/ig/)
- * so they never hotlink or expire; a post with no image falls back to a
- * deterministic Armenian motif (./motifs.jsx).
+ * instead renders as an on-brand card that ALWAYS paints. Images are bundled
+ * at build time (src/data/fb/, src/data/ig/) so they never hotlink or expire;
+ * a post with no image falls back to a deterministic Armenian motif — the
+ * same motif the lightbox shows, so nothing comes up blank (./motifs.jsx).
  *
  * Cards carry no .reveal: inside a horizontally scrolling track, the cards to
  * the right of the fold never intersect the viewport, so a reveal-gated card
@@ -53,6 +62,18 @@ const igImg = Object.fromEntries(
 )
 const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || null
 
+/* The expand glyph that wakes on hover — the plate's "click to enlarge" cue,
+   and the textual "Agrandir" in the body carries the same intent for touch. */
+function ZoomBadge() {
+  return (
+    <span className="card-zoom" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7" />
+      </svg>
+    </span>
+  )
+}
+
 /* Initials for the author monogram, e.g. "Don Narek" → "DN". */
 function initials(name = '') {
   const parts = name.trim().split(/\s+/).filter(Boolean)
@@ -76,7 +97,7 @@ function StrandTitle({ network, name, by }) {
   )
 }
 
-function FacebookCard({ post, author, view, img }) {
+function FacebookCard({ post, author, cta, enlarge, img, onOpen }) {
   const seed = hash(post.id || post.url || author)
   const theme = THEMES[seed % THEMES.length]
   const [broken, setBroken] = useState(false)
@@ -84,10 +105,11 @@ function FacebookCard({ post, author, view, img }) {
   const by = post.author || author
 
   return (
-    <a
+    <button
+      type="button"
       className="fb-card"
-      href={post.url}
-      rel="noopener noreferrer"
+      onClick={onOpen}
+      aria-label={`${enlarge} : ${by}`}
       style={{ '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
     >
       <div className={`fb-card__cover${showPhoto ? ' fb-card__cover--photo' : ''}`}>
@@ -104,6 +126,7 @@ function FacebookCard({ post, author, view, img }) {
             <Motif index={seed} />
           </svg>
         )}
+        <ZoomBadge />
         <span className="fb-card__corner fb-card__corner--tl" aria-hidden="true" />
         <span className="fb-card__corner fb-card__corner--br" aria-hidden="true" />
       </div>
@@ -113,14 +136,14 @@ function FacebookCard({ post, author, view, img }) {
         </span>
         <span className="fb-card__author">{by}</span>
         <span className="fb-card__cta">
-          {view} <span aria-hidden="true">→</span>
+          {cta} <span aria-hidden="true">→</span>
         </span>
       </div>
-    </a>
+    </button>
   )
 }
 
-function InstagramCard({ url, handle, name, view, img }) {
+function InstagramCard({ url, handle, name, cta, enlarge, img, onOpen }) {
   const seed = hash(url)
   const theme = THEMES[seed % THEMES.length]
   const isReel = /\/reel\//.test(url)
@@ -128,10 +151,11 @@ function InstagramCard({ url, handle, name, view, img }) {
   const showPhoto = img && !broken
 
   return (
-    <a
+    <button
+      type="button"
       className="ig-card"
-      href={url}
-      rel="noopener noreferrer"
+      onClick={onOpen}
+      aria-label={`${enlarge} : @${handle}`}
       style={{ '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
     >
       <div className={`ig-card__cover${showPhoto ? ' ig-card__cover--photo' : ''}`}>
@@ -148,6 +172,7 @@ function InstagramCard({ url, handle, name, view, img }) {
             <Motif index={seed} />
           </svg>
         )}
+        <ZoomBadge />
         <span className="ig-card__kind">{isReel ? '▷ Reel' : '◻ Post'}</span>
         <span className="ig-card__corner ig-card__corner--tl" aria-hidden="true" />
         <span className="ig-card__corner ig-card__corner--br" aria-hidden="true" />
@@ -158,15 +183,18 @@ function InstagramCard({ url, handle, name, view, img }) {
         </div>
         <div className="ig-card__name">{name}</div>
         <div className="ig-card__cta">
-          {view} <span aria-hidden="true">→</span>
+          {cta} <span aria-hidden="true">→</span>
         </div>
       </div>
-    </a>
+    </button>
   )
 }
 
 export function Social() {
   const { t } = useI18n()
+
+  // Which set is enlarged, and where in it. null = closed.
+  const [box, setBox] = useState(null)
 
   // Newest first; cap at the last 30 posts — matches WANT in scripts/fb-scrape.mjs,
   // so a slice here never silently hides posts the scraper bothered to harvest.
@@ -191,6 +219,28 @@ export function Social() {
           )
     return base.map((p) => ({ ...p, img: igImg[shortcode(p.url)] || null }))
   }, [])
+
+  // The lightbox item for a Facebook post — its enlarged view plus the way out.
+  const fbItems = useMemo(
+    () =>
+      fbPosts.map((p) => {
+        const seed = hash(p.id || p.url || fb.page)
+        const theme = THEMES[seed % THEMES.length]
+        return {
+          img: p.img,
+          alt: p.author || fb.page,
+          title: p.author || fb.page,
+          sub: 'Facebook',
+          href: p.url,
+          cta: t('fb.view'),
+          seed,
+          c1: theme.c1,
+          c2: theme.c2,
+          ink: theme.ink,
+        }
+      }),
+    [fbPosts, t],
+  )
 
   // The wall reads as two strands: the places and institutions that carry
   // Armenian life, and the people who are its face. Each account declares its
@@ -221,13 +271,15 @@ export function Social() {
                   <StrandTitle network="Facebook" name={t('fb.title')} by={t('fb.by')} />
                 }
               >
-                {fbPosts.map((p) => (
+                {fbPosts.map((p, i) => (
                   <FacebookCard
                     key={p.id || p.url}
                     post={p}
                     author={fb.page}
                     img={p.img}
-                    view={t('fb.view')}
+                    cta={t('fb.zoom')}
+                    enlarge={t('social.enlarge')}
+                    onOpen={() => setBox({ items: fbItems, index: i })}
                   />
                 ))}
               </Carousel>
@@ -243,20 +295,38 @@ export function Social() {
           {igStrands.map(({ id, group, title }) => {
             const posts = igPosts.filter(inGroup(group))
             if (!posts.length) return null
+            const items = posts.map((p) => {
+              const seed = hash(p.url)
+              const theme = THEMES[seed % THEMES.length]
+              return {
+                img: p.img,
+                alt: `@${p.handle} — ${p.name}`,
+                title: p.name,
+                sub: `Instagram · @${p.handle}`,
+                href: p.url,
+                cta: t('ig.view'),
+                seed,
+                c1: theme.c1,
+                c2: theme.c2,
+                ink: theme.ink,
+              }
+            })
             return (
             <div className="social__strand" id={id} key={id}>
               <Carousel
                 label="Instagram"
                 title={<StrandTitle network="Instagram" name={title} />}
               >
-                {posts.map((p) => (
+                {posts.map((p, i) => (
                   <InstagramCard
                     key={p.url}
                     url={p.url}
                     handle={p.handle}
                     name={p.name}
                     img={p.img}
-                    view={t('ig.view')}
+                    cta={t('ig.zoom')}
+                    enlarge={t('social.enlarge')}
+                    onOpen={() => setBox({ items, index: i })}
                   />
                 ))}
               </Carousel>
@@ -281,6 +351,14 @@ export function Social() {
           })}
         </div>
       </div>
+
+      {box && (
+        <Lightbox
+          items={box.items}
+          startIndex={box.index}
+          onClose={() => setBox(null)}
+        />
+      )}
     </section>
   )
 }

@@ -53,6 +53,14 @@ const STRINGS = {
     'ig.visit': 'Voir le profil',
     'ig.view': 'Voir sur Instagram',
 
+    'social.enlarge': 'Agrandir l’image',
+    'fb.zoom': 'Agrandir',
+    'ig.zoom': 'Agrandir',
+    'lb.dialog': 'Image agrandie',
+    'lb.close': 'Fermer',
+    'lb.prev': 'Image précédente',
+    'lb.next': 'Image suivante',
+
     'footer.built': "Instantané statique · sources liées à leurs sites d'origine",
     'footer.write': 'Écrivez-nous',
     'footer.sources': 'Sources',
@@ -179,6 +187,14 @@ const STRINGS = {
     'ig.visit': 'View profile',
     'ig.view': 'View on Instagram',
 
+    'social.enlarge': 'Enlarge image',
+    'fb.zoom': 'Enlarge',
+    'ig.zoom': 'Enlarge',
+    'lb.dialog': 'Enlarged image',
+    'lb.close': 'Close',
+    'lb.prev': 'Previous image',
+    'lb.next': 'Next image',
+
     'footer.built': 'Static snapshot · sources linked to their original sites',
     'footer.write': 'Write to us',
     'footer.sources': 'Sources',
@@ -302,6 +318,14 @@ const STRINGS = {
     'ig.shuffle': 'Խառնել',
     'ig.visit': 'Դիտել պրոֆիլը',
     'ig.view': 'Դիտել Instagram-ում',
+
+    'social.enlarge': 'Խոշորացնել պատկերը',
+    'fb.zoom': 'Խոշորացնել',
+    'ig.zoom': 'Խոշորացնել',
+    'lb.dialog': 'Խոշորացված պատկեր',
+    'lb.close': 'Փակել',
+    'lb.prev': 'Նախորդ պատկերը',
+    'lb.next': 'Հաջորդ պատկերը',
 
     'footer.built': 'Ստատիկ պատկեր · աղբյուրները կապված են իրենց կայքերին',
     'footer.write': 'Գրեք մեզ',
