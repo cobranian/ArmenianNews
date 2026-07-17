@@ -87,17 +87,6 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
         if (e.target === e.currentTarget) onClose()
       }}
     >
-      <button
-        className="lb__close"
-        type="button"
-        onClick={onClose}
-        aria-label={t('lb.close')}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
-
       {n > 1 && (
         <button
           className="lb__nav lb__nav--prev"
@@ -128,6 +117,17 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
           <span className="lb__corner lb__corner--tl" aria-hidden="true" />
           <span className="lb__corner lb__corner--br" aria-hidden="true" />
         </div>
+
+        <button
+          className="lb__close"
+          type="button"
+          onClick={onClose}
+          aria-label={t('lb.close')}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
 
         <div className="lb__meta">
           <p className="lb__cap">
