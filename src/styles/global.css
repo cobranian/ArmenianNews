@@ -2030,7 +2030,8 @@ h3:lang(hy) {
   /* 12px of side padding: with 4 pills (FR EN ՀԱՅ РУ) the theme toggle +
      lang pill + hamburger now overflow a 360px viewport at 15px padding —
      measured 366px scrollWidth. 12px keeps the row on one line; the tallest
-     label ("ՀԱՅ") still sets the row height. */
+     label ("ՀԱՅ") still sets the row height. Don't go below 12px — "FR" is
+     already the narrowest chip and its tap width is at the floor here. */
   .lang button {
     padding: 14px 12px;
   }
