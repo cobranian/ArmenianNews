@@ -8,7 +8,8 @@ travaille sur ce dépôt.
 **Arménie Info** (`armenie-info.web.app`) — un **instantané horaire** de la vie
 arménienne : actualités, agenda et réseaux sociaux, dans une esthétique de
 journal « Apricot Press » (basalte volcanique éclairé d'abricot), avec une
-bascule **jour / nuit**. Interface trilingue : **Français / English / Հայերեն**.
+bascule **jour / nuit**. Interface quadrilingue : **Français / English /
+Հայերեն / Русский**.
 
 Une tâche planifiée récupère les sources une fois par heure dans des fichiers
 JSON ; le site est une application statique **Vite + React** qui affiche ces
@@ -90,10 +91,13 @@ composants importent au build :
   précédent est réutilisé (backfill) au lieu d'être effacé.
 - **`scripts/sources/`** — un module par source :
   - `armenpress.mjs` — Armenpress, l'agence de presse nationale, et la seule
-    source **trilingue** (fr/en/hy) : les trois éditions correspondent 1:1 à la
-    langue de l'interface. Application Inertia.js : le JSON du flux est
+    source **quadrilingue** (fr/en/hy/ru) : les quatre éditions correspondent
+    1:1 à la langue de l'interface. Application Inertia.js : le JSON du flux est
     embarqué dans la page, donc **aucun sélecteur CSS**. **Sept rubriques ×
-    trois langues = 21 pages** par snapshot, espacées de 800 ms.
+    quatre langues = 28 pages** par snapshot, espacées de 800 ms. L'édition
+    russe (`armenpress.am/ru`) partage exactement la même structure Inertia et
+    les mêmes slugs de rubriques ; ses libellés `apcats.*` sont les noms de sa
+    propre navigation (voir `src/i18n.jsx`).
     - **Le piège du payload** : les articles d'une page de rubrique vivent dans
       `props.data.data.hits`, pas dans `props.feed.data.hits` (le chemin de
       l'accueil). Lire le chemin de l'accueil sur une page de rubrique renvoie
@@ -104,7 +108,7 @@ composants importent au build :
       les pages de rubrique répondent **403 au `fetch` de Node (undici)** et 200
       à `node:https` — même machine, même TLS OpenSSL, même HTTP/1.1, quels que
       soient les en-têtes. La raison est dans le module. Basculer sur
-      `fetchText` ferait échouer les 21 rubriques, que le backfill masquerait
+      `fetchText` ferait échouer les 28 rubriques, que le backfill masquerait
       ensuite en silence.
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
   - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
@@ -116,7 +120,8 @@ composants importent au build :
   - `armradio.mjs` — Public Radio of Armenia. Passe par une **chaîne de sources
     multi-niveaux** (proxy Cloudflare Worker → API REST → flux RSS → Google News)
     car armradio.am est derrière Cloudflare, qui renvoie par intermittence un 403
-    aux IP des datacenters de la CI.
+    aux IP des datacenters de la CI. Sert **en/hy** ; l'édition **russe**
+    (`ru.armradio.am`) est un chantier à venir (voir « À savoir »).
   - `armenopole.mjs` — Agenda (Suisse + monde).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
@@ -130,10 +135,15 @@ composants importent au build :
 - **`scripts/shoot.mjs`** — capture d'écran du carrousel Don Narek (Puppeteer).
 
 **Internationalisation** — `src/i18n.jsx` expose un contexte React
-(`useI18n()` → `{ t, lang, setLang }`) avec les dictionnaires **fr / en / hy**.
-Seul le **chrome de l'interface** est traduit ; le **contenu** (articles, posts)
-reste dans sa langue d'origine. Le français est la langue par défaut et doit
-porter tous ses accents (é, è, à, ê, ç…).
+(`useI18n()` → `{ t, lang, setLang }`) avec les dictionnaires **fr / en / hy /
+ru**. `LANGS` (dans `i18n.jsx`) pilote seul le sélecteur de langue et la
+persistance ; ajouter une langue = ajouter son entrée à `LANGS`, un bloc
+`STRINGS` complet (mêmes clés que `fr`, sinon repli silencieux sur le français)
+et son `LOCALES`. Seul le **chrome de l'interface** est traduit ; le **contenu**
+(articles, posts) reste dans sa langue d'origine — un lecteur russe voit
+Armenpress en russe, mais Courrier en français et ArmRadio en anglais, et
+Courrier reste le premier onglet (comme pour hy). Le français est la langue par
+défaut et doit porter tous ses accents (é, è, à, ê, ç…).
 
 **Styles** — `src/styles/global.css`, un seul fichier. La bascule jour / nuit et
 la palette « abricot sur basalte » y sont définies.
@@ -202,7 +212,7 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   qu'il prérend le plus de texte français (80 articles, contre 70 pour
   Armenpress depuis le passage aux 7 rubriques — armenews, artzakank et
   armenieinfotv sont aussi francophones, mais plus petits). Armenpress est la
-  seule source **trilingue** (fr/en/hy) mais ne mène pas l'ordre. **La marge
+  seule source **quadrilingue** (fr/en/hy/ru) mais ne mène pas l'ordre. **La marge
   est désormais mince (80 vs 70)** : si le nombre d'articles bouge d'un côté ou
   de l'autre, remesurez avant de conclure que Courrier doit rester en tête.
   Avant Armenpress, ArmRadio (éditions `en`/`hy` seulement) faisait servir 70
@@ -234,10 +244,22 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   - **Le `line-clamp` CSS est non destructif, une coupe au scrape ne l'est
     pas.** Le titre entier reste dans le DOM : Google et les lecteurs d'écran le
     lisent, seul l'affichage est écourté. Couper à la source ferait indexer
-    « Porte-parole du MAE » comme titre, sur la **seule source trilingue**.
+    « Porte-parole du MAE » comme titre, sur la **seule source quadrilingue**.
     Voir le piège de l'ordre des onglets ci-dessus : le HTML prérendu compte.
 
   Le « … » plus « LIRE LA SUITE » est le traitement juste pour un chapô. Les
   50 % ne sont pas une dette : c'est la source qui parle comme une agence.
+- **ArmRadio en russe (`ru.armradio.am`) est un chantier à venir, pas un
+  oubli.** Le site russe est derrière Cloudflare et répond **403** à l'API REST
+  même depuis une IP résidentielle — donc, comme en/hy, il n'est joignable qu'à
+  travers le **Cloudflare Worker `ARMRADIO_PROXY`**. Il faut d'abord apprendre au
+  Worker à router `lang=ru → ru.armradio.am` et le redéployer, puis lire ses IDs
+  de rubriques russes *à travers* le Worker (le site russe nomme ses catégories
+  en russe, comme le site arménien avec `HY_CATEGORY_IDS`). La procédure complète
+  est dans `docs/superpowers/specs/2026-07-17-langue-russe-design.md` (section
+  « Suite »). En attendant, sous l'interface russe, l'onglet ArmRadio sert
+  l'édition **anglaise** (`armLang = lang === 'hy' ? 'hy' : 'en'` dans
+  `NewsBrowser.jsx`), ce qui est cohérent avec « le contenu reste dans sa langue
+  d'origine ».
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
