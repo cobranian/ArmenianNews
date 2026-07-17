@@ -16,14 +16,14 @@ The worker answers two kinds of request:
 | Request | Serves |
 | --- | --- |
 | `GET /` | the newswire headlines (REST, falling back to RSS) |
-| `GET /?lang=en&path=/wp-json/wp/v2/…` | one WordPress REST call, relayed verbatim |
+| `GET /?lang=en&path=/wp-json/wp/v2/…` | one WordPress REST call, relayed verbatim (`lang` = `en` \| `hy` \| `ru`) |
 
 The **relay** is what the per-rubric news feed needs: the origin 403s
 `/wp-json/wp/v2/categories` and `/wp-json/wp/v2/posts?categories=<id>` from CI,
 and a rubric that fails is backfilled from the previous snapshot — so without
 the relay every rubric silently freezes on its last good day. It is not an open
-proxy: `lang` picks between two fixed hosts and `path` must resolve to a
-WordPress REST path on that host.
+proxy: `lang` picks between three fixed hosts (`en`/`hy`/`ru`.armradio.am) and
+`path` must resolve to a WordPress REST path on that host.
 
 > **Upgrading:** a worker deployed before the relay existed ignores `?path` and
 > answers every request with the headlines. Redeploy it (step 4 below) after

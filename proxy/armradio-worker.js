@@ -1,4 +1,4 @@
-// Always-on proxy for Public Radio of Armenia (en/hy.armradio.am).
+// Always-on proxy for Public Radio of Armenia (en/hy/ru.armradio.am).
 //
 // Why this exists: armradio.am sits behind Cloudflare, which serves an
 // intermittent 403 "managed challenge" to datacenter IPs (GitHub Actions
@@ -12,7 +12,7 @@
 //
 // The second mode is what the per-rubric scrape needs: it must reach
 // /wp-json/wp/v2/categories and /wp-json/wp/v2/posts?categories=<id>, which the
-// origin 403s from CI. It is NOT an open proxy — `lang` selects between two
+// origin 403s from CI. It is NOT an open proxy — `lang` selects between three
 // fixed hosts, and `path` must be a WordPress REST path (see relayTarget).
 //
 // Deploy: paste into a new Worker at dash.cloudflare.com (see proxy/README.md).
@@ -20,6 +20,7 @@
 const HOST_BY_LANG = {
   en: 'en.armradio.am',
   hy: 'hy.armradio.am',
+  ru: 'ru.armradio.am',
 }
 
 const REST =
