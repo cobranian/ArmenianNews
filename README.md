@@ -2,8 +2,8 @@
 
 An **hourly snapshot** of Armenian life — news, events, and social media — in a
 dark *"Apricot Press"* broadsheet aesthetic (volcanic basalt lit by apricot, the
-heraldic orange of the Armenian flag), with a **day / night** toggle. Trilingual
-interface: **Français / English / Հայերեն**.
+heraldic orange of the Armenian flag), with a **day / night** toggle.
+Quadrilingual interface: **Français / English / Հայերեն / Русский**.
 
 A scheduled job scrapes the sources once an hour into JSON; the site is a static
 Vite + React app that renders those files. No backend at runtime.
@@ -15,7 +15,7 @@ Vite + React app that renders those files. No backend at runtime.
 | Section | Source | How |
 |---|---|---|
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. **The default tab**: `NewsBrowser` renders only the active tab, so the default source is what the prerender bakes into the raw HTML for crawlers. Courrier is French-only and has the largest French rubric set of any source, so it prerenders the most French copy. |
-| **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency: the latest **10 articles per rubric** across **7 rubrics** (Armenia, Economy, World, Culture, Sports, Fact Check, Exclusive Projects), in **each of 3 languages** (fr / en / hy) — 210 articles per snapshot, each rubric its own shelf. The only source here that is **trilingual**: fr/en/hy map 1:1 to the UI language, and rubric names come from Armenpress own labels. Not the default tab: Courrier d'Erevan prerenders more French copy (80 vs. 70). It is an Inertia.js app, so the feed arrives as embedded JSON — **no CSS selectors**. Two traps, both documented in the module: the rubric articles live at `props.data.data.hits` (the homepage path reads as empty), and the rubric pages **403 Node's `fetch`** — the module uses `node:https` deliberately. |
+| **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency: the latest **10 articles per rubric** across **7 rubrics** (Armenia, Economy, World, Culture, Sports, Fact Check, Exclusive Projects), in **each of 4 languages** (fr / en / hy / ru) — 280 articles per snapshot, each rubric its own shelf. The only source here that is **quadrilingual**: fr/en/hy/ru map 1:1 to the UI language, and rubric names come from Armenpress' own labels (the Russian edition labels them Армения, Экономика, Мир, Культура, Спорт, Проверка фактов, Спецпроекты). The **Russian edition** ([armenpress.am/ru](https://armenpress.am/ru)) shares the exact same Inertia payload shape and rubric slugs, so it needed no new scraping logic — just `'ru'` added to `ARMENPRESS_LANGS`. Not the default tab: Courrier d'Erevan prerenders more French copy (80 vs. 70). It is an Inertia.js app, so the feed arrives as embedded JSON — **no CSS selectors**. Two traps, both documented in the module: the rubric articles live at `props.data.data.hits` (the homepage path reads as empty), and the rubric pages **403 Node's `fetch`** — the module uses `node:https` deliberately. |
 | **Actualités** | [Nouvelles d'Arménie](https://www.armenews.com) | The latest **10 articles per rubric** across 6 WordPress rubrics, French-only, as shelves. |
 | **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across **3 rubrics**, French-only, as shelves: Arménie & Artsakh and Communauté come from the WordPress REST API, Divers is scraped from the site's `/divers-p/` page. |
 | **Actualités** | [ArménieInfo.tv](https://armenieinfo.tv) | The latest **10 articles per rubric**, French-only, as shelves. |
@@ -283,4 +283,15 @@ Vite `base` defaults to `/` (Firebase serves from the domain root); override wit
 - GitHub Actions scheduled runs can be delayed a few minutes under load — the
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
-  chrome is translated.
+  chrome is translated. The interface is **quadrilingual** (fr / en / hy / ru);
+  under the Russian UI a reader sees Armenpress in Russian, while Courrier stays
+  French and the ArmRadio wire stays English — and Courrier still leads the tabs
+  (RU behaves exactly like HY).
+- **ArmRadio in Russian (`ru.armradio.am`) is a planned follow-up, not yet
+  wired.** Like en/hy it sits behind Cloudflare and 403s the REST API even from a
+  residential IP, so it's only reachable through the `ARMRADIO_PROXY`
+  [Worker](#newswire-source-chain-armradio) — which must first learn to route
+  `lang=ru → ru.armradio.am` and expose the Russian category IDs (named in
+  Russian, like the Armenian site's). Until then the ArmRadio tab serves English
+  under the Russian UI. Full procedure:
+  `docs/superpowers/specs/2026-07-17-langue-russe-design.md`.
