@@ -2027,10 +2027,12 @@ h3:lang(hy) {
   .nav__toggle {
     padding: 11px 14px;
   }
-  /* 15px of side padding, not 13: the shortest label ("FR") would otherwise
-     come out 42px wide. The tallest ("ՀԱՅ") sets the row height. */
+  /* 12px of side padding: with 4 pills (FR EN ՀԱՅ РУ) the theme toggle +
+     lang pill + hamburger now overflow a 360px viewport at 15px padding —
+     measured 366px scrollWidth. 12px keeps the row on one line; the tallest
+     label ("ՀԱՅ") still sets the row height. */
   .lang button {
-    padding: 14px 15px;
+    padding: 14px 12px;
   }
   .shelf__arrow {
     width: 44px;
