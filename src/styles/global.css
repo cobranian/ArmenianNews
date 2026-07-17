@@ -793,14 +793,19 @@ h3:lang(hy) {
 }
 .card__title {
   font-family: var(--font-display);
-  font-size: 1.16rem;
+  /* Les dépêches d'agence titrent en phrases : la médiane fait 78 caractères
+     et la queue monte à 189 (Armenpress). À 1.16rem sur 3 lignes, 54 % des
+     cartes étaient coupées. 1.05rem sur 4 lignes tient jusqu'à ~115.
+     Au-delà, on laisse le clamp faire : il est non destructif, le titre
+     entier reste dans le DOM pour les moteurs et les lecteurs d'écran. */
+  font-size: 1.05rem;
   font-weight: 500;
-  line-height: 1.18;
+  line-height: 1.2;
   color: var(--text);
   letter-spacing: -0.012em;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

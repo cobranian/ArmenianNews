@@ -217,5 +217,27 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   Instagram, mais Armenpress n'a **aucun repli** — là où armradio en a quatre.
   Si le mur Armenpress semble figé, vérifiez les logs du job horaire avant de
   soupçonner le code.
+- **Ne tronquez pas les titres Armenpress au deux-points.** Ce sont des chapôs,
+  pas des titres : médiane 78 caractères, queue à 189, et ~50 % des cartes
+  Armenpress restent coupées par le `line-clamp` (mesuré sur 210 titres,
+  2026-07-17). La tentation est de couper « à la première proposition » dans
+  `scripts/sources/armenpress.mjs`. **Deux raisons de ne pas le faire**, toutes
+  deux mesurées :
+  - **Le deux-points fait deux métiers opposés dans la même source.** Dans
+    `TRIPP Development Company: Government approves…` la nouvelle est **avant**.
+    Dans `Porte-parole du MAE: la visite de Tsitsernakaberd n'a pas été
+    retirée…` elle est **après** — le deux-points est un préfixe d'attribution.
+    Couper avant donnerait des cartes titrées « Porte-parole du MAE »,
+    « Caroline Safarian », « Grégoire Jakhian » : des noms propres en guise de
+    titres. Aucun motif syntaxique ne distingue les deux cas. Et de toute façon
+    **30 des 45 titres longs n'ont aucun séparateur** — rien à couper.
+  - **Le `line-clamp` CSS est non destructif, une coupe au scrape ne l'est
+    pas.** Le titre entier reste dans le DOM : Google et les lecteurs d'écran le
+    lisent, seul l'affichage est écourté. Couper à la source ferait indexer
+    « Porte-parole du MAE » comme titre, sur la **seule source trilingue**.
+    Voir le piège de l'ordre des onglets ci-dessus : le HTML prérendu compte.
+
+  Le « … » plus « LIRE LA SUITE » est le traitement juste pour un chapô. Les
+  50 % ne sont pas une dette : c'est la source qui parle comme une agence.
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
