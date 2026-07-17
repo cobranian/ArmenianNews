@@ -175,6 +175,7 @@ export async function scrapeArmradio(limit = 5) {
 const BASE_BY_LANG = {
   en: 'https://en.armradio.am',
   hy: 'https://hy.armradio.am',
+  ru: 'https://ru.armradio.am',
 }
 
 // Build the URL for one WordPress REST call. When ARMRADIO_PROXY is set the
@@ -211,9 +212,18 @@ const HY_CATEGORY_IDS = {
   politics: 12, society: 4, economics: 11, analytics: 9, world: 5, culture: 6, sport: 1,
 }
 
+// Same story for ru.armradio.am — Russian category names, so slugs don't
+// resolve. Term IDs read live through the proxy and mapped by name:
+//   politics=Политика society=Общество economics=Экономика
+//   analytics=Аналитика world=«В мире» culture=Культура sport=Спорт
+const RU_CATEGORY_IDS = {
+  politics: 4, society: 5, economics: 8, analytics: 6, world: 7, culture: 9, sport: 1,
+}
+
 // Resolve each rubric key → numeric category id for a given language site.
 async function categoryIdsByKey(lang) {
   if (lang === 'hy') return { ...HY_CATEGORY_IDS }
+  if (lang === 'ru') return { ...RU_CATEGORY_IDS }
   // English site: resolve slug→id from the categories endpoint.
   const wanted = new Set(ARMRADIO_SECTIONS.map((s) => s.slug))
   const idBySlug = {}

@@ -284,14 +284,17 @@ Vite `base` defaults to `/` (Firebase serves from the domain root); override wit
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
   chrome is translated. The interface is **quadrilingual** (fr / en / hy / ru);
-  under the Russian UI a reader sees Armenpress in Russian, while Courrier stays
-  French and the ArmRadio wire stays English — and Courrier still leads the tabs
-  (RU behaves exactly like HY).
-- **ArmRadio in Russian (`ru.armradio.am`) is a planned follow-up, not yet
-  wired.** Like en/hy it sits behind Cloudflare and 403s the REST API even from a
-  residential IP, so it's only reachable through the `ARMRADIO_PROXY`
-  [Worker](#newswire-source-chain-armradio) — which must first learn to route
-  `lang=ru → ru.armradio.am` and expose the Russian category IDs (named in
-  Russian, like the Armenian site's). Until then the ArmRadio tab serves English
-  under the Russian UI. Full procedure:
-  `docs/superpowers/specs/2026-07-17-langue-russe-design.md`.
+  under the Russian UI a reader sees **Armenpress and the ArmRadio news tab in
+  Russian**, while Courrier (and the other French sources) stay French — and
+  Courrier still leads the tabs (RU behaves like HY). The newswire **ticker**
+  stays English (it reads en.armradio.am).
+- **ArmRadio in Russian (`ru.armradio.am`) is wired.** Like en/hy it sits behind
+  Cloudflare and 403s the REST API even from a residential IP, so it's reachable
+  only through the `ARMRADIO_PROXY` [Worker](#newswire-source-chain-armradio),
+  whose `HOST_BY_LANG` now routes `en`/`hy`/`ru`. The site names its categories
+  in Russian, so slugs don't resolve — its term IDs are pinned in
+  `RU_CATEGORY_IDS` (`scripts/sources/armradio.mjs`), like `HY_CATEGORY_IDS`.
+  **Gotcha:** after editing `HOST_BY_LANG` you must **redeploy the Worker**
+  (`cd proxy && npx wrangler deploy`), or `lang=ru` returns `400 forbidden
+  upstream` and every rubric silently backfills — a frozen ru wall is the only
+  sign.

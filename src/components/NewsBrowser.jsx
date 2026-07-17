@@ -67,7 +67,8 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
 // Every rubric is its own carousel — nothing is merged, and empty rubrics are
 // dropped.
 function buildSources(t, lang) {
-  const armLang = lang === 'hy' ? 'hy' : 'en'
+  // ArmRadio has en/hy/ru editions but no French one — the fr UI borrows en.
+  const armLang = lang === 'hy' ? 'hy' : lang === 'ru' ? 'ru' : 'en'
   // Armenpress maps 1:1 to the UI language — the only source that does. It does
   // not lead: Courrier prerenders more French copy. Seven rubrics per language,
   // each its own shelf.

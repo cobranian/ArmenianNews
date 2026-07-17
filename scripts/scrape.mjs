@@ -82,8 +82,8 @@ async function main() {
   const prevIg = await readJson('instagram-feed.json')
 
   // News. Courrier d'Erevan is French-only — courrier.am/hy serves the identical
-  // French articles — so we scrape it once. ArmRadio has real EN and HY editions,
-  // so the UI shows en for fr/en and hy for hy.
+  // French articles — so we scrape it once. ArmRadio has real EN, HY and RU
+  // editions, so the UI shows en for fr/en, hy for hy, and ru for ru.
   console.log('\nCourrier — courrier.am/fr:')
   let courrierSecs = []
   try {
@@ -94,7 +94,7 @@ async function main() {
   const courrier = backfillSections(courrierSecs, prevNews?.courrier, 'sectionKey')
 
   const armradio = {}
-  for (const lang of ['en', 'hy']) {
+  for (const lang of ['en', 'hy', 'ru']) {
     console.log(`\nArmRadio (${lang}) — ${lang}.armradio.am:`)
     let secs = []
     try {

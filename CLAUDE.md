@@ -120,8 +120,9 @@ composants importent au build :
   - `armradio.mjs` — Public Radio of Armenia. Passe par une **chaîne de sources
     multi-niveaux** (proxy Cloudflare Worker → API REST → flux RSS → Google News)
     car armradio.am est derrière Cloudflare, qui renvoie par intermittence un 403
-    aux IP des datacenters de la CI. Sert **en/hy** ; l'édition **russe**
-    (`ru.armradio.am`) est un chantier à venir (voir « À savoir »).
+    aux IP des datacenters de la CI. Sert **en/hy/ru** — le fil (ticker) reste
+    anglais, mais l'onglet ArmRadio du navigateur d'actualités suit la langue
+    (ru via `ru.armradio.am`, voir « À savoir »).
   - `armenopole.mjs` — Agenda (Suisse + monde).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
@@ -141,9 +142,10 @@ persistance ; ajouter une langue = ajouter son entrée à `LANGS`, un bloc
 `STRINGS` complet (mêmes clés que `fr`, sinon repli silencieux sur le français)
 et son `LOCALES`. Seul le **chrome de l'interface** est traduit ; le **contenu**
 (articles, posts) reste dans sa langue d'origine — un lecteur russe voit
-Armenpress en russe, mais Courrier en français et ArmRadio en anglais, et
-Courrier reste le premier onglet (comme pour hy). Le français est la langue par
-défaut et doit porter tous ses accents (é, è, à, ê, ç…).
+Armenpress **et** ArmRadio en russe, mais Courrier (et les autres sources
+francophones) en français, et Courrier reste le premier onglet (comme pour hy).
+Le français est la langue par défaut et doit porter tous ses accents
+(é, è, à, ê, ç…).
 
 **Styles** — `src/styles/global.css`, un seul fichier. La bascule jour / nuit et
 la palette « abricot sur basalte » y sont définies.
@@ -249,17 +251,17 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
 
   Le « … » plus « LIRE LA SUITE » est le traitement juste pour un chapô. Les
   50 % ne sont pas une dette : c'est la source qui parle comme une agence.
-- **ArmRadio en russe (`ru.armradio.am`) est un chantier à venir, pas un
-  oubli.** Le site russe est derrière Cloudflare et répond **403** à l'API REST
-  même depuis une IP résidentielle — donc, comme en/hy, il n'est joignable qu'à
-  travers le **Cloudflare Worker `ARMRADIO_PROXY`**. Il faut d'abord apprendre au
-  Worker à router `lang=ru → ru.armradio.am` et le redéployer, puis lire ses IDs
-  de rubriques russes *à travers* le Worker (le site russe nomme ses catégories
-  en russe, comme le site arménien avec `HY_CATEGORY_IDS`). La procédure complète
-  est dans `docs/superpowers/specs/2026-07-17-langue-russe-design.md` (section
-  « Suite »). En attendant, sous l'interface russe, l'onglet ArmRadio sert
-  l'édition **anglaise** (`armLang = lang === 'hy' ? 'hy' : 'en'` dans
-  `NewsBrowser.jsx`), ce qui est cohérent avec « le contenu reste dans sa langue
-  d'origine ».
+- **ArmRadio en russe (`ru.armradio.am`) est branché.** Comme en/hy, le site
+  russe est derrière Cloudflare et répond **403** à l'API REST même depuis une IP
+  résidentielle — il n'est donc joignable qu'à travers le **Cloudflare Worker
+  `ARMRADIO_PROXY`** (`HOST_BY_LANG` route désormais `en`/`hy`/`ru`). Le site
+  nommant ses catégories en russe, les slugs anglais ne résolvent pas : ses IDs
+  de rubriques sont figés dans `RU_CATEGORY_IDS` (`scripts/sources/armradio.mjs`),
+  exactement comme `HY_CATEGORY_IDS`. `NewsBrowser.jsx` fait alors résoudre
+  `armLang` vers `ru` sous l'interface russe. **Le piège** : si le Worker n'est
+  pas redéployé après un changement de `HOST_BY_LANG`, `lang=ru` renvoie
+  `400 forbidden upstream` et chaque rubrique se backfille en silence — le seul
+  signe est un mur ArmRadio ru figé. Redéployer : `cd proxy && npx wrangler
+  deploy`.
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
