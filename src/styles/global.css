@@ -2417,13 +2417,14 @@ h3:lang(hy) {
   }
   /* Close rides at the caption's right edge, level with the title — beside
      "Don Narek", not over the picture. Anchored to .lb__meta, it tracks the
-     caption whatever the image's height, so it lands in the same spot for a
-     tall Don Narek painting and a shorter Instagram square alike. */
+     caption whatever the image's height. right: 16px matches .lb__nav--next
+     (same 46px width), so the close button sits on the same vertical axis as
+     the › arrow directly below it. */
   .lb__close {
     position: absolute;
     top: 0;
     bottom: auto;
-    right: 6px;
+    right: 16px;
     margin: 0;
   }
 }
