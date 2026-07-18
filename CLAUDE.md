@@ -207,19 +207,27 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   que le compte publie. Pour rafraîchir vraiment, il faut retirer ou remplacer
   ces comptes à la main dans le tableau `accounts`. C'est un choix assumé, pas un
   bug.
-- **L'ordre des onglets du fil est porteur de sens, pas cosmétique.**
-  `NewsBrowser` ne rend que l'onglet actif : la source par défaut est donc la
-  seule que le prérendu injecte dans le HTML, et la seule que Google lit sans
-  exécuter de JS. Courrier d'Erevan est en tête parce qu'il est francophone et
-  qu'il prérend le plus de texte français (80 articles, contre 70 pour
-  Armenpress depuis le passage aux 7 rubriques — armenews, artzakank et
-  armenieinfotv sont aussi francophones, mais plus petits). Armenpress est la
-  seule source **quadrilingue** (fr/en/hy/ru) mais ne mène pas l'ordre. **La marge
-  est désormais mince (80 vs 70)** : si le nombre d'articles bouge d'un côté ou
-  de l'autre, remesurez avant de conclure que Courrier doit rester en tête.
-  Avant Armenpress, ArmRadio (éditions `en`/`hy` seulement) faisait servir 70
-  titres **anglais** sous `<html lang="fr">`. Ne réordonnez pas les onglets sans
-  mesurer ce que devient le HTML prérendu.
+- **Les onglets du fil suivent la langue choisie, Armenpress en tête.**
+  `NewsBrowser` ne rend que l'onglet actif : la source par défaut (toujours
+  Armenpress) est donc la seule que le prérendu injecte dans le HTML, et la
+  seule que Google lit sans exécuter de JS. La règle (`buildSources`) : **chaque
+  langue n'affiche que les sources qui publient dans cette langue**, Armenpress
+  épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
+  `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
+  - `fr` → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
+  - `en`/`hy`/`ru` → Armenpress, ArmRadio
+
+  Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
+  n'apparaissent donc que sous `fr` ; ArmRadio (`en`/`hy`/`ru`, sans édition
+  française) est **retiré** sous `fr` au lieu d'y servir des titres anglais sous
+  `<html lang="fr">`. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
+  d'interface, donc sous `fr` il prérend son édition française — du texte
+  français sous `lang="fr"`, ce qu'une requête française doit trouver.
+  (Auparavant Courrier menait pour prérendre le plus de texte français ; la règle
+  par langue fait d'Armenpress la tête naturelle.) Comme le badge de langue par
+  onglet vaudrait désormais toujours la langue d'interface, il a été **supprimé**
+  (redondant). Ne réintroduisez pas d'onglet hors-langue sans mesurer ce que
+  devient le HTML prérendu.
 - **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
   la renvoie vide et `backfillSections` restitue les articles du
   snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc

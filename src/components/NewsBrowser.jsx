@@ -56,27 +56,32 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
   )
 }
 
-// Build the source groups. Courrier d'Erevan leads, and that is load-bearing:
-// NewsBrowser renders only the active tab, so the default source is the only
-// news the prerender bakes into the HTML for crawlers. Courrier is French-only
-// and the largest French rubric set (80 articles), so it is what a French
-// query should find. ArmRadio led before and has no French edition (en/hy
-// only), which shipped English headlines under lang="fr".
-// Armenpress is the only *trilingual* source (fr/en/hy map 1:1); the others are
-// French-only (courrier.am/hy serves the same French articles) or en/hy.
-// Every rubric is its own carousel — nothing is merged, and empty rubrics are
-// dropped.
+// Build the source groups for the current UI language. The rule: a language
+// only shows the sources that actually publish in it, Armenpress pinned first,
+// the rest alphabetical.
+//   fr  → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
+//   en/hy/ru → Armenpress, ArmRadio
+// So the French-only sources (Courrier, armenews, artzakank, armenieinfotv)
+// appear ONLY under fr, and ArmRadio — en/hy/ru, no French edition — is dropped
+// under fr instead of borrowing English headlines beneath lang="fr".
+//
+// SEO note: NewsBrowser renders only the active tab, so sources[0] (now always
+// Armenpress) is the one source the prerender bakes into the HTML for crawlers.
+// That is deliberate and safe: Armenpress maps 1:1 to the UI language, so under
+// fr it prerenders its French edition — French copy under lang="fr", which is
+// what a French query should find. (Previously Courrier led to prerender the
+// most French text; the language rule makes Armenpress the natural lead.)
+// Every rubric is its own carousel — nothing is merged, empty rubrics dropped.
 function buildSources(t, lang) {
-  // ArmRadio has en/hy/ru editions but no French one — the fr UI borrows en.
+  const isFr = lang === 'fr'
+  // ArmRadio publishes en/hy/ru — never French — so armLang only matters when
+  // ArmRadio is shown, i.e. outside fr, where it tracks the UI language.
   const armLang = lang === 'hy' ? 'hy' : lang === 'ru' ? 'ru' : 'en'
-  // Armenpress maps 1:1 to the UI language — the only source that does. It does
-  // not lead: Courrier prerenders more French copy. Seven rubrics per language,
-  // each its own shelf.
+
   const armenpress = {
     id: 'armenpress',
     brand: 'Armenpress',
     name: t('browser.armenpress'),
-    lang: lang.toUpperCase(),
     live: true,
     images: true,
     cats: (news.armenpress?.[lang] || [])
@@ -87,7 +92,6 @@ function buildSources(t, lang) {
     id: 'armradio',
     brand: 'ArmRadio',
     name: t('browser.armradio'),
-    lang: armLang.toUpperCase(),
     live: true,
     images: true,
     cats: (news.armradio?.[armLang] || [])
@@ -98,7 +102,6 @@ function buildSources(t, lang) {
     id: 'courrier',
     brand: "Courrier d'Erevan",
     name: t('browser.courrier'),
-    lang: 'FR',
     live: false,
     images: true,
     cats: (news.courrier || [])
@@ -109,7 +112,6 @@ function buildSources(t, lang) {
     id: 'armenews',
     brand: "Nouvelles d'Arménie",
     name: t('browser.armenews'),
-    lang: 'FR',
     live: false,
     images: true,
     proxy: true,
@@ -121,7 +123,6 @@ function buildSources(t, lang) {
     id: 'artzakank',
     brand: 'Artzakank',
     name: t('browser.artzakank'),
-    lang: 'FR',
     live: false,
     images: true,
     proxy: true,
@@ -133,7 +134,6 @@ function buildSources(t, lang) {
     id: 'armenieinfotv',
     brand: 'ArménieInfo.tv',
     name: t('browser.armenieinfotv'),
-    lang: 'FR',
     live: false,
     images: true,
     proxy: true,
@@ -141,7 +141,20 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`aitcats.${s.categoryKey}`), articles: s.articles })),
   }
-  return [courrier, armenpress, armradio, armenews, artzakank, armenieinfotv].filter((s) => s.cats.length)
+
+  // Sources that publish in this language. Armenpress is in every language;
+  // the French-only sources join it under fr, ArmRadio under en/hy/ru.
+  const pool = isFr
+    ? [armenpress, courrier, armenews, artzakank, armenieinfotv]
+    : [armenpress, armradio]
+
+  // Armenpress pinned first (the constant across languages); the rest sorted
+  // alphabetically by brand with accents folded (é = e, so ArménieInfo.tv sorts
+  // as "Armenie"). Sorting, not a hand-ordered list — a new source slots itself.
+  const rest = pool
+    .filter((s) => s.id !== 'armenpress')
+    .sort((a, b) => a.brand.localeCompare(b.brand, 'fr', { sensitivity: 'base' }))
+  return [armenpress, ...rest].filter((s) => s.cats.length)
 }
 
 export function NewsBrowser() {
@@ -171,6 +184,7 @@ export function NewsBrowser() {
 
   return (
     <div className="newsfeed">
+      <div className="newsfeed__tabwrap">
       <div className="newsfeed__tabs" role="tablist" aria-label={t('news.title')}>
         {sources.map((src) => {
           const isActive = src.id === active.id
@@ -183,6 +197,7 @@ export function NewsBrowser() {
               id={`newsfeed-tab-${src.id}`}
               aria-selected={isActive}
               aria-controls={isActive ? panelId : undefined}
+              aria-label={src.live ? `${src.brand} — ${t('browser.live')}` : undefined}
               tabIndex={isActive ? 0 : -1}
               className={`newsfeed__tab ${isActive ? 'is-active' : ''}`}
               onClick={() => setActiveId(src.id)}
@@ -190,10 +205,10 @@ export function NewsBrowser() {
             >
               <span className="newsfeed__tab-brand">{src.brand}</span>
               {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
-              <span className="newsfeed__tab-lang">{src.lang}</span>
             </button>
           )
         })}
+      </div>
       </div>
 
       <section

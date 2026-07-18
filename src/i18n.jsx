@@ -110,6 +110,7 @@ const STRINGS = {
     'browser.artzakank': 'Écho des Arméniens de Suisse',
     'browser.armenieinfotv': 'armenieinfo.tv',
     'browser.armenpress': 'Armenpress',
+    'browser.live': 'En direct',
     // Rubric names as Armenpress itself labels them in each edition — the
     // source is trilingual, so the fr dictionary only ever renders fr rubrics.
     'apcats.armenia': 'Arménie',
@@ -244,6 +245,7 @@ const STRINGS = {
     'browser.artzakank': 'Echo of Armenians in Switzerland',
     'browser.armenieinfotv': 'armenieinfo.tv',
     'browser.armenpress': 'Armenpress',
+    'browser.live': 'Live',
     'apcats.armenia': 'Armenia',
     'apcats.economy': 'Economy',
     'apcats.world': 'World',
@@ -376,6 +378,7 @@ const STRINGS = {
     'browser.artzakank': 'Շվեյցարիայի հայերի արձագանք',
     'browser.armenieinfotv': 'armenieinfo.tv',
     'browser.armenpress': 'Արմենպրես',
+    'browser.live': 'Ուղիղ եթեր',
     'apcats.armenia': 'Հայաստան',
     'apcats.economy': 'Տնտեսություն',
     'apcats.world': 'Աշխարհ',
@@ -508,6 +511,7 @@ const STRINGS = {
     'browser.artzakank': 'Эхо армян Швейцарии',
     'browser.armenieinfotv': 'armenieinfo.tv',
     'browser.armenpress': 'Арменпресс',
+    'browser.live': 'В прямом эфире',
     'apcats.armenia': 'Армения',
     'apcats.economy': 'Экономика',
     'apcats.world': 'Мир',
