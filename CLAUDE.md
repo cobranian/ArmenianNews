@@ -271,5 +271,15 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   `400 forbidden upstream` et chaque rubrique se backfille en silence — le seul
   signe est un mur ArmRadio ru figé. Redéployer : `cd proxy && npx wrangler
   deploy`.
+- **Les images des cartes ArmRadio passent aussi par le Worker.** Le navigateur
+  reçoit un **503** en hotlinkant les vignettes de `{en,hy,ru}.armradio.am`
+  (protection anti-hotlink Cloudflare) — et wsrv.nl ne peut pas les récupérer non
+  plus (Cloudflare le bloque). Le Worker, lui, les atteint depuis l'intérieur de
+  Cloudflare : `armradio-worker.js` a un **mode image** (`?lang=&img=/wp-content/
+  uploads/…`, allowlisté) et `NewsBrowser.jsx` route les images ArmRadio au rendu
+  via `armradioImg()` (source `armProxy: true`). **Même piège que l'API** : après
+  un changement de `HOST_BY_LANG` ou du mode image, `wrangler deploy` ou les
+  vignettes retombent sur un motif. (Les images Armenpress, elles, hotlinkent
+  directement — pas de 503.)
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
