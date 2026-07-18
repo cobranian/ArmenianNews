@@ -927,30 +927,52 @@ h3:lang(hy) {
   display: flex;
   flex-direction: column;
 }
-/* --- source tabs --- */
-.newsfeed__tabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: clamp(6px, 3vw, 44px);
+/* --- source tabs: a masthead rail ---
+   One horizontal line of source names, centred when they fit and scrolling
+   when they don't — no ragged second row. The rule (bottom hairline) lives on
+   the wrapper so it spans the full width even mid-scroll; the active tab's
+   apricot marker sits on top of it. */
+.newsfeed__tabwrap {
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-bottom: clamp(22px, 3.5vw, 36px);
   border-bottom: 1px solid var(--line-strong);
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.newsfeed__tabwrap::-webkit-scrollbar {
+  height: 3px;
+}
+.newsfeed__tabwrap::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+}
+.newsfeed__tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  min-width: 100%;
+  justify-content: center;
+  gap: clamp(14px, 3vw, 40px);
 }
 .newsfeed__tab {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 8px 15px;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding: 10px 2px 15px;
   margin-bottom: -1px;
   background: none;
   border: 0;
   border-bottom: 2px solid transparent;
   cursor: pointer;
+  white-space: nowrap;
   color: var(--text-faint);
   transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 .newsfeed__tab:hover {
   color: var(--text);
+  border-bottom-color: var(--line-apricot);
 }
 .newsfeed__tab.is-active {
   border-bottom-color: var(--apricot-ink);
@@ -964,19 +986,11 @@ h3:lang(hy) {
 }
 .newsfeed__tab.is-active .newsfeed__tab-brand {
   color: var(--apricot-ink-strong);
-}
-.newsfeed__tab-lang {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  padding: 1px 6px;
+  font-weight: 600;
 }
 .newsfeed__live-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--blood);
   box-shadow: 0 0 0 0 var(--blood);
