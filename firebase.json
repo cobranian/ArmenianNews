@@ -34,7 +34,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://eu1.stream4cast.com https://eu.stream4cast.com https://icecast.worldweb.services https://s8.myradiostream.com:15554 https://radio-mariam-proxy.cobranian.workers.dev https://radio-yeraz-proxy.cobranian.workers.dev https://vovan.s3ming.com; connect-src 'self'; upgrade-insecure-requests"
+            "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://eu1.stream4cast.com https://eu.stream4cast.com https://icecast.worldweb.services https://s8.myradiostream.com:15554 https://radio-mariam-proxy.cobranian.workers.dev https://radio-yeraz-proxy.cobranian.workers.dev https://vovan.s3ming.com; connect-src 'self' https://cloudflareinsights.com; upgrade-insecure-requests"
           }
         ]
       },
