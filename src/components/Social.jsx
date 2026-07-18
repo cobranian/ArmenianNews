@@ -230,7 +230,7 @@ export function Social() {
           img: p.img,
           alt: p.author || fb.page,
           title: p.author || fb.page,
-          sub: 'Facebook',
+          sub: '',
           href: p.url,
           cta: t('fb.view'),
           seed,

@@ -118,20 +118,24 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
           <span className="lb__corner lb__corner--br" aria-hidden="true" />
         </div>
 
-        <button
-          className="lb__close"
-          type="button"
-          onClick={onClose}
-          aria-label={t('lb.close')}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
-
         <div className="lb__meta">
+          {/* On mobile this pins to the caption's right, level with the title
+              (see .lb__close in global.css), so it reads next to "Don Narek"
+              rather than over the picture. On desktop it's a fixed,
+              viewport-anchored button and its place in the DOM is immaterial —
+              its containing block is .lb (backdrop-filter), not this block. */}
+          <button
+            className="lb__close"
+            type="button"
+            onClick={onClose}
+            aria-label={t('lb.close')}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
           <p className="lb__cap">
-            <span className="lb__net">{item.sub}</span>
+            {item.sub && <span className="lb__net">{item.sub}</span>}
             <span className="lb__title">{item.title}</span>
           </p>
           <a className="lb__out" href={item.href} rel="noopener noreferrer">

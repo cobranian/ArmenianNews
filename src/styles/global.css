@@ -2365,6 +2365,11 @@ h3:lang(hy) {
     padding: 8px 0 74px;
     box-sizing: border-box;
   }
+  /* The frame grows to fill every pixel left above the caption, and the picture
+     fills the frame — so the image is shown as large as the screen allows, never
+     boxed smaller than it needs to be. The caption stays pinned at the bottom,
+     which also keeps the close button (anchored to it) at a constant height
+     across images. */
   .lb__frame {
     flex: 1 1 auto;
     min-height: 0;
@@ -2373,12 +2378,16 @@ h3:lang(hy) {
     background: transparent;
   }
   .lb__img {
+    max-width: 100%;
     max-height: 100%;
   }
   .lb__corner {
     display: none;
   }
+  /* Positioning context for the close button, which rides at the caption's
+     right edge (below). */
   .lb__meta {
+    position: relative;
     flex: 0 0 auto;
     flex-direction: column;
     align-items: center;
@@ -2406,13 +2415,16 @@ h3:lang(hy) {
     display: block;
     bottom: 30px;
   }
-  /* Close leaves the top of the image and sits in the flow, right-aligned,
-     just below the picture — not floating over it. Its position tracks the
-     frame's bottom edge whatever the image or caption height. */
+  /* Close rides at the caption's right edge, level with the title — beside
+     "Don Narek", not over the picture. Anchored to .lb__meta, it tracks the
+     caption whatever the image's height, so it lands in the same spot for a
+     tall Don Narek painting and a shorter Instagram square alike. */
   .lb__close {
-    position: static;
-    align-self: flex-end;
-    margin-right: 16px;
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    right: 6px;
+    margin: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
