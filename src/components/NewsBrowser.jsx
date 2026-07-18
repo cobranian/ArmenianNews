@@ -10,15 +10,39 @@ import news from '../data/news.json'
 const wsrv = (url, w = 640) =>
   `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${w}&output=jpg&q=80`
 
+// ArmRadio (en/hy/ru.armradio.am) 503s hotlinked images from the browser —
+// Cloudflare hotlink protection — and wsrv.nl can't fetch them either. The one
+// path that reaches these hosts is the armradio Cloudflare Worker (it already
+// relays their REST API from inside Cloudflare). Route each card image through
+// its ?img= mode; anything not a recognised armradio media URL is left as-is.
+const ARMRADIO_PROXY = 'https://armradio-proxy.cobranian.workers.dev'
+const armradioImg = (url) => {
+  try {
+    const u = new URL(url)
+    const lang = u.host.match(/^(en|hy|ru)\.armradio\.am$/)?.[1]
+    if (!lang || !u.pathname.startsWith('/wp-content/uploads/')) return url
+    return `${ARMRADIO_PROXY}/?lang=${lang}&img=${encodeURIComponent(u.pathname + u.search)}`
+  } catch {
+    return url
+  }
+}
+
 // One article card, sized to sit inside a shelf track (see .card in CSS).
 // A card with no usable image — or one that fails to load — falls back to a
 // deterministic Armenian motif so every card always paints.
-function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
+function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy = false }) {
   const { t } = useI18n()
   const [broken, setBroken] = useState(false)
   const hasPhoto = showImage && !!item.image && !broken
   const seed = hash(item.url || item.title || '')
   const theme = THEMES[seed % THEMES.length]
+  const src = hasPhoto
+    ? armProxy
+      ? armradioImg(item.image)
+      : proxy
+        ? wsrv(item.image)
+        : item.image
+    : undefined
   return (
     <article className="card">
       <a
@@ -31,7 +55,7 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false }) {
             suppress it — with no Referer it serves the image normally. */}
         {hasPhoto ? (
           <img
-            src={proxy ? wsrv(item.image) : item.image}
+            src={src}
             alt=""
             loading="lazy"
             referrerPolicy="no-referrer"
@@ -94,6 +118,7 @@ function buildSources(t, lang) {
     name: t('browser.armradio'),
     live: true,
     images: true,
+    armProxy: true,
     cats: (news.armradio?.[armLang] || [])
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`armcats.${s.categoryKey}`), articles: s.articles })),
@@ -228,6 +253,7 @@ export function NewsBrowser() {
                 catLabel={c.label}
                 showImage={active.images}
                 proxy={active.proxy}
+                armProxy={active.armProxy}
               />
             ))}
           </Carousel>
