@@ -152,7 +152,16 @@ composants importent au build :
       i18n n'aurait aucun sens. Les images anglaises hotlinkent en direct côté
       navigateur (`media.asbarez.com` répond 200 depuis une IP résidentielle — le
       lecteur n'est pas en datacenter ; la CSP autorise déjà tout https).
-  - `armenopole.mjs` — Agenda (Suisse + monde).
+  - `oragark.mjs` — Oragark (Օրակարգ, oragark.com), quotidien de la FRA/ՀՅԴ, en
+    **deux éditions** : anglaise (Featured, News, Armenia, Community) et
+    arménienne occidentale (Առաջին Օրակարգ, Վերջին Լուրեր, sous `/hy/`). Servi
+    sous **en/hy uniquement**. **Plus simple que toutes les autres** : c'est **une
+    seule install WordPress** — les deux éditions ne sont que des *rubriques* sur
+    la **même API REST** (`/wp-json/wp/v2/`, comme `armenews`). Pas de filtre
+    User-Agent, pas de Cloudflare (`Server: IIS`), images présentes dans les deux
+    langues et **hotlinkées en direct** — donc ni proxy, ni RSS, ni scrape
+    d'`og:image` (contrairement à asbarez). Libellés portés dans les données
+    (`{ categoryKey, label, articles }`), chaque édition sous sa seule langue.
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
@@ -258,16 +267,16 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
   `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
   - `fr` → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
-  - `en`/`hy` → Armenpress, ArmRadio, Asbarez
+  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, Oragark
   - `ru` → Armenpress, ArmRadio
 
   Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
   n'apparaissent donc que sous `fr` ; ArmRadio (`en`/`hy`/`ru`, sans édition
   française) est **retiré** sous `fr` au lieu d'y servir des titres anglais sous
-  `<html lang="fr">`. Asbarez a une édition anglaise et une arménienne
-  occidentale (pas de russe), donc il rejoint `en`/`hy` mais pas `ru` — et jamais
-  `fr`. Comme il n'est jamais l'onglet par défaut (Armenpress reste épinglé en
-  tête), il ne change rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
+  `<html lang="fr">`. Asbarez et Oragark ont chacun une édition anglaise et une
+  arménienne occidentale (pas de russe), donc ils rejoignent `en`/`hy` mais pas
+  `ru` — et jamais `fr`. Comme aucun n'est jamais l'onglet par défaut (Armenpress
+  reste épinglé en tête), ils ne changent rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
   d'interface, donc sous `fr` il prérend son édition française — du texte
   français sous `lang="fr"`, ce qu'une requête française doit trouver.
   (Auparavant Courrier menait pour prérendre le plus de texte français ; la règle

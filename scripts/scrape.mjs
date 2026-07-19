@@ -13,6 +13,7 @@ import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
 import { scrapeArmenpress } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
+import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -173,6 +174,21 @@ async function main() {
     asbarez[lang] = backfillSections(asbEditions[lang], prevNews?.asbarez?.[lang], 'categoryKey')
   }
 
+  // Oragark — ARF daily, English + Western Armenian, one WordPress install (both
+  // editions are categories on the same REST API). Shown under en/hy only;
+  // backfilled per edition and per category, like asbarez.
+  console.log('\nOragark — oragark.com (en/hy):')
+  let orEditions = { en: [], hy: [] }
+  try {
+    orEditions = await scrapeOragark(10)
+  } catch (err) {
+    console.error('  oragark failed wholesale:', err.message)
+  }
+  const oragark = {}
+  for (const lang of ['en', 'hy']) {
+    oragark[lang] = backfillSections(orEditions[lang], prevNews?.oragark?.[lang], 'categoryKey')
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -209,6 +225,7 @@ async function main() {
     armenieinfotv,
     armenpress,
     asbarez,
+    oragark,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
