@@ -6,7 +6,7 @@ import { clean, safeUrl } from '../lib/util.mjs'
 //   • English  asbarez.com  → WordPress REST API (like armenews). fetchText's
 //     Chrome UA clears the site's UA filter; Node undici's default UA gets a 403.
 //   • Armenian asbarez.am   → REST is 401-locked, but per-category RSS feeds are
-//     open. RSS carries no images, so Armenian cards fall back to the motif.
+//     open. RSS has no images, so each article's og:image is scraped separately.
 // Each edition only ever renders under its matching UI language (en / hy), so a
 // section's `label` is carried in the data and shown verbatim — it is not routed
 // through i18n's `t()`, whose four language dictionaries could never cross-render
@@ -136,10 +136,36 @@ function parseRss(xml, limit) {
       title,
       url,
       date: d && !Number.isNaN(d.getTime()) ? d.toISOString() : null,
-      image: null, // RSS carries none → deterministic motif in the UI
+      image: null, // filled from the article's og:image below (RSS has none)
     })
   })
   return items
+}
+
+// The .am RSS carries no images, so fetch each article page (through the proxy —
+// same datacenter-IP block as the feeds) and read its og:image. The images live
+// on media.asbarez.am, which hotlinks fine for a residential reader, so the URL
+// is stored direct like the English edition. A failed fetch leaves image null →
+// the card falls back to the motif, so a single dead article never breaks a row.
+// Cost: 5 rubrics × up to 10 articles ≈ 50 extra fetches/snapshot.
+async function fillImage(article) {
+  let path
+  try {
+    const u = new URL(article.url)
+    path = u.pathname + u.search
+  } catch {
+    return
+  }
+  try {
+    const html = await fetchText(asbUrl('hy', path))
+    const $ = cheerio.load(html)
+    const og =
+      $('meta[property="og:image"]').attr('content') ||
+      $('meta[name="twitter:image"]').attr('content')
+    article.image = safeUrl(clean(og)) || null
+  } catch {
+    /* leave image null → motif fallback */
+  }
 }
 
 async function scrapeArmenian(limit) {
@@ -148,8 +174,11 @@ async function scrapeArmenian(limit) {
     try {
       const url = asbUrl('hy', `/archives/category/${encodeURIComponent(slug)}/feed/`)
       const articles = parseRss(await fetchText(url), limit)
+      // Enrich this rubric's articles with images concurrently.
+      await Promise.all(articles.map(fillImage))
+      const withImg = articles.filter((a) => a.image).length
       out.push({ categoryKey: slug, label, articles })
-      console.log(`  ✓ asbarez.am/${slug} (${articles.length})`)
+      console.log(`  ✓ asbarez.am/${slug} (${articles.length}, ${withImg} img)`)
     } catch (err) {
       console.warn(`  ✗ asbarez.am/${slug}: ${err.message}`)
       out.push({ categoryKey: slug, label, articles: [] })

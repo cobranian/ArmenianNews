@@ -140,9 +140,11 @@ composants importent au build :
     - **L'anglais passe par l'API REST WordPress** (`asbarez.com`, comme
       `armenews`), **l'arménien par les flux RSS par rubrique** (`asbarez.am`,
       `/archives/category/<slug>/feed/` — l'API REST y répond **401**). **Le RSS
-      ne porte aucune image** → les cartes arméniennes retombent sur le motif
-      déterministe (choix assumé ; gratter l'`og:image` de chaque article
-      coûtait ~50 fetches/heure).
+      ne porte aucune image**, donc chaque article arménien est re-gratté pour son
+      `og:image` (via le proxy, même blocage IP que les flux ; ~50 fetches/heure).
+      Les images vivent sur `media.asbarez.am` et hotlinkent en direct comme
+      l'édition anglaise. Un article dont la page échoue garde `image: null` et
+      retombe sur le motif — une seule page morte ne casse pas la rangée.
     - **Les libellés de rubrique voyagent dans les données** (`{ categoryKey,
       label, articles }`), pas via `t('…cats.*')` : chaque édition ne s'affiche
       que sous sa langue (les rubriques anglaises sous `en`, arméniennes sous
