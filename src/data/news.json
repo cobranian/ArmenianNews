@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T19:11:37.397Z",
+  "generatedAt": "2026-07-19T20:43:13.685Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -4837,6 +4837,72 @@
             "image": "https://armenpress.am/storage/images/articles/2026/06/05/5M71on7i4oR0r76PH7P28Zc844aYThzxLO8uetDk.webp"
           }
         ]
+      }
+    ]
+  },
+  "asbarez": {
+    "en": [
+      {
+        "categoryKey": "top-stories",
+        "label": "top-stories",
+        "articles": []
+      },
+      {
+        "categoryKey": "community",
+        "label": "community",
+        "articles": []
+      },
+      {
+        "categoryKey": "arts-culture",
+        "label": "arts-culture",
+        "articles": []
+      },
+      {
+        "categoryKey": "op-ed",
+        "label": "op-ed",
+        "articles": []
+      },
+      {
+        "categoryKey": "columns",
+        "label": "columns",
+        "articles": []
+      },
+      {
+        "categoryKey": "videos",
+        "label": "videos",
+        "articles": []
+      },
+      {
+        "categoryKey": "sports",
+        "label": "sports",
+        "articles": []
+      }
+    ],
+    "hy": [
+      {
+        "categoryKey": "hayastan",
+        "label": "Հայաստան",
+        "articles": []
+      },
+      {
+        "categoryKey": "klkhavor-loorer",
+        "label": "Գլխաւոր Լուրեր",
+        "articles": []
+      },
+      {
+        "categoryKey": "kaghoutigyanken",
+        "label": "Գաղութի Կեանքէն",
+        "articles": []
+      },
+      {
+        "categoryKey": "գաղութներ",
+        "label": "Գաղութներ",
+        "articles": []
+      },
+      {
+        "categoryKey": "hotvadzner",
+        "label": "Յօդուածներ",
+        "articles": []
       }
     ]
   }
