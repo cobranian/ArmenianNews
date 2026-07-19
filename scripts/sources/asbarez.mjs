@@ -11,8 +11,24 @@ import { clean, safeUrl } from '../lib/util.mjs'
 // section's `label` is carried in the data and shown verbatim — it is not routed
 // through i18n's `t()`, whose four language dictionaries could never cross-render
 // a single-language category name.
-const COM = 'https://asbarez.com'
-const AM = 'https://asbarez.am'
+const HOST_BY_ED = { en: 'asbarez.com', hy: 'asbarez.am' }
+
+// Both editions 403 datacenter IP ranges (a server-side WAF, not Cloudflare), so
+// a direct fetch works from a residential IP but not from CI — where the feed
+// would silently freeze on backfill. When ASBAREZ_PROXY is set, requests route
+// through a Cloudflare Worker (proxy/asbarez-worker.js) that egresses from a
+// Cloudflare IP the WAF does not block. `path` is an absolute origin path (with
+// its query); the worker allowlists it per edition. Article `link`s stay direct
+// — readers click them from residential IPs.
+const PROXY = (process.env.ASBAREZ_PROXY || '').trim()
+
+function asbUrl(ed, path) {
+  if (!PROXY) return `https://${HOST_BY_ED[ed]}${path}`
+  const u = new URL(PROXY)
+  u.searchParams.set('ed', ed)
+  u.searchParams.set('path', path)
+  return u.toString()
+}
 
 // English rubrics, paired with their WordPress category slug. The label comes
 // from the category's own `name` (fetched alongside its id), so it tracks the
@@ -73,7 +89,7 @@ function parseRest(json) {
 async function categoryMeta(slug) {
   try {
     const cats = JSON.parse(
-      await fetchText(`${COM}/wp-json/wp/v2/categories?slug=${slug}&_fields=id,name`),
+      await fetchText(asbUrl('en', `/wp-json/wp/v2/categories?slug=${slug}&_fields=id,name`)),
     )
     const c = Array.isArray(cats) ? cats[0] : null
     return c?.id ? { id: c.id, name: decodeEntities(c.name) } : null
@@ -92,7 +108,7 @@ async function scrapeEnglish(limit) {
       continue
     }
     try {
-      const url = `${COM}/wp-json/wp/v2/posts?categories=${meta.id}&per_page=${limit}&_embed=1`
+      const url = asbUrl('en', `/wp-json/wp/v2/posts?categories=${meta.id}&per_page=${limit}&_embed=1`)
       const articles = parseRest(await fetchText(url))
       out.push({ categoryKey: slug, label: meta.name, articles })
       console.log(`  ✓ asbarez.com/${slug} (${articles.length})`)
@@ -130,7 +146,7 @@ async function scrapeArmenian(limit) {
   const out = []
   for (const { slug, label } of HY_SECTIONS) {
     try {
-      const url = `${AM}/archives/category/${encodeURIComponent(slug)}/feed/`
+      const url = asbUrl('hy', `/archives/category/${encodeURIComponent(slug)}/feed/`)
       const articles = parseRss(await fetchText(url), limit)
       out.push({ categoryKey: slug, label, articles })
       console.log(`  ✓ asbarez.am/${slug} (${articles.length})`)

@@ -36,6 +36,9 @@ jobs:
           # Always-on Cloudflare Worker proxy for armradio (optional; the
           # scraper falls back to direct/Google News if unset). See proxy/.
           ARMRADIO_PROXY: ${{ vars.ARMRADIO_PROXY }}
+          # Cloudflare Worker proxy for Asbarez — required from CI: both editions
+          # 403 datacenter IPs, so without it the Asbarez feed comes back empty.
+          ASBAREZ_PROXY: ${{ vars.ASBAREZ_PROXY }}
         run: npm run scrape
 
       - name: Commit refreshed data

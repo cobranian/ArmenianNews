@@ -65,3 +65,57 @@ gh workflow run hourly.yml
 ```bash
 ARMRADIO_PROXY="https://armradio-proxy.<your-subdomain>.workers.dev" npm run scrape
 ```
+
+---
+
+# asbarez proxy (Cloudflare Worker)
+
+Asbarez — the LA Armenian daily — has an English edition (`asbarez.com`,
+WordPress REST) and a Western Armenian one (`asbarez.am`, per-category RSS).
+Both work from a residential IP but **403 datacenter ranges** via a server-side
+WAF (there is no Cloudflare here — `Server: Apache`). From GitHub Actions the
+hourly scraper therefore gets nothing, and `buildSources` drops the empty
+source, so the Asbarez tab silently vanishes.
+
+A **Cloudflare Worker** egresses from a Cloudflare IP the WAF does not block
+(verified: all relays return 200). `scripts/sources/asbarez.mjs` routes every
+scrape request through it when `ASBAREZ_PROXY` is set. Unlike armradio there is
+**no direct fallback** — without the proxy the feed cannot be scraped from CI at
+all — so the variable is effectively required.
+
+The worker relays one request at a time, allowlisted per edition:
+
+| Request | Serves |
+| --- | --- |
+| `GET /?ed=en&path=/wp-json/wp/v2/…` | one WordPress REST call on `asbarez.com` (JSON) |
+| `GET /?ed=hy&path=/archives/category/…/feed/` | one category RSS feed on `asbarez.am` (XML) |
+
+`ed` picks between the two fixed hosts (never the caller's string) and `path`
+must resolve to the edition's allowlisted prefix (`/wp-json/wp/v2/` for `en`,
+`/archives/` for `hy`). The worker sends a real Chrome UA — the origin 403s
+non-browser UAs on top of the IP block.
+
+## Deploy
+
+```bash
+cd proxy && npx wrangler deploy -c wrangler-asbarez.toml
+```
+
+Then register the Worker URL as a repository variable (the hourly workflow
+already passes it to the scraper):
+
+```bash
+gh variable set ASBAREZ_PROXY --body "https://asbarez-proxy.<your-subdomain>.workers.dev"
+```
+
+Verify a relay directly (should return JSON):
+
+```bash
+curl "https://asbarez-proxy.<your-subdomain>.workers.dev/?ed=en&path=%2Fwp-json%2Fwp%2Fv2%2Fposts%3Fper_page%3D1"
+```
+
+## Local test
+
+```bash
+ASBAREZ_PROXY="https://asbarez-proxy.<your-subdomain>.workers.dev" npm run scrape
+```

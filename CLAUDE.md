@@ -127,21 +127,29 @@ composants importent au build :
     éditions** : anglaise (`asbarez.com`, 7 rubriques) et arménienne occidentale
     (`asbarez.am`, 5 rubriques). Servi sous **en/hy uniquement** (pas d'édition
     française ni russe) — voir la règle `buildSources` dans « À savoir ».
-    - **L'anglais passe par l'API REST WordPress** (comme `armenews`) : le site
-      filtre par User-Agent (403 à l'UA undici par défaut, 200 à l'UA Chrome de
-      `fetchText`), mais **pas** par IP — pas de Cloudflare (`Server: Apache`),
-      donc la CI depuis un datacenter fonctionne, contrairement à armradio.
-    - **L'arménien passe par les flux RSS par rubrique** (`/archives/category/
-      <slug>/feed/`) : l'API REST d'`asbarez.am` répond **401**, mais les RSS
-      sont ouverts. **Le RSS ne porte aucune image** → les cartes arméniennes
-      retombent sur le motif déterministe. C'est un choix assumé (l'alternative,
-      gratter l'`og:image` de chaque article, coûtait ~50 fetches/heure).
+    - **Les deux éditions bloquent les IP de datacenter** (un WAF côté serveur,
+      **pas** Cloudflare — `Server: Apache`, ce qui trompe : l'absence de
+      `cf-ray` ne veut pas dire « joignable depuis la CI »). Direct depuis une IP
+      résidentielle : OK. Depuis un runner GitHub Actions : **403** sur les deux.
+      Elles passent donc **obligatoirement par un Cloudflare Worker**
+      (`proxy/asbarez-worker.js`, variable `ASBAREZ_PROXY`) qui sort par une IP
+      Cloudflare non bloquée — **aucun repli direct**, contrairement à armradio :
+      sans le proxy, le flux revient vide et l'onglet disparaît. Le Worker envoie
+      un vrai UA Chrome (le site filtre aussi les UA non-navigateur, en plus de
+      l'IP). Redéployer : `cd proxy && npx wrangler deploy -c wrangler-asbarez.toml`.
+    - **L'anglais passe par l'API REST WordPress** (`asbarez.com`, comme
+      `armenews`), **l'arménien par les flux RSS par rubrique** (`asbarez.am`,
+      `/archives/category/<slug>/feed/` — l'API REST y répond **401**). **Le RSS
+      ne porte aucune image** → les cartes arméniennes retombent sur le motif
+      déterministe (choix assumé ; gratter l'`og:image` de chaque article
+      coûtait ~50 fetches/heure).
     - **Les libellés de rubrique voyagent dans les données** (`{ categoryKey,
       label, articles }`), pas via `t('…cats.*')` : chaque édition ne s'affiche
       que sous sa langue (les rubriques anglaises sous `en`, arméniennes sous
       `hy`), donc router un libellé unilingue à travers les quatre dictionnaires
-      i18n n'aurait aucun sens. Les images anglaises hotlinkent en direct
-      (`media.asbarez.com` répond 200, la CSP autorise déjà tout https).
+      i18n n'aurait aucun sens. Les images anglaises hotlinkent en direct côté
+      navigateur (`media.asbarez.com` répond 200 depuis une IP résidentielle — le
+      lecteur n'est pas en datacenter ; la CSP autorise déjà tout https).
   - `armenopole.mjs` — Agenda (Suisse + monde).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle

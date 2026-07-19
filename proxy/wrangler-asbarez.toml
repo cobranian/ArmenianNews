@@ -1,0 +1,8 @@
+# Deploy the Asbarez proxy from the repo:
+#   cd proxy && npx wrangler deploy -c wrangler-asbarez.toml
+# (auth once with `npx wrangler login`). workers_dev = true publishes it at
+# https://asbarez-proxy.<your-subdomain>.workers.dev
+name = "asbarez-proxy"
+main = "asbarez-worker.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
