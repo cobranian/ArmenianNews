@@ -58,10 +58,11 @@ export default [
     rules: js.configs.recommended.rules,
   },
 
-  // theme-init.js runs from a plain <script> tag before the bundle, to set the
-  // saved day/night theme before first paint. Not a module — no import/export.
+  // theme-init.js and ga-init.js run from plain <script> tags (not the bundle):
+  // theme-init sets the saved day/night theme before first paint; ga-init boots
+  // Google Analytics with consent denied by default. Not modules — no import/export.
   {
-    files: ['public/theme-init.js'],
+    files: ['public/theme-init.js', 'public/ga-init.js'],
     ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 2022,
