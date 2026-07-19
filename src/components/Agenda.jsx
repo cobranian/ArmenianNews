@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n.jsx'
+import { worldPlace } from '../worldPlace.js'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
@@ -64,7 +65,7 @@ function EventCard({ ev, locale, place }) {
 }
 
 export function Agenda() {
-  const { t, locale } = useI18n()
+  const { t, locale, lang } = useI18n()
 
   const swiss = agenda.switzerland || []
   const world = agenda.world || []
@@ -99,7 +100,7 @@ export function Agenda() {
                   key={ev.url || i}
                   ev={ev}
                   locale={locale}
-                  place={ev.location || ev.country}
+                  place={worldPlace(ev, lang)}
                 />
               ))}
             </Carousel>

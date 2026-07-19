@@ -147,6 +147,20 @@ francophones) en français, et Courrier reste le premier onglet (comme pour hy).
 Le français est la langue par défaut et doit porter tous ses accents
 (é, è, à, ê, ç…).
 
+**L'exception : le pays des événements « Monde ».** Le badge de pays des cartes
+de l'agenda mondial *est* localisé (en/hy/ru), alors que le reste du contenu
+scrapé ne l'est pas. `src/worldPlace.js` résout le pays à partir du texte libre
+`location` d'armenopole (« Angleterre », « New York ») d'abord, puis du slug
+`country`, et retombe sur le texte français brut si aucun n'est connu — jamais
+un slug nu. **Le français garde le texte scrapé tel quel** (« Le Pays reste en
+Français »). Ce module est **volontairement un `.js` à part, pas dans
+`i18n.jsx`** : y ajouter un export non-composant ferait passer le lint de 6 à 7
+avertissements `react-refresh` (voir la section lint). Ne le reconsolidez pas
+dans `i18n.jsx`. Résoudre depuis `location` avant le slug corrige aussi une
+donnée fausse du scrape (un événement en Angleterre listé sous le slug
+`greece`). La table `PLACE_TO_COUNTRY` ne couvre que les lieux vus dans le flux ;
+un lieu non mappé retombe sur son texte français.
+
 **Styles** — `src/styles/global.css`, un seul fichier. La bascule jour / nuit et
 la palette « abricot sur basalte » y sont définies.
 
