@@ -8,6 +8,7 @@ const BASE = 'https://armenopole.com'
 const WORLD_COUNTRIES = [
   'france', 'usa', 'germany', 'russia', 'lebanon',
   'canada', 'greece', 'italy', 'unitedkingdom', 'belgium',
+  'netherlands',
 ]
 
 function parseEventsPage(html) {
