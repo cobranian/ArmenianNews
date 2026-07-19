@@ -123,6 +123,25 @@ composants importent au build :
     aux IP des datacenters de la CI. Sert **en/hy/ru** — le fil (ticker) reste
     anglais, mais l'onglet ArmRadio du navigateur d'actualités suit la langue
     (ru via `ru.armradio.am`, voir « À savoir »).
+  - `asbarez.mjs` — Asbarez, le quotidien arménien de Los Angeles, en **deux
+    éditions** : anglaise (`asbarez.com`, 7 rubriques) et arménienne occidentale
+    (`asbarez.am`, 5 rubriques). Servi sous **en/hy uniquement** (pas d'édition
+    française ni russe) — voir la règle `buildSources` dans « À savoir ».
+    - **L'anglais passe par l'API REST WordPress** (comme `armenews`) : le site
+      filtre par User-Agent (403 à l'UA undici par défaut, 200 à l'UA Chrome de
+      `fetchText`), mais **pas** par IP — pas de Cloudflare (`Server: Apache`),
+      donc la CI depuis un datacenter fonctionne, contrairement à armradio.
+    - **L'arménien passe par les flux RSS par rubrique** (`/archives/category/
+      <slug>/feed/`) : l'API REST d'`asbarez.am` répond **401**, mais les RSS
+      sont ouverts. **Le RSS ne porte aucune image** → les cartes arméniennes
+      retombent sur le motif déterministe. C'est un choix assumé (l'alternative,
+      gratter l'`og:image` de chaque article, coûtait ~50 fetches/heure).
+    - **Les libellés de rubrique voyagent dans les données** (`{ categoryKey,
+      label, articles }`), pas via `t('…cats.*')` : chaque édition ne s'affiche
+      que sous sa langue (les rubriques anglaises sous `en`, arméniennes sous
+      `hy`), donc router un libellé unilingue à travers les quatre dictionnaires
+      i18n n'aurait aucun sens. Les images anglaises hotlinkent en direct
+      (`media.asbarez.com` répond 200, la CSP autorise déjà tout https).
   - `armenopole.mjs` — Agenda (Suisse + monde).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
@@ -229,12 +248,16 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
   `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
   - `fr` → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
-  - `en`/`hy`/`ru` → Armenpress, ArmRadio
+  - `en`/`hy` → Armenpress, ArmRadio, Asbarez
+  - `ru` → Armenpress, ArmRadio
 
   Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
   n'apparaissent donc que sous `fr` ; ArmRadio (`en`/`hy`/`ru`, sans édition
   française) est **retiré** sous `fr` au lieu d'y servir des titres anglais sous
-  `<html lang="fr">`. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
+  `<html lang="fr">`. Asbarez a une édition anglaise et une arménienne
+  occidentale (pas de russe), donc il rejoint `en`/`hy` mais pas `ru` — et jamais
+  `fr`. Comme il n'est jamais l'onglet par défaut (Armenpress reste épinglé en
+  tête), il ne change rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
   d'interface, donc sous `fr` il prérend son édition française — du texte
   français sous `lang="fr"`, ce qu'une requête française doit trouver.
   (Auparavant Courrier menait pour prérendre le plus de texte français ; la règle

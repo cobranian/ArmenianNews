@@ -84,10 +84,12 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // only shows the sources that actually publish in it, Armenpress pinned first,
 // the rest alphabetical.
 //   fr  → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
-//   en/hy/ru → Armenpress, ArmRadio
+//   en/hy → Armenpress, ArmRadio, Asbarez
+//   ru  → Armenpress, ArmRadio
 // So the French-only sources (Courrier, armenews, artzakank, armenieinfotv)
 // appear ONLY under fr, and ArmRadio — en/hy/ru, no French edition — is dropped
-// under fr instead of borrowing English headlines beneath lang="fr".
+// under fr instead of borrowing English headlines beneath lang="fr". Asbarez has
+// an English and a Western Armenian edition, so it joins en/hy but not ru or fr.
 //
 // SEO note: NewsBrowser renders only the active tab, so sources[0] (now always
 // Armenpress) is the one source the prerender bakes into the HTML for crawlers.
@@ -166,12 +168,30 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`aitcats.${s.categoryKey}`), articles: s.articles })),
   }
+  // Asbarez publishes an English (asbarez.com) and a Western Armenian
+  // (asbarez.am) edition — so, like ArmRadio, its feed is keyed by language and
+  // it appears under en/hy only (no French or Russian edition). Its category
+  // labels ride in the data (single-language by construction), not through t().
+  // English images hotlink directly; Armenian has none and falls back to motifs.
+  const asbarez = {
+    id: 'asbarez',
+    brand: 'Asbarez',
+    name: t('browser.asbarez'),
+    live: false,
+    images: true,
+    cats: (news.asbarez?.[lang] || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
 
   // Sources that publish in this language. Armenpress is in every language;
-  // the French-only sources join it under fr, ArmRadio under en/hy/ru.
+  // the French-only sources join it under fr, ArmRadio under en/hy/ru, and
+  // Asbarez under en/hy (its two editions — no French or Russian one).
   const pool = isFr
     ? [armenpress, courrier, armenews, artzakank, armenieinfotv]
-    : [armenpress, armradio]
+    : lang === 'ru'
+      ? [armenpress, armradio]
+      : [armenpress, armradio, asbarez]
 
   // Armenpress pinned first (the constant across languages); the rest sorted
   // alphabetically by brand with accents folded (é = e, so ArménieInfo.tv sorts

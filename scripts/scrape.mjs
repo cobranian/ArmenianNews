@@ -12,6 +12,7 @@ import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
 import { scrapeArmenpress } from './sources/armenpress.mjs'
+import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -157,6 +158,21 @@ async function main() {
     armenpress[lang] = backfillSections(apLangs[lang], prevNews?.armenpress?.[lang], 'categoryKey')
   }
 
+  // Asbarez — the LA Armenian daily, two editions: English (asbarez.com, REST)
+  // and Western Armenian (asbarez.am, RSS). Shown under en/hy only; backfilled
+  // per edition and per category, like armradio.
+  console.log('\nAsbarez — asbarez.com / asbarez.am:')
+  let asbEditions = { en: [], hy: [] }
+  try {
+    asbEditions = await scrapeAsbarez(10)
+  } catch (err) {
+    console.error('  asbarez failed wholesale:', err.message)
+  }
+  const asbarez = {}
+  for (const lang of ['en', 'hy']) {
+    asbarez[lang] = backfillSections(asbEditions[lang], prevNews?.asbarez?.[lang], 'categoryKey')
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -192,6 +208,7 @@ async function main() {
     artzakank,
     armenieinfotv,
     armenpress,
+    asbarez,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })

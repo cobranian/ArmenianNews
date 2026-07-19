@@ -105,6 +105,7 @@ const STRINGS = {
 
     'browser.subtitle': 'Toutes les rubriques, source par source',
     'browser.armradio': 'Radio publique d’Arménie',
+    'browser.asbarez': 'Asbarez — quotidien arménien de Los Angeles',
     'browser.courrier': 'Courrier d’Erevan',
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Écho des Arméniens de Suisse',
@@ -240,6 +241,7 @@ const STRINGS = {
 
     'browser.subtitle': 'Every rubric, source by source',
     'browser.armradio': 'Public Radio of Armenia',
+    'browser.asbarez': 'Asbarez — Los Angeles Armenian daily',
     'browser.courrier': 'Le Courrier d’Erevan',
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Echo of Armenians in Switzerland',
@@ -373,6 +375,7 @@ const STRINGS = {
 
     'browser.subtitle': 'Բոլոր բաժինները՝ ըստ աղբյուրի',
     'browser.armradio': 'Հայաստանի հանրային ռադիո',
+    'browser.asbarez': 'Ասպարէզ — Լոս Անճելըսի հայ օրաթերթ',
     'browser.courrier': '«Կուրիեր դ’Էրեւան»',
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Շվեյցարիայի հայերի արձագանք',
@@ -506,6 +509,7 @@ const STRINGS = {
 
     'browser.subtitle': 'Все рубрики, источник за источником',
     'browser.armradio': 'Общественное радио Армении',
+    'browser.asbarez': 'Аспарез — армянская ежедневная газета из Лос-Анджелеса',
     'browser.courrier': 'Курьер Еревана',
     'browser.armenews': 'armenews.com',
     'browser.artzakank': 'Эхо армян Швейцарии',
