@@ -14,6 +14,7 @@ import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
 import { scrapeArmenpress } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
+import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -189,6 +190,26 @@ async function main() {
     oragark[lang] = backfillSections(orEditions[lang], prevNews?.oragark?.[lang], 'categoryKey')
   }
 
+  // The California Courier — the Glendale Armenian weekly. Sassounian's Column is
+  // translated into a fresh category per language, so this source serves all four
+  // UI languages (en = main news feed; fr/ru/hy = his column). Backfilled per
+  // language, like armenpress.
+  console.log('\nThe California Courier — thecaliforniacourier.com (fr/en/hy/ru):')
+  let ccLangs = { fr: [], en: [], hy: [], ru: [] }
+  try {
+    ccLangs = await scrapeCaliforniaCourier(10)
+  } catch (err) {
+    console.error('  californiacourier failed wholesale:', err.message)
+  }
+  const californiacourier = {}
+  for (const lang of ['fr', 'en', 'hy', 'ru']) {
+    californiacourier[lang] = backfillSections(
+      ccLangs[lang],
+      prevNews?.californiacourier?.[lang],
+      'categoryKey',
+    )
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -226,6 +247,7 @@ async function main() {
     armenpress,
     asbarez,
     oragark,
+    californiacourier,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })

@@ -83,14 +83,16 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // Build the source groups for the current UI language. The rule: a language
 // only shows the sources that actually publish in it, Armenpress pinned first,
 // the rest alphabetical.
-//   fr  → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
-//   en/hy → Armenpress, ArmRadio, Asbarez, Oragark
-//   ru  → Armenpress, ArmRadio
+//   fr  → Armenpress, ArménieInfo.tv, Artzakank, California Courier, Courrier d'Erevan, Nouvelles d'Arménie
+//   en/hy → Armenpress, ArmRadio, Asbarez, California Courier, Oragark
+//   ru  → Armenpress, ArmRadio, California Courier
 // So the French-only sources (Courrier, armenews, artzakank, armenieinfotv)
 // appear ONLY under fr, and ArmRadio — en/hy/ru, no French edition — is dropped
 // under fr instead of borrowing English headlines beneath lang="fr". Asbarez and
 // Oragark each have an English and a Western Armenian edition, so they join en/hy
-// but not ru or fr.
+// but not ru or fr. The California Courier translates Sassounian's Column into a
+// category per language, so — like Armenpress — it appears in ALL four (en = its
+// English news feed; fr/ru/hy = his column), the only second source fr and ru get.
 //
 // SEO note: NewsBrowser renders only the active tab, so sources[0] (now always
 // Armenpress) is the one source the prerender bakes into the HTML for crawlers.
@@ -197,15 +199,28 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
+  // The California Courier — the only source besides Armenpress in every language.
+  // Sassounian's Column is translated per language (fr/ru/hy); en shows the main
+  // English news feed. One category per language, its label carried in the data.
+  const californiacourier = {
+    id: 'californiacourier',
+    brand: 'California Courier',
+    name: t('browser.californiacourier'),
+    live: false,
+    images: true,
+    cats: (news.californiacourier?.[lang] || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
 
-  // Sources that publish in this language. Armenpress is in every language;
-  // the French-only sources join it under fr, ArmRadio under en/hy/ru, and
-  // Asbarez + Oragark under en/hy (their editions — no French or Russian one).
+  // Sources that publish in this language. Armenpress and the California Courier
+  // are in every language; the French-only sources join them under fr, ArmRadio
+  // under en/hy/ru, and Asbarez + Oragark under en/hy (their editions).
   const pool = isFr
-    ? [armenpress, courrier, armenews, artzakank, armenieinfotv]
+    ? [armenpress, courrier, armenews, artzakank, armenieinfotv, californiacourier]
     : lang === 'ru'
-      ? [armenpress, armradio]
-      : [armenpress, armradio, asbarez, oragark]
+      ? [armenpress, armradio, californiacourier]
+      : [armenpress, armradio, asbarez, oragark, californiacourier]
 
   // Armenpress pinned first (the constant across languages); the rest sorted
   // alphabetically by brand with accents folded (é = e, so ArménieInfo.tv sorts

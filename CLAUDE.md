@@ -162,6 +162,20 @@ composants importent au build :
     langues et **hotlinkées en direct** — donc ni proxy, ni RSS, ni scrape
     d'`og:image` (contrairement à asbarez). Libellés portés dans les données
     (`{ categoryKey, label, articles }`), chaque édition sous sa seule langue.
+  - `californiacourier.mjs` — The California Courier (thecaliforniacourier.com),
+    l'hebdomadaire arménien de Glendale. Une install WordPress REST ouverte (ni
+    filtre UA, ni Cloudflare), comme oragark. **Son atout : la chronique de Harut
+    Sassounian est traduite dans une rubrique fraîche et illustrée par langue** —
+    donc c'est **la seule source, avec Armenpress, à servir les quatre langues**,
+    et le seul deuxième onglet que les éditions fr et ru aient jamais. Mapping
+    (une rubrique par langue) : `en` → `mainpost` (le fil d'actualité anglais,
+    qui contient aussi sa chronique anglaise — la rubrique `sas-column` propre à
+    l'anglais s'est arrêtée en 2021, sans équivalent frais isolable) ; `fr` →
+    `french` ; `ru` → `russian` ; `hy` → `eastern-armenian`. Les libellés sont
+    **fixés à la main** (les noms de rubrique WordPress sont des noms de langue —
+    « French », « Russian » — ou « mainpost », inutilisables comme titres) et
+    portés dans les données. Images hotlinkées en direct.
+  - `armenopole.mjs` — Agenda (Suisse + monde).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
@@ -266,17 +280,21 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   langue n'affiche que les sources qui publient dans cette langue**, Armenpress
   épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
   `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
-  - `fr` → Armenpress, ArménieInfo.tv, Artzakank, Courrier d'Erevan, Nouvelles d'Arménie
-  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, Oragark
-  - `ru` → Armenpress, ArmRadio
+  - `fr` → Armenpress, ArménieInfo.tv, Artzakank, California Courier, Courrier d'Erevan, Nouvelles d'Arménie
+  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, California Courier, Oragark
+  - `ru` → Armenpress, ArmRadio, California Courier
 
   Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
   n'apparaissent donc que sous `fr` ; ArmRadio (`en`/`hy`/`ru`, sans édition
   française) est **retiré** sous `fr` au lieu d'y servir des titres anglais sous
   `<html lang="fr">`. Asbarez et Oragark ont chacun une édition anglaise et une
   arménienne occidentale (pas de russe), donc ils rejoignent `en`/`hy` mais pas
-  `ru` — et jamais `fr`. Comme aucun n'est jamais l'onglet par défaut (Armenpress
-  reste épinglé en tête), ils ne changent rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
+  `ru` — et jamais `fr`. The California Courier traduit la chronique de Sassounian
+  dans une rubrique par langue, donc — comme Armenpress — il paraît dans **les
+  quatre** (`en` = son fil anglais ; `fr`/`ru`/`hy` = sa chronique) : c'est le seul
+  deuxième onglet que `fr` et `ru` reçoivent. Comme aucun de ces ajouts n'est
+  jamais l'onglet par défaut (Armenpress reste épinglé en tête), ils ne changent
+  rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
   d'interface, donc sous `fr` il prérend son édition française — du texte
   français sous `lang="fr"`, ce qu'une requête française doit trouver.
   (Auparavant Courrier menait pour prérendre le plus de texte français ; la règle
