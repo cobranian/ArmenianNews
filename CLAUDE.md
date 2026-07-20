@@ -175,9 +175,12 @@ composants importent au build :
     **fixés à la main** (les noms de rubrique WordPress sont des noms de langue —
     « French », « Russian » — ou « mainpost », inutilisables comme titres) et
     portés dans les données. Images hotlinkées en direct.
-  - `armenopole.mjs` — Agenda (Suisse + monde). Dédoublonne le « monde » par URL
-    (le même événement est recensé sur plusieurs pages pays) et en garde jusqu'à
-    60, pour alimenter le sélecteur de pays de l'agenda (voir « L'exception »
+  - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **tous les pays de la nav
+    d'armenopole** (26, hors Suisse gérée à part), en plafonnant chaque pays à 20
+    événements, puis dédoublonne par URL. **N'utilise pas `greece`/`belgium`** :
+    ce ne sont pas de vraies pages pays (elles renvoient un flux générique
+    identique — Erevan/Angleterre/Chypre mêlés — d'où l'ancien « slug non
+    fiable »). Alimente le sélecteur de pays de l'agenda (voir « L'exception »
     plus bas).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
@@ -212,8 +215,9 @@ résolu depuis le texte `location`**, pas par le slug de la page : le même
 événement est recensé sur plusieurs pages pays (donc `country` est souvent la
 communauté qui organise, pas le lieu), et Agenda **dédoublonne par URL** pour ne
 pas resservir 2-3 copies du même événement. `scripts/sources/armenopole.mjs`
-dédoublonne aussi à la source et garde jusqu'à 60 événements (plus les 10
-d'avant) pour que plusieurs pays survivent au sélecteur.
+scrape **les 26 pays de la nav d'armenopole** (plafonnés à 20 événements chacun)
+et dédoublonne aussi à la source — le menu couvre donc tout ce que le site
+propose, en se purgeant des pays sans événement.
 
 `src/worldPlace.js` porte cette résolution : `worldCountryKey(ev)` donne la clé
 canonique (`location` d'abord — « Erevan » → `armenia`, « Angleterre » →

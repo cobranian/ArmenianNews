@@ -29,6 +29,21 @@ const COUNTRIES = {
   belgium:       { fr: 'Belgique',    en: 'Belgium',        hy: 'Բելգիա',         ru: 'Бельгия',        flag: '🇧🇪' },
   netherlands:   { fr: 'Pays-Bas',    en: 'Netherlands',    hy: 'Նիդեռլանդներ',   ru: 'Нидерланды',     flag: '🇳🇱' },
   cyprus:        { fr: 'Chypre',      en: 'Cyprus',         hy: 'Կիպրոս',         ru: 'Кипр',           flag: '🇨🇾' },
+  argentina:     { fr: 'Argentine',   en: 'Argentina',      hy: 'Արգենտինա',      ru: 'Аргентина',      flag: '🇦🇷' },
+  australia:     { fr: 'Australie',   en: 'Australia',      hy: 'Ավստրալիա',      ru: 'Австралия',      flag: '🇦🇺' },
+  brazil:        { fr: 'Brésil',      en: 'Brazil',         hy: 'Բրազիլիա',       ru: 'Бразилия',       flag: '🇧🇷' },
+  bulgaria:      { fr: 'Bulgarie',    en: 'Bulgaria',       hy: 'Բուլղարիա',      ru: 'Болгария',       flag: '🇧🇬' },
+  egypt:         { fr: 'Égypte',      en: 'Egypt',          hy: 'Եգիպտոս',        ru: 'Египет',         flag: '🇪🇬' },
+  iraq:          { fr: 'Irak',        en: 'Iraq',           hy: 'Իրաք',           ru: 'Ирак',           flag: '🇮🇶' },
+  israel:        { fr: 'Israël',      en: 'Israel',         hy: 'Իսրայել',        ru: 'Израиль',        flag: '🇮🇱' },
+  jordan:        { fr: 'Jordanie',    en: 'Jordan',         hy: 'Հորդանան',       ru: 'Иордания',       flag: '🇯🇴' },
+  poland:        { fr: 'Pologne',     en: 'Poland',         hy: 'Լեհաստան',       ru: 'Польша',         flag: '🇵🇱' },
+  qatar:         { fr: 'Qatar',       en: 'Qatar',          hy: 'Կատար',          ru: 'Катар',          flag: '🇶🇦' },
+  singapore:     { fr: 'Singapour',   en: 'Singapore',      hy: 'Սինգապուր',      ru: 'Сингапур',       flag: '🇸🇬' },
+  syria:         { fr: 'Syrie',       en: 'Syria',          hy: 'Սիրիա',          ru: 'Сирия',          flag: '🇸🇾' },
+  turkey:        { fr: 'Turquie',     en: 'Turkey',         hy: 'Թուրքիա',        ru: 'Турция',         flag: '🇹🇷' },
+  uae:           { fr: 'Émirats arabes unis', en: 'United Arab Emirates', hy: 'ԱՄԷ', ru: 'ОАЭ',        flag: '🇦🇪' },
+  uruguay:       { fr: 'Uruguay',     en: 'Uruguay',        hy: 'Ուրուգվայ',      ru: 'Уругвай',        flag: '🇺🇾' },
 }
 
 // Free-text `location` values (accent-folded, lowercased) → canonical country
@@ -51,6 +66,10 @@ const PLACE_TO_COUNTRY = {
   france: 'france', allemagne: 'germany', russie: 'russia', liban: 'lebanon',
   canada: 'canada', grece: 'greece', italie: 'italy', belgique: 'belgium',
   'pays-bas': 'netherlands', gueldre: 'netherlands', chypre: 'cyprus', cyprus: 'cyprus',
+  argentine: 'argentina', australie: 'australia', bresil: 'brazil', bulgarie: 'bulgaria',
+  egypte: 'egypt', irak: 'iraq', israel: 'israel', jordanie: 'jordan', pologne: 'poland',
+  qatar: 'qatar', singapour: 'singapore', syrie: 'syria', turquie: 'turkey',
+  uruguay: 'uruguay', 'emirats arabes unis': 'uae',
 }
 
 const fold = (s) =>

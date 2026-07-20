@@ -4,11 +4,20 @@ import { absUrl, clean, isoFromMonthDay } from '../lib/util.mjs'
 
 const BASE = 'https://armenopole.com'
 
-// Countries used to build the "Monde" (world) feed — high-diaspora picks.
+// Every country armenopole exposes in its own events nav (Switzerland is
+// scraped separately, above). This is the site's real list — earlier we also
+// hit `greece` and `belgium`, but those slugs aren't real country pages: they
+// return an identical generic feed (Erevan/Angleterre/Chypre mixed), which is
+// exactly what made the page slug unreliable. The UI groups by the country
+// resolved from each event's location and only shows countries that actually
+// have upcoming events, so listing them all here is safe — empty ones just
+// don't appear in the selector.
 const WORLD_COUNTRIES = [
-  'france', 'usa', 'germany', 'russia', 'lebanon',
-  'canada', 'greece', 'italy', 'unitedkingdom', 'belgium',
-  'netherlands',
+  'argentina', 'armenia', 'australia', 'brazil', 'bulgaria',
+  'canada', 'cyprus', 'egypt', 'france', 'germany',
+  'iraq', 'israel', 'italy', 'jordan', 'lebanon',
+  'netherlands', 'poland', 'qatar', 'russia', 'singapore',
+  'syria', 'turkey', 'uae', 'unitedkingdom', 'uruguay', 'usa',
 ]
 
 function parseEventsPage(html) {
@@ -75,24 +84,27 @@ export async function scrapeAgenda() {
     .sort(byDate)
   console.log(`  ✓ armenopole/switzerland (${switzerland.length})`)
 
-  // The same event is cross-listed on several country pages, so dedupe by URL
-  // as we go (keep the first hit) — otherwise "world" carries 2-3 copies of
-  // every popular event. The UI groups the result by the country resolved from
-  // each event's location (worldPlace.js), so the raw page slug needn't be
-  // unique. Keep a generous cap (not 10) so several countries survive for the
-  // selector while the payload stays bounded.
+  // Scrape every country, cap each one so no single country floods the payload,
+  // then dedupe by URL across countries (the same event is cross-listed on
+  // several pages). The UI groups by the country resolved from each event's
+  // location (worldPlace.js), so the raw page slug needn't be unique.
   const seen = new Set()
-  const worldAll = []
+  const world = []
+  let withEvents = 0
   for (const c of WORLD_COUNTRIES) {
-    for (const e of await scrapeCountry(c)) {
+    const list = (await scrapeCountry(c)).filter(upcoming).sort(byDate).slice(0, 20)
+    if (list.length) withEvents++
+    for (const e of list) {
       const id = e.url || `${e.title}|${e.date}`
       if (seen.has(id)) continue
       seen.add(id)
-      worldAll.push(e)
+      world.push(e)
     }
   }
-  const world = worldAll.filter(upcoming).sort(byDate).slice(0, 60)
-  console.log(`  ✓ armenopole/world (${world.length} deduped from ${WORLD_COUNTRIES.length} countries)`)
+  world.sort(byDate)
+  console.log(
+    `  ✓ armenopole/world (${world.length} events, ${withEvents}/${WORLD_COUNTRIES.length} countries with upcoming)`,
+  )
 
   return { switzerland, world }
 }
