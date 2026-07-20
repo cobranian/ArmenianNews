@@ -277,10 +277,14 @@ npx wrangler deploy     # prints https://armradio-proxy.<subdomain>.workers.dev
 `.github/workflows/hourly.yml` runs **every hour** on the hour (UTC), plus on
 manual dispatch and on push to `main`:
 
-- **Schedule / manual run** → scrape + commit the refreshed data + build + deploy
-  (exactly one snapshot per hour).
-- **Push to `main`** → build + deploy only (no snapshot), so code changes go live
-  without creating an extra snapshot.
+- **Schedule / manual run / push to `main`** → **all** scrape + commit the
+  refreshed data + build + deploy. A push now takes a fresh snapshot too, so a
+  code change ships with current data instead of redeploying the previous hour's.
+- **No infinite loop** — the "Commit refreshed data" step pushes the snapshot
+  with the default `GITHUB_TOKEN`, and GitHub intentionally does **not** start a
+  new workflow run from a `GITHUB_TOKEN` push, so the snapshot commit can't
+  re-trigger the workflow. (Don't swap in a PAT for that push, or you'd create
+  the loop.)
 
 The site deploys to **Firebase Hosting** (project `armenie-info`,
 https://armenie-info.web.app). The Firebase service-account JSON is stored in the

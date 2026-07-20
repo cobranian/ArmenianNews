@@ -241,10 +241,15 @@ la palette « abricot sur basalte » y sont définies.
 `.github/workflows/hourly.yml` s'exécute **toutes les heures** (UTC), plus sur
 dispatch manuel et sur push vers `main` :
 
-- **Planifié / manuel** → scrape + commit des données + build + déploiement (un
-  snapshot par heure).
-- **Push vers `main`** → build + déploiement seulement (pas de snapshot), pour
-  que les changements de code partent en prod sans créer de snapshot en trop.
+- **Planifié / manuel / push vers `main`** → **tous** scrape + commit des données
+  + build + déploiement. Un push prend donc lui aussi un snapshot frais, pour
+  qu'un changement de code parte en prod avec des données à jour plutôt que de
+  redéployer celles de l'heure précédente.
+- **Pas de boucle infinie** : l'étape « Commit refreshed data » pousse le
+  snapshot avec le `GITHUB_TOKEN` par défaut, et GitHub **ne déclenche
+  volontairement aucun run** à partir d'un push fait avec `GITHUB_TOKEN` — le
+  commit de snapshot ne peut donc pas re-déclencher le workflow. (N'introduisez
+  pas de PAT pour ce push, sous peine de créer la boucle.)
 
 Le site est déployé sur **Firebase Hosting** (projet `armenie-info`). Vite `base`
 vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-chemin.
