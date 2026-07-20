@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T17:59:32.139Z",
+  "generatedAt": "2026-07-20T19:52:13.732Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -993,7 +993,7 @@
             "url": "https://hy.armradio.am/archives/747738",
             "date": "2026-07-20T13:45:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/%D4%B1%D5%84%D5%86-%D5%AF%D5%B8%D5%B6%D5%A3%D6%80%D5%A5%D5%BD-1024x597-1-768x448.jpeg",
-            "category": "Կարևոր"
+            "category": "Ռեպորտաժներ"
           },
           {
             "title": "Ադրբեջանի ճնշման տակ Իսրայելը Քնեսեթի օրակարգից հանել է Հայոց ցեղասպանության ճանաչման հարցը",
@@ -1049,6 +1049,13 @@
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Ավելի քան 3000 ուխտավոր՝ Սուրբ Թադեի վանքում",
+            "url": "https://hy.armradio.am/archives/747813",
+            "date": "2026-07-20T18:20:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/753652150_1404858304879181_6536351371266478582_n-768x576.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Երկխոսություն վիրահատարանի հետ. Երևանում տեղի է ունեցել «BeEndo 2026» միջազգային բժշկական համաժողովը",
             "url": "https://hy.armradio.am/archives/747757",
@@ -1111,13 +1118,6 @@
             "date": "2026-07-20T11:16:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2025/10/qnnchakan-komite-2-300x197.jpeg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "ՄԻ պաշտպանը Սյունիքի մարզում է",
-            "url": "https://hy.armradio.am/archives/747679",
-            "date": "2026-07-20T11:04:47.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/751563480_1361930159459246_1542163336788260763_n-768x512.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -1275,6 +1275,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Առանց ամբիոնի և թղթերի. Բրիտանիայի նոր վարչապետը Դաունինգ սթրիթում ելույթ է ունեցել",
+            "url": "https://hy.armradio.am/archives/747816",
+            "date": "2026-07-20T19:05:45.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3666-768x567.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ուկրաինայում առնվազն տասը մարդ Է զոհվել ռուսների գրոհներից",
             "url": "https://hy.armradio.am/archives/747791",
             "date": "2026-07-20T16:14:33.000Z",
@@ -1335,13 +1342,6 @@
             "url": "https://hy.armradio.am/archives/747566",
             "date": "2026-07-19T14:19:15.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/QIP-Shot-Screen-3660-300x173.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Գիշերային խոշոր հարձակում Կիևի վրա. Ռուսաստանը շուրջ 40 բալիստիկ հրթիռ է արձակել Ուկրաինայի մայրաքաղաքի ուղղությամբ",
-            "url": "https://hy.armradio.am/archives/747551",
-            "date": "2026-07-19T11:31:39.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/b7d564c929beaa886fad2ed2a03faca3-768x429.webp",
             "category": "Կարևոր"
           }
         ]
@@ -4847,6 +4847,30 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "ANCA Endorses Rep. Mike Lawler for Re-Election to Congress",
+            "url": "https://asbarez.com/anca-endorses-rep-mike-lawler-for-re-election-to-congress/",
+            "date": "2026-07-20T19:17:01.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/20120736/041526_Lawler_podium-300x225.jpg"
+          },
+          {
+            "title": "UN Experts Question Credibility of Charges Against Arch. Galstanyan",
+            "url": "https://asbarez.com/un-experts-question-credibility-of-charges-against-arch-galstanyan/",
+            "date": "2026-07-20T18:49:53.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/20114904/Screen-Shot-2025-06-25-at-8.40.12-AM-576x375-1-300x195.png"
+          },
+          {
+            "title": "ANCA Next Gen Hosts First Summer Social, Drawing Record Turnout in San Francisco",
+            "url": "https://asbarez.com/anca-next-gen-hosts-first-summer-social-drawing-record-turnout-in-san-francisco/",
+            "date": "2026-07-20T18:25:54.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/20103643/next-gen7-300x225.png"
+          },
+          {
+            "title": "Baku Pressured Netanyahu to Withdraw Armenian Genocide Bill from Knesset, Haaretz Reports",
+            "url": "https://asbarez.com/baku-pressured-netanyahu-to-withdraw-armenian-genocide-bill-from-knesset-haaretz-reports/",
+            "date": "2026-07-20T18:15:42.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/13143305/Knesset1-300x169.jpg"
+          },
+          {
             "title": "Shirvanian Youth Center Celebrates 10 Years of Service with Amaras Camp Opening and Marguerite Youredjian Hall Dedication",
             "url": "https://asbarez.com/shirvanian-youth-center-celebrates-10-years-of-service-with-amaras-camp-opening-and-marguerite-youredjian-hall-dedication/",
             "date": "2026-07-20T17:27:21.000Z",
@@ -4881,30 +4905,6 @@
             "url": "https://asbarez.com/statue-of-garo-sassouni-revolutionary-leader-unveiled-in-gyumri/",
             "date": "2026-07-17T19:07:09.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/17120452/GaroSassounistature-300x183.jpg"
-          },
-          {
-            "title": "U.S. Company Linked to New TRIPP+ Fund Chair Buys Teghut Mine Giant",
-            "url": "https://asbarez.com/u-s-company-linked-to-new-tripp-fund-chair-buys-teghut-mine-giant/",
-            "date": "2026-07-17T18:42:18.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/17114031/teghutmine-300x175.jpeg"
-          },
-          {
-            "title": "DC’s Armenian Youth Center Launches Successful Inaugural Casino Royale Fundraiser",
-            "url": "https://asbarez.com/armenian-youth-center-launches-successful-inaugural-casino-royale-fundraiser/",
-            "date": "2026-07-17T17:04:41.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/17095913/ayc-golfe-for-kids3-300x225.jpg"
-          },
-          {
-            "title": "‘From Folk Melody to Award-Winning Composition’: Composer Anna Grigorian Wins State Prize",
-            "url": "https://asbarez.com/from-folk-melody-to-award-winning-composition-composer-anna-grigorian-wins-state-prize/",
-            "date": "2026-07-17T16:17:24.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/16122409/anna-grigorian-300x279.jpg"
-          },
-          {
-            "title": "Azerbaijan’s Exports to Armenia Exceed $17 Million in First Half of 2026",
-            "url": "https://asbarez.com/azerbaijans-exports-to-armenia-exceed-17-million-in-first-half-of-2026/",
-            "date": "2026-07-15T20:52:15.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/15135118/oilshipment1-576x375-1-300x195.jpeg"
           }
         ]
       },
@@ -4912,6 +4912,12 @@
         "categoryKey": "community",
         "label": "Community",
         "articles": [
+          {
+            "title": "ANCA Next Gen Hosts First Summer Social, Drawing Record Turnout in San Francisco",
+            "url": "https://asbarez.com/anca-next-gen-hosts-first-summer-social-drawing-record-turnout-in-san-francisco/",
+            "date": "2026-07-20T18:25:54.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/20103643/next-gen7-300x225.png"
+          },
           {
             "title": "DC’s Armenian Youth Center Launches Successful Inaugural Casino Royale Fundraiser",
             "url": "https://asbarez.com/armenian-youth-center-launches-successful-inaugural-casino-royale-fundraiser/",
@@ -4965,12 +4971,6 @@
             "url": "https://asbarez.com/ayf-statement-on-1000th-day-of-illegal-detention-of-armenian-hostages/",
             "date": "2026-06-29T18:47:37.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/06/29113845/POWs1-1-300x202.jpeg"
-          },
-          {
-            "title": "15th Annual Glendale Health Festival to Offer Free Medical, Vision, and Dental Services",
-            "url": "https://asbarez.com/15th-annual-glendale-health-festival-to-offer-free-medical-vision-and-dental-services/",
-            "date": "2026-06-29T18:18:00.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/06/29111651/11.14.26-GHF-15th-GHF-walk-in-only-as-of-06.15.26-300x202.jpg"
           }
         ]
       },
@@ -5311,6 +5311,30 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Հայ Ըմբիշները Պատուաբեր Արդիւնքներ Ձեռք Ձգեցին Եւրոպայի Ախոյեանութեան",
+            "url": "https://asbarez.am/archives/505974",
+            "date": "2026-07-20T18:43:57.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20114029/0720armenia-wrestling1.jpg"
+          },
+          {
+            "title": "«Արարատ Արմէնիա»ն Հասաւ «Չեմփիընզ Լիկ»ի Զտումի Բ. Հանգրուան",
+            "url": "https://asbarez.am/archives/505968",
+            "date": "2026-07-20T18:37:40.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20113640/0720ararat-armenia.jpg"
+          },
+          {
+            "title": "«Շիրվանեան» Երիտասարդական Կեդրոնը Տօնեց Իր Տասնամեակը՝ «Ամարաս» Ճամբարի Բացումով եւ «Մարկրիթ Եուրէճեան» Սրահի Անուանակոչումով",
+            "url": "https://asbarez.am/archives/505946",
+            "date": "2026-07-20T18:19:01.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20110747/Looys_studio-4667.jpeg"
+          },
+          {
+            "title": "Քնեսեթը Հայոց Ցեղասպանութեան Ճանաչման Հարցը Չէ Քննած Պաքուի Ճնշումին Պատճառով․ «Հաարեց»",
+            "url": "https://asbarez.am/archives/505943",
+            "date": "2026-07-20T18:05:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20112606/Knesset1.jpg"
+          },
+          {
             "title": "Բանտարկեալ Արեգնազ Մանուկեանին Չեն Արտօնած Կապ Հաստատել 13ամեայ Դստեր Հետ",
             "url": "https://asbarez.am/archives/505932",
             "date": "2026-07-17T22:48:06.000Z",
@@ -5345,30 +5369,6 @@
             "url": "https://asbarez.am/archives/505888",
             "date": "2026-07-17T21:26:26.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17142603/0717Ekserjian.png"
-          },
-          {
-            "title": "Քոնկրեսին Ներկայացուած Բանաձեւը Կրնայ Մինչեւ Յաւելեալ 100 Տոկոսի Տուրք Սահմանել Պաքուի Դէմ",
-            "url": "https://asbarez.am/archives/505884",
-            "date": "2026-07-17T21:24:50.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17142054/0717azr.jpg"
-          },
-          {
-            "title": "«Սփիւռքը Չի Լռելու». Մոսկուայում Բողոքի Ձայն Են Բարձրացրել Ի Պաշտպանութիւն Հայաստանի Քաղբանտարկեալների",
-            "url": "https://asbarez.am/archives/505902",
-            "date": "2026-07-17T19:50:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17144853/0717Moscow1.jpg"
-          },
-          {
-            "title": "Միջազգային Ողիմպիական Կոմիտէն Կը Փորձէ Պաշտպանել Ծառուկեանը",
-            "url": "https://asbarez.am/archives/505851",
-            "date": "2026-07-16T22:41:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/16143709/0717Kakig2.jpg"
-          },
-          {
-            "title": "Եւրոպական Միութեան Քաղաքացիական Առաքելութեան Դերին Եւ Աջակցութեան Վերաբերող Քննարկում",
-            "url": "https://asbarez.am/archives/505857",
-            "date": "2026-07-16T22:40:22.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/16144028/0717Armen.jpeg"
           }
         ]
       },
@@ -5376,6 +5376,54 @@
         "categoryKey": "klkhavor-loorer",
         "label": "Գլխաւոր Լուրեր",
         "articles": [
+          {
+            "title": "Մանկապարտէզի Աւարտականը",
+            "url": "https://asbarez.am/archives/505994",
+            "date": "2026-07-20T19:16:36.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20121311/0000Kandilian-Verentsiugh1.jpg"
+          },
+          {
+            "title": "Հայ Դատի Next Gen-ի Սան Ֆրանսիսքոյի Ամառնային Ընկերային Հաւաքը Յաջողութեամբ Պսակուեցաւ",
+            "url": "https://asbarez.am/archives/505987",
+            "date": "2026-07-20T18:59:29.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20115648/0720ANC-NG1.png"
+          },
+          {
+            "title": "Առաջնորդ Գեղամ Արք. Խաչերեան «Ազդակ» Այցելեց",
+            "url": "https://asbarez.am/archives/505982",
+            "date": "2026-07-20T18:49:15.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20114845/0720prlt.jpg"
+          },
+          {
+            "title": "Հայ Ըմբիշները Պատուաբեր Արդիւնքներ Ձեռք Ձգեցին Եւրոպայի Ախոյեանութեան",
+            "url": "https://asbarez.am/archives/505974",
+            "date": "2026-07-20T18:43:57.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20114029/0720armenia-wrestling1.jpg"
+          },
+          {
+            "title": "Ռեքս Քալամեան «Շիքակօ Պուլզ»ի Օգնական Մարզիչ Կը Դառնայ",
+            "url": "https://asbarez.am/archives/505971",
+            "date": "2026-07-20T18:39:37.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20113821/0720Kalamian.jpg"
+          },
+          {
+            "title": "«Արարատ Արմէնիա»ն Հասաւ «Չեմփիընզ Լիկ»ի Զտումի Բ. Հանգրուան",
+            "url": "https://asbarez.am/archives/505968",
+            "date": "2026-07-20T18:37:40.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20113640/0720ararat-armenia.jpg"
+          },
+          {
+            "title": "«Շիրվանեան» Երիտասարդական Կեդրոնը Տօնեց Իր Տասնամեակը՝ «Ամարաս» Ճամբարի Բացումով եւ «Մարկրիթ Եուրէճեան» Սրահի Անուանակոչումով",
+            "url": "https://asbarez.am/archives/505946",
+            "date": "2026-07-20T18:19:01.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20110747/Looys_studio-4667.jpeg"
+          },
+          {
+            "title": "Քնեսեթը Հայոց Ցեղասպանութեան Ճանաչման Հարցը Չէ Քննած Պաքուի Ճնշումին Պատճառով․ «Հաարեց»",
+            "url": "https://asbarez.am/archives/505943",
+            "date": "2026-07-20T18:05:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20112606/Knesset1.jpg"
+          },
           {
             "title": "Ֆրանսիս Քիւրքճեան Արժանացած Է Ֆրանսայի «Պատուոյ Լեգէոնի Ասպետ»ի Շքանշանին",
             "url": "https://asbarez.am/archives/505891",
@@ -5387,54 +5435,6 @@
             "url": "https://asbarez.am/archives/505932",
             "date": "2026-07-17T22:48:06.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17154746/0718Areknaz.jpg"
-          },
-          {
-            "title": "TRIPP+ի Նորանշանակ Ղեկավարը Տէր Կը Դառնայ Թեղուտի Հանքավայրին",
-            "url": "https://asbarez.am/archives/505926",
-            "date": "2026-07-17T22:46:33.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17154602/0718Teghoud-1.jpg"
-          },
-          {
-            "title": "«Հայաստան» Դաշինքը Ազգային Ժողովի Աթոռները Պիտի Ստանձնէ, Բացի՝ Ռոպերթ Քոչարեանէն",
-            "url": "https://asbarez.am/archives/505923",
-            "date": "2026-07-17T22:19:26.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17151851/0718Hayasdan.jpg"
-          },
-          {
-            "title": "Թուրքիոյ Մաքսային Համակարգին Մէջ Ներդրուած Է Հայաստանի Պաշտօնական Գաղտնաթիւը",
-            "url": "https://asbarez.am/archives/505920",
-            "date": "2026-07-17T22:17:40.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17151636/0718TR.jpg"
-          },
-          {
-            "title": "Կարօ Սասունիի Արձանի Բացում Գիւմրիի Մէջ",
-            "url": "https://asbarez.am/archives/505909",
-            "date": "2026-07-17T22:06:23.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17150248/0718Sasouni.png"
-          },
-          {
-            "title": "Մոսկուա Դարձեալ Յառաջ Կը Մղէ Երեւանի Կամ Պաքուի Մէջ «3+3» Ձեւաչափով Հանդիպման Գաղափարը",
-            "url": "https://asbarez.am/archives/505907",
-            "date": "2026-07-17T22:00:53.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17150757/Untitled-1.jpg"
-          },
-          {
-            "title": "«Իսրայէլ Վճռակամ Է Սուրիոյ, Կազայի Եւ Լիբանանի Ապահովական Շրջաններուն Մէջ Մնալու»",
-            "url": "https://asbarez.am/archives/505898",
-            "date": "2026-07-17T21:44:42.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17144422/0717leb.jpg"
-          },
-          {
-            "title": "«Ներկայիս Միացեալ Նահանգներու Հետ Բանակցելու Որեւէ Ծրագիր Գոյութիւն Չունի». Թեհրան",
-            "url": "https://asbarez.am/archives/505895",
-            "date": "2026-07-17T21:40:57.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17143908/0717Iran.jpg"
-          },
-          {
-            "title": "Բրիտանական Արքայական Ընտանիքին Հետ Հայկական Կապ Մը",
-            "url": "https://asbarez.am/archives/505888",
-            "date": "2026-07-17T21:26:26.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/17142603/0717Ekserjian.png"
           }
         ]
       },
@@ -5442,6 +5442,36 @@
         "categoryKey": "kaghoutigyanken",
         "label": "Գաղութի Կեանքէն",
         "articles": [
+          {
+            "title": "Մանկապարտէզի Աւարտականը",
+            "url": "https://asbarez.am/archives/505994",
+            "date": "2026-07-20T19:16:36.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20121311/0000Kandilian-Verentsiugh1.jpg"
+          },
+          {
+            "title": "Հայ Դատի Next Gen-ի Սան Ֆրանսիսքոյի Ամառնային Ընկերային Հաւաքը Յաջողութեամբ Պսակուեցաւ",
+            "url": "https://asbarez.am/archives/505987",
+            "date": "2026-07-20T18:59:29.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20115648/0720ANC-NG1.png"
+          },
+          {
+            "title": "Առաջնորդ Գեղամ Արք. Խաչերեան «Ազդակ» Այցելեց",
+            "url": "https://asbarez.am/archives/505982",
+            "date": "2026-07-20T18:49:15.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20114845/0720prlt.jpg"
+          },
+          {
+            "title": "«Շիրվանեան» Երիտասարդական Կեդրոնը Տօնեց Իր Տասնամեակը՝ «Ամարաս» Ճամբարի Բացումով եւ «Մարկրիթ Եուրէճեան» Սրահի Անուանակոչումով",
+            "url": "https://asbarez.am/archives/505946",
+            "date": "2026-07-20T18:19:01.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20110747/Looys_studio-4667.jpeg"
+          },
+          {
+            "title": "Քնեսեթը Հայոց Ցեղասպանութեան Ճանաչման Հարցը Չէ Քննած Պաքուի Ճնշումին Պատճառով․ «Հաարեց»",
+            "url": "https://asbarez.am/archives/505943",
+            "date": "2026-07-20T18:05:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20112606/Knesset1.jpg"
+          },
           {
             "title": "Քոնկրեսին Ներկայացուած Բանաձեւը Կրնայ Մինչեւ Յաւելեալ 100 Տոկոսի Տուրք Սահմանել Պաքուի Դէմ",
             "url": "https://asbarez.am/archives/505884",
@@ -5471,36 +5501,6 @@
             "url": "https://asbarez.am/archives/505836",
             "date": "2026-07-16T20:27:14.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/16132521/0711AH-2.jpeg"
-          },
-          {
-            "title": "Թրամփի Պարասրահի Նուիրատուն Պիտի Ղեկավարէ 200 Միլիոն Տոլարնոց TRIPP+ Հիմնադրամը",
-            "url": "https://asbarez.am/archives/505795",
-            "date": "2026-07-15T20:05:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/15114630/0715Sokolov.jpg"
-          },
-          {
-            "title": "Արամ Ա. Վեհափառը Ընդունեց ՀՄԸՄ Անթիլիասի Աղջկանց Պասքեթպոլի Ախոյեան Խումբը",
-            "url": "https://asbarez.am/archives/505786",
-            "date": "2026-07-15T18:33:12.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/15113213/0715HMEM.jpg"
-          },
-          {
-            "title": "Այս Տարուան Առաջին 6 Ամիսներուն Ատրպէյճան Դէպի Հայաստան Արտածած Է 17 միլիոն Տոլարի Արտադրութիւն",
-            "url": "https://asbarez.am/archives/505811",
-            "date": "2026-07-15T18:21:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/15121950/0716AZ-A.jpg"
-          },
-          {
-            "title": "Գիւմրիի «Շիրվանեան» Կեդրոնը Կը Տօնէ Հայաստանի Երիտասարդութեան Կեանքերը Վերափոխող Իր Գործունէութեան Տասնամեակը",
-            "url": "https://asbarez.am/archives/505665",
-            "date": "2026-07-13T19:05:31.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/13120645/0713Amaras-Camp2.png"
-          },
-          {
-            "title": "Լիբանան Ստանձնեց Հայաստանի Տրամադրած Մարդասիրական Օգնութիւնը",
-            "url": "https://asbarez.am/archives/505595",
-            "date": "2026-07-10T19:28:37.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/10122738/0710aid.jpg"
           }
         ]
       },
@@ -5508,6 +5508,30 @@
         "categoryKey": "գաղութներ",
         "label": "Գաղութներ",
         "articles": [
+          {
+            "title": "Մանկապարտէզի Աւարտականը",
+            "url": "https://asbarez.am/archives/505994",
+            "date": "2026-07-20T19:16:36.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20121311/0000Kandilian-Verentsiugh1.jpg"
+          },
+          {
+            "title": "Ռեքս Քալամեան «Շիքակօ Պուլզ»ի Օգնական Մարզիչ Կը Դառնայ",
+            "url": "https://asbarez.am/archives/505971",
+            "date": "2026-07-20T18:39:37.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20113821/0720Kalamian.jpg"
+          },
+          {
+            "title": "«Շիրվանեան» Երիտասարդական Կեդրոնը Տօնեց Իր Տասնամեակը՝ «Ամարաս» Ճամբարի Բացումով եւ «Մարկրիթ Եուրէճեան» Սրահի Անուանակոչումով",
+            "url": "https://asbarez.am/archives/505946",
+            "date": "2026-07-20T18:19:01.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20110747/Looys_studio-4667.jpeg"
+          },
+          {
+            "title": "Քնեսեթը Հայոց Ցեղասպանութեան Ճանաչման Հարցը Չէ Քննած Պաքուի Ճնշումին Պատճառով․ «Հաարեց»",
+            "url": "https://asbarez.am/archives/505943",
+            "date": "2026-07-20T18:05:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20112606/Knesset1.jpg"
+          },
           {
             "title": "Ֆրանսիս Քիւրքճեան Արժանացած Է Ֆրանսայի «Պատուոյ Լեգէոնի Ասպետ»ի Շքանշանին",
             "url": "https://asbarez.am/archives/505891",
@@ -5543,30 +5567,6 @@
             "url": "https://asbarez.am/archives/505735",
             "date": "2026-07-14T21:40:00.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/14113743/0714Gladstone.jpg"
-          },
-          {
-            "title": "Առաքելեան Եւ Սեմերճեան Կը Մասնակցին Մալըրի Նուիրուած Սիէթըլի Փառատօնին",
-            "url": "https://asbarez.am/archives/505738",
-            "date": "2026-07-14T21:40:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/14114134/0714Mahler.png"
-          },
-          {
-            "title": "Գիւմրիի «Շիրվանեան» Կեդրոնը Կը Տօնէ Հայաստանի Երիտասարդութեան Կեանքերը Վերափոխող Իր Գործունէութեան Տասնամեակը",
-            "url": "https://asbarez.am/archives/505665",
-            "date": "2026-07-13T19:05:31.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/13120645/0713Amaras-Camp2.png"
-          },
-          {
-            "title": "Լոյս Տեսած Է Թարա Էքմէքճի Յարութիւնեանի «Ձեռք Մը» Հատորը",
-            "url": "https://asbarez.am/archives/505661",
-            "date": "2026-07-13T19:03:28.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/13115907/0713Tara1.jpg"
-          },
-          {
-            "title": "Լիբանան Ստանձնեց Հայաստանի Տրամադրած Մարդասիրական Օգնութիւնը",
-            "url": "https://asbarez.am/archives/505595",
-            "date": "2026-07-10T19:28:37.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/10122738/0710aid.jpg"
           }
         ]
       },
@@ -5574,6 +5574,12 @@
         "categoryKey": "hotvadzner",
         "label": "Յօդուածներ",
         "articles": [
+          {
+            "title": "Մանկապարտէզի Աւարտականը",
+            "url": "https://asbarez.am/archives/505994",
+            "date": "2026-07-20T19:16:36.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20121311/0000Kandilian-Verentsiugh1.jpg"
+          },
           {
             "title": "Ալիսիա Կիրակոսեանի Գրականութիւնը",
             "url": "https://asbarez.am/archives/505873",
@@ -5627,12 +5633,6 @@
             "url": "https://asbarez.am/archives/505351",
             "date": "2026-07-06T19:22:40.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/06/11132101/0000Garo-Armenian.png"
-          },
-          {
-            "title": "Մեծ Երազի Մը Իրականացումը",
-            "url": "https://asbarez.am/archives/505326",
-            "date": "2026-07-06T18:37:03.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2025/08/04123619/0000Kevork-Bedigian.jpg"
           }
         ]
       }
