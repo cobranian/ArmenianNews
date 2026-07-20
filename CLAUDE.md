@@ -175,7 +175,10 @@ composants importent au build :
     **fixés à la main** (les noms de rubrique WordPress sont des noms de langue —
     « French », « Russian » — ou « mainpost », inutilisables comme titres) et
     portés dans les données. Images hotlinkées en direct.
-  - `armenopole.mjs` — Agenda (Suisse + monde).
+  - `armenopole.mjs` — Agenda (Suisse + monde). Dédoublonne le « monde » par URL
+    (le même événement est recensé sur plusieurs pages pays) et en garde jusqu'à
+    60, pour alimenter le sélecteur de pays de l'agenda (voir « L'exception »
+    plus bas).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
@@ -199,19 +202,36 @@ francophones) en français, et Courrier reste le premier onglet (comme pour hy).
 Le français est la langue par défaut et doit porter tous ses accents
 (é, è, à, ê, ç…).
 
-**L'exception : le pays des événements « Monde ».** Le badge de pays des cartes
-de l'agenda mondial *est* localisé (en/hy/ru), alors que le reste du contenu
-scrapé ne l'est pas. `src/worldPlace.js` résout le pays à partir du texte libre
-`location` d'armenopole (« Angleterre », « New York ») d'abord, puis du slug
-`country`, et retombe sur le texte français brut si aucun n'est connu — jamais
-un slug nu. **Le français garde le texte scrapé tel quel** (« Le Pays reste en
-Français »). Ce module est **volontairement un `.js` à part, pas dans
-`i18n.jsx`** : y ajouter un export non-composant ferait passer le lint de 6 à 7
-avertissements `react-refresh` (voir la section lint). Ne le reconsolidez pas
-dans `i18n.jsx`. Résoudre depuis `location` avant le slug corrige aussi une
-donnée fausse du scrape (un événement en Angleterre listé sous le slug
-`greece`). La table `PLACE_TO_COUNTRY` ne couvre que les lieux vus dans le flux ;
-un lieu non mappé retombe sur son texte français.
+**Le sélecteur de pays de l'agenda.** L'agenda est **un seul carrousel piloté
+par une liste déroulante** (`src/components/Agenda.jsx`) : la Suisse est l'option
+par défaut, épinglée en tête ; les autres pays suivent, triés par nom localisé.
+**Le menu ne liste que les pays qui ont réellement des événements à venir** —
+Arménie (Erevan) comprise, car armenopole recense beaucoup d'événements d'Erevan
+sur ses pages diaspora. Les événements « monde » sont **regroupés par le pays
+résolu depuis le texte `location`**, pas par le slug de la page : le même
+événement est recensé sur plusieurs pages pays (donc `country` est souvent la
+communauté qui organise, pas le lieu), et Agenda **dédoublonne par URL** pour ne
+pas resservir 2-3 copies du même événement. `scripts/sources/armenopole.mjs`
+dédoublonne aussi à la source et garde jusqu'à 60 événements (plus les 10
+d'avant) pour que plusieurs pays survivent au sélecteur.
+
+`src/worldPlace.js` porte cette résolution : `worldCountryKey(ev)` donne la clé
+canonique (`location` d'abord — « Erevan » → `armenia`, « Angleterre » →
+`unitedkingdom` —, puis le slug `country`, et en dernier recours le texte brut
+plié), `countryLabel(key, lang)` / `countryFlag(key)` la rendent. **Le nom de
+pays du sélecteur EST localisé dans les quatre langues** (fr compris) : c'est du
+chrome d'interface (un libellé de contrôle), pas du contenu d'article. Le
+**badge** de chaque carte, lui, garde le texte `location` brut (« Genève »,
+« Erevan », « Angleterre ») pour toutes les langues — non redondant avec le pays
+du menu, et fidèle au « Le Pays reste en Français ». Résoudre depuis `location`
+avant le slug corrige au passage une donnée fausse (un événement en Angleterre
+listé sous le slug `greece`). Ce module reste **volontairement un `.js` à part,
+pas dans `i18n.jsx`** : y ajouter un export non-composant ferait passer le lint
+de 6 à 7 avertissements `react-refresh` (voir la section lint). Ne le reconsolidez
+pas dans `i18n.jsx`. La table `PLACE_TO_COUNTRY` ne couvre que les lieux vus dans
+le flux ; un lieu non mappé forme sa propre clé, étiquetée depuis son texte brut.
+Le drapeau emoji dégrade en code-pays à deux lettres sous Windows (pas de drapeaux
+emoji) — lu comme un tampon « dateline », c'est assumé.
 
 **Styles** — `src/styles/global.css`, un seul fichier. La bascule jour / nuit et
 la palette « abricot sur basalte » y sont définies.

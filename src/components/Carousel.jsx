@@ -8,7 +8,19 @@ import { useI18n } from '../i18n.jsx'
 // `reveal` (default true) gates the shelf on the scroll-in observer. Pass false
 // when the shelf appears on demand (e.g. a tab switch) rather than on scroll —
 // otherwise it would mount hidden and the one-shot observer never reveals it.
-export function Carousel({ title, label, children, reveal = true }) {
+// `resetKey` scrolls the track back to the start whenever it changes — pass the
+// active filter (e.g. the selected country) so switching content doesn't leave
+// the track scrolled into the middle of the previous, longer list.
+// `titleControl` wraps `title` in a plain <div> instead of an <h3>, for when the
+// heading slot holds a form control (a <select>) rather than a heading.
+export function Carousel({
+  title,
+  label,
+  children,
+  reveal = true,
+  resetKey,
+  titleControl = false,
+}) {
   const { t } = useI18n()
   const trackRef = useRef(null)
   const [atStart, setAtStart] = useState(true)
@@ -27,6 +39,14 @@ export function Carousel({ title, label, children, reveal = true }) {
     return () => window.removeEventListener('resize', update)
   }, [])
 
+  // Snap back to the start when the filtered content changes, then recompute the
+  // arrow states for the new track length.
+  useEffect(() => {
+    const el = trackRef.current
+    if (el) el.scrollTo({ left: 0 })
+    update()
+  }, [resetKey])
+
   const scroll = (dir) => {
     const el = trackRef.current
     if (!el) return
@@ -36,11 +56,12 @@ export function Carousel({ title, label, children, reveal = true }) {
   // `title` may be a node (see Social.jsx), which cannot name the arrows —
   // fall back to `label` for the accessible name in that case.
   const name = String(typeof title === 'string' ? title : label || '').trim()
+  const TitleTag = titleControl ? 'div' : 'h3'
 
   return (
     <div className={`shelf${reveal ? ' reveal' : ''}`}>
       <div className="shelf__head">
-        {title && <h3 className="shelf__title">{title}</h3>}
+        {title && <TitleTag className="shelf__title">{title}</TitleTag>}
         <div className="shelf__nav">
           <button
             className="shelf__arrow"

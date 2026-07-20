@@ -75,13 +75,24 @@ export async function scrapeAgenda() {
     .sort(byDate)
   console.log(`  ✓ armenopole/switzerland (${switzerland.length})`)
 
+  // The same event is cross-listed on several country pages, so dedupe by URL
+  // as we go (keep the first hit) — otherwise "world" carries 2-3 copies of
+  // every popular event. The UI groups the result by the country resolved from
+  // each event's location (worldPlace.js), so the raw page slug needn't be
+  // unique. Keep a generous cap (not 10) so several countries survive for the
+  // selector while the payload stays bounded.
+  const seen = new Set()
   const worldAll = []
   for (const c of WORLD_COUNTRIES) {
-    const list = await scrapeCountry(c)
-    worldAll.push(...list)
+    for (const e of await scrapeCountry(c)) {
+      const id = e.url || `${e.title}|${e.date}`
+      if (seen.has(id)) continue
+      seen.add(id)
+      worldAll.push(e)
+    }
   }
-  const world = worldAll.filter(upcoming).sort(byDate).slice(0, 10)
-  console.log(`  ✓ armenopole/world (${world.length} from ${WORLD_COUNTRIES.length} countries)`)
+  const world = worldAll.filter(upcoming).sort(byDate).slice(0, 60)
+  console.log(`  ✓ armenopole/world (${world.length} deduped from ${WORLD_COUNTRIES.length} countries)`)
 
   return { switzerland, world }
 }

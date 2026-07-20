@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
-import { worldPlace } from '../worldPlace.js'
+import { worldCountryKey, countryFlag, countryLabel } from '../worldPlace.js'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
@@ -67,8 +67,38 @@ function EventCard({ ev, locale, place }) {
 export function Agenda() {
   const { t, locale, lang } = useI18n()
 
-  const swiss = agenda.switzerland || []
-  const world = agenda.world || []
+  // Bucket every event under a canonical country key — Switzerland straight from
+  // its own feed, the rest grouped by the country resolved from each event's
+  // location (see worldPlace.js). Dedupe by URL: armenopole cross-lists the same
+  // event on several country pages, so it arrives 2-3 times.
+  const { order, groups, labelOf } = useMemo(() => {
+    const groups = {}
+    const rep = {} // key -> representative event, for labeling unmapped countries
+    const seen = new Set()
+    const push = (key, ev) => {
+      const id = ev.url || `${ev.title}|${ev.date}`
+      if (seen.has(id)) return
+      seen.add(id)
+      ;(groups[key] ||= []).push(ev)
+      if (!rep[key]) rep[key] = ev
+    }
+    for (const ev of agenda.switzerland || []) push('switzerland', ev)
+    for (const ev of agenda.world || []) push(worldCountryKey(ev), ev)
+
+    const labelOf = (key) => countryLabel(key, lang, rep[key]?.location)
+    const foldLabel = (k) =>
+      labelOf(k).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    // Switzerland pinned first; the rest alphabetical by localized name.
+    const order = Object.keys(groups)
+      .filter((k) => k !== 'switzerland')
+      .sort((a, b) => foldLabel(a).localeCompare(foldLabel(b)))
+    if (groups.switzerland) order.unshift('switzerland')
+    return { order, groups, labelOf }
+  }, [lang])
+
+  const [country, setCountry] = useState('switzerland')
+  const active = groups[country] ? country : order[0]
+  const events = active ? groups[active] : []
 
   return (
     <section className="section section--alt" id="agenda">
@@ -80,33 +110,44 @@ export function Agenda() {
         />
 
         <div className="agenda reveal">
-          {swiss.length ? (
-            <Carousel title={`🇨🇭 ${t('agenda.switzerland')}`}>
-              {swiss.map((ev, i) => (
+          {active ? (
+            <Carousel
+              titleControl
+              resetKey={active}
+              label={labelOf(active)}
+              title={
+                <span className="agenda-select">
+                  <span className="agenda-select__flag" aria-hidden="true">
+                    {countryFlag(active)}
+                  </span>
+                  <select
+                    className="agenda-select__field"
+                    aria-label={t('agenda.country')}
+                    value={active}
+                    onChange={(e) => setCountry(e.target.value)}
+                  >
+                    {order.map((k) => (
+                      <option key={k} value={k}>
+                        {labelOf(k)}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="agenda-select__chevron" aria-hidden="true">
+                    ▾
+                  </span>
+                </span>
+              }
+            >
+              {events.map((ev, i) => (
                 <EventCard key={ev.url || i} ev={ev} locale={locale} place={ev.location} />
               ))}
             </Carousel>
           ) : (
             <div className="agenda__empty">
-              <h3><span className="agenda__flag">🇨🇭</span>{t('agenda.switzerland')}</h3>
-              <p className="section__subtitle">{t('agenda.empty')}</p>
-            </div>
-          )}
-
-          {world.length ? (
-            <Carousel title={`🌍 ${t('agenda.world')}`}>
-              {world.map((ev, i) => (
-                <EventCard
-                  key={ev.url || i}
-                  ev={ev}
-                  locale={locale}
-                  place={worldPlace(ev, lang)}
-                />
-              ))}
-            </Carousel>
-          ) : (
-            <div className="agenda__empty">
-              <h3><span className="agenda__flag">🌍</span>{t('agenda.world')}</h3>
+              <h3>
+                <span className="agenda__flag">🌍</span>
+                {t('agenda.title')}
+              </h3>
               <p className="section__subtitle">{t('agenda.empty')}</p>
             </div>
           )}

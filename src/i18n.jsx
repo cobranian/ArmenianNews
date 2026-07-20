@@ -33,6 +33,7 @@ const STRINGS = {
     'agenda.subtitle': 'Événements arméniens en Suisse et dans le monde',
     'agenda.switzerland': 'Suisse',
     'agenda.world': 'Monde',
+    'agenda.country': 'Pays',
     'agenda.empty': 'Aucun événement annoncé.',
     'agenda.more': "Voir sur armenopole",
 
@@ -171,6 +172,7 @@ const STRINGS = {
     'agenda.subtitle': 'Armenian events in Switzerland and around the world',
     'agenda.switzerland': 'Switzerland',
     'agenda.world': 'World',
+    'agenda.country': 'Country',
     'agenda.empty': 'No events announced.',
     'agenda.more': 'See on armenopole',
 
@@ -307,6 +309,7 @@ const STRINGS = {
     'agenda.subtitle': 'Հայկական միջոցառումներ Շվեյցարիայում եւ աշխարհում',
     'agenda.switzerland': 'Շվեյցարիա',
     'agenda.world': 'Աշխարհ',
+    'agenda.country': 'Երկիր',
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
     'agenda.more': 'Տեսնել armenopole-ում',
 
@@ -443,6 +446,7 @@ const STRINGS = {
     'agenda.subtitle': 'Армянские события в Швейцарии и по всему миру',
     'agenda.switzerland': 'Швейцария',
     'agenda.world': 'Мир',
+    'agenda.country': 'Страна',
     'agenda.empty': 'Анонсов пока нет.',
     'agenda.more': 'Смотреть на armenopole',
 

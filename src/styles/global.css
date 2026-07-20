@@ -1050,6 +1050,66 @@ h3:lang(hy) {
   border-bottom: 1px solid var(--line);
 }
 
+/* --- Country selector: a press "dateline stamp" that sits in the shelf head,
+   where a section title would otherwise go. One monospace, uppercase pill with
+   a flag and a chevron; picking a country swaps the carousel below it. --- */
+.agenda-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 15px;
+  border: 1px solid var(--line-apricot);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--basalt-3) 55%, transparent);
+  transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+}
+.agenda-select:hover {
+  border-color: var(--apricot-ink);
+  background: color-mix(in srgb, var(--basalt-3) 78%, transparent);
+}
+.agenda-select:focus-within {
+  outline: 2px solid var(--line-apricot);
+  outline-offset: 2px;
+}
+.agenda-select__flag {
+  font-size: 1.05rem;
+  line-height: 1;
+  pointer-events: none;
+}
+.agenda-select__field {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0 4px 0 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--apricot-ink-strong);
+  cursor: pointer;
+  line-height: 1.2;
+}
+.agenda-select__field:focus {
+  outline: none;
+}
+/* the native option list uses the OS palette — keep it readable regardless */
+.agenda-select__field option {
+  font-family: var(--font-body, sans-serif);
+  letter-spacing: 0;
+  text-transform: none;
+  color: initial;
+}
+.agenda-select__chevron {
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--apricot-ink);
+  pointer-events: none;
+}
+
 /* --- Event "clipping" card — lives inside a .shelf__track --- */
 .agenda-card {
   position: relative;
