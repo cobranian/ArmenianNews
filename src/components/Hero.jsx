@@ -23,6 +23,7 @@ export function Hero() {
         <div className="hero__date">
           <span>{t('site.snapshot')}</span>
           <strong>{formatDate(meta.generatedAt)}</strong>
+          <span className="hero__cadence">{t('site.cadence')}</span>
         </div>
       </div>
       <Ararat className="hero__ararat" />

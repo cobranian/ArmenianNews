@@ -497,6 +497,15 @@ h3:lang(hy) {
   color: var(--apricot-ink);
   font-weight: 700;
 }
+/* cadence tag — reminds the reader the snapshot is rebuilt every hour */
+.hero__cadence {
+  color: var(--text-faint);
+}
+.hero__cadence::before {
+  content: '·';
+  margin-right: 12px;
+  color: var(--text-soft);
+}
 /* re-skin the silhouette as a glowing apricot ridgeline:
    the main path is fill="currentColor", so colour drives the ridge */
 .hero__ararat {

@@ -14,6 +14,7 @@ const STRINGS = {
     'site.title': 'Arménie Info',
     'site.tagline': 'Un instantané horaire de la vie arménienne, de Suisse et du monde',
     'site.snapshot': 'Instantané du',
+    'site.cadence': 'chaque heure',
 
     'nav.news': 'Actualités',
     'nav.radio': 'En direct',
@@ -151,8 +152,9 @@ const STRINGS = {
   },
   en: {
     'site.title': 'Armenia Info',
-    'site.tagline': 'A daily snapshot of Armenia and its diaspora',
+    'site.tagline': 'An hourly snapshot of Armenian life, from Switzerland and the world',
     'site.snapshot': 'Snapshot of',
+    'site.cadence': 'hourly',
 
     'nav.news': 'News',
     'nav.radio': 'Live',
@@ -288,8 +290,9 @@ const STRINGS = {
   },
   hy: {
     'site.title': 'Արմենիա Ինֆո',
-    'site.tagline': 'Հայաստանի եւ սփյուռքի ամենօրյա պատկերը',
+    'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ Շվեյցարիայից եւ աշխարհից',
     'site.snapshot': 'Պատկեր՝',
+    'site.cadence': 'ամեն ժամ',
 
     'nav.news': 'Լուրեր',
     'nav.radio': 'Ուղիղ',
@@ -427,6 +430,7 @@ const STRINGS = {
     'site.title': 'Армения Инфо',
     'site.tagline': 'Ежечасный снимок армянской жизни, из Швейцарии и со всего мира',
     'site.snapshot': 'Снимок от',
+    'site.cadence': 'каждый час',
 
     'nav.news': 'Новости',
     'nav.radio': 'В эфире',
