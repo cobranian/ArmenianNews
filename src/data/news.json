@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T17:15:34.069Z",
+  "generatedAt": "2026-07-22T19:12:58.007Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -975,6 +975,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Հայաստանն ու Կանադան քննարկել են առաջնահերթ ուղղություններով երկկողմ օրակարգի հարստացման հեռանկարները",
+            "url": "https://hy.armradio.am/archives/748280",
+            "date": "2026-07-22T17:28:29.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/17847370854537-768x512.jpeg",
+            "category": "Քաղաքական"
+          },
+          {
             "title": "Տեղի է ունեցել Նիկոլ Փաշինյանի և Ֆրիդրիխ Մերցի հեռախոսազրույցը",
             "url": "https://hy.armradio.am/archives/748257",
             "date": "2026-07-22T15:14:38.000Z",
@@ -1036,19 +1043,33 @@
             "date": "2026-07-21T05:04:48.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/OLPEM3KLCJPH3BVBEILPHC62SA-768x545.avif",
             "category": "Կարևոր"
-          },
-          {
-            "title": "ԵԽ-ից դուրս գալու Բաքվի զգուշացումները. իրական սցենա՞ր, թե՞ սակարկության գործիք",
-            "url": "https://hy.armradio.am/archives/747762",
-            "date": "2026-07-20T15:07:19.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/photo_2026-07-13_17-25-43-768x432-1-300x169.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "ՀՀ ՏԿԵ նախարարն Արարատի մարզում հետևել է ճանապարհաշինական աշխատանքներին",
+            "url": "https://hy.armradio.am/archives/748298",
+            "date": "2026-07-22T18:47:50.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/752380816_1353691216326310_2287722415774514638_n-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "ԿԸՀ-ն չի մերժել, այլ որոշել է վերադարձնել միջնորդությունը․ Վահագն Հովակիմյանի պարզաբանումը",
+            "url": "https://hy.armradio.am/archives/748283",
+            "date": "2026-07-22T17:42:30.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/710827626_1423197136500347_5445553327335730119_n-scaled-e1780856824176-768x505.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Դատախազը հանրային քրեական հետապնդում է հարուցել Նարեկ Կարապետյանի նկատմամբ",
+            "url": "https://hy.armradio.am/archives/748278",
+            "date": "2026-07-22T17:22:38.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2024/04/dataxazutyun-300x201.jpg",
+            "category": "Հասարակություն"
+          },
           {
             "title": "Ֆրանսիայում ՀՀ դեսպանը հանդիպել է Փարիզի փոխքաղաքապետի հետ",
             "url": "https://hy.armradio.am/archives/748269",
@@ -1097,27 +1118,6 @@
             "date": "2026-07-22T13:12:35.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/06/kyh_2_12-12-2025-768x513.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Փրկարարները բազեին տեղափոխել են կենդանիների պաշտպանության հիմնադրամ",
-            "url": "https://hy.armradio.am/archives/748201",
-            "date": "2026-07-22T12:41:24.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/IMG_4069-768x512.jpeg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "Իր աշխատանքներ է սկսել 3-րդ Հայագիտական միջազգային կոնգրեսը",
-            "url": "https://hy.armradio.am/archives/748192",
-            "date": "2026-07-22T12:20:10.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/753893690_2121583868704067_8879565174472509159_n-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ռուբեն Վարդանյանի գործով գանգատ է ներկայացվել ՄԻԵԴ",
-            "url": "https://hy.armradio.am/archives/748187",
-            "date": "2026-07-22T12:07:59.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2021/02/mied-1-768x432.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -1275,6 +1275,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Զելենսկին Ուիթքոֆի և Քուշների հետ քննարկել է Ուկրաինայի կարգավորման հարցերը․ Axios",
+            "url": "https://hy.armradio.am/archives/748295",
+            "date": "2026-07-22T18:07:26.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2025/08/Steve-Witkoff-768x492.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱՄՆ-Իրան. Դիվանագիտությունը հարվածների ստվերում",
             "url": "https://hy.armradio.am/archives/748273",
             "date": "2026-07-22T16:03:51.000Z",
@@ -1335,13 +1342,6 @@
             "url": "https://hy.armradio.am/archives/748033",
             "date": "2026-07-21T17:32:14.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/c3da9000-84f9-11f1-bee8-53ce494e1abc.jpg-768x432.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ԱՄՆ-ն նոր հարվածներ է հասցրել Իրանին",
-            "url": "https://hy.armradio.am/archives/748016",
-            "date": "2026-07-21T16:49:44.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/19b1fef0-847d-11f1-8f17-6fca617ac634.jpg-768x432.webp",
             "category": "Կարևոր"
           }
         ]
@@ -3058,6 +3058,12 @@
             "image": "https://armenpress.am/storage/images/articles/2026/07/21/WUOCodz0N1qGybyydcUXRBVFyk88DADCXsHyOBcs.webp"
           },
           {
+            "title": "Le Premier ministre Pashinyan adresse un message de félicitations à Andy Burnham",
+            "url": "https://armenpress.am/fr/article/1256020",
+            "date": "2026-07-21T06:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/21/nsgdeX1aFNwwSfqCLDGAMBPILXfv9oAIjHI6olNn.webp"
+          },
+          {
             "title": "China Southern Airlines augmente la fréquence de ses vols entre Ürümqi et Erevan",
             "url": "https://armenpress.am/fr/article/1256022",
             "date": "2026-07-21T06:25:00.000Z",
@@ -3086,12 +3092,6 @@
             "url": "https://armenpress.am/fr/article/1255560",
             "date": "2026-07-14T18:38:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/14/bkSiMAxvXz4Sb5lOofn8U8nusFk47IYYwjx6tfeT.webp"
-          },
-          {
-            "title": "Une conférence consacrée à la question des prisonniers arméniens détenus illégalement à Bakou s’est tenue au Parlement européen",
-            "url": "https://armenpress.am/fr/article/1255550",
-            "date": "2026-07-14T16:59:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/14/dVqjwLL5h9MPlLncKYMQS7ggilx8bqIOMKO4pDOC.webp"
           }
         ]
       },
@@ -3948,6 +3948,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Կասեցվել են Կենտրոն վարչական շրջանի Անտառային փողոցի 124 հասցեում իրականացվող շինարարական աշխատանքները",
+            "url": "https://armenpress.am/hy/article/1256222",
+            "date": "2026-07-22T17:42:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/7N351FAXIwdwXyr6g9qz6qZ6iSgPSmlGVxcbnjET.webp"
+          },
+          {
+            "title": "Քննարկվել են Հայաստանի և Իտալիայի միջև ագրոպարենային ոլորտում երկկողմ համագործակցության զարգացման հնարավորությունները",
+            "url": "https://armenpress.am/hy/article/1256221",
+            "date": "2026-07-22T17:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/GyxWz00BbVsVxgVbua8ez4dLHGuIHZN6KZXuXB8g.webp"
+          },
+          {
+            "title": "ԿԸՀ նախագահը պարզաբանել է Նարեկ Կարապետյանի վերաբերյալ գլխավոր դատախազության միջնորդության մասին որոշումը",
+            "url": "https://armenpress.am/hy/article/1256220",
+            "date": "2026-07-22T17:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/1J1KrcdVaLEBlopbElKtKE0aSDVdIDIlzevDys89.webp"
+          },
+          {
             "title": "Հայաստանն ու Կանադան քննարկել են առաջնահերթ ուղղություններով երկկողմ օրակարգի հարստացման հեռանկարները",
             "url": "https://armenpress.am/hy/article/1256219",
             "date": "2026-07-22T17:05:00.000Z",
@@ -3988,30 +4006,18 @@
             "url": "https://armenpress.am/hy/article/1256204",
             "date": "2026-07-22T13:41:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/22/d1g6evJdL1l4EKXyV5GDfQQS1Pl4cLH10rueRaAm.webp"
-          },
-          {
-            "title": "Անահիտ Մանասյանն այցելել է ՀՀ պետական սահմանի Ագարակ անցման կետ",
-            "url": "https://armenpress.am/hy/article/1256202",
-            "date": "2026-07-22T13:33:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/QYU9DmhlT8HBwQa1hawdsGWG5EYbQmSWhLenbbJK.webp"
-          },
-          {
-            "title": "Դատարան է հանձնվել ԱԺ ընտրությունների ընթացքում «Միասնության թևեր»-ի օգտին քվեարկելու պայմանով ընտրակաշառք տալու վերաբերյալ քրեական վարույթի նյութը",
-            "url": "https://armenpress.am/hy/article/1256200",
-            "date": "2026-07-22T13:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/Cjhc5OHUvd5UDDdU9UxIvMAd0SzIqd8w4yz3QMmr.webp"
-          },
-          {
-            "title": "ՀՀ ԿԳՄՍ նախարարը հետևել է Վաղարշապատում և Աշտարակում կառուցվող դպրոցների շինարարական աշխատանքներին",
-            "url": "https://armenpress.am/hy/article/1256197",
-            "date": "2026-07-22T13:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/y8sZ8s5PWwOB8NakSKt4mXdwPb6CAQ59YNcdPdun.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Քննարկվել են Հայաստանի և Իտալիայի միջև ագրոպարենային ոլորտում երկկողմ համագործակցության զարգացման հնարավորությունները",
+            "url": "https://armenpress.am/hy/article/1256221",
+            "date": "2026-07-22T17:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/GyxWz00BbVsVxgVbua8ez4dLHGuIHZN6KZXuXB8g.webp"
+          },
           {
             "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ - 22/07/26",
             "url": "https://armenpress.am/hy/article/1256196",
@@ -4065,18 +4071,18 @@
             "url": "https://armenpress.am/hy/article/1256092",
             "date": "2026-07-21T13:23:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/21/A2Jx43NtW0MGUF1Toq3SuExu9BYOnxh3gvpoWaNk.webp"
-          },
-          {
-            "title": "Գևորգ Պապոյանի գլխավորությամբ կայացել է Փոքր և միջին ձեռնարկատիրությունների զարգացման ենթախորհրդի նիստը",
-            "url": "https://armenpress.am/hy/article/1256089",
-            "date": "2026-07-21T13:08:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/21/H3I9piT8NhMiDyK89HJBF02E9BdczqgNmw8R9eTK.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "ՀԱՄԱՍ-ը բոլոր պաղեստինյան խմբավորումներին միավորվելու կոչ է արել",
+            "url": "https://armenpress.am/hy/article/1256223",
+            "date": "2026-07-22T17:58:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/gkF8WwbxwqS7xaIs60LWXBUw7CcGrYLB7SayDQ3R.webp"
+          },
           {
             "title": "Պեսկովը հայտարարել է, որ Ռուսաստանը բարձր մակարդակով կներկայացվի ԱՄՆ-ում կայանալիք G20 գագաթնաժողովին",
             "url": "https://armenpress.am/hy/article/1256217",
@@ -4130,12 +4136,6 @@
             "url": "https://armenpress.am/hy/article/1256199",
             "date": "2026-07-22T13:18:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/22/E5MuV91dDgUdDO5GhzIMRFqzUKLMchIlOLNXVyLX.webp"
-          },
-          {
-            "title": "Իրանը հայտնել է ամերիկյան նոր գրոհի մասին. տարածաշրջանի երկրներում ևս գործողությունները շարունակվում են",
-            "url": "https://armenpress.am/hy/article/1256198",
-            "date": "2026-07-22T13:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/DGduDzpB34xjf3Jqa6nsul4nFQ2MZeaDEI5JqA3X.webp"
           }
         ]
       },
@@ -4405,6 +4405,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Обсуждены возможности развития двустороннего сотрудничества между Арменией и Италией в агропродовольственной сфере",
+            "url": "https://armenpress.am/ru/article/1256221",
+            "date": "2026-07-22T17:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/GyxWz00BbVsVxgVbua8ez4dLHGuIHZN6KZXuXB8g.webp"
+          },
+          {
+            "title": "Председатель ЦИК разъяснил решение по ходатайству Генеральной прокуратуры в отношении Нарека Карапетяна",
+            "url": "https://armenpress.am/ru/article/1256220",
+            "date": "2026-07-22T17:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/1J1KrcdVaLEBlopbElKtKE0aSDVdIDIlzevDys89.webp"
+          },
+          {
+            "title": "Армения и Канада обсудили перспективы обогащения двусторонней повестки по приоритетным направлениям",
+            "url": "https://armenpress.am/ru/article/1256219",
+            "date": "2026-07-22T17:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/MxeEz0W8S8bo60mgbfQOGslsyT3QIQmOmxAGBgZh.webp"
+          },
+          {
             "title": "Прокурор возбудил общественное уголовное преследование в отношении Нарека Карапетяна",
             "url": "https://armenpress.am/ru/article/1256218",
             "date": "2026-07-22T16:18:00.000Z",
@@ -4445,30 +4463,18 @@
             "url": "https://armenpress.am/ru/article/1256177",
             "date": "2026-07-22T11:05:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/22/UrqO6oM1pyu0MNXJsLjUzwCWtd5Nj8YrUi02Dnwu.webp"
-          },
-          {
-            "title": "Начальник Департамента военной полиции Сил обороны Грузии находится в Армении с трехдневным визитом",
-            "url": "https://armenpress.am/ru/article/1256168",
-            "date": "2026-07-22T10:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/7iSZ3LmDbC886SRnXAJstfImCIqiefb6dvdfet1P.webp"
-          },
-          {
-            "title": "Военная академия им. Вазгена Саргсяна и Национальный научно-исследовательский университет обороны Армении стали ассоциированными партнерами Европейского колледжа безопасности и обороны",
-            "url": "https://armenpress.am/ru/article/1256157",
-            "date": "2026-07-22T08:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/Cf172UsH15IBKb9xASNx37BQljnDo9epp4iktPgA.webp"
-          },
-          {
-            "title": "Начался международный боксерский турнир на Кубок мэра Еревана",
-            "url": "https://armenpress.am/ru/article/1256143",
-            "date": "2026-07-22T08:26:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/CBchX2kT5syLrY9B7KOUYBZ6zgEZck3AEvQCZdXz.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Обсуждены возможности развития двустороннего сотрудничества между Арменией и Италией в агропродовольственной сфере",
+            "url": "https://armenpress.am/ru/article/1256221",
+            "date": "2026-07-22T17:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/GyxWz00BbVsVxgVbua8ez4dLHGuIHZN6KZXuXB8g.webp"
+          },
           {
             "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 22-07-26",
             "url": "https://armenpress.am/ru/article/1256196",
@@ -4522,18 +4528,18 @@
             "url": "https://armenpress.am/ru/article/1256087",
             "date": "2026-07-21T12:53:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/21/iurow97o283BlYNglqjhER3U8vtFnXwwEFVbuQn7.webp"
-          },
-          {
-            "title": "Азиатские индексы - 21/07/26",
-            "url": "https://armenpress.am/ru/article/1256086",
-            "date": "2026-07-21T12:51:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/21/FEUVsgwEHbLlzHmmRoefrHy2ApqlveQN563vERur.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "ХАМАС призвал все палестинские фракции объединиться",
+            "url": "https://armenpress.am/ru/article/1256223",
+            "date": "2026-07-22T17:59:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/22/gkF8WwbxwqS7xaIs60LWXBUw7CcGrYLB7SayDQ3R.webp"
+          },
           {
             "title": "Россия на саммите G20 в США будет представлена на высоком уровне: Песков",
             "url": "https://armenpress.am/ru/article/1256217",
@@ -4587,12 +4593,6 @@
             "url": "https://armenpress.am/ru/article/1256192",
             "date": "2026-07-22T13:07:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/10/n2VeMmSBJag8OaPaCTpysqrWWTfU5B5IXmFuEdBK.webp"
-          },
-          {
-            "title": "США за трехсторонние переговоры с Россией и Китаем по контролю над ядерным вооружением - Рубио",
-            "url": "https://armenpress.am/ru/article/1256189",
-            "date": "2026-07-22T12:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/brX1L6YuujftacUpTDvGvxNTtK9AMymIpB2jDRkd.webp"
           }
         ]
       },
@@ -4865,6 +4865,12 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "Element Band to Showcase New Album in Los Angeles Concert",
+            "url": "https://asbarez.com/element-band-to-showcase-new-album-in-los-angeles-concert/",
+            "date": "2026-07-22T18:33:08.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/22113220/poster-elementband-2026_FINAL_small-copy-1-300x226.jpg"
+          },
+          {
             "title": "ARF Supreme Council of Armenia Announcement",
             "url": "https://asbarez.com/arf-supreme-council-of-armenia-announcement-3/",
             "date": "2026-07-22T16:42:01.000Z",
@@ -4917,12 +4923,6 @@
             "url": "https://asbarez.com/the-good-the-bad-and-the-ugly-of-the-2026-fifa-world-cup-one-fans-perspective/",
             "date": "2026-07-20T22:33:24.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/20153300/The-Good-the-Bad-and-the-Ugly-of-the-2026-FIFA-World-Cup-One-Fans-Perspective-1-300x201.jpg"
-          },
-          {
-            "title": "Another Artsakh Prisoner Accuses Armenian Government of Indifference",
-            "url": "https://asbarez.com/another-artsakh-prisoner-accuses-armenian-government-of-indifference/",
-            "date": "2026-07-20T20:23:30.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/20132245/DavidManukyan-300x200.jpg"
           }
         ]
       },
@@ -4997,6 +4997,12 @@
         "label": "Arts & Culture",
         "articles": [
           {
+            "title": "Element Band to Showcase New Album in Los Angeles Concert",
+            "url": "https://asbarez.com/element-band-to-showcase-new-album-in-los-angeles-concert/",
+            "date": "2026-07-22T18:33:08.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/22113220/poster-elementband-2026_FINAL_small-copy-1-300x226.jpg"
+          },
+          {
             "title": "New ‘Odysseus’ TV Series to Film in Armenia and Greece in Early 2027",
             "url": "https://asbarez.com/new-odysseus-tv-series-to-film-in-armenia-and-greece-in-early-2027/",
             "date": "2026-07-17T19:56:52.000Z",
@@ -5049,12 +5055,6 @@
             "url": "https://asbarez.com/armenian-museum-of-fresno-to-host-exhibit-celebrating-exotic-classic-car-culture/",
             "date": "2026-07-13T18:26:26.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/13124239/cool-cars-1-300x202.jpg"
-          },
-          {
-            "title": "Book on Armenian Woman in Iran Highlights the Women that History Almost Missed",
-            "url": "https://asbarez.com/the-armenian-woman-book-highlights-the-women-that-history-almost-missed/",
-            "date": "2026-07-02T19:09:00.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/02120450/armenian-woman-300x224.jpg"
           }
         ]
       },
@@ -5395,6 +5395,12 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
+            "title": "Աւելի քան 3000 Ուխտաւորներ Մասնակցած Են Սուրբ Թադէի Վանքի Ուխտագնացութեան",
+            "url": "https://asbarez.am/archives/506119",
+            "date": "2026-07-22T19:00:31.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/22115807/0722Tade1.jpg"
+          },
+          {
             "title": "ՀամաՀՄԸՄական Քարոզչական Ա. Համագումարը Երեւանի Մէջ Սկսաւ Եռօրեայ Իր Աշխատանքներուն",
             "url": "https://asbarez.am/archives/506060",
             "date": "2026-07-21T23:11:32.000Z",
@@ -5447,12 +5453,6 @@
             "url": "https://asbarez.am/archives/506070",
             "date": "2026-07-21T22:02:24.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/21150119/Graduates-576x375-1.jpeg"
-          },
-          {
-            "title": "Հայ Դատը Կը Զօրակցի Քոնկրեսական Մայք Լոլըրի Վերընտրութեան",
-            "url": "https://asbarez.am/archives/506057",
-            "date": "2026-07-21T21:32:03.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/21143143/0721Lawler.jpg"
           }
         ]
       },
@@ -5527,6 +5527,12 @@
         "label": "Գաղութներ",
         "articles": [
           {
+            "title": "Աւելի քան 3000 Ուխտաւորներ Մասնակցած Են Սուրբ Թադէի Վանքի Ուխտագնացութեան",
+            "url": "https://asbarez.am/archives/506119",
+            "date": "2026-07-22T19:00:31.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/22115807/0722Tade1.jpg"
+          },
+          {
             "title": "«Մենք Ենք Գիւմրին» Յանձնախումբը Մինա Շիրվանեանի Անուան 100րդ Կրթաթոշակին Յանձնումով Կը Տօնէ Իր Տասնամեակը",
             "url": "https://asbarez.am/archives/506070",
             "date": "2026-07-21T22:02:24.000Z",
@@ -5579,12 +5585,6 @@
             "url": "https://asbarez.am/archives/505830",
             "date": "2026-07-16T19:00:00.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/16122025/0717Qatar.jpg"
-          },
-          {
-            "title": "Թրամփի Պարասրահի Նուիրատուն Պիտի Ղեկավարէ 200 Միլիոն Տոլարնոց TRIPP+ Հիմնադրամը",
-            "url": "https://asbarez.am/archives/505795",
-            "date": "2026-07-15T20:05:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/15114630/0715Sokolov.jpg"
           }
         ]
       },
@@ -5663,6 +5663,12 @@
         "label": "Featured",
         "articles": [
           {
+            "title": "ARF Members, Supporters and Sympathizers Will Not Be Intimidated and Will Continue Their Struggle Against the Current Regime with Determination – Statement by the ARF Supreme Body of Armenia",
+            "url": "https://www.oragark.com/arf-members-supporters-and-sympathizers-will-not-be-intimidated-and-will-continue-their-struggle-against-the-current-regime-with-determination-statement-by-the-arf-supreme-body-of-armenia/",
+            "date": "2026-07-22T17:53:11.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2025/10/arf-logo-AS-OF-FEB20._imresizer-768x512.jpg"
+          },
+          {
             "title": "Homenetmen Western U.S. Region Scouts Head to Armenia for 13th Pan-Homenetmen Jamboree",
             "url": "https://www.oragark.com/homenetmen-western-u-s-region-scouts-head-to-armenia-for-13th-pan-homenetmen-jamboree/",
             "date": "2026-07-20T06:30:26.000Z",
@@ -5715,12 +5721,6 @@
             "url": "https://www.oragark.com/climbing-musa-dagh-the-fire-that-still-burns-in-every-armenian-heart/",
             "date": "2026-07-18T07:08:04.000Z",
             "image": "https://www.oragark.com/wp-content/uploads/2026/02/Paparian-300x162.jpg"
-          },
-          {
-            "title": "ANCA Next Gen Hosts First Summer Social, Drawing Record Turnout in San Francisco",
-            "url": "https://www.oragark.com/anca-next-gen-hosts-first-summer-social-drawing-record-turnout-in-san-francisco/",
-            "date": "2026-07-18T07:05:59.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/07/2-2-300x225.png"
           }
         ]
       },
