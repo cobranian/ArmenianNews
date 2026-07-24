@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T06:23:10.377Z",
+  "generatedAt": "2026-07-24T09:19:39.882Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -170,8 +170,8 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
-          "title": "Golden Apricot 2025 : Serouj Hovsepian, la révélation d'un cinéma intime",
-          "url": "https://courrier.am/fr/-golden-apricot-2025-serouj-hovsepian-la-revelation-d-un-cinema-intime",
+          "title": "Golden Apricot 2026 : Serouj Hovsepian, la révélation d'un cinéma intime",
+          "url": "https://courrier.am/fr/-golden-apricot-2026-serouj-hovsepian-la-revelation-d-un-cinema-intime",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/image2_6.jpg?itok=HVzV0Rvj"
         },
         {
@@ -225,6 +225,11 @@
       "sectionKey": "francophonie",
       "articles": [
         {
+          "title": "L'Arménie et la France discutent du renforcement de leur partenariat stratégique",
+          "url": "https://courrier.am/fr/l-armenie-et-la-france-discutent-du-renforcement-de-leur-partenariat-strategique-",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/images_1_3.jpg?itok=cgjR_8O4"
+        },
+        {
           "title": "Les Xes Jeux de la Francophonie entrent dans leur dernière année de préparation",
           "url": "https://courrier.am/fr/les-xes-jeux-de-la-francophonie-entrent-dans-leur-derniere-annee-de-preparation",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/427971691_773397858167211_2125471420174612368_n.png?itok=2qp0gXXY"
@@ -268,11 +273,6 @@
           "title": "« Nous repartons avec un attachement profond à l'Arménie. »",
           "url": "https://courrier.am/fr/-nous-repartons-avec-un-attachement-profond-a-l-armenie-",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/f49edbd6-d9a4-48eb-bd5e-7ebb4006a191.jpg?itok=cMO6Dvkj"
-        },
-        {
-          "title": "La randonnée et la nature au cœur du tourisme arménien: Retour sur le 5ème festival de la randonnée Sentiers d’Arménie",
-          "url": "https://courrier.am/fr/la-randonnee-et-la-nature-au-coeur-du-tourisme-armenien-retour-sur-le-5eme-festival-de-la-randonnee-sentiers-d-armenie",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/image1.png?itok=Ja-0TVg5"
         }
       ]
     },
@@ -523,6 +523,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Armenia’s Areni-1 Cave added to UNESCO World Heritage Tentative List",
+            "url": "https://en.armradio.am/2026/07/24/armenias-areni-1-cave-added-to-unesco-world-heritage-tentative-list/",
+            "date": "2026-07-24T08:44:02.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/areni-1-cave-oldest-winery-768x432.jpg",
+            "category": "Society"
+          },
+          {
             "title": "President Khachaturyan undergoes routine medical examination",
             "url": "https://en.armradio.am/2026/07/23/president-khachaturyan-undergoes-routine-medical-examination/",
             "date": "2026-07-23T10:17:28.000Z",
@@ -584,19 +591,19 @@
             "date": "2026-07-20T10:42:47.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/752151076_1057412967245650_4572117180655556387_n-768x518.jpg",
             "category": "Society"
-          },
-          {
-            "title": "Pressured by Azerbaijan, Israel removed recognition of Armenian Genocide from Knesset’s agenda – Haaretz",
-            "url": "https://en.armradio.am/2026/07/20/pressured-by-azerbaijan-israel-removed-recognition-of-armenian-genocide-from-knessets-agenda-haaretz/",
-            "date": "2026-07-20T10:33:17.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/07/Knesset-768x576.jpg",
-            "category": "Society"
           }
         ]
       },
       {
         "categoryKey": "economics",
         "articles": [
+          {
+            "title": "Russia to restrict imports of dairy products from Armenia starting July 27",
+            "url": "https://en.armradio.am/2026/07/24/russia-to-restrict-imports-of-dairy-products-from-armenia-starting-july-27/",
+            "date": "2026-07-24T07:37:08.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/01000000-0aff-0242-e5a3-08db35f19bca_w1023_r1_s-768x432.jpg",
+            "category": "Economics"
+          },
           {
             "title": "Armenia, U.S. discuss economic cooperation and market economy status process",
             "url": "https://en.armradio.am/2026/07/23/armenia-u-s-discuss-economic-cooperation-and-market-economy-status-process/",
@@ -658,13 +665,6 @@
             "url": "https://en.armradio.am/2026/07/14/armenia-named-best-international-destination-for-business-and-corporate-events-at-mice-excellence-2026-awards/",
             "date": "2026-07-14T14:46:00.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/ChatGPT-Image-Jul-14-2026-06_45_39-PM-768x512.png",
-            "category": "Economics"
-          },
-          {
-            "title": "Fitch affirms Armenia’s ‘BB-‘ rating, maintains positive outlook",
-            "url": "https://en.armradio.am/2026/07/13/fitch-affirms-armenias-bb-rating-maintains-positive-outlook/",
-            "date": "2026-07-13T14:02:45.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2023/07/fitch-e1690815055728-768x481.jpg",
             "category": "Economics"
           }
         ]
@@ -748,6 +748,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "US hits dozens of trading partners with new wave of tariffs",
+            "url": "https://en.armradio.am/2026/07/24/us-hits-dozens-of-trading-partners-with-new-wave-of-tariffs/",
+            "date": "2026-07-24T06:42:45.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/07/Donald-Trump-30-768x432.webp",
+            "category": "World"
+          },
+          {
             "title": "France evacuates 20,000 as wildfires spread in south-west",
             "url": "https://en.armradio.am/2026/07/23/france-evacuates-20000-as-wildfires-spread-in-south-west/",
             "date": "2026-07-23T13:11:43.000Z",
@@ -801,20 +808,6 @@
             "url": "https://en.armradio.am/2026/07/21/trump-slaps-50-tariffs-on-canada-and-carney-vows-to-intensify-trade-talks/",
             "date": "2026-07-21T07:41:05.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/07/ef104d10-84c6-11f1-b976-0b9c15b0ccfc.jpg-768x432.webp",
-            "category": "World"
-          },
-          {
-            "title": "Andy Burnham appointed prime minister by King after Keir Starmer formally resigns",
-            "url": "https://en.armradio.am/2026/07/20/andy-burnham-appointed-prime-minister-by-king-after-keir-starmer-formally-resigns/",
-            "date": "2026-07-20T11:34:34.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/07/King-PM-768x461.jpg",
-            "category": "World"
-          },
-          {
-            "title": "JD and Usha Vance welcome a baby boy, the first child born to a sitting VP in more than 150 years",
-            "url": "https://en.armradio.am/2026/07/20/jd-and-usha-vance-welcome-a-baby-boy-the-first-child-born-to-a-sitting-vp-in-more-than-150-years/",
-            "date": "2026-07-20T11:26:55.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/02/MHM0163495-768x526.jpg",
             "category": "World"
           }
         ]
@@ -1050,11 +1043,11 @@
         "categoryKey": "society",
         "articles": [
           {
-            "title": "Ոստիկանները հատուկ միջոցառումների շրջանակում հայտնաբերվել են հետախուզվողներ, զենք-զինամթերք, թմրամիջոցներ",
+            "title": "Ոստիկանները հատուկ միջոցառումների շրջանակում հայտնաբերել են հետախուզվողներ, զենք-զինամթերք, թմրամիջոցներ",
             "url": "https://hy.armradio.am/archives/748600",
             "date": "2026-07-24T05:45:05.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/images-1-3-300x200.jpg",
-            "category": "Կարևոր"
+            "category": "Հասարակություն"
           },
           {
             "title": "Դիլիջանում հայտնաբերվել են Երևանի Մուրացանի փողոցում հանցագործության մեջ կասկածվողները",
@@ -1125,6 +1118,20 @@
         "categoryKey": "economics",
         "articles": [
           {
+            "title": "Wildberries-ի ջանքերն ուղղված են գործընկերների բիզնեսի կայունության պահպանմանը. Կիմ",
+            "url": "https://hy.armradio.am/archives/748609",
+            "date": "2026-07-24T07:19:56.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/Bakalchuk-768x542.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Ռուսաստանն արգելել է Հայաստանից կաթնամթերքի ներմուծումը",
+            "url": "https://hy.armradio.am/archives/748606",
+            "date": "2026-07-24T07:13:54.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/01000000-0aff-0242-e5a3-08db35f19bca_w1023_r1_s-768x432.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "«Արարատցեմենտը» կունենա ժամանակավոր կառավարիչ. էկոնոմիկայի նախարարի այցը գործարան",
             "url": "https://hy.armradio.am/archives/748554",
             "date": "2026-07-23T15:39:30.000Z",
@@ -1178,20 +1185,6 @@
             "url": "https://hy.armradio.am/archives/747835",
             "date": "2026-07-21T04:32:06.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/araratcement-300x197.jpeg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Հայաստանից Իսպանիա դեռ ծիրան չի արտահանվել. էկոնոմիկայի նախարարի տեղակալը հերքել է տարածվող լուրերը",
-            "url": "https://hy.armradio.am/archives/747669",
-            "date": "2026-07-20T10:42:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2020/05/tciran11-300x171.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Գևորգ Պապոյանն այցելել է ձկնաբուծարան․ քննարկվել են դեպի ԵՄ արտահանման հնարավորությունները",
-            "url": "https://hy.armradio.am/archives/747647",
-            "date": "2026-07-20T08:50:06.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/751563215_1747657483683383_7939515127160836769_n-768x432.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1350,6 +1343,13 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Արենի 1 քարայրի հայտը` ՅՈՒՆԵՍԿՕ-ի համաշխարհային ժառանգության նախնական ցանկում",
+            "url": "https://hy.armradio.am/archives/748612",
+            "date": "2026-07-24T07:59:29.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/2-768x432.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Գիտական ռազմավարությունից մինչև Վենետիկի գանձերը. Մատենադարանում ընթանում է Հայագիտական կոնգրեսը",
             "url": "https://hy.armradio.am/archives/748232",
             "date": "2026-07-22T13:54:56.000Z",
@@ -1411,19 +1411,19 @@
             "date": "2026-07-17T11:42:17.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/10-768x431.jpeg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Մանուշյանի անվան այգում տեղադրվեցին Աշոտ Հարությունյանի 13 խոշորածավալ քանդակները (լուսանկարներ)",
-            "url": "https://hy.armradio.am/archives/747255",
-            "date": "2026-07-17T08:15:06.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/MHM0165465-768x543.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "sport",
         "articles": [
+          {
+            "title": "ՖԻԴԵ-ի նախագահը ժամանակավորապես թողնում է պաշտոնը ԵՄ պատժամիջոցների պատճառով",
+            "url": "https://hy.armradio.am/archives/748603",
+            "date": "2026-07-24T06:34:57.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/dvorkovich-obyavil-o-vremennoj-otstavke-s-posta-prezidenta-fide-posle-vvedeniya-sankcij_17848413401604481521-768x512.avif",
+            "category": "Կարևոր"
+          },
           {
             "title": "Լևոն Արոնյանը դարձել է «Biel Chess Festival 2026» մրցաշարի հաղթող",
             "url": "https://hy.armradio.am/archives/748519",
@@ -1486,13 +1486,6 @@
             "date": "2026-07-21T08:05:20.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/Lionel-Messi-4-1-768x551.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Արցունքներ, արդյունքներ ու սերնդափոխություն․ Մունդիալ-2026-ի վերջին ակորդները",
-            "url": "https://hy.armradio.am/archives/747771",
-            "date": "2026-07-20T17:45:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/Lionel-Messi-2-768x549.jpg",
-            "category": "Կարևոր"
           }
         ]
       }
@@ -1501,6 +1494,20 @@
       {
         "categoryKey": "politics",
         "articles": [
+          {
+            "title": "США установили новые пошлины на импорт из 60 стран — Армении в списке нет",
+            "url": "https://ru.armradio.am/2026/07/24/%d1%81%d1%88%d0%b0-%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%b8%d0%bb%d0%b8-%d0%bd%d0%be%d0%b2%d1%8b%d0%b5-%d0%bf%d0%be%d1%88%d0%bb%d0%b8%d0%bd%d1%8b-%d0%bd%d0%b0-%d0%b8%d0%bc%d0%bf%d0%be%d1%80/",
+            "date": "2026-07-24T08:56:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/Jj2mOXBA7bQn27vG1HnzAC1hV66FlDGIDgortETu-768x512.jpg",
+            "category": "В мире"
+          },
+          {
+            "title": "Россельхознадзор ввёл ограничения на импорт молочной продукции из Армении",
+            "url": "https://ru.armradio.am/2026/07/24/%d1%80%d0%be%d1%81%d1%81%d0%b5%d0%bb%d1%8c%d1%85%d0%be%d0%b7%d0%bd%d0%b0%d0%b4%d0%b7%d0%be%d1%80-%d0%b2%d0%b2%d1%91%d0%bb-%d0%be%d0%b3%d1%80%d0%b0%d0%bd%d0%b8%d1%87%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bd/",
+            "date": "2026-07-24T07:58:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/xex4kOnvtKmrnQTMCjmhPYCE03z3adoiR77DQpGQ-768x512.jpg",
+            "category": "Все новости"
+          },
           {
             "title": "МИД приглашает посмотреть #DipTalk: внешняя политика за пределами стандартного дипломатического языка",
             "url": "https://ru.armradio.am/2026/07/23/%d0%bc%d0%b8%d0%b4-%d0%bf%d1%80%d0%b8%d0%b3%d0%bb%d0%b0%d1%88%d0%b0%d0%b5%d1%82-%d0%bf%d0%be%d1%81%d0%bc%d0%be%d1%82%d1%80%d0%b5%d1%82%d1%8c-diptalk-%d0%b2%d0%bd%d0%b5%d1%88%d0%bd%d1%8f%d1%8f-%d0%bf/",
@@ -1556,20 +1563,6 @@
             "date": "2026-07-22T14:22:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/07/OkDfKNwGXa3Z3lEoAQAkSOa1Tszu3RIlmMO5OPiu-768x512.webp",
             "category": "Все новости"
-          },
-          {
-            "title": "Трамп пообещал помощь Ливану в ходе встречи с президентом Аун",
-            "url": "https://ru.armradio.am/2026/07/22/%d1%82%d1%80%d0%b0%d0%bc%d0%bf-%d0%bf%d0%be%d0%be%d0%b1%d0%b5%d1%89%d0%b0%d0%bb-%d0%bf%d0%be%d0%bc%d0%be%d1%89%d1%8c-%d0%bb%d0%b8%d0%b2%d0%b0%d0%bd%d1%83-%d0%b2-%d1%85%d0%be%d0%b4%d0%b5-%d0%b2%d1%81/",
-            "date": "2026-07-22T11:09:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/96cXZbHpzyaxvM2pgU5icgkr5adcMMJjULNKzZd1-768x512.webp",
-            "category": "В мире"
-          },
-          {
-            "title": "Алиев заявил, что поставки нефтепродуктов из Азербайджана являются важным вкладом в энергетическую безопасность Армении",
-            "url": "https://ru.armradio.am/2026/07/21/%d0%b0%d0%bb%d0%b8%d0%b5%d0%b2-%d0%b7%d0%b0%d1%8f%d0%b2%d0%b8%d0%bb-%d1%87%d1%82%d0%be-%d0%bf%d0%be%d1%81%d1%82%d0%b0%d0%b2%d0%ba%d0%b8-%d0%bd%d0%b5%d1%84%d1%82%d0%b5%d0%bf%d1%80%d0%be%d0%b4%d1%83/",
-            "date": "2026-07-21T14:18:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/navt-768x509.jpg",
-            "category": "Главная"
           }
         ]
       },
@@ -1652,6 +1645,20 @@
         "categoryKey": "economics",
         "articles": [
           {
+            "title": "США установили новые пошлины на импорт из 60 стран — Армении в списке нет",
+            "url": "https://ru.armradio.am/2026/07/24/%d1%81%d1%88%d0%b0-%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%b8%d0%bb%d0%b8-%d0%bd%d0%be%d0%b2%d1%8b%d0%b5-%d0%bf%d0%be%d1%88%d0%bb%d0%b8%d0%bd%d1%8b-%d0%bd%d0%b0-%d0%b8%d0%bc%d0%bf%d0%be%d1%80/",
+            "date": "2026-07-24T08:56:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/Jj2mOXBA7bQn27vG1HnzAC1hV66FlDGIDgortETu-768x512.jpg",
+            "category": "В мире"
+          },
+          {
+            "title": "Россельхознадзор ввёл ограничения на импорт молочной продукции из Армении",
+            "url": "https://ru.armradio.am/2026/07/24/%d1%80%d0%be%d1%81%d1%81%d0%b5%d0%bb%d1%8c%d1%85%d0%be%d0%b7%d0%bd%d0%b0%d0%b4%d0%b7%d0%be%d1%80-%d0%b2%d0%b2%d1%91%d0%bb-%d0%be%d0%b3%d1%80%d0%b0%d0%bd%d0%b8%d1%87%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bd/",
+            "date": "2026-07-24T07:58:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/xex4kOnvtKmrnQTMCjmhPYCE03z3adoiR77DQpGQ-768x512.jpg",
+            "category": "Все новости"
+          },
+          {
             "title": "Геворг Папоян и Дэвид Аллен обсудили процесс предоставления США Армении статуса страны с рыночной экономикой",
             "url": "https://ru.armradio.am/2026/07/23/%d0%b3%d0%b5%d0%b2%d0%be%d1%80%d0%b3-%d0%bf%d0%b0%d0%bf%d0%be%d1%8f%d0%bd-%d0%b8-%d0%b4%d1%8d%d0%b2%d0%b8%d0%b4-%d0%b0%d0%bb%d0%bb%d0%b5%d0%bd-%d0%be%d0%b1%d1%81%d1%83%d0%b4%d0%b8%d0%bb%d0%b8-%d0%bf/",
             "date": "2026-07-23T13:38:00.000Z",
@@ -1705,20 +1712,6 @@
             "url": "https://ru.armradio.am/2026/07/21/%d0%bc%d0%b8%d0%bd%d1%8d%d0%ba%d0%be%d0%bd%d0%be%d0%bc%d0%b8%d0%ba%d0%b8-%d0%bf%d1%80%d0%b8%d0%b3%d0%bb%d0%b0%d1%88%d0%b0%d0%b5%d1%82-%d0%bf%d1%80%d0%be%d0%b8%d0%b7%d0%b2%d0%be%d0%b4%d0%b8%d1%82%d0%b5/",
             "date": "2026-07-21T09:33:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/07/l-0x39wh-1536x895z-0.5117-768x448.jpeg",
-            "category": "Главная"
-          },
-          {
-            "title": "Рыбоводы проводят акцию протеста у здания правительства",
-            "url": "https://ru.armradio.am/2026/07/21/%d1%80%d1%8b%d0%b1%d0%be%d0%b2%d0%be%d0%b4%d1%8b-%d0%bf%d1%80%d0%be%d0%b2%d0%be%d0%b4%d1%8f%d1%82-%d0%b0%d0%ba%d1%86%d0%b8%d1%8e-%d0%bf%d1%80%d0%be%d1%82%d0%b5%d1%81%d1%82%d0%b0-%d1%83-%d0%b7%d0%b4/",
-            "date": "2026-07-21T08:42:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/dzuk-e1670923834587-768x511.jpeg",
-            "category": "Главная"
-          },
-          {
-            "title": "Геворг Папоян: в течение июля будет назначен управляющий компании «Араратцемент»",
-            "url": "https://ru.armradio.am/2026/07/21/%d0%b3%d0%b5%d0%b2%d0%be%d1%80%d0%b3-%d0%bf%d0%b0%d0%bf%d0%be%d1%8f%d0%bd-%d0%b2-%d1%82%d0%b5%d1%87%d0%b5%d0%bd%d0%b8%d0%b5-%d0%b8%d1%8e%d0%bb%d1%8f-%d0%b1%d1%83%d0%b4%d0%b5%d1%82-%d0%bd%d0%b0%d0%b7/",
-            "date": "2026-07-21T06:16:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/araratcement-300x197.jpeg",
             "category": "Главная"
           }
         ]
@@ -1802,6 +1795,27 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "США установили новые пошлины на импорт из 60 стран — Армении в списке нет",
+            "url": "https://ru.armradio.am/2026/07/24/%d1%81%d1%88%d0%b0-%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%b8%d0%bb%d0%b8-%d0%bd%d0%be%d0%b2%d1%8b%d0%b5-%d0%bf%d0%be%d1%88%d0%bb%d0%b8%d0%bd%d1%8b-%d0%bd%d0%b0-%d0%b8%d0%bc%d0%bf%d0%be%d1%80/",
+            "date": "2026-07-24T08:56:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/Jj2mOXBA7bQn27vG1HnzAC1hV66FlDGIDgortETu-768x512.jpg",
+            "category": "В мире"
+          },
+          {
+            "title": "Массированная атака БПЛА на Россию: пострадали склады Wildberries и промышленные объекты",
+            "url": "https://ru.armradio.am/2026/07/24/%d0%bc%d0%b0%d1%81%d1%81%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%bd%d0%b0%d1%8f-%d0%b0%d1%82%d0%b0%d0%ba%d0%b0-%d0%b1%d0%bf%d0%bb%d0%b0-%d0%bd%d0%b0-%d1%80%d0%be%d1%81%d1%81%d0%b8%d1%8e-%d0%bf%d0%be/",
+            "date": "2026-07-24T08:27:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/J4DC0Z46cZF7QFFUvnAMWDmhNopCdaWyJpoexXTp-768x512.jpg",
+            "category": "В мире"
+          },
+          {
+            "title": "На фоне продолжающихся атак США и Ирана Трамп заявил, что пока не будет вести переговоры о новом прекращении огня",
+            "url": "https://ru.armradio.am/2026/07/24/%d0%bd%d0%b0-%d1%84%d0%be%d0%bd%d0%b5-%d0%bf%d1%80%d0%be%d0%b4%d0%be%d0%bb%d0%b6%d0%b0%d1%8e%d1%89%d0%b8%d1%85%d1%81%d1%8f-%d0%b0%d1%82%d0%b0%d0%ba-%d1%81%d1%88%d0%b0-%d0%b8-%d0%b8%d1%80%d0%b0%d0%bd/",
+            "date": "2026-07-24T06:58:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/z3VFh8pQittCEU05gdGXi9NrNrmDzEwa0ifMXYSw-768x512.jpg",
+            "category": "В мире"
+          },
+          {
             "title": "Лукашенко: Белоруссия получит работников из Узбекистана взамен на мясо и молоко",
             "url": "https://ru.armradio.am/2026/07/23/%d0%bb%d1%83%d0%ba%d0%b0%d1%88%d0%b5%d0%bd%d0%ba%d0%be-%d0%b1%d0%b5%d0%bb%d0%be%d1%80%d1%83%d1%81%d1%81%d0%b8%d1%8f-%d0%bf%d0%be%d0%bb%d1%83%d1%87%d0%b8%d1%82-%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%bd/",
             "date": "2026-07-23T14:48:00.000Z",
@@ -1848,27 +1862,6 @@
             "url": "https://ru.armradio.am/2026/07/22/%d1%82%d1%80%d0%b0%d0%bc%d0%bf-%d0%bf%d0%be%d0%be%d0%b1%d0%b5%d1%89%d0%b0%d0%bb-%d0%bf%d0%be%d0%bc%d0%be%d1%89%d1%8c-%d0%bb%d0%b8%d0%b2%d0%b0%d0%bd%d1%83-%d0%b2-%d1%85%d0%be%d0%b4%d0%b5-%d0%b2%d1%81/",
             "date": "2026-07-22T11:09:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/07/96cXZbHpzyaxvM2pgU5icgkr5adcMMJjULNKzZd1-768x512.webp",
-            "category": "В мире"
-          },
-          {
-            "title": "Франция ввела пожизненное заключение за серийные изнасилования детей",
-            "url": "https://ru.armradio.am/2026/07/22/%d1%84%d1%80%d0%b0%d0%bd%d1%86%d0%b8%d1%8f-%d0%b2%d0%b2%d0%b5%d0%bb%d0%b0-%d0%bf%d0%be%d0%b6%d0%b8%d0%b7%d0%bd%d0%b5%d0%bd%d0%bd%d0%be%d0%b5-%d0%b7%d0%b0%d0%ba%d0%bb%d1%8e%d1%87%d0%b5%d0%bd%d0%b8/",
-            "date": "2026-07-22T06:29:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/CgDDWjA8U4vUqW9DcF6dHUV0jRBcidt2GGotHYM5-300x200.webp",
-            "category": "В мире"
-          },
-          {
-            "title": "Госдума РФ: мигрантов смогут выдворять за дискриминацию и неповиновение военным",
-            "url": "https://ru.armradio.am/2026/07/21/%d0%b3%d0%be%d1%81%d0%b4%d1%83%d0%bc%d0%b0-%d1%80%d1%84-%d0%bc%d0%b8%d0%b3%d1%80%d0%b0%d0%bd%d1%82%d0%be%d0%b2-%d1%81%d0%bc%d0%be%d0%b3%d1%83%d1%82-%d0%b2%d1%8b%d0%b4%d0%b2%d0%be%d1%80%d1%8f%d1%82/",
-            "date": "2026-07-21T10:35:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/1976373195_0_91_3072_1819_1920x0_80_0_0_792ea566b4003fe147e656a282f0acdc-768x432.jpg",
-            "category": "В мире"
-          },
-          {
-            "title": "Даниэль Ортега объявил, что в Никарагуа больше не будут проводиться выборы",
-            "url": "https://ru.armradio.am/2026/07/21/%d0%b4%d0%b0%d0%bd%d0%b8%d1%8d%d0%bb%d1%8c-%d0%be%d1%80%d1%82%d0%b5%d0%b3%d0%b0-%d0%be%d0%b1%d1%8a%d1%8f%d0%b2%d0%b8%d0%bb-%d1%87%d1%82%d0%be-%d0%b2-%d0%bd%d0%b8%d0%ba%d0%b0%d1%80%d0%b0%d0%b3%d1%83/",
-            "date": "2026-07-21T09:03:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/1310419310_16418936018351n-768x512.jpg",
             "category": "В мире"
           }
         ]
@@ -1952,6 +1945,20 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "«Пюник» уступил «Дебрецену» в первом матче второго раунда Лиги конференций",
+            "url": "https://ru.armradio.am/2026/07/24/%d0%bf%d1%8e%d0%bd%d0%b8%d0%ba-%d1%83%d1%81%d1%82%d1%83%d0%bf%d0%b8%d0%bb-%d0%b4%d0%b5%d0%b1%d1%80%d0%b5%d1%86%d0%b5%d0%bd%d1%83-%d0%b2-%d0%bf%d0%b5%d1%80%d0%b2%d0%be%d0%bc/",
+            "date": "2026-07-24T07:29:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/IfuELuSLDhvKwDMtgkORP5v2IChohhLQdgC4yd4x-768x512.jpg",
+            "category": "Все новости"
+          },
+          {
+            "title": "Лига конференций: «Ноа» сыграл вничью с «Зимбру»",
+            "url": "https://ru.armradio.am/2026/07/24/%d0%bb%d0%b8%d0%b3%d0%b0-%d0%ba%d0%be%d0%bd%d1%84%d0%b5%d1%80%d0%b5%d0%bd%d1%86%d0%b8%d0%b9-%d0%bd%d0%be%d0%b0-%d1%81%d1%8b%d0%b3%d1%80%d0%b0%d0%bb-%d0%b2%d0%bd%d0%b8%d1%87%d1%8c%d1%8e/",
+            "date": "2026-07-24T06:29:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/t05RnlsRDrjjVnTps8j7mzQochjzWB2MUFRyN4Lh-768x512.jpg",
+            "category": "Все новости"
+          },
+          {
             "title": "Гор Хачатрян – чемпион мира по стрельбе, Айк Минасян – бронзовый призёр",
             "url": "https://ru.armradio.am/2026/07/23/%d0%b3%d0%be%d1%80-%d1%85%d0%b0%d1%87%d0%b0%d1%82%d1%80%d1%8f%d0%bd-%d1%87%d0%b5%d0%bc%d0%bf%d0%b8%d0%be%d0%bd-%d0%bc%d0%b8%d1%80%d0%b0-%d0%bf%d0%be-%d1%81%d1%82%d1%80%d0%b5%d0%bb%d1%8c/",
             "date": "2026-07-23T10:04:00.000Z",
@@ -2006,20 +2013,6 @@
             "date": "2026-07-20T10:21:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/07/zvpsmm750x0ok5093euvtikaw2w06si6-768x527.webp",
             "category": "Все новости"
-          },
-          {
-            "title": "Трагедия в Испании: во время празднования победы на ЧМ‑2026 погиб 13‑летний подросток",
-            "url": "https://ru.armradio.am/2026/07/20/%d1%82%d1%80%d0%b0%d0%b3%d0%b5%d0%b4%d0%b8%d1%8f-%d0%b2-%d0%b8%d1%81%d0%bf%d0%b0%d0%bd%d0%b8%d0%b8-%d0%b2%d0%be-%d0%b2%d1%80%d0%b5%d0%bc%d1%8f-%d0%bf%d1%80%d0%b0%d0%b7%d0%b4%d0%bd%d0%be%d0%b2%d0%b0/",
-            "date": "2026-07-20T09:23:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/gga1VM5fkzbEym85PDIo5K1aEeoFDKEjz7njL6V3-768x512.jpg",
-            "category": "В мире"
-          },
-          {
-            "title": "Испания вновь завоевала титул чемпиона мира — спустя 16 лет",
-            "url": "https://ru.armradio.am/2026/07/20/%d0%b8%d1%81%d0%bf%d0%b0%d0%bd%d0%b8%d1%8f-%d0%b2%d0%bd%d0%be%d0%b2%d1%8c-%d0%b7%d0%b0%d0%b2%d0%be%d0%b5%d0%b2%d0%b0%d0%bb%d0%b0-%d1%82%d0%b8%d1%82%d1%83%d0%bb-%d1%87%d0%b5%d0%bc%d0%bf%d0%b8%d0%be/",
-            "date": "2026-07-20T07:27:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/07/ZuiaJ8TzBJXbg1eaCLgfSZvxQx40c40ZsnE7q3Mc-768x512.jpg",
-            "category": "Все новости"
           }
         ]
       }
@@ -2030,64 +2023,64 @@
       "categoryKey": "actualites",
       "articles": [
         {
-          "title": "Mesures communes pour approfondir le partenariat stratégique franco-arménien",
-          "url": "https://www.armenews.com/mesures-communes-pour-approfondir-le-partenariat-strategique-franco-armenien/",
-          "date": "2026-07-23T16:38:40.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/9800.jpeg"
+          "title": "La Russie interdit les importations de produits laitiers d’Arménie",
+          "url": "https://www.armenews.com/la-russie-interdit-les-importations-de-produits-laitiers-darmenie/",
+          "date": "2026-07-24T07:48:37.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Caricature-2009-3-La-Vache-la-diaspora-vue-dArmenie-Copie.jpg"
         },
         {
-          "title": "Le Catholicos de tous les Arméniens, Karékine II d’Etchmiadzine n’est pas invité à la première session de l’Assemblée nationale d’Arménie",
-          "url": "https://www.armenews.com/le-catholicos-de-tous-les-armeniens-karekine-ii-detchmiadzine-nest-pas-invite-a-la-premiere-session-de-lassemblee-nationale-darmenie/",
-          "date": "2026-07-23T16:26:20.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/5568.webp"
+          "title": "Nous appelons à retirer toutes suggestions selon lesquelles l’OSCE pourrait soutenir la destitution du Catholicos",
+          "url": "https://www.armenews.com/nous-appelons-a-retirer-toute-suggestion-selon-laquelle-losce-pourrait-soutenir-la-destitution-du-catholicos/",
+          "date": "2026-07-24T06:31:47.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-24-a-07.36.26.png"
         },
         {
-          "title": "Le grand maître Arménien des échecs Levon Aronian remporte le tournoi régional du Festival d’échecs de Bienne 2026",
-          "url": "https://www.armenews.com/le-grand-maitre-armenien-des-echecs-levon-aronian-remporte-le-tournoi-regional-du-festival-dechecs-de-bienne-2026/",
-          "date": "2026-07-23T16:12:35.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/340595.jpg"
+          "title": "Un tribunal de Erevan refuse de libérer un député de l’opposition pourtant réélu en juin, un an après son arrestation pour tentative de coup d’Etat",
+          "url": "https://www.armenews.com/un-tribunal-de-erevan-refuse-de-liberer-un-depute-de-lopposition-pourtant-reelu-en-juin-un-an-apres-son-arrestation-pour-tentative-de-coup-detat/",
+          "date": "2026-07-24T06:31:11.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-24-a-07.16.33.png"
         },
         {
-          "title": "Un centre éducatif « Pôle des technologies vertes » et des abris technologiques « Chillwithtech » seront construits dans le village de Mamashen à Akhurian en Arménie",
-          "url": "https://www.armenews.com/un-centre-educatif-pole-des-technologies-vertes-et-des-abris-technologiques-chillwithtech-seront-construits-dans-le-village-de-mamashen-a-akhurian-en-armenie/",
-          "date": "2026-07-23T12:50:00.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/8783.png"
+          "title": "Une caution d’un milliard de drams et une interdiction de quitter le territoire pour Narek Karapetyan",
+          "url": "https://www.armenews.com/une-caution-dun-milliard-de-drams-et-une-interdiction-de-quitter-le-territoire-pour-narek-karapetyan/",
+          "date": "2026-07-24T06:30:53.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-24-a-07.56.44.png"
         },
         {
-          "title": "Stage de formation pédagogique en Arménie avec la participation de l’équipe britannique de formation et de conseil militaire",
-          "url": "https://www.armenews.com/stage-de-formation-pedagogique-en-armenie-avec-la-participation-de-lequipe-britannique-de-formation-et-de-conseil-militaire/",
-          "date": "2026-07-23T12:19:59.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/9899-1.jpg"
+          "title": "Turquie: la Cour constitutionnelle décide d’indemniser les familles des victimes d’un massacre de 1993",
+          "url": "https://www.armenews.com/turquie-la-cour-constitutionnelle-decide-dindemniser-les-familles-des-victimes-dun-massacre-de-1993/",
+          "date": "2026-07-24T06:30:49.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/HLCZ-S_WkAAefDu.jpeg"
         },
         {
-          "title": "En Arménie, les plaques d’immatriculation comportant des zéros sont désormais disponibles sans enchères et à un prix fixe",
-          "url": "https://www.armenews.com/en-armenie-les-plaques-dimmatriculation-comportant-des-zeros-sont-desormais-disponibles-sans-encheres-et-a-un-prix-fixe/",
-          "date": "2026-07-23T10:51:26.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/8794.jpg"
+          "title": "Décrypatge – Merz a-t-il cherché à convaincre ou à mettre en garde Nikol Pachinian ? par Hakob Badalyan",
+          "url": "https://www.armenews.com/decrypatge-merz-a-t-il-cherche-a-convaincre-ou-a-mettre-en-garde-nikol-pachinian-par-hakob-badalyan/",
+          "date": "2026-07-24T06:30:46.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/67493_b.jpeg"
         },
         {
-          "title": "Découverte en Arménie d’une fresque exceptionnelle de 2700 ans lors des fouilles sur le site antique Urartéen d’Erebuni",
-          "url": "https://www.armenews.com/decouverte-en-armenie-dune-fresque-exceptionnelle-de-2700-ans-lors-des-fouilles-sur-le-site-antique-urarteen-derebuni/",
-          "date": "2026-07-23T10:07:46.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/5567-1.jpg"
+          "title": "L’alliance d’opposition Hayastan nomme Anna Grigorian à la présidence de son groupe parlementaire",
+          "url": "https://www.armenews.com/lalliance-dopposition-hayastan-nomme-anna-grigorian-a-la-presidence-de-son-groupe-parlementaire/",
+          "date": "2026-07-24T06:30:45.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-24-a-07.23.05.png"
         },
         {
-          "title": "HayPost la poste d’Arménie vient d’honorer par un timbre-poste le 100e anniversaire du footballeur Nikita Simonyan",
-          "url": "https://www.armenews.com/haypost-la-poste-darmenie-vient-dhonorer-par-un-timbre-poste-le-100e-anniversaire-du-footballeur-nikita-simonyan/",
-          "date": "2026-07-23T09:50:31.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/8399.jpg"
+          "title": "Une commission de la Chambre des représentants américaine demande la libération immédiate des Arméniens détenus illégalement à Bakou",
+          "url": "https://www.armenews.com/une-commission-de-la-chambre-des-representants-americaine-demande-la-liberation-immediate-des-armeniens-detenus-illegalement-a-bakou/",
+          "date": "2026-07-24T06:30:22.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-23-a-20.43.45.png"
         },
         {
-          "title": "Berlin consacre le nouveau statut européen de l’Azerbaïdjan",
-          "url": "https://www.armenews.com/berlin-consacre-le-nouveau-statut-europeen-de-lazerbaidjan/",
-          "date": "2026-07-23T06:31:35.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-23-a-08.29.27.png"
+          "title": "Une autre entreprise de Tsarukian fermée par les autorités arméniennes",
+          "url": "https://www.armenews.com/une-autre-entreprise-de-tsarukian-fermee-par-les-autorites-armeniennes/",
+          "date": "2026-07-24T06:30:13.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-24-a-07.26.06.png"
         },
         {
-          "title": "La commission des Affaires étrangères de la Chambre des représentants demande à l’Azerbaïdjan de libérer immédiatement les otages arméniens",
-          "url": "https://www.armenews.com/la-commission-des-affaires-etrangeres-de-la-chambre-des-representants-demande-a-lazerbaidjan-de-liberer-immediatement-les-otages-armeniens/",
-          "date": "2026-07-23T06:31:11.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-23-a-08.15.23.png"
+          "title": "Un ministre israélien prie sur l’esplanade des Mosquées à Jérusalem, en violation du statu quo",
+          "url": "https://www.armenews.com/un-ministre-israelien-prie-sur-lesplanade-des-mosquees-a-jerusalem-en-violation-du-statu-quo/",
+          "date": "2026-07-24T06:29:30.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-24-a-08.18.54.png"
         }
       ]
     },
@@ -2225,6 +2218,12 @@
       "categoryKey": "culture",
       "articles": [
         {
+          "title": "Atelier d’Aquarelle à la Fondation Boghossian de Bruxelles le 2 août",
+          "url": "https://www.armenews.com/atelier-daquarelle-a-la-fondation-boghossian-de-bruxelles-le-2-aout/",
+          "date": "2026-07-24T06:30:20.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-22-a-10.47.33.png"
+        },
+        {
           "title": "Rétrospective Léon Tutundjian à Grenoble jusqu’au 30 août",
           "url": "https://www.armenews.com/328619-2/",
           "date": "2026-07-23T06:30:37.000Z",
@@ -2277,12 +2276,6 @@
           "url": "https://www.armenews.com/simon-abkarian-recoit-la-medaille-dor-du-ministere-armenien-de-la-culture/",
           "date": "2026-07-17T06:30:01.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/HNX6lOSWQAA9sbM.jpeg"
-        },
-        {
-          "title": "Récital de Marie Yevkiné Tirard à Paris le 29 juillet",
-          "url": "https://www.armenews.com/recital-de-marie-yevkine-tirard-a-paris-le-29-juillet/",
-          "date": "2026-07-16T06:30:25.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/HKWAGR300dpi-89-scaled-e1772625928324.jpg"
         }
       ]
     },
@@ -2607,6 +2600,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Le Premier ministre arménien félicite le président égyptien pour la fête nationale",
+          "url": "https://armenieinfo.tv/le-premier-ministre-armenien-felicite-le-president-egyptien-pour-la-fete-nationale/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1784802742-7512.jpg"
+        },
+        {
           "title": "Un Arménien entre dans la gouvernance mondiale de la santé numérique",
           "url": "https://armenieinfo.tv/un-armenien-entre-dans-la-gouvernance-mondiale-de-la-sante-numerique/",
           "date": null,
@@ -2659,12 +2658,6 @@
           "url": "https://armenieinfo.tv/la-turquie-loriginal-en-pieces-rapportees/",
           "date": null,
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-21-juil.-2026-01_44_39.png"
-        },
-        {
-          "title": "Erevan, la ville mise en demeure",
-          "url": "https://armenieinfo.tv/erevan-la-ville-mise-en-demeure/",
-          "date": null,
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-20-juil.-2026-03_18_44.png"
         }
       ]
     },
@@ -2676,6 +2669,12 @@
           "url": "https://armenieinfo.tv/sevan-yerevantsi-cest-une-maniere-de-porter-son-histoire-et-de-la-faire-voyager/",
           "date": null,
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/b9721880-4a8c-4985-8ae4-5322107bc20b.png"
+        },
+        {
+          "title": "Erevan, la ville mise en demeure",
+          "url": "https://armenieinfo.tv/erevan-la-ville-mise-en-demeure/",
+          "date": null,
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-20-juil.-2026-03_18_44.png"
         },
         {
           "title": "La responsabilité de parler de culture et de valeurs doit devenir une responsabilité pratique : Ministre de l’Éducation, des Sciences, de la Culture et des Sports",
@@ -3615,6 +3614,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Yerevan-Urumqi: From Silk Road legacy to modern-day connectivity",
+            "url": "https://armenpress.am/en/article/1256354",
+            "date": "2026-07-24T08:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/VmTL5C3BCxvYCOb3kl8Q6PzUyPwAZcjVvOtJFLkQ.webp"
+          },
+          {
             "title": "Washington must rethink its approach to dialogue with Tehran, Araghchi says",
             "url": "https://armenpress.am/en/article/1256330",
             "date": "2026-07-23T17:04:00.000Z",
@@ -3667,12 +3672,6 @@
             "url": "https://armenpress.am/en/article/1256256",
             "date": "2026-07-23T08:28:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/23/HHLioKFNG2ycLZrhNDflreH7J6rIGkanWKCu9eA6.webp"
-          },
-          {
-            "title": "EAEU working to establish new free trade areas, Russian Foreign Ministry says",
-            "url": "https://armenpress.am/en/article/1256180",
-            "date": "2026-07-22T11:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/22/My0bJPeYO3k1Qhp2Q56XQsC9xEVFhvHFo3fZUBYz.webp"
           }
         ]
       },
@@ -3942,70 +3941,88 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "«Փարոս» բարեգործական հիմնադրամի միջոցներով Գյումրիում կառուցվում է սոցիալական բնակելի շենք",
+            "url": "https://armenpress.am/hy/article/1256367",
+            "date": "2026-07-24T09:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/px6A7gvsdUfBwnmHhij6h2f5CUpikFdYymSxWYiO.webp"
+          },
+          {
+            "title": "Իլիկավանքն ու նրան շրջապատող բերդշենը",
+            "url": "https://armenpress.am/hy/article/1256359",
+            "date": "2026-07-24T08:01:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/YqMYPC2vLvhRKn2u3xQUuJBEID3QBUFxsbiqQnZA.webp"
+          },
+          {
+            "title": "«Արենի 1 քարայր. նախնադարյան կյանքը և գինեգործությունն Արփա գետի հովտում» հայտն ընդգրկվել է ՅՈՒՆԵՍԿՕ-ի համաշխարհային ժառանգության նախնական ցանկում",
+            "url": "https://armenpress.am/hy/article/1256358",
+            "date": "2026-07-24T07:57:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/Exqge8FeGJZYp4Fn9tDC80GW4Yr9UjEvEZgKyhyj.webp"
+          },
+          {
+            "title": "Հայաստանում ԱԶԲ-ի ընդհանուր հանձնառությունների ծավալը հասել է մոտ 2.5 միլիարդ ԱՄՆ դոլարի. Լյազիզա Սաբիրովայի հարցազրույցը",
+            "url": "https://armenpress.am/hy/article/1256353",
+            "date": "2026-07-24T07:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/GVBmDUg56RUsnzal3xDFTKljWih0nssMBuLPhvYK.webp"
+          },
+          {
+            "title": "Կիբեռոստիկանությունը զգուշացնում է iMessage-ի միջոցով կատարվող զեղծարարության մասին",
+            "url": "https://armenpress.am/hy/article/1256352",
+            "date": "2026-07-24T07:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/WEMalMuw4fqkJOafAViNLKX5pvhoAuf2rRw1hVkE.webp"
+          },
+          {
+            "title": "«Ռոսսելխոզնադզոր»-ը սահմանափակում է Հայաստանից կաթնամթերքի ներմուծումը Ռուսաստան",
+            "url": "https://armenpress.am/hy/article/1256351",
+            "date": "2026-07-24T07:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/xex4kOnvtKmrnQTMCjmhPYCE03z3adoiR77DQpGQ.webp"
+          },
+          {
+            "title": "Ֆասթ Բանկի հովանավորությամբ կայացել է «Հուսո առագաստ» փառատոնի եզրափակիչ հավաքը",
+            "url": "https://armenpress.am/hy/article/1256348",
+            "date": "2026-07-24T06:37:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/rry87Ii4Fb9oAXPmxuabW0SrPvsNIYNWrtgoHjD5.webp"
+          },
+          {
+            "title": "ՀՀ պետբյուջերի եկամուտները 2026 թվականի առաջին կիսամյակում կազմել են 1,643 մլրդ դրամ",
+            "url": "https://armenpress.am/hy/article/1256347",
+            "date": "2026-07-24T06:35:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/iw1Blz3pZaXUDiiZxh7YGIY43FV5XcqHSDNFB12H.webp"
+          },
+          {
+            "title": "ՆԳՆ-ն հատուկ միջոցառումներ է իրականացրել. հայտնաբերվել են հետախուզվողներ, ապօրինի պահվող զենք-զինամթերք, թմրամիջոցներ",
+            "url": "https://armenpress.am/hy/article/1256346",
+            "date": "2026-07-24T06:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/3lW4vGCmDVyml0TyG6xTtVHDLj55wfhH1ixFEQOd.webp"
+          },
+          {
             "title": "Ոստիկանությունը հայտնաբերել և ձերբակալել է Էրեբունիում ողբերգական ելքով կրակոցների միջադեպին մասնակցելու մեջ կասկածվող երկու հետախուզվողի",
             "url": "https://armenpress.am/hy/article/1256336",
             "date": "2026-07-23T19:59:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/24/ew3okULEelUh7NVkSCwp9KtEgiaGSQmtXNcpGqUB.webp"
-          },
-          {
-            "title": "Կոնֆերենցիաների լիգա. «Փյունիկ»-ն արտագնա խաղում զիջեց «Դեբրեցեն»-ին",
-            "url": "https://armenpress.am/hy/article/1256335",
-            "date": "2026-07-23T17:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/IfuELuSLDhvKwDMtgkORP5v2IChohhLQdgC4yd4x.webp"
-          },
-          {
-            "title": "ՀՀ-ում ԵՄ պատվիրակության ներկայացուցիչները հանդիպել են «Էրազմուս Մունդուս» ծրագրի հայ ուսանողների հետ",
-            "url": "https://armenpress.am/hy/article/1256332",
-            "date": "2026-07-23T17:23:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/9tncFxUqtX4wyooi0tAp1SacFHFtA1USPgZFdHiS.webp"
-          },
-          {
-            "title": "Կոնֆերենցիաների լիգա. «Ալաշկերտ»-ը չհաղթեց «Կլուժ»-ին",
-            "url": "https://armenpress.am/hy/article/1256331",
-            "date": "2026-07-23T16:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/rjmPicFeIgDGCPlda3t2Ipt7iQLFb7qnBFEA1DOw.webp"
-          },
-          {
-            "title": "ՀՀ-ում ընտանեկան և կենցաղային բռնության մասին հաղորդումների թիվն ավելացել է",
-            "url": "https://armenpress.am/hy/article/1256329",
-            "date": "2026-07-23T16:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/TXSRCMpFObSnjrMdlbEg9cipApfnv156wKeObDtz.webp"
-          },
-          {
-            "title": "Գևորգ Պապոյանն այցելել է Արարատի ցեմենտի գործարան",
-            "url": "https://armenpress.am/hy/article/1256325",
-            "date": "2026-07-23T15:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/onvAaU8AY8lNYIyru5B2ZgdgcjcZjMAYcSo4NkVA.webp"
-          },
-          {
-            "title": "Ոստիկանները հայտնաբերել են քրեական օրենսգրքի մի շարք հոդվածների մեղադրանքներով հետախուզվողին",
-            "url": "https://armenpress.am/hy/article/1256324",
-            "date": "2026-07-23T15:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/9dDqXHbgLPrcaM95iHk4Nq3YGSZbCaLfdctOLxTZ.webp"
-          },
-          {
-            "title": "Կիբեռոստիկանությունը հայտնել է հերթական հանցավոր խմբավորման գործունեությունը կասեցնելու մասին",
-            "url": "https://armenpress.am/hy/article/1256321",
-            "date": "2026-07-23T14:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/EZzu9l9pPlMUdVh8sIr6ixbAEz1J219w7LY3abYu.webp"
-          },
-          {
-            "title": "Լոռու մարզում 2026 թվականի առաջին կիսամյակում սպանության դեպք չի արձանագրվել",
-            "url": "https://armenpress.am/hy/article/1256320",
-            "date": "2026-07-23T14:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/LxaIgffgvEogsK9BMGtrGmIHiwJq47EAczeTblzL.webp"
-          },
-          {
-            "title": "Սիպիլն իր նոր տեսահոլովակում կենդանացրել է Կոմիտասի ձայնը. «Արորն ու տատրակը»՝ նոր մատուցմամբ",
-            "url": "https://armenpress.am/hy/article/1256319",
-            "date": "2026-07-23T14:17:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/6DdJSATCuJVPkiicrbDZq1uXChAUBm9r45wVLytL.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Հայաստանում ԱԶԲ-ի ընդհանուր հանձնառությունների ծավալը հասել է մոտ 2.5 միլիարդ ԱՄՆ դոլարի. Լյազիզա Սաբիրովայի հարցազրույցը",
+            "url": "https://armenpress.am/hy/article/1256353",
+            "date": "2026-07-24T07:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/GVBmDUg56RUsnzal3xDFTKljWih0nssMBuLPhvYK.webp"
+          },
+          {
+            "title": "«Ռոսսելխոզնադզոր»-ը սահմանափակում է Հայաստանից կաթնամթերքի ներմուծումը Ռուսաստան",
+            "url": "https://armenpress.am/hy/article/1256351",
+            "date": "2026-07-24T07:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/xex4kOnvtKmrnQTMCjmhPYCE03z3adoiR77DQpGQ.webp"
+          },
+          {
+            "title": "ՀՀ պետբյուջերի եկամուտները 2026 թվականի առաջին կիսամյակում կազմել են 1,643 մլրդ դրամ",
+            "url": "https://armenpress.am/hy/article/1256347",
+            "date": "2026-07-24T06:35:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/iw1Blz3pZaXUDiiZxh7YGIY43FV5XcqHSDNFB12H.webp"
+          },
           {
             "title": "Եվրոպական ինդեքսներ - 23/07/26",
             "url": "https://armenpress.am/hy/article/1256341",
@@ -4047,24 +4064,6 @@
             "url": "https://armenpress.am/hy/article/1256305",
             "date": "2026-07-23T13:00:12.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/23/lvzYVmuoOrF2gtbudibS2XbvgpdpR78JQGGjnNoi.webp"
-          },
-          {
-            "title": "Գևորգ Պապոյանն ու Դեյվիդ Ալենը քննարկել են ԱՄՆ-ի կողմից ՀՀ-ին Շուկայական տնտեսություն ունեցող երկրի կարգավիճակ շնորհելու գործընթացը",
-            "url": "https://armenpress.am/hy/article/1256295",
-            "date": "2026-07-23T11:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/XjyhGRf2YKOEGPg4Hm7hErSMOkheNBaTNFG0K7d9.webp"
-          },
-          {
-            "title": "Անուշիկ Ավետյանն ու Գոհար Աբաջյանը Հռոմում քննարկել են Հայաստանում CIHEAM Bari-ի փորձի կիրառման հնարավորությունները",
-            "url": "https://armenpress.am/hy/article/1256289",
-            "date": "2026-07-23T11:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/mUmtvZvleoZLwiTZFRQrY2h9BCooBqzbvWakaU7X.webp"
-          },
-          {
-            "title": "Կուտականում 2018-2025 թթ-ին իրականացվել է սոցիալ-տնտեսական նշանակության 4 ծրագիր՝ 102 միլիոն 130 հազար դրամ ներդրմամբ",
-            "url": "https://armenpress.am/hy/article/1256287",
-            "date": "2026-07-23T11:01:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/694pYTMSf12PJvTDnr0xbDAAWg5EQq0T2v9YiaXr.webp"
           }
         ]
       },
@@ -4072,70 +4071,82 @@
         "categoryKey": "world",
         "articles": [
           {
-            "title": "ԱՄՆ-ի և Իրանի շարունակական հարվածների ֆոնին Թրամփը հայտնել է, որ առայժմ չի բանակցի նոր հրադադարի շուրջ",
-            "url": "https://armenpress.am/hy/article/1256344",
-            "date": "2026-07-24T06:07:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/24/z3VFh8pQittCEU05gdGXi9NrNrmDzEwa0ifMXYSw.webp"
+            "title": "Իրանը մերժել է ԱՄՆ-ի հրադադարի առաջարկը, որը ներկայացրել է Իրաքի վարչապետը. NYT",
+            "url": "https://armenpress.am/hy/article/1256368",
+            "date": "2026-07-24T09:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/D3E8zERhVctIE2NZVXe2V9aciWCz70Jzpj1BapQq.webp"
           },
           {
-            "title": "ՄԱԿ-ի գլխավոր քարտուղարը հայտարարել է Մերձավոր Արևելքում տիրող իրավիճակի անվերահսկելի դառնալու մասին",
-            "url": "https://armenpress.am/hy/article/1256334",
-            "date": "2026-07-23T17:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/S7NkLt0lKLVnrY72aaREY5GBxfu46JESED0aPDhK.webp"
+            "title": "Իսպանիան ազգային մասշտաբի արտակարգ դրություն է հայտարարել անտառային հրդեհների պատճառով",
+            "url": "https://armenpress.am/hy/article/1256365",
+            "date": "2026-07-24T08:57:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/TCcUHBkwyg91N7YL7eMrkfsnARjRm2xGhGVPWEfr.webp"
           },
           {
-            "title": "Գերմանիայում ձերբակալել են բանկի աշխատակցին դանակահարած հանցագործին",
-            "url": "https://armenpress.am/hy/article/1256333",
-            "date": "2026-07-23T17:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/oQljfqL5yTtZNywuxLT0xJysNXV2Yx54E8whd7Kl.webp"
+            "title": "ԵՄ-ն արգելք է սահմանել Վրաստանի Կուլևիի նավթավերամշակման գործարանի գործառնությունների համար",
+            "url": "https://armenpress.am/hy/article/1256363",
+            "date": "2026-07-24T08:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/eSJK5Rh3lhp3GhMlajIrI9n5hurTR0e8LDJ7kekU.webp"
           },
           {
-            "title": "Վաշինգտոնը պետք է վերանայի իր մոտեցումը Թեհրանի հետ երկխոսության նկատմամբ․ Արաղչի",
-            "url": "https://armenpress.am/hy/article/1256330",
-            "date": "2026-07-23T16:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/8xlgFZ6COvPDuxgcEXbwv3kzHGrXSkXvvcHIVwrq.webp"
+            "title": "Զելենսկին հուլիսի 28-ին կհանդիպի Թրամփի հետ. DW",
+            "url": "https://armenpress.am/hy/article/1256362",
+            "date": "2026-07-24T08:12:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/z0Ujjvm2dxYafC776WDCTuqE0SBjGDgBPNj5U8oS.webp"
           },
           {
-            "title": "Գերմանիայում մեկ մարդ է սպանվել բանկի բաժանմունքի վրա հարձակման ժամանակ",
-            "url": "https://armenpress.am/hy/article/1256328",
-            "date": "2026-07-23T16:19:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/NBS06vQtvgLKIMfsG1jcEOwLSmyIUWHutws5W0l4.webp"
+            "title": "Երևան-Ուրումչի. վերակենդանացնելով Մետաքսի ճանապարհի կապերը նոր ժամանակներում",
+            "url": "https://armenpress.am/hy/article/1256354",
+            "date": "2026-07-24T08:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/VmTL5C3BCxvYCOb3kl8Q6PzUyPwAZcjVvOtJFLkQ.webp"
           },
           {
-            "title": "ԵՄ-ն դատապարտել է Սաուդյան Արաբիայի դեմ հութիների սպառնալիքներն ու Կարմիր ծովում լցանավի վրա հարձակումը",
-            "url": "https://armenpress.am/hy/article/1256327",
-            "date": "2026-07-23T16:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/7rwWICggThMzl2Y7pat9hrnfFJIkFgoopv4oSW2b.webp"
+            "title": "ԵՄ-ն պարզաբանումներ կպահանջի ԱՄՆ-ից նոր մաքսատուրքերի սահմանման համար. Կալաս",
+            "url": "https://armenpress.am/hy/article/1256360",
+            "date": "2026-07-24T08:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/WaNDf7trUZESvzmhkaOvrX52CGS1EO2nslORrvWj.webp"
           },
           {
-            "title": "ԻՀՊԿ-ն հայտարարել է ամերիկյան բանակի ռադիոէլեկտրոնային պայքարի ստորաբաժանման ոչնչացման մասին",
-            "url": "https://armenpress.am/hy/article/1256326",
-            "date": "2026-07-23T15:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/uT7x7HXjsZCTn3jKNHqz8zZZmM63iQiMbw6EKZSK.webp"
+            "title": "ԱՄՆ-ն 10-12,5 տոկոս ​​նոր մաքսատուրքեր է սահմանել 60 երկրի նկատմամբ",
+            "url": "https://armenpress.am/hy/article/1256356",
+            "date": "2026-07-24T07:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/Jj2mOXBA7bQn27vG1HnzAC1hV66FlDGIDgortETu.webp"
           },
           {
-            "title": "ԱՄՆ-ն 200 միլիոն դոլարի մարդասիրական օգնություն կհատկացնի ԿԽՄԿ-ին և ԿԽՄՖ-ին",
-            "url": "https://armenpress.am/hy/article/1256323",
-            "date": "2026-07-23T14:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/aEeiwMYtJSr4ZY9dfVNISMrXOYShz4e3wGCl3BNL.webp"
+            "title": "ՌԴ-ի վրա արձակվել է 571 ԱԹՍ, կրկին թիրախավորվել են Wildberries-ի պահեստները",
+            "url": "https://armenpress.am/hy/article/1256350",
+            "date": "2026-07-24T07:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/J4DC0Z46cZF7QFFUvnAMWDmhNopCdaWyJpoexXTp.webp"
           },
           {
-            "title": "Զելենսկին հայտնել է, որ ԱՄՆ-ն ունի Ռուսաստանի և Ուկրաինայի միջև պատերազմը դադարեցնելու մի քանի ծրագիր",
-            "url": "https://armenpress.am/hy/article/1256322",
-            "date": "2026-07-23T14:43:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/M5f0Rhxgr8qME6bvCHYmM5Rh603ouuXgUYQVyik4.webp"
+            "title": "Արաղչին նախազգուշացրել է ԱՄՆ-ի կողմից իրանական ակտիվների բռնագրավման հետևանքների մասին",
+            "url": "https://armenpress.am/hy/article/1256349",
+            "date": "2026-07-24T06:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/HTosDyfsWn5d5MmHe2ZunkiuJGjVILanxDBmL2eE.webp"
           },
           {
-            "title": "Մոլդովայի խորհրդարանը վավերացրել է Ուկրաինայի համար ՌԴ-ից պատերազմի վնասի համար փոխհատուցում պահանջելու մասին կոնվենցիան․ Moldpres",
-            "url": "https://armenpress.am/hy/article/1256316",
-            "date": "2026-07-23T13:51:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/sxVXaOWmRvKnAz7k1spg5jleBq5sQeblUU9keDfG.webp"
+            "title": "Թրամփը հայտարարել է, որ նավերին հասցված վնասը կփոխհատուցվի ԱՄՆ-ում պահվող իրանական սառեցված ակտիվների հաշվին",
+            "url": "https://armenpress.am/hy/article/1256345",
+            "date": "2026-07-24T06:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/02nqzRIYXn6OmbOfVRYhpohXkaLlQanDBz3aaEHS.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "«Արենի 1 քարայր. նախնադարյան կյանքը և գինեգործությունն Արփա գետի հովտում» հայտն ընդգրկվել է ՅՈՒՆԵՍԿՕ-ի համաշխարհային ժառանգության նախնական ցանկում",
+            "url": "https://armenpress.am/hy/article/1256358",
+            "date": "2026-07-24T07:57:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/Exqge8FeGJZYp4Fn9tDC80GW4Yr9UjEvEZgKyhyj.webp"
+          },
+          {
+            "title": "Ֆասթ Բանկի հովանավորությամբ կայացել է «Հուսո առագաստ» փառատոնի եզրափակիչ հավաքը",
+            "url": "https://armenpress.am/hy/article/1256348",
+            "date": "2026-07-24T06:37:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/rry87Ii4Fb9oAXPmxuabW0SrPvsNIYNWrtgoHjD5.webp"
+          },
           {
             "title": "Սիպիլն իր նոր տեսահոլովակում կենդանացրել է Կոմիտասի ձայնը. «Արորն ու տատրակը»՝ նոր մատուցմամբ",
             "url": "https://armenpress.am/hy/article/1256319",
@@ -4183,18 +4194,6 @@
             "url": "https://armenpress.am/hy/article/1256085",
             "date": "2026-07-22T05:20:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/21/wqQbwTwtcfNBx64w7QPy90odQDG3xVx4JWuZbJ53.webp"
-          },
-          {
-            "title": "Հայտնի են «Փոքրիկ քայլ» երաժիշտ-կատարողների մանկապատանեկան 7-րդ միջազգային մրցույթ-փառատոնի մրցանակակիրները",
-            "url": "https://armenpress.am/hy/article/1255990",
-            "date": "2026-07-20T13:07:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/20/JGgzv2FukVVWpWB0KGMzApL3AmhKKwEt8gkIADU2.webp"
-          },
-          {
-            "title": "23-րդ «Ոսկե ծիրանը» հատեց եզրագիծը. հայտնի են հաղթողները",
-            "url": "https://armenpress.am/hy/article/1255918",
-            "date": "2026-07-19T18:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/19/oIrs2AUH1lWI72WQATptROcn3i32OcGUZGzZorqr.webp"
           }
         ]
       },
@@ -4399,6 +4398,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Общий объем обязательств Азиатского банка развития (АБР) в Армении достигает почти 2,5 миллиарда долларов - интервью с Лязизой Сабировой",
+            "url": "https://armenpress.am/ru/article/1256353",
+            "date": "2026-07-24T08:47:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/GVBmDUg56RUsnzal3xDFTKljWih0nssMBuLPhvYK.webp"
+          },
+          {
+            "title": "Заявка «Пещера Арени 1: Доисторическая жизнь и виноделие в долине реки Арпа» включена в предварительный список всемирного наследия ЮНЕСКО",
+            "url": "https://armenpress.am/ru/article/1256358",
+            "date": "2026-07-24T08:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/Exqge8FeGJZYp4Fn9tDC80GW4Yr9UjEvEZgKyhyj.webp"
+          },
+          {
+            "title": "Россельхознадзор ограничивает импорт молочной продукции из Армении в Россию",
+            "url": "https://armenpress.am/ru/article/1256351",
+            "date": "2026-07-24T07:58:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/xex4kOnvtKmrnQTMCjmhPYCE03z3adoiR77DQpGQ.webp"
+          },
+          {
             "title": "Лига конференций: «Пюник» на выездном матче проиграл венгерскому «Дебрецену»",
             "url": "https://armenpress.am/ru/article/1256335",
             "date": "2026-07-23T17:57:00.000Z",
@@ -4439,30 +4456,24 @@
             "url": "https://armenpress.am/ru/article/1256303",
             "date": "2026-07-23T13:14:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/23/rv8YcwPh8uQJxh9goqN6nyleULNymy0HcR62mBhd.webp"
-          },
-          {
-            "title": "КРОУ Армении и Регулирующий орган Греции будут сотрудничать в регулировании водного сектора",
-            "url": "https://armenpress.am/ru/article/1256299",
-            "date": "2026-07-23T12:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/r5zaffLmzr8UPP1BtIxNTCmvR1NSvZl8f6RWj2oC.webp"
-          },
-          {
-            "title": "Геворг Папоян и Дэвид Аллен обсудили процесс предоставления Соединенными Штатами Армении статуса страны с рыночной экономикой",
-            "url": "https://armenpress.am/ru/article/1256295",
-            "date": "2026-07-23T11:54:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/XjyhGRf2YKOEGPg4Hm7hErSMOkheNBaTNFG0K7d9.webp"
-          },
-          {
-            "title": "Делегация Армении обсудила в Риме возможности применения опыта CIHEAM Bari в нашей стране",
-            "url": "https://armenpress.am/ru/article/1256289",
-            "date": "2026-07-23T11:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/mUmtvZvleoZLwiTZFRQrY2h9BCooBqzbvWakaU7X.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Общий объем обязательств Азиатского банка развития (АБР) в Армении достигает почти 2,5 миллиарда долларов - интервью с Лязизой Сабировой",
+            "url": "https://armenpress.am/ru/article/1256353",
+            "date": "2026-07-24T08:47:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/GVBmDUg56RUsnzal3xDFTKljWih0nssMBuLPhvYK.webp"
+          },
+          {
+            "title": "Россельхознадзор ограничивает импорт молочной продукции из Армении в Россию",
+            "url": "https://armenpress.am/ru/article/1256351",
+            "date": "2026-07-24T07:58:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/xex4kOnvtKmrnQTMCjmhPYCE03z3adoiR77DQpGQ.webp"
+          },
           {
             "title": "Европейские индексы - 23-07-26",
             "url": "https://armenpress.am/ru/article/1256341",
@@ -4510,24 +4521,48 @@
             "url": "https://armenpress.am/ru/article/1256295",
             "date": "2026-07-23T11:54:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/23/XjyhGRf2YKOEGPg4Hm7hErSMOkheNBaTNFG0K7d9.webp"
-          },
-          {
-            "title": "Делегация Армении обсудила в Риме возможности применения опыта CIHEAM Bari в нашей стране",
-            "url": "https://armenpress.am/ru/article/1256289",
-            "date": "2026-07-23T11:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/mUmtvZvleoZLwiTZFRQrY2h9BCooBqzbvWakaU7X.webp"
-          },
-          {
-            "title": "При поддержке Ucom в спортивной школе Вайка установлена солнечная электростанция мощностью 15 кВт",
-            "url": "https://armenpress.am/ru/article/1256276",
-            "date": "2026-07-23T10:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/JoTR5Y9Rcy8jjLYTHskMIrIJqONe6v3SX5bzX59l.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "ЕС ввел запрет на работу Кулевского нефтеперерабатывающего завода в Грузии",
+            "url": "https://armenpress.am/ru/article/1256363",
+            "date": "2026-07-24T08:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/eSJK5Rh3lhp3GhMlajIrI9n5hurTR0e8LDJ7kekU.webp"
+          },
+          {
+            "title": "ЕС потребует от США разъяснений по поводу новых тарифов - Каллас",
+            "url": "https://armenpress.am/ru/article/1256360",
+            "date": "2026-07-24T08:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/WaNDf7trUZESvzmhkaOvrX52CGS1EO2nslORrvWj.webp"
+          },
+          {
+            "title": "США вводят новые пошлины в размере 10-12,5% на товары из 60 стран",
+            "url": "https://armenpress.am/ru/article/1256356",
+            "date": "2026-07-24T08:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/Jj2mOXBA7bQn27vG1HnzAC1hV66FlDGIDgortETu.webp"
+          },
+          {
+            "title": "Россию атаковал 571 украинский БПЛА, обстрелу снова подверглись склады Wildberries",
+            "url": "https://armenpress.am/ru/article/1256350",
+            "date": "2026-07-24T07:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/J4DC0Z46cZF7QFFUvnAMWDmhNopCdaWyJpoexXTp.webp"
+          },
+          {
+            "title": "Арагчи предупреждает США о последствиях конфискации иранских активов",
+            "url": "https://armenpress.am/ru/article/1256349",
+            "date": "2026-07-24T06:48:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/HTosDyfsWn5d5MmHe2ZunkiuJGjVILanxDBmL2eE.webp"
+          },
+          {
+            "title": "Трамп объявил, что ущерб, нанесенный судам, будет компенсирован за счет находящихся в США замороженных иранских активов",
+            "url": "https://armenpress.am/ru/article/1256345",
+            "date": "2026-07-24T06:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/23/8FEc29ldP43xZ8lgSq8S47hh2TYQME9WYzbBiFVa.webp"
+          },
           {
             "title": "На фоне продолжающихся атак США и Ирана Трамп заявил, что пока не будет вести переговоры о новом прекращении огня",
             "url": "https://armenpress.am/ru/article/1256344",
@@ -4551,48 +4586,18 @@
             "url": "https://armenpress.am/ru/article/1256328",
             "date": "2026-07-23T16:21:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/23/NBS06vQtvgLKIMfsG1jcEOwLSmyIUWHutws5W0l4.webp"
-          },
-          {
-            "title": "ЕС призвал хуситов прекратить угрожающие международному судоходству действия",
-            "url": "https://armenpress.am/ru/article/1256327",
-            "date": "2026-07-23T16:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/7rwWICggThMzl2Y7pat9hrnfFJIkFgoopv4oSW2b.webp"
-          },
-          {
-            "title": "КСИР заявил об уничтожении подразделения радиоэлектронной борьбы армии США",
-            "url": "https://armenpress.am/ru/article/1256326",
-            "date": "2026-07-23T15:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/uT7x7HXjsZCTn3jKNHqz8zZZmM63iQiMbw6EKZSK.webp"
-          },
-          {
-            "title": "США выделят ICRC и IFRC более 200 млн долларов гуманитарной помощи",
-            "url": "https://armenpress.am/ru/article/1256323",
-            "date": "2026-07-23T14:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/aEeiwMYtJSr4ZY9dfVNISMrXOYShz4e3wGCl3BNL.webp"
-          },
-          {
-            "title": "Президент Украины заявил, что у США есть несколько идей по поводу завершения войны",
-            "url": "https://armenpress.am/ru/article/1256322",
-            "date": "2026-07-23T14:44:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/M5f0Rhxgr8qME6bvCHYmM5Rh603ouuXgUYQVyik4.webp"
-          },
-          {
-            "title": "Иранский солдат погиб в результате удара США по ирано-иракскому КПП - Tasnim",
-            "url": "https://armenpress.am/ru/article/1256309",
-            "date": "2026-07-23T13:26:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/T0mN6CNZyvrXGnGjgbgdtzHV99PYGD7uyBP7SGzu.webp"
-          },
-          {
-            "title": "Пограничный переход между Ираком и Кувейтом закрылся после атаки беспилотника - INA",
-            "url": "https://armenpress.am/ru/article/1256304",
-            "date": "2026-07-23T13:20:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/23/ZQWH3IVlvYxK2lyox3YCD4O5oeWxqowd0be12zA4.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Заявка «Пещера Арени 1: Доисторическая жизнь и виноделие в долине реки Арпа» включена в предварительный список всемирного наследия ЮНЕСКО",
+            "url": "https://armenpress.am/ru/article/1256358",
+            "date": "2026-07-24T08:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/24/Exqge8FeGJZYp4Fn9tDC80GW4Yr9UjEvEZgKyhyj.webp"
+          },
           {
             "title": "Капан (Армения) – Молодежная столица СНГ 2026 года",
             "url": "https://armenpress.am/ru/article/1256270",
@@ -4646,12 +4651,6 @@
             "url": "https://armenpress.am/ru/article/1255644",
             "date": "2026-07-15T14:48:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/15/ptNB2obCqAd0h0nwkLH8KpN4QKtS6KO24TUT8val.webp"
-          },
-          {
-            "title": "Реставрируются средневековые фрески церкви Св. Григора монастырского комплекса Кечарис",
-            "url": "https://armenpress.am/ru/article/1255638",
-            "date": "2026-07-15T13:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/15/MekAhWGUYPvDCr5rGdScyX0OdvrmI0zJwTfDPDp3.webp"
           }
         ]
       },
