@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T16:09:47.836Z",
+  "generatedAt": "2026-07-25T17:56:27.886Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1054,7 +1054,7 @@
             "url": "https://hy.armradio.am/archives/748830",
             "date": "2026-07-25T14:55:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/72c781d0-8735-11f1-926f-c90d1bcfbc84.jpg-768x432.webp",
-            "category": "Կարևոր"
+            "category": "Հասարակություն"
           },
           {
             "title": "3.2 մագնիտուդով երկրաշարժ Վրաստանում. ցնցումները զգացվել են Շիրակի և Լոռու մարզերում",
@@ -2030,6 +2030,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Nikol Pachinian et Emmanuel Macron se sont entretenus par téléphone",
+          "url": "https://www.armenews.com/nikol-pachinian-et-emmanuel-macron-se-sont-entretenus-par-telephone/",
+          "date": "2026-07-25T17:28:28.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/5663-1.png"
+        },
+        {
           "title": "L’Iran et l’Arménie créent un groupe de travail conjoint spécialisé sur l’énergie",
           "url": "https://www.armenews.com/liran-et-larmenie-creent-un-groupe-de-travail-conjoint-specialise-sur-lenergie/",
           "date": "2026-07-25T12:03:12.000Z",
@@ -2082,18 +2088,18 @@
           "url": "https://www.armenews.com/gagik-tsaroukian-conduit-pour-la-troisieme-fois-devant-les-enqueteurs/",
           "date": "2026-07-25T06:30:27.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-25-a-07.20.55.png"
-        },
-        {
-          "title": "Un géant industriel chinois ouvert à une éventuelle coopération avec l’Arménie",
-          "url": "https://www.armenews.com/un-geant-industriel-chinois-ouvert-a-une-eventuelle-cooperation-avec-larmenie/",
-          "date": "2026-07-25T06:30:27.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-25-a-07.35.23.png"
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "Elina Avanesyan (Arménie) échoue de peu aux portes de la finale du tournoi de Hambourg (WTA-250)",
+          "url": "https://www.armenews.com/elina-avanesyan-armenie-echoue-de-peu-aux-portes-de-la-finale-du-tournoi-de-hambourg-wta-250/",
+          "date": "2026-07-25T17:40:52.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/167917.webp"
+        },
         {
           "title": "Avant son transfert à Al-Ahly l’international arménien Eduard Spertsyan avait la possibilité de poursuivre sa carrière à Sunderland en Premier League anglaise",
           "url": "https://www.armenews.com/avant-son-transfert-a-al-ahly-linternational-armenien-eduard-spertsyan-avait-la-possibilite-de-poursuivre-sa-carriere-a-sunderland-en-premier-league-anglaise/",
@@ -2147,12 +2153,6 @@
           "url": "https://www.armenews.com/hayk-minasyan-armenie-devient-champion-du-monde-de-tir-sur-cible-mobile/",
           "date": "2026-07-21T17:33:37.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/6644.jpg"
-        },
-        {
-          "title": "Henrikh Mkhitaryan : Je ne mettrai peut-être pas fin à ma carrière en 2027",
-          "url": "https://www.armenews.com/henrikh-mkhitaryan-je-ne-mettrai-peut-etre-pas-fin-a-ma-carriere-en-2027/",
-          "date": "2026-07-21T06:52:05.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/9908.jpg"
         }
       ]
     },
@@ -3014,10 +3014,10 @@
       "categoryKey": "un-autre-regard",
       "articles": [
         {
-          "title": "À Metsamor, rien ne se perd, tout se transforme",
-          "url": "https://armenieinfo.tv/a-metsamor-rien-ne-se-perd-tout-se-transforme/",
+          "title": "En Arménie, des syndicats aux accidents professionnels, gagner sa vie expose encore à la perdre",
+          "url": "https://armenieinfo.tv/en-armenie-des-syndicats-aux-accidents-professionnels-quand-gagner-sa-vie-expose-encore-a-la-perdre/",
           "date": null,
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-14-juil.-2026-23_15_10.png"
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-24-juil.-2026-20_44_19.png"
         }
       ]
     }
@@ -3944,7 +3944,7 @@
           {
             "title": "Տեղի է ունեցել Փաշինյան-Մակրոն հեռախոսազրույցը",
             "url": "https://armenpress.am/hy/article/1256456",
-            "date": "2026-07-25T14:34:33.000Z",
+            "date": "2026-07-25T14:34:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/25/kU2LJYfztsPwhS9RQ3p9EVwMUxR0zQ3qN4tNLLez.webp"
           },
           {
