@@ -46,7 +46,6 @@ const STRINGS = {
     'fb.by': 'par Don Narek',
     'fb.subtitle': 'Les 20 dernières publications, en images',
     'fb.view': 'Voir la publication',
-    'fb.fallback': 'Voir la page sur Facebook',
 
     'ig.title': 'Instagram',
     'ig.subtitle': "Une mosaïque d'inspiration arménienne, au hasard",
@@ -186,7 +185,6 @@ const STRINGS = {
     'fb.by': 'by Don Narek',
     'fb.subtitle': 'The 20 latest posts, in pictures',
     'fb.view': 'View the post',
-    'fb.fallback': 'View the page on Facebook',
 
     'ig.title': 'Instagram',
     'ig.subtitle': 'A mosaic of Armenian inspiration, at random',
@@ -324,7 +322,6 @@ const STRINGS = {
     'fb.by': 'Դօն Նարեկի կողմից',
     'fb.subtitle': 'Վերջին 20 հրապարակումները՝ նկարներով',
     'fb.view': 'Դիտել հրապարակումը',
-    'fb.fallback': 'Դիտել էջը Facebook-ում',
 
     'ig.title': 'Instagram',
     'ig.subtitle': 'Հայկական ոգեշնչման խճանկար՝ պատահական',
@@ -462,7 +459,6 @@ const STRINGS = {
     'fb.by': 'от Дон Нарека',
     'fb.subtitle': 'Последние 20 публикаций, в изображениях',
     'fb.view': 'Смотреть публикацию',
-    'fb.fallback': 'Открыть страницу в Facebook',
 
     'ig.title': 'Instagram',
     'ig.subtitle': 'Мозаика армянского вдохновения, наугад',

@@ -1708,14 +1708,6 @@ h3:lang(hy) {
 .fb-card:hover .fb-card__cta span {
   transform: translateX(5px);
 }
-.fb-fallback {
-  text-align: center;
-  margin-top: 20px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-}
-
 .ig-toolbar {
   display: flex;
   justify-content: center;

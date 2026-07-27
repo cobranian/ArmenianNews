@@ -23,8 +23,8 @@ import feed from '../data/instagram-feed.json'
  * It is a framed "plate" (the peintres#movses mechanic) that lifts on hover
  * and OPENS A LIGHTBOX (./Lightbox.jsx) — an enlarged view that stays on the
  * site, with ‹ › to browse the whole strand and a link out to the real post.
- * The way to Facebook / Instagram lives inside that lightbox, and the strand
- * still carries its own crawlable link (the FB-page fallback, the IG chips).
+ * The way to each Facebook post lives inside that lightbox (its own permalink);
+ * the Instagram strand also carries its crawlable account chips.
  *
  * Neither network's official embed is used: the Facebook Page Plugin drags
  * in the whole FB chrome and Instagram's embed.js refuses to hydrate behind
@@ -196,10 +196,10 @@ export function Social() {
   // Which set is enlarged, and where in it. null = closed.
   const [box, setBox] = useState(null)
 
-  // Newest first; cap at the last 30 posts — matches WANT in scripts/fb-scrape.mjs,
+  // Newest first; cap at the last 40 posts — matches WANT in scripts/fb-scrape.mjs,
   // so a slice here never silently hides posts the scraper bothered to harvest.
   const fbPosts = useMemo(
-    () => (fb.posts || []).slice(0, 30).map((p) => ({ ...p, img: fbImg[p.image] || null })),
+    () => (fb.posts || []).slice(0, 40).map((p) => ({ ...p, img: fbImg[p.image] || null })),
     [],
   )
 
@@ -283,12 +283,6 @@ export function Social() {
                   />
                 ))}
               </Carousel>
-
-              <p className="fb-fallback">
-                <a href={fb.url} rel="noopener noreferrer">
-                  {t('fb.fallback')} →
-                </a>
-              </p>
             </div>
           )}
 
