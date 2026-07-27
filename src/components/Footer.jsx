@@ -10,7 +10,6 @@ const SOURCES = [
   ['Arméniens de Lausanne', 'https://armeniensdelausanne.ch/#evenements'],
   ['École arménienne de Lausanne', 'https://ecolearmeniennedelausanne.ch/'],
   ['Centre arménien de Genève', 'https://www.centre-armenien-geneve.ch/'],
-  ['Don Narek', 'https://www.facebook.com/DonNarek'],
 ]
 
 const CONTACT = 'contact@armenieinfo.ch'

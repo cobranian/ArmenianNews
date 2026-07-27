@@ -40,7 +40,7 @@ const STRINGS = {
 
     'social.title': 'Réseaux sociaux',
     'social.subtitle':
-      "Deux fils : l'art que partage Don Narek sur Facebook, et une sélection Instagram retirée au sort chaque heure",
+      "Deux fils : l'art que partage Don Narek, et une sélection Instagram retirée au sort chaque heure",
 
     'fb.title': 'Art arménien',
     'fb.by': 'par Don Narek',
@@ -179,7 +179,7 @@ const STRINGS = {
 
     'social.title': 'Social networks',
     'social.subtitle':
-      'Two feeds: the art Don Narek shares on Facebook, and an Instagram selection drawn afresh every hour',
+      'Two feeds: the art Don Narek shares, and an Instagram selection drawn afresh every hour',
 
     'fb.title': 'Armenian Art',
     'fb.by': 'by Don Narek',
@@ -316,7 +316,7 @@ const STRINGS = {
 
     'social.title': 'Սոցիալական ցանցեր',
     'social.subtitle':
-      'Երկու հոսք՝ Դօն Նարեկի կիսած արվեստը Facebook-ում և Instagram-ի ընտրանին՝ վերաշաղախված ամեն ժամ',
+      'Երկու հոսք՝ Դօն Նարեկի կիսած արվեստը և Instagram-ի ընտրանին՝ վերաշաղախված ամեն ժամ',
 
     'fb.title': 'Հայկական արվեստ',
     'fb.by': 'Դօն Նարեկի կողմից',
@@ -453,7 +453,7 @@ const STRINGS = {
 
     'social.title': 'Социальные сети',
     'social.subtitle':
-      'Две ленты: искусство, которым делится Дон Нарек в Facebook, и подборка из Instagram, обновляемая случайным образом каждый час',
+      'Две ленты: искусство, которым делится Дон Нарек, и подборка из Instagram, обновляемая случайным образом каждый час',
 
     'fb.title': 'Армянское искусство',
     'fb.by': 'от Дон Нарека',
