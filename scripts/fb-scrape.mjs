@@ -230,13 +230,17 @@ if (DRY || !found.length) {
 }
 
 // The grid only holds small thumbnails; open each photo's page to get the
-// full-resolution image, then download it.
-const fullImageFor = async (permalink, fallback) => {
+// full-resolution image AND the real author. Don Narek re-shares other artists'
+// and galleries' work, so the timeline "actor" is always the page — but the
+// photo page names the actual source (ZART, National Gallery of Armenia,
+// Vladimir Simonyan…) as the top profile link above the caption. That is the
+// author we want on the card, so we read both in one visit.
+const fullImageFor = async (permalink) => {
   try {
     await page.goto(permalink, { waitUntil: 'domcontentloaded', timeout: 45000 })
     await sleep(1800)
     await dismiss()
-    const big = await page.evaluate(() => {
+    return await page.evaluate(() => {
       let best = null
       let area = 0
       for (const im of document.querySelectorAll('img')) {
@@ -250,11 +254,32 @@ const fullImageFor = async (permalink, fallback) => {
           best = im.src
         }
       }
-      return best
+      // The author: the highest (smallest top) profile/page link in the header,
+      // skipping the "View Post" permalink, online-status/comment links, places
+      // (they sit lower) and generic action words. null → post is Don Narek's own.
+      const NOISE =
+        /(view post|voir la publication|online status|active now|indicator|reply|repl(y|ies)|comments?|commentaires|most relevant|plus pertinent|be the first|no comments|follow|suivre|like|comment|share|partager)/i
+      let author = null
+      let top = Infinity
+      for (const link of document.querySelectorAll('a[href]')) {
+        const href = link.href || ''
+        if (/permalink\.php|\/photo|comment_id=|\/reactions\/|\/hashtag\//.test(href)) continue
+        const isProfile =
+          /facebook\.com\/profile\.php\?id=\d+/.test(href) || /facebook\.com\/[^/?#]+(?:[/?#]|$)/.test(href)
+        if (!isProfile) continue
+        const txt = (link.innerText || '').replace(/\s+/g, ' ').trim()
+        if (!txt || txt.length < 2 || txt.length > 80 || NOISE.test(txt)) continue
+        const r = link.getBoundingClientRect()
+        if (r.top < 60 || r.top > 320) continue
+        if (r.top < top) {
+          top = r.top
+          author = txt
+        }
+      }
+      return { src: best, author }
     })
-    return big || fallback
   } catch {
-    return fallback
+    return { src: null, author: null }
   }
 }
 
@@ -265,22 +290,26 @@ for (const p of found.slice(0, WANT)) {
   n++
   const id = `dn-${String(n).padStart(2, '0')}`
   const file = `${id}.jpg`
+  // Visit the photo page once — it gives both the full-res image and the real
+  // author. Read the author before the download so a failed image still keeps it.
+  const { src, author } = await fullImageFor(p.permalink)
+  const by = author || p.author || AUTHOR
+  const url = cleanLink(p.permalink)
   try {
-    const src = await fullImageFor(p.permalink, p.image)
     // Download THROUGH the logged-in browser, not a bare fetch(). Facebook now
     // serves many images (t39.99422 / t51) only to a session with cookies; an
     // anonymous fetch gets a ~3KB access-denied placeholder. Navigating the tab
     // sends the session, so we read the real bytes off the response.
-    const res = await page.goto(src, { waitUntil: 'load', timeout: 45000 })
+    const res = await page.goto(src || p.image, { waitUntil: 'load', timeout: 45000 })
     if (!res || !res.ok()) throw new Error(`HTTP ${res ? res.status() : 'no response'}`)
     const buf = await res.buffer()
     if (buf.length < 15000) throw new Error(`too small (${buf.length}B)`)
     await writeFile(path.join(FB_DIR, file), buf)
-    posts.push({ id, author: p.author || AUTHOR, url: cleanLink(p.permalink), image: file })
-    console.log(`  ✓ ${file} (${(buf.length / 1024).toFixed(0)} KB)`)
+    posts.push({ id, author: by, url, image: file })
+    console.log(`  ✓ ${file} — ${by} (${(buf.length / 1024).toFixed(0)} KB)`)
   } catch (e) {
-    console.log(`  ✗ ${id}: ${e.message} — keeping motif fallback`)
-    posts.push({ id, author: p.author || AUTHOR, url: cleanLink(p.permalink) })
+    console.log(`  ✗ ${id} (${by}): ${e.message} — keeping motif fallback`)
+    posts.push({ id, author: by, url })
   }
 }
 
