@@ -10,3 +10,6 @@ dist
 
 # subagent-driven-development scratch (progress ledger, briefs, review packages)
 .superpowers/
+
+# worktrees isolés créés pour l'exécution des plans
+.claude/worktrees/
