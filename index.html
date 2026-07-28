@@ -13,8 +13,13 @@
          des hreflang divergents sont ignorés par Google. -->
     <!--SITE_META-->
 
-    <!-- Google Analytics 4 (Consent Mode v2 — consentement refusé par défaut,
-         donc mesure sans cookie, RGPD-friendly, sans bannière). ga-init.js est
+    <!-- Google Analytics 4 (Consent Mode v2 — consentement PAR RÉGION :
+         accordé par défaut, donc avec cookies et visiteurs récurrents
+         identifiés, sauf dans l'EEE et au Royaume-Uni où le RGPD exige un
+         accord préalable et où GA retombe sur sa mesure anonyme sans cookie.
+         La Suisse est délibérément hors de la liste, la nLPD n'imposant pas
+         le consentement préalable — le raisonnement complet est dans
+         ga-init.js). ga-init.js est
          servi depuis 'self' (comme theme-init.js) pour garder la CSP stricte ;
          il définit le consentement et la config AVANT que gtag.js ne s'exécute.
          Domaines autorisés dans la CSP de firebase.json (script-src /
