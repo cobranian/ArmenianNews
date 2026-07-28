@@ -155,8 +155,15 @@ test('siteOf route chaque langue vers son domaine', () => {
 Dans `package.json`, ajouter à `"scripts"` :
 
 ```json
-"test": "node --test test/"
+"test": "node --test test/*.mjs"
 ```
+
+> **Le joker n'est pas décoratif.** Depuis Node 22, l'argument de `--test` est un
+> **motif glob**, pas un dossier à parcourir : `node --test test/` fait
+> correspondre le dossier lui-même, que Node tente ensuite de charger comme
+> module — `MODULE_NOT_FOUND` (vérifié sur Node v24.15.0). Les deux shells sont
+> couverts : sous Ubuntu (la CI) `sh` expanse le motif avant Node ; sous Windows
+> `cmd.exe` ne l'expanse pas et Node le résout lui-même.
 
 Dans `eslint.config.js`, ligne 51, étendre la liste du monde Node :
 
