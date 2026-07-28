@@ -63,7 +63,7 @@ npm run fb-scrape   # refresh the Don Narek wall (local, logged-in Chrome — ne
 npm run dev         # http://localhost:5173/
 npm run build       # production build into dist/
 npm run preview
-npm run screenshot  # after build: capture the Don Narek carousel into dist/don-narek-{desktop,mobile}.png
+npm run screenshot  # after build: capture the Don Narek carousel into dist/ch/don-narek-{desktop,mobile}.png
 ```
 
 `npm run scrape` refreshes **news + agenda**, and re-randomises the **Instagram
@@ -176,7 +176,7 @@ npm run fb-scrape -- --connect --dry   # preview what it finds, writes nothing
 npm run fb-scrape -- --connect         # download images + rewrite facebook.json
 
 # 4. Verify, then publish:
-npm run build && npm run screenshot           # eyeball dist/don-narek-*.png
+npm run build && npm run screenshot           # eyeball dist/ch/don-narek-*.png
 git add src/data/facebook.json src/data/fb/dn-*.jpg && git commit && git push
 ```
 

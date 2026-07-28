@@ -78,7 +78,8 @@ jobs:
         run: npm run check
 
       # Regenerate the Don Narek carousel preview each hour and drop it into
-      # dist/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png).
+      # dist/ch/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png)
+      # — dist/ch is the showcase that domain serves.
       # Best-effort: a screenshot failure must never block the deploy.
       - name: Set up Chrome (for screenshot)
         id: chrome
@@ -87,17 +88,18 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Screenshot Don Narek carousel into dist/
+      - name: Screenshot Don Narek carousel into dist/ch/
         continue-on-error: true
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run screenshot
 
-      # Bake the rendered app into dist/index.html so crawlers get the
+      # Bake the rendered app into each showcase's index.html (four files:
+      # dist/ch, dist/org, dist/org/hy, dist/org/ru) so crawlers get the
       # snapshot's articles in raw HTML instead of an empty #root.
       # Best-effort, like the screenshot: a prerender failure must never
       # block the deploy — worst case we ship the plain SPA, as before.
-      - name: Prerender dist/index.html
+      - name: Prerender the four pages
         continue-on-error: true
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
@@ -114,19 +116,28 @@ jobs:
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
           set +e
-          # Pinned, not @latest: this runs with the deploy service account in
-          # its environment, so a single malicious release would hand over the
-          # credential. Bump deliberately.
-          out=$(npx --yes firebase-tools@15.23.0 deploy \
-            --only hosting:ch,hosting:org --project armenie-info --non-interactive 2>&1)
-          code=$?
-          echo "$out"
-          # Firebase rejette une publication dont le contenu est identique à la
-          # version en ligne (p. ex. une heure sans changement de données).
-          # C'est un no-op réussi, pas un échec. Avec deux cibles, le message
-          # peut ne concerner qu'une seule d'entre elles.
-          if [ $code -ne 0 ] && echo "$out" | grep -qi "is the current active version"; then
-            echo "::notice::Contenu inchangé — déjà en ligne. Ignoré."
-            exit 0
-          fi
-          exit $code
+          fail=0
+          for target in ch org; do
+            echo "▸ déploiement de la cible $target"
+            # Pinned, not @latest: this runs with the deploy service account in
+            # its environment, so a single malicious release would hand over the
+            # credential. Bump deliberately.
+            out=$(npx --yes firebase-tools@15.23.0 deploy \
+              --only "hosting:$target" --project armenie-info --non-interactive 2>&1)
+            code=$?
+            echo "$out"
+            # Firebase rejette une publication dont le contenu est identique à la
+            # version en ligne (p. ex. une heure sans changement de données).
+            # C'est un no-op réussi, pas un échec. En déployant cible par cible,
+            # ce verdict ne porte que sur CETTE cible — une sortie combinée
+            # pourrait sinon faire passer l'échec de l'une pour le no-op de l'autre.
+            if [ $code -ne 0 ] && echo "$out" | grep -qi "is the current active version"; then
+              echo "::notice::$target — contenu inchangé, déjà en ligne. Ignoré."
+              continue
+            fi
+            if [ $code -ne 0 ]; then
+              echo "::error::$target — échec du déploiement (code $code)"
+              fail=1
+            fi
+          done
+          exit $fail

@@ -1,12 +1,16 @@
 /**
  * Screenshot the Don Narek carousel from the built site.
  *
- * Serves ./dist with Vite's preview server, opens the page in a headless
+ * Serves dist/ch with Vite's preview server, opens the page in a headless
  * browser, and captures the #reseaux section — which opens on its Facebook
- * tab — at desktop + mobile widths.
- * PNGs are written back into ./dist so the hourly deploy publishes them to
- * the live site (armenie-info.web.app/don-narek-desktop.png) — dist/ is
- * gitignored, so nothing large ever lands in git history.
+ * tab — at desktop + mobile widths. dist/ch (not dist/org) because that's the
+ * showcase armenie-info.web.app itself serves — the two-showcase split
+ * (Task 8) turned dist/ into a bare parent directory with no index.html of
+ * its own; targeting it would serve nothing and the capture would fail.
+ * PNGs are written back into dist/ch so the hourly deploy publishes them to
+ * the live site (armenie-info.web.app/don-narek-desktop.png), which is
+ * exactly the URL README.md documents — dist/ is gitignored, so nothing
+ * large ever lands in git history.
  *
  * Browser: uses puppeteer-core against an already-installed Chrome/Edge.
  * Set PUPPETEER_EXECUTABLE_PATH to override the auto-detected path.
@@ -20,7 +24,7 @@ import puppeteer from 'puppeteer-core'
 import { findChrome } from './lib/chrome.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const OUT = path.join(root, 'dist')
+const OUT = path.join(root, 'dist', 'ch')
 
 const executablePath = findChrome()
 if (!executablePath) {
@@ -33,7 +37,11 @@ const VIEWS = [
   { name: 'mobile', width: 414, height: 900 },
 ]
 
-const server = await preview({ root, preview: { port: 4173, host: '127.0.0.1' } })
+const server = await preview({
+  root,
+  preview: { port: 4173, host: '127.0.0.1' },
+  build: { outDir: path.join('dist', 'ch') },
+})
 const url = server.resolvedUrls.local[0]
 const browser = await puppeteer.launch({
   executablePath,
@@ -51,7 +59,7 @@ try {
     await new Promise((r) => setTimeout(r, 1200))
     const el = await page.$('#reseaux')
     await el.screenshot({ path: path.join(OUT, `don-narek-${v.name}.png`) })
-    console.log(`✓ dist/don-narek-${v.name}.png`)
+    console.log(`✓ dist/ch/don-narek-${v.name}.png`)
     await page.close()
   }
 } finally {
