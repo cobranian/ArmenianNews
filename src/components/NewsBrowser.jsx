@@ -83,16 +83,17 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // Build the source groups for the current UI language. The rule: a language
 // only shows the sources that actually publish in it, Armenpress pinned first,
 // the rest alphabetical.
-//   fr  → Armenpress, ArménieInfo.tv, Artzakank, California Courier, Courrier d'Erevan, Nouvelles d'Arménie
-//   en/hy → Armenpress, ArmRadio, Asbarez, California Courier, Oragark
-//   ru  → Armenpress, ArmRadio, California Courier
+//   fr  → Armenpress, ArménieInfo.tv, Artzakank, California Courier, CivilNet, Courrier d'Erevan, Nouvelles d'Arménie
+//   en/hy → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, Oragark
+//   ru  → Armenpress, ArmRadio, California Courier, CivilNet
 // So the French-only sources (Courrier, armenews, artzakank, armenieinfotv)
 // appear ONLY under fr, and ArmRadio — en/hy/ru, no French edition — is dropped
 // under fr instead of borrowing English headlines beneath lang="fr". Asbarez and
 // Oragark each have an English and a Western Armenian edition, so they join en/hy
 // but not ru or fr. The California Courier translates Sassounian's Column into a
 // category per language, so — like Armenpress — it appears in ALL four (en = its
-// English news feed; fr/ru/hy = his column), the only second source fr and ru get.
+// English news feed; fr/ru/hy = his column). CivilNet publishes a full edition in
+// each of the four, so it appears in all four too.
 //
 // SEO note: NewsBrowser renders only the active tab, so sources[0] (now always
 // Armenpress) is the one source the prerender bakes into the HTML for crawlers.
@@ -213,14 +214,30 @@ function buildSources(t, lang) {
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
 
-  // Sources that publish in this language. Armenpress and the California Courier
-  // are in every language; the French-only sources join them under fr, ArmRadio
-  // under en/hy/ru, and Asbarez + Oragark under en/hy (their editions).
+  // CivilNet — the Yerevan independent newsroom, quadrilingue like Armenpress
+  // (fr/en/hy/ru map 1:1). The four editions do not share a rubric list — fr has
+  // no world or opinion desk, hy runs Human rights where the others run Society —
+  // so each rubric's name rides in the data, already in its own language.
+  const civilnet = {
+    id: 'civilnet',
+    brand: 'CivilNet',
+    name: t('browser.civilnet'),
+    live: false,
+    images: true,
+    cats: (news.civilnet?.[lang] || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
+
+  // Sources that publish in this language. Armenpress, the California Courier
+  // and CivilNet are in every language; the French-only sources join them under
+  // fr, ArmRadio under en/hy/ru, and Asbarez + Oragark under en/hy (their
+  // editions).
   const pool = isFr
-    ? [armenpress, courrier, armenews, artzakank, armenieinfotv, californiacourier]
+    ? [armenpress, courrier, armenews, artzakank, armenieinfotv, californiacourier, civilnet]
     : lang === 'ru'
-      ? [armenpress, armradio, californiacourier]
-      : [armenpress, armradio, asbarez, oragark, californiacourier]
+      ? [armenpress, armradio, californiacourier, civilnet]
+      : [armenpress, armradio, asbarez, oragark, californiacourier, civilnet]
 
   // Armenpress pinned first (the constant across languages); the rest sorted
   // alphabetically by brand with accents folded (é = e, so ArménieInfo.tv sorts

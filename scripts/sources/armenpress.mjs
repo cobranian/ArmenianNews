@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio'
-import https from 'node:https'
+import { fetchTextNode } from '../lib/http.mjs'
 import { clean, safeUrl } from '../lib/util.mjs'
 
 // Armenpress (armenpress.am) is Armenia's national news agency, and the only
@@ -38,13 +38,9 @@ export const ARMENPRESS_CATEGORIES = [
   'projects',
 ]
 
-const UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-  '(KHTML, like Gecko) Chrome/124.0 Safari/537.36'
-
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-// Deliberately node:https, NOT lib/http.mjs's fetchText.
+// Deliberately fetchTextNode (node:https), NOT lib/http.mjs's fetchText.
 //
 // The rubric pages answer 403 to Node's global fetch (undici) and 200 to
 // node:https — same machine, same OpenSSL TLS, same HTTP/1.1, any headers, no
@@ -52,36 +48,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 // ruled out one at a time; only the client itself predicts the 403. The
 // homepage does not care, which is why the old homepage-based scrape never hit
 // this. Switching this to fetchText will 403 every rubric, and the empty result
-// is then silently backfilled — it will look like the site went quiet.
-function getHtml(path, { retries = 2, timeout = 20000 } = {}) {
-  return new Promise((resolve, reject) => {
-    const req = https.request(
-      { host: HOST, path, method: 'GET', headers: { 'User-Agent': UA, Accept: '*/*' }, timeout },
-      (res) => {
-        if (res.statusCode !== 200) {
-          res.resume()
-          return reject(new Error(`HTTP ${res.statusCode} for ${path}`))
-        }
-        let body = ''
-        res.setEncoding('utf8')
-        res.on('data', (c) => (body += c))
-        res.on('end', () => resolve(body))
-      },
-    )
-    req.on('timeout', () => req.destroy(new Error(`timeout for ${path}`)))
-    req.on('error', async (err) => {
-      if (retries > 0) {
-        await sleep(600)
-        try {
-          resolve(await getHtml(path, { retries: retries - 1, timeout }))
-        } catch (e) {
-          reject(e)
-        }
-      } else reject(err)
-    })
-    req.end()
-  })
-}
+// is then silently backfilled — it will look like the site went quiet. CivilNet
+// hits the identical trap, which is why the helper now lives in lib/http.mjs.
+const getHtml = (path) => fetchTextNode(HOST, path)
 
 // The Inertia payload lives in the <script> body. `data-page` is the string
 // "app" — reading it as the attribute yields "app" and throws in JSON.parse.

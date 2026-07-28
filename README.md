@@ -22,6 +22,7 @@ renders that data into two static Vite + React bundles (`dist/ch/`,
 |---|---|---|
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. Not the default tab (see Armenpress) — French-only, so it only appears under the fr UI. |
 | **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency: the latest **10 articles per rubric** across **7 rubrics** (Armenia, Economy, World, Culture, Sports, Fact Check, Exclusive Projects), in **each of 4 languages** (fr / en / hy / ru) — 280 articles per snapshot, each rubric its own shelf. The only source here that is **quadrilingual**: fr/en/hy/ru map 1:1 to the UI language, and rubric names come from Armenpress' own labels (the Russian edition labels them Армения, Экономика, Мир, Культура, Спорт, Проверка фактов, Спецпроекты). The **Russian edition** ([armenpress.am/ru](https://armenpress.am/ru)) shares the exact same Inertia payload shape and rubric slugs, so it needed no new scraping logic — just `'ru'` added to `ARMENPRESS_LANGS`. **Always the default tab**, in every language: `NewsBrowser` renders only the active tab (`sources[0]`), and each of the four prerendered pages bakes in Armenpress' own edition — French copy under `lang="fr"`, English under `lang="en"`, and so on, which is what a query in that language should find. (Courrier used to lead, to prerender the most French text; the per-language source rule made Armenpress the natural, SEO-safe lead instead.) It is an Inertia.js app, so the feed arrives as embedded JSON — **no CSS selectors**. Two traps, both documented in the module: the rubric articles live at `props.data.data.hits` (the homepage path reads as empty), and the rubric pages **403 Node's `fetch`** — the module uses `node:https` deliberately. |
+| **Actualités** | [CivilNet](https://civilnet.am) | The Yerevan independent newsroom, and the **third quadrilingual source** (fr / en / hy / ru map 1:1 to the UI language, like Armenpress): the latest **10 articles per rubric**, each rubric its own shelf. The four editions do **not** share a rubric list — 5 in French (no world or opinion desk), 8 in English, 7 in Armenian (Human rights where the others run Society), 6 in Russian — so each shelf title comes from the page's own payload, already in that language, and rides in the data rather than through i18n keys. Another **Inertia.js** app, so the feed arrives as embedded JSON — **no CSS selectors** — but at `props.feed.data.hits`, *not* Armenpress' `props.data.data.hits`. It hits the same trap as Armenpress otherwise: **403 to Node's `fetch`, 200 to `node:https`**, which is why that helper now lives in `scripts/lib/http.mjs` and is shared. Articles carry no slug, only an id, so cards link to `/{lang}/news/{id}` — per-edition, an English id under `/hy/` 404s. Images hotlink directly. |
 | **Actualités** | [Nouvelles d'Arménie](https://www.armenews.com) | The latest **10 articles per rubric** across 6 WordPress rubrics, French-only, as shelves. |
 | **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across **3 rubrics**, French-only, as shelves: Arménie & Artsakh and Communauté come from the WordPress REST API, Divers is scraped from the site's `/divers-p/` page. |
 | **Actualités** | [ArménieInfo.tv](https://armenieinfo.tv) | The latest **10 articles per rubric**, French-only, as shelves. |
@@ -58,8 +59,8 @@ bookmarks, back-buttons and shares correctly. `localStorage` still holds the
 `theme` key (day/night), just not `lang` anymore.
 
 Only the interface **chrome** is translated — article and post content stays in
-its source language (see [Notes](#notes--caveats)). Armenpress is the one source
-with a matching edition per UI language (fr/en/hy/ru) and ArmRadio follows in
+its source language (see [Notes](#notes--caveats)). Armenpress and CivilNet each
+have a matching edition per UI language (fr/en/hy/ru) and ArmRadio follows in
 en/hy/ru; the French-only sources stay French under any UI.
 
 **To add a language**, four edits, because the language now needs its own
@@ -487,9 +488,9 @@ since the two production showcases always serve from their domain's root.
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
   chrome is translated. The interface is **quadrilingual** (fr / en / hy / ru);
-  under the Russian UI a reader sees **Armenpress and the ArmRadio news tab in
-  Russian**, while Courrier (and the other French sources) stay French — and
-  Courrier still leads the tabs (RU behaves like HY). The newswire **ticker**
+  under the Russian UI a reader sees **Armenpress, CivilNet and the ArmRadio news
+  tab in Russian**, while Courrier (and the other French sources) stay French —
+  and Courrier still leads the tabs (RU behaves like HY). The newswire **ticker**
   stays English (it reads en.armradio.am).
 - **ArmRadio in Russian (`ru.armradio.am`) is wired.** Like en/hy it sits behind
   Cloudflare and 403s the REST API even from a residential IP, so it's reachable

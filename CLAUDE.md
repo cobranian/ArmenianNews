@@ -124,12 +124,14 @@ composants importent au build :
       « vide » — c'est de là que venait la légende « les pages de rubrique
       embarquent un flux vide ». Elles rendent 12 à 36 articles, tous datés et
       illustrés.
-    - **Ce module utilise `node:https`, pas `fetchText`**, et c'est délibéré :
-      les pages de rubrique répondent **403 au `fetch` de Node (undici)** et 200
-      à `node:https` — même machine, même TLS OpenSSL, même HTTP/1.1, quels que
-      soient les en-têtes. La raison est dans le module. Basculer sur
-      `fetchText` ferait échouer les 28 rubriques, que le backfill masquerait
-      ensuite en silence.
+    - **Ce module utilise `fetchTextNode` (node:https), pas `fetchText`**, et
+      c'est délibéré : les pages de rubrique répondent **403 au `fetch` de Node
+      (undici)** et 200 à `node:https` — même machine, même TLS OpenSSL, même
+      HTTP/1.1, quels que soient les en-têtes. La raison est dans
+      `scripts/lib/http.mjs`. Basculer sur `fetchText` ferait échouer les 28
+      rubriques, que le backfill masquerait ensuite en silence. **CivilNet tombe
+      exactement dans le même piège** — d'où l'aide partagée, qui n'existait pas
+      quand Armenpress était seul concerné.
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
   - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
     WordPress, francophone.
@@ -186,8 +188,8 @@ composants importent au build :
     l'hebdomadaire arménien de Glendale. Une install WordPress REST ouverte (ni
     filtre UA, ni Cloudflare), comme oragark. **Son atout : la chronique de Harut
     Sassounian est traduite dans une rubrique fraîche et illustrée par langue** —
-    donc c'est **la seule source, avec Armenpress, à servir les quatre langues**,
-    et le seul deuxième onglet que les éditions fr et ru aient jamais. Mapping
+    donc c'est **l'une des trois sources quadrilingues**, avec Armenpress et
+    CivilNet. Mapping
     (une rubrique par langue) : `en` → `mainpost` (le fil d'actualité anglais,
     qui contient aussi sa chronique anglaise — la rubrique `sas-column` propre à
     l'anglais s'est arrêtée en 2021, sans équivalent frais isolable) ; `fr` →
@@ -195,6 +197,29 @@ composants importent au build :
     **fixés à la main** (les noms de rubrique WordPress sont des noms de langue —
     « French », « Russian » — ou « mainpost », inutilisables comme titres) et
     portés dans les données. Images hotlinkées en direct.
+  - `civilnet.mjs` — CivilNet (civilnet.am), la rédaction indépendante d'Erevan.
+    **Troisième source quadrilingue** (fr/en/hy/ru, 1:1 avec la langue
+    d'interface, comme Armenpress) — et le deuxième onglet que fr et ru
+    reçoivent, à côté du California Courier. Application **Inertia.js** comme
+    Armenpress : le flux est embarqué en JSON, **aucun sélecteur CSS**. Trois
+    choses à retenir :
+    - **Le chemin du payload n'est pas celui d'Armenpress.** Les articles vivent
+      dans `props.feed.data.hits` (composant de page `feed/Tag`), pas dans
+      `props.data.data.hits`. Recopier le chemin d'Armenpress lit « rubrique
+      vide ».
+    - **Les quatre éditions n'ont pas la même liste de rubriques** (5 en fr, 8 en
+      en, 7 en hy, 6 en ru) : pas de desk monde ni opinions en français, et
+      « Իրավունք » (droits) là où les autres ont Société. Chaque libellé vient du
+      payload (`props.structure.tag.name`), déjà dans la langue de la page, donc
+      il est **porté dans les données** comme pour asbarez/oragark — pas de clés
+      i18n.
+    - **Même piège 403 qu'Armenpress** : `fetch` (undici) → 403, `node:https` →
+      200. D'où `fetchTextNode`. Un article n'a pas de slug, seulement un
+      `article_id` : `/{lang}/news/{id}` est l'adresse stable (elle sert
+      l'article ou redirige vers sa page canonique, `/video/{id}` pour une
+      vidéo), et l'id est **propre à son édition** — un id anglais sous `/hy/`
+      fait 404. Images hotlinkées en direct (pas de protection anti-hotlink,
+      contrairement à ArmRadio).
   - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **tous les pays de la nav
     d'armenopole** (26, hors Suisse gérée à part), en plafonnant chaque pays à 20
     événements, puis dédoublonne par URL. **N'utilise pas `greece`/`belgium`** :
@@ -412,9 +437,9 @@ de production servent toujours depuis la racine de leur domaine.
   langue n'affiche que les sources qui publient dans cette langue**, Armenpress
   épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
   `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
-  - `fr` → Armenpress, ArménieInfo.tv, Artzakank, California Courier, Courrier d'Erevan, Nouvelles d'Arménie
-  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, California Courier, Oragark
-  - `ru` → Armenpress, ArmRadio, California Courier
+  - `fr` → Armenpress, ArménieInfo.tv, Artzakank, California Courier, CivilNet, Courrier d'Erevan, Nouvelles d'Arménie
+  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, Oragark
+  - `ru` → Armenpress, ArmRadio, California Courier, CivilNet
 
   Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
   n'apparaissent donc que sous `fr` ; ArmRadio (`en`/`hy`/`ru`, sans édition
@@ -423,8 +448,9 @@ de production servent toujours depuis la racine de leur domaine.
   arménienne occidentale (pas de russe), donc ils rejoignent `en`/`hy` mais pas
   `ru` — et jamais `fr`. The California Courier traduit la chronique de Sassounian
   dans une rubrique par langue, donc — comme Armenpress — il paraît dans **les
-  quatre** (`en` = son fil anglais ; `fr`/`ru`/`hy` = sa chronique) : c'est le seul
-  deuxième onglet que `fr` et `ru` reçoivent. Comme aucun de ces ajouts n'est
+  quatre** (`en` = son fil anglais ; `fr`/`ru`/`hy` = sa chronique). CivilNet
+  publie une édition complète dans chacune des quatre, donc il y paraît aussi :
+  `fr` et `ru` reçoivent ces deux-là en plus d'Armenpress. Comme aucun de ces ajouts n'est
   jamais l'onglet par défaut (Armenpress reste épinglé en tête), ils ne changent
   rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
   d'interface, donc sous `fr` il prérend son édition française — du texte
@@ -530,4 +556,7 @@ de production servent toujours depuis la racine de leur domaine.
   de `scripts/build-sites.mjs` ne couvre que `sites.config.js` et `LANGS`.
   Ajouter une cinquième langue d'interface sans toucher `ARMENPRESS_LANGS`
   laisserait Armenpress scraper une édition manquante en silence pour cette
-  langue — rien ne le rappellera.
+  langue — rien ne le rappellera. `CIVILNET_SECTIONS`
+  (`scripts/sources/civilnet.mjs`) est un quatrième tableau du même genre : ses
+  clés sont les éditions CivilNet, et ses valeurs les rubriques propres à
+  chacune. Même angle mort, même conséquence.

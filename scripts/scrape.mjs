@@ -15,6 +15,7 @@ import { scrapeArmenpress } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
+import { scrapeCivilnet } from './sources/civilnet.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -26,11 +27,17 @@ function backfillSections(fresh, prev, keyName) {
     console.warn(`  ↺ keeping ${prev.length} previous ${keyName} groups`)
     return prev
   }
-  const prevByKey = Object.fromEntries(prev.map((s) => [s[keyName], s.articles || []]))
+  const prevByKey = Object.fromEntries(prev.map((s) => [s[keyName], s]))
   for (const sec of fresh) {
-    if (!sec.articles?.length && prevByKey[sec[keyName]]?.length) {
-      console.warn(`  ↺ keeping ${prevByKey[sec[keyName]].length} previous ${sec[keyName]} articles`)
-      sec.articles = prevByKey[sec[keyName]]
+    const old = prevByKey[sec[keyName]]
+    if (!sec.articles?.length && old?.articles?.length) {
+      console.warn(`  ↺ keeping ${old.articles.length} previous ${sec[keyName]} articles`)
+      sec.articles = old.articles
+      // Sources whose rubric name rides in the data (asbarez, oragark,
+      // civilnet) read it off the page they just failed to fetch, so a failed
+      // rubric falls back to its raw slug. Restore the label with the articles,
+      // or a recovered shelf would be titled "civilnetcheck".
+      if (old.label) sec.label = old.label
     }
   }
   return fresh
@@ -197,6 +204,21 @@ async function main() {
     )
   }
 
+  // CivilNet — the Yerevan independent newsroom, quadrilingue like Armenpress
+  // (fr/en/hy/ru map 1:1). Its four editions do not share a rubric list, so the
+  // shelf labels ride in the data. Backfilled per language, like armenpress.
+  console.log('\nCivilNet — civilnet.am (fr/en/hy/ru):')
+  let cnLangs = { fr: [], en: [], hy: [], ru: [] }
+  try {
+    cnLangs = await scrapeCivilnet(10)
+  } catch (err) {
+    console.error('  civilnet failed wholesale:', err.message)
+  }
+  const civilnet = {}
+  for (const lang of ['fr', 'en', 'hy', 'ru']) {
+    civilnet[lang] = backfillSections(cnLangs[lang], prevNews?.civilnet?.[lang], 'categoryKey')
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -235,6 +257,7 @@ async function main() {
     asbarez,
     oragark,
     californiacourier,
+    civilnet,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
