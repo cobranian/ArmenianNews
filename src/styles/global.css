@@ -1998,6 +1998,74 @@ h3:lang(hy) {
   color: var(--text-faint);
 }
 
+/* Politique de confidentialité. Repliée, elle doit se lire comme le colophon
+   qui la précède — une ligne discrète, pas un bandeau. Dépliée, elle passe en
+   texte courant lisible : c'est de l'information légalement due, pas de la
+   note de bas de page. D'où le contraste entre le résumé et le corps. */
+.privacy {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.privacy > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: center;
+  transition: color 0.18s var(--ease);
+}
+.privacy > summary::-webkit-details-marker {
+  display: none;
+}
+/* Le chevron remplace le marqueur natif, masqué juste au-dessus : sans lui,
+   rien n'indiquerait que la ligne est dépliable. Il pivote à l'ouverture. */
+.privacy > summary::after {
+  content: ' ▸';
+  display: inline-block;
+  transition: transform 0.18s var(--ease);
+}
+.privacy[open] > summary::after {
+  transform: rotate(90deg);
+}
+.privacy > summary:hover,
+.privacy[open] > summary {
+  color: var(--text-soft);
+}
+.privacy > summary:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.privacy__body {
+  margin-top: 18px;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+.privacy__body h3 {
+  margin: 18px 0 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-weight: 400;
+}
+.privacy__body p {
+  margin: 0 0 10px;
+}
+.privacy__body a {
+  color: var(--apricot);
+}
+
 /* ============================================================
    Reveal-on-scroll
    ============================================================ */

@@ -65,6 +65,31 @@ const STRINGS = {
     'footer.write': 'Écrivez-nous',
     'footer.sources': 'Sources',
 
+    // Politique de confidentialité. Ce texte doit décrire ce que le site fait
+    // RÉELLEMENT, pas un modèle générique : c'est l'affirmation publique sur
+    // laquelle repose la licéité du dépôt de cookies. Si la configuration du
+    // consentement change dans public/ga-init.js — notamment la liste des
+    // régions où le cookie est refusé — ces chaînes doivent suivre, dans les
+    // quatre langues.
+    'privacy.title': 'Politique de confidentialité',
+    'privacy.intro':
+      "Ce site est un instantané statique : ni compte, ni formulaire, ni base de données. Il ne vous demande rien et ne conserve rien qui vous identifie personnellement.",
+    'privacy.analytics.title': "Mesure d'audience",
+    'privacy.analytics.body':
+      "Nous utilisons Google Analytics et Cloudflare Web Analytics pour compter les visites et savoir quelles rubriques sont lues. Hors Espace économique européen et Royaume-Uni, Google Analytics dépose un cookie qui permet de reconnaître un visiteur d'une visite à l'autre. Depuis l'EEE et le Royaume-Uni, ce cookie n'est pas déposé : la mesure y est anonyme et sans cookie, comme l'exige le RGPD. Cloudflare Web Analytics ne dépose aucun cookie, où que vous soyez.",
+    'privacy.analytics.optout':
+      "Pour refuser ce cookie, bloquez-le dans votre navigateur. Le site fonctionne à l'identique sans lui.",
+    'privacy.storage.title': 'Conservé sur votre appareil',
+    'privacy.storage.body':
+      "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Il ne quitte jamais votre appareil et ne nous est jamais transmis.",
+    'privacy.content.title': 'Contenu de tiers',
+    'privacy.content.body':
+      "Les articles, événements et publications proviennent de sites tiers, cités et liés. Suivre un lien vous conduit chez l'éditeur concerné, dont la politique de confidentialité s'applique alors.",
+    'privacy.rights.title': 'Vos droits',
+    'privacy.rights.body':
+      "Vous pouvez demander l'accès aux données vous concernant, leur rectification ou leur effacement. Le site ne collectant aucune donnée nominative, cela se limite en pratique aux mesures d'audience agrégées.",
+    'privacy.contact': 'Pour toute question :',
+
     'sections.actualite': 'Actualités',
     'sections.societe': 'Société',
     'sections.economie': 'Économie',
@@ -208,6 +233,25 @@ const STRINGS = {
     'footer.write': 'Write to us',
     'footer.sources': 'Sources',
 
+    'privacy.title': 'Privacy policy',
+    'privacy.intro':
+      'This site is a static snapshot: no accounts, no forms, no database. It asks you for nothing and keeps nothing that identifies you personally.',
+    'privacy.analytics.title': 'Audience measurement',
+    'privacy.analytics.body':
+      'We use Google Analytics and Cloudflare Web Analytics to count visits and see which sections are read. Outside the European Economic Area and the United Kingdom, Google Analytics sets a cookie that lets it recognise a visitor from one visit to the next. From the EEA and the UK that cookie is not set: measurement there is anonymous and cookieless, as the GDPR requires. Cloudflare Web Analytics sets no cookie anywhere.',
+    'privacy.analytics.optout':
+      'To refuse that cookie, block it in your browser. The site works exactly the same without it.',
+    'privacy.storage.title': 'Kept on your device',
+    'privacy.storage.body':
+      'Your day / night theme choice is stored locally by your browser. It never leaves your device and is never sent to us.',
+    'privacy.content.title': 'Third-party content',
+    'privacy.content.body':
+      'Articles, events and posts come from third-party sites, credited and linked. Following a link takes you to that publisher, whose own privacy policy then applies.',
+    'privacy.rights.title': 'Your rights',
+    'privacy.rights.body':
+      'You may request access to data concerning you, its correction or its deletion. As the site collects no personal data, in practice this is limited to aggregated audience measurement.',
+    'privacy.contact': 'Questions:',
+
     'sections.actualite': 'News',
     'sections.societe': 'Society',
     'sections.economie': 'Economy',
@@ -348,6 +392,25 @@ const STRINGS = {
     'footer.write': 'Գրեք մեզ',
     'footer.sources': 'Աղբյուրներ',
 
+    'privacy.title': 'Գաղտնիության քաղաքականություն',
+    'privacy.intro':
+      'Այս կայքը ստատիկ պատկեր է՝ առանց հաշիվների, ձևաթղթերի կամ տվյալների բազայի։ Այն ձեզնից ոչինչ չի պահանջում և չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի։',
+    'privacy.analytics.title': 'Այցելությունների չափում',
+    'privacy.analytics.body':
+      'Մենք օգտագործում ենք Google Analytics և Cloudflare Web Analytics՝ այցելությունները հաշվելու և իմանալու, թե որ բաժիններն են կարդացվում։ Եվրոպական տնտեսական տարածքից և Միացյալ Թագավորությունից դուրս Google Analytics-ը տեղադրում է cookie, որը թույլ է տալիս ճանաչել այցելուին մեկ այցից մյուսը։ ԵՏՏ-ից և Միացյալ Թագավորությունից այդ cookie-ն չի տեղադրվում. չափումն այնտեղ անանուն է և առանց cookie-ի, ինչպես պահանջում է GDPR-ը։ Cloudflare Web Analytics-ը ոչ մի տեղ cookie չի տեղադրում։',
+    'privacy.analytics.optout':
+      'Այդ cookie-ն մերժելու համար արգելափակեք այն ձեր դիտարկիչում։ Կայքն առանց դրա աշխատում է ճիշտ նույն կերպ։',
+    'privacy.storage.title': 'Պահվում է ձեր սարքում',
+    'privacy.storage.body':
+      'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Այն երբեք չի հեռանում ձեր սարքից և երբեք մեզ չի փոխանցվում։',
+    'privacy.content.title': 'Երրորդ կողմի բովանդակություն',
+    'privacy.content.body':
+      'Հոդվածները, միջոցառումները և հրապարակումները գալիս են երրորդ կողմի կայքերից՝ նշված և հղումով։ Հղմանը հետևելը ձեզ տանում է տվյալ հրատարակչի մոտ, որտեղ գործում է նրա գաղտնիության քաղաքականությունը։',
+    'privacy.rights.title': 'Ձեր իրավունքները',
+    'privacy.rights.body':
+      'Դուք կարող եք պահանջել ձեզ վերաբերող տվյալների հասանելիություն, ուղղում կամ ջնջում։ Քանի որ կայքը անձնական տվյալներ չի հավաքում, գործնականում դա սահմանափակվում է ամփոփ չափումներով։',
+    'privacy.contact': 'Հարցերի համար՝',
+
     'sections.actualite': 'Լուրեր',
     'sections.societe': 'Հասարակություն',
     'sections.economie': 'Տնտեսություն',
@@ -487,6 +550,25 @@ const STRINGS = {
     'footer.built': 'Статический снимок · источники со ссылками на их сайты',
     'footer.write': 'Напишите нам',
     'footer.sources': 'Источники',
+
+    'privacy.title': 'Политика конфиденциальности',
+    'privacy.intro':
+      'Этот сайт — статический снимок: без учётных записей, форм и базы данных. Он ничего у вас не запрашивает и не хранит ничего, что позволяло бы вас лично идентифицировать.',
+    'privacy.analytics.title': 'Измерение аудитории',
+    'privacy.analytics.body':
+      'Мы используем Google Analytics и Cloudflare Web Analytics, чтобы считать посещения и понимать, какие разделы читают. За пределами Европейской экономической зоны и Великобритании Google Analytics устанавливает cookie, позволяющий узнавать посетителя от визита к визиту. Из ЕЭЗ и Великобритании этот cookie не устанавливается: измерение там анонимное и без cookie, как того требует GDPR. Cloudflare Web Analytics не устанавливает cookie нигде.',
+    'privacy.analytics.optout':
+      'Чтобы отказаться от этого cookie, заблокируйте его в браузере. Сайт работает точно так же и без него.',
+    'privacy.storage.title': 'Хранится на вашем устройстве',
+    'privacy.storage.body':
+      'Ваш выбор дневной / ночной темы сохраняется локально браузером. Он никогда не покидает ваше устройство и не передаётся нам.',
+    'privacy.content.title': 'Материалы третьих сторон',
+    'privacy.content.body':
+      'Статьи, события и публикации поступают со сторонних сайтов — со ссылкой и указанием источника. Переход по ссылке ведёт к соответствующему изданию, где действует его собственная политика конфиденциальности.',
+    'privacy.rights.title': 'Ваши права',
+    'privacy.rights.body':
+      'Вы можете запросить доступ к касающимся вас данным, их исправление или удаление. Поскольку сайт не собирает персональных данных, на практике это ограничивается сводными показателями аудитории.',
+    'privacy.contact': 'Вопросы:',
 
     'sections.actualite': 'Новости',
     'sections.societe': 'Общество',

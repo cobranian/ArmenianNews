@@ -35,6 +35,36 @@ export function Footer() {
           <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
         </p>
         <p className="footer__note">{t('footer.built')}</p>
+
+        {/* Politique de confidentialité — un <details>, délibérément.
+            Repliée, elle n'encombre pas le pied de page ; dépliée, elle reste
+            sur la même URL. Le contenu est dans le DOM même fermé, donc il
+            part dans le HTML prérendu et se lit sans JavaScript — ce qui
+            compte pour une information légalement due.
+            L'ancre #confidentialite la rend partageable par lien. */}
+        <details className="privacy" id="confidentialite">
+          <summary>{t('privacy.title')}</summary>
+          <div className="privacy__body">
+            <p>{t('privacy.intro')}</p>
+
+            <h3>{t('privacy.analytics.title')}</h3>
+            <p>{t('privacy.analytics.body')}</p>
+            <p>{t('privacy.analytics.optout')}</p>
+
+            <h3>{t('privacy.storage.title')}</h3>
+            <p>{t('privacy.storage.body')}</p>
+
+            <h3>{t('privacy.content.title')}</h3>
+            <p>{t('privacy.content.body')}</p>
+
+            <h3>{t('privacy.rights.title')}</h3>
+            <p>{t('privacy.rights.body')}</p>
+
+            <p>
+              {t('privacy.contact')} <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
+            </p>
+          </div>
+        </details>
       </div>
     </footer>
   )
