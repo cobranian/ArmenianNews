@@ -1,12 +1,15 @@
 /**
- * Bake the rendered app into dist/index.html.
+ * Bake the rendered app into each showcase's index.html.
  *
  * The site is a single-page app: the shipped HTML is an empty <div id="root">,
  * so the articles only exist for a crawler that runs JavaScript. Google does,
- * but on a slower second pass. This renders the page with a headless browser
- * and writes the resulting markup back into dist/index.html, so the snapshot's
- * articles are in the raw HTML on the first pass. The hourly build reruns this,
- * so the baked HTML is never staler than the snapshot it ships with.
+ * but on a slower second pass. This renders every page listed in
+ * sites.config.js with a headless browser and writes the resulting markup
+ * back into its own dist/<site>/index.html (four files: dist/ch/index.html,
+ * dist/org/index.html, dist/org/hy/index.html, dist/org/ru/index.html), so
+ * the snapshot's articles are in the raw HTML on the first pass. The hourly
+ * build reruns this, so the baked HTML is never staler than the snapshot it
+ * ships with.
  *
  * main.jsx uses createRoot (not hydrateRoot): React clears the container and
  * re-renders on load, so the baked markup is never reconciled and cannot
@@ -15,7 +18,7 @@
  * Browser: uses puppeteer-core against an already-installed Chrome/Edge.
  * Set PUPPETEER_EXECUTABLE_PATH to override the auto-detected path.
  *
- *   npm run prerender            # after `npm run build`
+ *   npm run prerender            # after `npm run build`, bakes all four pages
  */
 import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
