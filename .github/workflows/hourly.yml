@@ -135,8 +135,12 @@ jobs:
           # credential vide produit un fichier vide, et firebase-tools répond une
           # erreur d'authentification générique qui n'indique pas quel secret
           # manque ni pour quel projet.
+          # ${!v} fait l'indirection sans eval. Le job tourne sous bash
+          # (ubuntu-latest, aucun `shell:` ni `defaults:` ne l'écrase), donc
+          # c'est disponible — et ça reste sûr si quelqu'un paramètre un jour
+          # cette liste, ce qu'un eval ne garantirait plus.
           for v in FIREBASE_SA_ARMENIE_INFO FIREBASE_SA_ARMENIA_NEWS; do
-            if [ -z "$(eval echo \"\$$v\")" ]; then
+            if [ -z "${!v}" ]; then
               echo "::error::Secret $v absent ou vide — impossible de déployer."
               exit 1
             fi

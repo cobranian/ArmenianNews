@@ -435,20 +435,29 @@ because a stale wall preview or an un-prerendered page is still a working
 site), a failed `check` blocks the deploy entirely — publishing four broken
 pages is worse than publishing nothing.
 
-Both showcases deploy to **Firebase Hosting**, in the same project
-(`armenie-info`), on two separate **targets** — see [The two
-domains](#the-two-domains) for the URL → target → Firebase site mapping. The
-Firebase service-account JSON is stored in the
-`FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` repo secret, and the deploy step loops
-over `ch` and `org`, deploying and checking each target's result independently
-(see [The two domains](#the-two-domains) for why: a no-op on one target must
-not be mistaken for a failure on the other, or vice versa).
+Both showcases deploy to **Firebase Hosting**, but in **two different Firebase
+projects** — see [The two domains](#the-two-domains) for the full URL → site →
+project mapping. `firebase.json` names its entries by `site` (globally unique),
+not by `target` (declared per project), so `.firebaserc` keeps only
+`projects.default`.
+
+The deploy step loops over the two sites one at a time, **reassigning
+`GOOGLE_APPLICATION_CREDENTIALS` on each iteration**: a service account only has
+rights on its own project, so the two sites cannot share one credential. Each
+site's result is judged on its own output — a no-op on one must not be mistaken
+for a failure on the other, or vice versa.
+
+A guard checks both secrets are non-empty before the first deploy command. Miss
+one and the run stops immediately naming it, instead of failing later on an
+authorization error that says neither which secret is missing nor for which
+project.
 
 **CI configuration:**
 
 | Name | Kind | Purpose |
 |---|---|---|
-| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Firebase Hosting deploy credentials, scoped to Hosting Admin only. |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for project `armenie-info` (site `armenie-info` → armenieinfo.ch), scoped to Hosting Admin only. |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` | secret | Deploy credentials for project `armenia-news` (site `armenianews-org-nano` → armenianews.org), same scope. **Required** — the workflow deploys both sites unconditionally, so without it every hourly run goes red even though armenieinfo.ch published fine. See [The two domains](#the-two-domains) for how to create it. |
 | `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
 | `ASBAREZ_PROXY` | variable | URL of the Asbarez Cloudflare Worker proxy. **Required** from CI — both Asbarez editions 403 datacenter IPs outright, so without it the Asbarez feed comes back empty every hour (no direct fallback, unlike armradio). |
 
