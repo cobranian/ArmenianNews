@@ -27,6 +27,11 @@ jobs:
 
       - run: npm ci
 
+      # Les seuls tests du dépôt : ils gardent l'invariant « une langue = une
+      # URL » et la réciprocité des hreflang. Ils ne touchent pas au réseau.
+      - name: Tests
+        run: npm test
+
       # Refresh news + agenda. Instagram/Facebook are curated and untouched.
       # Snapshot only on schedule/dispatch: a push to main just rebuilds &
       # redeploys (scrape skipped), so a code or docs change ships fast without
@@ -49,7 +54,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json public/sitemap.xml
+          # public/sitemap.xml n'est plus versionné : il en faut un par vitrine,
+          # et ils sont générés au build (scripts/lib/sitemap.mjs), avec un
+          # lastmod lu dans meta.json.generatedAt — donc l'heure de CE scrape.
+          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else
@@ -59,6 +67,15 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
+      # jamais en automatique et ne protège rien. Volontairement SANS
+      # continue-on-error : si les quatre pages ou les deux sitemaps sont
+      # incorrects, il vaut mieux ne rien publier que publier un site cassé.
+      # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
+      # donc un faux positif signalerait une vraie divergence de configuration.
+      - name: Contrôler les pages et les fichiers SEO produits
+        run: npm run check
 
       # Regenerate the Don Narek carousel preview each hour and drop it into
       # dist/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png).
@@ -101,14 +118,15 @@ jobs:
           # its environment, so a single malicious release would hand over the
           # credential. Bump deliberately.
           out=$(npx --yes firebase-tools@15.23.0 deploy \
-            --only hosting --project armenie-info --non-interactive 2>&1)
+            --only hosting:ch,hosting:org --project armenie-info --non-interactive 2>&1)
           code=$?
           echo "$out"
-          # Firebase rejects a release whose content is identical to the
-          # currently live version (e.g. an hour with no data change).
-          # That's a successful no-op, not a failure.
-          if [ $code -ne 0 ] && echo "$out" | grep -q "is the current active version"; then
-            echo "::notice::Content unchanged — already live. Skipping."
+          # Firebase rejette une publication dont le contenu est identique à la
+          # version en ligne (p. ex. une heure sans changement de données).
+          # C'est un no-op réussi, pas un échec. Avec deux cibles, le message
+          # peut ne concerner qu'une seule d'entre elles.
+          if [ $code -ne 0 ] && echo "$out" | grep -qi "is the current active version"; then
+            echo "::notice::Contenu inchangé — déjà en ligne. Ignoré."
             exit 0
           fi
           exit $code
