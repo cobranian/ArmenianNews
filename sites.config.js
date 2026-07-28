@@ -19,7 +19,7 @@ export const SITES = {
   org: {
     id: 'org',
     host: 'https://armenianews.org',
-    firebaseSite: 'armenia-news',
+    firebaseSite: 'armenianews-org',
     brand: 'Armenia News',
     // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
     // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
