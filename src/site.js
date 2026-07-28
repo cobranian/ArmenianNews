@@ -13,7 +13,7 @@ import { primaryLang } from '../sites.config.js'
 
 // Posé au build par scripts/build-sites.mjs (VITE_SITE_ID). `npm run dev`
 // n'en pose pas et travaille donc sur le .ch, la vitrine française.
-export const SITE_ID = import.meta.env.VITE_SITE_ID ?? 'ch'
+export const SITE_ID = import.meta.env?.VITE_SITE_ID ?? 'ch'
 
 // La langue du domaine en tête, le reste dans l'ordre reçu. Dérivé et non
 // écrit à la main : sinon ajouter une cinquième langue obligerait à corriger

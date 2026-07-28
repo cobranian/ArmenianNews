@@ -349,7 +349,8 @@ h3:lang(hy) {
   overflow: hidden;
   background: rgba(0, 0, 0, 0.25);
 }
-.lang button {
+.lang button,
+.lang a {
   appearance: none;
   border: 0;
   background: transparent;
@@ -361,13 +362,25 @@ h3:lang(hy) {
   cursor: pointer;
   transition: background 0.18s var(--ease), color 0.18s var(--ease);
 }
-.lang button:hover {
+.lang button:hover,
+.lang a:hover {
   color: var(--text);
 }
-.lang button[aria-pressed='true'] {
+.lang a[aria-current='page'] {
   background: var(--apricot);
   color: var(--on-apricot);
   font-weight: 700;
+}
+
+/* Le sélecteur de langue est fait de liens depuis que chaque langue a son URL.
+   On neutralise la décoration de lien pour qu'ils gardent l'allure des pastilles
+   qu'ils étaient : .lang a son overflow caché et son border-radius, les enfants
+   doivent donc remplir la hauteur pour que le fond de l'état actif touche les
+   bords. */
+.lang a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .theme-toggle {
@@ -2107,7 +2120,8 @@ h3:lang(hy) {
      measured 366px scrollWidth. 12px keeps the row on one line; the tallest
      label ("ՀԱՅ") still sets the row height. Don't go below 12px — "FR" is
      already the narrowest chip and its tap width is at the floor here. */
-  .lang button {
+  .lang button,
+  .lang a {
     padding: 14px 12px;
   }
   .shelf__arrow {

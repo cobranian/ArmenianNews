@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
+import { orderedLangs } from '../site.js'
+import { LANG_URL } from '../../sites.config.js'
 import { KnotMark } from './Ornament.jsx'
 
 export function Nav() {
-  const { t, lang, setLang } = useI18n()
+  const { t, lang } = useI18n()
   const [open, setOpen] = useState(false)
   const [theme, setTheme] = useState(
     () => document.documentElement.dataset.theme || 'dark',
@@ -54,16 +56,23 @@ export function Nav() {
           >
             {theme === 'dark' ? '☀' : '☾'}
           </button>
+          {/* Chaque langue a son URL — le sélecteur navigue, il ne bascule pas
+              un état. Ce sont donc quatre liens en dur dans le HTML de chaque
+              page : le maillage réciproque entre les deux domaines, que Google
+              attend en plus des hreflang. L'ordre vient du domaine (voir
+              orderedLangs), pas de la langue affichée : la barre reste stable
+              quand on navigue à l'intérieur du .org. */}
           <div className="lang" role="group" aria-label="Language">
-            {LANGS.map((l) => (
-              <button
+            {orderedLangs(LANGS).map((l) => (
+              <a
                 key={l.code}
-                onClick={() => setLang(l.code)}
-                aria-pressed={lang === l.code}
+                href={LANG_URL[l.code]}
+                hrefLang={l.code}
+                aria-current={lang === l.code ? 'page' : undefined}
                 title={l.name}
               >
                 {l.label}
-              </button>
+              </a>
             ))}
           </div>
           <button
