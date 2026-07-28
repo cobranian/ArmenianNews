@@ -1181,11 +1181,27 @@ Expected: PASS — 19 tests, 0 échec
 
 - [ ] **Step 5 : retirer `writeSitemap` de `scripts/scrape.mjs`**
 
-Supprimer les lignes 48 à 66 (la constante `PUBLIC_DIR`, le commentaire et la fonction `writeSitemap`), puis :
+Deux endroits, pas un. Repérez-les :
 
 Run: `grep -n "writeSitemap\|PUBLIC_DIR" scripts/scrape.mjs`
 
-Supprimer aussi la ligne d'appel `await writeSitemap(...)` que ce `grep` révèle. Vérifier ensuite que `join` et `writeFile` restent utilisés ailleurs dans le fichier (ils le sont, par `writeJson`) ; ne pas toucher aux imports.
+**a) La définition** (≈ lignes 48-66) — retirer d'un bloc : la constante `PUBLIC_DIR`, le commentaire de trois lignes qui la suit, et toute la fonction `async function writeSitemap(generatedAt) { … }`.
+
+**b) L'appel** (≈ ligne 255) — et c'est ici qu'il faut être précis. Il est **collé** à l'écriture de `meta.json` :
+
+```js
+  await writeJson('meta.json', { generatedAt })
+  await writeSitemap(generatedAt)          // ← SEULE cette ligne part
+```
+
+⚠ **Ne supprimez pas la ligne `writeJson('meta.json', …)`.** C'est elle qui produit `src/data/meta.json`, dont Task 8 lit `generatedAt` pour dater les deux sitemaps. La supprimer ferait générer des sitemaps sans `lastmod`, sans qu'aucun test n'échoue — le scrape passerait, le build passerait, et Google recevrait des sitemaps muets sur la fraîcheur.
+
+**c) Ne touchez pas aux imports.** `writeFile` et `join` restent utilisés par `writeJson` et `readJson`. Après suppression, vérifiez :
+
+```bash
+grep -c "writeFile\|join(" scripts/scrape.mjs   # doit rester > 0
+npm run lint                                     # 0 erreur : aucun import orphelin
+```
 
 Ajouter à la place, là où se trouvait la fonction :
 
@@ -1206,10 +1222,25 @@ git rm public/sitemap.xml
 
 - [ ] **Step 7 : vérifier que le scrape tourne encore**
 
-Run: `npm run scrape`
-Expected: le script se termine sans erreur, `src/data/meta.json` est réécrit, **aucune** ligne `→ wrote public/sitemap.xml`, et `public/sitemap.xml` n'existe pas.
+**N'exécutez pas `npm run scrape` pour cette vérification.** Il prend 3 à 4 minutes, sollicite une dizaine de sources réelles (dont plusieurs qui limitent le débit ou bloquent les requêtes répétées) et réécrit `src/data/*.json` — ce qui salirait le diff de cette tâche avec un snapshot de données sans rapport.
 
-> Ce scrape prend 3 à 4 minutes et sollicite les sources réelles. Si le réseau est indisponible, vérifier au minimum : `node -e "import('./scripts/scrape.mjs')"` ne doit pas lever d'erreur de syntaxe ou d'import.
+Vérifiez plutôt que le module se charge toujours, ce qui suffit à détecter une erreur de syntaxe, un import orphelin ou une référence morte :
+
+```bash
+node --check scripts/scrape.mjs && echo "✓ syntaxe valide"
+node -e "
+const s = require('node:fs').readFileSync('scripts/scrape.mjs','utf8');
+let ko = 0;
+if (s.includes('writeSitemap'))  { console.error('✗ writeSitemap subsiste'); ko++ }
+if (s.includes('PUBLIC_DIR'))    { console.error('✗ PUBLIC_DIR subsiste'); ko++ }
+if (!s.includes(\"writeJson('meta.json'\")) { console.error('✗ meta.json N EST PLUS ÉCRIT — Task 8 en dépend'); ko++ }
+console.log(ko ? ko+' problème(s)' : '✓ scrape.mjs nettoyé, meta.json préservé');
+process.exit(ko?1:0)"
+```
+
+Expected: `✓ syntaxe valide` puis `✓ scrape.mjs nettoyé, meta.json préservé`
+
+> Le prochain scrape horaire de la CI validera le chemin complet en conditions réelles. Si vous voulez malgré tout un essai local, faites-le **après** le commit de cette tâche et n'incluez pas les `src/data/*.json` modifiés.
 
 - [ ] **Step 8 : lint et commit**
 
