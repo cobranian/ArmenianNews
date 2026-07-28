@@ -2022,8 +2022,30 @@ Et élargir le garde-fou du no-op — avec deux cibles, Firebase peut rapporter 
 
 - [ ] **Step 5 : vérifier la syntaxe du workflow**
 
-Run: `npx --yes yaml-lint .github/workflows/hourly.yml 2>/dev/null || node -e "const y=require('node:fs').readFileSync('.github/workflows/hourly.yml','utf8'); if (y.includes('hosting:ch,hosting:org') && !y.includes('public/sitemap.xml')) console.log('✓ workflow à jour'); else { console.error('✗ workflow incomplet'); process.exit(1) }"`
-Expected: `✓ workflow à jour`
+```bash
+npx --yes yaml-lint .github/workflows/hourly.yml
+node -e "
+const y = require('node:fs').readFileSync('.github/workflows/hourly.yml','utf8');
+// Ne cherchez PAS l'absence de la chaîne 'public/sitemap.xml' dans tout le
+// fichier : le commentaire ajouté à l'étape 1 la mentionne en prose, pour
+// expliquer justement pourquoi elle n'est plus versionnée. Un tel contrôle
+// trouverait son propre avertissement. On teste la LIGNE git add, pas le fichier.
+const gitAdd = y.split('\n').find((l) => l.includes('git add src/data')) || '';
+const c = [
+  ['git add sans sitemap',   gitAdd && !gitAdd.includes('sitemap')],
+  ['git add garde meta.json', gitAdd.includes('src/data/meta.json')],
+  ['étape npm test',          /run:\s*npm test/.test(y)],
+  ['étape npm run check',     /run:\s*npm run check/.test(y)],
+  ['deux cibles au déploiement', y.includes('hosting:ch,hosting:org')],
+];
+const ko = c.filter(([, ok]) => !ok).map(([n]) => n);
+console.log(ko.length ? '✗ ' + ko.join(', ') : '✓ workflow à jour');
+process.exit(ko.length ? 1 : 0)"
+```
+
+Expected: `YAML Lint successful` puis `✓ workflow à jour`
+
+> Le contrôle porte sur la **ligne** `git add`, pas sur le fichier entier — le commentaire que vous venez d'ajouter mentionne `public/sitemap.xml` en prose pour expliquer sa disparition, et un contrôle naïf sur tout le fichier trouverait ce texte et croirait à un échec.
 
 - [ ] **Step 6 : commit**
 
