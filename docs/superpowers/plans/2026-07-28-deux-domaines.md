@@ -25,7 +25,7 @@
 - **Aucun fichier de `scripts/sources/`, `src/data/` ou `proxy/` ne bouge ni ne change.**
 - **`og:image`** reste `og-image.jpg` sur les deux sites (1200×630, sRGB, sans profil ICC — contrainte WhatsApp).
 - **GA4** : l'ID `G-EB3W5XXSMW` reste identique dans `index.html` et `public/ga-init.js`.
-- **Projet Firebase** : `armenie-info` pour les deux sites. Sites Hosting : `armenie-info` (cible `ch`) et `armenia-news` (cible `org`).
+- **Projet Firebase** : `armenie-info` pour les deux sites. Sites Hosting : `armenie-info` (cible `ch`) et `armenianews-org` (cible `org`) — `armenia-news` était réservé par un autre projet.
 
 ## Structure des fichiers
 
@@ -1770,12 +1770,25 @@ git commit -m "prerender: cuit les quatre pages, avec garde sur la langue rendue
 - Consumes: `dist/ch/` et `dist/org/` (Task 8)
 - Produces: deux cibles Hosting déployables par `firebase deploy --only hosting`.
 
-- [ ] **Step 1 : créer le site Hosting du .org**
+- [ ] **Step 1 : corriger le nom du site dans `sites.config.js`**
 
-Run: `npx firebase-tools@15.23.0 hosting:sites:create armenia-news --project armenie-info`
-Expected: création confirmée, URL de repli `https://armenia-news.web.app`
+**Le site est déjà créé** — inutile de relancer la commande. `armenia-news` s'est révélé **réservé par un autre projet Firebase** (erreur 400 : *« `armenia-news` is reserved by another project »*), donc le site porte le nom de repli prévu au plan :
 
-> Si le nom est déjà pris à l'échelle mondiale, la commande échoue. Choisir alors une variante, **et la reporter dans `sites.config.js` → `org.firebaseSite`** ainsi qu'à l'étape 2 : les deux doivent rester d'accord.
+| | |
+|---|---|
+| Site Hosting | **`armenianews-org`** |
+| URL de repli | `https://armenianews-org.web.app` |
+| Projet | `armenie-info` (inchangé) |
+
+`sites.config.js:22` porte encore `firebaseSite: 'armenia-news'`. Corriger :
+
+```js
+    firebaseSite: 'armenianews-org',
+```
+
+> Cette clé n'est consommée par aucun code — elle documente la cible. Fausse, elle n'empêcherait rien de fonctionner, mais enverrait la prochaine personne chercher un site qui n'existe pas. C'est **la seule modification autorisée de `sites.config.js`** dans cette tâche.
+>
+> Le nom du site fixe seulement le sous-domaine `*.web.app` de repli ; une fois `armenianews.org` attaché comme domaine personnalisé, les lecteurs ne le voient plus.
 
 - [ ] **Step 2 : déclarer les cibles dans `.firebaserc`**
 
@@ -1788,7 +1801,7 @@ Expected: création confirmée, URL de repli `https://armenia-news.web.app`
     "armenie-info": {
       "hosting": {
         "ch": ["armenie-info"],
-        "org": ["armenia-news"]
+        "org": ["armenianews-org"]
       }
     }
   }
@@ -1919,7 +1932,7 @@ http://localhost:5001/ru/        <html lang="ru"
 
 - [ ] **Step 5 : ajouter le domaine personnalisé**
 
-Dans la console Firebase → Hosting → site `armenia-news` → « Ajouter un domaine personnalisé » → `armenianews.org`. Poser chez le registrar les enregistrements A affichés.
+Dans la console Firebase → Hosting → site `armenianews-org` → « Ajouter un domaine personnalisé » → `armenianews.org`. Poser chez le registrar les enregistrements A affichés.
 
 > Le certificat et la propagation prennent de quelques minutes à 24 h. Le déploiement peut se faire avant : `armenia-news.web.app` sert entre-temps.
 
@@ -2130,7 +2143,7 @@ git commit -m "docs: les deux vitrines, leurs pièges et la procédure de déplo
 
 | Quand | Quoi | Bloquant ? |
 |---|---|---|
-| Avant Task 10 | Créer le site Hosting `armenia-news` | oui (Task 10 étape 1) |
+| ~~Avant Task 10~~ | ~~Créer le site Hosting~~ — **fait** : `armenianews-org` créé le 2026-07-28 | ✓ |
 | Avant le déploiement | Créer la propriété Search Console `armenianews.org`, reporter le jeton dans `sites.config.js` → `org.gscToken` | **oui** — le jeton est compilé dans le HTML |
 | Avant/pendant | Poser les enregistrements A d'`armenianews.org` chez le registrar | non (le `.web.app` sert entre-temps) |
 | Après propagation DNS | Soumettre `https://armenianews.org/sitemap.xml` dans sa propriété GSC | non |
