@@ -84,16 +84,15 @@ pas mécaniquement :
   motif React standard pour un contexte ; l'avertissement ne concerne que le
   rafraîchissement à chaud en développement.
 
-  Il y en avait quatre dans `i18n.jsx` jusqu'au découpage en deux vitrines :
-  le fichier déclarait `LANGS` en dur, ce qui comptait pour un avertissement de
-  plus. La liste vit désormais dans `sites.config.js` (racine), parce que Node
-  doit pouvoir la lire sans passer par un parseur JSX ; `i18n.jsx` se contente
-  de la **ré-exporter** (`export { LANGS }`), et une ré-exportation ne
-  déclenche pas la règle. Le décompte a donc **baissé** de 6 à 5 : c'est une
-  amélioration, pas une régression. Ne remettez pas `LANGS` en dur dans
-  `i18n.jsx` pour « simplifier » — cela recasserait le build à deux vitrines et
-  les tests qui vérifient que `sites.config.js` et `LANGS` décrivent les mêmes
-  langues.
+  `i18n.jsx` en portait **deux** — `LANGS` déclaré en dur et `useI18n` — sur les
+  quatre que totalisait la ligne combinée avec `motifs.jsx`. La liste vit
+  désormais dans `sites.config.js` (racine), parce que Node doit pouvoir la
+  lire sans passer par un parseur JSX ; `i18n.jsx` se contente de la
+  **ré-exporter** (`export { LANGS }`), et une ré-exportation ne déclenche pas
+  la règle. Le décompte a donc **baissé** de 6 à 5 : c'est une amélioration, pas
+  une régression. Ne remettez pas `LANGS` en dur dans `i18n.jsx` pour
+  « simplifier » — cela recasserait le build à deux vitrines et les tests qui
+  vérifient que `sites.config.js` et `LANGS` décrivent les mêmes langues.
 
 ## Architecture
 
