@@ -1,0 +1,73 @@
+/**
+ * Contrôle ce que le build a réellement produit.
+ *
+ *   npm run check          # après npm run build
+ *
+ * Dérivé de sites.config.js : ajouter une page ou une langue étend
+ * automatiquement le contrôle, sans toucher à ce fichier.
+ */
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { SITES, LANG_URL, ALL_LANGS } from '../sites.config.js'
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+let bad = 0
+
+for (const site of Object.values(SITES)) {
+  for (const page of site.pages) {
+    const rel = path.join('dist', site.id, page.path.replace(/^\//, ''), 'index.html')
+    let html
+    try {
+      html = await readFile(path.join(root, rel), 'utf-8')
+    } catch {
+      console.error(`✗ ${rel} — absent`)
+      bad++
+      continue
+    }
+
+    // Compter, pas seulement constater la présence. Un `includes` ne distingue
+    // pas « présent une fois » de « présent trois fois » — or le mode d'échec
+    // qui compte ici est justement la DUPLICATION : si replaceMeta cessait
+    // d'être idempotent, chaque page accumulerait plusieurs blocs <head>, donc
+    // plusieurs canonical et plusieurs jeux de hreflang. C'est pire que rien :
+    // Google n'arbitre pas, il écarte.
+    const count = (re) => (html.match(re) || []).length
+
+    const checks = [
+      [`<html lang="${page.lang}">`, html.includes(`<html lang="${page.lang}"`)],
+      ['un seul <html>', count(/<html\s/g) === 1],
+      [
+        `canonical ${LANG_URL[page.lang]}`,
+        html.includes(`rel="canonical" href="${LANG_URL[page.lang]}" />`),
+      ],
+      ['un seul canonical', count(/rel="canonical"/g) === 1],
+      [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
+      ['un seul og:site_name', count(/og:site_name"/g) === 1],
+      ['un seul <title>', count(/<title>/g) === 1],
+      [
+        'les 4 hreflang, réciproques',
+        ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${LANG_URL[l]}"`)),
+      ],
+      ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
+      ['x-default', html.includes('hreflang="x-default"')],
+      ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
+      ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
+      ['GA4 intact', html.includes('G-EB3W5XXSMW')],
+    ]
+
+    const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
+    if (failed.length) {
+      console.error(`✗ ${rel}\n    ${failed.join('\n    ')}`)
+      bad += failed.length
+    } else {
+      console.log(`✓ ${rel} (${page.lang})`)
+    }
+  }
+}
+
+if (bad) {
+  console.error(`\n${bad} problème(s)`)
+  process.exit(1)
+}
+console.log('\n✓ toutes les pages sont conformes')
