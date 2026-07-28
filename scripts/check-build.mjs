@@ -66,6 +66,52 @@ for (const site of Object.values(SITES)) {
   }
 }
 
+// Les fichiers SEO sont écrits hors du flux des pages : sans ce contrôle,
+// `npm run check` peut valider quatre pages parfaites alors que les deux
+// sitemaps manquent. C'est arrivé — voir la revue de Task 8.
+for (const site of Object.values(SITES)) {
+  const dir = path.join(root, 'dist', site.id)
+
+  let xml
+  try {
+    xml = await readFile(path.join(dir, 'sitemap.xml'), 'utf-8')
+  } catch {
+    console.error(`✗ dist/${site.id}/sitemap.xml — absent`)
+    bad++
+    continue
+  }
+  const urls = (xml.match(/<url>/g) || []).length
+  const dates = (xml.match(/<lastmod>/g) || []).length
+  const alts = (xml.match(/xhtml:link/g) || []).length
+  const attendu = site.pages.length
+  const checks = [
+    [`${attendu} <url>`, urls === attendu],
+    [`${attendu} <lastmod>`, dates === attendu],
+    [`${attendu * (ALL_LANGS.length + 1)} xhtml:link`, alts === attendu * (ALL_LANGS.length + 1)],
+    ['host du site dans les <loc>', xml.includes(`<loc>${site.host}/`)],
+  ]
+  const rates = checks.filter(([, ok]) => !ok).map(([n]) => n)
+  if (rates.length) {
+    console.error(`✗ dist/${site.id}/sitemap.xml\n    ${rates.join('\n    ')}`)
+    bad += rates.length
+  } else {
+    console.log(`✓ dist/${site.id}/sitemap.xml (${urls} url)`)
+  }
+
+  try {
+    const robots = await readFile(path.join(dir, 'robots.txt'), 'utf-8')
+    if (!robots.includes(`Sitemap: ${site.host}/sitemap.xml`)) {
+      console.error(`✗ dist/${site.id}/robots.txt — ne pointe pas sur ${site.host}/sitemap.xml`)
+      bad++
+    } else {
+      console.log(`✓ dist/${site.id}/robots.txt`)
+    }
+  } catch {
+    console.error(`✗ dist/${site.id}/robots.txt — absent`)
+    bad++
+  }
+}
+
 if (bad) {
   console.error(`\n${bad} problème(s)`)
   process.exit(1)

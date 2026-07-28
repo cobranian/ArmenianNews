@@ -97,19 +97,22 @@ async function lastmod() {
   try {
     const meta = JSON.parse(await readFile(path.join(root, 'src/data/meta.json'), 'utf-8'))
     if (meta.generatedAt) return meta.generatedAt
+    console.error('src/data/meta.json ne porte pas de generatedAt.')
   } catch {
-    /* pas de snapshot encore */
+    console.error('src/data/meta.json introuvable ou illisible.')
   }
-  console.warn('⚠ meta.json sans generatedAt — sitemaps sans lastmod')
-  return null
+  // Échec dur plutôt que sitemaps absents en silence : sans generatedAt on ne
+  // peut pas dater les sitemaps, et un déploiement sans sitemap ne se voit que
+  // des semaines plus tard, dans Search Console. `npm run scrape` régénère
+  // meta.json ; il est aussi versionné, donc un dépôt sain en a toujours un.
+  console.error('Impossible de dater les sitemaps — build interrompu.')
+  process.exit(1)
 }
 
 async function writeSeoFiles(site, stamp) {
   const dist = path.join(root, 'dist', site.id)
-  if (stamp) {
-    await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp), 'utf-8')
-    console.log(`  → dist/${site.id}/sitemap.xml`)
-  }
+  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp), 'utf-8')
+  console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
 }
@@ -120,17 +123,6 @@ for (const site of Object.values(SITES)) {
   viteBuild(site.id)
   await derivePages(site)
   await writeSeoFiles(site, stamp)
-}
-
-// Garde-fou : si public/robots.txt réapparaissait un jour, Vite le copierait
-// dans les deux dist/ avec le host du .ch et le .org annoncerait le sitemap du
-// voisin. On vérifie que chaque robots pointe bien sur son propre domaine.
-for (const site of Object.values(SITES)) {
-  const robots = await readFile(path.join(root, 'dist', site.id, 'robots.txt'), 'utf-8')
-  if (!robots.includes(site.host)) {
-    console.error(`dist/${site.id}/robots.txt ne pointe pas sur ${site.host}`)
-    process.exit(1)
-  }
 }
 
 console.log(
