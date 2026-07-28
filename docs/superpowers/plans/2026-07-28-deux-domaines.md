@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- **Langues** : exactement `fr`, `en`, `hy`, `ru` — les codes de `LANGS` dans `src/i18n.jsx`.
+- **Langues** : exactement `fr`, `en`, `hy`, `ru` — les codes de `LANGS`, qui vit dans `sites.config.js` depuis Task 1 (`src/i18n.jsx` le ré-exporte).
 - **Répartition figée** : `armenieinfo.ch/` → fr. `armenianews.org/` → en, `/hy/` → hy, `/ru/` → ru.
 - **Marques** : `Arménie Info` sur le .ch, `Armenia News` sur le .org.
 - **Ordre du sélecteur de langue** : figé par domaine, la langue du domaine en tête. `.ch` → FR EN ՀԱՅ РУ ; `.org` → EN FR ՀԱՅ РУ **sur ses trois pages**, seule la mise en évidence de la langue active se déplace.
@@ -20,7 +20,8 @@
 - **`x-default`** = `https://armenianews.org/`.
 - **`localStorage` ne stocke plus la langue.** La clé `lang` n'est ni lue ni écrite. La clé `theme` reste inchangée.
 - **`lastmod` des sitemaps** = `src/data/meta.json` → `generatedAt`. **Jamais** l'heure du build (voir Task 7).
-- **Lint** : `npm run lint` doit rester à **0 erreur et 6 avertissements**. Un septième signale une régression — voir `CLAUDE.md` pour les six connus.
+- **Lint** : `npm run lint` doit rester à **0 erreur** et ne jamais **dépasser** le décompte d'avertissements constaté (6 au départ ; il peut descendre à 5 après le déplacement de `LANGS` à Task 1 — une baisse est une amélioration, une hausse une régression). Les avertissements connus sont documentés dans `CLAUDE.md` ; ne pas les « corriger ».
+- **Node ne sait pas parser `.jsx`.** Aucun script de `scripts/` ni aucun test ne doit importer un fichier `.jsx` : ils tournent sous Node, qui lève `ERR_UNKNOWN_FILE_EXTENSION`. Ce qui doit être lu des deux côtés (navigateur et Node) vit dans un `.js` plat — `sites.config.js`, `src/seo.js`, `src/site.js`. N'ajoutez pas de transpileur pour contourner ça.
 - **Aucun fichier de `scripts/sources/`, `src/data/` ou `proxy/` ne bouge ni ne change.**
 - **`og:image`** reste `og-image.jpg` sur les deux sites (1200×630, sRGB, sans profil ICC — contrainte WhatsApp).
 - **GA4** : l'ID `G-EB3W5XXSMW` reste identique dans `index.html` et `public/ga-init.js`.
@@ -71,6 +72,7 @@
 **Interfaces:**
 - Produces:
   - `SITES` : `{ ch: Site, org: Site }` où `Site = { id, host, firebaseSite, brand, email, gscToken, pages }` et `pages: Array<{ lang, path }>`
+  - `LANGS` : `Array<{ code, label, name }>` — **déplacé depuis `src/i18n.jsx:5-10`** (voir ci-dessous)
   - `LANG_URL` : `Record<'fr'|'en'|'hy'|'ru', string>` — URL absolue avec slash final
   - `ALL_LANGS` : `string[]` — les codes dans l'ordre canonique `['fr','en','hy','ru']`
   - `X_DEFAULT` : `string`
@@ -81,6 +83,8 @@
 
 **Note d'intégration** : ce module ne doit **jamais** importer `src/i18n.jsx`. `i18n.jsx` l'importe, l'inverse créerait un cycle.
 
+**⚠ `LANGS` déménage ici.** Node lève `ERR_UNKNOWN_FILE_EXTENSION` sur un import de `.jsx` : ni les tests ni les scripts de build — qui tournent sous Node — ne peuvent lire `src/i18n.jsx`. La liste des langues doit donc vivre dans un `.js` plat. `src/i18n.jsx` la ré-exporte (`export { LANGS } from '../sites.config.js'`) pour que `Nav.jsx` et les autres consommateurs restent inchangés. Bénéfice au passage : il n'y a plus **deux** listes à tenir d'accord, donc l'invariant « une langue = une URL » devient structurel au lieu d'être vérifié après coup. **N'ajoutez pas de transpileur** (`tsx`, `ts-node`…) pour contourner ça — ce serait masquer la cause à deux endroits, dont le build.
+
 - [ ] **Step 1 : écrire le test qui échoue**
 
 Créer `test/sites-config.test.mjs` :
@@ -88,8 +92,11 @@ Créer `test/sites-config.test.mjs` :
 ```js
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { SITES, LANG_URL, ALL_LANGS, X_DEFAULT, primaryLang, langFromPath, siteOf } from '../sites.config.js'
-import { LANGS } from '../src/i18n.jsx'
+// Tout vient de sites.config.js — surtout PAS de src/i18n.jsx, que Node ne
+// sait pas parser (ERR_UNKNOWN_FILE_EXTENSION sur .jsx).
+import {
+  SITES, LANGS, LANG_URL, ALL_LANGS, X_DEFAULT, primaryLang, langFromPath, siteOf,
+} from '../sites.config.js'
 
 test('chaque langue vit à exactement une URL', () => {
   const langs = Object.values(SITES).flatMap((s) => s.pages.map((p) => p.lang))
@@ -97,7 +104,7 @@ test('chaque langue vit à exactement une URL', () => {
   assert.equal(new Set(langs).size, langs.length, 'une langue est servie à deux endroits')
 })
 
-test("l'invariant tient avec LANGS de i18n", () => {
+test('ALL_LANGS et LANGS décrivent exactement les mêmes langues', () => {
   assert.deepEqual([...ALL_LANGS].sort(), LANGS.map((l) => l.code).sort())
 })
 
@@ -173,6 +180,19 @@ Expected: FAIL — `Cannot find module '.../sites.config.js'`
 // l'autre — et surtout jamais importer src/i18n.jsx, qui l'importe déjà :
 // le cycle casserait le bundle.
 
+// Langues de l'interface. Vit ici et non dans i18n.jsx parce que Node doit
+// pouvoir la lire (le build et les tests tournent hors navigateur, et Node
+// lève ERR_UNKNOWN_FILE_EXTENSION sur un .jsx). i18n.jsx la ré-exporte, donc
+// les composants continuent de l'importer depuis là.
+// Le contenu (articles, posts) reste dans sa langue d'origine ; seul le chrome
+// de l'interface est traduit.
+export const LANGS = [
+  { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
+  { code: 'ru', label: 'РУ', name: 'Русский' },
+]
+
 export const SITES = {
   ch: {
     id: 'ch',
@@ -200,9 +220,9 @@ export const SITES = {
   },
 }
 
-// Ordre canonique des langues. Doit correspondre aux codes de LANGS
-// (src/i18n.jsx) — l'invariant est vérifié par test/sites-config.test.mjs et
-// par une assertion au build (scripts/build-sites.mjs).
+// Ordre canonique des langues. Doit correspondre aux codes de LANGS, juste
+// au-dessus — vérifié par test/sites-config.test.mjs et par une assertion au
+// build (scripts/build-sites.mjs).
 export const ALL_LANGS = ['fr', 'en', 'hy', 'ru']
 
 // lang -> URL absolue, slash final compris. Une seule table, consommée par le
@@ -239,20 +259,35 @@ export function langFromPath(siteId, pathname) {
 }
 ```
 
-- [ ] **Step 5 : lancer le test pour le voir passer**
+- [ ] **Step 5 : ré-exporter `LANGS` depuis `src/i18n.jsx`**
+
+Remplacer la déclaration des lignes 3-10 par une ré-exportation, pour que
+`Nav.jsx` et les autres consommateurs restent inchangés :
+
+```js
+// La liste des langues vit dans sites.config.js : Node doit pouvoir la lire
+// (le build et les tests tournent hors navigateur, et il ne sait pas parser
+// .jsx). Ré-exportée ici pour que les composants l'importent toujours d'ici.
+export { LANGS } from '../sites.config.js'
+```
+
+- [ ] **Step 6 : lancer le test pour le voir passer**
 
 Run: `npm test`
-Expected: PASS — 7 tests, 0 échec
+Expected: PASS — 8 tests, 0 échec. **Sous `node --test`, sans transpileur.**
 
-- [ ] **Step 6 : vérifier que le lint n'a pas bougé**
+- [ ] **Step 7 : vérifier le lint**
 
 Run: `npm run lint`
-Expected: 0 erreur, **6 avertissements** (les six connus)
+Expected: 0 erreur. Le décompte d'avertissements est de 6 avant ce changement ;
+il peut tomber à **5** si `react-refresh/only-export-components` ne compte pas
+les ré-exportations. Une baisse est une amélioration. **Noter le chiffre
+constaté** — c'est le nouveau seuil de référence pour les tâches suivantes.
 
-- [ ] **Step 7 : commit**
+- [ ] **Step 8 : commit**
 
 ```bash
-git add sites.config.js test/sites-config.test.mjs eslint.config.js package.json
+git add sites.config.js src/i18n.jsx test/sites-config.test.mjs eslint.config.js package.json
 git commit -m "config: sites.config.js, source de vérité des deux vitrines"
 ```
 
@@ -790,7 +825,16 @@ import { langFromPath } from '../sites.config.js'
 import { SITE_ID } from './site.js'
 ```
 
-- [ ] **Step 3 : remplacer `LanguageProvider` (lignes 569-600)**
+> **Note (défaut de plan corrigé à Task 1).** `LANGS` ne vit plus dans ce
+> fichier : Task 1 l'a déplacé dans `sites.config.js` parce que Node ne sait pas
+> parser `.jsx` (`ERR_UNKNOWN_FILE_EXTENSION`) et que le build comme les tests
+> tournent hors navigateur. `i18n.jsx` porte désormais
+> `export { LANGS } from '../sites.config.js'` — **laisser cette ligne en
+> place**, les consommateurs (`Nav.jsx`) l'importent toujours d'ici. Les numéros
+> de ligne ci-dessous ont donc glissé de quelques unités ; repérer
+> `export function LanguageProvider` plutôt que de compter les lignes.
+
+- [ ] **Step 3 : remplacer `LanguageProvider`**
 
 ```jsx
 export function LanguageProvider({ children }) {
@@ -1159,10 +1203,12 @@ import { spawnSync } from 'node:child_process'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS } from '../sites.config.js'
+// LANGS vient de sites.config.js, PAS de src/i18n.jsx : Node ne sait pas
+// parser .jsx (ERR_UNKNOWN_FILE_EXTENSION), et ce script tourne sous Node.
+// C'est la raison pour laquelle la liste a été déplacée à Task 1.
+import { SITES, ALL_LANGS, LANGS } from '../sites.config.js'
 import { replaceMeta } from './lib/site-meta.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
-import { LANGS } from '../src/i18n.jsx'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
