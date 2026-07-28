@@ -30,6 +30,11 @@ function jsonLd(site, lang) {
       '@id': `${site.host}/#website`,
       url: `${site.host}/`,
       name: site.brand,
+      // Les autres noms sous lesquels ce site a été ou est connu ailleurs
+      // (voir sites.config.js). Sans ce pont, un domaine tout neuf envoie à
+      // Google des signaux de nom contradictoires (masthead vs. JSON-LD) et
+      // le laisse deviner lequel retenir.
+      alternateName: site.alternateName,
       description: SEO[lang].description,
       inLanguage: site.pages.map((p) => p.lang),
       publisher: { '@id': `${site.host}/#organization` },
@@ -38,6 +43,7 @@ function jsonLd(site, lang) {
       '@type': 'Organization',
       '@id': `${site.host}/#organization`,
       name: site.brand,
+      alternateName: site.alternateName,
       url: `${site.host}/`,
       email: site.email,
       description: SEO[lang].description,
@@ -63,6 +69,7 @@ export function headFor({ siteId, lang }) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   if (!SEO[lang]) throw new Error(`langue sans chaînes SEO : ${lang}`)
+  if (!OG_LOCALE[lang]) throw new Error(`langue sans locale Open Graph : ${lang}`)
 
   const url = LANG_URL[lang]
   const title = `${site.brand} · ${SEO[lang].tagline}`

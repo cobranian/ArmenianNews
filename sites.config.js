@@ -12,6 +12,13 @@ export const SITES = {
     host: 'https://armenieinfo.ch',
     firebaseSite: 'armenie-info',
     brand: 'Arménie Info',
+    // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
+    // domaine tout neuf, des signaux de nom contradictoires (masthead vs.
+    // JSON-LD) laissent Google deviner lequel retenir ; alternateName est le
+    // pont qui rattache l'ancien nom au nouveau plutôt que de les faire
+    // concurrencer. Consommé par scripts/lib/site-meta.mjs (WebSite +
+    // Organization).
+    alternateName: ['Armenia Info', 'Արմենիա Ինֆո'],
     email: 'contact@armenieinfo.ch',
     gscToken: 'dMoDQHq0L5w16RdNPGKom7TJZe6LNjEc7Qq4PtVjO7k',
     pages: [{ lang: 'fr', path: '/' }],
@@ -21,6 +28,10 @@ export const SITES = {
     host: 'https://armenianews.org',
     firebaseSite: 'armenianews-org',
     brand: 'Armenia News',
+    // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
+    // pont doit couvrir à la fois l'ancien nom bilingue et sa forme
+    // francophone, que la marque .ch continue de porter.
+    alternateName: ['Armenia Info', 'Arménie Info', 'Արմենիա Ինֆո'],
     // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
     // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
     email: 'contact@armenieinfo.ch',

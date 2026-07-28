@@ -148,7 +148,11 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   en: {
-    'site.title': 'Armenia Info',
+    // La marque suit le domaine (.org = Armenia News), pas la langue — voir
+    // sites.config.js. Forme latine sur les trois langues du .org : pas de
+    // translittération arménienne ou russe, qui rouvrirait la même
+    // divergence marque/métadonnées sous une autre forme.
+    'site.title': 'Armenia News',
     'site.tagline': 'An hourly snapshot of Armenian life, from Switzerland and the world',
     'site.snapshot': 'Snapshot of',
     'site.cadence': 'hourly',
@@ -285,7 +289,10 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   hy: {
-    'site.title': 'Արմենիա Ինֆո',
+    // Forme latine délibérée : la marque suit le domaine (.org = Armenia
+    // News), pas la langue — voir sites.config.js et le commentaire jumeau
+    // dans le bloc `en`.
+    'site.title': 'Armenia News',
     'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ Շվեյցարիայից եւ աշխարհից',
     'site.snapshot': 'Պատկեր՝',
     'site.cadence': 'ամեն ժամ',
@@ -422,7 +429,10 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   ru: {
-    'site.title': 'Армения Инфо',
+    // Forme latine délibérée : la marque suit le domaine (.org = Armenia
+    // News), pas la langue — voir sites.config.js et le commentaire jumeau
+    // dans le bloc `en`.
+    'site.title': 'Armenia News',
     'site.tagline': 'Ежечасный снимок армянской жизни, из Швейцарии и со всего мира',
     'site.snapshot': 'Снимок от',
     'site.cadence': 'каждый час',
