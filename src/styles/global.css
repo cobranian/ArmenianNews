@@ -2004,15 +2004,26 @@ h3:lang(hy) {
    note de bas de page. D'où le contraste entre le résumé et le corps. */
 .privacy {
   margin-top: 28px;
-  padding-top: 20px;
+  /* 8 ici + les 13 de padding du summary = les 20px d'air d'origine sous le
+     filet. L'espace n'a pas bougé, il a seulement changé de propriétaire :
+     il appartient maintenant à la zone cliquable. */
+  padding-top: 8px;
   border-top: 1px solid var(--line);
   text-align: left;
   max-width: 62ch;
   margin-left: auto;
   margin-right: auto;
 }
+/* Le padding vertical n'est pas décoratif : c'est la cible tactile. Le texte
+   fait 18px de haut (mesuré à 360px dans les quatre langues — le libellé
+   arménien, le plus long, tient encore sur une ligne), et c'est le seul
+   contrôle qui ouvre la politique. 18 + 13 + 13 = 44px, le plancher
+   d'accessibilité. Le summary étant un bloc, toute la largeur est cliquable.
+   Ne retirez pas ce padding pour « resserrer » le pied de page : la ligne
+   redeviendrait une cible de 18px au doigt. */
 .privacy > summary {
   cursor: pointer;
+  padding: 13px 0;
   list-style: none;
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -2045,7 +2056,8 @@ h3:lang(hy) {
   border-radius: 2px;
 }
 .privacy__body {
-  margin-top: 18px;
+  /* 6 ici + les 13 de padding bas du summary = les 18px d'origine. */
+  margin-top: 6px;
   font-size: 0.86rem;
   line-height: 1.65;
   color: var(--text-soft);
