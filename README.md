@@ -167,29 +167,36 @@ from the other's benign no-op.
   >
   > One leftover: the unused `armenianews-org` site still sits in
   > `armenie-info`. It serves nothing and can be deleted whenever convenient.
-- **Search Console ownership for `armenianews.org` — verified by DNS, not by
-  meta tag.** `SITES.org.gscToken` is `null` **on purpose**, so no
-  `<meta name="google-site-verification">` is emitted on the `.org` pages, and
-  that is correct — do not "fix" it by hunting for a token.
-
-  Ownership is proved by a TXT record on the domain root, posted alongside
-  Firebase's A records:
+- **Search Console ownership for `armenianews.org` — DNS first, meta tag as a
+  backup.** The authoritative method is a TXT record on the domain root, posted
+  alongside Firebase's A records:
 
   ```
   Type: TXT   Name: @   Value: google-site-verification=<token>
   ```
 
-  Two reasons this is the better method here, and why the two sites differ:
-  DNS verification covers the whole domain including any future subdomain, and
-  it survives a redeploy that changes the HTML. `armenieinfo.ch` still carries
-  its own token in `SITES.ch.gscToken` because it was verified by meta tag years
-  ago and there is no reason to churn a working verification.
+  DNS is the better primary here for two reasons: it covers the whole domain
+  including any future subdomain, and it survives a redeploy that rewrites the
+  HTML. `armenieinfo.ch` was verified by meta tag years ago and keeps its own
+  token in `SITES.ch.gscToken` — no reason to churn a working verification.
 
-  **The token strings are not interchangeable.** Google issues a different one
-  per method: pasting a DNS TXT token into `gscToken` produces a tag that looks
-  right, deploys fine, and never verifies — a silent failure with no log
-  anywhere. If you ever switch `.org` to the meta-tag method, fetch the token
-  from Search Console's *HTML tag* option specifically.
+  Both sites now **also** emit `<meta name="google-site-verification">` from
+  their `gscToken`, so the `.org` keeps its property even if the TXT record is
+  ever dropped. The `.org` tag reuses its **DNS token**: Google documents
+  distinct tokens per method, but on this account the `.ch`'s TXT value and its
+  `content=` value are byte-for-byte the same string, so the reuse is a
+  reasonable bet — and a safe one, since a tag Google doesn't recognise is inert
+  and cannot undo the DNS verification. **Confirm it** under *Settings →
+  Ownership verification*; if *HTML tag* is not listed as verified there, replace
+  the value with the `content=` string from that panel specifically.
+
+  A `null` `gscToken` remains valid and emits nothing at all — better no tag
+  than an empty one.
+
+  `npm run check` asserts, per page, that it carries **its own** token and **no
+  foreign one**. As with the Cloudflare beacon, the second check is the one that
+  matters: a neighbour's token deploys without a single error and simply never
+  verifies, with no log anywhere.
 - **Cloudflare Web Analytics — one token per storefront, not per repo.** Each
   site carries its own `cfBeaconToken` in `sites.config.js`, and
   `scripts/lib/site-meta.mjs` renders the beacon tag into the

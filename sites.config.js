@@ -55,20 +55,24 @@ export const SITES = {
     // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
     // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
     email: 'contact@armenieinfo.ch',
-    // `null` DÉLIBÉRÉMENT : la propriété Search Console d'armenianews.org est
-    // vérifiée par un enregistrement DNS TXT sur la racine du domaine, pas par
-    // une balise HTML. Aucune balise google-site-verification n'est donc émise
-    // sur les pages du .org, et c'est correct — ne « corrigez » pas en cherchant
-    // un jeton. La vérification par DNS couvre le domaine entier, sous-domaines
-    // compris, et survit à tout redéploiement.
+    // Search Console : le .org est vérifié par un **enregistrement DNS TXT** sur
+    // la racine du domaine, et c'est la méthode qui fait autorité ici — elle
+    // couvre le domaine entier, sous-domaines compris, et survit à tout
+    // redéploiement. La balise ci-dessous est une **seconde** méthode, en
+    // ceinture et bretelles : si le TXT sautait un jour, la propriété tiendrait
+    // encore.
     //
-    // Le .ch garde le sien : il a été vérifié par balise il y a des années, et
-    // rien ne justifie de toucher à une vérification qui fonctionne.
+    // La chaîne est celle du TXT. Google documente des jetons distincts par
+    // méthode, mais sur ce compte les deux méthodes du .ch partagent exactement
+    // la même chaîne (`dMoDQ…` est à la fois son TXT et son `content=`), donc le
+    // pari est raisonnable — et sans risque : une balise que Google ne
+    // reconnaîtrait pas reste inerte, elle ne défait pas la vérification DNS.
     //
-    // Les jetons ne sont PAS interchangeables — Google en émet un différent par
-    // méthode. Coller ici un jeton DNS produirait une balise d'apparence
-    // correcte qui ne validerait jamais, sans le moindre signal.
-    gscToken: null,
+    // À confirmer dans Search Console → Paramètres → Validation du propriétaire.
+    // Si la méthode « Balise HTML » n'y apparaît pas comme validée, remplacez
+    // cette valeur par le `content=` que le panneau *Balise HTML* affiche —
+    // c'est la seule source qui garantit qu'elle valide.
+    gscToken: '5x7MZD2uxesmZ84jOvXD0qRu3JyuCYtNXrncJY9YRQs',
     // Jeton Cloudflare Web Analytics propre au .org — les trois pages
     // (en, /hy/, /ru/) le portent, puisque la balise varie par SITE et non par
     // langue.

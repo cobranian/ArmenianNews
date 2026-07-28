@@ -53,9 +53,35 @@ test('og:url et og:image sont absolus vers le bon host', () => {
   assert.ok(hy.includes('content="https://armenianews.org/og-image.jpg"'))
 })
 
-test('la balise de vérification GSC n\'apparaît que si le jeton existe', () => {
-  assert.ok(headFor({ siteId: 'ch', lang: 'fr' }).includes('google-site-verification'))
-  assert.ok(!headFor({ siteId: 'org', lang: 'en' }).includes('google-site-verification'))
+// Les deux vitrines portent désormais une balise ; l'invariant utile n'est donc
+// plus « présente ou absente » mais « chacune la sienne ». Une page portant le
+// jeton du voisin se déploie sans erreur et ne valide jamais — sans le moindre
+// signal, exactement comme le beacon Cloudflare versé au mauvais compte.
+test('chaque vitrine porte SON jeton de vérification GSC, jamais celui de l\'autre', () => {
+  for (const site of Object.values(SITES)) {
+    const head = headFor({ siteId: site.id, lang: primaryLang(site.id) })
+
+    if (site.gscToken) {
+      assert.ok(
+        head.includes(`content="${site.gscToken}"`),
+        `${site.id} : son propre jeton attendu dans la balise`,
+      )
+    } else {
+      // Pas de jeton ⇒ pas de balise. Une balise vide vaudrait moins que rien.
+      assert.ok(
+        !head.includes('google-site-verification'),
+        `${site.id} : sans jeton, aucune balise ne doit être émise`,
+      )
+    }
+
+    for (const autre of Object.values(SITES)) {
+      if (autre.id === site.id || !autre.gscToken) continue
+      assert.ok(
+        !head.includes(autre.gscToken),
+        `${site.id} porte le jeton GSC de ${autre.id} — validation impossible, sans signal`,
+      )
+    }
+  }
 })
 
 test('applyMeta remplace le marqueur et l\'attribut lang', () => {

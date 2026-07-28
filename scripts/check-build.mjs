@@ -70,6 +70,20 @@ for (const site of Object.values(SITES)) {
           .filter((s) => s.id !== site.id && s.cfBeaconToken)
           .every((s) => !html.includes(s.cfBeaconToken)),
       ],
+      // Même mode d'échec pour la vérification Search Console : une page portant
+      // le jeton de l'autre vitrine se déploie sans erreur et ne valide jamais.
+      [
+        site.gscToken ? `vérification GSC ${site.id}` : 'sans balise GSC',
+        site.gscToken
+          ? count(new RegExp(`content="${site.gscToken}"`, 'g')) === 1
+          : !html.includes('google-site-verification'),
+      ],
+      [
+        'aucun jeton GSC étranger',
+        Object.values(SITES)
+          .filter((s) => s.id !== site.id && s.gscToken)
+          .every((s) => !html.includes(s.gscToken)),
+      ],
     ]
 
     const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
