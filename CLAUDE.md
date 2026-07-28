@@ -329,15 +329,42 @@ dispatch manuel et sur push vers `main` :
   à re-scraper ni créer un snapshot en trop. Pour un snapshot frais à la demande,
   lancez le run manuel `workflow_dispatch`.
 
-Les deux vitrines se déploient sur **Firebase Hosting**, dans le **même
-projet** `armenie-info`, mais sur deux **cibles** (`.firebaserc` → `targets`) :
-`ch` → le site Firebase `armenie-info` (armenieinfo.ch, `armenie-info.web.app`),
-`org` → `armenianews-org` (armenianews.org). Le déploiement boucle sur les deux
-cibles (`firebase deploy --only hosting:$target`) plutôt que de les combiner en
-une commande : Firebase rejette une publication dont le contenu est identique à
-la version en ligne (un no-op réussi, pas un échec) — cible par cible, ce
-verdict ne porte que sur celle-ci, alors qu'une sortie combinée ferait
-confondre l'échec réel de l'une avec le no-op bénin de l'autre. Vite `base`
+Les deux vitrines se déploient sur **Firebase Hosting**, mais dans **deux
+projets Firebase distincts** — c'est le point le plus surprenant de ce
+déploiement :
+
+| Vitrine | Site Firebase | Projet | Secret CI |
+|---|---|---|---|
+| armenieinfo.ch | `armenie-info` | `armenie-info` | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` |
+| armenianews.org | `armenianews-org-nano` | `armenia-news` | `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` |
+
+**Trois conséquences qu'il faut avoir en tête avant de toucher au déploiement.**
+
+*Un compte de service n'a de droits que sur son propre projet.* D'où **deux**
+secrets, et un `GOOGLE_APPLICATION_CREDENTIALS` réassigné **à chaque tour** de
+la boucle plutôt qu'exporté une fois avant elle. Réutiliser l'identité
+d'`armenie-info` pour `armenia-news` échouerait sur une erreur d'autorisation
+qui ne dirait ni quel secret manque ni pour quel projet — d'où aussi la garde
+qui vérifie les deux secrets avant la première commande.
+
+*`firebase.json` désigne ses entrées par `site`, pas par `target`.* Les cibles
+`.firebaserc` se déclarent **par projet**, ce qui obligerait à en tenir deux
+tables cohérentes ; un nom de site est unique à l'échelle mondiale et désigne
+donc son site sans ambiguïté, quel que soit le projet. `.firebaserc` ne garde
+que `projects.default`.
+
+*Le déploiement boucle site par site* plutôt que de les combiner en une
+commande : Firebase rejette une publication dont le contenu est identique à la
+version en ligne (un no-op réussi, pas un échec) — site par site, ce verdict ne
+porte que sur celui-ci, alors qu'une sortie combinée ferait confondre l'échec
+réel de l'un avec le no-op bénin de l'autre.
+
+> Le site `armenianews-org` avait d'abord été créé dans `armenie-info`, faute de
+> pouvoir y créer `armenia-news` — ce nom était déjà réservé par le projet
+> `armenia-news`, qui appartient au même compte. Ce site est **abandonné** ;
+> celui qui sert est `armenianews-org-nano`, dans ce projet-là.
+
+Vite `base`
 vaut `/` par défaut sur les deux (chaque domaine sert depuis sa propre racine) ;
 surchargez avec `BASE_PATH=/sous-chemin` pour un sous-chemin — surtout utile
 avec `build:one`, le build Vite unique de dépannage, puisque les deux vitrines

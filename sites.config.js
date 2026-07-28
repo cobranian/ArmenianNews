@@ -10,7 +10,14 @@ export const SITES = {
   ch: {
     id: 'ch',
     host: 'https://armenieinfo.ch',
+    // Les deux vitrines vivent dans des PROJETS Firebase distincts, d'où le
+    // couple site + projet. Le nom de site suffirait à `firebase deploy`
+    // (il est unique mondialement), mais le projet est nécessaire au `--project`
+    // et au choix du compte de service : chaque projet a le sien, et celui de
+    // l'un n'a aucun droit sur l'autre. Voir la boucle de déploiement dans
+    // .github/workflows/hourly.yml.
     firebaseSite: 'armenie-info',
+    firebaseProject: 'armenie-info',
     brand: 'Arménie Info',
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
     // domaine tout neuf, des signaux de nom contradictoires (masthead vs.
@@ -26,7 +33,12 @@ export const SITES = {
   org: {
     id: 'org',
     host: 'https://armenianews.org',
-    firebaseSite: 'armenianews-org',
+    // Projet DIFFÉRENT de celui du .ch — c'est délibéré et c'est la raison
+    // d'être de la boucle de déploiement par site. Le site `armenianews-org`
+    // avait d'abord été créé dans `armenie-info` ; il est abandonné au profit
+    // de celui-ci, qui préexistait dans le projet `armenia-news`.
+    firebaseSite: 'armenianews-org-nano',
+    firebaseProject: 'armenia-news',
     brand: 'Armenia News',
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme

@@ -119,37 +119,67 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         env:
-          # Dedicated deploy identity (github-action-*), Firebase Hosting Admin
+          # Dedicated deploy identities (github-action-*), Firebase Hosting Admin
           # and nothing else. The old secret held the firebase-adminsdk key,
           # which could also bypass database security rules and mint tokens for
           # other service accounts — far more than publishing a static site needs.
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
+          #
+          # Deux secrets, parce que les deux vitrines vivent dans deux PROJETS
+          # Firebase distincts : un compte de service n'a de droits que sur son
+          # propre projet. Réutiliser celui d'armenie-info pour armenia-news
+          # échouerait sur une erreur d'autorisation qui ne dirait pas pourquoi.
+          FIREBASE_SA_ARMENIE_INFO: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
+          FIREBASE_SA_ARMENIA_NEWS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS }}
         run: |
-          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          # Échouer tôt et clairement si un secret manque. Sans cette garde, un
+          # credential vide produit un fichier vide, et firebase-tools répond une
+          # erreur d'authentification générique qui n'indique pas quel secret
+          # manque ni pour quel projet.
+          for v in FIREBASE_SA_ARMENIE_INFO FIREBASE_SA_ARMENIA_NEWS; do
+            if [ -z "$(eval echo \"\$$v\")" ]; then
+              echo "::error::Secret $v absent ou vide — impossible de déployer."
+              exit 1
+            fi
+          done
+
+          printf '%s' "$FIREBASE_SA_ARMENIE_INFO" > "$RUNNER_TEMP/sa-armenie-info.json"
+          printf '%s' "$FIREBASE_SA_ARMENIA_NEWS" > "$RUNNER_TEMP/sa-armenia-news.json"
+
           set +e
           fail=0
-          for target in ch org; do
-            echo "▸ déploiement de la cible $target"
+          # Un triplet par vitrine : site | projet | credential. Le nom de site
+          # suffirait à firebase deploy (il est unique mondialement), mais le
+          # projet détermine QUELLE identité est valable — d'où le credential
+          # réassigné à chaque tour plutôt qu'exporté une fois avant la boucle.
+          #
+          # `while read` alimenté par un here-doc s'exécute dans le shell courant
+          # (contrairement à un pipe), donc `fail` survit aux itérations.
+          while IFS='|' read -r site project cred; do
+            [ -z "$site" ] && continue
+            export GOOGLE_APPLICATION_CREDENTIALS="$cred"
+            echo "▸ déploiement de $site (projet $project)"
             # Pinned, not @latest: this runs with the deploy service account in
             # its environment, so a single malicious release would hand over the
             # credential. Bump deliberately.
             out=$(npx --yes firebase-tools@15.23.0 deploy \
-              --only "hosting:$target" --project armenie-info --non-interactive 2>&1)
+              --only "hosting:$site" --project "$project" --non-interactive 2>&1)
             code=$?
             echo "$out"
             # Firebase rejette une publication dont le contenu est identique à la
             # version en ligne (p. ex. une heure sans changement de données).
-            # C'est un no-op réussi, pas un échec. En déployant cible par cible,
-            # ce verdict ne porte que sur CETTE cible — une sortie combinée
-            # pourrait sinon faire passer l'échec de l'une pour le no-op de l'autre.
+            # C'est un no-op réussi, pas un échec. En déployant site par site,
+            # ce verdict ne porte que sur CE site — une sortie combinée pourrait
+            # sinon faire passer l'échec de l'un pour le no-op de l'autre.
             if [ $code -ne 0 ] && echo "$out" | grep -qi "is the current active version"; then
-              echo "::notice::$target — contenu inchangé, déjà en ligne. Ignoré."
+              echo "::notice::$site — contenu inchangé, déjà en ligne. Ignoré."
               continue
             fi
             if [ $code -ne 0 ]; then
-              echo "::error::$target — échec du déploiement (code $code)"
+              echo "::error::$site (projet $project) — échec du déploiement (code $code)"
               fail=1
             fi
-          done
+          done <<EOF
+          armenie-info|armenie-info|$RUNNER_TEMP/sa-armenie-info.json
+          armenianews-org-nano|armenia-news|$RUNNER_TEMP/sa-armenia-news.json
+          EOF
           exit $fail

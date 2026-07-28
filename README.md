@@ -86,51 +86,76 @@ own URL, so its baked HTML matches its `<html lang>` and its Armenpress edition.
 
 ## The two domains
 
-One codebase, one hourly snapshot, two Firebase Hosting **targets** in the
-same project (`armenie-info`) — all of it derived from
-[`sites.config.js`](./sites.config.js):
+One codebase, one hourly snapshot, two Firebase Hosting sites — living in **two
+different Firebase projects**, which is the least obvious thing about this
+deployment. All of it derived from [`sites.config.js`](./sites.config.js):
 
-| URL | Language | Firebase target → site | Brand |
-|---|---|---|---|
-| `armenieinfo.ch/` | fr | `ch` → `armenie-info` (alias `armenie-info.web.app`) | Arménie Info |
-| `armenianews.org/` | en | `org` → `armenianews-org` | Armenia News |
-| `armenianews.org/hy/` | hy | `org` → `armenianews-org` | Armenia News |
-| `armenianews.org/ru/` | ru | `org` → `armenianews-org` | Armenia News |
+| URL | Language | Firebase site | Project | Brand |
+|---|---|---|---|---|
+| `armenieinfo.ch/` | fr | `armenie-info` (alias `armenie-info.web.app`) | `armenie-info` | Arménie Info |
+| `armenianews.org/` | en | `armenianews-org-nano` | `armenia-news` | Armenia News |
+| `armenianews.org/hy/` | hy | `armenianews-org-nano` | `armenia-news` | Armenia News |
+| `armenianews.org/ru/` | ru | `armenianews-org-nano` | `armenia-news` | Armenia News |
+
+`firebase.json` names its entries by **`site`**, not by `target`. Hosting
+targets are declared per project in `.firebaserc`, which would mean keeping two
+tables in step; a site name is globally unique, so it identifies its site
+unambiguously whichever project it belongs to. `.firebaserc` therefore keeps
+only `projects.default`.
 
 `npm run build` produces `dist/ch/` and `dist/org/` (with `dist/org/hy/` and
 `dist/org/ru/` derived from `dist/org/index.html`); `npm run check` validates
 all four pages plus the two `sitemap.xml`/`robots.txt` pairs; `npm run
-prerender` bakes the snapshot's articles into all four. Deploy both targets:
+prerender` bakes the snapshot's articles into all four. Deploying by hand takes
+two commands, because each site needs its own project **and its own
+credentials**:
 
 ```bash
-firebase deploy --only hosting:ch,hosting:org
+firebase deploy --only hosting:armenie-info         --project armenie-info
+firebase deploy --only hosting:armenianews-org-nano --project armenia-news
 ```
 
-(the hourly CI workflow instead loops target-by-target — see
-[Deployment](#deployment-github-actions--firebase-hosting) — because Firebase
+The hourly CI workflow loops over the same two, one at a time — see
+[Deployment](#deployment-github-actions--firebase-hosting). Two reasons, not
+one: a service account only has rights on its own project, so the credential
+has to be reassigned each iteration rather than exported once; and Firebase
 treats "content identical to what's already live" as a successful no-op per
-target, and a combined deploy would make one target's real failure
-indistinguishable from the other's benign no-op.)
+site, so a combined deploy would make one site's real failure indistinguishable
+from the other's benign no-op.
 
 **Manual steps, in order:**
 
-- **Create the second Firebase Hosting site — already done.** The hourly
-  workflow loops `for target in ch org` unconditionally (see
-  [Deployment](#deployment-github-actions--firebase-hosting)); if the
-  underlying Hosting site didn't exist, every hourly run would fail on the
-  `org` target forever, not just degrade SEO like a missing GSC token or
-  sitemap submission does. This is the one prerequisite here that breaks CI
-  rather than merely hurting search visibility.
+- **A second deploy credential — `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS`.**
+  This is the one prerequisite that **breaks CI** rather than merely hurting
+  search visibility, so do it before the first push. A service account only has
+  rights on its own project: the existing
+  `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` cannot deploy to `armenia-news`, and
+  the workflow deploys both sites unconditionally, so every hourly run would go
+  red — `armenieinfo.ch` publishing fine while the job still failed.
 
-  ```bash
-  firebase hosting:sites:create armenianews-org --project armenie-info
-  firebase target:apply hosting org armenianews-org --project armenie-info
-  ```
+  In the Google Cloud console for project **`armenia-news`** → IAM → Service
+  Accounts: create one (e.g. `github-action-armenianews`), grant it **Firebase
+  Hosting Admin and nothing else** — the same reasoning as the first credential,
+  recorded in the workflow's own comment: the old secret carried the
+  `firebase-adminsdk` key, which could bypass database rules and mint tokens for
+  other service accounts, far more than publishing a static site needs. Then
+  Keys → Add key → JSON, and paste the whole file into GitHub → Settings →
+  Secrets and variables → Actions → New repository secret, named
+  `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS`.
 
-  (`armenia-news` was already taken by another Firebase project, hence the
-  `-org` suffix.) Done — the site exists, with its fallback URL
-  `https://armenianews-org.web.app`, and `.firebaserc` already maps the `org`
-  target to it.
+  The workflow checks both secrets are non-empty before its first deploy
+  command, so a missing one fails immediately with a message naming it — rather
+  than surfacing later as an opaque authorization error.
+
+- **The Hosting sites themselves — already done.** `armenie-info` has existed
+  for years; `armenianews-org-nano` already existed in the `armenia-news`
+  project. Nothing to create.
+
+  > A site named `armenianews-org` was briefly created in `armenie-info` during
+  > this work, after `armenia-news` turned out to be unavailable there — it was
+  > reserved by the `armenia-news` project, which belongs to the same account.
+  > That site is **abandoned** and can be deleted; the one actually served is
+  > `armenianews-org-nano`.
 - **Search Console ownership for `armenianews.org` — verified by DNS, not by
   meta tag.** `SITES.org.gscToken` is `null` **on purpose**, so no
   `<meta name="google-site-verification">` is emitted on the `.org` pages, and
