@@ -162,6 +162,24 @@ Passer de fr à en change de domaine (rechargement complet) ; hy↔ru reste sur 
 page, donc un maillage réciproque entre les deux domaines — le signal que Google
 attend en plus des `hreflang` pour traiter deux domaines comme un ensemble.
 
+**Ordre d'affichage : figé par domaine**, la langue du domaine en tête.
+
+| Page | Sélecteur |
+|---|---|
+| `armenieinfo.ch/` | **FR** · EN · ՀԱՅ · РУ |
+| `armenianews.org/` | **EN** · FR · ՀԱՅ · РУ |
+| `armenianews.org/hy/` | **EN** · FR · ՀԱՅ · РУ *(ՀԱՅ actif)* |
+| `armenianews.org/ru/` | **EN** · FR · ՀԱՅ · РУ *(РУ actif)* |
+
+L'ordre ne bouge donc pas en naviguant à l'intérieur du .org : la barre reste
+stable, seule la mise en évidence de la langue active se déplace. L'ordre vient
+de `SITES[id].pages[0].lang` suivi du reste de `LANGS`, pas d'une liste écrite à
+la main — sinon ajouter une langue obligerait à corriger deux listes.
+
+Les quatre langues restent listées sur les deux domaines : chaque entrée est un
+lien vers l'URL de cette langue, y compris celles qui vivent sur l'autre
+domaine.
+
 ### 5. Build
 
 ```
@@ -252,6 +270,27 @@ trafic de référence et les deux sites se volent leurs attributions.
 **Search Console** : créer une propriété pour `armenianews.org`. Elle fournit un
 jeton de vérification à poser dans `sites.config.js` (`org.gscToken`).
 
+**Soumission des sitemaps** — une étape manuelle par domaine, à faire une fois :
+
+| Propriété GSC | Sitemap à soumettre | Quand |
+|---|---|---|
+| `armenieinfo.ch` | `https://armenieinfo.ch/sitemap.xml` | dès le déploiement |
+| `armenianews.org` | `https://armenianews.org/sitemap.xml` | après propagation DNS et certificat |
+
+Soumettre le sitemap du .org **avant** que le domaine ne résolve renvoie une
+erreur de récupération dans GSC. Attendre que `https://armenianews.org/` réponde
+en 200 dans un navigateur.
+
+**Ce que `hreflang` fait et ne fait pas.** Il indique à Google que les quatre
+URL sont le même contenu en quatre langues, ce qui produit deux effets : Google
+sert la version correspondant à la langue du visiteur, et il cesse de traiter
+les autres comme des doublons à écarter. Il **ne transfère aucune autorité entre
+les domaines** — ce n'est pas un signal de classement. Le gain est défensif (ne
+pas se cannibaliser), pas multiplicatif : `armenianews.org` démarre avec
+l'autorité d'un domaine neuf. Le renforcement mutuel réel vient des liens en dur
+du sélecteur de langue (§4). Cette distinction est notée ici pour que l'attente
+reste calibrée si le trafic du .org met des mois à décoller — ce sera normal.
+
 ### 10. Ce qui ne change pas
 
 `armenieinfo.ch` garde son URL, son canonical, sa propriété Search Console et son
@@ -271,6 +310,10 @@ merge.
 doit exister et son jeton être posé dans `sites.config.js` avant la mise en
 ligne. Le DNS peut être posé en parallèle.
 
+**Étapes manuelles après déploiement** : soumettre les deux sitemaps dans leurs
+propriétés Search Console respectives, et ajouter `armenianews.org` aux domaines
+de référence exclus dans GA4 (§9).
+
 ## Vérification
 
 Il n'y a pas de suite de tests dans ce dépôt ; le lint et l'exécution réelle
@@ -288,6 +331,10 @@ tiennent lieu de vérification. Pour ce chantier :
   prérendue correspondante et non le catch-all SPA.
 - `npm run dev` — le sélecteur de langue navigue vers la bonne URL ; aucune clé
   `lang` n'est écrite dans `localStorage`.
+- Ordre du sélecteur : **FR** · EN · ՀԱՅ · РУ sur le .ch, **EN** · FR · ՀԱՅ · РУ
+  sur les trois pages du .org, avec la langue active mise en évidence.
+- Les deux sitemaps répondent en 200 sur leur domaine et listent les bonnes
+  `<loc>` avec leurs annotations `hreflang`.
 
 ## Documentation à mettre à jour
 
