@@ -33,7 +33,7 @@ test('primaryLang donne la langue de tête du domaine', () => {
 
 test('langFromPath : le chemin fait autorité, sinon la langue du site', () => {
   assert.equal(langFromPath('org', '/hy/'), 'hy')
-  assert.equal(langFromPath('org', '/hy'), 'hy')     // cleanUrls, sans slash final
+  assert.equal(langFromPath('org', '/hy'), 'hy')     // sans slash final (Firebase 301 vers /hy/)
   assert.equal(langFromPath('org', '/ru/'), 'ru')
   assert.equal(langFromPath('org', '/'), 'en')
   assert.equal(langFromPath('ch', '/'), 'fr')

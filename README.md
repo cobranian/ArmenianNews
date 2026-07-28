@@ -93,9 +93,9 @@ deployment. All of it derived from [`sites.config.js`](./sites.config.js):
 | URL | Language | Firebase site | Project | Brand |
 |---|---|---|---|---|
 | `armenieinfo.ch/` | fr | `armenie-info` (alias `armenie-info.web.app`) | `armenie-info` | Arménie Info |
-| `armenianews.org/` | en | `armenianews-org-nano` | `armenia-news` | Armenia News |
-| `armenianews.org/hy/` | hy | `armenianews-org-nano` | `armenia-news` | Armenia News |
-| `armenianews.org/ru/` | ru | `armenianews-org-nano` | `armenia-news` | Armenia News |
+| `armenianews.org/` | en | `armenia-news-org` | `armenia-news-b146e` | Armenia News |
+| `armenianews.org/hy/` | hy | `armenia-news-org` | `armenia-news-b146e` | Armenia News |
+| `armenianews.org/ru/` | ru | `armenia-news-org` | `armenia-news-b146e` | Armenia News |
 
 `firebase.json` names its entries by **`site`**, not by `target`. Hosting
 targets are declared per project in `.firebaserc`, which would mean keeping two
@@ -112,7 +112,7 @@ credentials**:
 
 ```bash
 firebase deploy --only hosting:armenie-info         --project armenie-info
-firebase deploy --only hosting:armenianews-org-nano --project armenia-news
+firebase deploy --only hosting:armenia-news-org   --project armenia-news-b146e
 ```
 
 The hourly CI workflow loops over the same two, one at a time — see
@@ -129,11 +129,11 @@ from the other's benign no-op.
   This is the one prerequisite that **breaks CI** rather than merely hurting
   search visibility, so do it before the first push. A service account only has
   rights on its own project: the existing
-  `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` cannot deploy to `armenia-news`, and
+  `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` cannot deploy to `armenia-news-b146e`, and
   the workflow deploys both sites unconditionally, so every hourly run would go
   red — `armenieinfo.ch` publishing fine while the job still failed.
 
-  In the Google Cloud console for project **`armenia-news`** → IAM → Service
+  In the Google Cloud console for project **`armenia-news-b146e`** → IAM → Service
   Accounts: create one (e.g. `github-action-armenianews`), grant it **Firebase
   Hosting Admin and nothing else** — the same reasoning as the first credential,
   recorded in the workflow's own comment: the old secret carried the
@@ -148,14 +148,19 @@ from the other's benign no-op.
   than surfacing later as an opaque authorization error.
 
 - **The Hosting sites themselves — already done.** `armenie-info` has existed
-  for years; `armenianews-org-nano` already existed in the `armenia-news`
-  project. Nothing to create.
+  for years; `armenia-news-org` was created in `armenia-news-b146e` for this.
+  Nothing left to create.
 
-  > A site named `armenianews-org` was briefly created in `armenie-info` during
-  > this work, after `armenia-news` turned out to be unavailable there — it was
-  > reserved by the `armenia-news` project, which belongs to the same account.
-  > That site is **abandoned** and can be deleted; the one actually served is
-  > `armenianews-org-nano`.
+  > **These names moved twice — trust the table above, nothing else.** A site
+  > `armenianews-org` was first created in `armenie-info`, `armenia-news` being
+  > unavailable there: that name was held by a separate project on the same
+  > account. That project was then deleted by accident and recreated as
+  > `armenia-news-b146e`, taking its Hosting site with it. Firebase reserves a
+  > deleted project's site names for about 30 days, which is why the names in
+  > the git history look like a series of near-misses.
+  >
+  > One leftover: the unused `armenianews-org` site still sits in
+  > `armenie-info`. It serves nothing and can be deleted whenever convenient.
 - **Search Console ownership for `armenianews.org` — verified by DNS, not by
   meta tag.** `SITES.org.gscToken` is `null` **on purpose**, so no
   `<meta name="google-site-verification">` is emitted on the `.org` pages, and
@@ -457,7 +462,7 @@ project.
 | Name | Kind | Purpose |
 |---|---|---|
 | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for project `armenie-info` (site `armenie-info` → armenieinfo.ch), scoped to Hosting Admin only. |
-| `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` | secret | Deploy credentials for project `armenia-news` (site `armenianews-org-nano` → armenianews.org), same scope. **Required** — the workflow deploys both sites unconditionally, so without it every hourly run goes red even though armenieinfo.ch published fine. See [The two domains](#the-two-domains) for how to create it. |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` | secret | Deploy credentials for project `armenia-news-b146e` (site `armenia-news-org` → armenianews.org), same scope. **Required** — the workflow deploys both sites unconditionally, so without it every hourly run goes red even though armenieinfo.ch published fine. See [The two domains](#the-two-domains) for how to create it. |
 | `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
 | `ASBAREZ_PROXY` | variable | URL of the Asbarez Cloudflare Worker proxy. **Required** from CI — both Asbarez editions 403 datacenter IPs outright, so without it the Asbarez feed comes back empty every hour (no direct fallback, unlike armradio). |
 

@@ -336,14 +336,14 @@ déploiement :
 | Vitrine | Site Firebase | Projet | Secret CI |
 |---|---|---|---|
 | armenieinfo.ch | `armenie-info` | `armenie-info` | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` |
-| armenianews.org | `armenianews-org-nano` | `armenia-news` | `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` |
+| armenianews.org | `armenia-news-org` | `armenia-news-b146e` | `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` |
 
 **Trois conséquences qu'il faut avoir en tête avant de toucher au déploiement.**
 
 *Un compte de service n'a de droits que sur son propre projet.* D'où **deux**
 secrets, et un `GOOGLE_APPLICATION_CREDENTIALS` réassigné **à chaque tour** de
 la boucle plutôt qu'exporté une fois avant elle. Réutiliser l'identité
-d'`armenie-info` pour `armenia-news` échouerait sur une erreur d'autorisation
+d'`armenie-info` pour `armenia-news-b146e` échouerait sur une erreur d'autorisation
 qui ne dirait ni quel secret manque ni pour quel projet — d'où aussi la garde
 qui vérifie les deux secrets avant la première commande.
 
@@ -359,10 +359,14 @@ version en ligne (un no-op réussi, pas un échec) — site par site, ce verdict
 porte que sur celui-ci, alors qu'une sortie combinée ferait confondre l'échec
 réel de l'un avec le no-op bénin de l'autre.
 
-> Le site `armenianews-org` avait d'abord été créé dans `armenie-info`, faute de
-> pouvoir y créer `armenia-news` — ce nom était déjà réservé par le projet
-> `armenia-news`, qui appartient au même compte. Ce site est **abandonné** ;
-> celui qui sert est `armenianews-org-nano`, dans ce projet-là.
+> **Ces noms ont bougé deux fois — ne vous fiez qu'au tableau ci-dessus.** Un
+> site `armenianews-org` a d'abord été créé dans `armenie-info`, `armenia-news`
+> y étant indisponible : ce nom était réservé par un projet du même compte. Ce
+> projet a ensuite été supprimé par erreur et recréé sous l'identifiant
+> `armenia-news-b146e`, ce qui a emporté son site avec lui. Le site
+> `armenianews-org` de `armenie-info` subsiste, inutilisé, et peut être
+> supprimé. Firebase réserve les noms d'un projet supprimé une trentaine de
+> jours, d'où les tâtonnements de nommage visibles dans l'historique git.
 
 Vite `base`
 vaut `/` par défaut sur les deux (chaque domaine sert depuis sa propre racine) ;

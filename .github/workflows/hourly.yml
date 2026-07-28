@@ -126,7 +126,7 @@ jobs:
           #
           # Deux secrets, parce que les deux vitrines vivent dans deux PROJETS
           # Firebase distincts : un compte de service n'a de droits que sur son
-          # propre projet. Réutiliser celui d'armenie-info pour armenia-news
+          # propre projet. Réutiliser celui d'armenie-info pour armenia-news-b146e
           # échouerait sur une erreur d'autorisation qui ne dirait pas pourquoi.
           FIREBASE_SA_ARMENIE_INFO: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
           FIREBASE_SA_ARMENIA_NEWS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS }}
@@ -184,6 +184,6 @@ jobs:
             fi
           done <<EOF
           armenie-info|armenie-info|$RUNNER_TEMP/sa-armenie-info.json
-          armenianews-org-nano|armenia-news|$RUNNER_TEMP/sa-armenia-news.json
+          armenia-news-org|armenia-news-b146e|$RUNNER_TEMP/sa-armenia-news.json
           EOF
           exit $fail

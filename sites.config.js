@@ -34,11 +34,10 @@ export const SITES = {
     id: 'org',
     host: 'https://armenianews.org',
     // Projet DIFFÉRENT de celui du .ch — c'est délibéré et c'est la raison
-    // d'être de la boucle de déploiement par site. Le site `armenianews-org`
-    // avait d'abord été créé dans `armenie-info` ; il est abandonné au profit
-    // de celui-ci, qui préexistait dans le projet `armenia-news`.
-    firebaseSite: 'armenianews-org-nano',
-    firebaseProject: 'armenia-news',
+    // d'être de la boucle de déploiement par site : chaque projet a son propre
+    // compte de service, et celui de l'un n'a aucun droit sur l'autre.
+    firebaseSite: 'armenia-news-org',
+    firebaseProject: 'armenia-news-b146e',
     brand: 'Armenia News',
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme
@@ -109,7 +108,7 @@ export function siteOf(lang) {
 
 // Le chemin fait autorité ; à défaut, la langue de tête du domaine.
 // Normalise le slash final pour que /hy et /hy/ se comportent pareil
-// (Firebase sert les deux via cleanUrls) — et pour que /hydravion ne
+// (Firebase redirige /hy vers /hy/ en 301) — et pour que /hydravion ne
 // matche pas /hy.
 export function langFromPath(siteId, pathname) {
   const site = SITES[siteId]
