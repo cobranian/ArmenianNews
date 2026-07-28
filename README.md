@@ -114,6 +114,23 @@ indistinguishable from the other's benign no-op.)
 
 **Manual steps, in order:**
 
+- **Create the second Firebase Hosting site — already done.** The hourly
+  workflow loops `for target in ch org` unconditionally (see
+  [Deployment](#deployment-github-actions--firebase-hosting)); if the
+  underlying Hosting site didn't exist, every hourly run would fail on the
+  `org` target forever, not just degrade SEO like a missing GSC token or
+  sitemap submission does. This is the one prerequisite here that breaks CI
+  rather than merely hurting search visibility.
+
+  ```bash
+  firebase hosting:sites:create armenianews-org --project armenie-info
+  firebase target:apply hosting org armenianews-org --project armenie-info
+  ```
+
+  (`armenia-news` was already taken by another Firebase project, hence the
+  `-org` suffix.) Done — the site exists, with its fallback URL
+  `https://armenianews-org.web.app`, and `.firebaserc` already maps the `org`
+  target to it.
 - **Before deploying `armenianews.org` for the first time** — create its
   Google Search Console property and paste its verification token into
   `sites.config.js` → `SITES.org.gscToken`. The token is compiled straight into
