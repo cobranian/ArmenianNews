@@ -336,16 +336,23 @@ déploiement :
 | Vitrine | Site Firebase | Projet | Secret CI |
 |---|---|---|---|
 | armenieinfo.ch | `armenie-info` | `armenie-info` | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` |
-| armenianews.org | `armenia-news-org` | `armenia-news-b146e` | `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` |
+| armenianews.org | `armenia-news-org` | `armenia-news-b146e` | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` (le même) |
 
 **Trois conséquences qu'il faut avoir en tête avant de toucher au déploiement.**
 
-*Un compte de service n'a de droits que sur son propre projet.* D'où **deux**
-secrets, et un `GOOGLE_APPLICATION_CREDENTIALS` réassigné **à chaque tour** de
-la boucle plutôt qu'exporté une fois avant elle. Réutiliser l'identité
-d'`armenie-info` pour `armenia-news-b146e` échouerait sur une erreur d'autorisation
-qui ne dirait ni quel secret manque ni pour quel projet — d'où aussi la garde
-qui vérifie les deux secrets avant la première commande.
+*Un compte de service n'a **par défaut** de droits que sur son propre projet.*
+Ici, **un seul secret dessert les deux** : le compte appartient à `armenie-info`
+et s'est vu accorder le rôle Firebase Hosting Admin **sur `armenia-news-b146e`
+aussi** (console Cloud → IAM du second projet → Accorder l'accès). Sans cette
+autorisation croisée, le déploiement du `.org` échouerait sur une erreur
+d'autorisation muette sur sa cause — d'où la garde qui vérifie le secret avant
+la première commande.
+
+> Si ce rôle croisé est un jour révoqué, il faudra un second secret et un
+> `GOOGLE_APPLICATION_CREDENTIALS` réassigné à chaque tour de boucle. Le
+> compromis : une clé unique portant Hosting Admin sur deux projets élargit la
+> portée en cas de fuite ; deux clés distinctes la cloisonnent mais doublent
+> l'entretien. Le choix actuel est le premier, assumé.
 
 *`firebase.json` désigne ses entrées par `site`, pas par `target`.* Les cibles
 `.firebaserc` se déclarent **par projet**, ce qui obligerait à en tenir deux

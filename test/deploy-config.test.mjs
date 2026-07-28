@@ -46,11 +46,11 @@ test('.firebaserc ne déclare plus de cibles hosting', () => {
 })
 
 test('le here-doc de déploiement couvre chaque vitrine, avec son projet', () => {
-  // Les lignes ont la forme `site|projet|chemin-du-credential`.
+  // Les lignes ont la forme `site|projet`.
   const lignes = workflow
     .split('\n')
     .map((l) => l.trim())
-    .filter((l) => /^[a-z0-9-]+\|[a-z0-9-]+\|\$RUNNER_TEMP\//.test(l))
+    .filter((l) => /^[a-z0-9-]+\|[a-z0-9-]+$/.test(l))
 
   assert.equal(
     lignes.length,
@@ -65,26 +65,33 @@ test('le here-doc de déploiement couvre chaque vitrine, avec son projet', () =>
   assert.deepEqual(reel, attendu)
 })
 
-test('chaque vitrine a un secret de déploiement distinct dans le workflow', () => {
-  // Deux projets Firebase ⇒ deux comptes de service : celui de l'un n'a aucun
-  // droit sur l'autre. Un seul secret pour les deux échouerait à l'exécution,
-  // sur une erreur d'autorisation qui ne dirait pas laquelle des deux vitrines
-  // a échoué ni pourquoi.
-  const secrets = [...workflow.matchAll(/secrets\.(FIREBASE_SERVICE_ACCOUNT_[A-Z_]+)/g)].map(
+test('le credential de déploiement est vérifié avant la première commande', () => {
+  // UN SEUL secret dessert les DEUX projets : le compte de service appartient
+  // à `armenie-info` et s'est vu accorder Firebase Hosting Admin sur
+  // `armenia-news-b146e` aussi. Sans cette autorisation croisée, un compte de
+  // service n'a de droits que sur son propre projet, et le déploiement du .org
+  // échouerait sur une erreur d'autorisation.
+  //
+  // Ce test ne vérifie donc PAS un secret par vitrine — ce serait figer un
+  // choix qui a changé. Il vérifie l'invariant qui, lui, tient dans les deux
+  // modèles : tout secret Firebase utilisé est contrôlé non vide avant que la
+  // première commande de déploiement ne parte, faute de quoi l'échec arrive
+  // plus tard sous forme d'erreur d'authentification opaque.
+  const secrets = [
+    ...new Set(
+      [...workflow.matchAll(/secrets\.(FIREBASE_SERVICE_ACCOUNT_[A-Z_]+)/g)].map((m) => m[1]),
+    ),
+  ]
+  assert.ok(secrets.length >= 1, 'aucun secret Firebase référencé par le workflow')
+
+  const gardes = [...workflow.matchAll(/if \[ -z "\$\{?!?([A-Z_]+)\}?" \]/g)].map((m) => m[1])
+  const enGarde = [...workflow.matchAll(/([A-Z_]+): \$\{\{ secrets\.FIREBASE_SERVICE_ACCOUNT/g)].map(
     (m) => m[1],
   )
-  const uniques = [...new Set(secrets)]
-  assert.equal(
-    uniques.length,
-    Object.keys(SITES).length,
-    `${uniques.length} secret(s) Firebase pour ${Object.keys(SITES).length} vitrine(s) : ${uniques}`,
-  )
-
-  // Et chacun doit être réellement vérifié avant le premier déploiement.
-  for (const s of uniques) {
+  for (const v of enGarde) {
     assert.ok(
-      workflow.includes('FIREBASE_SA_' + s.replace('FIREBASE_SERVICE_ACCOUNT_', '')),
-      `${s} n'est pas relié à une variable FIREBASE_SA_* gardée`,
+      gardes.includes(v),
+      `${v} porte un secret Firebase mais n'est pas contrôlé non vide avant le déploiement`,
     )
   }
 })

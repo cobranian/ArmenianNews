@@ -125,27 +125,32 @@ from the other's benign no-op.
 
 **Manual steps, in order:**
 
-- **A second deploy credential — `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS`.**
-  This is the one prerequisite that **breaks CI** rather than merely hurting
-  search visibility, so do it before the first push. A service account only has
-  rights on its own project: the existing
-  `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` cannot deploy to `armenia-news-b146e`, and
-  the workflow deploys both sites unconditionally, so every hourly run would go
-  red — `armenieinfo.ch` publishing fine while the job still failed.
+- **Cross-project deploy rights — already granted.** This is the one
+  prerequisite that **breaks CI** rather than merely hurting search visibility,
+  so it matters more than the SEO steps below.
 
-  In the Google Cloud console for project **`armenia-news-b146e`** → IAM → Service
-  Accounts: create one (e.g. `github-action-armenianews`), grant it **Firebase
-  Hosting Admin and nothing else** — the same reasoning as the first credential,
-  recorded in the workflow's own comment: the old secret carried the
-  `firebase-adminsdk` key, which could bypass database rules and mint tokens for
-  other service accounts, far more than publishing a static site needs. Then
-  Keys → Add key → JSON, and paste the whole file into GitHub → Settings →
-  Secrets and variables → Actions → New repository secret, named
-  `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS`.
+  A service account only has rights on its own project by default, and the
+  workflow deploys both sites unconditionally — so `armenieinfo.ch` would
+  publish fine while the job still went red on the `.org`. Rather than a second
+  credential, the existing `armenie-info` service account was granted **Firebase
+  Hosting Admin on `armenia-news-b146e` as well** (Cloud console → that
+  project's IAM → Grant access). One secret,
+  `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO`, therefore covers both.
 
-  The workflow checks both secrets are non-empty before its first deploy
-  command, so a missing one fails immediately with a message naming it — rather
-  than surfacing later as an opaque authorization error.
+  The workflow checks that secret is non-empty before its first deploy command,
+  so a missing one fails immediately with a message naming it rather than
+  surfacing later as an opaque authorization error.
+
+  > **The trade-off, stated plainly.** One key carrying Hosting Admin on two
+  > projects widens the blast radius if it leaks; two scoped keys would contain
+  > it but double the upkeep. The current choice is the former. What is *not*
+  > acceptable either way is the **`firebase-adminsdk` key** the Firebase
+  > console offers under *Project settings → Service accounts → Generate new
+  > private key*: that identity can bypass database security rules and mint auth
+  > tokens for other service accounts — far beyond publishing static files. This
+  > repo migrated away from it once already; the workflow comment records why.
+  > A dedicated account's key lives in the **Cloud** console (IAM → Service
+  > accounts → *click into the account* → Keys), not the Firebase one.
 
 - **The Hosting sites themselves — already done.** `armenie-info` has existed
   for years; `armenia-news-org` was created in `armenia-news-b146e` for this.
@@ -461,8 +466,7 @@ project.
 
 | Name | Kind | Purpose |
 |---|---|---|
-| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for project `armenie-info` (site `armenie-info` → armenieinfo.ch), scoped to Hosting Admin only. |
-| `FIREBASE_SERVICE_ACCOUNT_ARMENIA_NEWS` | secret | Deploy credentials for project `armenia-news-b146e` (site `armenia-news-org` → armenianews.org), same scope. **Required** — the workflow deploys both sites unconditionally, so without it every hourly run goes red even though armenieinfo.ch published fine. See [The two domains](#the-two-domains) for how to create it. |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for **both** showcases. The account belongs to `armenie-info` and was additionally granted Firebase Hosting Admin on `armenia-news-b146e` — see [The two domains](#the-two-domains). Hosting Admin only, on both. |
 | `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
 | `ASBAREZ_PROXY` | variable | URL of the Asbarez Cloudflare Worker proxy. **Required** from CI — both Asbarez editions 403 datacenter IPs outright, so without it the Asbarez feed comes back empty every hour (no direct fallback, unlike armradio). |
 
