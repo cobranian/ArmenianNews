@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T22:02:24.770Z",
+  "generatedAt": "2026-07-28T23:56:27.432Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -2084,10 +2084,10 @@
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-28-a-00.31.19.png"
         },
         {
-          "title": "Les exportations arméniennes s’effondrent suite aux sanctions russes",
-          "url": "https://www.armenews.com/les-exportations-armeniennes-seffondrent-suite-aux-sanctions-russes/",
+          "title": "Azerbaïdjan: lourdes peines dans une affaire contre un média critique et une ONG",
+          "url": "https://www.armenews.com/azerbaidjan-lourdes-peines-dans-une-affaire-contre-un-media-critique-et-une-ong/",
           "date": "2026-07-28T06:30:48.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-28-a-07.05.29.png"
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/HOJGkjYXMAAA25r.jpeg"
         }
       ]
     },
@@ -2290,6 +2290,12 @@
       "categoryKey": "lifestyle",
       "articles": [
         {
+          "title": "Jeune conducteur : comment choisir une assurance auto sans se compliquer les démarches ?",
+          "url": "https://www.armenews.com/jeune-conducteur-assurance/",
+          "date": "2026-07-28T23:44:13.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/assurance-auto.webp"
+        },
+        {
           "title": "Voici le beurek au fromage qui fait fondre les amoureux de cuisine orientale",
           "url": "https://www.armenews.com/voici-le-beurek-au-fromage-qui-fait-fondre-les-amoureux-de-cuisine-orientale/",
           "date": "2026-07-07T09:55:37.000Z",
@@ -2342,12 +2348,6 @@
           "url": "https://www.armenews.com/keuftes-de-lentilles-corail-le-plat-vegetarien-armenien-qui-cartonne-quand-il-fait-tres-chaud/",
           "date": "2026-04-18T09:55:54.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2025/04/keuftes_armeniens_de_lentilles_corail_revisites.jpg"
-        },
-        {
-          "title": "Tcheurek : la brioche arménienne moelleuse qui parfume toute la maison à Pâques",
-          "url": "https://www.armenews.com/tcheurek-la-brioche-armenienne-moelleuse-qui-parfume-toute-la-maison-a-paques/",
-          "date": "2026-04-10T09:55:17.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2025/04/tcheurek_armenien_oeufs_rouges_paques.jpg"
         }
       ]
     },
@@ -4877,7 +4877,7 @@
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/28143709/EEUSummitAstana-300x169.jpg"
           },
           {
-            "title": "A Student’s ‘We are Our Mountain’ Painting, Forcibly Removed from Exhibit, Carried to Mt. Ararat Summit",
+            "title": "A Student’s ‘We are Our Mountains’ Painting, Forcibly Removed from Exhibit, Carried to Mt. Ararat Summit",
             "url": "https://asbarez.com/a-students-we-are-our-mountain-painting-forcibly-removed-from-exhibit-carried-to-mt-ararat-summit/",
             "date": "2026-07-28T21:03:22.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/28140205/artsakhpaitning-300x212.jpg"
@@ -4895,7 +4895,7 @@
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/28082732/ArmeniaConstiution-300x169.jpeg"
           },
           {
-            "title": "The Lesson from Lisbon: Idea, Sacrifice, Continuity",
+            "title": "The Lesson from Lisbon: Ideals, Sacrifice, Continuity",
             "url": "https://asbarez.com/the-lesson-from-lisbon-idea-sacrifice-continuity/",
             "date": "2026-07-27T22:39:45.000Z",
             "image": null
@@ -5069,6 +5069,12 @@
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/28082732/ArmeniaConstiution-300x169.jpeg"
           },
           {
+            "title": "The Lesson from Lisbon: Ideals, Sacrifice, Continuity",
+            "url": "https://asbarez.com/the-lesson-from-lisbon-idea-sacrifice-continuity/",
+            "date": "2026-07-27T22:39:45.000Z",
+            "image": null
+          },
+          {
             "title": "Growing Up Armenian Without an Armenian Community",
             "url": "https://asbarez.com/growing-up-armenian-without-an-armenian-community/",
             "date": "2026-07-24T17:08:23.000Z",
@@ -5115,12 +5121,6 @@
             "url": "https://asbarez.com/why-armenian-americans-may-seat-californias-next-governor/",
             "date": "2026-07-06T15:57:45.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/06085630/armenian-americans-next-governor-300x225.png"
-          },
-          {
-            "title": "EDITORIAL: America at 250 and the Armenians",
-            "url": "https://asbarez.com/editorial-america-at-250-and-the-armenians/",
-            "date": "2026-07-03T22:00:26.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/03145556/Gemini_Generated250-300x195.jpeg"
           }
         ]
       },
@@ -5329,6 +5329,24 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Ռուսիոյ Համաձայն՝ Եւրոմիութիւնը Կը Քաջալերէ Հայաստանի Հակառուսական Քայլերը",
+            "url": "https://asbarez.am/archives/506443",
+            "date": "2026-07-28T22:27:03.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28152435/EEUSummitAstana.jpg"
+          },
+          {
+            "title": "Երեւան Համաձայն Է Թեհրանի՝ Կազի Հայաստան Արտածումը Կրկնապատկելու Առաջարկին",
+            "url": "https://asbarez.am/archives/506438",
+            "date": "2026-07-28T22:20:47.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28151712/6111803.jpg"
+          },
+          {
+            "title": "Ցուցահանդէսէն Հանուած «Մենք Ենք, Մեր Սարերը» Նկարը՝ Արարատի Գագաթին",
+            "url": "https://asbarez.am/archives/506433",
+            "date": "2026-07-28T22:14:35.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28151158/0729Artzakh.jpg"
+          },
+          {
             "title": "Հայաստանի Հրաձգութեան Հաւաքականը Աշխարհի Ախոյեան",
             "url": "https://asbarez.am/archives/506407",
             "date": "2026-07-28T19:12:50.000Z",
@@ -5369,24 +5387,6 @@
             "url": "https://asbarez.am/archives/506362",
             "date": "2026-07-27T22:27:43.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27144551/0728Iran.jpg"
-          },
-          {
-            "title": "Լիւդվիգ Մկրտչեանի Եւ Անոր Կնոջ Միջեւ Հեռաձայնային Զրոյցի Համար Կը Դիմուի Ալիեւին",
-            "url": "https://asbarez.am/archives/506378",
-            "date": "2026-07-27T22:09:21.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27150633/0728Lutfik.png"
-          },
-          {
-            "title": "Ծառուկեանի Խմբակիցները Իրանէն Պահանջեցին Միջամտել՝ Ազատ Արձակելու Զայն",
-            "url": "https://asbarez.am/archives/506375",
-            "date": "2026-07-27T22:05:08.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27150422/0728Kakig.png"
-          },
-          {
-            "title": "Փութին Կրկին Պահանջեց Հանրաքուէ Կատարել՝ Եւրոմիութեան Միանալու Կամ ԵԱՏՄի Մէջ Մնալու Վերաբերեալ",
-            "url": "https://asbarez.am/archives/506372",
-            "date": "2026-07-27T21:56:44.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27164416/putinvictoryday-1.jpg"
           }
         ]
       },
@@ -5394,6 +5394,30 @@
         "categoryKey": "klkhavor-loorer",
         "label": "Գլխաւոր Լուրեր",
         "articles": [
+          {
+            "title": "ՀՅԴ Լիբանանի Հայ Դատը Սինիրլիօղլուի Հարցով Նամակ Յղեց ԵԱՀԿի Պետութիւններուն",
+            "url": "https://asbarez.am/archives/506413",
+            "date": "2026-07-28T22:29:14.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28121335/0728ancl.jpg"
+          },
+          {
+            "title": "Ռուսիոյ Համաձայն՝ Եւրոմիութիւնը Կը Քաջալերէ Հայաստանի Հակառուսական Քայլերը",
+            "url": "https://asbarez.am/archives/506443",
+            "date": "2026-07-28T22:27:03.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28152435/EEUSummitAstana.jpg"
+          },
+          {
+            "title": "Երեւան Համաձայն Է Թեհրանի՝ Կազի Հայաստան Արտածումը Կրկնապատկելու Առաջարկին",
+            "url": "https://asbarez.am/archives/506438",
+            "date": "2026-07-28T22:20:47.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28151712/6111803.jpg"
+          },
+          {
+            "title": "Ցուցահանդէսէն Հանուած «Մենք Ենք, Մեր Սարերը» Նկարը՝ Արարատի Գագաթին",
+            "url": "https://asbarez.am/archives/506433",
+            "date": "2026-07-28T22:14:35.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28151158/0729Artzakh.jpg"
+          },
           {
             "title": "Ամօթ, Հազար Ամօթ․․․",
             "url": "https://asbarez.am/archives/506426",
@@ -5413,12 +5437,6 @@
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28121832/0728Bolis.jpg"
           },
           {
-            "title": "ՀՅԴ Լիբանանի Հայ Դատը Սինիրլիօղլուի Հարցով Նամակ Յղեց ԵԱՀԿի Պետութիւններուն",
-            "url": "https://asbarez.am/archives/506413",
-            "date": "2026-07-28T19:14:49.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28121335/0728ancl.jpg"
-          },
-          {
             "title": "Հայաստանի Հրաձգութեան Հաւաքականը Աշխարհի Ախոյեան",
             "url": "https://asbarez.am/archives/506407",
             "date": "2026-07-28T19:12:50.000Z",
@@ -5435,24 +5453,6 @@
             "url": "https://asbarez.am/archives/506359",
             "date": "2026-07-27T23:31:38.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27143554/0728Macron.jpg"
-          },
-          {
-            "title": "Երուսաղէմի Հայոց Պատրիարքարանը Իսրայէլի Իշխանութեան Կոչ Կ՛ընէ՝ Հայոց Ցեղասպանութիւնը Ճանչնալու",
-            "url": "https://asbarez.am/archives/506334",
-            "date": "2026-07-27T23:27:22.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27130244/0727Jeru.jpg"
-          },
-          {
-            "title": "Լիզպոնի Ուղերձը. Գաղափար, Զոհաբերութիւն, Շարունակականութիւն",
-            "url": "https://asbarez.am/archives/506390",
-            "date": "2026-07-27T23:24:27.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27161542/0727GG.jpg"
-          },
-          {
-            "title": "ՀամաՀՄԸՄական Բանակումի Մասնակիցները Տողանցեցին Երեւանի Մէջ Եւ Յարգանքի Տուրք Մատուցեցին Եռաբլուրի Եւ Ծիծեռնակաբերդի Մէջ",
-            "url": "https://asbarez.am/archives/506330",
-            "date": "2026-07-27T23:19:03.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27115948/0727HMEM3.jpeg"
           }
         ]
       },
@@ -5529,7 +5529,7 @@
           {
             "title": "ՀՅԴ Լիբանանի Հայ Դատը Սինիրլիօղլուի Հարցով Նամակ Յղեց ԵԱՀԿի Պետութիւններուն",
             "url": "https://asbarez.am/archives/506413",
-            "date": "2026-07-28T19:14:49.000Z",
+            "date": "2026-07-28T22:29:14.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/28121335/0728ancl.jpg"
           },
           {
