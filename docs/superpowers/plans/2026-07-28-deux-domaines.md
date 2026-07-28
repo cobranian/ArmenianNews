@@ -1472,19 +1472,34 @@ for (const site of Object.values(SITES)) {
       continue
     }
 
+    // Compter, pas seulement constater la présence. Un `includes` ne distingue
+    // pas « présent une fois » de « présent trois fois » — or le mode d'échec
+    // qui compte ici est justement la DUPLICATION : si replaceMeta cessait
+    // d'être idempotent, chaque page accumulerait plusieurs blocs <head>, donc
+    // plusieurs canonical et plusieurs jeux de hreflang. C'est pire que rien :
+    // Google n'arbitre pas, il écarte.
+    const count = (re) => (html.match(re) || []).length
+
     const checks = [
       [`<html lang="${page.lang}">`, html.includes(`<html lang="${page.lang}"`)],
+      ['un seul <html>', count(/<html\s/g) === 1],
       [
         `canonical ${LANG_URL[page.lang]}`,
         html.includes(`rel="canonical" href="${LANG_URL[page.lang]}" />`),
       ],
-      ['un seul canonical', (html.match(/rel="canonical"/g) || []).length === 1],
+      ['un seul canonical', count(/rel="canonical"/g) === 1],
       [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
+      ['un seul og:site_name', count(/og:site_name"/g) === 1],
+      ['un seul <title>', count(/<title>/g) === 1],
       [
         'les 4 hreflang, réciproques',
         ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${LANG_URL[l]}"`)),
       ],
+      ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
       ['x-default', html.includes('hreflang="x-default"')],
+      ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
+      ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
+      ['GA4 intact', html.includes('G-EB3W5XXSMW')],
     ]
 
     const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
