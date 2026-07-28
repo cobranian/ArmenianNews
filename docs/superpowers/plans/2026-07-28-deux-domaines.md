@@ -368,7 +368,7 @@ Expected: `fr,en,hy,ru`
 - [ ] **Step 3 : vérifier le lint**
 
 Run: `npm run lint`
-Expected: 0 erreur, 6 avertissements
+Expected: 0 erreur, 5 avertissements (référence depuis Task 1)
 
 - [ ] **Step 4 : commit**
 
@@ -762,7 +762,7 @@ Expected: la page s'affiche en français, `<head>` contient le canonical `armeni
 - [ ] **Step 5 : lint et tests**
 
 Run: `npm run lint && npm test`
-Expected: 0 erreur / 6 avertissements, puis 16 tests réussis
+Expected: 0 erreur / 5 avertissements, puis 16 tests réussis
 
 - [ ] **Step 6 : commit**
 
@@ -986,7 +986,7 @@ Pour chaque sélecteur `.lang button` trouvé, le remplacer par `.lang button, .
 - [ ] **Step 4 : lint**
 
 Run: `npm run lint`
-Expected: 0 erreur, **6 avertissements** — l'erreur de Task 5 est résolue
+Expected: 0 erreur, **5 avertissements** — l'erreur de Task 5 est résolue
 
 - [ ] **Step 5 : vérifier en dev**
 
@@ -1917,7 +1917,7 @@ Ajouter une section « Les deux domaines » reprenant le tableau URL → langue 
 ```bash
 npm run lint && npm test && npm run build && npm run prerender
 ```
-Expected: 0 erreur / 6 avertissements ; 19 tests réussis ; `✓ 2 vitrines bâties` ; `✓ 4 pages prérendues`
+Expected: 0 erreur / 5 avertissements ; 19 tests réussis ; `✓ 2 vitrines bâties` ; `✓ 4 pages prérendues`
 
 - [ ] **Step 4 : commit**
 
@@ -1941,7 +1941,7 @@ git commit -m "docs: les deux vitrines, leurs pièges et la procédure de déplo
 
 ## Vérification finale (reprise de la spec)
 
-- `npm run lint` → 0 erreur, **6 avertissements** (les six connus de `CLAUDE.md`)
+- `npm run lint` → 0 erreur, **5 avertissements**. Le décompte est passé de 6 à 5 à Task 1 : `LANGS`, devenu ré-export dans `i18n.jsx`, ne déclenche plus `react-refresh`. **Task 12 doit corriger le chiffre dans `CLAUDE.md`**, sinon la prochaine personne lira « 6 attendus » et prendra la baisse pour une régression.
 - `npm test` → 19 tests réussis
 - `npm run build` → `dist/ch/index.html` et `dist/org/{index,hy/index,ru/index}.html`
 - Les quatre HTML : `<html lang>` correct, canonical auto-référent, quatre `hreflang` réciproques sur chacun, `og:site_name` conforme à la marque du site
