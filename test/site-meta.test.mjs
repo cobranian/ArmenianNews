@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { headFor, applyMeta, replaceMeta, META_MARKER } from '../scripts/lib/site-meta.mjs'
+import { sitemapFor, robotsFor } from '../scripts/lib/sitemap.mjs'
 import { ALL_LANGS, LANG_URL, siteOf } from '../sites.config.js'
 
 const PAGES = ALL_LANGS.map((lang) => ({ lang, siteId: siteOf(lang) }))
@@ -86,4 +87,29 @@ test('replaceMeta refuse un HTML sans sentinelles', () => {
     () => replaceMeta('<html lang="en"><head></head></html>', { siteId: 'org', lang: 'hy' }),
     /SITE_META/,
   )
+})
+
+test('le sitemap du .ch liste sa seule URL', () => {
+  const xml = sitemapFor('ch', '2026-07-28T10:00:00.000Z')
+  assert.ok(xml.includes('<loc>https://armenieinfo.ch/</loc>'))
+  assert.ok(xml.includes('<lastmod>2026-07-28T10:00:00.000Z</lastmod>'))
+  assert.equal((xml.match(/<url>/g) || []).length, 1)
+})
+
+test('le sitemap du .org liste ses trois URL avec leurs hreflang', () => {
+  const xml = sitemapFor('org', '2026-07-28T10:00:00.000Z')
+  assert.equal((xml.match(/<url>/g) || []).length, 3)
+  for (const loc of ['https://armenianews.org/', 'https://armenianews.org/hy/', 'https://armenianews.org/ru/']) {
+    assert.ok(xml.includes(`<loc>${loc}</loc>`), loc)
+  }
+  // Chaque <url> porte les quatre alternates + x-default, y compris la version
+  // française hébergée sur l'autre domaine.
+  assert.ok(xml.includes('hreflang="fr" href="https://armenieinfo.ch/"'))
+  assert.equal((xml.match(/hreflang="x-default"/g) || []).length, 3)
+  assert.ok(xml.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"'))
+})
+
+test('robots.txt pointe vers le sitemap de son propre domaine', () => {
+  assert.ok(robotsFor('org').includes('Sitemap: https://armenianews.org/sitemap.xml'))
+  assert.ok(robotsFor('ch').includes('Sitemap: https://armenieinfo.ch/sitemap.xml'))
 })
