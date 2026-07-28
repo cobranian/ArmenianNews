@@ -100,10 +100,22 @@ jobs:
       # Best-effort, like the screenshot: a prerender failure must never
       # block the deploy — worst case we ship the plain SPA, as before.
       - name: Prerender the four pages
+        id: prerender
         continue-on-error: true
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run prerender
+
+      # continue-on-error au-dessus rend l'échec silencieux dans l'UI Actions
+      # (l'étape reste verte) — voulu, car un prérendu manqué ne doit pas
+      # bloquer le déploiement de la SPA nue. Mais silencieux ne doit pas dire
+      # invisible : ce warning (pas un échec, donc rien ne bloque) est le seul
+      # signal qu'on aurait servi un `<html lang>` en décalage avec l'interface
+      # (voir le contrôle de langue dans scripts/prerender.mjs) sans texte pour
+      # les crawlers.
+      - name: Signaler un prérendu manqué
+        if: steps.prerender.outcome == 'failure'
+        run: echo "::warning::Prérendu échoué — le site part en SPA nu, sans texte pour les crawlers. Voir les logs de l'étape précédente."
 
       - name: Deploy to Firebase Hosting
         env:
