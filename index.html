@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Arménie Info — actualités, agenda et réseaux sociaux arméniens de Suisse et du monde, mis à jour chaque heure. Trilingue : français, English, Հայերեն." />
-    <meta name="keywords" content="Arménie Info, actualités arméniennes, Arménie, Artsakh, diaspora arménienne, agenda arménien, communauté arménienne de Suisse, réseaux sociaux arméniens, Հայաստան" />
     <meta name="theme-color" content="#100f0d" />
-    <link rel="canonical" href="https://armenieinfo.ch/" />
-    <!-- Google Search Console ownership verification -->
-    <meta name="google-site-verification" content="dMoDQHq0L5w16RdNPGKom7TJZe6LNjEc7Qq4PtVjO7k" />
-    <title>Arménie Info · Actualités arméniennes de Suisse</title>
+
+    <!-- Métadonnées propres au couple (site, langue) : titre, description,
+         canonical, hreflang, Open Graph, JSON-LD, vérification Search Console.
+         Générées par scripts/lib/site-meta.mjs depuis sites.config.js, et
+         injectées ici par le plugin siteMeta() de vite.config.js.
+         Ne rien écrire en dur à la place : les quatre pages divergeraient, et
+         des hreflang divergents sont ignorés par Google. -->
+    <!--SITE_META-->
 
     <!-- Google Analytics 4 (Consent Mode v2 — consentement refusé par défaut,
          donc mesure sans cookie, RGPD-friendly, sans bannière). ga-init.js est
@@ -20,59 +22,6 @@
          ici ET dans ga-init.js. -->
     <script src="/ga-init.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EB3W5XXSMW"></script>
-
-    <!-- Open Graph / social sharing -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Arménie Info" />
-    <meta property="og:title" content="Arménie Info · Actualités arméniennes de Suisse" />
-    <meta property="og:description" content="Actualités, agenda et réseaux sociaux arméniens de Suisse et du monde, mis à jour chaque heure." />
-    <meta property="og:url" content="https://armenieinfo.ch/" />
-    <meta property="og:image" content="https://armenieinfo.ch/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="fr_FR" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:locale:alternate" content="hy_AM" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Arménie Info · Actualités arméniennes de Suisse" />
-    <meta name="twitter:description" content="Actualités, agenda et réseaux sociaux arméniens, mis à jour chaque heure." />
-    <meta name="twitter:image" content="https://armenieinfo.ch/og-image.jpg" />
-
-    <!-- Structured data (schema.org) — helps Google understand the site's
-         identity. Static in the initial HTML so crawlers see it without JS. -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://armenieinfo.ch/#website",
-            "url": "https://armenieinfo.ch/",
-            "name": "Arménie Info",
-            "alternateName": ["Armenia Info", "Արմենիա Ինֆո"],
-            "description": "Actualités, agenda et réseaux sociaux arméniens de Suisse et du monde, mis à jour chaque heure.",
-            "inLanguage": ["fr", "en", "hy"],
-            "publisher": { "@id": "https://armenieinfo.ch/#organization" }
-          },
-          {
-            "@type": "Organization",
-            "@id": "https://armenieinfo.ch/#organization",
-            "name": "Arménie Info",
-            "alternateName": ["Armenia Info", "Արմենիա Ինֆո"],
-            "url": "https://armenieinfo.ch/",
-            "email": "contact@armenieinfo.ch",
-            "description": "Un instantané horaire de la vie arménienne : actualités, agenda et réseaux sociaux, en français, English et Հայերեն.",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://armenieinfo.ch/apple-touch-icon.png",
-              "width": 180,
-              "height": 180
-            },
-            "image": "https://armenieinfo.ch/og-image.jpg"
-          }
-        ]
-      }
-    </script>
 
     <!-- Ararat's twin peaks, apricot on basalt. SVG for modern browsers, PNG
          for the ones that ignore it, 180px for the iOS home screen.
