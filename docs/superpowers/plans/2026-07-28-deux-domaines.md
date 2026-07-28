@@ -934,7 +934,13 @@ Expected: aucune sortie
 - [ ] **Step 6 : lint**
 
 Run: `npm run lint`
-Expected: **1 erreur attendue** — `Nav.jsx` référence `setLang`, qui n'existe plus. C'est le signal que Task 6 est nécessaire ; ne pas corriger `i18n.jsx` pour la faire taire. Le nombre d'**avertissements doit rester à 6** : s'il est passé à 7, c'est qu'un export non-composant a été ajouté à `i18n.jsx` au lieu de `src/site.js`.
+Expected: **0 erreur, 5 avertissements** — exactement comme avant.
+
+> **Ne vous attendez pas à une erreur de lint, et surtout ne cherchez pas à en provoquer une.** `Nav.jsx` déstructure et appelle `setLang`, qui n'existe plus dans le contexte : l'application est donc **cassée à l'exécution** à ce stade — cliquer sur une langue lève `setLang is not a function`. ESLint ne le voit pas : il n'y a pas de vérification de types dans ce dépôt, et déstructurer une propriété absente est syntaxiquement valide.
+>
+> C'est une propriété du filet de sécurité, pas un oubli : **aucun test ne rend de composant**, donc rien d'automatisé ne couvre cet écart. La branche est sciemment cassée entre Task 5 et Task 6, et seule Task 6 la répare. N'y touchez pas ici : garder `setLang` en vie pour « faire propre » annulerait tout l'intérêt de la tâche.
+>
+> Si le décompte d'avertissements est passé à **6**, c'est très probablement qu'un export non-composant a atterri dans `i18n.jsx` au lieu de `src/site.js`.
 
 - [ ] **Step 7 : commit**
 
@@ -1808,6 +1814,16 @@ Expected: `✓ CSP identiques`
 - [ ] **Step 4 : vérifier `/hy/` face au rewrite SPA**
 
 C'est le point que la spec demande de **vérifier plutôt que de supposer** : Firebase sert le contenu statique avant d'appliquer les rewrites, donc `dist/org/hy/index.html` devrait l'emporter sur `"source": "**"`.
+
+> **Preuve préalable qu'il faut vraiment le vérifier.** Le même montage a été sondé sur le serveur de prévisualisation de Vite, avec une page `/hy/` dérivée dans un `dist` de test :
+>
+> | Requête | Réponse |
+> |---|---|
+> | `/` | 200, `lang=fr` ✓ |
+> | `/hy/` | 200, `lang=hy` ✓ |
+> | **`/hy`** (sans slash final) | **200, `lang=fr`** ✗ — avalé par le repli SPA |
+>
+> Le chemin avec slash fonctionne, celui sans slash retombe silencieusement sur l'index. Un lecteur qui tape `armenianews.org/hy` recevrait donc l'anglais sous une URL arménienne — statut 200, aucune erreur, aucun log. C'est `cleanUrls: true` qui doit corriger ça côté Firebase ; l'étape ci-dessous teste **les deux formes** pour cette raison précise.
 
 Run: `npx firebase-tools@15.23.0 emulators:start --only hosting --project armenie-info`
 
