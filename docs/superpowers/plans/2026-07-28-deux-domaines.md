@@ -809,7 +809,7 @@ git commit -m "seo: head généré par site et par langue au lieu de métas en d
 
 **Files:**
 - Create: `src/site.js`
-- Modify: `src/i18n.jsx:1, 567-606`
+- Modify: `src/i18n.jsx` — repérer `export function LanguageProvider` (≈ ligne 566 après Task 1) et `useI18n` (≈ 599). Ne pas se fier aux numéros : Task 1 a déjà décalé le fichier.
 
 **Interfaces:**
 - Consumes: `langFromPath`, `primaryLang` (Task 1)
@@ -982,7 +982,7 @@ export function Nav() {
                 key={l.code}
                 href={LANG_URL[l.code]}
                 hrefLang={l.code}
-                aria-current={lang === l.code ? 'true' : undefined}
+                aria-current={lang === l.code ? 'page' : undefined}
                 title={l.name}
               >
                 {l.label}
@@ -993,27 +993,37 @@ export function Nav() {
 
 - [ ] **Step 3 : adapter le style du sélecteur**
 
-Dans `src/styles/global.css`, la règle qui cible `.lang button` doit aussi cibler `.lang a`. Localiser :
+Il y a **quatre** règles `.lang button` dans `src/styles/global.css`, pas deux. Vérifiez d'abord :
 
 Run: `grep -n "\.lang" src/styles/global.css`
 
-Pour chaque sélecteur `.lang button` trouvé, le remplacer par `.lang button, .lang a`. Ajouter ensuite, à la suite du bloc `.lang` :
+Attendu — quatre occurrences de `.lang button`, aux alentours de ces lignes :
+
+| Ligne ≈ | Règle | Devient |
+|---|---|---|
+| 352 | `.lang button` (styles de base) | `.lang button, .lang a` |
+| 364 | `.lang button:hover` | `.lang button:hover, .lang a:hover` |
+| 367 | `.lang button[aria-pressed='true']` | `.lang a[aria-current='page']` — **remplacement, pas ajout** (voir ci-dessous) |
+| 2110 | `.lang button` **dans une media query** | `.lang button, .lang a` |
+
+**La quatrième est celle qu'on oublie.** Elle vit dans une media query mobile, à plus de 1700 lignes des autres, et porte un commentaire de mesure : à 360px de large, quatre pastilles plus la bascule de thème et le hamburger débordent (`scrollWidth` mesuré à 366px), d'où un `padding` réduit à 12px. **Ne modifiez pas ce commentaire** — il reste exact, il y a toujours quatre pastilles. Manquer cette règle donnerait des liens à `padding: 6px 12px` sur mobile : des cibles tactiles sous le seuil, sans que rien ne le signale sur un écran de développement.
+
+**`aria-pressed` → `aria-current='page'`.** L'ancien état venait de `<button aria-pressed>`, qui décrit une bascule. Ce sont désormais des liens vers la page courante : le jeton juste est `aria-current="page"`, que les lecteurs d'écran annoncent « page actuelle ». Remplacez le sélecteur au même endroit, ne laissez pas les deux coexister — une règle `aria-pressed` orpheline ne s'appliquerait plus jamais et ferait croire à un état mort.
+
+Ajouter ensuite, à la suite du bloc `.lang` :
 
 ```css
-/* Le sélecteur de langue est fait de liens depuis que chaque langue a son URL :
-   on neutralise la décoration de lien pour qu'ils gardent l'allure de boutons. */
+/* Le sélecteur de langue est fait de liens depuis que chaque langue a son URL.
+   On neutralise la décoration de lien pour qu'ils gardent l'allure des pastilles
+   qu'ils étaient : .lang a son overflow caché et son border-radius, les enfants
+   doivent donc remplir la hauteur pour que le fond de l'état actif touche les
+   bords. */
 .lang a {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
 }
-.lang a[aria-current='true'] {
-  /* Reprend l'état que `aria-pressed` portait du temps des boutons. */
-  font-weight: 700;
-}
 ```
-
-> Si `grep` montre que la règle existante utilise déjà `aria-pressed` pour la mise en évidence, remplacer ce sélecteur par `[aria-current='true']` au même endroit plutôt que d'ajouter une règle concurrente.
 
 - [ ] **Step 4 : lint**
 
