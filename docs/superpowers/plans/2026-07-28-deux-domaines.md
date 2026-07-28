@@ -960,6 +960,65 @@ git commit -m "i18n: la langue vient de l'URL, plus de localStorage"
 - Consumes: `orderedLangs` depuis `src/site.js`, `useI18n` et `LANGS` depuis `src/i18n.jsx` (Task 5) ; `LANG_URL` (Task 1)
 - Produces: quatre `<a href>` en dur dans le HTML de chaque page — le maillage réciproque entre les deux domaines.
 
+- [ ] **Step 0 : rendre `src/site.js` lisible hors Vite, et le couvrir par un test**
+
+Relevé à la revue de Task 5. Deux choses, liées.
+
+**a) Le repli documenté ne marche pas hors Vite.** `src/site.js` porte :
+
+```js
+export const SITE_ID = import.meta.env.VITE_SITE_ID ?? 'ch'
+```
+
+`import.meta.env` n'existe **que** dans un bundle Vite. Sous Node, `import.meta.env` vaut `undefined`, donc lire `.VITE_SITE_ID` lève `TypeError: Cannot read properties of undefined` — vérifié. Le commentaire promet un repli sur `'ch'` qui, en réalité, n'a lieu que parce que Vite définit toujours cet objet. Un chaînage optionnel rend la promesse vraie :
+
+```js
+export const SITE_ID = import.meta.env?.VITE_SITE_ID ?? 'ch'
+```
+
+Un seul caractère, et le module devient importable par n'importe quel script Node — ce qui débloque le point (b) et évite un plantage cryptique le jour où un utilitaire de build voudra le lire.
+
+**b) `orderedLangs` n'a aucun test**, alors que c'est une fonction pure sans DOM dont la justesse repose sur une propriété subtile : son comparateur renvoie `0` pour toutes les paires ne concernant pas la langue de tête, donc l'ordre des trois autres n'est préservé que parce que `Array.prototype.sort` est **stable** (garanti depuis ES2019). C'est exactement le genre d'invariant qu'un test fige et qu'une relecture rate.
+
+Créer `test/site.test.mjs` :
+
+```js
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import { SITE_ID, orderedLangs } from '../src/site.js'
+import { LANGS } from '../sites.config.js'
+
+test("SITE_ID retombe sur 'ch' hors Vite", () => {
+  // import.meta.env n'existe pas sous Node : le chaînage optionnel est ce qui
+  // rend vrai le repli que le commentaire de src/site.js promet.
+  assert.equal(SITE_ID, 'ch')
+})
+
+test('orderedLangs met la langue du domaine en tête', () => {
+  assert.equal(orderedLangs(LANGS)[0].code, 'fr') // SITE_ID vaut 'ch' ici
+})
+
+test("orderedLangs préserve l'ordre relatif des autres langues", () => {
+  // Le comparateur renvoie 0 pour toute paire sans la langue de tête : les
+  // trois autres ne gardent leur ordre que grâce à la stabilité de sort.
+  assert.deepEqual(
+    orderedLangs(LANGS).map((l) => l.code),
+    ['fr', 'en', 'hy', 'ru'],
+  )
+})
+
+test("orderedLangs ne modifie pas le tableau reçu", () => {
+  const avant = LANGS.map((l) => l.code)
+  orderedLangs(LANGS)
+  assert.deepEqual(LANGS.map((l) => l.code), avant, 'LANGS a été trié sur place')
+})
+```
+
+Le dernier test n'est pas décoratif : `orderedLangs` copie avec `[...langs]` avant de trier. Sans cette copie, `sort` muterait `LANGS` — la liste partagée par toute l'application.
+
+Run: `npm test`
+Expected: **21 tests** (17 existants + 4 ici), 0 échec.
+
 - [ ] **Step 1 : mettre à jour les imports (lignes 1-6)**
 
 ```jsx
@@ -1031,10 +1090,12 @@ Ajouter ensuite, à la suite du bloc `.lang` :
 }
 ```
 
-- [ ] **Step 4 : lint**
+- [ ] **Step 4 : lint et tests**
 
-Run: `npm run lint`
-Expected: 0 erreur, **5 avertissements** — l'erreur de Task 5 est résolue
+Run: `npm run lint && npm test`
+Expected: 0 erreur, **5 avertissements** ; **21 tests** réussis.
+
+> **Le lint ne dira rien de ce que cette tâche répare.** Avant elle, `Nav.jsx` appelait un `setLang` inexistant et l'application levait une exception au clic — pourtant le lint était déjà à 0 erreur (ESLint ne fait pas de vérification de types, et aucun test ne rend de composant). Le lint sera donc vert des deux côtés du correctif. La vérification réelle, c'est l'étape suivante, en dev.
 
 - [ ] **Step 5 : vérifier en dev**
 
