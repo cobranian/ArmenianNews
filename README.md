@@ -131,12 +131,29 @@ indistinguishable from the other's benign no-op.)
   `-org` suffix.) Done — the site exists, with its fallback URL
   `https://armenianews-org.web.app`, and `.firebaserc` already maps the `org`
   target to it.
-- **Before deploying `armenianews.org` for the first time** — create its
-  Google Search Console property and paste its verification token into
-  `sites.config.js` → `SITES.org.gscToken`. The token is compiled straight into
-  the built HTML (`<meta name="google-site-verification">`); if it's `null`,
-  the tag is simply omitted, so this has to happen before the first deploy that
-  matters for indexing, not after.
+- **Search Console ownership for `armenianews.org` — verified by DNS, not by
+  meta tag.** `SITES.org.gscToken` is `null` **on purpose**, so no
+  `<meta name="google-site-verification">` is emitted on the `.org` pages, and
+  that is correct — do not "fix" it by hunting for a token.
+
+  Ownership is proved by a TXT record on the domain root, posted alongside
+  Firebase's A records:
+
+  ```
+  Type: TXT   Name: @   Value: google-site-verification=<token>
+  ```
+
+  Two reasons this is the better method here, and why the two sites differ:
+  DNS verification covers the whole domain including any future subdomain, and
+  it survives a redeploy that changes the HTML. `armenieinfo.ch` still carries
+  its own token in `SITES.ch.gscToken` because it was verified by meta tag years
+  ago and there is no reason to churn a working verification.
+
+  **The token strings are not interchangeable.** Google issues a different one
+  per method: pasting a DNS TXT token into `gscToken` produces a tag that looks
+  right, deploys fine, and never verifies — a silent failure with no log
+  anywhere. If you ever switch `.org` to the meta-tag method, fetch the token
+  from Search Console's *HTML tag* option specifically.
 - **After deploying (once DNS has propagated)** — submit
   `https://armenieinfo.ch/sitemap.xml` and `https://armenianews.org/sitemap.xml`
   in their respective Search Console properties (they are two separate
