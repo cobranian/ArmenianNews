@@ -129,7 +129,7 @@ test('primaryLang donne la langue de tête du domaine', () => {
 
 test('langFromPath : le chemin fait autorité, sinon la langue du site', () => {
   assert.equal(langFromPath('org', '/hy/'), 'hy')
-  assert.equal(langFromPath('org', '/hy'), 'hy')     // cleanUrls, sans slash final
+  assert.equal(langFromPath('org', '/hy'), 'hy')     // sans slash final (Firebase 301 vers /hy/)
   assert.equal(langFromPath('org', '/ru/'), 'ru')
   assert.equal(langFromPath('org', '/'), 'en')
   assert.equal(langFromPath('ch', '/'), 'fr')
@@ -256,7 +256,7 @@ export function siteOf(lang) {
 
 // Le chemin fait autorité ; à défaut, la langue de tête du domaine.
 // Normalise le slash final pour que /hy et /hy/ se comportent pareil
-// (Firebase sert les deux via cleanUrls) — et pour que /hydravion ne
+// (Firebase redirige /hy vers /hy/ en 301) — et pour que /hydravion ne
 // matche pas /hy.
 export function langFromPath(siteId, pathname) {
   const site = SITES[siteId]
@@ -1810,7 +1810,9 @@ git commit -m "prerender: cuit les quatre pages, avec garde sur la langue rendue
 
 - [ ] **Step 3 : passer `firebase.json` à deux cibles**
 
-`"hosting"` devient un tableau. Les deux entrées sont **identiques sauf** `target`, `public` et `cleanUrls`.
+`"hosting"` devient un tableau. Les deux entrées sont **identiques sauf** `target` et `public`.
+
+> **Pas de `cleanUrls`.** Une version antérieure de ce plan posait `cleanUrls: true` sur la cible `org`, croyant que c'était nécessaire pour que `/hy` (sans slash) serve l'arménien. L'expérience a montré l'inverse : **sans** `cleanUrls`, Firebase renvoie `301 Moved Permanently` vers `/hy/` — une seule URL canonique ; **avec**, `/hy` et `/hy/` répondent toutes deux `200`, soit deux URL vivantes pour une même page. Cela contredisait au niveau HTTP l'invariant « une langue = une URL » que le build asserte, que les `hreflang` déclarent et que le `canonical` confirme. Le 301 consolide explicitement et économise un passage de crawl.
 
 **Ne pas paraphraser la CSP** : sa liste `media-src` porte les hosts des flux radio, et un host omis coupe la lecture en production sans que la préversion le montre. Le bloc ci-dessous reprend l'actuel mot pour mot — écrire le fichier ainsi :
 
@@ -1848,7 +1850,6 @@ git commit -m "prerender: cuit les quatre pages, avec garde sur la langue rendue
     {
       "target": "org",
       "public": "dist/org",
-      "cleanUrls": true,
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [{ "source": "**", "destination": "/index.html" }],
       "headers": [
@@ -1897,7 +1898,7 @@ C'est le point que la spec demande de **vérifier plutôt que de supposer** : Fi
 > | `/hy/` | 200, `lang=hy` ✓ |
 > | **`/hy`** (sans slash final) | **200, `lang=fr`** ✗ — avalé par le repli SPA |
 >
-> Le chemin avec slash fonctionne, celui sans slash retombe silencieusement sur l'index. Un lecteur qui tape `armenianews.org/hy` recevrait donc l'anglais sous une URL arménienne — statut 200, aucune erreur, aucun log. C'est `cleanUrls: true` qui doit corriger ça côté Firebase ; l'étape ci-dessous teste **les deux formes** pour cette raison précise.
+> Ce comportement est propre au serveur de prévisualisation de **Vite**, qui ne connaît pas la configuration Firebase — ce n'est pas ce que fait Firebase. Mesuré à l'émulateur, sans `cleanUrls` : `/hy` → **301** `Location: /hy/`, puis `/hy/` → **200** `lang=hy`. Une seule URL canonique par langue, exactement l'invariant du projet. L'étape ci-dessous teste **les deux formes** et exige la chaîne complète de statuts : utilisez `curl -D -` **sans** `-L`, sinon curl suit le 301 en silence et vous ne verrez que le 200 final — c'est précisément ce qui avait masqué le mécanisme au premier sondage.
 
 Run: `npx firebase-tools@15.23.0 emulators:start --only hosting --project armenie-info`
 
