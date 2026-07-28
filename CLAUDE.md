@@ -247,13 +247,18 @@ composants importent au build :
 
 **Les deux vitrines** — `sites.config.js` (racine) est la source de vérité :
 hosts, marques, pages, langues. Tout en dérive — métadonnées HTML, `hreflang`,
-sitemaps, cibles Firebase, ordre du sélecteur de langue.
+sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 
 - `scripts/lib/site-meta.mjs` génère le `<head>` d'un couple (site, langue).
   Appelé par le plugin `siteMeta()` de `vite.config.js` pour la page par défaut
   de chaque site, **et** par `scripts/build-sites.mjs` pour dériver `/hy/` et
   `/ru/`. Un seul générateur pour les quatre pages : des `hreflang` divergents
-  sont ignorés en bloc par Google.
+  sont ignorés en bloc par Google. Il pose aussi la balise **Cloudflare Web
+  Analytics** (marqueur `<!--CF_BEACON-->` dans `index.html`) à partir du
+  `cfBeaconToken` de la vitrine : **un jeton par site**, donc deux tableaux de
+  bord. `applyMeta` **refuse** un HTML privé de l'un ou l'autre marqueur —
+  supprimer `<!--CF_BEACON-->` couperait la mesure des deux vitrines sans
+  qu'aucun build ne s'en plaigne.
 - `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
   processus fils — la config de Vite est mise en cache par processus), dérive
   les pages supplémentaires à partir du HTML déjà bâti (pas un rebuild par
@@ -541,6 +546,19 @@ de production servent toujours depuis la racine de leur domaine.
   CSP comprise. Ajouter un host de flux radio à `media-src` d'un seul côté
   passe la préversion et casse la lecture en production sur l'autre domaine.
   Modifier les deux, toujours.
+- **Le jeton Cloudflare Web Analytics est propre à chaque vitrine.** La balise
+  était autrefois codée en dur dans `index.html` — fichier partagé par les deux
+  sites — donc armenianews.org versait ses visites dans le tableau de bord
+  d'armenieinfo.ch, séparables seulement en filtrant par hôte. Elle est
+  désormais générée depuis `cfBeaconToken` (`sites.config.js`), et `npm run
+  check` vérifie que chaque page porte **son** jeton et **aucun jeton
+  étranger** : c'est ce second contrôle qui compte, parce qu'un jeton du voisin
+  se mesure sans la moindre erreur, simplement au mauvais endroit. Le jeton
+  n'est pas un secret (il part en clair dans le HTML), et `null` est une valeur
+  valable : aucune balise n'est alors émise. Aucun des deux domaines n'étant
+  proxifié par Cloudflare (les deux pointent sur Firebase), il n'y a pas
+  d'activation automatique au niveau de la zone — le beacon JS est la seule
+  voie.
 - **Le `lastmod` des sitemaps vient de `meta.json.generatedAt`**, jamais de
   l'heure du build. Un push sur `main` rebâtit sans scraper ; un `lastmod` pris
   au build annoncerait une fraîcheur qui n'a pas eu lieu. C'est la garde que

@@ -28,6 +28,15 @@ export const SITES = {
     alternateName: ['Armenia Info', 'Արմենիա Ինֆո'],
     email: 'contact@armenieinfo.ch',
     gscToken: 'dMoDQHq0L5w16RdNPGKom7TJZe6LNjEc7Qq4PtVjO7k',
+    // Cloudflare Web Analytics — un jeton PAR VITRINE, émis dans le tableau de
+    // bord Cloudflare (Analytics & Logs → Web Analytics → Add a site). Ce
+    // n'est pas un secret : il part en clair dans le HTML public, il n'ouvre
+    // rien, il ne fait que nommer le site qui reçoit les visites.
+    //
+    // Aucun des deux domaines n'est proxifié par Cloudflare (tous deux pointent
+    // sur Firebase Hosting, 199.36.158.100), donc la mise en place automatique
+    // au niveau de la zone n'existe pas ici : le beacon JS est la seule voie.
+    cfBeaconToken: '40017296bb8845b8b659cb9cc34dae77',
     pages: [{ lang: 'fr', path: '/' }],
   },
   org: {
@@ -60,6 +69,17 @@ export const SITES = {
     // méthode. Coller ici un jeton DNS produirait une balise d'apparence
     // correcte qui ne validerait jamais, sans le moindre signal.
     gscToken: null,
+    // Jeton Cloudflare Web Analytics propre au .org — les trois pages
+    // (en, /hy/, /ru/) le portent, puisque la balise varie par SITE et non par
+    // langue.
+    //
+    // Ne remettez PAS le jeton du .ch ici : c'est ce que faisait l'ancienne
+    // balise codée en dur dans index.html, et le résultat était que les visites
+    // des deux domaines tombaient dans le tableau de bord du .ch, séparables
+    // seulement en filtrant par hôte. Un jeton par site donne deux tableaux de
+    // bord, ce qui est le but. `null` est accepté et n'émet aucune balise —
+    // mieux vaut ne pas mesurer que mesurer au mauvais endroit.
+    cfBeaconToken: 'b74469000dec4afd956cda6c161c0f55',
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },

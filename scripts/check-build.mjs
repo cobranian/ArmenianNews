@@ -54,6 +54,22 @@ for (const site of Object.values(SITES)) {
       ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
       ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
       ['GA4 intact', html.includes('G-EB3W5XXSMW')],
+      // Le beacon Cloudflare porte le jeton de SA vitrine, et rien d'autre.
+      // Le mode d'échec visé n'est pas « absent » mais « celui du voisin » :
+      // une page du .org portant le jeton du .ch se mesure sans erreur, dans le
+      // mauvais tableau de bord, et rien ne le signale.
+      [
+        site.cfBeaconToken ? `beacon ${site.id} (${site.cfBeaconToken.slice(0, 8)}…)` : 'sans beacon',
+        site.cfBeaconToken
+          ? count(new RegExp(site.cfBeaconToken, 'g')) === 1
+          : !html.includes('static.cloudflareinsights.com'),
+      ],
+      [
+        'aucun jeton beacon étranger',
+        Object.values(SITES)
+          .filter((s) => s.id !== site.id && s.cfBeaconToken)
+          .every((s) => !html.includes(s.cfBeaconToken)),
+      ],
     ]
 
     const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)

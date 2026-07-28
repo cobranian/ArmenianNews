@@ -17,6 +17,15 @@ export const META_MARKER = '<!--SITE_META-->'
 export const META_START = '<!--SITE_META:START-->'
 export const META_END = '<!--SITE_META:END-->'
 
+// Cloudflare Web Analytics. Le jeton identifie la VITRINE, pas le domaine : un
+// jeton unique partagé verserait les visites des deux sites dans un seul tableau
+// de bord, distinguables seulement en filtrant par hôte. D'où un jeton par site
+// (`cfBeaconToken` dans sites.config.js) et ce marqueur, remplacé au build comme
+// <!--SITE_META-->. Les pages /hy/ et /ru/ n'y repassent pas : elles sont
+// dérivées du HTML .org déjà bâti, qui porte donc déjà le bon jeton — la balise
+// ne varie pas selon la langue, seulement selon le site.
+export const BEACON_MARKER = '<!--CF_BEACON-->'
+
 // Échappe ce qui part dans un attribut HTML. Les chaînes viennent de nos
 // propres fichiers, mais un apostrophe typographique mal placé dans une
 // baseline ne doit pas pouvoir casser un attribut.
@@ -127,14 +136,42 @@ export function headFor({ siteId, lang }) {
   return `    ${META_START}\n${body}\n    ${META_END}`
 }
 
+// La balise beacon de Cloudflare Web Analytics pour cette vitrine, ou '' si elle
+// n'a pas (encore) de jeton — mieux vaut aucune mesure que des visites versées
+// dans le tableau de bord de l'autre site.
+//
+// Le jeton est validé avant d'être écrit : il part dans un attribut délimité par
+// des apostrophes, et un jeton mal collé (une apostrophe, un guillemet) ferait
+// une balise d'apparence correcte que le navigateur lirait de travers. Cloudflare
+// n'émet que du hexadécimal 32 caractères.
+export function beaconTag(siteId) {
+  const token = SITES[siteId].cfBeaconToken
+  if (!token) return ''
+  if (!/^[0-9a-f]{32}$/.test(token)) {
+    throw new Error(`cfBeaconToken de « ${siteId} » : 32 caractères hexadécimaux attendus`)
+  }
+  return (
+    '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" ' +
+    `data-cf-beacon='{"token": "${token}"}'></script>`
+  )
+}
+
 const setLang = (html, lang) => html.replace(/<html\s+lang="[^"]*"/, `<html lang="${lang}"`)
 
-// Pour le HTML SOURCE (index.html du dépôt), qui porte le marqueur.
+// Pour le HTML SOURCE (index.html du dépôt), qui porte les marqueurs.
 export function applyMeta(html, { siteId, lang }) {
   if (!html.includes(META_MARKER)) {
     throw new Error(`marqueur ${META_MARKER} absent du HTML — page sans métadonnées, refus`)
   }
-  return setLang(html, lang).replace(META_MARKER, headFor({ siteId, lang }).trimStart())
+  // Refus, et pas un remplacement silencieux : sans ce marqueur les deux
+  // vitrines perdraient leur mesure d'audience sans qu'aucun build ne s'en
+  // plaigne.
+  if (!html.includes(BEACON_MARKER)) {
+    throw new Error(`marqueur ${BEACON_MARKER} absent du HTML — page sans analytics, refus`)
+  }
+  return setLang(html, lang)
+    .replace(META_MARKER, headFor({ siteId, lang }).trimStart())
+    .replace(BEACON_MARKER, beaconTag(siteId))
 }
 
 // Pour le HTML DÉJÀ BÂTI, qui porte les sentinelles. Idempotent : rejouable

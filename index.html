@@ -60,8 +60,11 @@
     <script type="module" src="/src/main.jsx"></script>
     <!-- Cloudflare Web Analytics (sans cookie, RGPD-friendly). Le domaine du
          script et celui d'envoi des données sont autorisés dans la CSP de
-         firebase.json (script-src / connect-src). -->
-    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "40017296bb8845b8b659cb9cc34dae77"}'></script>
-    <!-- End Cloudflare Web Analytics -->
+         firebase.json (script-src / connect-src).
+         La balise est générée par scripts/lib/site-meta.mjs à partir du
+         `cfBeaconToken` de la vitrine bâtie : ne la réécrivez pas en dur ici,
+         un jeton unique verserait les visites des deux domaines dans le même
+         tableau de bord. Une vitrine sans jeton n'émet rien. -->
+    <!--CF_BEACON-->
   </body>
 </html>

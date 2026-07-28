@@ -190,6 +190,28 @@ from the other's benign no-op.
   right, deploys fine, and never verifies — a silent failure with no log
   anywhere. If you ever switch `.org` to the meta-tag method, fetch the token
   from Search Console's *HTML tag* option specifically.
+- **Cloudflare Web Analytics — one token per storefront, not per repo.** Each
+  site carries its own `cfBeaconToken` in `sites.config.js`, and
+  `scripts/lib/site-meta.mjs` renders the beacon tag into the
+  `<!--CF_BEACON-->` marker in `index.html`, per site, exactly like the `<head>`
+  block. The three `.org` pages (`/`, `/hy/`, `/ru/`) all carry the `.org`
+  token: the tag varies by **site**, never by language.
+
+  It used to be a single hardcoded tag in `index.html` — a file both
+  storefronts share — so `armenianews.org` was reporting into
+  `armenieinfo.ch`'s dashboard, separable only by filtering on hostname.
+
+  `npm run check` asserts two things per page: that it carries **its own**
+  token, and that it carries **no foreign one**. The second is the one that
+  matters — a neighbour's token measures without a single error, just into the
+  wrong dashboard. A `null` token is valid and emits nothing at all; better no
+  measurement than measurement filed under the wrong site.
+
+  Neither domain is proxied through Cloudflare (both resolve to Firebase
+  Hosting), so there is no zone-level automatic setup available here — the JS
+  beacon is the only route, and it needs a token issued per site from
+  **Analytics & Logs → Web Analytics → Add a site**. The token is not a secret:
+  it ships in the public HTML and grants nothing.
 - **After deploying (once DNS has propagated)** — submit
   `https://armenieinfo.ch/sitemap.xml` and `https://armenianews.org/sitemap.xml`
   in their respective Search Console properties (they are two separate

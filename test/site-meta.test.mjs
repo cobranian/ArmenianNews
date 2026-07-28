@@ -1,10 +1,20 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { headFor, applyMeta, replaceMeta, META_MARKER } from '../scripts/lib/site-meta.mjs'
+import {
+  headFor,
+  applyMeta,
+  replaceMeta,
+  beaconTag,
+  META_MARKER,
+  BEACON_MARKER,
+} from '../scripts/lib/site-meta.mjs'
 import { sitemapFor, robotsFor } from '../scripts/lib/sitemap.mjs'
-import { ALL_LANGS, LANG_URL, siteOf } from '../sites.config.js'
+import { ALL_LANGS, LANG_URL, SITES, siteOf, primaryLang } from '../sites.config.js'
 
 const PAGES = ALL_LANGS.map((lang) => ({ lang, siteId: siteOf(lang) }))
+
+// Le squelette d'index.html réduit à ce qu'applyMeta exige : ses deux marqueurs.
+const SRC = `<!doctype html>\n<html lang="fr">\n  <head>\n    ${META_MARKER}\n  </head>\n  <body>${BEACON_MARKER}</body>\n</html>`
 
 test('le canonical est auto-référent sur chaque page', () => {
   for (const { siteId, lang } of PAGES) {
@@ -49,8 +59,7 @@ test('la balise de vérification GSC n\'apparaît que si le jeton existe', () =>
 })
 
 test('applyMeta remplace le marqueur et l\'attribut lang', () => {
-  const src = `<!doctype html>\n<html lang="fr">\n  <head>\n    <!--SITE_META-->\n  </head>\n</html>`
-  const out = applyMeta(src, { siteId: 'org', lang: 'ru' })
+  const out = applyMeta(SRC, { siteId: 'org', lang: 'ru' })
   assert.ok(out.includes('<html lang="ru">'))
   assert.ok(!out.includes(META_MARKER))
   assert.ok(out.includes('https://armenianews.org/ru/'))
@@ -63,11 +72,59 @@ test('applyMeta refuse un HTML sans marqueur plutôt que de produire une page mu
   )
 })
 
+test('applyMeta refuse un HTML sans marqueur de beacon', () => {
+  // Sans ce refus, retirer <!--CF_BEACON--> d'index.html priverait les deux
+  // vitrines de leur mesure d'audience sans qu'aucun build ne s'en plaigne.
+  const sansBeacon = `<html lang="fr"><head>${META_MARKER}</head><body></body></html>`
+  assert.throws(() => applyMeta(sansBeacon, { siteId: 'ch', lang: 'fr' }), /CF_BEACON/)
+})
+
+test('chaque vitrine émet SON jeton Cloudflare, et jamais celui de l\'autre', () => {
+  for (const site of Object.values(SITES)) {
+    const out = applyMeta(SRC, { siteId: site.id, lang: primaryLang(site.id) })
+    assert.ok(!out.includes(BEACON_MARKER), `${site.id} : marqueur non consommé`)
+
+    if (site.cfBeaconToken) {
+      assert.equal(
+        (out.match(new RegExp(site.cfBeaconToken, 'g')) || []).length,
+        1,
+        `${site.id} : son propre jeton, une seule fois`,
+      )
+    } else {
+      // Pas de jeton ⇒ aucune balise. Mieux vaut ne pas mesurer que verser ses
+      // visites dans le tableau de bord de l'autre vitrine.
+      assert.ok(
+        !out.includes('static.cloudflareinsights.com'),
+        `${site.id} : sans jeton, aucune balise beacon ne doit être émise`,
+      )
+    }
+
+    for (const autre of Object.values(SITES)) {
+      if (autre.id === site.id || !autre.cfBeaconToken) continue
+      assert.ok(
+        !out.includes(autre.cfBeaconToken),
+        `${site.id} porte le jeton de ${autre.id} — mesure versée au mauvais site`,
+      )
+    }
+  }
+})
+
+test('un jeton Cloudflare mal formé est refusé, pas écrit dans la page', () => {
+  // Le jeton part dans un attribut délimité par des apostrophes : une apostrophe
+  // collée par erreur produirait une balise d'apparence correcte, lue de travers.
+  const originel = SITES.ch.cfBeaconToken
+  for (const mauvais of ["abc' onload='x", 'PAS-DU-HEXA', '40017296bb8845b8b659cb9cc34dae']) {
+    SITES.ch.cfBeaconToken = mauvais
+    assert.throws(() => beaconTag('ch'), /cfBeaconToken/, `accepté à tort : ${mauvais}`)
+  }
+  SITES.ch.cfBeaconToken = originel
+})
+
 test('replaceMeta rejoue sur un HTML déjà bâti, autant de fois que voulu', () => {
   // C'est le cas d'usage de Task 8 : dist/org/index.html est passé par Vite
   // (hachages d'assets posés, marqueur consommé), et il faut en dériver la
   // page /hy/ sans rejouer le build.
-  const src = `<!doctype html>\n<html lang="fr">\n  <head>\n    <!--SITE_META-->\n  </head>\n  <body><script src="/assets/index-a1b2c3.js"></script></body>\n</html>`
+  const src = `<!doctype html>\n<html lang="fr">\n  <head>\n    ${META_MARKER}\n  </head>\n  <body>${BEACON_MARKER}<script src="/assets/index-a1b2c3.js"></script></body>\n</html>`
   const built = applyMeta(src, { siteId: 'org', lang: 'en' })
   assert.ok(built.includes('/assets/index-a1b2c3.js'), 'le corps bâti doit survivre')
 
