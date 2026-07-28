@@ -1,13 +1,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { LANGS } from '../sites.config.js'
 
-// Supported interface languages. Content (articles, posts) stays in its
-// original language; only the chrome is translated.
-export const LANGS = [
-  { code: 'fr', label: 'FR', name: 'Français' },
-  { code: 'en', label: 'EN', name: 'English' },
-  { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
-  { code: 'ru', label: 'РУ', name: 'Русский' },
-]
+// LANGS lives in sites.config.js because Node cannot parse JSX — the build
+// scripts and tests run outside the browser and need this data as plain
+// JavaScript. Re-export here for backward compatibility with existing code.
+export { LANGS }
 
 const STRINGS = {
   fr: {

@@ -33,10 +33,21 @@ export const SITES = {
   },
 }
 
-// Ordre canonique des langues. Doit correspondre aux codes de LANGS
-// (src/i18n.jsx) — l'invariant est vérifié par test/sites-config.test.mjs et
-// par une assertion au build (scripts/build-sites.mjs).
+// Ordre canonique des langues. Doit correspondre aux codes de LANGS.
+// L'invariant est vérifié par test/sites-config.test.mjs et par une assertion
+// au build (scripts/build-sites.mjs).
 export const ALL_LANGS = ['fr', 'en', 'hy', 'ru']
+
+// Supported interface languages. Content (articles, posts) stays in its
+// original language; only the chrome is translated. Moved here from
+// src/i18n.jsx because Node cannot parse JSX — the build scripts and tests
+// run outside the browser and need this data as plain JavaScript.
+export const LANGS = [
+  { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
+  { code: 'ru', label: 'РУ', name: 'Русский' },
+]
 
 // lang -> URL absolue, slash final compris. Une seule table, consommée par le
 // générateur de hreflang ET par le sélecteur de langue : ce que le HTML

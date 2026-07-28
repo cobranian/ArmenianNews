@@ -1,7 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { SITES, LANG_URL, ALL_LANGS, X_DEFAULT, primaryLang, langFromPath, siteOf } from '../sites.config.js'
-import { LANGS } from '../src/i18n.jsx'
+import { SITES, LANG_URL, ALL_LANGS, LANGS, X_DEFAULT, primaryLang, langFromPath, siteOf } from '../sites.config.js'
 
 test('chaque langue vit à exactement une URL', () => {
   const langs = Object.values(SITES).flatMap((s) => s.pages.map((p) => p.lang))
@@ -9,7 +8,7 @@ test('chaque langue vit à exactement une URL', () => {
   assert.equal(new Set(langs).size, langs.length, 'une langue est servie à deux endroits')
 })
 
-test("l'invariant tient avec LANGS de i18n", () => {
+test('ALL_LANGS et LANGS décrivent exactement les mêmes langues', () => {
   assert.deepEqual([...ALL_LANGS].sort(), LANGS.map((l) => l.code).sort())
 })
 
