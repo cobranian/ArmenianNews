@@ -29,7 +29,7 @@ renders that data into two static Vite + React bundles (`dist/ch/`,
 | **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
 | **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
 | **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 30 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
-| **Instagram** | 8 curated accounts | A swipeable **carousel** (‹ › arrows) of post tiles. The **9 latest posts** of each account are harvested by a local script (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job. |
+| **Instagram** | 16 curated accounts | **Two** swipeable **carousels** (‹ › arrows) of post tiles — one strand per `group`, institutions and personnalités, 8 accounts each. The **9 latest posts** of each account are harvested by a local script (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job, **30 per strand** so the bigger group can't crowd the other off its own carousel. |
 
 Each source **fails independently and degrades gracefully**: on an empty/failed
 scrape, the orchestrator backfills that source from the previous snapshot
@@ -234,9 +234,13 @@ Instagram blocks scraping from CI, so the post **pool** is built locally by
 `npm run ig-scrape` (see [Refreshing the Instagram
 pool](#refreshing-the-instagram-pool)). The **account list** is hand-curated and
 the scraper never touches it; each account's **posts** are harvested — currently
-**8 accounts × 9 posts = 72**. The hourly job shuffles that pool into
-`instagram-feed.json` (a fresh random selection + order each hour); the carousel
-renders from it.
+**16 accounts × 9 posts = 144** (138 distinct shortcodes: `nemrabandofficial` and
+`van.nemra` are collaborators, and a COLLAB post lives on both grids under the
+*same* shortcode). Each account declares a `group` — `institutions` or
+`personnalites`, 8 accounts each — and the wall renders one carousel per strand.
+The hourly job shuffles that pool into `instagram-feed.json`, picking **30 per
+strand** (60 posts, a fresh random selection + order each hour) rather than 30
+overall, so the bigger group can't crowd the other off its own carousel.
 
 Each post is a `{url, date}` pair, the date being the post's real timestamp:
 
@@ -245,6 +249,7 @@ Each post is a `{url, date}` pair, the date being the post's real timestamp:
   "handle": "armeniancuisine",
   "name": "Armenian Cuisine",
   "url": "https://www.instagram.com/armeniancuisine/",
+  "group": "institutions",
   "posts": [
     { "url": "https://www.instagram.com/p/ABC123/", "date": "2026-07-12T04:51:48.000Z" },
     { "url": "https://www.instagram.com/reel/DEF456/", "date": "2026-07-09T18:02:11.000Z" }
@@ -260,14 +265,16 @@ or `/tv/` (e.g. `ABC123.jpg`). It's bundled at build time, so it never hotlinks
 or expires. **Without an image, the tile shows a deterministic Armenian motif**
 (still on-brand) — so a permalink alone is enough.
 
-**To add an account**, add it to the `accounts` array by hand, then re-run the
-harvest to populate its posts. Note that an Instagram handle **cannot contain a
-hyphen** — a handle with one (e.g. `armenian-trend`) 404s and the account is
-dropped from the run.
+**To add an account**, add it to the `accounts` array by hand — including its
+`group`, which decides which of the two carousels it lands in (omit it and it
+defaults to `institutions`) — then re-run the harvest to populate its posts. Note
+that an Instagram handle **cannot contain a hyphen** — a handle with one (e.g.
+`armenian-trend`) 404s and the account is dropped from the run.
 
-The snapshot selects up to **30** posts per hour (`selectInstagram(30)` in
-`scripts/sources/instagram.mjs`); bump that number if the pool grows well beyond
-30. Accounts with no posts simply appear as a profile chip linking to Instagram.
+The snapshot selects up to **30 posts per strand** — 60 in all
+(`selectInstagram(30)` in `scripts/sources/instagram.mjs`, applied per `group`);
+bump that number if either strand grows well beyond 30. Accounts with no posts
+simply appear as a profile chip linking to Instagram.
 
 ### Facebook (Don Narek) — `src/data/facebook.json`
 
@@ -380,10 +387,12 @@ a gutted one.
 
 Notes:
 - Without a logged-in session the script stops up front (`✗ Not logged in`)
-  rather than reporting eight independent failures.
+  rather than reporting sixteen independent failures.
 - **The wall's freshness is capped by how active the accounts actually are.** Two
-  of the eight are dormant — `ig_armenia` hasn't posted since **June 2023**,
-  `armeniancuisine` since **November 2025** — so their old posts show up on the
+  of the sixteen are dormant — `ig_armenia` hasn't posted since **June 2023**,
+  `armeniancuisine` since **November 2025** — and two more are slow
+  (`haykmiqayelyanart` since **February 2026**, `abgarart` since **March 2026**),
+  so their old posts show up on the
   wall and *no amount of re-harvesting will change that*: the script faithfully
   reports what the account publishes. To genuinely freshen the wall, **remove or
   replace those accounts by hand** in the `accounts` array. This is a deliberate

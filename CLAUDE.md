@@ -227,13 +227,20 @@ composants importent au build :
     identique — Erevan/Angleterre/Chypre mêlés — d'où l'ancien « slug non
     fiable »). Alimente le sélecteur de pays de l'agenda (voir « L'exception »
     plus bas).
-  - `instagram.mjs` — sélection aléatoire depuis le pool Instagram.
+  - `instagram.mjs` — sélection aléatoire depuis le pool Instagram, **par
+    brin** : chaque compte déclare son `group` (`institutions` | `personnalites`,
+    8 comptes chacun) et le tirage prend `limit` posts **par groupe**, pas
+    `limit` en tout — sinon le groupe le plus fourni chasserait l'autre de son
+    propre carrousel. Le job horaire appelle `selectInstagram(30)`, donc 60 posts
+    dans `instagram-feed.json`.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
   locale**, pas horaire : Instagram exige une session connectée et bloque la CI.
-  Récolte les **9 derniers posts** de chacun des 8 comptes curés (72 posts),
-  datés, et télécharge leurs images dans `src/data/ig/`. Le job horaire ne fait
+  Récolte les **9 derniers posts** de chacun des **16 comptes curés** (144 posts,
+  138 shortcodes distincts — `nemrabandofficial` et `van.nemra` sont
+  collaborateurs, et un post COLLAB vit sur les deux grilles sous le **même**
+  shortcode), datés, et télécharge leurs images dans `src/data/ig/`. Le job horaire ne fait
   que **re-mélanger** ce pool : sans récolte, le mur re-sert indéfiniment les
   mêmes posts tout en ayant l'air frais.
 - **`scripts/shoot.mjs`** — capture d'écran du carrousel Don Narek (Puppeteer).
@@ -335,8 +342,11 @@ la palette « abricot sur basalte » y sont définies.
   la main).
   Voir le **README.md** pour la procédure d'ajout de posts et de rafraîchissement
   des deux murs.
-- Schéma du pool Instagram : `accounts: [{ handle, name, url, posts: [{url, date}] }]`.
-  Le scraper réécrit les `posts` — **jamais** le tableau `accounts`.
+- Schéma du pool Instagram :
+  `accounts: [{ handle, name, url, group, posts: [{url, date}] }]`, où `group`
+  vaut `institutions` ou `personnalites` et décide de quel carrousel le compte
+  relève (absent = `institutions`). Le scraper réécrit les `posts` — **jamais**
+  le tableau `accounts`.
 - Les images bundlées vivent dans `src/data/ig/` (Instagram) et `src/data/fb/`
   (Facebook) : incluses au build, donc jamais de hotlink ni d'expiration. Sans
   image, une tuile affiche un **motif arménien déterministe** (voir
@@ -424,8 +434,10 @@ de production servent toujours depuis la racine de leur domaine.
 - Un identifiant Instagram ne peut pas contenir de tiret : un handle mal saisi
   (ex. `armenian-trend`) renvoie un 404 et fait échouer le compte.
 - **La fraîcheur du mur est plafonnée par l'activité réelle des comptes.** Deux
-  comptes suivis sont dormants (`ig_armenia` n'a rien publié depuis juin 2023,
-  `armeniancuisine` depuis novembre 2025) : leurs vieux posts apparaissent sur le
+  des seize comptes suivis sont dormants (`ig_armenia` n'a rien publié depuis
+  juin 2023, `armeniancuisine` depuis novembre 2025), deux autres sont lents
+  (`haykmiqayelyanart` depuis février 2026, `abgarart` depuis mars 2026) : leurs
+  vieux posts apparaissent sur le
   mur et **aucune récolte n'y changera rien** — le script rapporte fidèlement ce
   que le compte publie. Pour rafraîchir vraiment, il faut retirer ou remplacer
   ces comptes à la main dans le tableau `accounts`. C'est un choix assumé, pas un
