@@ -673,9 +673,25 @@ git commit -m "seo: générateur de head par site et par langue, hreflang récip
 
 - [ ] **Step 1 : remplacer les métas de `index.html` par le marqueur**
 
-Dans `index.html`, **supprimer** les lignes 6 à 12 (description, keywords, canonical, commentaire GSC, balise GSC, title — **garder** `theme-color` ligne 8), puis supprimer les lignes 24 à 39 (bloc Open Graph / Twitter) et 41 à 75 (commentaire + bloc JSON-LD).
+**Ne procédez pas par numéros de ligne** : les blocs à retirer sont à trois endroits, et supprimer le premier décale tous les suivants. Repérez chaque bloc par son **contenu**.
 
-Le `<head>` doit commencer ainsi :
+À **retirer** de `<head>` — quatre blocs, dans n'importe quel ordre :
+
+| Bloc | Repère |
+|---|---|
+| description + keywords | `<meta name="description"` et `<meta name="keywords"` |
+| canonical + vérification GSC | `<link rel="canonical"`, son commentaire `<!-- Google Search Console…`, et `<meta name="google-site-verification"` |
+| `<title>` | `<title>Arménie Info · Actualités arméniennes de Suisse</title>` |
+| Open Graph / Twitter / JSON-LD | du commentaire `<!-- Open Graph / social sharing -->` jusqu'à la fin du `</script>` du bloc `application/ld+json`, commentaire `<!-- Structured data…` compris |
+
+À **conserver** intact, bien qu'entouré de lignes supprimées :
+
+- `<meta charset="UTF-8" />`
+- `<meta name="viewport" …/>`
+- **`<meta name="theme-color" content="#100f0d" />`** — il est situé *entre* `keywords` et `canonical`, donc au milieu de la zone retirée. C'est le piège de cette étape : il ne fait pas partie des métadonnées par site (il est identique sur les quatre pages) et doit rester en dur.
+- tout le bloc Google Analytics avec son commentaire, les favicons, les polices, et tout le `<body>`
+
+Le `<head>` doit alors commencer exactement ainsi :
 
 ```html
 <!doctype html>
@@ -697,6 +713,22 @@ Le `<head>` doit commencer ainsi :
 ```
 
 Tout le reste du fichier (scripts GA, favicons, polices, `<body>`) est **inchangé**.
+
+Contrôle avant de passer à l'étape suivante :
+
+```bash
+node -e "
+const h=require('node:fs').readFileSync('index.html','utf8');
+const doit=['<!--SITE_META-->','theme-color','G-EB3W5XXSMW','favicon.svg','theme-init.js','<div id=\"root\"></div>'];
+const parti=['rel=\"canonical\"','og:site_name','google-site-verification','application/ld+json','name=\"keywords\"','<title>'];
+let ko=0;
+for(const s of doit) if(!h.includes(s)){console.error('MANQUE (doit rester): '+s);ko++}
+for(const s of parti) if(h.includes(s)){console.error('RESTE (doit partir): '+s);ko++}
+console.log(ko?ko+' problème(s)':'✓ index.html conforme');
+process.exit(ko?1:0)"
+```
+
+Expected: `✓ index.html conforme`
 
 - [ ] **Step 2 : ajouter le plugin dans `vite.config.js`**
 
