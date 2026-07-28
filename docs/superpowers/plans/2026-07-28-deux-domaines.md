@@ -1977,7 +1977,28 @@ Juste après `- run: npm ci`, insérer :
         run: npm test
 ```
 
-- [ ] **Step 3 : adapter l'étape de déploiement**
+- [ ] **Step 3 : faire tourner `npm run check` avant le déploiement**
+
+Juste après l'étape `Build` (`run: npm run build`), et **avant** l'étape de déploiement, insérer :
+
+```yaml
+      # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
+      # jamais en automatique et ne protège rien. Volontairement SANS
+      # continue-on-error : si les quatre pages ou les deux sitemaps sont
+      # incorrects, il vaut mieux ne rien publier que publier un site cassé.
+      # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
+      # donc un faux positif signalerait une vraie divergence de configuration.
+      - name: Contrôler les pages et les fichiers SEO produits
+        run: npm run check
+```
+
+> **Pourquoi c'est nécessaire et pas décoratif.** `check-build.mjs` vérifie, par vitrine : les quatre `index.html` (attribut `lang`, canonical auto-référent, `hreflang` réciproques, marque, comptages stricts contre la duplication) **et** les deux `sitemap.xml`/`robots.txt` (présence, nombre d'`<url>`, de `<lastmod>` et de `xhtml:link`, host dans les `<loc>`).
+>
+> C'est exactement le filet qui manquait quand le build pouvait expédier sans sitemap en n'émettant qu'un `console.warn`. Le laisser hors de la CI reviendrait à ne l'avoir jamais écrit.
+
+> **À distinguer des deux étapes voisines**, qui sont `continue-on-error: true` à dessein : la capture d'écran et le prérendu sont des améliorations, leur échec dégrade sans casser. Celle-ci est une vérification de correction — son échec doit arrêter le déploiement.
+
+- [ ] **Step 4 : adapter l'étape de déploiement**
 
 Dans l'étape « Deploy to Firebase Hosting », remplacer la commande `deploy` par :
 
@@ -1999,12 +2020,12 @@ Et élargir le garde-fou du no-op — avec deux cibles, Firebase peut rapporter 
           fi
 ```
 
-- [ ] **Step 4 : vérifier la syntaxe du workflow**
+- [ ] **Step 5 : vérifier la syntaxe du workflow**
 
 Run: `npx --yes yaml-lint .github/workflows/hourly.yml 2>/dev/null || node -e "const y=require('node:fs').readFileSync('.github/workflows/hourly.yml','utf8'); if (y.includes('hosting:ch,hosting:org') && !y.includes('public/sitemap.xml')) console.log('✓ workflow à jour'); else { console.error('✗ workflow incomplet'); process.exit(1) }"`
 Expected: `✓ workflow à jour`
 
-- [ ] **Step 5 : commit**
+- [ ] **Step 6 : commit**
 
 ```bash
 git add .github/workflows/hourly.yml
