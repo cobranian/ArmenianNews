@@ -379,6 +379,23 @@ npm run scrape && npm run build
 git add src/data/instagram.json src/data/instagram-feed.json src/data/ig && git commit && git push
 ```
 
+**On later runs, skip steps 1–2.** Drop `--connect` and the script launches its
+own visible Chrome **on that same `.cache/ig-chrome-profile`** — so the session
+you logged in once is already there, and there's no debug window to start by
+hand:
+
+```bash
+npm run ig-scrape -- --dry   # same dry run, self-launched Chrome
+npm run ig-scrape            # same harvest
+```
+
+Use `--connect` when you already have the debug window open, or when the session
+has expired and you need to log back in — that's the one thing the self-launched
+run can't do for you, because it **closes** its Chrome on exit where `--connect`
+merely detaches, leaving your window open to log in. Either way a dead session
+stops the script up front with `✗ Not logged in`, rather than reporting sixteen
+independent failures.
+
 It rewrites `src/data/instagram.json` with the **9 latest posts** of each account
 (dated, newest first) plus their images in `src/data/ig/`, and deletes images no
 post points at any more. A failing account **keeps its previous posts**; if *no*
