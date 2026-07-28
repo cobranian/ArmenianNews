@@ -1,13 +1,11 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo } from 'react'
+import { LANGS, langFromPath } from '../sites.config.js'
+import { SITE_ID } from './site.js'
 
-// Supported interface languages. Content (articles, posts) stays in its
-// original language; only the chrome is translated.
-export const LANGS = [
-  { code: 'fr', label: 'FR', name: 'Français' },
-  { code: 'en', label: 'EN', name: 'English' },
-  { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
-  { code: 'ru', label: 'РУ', name: 'Русский' },
-]
+// LANGS lives in sites.config.js because Node cannot parse JSX — the build
+// scripts and tests run outside the browser and need this data as plain
+// JavaScript. Re-export here for backward compatibility with existing code.
+export { LANGS }
 
 const STRINGS = {
   fr: {
@@ -150,7 +148,11 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   en: {
-    'site.title': 'Armenia Info',
+    // La marque suit le domaine (.org = Armenia News), pas la langue — voir
+    // sites.config.js. Forme latine sur les trois langues du .org : pas de
+    // translittération arménienne ou russe, qui rouvrirait la même
+    // divergence marque/métadonnées sous une autre forme.
+    'site.title': 'Armenia News',
     'site.tagline': 'An hourly snapshot of Armenian life, from Switzerland and the world',
     'site.snapshot': 'Snapshot of',
     'site.cadence': 'hourly',
@@ -287,7 +289,10 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   hy: {
-    'site.title': 'Արմենիա Ինֆո',
+    // Forme latine délibérée : la marque suit le domaine (.org = Armenia
+    // News), pas la langue — voir sites.config.js et le commentaire jumeau
+    // dans le bloc `en`.
+    'site.title': 'Armenia News',
     'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ Շվեյցարիայից եւ աշխարհից',
     'site.snapshot': 'Պատկեր՝',
     'site.cadence': 'ամեն ժամ',
@@ -424,7 +429,10 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   ru: {
-    'site.title': 'Армения Инфо',
+    // Forme latine délibérée : la marque suit le domaine (.org = Armenia
+    // News), pas la langue — voir sites.config.js et le commentaire jumeau
+    // dans le bloc `en`.
+    'site.title': 'Armenia News',
     'site.tagline': 'Ежечасный снимок армянской жизни, из Швейцарии и со всего мира',
     'site.snapshot': 'Снимок от',
     'site.cadence': 'каждый час',
@@ -567,17 +575,23 @@ const LOCALES = { fr: 'fr-FR', en: 'en-GB', hy: 'hy-AM', ru: 'ru-RU' }
 const LanguageContext = createContext(null)
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(() => {
-    const stored = typeof localStorage !== 'undefined' && localStorage.getItem('lang')
-    return LANGS.some((l) => l.code === stored) ? stored : 'fr'
-  })
+  // La langue vient de l'URL, jamais de localStorage.
+  //
+  // Chaque langue a désormais son adresse (voir sites.config.js), et c'est
+  // l'URL qui fait autorité. Restaurer une langue depuis localStorage
+  // ferait basculer au montage une page dont le HTML prérendu et l'attribut
+  // <html lang> disent autre chose : flash de contenu, et un attribut lang qui
+  // ment sur ce qui est affiché. Googlebot n'ayant pas de localStorage,
+  // l'écart serait invisible en test et bien réel pour les lecteurs.
+  //
+  // Ce qu'on perd — « le site se souvient de ma langue » — est repris par
+  // l'URL, qui se met en favori, revient dans l'historique et se partage.
+  const lang = useMemo(() => {
+    const path = typeof location !== 'undefined' ? location.pathname : '/'
+    return langFromPath(SITE_ID, path)
+  }, [])
 
   useEffect(() => {
-    try {
-      localStorage.setItem('lang', lang)
-    } catch {
-      /* ignore */
-    }
     document.documentElement.lang = lang
   }, [lang])
 
@@ -593,7 +607,7 @@ export function LanguageProvider({ children }) {
         year: 'numeric',
       })
     }
-    return { lang, setLang, t, formatDate, locale: LOCALES[lang] }
+    return { lang, t, formatDate, locale: LOCALES[lang] }
   }, [lang])
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>

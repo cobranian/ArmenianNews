@@ -48,7 +48,7 @@ export default [
   // them as ordinary Node code and cannot tell the difference, so the choice is
   // between these globals and scattering eslint-disable over every evaluate().
   {
-    files: ['scripts/**/*.mjs', 'vite.config.js', 'eslint.config.js'],
+    files: ['scripts/**/*.mjs', 'vite.config.js', 'eslint.config.js', 'sites.config.js', 'test/**/*.mjs'],
     ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 2022,

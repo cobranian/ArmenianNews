@@ -5,11 +5,13 @@ travaille sur ce dépôt.
 
 ## Projet
 
-**Arménie Info** (`armenie-info.web.app`) — un **instantané horaire** de la vie
-arménienne : actualités, agenda et réseaux sociaux, dans une esthétique de
-journal « Apricot Press » (basalte volcanique éclairé d'abricot), avec une
-bascule **jour / nuit**. Interface quadrilingue : **Français / English /
-Հայերեն / Русский**.
+**Arménie Info** (`armenieinfo.ch`) et **Armenia News** (`armenianews.org`) —
+deux vitrines d'un **même instantané horaire** de la vie arménienne, servies
+depuis une seule base de code. Le .ch sert le français ; le .org sert l'anglais
+(`/`), l'arménien (`/hy/`) et le russe (`/ru/`). Actualités, agenda et réseaux
+sociaux, dans une esthétique de journal « Apricot Press » (basalte volcanique
+éclairé d'abricot), avec une bascule **jour / nuit**. À elles deux, les
+vitrines couvrent quatre langues : **Français / English / Հայերեն / Русский**.
 
 Une tâche planifiée récupère les sources une fois par heure dans des fichiers
 JSON ; le site est une application statique **Vite + React** qui affiche ces
@@ -31,18 +33,26 @@ mélangez pas leur outillage ici.
 ## Commandes
 
 ```bash
-npm install         # installer les dépendances
-npm run dev         # serveur de développement sur http://localhost:5173
-npm run build       # build de production dans dist/
-npm run preview     # prévisualiser le build de production
-npm run lint        # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 6 avertissements connus
-npm run scrape      # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
-npm run ig-scrape   # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
-npm run screenshot  # après un build : capturer le carrousel Don Narek dans dist/don-narek-{desktop,mobile}.png
+npm install          # installer les dépendances
+npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
+npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
+npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
+npm run check        # contrôle les 4 pages produites (lang, canonical, hreflang réciproques) et les 2 sitemaps/robots
+npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
+npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
+npm run preview:org  # prévisualise dist/org
+npm test             # 24 tests : dérivations de sites.config.js, hreflang, ordre des langues, sitemaps
+npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
+npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
+npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
+npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
+npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 ```
 
-Il n'y a **pas de suite de tests**. Le lint et l'exécution réelle des scripts
-tiennent lieu de vérification.
+Il y a désormais **24 tests** (`node --test test/*.mjs`) : ils gardent les
+invariants de `sites.config.js` (une langue = une URL), la réciprocité des
+`hreflang`, l'ordre du sélecteur et la forme des sitemaps — aucun ne touche le
+réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -62,17 +72,27 @@ trois endroits : `src/` dans un navigateur, `scripts/` dans Node, et
 - **`.cache/` est ignoré** : il contient les profils Chrome connectés des scrapes
   manuels — du code d'extension tierce, pas le nôtre.
 
-**Les 6 avertissements restants sont connus et assumés** — ne les « corrigez »
+**Les 5 avertissements restants sont connus et assumés** — ne les « corrigez »
 pas mécaniquement :
 
 - `Radio.jsx` (×2, `react-hooks/exhaustive-deps`) — le correctif que suggère la
   règle (capturer `audioRef.current` au montage) **introduirait un bug** : ce
   `useEffect` de démontage veut la référence au moment du démontage, pas celle
   figée au montage.
-- `i18n.jsx` et `motifs.jsx` (×4, `react-refresh/only-export-components`) — ces
-  fichiers exportent un composant **et** un hook ou des constantes. C'est le
+- `motifs.jsx` (×2) et `i18n.jsx` (×1, `react-refresh/only-export-components`) —
+  ces fichiers exportent un composant **et** un hook ou des constantes. C'est le
   motif React standard pour un contexte ; l'avertissement ne concerne que le
   rafraîchissement à chaud en développement.
+
+  `i18n.jsx` en portait **deux** — `LANGS` déclaré en dur et `useI18n` — sur les
+  quatre que totalisait la ligne combinée avec `motifs.jsx`. La liste vit
+  désormais dans `sites.config.js` (racine), parce que Node doit pouvoir la
+  lire sans passer par un parseur JSX ; `i18n.jsx` se contente de la
+  **ré-exporter** (`export { LANGS }`), et une ré-exportation ne déclenche pas
+  la règle. Le décompte a donc **baissé** de 6 à 5 : c'est une amélioration, pas
+  une régression. Ne remettez pas `LANGS` en dur dans `i18n.jsx` pour
+  « simplifier » — cela recasserait le build à deux vitrines et les tests qui
+  vérifient que `sites.config.js` et `LANGS` décrivent les mêmes langues.
 
 ## Architecture
 
@@ -193,17 +213,53 @@ composants importent au build :
   mêmes posts tout en ayant l'air frais.
 - **`scripts/shoot.mjs`** — capture d'écran du carrousel Don Narek (Puppeteer).
 
+**Les deux vitrines** — `sites.config.js` (racine) est la source de vérité :
+hosts, marques, pages, langues. Tout en dérive — métadonnées HTML, `hreflang`,
+sitemaps, cibles Firebase, ordre du sélecteur de langue.
+
+- `scripts/lib/site-meta.mjs` génère le `<head>` d'un couple (site, langue).
+  Appelé par le plugin `siteMeta()` de `vite.config.js` pour la page par défaut
+  de chaque site, **et** par `scripts/build-sites.mjs` pour dériver `/hy/` et
+  `/ru/`. Un seul générateur pour les quatre pages : des `hreflang` divergents
+  sont ignorés en bloc par Google.
+- `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
+  processus fils — la config de Vite est mise en cache par processus), dérive
+  les pages supplémentaires à partir du HTML déjà bâti (pas un rebuild par
+  page — juste un échange de métadonnées entre les sentinelles que pose
+  `site-meta.mjs`), puis écrit sitemap et robots par vitrine. Une assertion en
+  tête du script vérifie que `sites.config.js` et `LANGS` décrivent
+  exactement les mêmes langues — sans elle, ajouter une cinquième langue à
+  `LANGS` la rendrait traduite partout et joignable nulle part, en silence.
+- `src/seo.js` porte les chaînes de titre et de description par langue. **JS
+  plat, sans React**, parce que Node doit les lire pour générer `/hy/` et
+  `/ru/` hors du bundle. Même raison que `src/worldPlace.js` — ne le
+  reconsolidez pas dans `i18n.jsx`.
+- `src/site.js` porte `SITE_ID` (quelle vitrine ce build produit, posé par
+  `scripts/build-sites.mjs` via `VITE_SITE_ID` ; `npm run dev` n'en pose pas et
+  travaille donc sur le .ch) et `orderedLangs()`, qui place la langue de tête
+  du domaine en premier dans le sélecteur sans changer l'ordre relatif des
+  autres — sur les trois pages du .org la barre reste « EN FR ՀԱՅ РУ », seule
+  la mise en évidence se déplace. Module plat lui aussi, pour la même raison
+  que `src/seo.js` : y ajouter ces exports dans `i18n.jsx` ferait remonter le
+  lint d'un avertissement `react-refresh` de plus (voir la section Lint).
+
 **Internationalisation** — `src/i18n.jsx` expose un contexte React
-(`useI18n()` → `{ t, lang, setLang }`) avec les dictionnaires **fr / en / hy /
-ru**. `LANGS` (dans `i18n.jsx`) pilote seul le sélecteur de langue et la
-persistance ; ajouter une langue = ajouter son entrée à `LANGS`, un bloc
-`STRINGS` complet (mêmes clés que `fr`, sinon repli silencieux sur le français)
-et son `LOCALES`. Seul le **chrome de l'interface** est traduit ; le **contenu**
-(articles, posts) reste dans sa langue d'origine — un lecteur russe voit
-Armenpress **et** ArmRadio en russe, mais Courrier (et les autres sources
-francophones) en français, et Courrier reste le premier onglet (comme pour hy).
-Le français est la langue par défaut et doit porter tous ses accents
-(é, è, à, ê, ç…).
+(`useI18n()` → `{ t, lang, formatDate, locale }`) avec les dictionnaires
+**fr / en / hy / ru**. `LANGS` vit dans `sites.config.js` et `i18n.jsx` se
+contente de le ré-exporter (voir la section Lint) ; ajouter une langue touche
+donc trois fichiers : une entrée dans `LANGS` **et** une page dans `SITES`
+(`sites.config.js`), un bloc `STRINGS` complet (mêmes clés que `fr`, sinon
+repli silencieux sur le français) et son `LOCALES` (`i18n.jsx`), et un bloc
+`SEO` avec son `OG_LOCALE` (`src/seo.js`). **La langue vient de l'URL, plus de
+`localStorage`** : chaque langue a sa propre adresse, et `LanguageProvider` la
+lit une fois au montage via `langFromPath(SITE_ID, location.pathname)` — il n'y
+a plus de `setLang` à appeler, le sélecteur de `Nav.jsx` est un jeu de liens
+(`<a href={LANG_URL[l.code]}>`) qui navigue vers l'URL de chaque langue. Seul
+le **chrome de l'interface** est traduit ; le **contenu** (articles, posts)
+reste dans sa langue d'origine — un lecteur russe voit Armenpress **et**
+ArmRadio en russe, mais Courrier (et les autres sources francophones) en
+français, et Courrier reste le premier onglet (comme pour hy). Le français est
+la langue par défaut et doit porter tous ses accents (é, è, à, ê, ç…).
 
 **Le sélecteur de pays de l'agenda.** L'agenda est **un seul carrousel piloté
 par une liste déroulante** (`src/components/Agenda.jsx`) : la Suisse est l'option
@@ -231,7 +287,8 @@ du menu, et fidèle au « Le Pays reste en Français ». Résoudre depuis `locat
 avant le slug corrige au passage une donnée fausse (un événement en Angleterre
 listé sous le slug `greece`). Ce module reste **volontairement un `.js` à part,
 pas dans `i18n.jsx`** : y ajouter un export non-composant ferait passer le lint
-de 6 à 7 avertissements `react-refresh` (voir la section lint). Ne le reconsolidez
+de 5 à 6 avertissements `react-refresh` (voir la section lint) — même piège que
+`src/seo.js` et `src/site.js` ci-dessous. Ne le reconsolidez
 pas dans `i18n.jsx`. La table `PLACE_TO_COUNTRY` ne couvre que les lieux vus dans
 le flux ; un lieu non mappé forme sa propre clé, étiquetée depuis son texte brut.
 Le drapeau emoji dégrade en code-pays à deux lettres sous Windows (pas de drapeaux
@@ -272,8 +329,19 @@ dispatch manuel et sur push vers `main` :
   à re-scraper ni créer un snapshot en trop. Pour un snapshot frais à la demande,
   lancez le run manuel `workflow_dispatch`.
 
-Le site est déployé sur **Firebase Hosting** (projet `armenie-info`). Vite `base`
-vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-chemin.
+Les deux vitrines se déploient sur **Firebase Hosting**, dans le **même
+projet** `armenie-info`, mais sur deux **cibles** (`.firebaserc` → `targets`) :
+`ch` → le site Firebase `armenie-info` (armenieinfo.ch, `armenie-info.web.app`),
+`org` → `armenianews-org` (armenianews.org). Le déploiement boucle sur les deux
+cibles (`firebase deploy --only hosting:$target`) plutôt que de les combiner en
+une commande : Firebase rejette une publication dont le contenu est identique à
+la version en ligne (un no-op réussi, pas un échec) — cible par cible, ce
+verdict ne porte que sur celle-ci, alors qu'une sortie combinée ferait
+confondre l'échec réel de l'une avec le no-op bénin de l'autre. Vite `base`
+vaut `/` par défaut sur les deux (chaque domaine sert depuis sa propre racine) ;
+surchargez avec `BASE_PATH=/sous-chemin` pour un sous-chemin — surtout utile
+avec `build:one`, le build Vite unique de dépannage, puisque les deux vitrines
+de production servent toujours depuis la racine de leur domaine.
 
 ## À savoir
 
@@ -383,3 +451,45 @@ vaut `/` par défaut ; surchargez avec `BASE_PATH=/sous-chemin` pour un sous-che
   directement — pas de 503.)
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
+- **La langue vient de l'URL, plus de `localStorage`.** Chaque langue a son
+  adresse (`sites.config.js`) et l'URL fait autorité. Restaurer la langue
+  depuis `localStorage` ferait basculer au montage une page dont le HTML
+  prérendu et l'attribut `<html lang>` disent autre chose : flash de contenu et
+  attribut mensonger. Googlebot n'ayant pas de `localStorage`, l'écart serait
+  **invisible en test** et bien réel en production. La clé `theme`, elle, reste.
+- **Les `hreflang` doivent rester réciproques.** Les quatre `alternate` plus
+  `x-default` sont identiques sur les quatre pages, chacune se citant
+  elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc
+  par Google — silencieusement. C'est pourquoi un seul générateur les produit.
+- **Le bloc `headers` de `firebase.json` est dupliqué** entre les deux cibles,
+  CSP comprise. Ajouter un host de flux radio à `media-src` d'un seul côté
+  passe la préversion et casse la lecture en production sur l'autre domaine.
+  Modifier les deux, toujours.
+- **Le `lastmod` des sitemaps vient de `meta.json.generatedAt`**, jamais de
+  l'heure du build. Un push sur `main` rebâtit sans scraper ; un `lastmod` pris
+  au build annoncerait une fraîcheur qui n'a pas eu lieu. C'est la garde que
+  portait `scripts/scrape.mjs` avant le déplacement — elle tient toujours, elle
+  a juste changé de fichier (`scripts/lib/sitemap.mjs`).
+- **`hreflang` ne transfère aucune autorité entre les domaines.** Il fait servir
+  la bonne langue et empêche la déduplication ; ce n'est pas un signal de
+  classement. `armenianews.org` démarre avec l'autorité d'un domaine neuf : un
+  décollage lent est normal, pas un bug.
+- **Un changement de layout de `dist/` atteint des scripts qu'aucune tâche ne
+  touche.** `npm run preview` et `npm run screenshot` (`scripts/shoot.mjs`)
+  servaient et écrivaient dans `dist/` racine ; depuis le découpage en deux
+  vitrines, `dist/` n'a plus de `index.html` propre (seuls `dist/ch/` et
+  `dist/org/` en ont un) — les deux se seraient cassés en silence. Les deux
+  ciblent désormais `dist/ch`, la vitrine que sert réellement
+  `armenie-info.web.app` (ce qui garde justes les URL d'image documentées dans
+  le README). L'étape de capture d'écran est `continue-on-error: true` en CI :
+  sans ce correctif, elle aurait échoué **toutes les heures**, sans jamais
+  faire échouer le job ni alerter personne.
+- **Une troisième liste de langues existe, et elle n'est pas fausse.**
+  `ARMENPRESS_LANGS` (`scripts/sources/armenpress.mjs`) est distincte de
+  `LANGS` et `ALL_LANGS` (`sites.config.js`) : elle décrit les éditions
+  Armenpress à scraper, pas les langues d'interface — une distinction qui tient
+  aujourd'hui parce que les deux listes se recouvrent exactement. L'assertion
+  de `scripts/build-sites.mjs` ne couvre que `sites.config.js` et `LANGS`.
+  Ajouter une cinquième langue d'interface sans toucher `ARMENPRESS_LANGS`
+  laisserait Armenpress scraper une édition manquante en silence pour cette
+  langue — rien ne le rappellera.

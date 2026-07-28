@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "armenie-info"
+  },
+  "targets": {
+    "armenie-info": {
+      "hosting": {
+        "ch": ["armenie-info"],
+        "org": ["armenianews-org"]
+      }
+    }
   }
 }

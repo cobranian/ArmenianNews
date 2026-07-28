@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- **Langues** : exactement `fr`, `en`, `hy`, `ru` — les codes de `LANGS` dans `src/i18n.jsx`.
+- **Langues** : exactement `fr`, `en`, `hy`, `ru` — les codes de `LANGS`, qui vit dans `sites.config.js` depuis Task 1 (`src/i18n.jsx` le ré-exporte).
 - **Répartition figée** : `armenieinfo.ch/` → fr. `armenianews.org/` → en, `/hy/` → hy, `/ru/` → ru.
 - **Marques** : `Arménie Info` sur le .ch, `Armenia News` sur le .org.
 - **Ordre du sélecteur de langue** : figé par domaine, la langue du domaine en tête. `.ch` → FR EN ՀԱՅ РУ ; `.org` → EN FR ՀԱՅ РУ **sur ses trois pages**, seule la mise en évidence de la langue active se déplace.
@@ -20,11 +20,12 @@
 - **`x-default`** = `https://armenianews.org/`.
 - **`localStorage` ne stocke plus la langue.** La clé `lang` n'est ni lue ni écrite. La clé `theme` reste inchangée.
 - **`lastmod` des sitemaps** = `src/data/meta.json` → `generatedAt`. **Jamais** l'heure du build (voir Task 7).
-- **Lint** : `npm run lint` doit rester à **0 erreur et 6 avertissements**. Un septième signale une régression — voir `CLAUDE.md` pour les six connus.
+- **Lint** : `npm run lint` doit rester à **0 erreur** et ne jamais **dépasser** le décompte d'avertissements constaté (6 au départ ; il peut descendre à 5 après le déplacement de `LANGS` à Task 1 — une baisse est une amélioration, une hausse une régression). Les avertissements connus sont documentés dans `CLAUDE.md` ; ne pas les « corriger ».
+- **Node ne sait pas parser `.jsx`.** Aucun script de `scripts/` ni aucun test ne doit importer un fichier `.jsx` : ils tournent sous Node, qui lève `ERR_UNKNOWN_FILE_EXTENSION`. Ce qui doit être lu des deux côtés (navigateur et Node) vit dans un `.js` plat — `sites.config.js`, `src/seo.js`, `src/site.js`. N'ajoutez pas de transpileur pour contourner ça.
 - **Aucun fichier de `scripts/sources/`, `src/data/` ou `proxy/` ne bouge ni ne change.**
 - **`og:image`** reste `og-image.jpg` sur les deux sites (1200×630, sRGB, sans profil ICC — contrainte WhatsApp).
 - **GA4** : l'ID `G-EB3W5XXSMW` reste identique dans `index.html` et `public/ga-init.js`.
-- **Projet Firebase** : `armenie-info` pour les deux sites. Sites Hosting : `armenie-info` (cible `ch`) et `armenia-news` (cible `org`).
+- **Projet Firebase** : `armenie-info` pour les deux sites. Sites Hosting : `armenie-info` (cible `ch`) et `armenianews-org` (cible `org`) — `armenia-news` était réservé par un autre projet.
 
 ## Structure des fichiers
 
@@ -71,6 +72,7 @@
 **Interfaces:**
 - Produces:
   - `SITES` : `{ ch: Site, org: Site }` où `Site = { id, host, firebaseSite, brand, email, gscToken, pages }` et `pages: Array<{ lang, path }>`
+  - `LANGS` : `Array<{ code, label, name }>` — **déplacé depuis `src/i18n.jsx:5-10`** (voir ci-dessous)
   - `LANG_URL` : `Record<'fr'|'en'|'hy'|'ru', string>` — URL absolue avec slash final
   - `ALL_LANGS` : `string[]` — les codes dans l'ordre canonique `['fr','en','hy','ru']`
   - `X_DEFAULT` : `string`
@@ -81,6 +83,8 @@
 
 **Note d'intégration** : ce module ne doit **jamais** importer `src/i18n.jsx`. `i18n.jsx` l'importe, l'inverse créerait un cycle.
 
+**⚠ `LANGS` déménage ici.** Node lève `ERR_UNKNOWN_FILE_EXTENSION` sur un import de `.jsx` : ni les tests ni les scripts de build — qui tournent sous Node — ne peuvent lire `src/i18n.jsx`. La liste des langues doit donc vivre dans un `.js` plat. `src/i18n.jsx` la ré-exporte (`export { LANGS } from '../sites.config.js'`) pour que `Nav.jsx` et les autres consommateurs restent inchangés. Bénéfice au passage : il n'y a plus **deux** listes à tenir d'accord, donc l'invariant « une langue = une URL » devient structurel au lieu d'être vérifié après coup. **N'ajoutez pas de transpileur** (`tsx`, `ts-node`…) pour contourner ça — ce serait masquer la cause à deux endroits, dont le build.
+
 - [ ] **Step 1 : écrire le test qui échoue**
 
 Créer `test/sites-config.test.mjs` :
@@ -88,8 +92,11 @@ Créer `test/sites-config.test.mjs` :
 ```js
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { SITES, LANG_URL, ALL_LANGS, X_DEFAULT, primaryLang, langFromPath, siteOf } from '../sites.config.js'
-import { LANGS } from '../src/i18n.jsx'
+// Tout vient de sites.config.js — surtout PAS de src/i18n.jsx, que Node ne
+// sait pas parser (ERR_UNKNOWN_FILE_EXTENSION sur .jsx).
+import {
+  SITES, LANGS, LANG_URL, ALL_LANGS, X_DEFAULT, primaryLang, langFromPath, siteOf,
+} from '../sites.config.js'
 
 test('chaque langue vit à exactement une URL', () => {
   const langs = Object.values(SITES).flatMap((s) => s.pages.map((p) => p.lang))
@@ -97,7 +104,7 @@ test('chaque langue vit à exactement une URL', () => {
   assert.equal(new Set(langs).size, langs.length, 'une langue est servie à deux endroits')
 })
 
-test("l'invariant tient avec LANGS de i18n", () => {
+test('ALL_LANGS et LANGS décrivent exactement les mêmes langues', () => {
   assert.deepEqual([...ALL_LANGS].sort(), LANGS.map((l) => l.code).sort())
 })
 
@@ -122,7 +129,7 @@ test('primaryLang donne la langue de tête du domaine', () => {
 
 test('langFromPath : le chemin fait autorité, sinon la langue du site', () => {
   assert.equal(langFromPath('org', '/hy/'), 'hy')
-  assert.equal(langFromPath('org', '/hy'), 'hy')     // cleanUrls, sans slash final
+  assert.equal(langFromPath('org', '/hy'), 'hy')     // sans slash final (Firebase 301 vers /hy/)
   assert.equal(langFromPath('org', '/ru/'), 'ru')
   assert.equal(langFromPath('org', '/'), 'en')
   assert.equal(langFromPath('ch', '/'), 'fr')
@@ -148,8 +155,15 @@ test('siteOf route chaque langue vers son domaine', () => {
 Dans `package.json`, ajouter à `"scripts"` :
 
 ```json
-"test": "node --test test/"
+"test": "node --test test/*.mjs"
 ```
+
+> **Le joker n'est pas décoratif.** Depuis Node 22, l'argument de `--test` est un
+> **motif glob**, pas un dossier à parcourir : `node --test test/` fait
+> correspondre le dossier lui-même, que Node tente ensuite de charger comme
+> module — `MODULE_NOT_FOUND` (vérifié sur Node v24.15.0). Les deux shells sont
+> couverts : sous Ubuntu (la CI) `sh` expanse le motif avant Node ; sous Windows
+> `cmd.exe` ne l'expanse pas et Node le résout lui-même.
 
 Dans `eslint.config.js`, ligne 51, étendre la liste du monde Node :
 
@@ -172,6 +186,19 @@ Expected: FAIL — `Cannot find module '.../sites.config.js'`
 // vite.config.js). Il ne doit donc utiliser aucune API propre à l'un ou à
 // l'autre — et surtout jamais importer src/i18n.jsx, qui l'importe déjà :
 // le cycle casserait le bundle.
+
+// Langues de l'interface. Vit ici et non dans i18n.jsx parce que Node doit
+// pouvoir la lire (le build et les tests tournent hors navigateur, et Node
+// lève ERR_UNKNOWN_FILE_EXTENSION sur un .jsx). i18n.jsx la ré-exporte, donc
+// les composants continuent de l'importer depuis là.
+// Le contenu (articles, posts) reste dans sa langue d'origine ; seul le chrome
+// de l'interface est traduit.
+export const LANGS = [
+  { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
+  { code: 'ru', label: 'РУ', name: 'Русский' },
+]
 
 export const SITES = {
   ch: {
@@ -200,9 +227,9 @@ export const SITES = {
   },
 }
 
-// Ordre canonique des langues. Doit correspondre aux codes de LANGS
-// (src/i18n.jsx) — l'invariant est vérifié par test/sites-config.test.mjs et
-// par une assertion au build (scripts/build-sites.mjs).
+// Ordre canonique des langues. Doit correspondre aux codes de LANGS, juste
+// au-dessus — vérifié par test/sites-config.test.mjs et par une assertion au
+// build (scripts/build-sites.mjs).
 export const ALL_LANGS = ['fr', 'en', 'hy', 'ru']
 
 // lang -> URL absolue, slash final compris. Une seule table, consommée par le
@@ -229,7 +256,7 @@ export function siteOf(lang) {
 
 // Le chemin fait autorité ; à défaut, la langue de tête du domaine.
 // Normalise le slash final pour que /hy et /hy/ se comportent pareil
-// (Firebase sert les deux via cleanUrls) — et pour que /hydravion ne
+// (Firebase redirige /hy vers /hy/ en 301) — et pour que /hydravion ne
 // matche pas /hy.
 export function langFromPath(siteId, pathname) {
   const site = SITES[siteId]
@@ -239,20 +266,35 @@ export function langFromPath(siteId, pathname) {
 }
 ```
 
-- [ ] **Step 5 : lancer le test pour le voir passer**
+- [ ] **Step 5 : ré-exporter `LANGS` depuis `src/i18n.jsx`**
+
+Remplacer la déclaration des lignes 3-10 par une ré-exportation, pour que
+`Nav.jsx` et les autres consommateurs restent inchangés :
+
+```js
+// La liste des langues vit dans sites.config.js : Node doit pouvoir la lire
+// (le build et les tests tournent hors navigateur, et il ne sait pas parser
+// .jsx). Ré-exportée ici pour que les composants l'importent toujours d'ici.
+export { LANGS } from '../sites.config.js'
+```
+
+- [ ] **Step 6 : lancer le test pour le voir passer**
 
 Run: `npm test`
-Expected: PASS — 7 tests, 0 échec
+Expected: PASS — 8 tests, 0 échec. **Sous `node --test`, sans transpileur.**
 
-- [ ] **Step 6 : vérifier que le lint n'a pas bougé**
+- [ ] **Step 7 : vérifier le lint**
 
 Run: `npm run lint`
-Expected: 0 erreur, **6 avertissements** (les six connus)
+Expected: 0 erreur. Le décompte d'avertissements est de 6 avant ce changement ;
+il peut tomber à **5** si `react-refresh/only-export-components` ne compte pas
+les ré-exportations. Une baisse est une amélioration. **Noter le chiffre
+constaté** — c'est le nouveau seuil de référence pour les tâches suivantes.
 
-- [ ] **Step 7 : commit**
+- [ ] **Step 8 : commit**
 
 ```bash
-git add sites.config.js test/sites-config.test.mjs eslint.config.js package.json
+git add sites.config.js src/i18n.jsx test/sites-config.test.mjs eslint.config.js package.json
 git commit -m "config: sites.config.js, source de vérité des deux vitrines"
 ```
 
@@ -326,7 +368,7 @@ Expected: `fr,en,hy,ru`
 - [ ] **Step 3 : vérifier le lint**
 
 Run: `npm run lint`
-Expected: 0 erreur, 6 avertissements
+Expected: 0 erreur, 5 avertissements (référence depuis Task 1)
 
 - [ ] **Step 4 : commit**
 
@@ -631,9 +673,25 @@ git commit -m "seo: générateur de head par site et par langue, hreflang récip
 
 - [ ] **Step 1 : remplacer les métas de `index.html` par le marqueur**
 
-Dans `index.html`, **supprimer** les lignes 6 à 12 (description, keywords, canonical, commentaire GSC, balise GSC, title — **garder** `theme-color` ligne 8), puis supprimer les lignes 24 à 39 (bloc Open Graph / Twitter) et 41 à 75 (commentaire + bloc JSON-LD).
+**Ne procédez pas par numéros de ligne** : les blocs à retirer sont à trois endroits, et supprimer le premier décale tous les suivants. Repérez chaque bloc par son **contenu**.
 
-Le `<head>` doit commencer ainsi :
+À **retirer** de `<head>` — quatre blocs, dans n'importe quel ordre :
+
+| Bloc | Repère |
+|---|---|
+| description + keywords | `<meta name="description"` et `<meta name="keywords"` |
+| canonical + vérification GSC | `<link rel="canonical"`, son commentaire `<!-- Google Search Console…`, et `<meta name="google-site-verification"` |
+| `<title>` | `<title>Arménie Info · Actualités arméniennes de Suisse</title>` |
+| Open Graph / Twitter / JSON-LD | du commentaire `<!-- Open Graph / social sharing -->` jusqu'à la fin du `</script>` du bloc `application/ld+json`, commentaire `<!-- Structured data…` compris |
+
+À **conserver** intact, bien qu'entouré de lignes supprimées :
+
+- `<meta charset="UTF-8" />`
+- `<meta name="viewport" …/>`
+- **`<meta name="theme-color" content="#100f0d" />`** — il est situé *entre* `keywords` et `canonical`, donc au milieu de la zone retirée. C'est le piège de cette étape : il ne fait pas partie des métadonnées par site (il est identique sur les quatre pages) et doit rester en dur.
+- tout le bloc Google Analytics avec son commentaire, les favicons, les polices, et tout le `<body>`
+
+Le `<head>` doit alors commencer exactement ainsi :
 
 ```html
 <!doctype html>
@@ -655,6 +713,22 @@ Le `<head>` doit commencer ainsi :
 ```
 
 Tout le reste du fichier (scripts GA, favicons, polices, `<body>`) est **inchangé**.
+
+Contrôle avant de passer à l'étape suivante :
+
+```bash
+node -e "
+const h=require('node:fs').readFileSync('index.html','utf8');
+const doit=['<!--SITE_META-->','theme-color','G-EB3W5XXSMW','favicon.svg','theme-init.js','<div id=\"root\"></div>'];
+const parti=['rel=\"canonical\"','og:site_name','google-site-verification','application/ld+json','name=\"keywords\"','<title>'];
+let ko=0;
+for(const s of doit) if(!h.includes(s)){console.error('MANQUE (doit rester): '+s);ko++}
+for(const s of parti) if(h.includes(s)){console.error('RESTE (doit partir): '+s);ko++}
+console.log(ko?ko+' problème(s)':'✓ index.html conforme');
+process.exit(ko?1:0)"
+```
+
+Expected: `✓ index.html conforme`
 
 - [ ] **Step 2 : ajouter le plugin dans `vite.config.js`**
 
@@ -720,7 +794,7 @@ Expected: la page s'affiche en français, `<head>` contient le canonical `armeni
 - [ ] **Step 5 : lint et tests**
 
 Run: `npm run lint && npm test`
-Expected: 0 erreur / 6 avertissements, puis 16 tests réussis
+Expected: 0 erreur / 5 avertissements, puis 16 tests réussis
 
 - [ ] **Step 6 : commit**
 
@@ -735,7 +809,7 @@ git commit -m "seo: head généré par site et par langue au lieu de métas en d
 
 **Files:**
 - Create: `src/site.js`
-- Modify: `src/i18n.jsx:1, 567-606`
+- Modify: `src/i18n.jsx` — repérer `export function LanguageProvider` (≈ ligne 566 après Task 1) et `useI18n` (≈ 599). Ne pas se fier aux numéros : Task 1 a déjà décalé le fichier.
 
 **Interfaces:**
 - Consumes: `langFromPath`, `primaryLang` (Task 1)
@@ -790,7 +864,16 @@ import { langFromPath } from '../sites.config.js'
 import { SITE_ID } from './site.js'
 ```
 
-- [ ] **Step 3 : remplacer `LanguageProvider` (lignes 569-600)**
+> **Note (défaut de plan corrigé à Task 1).** `LANGS` ne vit plus dans ce
+> fichier : Task 1 l'a déplacé dans `sites.config.js` parce que Node ne sait pas
+> parser `.jsx` (`ERR_UNKNOWN_FILE_EXTENSION`) et que le build comme les tests
+> tournent hors navigateur. `i18n.jsx` porte désormais
+> `export { LANGS } from '../sites.config.js'` — **laisser cette ligne en
+> place**, les consommateurs (`Nav.jsx`) l'importent toujours d'ici. Les numéros
+> de ligne ci-dessous ont donc glissé de quelques unités ; repérer
+> `export function LanguageProvider` plutôt que de compter les lignes.
+
+- [ ] **Step 3 : remplacer `LanguageProvider`**
 
 ```jsx
 export function LanguageProvider({ children }) {
@@ -851,7 +934,13 @@ Expected: aucune sortie
 - [ ] **Step 6 : lint**
 
 Run: `npm run lint`
-Expected: **1 erreur attendue** — `Nav.jsx` référence `setLang`, qui n'existe plus. C'est le signal que Task 6 est nécessaire ; ne pas corriger `i18n.jsx` pour la faire taire. Le nombre d'**avertissements doit rester à 6** : s'il est passé à 7, c'est qu'un export non-composant a été ajouté à `i18n.jsx` au lieu de `src/site.js`.
+Expected: **0 erreur, 5 avertissements** — exactement comme avant.
+
+> **Ne vous attendez pas à une erreur de lint, et surtout ne cherchez pas à en provoquer une.** `Nav.jsx` déstructure et appelle `setLang`, qui n'existe plus dans le contexte : l'application est donc **cassée à l'exécution** à ce stade — cliquer sur une langue lève `setLang is not a function`. ESLint ne le voit pas : il n'y a pas de vérification de types dans ce dépôt, et déstructurer une propriété absente est syntaxiquement valide.
+>
+> C'est une propriété du filet de sécurité, pas un oubli : **aucun test ne rend de composant**, donc rien d'automatisé ne couvre cet écart. La branche est sciemment cassée entre Task 5 et Task 6, et seule Task 6 la répare. N'y touchez pas ici : garder `setLang` en vie pour « faire propre » annulerait tout l'intérêt de la tâche.
+>
+> Si le décompte d'avertissements est passé à **6**, c'est très probablement qu'un export non-composant a atterri dans `i18n.jsx` au lieu de `src/site.js`.
 
 - [ ] **Step 7 : commit**
 
@@ -870,6 +959,65 @@ git commit -m "i18n: la langue vient de l'URL, plus de localStorage"
 **Interfaces:**
 - Consumes: `orderedLangs` depuis `src/site.js`, `useI18n` et `LANGS` depuis `src/i18n.jsx` (Task 5) ; `LANG_URL` (Task 1)
 - Produces: quatre `<a href>` en dur dans le HTML de chaque page — le maillage réciproque entre les deux domaines.
+
+- [ ] **Step 0 : rendre `src/site.js` lisible hors Vite, et le couvrir par un test**
+
+Relevé à la revue de Task 5. Deux choses, liées.
+
+**a) Le repli documenté ne marche pas hors Vite.** `src/site.js` porte :
+
+```js
+export const SITE_ID = import.meta.env.VITE_SITE_ID ?? 'ch'
+```
+
+`import.meta.env` n'existe **que** dans un bundle Vite. Sous Node, `import.meta.env` vaut `undefined`, donc lire `.VITE_SITE_ID` lève `TypeError: Cannot read properties of undefined` — vérifié. Le commentaire promet un repli sur `'ch'` qui, en réalité, n'a lieu que parce que Vite définit toujours cet objet. Un chaînage optionnel rend la promesse vraie :
+
+```js
+export const SITE_ID = import.meta.env?.VITE_SITE_ID ?? 'ch'
+```
+
+Un seul caractère, et le module devient importable par n'importe quel script Node — ce qui débloque le point (b) et évite un plantage cryptique le jour où un utilitaire de build voudra le lire.
+
+**b) `orderedLangs` n'a aucun test**, alors que c'est une fonction pure sans DOM dont la justesse repose sur une propriété subtile : son comparateur renvoie `0` pour toutes les paires ne concernant pas la langue de tête, donc l'ordre des trois autres n'est préservé que parce que `Array.prototype.sort` est **stable** (garanti depuis ES2019). C'est exactement le genre d'invariant qu'un test fige et qu'une relecture rate.
+
+Créer `test/site.test.mjs` :
+
+```js
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import { SITE_ID, orderedLangs } from '../src/site.js'
+import { LANGS } from '../sites.config.js'
+
+test("SITE_ID retombe sur 'ch' hors Vite", () => {
+  // import.meta.env n'existe pas sous Node : le chaînage optionnel est ce qui
+  // rend vrai le repli que le commentaire de src/site.js promet.
+  assert.equal(SITE_ID, 'ch')
+})
+
+test('orderedLangs met la langue du domaine en tête', () => {
+  assert.equal(orderedLangs(LANGS)[0].code, 'fr') // SITE_ID vaut 'ch' ici
+})
+
+test("orderedLangs préserve l'ordre relatif des autres langues", () => {
+  // Le comparateur renvoie 0 pour toute paire sans la langue de tête : les
+  // trois autres ne gardent leur ordre que grâce à la stabilité de sort.
+  assert.deepEqual(
+    orderedLangs(LANGS).map((l) => l.code),
+    ['fr', 'en', 'hy', 'ru'],
+  )
+})
+
+test("orderedLangs ne modifie pas le tableau reçu", () => {
+  const avant = LANGS.map((l) => l.code)
+  orderedLangs(LANGS)
+  assert.deepEqual(LANGS.map((l) => l.code), avant, 'LANGS a été trié sur place')
+})
+```
+
+Le dernier test n'est pas décoratif : `orderedLangs` copie avec `[...langs]` avant de trier. Sans cette copie, `sort` muterait `LANGS` — la liste partagée par toute l'application.
+
+Run: `npm test`
+Expected: **21 tests** (17 existants + 4 ici), 0 échec.
 
 - [ ] **Step 1 : mettre à jour les imports (lignes 1-6)**
 
@@ -899,7 +1047,7 @@ export function Nav() {
                 key={l.code}
                 href={LANG_URL[l.code]}
                 hrefLang={l.code}
-                aria-current={lang === l.code ? 'true' : undefined}
+                aria-current={lang === l.code ? 'page' : undefined}
                 title={l.name}
               >
                 {l.label}
@@ -910,32 +1058,44 @@ export function Nav() {
 
 - [ ] **Step 3 : adapter le style du sélecteur**
 
-Dans `src/styles/global.css`, la règle qui cible `.lang button` doit aussi cibler `.lang a`. Localiser :
+Il y a **quatre** règles `.lang button` dans `src/styles/global.css`, pas deux. Vérifiez d'abord :
 
 Run: `grep -n "\.lang" src/styles/global.css`
 
-Pour chaque sélecteur `.lang button` trouvé, le remplacer par `.lang button, .lang a`. Ajouter ensuite, à la suite du bloc `.lang` :
+Attendu — quatre occurrences de `.lang button`, aux alentours de ces lignes :
+
+| Ligne ≈ | Règle | Devient |
+|---|---|---|
+| 352 | `.lang button` (styles de base) | `.lang button, .lang a` |
+| 364 | `.lang button:hover` | `.lang button:hover, .lang a:hover` |
+| 367 | `.lang button[aria-pressed='true']` | `.lang a[aria-current='page']` — **remplacement, pas ajout** (voir ci-dessous) |
+| 2110 | `.lang button` **dans une media query** | `.lang button, .lang a` |
+
+**La quatrième est celle qu'on oublie.** Elle vit dans une media query mobile, à plus de 1700 lignes des autres, et porte un commentaire de mesure : à 360px de large, quatre pastilles plus la bascule de thème et le hamburger débordent (`scrollWidth` mesuré à 366px), d'où un `padding` réduit à 12px. **Ne modifiez pas ce commentaire** — il reste exact, il y a toujours quatre pastilles. Manquer cette règle donnerait des liens à `padding: 6px 12px` sur mobile : des cibles tactiles sous le seuil, sans que rien ne le signale sur un écran de développement.
+
+**`aria-pressed` → `aria-current='page'`.** L'ancien état venait de `<button aria-pressed>`, qui décrit une bascule. Ce sont désormais des liens vers la page courante : le jeton juste est `aria-current="page"`, que les lecteurs d'écran annoncent « page actuelle ». Remplacez le sélecteur au même endroit, ne laissez pas les deux coexister — une règle `aria-pressed` orpheline ne s'appliquerait plus jamais et ferait croire à un état mort.
+
+Ajouter ensuite, à la suite du bloc `.lang` :
 
 ```css
-/* Le sélecteur de langue est fait de liens depuis que chaque langue a son URL :
-   on neutralise la décoration de lien pour qu'ils gardent l'allure de boutons. */
+/* Le sélecteur de langue est fait de liens depuis que chaque langue a son URL.
+   On neutralise la décoration de lien pour qu'ils gardent l'allure des pastilles
+   qu'ils étaient : .lang a son overflow caché et son border-radius, les enfants
+   doivent donc remplir la hauteur pour que le fond de l'état actif touche les
+   bords. */
 .lang a {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
 }
-.lang a[aria-current='true'] {
-  /* Reprend l'état que `aria-pressed` portait du temps des boutons. */
-  font-weight: 700;
-}
 ```
 
-> Si `grep` montre que la règle existante utilise déjà `aria-pressed` pour la mise en évidence, remplacer ce sélecteur par `[aria-current='true']` au même endroit plutôt que d'ajouter une règle concurrente.
+- [ ] **Step 4 : lint et tests**
 
-- [ ] **Step 4 : lint**
+Run: `npm run lint && npm test`
+Expected: 0 erreur, **5 avertissements** ; **21 tests** réussis.
 
-Run: `npm run lint`
-Expected: 0 erreur, **6 avertissements** — l'erreur de Task 5 est résolue
+> **Le lint ne dira rien de ce que cette tâche répare.** Avant elle, `Nav.jsx` appelait un `setLang` inexistant et l'application levait une exception au clic — pourtant le lint était déjà à 0 erreur (ESLint ne fait pas de vérification de types, et aucun test ne rend de composant). Le lint sera donc vert des deux côtés du correctif. La vérification réelle, c'est l'étape suivante, en dev.
 
 - [ ] **Step 5 : vérifier en dev**
 
@@ -1088,11 +1248,27 @@ Expected: PASS — 19 tests, 0 échec
 
 - [ ] **Step 5 : retirer `writeSitemap` de `scripts/scrape.mjs`**
 
-Supprimer les lignes 48 à 66 (la constante `PUBLIC_DIR`, le commentaire et la fonction `writeSitemap`), puis :
+Deux endroits, pas un. Repérez-les :
 
 Run: `grep -n "writeSitemap\|PUBLIC_DIR" scripts/scrape.mjs`
 
-Supprimer aussi la ligne d'appel `await writeSitemap(...)` que ce `grep` révèle. Vérifier ensuite que `join` et `writeFile` restent utilisés ailleurs dans le fichier (ils le sont, par `writeJson`) ; ne pas toucher aux imports.
+**a) La définition** (≈ lignes 48-66) — retirer d'un bloc : la constante `PUBLIC_DIR`, le commentaire de trois lignes qui la suit, et toute la fonction `async function writeSitemap(generatedAt) { … }`.
+
+**b) L'appel** (≈ ligne 255) — et c'est ici qu'il faut être précis. Il est **collé** à l'écriture de `meta.json` :
+
+```js
+  await writeJson('meta.json', { generatedAt })
+  await writeSitemap(generatedAt)          // ← SEULE cette ligne part
+```
+
+⚠ **Ne supprimez pas la ligne `writeJson('meta.json', …)`.** C'est elle qui produit `src/data/meta.json`, dont Task 8 lit `generatedAt` pour dater les deux sitemaps. La supprimer ferait générer des sitemaps sans `lastmod`, sans qu'aucun test n'échoue — le scrape passerait, le build passerait, et Google recevrait des sitemaps muets sur la fraîcheur.
+
+**c) Ne touchez pas aux imports.** `writeFile` et `join` restent utilisés par `writeJson` et `readJson`. Après suppression, vérifiez :
+
+```bash
+grep -c "writeFile\|join(" scripts/scrape.mjs   # doit rester > 0
+npm run lint                                     # 0 erreur : aucun import orphelin
+```
 
 Ajouter à la place, là où se trouvait la fonction :
 
@@ -1113,10 +1289,25 @@ git rm public/sitemap.xml
 
 - [ ] **Step 7 : vérifier que le scrape tourne encore**
 
-Run: `npm run scrape`
-Expected: le script se termine sans erreur, `src/data/meta.json` est réécrit, **aucune** ligne `→ wrote public/sitemap.xml`, et `public/sitemap.xml` n'existe pas.
+**N'exécutez pas `npm run scrape` pour cette vérification.** Il prend 3 à 4 minutes, sollicite une dizaine de sources réelles (dont plusieurs qui limitent le débit ou bloquent les requêtes répétées) et réécrit `src/data/*.json` — ce qui salirait le diff de cette tâche avec un snapshot de données sans rapport.
 
-> Ce scrape prend 3 à 4 minutes et sollicite les sources réelles. Si le réseau est indisponible, vérifier au minimum : `node -e "import('./scripts/scrape.mjs')"` ne doit pas lever d'erreur de syntaxe ou d'import.
+Vérifiez plutôt que le module se charge toujours, ce qui suffit à détecter une erreur de syntaxe, un import orphelin ou une référence morte :
+
+```bash
+node --check scripts/scrape.mjs && echo "✓ syntaxe valide"
+node -e "
+const s = require('node:fs').readFileSync('scripts/scrape.mjs','utf8');
+let ko = 0;
+if (s.includes('writeSitemap'))  { console.error('✗ writeSitemap subsiste'); ko++ }
+if (s.includes('PUBLIC_DIR'))    { console.error('✗ PUBLIC_DIR subsiste'); ko++ }
+if (!s.includes(\"writeJson('meta.json'\")) { console.error('✗ meta.json N EST PLUS ÉCRIT — Task 8 en dépend'); ko++ }
+console.log(ko ? ko+' problème(s)' : '✓ scrape.mjs nettoyé, meta.json préservé');
+process.exit(ko?1:0)"
+```
+
+Expected: `✓ syntaxe valide` puis `✓ scrape.mjs nettoyé, meta.json préservé`
+
+> Le prochain scrape horaire de la CI validera le chemin complet en conditions réelles. Si vous voulez malgré tout un essai local, faites-le **après** le commit de cette tâche et n'incluez pas les `src/data/*.json` modifiés.
 
 - [ ] **Step 8 : lint et commit**
 
@@ -1159,10 +1350,12 @@ import { spawnSync } from 'node:child_process'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS } from '../sites.config.js'
+// LANGS vient de sites.config.js, PAS de src/i18n.jsx : Node ne sait pas
+// parser .jsx (ERR_UNKNOWN_FILE_EXTENSION), et ce script tourne sous Node.
+// C'est la raison pour laquelle la liste a été déplacée à Task 1.
+import { SITES, ALL_LANGS, LANGS } from '../sites.config.js'
 import { replaceMeta } from './lib/site-meta.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
-import { LANGS } from '../src/i18n.jsx'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -1346,19 +1539,34 @@ for (const site of Object.values(SITES)) {
       continue
     }
 
+    // Compter, pas seulement constater la présence. Un `includes` ne distingue
+    // pas « présent une fois » de « présent trois fois » — or le mode d'échec
+    // qui compte ici est justement la DUPLICATION : si replaceMeta cessait
+    // d'être idempotent, chaque page accumulerait plusieurs blocs <head>, donc
+    // plusieurs canonical et plusieurs jeux de hreflang. C'est pire que rien :
+    // Google n'arbitre pas, il écarte.
+    const count = (re) => (html.match(re) || []).length
+
     const checks = [
       [`<html lang="${page.lang}">`, html.includes(`<html lang="${page.lang}"`)],
+      ['un seul <html>', count(/<html\s/g) === 1],
       [
         `canonical ${LANG_URL[page.lang]}`,
         html.includes(`rel="canonical" href="${LANG_URL[page.lang]}" />`),
       ],
-      ['un seul canonical', (html.match(/rel="canonical"/g) || []).length === 1],
+      ['un seul canonical', count(/rel="canonical"/g) === 1],
       [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
+      ['un seul og:site_name', count(/og:site_name"/g) === 1],
+      ['un seul <title>', count(/<title>/g) === 1],
       [
         'les 4 hreflang, réciproques',
         ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${LANG_URL[l]}"`)),
       ],
+      ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
       ['x-default', html.includes('hreflang="x-default"')],
+      ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
+      ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
+      ['GA4 intact', html.includes('G-EB3W5XXSMW')],
     ]
 
     const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
@@ -1562,12 +1770,25 @@ git commit -m "prerender: cuit les quatre pages, avec garde sur la langue rendue
 - Consumes: `dist/ch/` et `dist/org/` (Task 8)
 - Produces: deux cibles Hosting déployables par `firebase deploy --only hosting`.
 
-- [ ] **Step 1 : créer le site Hosting du .org**
+- [ ] **Step 1 : corriger le nom du site dans `sites.config.js`**
 
-Run: `npx firebase-tools@15.23.0 hosting:sites:create armenia-news --project armenie-info`
-Expected: création confirmée, URL de repli `https://armenia-news.web.app`
+**Le site est déjà créé** — inutile de relancer la commande. `armenia-news` s'est révélé **réservé par un autre projet Firebase** (erreur 400 : *« `armenia-news` is reserved by another project »*), donc le site porte le nom de repli prévu au plan :
 
-> Si le nom est déjà pris à l'échelle mondiale, la commande échoue. Choisir alors une variante, **et la reporter dans `sites.config.js` → `org.firebaseSite`** ainsi qu'à l'étape 2 : les deux doivent rester d'accord.
+| | |
+|---|---|
+| Site Hosting | **`armenianews-org`** |
+| URL de repli | `https://armenianews-org.web.app` |
+| Projet | `armenie-info` (inchangé) |
+
+`sites.config.js:22` porte encore `firebaseSite: 'armenia-news'`. Corriger :
+
+```js
+    firebaseSite: 'armenianews-org',
+```
+
+> Cette clé n'est consommée par aucun code — elle documente la cible. Fausse, elle n'empêcherait rien de fonctionner, mais enverrait la prochaine personne chercher un site qui n'existe pas. C'est **la seule modification autorisée de `sites.config.js`** dans cette tâche.
+>
+> Le nom du site fixe seulement le sous-domaine `*.web.app` de repli ; une fois `armenianews.org` attaché comme domaine personnalisé, les lecteurs ne le voient plus.
 
 - [ ] **Step 2 : déclarer les cibles dans `.firebaserc`**
 
@@ -1580,7 +1801,7 @@ Expected: création confirmée, URL de repli `https://armenia-news.web.app`
     "armenie-info": {
       "hosting": {
         "ch": ["armenie-info"],
-        "org": ["armenia-news"]
+        "org": ["armenianews-org"]
       }
     }
   }
@@ -1589,7 +1810,9 @@ Expected: création confirmée, URL de repli `https://armenia-news.web.app`
 
 - [ ] **Step 3 : passer `firebase.json` à deux cibles**
 
-`"hosting"` devient un tableau. Les deux entrées sont **identiques sauf** `target`, `public` et `cleanUrls`.
+`"hosting"` devient un tableau. Les deux entrées sont **identiques sauf** `target` et `public`.
+
+> **Pas de `cleanUrls`.** Une version antérieure de ce plan posait `cleanUrls: true` sur la cible `org`, croyant que c'était nécessaire pour que `/hy` (sans slash) serve l'arménien. L'expérience a montré l'inverse : **sans** `cleanUrls`, Firebase renvoie `301 Moved Permanently` vers `/hy/` — une seule URL canonique ; **avec**, `/hy` et `/hy/` répondent toutes deux `200`, soit deux URL vivantes pour une même page. Cela contredisait au niveau HTTP l'invariant « une langue = une URL » que le build asserte, que les `hreflang` déclarent et que le `canonical` confirme. Le 301 consolide explicitement et économise un passage de crawl.
 
 **Ne pas paraphraser la CSP** : sa liste `media-src` porte les hosts des flux radio, et un host omis coupe la lecture en production sans que la préversion le montre. Le bloc ci-dessous reprend l'actuel mot pour mot — écrire le fichier ainsi :
 
@@ -1627,7 +1850,6 @@ Expected: création confirmée, URL de repli `https://armenia-news.web.app`
     {
       "target": "org",
       "public": "dist/org",
-      "cleanUrls": true,
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [{ "source": "**", "destination": "/index.html" }],
       "headers": [
@@ -1668,6 +1890,16 @@ Expected: `✓ CSP identiques`
 
 C'est le point que la spec demande de **vérifier plutôt que de supposer** : Firebase sert le contenu statique avant d'appliquer les rewrites, donc `dist/org/hy/index.html` devrait l'emporter sur `"source": "**"`.
 
+> **Preuve préalable qu'il faut vraiment le vérifier.** Le même montage a été sondé sur le serveur de prévisualisation de Vite, avec une page `/hy/` dérivée dans un `dist` de test :
+>
+> | Requête | Réponse |
+> |---|---|
+> | `/` | 200, `lang=fr` ✓ |
+> | `/hy/` | 200, `lang=hy` ✓ |
+> | **`/hy`** (sans slash final) | **200, `lang=fr`** ✗ — avalé par le repli SPA |
+>
+> Ce comportement est propre au serveur de prévisualisation de **Vite**, qui ne connaît pas la configuration Firebase — ce n'est pas ce que fait Firebase. Mesuré à l'émulateur, sans `cleanUrls` : `/hy` → **301** `Location: /hy/`, puis `/hy/` → **200** `lang=hy`. Une seule URL canonique par langue, exactement l'invariant du projet. L'étape ci-dessous teste **les deux formes** et exige la chaîne complète de statuts : utilisez `curl -D -` **sans** `-L`, sinon curl suit le 301 en silence et vous ne verrez que le 200 final — c'est précisément ce qui avait masqué le mécanisme au premier sondage.
+
 Run: `npx firebase-tools@15.23.0 emulators:start --only hosting --project armenie-info`
 
 Puis, dans un autre terminal — l'émulateur sert la **première** cible sur le port 5000 et la seconde sur 5001 (l'ordre est affiché au démarrage ; adapter les ports si besoin) :
@@ -1701,7 +1933,7 @@ http://localhost:5001/ru/        <html lang="ru"
 
 - [ ] **Step 5 : ajouter le domaine personnalisé**
 
-Dans la console Firebase → Hosting → site `armenia-news` → « Ajouter un domaine personnalisé » → `armenianews.org`. Poser chez le registrar les enregistrements A affichés.
+Dans la console Firebase → Hosting → site `armenianews-org` → « Ajouter un domaine personnalisé » → `armenianews.org`. Poser chez le registrar les enregistrements A affichés.
 
 > Le certificat et la propagation prennent de quelques minutes à 24 h. Le déploiement peut se faire avant : `armenia-news.web.app` sert entre-temps.
 
@@ -1745,7 +1977,28 @@ Juste après `- run: npm ci`, insérer :
         run: npm test
 ```
 
-- [ ] **Step 3 : adapter l'étape de déploiement**
+- [ ] **Step 3 : faire tourner `npm run check` avant le déploiement**
+
+Juste après l'étape `Build` (`run: npm run build`), et **avant** l'étape de déploiement, insérer :
+
+```yaml
+      # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
+      # jamais en automatique et ne protège rien. Volontairement SANS
+      # continue-on-error : si les quatre pages ou les deux sitemaps sont
+      # incorrects, il vaut mieux ne rien publier que publier un site cassé.
+      # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
+      # donc un faux positif signalerait une vraie divergence de configuration.
+      - name: Contrôler les pages et les fichiers SEO produits
+        run: npm run check
+```
+
+> **Pourquoi c'est nécessaire et pas décoratif.** `check-build.mjs` vérifie, par vitrine : les quatre `index.html` (attribut `lang`, canonical auto-référent, `hreflang` réciproques, marque, comptages stricts contre la duplication) **et** les deux `sitemap.xml`/`robots.txt` (présence, nombre d'`<url>`, de `<lastmod>` et de `xhtml:link`, host dans les `<loc>`).
+>
+> C'est exactement le filet qui manquait quand le build pouvait expédier sans sitemap en n'émettant qu'un `console.warn`. Le laisser hors de la CI reviendrait à ne l'avoir jamais écrit.
+
+> **À distinguer des deux étapes voisines**, qui sont `continue-on-error: true` à dessein : la capture d'écran et le prérendu sont des améliorations, leur échec dégrade sans casser. Celle-ci est une vérification de correction — son échec doit arrêter le déploiement.
+
+- [ ] **Step 4 : adapter l'étape de déploiement**
 
 Dans l'étape « Deploy to Firebase Hosting », remplacer la commande `deploy` par :
 
@@ -1767,12 +2020,34 @@ Et élargir le garde-fou du no-op — avec deux cibles, Firebase peut rapporter 
           fi
 ```
 
-- [ ] **Step 4 : vérifier la syntaxe du workflow**
+- [ ] **Step 5 : vérifier la syntaxe du workflow**
 
-Run: `npx --yes yaml-lint .github/workflows/hourly.yml 2>/dev/null || node -e "const y=require('node:fs').readFileSync('.github/workflows/hourly.yml','utf8'); if (y.includes('hosting:ch,hosting:org') && !y.includes('public/sitemap.xml')) console.log('✓ workflow à jour'); else { console.error('✗ workflow incomplet'); process.exit(1) }"`
-Expected: `✓ workflow à jour`
+```bash
+npx --yes yaml-lint .github/workflows/hourly.yml
+node -e "
+const y = require('node:fs').readFileSync('.github/workflows/hourly.yml','utf8');
+// Ne cherchez PAS l'absence de la chaîne 'public/sitemap.xml' dans tout le
+// fichier : le commentaire ajouté à l'étape 1 la mentionne en prose, pour
+// expliquer justement pourquoi elle n'est plus versionnée. Un tel contrôle
+// trouverait son propre avertissement. On teste la LIGNE git add, pas le fichier.
+const gitAdd = y.split('\n').find((l) => l.includes('git add src/data')) || '';
+const c = [
+  ['git add sans sitemap',   gitAdd && !gitAdd.includes('sitemap')],
+  ['git add garde meta.json', gitAdd.includes('src/data/meta.json')],
+  ['étape npm test',          /run:\s*npm test/.test(y)],
+  ['étape npm run check',     /run:\s*npm run check/.test(y)],
+  ['deux cibles au déploiement', y.includes('hosting:ch,hosting:org')],
+];
+const ko = c.filter(([, ok]) => !ok).map(([n]) => n);
+console.log(ko.length ? '✗ ' + ko.join(', ') : '✓ workflow à jour');
+process.exit(ko.length ? 1 : 0)"
+```
 
-- [ ] **Step 5 : commit**
+Expected: `YAML Lint successful` puis `✓ workflow à jour`
+
+> Le contrôle porte sur la **ligne** `git add`, pas sur le fichier entier — le commentaire que vous venez d'ajouter mentionne `public/sitemap.xml` en prose pour expliquer sa disparition, et un contrôle naïf sur tout le fichier trouverait ce texte et croirait à un échec.
+
+- [ ] **Step 6 : commit**
 
 ```bash
 git add .github/workflows/hourly.yml
@@ -1803,8 +2078,41 @@ Dans **Commandes**, corriger :
 ```markdown
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage)
-npm test             # tests des dérivations de sites.config et des hreflang
+npm run check        # contrôle les 4 pages produites (lang, canonical, hreflang)
+npm test             # 21 tests : dérivations de sites.config, hreflang, ordre des langues
+npm run lint         # ESLint — passe : 0 erreur, 5 avertissements connus
 ```
+
+**Le décompte de lint est passé de 6 à 5, et sa composition a changé.** Deux
+endroits à corriger dans `CLAUDE.md`, pas un :
+
+**a)** la ligne de la section **Commandes** qui annonce « 0 erreur, 6 avertissements
+connus » → **5**.
+
+**b)** la section **Lint** (« Les 6 avertissements restants sont connus et assumés »)
+→ **5**, et surtout la ligne de composition, qui devient fausse :
+
+```markdown
+- `i18n.jsx` et `motifs.jsx` (×3, `react-refresh/only-export-components`) — ces
+  fichiers exportent un composant **et** un hook ou des constantes. C'est le
+  motif React standard pour un contexte ; l'avertissement ne concerne que le
+  rafraîchissement à chaud en développement.
+
+  Il y en avait quatre jusqu'au découpage en deux vitrines : `i18n.jsx`
+  déclarait `LANGS`, ce qui comptait pour un avertissement de plus. La liste
+  vit désormais dans `sites.config.js` (Node doit pouvoir la lire) et
+  `i18n.jsx` se contente de la ré-exporter — une ré-exportation ne déclenche
+  pas la règle. Le décompte a donc **baissé** : c'est une amélioration, pas
+  une régression. Seul `useI18n` reste signalé.
+```
+
+Composition exacte à ce jour, à vérifier avant d'écrire : `Radio.jsx` ×2
+(`react-hooks/exhaustive-deps`), `motifs.jsx` ×2 et `i18n.jsx` ×1
+(`react-refresh/only-export-components`).
+
+> Sans cette correction, la prochaine personne lira « 6 attendus », comptera 5,
+> et cherchera la régression qui n'existe pas — ou pire, « réparera » l'écart en
+> remettant `LANGS` dans `i18n.jsx`, ce qui recasserait le build et les tests.
 
 Dans **Architecture**, ajouter avant « Internationalisation » :
 
@@ -1864,7 +2172,7 @@ Ajouter une section « Les deux domaines » reprenant le tableau URL → langue 
 ```bash
 npm run lint && npm test && npm run build && npm run prerender
 ```
-Expected: 0 erreur / 6 avertissements ; 19 tests réussis ; `✓ 2 vitrines bâties` ; `✓ 4 pages prérendues`
+Expected: 0 erreur / 5 avertissements ; 19 tests réussis ; `✓ 2 vitrines bâties` ; `✓ 4 pages prérendues`
 
 - [ ] **Step 4 : commit**
 
@@ -1879,7 +2187,7 @@ git commit -m "docs: les deux vitrines, leurs pièges et la procédure de déplo
 
 | Quand | Quoi | Bloquant ? |
 |---|---|---|
-| Avant Task 10 | Créer le site Hosting `armenia-news` | oui (Task 10 étape 1) |
+| ~~Avant Task 10~~ | ~~Créer le site Hosting~~ — **fait** : `armenianews-org` créé le 2026-07-28 | ✓ |
 | Avant le déploiement | Créer la propriété Search Console `armenianews.org`, reporter le jeton dans `sites.config.js` → `org.gscToken` | **oui** — le jeton est compilé dans le HTML |
 | Avant/pendant | Poser les enregistrements A d'`armenianews.org` chez le registrar | non (le `.web.app` sert entre-temps) |
 | Après propagation DNS | Soumettre `https://armenianews.org/sitemap.xml` dans sa propriété GSC | non |
@@ -1888,7 +2196,7 @@ git commit -m "docs: les deux vitrines, leurs pièges et la procédure de déplo
 
 ## Vérification finale (reprise de la spec)
 
-- `npm run lint` → 0 erreur, **6 avertissements** (les six connus de `CLAUDE.md`)
+- `npm run lint` → 0 erreur, **5 avertissements**. Le décompte est passé de 6 à 5 à Task 1 : `LANGS`, devenu ré-export dans `i18n.jsx`, ne déclenche plus `react-refresh`. **Task 12 doit corriger le chiffre dans `CLAUDE.md`**, sinon la prochaine personne lira « 6 attendus » et prendra la baisse pour une régression.
 - `npm test` → 19 tests réussis
 - `npm run build` → `dist/ch/index.html` et `dist/org/{index,hy/index,ru/index}.html`
 - Les quatre HTML : `<html lang>` correct, canonical auto-référent, quatre `hreflang` réciproques sur chacun, `og:site_name` conforme à la marque du site

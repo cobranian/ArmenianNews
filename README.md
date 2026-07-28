@@ -1,21 +1,27 @@
-# Arménie Info · Արմենիա Ինֆո
+# Arménie Info · Armenia News · Արմենիա Ինֆո
 
-An **hourly snapshot** of Armenian life — news, events, and social media — in a
-dark *"Apricot Press"* broadsheet aesthetic (volcanic basalt lit by apricot, the
-heraldic orange of the Armenian flag), with a **day / night** toggle.
-Quadrilingual interface: **Français / English / Հայերեն / Русский**.
+An **hourly snapshot** of Armenian life — news, events, and social media —
+served as **two showcases from one codebase**: **Arménie Info**
+(armenieinfo.ch, French) and **Armenia News** (armenianews.org, English +
+Armenian `/hy/` + Russian `/ru/`). Same dark *"Apricot Press"* broadsheet
+aesthetic on both (volcanic basalt lit by apricot, the heraldic orange of the
+Armenian flag), same **day / night** toggle. Combined, the two domains cover
+four languages: **Français / English / Հայերեն / Русский** — see [The two
+domains](#the-two-domains) below.
 
-A scheduled job scrapes the sources once an hour into JSON; the site is a static
-Vite + React app that renders those files. No backend at runtime.
+A scheduled job scrapes the sources once an hour into JSON; `npm run build`
+renders that data into two static Vite + React bundles (`dist/ch/`,
+`dist/org/`). No backend at runtime.
 
-**Live:** https://armenie-info.web.app
+**Live:** https://armenieinfo.ch (French) · https://armenianews.org
+(English / Հայերեն / Русский)
 
 ## Sections
 
 | Section | Source | How |
 |---|---|---|
-| **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. **The default tab**: `NewsBrowser` renders only the active tab, so the default source is what the prerender bakes into the raw HTML for crawlers. Courrier is French-only and has the largest French rubric set of any source, so it prerenders the most French copy. |
-| **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency: the latest **10 articles per rubric** across **7 rubrics** (Armenia, Economy, World, Culture, Sports, Fact Check, Exclusive Projects), in **each of 4 languages** (fr / en / hy / ru) — 280 articles per snapshot, each rubric its own shelf. The only source here that is **quadrilingual**: fr/en/hy/ru map 1:1 to the UI language, and rubric names come from Armenpress' own labels (the Russian edition labels them Армения, Экономика, Мир, Культура, Спорт, Проверка фактов, Спецпроекты). The **Russian edition** ([armenpress.am/ru](https://armenpress.am/ru)) shares the exact same Inertia payload shape and rubric slugs, so it needed no new scraping logic — just `'ru'` added to `ARMENPRESS_LANGS`. Not the default tab: Courrier d'Erevan prerenders more French copy (80 vs. 70). It is an Inertia.js app, so the feed arrives as embedded JSON — **no CSS selectors**. Two traps, both documented in the module: the rubric articles live at `props.data.data.hits` (the homepage path reads as empty), and the rubric pages **403 Node's `fetch`** — the module uses `node:https` deliberately. |
+| **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. Not the default tab (see Armenpress) — French-only, so it only appears under the fr UI. |
+| **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency: the latest **10 articles per rubric** across **7 rubrics** (Armenia, Economy, World, Culture, Sports, Fact Check, Exclusive Projects), in **each of 4 languages** (fr / en / hy / ru) — 280 articles per snapshot, each rubric its own shelf. The only source here that is **quadrilingual**: fr/en/hy/ru map 1:1 to the UI language, and rubric names come from Armenpress' own labels (the Russian edition labels them Армения, Экономика, Мир, Культура, Спорт, Проверка фактов, Спецпроекты). The **Russian edition** ([armenpress.am/ru](https://armenpress.am/ru)) shares the exact same Inertia payload shape and rubric slugs, so it needed no new scraping logic — just `'ru'` added to `ARMENPRESS_LANGS`. **Always the default tab**, in every language: `NewsBrowser` renders only the active tab (`sources[0]`), and each of the four prerendered pages bakes in Armenpress' own edition — French copy under `lang="fr"`, English under `lang="en"`, and so on, which is what a query in that language should find. (Courrier used to lead, to prerender the most French text; the per-language source rule made Armenpress the natural, SEO-safe lead instead.) It is an Inertia.js app, so the feed arrives as embedded JSON — **no CSS selectors**. Two traps, both documented in the module: the rubric articles live at `props.data.data.hits` (the homepage path reads as empty), and the rubric pages **403 Node's `fetch`** — the module uses `node:https` deliberately. |
 | **Actualités** | [Nouvelles d'Arménie](https://www.armenews.com) | The latest **10 articles per rubric** across 6 WordPress rubrics, French-only, as shelves. |
 | **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across **3 rubrics**, French-only, as shelves: Arménie & Artsakh and Communauté come from the WordPress REST API, Divers is scraped from the site's `/divers-p/` page. |
 | **Actualités** | [ArménieInfo.tv](https://armenieinfo.tv) | The latest **10 articles per rubric**, French-only, as shelves. |
@@ -30,40 +36,133 @@ instead of blanking it, so a transient upstream failure never wipes a section.
 
 ## Language switcher
 
-A pill in the top-right of the nav switches the interface language — one chip per
-language (**FR · EN · ՀԱՅ · РУ**). It is driven entirely by the `LANGS` array in
-[`src/i18n.jsx`](./src/i18n.jsx): the nav renders whatever's in that array, so a
-language is added or removed as **data**, not by editing a component. The choice
-persists in `localStorage` (key `lang`), sets `<html lang>`, and defaults to
-French.
+A pill in the top-right of the nav switches the interface language — one chip
+per language (**FR · EN · ՀԱՅ · РУ**), rendered from the `LANGS` array (now in
+[`sites.config.js`](./sites.config.js), re-exported by
+[`src/i18n.jsx`](./src/i18n.jsx) for backward compatibility) in the order
+`orderedLangs()` ([`src/site.js`](./src/site.js)) puts them: the current
+domain's own language first, the rest in their declared order — so on the
+.org's three pages the bar always reads "EN FR ՀԱՅ РУ", only the highlighted
+chip moves.
+
+**Each chip is a real link to that language's URL**
+(`sites.config.js` → `LANG_URL`), not a click handler that flips React state.
+The language comes **from the URL, not from `localStorage`**: each language now
+has its own address (`armenieinfo.ch/`, `armenianews.org/`, `/hy/`, `/ru/`), and
+`LanguageProvider` reads it once on mount via `langFromPath(SITE_ID,
+location.pathname)`. Restoring a language from `localStorage` would flip a page
+at mount time away from what its prerendered HTML and `<html lang>` say —
+invisible to Googlebot (no `localStorage`), very real for readers. What's lost
+— "the site remembers my language" — is regained by the URL itself, which
+bookmarks, back-buttons and shares correctly. `localStorage` still holds the
+`theme` key (day/night), just not `lang` anymore.
 
 Only the interface **chrome** is translated — article and post content stays in
 its source language (see [Notes](#notes--caveats)). Armenpress is the one source
 with a matching edition per UI language (fr/en/hy/ru) and ArmRadio follows in
 en/hy/ru; the French-only sources stay French under any UI.
 
-**To add a language**, three edits in `src/i18n.jsx`:
+**To add a language**, four edits, because the language now needs its own
+address as well as its own strings:
 
-1. an entry in `LANGS` — `{ code, label, name }` (`label` is the chip text);
-2. a full `STRINGS[code]` block with **exactly the same keys as `fr`** — a missing
-   key silently falls back to French, so key parity is what matters most;
-3. a `LOCALES[code]` (e.g. `ru-RU`) for date formatting.
+1. a page for it in `sites.config.js` → `SITES[siteId].pages` (which domain
+   serves it, at which path) **and** an entry in `LANGS` — `{ code, label, name }`
+   (`label` is the chip text);
+2. a full `STRINGS[code]` block in `src/i18n.jsx` with **exactly the same keys
+   as `fr`** — a missing key silently falls back to French, so key parity is
+   what matters most, plus a `LOCALES[code]` (e.g. `ru-RU`) for date formatting;
+3. a `SEO[code]` block (tagline, description, keywords) and an `OG_LOCALE[code]`
+   in `src/seo.js` — Node reads these to bake `<title>`, `<meta description>`
+   and `hreflang` into the four static pages;
+4. run `npm run build` and check the assertion in `scripts/build-sites.mjs`
+   passes — it fails loudly if `sites.config.js` and `LANGS` disagree on which
+   languages exist, so a language added to one but not the other cannot ship
+   silently.
 
-The prerendered HTML is always **French** (the headless render has no
-`localStorage`), so the crawler-facing baseline stays French whatever the switcher
-does — which is also why per-language tab ordering is SEO-safe.
+Each of the four pages (`dist/ch/`, `dist/org/`, `dist/org/hy/`,
+`dist/org/ru/`) is prerendered **in its own language** (`npm run prerender`),
+not always French — the headless render for each page starts at that page's
+own URL, so its baked HTML matches its `<html lang>` and its Armenpress edition.
+
+## The two domains
+
+One codebase, one hourly snapshot, two Firebase Hosting **targets** in the
+same project (`armenie-info`) — all of it derived from
+[`sites.config.js`](./sites.config.js):
+
+| URL | Language | Firebase target → site | Brand |
+|---|---|---|---|
+| `armenieinfo.ch/` | fr | `ch` → `armenie-info` (alias `armenie-info.web.app`) | Arménie Info |
+| `armenianews.org/` | en | `org` → `armenianews-org` | Armenia News |
+| `armenianews.org/hy/` | hy | `org` → `armenianews-org` | Armenia News |
+| `armenianews.org/ru/` | ru | `org` → `armenianews-org` | Armenia News |
+
+`npm run build` produces `dist/ch/` and `dist/org/` (with `dist/org/hy/` and
+`dist/org/ru/` derived from `dist/org/index.html`); `npm run check` validates
+all four pages plus the two `sitemap.xml`/`robots.txt` pairs; `npm run
+prerender` bakes the snapshot's articles into all four. Deploy both targets:
+
+```bash
+firebase deploy --only hosting:ch,hosting:org
+```
+
+(the hourly CI workflow instead loops target-by-target — see
+[Deployment](#deployment-github-actions--firebase-hosting) — because Firebase
+treats "content identical to what's already live" as a successful no-op per
+target, and a combined deploy would make one target's real failure
+indistinguishable from the other's benign no-op.)
+
+**Manual steps, in order:**
+
+- **Create the second Firebase Hosting site — already done.** The hourly
+  workflow loops `for target in ch org` unconditionally (see
+  [Deployment](#deployment-github-actions--firebase-hosting)); if the
+  underlying Hosting site didn't exist, every hourly run would fail on the
+  `org` target forever, not just degrade SEO like a missing GSC token or
+  sitemap submission does. This is the one prerequisite here that breaks CI
+  rather than merely hurting search visibility.
+
+  ```bash
+  firebase hosting:sites:create armenianews-org --project armenie-info
+  firebase target:apply hosting org armenianews-org --project armenie-info
+  ```
+
+  (`armenia-news` was already taken by another Firebase project, hence the
+  `-org` suffix.) Done — the site exists, with its fallback URL
+  `https://armenianews-org.web.app`, and `.firebaserc` already maps the `org`
+  target to it.
+- **Before deploying `armenianews.org` for the first time** — create its
+  Google Search Console property and paste its verification token into
+  `sites.config.js` → `SITES.org.gscToken`. The token is compiled straight into
+  the built HTML (`<meta name="google-site-verification">`); if it's `null`,
+  the tag is simply omitted, so this has to happen before the first deploy that
+  matters for indexing, not after.
+- **After deploying (once DNS has propagated)** — submit
+  `https://armenieinfo.ch/sitemap.xml` and `https://armenianews.org/sitemap.xml`
+  in their respective Search Console properties (they are two separate
+  properties with two separate sitemaps — submitting one does not cover the
+  other), and add `armenianews.org` to GA4's excluded referral domains list (it
+  shares the same GA4 property as `armenieinfo.ch`; without the exclusion the
+  two sites would attribute each other's traffic as referrals instead of
+  direct/organic).
 
 ## Develop
 
 ```bash
 npm install
-npm run scrape      # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
-npm run ig-scrape   # refresh the Instagram pool (local, logged-in Chrome — never in CI)
-npm run fb-scrape   # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
-npm run dev         # http://localhost:5173/
-npm run build       # production build into dist/
-npm run preview
-npm run screenshot  # after build: capture the Don Narek carousel into dist/don-narek-{desktop,mobile}.png
+npm run scrape       # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
+npm run ig-scrape    # refresh the Instagram pool (local, logged-in Chrome — never in CI)
+npm run fb-scrape    # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
+npm run dev          # http://localhost:5173/ — the .ch showcase, French
+npm test             # 24 tests: sites.config.js derivations, hreflang, language order, sitemaps
+npm run lint
+npm run build        # builds both showcases into dist/ch/ and dist/org/
+npm run build:one    # a single Vite build into dist/ (troubleshooting only — not what ships)
+npm run check        # validates the 4 built pages (lang, canonical, reciprocal hreflang) + the 2 sitemap/robots pairs
+npm run prerender    # bakes all 4 pages with Puppeteer, after `npm run build`
+npm run preview      # preview dist/ch (what armenie-info.web.app actually serves)
+npm run preview:org  # preview dist/org
+npm run screenshot   # after build: capture the Don Narek carousel into dist/ch/don-narek-{desktop,mobile}.png
 ```
 
 `npm run scrape` refreshes **news + agenda**, and re-randomises the **Instagram
@@ -145,7 +244,8 @@ deploy (`scripts/shoot.mjs`, driven by `browser-actions/setup-chrome`) and
 published alongside the site at
 [`/don-narek-desktop.png`](https://armenie-info.web.app/don-narek-desktop.png)
 and [`/don-narek-mobile.png`](https://armenie-info.web.app/don-narek-mobile.png).
-It writes into `dist/` (gitignored), so hourly image churn never enters git
+It writes into `dist/ch/` (gitignored) — the showcase `armenie-info.web.app`
+itself serves, and not `dist/org/` — so hourly image churn never enters git
 history. Run `npm run build && npm run screenshot` to regenerate it locally.
 
 ### Refreshing Don Narek
@@ -176,7 +276,7 @@ npm run fb-scrape -- --connect --dry   # preview what it finds, writes nothing
 npm run fb-scrape -- --connect         # download images + rewrite facebook.json
 
 # 4. Verify, then publish:
-npm run build && npm run screenshot           # eyeball dist/don-narek-*.png
+npm run build && npm run screenshot           # eyeball dist/ch/don-narek-*.png
 git add src/data/facebook.json src/data/fb/dn-*.jpg && git commit && git push
 ```
 
@@ -277,26 +377,42 @@ npx wrangler deploy     # prints https://armradio-proxy.<subdomain>.workers.dev
 `.github/workflows/hourly.yml` runs **every hour** on the hour (UTC), plus on
 manual dispatch and on push to `main`:
 
-- **Schedule / manual run** → scrape + commit the refreshed data + build + deploy
-  (exactly one snapshot per hour).
+- **Schedule / manual run** → tests, then scrape + commit the refreshed data +
+  build (both showcases) + check + screenshot + prerender + deploy (exactly one
+  snapshot per hour).
 - **Push to `main`** → build + deploy only (**scrape skipped**), so a code or docs
   change ships fast without spending ~3–4 min re-scraping or leaving an extra
   snapshot commit. Want a fresh snapshot on demand? Use the manual
   `workflow_dispatch` run.
 
-The site deploys to **Firebase Hosting** (project `armenie-info`,
-https://armenie-info.web.app). The Firebase service-account JSON is stored in the
-`FIREBASE_SERVICE_ACCOUNT` repo secret.
+`npm test` always runs first — it's fast, touches no network, and keeps the
+one invariant that must never break (`sites.config.js` and `LANGS` describing
+the same languages, one URL per language). `npm run check` gates the deploy:
+unlike the screenshot and prerender steps (both `continue-on-error: true`,
+because a stale wall preview or an un-prerendered page is still a working
+site), a failed `check` blocks the deploy entirely — publishing four broken
+pages is worse than publishing nothing.
+
+Both showcases deploy to **Firebase Hosting**, in the same project
+(`armenie-info`), on two separate **targets** — see [The two
+domains](#the-two-domains) for the URL → target → Firebase site mapping. The
+Firebase service-account JSON is stored in the
+`FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` repo secret, and the deploy step loops
+over `ch` and `org`, deploying and checking each target's result independently
+(see [The two domains](#the-two-domains) for why: a no-op on one target must
+not be mistaken for a failure on the other, or vice versa).
 
 **CI configuration:**
 
 | Name | Kind | Purpose |
 |---|---|---|
-| `FIREBASE_SERVICE_ACCOUNT` | secret | Firebase Hosting deploy credentials. |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Firebase Hosting deploy credentials, scoped to Hosting Admin only. |
 | `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
+| `ASBAREZ_PROXY` | variable | URL of the Asbarez Cloudflare Worker proxy. **Required** from CI — both Asbarez editions 403 datacenter IPs outright, so without it the Asbarez feed comes back empty every hour (no direct fallback, unlike armradio). |
 
-Vite `base` defaults to `/` (Firebase serves from the domain root); override with
-`BASE_PATH=/subpath` when building for a subpath.
+Vite `base` defaults to `/` on both showcases (each domain serves from its own
+root); override with `BASE_PATH=/subpath` — mainly useful with `build:one`,
+since the two production showcases always serve from their domain's root.
 
 ## Notes & caveats
 

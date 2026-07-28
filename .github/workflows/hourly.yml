@@ -27,6 +27,11 @@ jobs:
 
       - run: npm ci
 
+      # Les seuls tests du dépôt : ils gardent l'invariant « une langue = une
+      # URL » et la réciprocité des hreflang. Ils ne touchent pas au réseau.
+      - name: Tests
+        run: npm test
+
       # Refresh news + agenda. Instagram/Facebook are curated and untouched.
       # Snapshot only on schedule/dispatch: a push to main just rebuilds &
       # redeploys (scrape skipped), so a code or docs change ships fast without
@@ -49,7 +54,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json public/sitemap.xml
+          # public/sitemap.xml n'est plus versionné : il en faut un par vitrine,
+          # et ils sont générés au build (scripts/lib/sitemap.mjs), avec un
+          # lastmod lu dans meta.json.generatedAt — donc l'heure de CE scrape.
+          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else
@@ -60,8 +68,18 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
+      # jamais en automatique et ne protège rien. Volontairement SANS
+      # continue-on-error : si les quatre pages ou les deux sitemaps sont
+      # incorrects, il vaut mieux ne rien publier que publier un site cassé.
+      # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
+      # donc un faux positif signalerait une vraie divergence de configuration.
+      - name: Contrôler les pages et les fichiers SEO produits
+        run: npm run check
+
       # Regenerate the Don Narek carousel preview each hour and drop it into
-      # dist/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png).
+      # dist/ch/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png)
+      # — dist/ch is the showcase that domain serves.
       # Best-effort: a screenshot failure must never block the deploy.
       - name: Set up Chrome (for screenshot)
         id: chrome
@@ -70,21 +88,34 @@ jobs:
         with:
           chrome-version: stable
 
-      - name: Screenshot Don Narek carousel into dist/
+      - name: Screenshot Don Narek carousel into dist/ch/
         continue-on-error: true
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run screenshot
 
-      # Bake the rendered app into dist/index.html so crawlers get the
+      # Bake the rendered app into each showcase's index.html (four files:
+      # dist/ch, dist/org, dist/org/hy, dist/org/ru) so crawlers get the
       # snapshot's articles in raw HTML instead of an empty #root.
       # Best-effort, like the screenshot: a prerender failure must never
       # block the deploy — worst case we ship the plain SPA, as before.
-      - name: Prerender dist/index.html
+      - name: Prerender the four pages
+        id: prerender
         continue-on-error: true
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run prerender
+
+      # continue-on-error au-dessus rend l'échec silencieux dans l'UI Actions
+      # (l'étape reste verte) — voulu, car un prérendu manqué ne doit pas
+      # bloquer le déploiement de la SPA nue. Mais silencieux ne doit pas dire
+      # invisible : ce warning (pas un échec, donc rien ne bloque) est le seul
+      # signal qu'on aurait servi un `<html lang>` en décalage avec l'interface
+      # (voir le contrôle de langue dans scripts/prerender.mjs) sans texte pour
+      # les crawlers.
+      - name: Signaler un prérendu manqué
+        if: steps.prerender.outcome == 'failure'
+        run: echo "::warning::Prérendu échoué — le site part en SPA nu, sans texte pour les crawlers. Voir les logs de l'étape précédente."
 
       - name: Deploy to Firebase Hosting
         env:
@@ -97,18 +128,28 @@ jobs:
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
           set +e
-          # Pinned, not @latest: this runs with the deploy service account in
-          # its environment, so a single malicious release would hand over the
-          # credential. Bump deliberately.
-          out=$(npx --yes firebase-tools@15.23.0 deploy \
-            --only hosting --project armenie-info --non-interactive 2>&1)
-          code=$?
-          echo "$out"
-          # Firebase rejects a release whose content is identical to the
-          # currently live version (e.g. an hour with no data change).
-          # That's a successful no-op, not a failure.
-          if [ $code -ne 0 ] && echo "$out" | grep -q "is the current active version"; then
-            echo "::notice::Content unchanged — already live. Skipping."
-            exit 0
-          fi
-          exit $code
+          fail=0
+          for target in ch org; do
+            echo "▸ déploiement de la cible $target"
+            # Pinned, not @latest: this runs with the deploy service account in
+            # its environment, so a single malicious release would hand over the
+            # credential. Bump deliberately.
+            out=$(npx --yes firebase-tools@15.23.0 deploy \
+              --only "hosting:$target" --project armenie-info --non-interactive 2>&1)
+            code=$?
+            echo "$out"
+            # Firebase rejette une publication dont le contenu est identique à la
+            # version en ligne (p. ex. une heure sans changement de données).
+            # C'est un no-op réussi, pas un échec. En déployant cible par cible,
+            # ce verdict ne porte que sur CETTE cible — une sortie combinée
+            # pourrait sinon faire passer l'échec de l'une pour le no-op de l'autre.
+            if [ $code -ne 0 ] && echo "$out" | grep -qi "is the current active version"; then
+              echo "::notice::$target — contenu inchangé, déjà en ligne. Ignoré."
+              continue
+            fi
+            if [ $code -ne 0 ]; then
+              echo "::error::$target — échec du déploiement (code $code)"
+              fail=1
+            fi
+          done
+          exit $fail
