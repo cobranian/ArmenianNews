@@ -2021,8 +2021,41 @@ Dans **Commandes**, corriger :
 ```markdown
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage)
-npm test             # tests des dérivations de sites.config et des hreflang
+npm run check        # contrôle les 4 pages produites (lang, canonical, hreflang)
+npm test             # 21 tests : dérivations de sites.config, hreflang, ordre des langues
+npm run lint         # ESLint — passe : 0 erreur, 5 avertissements connus
 ```
+
+**Le décompte de lint est passé de 6 à 5, et sa composition a changé.** Deux
+endroits à corriger dans `CLAUDE.md`, pas un :
+
+**a)** la ligne de la section **Commandes** qui annonce « 0 erreur, 6 avertissements
+connus » → **5**.
+
+**b)** la section **Lint** (« Les 6 avertissements restants sont connus et assumés »)
+→ **5**, et surtout la ligne de composition, qui devient fausse :
+
+```markdown
+- `i18n.jsx` et `motifs.jsx` (×3, `react-refresh/only-export-components`) — ces
+  fichiers exportent un composant **et** un hook ou des constantes. C'est le
+  motif React standard pour un contexte ; l'avertissement ne concerne que le
+  rafraîchissement à chaud en développement.
+
+  Il y en avait quatre jusqu'au découpage en deux vitrines : `i18n.jsx`
+  déclarait `LANGS`, ce qui comptait pour un avertissement de plus. La liste
+  vit désormais dans `sites.config.js` (Node doit pouvoir la lire) et
+  `i18n.jsx` se contente de la ré-exporter — une ré-exportation ne déclenche
+  pas la règle. Le décompte a donc **baissé** : c'est une amélioration, pas
+  une régression. Seul `useI18n` reste signalé.
+```
+
+Composition exacte à ce jour, à vérifier avant d'écrire : `Radio.jsx` ×2
+(`react-hooks/exhaustive-deps`), `motifs.jsx` ×2 et `i18n.jsx` ×1
+(`react-refresh/only-export-components`).
+
+> Sans cette correction, la prochaine personne lira « 6 attendus », comptera 5,
+> et cherchera la régression qui n'existe pas — ou pire, « réparera » l'écart en
+> remettant `LANGS` dans `i18n.jsx`, ce qui recasserait le build et les tests.
 
 Dans **Architecture**, ajouter avant « Internationalisation » :
 
