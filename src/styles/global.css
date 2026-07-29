@@ -47,11 +47,87 @@
   --surface: var(--basalt-2);
   --surface-raised: var(--basalt-3);
 
-  /* --- Type families --- */
-  --font-display: 'Fraunces', 'Noto Serif Armenian', Georgia, serif;
-  --font-body: 'Hanken Grotesk', 'Noto Sans Armenian', system-ui, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
-  --font-hy: 'Noto Sans Armenian', 'Hanken Grotesk', sans-serif;
+  /* ============================================================
+     Familles — trois rôles, trois écritures, une seule voix.
+
+     Le site parle quatre langues en trois écritures, et aucune
+     famille libre ne couvre latin + arménien + cyrillique dans un
+     display serif. « Police identique » se lit donc ainsi : chaque
+     écriture a une compagne CHOISIE pour son rôle, et l'on égalise
+     ensuite le rythme (approche, interlignage) — voir les jetons
+     --track-* plus bas. Ce qu'on élimine, ce n'est pas la
+     différence de dessin, c'est l'improvisation du système.
+
+       rôle    | latin (fr/en)  | arménien (hy)       | cyrillique (ru)
+       --------+----------------+---------------------+----------------
+       display | Fraunces       | Noto Serif Armenian | Literata
+       body    | Hanken Grotesk | Noto Sans Armenian  | Golos Text
+       utility | Space Mono     | Noto Sans Armenian  | IBM Plex Mono
+
+     Le casting cyrillique, et pourquoi pas le réflexe « ajoute
+     Noto » : Noto est une famille de COUVERTURE, pas de voix — en
+     texte courant elle ferait lire l'édition russe comme une
+     retombée de la française, ce qui est exactement la plainte à
+     laquelle ce bloc répond. Donc Literata (serif chaleureux, un
+     vrai cyrillique dessiné et une VRAIE italique — le titre du
+     héros en a besoin) plutôt que Georgia, la retombée système
+     d'avant, ou Playfair, dont la froideur didone se battrait avec
+     l'abricot ; Golos Text (Paratype, dessiné POUR le russe,
+     hauteur d'x proche de Hanken Grotesk) plutôt qu'Inter, le choix
+     par défaut ; IBM Plex Mono (qualité machine à écrire humaniste,
+     l'âme télétype de Space Mono) plutôt que JetBrains Mono, qui
+     sonne éditeur de code. Noto reste là où il est réellement le
+     meilleur disponible : les deux Noto arméniens sont excellents
+     et harmonisés avec le reste de la superfamille.
+
+     L'ORDRE EST LE MÉCANISME, et il est délibéré. Le navigateur
+     résout la police CARACTÈRE PAR CARACTÈRE : il descend la pile
+     jusqu'à la première famille qui possède le glyphe. Comme
+     Fraunces/Hanken/Space Mono n'ont ni arménien ni cyrillique, et
+     que les Noto arméniens n'ont pas de cyrillique, chaque écriture
+     atteint sa compagne sans qu'aucune règle ne l'y envoie.
+     Corollaire : le latin n'atteint JAMAIS les compagnes, donc les
+     accents français restent dans la police de la marque.
+
+     C'est pour cela qu'on ne fait pas ce travail en :lang().
+     Certaines lignes mêlent trois écritures — le surtitre du héros
+     « ՀԱՅԱՍՏԱՆ · ARMENIA · ARMÉNIE », les quatre pastilles
+     « EN FR ՀԱՅ РУ » — et elles sont présentes sur les QUATRE
+     pages : un :lang() ne peut pas être juste pour les trois à la
+     fois. La pile, si. :lang() ne sert donc qu'aux réglages qui
+     sont vraiment par langue (approche, interlignage).
+
+     N'insérez pas une compagne avant la famille de tête, et ne la
+     retirez pas : les deux fautes sont silencieuses (voir le
+     journal de bord dans index.html). --- */
+  --font-display: 'Fraunces', 'Noto Serif Armenian', 'Literata', Georgia, serif;
+  --font-body: 'Hanken Grotesk', 'Noto Sans Armenian', 'Golos Text', system-ui, sans-serif;
+  /* « mono » nomme un RÔLE (dateline, surtitre, pastille, badge), pas une
+     métrique : aucune monospace arménienne n'existe, où que ce soit. Noto Sans
+     Armenian est proportionnelle et c'est la bonne réponse ici, ces textes
+     étant de courtes capitales espacées et jamais des colonnes chiffrées. */
+  --font-mono: 'Space Mono', 'Noto Sans Armenian', 'IBM Plex Mono', ui-monospace,
+    'SFMono-Regular', monospace;
+
+  /* --- Approche & interlignage du display, par écriture ---
+     Les serifs latins de titrage se serrent ; l'arménien et le cyrillique,
+     non. L'arménien a des contrepoinçons ouverts que l'approche négative
+     referme, et des jambages que 1.04 rogne ; le cyrillique tient son rythme
+     vertical par la régularité de ses fûts, que le serrage brouille.
+     C'est un FACTEUR, pas une valeur de remplacement, et c'est le point :
+     chaque règle garde son approche latine propre (−0.012em sur un titre de
+     carte, −0.025em sur un titre de rubrique — un dosage réglé au cas par cas)
+     et l'écriture ne fait que la mettre à l'échelle. Une liste de valeurs de
+     remplacement aurait réécrit le dessin latin en même temps qu'elle
+     réparait les deux autres. Redéfini par :lang() plus bas.
+
+     Deux approches négatives échappent volontairement au facteur :
+     `.nav__brand` et `.hero__title`. Elles ne composent que le nom de la
+     marque — « Armenia News », « Arménie Info » —, donc du latin sur les
+     quatre pages : les mettre à l'échelle relâcherait le titre du héros en
+     arménien sans qu'aucun caractère arménien y figure. */
+  --track-scale: 1;
+  --lh-display: 1.04;
 
   --maxw: 1240px;
   --radius: 3px;
@@ -178,9 +254,9 @@ h3 {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 600;
-  line-height: 1.04;
+  line-height: var(--lh-display);
   margin: 0;
-  letter-spacing: -0.018em;
+  letter-spacing: calc(-0.018em * var(--track-scale));
 }
 
 a {
@@ -197,16 +273,68 @@ img {
   max-width: 100%;
 }
 
-:lang(hy) {
-  font-family: var(--font-hy);
+/* Réglages optiques par écriture. Ils ne changent AUCUNE famille — la pile
+   s'en charge, glyphe par glyphe (voir la section « Familles »). Ici on ne
+   fait qu'égaliser le rythme, pour que les quatre pages pèsent pareil à
+   l'œil. `html:lang()` l'emporte sur `:root` par spécificité.
+
+   Deux règles ont été SUPPRIMÉES d'ici, et il ne faut pas les rétablir :
+
+     :lang(hy)        { font-family: var(--font-hy) }
+     h1,h2,h3:lang(hy){ font-family: 'Noto Serif Armenian', … }
+
+   La première était redondante (--font-body atteint déjà Noto Sans Armenian
+   par la pile) et surchargeait tout sélecteur de spécificité ≤ (0,1,0) —
+   dont `.hero__title em`, dont elle emportait la famille : l'italique du
+   titre du héros tombait dans une SANS, oblique synthétisée par le
+   navigateur, au milieu d'un titre serif. La seconde plaçait Noto Serif
+   Armenian AVANT Fraunces ; comme les Noto arméniens portent aussi le latin,
+   elle privait de la police de la marque tout le latin des titres de /hy/ —
+   « Armenia News » compris, dans son propre en-tête. Les deux fautes étaient
+   invisibles depuis le français. */
+html:lang(hy) {
+  --track-scale: 0;
+  --lh-display: 1.16;
 }
-/* Armenian headlines stay in the serif (Fraunces has no Armenian glyphs,
-   so they fall through to Noto Serif Armenian via the display stack) */
-h1:lang(hy),
-h2:lang(hy),
-h3:lang(hy) {
-  font-family: 'Noto Serif Armenian', var(--font-display);
-  font-weight: 600;
+html:lang(ru) {
+  --track-scale: 0.35;
+  --lh-display: 1.08;
+}
+
+/* Rattrapage de taille optique de l'arménien, là où les écritures se touchent
+   dans une même ligne. Mesuré à 11.52px sur la rangée de pastilles : capitale
+   latine 8px (Space Mono) et capitale cyrillique 8px (IBM Plex Mono) — elles
+   tombent pile, le cyrillique n'a besoin de rien — contre capitale arménienne
+   9px (Noto Sans Armenian), soit 12 % de plus, et posée 1px sous la ligne de
+   pied. Isolé, l'écart ne se voit pas ; à 12px d'un « EN », il se lit comme
+   une faute de graisse. Ces deux lignes sont les seules du site où trois
+   écritures se côtoient, et elles sont sur les QUATRE pages — c'est donc ici,
+   et nulle part ailleurs, que le rattrapage a un sens.
+
+   Piège d'unité, et les deux cas diffèrent vraiment : sur un font-size, `em`
+   se résout contre le font-size du PARENT. Le <span> du surtitre a pour parent
+   .hero__kicker (0.7rem), donc `0.9em` y vaut bien 90 % du surtitre. La
+   pastille, elle, porte son propre font-size (0.72rem) tandis que son parent
+   .lang hérite des 17.5px du corps de texte : `0.9em` y donnerait 15.75px,
+   soit une pastille arménienne plus GROSSE que la ligne qu'elle corrige.
+   D'où le calc() explicite — ne le « simplifiez » pas en em.
+
+   La graisse est le second volet du même rattrapage : Space Mono 400 est une
+   police trapue, Noto Sans Armenian 400 non, et côte à côte l'arménien lisait
+   plus maigre que le latin. Comparé à 4,5× : 400 trop clair, 600 se lit comme
+   l'état actif, 500 tombe juste. Cette règle est volontairement placée AVANT
+   `.lang a[aria-current]` : à spécificité égale (0,2,1) l'ordre décide, donc
+   la pastille active garde bien son 700 et n'hérite que de la taille. Ne la
+   déplacez pas plus bas dans le fichier. */
+.lang a:lang(hy),
+.hero__kicker span:lang(hy) {
+  font-weight: 500;
+}
+.lang a:lang(hy) {
+  font-size: calc(0.72rem * 0.9);
+}
+.hero__kicker span:lang(hy) {
+  font-size: 0.9em;
 }
 
 ::selection {
@@ -575,7 +703,7 @@ h3:lang(hy) {
   font-size: clamp(2.2rem, 5.5vw, 3.8rem);
   color: var(--text);
   margin: 14px 0 16px;
-  letter-spacing: -0.025em;
+  letter-spacing: calc(-0.025em * var(--track-scale));
 }
 .section__subtitle {
   font-family: var(--font-display);
@@ -616,7 +744,7 @@ h3:lang(hy) {
 }
 .strand__name {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: calc(-0.02em * var(--track-scale));
   color: var(--text);
 }
 /* Facebook has an author; Instagram is a crowd. Only one gets a byline. */
@@ -650,7 +778,7 @@ h3:lang(hy) {
 .shelf__title {
   font-size: clamp(1.35rem, 3vw, 2rem);
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: calc(-0.02em * var(--track-scale));
 }
 .shelf__nav {
   display: flex;
@@ -824,7 +952,7 @@ h3:lang(hy) {
   font-weight: 500;
   line-height: 1.2;
   color: var(--text);
-  letter-spacing: -0.012em;
+  letter-spacing: calc(-0.012em * var(--track-scale));
   display: -webkit-box;
   -webkit-line-clamp: 4;
   line-clamp: 4;
@@ -1948,7 +2076,7 @@ h3:lang(hy) {
   color: var(--apricot-ink);
   margin-top: 8px;
   margin-bottom: 18px;
-  letter-spacing: -0.02em;
+  letter-spacing: calc(-0.02em * var(--track-scale));
 }
 .footer__sources {
   display: flex;

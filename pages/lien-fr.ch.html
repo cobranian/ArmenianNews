@@ -41,11 +41,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!-- Noto Sans Armenian est indispensable : Space Mono ne porte aucun glyphe
-     arménien, donc « ՀԱՅ » du bandeau retombait sur une police système au
-     hasard, dans une graisse et une chasse étrangères au reste de la ligne.
-     Le site charge la même famille pour la même raison. -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Noto Sans Armenian ET IBM Plex Mono sont indispensables : Space Mono ne
+     porte ni glyphe arménien ni glyphe cyrillique, donc « ՀԱՅ » et « РУ » du
+     bandeau retombaient sur une police système au hasard, dans une graisse et
+     une chasse étrangères au reste de la ligne. Le bandeau annonce quatre
+     langues en trois écritures — c'est la ligne la plus exposée de la carte,
+     et deux de ses quatre libellés étaient en Courier. Le site charge les
+     mêmes familles pour la même raison (voir src/styles/global.css). -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;600&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
 /* ============================================================
@@ -69,7 +72,7 @@
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Hanken Grotesk', system-ui, sans-serif;
-  --font-mono: 'Space Mono', 'Noto Sans Armenian', ui-monospace, monospace;
+  --font-mono: 'Space Mono', 'Noto Sans Armenian', 'IBM Plex Mono', ui-monospace, monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

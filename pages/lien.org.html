@@ -33,10 +33,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!-- Noto Sans Armenian is required: Space Mono carries no Armenian glyphs, so
-     "ՀԱՅ" in the wire band would fall back to whatever the system offers, in a
-     weight and width foreign to the rest of the line. -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Noto Sans Armenian AND IBM Plex Mono are required: Space Mono carries
+     neither Armenian nor Cyrillic glyphs, so "ՀԱՅ" and "РУ" in the wire band
+     would fall back to whatever the system offers, in a weight and width
+     foreign to the rest of the line. The band advertises four languages in
+     three scripts — the most exposed line on the card, and two of its four
+     labels were in Courier. The site loads the same families for the same
+     reason (see src/styles/global.css). -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;600&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
 /* ============================================================
@@ -60,7 +64,7 @@
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Hanken Grotesk', system-ui, sans-serif;
-  --font-mono: 'Space Mono', 'Noto Sans Armenian', ui-monospace, monospace;
+  --font-mono: 'Space Mono', 'Noto Sans Armenian', 'IBM Plex Mono', ui-monospace, monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

@@ -64,10 +64,18 @@ export function Nav() {
               quand on navigue à l'intérieur du .org. */}
           <div className="lang" role="group" aria-label="Language">
             {orderedLangs(LANGS).map((l) => (
+              // `lang` et `hrefLang` ne disent pas la même chose et les deux
+              // sont justes : hrefLang qualifie la page VISÉE, lang l'écriture
+              // du libellé lui-même. « ՀԱՅ » est de l'arménien et « РУ » du
+              // russe sur les quatre pages, y compris la française. C'est ce
+              // qui permet à global.css de rattraper leur taille optique, et
+              // ce qui fait prononcer ces deux libellés correctement par un
+              // lecteur d'écran au lieu de les épeler en français.
               <a
                 key={l.code}
                 href={LANG_URL[l.code]}
                 hrefLang={l.code}
+                lang={l.code}
                 aria-current={lang === l.code ? 'page' : undefined}
                 title={l.name}
               >

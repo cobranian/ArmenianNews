@@ -47,13 +47,36 @@
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- "Apricot Press" typography: Fraunces (optical display serif),
-         Hanken Grotesk (body grotesque), Space Mono (datelines / wire),
-         Noto Serif + Sans Armenian (Armenian script) -->
+    <!-- "Apricot Press" typography — trois rôles × trois écritures. Le détail
+         du casting et des réglages optiques est dans src/styles/global.css
+         (section « Familles »), qui est la source de vérité ; ici on ne fait
+         que charger les fichiers.
+
+           rôle      | latin (fr/en)   | arménien (hy)       | cyrillique (ru)
+           ----------+-----------------+---------------------+----------------
+           display   | Fraunces        | Noto Serif Armenian | Literata
+           body      | Hanken Grotesk  | Noto Sans Armenian  | Golos Text
+           utility   | Space Mono      | Noto Sans Armenian  | IBM Plex Mono
+
+         Les trois familles cyrilliques ne sont pas un supplément décoratif :
+         AUCUNE des cinq autres ne couvre U+0400-045F (les lettres russes).
+         Sans elles, /ru/ rendait ses titres en Georgia, son texte en Segoe UI
+         et ses surtitres en Courier — donc une page par système d'exploitation,
+         et jamais celle de la marque. Vérifiable :
+           curl '…/css2?family=Hanken+Grotesk' | grep unicode-range
+         ne montre que `cyrillic-ext` (U+0460-052F, du cyrillique historique
+         que le russe n'utilise pas) — le piège est là, la famille a l'air
+         d'avoir du cyrillique et n'en a pas.
+
+         Le surcoût est de ~590 octets gzip sur cette feuille, mise en cache
+         pour les quatre pages. Les .woff2 eux-mêmes restent paresseux : Google
+         découpe par `unicode-range`, donc une page latine n'en télécharge
+         aucun de plus. Ne « rationalisez » pas la liste en retirant une
+         famille sans texte de contrôle dans son écriture. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Armenian:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Armenian:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Golos+Text:wght@400..700&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
   </head>

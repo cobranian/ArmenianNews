@@ -8,7 +8,16 @@ export function Hero() {
   return (
     <header className="hero" id="top">
       <div className="container hero__frame">
-        <div className="hero__kicker">ՀԱՅԱՍՏԱՆ · ARMENIA · ARMÉNIE</div>
+        {/* Trois écritures dans une seule ligne, identique sur les quatre
+            pages. Le `lang` n'est donc pas décoratif : il marque la seule
+            partie arménienne pour que global.css rattrape sa taille optique
+            (les capitales arméniennes rendent 12 % plus hautes que les
+            latines juste à côté), et il évite qu'un lecteur d'écran épelle
+            « ՀԱՅԱՍՏԱՆ » avec la voix de la page. La famille, elle, n'a besoin
+            de personne : la pile de --font-mono résout chaque glyphe. */}
+        <div className="hero__kicker">
+          <span lang="hy">ՀԱՅԱՍՏԱՆ</span> · ARMENIA · ARMÉNIE
+        </div>
         <h1 className="hero__title">
           {t('site.title').split("'").length === 2 ? (
             <>
