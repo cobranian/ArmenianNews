@@ -41,18 +41,20 @@ npm run check        # contrôle les 4 pages produites (lang, canonical, hreflan
 npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 24 tests : dérivations de sites.config.js, hreflang, ordre des langues, sitemaps
+npm test             # 33 tests : dérivations de sites.config.js, hreflang, ordre des langues, sitemaps, cartes de partage
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
+npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **24 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **33 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL), la réciprocité des
-`hreflang`, l'ordre du sélecteur et la forme des sitemaps — aucun ne touche le
-réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
+`hreflang`, l'ordre du sélecteur, la forme des sitemaps et le fait que chaque
+vitrine annonce **sa** carte de partage — aucun ne touche le réseau. Le lint et
+l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -259,6 +261,28 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   bord. `applyMeta` **refuse** un HTML privé de l'un ou l'autre marqueur —
   supprimer `<!--CF_BEACON-->` couperait la mesure des deux vitrines sans
   qu'aucun build ne s'en plaigne.
+- **La carte de partage (`og:image`) est propre à chaque vitrine**, décrite par
+  `ogImage` dans `sites.config.js` : `/og-image.jpg` pour le .ch (français),
+  `/og-image-org.jpg` pour le .org (anglais). Les deux noms sont
+  **asymétriques à dessein** — le .ch garde le sien parce que Facebook et
+  WhatsApp l'ont déjà en cache, le .org en prend un neuf justement pour casser
+  ce cache, puisqu'il servait jusqu'ici la carte française. Elle suit la
+  **vitrine et non la langue** : les trois pages du .org partagent la carte
+  anglaise, la marque étant unique par domaine.
+  `scripts/og-image.mjs` (`npm run og-image`) la régénère depuis la marque de
+  `sites.config.js` et les baselines d'`i18n` — **étape manuelle locale**, elle
+  a besoin d'un Chrome et des Google Fonts. Deux pièges y sont désamorcés :
+  `--force-color-profile=srgb` **ne suffit pas** à éviter le profil ICC que
+  Chrome écrit en APP2 (d'où `stripIcc()` — sans quoi WhatsApp cesse d'afficher
+  l'aperçu, en silence, cf. README), et il faut attendre `document.fonts.ready`
+  ou la capture part en polices de secours. Ne relancez pas le script sur `ch` :
+  sa carte lui est antérieure et son URL est déjà partagée.
+  `npm run check` vérifie que chaque page annonce **sa** carte, **aucune carte
+  étrangère**, et que le fichier existe vraiment dans `dist/` — une balise
+  parfaite pointant sur un fichier absent servirait de l'`index.html` en 200,
+  que les scrapers lisent comme une image cassée. Les deux `dist/` contiennent
+  **les deux** fichiers (Vite copie tout `public/`) : c'est sans conséquence,
+  chaque vitrine ne référence que le sien.
 - `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
   processus fils — la config de Vite est mise en cache par processus), dérive
   les pages supplémentaires à partir du HTML déjà bâti (pas un rebuild par

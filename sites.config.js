@@ -27,6 +27,18 @@ export const SITES = {
     // Organization).
     alternateName: ['Armenia Info', 'Արմենիա Ինֆո'],
     email: 'contact@armenieinfo.ch',
+    // Carte de partage (og:image), propre à la vitrine : elle porte la marque
+    // ET la langue du domaine, donc elle ne peut pas être partagée. Chemin
+    // depuis la racine du domaine ; le fichier vit dans public/.
+    //
+    // Les deux noms sont ASYMÉTRIQUES à dessein. Le .ch garde `og-image.jpg`
+    // parce que Facebook et WhatsApp ont déjà cette URL en cache : la
+    // renommer forcerait un re-scrape de tous les partages existants, pour
+    // rien. Le .org prend un nom neuf, ce qui au contraire lui est utile —
+    // il servait jusqu'ici la carte FRANÇAISE du .ch (même fichier dans
+    // public/, copié par Vite dans les deux dist/), et une URL neuve casse ce
+    // cache-là au lieu d'attendre que les scrapers reviennent d'eux-mêmes.
+    ogImage: '/og-image.jpg',
     gscToken: 'dMoDQHq0L5w16RdNPGKom7TJZe6LNjEc7Qq4PtVjO7k',
     // Cloudflare Web Analytics — un jeton PAR VITRINE, émis dans le tableau de
     // bord Cloudflare (Analytics & Logs → Web Analytics → Add a site). Ce
@@ -55,6 +67,9 @@ export const SITES = {
     // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
     // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
     email: 'contact@armenieinfo.ch',
+    // Carte de partage ANGLAISE — voir le commentaire du .ch pour la raison des
+    // deux noms différents. Régénérer avec `npm run og-image`.
+    ogImage: '/og-image-org.jpg',
     // Search Console : le .org est vérifié par un **enregistrement DNS TXT** sur
     // la racine du domaine, et c'est la méthode qui fait autorité ici — elle
     // couvre le domaine entier, sous-domaines compris, et survit à tout

@@ -50,7 +50,33 @@ test('la marque suit le domaine, la baseline suit la langue', () => {
 test('og:url et og:image sont absolus vers le bon host', () => {
   const hy = headFor({ siteId: 'org', lang: 'hy' })
   assert.ok(hy.includes('property="og:url" content="https://armenianews.org/hy/"'))
-  assert.ok(hy.includes('content="https://armenianews.org/og-image.jpg"'))
+  assert.ok(hy.includes('content="https://armenianews.org/og-image-org.jpg"'))
+})
+
+// La carte de partage porte la MARQUE et la LANGUE du domaine : celle du .org
+// est en anglais, celle du .ch en français. Le mode d'échec n'est donc pas
+// « absente » mais « celle du voisin » — c'est exactement ce qui se passait
+// quand les deux vitrines pointaient sur le même /og-image.jpg : armenianews.org
+// annonçait une carte disant « Arménie Info · Un instantané horaire de la vie
+// arménienne » sous un <title> anglais. Aucune erreur nulle part, juste un
+// aperçu WhatsApp et Facebook dans la mauvaise langue.
+test('chaque vitrine annonce SA carte de partage, jamais celle de l\'autre', () => {
+  for (const site of Object.values(SITES)) {
+    for (const page of site.pages) {
+      const head = headFor({ siteId: site.id, lang: page.lang })
+      assert.ok(
+        head.includes(`content="${site.host}${site.ogImage}"`),
+        `${site.id}/${page.lang} : og:image attendu sur ${site.ogImage}`,
+      )
+      for (const autre of Object.values(SITES)) {
+        if (autre.id === site.id) continue
+        assert.ok(
+          !head.includes(autre.ogImage),
+          `${site.id}/${page.lang} : porte la carte de ${autre.id}`,
+        )
+      }
+    }
+  }
 })
 
 // Les deux vitrines portent désormais une balise ; l'invariant utile n'est donc

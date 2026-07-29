@@ -67,7 +67,7 @@ function jsonLd(site, lang) {
         width: 180,
         height: 180,
       },
-      image: `${site.host}/og-image.jpg`,
+      image: `${site.host}${site.ogImage}`,
     },
   ]
   // Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>.
@@ -83,7 +83,11 @@ export function headFor({ siteId, lang }) {
   const url = LANG_URL[lang]
   const title = `${site.brand} · ${SEO[lang].tagline}`
   const { description, keywords } = SEO[lang]
-  const image = `${site.host}/og-image.jpg`
+  // La carte de partage suit la VITRINE, pas la langue : les trois pages du
+  // .org partagent la carte anglaise. C'est voulu — une carte par langue
+  // supposerait trois fichiers à tenir, alors que la marque, elle, est unique
+  // par domaine. Voir `ogImage` dans sites.config.js.
+  const image = `${site.host}${site.ogImage}`
 
   const lines = [
     `<meta name="description" content="${attr(description)}" />`,

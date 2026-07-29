@@ -6,7 +6,7 @@
  * Dérivé de sites.config.js : ajouter une page ou une langue étend
  * automatiquement le contrôle, sans toucher à ce fichier.
  */
-import { readFile } from 'node:fs/promises'
+import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { SITES, LANG_URL, ALL_LANGS } from '../sites.config.js'
@@ -84,6 +84,19 @@ for (const site of Object.values(SITES)) {
           .filter((s) => s.id !== site.id && s.gscToken)
           .every((s) => !html.includes(s.gscToken)),
       ],
+      // Même famille de piège : la carte de partage porte la marque ET la
+      // langue du domaine. Une page du .org annonçant la carte du .ch se
+      // déploie sans erreur et sert un aperçu français sous un titre anglais.
+      [
+        `og:image ${site.ogImage}`,
+        html.includes(`content="${site.host}${site.ogImage}"`),
+      ],
+      [
+        'aucune carte de partage étrangère',
+        Object.values(SITES)
+          .filter((s) => s.id !== site.id)
+          .every((s) => !html.includes(s.ogImage)),
+      ],
     ]
 
     const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
@@ -101,6 +114,22 @@ for (const site of Object.values(SITES)) {
 // sitemaps manquent. C'est arrivé — voir la revue de Task 8.
 for (const site of Object.values(SITES)) {
   const dir = path.join(root, 'dist', site.id)
+
+  // La balise og:image peut être parfaite et le fichier absent : `ogImage` est
+  // une chaîne dans sites.config.js, rien n'oblige quiconque à l'avoir généré.
+  // Le partage servirait alors un 404 — et comme Firebase réécrit tout chemin
+  // manquant vers index.html, ce ne serait même pas un 404 franc mais du HTML
+  // servi en 200, que les scrapers lisent comme une image cassée. On vérifie
+  // donc le fichier, et qu'il pèse quelque chose.
+  const ogPath = path.join(dir, site.ogImage.replace(/^\//, ''))
+  try {
+    const { size } = await stat(ogPath)
+    if (size < 1024) throw new Error('trop petit')
+    console.log(`✓ dist/${site.id}${site.ogImage} (${(size / 1024).toFixed(0)} ko)`)
+  } catch {
+    console.error(`✗ dist/${site.id}${site.ogImage} — absent ou vide (npm run og-image)`)
+    bad++
+  }
 
   let xml
   try {
