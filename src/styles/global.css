@@ -496,8 +496,10 @@ html:lang(hy) {
   gap: 12px;
   color: var(--text);
   font-family: var(--font-display);
-  /* Référence latine EN DUR, pas var(--fsa-display) : cet élément ne compose
-     que le nom de la marque, du latin sur les quatre pages. */
+  /* Référence latine EN DUR, pas var(--fsa-display) : la marque est latine
+     sous fr/en/ru (« Arménie Info », « Armenia News »). Sous hy elle est en
+     arménien (« Արմենիա Ինֆո ») et reprend la cible arménienne — voir le bloc
+     `html:lang(hy)` dédié, plus bas. */
   font-size-adjust: cap-height 0.7;
   font-size: 1.4rem;
   font-weight: 600;
@@ -677,9 +679,10 @@ html:lang(hy) {
   font-size: clamp(3rem, 9.5vw, 7rem);
   font-weight: 600;
   color: var(--text);
-  /* Référence latine EN DUR, comme .nav__brand : ce titre ne compose que le
-     nom de la marque. Sans cela il hériterait de la cible arménienne posée sur
-     h1-h3 et « Armenia Info » rendrait 2 % plus petit que « Armenia News ». */
+  /* Référence latine EN DUR, comme .nav__brand : vraie sous fr/en/ru, reprise
+     par le bloc `html:lang(hy)` plus bas puisque la marque arménienne est en
+     arménien. Sans cette valeur, le titre latin hériterait de la cible
+     arménienne posée sur h1-h3. */
   font-size-adjust: cap-height 0.7;
   letter-spacing: -0.03em;
   font-variation-settings: 'SOFT' 0, 'WONK' 1;
@@ -693,6 +696,34 @@ html:lang(hy) {
   background: linear-gradient(180deg, var(--apricot-bright), var(--apricot-deep));
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+/* ------------------------------------------------------------
+   La marque arménienne est en écriture arménienne (« Արմենիա Ինֆո »), pas en
+   latin comme les trois autres. Ces trois règles rouvrent pour elle des
+   réglages que le reste du fichier réserve au latin.
+   ------------------------------------------------------------ */
+
+/* Taille apparente et approche : la cible arménienne du display, et une
+   approche nulle. Les valeurs latines en dur de `.hero__title` et
+   `.nav__brand` (−0.03em et −0.01em) refermeraient les contrepoinçons ouverts
+   de l'arménien, et `cap-height 0.7` le rendrait 4 % trop gros — c'est le
+   piège des métriques déclarées, décrit à la définition des jetons --fsa-*. */
+html:lang(hy) .hero__title,
+html:lang(hy) .nav__brand {
+  font-size-adjust: cap-height 0.685;
+  letter-spacing: 0;
+}
+
+/* L'italique : Noto Serif Armenian n'en embarque AUCUNE, donc `font-style:
+   italic` faisait synthétiser au navigateur un penché mécanique. L'arménien
+   n'a pas d'italique de tradition — l'emphase s'y marque autrement — et une
+   marque penchée par calcul se voit. On garde le dégradé abricot, qui est le
+   vrai signe du titre, et on redresse la lettre. C'est le même défaut que
+   celui corrigé plus haut sur `:lang(hy)`, revenu par une autre porte : la
+   marque, cette fois, et non le chrome. */
+.hero__title em:lang(hy) {
+  font-style: normal;
 }
 .hero__tagline {
   font-family: var(--font-body);

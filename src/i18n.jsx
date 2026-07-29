@@ -340,9 +340,23 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   hy: {
-    // « Armenia Info », et non « Armenia News » comme sous en/ru : c'est la
-    // seule langue où la marque affichée s'écarte du domaine. Forme latine,
-    // en revanche, comme les trois autres.
+    // « Արմենիա Ին֖ո » — la seule langue dont la marque affichée s'écarte du
+    // domaine (en/ru affichent « Armenia News ») ET la seule écrite dans une
+    // autre écriture que le latin.
+    //
+    // C'est une TRANSLITTÉRATION, pas une traduction : le son du nom latin
+    // transcrit en lettres arméniennes, et non « Հայաստան » qui rendrait
+    // *Armenia* par le nom natif du pays. Le procédé a un précédent établi
+    // dans les médias arméniens — la chaîne « Արմենիա TV » s'écrit ainsi.
+    //
+    // Elle rend en Noto Serif Armenian : Fraunces n'a pas d'arménien, donc la
+    // pile de --font-display y descend d'elle-même. Trois réglages de
+    // global.css étaient justifiés par « la marque ne compose que du latin »
+    // et ont dû être rouverts pour cette seule langue — la taille apparente
+    // et l'approche de `.hero__title`/`.nav__brand`, plus l'italique du héros
+    // (Noto Serif Armenian n'en a pas, le navigateur la synthétisait en
+    // penché). Si vous repassez cette marque en latin, ces trois exceptions
+    // redeviennent inutiles.
     //
     // Cela déroge à la règle « la marque suit le domaine » que porte
     // sites.config.js, et il faut savoir ce que ça implique : `SITES[id].brand`
@@ -354,7 +368,7 @@ const STRINGS = {
     // ce qui touche le SEO et la carte de partage (un JPG cuit qui dit
     // « Armenia News »). Ne « corrigez » pas l'un des deux côtés seul en
     // croyant réparer une incohérence : les deux valeurs sont voulues.
-    'site.title': 'Armenia Info',
+    'site.title': 'Արմենիա Ինֆո',
     'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ աշխարհից եւ Շվեյցարիայից',
     'site.snapshot': 'Պատկեր՝',
     'site.cadence': 'ամեն ժամ',

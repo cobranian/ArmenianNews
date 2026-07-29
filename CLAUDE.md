@@ -660,17 +660,33 @@ de production servent toujours depuis la racine de leur domaine.
   de l'agenda (`Agenda.jsx`), qui appelaient `toLocaleDateString(locale, …)` en
   direct. Ne rouvrez pas ce trou en formatant une date hors des formateurs du
   contexte.
-- **La marque arménienne s'écarte volontairement du domaine.** `/hy/` affiche
-  « Armenia Info » là où `/` et `/ru/` affichent « Armenia News »
-  (`STRINGS.hy['site.title']`, `src/i18n.jsx`). C'est la **seule** entorse à la
-  règle « la marque suit le domaine » que porte `sites.config.js`, et elle a une
-  conséquence à connaître : `SITES.org.brand` reste « Armenia News », donc le
-  `<title>`, l'`og:title` et le JSON-LD de `/hy/` annoncent toujours « Armenia
-  News ». L'écart entre le texte **vu** et les **métadonnées** est assumé et
-  demandé. Ne « corrigez » pas un seul des deux côtés en croyant réparer une
-  incohérence : les deux valeurs sont voulues. Pour les aligner il faudrait une
-  marque par langue dans `sites.config.js`, ce qui touche le SEO et la carte de
-  partage (un JPG cuit qui dit « Armenia News »).
+- **La marque arménienne s'écarte volontairement du domaine, ET de l'écriture
+  latine.** `/hy/` affiche **« Արմենիա Ինֆո »** là où `/` et `/ru/` affichent
+  « Armenia News » (`STRINGS.hy['site.title']`, `src/i18n.jsx`). C'est une
+  **translittération** — le son du nom latin en lettres arméniennes, pas
+  « Հայաստան » qui traduirait *Armenia* par le nom natif ; le procédé suit le
+  précédent d'« Արմենիա TV ».
+
+  C'est la **seule** entorse à la règle « la marque suit le domaine » que porte
+  `sites.config.js`, et elle a une conséquence à connaître : `SITES.org.brand`
+  reste « Armenia News », donc le `<title>`, l'`og:title` et le JSON-LD de
+  `/hy/` annoncent toujours « Armenia News ». L'écart entre le texte **vu** et
+  les **métadonnées** est assumé et demandé. Ne « corrigez » pas un seul des
+  deux côtés en croyant réparer une incohérence : les deux valeurs sont voulues.
+  Pour les aligner il faudrait une marque par langue dans `sites.config.js`, ce
+  qui touche le SEO et la carte de partage (un JPG cuit qui dit « Armenia
+  News »).
+
+  **Le passage à l'écriture arménienne a rouvert trois réglages** que
+  `global.css` réservait au latin en s'appuyant sur « la marque ne compose que
+  du latin » — hypothèse morte. Un bloc `html:lang(hy)` dédié, juste après
+  `.hero__title em`, redonne à `.hero__title` et `.nav__brand` la cible
+  arménienne (`cap-height 0.685`) et une approche nulle, et **annule
+  l'italique** du titre : Noto Serif Armenian n'embarque aucune italique, donc
+  `font-style: italic` faisait synthétiser au navigateur un penché mécanique —
+  l'arménien n'a pas d'italique de tradition. Le dégradé abricot, lui, reste.
+  Si cette marque repasse un jour en latin, ces trois exceptions redeviennent
+  inutiles.
 - **Les `hreflang` doivent rester réciproques.** Les quatre `alternate` plus
   `x-default` sont identiques sur les quatre pages, chacune se citant
   elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc
