@@ -131,34 +131,44 @@ for (const site of Object.values(SITES)) {
     bad++
   }
 
-  // Pages autonomes (carte de liens). Le mode d'échec visé n'est pas
+  // Pages autonomes (cartes de liens). Le mode d'échec visé n'est pas
   // « absente » mais « celle du voisin » : la carte française déployée sur
   // armenianews.org se sert sans la moindre erreur, en français, avec la
   // vignette de partage de l'autre domaine. On contrôle donc la langue
-  // déclarée, le canonical et l'image — chacun doit désigner CE site.
-  try {
-    const lien = await readFile(path.join(dir, 'lien.html'), 'utf-8')
-    const attendus = [
-      [`<html lang="${primaryLang(site.id)}">`, lien.includes(`<html lang="${primaryLang(site.id)}"`)],
-      [`canonical ${site.host}/lien.html`, lien.includes(`href="${site.host}/lien.html"`)],
-      [`og:image ${site.ogImage}`, lien.includes(`content="${site.host}${site.ogImage}"`)],
-      [
-        'aucun host ni carte du voisin',
-        Object.values(SITES)
-          .filter((s) => s.id !== site.id)
-          .every((s) => !lien.includes(s.host) && !lien.includes(s.ogImage)),
-      ],
-    ]
-    const kos = attendus.filter(([, ok]) => !ok).map(([n]) => n)
-    if (kos.length) {
-      console.error(`✗ dist/${site.id}/lien.html\n    ${kos.join('\n    ')}`)
-      bad += kos.length
-    } else {
-      console.log(`✓ dist/${site.id}/lien.html (${primaryLang(site.id)})`)
+  // déclarée, le canonical et l'image — chacun doit désigner CE site, et CETTE
+  // page (un canonical recopié d'une carte sur l'autre les ferait toutes deux
+  // se déclarer comme la même URL).
+  for (const name of site.standalone ?? []) {
+    try {
+      const lien = await readFile(path.join(dir, `${name}.html`), 'utf-8')
+      const attendus = [
+        [
+          `<html lang="${primaryLang(site.id)}">`,
+          lien.includes(`<html lang="${primaryLang(site.id)}"`),
+        ],
+        [
+          `canonical ${site.host}/${name}.html`,
+          lien.includes(`rel="canonical" href="${site.host}/${name}.html"`),
+        ],
+        [`og:image ${site.ogImage}`, lien.includes(`content="${site.host}${site.ogImage}"`)],
+        [
+          'aucun host ni carte du voisin',
+          Object.values(SITES)
+            .filter((s) => s.id !== site.id)
+            .every((s) => !lien.includes(s.host) && !lien.includes(s.ogImage)),
+        ],
+      ]
+      const kos = attendus.filter(([, ok]) => !ok).map(([n]) => n)
+      if (kos.length) {
+        console.error(`✗ dist/${site.id}/${name}.html\n    ${kos.join('\n    ')}`)
+        bad += kos.length
+      } else {
+        console.log(`✓ dist/${site.id}/${name}.html (${primaryLang(site.id)})`)
+      }
+    } catch {
+      console.error(`✗ dist/${site.id}/${name}.html — absent (pages/${name}.${site.id}.html ?)`)
+      bad++
     }
-  } catch {
-    console.error(`✗ dist/${site.id}/lien.html — absent (pages/lien.${site.id}.html ?)`)
-    bad++
   }
 
   let xml

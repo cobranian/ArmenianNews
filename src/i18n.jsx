@@ -151,7 +151,11 @@ const STRINGS = {
 
     'radio.eyebrow': 'Erevan · 128 kbps',
     'radio.title': 'En direct',
-    'radio.subtitle': "La Radio publique d’Arménie, en flux continu",
+    // ONZE stations, pas une. Ne nommer que la Radio publique en passait dix
+    // sous silence — le nombre est écrit en toutes lettres parce que t() ne
+    // sait pas interpoler. Si vous touchez à STATIONS (Radio.jsx), les quatre
+    // traductions ci-dessous doivent suivre ; un test le vérifie.
+    'radio.subtitle': 'Onze radios arméniennes, en flux continu',
     'radio.onair': 'En direct',
     'radio.tz': 'Erevan',
     'radio.play': 'Écouter en direct',
@@ -312,7 +316,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
-    'radio.subtitle': 'Public Radio of Armenia, streaming live',
+    'radio.subtitle': 'Eleven Armenian stations, streaming live',
     'radio.onair': 'On air',
     'radio.tz': 'Yerevan',
     'radio.play': 'Listen live',
@@ -472,7 +476,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',
-    'radio.subtitle': 'Հայաստանի Հանրային Ռադիո՝ ուղիղ հեռարձակում',
+    'radio.subtitle': 'Տասնմեկ հայկական ռադիոկայան՝ ուղիղ եթերում',
     'radio.onair': 'Ուղիղ',
     'radio.tz': 'Երևան',
     'radio.play': 'Միացնել',
@@ -632,7 +636,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Ереван · 128 кбит/с',
     'radio.title': 'Прямой эфир',
-    'radio.subtitle': 'Общественное радио Армении в прямом эфире',
+    'radio.subtitle': 'Одиннадцать армянских радиостанций в прямом эфире',
     'radio.onair': 'В эфире',
     'radio.tz': 'Ереван',
     'radio.play': 'Слушать в эфире',

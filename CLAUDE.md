@@ -41,7 +41,7 @@ npm run check        # contrôle les 4 pages produites (lang, canonical, hreflan
 npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 33 tests : dérivations de sites.config.js, hreflang, ordre des langues, sitemaps, cartes de partage
+npm test             # 36 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,11 +50,12 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **33 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **36 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL), la réciprocité des
-`hreflang`, l'ordre du sélecteur, la forme des sitemaps et le fait que chaque
-vitrine annonce **sa** carte de partage — aucun ne touche le réseau. Le lint et
-l'exécution réelle des scripts complètent la vérification.
+`hreflang`, l'ordre du sélecteur, la forme des sitemaps, le fait que chaque
+vitrine annonce **sa** carte de partage, et la concordance entre le tableau
+`STATIONS` et les six textes qui annoncent un nombre de radios — aucun ne touche
+le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -283,6 +284,43 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   que les scrapers lisent comme une image cassée. Les deux `dist/` contiennent
   **les deux** fichiers (Vite copie tout `public/`) : c'est sans conséquence,
   chaque vitrine ne référence que le sien.
+- **Les pages autonomes** (`pages/`) sont des HTML complets hors du bundle
+  React — aujourd'hui les cartes de liens à partager sur les réseaux. La liste
+  vit dans `sites.config.js` (`standalone`), **par vitrine**, et
+  `build-sites.mjs` copie `pages/<nom>.<siteId>.html` vers
+  `dist/<siteId>/<nom>.html` :
+
+  | Fichier | Servi à | Affiche |
+  |---|---|---|
+  | `pages/lien.ch.html` | `armenieinfo.ch/lien.html` | armenieinfo**.ch** |
+  | `pages/lien-fr.ch.html` | `armenieinfo.ch/lien-fr.html` | armenieinfo**.fr** |
+  | `pages/lien.org.html` | `armenianews.org/lien.html` | armenianews.org |
+
+  **Elles ne peuvent pas vivre dans `public/`** : Vite copie ce dossier dans les
+  **deux** `dist/`, donc la carte française atterrirait aussi sur
+  armenianews.org — en français, sous un domaine anglais, sans qu'aucun build
+  ne s'en plaigne. Même piège que la carte de partage avant qu'elle ne devienne
+  propre à chaque vitrine. La liste est **par site** et non globale : le `.org`
+  n'a pas d'équivalent de `lien-fr`, et une liste unique l'y ferait chercher un
+  fichier absent.
+
+  `lien` affiche le domaine qui la sert — son URL et son contenu concordent.
+  `lien-fr` est la même carte tournée vers le public français, d'où son
+  **`noindex`** : deux pages françaises quasi identiques sur un même domaine,
+  c'est du contenu dupliqué. Le `noindex` ne gêne en rien le partage social,
+  Facebook et WhatsApp lisant l'Open Graph et non la directive robots.
+
+  Un fichier manquant **interrompt le build**. Sans cela il se déploierait en
+  silence, et Firebase répondrait à son URL par `index.html` en 200 — donc
+  l'application entière au lieu d'un 404 franc. `npm run check` vérifie en
+  outre, pour chaque carte, le `<html lang>`, le canonical (propre à **cette**
+  page), l'`og:image` et l'absence du domaine ou de la carte du voisin.
+
+  **Le nombre de radios est écrit en toutes lettres** dans ces cartes et dans
+  les quatre `radio.subtitle` (`t()` ne sait pas interpoler). Rien ne les relie
+  au tableau `STATIONS` de `Radio.jsx` : `test/radio-count.test.mjs` compte les
+  stations et échoue si les six textes divergent. Sans lui, une douzième
+  station ferait mentir six textes en quatre langues, en silence.
 - `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
   processus fils — la config de Vite est mise en cache par processus), dérive
   les pages supplémentaires à partir du HTML déjà bâti (pas un rebuild par

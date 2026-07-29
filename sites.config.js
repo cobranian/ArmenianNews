@@ -39,6 +39,16 @@ export const SITES = {
     // public/, copié par Vite dans les deux dist/), et une URL neuve casse ce
     // cache-là au lieu d'attendre que les scrapers reviennent d'eux-mêmes.
     ogImage: '/og-image.jpg',
+    // Pages autonomes de cette vitrine : un HTML complet hors du bundle React,
+    // copié de `pages/<nom>.<siteId>.html` vers `dist/<siteId>/<nom>.html`.
+    // La liste est PAR SITE et non globale — le .org n'a pas d'équivalent de
+    // `lien-fr`, et une liste unique l'y ferait chercher un fichier absent.
+    //
+    // `lien` affiche armenieinfo.ch, le domaine qui la sert : son URL et son
+    // contenu concordent. `lien-fr` est la même carte tournée vers le public
+    // français, qui affiche armenieinfo.fr — d'où son `noindex`, c'est une
+    // variante de ciblage, pas une seconde page à indexer.
+    standalone: ['lien', 'lien-fr'],
     gscToken: 'dMoDQHq0L5w16RdNPGKom7TJZe6LNjEc7Qq4PtVjO7k',
     // Cloudflare Web Analytics — un jeton PAR VITRINE, émis dans le tableau de
     // bord Cloudflare (Analytics & Logs → Web Analytics → Add a site). Ce
@@ -70,6 +80,9 @@ export const SITES = {
     // Carte de partage ANGLAISE — voir le commentaire du .ch pour la raison des
     // deux noms différents. Régénérer avec `npm run og-image`.
     ogImage: '/og-image-org.jpg',
+    // Une seule carte ici : le .org n'a pas de domaine de vanité à mettre en
+    // avant, contrairement au .ch et à son armenieinfo.fr.
+    standalone: ['lien'],
     // Search Console : le .org est vérifié par un **enregistrement DNS TXT** sur
     // la racine du domaine, et c'est la méthode qui fait autorité ici — elle
     // couvre le domaine entier, sous-domaines compris, et survit à tout

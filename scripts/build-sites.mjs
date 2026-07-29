@@ -91,9 +91,9 @@ async function derivePages(site) {
   }
 }
 
-// Pages autonomes : un HTML complet par vitrine, hors du bundle React (carte de
-// liens à partager sur les réseaux, etc.). Une par site et par langue :
-// `pages/<nom>.<siteId>.html` → `dist/<siteId>/<nom>.html`.
+// Pages autonomes : un HTML complet par vitrine, hors du bundle React (cartes de
+// liens à partager sur les réseaux). La liste vit dans sites.config.js, PAR
+// SITE : `pages/<nom>.<siteId>.html` → `dist/<siteId>/<nom>.html`.
 //
 // ELLES NE PEUVENT PAS VIVRE DANS public/. Vite copie ce dossier tel quel dans
 // les DEUX dist/, donc la carte française atterrirait aussi sur
@@ -104,10 +104,8 @@ async function derivePages(site) {
 // L'absence du fichier est une ERREUR DURE, pas un avertissement : une carte
 // manquante se déploierait en silence, et Firebase répondrait à son URL par
 // index.html en 200 — donc l'application entière au lieu d'un 404 franc.
-const STANDALONE = ['lien']
-
 async function copyStandalone(site) {
-  for (const name of STANDALONE) {
+  for (const name of site.standalone ?? []) {
     const src = path.join(root, 'pages', `${name}.${site.id}.html`)
     const dst = path.join(root, 'dist', site.id, `${name}.html`)
     try {

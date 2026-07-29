@@ -6,7 +6,15 @@
 
 <title>Arménie Info · Toute la vie arménienne, chaque heure</title>
 <meta name="description" content="Sept rédactions arméniennes, l'agenda de la diaspora et les réseaux, réunis en une page et rafraîchis toutes les heures. En français, anglais, arménien et russe." />
-<link rel="canonical" href="https://armenieinfo.ch/lien.html" />
+<link rel="canonical" href="https://armenieinfo.ch/lien-fr.html" />
+
+<!-- VARIANTE DE CIBLAGE, pas une seconde page de contenu. Elle est mot pour
+     mot identique a /lien.html ; seul le domaine affiche change (ici
+     armenieinfo.fr, pour le public francais). Deux pages francaises quasi
+     identiques sur le meme domaine, c'est du contenu dupliqué manuel : d'ou
+     le noindex. Il ne gene EN RIEN le partage social — Facebook et WhatsApp
+     lisent les balises Open Graph, pas la directive robots. -->
+<meta name="robots" content="noindex, follow" />
 
 <!-- Open Graph. La page d'origine n'en portait AUCUNE : partagée sur Facebook,
      elle serait apparue en lien nu, sans image ni description — or c'est
@@ -16,7 +24,7 @@
 <meta property="og:site_name" content="Arménie Info" />
 <meta property="og:title" content="Arménie Info · Toute la vie arménienne, chaque heure" />
 <meta property="og:description" content="Sept rédactions arméniennes, l'agenda de la diaspora et les réseaux, réunis en une page et rafraîchis toutes les heures." />
-<meta property="og:url" content="https://armenieinfo.ch/lien.html" />
+<meta property="og:url" content="https://armenieinfo.ch/lien-fr.html" />
 <meta property="og:image" content="https://armenieinfo.ch/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -300,7 +308,7 @@ body {
   <nav>
     <ul class="dests">
       <li>
-        <a class="dest" href="https://armenieinfo.ch/">
+        <a class="dest" href="https://armenieinfo.fr/">
           <span class="dest__name">Le site
             <span class="dest__what">Le fil complet, dans quatre langues</span>
           </span>
@@ -308,7 +316,7 @@ body {
         </a>
       </li>
       <li>
-        <a class="dest" href="https://armenieinfo.ch/#actualites">
+        <a class="dest" href="https://armenieinfo.fr/#actualites">
           <span class="dest__name">Actualités
             <span class="dest__what">Sept rédactions arméniennes, un seul fil</span>
           </span>
@@ -319,7 +327,7 @@ body {
         <!-- #direct, PAS #radio : la section « radio » n'existe pas
              sous ce nom sur le site, le lien d'origine retombait en
              haut de page sans rien signaler. -->
-        <a class="dest" href="https://armenieinfo.ch/#direct">
+        <a class="dest" href="https://armenieinfo.fr/#direct">
           <span class="dest__name">Radios en direct
             <!-- ONZE stations, pas une : Première chaîne, Im Radio, Arevik,
                  Culture, Mariam, Voice of Van, Lav, Fama, Yerevan Nights,
@@ -331,7 +339,7 @@ body {
         </a>
       </li>
       <li>
-        <a class="dest" href="https://armenieinfo.ch/#agenda">
+        <a class="dest" href="https://armenieinfo.fr/#agenda">
           <span class="dest__name">Agenda
             <span class="dest__what">Événements arméniens dans le monde et en Suisse</span>
           </span>
@@ -341,7 +349,7 @@ body {
     </ul>
   </nav>
 
-  <a class="cta" href="https://armenieinfo.ch/">Ouvrir armenieinfo.ch</a>
+  <a class="cta" href="https://armenieinfo.fr/">Ouvrir armenieinfo.fr</a>
 
   <p class="keywords">
     Arménie <span>·</span> Diaspora <span>·</span>
@@ -349,7 +357,7 @@ body {
   </p>
 
   <div class="foot">
-    <a href="https://armenieinfo.ch/">armenieinfo.ch</a>
+    <a href="https://armenieinfo.fr/">armenieinfo.fr</a>
     <span class="foot__live"><span class="dot" aria-hidden="true"></span>Radio en direct</span>
   </div>
 
