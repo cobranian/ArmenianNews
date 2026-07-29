@@ -11,13 +11,16 @@ import agenda from '../data/agenda.json'
 // image (hotlinked); events with no image — or an image that fails to load —
 // fall back to a deterministic Armenian motif, keeping every card the same
 // height. The date pastille overlays the banner's bottom-left corner.
-function EventCard({ ev, locale, place }) {
+// Les dates passent par les formateurs du contexte, jamais par `locale` :
+// 'hy-AM' est une locale que le navigateur accepte sans savoir la rendre, et un
+// appel direct à toLocaleDateString ici afficherait ces pastilles dans la langue
+// du lecteur au milieu d'une page arménienne (voir src/hyDate.js).
+function EventCard({ ev, place }) {
+  const { formatDayNum, formatMonthAbbr, formatWeekdayTime } = useI18n()
   const d = ev.date ? new Date(ev.date) : null
-  const day = d ? d.toLocaleDateString(locale, { day: 'numeric' }) : '–'
-  const month = d ? d.toLocaleDateString(locale, { month: 'short' }).replace('.', '') : ''
-  const when = d
-    ? d.toLocaleDateString(locale, { weekday: 'short', hour: '2-digit', minute: '2-digit' })
-    : null
+  const day = d ? formatDayNum(d) : '–'
+  const month = d ? formatMonthAbbr(d) : ''
+  const when = d ? formatWeekdayTime(d) : null
 
   const [broken, setBroken] = useState(false)
   const showPhoto = ev.image && !broken
@@ -65,7 +68,7 @@ function EventCard({ ev, locale, place }) {
 }
 
 export function Agenda() {
-  const { t, locale, lang } = useI18n()
+  const { t, lang } = useI18n()
 
   // Bucket every event under a canonical country key — Switzerland straight from
   // its own feed, the rest grouped by the country resolved from each event's
@@ -155,7 +158,7 @@ export function Agenda() {
               }
             >
               {events.map((ev, i) => (
-                <EventCard key={ev.url || i} ev={ev} locale={locale} place={ev.location} />
+                <EventCard key={ev.url || i} ev={ev} place={ev.location} />
               ))}
             </Carousel>
           ) : (

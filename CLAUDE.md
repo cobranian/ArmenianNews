@@ -41,7 +41,7 @@ npm run check        # contrôle les 4 pages produites (lang, canonical, hreflan
 npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 40 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios
+npm test             # 45 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios, dates arméniennes
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,12 +50,14 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **40 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **45 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL), la réciprocité des
 `hreflang`, l'ordre du sélecteur, la forme des sitemaps, le fait que chaque
-vitrine annonce **sa** carte de partage, et la concordance entre le tableau
-`STATIONS` et les six textes qui annoncent un nombre de radios — aucun ne touche
-le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
+vitrine annonce **sa** carte de partage, la concordance entre le tableau
+`STATIONS` et les six textes qui annoncent un nombre de radios, et la
+conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
+voir « À savoir ») — aucun ne touche le réseau. Le lint et l'exécution réelle
+des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -341,6 +343,14 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   la mise en évidence se déplace. Module plat lui aussi, pour la même raison
   que `src/seo.js` : y ajouter ces exports dans `i18n.jsx` ferait remonter le
   lint d'un avertissement `react-refresh` de plus (voir la section Lint).
+- `src/hyDate.js` porte les **noms de mois et de jours arméniens écrits en
+  dur**, plus les trois formateurs qui s'en servent. Quatrième module plat, même
+  raison que les deux précédents. Le pourquoi est dans « À savoir » ci-dessous :
+  `Intl` ne sait pas rendre `hy-AM` dans un navigateur. **Toutes** les dates
+  affichées passent par les formateurs du contexte i18n
+  (`formatDate`, `formatDayNum`, `formatMonthAbbr`, `formatWeekdayTime`) : le
+  `locale` que `useI18n()` expose encore ne doit **jamais** servir à formater
+  une date.
 
 **Internationalisation** — `src/i18n.jsx` expose un contexte React
 (`useI18n()` → `{ t, lang, formatDate, locale }`) avec les dictionnaires
@@ -612,6 +622,35 @@ de production servent toujours depuis la racine de leur domaine.
   prérendu et l'attribut `<html lang>` disent autre chose : flash de contenu et
   attribut mensonger. Googlebot n'ayant pas de `localStorage`, l'écart serait
   **invisible en test** et bien réel en production. La clé `theme`, elle, reste.
+- **`Intl` ne sait pas rendre l'arménien dans un navigateur, et Node si.** C'est
+  l'asymétrie la plus traître du dépôt. `Intl.DateTimeFormat('hy-AM')` ne
+  *résout* pas dans l'ICU de Chrome, qui n'embarque pas les données de date
+  arméniennes : il retombe sur la langue **du lecteur**, pas sur l'anglais. Un
+  lecteur allemand voyait donc une date allemande sur `/hy/`. Mesuré :
+  `…('hy-AM').resolvedOptions().locale` → `'fr'` depuis un Chrome français.
+  **Node, lui, a l'ICU complet** et rend correctement « 29 հուլիսի, 2026 թ. » —
+  donc aucun test côté Node ne pouvait voir la panne, et `npm run prerender`
+  cuisait dans la page la langue du Chrome de la CI. D'où `src/hyDate.js`, qui
+  écrit les mois et les jours **en dur** plutôt que de détecter la panne : une
+  bascule conditionnelle ferait dépendre le HTML de la machine qui le produit,
+  et c'est exactement la classe de bug qu'on répare.
+  `test/hy-date.test.mjs` confronte les tables au CLDR **via l'ICU de Node** —
+  la même asymétrie, retournée en outil. Le défaut touchait deux endroits, et le
+  second s'était fait oublier : le bandeau de date du héros **et** les pastilles
+  de l'agenda (`Agenda.jsx`), qui appelaient `toLocaleDateString(locale, …)` en
+  direct. Ne rouvrez pas ce trou en formatant une date hors des formateurs du
+  contexte.
+- **La marque arménienne s'écarte volontairement du domaine.** `/hy/` affiche
+  « Armenia Info » là où `/` et `/ru/` affichent « Armenia News »
+  (`STRINGS.hy['site.title']`, `src/i18n.jsx`). C'est la **seule** entorse à la
+  règle « la marque suit le domaine » que porte `sites.config.js`, et elle a une
+  conséquence à connaître : `SITES.org.brand` reste « Armenia News », donc le
+  `<title>`, l'`og:title` et le JSON-LD de `/hy/` annoncent toujours « Armenia
+  News ». L'écart entre le texte **vu** et les **métadonnées** est assumé et
+  demandé. Ne « corrigez » pas un seul des deux côtés en croyant réparer une
+  incohérence : les deux valeurs sont voulues. Pour les aligner il faudrait une
+  marque par langue dans `sites.config.js`, ce qui touche le SEO et la carte de
+  partage (un JPG cuit qui dit « Armenia News »).
 - **Les `hreflang` doivent rester réciproques.** Les quatre `alternate` plus
   `x-default` sont identiques sur les quatre pages, chacune se citant
   elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc

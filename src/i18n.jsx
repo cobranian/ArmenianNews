@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo } from 'react'
 import { LANGS, langFromPath } from '../sites.config.js'
 import { SITE_ID } from './site.js'
+import { hyLongDate, hyMonthAbbr, hyWeekdayTime } from './hyDate.js'
 
 // LANGS lives in sites.config.js because Node cannot parse JSX — the build
 // scripts and tests run outside the browser and need this data as plain
@@ -339,10 +340,21 @@ const STRINGS = {
     'radio.st.yeraz': 'Radio Yeraz',
   },
   hy: {
-    // Forme latine délibérée : la marque suit le domaine (.org = Armenia
-    // News), pas la langue — voir sites.config.js et le commentaire jumeau
-    // dans le bloc `en`.
-    'site.title': 'Armenia News',
+    // « Armenia Info », et non « Armenia News » comme sous en/ru : c'est la
+    // seule langue où la marque affichée s'écarte du domaine. Forme latine,
+    // en revanche, comme les trois autres.
+    //
+    // Cela déroge à la règle « la marque suit le domaine » que porte
+    // sites.config.js, et il faut savoir ce que ça implique : `SITES[id].brand`
+    // reste « Armenia News », et le <title> se composant `${brand} · ${tagline}`,
+    // l'onglet du navigateur, l'og:title et le JSON-LD de /hy/ annoncent
+    // toujours « Armenia News ». L'écart est donc entre le texte VU dans la
+    // page (nav, héros, pied) et les métadonnées. Il est assumé et demandé ;
+    // pour l'effacer il faudrait une marque par langue dans sites.config.js,
+    // ce qui touche le SEO et la carte de partage (un JPG cuit qui dit
+    // « Armenia News »). Ne « corrigez » pas l'un des deux côtés seul en
+    // croyant réparer une incohérence : les deux valeurs sont voulues.
+    'site.title': 'Armenia Info',
     'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ աշխարհից եւ Շվեյցարիայից',
     'site.snapshot': 'Պատկեր՝',
     'site.cadence': 'ամեն ժամ',
@@ -687,17 +699,62 @@ export function LanguageProvider({ children }) {
 
   const value = useMemo(() => {
     const t = (key) => STRINGS[lang][key] ?? STRINGS.fr[key] ?? key
+
+    // Toutes les dates affichées passent par ces quatre formateurs, et c'est
+    // le point : l'arménien n'a pas de données de date dans l'ICU de Chrome, et
+    // `toLocaleDateString('hy-AM')` y rend la langue DU LECTEUR (voir le
+    // dossier complet dans src/hyDate.js). Un appel direct à Intl depuis un
+    // composant rouvrirait le trou pour cette seule date, en silence — c'est
+    // ce qui était arrivé aux pastilles de l'agenda, restées en français sur
+    // /hy/ alors que le reste de la page était traduit.
+    //
+    // `locale` reste exposé parce que la forme publique de useI18n() le
+    // documente, mais NE L'UTILISEZ PAS pour formater une date : il vaut
+    // 'hy-AM', une locale que le navigateur accepte sans savoir la rendre.
+    const hy = lang === 'hy'
+
     const formatDate = (iso) => {
       if (!iso) return ''
       const d = new Date(iso)
       if (Number.isNaN(d.getTime())) return iso
+      if (hy) return hyLongDate(d)
       return d.toLocaleDateString(LOCALES[lang], {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
       })
     }
-    return { lang, t, formatDate, locale: LOCALES[lang] }
+
+    // Le jour du mois est le même chiffre dans les quatre langues — pas besoin
+    // d'Intl pour ça.
+    const formatDayNum = (d) => String(d.getDate())
+
+    // Le français abrège avec un point (« juil. »), l'arménien sans. Le retrait
+    // du point vit ici plutôt que dans le composant, pour que la règle soit
+    // décidée au même endroit que le choix de la langue.
+    const formatMonthAbbr = (d) =>
+      hy
+        ? hyMonthAbbr(d)
+        : d.toLocaleDateString(LOCALES[lang], { month: 'short' }).replace('.', '')
+
+    const formatWeekdayTime = (d) =>
+      hy
+        ? hyWeekdayTime(d)
+        : d.toLocaleDateString(LOCALES[lang], {
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+          })
+
+    return {
+      lang,
+      t,
+      formatDate,
+      formatDayNum,
+      formatMonthAbbr,
+      formatWeekdayTime,
+      locale: LOCALES[lang],
+    }
   }, [lang])
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
