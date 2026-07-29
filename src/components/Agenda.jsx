@@ -88,15 +88,31 @@ export function Agenda() {
     const labelOf = (key) => countryLabel(key, lang, rep[key]?.location)
     const foldLabel = (k) =>
       labelOf(k).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
-    // Switzerland pinned first; the rest alphabetical by localized name.
-    const order = Object.keys(groups)
-      .filter((k) => k !== 'switzerland')
-      .sort((a, b) => foldLabel(a).localeCompare(foldLabel(b)))
-    if (groups.switzerland) order.unshift('switzerland')
+    // Every country on the same footing, alphabetical by localized name.
+    // Switzerland used to be pinned to the top; it now takes its alphabetical
+    // place like the rest, so the menu carries the same world-first framing as
+    // the section subtitle and the Hero baseline.
+    //
+    // The order is NOT the default selection — that is `useState` below, which
+    // still opens on Switzerland. Sorting and defaulting are deliberately kept
+    // apart: `order[0]` would be an arbitrary country that CHANGES WITH THE
+    // LANGUAGE (Allemagne in fr, Argentina in en), since the sort key is the
+    // localized label. A default nobody chose, differing per language, is not
+    // a world-first stance — just noise.
+    const order = Object.keys(groups).sort((a, b) =>
+      foldLabel(a).localeCompare(foldLabel(b)),
+    )
     return { order, groups, labelOf }
   }, [lang])
 
+  // Switzerland opens by default even though it is no longer first in the menu.
+  // That split is the whole point: the ORDER carries the world-first framing,
+  // the DEFAULT carries what the main readership actually came for. Do not
+  // "tidy" this into `order[0]` — see the sort above for why that default would
+  // differ per language.
   const [country, setCountry] = useState('switzerland')
+  // Falls back to the first country when Switzerland has no upcoming event, so
+  // the carousel is never empty.
   const active = groups[country] ? country : order[0]
   const events = active ? groups[active] : []
 

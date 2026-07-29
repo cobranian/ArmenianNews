@@ -323,8 +323,20 @@ français, et Courrier reste le premier onglet (comme pour hy). Le français est
 la langue par défaut et doit porter tous ses accents (é, è, à, ê, ç…).
 
 **Le sélecteur de pays de l'agenda.** L'agenda est **un seul carrousel piloté
-par une liste déroulante** (`src/components/Agenda.jsx`) : la Suisse est l'option
-par défaut, épinglée en tête ; les autres pays suivent, triés par nom localisé.
+par une liste déroulante** (`src/components/Agenda.jsx`) : **tous les pays sont
+sur le même rang**, triés par nom localisé. La Suisse n'est **plus épinglée en
+tête** — elle prend sa place alphabétique comme les autres, pour que le menu
+porte le même cadrage « le monde d'abord » que la baseline du Hero et le
+sous-titre de la section.
+
+**Mais elle reste le pays ouvert au chargement**, et cette dissociation est
+délibérée : **l'ordre porte le positionnement, le défaut porte l'usage**. Ne
+« simplifiez » pas le `useState('switzerland')` en `order[0]` — la clé de tri
+étant le **libellé traduit**, `order[0]` désigne un pays différent selon la
+langue (Allemagne en fr, Argentina en en, ԱՄԷ en hy, Австралия en ru). La même
+page ouvrirait alors sur un pays arbitraire, et pas le même d'une URL à
+l'autre. Le repli sur `order[0]` ne sert qu'au cas où la Suisse n'a aucun
+événement à venir, pour que le carrousel ne soit jamais vide.
 **Le menu ne liste que les pays qui ont réellement des événements à venir** —
 Arménie (Erevan) comprise, car armenopole recense beaucoup d'événements d'Erevan
 sur ses pages diaspora. Les événements « monde » sont **regroupés par le pays

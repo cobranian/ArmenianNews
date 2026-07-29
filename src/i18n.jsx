@@ -29,7 +29,7 @@ const STRINGS = {
     'news.empty': 'Aucun article pour le moment.',
 
     'agenda.title': 'Agenda',
-    'agenda.subtitle': 'Événements arméniens en Suisse et dans le monde',
+    'agenda.subtitle': 'Événements arméniens dans le monde et en Suisse',
     'agenda.switzerland': 'Suisse',
     'agenda.world': 'Monde',
     'agenda.country': 'Pays',
@@ -198,7 +198,7 @@ const STRINGS = {
     'news.empty': 'No articles yet.',
 
     'agenda.title': 'Events',
-    'agenda.subtitle': 'Armenian events in Switzerland and around the world',
+    'agenda.subtitle': 'Armenian events around the world and in Switzerland',
     'agenda.switzerland': 'Switzerland',
     'agenda.world': 'World',
     'agenda.country': 'Country',
@@ -358,7 +358,7 @@ const STRINGS = {
     'news.empty': 'Դեռ հոդվածներ չկան։',
 
     'agenda.title': 'Միջոցառումներ',
-    'agenda.subtitle': 'Հայկական միջոցառումներ Շվեյցարիայում եւ աշխարհում',
+    'agenda.subtitle': 'Հայկական միջոցառումներ աշխարհում եւ Շվեյցարիայում',
     'agenda.switzerland': 'Շվեյցարիա',
     'agenda.world': 'Աշխարհ',
     'agenda.country': 'Երկիր',
@@ -518,7 +518,7 @@ const STRINGS = {
     'news.empty': 'Пока нет статей.',
 
     'agenda.title': 'Афиша',
-    'agenda.subtitle': 'Армянские события в Швейцарии и по всему миру',
+    'agenda.subtitle': 'Армянские события по всему миру и в Швейцарии',
     'agenda.switzerland': 'Швейцария',
     'agenda.world': 'Мир',
     'agenda.country': 'Страна',
