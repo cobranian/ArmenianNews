@@ -9,9 +9,9 @@
 
 export const SEO = {
   fr: {
-    tagline: 'Actualités arméniennes de Suisse',
+    tagline: 'Actualités arméniennes',
     description:
-      'Actualités, agenda et réseaux sociaux arméniens de Suisse et du monde, mis à jour chaque heure.',
+      'Actualités, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.',
     keywords:
       'actualités arméniennes, Arménie, Artsakh, diaspora arménienne, agenda arménien, communauté arménienne de Suisse',
   },
