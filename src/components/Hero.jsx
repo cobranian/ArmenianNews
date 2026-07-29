@@ -9,12 +9,14 @@ export function Hero() {
     <header className="hero" id="top">
       <div className="container hero__frame">
         {/* Trois écritures dans une seule ligne, identique sur les quatre
-            pages. Le `lang` n'est donc pas décoratif : il marque la seule
-            partie arménienne pour que global.css rattrape sa taille optique
-            (les capitales arméniennes rendent 12 % plus hautes que les
-            latines juste à côté), et il évite qu'un lecteur d'écran épelle
-            « ՀԱՅԱՍՏԱՆ » avec la voix de la page. La famille, elle, n'a besoin
-            de personne : la pile de --font-mono résout chaque glyphe. */}
+            pages. Ni la famille ni la taille n'ont besoin de ce `lang` :
+            la pile de --font-mono résout chaque glyphe, et le
+            `font-size-adjust: cap-height` posé sur .hero__kicker égalise les
+            hauteurs de capitale police par police, à l'intérieur de la ligne.
+            Le `lang` sert aux deux choses qu'eux ne peuvent pas faire : porter
+            la correction de GRAISSE de l'arménien (voir global.css), et éviter
+            qu'un lecteur d'écran épelle « ՀԱՅԱՍՏԱՆ » avec la voix de la
+            page. */}
         <div className="hero__kicker">
           <span lang="hy">ՀԱՅԱՍՏԱՆ</span> · ARMENIA · ARMÉNIE
         </div>

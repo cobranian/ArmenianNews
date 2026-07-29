@@ -418,6 +418,26 @@ emoji) — lu comme un tampon « dateline », c'est assumé.
 **Styles** — `src/styles/global.css`, un seul fichier. La bascule jour / nuit et
 la palette « abricot sur basalte » y sont définies.
 
+**Une convention du fichier à ne pas casser : chaque `font-family:
+var(--font-X)` est immédiatement suivie de son `font-size-adjust:
+var(--fsa-X)`** — 17 paires pour le display, 34 pour l'utilitaire, 3 pour le
+corps. C'est ce qui donne aux quatre langues la même taille *vue* alors que
+chaque écriture a sa propre hauteur d'œil (le russe rendait 7 % plus gros, les
+titres arméniens et russes 4,3 %). Le raisonnement complet, les mesures et les
+deux pièges — la métrique *déclarée* des Noto arméniens est leur métrique
+**latine**, et l'arménien demande deux corrections opposées selon le rôle —
+sont dans le grand commentaire du fichier, à la définition des jetons `--fsa-*`.
+
+Trois conséquences pratiques. **Une nouvelle règle qui pose une famille sans
+son réglage** héritera de celui d'un autre rôle et changera de taille sous une
+seule langue, en silence. **`.hero__title` et `.nav__brand` portent la
+référence latine en dur** et non le jeton, parce qu'ils ne composent que le nom
+de la marque : la valeur est écrite sur place car les deux sélecteurs sont
+redéfinis plus bas, où une règle groupée se ferait écraser à spécificité égale.
+Et **ne mesurez jamais une hauteur de capitale sur un rendu de 11px** : le
+rasteur y arrondit et exagère l'écart — c'est ce qui avait produit une
+sur-correction de 6 % sur la pastille arménienne.
+
 ## Données : ce qui est scrapé vs. curé à la main
 
 - **Généré par le scrape (ne pas éditer à la main)** — `news.json`,

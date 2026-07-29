@@ -228,6 +228,7 @@ body {
   background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
   font-size: 17.5px;
   line-height: 1.6;
   letter-spacing: 0.005em;
@@ -252,6 +253,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-optical-sizing: auto;
   font-weight: 600;
   line-height: var(--lh-display);
@@ -301,40 +303,119 @@ html:lang(ru) {
   --lh-display: 1.08;
 }
 
-/* Rattrapage de taille optique de l'arménien, là où les écritures se touchent
-   dans une même ligne. Mesuré à 11.52px sur la rangée de pastilles : capitale
-   latine 8px (Space Mono) et capitale cyrillique 8px (IBM Plex Mono) — elles
-   tombent pile, le cyrillique n'a besoin de rien — contre capitale arménienne
-   9px (Noto Sans Armenian), soit 12 % de plus, et posée 1px sous la ligne de
-   pied. Isolé, l'écart ne se voit pas ; à 12px d'un « EN », il se lit comme
-   une faute de graisse. Ces deux lignes sont les seules du site où trois
-   écritures se côtoient, et elles sont sur les QUATRE pages — c'est donc ici,
-   et nulle part ailleurs, que le rattrapage a un sens.
+/* ============================================================
+   Taille apparente : égaliser les quatre langues.
 
-   Piège d'unité, et les deux cas diffèrent vraiment : sur un font-size, `em`
-   se résout contre le font-size du PARENT. Le <span> du surtitre a pour parent
-   .hero__kicker (0.7rem), donc `0.9em` y vaut bien 90 % du surtitre. La
-   pastille, elle, porte son propre font-size (0.72rem) tandis que son parent
-   .lang hérite des 17.5px du corps de texte : `0.9em` y donnerait 15.75px,
-   soit une pastille arménienne plus GROSSE que la ligne qu'elle corrige.
-   D'où le calc() explicite — ne le « simplifiez » pas en em.
+   LE PROBLÈME. Une taille nominale identique ne donne pas une taille VUE
+   identique. À 17.5px, chaque écriture rend selon la hauteur d'œil de sa
+   police, et nos trois compagnes ne sont pas proportionnées comme les
+   latines. Mesuré ici, chaque écriture avec SES propres lettres :
 
-   La graisse est le second volet du même rattrapage : Space Mono 400 est une
-   police trapue, Noto Sans Armenian 400 non, et côte à côte l'arménien lisait
-   plus maigre que le latin. Comparé à 4,5× : 400 trop clair, 600 se lit comme
-   l'état actif, 500 tombe juste. Cette règle est volontairement placée AVANT
-   `.lang a[aria-current]` : à spécificité égale (0,2,1) l'ordre décide, donc
-   la pastille active garde bien son 700 et n'hérite que de la taille. Ne la
-   déplacez pas plus bas dans le fichier. */
+     rôle       référence latine      arménien              cyrillique
+     ---------- --------------------- --------------------- -----------------
+     corps (x)  Hanken       0.495    Noto Sans Arm  0.495  Golos    0.530
+     titres (H) Fraunces     0.700    Noto Serif Arm 0.730  Literata 0.730
+     utilit.(H) Space Mono   0.700    Noto Sans Arm  0.725  IBM Plex 0.700
+
+   Donc le texte courant russe rendait 7 % plus gros que le français, et les
+   titres arméniens comme russes 4,3 % plus gros. À 60px de titre, cela fait
+   2,6px — bien visible.
+
+   L'OUTIL. `font-size-adjust` est fait exactement pour ça : il ajuste la
+   taille employée pour qu'un rapport métrique donné soit atteint, et il le
+   fait POUR CHAQUE POLICE d'un même élément. C'est ce dernier point qui
+   compte ici : dans une ligne qui mêle trois écritures (le surtitre du héros,
+   la rangée de pastilles), chaque glyphe est ramené à la même hauteur sans
+   qu'on ait à découper la ligne en morceaux.
+
+   LA RÉFÉRENCE EST LA MÉTRIQUE DE LA POLICE LATINE ELLE-MÊME, et c'est
+   délibéré : 0.495 est la valeur de Hanken Grotesk, 0.700 celle de Fraunces
+   ET de Space Mono. Le facteur appliqué au latin vaut donc 1.000 — vérifié,
+   pas supposé. La marque ne bouge pas d'un pixel ; seules les trois autres
+   écritures s'ajustent (Golos ×0.934, Literata ×0.959, Noto Serif Arm ×0.980).
+   Ne remplacez pas ces nombres par des valeurs « rondes » : elles cesseraient
+   d'être neutres pour le latin, et c'est tout l'intérêt du réglage.
+
+   POURQUOI DEUX MÉTRIQUES DIFFÉRENTES. `ex-height` pour le texte courant,
+   parce que c'est la hauteur d'œil qui porte la taille apparente d'un
+   paragraphe ; `cap-height` pour les titres et les capitales espacées, parce
+   qu'aucune minuscule n'y domine. On ne peut pas satisfaire les deux à la
+   fois : Fraunces a une hauteur d'œil volontairement petite (0.435 contre
+   0.515 pour Literata), donc normaliser les titres sur `ex-height`
+   rapetisserait les capitales russes de 12 %. L'écart de hauteur d'œil qui
+   reste dans les titres n'est pas une erreur de taille, c'est la différence
+   de dessin entre les deux serifs.
+
+   POURQUOI UN JETON PAR RÔLE, ET NON UN RÉGLAGE GLOBAL. Deux raisons, toutes
+   deux mesurées, et chacune suffirait :
+
+   1. Un `ex-height` posé sur body hériterait dans les éléments en Fraunces,
+      dont la hauteur d'œil est volontairement PETITE (0.435). Le ramener à
+      0.493 grossirait la marque de 13 %.
+   2. L'arménien demande deux corrections OPPOSÉES : rien sur son corps de
+      texte (ա vaut déjà 0.495, la valeur de Hanken) mais −4 % sur ses
+      capitales (0.725/0.730 contre 0.700). Un jeton unique ne peut pas faire
+      les deux.
+
+   D'où la règle du fichier : **chaque `font-family: var(--font-X)` est
+   immédiatement suivie de son `font-size-adjust: var(--fsa-X)`.** Les deux
+   lignes voyagent ensemble, 17 fois pour le display, 34 pour l'utilitaire,
+   3 pour le corps. Si vous ajoutez une règle qui pose une famille, posez son
+   réglage juste dessous — sans quoi elle héritera du réglage d'un autre rôle
+   et changera de taille sous une seule langue.
+
+   LE PIÈGE ARMÉNIEN, celui qui a faussé le premier essai.
+   `font-size-adjust` normalise la métrique **déclarée** de la police, et les
+   deux Noto arméniens déclarent leurs métriques LATINES : capitale 0.714,
+   hauteur d'œil 0.540 — qui ne décrivent pas leurs glyphes arméniens (Հ à
+   0.725/0.730, ա à 0.495). Une cible de 0.7 leur applique donc 0.980 là où il
+   faut 0.959. Les valeurs arméniennes ci-dessous sont calibrées en boucle
+   fermée sur le facteur RÉELLEMENT obtenu, pas déduites de la cible :
+   0.685 → ×0.9594 (voulu 0.9589) et 0.689 → ×0.9650 (voulu 0.9655).
+   Ne les « arrondissez » pas à 0.7, et ne mesurez pas une hauteur de capitale
+   sur un rendu de 11px : le rasteur y arrondit et exagère l'écart.
+   ============================================================ */
+:root {
+  /* Les références sont les métriques déclarées des polices latines
+     elles-mêmes, donc le facteur appliqué au latin vaut 1.000 : Hanken
+     Grotesk déclare une hauteur d'œil de 0.493, Fraunces et Space Mono une
+     capitale de 0.700. Vérifié, pas supposé. */
+  --fsa-body: ex-height 0.493;
+  --fsa-display: cap-height 0.7;
+  --fsa-util: cap-height 0.7;
+}
+html:lang(hy) {
+  --fsa-body: none;
+  --fsa-display: cap-height 0.685;
+  --fsa-util: cap-height 0.689;
+}
+
+/* `.hero__title` et `.nav__brand` échappent au jeton et portent la référence
+   latine EN DUR — voir leurs règles respectives plus bas. Ils ne composent que
+   le nom de la marque, donc du latin sur les quatre pages : la cible
+   arménienne y rapetisserait « Armenia Info » de 2 % sans qu'un seul
+   caractère arménien y figure. La valeur est écrite sur place plutôt que
+   groupée ici parce que les deux sélecteurs sont redéfinis plus loin dans le
+   fichier : à spécificité égale, l'ordre décide, et une règle groupée ici se
+   ferait écraser en silence. */
+
+/* La graisse, elle, ne se règle pas par la taille : Space Mono 400 est une
+   police trapue, Noto Sans Armenian 400 non, et côte à côte l'arménien lit
+   plus maigre que le latin quand bien même les capitales font la même hauteur.
+   Comparé à 4,5× : 400 trop clair, 600 se lit comme l'état actif, 500 juste.
+   Règle volontairement placée AVANT `.lang a[aria-current]` : à spécificité
+   égale (0,2,1) l'ordre décide, donc la pastille active garde son 700. Ne la
+   déplacez pas plus bas dans le fichier.
+
+   Il y avait ici, en plus, un rattrapage de TAILLE en dur (`0.9`) désormais
+   supprimé : c'était une sur-correction née d'une mesure faussée. À 11.52px le
+   rasteur arrondissait la capitale latine 8.06 → 8 et l'arménienne 8.35 → 9,
+   ce qui se lisait comme 12,5 % d'écart là où la métrique n'en donne que 3,6.
+   Ne mesurez pas une hauteur de capitale sur un rendu de 11px : mesurez le
+   rapport métrique, ou laissez `font-size-adjust` le faire. */
 .lang a:lang(hy),
 .hero__kicker span:lang(hy) {
   font-weight: 500;
-}
-.lang a:lang(hy) {
-  font-size: calc(0.72rem * 0.9);
-}
-.hero__kicker span:lang(hy) {
-  font-size: 0.9em;
 }
 
 ::selection {
@@ -415,6 +496,9 @@ html:lang(ru) {
   gap: 12px;
   color: var(--text);
   font-family: var(--font-display);
+  /* Référence latine EN DUR, pas var(--fsa-display) : cet élément ne compose
+     que le nom de la marque, du latin sur les quatre pages. */
+  font-size-adjust: cap-height 0.7;
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -445,6 +529,7 @@ html:lang(ru) {
   position: relative;
   color: var(--text-soft);
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -484,6 +569,7 @@ html:lang(ru) {
   background: transparent;
   color: var(--text-soft);
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   padding: 6px 12px;
@@ -574,6 +660,7 @@ html:lang(ru) {
 }
 .hero__kicker {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   letter-spacing: 0.46em;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -590,6 +677,10 @@ html:lang(ru) {
   font-size: clamp(3rem, 9.5vw, 7rem);
   font-weight: 600;
   color: var(--text);
+  /* Référence latine EN DUR, comme .nav__brand : ce titre ne compose que le
+     nom de la marque. Sans cela il hériterait de la cible arménienne posée sur
+     h1-h3 et « Armenia Info » rendrait 2 % plus petit que « Armenia News ». */
+  font-size-adjust: cap-height 0.7;
   letter-spacing: -0.03em;
   font-variation-settings: 'SOFT' 0, 'WONK' 1;
   text-shadow: 0 12px 60px rgba(0, 0, 0, 0.6);
@@ -605,6 +696,7 @@ html:lang(ru) {
 }
 .hero__tagline {
   font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
   font-size: clamp(1.02rem, 2vw, 1.32rem);
   color: var(--text-soft);
   max-width: 42ch;
@@ -623,6 +715,7 @@ html:lang(ru) {
   align-items: center;
   gap: 12px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -690,6 +783,7 @@ html:lang(ru) {
 }
 .section__eyebrow {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   letter-spacing: 0.34em;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -707,6 +801,7 @@ html:lang(ru) {
 }
 .section__subtitle {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-style: italic;
   font-size: 1.12rem;
   color: var(--text-soft);
@@ -737,6 +832,7 @@ html:lang(ru) {
 }
 .strand__net {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.66rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -744,6 +840,7 @@ html:lang(ru) {
 }
 .strand__name {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   letter-spacing: calc(-0.02em * var(--track-scale));
   color: var(--text);
 }
@@ -797,6 +894,7 @@ html:lang(ru) {
   background: var(--surface);
   color: var(--apricot-ink);
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
@@ -921,6 +1019,7 @@ html:lang(ru) {
   background: var(--apricot);
   color: var(--on-apricot);
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -936,6 +1035,7 @@ html:lang(ru) {
 }
 .card__date {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -943,6 +1043,7 @@ html:lang(ru) {
 }
 .card__title {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   /* Les dépêches d'agence titrent en phrases : la médiane fait 78 caractères
      et la queue monte à 189 (Armenpress). À 1.16rem sur 3 lignes, 54 % des
      cartes étaient coupées. 1.05rem sur 4 lignes tient jusqu'à ~115.
@@ -968,6 +1069,7 @@ html:lang(ru) {
 .card__more {
   margin-top: auto;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -998,6 +1100,7 @@ html:lang(ru) {
   border-bottom: 1px solid var(--line);
   color: var(--text);
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.74rem;
@@ -1053,6 +1156,7 @@ html:lang(ru) {
 }
 .armradio__time {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.66rem;
   letter-spacing: 0.04em;
   color: var(--apricot-deep);
@@ -1060,6 +1164,7 @@ html:lang(ru) {
 }
 .armradio__link {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.12rem;
   font-weight: 500;
   color: var(--text);
@@ -1129,6 +1234,7 @@ html:lang(ru) {
 }
 .newsfeed__tab-brand {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: clamp(1.15rem, 3vw, 1.5rem);
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -1167,6 +1273,7 @@ html:lang(ru) {
 .newsfeed__intro {
   margin: 0 0 6px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
   color: var(--text-faint);
@@ -1235,6 +1342,7 @@ html:lang(ru) {
   border: 0;
   background: transparent;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1249,6 +1357,7 @@ html:lang(ru) {
 /* the native option list uses the OS palette — keep it readable regardless */
 .agenda-select__field option {
   font-family: var(--font-body, sans-serif);
+  font-size-adjust: var(--fsa-body);
   letter-spacing: 0;
   text-transform: none;
   color: initial;
@@ -1354,6 +1463,7 @@ html:lang(ru) {
 .agenda-card__day {
   display: block;
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.9rem;
   font-weight: 600;
   line-height: 1;
@@ -1363,6 +1473,7 @@ html:lang(ru) {
   display: block;
   margin-top: 3px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.6rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1374,6 +1485,7 @@ html:lang(ru) {
   right: 12px;
   z-index: 1;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1399,6 +1511,7 @@ html:lang(ru) {
 .agenda-card__title {
   margin: 0;
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.28;
@@ -1424,6 +1537,7 @@ html:lang(ru) {
 }
 .agenda-card__when {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.03em;
   color: var(--text-faint);
@@ -1528,6 +1642,7 @@ html:lang(ru) {
   align-items: center;
   gap: 7px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.64rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1553,6 +1668,7 @@ html:lang(ru) {
 }
 .radio__now {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: clamp(1.05rem, 2.6vw, 1.35rem);
   font-weight: 500;
   color: var(--text);
@@ -1560,6 +1676,7 @@ html:lang(ru) {
 .radio__clock {
   margin-left: auto;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.68rem;
   letter-spacing: 0.06em;
   color: var(--text-faint);
@@ -1575,6 +1692,7 @@ html:lang(ru) {
   align-items: center;
   gap: 12px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   color: var(--text-soft);
@@ -1645,6 +1763,7 @@ html:lang(ru) {
 }
 .radio__chip {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--text-soft);
@@ -1819,6 +1938,7 @@ html:lang(ru) {
   place-items: center;
   border-radius: 999px;
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-weight: 600;
   font-size: 0.98rem;
   letter-spacing: 0.01em;
@@ -1829,6 +1949,7 @@ html:lang(ru) {
 .fb-card__author {
   align-self: end;
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.16rem;
   line-height: 1.1;
   color: var(--text);
@@ -1836,6 +1957,7 @@ html:lang(ru) {
 .fb-card__cta {
   align-self: start;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.64rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1858,6 +1980,7 @@ html:lang(ru) {
   appearance: none;
   cursor: pointer;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.74rem;
@@ -1968,6 +2091,7 @@ html:lang(ru) {
   top: 10px;
   right: 10px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2004,12 +2128,14 @@ html:lang(ru) {
 }
 .ig-card__handle {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.74rem;
   letter-spacing: 0.02em;
   color: var(--apricot-ink);
 }
 .ig-card__name {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.26rem;
   line-height: 1.15;
   color: var(--text);
@@ -2017,6 +2143,7 @@ html:lang(ru) {
 .ig-card__cta {
   margin-top: 8px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.66rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2042,6 +2169,7 @@ html:lang(ru) {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.78rem;
   color: var(--text-soft);
   background: var(--surface);
@@ -2071,6 +2199,7 @@ html:lang(ru) {
 }
 .footer__title {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 2rem;
   font-weight: 600;
   color: var(--apricot-ink);
@@ -2085,6 +2214,7 @@ html:lang(ru) {
   justify-content: center;
   margin: 22px 0 26px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.76rem;
   letter-spacing: 0.04em;
 }
@@ -2100,6 +2230,7 @@ html:lang(ru) {
    takes the apricot the sources and the colophon deliberately don't. */
 .footer__contact {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   color: var(--text-soft);
@@ -2121,6 +2252,7 @@ html:lang(ru) {
 }
 .footer__note {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--text-faint);
@@ -2154,6 +2286,7 @@ html:lang(ru) {
   padding: 13px 0;
   list-style: none;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2193,6 +2326,7 @@ html:lang(ru) {
 .privacy__body h3 {
   margin: 18px 0 6px;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2511,6 +2645,7 @@ html:lang(ru) {
 }
 .lb__net {
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.64rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -2518,6 +2653,7 @@ html:lang(ru) {
 }
 .lb__title {
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.3rem;
   line-height: 1.1;
   color: var(--text);
@@ -2525,6 +2661,7 @@ html:lang(ru) {
 .lb__out {
   flex: none;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2592,6 +2729,7 @@ html:lang(ru) {
   background: var(--surface);
   color: var(--apricot-ink);
   font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
   font-size: 1.8rem;
   line-height: 1;
   cursor: pointer;
@@ -2616,6 +2754,7 @@ html:lang(ru) {
   transform: translateX(-50%);
   margin: 0;
   font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
   font-size: 0.7rem;
   letter-spacing: 0.24em;
   color: var(--text-faint);
