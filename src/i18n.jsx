@@ -10,7 +10,7 @@ export { LANGS }
 const STRINGS = {
   fr: {
     'site.title': 'Arménie Info',
-    'site.tagline': 'Un instantané horaire de la vie arménienne, de Suisse et du monde',
+    'site.tagline': 'Un instantané horaire de la vie arménienne, du monde et de Suisse',
     'site.snapshot': 'Instantané du',
     'site.cadence': 'chaque heure',
 
@@ -179,7 +179,7 @@ const STRINGS = {
     // translittération arménienne ou russe, qui rouvrirait la même
     // divergence marque/métadonnées sous une autre forme.
     'site.title': 'Armenia News',
-    'site.tagline': 'An hourly snapshot of Armenian life, from Switzerland and the world',
+    'site.tagline': 'An hourly snapshot of Armenian life, from the world and Switzerland',
     'site.snapshot': 'Snapshot of',
     'site.cadence': 'hourly',
 
@@ -339,7 +339,7 @@ const STRINGS = {
     // News), pas la langue — voir sites.config.js et le commentaire jumeau
     // dans le bloc `en`.
     'site.title': 'Armenia News',
-    'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ Շվեյցարիայից եւ աշխարհից',
+    'site.tagline': 'Հայկական կյանքի ժամային պատկեր՝ աշխարհից եւ Շվեյցարիայից',
     'site.snapshot': 'Պատկեր՝',
     'site.cadence': 'ամեն ժամ',
 
@@ -499,7 +499,7 @@ const STRINGS = {
     // News), pas la langue — voir sites.config.js et le commentaire jumeau
     // dans le bloc `en`.
     'site.title': 'Armenia News',
-    'site.tagline': 'Ежечасный снимок армянской жизни, из Швейцарии и со всего мира',
+    'site.tagline': 'Ежечасный снимок армянской жизни, со всего мира и из Швейцарии',
     'site.snapshot': 'Снимок от',
     'site.cadence': 'каждый час',
 
