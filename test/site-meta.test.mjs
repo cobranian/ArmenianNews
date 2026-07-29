@@ -5,16 +5,18 @@ import {
   applyMeta,
   replaceMeta,
   beaconTag,
+  gaTag,
   META_MARKER,
   BEACON_MARKER,
+  GA_MARKER,
 } from '../scripts/lib/site-meta.mjs'
 import { sitemapFor, robotsFor } from '../scripts/lib/sitemap.mjs'
 import { ALL_LANGS, LANG_URL, SITES, siteOf, primaryLang } from '../sites.config.js'
 
 const PAGES = ALL_LANGS.map((lang) => ({ lang, siteId: siteOf(lang) }))
 
-// Le squelette d'index.html réduit à ce qu'applyMeta exige : ses deux marqueurs.
-const SRC = `<!doctype html>\n<html lang="fr">\n  <head>\n    ${META_MARKER}\n  </head>\n  <body>${BEACON_MARKER}</body>\n</html>`
+// Le squelette d'index.html réduit à ce qu'applyMeta exige : ses trois marqueurs.
+const SRC = `<!doctype html>\n<html lang="fr">\n  <head>\n    ${META_MARKER}\n    ${GA_MARKER}\n  </head>\n  <body>${BEACON_MARKER}</body>\n</html>`
 
 test('le canonical est auto-référent sur chaque page', () => {
   for (const { siteId, lang } of PAGES) {
@@ -127,8 +129,81 @@ test('applyMeta refuse un HTML sans marqueur plutôt que de produire une page mu
 test('applyMeta refuse un HTML sans marqueur de beacon', () => {
   // Sans ce refus, retirer <!--CF_BEACON--> d'index.html priverait les deux
   // vitrines de leur mesure d'audience sans qu'aucun build ne s'en plaigne.
-  const sansBeacon = `<html lang="fr"><head>${META_MARKER}</head><body></body></html>`
+  const sansBeacon = `<html lang="fr"><head>${META_MARKER}${GA_MARKER}</head><body></body></html>`
   assert.throws(() => applyMeta(sansBeacon, { siteId: 'ch', lang: 'fr' }), /CF_BEACON/)
+})
+
+test('applyMeta refuse un HTML sans marqueur GA4', () => {
+  // Même raison que pour le beacon : retirer <!--GA_TAG--> d'index.html
+  // couperait Google Analytics sur les deux vitrines à la fois, et aucun build
+  // ne s'en plaindrait — la page resterait parfaitement valide, juste muette.
+  const sansGa = `<html lang="fr"><head>${META_MARKER}</head><body>${BEACON_MARKER}</body></html>`
+  assert.throws(() => applyMeta(sansGa, { siteId: 'ch', lang: 'fr' }), /GA_TAG/)
+})
+
+// L'invariant central de ce correctif. L'ID de mesure vivait en dur dans
+// index.html ET public/ga-init.js, deux fichiers que Vite copie à l'identique
+// dans les deux dist/ : armenianews.org envoyait donc ses visites — /hy/ et
+// /ru/ comprises — dans la propriété GA du .ch. Rien ne le signalait ; la
+// mesure fonctionnait, simplement au mauvais endroit. Exactement le mode
+// d'échec du beacon Cloudflare, de la carte de partage et des pages lien.html.
+test('chaque vitrine porte SON ID de mesure GA4, jamais celui de l\'autre', () => {
+  for (const site of Object.values(SITES)) {
+    const out = applyMeta(SRC, { siteId: site.id, lang: primaryLang(site.id) })
+    assert.ok(!out.includes(GA_MARKER), `${site.id} : marqueur GA non consommé`)
+
+    if (site.gaMeasurementId) {
+      // Deux fois : dans data-ga-id, et dans l'URL de gtag.js. Les deux doivent
+      // désigner la même propriété — un seul des deux repointé mesurerait d'un
+      // côté et configurerait de l'autre.
+      assert.equal(
+        (out.match(new RegExp(site.gaMeasurementId, 'g')) || []).length,
+        2,
+        `${site.id} : son ID attendu dans data-ga-id ET dans l'URL gtag.js`,
+      )
+      assert.ok(
+        out.includes(`data-ga-id="${site.gaMeasurementId}"`),
+        `${site.id} : ga-init.js doit recevoir l'ID par attribut (CSP sans unsafe-inline)`,
+      )
+    } else {
+      assert.ok(
+        !out.includes('googletagmanager.com'),
+        `${site.id} : sans ID, aucune balise GA ne doit être émise`,
+      )
+    }
+
+    for (const autre of Object.values(SITES)) {
+      if (autre.id === site.id || !autre.gaMeasurementId) continue
+      assert.ok(
+        !out.includes(autre.gaMeasurementId),
+        `${site.id} porte l'ID GA de ${autre.id} — mesure versée à la mauvaise propriété`,
+      )
+    }
+  }
+})
+
+test('ga-init.js est émis avant gtag.js, sinon le Consent Mode ne sert à rien', () => {
+  // gtag.js traite la file `dataLayer` dès son exécution : si ga-init.js n'a pas
+  // encore poussé ses `consent default`, le premier hit part sans état de
+  // consentement — donc avec cookies là où le RGPD les interdit. Les deux
+  // balises seraient pourtant bien présentes, et un test de présence passerait.
+  const out = applyMeta(SRC, { siteId: 'org', lang: 'en' })
+  assert.ok(
+    out.indexOf('/ga-init.js') < out.indexOf('googletagmanager.com/gtag/js'),
+    'ga-init.js doit précéder gtag.js',
+  )
+})
+
+test('un ID de mesure mal formé est refusé, pas écrit dans la page', () => {
+  // L'ID part dans un attribut ET dans une URL : une apostrophe ou un guillemet
+  // collés par erreur produiraient une balise d'apparence correcte, lue de
+  // travers — et une propriété qui ne reçoit jamais rien.
+  const originel = SITES.ch.gaMeasurementId
+  for (const mauvais of ['G-ABC" onload="x', 'UA-123456-1', 'EB3W5XXSMW', 'G-abc123']) {
+    SITES.ch.gaMeasurementId = mauvais
+    assert.throws(() => gaTag('ch'), /gaMeasurementId/, `accepté à tort : ${mauvais}`)
+  }
+  SITES.ch.gaMeasurementId = originel
 })
 
 test('chaque vitrine émet SON jeton Cloudflare, et jamais celui de l\'autre', () => {
@@ -176,7 +251,7 @@ test('replaceMeta rejoue sur un HTML déjà bâti, autant de fois que voulu', ()
   // C'est le cas d'usage de Task 8 : dist/org/index.html est passé par Vite
   // (hachages d'assets posés, marqueur consommé), et il faut en dériver la
   // page /hy/ sans rejouer le build.
-  const src = `<!doctype html>\n<html lang="fr">\n  <head>\n    ${META_MARKER}\n  </head>\n  <body>${BEACON_MARKER}<script src="/assets/index-a1b2c3.js"></script></body>\n</html>`
+  const src = `<!doctype html>\n<html lang="fr">\n  <head>\n    ${META_MARKER}\n    ${GA_MARKER}\n  </head>\n  <body>${BEACON_MARKER}<script src="/assets/index-a1b2c3.js"></script></body>\n</html>`
   const built = applyMeta(src, { siteId: 'org', lang: 'en' })
   assert.ok(built.includes('/assets/index-a1b2c3.js'), 'le corps bâti doit survivre')
 

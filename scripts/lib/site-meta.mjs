@@ -26,6 +26,16 @@ export const META_END = '<!--SITE_META:END-->'
 // ne varie pas selon la langue, seulement selon le site.
 export const BEACON_MARKER = '<!--CF_BEACON-->'
 
+// Google Analytics 4. Même raisonnement que le beacon ci-dessus, et même piège
+// vécu : l'ID de mesure était écrit en dur dans index.html ET dans
+// public/ga-init.js, deux fichiers que Vite copie à l'identique dans les deux
+// dist/ — armenianews.org versait donc ses visites dans la propriété du .ch.
+// L'ID vit maintenant dans `gaMeasurementId` (sites.config.js) et arrive ici.
+//
+// Comme la balise beacon, elle ne varie que par SITE : les pages /hy/ et /ru/,
+// dérivées du HTML .org déjà bâti, portent déjà le bon ID.
+export const GA_MARKER = '<!--GA_TAG-->'
+
 // Échappe ce qui part dans un attribut HTML. Les chaînes viennent de nos
 // propres fichiers, mais un apostrophe typographique mal placé dans une
 // baseline ne doit pas pouvoir casser un attribut.
@@ -160,6 +170,35 @@ export function beaconTag(siteId) {
   )
 }
 
+// Les deux balises GA4 de cette vitrine, ou '' si elle n'a pas d'ID — mieux vaut
+// aucune mesure que des visites versées dans la propriété de l'autre site.
+//
+// L'ORDRE EST LE FOND DE L'AFFAIRE : ga-init.js est synchrone et vient en
+// premier, gtag.js est `async` et vient après. C'est ce qui garantit que les
+// `gtag('consent', 'default', …)` sont dans la file AVANT que gtag.js ne la
+// traite. Les inverser ferait partir le premier hit sans état de consentement,
+// donc avec des cookies là où le RGPD les interdit — sans la moindre erreur.
+//
+// L'ID voyage dans un attribut `data-ga-id` plutôt que dans un `<script>` en
+// ligne : la CSP de firebase.json est en `script-src 'self'` sans
+// `'unsafe-inline'`, un script en ligne serait donc bloqué. ga-init.js le relit
+// via `document.currentScript`.
+//
+// Il est validé avant d'être écrit : il part dans un attribut ET dans une URL,
+// et un ID mal collé ferait une balise d'apparence correcte qui mesure dans le
+// vide. Google n'émet que `G-` suivi de majuscules et de chiffres.
+export function gaTag(siteId) {
+  const id = SITES[siteId].gaMeasurementId
+  if (!id) return ''
+  if (!/^G-[A-Z0-9]{6,12}$/.test(id)) {
+    throw new Error(`gaMeasurementId de « ${siteId} » : format G-XXXXXXXXXX attendu`)
+  }
+  return (
+    `<script src="/ga-init.js" data-ga-id="${id}"></script>\n` +
+    `    <script async src="https://www.googletagmanager.com/gtag/js?id=${id}"></script>`
+  )
+}
+
 const setLang = (html, lang) => html.replace(/<html\s+lang="[^"]*"/, `<html lang="${lang}"`)
 
 // Pour le HTML SOURCE (index.html du dépôt), qui porte les marqueurs.
@@ -173,9 +212,13 @@ export function applyMeta(html, { siteId, lang }) {
   if (!html.includes(BEACON_MARKER)) {
     throw new Error(`marqueur ${BEACON_MARKER} absent du HTML — page sans analytics, refus`)
   }
+  if (!html.includes(GA_MARKER)) {
+    throw new Error(`marqueur ${GA_MARKER} absent du HTML — page sans GA4, refus`)
+  }
   return setLang(html, lang)
     .replace(META_MARKER, headFor({ siteId, lang }).trimStart())
     .replace(BEACON_MARKER, beaconTag(siteId))
+    .replace(GA_MARKER, gaTag(siteId))
 }
 
 // Pour le HTML DÉJÀ BÂTI, qui porte les sentinelles. Idempotent : rejouable

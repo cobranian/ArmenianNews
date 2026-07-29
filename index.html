@@ -23,10 +23,14 @@
          servi depuis 'self' (comme theme-init.js) pour garder la CSP stricte ;
          il définit le consentement et la config AVANT que gtag.js ne s'exécute.
          Domaines autorisés dans la CSP de firebase.json (script-src /
-         connect-src). L'ID de mesure GA4 (G-EB3W5XXSMW) doit rester identique
-         ici ET dans ga-init.js. -->
-    <script src="/ga-init.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EB3W5XXSMW"></script>
+         connect-src).
+
+         Les deux balises sont générées par scripts/lib/site-meta.mjs à partir
+         du `gaMeasurementId` de la vitrine bâtie : ne les réécrivez pas en dur
+         ici. Ce fichier est partagé par les deux vitrines, donc un ID unique
+         verserait les visites des deux domaines dans la même propriété — ce
+         qu'il faisait, /hy/ et /ru/ compris. -->
+    <!--GA_TAG-->
 
     <!-- Ararat's twin peaks, apricot on basalt. SVG for modern browsers, PNG
          for the ones that ignore it, 180px for the iOS home screen.

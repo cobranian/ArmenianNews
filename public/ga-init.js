@@ -29,12 +29,28 @@
 // ad_personalization) : le site n'affiche aucune publicité, donc rien ne
 // justifierait de collecter ces signaux.
 //
-// L'ID de mesure GA4 (G-EB3W5XXSMW, propriété « Arménie Info ») doit rester
-// identique ici ET dans l'URL gtag.js d'index.html.
+// L'ID DE MESURE N'EST PAS ÉCRIT ICI, et c'est le fond de l'affaire : ce
+// fichier vit dans public/, que Vite copie À L'IDENTIQUE dans les deux dist/.
+// Un ID en dur y serait forcément celui d'une seule vitrine, et l'autre
+// verserait ses visites dans la mauvaise propriété — c'est ce qui se passait,
+// armenianews.org (/hy/ et /ru/ compris) tombant dans la propriété du .ch.
+//
+// Il arrive donc par l'attribut `data-ga-id` de la balise qui charge ce script,
+// posée au build par scripts/lib/site-meta.mjs depuis `gaMeasurementId`
+// (sites.config.js). Un attribut, et pas un `<script>` en ligne qui déclarerait
+// une variable : la CSP est en `script-src 'self'` sans `'unsafe-inline'`.
 
 // Codes ISO 3166-1 alpha-2. Les 27 de l'UE, plus l'Islande, le Liechtenstein
 // et la Norvège (EEE), plus le Royaume-Uni (UK GDPR, post-Brexit).
 // Google n'accepte pas de groupement type 'EU' : il faut énumérer.
+// `document.currentScript` désigne la balise en cours d'exécution — elle n'est
+// définie que pour un script CLASSIQUE et SYNCHRONE, ce que celui-ci est
+// (`<script src="/ga-init.js" data-ga-id="…">`, sans `async` ni `defer`, sans
+// `type="module"`). Le lire ici, au premier tour, et pas dans un callback : la
+// propriété redevient `null` dès que le script rend la main.
+var BALISE = document.currentScript
+var GA_ID = BALISE ? BALISE.getAttribute('data-ga-id') : null
+
 var REGIONS_CONSENTEMENT_REQUIS = [
   'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
   'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
@@ -71,4 +87,15 @@ gtag('consent', 'default', {
 })
 
 gtag('js', new Date())
-gtag('config', 'G-EB3W5XXSMW')
+
+// Sans ID, on s'arrête là. Les défauts de consentement ci-dessus restent posés
+// (ils ne coûtent rien et ne mesurent rien), mais aucune propriété n'est
+// configurée — plutôt que d'en deviner une. Le cas n'arrive que si
+// `gaMeasurementId` est `null` pour cette vitrine, ou si la balise a été
+// recopiée à la main sans son attribut : le message pointe alors l'endroit
+// exact, au lieu de laisser un mur de statistiques vide sans explication.
+if (GA_ID) {
+  gtag('config', GA_ID)
+} else {
+  console.warn('[ga-init] data-ga-id absent — aucune mesure GA4 (voir gaMeasurementId dans sites.config.js)')
+}

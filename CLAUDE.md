@@ -41,7 +41,7 @@ npm run check        # contrôle les 4 pages produites (lang, canonical, hreflan
 npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 36 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios
+npm test             # 40 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,7 +50,7 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **36 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **40 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL), la réciprocité des
 `hreflang`, l'ordre du sélecteur, la forme des sitemaps, le fait que chaque
 vitrine annonce **sa** carte de partage, et la concordance entre le tableau
@@ -633,6 +633,30 @@ de production servent toujours depuis la racine de leur domaine.
   proxifié par Cloudflare (les deux pointent sur Firebase), il n'y a pas
   d'activation automatique au niveau de la zone — le beacon JS est la seule
   voie.
+- **L'ID de mesure GA4 est propre à chaque vitrine, lui aussi — et il ne l'a pas
+  toujours été.** `G-EB3W5XXSMW` était écrit en dur dans `index.html` **et**
+  dans `public/ga-init.js`, deux fichiers que Vite copie à l'identique dans les
+  deux `dist/` : armenianews.org était donc mesuré, mais dans la propriété
+  « Arménie Info » — `/hy/` et `/ru/` compris, ce qui se voyait dans son rapport
+  *Pages et écrans* puisque ces deux chemins n'existent que sur le .org. Trois
+  propriétés GA vides avaient été créées en face, dont aucune ne recevait un
+  seul hit. Depuis, l'ID vit dans `gaMeasurementId` (`sites.config.js`) et la
+  paire de balises est générée par `site-meta.mjs` au marqueur `<!--GA_TAG-->`,
+  exactement comme le beacon. Trois choses à ne pas défaire :
+  - **`ga-init.js` reçoit l'ID par `data-ga-id`, pas par un `<script>` en
+    ligne** : la CSP est en `script-src 'self'` sans `'unsafe-inline'`, un
+    script en ligne serait bloqué. Il le relit via `document.currentScript`, qui
+    n'est défini que pour un script **classique et synchrone** — n'ajoutez ni
+    `async`, ni `defer`, ni `type="module"` à cette balise.
+  - **`ga-init.js` doit précéder `gtag.js`.** `gtag.js` traite la file
+    `dataLayer` dès son exécution : inversées, les deux balises restent
+    présentes mais le premier hit part sans état de consentement — donc avec
+    cookies là où le RGPD les interdit. Un test et `npm run check` gardent
+    l'ordre, parce qu'un contrôle de simple présence ne le verrait pas.
+  - **Le .ch garde `G-EB3W5XXSMW`** : c'est là qu'est son historique. Le .org a
+    sa propre propriété (« Armenia News », `G-N6STD6Z5CC`), créée le 29 juillet
+    2026 — elle démarre donc vide, et le trafic .org antérieur reste chez
+    « Arménie Info ». Cette coupure est attendue, ce n'est pas une perte.
 - **Le `lastmod` des sitemaps vient de `meta.json.generatedAt`**, jamais de
   l'heure du build. Un push sur `main` rebâtit sans scraper ; un `lastmod` pris
   au build annoncerait une fraîcheur qui n'a pas eu lieu. C'est la garde que

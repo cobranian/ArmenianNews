@@ -59,6 +59,19 @@ export const SITES = {
     // sur Firebase Hosting, 199.36.158.100), donc la mise en place automatique
     // au niveau de la zone n'existe pas ici : le beacon JS est la seule voie.
     cfBeaconToken: '40017296bb8845b8b659cb9cc34dae77',
+    // Google Analytics 4 — un ID de mesure PAR VITRINE, exactement pour la même
+    // raison que le jeton Cloudflare juste au-dessus. Celui-ci est l'historique :
+    // il désigne la propriété « Arménie Info » (compte 401602985, propriété
+    // 546187480), qui a des données depuis juillet 2026. Ne le changez pas —
+    // repointer le .ch ailleurs abandonnerait son historique sur place.
+    //
+    // Il était autrefois écrit EN DUR dans index.html ET public/ga-init.js,
+    // deux fichiers que Vite copie à l'identique dans les deux dist/ : les
+    // visites d'armenianews.org tombaient donc dans le tableau de bord du .ch,
+    // /hy/ et /ru/ compris. Même piège que le beacon, la carte de partage et
+    // les pages `lien.html` — un fichier partagé ne peut pas porter une valeur
+    // propre à une vitrine.
+    gaMeasurementId: 'G-EB3W5XXSMW',
     pages: [{ lang: 'fr', path: '/' }],
   },
   org: {
@@ -112,6 +125,16 @@ export const SITES = {
     // bord, ce qui est le but. `null` est accepté et n'émet aucune balise —
     // mieux vaut ne pas mesurer que mesurer au mauvais endroit.
     cfBeaconToken: 'b74469000dec4afd956cda6c161c0f55',
+    // Propriété « Armenia News » (compte 401602985, propriété 547487332), flux
+    // « Armenia News — Web » sur https://armenianews.org. Créée le 29 juillet
+    // 2026 : elle démarre donc vide, alors que le trafic .org d'avant cette date
+    // — /hy/ et /ru/ compris — reste dans la propriété « Arménie Info ». Cette
+    // coupure est attendue, ce n'est pas une perte.
+    //
+    // Ne remettez PAS l'ID du .ch ici : c'est précisément ce que faisait la
+    // balise codée en dur, et rien ne le signalait — le .org était mesuré, mais
+    // au mauvais endroit. `null` est accepté et n'émet aucune balise.
+    gaMeasurementId: 'G-N6STD6Z5CC',
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },

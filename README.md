@@ -219,14 +219,40 @@ from the other's benign no-op.
   beacon is the only route, and it needs a token issued per site from
   **Analytics & Logs → Web Analytics → Add a site**. The token is not a secret:
   it ships in the public HTML and grants nothing.
+- **Google Analytics 4 — one measurement ID per storefront, same trap, same
+  fix.** Each site carries its own `gaMeasurementId` in `sites.config.js`, and
+  `scripts/lib/site-meta.mjs` renders both tags into the `<!--GA_TAG-->` marker.
+  `.ch` keeps `G-EB3W5XXSMW` (property "Arménie Info", where its history lives);
+  `.org` reports to its own property, "Armenia News" (`G-N6STD6Z5CC`, created
+  2026-07-29 — it starts empty, and the `.org` traffic from before that date
+  stays in the `.ch` property; that break is expected, not a loss).
+
+  It used to be hardcoded in `index.html` **and** in `public/ga-init.js` — two
+  files both storefronts share — so `armenianews.org` was measured into the
+  `.ch` property, `/hy/` and `/ru/` included. It showed up plainly in that
+  property's *Pages and screens* report, since those two paths exist only on the
+  `.org`. Three empty GA properties had been created opposite it, none of which
+  ever received a single hit.
+
+  Two invariants the build guards, because neither is visible by inspection:
+
+  - `ga-init.js` takes the ID from a `data-ga-id` attribute, never from an
+    inline `<script>` — the CSP is `script-src 'self'` with no `'unsafe-inline'`.
+    It reads it through `document.currentScript`, which is only defined for a
+    **classic, synchronous** script: do not add `async`, `defer` or
+    `type="module"` to that tag.
+  - `ga-init.js` must come **before** `gtag.js`. `gtag.js` drains the `dataLayer`
+    queue the moment it runs, so if the order flips, both tags are still present
+    and the first hit simply leaves without a consent state — with cookies where
+    the GDPR forbids them. A presence check would not catch it; `npm run check`
+    and a test assert the order.
 - **After deploying (once DNS has propagated)** — submit
   `https://armenieinfo.ch/sitemap.xml` and `https://armenianews.org/sitemap.xml`
   in their respective Search Console properties (they are two separate
   properties with two separate sitemaps — submitting one does not cover the
-  other), and add `armenianews.org` to GA4's excluded referral domains list (it
-  shares the same GA4 property as `armenieinfo.ch`; without the exclusion the
-  two sites would attribute each other's traffic as referrals instead of
-  direct/organic).
+  other). The GA4 excluded-referral entry the two sites once needed is moot now
+  that each has its own property: cross-domain referral inflation was an
+  artefact of sharing one.
 
 ## Develop
 
@@ -236,7 +262,7 @@ npm run scrape       # refresh src/data/{news,agenda,meta,instagram-feed}.json f
 npm run ig-scrape    # refresh the Instagram pool (local, logged-in Chrome — never in CI)
 npm run fb-scrape    # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
 npm run dev          # http://localhost:5173/ — the .ch showcase, French
-npm test             # 24 tests: sites.config.js derivations, hreflang, language order, sitemaps
+npm test             # 40 tests: sites.config.js derivations, hreflang, language order, sitemaps, per-site analytics
 npm run lint
 npm run build        # builds both showcases into dist/ch/ and dist/org/
 npm run build:one    # a single Vite build into dist/ (troubleshooting only — not what ships)

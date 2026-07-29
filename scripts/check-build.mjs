@@ -53,7 +53,34 @@ for (const site of Object.values(SITES)) {
       ['x-default', html.includes('hreflang="x-default"')],
       ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
       ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
-      ['GA4 intact', html.includes('G-EB3W5XXSMW')],
+      // GA4 : même piège que le beacon, et il a été réel. L'ID était en dur
+      // dans index.html et ga-init.js — deux fichiers partagés — donc le .org
+      // se mesurait dans la propriété du .ch. Un `includes` sur un ID unique
+      // aurait validé cet état exact. On compte donc DEUX occurrences (l'une
+      // dans data-ga-id, l'autre dans l'URL de gtag.js) et on interdit
+      // explicitement l'ID du voisin.
+      [
+        site.gaMeasurementId ? `GA4 ${site.id} (${site.gaMeasurementId})` : 'sans GA4',
+        site.gaMeasurementId
+          ? count(new RegExp(site.gaMeasurementId, 'g')) === 2
+          : !html.includes('googletagmanager.com'),
+      ],
+      [
+        'aucun ID GA4 étranger',
+        Object.values(SITES)
+          .filter((s) => s.id !== site.id && s.gaMeasurementId)
+          .every((s) => !html.includes(s.gaMeasurementId)),
+      ],
+      // L'ordre des deux balises est ce qui rend le Consent Mode effectif :
+      // ga-init.js (synchrone) doit précéder gtag.js (async), sinon le premier
+      // hit part sans état de consentement. Inversées, les deux balises restent
+      // présentes et le contrôle ci-dessus passerait sans rien voir.
+      [
+        'ga-init.js avant gtag.js',
+        !site.gaMeasurementId ||
+          (html.indexOf('/ga-init.js') !== -1 &&
+            html.indexOf('/ga-init.js') < html.indexOf('googletagmanager.com/gtag/js')),
+      ],
       // Le beacon Cloudflare porte le jeton de SA vitrine, et rien d'autre.
       // Le mode d'échec visé n'est pas « absent » mais « celui du voisin » :
       // une page du .org portant le jeton du .ch se mesure sans erreur, dans le
