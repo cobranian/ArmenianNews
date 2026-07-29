@@ -12,7 +12,7 @@
  * Sortie : dist/ch/ et dist/org/, chacun prêt pour sa cible Firebase.
  */
 import { spawnSync } from 'node:child_process'
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 // LANGS vient de sites.config.js, PAS de src/i18n.jsx : Node ne sait pas
@@ -91,6 +91,35 @@ async function derivePages(site) {
   }
 }
 
+// Pages autonomes : un HTML complet par vitrine, hors du bundle React (carte de
+// liens à partager sur les réseaux, etc.). Une par site et par langue :
+// `pages/<nom>.<siteId>.html` → `dist/<siteId>/<nom>.html`.
+//
+// ELLES NE PEUVENT PAS VIVRE DANS public/. Vite copie ce dossier tel quel dans
+// les DEUX dist/, donc la carte française atterrirait aussi sur
+// armenianews.org — une page en français, sous un domaine anglais, que rien ne
+// signalerait. C'est exactement le piège de la carte de partage (og:image)
+// avant qu'elle ne devienne propre à chaque vitrine.
+//
+// L'absence du fichier est une ERREUR DURE, pas un avertissement : une carte
+// manquante se déploierait en silence, et Firebase répondrait à son URL par
+// index.html en 200 — donc l'application entière au lieu d'un 404 franc.
+const STANDALONE = ['lien']
+
+async function copyStandalone(site) {
+  for (const name of STANDALONE) {
+    const src = path.join(root, 'pages', `${name}.${site.id}.html`)
+    const dst = path.join(root, 'dist', site.id, `${name}.html`)
+    try {
+      await copyFile(src, dst)
+    } catch {
+      console.error(`pages/${name}.${site.id}.html introuvable — build interrompu.`)
+      process.exit(1)
+    }
+    console.log(`  → dist/${site.id}/${name}.html`)
+  }
+}
+
 // lastmod = l'horodatage du dernier SCRAPE, jamais celui du build.
 // Voir l'avertissement en tête de scripts/lib/sitemap.mjs.
 async function lastmod() {
@@ -122,6 +151,7 @@ const stamp = await lastmod()
 for (const site of Object.values(SITES)) {
   viteBuild(site.id)
   await derivePages(site)
+  await copyStandalone(site)
   await writeSeoFiles(site, stamp)
 }
 

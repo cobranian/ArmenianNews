@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<title>Armenia News · All of Armenian life, every hour</title>
+<meta name="description" content="Six Armenian newsrooms, the diaspora's events and the community's social feeds, gathered on one page and refreshed every hour. In English, Armenian, Russian and French." />
+<link rel="canonical" href="https://armenianews.org/lien.html" />
+
+<!-- Open Graph. Note the image: og-image-org.jpg, the ENGLISH share card —
+     not the .ch's French one. Same failure mode as everywhere else in this
+     repo: pointing at the neighbour's asset raises no error, it just serves
+     the wrong language to every Facebook and WhatsApp preview. -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Armenia News" />
+<meta property="og:title" content="Armenia News · All of Armenian life, every hour" />
+<meta property="og:description" content="Six Armenian newsrooms, the diaspora's events and the community's social feeds, gathered on one page and refreshed every hour." />
+<meta property="og:url" content="https://armenianews.org/lien.html" />
+<meta property="og:image" content="https://armenianews.org/og-image-org.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Armenia News · All of Armenian life, every hour" />
+<meta name="twitter:description" content="Six Armenian newsrooms, the diaspora's events and the community's social feeds, gathered on one page and refreshed every hour." />
+<meta name="twitter:image" content="https://armenianews.org/og-image-org.jpg" />
+
+<meta name="theme-color" content="#100f0d" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Noto Sans Armenian is required: Space Mono carries no Armenian glyphs, so
+     "ՀԱՅ" in the wire band would fall back to whatever the system offers, in a
+     weight and width foreign to the rest of the line. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   Armenia News — link card, "Apricot Press".
+   Palette and families lifted straight from src/styles/global.css:
+   this page advertises the site, so it has to look like it. A
+   different aesthetic would break its promise at the very moment
+   of the click.
+   ============================================================ */
+:root {
+  --basalt: #100f0d;
+  --basalt-2: #16140f;
+  --basalt-3: #1d1a13;
+  --apricot: #f2a93b;
+  --apricot-deep: #c97d1e;
+  --text: #f3ecdb;
+  --text-soft: #b9af9a;
+  --line: rgba(243, 236, 219, 0.12);
+  --line-strong: rgba(243, 236, 219, 0.22);
+  --radius: 3px;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Noto Sans Armenian', ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--basalt);
+  background-image: radial-gradient(120% 60% at 50% 0%, #241f16 0%, var(--basalt) 60%);
+  background-repeat: no-repeat;
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100svh;
+  padding: clamp(20px, 6vw, 44px) clamp(16px, 5vw, 28px)
+           calc(clamp(20px, 6vw, 44px) + env(safe-area-inset-bottom));
+}
+
+.sheet { max-width: 460px; margin: 0 auto; }
+
+/* ── Masthead ───────────────────────────────────────────── */
+.mark { display: block; width: 46px; height: 46px; margin: 0 auto; }
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-optical-sizing: auto;
+  /* FLUID, never fixed: a hard 52px was clipping the wordmark at
+     320, 360 and 390 px wide — every common phone. */
+  font-size: clamp(2.25rem, 12.5vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-top: 16px;
+  text-wrap: balance;
+}
+.wordmark em { font-style: normal; color: var(--apricot); }
+
+/* ── The wire band: this page's signature ────────────────
+   It replaces a "4 / 24-7 / 1h" stat grid. Three numbers in
+   boxes is the generic answer; this site datelines itself —
+   "Snapshot of…" — so the card borrows its own voice. ── */
+.telex {
+  margin-top: 18px;
+  border-top: 1px solid var(--apricot-deep);
+  border-bottom: 1px solid var(--line);
+  padding: 9px 0;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 12px;
+  text-align: center;
+}
+/* No separator between the two: below 430 px the band wraps onto two
+   lines and a divider was left dangling at the end of the first. The
+   gap and the apricot / cream contrast already tell them apart. */
+.telex__langs { color: var(--apricot); white-space: nowrap; }
+.telex__cadence { color: var(--text-soft); }
+
+/* ── Lede ───────────────────────────────────────────────── */
+.lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.06rem, 4.6vw, 1.3rem);
+  line-height: 1.45;
+  margin-top: 26px;
+  text-wrap: pretty;
+}
+
+.body-copy {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  text-wrap: pretty;
+}
+.body-copy b { color: var(--text); font-weight: 600; }
+
+/* ── Destinations ───────────────────────────────────────── */
+.dests {
+  list-style: none;
+  margin-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.dest {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 4px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.18s ease, padding-left 0.18s ease;
+}
+.dest__name {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.005em;
+}
+.dest__what {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-soft);
+  margin-top: 2px;
+  text-wrap: pretty;
+}
+.dest__go {
+  font-family: var(--font-mono);
+  color: var(--apricot);
+  font-size: 1rem;
+  transition: transform 0.18s ease;
+}
+
+@media (hover: hover) {
+  .dest:hover { background: rgba(242, 169, 59, 0.05); padding-left: 10px; }
+  .dest:hover .dest__go { transform: translateX(3px); }
+}
+
+/* ── Call to action ─────────────────────────────────────── */
+.cta {
+  display: block;
+  margin-top: 26px;
+  background: var(--apricot);
+  color: #1c1408; /* the site's --on-apricot: dark ink on an apricot fill */
+  border-radius: var(--radius);
+  padding: 15px 18px;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.84rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: background 0.18s ease;
+}
+@media (hover: hover) {
+  .cta:hover { background: #ffc869; }
+}
+
+/* ── Keywords ───────────────────────────────────────────
+   Deliberately NOT links: on a page whose only job is to send
+   people to the site, a facebook.com/hashtag link sends them
+   back to Facebook. Hashtags belong in the post, not here. ── */
+.keywords {
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  text-wrap: pretty;
+}
+.keywords span { color: var(--apricot-deep); }
+
+/* ── Foot ───────────────────────────────────────────────── */
+.foot {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.foot a { color: var(--apricot); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+.foot__live { display: flex; align-items: center; gap: 7px; color: var(--text-soft); }
+.dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--apricot);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.25; } }
+
+/* ── Quality floor ──────────────────────────────────────── */
+:where(a):focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<main class="sheet">
+
+  <!-- Ararat's twin peaks — Masis and Sis. The exact path from
+       favicon.svg: the site's real mark, drawn as a line. -->
+  <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Armenia News">
+    <path d="M3 51 L23.5 12 L34 30.5 L43.5 19 L61 51 Z" fill="none"
+          stroke="#f2a93b" stroke-width="2.6" stroke-linejoin="round" />
+  </svg>
+
+  <h1 class="wordmark">Armenia&nbsp;<em>News</em></h1>
+
+  <!-- Language order follows orderedLangs() for this showcase: the
+       domain's lead language first, the others in canonical order. -->
+  <div class="telex">
+    <span class="telex__langs">EN · FR · ՀԱՅ · РУ</span>
+    <span class="telex__cadence">Updated every hour</span>
+  </div>
+
+  <p class="lede">All of Armenian life on one page, remade every hour.</p>
+
+  <p class="body-copy">
+    Armenia&nbsp;News gathers dispatches from <b>six Armenian newsrooms</b>,
+    <b>eleven live radio stations</b>, the diaspora's events calendar and the
+    community's social feeds. No account, no sign-up&nbsp;— the page is ready
+    when you arrive.
+  </p>
+
+  <nav>
+    <ul class="dests">
+      <li>
+        <a class="dest" href="https://armenianews.org/">
+          <span class="dest__name">The site
+            <span class="dest__what">The full feed, in four languages</span>
+          </span>
+          <span class="dest__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="dest" href="https://armenianews.org/#actualites">
+          <span class="dest__name">News
+            <span class="dest__what">Six Armenian newsrooms, one feed</span>
+          </span>
+          <span class="dest__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <!-- #direct, not #radio: the section carries that id in both
+             showcases — verified against the live pages. -->
+        <a class="dest" href="https://armenianews.org/#direct">
+          <span class="dest__name">Live radio
+            <!-- ELEVEN stations, not one: First Programme, Im Radio, Arevik,
+                 Culture, Mariam, Voice of Van, Lav, Fama, Yerevan Nights,
+                 Armenian Gospel, Yeraz (STATIONS in Radio.jsx). Naming only
+                 Public Radio undersold ten stations out of eleven. -->
+            <span class="dest__what">Eleven Armenian stations, streaming live</span>
+          </span>
+          <span class="dest__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="dest" href="https://armenianews.org/#agenda">
+          <span class="dest__name">Events
+            <span class="dest__what">Armenian events around the world and in Switzerland</span>
+          </span>
+          <span class="dest__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <a class="cta" href="https://armenianews.org/">Open armenianews.org</a>
+
+  <p class="keywords">
+    Armenia <span>·</span> Diaspora <span>·</span>
+    Yerevan <span>·</span> Armenian community
+  </p>
+
+  <div class="foot">
+    <a href="https://armenianews.org/">armenianews.org</a>
+    <span class="foot__live"><span class="dot" aria-hidden="true"></span>Live radio</span>
+  </div>
+
+</main>
+
+</body>
+</html>

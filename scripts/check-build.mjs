@@ -9,7 +9,7 @@
 import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, LANG_URL, ALL_LANGS } from '../sites.config.js'
+import { SITES, LANG_URL, ALL_LANGS, primaryLang } from '../sites.config.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
@@ -128,6 +128,36 @@ for (const site of Object.values(SITES)) {
     console.log(`✓ dist/${site.id}${site.ogImage} (${(size / 1024).toFixed(0)} ko)`)
   } catch {
     console.error(`✗ dist/${site.id}${site.ogImage} — absent ou vide (npm run og-image)`)
+    bad++
+  }
+
+  // Pages autonomes (carte de liens). Le mode d'échec visé n'est pas
+  // « absente » mais « celle du voisin » : la carte française déployée sur
+  // armenianews.org se sert sans la moindre erreur, en français, avec la
+  // vignette de partage de l'autre domaine. On contrôle donc la langue
+  // déclarée, le canonical et l'image — chacun doit désigner CE site.
+  try {
+    const lien = await readFile(path.join(dir, 'lien.html'), 'utf-8')
+    const attendus = [
+      [`<html lang="${primaryLang(site.id)}">`, lien.includes(`<html lang="${primaryLang(site.id)}"`)],
+      [`canonical ${site.host}/lien.html`, lien.includes(`href="${site.host}/lien.html"`)],
+      [`og:image ${site.ogImage}`, lien.includes(`content="${site.host}${site.ogImage}"`)],
+      [
+        'aucun host ni carte du voisin',
+        Object.values(SITES)
+          .filter((s) => s.id !== site.id)
+          .every((s) => !lien.includes(s.host) && !lien.includes(s.ogImage)),
+      ],
+    ]
+    const kos = attendus.filter(([, ok]) => !ok).map(([n]) => n)
+    if (kos.length) {
+      console.error(`✗ dist/${site.id}/lien.html\n    ${kos.join('\n    ')}`)
+      bad += kos.length
+    } else {
+      console.log(`✓ dist/${site.id}/lien.html (${primaryLang(site.id)})`)
+    }
+  } catch {
+    console.error(`✗ dist/${site.id}/lien.html — absent (pages/lien.${site.id}.html ?)`)
     bad++
   }
 
