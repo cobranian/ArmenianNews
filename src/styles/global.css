@@ -1979,11 +1979,22 @@ html:lang(hy) .nav__brand {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 3px 13px;
+  gap: 0 13px;
   padding: 14px 16px 16px;
 }
+/* La pile de texte à droite du monogramme : signature, légende (optionnelle),
+   appel à l'action. Une seule colonne flex, et c'est le point — le corps de
+   carte n'a plus qu'à placer DEUX enfants, donc le nombre de lignes de texte ne
+   peut plus décaler quoi que ce soit. `min-width: 0` est indispensable : sans
+   lui, un élément flex refuse de passer sous sa largeur de contenu et la
+   légende écourtée déborderait la carte au lieu de se couper. */
+.fb-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
 .fb-card__mark {
-  grid-row: span 2;
   width: 42px;
   height: 42px;
   display: grid;
@@ -1999,15 +2010,33 @@ html:lang(hy) .nav__brand {
   box-shadow: 0 0 0 1px var(--apricot-deep), 0 6px 16px -10px var(--apricot-glow);
 }
 .fb-card__author {
-  align-self: end;
   font-family: var(--font-display);
   font-size-adjust: var(--fsa-display);
   font-size: 1.16rem;
   line-height: 1.1;
   color: var(--text);
 }
+/* La légende de la publication. Elle suit la signature et doit rester en
+   dessous d'elle : même colonne, mais dans le corps et non dans la display, un
+   cran plus petit et en encre atténuée — sinon deux lignes de texte se
+   disputent la carte et la photo cesse d'être le sujet.
+   Le `line-clamp` est NON DESTRUCTIF : la légende entière reste dans le DOM
+   pour les lecteurs d'écran, seul l'affichage s'arrête à deux lignes. C'est la
+   même raison qui interdit de couper les titres au scrape (voir le piège
+   Armenpress dans CLAUDE.md). */
+.fb-card__title {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text-soft);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
 .fb-card__cta {
-  align-self: start;
   font-family: var(--font-mono);
   font-size-adjust: var(--fsa-util);
   font-size: 0.64rem;
