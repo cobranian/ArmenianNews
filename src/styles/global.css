@@ -2015,6 +2015,18 @@ html:lang(hy) .nav__brand {
   font-size: 1.16rem;
   line-height: 1.1;
   color: var(--text);
+  /* Deux lignes au plus. Les cartes d'un rang ont toutes la hauteur de la plus
+     haute, et deux signatures démesurées la fixaient pour tout le monde —
+     « «Արթզ» կրթամշակութային հարթակ / “Artz” cultural-educational platform »
+     tient sur cinq lignes. Avec la légende ajoutée en dessous, le rang passait
+     de 431 à 530 px et les cartes les plus courtes se retrouvaient avec 139 px
+     de vide. Écourter la signature ramène le rang à la hauteur d'une carte
+     normale ; le nom entier reste dans le DOM, comme la légende. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 /* La légende de la publication. Elle suit la signature et doit rester en
    dessous d'elle : même colonne, mais dans le corps et non dans la display, un
