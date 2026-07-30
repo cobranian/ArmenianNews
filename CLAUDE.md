@@ -352,6 +352,30 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   que les scrapers lisent comme une image cassée. Les deux `dist/` contiennent
   **les deux** fichiers (Vite copie tout `public/`) : c'est sans conséquence,
   chaque vitrine ne référence que le sien.
+- **La grande carte WhatsApp ne se commande pas depuis le site.** WhatsApp a
+  deux mises en page : la **grande** (vignette pleine largeur au-dessus du
+  texte) et la **petite** (vignette carrée à gauche). Le choix appartient au
+  **client** — le téléphone rend volontiers la grande là où WhatsApp Desktop
+  rend la petite, **à métadonnées strictement identiques**. Deux captures qui
+  diffèrent ne prouvent donc pas que le site a changé.
+
+  Ce que le site *peut* faire est déjà fait, et tient dans le bloc de six
+  balises de `site-meta.mjs` : `og:image`, plus `secure_url`, `type`, `width`,
+  `height` et `alt`. Un client bascule sur la petite carte dès qu'il doute de
+  l'image ; ces cinq compléments lui évitent de devoir la télécharger pour
+  savoir qu'elle est en https, que c'est un JPEG, et qu'elle fait 1,91:1. Les
+  conditions matérielles sont tenues par ailleurs : 1200×630, sRGB, sans profil
+  ICC, ~64 ko — très en dessous des ~600 ko au-delà desquels WhatsApp cesse de
+  chercher l'image.
+
+  **Le vrai piège est le cache, et il est trompeur.** WhatsApp garde l'aperçu
+  d'une URL plusieurs jours, sans outil public de purge, et la clé est l'URL
+  **exacte**. Un aperçu peut donc afficher un titre retiré du site depuis des
+  jours — c'est la façon la plus sûre de dater une capture : comparez son titre
+  à `SEO[lang]` dans `src/seo.js`. Pour vérifier les métadonnées **actuelles**
+  sans attendre l'expiration, partagez une URL à clé différente
+  (`https://armenieinfo.ch/?v=2`) : même page, autre entrée de cache.
+  Ne « corrigez » pas les balises sur la foi d'un aperçu ancien.
 - **Les pages autonomes** (`pages/`) sont des HTML complets hors du bundle
   React — aujourd'hui les cartes de liens à partager sur les réseaux. La liste
   vit dans `sites.config.js` (`standalone`), **par vitrine**, et

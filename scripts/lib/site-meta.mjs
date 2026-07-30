@@ -130,9 +130,24 @@ export function headFor({ siteId, lang }) {
     `<meta property="og:title" content="${attr(title)}" />`,
     `<meta property="og:description" content="${attr(description)}" />`,
     `<meta property="og:url" content="${url}" />`,
+    // Les cinq lignes qui suivent décrivent la MÊME image. Elles sont là pour
+    // l'aperçu « riche » (grande vignette au-dessus du texte) que rendent
+    // WhatsApp, Facebook et Signal, par opposition à la vignette carrée posée à
+    // gauche du texte. Un client bascule sur la petite carte dès qu'il doute de
+    // l'image : `secure_url` et `type` lui évitent d'avoir à la télécharger pour
+    // savoir qu'elle est en https et que c'est bien un JPEG, `width`/`height`
+    // lui donnent le rapport 1,91:1 sans la décoder.
+    //
+    // Ce ne sont PAS des garanties : la mise en page finale appartient au
+    // client, et WhatsApp Desktop rend volontiers la petite carte là où le
+    // téléphone rend la grande, à métadonnées identiques. Voir « À savoir »
+    // dans CLAUDE.md, à la carte de partage.
     `<meta property="og:image" content="${image}" />`,
+    `<meta property="og:image:secure_url" content="${image}" />`,
+    '<meta property="og:image:type" content="image/jpeg" />',
     '<meta property="og:image:width" content="1200" />',
     '<meta property="og:image:height" content="630" />',
+    `<meta property="og:image:alt" content="${attr(title)}" />`,
     `<meta property="og:locale" content="${OG_LOCALE[lang]}" />`,
     ...ALL_LANGS.filter((l) => l !== lang).map(
       (l) => `<meta property="og:locale:alternate" content="${OG_LOCALE[l]}" />`,
