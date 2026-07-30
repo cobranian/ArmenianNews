@@ -29,19 +29,18 @@ const MOTS = {
   en: { 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten' },
 }
 
-// Les trois branches du ternaire `pool` : fr, puis ru, puis en/hy.
+// TAB_ORDER porte désormais l'ordre ET la présence, une entrée par langue.
+// (Il a remplacé un ternaire `pool` + tri alphabétique ; ce test lisait les
+// branches du ternaire.)
 function poolsParLangue() {
   const src = read('src/components/NewsBrowser.jsx')
-  const m = src.match(
-    /const pool = isFr\s*\?\s*\[([\s\S]*?)\]\s*:\s*lang === 'ru'\s*\?\s*\[([\s\S]*?)\]\s*:\s*\[([\s\S]*?)\]/,
-  )
-  assert.ok(m, 'bloc `const pool = isFr ? … : …` introuvable dans NewsBrowser.jsx')
-  const compter = (bloc) =>
-    bloc
-      .split(',')
-      .map((s) => s.trim())
-      .filter(Boolean).length
-  return { fr: compter(m[1]), ru: compter(m[2]), en: compter(m[3]), hy: compter(m[3]) }
+  const bloc = src.match(/const TAB_ORDER = \{[\s\S]*?\n\}/)
+  assert.ok(bloc, 'tableau TAB_ORDER introuvable dans NewsBrowser.jsx')
+  const pools = {}
+  for (const m of bloc[0].matchAll(/(\w+):\s*\[([\s\S]*?)\]/g)) {
+    pools[m[1]] = (m[2].match(/'[^']+'/g) || []).length
+  }
+  return pools
 }
 
 test('chaque langue déclare un pool de sources non vide', () => {

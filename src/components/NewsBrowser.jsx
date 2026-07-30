@@ -114,16 +114,56 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
   )
 }
 
-// Build the source groups for the current UI language. The rule: a language
-// only shows the sources that actually publish in it, Armenpress pinned first,
-// the rest alphabetical.
-//   fr  → Armenpress, ArménieInfo.tv, Artzakank, California Courier, CivilNet, Courrier d'Erevan, Nouvelles d'Arménie
-//   en/hy → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, NEWS.am, Oragark
-//   ru  → Armenpress, ArmRadio, California Courier, CivilNet, NEWS.am
-// So the French-only sources (Courrier, armenews, artzakank, armenieinfotv)
-// appear ONLY under fr, and ArmRadio and NEWS.am — en/hy/ru, no French edition —
-// are dropped under fr instead of borrowing English headlines beneath
-// lang="fr". Asbarez and
+// L'ordre des onglets, par langue. Il est ÉCRIT À LA MAIN, et c'est un
+// changement : il était auparavant calculé — Armenpress épinglé, puis tri
+// alphabétique de marque — pour qu'une nouvelle source se place toute seule.
+// Cette propriété est perdue à dessein. Le rang porte désormais une intention
+// éditoriale que l'alphabet ne sait pas exprimer : sous `fr`, les quatre fils
+// proprement francophones passent devant les sources traduites ou
+// multilingues ; sous `en`/`hy`, NEWS.am monte au troisième rang.
+//
+// CONSÉQUENCE À CONNAÎTRE : une source ajoutée sans être nommée ici
+// n'apparaîtra nulle part. C'est le prix de l'ordre choisi, et c'est silencieux
+// — le seul garde-fou est le décompte des rédactions annoncé par les cartes de
+// liens (test/source-count.test.mjs), qui lit ce tableau.
+//
+// Cette liste décide aussi de la PRÉSENCE : une langue ne montre que les
+// sources qui publient dans cette langue. Les fils 100 % francophones
+// (Courrier, armenews, artzakank, armenieinfotv) ne paraissent donc que sous
+// `fr` ; ArmRadio et NEWS.am — en/hy/ru, sans édition française — en sont
+// retirés plutôt que d'y servir des titres anglais sous lang="fr".
+const TAB_ORDER = {
+  fr: [
+    'armenpress',
+    'armenieinfotv',
+    'courrier',
+    'armenews',
+    'artzakank',
+    'californiacourier',
+    'civilnet',
+  ],
+  en: [
+    'armenpress',
+    'armradio',
+    'newsam',
+    'asbarez',
+    'civilnet',
+    'californiacourier',
+    'oragark',
+  ],
+  hy: [
+    'armenpress',
+    'armradio',
+    'newsam',
+    'asbarez',
+    'civilnet',
+    'californiacourier',
+    'oragark',
+  ],
+  ru: ['armenpress', 'armradio', 'newsam', 'californiacourier', 'civilnet'],
+}
+
+// Build the source groups for the current UI language. Asbarez and
 // Oragark each have an English and a Western Armenian edition, so they join en/hy
 // but not ru or fr. The California Courier translates Sassounian's Column into a
 // category per language, so — like Armenpress — it appears in ALL four (en = its
@@ -138,7 +178,6 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // most French text; the language rule makes Armenpress the natural lead.)
 // Every rubric is its own carousel — nothing is merged, empty rubrics dropped.
 function buildSources(t, lang) {
-  const isFr = lang === 'fr'
   // ArmRadio publishes en/hy/ru — never French — so armLang only matters when
   // ArmRadio is shown, i.e. outside fr, where it tracks the UI language.
   const armLang = lang === 'hy' ? 'hy' : lang === 'ru' ? 'ru' : 'en'
@@ -281,23 +320,26 @@ function buildSources(t, lang) {
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
 
-  // Sources that publish in this language. Armenpress, the California Courier
-  // and CivilNet are in every language; the French-only sources join them under
-  // fr, ArmRadio and NEWS.am under en/hy/ru, and Asbarez + Oragark under en/hy
-  // (their editions).
-  const pool = isFr
-    ? [armenpress, courrier, armenews, artzakank, armenieinfotv, californiacourier, civilnet]
-    : lang === 'ru'
-      ? [armenpress, armradio, californiacourier, civilnet, newsam]
-      : [armenpress, armradio, asbarez, oragark, californiacourier, civilnet, newsam]
-
-  // Armenpress pinned first (the constant across languages); the rest sorted
-  // alphabetically by brand with accents folded (é = e, so ArménieInfo.tv sorts
-  // as "Armenie"). Sorting, not a hand-ordered list — a new source slots itself.
-  const rest = pool
-    .filter((s) => s.id !== 'armenpress')
-    .sort((a, b) => a.brand.localeCompare(b.brand, 'fr', { sensitivity: 'base' }))
-  return [armenpress, ...rest].filter((s) => s.cats.length)
+  // TAB_ORDER (en tête de fichier) décide de l'ordre ET de la présence : une
+  // source absente de la liste d'une langue ne s'y affiche pas. Un id inconnu
+  // ou une source sans rubrique remplie tombe au filtrage — c'est ce qui rend
+  // sûr de nommer ici une source qu'une langue n'a pas.
+  const bySource = {
+    armenpress,
+    armradio,
+    courrier,
+    armenews,
+    artzakank,
+    armenieinfotv,
+    asbarez,
+    oragark,
+    californiacourier,
+    civilnet,
+    newsam,
+  }
+  return (TAB_ORDER[lang] || TAB_ORDER.fr)
+    .map((id) => bySource[id])
+    .filter((s) => s && s.cats.length)
 }
 
 export function NewsBrowser() {

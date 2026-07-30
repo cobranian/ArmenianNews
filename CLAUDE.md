@@ -646,11 +646,28 @@ de production servent toujours depuis la racine de leur domaine.
   Armenpress) est donc la seule que le prérendu injecte dans le HTML, et la
   seule que Google lit sans exécuter de JS. La règle (`buildSources`) : **chaque
   langue n'affiche que les sources qui publient dans cette langue**, Armenpress
-  épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
-  `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
-  - `fr` → Armenpress, ArménieInfo.tv, Artzakank, California Courier, CivilNet, Courrier d'Erevan, Nouvelles d'Arménie
-  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, NEWS.am, Oragark
-  - `ru` → Armenpress, ArmRadio, California Courier, CivilNet, NEWS.am
+  en tête partout. L'ordre vit dans **`TAB_ORDER`** (`NewsBrowser.jsx`), une
+  liste par langue :
+  - `fr` → Armenpress, ArménieInfo.tv, Courrier d'Erevan, Nouvelles d'Arménie, Artzakank, California Courier, CivilNet
+  - `en`/`hy` → Armenpress, ArmRadio, NEWS.am, Asbarez, CivilNet, California Courier, Oragark
+  - `ru` → Armenpress, ArmRadio, NEWS.am, California Courier, CivilNet
+
+  **Cet ordre est écrit à la main, et il ne l'a pas toujours été.** Il était
+  calculé — Armenpress épinglé, puis tri alphabétique de marque, accents repliés
+  (`é = e`, ArménieInfo.tv triait comme « Armenie ») — précisément pour qu'une
+  nouvelle source se place toute seule. Cette propriété est **perdue à dessein** :
+  le rang porte désormais une intention éditoriale que l'alphabet ne sait pas
+  exprimer — sous `fr`, les quatre fils proprement francophones passent devant
+  les sources traduites ou multilingues ; sous `en`/`hy`, NEWS.am monte au
+  troisième rang.
+
+  La conséquence est à connaître avant d'ajouter une source : **une source
+  absente de `TAB_ORDER` n'apparaît nulle part**, et rien ne le signale. Le seul
+  garde-fou est indirect — `test/source-count.test.mjs` lit ce tableau pour
+  vérifier le nombre de rédactions annoncé par les cartes de liens, donc un
+  oubli fait mentir ce décompte et casse le test. Ne renommez pas `TAB_ORDER`
+  sans mettre ce test à jour : il le lit comme du texte (Node ne sait pas
+  importer du JSX).
 
   Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
   n'apparaissent donc que sous `fr` ; ArmRadio et NEWS.am (`en`/`hy`/`ru`, sans
