@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T19:20:51.091Z",
+  "generatedAt": "2026-07-30T21:06:03.141Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1137,6 +1137,13 @@
             "category": "Կարևոր"
           },
           {
+            "title": "Քննարկվել է վիզաների ազատականացման գործողությունների ծրագրի կատարման ընթացքը․ ՆԳՆ",
+            "url": "https://hy.armradio.am/archives/749871",
+            "date": "2026-07-30T18:44:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/760434514_920495200389397_3210844297284390861_n-1-768x512.jpg",
+            "category": "Հասարակություն"
+          },
+          {
             "title": "Լոռու դպրոցում ուսուցչի վարքագծի վերաբերյալ ուսումնասիրությունը բացահայտել է ֆիզիկական բռնության դեպքեր",
             "url": "https://hy.armradio.am/archives/749863",
             "date": "2026-07-30T18:31:31.000Z",
@@ -1191,13 +1198,6 @@
             "date": "2026-07-30T13:37:30.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2021/09/MHM0143538-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Արմեն Աշոտյանի նկատմամբ կիրառված խափանման միջոցը փոխվել է",
-            "url": "https://hy.armradio.am/archives/749778",
-            "date": "2026-07-30T12:46:22.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2021/04/ashotyan-300x201.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -4294,6 +4294,12 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "Կոնֆերենցիաների լիգա. «Ալաշկերտ»-ը դուրս մնաց հետագա պայքարից",
+            "url": "https://armenpress.am/hy/article/1256831",
+            "date": "2026-07-30T20:22:27.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/31/nuuYIUIX6dLq8PEJwx23VAA6JI6hVNrysRY6mwxU.webp"
+          },
+          {
             "title": "Կոնֆերենցիաների լիգա. «Նոա»-ն դուրս եկավ հաջորդ փուլ, «Փյունիկ»-ը լքում է պայքարը",
             "url": "https://armenpress.am/hy/article/1256827",
             "date": "2026-07-30T18:01:46.000Z",
@@ -4346,12 +4352,6 @@
             "url": "https://armenpress.am/hy/article/1256511",
             "date": "2026-07-27T11:44:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/27/l4mxwsVIRRupuabhzIdMy6p56lxAclbopo2CqtaH.webp"
-          },
-          {
-            "title": "Աստանայում կկայանա «Ապագայի խաղեր» միջազգային բազմամարզական միջոցառումը",
-            "url": "https://armenpress.am/hy/article/1256482",
-            "date": "2026-07-27T08:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/27/ogaBJCuix9ho7RyBcVLT3WJmn6N3x31Z5QI42n7X.webp"
           }
         ]
       },
@@ -4951,6 +4951,24 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "Armenian Anthem Played in Baku as Janes Nazaryan Wins Gold in Wrestling U17 World Championships",
+            "url": "https://asbarez.com/armenian-anthem-played-in-baku-as-janes-nazaryan-wins-wrestling-u17-world-gold/",
+            "date": "2026-07-30T20:55:24.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30113446/anthem-armenian-in-baku-300x160.png"
+          },
+          {
+            "title": "Pashinyan Demands Russia Cede Control of Railways",
+            "url": "https://asbarez.com/pashinyan-demands-russia-cede-control-of-railways/",
+            "date": "2026-07-30T20:37:25.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30133644/russia_wants_to_abandon_armenian_railways-300x163.jpg"
+          },
+          {
+            "title": "Pan-Homenetmen Jamboree Participants Visit Holy Etchmiadzin, Meet Karekin II",
+            "url": "https://asbarez.com/pan-homenetmen-jamboree-participants-visit-holy-etchmiadzin-meet-karekin-ii/",
+            "date": "2026-07-30T20:34:51.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30133316/0731HMEM-300x200.jpg"
+          },
+          {
             "title": "Armenian Students Win Four Medals at European Junior Olympiad in Informatics",
             "url": "https://asbarez.com/armenian-students-win-four-medals-at-european-junior-olympiad-in-informatics/",
             "date": "2026-07-30T18:41:45.000Z",
@@ -4961,6 +4979,12 @@
             "url": "https://asbarez.com/homenetmen-breaks-guinness-world-record/",
             "date": "2026-07-30T16:44:45.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30094419/Homenetmen-Guiness-World-Records-Official-Photo-1-300x200.jpg"
+          },
+          {
+            "title": "Court Sets Hearing Date for Catholicos Karakin II’s Case",
+            "url": "https://asbarez.com/court-sets-hearing-date-for-catholicos-karakin-iis-case/",
+            "date": "2026-07-30T16:37:00.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30133845/0731Gatoghigos-300x220.jpeg"
           },
           {
             "title": "Saying Eurasian Union is ‘Paralyzed,’ Pashinyan Blasts Russia after Call with Putin",
@@ -4985,30 +5009,6 @@
             "url": "https://asbarez.com/for-truth-and-justice-anc-central-council-responds-to-moscows-claims-about-artsakh/",
             "date": "2026-07-29T19:12:18.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/06/26091704/%D5%80%D5%A1%D5%B5-%D4%B4%D5%A1%D5%BF-%D5%AC%D5%B8%D6%82%D6%80-1024x576-1-300x221.jpg"
-          },
-          {
-            "title": "More Than POWs",
-            "url": "https://asbarez.com/more-than-pows/",
-            "date": "2026-07-29T17:45:02.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/29103625/EndHostageDiplomacy-300x225.jpeg"
-          },
-          {
-            "title": "Armenian Film Society London Launches Open Call for New Western Armenian Film Program",
-            "url": "https://asbarez.com/armenian-film-society-london-launches-open-call-for-new-western-armenian-film-program/",
-            "date": "2026-07-29T17:30:56.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/29102937/Credit-Still-from-Taniel-dir.-Garo-Berberian-horizontal-2-300x169.png"
-          },
-          {
-            "title": "Yerevan Confirms Plans to Import More Gas from Iran",
-            "url": "https://asbarez.com/yerevan-confirms-plans-to-import-more-gas-from-iran/",
-            "date": "2026-07-28T21:39:30.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/27133307/6111803-300x213.jpg"
-          },
-          {
-            "title": "Russia’s Intelligence Service Warns of ‘Deep Economic Crisis’ in Armenia",
-            "url": "https://asbarez.com/russias-intelligence-service-warns-of-deep-economic-crisis-in-armenia/",
-            "date": "2026-07-28T21:38:10.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/28143709/EEUSummitAstana-300x169.jpg"
           }
         ]
       },
@@ -5016,6 +5016,12 @@
         "categoryKey": "community",
         "label": "Community",
         "articles": [
+          {
+            "title": "Pan-Homenetmen Jamboree Participants Visit Holy Etchmiadzin, Meet Karekin II",
+            "url": "https://asbarez.com/pan-homenetmen-jamboree-participants-visit-holy-etchmiadzin-meet-karekin-ii/",
+            "date": "2026-07-30T20:34:51.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30133316/0731HMEM-300x200.jpg"
+          },
           {
             "title": "13th Pan-Homenetmen Scouting Jamboree Kicks Off in Armenia",
             "url": "https://asbarez.com/13th-pan-homenetmen-scouting-jamboree-kicks-off-in-armenia/",
@@ -5069,12 +5075,6 @@
             "url": "https://asbarez.com/remembering-varoujan-koundakjian/",
             "date": "2026-07-06T23:23:00.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/07122440/VaroujKoundakjian-300x223.jpg"
-          },
-          {
-            "title": "Why Armenian-Americans May Seat California’s Next Governor",
-            "url": "https://asbarez.com/why-armenian-americans-may-seat-californias-next-governor/",
-            "date": "2026-07-06T15:57:45.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/06085630/armenian-americans-next-governor-300x225.png"
           }
         ]
       },
@@ -5347,6 +5347,12 @@
         "label": "Sports",
         "articles": [
           {
+            "title": "Armenian Anthem Played in Baku as Janes Nazaryan Wins Gold in Wrestling U17 World Championships",
+            "url": "https://asbarez.com/armenian-anthem-played-in-baku-as-janes-nazaryan-wins-wrestling-u17-world-gold/",
+            "date": "2026-07-30T20:55:24.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/30113446/anthem-armenian-in-baku-300x160.png"
+          },
+          {
             "title": "Grandmaster Levon Aronian wins Biel Chess Festival 2026",
             "url": "https://asbarez.com/grandmaster-levon-aronian-wins-biel-chess-festival-2026/",
             "date": "2026-07-24T19:47:55.000Z",
@@ -5399,12 +5405,6 @@
             "url": "https://asbarez.com/the-countdown-to-fifa-world-cup-2026-expert-predictions-for-glory/",
             "date": "2026-06-10T23:41:25.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/06/10163937/world-cup-logo-300x200.jpg"
-          },
-          {
-            "title": "Armenia National Basketball Team to Face Ireland on June 27 in Los Angeles",
-            "url": "https://asbarez.com/armenia-national-basketball-team-to-face-ireland-on-june-27-in-los-angeles/",
-            "date": "2026-06-04T17:10:29.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/06/04095946/Armenia-Basketball-246x300.jpeg"
           }
         ]
       }
@@ -5414,6 +5414,42 @@
         "categoryKey": "hayastan",
         "label": "Հայաստան",
         "articles": [
+          {
+            "title": "Ծառուկեան Արձագանգեց Փաշինեանին. «Արդարութիւնը Հիւանդանում Է, Բայց Չի Մահանում»",
+            "url": "https://asbarez.am/archives/506579",
+            "date": "2026-07-30T20:55:30.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30135510/0731Kakig.jpg"
+          },
+          {
+            "title": "Ամենայն Հայոց Կաթողիկոսին Եւ Միւս Հոգեւորականներուն Վերաբերող Քրէական Գործով Դատական Նիստ 7 Օգոստոսին",
+            "url": "https://asbarez.am/archives/506575",
+            "date": "2026-07-30T20:50:06.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30134943/0731Gatoghigos.jpeg"
+          },
+          {
+            "title": "Արմէն Սարգսեան Կը Հաստատէ՝ Արցախի Հարցը Կը Շարունակէ Մնալ Միջազգային Քաղաքական Օրակարգին Վրայ",
+            "url": "https://asbarez.am/archives/506572",
+            "date": "2026-07-30T20:47:32.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30134507/0731Armen.jpg"
+          },
+          {
+            "title": "ՀամաՀՄԸՄական Բանակումի Մասնակիցները Այցելեցին Ս. Էջմիածին",
+            "url": "https://asbarez.am/archives/506563",
+            "date": "2026-07-30T20:23:54.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30132135/0731HMEM2.jpg"
+          },
+          {
+            "title": "Փաշինեան Այլընտրանք Չունեցող Նկատեց Հայկական Երկաթուղիի Կառավարումը Ռուսական Կողմէն Ետ Առնելը",
+            "url": "https://asbarez.am/archives/506559",
+            "date": "2026-07-30T20:18:14.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30131743/0731RU1.jpg"
+          },
+          {
+            "title": "Եւրոպական Միութիւնը 43.9 Միլիոն Եուրոյի Դրամաշնորհ Տրամադրած Է Հայաստանին",
+            "url": "https://asbarez.am/archives/506554",
+            "date": "2026-07-30T19:58:17.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30125759/0731EU.jpg"
+          },
           {
             "title": "Արցախի Ժողովուրդին Յիշողութիւնն Ու Իրաւունքները Զբօսաշրջային Նիւթի Վերածելը Դատապարտուեցաւ",
             "url": "https://asbarez.am/archives/506498",
@@ -5437,42 +5473,6 @@
             "url": "https://asbarez.am/archives/506501",
             "date": "2026-07-29T22:07:24.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29145210/Armeniandairy.jpg"
-          },
-          {
-            "title": "Գարեգին Բ. Կաթողիկոսին Եւ 6 Եպիսկոպոսներու Քրէական Գործը Փոխանցուեցաւ Դատարան",
-            "url": "https://asbarez.am/archives/506504",
-            "date": "2026-07-29T21:37:25.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29143355/KarekinIIEaster-576x375-1.jpg"
-          },
-          {
-            "title": "Հայաստան Գործնականօրէն Արցախը Կ՛ընդունէր Իբրեւ Տէ Ֆաքթօ Կայացած Պետութիւն. ՀՅԴ Հայ Դատի Կեդրոնական Խորհուրդ",
-            "url": "https://asbarez.am/archives/506484",
-            "date": "2026-07-29T21:07:14.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29140512/0730Tad.jpg"
-          },
-          {
-            "title": "Գիւմրիի ՀՅԴ Ղեկավարը Կալանաւորուեցաւ",
-            "url": "https://asbarez.am/archives/506481",
-            "date": "2026-07-29T21:03:31.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29140203/0730Ara.jpg"
-          },
-          {
-            "title": "«Արարատ Արմէնիա» «Չեմփիընզ Լիկ»ի Զտումի Յաջորդ Հանգրուան Հասաւ",
-            "url": "https://asbarez.am/archives/506469",
-            "date": "2026-07-29T19:12:24.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29121135/0729Ararat.jpg"
-          },
-          {
-            "title": "Նոր Հրատարակութիւն Արցախեան Երկրորդ Պատերազմին Մասին",
-            "url": "https://asbarez.am/archives/506461",
-            "date": "2026-07-29T18:54:16.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29115605/0729The44.jpg"
-          },
-          {
-            "title": "Թուրքիոյ Կրթութեան Նախարարը Պոլսոյ Հայոց Պատրիարքարան Այցելեց",
-            "url": "https://asbarez.am/archives/506458",
-            "date": "2026-07-29T18:51:35.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29115112/0729Bolis.jpeg"
           }
         ]
       },
@@ -5480,6 +5480,42 @@
         "categoryKey": "klkhavor-loorer",
         "label": "Գլխաւոր Լուրեր",
         "articles": [
+          {
+            "title": "Ծառուկեան Արձագանգեց Փաշինեանին. «Արդարութիւնը Հիւանդանում Է, Բայց Չի Մահանում»",
+            "url": "https://asbarez.am/archives/506579",
+            "date": "2026-07-30T20:55:30.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30135510/0731Kakig.jpg"
+          },
+          {
+            "title": "Ամենայն Հայոց Կաթողիկոսին Եւ Միւս Հոգեւորականներուն Վերաբերող Քրէական Գործով Դատական Նիստ 7 Օգոստոսին",
+            "url": "https://asbarez.am/archives/506575",
+            "date": "2026-07-30T20:50:06.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30134943/0731Gatoghigos.jpeg"
+          },
+          {
+            "title": "Արմէն Սարգսեան Կը Հաստատէ՝ Արցախի Հարցը Կը Շարունակէ Մնալ Միջազգային Քաղաքական Օրակարգին Վրայ",
+            "url": "https://asbarez.am/archives/506572",
+            "date": "2026-07-30T20:47:32.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30134507/0731Armen.jpg"
+          },
+          {
+            "title": "ՀամաՀՄԸՄական Բանակումի Մասնակիցները Այցելեցին Ս. Էջմիածին",
+            "url": "https://asbarez.am/archives/506563",
+            "date": "2026-07-30T20:23:54.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30132135/0731HMEM2.jpg"
+          },
+          {
+            "title": "Փաշինեան Այլընտրանք Չունեցող Նկատեց Հայկական Երկաթուղիի Կառավարումը Ռուսական Կողմէն Ետ Առնելը",
+            "url": "https://asbarez.am/archives/506559",
+            "date": "2026-07-30T20:18:14.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30131743/0731RU1.jpg"
+          },
+          {
+            "title": "Եւրոպական Միութիւնը 43.9 Միլիոն Եուրոյի Դրամաշնորհ Տրամադրած Է Հայաստանին",
+            "url": "https://asbarez.am/archives/506554",
+            "date": "2026-07-30T19:58:17.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30125759/0731EU.jpg"
+          },
           {
             "title": "Արդեօ՞ք Այս Սովորութիւններն Իսկապէս Առողջարար Են",
             "url": "https://asbarez.am/archives/506545",
@@ -5503,42 +5539,6 @@
             "url": "https://asbarez.am/archives/506498",
             "date": "2026-07-29T22:18:47.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29142653/0730Marriott.jpg"
-          },
-          {
-            "title": "Ռուբինեան Սահմանափակած Է Լրագրողներուն Գործունէութիւնը",
-            "url": "https://asbarez.am/archives/506490",
-            "date": "2026-07-29T22:16:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29141911/0730marianna-1.jpg"
-          },
-          {
-            "title": "Լիլիթ Մակունց Պիտի Նշանակուի Վարչապետի Աշխատակազմի Ղեկավար",
-            "url": "https://asbarez.am/archives/506493",
-            "date": "2026-07-29T22:09:03.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29142114/0730Lilit.jpg"
-          },
-          {
-            "title": "Փաշինեան Անդրադարձաւ Երեւան-Մոսկուա Յարաբերութեանց Սրման Եւ ԵԱՏՄի Ճակատագիրին",
-            "url": "https://asbarez.am/archives/506501",
-            "date": "2026-07-29T22:07:24.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29145210/Armeniandairy.jpg"
-          },
-          {
-            "title": "Գարեգին Բ. Կաթողիկոսին Եւ 6 Եպիսկոպոսներու Քրէական Գործը Փոխանցուեցաւ Դատարան",
-            "url": "https://asbarez.am/archives/506504",
-            "date": "2026-07-29T21:37:25.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29143355/KarekinIIEaster-576x375-1.jpg"
-          },
-          {
-            "title": "Հայաստան Գործնականօրէն Արցախը Կ՛ընդունէր Իբրեւ Տէ Ֆաքթօ Կայացած Պետութիւն. ՀՅԴ Հայ Դատի Կեդրոնական Խորհուրդ",
-            "url": "https://asbarez.am/archives/506484",
-            "date": "2026-07-29T21:07:14.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29140512/0730Tad.jpg"
-          },
-          {
-            "title": "Գիւմրիի ՀՅԴ Ղեկավարը Կալանաւորուեցաւ",
-            "url": "https://asbarez.am/archives/506481",
-            "date": "2026-07-29T21:03:31.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/29140203/0730Ara.jpg"
           }
         ]
       },
@@ -5546,6 +5546,12 @@
         "categoryKey": "kaghoutigyanken",
         "label": "Գաղութի Կեանքէն",
         "articles": [
+          {
+            "title": "ՀամաՀՄԸՄական Բանակումի Մասնակիցները Այցելեցին Ս. Էջմիածին",
+            "url": "https://asbarez.am/archives/506563",
+            "date": "2026-07-30T20:23:54.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30132135/0731HMEM2.jpg"
+          },
           {
             "title": "Արդեօ՞ք Այս Սովորութիւններն Իսկապէս Առողջարար Են",
             "url": "https://asbarez.am/archives/506545",
@@ -5599,12 +5605,6 @@
             "url": "https://asbarez.am/archives/506277",
             "date": "2026-07-24T22:16:00.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/24141318/0724Tina1-1.jpg"
-          },
-          {
-            "title": "Քաղցկեղի 10 Վաղ Ախտանշան, Որոնք Չպէտք Է Անտեսել",
-            "url": "https://asbarez.am/archives/506231",
-            "date": "2026-07-23T21:43:32.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/23144313/0725AH.png"
           }
         ]
       },
@@ -5612,6 +5612,12 @@
         "categoryKey": "գաղութներ",
         "label": "Գաղութներ",
         "articles": [
+          {
+            "title": "ՀամաՀՄԸՄական Բանակումի Մասնակիցները Այցելեցին Ս. Էջմիածին",
+            "url": "https://asbarez.am/archives/506563",
+            "date": "2026-07-30T20:23:54.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30132135/0731HMEM2.jpg"
+          },
           {
             "title": "ՀՄԸՄը «Կինես»ի Համաշխարհային Մրցանիշ Մը Հաստատեց",
             "url": "https://asbarez.am/archives/506539",
@@ -5665,12 +5671,6 @@
             "url": "https://asbarez.am/archives/506350",
             "date": "2026-07-27T19:49:00.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27134648/0727Lisbon2.jpg"
-          },
-          {
-            "title": "Լիզպոնի Գործողութեան 43րդ Ամեակի Նշում",
-            "url": "https://asbarez.am/archives/506327",
-            "date": "2026-07-27T18:54:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/27115218/0727Lisbon-5.jpg"
           }
         ]
       },
@@ -8241,6 +8241,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Conference League: Alashkert dropped out of the competition",
+            "url": "https://sport.news.am/eng/news/168027/",
+            "date": "2026-07-30T20:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/07/168027.jpg"
+          },
+          {
+            "title": "Conference League: Noah advanced to the third qualifying round",
+            "url": "https://sport.news.am/eng/news/168023/",
+            "date": "2026-07-30T17:52:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/07/168023.jpg"
+          },
+          {
             "title": "ATP-250. Sensational defeat of Karen Khachanov",
             "url": "https://sport.news.am/eng/news/168012/",
             "date": "2026-07-30T07:02:00.000Z",
@@ -8287,18 +8299,6 @@
             "url": "https://sport.news.am/eng/news/167958/",
             "date": "2026-07-27T18:15:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/167958.jpg"
-          },
-          {
-            "title": "WTA-250: Elina Avanesyan to reach the semifinals",
-            "url": "https://sport.news.am/eng/news/167915/",
-            "date": "2026-07-24T13:21:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/167915.jpg"
-          },
-          {
-            "title": "Jurgen Klopp appointed new Germany head coach",
-            "url": "https://sport.news.am/eng/news/167913/",
-            "date": "2026-07-24T12:26:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/167913.jpg"
           }
         ]
       },
@@ -8903,6 +8903,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ԿԼ. «Ալաշկերտը» 10 ֆուտբոլիստով չկարողացավ հաղթահարել «Կլուժի» արգելքը եւ դուրս մնաց պայքարից",
+            "url": "https://sport.news.am/arm/news/168027/",
+            "date": "2026-07-30T20:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/07/168027.jpg"
+          },
+          {
             "title": "ՈւԵՖԱ. Աշխարհի առաջնությունը վաճառքի ենթակա չէ",
             "url": "https://sport.news.am/arm/news/168025/",
             "date": "2026-07-30T19:17:00.000Z",
@@ -8955,12 +8961,6 @@
             "url": "https://sport.news.am/arm/news/168016/",
             "date": "2026-07-30T12:42:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/168016.jpg"
-          },
-          {
-            "title": "Հայաստանի բասկետբոլի ֆեդերացիան նոր նախագահ ունի",
-            "url": "https://sport.news.am/arm/news/168014/",
-            "date": "2026-07-30T11:24:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168014.jpg"
           }
         ]
       },
@@ -8968,6 +8968,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Ռուսաստանը կարող է առանց դժվարության փոխարինել հայկական մատակարարումները. Ռեշետնիկով",
+            "url": "https://news.am/hy/news/1052611",
+            "date": "2026-07-30T19:35:00.000Z",
+            "image": "https://news.am/storage/media/26/07/30/DhOhOKgMTZroS2b0.webp"
+          },
           {
             "title": "Եթե Հայաստանը վերանայի ՀԿԵ-ի պայմանագիրը, Ռուսաստանը փոխհատուցում կպահանջի. Ռեշետնիկով",
             "url": "https://news.am/hy/news/1052598",
@@ -9021,12 +9027,6 @@
             "url": "https://news.am/hy/news/1052459",
             "date": "2026-07-30T09:23:03.000Z",
             "image": "https://news.am/storage/media/26/07/30/GAxYeAjhaZudYahE.webp"
-          },
-          {
-            "title": "Աշխարհի կենտրոնական բանկերի ոսկու պահանջարկը II եռամսյակում հասել է ռեկորդային 289 տոննայի․ WGC",
-            "url": "https://news.am/hy/news/1052422",
-            "date": "2026-07-30T08:55:00.000Z",
-            "image": "https://news.am/storage/media/26/05/18/YLSKZ0wweoITRmTZ.webp"
           }
         ]
       },
@@ -9565,6 +9565,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Лига конференций: «Алашкерт» в меньшинстве уступил «Клужу»",
+            "url": "https://sport.news.am/rus/news/168027/",
+            "date": "2026-07-30T20:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/07/168027.jpg"
+          },
+          {
             "title": "Лига конференций: «Пюник» выбыл из борьбы",
             "url": "https://sport.news.am/rus/news/168024/",
             "date": "2026-07-30T18:01:00.000Z",
@@ -9617,12 +9623,6 @@
             "url": "https://sport.news.am/rus/news/168008/",
             "date": "2026-07-30T08:19:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/168008.jpg"
-          },
-          {
-            "title": "АТР-250: Сенсационное поражение Карена Хачанова",
-            "url": "https://sport.news.am/rus/news/168012/",
-            "date": "2026-07-30T07:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168012.jpg"
           }
         ]
       },
@@ -9630,6 +9630,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Решетников: Россия может без труда заместить армянские поставки",
+            "url": "https://news.am/ru/news/1052611",
+            "date": "2026-07-30T19:35:20.000Z",
+            "image": "https://news.am/storage/media/26/07/30/DhOhOKgMTZroS2b0.webp"
+          },
           {
             "title": "Решетников: Если Армения пересмотрит договор по ЮКЖД, Россия потребует компенсацию",
             "url": "https://news.am/ru/news/1052598",
@@ -9683,12 +9689,6 @@
             "url": "https://news.am/ru/news/1052459",
             "date": "2026-07-30T09:23:03.000Z",
             "image": "https://news.am/storage/media/26/07/30/GAxYeAjhaZudYahE.webp"
-          },
-          {
-            "title": "WGC: спрос мировых центробанков на золото в II квартале достиг рекордных 289 тонн",
-            "url": "https://news.am/ru/news/1052422",
-            "date": "2026-07-30T08:55:00.000Z",
-            "image": "https://news.am/storage/media/26/05/18/YLSKZ0wweoITRmTZ.webp"
           }
         ]
       },
