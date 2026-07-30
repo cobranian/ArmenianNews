@@ -157,7 +157,7 @@ const STRINGS = {
     // sous silence — le nombre est écrit en toutes lettres parce que t() ne
     // sait pas interpoler. Si vous touchez à STATIONS (Radio.jsx), les quatre
     // traductions ci-dessous doivent suivre ; un test le vérifie.
-    'radio.subtitle': 'Onze radios arméniennes, en flux continu',
+    'radio.subtitle': 'Douze radios arméniennes, en flux continu',
     'radio.onair': 'En direct',
     'radio.tz': 'Erevan',
     'radio.play': 'Écouter en direct',
@@ -178,6 +178,7 @@ const STRINGS = {
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
+    'radio.st.jazz': 'Radio Jazz FM',
   },
   en: {
     // La marque suit le domaine (.org = Armenia News), pas la langue — voir
@@ -319,7 +320,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
-    'radio.subtitle': 'Eleven Armenian stations, streaming live',
+    'radio.subtitle': 'Twelve Armenian stations, streaming live',
     'radio.onair': 'On air',
     'radio.tz': 'Yerevan',
     'radio.play': 'Listen live',
@@ -340,6 +341,7 @@ const STRINGS = {
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
+    'radio.st.jazz': 'Radio Jazz FM',
   },
   hy: {
     // « Արմենիա Ին֖ո » — la seule langue dont la marque affichée s'écarte du
@@ -505,7 +507,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',
-    'radio.subtitle': 'Տասնմեկ հայկական ռադիոկայան՝ ուղիղ եթերում',
+    'radio.subtitle': 'Տասներկու հայկական ռադիոկայան՝ ուղիղ եթերում',
     'radio.onair': 'Ուղիղ',
     'radio.tz': 'Երևան',
     'radio.play': 'Միացնել',
@@ -526,6 +528,7 @@ const STRINGS = {
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
+    'radio.st.jazz': 'Radio Jazz FM',
   },
   ru: {
     // Forme latine délibérée : la marque suit le domaine (.org = Armenia
@@ -666,7 +669,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Ереван · 128 кбит/с',
     'radio.title': 'Прямой эфир',
-    'radio.subtitle': 'Одиннадцать армянских радиостанций в прямом эфире',
+    'radio.subtitle': 'Двенадцать армянских радиостанций в прямом эфире',
     'radio.onair': 'В эфире',
     'radio.tz': 'Ереван',
     'radio.play': 'Слушать в эфире',
@@ -687,6 +690,7 @@ const STRINGS = {
     'radio.st.yerevannights': 'Yerevan Nights',
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
+    'radio.st.jazz': 'Radio Jazz FM',
   },
 }
 

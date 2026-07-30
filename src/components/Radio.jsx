@@ -46,6 +46,12 @@ const STATIONS = [
   // the CSP host-source must name the non-default port explicitly.
   { id: 'gospel', stream: 'https://s8.myradiostream.com:15554/listen.mp3' },
   { id: 'yeraz', stream: YERAZ_PROXY },
+  // Radio Jazz FM (89.3 MHz, Erevan) — the only jazz station of the set. Like
+  // the stream4cast mounts it is HTTPS and sends Access-Control-Allow-Origin: *,
+  // so it feeds the analyser directly: no proxy, no `plain` flag. Its 256 kbps
+  // mount is the highest bitrate here (the section eyebrow still says 128 —
+  // it describes the common case, not this one).
+  { id: 'jazz', stream: 'https://am.radioaurora.am/jz' },
 ]
 
 const prefersReducedMotion = () =>

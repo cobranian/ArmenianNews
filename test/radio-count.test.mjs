@@ -23,12 +23,12 @@ const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 // (ERR_UNKNOWN_FILE_EXTENSION), même raison qui a fait sortir LANGS de
 // src/i18n.jsx vers sites.config.js.
 const NOMBRES = {
-  fr: 'Onze',
-  en: 'Eleven',
-  hy: 'Տասնմեկ',
-  ru: 'Одиннадцать',
+  fr: 'Douze',
+  en: 'Twelve',
+  hy: 'Տասներկու',
+  ru: 'Двенадцать',
 }
-const ATTENDU = 11
+const ATTENDU = 12
 
 function compterStations() {
   const src = read('src/components/Radio.jsx')
