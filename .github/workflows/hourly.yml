@@ -81,10 +81,25 @@ jobs:
       # dist/ch/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png)
       # — dist/ch is the showcase that domain serves.
       # Best-effort: a screenshot failure must never block the deploy.
+      #
+      # v2 (et non v1) pour deux raisons. La visible : v1 tourne sur Node 20,
+      # que les runners forcent déjà sur Node 24 en annonçant la fin du support.
+      # La vraie : sous v2, `chrome-version: stable` installe **Chrome for
+      # Testing** et non le Chrome officiel — c'est précisément le binaire
+      # contre lequel Puppeteer est versionné, donc `scripts/shoot.mjs` y gagne
+      # un couple navigateur/pilote reproductible.
+      #
+      # La sortie `chrome-path` n'a pas changé de nom, donc l'étape suivante est
+      # intacte. Attention en revanche : les deux étapes sont
+      # `continue-on-error: true`, donc **un job vert ne prouve rien ici** — si
+      # le binaire devenait injoignable, la capture cesserait de se rafraîchir
+      # en silence, exactement le piège documenté dans CLAUDE.md. Après un
+      # changement de cette action, vérifiez le log de l'étape de capture, pas
+      # la seule couleur du job.
       - name: Set up Chrome (for screenshot)
         id: chrome
         continue-on-error: true
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
         with:
           chrome-version: stable
 
