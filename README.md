@@ -23,6 +23,7 @@ renders that data into two static Vite + React bundles (`dist/ch/`,
 | **Actualités** | [Le Courrier d'Erevan](https://courrier.am/fr) | The latest **10 articles per section** across the 8 sections (Actualités, Société, Économie, Arts et culture, Arménie francophone, Opinions, Région, Diasporas), each shown as a horizontal, swipeable **shelf** with ‹ › arrow controls. Cards link out to the original article. Not the default tab (see Armenpress) — French-only, so it only appears under the fr UI. |
 | **Actualités** | [Armenpress](https://armenpress.am/fr) | The national news agency: the latest **10 articles per rubric** across **7 rubrics** (Armenia, Economy, World, Culture, Sports, Fact Check, Exclusive Projects), in **each of 4 languages** (fr / en / hy / ru) — 280 articles per snapshot, each rubric its own shelf. The only source here that is **quadrilingual**: fr/en/hy/ru map 1:1 to the UI language, and rubric names come from Armenpress' own labels (the Russian edition labels them Армения, Экономика, Мир, Культура, Спорт, Проверка фактов, Спецпроекты). The **Russian edition** ([armenpress.am/ru](https://armenpress.am/ru)) shares the exact same Inertia payload shape and rubric slugs, so it needed no new scraping logic — just `'ru'` added to `ARMENPRESS_LANGS`. **Always the default tab**, in every language: `NewsBrowser` renders only the active tab (`sources[0]`), and each of the four prerendered pages bakes in Armenpress' own edition — French copy under `lang="fr"`, English under `lang="en"`, and so on, which is what a query in that language should find. (Courrier used to lead, to prerender the most French text; the per-language source rule made Armenpress the natural, SEO-safe lead instead.) It is an Inertia.js app, so the feed arrives as embedded JSON — **no CSS selectors**. Two traps, both documented in the module: the rubric articles live at `props.data.data.hits` (the homepage path reads as empty), and the rubric pages **403 Node's `fetch`** — the module uses `node:https` deliberately. |
 | **Actualités** | [CivilNet](https://civilnet.am) | The Yerevan independent newsroom, and the **third quadrilingual source** (fr / en / hy / ru map 1:1 to the UI language, like Armenpress): the latest **10 articles per rubric**, each rubric its own shelf. The four editions do **not** share a rubric list — 5 in French (no world or opinion desk), 8 in English, 7 in Armenian (Human rights where the others run Society), 6 in Russian — so each shelf title comes from the page's own payload, already in that language, and rides in the data rather than through i18n keys. Another **Inertia.js** app, so the feed arrives as embedded JSON — **no CSS selectors** — but at `props.feed.data.hits`, *not* Armenpress' `props.data.data.hits`. It hits the same trap as Armenpress otherwise: **403 to Node's `fetch`, 200 to `node:https`**, which is why that helper now lives in `scripts/lib/http.mjs` and is shared. Articles carry no slug, only an id, so cards link to `/{lang}/news/{id}` — per-edition, an English id under `/hy/` 404s. Images hotlink directly. |
+| **Actualités** | [NEWS.am](https://news.am) | Yerevan's largest private news group, under **en / hy / ru** (no French edition, so it is dropped under `fr` like ArmRadio). The latest **10 articles per rubric** across **10 rubrics** — 30 pages per snapshot. The most heterogeneous source here, because NEWS.am is not one site but **four**: the modern newsroom (`news.am`, 7 rubrics — Politics, Business, Economics, Analytics, Incidents, Society, Culture) plus **three legacy verticals on their own hosts** — [NEWS.am Sport](https://sport.news.am), [NEWS.am Style](https://style.news.am) and [NEWS.am Medicine](https://med.news.am). The verticals are **not** reachable from the modern site: `/{lang}/news/sports` and `/medicine` exist there as cross-posted tags but run days behind, and `style` 404s. The modern site is another **Inertia.js** app (embedded JSON, **no CSS selectors**) reading `props.feed.data.hits` like CivilNet, and it hits the same **403-to-`fetch` / 200-to-`node:https`** trap as Armenpress and CivilNet. Unlike CivilNet, its `article_id` is **shared across editions**, so `/hy/news/{id}` serves the Armenian translation of the same story. The verticals are read from **RSS** (sport, style) and **HTML** (med) — see [NEWS.am's dead feed and two derived fields](#newsams-dead-feed-and-two-derived-fields). Images hotlink directly on all four hosts. |
 | **Actualités** | [Nouvelles d'Arménie](https://www.armenews.com) | The latest **10 articles per rubric** across 6 WordPress rubrics, French-only, as shelves. |
 | **Actualités** | [Artzakank / Écho des Arméniens de Suisse](https://artzakank-echo.ch) | The latest **10 articles per rubric** across **3 rubrics**, French-only, as shelves: Arménie & Artsakh and Communauté come from the WordPress REST API, Divers is scraped from the site's `/divers-p/` page. |
 | **Actualités** | [ArménieInfo.tv](https://armenieinfo.tv) | The latest **10 articles per rubric**, French-only, as shelves. |
@@ -60,8 +61,8 @@ bookmarks, back-buttons and shares correctly. `localStorage` still holds the
 
 Only the interface **chrome** is translated — article and post content stays in
 its source language (see [Notes](#notes--caveats)). Armenpress and CivilNet each
-have a matching edition per UI language (fr/en/hy/ru) and ArmRadio follows in
-en/hy/ru; the French-only sources stay French under any UI.
+have a matching edition per UI language (fr/en/hy/ru); ArmRadio and NEWS.am
+follow in en/hy/ru; the French-only sources stay French under any UI.
 
 **To add a language**, four edits, because the language now needs its own
 address as well as its own strings:
@@ -506,6 +507,52 @@ npx wrangler login      # once
 npx wrangler deploy     # prints https://armradio-proxy.<subdomain>.workers.dev
 ```
 
+## NEWS.am's dead feed and two derived fields
+
+NEWS.am's three legacy verticals (`sport.`, `style.`, `med.news.am`) run a CMS
+that predates the main site. Three things about them are worth knowing before
+touching `scripts/sources/newsam.mjs`.
+
+**med.news.am's RSS has been dead since 2013 — and it answers `200`.** All three
+languages of `/{seg}/rss/news` return a well-formed feed of 100 items. They are
+the site's **oldest** articles, frozen in **November 2013**, in ascending order.
+Nothing in the HTTP response says so. Sport and style, on the same CMS, serve a
+fresh feed sorted newest-first. So sport and style are read from RSS, and med
+from its HTML feed page (`article[itemtype]` on `/{seg}/news/`).
+
+Because that failure mode is invisible, every vertical is checked against a
+**freshness guard** (`MAX_AGE_DAYS`, 60 days): if the newest article a vertical
+returns is older than that, the rubric **fails** rather than publishing. It is
+backfilled once from the previous snapshot and then goes visibly empty. Without
+it this module would have shipped thirteen-year-old headlines as today's news.
+Do not remove it to "simplify" — it is what caught the case.
+
+**Two fields are derived, because these sites do not expose them.** Both are
+covered by `test/newsam-legacy.test.mjs`, which needs no network.
+
+- **The thumbnail.** The verticals' RSS carries no `<enclosure>`, no
+  `<media:content>`, no `<media:thumbnail>` — nothing. But the legacy CMS files
+  every image at a fixed path, `/static/news/s/{YYYY}/{MM}/{id}.jpg`, keyed on
+  the article's **Yerevan-local** publication month. The URL is derived from the
+  id and the date at no extra request. Reading the month in UTC would misfile
+  anything published after 20:00 UTC and serve a 404 — the card would silently
+  fall back to its Armenian motif.
+- **med's date.** Its HTML has no `datetime` attribute and no JSON-LD, and its
+  `<time>` **omits the year** ("July 29, 20:34"). The date is rebuilt from two
+  halves: year and month from the image path, day and clock from the text read
+  **numerically**. Reading digits is the point — one rule covers eng/arm/rus
+  without ever parsing a month name. Both orders occur on the site ("20:53,
+  July 26" on the home page, "July 26, 20:53" on the feed), so the clock is
+  stripped **before** the day is looked for; otherwise "20" would read as the
+  day.
+
+**The verticals throw occasional 500s**, med most often and on a different
+language each time. `fetchTextNode` retries dropped connections but rejects any
+non-200 immediately — correct for the 403s it was written for, wrong for a
+passing hiccup that would empty a rubric and let backfill paper over it. Hence a
+**section-level retry** (3 attempts) inside this module rather than a change to
+the shared helper.
+
 ## Deployment (GitHub Actions → Firebase Hosting)
 
 `.github/workflows/hourly.yml` runs **every hour** on the hour (UTC), plus on
@@ -569,7 +616,8 @@ since the two production showcases always serve from their domain's root.
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
   chrome is translated. The interface is **quadrilingual** (fr / en / hy / ru);
-  under the Russian UI a reader sees **Armenpress, CivilNet and the ArmRadio news
+  under the Russian UI a reader sees **Armenpress, CivilNet, NEWS.am and the
+  ArmRadio news
   tab in Russian**, while Courrier (and the other French sources) stay French —
   and Courrier still leads the tabs (RU behaves like HY). The newswire **ticker**
   stays English (it reads en.armradio.am).

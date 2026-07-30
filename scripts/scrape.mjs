@@ -16,6 +16,7 @@ import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { scrapeCivilnet } from './sources/civilnet.mjs'
+import { scrapeNewsam } from './sources/newsam.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 
@@ -219,6 +220,22 @@ async function main() {
     civilnet[lang] = backfillSections(cnLangs[lang], prevNews?.civilnet?.[lang], 'categoryKey')
   }
 
+  // NEWS.am — Yerevan's largest private news group, en/hy/ru (no French
+  // edition). Ten rubrics: seven from the modern newsroom plus its three legacy
+  // verticals (sport / style / med), which live on their own hosts and are not
+  // reachable from the main site. Backfilled per language, like armenpress.
+  console.log('\nNEWS.am — news.am + sport/style/med (en/hy/ru, 10 rubriques):')
+  let namLangs = { en: [], hy: [], ru: [] }
+  try {
+    namLangs = await scrapeNewsam(10)
+  } catch (err) {
+    console.error('  newsam failed wholesale:', err.message)
+  }
+  const newsam = {}
+  for (const lang of ['en', 'hy', 'ru']) {
+    newsam[lang] = backfillSections(namLangs[lang], prevNews?.newsam?.[lang], 'categoryKey')
+  }
+
   console.log('\nAgenda (armenopole.com):')
   let agenda = { switzerland: [], world: [] }
   try {
@@ -258,6 +275,7 @@ async function main() {
     oragark,
     californiacourier,
     civilnet,
+    newsam,
   })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })

@@ -41,7 +41,7 @@ npm run check        # contrôle les 4 pages produites (lang, canonical, hreflan
 npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 45 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios, dates arméniennes
+npm test             # 52 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios, dates arméniennes, dérivations héritées de NEWS.am
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,14 +50,16 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **45 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **52 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL), la réciprocité des
 `hreflang`, l'ordre du sélecteur, la forme des sitemaps, le fait que chaque
 vitrine annonce **sa** carte de partage, la concordance entre le tableau
-`STATIONS` et les six textes qui annoncent un nombre de radios, et la
+`STATIONS` et les six textes qui annoncent un nombre de radios, la
 conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
-voir « À savoir ») — aucun ne touche le réseau. Le lint et l'exécution réelle
-des scripts complètent la vérification.
+voir « À savoir »), et les deux dérivations des verticales héritées de NEWS.am
+(`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
+publication, et la date de med recomposée en chiffres) — aucun ne touche le
+réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -225,6 +227,70 @@ composants importent au build :
       vidéo), et l'id est **propre à son édition** — un id anglais sous `/hy/`
       fait 404. Images hotlinkées en direct (pas de protection anti-hotlink,
       contrairement à ArmRadio).
+  - `newsam.mjs` — NEWS.am, le principal groupe de presse privé d'Erevan, servi
+    sous **en/hy/ru** (pas d'édition française). C'est la source la plus
+    hétérogène du dépôt, parce que ce ne sont pas un site mais **quatre** :
+    `news.am` (la rédaction moderne, 7 rubriques) et **trois verticales
+    héritées** sur leurs propres hôtes — `sport.news.am`, `style.news.am`,
+    `med.news.am`. Dix rubriques × trois langues = 30 pages par snapshot,
+    espacées de 800 ms. Libellés portés dans les données.
+    - **Les verticales ne sont pas joignables depuis le site moderne.** La
+      tentation est de tout lire sur `news.am` : `/{lang}/news/sports` et
+      `/medicine` **existent** comme étiquettes, mais elles retardent de
+      plusieurs jours sur la verticale (Sports avait 9 jours de retard à
+      l'écriture), et `style` répond **404**. Chaque verticale doit être lue sur
+      son propre hôte.
+    - **Le site moderne est un Inertia.js, comme Armenpress et CivilNet** — flux
+      en JSON embarqué, **aucun sélecteur CSS**. Le chemin est celui de CivilNet
+      (`props.feed.data.hits`, pages `feed/Tag`), **pas** celui d'Armenpress.
+      Une différence avec CivilNet, en revanche : l'`article_id` de news.am est
+      **partagé entre les éditions**, donc `/hy/news/{id}` sert la traduction
+      arménienne du même article, là où un id CivilNet 404 hors de son édition.
+    - **Même piège 403 que les deux autres** : tous les hôtes news.am répondent
+      403 au `fetch` de Node (undici) et 200 à `node:https`. D'où `fetchTextNode`
+      partout ici. Basculer sur `fetchText` ferait échouer les 30 pages, que le
+      backfill masquerait ensuite en silence.
+    - **Le RSS de med.news.am est mort depuis 2013, et il répond 200.** C'est le
+      piège le plus vicieux de ce module : `/{seg}/rss/news` renvoie bien 100
+      articles, dans les trois langues — mais ce sont les **plus anciens** du
+      site, figés en **novembre 2013**, en ordre croissant. Rien dans la réponse
+      HTTP ne le signale. Sport et style, eux, ont un RSS frais et trié. D'où
+      deux mécanismes : **RSS pour sport et style**, **HTML pour med**
+      (`article[itemtype]` sur `/{seg}/news/`) — et surtout une garde de
+      fraîcheur (`MAX_AGE_DAYS`, 60 jours) qui **fait échouer** toute verticale
+      dont l'article le plus récent est trop vieux. Sans elle, ce module aurait
+      publié des titres vieux de treize ans comme actualité du jour. Ne la
+      retirez pas pour « simplifier » : c'est elle qui a attrapé le cas.
+    - **Deux dérivations remplacent des données que ces sites n'exposent pas**,
+      et `test/newsam-legacy.test.mjs` les garde (sans réseau) :
+      - *L'image.* Le RSS des verticales ne porte **ni `<enclosure>`, ni
+        `<media:content>`, ni `<media:thumbnail>`** — rien. Mais le CMS hérité
+        range chaque vignette à un chemin fixe,
+        `/static/news/s/{AAAA}/{MM}/{id}.jpg`, indexé sur le mois de publication
+        **local à Erevan**. On la devine donc, sans requête supplémentaire. Lire
+        le mois en UTC daterait mal un article publié après 20 h UTC et servirait
+        un 404 (la carte retomberait sur son motif, sans bruit).
+      - *La date de med.* Son HTML n'a ni attribut `datetime`, ni JSON-LD, et son
+        `<time>` **omet l'année** (« July 29, 20:34 »). Elle est recomposée en
+        deux moitiés : année et mois depuis le chemin de l'image, jour et heure
+        depuis le texte **lu en chiffres**. Lire des chiffres est le point : une
+        seule règle couvre eng/arm/rus sans jamais analyser un nom de mois. Les
+        deux ordres circulent sur le site (« 20:53, July 26 » en accueil,
+        « July 26, 20:53 » en fil), d'où le retrait de l'horloge **avant** la
+        recherche du jour — sinon « 20 » passerait pour le jour.
+    - **Les verticales lâchent des 500 passagers**, med le plus souvent, et sur
+      une langue différente à chaque fois. `fetchTextNode` retente les
+      connexions coupées mais rejette tout non-200 immédiatement (ce qui est
+      juste pour les 403 pour lesquels il a été écrit) : d'où une **reprise au
+      niveau de la rubrique** (3 tentatives) dans ce module plutôt qu'un
+      changement de l'aide partagée. Sans elle, un hoquet vidait la rubrique et
+      le backfill le recouvrait sans un mot.
+    - Les libellés des trois verticales sont **fixés en dur** — « NEWS.am
+      Sport », « NEWS.am Style », « NEWS.am Medicine » : ce sont les noms de
+      marque de ces sites, identiques dans les trois langues. Les sept rubriques
+      modernes prennent le leur dans le payload, déjà localisé. Images
+      hotlinkées en direct sur les quatre hôtes (aucune protection anti-hotlink,
+      vérifié avec un `Referer` étranger) — donc ni proxy, ni wsrv.
   - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **tous les pays de la nav
     d'armenopole** (26, hors Suisse gérée à part), en plafonnant chaque pays à 20
     événements, puis dédoublonne par URL. **N'utilise pas `greece`/`belgium`** :
@@ -559,13 +625,14 @@ de production servent toujours depuis la racine de leur domaine.
   épinglé en premier, le reste par ordre alphabétique de marque (accents repliés,
   `é = e`, donc ArménieInfo.tv trie comme « Armenie ») :
   - `fr` → Armenpress, ArménieInfo.tv, Artzakank, California Courier, CivilNet, Courrier d'Erevan, Nouvelles d'Arménie
-  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, Oragark
-  - `ru` → Armenpress, ArmRadio, California Courier, CivilNet
+  - `en`/`hy` → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, NEWS.am, Oragark
+  - `ru` → Armenpress, ArmRadio, California Courier, CivilNet, NEWS.am
 
   Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
-  n'apparaissent donc que sous `fr` ; ArmRadio (`en`/`hy`/`ru`, sans édition
-  française) est **retiré** sous `fr` au lieu d'y servir des titres anglais sous
-  `<html lang="fr">`. Asbarez et Oragark ont chacun une édition anglaise et une
+  n'apparaissent donc que sous `fr` ; ArmRadio et NEWS.am (`en`/`hy`/`ru`, sans
+  édition française) sont **retirés** sous `fr` au lieu d'y servir des titres
+  anglais sous `<html lang="fr">`. Asbarez et Oragark ont chacun une édition
+  anglaise et une
   arménienne occidentale (pas de russe), donc ils rejoignent `en`/`hy` mais pas
   `ru` — et jamais `fr`. The California Courier traduit la chronique de Sassounian
   dans une rubrique par langue, donc — comme Armenpress — il paraît dans **les

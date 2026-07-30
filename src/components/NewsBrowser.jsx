@@ -84,11 +84,12 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // only shows the sources that actually publish in it, Armenpress pinned first,
 // the rest alphabetical.
 //   fr  → Armenpress, ArménieInfo.tv, Artzakank, California Courier, CivilNet, Courrier d'Erevan, Nouvelles d'Arménie
-//   en/hy → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, Oragark
-//   ru  → Armenpress, ArmRadio, California Courier, CivilNet
+//   en/hy → Armenpress, ArmRadio, Asbarez, California Courier, CivilNet, NEWS.am, Oragark
+//   ru  → Armenpress, ArmRadio, California Courier, CivilNet, NEWS.am
 // So the French-only sources (Courrier, armenews, artzakank, armenieinfotv)
-// appear ONLY under fr, and ArmRadio — en/hy/ru, no French edition — is dropped
-// under fr instead of borrowing English headlines beneath lang="fr". Asbarez and
+// appear ONLY under fr, and ArmRadio and NEWS.am — en/hy/ru, no French edition —
+// are dropped under fr instead of borrowing English headlines beneath
+// lang="fr". Asbarez and
 // Oragark each have an English and a Western Armenian edition, so they join en/hy
 // but not ru or fr. The California Courier translates Sassounian's Column into a
 // category per language, so — like Armenpress — it appears in ALL four (en = its
@@ -229,15 +230,32 @@ function buildSources(t, lang) {
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
 
+  // NEWS.am — Yerevan's largest private news group, en/hy/ru (no French
+  // edition, so it is dropped under fr like ArmRadio). Ten rubrics: the modern
+  // newsroom's seven plus its three legacy verticals — NEWS.am Sport, Style and
+  // Medicine — which are separate sites, hence brand-named shelves among the
+  // localised ones. Labels ride in the data. Images hotlink direct (no hotlink
+  // protection on any of the four hosts).
+  const newsam = {
+    id: 'newsam',
+    brand: 'NEWS.am',
+    name: t('browser.newsam'),
+    live: false,
+    images: true,
+    cats: (news.newsam?.[lang] || [])
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
+
   // Sources that publish in this language. Armenpress, the California Courier
   // and CivilNet are in every language; the French-only sources join them under
-  // fr, ArmRadio under en/hy/ru, and Asbarez + Oragark under en/hy (their
-  // editions).
+  // fr, ArmRadio and NEWS.am under en/hy/ru, and Asbarez + Oragark under en/hy
+  // (their editions).
   const pool = isFr
     ? [armenpress, courrier, armenews, artzakank, armenieinfotv, californiacourier, civilnet]
     : lang === 'ru'
-      ? [armenpress, armradio, californiacourier, civilnet]
-      : [armenpress, armradio, asbarez, oragark, californiacourier, civilnet]
+      ? [armenpress, armradio, californiacourier, civilnet, newsam]
+      : [armenpress, armradio, asbarez, oragark, californiacourier, civilnet, newsam]
 
   // Armenpress pinned first (the constant across languages); the rest sorted
   // alphabetically by brand with accents folded (é = e, so ArménieInfo.tv sorts
