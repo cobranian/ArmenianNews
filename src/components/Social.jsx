@@ -134,26 +134,9 @@ function FacebookCard({ post, author, cta, enlarge, img, onOpen }) {
         <span className="fb-card__mark" aria-hidden="true">
           {initials(by)}
         </span>
-        {/* Les trois lignes vivent dans UNE colonne, à côté du monogramme.
-            Elles étaient auparavant trois enfants directs d'une grille à deux
-            colonnes, le monogramme couvrant les rangées par `grid-row`. Ça
-            tenait à deux lignes et cassait à trois : `grid-row: 1 / -1` ne
-            couvre rien quand les rangées sont IMPLICITES — sans
-            `grid-template-rows`, la ligne -1 retombe sur la première — et la
-            légende partait sous le monogramme, dans la mauvaise colonne. Une
-            pile flex ne dépend pas du nombre de lignes. */}
-        <span className="fb-card__text">
-          <span className="fb-card__author">{by}</span>
-          {/* La légende, quand elle existe. Beaucoup de ces posts sont une
-              photo et rien d'autre : la ligne n'est alors pas rendue du tout —
-              pas de rangée vide, pas de texte de remplacement. Le texte entier
-              reste dans le DOM, seul l'affichage est écourté (.fb-card__title) :
-              un `line-clamp` ne coûte rien aux lecteurs d'écran, une coupe au
-              scrape leur coûterait la fin de la phrase. */}
-          {post.title && <span className="fb-card__title">{post.title}</span>}
-          <span className="fb-card__cta">
-            {cta} <span aria-hidden="true">→</span>
-          </span>
+        <span className="fb-card__author">{by}</span>
+        <span className="fb-card__cta">
+          {cta} <span aria-hidden="true">→</span>
         </span>
       </div>
     </button>

@@ -148,32 +148,6 @@ const survey = () =>
       }
       return null
     }
-    // La légende de la publication, lue DANS l'article qui porte la photo.
-    // C'est le seul appariement fiable : même article = même publication. Les
-    // classes de Facebook sont obfusquées et tournent, mais le message garde un
-    // ATTRIBUT DATA stable — on s'y accroche plutôt qu'à un `.x1abc…` qui
-    // casserait en quelques semaines. Plusieurs graphies coexistent selon la
-    // surface qui sert la page.
-    const CAP_SEL = [
-      'div[data-ad-comet-preview="message"]',
-      'div[data-ad-preview="message"]',
-      'div[data-ad-rendering-role="story_message"]',
-    ].join(', ')
-    // « Voir plus » est un bouton de dépliage DANS la légende : son texte fait
-    // partie du nœud et se recollerait au dernier mot.
-    const MORE = /\s*(?:…\s*)?(?:voir plus|see more|afficher la suite)\s*$/i
-    const titleFor = (node) => {
-      let art = node
-      for (let i = 0; i < 15 && art; i++, art = art.parentElement) {
-        if (art.getAttribute && art.getAttribute('role') === 'article') break
-      }
-      if (!art || !art.querySelector) return null
-      const n = art.querySelector(CAP_SEL)
-      if (!n) return null
-      const txt = (n.innerText || '').replace(/\s+/g, ' ').replace(MORE, '').trim()
-      // Deux caractères, c'est un glyphe égaré, pas un titre.
-      return txt.length >= 3 ? txt : null
-    }
     const posts = []
     for (const im of document.querySelectorAll('img')) {
       // Only real content photos (t39...); skip profile/cover pics (t1.6435-9)
@@ -186,14 +160,7 @@ const survey = () =>
       const permalink = permalinkFor(im)
       if (!permalink) continue
       const absY = rect.top + window.scrollY // stable document position
-      posts.push({
-        id: idOf(permalink),
-        permalink,
-        image: im.src,
-        absY,
-        author: authorFor(im),
-        title: titleFor(im),
-      })
+      posts.push({ id: idOf(permalink), permalink, image: im.src, absY, author: authorFor(im) })
     }
     return { posts, boundaryY, y: window.scrollY, docHeight: document.documentElement.scrollHeight }
   }, OTHER_POSTS_RX.source)
@@ -207,16 +174,12 @@ await page.bringToFront()
 await page.mouse.move(640, 800)
 
 const acc = new Map()
-// First sighting wins for position, but the author line and the caption
-// sometimes hydrate a scroll later than the photo — so backfill either when we
-// re-see a post.
+// First sighting wins for position, but the author line sometimes hydrates a
+// scroll later than the photo — so backfill a missing author when we re-see a post.
 const remember = (p) => {
   const cur = acc.get(p.id)
   if (!cur) acc.set(p.id, p)
-  else {
-    if (!cur.author && p.author) cur.author = p.author
-    if (!cur.title && p.title) cur.title = p.title
-  }
+  else if (!cur.author && p.author) cur.author = p.author
 }
 let boundaryY = null
 let lastY = -1
@@ -258,14 +221,7 @@ console.log(`→ found ${found.length} posts with an image`)
 found.slice(0, WANT).forEach((p, i) => {
   console.log(`  [${i + 1}] ${p.permalink}`)
   console.log(`       by ${p.author || AUTHOR} — img ${p.image.slice(0, 90)}…`)
-  if (p.title) console.log(`       « ${p.title.slice(0, 90)}${p.title.length > 90 ? '…' : ''} »`)
 })
-// Combien de photos repartent avec une légende. Beaucoup de ces publications
-// sont une image et rien d'autre, donc un chiffre bas n'est pas une panne — mais
-// ZÉRO en est une : cela veut dire que Facebook a encore changé l'attribut du
-// message (voir CAP_SEL dans survey()), et le mur repartirait sans un seul titre.
-const withTitles = found.slice(0, WANT).filter((p) => p.title).length
-console.log(`→ ${withTitles}/${Math.min(found.length, WANT)} publications ont une légende`)
 
 if (DRY || !found.length) {
   console.log(DRY ? '\n(dry run — nothing written)' : '\nNo posts found — nothing written.')
@@ -279,17 +235,6 @@ if (DRY || !found.length) {
 // photo page names the actual source (ZART, National Gallery of Armenia,
 // Vladimir Simonyan…) as the top profile link above the caption. That is the
 // author we want on the card, so we read both in one visit.
-//
-// LA LÉGENDE NE SE LIT PAS ICI, et ce n'est pas un oubli. Une page
-// `/photo/?fbid=…` n'en porte aucune : elle affiche « Cette photo provient
-// d'une publication » et renvoie au parent. Suivre ce lien est un piège vérifié
-// — trois photos distinctes y résolvent la MÊME URL parente et en rapportent
-// trois légendes différentes, parce que la page parente contient plusieurs
-// publications et des PUBLICITÉS ; l'une des trois remontait un texte de
-// boutique en ligne. On lirait alors une réclame sous une œuvre d'art. La
-// légende est donc prise dans le fil (voir `titleFor` dans survey()), où la
-// photo et son texte sont dans le MÊME article — un appariement structurel, et
-// non deviné.
 const fullImageFor = async (permalink) => {
   try {
     await page.goto(permalink, { waitUntil: 'domcontentloaded', timeout: 45000 })
@@ -354,13 +299,7 @@ for (const p of found.slice(0, WANT)) {
   // author. Read the author before the download so a failed image still keeps it.
   const { src, author } = await fullImageFor(p.permalink)
   const by = author || p.author || AUTHOR
-  // Relevée dans le fil, pas sur la page photo — voir fullImageFor.
-  const title = p.title || null
   const url = cleanLink(p.permalink)
-  // `title` is optional by design: many of these posts are a photo and nothing
-  // else. The card renders the line only when it exists, so a caption-less post
-  // looks exactly as it did before — no empty row, no placeholder.
-  const withTitle = (o) => (title ? { ...o, title } : o)
   try {
     // Download THROUGH the logged-in browser, not a bare fetch(). Facebook now
     // serves many images (t39.99422 / t51) only to a session with cookies; an
@@ -371,12 +310,11 @@ for (const p of found.slice(0, WANT)) {
     const buf = await res.buffer()
     if (buf.length < 15000) throw new Error(`too small (${buf.length}B)`)
     await writeFile(path.join(FB_DIR, file), buf)
-    posts.push(withTitle({ id, author: by, url, image: file }))
-    const note = title ? ` — « ${title.slice(0, 48)}${title.length > 48 ? '…' : ''} »` : ''
-    console.log(`  ✓ ${file} — ${by} (${(buf.length / 1024).toFixed(0)} KB)${note}`)
+    posts.push({ id, author: by, url, image: file })
+    console.log(`  ✓ ${file} — ${by} (${(buf.length / 1024).toFixed(0)} KB)`)
   } catch (e) {
     console.log(`  ✗ ${id} (${by}): ${e.message} — keeping motif fallback`)
-    posts.push(withTitle({ id, author: by, url }))
+    posts.push({ id, author: by, url })
   }
 }
 
