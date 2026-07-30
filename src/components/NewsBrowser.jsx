@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { Carousel } from './Carousel.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
@@ -27,11 +27,30 @@ const armradioImg = (url) => {
   }
 }
 
+// Une seule horloge pour tout le navigateur d'actualités, et c'est le point :
+// un intervalle par carte ferait cent minuteurs sur un onglet, pour cent
+// valeurs qui changent ensemble. `now` descend en prop.
+//
+// Le pas est de 60 s, pas d'une heure. La demande — « fais un update chaque
+// heure » — est tenue a fortiori, et le pas d'une heure aurait un défaut
+// visible : une carte affichée « il y a 5 min » le resterait pendant 65
+// minutes. Les secondes, elles, ne s'affichent qu'en théorie — l'instantané
+// étant horaire et le build prenant quelques minutes, la dépêche la plus
+// fraîche a déjà quelques minutes quand un lecteur la voit.
+function useNow(step = 60000) {
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), step)
+    return () => clearInterval(id)
+  }, [step])
+  return now
+}
+
 // One article card, sized to sit inside a shelf track (see .card in CSS).
 // A card with no usable image — or one that fails to load — falls back to a
 // deterministic Armenian motif so every card always paints.
-function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy = false }) {
-  const { t } = useI18n()
+function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy = false, now }) {
+  const { t, formatAge, formatDate } = useI18n()
   const [broken, setBroken] = useState(false)
   const hasPhoto = showImage && !!item.image && !broken
   const seed = hash(item.url || item.title || '')
@@ -75,6 +94,21 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
         <a className="card__more" href={item.url} rel="noopener noreferrer">
           {t('news.readmore')}
         </a>
+        {/* L'âge de la dépêche, sous l'appel à l'action. C'est un <time> et non
+            un <span> pour une raison concrète : `npm run prerender` cuit le DOM
+            rendu dans index.html, donc la CHAÎNE relative part figée dans le
+            fichier statique — « il y a 3 h » reste écrit tel quel jusqu'au
+            prochain build. `dateTime` porte l'horodatage absolu, que les
+            moteurs et les lecteurs d'écran lisent à la place, et qui lui ne
+            périme jamais. Le texte, lui, se corrige à l'hydratation puis à
+            chaque tour d'horloge (voir useNow).
+            Une source sans date ne rend rien : deux fils français n'en
+            fournissent aucune (Courrier d'Erevan, ArménieInfo.tv). */}
+        {item.date && formatAge(item.date, now) && (
+          <time className="card__age" dateTime={item.date} title={formatDate(item.date)}>
+            {formatAge(item.date, now)}
+          </time>
+        )}
       </div>
     </article>
   )
@@ -269,6 +303,7 @@ function buildSources(t, lang) {
 export function NewsBrowser() {
   const { t, lang } = useI18n()
   const sources = buildSources(t, lang)
+  const now = useNow()
   const tabRefs = useRef({})
   const [activeId, setActiveId] = useState(sources[0]?.id)
 
@@ -338,6 +373,7 @@ export function NewsBrowser() {
                 showImage={active.images}
                 proxy={active.proxy}
                 armProxy={active.armProxy}
+                now={now}
               />
             ))}
           </Carousel>

@@ -1114,6 +1114,27 @@ html:lang(hy) .nav__brand {
 .card:hover .card__more::after {
   transform: translateX(5px);
 }
+/* L'âge de la dépêche, sous l'appel à l'action. Il se lit comme la ligne de
+   date d'une manchette — même famille utilitaire que .card__more, un cran plus
+   petit et en encre atténuée, pour qu'il informe sans disputer l'appel.
+   Le `font-size-adjust` accompagne la famille, comme partout ailleurs dans ce
+   fichier : sans lui, la ligne changerait de taille vue sous une seule
+   écriture (voir le commentaire des jetons --fsa-*). */
+/* Ni capitales, ni approche large — et c'est un choix, pas un oubli. Les deux
+   conviennent à .card__more parce que c'est une ÉTIQUETTE de deux mots ; ici
+   c'est une donnée. La bas-de-casse tient surtout dans les quatre écritures :
+   les capitales arméniennes sont rares en texte courant (« 8 ԺԱՄ » se lit mal),
+   et le russe « 8 Ч » a le même défaut. */
+.card__age {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--text-soft);
+  /* .card__more porte `margin-top: auto` et pousse le bloc en bas de la carte ;
+     l'âge suit immédiatement, d'où un simple retrait négatif du gap parent. */
+  margin-top: -6px;
+}
 
 /* --- ArmRadio "newswire" ticker --- */
 .armradio {

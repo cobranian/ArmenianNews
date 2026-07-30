@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo } from 'react'
 import { LANGS, langFromPath } from '../sites.config.js'
 import { SITE_ID } from './site.js'
 import { hyLongDate, hyMonthAbbr, hyWeekdayTime } from './hyDate.js'
+import { relativeAge } from './relativeTime.js'
 
 // LANGS lives in sites.config.js because Node cannot parse JSX — the build
 // scripts and tests run outside the browser and need this data as plain
@@ -768,6 +769,12 @@ export function LanguageProvider({ children }) {
             minute: '2-digit',
           })
 
+    // Cinquième formateur, même règle que les quatre autres : l'âge d'un
+    // article passe par ici et jamais par Intl depuis un composant. Le détail
+    // est dans relativeTime.js — `Intl.RelativeTimeFormat('hy')` rendrait la
+    // langue du lecteur, exactement comme `toLocaleDateString('hy-AM')`.
+    const formatAge = (iso, now) => relativeAge(iso, now, lang)
+
     return {
       lang,
       t,
@@ -775,6 +782,7 @@ export function LanguageProvider({ children }) {
       formatDayNum,
       formatMonthAbbr,
       formatWeekdayTime,
+      formatAge,
       locale: LOCALES[lang],
     }
   }, [lang])

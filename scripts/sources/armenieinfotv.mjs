@@ -4,10 +4,20 @@ import { clean, safeUrl } from '../lib/util.mjs'
 
 // Arménie Info TV (armenieinfo.tv) — a French WordPress site whose public REST
 // API is locked (401), so we scrape the category pages' HTML. Thumbnails are CSS
-// background-images (not <img>), and there is no per-item date on the listing
-// (the permalinks carry none either — the news browser doesn't show dates, so
-// that's fine). The site tags one article under several categories, so we DEDUPE
-// by URL across categories, keeping the first (highest-priority) listing.
+// background-images (not <img>). The site tags one article under several
+// categories, so we DEDUPE by URL across categories, keeping the first
+// (highest-priority) listing.
+//
+// DATES: the category listing carries none — no <time>, no meta, nothing. Each
+// ARTICLE page does, in `<meta property="article:published_time">`, so every
+// deduped article is re-fetched for it (~65 pages/hour, deduped, the same
+// pattern and cost as asbarez.am's og:image scrape).
+//
+// This used to return `date: null` on purpose, with a comment saying the news
+// browser didn't show dates. It does now: every card prints its age under the
+// call to action, and a source without dates prints nothing there. That comment
+// was the rationale for a gap, not a fact about the site — the dates were
+// always one fetch away.
 const BASE = 'https://armenieinfo.tv'
 
 // Rubric slugs in priority order: an article shared by several rubrics shows
@@ -47,6 +57,26 @@ function parseCategory(html) {
   return out
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+
+// The publication date, read off the article's own page. WordPress emits it as
+// an Open Graph timestamp with a zone offset, which `new Date()` parses as-is.
+// A page that fails leaves `date: null` — the card then simply prints no age,
+// exactly as before. One dead permalink must not cost us the whole rubric.
+async function publishedAt(url) {
+  try {
+    const $ = cheerio.load(await fetchText(url, { retries: 1 }))
+    const raw =
+      $('meta[property="article:published_time"]').attr('content') ||
+      $('meta[name="article:published_time"]').attr('content')
+    if (!raw) return null
+    const d = new Date(clean(raw))
+    return Number.isNaN(d.getTime()) ? null : d.toISOString()
+  } catch {
+    return null
+  }
+}
+
 // Per-rubric articles, deduped across rubrics by URL. A blocked/empty rubric is
 // backfilled from the previous snapshot by scrape.mjs.
 export async function scrapeArmenieInfoTv(limit = 10) {
@@ -62,9 +92,16 @@ export async function scrapeArmenieInfoTv(limit = 10) {
         fresh.push(art)
         if (fresh.length >= limit) break
       }
+      // Dates, one page per article. Spaced like the other per-article scrapes
+      // in this repo so a rubric never hammers the site.
+      for (const art of fresh) {
+        art.date = await publishedAt(art.url)
+        await sleep(250)
+      }
       out.push({ categoryKey: section.key, articles: fresh })
       const note = all.length !== fresh.length ? ` of ${all.length}, deduped` : ''
-      console.log(`  ✓ armenieinfotv/${section.slug} (${fresh.length}${note})`)
+      const dated = fresh.filter((a) => a.date).length
+      console.log(`  ✓ armenieinfotv/${section.slug} (${fresh.length}${note}, ${dated} datés)`)
     } catch (err) {
       console.warn(`  ✗ armenieinfotv/${section.slug}: ${err.message}`)
       out.push({ categoryKey: section.key, articles: [] })
