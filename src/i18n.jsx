@@ -38,6 +38,13 @@ const STRINGS = {
     'agenda.empty': 'Aucun événement annoncé.',
     'agenda.more': "Voir sur armenopole",
 
+    // Page /agenda
+    'agenda.page.h1': "L'agenda arménien, dans le monde",
+    'agenda.page.intro':
+      "La liste complète des événements arméniens à venir : glanée toutes les heures sur armenopole.com, dans des dizaines de pays et en Suisse. Un événement en disparaît de lui-même une fois passé — cette page ne montre jamais que ce qu'il reste à voir.",
+    'agenda.page.count': 'événements à venir, dans le monde et en Suisse',
+    'agenda.page.home': 'Retour à l’accueil',
+
     'social.title': 'Réseaux sociaux',
     'social.subtitle':
       "Deux fils : l'art que partage Don Narek, et une sélection Instagram retirée au sort chaque heure",
@@ -235,6 +242,13 @@ const STRINGS = {
     'agenda.country': 'Country',
     'agenda.empty': 'No events announced.',
     'agenda.more': 'See on armenopole',
+
+    // Page /events
+    'agenda.page.h1': 'The Armenian agenda, around the world',
+    'agenda.page.intro':
+      'The full list of upcoming Armenian events, gathered hourly from armenopole.com across dozens of countries and Switzerland. An event drops off on its own once it has passed — this page only ever shows what still lies ahead.',
+    'agenda.page.count': 'upcoming events, in Switzerland and around the world',
+    'agenda.page.home': 'Back to the home page',
 
     'social.title': 'Social networks',
     'social.subtitle':
@@ -446,6 +460,13 @@ const STRINGS = {
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
     'agenda.more': 'Տեսնել armenopole-ում',
 
+    // Page /hy/events — traduction à relire par un locuteur natif.
+    'agenda.page.h1': 'Հայկական օրացույցը՝ ամբողջ աշխարհում',
+    'agenda.page.intro':
+      'Հայկական առաջիկա բոլոր միջոցառումների ամբողջական ցանկը՝ հավաքված ամեն ժամ armenopole.com կայքից, տասնյակ երկրներում և Շվեյցարիայում։ Միջոցառումն ինքն իրեն անհետանում է ցանկից՝ անցնելուց հետո — այս էջը միշտ ցույց է տալիս միայն այն, ինչ դեռ առջևում է։',
+    'agenda.page.count': 'առաջիկա միջոցառում՝ աշխարհում և Շվեյցարիայում',
+    'agenda.page.home': 'Վերադառնալ գլխավոր էջ',
+
     'social.title': 'Սոցիալական ցանցեր',
     'social.subtitle':
       'Երկու հոսք՝ Դօն Նարեկի կիսած արվեստը և Instagram-ի ընտրանին՝ վերաշաղախված ամեն ժամ',
@@ -631,6 +652,13 @@ const STRINGS = {
     'agenda.country': 'Страна',
     'agenda.empty': 'Анонсов пока нет.',
     'agenda.more': 'Смотреть на armenopole',
+
+    // Страница /ru/events — перевод на проверку носителю языка.
+    'agenda.page.h1': 'Армянская афиша по всему миру',
+    'agenda.page.intro':
+      'Полный список предстоящих армянских событий, собираемый каждый час с armenopole.com в десятках стран и в Швейцарии. Событие исчезает из списка само собой, как только оно прошло — эта страница всегда показывает лишь то, что ещё впереди.',
+    'agenda.page.count': 'предстоящих событий — в Швейцарии и по всему миру',
+    'agenda.page.home': 'Вернуться на главную',
 
     'social.title': 'Социальные сети',
     'social.subtitle':
