@@ -17,7 +17,7 @@
  * (reusing your logged-in session). Without it, it launches a fresh (logged-out)
  * Chrome — only useful for pages that need no login.
  */
-import { writeFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
@@ -31,7 +31,20 @@ const PAGE_URL = 'https://www.facebook.com/DonNarek'
 const SCRAPE_URL = PAGE_URL
 const OTHER_POSTS_RX = /^(other posts|autres publications)$/i
 const AUTHOR = 'Don Narek'
-const WANT = 40
+const WANT = 80
+
+// La photo de Don Narek LUI-MÊME est épinglée : toujours en tête du carrousel,
+// et jamais perdue — même quand une récolte ne la retrouve pas (elle finit par
+// sortir des 80 publications les plus récentes, le mur étant surtout fait de
+// partages d'autres artistes).
+//
+// D'où un id ET un fichier STABLES, hors de la numérotation `dn-NN`. C'est le
+// point : si on la reportait sous son ancien numéro, la récolte suivante
+// écrirait une AUTRE photo dans `dn-05.jpg` et l'entrée reprise pointerait sur
+// l'image de quelqu'un d'autre — une signature juste sur une toile qui ne lui
+// appartient pas. `dn-narek.jpg` n'est jamais écrit par la boucle numérotée.
+const PINNED_ID = 'dn-narek'
+const PINNED_FILE = `${PINNED_ID}.jpg`
 
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -184,7 +197,10 @@ const remember = (p) => {
 let boundaryY = null
 let lastY = -1
 let stuck = 0
-for (let i = 0; i < 60 && acc.size < WANT + 5; i++) {
+// 60 tours suffisaient pour 40 publications ; il en faut environ le double pour
+// 80. La boucle s'arrête de toute façon dès qu'elle a son compte, ou quand le
+// mur cesse d'avancer (compteur `stuck`) — ce plafond n'est qu'un garde-fou.
+for (let i = 0; i < 140 && acc.size < WANT + 5; i++) {
   const r = await survey()
   if (boundaryY === null) boundaryY = r.boundaryY
   for (const p of r.posts) remember(p)
@@ -288,17 +304,27 @@ const fullImageFor = async (permalink) => {
   }
 }
 
+// Le fichier précédent, lu AVANT d'être réécrit : c'est de là que vient la
+// photo épinglée quand la récolte du jour ne la ramène pas.
+const previous = await readFile(path.join(root, 'src/data/facebook.json'), 'utf-8')
+  .then((t) => JSON.parse(t))
+  .catch(() => null)
+
 // Download images + build the posts array.
 const posts = []
+let pinned = null
 let n = 0
 for (const p of found.slice(0, WANT)) {
-  n++
-  const id = `dn-${String(n).padStart(2, '0')}`
-  const file = `${id}.jpg`
   // Visit the photo page once — it gives both the full-res image and the real
   // author. Read the author before the download so a failed image still keeps it.
   const { src, author } = await fullImageFor(p.permalink)
   const by = author || p.author || AUTHOR
+  // Le mur est surtout fait de partages : une publication signée de la page
+  // elle-même est une photo de Don Narek. La première rencontrée est épinglée
+  // (l'ordre est chronologique, donc c'est la plus récente).
+  const isOwn = by === AUTHOR && !pinned
+  const id = isOwn ? PINNED_ID : `dn-${String(++n).padStart(2, '0')}`
+  const file = isOwn ? PINNED_FILE : `${id}.jpg`
   const url = cleanLink(p.permalink)
   try {
     // Download THROUGH the logged-in browser, not a bare fetch(). Facebook now
@@ -310,22 +336,40 @@ for (const p of found.slice(0, WANT)) {
     const buf = await res.buffer()
     if (buf.length < 15000) throw new Error(`too small (${buf.length}B)`)
     await writeFile(path.join(FB_DIR, file), buf)
-    posts.push({ id, author: by, url, image: file })
-    console.log(`  ✓ ${file} — ${by} (${(buf.length / 1024).toFixed(0)} KB)`)
+    const entry = { id, author: by, url, image: file }
+    if (isOwn) pinned = entry
+    else posts.push(entry)
+    console.log(`  ✓ ${file} — ${by} (${(buf.length / 1024).toFixed(0)} KB)${isOwn ? ' ← épinglée' : ''}`)
   } catch (e) {
     console.log(`  ✗ ${id} (${by}): ${e.message} — keeping motif fallback`)
-    posts.push({ id, author: by, url })
+    const entry = { id, author: by, url }
+    if (isOwn) pinned = entry
+    else posts.push(entry)
   }
 }
 
+// Aucune publication signée Don Narek dans cette récolte ? On reprend celle du
+// fichier précédent. `dn-narek.jpg` n'ayant pas été réécrit, l'image reste la
+// bonne. C'est ce report qui tient la promesse « jamais effacée du carrousel ».
+if (!pinned && previous) {
+  pinned = previous.posts.find((p) => p.id === PINNED_ID) || null
+  if (pinned) console.log(`  ↺ photo de ${AUTHOR} reprise du snapshot précédent`)
+}
+// Épinglée en tête, puis le reste dans l'ordre chronologique. Le plafond compte
+// la photo épinglée, pour que le mur ne dépasse jamais WANT.
+const ordered = (pinned ? [pinned, ...posts] : posts).slice(0, WANT)
+if (!pinned) console.log(`  ⚠ aucune photo de ${AUTHOR} — ni dans la récolte, ni dans le fichier précédent`)
+
 const json = {
   _comment:
-    'Don Narek Facebook wall — the carousel shows ONLY each post picture and its author; no Facebook page chrome. Generated by `node scripts/fb-scrape.mjs` (drives local Chrome to read the public page), newest first, capped at 40. Images bundled from src/data/fb/. Re-run the scraper to refresh; hand-edit is fine too.',
+    'Don Narek Facebook wall — the carousel shows ONLY each post picture and its author; no Facebook page chrome. Generated by `node scripts/fb-scrape.mjs` (drives local Chrome to read the public page), newest first, capped at 80, with the page OWN photo (Don Narek) pinned first and never dropped (stable id/file dn-narek, carried over from the previous snapshot when a harvest does not find it). Images bundled from src/data/fb/. Re-run the scraper to refresh; hand-edit is fine too.',
   page: 'DonNarek',
   url: PAGE_URL,
-  posts,
+  posts: ordered,
 }
 await writeFile(path.join(root, 'src/data/facebook.json'), JSON.stringify(json, null, 2) + '\n')
-console.log(`\n✓ wrote src/data/facebook.json (${posts.length} posts)`)
+// `ordered`, pas `posts` : ce dernier ne compte pas la photo épinglée, et le
+// script annonçait donc une publication de moins qu'il n'en écrivait.
+console.log(`\n✓ wrote src/data/facebook.json (${ordered.length} posts)`)
 
 await finish()

@@ -196,10 +196,17 @@ export function Social() {
   // Which set is enlarged, and where in it. null = closed.
   const [box, setBox] = useState(null)
 
-  // Newest first; cap at the last 40 posts — matches WANT in scripts/fb-scrape.mjs,
-  // so a slice here never silently hides posts the scraper bothered to harvest.
+  // Tout ce que le fichier contient, dans son ordre — la photo de Don Narek
+  // lui-même est déjà épinglée en tête par le scraper.
+  //
+  // PLUS DE PLAFOND ICI, et c'est le correctif : il y en avait un à 40, censé
+  // « correspondre à WANT dans fb-scrape.mjs pour ne jamais masquer en silence
+  // ce que le scrape a récolté ». Le passage du scrape à 80 a fait exactement
+  // cela — la moitié du mur disparaissait, sans erreur ni avertissement. Un
+  // plafond écrit à deux endroits finit toujours par diverger ; celui du
+  // scraper suffit, il décide déjà de ce qui entre dans le fichier.
   const fbPosts = useMemo(
-    () => (fb.posts || []).slice(0, 40).map((p) => ({ ...p, img: fbImg[p.image] || null })),
+    () => (fb.posts || []).map((p) => ({ ...p, img: fbImg[p.image] || null })),
     [],
   )
 
