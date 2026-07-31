@@ -41,7 +41,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 110 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am
+npm test             # 119 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,13 +50,16 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **110 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **119 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
 fait que chaque vitrine annonce **sa** carte de partage, la concordance entre
 le tableau `STATIONS` et les six textes qui annoncent un nombre de radios, le
 sourçage des fiches de station (`test/stations.test.mjs`, voir « À savoir »),
+les deux filtres de l'agenda (`test/agenda-events.test.mjs` : aucun événement
+sans date n'est rendu ni balisé) et les deux stades de sa garde
+(`test/agenda-guard.test.mjs`, voir « À savoir »),
 la conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
 voir « À savoir »), et les deux dérivations des verticales héritées de NEWS.am
 (`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
@@ -443,6 +446,18 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   (`formatDate`, `formatDayNum`, `formatMonthAbbr`, `formatWeekdayTime`) : le
   `locale` que `useI18n()` expose encore ne doit **jamais** servir à formater
   une date.
+- `src/agendaEvents.js` porte les **deux filtres canoniques de l'agenda** —
+  `evenementComplet` (titre, date, URL) et `evenementsAVenir` (complet,
+  dédoublonné par URL, à venir). Cinquième module plat, et pour une raison de
+  plus que les précédents : ses lecteurs sont dans les **deux** mondes — le
+  composant `AgendaPage` et `src/jsonld.js` côté bundle, le plugin
+  `agendaEventsJsonLd` (`vite.config.js`) et `scripts/check-build.mjs` côté
+  Node. Le même filtre y était écrit trois fois, et il avait déjà divergé :
+  seule la vue omettait le contrôle des champs, donc elle pouvait afficher un
+  événement sans date — `<time>` vide, compté dans son total — que le balisage,
+  lui, omettait. Le piège de conversion qui rend le contrôle explicite
+  nécessaire (`new Date(null)` vaut 0, `new Date(undefined)` vaut NaN) est
+  documenté en tête du module et figé par `test/agenda-events.test.mjs`.
 
 **Les vues.** Une page n'est plus seulement un couple (vitrine, langue) mais un
 **triplet** (vitrine, langue, vue). Trois vues existent : `home` (l'accueil,

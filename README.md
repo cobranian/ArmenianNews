@@ -265,7 +265,7 @@ npm run scrape       # refresh src/data/{news,agenda,meta,instagram-feed}.json f
 npm run ig-scrape    # refresh the Instagram pool (local, logged-in Chrome — never in CI)
 npm run fb-scrape    # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
 npm run dev          # http://localhost:5173/ — the .ch showcase, French
-npm test             # 110 tests: sites.config.js derivations, hreflang per view, language order, sitemaps, per-site analytics, radio station sourcing
+npm test             # 119 tests: sites.config.js derivations, hreflang per view, language order, sitemaps, per-site analytics, radio station sourcing
 npm run lint
 npm run build        # builds both showcases into dist/ch/ and dist/org/
 npm run build:one    # a single Vite build into dist/ (troubleshooting only — not what ships)
