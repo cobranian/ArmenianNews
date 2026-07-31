@@ -37,11 +37,11 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 4 pages produites (lang, canonical, hreflang réciproques) et les 2 sitemaps/robots
-npm run prerender    # cuit les 4 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
+npm run check        # contrôle les 12 pages produites (lang, canonical, hreflang réciproques) et les 2 sitemaps/robots
+npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 52 tests : dérivations de sites.config.js, hreflang, langues, sitemaps, cartes de partage, nombre de radios, dates arméniennes, dérivations héritées de NEWS.am
+npm test             # 107 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,12 +50,14 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **52 tests** (`node --test test/*.mjs`) : ils gardent les
-invariants de `sites.config.js` (une langue = une URL), la réciprocité des
-`hreflang`, l'ordre du sélecteur, la forme des sitemaps, le fait que chaque
-vitrine annonce **sa** carte de partage, la concordance entre le tableau
-`STATIONS` et les six textes qui annoncent un nombre de radios, la
-conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
+Il y a désormais **107 tests** (`node --test test/*.mjs`) : ils gardent les
+invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
+une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
+`test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
+fait que chaque vitrine annonce **sa** carte de partage, la concordance entre
+le tableau `STATIONS` et les six textes qui annoncent un nombre de radios, le
+sourçage des fiches de station (`test/stations.test.mjs`, voir « À savoir »),
+la conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
 voir « À savoir »), et les deux dérivations des verticales héritées de NEWS.am
 (`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
 publication, et la date de med recomposée en chiffres) — aucun ne touche le
@@ -441,6 +443,47 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   (`formatDate`, `formatDayNum`, `formatMonthAbbr`, `formatWeekdayTime`) : le
   `locale` que `useI18n()` expose encore ne doit **jamais** servir à formater
   une date.
+
+**Les vues.** Une page n'est plus seulement un couple (vitrine, langue) mais un
+**triplet** (vitrine, langue, vue). Trois vues existent : `home` (l'accueil,
+déjà là sans porter de nom jusqu'ici), `radio` et `agenda` — les deux pages
+piliers qui donnent une URL propre aux deux jeux de données que ce site est
+seul à agréger. La table `VIEWS` vit dans `sites.config.js`, à côté de
+`LANG_URL` : tout en dérive (`urlFor(lang, view)`, `pathFor(lang, view)`,
+`viewFromPath(siteId, pathname)`) — **aucune URL n'est écrite à la main** en
+dehors des tests.
+
+Les slugs restent en **caractères latins** : un slug en écriture arménienne
+partirait en pourcent-encodage (`/hy/%D5%BC%D5%A1...`), illisible dans un
+partage, pour aucun gain de classement. Mais ils sont **traduits là où le mot
+change la requête** — `radio` s'écrit pareil dans les quatre langues, alors que
+`agenda` devient `events` en anglais, arménien et russe : en anglais, « agenda »
+désigne un ordre du jour ou un mobile, jamais une liste d'événements, et c'est
+« events » que les gens tapent.
+
+**Le slug porte son slash final** (`radio/`, `agenda/`, `events/`), et ce n'est
+pas cosmétique. Une vue est servie par un dossier (`dist/ch/radio/index.html`),
+exactement comme `/hy/` et `/ru/` — et Firebase Hosting redirige toute URL de
+répertoire vers sa forme à slash final. Mesuré en production, sur une page qui
+sert déjà :
+
+```
+curl -I https://armenianews.org/hy   → 301 https://armenianews.org/hy/
+curl -I https://armenianews.org/hy/  → 200
+```
+
+Un slug sans ce slash aurait donc déclaré, sur les douze pages (`canonical`,
+les `hreflang`, `og:url`, le JSON-LD, les deux sitemaps, les liens internes),
+une adresse qui **redirige** vers celle réellement servie — aucune page ne se
+serait citée elle-même à son URL finale. Ce piège a réellement été commis
+pendant ce chantier : ni `npm run check` (il compare des chaînes, pas des
+codes HTTP) ni `vite preview` (sirv sert les deux formes en 200) ne peuvent le
+voir — seule une revue qui teste des URL en production l'a rattrapé.
+Conséquence pour `viewFromPath` : elle compare un slug **normalisé** (slash de
+bord retiré des deux côtés) au chemin, pas le slug brut au chemin — comparer
+`'radio'` à `'radio/'` retomberait sur `home` et ferait échouer la garde
+`data-view` du prérendu (voir « À savoir »). `test/views.test.mjs` exige que
+`/radio` et `/radio/` rendent tous deux `'radio'`.
 
 **Internationalisation** — `src/i18n.jsx` expose un contexte React
 (`useI18n()` → `{ t, lang, formatDate, locale }`) avec les dictionnaires
@@ -871,3 +914,84 @@ de production servent toujours depuis la racine de leur domaine.
   (`scripts/sources/civilnet.mjs`) est un quatrième tableau du même genre : ses
   clés sont les éditions CivilNet, et ses valeurs les rubriques propres à
   chacune. Même angle mort, même conséquence.
+- **Les `hreflang` d'une page de vue héritaient d'un générateur pensé pour les
+  accueils, et le bloc entier en aurait payé le prix.** `headFor` composait ses
+  alternates depuis `LANG_URL`, donc toujours vers les accueils : recopié tel
+  quel sur une page de vue, `/radio/` du .ch aurait déclaré comme équivalent
+  anglais **l'accueil** du .org, et non `/radio/` du .org. Google, plutôt que
+  d'arbitrer entre deux pages incompatibles, **ignore alors le bloc entier** —
+  silencieusement, sur les douze pages, puisqu'un seul générateur les produit
+  toutes. `headFor` / `applyMeta` / `replaceMeta` (`scripts/lib/site-meta.mjs`)
+  prennent désormais `{ siteId, lang, view }` (`view` vaut `'home'` par défaut,
+  ce qui garde les appels existants valides) et composent chaque alternate avec
+  `urlFor(l, view)`, jamais `LANG_URL[l]` directement. `xDefaultFor(view)` suit
+  la même règle : sur `/radio` le `x-default` pointe le `/radio` anglais, pas
+  l'accueil anglais — un `x-default` qui changerait de page au milieu d'un
+  bloc d'alternates le rendrait incohérent. Gardé par `test/views.test.mjs` et
+  `test/site-meta.test.mjs`, dont le test « une page de vue ne cite jamais
+  l'accueil dans ses alternates » échoue précisément sur ce mode de panne.
+- **La garde `data-view` du prérendu est la jumelle de la garde de langue déjà
+  en place.** `scripts/prerender.mjs` vérifiait déjà que
+  `document.documentElement.lang` correspond à la langue attendue ; il vérifie
+  désormais aussi `document.querySelector('[data-view]').dataset.view` contre
+  la vue attendue. Le serveur de prévisualisation (sirv) retombe sur l'index
+  racine pour un chemin qu'il ne reconnaît pas : sans ce second contrôle, une
+  erreur de slug ferait cuire l'**accueil** dans le fichier de `/radio/` — une
+  page parfaitement valide, au mauvais contenu, sans le moindre signal.
+- **Le graphe `Event` de l'agenda ne doit vivre que là où l'agenda est
+  visible — et une simple recherche de `"@type":"Event"` ne suffit pas à le
+  garder.** Le plugin `agendaEventsJsonLd` (`vite.config.js`, préexistant à ce
+  chantier) injecte dans le `<head>` du HTML bâti un `@graph` de tous les
+  événements de l'agenda, **hors des sentinelles
+  `<!--SITE_META:START/END-->`** : `derivePages` (`scripts/build-sites.mjs`),
+  qui ne rebâtit pas une page mais échange le bloc entre sentinelles, le
+  recopiait donc tel quel dans **toutes** les pages dérivées. Tant que ces
+  pages étaient des accueils, c'était juste — la section Agenda y est
+  visible. Depuis les vues, non : `/radio/` embarquerait 159 `Event` datés et
+  localisés sur une page qui n'en montre aucun. Google exige que le balisage
+  décrive le contenu **visible** ; le risque est une action manuelle « données
+  structurées non pertinentes », qui porte sur le **domaine entier**, accueils
+  compris. Rien ne l'aurait signalé : aucun test, `npm run check` ni le lint
+  ne lisent le `ld+json`.
+
+  D'où un attribut, posé par le plugin et retiré par `derivePages`
+  (`scripts/lib/agenda-ld.mjs`, constantes `AGENDA_LD_ATTR` / `AGENDA_LD_VALUE`
+  partagées entre les deux côtés — les renommer d'un seul remettrait le graphe
+  partout, en silence). Mais `/agenda/` affiche **légitimement** ses propres
+  `Event`, posés par le composant via `agendaJsonLd` (`src/jsonld.js`) : un
+  test « aucun `Event` hors de l'accueil » aurait donc échoué à tort sur cette
+  page. La garde (`scripts/lib/agenda-guard.mjs`) distingue pour cela le
+  graphe du **plugin** (l'attribut) de la présence d'`Event` **en général**, à
+  trois états :
+
+  | Vue | graphe du plugin (`data-ld="agenda"`) | `Event` en général |
+  |---|---|---|
+  | accueil | présent si l'agenda a un événement | idem |
+  | agenda | absent (le composant pose le sien) | présent si un événement à venir |
+  | radio | absent | aucun |
+- **Aucun fait de station n'est affirmé sans source, et un champ non trouvé
+  est un champ ABSENT — jamais « ? », jamais une approximation.**
+  `src/stations.js` (`STATION_FACTS`) documente, station par station, où
+  chaque fait a été trouvé et pourquoi certains restent volontairement
+  absents : la fréquence FM de la Première chaîne (Radio publique d'Arménie)
+  est absente parce que la page officielle « How to Listen » se contredit
+  elle-même pour Erevan (103,8 ET 69,8 MHz, dans le même onglet) et que
+  Wikipédia en indique une troisième (107,7) ; la ville de Radio Yeraz est
+  absente parce que le site se décrit lui-même comme émettant depuis Alep
+  tandis qu'un annuaire indépendant la classe sous Erevan — deux sources qui
+  se contredisent valent une absence, pas un arbitrage à la main. Plusieurs
+  fiches n'ont ainsi que deux champs, et c'est voulu : une fiche à deux champs
+  vrais classe aussi bien qu'une fiche à cinq champs plausibles, et elle ne
+  coûte pas la crédibilité du site le jour où un lecteur la dément.
+
+  `test/stations.test.mjs` rend la règle mécanique : tout fait déclaré doit
+  porter au moins une source en `https://`, et `genre` / `langue` sont des
+  **clés** — pas du texte affichable, `RadioPage.jsx` les rend par
+  `t('radio.genre.'+f.genre)` — donc chacune doit être déclarée **dans les
+  quatre blocs** `STRINGS` de `src/i18n.jsx`. Sans ce dernier contrôle, une
+  station ajoutée avec `genre: 'talk'` passerait le test de sourçage, le lint,
+  `npm run check` et le prérendu — et les quatre pages `/radio/` afficheraient
+  « Genre : radio.genre.talk », cuit dans le HTML que Google indexe (`t()`
+  vaut `STRINGS[lang][clé] ?? STRINGS.fr[clé] ?? clé` : une clé absente
+  **rend la clé**). Même mécanique que `test/radio-count.test.mjs`, sur une
+  autre famille de chaînes.

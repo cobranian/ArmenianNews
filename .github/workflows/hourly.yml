@@ -70,7 +70,7 @@ jobs:
 
       # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
       # jamais en automatique et ne protège rien. Volontairement SANS
-      # continue-on-error : si les quatre pages ou les deux sitemaps sont
+      # continue-on-error : si les douze pages ou les deux sitemaps sont
       # incorrects, il vaut mieux ne rien publier que publier un site cassé.
       # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
       # donc un faux positif signalerait une vraie divergence de configuration.
@@ -109,12 +109,13 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run screenshot
 
-      # Bake the rendered app into each showcase's index.html (four files:
-      # dist/ch, dist/org, dist/org/hy, dist/org/ru) so crawlers get the
-      # snapshot's articles in raw HTML instead of an empty #root.
+      # Bake the rendered app into each showcase's index.html (twelve files:
+      # every (site, lang, view) triple — home, /radio, /agenda|/events — across
+      # dist/ch and dist/org) so crawlers get the snapshot's articles in raw
+      # HTML instead of an empty #root.
       # Best-effort, like the screenshot: a prerender failure must never
       # block the deploy — worst case we ship the plain SPA, as before.
-      - name: Prerender the four pages
+      - name: Prerender the twelve pages
         id: prerender
         continue-on-error: true
         env:

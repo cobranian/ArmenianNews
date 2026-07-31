@@ -107,8 +107,10 @@ only `projects.default`.
 
 `npm run build` produces `dist/ch/` and `dist/org/` (with `dist/org/hy/` and
 `dist/org/ru/` derived from `dist/org/index.html`); `npm run check` validates
-all four pages plus the two `sitemap.xml`/`robots.txt` pairs; `npm run
-prerender` bakes the snapshot's articles into all four. Deploying by hand takes
+all twelve pages — the four home pages above, plus their `/radio` and
+`/agenda`/`/events` siblings (see [`sites.config.js`](./sites.config.js) →
+`VIEWS`) — plus the two `sitemap.xml`/`robots.txt` pairs; `npm run
+prerender` bakes the snapshot's articles into all twelve. Deploying by hand takes
 two commands, because each site needs its own project **and its own
 credentials**:
 
@@ -263,12 +265,12 @@ npm run scrape       # refresh src/data/{news,agenda,meta,instagram-feed}.json f
 npm run ig-scrape    # refresh the Instagram pool (local, logged-in Chrome — never in CI)
 npm run fb-scrape    # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
 npm run dev          # http://localhost:5173/ — the .ch showcase, French
-npm test             # 40 tests: sites.config.js derivations, hreflang, language order, sitemaps, per-site analytics
+npm test             # 107 tests: sites.config.js derivations, hreflang per view, language order, sitemaps, per-site analytics, radio station sourcing
 npm run lint
 npm run build        # builds both showcases into dist/ch/ and dist/org/
 npm run build:one    # a single Vite build into dist/ (troubleshooting only — not what ships)
-npm run check        # validates the 4 built pages (lang, canonical, reciprocal hreflang) + the 2 sitemap/robots pairs
-npm run prerender    # bakes all 4 pages with Puppeteer, after `npm run build`
+npm run check        # validates the 12 built pages (lang, canonical, reciprocal hreflang) + the 2 sitemap/robots pairs
+npm run prerender    # bakes all 12 pages with Puppeteer, after `npm run build`
 npm run preview      # preview dist/ch (what armenie-info.web.app actually serves)
 npm run preview:org  # preview dist/org
 npm run screenshot   # after build: capture the Don Narek carousel into dist/ch/don-narek-{desktop,mobile}.png
