@@ -282,24 +282,38 @@ test('replaceMeta refuse un HTML sans sentinelles', () => {
   )
 })
 
-test('le sitemap du .ch liste sa seule URL', () => {
+test('le sitemap du .ch liste ses pages, une par vue', () => {
   const xml = sitemapFor('ch', '2026-07-28T10:00:00.000Z')
+  assert.equal((xml.match(/<url>/g) || []).length, ALL_VIEWS.length)
   assert.ok(xml.includes('<loc>https://armenieinfo.ch/</loc>'))
+  assert.ok(xml.includes('<loc>https://armenieinfo.ch/radio</loc>'))
   assert.ok(xml.includes('<lastmod>2026-07-28T10:00:00.000Z</lastmod>'))
-  assert.equal((xml.match(/<url>/g) || []).length, 1)
 })
 
-test('le sitemap du .org liste ses trois URL avec leurs hreflang', () => {
+test('le sitemap du .org liste ses trois langues fois ses vues', () => {
   const xml = sitemapFor('org', '2026-07-28T10:00:00.000Z')
-  assert.equal((xml.match(/<url>/g) || []).length, 3)
-  for (const loc of ['https://armenianews.org/', 'https://armenianews.org/hy/', 'https://armenianews.org/ru/']) {
+  assert.equal((xml.match(/<url>/g) || []).length, 3 * ALL_VIEWS.length)
+  for (const loc of [
+    'https://armenianews.org/',
+    'https://armenianews.org/hy/',
+    'https://armenianews.org/radio',
+    'https://armenianews.org/hy/radio',
+    'https://armenianews.org/ru/radio',
+  ]) {
     assert.ok(xml.includes(`<loc>${loc}</loc>`), loc)
   }
-  // Chaque <url> porte les quatre alternates + x-default, y compris la version
-  // française hébergée sur l'autre domaine.
-  assert.ok(xml.includes('hreflang="fr" href="https://armenieinfo.ch/"'))
-  assert.equal((xml.match(/hreflang="x-default"/g) || []).length, 3)
-  assert.ok(xml.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"'))
+})
+
+// Le meme piege que dans le <head> : une entree de sitemap dont les alternates
+// pointent sur les accueils annonce a Google que /radio et l accueil sont la
+// meme page en quatre langues.
+test('les alternates du sitemap suivent la vue de leur entree', () => {
+  const xml = sitemapFor('ch', '2026-07-28T10:00:00.000Z')
+  const bloc = xml.split('<url>').find((b) => b.includes('<loc>https://armenieinfo.ch/radio</loc>'))
+  for (const l of ALL_LANGS) {
+    assert.ok(bloc.includes(`hreflang="${l}" href="${urlFor(l, 'radio')}"`), l)
+  }
+  assert.ok(bloc.includes(`hreflang="x-default" href="${xDefaultFor('radio')}"`))
 })
 
 test('robots.txt pointe vers le sitemap de son propre domaine', () => {

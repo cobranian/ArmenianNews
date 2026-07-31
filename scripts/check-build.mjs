@@ -9,14 +9,15 @@
 import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, LANG_URL, ALL_LANGS, primaryLang } from '../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang } from '../sites.config.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
 
 for (const site of Object.values(SITES)) {
   for (const page of site.pages) {
-    const rel = path.join('dist', site.id, page.path.replace(/^\//, ''), 'index.html')
+    for (const view of ALL_VIEWS) {
+    const rel = path.join('dist', site.id, pathFor(page.lang, view).replace(/^\//, ''), 'index.html')
     let html
     try {
       html = await readFile(path.join(root, rel), 'utf-8')
@@ -38,16 +39,16 @@ for (const site of Object.values(SITES)) {
       [`<html lang="${page.lang}">`, html.includes(`<html lang="${page.lang}"`)],
       ['un seul <html>', count(/<html\s/g) === 1],
       [
-        `canonical ${LANG_URL[page.lang]}`,
-        html.includes(`rel="canonical" href="${LANG_URL[page.lang]}" />`),
+        `canonical ${urlFor(page.lang, view)}`,
+        html.includes(`rel="canonical" href="${urlFor(page.lang, view)}" />`),
       ],
       ['un seul canonical', count(/rel="canonical"/g) === 1],
       [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
       ['un seul og:site_name', count(/og:site_name"/g) === 1],
       ['un seul <title>', count(/<title>/g) === 1],
       [
-        'les 4 hreflang, réciproques',
-        ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${LANG_URL[l]}"`)),
+        'les 4 hreflang, réciproques ET de la bonne vue',
+        ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${urlFor(l, view)}"`)),
       ],
       ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
       ['x-default', html.includes('hreflang="x-default"')],
@@ -131,7 +132,8 @@ for (const site of Object.values(SITES)) {
       console.error(`✗ ${rel}\n    ${failed.join('\n    ')}`)
       bad += failed.length
     } else {
-      console.log(`✓ ${rel} (${page.lang})`)
+      console.log(`✓ ${rel} (${page.lang}, ${view})`)
+    }
     }
   }
 }
@@ -209,7 +211,7 @@ for (const site of Object.values(SITES)) {
   const urls = (xml.match(/<url>/g) || []).length
   const dates = (xml.match(/<lastmod>/g) || []).length
   const alts = (xml.match(/xhtml:link/g) || []).length
-  const attendu = site.pages.length
+  const attendu = site.pages.length * ALL_VIEWS.length
   const checks = [
     [`${attendu} <url>`, urls === attendu],
     [`${attendu} <lastmod>`, dates === attendu],

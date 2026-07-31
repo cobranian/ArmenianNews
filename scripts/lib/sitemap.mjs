@@ -10,17 +10,22 @@
 // l'horodatage du DERNIER SCRAPE. Un rebuild sans scrape réémet donc la même
 // valeur. Ne jamais y substituer new Date() : ce serait exactement le bug
 // contre lequel ce commentaire prévenait.
-import { SITES, LANG_URL, ALL_LANGS, X_DEFAULT } from '../../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor } from '../../sites.config.js'
 
 // Les annotations xhtml:link dans le sitemap répètent ce que portent les
 // <link hreflang> du HTML. Google accepte les deux et recoupe : c'est une
 // redondance voulue, pas un oubli de factorisation.
-function alternates() {
+//
+// Les alternates d'une entrée citent la MÊME VUE dans les autres langues. Des
+// alternates pointant sur les accueils annonceraient que /radio et l'accueil
+// sont la même page en quatre langues — et Google, plutôt que d'arbitrer,
+// écarterait le bloc.
+function alternates(view) {
   return [
     ...ALL_LANGS.map(
-      (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${LANG_URL[l]}" />`,
+      (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlFor(l, view)}" />`,
     ),
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${X_DEFAULT}" />`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultFor(view)}" />`,
   ].join('\n')
 }
 
@@ -30,14 +35,16 @@ export function sitemapFor(siteId, lastmod) {
   if (!lastmod) throw new Error('lastmod manquant — attendu meta.json → generatedAt')
 
   const urls = site.pages
-    .map(
-      (page) => `  <url>
-    <loc>${site.host}${page.path}</loc>
+    .flatMap((page) =>
+      ALL_VIEWS.map(
+        (view) => `  <url>
+    <loc>${urlFor(page.lang, view)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>hourly</changefreq>
-    <priority>1.0</priority>
-${alternates()}
+    <priority>${view === 'home' ? '1.0' : '0.8'}</priority>
+${alternates(view)}
   </url>`,
+      ),
     )
     .join('\n')
 
