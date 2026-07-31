@@ -8,8 +8,10 @@ import { Radio } from './Radio.jsx'
 // garde sa section lecteur, cette page ajoute ce que l'accueil n'a pas — une
 // introduction, et les faits de chaque station.
 //
-// Le lecteur est le composant Radio réutilisé TEL QUEL, pas une copie : deux
-// lecteurs divergeraient au premier correctif.
+// Le lecteur est le composant Radio réutilisé, pas une copie : deux lecteurs
+// divergeraient au premier correctif. Seul son lien « toutes les radios » est
+// retiré (`more={false}`) — il pointerait ici sur la page courante, et le clic
+// rechargerait le document, donc couperait le flux en cours d'écoute.
 export function RadioPage() {
   const { t, lang } = useI18n()
   const ids = Object.keys(STATION_FACTS)
@@ -21,7 +23,7 @@ export function RadioPage() {
         <p className="viewpage__intro">{t('radio.page.intro')}</p>
       </div>
 
-      <Radio />
+      <Radio more={false} />
 
       <section className="section" id="stations">
         <div className="container">

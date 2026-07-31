@@ -83,7 +83,14 @@ function useYerevanClock() {
   return time
 }
 
-export function Radio() {
+// `more` : afficher ou non le lien vers /radio/ sous le lecteur.
+//
+// Il n'a de sens QUE sur l'accueil. Sur /radio/ le lecteur est déjà à
+// destination : le lien y pointerait sur la page courante, et le clic
+// déclencherait une navigation de document — donc un rechargement qui COUPE le
+// flux qu'on est en train d'écouter. D'où un drapeau plutôt qu'un second
+// composant : deux lecteurs divergeraient au premier correctif.
+export function Radio({ more = true }) {
   const { t, lang } = useI18n()
   const time = useYerevanClock()
 
@@ -409,12 +416,14 @@ export function Radio() {
 
         {/* Le lien qui dit à Google laquelle des deux pages traite le sujet en
             profondeur. Son TEXTE porte la requête — « En savoir plus » ne dirait
-            rien de la page visée. */}
-        <p className="section__more">
-          <a href={pathFor(lang, 'radio')}>
-            {t('radio.more')} <span aria-hidden="true">→</span>
-          </a>
-        </p>
+            rien de la page visée. Absent de /radio/ : voir `more` ci-dessus. */}
+        {more && (
+          <p className="section__more">
+            <a href={pathFor(lang, 'radio')}>
+              {t('radio.more')} <span aria-hidden="true">→</span>
+            </a>
+          </p>
+        )}
       </div>
     </section>
   )
