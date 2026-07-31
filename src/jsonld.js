@@ -15,6 +15,41 @@ import { urlFor } from '../sites.config.js'
 // que scripts/lib/site-meta.mjs.
 const safe = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
 
+// Le SEUL balisage de ce projet qui produise un résultat enrichi visible dans
+// Google (les fiches d'événements avec date et lieu). D'où deux règles strictes :
+//
+//   1. SEULS LES ÉVÉNEMENTS À VENIR. Baliser un événement passé comme à venir
+//      enfreint les règles de Google et expose la page à une action manuelle.
+//   2. LE LIEU SE LIMITE À LA DONNÉE. agenda.json ne porte qu'un `location`
+//      textuel (« Genève », « Uruguay ») — jamais d'adresse. On émet donc un
+//      Place nommé, sans `address`. Search Console le signalera en avertissement
+//      NON BLOQUANT : c'est le comportement correct.
+//
+// `maintenant` est un troisième paramètre injectable (défaut : Date.now())
+// pour que ce filtre soit testable sans horloge ni réseau — ne le retirez pas.
+export function agendaJsonLd(lang, evenements, maintenant = Date.now()) {
+  const avenir = evenements.filter((ev) => new Date(ev.date).getTime() >= maintenant)
+  return safe({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    numberOfItems: avenir.length,
+    itemListElement: avenir.map((ev, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Event',
+        name: ev.title,
+        startDate: ev.date,
+        url: ev.url,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: { '@type': 'Place', name: ev.location },
+        ...(ev.image ? { image: ev.image } : {}),
+      },
+    })),
+  })
+}
+
 export function radioJsonLd(lang, t) {
   const ids = Object.keys(STATION_FACTS)
   return safe({

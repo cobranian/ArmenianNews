@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
 import { worldCountryKey, countryLabel, countryFlag } from '../worldPlace.js'
+import { agendaJsonLd } from '../jsonld.js'
 import agenda from '../data/agenda.json'
 
 // La vue /agenda : la liste COMPLÈTE, groupée par pays, là où l'accueil ne
@@ -79,6 +80,24 @@ export function AgendaPage() {
           <a href={pathFor(lang, 'home')}>{t('agenda.page.home')}</a>
         </p>
       </div>
+
+      {/* Le SEUL balisage du projet qui produise un résultat enrichi visible
+          dans Google. Réutilise `parPays`, déjà dédoublonné par URL et filtré
+          aux événements à venir — jamais une seconde liste qui pourrait
+          diverger de ce que la page affiche réellement. Le plugin Vite
+          (vite.config.js) pose son propre @graph hors des sentinelles et
+          `stripAgendaLd` le retire de cette page (voir
+          scripts/lib/agenda-ld.mjs) : deux graphes dupliqueraient les
+          entités. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: agendaJsonLd(
+            lang,
+            parPays.flatMap(([, e]) => e),
+          ),
+        }}
+      />
     </main>
   )
 }
