@@ -11,7 +11,16 @@ import {
   GA_MARKER,
 } from '../scripts/lib/site-meta.mjs'
 import { sitemapFor, robotsFor } from '../scripts/lib/sitemap.mjs'
-import { ALL_LANGS, LANG_URL, SITES, siteOf, primaryLang } from '../sites.config.js'
+import {
+  ALL_LANGS,
+  LANG_URL,
+  SITES,
+  siteOf,
+  primaryLang,
+  ALL_VIEWS,
+  urlFor,
+  xDefaultFor,
+} from '../sites.config.js'
 
 const PAGES = ALL_LANGS.map((lang) => ({ lang, siteId: siteOf(lang) }))
 
@@ -296,4 +305,97 @@ test('le sitemap du .org liste ses trois URL avec leurs hreflang', () => {
 test('robots.txt pointe vers le sitemap de son propre domaine', () => {
   assert.ok(robotsFor('org').includes('Sitemap: https://armenianews.org/sitemap.xml'))
   assert.ok(robotsFor('ch').includes('Sitemap: https://armenieinfo.ch/sitemap.xml'))
+})
+
+// L'INVARIANT CENTRAL DE CE CHANTIER. Les alternates d'une page de vue doivent
+// citer la MÊME vue dans les autres langues. S'ils citaient les accueils, Google
+// recevrait des correspondances contradictoires et ignorerait le bloc entier —
+// sur toutes les pages, pas seulement les nouvelles.
+test('les hreflang sont reciproques PAR VUE', () => {
+  for (const view of ALL_VIEWS) {
+    for (const lang of ALL_LANGS) {
+      const head = headFor({ siteId: siteOf(lang), lang, view })
+      for (const autre of ALL_LANGS) {
+        assert.ok(
+          head.includes(`hreflang="${autre}" href="${urlFor(autre, view)}"`),
+          `${view}/${lang} : alternate ${autre} manquant ou pointant ailleurs`,
+        )
+      }
+      assert.ok(
+        head.includes(`hreflang="x-default" href="${xDefaultFor(view)}"`),
+        `${view}/${lang} : x-default ne suit pas la vue`,
+      )
+      assert.equal(
+        (head.match(/rel="alternate"/g) || []).length,
+        ALL_LANGS.length + 1,
+        `${view}/${lang} : nombre d'alternates`,
+      )
+    }
+  }
+})
+
+// Le mode d'échec visé : une page de vue qui recopierait le bloc de l'accueil
+// passerait le test ci-dessus pour la vue `home` et échouerait ici.
+test('une page de vue ne cite jamais l accueil dans ses alternates', () => {
+  for (const view of ALL_VIEWS.filter((v) => v !== 'home')) {
+    for (const lang of ALL_LANGS) {
+      const head = headFor({ siteId: siteOf(lang), lang, view })
+      for (const autre of ALL_LANGS) {
+        assert.ok(
+          !head.includes(`hreflang="${autre}" href="${urlFor(autre, 'home')}"`),
+          `${view}/${lang} : cite l'accueil ${autre} au lieu de sa propre vue`,
+        )
+      }
+    }
+  }
+})
+
+test('le canonical d une page de vue se designe elle-meme', () => {
+  for (const view of ALL_VIEWS) {
+    for (const lang of ALL_LANGS) {
+      const head = headFor({ siteId: siteOf(lang), lang, view })
+      assert.ok(
+        head.includes(`<link rel="canonical" href="${urlFor(lang, view)}" />`),
+        `${view}/${lang} : canonical faux`,
+      )
+      assert.equal((head.match(/rel="canonical"/g) || []).length, 1)
+    }
+  }
+})
+
+// Le titre d'une page de vue mene par le MOT-CLE, pas par la marque : la marque
+// est inconnue, et Google tronque la fin. L'accueil garde l'ordre inverse, ou
+// la marque est le sujet.
+test('le titre d une page de vue mene par le mot-cle', () => {
+  assert.ok(
+    headFor({ siteId: 'ch', lang: 'fr', view: 'radio' }).includes(
+      '<title>Radios arméniennes en direct · Arménie Info</title>',
+    ),
+  )
+  assert.ok(
+    headFor({ siteId: 'org', lang: 'en', view: 'radio' }).includes(
+      '<title>Armenian radio online · Armenia News</title>',
+    ),
+  )
+})
+
+test('og:url suit la vue', () => {
+  const head = headFor({ siteId: 'org', lang: 'ru', view: 'radio' })
+  assert.ok(head.includes('property="og:url" content="https://armenianews.org/ru/radio"'))
+})
+
+// La carte de partage suit la VITRINE, pas la vue : les pages /radio du .org
+// gardent la carte anglaise du domaine. Rien a regenerer.
+test('les pages de vue gardent la carte de partage de leur vitrine', () => {
+  for (const view of ALL_VIEWS) {
+    for (const site of Object.values(SITES)) {
+      for (const page of site.pages) {
+        const head = headFor({ siteId: site.id, lang: page.lang, view })
+        assert.ok(head.includes(`content="${site.host}${site.ogImage}"`))
+        for (const autre of Object.values(SITES)) {
+          if (autre.id !== site.id) assert.ok(!head.includes(autre.ogImage))
+        }
+      }
+    }
+  }
 })

@@ -5,8 +5,8 @@
 // /ru/ à partir du HTML déjà bâti. Un seul générateur pour les deux, sinon les
 // quatre pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
-import { SITES, LANG_URL, ALL_LANGS, X_DEFAULT } from '../../sites.config.js'
-import { SEO, OG_LOCALE } from '../../src/seo.js'
+import { SITES, ALL_LANGS, urlFor, xDefaultFor } from '../../sites.config.js'
+import { SEO, VIEW_SEO, OG_LOCALE } from '../../src/seo.js'
 
 export const META_MARKER = '<!--SITE_META-->'
 
@@ -84,19 +84,34 @@ function jsonLd(site, lang) {
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')
 }
 
-export function headFor({ siteId, lang }) {
+export function headFor({ siteId, lang, view = 'home' }) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   if (!SEO[lang]) throw new Error(`langue sans chaînes SEO : ${lang}`)
   if (!OG_LOCALE[lang]) throw new Error(`langue sans locale Open Graph : ${lang}`)
+  if (view !== 'home' && !VIEW_SEO[view]?.[lang]) {
+    throw new Error(`vue ${view} sans chaînes SEO en ${lang}`)
+  }
 
-  const url = LANG_URL[lang]
-  const title = `${site.brand} · ${SEO[lang].tagline}`
-  const { description, keywords } = SEO[lang]
-  // La carte de partage suit la VITRINE, pas la langue : les trois pages du
-  // .org partagent la carte anglaise. C'est voulu — une carte par langue
-  // supposerait trois fichiers à tenir, alors que la marque, elle, est unique
-  // par domaine. Voir `ogImage` dans sites.config.js.
+  const url = urlFor(lang, view)
+  // L'accueil mène par la marque (elle est le sujet) ; une page de vue mène par
+  // le mot-clé (la marque n'est pas encore cherchée, et Google tronque la fin).
+  const title =
+    view === 'home'
+      ? `${site.brand} · ${SEO[lang].tagline}`
+      : `${VIEW_SEO[view][lang].title} · ${site.brand}`
+  const description =
+    view === 'home' ? SEO[lang].description : VIEW_SEO[view][lang].description
+  // `keywords` reste celui de l'ACCUEIL sur toute vue : ce meta n'a plus aucune
+  // incidence sur le classement Google depuis 2009, donc lui composer une
+  // variante par vue serait de l'entretien pour un signal mort. Décision du
+  // propriétaire — le garder est un choix assumé, pas un oubli.
+  const { keywords } = SEO[lang]
+  // La carte de partage suit la VITRINE, pas la langue ni la vue : les pages
+  // /radio du .org gardent la carte anglaise du domaine, comme son accueil.
+  // C'est voulu — une carte par langue ou par vue supposerait bien plus de
+  // fichiers à tenir, alors que la marque, elle, est unique par domaine. Voir
+  // `ogImage` dans sites.config.js.
   const image = `${site.host}${site.ogImage}`
 
   const lines = [
@@ -109,9 +124,9 @@ export function headFor({ siteId, lang }) {
     '     pages : une page absente de son propre bloc fait ignorer tout le',
     '     bloc par Google. Générées depuis sites.config.js — ne pas éditer. -->',
     ...ALL_LANGS.map(
-      (l) => `<link rel="alternate" hreflang="${l}" href="${LANG_URL[l]}" />`,
+      (l) => `<link rel="alternate" hreflang="${l}" href="${urlFor(l, view)}" />`,
     ),
-    `<link rel="alternate" hreflang="x-default" href="${X_DEFAULT}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${xDefaultFor(view)}" />`,
     '',
   ]
 
@@ -217,7 +232,7 @@ export function gaTag(siteId) {
 const setLang = (html, lang) => html.replace(/<html\s+lang="[^"]*"/, `<html lang="${lang}"`)
 
 // Pour le HTML SOURCE (index.html du dépôt), qui porte les marqueurs.
-export function applyMeta(html, { siteId, lang }) {
+export function applyMeta(html, { siteId, lang, view = 'home' }) {
   if (!html.includes(META_MARKER)) {
     throw new Error(`marqueur ${META_MARKER} absent du HTML — page sans métadonnées, refus`)
   }
@@ -231,14 +246,14 @@ export function applyMeta(html, { siteId, lang }) {
     throw new Error(`marqueur ${GA_MARKER} absent du HTML — page sans GA4, refus`)
   }
   return setLang(html, lang)
-    .replace(META_MARKER, headFor({ siteId, lang }).trimStart())
+    .replace(META_MARKER, headFor({ siteId, lang, view }).trimStart())
     .replace(BEACON_MARKER, beaconTag(siteId))
     .replace(GA_MARKER, gaTag(siteId))
 }
 
 // Pour le HTML DÉJÀ BÂTI, qui porte les sentinelles. Idempotent : rejouable
 // autant de fois que voulu sur son propre résultat.
-export function replaceMeta(html, { siteId, lang }) {
+export function replaceMeta(html, { siteId, lang, view = 'home' }) {
   const from = html.indexOf(META_START)
   const to = html.indexOf(META_END)
   if (from === -1 || to === -1 || to < from) {
@@ -246,6 +261,6 @@ export function replaceMeta(html, { siteId, lang }) {
       `sentinelles ${META_START}…${META_END} absentes — HTML non bâti par applyMeta, refus`,
     )
   }
-  const head = headFor({ siteId, lang }).trimStart()
+  const head = headFor({ siteId, lang, view }).trimStart()
   return setLang(html.slice(0, from) + head + html.slice(to + META_END.length), lang)
 }

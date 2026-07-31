@@ -38,5 +38,38 @@ export const SEO = {
   },
 }
 
+// Titre et description des PAGES DE VUE, par langue.
+//
+// Le titre y mène par le MOT-CLÉ et non par la marque — inverse de l'accueil.
+// La raison est concrète : Google tronque un titre vers 60 caractères et
+// « Arménie Info » n'est pas encore un nom que l'on cherche. Sur l'accueil, la
+// marque EST le sujet ; sur /radio, le sujet est la radio.
+//
+// Le titre final se compose `${VIEW_SEO[view][lang].title} · ${brand}`.
+export const VIEW_SEO = {
+  radio: {
+    fr: {
+      title: 'Radios arméniennes en direct',
+      description:
+        'Douze radios arméniennes en direct, d’Erevan et de la diaspora : actualité, musique, culture et jazz. Écoute gratuite, sans compte ni installation.',
+    },
+    en: {
+      title: 'Armenian radio online',
+      description:
+        'Twelve Armenian radio stations streaming live from Yerevan and the diaspora: news, music, culture and jazz. Free to listen, no account, nothing to install.',
+    },
+    hy: {
+      title: 'Հայկական ռադիոկայաններ ուղիղ եթերում',
+      description:
+        'Տասներկու հայկական ռադիոկայան ուղիղ եթերում՝ Երևանից և սփյուռքից․ լուրեր, երաժշտություն, մշակույթ և ջազ։ Անվճար, առանց հաշվի և տեղադրման։',
+    },
+    ru: {
+      title: 'Армянское радио онлайн',
+      description:
+        'Двенадцать армянских радиостанций в прямом эфире из Еревана и диаспоры: новости, музыка, культура и джаз. Бесплатно, без регистрации и установки.',
+    },
+  },
+}
+
 // Codes de locale Open Graph, un par langue.
 export const OG_LOCALE = { fr: 'fr_FR', en: 'en_US', hy: 'hy_AM', ru: 'ru_RU' }
