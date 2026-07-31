@@ -41,7 +41,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 107 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am
+npm test             # 110 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -50,7 +50,7 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **107 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **110 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -969,6 +969,32 @@ de production servent toujours depuis la racine de leur domaine.
   | accueil | présent si l'agenda a un événement | idem |
   | agenda | absent (le composant pose le sien) | présent si un événement à venir |
   | radio | absent | aucun |
+- **`npm run check` ne voit pas le même HTML en CI et en local — l'ordre des
+  étapes diffère, et ça a déjà bloqué un déploiement.** Le workflow fait
+  `build` → **`check`** → `screenshot` → **`prerender`** → deploy ; au poste de
+  travail on enchaîne naturellement `build` → `prerender` → `check`. Or les
+  `Event` de la vue `/agenda/` ne viennent **pas** du `<head>` comme ceux de
+  l'accueil (que le plugin y écrit au build) : ils viennent du composant React,
+  donc de `<div id="root">`, donc du **prérendu**. Exiger leur présence sans
+  regarder le stade fait échouer `check` en CI sur les **quatre** pages agenda,
+  toutes saines — et passer en local sur exactement les mêmes. Le prérendu
+  étant `continue-on-error` à dessein (un prérendu manqué ne doit pas retenir le
+  déploiement), **déplacer `check` après lui n'est pas la correction** : c'est
+  la garde qui doit connaître les deux stades.
+
+  `scripts/lib/agenda-guard.mjs` diffère donc la seule exigence qui dépend du
+  prérendu, en reconnaissant la sortie brute du build à sa racine React vide
+  (`<div id="root"></div>`, le marqueur même que remplace `prerender.mjs`).
+  **Le sens du test est ce qui compte** : il reconnaît « pas encore prérendue »,
+  pas « prérendue » — tout HTML qui ne porte pas cette signature exacte est tenu
+  pour cuit, donc soumis à l'exigence. Écrit dans l'autre sens, un simple
+  changement de forme du conteneur rendrait l'exigence inatteignable et la garde
+  cesserait de protéger **sans qu'aucun contrôle ne tombe** ; ici le même
+  changement la resserre. L'interdiction du graphe du **plugin**, elle, reste
+  inconditionnelle aux deux stades : c'est elle qui porte la protection
+  d'origine, et ce défaut-là naît au build. `test/agenda-guard.test.mjs` garde
+  les deux moitiés, dont le cas qui prouve que la garde peut **encore** échouer
+  (page agenda prérendue, aucun `Event`).
 - **Aucun fait de station n'est affirmé sans source, et un champ non trouvé
   est un champ ABSENT — jamais « ? », jamais une approximation.**
   `src/stations.js` (`STATION_FACTS`) documente, station par station, où
