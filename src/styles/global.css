@@ -840,6 +840,39 @@ html:lang(hy) .nav__brand {
   margin: 0 auto;
 }
 
+/* Le lien interne vers la page dédiée (ex. /radio) — même famille utilitaire
+   que .card__more (mono, majuscules, flèche), mais centré sous la section
+   plutôt que dans une carte : c'est un lien de section, pas un lien d'article. */
+.section__more {
+  text-align: center;
+  margin: clamp(28px, 5vw, 44px) 0 0;
+}
+.section__more a {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+.section__more a:hover,
+.section__more a:focus-visible {
+  color: var(--apricot-ink-strong);
+  border-color: currentColor;
+}
+.section__more a span {
+  display: inline-block;
+  transition: transform 0.25s var(--ease);
+}
+.section__more a:hover span {
+  transform: translateX(5px);
+}
+
 /* ============================================================
    Réseaux sociaux — two strands, both on screen. Facebook and
    Instagram stack as .shelf carousels, the way the Agenda stacks

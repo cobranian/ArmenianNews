@@ -180,6 +180,7 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+    'radio.more': 'Toutes les radios arméniennes en direct',
 
     // Page /radio
     'radio.page.h1': 'Radios arméniennes en direct',
@@ -366,6 +367,7 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+    'radio.more': 'All twelve Armenian radio stations',
 
     // Page /radio
     'radio.page.h1': 'Armenian radio online',
@@ -576,6 +578,7 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+    'radio.more': 'Բոլոր տասներկու հայկական ռադիոկայանները՝ ուղիղ եթերում',
 
     // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
     // task-5-report.md).
@@ -762,6 +765,7 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+    'radio.more': 'Все двенадцать армянских радиостанций в прямом эфире',
 
     // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
     // task-5-report.md).

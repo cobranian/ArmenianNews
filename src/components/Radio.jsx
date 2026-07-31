@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
+import { pathFor } from '../../sites.config.js'
 
 /* Live broadcast console — a native HTML5 <audio> player for Public Radio of
  * Armenia. We deliberately do NOT embed player.armradio.am (an old jQuery/jPlayer
@@ -83,7 +84,7 @@ function useYerevanClock() {
 }
 
 export function Radio() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const time = useYerevanClock()
 
   const audioRef = useRef(null) // CORS streams → Web Audio graph (live spectrum)
@@ -405,6 +406,15 @@ export function Radio() {
         {/* Plain element: no crossOrigin, never fed to Web Audio, for CORS-less
             streams (e.g. Voice of Van) that would otherwise fail or be muted. */}
         <audio ref={plainAudioRef} preload="none" />
+
+        {/* Le lien qui dit à Google laquelle des deux pages traite le sujet en
+            profondeur. Son TEXTE porte la requête — « En savoir plus » ne dirait
+            rien de la page visée. */}
+        <p className="section__more">
+          <a href={pathFor(lang, 'radio')}>
+            {t('radio.more')} <span aria-hidden="true">→</span>
+          </a>
+        </p>
       </div>
     </section>
   )
