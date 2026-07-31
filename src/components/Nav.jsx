@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
-import { orderedLangs } from '../site.js'
-import { LANG_URL } from '../../sites.config.js'
+import { orderedLangs, SITE_ID } from '../site.js'
+import { LANG_URL, langPath } from '../../sites.config.js'
 import { KnotMark } from './Ornament.jsx'
 
-export function Nav() {
+export function Nav({ view = 'home' }) {
   const { t, lang } = useI18n()
   const [open, setOpen] = useState(false)
   const [theme, setTheme] = useState(
@@ -21,17 +21,23 @@ export function Nav() {
     }
   }, [theme])
 
+  // Hors de l'accueil, les ancres ne désignent rien : /radio n'a ni #actualites
+  // ni #agenda. Elles doivent donc porter le chemin de l'accueil de LA LANGUE
+  // COURANTE — '/' sur le .ch, '/hy/' sur la page arménienne. Sans cela les
+  // pages de vue ont une nav morte, et une page sans lien entrant interne ne
+  // circule pas.
+  const home = view === 'home' ? '' : langPath(SITE_ID, lang)
   const links = [
-    ['#direct', t('nav.radio')],
-    ['#actualites', t('nav.news')],
-    ['#agenda', t('nav.agenda')],
-    ['#reseaux', t('nav.social')],
+    [`${home}#direct`, t('nav.radio')],
+    [`${home}#actualites`, t('nav.news')],
+    [`${home}#agenda`, t('nav.agenda')],
+    [`${home}#reseaux`, t('nav.social')],
   ]
 
   return (
     <nav className="nav">
       <div className="container nav__inner">
-        <a className="nav__brand" href="#top" aria-label={t('site.title')}>
+        <a className="nav__brand" href={home ? langPath(SITE_ID, lang) : '#top'} aria-label={t('site.title')}>
           <KnotMark />
           <span>{t('site.title')}</span>
         </a>
