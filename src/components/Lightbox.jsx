@@ -118,7 +118,10 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
           <span className="lb__corner lb__corner--br" aria-hidden="true" />
         </div>
 
-        <div className="lb__meta">
+        {/* `--sans-sortie` quand l'item n'a pas de lien : le bloc perd la hauteur
+            du bouton, et la croix de fermeture — ancrée à son sommet — descendrait
+            dans les flèches sur mobile. Le CSS y réserve la place manquante. */}
+        <div className={`lb__meta${item.href ? '' : ' lb__meta--sans-sortie'}`}>
           {/* On mobile this pins to the caption's right, level with the title
               (see .lb__close in global.css), so it reads next to "Don Narek"
               rather than over the picture. On desktop it's a fixed,

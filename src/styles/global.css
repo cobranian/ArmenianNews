@@ -3098,6 +3098,18 @@ html:lang(hy) .nav__brand {
     right: 16px;
     margin: 0;
   }
+  /* Un item sans lien de sortie (la photo épinglée de Don Narek) n'a pas de
+     .lb__out : son .lb__meta perd 50px — les 40px du bouton plus les 10px de
+     `gap`. Comme l'image au-dessus occupe le reste, le bloc DESCEND d'autant,
+     et la croix, ancrée à son sommet mais haute de 46px, débordait de 9px dans
+     les flèches (mesuré à 390px : croix 701-747, flèche 738-784).
+     On réserve donc la place du bouton absent, ce qui remet la croix à la même
+     hauteur que sur toutes les autres cartes. Anchor `top: 0` vise le bord
+     intérieur haut, que ce padding ne déplace pas — seule la hauteur du bloc
+     change, donc son sommet remonte. */
+  .lb__meta--sans-sortie {
+    padding-bottom: 50px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .lb {
