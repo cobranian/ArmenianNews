@@ -412,21 +412,8 @@ export function NewsBrowser() {
               onClick={() => setActiveId(src.id)}
               onKeyDown={onKeyDown}
             >
-              {/* La FACE, et elle n'est pas décorative. Sous 640px, c'est elle
-                  qui s'incline dans le tambour, pas le bouton — parce que le
-                  moteur d'aimantation calcule ses points d'accroche sur la
-                  boîte TRANSFORMÉE de l'élément aimanté. Incliner le bouton
-                  ferait dépendre l'accroche de l'inclinaison, qui dépend
-                  elle-même de la position de défilement : le rang se reposait
-                  13px sous la bande au lieu d'y être centré. Le bouton reste
-                  donc une boîte droite (accroche et zone tactile), la face
-                  tourne dedans. Sur large écran, `display: contents` la fait
-                  disparaître : le rail masthead retrouve exactement sa mise en
-                  page d'origine. */}
-              <span className="newsfeed__tab-face">
-                <span className="newsfeed__tab-brand">{src.brand}</span>
-                {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
-              </span>
+              <span className="newsfeed__tab-brand">{src.brand}</span>
+              {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
             </button>
           )
         })}

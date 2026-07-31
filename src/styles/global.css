@@ -1327,12 +1327,6 @@ html:lang(hy) .nav__brand {
 .newsfeed__tab.is-active {
   border-bottom-color: var(--apricot-ink);
 }
-/* La face du rang. Sur large écran elle ne génère aucune boîte : la marque et
-   le point restent les enfants directs du bouton, et le rail est au pixel près
-   ce qu'il était. Elle ne prend corps que dans le tambour (voir ≤640px). */
-.newsfeed__tab-face {
-  display: contents;
-}
 .newsfeed__tab-brand {
   font-family: var(--font-display);
   font-size-adjust: var(--fsa-display);
@@ -1471,11 +1465,6 @@ html:lang(hy) .nav__brand {
   .newsfeed__tabs::-webkit-scrollbar {
     display: none;
   }
-  /* Le bouton : une boîte DROITE, et elle doit le rester. C'est lui que le
-     moteur d'aimantation mesure, et il mesure la boîte transformée — une
-     inclinaison ici ferait dépendre le point d'accroche de l'inclinaison, qui
-     dépend de la position de défilement. Le rang se reposait alors 13px sous
-     la bande. C'est la face intérieure qui tourne. */
   .newsfeed__tab {
     flex: 0 0 44px;
     width: 100%;
@@ -1485,24 +1474,45 @@ html:lang(hy) .nav__brand {
     justify-content: center;
     border-bottom: 0;
     scroll-snap-align: center;
-    transform-style: preserve-3d;
   }
-  /* `--d` (distance signée au centre, en rangs) et `--o` sont écrits par
-     useSourceDrum.js sur le BOUTON ; la face en hérite, les propriétés
-     personnalisées se transmettent. Leurs valeurs de repli, 0 et 1, sont ici et
-     pas là-bas : sans JavaScript la colonne reste une liste plate, aimantée et
-     défilante. */
-  .newsfeed__tab-face {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    max-width: 100%;
+
+  /* --- LE CYLINDRE ---
+     `is-drum` est posée par useSourceDrum.js, jamais par le rendu React, et
+     c'est le mécanisme du repli : sans JavaScript la classe n'arrive pas, les
+     règles ci-dessus tiennent seules, et la colonne reste une liste plate,
+     défilante et aimantée. Utilisable, sans boucle.
+
+     Avec le JS, la roue prend la main : le défilement natif est coupé (il ne
+     sait pas recoudre son début à sa fin — c'est toute la raison de cette
+     réécriture), les rangs quittent le flux et viennent se poser sur un
+     cylindre. `--a`, l'angle de chacun, est écrit par le hook. */
+  .newsfeed__tabs.is-drum {
+    overflow: hidden;
+    padding-block: 0;
+    scroll-snap-type: none;
+    /* Le geste vertical appartient à la roue, pas à la page. Les gouttières
+       laissées de part et d'autre (width: min(84%, 340px)) restent, elles, un
+       endroit où le glissement fait défiler la page. */
+    touch-action: none;
+    cursor: grab;
+  }
+  .newsfeed__tabs.is-drum:active {
+    cursor: grabbing;
+  }
+  /* Tous les rangs occupent la MÊME place — le milieu du cadre — et c'est la
+     rotation seule qui les répartit. `translateZ(-62px)` puis `translateZ(62px)`
+     encadrent la rotation : le premier recule le cylindre entier, le second
+     pose le rang sur sa surface. Sans le recul, le rang de face serait 62px
+     plus près de l'œil que le plan du cadre, donc agrandi par la perspective. */
+  .newsfeed__tabs.is-drum .newsfeed__tab {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% - 22px);
+    width: auto;
     backface-visibility: hidden;
     opacity: var(--o, 1);
-    transform:
-      rotateX(calc(var(--d, 0) * -32deg))
-      translateZ(calc(var(--d, 0) * var(--d, 0) * -15px));
+    transform: translateZ(-62px) rotateX(var(--a, 0deg)) translateZ(62px);
   }
   .newsfeed__tab:hover,
   .newsfeed__tab.is-active {
@@ -1550,12 +1560,13 @@ html:lang(hy) .nav__brand {
 /* Mouvement réduit : la roue ne tourne plus et ne s'éloigne plus. Le fondu
    d'opacité reste — il ne bouge pas, et c'est lui qui dit où est le centre. */
 @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+  /* La roue tourne toujours — c'est de la manipulation directe, le doigt mène.
+     Ce qu'on retire, c'est l'animation qui court toute seule après le geste :
+     `useSourceDrum` supprime l'approche progressive et pose le rang d'un coup
+     (voir SNAP_EASE). L'inclinaison reste : elle ne bouge pas, et c'est elle
+     qui dit où est le centre. */
   .newsfeed__tabs {
-    perspective: none;
     scroll-behavior: auto;
-  }
-  .newsfeed__tab-face {
-    transform: none;
   }
   .newsfeed__tab-brand,
   .newsfeed__dot {
