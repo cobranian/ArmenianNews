@@ -36,7 +36,7 @@ const STRINGS = {
     'agenda.world': 'Monde',
     'agenda.country': 'Pays',
     'agenda.empty': 'Aucun événement annoncé.',
-    'agenda.more': "Voir sur armenopole",
+    'agenda.more': "Tout l'agenda arménien, pays par pays",
 
     // Page /agenda
     'agenda.page.h1': "L'agenda arménien, dans le monde",
@@ -241,7 +241,7 @@ const STRINGS = {
     'agenda.world': 'World',
     'agenda.country': 'Country',
     'agenda.empty': 'No events announced.',
-    'agenda.more': 'See on armenopole',
+    'agenda.more': 'The full Armenian events calendar',
 
     // Page /events
     'agenda.page.h1': 'The Armenian agenda, around the world',
@@ -458,7 +458,7 @@ const STRINGS = {
     'agenda.world': 'Աշխարհ',
     'agenda.country': 'Երկիր',
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
-    'agenda.more': 'Տեսնել armenopole-ում',
+    'agenda.more': 'Հայկական միջոցառումների ամբողջական օրացույցը՝ երկիր առ երկիր',
 
     // Page /hy/events — traduction à relire par un locuteur natif.
     'agenda.page.h1': 'Հայկական օրացույցը՝ ամբողջ աշխարհում',
@@ -651,7 +651,7 @@ const STRINGS = {
     'agenda.world': 'Мир',
     'agenda.country': 'Страна',
     'agenda.empty': 'Анонсов пока нет.',
-    'agenda.more': 'Смотреть на armenopole',
+    'agenda.more': 'Вся армянская афиша событий, по странам',
 
     // Страница /ru/events — перевод на проверку носителю языка.
     'agenda.page.h1': 'Армянская афиша по всему миру',

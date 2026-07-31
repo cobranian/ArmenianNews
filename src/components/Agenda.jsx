@@ -5,6 +5,7 @@ import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import agenda from '../data/agenda.json'
+import { pathFor } from '../../sites.config.js'
 
 // A single event rendered as a "broadsheet clipping" card that lives inside a
 // horizontal, ‹ ›-scrollable track. A top banner shows the event's armenopole
@@ -171,6 +172,16 @@ export function Agenda() {
             </div>
           )}
         </div>
+
+        {/* Le lien qui dit à Google laquelle des deux pages traite le sujet en
+            profondeur. Son TEXTE porte la requête ; aucun nombre dedans, le
+            compte d'événements bouge à chaque scrape horaire — voir Radio.jsx
+            pour le même motif appliqué à /radio/. */}
+        <p className="section__more">
+          <a href={pathFor(lang, 'agenda')}>
+            {t('agenda.more')} <span aria-hidden="true">→</span>
+          </a>
+        </p>
       </div>
     </section>
   )
