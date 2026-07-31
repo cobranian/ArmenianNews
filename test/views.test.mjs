@@ -80,3 +80,13 @@ test('x-default suit la vue, pas seulement la langue', () => {
   assert.equal(xDefaultFor(), 'https://armenianews.org/')
   assert.equal(xDefaultFor('radio'), 'https://armenianews.org/radio/')
 })
+
+// Le slug de l'agenda change d'une langue a l'autre : « agenda » en anglais
+// designe un ordre du jour ou un mobile, pas une liste d'evenements — le mot
+// cherche est « events ». Slash final comme radio (voir le commentaire de VIEWS).
+test('le slug de l agenda est traduit la ou le mot change la requete', () => {
+  assert.equal(urlFor('fr', 'agenda'), 'https://armenieinfo.ch/agenda/')
+  assert.equal(urlFor('en', 'agenda'), 'https://armenianews.org/events/')
+  assert.equal(urlFor('hy', 'agenda'), 'https://armenianews.org/hy/events/')
+  assert.equal(urlFor('ru', 'agenda'), 'https://armenianews.org/ru/events/')
+})

@@ -200,6 +200,10 @@ export const X_DEFAULT = LANG_URL.en
 export const VIEWS = {
   home: { slugs: { fr: '', en: '', hy: '', ru: '' } },
   radio: { slugs: { fr: 'radio/', en: 'radio/', hy: 'radio/', ru: 'radio/' } },
+  // « agenda » en anglais désigne un ordre du jour ou un mobile, pas une liste
+  // d'événements : le mot cherché est « events ». C'est la seule vue dont le
+  // slug change d'une langue à l'autre, et c'est la raison d'être de la table.
+  agenda: { slugs: { fr: 'agenda/', en: 'events/', hy: 'events/', ru: 'events/' } },
 }
 
 // Un slug sans ses slashes de bord. Sert à COMPARER (viewFromPath) là où

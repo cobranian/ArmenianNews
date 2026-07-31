@@ -69,6 +69,28 @@ export const VIEW_SEO = {
         'Двенадцать армянских радиостанций в прямом эфире из Еревана и диаспоры: новости, музыка, культура и джаз. Бесплатно, без регистрации и установки.',
     },
   },
+  agenda: {
+    fr: {
+      title: 'Agenda arménien : événements en Suisse et dans le monde',
+      description:
+        'Concerts, conférences et rassemblements de la diaspora arménienne dans 26 pays, dont la Suisse : agenda recensé depuis Armenopole et mis à jour chaque heure.',
+    },
+    en: {
+      title: 'Armenian events worldwide',
+      description:
+        'Armenian diaspora concerts, talks and gatherings across 26 countries: an events calendar sourced from Armenopole, updated every hour.',
+    },
+    hy: {
+      title: 'Հայկական միջոցառումներ ամբողջ աշխարհում',
+      description:
+        'Հայ սփյուռքի համերգներ, դասախոսություններ և հավաքներ 26 երկրում՝ հավաքագրված Armenopole կայքից և թարմացվող ամեն ժամ։',
+    },
+    ru: {
+      title: 'Армянские события по всему миру',
+      description:
+        'Концерты, лекции и встречи армянской диаспоры в 26 странах: календарь событий с Armenopole, обновляемый каждый час.',
+    },
+  },
 }
 
 // Codes de locale Open Graph, un par langue.
