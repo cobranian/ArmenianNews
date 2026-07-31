@@ -286,7 +286,7 @@ test('le sitemap du .ch liste ses pages, une par vue', () => {
   const xml = sitemapFor('ch', '2026-07-28T10:00:00.000Z')
   assert.equal((xml.match(/<url>/g) || []).length, ALL_VIEWS.length)
   assert.ok(xml.includes('<loc>https://armenieinfo.ch/</loc>'))
-  assert.ok(xml.includes('<loc>https://armenieinfo.ch/radio</loc>'))
+  assert.ok(xml.includes('<loc>https://armenieinfo.ch/radio/</loc>'))
   assert.ok(xml.includes('<lastmod>2026-07-28T10:00:00.000Z</lastmod>'))
 })
 
@@ -296,12 +296,46 @@ test('le sitemap du .org liste ses trois langues fois ses vues', () => {
   for (const loc of [
     'https://armenianews.org/',
     'https://armenianews.org/hy/',
-    'https://armenianews.org/radio',
-    'https://armenianews.org/hy/radio',
-    'https://armenianews.org/ru/radio',
+    'https://armenianews.org/radio/',
+    'https://armenianews.org/hy/radio/',
+    'https://armenianews.org/ru/radio/',
   ]) {
     assert.ok(xml.includes(`<loc>${loc}</loc>`), loc)
   }
+})
+
+// Le prefixe xhtml: est DECLARE, sinon les deux sitemaps sont du XML non
+// conforme et Search Console les rejette en bloc. Rien d'autre ne le regarde :
+// check-build.mjs compte les <xhtml:link> mais jamais leur namespace, donc
+// perdre cette ligne d'en-tete passerait les tests, le check et le deploiement,
+// pour n'echouer que dans Search Console, des semaines plus tard.
+test('les deux sitemaps declarent le namespace xhtml de leurs alternates', () => {
+  for (const siteId of Object.keys(SITES)) {
+    const xml = sitemapFor(siteId, '2026-07-28T10:00:00.000Z')
+    assert.ok(
+      xml.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"'),
+      `${siteId} : prefixe xhtml non declare, sitemap non conforme`,
+    )
+    assert.ok(xml.includes('<xhtml:link'), `${siteId} : aucun alternate`)
+  }
+})
+
+// L'alternate francais du .org pointe sur l'AUTRE DOMAINE. C'est le seul lien
+// qui relie les deux vitrines dans les sitemaps ; le perdre isolerait le .ch de
+// ses trois traductions sans qu'aucun compte d'alternates ne bouge.
+test('le sitemap du .org cite la version francaise, hebergee sur le .ch', () => {
+  const xml = sitemapFor('org', '2026-07-28T10:00:00.000Z')
+  assert.ok(xml.includes(`hreflang="fr" href="${LANG_URL.fr}"`), 'accueil fr absent')
+  assert.ok(
+    xml.includes(`hreflang="fr" href="${urlFor('fr', 'radio')}"`),
+    'la vue radio fr est absente des alternates du .org',
+  )
+  // Un x-default par entree, ni plus ni moins : un seul pour tout le fichier
+  // laisserait les autres entrees sans page de repli.
+  assert.equal(
+    (xml.match(/hreflang="x-default"/g) || []).length,
+    SITES.org.pages.length * ALL_VIEWS.length,
+  )
 })
 
 // Le meme piege que dans le <head> : une entree de sitemap dont les alternates
@@ -309,7 +343,8 @@ test('le sitemap du .org liste ses trois langues fois ses vues', () => {
 // meme page en quatre langues.
 test('les alternates du sitemap suivent la vue de leur entree', () => {
   const xml = sitemapFor('ch', '2026-07-28T10:00:00.000Z')
-  const bloc = xml.split('<url>').find((b) => b.includes('<loc>https://armenieinfo.ch/radio</loc>'))
+  const bloc = xml.split('<url>').find((b) => b.includes(`<loc>${urlFor('fr', 'radio')}</loc>`))
+  assert.ok(bloc, 'entree /radio/ introuvable dans le sitemap du .ch')
   for (const l of ALL_LANGS) {
     assert.ok(bloc.includes(`hreflang="${l}" href="${urlFor(l, 'radio')}"`), l)
   }
@@ -395,7 +430,7 @@ test('le titre d une page de vue mene par le mot-cle', () => {
 
 test('og:url suit la vue', () => {
   const head = headFor({ siteId: 'org', lang: 'ru', view: 'radio' })
-  assert.ok(head.includes('property="og:url" content="https://armenianews.org/ru/radio"'))
+  assert.ok(head.includes('property="og:url" content="https://armenianews.org/ru/radio/"'))
 })
 
 // La carte de partage suit la VITRINE, pas la vue : les pages /radio du .org

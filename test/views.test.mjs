@@ -4,6 +4,7 @@ import {
   VIEWS,
   ALL_VIEWS,
   ALL_LANGS,
+  LANG_URL,
   urlFor,
   pathFor,
   langPath,
@@ -26,18 +27,27 @@ test('chaque couple (langue, vue) vit a exactement une URL', () => {
   assert.equal(new Set(urls).size, urls.length, `URL en double : ${urls}`)
 })
 
-test('urlFor compose le chemin de langue et le slug de la vue', () => {
+// Le slash final n'est pas un detail de style : Firebase Hosting redirige
+// /radio vers /radio/ en 301 (mesure dans le commentaire de VIEWS). Une URL
+// declaree sans lui serait annoncee partout a une adresse qui redirige.
+test('urlFor compose le chemin de langue et le slug de la vue, slash final compris', () => {
   assert.equal(urlFor('fr'), 'https://armenieinfo.ch/')
-  assert.equal(urlFor('fr', 'radio'), 'https://armenieinfo.ch/radio')
-  assert.equal(urlFor('en', 'radio'), 'https://armenianews.org/radio')
-  assert.equal(urlFor('hy', 'radio'), 'https://armenianews.org/hy/radio')
-  assert.equal(urlFor('ru', 'radio'), 'https://armenianews.org/ru/radio')
+  assert.equal(urlFor('fr', 'radio'), 'https://armenieinfo.ch/radio/')
+  assert.equal(urlFor('en', 'radio'), 'https://armenianews.org/radio/')
+  assert.equal(urlFor('hy', 'radio'), 'https://armenianews.org/hy/radio/')
+  assert.equal(urlFor('ru', 'radio'), 'https://armenianews.org/ru/radio/')
+})
+
+// Les quatre accueils sont anterieurs a ce chantier et doivent rester
+// strictement a leur adresse : urlFor(l, 'home') EST LANG_URL[l].
+test('urlFor n a pas bouge les quatre accueils', () => {
+  for (const l of ALL_LANGS) assert.equal(urlFor(l, 'home'), LANG_URL[l])
 })
 
 test('pathFor donne le chemin sans le host', () => {
   assert.equal(pathFor('fr'), '/')
-  assert.equal(pathFor('fr', 'radio'), '/radio')
-  assert.equal(pathFor('hy', 'radio'), '/hy/radio')
+  assert.equal(pathFor('fr', 'radio'), '/radio/')
+  assert.equal(pathFor('hy', 'radio'), '/hy/radio/')
 })
 
 test('langPath donne le chemin de la page d accueil de la langue', () => {
@@ -46,6 +56,9 @@ test('langPath donne le chemin de la page d accueil de la langue', () => {
   assert.equal(langPath('org', 'hy'), '/hy/')
 })
 
+// Les DEUX formes doivent rendre 'radio'. Le slug porte desormais son slash :
+// comparer un chemin normalise a un slug brut ferait retomber /radio sur
+// 'home', et la garde `data-view` du prerendu ferait echouer le build.
 test('viewFromPath lit la vue depuis le chemin', () => {
   assert.equal(viewFromPath('ch', '/'), 'home')
   assert.equal(viewFromPath('ch', '/radio'), 'radio')
@@ -65,5 +78,5 @@ test('viewFromPath retombe sur home pour un chemin inconnu', () => {
 
 test('x-default suit la vue, pas seulement la langue', () => {
   assert.equal(xDefaultFor(), 'https://armenianews.org/')
-  assert.equal(xDefaultFor('radio'), 'https://armenianews.org/radio')
+  assert.equal(xDefaultFor('radio'), 'https://armenianews.org/radio/')
 })

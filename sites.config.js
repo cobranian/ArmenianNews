@@ -184,18 +184,34 @@ export const X_DEFAULT = LANG_URL.en
 // Mais ils sont TRADUITS là où le mot change la requête : en anglais, « agenda »
 // désigne un ordre du jour ou un mobile, pas une liste d'événements — c'est
 // « events » que les gens tapent. « radio » s'écrit pareil dans les quatre.
+//
+// LE SLUG PORTE SON SLASH FINAL, et ce n'est pas cosmétique. Une vue est servie
+// par un dossier (dist/ch/radio/index.html), exactement comme /hy/ et /ru/ ;
+// Firebase Hosting redirige alors la forme sans slash vers celle avec, en 301 :
+//
+//     curl -I https://armenianews.org/hy   → 301 https://armenianews.org/hy/
+//     curl -I https://armenianews.org/hy/  → 200
+//
+// Un slug sans slash ferait donc déclarer partout (canonical, hreflang, og:url,
+// JSON-LD, sitemaps, liens internes) une adresse qui répond 301 vers l'adresse
+// réellement servie — donc aucune page ne se citerait elle-même à l'URL finale.
+// Rien ne l'aurait signalé : `npm run check` compare des chaînes, pas des codes
+// HTTP, et `vite preview` sert les deux formes en 200.
 export const VIEWS = {
   home: { slugs: { fr: '', en: '', hy: '', ru: '' } },
-  radio: { slugs: { fr: 'radio', en: 'radio', hy: 'radio', ru: 'radio' } },
+  radio: { slugs: { fr: 'radio/', en: 'radio/', hy: 'radio/', ru: 'radio/' } },
 }
+
+// Un slug sans ses slashes de bord. Sert à COMPARER (viewFromPath) là où
+// `urlFor` compose. Comparer une forme normalisée à une forme brute est
+// exactement ce qui casserait au premier slug portant son slash.
+const normSlug = (s) => s.replace(/^\/|\/$/g, '')
 
 export const ALL_VIEWS = Object.keys(VIEWS)
 
 // L'URL absolue d'un couple (langue, vue). Le chemin de langue porte déjà son
-// slash final (LANG_URL), le slug s'y ajoute tel quel : les pages de vue n'ont
-// donc PAS de slash final, et leur canonical non plus. Firebase sert le même
-// fichier sur /radio et /radio/ ; c'est le canonical qui tranche laquelle des
-// deux est l'adresse.
+// slash final (LANG_URL) et le slug le sien : une page de vue vit donc à
+// `.../radio/`, la forme même que Firebase sert en 200 (voir VIEWS).
 export function urlFor(lang, view = 'home') {
   const slugs = VIEWS[view]?.slugs
   if (!slugs) throw new Error(`vue inconnue : ${view}`)
@@ -225,9 +241,13 @@ export function viewFromPath(siteId, pathname) {
   const lang = langFromPath(siteId, pathname)
   const base = langPath(siteId, lang)
   const norm = pathname.endsWith('/') ? pathname : `${pathname}/`
-  const rest = norm.slice(base.length).replace(/\/$/, '')
+  // On compare deux formes NORMALISÉES. Les slugs portent leur slash final
+  // (VIEWS) : confronter 'radio' au slug brut 'radio/' donnerait faux, la vue
+  // retomberait sur `home`, et la garde `data-view` du prérendu ferait échouer
+  // le build sans que la cause soit lisible.
+  const rest = normSlug(norm.slice(base.length))
   if (!rest) return 'home'
-  const hit = ALL_VIEWS.find((v) => VIEWS[v].slugs[lang] === rest)
+  const hit = ALL_VIEWS.find((v) => normSlug(VIEWS[v].slugs[lang]) === rest)
   return hit ?? 'home'
 }
 
