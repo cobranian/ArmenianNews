@@ -42,6 +42,12 @@
   --line-strong: rgba(243, 236, 219, 0.2);
   --line-apricot: rgba(242, 169, 59, 0.4);
 
+  /* La lueur de la bande du tambour de source (mobile, voir .newsfeed__tabwrap
+     sous 640px). Elle vaut son propre jeton et non une valeur en dur parce que
+     la bascule jour / nuit la redéfinit : sur papier, l'abricot clair
+     disparaîtrait. */
+  --drum-glow: rgba(242, 169, 59, 0.12);
+
   /* --- Semantic --- */
   --bg: var(--basalt);
   --surface: var(--basalt-2);
@@ -172,6 +178,10 @@
   --line: rgba(36, 27, 16, 0.12);
   --line-strong: rgba(36, 27, 16, 0.24);
   --line-apricot: rgba(207, 125, 24, 0.42);
+
+  /* Sur papier, la lumière ne s'ajoute pas — elle se pose. L'abricot brûlé de
+     l'encre, un peu plus dense que sur basalte pour tenir sur un fond clair. */
+  --drum-glow: rgba(207, 125, 24, 0.15);
 
   --shadow: 0 24px 50px -28px rgba(74, 52, 20, 0.4);
   --shadow-soft: 0 14px 30px -22px rgba(74, 52, 20, 0.34);
@@ -1317,6 +1327,12 @@ html:lang(hy) .nav__brand {
 .newsfeed__tab.is-active {
   border-bottom-color: var(--apricot-ink);
 }
+/* La face du rang. Sur large écran elle ne génère aucune boîte : la marque et
+   le point restent les enfants directs du bouton, et le rail est au pixel près
+   ce qu'il était. Elle ne prend corps que dans le tambour (voir ≤640px). */
+.newsfeed__tab-face {
+  display: contents;
+}
 .newsfeed__tab-brand {
   font-family: var(--font-display);
   font-size-adjust: var(--fsa-display);
@@ -1364,9 +1380,187 @@ html:lang(hy) .nav__brand {
   color: var(--text-faint);
   text-align: center;
 }
+/* Le repère de position du tambour n'existe que sur mobile — sur large écran le
+   rail montre déjà toutes les marques d'un coup. */
+.newsfeed__dots {
+  display: none;
+}
 @media (prefers-reduced-motion: reduce) {
   .newsfeed__live-dot { animation: none; }
   .newsfeed__source { animation: none; }
+}
+
+/* ============================================================
+   ≤640px — LE TAMBOUR DE SOURCE
+   Les sept marques sont gravées sur un cylindre qui tourne sur
+   un axe horizontal ; une bande de lumière abricot FIXE traverse
+   le milieu du cadre. Le nom qui passe dans la bande est le nom
+   actif : la sélection est l'éclairage, pas une bordure.
+
+   Le défaut réparé : en `overflow-x` sur 360px, deux marques et
+   demie sur sept étaient visibles, et rien ne disait que les
+   autres existaient.
+
+   TROIS CHOSES À NE PAS DÉFAIRE :
+
+   1. C'EST LE MÊME BALISAGE. Les mêmes <button role="tab"> dans
+      le même role="tablist" — seule la mise en forme change. Un
+      second arbre DOM partirait en double dans les douze pages
+      que cuit `npm run prerender`, et le tambour n'est pas ce que
+      Google doit lire.
+   2. `justify-content` DOIT repasser à flex-start. La règle de
+      base centre les onglets, ce qui est juste sur une ligne ;
+      en colonne débordante, un conteneur flex centré déborde des
+      DEUX côtés et le haut de la liste devient INATTEIGNABLE au
+      défilement — les deux premières sources seraient perdues.
+   3. Le fondu des bords passe par `mask-image`, jamais par un
+      dégradé vers la couleur de fond : le site a une bascule
+      jour / nuit, et un fond en dur mentirait sous l'un des deux.
+   ============================================================ */
+@media (max-width: 640px) {
+  .newsfeed__tabwrap {
+    position: relative;
+    overflow: visible;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  /* La bande. Trois couches en un seul fond : deux filets abricot, fondus aux
+     extrémités pour qu'ils ne touchent pas le bord de l'écran, et la lueur. */
+  .newsfeed__tabwrap::before {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 44px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent, var(--line-apricot) 17%, var(--line-apricot) 83%, transparent)
+        top / 100% 1px no-repeat,
+      linear-gradient(90deg, transparent, var(--line-apricot) 17%, var(--line-apricot) 83%, transparent)
+        bottom / 100% 1px no-repeat,
+      radial-gradient(86% 130% at 50% 50%, var(--drum-glow), transparent 70%);
+  }
+  /* La piste : trois rangs de 44px visibles, le reste au-delà du masque. Le
+     `padding-block` d'un rang est ce qui permet à la PREMIÈRE et à la DERNIÈRE
+     marque de venir au centre — sans lui, l'aimantation ne les atteint pas. */
+  .newsfeed__tabs {
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Le tambour ne va PAS bord à bord, et ce n'est pas esthétique : sur 132px
+       de haut, un défileur pleine largeur capture le geste de quiconque fait
+       défiler la page en posant le doigt là. Les marges laissent une gouttière
+       de part et d'autre où le glissement atteint la page. La cible tactile
+       reste ~300px de large sur 44px de haut — contre ~90 × 45 avant. */
+    width: min(84%, 340px);
+    min-width: 0;
+    margin-inline: auto;
+    height: 132px;
+    gap: 0;
+    padding-block: 44px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    perspective: 560px;
+    perspective-origin: 50% 50%;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 19%, #000 81%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 19%, #000 81%, transparent);
+  }
+  .newsfeed__tabs::-webkit-scrollbar {
+    display: none;
+  }
+  /* Le bouton : une boîte DROITE, et elle doit le rester. C'est lui que le
+     moteur d'aimantation mesure, et il mesure la boîte transformée — une
+     inclinaison ici ferait dépendre le point d'accroche de l'inclinaison, qui
+     dépend de la position de défilement. Le rang se reposait alors 13px sous
+     la bande. C'est la face intérieure qui tourne. */
+  .newsfeed__tab {
+    flex: 0 0 44px;
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    margin: 0;
+    justify-content: center;
+    border-bottom: 0;
+    scroll-snap-align: center;
+    transform-style: preserve-3d;
+  }
+  /* `--d` (distance signée au centre, en rangs) et `--o` sont écrits par
+     useSourceDrum.js sur le BOUTON ; la face en hérite, les propriétés
+     personnalisées se transmettent. Leurs valeurs de repli, 0 et 1, sont ici et
+     pas là-bas : sans JavaScript la colonne reste une liste plate, aimantée et
+     défilante. */
+  .newsfeed__tab-face {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    max-width: 100%;
+    backface-visibility: hidden;
+    opacity: var(--o, 1);
+    transform:
+      rotateX(calc(var(--d, 0) * -32deg))
+      translateZ(calc(var(--d, 0) * var(--d, 0) * -15px));
+  }
+  .newsfeed__tab:hover,
+  .newsfeed__tab.is-active {
+    border-bottom-color: transparent;
+  }
+  .newsfeed__tab:focus-visible {
+    outline: 2px solid var(--line-apricot);
+    outline-offset: -5px;
+    border-radius: 3px;
+  }
+  /* Une seule taille pour tous les rangs : l'éloignement en perspective rend
+     déjà les voisines plus petites. Ce qui marque l'active, c'est la lumière —
+     et l'approche, qui s'ouvre quand le nom entre dans la bande. */
+  .newsfeed__tab-brand {
+    font-size: 1.18rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: letter-spacing 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .newsfeed__tab.is-active .newsfeed__tab-brand {
+    letter-spacing: 0.07em;
+  }
+  /* Sept points de 3px : le nombre de sources, enfin écrit quelque part. */
+  .newsfeed__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 12px;
+    margin: 6px 0 clamp(22px, 3.5vw, 36px);
+  }
+  .newsfeed__dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .newsfeed__dot.is-on {
+    background: var(--apricot-ink);
+    transform: scale(1.7);
+  }
+}
+/* Mouvement réduit : la roue ne tourne plus et ne s'éloigne plus. Le fondu
+   d'opacité reste — il ne bouge pas, et c'est lui qui dit où est le centre. */
+@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+  .newsfeed__tabs {
+    perspective: none;
+    scroll-behavior: auto;
+  }
+  .newsfeed__tab-face {
+    transform: none;
+  }
+  .newsfeed__tab-brand,
+  .newsfeed__dot {
+    transition: none;
+  }
 }
 
 /* ============================================================

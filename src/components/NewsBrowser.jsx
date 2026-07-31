@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { Carousel } from './Carousel.jsx'
+import { useSourceDrum } from './useSourceDrum.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import news from '../data/news.json'
 
@@ -347,17 +348,34 @@ export function NewsBrowser() {
   const sources = buildSources(t, lang)
   const now = useNow()
   const tabRefs = useRef({})
+  const trackRef = useRef(null)
   const [activeId, setActiveId] = useState(sources[0]?.id)
-
-  if (!sources.length) return null
   const active = sources.find((s) => s.id === activeId) || sources[0]
 
-  // Roving-tab keyboard nav across the two source tabs.
+  // Sous 640px, ce même tablist devient un tambour vertical : le hook y ajoute
+  // la perspective et fait de l'aimantation une sélection. Il est appelé
+  // inconditionnellement — les hooks ne se sautent pas — et il ne fait rien tant
+  // que la piste n'existe pas, ce qui couvre le cas « aucune source ».
+  useSourceDrum({
+    trackRef,
+    itemRefs: tabRefs,
+    ids: sources.map((s) => s.id),
+    activeId: active?.id,
+    onSettle: setActiveId,
+  })
+
+  if (!sources.length) return null
+
+  // Roving-tab keyboard nav across the source tabs. Les flèches verticales
+  // s'ajoutent aux horizontales sans les remplacer : le même tablist se rend en
+  // ligne sur large écran et en colonne sur mobile, donc les deux axes sont
+  // légitimes — et l'utilisateur au clavier n'a pas à deviner lequel s'applique.
   const onKeyDown = (e) => {
     const i = sources.findIndex((s) => s.id === active.id)
     let next = null
-    if (e.key === 'ArrowRight') next = (i + 1) % sources.length
-    else if (e.key === 'ArrowLeft') next = (i - 1 + sources.length) % sources.length
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % sources.length
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp')
+      next = (i - 1 + sources.length) % sources.length
     else if (e.key === 'Home') next = 0
     else if (e.key === 'End') next = sources.length - 1
     if (next == null) return
@@ -371,7 +389,12 @@ export function NewsBrowser() {
   return (
     <div className="newsfeed">
       <div className="newsfeed__tabwrap">
-      <div className="newsfeed__tabs" role="tablist" aria-label={t('news.title')}>
+      <div
+        className="newsfeed__tabs"
+        role="tablist"
+        aria-label={t('news.title')}
+        ref={trackRef}
+      >
         {sources.map((src) => {
           const isActive = src.id === active.id
           return (
@@ -389,12 +412,39 @@ export function NewsBrowser() {
               onClick={() => setActiveId(src.id)}
               onKeyDown={onKeyDown}
             >
-              <span className="newsfeed__tab-brand">{src.brand}</span>
-              {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
+              {/* La FACE, et elle n'est pas décorative. Sous 640px, c'est elle
+                  qui s'incline dans le tambour, pas le bouton — parce que le
+                  moteur d'aimantation calcule ses points d'accroche sur la
+                  boîte TRANSFORMÉE de l'élément aimanté. Incliner le bouton
+                  ferait dépendre l'accroche de l'inclinaison, qui dépend
+                  elle-même de la position de défilement : le rang se reposait
+                  13px sous la bande au lieu d'y être centré. Le bouton reste
+                  donc une boîte droite (accroche et zone tactile), la face
+                  tourne dedans. Sur large écran, `display: contents` la fait
+                  disparaître : le rail masthead retrouve exactement sa mise en
+                  page d'origine. */}
+              <span className="newsfeed__tab-face">
+                <span className="newsfeed__tab-brand">{src.brand}</span>
+                {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
+              </span>
             </button>
           )
         })}
       </div>
+      </div>
+
+      {/* Le repère du tambour, mobile seulement (display:none au-dessus de
+          640px). C'est le SEUL endroit où le nombre de sources est écrit — le
+          rail horizontal ne le disait jamais, et c'est précisément le défaut
+          qu'on répare. `aria-hidden` parce qu'il redit ce que `aria-selected`
+          porte déjà : un lecteur d'écran entend « onglet 3 sur 7 » tout seul. */}
+      <div className="newsfeed__dots" aria-hidden="true">
+        {sources.map((s) => (
+          <span
+            key={s.id}
+            className={`newsfeed__dot${s.id === active.id ? ' is-on' : ''}`}
+          />
+        ))}
       </div>
 
       <section
