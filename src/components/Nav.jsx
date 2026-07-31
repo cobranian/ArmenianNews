@@ -37,7 +37,9 @@ export function Nav({ view = 'home' }) {
   return (
     <nav className="nav">
       <div className="container nav__inner">
-        <a className="nav__brand" href={home ? langPath(SITE_ID, lang) : '#top'} aria-label={t('site.title')}>
+        {/* `home` EST déjà le chemin de l'accueil hors de l'accueil, et '' sur
+            l'accueil : le recalculer dirait la même chose deux fois. */}
+        <a className="nav__brand" href={home || '#top'} aria-label={t('site.title')}>
           <KnotMark />
           <span>{t('site.title')}</span>
         </a>
