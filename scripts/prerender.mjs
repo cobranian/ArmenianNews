@@ -5,10 +5,12 @@
  * so the articles only exist for a crawler that runs JavaScript. Google does,
  * but on a slower second pass. This renders every (site, lang, view) triple
  * from sites.config.js with a headless browser and writes the resulting
- * markup back into its own dist/<site>/<path>/index.html (eight files: the
- * four home pages plus their four /radio siblings), so the snapshot's
- * articles are in the raw HTML on the first pass. The hourly build reruns
- * this, so the baked HTML is never staler than the snapshot it ships with.
+ * markup back into its own dist/<site>/<path>/index.html — one file per
+ * (site, lang, view) triple, so the count follows sites.config.js rather than
+ * this comment: four languages × three views = twelve pages today. The
+ * snapshot's articles are therefore in the raw HTML on the first pass. The
+ * hourly build reruns this, so the baked HTML is never staler than the
+ * snapshot it ships with.
  *
  * main.jsx uses createRoot (not hydrateRoot): React clears the container and
  * re-renders on load, so the baked markup is never reconciled and cannot
@@ -17,7 +19,7 @@
  * Browser: uses puppeteer-core against an already-installed Chrome/Edge.
  * Set PUPPETEER_EXECUTABLE_PATH to override the auto-detected path.
  *
- *   npm run prerender            # after `npm run build`, bakes all eight pages
+ *   npm run prerender            # after `npm run build`, bakes every page
  */
 import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'

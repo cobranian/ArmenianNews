@@ -96,6 +96,19 @@ test('agenda : un HTML sans racine reconnaissable est tenu pour prerendu', () =>
   assert.deepEqual(failed(checks), ['des Event sont présents si l’agenda en a'])
 })
 
+// Une vue ajoutee a VIEWS sans decision dans la garde heritait de la branche de
+// l ACCUEIL : elle aurait reclame un graphe d agenda sur une page qui n en veut
+// pas, avec un message parlant de balisage et non de la vue oubliee.
+test('une vue inconnue echoue en nommant SA cause', () => {
+  const checks = agendaGuardChecks('boutique', PLUGIN_GRAPH, {
+    agendaAttendu: true,
+    agendaAVenir: true,
+  })
+  assert.equal(checks.length, 1)
+  assert.equal(checks[0][1], false)
+  assert.match(checks[0][0], /boutique/)
+})
+
 test('radio : ni le graphe du plugin ni aucun Event ne doivent survivre', () => {
   assert.ok(ok(agendaGuardChecks('radio', NO_GRAPH, { agendaAttendu: true, agendaAVenir: true })))
   const avecPlugin = agendaGuardChecks('radio', PLUGIN_GRAPH, { agendaAttendu: true, agendaAVenir: true })

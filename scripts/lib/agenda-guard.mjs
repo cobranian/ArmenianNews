@@ -63,18 +63,33 @@ const avantPrerendu = (html) => RACINE_VIDE.test(html)
  * @returns {[string, boolean][]} des paires [nom du contrôle, ok]
  */
 export function agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }) {
-  return [
-    [
-      view === 'home' ? 'le graphe du plugin (data-ld="agenda") est là' : 'le graphe du plugin est absent',
-      view === 'home' ? !agendaAttendu || hasPluginGraph(html) : !hasPluginGraph(html),
-    ],
-    [
-      view === 'radio' ? 'aucun Event sur /radio' : 'des Event sont présents si l’agenda en a',
-      view === 'radio'
-        ? !hasEvent(html)
-        : view === 'agenda'
-          ? !agendaAVenir || avantPrerendu(html) || hasEvent(html)
-          : !agendaAttendu || hasEvent(html),
-    ],
-  ]
+  // Chaque vue est nommée, aucune ne tombe dans un `else`. Une cinquième vue
+  // ajoutée à VIEWS (sites.config.js) héritait autrement de la branche de
+  // l'ACCUEIL : elle aurait réclamé un graphe d'agenda sur une page qui n'en
+  // veut pas. L'échec aurait été bruyant — donc pas dangereux — mais son
+  // message aurait désigné le balisage au lieu de la vue oubliée. Ici il dit la
+  // cause, et il oblige à trancher les deux états plutôt qu'à en hériter un.
+  if (!['home', 'agenda', 'radio'].includes(view)) {
+    return [[`vue « ${view} » : son état d'agenda n'est pas décidé ici`, false]]
+  }
+
+  const graphePlugin =
+    view === 'home'
+      ? ['le graphe du plugin (data-ld="agenda") est là', !agendaAttendu || hasPluginGraph(html)]
+      : ['le graphe du plugin est absent', !hasPluginGraph(html)]
+
+  const events =
+    view === 'radio'
+      ? ['aucun Event sur /radio', !hasEvent(html)]
+      : [
+          'des Event sont présents si l’agenda en a',
+          view === 'agenda'
+            ? // Posés par le composant, donc absents tant que la page n'est pas
+              // prérendue — le piège de l'ordre des étapes, en tête de fichier.
+              !agendaAVenir || avantPrerendu(html) || hasEvent(html)
+            : // home : posés par le plugin, dans le <head>, dès le build.
+              !agendaAttendu || hasEvent(html),
+        ]
+
+  return [graphePlugin, events]
 }
