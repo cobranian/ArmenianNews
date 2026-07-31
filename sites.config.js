@@ -171,6 +171,73 @@ export const LANG_URL = Object.fromEntries(
 // La page servie à un visiteur dont aucune langue ne correspond.
 export const X_DEFAULT = LANG_URL.en
 
+// Les VUES — la seconde dimension d'une page, à côté de la langue.
+//
+// Une page est un triplet (vitrine, langue, vue). `home` existait déjà sans
+// porter de nom ; `radio` et `agenda` sont les pages piliers qui donnent une
+// URL propre aux deux jeux de données que ce site est seul à agréger.
+//
+// LES SLUGS RESTENT EN CARACTÈRES LATINS. Un slug en écriture arménienne
+// partirait en pourcent-encodage (/hy/%D5%BC%D5%A1...), illisible dans un
+// partage, pour aucun gain de classement.
+//
+// Mais ils sont TRADUITS là où le mot change la requête : en anglais, « agenda »
+// désigne un ordre du jour ou un mobile, pas une liste d'événements — c'est
+// « events » que les gens tapent. « radio » s'écrit pareil dans les quatre.
+export const VIEWS = {
+  home: { slugs: { fr: '', en: '', hy: '', ru: '' } },
+  radio: { slugs: { fr: 'radio', en: 'radio', hy: 'radio', ru: 'radio' } },
+}
+
+export const ALL_VIEWS = Object.keys(VIEWS)
+
+// L'URL absolue d'un couple (langue, vue). Le chemin de langue porte déjà son
+// slash final (LANG_URL), le slug s'y ajoute tel quel : les pages de vue n'ont
+// donc PAS de slash final, et leur canonical non plus. Firebase sert le même
+// fichier sur /radio et /radio/ ; c'est le canonical qui tranche laquelle des
+// deux est l'adresse.
+export function urlFor(lang, view = 'home') {
+  const slugs = VIEWS[view]?.slugs
+  if (!slugs) throw new Error(`vue inconnue : ${view}`)
+  const slug = slugs[lang]
+  if (slug === undefined) throw new Error(`la vue ${view} ne couvre pas ${lang}`)
+  return slug ? LANG_URL[lang] + slug : LANG_URL[lang]
+}
+
+// Le même, sans le host : ce qui part dans un href interne.
+export function pathFor(lang, view = 'home') {
+  const host = SITES[siteOf(lang)].host
+  return urlFor(lang, view).slice(host.length)
+}
+
+// Le chemin de la page d'accueil d'une langue — '/' ou '/hy/'. Sert aux ancres
+// de la nav sur les pages de vue (voir Nav.jsx).
+export function langPath(siteId, lang) {
+  const hit = SITES[siteId].pages.find((p) => p.lang === lang)
+  if (!hit) throw new Error(`${siteId} ne sert pas ${lang}`)
+  return hit.path
+}
+
+// La vue que désigne un chemin. Le chemin fait autorité ; tout ce qui n'est pas
+// reconnu retombe sur `home`, parce que c'est ce que Firebase sert réellement
+// (réécriture ** → /index.html).
+export function viewFromPath(siteId, pathname) {
+  const lang = langFromPath(siteId, pathname)
+  const base = langPath(siteId, lang)
+  const norm = pathname.endsWith('/') ? pathname : `${pathname}/`
+  const rest = norm.slice(base.length).replace(/\/$/, '')
+  if (!rest) return 'home'
+  const hit = ALL_VIEWS.find((v) => VIEWS[v].slugs[lang] === rest)
+  return hit ?? 'home'
+}
+
+// x-default doit suivre la vue : sur /radio il pointe sur le /radio anglais,
+// pas sur l'accueil anglais. Un x-default qui change de page au milieu d'un
+// bloc d'alternates rend le bloc incohérent.
+export function xDefaultFor(view = 'home') {
+  return urlFor('en', view)
+}
+
 export function primaryLang(siteId) {
   return SITES[siteId].pages[0].lang
 }
