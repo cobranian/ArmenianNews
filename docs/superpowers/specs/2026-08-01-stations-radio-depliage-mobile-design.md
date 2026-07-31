@@ -10,7 +10,7 @@ Mesuré à 360 px sur l'accueil :
 | | |
 |---|---|
 | Stations dans `STATIONS` | **12** |
-| Visibles sans défiler | **2** |
+| Visibles sans défiler | **2** à 360 px, **3** à 560 px |
 | Largeur visible / totale de `.radio__stations` | **312 / 1 646 px** |
 | Indice qu'il en manque | **aucun** — `scrollbar-width: none` |
 
@@ -27,12 +27,12 @@ plein mot.
 
 **Rien à inventer.** `.radio__stations` porte **déjà** `flex-wrap: wrap` en règle
 de base : les douze puces s'enveloppent et se voient toutes, partout — sauf dans
-le bloc `@media (max-width: 480px)`, qui force `nowrap` + `overflow-x: auto` et
+le bloc `@media (max-width: 640px)`, qui force `nowrap` + `overflow-x: auto` et
 supprime la barre de défilement. La compacité y a été échangée contre la
 complétude, et l'indice a disparu dans l'échange.
 
 L'état **déplié** est donc simplement la mise en page que le site utilise déjà
-partout ailleurs, rendue atteignable sous 480 px.
+partout ailleurs, rendue atteignable sous 640 px.
 
 ```
 REPLIÉ (~35 px, l'état d'aujourd'hui)
@@ -50,7 +50,7 @@ DÉPLIÉ (~200 px, la mise en page de base restaurée)
  │ Yerevan Nights                   │
  │ Armenian Gospel Radio            │
  │ Radio Yeraz     Radio Jazz FM    │
- │                        Replier ⌃ │
+ │                     Voir moins ⌃ │
  ╰──────────────────────────────────╯
 ```
 
@@ -82,12 +82,19 @@ drapeau `more`. Les douze stations doivent rester atteignables **sur place**.
 
 ### Portée
 
-`@media (max-width: 480px)` **uniquement**. Au-dessus, les puces s'enveloppent
+`@media (max-width: 640px)` **uniquement**. Au-dessus, les puces s'enveloppent
 déjà et les douze se voient : rien ne change, et rien ne doit changer.
 
-C'est un point de vigilance : la borne du tambour des sources est **640 px**,
-celle-ci **480 px**. Les deux sont justes — chaque défaut commence là où sa
-propre mise en page casse — mais on ne les aligne pas « pour faire propre ».
+C'est **la même borne que le tambour des sources**, et ce n'est pas un
+alignement cosmétique : c'est la largeur à laquelle les deux mises en page de
+cette console cessent de tenir.
+
+> Cette valeur a d'abord été notée **480 px** dans une version antérieure de
+> cette spec. C'était faux : le chiffre venait d'un `grep` dont les numéros de
+> ligne dataient d'avant l'insertion du bloc du tambour, qui avait décalé le
+> fichier. Vérifié depuis par un parcours de `global.css` qui compte les
+> accolades. Le défaut porte donc **plus loin** qu'annoncé — jusqu'à 640 px,
+> où trois puces sur douze se voient.
 
 ### État replié
 
@@ -98,7 +105,7 @@ qui écoute la douzième station la voie au lieu de voir les deux premières.
 
 ### État déplié
 
-Le bloc `≤480px` rend la main : `flex-wrap: wrap` reprend, `overflow-x` revient
+Le bloc `≤640px` rend la main : `flex-wrap: wrap` reprend, `overflow-x` revient
 à `visible`. Les douze puces s'affichent sur ~5 rangs.
 
 ### Les douze puces restent toujours dans le DOM
@@ -117,9 +124,13 @@ deux.
 
 Un `<button aria-expanded>` **hors** du `radiogroup`, sous la rangée.
 
-- Replié : « Voir les 12 stations » ; déplié : « Replier ».
+- Replié : « Voir les 12 stations » ; déplié : « Voir moins ». La paire est
+  volontairement symétrique dans les quatre langues (*show all* / *show fewer*) :
+  un bouton dit ce qu'il fait, et son inverse doit se lire comme son inverse.
 - **Le nombre est injecté depuis `STATIONS.length`**, jamais écrit à la main.
-  La clé i18n ne porte que les mots.
+  Il entre par un **gabarit `{n}`** dans la chaîne i18n, pas par une
+  concaténation : « Voir les 12 stations », « Показать все 12 радиостанций » et
+  « Տեսնել 12 ռադիոկայանները » ne placent pas le chiffre au même endroit.
 
 Ce dernier point n'est pas cosmétique. `test/radio-count.test.mjs` garde
 **quatorze** chaînes qui écrivent le nombre en toutes lettres (les quatre
@@ -144,8 +155,11 @@ drapeau `more`.
 
 ### Mouvement réduit
 
-Pas d'animation de hauteur sous `prefers-reduced-motion: reduce` ; le dépliage
-est immédiat.
+**Aucune animation n'est ajoutée, dans aucun cas.** Le dépliage est immédiat
+pour tout le monde, donc il n'y a rien à désactiver sous
+`prefers-reduced-motion: reduce` et aucune règle à écrire. Animer la hauteur
+d'un bloc qui passe de 44 px à 317 px ferait sauter tout ce qui le suit pendant
+la transition, sur la page où l'on vient d'appuyer sur Play.
 
 ## Ce qui n'est pas fait
 
@@ -154,7 +168,7 @@ est immédiat.
   gratuite.
 - Les carrousels de cartes (`.shelf__track`) : les flèches existent et la carte
   suivante dépasse au bord. L'indice est là.
-- Le rendu au-dessus de 480 px.
+- Le rendu au-dessus de 640 px.
 
 ## Vérification
 
@@ -168,7 +182,7 @@ est immédiat.
    déplié, et vérification que les douze puces sont bien toutes rendues.
 5. Choisir la douzième station, replier, vérifier qu'elle est visible sans
    défiler à la main.
-6. Vérifier qu'au-dessus de 480 px la bascule est absente et la mise en page
+6. Vérifier qu'au-dessus de 640 px la bascule est absente et la mise en page
    inchangée — par **chargement neuf**, jamais en redimensionnant une `<iframe>`
    (voir l'avertissement de méthode dans la spec du tambour : une iframe
    redimensionnée depuis le parent n'émet ni `resize` ni `change`).

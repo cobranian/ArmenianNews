@@ -310,6 +310,31 @@ export function Radio({ more = true }) {
 
   const stationName = (id) => t(`radio.st.${id}`)
 
+  // Sous 640px, la rangée de puces passe en `nowrap` + `overflow-x` (voir
+  // global.css) : deux stations sur douze se voient à 360px, trois à 560px, et
+  // `scrollbar-width: none` fait qu'aucun indice ne dit que les autres
+  // existent. Replié = cet état, inchangé ; déplié = la mise en page de BASE
+  // reprend (`flex-wrap: wrap`), celle que le site sert déjà partout au-dessus
+  // de 640px. On ne dessine donc rien de neuf, on rend atteignable ce qui
+  // existe.
+  //
+  // Les douze puces restent en permanence dans le `radiogroup` : replier change
+  // la forme, jamais la composition. Rien n'est retiré aux lecteurs d'écran, et
+  // il n'y a aucun radio enfermé dans un conteneur fermé — c'est ce qui écarte
+  // <details>, qui aurait coupé le groupe en deux.
+  const [stationsOpen, setStationsOpen] = useState(false)
+  const stationsRef = useRef(null)
+
+  // Replié, la rangée défile — quelqu'un qui écoute la douzième station verrait
+  // sinon les deux premières et se croirait ailleurs. On l'amène dans le champ.
+  // `block: 'nearest'` est essentiel : sans lui, l'appel ferait aussi défiler
+  // la PAGE jusqu'à la console, alors qu'on ne veut bouger que la rangée.
+  useEffect(() => {
+    if (stationsOpen) return
+    const el = stationsRef.current?.querySelector('.radio__chip.is-active')
+    el?.scrollIntoView({ inline: 'center', block: 'nearest' })
+  }, [stationId, stationsOpen])
+
   return (
     <section className="section radio-section" id="direct">
       <div className="container">
@@ -389,7 +414,8 @@ export function Radio({ more = true }) {
           </div>
 
           <div
-            className="radio__stations"
+            ref={stationsRef}
+            className={`radio__stations${stationsOpen ? ' is-open' : ''}`}
             role="radiogroup"
             aria-label={t('radio.station')}
           >
@@ -406,6 +432,37 @@ export function Radio({ more = true }) {
               </button>
             ))}
           </div>
+
+          {/* La bascule, HORS du radiogroup : c'est un contrôle d'affichage,
+              pas un choix de station.
+
+              LE NOMBRE VIENT DE `STATIONS.length`, jamais d'une chaîne. Le
+              dépôt écrit déjà le compte en toutes lettres dans quatorze textes
+              — les quatre `radio.subtitle`, les quatre `radio.more`, les
+              `radio.page.*`, les descriptions de src/seo.js, les cartes de
+              pages/ — parce que `t()` ne sait pas interpoler, et
+              `test/radio-count.test.mjs` existe pour les empêcher de mentir
+              ensemble. Écrire « douze » dans une clé de plus ferait entrer un
+              quinzième texte dans cette famille. L'injecter le rend incapable
+              de mentir, et n'ajoute rien à tenir à jour. La clé ne porte donc
+              que les mots.
+
+              Le nombre entre par un GABARIT `{n}` et non par une
+              concaténation : « Voir les 12 stations », « Показать все 12
+              радиостанций », « Տեսնել 12 ռադիոկայանները » ne placent pas le
+              chiffre au même endroit, et coller un nombre au bout d'une chaîne
+              donnerait une phrase fausse dans au moins deux des quatre langues. */}
+          <button
+            type="button"
+            className="radio__stations-toggle"
+            aria-expanded={stationsOpen}
+            onClick={() => setStationsOpen((v) => !v)}
+          >
+            {stationsOpen
+              ? t('radio.stations.less')
+              : t('radio.stations.all').replace('{n}', STATIONS.length)}
+            <span aria-hidden="true">{stationsOpen ? ' ⌃' : ' ⌄'}</span>
+          </button>
         </div>
 
         {/* CORS element: crossOrigin lets the analyser read the stream (spectrum) */}

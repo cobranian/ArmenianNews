@@ -2075,6 +2075,12 @@ html:lang(hy) .nav__brand {
   border-color: var(--apricot-ink);
   color: var(--on-apricot);
 }
+/* La bascule « Voir les 12 stations » n'a de sens que là où la rangée se
+   replie, sous 640px (voir plus bas). Au-dessus, les douze puces s'enveloppent
+   et se voient toutes : un bouton pour les révéler y mentirait. */
+.radio__stations-toggle {
+  display: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .radio__play.is-playing,
@@ -2100,6 +2106,21 @@ html:lang(hy) .nav__brand {
     border-top: 1px solid var(--line);
   }
   .radio__clock { margin-left: 0; }
+  /* --- LES DOUZE STATIONS SOUS 640px ---
+     Repliée, la rangée est une ligne qui défile — deux stations visibles sur
+     douze à 360px, trois à 560px, et `scrollbar-width: none` fait qu'aucun
+     indice ne dit que les autres existent. C'est l'état d'origine, gardé tel
+     quel : ce n'est pas lui le remède, c'est lui le symptôme, et le remède est
+     de pouvoir en sortir.
+
+     Dépliée (`is-open`), la règle de BASE reprend la main — `flex-wrap: wrap`,
+     plus de débordement — c'est-à-dire exactement la mise en page que le site
+     sert déjà partout au-dessus de 640px. Rien n'est dessiné de neuf ici : on
+     rend atteignable ce qui existe.
+
+     La borne est la MÊME que celle du tambour des sources, et ce n'est pas une
+     coïncidence à défaire : c'est la largeur à laquelle les deux mises en page
+     de cette console cessent de tenir. */
   .radio__stations {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -2109,6 +2130,31 @@ html:lang(hy) .nav__brand {
     scrollbar-width: none;
   }
   .radio__stations::-webkit-scrollbar { display: none; }
+  .radio__stations.is-open {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+  }
+  /* La bascule n'existe que là où la rangée se replie. Au-dessus de 640px les
+     douze puces se voient déjà : un bouton pour « tout voir » y mentirait. */
+  .radio__stations-toggle {
+    display: block;
+    margin: 10px auto 0;
+    padding: 6px 4px;
+    background: none;
+    border: 0;
+    font-family: var(--font-mono);
+    font-size-adjust: var(--fsa-util);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--apricot-ink);
+    cursor: pointer;
+  }
+  .radio__stations-toggle:focus-visible {
+    outline: 2px solid var(--line-apricot);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
 }
 
 /* ============================================================
