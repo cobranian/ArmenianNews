@@ -138,9 +138,15 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
             {item.sub && <span className="lb__net">{item.sub}</span>}
             <span className="lb__title">{item.title}</span>
           </p>
-          <a className="lb__out" href={item.href} rel="noopener noreferrer">
-            {item.cta} <span aria-hidden="true">→</span>
-          </a>
+          {/* Un item sans `href` n'a pas de sortie : c'est le cas de la photo
+              épinglée de Don Narek, qui est le portrait du mur et non une
+              publication à aller lire (voir Social.jsx). La légende reste seule
+              — .lb__meta est un flex, elle occupe simplement toute la ligne. */}
+          {item.href && (
+            <a className="lb__out" href={item.href} rel="noopener noreferrer">
+              {item.cta} <span aria-hidden="true">→</span>
+            </a>
+          )}
         </div>
       </div>
 

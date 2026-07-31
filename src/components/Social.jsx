@@ -62,6 +62,12 @@ const igImg = Object.fromEntries(
 )
 const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || null
 
+/* L'id de la photo de Don Narek lui-même, épinglée en tête du mur Facebook.
+   Même valeur que `PINNED_ID` dans scripts/fb-scrape.mjs — les deux fichiers ne
+   peuvent pas se partager la constante (l'un est un module de build Node, l'autre
+   du JSX de navigateur), d'où le rappel de part et d'autre. */
+const FB_PINNED_ID = 'dn-narek'
+
 /* The expand glyph that wakes on hover — the plate's "click to enlarge" cue,
    and the textual "Agrandir" in the body carries the same intent for touch. */
 function ZoomBadge() {
@@ -228,17 +234,26 @@ export function Social() {
   }, [])
 
   // The lightbox item for a Facebook post — its enlarged view plus the way out.
+  //
+  // Sauf pour la photo épinglée : c'est le portrait de Don Narek lui-même, la
+  // signature du mur, pas une publication à aller lire. Elle part donc SANS
+  // `href`, et la lightbox n'affiche alors aucun bouton (voir Lightbox.jsx) —
+  // toutes les autres cartes gardent le leur. L'id `dn-narek` est stable par
+  // construction (`PINNED_ID` dans scripts/fb-scrape.mjs) : il est tenu hors de
+  // la numérotation `dn-NN` précisément pour rester reconnaissable d'une
+  // récolte à l'autre.
   const fbItems = useMemo(
     () =>
       fbPosts.map((p) => {
         const seed = hash(p.id || p.url || fb.page)
         const theme = THEMES[seed % THEMES.length]
+        const pinned = p.id === FB_PINNED_ID
         return {
           img: p.img,
           alt: p.author || fb.page,
           title: p.author || fb.page,
           sub: '',
-          href: p.url,
+          href: pinned ? null : p.url,
           cta: t('fb.view'),
           seed,
           c1: theme.c1,
