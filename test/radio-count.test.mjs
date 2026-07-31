@@ -80,3 +80,23 @@ test('toutes les cartes de liens annoncent le même nombre', () => {
     }
   }
 })
+
+// Les deux textes de la page /radio annoncent eux aussi le nombre de stations,
+// et `t()` ne sait toujours pas interpoler. Meme mode d'echec que radio.subtitle,
+// sur deux cles de plus : une treizieme station ferait mentir huit textes au
+// lieu de quatre. On lit i18n.jsx comme du texte, comme le reste du fichier.
+test('les textes de la page /radio annoncent le meme nombre', () => {
+  const src = read('src/i18n.jsx')
+  for (const cle of ['radio.page.intro', 'radio.page.list']) {
+    const trouves = [...src.matchAll(new RegExp(`'${cle}':\\s*\n?\\s*'([^']*)'`, 'g'))].map(
+      (m) => m[1],
+    )
+    assert.equal(trouves.length, ALL_LANGS.length, `${ALL_LANGS.length} « ${cle} » attendus`)
+    ALL_LANGS.forEach((lang, i) => {
+      assert.ok(
+        trouves[i].includes(NOMBRES[lang]) || trouves[i].includes(NOMBRES[lang].toLowerCase()),
+        `${cle} (${lang}) devrait annoncer « ${NOMBRES[lang]} » : ${trouves[i]}`,
+      )
+    })
+  }
+})

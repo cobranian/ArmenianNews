@@ -180,6 +180,29 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+
+    // Page /radio
+    'radio.page.h1': 'Radios arméniennes en direct',
+    'radio.page.intro':
+      'Douze radios arméniennes en flux continu, réunies sur une seule page : les stations publiques d’Erevan, les antennes indépendantes et celles de la diaspora. Aucune inscription, rien à installer — le son démarre au clic et suit la bascule jour / nuit du site. Les flux sont ceux des stations elles-mêmes ; ArménieInfo n’héberge ni ne réencode aucun signal.',
+    'radio.page.list': 'Les douze stations',
+    'radio.page.city': 'Ville',
+    'radio.page.genre': 'Genre',
+    'radio.page.lang': 'Langue d’antenne',
+    'radio.page.fm': 'FM',
+    'radio.page.bitrate': 'Débit',
+    'radio.page.source': 'Source',
+    'radio.page.home': 'Retour à l’accueil',
+    'radio.genre.culture': 'Culture',
+    'radio.genre.general': 'Généraliste',
+    'radio.genre.jazz': 'Jazz',
+    'radio.genre.kids': 'Enfants',
+    'radio.genre.music': 'Musique',
+    'radio.genre.news': 'Actualité',
+    'radio.genre.religious': 'Religieux',
+    'radio.genre.university': 'Universitaire',
+    'radio.genre.youth': 'Jeunesse',
+    'radio.page.lang.hy': 'Arménien',
   },
   en: {
     // La marque suit le domaine (.org = Armenia News), pas la langue — voir
@@ -343,6 +366,29 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+
+    // Page /radio
+    'radio.page.h1': 'Armenian radio online',
+    'radio.page.intro':
+      'Twelve Armenian stations streaming live on one page: the public networks of Yerevan, the independent broadcasters and the diaspora’s own. No sign-up, nothing to install — sound starts on click and follows the site’s day / night switch. The streams are the stations’ own; Armenia News neither hosts nor re-encodes any signal.',
+    'radio.page.list': 'The twelve stations',
+    'radio.page.city': 'City',
+    'radio.page.genre': 'Format',
+    'radio.page.lang': 'On-air language',
+    'radio.page.fm': 'FM',
+    'radio.page.bitrate': 'Bitrate',
+    'radio.page.source': 'Source',
+    'radio.page.home': 'Back to the home page',
+    'radio.genre.culture': 'Culture',
+    'radio.genre.general': 'General',
+    'radio.genre.jazz': 'Jazz',
+    'radio.genre.kids': 'Kids',
+    'radio.genre.music': 'Music',
+    'radio.genre.news': 'News',
+    'radio.genre.religious': 'Religious',
+    'radio.genre.university': 'University',
+    'radio.genre.youth': 'Youth',
+    'radio.page.lang.hy': 'Armenian',
   },
   hy: {
     // « Արմենիա Ին֖ո » — la seule langue dont la marque affichée s'écarte du
@@ -530,6 +576,30 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+
+    // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
+    // task-5-report.md).
+    'radio.page.h1': 'Հայկական ռադիո ուղիղ եթերում',
+    'radio.page.intro':
+      'Տասներկու հայկական ռադիոկայաններ՝ ուղիղ հեռարձակմամբ մեկ էջում. Երևանի հանրային ցանցերը, անկախ հեռարձակողները և սփյուռքի իրենը։ Ոչ մի գրանցում, ոչինչ տեղադրելու կարիք չկա. ձայնը սկսվում է սեղմումով և հետևում է կայքի ցերեկ / գիշեր անջատիչին։ Հոսքերը կայանների սեփականն են. Armenia News-ը չի հյուրընկալում և չի վերակոդավորում որևէ ազդանշան։',
+    'radio.page.list': 'Տասներկու ռադիոկայանները',
+    'radio.page.city': 'Քաղաք',
+    'radio.page.genre': 'Ժանր',
+    'radio.page.lang': 'Եթերի լեզուն',
+    'radio.page.fm': 'FM',
+    'radio.page.bitrate': 'Հոսքի արագություն',
+    'radio.page.source': 'Աղբյուր',
+    'radio.page.home': 'Վերադառնալ գլխավոր էջ',
+    'radio.genre.culture': 'Մշակույթ',
+    'radio.genre.general': 'Ընդհանուր',
+    'radio.genre.jazz': 'Ջազ',
+    'radio.genre.kids': 'Մանկական',
+    'radio.genre.music': 'Երաժշտություն',
+    'radio.genre.news': 'Լուրեր',
+    'radio.genre.religious': 'Կրոնական',
+    'radio.genre.university': 'Համալսարանական',
+    'radio.genre.youth': 'Երիտասարդական',
+    'radio.page.lang.hy': 'Հայերեն',
   },
   ru: {
     // Forme latine délibérée : la marque suit le domaine (.org = Armenia
@@ -692,6 +762,30 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
+
+    // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
+    // task-5-report.md).
+    'radio.page.h1': 'Армянское радио онлайн',
+    'radio.page.intro':
+      'Двенадцать армянских радиостанций в прямом эфире на одной странице: общественные сети Еревана, независимые вещатели и станции диаспоры. Никакой регистрации, ничего устанавливать не нужно — звук начинается по клику и следует дневному / ночному переключателю сайта. Потоки принадлежат самим станциям; Armenia News не хостит и не перекодирует ни один сигнал.',
+    'radio.page.list': 'Двенадцать радиостанций',
+    'radio.page.city': 'Город',
+    'radio.page.genre': 'Жанр',
+    'radio.page.lang': 'Язык эфира',
+    'radio.page.fm': 'FM',
+    'radio.page.bitrate': 'Битрейт',
+    'radio.page.source': 'Источник',
+    'radio.page.home': 'Вернуться на главную',
+    'radio.genre.culture': 'Культура',
+    'radio.genre.general': 'Общее',
+    'radio.genre.jazz': 'Джаз',
+    'radio.genre.kids': 'Детское',
+    'radio.genre.music': 'Музыка',
+    'radio.genre.news': 'Новости',
+    'radio.genre.religious': 'Религиозное',
+    'radio.genre.university': 'Университетское',
+    'radio.genre.youth': 'Молодёжное',
+    'radio.page.lang.hy': 'Армянский',
   },
 }
 

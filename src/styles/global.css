@@ -1874,6 +1874,91 @@ html:lang(hy) .nav__brand {
 }
 
 /* ============================================================
+   Vue /radio — page complète (titre, intro, fiches de station).
+   Complète l'accueil : le lecteur (.radio-section, ci-dessus) est réutilisé
+   tel quel, cette page n'ajoute que ce qui l'entoure.
+   ============================================================ */
+.viewpage {
+  padding: clamp(48px, 8vw, 88px) 0 0;
+}
+.viewpage__title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  color: var(--text);
+  margin: 0 0 18px;
+  letter-spacing: calc(-0.025em * var(--track-scale));
+}
+.viewpage__intro {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-style: italic;
+  font-size: 1.14rem;
+  color: var(--text-soft);
+  max-width: 68ch;
+  margin: 0;
+}
+.viewpage__back {
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  list-style: none;
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  padding: 0;
+}
+.stations__item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px 22px;
+}
+.stations__name {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+.stations__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+.stations__facts > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.stations__facts > div:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.stations__facts dt {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0;
+}
+.stations__facts dd {
+  font-size: 0.86rem;
+  color: var(--text-soft);
+  margin: 0;
+  text-align: right;
+}
+
+/* ============================================================
    Social — Facebook + Instagram
    ============================================================ */
 /* --- Don Narek post card — picture + author, no Facebook chrome --- */
