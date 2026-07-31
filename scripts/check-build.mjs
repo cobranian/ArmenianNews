@@ -10,6 +10,7 @@ import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang } from '../sites.config.js'
+import { agendaGuardChecks } from './lib/agenda-guard.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
@@ -19,12 +20,33 @@ let bad = 0
 // savoir ce que l'accueil DOIT porter : sans cela, un agenda vide — état
 // dégradé légitime, que le plugin tolère explicitement — ferait échouer le
 // contrôle et bloquerait un déploiement par ailleurs sain.
-const agendaAttendu = await (async () => {
+//
+// Depuis la vue /agenda/ (Task 11), ce contrôle distingue DEUX choses qui se
+// recoupaient tant que seul l'accueil existait :
+//   - le graphe du PLUGIN (marqué data-ld="agenda") : il ne doit vivre QUE sur
+//     l'accueil — /agenda/ pose le sien (le composant, filtré aux événements
+//     à venir affichés), et /radio/ n'en montre aucun.
+//   - la présence d'`Event` EN GÉNÉRAL : légitime sur l'accueil (via le
+//     plugin) ET sur /agenda/ (via le composant), jamais sur /radio/.
+// Un simple `includes('"@type":"Event"')` ne peut pas voir cette différence :
+// il confondrait le graphe du plugin recopié à tort sur une vue avec le
+// balisage propre du composant Agenda. D'où la lecture de l'ATTRIBUT
+// (AGENDA_LD_ATTR/AGENDA_LD_VALUE, scripts/lib/agenda-ld.mjs) pour le premier
+// point, et un second calcul — les mêmes événements, mais restreints à ceux
+// À VENIR — pour savoir si /agenda/ DOIT afficher au moins un Event.
+const { agendaAttendu, agendaAVenir } = await (async () => {
   try {
     const a = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf-8'))
-    return [...(a.switzerland || []), ...(a.world || [])].some((e) => e.title && e.date && e.url)
+    const tous = [...(a.switzerland || []), ...(a.world || [])].filter(
+      (e) => e.title && e.date && e.url,
+    )
+    const maintenant = Date.now()
+    return {
+      agendaAttendu: tous.length > 0,
+      agendaAVenir: tous.some((e) => new Date(e.date).getTime() >= maintenant),
+    }
   } catch {
-    return false
+    return { agendaAttendu: false, agendaAVenir: false }
   }
 })()
 
@@ -69,19 +91,20 @@ for (const site of Object.values(SITES)) {
         ['x-default', html.includes('hreflang="x-default"')],
         ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
         ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
-        // Le @graph Event de l'agenda est injecté hors des sentinelles, donc
-        // dérivé avec le reste du HTML : sans retrait explicite, les pages de
-        // vue balisent 159 événements datés qu'elles n'affichent nulle part.
-        // Google exige que les données structurées décrivent le contenu VISIBLE,
-        // et sanctionne à l'échelle du DOMAINE. Aucun lint, aucun test unitaire
-        // ne lit le ld+json du build : ce contrôle est le seul à voir le
-        // fichier réellement déployé. Voir scripts/lib/agenda-ld.mjs.
-        [
-          view === 'home' ? 'le graphe Event de l’agenda est là' : 'aucun Event hors de l’accueil',
-          view === 'home'
-            ? !agendaAttendu || html.includes('"@type":"Event"')
-            : !html.includes('"@type":"Event"'),
-        ],
+        // Le @graph du PLUGIN est injecté hors des sentinelles, donc dérivé
+        // avec le reste du HTML par défaut : sans retrait explicite (voir
+        // scripts/lib/agenda-ld.mjs), il se recopierait dans toutes les pages
+        // dérivées. Il ne doit vivre QUE sur l'accueil — /agenda/ pose le sien
+        // (le composant, exact et filtré) et un second graphe y dupliquerait
+        // les entités ; /radio/ n'affiche aucun événement. La garde porte sur
+        // l'ATTRIBUT du plugin, pas sur la chaîne "@type":"Event" : cette
+        // dernière est légitime sur /agenda/ (posée par le composant) et ne
+        // permettrait donc pas de distinguer « le bon graphe » du « graphe du
+        // plugin recopié à tort ». Logique isolée dans
+        // scripts/lib/agenda-guard.mjs, testée par test/agenda-guard.test.mjs
+        // — aucun autre lint ni test unitaire ne lit le ld+json du build, donc
+        // ce contrôle est le seul à voir le fichier réellement déployé.
+        ...agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }),
         // GA4 : même piège que le beacon, et il a été réel. L'ID était en dur
         // dans index.html et ga-init.js — deux fichiers partagés — donc le .org
         // se mesurait dans la propriété du .ch. Un `includes` sur un ID unique
