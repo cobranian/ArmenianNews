@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { applyMeta } from './scripts/lib/site-meta.mjs'
+import { AGENDA_LD_ATTR, AGENDA_LD_VALUE } from './scripts/lib/agenda-ld.mjs'
 import { primaryLang } from './sites.config.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -33,6 +34,11 @@ function siteMeta() {
 // as static JSON-LD so crawlers see the events without executing JS, and it is
 // refreshed on every hourly build (agenda.json is current at build time).
 // The events are third-party (armenopole), so we do NOT claim an organizer.
+//
+// Le bloc est MARQUÉ (data-ld="agenda"). Il est injecté hors des sentinelles
+// SITE_META, donc scripts/build-sites.mjs le recopie dans toutes les pages
+// dérivées : c'est ce marqueur qui lui permet de le retirer des pages de vue,
+// où l'agenda n'est pas rendu. Voir scripts/lib/agenda-ld.mjs.
 function agendaEventsJsonLd() {
   return {
     name: 'agenda-events-jsonld',
@@ -64,7 +70,7 @@ function agendaEventsJsonLd() {
       return [
         {
           tag: 'script',
-          attrs: { type: 'application/ld+json' },
+          attrs: { type: 'application/ld+json', [AGENDA_LD_ATTR]: AGENDA_LD_VALUE },
           // Escape "<" so a scraped title containing "</script>" can't break out.
           children: JSON.stringify(jsonld).replace(/</g, '\\u003c'),
           injectTo: 'head',

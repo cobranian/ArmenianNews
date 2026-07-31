@@ -14,126 +14,154 @@ import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang } from '../si
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
 
+// Le plugin `agendaEventsJsonLd` (vite.config.js) n'injecte son @graph que s'il
+// a des événements à baliser. On lit le même fichier avec le même filtre pour
+// savoir ce que l'accueil DOIT porter : sans cela, un agenda vide — état
+// dégradé légitime, que le plugin tolère explicitement — ferait échouer le
+// contrôle et bloquerait un déploiement par ailleurs sain.
+const agendaAttendu = await (async () => {
+  try {
+    const a = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf-8'))
+    return [...(a.switzerland || []), ...(a.world || [])].some((e) => e.title && e.date && e.url)
+  } catch {
+    return false
+  }
+})()
+
 for (const site of Object.values(SITES)) {
   for (const page of site.pages) {
     for (const view of ALL_VIEWS) {
-    const rel = path.join('dist', site.id, pathFor(page.lang, view).replace(/^\//, ''), 'index.html')
-    let html
-    try {
-      html = await readFile(path.join(root, rel), 'utf-8')
-    } catch {
-      console.error(`✗ ${rel} — absent`)
-      bad++
-      continue
-    }
+      const dir = pathFor(page.lang, view).replace(/^\//, '')
+      const rel = path.join('dist', site.id, dir, 'index.html')
+      let html
+      try {
+        html = await readFile(path.join(root, rel), 'utf-8')
+      } catch {
+        console.error(`✗ ${rel} — absent`)
+        bad++
+        continue
+      }
 
-    // Compter, pas seulement constater la présence. Un `includes` ne distingue
-    // pas « présent une fois » de « présent trois fois » — or le mode d'échec
-    // qui compte ici est justement la DUPLICATION : si replaceMeta cessait
-    // d'être idempotent, chaque page accumulerait plusieurs blocs <head>, donc
-    // plusieurs canonical et plusieurs jeux de hreflang. C'est pire que rien :
-    // Google n'arbitre pas, il écarte.
-    const count = (re) => (html.match(re) || []).length
+      // Compter, pas seulement constater la présence. Un `includes` ne distingue
+      // pas « présent une fois » de « présent trois fois » — or le mode d'échec
+      // qui compte ici est justement la DUPLICATION : si replaceMeta cessait
+      // d'être idempotent, chaque page accumulerait plusieurs blocs <head>, donc
+      // plusieurs canonical et plusieurs jeux de hreflang. C'est pire que rien :
+      // Google n'arbitre pas, il écarte.
+      const count = (re) => (html.match(re) || []).length
 
-    const checks = [
-      [`<html lang="${page.lang}">`, html.includes(`<html lang="${page.lang}"`)],
-      ['un seul <html>', count(/<html\s/g) === 1],
-      [
-        `canonical ${urlFor(page.lang, view)}`,
-        html.includes(`rel="canonical" href="${urlFor(page.lang, view)}" />`),
-      ],
-      ['un seul canonical', count(/rel="canonical"/g) === 1],
-      [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
-      ['un seul og:site_name', count(/og:site_name"/g) === 1],
-      ['un seul <title>', count(/<title>/g) === 1],
-      [
-        'les 4 hreflang, réciproques ET de la bonne vue',
-        ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${urlFor(l, view)}"`)),
-      ],
-      ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
-      ['x-default', html.includes('hreflang="x-default"')],
-      ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
-      ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
-      // GA4 : même piège que le beacon, et il a été réel. L'ID était en dur
-      // dans index.html et ga-init.js — deux fichiers partagés — donc le .org
-      // se mesurait dans la propriété du .ch. Un `includes` sur un ID unique
-      // aurait validé cet état exact. On compte donc DEUX occurrences (l'une
-      // dans data-ga-id, l'autre dans l'URL de gtag.js) et on interdit
-      // explicitement l'ID du voisin.
-      [
-        site.gaMeasurementId ? `GA4 ${site.id} (${site.gaMeasurementId})` : 'sans GA4',
-        site.gaMeasurementId
-          ? count(new RegExp(site.gaMeasurementId, 'g')) === 2
-          : !html.includes('googletagmanager.com'),
-      ],
-      [
-        'aucun ID GA4 étranger',
-        Object.values(SITES)
-          .filter((s) => s.id !== site.id && s.gaMeasurementId)
-          .every((s) => !html.includes(s.gaMeasurementId)),
-      ],
-      // L'ordre des deux balises est ce qui rend le Consent Mode effectif :
-      // ga-init.js (synchrone) doit précéder gtag.js (async), sinon le premier
-      // hit part sans état de consentement. Inversées, les deux balises restent
-      // présentes et le contrôle ci-dessus passerait sans rien voir.
-      [
-        'ga-init.js avant gtag.js',
-        !site.gaMeasurementId ||
-          (html.indexOf('/ga-init.js') !== -1 &&
-            html.indexOf('/ga-init.js') < html.indexOf('googletagmanager.com/gtag/js')),
-      ],
-      // Le beacon Cloudflare porte le jeton de SA vitrine, et rien d'autre.
-      // Le mode d'échec visé n'est pas « absent » mais « celui du voisin » :
-      // une page du .org portant le jeton du .ch se mesure sans erreur, dans le
-      // mauvais tableau de bord, et rien ne le signale.
-      [
-        site.cfBeaconToken ? `beacon ${site.id} (${site.cfBeaconToken.slice(0, 8)}…)` : 'sans beacon',
-        site.cfBeaconToken
-          ? count(new RegExp(site.cfBeaconToken, 'g')) === 1
-          : !html.includes('static.cloudflareinsights.com'),
-      ],
-      [
-        'aucun jeton beacon étranger',
-        Object.values(SITES)
-          .filter((s) => s.id !== site.id && s.cfBeaconToken)
-          .every((s) => !html.includes(s.cfBeaconToken)),
-      ],
-      // Même mode d'échec pour la vérification Search Console : une page portant
-      // le jeton de l'autre vitrine se déploie sans erreur et ne valide jamais.
-      [
-        site.gscToken ? `vérification GSC ${site.id}` : 'sans balise GSC',
-        site.gscToken
-          ? count(new RegExp(`content="${site.gscToken}"`, 'g')) === 1
-          : !html.includes('google-site-verification'),
-      ],
-      [
-        'aucun jeton GSC étranger',
-        Object.values(SITES)
-          .filter((s) => s.id !== site.id && s.gscToken)
-          .every((s) => !html.includes(s.gscToken)),
-      ],
-      // Même famille de piège : la carte de partage porte la marque ET la
-      // langue du domaine. Une page du .org annonçant la carte du .ch se
-      // déploie sans erreur et sert un aperçu français sous un titre anglais.
-      [
-        `og:image ${site.ogImage}`,
-        html.includes(`content="${site.host}${site.ogImage}"`),
-      ],
-      [
-        'aucune carte de partage étrangère',
-        Object.values(SITES)
-          .filter((s) => s.id !== site.id)
-          .every((s) => !html.includes(s.ogImage)),
-      ],
-    ]
+      const checks = [
+        [`<html lang="${page.lang}">`, html.includes(`<html lang="${page.lang}"`)],
+        ['un seul <html>', count(/<html\s/g) === 1],
+        [
+          `canonical ${urlFor(page.lang, view)}`,
+          html.includes(`rel="canonical" href="${urlFor(page.lang, view)}" />`),
+        ],
+        ['un seul canonical', count(/rel="canonical"/g) === 1],
+        [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
+        ['un seul og:site_name', count(/og:site_name"/g) === 1],
+        ['un seul <title>', count(/<title>/g) === 1],
+        [
+          'les 4 hreflang, réciproques ET de la bonne vue',
+          ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${urlFor(l, view)}"`)),
+        ],
+        ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
+        ['x-default', html.includes('hreflang="x-default"')],
+        ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
+        ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
+        // Le @graph Event de l'agenda est injecté hors des sentinelles, donc
+        // dérivé avec le reste du HTML : sans retrait explicite, les pages de
+        // vue balisent 159 événements datés qu'elles n'affichent nulle part.
+        // Google exige que les données structurées décrivent le contenu VISIBLE,
+        // et sanctionne à l'échelle du DOMAINE. Aucun lint, aucun test unitaire
+        // ne lit le ld+json du build : ce contrôle est le seul à voir le
+        // fichier réellement déployé. Voir scripts/lib/agenda-ld.mjs.
+        [
+          view === 'home' ? 'le graphe Event de l’agenda est là' : 'aucun Event hors de l’accueil',
+          view === 'home'
+            ? !agendaAttendu || html.includes('"@type":"Event"')
+            : !html.includes('"@type":"Event"'),
+        ],
+        // GA4 : même piège que le beacon, et il a été réel. L'ID était en dur
+        // dans index.html et ga-init.js — deux fichiers partagés — donc le .org
+        // se mesurait dans la propriété du .ch. Un `includes` sur un ID unique
+        // aurait validé cet état exact. On compte donc DEUX occurrences (l'une
+        // dans data-ga-id, l'autre dans l'URL de gtag.js) et on interdit
+        // explicitement l'ID du voisin.
+        [
+          site.gaMeasurementId ? `GA4 ${site.id} (${site.gaMeasurementId})` : 'sans GA4',
+          site.gaMeasurementId
+            ? count(new RegExp(site.gaMeasurementId, 'g')) === 2
+            : !html.includes('googletagmanager.com'),
+        ],
+        [
+          'aucun ID GA4 étranger',
+          Object.values(SITES)
+            .filter((s) => s.id !== site.id && s.gaMeasurementId)
+            .every((s) => !html.includes(s.gaMeasurementId)),
+        ],
+        // L'ordre des deux balises est ce qui rend le Consent Mode effectif :
+        // ga-init.js (synchrone) doit précéder gtag.js (async), sinon le premier
+        // hit part sans état de consentement. Inversées, les deux balises restent
+        // présentes et le contrôle ci-dessus passerait sans rien voir.
+        [
+          'ga-init.js avant gtag.js',
+          !site.gaMeasurementId ||
+            (html.indexOf('/ga-init.js') !== -1 &&
+              html.indexOf('/ga-init.js') < html.indexOf('googletagmanager.com/gtag/js')),
+        ],
+        // Le beacon Cloudflare porte le jeton de SA vitrine, et rien d'autre.
+        // Le mode d'échec visé n'est pas « absent » mais « celui du voisin » :
+        // une page du .org portant le jeton du .ch se mesure sans erreur, dans le
+        // mauvais tableau de bord, et rien ne le signale.
+        [
+          site.cfBeaconToken ? `beacon ${site.id} (${site.cfBeaconToken.slice(0, 8)}…)` : 'sans beacon',
+          site.cfBeaconToken
+            ? count(new RegExp(site.cfBeaconToken, 'g')) === 1
+            : !html.includes('static.cloudflareinsights.com'),
+        ],
+        [
+          'aucun jeton beacon étranger',
+          Object.values(SITES)
+            .filter((s) => s.id !== site.id && s.cfBeaconToken)
+            .every((s) => !html.includes(s.cfBeaconToken)),
+        ],
+        // Même mode d'échec pour la vérification Search Console : une page portant
+        // le jeton de l'autre vitrine se déploie sans erreur et ne valide jamais.
+        [
+          site.gscToken ? `vérification GSC ${site.id}` : 'sans balise GSC',
+          site.gscToken
+            ? count(new RegExp(`content="${site.gscToken}"`, 'g')) === 1
+            : !html.includes('google-site-verification'),
+        ],
+        [
+          'aucun jeton GSC étranger',
+          Object.values(SITES)
+            .filter((s) => s.id !== site.id && s.gscToken)
+            .every((s) => !html.includes(s.gscToken)),
+        ],
+        // Même famille de piège : la carte de partage porte la marque ET la
+        // langue du domaine. Une page du .org annonçant la carte du .ch se
+        // déploie sans erreur et sert un aperçu français sous un titre anglais.
+        [
+          `og:image ${site.ogImage}`,
+          html.includes(`content="${site.host}${site.ogImage}"`),
+        ],
+        [
+          'aucune carte de partage étrangère',
+          Object.values(SITES)
+            .filter((s) => s.id !== site.id)
+            .every((s) => !html.includes(s.ogImage)),
+        ],
+      ]
 
-    const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
-    if (failed.length) {
-      console.error(`✗ ${rel}\n    ${failed.join('\n    ')}`)
-      bad += failed.length
-    } else {
-      console.log(`✓ ${rel} (${page.lang}, ${view})`)
-    }
+      const failed = checks.filter(([, ok]) => !ok).map(([name]) => name)
+      if (failed.length) {
+        console.error(`✗ ${rel}\n    ${failed.join('\n    ')}`)
+        bad += failed.length
+      } else {
+        console.log(`✓ ${rel} (${page.lang}, ${view})`)
+      }
     }
   }
 }

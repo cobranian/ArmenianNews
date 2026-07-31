@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url'
 // C'est la raison pour laquelle la liste a été déplacée à Task 1.
 import { SITES, ALL_LANGS, ALL_VIEWS, LANGS, pathFor } from '../sites.config.js'
 import { replaceMeta } from './lib/site-meta.mjs'
+import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -75,6 +76,10 @@ function viteBuild(siteId) {
 // Deux dimensions désormais — la langue ET la vue. Une seule page est produite
 // par Vite (la racine du site, dans sa langue de tête) ; toutes les autres sont
 // dérivées du HTML BÂTI, qui seul porte les hachages d'assets.
+//
+// Une page de vue perd en plus le @graph Event de l'agenda : il vit hors des
+// sentinelles, donc la copie l'emporterait sur une page qui n'affiche aucun
+// événement. Voir scripts/lib/agenda-ld.mjs.
 async function derivePages(site) {
   const dist = path.join(root, 'dist', site.id)
   const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
@@ -85,9 +90,10 @@ async function derivePages(site) {
       if (rel === '/') continue // celle-là sort de Vite
       const dir = path.join(dist, rel.replace(/^\/|\/$/g, ''))
       await mkdir(dir, { recursive: true })
-      const html = replaceMeta(built, { siteId: site.id, lang: page.lang, view })
+      let html = replaceMeta(built, { siteId: site.id, lang: page.lang, view })
+      if (view !== 'home') html = stripAgendaLd(html)
       await writeFile(path.join(dir, 'index.html'), html, 'utf-8')
-      console.log(`  → dist/${site.id}${rel}/index.html (${page.lang}, ${view})`)
+      console.log(`  → dist/${site.id}${rel}index.html (${page.lang}, ${view})`)
     }
   }
 }
