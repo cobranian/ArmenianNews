@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url'
 // LANGS vient de sites.config.js, PAS de src/i18n.jsx : Node ne sait pas
 // parser .jsx (ERR_UNKNOWN_FILE_EXTENSION), et ce script tourne sous Node.
 // C'est la raison pour laquelle la liste a été déplacée à Task 1.
-import { SITES, ALL_LANGS, LANGS } from '../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, LANGS, pathFor } from '../sites.config.js'
 import { replaceMeta } from './lib/site-meta.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 
@@ -70,24 +70,25 @@ function viteBuild(siteId) {
   }
 }
 
-// Les pages non-racine d'un site : même bundle, métadonnées régénérées.
+// Les pages autres que la racine : même bundle, métadonnées régénérées.
 //
-// On repart du HTML BÂTI (dist/<id>/index.html), pas du HTML source : lui seul
-// porte les hachages d'assets posés par Vite. C'est pour cela que le bloc de
-// métadonnées est encadré de sentinelles — replaceMeta échange ce qu'il y a
-// entre elles sans toucher au reste. Rebâtir une fois par page coûterait deux
-// builds Vite de plus pour un résultat identique.
+// Deux dimensions désormais — la langue ET la vue. Une seule page est produite
+// par Vite (la racine du site, dans sa langue de tête) ; toutes les autres sont
+// dérivées du HTML BÂTI, qui seul porte les hachages d'assets.
 async function derivePages(site) {
   const dist = path.join(root, 'dist', site.id)
   const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
 
   for (const page of site.pages) {
-    if (page.path === '/') continue
-    const dir = path.join(dist, page.path.replace(/^\/|\/$/g, ''))
-    await mkdir(dir, { recursive: true })
-    const html = replaceMeta(built, { siteId: site.id, lang: page.lang })
-    await writeFile(path.join(dir, 'index.html'), html, 'utf-8')
-    console.log(`  → dist/${site.id}${page.path}index.html (${page.lang})`)
+    for (const view of ALL_VIEWS) {
+      const rel = pathFor(page.lang, view)
+      if (rel === '/') continue // celle-là sort de Vite
+      const dir = path.join(dist, rel.replace(/^\/|\/$/g, ''))
+      await mkdir(dir, { recursive: true })
+      const html = replaceMeta(built, { siteId: site.id, lang: page.lang, view })
+      await writeFile(path.join(dir, 'index.html'), html, 'utf-8')
+      console.log(`  → dist/${site.id}${rel}/index.html (${page.lang}, ${view})`)
+    }
   }
 }
 
