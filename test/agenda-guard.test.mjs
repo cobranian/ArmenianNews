@@ -10,6 +10,13 @@ const PLUGIN_GRAPH = `<script type="application/ld+json" ${AGENDA_LD_ATTR}="${AG
 const COMPONENT_GRAPH = `<script type="application/ld+json">{"itemListElement":[{"item":{"@type":"Event","name":"Concert"}}]}</script>`
 const NO_GRAPH = '<title>rien ici</title>'
 
+// Les deux stades du HTML de /agenda/ : ce que `npm run build` écrit (racine
+// React vide, ce que `npm run check` voit en CI) et ce que `npm run prerender`
+// en fait (racine remplie, ce que voit le poste local). Le balisage Event du
+// composant vit DANS la racine — il n'existe donc qu'au second stade.
+const AVANT_PRERENDU = `${NO_GRAPH}<div id="root"></div>`
+const prerendu = (dedans) => `${NO_GRAPH}<div id="root"><main>${dedans}</main></div>`
+
 const ok = (checks) => checks.every(([, v]) => v === true)
 const failed = (checks) => checks.filter(([, v]) => !v).map(([n]) => n)
 
@@ -30,7 +37,12 @@ test('accueil : un agenda vide n’exige ni graphe ni Event (etat degrade legiti
 
 test('agenda : le graphe du composant est attendu, celui du plugin doit etre absent', () => {
   assert.ok(
-    ok(agendaGuardChecks('agenda', COMPONENT_GRAPH, { agendaAttendu: true, agendaAVenir: true })),
+    ok(
+      agendaGuardChecks('agenda', prerendu(COMPONENT_GRAPH), {
+        agendaAttendu: true,
+        agendaAVenir: true,
+      }),
+    ),
     'un Event pose par le composant doit passer',
   )
 })
@@ -44,7 +56,42 @@ test('agenda : sans evenement a venir, l’absence d’Event est legitime', () =
   assert.ok(ok(agendaGuardChecks('agenda', NO_GRAPH, { agendaAttendu: true, agendaAVenir: false })))
 })
 
-test('agenda : un evenement a venir existe mais aucun Event n’est balise -> echec', () => {
+// Le defaut qui a bloque un deploiement : en CI, `check` passe AVANT
+// `prerender`, donc /agenda/ n'a encore que sa racine vide et pas un seul Event.
+// Exiger le balisage a ce stade fait echouer quatre pages saines.
+test('agenda, avant prerendu : la racine vide differe l’exigence d’Event', () => {
+  assert.ok(
+    ok(agendaGuardChecks('agenda', AVANT_PRERENDU, { agendaAttendu: true, agendaAVenir: true })),
+    'le stade « bati, pas encore cuit » doit passer',
+  )
+})
+
+// La preuve que le report ci-dessus n'a pas rendu la garde inatteignable : une
+// fois la page cuite, l'absence d'Event redevient un echec. Sans ce test, une
+// condition mal ecrite desarmerait le controle en silence.
+test('agenda, prerendu mais sans aucun Event -> echec (la garde peut toujours echouer)', () => {
+  const checks = agendaGuardChecks('agenda', prerendu('<h1>Agenda</h1>'), {
+    agendaAttendu: true,
+    agendaAVenir: true,
+  })
+  assert.deepEqual(failed(checks), ['des Event sont présents si l’agenda en a'])
+})
+
+// L'exigence d'Event est differee avant prerendu ; l'interdiction du graphe du
+// PLUGIN, elle, vaut aux deux stades — c'est elle qui porte la protection
+// d'origine, et ce defaut-la nait au build.
+test('agenda, avant prerendu : le graphe du plugin reste interdit', () => {
+  const checks = agendaGuardChecks('agenda', `${PLUGIN_GRAPH}<div id="root"></div>`, {
+    agendaAttendu: true,
+    agendaAVenir: true,
+  })
+  assert.deepEqual(failed(checks), ['le graphe du plugin est absent'])
+})
+
+// Le sens du test de stade : seule la racine vide EXACTE vaut « pas encore
+// prerendue ». Un HTML dont le conteneur aurait change de forme est traite
+// comme cuit, donc soumis a l'exigence — la garde se resserre, jamais l'inverse.
+test('agenda : un HTML sans racine reconnaissable est tenu pour prerendu', () => {
   const checks = agendaGuardChecks('agenda', NO_GRAPH, { agendaAttendu: true, agendaAVenir: true })
   assert.deepEqual(failed(checks), ['des Event sont présents si l’agenda en a'])
 })
@@ -53,4 +100,11 @@ test('radio : ni le graphe du plugin ni aucun Event ne doivent survivre', () => 
   assert.ok(ok(agendaGuardChecks('radio', NO_GRAPH, { agendaAttendu: true, agendaAVenir: true })))
   const avecPlugin = agendaGuardChecks('radio', PLUGIN_GRAPH, { agendaAttendu: true, agendaAVenir: true })
   assert.deepEqual(failed(avecPlugin), ['le graphe du plugin est absent', 'aucun Event sur /radio'])
+  // Le defaut d'origine (le @graph du plugin recopie sur /radio/) nait au
+  // build : il doit tomber des le stade CI, racine encore vide.
+  const enCi = agendaGuardChecks('radio', `${PLUGIN_GRAPH}<div id="root"></div>`, {
+    agendaAttendu: true,
+    agendaAVenir: true,
+  })
+  assert.deepEqual(failed(enCi), ['le graphe du plugin est absent', 'aucun Event sur /radio'])
 })

@@ -7,7 +7,8 @@
 //   Vue      | graphe du PLUGIN (data-ld="agenda") | Event en général
 //   ---------|--------------------------------------|-------------------
 //   home     | présent SI l'agenda a un événement    | idem
-//   agenda   | ABSENT (le composant pose le sien)    | présent SI un événement à venir
+//   agenda   | ABSENT (le composant pose le sien)    | présent SI un événement à venir,
+//            |                                        | ET SEULEMENT une fois la page prérendue
 //   radio    | absent                                 | aucun
 //
 // Le graphe du plugin et la présence d'Event ne sont PAS la même question :
@@ -15,10 +16,39 @@
 // simple `includes('"@type":"Event"')` ne peut pas, à lui seul, détecter un
 // graphe du PLUGIN recopié à tort sur cette vue — d'où le contrôle séparé sur
 // l'ATTRIBUT (AGENDA_LD_ATTR/AGENDA_LD_VALUE).
+//
+// LE PIÈGE DU STADE — invisible en local, il a bloqué un déploiement.
+// L'accueil tient ses Event du PLUGIN, donc du <head>, donc de `npm run build`.
+// La vue /agenda/ tient les siens du COMPOSANT React, donc de `<div id="root">`,
+// donc de `npm run prerender`. Or l'ordre des étapes n'est pas le même des deux
+// côtés : la CI fait build → check → prerender, le poste local build →
+// prerender → check. Exiger des Event sur /agenda/ sans regarder le stade fait
+// donc échouer `npm run check` en CI sur quatre pages parfaitement saines, et
+// passer en local sur les mêmes — un défaut qu'aucune vérification locale ne
+// peut voir. L'exigence est donc différée tant que la racine React est vide.
+//
+// L'autre moitié de la garde — « le graphe du plugin est absent » — reste
+// INCONDITIONNELLE : c'est elle qui porte la protection d'origine (159 Event
+// recopiés sur /radio/, une page qui n'en affiche aucun), et ce défaut-là naît
+// au build, pas au prérendu.
 import { AGENDA_LD_ATTR, AGENDA_LD_VALUE } from './agenda-ld.mjs'
 
 const hasPluginGraph = (html) => html.includes(`${AGENDA_LD_ATTR}="${AGENDA_LD_VALUE}"`)
 const hasEvent = (html) => html.includes('"@type":"Event"')
+
+// La signature EXACTE de la sortie de `npm run build` : la racine React vide,
+// que le prérendu remplace par le même conteneur rempli.
+//
+// Le sens du test compte plus que sa forme. Il reconnaît « pas encore
+// prérendue », pas « prérendue » : tout HTML qui ne porte pas cette signature
+// est traité comme cuit, donc SOUMIS à l'exigence d'Event. Écrite dans l'autre
+// sens — reconnaître la racine remplie — un simple changement de forme du
+// conteneur (un attribut ajouté au marqueur d'index.html) rendrait l'exigence
+// inatteignable : la garde cesserait de protéger sans qu'aucun contrôle ne
+// tombe. Ici le même changement la resserre. Une garde doit rater du côté où
+// elle crie.
+const RACINE_VIDE = /<div id="root"[^>]*>\s*<\/div>/
+const avantPrerendu = (html) => RACINE_VIDE.test(html)
 
 /**
  * @param {'home'|'agenda'|'radio'|string} view
@@ -29,7 +59,7 @@ const hasEvent = (html) => html.includes('"@type":"Event"')
  *                   (accueil) exige avant d'injecter son @graph.
  *   agendaAVenir  — au moins un de ces événements est À VENIR : ce que la
  *                   vue /agenda/ (composant, filtré) exige pour afficher un
- *                   Event.
+ *                   Event — une fois la page prérendue, voir ci-dessus.
  * @returns {[string, boolean][]} des paires [nom du contrôle, ok]
  */
 export function agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }) {
@@ -43,7 +73,7 @@ export function agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }) {
       view === 'radio'
         ? !hasEvent(html)
         : view === 'agenda'
-          ? !agendaAVenir || hasEvent(html)
+          ? !agendaAVenir || avantPrerendu(html) || hasEvent(html)
           : !agendaAttendu || hasEvent(html),
     ],
   ]
