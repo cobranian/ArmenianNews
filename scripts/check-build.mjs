@@ -1,7 +1,17 @@
 /**
  * Contrôle ce que le build a réellement produit.
  *
- *   npm run check          # après npm run build
+ *   npm run build && npm run check     # l'ordre de la CI, celui qui fait foi
+ *
+ * ATTENTION À L'ORDRE, il n'est pas le même des deux côtés et ça a déjà bloqué
+ * un déploiement. Le workflow horaire enchaîne `build` → **`check`** →
+ * `screenshot` → `prerender` → deploy : ce script y voit donc le HTML SORTI DU
+ * BUILD, racine React encore vide, sans une ligne de ce que rendent les
+ * composants. Au poste de travail on enchaîne naturellement `build` →
+ * `prerender` → `check`, et l'on juge alors un HTML déjà cuit. Toute
+ * vérification portant sur du contenu rendu par React doit donc regarder le
+ * stade (voir scripts/lib/agenda-guard.mjs) — sinon elle passe en local et
+ * échoue en CI, sur des pages parfaitement saines.
  *
  * Dérivé de sites.config.js : ajouter une page ou une langue étend
  * automatiquement le contrôle, sans toucher à ce fichier.
@@ -10,6 +20,7 @@ import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang } from '../sites.config.js'
+import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
 import { agendaGuardChecks } from './lib/agenda-guard.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -37,13 +48,13 @@ let bad = 0
 const { agendaAttendu, agendaAVenir } = await (async () => {
   try {
     const a = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf-8'))
-    const tous = [...(a.switzerland || []), ...(a.world || [])].filter(
-      (e) => e.title && e.date && e.url,
-    )
-    const maintenant = Date.now()
+    // Les deux filtres viennent de src/agendaEvents.js, comme le plugin et la
+    // vue : ce contrôle doit juger sur la liste que ces deux-là produisent, pas
+    // sur une troisième écrite ici et libre d'en diverger.
+    const tous = [...(a.switzerland || []), ...(a.world || [])]
     return {
-      agendaAttendu: tous.length > 0,
-      agendaAVenir: tous.some((e) => new Date(e.date).getTime() >= maintenant),
+      agendaAttendu: tous.filter(evenementComplet).length > 0,
+      agendaAVenir: evenementsAVenir(tous).length > 0,
     }
   } catch {
     return { agendaAttendu: false, agendaAVenir: false }

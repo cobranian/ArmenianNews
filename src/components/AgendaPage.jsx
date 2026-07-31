@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
 import { worldCountryKey, countryLabel, countryFlag } from '../worldPlace.js'
+import { evenementsAVenir } from '../agendaEvents.js'
 import { agendaJsonLd } from '../jsonld.js'
 import agenda from '../data/agenda.json'
 
@@ -14,16 +15,13 @@ export function AgendaPage() {
 
   const { total, parPays } = useMemo(() => {
     const tous = [...(agenda.switzerland || []), ...(agenda.world || [])]
-    // Dédoublonnage par URL : le même événement est recensé sur plusieurs pages
-    // pays chez armenopole. Puis on écarte le passé — une liste d'événements
-    // révolus est une page sans valeur, et son balisage serait fautif.
-    const vus = new Set()
-    const maintenant = Date.now()
-    const frais = tous.filter((ev) => {
-      if (vus.has(ev.url) || new Date(ev.date).getTime() < maintenant) return false
-      vus.add(ev.url)
-      return true
-    })
+    // Champs complets, dédoublonnage par URL, puis le passé écarté — le filtre
+    // vit dans src/agendaEvents.js parce que le plugin de l'accueil
+    // (vite.config.js) et `npm run check` doivent appliquer le MÊME. Le filtrer
+    // ici « à la main » est exactement ce qui avait laissé passer, sur cette
+    // page-ci, un événement sans date : rendu avec un <time> vide, compté dans
+    // le total, mais absent du balisage.
+    const frais = evenementsAVenir(tous)
     const groupes = new Map()
     for (const ev of frais) {
       const cle = worldCountryKey(ev)

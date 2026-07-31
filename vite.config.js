@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { applyMeta } from './scripts/lib/site-meta.mjs'
 import { AGENDA_LD_ATTR, AGENDA_LD_VALUE } from './scripts/lib/agenda-ld.mjs'
+import { evenementComplet } from './src/agendaEvents.js'
 import { primaryLang } from './sites.config.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -49,8 +50,11 @@ function agendaEventsJsonLd() {
       } catch {
         return // no snapshot yet — inject nothing
       }
+      // Le même filtre que la vue /agenda/ et que `npm run check` : écrit une
+      // seule fois (src/agendaEvents.js), sinon les trois divergent sur la même
+      // liste d'événements.
       const events = [...(agenda.switzerland || []), ...(agenda.world || [])]
-        .filter((e) => e.title && e.date && e.url)
+        .filter(evenementComplet)
         .map((e) => {
           const node = {
             '@type': 'Event',

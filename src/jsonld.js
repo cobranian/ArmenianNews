@@ -9,6 +9,7 @@
 // résultat enrichi : le seul de ce projet qui en produise est Event, sur
 // /agenda.
 import { STATION_FACTS } from './stations.js'
+import { evenementComplet } from './agendaEvents.js'
 import { urlFor } from '../sites.config.js'
 
 // Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>. Même garde
@@ -24,14 +25,26 @@ const safe = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
 //      textuel (« Genève », « Uruguay ») — jamais d'adresse. On émet donc un
 //      Place nommé, sans `address`. Search Console le signalera en avertissement
 //      NON BLOQUANT : c'est le comportement correct.
+//   3. AUCUN Event SANS SES TROIS CHAMPS. `startDate` est requis par Google ;
+//      un événement sans date en serait dépourvu. La comparaison temporelle
+//      ci-dessous les écarte déjà — mais par accident de conversion, et dans un
+//      seul sens (`new Date(null)` vaut 0, `new Date(undefined)` vaut NaN).
+//      S'en remettre à elle est ce qui a fait diverger la page et son balisage :
+//      voir le piège documenté dans src/agendaEvents.js.
 //
 // `maintenant` est un troisième paramètre injectable (défaut : Date.now())
 // pour que ce filtre soit testable sans horloge ni réseau — ne le retirez pas.
 export function agendaJsonLd(lang, evenements, maintenant = Date.now()) {
-  const avenir = evenements.filter((ev) => new Date(ev.date).getTime() >= maintenant)
+  const avenir = evenements.filter(
+    (ev) => evenementComplet(ev) && new Date(ev.date).getTime() >= maintenant,
+  )
   return safe({
     '@context': 'https://schema.org',
     '@type': 'ItemList',
+    // L'ItemList désigne LA page qui la porte, donc l'URL de la vue agenda dans
+    // CETTE langue — les quatre pages listent les mêmes événements et seule
+    // cette URL les distingue. Même rôle que `url` dans radioJsonLd.
+    url: urlFor(lang, 'agenda'),
     numberOfItems: avenir.length,
     itemListElement: avenir.map((ev, i) => ({
       '@type': 'ListItem',
