@@ -586,6 +586,66 @@ Et **ne mesurez jamais une hauteur de capitale sur un rendu de 11px** : le
 rasteur y arrondit et exagère l'écart — c'est ce qui avait produit une
 sur-correction de 6 % sur la pastille arménienne.
 
+**Les deux tambours (mobile, ≤640px).** `src/components/useSourceDrum.js` est un
+hook générique : il pose sur des éléments l'angle (`--a`) et l'opacité (`--o`)
+qui les répartissent sur un **cylindre tournant à 360°, qui boucle** — après le
+dernier revient le premier, dans les deux sens. Deux appelants s'en servent :
+
+| Appelant | Ce qui tourne | État replié / déplié |
+|---|---|---|
+| `NewsBrowser.jsx` | les 5 à 7 marques de sources | — |
+| `Radio.jsx` | les 12 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
+
+Cinq choses à savoir avant d'y toucher, toutes payées une fois :
+
+- **L'aimantation native ne peut pas boucler.** `scroll-snap` vit sur un
+  défileur, et un défileur a un début et une fin. Les contournements connus
+  triplent la liste dans le DOM — inacceptable ici, puisque ce sont les mêmes
+  `<button role="tab">` qui servent de rail horizontal sur large écran et que
+  `npm run prerender` cuit dans les douze pages. La roue est donc pilotée à la
+  main sur les éléments réels.
+- **Le repli sans JavaScript est porté par le CSS.** C'est le hook qui pose la
+  classe `is-drum` ; son **absence** déclenche le repli (une liste plate,
+  défilante). Ne déplacez pas `is-drum` dans le rendu React : elle mentirait si
+  le hook ne tournait pas.
+- **`flex-wrap: nowrap` est obligatoire dans le bloc du tambour.** La règle de
+  base enveloppe (voir le rail à deux rangs ci-dessous) et une colonne de
+  hauteur fixe qui enveloppe part **en colonnes** : les rangs au-delà du
+  troisième sortiraient sur le côté et le repli perdrait la moitié des sources.
+- **Pas de `setPointerCapture`.** La capture réoriente le `click` de
+  compatibilité vers l'élément capturant : le `onClick` des boutons ne partirait
+  plus. On écoute `pointermove` / `pointerup` sur `window`.
+- **`touch-action: none` vit sur les RANGS, pas sur la piste**, et les rangs sont
+  en `width: fit-content` centré. Sur la piste entière, un pouce posé là — un
+  endroit naturel, juste au-dessus des carrousels — faisait tourner la roue au
+  lieu de faire défiler la page, et changeait de source sans qu'on le demande.
+  `useSourceDrum` ignore en outre tout `pointerdown` dont la cible **est** la
+  piste, sans quoi le navigateur panoramiquerait pendant que la roue tourne.
+  Mesuré : 44,9 % de la surface confisque encore le geste, contre 100 % avant.
+
+**Le rail des sources sur grand écran : deux rangs centrés, pas une ligne.**
+Le conteneur est plafonné par `--maxw`, donc le rail ne s'élargit pas au-delà :
+en français il faut 1446px pour 1128px disponibles, **à toute largeur d'écran**.
+La règle d'avant promettait « centrées quand elles tiennent, défilantes sinon » —
+le premier cas ne se produisait jamais, et on payait 14px de barre de défilement
+système au milieu d'une manchette. `column-gap: clamp(14px, 5vw, 64px)` est
+**mesuré, pas choisi** : c'est l'écart qui place la césure, et les quatre langues
+n'ont pas les mêmes noms — fr 4+3, en 5+2, hy 5+2, ru cinq marques sur une seule
+ligne. Ne descendez pas sous 64 sans revérifier les quatre : à 56px, l'anglais
+laissait Oragark seul sur un second rang. Et le coefficient est **5**vw, pas 4 :
+à 4vw le terme médian vaut 56px sur un écran de 1400px, donc le plafond n'est
+jamais atteint.
+
+**Les douze stations sont dépliables (mobile).** `.radio__stations` porte déjà
+`flex-wrap: wrap` en règle de base ; le bloc `≤640px` le force en `nowrap` +
+`overflow-x`, ce qui ne montrait que deux stations sur douze sans le moindre
+indice. La bascule rend simplement atteignable la mise en page que le site sert
+déjà partout ailleurs. **Le nombre vient de `STATIONS.length` et entre par un
+gabarit `{n}`** dans la chaîne i18n — jamais écrit à la main, pour deux raisons :
+`test/radio-count.test.mjs` garde déjà quatorze textes qui écrivent le compte en
+toutes lettres, et « Voir les 12 stations » / « Показать все 12 радиостанций » /
+« Տեսնել 12 ռադիոկայանները » ne placent pas le chiffre au même endroit.
+
 ## Données : ce qui est scrapé vs. curé à la main
 
 - **Généré par le scrape (ne pas éditer à la main)** — `news.json`,
@@ -1036,3 +1096,40 @@ de production servent toujours depuis la racine de leur domaine.
   vaut `STRINGS[lang][clé] ?? STRINGS.fr[clé] ?? clé` : une clé absente
   **rend la clé**). Même mécanique que `test/radio-count.test.mjs`, sur une
   autre famille de chaînes.
+- **Un titre d'étagère ne doit jamais élargir la page.** `.shelf__title` porte
+  `min-width: 0`, et ce n'est pas décoratif : c'est la valeur par défaut
+  `min-width: auto` d'un élément flex qui l'empêchait de descendre sous la
+  largeur intrinsèque de son contenu. Dans l'agenda, ce contenu est un
+  `<select>` que le navigateur dimensionne sur son option **la plus longue**
+  (« Émirats arabes unis »), jamais sur celle qui est choisie : à 360px la tête
+  réclamait 360px dans une boîte de 308.
+
+  **Le symptôme était à l'autre bout du site.** La page devenait défilable
+  horizontalement, et `body::before` — la texture, en `position: fixed;
+  inset: 0` — ne couvre que la **fenêtre**, pas le document : en défilant sur le
+  côté, la bande excédentaire apparaissait sans texture ni fond de section, ce
+  qui se lit comme une bordure claire au bord de l'écran. La tentation est
+  `html { overflow-x: hidden }` : elle masquerait ce défaut **et tous les
+  prochains** sans qu'aucune mesure ne les voie.
+- **`scrollIntoView` fait défiler TOUS les ancêtres défilables, document
+  compris.** `block: 'nearest'` n'est inerte que si l'élément est **déjà**
+  visible — jamais au montage, puisque la console est sous le pli. Combiné à
+  `html { scroll-behavior: smooth }`, un appel dans un effet faisait glisser la
+  page par-dessus le héros à chaque chargement : mesuré, `scrollY` 0 → 485px en
+  une seconde, sur les douze pages. Pour recentrer un élément dans un défileur,
+  **écrivez `scrollLeft` / `scrollTop` sur ce défileur** : par construction, cela
+  ne peut bouger que lui.
+- **`visibility: hidden` retire de l'arbre d'accessibilité, `opacity: 0` non.**
+  Le tambour masquait ainsi deux onglets sur sept : le `focus()` du
+  roving-tabindex échouait en silence, puis le bouton qui portait le focus
+  passait à son tour derrière le cylindre et le focus tombait sur `<body>`. La
+  navigation clavier mourait. Si vous devez cacher un élément **focusable** sans
+  le sortir du parcours, l'opacité est le bon outil.
+- **Le plancher tactile de 44px est déjà tenu — par `@media (pointer: coarse)`.**
+  Ce bloc agrandit `.theme-toggle`, `.nav__toggle`, les pastilles de langue,
+  `.shelf__arrow`, `.radio__chip`, `.ig-chip` et
+  `.radio__stations-toggle`. **Un audit mené dans un Chrome de bureau ne le voit
+  pas** et rapportera une dizaine de fausses cibles trop petites : simulez le
+  bloc à la main avant de conclure. Et le rembourrage seul ne suffit pas — la
+  hauteur de ligne dépend de l'écriture, d'où le `min-height: 44px` explicite de
+  la bascule des stations, qui tombait à 43px en arménien.
