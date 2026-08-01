@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T16:04:17.494Z",
+  "generatedAt": "2026-08-01T17:58:00.614Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -2687,6 +2687,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "L’Arménien en nous, le « nous » mis à nu",
+          "url": "https://armenieinfo.tv/larmenien-en-nous-le-nous-mis-a-nu/",
+          "date": "2026-08-01T17:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-27-juil.-2026-13_34_16.png"
+        },
+        {
           "title": "Le chef d’état-major souligne l’importance d’un environnement moral et psychologique sain dans les forces armées",
           "url": "https://armenieinfo.tv/le-chef-detat-major-souligne-limportance-dun-environnement-moral-et-psychologique-sain-dans-les-forces-armees/",
           "date": "2026-08-01T13:00:00.000Z",
@@ -2739,12 +2745,6 @@
           "url": "https://armenieinfo.tv/ce-jour-dans-lhistoire-armenienne-2026-07-31/",
           "date": "2026-07-31T08:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/hebdo-histoire-2026-07-31-1.png"
-        },
-        {
-          "title": "Le Choix Souverain de l’Arménie et les Nouvelles Réalités Politiques",
-          "url": "https://armenieinfo.tv/le-choix-souverain-de-larmenie-et-les-nouvelles-realites-politiques/",
-          "date": "2026-07-31T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1785289271-3580.jpg"
         }
       ]
     },
@@ -2892,12 +2892,6 @@
           "url": "https://armenieinfo.tv/larmenie-cherche-ses-chercheurs-jusque-dans-les-etoiles/",
           "date": "2026-07-23T17:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-22-juil.-2026-19_53_51.png"
-        },
-        {
-          "title": "Erevan, ne manque pas d’air",
-          "url": "https://armenieinfo.tv/erevan-ne-manque-pas-dair/",
-          "date": "2026-07-22T06:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-21-juil.-2026-22_33_17.png"
         }
       ]
     },
@@ -8777,6 +8771,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Իրանի իշխանությունները հայտարարել են, որ երկիրը նախապատրաստվում է ամենածանր սցենարներին",
+            "url": "https://news.am/hy/news/1052902",
+            "date": "2026-08-01T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/FFbhPNfBAKTjmbc1.jfif"
+          },
+          {
             "title": "Չեխիայի ԱԳ նախարարը հույս ունի, որ ՆԱՏՕ Անկարայի գագաթաժողովը Պետր Պավելի համար վերջինն էր որպես նախագահի",
             "url": "https://news.am/hy/news/1052894",
             "date": "2026-08-01T15:21:00.000Z",
@@ -8829,12 +8829,6 @@
             "url": "https://news.am/hy/news/1052827",
             "date": "2026-08-01T05:33:00.000Z",
             "image": "https://news.am/storage/media/26/06/20/Fw65eup1DrW23wtP.webp"
-          },
-          {
-            "title": "Էլ ինչ օրենք, ինչ արդարադատություն, ինչ իրավապահ համակարգ... «Փաստ»",
-            "url": "https://news.am/hy/news/1052825",
-            "date": "2026-08-01T04:17:52.000Z",
-            "image": "https://news.am/storage/media/26/06/26/uiW1vVxrQIl9pXZ0.webp"
           }
         ]
       },
@@ -8909,6 +8903,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Գանձասար» - «Արարատ-Արմենիա» հանդիպումը դադարեցվել է Շենգավիթում հոսանքազրկման պատճառով (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168056/",
+            "date": "2026-08-01T17:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168056.jpg"
+          },
+          {
+            "title": "«Ռեալը» չհաղթեց «Ֆիորենտինային» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168055/",
+            "date": "2026-08-01T17:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168055.jpg"
+          },
+          {
             "title": "«Ինտերը» հաղթեց «Մանչեսթեր Սիթիին» (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168053/",
             "date": "2026-08-01T13:38:00.000Z",
@@ -8955,18 +8961,6 @@
             "url": "https://sport.news.am/arm/news/168044/",
             "date": "2026-07-31T16:43:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/168044.jpg"
-          },
-          {
-            "title": "Վահե Գեւորգյան. Պաշտպանությունը ձախողեց այս խաղը",
-            "url": "https://sport.news.am/arm/news/168043/",
-            "date": "2026-07-31T15:23:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168043.jpg"
-          },
-          {
-            "title": "Մեկնարկեց Հայաստանի առաջնությունը․ «Սարդարապատը» խոշոր հաշվով հաղթեց «Վանին»",
-            "url": "https://sport.news.am/arm/news/168042/",
-            "date": "2026-07-31T14:00:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168042.jpg"
           }
         ]
       },
@@ -8974,6 +8968,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Իրանի իշխանությունները հայտարարել են, որ երկիրը նախապատրաստվում է ամենածանր սցենարներին",
+            "url": "https://news.am/hy/news/1052902",
+            "date": "2026-08-01T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/FFbhPNfBAKTjmbc1.jfif"
+          },
           {
             "title": "Տնտեսագետները պարզել են, թե երբ արժե փոխել ներդրումային ռազմավարությունը",
             "url": "https://news.am/hy/news/1052744",
@@ -9027,12 +9027,6 @@
             "url": "https://news.am/hy/news/1052683",
             "date": "2026-07-31T14:22:00.000Z",
             "image": "https://news.am/storage/media/26/07/31/QZxzjRRf7XiICE3J.webp"
-          },
-          {
-            "title": "Դոլարի եւ եվրոյի փոխարժեքները մի փոքր աճել են",
-            "url": "https://news.am/hy/news/1052757",
-            "date": "2026-07-31T14:00:50.000Z",
-            "image": "https://news.am/storage/media/26/07/31/gELuRnnLPqFm9SBi.webp"
           }
         ]
       },
@@ -9239,6 +9233,18 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Մոսկվայի կենտրոնում ստալինյան բարձրահարկի մոտ գտնվող ռեստորանում պայթյուն է որոտացել․ կան տուժածներ",
+            "url": "https://news.am/hy/news/1052923",
+            "date": "2026-08-01T17:40:26.000Z",
+            "image": "https://news.am/storage/media/26/08/01/nmze26LMRJwRUpeG.webp"
+          },
+          {
+            "title": "Լեհական Տատրաներում մեկ օրում զոհվել են զբոսաշրջիկ և լեռնագնաց",
+            "url": "https://news.am/hy/news/1052916",
+            "date": "2026-08-01T17:38:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/6gJRqnEqY1X0HjsK.webp"
+          },
+          {
             "title": "Կույր և հարբած վարորդը գիշերն անցել է 240 կմ՝ կողմնորոշվելով բեռնատարների լույսերով",
             "url": "https://news.am/hy/news/1052886",
             "date": "2026-08-01T14:57:00.000Z",
@@ -9285,18 +9291,6 @@
             "url": "https://news.am/hy/news/1052856",
             "date": "2026-08-01T09:22:00.000Z",
             "image": "https://news.am/storage/media/26/08/01/eU6dYM2Mi1u610vY.webp"
-          },
-          {
-            "title": "Սեուտայի ճգնաժամից հետո Եվրոպան փակում է սահմանները․ ինչ է կանգնած 50 հազար միգրանտների ժամանման հետևում",
-            "url": "https://news.am/hy/news/1052852",
-            "date": "2026-08-01T08:36:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/0lApHdUds199778m.webp"
-          },
-          {
-            "title": "Պապ Թագավորի փողոցում մալուխագծի վթարի իրական պատճառները պարզելու համար կիրականացվի ներքին հետաքննություն",
-            "url": "https://news.am/hy/news/1052860",
-            "date": "2026-08-01T08:27:52.000Z",
-            "image": "https://news.am/storage/media/26/08/01/qyLxVIpZbDt3Ivkg.webp"
           }
         ]
       },
@@ -9304,6 +9298,12 @@
         "categoryKey": "society",
         "label": "Հասարակություն",
         "articles": [
+          {
+            "title": "Սիսակյան փողոցի բարձրահարկ շենքի 8-րդ հարկից վերելակը պոկվել է և հայտնվել հորանում. 4 քաղաքացի վնասվածք է ստացել",
+            "url": "https://news.am/hy/news/1052918",
+            "date": "2026-08-01T16:53:19.000Z",
+            "image": "https://news.am/storage/media/26/08/01/yYpPpsxudgNkwyeH.webp"
+          },
           {
             "title": "Սեուտայի ճգնաժամից հետո Եվրոպան փակում է սահմանները․ ինչ է կանգնած 50 հազար միգրանտների ժամանման հետևում",
             "url": "https://news.am/hy/news/1052852",
@@ -9357,12 +9357,6 @@
             "url": "https://news.am/hy/news/1051998",
             "date": "2026-07-28T04:11:54.000Z",
             "image": "https://news.am/storage/media/26/07/28/PqxswwjvvFTdro2l.webp"
-          },
-          {
-            "title": "Ռուսաստանից ակտիվորեն վտարում են օտարերկրացիներին",
-            "url": "https://news.am/hy/news/1051990",
-            "date": "2026-07-27T18:24:00.000Z",
-            "image": "https://news.am/storage/media/26/07/27/JrMebJ3UGrBAq0Uj.webp"
           }
         ]
       },
@@ -9439,6 +9433,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Власти Ирана заявили о подготовке страны к самым тяжелым сценариям",
+            "url": "https://news.am/ru/news/1052902",
+            "date": "2026-08-01T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/FFbhPNfBAKTjmbc1.jfif"
+          },
+          {
             "title": "Глава МИД Чехии надеется, что саммит НАТО в Анкаре был последним для Петра Павела в качестве президента",
             "url": "https://news.am/ru/news/1052894",
             "date": "2026-08-01T15:21:00.000Z",
@@ -9491,12 +9491,6 @@
             "url": "https://news.am/ru/news/1052827",
             "date": "2026-08-01T05:33:00.000Z",
             "image": "https://news.am/storage/media/26/06/20/Fw65eup1DrW23wtP.webp"
-          },
-          {
-            "title": "«Паст»: Какие уж тут законы, какое правосудие, какая правоохранительная система...",
-            "url": "https://news.am/ru/news/1052825",
-            "date": "2026-08-01T04:17:52.000Z",
-            "image": "https://news.am/storage/media/26/06/26/uiW1vVxrQIl9pXZ0.webp"
           }
         ]
       },
@@ -9571,6 +9565,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Реал» под руководством Моуринью не смог победить «Фиорентину» (видео)",
+            "url": "https://sport.news.am/rus/news/168055/",
+            "date": "2026-08-01T17:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168055.jpg"
+          },
+          {
             "title": "БКМА и «Ширак» не выявили победителя",
             "url": "https://sport.news.am/rus/news/168054/",
             "date": "2026-08-01T15:58:00.000Z",
@@ -9623,12 +9623,6 @@
             "url": "https://sport.news.am/rus/news/168037/",
             "date": "2026-07-31T11:05:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/168037.jpg"
-          },
-          {
-            "title": "Защитник сборной Англии перешел в «Интер»",
-            "url": "https://sport.news.am/rus/news/168032/",
-            "date": "2026-07-31T09:35:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168032.jpg"
           }
         ]
       },
@@ -9636,6 +9630,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Власти Ирана заявили о подготовке страны к самым тяжелым сценариям",
+            "url": "https://news.am/ru/news/1052902",
+            "date": "2026-08-01T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/FFbhPNfBAKTjmbc1.jfif"
+          },
           {
             "title": "Экономисты выяснили, когда стоит менять инвестиционную стратегию",
             "url": "https://news.am/ru/news/1052744",
@@ -9689,12 +9689,6 @@
             "url": "https://news.am/ru/news/1052683",
             "date": "2026-07-31T14:22:00.000Z",
             "image": "https://news.am/storage/media/26/07/31/QZxzjRRf7XiICE3J.webp"
-          },
-          {
-            "title": "Курсы валют в Армении",
-            "url": "https://news.am/ru/news/1052757",
-            "date": "2026-07-31T14:00:50.000Z",
-            "image": "https://news.am/storage/media/26/07/31/gELuRnnLPqFm9SBi.webp"
           }
         ]
       },
@@ -9901,6 +9895,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В центре Москвы прогремел взрыв в ресторане рядом со сталинской высоткой: есть пострадавшие",
+            "url": "https://news.am/ru/news/1052923",
+            "date": "2026-08-01T17:40:26.000Z",
+            "image": "https://news.am/storage/media/26/08/01/nmze26LMRJwRUpeG.webp"
+          },
+          {
+            "title": "В польских Татрах в один день погибли турист и альпинист",
+            "url": "https://news.am/ru/news/1052916",
+            "date": "2026-08-01T17:38:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/6gJRqnEqY1X0HjsK.webp"
+          },
+          {
             "title": "Слепой пьяный водитель проехал 240 км ночью, ориентируясь по фарам грузовиков",
             "url": "https://news.am/ru/news/1052886",
             "date": "2026-08-01T14:57:00.000Z",
@@ -9947,18 +9953,6 @@
             "url": "https://news.am/ru/news/1052856",
             "date": "2026-08-01T09:22:00.000Z",
             "image": "https://news.am/storage/media/26/08/01/eU6dYM2Mi1u610vY.webp"
-          },
-          {
-            "title": "Европа закрывает границы после кризиса в Сеуте: что стоит за прибытием 50 тысяч мигрантов",
-            "url": "https://news.am/ru/news/1052852",
-            "date": "2026-08-01T08:36:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/0lApHdUds199778m.webp"
-          },
-          {
-            "title": "Для выяснения реальных причин аварии на кабельной линии на улице Царя Папа будет проведено внутреннее расследование",
-            "url": "https://news.am/ru/news/1052860",
-            "date": "2026-08-01T08:27:52.000Z",
-            "image": "https://news.am/storage/media/26/08/01/qyLxVIpZbDt3Ivkg.webp"
           }
         ]
       },
@@ -9966,6 +9960,12 @@
         "categoryKey": "society",
         "label": "Общество",
         "articles": [
+          {
+            "title": "В Ереване лифт сорвался с 8-го этажа многоэтажного дома и упал в шахту: пострадали 4 человека",
+            "url": "https://news.am/ru/news/1052918",
+            "date": "2026-08-01T16:53:19.000Z",
+            "image": "https://news.am/storage/media/26/08/01/yYpPpsxudgNkwyeH.webp"
+          },
           {
             "title": "Европа закрывает границы после кризиса в Сеуте: что стоит за прибытием 50 тысяч мигрантов",
             "url": "https://news.am/ru/news/1052852",
@@ -10019,12 +10019,6 @@
             "url": "https://news.am/ru/news/1051575",
             "date": "2026-07-24T15:21:00.000Z",
             "image": "https://news.am/storage/media/26/07/24/vZEIJMb2Pbbc04I2.webp"
-          },
-          {
-            "title": "Юэцзиньцзе: как в центре Урумчи создают современное сообщество",
-            "url": "https://news.am/ru/news/1051471",
-            "date": "2026-07-24T06:52:43.000Z",
-            "image": "https://news.am/storage/media/26/07/24/YPiO5rs4Y7r3Ndhk.webp"
           }
         ]
       },
