@@ -1298,32 +1298,49 @@ html:lang(hy) .nav__brand {
   flex-direction: column;
 }
 /* --- source tabs: a masthead rail ---
-   One horizontal line of source names, centred when they fit and scrolling
-   when they don't — no ragged second row. The rule (bottom hairline) lives on
-   the wrapper so it spans the full width even mid-scroll; the active tab's
-   apricot marker sits on top of it. */
+   Les sept marques sur DEUX RANGS CENTRÉS, toutes visibles, sans défilement.
+
+   La règle d'avant tenait à la ligne unique et faisait défiler quand elle ne
+   suffisait pas — « pas de second rang en dents de scie ». Elle reposait sur
+   une prémisse fausse : le conteneur est plafonné par `--maxw`, donc la ligne
+   unique ne suffit JAMAIS. Mesuré, en français : 1446px de marques pour 1128px
+   disponibles à 1200 comme à 1500px de fenêtre. Il manquait ~350px à toute
+   largeur d'écran, et le lecteur ne voyait que cinq rédactions sur sept — le
+   défaut même qu'on venait de réparer sur mobile, plus une barre de défilement
+   système de 14px, flèches comprises, posée au milieu d'une manchette.
+
+   L'écart entre marques est ÉLARGI, pas réduit, et c'est ce qui équilibre les
+   deux rangs : à 56px, cinq marques ne tiennent plus sur le premier rang, donc
+   la césure tombe en 4 + 3 au lieu de 5 + 2. Un écart large sied de toute façon
+   à une manchette.
+
+   La barre de défilement disparaît avec le défilement lui-même. Le filet du bas
+   reste sur le conteneur pour couvrir toute la largeur, et le marqueur abricot
+   de l'onglet actif se pose dessus. */
 .newsfeed__tabwrap {
-  overflow-x: auto;
-  overflow-y: hidden;
   margin-bottom: clamp(22px, 3.5vw, 36px);
   border-bottom: 1px solid var(--line-strong);
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
-  -webkit-overflow-scrolling: touch;
-}
-.newsfeed__tabwrap::-webkit-scrollbar {
-  height: 3px;
-}
-.newsfeed__tabwrap::-webkit-scrollbar-thumb {
-  background: var(--line-strong);
 }
 .newsfeed__tabs {
   display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  min-width: 100%;
+  flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
-  gap: clamp(14px, 3vw, 40px);
+  /* 64px, et la valeur est MESURÉE, pas choisie à l'oeil. C'est elle qui place
+     la césure : les quatre langues n'ont pas les mêmes noms, donc pas les mêmes
+     largeurs. À 56px, l'anglais et l'arménien — dont les marques sont courtes
+     (ArmRadio, NEWS.am, Asbarez, CivilNet, Oragark) — faisaient tenir SIX
+     marques sur le premier rang et laissaient Oragark seul en dessous. À 64px :
+     fr 4+3, en 5+2, hy 5+2, ru cinq marques sur une seule ligne — le russe
+     n'ayant que cinq sources, il n'enveloppe pas du tout. Ne descendez pas
+     sous 64 sans revérifier les quatre.
+
+     Le coefficient est 5vw et non 4 : à 4vw le terme médian valait 56px sur un
+     écran de 1400px et le plafond n'était jamais atteint, donc l'anglais et
+     l'arménien restaient en 6+1. Il faut 5vw pour que 64 morde dès ~1280px,
+     c'est-à-dire sur les écrans réels. */
+  column-gap: clamp(14px, 5vw, 64px);
+  row-gap: 0;
 }
 .newsfeed__tab {
   display: inline-flex;
@@ -1470,6 +1487,11 @@ html:lang(hy) .nav__brand {
     position: relative;
     z-index: 1;
     flex-direction: column;
+    /* OBLIGATOIRE depuis que la règle de base enveloppe. Une colonne de hauteur
+       fixe qui enveloppe passe en COLONNES : les rangs au-delà du troisième
+       partiraient sur le côté au lieu de se suivre, et le repli sans
+       JavaScript perdrait la moitié des sources. */
+    flex-wrap: nowrap;
     justify-content: flex-start;
     /* Le tambour ne va PAS bord à bord, et ce n'est pas esthétique : sur 132px
        de haut, un défileur pleine largeur capture le geste de quiconque fait
