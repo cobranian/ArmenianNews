@@ -22,15 +22,34 @@ const BASE = 'https://courrier.am'
 // <item>. Ne le rebranchez pas en croyant simplifier.
 const SITEMAP_PAGES = [1, 2]
 
-// Les URL du sitemap et celles de la grille encodent différemment les accents
-// (« arménie » vs « arm%C3%A9nie »), d'où le décodage des deux côtés avant
-// comparaison — sans lui, aucune correspondance et toutes les dates seraient
-// nulles, en silence.
-const normUrl = (u) => {
+// Les dates ne rejoignent les articles que par APPARIEMENT D'URL, et les deux
+// côtés n'écrivent pas la même URL pour le même article. Trois écarts sont
+// connus, chacun payé par une panne :
+//
+//  1. Les accents. Le sitemap et la grille les encodent différemment
+//     (« arménie » vs « arm%C3%A9nie ») — d'où `decodeURI`.
+//  2. Le slash final, présent d'un côté seulement selon les pages.
+//  3. Le `www.` — et celui-là est apparu du jour au lendemain. Le 1er août
+//     2026, courrier.am s'est mis à écrire TOUS ses `<loc>` en
+//     `https://www.courrier.am/…` alors que la grille sert des liens sans
+//     `www.` (BASE, ci-dessus). Résultat : 5 445 dates chargées, 0 article
+//     daté, sur les 8 rubriques. Rien n'a échoué — ni requête, ni parseur, ni
+//     build — parce qu'une date manquante est un `null` parfaitement valide.
+//     Le seul symptôme était l'absence de l'âge sous « LIRE LA SUITE ».
+//
+// L'appariement se fait donc sur une forme repliée, et il est SYMÉTRIQUE : le
+// jour où le site retirera son `www.`, ou l'ajoutera dans sa grille, rien ne
+// bougera ici. `test/courrier-dates.test.mjs` fige les trois écarts, sur les
+// vraies chaînes relevées des deux côtés — sans réseau.
+const fold = (s) => s.replace(/^(https?:\/\/)www\./i, '$1').replace(/\/+$/, '')
+
+export const normUrl = (u) => {
+  // `decodeURI` jette sur un pourcent isolé (« /fr/100% ») : le repli doit
+  // alors replier quand même, sinon le correctif aurait un trou sur ces URL.
   try {
-    return decodeURI(String(u)).replace(/\/+$/, '')
+    return fold(decodeURI(String(u)))
   } catch {
-    return String(u).replace(/\/+$/, '')
+    return fold(String(u))
   }
 }
 
@@ -114,6 +133,27 @@ export async function scrapeCourrier(lang = 'fr') {
       console.warn(`  ✗ courrier/${lang}/${section.slug}: ${err.message}`)
       out.push({ sectionKey: section.key, articles: [] })
     }
+  }
+
+  // Le sitemap a répondu, des articles ont été lus, et PAS UN n'est daté :
+  // c'est l'appariement d'URL qui a rompu, pas le réseau. Cet état ne peut pas
+  // être légitime — il l'a pourtant été pendant une journée entière, sans que
+  // rien ne le dise (voir le commentaire de `normUrl`). On refuse de le passer
+  // sous silence une seconde fois.
+  //
+  // Un avertissement, pas une exception : faire tomber la source perdrait les
+  // 80 articles pour une date manquante, et `backfillSections` resservirait
+  // l'instantané précédent — donc un mur figé, en plus. Les articles valent
+  // mieux non datés que pas du tout.
+  const lus = out.reduce((n, s) => n + s.articles.length, 0)
+  const datés = out.reduce((n, s) => n + s.articles.filter((a) => a.date).length, 0)
+  if (dates.size && lus && !datés) {
+    console.warn(
+      `  ⚠ courrier/${lang} : ${dates.size} dates au sitemap, ${lus} articles lus, AUCUN daté.\n` +
+        `    L'appariement d'URL a rompu — comparez la forme des <loc> du sitemap\n` +
+        `    à celle des liens de la grille (hôte, accents, slash final), puis\n` +
+        `    étendez normUrl et test/courrier-dates.test.mjs.`,
+    )
   }
   return out
 }

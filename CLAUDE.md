@@ -875,10 +875,21 @@ de production servent toujours depuis la racine de leur domaine.
     C'est formellement une date de *modification* : vérifiée sur 8 articles,
     elle tombe à chaque fois sur le jour imprimé — ce site ne réédite pas.
     **Son RSS existe (`/fr/rss.xml`) et revient VIDE** (293 octets, zéro
-    `<item>`) : ne le rebranchez pas en croyant faire plus simple. Et les deux
-    côtés encodent leurs accents différemment (`arménie` vs `arm%C3%A9nie`),
-    d'où le décodage avant comparaison — sans lui, zéro correspondance et
-    **toutes** les dates nulles, en silence.
+    `<item>`) : ne le rebranchez pas en croyant faire plus simple.
+
+    **Ce détour a un prix, et il a été payé :** les dates ne rejoignent les
+    articles que par **appariement d'URL**, et les deux côtés n'écrivent pas la
+    même URL. Trois écarts connus, repliés par `normUrl` — les accents
+    (`arménie` vs `arm%C3%A9nie`), le slash final, et le **`www.`**. Ce
+    dernier est apparu **du jour au lendemain** : le 1er août 2026 courrier.am
+    s'est mis à écrire tous ses `<loc>` en `www.courrier.am` alors que sa
+    grille sert des liens sans `www.` — 5 445 dates chargées, **0 article
+    daté**, sur les 8 rubriques. Rien n'a échoué : ni requête, ni parseur, ni
+    build, parce qu'une date manquante est un `null` valide. Le seul symptôme
+    était l'âge absent sous « LIRE LA SUITE », et il a fallu un lecteur pour le
+    voir. Le module avertit désormais quand le sitemap répond, que des articles
+    sont lus, et qu'aucun n'est daté — le seul état qui ne peut pas être
+    légitime.
   - **ArménieInfo.tv paie une requête par article**, sa grille n'exposant rien
     non plus. Une page qui échoue laisse `date: null` : la carte perd son âge,
     et rien d'autre.
