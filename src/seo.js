@@ -10,29 +10,35 @@
 export const SEO = {
   fr: {
     tagline: 'Actualités arméniennes',
+    // Les QUATRE piliers, radios comprises. Elles y manquaient, alors que la
+    // page les met en avant et que /radio/ leur consacre ses propres
+    // descriptions : l'extrait de recherche de l'accueil vendait donc trois
+    // atouts sur quatre, en omettant le seul qu'on ne trouve nulle part
+    // ailleurs. Le nombre est écrit en toutes lettres et gardé par
+    // test/radio-count.test.mjs, comme les quatorze autres textes.
     description:
-      'Actualités, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.',
+      'Actualités, douze radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.',
     keywords:
       'actualités arméniennes, Arménie, Artsakh, diaspora arménienne, agenda arménien, communauté arménienne de Suisse',
   },
   en: {
     tagline: 'Armenian news, events and social media',
     description:
-      'Armenian news, events and social media from Armenia and the diaspora, updated every hour.',
+      'Armenian news, twelve live radio stations, events and social media from Armenia and the diaspora, updated every hour.',
     keywords:
       'Armenian news, Armenia, Artsakh, Armenian diaspora, Armenian events, Armenian community',
   },
   hy: {
     tagline: 'Հայկական լուրեր, միջոցառումներ և սոցիալական ցանցեր',
     description:
-      'Հայկական լուրեր, միջոցառումներ և սոցիալական ցանցեր Հայաստանից և սփյուռքից, թարմացվում է ամեն ժամ։',
+      'Հայկական լուրեր, տասներկու ռադիոկայան ուղիղ եթերում, միջոցառումներ և սոցիալական ցանցեր Հայաստանից և սփյուռքից, թարմացվում է ամեն ժամ։',
     keywords:
       'հայկական լուրեր, Հայաստան, Արցախ, հայկական սփյուռք, միջոցառումներ, հայ համայնք',
   },
   ru: {
     tagline: 'Армянские новости, события и социальные сети',
     description:
-      'Армянские новости, события и социальные сети из Армении и диаспоры, обновление каждый час.',
+      'Армянские новости, двенадцать радиостанций в прямом эфире, события и социальные сети из Армении и диаспоры, обновление каждый час.',
     keywords:
       'армянские новости, Армения, Арцах, армянская диаспора, армянские события, армянская община',
   },

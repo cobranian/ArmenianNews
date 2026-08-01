@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { ALL_LANGS, SITES, primaryLang } from '../sites.config.js'
-import { VIEW_SEO } from '../src/seo.js'
+import { SEO, VIEW_SEO } from '../src/seo.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
@@ -44,6 +44,7 @@ const OU = [
   'les quatre « radio.more » de src/i18n.jsx',
   'les quatre « radio.page.intro » et « radio.page.list » de src/i18n.jsx',
   'les quatre VIEW_SEO.radio.*.description de src/seo.js',
+  'les quatre SEO.*.description de src/seo.js (accueil)',
   'les cartes pages/lien.{ch,org}.html',
 ].join(', ')
 
@@ -115,6 +116,25 @@ test('les quatre meta descriptions de /radio/ annoncent le même nombre', () => 
     assert.ok(
       annonce(d, lang),
       `VIEW_SEO.radio.${lang}.description devrait annoncer « ${NOMBRES[lang]} » : ${d}. ` +
+        `À mettre à jour : ${OU}.`,
+    )
+  }
+})
+
+// L'ACCUEIL, et c'est le texte le plus vu de tout le site : la description que
+// Google affiche sous le titre d'armenieinfo.ch et d'armenianews.org, dans les
+// quatre langues. Elle a longtemps annoncé « actualités, agenda et réseaux »
+// sans les radios — trois piliers sur quatre, en omettant le seul qu'on ne
+// trouve nulle part ailleurs. Le défaut n'était visible d'aucun test : la
+// description était juste, seulement incomplète. Maintenant qu'elle porte le
+// nombre, elle peut mentir comme les quatorze autres, d'où ce contrôle.
+test("les quatre descriptions de l'accueil annoncent le même nombre", () => {
+  for (const lang of ALL_LANGS) {
+    const d = SEO[lang]?.description
+    assert.ok(d, `SEO.${lang}.description manquante`)
+    assert.ok(
+      annonce(d, lang),
+      `SEO.${lang}.description devrait annoncer « ${NOMBRES[lang]} » : ${d}. ` +
         `À mettre à jour : ${OU}.`,
     )
   }
