@@ -1587,8 +1587,22 @@ html:lang(hy) .nav__brand {
   .newsfeed__tab.is-active {
     border-bottom-color: transparent;
   }
+  /* `--apricot-ink-strong` et NON `--line-apricot`, qui est le jeton des
+     FILETS : un abricot à 40 % d'alpha, fait pour poser une ligne discrète,
+     pas pour signaler un focus. Composité sur le fond il donne 2,48:1 en nuit
+     et 1,44:1 en jour, là où WCAG 2.2 (SC 1.4.11) demande 3:1 — et sur le
+     sélecteur de l'agenda il valait EXACTEMENT la couleur de la bordure déjà
+     présente au repos, soit 1,00:1 entre les deux états : prendre le focus au
+     clavier ne changeait rien de perceptible. `--apricot-ink-strong` donne
+     12,02:1 et 6,95:1, et il servait déjà à `.footer__contact a` — c'est le
+     seul des trois jetons abricot qui passe le seuil dans LES DEUX thèmes
+     (`--apricot` retombe à 2,47:1 en jour). Trois règles étaient concernées :
+     celle-ci, `.agenda-select:focus-within` et
+     `.radio__stations-toggle:focus-visible`. Ne les rebasculez pas sur un
+     jeton de filet pour « harmoniser » : un contour de focus n'est pas une
+     ligne de séparation. */
   .newsfeed__tab:focus-visible {
-    outline: 2px solid var(--line-apricot);
+    outline: 2px solid var(--apricot-ink-strong);
     outline-offset: -5px;
     border-radius: 3px;
   }
@@ -1690,8 +1704,12 @@ html:lang(hy) .nav__brand {
   border-color: var(--apricot-ink);
   background: color-mix(in srgb, var(--basalt-3) 78%, transparent);
 }
+/* Le contour vit sur le CONTENEUR et non sur le `<select>` : celui-ci porte
+   `outline: none` (voir plus bas) parce qu'un contour natif épouserait le
+   champ nu et non la pastille arrondie. Le jeton, lui, est celui du focus et
+   non celui des filets — le raisonnement est à `.newsfeed__tab:focus-visible`. */
 .agenda-select:focus-within {
-  outline: 2px solid var(--line-apricot);
+  outline: 2px solid var(--apricot-ink-strong);
   outline-offset: 2px;
 }
 .agenda-select__flag {
@@ -2120,8 +2138,11 @@ html:lang(hy) .nav__brand {
   border-radius: 50%;
   background: var(--apricot);
 }
+/* Jeton de focus — voir `.newsfeed__tab:focus-visible`. `--apricot` tenait en
+   nuit (8,69:1) et tombait à 2,23:1 en JOUR, sous le seuil de 3:1 : le défaut
+   ne se voyait que dans un thème sur deux. */
 .radio__volume input[type='range']:focus-visible {
-  outline: 2px solid var(--apricot);
+  outline: 2px solid var(--apricot-ink-strong);
   outline-offset: 4px;
 }
 
@@ -2293,8 +2314,9 @@ html:lang(hy) .nav__brand {
     color: var(--apricot-ink);
     cursor: pointer;
   }
+  /* Jeton de focus, pas de filet — voir `.newsfeed__tab:focus-visible`. */
   .radio__stations-toggle:focus-visible {
-    outline: 2px solid var(--line-apricot);
+    outline: 2px solid var(--apricot-ink-strong);
     outline-offset: 2px;
     border-radius: 3px;
   }
@@ -2954,8 +2976,9 @@ html:lang(hy) .nav__brand {
 .privacy[open] > summary {
   color: var(--text-soft);
 }
+/* Jeton de focus — voir `.newsfeed__tab:focus-visible`. 2,47:1 en jour avant. */
 .privacy > summary:focus-visible {
-  outline: 2px solid var(--apricot);
+  outline: 2px solid var(--apricot-ink-strong);
   outline-offset: 4px;
   border-radius: 2px;
 }
@@ -3140,9 +3163,10 @@ html:lang(hy) .nav__brand {
   font: inherit;
   cursor: zoom-in;
 }
+/* Jeton de focus — voir `.newsfeed__tab:focus-visible`. 2,72:1 en jour avant. */
 .fb-card:focus-visible,
 .ig-card:focus-visible {
-  outline: 2px solid var(--apricot);
+  outline: 2px solid var(--apricot-ink-strong);
   outline-offset: 3px;
 }
 
@@ -3406,6 +3430,14 @@ html:lang(hy) .nav__brand {
   color: var(--apricot-ink);
   margin: 0 0.3em;
 }
+/* SEUL contour de focus resté sur `--apricot`, et c'est délibéré : les six
+   autres sont passés à `--apricot-ink-strong` parce qu'ils se posent sur le
+   fond de la page, qui suit le thème. Ceux-ci se posent sur le VOILE de la
+   visionneuse, sombre dans les deux thèmes — or `--apricot-ink-strong` vaut
+   #6f3d05 en jour, un brun foncé qui disparaîtrait sur ce voile. Ce qui
+   corrige les autres casserait ceux-là. À vérifier visionneuse OUVERTE si un
+   jour on y touche : la mesure automatique ne voit pas ces boutons, ils
+   n'existent dans le DOM qu'à l'ouverture. */
 .lb__close:focus-visible,
 .lb__nav:focus-visible,
 .lb__out:focus-visible {

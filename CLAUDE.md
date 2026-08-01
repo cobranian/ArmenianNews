@@ -72,7 +72,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 119 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am
+npm test             # 125 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -81,7 +81,7 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **119 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **125 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -94,8 +94,9 @@ sans date n'est rendu ni balisé) et les deux stades de sa garde
 la conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
 voir « À savoir »), et les deux dérivations des verticales héritées de NEWS.am
 (`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
-publication, et la date de med recomposée en chiffres) — aucun ne touche le
-réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
+publication, et la date de med recomposée en chiffres), et l'appariement d'URL
+qui date les articles du Courrier (`test/courrier-dates.test.mjs`, voir
+« À savoir ») — aucun ne touche le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -901,6 +902,23 @@ de production servent toujours depuis la racine de leur domaine.
   passer le trou pour un choix. Le module l'a retirée en se datant ; la même
   phrase périmée est restée deux chantiers de plus dans `NewsBrowser.jsx`, où
   elle nommait encore Courrier et ArménieInfo.tv comme non datés.
+- **Une mesure prise sur `src/data/` se périme AU MILIEU d'une séance, et c'est
+  le robot horaire qui la périme.** Le cas exact : « les 80 cartes du Courrier
+  sont datées » a été mesuré sur l'instantané de la veille ; un `git pull` a
+  ensuite ramené cinq snapshots, et dans celui du jour le compte était
+  **0/80**. La conclusion était vraie à la mesure et fausse au rapport, sans
+  qu'une ligne de code ait bougé — c'est ainsi qu'une panne déjà en cours a été
+  décrite comme un risque théorique.
+
+  Toute affirmation qui dépend des données doit donc être **re-mesurée après la
+  fusion**. Le contrôle qui coûte le moins, un compte par source :
+
+  ```bash
+  node -e "const d=require('./src/data/news.json');for(const[k,v]of Object.entries(d)){if(k==='generatedAt')continue;const a=[],g=x=>{if(Array.isArray(x))x.forEach(g);else if(x&&typeof x==='object'){if(x.title&&x.url)a.push(x);else Object.values(x).forEach(g)}};g(v);console.log(k,a.length,a.filter(x=>x.date).length)}"
+  ```
+
+  C'est le pendant, côté données, de la règle du skill `verifier-le-rendu` : ne
+  publiez jamais un chiffre obtenu une seule fois par un seul chemin.
 - **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
   la renvoie vide et `backfillSections` restitue les articles du
   snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc

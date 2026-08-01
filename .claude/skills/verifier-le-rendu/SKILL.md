@@ -23,6 +23,8 @@ atteint le rapport à l'utilisateur avant d'être corrigées.
 | **`@media (pointer: coarse)` inactif** | une dizaine de cibles tactiles trop petites | un Chrome de bureau est `pointer: fine` ; **injecter le bloc à la main** avant de compter |
 | **`location.reload()`** | que la page défile toute seule au chargement | le rechargement **restaure la position** ; utiliser une **navigation neuve** (`?v=…`) |
 | **`elementFromPoint` hors fenêtre** | qu'un élément n'est plus cliquable (renvoie `null`) | **assertion préalable** : `rect.top >= 0 && rect.bottom <= innerHeight`, sinon on jette |
+| **`getBoundingClientRect` sur le tambour** | une dizaine de cibles tactiles de 16 à 37px | le cylindre incline ses éléments en 3D et le rect est la boîte **après transformation** ; mesurer en **`offsetHeight` / `offsetWidth`**, qui l'ignorent — les mêmes boutons font 44 et 46px |
+| **`.focus()` en JS** | qu'aucun contour de focus n'existe (`outline-style: none`) | le focus programmatique ne déclenche **pas** `:focus-visible` ; lire les règles au **CSSOM** (`:focus-within`, lui, réagit) |
 
 Deux corollaires :
 
@@ -70,7 +72,7 @@ commit.
 
 ```bash
 npm run lint     # 0 erreur, EXACTEMENT 5 avertissements connus (voir CLAUDE.md)
-npm test         # 119 tests
+npm test         # 125 tests
 npm run build
 npm run check    # les 12 pages, hreflang, sitemaps, cartes de partage
 ```
