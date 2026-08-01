@@ -366,15 +366,25 @@ export function NewsBrowser() {
 
   if (!sources.length) return null
 
-  // Roving-tab keyboard nav across the source tabs. Les flèches verticales
-  // s'ajoutent aux horizontales sans les remplacer : le même tablist se rend en
-  // ligne sur large écran et en colonne sur mobile, donc les deux axes sont
-  // légitimes — et l'utilisateur au clavier n'a pas à deviner lequel s'applique.
+  // Roving-tab keyboard nav across the source tabs.
+  //
+  // Les flèches VERTICALES ne valent que là où le tablist est vertical, c'est-à-dire
+  // dans le tambour. Ailleurs elles étaient confisquées : sur un écran large, où
+  // le tablist est un rail horizontal, quelqu'un qui tabulait jusqu'à un onglet
+  // et pressait Flèche bas pour faire défiler la page changeait de source à la
+  // place, et la page ne bougeait pas. Le besoin propre au mobile se payait sur
+  // les douze pages. On interroge la même media query que le hook — plutôt que
+  // de lui demander son état, qui n'est pas réactif et se périmerait au premier
+  // changement de largeur.
   const onKeyDown = (e) => {
+    const vertical =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(max-width: 640px)').matches
     const i = sources.findIndex((s) => s.id === active.id)
     let next = null
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % sources.length
-    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp')
+    if (e.key === 'ArrowRight' || (vertical && e.key === 'ArrowDown'))
+      next = (i + 1) % sources.length
+    else if (e.key === 'ArrowLeft' || (vertical && e.key === 'ArrowUp'))
       next = (i - 1 + sources.length) % sources.length
     else if (e.key === 'Home') next = 0
     else if (e.key === 'End') next = sources.length - 1

@@ -50,8 +50,9 @@ const REDUCE_MQ = '(prefers-reduced-motion: reduce)'
 // Géométrie de la roue. L'écart angulaire est CONSTANT et ne dépend pas du
 // nombre de sources : le russe en compte cinq et les trois autres langues sept,
 // et une roue dont le pas changerait avec la langue n'aurait pas la même
-// allure d'une vitrine à l'autre. Au-delà de 90° un rang est passé derrière le
-// cylindre — il est masqué, et rendu insensible au clic.
+// allure d'une vitrine à l'autre. `BACK_DEG` sert de dénominateur au fondu :
+// l'opacité atteint zéro vers 64°, et c'est CE seuil — l'opacité nulle, pas un
+// angle écrit séparément — qui coupe aussi les événements de pointeur.
 const STEP_DEG = 42
 // Pixels de glissement pour faire tourner d'un rang. Un peu moins que la
 // hauteur d'un rang (44px) : le doigt paraît alors entraîner la surface du
@@ -109,7 +110,6 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
     let vel = 0 // rangs par milliseconde
     let raf = 0
     let last = 0
-    let wheelTimer = 0
     let dragging = false
     let dragId = null
     let startY = 0
@@ -128,8 +128,8 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
     const paint = () => {
       // Rien ne s'écrit hors service. Sans cette garde, une image d'animation
       // déjà programmée au moment où l'on repasse en large écran réécrirait
-      // `visibility: hidden` sur les rangs qui étaient derrière le cylindre —
-      // et le rail masthead perdrait trois marques, en silence.
+      // `--o: 0` et `pointer-events: none` sur les rangs qui étaient derrière
+      // le cylindre — et le rail masthead perdrait des marques, en silence.
       if (!on) return
       const n = count()
       for (let i = 0; i < n; i++) {
@@ -143,15 +143,24 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
         // l'écran, pas déduit — les deux conventions se ressemblent trop.
         const a = -ring(i - pos, n) * STEP_DEG
         const abs = Math.abs(a)
-        const back = abs > BACK_DEG
-        el.style.setProperty('--a', `${a.toFixed(2)}deg`)
         // Le fondu suit l'angle et non le rang : pendant le geste, un rang qui
         // s'enfonce s'éteint continûment au lieu de sauter d'un palier.
-        el.style.setProperty('--o', Math.max(0, 1 - (abs / BACK_DEG) * 1.4).toFixed(3))
-        // Un rang passé derrière ne doit ni se voir ni capter un toucher : sa
-        // boîte se superpose sinon à celle du rang de face.
-        el.style.visibility = back ? 'hidden' : ''
-        el.style.pointerEvents = back ? 'none' : ''
+        const o = Math.max(0, 1 - (abs / BACK_DEG) * 1.4)
+        el.style.setProperty('--a', `${a.toFixed(2)}deg`)
+        el.style.setProperty('--o', o.toFixed(3))
+        // UN SEUL SEUIL, ET C'EST L'OPACITÉ QUI LE DONNE. Auparavant la
+        // visibilité se coupait à 90° alors que l'opacité atteignait zéro dès
+        // ~64° : entre les deux, un rang totalement transparent gardait une
+        // boîte de clic écrasée en haut et en bas de la piste, et le toucher
+        // sélectionnait une source dont le nom était invisible.
+        //
+        // ET SURTOUT, PLUS DE `visibility: hidden`. Elle retire l'élément de
+        // l'arbre d'accessibilité, donc les deux rangs passés derrière le
+        // cylindre devenaient infocusables : le `focus()` du roving-tabindex
+        // échouait en silence, puis le bouton qui portait le focus passait à
+        // son tour derrière et le focus tombait sur <body>. La navigation
+        // clavier des onglets mourait. L'opacité, elle, ne retire rien.
+        el.style.pointerEvents = o === 0 ? 'none' : ''
       }
     }
 
@@ -184,7 +193,14 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
           pos += vel * dt
           vel *= Math.pow(FRICTION, dt / 16)
           moving = true
-        } else if (vel !== 0) {
+        } else if (pos !== Math.round(pos)) {
+          // La condition est « la roue n'est pas alignée », pas « il restait de
+          // la vitesse ». Écrite `vel !== 0`, elle laissait un glissement
+          // terminé à vitesse EXACTEMENT nulle — un doigt qui marque une pause
+          // avant de se lever, ce qui est courant — traverser les trois
+          // branches sans jamais poser de cible : la roue s'immobilisait à
+          // ~17° de travers, aucun nom aligné dans la bande, jusqu'au geste
+          // suivant.
           vel = 0
           target = Math.round(pos)
           moving = true
@@ -249,26 +265,14 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
       window.removeEventListener('pointercancel', onUp)
       // Un toucher franc ne lance pas la roue : le onClick du bouton va choisir
       // la marque, et son effet la ramènera au centre par le plus court chemin.
-      if (travel < TAP_PX) {
+      // Sous mouvement réduit, l'inertie est coupée net : une roue qui continue
+      // de tourner seule après le départ du doigt est exactement l'animation
+      // autonome que la préférence demande de supprimer.
+      if (travel < TAP_PX || reduceMq.matches) {
         vel = 0
         target = Math.round(pos)
       }
       kick()
-    }
-
-    // Molette / pavé tactile — utile sur une fenêtre étroite en desktop.
-    const onWheel = (e) => {
-      if (!drumMq.matches) return
-      e.preventDefault()
-      target = null
-      vel = 0
-      pos += e.deltaY / DRAG_PX
-      paint()
-      clearTimeout(wheelTimer)
-      wheelTimer = setTimeout(() => {
-        target = Math.round(pos)
-        kick()
-      }, 90)
     }
 
     const clean = () => {
@@ -277,6 +281,9 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
         if (!el) continue
         el.style.removeProperty('--a')
         el.style.removeProperty('--o')
+        // `visibility` n'est plus jamais posée, mais on continue de la retirer :
+        // un DOM déjà peint par la version précédente du hook en porterait
+        // encore, et un rang invisible sur le rail masthead ne se voit pas.
         el.style.removeProperty('visibility')
         el.style.removeProperty('pointer-events')
       }
@@ -286,7 +293,6 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
       on = true
       track.classList.add('is-drum')
       track.addEventListener('pointerdown', onDown)
-      track.addEventListener('wheel', onWheel, { passive: false })
       pos = indexOfActive()
       target = null
       vel = 0
@@ -297,14 +303,12 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
       on = false
       track.classList.remove('is-drum')
       track.removeEventListener('pointerdown', onDown)
-      track.removeEventListener('wheel', onWheel)
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerup', onUp)
       window.removeEventListener('pointercancel', onUp)
       dragging = false
       if (raf) cancelAnimationFrame(raf)
       raf = 0
-      clearTimeout(wheelTimer)
       clean()
     }
 
@@ -326,8 +330,9 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
     // fait basculer `matches` SANS émettre l'événement (constaté dans Chrome
     // avec un écouteur témoin indépendant). Le prix d'un oubli est laid — la
     // classe reste, et les rangs qui étaient derrière le cylindre gardent leur
-    // `visibility: hidden` sur le rail large écran, où trois marques
-    // disparaissent alors purement et simplement. `resize`, lui, part toujours.
+    // `pointer-events: none` et une opacité nulle sur le rail large écran, où
+    // des marques deviennent invisibles et inertes. `resize`, lui, part
+    // toujours.
     window.addEventListener('resize', sync)
     apiRef.current = { goTo, sync, isOn: () => on }
 

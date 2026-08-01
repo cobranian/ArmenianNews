@@ -1443,9 +1443,18 @@ html:lang(hy) .nav__brand {
   .newsfeed__tabwrap::before {
     content: '';
     position: absolute;
-    inset: 50% 0 auto;
+    top: 50%;
+    left: 50%;
+    /* LA BANDE ÉCLAIRE LA PISTE, DONC ELLE FAIT SA LARGEUR.
+       Écrite `inset: 50% 0 auto`, elle prenait toute la largeur du conteneur
+       alors que la piste est plafonnée à 340px : au-delà de ~405px de fenêtre,
+       30 à 80px de filet abricot nu dépassaient de chaque côté des noms. Lu sur
+       un téléphone en paysage, cela ressemble à une bordure parasite à gauche
+       et à droite du sélecteur — le symptôme même qui a lancé cette revue. Les
+       deux valeurs doivent rester identiques à celles de .newsfeed__tabs. */
+    width: min(84%, 340px);
     height: 44px;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     pointer-events: none;
     background:
       linear-gradient(90deg, transparent, var(--line-apricot) 17%, var(--line-apricot) 83%, transparent)

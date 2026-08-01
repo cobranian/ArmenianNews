@@ -347,19 +347,26 @@ export function Radio({ more = true }) {
     enabled: !stationsOpen,
   })
 
-  // Le repli sans JavaScript reste une rangée qui défile (la classe `is-drum`
-  // vient du hook, pas du rendu). Dans ce cas seulement, on amène la puce
-  // active dans le champ : sinon quelqu'un qui écoute la douzième station
-  // verrait les deux premières et se croirait ailleurs. `block: 'nearest'` est
-  // essentiel — sans lui l'appel ferait aussi défiler la PAGE jusqu'à la
-  // console, alors qu'on ne veut bouger que la rangée.
+  // Quand la rangée défile (repli sans JavaScript, ou au-dessus de 640px si
+  // elle déborde), on amène la puce active dans le champ : sinon quelqu'un qui
+  // écoute la douzième station verrait les deux premières et se croirait
+  // ailleurs.
+  //
+  // ON ÉCRIT `scrollLeft` À LA MAIN, ET SURTOUT PAS `scrollIntoView`.
+  // `scrollIntoView` fait défiler TOUS les ancêtres défilables, document
+  // compris ; `block: 'nearest'` n'est inerte que si l'élément est DÉJÀ
+  // visible, ce qui n'est jamais le cas au montage puisque la console est sous
+  // le pli. Avec `html { scroll-behavior: smooth }`, la page glissait donc
+  // toute seule par-dessus le héros jusqu'aux puces, à chaque chargement, sur
+  // les douze pages. Mesuré : scrollY 0 → 485px en une seconde à 900px de
+  // large. Écrire `scrollLeft` sur la piste ne peut, par construction, bouger
+  // qu'elle.
   useEffect(() => {
     const piste = stationsRef.current
     if (stationsOpen || !piste || piste.classList.contains('is-drum')) return
-    piste.querySelector('.radio__chip.is-active')?.scrollIntoView({
-      inline: 'center',
-      block: 'nearest',
-    })
+    const puce = piste.querySelector('.radio__chip.is-active')
+    if (!puce) return
+    piste.scrollLeft = puce.offsetLeft - (piste.clientWidth - puce.offsetWidth) / 2
   }, [stationId, stationsOpen])
 
   return (
