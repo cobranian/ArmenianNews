@@ -31,14 +31,23 @@ export const SITES = {
     // ET la langue du domaine, donc elle ne peut pas être partagée. Chemin
     // depuis la racine du domaine ; le fichier vit dans public/.
     //
-    // Les deux noms sont ASYMÉTRIQUES à dessein. Le .ch garde `og-image.jpg`
-    // parce que Facebook et WhatsApp ont déjà cette URL en cache : la
-    // renommer forcerait un re-scrape de tous les partages existants, pour
-    // rien. Le .org prend un nom neuf, ce qui au contraire lui est utile —
-    // il servait jusqu'ici la carte FRANÇAISE du .ch (même fichier dans
-    // public/, copié par Vite dans les deux dist/), et une URL neuve casse ce
-    // cache-là au lieu d'attendre que les scrapers reviennent d'eux-mêmes.
-    ogImage: '/og-image.jpg',
+    // Les deux noms sont désormais SYMÉTRIQUES — `-ch` et `-org`. Le .ch a
+    // longtemps gardé `og-image.jpg` tout court, parce qu'une URL déjà en
+    // cache chez Facebook et WhatsApp n'a rien à gagner à changer de nom. Le
+    // calcul s'est inversé le 1er août 2026 : la carte a été redessinée
+    // (l'Ararat se regarde depuis l'Arménie, cf. CLAUDE.md) et il fallait au
+    // contraire que les scrapers cessent de resservir l'ancienne. Un nom neuf
+    // est le seul levier ; il n'existe aucun outil public pour purger ces
+    // caches. C'est exactement le raisonnement qu'avait suivi le .org.
+    //
+    // `public/og-image.jpg` SUBSISTE et ne doit pas être supprimé : plus
+    // aucune page ne le référence, mais des aperçus en circulation le
+    // pointent encore. Firebase réécrit tout chemin manquant vers index.html
+    // et le sert en 200 — un scraper y verrait donc une image cassée plutôt
+    // qu'un 404 franc. Le fichier porte le MÊME dessin que `og-image-ch.jpg`
+    // au jour de la bascule ; il n'est plus régénéré (og-image.mjs écrit sur
+    // `ogImage`), et c'est sans conséquence : son seul rôle est de répondre.
+    ogImage: '/og-image-ch.jpg',
     // Pages autonomes de cette vitrine : un HTML complet hors du bundle React,
     // copié de `pages/<nom>.<siteId>.html` vers `dist/<siteId>/<nom>.html`.
     // La liste est PAR SITE et non globale — le .org n'a pas d'équivalent de

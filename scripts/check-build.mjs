@@ -222,6 +222,30 @@ for (const site of Object.values(SITES)) {
     bad++
   }
 
+  // La carte HÉRITÉE du .ch. Plus aucune page ne la référence — le .ch est
+  // passé à `og-image-ch.jpg` le 1er août 2026 pour casser le cache des
+  // réseaux après le redessin de l'Ararat — mais des aperçus en circulation la
+  // pointent encore. La supprimer ne casserait aucun test, aucun build et
+  // aucune page : elle ne rendrait un 200 d'`index.html` à ceux qui la
+  // demandent, que les scrapers lisent comme une image cassée. Exactement le
+  // piège du bloc ci-dessus, sur un fichier que plus rien ne relie au code —
+  // donc que rien ne protégerait sans cette ligne.
+  if (site.id === 'ch') {
+    const legacy = path.join(dir, 'og-image.jpg')
+    try {
+      const { size } = await stat(legacy)
+      if (size < 1024) throw new Error('trop petit')
+      console.log(`✓ dist/ch/og-image.jpg (héritée, ${(size / 1024).toFixed(0)} ko)`)
+    } catch {
+      console.error(
+        '✗ dist/ch/og-image.jpg — la carte héritée a disparu.\n' +
+          "    Elle n'est plus référencée mais reste demandée par les aperçus\n" +
+          '    déjà partagés ; sans elle, Firebase sert index.html en 200.',
+      )
+      bad++
+    }
+  }
+
   // Pages autonomes (cartes de liens). Le mode d'échec visé n'est pas
   // « absente » mais « celle du voisin » : la carte française déployée sur
   // armenianews.org se sert sans la moindre erreur, en français, avec la

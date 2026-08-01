@@ -368,13 +368,27 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   supprimer `<!--CF_BEACON-->` couperait la mesure des deux vitrines sans
   qu'aucun build ne s'en plaigne.
 - **La carte de partage (`og:image`) est propre à chaque vitrine**, décrite par
-  `ogImage` dans `sites.config.js` : `/og-image.jpg` pour le .ch (français),
-  `/og-image-org.jpg` pour le .org (anglais). Les deux noms sont
-  **asymétriques à dessein** — le .ch garde le sien parce que Facebook et
-  WhatsApp l'ont déjà en cache, le .org en prend un neuf justement pour casser
-  ce cache, puisqu'il servait jusqu'ici la carte française. Elle suit la
-  **vitrine et non la langue** : les trois pages du .org partagent la carte
-  anglaise, la marque étant unique par domaine.
+  `ogImage` dans `sites.config.js` : `/og-image-ch.jpg` pour le .ch (français),
+  `/og-image-org.jpg` pour le .org (anglais). Elle suit la **vitrine et non la
+  langue** : les trois pages du .org partagent la carte anglaise, la marque
+  étant unique par domaine.
+
+  **Renommer une carte est le SEUL moyen de casser le cache des réseaux**, et
+  c'est pour cela que les deux portent aujourd'hui un suffixe. Facebook et
+  WhatsApp gardent l'aperçu d'une URL plusieurs jours, sans outil public de
+  purge : tant que le nom du fichier ne change pas, une carte redessinée reste
+  invisible pour tous les partages déjà en circulation. Le .ch s'appelait
+  `og-image.jpg` tout court jusqu'au 1er août 2026 — le calcul s'est inversé
+  quand sa carte a été redessinée (l'Ararat, plus bas).
+
+  **`public/og-image.jpg` subsiste, et ne doit pas être supprimé.** Plus
+  aucune page ne le référence, mais des aperçus en circulation le pointent
+  encore — et Firebase réécrit tout chemin manquant vers `index.html` qu'il
+  sert en **200**, donc un scraper y lirait une image cassée plutôt qu'un 404
+  franc. C'est le même piège que celui déjà documenté pour une balise
+  `og:image` parfaite pointant un fichier absent. `npm run check` vérifie donc
+  sa présence en plus de celle des deux cartes vives ; il n'est plus régénéré,
+  et c'est sans conséquence — son seul rôle est de répondre.
   `scripts/og-image.mjs` (`npm run og-image`) la régénère depuis la marque de
   `sites.config.js` et les baselines d'`i18n` — **étape manuelle locale**, elle
   a besoin d'un Chrome et des Google Fonts. Deux pièges y sont désamorcés :
