@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T15:00:40.932Z",
+  "generatedAt": "2026-08-01T16:04:17.494Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -2110,6 +2110,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Dans la région de Tavush au nord-est de l’Arménie, se déplacer d’une communauté à l’autre et rejoindre le chef-lieu régional Idjevan représente un défi majeur en l’absence d’un réseau public de transport",
+          "url": "https://www.armenews.com/dans-la-region-de-tavush-au-nord-est-de-larmenie-se-deplacer-dune-communaute-a-lautre-et-rejoindre-le-chef-lieu-regional-idjevan-represente-un-defi-majeur-en-labsence-d/",
+          "date": "2026-08-01T15:43:48.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8899.jpg"
+        },
+        {
           "title": "Le parti « Arménie forte » a publié la composition de son groupe parlementaire de 29 députés l’Assemblée nationale arménienne",
           "url": "https://www.armenews.com/le-parti-armenie-forte-a-publie-la-composition-de-son-groupe-parlementaire-de-29-deputes-lassemblee-nationale-armenienne/",
           "date": "2026-08-01T13:48:28.000Z",
@@ -2162,12 +2168,6 @@
           "url": "https://www.armenews.com/des-marches-publics-a-plusieurs-millions-de-drams-le-succes-des-entreprises-des-epouses-de-responsables-dans-le-lori/",
           "date": "2026-08-01T06:30:45.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/Screenshot-2026-08-01-at-07-23-32-%D5%84%D5%AB%D5%AC%D5%AB%D5%B8%D5%B6%D5%B6%D5%A5%D6%80%D5%AB-%D5%BF%D5%A5%D5%B6%D5%A4%D5%A5%D6%80%D5%B6%D5%A5%D6%80.-%D5%BA%D5%A1%D5%B7%D5%BF%D5%B8%D5%B6%D5%B5%D5%A1%D5%B6%D5%A5%D6%80%D5%AB-%D5%AF%D5%A1%D5%B6%D5%A1%D5%B6%D6%81-%D5%B0%D5%A1%D5%BB%D5%B8%D5%B2%D5%A1%D5%AF-%D5%A2%D5%AB%D5%A6%D5%B6%D5%A5%D5%BD%D5%A8-%D4%BC%D5%B8%D5%BC%D5%AB%D5%B8%D6%82%D5%B4.png"
-        },
-        {
-          "title": "Les produits agricoles et les produits de la pêche arméniens font leur entrée sur le marché géorgien",
-          "url": "https://www.armenews.com/les-produits-agricoles-et-les-produits-de-la-peche-armeniens-font-leur-entree-sur-le-marche-georgien/",
-          "date": "2026-08-01T06:30:42.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/ua8zysfkhk6ugfqapjw9d28xs8z1ullx.jpeg"
         }
       ]
     },
@@ -2741,10 +2741,10 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/hebdo-histoire-2026-07-31-1.png"
         },
         {
-          "title": "Dialogue énergétique Arménie-Iran et diversification régionale",
-          "url": "https://armenieinfo.tv/dialogue-energetique-armenie-iran-et-diversification-regionale/",
+          "title": "Le Choix Souverain de l’Arménie et les Nouvelles Réalités Politiques",
+          "url": "https://armenieinfo.tv/le-choix-souverain-de-larmenie-et-les-nouvelles-realites-politiques/",
           "date": "2026-07-31T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1785290585-8323.jpg"
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1785289271-3580.jpg"
         }
       ]
     },
@@ -5529,12 +5529,6 @@
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31142538/0731nazaryan.jpg"
           },
           {
-            "title": "Մէկ Հանրապետութիւն, Մէկ Ազգ, Մէկ Դրօշ",
-            "url": "https://asbarez.am/archives/506607",
-            "date": "2026-07-31T21:17:27.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31141514/0730RA.jpg"
-          },
-          {
             "title": "Հին Եւ Նոր Երկու «Աշխարհներ»",
             "url": "https://asbarez.am/archives/506605",
             "date": "2026-07-31T21:13:33.000Z",
@@ -5545,6 +5539,12 @@
             "url": "https://asbarez.am/archives/506601",
             "date": "2026-07-31T20:41:58.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31134111/0731Paris1.jpg"
+          },
+          {
+            "title": "Տերսիմի Հայկական Մեծագոյն Եկեղեցին Փլուզման Եզրին Է",
+            "url": "https://asbarez.am/archives/506598",
+            "date": "2026-07-31T20:38:23.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31133746/0731Dersim.jpg"
           }
         ]
       },
@@ -5685,22 +5685,10 @@
         "label": "Յօդուածներ",
         "articles": [
           {
-            "title": "Մէկ Հանրապետութիւն, Մէկ Ազգ, Մէկ Դրօշ",
-            "url": "https://asbarez.am/archives/506607",
-            "date": "2026-07-31T21:17:27.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31141514/0730RA.jpg"
-          },
-          {
             "title": "Բարեկամութեան Հիմքը",
             "url": "https://asbarez.am/archives/506531",
             "date": "2026-07-30T18:12:00.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2023/03/17140207/0000Chifjian-book2-1.jpg"
-          },
-          {
-            "title": "Ամօթ, Հազար Ամօթ․․․",
-            "url": "https://asbarez.am/archives/506426",
-            "date": "2026-07-28T19:28:53.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2025/03/27120302/0000madlenmardirosian-1.jpg"
           },
           {
             "title": "Թրքահայ Համայնքի Ներկայ Կացութիւնը",
@@ -5725,6 +5713,18 @@
             "url": "https://asbarez.am/archives/506224",
             "date": "2026-07-23T21:39:44.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/23143826/0000AK-Gin1.jpg"
+          },
+          {
+            "title": "Մէկ Հանրապետութիւն, Մէկ Ազգ, Մէկ Դրօշ",
+            "url": "https://asbarez.am/archives/506607",
+            "date": "2026-07-23T21:17:00.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31141514/0730RA.jpg"
+          },
+          {
+            "title": "Ամօթ, Հազար Ամօթ․․․",
+            "url": "https://asbarez.am/archives/506426",
+            "date": "2026-07-23T19:28:00.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2025/03/27120302/0000madlenmardirosian-1.jpg"
           },
           {
             "title": "Քնեսեթի Իսկական Դերը Ներկայ Խաղին Մէջ",
@@ -8379,6 +8379,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Nicole Kidman Takes a Spin in a $340K Ferrari with Rumored New Boyfriend",
+            "url": "https://style.news.am/eng/news/115407/",
+            "date": "2026-08-01T15:23:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115407.jpg"
+          },
+          {
             "title": "Trump’s $5M \"Golden\" Horse Statues Spark Heated Debate in D.C.",
             "url": "https://style.news.am/eng/news/115406/",
             "date": "2026-08-01T14:18:00.000Z",
@@ -8431,12 +8437,6 @@
             "url": "https://style.news.am/eng/news/115395/",
             "date": "2026-07-31T19:02:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/07/115395.jpg"
-          },
-          {
-            "title": "\"Smart\" Toilet Cameras: How AI Scanners and Stool Analysis Became Influencers' Latest Obsession",
-            "url": "https://style.news.am/eng/news/115394/",
-            "date": "2026-07-31T18:19:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/07/115394.jpg"
           }
         ]
       },
@@ -8511,6 +8511,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Study: Blood test identifies unique hormonal signature of endometriosis",
+            "url": "https://med.news.am/eng/news/41617/study-blood-test-identifies-unique-hormonal-signature-of-endometriosis.html",
+            "date": "2026-08-01T15:30:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41617.jpg"
+          },
+          {
             "title": "Study: Former footballers show higher rates of depression and anxiety",
             "url": "https://med.news.am/eng/news/41616/study-former-footballers-show-higher-rates-of-depression-and-anxiety.html",
             "date": "2026-08-01T08:25:00.000Z",
@@ -8563,12 +8569,6 @@
             "url": "https://med.news.am/eng/news/41604/journal-of-the-american-nutrition-association-study-identifies-four-foods-people-most-often-misjudge-as-healthy.html",
             "date": "2026-07-30T14:36:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/07/41604.jpg"
-          },
-          {
-            "title": "Nutrients: Inulin reduced osteoarthritis pain and improved muscle strength within six weeks",
-            "url": "https://med.news.am/eng/news/41602/nutrients-inulin-reduced-osteoarthritis-pain-and-improved-muscle-strength-within-six-weeks.html",
-            "date": "2026-07-30T12:24:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/07/41602.jpg"
           }
         ]
       },
@@ -8777,6 +8777,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Չեխիայի ԱԳ նախարարը հույս ունի, որ ՆԱՏՕ Անկարայի գագաթաժողովը Պետր Պավելի համար վերջինն էր որպես նախագահի",
+            "url": "https://news.am/hy/news/1052894",
+            "date": "2026-08-01T15:21:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/KvCA3gAYf74syk7t.webp"
+          },
+          {
             "title": "Լիտվայի վարչապետի դոկտորական ատենախոսությունը հետաքննության առարկա է դարձել հնարավոր գրագողության պատճառով",
             "url": "https://news.am/hy/news/1052879",
             "date": "2026-08-01T13:26:00.000Z",
@@ -8829,12 +8835,6 @@
             "url": "https://news.am/hy/news/1052825",
             "date": "2026-08-01T04:17:52.000Z",
             "image": "https://news.am/storage/media/26/06/26/uiW1vVxrQIl9pXZ0.webp"
-          },
-          {
-            "title": "Դավիթ Թադևոսյանը՝ ԲՏԱ նախարարի թեկնածու. «Միջազգային ռադիոցանցից» մինչև կառավարության բարձրագույն օղակ. «Ժողովուրդ»",
-            "url": "https://news.am/hy/news/1052823",
-            "date": "2026-08-01T04:11:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/CsZVnz4rQWmiAoj6.webp"
           }
         ]
       },
@@ -9041,6 +9041,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Նիկոլ Քիդմանը 340,000 դոլար արժողությամբ Ferrari-ով շրջելու է դուրս եկել իր նոր ընկերոջ հետ",
+            "url": "https://style.news.am/arm/news/115407/",
+            "date": "2026-08-01T15:23:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115407.jpg"
+          },
+          {
             "title": "Թրամփի՝ 5 միլիոն դոլար արժողությամբ «ոսկե» ձիերը թեժ վիճաբանություն են առաջացրել",
             "url": "https://style.news.am/arm/news/115406/",
             "date": "2026-08-01T14:18:00.000Z",
@@ -9093,12 +9099,6 @@
             "url": "https://style.news.am/arm/news/115408/",
             "date": "2026-08-01T06:31:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115408.jpg"
-          },
-          {
-            "title": "ՕԳՈՍՏՈՍԻ 1-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
-            "url": "https://style.news.am/arm/news/115397/",
-            "date": "2026-08-01T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115397.jpg"
           }
         ]
       },
@@ -9173,6 +9173,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Արյան անալիզը բացահայտում է բնորոշ հորմոնալ պրոֆիլ էնդոմետրիոզի ժամանակ. հետազոտություն",
+            "url": "https://med.news.am/arm/news/41617/aryan-analizy-bacahaytum-e-bnorosh-hormonal-profil-endometriozi-zhamanak-hetazotutyun.html",
+            "date": "2026-08-01T15:30:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41617.jpg"
+          },
+          {
             "title": "Օրաբաժնում բույսերի բազմազանությունը կարող է ավելի օգտակար լինել աղիների առողջության համար, քան պրոբիոտիկները․ BJN",
             "url": "https://med.news.am/arm/news/41619/orabazhnum-buyseri-bazmazanutyuny-karox-e-aveli-ogtakar-linel-axineri-aroxjutyan-hamar-qan-probiotiknery%E2%80%A4-bjn.html",
             "date": "2026-08-01T12:34:00.000Z",
@@ -9225,12 +9231,6 @@
             "url": "https://med.news.am/arm/news/41612/hrazdani-bzhshkakan-kentronum-luys-ashkharh-e-ekel-hertakan-hskan.html",
             "date": "2026-07-31T10:57:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/07/41612.jpg"
-          },
-          {
-            "title": "Եվրոպացի երեխաները դառնում են ավելի թույլ և պակաս ճկուն․ հետազոտություն",
-            "url": "https://med.news.am/arm/news/41609/evropaci-erekhanery-darnum-en-aveli-tuyl-ev-pakas-tchkun%E2%80%A4-hetazotutyun.html",
-            "date": "2026-07-31T08:45:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/07/41609.jpg"
           }
         ]
       },
@@ -9439,6 +9439,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Глава МИД Чехии надеется, что саммит НАТО в Анкаре был последним для Петра Павела в качестве президента",
+            "url": "https://news.am/ru/news/1052894",
+            "date": "2026-08-01T15:21:00.000Z",
+            "image": "https://news.am/storage/media/26/08/01/KvCA3gAYf74syk7t.webp"
+          },
+          {
             "title": "Докторская диссертация премьера Литвы стала предметом расследования из-за возможного плагиата",
             "url": "https://news.am/ru/news/1052879",
             "date": "2026-08-01T13:26:00.000Z",
@@ -9491,12 +9497,6 @@
             "url": "https://news.am/ru/news/1052825",
             "date": "2026-08-01T04:17:52.000Z",
             "image": "https://news.am/storage/media/26/06/26/uiW1vVxrQIl9pXZ0.webp"
-          },
-          {
-            "title": "Давид Тадевосян — кандидат на пост министра ВТП: от «Международной радиосети» до высшего звена правительства - «Жоховурд»",
-            "url": "https://news.am/ru/news/1052823",
-            "date": "2026-08-01T04:11:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/CsZVnz4rQWmiAoj6.webp"
           }
         ]
       },
@@ -9571,6 +9571,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "БКМА и «Ширак» не выявили победителя",
+            "url": "https://sport.news.am/rus/news/168054/",
+            "date": "2026-08-01T15:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168054.jpg"
+          },
+          {
             "title": "«Интер» в серии пенальти обыграл «Манчестер Сити», Мхитарян отыграл первый тайм (видео)",
             "url": "https://sport.news.am/rus/news/168053/",
             "date": "2026-08-01T13:38:00.000Z",
@@ -9623,12 +9629,6 @@
             "url": "https://sport.news.am/rus/news/168032/",
             "date": "2026-07-31T09:35:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/168032.jpg"
-          },
-          {
-            "title": "«Реал» объявил о переходе лучшего молодого футболиста прошлого сезона Ла Лиги",
-            "url": "https://sport.news.am/rus/news/168031/",
-            "date": "2026-07-31T08:20:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168031.jpg"
           }
         ]
       },
@@ -9703,6 +9703,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Николь Кидман прокатилась на Ferrari за $340 000 с новым возлюбленным",
+            "url": "https://style.news.am/rus/news/115407/",
+            "date": "2026-08-01T15:23:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115407.jpg"
+          },
+          {
             "title": "«Золотые» кони Трампа за $5 млн вызвали бурные споры",
             "url": "https://style.news.am/rus/news/115406/",
             "date": "2026-08-01T14:18:00.000Z",
@@ -9755,12 +9761,6 @@
             "url": "https://style.news.am/rus/news/115408/",
             "date": "2026-08-01T06:31:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115408.jpg"
-          },
-          {
-            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 1 АВГУСТА",
-            "url": "https://style.news.am/rus/news/115397/",
-            "date": "2026-08-01T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115397.jpg"
           }
         ]
       },
@@ -9835,6 +9835,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Исследование: Анализ крови выявляет уникальный гормональный профиль при эндометриозе",
+            "url": "https://med.news.am/rus/news/41617/issledovanie-analiz-krovi-viyyavlyaet-unikalniyiy-gormonalniyiy-profil-pri-endometrioze.html",
+            "date": "2026-08-01T15:30:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41617.jpg"
+          },
+          {
             "title": "BJN: Разнообразие растений в рационе может быть полезнее пробиотиков для здоровья кишечника",
             "url": "https://med.news.am/rus/news/41619/bjn-raznoobrazie-rasteniiy-v-racione-mozhet-biyt-poleznee-probiotikov-dlya-zdorovya-kishechnika.html",
             "date": "2026-08-01T12:34:00.000Z",
@@ -9887,12 +9893,6 @@
             "url": "https://med.news.am/rus/news/41609/issledovanie-evropeiyskie-deti-stanovyatsya-slabee-i-menee-gibkimi.html",
             "date": "2026-07-31T08:45:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/07/41609.jpg"
-          },
-          {
-            "title": "Comprehensive Physiology: Йога может облегчить симптомы синдрома раздраженного кишечника",
-            "url": "https://med.news.am/rus/news/41606/comprehensive-physiology-iyoga-mozhet-oblegchit-simptomiy-sindroma-razdrazhennogo-kishechnika.html",
-            "date": "2026-07-31T04:35:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/07/41606.jpg"
           }
         ]
       },
