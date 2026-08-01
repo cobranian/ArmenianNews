@@ -936,10 +936,14 @@ de production servent toujours depuis la racine de leur domaine.
   l'image entière** suffit pour les favicons matriciels — ce qui préserve
   couleurs et anticrénelage, là où un nouveau rendu les changerait.
 
-  Deux fichiers gardent volontairement l'ancien sens : `public/og-image.jpg` et
-  `og-image-org.jpg`. Leurs URL sont partagées et en cache chez Facebook et
-  WhatsApp, et `npm run og-image` ne doit pas être relancé sur `ch` (voir plus
-  haut). Ils se corrigeront le jour où une nouvelle carte sera cuite.
+  Les deux cartes de partage ont suivi le 1er août 2026, et **c'est la
+  première fois que le `.ch` sort de `og-image.mjs`** — sa carte lui était
+  antérieure. Le piège s'est refermé aussitôt : le gabarit ne savait pas rendre
+  la marque en écriture arménienne que l'ancienne carte portait sous le titre
+  latin, donc la première régénération l'a **effacée en silence**. Un JPEG
+  valide, 1200×630, sans ICC, sous les 600 ko — tous les contrôles au vert, une
+  ligne en moins. D'où `subbrand` dans `CARDS`. **Avant de régénérer une carte,
+  ouvrez l'ancienne à côté** : ce script ne rend que ce qu'on lui a appris.
 - **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
   la renvoie vide et `backfillSections` restitue les articles du
   snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc

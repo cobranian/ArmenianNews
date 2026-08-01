@@ -37,10 +37,19 @@
  *    la page avec les polices de secours : le rendu part en Times, personne ne
  *    voit d'erreur, et le fichier est écrit quand même.
  *
- * Le .ch n'a PAS été produit par ce script (sa carte lui est antérieure). Le
- * relancer sur `ch` réécrirait `public/og-image.jpg` avec un rendu très proche
- * mais pas identique au pixel — sans raison de le faire, ne le faites pas :
- * l'URL de cette image est déjà en cache chez Facebook et WhatsApp.
+ * 4. **Ce script rend MOINS que la carte qu'il remplace, et ça s'est vu.** Le
+ *    .ch n'était pas né d'ici : sa carte portait, sous le titre latin, la
+ *    marque en écriture arménienne, que le gabarit ignorait. La première
+ *    régénération l'a donc effacée — un fichier valide, aux bonnes dimensions,
+ *    simplement amputé d'une ligne, ce qu'aucun contrôle ne mesure. D'où
+ *    `subbrand` dans CARDS. Avant de régénérer, COMPAREZ à l'ancienne image :
+ *    ce script ne sait rendre que ce qu'on lui a appris.
+ *
+ * Les deux cartes sont désormais produites ici (le .ch depuis le 1er août
+ * 2026, pour suivre le miroir de l'Ararat). Régénérer reste une opération à ne
+ * pas faire à la légère : l'URL d'une carte est en cache plusieurs jours chez
+ * Facebook et WhatsApp, donc le nouvel aperçu ne remplace pas l'ancien tout de
+ * suite — et le nom du fichier ne change pas.
  */
 import { writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -65,10 +74,25 @@ const TEXT = '#f3ecdb'
 const CARDS = {
   ch: {
     kicker: 'ACTUALITÉS · AGENDA · RÉSEAUX',
+    // La marque en écriture arménienne, sous le titre latin. C'est
+    // `STRINGS.hy['site.title']` de src/i18n.jsx — une TRANSLITTÉRATION (le son
+    // du nom latin en lettres arméniennes), pas une traduction. Recopiée ici
+    // plutôt qu'importée : Node ne sait pas lire du JSX, même raison que
+    // test/radio-count.test.mjs, qui lit i18n.jsx comme du texte.
+    //
+    // Elle est là parce que la carte .ch la portait DÉJÀ : c'est la seule
+    // chose que ce script ne savait pas rendre, et la première régénération
+    // l'a donc effacée en silence. Une carte ne doit pas perdre une ligne
+    // parce qu'on retourne une montagne.
+    subbrand: 'Արմենիա Ինֆո',
     tagline: 'Un instantané horaire de la vie arménienne',
   },
   org: {
     kicker: 'NEWS · EVENTS · SOCIAL',
+    // Pas de sous-titre arménien ici, et c'est voulu : la carte du .org n'en a
+    // jamais porté, et sa marque est déjà « Armenia News » sur les trois
+    // langues du domaine.
+    subbrand: null,
     tagline: 'An hourly snapshot of Armenian life',
   },
 }
@@ -77,11 +101,6 @@ const CARDS = {
 // public/favicon.svg, mais dessiné au trait plutôt que rempli : c'est la même
 // marque que l'onglet du navigateur, pas un deuxième logo à entretenir.
 // Masis (le haut) à DROITE — la vue depuis l'Arménie. Voir public/favicon.svg.
-//
-// ATTENTION : les deux .jpg déjà en `public/` portent encore l'ancienne
-// orientation, et ils ne seront pas régénérés (leurs URL sont partagées et en
-// cache chez Facebook et WhatsApp — cf. CLAUDE.md). Cette constante ne vaut
-// donc que pour une future carte.
 const ARARAT = 'M3 51 L20.5 19 L30 30.5 L40.5 12 L61 51 Z'
 
 /**
@@ -133,7 +152,12 @@ function html(siteId) {
 <meta charset="utf-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+<!-- Noto Serif Armenian : Fraunces ne porte AUCUN glyphe arménien, donc sans
+     elle « Արմենիա Ինֆո » tomberait sur une police de secours — et comme on
+     attend document.fonts.ready, la capture partirait quand même, en Times,
+     sans erreur. (Pas de backtick dans ce commentaire : il vit à l'intérieur
+     du gabarit littéral et le terminerait.) -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Noto+Serif+Armenian:wght@600&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1200px; height: 630px; }
@@ -167,6 +191,15 @@ function html(siteId) {
     font-optical-sizing: auto; letter-spacing: -0.015em;
     margin-top: 26px;
   }
+  /* Noto Serif Armenian n'embarque pas d'italique : ne lui en demandez pas,
+     le navigateur en synthétiserait un penché mécanique — et l'arménien n'a
+     pas d'italique de tradition (même règle que le bloc html:lang(hy) de
+     global.css). Aucun backtick ici : ce CSS vit dans le gabarit littéral. */
+  .subbrand {
+    font-family: 'Noto Serif Armenian', Georgia, serif;
+    font-weight: 600; font-size: 48px; line-height: 1.1;
+    color: ${APRICOT}; margin-top: 16px;
+  }
   .rule {
     width: 140px; height: 1px; margin: 46px 0 0;
     background: rgba(243, 236, 219, 0.28);
@@ -189,6 +222,7 @@ function html(siteId) {
     <div class="kicker">${card.kicker}</div>
     <svg class="peaks" viewBox="0 0 64 64" aria-hidden="true"><path d="${ARARAT}" /></svg>
     <div class="brand">${site.brand}</div>
+    ${card.subbrand ? `<div class="subbrand">${card.subbrand}</div>` : ''}
     <div class="rule"></div>
     <div class="tagline">${card.tagline}</div>
     <div class="domain">${domain}</div>
