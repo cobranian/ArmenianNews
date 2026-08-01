@@ -1,11 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Arménie Info">
   <!-- Ararat's twin peaks — Masis and Sis — in apricot on basalt, the site's
        own palette. The nav's khachkar knot is a fine-line ornament and turns
-       to mush at 16px; the mountain silhouette survives it. -->
+       to mush at 16px; the mountain silhouette survives it.
+
+       ORIENTATION: Masis (the tall one) on the RIGHT, Sis on the LEFT. That is
+       the view FROM ARMENIA, and it is not a matter of taste. Sis lies east of
+       Masis; Yerevan looks south at both, and facing south puts east on your
+       left — so Masis stands to the right. The mirrored arrangement, which
+       this file carried until now, is the view from the Turkish side. Every
+       photograph taken from Yerevan shows it this way. If you ever redraw
+       these peaks, check which one is taller before placing them. -->
   <rect width="64" height="64" rx="13" fill="#100f0d"/>
-  <path d="M3 51 L23.5 12 L34 30.5 L43.5 19 L61 51 Z" fill="#f2a93b"/>
+  <path d="M3 51 L20.5 19 L30 30.5 L40.5 12 L61 51 Z" fill="#f2a93b"/>
   <!-- snow facets: basalt cut into the apricot, invisible at 16px, alive at 64 -->
-  <path d="M23.5 12 L28.8 21.5 L21.6 23.6 L26.8 28.8 L34 30.5 Z" fill="#100f0d" opacity="0.32"/>
-  <path d="M43.5 19 L46.6 25 L41.4 26.2 L45.6 30 Z" fill="#100f0d" opacity="0.32"/>
+  <path d="M40.5 12 L35.2 21.5 L42.4 23.6 L37.2 28.8 L30 30.5 Z" fill="#100f0d" opacity="0.32"/>
+  <path d="M20.5 19 L17.4 25 L22.6 26.2 L18.4 30 Z" fill="#100f0d" opacity="0.32"/>
   <rect x="3" y="53.6" width="58" height="2.8" rx="1.4" fill="#c97d1e"/>
 </svg>

@@ -919,6 +919,27 @@ de production servent toujours depuis la racine de leur domaine.
 
   C'est le pendant, côté données, de la règle du skill `verifier-le-rendu` : ne
   publiez jamais un chiffre obtenu une seule fois par un seul chemin.
+- **L'Ararat de la marque se regarde DEPUIS L'ARMÉNIE : Masis, le plus haut, à
+  DROITE.** Ce n'est pas un choix graphique. Sis est à l'**est** de Masis ;
+  Erevan regarde vers le sud, et face au sud l'est tombe à gauche — donc Masis
+  se dresse à droite. L'arrangement inverse est la vue depuis le versant turc.
+  Le site l'a porté à l'envers jusqu'au 1er août 2026, et **rien ne pouvait le
+  dire** : un tracé miroir est un SVG parfaitement valide. Il a fallu un
+  lecteur.
+
+  Le piège pratique est ailleurs : **le glyphe est recopié dans cinq fichiers**
+  — `public/favicon.svg` (la source, qui porte le raisonnement en commentaire),
+  les trois `pages/lien*.html`, et la constante `ARARAT` de
+  `scripts/og-image.mjs`. Aucun test ne les compare. Le miroir s'obtient par
+  `x′ = 64 − x` sur le `viewBox` (les deux facettes de neige du favicon
+  suivent) ; le fond arrondi et la barre basse étant symétriques, **retourner
+  l'image entière** suffit pour les favicons matriciels — ce qui préserve
+  couleurs et anticrénelage, là où un nouveau rendu les changerait.
+
+  Deux fichiers gardent volontairement l'ancien sens : `public/og-image.jpg` et
+  `og-image-org.jpg`. Leurs URL sont partagées et en cache chez Facebook et
+  WhatsApp, et `npm run og-image` ne doit pas être relancé sur `ch` (voir plus
+  haut). Ils se corrigeront le jour où une nouvelle carte sera cuite.
 - **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
   la renvoie vide et `backfillSections` restitue les articles du
   snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc

@@ -76,7 +76,13 @@ const CARDS = {
 // La silhouette de l'Ararat — Masis et Sis. Exactement le tracé de
 // public/favicon.svg, mais dessiné au trait plutôt que rempli : c'est la même
 // marque que l'onglet du navigateur, pas un deuxième logo à entretenir.
-const ARARAT = 'M3 51 L23.5 12 L34 30.5 L43.5 19 L61 51 Z'
+// Masis (le haut) à DROITE — la vue depuis l'Arménie. Voir public/favicon.svg.
+//
+// ATTENTION : les deux .jpg déjà en `public/` portent encore l'ancienne
+// orientation, et ils ne seront pas régénérés (leurs URL sont partagées et en
+// cache chez Facebook et WhatsApp — cf. CLAUDE.md). Cette constante ne vaut
+// donc que pour une future carte.
+const ARARAT = 'M3 51 L20.5 19 L30 30.5 L40.5 12 L61 51 Z'
 
 /**
  * Retire les segments APP2 « ICC_PROFILE » d'un JPEG, et rien d'autre.
