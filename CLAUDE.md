@@ -3,6 +3,37 @@
 Ce fichier fournit des instructions à Claude Code (claude.ai/code) lorsqu'il
 travaille sur ce dépôt.
 
+## Ce qui entre dans ce fichier, et ce qui n'y entre pas
+
+**Ce fichier est un budget, pas un journal.** Il pèse ~76 000 caractères, soit
+~21 000 jetons **chargés à chaque session**, avant qu'une seule ligne de code
+n'ait été lue. Chaque ajout se paie sur toutes les tâches à venir.
+
+Le critère n'est donc pas « qu'est-ce qui a changé » — git le sait déjà, et les
+messages de commit de ce dépôt racontent le détail bien mieux qu'un résumé ne le
+ferait. Le critère est : **quelqu'un se tromperait-il sans qu'on le lui dise ?**
+
+Trois questions avant d'ajouter quoi que ce soit :
+
+1. **Est-ce déductible du code ?** « Le rail est sur deux rangs » se voit dans le
+   CSS. « `flex-wrap: nowrap` est obligatoire dans le bloc du tambour, sinon la
+   colonne part en colonnes » ne se voit nulle part.
+2. **Le piège est-il SILENCIEUX ?** Ce qui casse un test ou le lint n'a pas
+   besoin d'être écrit ici : le garde-fou existe déjà. Ce qui passe tous les
+   contrôles et se voit seulement en production, oui.
+3. **A-t-il été payé ?** Une mesure, une panne, une heure perdue. Pas une
+   intention ni une bonne pratique générale.
+
+**En ajoutant un piège, cherchez-en un périmé à retirer.** Un fichier qui ne fait
+que croître meurt d'obésité, et un fichier trop long n'est plus lu — y compris
+par Claude. Au-delà de ~30 000 jetons, scindez : les pièges de scraping vers
+`README.md`, ceux de rendu vers `.claude/skills/verifier-le-rendu/`, et ne gardez
+ici que ce qui vaut pour **toute** tâche.
+
+Où va le reste : le **récit** d'un chantier dans son message de commit ; le
+**pourquoi** d'une décision de conception dans `docs/superpowers/specs/` ; une
+**procédure** répétable dans un skill de `.claude/skills/`.
+
 ## Projet
 
 **Arménie Info** (`armenieinfo.ch`) et **Armenia News** (`armenianews.org`) —
