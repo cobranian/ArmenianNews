@@ -1519,10 +1519,17 @@ html:lang(hy) .nav__brand {
     overflow: hidden;
     padding-block: 0;
     scroll-snap-type: none;
-    /* Le geste vertical appartient à la roue, pas à la page. Les gouttières
-       laissées de part et d'autre (width: min(84%, 340px)) restent, elles, un
-       endroit où le glissement fait défiler la page. */
-    touch-action: none;
+    /* LE GESTE N'EST CONFISQUÉ QUE SUR LES NOMS, PAS SUR TOUTE LA PISTE.
+       `touch-action: none` est descendu sur les rangs (règle suivante). Poser
+       le doigt sur un nom fait tourner la roue ; le poser sur le fond de la
+       piste, au-dessus ou en dessous des noms, fait défiler la page — comme le
+       font déjà les gouttières latérales que laisse `width: min(84%, 340px)`.
+       Auparavant la piste entière capturait le geste sur 132px de haut, juste
+       au-dessus des carrousels : un pouce posé là faisait tourner la roue au
+       lieu de faire défiler, et changeait de source sans qu'on le demande.
+       `useSourceDrum` complète la règle côté JS en ignorant tout pointerdown
+       dont la cible EST la piste — sans quoi le navigateur panoramiquerait la
+       page pendant que la roue tourne. */
     cursor: grab;
   }
   .newsfeed__tabs.is-drum:active {
@@ -1533,12 +1540,23 @@ html:lang(hy) .nav__brand {
      encadrent la rotation : le premier recule le cylindre entier, le second
      pose le rang sur sa surface. Sans le recul, le rang de face serait 62px
      plus près de l'œil que le plan du cadre, donc agrandi par la perspective. */
+  /* LA ZONE DE GESTE ÉPOUSE LE NOM, PAS LA PISTE.
+     Le rang faisait toute la largeur de la piste alors que la marque, centrée,
+     en occupe moins de la moitié — donc un doigt posé n'importe où sur la
+     ligne confisquait le geste. En `width: fit-content` centré, le reste de la
+     piste redevient du fond, et le fond fait défiler la page. Avec les 27px
+     libres en haut et en bas, un pouce qui ne tombe pas sur un nom fait
+     maintenant défiler la page comme partout ailleurs. */
   .newsfeed__tabs.is-drum .newsfeed__tab {
     position: absolute;
     left: 0;
     right: 0;
     top: calc(50% - 22px);
-    width: auto;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    /* C'est ICI que le geste est confisqué, et nulle part ailleurs. */
+    touch-action: none;
     backface-visibility: hidden;
     opacity: var(--o, 1);
     transform: translateZ(-62px) rotateX(var(--a, 0deg)) translateZ(62px);
@@ -2196,7 +2214,8 @@ html:lang(hy) .nav__brand {
     overflow: hidden;
     perspective: 560px;
     perspective-origin: 50% 50%;
-    touch-action: none;
+    /* Même règle que le tambour des sources : le geste n'est confisqué que sur
+       les puces, jamais sur le fond de la piste. */
     cursor: grab;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 19%, #000 81%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 19%, #000 81%, transparent);
@@ -2217,6 +2236,7 @@ html:lang(hy) .nav__brand {
     height: fit-content;
     max-width: 100%;
     margin: auto;
+    touch-action: none;
     backface-visibility: hidden;
     opacity: var(--o, 1);
     transform: translateZ(-62px) rotateX(var(--a, 0deg)) translateZ(62px);

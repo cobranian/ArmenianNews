@@ -230,6 +230,16 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, ena
     // --- Gestes ---
     const onDown = (e) => {
       if (!drumMq.matches || dragging) return
+      // UN GESTE QUI PART DU FOND DE LA PISTE APPARTIENT À LA PAGE.
+      // `touch-action: none` vit désormais sur les RANGS, pas sur la piste :
+      // poser le doigt sur un nom fait tourner la roue, le poser au-dessus ou
+      // en dessous des noms fait défiler la page. Auparavant la piste entière
+      // confisquait le geste, donc un pouce posé là — un endroit naturel, juste
+      // au-dessus des carrousels — faisait tourner la roue au lieu de faire
+      // défiler, et changeait de source sans que personne l'ait demandé.
+      // Sans ce test, les deux partiraient en même temps : le navigateur
+      // panoramiquerait la page ET la roue tournerait.
+      if (e.target === track) return
       dragging = true
       dragId = e.pointerId
       startY = lastY = e.clientY
