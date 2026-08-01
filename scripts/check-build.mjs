@@ -242,6 +242,20 @@ for (const site of Object.values(SITES)) {
           lien.includes(`rel="canonical" href="${site.host}/${name}.html"`),
         ],
         [`og:image ${site.ogImage}`, lien.includes(`content="${site.host}${site.ogImage}"`)],
+        // Les six balises, pas la seule `og:image`. Ces pages sont des HTML
+        // complets hors du bundle : `site-meta.mjs` ne les voit pas, donc le
+        // bloc complet qu'il pose sur les douze pages React n'y arrive JAMAIS
+        // tout seul. C'est exactement ce qui s'est produit — l'accueil décrivait
+        // son image en entier pendant que lien.html n'en annonçait que trois
+        // balises, alors que c'est lien.html qu'on partage. Aucun build, aucun
+        // test et aucune préversion ne pouvaient le voir : la page était valide,
+        // simplement moins bien décrite que sa jumelle.
+        ...['secure_url', 'type', 'width', 'height', 'alt'].map((prop) => [
+          `og:image:${prop}`,
+          new RegExp(
+            `<meta property="og:image:${prop}" content="[^"]+"`,
+          ).test(lien),
+        ]),
         [
           'aucun host ni carte du voisin',
           Object.values(SITES)
