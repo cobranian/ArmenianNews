@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
+import { useSourceDrum } from './useSourceDrum.js'
 import { pathFor } from '../../sites.config.js'
 
 /* Live broadcast console — a native HTML5 <audio> player for Public Radio of
@@ -324,15 +325,41 @@ export function Radio({ more = true }) {
   // <details>, qui aurait coupé le groupe en deux.
   const [stationsOpen, setStationsOpen] = useState(false)
   const stationsRef = useRef(null)
+  const chipRefs = useRef({})
 
-  // Replié, la rangée défile — quelqu'un qui écoute la douzième station verrait
-  // sinon les deux premières et se croirait ailleurs. On l'amène dans le champ.
-  // `block: 'nearest'` est essentiel : sans lui, l'appel ferait aussi défiler
-  // la PAGE jusqu'à la console, alors qu'on ne veut bouger que la rangée.
+  // Replié, les douze stations sont sur un TAMBOUR — la même roue à 360° que le
+  // sélecteur de sources d'actualités (`useSourceDrum`), qui boucle : après la
+  // douzième revient la première. Déplié, la roue s'éteint et rend la main à la
+  // grille où les douze s'affichent à plat. Les deux états servent deux
+  // gestes : faire défiler pour écouter de proche en proche, ou tout voir d'un
+  // coup pour choisir.
+  //
+  // `pick` est sûr comme rappel d'arrêt : il ne part qu'une fois la roue
+  // immobile — jamais à chaque image — et il sort immédiatement si la station
+  // visée est déjà la station courante, donc un arrêt redondant ne coupe aucun
+  // flux.
+  useSourceDrum({
+    trackRef: stationsRef,
+    itemRefs: chipRefs,
+    ids: STATIONS.map((s) => s.id),
+    activeId: stationId,
+    onSettle: pick,
+    enabled: !stationsOpen,
+  })
+
+  // Le repli sans JavaScript reste une rangée qui défile (la classe `is-drum`
+  // vient du hook, pas du rendu). Dans ce cas seulement, on amène la puce
+  // active dans le champ : sinon quelqu'un qui écoute la douzième station
+  // verrait les deux premières et se croirait ailleurs. `block: 'nearest'` est
+  // essentiel — sans lui l'appel ferait aussi défiler la PAGE jusqu'à la
+  // console, alors qu'on ne veut bouger que la rangée.
   useEffect(() => {
-    if (stationsOpen) return
-    const el = stationsRef.current?.querySelector('.radio__chip.is-active')
-    el?.scrollIntoView({ inline: 'center', block: 'nearest' })
+    const piste = stationsRef.current
+    if (stationsOpen || !piste || piste.classList.contains('is-drum')) return
+    piste.querySelector('.radio__chip.is-active')?.scrollIntoView({
+      inline: 'center',
+      block: 'nearest',
+    })
   }, [stationId, stationsOpen])
 
   return (
@@ -422,6 +449,7 @@ export function Radio({ more = true }) {
             {STATIONS.map((s) => (
               <button
                 key={s.id}
+                ref={(el) => (chipRefs.current[s.id] = el)}
                 type="button"
                 className={`radio__chip${s.id === stationId ? ' is-active' : ''}`}
                 role="radio"

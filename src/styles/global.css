@@ -950,6 +950,26 @@ html:lang(hy) .nav__brand {
   font-size: clamp(1.35rem, 3vw, 2rem);
   color: var(--text);
   letter-spacing: calc(-0.02em * var(--track-scale));
+  /* UN TITRE D'ÉTAGÈRE NE DOIT JAMAIS ÉLARGIR LA PAGE.
+     `min-width: auto` est la valeur par défaut d'un élément flex, et elle
+     l'empêche de descendre sous la largeur intrinsèque de son contenu. Dans
+     l'agenda, ce contenu est un <select> que le navigateur dimensionne sur son
+     option la PLUS LONGUE (« Émirats arabes unis », 187px) — jamais sur celle
+     qui est choisie. À 360px, la tête réclamait donc 360px dans une boîte de
+     308, et les 32px en trop débordaient de la fenêtre.
+
+     Le symptôme n'était pas là où on le cherche. La page devenait défilable
+     horizontalement, et `body::before` — la texture, en `position: fixed;
+     inset: 0` — ne couvre que la FENÊTRE, pas le document : en défilant sur le
+     côté, la bande excédentaire apparaissait sans texture ni fond de section.
+     Cela se lit comme une bordure claire au bord de l'écran, à l'autre bout du
+     site que le coupable.
+
+     On corrige la CAUSE. La tentation est `html { overflow-x: hidden }`, qui
+     masquerait ce défaut et tous les prochains sans qu'aucune mesure ne les
+     voie — exactement le mode de panne silencieuse que ce dépôt s'attache à
+     éviter ailleurs. */
+  min-width: 0;
 }
 .shelf__nav {
   display: flex;
@@ -1600,11 +1620,17 @@ html:lang(hy) .nav__brand {
 /* --- Country selector: a press "dateline stamp" that sits in the shelf head,
    where a section title would otherwise go. One monospace, uppercase pill with
    a flag and a chevron; picking a country swaps the carousel below it. --- */
+/* Le pendant du `min-width: 0` de .shelf__title : laisser le titre se
+   comprimer ne sert à rien si la pastille et son <select> refusent, eux, de
+   suivre. Au pire le nom du pays choisi s'abrège d'une ellipse — la liste
+   déroulante native, elle, l'affiche toujours en entier. */
 .agenda-select {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 9px;
+  max-width: 100%;
+  min-width: 0;
   padding: 8px 15px;
   border: 1px solid var(--line-apricot);
   border-radius: 999px;
@@ -1628,6 +1654,13 @@ html:lang(hy) .nav__brand {
   appearance: none;
   -webkit-appearance: none;
   margin: 0;
+  /* Le navigateur dimensionne un <select> sur son option la PLUS LONGUE, pas
+     sur celle qui est choisie : sans ces deux lignes, « Émirats arabes unis »
+     fixait la largeur des vingt-sept pays et faisait déborder la page à 360px.
+     Voir le commentaire de .shelf__title. */
+  min-width: 0;
+  max-width: 100%;
+  text-overflow: ellipsis;
   padding: 0 4px 0 0;
   border: 0;
   background: transparent;
@@ -2130,6 +2163,56 @@ html:lang(hy) .nav__brand {
     scrollbar-width: none;
   }
   .radio__stations::-webkit-scrollbar { display: none; }
+
+  /* --- LE TAMBOUR DES STATIONS ---
+     Repliée, la rangée devient la MÊME roue à 360° que le sélecteur de sources
+     (`useSourceDrum`, qui pose `is-drum`) : les douze stations tournent sur un
+     cylindre et bouclent. Dépliée, la roue s'éteint et la grille reprend.
+
+     Les deux états servent deux gestes différents, et c'est pour cela qu'ils
+     coexistent : faire tourner pour écouter de proche en proche, ou tout
+     dérouler d'un coup pour choisir dans la liste.
+
+     La géométrie est celle du tambour des sources — même rayon, même recul,
+     mêmes variables `--a` / `--o` écrites par le hook. Une seule différence :
+     une puce est une pastille de largeur variable, pas une ligne pleine, donc
+     elle est centrée par `left/right: 0` + `margin-inline: auto` sur une
+     largeur `fit-content`, ce qui laisse `transform` entièrement à la
+     rotation. */
+  .radio__stations.is-drum {
+    position: relative;
+    height: 132px;
+    padding: 0;
+    margin-left: 0;
+    overflow: hidden;
+    perspective: 560px;
+    perspective-origin: 50% 50%;
+    touch-action: none;
+    cursor: grab;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 19%, #000 81%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 19%, #000 81%, transparent);
+  }
+  .radio__stations.is-drum:active {
+    cursor: grabbing;
+  }
+  /* Le centrage ne suppose AUCUNE hauteur de puce : `inset: 0` + `margin: auto`
+     centre sur les deux axes quelle que soit la taille. C'est nécessaire, pas
+     élégant — @media (pointer: coarse) porte le rembourrage des puces à 13px,
+     donc sur un vrai téléphone elles font ~46px et non 44. Un
+     `top: calc(50% - 22px)` codé en dur aurait décalé toute la roue là où
+     personne ne teste. */
+  .radio__stations.is-drum .radio__chip {
+    position: absolute;
+    inset: 0;
+    width: fit-content;
+    height: fit-content;
+    max-width: 100%;
+    margin: auto;
+    backface-visibility: hidden;
+    opacity: var(--o, 1);
+    transform: translateZ(-62px) rotateX(var(--a, 0deg)) translateZ(62px);
+  }
+
   .radio__stations.is-open {
     flex-wrap: wrap;
     overflow-x: visible;
@@ -2139,8 +2222,17 @@ html:lang(hy) .nav__brand {
      douze puces se voient déjà : un bouton pour « tout voir » y mentirait. */
   .radio__stations-toggle {
     display: block;
-    margin: 10px auto 0;
-    padding: 6px 4px;
+    margin: 6px auto 0;
+    /* 14px de rembourrage vertical, pas 6 : la bascule mesurait 28px de haut,
+       sous le plancher tactile de 44px. Mesuré, pas estimé — et c'était la
+       SEULE cible trop petite introduite par ce chantier, le reste du site
+       étant déjà couvert par le bloc @media (pointer: coarse). */
+    padding: 14px 12px;
+    /* Le rembourrage seul ne suffit pas : la hauteur de ligne dépend de la
+       police, donc de l'écriture. Mesuré, la bascule tombait à 43px en
+       arménien et tenait 44 en latin et en cyrillique. Un plancher explicite
+       tient la promesse dans les quatre langues. */
+    min-height: 44px;
     background: none;
     border: 0;
     font-family: var(--font-mono);

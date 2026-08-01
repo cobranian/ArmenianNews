@@ -74,12 +74,17 @@ const mod = (a, n) => ((a % n) + n) % n
 // [-n/2, n/2). C'est cette fonction, et elle seule, qui fait boucler la roue.
 const ring = (d, n) => mod(d + n / 2, n) - n / 2
 
-export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle }) {
+// `enabled` (vrai par défaut) permet à un appelant d'éteindre la roue sans
+// démonter le composant : le lecteur radio s'en sert pour rendre la main à sa
+// grille dépliée, où les douze stations s'affichent à plat. Éteinte, la roue
+// se nettoie exactement comme sur large écran — même chemin, `disable()`.
+export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, enabled = true }) {
   // Ce que le moteur doit lire à chaque tour sans être reconstruit pour autant :
   // le rappel et l'id actif changent à chaque rendu, les écouteurs non.
   const onSettleRef = useRef(onSettle)
   const activeRef = useRef(activeId)
   const idsRef = useRef(ids)
+  const enabledRef = useRef(enabled)
   const firstRef = useRef(true)
   const apiRef = useRef(null)
 
@@ -87,6 +92,7 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle }) {
     onSettleRef.current = onSettle
     activeRef.current = activeId
     idsRef.current = ids
+    enabledRef.current = enabled
   })
 
   // --- Le moteur. Monté une fois. ---
@@ -308,7 +314,7 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle }) {
     // rappellerait `enable()` et remettrait la roue sur le rang actif, au
     // milieu d'un geste.
     const sync = () => {
-      const want = drumMq.matches
+      const want = drumMq.matches && enabledRef.current
       if (want === on) return
       want ? enable() : disable()
     }
@@ -323,7 +329,7 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle }) {
     // `visibility: hidden` sur le rail large écran, où trois marques
     // disparaissent alors purement et simplement. `resize`, lui, part toujours.
     window.addEventListener('resize', sync)
-    apiRef.current = { goTo, isOn: () => on }
+    apiRef.current = { goTo, sync, isOn: () => on }
 
     return () => {
       drumMq.removeEventListener('change', sync)
@@ -345,6 +351,13 @@ export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle }) {
   // La dépendance est la LISTE APLATIE, pas le tableau : `ids` est reconstruit
   // à chaque rendu de NewsBrowser, donc en dépendre relancerait la roue à
   // chaque tour d'horloge des cartes (useNow bat toutes les 60 s). ---
+  // Allumer ou éteindre la roue passe par le MÊME `sync` que la media query :
+  // un second chemin de mise en service divergerait du premier au premier
+  // correctif, et c'est lui qui porte le nettoyage des variables en ligne.
+  useEffect(() => {
+    apiRef.current?.sync()
+  }, [enabled])
+
   const idsKey = ids.join('|')
   useEffect(() => {
     const api = apiRef.current
