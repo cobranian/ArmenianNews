@@ -395,14 +395,33 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   rend la petite, **à métadonnées strictement identiques**. Deux captures qui
   diffèrent ne prouvent donc pas que le site a changé.
 
-  Ce que le site *peut* faire est déjà fait, et tient dans le bloc de six
-  balises de `site-meta.mjs` : `og:image`, plus `secure_url`, `type`, `width`,
-  `height` et `alt`. Un client bascule sur la petite carte dès qu'il doute de
-  l'image ; ces cinq compléments lui évitent de devoir la télécharger pour
-  savoir qu'elle est en https, que c'est un JPEG, et qu'elle fait 1,91:1. Les
-  conditions matérielles sont tenues par ailleurs : 1200×630, sRGB, sans profil
-  ICC, ~64 ko — très en dessous des ~600 ko au-delà desquels WhatsApp cesse de
-  chercher l'image.
+  Ce que le site *peut* faire tient dans un bloc de six balises : `og:image`,
+  plus `secure_url`, `type`, `width`, `height` et `alt`. Un client bascule sur
+  la petite carte dès qu'il doute de l'image ; ces cinq compléments lui évitent
+  de devoir la télécharger pour savoir qu'elle est en https, que c'est un JPEG,
+  et qu'elle fait 1,91:1. Les conditions matérielles sont tenues par ailleurs :
+  1200×630, sRGB, sans profil ICC, ~64 ko — très en dessous des ~600 ko au-delà
+  desquels WhatsApp cesse de chercher l'image.
+
+  **Ce bloc doit être écrit DEUX fois, et l'oublier une fois ne se voit
+  nulle part.** `site-meta.mjs` le pose sur les douze pages React — et il ne
+  voit **pas** `pages/`, dont les cartes de liens sont des HTML complets hors
+  du bundle. Le bloc y a donc été recopié à la main, et il faut le tenir à
+  jour des deux côtés. Le défaut a réellement été commis : l'accueil décrivait
+  son image en entier pendant que `lien.html` n'en annonçait que trois balises
+  — or **c'est `lien.html` qu'on partage**, pas l'accueil. Rien ne pouvait le
+  signaler : la page était valide, simplement moins bien décrite que sa
+  jumelle, et le seul symptôme était une petite carte chez un lecteur.
+  `check-build.mjs` exige désormais les six balises sur **chaque** carte de
+  liens, en plus des douze pages.
+
+  **Ne concluez pas d'une seule capture.** Un aperçu petit après un aperçu
+  grand peut n'être qu'un changement de client : mesurez la largeur de la
+  bulle (~900 px et plus = WhatsApp Desktop, ~500 px = téléphone) avant de
+  soupçonner les balises. Et vérifiez ce qui est **réellement servi** —
+  `curl -s https://armenieinfo.ch/lien.html | grep 'og:image'` — plutôt que ce
+  que dit le dépôt : c'est ce qui a distingué ici la vraie régression de la
+  différence de client.
 
   **Le vrai piège est le cache, et il est trompeur.** WhatsApp garde l'aperçu
   d'une URL plusieurs jours, sans outil public de purge, et la clé est l'URL
@@ -838,6 +857,39 @@ de production servent toujours depuis la racine de leur domaine.
   onglet vaudrait désormais toujours la langue d'interface, il a été **supprimé**
   (redondant). Ne réintroduisez pas d'onglet hors-langue sans mesurer ce que
   devient le HTML prérendu.
+- **Chaque carte affiche l'âge de sa dépêche, et une source non datée n'affiche
+  RIEN — sans le moindre signe.** `src/relativeTime.js` rend « 45 min », « 6 h »,
+  « 2 j » sous « LIRE LA SUITE » ; `NewsBrowser.jsx` n'émet le `<time>` que si
+  `item.date` existe. Une source qui renvoie `date: null` produit donc des
+  cartes **parfaites**, simplement muettes sur leur fraîcheur : aucun test,
+  aucun lint, aucun build ne tombe. C'est le mode de panne à connaître, parce
+  qu'il se répare une source à la fois — et les onze le sont aujourd'hui.
+
+  Deux l'ont été par un détour, et ce sont ces deux-là qu'on « simplifie » par
+  erreur :
+  - **Courrier d'Erevan lit ses dates dans le SITEMAP**, pas dans ses pages. Sa
+    grille de rubrique n'en affiche aucune, et sa page d'article n'en donne
+    qu'au **jour près**, en clair — donc « il y a 18 h » ou « 1 j » selon
+    l'heure de lecture, pour **80 requêtes** par instantané. Le `<lastmod>` du
+    sitemap Drupal est à la **minute**, en **2 requêtes** pour 5 400 articles.
+    C'est formellement une date de *modification* : vérifiée sur 8 articles,
+    elle tombe à chaque fois sur le jour imprimé — ce site ne réédite pas.
+    **Son RSS existe (`/fr/rss.xml`) et revient VIDE** (293 octets, zéro
+    `<item>`) : ne le rebranchez pas en croyant faire plus simple. Et les deux
+    côtés encodent leurs accents différemment (`arménie` vs `arm%C3%A9nie`),
+    d'où le décodage avant comparaison — sans lui, zéro correspondance et
+    **toutes** les dates nulles, en silence.
+  - **ArménieInfo.tv paie une requête par article**, sa grille n'exposant rien
+    non plus. Une page qui échoue laisse `date: null` : la carte perd son âge,
+    et rien d'autre.
+
+  **Un commentaire qui justifie un manque doit mourir avec le manque.**
+  `armenieinfotv.mjs` renvoyait `date: null` *à dessein*, sous une note
+  expliquant que le navigateur d'actualités n'affichait pas de dates — vraie à
+  l'écriture, fausse dès que l'âge est apparu sur les cartes, et elle a fait
+  passer le trou pour un choix. Le module l'a retirée en se datant ; la même
+  phrase périmée est restée deux chantiers de plus dans `NewsBrowser.jsx`, où
+  elle nommait encore Courrier et ArménieInfo.tv comme non datés.
 - **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
   la renvoie vide et `backfillSections` restitue les articles du
   snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc
@@ -917,6 +969,11 @@ de production servent toujours depuis la racine de leur domaine.
   de l'agenda (`Agenda.jsx`), qui appelaient `toLocaleDateString(locale, …)` en
   direct. Ne rouvrez pas ce trou en formatant une date hors des formateurs du
   contexte.
+
+  **Le même piège vaut pour `Intl.RelativeTimeFormat`**, et c'est pourquoi
+  l'âge des dépêches a lui aussi ses tables écrites en dur
+  (`src/relativeTime.js`). L'employer pour fr/en/ru en réservant une table à
+  `hy` ferait dépendre le rendu du moteur — donc de la machine qui prérend.
 - **La marque arménienne s'écarte volontairement du domaine, ET de l'écriture
   latine.** `/hy/` affiche **« Արմենիա Ինֆո »** là où `/` et `/ru/` affichent
   « Armenia News » (`STRINGS.hy['site.title']`, `src/i18n.jsx`). C'est une

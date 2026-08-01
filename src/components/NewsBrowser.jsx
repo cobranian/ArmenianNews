@@ -103,8 +103,13 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
             moteurs et les lecteurs d'écran lisent à la place, et qui lui ne
             périme jamais. Le texte, lui, se corrige à l'hydratation puis à
             chaque tour d'horloge (voir useNow).
-            Une source sans date ne rend rien : deux fils français n'en
-            fournissent aucune (Courrier d'Erevan, ArménieInfo.tv). */}
+            Une source sans date ne rend rien — et ce repli est SILENCIEUX,
+            c'est tout le piège : la carte reste parfaite, seule l'ancienneté
+            disparaît. Ce commentaire nommait naguère Courrier d'Erevan et
+            ArménieInfo.tv comme les deux fils sans date ; les deux en ont
+            désormais (sitemap Drupal pour l'un, page d'article pour l'autre),
+            et les onze sources sont datées. Une phrase qui décrit un manque
+            doit mourir avec lui, sinon elle le fait passer pour un choix. */}
         {item.date && formatAge(item.date, now) && (
           <time className="card__age" dateTime={item.date} title={formatDate(item.date)}>
             {formatAge(item.date, now)}
