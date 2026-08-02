@@ -57,16 +57,23 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const cleanLink = (h) =>
   h.replace(/&(?:__cft__\[\d+\]|__tn__|idorvanity)=[^&]*/g, '').replace(/[?&]+$/, '')
 
+// Le mur pèse ~60 000 px d'images au bout de 80 publications, et le fil
+// principal du rendu bloque : un seul `Input.dispatchMouseEvent` a dépassé les
+// 180 s que puppeteer accorde par défaut, et la récolte est morte à mi-course.
+const PROTOCOL_TIMEOUT = 600_000
+
 const browser = CONNECT
   ? await puppeteer.connect({
       browserURL: 'http://127.0.0.1:9222',
       defaultViewport: { width: 1280, height: 1600 },
+      protocolTimeout: PROTOCOL_TIMEOUT,
     })
   : await puppeteer.launch({
       executablePath: CHROME,
       headless: false,
       defaultViewport: { width: 1280, height: 1600 },
       userDataDir: PROFILE,
+      protocolTimeout: PROTOCOL_TIMEOUT,
       args: ['--no-first-run', '--no-default-browser-check', '--lang=fr-FR'],
     })
 
@@ -213,7 +220,11 @@ for (let i = 0; i < 140 && acc.size < WANT + 5; i++) {
     stuck = 0
   }
   lastY = r.y
-  await page.mouse.wheel({ deltaY: 1200 })
+  // Un tour de roulette qui échoue ne doit pas emporter la récolte : on compte
+  // le tour comme immobile, et la garde `stuck` conclura d'elle-même.
+  await page.mouse.wheel({ deltaY: 1200 }).catch(() => {
+    stuck++
+  })
   await sleep(1500)
   await dismiss()
 }
