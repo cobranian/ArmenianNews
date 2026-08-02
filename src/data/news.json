@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T08:20:02.333Z",
+  "generatedAt": "2026-08-02T10:39:01.051Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Օդի ջերմաստիճանն էապես չի փոխվի",
+            "url": "https://hy.armradio.am/archives/750182",
+            "date": "2026-08-02T10:33:27.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/760898307_1971824296866784_4699730628687653621_n-768x577.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Փրկարարները նկուղից մոտ 25 տոննա ջուր են հեռացրել",
             "url": "https://hy.armradio.am/archives/750120",
             "date": "2026-08-01T13:09:55.000Z",
@@ -1191,13 +1198,6 @@
             "date": "2026-07-31T17:57:20.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/67447_b-768x512.jpg",
             "category": "Հասարակություն"
-          },
-          {
-            "title": "Քրեական ոստիկանները բացահայտել են բազմադրվագ հանցագործություններ",
-            "url": "https://hy.armradio.am/archives/750027",
-            "date": "2026-07-31T17:11:44.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/hanc-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "ԱՄՆ-ն ու Իսրայելը հետաձգել են Իրանի ռազմական օբյեկտներին հարվածելու պլանները",
+            "url": "https://hy.armradio.am/archives/750178",
+            "date": "2026-08-02T10:08:26.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/GVKJ4IXYSFL63EYFSUWP6U2BA4-768x512.avif",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Միգրացիոն ճգնաժամ Սեուտայում․ 57 մարդ զոհվել է, հազարավոր ներգաղթյալներ վերադարձել են Մարոկկո",
             "url": "https://hy.armradio.am/archives/750090",
             "date": "2026-08-01T10:18:39.000Z",
@@ -1415,13 +1422,6 @@
             "url": "https://hy.armradio.am/archives/749882",
             "date": "2026-07-31T04:32:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/Hamas_new_BG-768x576.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Կիեւին Patriot- ի հրթիռների արտադրության լիցենզիա տալու հարցը որոշված չէ",
-            "url": "https://hy.armradio.am/archives/749879",
-            "date": "2026-07-31T04:16:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/original-768x432.avif",
             "category": "Կարևոր"
           }
         ]
@@ -2110,6 +2110,24 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Marriott annule son forfait touristique pour l’Artsakh, région ravagée par le nettoyage ethnique, suite à une campagne internationale de la diaspora arménienne contre le profit tiré du génocide",
+          "url": "https://www.armenews.com/marriott-annule-son-forfait-touristique-pour-lartsakh-region-ravagee-par-le-nettoyage-ethnique-suite-a-une-campagne-internationale-de-la-diaspora-armenienne-contre-le-profit-tire-du-genocide/",
+          "date": "2026-08-02T10:18:49.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/5592.jpg"
+        },
+        {
+          "title": "Le Premier ministre arménien Nikol Pachinian présente la démission de son gouvernement acceptée par un décret signé par le Président Vahagn Khachatryan",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-nikol-pachinian-presente-la-demission-de-son-gouvernement-acceptee-par-un-decret-signe-par-le-president-vahagn-khachatryan/",
+          "date": "2026-08-02T09:16:51.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/341076.jpg"
+        },
+        {
+          "title": "Les trois groupes parlementaires du nouveau Parlement arménien ont élu leurs chefs et secrétaires",
+          "url": "https://www.armenews.com/les-trois-groupes-parlementaires-du-nouveau-parlement-armenien-ont-elu-leurs-chefs-et-secretaires/",
+          "date": "2026-08-02T09:06:25.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8997.webp"
+        },
+        {
           "title": "« Je ne consomme plus depuis longtemps de poisson d’élevage » : Pachinian critique la qualité du poisson produit en Arménie",
           "url": "https://www.armenews.com/je-ne-consomme-plus-depuis-longtemps-de-poisson-delevage-pachinian-critique-la-qualite-du-poisson-produit-en-armenie/",
           "date": "2026-08-02T06:30:58.000Z",
@@ -2150,24 +2168,6 @@
           "url": "https://www.armenews.com/le-marriott-accuse-de-promouvoir-le-tourisme-dans-le-haut-karabakh-apres-lexode-des-armeniens/",
           "date": "2026-08-02T06:30:07.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/Armenia-Marriott-Hotel-Yerevan.jpg"
-        },
-        {
-          "title": "Azerbaïdjan : une nouvelle vague d’arrestations vise des utilisateurs de TikTok",
-          "url": "https://www.armenews.com/azerbaidjan-une-nouvelle-vague-darrestations-vise-des-utilisateurs-de-tiktok/",
-          "date": "2026-08-02T06:30:01.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/cTQI94U8eO8zhIbFbPEjLdPSERG5ojlgAxO4kn7n5y71b261XKAIUJ4irNz-RX3x9XuNlf9p6ExFcbvQX4-Bwsi7xfvUZla1ZfJWpb9_6GE1H3ueJkWwt5SWqg8uTV5-ykTQ0gzfrVDVHlvYmtTwu8MB8ZM1mnxW_a8LLzbBoi6PLiCM39vUWggwU9keSfAI-scaled.jpg"
-        },
-        {
-          "title": "Dans la région de Tavush au nord-est de l’Arménie, se déplacer d’une communauté à l’autre et rejoindre le chef-lieu régional Idjevan représente un défi majeur en l’absence d’un réseau public de transport",
-          "url": "https://www.armenews.com/dans-la-region-de-tavush-au-nord-est-de-larmenie-se-deplacer-dune-communaute-a-lautre-et-rejoindre-le-chef-lieu-regional-idjevan-represente-un-defi-majeur-en-labsence-d/",
-          "date": "2026-08-01T15:43:48.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8899.jpg"
-        },
-        {
-          "title": "Le parti « Arménie forte » a publié la composition de son groupe parlementaire de 29 députés l’Assemblée nationale arménienne",
-          "url": "https://www.armenews.com/le-parti-armenie-forte-a-publie-la-composition-de-son-groupe-parlementaire-de-29-deputes-lassemblee-nationale-armenienne/",
-          "date": "2026-08-01T13:48:28.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8897.jpg"
         }
       ]
     },
@@ -3126,6 +3126,12 @@
             "image": "https://armenpress.am/storage/images/articles/2026/08/02/3BmmxHHaq6QwY57zNVzd4B1yM3NQEOHqT3NZ26wG.webp"
           },
           {
+            "title": "La cérémonie de prestation de serment des députés s’est tenue à l’ouverture de la première session de l’Assemblée nationale",
+            "url": "https://armenpress.am/fr/article/1256963",
+            "date": "2026-08-02T07:35:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/2SSbtKqftqP7pJvhi3gJwofGSBUuv25Zx65nyHjd.webp"
+          },
+          {
             "title": "Le Premier ministre de la République d’Arménie, Nikol Pashinyan, a signé le décret portant sur la démission du Gouvernement",
             "url": "https://armenpress.am/fr/article/1256961",
             "date": "2026-08-02T06:55:00.000Z",
@@ -3172,12 +3178,6 @@
             "url": "https://armenpress.am/fr/article/1256895",
             "date": "2026-07-31T12:57:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/31/03nd1GOIfdmjnBvXQihCRqumIB8PGVdBFjOpDGHs.webp"
-          },
-          {
-            "title": "La nouvelle ambassadrice du Portugal en Arménie remet les copies de ses lettres de créance au vice-ministre des Affaires étrangères",
-            "url": "https://armenpress.am/fr/article/1256877",
-            "date": "2026-07-31T11:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/31/nSHELMEt48mAMtuvq2aOGT1kIpt3rMo9pN2OmMsa.webp"
           }
         ]
       },
@@ -3577,6 +3577,30 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Armenia-Azerbaijan process now further advanced than Armenia-Türkiye process, Rubinyan says",
+            "url": "https://armenpress.am/en/article/1256974",
+            "date": "2026-08-02T09:55:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/G2WX78NALcCMp5MgQLcM4ca6VU47L4uiigLCsjIH.webp"
+          },
+          {
+            "title": "Armenia awaiting implementation of agreement to open border with Türkiye, Rubinyan says",
+            "url": "https://armenpress.am/en/article/1256973",
+            "date": "2026-08-02T09:34:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/qTeY9RDPSrOIP6tnkYPkHBFFDXxJIhNvXCWqzyQY.webp"
+          },
+          {
+            "title": "Strong Armenia nominates Aram Vardevanyan for National Assembly deputy speaker",
+            "url": "https://armenpress.am/en/article/1256972",
+            "date": "2026-08-02T08:55:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/XaU8jK0oJ1eqUTUP5uWXPSXwOqd0KqRXYJnapky4.webp"
+          },
+          {
+            "title": "Armenia’s internationally recognised territory of 29,743 square kilometres is a complete and non-negotiable red line, Rubinyan says",
+            "url": "https://armenpress.am/en/article/1256969",
+            "date": "2026-08-02T08:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/impIIMSLupHCM9QLYJdImXNKtH7C39pZCIqEoMf0.webp"
+          },
+          {
             "title": "Armenian president accepts government’s resignation",
             "url": "https://armenpress.am/en/article/1256967",
             "date": "2026-08-02T08:12:00.000Z",
@@ -3611,30 +3635,6 @@
             "url": "https://armenpress.am/en/article/1256959",
             "date": "2026-08-02T06:25:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/02/1FIug53o7ICWcgxXKROz28QeNEPsVKr4H1oj4DiQ.webp"
-          },
-          {
-            "title": "Newly elected Armenian Parliament convenes first session",
-            "url": "https://armenpress.am/en/article/1256947",
-            "date": "2026-08-02T06:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/bZByvTHmfSWMkjw9SXiPhroc22K7ft1F67IEAdeU.webp"
-          },
-          {
-            "title": "One of Armenia’s Premier Boutique Estates, Van Ardi, Launches Three New Wines and Long-Awaited Wine Club",
-            "url": "https://armenpress.am/en/article/1256949",
-            "date": "2026-08-01T18:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/RAsNSpPog8KWvPaFcTSN4JvEiCZL4uNieHRycCvG.webp"
-          },
-          {
-            "title": "Armenian agricultural exports to Georgia continue to expand",
-            "url": "https://armenpress.am/en/article/1256954",
-            "date": "2026-08-01T14:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/sN8v9pUjLW2YpKcvSWK3Qvfd9ZW5POtDAGK1aEv1.webp"
-          },
-          {
-            "title": "Armenian president sends national day greetings to Swiss counterpart",
-            "url": "https://armenpress.am/en/article/1256952",
-            "date": "2026-08-01T13:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/zq1yR10SBpEGeNixbDTDaGcmNAgOOSvnMB9GRYvI.webp"
           }
         ]
       },
@@ -4034,6 +4034,54 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Դավիթ Ղազինյանը ներկայացրել է, թե որ դեպքում են պատրաստ նոր խորհրդարանում համագործակցել իշխող ուժի հետ",
+            "url": "https://armenpress.am/hy/article/1256983",
+            "date": "2026-08-02T10:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/DD8BGYQwPuQcWRGw3RzfXllzkAxYovtryyvamOe1.webp"
+          },
+          {
+            "title": "ՔՊ-ն ՀՀ նախագահին է ներկայացրել վարչապետի պաշտոնում Նիկոլ Փաշինյանի թեկնածության առաջադրման վերաբերյալ փաստաթղթերի փաթեթը",
+            "url": "https://armenpress.am/hy/article/1256981",
+            "date": "2026-08-02T10:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/gp1h2dhbv6eYRIsiTui9SHQOZ6t0ysPZl7J18Xqy.webp"
+          },
+          {
+            "title": "Տարոն Չախոյանը հուսով է, որ նոր ձևավորված ԱԺ-ում իշխանությունն ու ընդդիմությունը կաշխատեն կառուցողական մթնոլորտում",
+            "url": "https://armenpress.am/hy/article/1256979",
+            "date": "2026-08-02T09:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/04gOnyM1zGqJaQzNPhtovEKLyWaPDQvlWs1dTNI2.webp"
+          },
+          {
+            "title": "Ռուբինյանը կարծում է, որ ընտրություններում ՔՊ-ի ստացած մանդատը բավարար է Ադրբեջանի հետ խաղաղությունն անշրջելի դարձնելու համար",
+            "url": "https://armenpress.am/hy/article/1256978",
+            "date": "2026-08-02T09:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/PWhlua0Tmbfd3LpPLxEQOCkYoqDv5PiIb7dVGLrP.webp"
+          },
+          {
+            "title": "Ռուբեն Ռուբինյանն ընդդիմադիրներին առաջարկում է նոր խորհրդարանում հարաբերությունները սկսել զրոյական կետից",
+            "url": "https://armenpress.am/hy/article/1256977",
+            "date": "2026-08-02T09:21:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/7MIHtX4hqMVcvKs7vFiGy2r43zev0Z1Ro4PSV1oU.webp"
+          },
+          {
+            "title": "Հայաստան-Ադրբեջան գործընթացն հիմա ավելի առաջ է, քան Հայաստան-Թուրքիա գործընթացը․ Ռուբինյան",
+            "url": "https://armenpress.am/hy/article/1256974",
+            "date": "2026-08-02T08:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/G2WX78NALcCMp5MgQLcM4ca6VU47L4uiigLCsjIH.webp"
+          },
+          {
+            "title": "Հայաստանը սպասում է Թուրքիայի հետ սահմանի բացման պայմանավորվածության իրագործմանը. Ռուբինյան",
+            "url": "https://armenpress.am/hy/article/1256973",
+            "date": "2026-08-02T08:47:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/qTeY9RDPSrOIP6tnkYPkHBFFDXxJIhNvXCWqzyQY.webp"
+          },
+          {
+            "title": "«Ուժեղ Հայաստան»-ն ԱԺ փոխնախագահի թեկնածու է առաջադրել Արամ Վարդևանյանին",
+            "url": "https://armenpress.am/hy/article/1256972",
+            "date": "2026-08-02T08:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/XaU8jK0oJ1eqUTUP5uWXPSXwOqd0KqRXYJnapky4.webp"
+          },
+          {
             "title": "Հայաստանի 29 հազար 743 քառակուսի կիլոմետր միջազգայնորեն ճանաչված տարածքը լիակատար և անքննարկելի կարմիր գիծ է. Ռուբինյան",
             "url": "https://armenpress.am/hy/article/1256969",
             "date": "2026-08-02T08:06:00.000Z",
@@ -4044,54 +4092,6 @@
             "url": "https://armenpress.am/hy/article/1256967",
             "date": "2026-08-02T07:42:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/02/3BmmxHHaq6QwY57zNVzd4B1yM3NQEOHqT3NZ26wG.webp"
-          },
-          {
-            "title": "ԱԺ նախագահի պաշտոնում առաջադրված միակ թեկնածուն Ռուբեն Ռուբինյանն է",
-            "url": "https://armenpress.am/hy/article/1256966",
-            "date": "2026-08-02T07:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/0XwogEcFaVDRSsXjuX7StaGRUdnPKDOaM2sn8wvI.webp"
-          },
-          {
-            "title": "Քաղաքական տարաձայնությունները պետք է վերածվեն ավելի լավ որոշումների. ՀՀ նախագահի ելույթը՝ նորընտիր խորհրդարանի առաջին նիստում",
-            "url": "https://armenpress.am/hy/article/1256965",
-            "date": "2026-08-02T06:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/FUL8aSL8xMJ8Yj0S6O715HmyLbuSpITNLN8BA4KY.webp"
-          },
-          {
-            "title": "ԱԺ երեք խմբակցություններն ընտրել են իրենց ղեկավարներին և քարտուղարներին",
-            "url": "https://armenpress.am/hy/article/1256964",
-            "date": "2026-08-02T06:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/UMZGjhGlCIK4vjfHZzZpaEAauTRpGfMo6kcW4gUN.webp"
-          },
-          {
-            "title": "ԱԺ առաջին նստաշրջանի մեկնարկին տեղի ունեցավ պատգամավորների երդման արարողությունը",
-            "url": "https://armenpress.am/hy/article/1256963",
-            "date": "2026-08-02T06:47:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/2SSbtKqftqP7pJvhi3gJwofGSBUuv25Zx65nyHjd.webp"
-          },
-          {
-            "title": "Սահմանադրության համաձայն՝ նորընտիր ԱԺ-ի առաջին նստաշրջանի օրը ՀՀ կառավարությունը հրաժարական է ներկայացրել",
-            "url": "https://armenpress.am/hy/article/1256961",
-            "date": "2026-08-02T06:35:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/bQ2y4SQFKLXah1dPeTfJ1w2WekiHig4GnHPIOp5C.webp"
-          },
-          {
-            "title": "Կնյազ Հասանովը պատգամավորներին կոչ է արել միասնական լինել և տարաձայնությունները մի կողմ դնել",
-            "url": "https://armenpress.am/hy/article/1256959",
-            "date": "2026-08-02T06:18:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/1FIug53o7ICWcgxXKROz28QeNEPsVKr4H1oj4DiQ.webp"
-          },
-          {
-            "title": "Մեկնարկել է իններորդ գումարման Ազգային ժողովի առաջին նստաշրջանը",
-            "url": "https://armenpress.am/hy/article/1256947",
-            "date": "2026-08-02T06:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/GmIbdLONYUOjFCJJmWr2KBLhEy4vXqAgJNxUWsaO.webp"
-          },
-          {
-            "title": "Երկու ընկերոջ անկեղծ զրույցները՝ մշակութային բացահայտումների առիթ. լույս է տեսել Հովհաննես Այվազյանի՝ Տիգրան Մանսուրյանին նվիրված գիրքը",
-            "url": "https://armenpress.am/hy/article/1256957",
-            "date": "2026-08-01T19:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/erjEWGgvXOB04sFQF0T36jTBQQPPOWk3Pf7L30XM.webp"
           }
         ]
       },
@@ -4164,6 +4164,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Սեուտա մուտք գործելու փորձի ժամանակ զոհված միգրանտների թիվը հասել է 90-ի",
+            "url": "https://armenpress.am/hy/article/1256980",
+            "date": "2026-08-02T09:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/LnxigESqioZcz7QrvvwIOXt9okw4PGT7t491KElW.webp"
+          },
+          {
+            "title": "Մոլդովայի վարչապետը մտադիր է պաշտոնից հեռանալ 2029 թվականին",
+            "url": "https://armenpress.am/hy/article/1256976",
+            "date": "2026-08-02T09:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/ua1CBM6SPgQNqe4QtFhVbwBjeYfTt0DjOPfiO0r9.webp"
+          },
+          {
             "title": "Սաուդյան Արաբիայի թագաժառանգն ու ԱՄՆ նախագահը քննարկել են Մերձավոր Արևելքում լարվածության թուլացման հարցը",
             "url": "https://armenpress.am/hy/article/1256971",
             "date": "2026-08-02T08:17:00.000Z",
@@ -4210,18 +4222,6 @@
             "url": "https://armenpress.am/hy/article/1256932",
             "date": "2026-08-01T08:45:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/01/yGiX203qTGvqHEu7buJ5fFN4COia6BvtlmabzENF.webp"
-          },
-          {
-            "title": "Մեծ Բրիտանիան հայտնել է Օմանի ափերից 11 կմ հեռավորության վրա հարվածների ենթարկված լցանավի մասին",
-            "url": "https://armenpress.am/hy/article/1256930",
-            "date": "2026-08-01T08:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/8DslwgZ679ts9OPVGcuxXGOy4yCsFAibl2QblHBJ.webp"
-          },
-          {
-            "title": "Նեապոլի մերձակայքում 4.7 մագնիտուդով երկրաշարժից տուժածների թիվը հասել է 21-ի",
-            "url": "https://armenpress.am/hy/article/1256929",
-            "date": "2026-08-01T08:12:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/QNZplRrteabolnvfeWdpzo9wTnHGp0nyxvrelrQ6.webp"
           }
         ]
       },
@@ -4491,6 +4491,54 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "ГД представила президенту Республики Армения пакет документов по выдвижению Никола Пашиняна на пост премьер-министра",
+            "url": "https://armenpress.am/ru/article/1256981",
+            "date": "2026-08-02T10:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/gp1h2dhbv6eYRIsiTui9SHQOZ6t0ysPZl7J18Xqy.webp"
+          },
+          {
+            "title": "Тарон Чахоян надеется, что в новообразованном НС правительство и оппозиция будут работать в конструктивной атмосфере",
+            "url": "https://armenpress.am/ru/article/1256979",
+            "date": "2026-08-02T10:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/04gOnyM1zGqJaQzNPhtovEKLyWaPDQvlWs1dTNI2.webp"
+          },
+          {
+            "title": "Рубен Рубинян предлагает оппозиционерам в новом парламенте начать отношения с нуля",
+            "url": "https://armenpress.am/ru/article/1256977",
+            "date": "2026-08-02T10:04:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/7MIHtX4hqMVcvKs7vFiGy2r43zev0Z1Ro4PSV1oU.webp"
+          },
+          {
+            "title": "Рубинян считает, что мандата, полученного ГД на выборах, достаточно, чтобы сделать мир с Азербайджаном необратимым",
+            "url": "https://armenpress.am/ru/article/1256978",
+            "date": "2026-08-02T09:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/PWhlua0Tmbfd3LpPLxEQOCkYoqDv5PiIb7dVGLrP.webp"
+          },
+          {
+            "title": "Армения ожидает выполнения соглашения об открытии границы с Турцией: Рубинян",
+            "url": "https://armenpress.am/ru/article/1256973",
+            "date": "2026-08-02T09:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/qTeY9RDPSrOIP6tnkYPkHBFFDXxJIhNvXCWqzyQY.webp"
+          },
+          {
+            "title": "Армяно-азербайджанский процесс сейчас опережает армяно-турецкий - Рубинян",
+            "url": "https://armenpress.am/ru/article/1256974",
+            "date": "2026-08-02T09:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/G2WX78NALcCMp5MgQLcM4ca6VU47L4uiigLCsjIH.webp"
+          },
+          {
+            "title": "Фракция «Сильная Армения» выдвинула Арама Вардеваняна на пост заместителя председателя Национального Собрания",
+            "url": "https://armenpress.am/ru/article/1256972",
+            "date": "2026-08-02T08:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/XaU8jK0oJ1eqUTUP5uWXPSXwOqd0KqRXYJnapky4.webp"
+          },
+          {
+            "title": "Международно признанная территория Армении площадью 29 743 квадратных километра — это абсолютная и неоспоримая красная линия - Рубинян",
+            "url": "https://armenpress.am/ru/article/1256969",
+            "date": "2026-08-02T08:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/impIIMSLupHCM9QLYJdImXNKtH7C39pZCIqEoMf0.webp"
+          },
+          {
             "title": "Президент Армении принял отставку правительства",
             "url": "https://armenpress.am/ru/article/1256967",
             "date": "2026-08-02T07:50:00.000Z",
@@ -4501,54 +4549,6 @@
             "url": "https://armenpress.am/ru/article/1256965",
             "date": "2026-08-02T07:46:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/02/FUL8aSL8xMJ8Yj0S6O715HmyLbuSpITNLN8BA4KY.webp"
-          },
-          {
-            "title": "Рубен Рубинян — единственный кандидат на пост спикера Национального Собрания Армении",
-            "url": "https://armenpress.am/ru/article/1256966",
-            "date": "2026-08-02T07:23:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/0XwogEcFaVDRSsXjuX7StaGRUdnPKDOaM2sn8wvI.webp"
-          },
-          {
-            "title": "Три фракции НС РА избрали своих лидеров и секретарей",
-            "url": "https://armenpress.am/ru/article/1256964",
-            "date": "2026-08-02T07:22:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/UMZGjhGlCIK4vjfHZzZpaEAauTRpGfMo6kcW4gUN.webp"
-          },
-          {
-            "title": "Церемония присяги депутатов состоялась в начале первой сессии Национального Собрания Армении 9-го созыва",
-            "url": "https://armenpress.am/ru/article/1256963",
-            "date": "2026-08-02T07:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/2SSbtKqftqP7pJvhi3gJwofGSBUuv25Zx65nyHjd.webp"
-          },
-          {
-            "title": "Князь Гасанов призывает депутатов быть едиными, отложив все разногласия",
-            "url": "https://armenpress.am/ru/article/1256959",
-            "date": "2026-08-02T07:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/1FIug53o7ICWcgxXKROz28QeNEPsVKr4H1oj4DiQ.webp"
-          },
-          {
-            "title": "В соответствии с Конституцией правительство Республики Армения подало в отставку в день первой сессии новоизбранного Национального Собрания",
-            "url": "https://armenpress.am/ru/article/1256961",
-            "date": "2026-08-02T06:59:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/UcM6RNTjaljkXZsjJavqZjO4YiFLHDfIyeL1RuUj.webp"
-          },
-          {
-            "title": "Стартовала первая сессия Национального Собрания Республики Армения девятого созыва",
-            "url": "https://armenpress.am/ru/article/1256947",
-            "date": "2026-08-02T06:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/02/2jPliPWpanwUveFE8y2GdTRptCpt234nVFOQnMxc.webp"
-          },
-          {
-            "title": "Одно из ведущих бутиковых винодельческих поместий Армении, «Ван Арди», презентовало три новых вина и винный клуб",
-            "url": "https://armenpress.am/ru/article/1256949",
-            "date": "2026-08-01T18:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/RAsNSpPog8KWvPaFcTSN4JvEiCZL4uNieHRycCvG.webp"
-          },
-          {
-            "title": "Никол Пашинян посетил рыбоводческое хозяйство в Джрарате",
-            "url": "https://armenpress.am/ru/article/1256945",
-            "date": "2026-08-01T12:32:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/01/GW2mypTA7fo4w6kat42UWKJ8EKYuVFrrTAXB65Xg.webp"
           }
         ]
       },
@@ -4621,6 +4621,24 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Число мигрантов, погибших при попытке попасть в Сеуту, достигло 90",
+            "url": "https://armenpress.am/ru/article/1256980",
+            "date": "2026-08-02T10:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/LnxigESqioZcz7QrvvwIOXt9okw4PGT7t491KElW.webp"
+          },
+          {
+            "title": "Премьер-министр Молдовы намерен оставить пост в 2029 году",
+            "url": "https://armenpress.am/ru/article/1256976",
+            "date": "2026-08-02T09:37:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/ua1CBM6SPgQNqe4QtFhVbwBjeYfTt0DjOPfiO0r9.webp"
+          },
+          {
+            "title": "Наследный принц Саудовской Аравии и президент США обсудили напряженность на Ближнем Востоке",
+            "url": "https://armenpress.am/ru/article/1256971",
+            "date": "2026-08-02T08:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/02/Z9Tk7P3HasAbiyczAaBw5cIx5QIyQMNnasRBLt4y.webp"
+          },
+          {
             "title": "После схода лавины в Пакистане найдены тела четырех альпинистов. Поиски шести человек продолжаются",
             "url": "https://armenpress.am/ru/article/1256944",
             "date": "2026-08-01T13:36:00.000Z",
@@ -4661,24 +4679,6 @@
             "url": "https://armenpress.am/ru/article/1256915",
             "date": "2026-07-31T15:35:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/31/fSsL1s382m3TYNPLlLHOZLj20m9YeXgZ3VQBw750.webp"
-          },
-          {
-            "title": "В Европе выразили обеспокоенность из-за притока нелегалов в испанскую Сеуту",
-            "url": "https://armenpress.am/ru/article/1256905",
-            "date": "2026-07-31T13:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/31/8uV1UGMD04e3suC67EGTXCFULljRrvizv1CyPEUf.webp"
-          },
-          {
-            "title": "КСИР объявил о поражении двух танкеров, пытавшимся пройти через Ормузский пролив без согласования с Ираном",
-            "url": "https://armenpress.am/ru/article/1256885",
-            "date": "2026-07-31T11:41:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/31/5wYOLP9UoweXgToaXLwA7gusozZh4xkEMu5cjBLG.webp"
-          },
-          {
-            "title": "Трамп считает возможной нормализацию отношений между Саудовской Аравией и Израилем",
-            "url": "https://armenpress.am/ru/article/1256881",
-            "date": "2026-07-31T10:47:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/31/lalb1z9AC0l8nsFPQarXDtK8daG0Hs373YpRO0l7.webp"
           }
         ]
       },
@@ -8109,6 +8109,18 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "\"Civil Contract\" Nominates Nikol Pashinyan for the Post of Prime Minister of Armenia",
+            "url": "https://news.am/en/news/1053029",
+            "date": "2026-08-02T10:00:44.000Z",
+            "image": "https://news.am/storage/media/26/08/02/SbHLYAiNYyXmZGh3.webp"
+          },
+          {
+            "title": "Kirkuk’s entry into the ‘Union of Municipalities of the Turkic World’ sparked political controversy in Iraq",
+            "url": "https://news.am/en/news/1052986",
+            "date": "2026-08-02T09:05:00.000Z",
+            "image": "https://news.am/storage/media/26/08/02/smRY8QsnjSUAWPEJ.webp"
+          },
+          {
             "title": "Ruben Rubinyan Nominated as the Sole Candidate for Speaker of Armenia's Parliament",
             "url": "https://news.am/en/news/1052998",
             "date": "2026-08-02T07:42:47.000Z",
@@ -8155,18 +8167,6 @@
             "url": "https://news.am/en/news/1052657",
             "date": "2026-07-31T08:14:00.000Z",
             "image": "https://i.ytimg.com/vi/f6uc2d_McUs/hqdefault.jpg"
-          },
-          {
-            "title": "Eurasian Economic Union is paralyzed and not functioning, Armenia PM says",
-            "url": "https://news.am/en/news/1052520",
-            "date": "2026-07-30T12:33:00.000Z",
-            "image": "https://news.am/storage/media/26/07/30/GcL7vfUtjfWebuKs.webp"
-          },
-          {
-            "title": "Armenia PM Pashinyan has new spokesperson",
-            "url": "https://news.am/en/news/1052468",
-            "date": "2026-07-30T09:42:00.000Z",
-            "image": "https://news.am/storage/media/26/07/30/nlAHZeyKmrTlqHAg.webp"
           }
         ]
       },
@@ -8571,6 +8571,12 @@
         "label": "Incidents",
         "articles": [
           {
+            "title": "The remains of another 112 people were found under rubble in the Gaza Strip after Israeli strikes",
+            "url": "https://news.am/en/news/1052966",
+            "date": "2026-08-02T07:49:00.000Z",
+            "image": "https://news.am/storage/media/26/08/02/hluWoVG4AbFPbmjv.webp"
+          },
+          {
             "title": "Shooting near fast-food restaurant in Idaho leaves 3 dead, 7 wounded",
             "url": "https://news.am/en/news/1052940",
             "date": "2026-08-02T05:32:00.000Z",
@@ -8623,12 +8629,6 @@
             "url": "https://news.am/en/news/1052276",
             "date": "2026-07-29T12:11:00.000Z",
             "image": "https://news.am/storage/media/26/07/29/0uYXMT6vijmsnqOi.webp"
-          },
-          {
-            "title": "Ukraine strikes one of Russia's largest oil refineries",
-            "url": "https://news.am/en/news/1052261",
-            "date": "2026-07-29T11:08:00.000Z",
-            "image": "https://news.am/storage/media/26/07/29/hCHjYyMR5p2hxbEx.webp"
           }
         ]
       },
@@ -8771,6 +8771,30 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Նիկոլ Փաշինյանը նշանակվեց վարչապետ",
+            "url": "https://news.am/hy/news/1053036",
+            "date": "2026-08-02T10:39:01.000Z",
+            "image": "https://news.am/storage/media/26/06/26/uiW1vVxrQIl9pXZ0.webp"
+          },
+          {
+            "title": "ՔՊ-ն վարչապետի պաշտոնում առաջադրել է Նիկոլ Փաշինյանին",
+            "url": "https://news.am/hy/news/1053029",
+            "date": "2026-08-02T10:00:44.000Z",
+            "image": "https://news.am/storage/media/26/08/02/SbHLYAiNYyXmZGh3.webp"
+          },
+          {
+            "title": "Քիրքուքի՝ Թյուրքական աշխարհի քաղաքապետարանների միությանը միանալը քաղաքական վեճեր է առաջացրել Իրաքում",
+            "url": "https://news.am/hy/news/1052986",
+            "date": "2026-08-02T09:05:00.000Z",
+            "image": "https://news.am/storage/media/26/08/02/smRY8QsnjSUAWPEJ.webp"
+          },
+          {
+            "title": "Խաղաղություն ամեն գնո՞վ․ Հայաստանի խորհրդարանի խոսնակի թեկնածուն՝ երկամյա որդու առաջ իր պարտքի մասին",
+            "url": "https://news.am/hy/news/1053013",
+            "date": "2026-08-02T08:53:15.000Z",
+            "image": "https://news.am/storage/media/26/06/25/Dy1l0TXMAFkeGbxy.webp"
+          },
+          {
             "title": "«Միշայի պես խոսում է, Միշայի պես՝ շարժումներ անում». Սաակաշվիլին քաղաքական գործունեությունը կշարունակի արհեստական բանականության միջոցով",
             "url": "https://news.am/hy/news/1052982",
             "date": "2026-08-02T08:19:00.000Z",
@@ -8805,30 +8829,6 @@
             "url": "https://news.am/hy/news/1052902",
             "date": "2026-08-01T17:07:00.000Z",
             "image": "https://news.am/storage/media/26/08/01/FFbhPNfBAKTjmbc1.jfif"
-          },
-          {
-            "title": "Չեխիայի ԱԳ նախարարը հույս ունի, որ ՆԱՏՕ Անկարայի գագաթաժողովը Պետր Պավելի համար վերջինն էր որպես նախագահի",
-            "url": "https://news.am/hy/news/1052894",
-            "date": "2026-08-01T15:21:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/KvCA3gAYf74syk7t.webp"
-          },
-          {
-            "title": "Լիտվայի վարչապետի դոկտորական ատենախոսությունը հետաքննության առարկա է դարձել հնարավոր գրագողության պատճառով",
-            "url": "https://news.am/hy/news/1052879",
-            "date": "2026-08-01T13:26:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/RTnjFbwsEt5fUUTd.webp"
-          },
-          {
-            "title": "Իսպանիայի վարչապետը Սեուտայի միգրացիոն ճգնաժամի պատճառով ԵՄ մի շարք երկրներին մեղադրել է եսասիրության մեջ",
-            "url": "https://news.am/hy/news/1052867",
-            "date": "2026-08-01T11:24:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/zTkpYclLAANuemwM.webp"
-          },
-          {
-            "title": "«Նրանք մեր երեխաներն են». Հնդկաստանի վարչապետը կոչ է արել ներել բողոքի ակցիայի մասնակիցներին՝ իր հասցեին հնչած վիրավորանքներից հետո",
-            "url": "https://news.am/hy/news/1052846",
-            "date": "2026-08-01T09:05:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/XxLftOO34YgzpBMg.webp"
           }
         ]
       },
@@ -9035,6 +9035,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Էքստրեմալ «ինքդ արա» դարաշրջանը. TikTok-ի միտումներ, որոնք կփչացնեն ձեր մաշկը",
+            "url": "https://style.news.am/arm/news/115413/",
+            "date": "2026-08-02T10:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115413.jpg"
+          },
+          {
             "title": "Հայկական ոճ. լողափնյա կերպարների հմայիչ գեղագիտությունը",
             "url": "https://style.news.am/arm/news/115412/",
             "date": "2026-08-02T08:20:00.000Z",
@@ -9087,12 +9093,6 @@
             "url": "https://style.news.am/arm/news/115402/",
             "date": "2026-08-01T10:27:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115402.jpg"
-          },
-          {
-            "title": "Քննադատների և կարծրատիպերի դեմ. Արիանա Գրանդեն «ոչնչացնում է» Հոլիվուդը նոր տեսահոլովակում",
-            "url": "https://style.news.am/arm/news/115401/",
-            "date": "2026-08-01T09:10:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115401.jpg"
           }
         ]
       },
@@ -9233,6 +9233,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Անկարգություններ Շրի Լանկայի լեփ-լեցուն բանտում. իշխանությունները զորքեր և հատուկջոկատայիններ են մտցրել, մեկ բանտարկյալ զոհվել է",
+            "url": "https://news.am/hy/news/1052995",
+            "date": "2026-08-02T09:37:00.000Z",
+            "image": "https://news.am/storage/media/26/08/02/uj55NYpJzTOQEJjG.webp"
+          },
+          {
             "title": "Չինաստանում 62 մարդու ենթարկել են պատասխանատվության պողպատաձուլական գործարանում տեղի ունեցած պայթյունից հետո, որը 10 մարդու կյանք է խլել",
             "url": "https://news.am/hy/news/1052974",
             "date": "2026-08-02T08:04:00.000Z",
@@ -9285,12 +9291,6 @@
             "url": "https://news.am/hy/news/1052934",
             "date": "2026-08-01T20:27:56.000Z",
             "image": "https://news.am/storage/media/26/08/02/wJXgPuxFuSVnxZWZ.jfif"
-          },
-          {
-            "title": "«Գազպրոմ էներգահոլդինգ — գնումներ» ընկերության ղեկավար Իգոր Մազինը կալանավորվել է առանձնապես խոշոր չափի կաշառքի գործով",
-            "url": "https://news.am/hy/news/1052922",
-            "date": "2026-08-01T18:55:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/Nqb8app6zpNuh0OE.webp"
           }
         ]
       },
@@ -9433,6 +9433,24 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "«Гражданский договор» выдвинул Никола Пашиняна на пост премьер-министра Армении",
+            "url": "https://news.am/ru/news/1053029",
+            "date": "2026-08-02T10:00:44.000Z",
+            "image": "https://news.am/storage/media/26/08/02/SbHLYAiNYyXmZGh3.webp"
+          },
+          {
+            "title": "Вступление Киркука в «Союз муниципалитетов тюркского мира» вызвало политические споры в Ираке",
+            "url": "https://news.am/ru/news/1052986",
+            "date": "2026-08-02T09:05:00.000Z",
+            "image": "https://news.am/storage/media/26/08/02/smRY8QsnjSUAWPEJ.webp"
+          },
+          {
+            "title": "Мир любой ценой?: Кандидат на должность спикера парламента Армении о своем долге перед 2-летним сыном",
+            "url": "https://news.am/ru/news/1053013",
+            "date": "2026-08-02T08:53:15.000Z",
+            "image": "https://news.am/storage/media/26/06/25/Dy1l0TXMAFkeGbxy.webp"
+          },
+          {
             "title": "«Говорит как Миша, жестикулирует как Миша»: Саакашвили продолжит политическую деятельность через искусственный интеллект",
             "url": "https://news.am/ru/news/1052982",
             "date": "2026-08-02T08:19:00.000Z",
@@ -9443,6 +9461,12 @@
             "url": "https://news.am/ru/news/1052998",
             "date": "2026-08-02T07:42:47.000Z",
             "image": "https://news.am/storage/media/26/05/22/JJmkfZfJDhd6Kp0g.webp"
+          },
+          {
+            "title": "Гарантируете, что Тигранашен не сдадут Азербайджану?: Неудобные вопросы оппозиционеров Рубиняну",
+            "url": "https://news.am/ru/news/1052996",
+            "date": "2026-08-02T07:35:00.000Z",
+            "image": "https://i.ytimg.com/vi/5HOEjA9sPx8/hqdefault.jpg"
           },
           {
             "title": "Католикос всех армян не пришел на заседание нового парламента – не пригласили",
@@ -9467,30 +9491,6 @@
             "url": "https://news.am/ru/news/1052894",
             "date": "2026-08-01T15:21:00.000Z",
             "image": "https://news.am/storage/media/26/08/01/KvCA3gAYf74syk7t.webp"
-          },
-          {
-            "title": "Докторская диссертация премьера Литвы стала предметом расследования из-за возможного плагиата",
-            "url": "https://news.am/ru/news/1052879",
-            "date": "2026-08-01T13:26:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/RTnjFbwsEt5fUUTd.webp"
-          },
-          {
-            "title": "Премьер Испании обвинил ряд стран ЕС в эгоизме из-за миграционного кризиса в Сеуте",
-            "url": "https://news.am/ru/news/1052867",
-            "date": "2026-08-01T11:24:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/zTkpYclLAANuemwM.webp"
-          },
-          {
-            "title": "«Это наши дети»: Премьер-министр Индии призвал простить участников протеста после оскорблений в его адрес",
-            "url": "https://news.am/ru/news/1052846",
-            "date": "2026-08-01T09:05:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/XxLftOO34YgzpBMg.webp"
-          },
-          {
-            "title": "Politico: Пентагон передает Европе координацию помощи Украине на фоне пересмотра роли Вашингтона в НАТО",
-            "url": "https://news.am/ru/news/1052853",
-            "date": "2026-08-01T08:51:00.000Z",
-            "image": "https://news.am/storage/media/26/06/04/ShVF9yzaPTzfVxJl.webp"
           }
         ]
       },
@@ -9697,6 +9697,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Эпоха экстремального DIY: тренды из TikTok, которые угробят вашу кожу",
+            "url": "https://style.news.am/rus/news/115413/",
+            "date": "2026-08-02T10:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115413.jpg"
+          },
+          {
             "title": "Армянский стиль в лицах: гламурная эстетика пляжных образов",
             "url": "https://style.news.am/rus/news/115412/",
             "date": "2026-08-02T08:20:00.000Z",
@@ -9749,12 +9755,6 @@
             "url": "https://style.news.am/rus/news/115401/",
             "date": "2026-08-01T09:10:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115401.jpg"
-          },
-          {
-            "title": "Вне времени: 75-летняя «Чудо-женщина» поразила фанатов снимком из ванны",
-            "url": "https://style.news.am/rus/news/115400/",
-            "date": "2026-08-01T08:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115400.jpg"
           }
         ]
       },
@@ -9895,6 +9895,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Беспорядки в переполненной тюрьме Шри-Ланки: власти ввели войска и спецназ, погиб заключенный",
+            "url": "https://news.am/ru/news/1052995",
+            "date": "2026-08-02T09:37:00.000Z",
+            "image": "https://news.am/storage/media/26/08/02/uj55NYpJzTOQEJjG.webp"
+          },
+          {
             "title": "В Китае 62 человека привлекли к ответственности после взрыва на сталелитейном заводе, унесшего жизни 10 человек",
             "url": "https://news.am/ru/news/1052974",
             "date": "2026-08-02T08:04:00.000Z",
@@ -9947,12 +9953,6 @@
             "url": "https://news.am/ru/news/1052934",
             "date": "2026-08-01T20:27:56.000Z",
             "image": "https://news.am/storage/media/26/08/02/wJXgPuxFuSVnxZWZ.jfif"
-          },
-          {
-            "title": "Главу «Газпром энергохолдинг — закупки» Игоря Мазина арестовали по делу о взятке в особо крупном размере",
-            "url": "https://news.am/ru/news/1052922",
-            "date": "2026-08-01T18:55:00.000Z",
-            "image": "https://news.am/storage/media/26/08/01/Nqb8app6zpNuh0OE.webp"
           }
         ]
       },
