@@ -2823,11 +2823,43 @@ html:lang(hy) .nav__brand {
   transform: translateX(5px);
 }
 .ig-accounts {
+  margin-top: 40px;
+  text-align: center;
+}
+.ig-accounts__toggle {
+  /* 14px de rembourrage vertical et un plancher explicite : le rembourrage
+     seul ne suffit pas, la hauteur de ligne dépend de l'écriture — même mesure
+     que `.radio__stations-toggle`, qui tombait à 43px en arménien. */
+  padding: 14px 12px;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--apricot-ink);
+  cursor: pointer;
+}
+/* Jeton de focus, pas de filet — voir `.newsfeed__tab:focus-visible`. */
+.ig-accounts__toggle:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.ig-accounts__list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 14px;
+}
+/* SANS CETTE RÈGLE, LA BASCULE NE CACHE RIEN. Le `display: none` de l'attribut
+   `hidden` vient de la feuille du navigateur ; n'importe quelle règle d'auteur
+   qui pose un `display` la bat, quelle que soit sa spécificité. Le rang
+   resterait affiché et le bouton ne ferait que changer d'intitulé. */
+.ig-accounts__list[hidden] {
+  display: none;
 }
 .ig-chip {
   display: inline-flex;

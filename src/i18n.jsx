@@ -62,6 +62,8 @@ const STRINGS = {
     'ig.strand.land': 'Terres arméniennes',
     'ig.shuffle': 'Mélanger',
     'ig.visit': 'Voir le profil',
+    'ig.accounts.all': 'Les comptes suivis ({n})',
+    'ig.accounts.less': 'Masquer les comptes',
     'ig.view': 'Voir sur Instagram',
 
     'social.enlarge': 'Agrandir l’image',
@@ -271,6 +273,8 @@ const STRINGS = {
     'ig.strand.land': 'Armenian lands',
     'ig.shuffle': 'Shuffle',
     'ig.visit': 'View profile',
+    'ig.accounts.all': 'Accounts we follow ({n})',
+    'ig.accounts.less': 'Hide accounts',
     'ig.view': 'View on Instagram',
 
     'social.enlarge': 'Enlarge image',
@@ -492,6 +496,8 @@ const STRINGS = {
     'ig.strand.land': 'Հայկական բնաշխարհ',
     'ig.shuffle': 'Խառնել',
     'ig.visit': 'Դիտել պրոֆիլը',
+    'ig.accounts.all': 'Հետևվող հաշիվները ({n})',
+    'ig.accounts.less': 'Թաքցնել հաշիվները',
     'ig.view': 'Դիտել Instagram-ում',
 
     'social.enlarge': 'Խոշորացնել պատկերը',
@@ -689,6 +695,8 @@ const STRINGS = {
     'ig.strand.land': 'Армянские просторы',
     'ig.shuffle': 'Перемешать',
     'ig.visit': 'Смотреть профиль',
+    'ig.accounts.all': 'Аккаунты ({n})',
+    'ig.accounts.less': 'Скрыть аккаунты',
     'ig.view': 'Смотреть в Instagram',
 
     'social.enlarge': 'Увеличить изображение',

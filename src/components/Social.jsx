@@ -196,6 +196,63 @@ function InstagramCard({ url, handle, name, cta, enlarge, img, onOpen }) {
   )
 }
 
+/* Les pastilles de comptes : des portes d'entrée vers les profils, et le repli
+ * d'un compte dont aucun post n'a encore été récolté — sans elles, ce compte
+ * n'existerait nulle part sur le site.
+ *
+ * Repliées par défaut : à 25 comptes, le rang repoussait le brin suivant très
+ * bas. Le motif est celui des douze stations (`.radio__stations-toggle`), à une
+ * différence près — la bascule des stations n'existe que sous 640px, parce que
+ * la mise en page dépliée tient d'elle-même sur grand écran. 25 pastilles
+ * encombrent autant un écran large qu'un téléphone.
+ *
+ * REPLIÉ = `hidden`, PAS une opacité. C'est l'inverse exact du piège du
+ * tambour, où il fallait `opacity: 0` pour garder des onglets focusables dans
+ * l'arbre d'accessibilité : ici on veut que ces liens SORTENT du parcours
+ * clavier tant qu'ils sont repliés. Et `hidden` les laisse dans le HTML
+ * prérendu, donc les liens sortants restent lisibles par les crawlers.
+ *
+ * Le nombre entre par un gabarit `{n}` — comme `radio.stations.all`, et pour
+ * une raison de plus : les quatre brins n'ont pas le même compte, donc un
+ * nombre écrit dans la chaîne serait faux trois fois sur quatre. Il est mis
+ * ENTRE PARENTHÈSES et non dans la phrase, ce que le motif des stations ne fait
+ * pas : là-bas le nombre est fixe (12) et le russe s'accorde une fois pour
+ * toutes ; ici il vaut 10, 6, 5 ou 4 et le russe change de forme avec lui
+ * (« 4 аккаунта » mais « 10 аккаунтов »). La parenthèse met le nombre hors de
+ * la grammaire. */
+function AccountChips({ id, accounts, t }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="ig-accounts">
+      <button
+        type="button"
+        className="ig-accounts__toggle"
+        aria-expanded={open}
+        aria-controls={id}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {open
+          ? t('ig.accounts.less')
+          : t('ig.accounts.all').replace('{n}', accounts.length)}
+        <span aria-hidden="true">{open ? ' ⌃' : ' ⌄'}</span>
+      </button>
+      <div className="ig-accounts__list" id={id} hidden={!open}>
+        {accounts.map((acc) => (
+          <a
+            key={acc.handle}
+            className="ig-chip"
+            href={acc.url}
+            rel="noopener noreferrer"
+            title={t('ig.visit')}
+          >
+            <span aria-hidden="true">◎</span> @{acc.handle}
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function Social() {
   const { t } = useI18n()
 
@@ -353,21 +410,11 @@ export function Social() {
                 ))}
               </Carousel>
 
-              {/* Account chips: entry points, and a graceful fallback for
-                  accounts with no harvested posts yet. */}
-              <div className="ig-accounts">
-                {ig.accounts.filter((acc) => inGroup(group)(acc)).map((acc) => (
-                  <a
-                    key={acc.handle}
-                    className="ig-chip"
-                    href={acc.url}
-                    rel="noopener noreferrer"
-                    title={t('ig.visit')}
-                  >
-                    <span aria-hidden="true">◎</span> @{acc.handle}
-                  </a>
-                ))}
-              </div>
+              <AccountChips
+                id={`${id}-comptes`}
+                accounts={ig.accounts.filter((acc) => inGroup(group)(acc))}
+                t={t}
+              />
             </div>
             )
           })}
