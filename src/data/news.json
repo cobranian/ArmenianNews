@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T18:49:15.489Z",
+  "generatedAt": "2026-08-03T20:25:22.226Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "ՀՀ Կառավարության կազմը",
+            "url": "https://hy.armradio.am/archives/750405",
+            "date": "2026-08-03T19:02:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/763944333_985055527900654_5102451190615724436_n-768x402.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱԺ նախագահն առաջարկում է բանավիճել սուր, բայց չխախտել բարեկրթության սահմանները",
             "url": "https://hy.armradio.am/archives/750326",
             "date": "2026-08-03T15:40:00.000Z",
@@ -1115,13 +1122,6 @@
             "url": "https://hy.armradio.am/archives/750209",
             "date": "2026-08-02T15:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/MHM0165579-768x505.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "9-րդ գումարման ԱԺ-ի նիստը կշարունակվի օգոստոսի 3-ին",
-            "url": "https://hy.armradio.am/archives/750205",
-            "date": "2026-08-02T14:08:30.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/762944520_1376444874579179_1416295275684293584_n-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1355,11 +1355,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ռուստեմ Ումերովը կգլխավորի Ուկրաինայի արտաքին հետախուզության ծառայությունը. արդյո՞ք նա կմնա Կիևի գլխավոր բանակցողն ԱՄՆ-ի հետ",
+            "url": "https://hy.armradio.am/archives/750400",
+            "date": "2026-08-03T18:59:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/BGjeNDROm6fCXnBCyJxZoQQEobaQH5SHj1F0Il89-768x512.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թրամփն Իրանին մեղադրել է երկերեսանիության մեջ. նա պնդում է, որ բանակցությունները վերսկսվել են, Թեհրանը հերքում է",
             "url": "https://hy.armradio.am/archives/750393",
             "date": "2026-08-03T18:35:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/0ffd4520-8ed9-11f1-a7ab-8b30adf0800a.jpg-768x432.webp",
-            "category": "Կարևոր"
+            "category": "Միջազգային"
           },
           {
             "title": "Ինչո՞ւ է Կիևը թիրախավորում Wildberries-ի լոգիստիկ կենտրոնները",
@@ -1415,13 +1422,6 @@
             "url": "https://hy.armradio.am/archives/750194",
             "date": "2026-08-02T12:30:52.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/QIP-Shot-Screen-3679-768x430.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Սեուտայում շուրջ 3 հազար իրավապահ է տեղակայվել միգրանտների աննախադեպ ներհոսքից հետո",
-            "url": "https://hy.armradio.am/archives/750189",
-            "date": "2026-08-02T11:40:15.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/1785513824261283_Wh2vrhZu-300x191.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -5493,6 +5493,12 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
+            "title": "ՀամաՀՄԸՄական 13րդ Բանակումը Աւարտեցաւ Մեծ Յաջողութեամբ",
+            "url": "https://asbarez.am/archives/506676",
+            "date": "2026-08-03T19:27:40.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/03121930/0803HMEM1.jpg"
+          },
+          {
             "title": "Մէկ Դրօշ, Բայց Ի՞նչ Կը Նշանակէ «Համահայկական»ը",
             "url": "https://asbarez.am/archives/506672",
             "date": "2026-08-03T18:48:36.000Z",
@@ -5545,12 +5551,6 @@
             "url": "https://asbarez.am/archives/506630",
             "date": "2026-07-31T22:04:04.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31145111/0801Artzakh.jpg"
-          },
-          {
-            "title": "Դատարանը Մերժեց Փաշինեանի Դէմ Քոչարեանի Հայցը",
-            "url": "https://asbarez.am/archives/506633",
-            "date": "2026-07-31T22:03:10.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31145406/0801Robert.jpg"
           }
         ]
       },
@@ -8253,6 +8253,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Portuguese attacking midfielder has joined Ararat-Armenia",
+            "url": "https://sport.news.am/eng/news/168090/",
+            "date": "2026-08-03T19:19:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168090.jpg"
+          },
+          {
             "title": "The FFA refereeing staff will officiate the Conference League match between Rakow and Hammarby",
             "url": "https://sport.news.am/eng/news/168083/",
             "date": "2026-08-03T14:05:00.000Z",
@@ -8305,12 +8311,6 @@
             "url": "https://sport.news.am/eng/news/168027/",
             "date": "2026-07-30T20:17:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/07/168027.jpg"
-          },
-          {
-            "title": "Conference League: Noah advanced to the third qualifying round",
-            "url": "https://sport.news.am/eng/news/168023/",
-            "date": "2026-07-30T17:52:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/07/168023.jpg"
           }
         ]
       },
@@ -8915,6 +8915,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Հելդեր Ֆերեյրան երկարաձգել է պայմանագիրը «Նոայի» հետ",
+            "url": "https://sport.news.am/arm/news/168091/",
+            "date": "2026-08-03T19:57:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168091.jpg"
+          },
+          {
+            "title": "«Արարատ-Արմենիայի» պորտուգալացի նորեկը",
+            "url": "https://sport.news.am/arm/news/168090/",
+            "date": "2026-08-03T19:19:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168090.jpg"
+          },
+          {
             "title": "«Ալաշկերտը» պարտության մատնեց «Արարատին» (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168089/",
             "date": "2026-08-03T18:08:00.000Z",
@@ -8961,18 +8973,6 @@
             "url": "https://sport.news.am/arm/news/168080/",
             "date": "2026-08-03T10:56:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168080.jpg"
-          },
-          {
-            "title": "Չեխիայի հավաքականի դարպասապահը միացավ «Նյուքասլին»",
-            "url": "https://sport.news.am/arm/news/168079/",
-            "date": "2026-08-03T10:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168079.jpg"
-          },
-          {
-            "title": "«Ռեալը» պատրաստ է 150 միլիոն եվրոյով վաճառել Վինիսիուսին",
-            "url": "https://sport.news.am/arm/news/168078/",
-            "date": "2026-08-03T09:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168078.jpg"
           }
         ]
       },
@@ -8980,6 +8980,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "TRIPP+ ֆոնդի միջոցները կրկնապատկվել են՝ հասնելով 402 մլն դոլարի. Hetq.am",
+            "url": "https://news.am/hy/news/1053324",
+            "date": "2026-08-03T20:26:26.000Z",
+            "image": "https://news.am/storage/media/26/08/04/Y4N4skA6cHphr1wT.webp"
+          },
           {
             "title": "Խոզի մսի համաշխարհային արտադրությունը կդանդաղի. կանխատեսում",
             "url": "https://news.am/hy/news/1053272",
@@ -9033,12 +9039,6 @@
             "url": "https://news.am/hy/news/1053130",
             "date": "2026-08-03T06:36:00.000Z",
             "image": "https://news.am/storage/media/26/08/03/a7CWUU4IzR819lXT.webp"
-          },
-          {
-            "title": "Հնդկաստանում գործարար հավաքին ներկայացվել են ՀՀ տնտեսական ընթացիկ ցուցանիշներն ու ներդրումային հնարավորությունները",
-            "url": "https://news.am/hy/news/1053128",
-            "date": "2026-08-03T06:21:25.000Z",
-            "image": "https://news.am/storage/media/26/08/03/ZbsNaBoxTkpAvO4k.webp"
           }
         ]
       },
@@ -9046,6 +9046,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Ինչո՞ւ է տղամարդկանց «արժանապատվության» չափսը փոքրանում մարզումներից հետո, և, արդյոք, պե՞տք է խուճապի մատնվել",
+            "url": "https://style.news.am/arm/news/115431/",
+            "date": "2026-08-03T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115431.jpg"
+          },
           {
             "title": "«Կենդանի Նոստրադամուսը» հայտարարել է, որ 2026 թվականի մարգարեությունները իրականացել են և զգուշացնում է երրորդ՝ ամենամռայլ սցենարի մասին",
             "url": "https://style.news.am/arm/news/115430/",
@@ -9099,12 +9105,6 @@
             "url": "https://style.news.am/arm/news/115423/",
             "date": "2026-08-03T10:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115423.jpg"
-          },
-          {
-            "title": "Նորաձևությունը պահանջում է զոհաբերություն. 7 դեպք, երբ Քիմ Քարդաշյանը վտանգել է իր առողջությունը խենթ հագուստների համար",
-            "url": "https://style.news.am/arm/news/115422/",
-            "date": "2026-08-03T09:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115422.jpg"
           }
         ]
       },
@@ -9245,6 +9245,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Reebok-ից երիտասարդ աղջիկ է տեղափոխվել հիվանդանոց, բժիշկները պայքարում են նրա կյանքի համար",
+            "url": "https://news.am/hy/news/1053321",
+            "date": "2026-08-03T20:09:24.000Z",
+            "image": "https://news.am/storage/media/26/08/04/fGq8mPYEnB6NE3TY.webp"
+          },
+          {
             "title": "Ռուսաստանում ինքնաթիռ է անհետացել",
             "url": "https://news.am/hy/news/1053312",
             "date": "2026-08-03T17:45:08.000Z",
@@ -9297,12 +9303,6 @@
             "url": "https://news.am/hy/news/1053144",
             "date": "2026-08-03T07:59:00.000Z",
             "image": "https://news.am/storage/media/26/08/03/yQzDK5Tdk062f6dW.webp"
-          },
-          {
-            "title": "Դավթաշենի կամրջի տակ՝ Հրազդան գետում, հայտնաբերվել է երիտասարդ տղայի մարմին",
-            "url": "https://news.am/hy/news/1053155",
-            "date": "2026-08-03T07:28:00.000Z",
-            "image": "https://news.am/storage/media/26/08/03/FraFeT28Aj7J5W2t.webp"
           }
         ]
       },
@@ -9377,6 +9377,12 @@
         "label": "Մշակույթ",
         "articles": [
           {
+            "title": "Ժամանակակից Թուրքիայի տարածքում 2500 տարվա հնության մարմարե արձան է հայտնաբերվել",
+            "url": "https://news.am/hy/news/1053259",
+            "date": "2026-08-03T20:14:00.000Z",
+            "image": "https://news.am/storage/media/26/08/03/oml2QLzhEi6pUUbV.webp"
+          },
+          {
             "title": "Արտ-փառատոններն ընդդեմ դեպոպուլյացիայի․ գիտնականները պարզել են, թե երբ է մշակույթն իսկապես փրկում քաղաքները",
             "url": "https://news.am/hy/news/1052890",
             "date": "2026-08-03T04:02:00.000Z",
@@ -9429,12 +9435,6 @@
             "url": "https://news.am/hy/news/1052447",
             "date": "2026-07-30T08:51:05.000Z",
             "image": "https://news.am/storage/media/26/07/30/trgMEkXmgacceleG.webp"
-          },
-          {
-            "title": "Ժաննա Անդրեասյանը հերթական այցն է կատարել Հայոց ցեղասպանության զոհերի հուշահամալիր",
-            "url": "https://news.am/hy/news/1052404",
-            "date": "2026-07-30T07:17:48.000Z",
-            "image": "https://news.am/storage/media/26/07/30/byPT6496pkXejadt.webp"
           }
         ]
       }
@@ -9709,6 +9709,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Почему после тренировки мужское достоинство уменьшается и стоит ли паниковать",
+            "url": "https://style.news.am/rus/news/115431/",
+            "date": "2026-08-03T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115431.jpg"
+          },
+          {
             "title": "«Живой Нострадамус» заявил о сбывшихся пророчествах на 2026 год — и предупреждает о третьем, самом темном сценарии",
             "url": "https://style.news.am/rus/news/115430/",
             "date": "2026-08-03T18:33:00.000Z",
@@ -9761,12 +9767,6 @@
             "url": "https://style.news.am/rus/news/115422/",
             "date": "2026-08-03T09:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115422.jpg"
-          },
-          {
-            "title": "«Богатым мужчинам можно, а ей табу?»: Почему романы Мадонны с молоденькими юношами до сих пор вызывают скандалы",
-            "url": "https://style.news.am/rus/news/115421/",
-            "date": "2026-08-03T08:56:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115421.jpg"
           }
         ]
       },
@@ -10039,6 +10039,12 @@
         "label": "Культура",
         "articles": [
           {
+            "title": "На территории современной Турции обнаружена 2,5-тысячелетняя мраморная статуя",
+            "url": "https://news.am/ru/news/1053259",
+            "date": "2026-08-03T20:14:00.000Z",
+            "image": "https://news.am/storage/media/26/08/03/oml2QLzhEi6pUUbV.webp"
+          },
+          {
             "title": "Арт-фестивали против депопуляции: ученые выяснили, когда культура действительно спасает города",
             "url": "https://news.am/ru/news/1052890",
             "date": "2026-08-03T04:02:00.000Z",
@@ -10091,12 +10097,6 @@
             "url": "https://news.am/ru/news/1052447",
             "date": "2026-07-30T08:51:05.000Z",
             "image": "https://news.am/storage/media/26/07/30/trgMEkXmgacceleG.webp"
-          },
-          {
-            "title": "Министр образования, науки, культуры и спорта Армении совершила очередной визит в «Цицернакаберд»",
-            "url": "https://news.am/ru/news/1052404",
-            "date": "2026-07-30T07:17:00.000Z",
-            "image": "https://news.am/storage/media/26/07/30/byPT6496pkXejadt.webp"
           }
         ]
       }
