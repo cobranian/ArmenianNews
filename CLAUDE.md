@@ -336,11 +336,11 @@ composants importent au build :
     fiable »). Alimente le sélecteur de pays de l'agenda (voir « L'exception »
     plus bas).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram, **par
-    brin** : chaque compte déclare son `group` (`institutions` | `personnalites`,
-    8 comptes chacun) et le tirage prend `limit` posts **par groupe**, pas
-    `limit` en tout — sinon le groupe le plus fourni chasserait l'autre de son
-    propre carrousel. Le job horaire appelle `selectInstagram(30)`, donc 60 posts
-    dans `instagram-feed.json`.
+    brin** : chaque compte déclare son `group` (`institutions` | `personnalites`
+    | `creation` | `terre` — 10, 6, 5 et 4 comptes) et le tirage prend `limit`
+    posts **par groupe**, pas `limit` en tout — sinon le groupe le plus fourni
+    chasserait les autres de leur propre carrousel. Le job horaire appelle
+    `selectInstagram(18)`, donc 72 posts dans `instagram-feed.json`.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
@@ -726,9 +726,12 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   des deux murs.
 - Schéma du pool Instagram :
   `accounts: [{ handle, name, url, group, posts: [{url, date}] }]`, où `group`
-  vaut `institutions` ou `personnalites` et décide de quel carrousel le compte
-  relève (absent = `institutions`). Le scraper réécrit les `posts` — **jamais**
-  le tableau `accounts`.
+  vaut `institutions`, `personnalites`, `creation` ou `terre` et décide de quel
+  carrousel le compte relève (absent = `institutions`). Le scraper réécrit les
+  `posts` — **jamais** le tableau `accounts`. Une valeur hors de ces quatre fait
+  disparaître le compte du mur sans le moindre signe : `igStrands`
+  (`Social.jsx`) ne rend que les brins qu'il déclare, d'où
+  `test/instagram-strands.test.mjs`.
 - Les images bundlées vivent dans `src/data/ig/` (Instagram) et `src/data/fb/`
   (Facebook) : incluses au build, donc jamais de hotlink ni d'expiration. Sans
   image, une tuile affiche un **motif arménien déterministe** (voir
