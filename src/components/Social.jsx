@@ -264,12 +264,18 @@ export function Social() {
     [fbPosts, t],
   )
 
-  // The wall reads as two strands: the places and institutions that carry
-  // Armenian life, and the people who are its face. Each account declares its
-  // own strand in instagram.json; anything unlabelled falls in with the former.
+  // The wall reads as four strands: the community and the institutions that
+  // carry Armenian life, the people who are its face, the studios where the
+  // work is made, and the land itself. Each account declares its own strand in
+  // instagram.json; anything unlabelled falls in with the first.
+  //
+  // One entry per line: test/instagram-strands.test.mjs reads this array as
+  // text (Node cannot import JSX), and a wrapped entry fails it loudly.
   const igStrands = [
     { id: 'instagram', group: 'institutions', title: t('ig.strand') },
     { id: 'instagram-visages', group: 'personnalites', title: t('ig.strand.people') },
+    { id: 'instagram-ateliers', group: 'creation', title: t('ig.strand.studio') },
+    { id: 'instagram-terres', group: 'terre', title: t('ig.strand.land') },
   ]
   const inGroup = (group) => (p) => (p.group || 'institutions') === group
 
