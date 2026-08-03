@@ -30,7 +30,7 @@ renders that data into two static Vite + React bundles (`dist/ch/`,
 | **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
 | **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
 | **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 30 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
-| **Instagram** | 25 curated accounts | **Four** swipeable **carousels** (‹ › arrows) of post tiles — one strand per `group`: the community and its institutions (10), the people who are its face (6), the studios where the work is made (5), and the land itself (4). The **9 latest posts** of each account are harvested by a local script (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job, **30 per strand** so the biggest group can't crowd the others off their own carousel. |
+| **Instagram** | 25 curated accounts | **Four** swipeable **carousels** (‹ › arrows) of post tiles — one strand per `group`: the community and its institutions (10), the people who are its face (6), the studios where the work is made (5), and the land itself (4). The **9 latest posts** of each account are harvested by a local script (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job, **18 per strand** so the biggest group can't crowd the others off their own carousel. |
 
 Each source **fails independently and degrades gracefully**: on an empty/failed
 scrape, the orchestrator backfills that source from the previous snapshot
@@ -297,9 +297,9 @@ the scraper never touches it; each account's **posts** are harvested — current
 *same* shortcode). Each account declares a `group` — `institutions`,
 `personnalites`, `creation` or `terre`, 10 / 6 / 5 / 4 accounts — and the wall
 renders one carousel per strand.
-The hourly job shuffles that pool into `instagram-feed.json`, picking **30 per
-strand** (60 posts, a fresh random selection + order each hour) rather than 30
-overall, so the bigger group can't crowd the other off its own carousel.
+The hourly job shuffles that pool into `instagram-feed.json`, picking **18 per
+strand** (72 posts, a fresh random selection + order each hour) rather than 18
+overall, so the biggest group can't crowd the others off their own carousel.
 
 Each post is a `{url, date}` pair, the date being the post's real timestamp:
 
@@ -332,10 +332,17 @@ re-run the harvest to populate its posts. Note
 that an Instagram handle **cannot contain a hyphen** — a handle with one (e.g.
 `armenian-trend`) 404s and the account is dropped from the run.
 
-The snapshot selects up to **30 posts per strand** — 60 in all
-(`selectInstagram(30)` in `scripts/sources/instagram.mjs`, applied per `group`);
-bump that number if either strand grows well beyond 30. Accounts with no posts
-simply appear as a profile chip linking to Instagram.
+The snapshot selects up to **18 posts per strand** — 72 in all
+(`selectInstagram(18)` in `scripts/sources/instagram.mjs`, applied per `group`);
+bump that number if a strand grows well beyond 18. Accounts with no posts simply
+appear as a profile chip linking to Instagram.
+
+**Re-draw the selection after regrouping accounts.** Each post in
+`instagram-feed.json` carries its `group`: change an account's strand without
+re-running the selection and its posts still declare the old one, so a new
+strand renders empty until the next hourly snapshot — a push to `main` builds
+and deploys **without** scraping. Re-draw locally and keep `generatedAt` as it
+was; no snapshot happened, only the selection changed.
 
 ### Facebook (Don Narek) — `src/data/facebook.json`
 

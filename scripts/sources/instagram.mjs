@@ -19,11 +19,11 @@ const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || url
 // `npm run ig-scrape` (and may be hand-edited). Each snapshot just re-randomises
 // which posts are shown and in what order — a fresh random "chronology" hourly.
 //
-// The wall has two strands, and each account declares which it belongs to via
-// `group` (institutions | personnalites), so we pick `limit` posts per group
-// rather than `limit` overall — otherwise the bigger group would crowd the other
-// off its own carousel.
-export async function selectInstagram(limit = 30) {
+// The wall has four strands, and each account declares which it belongs to via
+// `group` (institutions | personnalites | creation | terre), so we pick `limit`
+// posts per group rather than `limit` overall — otherwise the biggest group
+// would crowd the others off their own carousel.
+export async function selectInstagram(limit = 18) {
   const src = JSON.parse(await readFile(join(DATA_DIR, 'instagram.json'), 'utf-8'))
 
   const byGroup = new Map()

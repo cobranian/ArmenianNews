@@ -340,7 +340,7 @@ composants importent au build :
     | `creation` | `terre` — 10, 6, 5 et 4 comptes) et le tirage prend `limit`
     posts **par groupe**, pas `limit` en tout — sinon le groupe le plus fourni
     chasserait les autres de leur propre carrousel. Le job horaire appelle
-    `selectInstagram(30)`, donc 60 posts dans `instagram-feed.json`.
+    `selectInstagram(18)`, donc 72 posts dans `instagram-feed.json`.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
