@@ -351,18 +351,20 @@ composants importent au build :
       tirage. Un mélange à plat donnerait les tuiles à proportion des posts de
       chaque compte — invisible tant que tous en ont neuf, faux dès qu'un
       compte porte un `count` élevé. Mesuré : `simonian_jewels` (120 posts)
-      contre trois comptes à 9 donne 5/5/4/4 à la ronde, et prendrait 16
-      tuiles sur 18 à plat. Même déséquilibre que le tirage par groupe corrige
-      un cran plus haut.
+      contre trois comptes à 9 donne 5/5/4/4 à la ronde. À plat, l'espérance
+      serait ~15 tuiles sur 18 (120×18/147 ≈ 14,7 ; simulation à 20 000
+      tirages : 14,70). Même déséquilibre que le tirage par groupe corrige un
+      cran plus haut.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
   locale**, pas horaire : Instagram exige une session connectée et bloque la CI.
-  Récolte les **9 derniers posts** de chacun des **27 comptes curés** (354
-  posts au pool), datés, et télécharge leurs images dans `src/data/ig/` — les
-  décisions pures (combien de posts, quelle image garder) vivent dans
-  `scripts/lib/ig-harvest.mjs`, testable sans Chrome. Trois réglages, tous
-  silencieux s'ils manquent :
+  Récolte par défaut les **9 derniers posts** de chacun des **27 comptes
+  curés**, datés, et télécharge leurs images dans `src/data/ig/` (**354
+  posts** au pool aujourd'hui, un compte portant un `count` supérieur au
+  défaut) — les décisions pures (combien de posts, quelle image garder)
+  vivent dans `scripts/lib/ig-harvest.mjs`, testable sans Chrome. Trois
+  réglages, tous silencieux s'ils manquent :
   - **`count` par compte** (entier, ou `'all'` jusqu'à un plafond dur de 500)
     surcharge le défaut de 9.
   - **`exclude` à la racine du pool** : des shortcodes que le scraper ne prend
@@ -770,7 +772,12 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
 - Les images bundlées vivent dans `src/data/ig/` (Instagram) et `src/data/fb/`
   (Facebook) : incluses au build, donc jamais de hotlink ni d'expiration. Sans
   image, une tuile affiche un **motif arménien déterministe** (voir
-  `src/components/motifs.jsx`).
+  `src/components/motifs.jsx`). `Social.jsx` les charge par `import.meta.glob(...,
+  { eager: true })` : **toutes** les images de ces deux dossiers partent donc dans
+  les **deux** `dist/`, pas seulement celles que le tirage affiche — mesuré,
+  ~92 Mo par vitrine. Le coût d'un compte ajouté au pool n'est donc pas ce
+  qu'il montre, c'est tout ce qui a été récolté, payé à chaque déploiement
+  horaire.
 
 ## Déploiement
 

@@ -28,10 +28,10 @@ const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || url
 // shuffle of the group's reserve gives each account tiles in proportion to how
 // many posts it has, which is invisible while every account holds exactly nine
 // — and stops being invisible the moment one doesn't. `simonian_jewels` carries
-// its whole catalogue (`count: 'all'`), several hundred posts against its three
-// neighbours' nine: flat, it would take ~16 of the strand's 18 tiles and
-// "Créateurs arméniens" would become one account's wall. This is the same
-// imbalance the per-group draw fixes one level up, applied one level down.
+// a capped catalogue (`count: 120`), 120 posts against its three neighbours'
+// nine: flat, it would take ~15 of the strand's 18 tiles and "Créateurs
+// arméniens" would become one account's wall. This is the same imbalance the
+// per-group draw fixes one level up, applied one level down.
 export function drawGroup(accounts, limit, seen = new Set()) {
   // One shuffled pile per account, and the ORDER OF THE PILES is shuffled too.
   // Without that second shuffle the same account would always take the spare

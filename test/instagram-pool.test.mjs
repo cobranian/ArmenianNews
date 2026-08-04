@@ -72,7 +72,8 @@ test('les quatre comptes du brin createurs sont la', () => {
 // tirees a la ronde entre ses quatre comptes, donc ~5 par heure pour celui-ci.
 // 120 posts font un cycle de 24 h — un visiteur quotidien ne revoit presque
 // jamais la meme piece. Les 351 feraient un cycle de 70 h pour TROIS FOIS le
-// poids : 90 Mo d'images au lieu de 31, definitifs puisque l'historique git ne
+// poids : les 120 images de simonian_jewels pesent 15,4 Mo (mesure), donc 351
+// extrapolent a ~45 Mo au lieu de 15,4, definitifs puisque l'historique git ne
 // relache rien. Au-dela de ~120 la profondeur n'achete plus de fraicheur, elle
 // n'achete que du poids.
 test('le catalogue de simonian_jewels est plafonne a 120', () => {
