@@ -5,9 +5,21 @@ import { useSourceDrum } from './useSourceDrum.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import news from '../data/news.json'
 
-// armenews.com serves only heavy full-size originals and its WAF ORB-blocks
-// hotlinked images, so those go through the wsrv.nl image CDN — fetched
-// server-side, resized, and re-served with CORS. Other sources hotlink directly.
+// The wsrv.nl image CDN: fetched server-side, resized, re-served with CORS.
+// Sources reach it for TWO different reasons, and only the first is a blocker.
+//
+// 1. armenews.com serves only heavy full-size originals AND its WAF ORB-blocks
+//    hotlinked images — without wsrv those cards have no picture at all.
+// 2. Armenpress is reachable directly, and was hotlinked for that reason. It is
+//    proxied anyway, on WEIGHT: measured 2026-08-04 in production, its 70
+//    thumbnails were 623 Ko each and 40,7 Mo together — 61 % of a page that
+//    downloaded 67 Mo, for cards a few hundred pixels wide. Through wsrv the
+//    same image drops to ~71 Ko. Nothing about the source changed; what changed
+//    is that somebody measured.
+//
+// A wsrv outage degrades to the deterministic Armenian motif (ArticleCard's
+// onError), not to broken images — which is what makes reason 2 an acceptable
+// trade on the DEFAULT, prerendered tab.
 const wsrv = (url, w = 640) =>
   `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${w}&output=jpg&q=80`
 
@@ -194,6 +206,8 @@ function buildSources(t, lang) {
     name: t('browser.armenpress'),
     live: true,
     images: true,
+    // Sur le poids, pas sur un blocage — voir le commentaire de `wsrv`.
+    proxy: true,
     cats: (news.armenpress?.[lang] || [])
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`apcats.${s.categoryKey}`), articles: s.articles })),
