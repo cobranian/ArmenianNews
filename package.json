@@ -15,6 +15,7 @@
     "check": "node scripts/check-build.mjs",
     "scrape": "node scripts/scrape.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
+    "ig-select": "node scripts/ig-select.mjs",
     "fb-scrape": "node scripts/fb-scrape.mjs",
     "screenshot": "node scripts/shoot.mjs",
     "og-image": "node scripts/og-image.mjs",
