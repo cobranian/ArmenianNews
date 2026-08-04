@@ -1,5 +1,22 @@
 {
-  "_comment": "Instagram POOL — the recent posts of each curated account, harvested by `npm run ig-scrape` (drives a local logged-in Chrome; Instagram blocks CI). The hourly job re-randomises which of these show and in what order into instagram-feed.json. Each tile shows src/data/ig/<shortcode>.jpg, else a deterministic Armenian motif. The `accounts` list is hand-curated — the scraper rewrites their `posts`, never the list itself. Hand-editing a post is fine: add {url, date} and save its image as src/data/ig/<shortcode>.jpg.",
+  "_comment": "Instagram POOL — the recent posts of each curated account, harvested by `npm run ig-scrape` (drives a local logged-in Chrome; Instagram blocks CI). The hourly job re-randomises which of these show and in what order into instagram-feed.json, drawing ROUND-ROBIN per account so a large catalogue does not crowd its strand. Each tile shows src/data/ig/<shortcode>.jpg, else a deterministic Armenian motif. The `accounts` list is hand-curated — the scraper rewrites their `posts`, never the list itself. Per-account `count` (an integer, or 'all' for the whole catalogue up to 500) defaults to 9. Root-level `exclude` lists shortcodes the scraper must never take, whatever the account. Hand-editing a post is fine: add {url, date} and save its image as src/data/ig/<shortcode>.jpg.",
+  "exclude": [
+    "DYIOafVM7Ck",
+    "DWMnEA9DHQy",
+    "DTivHQtDHJx",
+    "Dbl4jYKM8b7",
+    "DTs_DE0DAWl",
+    "DTIhcZTjKOL",
+    "DNJSR9pME4c",
+    "DLh8hGHs280",
+    "C_xrBJUMjvi",
+    "DCHLupzM-mg",
+    "C84_5AIsRVo",
+    "C8tpsTCMrOq",
+    "C8HDSFQseZP",
+    "C6igwGksduf",
+    "C50Mq6VsF5R"
+  ],
   "accounts": [
     {
       "handle": "ig_armenia",
@@ -87,7 +104,7 @@
           "date": "2026-07-30T15:46:47.000Z"
         }
       ],
-      "group": "creation"
+      "group": "createurs"
     },
     {
       "handle": "armenianinstitute",
@@ -1011,7 +1028,7 @@
           "date": "2025-11-29T16:03:31.000Z"
         }
       ],
-      "group": "creation"
+      "group": "createurs"
     },
     {
       "handle": "diningindiaspora",
@@ -1099,7 +1116,22 @@
           "date": "2026-07-25T12:37:16.000Z"
         }
       ],
-      "group": "institutions"
+      "group": "creation"
+    },
+    {
+      "handle": "simonian_jewels",
+      "name": "Simonian Jewels",
+      "url": "https://www.instagram.com/simonian_jewels/",
+      "group": "createurs",
+      "count": "all",
+      "posts": []
+    },
+    {
+      "handle": "naregjewelry",
+      "name": "Nareg Jewelry",
+      "url": "https://www.instagram.com/naregjewelry/",
+      "group": "createurs",
+      "posts": []
     }
   ]
 }
