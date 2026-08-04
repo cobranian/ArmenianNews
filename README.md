@@ -293,7 +293,7 @@ Instagram blocks scraping from CI, so the post **pool** is built locally by
 `npm run ig-scrape` (see [Refreshing the Instagram
 pool](#refreshing-the-instagram-pool)). The **account list** is hand-curated and
 the scraper never touches it; each account's **posts** are harvested — currently
-**27 accounts, 354 posts** (347 distinct shortcodes: `nemrabandofficial` and
+**27 accounts, 576 posts** (569 distinct shortcodes: `nemrabandofficial` and
 `van.nemra` are collaborators, and a COLLAB post lives on both grids under the
 *same* shortcode). Most accounts hold the default **9** posts each; one,
 `simonian_jewels`, is capped at **120** via a per-account `count` (see [Refreshing

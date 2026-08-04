@@ -360,7 +360,7 @@ composants importent au build :
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
   locale**, pas horaire : Instagram exige une session connectée et bloque la CI.
   Récolte par défaut les **9 derniers posts** de chacun des **27 comptes
-  curés**, datés, et télécharge leurs images dans `src/data/ig/` (**354
+  curés**, datés, et télécharge leurs images dans `src/data/ig/` (**576
   posts** au pool aujourd'hui, un compte portant un `count` supérieur au
   défaut) — les décisions pures (combien de posts, quelle image garder)
   vivent dans `scripts/lib/ig-harvest.mjs`, testable sans Chrome. Trois
