@@ -67,9 +67,17 @@ test('les quatre comptes du brin createurs sont la', () => {
   ])
 })
 
-test('simonian_jewels recolte tout son catalogue', () => {
+// Le catalogue reel compte 351 posts (mesure au --dry le 2026-08-04). Il est
+// plafonne a 120, et le chiffre n'est pas arbitraire : le brin sert 18 tuiles
+// tirees a la ronde entre ses quatre comptes, donc ~5 par heure pour celui-ci.
+// 120 posts font un cycle de 24 h — un visiteur quotidien ne revoit presque
+// jamais la meme piece. Les 351 feraient un cycle de 70 h pour TROIS FOIS le
+// poids : 90 Mo d'images au lieu de 31, definitifs puisque l'historique git ne
+// relache rien. Au-dela de ~120 la profondeur n'achete plus de fraicheur, elle
+// n'achete que du poids.
+test('le catalogue de simonian_jewels est plafonne a 120', () => {
   const acc = pool.accounts.find((a) => a.handle === 'simonian_jewels')
-  assert.equal(acc.count, 'all')
+  assert.equal(acc.count, 120)
 })
 
 test('maisonlumiere_geneva est dans Ateliers', () => {
