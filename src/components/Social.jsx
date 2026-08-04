@@ -321,19 +321,29 @@ export function Social() {
     [fbPosts, t],
   )
 
-  // The wall reads as five strands: the community and the institutions that
-  // carry Armenian life, the people who are its face, the studios where the
-  // work is made, those who turn that work into a catalogue, and the land
-  // itself. Each account declares its own strand in instagram.json; anything
-  // unlabelled falls in with the first.
+  // The wall reads as five strands: those who turn Armenian work into a
+  // catalogue, the community and the institutions that carry Armenian life,
+  // the people who are its face, the studios where the work is made, and the
+  // land itself. Each account declares its own strand in instagram.json.
+  //
+  // AN UNLABELLED ACCOUNT LANDS IN `institutions`, WHICH IS NO LONGER FIRST.
+  // That fallback is spelled out twice — here and in
+  // scripts/sources/instagram.mjs — and it names a strand, not a position, so
+  // reordering this array does not move it. Say the name: a comment that
+  // called it "the first strand" was true only by accident, and went silently
+  // false the day `createurs` took the lead.
+  //
+  // The order is editorial, not derived: makers open the wall because that is
+  // what this site is for. Nothing computes it, so nothing will restore it if
+  // someone sorts this array.
   //
   // One entry per line: test/instagram-strands.test.mjs reads this array as
   // text (Node cannot import JSX), and a wrapped entry fails it loudly.
   const igStrands = [
+    { id: 'instagram-createurs', group: 'createurs', title: t('ig.strand.creators') },
     { id: 'instagram', group: 'institutions', title: t('ig.strand') },
     { id: 'instagram-visages', group: 'personnalites', title: t('ig.strand.people') },
     { id: 'instagram-ateliers', group: 'creation', title: t('ig.strand.studio') },
-    { id: 'instagram-createurs', group: 'createurs', title: t('ig.strand.creators') },
     { id: 'instagram-terres', group: 'terre', title: t('ig.strand.land') },
   ]
   const inGroup = (group) => (p) => (p.group || 'institutions') === group
