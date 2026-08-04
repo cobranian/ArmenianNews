@@ -25,11 +25,17 @@ import { readdir, readFile, unlink, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
+import {
+  keepable,
+  pageCount,
+  pickImage,
+  shortcodeOf,
+  wantedFor,
+} from './lib/ig-harvest.mjs'
 
 const DRY = process.argv.includes('--dry')
 const CONNECT = process.argv.includes('--connect')
 
-const PER_ACCOUNT = 9
 // The public web-client id Instagram's own front-end sends on this endpoint.
 // Without it the request comes back 401 even with a valid session.
 const IG_APP_ID = '936619743392459'
@@ -49,6 +55,38 @@ const previousPosts = (acc) =>
   acc.posts || (acc.permalinks || []).map((url) => ({ url, date: null }))
 
 const pool = JSON.parse(await readFile(POOL, 'utf-8'))
+
+// La liste d'exclusion vit à la racine du pool et ne s'applique qu'ICI : c'est
+// ce script qui décide de ce qui entre. Ni selectInstagram ni Social.jsx ne la
+// relisent — un filtre écrit à deux endroits finit par diverger, et le pool est
+// simplement dépourvu de ces posts.
+const EXCLUDE = new Set(pool.exclude || [])
+
+// --only <handle[,handle]> : récolter un compte sans réécrire les 26 autres.
+// Ajouter un compte coûterait sinon 27 requêtes, une réécriture complète du
+// pool et un re-téléchargement de toutes les images.
+const onlyFlag = process.argv.findIndex((a) => a === '--only' || a.startsWith('--only='))
+const onlyRaw =
+  onlyFlag === -1
+    ? null
+    : process.argv[onlyFlag].includes('=')
+      ? process.argv[onlyFlag].split('=').slice(1).join('=')
+      : process.argv[onlyFlag + 1]
+const ONLY = onlyRaw ? onlyRaw.split(',').map((s) => s.trim()).filter(Boolean) : null
+
+// Une faute de frappe ne doit pas se lire comme un échec réseau : sans cette
+// garde, `--only simonianjewels` récolterait zéro compte et annoncerait
+// "rien écrit", ce qui ressemble à une panne Instagram. La garde doit rester
+// AVANT le lancement de Chrome — sinon une faute de frappe ouvre quand même
+// une fenêtre pour rien.
+if (ONLY) {
+  const inconnus = ONLY.filter((h) => !pool.accounts.some((a) => a.handle === h))
+  if (inconnus.length) {
+    console.log(`✗ handle absent du pool : ${inconnus.join(', ')}`)
+    process.exit(1)
+  }
+  console.log(`→ --only : ${ONLY.join(', ')}`)
+}
 
 const browser = CONNECT
   ? await puppeteer.connect({
@@ -84,55 +122,101 @@ if (!cookies.some((c) => c.name === 'sessionid' && c.value)) {
   process.exit(1)
 }
 
-// One request per account, issued from the page so the session cookies ride
-// along. Throws on a non-200 — the caller degrades that account.
+// One request per page, issued from the page so the session cookies ride along.
+// Throws on a non-200 — the caller degrades that account.
 //
 // This is the profile-grid feed. Its sibling `web_profile_info` is the endpoint
 // you'll find in every guide online, and it still answers 200 with the account's
 // bio and post COUNT — but its `edges` array now comes back empty, so it reads as
 // a working call that found no posts. Don't go back to it.
-const harvest = (handle) =>
+const harvestPage = (handle, count, maxId) =>
   page.evaluate(
-    async (h, appId) => {
+    async (h, appId, n, cursor) => {
+      const qs = new URLSearchParams({ count: String(n) })
+      if (cursor) qs.set('max_id', cursor)
       const res = await fetch(
-        `/api/v1/feed/user/${encodeURIComponent(h)}/username/?count=12`,
+        `/api/v1/feed/user/${encodeURIComponent(h)}/username/?${qs}`,
         { headers: { 'x-ig-app-id': appId }, credentials: 'include' },
       )
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const json = await res.json()
       if (!Array.isArray(json?.items)) throw new Error('unexpected payload shape')
-      return json.items.map((it) => ({
-        shortcode: it.code,
-        ts: it.taken_at,
-        // A carousel post carries no image of its own — its first slide does.
-        image:
-          it.image_versions2?.candidates?.[0]?.url ||
-          it.carousel_media?.[0]?.image_versions2?.candidates?.[0]?.url ||
-          null,
-        // 1 = photo, 2 = video/reel, 8 = carousel.
-        isVideo: it.media_type === 2,
-      }))
+      return {
+        items: json.items.map((it) => ({
+          shortcode: it.code,
+          ts: it.taken_at,
+          // A carousel post carries no image of its own — its first slide does.
+          // The full candidate list travels: picking a size is a Node-side
+          // decision (scripts/lib/ig-harvest.mjs), not a browser-side one.
+          candidates:
+            it.image_versions2?.candidates ||
+            it.carousel_media?.[0]?.image_versions2?.candidates ||
+            [],
+          // 1 = photo, 2 = video/reel, 8 = carousel.
+          isVideo: it.media_type === 2,
+        })),
+        nextMaxId: json.next_max_id || null,
+      }
     },
     handle,
     IG_APP_ID,
+    count,
+    maxId || null,
   )
+
+// Suit `next_max_id` jusqu'à tenir `want` posts NON EXCLUS, ou jusqu'à
+// épuisement du compte. Une boucle de pagination sur un compte dont on ignore
+// la taille est un chèque en blanc : `wantedFor` plafonne déjà à MAX_COUNT, et
+// la pause entre les pages est la même précaution que celle entre les comptes —
+// ce script existe parce qu'Instagram coupe l'accès sur un rythme trop soutenu.
+async function harvestAll(handle, want) {
+  const per = pageCount(want, EXCLUDE.size)
+  const vus = new Map()
+  let cursor = null
+  let pages = 0
+  do {
+    const { items, nextMaxId } = await harvestPage(handle, per, cursor)
+    const before = vus.size
+    for (const it of keepable(items, EXCLUDE)) {
+      if (it.shortcode && it.ts && !vus.has(it.shortcode)) vus.set(it.shortcode, it)
+    }
+    cursor = nextMaxId
+    pages++
+    // Une page vide n'est pas le seul signe d'un compte épuisé : un
+    // `next_max_id` qui reboucle sur des posts déjà vus (aucun ajout à `vus`)
+    // en est un autre, et sans ce second garde-fou la boucle ne terminerait
+    // jamais — `cursor` resterait non nul et `vus.size` resterait sous `want`.
+    if (!items.length || vus.size === before) break
+    if (cursor) await sleep(1500)
+  } while (cursor && vus.size < want)
+  return { items: [...vus.values()], pages }
+}
 
 // Newest first. Instagram floats PINNED posts to the head of the list whatever
 // their age, so sorting on the timestamp is what actually makes this "recent".
-const newest = (items) =>
-  [...items]
-    .filter((p) => p.shortcode && p.ts)
-    .sort((a, b) => b.ts - a.ts)
-    .slice(0, PER_ACCOUNT)
+const newest = (items, want) => [...items].sort((a, b) => b.ts - a.ts).slice(0, want)
 
 const results = []
 for (const acc of pool.accounts) {
+  if (ONLY && !ONLY.includes(acc.handle)) {
+    results.push({ acc, posts: [], ok: false, skipped: true })
+    continue
+  }
+  const want = wantedFor(acc)
   try {
-    const posts = newest(await harvest(acc.handle))
+    const { items, pages } = await harvestAll(acc.handle, want)
+    const posts = newest(items, want)
     if (!posts.length) throw new Error('no posts returned')
     results.push({ acc, posts, ok: true })
     const newestDate = new Date(posts[0].ts * 1000).toISOString().slice(0, 10)
-    console.log(`  ✓ ${acc.handle} (${posts.length} posts, newest ${newestDate})`)
+    const p = pages > 1 ? `, ${pages} pages` : ''
+    console.log(`  ✓ ${acc.handle} (${posts.length} posts, newest ${newestDate}${p})`)
+    // Le seul état où le pool contient autre chose que ce qui a été demandé.
+    // Ce n'est pas une erreur — le compte peut simplement avoir peu publié —
+    // mais rien d'autre ne le signalerait.
+    if (posts.length < want) {
+      console.log(`    ↯ ${acc.handle} voulait ${want} posts, le compte en rend ${posts.length}`)
+    }
   } catch (err) {
     results.push({ acc, posts: [], ok: false })
     console.log(`  ✗ ${acc.handle}: ${err.message} — keeping previous posts`)
@@ -142,15 +226,23 @@ for (const acc of pool.accounts) {
 }
 
 const okCount = results.filter((r) => r.ok).length
-console.log(`\n→ ${okCount}/${pool.accounts.length} accounts harvested`)
+const tentes = results.filter((r) => !r.skipped).length
+console.log(`\n→ ${okCount}/${tentes} accounts harvested`)
 
 if (DRY) {
-  for (const { acc, posts } of results) {
+  let total = 0
+  for (const { acc, posts, skipped } of results) {
+    if (skipped) continue
     for (const p of posts) {
-      console.log(`   ${acc.handle} ${p.shortcode} ${new Date(p.ts * 1000).toISOString()}`)
+      const src = pickImage(p.candidates)
+      console.log(
+        `   ${acc.handle} ${p.shortcode} ${new Date(p.ts * 1000).toISOString()} ` +
+          `${src ? (p.candidates.find((c) => c.url === src)?.width ?? '?') + 'px' : 'sans image'}`,
+      )
     }
+    total += posts.length
   }
-  console.log('\n(dry run — nothing written)')
+  console.log(`\n(dry run — ${total} posts retenus, rien écrit)`)
   await finish()
   process.exit(0)
 }
@@ -172,7 +264,9 @@ const permalink = (p) =>
 // referer. A failed download is NOT fatal: the post stays in the pool and its
 // tile falls back to the deterministic Armenian motif (src/components/motifs.jsx).
 async function download(p) {
-  const res = await fetch(p.image, {
+  const src = pickImage(p.candidates)
+  if (!src) throw new Error('no usable image candidate')
+  const res = await fetch(src, {
     headers: { referer: 'https://www.instagram.com/', 'user-agent': 'Mozilla/5.0' },
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
@@ -204,19 +298,16 @@ for (const { acc, posts, ok } of results) {
   accounts.push({ ...acc, posts: kept })
 }
 
-const json = {
-  _comment:
-    'Instagram POOL — the recent posts of each curated account, harvested by `npm run ig-scrape` (drives a local logged-in Chrome; Instagram blocks CI). The hourly job re-randomises which of these show and in what order into instagram-feed.json. Each tile shows src/data/ig/<shortcode>.jpg, else a deterministic Armenian motif. The `accounts` list is hand-curated — the scraper rewrites their `posts`, never the list itself. Hand-editing a post is fine: add {url, date} and save its image as src/data/ig/<shortcode>.jpg.',
-  accounts,
-}
+// `...pool` d'abord : la racine porte `exclude`, que ce script lit sans le
+// posséder. Reconstruire l'objet à partir de rien l'effacerait à la première
+// récolte — un JSON valide, un pool sans exclusion, et rien pour le dire.
+const json = { ...pool, accounts }
 await writeFile(POOL, JSON.stringify(json, null, 2) + '\n')
 console.log(`\n✓ wrote src/data/instagram.json (${accounts.reduce((n, a) => n + a.posts.length, 0)} posts)`)
 
 // Drop images no post points at any more, so replacing the pool doesn't leave
 // the bundle carrying every photo we have ever harvested.
-const live = new Set(
-  accounts.flatMap((a) => a.posts.map((p) => p.url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1])),
-)
+const live = new Set(accounts.flatMap((a) => a.posts.map((p) => shortcodeOf(p.url))))
 let dropped = 0
 for (const file of await readdir(IG_DIR)) {
   if (!file.endsWith('.jpg') || live.has(file.replace(/\.jpg$/, ''))) continue
