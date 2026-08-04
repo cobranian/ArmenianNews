@@ -74,11 +74,19 @@ visages, l'œuvre, les maisons qui la portent, la terre.
 
 | Clé i18n | fr | en | hy | ru |
 |---|---|---|---|---|
-| `ig.strand.makers` | Créateurs arméniens | Armenian makers | Հայ ստեղծագործողներ | Армянские создатели |
+| `ig.strand.creators` | Créateurs arméniens | Armenian creators | Հայ ստեղծագործողներ | Армянские создатели |
 
-*makers* et non *creators* : « Armenian creators » redirait le nom d'un des
-comptes du brin (`@armeniancreators`), et « studios » est déjà pris par le brin
-voisin.
+*creators* est un choix explicite. Il **redit le nom d'un des comptes du brin**
+(`@armeniancreators`), qui apparaît en pastille juste sous le carrousel : un
+lecteur anglophone verra « Armenian creators » deux fois, une fois comme titre
+d'étagère et une fois comme compte. *makers* évitait la collision ; il a été
+écarté parce que « créateurs » est le mot demandé et que sa traduction directe
+vaut plus que l'évitement d'un écho. Le titre reste le seul des cinq à ne pas
+suivre le moule « Armenian + nom commun neutre » — c'est le prix, il est connu.
+
+Les quatre langues disent alors le même mot : `ստեղծագործողներ` et `создатели`
+traduisent *creators*, pas *makers* — c'était déjà le cas avant l'arbitrage
+anglais, qui les rejoint plutôt qu'il ne les déplace.
 
 `Հայ` et non `Հայկական`, seule entorse au moule des quatre titres existants :
 `ստեղծագործողներ` désigne des **personnes**, et l'arménien met alors `Հայ`.
