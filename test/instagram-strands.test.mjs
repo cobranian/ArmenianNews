@@ -29,11 +29,11 @@ const strands = [
 // ce que le site affiche.
 const groupOf = (acc) => acc.group || 'institutions'
 
-test('le mur declare quatre brins', () => {
-  assert.equal(strands.length, 4, 'igStrands ne declare plus quatre brins')
+test('le mur declare cinq brins', () => {
+  assert.equal(strands.length, 5, 'igStrands ne declare plus cinq brins')
   assert.deepEqual(
     strands.map((s) => s.group).sort(),
-    ['creation', 'institutions', 'personnalites', 'terre'],
+    ['createurs', 'creation', 'institutions', 'personnalites', 'terre'],
   )
 })
 
@@ -41,7 +41,7 @@ test('le mur declare quatre brins', () => {
 // orthographie cree un cinquieme brin qu'igStrands ne rend jamais : le compte
 // disparait du mur. C'est une chaine valide dans un JSON valide — ni le lint,
 // ni le build, ni npm run check ne peuvent le voir.
-test('aucun compte n est hors des quatre brins', () => {
+test('aucun compte n est hors des cinq brins', () => {
   const declares = new Set(strands.map((s) => s.group))
   for (const acc of pool.accounts) {
     assert.ok(
