@@ -30,6 +30,7 @@ import {
   pageCount,
   pickImage,
   shortcodeOf,
+  stopPaging,
   wantedFor,
 } from './lib/ig-harvest.mjs'
 
@@ -171,24 +172,34 @@ const harvestPage = (handle, count, maxId) =>
 // ce script existe parce qu'Instagram coupe l'accès sur un rythme trop soutenu.
 async function harvestAll(handle, want) {
   const per = pageCount(want, EXCLUDE.size)
-  const vus = new Map()
+  const bruts = new Set() // tout shortcode rencontré, exclus compris
+  const vus = new Map() // ce qu'on garde
   let cursor = null
   let pages = 0
-  do {
+  for (;;) {
     const { items, nextMaxId } = await harvestPage(handle, per, cursor)
-    const before = vus.size
+    pages++
+
+    // La progression se mesure sur les shortcodes BRUTS, pas sur ce qui est
+    // retenu : une page de posts neufs mais tous exclus est une vraie
+    // progression (les posts valides attendent à la page suivante), pas une
+    // stagnation. Voir stopPaging (scripts/lib/ig-harvest.mjs).
+    let freshRaw = 0
+    for (const it of items) {
+      if (!it.shortcode || !it.ts || bruts.has(it.shortcode)) continue
+      bruts.add(it.shortcode)
+      freshRaw++
+    }
     for (const it of keepable(items, EXCLUDE)) {
       if (it.shortcode && it.ts && !vus.has(it.shortcode)) vus.set(it.shortcode, it)
     }
+
     cursor = nextMaxId
-    pages++
-    // Une page vide n'est pas le seul signe d'un compte épuisé : un
-    // `next_max_id` qui reboucle sur des posts déjà vus (aucun ajout à `vus`)
-    // en est un autre, et sans ce second garde-fou la boucle ne terminerait
-    // jamais — `cursor` resterait non nul et `vus.size` resterait sous `want`.
-    if (!items.length || vus.size === before) break
-    if (cursor) await sleep(1500)
-  } while (cursor && vus.size < want)
+    if (stopPaging({ kept: vus.size, want, freshRaw, cursor })) break
+    // Même précaution qu'entre les comptes : ce script existe parce
+    // qu'Instagram coupe l'accès sur un rythme trop soutenu.
+    await sleep(1500)
+  }
   return { items: [...vus.values()], pages }
 }
 

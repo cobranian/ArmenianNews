@@ -58,3 +58,21 @@ export function keepable(items, exclude) {
   if (!exclude || !exclude.size) return items
   return items.filter((it) => !exclude.has(it.shortcode))
 }
+
+/**
+ * Faut-il arrêter de paginer ? Trois sorties, et la troisième est celle qui
+ * manque à l'intuition.
+ *
+ * Une page qui n'ajoute rien À GARDER n'est pas forcément une page sans
+ * progrès : elle peut être pleine de posts NEUFS mais tous exclus, pendant que
+ * des posts valides attendent à la page suivante. La progression se mesure donc
+ * sur les shortcodes BRUTS — jamais sur ce qui est retenu. Mesurée sur le
+ * retenu, une liste d'exclusion qui couvre le haut d'une grille tronque la
+ * récolte en silence, avec le même symptôme qu'un compte qui a peu publié.
+ */
+export function stopPaging({ kept, want, freshRaw, cursor }) {
+  if (kept >= want) return true // on a ce qu'on voulait
+  if (!cursor) return true // fin du catalogue
+  if (freshRaw === 0) return true // le curseur tourne en rond : que du déjà-vu
+  return false
+}

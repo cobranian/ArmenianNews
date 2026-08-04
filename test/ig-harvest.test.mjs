@@ -8,6 +8,7 @@ import {
   pageCount,
   pickImage,
   shortcodeOf,
+  stopPaging,
   wantedFor,
 } from '../scripts/lib/ig-harvest.mjs'
 
@@ -92,4 +93,26 @@ test('keepable retire les posts exclus et garde l ordre', () => {
   const items = [{ shortcode: 'a' }, { shortcode: 'b' }, { shortcode: 'c' }]
   assert.deepEqual(keepable(items, new Set(['b'])), [{ shortcode: 'a' }, { shortcode: 'c' }])
   assert.deepEqual(keepable(items, new Set()), items)
+})
+
+test('stopPaging s arrete quand on a ce qu on voulait', () => {
+  assert.equal(stopPaging({ kept: 9, want: 9, freshRaw: 12, cursor: 'x' }), true)
+})
+
+test('stopPaging s arrete a la fin du catalogue', () => {
+  assert.equal(stopPaging({ kept: 3, want: 9, freshRaw: 12, cursor: null }), true)
+})
+
+// Le curseur reboucle sur des posts deja vus : sans cette sortie, la boucle
+// tournerait indefiniment.
+test('stopPaging s arrete quand la page ne rend que du deja-vu', () => {
+  assert.equal(stopPaging({ kept: 3, want: 9, freshRaw: 0, cursor: 'x' }), true)
+})
+
+// LE CAS QUE CE TEST EXISTE POUR ATTRAPER. Une page de posts NEUFS mais tous
+// exclus ne garde rien — et c'est pourtant une vraie progression : les posts
+// valides sont a la page suivante. Mesurer la progression sur ce qui est retenu
+// tronquerait la recolte en silence, avec le symptome d un compte peu actif.
+test('stopPaging poursuit sur une page entierement exclue', () => {
+  assert.equal(stopPaging({ kept: 0, want: 9, freshRaw: 24, cursor: 'x' }), false)
 })
