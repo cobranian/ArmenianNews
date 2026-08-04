@@ -72,16 +72,17 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 125 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier
+npm test             # 162 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
+npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **125 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **162 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -96,7 +97,10 @@ voir « À savoir »), et les deux dérivations des verticales héritées de NEW
 (`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
 publication, et la date de med recomposée en chiffres), et l'appariement d'URL
 qui date les articles du Courrier (`test/courrier-dates.test.mjs`, voir
-« À savoir ») — aucun ne touche le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
+« À savoir »), et les cinq brins du mur Instagram — leur déclaration en quatre
+langues, le tirage à la ronde et l'exclusion du pool
+(`test/instagram-strands.test.mjs`, `test/instagram-draw.test.mjs`,
+`test/instagram-pool.test.mjs`) — aucun ne touche le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -336,21 +340,51 @@ composants importent au build :
     fiable »). Alimente le sélecteur de pays de l'agenda (voir « L'exception »
     plus bas).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram, **par
-    brin** : chaque compte déclare son `group` (`institutions` | `personnalites`
-    | `creation` | `terre` — 10, 6, 5 et 4 comptes) et le tirage prend `limit`
-    posts **par groupe**, pas `limit` en tout — sinon le groupe le plus fourni
-    chasserait les autres de leur propre carrousel. Le job horaire appelle
-    `selectInstagram(18)`, donc 72 posts dans `instagram-feed.json`.
+    brin** : chaque compte déclare son `group` (`institutions` |
+    `personnalites` | `creation` | `createurs` | `terre` — 9, 6, 4, 4 et 4
+    comptes) et le tirage prend `limit` posts **par groupe**, pas `limit` en
+    tout — sinon le groupe le plus fourni chasserait les autres de leur propre
+    carrousel. Le job horaire appelle `selectInstagram(18)`, donc 90 posts
+    dans `instagram-feed.json`.
+    - **À l'intérieur d'un brin, le tirage est À LA RONDE** : un post chez
+      chaque compte à tour de rôle, l'ordre des comptes remélangé à chaque
+      tirage. Un mélange à plat donnerait les tuiles à proportion des posts de
+      chaque compte — invisible tant que tous en ont neuf, faux dès qu'un
+      compte porte un `count` élevé. Mesuré : `simonian_jewels` (120 posts)
+      contre trois comptes à 9 donne 5/5/4/4 à la ronde, et prendrait 16
+      tuiles sur 18 à plat. Même déséquilibre que le tirage par groupe corrige
+      un cran plus haut.
 - **`scripts/fb-scrape.mjs`** — rafraîchit Don Narek (Facebook). **Étape manuelle
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
   locale**, pas horaire : Instagram exige une session connectée et bloque la CI.
-  Récolte les **9 derniers posts** de chacun des **16 comptes curés** (144 posts,
-  138 shortcodes distincts — `nemrabandofficial` et `van.nemra` sont
-  collaborateurs, et un post COLLAB vit sur les deux grilles sous le **même**
-  shortcode), datés, et télécharge leurs images dans `src/data/ig/`. Le job horaire ne fait
-  que **re-mélanger** ce pool : sans récolte, le mur re-sert indéfiniment les
-  mêmes posts tout en ayant l'air frais.
+  Récolte les **9 derniers posts** de chacun des **27 comptes curés** (354
+  posts au pool), datés, et télécharge leurs images dans `src/data/ig/` — les
+  décisions pures (combien de posts, quelle image garder) vivent dans
+  `scripts/lib/ig-harvest.mjs`, testable sans Chrome. Trois réglages, tous
+  silencieux s'ils manquent :
+  - **`count` par compte** (entier, ou `'all'` jusqu'à un plafond dur de 500)
+    surcharge le défaut de 9.
+  - **`exclude` à la racine du pool** : des shortcodes que le scraper ne prend
+    jamais, quel que soit le compte. Il s'applique **ici seulement** — le site
+    ne le relit pas, donc `test/instagram-pool.test.mjs` est le seul endroit
+    d'où l'exclusion peut être vérifiée.
+  - **`--only <handle[,handle]>`** récolte un compte sans réécrire les 26
+    autres.
+
+  **Le piège** : sa réécriture finale doit repartir de `{ ...pool, accounts }`.
+  Reconstruire l'objet effacerait `exclude` à la première récolte — un JSON
+  valide, un pool sans exclusion, et rien pour le dire.
+
+  **Le seul vrai levier sur le poids est le nombre de posts, pas leur
+  taille.** `pickImage` retient le plus petit format d'au moins 640px, mais
+  l'API n'en propose parfois que deux — plein format et une vignette trop
+  petite pour la lightbox — et la règle retombe alors sur le plein format,
+  sans le signaler. D'où `count: 120` sur `simonian_jewels` (351 posts
+  disponibles) plutôt que `'all'`.
+
+  Et le job horaire ne fait que **re-mélanger** ce pool : sans récolte, le mur
+  re-sert indéfiniment les mêmes posts tout en ayant l'air frais.
 - **`scripts/shoot.mjs`** — capture d'écran du carrousel Don Narek (Puppeteer).
 
 **Les deux vitrines** — `sites.config.js` (racine) est la source de vérité :
@@ -725,11 +759,12 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   Voir le **README.md** pour la procédure d'ajout de posts et de rafraîchissement
   des deux murs.
 - Schéma du pool Instagram :
-  `accounts: [{ handle, name, url, group, posts: [{url, date}] }]`, où `group`
-  vaut `institutions`, `personnalites`, `creation` ou `terre` et décide de quel
-  carrousel le compte relève (absent = `institutions`). Le scraper réécrit les
-  `posts` — **jamais** le tableau `accounts`. Une valeur hors de ces quatre fait
-  disparaître le compte du mur sans le moindre signe : `igStrands`
+  `{ exclude: [shortcode], accounts: [{ handle, name, url, group, count?,
+  posts: [{url, date}] }] }`, où `group` vaut `institutions`, `personnalites`,
+  `creation`, `createurs` ou `terre` et décide de quel carrousel le compte
+  relève (absent = `institutions`). Le scraper réécrit les `posts` — **jamais**
+  le tableau `accounts`, **jamais** `exclude`. Une valeur de `group` hors de
+  ces cinq fait disparaître le compte du mur sans le moindre signe : `igStrands`
   (`Social.jsx`) ne rend que les brins qu'il déclare, d'où
   `test/instagram-strands.test.mjs`.
 - Les images bundlées vivent dans `src/data/ig/` (Instagram) et `src/data/fb/`
@@ -819,7 +854,7 @@ de production servent toujours depuis la racine de leur domaine.
 - Un identifiant Instagram ne peut pas contenir de tiret : un handle mal saisi
   (ex. `armenian-trend`) renvoie un 404 et fait échouer le compte.
 - **La fraîcheur du mur est plafonnée par l'activité réelle des comptes.** Deux
-  des seize comptes suivis sont dormants (`ig_armenia` n'a rien publié depuis
+  des vingt-sept comptes suivis sont dormants (`ig_armenia` n'a rien publié depuis
   juin 2023, `armeniancuisine` depuis novembre 2025), deux autres sont lents
   (`haykmiqayelyanart` depuis février 2026, `abgarart` depuis mars 2026) : leurs
   vieux posts apparaissent sur le
