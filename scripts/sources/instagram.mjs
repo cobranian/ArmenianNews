@@ -33,13 +33,15 @@ const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || url
 // "Créateurs arméniens" would become one account's wall. This is the same
 // imbalance the per-group draw fixes one level up, applied one level down.
 export function drawGroup(accounts, limit, seen = new Set()) {
-  // One shuffled pile per account. The posts within each pile are shuffled so
-  // each draw gets a fresh random selection; round-robin cycling through piles
-  // ensures no single account dominates, even if one carries hundreds of posts
-  // and its neighbours carry nine.
-  const piles = accounts
-    .map((acc) => ({ acc, pile: shuffle(acc.posts || []) }))
-    .filter(({ pile }) => pile.length)
+  // One shuffled pile per account, and the ORDER OF THE PILES is shuffled too.
+  // Without that second shuffle the same account would always take the spare
+  // tile *and* always open the carousel — a fixed rank on a shelf whose whole
+  // point is to change.
+  const piles = shuffle(
+    accounts
+      .map((acc) => ({ acc, pile: shuffle(acc.posts || []) }))
+      .filter(({ pile }) => pile.length),
+  )
 
   const out = []
   while (out.length < limit) {

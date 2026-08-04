@@ -26,9 +26,15 @@ test('un gros catalogue ne chasse pas ses voisins du brin', () => {
   assert.equal(posts.length, 18)
   const par = {}
   for (const p of posts) par[p.handle] = (par[p.handle] || 0) + 1
-  assert.equal(par.simonian_jewels, 5, 'le gros compte doit avoir 5 tuiles, pas 16')
-  for (const h of ['a', 'b', 'c']) {
-    assert.ok(par[h] >= 4, `@${h} n a que ${par[h]} tuiles — il est chasse du brin`)
+
+  // 18 tuiles sur 4 comptes font 4+4+5+5 : QUI recoit la tuile en trop depend
+  // du melange, donc on ne l assertionne pas. Ce qui est garanti par la ronde,
+  // et qui est tout l objet de ce test, c est que PERSONNE ne sort de cette
+  // fourchette. Le melange a plat donnerait 16/1/1/0 — chacune des quatre
+  // bornes ci-dessous le rejette.
+  assert.deepEqual(Object.keys(par).sort(), ['a', 'b', 'c', 'simonian_jewels'])
+  for (const [handle, n] of Object.entries(par)) {
+    assert.ok(n >= 4 && n <= 5, `@${handle} a ${n} tuiles — attendu 4 ou 5`)
   }
 })
 
