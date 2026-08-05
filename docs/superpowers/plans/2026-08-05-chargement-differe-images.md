@@ -34,13 +34,28 @@
 
 **Pourquoi cette tâche existe.** Le « avant » connu (189 images, 11,6 Mo) a été mesuré **sur la production**. La tâche 3 mesurera sur `npm run preview`. Comparer les deux serait comparer deux bancs différents — et le seuil de Chrome dépend justement de la liaison. Il faut donc un « avant » local.
 
-- [ ] **Step 1 : Bâtir et servir**
+- [ ] **Step 1 : Bâtir, PRÉRENDRE, puis servir**
 
 ```bash
 npm run build
+npm run prerender
 ```
 
-Attendu : `✓ 2 vitrines bâties : ch (fr), org (en/hy/ru)`
+Attendu : `✓ 2 vitrines bâties` puis `✓ 12 pages prérendues`.
+
+> **`npm run prerender` est OBLIGATOIRE, et cette ligne a été payée.** La
+> première version de ce plan l'omettait. Mesuré : un `dist/` non prérendu porte
+> `<div id="root"></div>` — React monte tout côté client et le chargement
+> différé **fonctionne** (4 images chargées). Le défaut ne vit que dans le HTML
+> **prérendu**, où les 189 `<img>` sont dans le balisage initial et où l'analyseur
+> lit `src` avant `loading`. Un banc sans prérendu aurait donc « prouvé » un
+> correctif sur une page qui n'a jamais porté le bug.
+>
+> Vérifier explicitement, plutôt que faire confiance :
+>
+> ```bash
+> grep -c '<div id="root"></div>' dist/ch/index.html   # doit valoir 0
+> ```
 
 Puis, dans un terminal séparé (ou en tâche de fond) :
 
@@ -49,6 +64,11 @@ npm run preview
 ```
 
 Attendu : un serveur sur `http://localhost:4173`.
+
+> **Le script de mesure doit vivre DANS le dépôt**, pas dans le répertoire
+> temporaire : Node en ESM résout `puppeteer-core` depuis le `node_modules` du
+> projet et ne cherche pas ailleurs. Le poser à la racine sous un nom en
+> `.tmp.mjs`, et vérifier `git status --porcelain` avant tout commit.
 
 - [ ] **Step 2 : Écrire le script de mesure dans le répertoire temporaire**
 
@@ -385,17 +405,17 @@ loading ferait passer le premier au vert sur un tableau vide."
 - Consumes: le chiffre « avant » de la tâche 1, le code corrigé de la tâche 2
 - Produces: **le verdict**. Cette tâche est un portillon : elle autorise la suite ou l'arrête.
 
-- [ ] **Step 1 : Rebâtir et resservir**
+- [ ] **Step 1 : Rebâtir, reprérendre, resservir**
 
-Le serveur de prévisualisation sert `dist/ch`, qui date d'avant le correctif. Le rebâtir est obligatoire, sans quoi on mesurerait l'ancien code.
+Le serveur de prévisualisation sert `dist/ch`, qui date d'avant le correctif. Le rebâtir est obligatoire, sans quoi on mesurerait l'ancien code — **et le reprérendre l'est tout autant**, pour la raison donnée à la tâche 1 : sans prérendu, le banc ne porte pas le défaut.
 
 ```bash
 npm run build
+npm run prerender
+grep -c '<div id="root"></div>' dist/ch/index.html   # doit valoir 0
 ```
 
-Attendu : `✓ 2 vitrines bâties : ch (fr), org (en/hy/ru)`
-
-Redémarrer `npm run preview` s'il tournait sur l'ancien build.
+Attendu : `✓ 2 vitrines bâties`, `✓ 12 pages prérendues`, puis `0`.
 
 - [ ] **Step 2 : Mesurer, trois fois, sur le MÊME banc**
 
