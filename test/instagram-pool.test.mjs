@@ -34,10 +34,21 @@ test('aucun post exclu n est entre dans le pool', () => {
 
 test('aucune image d un post exclu ne traine dans src/data/ig', async () => {
   const fichiers = await readdir(new URL('../src/data/ig/', import.meta.url))
-  for (const f of fichiers.filter((x) => x.endsWith('.jpg'))) {
-    const code = f.replace(/\.jpg$/, '')
+  for (const f of fichiers.filter((x) => /\.(jpg|webp)$/.test(x))) {
+    const code = f.replace(/\.(jpg|webp)$/, '')
     assert.ok(!exclus.has(code), `${f} appartient a un post exclu — poids mort dans le bundle`)
   }
+})
+
+// Le glob de Social.jsx et le filtre ci-dessus doivent regarder les MEMES
+// extensions. Verrouilles sur des jeux differents, le test passerait au vert
+// sur des fichiers que le site ignore — il ne prouverait plus rien.
+test('le filtre du test suit le glob de Social.jsx', async () => {
+  const src = await readFile(
+    new URL('../src/components/Social.jsx', import.meta.url),
+    'utf-8',
+  )
+  assert.match(src, /data\/ig\/\*\.\{jpg,webp\}/)
 })
 
 test('chaque post porte une URL dont on sait tirer un shortcode', () => {
