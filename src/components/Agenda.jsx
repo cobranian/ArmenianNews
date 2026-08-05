@@ -41,9 +41,9 @@ function EventCard({ ev, place }) {
         {showPhoto ? (
           <img
             className="agenda-card__photo"
+            loading="lazy"
             src={ev.image}
             alt={ev.title}
-            loading="lazy"
             onError={() => setBroken(true)}
           />
         ) : (

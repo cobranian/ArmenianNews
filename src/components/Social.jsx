@@ -126,9 +126,9 @@ function FacebookCard({ post, author, cta, enlarge, img, onOpen }) {
         {showPhoto ? (
           <img
             className="fb-card__photo"
+            loading="lazy"
             src={img}
             alt={by}
-            loading="lazy"
             onError={() => setBroken(true)}
           />
         ) : (
@@ -172,9 +172,9 @@ function InstagramCard({ url, handle, name, cta, enlarge, img, onOpen }) {
         {showPhoto ? (
           <img
             className="ig-card__photo"
+            loading="lazy"
             src={img}
             alt={`@${handle} — ${name}`}
-            loading="lazy"
             onError={() => setBroken(true)}
           />
         ) : (

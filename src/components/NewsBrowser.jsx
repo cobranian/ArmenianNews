@@ -87,9 +87,9 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
             suppress it — with no Referer it serves the image normally. */}
         {hasPhoto ? (
           <img
+            loading="lazy"
             src={src}
             alt=""
-            loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setBroken(true)}
           />
