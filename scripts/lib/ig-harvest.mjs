@@ -3,10 +3,13 @@
  * être testables : ce script pilote un Chrome et n'est pas exécutable en test.
  */
 
-// Les tuiles rendent autour de 300px, la lightbox guère plus de 900. Instagram
-// propose plusieurs formats et le script prenait toujours le plus grand
-// (~1080px) : 229 Ko de moyenne sur les 218 images du dépôt, que l'historique
-// git garde pour toujours.
+// Le plus petit format qu'on accepte de DEMANDER à Instagram — à ne pas
+// confondre avec la taille qu'on ÉCRIT, fixée par `image.mjs` (800px). Les deux
+// existent : inutile de télécharger 1440px pour en garder 800, mais quand l'API
+// n'offre aucun palier entre 640 et le plein format, c'est le plein format qui
+// arrive et que l'encodage réduit. Ne pas remonter cette valeur à 800 en
+// croyant simplifier : on perdrait les sources à 640-799px, qui n'ont alors
+// plus rien à offrir en dessous.
 export const MIN_IMAGE_WIDTH = 640
 
 // Ce que récolte un compte qui ne demande rien.
