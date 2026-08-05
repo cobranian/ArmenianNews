@@ -1383,7 +1383,10 @@ de production servent toujours depuis la racine de leur domaine.
   Mesuré en production le 5 août 2026, avant correction : **189 images
   téléchargées au chargement, 11,59 Mo**, pour un premier écran qui n'en montre
   **aucune** (page de 9 724 px, fenêtre de 915, première image à 2 075 px).
-  Après : **4 images, 0,14 Mo**.
+  Après, en production : **4 à 8 images, 0,17 à 0,36 Mo** sur trois passages.
+  L'écart entre les passages n'est pas du bruit de mesure — c'est le seuil de
+  Chrome qui suit la connexion estimée, et c'est la raison pour laquelle un
+  chiffre unique ne décrit pas cette page.
 
   **Ce qui rend ce piège vicieux, c'est qu'il disparaît du banc le plus naturel
   pour le chercher.** Sur `npm run dev`, ou sur un `npm run preview` qui n'a pas
