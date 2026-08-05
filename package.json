@@ -16,6 +16,7 @@
     "scrape": "node scripts/scrape.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
     "ig-select": "node scripts/ig-select.mjs",
+    "reencode": "node scripts/reencode-images.mjs",
     "fb-scrape": "node scripts/fb-scrape.mjs",
     "screenshot": "node scripts/shoot.mjs",
     "og-image": "node scripts/og-image.mjs",
