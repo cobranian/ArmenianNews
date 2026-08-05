@@ -12,9 +12,9 @@ import {
   wantedFor,
 } from '../scripts/lib/ig-harvest.mjs'
 
-// Instagram liste ses formats du plus grand au plus petit. Le script prenait
-// systematiquement candidates[0] — ~1080px, 229 Ko de moyenne mesures sur les
-// 218 images du depot — pour des tuiles rendues autour de 300px.
+// Instagram liste ses formats du plus grand au plus petit, et le script prenait
+// systematiquement candidates[0]. MIN_IMAGE_WIDTH borne ce qu on DEMANDE ;
+// image.mjs borne ce qu on ECRIT. Les deux sont distincts.
 const CANDIDATS = [
   { url: 'w1080', width: 1080 },
   { url: 'w750', width: 750 },

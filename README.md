@@ -327,10 +327,12 @@ Each post is a `{url, date}` pair, the date being the post's real timestamp:
 **To add a post by hand** (the harvest will overwrite it on the next run, so this
 is for one-offs): add a `{url, date}` entry to the matching account's `posts`
 array, and *(optional, for a real photo)* save the post's image as
-`src/data/ig/<shortcode>.jpg` — the shortcode is the code after `/p/`, `/reel/`
-or `/tv/` (e.g. `ABC123.jpg`). It's bundled at build time, so it never hotlinks
-or expires. **Without an image, the tile shows a deterministic Armenian motif**
-(still on-brand) — so a permalink alone is enough.
+`src/data/ig/<shortcode>.webp` — the shortcode is the code after `/p/`, `/reel/`
+or `/tv/` (e.g. `ABC123.webp`). A `.jpg` also works: the glob in `Social.jsx`
+accepts both on purpose, so a file dropped in by hand is never silently ignored.
+It's bundled at build time, so it never hotlinks or expires. **Without an image,
+the tile shows a deterministic Armenian motif** (still on-brand) — so a permalink
+alone is enough.
 
 **To add an account**, add it to the `accounts` array by hand — including its
 `group`, which decides which of the five carousels it lands in (omit it and it
@@ -399,10 +401,11 @@ datacenter IPs), so refreshing the **post content** is a **manual local step**
 — unlike news/agenda, it does *not* run hourly. `npm run fb-scrape` drives
 your own logged-in Chrome to read the public profile, keeps only the posts under
 Facebook's **"Other posts"** heading (skips pinned/featured), opens each post
-for its full-resolution image, and rewrites `src/data/fb/*.jpg` +
+for its full-resolution image, and rewrites `src/data/fb/*.webp` +
 `facebook.json` (newest first, capped at 30). Images are downloaded **through the
 logged-in tab** (not an anonymous fetch), so Facebook's session-gated CDN
-variants come back as the real photo instead of a placeholder.
+variants come back as the real photo instead of a placeholder, then re-encoded to
+WebP 800px by `scripts/lib/image.mjs` before they hit the disk.
 
 ```bash
 # 1. Launch a dedicated Chrome with remote debugging + its own profile.
@@ -421,8 +424,30 @@ npm run fb-scrape -- --connect         # download images + rewrite facebook.json
 
 # 4. Verify, then publish:
 npm run build && npm run screenshot           # eyeball dist/ch/don-narek-*.png
-git add src/data/facebook.json src/data/fb/dn-*.jpg && git commit && git push
+git add src/data/facebook.json src/data/fb/dn-*.webp && git commit && git push
 ```
+
+### Re-encoding the bundled images
+
+Both scrapes write **WebP 800px q78** (`scripts/lib/image.mjs`). The target
+covers the two sizes that actually get rendered: a tile at ~300 CSS px, and the
+lightbox at `min(1040px, 94vw)` — 367 CSS px on a 390px phone, so 734px on a
+retina screen.
+
+To change the target across every image already committed — no network, they are
+all on disk:
+
+```bash
+npm run reencode -- --dry               # count and weigh, write nothing
+npm run reencode -- --sample /tmp/check # write elsewhere, touch nothing
+npm run reencode                        # convert in place, rewrite facebook.json
+npm run reencode -- --width 640 --quality 75
+```
+
+It re-encodes `.webp` files too, so it stays usable after the first migration —
+but that means a second pass loses a little quality (WebP to WebP), and it can
+only ever shrink: `encode()` never enlarges, so re-running at 1040 after a
+migration at 800 will **not** bring back the lost pixels. Re-harvest for that.
 
 Notes:
 - The one-time login persists across runs — later refreshes are just steps 1, 3, 4.

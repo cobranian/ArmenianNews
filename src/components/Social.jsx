@@ -49,14 +49,18 @@ const fbImg = Object.fromEntries(
   Object.entries(FB_IMAGES).map(([path, src]) => [path.split('/').pop(), src]),
 )
 
-const IG_IMAGES = import.meta.glob('../data/ig/*.jpg', {
+// Les deux globs acceptent `{jpg,webp}` DÉFINITIVEMENT, pas seulement pendant la
+// migration vers WebP : un `.jpg` qui survivrait à une conversion incomplète
+// continue de s'afficher. Verrouiller sur `.webp` transformerait tout fichier
+// oublié en tuile muette retombée sur son motif, sans message.
+const IG_IMAGES = import.meta.glob('../data/ig/*.{jpg,webp}', {
   eager: true,
   query: '?url',
   import: 'default',
 })
 const igImg = Object.fromEntries(
   Object.entries(IG_IMAGES).map(([path, src]) => [
-    path.split('/').pop().replace(/\.jpg$/, ''),
+    path.split('/').pop().replace(/\.(jpg|webp)$/, ''),
     src,
   ]),
 )

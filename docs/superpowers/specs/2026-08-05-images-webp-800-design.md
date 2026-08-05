@@ -71,14 +71,27 @@ largeurs :
 | 1040 px q80 | 96 ko | −60 % | 125 Mo |
 | *aujourd'hui* | *243 ko* | — | *315 Mo* |
 
-### Résultat attendu
+### Résultat attendu — et le résultat réel
 
-| | Aujourd'hui | Après |
-|---|---|---|
-| Image moyenne servie | 243 ko | ~63 ko |
-| Visite complète de l'accueil | ~32 Mo | ~8 Mo |
-| `src/data/ig/` | 315 Mo | ~82 Mo |
-| `dist/` par vitrine | 325 Mo | ~92 Mo |
+> **Corrigé après implémentation (5 août 2026).** Les prévisions ci-dessous
+> étaient **optimistes de ~24 %**. L'échantillon de conception ne faisait que
+> 24 images et écartait les 74 fichiers dont le parseur d'en-tête maison ne
+> lisait pas les dimensions. Mesurée sur 200 images, la réduction dépend
+> entièrement de la largeur d'origine : **−33 %** en dessous de 800 px
+> (ré-encodage seul, pas de redimensionnement), **−68 %** entre 801 et 1080,
+> **−74 %** au-delà. La colonne « prévu » est conservée telle qu'elle a été
+> approuvée ; c'est la colonne « mesuré » qui fait foi.
+
+| | Avant | Prévu | **Mesuré** |
+|---|---|---|---|
+| Image moyenne servie | 225 ko | ~63 ko | **72 ko** |
+| Visite complète de l'accueil | ~32 Mo | ~8 Mo | **~10 Mo** |
+| `src/data/ig/` | 319 Mo | ~82 Mo | **104 Mo** |
+| `dist/` par vitrine | 325 Mo | ~92 Mo | **107 Mo** |
+
+La réduction reste de **3,1×**, et la décision de fond — approche A à 800 px —
+n'en est pas affectée : elle a été reconfirmée avec ces chiffres avant la
+conversion.
 
 ## L'architecture
 

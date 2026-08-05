@@ -16,6 +16,7 @@
     "scrape": "node scripts/scrape.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
     "ig-select": "node scripts/ig-select.mjs",
+    "reencode": "node scripts/reencode-images.mjs",
     "fb-scrape": "node scripts/fb-scrape.mjs",
     "screenshot": "node scripts/shoot.mjs",
     "og-image": "node scripts/og-image.mjs",
@@ -35,6 +36,7 @@
     "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^15.15.0",
     "puppeteer-core": "^25.3.0",
+    "sharp": "^0.35.3",
     "vite": "^6.0.7"
   }
 }

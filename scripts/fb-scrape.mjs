@@ -21,6 +21,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
+import { encode } from './lib/image.mjs'
 
 const DRY = process.argv.includes('--dry')
 const CONNECT = process.argv.includes('--connect')
@@ -56,11 +57,11 @@ const WANT = 18
 //
 // D'où un id ET un fichier STABLES, hors de la numérotation `dn-NN`. C'est le
 // point : si on la reportait sous son ancien numéro, la récolte suivante
-// écrirait une AUTRE photo dans `dn-05.jpg` et l'entrée reprise pointerait sur
+// écrirait une AUTRE photo dans `dn-05.webp` et l'entrée reprise pointerait sur
 // l'image de quelqu'un d'autre — une signature juste sur une toile qui ne lui
-// appartient pas. `dn-narek.jpg` n'est jamais écrit par la boucle numérotée.
+// appartient pas. `dn-narek.webp` n'est jamais écrit par la boucle numérotée.
 const PINNED_ID = 'dn-narek'
-const PINNED_FILE = `${PINNED_ID}.jpg`
+const PINNED_FILE = `${PINNED_ID}.webp`
 
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -356,7 +357,7 @@ for (const p of found.slice(0, WANT)) {
   // (l'ordre est chronologique, donc c'est la plus récente).
   const isOwn = by === AUTHOR && !pinned
   const id = isOwn ? PINNED_ID : `dn-${String(++n).padStart(2, '0')}`
-  const file = isOwn ? PINNED_FILE : `${id}.jpg`
+  const file = isOwn ? PINNED_FILE : `${id}.webp`
   const url = cleanLink(p.permalink)
   try {
     // Download THROUGH the logged-in browser, not a bare fetch(). Facebook now
@@ -366,12 +367,17 @@ for (const p of found.slice(0, WANT)) {
     const res = await page.goto(src || p.image, { waitUntil: 'load', timeout: 45000 })
     if (!res || !res.ok()) throw new Error(`HTTP ${res ? res.status() : 'no response'}`)
     const buf = await res.buffer()
+    // Le plancher reste AVANT l'encodage, sur les octets reçus de Facebook —
+    // c'est lui qui reconnaît le substitut « accès refusé » de ~3 ko servi à une
+    // session sans cookies. Il vaut 15 000 ici et 10 000 dans ig-scrape : deux
+    // sources, deux substituts, deux seuils. Ne pas les uniformiser.
     if (buf.length < 15000) throw new Error(`too small (${buf.length}B)`)
-    await writeFile(path.join(FB_DIR, file), buf)
+    const webp = await encode(buf)
+    await writeFile(path.join(FB_DIR, file), webp)
     const entry = { id, author: by, url, image: file }
     if (isOwn) pinned = entry
     else posts.push(entry)
-    console.log(`  ✓ ${file} — ${by} (${(buf.length / 1024).toFixed(0)} KB)${isOwn ? ' ← épinglée' : ''}`)
+    console.log(`  ✓ ${file} — ${by} (${(webp.length / 1024).toFixed(0)} KB)${isOwn ? ' ← épinglée' : ''}`)
   } catch (e) {
     console.log(`  ✗ ${id} (${by}): ${e.message} — keeping motif fallback`)
     const entry = { id, author: by, url }
@@ -381,7 +387,7 @@ for (const p of found.slice(0, WANT)) {
 }
 
 // Aucune publication signée Don Narek dans cette récolte ? On reprend celle du
-// fichier précédent. `dn-narek.jpg` n'ayant pas été réécrit, l'image reste la
+// fichier précédent. `dn-narek.webp` n'ayant pas été réécrit, l'image reste la
 // bonne. C'est ce report qui tient la promesse « jamais effacée du carrousel ».
 if (!pinned && previous) {
   pinned = previous.posts.find((p) => p.id === PINNED_ID) || null

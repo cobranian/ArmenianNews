@@ -33,6 +33,7 @@ import {
   stopPaging,
   wantedFor,
 } from './lib/ig-harvest.mjs'
+import { encode } from './lib/image.mjs'
 
 const DRY = process.argv.includes('--dry')
 const CONNECT = process.argv.includes('--connect')
@@ -282,9 +283,15 @@ async function download(p) {
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   const buf = Buffer.from(await res.arrayBuffer())
+  // LE PLANCHER RESTE ICI, sur le JPEG REÇU — jamais après l'encodage. C'est lui
+  // qui distingue une vraie image d'une page d'erreur (il a attrapé
+  // DWr7TYjjHd9, 9,6 ko). Déplacé après, une image légitime de 42 ko ramenée à
+  // 8 ko serait rejetée comme corrompue : un faux négatif silencieux, la tuile
+  // retombant sur son motif sans que rien ne l'explique.
   if (buf.length < 10000) throw new Error(`too small (${buf.length}B)`)
-  await writeFile(path.join(IG_DIR, `${p.shortcode}.jpg`), buf)
-  return buf.length
+  const webp = await encode(buf)
+  await writeFile(path.join(IG_DIR, `${p.shortcode}.webp`), webp)
+  return webp.length
 }
 
 const accounts = []
@@ -298,9 +305,9 @@ for (const { acc, posts, ok } of results) {
   for (const p of posts) {
     try {
       const bytes = await download(p)
-      console.log(`  ✓ ${p.shortcode}.jpg (${(bytes / 1024).toFixed(0)} KB)`)
+      console.log(`  ✓ ${p.shortcode}.webp (${(bytes / 1024).toFixed(0)} KB)`)
     } catch (err) {
-      console.log(`  ✗ ${p.shortcode}.jpg: ${err.message} — keeping motif fallback`)
+      console.log(`  ✗ ${p.shortcode}.webp: ${err.message} — keeping motif fallback`)
     }
     kept.push({ url: permalink(p), date: new Date(p.ts * 1000).toISOString() })
   }
@@ -320,8 +327,12 @@ console.log(`\n✓ wrote src/data/instagram.json (${accounts.reduce((n, a) => n 
 // the bundle carrying every photo we have ever harvested.
 const live = new Set(accounts.flatMap((a) => a.posts.map((p) => shortcodeOf(p.url))))
 let dropped = 0
+// Balaie les DEUX extensions : verrouillé sur une seule, le nettoyage laisserait
+// l'autre s'accumuler sans qu'aucun compte ne diverge — pendant la migration
+// vers WebP, puis indéfiniment pour toute image restée en JPEG.
 for (const file of await readdir(IG_DIR)) {
-  if (!file.endsWith('.jpg') || live.has(file.replace(/\.jpg$/, ''))) continue
+  const m = file.match(/^(.+)\.(?:jpg|webp)$/)
+  if (!m || live.has(m[1])) continue
   await unlink(path.join(IG_DIR, file))
   dropped++
 }

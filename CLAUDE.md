@@ -361,12 +361,22 @@ composants importent au build :
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
   locale**, pas horaire : Instagram exige une session connectée et bloque la CI.
   Récolte par défaut les **9 derniers posts** de chacun des **26 comptes
-  curés**, datés, et télécharge leurs images dans `src/data/ig/` (**1 448
-  posts** au pool le 5 août 2026, **20 comptes sur 26** portant un `count`
-  supérieur au défaut) — les décisions pures (combien de posts, quelle image
-  garder)
-  vivent dans `scripts/lib/ig-harvest.mjs`, testable sans Chrome. Trois
-  réglages, tous silencieux s'ils manquent :
+  curés**, datés, et écrit leurs images **ré-encodées en WebP 800 px** dans
+  `src/data/ig/` (**1 448 posts** au pool le 5 août 2026, **20 comptes sur 26**
+  portant un `count` supérieur au défaut) — les décisions pures (combien de
+  posts, quelle image garder) vivent dans `scripts/lib/ig-harvest.mjs`, la
+  règle d'encodage dans `scripts/lib/image.mjs`, toutes deux testables sans
+  Chrome.
+
+  **Le plancher de taille doit rester AVANT l'encodage**, sur les octets reçus
+  du réseau — 10 000 ici, 15 000 dans `fb-scrape.mjs` : deux sources, deux
+  substituts d'erreur, deux seuils, à ne pas uniformiser. C'est ce garde qui
+  distingue une vraie image d'une page d'erreur (il a attrapé `DWr7TYjjHd9`,
+  9,6 ko). Déplacé après l'encodage, une image légitime de 42 ko ramenée à
+  8 ko serait rejetée comme corrompue : un faux négatif silencieux, la tuile
+  retombant sur son motif sans explication.
+
+  Trois réglages, tous silencieux s'ils manquent :
   - **`count` par compte** (entier, ou `'all'` jusqu'à un plafond dur de 500)
     surcharge le défaut de 9.
   - **`exclude` à la racine du pool** : des shortcodes que le scraper ne prend
@@ -777,23 +787,31 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   ces cinq fait disparaître le compte du mur sans le moindre signe : `igStrands`
   (`Social.jsx`) ne rend que les brins qu'il déclare, d'où
   `test/instagram-strands.test.mjs`.
+- **Les deux globs de `Social.jsx` acceptent `{jpg,webp}`, et c'est
+  définitif** — pas un vestige de la migration vers WebP. Les verrouiller sur
+  `.webp` transformerait tout fichier resté en JPEG en tuile muette retombée
+  sur son motif, sans message. `test/instagram-pool.test.mjs` lie le filtre du
+  test au glob du composant : verrouillés sur des jeux d'extensions
+  différents, son contrôle « aucune image d'un post exclu ne traîne »
+  passerait au vert sur des fichiers que le site ignore, et ne prouverait plus
+  rien.
 - Les images bundlées vivent dans `src/data/ig/` (Instagram) et `src/data/fb/`
   (Facebook) : incluses au build, donc jamais de hotlink ni d'expiration. Sans
   image, une tuile affiche un **motif arménien déterministe** (voir
   `src/components/motifs.jsx`). `Social.jsx` les charge par `import.meta.glob(...,
   { eager: true })` : **toutes** les images de ces deux dossiers partent donc dans
   les **deux** `dist/`, pas seulement celles que le tirage affiche — mesuré,
-  **~325 Mo par vitrine** au 5 août 2026. Le coût d'un compte ajouté au pool
+  **~107 Mo par vitrine** au 5 août 2026. Le coût d'un compte ajouté au pool
   n'est donc pas ce qu'il montre, c'est tout ce qui a été récolté, payé à
   chaque déploiement horaire.
 
-  **Ce chiffre est passé de 92 à 325 Mo en une journée**, en montant le
-  `count` de seize comptes — le mur affiche toujours 90 tuiles. La grandeur
-  qui compte n'est ni le nombre de comptes ni celui des tuiles : c'est
-  `Σ count`, et rien dans le dépôt ne la surveille. Une image pèse 170 à
-  250 ko selon le compte (`pickImage` retombe sur le plein format quand
-  l'API n'offre pas de palier au-dessus de 640px), donc **+100 posts ≈
-  +20 Mo, deux fois**.
+  **La grandeur qui gouverne ce poids n'est ni le nombre de comptes ni celui
+  des tuiles : c'est `Σ count`, et rien dans le dépôt ne la surveille.** Le
+  mur affiche 90 tuiles quoi qu'il arrive ; le `count` de seize comptes est
+  monté le 5 août et le dossier a triplé. Depuis le passage en WebP 800 px
+  (`scripts/lib/image.mjs`), une image pèse **~72 ko** au lieu de 170-250,
+  donc **+100 posts ≈ +7 Mo, deux fois** — le coefficient a baissé, le
+  mécanisme non.
 
 ## Déploiement
 
