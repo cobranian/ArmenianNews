@@ -199,3 +199,57 @@ dans l'historique git. La migration est réversible d'une commande.
 Ce chantier ne touche **que** les images bundlées (`src/data/ig/`,
 `src/data/fb/`). Les vignettes des sources de presse sont hotlinkées ou passent
 par `wsrv.nl` — elles ne sont pas concernées.
+
+## Suite possible : rendre le site installable (PWA)
+
+**Hors périmètre de ce chantier.** Noté ici parce que la question a été posée
+pendant la conception — « une application mobile arrangerait-elle les choses ? »
+— et que la réponse mérite d'être conservée avec son raisonnement.
+
+### Pourquoi pas une application native
+
+Pour les deux objectifs du cadrage — confort du lecteur, audience — une
+application est neutre sur le premier et **franchement mauvaise sur le second**.
+
+*Sur l'audience.* Le site reste, par décision de cadrage, un agrégateur
+indexable à 12 URL. Une application en a **zéro** : la recherche Google, les
+`hreflang`, les sitemaps et la carte de partage qui s'affiche dans WhatsApp
+cessent tous d'exister. Un lien partagé s'ouvre en un geste ; une application
+demande de voir le lien, d'aller au store, d'installer, d'ouvrir — et perd du
+monde à chaque marche.
+
+*Sur le confort.* Le site est lourd parce que ses images font 243 ko pour des
+tuiles de 300 px. C'est un problème de **dimension, pas de plateforme** : une
+application téléchargerait les mêmes fichiers surdimensionnés, les mettrait en
+cache après le premier chargement — masquant le symptôme pour le fidèle,
+l'aggravant pour le nouveau venu. Les 319 Mo ne peuvent pas tenir dans un
+binaire de store. **Le présent chantier serait à faire de toute façon, avant une
+application et non à sa place.**
+
+### Ce que le PWA donne, et ce qu'il ne donne pas
+
+Le site sert **déjà** `apple-touch-icon.png`, `favicon-192.png` et une
+`theme-color`. Il manque **deux fichiers** — un manifeste et un service worker —
+pour qu'il devienne installable depuis le navigateur : icône sur l'écran
+d'accueil, ouverture en plein écran, lecture hors ligne du dernier instantané,
+et sur iOS 16.4+ les notifications une fois le site installé. Sans store, sans
+compte développeur, sans seconde base de code, **et sans perdre une seule des 12
+URL ni rien du référencement**.
+
+Ce n'est pas l'équivalent du natif : les notifications iOS exigent que le lecteur
+ait d'abord ajouté le site à son écran d'accueil, ce que peu de gens font
+spontanément.
+
+### Deux pièges à instruire avant de l'ouvrir
+
+- **Un service worker sert du cache, et ce site vit d'un instantané horaire.**
+  Une stratégie de cache mal choisie servirait des dépêches périmées à un lecteur
+  qui croit voir l'heure courante — exactement le mode de panne déjà documenté
+  pour le backfill des sources, mais côté navigateur et sans aucun journal pour
+  le voir.
+- **Le manifeste porte un `start_url` unique, alors que le site a douze pages
+  et quatre langues.** Un `start_url` fixe renverrait un lecteur arménien vers
+  l'accueil anglais à chaque ouverture. Il en faut un par vitrine et par langue,
+  donc un manifeste généré depuis `sites.config.js` comme le sont déjà le
+  `<head>`, les sitemaps et les cartes de partage — pas un fichier statique dans
+  `public/`, que Vite copierait à l'identique dans les deux `dist/`.
