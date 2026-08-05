@@ -807,9 +807,17 @@ html:lang(hy) .nav__brand {
 /* ============================================================
    Section scaffolding
    ============================================================ */
+/* Le rembourrage d'une section se paie DEUX FOIS : il s'empile avec celui de
+   la section suivante. À 110px, deux sections voisines étaient séparées de
+   220px — un trou de plus d'un tiers d'écran, mesuré, et le défaut que
+   signalaient les huit captures. L'échelle verticale est donc comprimée plus
+   fort en haut qu'en bas : la frontière de section perd 42 %, les écarts
+   internes 20 à 35 %. La hiérarchie survit (section > brin > tête > interne),
+   mais la page cesse de traiter ses sections comme des chapitres — c'est un
+   seul instantané d'une seule heure, pas un sommaire. */
 .section {
   position: relative;
-  padding: clamp(56px, 9vw, 110px) 0;
+  padding: clamp(36px, 5vw, 64px) 0;
 }
 .section--alt {
   background:
@@ -820,7 +828,7 @@ html:lang(hy) .nav__brand {
 }
 .section__head {
   text-align: center;
-  margin-bottom: clamp(38px, 6vw, 64px);
+  margin-bottom: clamp(26px, 3.6vw, 44px);
 }
 .section__eyebrow {
   font-family: var(--font-mono);
@@ -855,7 +863,7 @@ html:lang(hy) .nav__brand {
    plutôt que dans une carte : c'est un lien de section, pas un lien d'article. */
 .section__more {
   text-align: center;
-  margin: clamp(28px, 5vw, 44px) 0 0;
+  margin: clamp(20px, 2.6vw, 30px) 0 0;
 }
 .section__more a {
   font-family: var(--font-mono);
@@ -892,7 +900,7 @@ html:lang(hy) .nav__brand {
 .social {
   display: flex;
   flex-direction: column;
-  gap: clamp(46px, 6vw, 76px);
+  gap: clamp(30px, 3.8vw, 48px);
 }
 /* #facebook / #instagram anchor their own strand; the nav offset comes from
    the root's scroll-padding-top, so no scroll-margin is needed here. */
@@ -1318,7 +1326,7 @@ html:lang(hy) .nav__brand {
    reste sur le conteneur pour couvrir toute la largeur, et le marqueur abricot
    de l'onglet actif se pose dessus. */
 .newsfeed__tabwrap {
-  margin-bottom: clamp(22px, 3.5vw, 36px);
+  margin-bottom: clamp(18px, 2.4vw, 28px);
   border-bottom: 1px solid var(--line-strong);
 }
 .newsfeed__tabs {
@@ -1392,7 +1400,7 @@ html:lang(hy) .nav__brand {
 .newsfeed__source {
   display: flex;
   flex-direction: column;
-  gap: clamp(24px, 3.5vw, 38px);
+  gap: clamp(20px, 2.4vw, 30px);
   animation: newsfeed-fade 0.4s var(--ease);
 }
 .newsfeed__source .shelf {
@@ -2823,7 +2831,7 @@ html:lang(hy) .nav__brand {
   transform: translateX(5px);
 }
 .ig-accounts {
-  margin-top: 40px;
+  margin-top: 26px;
   text-align: center;
 }
 .ig-accounts__toggle {
