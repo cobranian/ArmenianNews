@@ -73,7 +73,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 162 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 174 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -83,7 +83,7 @@ npm run screenshot   # après un build : capturer le carrousel Don Narek dans di
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **162 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **174 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -1374,6 +1374,31 @@ de production servent toujours depuis la racine de leur domaine.
   passait à son tour derrière le cylindre et le focus tombait sur `<body>`. La
   navigation clavier mourait. Si vous devez cacher un élément **focusable** sans
   le sortir du parcours, l'opacité est le bon outil.
+- **`loading="lazy"` doit être déclaré AVANT `src`, et le défaut ne se voit
+  QUE sur une page prérendue.** L'analyseur HTML décide du chargement différé au
+  moment où `src` est posé ; `loading` lu après n'a plus d'effet. L'ordre du JSX
+  se retrouve tel quel dans le HTML que cuit `npm run prerender` — celui que
+  reçoivent les lecteurs et les robots.
+
+  Mesuré en production le 5 août 2026, avant correction : **189 images
+  téléchargées au chargement, 11,59 Mo**, pour un premier écran qui n'en montre
+  **aucune** (page de 9 724 px, fenêtre de 915, première image à 2 075 px).
+  Après : **4 images, 0,14 Mo**.
+
+  **Ce qui rend ce piège vicieux, c'est qu'il disparaît du banc le plus naturel
+  pour le chercher.** Sur `npm run dev`, ou sur un `npm run preview` qui n'a pas
+  été prérendu, la racine React est vide, tout monte côté client, et le différé
+  **fonctionne** — 4 images, comme si de rien n'était. Une mesure prise là
+  « prouve » l'absence du bug. Toute vérification du chargement différé exige
+  donc `npm run build` **puis** `npm run prerender`, et le contrôle qui le
+  prouve : `grep -c '<div id="root"></div>' dist/ch/index.html` doit valoir 0.
+
+  Deux conséquences. `test/img-lazy.test.mjs` est le seul garde — il lit les
+  composants **comme du texte** (Node ne sait pas importer du JSX) et ne porte
+  que sur les `<img>` qui se déclarent différées, celle de la visionneuse devant
+  charger tout de suite. Et le seuil de déclenchement de Chrome **dépend de la
+  connexion estimée** : une mesure sur `localhost` est la plus flatteuse
+  possible, elle doit être reconfirmée en production.
 - **Le plancher tactile de 44px est déjà tenu — par `@media (pointer: coarse)`.**
   Ce bloc agrandit `.theme-toggle`, `.nav__toggle`, les pastilles de langue,
   `.shelf__arrow`, `.radio__chip`, `.ig-chip` et

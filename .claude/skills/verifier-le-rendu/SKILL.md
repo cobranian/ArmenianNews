@@ -72,7 +72,7 @@ commit.
 
 ```bash
 npm run lint     # 0 erreur, EXACTEMENT 5 avertissements connus (voir CLAUDE.md)
-npm test         # 125 tests
+npm test         # 174 tests
 npm run build
 npm run check    # les 12 pages, hreflang, sitemaps, cartes de partage
 ```
