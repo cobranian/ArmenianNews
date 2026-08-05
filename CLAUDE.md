@@ -5,9 +5,10 @@ travaille sur ce dépôt.
 
 ## Ce qui entre dans ce fichier, et ce qui n'y entre pas
 
-**Ce fichier est un budget, pas un journal.** Il pèse ~76 000 caractères, soit
-~21 000 jetons **chargés à chaque session**, avant qu'une seule ligne de code
-n'ait été lue. Chaque ajout se paie sur toutes les tâches à venir.
+**Ce fichier est un budget, pas un journal.** Il pèse ~95 000 caractères, soit
+~26 000 jetons **chargés à chaque session**, avant qu'une seule ligne de code
+n'ait été lue. Le seuil de scission annoncé plus bas — 30 000 jetons — n'est
+donc plus loin. Chaque ajout se paie sur toutes les tâches à venir.
 
 Le critère n'est donc pas « qu'est-ce qui a changé » — git le sait déjà, et les
 messages de commit de ce dépôt racontent le détail bien mieux qu'un résumé ne le
@@ -359,10 +360,11 @@ composants importent au build :
   locale**, pas horaire : Facebook exige une session connectée et bloque la CI.
 - **`scripts/ig-scrape.mjs`** — rafraîchit le pool Instagram. **Étape manuelle
   locale**, pas horaire : Instagram exige une session connectée et bloque la CI.
-  Récolte par défaut les **9 derniers posts** de chacun des **27 comptes
-  curés**, datés, et télécharge leurs images dans `src/data/ig/` (**576
-  posts** au pool aujourd'hui, un compte portant un `count` supérieur au
-  défaut) — les décisions pures (combien de posts, quelle image garder)
+  Récolte par défaut les **9 derniers posts** de chacun des **26 comptes
+  curés**, datés, et télécharge leurs images dans `src/data/ig/` (**1 448
+  posts** au pool le 5 août 2026, **20 comptes sur 26** portant un `count`
+  supérieur au défaut) — les décisions pures (combien de posts, quelle image
+  garder)
   vivent dans `scripts/lib/ig-harvest.mjs`, testable sans Chrome. Trois
   réglages, tous silencieux s'ils manquent :
   - **`count` par compte** (entier, ou `'all'` jusqu'à un plafond dur de 500)
@@ -371,8 +373,14 @@ composants importent au build :
     jamais, quel que soit le compte. Il s'applique **ici seulement** — le site
     ne le relit pas, donc `test/instagram-pool.test.mjs` est le seul endroit
     d'où l'exclusion peut être vérifiée.
-  - **`--only <handle[,handle]>`** récolte un compte sans réécrire les 26
-    autres.
+  - **`--only <handle[,handle]>`** récolte un compte sans réécrire les 25
+    autres. **Mais `exclude` ne mord qu'au scrape** : écarter un post déjà
+    dans le pool suppose de récolter **le compte qui le porte**, pas celui
+    qu'on croit. Deux des quatre exclusions du 5 août visaient des posts de
+    `arturaleksanyan_` alors que la demande portait sur le brin `creation` —
+    sans lui dans le `--only`, ils seraient restés sur le mur tout en
+    figurant dans `exclude`. Une exclusion enregistrée et sans effet ne
+    déclenche rien : ni test, ni lint, ni build.
 
   **Le piège** : sa réécriture finale doit repartir de `{ ...pool, accounts }`.
   Reconstruire l'objet effacerait `exclude` à la première récolte — un JSON
@@ -775,9 +783,17 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   `src/components/motifs.jsx`). `Social.jsx` les charge par `import.meta.glob(...,
   { eager: true })` : **toutes** les images de ces deux dossiers partent donc dans
   les **deux** `dist/`, pas seulement celles que le tirage affiche — mesuré,
-  ~92 Mo par vitrine. Le coût d'un compte ajouté au pool n'est donc pas ce
-  qu'il montre, c'est tout ce qui a été récolté, payé à chaque déploiement
-  horaire.
+  **~325 Mo par vitrine** au 5 août 2026. Le coût d'un compte ajouté au pool
+  n'est donc pas ce qu'il montre, c'est tout ce qui a été récolté, payé à
+  chaque déploiement horaire.
+
+  **Ce chiffre est passé de 92 à 325 Mo en une journée**, en montant le
+  `count` de seize comptes — le mur affiche toujours 90 tuiles. La grandeur
+  qui compte n'est ni le nombre de comptes ni celui des tuiles : c'est
+  `Σ count`, et rien dans le dépôt ne la surveille. Une image pèse 170 à
+  250 ko selon le compte (`pickImage` retombe sur le plein format quand
+  l'API n'offre pas de palier au-dessus de 640px), donc **+100 posts ≈
+  +20 Mo, deux fois**.
 
 ## Déploiement
 
@@ -860,15 +876,29 @@ de production servent toujours depuis la racine de leur domaine.
   panne. Le piège est silencieux.
 - Un identifiant Instagram ne peut pas contenir de tiret : un handle mal saisi
   (ex. `armenian-trend`) renvoie un 404 et fait échouer le compte.
-- **La fraîcheur du mur est plafonnée par l'activité réelle des comptes.** Deux
-  des vingt-sept comptes suivis sont dormants (`ig_armenia` n'a rien publié depuis
-  juin 2023, `armeniancuisine` depuis novembre 2025), deux autres sont lents
-  (`haykmiqayelyanart` depuis février 2026, `abgarart` depuis mars 2026) : leurs
-  vieux posts apparaissent sur le
-  mur et **aucune récolte n'y changera rien** — le script rapporte fidèlement ce
-  que le compte publie. Pour rafraîchir vraiment, il faut retirer ou remplacer
-  ces comptes à la main dans le tableau `accounts`. C'est un choix assumé, pas un
-  bug.
+- **La fraîcheur du mur est plafonnée par l'activité réelle des comptes, et un
+  `count` élevé AMPLIFIE ce plafond au lieu de le lever.** Le tirage à la ronde
+  donne à chaque compte une part de son brin : un dormant à `count: 9` prend
+  deux tuiles sur dix-huit, le même à `count: 60` en prend quatre ou cinq —
+  quatre fois plus de vieux posts, sur un brin qui n'en a pas plus. Mesuré le
+  5 août 2026 : `ig_armenia`, muet depuis **juin 2023**, tient 4 des 18 tuiles
+  du brin `terre`. Le script rapporte fidèlement ce que le compte publie —
+  **aucune récolte n'y changera rien**. Pour rafraîchir vraiment, il faut
+  baisser son `count` ou le retirer d'`accounts`.
+
+  **Ne recopiez pas ici une liste de comptes dormants** : elle rote entre deux
+  récoltes. Cette note a désigné `abgarart` comme lent « depuis mars 2026 »
+  alors qu'il publiait le 1er août. Mesurez-la :
+
+  ```bash
+  node -e "const p=require('./src/data/instagram.json');for(const a of p.accounts)console.log((a.posts[0]?.date||'—').slice(0,10),a.handle,'count='+(a.count??9))" | sort
+  ```
+- **Un compte peut ne pas AVOIR le `count` qu'on lui demande, et le seul signal
+  est une ligne `↯` dans la sortie du scrape.** `maisonlumiere_geneva` rend 18
+  posts sur 60 demandés, `margarit.armeniandance` 56 : c'est leur catalogue
+  entier, pas une panne. Le pool reste valide et le mur correct, donc ni test,
+  ni lint, ni build ne le dira — seule cette ligne le dit, une fois, dans un
+  flot de plusieurs centaines de téléchargements.
 - **Les onglets du fil suivent la langue choisie, Armenpress en tête.**
   `NewsBrowser` ne rend que l'onglet actif : la source par défaut (toujours
   Armenpress) est donc la seule que le prérendu injecte dans le HTML, et la
