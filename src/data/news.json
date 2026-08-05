@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T18:19:45.263Z",
+  "generatedAt": "2026-08-05T22:10:26.499Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Հայաստանն ու Հնդկաստանը քննարկել են պաշտպանական համագործակցության խորացման հարցեր",
+            "url": "https://hy.armradio.am/archives/750794",
+            "date": "2026-08-05T18:23:16.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/QIP-Shot-Screen-3686-300x234.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "«Պերճախոս, հռետոր, պարկեշտ»․ Վահագն Ալեքսանյանն ԱԺ փոխնախագահ է",
             "url": "https://hy.armradio.am/archives/750767",
             "date": "2026-08-05T16:45:00.000Z",
@@ -1115,13 +1122,6 @@
             "url": "https://hy.armradio.am/archives/750606",
             "date": "2026-08-04T17:10:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/78a82857-73df-41ff-8696-cd2f29cf84db-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՀԱՊԿ-ում Հայաստանի քվեարկության իրավունքի հնարավոր սահմանափակումը՝ ՌԴ ճնշման նոր քայլ․ Արմեն Պետրոսյան",
-            "url": "https://hy.armradio.am/archives/750592",
-            "date": "2026-08-04T15:40:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/ete-hayastany-chvtchari-hapk-a-n318093-1-x588-quality90-_x726-quality90-768x439.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ցամաքող Դանուբն ու էներգետիկ խնդիրները. ինչ հետևանքներ է թողնում աննախադեպ շոգը Եվրոպայում",
+            "url": "https://hy.armradio.am/archives/750790",
+            "date": "2026-08-05T18:57:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/78253532_1004-768x336.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ռուսաստանից հեռանալը այլևս բավարար չէ․ Պուտինի նոր օրենքը սահմանափակումներ է նախատեսում արտերկրում գտնվողների համար",
             "url": "https://hy.armradio.am/archives/750758",
             "date": "2026-08-05T14:46:17.000Z",
@@ -1415,13 +1422,6 @@
             "url": "https://hy.armradio.am/archives/750597",
             "date": "2026-08-04T17:40:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/ScreenShot-3650-300x220.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Միգրանտների կենտրոններ ԵՄ սահմաններից դուրս․ Իտալիան առաջարկում է քննարկել նաև Հայաստանի տարբերակը",
-            "url": "https://hy.armradio.am/archives/750578",
-            "date": "2026-08-04T14:52:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/1366x768_cmsv2_d2cebf54-ec7c-5c3d-bbc3-b12ea4a786dc-9780285-768x432.webp",
             "category": "Կարևոր"
           }
         ]
@@ -4963,6 +4963,24 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "Government’s Indictment of Karekin II ‘Raises Concerns about Religious Freedom,’ AGBU Says",
+            "url": "https://asbarez.com/governments-indictment-of-karekin-ii-raises-concerns-about-religious-freedom-agbu-says/",
+            "date": "2026-08-05T22:01:51.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/29123051/KarekinIIEaster-576x375-1-300x195.jpg"
+          },
+          {
+            "title": "TRIPP+ Fund Upped to $402 Million; Senior U.S. Officials in Yerevan",
+            "url": "https://asbarez.com/tripp-enterprise-fund-upped-to-402-million-senior-u-s-officials-in-yerevan/",
+            "date": "2026-08-05T21:40:11.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/05143921/Lighthousesokolv-300x188.jpg"
+          },
+          {
+            "title": "ARS Western U.S. Holds 100th Convention, Electis New Regional Executive",
+            "url": "https://asbarez.com/ars-western-u-s-holds-100th-convention-electis-new-regional-executive/",
+            "date": "2026-08-05T21:06:14.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/05134824/ConventionHall_inAction_DSC00162-26-300x195.jpg"
+          },
+          {
             "title": "After the Final Whistle: Football Experts Revisit Their 2026 FIFA World Cup Predictions",
             "url": "https://asbarez.com/after-the-final-whistle-football-experts-revisit-their-2026-fifa-world-cup-predictions/",
             "date": "2026-08-05T16:52:22.000Z",
@@ -5003,24 +5021,6 @@
             "url": "https://asbarez.com/armenia-to-be-represented-at-venice-international-film-festivals-inaugural-locations-market/",
             "date": "2026-08-04T19:28:07.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/08/04122548/26_Venice_2-300x200.jpg"
-          },
-          {
-            "title": "Jerusalem ANC Condemns Attack on Armenian Church, Quarter",
-            "url": "https://asbarez.com/jerusalem-anc-condemns-attack-on-armenian-church-quarter/",
-            "date": "2026-08-04T19:00:31.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/03151957/Jerusalemchurch-300x197.jpg"
-          },
-          {
-            "title": "Armenia’s New Parliament Convenes, Elects Speaker",
-            "url": "https://asbarez.com/armenias-new-parliament-convenes-elects-speaker-2/",
-            "date": "2026-08-03T21:28:46.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/03142644/Newparliament-300x200.jpg"
-          },
-          {
-            "title": "Karekin II Meets with Parliament’s Opposition Forces Ahead of Inaugural Session",
-            "url": "https://asbarez.com/karekin-ii-meets-with-parliaments-opposition-forces-ahead-of-inaugural-session/",
-            "date": "2026-08-03T21:25:24.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/03141930/4f18c331-02ae-4a6b-81c9-08decad17715_w1597_n_r1_s_s-300x163.jpg"
           }
         ]
       },
@@ -5028,6 +5028,12 @@
         "categoryKey": "community",
         "label": "Community",
         "articles": [
+          {
+            "title": "ARS Western U.S. Holds 100th Convention, Electis New Regional Executive",
+            "url": "https://asbarez.com/ars-western-u-s-holds-100th-convention-electis-new-regional-executive/",
+            "date": "2026-08-05T21:06:14.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/05134824/ConventionHall_inAction_DSC00162-26-300x195.jpg"
+          },
           {
             "title": "Pan-Homenetmen Jamboree Participants Visit Holy Etchmiadzin, Meet Karekin II",
             "url": "https://asbarez.com/pan-homenetmen-jamboree-participants-visit-holy-etchmiadzin-meet-karekin-ii/",
@@ -5081,12 +5087,6 @@
             "url": "https://asbarez.com/merdinian-school-names-peter-amloian-06-board-chair/",
             "date": "2026-07-07T16:30:59.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/07/07092907/Peter-Amloian-300x242.jpg"
-          },
-          {
-            "title": "Remembering Varoujan Koundakjian",
-            "url": "https://asbarez.com/remembering-varoujan-koundakjian/",
-            "date": "2026-07-06T23:23:00.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/07/07122440/VaroujKoundakjian-300x223.jpg"
           }
         ]
       },
@@ -5427,6 +5427,54 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Հարկային Զինուած Ծառայողները Մտած Են Քոչարեաններուն Պատկանող Ընկերութիւններ",
+            "url": "https://asbarez.am/archives/506878",
+            "date": "2026-08-05T22:07:05.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05150620/0806LEVON.png"
+          },
+          {
+            "title": "Իրանի Մէջ Կոչեր՝ Դադրեցնելու Ատրպէյճանէն Իսրայէլ Քարիւղի Մատակարարումները",
+            "url": "https://asbarez.am/archives/506874",
+            "date": "2026-08-05T22:05:22.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05150434/AA21k7l0.jpg"
+          },
+          {
+            "title": "Գագիկ Ծառուկեանը՝ Ընդդէմ Երեւանի Քաղաքապետարանին",
+            "url": "https://asbarez.am/archives/506870",
+            "date": "2026-08-05T21:58:09.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05145752/0806Multi.jpg"
+          },
+          {
+            "title": "«TRIPP+ Հիմնադրամ»ին Ատենապետը Եւ Ամերիկայի Յատուկ Բանագնացի Խորհրդականը Երեւան Կ՛այցելեն",
+            "url": "https://asbarez.am/archives/506864",
+            "date": "2026-08-05T21:50:26.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05145007/0806USA.jpg"
+          },
+          {
+            "title": "Հայաստան-Թուրքիա Աշխատանքային Միացեալ Խումբի Երկրորդ Հանդիպումը Կայացաւ Երեւանի Մէջ",
+            "url": "https://asbarez.am/archives/506861",
+            "date": "2026-08-05T21:46:52.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05144555/0806TR.jpg"
+          },
+          {
+            "title": "ՀԲԸՄի Յայտարարութիւնը՝ Ամենայն Հայոց Կաթողիկոսին Նկատմամբ Յարուցուած Դատական Մեղադրանքին Կապակցութեամբ",
+            "url": "https://asbarez.am/archives/506823",
+            "date": "2026-08-05T20:38:45.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05151141/KarekinIIEaster-576x375-1.jpg"
+          },
+          {
+            "title": "Ռաֆֆի Պօղոսեան Golden Globe Հիմնարկին Նախագահ Նշանակուեցաւ",
+            "url": "https://asbarez.am/archives/506814",
+            "date": "2026-08-05T20:20:58.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05132038/0805RaffiBoghosian.jpg"
+          },
+          {
+            "title": "Երբ Չես Մոռանում Քո Հարազատ Կրթօջախը",
+            "url": "https://asbarez.am/archives/506809",
+            "date": "2026-08-05T19:10:48.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05115846/0805FOC1.jpg"
+          },
+          {
             "title": "Քորսիքայի Խորհրդարանը Կը Զօրակցի Արցախին, Հայութեան Եւ Պաքուի Հայ Գերիներուն",
             "url": "https://asbarez.am/archives/506750",
             "date": "2026-08-04T22:47:13.000Z",
@@ -5437,54 +5485,6 @@
             "url": "https://asbarez.am/archives/506788",
             "date": "2026-08-04T22:19:58.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04151942/0805knesset.jpg"
-          },
-          {
-            "title": "Ընդդիմադիր Ուժերը Համախմբելու Բանակցութիւնները Սկսած Են․Սամուէլ Կարապետեան",
-            "url": "https://asbarez.am/archives/506781",
-            "date": "2026-08-04T22:10:05.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04150849/0805Samuel.jpg"
-          },
-          {
-            "title": "Ըստ Պաքուի՝ «Հայաստանի Մէջ Շուտով Պիտի Սկսի Նոր Սահմանադրութեան Ընդունման Գործընթացը»",
-            "url": "https://asbarez.am/archives/506777",
-            "date": "2026-08-04T22:05:56.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04150427/ArmeniaConstiution.jpeg"
-          },
-          {
-            "title": "«Արցախի Հարցը Չի Փակուել․ Հայաստանի Իշխանութիւնները Պարտաւոր Են Գործել». Վահրամ Բալայեան",
-            "url": "https://asbarez.am/archives/506774",
-            "date": "2026-08-04T22:01:39.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04150034/0805Vahram.jpg"
-          },
-          {
-            "title": "Լեմքինի Հիմնարկը Աջակցութիւն Կը Յայտնէ Ռուբէն Վարդանեանի Կնոջ Նախաձեռնութեան",
-            "url": "https://asbarez.am/archives/506771",
-            "date": "2026-08-04T21:59:15.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04145632/Ruben-Veronika-at-the-Samsung-lab-at-UWCD_2021-576x375-2.jpeg"
-          },
-          {
-            "title": "Ռուսիա Արգիլեց Յաւելեալ Հայկական Ըմպելիքներու Սպառումը",
-            "url": "https://asbarez.am/archives/506768",
-            "date": "2026-08-04T21:55:08.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04145450/0804RU.jpg"
-          },
-          {
-            "title": "Իտալիա Կը Փափաքի Ապօրինի Գաղթականները Ղրկել Հայաստան. Երեւան Տեղեակ Չէ",
-            "url": "https://asbarez.am/archives/506785",
-            "date": "2026-08-04T19:14:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04151407/0805Italy.jpg"
-          },
-          {
-            "title": "ՀՅԴ Հայաստանի ԳՄի Ներկայացուցիչ, «Հայաստան» Խմբակցութեան Պատգամաւոր Իշխան Սաղաթէլեանի Ելոյթը ԱԺի Առաջին Նիստին",
-            "url": "https://asbarez.am/archives/506687",
-            "date": "2026-08-03T22:27:34.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/03133727/0804Ishkhan.jpg"
-          },
-          {
-            "title": "Փաշինեան Հայաստանի Վարչապետ Վերանշանակուեցաւ․ Նոր Կառավարութիւնը Կազմուեցաւ Մեծամասնութեամբ Միեւնոյն Դէմքերով",
-            "url": "https://asbarez.am/archives/506710",
-            "date": "2026-08-03T22:25:15.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/03145443/0804joghov.jpg"
           }
         ]
       },
@@ -5493,64 +5493,64 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
-            "title": "Քորսիքայի Խորհրդարանը Կը Զօրակցի Արցախին, Հայութեան Եւ Պաքուի Հայ Գերիներուն",
-            "url": "https://asbarez.am/archives/506750",
-            "date": "2026-08-04T22:47:13.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04142804/0804Corsica.jpg"
+            "title": "Հարկային Զինուած Ծառայողները Մտած Են Քոչարեաններուն Պատկանող Ընկերութիւններ",
+            "url": "https://asbarez.am/archives/506878",
+            "date": "2026-08-05T22:07:05.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05150620/0806LEVON.png"
           },
           {
-            "title": "Ըստ Պաքուի՝ Իսրայէլ Լրջութեամբ Ընկալեց Իր Ուղերձները՝ Ցեղասպանութեան Ճանաչման Վերաբերող",
-            "url": "https://asbarez.am/archives/506788",
-            "date": "2026-08-04T22:19:58.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04151942/0805knesset.jpg"
+            "title": "Իրանի Մէջ Կոչեր՝ Դադրեցնելու Ատրպէյճանէն Իսրայէլ Քարիւղի Մատակարարումները",
+            "url": "https://asbarez.am/archives/506874",
+            "date": "2026-08-05T22:05:22.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05150434/AA21k7l0.jpg"
           },
           {
-            "title": "Ընդդիմադիր Ուժերը Համախմբելու Բանակցութիւնները Սկսած Են․Սամուէլ Կարապետեան",
-            "url": "https://asbarez.am/archives/506781",
-            "date": "2026-08-04T22:10:05.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04150849/0805Samuel.jpg"
+            "title": "Գագիկ Ծառուկեանը՝ Ընդդէմ Երեւանի Քաղաքապետարանին",
+            "url": "https://asbarez.am/archives/506870",
+            "date": "2026-08-05T21:58:09.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05145752/0806Multi.jpg"
           },
           {
-            "title": "Ըստ Պաքուի՝ «Հայաստանի Մէջ Շուտով Պիտի Սկսի Նոր Սահմանադրութեան Ընդունման Գործընթացը»",
-            "url": "https://asbarez.am/archives/506777",
-            "date": "2026-08-04T22:05:56.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04150427/ArmeniaConstiution.jpeg"
+            "title": "«TRIPP+ Հիմնադրամ»ին Ատենապետը Եւ Ամերիկայի Յատուկ Բանագնացի Խորհրդականը Երեւան Կ՛այցելեն",
+            "url": "https://asbarez.am/archives/506864",
+            "date": "2026-08-05T21:50:26.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05145007/0806USA.jpg"
           },
           {
-            "title": "«Արցախի Հարցը Չի Փակուել․ Հայաստանի Իշխանութիւնները Պարտաւոր Են Գործել». Վահրամ Բալայեան",
-            "url": "https://asbarez.am/archives/506774",
-            "date": "2026-08-04T22:01:39.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04150034/0805Vahram.jpg"
+            "title": "Հայաստան-Թուրքիա Աշխատանքային Միացեալ Խումբի Երկրորդ Հանդիպումը Կայացաւ Երեւանի Մէջ",
+            "url": "https://asbarez.am/archives/506861",
+            "date": "2026-08-05T21:46:52.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05144555/0806TR.jpg"
           },
           {
-            "title": "Լեմքինի Հիմնարկը Աջակցութիւն Կը Յայտնէ Ռուբէն Վարդանեանի Կնոջ Նախաձեռնութեան",
-            "url": "https://asbarez.am/archives/506771",
-            "date": "2026-08-04T21:59:15.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04145632/Ruben-Veronika-at-the-Samsung-lab-at-UWCD_2021-576x375-2.jpeg"
+            "title": "ՀՕՄի Արեւմտեան Ամերիկայի 100րդ Պատգամաւորական Ժողովը Նոր Շրջանային Վարչութիւն Ընտրեց",
+            "url": "https://asbarez.am/archives/506826",
+            "date": "2026-08-05T20:50:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05135023/0805ARSConventionHall_inAction.jpg"
           },
           {
-            "title": "Ռուսիա Արգիլեց Յաւելեալ Հայկական Ըմպելիքներու Սպառումը",
-            "url": "https://asbarez.am/archives/506768",
-            "date": "2026-08-04T21:55:08.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04145450/0804RU.jpg"
+            "title": "ՀԲԸՄի Յայտարարութիւնը՝ Ամենայն Հայոց Կաթողիկոսին Նկատմամբ Յարուցուած Դատական Մեղադրանքին Կապակցութեամբ",
+            "url": "https://asbarez.am/archives/506823",
+            "date": "2026-08-05T20:38:45.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05151141/KarekinIIEaster-576x375-1.jpg"
           },
           {
-            "title": "Հացը՝ Ինքնութեան Պահպանումի Միջոց",
-            "url": "https://asbarez.am/archives/506757",
-            "date": "2026-08-04T21:45:23.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04144210/0000LK-Hats1.jpg"
+            "title": "Ռաֆֆի Պօղոսեան Golden Globe Հիմնարկին Նախագահ Նշանակուեցաւ",
+            "url": "https://asbarez.am/archives/506814",
+            "date": "2026-08-05T20:20:58.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05132038/0805RaffiBoghosian.jpg"
           },
           {
-            "title": "Սանթիկեաններու Ֆրեզնոյի Այգիին Մէջ «Փրփուր» Արարողութիւնը՝ Սեպտեմբեր 26ին",
-            "url": "https://asbarez.am/archives/506743",
-            "date": "2026-08-04T21:22:53.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04142436/0804prpour-1.png"
+            "title": "Երբ Չես Մոռանում Քո Հարազատ Կրթօջախը",
+            "url": "https://asbarez.am/archives/506809",
+            "date": "2026-08-05T19:10:48.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05115846/0805FOC1.jpg"
           },
           {
-            "title": "Երուսաղէմի Հայ Դատի Յանձնախումբը Կը Դատապարտէ Սրբոց Յակոբեանց Տաճարին Վրայ Յարձակումը",
-            "url": "https://asbarez.am/archives/506753",
-            "date": "2026-08-04T19:48:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/04143239/Jerusalemchurch.jpg"
+            "title": "Հիւսիսային Իրաքի Քիւրտ Ղեկավարը Դամասկոս Այցելեց",
+            "url": "https://asbarez.am/archives/506806",
+            "date": "2026-08-05T18:53:53.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05115255/0805barzani_shara.jpg"
           }
         ]
       },
@@ -5558,6 +5558,18 @@
         "categoryKey": "kaghoutigyanken",
         "label": "Գաղութի Կեանքէն",
         "articles": [
+          {
+            "title": "ՀՕՄի Արեւմտեան Ամերիկայի 100րդ Պատգամաւորական Ժողովը Նոր Շրջանային Վարչութիւն Ընտրեց",
+            "url": "https://asbarez.am/archives/506826",
+            "date": "2026-08-05T20:50:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05135023/0805ARSConventionHall_inAction.jpg"
+          },
+          {
+            "title": "ՀԲԸՄի Յայտարարութիւնը՝ Ամենայն Հայոց Կաթողիկոսին Նկատմամբ Յարուցուած Դատական Մեղադրանքին Կապակցութեամբ",
+            "url": "https://asbarez.am/archives/506823",
+            "date": "2026-08-05T20:38:45.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05151141/KarekinIIEaster-576x375-1.jpg"
+          },
           {
             "title": "Սանթիկեաններու Ֆրեզնոյի Այգիին Մէջ «Փրփուր» Արարողութիւնը՝ Սեպտեմբեր 26ին",
             "url": "https://asbarez.am/archives/506743",
@@ -5605,18 +5617,6 @@
             "url": "https://asbarez.am/archives/506545",
             "date": "2026-07-30T19:14:57.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30121225/0801AH.jpg"
-          },
-          {
-            "title": "ՀՄԸՄը «Կինես»ի Համաշխարհային Մրցանիշ Մը Հաստատեց",
-            "url": "https://asbarez.am/archives/506539",
-            "date": "2026-07-30T19:03:51.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/30120240/0730HMEM.jpg"
-          },
-          {
-            "title": "Ողբացեալ Սոնիա (Կարմիրեան) Զաւզաւաթճեանի Քաղցր Յիշատակին",
-            "url": "https://asbarez.am/archives/506537",
-            "date": "2026-07-30T18:51:44.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/06/15142254/Sonia-Zavazavadjian.jpg"
           }
         ]
       },
@@ -5624,6 +5624,18 @@
         "categoryKey": "գաղութներ",
         "label": "Գաղութներ",
         "articles": [
+          {
+            "title": "ՀՕՄի Արեւմտեան Ամերիկայի 100րդ Պատգամաւորական Ժողովը Նոր Շրջանային Վարչութիւն Ընտրեց",
+            "url": "https://asbarez.am/archives/506826",
+            "date": "2026-08-05T20:50:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05135023/0805ARSConventionHall_inAction.jpg"
+          },
+          {
+            "title": "ՀԲԸՄի Յայտարարութիւնը՝ Ամենայն Հայոց Կաթողիկոսին Նկատմամբ Յարուցուած Դատական Մեղադրանքին Կապակցութեամբ",
+            "url": "https://asbarez.am/archives/506823",
+            "date": "2026-08-05T20:38:45.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05151141/KarekinIIEaster-576x375-1.jpg"
+          },
           {
             "title": "Քորսիքայի Խորհրդարանը Կը Զօրակցի Արցախին, Հայութեան Եւ Պաքուի Հայ Գերիներուն",
             "url": "https://asbarez.am/archives/506750",
@@ -5671,18 +5683,6 @@
             "url": "https://asbarez.am/archives/506601",
             "date": "2026-07-31T20:41:58.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31134111/0731Paris1.jpg"
-          },
-          {
-            "title": "Կիպրոսի Հայ Դատէն Կոչ Marriott-ին՝ Դադրեցնելու Դէպի Արցախ Պտոյտները",
-            "url": "https://asbarez.am/archives/506592",
-            "date": "2026-07-31T19:29:38.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31122859/0731ANCC.jpg"
-          },
-          {
-            "title": "Հայկական Սփիւռքին Նուիրուած Հետազօտական Յօդուածներու Դիմում",
-            "url": "https://asbarez.am/archives/506588",
-            "date": "2026-07-31T19:26:12.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/31122408/0731Gulb.jpg"
           }
         ]
       },
@@ -5690,6 +5690,12 @@
         "categoryKey": "hotvadzner",
         "label": "Յօդուածներ",
         "articles": [
+          {
+            "title": "Երբ Չես Մոռանում Քո Հարազատ Կրթօջախը",
+            "url": "https://asbarez.am/archives/506809",
+            "date": "2026-08-05T19:10:48.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05115846/0805FOC1.jpg"
+          },
           {
             "title": "Մէկ Դրօշ, Բայց Ի՞նչ Կը Նշանակէ «Համահայկական»ը",
             "url": "https://asbarez.am/archives/506672",
@@ -5743,12 +5749,6 @@
             "url": "https://asbarez.am/archives/506152",
             "date": "2026-07-22T21:02:56.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/06/11132101/0000Garo-Armenian.png"
-          },
-          {
-            "title": "Մանկապարտէզի Աւարտականը",
-            "url": "https://asbarez.am/archives/505994",
-            "date": "2026-07-20T19:16:36.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/07/20121311/0000Kandilian-Verentsiugh1.jpg"
           }
         ]
       }
@@ -6163,6 +6163,12 @@
         "label": "La chronique de Harut Sassounian",
         "articles": [
           {
+            "title": "Si Pachinian fait emprisonner le Catholicos Karékine II, les Arméniens resteront-ils plongés dans le coma ?",
+            "url": "https://www.thecaliforniacourier.com/si-pachinian-fait-emprisonner-le-catholicos-karekine-ii-les-armeniens-resteront-ils-plonges-dans-le-coma/",
+            "date": "2026-08-05T19:16:39.000Z",
+            "image": "https://www.thecaliforniacourier.com/wp-content/uploads/2026/08/1785701970613blob-768x510.png"
+          },
+          {
             "title": "Faute d’obtenir justice à Erevan, les Arméniens devraient saisir la Cour européenne",
             "url": "https://www.thecaliforniacourier.com/faute-dobtenir-justice-a-erevan-les-armeniens-devraient-saisir-la-cour-europeenne/",
             "date": "2026-07-29T13:54:51.000Z",
@@ -6215,12 +6221,6 @@
             "url": "https://www.thecaliforniacourier.com/la-russie-les-etats-unis-et-lue-devraient-se-tenir-a-lecart-des-affaires-interieures-de-larmenie/",
             "date": "2026-06-01T12:46:02.000Z",
             "image": "https://www.thecaliforniacourier.com/wp-content/uploads/2026/06/Screenshot-2026-06-01-at-16.11.38-768x338.png"
-          },
-          {
-            "title": "Si Pashinyan interdit un parti d’opposition, les autres devraient boycotter les élections",
-            "url": "https://www.thecaliforniacourier.com/si-pashinyan-interdit-un-parti-dopposition-les-autres-devraient-boycotter-les-elections/",
-            "date": "2026-05-28T13:26:10.000Z",
-            "image": "https://www.thecaliforniacourier.com/wp-content/uploads/2026/05/1779661769471blob-768x432.png"
           }
         ]
       }
@@ -6230,6 +6230,12 @@
         "categoryKey": "mainpost",
         "label": "Latest news",
         "articles": [
+          {
+            "title": "Robin the Robot Invented by Davit Martirosyan: From Award-Winning Innovation to Everyday Impact",
+            "url": "https://www.thecaliforniacourier.com/robin-the-robot-invented-by-davit-martirosyan-from-award-winning-innovation-to-everyday-impact/",
+            "date": "2026-08-05T19:22:52.000Z",
+            "image": "https://www.thecaliforniacourier.com/wp-content/uploads/2026/08/IMG_1822-768x576.jpeg"
+          },
           {
             "title": "Armenian PM Pashinyan keeps cabinet line-up almost unchanged for new term",
             "url": "https://www.thecaliforniacourier.com/armenian-pm-pashinyan-keeps-cabinet-line-up-almost-unchanged-for-new-term/",
@@ -6283,12 +6289,6 @@
             "url": "https://www.thecaliforniacourier.com/catholicos-not-yet-invited-to-inaugural-parliament-session/",
             "date": "2026-07-24T20:14:38.000Z",
             "image": "https://www.thecaliforniacourier.com/wp-content/uploads/2026/07/unnamed-2026-07-25T001325.268.jpg"
-          },
-          {
-            "title": "42 Violations of Journalists’ and Media Rights in Second Quarter of 2026",
-            "url": "https://www.thecaliforniacourier.com/42-violations-of-journalists-and-media-rights-in-second-quarter-of-2026/",
-            "date": "2026-07-23T12:09:55.000Z",
-            "image": "https://www.thecaliforniacourier.com/wp-content/uploads/2026/07/Media-300x146.jpg"
           }
         ]
       }
@@ -8385,6 +8385,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "\"Otherwise life would get boring\": 97-year-old British grandma sets world record for wing walking",
+            "url": "https://style.news.am/eng/news/115466/",
+            "date": "2026-08-05T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115466.jpg"
+          },
+          {
             "title": "\"No one wants a serious relationship\": Model with 25 kg breasts cannot find love",
             "url": "https://style.news.am/eng/news/115465/",
             "date": "2026-08-05T18:21:00.000Z",
@@ -8437,12 +8443,6 @@
             "url": "https://style.news.am/eng/news/115458/",
             "date": "2026-08-05T10:31:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115458.jpg"
-          },
-          {
-            "title": "Creators of \"Heated Rivalry\" issue strict warning to fans ahead of Season 2 filming",
-            "url": "https://style.news.am/eng/news/115457/",
-            "date": "2026-08-05T10:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115457.jpg"
           }
         ]
       },
@@ -8783,6 +8783,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Իրանի նոր գերագույն առաջնորդի հանրային կերպարը չի համապատասխանում իրականությանը. Փեզեշքիան",
+            "url": "https://news.am/hy/news/1053799",
+            "date": "2026-08-05T20:53:21.000Z",
+            "image": "https://news.am/storage/media/26/04/30/oyVHCctPxEGLMvQu.webp"
+          },
+          {
             "title": "Թուրքիան զինաթափումից հետո PKK-ի անդամների համար «հետևանքների մեղմացման» մասին օրինագիծ է պատրաստել",
             "url": "https://news.am/hy/news/1053752",
             "date": "2026-08-05T16:06:00.000Z",
@@ -8835,12 +8841,6 @@
             "url": "https://news.am/hy/news/1053677",
             "date": "2026-08-05T09:13:30.000Z",
             "image": "https://i.ytimg.com/vi/r6_dUduIR1s/hqdefault.jpg"
-          },
-          {
-            "title": "Ընդդիմադիր պատգամավորը ուշադրություն է հրավիրել Փաշինյանի կուսակցության՝ լիբերալիզմից ձախականություն շեղման վրա",
-            "url": "https://news.am/hy/news/1053670",
-            "date": "2026-08-05T08:53:50.000Z",
-            "image": "https://news.am/storage/media/26/08/05/PIr7NFHOimhtGqLH.webp"
           }
         ]
       },
@@ -8915,6 +8915,36 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ՊՍԺ-ի սենսացիոն պարտությունը՝ 0:3 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168135/",
+            "date": "2026-08-05T20:50:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168135.jpg"
+          },
+          {
+            "title": "«Արսենալը» պարտվեց «Բետիսին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168134/",
+            "date": "2026-08-05T20:37:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168134.jpg"
+          },
+          {
+            "title": "«Նապոլին» հաղթեց «Օսասունային»",
+            "url": "https://sport.news.am/arm/news/168132/",
+            "date": "2026-08-05T19:02:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168132.jpg"
+          },
+          {
+            "title": "Մատիաս Յայսլեն գլխավորեց «Նյուքասլը»",
+            "url": "https://sport.news.am/arm/news/168131/",
+            "date": "2026-08-05T18:40:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168131.jpg"
+          },
+          {
+            "title": "«Արսենալում» վստահ են, որ կարող են ձեռք բերել Վինիսիուսին",
+            "url": "https://sport.news.am/arm/news/168130/",
+            "date": "2026-08-05T18:26:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168130.jpg"
+          },
+          {
             "title": "«Ռեալը» պատրաստ է 22 միլիոն եվրո վճարել Վինիսիուսին",
             "url": "https://sport.news.am/arm/news/168129/",
             "date": "2026-08-05T17:18:00.000Z",
@@ -8943,36 +8973,6 @@
             "url": "https://sport.news.am/arm/news/168126/",
             "date": "2026-08-05T13:25:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168126.jpg"
-          },
-          {
-            "title": "«Ինտերն» ու «Միլանը» հաղթողին չպարզեցին (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168125/",
-            "date": "2026-08-05T13:15:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168125.jpg"
-          },
-          {
-            "title": "«Մանչեսթեր Սիթիի» հաղթանակը (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168124/",
-            "date": "2026-08-05T13:03:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168124.jpg"
-          },
-          {
-            "title": "Թաիլանդում կայծակի հարվածից ֆուտբոլիստ է մահացել (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168123/",
-            "date": "2026-08-05T12:10:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168123.jpg"
-          },
-          {
-            "title": "Ֆրանկո Մաստանտուոնոն հեռանում է Մադրիդի «Ռեալից»",
-            "url": "https://sport.news.am/arm/news/168121/",
-            "date": "2026-08-05T11:44:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168121.jpg"
-          },
-          {
-            "title": "«Լիվերպուլն» ու «Բայերը» պայքարում են ՊՍԺ-ի սենեգալցի հարձակվողի համար",
-            "url": "https://sport.news.am/arm/news/168118/",
-            "date": "2026-08-05T11:05:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168118.jpg"
           }
         ]
       },
@@ -9047,6 +9047,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Հակառակ դեպքում կյանքը կդառնա ձանձրալի». 97-ամյա բրիտանացի տատիկը համաշխարհային ռեկորդ է սահմանել ինքնաթիռի թևի վրա քայլելով",
+            "url": "https://style.news.am/arm/news/115466/",
+            "date": "2026-08-05T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115466.jpg"
+          },
+          {
             "title": "«Ոչ ոք լուրջ հարաբերություններ չի ուզում». 25 կգ կուրծք ունեցող մոդելը չի ​​կարողանում սեր գտնել",
             "url": "https://style.news.am/arm/news/115465/",
             "date": "2026-08-05T18:21:00.000Z",
@@ -9099,12 +9105,6 @@
             "url": "https://style.news.am/arm/news/115458/",
             "date": "2026-08-05T10:31:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115458.jpg"
-          },
-          {
-            "title": "«Heated Rivalry» սերիալի ստեղծողները խիստ նախազգուշացում են արել երկրպագուներին՝ երկրորդ եթերաշրջանի նկարահանումներից առաջ",
-            "url": "https://style.news.am/arm/news/115457/",
-            "date": "2026-08-05T10:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115457.jpg"
           }
         ]
       },
@@ -9179,6 +9179,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Ոչ թե գաջեթները, այլ քունը. գիտնականները գտել են դեռահասների հոգեկան առողջության գլխավոր գործոնը",
+            "url": "https://med.news.am/arm/news/41645/och-te-gajetnery-ayl-quny-gitnakannery-gtel-en-derahasneri-hogekan-aroxjutyan-glkhavor-gortsony.html",
+            "date": "2026-08-05T18:38:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41645.jpg"
+          },
+          {
             "title": "Գիտնականները պարզել են, թե հիվանդությունների ռիսկի տեսանկյունից առաջնեկներն ինչով են տարբերվում կրտսեր երեխաներից",
             "url": "https://med.news.am/arm/news/41644/gitnakannery-parzel-en-te-hivandutyunneri-riski-tesankyunic-arajneknern-inchov-en-tarbervum-krtser-erekhaneric.html",
             "date": "2026-08-05T16:36:00.000Z",
@@ -9231,12 +9237,6 @@
             "url": "https://med.news.am/arm/news/41635/hnaguyn-hamatcharaknery-dzevavorel-en-mardu-imunitety-ev-karox-en-bacatrel-qovid-19-i-tsanr-yntacqy-parzel-en-gitnakannery.html",
             "date": "2026-08-04T17:42:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41635.jpg"
-          },
-          {
-            "title": "Նևրինոմայի ճառագայթային բուժում․ որո՞նք են առավելությունները",
-            "url": "https://med.news.am/arm/news/41639/nevrinomayi-tcharagaytayin-buzhum%E2%80%A4-oronq-en-aravelutyunnery.html",
-            "date": "2026-08-04T15:30:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41639.jpg"
           }
         ]
       },
@@ -9244,6 +9244,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Իտալացին պատահաբար աղբն է նետել 1 մլն եվրոյի վիճակախաղի տոմսը. աղբահավաքներն այն գտել են երկօրյա որոնումներից հետո",
+            "url": "https://news.am/hy/news/1053715",
+            "date": "2026-08-05T21:23:00.000Z",
+            "image": "https://news.am/storage/media/26/08/05/zHggAIxeZ3IA8PQN.webp"
+          },
           {
             "title": "Արմատական տրամադրություններ ունեցող իսրայելցի վերաբնակ կանանց խումբն ապօրինաբար հատել է Լիբանանի սահմանը",
             "url": "https://news.am/hy/news/1053775",
@@ -9297,12 +9303,6 @@
             "url": "https://news.am/hy/news/1053604",
             "date": "2026-08-05T04:41:00.000Z",
             "image": "https://news.am/storage/media/26/08/05/zd3yXRw4le4BrPmQ.webp"
-          },
-          {
-            "title": "Ռուսաստանը հարվածներ է հասցրել Կիևին",
-            "url": "https://news.am/hy/news/1053598",
-            "date": "2026-08-05T04:10:00.000Z",
-            "image": "https://news.am/storage/media/26/08/05/dn8hfEYUFBPSHyM8.webp"
           }
         ]
       },
@@ -9445,6 +9445,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Пезешкиан: Образ нового верховного лидера Ирана в публичном пространстве не соответствует действительности",
+            "url": "https://news.am/ru/news/1053799",
+            "date": "2026-08-05T20:53:21.000Z",
+            "image": "https://news.am/storage/media/26/04/30/oyVHCctPxEGLMvQu.webp"
+          },
+          {
             "title": "Турция подготовила законопроект о «смягчении последствий» для членов РПК после разоружения",
             "url": "https://news.am/ru/news/1053752",
             "date": "2026-08-05T16:06:00.000Z",
@@ -9497,12 +9503,6 @@
             "url": "https://news.am/ru/news/1053681",
             "date": "2026-08-05T09:22:59.000Z",
             "image": "https://i.ytimg.com/vi/clgdU4Xp5pQ/hqdefault.jpg"
-          },
-          {
-            "title": "Депутат о политике властей Армении: Арест и сопровождающие его ограничения преследуют цель причинить людям страдания",
-            "url": "https://news.am/ru/news/1053650",
-            "date": "2026-08-05T09:16:09.000Z",
-            "image": "https://i.ytimg.com/vi/OB0a_GM5Loo/hqdefault.jpg"
           }
         ]
       },
@@ -9577,6 +9577,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Сенсационное поражение ПСЖ (видео)",
+            "url": "https://sport.news.am/rus/news/168135/",
+            "date": "2026-08-05T20:50:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168135.jpg"
+          },
+          {
+            "title": "«Арсенал» проиграл «Бетису» (видео)",
+            "url": "https://sport.news.am/rus/news/168134/",
+            "date": "2026-08-05T20:37:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168134.jpg"
+          },
+          {
+            "title": "«Наполи» обыграл «Осасуну»",
+            "url": "https://sport.news.am/rus/news/168132/",
+            "date": "2026-08-05T19:02:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168132.jpg"
+          },
+          {
+            "title": "«Ньюкасл» выкупил главного тренера «Аль-Ахли»",
+            "url": "https://sport.news.am/rus/news/168131/",
+            "date": "2026-08-05T18:40:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168131.jpg"
+          },
+          {
             "title": "ФФА объявляет о приеме в судейскую школу",
             "url": "https://sport.news.am/rus/news/168127/",
             "date": "2026-08-05T15:07:00.000Z",
@@ -9611,30 +9635,6 @@
             "url": "https://sport.news.am/rus/news/168120/",
             "date": "2026-08-05T10:02:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168120.jpg"
-          },
-          {
-            "title": "Матчи дня",
-            "url": "https://sport.news.am/rus/news/168119/",
-            "date": "2026-08-05T09:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168119.jpg"
-          },
-          {
-            "title": "Победа «Сантонса», Неймар - автор голевой передачи (видео)",
-            "url": "https://sport.news.am/rus/news/168115/",
-            "date": "2026-08-05T07:03:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168115.jpg"
-          },
-          {
-            "title": "«Игрушки» Роналду",
-            "url": "https://sport.news.am/rus/news/168114/",
-            "date": "2026-08-05T06:40:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168114.jpg"
-          },
-          {
-            "title": "ATP-1000: Андрей Рублев потерпел сенсационное поражение от 281-й ракетки мира",
-            "url": "https://sport.news.am/rus/news/168116/",
-            "date": "2026-08-05T06:05:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168116.jpg"
           }
         ]
       },
@@ -9709,6 +9709,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Иначе жизнь станет скучной»: 97-летняя британская бабушка установила мировой рекорд по ходьбе по крылу самолета",
+            "url": "https://style.news.am/rus/news/115466/",
+            "date": "2026-08-05T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115466.jpg"
+          },
+          {
             "title": "«Никто не хочет серьезных отношений»: модель с грудью весом 25 кг не может найти любовь",
             "url": "https://style.news.am/rus/news/115465/",
             "date": "2026-08-05T18:21:00.000Z",
@@ -9761,12 +9767,6 @@
             "url": "https://style.news.am/rus/news/115458/",
             "date": "2026-08-05T10:31:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115458.jpg"
-          },
-          {
-            "title": "Создатели «Heated Rivalry» сделали строгое предупреждение фанатам перед съемками 2 сезона",
-            "url": "https://style.news.am/rus/news/115457/",
-            "date": "2026-08-05T10:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115457.jpg"
           }
         ]
       },
@@ -9841,6 +9841,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Не гаджеты, а сон: ученые нашли главный фактор психического здоровья подростков",
+            "url": "https://med.news.am/rus/news/41645/ne-gadzhetiy-a-son-ucheniye-nashli-glavniyiy-faktor-psikhicheskogo-zdorovya-podrostkov.html",
+            "date": "2026-08-05T18:38:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41645.jpg"
+          },
+          {
             "title": "Ученые выяснили, чем первенцы отличаются от младших детей по риску заболеваний",
             "url": "https://med.news.am/rus/news/41644/ucheniye-viyyasnili-chem-pervenciy-otlichayutsya-ot-mladshikh-deteiy-po-risku-zabolevaniiy.html",
             "date": "2026-08-05T16:36:00.000Z",
@@ -9893,12 +9899,6 @@
             "url": "https://med.news.am/rus/news/41635/drevnie-epidemii-sformirovali-immunitet-cheloveka-i-mogut-obyasnit-tyazhest-covid-19-viyyasnili-ucheniye.html",
             "date": "2026-08-04T17:42:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41635.jpg"
-          },
-          {
-            "title": "Лучевая терапия невриномы: каковы ее преимущества?",
-            "url": "https://med.news.am/rus/news/41639/luchevaya-terapiya-nevrinomiy-kakoviy-ee-preimushchestva%C2%A0.html",
-            "date": "2026-08-04T15:30:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41639.jpg"
           }
         ]
       },
@@ -9906,6 +9906,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Итальянец случайно выбросил лотерейный билет на 1 млн евро: мусорщики нашли его после двухдневных поисков",
+            "url": "https://news.am/ru/news/1053715",
+            "date": "2026-08-05T21:23:00.000Z",
+            "image": "https://news.am/storage/media/26/08/05/zHggAIxeZ3IA8PQN.webp"
+          },
           {
             "title": "Группа радикально настроенных израильских поселенок незаконно пересекла границу с Ливаном",
             "url": "https://news.am/ru/news/1053775",
@@ -9959,12 +9965,6 @@
             "url": "https://news.am/ru/news/1053604",
             "date": "2026-08-05T04:41:00.000Z",
             "image": "https://news.am/storage/media/26/08/05/zd3yXRw4le4BrPmQ.webp"
-          },
-          {
-            "title": "Россия нанесла удары по Киеву",
-            "url": "https://news.am/ru/news/1053598",
-            "date": "2026-08-05T04:10:00.000Z",
-            "image": "https://news.am/storage/media/26/08/05/dn8hfEYUFBPSHyM8.webp"
           }
         ]
       },
