@@ -78,18 +78,30 @@ test('les quatre comptes du brin createurs sont la', () => {
   ])
 })
 
-// Le catalogue reel compte 351 posts (mesure au --dry le 2026-08-04). Il est
-// plafonne a 120, et le chiffre n'est pas arbitraire : le brin sert 18 tuiles
-// tirees a la ronde entre ses quatre comptes, donc ~5 par heure pour celui-ci.
-// 120 posts font un cycle de 24 h — un visiteur quotidien ne revoit presque
-// jamais la meme piece. Les 351 feraient un cycle de 70 h pour TROIS FOIS le
-// poids : les 120 images de simonian_jewels pesent 15,4 Mo (mesure), donc 351
-// extrapolent a ~45 Mo au lieu de 15,4, definitifs puisque l'historique git ne
-// relache rien. Au-dela de ~120 la profondeur n'achete plus de fraicheur, elle
-// n'achete que du poids.
-test('le catalogue de simonian_jewels est plafonne a 120', () => {
-  const acc = pool.accounts.find((a) => a.handle === 'simonian_jewels')
-  assert.equal(acc.count, 120)
+// Le brin createurs va volontairement en PROFONDEUR : catalogue entier pour
+// simonian_jewels ('all', 351 posts rendus le 2026-08-06), 300 pour les trois
+// autres. C'est une decision demandee, pas un defaut — d'ou ce test, qui n'est
+// plus un plafond mais un temoin : ces quatre comptes portent a eux seuls la
+// moitie du poids du depot, une derive silencieuse doit se voir.
+//
+// L'ancien plafond de 120 valait par une extrapolation, et la mesure l'a
+// DEMENTIE : il estimait 351 posts a ~45 Mo en projetant les 15,4 Mo des 120
+// plus recents. Les 343 images reellement recoltees pesent 12,2 Mo — MOINS que
+// les 120 d'avant. Les posts anciens sont bien plus legers (~36 ko de moyenne
+// contre ~128), donc la profondeur ne coute pas ce qu'une regle de trois
+// annonce. Ne reintroduisez pas un plafond sur la foi d'une projection : les
+// quatre comptes se mesurent en une commande (voir CLAUDE.md, section pool).
+test('le brin createurs porte ses comptes profonds', () => {
+  const attendu = {
+    simonian_jewels: 'all',
+    armeniancreators: 300,
+    armenian_women_artists: 300,
+    naregjewelry: 300,
+  }
+  for (const [handle, count] of Object.entries(attendu)) {
+    const acc = pool.accounts.find((a) => a.handle === handle)
+    assert.equal(acc.count, count, `@${handle} : count attendu ${count}`)
+  }
 })
 
 test('maisonlumiere_geneva est dans Ateliers', () => {
