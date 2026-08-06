@@ -29,19 +29,42 @@ const SITEMAP_PAGES = [1, 2]
 //  1. Les accents. Le sitemap et la grille les encodent différemment
 //     (« arménie » vs « arm%C3%A9nie ») — d'où `decodeURI`.
 //  2. Le slash final, présent d'un côté seulement selon les pages.
-//  3. Le `www.` — et celui-là est apparu du jour au lendemain. Le 1er août
-//     2026, courrier.am s'est mis à écrire TOUS ses `<loc>` en
-//     `https://www.courrier.am/…` alors que la grille sert des liens sans
-//     `www.` (BASE, ci-dessus). Résultat : 5 445 dates chargées, 0 article
-//     daté, sur les 8 rubriques. Rien n'a échoué — ni requête, ni parseur, ni
-//     build — parce qu'une date manquante est un `null` parfaitement valide.
-//     Le seul symptôme était l'absence de l'âge sous « LIRE LA SUITE ».
+//  3. L'HÔTE — et c'est lui qui a cassé deux fois en cinq jours. Le 1er août
+//     2026, courrier.am s'est mis à écrire tous ses `<loc>` en
+//     `https://www.courrier.am/…` ; le 6 août, en `https://mail.courrier.am/…`.
+//     La grille, elle, n'a jamais bougé de `courrier.am` (BASE, ci-dessus).
+//     Chaque fois : ~5 450 dates chargées, 0 article daté sur les 8 rubriques.
+//     Rien n'échoue — ni requête, ni parseur, ni test, ni build — parce qu'une
+//     date manquante est un `null` parfaitement valide. Le seul symptôme est
+//     l'absence de l'âge sous « LIRE LA SUITE », et il faut un lecteur pour le
+//     voir.
 //
-// L'appariement se fait donc sur une forme repliée, et il est SYMÉTRIQUE : le
-// jour où le site retirera son `www.`, ou l'ajoutera dans sa grille, rien ne
-// bougera ici. `test/courrier-dates.test.mjs` fige les trois écarts, sur les
-// vraies chaînes relevées des deux côtés — sans réseau.
-const fold = (s) => s.replace(/^(https?:\/\/)www\./i, '$1').replace(/\/+$/, '')
+// D'où la règle actuelle : ON N'APPARIE QUE LE CHEMIN, l'hôte et le protocole
+// sont jetés. Le correctif du 1er août repliait `www.` nommément, et cette
+// forme perd la course par construction — elle a une panne de retard sur
+// chaque sous-domaine que le site invente. Le chemin, lui, est ce qui
+// identifie l'article, et les deux côtés sont la même installation Drupal :
+// il n'y a pas deux articles distincts au même chemin.
+//
+// L'appariement reste SYMÉTRIQUE — le jour où c'est la GRILLE qui change
+// d'hôte, rien ne bougera ici non plus. `test/courrier-dates.test.mjs` fige
+// les trois écarts sur les vraies chaînes relevées des deux côtés, plus un
+// sous-domaine qui n'existe pas encore — sans réseau.
+const fold = (s) => {
+  // `[^/]*` et non `[^/]+` : une URL protocole-relative (`//hôte/chemin`) doit
+  // se replier comme les autres et non repartir en chaîne intacte.
+  const m = String(s).match(/^(?:https?:)?\/\/[^/]*(\/.*)?$/i)
+  // Trois cas, et les confondre est le piège : pas une URL absolue (on replie
+  // la chaîne telle quelle, elle est déjà un chemin) ; une URL sans chemin du
+  // tout (`https://courrier.am`, donc la racine) ; une URL avec chemin. Écrit
+  // en `?.[1] ?? String(s)`, le deuxième cas retombait sur le premier et
+  // renvoyait l'URL ENTIÈRE, hôte compris — le défaut même qu'on corrige.
+  const chemin = m ? (m[1] ?? '/') : String(s)
+  // `|| '/'` : une racine nue (`https://courrier.am/`) se replierait en chaîne
+  // VIDE, et toutes les racines s'appariteraient alors avec n'importe quelle
+  // autre chaîne vide.
+  return chemin.replace(/\/+$/, '') || '/'
+}
 
 export const normUrl = (u) => {
   // `decodeURI` jette sur un pourcent isolé (« /fr/100% ») : le repli doit

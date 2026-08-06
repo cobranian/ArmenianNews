@@ -15,6 +15,30 @@ import { normUrl } from '../scripts/sources/courrier.mjs'
 // Aucune requête réseau ici : les chaînes sont les VRAIES formes relevées des
 // deux côtés ce jour-là.
 
+// La régression du 6 août 2026, cinq jours après celle du www. : le sitemap
+// s'est mis à écrire ses `<loc>` sur `mail.courrier.am` pendant que la grille
+// servait `courrier.am`. Chemin identique au caractère près, hôte différent —
+// 5 455 dates chargées, 0 des 80 articles daté. Deux changements d'hôte en
+// cinq jours : c'est ce qui a fait abandonner la liste de sous-domaines
+// repliés au profit d'un appariement sur le CHEMIN SEUL.
+test('le mail. du sitemap ne casse pas l appariement', () => {
+  const sitemap = 'https://mail.courrier.am/fr/demission-et-reconduction-du-premier-ministre-'
+  const grille = 'https://courrier.am/fr/demission-et-reconduction-du-premier-ministre-'
+  assert.equal(normUrl(sitemap), normUrl(grille))
+})
+
+// Le point du correctif : ce test doit passer pour un sous-domaine qui
+// n'existe pas encore. Nommer les hôtes un à un, c'est perdre la course d'une
+// panne de retard à chaque fois.
+test('un sous-domaine jamais vu s apparie quand meme', () => {
+  const grille = 'https://courrier.am/fr/actualite'
+  for (const hote of ['m.courrier.am', 'cdn.courrier.am', 'www2.courrier.am', 'courrier.am']) {
+    assert.equal(normUrl(`https://${hote}/fr/actualite`), normUrl(grille), `hôte ${hote}`)
+  }
+  // Le protocole non plus ne doit pas compter.
+  assert.equal(normUrl('http://courrier.am/fr/actualite'), normUrl(grille))
+})
+
 // La régression du 1er août 2026, dans les deux sens.
 test('le www. du sitemap ne casse pas l appariement', () => {
   const sitemap =
@@ -55,10 +79,18 @@ test('une URL mal encodee ne fait pas tomber le scrape', () => {
   assert.equal(normUrl('https://www.courrier.am/fr/100%'), normUrl('https://courrier.am/fr/100%'))
 })
 
-// Un www. au MILIEU du chemin n'est pas un hôte : le replier changerait l'URL.
-test('seul le www. de l hote est replie', () => {
-  assert.equal(
-    normUrl('https://courrier.am/fr/www.exemple-com'),
-    'https://courrier.am/fr/www.exemple-com',
-  )
+// Un www. au MILIEU du chemin n'est pas un hôte : le replier changerait l'URL,
+// et deux articles différents pourraient alors partager une date.
+test('seul l hote est jete, pas un www. du chemin', () => {
+  assert.equal(normUrl('https://courrier.am/fr/www.exemple-com'), '/fr/www.exemple-com')
+})
+
+// Deux chemins différents ne doivent JAMAIS se confondre — c'est la seule
+// chose que l'hôte garantissait encore. Le cas de la racine nue est le piège :
+// repliée en chaîne vide, elle s'appariait avec tout ce qui se replie en vide.
+test('des chemins differents restent differents', () => {
+  assert.notEqual(normUrl('https://courrier.am/fr/a'), normUrl('https://courrier.am/fr/b'))
+  assert.equal(normUrl('https://courrier.am/'), '/')
+  assert.equal(normUrl('https://courrier.am'), '/')
+  assert.notEqual(normUrl('https://courrier.am/'), normUrl('https://courrier.am/fr/a'))
 })
