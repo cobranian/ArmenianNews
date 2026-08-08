@@ -9,14 +9,21 @@ import ig from '../data/instagram.json'
 import feed from '../data/instagram-feed.json'
 
 /* ------------------------------------------------------------------ *
- * Réseaux sociaux — one section, two strands, both on screen.
+ * Réseaux sociaux — one section, six shelves, all on screen.
  *
- * Facebook (Don Narek) and Instagram answer the same question — "what is
- * the Armenian internet posting right now?" — so they share one section.
- * They sit as two stacked shelves, the way the Agenda stacks Switzerland
- * and the world: nothing is hidden behind a tab, you scroll and you see
- * both. Each shelf names its network in the mono eyebrow and its content
- * in the display title, because the network is the source, not the subject.
+ * Instagram (five strands) and Facebook (Don Narek) answer the same
+ * question — "what is the Armenian internet posting right now?" — so they
+ * share one section. They sit as stacked shelves, the way the Agenda stacks
+ * Switzerland and the world: nothing is hidden behind a tab, you scroll and
+ * you see them all. Each shelf names its network in the mono eyebrow and its
+ * content in the display title, because the network is the source, not the
+ * subject.
+ *
+ * THE ORDER IS EDITORIAL: the five Instagram strands come first, Don Narek's
+ * wall closes the section. Instagram is redrawn every hour and is what the
+ * section is for; the Facebook wall is a single curated author, so it reads
+ * as the coda rather than the opening. Nothing computes this order — it is
+ * the order these two blocks are written in, below.
  *
  * The shelves stay horizontal, swipeable carousels with ‹ › arrows — desktop
  * and mobile alike. What changed: a card no longer navigates away on click.
@@ -356,37 +363,16 @@ export function Social() {
     <section className="section" id="reseaux">
       <div className="container">
         <SectionHead
-          eyebrow="Facebook · Instagram"
+          eyebrow="Instagram · Facebook"
           title={t('social.title')}
           subtitle={t('social.subtitle')}
         />
 
         <div className="social">
           {/* The networks were linked to as #facebook and #instagram for months.
-              Those anchors now land on their own strand, not just the section. */}
-          {fbPosts.length > 0 && (
-            <div className="social__strand" id="facebook">
-              <Carousel
-                label={t('fb.title')}
-                title={
-                  <StrandTitle network="Facebook" name={t('fb.title')} by={t('fb.by')} />
-                }
-              >
-                {fbPosts.map((p, i) => (
-                  <FacebookCard
-                    key={p.id || p.url}
-                    post={p}
-                    author={fb.page}
-                    img={p.img}
-                    cta={t('fb.zoom')}
-                    enlarge={t('social.enlarge')}
-                    onOpen={() => setBox({ items: fbItems, index: i })}
-                  />
-                ))}
-              </Carousel>
-            </div>
-          )}
-
+              Those anchors now land on their own strand, not just the section.
+              Moving Facebook last did not move #facebook: the anchor rides on
+              the strand, not on a position in this list. */}
           {igStrands.map(({ id, group, title }) => {
             const posts = igPosts.filter(inGroup(group))
             if (!posts.length) return null
@@ -434,6 +420,29 @@ export function Social() {
             </div>
             )
           })}
+
+          {fbPosts.length > 0 && (
+            <div className="social__strand" id="facebook">
+              <Carousel
+                label={t('fb.title')}
+                title={
+                  <StrandTitle network="Facebook" name={t('fb.title')} by={t('fb.by')} />
+                }
+              >
+                {fbPosts.map((p, i) => (
+                  <FacebookCard
+                    key={p.id || p.url}
+                    post={p}
+                    author={fb.page}
+                    img={p.img}
+                    cta={t('fb.zoom')}
+                    enlarge={t('social.enlarge')}
+                    onOpen={() => setBox({ items: fbItems, index: i })}
+                  />
+                ))}
+              </Carousel>
+            </div>
+          )}
         </div>
       </div>
 

@@ -892,9 +892,11 @@ html:lang(hy) .nav__brand {
 }
 
 /* ============================================================
-   Réseaux sociaux — two strands, both on screen. Facebook and
-   Instagram stack as .shelf carousels, the way the Agenda stacks
-   Switzerland and the world. Nothing hides behind a tab.
+   Réseaux sociaux — every strand on screen. The five Instagram
+   strands then Facebook stack as .shelf carousels, the way the Agenda
+   stacks Switzerland and the world. Nothing hides behind a tab.
+   The stack is a plain flex column, so the order lives in the JSX
+   alone — no CSS `order`, nothing to keep in sync here.
    See Social.jsx.
    ============================================================ */
 .social {
