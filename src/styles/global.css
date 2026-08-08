@@ -892,17 +892,23 @@ html:lang(hy) .nav__brand {
 }
 
 /* ============================================================
-   Réseaux sociaux — every strand on screen. The five Instagram
-   strands then Facebook stack as .shelf carousels, the way the Agenda
-   stacks Switzerland and the world. Nothing hides behind a tab.
-   The stack is a plain flex column, so the order lives in the JSX
-   alone — no CSS `order`, nothing to keep in sync here.
-   See Social.jsx.
+   Réseaux sociaux — every strand on screen, stacked as .shelf
+   carousels the way the Agenda stacks Switzerland and the world.
+   Nothing hides behind a tab. The stack is a plain flex column, so
+   the order lives in the JSX alone — no CSS `order`, nothing to
+   restate here. See Social.jsx.
    ============================================================ */
 .social {
   display: flex;
   flex-direction: column;
   gap: clamp(30px, 3.8vw, 48px);
+}
+/* `.shelf` carries a bottom margin for whatever follows it, and the last
+   strand is followed by the footer. Until Don Narek moved last, the final
+   child ended on `.ig-accounts` (no margin) and this never showed — the
+   trailing 56px only appeared the day a bare shelf closed the section. */
+.social > .social__strand:last-child .shelf {
+  margin-bottom: 0;
 }
 /* #facebook / #instagram anchor their own strand; the nav offset comes from
    the root's scroll-padding-top, so no scroll-margin is needed here. */

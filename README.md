@@ -385,9 +385,10 @@ first — only the first 10 are shown):
   image, the card shows a deterministic Armenian motif** (still on-brand) — so a
   permalink alone is enough.
 
-An up-to-date **preview of the carousel** is regenerated every hour by the
-deploy (`scripts/shoot.mjs`, driven by `browser-actions/setup-chrome`) and
-published alongside the site at
+An up-to-date **preview of the carousel** — the `#facebook` strand itself, not
+the section around it, so it stays Don Narek's picture however the wall is
+ordered — is regenerated every hour by the deploy (`scripts/shoot.mjs`, driven
+by `browser-actions/setup-chrome`) and published alongside the site at
 [`/don-narek-desktop.png`](https://armenie-info.web.app/don-narek-desktop.png)
 and [`/don-narek-mobile.png`](https://armenie-info.web.app/don-narek-mobile.png).
 It writes into `dist/ch/` (gitignored) — the showcase `armenie-info.web.app`

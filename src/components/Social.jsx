@@ -9,17 +9,22 @@ import ig from '../data/instagram.json'
 import feed from '../data/instagram-feed.json'
 
 /* ------------------------------------------------------------------ *
- * Réseaux sociaux — one section, six shelves, all on screen.
+ * Réseaux sociaux — one section, every strand on screen.
  *
- * Instagram (five strands) and Facebook (Don Narek) answer the same
- * question — "what is the Armenian internet posting right now?" — so they
- * share one section. They sit as stacked shelves, the way the Agenda stacks
- * Switzerland and the world: nothing is hidden behind a tab, you scroll and
- * you see them all. Each shelf names its network in the mono eyebrow and its
- * content in the display title, because the network is the source, not the
- * subject.
+ * Instagram and Facebook (Don Narek) answer the same question — "what is
+ * the Armenian internet posting right now?" — so they share one section.
+ * They sit as stacked shelves, the way the Agenda stacks Switzerland and
+ * the world: nothing is hidden behind a tab, you scroll and you see them
+ * all. Each shelf names its network in the mono eyebrow and its content
+ * in the display title, because the network is the source, not the subject.
  *
- * THE ORDER IS EDITORIAL: the five Instagram strands come first, Don Narek's
+ * Don't write the shelf COUNT here. It is not invariant — an Instagram
+ * strand whose hourly draw is empty does not render at all (`if
+ * (!posts.length) return null`), and neither does Facebook without posts.
+ * This file already learned that lesson once, twenty lines below, about
+ * calling `institutions` "the first strand".
+ *
+ * THE ORDER IS EDITORIAL: the Instagram strands come first, Don Narek's
  * wall closes the section. Instagram is redrawn every hour and is what the
  * section is for; the Facebook wall is a single curated author, so it reads
  * as the coda rather than the opening. Nothing computes this order — it is
