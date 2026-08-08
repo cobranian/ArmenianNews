@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T04:53:49.957Z",
+  "generatedAt": "2026-08-08T05:40:14.721Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Վարչապետ Նիկոլ Փաշինյանի ուղերձն օգոստոսի 8-ի առիթով",
+            "url": "https://hy.armradio.am/archives/751229",
+            "date": "2026-08-08T05:25:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/57045-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Փրկարարները հայտնաբերել են մոլորված զբոսաշրջիկներին",
             "url": "https://hy.armradio.am/archives/751223",
             "date": "2026-08-07T18:31:57.000Z",
@@ -1191,13 +1198,6 @@
             "date": "2026-08-07T13:16:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/ChatGPT-Image-7-%D0%B0%D0%B2%D0%B3.-2026-%D0%B3.-16_18_21-768x450.png",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Կաթողիկոսի գործով դատական նիստն ընդհատվել է 30 րոպե անց՝ դատավորի ինքնաբացարկի պատճառով",
-            "url": "https://hy.armradio.am/archives/751129",
-            "date": "2026-08-07T13:07:40.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/MHM0165664-768x476.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -4076,6 +4076,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Հայաստանի եւ Ադրբեջանի միջեւ հաստատված խաղաղությունը տեսանելի եւ զգալի է բոլորին. Նիկոլ Փաշինյան",
+            "url": "https://armenpress.am/hy/article/1257515",
+            "date": "2026-08-08T05:14:35.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/08/5S4djOIN6moYvXV1fIv3f9vAwXsjb0Rpy7DiX1xK.webp"
+          },
+          {
             "title": "Ժաննա Անդրեասյանն ընդունել է աշխարհի Մ17 առաջնությունում հաջողությամբ հանդես եկած հայ պատանի ըմբիշներին",
             "url": "https://armenpress.am/hy/article/1257513",
             "date": "2026-08-07T17:37:00.000Z",
@@ -4128,12 +4134,6 @@
             "url": "https://armenpress.am/hy/article/1257500",
             "date": "2026-08-07T14:59:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/07/TbnGFs0nHW03BxAnIMGP9VsodGuuiPo2Hswkc2z4.webp"
-          },
-          {
-            "title": "Շվեդիայի Ռիկսդագի խոսնակը շնորհավորել է Ռուբեն Ռուբինյանին՝ ՀՀ ԱԺ նախագահի պաշտոնում ընտրվելու կապակցությամբ",
-            "url": "https://armenpress.am/hy/article/1257499",
-            "date": "2026-08-07T14:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/07/X5wE8XP4Cojmw7Gp8sCMMIlRbSH29VN8hAImUtJf.webp"
           }
         ]
       },
@@ -8813,6 +8813,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Թրամփին քննադատելու համար աշխատանքից ազատված դատախազը դատի է տվել ԱՄՆ արդարադատության նախարարությանը",
+            "url": "https://news.am/hy/news/1054255",
+            "date": "2026-08-08T05:32:00.000Z",
+            "image": "https://news.am/storage/media/26/08/08/wbfqmyD1gIUJ1aTv.webp"
+          },
+          {
             "title": "«Ժողովուրդ». Ինչ փոփոխություններ է արել ԱԺ-ում Ռուբեն Ռուբինյանը",
             "url": "https://news.am/hy/news/1054248",
             "date": "2026-08-08T04:08:00.000Z",
@@ -8865,12 +8871,6 @@
             "url": "https://news.am/hy/news/1054202",
             "date": "2026-08-07T15:12:08.000Z",
             "image": "https://news.am/storage/media/26/08/07/Tvl14cRaVefmVJgE.webp"
-          },
-          {
-            "title": "Չպետք է սպասել, որ վտանգն իրական դառնա. «Ուժեղ Հայաստանի» պատգամավոր՝ «հակասաֆարովյան օրենք» ընդունելու մասին",
-            "url": "https://news.am/hy/news/1054178",
-            "date": "2026-08-07T13:00:00.000Z",
-            "image": "https://news.am/storage/media/26/08/07/ECcHX7myTIWPgfGr.webp"
           }
         ]
       },
@@ -8945,6 +8945,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Մոուրինյոն նոր կանոններ է պարտադրել «Ռեալում»",
+            "url": "https://sport.news.am/arm/news/168178/",
+            "date": "2026-08-08T05:09:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168178.jpg"
+          },
+          {
             "title": "Բռնցքամարտի երիտասարդական ԵԱ․ Հայաստանի հավաքականների կազմերը",
             "url": "https://sport.news.am/arm/news/168177/",
             "date": "2026-08-07T20:37:00.000Z",
@@ -8997,12 +9003,6 @@
             "url": "https://sport.news.am/arm/news/168169/",
             "date": "2026-08-07T13:02:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168169.jpg"
-          },
-          {
-            "title": "Հայաստանի Պրեմիեր լիգա․ Մեկնարկում է երկրորդ տուրը",
-            "url": "https://sport.news.am/arm/news/168168/",
-            "date": "2026-08-07T12:25:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168168.jpg"
           }
         ]
       },
@@ -9077,6 +9077,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ՕԳՈՍՏՈՍԻ 8-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
+            "url": "https://style.news.am/arm/news/115504/",
+            "date": "2026-08-08T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115504.jpg"
+          },
+          {
             "title": "Տղամարդու անմեղ հարցը անկողնում, որը սպանում է օրգազմը",
             "url": "https://style.news.am/arm/news/115500/",
             "date": "2026-08-07T19:01:00.000Z",
@@ -9129,12 +9135,6 @@
             "url": "https://style.news.am/arm/news/115493/",
             "date": "2026-08-07T11:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115493.jpg"
-          },
-          {
-            "title": "Ինչպես Արիանա Գրանդեի մարմինը դարձավ քաղաքական գործիք",
-            "url": "https://style.news.am/arm/news/115492/",
-            "date": "2026-08-07T10:46:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115492.jpg"
           }
         ]
       },
@@ -9475,6 +9475,24 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Уволенный за критику Трампа прокурор подал в суд на Минюст США",
+            "url": "https://news.am/ru/news/1054255",
+            "date": "2026-08-08T05:32:00.000Z",
+            "image": "https://news.am/storage/media/26/08/08/wbfqmyD1gIUJ1aTv.webp"
+          },
+          {
+            "title": "«Жоховурд»: Какие изменения осуществил в парламенте Рубен Рубинян",
+            "url": "https://news.am/ru/news/1054248",
+            "date": "2026-08-08T04:08:00.000Z",
+            "image": "https://news.am/storage/media/26/08/08/J7N3BWzHbJE0dKZE.webp"
+          },
+          {
+            "title": "«Грапарак»: Строго предупредили — никому не сообщать размер премии, пригрозили уволить",
+            "url": "https://news.am/ru/news/1054247",
+            "date": "2026-08-08T04:01:00.000Z",
+            "image": "https://news.am/storage/media/26/08/08/A3NkyEikNA0Pm1Am.webp"
+          },
+          {
             "title": "«Грапарак»: На счета покидающих парламент депутатов перевели 5 млн драмов",
             "url": "https://news.am/ru/news/1054244",
             "date": "2026-08-08T03:54:00.000Z",
@@ -9515,24 +9533,6 @@
             "url": "https://news.am/ru/news/1054178",
             "date": "2026-08-07T13:00:00.000Z",
             "image": "https://news.am/storage/media/26/08/07/ECcHX7myTIWPgfGr.webp"
-          },
-          {
-            "title": "Самочувствие депутата от «Сильной Армении» ухудшилось: ему оказывают медицинскую помощь",
-            "url": "https://news.am/ru/news/1054141",
-            "date": "2026-08-07T11:20:00.000Z",
-            "image": "https://news.am/storage/media/26/08/07/7b6zDcE3LD2a902d.webp"
-          },
-          {
-            "title": "Есаи Артенян: Обращаться к священнослужителю мирским именем - не просто невежливость, а пошлость",
-            "url": "https://news.am/ru/news/1054139",
-            "date": "2026-08-07T11:07:00.000Z",
-            "image": "https://news.am/storage/media/26/08/07/XxMDvG9Mx095Px5p.webp"
-          },
-          {
-            "title": "Bloomberg: Российская элита опасается, что Федеральная служба безопасности вышла из-под контроля",
-            "url": "https://news.am/ru/news/1054129",
-            "date": "2026-08-07T10:43:00.000Z",
-            "image": "https://news.am/storage/media/26/08/07/UdW3IeuGw0M5cNyw.webp"
           }
         ]
       },
@@ -9739,6 +9739,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 8 АВГУСТА",
+            "url": "https://style.news.am/rus/news/115504/",
+            "date": "2026-08-08T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115504.jpg"
+          },
+          {
             "title": "Невинный мужской вопрос в постели, который убивает оргазм",
             "url": "https://style.news.am/rus/news/115500/",
             "date": "2026-08-07T19:01:00.000Z",
@@ -9791,12 +9797,6 @@
             "url": "https://style.news.am/rus/news/115493/",
             "date": "2026-08-07T11:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115493.jpg"
-          },
-          {
-            "title": "Как тело Арианы Гранде стало политическим инструментом",
-            "url": "https://style.news.am/rus/news/115492/",
-            "date": "2026-08-07T10:46:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115492.jpg"
           }
         ]
       },
