@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T10:29:00.647Z",
+  "generatedAt": "2026-08-08T11:25:36.762Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Օդի ջերմաստիճանն օգոստոսի 10-11-ին ցերեկային ժամերին կնվազի 3-5 աստիճանով",
+            "url": "https://hy.armradio.am/archives/751264",
+            "date": "2026-08-08T10:38:08.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/764006342_10242011614003848_9134104548858188112_n-768x576.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Հայաստանի տնտեսական ակտիվության ցուցանիշում շինարարությունը շարունակում է լինել առաջատարը. Հայաստանում նշվել է Շինարարի օրը",
             "url": "https://hy.armradio.am/archives/751244",
             "date": "2026-08-08T08:16:08.000Z",
@@ -1191,19 +1198,19 @@
             "date": "2026-08-07T14:54:46.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/041522ff264f339c684dd09c9be083209caa7e-300x168.webp",
             "category": "Կարևոր"
-          },
-          {
-            "title": "ԱԱԾ-ն 2026-ի առաջին կիսամյակում նախաձեռնել է 573 քրեական վարույթ",
-            "url": "https://hy.armradio.am/archives/751164",
-            "date": "2026-08-07T14:31:19.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/large_Default_7_bca350e972-768x450.webp",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "economics",
         "articles": [
+          {
+            "title": "Բնակարանաշինություն, կրթական հաստատություններ․ շինարարության ոլորտում երկնիշ աճը պահպանվում է",
+            "url": "https://hy.armradio.am/archives/751237",
+            "date": "2026-08-08T11:10:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/shinararutyun-300x196.png",
+            "category": "Կարևոր"
+          },
           {
             "title": "Հրազդանում բացվել է Firebird AI ընկերության «ԱԲ գործարանը»",
             "url": "https://hy.armradio.am/archives/751257",
@@ -1265,13 +1272,6 @@
             "url": "https://hy.armradio.am/archives/750510",
             "date": "2026-08-04T10:47:29.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/New-Project-2020-05-27T160909.786-300x300.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Գարիկ Բոշյանը նշանակվել է Երևանի «Արարատ» կոնյակի-գինու-օղու կոմբինատ ԲԲԸ կառավարիչ",
-            "url": "https://hy.armradio.am/archives/750278",
-            "date": "2026-08-03T11:58:25.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/capture_1225-_x588-quality90-768x491.png",
             "category": "Կարևոր"
           }
         ]
@@ -2110,6 +2110,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "En Arménie le centre d’intelligence artificielle de l’entreprise Firebird AI d’un coût d’un demi-milliard de dollars a ouvert ses portes à Hrazdan",
+          "url": "https://www.armenews.com/en-armenie-le-centre-dintelligence-artificielle-de-lentreprise-firebird-ai-dun-cout-dun-demi-milliard-de-dollars-a-ouvert-ses-portes-a-hrazdan/",
+          "date": "2026-08-08T10:33:38.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8997.jpeg"
+        },
+        {
           "title": "Le site arménien « Hraparak » révèle que l’origine arménienne des abricots exportés vers la Russie a été signalé à la frontière russo-azerbaïdjanaise par…des journaux arméniens",
           "url": "https://www.armenews.com/le-site-armenien-hraparak-revele-que-lorigine-armenienne-des-abricots-exportes-vers-la-russie-a-ete-signale-a-la-frontiere-russo-azerbaidjanaise-pardes-journaux-armenie/",
           "date": "2026-08-08T10:03:32.000Z",
@@ -2162,12 +2168,6 @@
           "url": "https://www.armenews.com/338067-2/",
           "date": "2026-08-08T06:30:37.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/764832990_1065018669203143_7062157426881550025_n.jpeg"
-        },
-        {
-          "title": "« C’est notre honte nationale » : la réaction de l’opposition au procès du Catholicos",
-          "url": "https://www.armenews.com/cest-notre-honte-nationale-la-reaction-de-lopposition-au-proces-du-catholicos/",
-          "date": "2026-08-08T06:30:34.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-08-a-07.51.20.png"
         }
       ]
     },
@@ -4076,7 +4076,7 @@
         "categoryKey": "armenia",
         "articles": [
           {
-            "title": "Սլովենիան վճռականորեն աջակցում է Հայաստռանի և ԵՄ-ի միջև խորացող գործընկերությանը. Տոնե Կայզեր",
+            "title": "Սլովենիան վճռականորեն աջակցում է Հայաստանի և ԵՄ-ի միջև խորացող գործընկերությանը. Տոնե Կայզեր",
             "url": "https://armenpress.am/hy/article/1257535",
             "date": "2026-08-08T10:21:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/08/N8tBQ8oWGOromfJF0WERydnNDLyPeK8ZmaKY3RLO.webp"
@@ -4206,6 +4206,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Թուրքիան սկսել է սահմանափակել Սև ծովում նավագնացությունը",
+            "url": "https://armenpress.am/hy/article/1257537",
+            "date": "2026-08-08T11:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/08/ibl5pGPKUjkds5skzzGA4JfYJCwAezjBEsCzYwhT.webp"
+          },
+          {
             "title": "Երկրաբանը զգուշացրել է Հավայան կղզիներում հրաբխի ժայթքումից մարդկանց սպառնացող վտանգի մասին",
             "url": "https://armenpress.am/hy/article/1257533",
             "date": "2026-08-08T09:59:00.000Z",
@@ -4258,12 +4264,6 @@
             "url": "https://armenpress.am/hy/article/1257477",
             "date": "2026-08-07T12:13:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/07/0YS0vrUUqbVDpAs7snF8acEEHrFI3r9vvx21u3Iz.webp"
-          },
-          {
-            "title": "«Մեքքայի համաձայնագիրը» կարող է փոխել Մերձավոր Արևելքում անվտանգության հավասարակշռությունը. թուրքական լրատվամիջոցներ",
-            "url": "https://armenpress.am/hy/article/1257475",
-            "date": "2026-08-07T11:51:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/07/4Jt7Dr9b0X5XjEFmxN8QD6URRYDbquBkf2SkGqDS.webp"
           }
         ]
       },
@@ -4533,6 +4533,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Словения решительно поддерживает углубление партнерства между Арменией и ЕС: Тоне Кайзер",
+            "url": "https://armenpress.am/ru/article/1257535",
+            "date": "2026-08-08T10:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/08/N8tBQ8oWGOromfJF0WERydnNDLyPeK8ZmaKY3RLO.webp"
+          },
+          {
+            "title": "Министр иностранных дел Великобритании поздравил Арарата Мирзояна",
+            "url": "https://armenpress.am/ru/article/1257534",
+            "date": "2026-08-08T10:46:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/08/P9Lr5bhMxIfPPInQdJpq7LdGJV3uVpj4V0bhjOCs.webp"
+          },
+          {
             "title": "Автодороги на территории Республики Армения проходимы",
             "url": "https://armenpress.am/ru/article/1257531",
             "date": "2026-08-08T10:07:00.000Z",
@@ -4579,18 +4591,6 @@
             "url": "https://armenpress.am/ru/article/1257516",
             "date": "2026-08-08T07:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/08/uhJn0O5Saz5TyiuIvFlbyL5bFfdXGCOsEI8byP0O.webp"
-          },
-          {
-            "title": "Мир, установленный между Арменией и Азербайджаном, виден и ощутим для всех. Никол Пашинян",
-            "url": "https://armenpress.am/ru/article/1257515",
-            "date": "2026-08-08T07:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/08/lSW5uw0zlYhF0yIFpMdyxTYi6Lpzf3O5uJ6ve5YG.webp"
-          },
-          {
-            "title": "В Индексе экономической активности строительство продолжает оставаться лидером: в Армении отметили День строителя",
-            "url": "https://armenpress.am/ru/article/1257508",
-            "date": "2026-08-07T16:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/07/UKdHLVjOfiuIXxZ2ogifVPae3HsZzbytCjkYrGPi.webp"
           }
         ]
       },
@@ -4663,6 +4663,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Турция стала ограничивать судоходство в Черном море",
+            "url": "https://armenpress.am/ru/article/1257537",
+            "date": "2026-08-08T11:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/08/ibl5pGPKUjkds5skzzGA4JfYJCwAezjBEsCzYwhT.webp"
+          },
+          {
             "title": "Замминистра ИД России не исключил возможности выдвижения новых кандидатов на пост Генерального секретаря ООН",
             "url": "https://armenpress.am/ru/article/1257532",
             "date": "2026-08-08T10:22:00.000Z",
@@ -4715,12 +4721,6 @@
             "url": "https://armenpress.am/ru/article/1257439",
             "date": "2026-08-07T08:37:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/07/FaIhr6HRIvpJqUdIYuZ6R70ibkotxw8zqor3Vdtg.webp"
-          },
-          {
-            "title": "Министр иностранных дел Израиля раскритиковал комментарии Фидана о дестабилизации Сирии",
-            "url": "https://armenpress.am/ru/article/1257434",
-            "date": "2026-08-07T08:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/07/kWcWBmaovYT8vXpaG7obFLFMpzIPe43epYWflJRX.webp"
           }
         ]
       },
@@ -8415,6 +8415,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Richer than mom: 20-year-old Barron Trump has made millions in cryptocurrency",
+            "url": "https://style.news.am/eng/news/115510/",
+            "date": "2026-08-08T11:14:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115510.jpg"
+          },
+          {
             "title": "Christie Brinkley, 72, mistaken for her 28-year-old daughter after a sexy photoshoot in mini shorts",
             "url": "https://style.news.am/eng/news/115509/",
             "date": "2026-08-08T10:24:00.000Z",
@@ -8467,12 +8473,6 @@
             "url": "https://style.news.am/eng/news/115495/",
             "date": "2026-08-07T12:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115495.jpg"
-          },
-          {
-            "title": "Abandoned Robbie Williams robot terrifies local residents",
-            "url": "https://style.news.am/eng/news/115494/",
-            "date": "2026-08-07T11:54:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115494.jpg"
           }
         ]
       },
@@ -9077,6 +9077,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Ավելի հարուստ, քան իր մայրը. 20-ամյա Բարոն Թրամփը միլիոններ է վաստակել կրիպտոարժույթով",
+            "url": "https://style.news.am/arm/news/115510/",
+            "date": "2026-08-08T11:14:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115510.jpg"
+          },
+          {
             "title": "72-ամյա Քրիստի Բրինկլիին շփոթել են իր 28-ամյա դստեր հետ կարճ շորտերով բացահայտ լուսանկարահանումից հետո",
             "url": "https://style.news.am/arm/news/115509/",
             "date": "2026-08-08T10:24:00.000Z",
@@ -9129,12 +9135,6 @@
             "url": "https://style.news.am/arm/news/115499/",
             "date": "2026-08-07T17:29:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115499.jpg"
-          },
-          {
-            "title": "Ինչպես կարող է արհեստական ​​բանականությունը կործանել ձեր կյանքը. խաբեությունից մինչև անձնական տվյալների արտահոսք",
-            "url": "https://style.news.am/arm/news/115498/",
-            "date": "2026-08-07T16:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115498.jpg"
           }
         ]
       },
@@ -9739,6 +9739,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Богаче мамы: 20-летний Бэррон Трамп заработал миллионы на криптовалюте",
+            "url": "https://style.news.am/rus/news/115510/",
+            "date": "2026-08-08T11:14:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115510.jpg"
+          },
+          {
             "title": "72-летнюю Кристи Бринкли перепутали с ее 28-летней дочерью после откровенной фотосессии в мини-шортах",
             "url": "https://style.news.am/rus/news/115509/",
             "date": "2026-08-08T10:24:00.000Z",
@@ -9791,12 +9797,6 @@
             "url": "https://style.news.am/rus/news/115499/",
             "date": "2026-08-07T17:29:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115499.jpg"
-          },
-          {
-            "title": "Как искусственный интеллект может разрушить вашу жизнь: от измен до утечки личных данных",
-            "url": "https://style.news.am/rus/news/115498/",
-            "date": "2026-08-07T16:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115498.jpg"
           }
         ]
       },
