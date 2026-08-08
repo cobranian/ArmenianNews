@@ -32,6 +32,32 @@ test('aucun post exclu n est entre dans le pool', () => {
   }
 })
 
+// LE QUATRIEME GESTE, ET LE SEUL QUI N ETAIT PAS GARDE. Retirer un post
+// demande quatre choses : l ajouter a `exclude`, le retirer des `posts` du
+// compte, supprimer son image, ET RE-TIRER LE MUR. Les trois premieres sont
+// verifiees ci-dessus et ci-dessous ; la quatrieme ne l etait par rien —
+// aucun test ne lisait instagram-feed.json, qui est pourtant le SEUL fichier
+// que le site rend (Social.jsx lit `feed.posts`, jamais le pool).
+//
+// Sauter le re-tirage laisse donc la tuile a l ecran : son image ayant ete
+// supprimee, `igImg[shortcode]` vaut undefined et la carte retombe sur son
+// motif — mais elle pointe toujours vers le post qu on a demande de retirer.
+// Pool valide, lint vert, build vert, 177 tests verts. Et elle y reste
+// jusqu au prochain instantane horaire : un push sur `main` ne gratte pas,
+// donc « indefiniment » n est pas une figure de style.
+test('aucun post exclu ne survit dans le tirage que le site rend', async () => {
+  const feed = JSON.parse(
+    await readFile(new URL('../src/data/instagram-feed.json', import.meta.url), 'utf-8'),
+  )
+  for (const p of feed.posts || []) {
+    assert.ok(
+      !exclus.has(shortcodeOf(p.url)),
+      `le mur sert encore ${shortcodeOf(p.url)} (@${p.handle}), qui est exclu ` +
+        '— le pool a ete modifie sans re-tirer : lancez npm run ig-select',
+    )
+  }
+})
+
 test('aucune image d un post exclu ne traine dans src/data/ig', async () => {
   const fichiers = await readdir(new URL('../src/data/ig/', import.meta.url))
   for (const f of fichiers.filter((x) => /\.(jpg|webp)$/.test(x))) {
