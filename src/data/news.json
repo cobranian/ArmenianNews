@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T11:26:10.650Z",
+  "generatedAt": "2026-08-09T12:43:21.160Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Վարչապետը շնորհավորական ուղերձ է հղել Սինգապուրի վարչապետին Ազգային օրվա առիթով",
+            "url": "https://hy.armradio.am/archives/751400",
+            "date": "2026-08-09T11:35:39.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2024/12/nikol-new-shnorh-768x448.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "TRIPP. խաղաղության ճանապարհ, որ փոխում է տարածաշրջանը",
             "url": "https://hy.armradio.am/archives/751295",
             "date": "2026-08-08T15:00:00.000Z",
@@ -1116,19 +1123,19 @@
             "date": "2026-08-06T14:24:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/01-768x512.jpg",
             "category": "Քաղաքական"
-          },
-          {
-            "title": "«Ասելու եմ, որ ԵԱՏՄ-ն կաթվածահար է, չի գործում»․ ի՞նչ օրակարգով է Փաշինյանը մեկնել Ղրղզստան",
-            "url": "https://hy.armradio.am/archives/750975",
-            "date": "2026-08-06T13:30:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/x2AyyW0G8FZDEJhpqRzoDjEVBe6BPzj2-300x169.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "ՀՀ ԶՈՒ ՀՕՊ ստորաբաժանումները վարժանքներ են անցկացրել նորագույն «Կարիճ» և «Լուսան» համալիրներով",
+            "url": "https://hy.armradio.am/archives/751402",
+            "date": "2026-08-09T12:28:27.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/hop-768x387.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Պար, երգ, ճամփորդություն ընկերների հետ ու ամենօրյա աշխատանք մանկապարտեզում․ 81-ամյա Ալվարդ Մանդակունյանի երկարակեցության բանաձևը․ «Երկրորդ շնչառություն»",
             "url": "https://hy.armradio.am/archives/751355",
@@ -1190,13 +1197,6 @@
             "url": "https://hy.armradio.am/archives/751264",
             "date": "2026-08-08T10:38:08.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/764006342_10242011614003848_9134104548858188112_n-768x576.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Հայաստանի տնտեսական ակտիվության ցուցանիշում շինարարությունը շարունակում է լինել առաջատարը. Հայաստանում նշվել է Շինարարի օրը",
-            "url": "https://hy.armradio.am/archives/751244",
-            "date": "2026-08-08T08:16:08.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_0541-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2110,6 +2110,30 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Quai d’Orsay : Anniversaire de l’accord du 8 août 2025 entre l’Azerbaïdjan et l’Arménie",
+          "url": "https://www.armenews.com/quai-dorsay-anniversaire-de-laccord-du-8-aout-2025-entre-lazerbaidjan-et-larmenie/",
+          "date": "2026-08-09T12:35:39.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Ministere_francais_des_Affaires_Etrangeres_et_Europeennes_Quai_dOrsay_Paris.jpeg"
+        },
+        {
+          "title": "L’Arménie a besoin d’un circuit professionnel de karting, mais le karting arménien surmonte les difficultés",
+          "url": "https://www.armenews.com/larmenie-a-besoin-dun-circuit-professionnel-de-karting-mais-le-karting-armenien-surmonte-les-difficultes/",
+          "date": "2026-08-09T12:34:24.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8897.png"
+        },
+        {
+          "title": "D’après les données du premier semestre 2026, en Arménie la construction a progressé de 24,5 % par rapport à la même période de 2025",
+          "url": "https://www.armenews.com/dapres-les-donnees-du-premier-semestre-2026-en-armenie-la-construction-a-progresse-de-245-par-rapport-a-la-meme-periode-de-2025/",
+          "date": "2026-08-09T12:22:17.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/6643-1.webp"
+        },
+        {
+          "title": "Communiqué de Core In Fronte – Assemblea di Corsica : SUSTEGNU À L’ARTSAKH È L’ARMENIA",
+          "url": "https://www.armenews.com/core-in-fronte-assemblea-di-corsica-sustegnu-a-lartsakh-e-larmenia/",
+          "date": "2026-08-09T12:06:16.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/769318044_1402565548385248_4230468139955496996_n.jpeg"
+        },
+        {
           "title": "Entraînement du personnel militaire en Arménie avec les systèmes de missiles antiaériens de dernière génération « Scorpion » et « Lusan »",
           "url": "https://www.armenews.com/entrainement-du-personnel-militaire-en-armenie-avec-les-systemes-de-missiles-antiaeriens-de-derniere-generation-scorpion-et-lusan/",
           "date": "2026-08-09T11:13:50.000Z",
@@ -2144,30 +2168,6 @@
           "url": "https://www.armenews.com/nikol-pachinian-sest-entretenu-par-telephone-avec-donald-trump-a-loccasion-du-premier-anniversaire-des-accords-de-paix-a-washington-entre-larmenie-et-lazerbaidjan-l/",
           "date": "2026-08-09T06:31:46.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/5663.jpeg"
-        },
-        {
-          "title": "« À Bakou, nous avons opposé une réponse digne aux affirmations mensongères sur le passé et le présent de notre peuple » — l’ancien président du Parlement de l’Artsakh depuis les geôles de Bakou",
-          "url": "https://www.armenews.com/a-bakou-nous-avons-oppose-une-reponse-digne-aux-affirmations-mensongeres-sur-le-passe-et-le-present-de-notre-peuple-lancien-president-du-parlement-de-lartsak/",
-          "date": "2026-08-09T06:31:23.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-08-a-08.29.53.png"
-        },
-        {
-          "title": "Ankara estime que l’Egypte rejoindra l’accord de défense avec Ryad et Islamabad",
-          "url": "https://www.armenews.com/ankara-estime-que-legypte-rejoindra-laccord-de-defense-avec-ryad-et-islamabad/",
-          "date": "2026-08-09T06:30:52.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/2026-08-07-SuudiArabistan-20.jpeg"
-        },
-        {
-          "title": "Le Conseil œcuménique des Églises exprime son inquiétude face à la situation autour de l’Église arménienne",
-          "url": "https://www.armenews.com/le-conseil-oecumenique-des-eglises-exprime-son-inquietude-face-a-la-situation-autour-de-leglise-armenienne/",
-          "date": "2026-08-09T06:30:49.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/conseil-oeucumenique.jpeg"
-        },
-        {
-          "title": "Décryptage – Nikol Pachinian accuse Loukachenko, tandis que l’Arménie subit des pertes, par Hakob Badalyan",
-          "url": "https://www.armenews.com/decryptage-nikol-pachinian-accuse-loukachenko-tandis-que-larmenie-subit-des-pertes-par-hakob-badalyan/",
-          "date": "2026-08-09T06:30:42.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/67637_b.jpeg"
         }
       ]
     },
@@ -4052,7 +4052,19 @@
         "categoryKey": "armenia",
         "articles": [
           {
-            "title": "Արարատի մարզի Դաշտավան գյուղում տեղի է ունեցել ծածկռտուք, կան ձերբակալվածներ",
+            "title": "Հանրապետության առանձին վայրերում սպասվում են հորդառատ անձրևներ, հնարավոր է կարկուտ",
+            "url": "https://armenpress.am/hy/article/1257565",
+            "date": "2026-08-09T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/09/ZB2Fm2gObZqd9fO12rqIVRN2u437vDkRpzyw48uT.webp"
+          },
+          {
+            "title": "Ախուրյան համայնքի բնակավայրերում բացվել են ժամանակակից ոճով կահավորված գրադարաններ",
+            "url": "https://armenpress.am/hy/article/1257564",
+            "date": "2026-08-09T12:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/09/AqYR7IjdTWzaX0sC6vCTU0ITZQhH8g0p3dg6keoS.webp"
+          },
+          {
+            "title": "Արարատի մարզի Դաշտավան գյուղում տեղի է ունեցել ծեծկռտուք, կան ձերբակալվածներ",
             "url": "https://armenpress.am/hy/article/1257563",
             "date": "2026-08-09T10:33:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/09/9mHh5vkXPxMst4eCQmiUvMEiYAy7AGAOFFcwG0LF.webp"
@@ -4098,18 +4110,6 @@
             "url": "https://armenpress.am/hy/article/1257557",
             "date": "2026-08-08T15:50:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/08/8k95CorhXD7N2EvcqoWRHROQEMBxg4MYLe7ApAzP.webp"
-          },
-          {
-            "title": "ՆԳՆ թիմը ռեկորդներ է սահմանել բանակային խաղերում",
-            "url": "https://armenpress.am/hy/article/1257556",
-            "date": "2026-08-08T15:06:18.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/08/JAcauBPVrnVkvJ9Z35R7B6DEXmt4EY8C5gB9ETIS.webp"
-          },
-          {
-            "title": "TRIPP-ը մոտ է իրականություն դառնալուն. Մարկո Ռուբիոյի հայտարարությունը",
-            "url": "https://armenpress.am/hy/article/1257555",
-            "date": "2026-08-08T14:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/08/kKTLHh811VkNC9OPAKAsAX4nKd0YBlaYXdOQ5vCo.webp"
           }
         ]
       },
@@ -4509,6 +4509,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "В поселках Ахурянской общины открылись библиотеки, оформленные в современном стиле",
+            "url": "https://armenpress.am/ru/article/1257564",
+            "date": "2026-08-09T12:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/09/AqYR7IjdTWzaX0sC6vCTU0ITZQhH8g0p3dg6keoS.webp"
+          },
+          {
             "title": "Спасатели благополучно вывели граждан на берег: их жизни ничто не угрожает",
             "url": "https://armenpress.am/ru/article/1257562",
             "date": "2026-08-09T11:03:00.000Z",
@@ -4561,12 +4567,6 @@
             "url": "https://armenpress.am/ru/article/1257545",
             "date": "2026-08-08T12:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/08/4lm73QKeUalDJo4pAgBe8uErmgvAALysEWmWREZx.webp"
-          },
-          {
-            "title": "Фундаментально реконструируется мост, соединяющий поселения Гташен-Камхут",
-            "url": "https://armenpress.am/ru/article/1257542",
-            "date": "2026-08-08T12:22:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/08/pKnEquA2F5RQoXfuaDUxZl262hKBfnTf3Ypgj5F2.webp"
           }
         ]
       },
@@ -7593,6 +7593,12 @@
         "label": "Աշխարհ",
         "articles": [
           {
+            "title": "Հռոմի պապը կրկին կոչ է անում դադարեցնել պատերազմն Ուկրաինայում",
+            "url": "https://civilnet.am/hy/news/1013501",
+            "date": "2026-08-09T12:27:29.000Z",
+            "image": "https://civilnet.am/storage/media/26/08/09/oeWrZXardMdPGsrG.webp"
+          },
+          {
             "title": "Սեուտա հասած հազարավոր միգրանտներ հիասթափված վերադառնում են Մարոկկո",
             "url": "https://civilnet.am/hy/news/1013385",
             "date": "2026-08-02T15:41:02.000Z",
@@ -7645,12 +7651,6 @@
             "url": "https://civilnet.am/hy/news/1013168",
             "date": "2026-07-21T17:57:39.000Z",
             "image": "https://civilnet.am/storage/media/26/07/21/G0lmoSPnJFjoXehc.webp"
-          },
-          {
-            "title": "Իսպանական և արգենտինական մամուլը՝ ֆուտբոլի եզրափակչի մասին",
-            "url": "https://civilnet.am/hy/news/1013130",
-            "date": "2026-07-20T05:13:09.000Z",
-            "image": "https://civilnet.am/storage/media/26/07/20/5bI4dYv970ELHNc9.webp"
           }
         ]
       },
@@ -8789,6 +8789,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Իրանում առաջին անգամ Իրանի գերագույն առաջնորդի մասնակցությամբ տեսանյութ են հրապարակել",
+            "url": "https://news.am/hy/news/1054427",
+            "date": "2026-08-09T12:23:00.000Z",
+            "image": "https://news.am/storage/media/26/05/19/bkcPAQ5JvT9GxyEB.webp"
+          },
+          {
             "title": "NYT․ Estée Lauder-ի կոսմետիկ կայսրության ժառանգորդը դադարել է ֆինանսավորել հանրապետականներին Նյու Յորքում",
             "url": "https://news.am/hy/news/1054416",
             "date": "2026-08-09T10:51:00.000Z",
@@ -8841,12 +8847,6 @@
             "url": "https://news.am/hy/news/1054255",
             "date": "2026-08-08T05:32:00.000Z",
             "image": "https://news.am/storage/media/26/08/08/wbfqmyD1gIUJ1aTv.webp"
-          },
-          {
-            "title": "«Ժողովուրդ». Ինչ փոփոխություններ է արել ԱԺ-ում Ռուբեն Ռուբինյանը",
-            "url": "https://news.am/hy/news/1054248",
-            "date": "2026-08-08T04:08:00.000Z",
-            "image": "https://news.am/storage/media/26/08/08/J7N3BWzHbJE0dKZE.webp"
           }
         ]
       },
@@ -9251,6 +9251,18 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Հութիները հարձակվել են Եմենի Էլ-Մահա նավահանգստի վրա․ զոհվել է առնվազն յոթ մարդ - ԶԼՄ",
+            "url": "https://news.am/hy/news/1054440",
+            "date": "2026-08-09T12:31:19.000Z",
+            "image": "https://news.am/storage/media/26/08/09/ilKFD0H0ggCNU2XF.webp"
+          },
+          {
+            "title": "Վրեժխնդիր լինելու համար զինվել են ու դարանակալել եղբայրներին պատկանող խանութի մոտ. Էջմիածնում կանխել են հաշվեհարդարը",
+            "url": "https://news.am/hy/news/1054434",
+            "date": "2026-08-09T11:35:40.000Z",
+            "image": "https://news.am/storage/media/26/08/09/u1YRIg6pCJwkRQsB.webp"
+          },
+          {
             "title": "Իսպանիայի Ալիկանտե նահանգում հրավառության սարքերից մեկի պայթյունի հետևանքով 27 մարդ է տուժել",
             "url": "https://news.am/hy/news/1054432",
             "date": "2026-08-09T11:09:09.000Z",
@@ -9297,18 +9309,6 @@
             "url": "https://news.am/hy/news/1054360",
             "date": "2026-08-08T17:26:00.000Z",
             "image": "https://news.am/storage/media/26/08/08/NKlz9p1wgJyUQfHz.webp"
-          },
-          {
-            "title": "Կոբախիձե․ Վրաստանում էլեկտրաէներգիայի զանգվածային անջատումների պատճառները կբացահայտվեն Պետանվտանգության ծառայության հետաքննությունից հետո",
-            "url": "https://news.am/hy/news/1054348",
-            "date": "2026-08-08T16:08:00.000Z",
-            "image": "https://news.am/storage/media/26/05/17/WZwjLI0qi2pclDvP.webp"
-          },
-          {
-            "title": "Խոշոր հրդեհ Սայաթ Նովայի բարձրահարկ շենքերից մեկում. տարհանվել է 5 բնակիչ",
-            "url": "https://news.am/hy/news/1054356",
-            "date": "2026-08-08T15:26:21.000Z",
-            "image": "https://news.am/storage/media/26/05/19/F0il6991I8oADtyR.webp"
           }
         ]
       },
@@ -9451,6 +9451,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "В Иране впервые опубликовали ролик с участием верховного лидера Ирана",
+            "url": "https://news.am/ru/news/1054427",
+            "date": "2026-08-09T12:23:00.000Z",
+            "image": "https://news.am/storage/media/26/05/19/bkcPAQ5JvT9GxyEB.webp"
+          },
+          {
             "title": "NYT: Наследник косметической империи Estée Lauder перестал финансировать республиканцев в Нью-Йорке",
             "url": "https://news.am/ru/news/1054416",
             "date": "2026-08-09T10:51:00.000Z",
@@ -9503,12 +9509,6 @@
             "url": "https://news.am/ru/news/1054255",
             "date": "2026-08-08T05:32:00.000Z",
             "image": "https://news.am/storage/media/26/08/08/wbfqmyD1gIUJ1aTv.webp"
-          },
-          {
-            "title": "«Жоховурд»: Какие изменения осуществил в парламенте Рубен Рубинян",
-            "url": "https://news.am/ru/news/1054248",
-            "date": "2026-08-08T04:08:00.000Z",
-            "image": "https://news.am/storage/media/26/08/08/J7N3BWzHbJE0dKZE.webp"
           }
         ]
       },
@@ -9847,6 +9847,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "npj Parkinson's Disease: Жизнь вблизи химчисток связана с более высоким риском болезни Паркинсона",
+            "url": "https://med.news.am/rus/news/41664/npj-parkinsons-disease-zhizn-vblizi-khimchistok-svyazana-s-bolee-viysokim-riskom-bolezni-parkinsona.html",
+            "date": "2026-08-09T12:47:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41664.jpg"
+          },
+          {
             "title": "Science Advances: Микропластик в сочетании с нездоровым питанием может ускорять повреждение печени",
             "url": "https://med.news.am/rus/news/41663/science-advances-mikroplastik-v-sochetanii-s-nezdoroviym-pitaniem-mozhet-uskoryat-povrezhdenie-pecheni.html",
             "date": "2026-08-09T08:34:00.000Z",
@@ -9899,12 +9905,6 @@
             "url": "https://med.news.am/rus/news/41655/sozdana-povyazka-kotoraya-boretsya-s-infekcieiy-do-ee-rasprostraneniya.html",
             "date": "2026-08-07T13:36:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41655.jpg"
-          },
-          {
-            "title": "Ученые обнаружили невидимые ранние признаки старения кожи",
-            "url": "https://med.news.am/rus/news/41654/ucheniye-obnaruzhili-nevidimiye-rannie-priznaki-stareniya-kozhi.html",
-            "date": "2026-08-07T11:35:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41654.jpg"
           }
         ]
       },
@@ -9912,6 +9912,18 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Хуситы атаковали порт Эль-Маха в Йемене: погибли не менее семи человек - СМИ",
+            "url": "https://news.am/ru/news/1054440",
+            "date": "2026-08-09T12:31:19.000Z",
+            "image": "https://news.am/storage/media/26/08/09/ilKFD0H0ggCNU2XF.webp"
+          },
+          {
+            "title": "В Эчмиадзине предотвратили расправу",
+            "url": "https://news.am/ru/news/1054434",
+            "date": "2026-08-09T11:35:40.000Z",
+            "image": "https://news.am/storage/media/26/08/09/u1YRIg6pCJwkRQsB.webp"
+          },
           {
             "title": "В испанской провинции Аликанте при взрыве фейерверка пострадали 27 человек",
             "url": "https://news.am/ru/news/1054432",
@@ -9959,18 +9971,6 @@
             "url": "https://news.am/ru/news/1054348",
             "date": "2026-08-08T16:08:00.000Z",
             "image": "https://news.am/storage/media/26/05/17/WZwjLI0qi2pclDvP.webp"
-          },
-          {
-            "title": "Крупный пожар в одной из высоток на проспекте Саят-Нова в Ереване: эвакуированы 5 жителей",
-            "url": "https://news.am/ru/news/1054356",
-            "date": "2026-08-08T15:26:21.000Z",
-            "image": "https://news.am/storage/media/26/05/19/F0il6991I8oADtyR.webp"
-          },
-          {
-            "title": "Шесть пролетов за ночь: Над базой в Германии, где ремонтируют Patriot, заметили дроны",
-            "url": "https://news.am/ru/news/1054282",
-            "date": "2026-08-08T08:52:00.000Z",
-            "image": "https://news.am/storage/media/26/05/18/Qx7u96g9yoatXIY3.webp"
           }
         ]
       },
