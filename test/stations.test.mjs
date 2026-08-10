@@ -10,8 +10,8 @@ const jsx = await readFile(new URL('../src/components/Radio.jsx', import.meta.ur
 const ids = [...jsx.matchAll(/\{\s*id:\s*'([a-z]+)'/g)].map((m) => m[1])
 const i18n = await readFile(new URL('../src/i18n.jsx', import.meta.url), 'utf-8')
 
-test('les douze stations du lecteur ont une fiche, et reciproquement', () => {
-  assert.equal(ids.length, 12, 'STATIONS ne contient plus douze entrees')
+test('les quinze stations du lecteur ont une fiche, et reciproquement', () => {
+  assert.equal(ids.length, 15, 'STATIONS ne contient plus quinze entrees')
   assert.deepEqual([...ids].sort(), Object.keys(STATION_FACTS).sort())
 })
 

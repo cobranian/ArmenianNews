@@ -2194,6 +2194,33 @@ html:lang(hy) .nav__brand {
   border-color: var(--apricot-ink);
   color: var(--on-apricot);
 }
+/* Station hors antenne : sa régie ne l'alimente plus (voir `offAir` dans
+   Radio.jsx). La puce reste, inerte.
+
+   L'ÉTAT EST PORTÉ PAR DES MOTS ET UN FILET DISCONTINU, PAS PAR UNE OPACITÉ.
+   Le réflexe — `opacity: .6` sur la puce entière — éteint le contraste du nom
+   de la station en même temps que celui du libellé, et fait descendre sous le
+   plancher de lisibilité un texte qu'on demande justement de lire. Le nom garde
+   donc exactement la couleur des onze autres puces ; seul le libellé recule sur
+   `--text-faint`, et le tiret du filet dit « ce n'est pas un bouton » sans
+   dépendre d'une couleur — donc lisible aussi en vision des couleurs réduite.
+
+   Le survol est neutralisé (spécificité 0,3,0 contre 0,2,0 : elle l'emporte sur
+   `.radio__chip:hover`, plus haut) : une puce qui s'éclaire au survol promet un
+   clic qui ne fera rien. Le focus, lui, reste intact — la puce demeure
+   `aria-disabled` et non `disabled`, donc atteignable au clavier. */
+.radio__chip.is-offair {
+  cursor: default;
+  border-style: dashed;
+  border-color: var(--line);
+}
+.radio__chip.is-offair:hover {
+  border-color: var(--line);
+  color: var(--text-soft);
+}
+.radio__chip-off {
+  color: var(--text-faint);
+}
 /* La bascule « Voir les 12 stations » n'a de sens que là où la rangée se
    replie, sous 640px (voir plus bas). Au-dessus, les douze puces s'enveloppent
    et se voient toutes : un bouton pour les révéler y mentirait. */

@@ -19,6 +19,7 @@
     "reencode": "node scripts/reencode-images.mjs",
     "fb-scrape": "node scripts/fb-scrape.mjs",
     "screenshot": "node scripts/shoot.mjs",
+    "radio-check": "node scripts/radio-check.mjs",
     "og-image": "node scripts/og-image.mjs",
     "prerender": "node scripts/prerender.mjs"
   },

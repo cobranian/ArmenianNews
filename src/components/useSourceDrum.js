@@ -77,7 +77,7 @@ const ring = (d, n) => mod(d + n / 2, n) - n / 2
 
 // `enabled` (vrai par défaut) permet à un appelant d'éteindre la roue sans
 // démonter le composant : le lecteur radio s'en sert pour rendre la main à sa
-// grille dépliée, où les douze stations s'affichent à plat. Éteinte, la roue
+// grille dépliée, où les quinze stations s'affichent à plat. Éteinte, la roue
 // se nettoie exactement comme sur large écran — même chemin, `disable()`.
 export function useSourceDrum({ trackRef, itemRefs, ids, activeId, onSettle, enabled = true }) {
   // Ce que le moteur doit lire à chaque tour sans être reconstruit pour autant :

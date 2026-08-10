@@ -27,9 +27,43 @@ const VOV_STREAM = 'https://vovan.s3ming.com/vovan.mp3?_=1'
 // so it goes through an HTTPS Cloudflare Worker proxy (see proxy/radio-yeraz-worker.js).
 const YERAZ_PROXY = 'https://radio-yeraz-proxy.cobranian.workers.dev/'
 
+/* `offAir` : la station est SILENCIEUSE CHEZ ELLE, pas cassée chez nous.
+ *
+ * Le cas qui a introduit ce drapeau — Im Radio, le 10 août 2026. Son mount
+ * répond 401 « The resource requested is currently unavailable », et c'est le
+ * DNAS lui-même qui le dit :
+ *
+ *   curl -s '<mount>/statistics?json=1'
+ *   Im Radio (aamiry02) : "activestreams":0, streamstatus 0, bitrate 0
+ *   Arevik  (aamiryan)  : "activestreams":1, streamstatus 1, bitrate 128
+ *
+ * TROIS MESURES À CONNAÎTRE AVANT DE « RÉPARER » UNE URL DE CE TABLEAU, parce
+ * que chacune écarte une fausse piste qui coûte une heure :
+ *
+ * - **401 et 404 ne disent pas la même chose.** Un mount inexistant répond 404
+ *   (vérifié sur `aamiry03`, `imradio`) ; 401 signifie que le compte existe et
+ *   qu'aucun encodeur n'y est connecté. Un 401 n'est donc JAMAIS une URL
+ *   périmée — la chercher ailleurs est du temps perdu.
+ * - **L'URL vient du lecteur officiel** (`player.armradio.am/index.php?c=all`),
+ *   relu le jour même : il sert exactement ce mount. Le site propre de la
+ *   station (`imradio.armradio.am`) renvoie à ce même lecteur. La Radio
+ *   publique d'Arménie est donc muette pour tout le monde, pas pour nous.
+ * - **Le port direct ne sauve rien.** Les agrégateurs (Radoxo) diffusent la
+ *   forme `eu1.stream4cast.com:8070` : c'est le MÊME DNAS, même 401.
+ *
+ * Ce qu'une station marquée `offAir` fait : elle reste listée et comptée —
+ * retirer une puce ferait mentir les quatorze textes qui écrivent « quinze » en
+ * toutes lettres dans quatre langues, descriptions Google comprises, et tout
+ * serait à refaire à l'envers le jour du retour. Sa puce est simplement inerte
+ * et porte « hors antenne ».
+ *
+ * POUR SAVOIR QUAND RETIRER LE DRAPEAU : `npm run radio-check`. Il interroge
+ * les quinze flux et signale les deux écarts — une station muette qui n'est pas
+ * marquée, et une station marquée qui rediffuse. Rien d'autre ne le dira : un
+ * flux qui meurt chez l'hébergeur ne fait échouer ni test, ni lint, ni build. */
 const STATIONS = [
   { id: 'public', stream: 'https://eu1.stream4cast.com/proxy/publicra/stream' },
-  { id: 'im', stream: 'https://eu1.stream4cast.com/proxy/aamiry02/stream' },
+  { id: 'im', stream: 'https://eu1.stream4cast.com/proxy/aamiry02/stream', offAir: true },
   { id: 'arevik', stream: 'https://eu1.stream4cast.com/proxy/aamiryan/stream' },
   { id: 'culture', stream: 'https://eu1.stream4cast.com/proxy/aamiry01/stream' },
   { id: 'mariam', stream: MARIAM_PROXY },
@@ -54,6 +88,43 @@ const STATIONS = [
   // mount is the highest bitrate here (the section eyebrow still says 128 —
   // it describes the common case, not this one).
   { id: 'jazz', stream: 'https://am.radioaurora.am/jz' },
+  /* Trois ajouts du 11 août 2026. Les URL viennent des stations elles-mêmes,
+   * jamais d'un annuaire : mytuner et onlineradiobox CHIFFRENT le flux dans
+   * leur page (`cipher` + `iv`), et une URL déchiffrée chez eux ne serait de
+   * toute façon qu'une copie de celle du site officiel, en plus fragile.
+   *
+   * LE PIÈGE, ET IL EST SILENCIEUX : `crossOrigin="anonymous"` sur l'élément de
+   * l'analyseur EXIGE `Access-Control-Allow-Origin` sur la réponse du flux.
+   * Sans cet en-tête, le navigateur n'assourdit pas le son : il refuse de
+   * charger la ressource. La station ne joue pas du tout, et rien dans le
+   * dépôt ne le dit. Deux des trois sont dans ce cas, et ça ne se DEVINE PAS
+   * de l'URL — vem et arradioi vivent sur le même hôte
+   * (`eu1.stream4cast.com`) et n'ont pas le même serveur derrière :
+   *
+   *   arradioi → Shoutcast DNAS, `Access-Control-Allow-Origin: *`  → analyseur
+   *   vemradio → Icecast (`ice-audio-info`), AUCUN en-tête CORS     → `plain`
+   *
+   * Un `curl -s -D - -o /dev/null -H 'Origin: https://armenieinfo.ch' <flux>`
+   * tranche en une seconde ; `npm run radio-check` affiche le débit mais PAS
+   * cet en-tête (il vérifie que ça diffuse, pas que ça se branche à Web
+   * Audio). À vérifier à la main pour toute station ajoutée. */
+  // Vem Radio (vem.am) — la radio spirituelle de l'Église arménienne, 320 kbps
+  // (le plus haut débit du lot). Icecast sans CORS, donc `plain` : lecture
+  // nue, pas de spectre.
+  { id: 'vem', stream: 'https://eu1.stream4cast.com/proxy/vemradio/stream', plain: true },
+  // Radio Yerevan, l'antenne d'AR Radio Intercontinental (arradio.am), le plus
+  // grand réseau FM d'Arménie. Son site publie un `.pls` qui résout en HTTP
+  // simple sur IP nue (`217.182.133.119:8160`) — inutilisable ici, ce serait du
+  // contenu mixte. Le même flux est servi en HTTPS par le mount stream4cast du
+  // réseau, avec CORS : pas de proxy à monter, contrairement à mariam et yeraz.
+  { id: 'yerevanfm', stream: 'https://eu1.stream4cast.com/proxy/arradioi/stream' },
+  // Yeridasartoutian Tsayne — la SECONDE antenne de Beyrouth du lecteur, à
+  // côté de Voice of Van (le lot compte aussi Yerevan Nights, de Glendale :
+  // la diaspora y était déjà). URL prise dans le <audio> de son
+  // propre site. Nouvel hôte média : il a fallu l'ajouter à `media-src` dans
+  // LES DEUX blocs de firebase.json — la préversion ne joue pas la CSP, donc
+  // l'oubli ne se voit qu'en production. Sans CORS lui aussi → `plain`.
+  { id: 'tsayn', stream: 'https://cast5.asurahosting.com/proxy/jean/live', plain: true },
 ]
 
 const prefersReducedMotion = () =>
@@ -174,6 +245,17 @@ export function Radio({ more = true }) {
     if (id === stationId) return
     const prev = station
     const next = STATIONS.find((s) => s.id === id)
+    // Une station hors antenne ne se sélectionne pas — ni au clic (sa puce est
+    // `aria-disabled`), ni quand le TAMBOUR mobile s'immobilise sur son rang.
+    //
+    // C'est ce second chemin qui compte : `useSourceDrum` appelle `pick` avec
+    // le rang arrêté au centre, sans savoir ce qu'est une station. Sans cette
+    // garde, faire tourner la roue jusqu'à Im Radio couperait le flux en cours
+    // pour un mount qui répond 401 — donc « Flux indisponible. » et un bouton
+    // « Réessayer » qui ne peut pas aboutir, à la place d'une station qui
+    // jouait. La roue reste posée sur son rang, qui porte « hors antenne » en
+    // toutes lettres : elle explique elle-même pourquoi rien n'a changé.
+    if (!next || next.offAir) return
     setStationId(id)
     elFor(prev)?.pause() // stop whatever the previous station was using
     const audio = next.plain ? plainAudioRef.current : audioRef.current
@@ -312,14 +394,14 @@ export function Radio({ more = true }) {
   const stationName = (id) => t(`radio.st.${id}`)
 
   // Sous 640px, la rangée de puces passe en `nowrap` + `overflow-x` (voir
-  // global.css) : deux stations sur douze se voient à 360px, trois à 560px, et
+  // global.css) : deux stations sur quinze se voient à 360px, trois à 560px, et
   // `scrollbar-width: none` fait qu'aucun indice ne dit que les autres
   // existent. Replié = cet état, inchangé ; déplié = la mise en page de BASE
   // reprend (`flex-wrap: wrap`), celle que le site sert déjà partout au-dessus
   // de 640px. On ne dessine donc rien de neuf, on rend atteignable ce qui
   // existe.
   //
-  // Les douze puces restent en permanence dans le `radiogroup` : replier change
+  // Les quinze puces restent en permanence dans le `radiogroup` : replier change
   // la forme, jamais la composition. Rien n'est retiré aux lecteurs d'écran, et
   // il n'y a aucun radio enfermé dans un conteneur fermé — c'est ce qui écarte
   // <details>, qui aurait coupé le groupe en deux.
@@ -327,10 +409,10 @@ export function Radio({ more = true }) {
   const stationsRef = useRef(null)
   const chipRefs = useRef({})
 
-  // Replié, les douze stations sont sur un TAMBOUR — la même roue à 360° que le
+  // Replié, les quinze stations sont sur un TAMBOUR — la même roue à 360° que le
   // sélecteur de sources d'actualités (`useSourceDrum`), qui boucle : après la
-  // douzième revient la première. Déplié, la roue s'éteint et rend la main à la
-  // grille où les douze s'affichent à plat. Les deux états servent deux
+  // quinzième revient la première. Déplié, la roue s'éteint et rend la main à la
+  // grille où les quinze s'affichent à plat. Les deux états servent deux
   // gestes : faire défiler pour écouter de proche en proche, ou tout voir d'un
   // coup pour choisir.
   //
@@ -349,7 +431,7 @@ export function Radio({ more = true }) {
 
   // Quand la rangée défile (repli sans JavaScript, ou au-dessus de 640px si
   // elle déborde), on amène la puce active dans le champ : sinon quelqu'un qui
-  // écoute la douzième station verrait les deux premières et se croirait
+  // écoute la quinzième station verrait les deux premières et se croirait
   // ailleurs.
   //
   // ON ÉCRIT `scrollLeft` À LA MAIN, ET SURTOUT PAS `scrollIntoView`.
@@ -453,17 +535,35 @@ export function Radio({ more = true }) {
             role="radiogroup"
             aria-label={t('radio.station')}
           >
+            {/* Une station hors antenne garde sa puce, son rang et sa place
+                dans le groupe : elle est inerte, pas absente.
+
+                ON EMPLOIE `aria-disabled`, JAMAIS L'ATTRIBUT `disabled`. Un
+                bouton `disabled` sort du parcours de tabulation : la puce
+                deviendrait infocusable, donc invisible au clavier et aux
+                lecteurs d'écran, et personne n'apprendrait POURQUOI la station
+                ne joue pas. C'est le même piège que celui déjà payé sur le
+                tambour, où `visibility: hidden` retirait deux onglets de
+                l'arbre d'accessibilité et tuait la navigation clavier.
+                `aria-disabled` annonce l'état sans retirer l'élément ; c'est
+                `pick` qui refuse la sélection. */}
             {STATIONS.map((s) => (
               <button
                 key={s.id}
                 ref={(el) => (chipRefs.current[s.id] = el)}
                 type="button"
-                className={`radio__chip${s.id === stationId ? ' is-active' : ''}`}
+                className={`radio__chip${s.id === stationId ? ' is-active' : ''}${
+                  s.offAir ? ' is-offair' : ''
+                }`}
                 role="radio"
                 aria-checked={s.id === stationId}
+                aria-disabled={s.offAir || undefined}
                 onClick={() => pick(s.id)}
               >
                 {stationName(s.id)}
+                {s.offAir && (
+                  <span className="radio__chip-off"> · {t('radio.offair')}</span>
+                )}
               </button>
             ))}
           </div>
@@ -477,7 +577,7 @@ export function Radio({ more = true }) {
               `radio.page.*`, les descriptions de src/seo.js, les cartes de
               pages/ — parce que `t()` ne sait pas interpoler, et
               `test/radio-count.test.mjs` existe pour les empêcher de mentir
-              ensemble. Écrire « douze » dans une clé de plus ferait entrer un
+              ensemble. Écrire « quinze » dans une clé de plus ferait entrer un
               quinzième texte dans cette famille. L'injecter le rend incapable
               de mentir, et n'ajoute rien à tenir à jour. La clé ne porte donc
               que les mots.

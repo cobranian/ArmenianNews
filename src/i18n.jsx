@@ -170,7 +170,7 @@ const STRINGS = {
     // sous silence — le nombre est écrit en toutes lettres parce que t() ne
     // sait pas interpoler. Si vous touchez à STATIONS (Radio.jsx), les quatre
     // traductions ci-dessous doivent suivre ; un test le vérifie.
-    'radio.subtitle': 'Douze radios arméniennes, en flux continu',
+    'radio.subtitle': 'Quinze radios arméniennes, en flux continu',
     'radio.onair': 'En direct',
     'radio.tz': 'Erevan',
     'radio.play': 'Écouter en direct',
@@ -178,6 +178,12 @@ const STRINGS = {
     'radio.loading': 'Connexion au flux…',
     'radio.error': 'Flux indisponible.',
     'radio.retry': 'Réessayer',
+    // Porté par la puce d'une station que sa propre régie n'alimente plus (voir
+    // `offAir` dans Radio.jsx). Dit l'état de LA STATION, pas une panne du
+    // lecteur : « Flux indisponible. » se lit comme un défaut du site, « hors
+    // antenne » se lit comme un silence de la radio — et c'est le second qui
+    // est vrai. Deux mots, pas de phrase : ils tiennent dans une puce.
+    'radio.offair': 'hors antenne',
     'radio.volume': 'Volume',
     'radio.station': 'Station',
     'radio.stations.all': 'Voir les {n} stations',
@@ -194,13 +200,20 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
-    'radio.more': 'Les douze radios arméniennes en direct',
+    // Les trois ajouts du 11 août 2026. « Yeridasartoutian Tsayne » garde ses
+    // lettres latines dans les trois langues à écriture non arménienne : c'est
+    // ainsi que la station de Beyrouth écrit son propre nom, et le traduire
+    // (« Voix de la jeunesse ») ferait d'une marque une description.
+    'radio.st.vem': 'Radio Vem',
+    'radio.st.yerevanfm': 'Radio Yerevan',
+    'radio.st.tsayn': 'Yeridasartoutian Tsayne',
+    'radio.more': 'Les quinze radios arméniennes en direct',
 
     // Page /radio
     'radio.page.h1': 'Radios arméniennes en direct',
     'radio.page.intro':
-      'Douze radios arméniennes en flux continu, réunies sur une seule page : les stations publiques d’Erevan, les antennes indépendantes et celles de la diaspora. Aucune inscription, rien à installer — le son démarre au clic et suit la bascule jour / nuit du site. Les flux sont ceux des stations elles-mêmes ; ArménieInfo n’héberge ni ne réencode aucun signal.',
-    'radio.page.list': 'Les douze stations',
+      'Quinze radios arméniennes en flux continu, réunies sur une seule page : les stations publiques d’Erevan, les antennes indépendantes et celles de la diaspora. Aucune inscription, rien à installer — le son démarre au clic et suit la bascule jour / nuit du site. Les flux sont ceux des stations elles-mêmes ; ArménieInfo n’héberge ni ne réencode aucun signal.',
+    'radio.page.list': 'Les quinze stations',
     'radio.page.city': 'Ville',
     'radio.page.genre': 'Genre',
     'radio.page.lang': 'Langue d’antenne',
@@ -370,7 +383,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
-    'radio.subtitle': 'Twelve Armenian stations, streaming live',
+    'radio.subtitle': 'Fifteen Armenian stations, streaming live',
     'radio.onair': 'On air',
     'radio.tz': 'Yerevan',
     'radio.play': 'Listen live',
@@ -378,6 +391,7 @@ const STRINGS = {
     'radio.loading': 'Connecting to the stream…',
     'radio.error': 'Stream unavailable.',
     'radio.retry': 'Retry',
+    'radio.offair': 'off air',
     'radio.volume': 'Volume',
     'radio.station': 'Station',
     'radio.stations.all': 'Show all {n} stations',
@@ -394,13 +408,16 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
-    'radio.more': 'All twelve Armenian radio stations',
+    'radio.st.vem': 'Vem Radio',
+    'radio.st.yerevanfm': 'Radio Yerevan',
+    'radio.st.tsayn': 'Yeridasartoutian Tsayne',
+    'radio.more': 'All fifteen Armenian radio stations',
 
     // Page /radio
     'radio.page.h1': 'Armenian radio online',
     'radio.page.intro':
-      'Twelve Armenian stations streaming live on one page: the public networks of Yerevan, the independent broadcasters and the diaspora’s own. No sign-up, nothing to install — sound starts on click and follows the site’s day / night switch. The streams are the stations’ own; Armenia News neither hosts nor re-encodes any signal.',
-    'radio.page.list': 'The twelve stations',
+      'Fifteen Armenian stations streaming live on one page: the public networks of Yerevan, the independent broadcasters and the diaspora’s own. No sign-up, nothing to install — sound starts on click and follows the site’s day / night switch. The streams are the stations’ own; Armenia News neither hosts nor re-encodes any signal.',
+    'radio.page.list': 'The fifteen stations',
     'radio.page.city': 'City',
     'radio.page.genre': 'Format',
     'radio.page.lang': 'On-air language',
@@ -594,7 +611,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',
-    'radio.subtitle': 'Տասներկու հայկական ռադիոկայան՝ ուղիղ եթերում',
+    'radio.subtitle': 'Տասնհինգ հայկական ռադիոկայան՝ ուղիղ եթերում',
     'radio.onair': 'Ուղիղ',
     'radio.tz': 'Երևան',
     'radio.play': 'Միացնել',
@@ -602,6 +619,7 @@ const STRINGS = {
     'radio.loading': 'Միանում է հեռարձակմանը…',
     'radio.error': 'Հեռարձակումն անհասանելի է։',
     'radio.retry': 'Կրկնել',
+    'radio.offair': 'եթերից դուրս',
     'radio.volume': 'Ձայն',
     'radio.station': 'Ալիք',
     'radio.stations.all': 'Տեսնել {n} ռադիոկայանները',
@@ -618,14 +636,23 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
-    'radio.more': 'Բոլոր տասներկու հայկական ռադիոկայանները՝ ուղիղ եթերում',
+    // « Վէմ » et « Երիտասարդութեան » sont écrits comme les stations elles-mêmes
+    // les écrivent — en orthographe OCCIDENTALE (vem.am titre « «Վէմ»
+    // ռադիոկայան », et l'antenne de Beyrouth est une antenne de la diaspora
+    // occidentale). L'interface, elle, est en arménien oriental : c'est un
+    // écart voulu, pas une coquille. Un nom propre s'écrit comme son porteur
+    // l'écrit.
+    'radio.st.vem': 'Վէմ ռադիո',
+    'radio.st.yerevanfm': 'Ռադիո Երևան',
+    'radio.st.tsayn': 'Երիտասարդութեան ձայնը',
+    'radio.more': 'Բոլոր տասնհինգ հայկական ռադիոկայանները՝ ուղիղ եթերում',
 
     // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
     // task-5-report.md).
     'radio.page.h1': 'Հայկական ռադիո ուղիղ եթերում',
     'radio.page.intro':
-      'Տասներկու հայկական ռադիոկայաններ՝ ուղիղ հեռարձակմամբ մեկ էջում. Երևանի հանրային ցանցերը, անկախ հեռարձակողները և սփյուռքի իրենը։ Ոչ մի գրանցում, ոչինչ տեղադրելու կարիք չկա. ձայնը սկսվում է սեղմումով և հետևում է կայքի ցերեկ / գիշեր անջատիչին։ Հոսքերը կայանների սեփականն են. Armenia News-ը չի հյուրընկալում և չի վերակոդավորում որևէ ազդանշան։',
-    'radio.page.list': 'Տասներկու ռադիոկայանները',
+      'Տասնհինգ հայկական ռադիոկայաններ՝ ուղիղ հեռարձակմամբ մեկ էջում. Երևանի հանրային ցանցերը, անկախ հեռարձակողները և սփյուռքի իրենը։ Ոչ մի գրանցում, ոչինչ տեղադրելու կարիք չկա. ձայնը սկսվում է սեղմումով և հետևում է կայքի ցերեկ / գիշեր անջատիչին։ Հոսքերը կայանների սեփականն են. Armenia News-ը չի հյուրընկալում և չի վերակոդավորում որևէ ազդանշան։',
+    'radio.page.list': 'Տասնհինգ ռադիոկայանները',
     'radio.page.city': 'Քաղաք',
     'radio.page.genre': 'Ժանր',
     'radio.page.lang': 'Եթերի լեզուն',
@@ -794,7 +821,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Ереван · 128 кбит/с',
     'radio.title': 'Прямой эфир',
-    'radio.subtitle': 'Двенадцать армянских радиостанций в прямом эфире',
+    'radio.subtitle': 'Пятнадцать армянских радиостанций в прямом эфире',
     'radio.onair': 'В эфире',
     'radio.tz': 'Ереван',
     'radio.play': 'Слушать в эфире',
@@ -802,6 +829,7 @@ const STRINGS = {
     'radio.loading': 'Подключение к потоку…',
     'radio.error': 'Поток недоступен.',
     'radio.retry': 'Повторить',
+    'radio.offair': 'не в эфире',
     'radio.volume': 'Громкость',
     'radio.station': 'Станция',
     'radio.stations.all': 'Показать все {n} радиостанций',
@@ -818,14 +846,17 @@ const STRINGS = {
     'radio.st.gospel': 'Armenian Gospel Radio',
     'radio.st.yeraz': 'Radio Yeraz',
     'radio.st.jazz': 'Radio Jazz FM',
-    'radio.more': 'Все двенадцать армянских радиостанций в прямом эфире',
+    'radio.st.vem': 'Радио Вем',
+    'radio.st.yerevanfm': 'Радио Ереван',
+    'radio.st.tsayn': 'Yeridasartoutian Tsayne',
+    'radio.more': 'Все пятнадцать армянских радиостанций в прямом эфире',
 
     // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
     // task-5-report.md).
     'radio.page.h1': 'Армянское радио онлайн',
     'radio.page.intro':
-      'Двенадцать армянских радиостанций в прямом эфире на одной странице: общественные сети Еревана, независимые вещатели и станции диаспоры. Никакой регистрации, ничего устанавливать не нужно — звук начинается по клику и следует дневному / ночному переключателю сайта. Потоки принадлежат самим станциям; Armenia News не хостит и не перекодирует ни один сигнал.',
-    'radio.page.list': 'Двенадцать радиостанций',
+      'Пятнадцать армянских радиостанций в прямом эфире на одной странице: общественные сети Еревана, независимые вещатели и станции диаспоры. Никакой регистрации, ничего устанавливать не нужно — звук начинается по клику и следует дневному / ночному переключателю сайта. Потоки принадлежат самим станциям; Armenia News не хостит и не перекодирует ни один сигнал.',
+    'radio.page.list': 'Пятнадцать радиостанций',
     'radio.page.city': 'Город',
     'radio.page.genre': 'Жанр',
     'radio.page.lang': 'Язык эфира',

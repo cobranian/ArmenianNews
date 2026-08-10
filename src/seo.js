@@ -17,28 +17,28 @@ export const SEO = {
     // ailleurs. Le nombre est écrit en toutes lettres et gardé par
     // test/radio-count.test.mjs, comme les quatorze autres textes.
     description:
-      'Actualités, douze radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.',
+      'Actualités, quinze radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.',
     keywords:
       'actualités arméniennes, Arménie, Artsakh, diaspora arménienne, agenda arménien, communauté arménienne de Suisse',
   },
   en: {
     tagline: 'Armenian news, events and social media',
     description:
-      'Armenian news, twelve live radio stations, events and social media from Armenia and the diaspora, updated every hour.',
+      'Armenian news, fifteen live radio stations, events and social media from Armenia and the diaspora, updated every hour.',
     keywords:
       'Armenian news, Armenia, Artsakh, Armenian diaspora, Armenian events, Armenian community',
   },
   hy: {
     tagline: 'Հայկական լուրեր, միջոցառումներ և սոցիալական ցանցեր',
     description:
-      'Հայկական լուրեր, տասներկու ռադիոկայան ուղիղ եթերում, միջոցառումներ և սոցիալական ցանցեր Հայաստանից և սփյուռքից, թարմացվում է ամեն ժամ։',
+      'Հայկական լուրեր, տասնհինգ ռադիոկայան ուղիղ եթերում, միջոցառումներ և սոցիալական ցանցեր Հայաստանից և սփյուռքից, թարմացվում է ամեն ժամ։',
     keywords:
       'հայկական լուրեր, Հայաստան, Արցախ, հայկական սփյուռք, միջոցառումներ, հայ համայնք',
   },
   ru: {
     tagline: 'Армянские новости, события и социальные сети',
     description:
-      'Армянские новости, двенадцать радиостанций в прямом эфире, события и социальные сети из Армении и диаспоры, обновление каждый час.',
+      'Армянские новости, пятнадцать радиостанций в прямом эфире, события и социальные сети из Армении и диаспоры, обновление каждый час.',
     keywords:
       'армянские новости, Армения, Арцах, армянская диаспора, армянские события, армянская община',
   },
@@ -57,22 +57,22 @@ export const VIEW_SEO = {
     fr: {
       title: 'Radios arméniennes en direct',
       description:
-        'Douze radios arméniennes en direct, d’Erevan et de la diaspora : actualité, musique, culture et jazz. Écoute gratuite, sans compte ni installation.',
+        'Quinze radios arméniennes en direct, d’Erevan et de la diaspora : actualité, musique, culture et jazz. Écoute gratuite, sans compte ni installation.',
     },
     en: {
       title: 'Armenian radio online',
       description:
-        'Twelve Armenian radio stations streaming live from Yerevan and the diaspora: news, music, culture and jazz. Free to listen, no account, nothing to install.',
+        'Fifteen Armenian radio stations streaming live from Yerevan and the diaspora: news, music, culture and jazz. Free to listen, no account, nothing to install.',
     },
     hy: {
       title: 'Հայկական ռադիոկայաններ ուղիղ եթերում',
       description:
-        'Տասներկու հայկական ռադիոկայան ուղիղ եթերում՝ Երևանից և սփյուռքից․ լուրեր, երաժշտություն, մշակույթ և ջազ։ Անվճար, առանց հաշվի և տեղադրման։',
+        'Տասնհինգ հայկական ռադիոկայան ուղիղ եթերում՝ Երևանից և սփյուռքից․ լուրեր, երաժշտություն, մշակույթ և ջազ։ Անվճար, առանց հաշվի և տեղադրման։',
     },
     ru: {
       title: 'Армянское радио онлайн',
       description:
-        'Двенадцать армянских радиостанций в прямом эфире из Еревана и диаспоры: новости, музыка, культура и джаз. Бесплатно, без регистрации и установки.',
+        'Пятнадцать армянских радиостанций в прямом эфире из Еревана и диаспоры: новости, музыка, культура и джаз. Бесплатно, без регистрации и установки.',
     },
   },
   // AUCUN NOMBRE DE PAYS dans ces quatre descriptions, et c'est délibéré.
@@ -84,7 +84,7 @@ export const VIEW_SEO = {
   // personne ne touche au dépôt.
   //
   // Un chiffre pareil ne peut donc pas être gardé par un test, contrairement
-  // aux « douze » radios ci-dessus : le compte des stations vit dans le dépôt
+  // aux « quinze » radios ci-dessus : le compte des stations vit dans le dépôt
   // (test/radio-count.test.mjs le confronte au tableau STATIONS), celui des
   // pays vit dans la donnée du jour. Le seul correctif qui tienne est de
   // retirer le chiffre — ce qui supprime la classe de bug au lieu de la

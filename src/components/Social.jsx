@@ -217,7 +217,7 @@ function InstagramCard({ url, handle, name, cta, enlarge, img, onOpen }) {
  * n'existerait nulle part sur le site.
  *
  * Repliées par défaut : à 25 comptes, le rang repoussait le brin suivant très
- * bas. Le motif est celui des douze stations (`.radio__stations-toggle`), à une
+ * bas. Le motif est celui des quinze stations (`.radio__stations-toggle`), à une
  * différence près — la bascule des stations n'existe que sous 640px, parce que
  * la mise en page dépliée tient d'elle-même sur grand écran. 25 pastilles
  * encombrent autant un écran large qu'un téléphone.

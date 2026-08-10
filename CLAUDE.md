@@ -80,6 +80,7 @@ npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté �
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
+npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
@@ -535,7 +536,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   **Le nombre de radios est écrit en toutes lettres** dans ces cartes et dans
   les quatre `radio.subtitle` (`t()` ne sait pas interpoler). Rien ne les relie
   au tableau `STATIONS` de `Radio.jsx` : `test/radio-count.test.mjs` compte les
-  stations et échoue si les six textes divergent. Sans lui, une douzième
+  stations et échoue si les six textes divergent. Sans lui, une seizième
   station ferait mentir six textes en quatre langues, en silence.
 - `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
   processus fils — la config de Vite est mise en cache par processus), dérive
@@ -713,7 +714,7 @@ dernier revient le premier, dans les deux sens. Deux appelants s'en servent :
 | Appelant | Ce qui tourne | État replié / déplié |
 |---|---|---|
 | `NewsBrowser.jsx` | les 5 à 7 marques de sources | — |
-| `Radio.jsx` | les 12 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
+| `Radio.jsx` | les 15 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
 
 Cinq choses à savoir avant d'y toucher, toutes payées une fois :
 
@@ -755,9 +756,9 @@ laissait Oragark seul sur un second rang. Et le coefficient est **5**vw, pas 4 :
 à 4vw le terme médian vaut 56px sur un écran de 1400px, donc le plafond n'est
 jamais atteint.
 
-**Les douze stations sont dépliables (mobile).** `.radio__stations` porte déjà
+**Les quinze stations sont dépliables (mobile).** `.radio__stations` porte déjà
 `flex-wrap: wrap` en règle de base ; le bloc `≤640px` le force en `nowrap` +
-`overflow-x`, ce qui ne montrait que deux stations sur douze sans le moindre
+`overflow-x`, ce qui ne montrait que deux stations sur quinze sans le moindre
 indice. La bascule rend simplement atteignable la mise en page que le site sert
 déjà partout ailleurs. **Le nombre vient de `STATIONS.length` et entre par un
 gabarit `{n}`** dans la chaîne i18n — jamais écrit à la main, pour deux raisons :
@@ -1402,6 +1403,50 @@ de production servent toujours depuis la racine de leur domaine.
   charger tout de suite. Et le seuil de déclenchement de Chrome **dépend de la
   connexion estimée** : une mesure sur `localhost` est la plus flatteuse
   possible, elle doit être reconfirmée en production.
+- **Une station de radio peut se taire sans que RIEN ne le dise, et le dépôt
+  n'en garde qu'une URL — qui reste valide longtemps après le silence.** Le
+  premier signalement vient d'un lecteur qui clique et n'entend rien : ni test,
+  ni lint, ni build ne regardent le réseau. D'où `npm run radio-check`, à
+  lancer depuis une IP résidentielle (Voice of Van refuse les IP de
+  datacenter). Il contrôle les quinze flux **dans les deux sens** — une station
+  muette non marquée, et une station marquée qui rediffuse ; sans ce second
+  sens, un `offAir` resterait posé pour toujours après le retour de la station.
+
+  Trois mesures à connaître, chacune ayant coûté une fausse piste :
+  - **401 ≠ 404.** Sur un Shoutcast, 401 « resource currently unavailable »
+    signifie que le compte existe et qu'aucun encodeur n'y est connecté ; un
+    mount inexistant répond 404. Un 401 n'est donc jamais une URL périmée — la
+    chercher ailleurs est du temps perdu. C'est le cas d'Im Radio, marquée
+    `offAir: true` dans `Radio.jsx` le 10 août 2026 : le lecteur officiel
+    d'Arménie Publique sert exactement le même mount, et il est muet pareil.
+  - **Le verdict est dans les octets, pas dans le code HTTP.** Un proxy devant
+    un flux mort répond 200 avec un corps vide. `radio-check` attend le premier
+    octet d'audio, puis raccroche.
+  - **La moitié de ces serveurs ne parlent pas HTTP.** Voice of Van répond
+    `ICY 200 OK`, ligne de statut Shoutcast v1 que le parseur de Node **et**
+    curl refusent (`HPE_INVALID_CONSTANT`). D'où une socket nue dans
+    `radio-check.mjs` : la première version, écrite avec `node:https`,
+    déclarait en panne une station qui diffusait parfaitement.
+
+  **Et `radio-check` ne dit PAS si une station peut se brancher à l'analyseur.**
+  Il vérifie qu'elle diffuse, pas qu'elle se lit. `crossOrigin="anonymous"`
+  exige `Access-Control-Allow-Origin` sur la réponse du flux : sans cet
+  en-tête le navigateur ne baisse pas le son, il **refuse la ressource** —
+  la station ne joue pas du tout, et aucun contrôle ne tombe. Ces flux-là
+  prennent `plain: true`. Ça ne se devine pas de l'URL : `vemradio` et
+  `arradioi` vivent sur le même hôte (`eu1.stream4cast.com`) et n'ont pas le
+  même serveur derrière — Icecast sans CORS pour l'un, Shoutcast avec CORS
+  pour l'autre. Une seule commande tranche, à lancer pour **toute** station
+  ajoutée :
+
+  ```bash
+  curl -s -D - -o /dev/null -H 'Origin: https://armenieinfo.ch' <flux> | grep -i access-control
+  ```
+
+  **Marquer plutôt que retirer** : une station retirée ferait mentir les
+  quatorze textes qui écrivent « quinze » en toutes lettres dans quatre langues,
+  descriptions Google comprises, et tout serait à refaire à l'envers au retour.
+  `offAir: true` rend la puce inerte sans toucher au compte.
 - **Le plancher tactile de 44px est déjà tenu — par `@media (pointer: coarse)`.**
   Ce bloc agrandit `.theme-toggle`, `.nav__toggle`, les pastilles de langue,
   `.shelf__arrow`, `.radio__chip`, `.ig-chip` et
