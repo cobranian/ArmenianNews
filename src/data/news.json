@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T15:58:50.895Z",
+  "generatedAt": "2026-08-11T17:03:37.652Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,20 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Երևանում կանխվել են ապօրինի հորատման աշխատանքները",
+            "url": "https://hy.armradio.am/archives/751855",
+            "date": "2026-08-11T16:17:46.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/769144233_1548938937263122_6202505138353164664_n-768x432.jpg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "Թիթեղների տակ՝ կյանքի առաջին ժամերը․ ինչպես է փրկվել Հալաբյանում հայտնաբերված նորածինը",
+            "url": "https://hy.armradio.am/archives/751851",
+            "date": "2026-08-11T16:16:28.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/erexa-768x375.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թբիլիսիի «ստորգետնյա Հռոմը»․ Ազարյանցի պատմական տունը սկսում է բացել իր գաղտնիքները",
             "url": "https://hy.armradio.am/archives/751836",
             "date": "2026-08-11T15:25:14.000Z",
@@ -1183,20 +1197,6 @@
             "url": "https://hy.armradio.am/archives/751731",
             "date": "2026-08-11T07:13:50.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2025/05/PEK-768x488.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Փոխարինվում են մետրոյի «Գարեգին Նժդեհ» կայարանի շարժասանդուղքները",
-            "url": "https://hy.armradio.am/archives/751708",
-            "date": "2026-08-11T05:46:05.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/1280px-Garegin_Nzhdeh_metro1-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Կեսօրից հետո` կարճատեւ անձրեւ. Երեւանի ամենաշոգ ու ամենազով օգոստոսի 11- ը",
-            "url": "https://hy.armradio.am/archives/751692",
-            "date": "2026-08-11T04:29:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2022/03/andzrev_shabat.am1_-768x432.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1430,6 +1430,13 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Մետաքսյա Սիմոնյան. անհայտ դրվագներ՝ բեմից մինչև տուն",
+            "url": "https://hy.armradio.am/archives/751838",
+            "date": "2026-08-11T16:55:23.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/metaqsya-768x483.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Գաֆէսճեան պատանեկան խորհրդի` «Սինեսթեզիա․ բազմազգայական փորձառություն» ինտերակտիվ ցուցադրությունը",
             "url": "https://hy.armradio.am/archives/750480",
             "date": "2026-08-04T08:07:42.000Z",
@@ -1491,13 +1498,6 @@
             "date": "2026-07-28T17:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/07/ScreenShot-3618-768x411.jpeg",
             "category": "Մշակույթ"
-          },
-          {
-            "title": "Երազանքները կատարվելիս տարիք չեն հարցնում. Աշուղ Թագուհի․ նոր անուն աշուղական արվեստում",
-            "url": "https://hy.armradio.am/archives/749093",
-            "date": "2026-07-27T14:49:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/Ashugh-Taguhi-768x520.jpeg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -2110,6 +2110,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Erevan « La Ville Rose » vue par une journaliste de « The Independent »",
+          "url": "https://www.armenews.com/erevan-la-ville-rose-vue-par-une-journaliste-de-the-independent/",
+          "date": "2026-08-11T16:17:00.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8995.avif"
+        },
+        {
           "title": "L’Assemblée nationale d’Arménie examine la candidature d’Arusyak Julhakyan au poste de présidente de la Commission permanente des affaires d’État et juridiques",
           "url": "https://www.armenews.com/lassemblee-nationale-darmenie-examine-la-candidature-darusyak-julhakyan-au-poste-de-presidente-de-la-commission-permanente-des-affaires-detat-et-juridiques/",
           "date": "2026-08-11T09:28:54.000Z",
@@ -2162,12 +2168,6 @@
           "url": "https://www.armenews.com/un-an-apres-le-sommet-aliev-pachinian-a-la-maison-blanche-trump-sautocongratule-et-leurope-sen-felicite/",
           "date": "2026-08-11T06:30:47.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-11-a-08.12.56.png"
-        },
-        {
-          "title": "Le déni du génocide par Erdogan attire davantage l’attention sur les crimes de masse commis par la Turquie, par Harut Sassounian",
-          "url": "https://www.armenews.com/le-deni-du-genocide-par-erdogan-attire-davantage-lattention-sur-les-crimes-de-masse-commis-par-la-turquie-par-harut-sassounian/",
-          "date": "2026-08-11T06:30:35.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/1786314017702blob.png"
         }
       ]
     },
@@ -3100,6 +3100,12 @@
       "categoryKey": "un-autre-regard",
       "articles": [
         {
+          "title": "L’Arménie regarde vers l’Iran sans détourner les yeux",
+          "url": "https://armenieinfo.tv/larmenie-regarde-vers-liran-sans-detourner-les-yeux/",
+          "date": "2026-08-11T17:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-11-aout-2026-17_09_45.png"
+        },
+        {
           "title": "L’Arménie creuse sa richesse, qui remonte avec le minerai ?",
           "url": "https://armenieinfo.tv/larmenie-creuse-sa-richesse-qui-remonte-avec-le-minerai/",
           "date": "2026-08-08T17:00:00.000Z",
@@ -3725,6 +3731,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Former Supreme Court head András Baka elected Hungary’s new president",
+            "url": "https://armenpress.am/en/article/1257746",
+            "date": "2026-08-11T16:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/11/pGRdUsWeiq2wWZzGkH7FnupsfZUynp1zey3nAM2z.webp"
+          },
+          {
+            "title": "Three nuclear reactors in France shut down because of jellyfish",
+            "url": "https://armenpress.am/en/article/1257742",
+            "date": "2026-08-11T16:02:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/11/o42RIhbfZKJgx7Gs5QNswPwTfrgJm5InKYhGACPi.webp"
+          },
+          {
             "title": "Bulgarian athlete wins world U20 triple jump title: BTA",
             "url": "https://armenpress.am/en/article/1257735",
             "date": "2026-08-11T14:11:00.000Z",
@@ -3771,18 +3789,6 @@
             "url": "https://armenpress.am/en/article/1257670",
             "date": "2026-08-11T07:14:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/11/62hTJHBfgpRfbWK0A9wDDUFhfEphM7FlcSkYprLr.webp"
-          },
-          {
-            "title": "Iran’s parliament to consider new law on Strait of Hormuz within two weeks",
-            "url": "https://armenpress.am/en/article/1257663",
-            "date": "2026-08-11T06:43:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/30/gDxNuiBNXVF8gdh7Pdnjz84CErS5LDMxow4dG5Gv.webp"
-          },
-          {
-            "title": "Tehran slams U.S. sanctions policy as ‘addiction’ after Bessent says Iran is being ‘suffocated’",
-            "url": "https://armenpress.am/en/article/1257657",
-            "date": "2026-08-11T06:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/06/ePiDaanlhbLghbYw5QNmOevSVurz9bd83HrvHyVo.webp"
           }
         ]
       },
@@ -4052,6 +4058,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Հանդիսավորությամբ վերաբացվել է Գավառի մշակույթի տունը",
+            "url": "https://armenpress.am/hy/article/1257748",
+            "date": "2026-08-11T16:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/11/EEAHogDTkBb1smJweBYq30vzYPdac2PJCRzfGHg8.webp"
+          },
+          {
+            "title": "ԲԸՏՄ-ն Երևանում կանխել է ապօրինի հորատման աշխատանքները",
+            "url": "https://armenpress.am/hy/article/1257747",
+            "date": "2026-08-11T16:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/11/ghU1lxjcyiS4gQ5nZvV5y2ZIKrkI3pgzXeDphgR9.webp"
+          },
+          {
             "title": "Կարմիր խաչի միջազգային կոմիտեն Վարդենիս համայնքին նվիրաբերել է 18․5 կիլովատտ հզորության մուրճային աղաց",
             "url": "https://armenpress.am/hy/article/1257744",
             "date": "2026-08-11T15:50:00.000Z",
@@ -4098,18 +4116,6 @@
             "url": "https://armenpress.am/hy/article/1257736",
             "date": "2026-08-11T14:03:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/11/Pswk1xYtDkdKCcrjUxHpTY3CZCRjZbP8j1YbA63q.webp"
-          },
-          {
-            "title": "Տեղի է ունեցել Հայաստանի և Լիտվայի վարչապետների հեռախոսազրույցը",
-            "url": "https://armenpress.am/hy/article/1257737",
-            "date": "2026-08-11T13:59:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/11/mmE9qnUS961k1MWEp9iGvdtCjSEr9nPDJ1QpLYgz.webp"
-          },
-          {
-            "title": "Արաիկ Եսայանն ազատվել է Աշխատանքի և սոցիալական հարցերի նախարարի տեղակալի պաշտոնից",
-            "url": "https://armenpress.am/hy/article/1257732",
-            "date": "2026-08-11T13:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/11/TG86SoNJlHKLgShrCnROXShmoiAWkgXWFiuvRmIJ.webp"
           }
         ]
       },
@@ -4182,6 +4188,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ճապոնիայի Իբարակի նահանգում մոլեգնում է թայֆունը",
+            "url": "https://armenpress.am/hy/article/1257750",
+            "date": "2026-08-11T16:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/11/EhD9fcH8Vd9gDA7cUOAsiprMIvRdOS3k7ULwrI6d.webp"
+          },
+          {
             "title": "Հունգարիայի նոր նախագահ է ընտրվել Գերագույն դատարանի նախկին նախագահ Անդրաս Բական",
             "url": "https://armenpress.am/hy/article/1257746",
             "date": "2026-08-11T15:59:00.000Z",
@@ -4234,12 +4246,6 @@
             "url": "https://armenpress.am/hy/article/1257723",
             "date": "2026-08-11T12:47:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/11/coA8eZNQ9kEcp1mezpD2q0iwXbgzALlTKKogY11f.webp"
-          },
-          {
-            "title": "Պաղեստինի նախագահն այցելելու է Թուրքիա",
-            "url": "https://armenpress.am/hy/article/1257718",
-            "date": "2026-08-11T11:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/11/SarPbNnvpojChSNnVrK9gjbFzWaxUjZ55feuOiDE.webp"
           }
         ]
       },
@@ -4639,6 +4645,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "В Венгрии избран новый президент",
+            "url": "https://armenpress.am/ru/article/1257746",
+            "date": "2026-08-11T15:59:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/11/pGRdUsWeiq2wWZzGkH7FnupsfZUynp1zey3nAM2z.webp"
+          },
+          {
             "title": "Во Франции три ядерных реактора приостановили работу из-за медуз",
             "url": "https://armenpress.am/ru/article/1257742",
             "date": "2026-08-11T15:25:00.000Z",
@@ -4691,12 +4703,6 @@
             "url": "https://armenpress.am/ru/article/1257680",
             "date": "2026-08-11T07:57:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/11/9YbVUGjk9fXwPwHDpqEb2W1PU1EG9yHWq3AdeX2l.webp"
-          },
-          {
-            "title": "Трамп подписал указ о сокращении количества рекомендуемых детям прививок",
-            "url": "https://armenpress.am/ru/article/1257676",
-            "date": "2026-08-11T07:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/11/kUNXqHYJZTJ1AmDREUIoDq0QAvi5t6VIjWqt9zgv.webp"
           }
         ]
       },
@@ -4969,6 +4975,12 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "Israel’s Suspended Armenian Genocide Vote is Business as Usual — This is Why",
+            "url": "https://asbarez.com/israels-suspended-armenian-genocide-vote-is-business-as-usual-this-is-why/",
+            "date": "2026-08-11T16:21:40.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/11091000/armenian-genocide-300x169.jpg"
+          },
+          {
             "title": "ARF Western U.S. Delegation Visits AYF Camp Big Pines",
             "url": "https://asbarez.com/arf-western-u-s-delegation-visits-ayf-camp-big-pines/",
             "date": "2026-08-10T23:02:08.000Z",
@@ -5021,12 +5033,6 @@
             "url": "https://asbarez.com/new-reference-book-on-reading-greek-armenian-and-jewish-male-names-in-ottoman-sources-published/",
             "date": "2026-08-10T18:16:56.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/08/10143422/New-Reference-Book-on-%E2%80%98Reading-Greek-Armenian-and-Jewish-Male-Names-in-Ottoman-Sources-Published--1-300x200.jpg"
-          },
-          {
-            "title": "Artsakh Cultural Preservation Center to Take Part in International Festival in Vienna",
-            "url": "https://asbarez.com/armenia-and-the-cultural-heritage-of-artsakh-to-be-featured-in-international-festival-in-vienna/",
-            "date": "2026-08-10T18:02:29.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/10105111/artsakh-cultural-center-300x169.jpg"
           }
         ]
       },
@@ -8391,6 +8397,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Gucci Breaks the Main Taboo of the Luxury Industry: Why the Fashion House Is Lowering Prices",
+            "url": "https://style.news.am/eng/news/115554/",
+            "date": "2026-08-11T16:35:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115554.jpg"
+          },
+          {
             "title": "Sex Doll Mistaken for Murder Victim in Australia",
             "url": "https://style.news.am/eng/news/115556/",
             "date": "2026-08-11T12:17:00.000Z",
@@ -8443,12 +8455,6 @@
             "url": "https://style.news.am/eng/news/115546/",
             "date": "2026-08-11T06:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115546.jpg"
-          },
-          {
-            "title": "An Italian Paradise Without Roads or Connectivity: The Wild Island of Palmarola That Tourists Almost Don't Know About",
-            "url": "https://style.news.am/eng/news/115540/",
-            "date": "2026-08-10T19:01:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115540.jpg"
           }
         ]
       },
@@ -8789,6 +8795,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Իրանը մտադիր չէ հրաժարվել իր իրավունքներից՝ որևէ սպառնալիքի առաջ. Մոհսեն Ռեզայի",
+            "url": "https://news.am/hy/news/1054851",
+            "date": "2026-08-11T16:56:00.000Z",
+            "image": "https://news.am/storage/media/26/08/11/XXVpk3U5kT4qQlGx.webp"
+          },
+          {
             "title": "ՀՀ Անկախության հռչակագրին հղման վերացումից հետո Բաքուն կհրաժարվի խաղաղության համաձայնագրի ստորագրումից. պատգամավոր",
             "url": "https://news.am/hy/news/1054834",
             "date": "2026-08-11T14:13:12.000Z",
@@ -8841,12 +8853,6 @@
             "url": "https://news.am/hy/news/1054759",
             "date": "2026-08-11T08:57:10.000Z",
             "image": "https://news.am/storage/media/26/08/11/rCdU9euAkLXwgjyy.webp"
-          },
-          {
-            "title": "Կոլումբիան ճանաչել է Իսրայելի ինքնիշխանությունը Գոլանի բարձունքների նկատմամբ",
-            "url": "https://news.am/hy/news/1054727",
-            "date": "2026-08-11T08:25:00.000Z",
-            "image": "https://news.am/storage/media/26/08/11/Tk9HdoUKOgqRomQZ.webp"
           }
         ]
       },
@@ -8921,6 +8927,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ՉԼ․ «Արարատ-Արմենիայի» մեկնարկային կազմը",
+            "url": "https://sport.news.am/arm/news/168248/",
+            "date": "2026-08-11T17:01:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168248.jpg"
+          },
+          {
+            "title": "«Ինտերը» կփորձի ձեռք բերել Անգլիայի հավաքականի ֆուտբոլիստին",
+            "url": "https://sport.news.am/arm/news/168247/",
+            "date": "2026-08-11T16:14:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168247.jpg"
+          },
+          {
             "title": "Լուիս Էնրիկե․ Մեր առջեւ բացառիկ մարտահրավեր է՝ հավասարվել «Ռեալին»",
             "url": "https://sport.news.am/arm/news/168246/",
             "date": "2026-08-11T15:28:00.000Z",
@@ -8967,18 +8985,6 @@
             "url": "https://sport.news.am/arm/news/168238/",
             "date": "2026-08-11T09:45:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168238.jpg"
-          },
-          {
-            "title": "PAYFA-ն ու ՀՖՖ-ն խորացնում են համագործակցությունը",
-            "url": "https://sport.news.am/arm/news/168237/",
-            "date": "2026-08-11T09:16:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168237.jpg"
-          },
-          {
-            "title": "37-ամյա Ալեքսիս Սանչեսը տեղափոխվեց ՄԼՍ",
-            "url": "https://sport.news.am/arm/news/168231/",
-            "date": "2026-08-11T08:19:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168231.jpg"
           }
         ]
       },
@@ -9053,6 +9059,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Gucci-ն խախտում է շքեղության ոլորտի ամենամեծ տաբուն. ինչու է նորաձևության տունը իջեցնում գները",
+            "url": "https://style.news.am/arm/news/115554/",
+            "date": "2026-08-11T16:35:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115554.jpg"
+          },
+          {
             "title": "«Առանց մանիկյուրի» մանիկյուր. «Մերկ» եղունգների միտումը պարզվում է՝ այնքան էլ պարզ չէ, որքան թվում է",
             "url": "https://style.news.am/arm/news/115555/",
             "date": "2026-08-11T15:26:00.000Z",
@@ -9105,12 +9117,6 @@
             "url": "https://style.news.am/arm/news/115548/",
             "date": "2026-08-11T07:43:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115548.jpg"
-          },
-          {
-            "title": "Բրեդ Փիթը մտածել է ինքնասպանության մասին՝ երեխաներից և Անջելինա Ջոլիից բաժանվելուց հետո",
-            "url": "https://style.news.am/arm/news/115547/",
-            "date": "2026-08-11T07:18:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115547.jpg"
           }
         ]
       },
@@ -9251,6 +9257,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Եգիպտոսում աշխատողներ տեղափոխող ավտոմեքենաների բախման հետևանքով 18 մարդ է զոհվել",
+            "url": "https://news.am/hy/news/1054848",
+            "date": "2026-08-11T16:34:00.000Z",
+            "image": "https://news.am/storage/media/26/08/11/T21VRMfSgO8t1Fum.webp"
+          },
+          {
             "title": "Երևանում 37-ամյա տղամարդուն նախ ծեծի են ենթարկել, ապա նրանից 17 մլն դրամ պահանջել",
             "url": "https://news.am/hy/news/1054842",
             "date": "2026-08-11T14:58:23.000Z",
@@ -9303,12 +9315,6 @@
             "url": "https://news.am/hy/news/1054688",
             "date": "2026-08-11T05:21:57.000Z",
             "image": "https://news.am/storage/media/26/08/11/5yLkGQso1dBlSF5C.webp"
-          },
-          {
-            "title": "Կոմիտաս-Փափազյան փողոցների խաչմերուկում լուսակիրի չգործելու պատճառով վարորդները չեն զիջել իրար. ծեծկռտուք է սկսվել",
-            "url": "https://news.am/hy/news/1054673",
-            "date": "2026-08-10T19:51:03.000Z",
-            "image": "https://news.am/storage/media/26/08/10/65uqk1pvzvczE8C9.webp"
           }
         ]
       },
@@ -9451,6 +9457,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Мохсен Резаи: Иран не намерен отказываться от своих прав перед лицом любых угроз",
+            "url": "https://news.am/ru/news/1054851",
+            "date": "2026-08-11T16:56:00.000Z",
+            "image": "https://news.am/storage/media/26/08/11/XXVpk3U5kT4qQlGx.webp"
+          },
+          {
             "title": "Депутат: После ликвидации ссылки на Декларацию независимости Армении Баку может отказаться от подписания мирного соглашения с Ереваном",
             "url": "https://news.am/ru/news/1054834",
             "date": "2026-08-11T14:13:12.000Z",
@@ -9503,12 +9515,6 @@
             "url": "https://news.am/ru/news/1054727",
             "date": "2026-08-11T08:25:00.000Z",
             "image": "https://news.am/storage/media/26/08/11/Tk9HdoUKOgqRomQZ.webp"
-          },
-          {
-            "title": "Депутат от правящей партии: Мы не оставляли Комиссию по евроинтеграции «Сильной Армении», просто не успели ее забрать",
-            "url": "https://news.am/ru/news/1054747",
-            "date": "2026-08-11T08:18:00.000Z",
-            "image": "https://i.ytimg.com/vi/McqA6Xb4jAA/hqdefault.jpg"
           }
         ]
       },
@@ -9715,6 +9721,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Gucci нарушает главное табу индустрии роскоши: зачем модный дом снижает цены",
+            "url": "https://style.news.am/rus/news/115554/",
+            "date": "2026-08-11T16:35:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115554.jpg"
+          },
+          {
             "title": "Маникюр «без маникюра»: почему тренд на «голые» ногти оказался не так прост, как кажется",
             "url": "https://style.news.am/rus/news/115555/",
             "date": "2026-08-11T15:26:00.000Z",
@@ -9767,12 +9779,6 @@
             "url": "https://style.news.am/rus/news/115547/",
             "date": "2026-08-11T07:18:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115547.jpg"
-          },
-          {
-            "title": "26-летняя инфлюенсер покончила с собой во время прямой трансляции после жесткой травли фанатов",
-            "url": "https://style.news.am/rus/news/115546/",
-            "date": "2026-08-11T06:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115546.jpg"
           }
         ]
       },
@@ -9913,6 +9919,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Египте в результате столкновения автомобилей, перевозивших рабочих, погибли 18 человек",
+            "url": "https://news.am/ru/news/1054848",
+            "date": "2026-08-11T16:34:00.000Z",
+            "image": "https://news.am/storage/media/26/08/11/T21VRMfSgO8t1Fum.webp"
+          },
+          {
             "title": "В Ереване 37-летнего мужчину сначала избили, а затем потребовали у него 17 млн драмов",
             "url": "https://news.am/ru/news/1054842",
             "date": "2026-08-11T14:58:23.000Z",
@@ -9965,12 +9977,6 @@
             "url": "https://news.am/ru/news/1054688",
             "date": "2026-08-11T05:21:57.000Z",
             "image": "https://news.am/storage/media/26/08/11/5yLkGQso1dBlSF5C.webp"
-          },
-          {
-            "title": "В Ереване неисправный светофор стал причиной драки водителей",
-            "url": "https://news.am/ru/news/1054673",
-            "date": "2026-08-10T19:51:03.000Z",
-            "image": "https://news.am/storage/media/26/08/10/65uqk1pvzvczE8C9.webp"
           }
         ]
       },
