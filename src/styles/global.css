@@ -1346,10 +1346,17 @@ html:lang(hy) .nav__brand {
      la césure : les quatre langues n'ont pas les mêmes noms, donc pas les mêmes
      largeurs. À 56px, l'anglais et l'arménien — dont les marques sont courtes
      (ArmRadio, NEWS.am, Asbarez, CivilNet, Oragark) — faisaient tenir SIX
-     marques sur le premier rang et laissaient Oragark seul en dessous. À 64px :
-     fr 4+3, en 5+2, hy 5+2, ru cinq marques sur une seule ligne — le russe
+     marques sur le premier rang et laissaient Oragark seul en dessous. À 64px,
+     re-mesuré à 1400px le 12 août 2026, après l'ajout d'Armenian Weekly :
+     fr 4+3, en 5+3, hy 5+2, ru cinq marques sur une seule ligne — le russe
      n'ayant que cinq sources, il n'enveloppe pas du tout. Ne descendez pas
      sous 64 sans revérifier les quatre.
+
+     Le chiffre anglais BOUGE avec le nombre d'onglets : il valait 5+2 à sept
+     marques et vaut 5+3 à huit. Ne le prenez pas pour une constante — c'est le
+     résultat d'une mesure, à refaire à chaque source ajoutée ou retirée.
+     Rappel : à 700px, fr et en passent tous deux à TROIS rangs (3+3+1 et
+     4+3+1). C'est un état accepté de ce rail, pas une régression.
 
      Le coefficient est 5vw et non 4 : à 4vw le terme médian valait 56px sur un
      écran de 1400px et le plafond n'était jamais atteint, donc l'anglais et

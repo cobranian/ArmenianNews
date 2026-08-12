@@ -14,6 +14,7 @@ import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
 import { scrapeArmenpress } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
+import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { scrapeCivilnet } from './sources/civilnet.mjs'
 import { scrapeNewsam } from './sources/newsam.mjs'
@@ -185,6 +186,18 @@ async function main() {
     oragark[lang] = backfillSections(orEditions[lang], prevNews?.oragark?.[lang], 'categoryKey')
   }
 
+  // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
+  // only (no hy/ru/fr edition), so it is a flat list of shelves like Courrier,
+  // not a per-language map, and it shows under `en` alone.
+  console.log('\nThe Armenian Weekly — armenianweekly.com (en, 7 rubriques):')
+  let awSecs = []
+  try {
+    awSecs = await scrapeArmenianWeekly(10)
+  } catch (err) {
+    console.error('  armenianweekly failed wholesale:', err.message)
+  }
+  const armenianweekly = backfillSections(awSecs, prevNews?.armenianweekly, 'categoryKey')
+
   // The California Courier — the Glendale Armenian weekly. Sassounian's Column is
   // translated into a fresh category per language, so this source serves all four
   // UI languages (en = main news feed; fr/ru/hy = his column). Backfilled per
@@ -273,6 +286,7 @@ async function main() {
     armenpress,
     asbarez,
     oragark,
+    armenianweekly,
     californiacourier,
     civilnet,
     newsam,

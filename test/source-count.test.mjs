@@ -32,10 +32,17 @@ const MOTS = {
 // TAB_ORDER porte désormais l'ordre ET la présence, une entrée par langue.
 // (Il a remplacé un ternaire `pool` + tri alphabétique ; ce test lisait les
 // branches du ternaire.)
+//
+// Il vit désormais dans `src/newsSources.js` — un module JS plat — et non plus
+// dans NewsBrowser.jsx : `News.jsx` doit compter les sources pour son bandeau
+// sans importer le composant, et un export non-composant dans un `.jsx`
+// coûterait un 6e avertissement de lint (voir CLAUDE.md, section Lint). On le
+// lit toujours COMME DU TEXTE, faute de mieux : ce module importe news.json, et
+// Node refuse un import JSON sans attribut d'import.
 function poolsParLangue() {
-  const src = read('src/components/NewsBrowser.jsx')
-  const bloc = src.match(/const TAB_ORDER = \{[\s\S]*?\n\}/)
-  assert.ok(bloc, 'tableau TAB_ORDER introuvable dans NewsBrowser.jsx')
+  const src = read('src/newsSources.js')
+  const bloc = src.match(/export const TAB_ORDER = \{[\s\S]*?\n\}/)
+  assert.ok(bloc, 'tableau TAB_ORDER introuvable dans src/newsSources.js')
   const pools = {}
   for (const m of bloc[0].matchAll(/(\w+):\s*\[([\s\S]*?)\]/g)) {
     pools[m[1]] = (m[2].match(/'[^']+'/g) || []).length
@@ -69,5 +76,31 @@ test('les cartes de liens annoncent le nombre de rédactions de leur langue', ()
         `pages/${name}.${site.id}.html n'annonce pas « ${attendu} » (pool ${lang} = ${pools[lang]})`,
       )
     }
+  }
+})
+
+// Le bandeau de la section Actualités compte désormais les sources au lieu de
+// les nommer en dur (voir News.jsx). Le compte étant dérivé, il ne peut plus
+// mentir — mais la CHAÎNE qui l'accueille, elle, le peut de deux façons, et
+// toutes deux sont silencieuses :
+//
+//   · une langue sans la clé retombe sur le français (`t()` vaut
+//     STRINGS[lang][clé] ?? STRINGS.fr[clé] ?? clé), donc /hy/ afficherait
+//     « 7 rédactions arméniennes » sous une interface arménienne ;
+//   · une chaîne sans le gabarit `{n}` rend un bandeau sans aucun nombre, le
+//     `.replace()` ne trouvant rien à remplacer.
+//
+// Ni le lint, ni le build, ni `npm run check` ne lisent ces chaînes. Même
+// mécanique que le contrôle des genres de station (stations.test.mjs).
+test('le bandeau des actualités a sa chaîne, avec {n}, dans les quatre langues', () => {
+  const src = read('src/i18n.jsx')
+  const valeurs = [...src.matchAll(/'news\.sources':\s*'([^']*)'/g)].map((m) => m[1])
+  assert.equal(
+    valeurs.length,
+    4,
+    `'news.sources' déclarée ${valeurs.length} fois, attendu 4 (une par langue)`,
+  )
+  for (const v of valeurs) {
+    assert.ok(v.includes('{n}'), `« ${v} » ne porte pas le gabarit {n}`)
   }
 })

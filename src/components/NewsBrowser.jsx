@@ -3,7 +3,7 @@ import { useI18n } from '../i18n.jsx'
 import { Carousel } from './Carousel.jsx'
 import { useSourceDrum } from './useSourceDrum.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
-import news from '../data/news.json'
+import { TAB_ORDER, shelvesFor } from '../newsSources.js'
 
 // The wsrv.nl image CDN: fetched server-side, resized, re-served with CORS.
 // Sources reach it for TWO different reasons, and only the first is a blocker.
@@ -132,55 +132,6 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
   )
 }
 
-// L'ordre des onglets, par langue. Il est ÉCRIT À LA MAIN, et c'est un
-// changement : il était auparavant calculé — Armenpress épinglé, puis tri
-// alphabétique de marque — pour qu'une nouvelle source se place toute seule.
-// Cette propriété est perdue à dessein. Le rang porte désormais une intention
-// éditoriale que l'alphabet ne sait pas exprimer : sous `fr`, les quatre fils
-// proprement francophones passent devant les sources traduites ou
-// multilingues ; sous `en`/`hy`, NEWS.am monte au troisième rang.
-//
-// CONSÉQUENCE À CONNAÎTRE : une source ajoutée sans être nommée ici
-// n'apparaîtra nulle part. C'est le prix de l'ordre choisi, et c'est silencieux
-// — le seul garde-fou est le décompte des rédactions annoncé par les cartes de
-// liens (test/source-count.test.mjs), qui lit ce tableau.
-//
-// Cette liste décide aussi de la PRÉSENCE : une langue ne montre que les
-// sources qui publient dans cette langue. Les fils 100 % francophones
-// (Courrier, armenews, artzakank, armenieinfotv) ne paraissent donc que sous
-// `fr` ; ArmRadio et NEWS.am — en/hy/ru, sans édition française — en sont
-// retirés plutôt que d'y servir des titres anglais sous lang="fr".
-const TAB_ORDER = {
-  fr: [
-    'armenpress',
-    'armenieinfotv',
-    'courrier',
-    'armenews',
-    'artzakank',
-    'californiacourier',
-    'civilnet',
-  ],
-  en: [
-    'armenpress',
-    'armradio',
-    'newsam',
-    'asbarez',
-    'civilnet',
-    'californiacourier',
-    'oragark',
-  ],
-  hy: [
-    'armenpress',
-    'armradio',
-    'newsam',
-    'asbarez',
-    'civilnet',
-    'californiacourier',
-    'oragark',
-  ],
-  ru: ['armenpress', 'armradio', 'newsam', 'californiacourier', 'civilnet'],
-}
-
 // Build the source groups for the current UI language. Asbarez and
 // Oragark each have an English and a Western Armenian edition, so they join en/hy
 // but not ru or fr. The California Courier translates Sassounian's Column into a
@@ -196,10 +147,6 @@ const TAB_ORDER = {
 // most French text; the language rule makes Armenpress the natural lead.)
 // Every rubric is its own carousel — nothing is merged, empty rubrics dropped.
 function buildSources(t, lang) {
-  // ArmRadio publishes en/hy/ru — never French — so armLang only matters when
-  // ArmRadio is shown, i.e. outside fr, where it tracks the UI language.
-  const armLang = lang === 'hy' ? 'hy' : lang === 'ru' ? 'ru' : 'en'
-
   const armenpress = {
     id: 'armenpress',
     brand: 'Armenpress',
@@ -208,7 +155,7 @@ function buildSources(t, lang) {
     images: true,
     // Sur le poids, pas sur un blocage — voir le commentaire de `wsrv`.
     proxy: true,
-    cats: (news.armenpress?.[lang] || [])
+    cats: shelvesFor('armenpress', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`apcats.${s.categoryKey}`), articles: s.articles })),
   }
@@ -219,7 +166,7 @@ function buildSources(t, lang) {
     live: true,
     images: true,
     armProxy: true,
-    cats: (news.armradio?.[armLang] || [])
+    cats: shelvesFor('armradio', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`armcats.${s.categoryKey}`), articles: s.articles })),
   }
@@ -229,7 +176,7 @@ function buildSources(t, lang) {
     name: t('browser.courrier'),
     live: false,
     images: true,
-    cats: (news.courrier || [])
+    cats: shelvesFor('courrier', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.sectionKey, label: t(`sections.${s.sectionKey}`), articles: s.articles })),
   }
@@ -240,7 +187,7 @@ function buildSources(t, lang) {
     live: false,
     images: true,
     proxy: true,
-    cats: (news.armenews || [])
+    cats: shelvesFor('armenews', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`namcats.${s.categoryKey}`), articles: s.articles })),
   }
@@ -251,7 +198,7 @@ function buildSources(t, lang) {
     live: false,
     images: true,
     proxy: true,
-    cats: (news.artzakank || [])
+    cats: shelvesFor('artzakank', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`azkcats.${s.categoryKey}`), articles: s.articles })),
   }
@@ -262,7 +209,7 @@ function buildSources(t, lang) {
     live: false,
     images: true,
     proxy: true,
-    cats: (news.armenieinfotv || [])
+    cats: shelvesFor('armenieinfotv', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: t(`aitcats.${s.categoryKey}`), articles: s.articles })),
   }
@@ -277,7 +224,7 @@ function buildSources(t, lang) {
     name: t('browser.asbarez'),
     live: false,
     images: true,
-    cats: (news.asbarez?.[lang] || [])
+    cats: shelvesFor('asbarez', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
@@ -290,10 +237,26 @@ function buildSources(t, lang) {
     name: t('browser.oragark'),
     live: false,
     images: true,
-    cats: (news.oragark?.[lang] || [])
+    cats: shelvesFor('oragark', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
+  // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
+  // only: no Armenian, Russian or French edition, so it is named in TAB_ORDER.en
+  // alone and its feed is a flat list, not keyed by language. Its rubric names
+  // ride in the data like Asbarez's and Oragark's. Images hotlink direct — no
+  // hotlink protection, and medium_large lands around 77 Ko.
+  const armenianweekly = {
+    id: 'armenianweekly',
+    brand: 'Armenian Weekly',
+    name: t('browser.armenianweekly'),
+    live: false,
+    images: true,
+    cats: shelvesFor('armenianweekly', lang)
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
+
   // The California Courier — the only source besides Armenpress in every language.
   // Sassounian's Column is translated per language (fr/ru/hy); en shows the main
   // English news feed. One category per language, its label carried in the data.
@@ -303,7 +266,7 @@ function buildSources(t, lang) {
     name: t('browser.californiacourier'),
     live: false,
     images: true,
-    cats: (news.californiacourier?.[lang] || [])
+    cats: shelvesFor('californiacourier', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
@@ -318,7 +281,7 @@ function buildSources(t, lang) {
     name: t('browser.civilnet'),
     live: false,
     images: true,
-    cats: (news.civilnet?.[lang] || [])
+    cats: shelvesFor('civilnet', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
@@ -335,7 +298,7 @@ function buildSources(t, lang) {
     name: t('browser.newsam'),
     live: false,
     images: true,
-    cats: (news.newsam?.[lang] || [])
+    cats: shelvesFor('newsam', lang)
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
@@ -353,6 +316,7 @@ function buildSources(t, lang) {
     armenieinfotv,
     asbarez,
     oragark,
+    armenianweekly,
     californiacourier,
     civilnet,
     newsam,

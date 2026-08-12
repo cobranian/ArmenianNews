@@ -142,8 +142,10 @@ const STRINGS = {
     'aitcats.un-autre-regard': 'Un autre regard',
 
     'browser.subtitle': 'Toutes les rubriques, source par source',
+    'news.sources': '{n} rédactions arméniennes',
     'browser.armradio': 'Radio publique d’Arménie',
     'browser.asbarez': 'Asbarez — quotidien arménien de Los Angeles',
+    'browser.armenianweekly': 'The Armenian Weekly — hebdomadaire arménien de Boston',
     'browser.oragark': 'Oragark — quotidien de la FRA',
     'browser.californiacourier': 'The California Courier — la chronique de Harut Sassounian',
     'browser.civilnet': 'CivilNet — média indépendant d’Erevan',
@@ -361,8 +363,10 @@ const STRINGS = {
     'aitcats.un-autre-regard': 'Another view',
 
     'browser.subtitle': 'Every rubric, source by source',
+    'news.sources': '{n} Armenian newsrooms',
     'browser.armradio': 'Public Radio of Armenia',
     'browser.asbarez': 'Asbarez — Los Angeles Armenian daily',
+    'browser.armenianweekly': 'The Armenian Weekly — Boston Armenian weekly',
     'browser.oragark': 'Oragark — ARF daily',
     'browser.californiacourier': 'The California Courier — Glendale Armenian weekly',
     'browser.civilnet': 'CivilNet — independent newsroom in Yerevan',
@@ -589,8 +593,10 @@ const STRINGS = {
     'aitcats.un-autre-regard': 'Այլ հայացք',
 
     'browser.subtitle': 'Բոլոր բաժինները՝ ըստ աղբյուրի',
+    'news.sources': '{n} հայկական խմբագրություն',
     'browser.armradio': 'Հայաստանի հանրային ռադիո',
     'browser.asbarez': 'Ասպարէզ — Լոս Անճելըսի հայ օրաթերթ',
+    'browser.armenianweekly': 'The Armenian Weekly — Բոստոնի հայկական շաբաթաթերթ',
     'browser.oragark': 'Օրակարգ — ՀՅԴ օրաթերթ',
     'browser.californiacourier': 'The California Courier — Հարություն Սասունյանի սյունակ',
     'browser.civilnet': 'CivilNet — երևանյան անկախ լրատվամիջոց',
@@ -799,8 +805,10 @@ const STRINGS = {
     'aitcats.un-autre-regard': 'Другой взгляд',
 
     'browser.subtitle': 'Все рубрики, источник за источником',
+    'news.sources': '{n} армянских редакций',
     'browser.armradio': 'Общественное радио Армении',
     'browser.asbarez': 'Аспарез — армянская ежедневная газета из Лос-Анджелеса',
+    'browser.armenianweekly': 'The Armenian Weekly — армянский еженедельник из Бостона',
     'browser.oragark': 'Орагарк — ежедневная газета АРФД',
     'browser.californiacourier': 'The California Courier — колонка Арута Сасуняна',
     'browser.civilnet': 'CivilNet — независимая редакция из Еревана',

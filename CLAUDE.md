@@ -234,6 +234,25 @@ composants importent au build :
     langues et **hotlinkées en direct** — donc ni proxy, ni RSS, ni scrape
     d'`og:image` (contrairement à asbarez). Libellés portés dans les données
     (`{ categoryKey, label, articles }`), chaque édition sous sa seule langue.
+  - `armenianweekly.mjs` — The Armenian Weekly (armenianweekly.com), l'hebdomadaire
+    anglophone de la FRA, publié depuis Watertown (Massachusetts). Servi sous
+    **`en` seulement** — pas d'édition arménienne, russe ni française — donc il
+    renvoie une **liste plate** d'étagères, comme Courrier, et non une carte par
+    langue. Install WordPress REST ouverte comme oragark : ni Cloudflare, ni
+    filtre UA, `fetch` (undici) répond 200, images hotlinkées en direct (~77 ko
+    en `medium_large`, donc ni wsrv ni proxy). Sept rubriques, libellés portés
+    dans les données.
+    - **Le piège** : la page d'archive d'une rubrique WordPress (`/news/`) inclut
+      les **sous-catégories**, le paramètre `categories` de l'API REST **non**.
+      Le Weekly classe l'essentiel de son quotidien sous des enfants de News
+      (`headline`, `announcements`, `briefs`), donc `categories=14` seul rend des
+      étagères pleines, correctement datées et illustrées — simplement **six
+      jours en retard** sur la page qu'ouvrirait un lecteur (mesuré le 12 août
+      2026 : News 08-06 contre 08-12, Diaspora 08-07 contre 08-12). Rien ne
+      tombe : ni requête, ni parseur, ni test. Le module résout donc les
+      descendants depuis l'**arbre vivant** à chaque instantané, plutôt qu'une
+      liste d'ids figée qui viderait une rubrique le jour où le site ajoute une
+      sous-catégorie.
   - `californiacourier.mjs` — The California Courier (thecaliforniacourier.com),
     l'hebdomadaire arménien de Glendale. Une install WordPress REST ouverte (ni
     filtre UA, ni Cloudflare), comme oragark. **Son atout : la chronique de Harut
@@ -750,9 +769,11 @@ La règle d'avant promettait « centrées quand elles tiennent, défilantes sino
 le premier cas ne se produisait jamais, et on payait 14px de barre de défilement
 système au milieu d'une manchette. `column-gap: clamp(14px, 5vw, 64px)` est
 **mesuré, pas choisi** : c'est l'écart qui place la césure, et les quatre langues
-n'ont pas les mêmes noms — fr 4+3, en 5+2, hy 5+2, ru cinq marques sur une seule
-ligne. Ne descendez pas sous 64 sans revérifier les quatre : à 56px, l'anglais
-laissait Oragark seul sur un second rang. Et le coefficient est **5**vw, pas 4 :
+n'ont pas les mêmes noms — mesuré à 1400px le 12 août 2026 : fr 4+3, **en 5+3**,
+hy 5+2, ru cinq marques sur une seule ligne. Ne descendez pas sous 64 sans
+revérifier les quatre : à 56px, l'anglais laissait Oragark seul sur un second
+rang. Le chiffre anglais **suit le nombre d'onglets** (5+2 à sept marques, 5+3 à
+huit) : c'est une mesure à refaire à chaque source ajoutée, pas une constante. Et le coefficient est **5**vw, pas 4 :
 à 4vw le terme médian vaut 56px sur un écran de 1400px, donc le plafond n'est
 jamais atteint.
 
@@ -926,7 +947,8 @@ de production servent toujours depuis la racine de leur domaine.
   en tête partout. L'ordre vit dans **`TAB_ORDER`** (`NewsBrowser.jsx`), une
   liste par langue :
   - `fr` → Armenpress, ArménieInfo.tv, Courrier d'Erevan, Nouvelles d'Arménie, Artzakank, California Courier, CivilNet
-  - `en`/`hy` → Armenpress, ArmRadio, NEWS.am, Asbarez, CivilNet, California Courier, Oragark
+  - `en` → Armenpress, ArmRadio, NEWS.am, Asbarez, Armenian Weekly, CivilNet, California Courier, Oragark
+  - `hy` → Armenpress, ArmRadio, NEWS.am, Asbarez, CivilNet, California Courier, Oragark
   - `ru` → Armenpress, ArmRadio, NEWS.am, California Courier, CivilNet
 
   **Cet ordre est écrit à la main, et il ne l'a pas toujours été.** Il était

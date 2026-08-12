@@ -48,9 +48,10 @@ const DRUM_MQ = '(max-width: 640px)'
 const REDUCE_MQ = '(prefers-reduced-motion: reduce)'
 
 // Géométrie de la roue. L'écart angulaire est CONSTANT et ne dépend pas du
-// nombre de sources : le russe en compte cinq et les trois autres langues sept,
-// et une roue dont le pas changerait avec la langue n'aurait pas la même
-// allure d'une vitrine à l'autre. `BACK_DEG` sert de dénominateur au fondu :
+// nombre de sources — cinq en russe, sept en français et en arménien, huit en
+// anglais — et une roue dont le pas changerait avec la langue n'aurait pas la
+// même allure d'une vitrine à l'autre. Ces comptes bougent à chaque source
+// ajoutée ; le pas, lui, ne doit pas. `BACK_DEG` sert de dénominateur au fondu :
 // l'opacité atteint zéro vers 64°, et c'est CE seuil — l'opacité nulle, pas un
 // angle écrit séparément — qui coupe aussi les événements de pointeur.
 const STEP_DEG = 42
