@@ -1249,6 +1249,17 @@ de production servent toujours depuis la racine de leur domaine.
   le README). L'étape de capture d'écran est `continue-on-error: true` en CI :
   sans ce correctif, elle aurait échoué **toutes les heures**, sans jamais
   faire échouer le job ni alerter personne.
+- **`continue-on-error` cache l'échec À L'API AUSSI, pas seulement à l'œil.**
+  `gh run view --json jobs` rend `conclusion: success` pour une étape qui a
+  quitté en 1 : aucune étape n'apparaît en échec, donc même un contrôle scripté
+  passe à côté. Le seul moyen fiable est de **lire le log**
+  (`gh run view <id> --log | grep "pages prérendues"`). Le prérendu a échoué
+  24 h du 11 au 12 août 2026 derrière cet angle mort. Il ouvre désormais une
+  **issue GitHub** — titre marqué `[prerender-down]`, assignée (un assigné est
+  toujours notifié, un « Watch » peut être coupé), dédoublonnée sur une panne
+  longue, et **refermée toute seule au retour**. Ne la remplacez pas par un
+  échec de job : le déploiement doit continuer, un prérendu manqué ne dégrade
+  que le SEO. La capture d'écran, elle, n'a **pas** d'alerte équivalente.
 - **Une troisième liste de langues existe, et elle n'est pas fausse.**
   `ARMENPRESS_LANGS` (`scripts/sources/armenpress.mjs`) est distincte de
   `LANGS` et `ALL_LANGS` (`sites.config.js`) : elle décrit les éditions
