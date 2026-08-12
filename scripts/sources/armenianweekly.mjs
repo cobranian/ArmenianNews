@@ -27,10 +27,31 @@ import { clean, safeUrl } from '../lib/util.mjs'
 // covers without a word.
 const BASE = 'https://armenianweekly.com'
 
-// The seven top-level rubrics, in the order they appear on the site's own nav.
-// `america-at-250` is a commemorative series, not a live desk: ten articles
-// total, and it will sit at the bottom of the tab showing its real age. That is
-// deliberate — the shelf tells the truth about a slow rubric.
+// Seven top-level rubrics: the site's six live desks, in its own nav order,
+// plus Special Reports.
+//
+// The seventh slot held `america-at-250` first, and swapping it taught the
+// lesson worth keeping: **an archive count says nothing about whether a rubric
+// is alive, and neither does a rubric's prominence on the site.** Measured
+// 2026-08-12, newest article and how many of ten are not already on one of the
+// six desks above:
+//
+//   special-reports   448 art.   2026-08-12 (jour même)   10/10 inédits
+//   featured        1 455 art.   2026-08-07                3/10
+//   literary-corner   504 art.   2026-07-29                9/10
+//   interviews        258 art.   2026-02-02               10/10
+//   calendar          299 art.   2017-01-06               10/10
+//
+// `featured` is the trap: the biggest archive on the site, its own front-page
+// rubric — and three quarters of it is what the other shelves already show,
+// because being featured is a *flag on* a desk article, not a desk of its own.
+// A shelf built on it would look full and read as an echo. `america-at-250`
+// was the opposite failure: ten distinct articles, none newer than 6 July,
+// a commemorative series that had simply stopped.
+//
+// So: measure the newest date AND the overlap before putting a rubric here.
+// Neither is visible from the category listing, and a wrong pick produces a
+// perfectly valid, perfectly full, perfectly useless shelf.
 const SECTIONS = [
   'news',
   'diaspora',
@@ -38,7 +59,7 @@ const SECTIONS = [
   'opinion',
   'columns',
   'youth',
-  'america-at-250',
+  'special-reports',
 ]
 
 function decodeEntities(html) {
