@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write # commit refreshed data
+  issues: write # ouvrir/refermer l'alerte de prérendu (voir en fin de job)
 
 concurrency:
   group: deploy
@@ -125,13 +126,99 @@ jobs:
       # continue-on-error au-dessus rend l'échec silencieux dans l'UI Actions
       # (l'étape reste verte) — voulu, car un prérendu manqué ne doit pas
       # bloquer le déploiement de la SPA nue. Mais silencieux ne doit pas dire
-      # invisible : ce warning (pas un échec, donc rien ne bloque) est le seul
-      # signal qu'on aurait servi un `<html lang>` en décalage avec l'interface
-      # (voir le contrôle de langue dans scripts/prerender.mjs) sans texte pour
-      # les crawlers.
-      - name: Signaler un prérendu manqué
+      # invisible, et l'annotation `::warning::` seule ne suffisait pas : le
+      # prérendu a échoué VINGT-QUATRE HEURES du 11 au 12 août 2026 sans que
+      # personne ne le voie. Un warning ne notifie personne, ne survit pas au
+      # défilement des exécutions horaires, et — le pire — **l'API GitHub ne
+      # rapporte alors AUCUNE étape en échec** : `gh run view --json jobs` rend
+      # `conclusion: success` pour une étape en `continue-on-error`, donc même
+      # un contrôle scripté passe à côté. Il faut sortir des Actions.
+      #
+      # D'où une ISSUE, et non un échec de job : le déploiement doit continuer
+      # (c'est tout le sens du continue-on-error), mais l'alerte doit persister
+      # jusqu'à réparation et arriver par courriel.
+      #
+      # Trois propriétés à ne pas défaire :
+      #   · DÉDOUBLONNÉE par le marqueur `[prerender-down]` dans le titre — sans
+      #     quoi une panne d'une journée ouvrirait vingt-quatre issues. On
+      #     cherche le marqueur plutôt qu'une étiquette pour n'avoir aucun label
+      #     à créer au préalable : `gh issue create --label` échoue si
+      #     l'étiquette n'existe pas.
+      #   · ASSIGNÉE au propriétaire : GitHub notifie toujours un assigné, quels
+      #     que soient ses réglages de suivi du dépôt. Sans cela l'alerte
+      #     dépendrait d'un « Watch » qu'on peut avoir désactivé sans y penser.
+      #   · REFERMÉE toute seule au retour (étape suivante). Dans les deux sens,
+      #     comme `npm run radio-check` : sans le second sens, l'issue resterait
+      #     ouverte pour toujours après la réparation et on cesserait de la lire.
+      - name: Alerter sur un prérendu manqué
         if: steps.prerender.outcome == 'failure'
-        run: echo "::warning::Prérendu échoué — le site part en SPA nu, sans texte pour les crawlers. Voir les logs de l'étape précédente."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          echo "::warning::Prérendu échoué — le site part en SPA nu, sans texte pour les crawlers."
+          ouverte=$(gh issue list --state open --limit 100 --json number,title \
+            --jq '[.[] | select(.title | contains("[prerender-down]"))] | .[0].number // empty')
+          if [ -n "$ouverte" ]; then
+            echo "Alerte déjà ouverte : #$ouverte — on n'en rouvre pas une par heure."
+            exit 0
+          fi
+          gh issue create \
+            --title "[prerender-down] Le prérendu échoue — les 12 pages partent sans texte" \
+            --assignee cobranian \
+            --body "$(cat <<EOF
+          L'étape \`npm run prerender\` a échoué. Le déploiement a continué (c'est
+          voulu), mais les douze pages sont servies en **SPA nue** : \`<div id="root"></div>\`
+          vide, donc **aucun texte d'article pour les moteurs de recherche**.
+
+          Les lecteurs ne voient rien : React s'hydrate côté navigateur. Ce sont les
+          crawlers qui perdent tout.
+
+          Exécution en cause : $RUN_URL
+
+          ## Vérifier ce qui est réellement servi
+
+          \`\`\`bash
+          curl -s https://armenianews.org/ | grep -c '<div id="root"></div>'   # 1 = non prérendu
+          \`\`\`
+
+          Un HTML nu pèse ~72 ko, un HTML cuit ~264 ko.
+
+          ## Cause la plus probable
+
+          \`browser-actions/setup-chrome\` installe le Chrome **stable du jour**, alors
+          que \`puppeteer-core\` est figé par le lockfile. Quand Chrome prend de
+          l'avance, il devient impilotable et cette étape meurt — c'est exactement ce
+          qui s'est produit le 11 août 2026 (151.0.7922.77 → .138).
+
+          Relever les deux versions de part et d'autre de la bascule :
+
+          \`\`\`bash
+          gh run view <id> --log | grep -oE "Successfully setup chrome [0-9.]+"
+          \`\`\`
+
+          Le correctif est alors de **monter \`puppeteer-core\`**, pas d'épingler
+          Chrome — épingler ne fait que geler la dette.
+
+          Cette issue se referme toute seule dès qu'un prérendu réussit.
+          EOF
+          )"
+
+      # Le second sens de l'alerte. Sans lui, l'issue resterait ouverte après la
+      # réparation, et une alerte qui ne s'éteint jamais cesse d'être lue.
+      - name: Refermer l'alerte si le prérendu est revenu
+        if: steps.prerender.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue list --state open --limit 100 --json number,title \
+            --jq '.[] | select(.title | contains("[prerender-down]")) | .number' \
+          | while read -r n; do
+              [ -n "$n" ] || continue
+              echo "Prérendu revenu — fermeture de #$n"
+              gh issue close "$n" --comment "Prérendu revenu : les douze pages sont cuites. $RUN_URL"
+            done
 
       - name: Deploy to Firebase Hosting
         env:
