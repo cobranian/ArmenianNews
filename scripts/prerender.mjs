@@ -116,7 +116,16 @@ try {
             )
             baked++
           } finally {
-            await tab.close()
+            // Ce `close()` NE DOIT PAS pouvoir masquer l'erreur d'origine, et
+            // ça s'est payé : quand Chrome meurt, tout appel au protocole
+            // échoue — y compris celui-ci. Une exception jetée depuis un
+            // `finally` REMPLACE celle du `try`, donc la CI n'a rapporté qu'un
+            // `ConnectionClosedError at CdpPage.close`, désignant la fermeture
+            // de l'onglet alors que la panne était à `newPage()` quinze lignes
+            // plus haut. Une journée de prérendus manqués a été diagnostiquée
+            // sur cette fausse piste. Fermer un onglet est un nettoyage : son
+            // échec ne vaut jamais la raison pour laquelle on nettoie.
+            await tab.close().catch(() => {})
           }
         }
       }
