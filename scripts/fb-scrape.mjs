@@ -17,7 +17,7 @@
  * (reusing your logged-in session). Without it, it launches a fresh (logged-out)
  * Chrome — only useful for pages that need no login.
  */
-import { readFile, writeFile } from 'node:fs/promises'
+import { readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
@@ -32,28 +32,41 @@ const PAGE_URL = 'https://www.facebook.com/DonNarek'
 const SCRAPE_URL = PAGE_URL
 const OTHER_POSTS_RX = /^(other posts|autres publications)$/i
 const AUTHOR = 'Don Narek'
-// 18, et le nombre est MESURÉ, pas choisi. À 80 publications le mur pesait
-// 25,3 Mo à lui seul (324 Ko de moyenne, jusqu'à 851 Ko la pièce) sur une page
-// qui en téléchargeait 87 — l'étagère la plus lourde du site, devant les 90
-// tuiles Instagram réunies. Et rien ne la diffère : les images portent bien
-// `loading="lazy"`, mais tout part au chargement, vérifié en parcourant la
-// page sans qu'un octet de plus ne transite. 18 ramène ce mur à 5,3 Mo et
-// l'aligne sur ce que sert chaque brin Instagram, donc aucune étagère n'est
-// privilégiée.
+// 25 — DEMANDÉ, sur une échelle qui reste MESURÉE. À 80 publications le mur
+// pesait 25,3 Mo à lui seul (324 Ko de moyenne, jusqu'à 851 Ko la pièce) sur
+// une page qui en téléchargeait 87 — l'étagère la plus lourde du site, devant
+// les 90 tuiles Instagram réunies. Et rien ne la diffère : les images portent
+// bien `loading="lazy"`, mais tout part au chargement, vérifié en parcourant la
+// page sans qu'un octet de plus ne transite. Le passage en WebP 800 px
+// (`scripts/lib/image.mjs`) a depuis divisé la pièce par deux — ~128 Ko en
+// moyenne, mesuré sur les 18 fichiers de `src/data/fb/` —, donc 25 tient
+// autour de 3,2 Mo, toujours dans l'ordre de grandeur d'un brin Instagram.
+//
+// LA GRANDEUR À SURVEILLER EST LE POIDS, PAS LE COMPTE : `Social.jsx` charge
+// `src/data/fb/` par un glob `eager`, donc TOUT fichier resté dans le dossier
+// part dans les deux `dist/`, y compris ceux qu'aucune entrée du JSON ne cite.
+// Baisser ce nombre ne rend rien tant que les images en trop ne sont pas
+// supprimées du dossier.
 //
 // CE PLAFOND EST LE SEUL DU MUR. Il y en avait un second dans `Social.jsx`,
 // retiré parce qu'un plafond écrit à deux endroits diverge : le passage de 40
 // à 80 ici avait fait disparaître la moitié des publications, sans erreur ni
 // avertissement. Ne le réintroduisez pas — ce fichier décide de ce qui entre,
 // la vue rend ce qu'elle reçoit.
-const WANT = 18
+const WANT = 25
 
-// La photo de Don Narek LUI-MÊME est épinglée : toujours en tête du carrousel,
-// et jamais perdue — même quand une récolte ne la retrouve pas (elle finit par
-// sortir des 18 publications les plus récentes, le mur étant surtout fait de
-// partages d'autres artistes). À 18 elle en sort BEAUCOUP plus vite qu'à 80,
-// donc le report depuis le snapshot précédent, plus bas, porte désormais
-// l'essentiel du travail : sans lui la signature du mur disparaîtrait.
+// La photo de Don Narek LUI-MÊME est épinglée : toujours à la MÊME place du
+// carrousel — la dernière —, et jamais perdue, même quand une récolte ne la
+// retrouve pas (elle finit par sortir des 25 publications les plus récentes, le
+// mur étant surtout fait de partages d'autres artistes). À 25 elle en sort
+// beaucoup plus vite qu'à 80, donc le report depuis le snapshot précédent, plus
+// bas, porte l'essentiel du travail : sans lui la signature du mur
+// disparaîtrait.
+//
+// EN QUEUE, ET C'EST UN CHOIX ÉDITORIAL, pas une conséquence de l'ordre
+// chronologique : le mur montre l'art arménien, et le portrait de celui qui le
+// rassemble le signe — une signature se pose au bas de la toile. Rien ne le
+// calcule ; c'est la composition d'`ordered`, tout en bas de ce fichier.
 //
 // D'où un id ET un fichier STABLES, hors de la numérotation `dn-NN`. C'est le
 // point : si on la reportait sous son ancien numéro, la récolte suivante
@@ -393,19 +406,73 @@ if (!pinned && previous) {
   pinned = previous.posts.find((p) => p.id === PINNED_ID) || null
   if (pinned) console.log(`  ↺ photo de ${AUTHOR} reprise du snapshot précédent`)
 }
-// Épinglée en tête, puis le reste dans l'ordre chronologique. Le plafond compte
-// la photo épinglée, pour que le mur ne dépasse jamais WANT.
-const ordered = (pinned ? [pinned, ...posts] : posts).slice(0, WANT)
+// Le mur dans l'ordre chronologique, PUIS la photo épinglée, qui le ferme. Le
+// plafond compte la photo épinglée, pour que le mur ne dépasse jamais WANT —
+// d'où `WANT - 1` sur les publications AVANT de l'ajouter. Trancher après
+// l'ajout couperait exactement ce qu'on cherche à garder, puisqu'elle est
+// désormais la dernière : le mur perdrait sa signature dès que la récolte
+// ramène son compte, c'est-à-dire toujours.
+const ordered = pinned ? [...posts.slice(0, WANT - 1), pinned] : posts.slice(0, WANT)
 if (!pinned) console.log(`  ⚠ aucune photo de ${AUTHOR} — ni dans la récolte, ni dans le fichier précédent`)
 
 const json = {
   _comment:
-    'Don Narek Facebook wall — the carousel shows ONLY each post picture and its author; no Facebook page chrome. Generated by `node scripts/fb-scrape.mjs` (drives local Chrome to read the public page), newest first, capped at 18 (WANT in scripts/fb-scrape.mjs — the ONLY cap; the view renders whatever this file holds), with the page OWN photo (Don Narek) pinned first and never dropped (stable id/file dn-narek, carried over from the previous snapshot when a harvest does not find it). Images bundled from src/data/fb/. Re-run the scraper to refresh; hand-edit is fine too.',
+    'Don Narek Facebook wall — the carousel shows ONLY each post picture and its author; no Facebook page chrome. Generated by `node scripts/fb-scrape.mjs` (drives local Chrome to read the public page), newest first, capped at 25 (WANT in scripts/fb-scrape.mjs — the ONLY cap; the view renders whatever this file holds), with the page OWN photo (Don Narek) pinned LAST and never dropped (stable id/file dn-narek, carried over from the previous snapshot when a harvest does not find it). Images bundled from src/data/fb/. Re-run the scraper to refresh; hand-edit is fine too.',
   page: 'DonNarek',
   url: PAGE_URL,
   posts: ordered,
 }
 await writeFile(path.join(root, 'src/data/facebook.json'), JSON.stringify(json, null, 2) + '\n')
+
+// ÉLAGAGE — ce que ce fichier laisse sur le disque est livré, cité ou non.
+// `Social.jsx` charge `src/data/fb/` par un glob `import.meta.glob(..., { eager:
+// true })` : Vite empaquette le DOSSIER, pas les entrées du JSON. Une image
+// orpheline part donc dans les deux `dist/`, à chaque déploiement horaire, sans
+// jamais s'afficher.
+//
+// Et il y en a une à chaque récolte, par construction : la boucle télécharge
+// WANT publications, `ordered` en garde WANT - 1 pour laisser sa place à la
+// photo épinglée. La dernière téléchargée est payée et jamais montrée. Le cas
+// se reproduit à l'identique le jour où WANT baisse — l'ancien surplus resterait
+// livré indéfiniment.
+//
+// DEUX GARDE-FOUS, et le premier est le seul qui compte.
+//
+// `PINNED_FILE` EST GARDÉ SANS CONDITION, même absent du mur du jour. C'est la
+// seule promesse que ce fichier fait depuis toujours — la photo de Don Narek
+// n'est jamais perdue — et l'élagage la brisait : le jour où la récolte ne
+// ramène pas sa publication ET où le report échoue (fichier absent, JSON
+// illisible, entrée déjà tombée), `pinned` vaut null, les 25 cartes ont leur
+// image, `dn-narek.webp` devient un orphelin, et il part. Sans retour possible :
+// la publication est sortie de la fenêtre récente, et le report suivant n'a plus
+// ni fichier ni entrée à relire. Le script AVERTIT déjà dans ce cas — il aurait
+// averti puis effacé.
+//
+// Le second : un mur sans AUCUNE image n'élague rien. Une entrée dont le
+// téléchargement a échoué part sans `image` — légitime, la carte retombe sur son
+// motif —, mais si le réseau les a toutes fait échouer, `keep` ne porterait que
+// la photo épinglée et cette boucle viderait le dossier sur une panne passagère.
+// Git le rattraperait ; le quart d'heure passé à comprendre, non.
+const keep = new Set(ordered.map((p) => p.image).filter(Boolean))
+const cites = keep.size
+keep.add(PINNED_FILE)
+if (!cites) {
+  console.log('  ⚠ aucune image dans le mur — élagage sauté (récolte probablement en panne)')
+} else {
+  // `withFileTypes` : on ne supprime que des FICHIERS. `rm` sans `recursive`
+  // rejette sur un répertoire, et ce rejet n'est rattrapé nulle part — la
+  // récolte mourrait ici, le JSON déjà réécrit, Chrome jamais refermé et le
+  // « ✓ wrote » jamais affiché : un plantage qui laisse croire que rien n'a été
+  // écrit alors que tout l'a été.
+  const orphans = (await readdir(FB_DIR, { withFileTypes: true }))
+    .filter((e) => e.isFile() && !keep.has(e.name))
+    .map((e) => e.name)
+  for (const f of orphans) {
+    await rm(path.join(FB_DIR, f)).catch((e) => console.log(`  ↯ ${f} non supprimé : ${e.message}`))
+  }
+  if (orphans.length)
+    console.log(`  ⌫ ${orphans.length} image(s) hors du mur supprimée(s) : ${orphans.join(', ')}`)
+}
 // `ordered`, pas `posts` : ce dernier ne compte pas la photo épinglée, et le
 // script annonçait donc une publication de moins qu'il n'en écrivait.
 console.log(`\n✓ wrote src/data/facebook.json (${ordered.length} posts)`)

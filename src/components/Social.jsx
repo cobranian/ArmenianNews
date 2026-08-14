@@ -78,10 +78,13 @@ const igImg = Object.fromEntries(
 )
 const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || null
 
-/* L'id de la photo de Don Narek lui-même, épinglée en tête du mur Facebook.
-   Même valeur que `PINNED_ID` dans scripts/fb-scrape.mjs — les deux fichiers ne
-   peuvent pas se partager la constante (l'un est un module de build Node, l'autre
-   du JSX de navigateur), d'où le rappel de part et d'autre. */
+/* L'id de la photo de Don Narek lui-même, épinglée en QUEUE du mur Facebook —
+   la signature au bas de la toile. Cette constante ne sert PAS à la placer : le
+   scraper décide de l'ordre, ici elle ne sert qu'à reconnaître la carte pour lui
+   retirer son bouton « voir la publication » (plus bas). Même valeur que
+   `PINNED_ID` dans scripts/fb-scrape.mjs — les deux fichiers ne peuvent pas se
+   partager la constante (l'un est un module de build Node, l'autre du JSX de
+   navigateur), d'où le rappel de part et d'autre. */
 const FB_PINNED_ID = 'dn-narek'
 
 /* The expand glyph that wakes on hover — the plate's "click to enlarge" cue,
@@ -276,7 +279,7 @@ export function Social() {
   const [box, setBox] = useState(null)
 
   // Tout ce que le fichier contient, dans son ordre — la photo de Don Narek
-  // lui-même est déjà épinglée en tête par le scraper.
+  // lui-même est déjà placée en queue par le scraper, qui ferme le mur sur elle.
   //
   // PLUS DE PLAFOND ICI, et c'est le correctif : il y en avait un à 40, censé
   // « correspondre à WANT dans fb-scrape.mjs pour ne jamais masquer en silence
@@ -308,8 +311,8 @@ export function Social() {
 
   // The lightbox item for a Facebook post — its enlarged view plus the way out.
   //
-  // Sauf pour la photo épinglée : c'est le portrait de Don Narek lui-même, la
-  // signature du mur, pas une publication à aller lire. Elle part donc SANS
+  // Sauf pour la photo épinglée (la dernière du mur) : c'est le portrait de Don
+  // Narek lui-même, sa signature, pas une publication à aller lire. Elle part SANS
   // `href`, et la lightbox n'affiche alors aucun bouton (voir Lightbox.jsx) —
   // toutes les autres cartes gardent le leur. L'id `dn-narek` est stable par
   // construction (`PINNED_ID` dans scripts/fb-scrape.mjs) : il est tenu hors de

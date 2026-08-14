@@ -29,7 +29,7 @@ renders that data into two static Vite + React bundles (`dist/ch/`,
 | **Actualités** | [ArménieInfo.tv](https://armenieinfo.tv) | The latest **10 articles per rubric**, French-only, as shelves. |
 | **Newswire** | [Public Radio of Armenia](https://en.armradio.am/) | English headlines as a live marquee ticker. Fetched through a **multi-tier source chain** (proxy → REST API → RSS feed → Google News) because armradio.am sits behind Cloudflare, which intermittently 403s CI datacenter IPs — see [Newswire source chain](#newswire-source-chain-armradio). |
 | **Agenda** | [Armenopole](https://armenopole.com) (Switzerland + a set of world countries) + [Arméniens de Lausanne](https://armeniensdelausanne.ch) recurring classes | Two horizontal, swipeable **carousels** with ‹ › arrow controls — 🇨🇭 Suisse and 🌍 Monde — each event a date-plaqued card. Recurring Lausanne classes listed below. |
-| **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 30 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Curated by hand (see below); cards link out to the real post. |
+| **Don Narek** | [facebook.com/DonNarek](https://www.facebook.com/DonNarek) | A swipeable **carousel** (‹ › arrows) of the **latest 25 posts**, each a card showing **only the post's picture and its author** — no Facebook page chrome/cover. Don Narek's own portrait **closes** the wall, as a signature. Curated by hand (see below); cards link out to the real post. |
 | **Instagram** | 27 curated accounts | **Five** swipeable **carousels** (‹ › arrows) of post tiles — one strand per `group`, in display order: the creators making Armenian work today (4), the community and its institutions (9), the people who are its face (6), the studios where the work is made (4), and the land itself (4). The **9 latest posts** of each account are harvested by a local script by default (see [Refreshing the Instagram pool](#refreshing-the-instagram-pool)); which of them show, and in what order, is **re-randomised every hour** by the snapshot job, **18 per strand** (90 total), drawn **round-robin between a strand's accounts** so an account with a bigger reserve can't crowd the others off their own carousel. |
 
 Each source **fails independently and degrades gracefully**: on an empty/failed
@@ -370,8 +370,10 @@ carousel — populated by a local scraper (see [Refreshing Don
 Narek](#refreshing-don-narek) below) or by hand — that shows **only each post's
 picture and its author**.
 
-**To add a post by hand:** put a new entry at the **top** of the `posts` array (newest
-first — only the first 10 are shown):
+**To add a post by hand:** put a new entry at the **top** of the `posts` array —
+newest first, with Don Narek's own portrait (`dn-narek`) kept **last**, where it
+signs the wall. The view renders the whole array; the only cap is `WANT` in the
+scraper:
 
 ```json
 { "id": "dn-11", "author": "Don Narek", "url": "https://www.facebook.com/DonNarek/posts/…", "image": "my-photo.jpg" }
@@ -403,7 +405,10 @@ datacenter IPs), so refreshing the **post content** is a **manual local step**
 your own logged-in Chrome to read the public profile, keeps only the posts under
 Facebook's **"Other posts"** heading (skips pinned/featured), opens each post
 for its full-resolution image, and rewrites `src/data/fb/*.webp` +
-`facebook.json` (newest first, capped at 30). Images are downloaded **through the
+`facebook.json` (newest first, capped at 25, Don Narek's own portrait last). It
+then **deletes every image the wall does not cite** — `Social.jsx` bundles the
+whole `src/data/fb/` folder, so an orphan file ships in both `dist/` forever
+without ever being shown. Images are downloaded **through the
 logged-in tab** (not an anonymous fetch), so Facebook's session-gated CDN
 variants come back as the real photo instead of a placeholder, then re-encoded to
 WebP 800px by `scripts/lib/image.mjs` before they hit the disk.
