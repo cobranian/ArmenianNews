@@ -357,6 +357,23 @@ body {
           <span class="dest__go" aria-hidden="true">→</span>
         </a>
       </li>
+      <li>
+        <!-- #facebook, l'id du BRIN et non de la section : Social.jsx le pose
+             sur l'étagère elle-même, ce qui lui a fait survivre au passage du
+             mur derrière les cinq brins Instagram. Même prudence que pour
+             #direct plus haut — une ancre absente retombe en haut de page
+             sans rien signaler. -->
+        <a class="dest" href="https://armenieinfo.fr/#facebook">
+          <span class="dest__name">Art arménien
+            <!-- VINGT-QUATRE toiles, pas vingt-cinq : le mur porte 25 cartes
+                 dont le portrait de Don Narek, qui le signe en dernier et n'est
+                 pas une toile. test/fb-count.test.mjs lie ce mot au nombre réel
+                 de src/data/facebook.json. -->
+            <span class="dest__what">Vingt-quatre toiles, choisies par Don Narek</span>
+          </span>
+          <span class="dest__go" aria-hidden="true">→</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
