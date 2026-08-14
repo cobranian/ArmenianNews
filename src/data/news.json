@@ -1,9 +1,15 @@
 {
-  "generatedAt": "2026-08-14T04:06:07.720Z",
+  "generatedAt": "2026-08-14T06:11:09.771Z",
   "courrier": [
     {
       "sectionKey": "actualite",
       "articles": [
+        {
+          "title": "Pashinyan : l’Arménie pourrait envisager une troisième voie entre l’UE et l’UEE",
+          "url": "https://courrier.am/fr/pashinyan-l-armenie-pourrait-envisager-une-troisieme-voie-entre-l-ue-et-l-uee",
+          "date": null,
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/screenshot_2_12.jpg?itok=iRid8CVp"
+        },
         {
           "title": "\" L'Arménie doit se prononcer sur le référendum concernant l'UE d'ici décembre \"",
           "url": "https://courrier.am/fr/-l-armenie-doit-se-prononcer-sur-le-referendum-concernant-l-ue-d-ici-decembre-",
@@ -57,18 +63,18 @@
           "url": "https://courrier.am/fr/aliyev-accuse-la-france-de-colonialisme-defend-l-ong-baku-initiative-group",
           "date": "2026-07-23T05:11:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/images_1_2.jpg?itok=j5HzSFdZ"
-        },
-        {
-          "title": "Lavrov a confirmé que la Russie était prête à aider Erevan et Bakou à rétablir les communications",
-          "url": "https://courrier.am/fr/lavrov-a-confirme-que-la-russie-etait-prete-a-aider-erevan-et-bakou-a-retablir-les-communications",
-          "date": "2026-07-22T04:55:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/lavrov-1024x617.jpg?itok=LM99lOaI"
         }
       ]
     },
     {
       "sectionKey": "societe",
       "articles": [
+        {
+          "title": "La rénovation du complexe commémoratif du génocide arménien se poursuit",
+          "url": "https://courrier.am/fr/la-renovation-du-complexe-commemoratif-du-genocide-armenien-se-poursuit",
+          "date": "2026-08-14T05:51:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/mm.jpg?itok=CKLA-LI9"
+        },
         {
           "title": "Un nouveau quartier vert dessine l'avenir d'Erevan",
           "url": "https://courrier.am/fr/un-nouveau-quartier-vert-dessine-l-avenir-d-erevan",
@@ -122,12 +128,6 @@
           "url": "https://courrier.am/fr/en-raison-de-la-course-tricolor-la-circulation-sera-restreinte-dans-la-soiree-du-4-juillet-a-erevan-",
           "date": "2026-07-02T03:55:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/v8k104dj40obyrg5aafornvj8lsuhqg7.jpg?itok=z4XKrMG4"
-        },
-        {
-          "title": "Immersion avec les pêcheurs du lac Sevan",
-          "url": "https://courrier.am/fr/immersion-avec-les-pecheurs-du-lac-sevan",
-          "date": "2026-06-29T07:35:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/screenshot_2_6.jpg?itok=TMsADzze"
         }
       ]
     },
@@ -200,6 +200,12 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
+          "title": "Arménie : des subventions pour soutenir les projets artistiques et culturels en 2027",
+          "url": "https://courrier.am/fr/armenie-des-subventions-pour-soutenir-les-projets-artistiques-et-culturels-en-2027",
+          "date": "2026-08-14T05:58:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/kgmsn.jpg?itok=0HUR3yKj"
+        },
+        {
           "title": "Tamara Stepanyan : « Dès qu’on parle de guerre, on est tous des perdants »",
           "url": "https://courrier.am/fr/tamara-stepanyan-des-qu-on-parle-de-guerre-on-est-tous-des-perdants-",
           "date": "2026-07-31T04:58:00.000Z",
@@ -252,12 +258,6 @@
           "url": "https://courrier.am/fr/la-poterie-comme-epanouissement-dans-la-vie-des-refugies-de-l-artsakh",
           "date": "2026-07-22T13:47:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/image1_7.png?itok=DNh4rcRa"
-        },
-        {
-          "title": "Congrès international d'études arméniennes au Matenadaran",
-          "url": "https://courrier.am/fr/congres-international-d-etudes-armeniennes-au-matenadaran-",
-          "date": "2026-07-17T06:37:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/mkhitarsebastatsischolarandintellectual_63c93366a9f0f.jpeg?itok=oZraIG5i"
         }
       ]
     },
@@ -1130,6 +1130,20 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Մարտուն Գրիգորյանը երկու ամսով կալանավորվել է",
+            "url": "https://hy.armradio.am/archives/752433",
+            "date": "2026-08-14T05:36:52.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/martun-grigoryan-768x521.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Կարճատեւ անձրեւ` կեսօրից հետո. Երեւանի ամենատաք ու ամենազով օգոստոսի 14- ը",
+            "url": "https://hy.armradio.am/archives/752427",
+            "date": "2026-08-14T04:41:50.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2022/03/andzrev_shabat.am1_-768x432.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Անցյալի հիշողությունից մինչև հայկական ռեփ ու դիզայն․ հայապահպանության բանաձևը՝ ըստ Անդրանիկ Դաքեսյանի",
             "url": "https://hy.armradio.am/archives/752344",
             "date": "2026-08-13T18:00:00.000Z",
@@ -1184,20 +1198,6 @@
             "date": "2026-08-13T12:17:22.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/big_1442566646_5636250-768x572.jpg",
             "category": "Հասարակություն"
-          },
-          {
-            "title": "Վիզաների ազատականացման ծրագրում էական առաջընթաց է գրանցվել․ ՆԳՆ աշխատանքային խմբի նիստը",
-            "url": "https://hy.armradio.am/archives/752304",
-            "date": "2026-08-13T12:00:11.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/1-11-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Զինծառայողի մահվան դեպքի առթիվ նախաձեռնվել է քրեական վարույթ. ՔԿ",
-            "url": "https://hy.armradio.am/archives/752279",
-            "date": "2026-08-13T11:00:56.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2025/08/08%E2%80%A408%E2%80%A425-768x432.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1355,6 +1355,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Իրանին հաջողվել է շրջանցել ամերիկյան պաշտպանական համակարգերը. NYT",
+            "url": "https://hy.armradio.am/archives/752430",
+            "date": "2026-08-14T05:24:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/AP448599761679-768x496.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Աբու Դաբիի նավթային ընկերության երկու նավեր հարձակման են ենթարկվել Հորմուզի նեղուցում",
+            "url": "https://hy.armradio.am/archives/752424",
+            "date": "2026-08-14T04:12:52.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/AP21130768740077-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱՄՆ- ը Իրանի դեմ կիրառելու է «նախկինում չտեսնված» միջոցներ",
             "url": "https://hy.armradio.am/archives/752420",
             "date": "2026-08-14T04:03:09.000Z",
@@ -1409,20 +1423,6 @@
             "date": "2026-08-13T05:35:42.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/77057683_1004-768x336.webp",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Սիցիլիայի օդանավակայանը փակվել է Էտնա հրաբխի ժայթքման պատճառով",
-            "url": "https://hy.armradio.am/archives/752115",
-            "date": "2026-08-13T05:03:01.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/78338838_1004-768x336.webp",
-            "category": "Միջազգային"
-          },
-          {
-            "title": "Թրամփին դատի են տվել Truth Social-ում գրառումները մոնետիզացնելու համար",
-            "url": "https://hy.armradio.am/archives/752108",
-            "date": "2026-08-13T04:36:14.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/07/1760649744605344_QFX8nYcI-300x200.jpg",
-            "category": "Միջազգային"
           }
         ]
       },
@@ -1732,6 +1732,13 @@
         "categoryKey": "economics",
         "articles": [
           {
+            "title": "Министр экономики Армении и министр сельского хозяйства России обсудили снятие ограничений на поставки армянской продукции",
+            "url": "https://ru.armradio.am/2026/08/14/%d0%bc%d0%b8%d0%bd%d0%b8%d1%81%d1%82%d1%80-%d1%8d%d0%ba%d0%be%d0%bd%d0%be%d0%bc%d0%b8%d0%ba%d0%b8-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d0%b8-%d0%bc%d0%b8%d0%bd%d0%b8%d1%81%d1%82%d1%80-%d1%81/",
+            "date": "2026-08-14T05:59:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/1lurer_28-1-768x448.jpeg",
+            "category": "Главная"
+          },
+          {
             "title": "Пашинян: в ближайшем будущем Армения начнёт экспортировать товары в Азербайджан",
             "url": "https://ru.armradio.am/2026/08/13/%d0%bf%d0%b0%d1%88%d0%b8%d0%bd%d1%8f%d0%bd-%d0%b2-%d0%b1%d0%bb%d0%b8%d0%b6%d0%b0%d0%b9%d1%88%d0%b5%d0%bc-%d0%b1%d1%83%d0%b4%d1%83%d1%89%d0%b5%d0%bc-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bd/",
             "date": "2026-08-13T12:28:00.000Z",
@@ -1792,13 +1799,6 @@
             "url": "https://ru.armradio.am/2026/08/04/%d0%be%d0%b1%d1%81%d1%83%d0%b6%d0%b4%d0%b5%d0%bd%d1%8b-%d0%b2%d0%be%d0%bf%d1%80%d0%be%d1%81%d1%8b-%d1%81%d0%b2%d1%8f%d0%b7%d0%b0%d0%bd%d0%bd%d1%8b%d0%b5-%d1%81-%d0%b7%d0%b0%d0%bf%d1%83%d1%81%d0%ba/",
             "date": "2026-08-04T13:17:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/08/l-0x85wh-2048x1193z-0.3838-6-768x447.jpeg",
-            "category": "Главная"
-          },
-          {
-            "title": "Внешнеторговый оборот Армении в январе-мае составил около 8 миллиардов долларов",
-            "url": "https://ru.armradio.am/2026/08/04/%d0%b2%d0%bd%d0%b5%d1%88%d0%bd%d0%b5%d1%82%d0%be%d1%80%d0%b3%d0%be%d0%b2%d1%8b%d0%b9-%d0%be%d0%b1%d0%be%d1%80%d0%be%d1%82-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d0%b2-%d1%8f%d0%bd%d0%b2%d0%b0/",
-            "date": "2026-08-04T11:46:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/l-0x0wh-786x458z-1-5-1-768x448.jpeg",
             "category": "Главная"
           }
         ]
@@ -2687,6 +2687,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "La Voie de l’Auto-trahison du Parti HHD",
+          "url": "https://armenieinfo.tv/la-voie-de-lauto-trahison-du-parti-hhd/",
+          "date": "2026-08-14T06:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786365745-6215.jpg"
+        },
+        {
           "title": "En Arménie, le client est roi, le recours reste sujet",
           "url": "https://armenieinfo.tv/en-armenie-le-client-est-roi-le-recours-reste-sujet/",
           "date": "2026-08-13T17:00:00.000Z",
@@ -2739,18 +2745,18 @@
           "url": "https://armenieinfo.tv/si-innocents-pourquoi-craindre-le-tribunal-etre-clerc-ne-dispense-pas-de-responsabilite/",
           "date": "2026-08-12T18:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786098872-1854.jpg"
-        },
-        {
-          "title": "La « sécurité » de l’Arménie au sein de l’OTSC s’est terminée avec la perte du Haut-Karabagh",
-          "url": "https://armenieinfo.tv/la-securite-de-larmenie-au-sein-de-lotsc-sest-terminee-avec-la-perte-du-haut-karabagh/",
-          "date": "2026-08-12T18:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786365785-3644.jpg"
         }
       ]
     },
     {
       "categoryKey": "art-culture",
       "articles": [
+        {
+          "title": "Le festival de rock Dalan Fest à Gyumri pourrait devenir un événement annuel",
+          "url": "https://armenieinfo.tv/le-festival-de-rock-dalan-fest-a-gyumri-pourrait-devenir-un-evenement-annuel/",
+          "date": "2026-08-14T05:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786444405-5661.jpg"
+        },
         {
           "title": "Figure arménienne — Mort du champion du monde d’échecs Tigran Petrossian",
           "url": "https://armenieinfo.tv/ce-jour-dans-lhistoire-armenienne-2026-08-13/",
@@ -2804,12 +2810,6 @@
           "url": "https://armenieinfo.tv/larmenie-porte-ses-medailles-a-meme-la-peau/",
           "date": "2026-08-04T17:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-27-juil.-2026-15_08_48.png"
-        },
-        {
-          "title": "Figure arménienne — Mort du résistant Arsène Tchakarian",
-          "url": "https://armenieinfo.tv/ce-jour-dans-lhistoire-armenienne-2026-08-04/",
-          "date": "2026-08-04T08:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/hebdo-histoire-2026-08-04.png"
         }
       ]
     },
@@ -3637,6 +3637,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Armenia, Kazakhstan discuss expanding agricultural cooperation",
+            "url": "https://armenpress.am/en/article/1257977",
+            "date": "2026-08-14T05:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/yQ1xITwFJEPwEXzsWawJbhIPgkjs0HZA4OWxZdM4.webp"
+          },
+          {
             "title": "Russian Agriculture Ministry outlines conditions for resuming agricultural imports from Armenia",
             "url": "https://armenpress.am/en/article/1257963",
             "date": "2026-08-13T17:06:00.000Z",
@@ -3689,18 +3695,42 @@
             "url": "https://armenpress.am/en/article/1257923",
             "date": "2026-08-13T11:01:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/ylKCdy1Nen0FLvcdbGJnhcJiWPNuzHkN1Xyxhc7t.webp"
-          },
-          {
-            "title": "Armenian economy minister presents agricultural development priorities at EAEU meeting",
-            "url": "https://armenpress.am/en/article/1257921",
-            "date": "2026-08-13T10:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/9cXAvIbYidEipg4YWf0H1Kx9oZgakWFZ1JoG8Ltf.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Armenia, Kazakhstan discuss expanding agricultural cooperation",
+            "url": "https://armenpress.am/en/article/1257977",
+            "date": "2026-08-14T05:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/yQ1xITwFJEPwEXzsWawJbhIPgkjs0HZA4OWxZdM4.webp"
+          },
+          {
+            "title": "NYMEX: Precious Metals Prices Down - 13-08-26",
+            "url": "https://armenpress.am/en/article/1257973",
+            "date": "2026-08-14T04:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/EB2js4YdWG2X4jB4REi1xSrW05YUyEPaIqVkm70a.webp"
+          },
+          {
+            "title": "US stocks up - 13-08-26",
+            "url": "https://armenpress.am/en/article/1257974",
+            "date": "2026-08-14T04:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/0Irk9KxxM7PHKQNo8a2G2UlxFYoCCho6KK1YfT5s.webp"
+          },
+          {
+            "title": "European Stocks down - 13-08-26",
+            "url": "https://armenpress.am/en/article/1257975",
+            "date": "2026-08-14T04:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/FJOAiNY5zCkxdlrSomAcxlJUBpiL5Fbc8XRKlUsM.webp"
+          },
+          {
+            "title": "Oil Prices Down - 13-08-26",
+            "url": "https://armenpress.am/en/article/1257972",
+            "date": "2026-08-14T04:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/ugX2j6yJyfPF8pvfxt2lyGFFqGRKGVlLlrKcSsUT.webp"
+          },
           {
             "title": "Russian Agriculture Ministry outlines conditions for resuming agricultural imports from Armenia",
             "url": "https://armenpress.am/en/article/1257963",
@@ -3730,36 +3760,6 @@
             "url": "https://armenpress.am/en/article/1257923",
             "date": "2026-08-13T11:01:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/ylKCdy1Nen0FLvcdbGJnhcJiWPNuzHkN1Xyxhc7t.webp"
-          },
-          {
-            "title": "Armenian economy minister presents agricultural development priorities at EAEU meeting",
-            "url": "https://armenpress.am/en/article/1257921",
-            "date": "2026-08-13T10:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/9cXAvIbYidEipg4YWf0H1Kx9oZgakWFZ1JoG8Ltf.webp"
-          },
-          {
-            "title": "Pashinyan says Armenia to begin exporting goods to Azerbaijan",
-            "url": "https://armenpress.am/en/article/1257916",
-            "date": "2026-08-13T09:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/B9HjbbDoSmJlJgy5sq07t7nnkyI6YHmDbnCvlS6g.webp"
-          },
-          {
-            "title": "Pashinyan: Armenia seeks friendly solution with Russia over railway management",
-            "url": "https://armenpress.am/en/article/1257911",
-            "date": "2026-08-13T09:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/onhr8tfo62Qzbjhwf1ye6w6hZySn32JXh3XYsYgT.webp"
-          },
-          {
-            "title": "Armenia seeks to achieve '100% energy independence,' says Pashinyan",
-            "url": "https://armenpress.am/en/article/1257909",
-            "date": "2026-08-13T08:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/3gsTnnck6R8f7sH4c0hqPiI6Qt0HBYgNJP5faQj4.webp"
-          },
-          {
-            "title": "Armenia, Iran discuss agricultural cooperation",
-            "url": "https://armenpress.am/en/article/1257905",
-            "date": "2026-08-13T08:43:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/BJfuxStQp9lYQVZvBtoXTJZ0vigB10NqgfHmo3eT.webp"
           }
         ]
       },
@@ -4094,6 +4094,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Ջերմուկ համայնքին կվերադարձվի 0.3 հա մակերեսով հողամաս. Արարատի մարզի դատախազության՝ պետշահերի պաշտպանության հայցը բավարարվել է",
+            "url": "https://armenpress.am/hy/article/1257979",
+            "date": "2026-08-14T06:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/MnlcDUYKYN9F8zvYaRgiTosBgtIQTq1YtDYsD69m.webp"
+          },
+          {
+            "title": "Գևորգ Պապոյանը հանդիպել է Ղազախստանի գյուղատնտեսության նախարարի հետ",
+            "url": "https://armenpress.am/hy/article/1257977",
+            "date": "2026-08-14T05:34:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/yQ1xITwFJEPwEXzsWawJbhIPgkjs0HZA4OWxZdM4.webp"
+          },
+          {
             "title": "ՀՀ էկոնոմիկայի և ՌԴ գյուղատնտեսության նախարարները քննարկել են հայկական արտադրանքի մատակարարման սահմանափակումների վերացումը",
             "url": "https://armenpress.am/hy/article/1257969",
             "date": "2026-08-13T18:03:00.000Z",
@@ -4140,24 +4152,42 @@
             "url": "https://armenpress.am/hy/article/1257956",
             "date": "2026-08-13T14:09:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/oKiWociUHOuMfo7656ptGHkpucPj95ZddBfo8iAu.webp"
-          },
-          {
-            "title": "Հանցավոր կազմակերպության անդամը 97 անձանցից հափշտակել է 38 մլն դրամ. քրեական վարույթի նախաքննությունն ավարտվել է",
-            "url": "https://armenpress.am/hy/article/1257954",
-            "date": "2026-08-13T13:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/KmBgaAKYZDVR6xO69buhg4ttCJV0AifI6mOT6sYP.webp"
-          },
-          {
-            "title": "Գլխավոր հարկադիր կատարողն աշխատանքային այցով Տավուշի մարզում է",
-            "url": "https://armenpress.am/hy/article/1257948",
-            "date": "2026-08-13T13:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/VslpcrPslh86UYApb7yfUNrPpqMDWmCXQtj2AVqP.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Գևորգ Պապոյանը հանդիպել է Ղազախստանի գյուղատնտեսության նախարարի հետ",
+            "url": "https://armenpress.am/hy/article/1257977",
+            "date": "2026-08-14T05:34:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/yQ1xITwFJEPwEXzsWawJbhIPgkjs0HZA4OWxZdM4.webp"
+          },
+          {
+            "title": "Եվրոպական ինդեքսները նվազել են - 13/08/26",
+            "url": "https://armenpress.am/hy/article/1257975",
+            "date": "2026-08-14T04:51:57.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/FJOAiNY5zCkxdlrSomAcxlJUBpiL5Fbc8XRKlUsM.webp"
+          },
+          {
+            "title": "Ամերիկյան ինդեքսներն աճել են - 13/08/26",
+            "url": "https://armenpress.am/hy/article/1257974",
+            "date": "2026-08-14T04:51:06.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/0Irk9KxxM7PHKQNo8a2G2UlxFYoCCho6KK1YfT5s.webp"
+          },
+          {
+            "title": "NYMEX. Թանկարժեք մետաղների գները նվազել են - 13/08/26",
+            "url": "https://armenpress.am/hy/article/1257973",
+            "date": "2026-08-14T04:50:18.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/EB2js4YdWG2X4jB4REi1xSrW05YUyEPaIqVkm70a.webp"
+          },
+          {
+            "title": "Նավթի գները նվազել են - 13/08/26",
+            "url": "https://armenpress.am/hy/article/1257972",
+            "date": "2026-08-14T04:49:30.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/ugX2j6yJyfPF8pvfxt2lyGFFqGRKGVlLlrKcSsUT.webp"
+          },
           {
             "title": "ՀՀ էկոնոմիկայի և ՌԴ գյուղատնտեսության նախարարները քննարկել են հայկական արտադրանքի մատակարարման սահմանափակումների վերացումը",
             "url": "https://armenpress.am/hy/article/1257969",
@@ -4187,42 +4217,18 @@
             "url": "https://armenpress.am/hy/article/1257944",
             "date": "2026-08-13T12:56:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/hAah0xzdLxiy8nyEIAPhqKRSnbAl3amD4gCtcvV3.webp"
-          },
-          {
-            "title": "Կառավարությունը թոշակները ինդեքսավորելու առաջին որոշումը կկայացնի 2028 թվականի հունվարի 1-ից. Փաշինյան",
-            "url": "https://armenpress.am/hy/article/1257923",
-            "date": "2026-08-13T10:50:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/ylKCdy1Nen0FLvcdbGJnhcJiWPNuzHkN1Xyxhc7t.webp"
-          },
-          {
-            "title": "Ամփոփվել են Ակբա Ֆեդերացիայի 2025 թվականի գործունեության արդյունքները",
-            "url": "https://armenpress.am/hy/article/1257922",
-            "date": "2026-08-13T10:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/66CfskBHMH5QIpAmtPrzhfn7Stlh7k1xsXQGucF3.webp"
-          },
-          {
-            "title": "Գևորգ Պապոյանը մասնակցել է Եվրասիական տնտեսական միության ագրոարդյունաբերական քաղաքականության խորհրդի նիստին",
-            "url": "https://armenpress.am/hy/article/1257921",
-            "date": "2026-08-13T10:22:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/9cXAvIbYidEipg4YWf0H1Kx9oZgakWFZ1JoG8Ltf.webp"
-          },
-          {
-            "title": "Առաջիկայում նաև Հայաստանից արտահանումներ կլինեն դեպի Ադրբեջան․ ՀՀ վարչապետ",
-            "url": "https://armenpress.am/hy/article/1257916",
-            "date": "2026-08-13T09:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/B9HjbbDoSmJlJgy5sq07t7nnkyI6YHmDbnCvlS6g.webp"
-          },
-          {
-            "title": "Հայկական երկաթուղիների կոնցեսիոն կառավարման հարցում ՌԴ-ի հետ չենք գնա սուր լուծումների․ Փաշինյան",
-            "url": "https://armenpress.am/hy/article/1257911",
-            "date": "2026-08-13T09:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/onhr8tfo62Qzbjhwf1ye6w6hZySn32JXh3XYsYgT.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "ԱՄՆ-ն Իրանի ծովային շրջափակումը կպահպանի «անորոշ ժամանակով». Հեգսեթ",
+            "url": "https://armenpress.am/hy/article/1257978",
+            "date": "2026-08-14T05:47:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/uiilCCnf5q6dPH6ZUzy5xU30V9TTF34hs5eXHIUu.webp"
+          },
           {
             "title": "Կանադան և ԱՄՆ-ն փորձում են մինչև օգոստոսի 19-ը առևտրային համաձայնության հասնել",
             "url": "https://armenpress.am/hy/article/1257965",
@@ -4276,12 +4282,6 @@
             "url": "https://armenpress.am/hy/article/1257951",
             "date": "2026-08-13T13:38:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/21UyLWcqWorIlMSMQUh1YgPRKtINSTn3xEZHnVjL.webp"
-          },
-          {
-            "title": "Իրանը և ԱՄՆ-ն փակ դռների հետևում բանակցություններ են վարում. ՌԴ-ում Պակիստանի դեսպան",
-            "url": "https://armenpress.am/hy/article/1257950",
-            "date": "2026-08-13T13:28:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/kUCJFGGM4Xhvqywa7AAzT5bybCjSp8rDp4vs5gCw.webp"
           }
         ]
       },
@@ -4484,6 +4484,12 @@
         "categoryKey": "projects",
         "articles": [
           {
+            "title": "«Երևանյան բեսթսելեր». «Քեզնից հեռու, քեզ հետ» գիրքն՝ առաջատար. հայ գրականություն. հուլիս, 2026",
+            "url": "https://armenpress.am/hy/article/1257881",
+            "date": "2026-08-14T05:42:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/13/9jdxp7FQt62eMVPWkUEs1XhZUnBI52J7z69QjY5o.webp"
+          },
+          {
             "title": "Աիդա Կազարյան․ հայկական արմատները գեղանկարչության մեջ",
             "url": "https://armenpress.am/hy/article/1257889",
             "date": "2026-08-13T08:01:00.000Z",
@@ -4536,12 +4542,6 @@
             "url": "https://armenpress.am/hy/article/1255580",
             "date": "2026-07-17T06:00:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/16/7hWG7HnYN7SX9yEsVTc9MgJAW5phEe7YPS3D3CLg.webp"
-          },
-          {
-            "title": "«Երևանյան բեսթսելեր». «Կարդինալը» գիրքն՝ առաջատար. հայ գրականություն. հունիս, 2026",
-            "url": "https://armenpress.am/hy/article/1255184",
-            "date": "2026-07-10T06:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/10/IBCJMd9YMjy2zUkN6rhmXBRtKdmtmHRfJVQJxd9m.webp"
           }
         ]
       }
@@ -4550,6 +4550,12 @@
       {
         "categoryKey": "armenia",
         "articles": [
+          {
+            "title": "Министр экономики Армении встретился с министром сельского хозяйства Казахстана",
+            "url": "https://armenpress.am/ru/article/1257977",
+            "date": "2026-08-14T05:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/yQ1xITwFJEPwEXzsWawJbhIPgkjs0HZA4OWxZdM4.webp"
+          },
           {
             "title": "Минсельхоз России назвал условия возобновления импорта армянской сельхозпродукции",
             "url": "https://armenpress.am/ru/article/1257963",
@@ -4603,18 +4609,42 @@
             "url": "https://armenpress.am/ru/article/1257916",
             "date": "2026-08-13T09:42:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/B9HjbbDoSmJlJgy5sq07t7nnkyI6YHmDbnCvlS6g.webp"
-          },
-          {
-            "title": "При поддержке Ucom стартовал второй этап образовательной программы ArmDrone по FPV-дронам",
-            "url": "https://armenpress.am/ru/article/1257912",
-            "date": "2026-08-13T09:35:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/L3ECNAfwqupAzW7eah7v4c2SgpX0LtwmZYFbyprM.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Министр экономики Армении встретился с министром сельского хозяйства Казахстана",
+            "url": "https://armenpress.am/ru/article/1257977",
+            "date": "2026-08-14T05:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/yQ1xITwFJEPwEXzsWawJbhIPgkjs0HZA4OWxZdM4.webp"
+          },
+          {
+            "title": "Американские индексы выросли - 13-08-26",
+            "url": "https://armenpress.am/ru/article/1257974",
+            "date": "2026-08-14T04:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/0Irk9KxxM7PHKQNo8a2G2UlxFYoCCho6KK1YfT5s.webp"
+          },
+          {
+            "title": "Европейские индексы снизились - 13-08-26",
+            "url": "https://armenpress.am/ru/article/1257975",
+            "date": "2026-08-14T04:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/FJOAiNY5zCkxdlrSomAcxlJUBpiL5Fbc8XRKlUsM.webp"
+          },
+          {
+            "title": "Цены на драгоценные металлы снизились - 13-08-26",
+            "url": "https://armenpress.am/ru/article/1257973",
+            "date": "2026-08-14T04:50:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/EB2js4YdWG2X4jB4REi1xSrW05YUyEPaIqVkm70a.webp"
+          },
+          {
+            "title": "Цены на нефть снизились - 13-08-26",
+            "url": "https://armenpress.am/ru/article/1257972",
+            "date": "2026-08-14T04:49:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/ugX2j6yJyfPF8pvfxt2lyGFFqGRKGVlLlrKcSsUT.webp"
+          },
           {
             "title": "Минсельхоз России назвал условия возобновления импорта армянской сельхозпродукции",
             "url": "https://armenpress.am/ru/article/1257963",
@@ -4644,42 +4674,18 @@
             "url": "https://armenpress.am/ru/article/1257921",
             "date": "2026-08-13T10:40:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/9cXAvIbYidEipg4YWf0H1Kx9oZgakWFZ1JoG8Ltf.webp"
-          },
-          {
-            "title": "В ближайшем будущем будет и экспорт из Армении в Азербайджан – премьер-министр РА",
-            "url": "https://armenpress.am/ru/article/1257916",
-            "date": "2026-08-13T09:42:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/B9HjbbDoSmJlJgy5sq07t7nnkyI6YHmDbnCvlS6g.webp"
-          },
-          {
-            "title": "Мы не будем идти на жесткие решения с Россией по вопросу концессионного управления армянскими железными дорогами – премьер-министр Армении",
-            "url": "https://armenpress.am/ru/article/1257911",
-            "date": "2026-08-13T09:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/onhr8tfo62Qzbjhwf1ye6w6hZySn32JXh3XYsYgT.webp"
-          },
-          {
-            "title": "Наша стратегия — достичь стопроцентной энергетической независимости: премьер-министр Армении",
-            "url": "https://armenpress.am/ru/article/1257909",
-            "date": "2026-08-13T09:07:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/3gsTnnck6R8f7sH4c0hqPiI6Qt0HBYgNJP5faQj4.webp"
-          },
-          {
-            "title": "Между Арменией и Ираном существует большой потенциал для сотрудничества в сельскохозяйственном секторе - Геворг Папоян",
-            "url": "https://armenpress.am/ru/article/1257905",
-            "date": "2026-08-13T08:59:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/BJfuxStQp9lYQVZvBtoXTJZ0vigB10NqgfHmo3eT.webp"
-          },
-          {
-            "title": "Правительство Армении выделит более 5,3 миллиарда драмов на компенсации предприятиям-экспортерам",
-            "url": "https://armenpress.am/ru/article/1257901",
-            "date": "2026-08-13T08:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/i4EDC0jNwYXflodMmke0lQr79PtjO7hfQgM1ZFIM.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "США сохранят морскую блокаду Ирана на «неопределенное время»: Хегсет",
+            "url": "https://armenpress.am/ru/article/1257978",
+            "date": "2026-08-14T05:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/14/uiilCCnf5q6dPH6ZUzy5xU30V9TTF34hs5eXHIUu.webp"
+          },
           {
             "title": "Канада и США пытаются достичь торгового соглашения до 19 августа",
             "url": "https://armenpress.am/ru/article/1257965",
@@ -4733,12 +4739,6 @@
             "url": "https://armenpress.am/ru/article/1257936",
             "date": "2026-08-13T12:45:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/p4LPdBk5U4oKa0WAeLnalMSc03oCyzBre2V8M4rY.webp"
-          },
-          {
-            "title": "Премьер-министр Японии назвала визит Путина на остров Итуруп «абсолютно неприемлемым»",
-            "url": "https://armenpress.am/ru/article/1257932",
-            "date": "2026-08-13T11:34:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/p9Z5qPVU43b93gcFQHp96z4XIIvOPIFn0AYqPqKx.webp"
           }
         ]
       },
@@ -8633,6 +8633,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia former MP Martun Grigoryan detained for 2 months",
+            "url": "https://news.am/en/news/1055331",
+            "date": "2026-08-13T20:02:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/3otpU99Mq2zO6E0N.webp"
+          },
+          {
             "title": "Armenia parliament ex-speaker Alen Simonyan has new job",
             "url": "https://news.am/en/news/1055177",
             "date": "2026-08-13T08:11:00.000Z",
@@ -8685,12 +8691,6 @@
             "url": "https://news.am/en/news/1054766",
             "date": "2026-08-11T09:29:00.000Z",
             "image": "https://news.am/storage/media/26/08/11/f0xJ6xDzIsBJ3cDD.webp"
-          },
-          {
-            "title": "Colombia recognizes Israel sovereignty over Golan Heights",
-            "url": "https://news.am/en/news/1054727",
-            "date": "2026-08-11T08:25:00.000Z",
-            "image": "https://news.am/storage/media/26/08/11/Tk9HdoUKOgqRomQZ.webp"
           }
         ]
       },
@@ -8765,6 +8765,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Spertsyan has been named Man of the Match",
+            "url": "https://sport.news.am/eng/news/168307/",
+            "date": "2026-08-14T05:34:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168307.jpg"
+          },
+          {
             "title": "Conference League: Noah lost in Switzerland and was eliminated",
             "url": "https://sport.news.am/eng/news/168302/",
             "date": "2026-08-13T20:09:00.000Z",
@@ -8817,12 +8823,6 @@
             "url": "https://sport.news.am/eng/news/168279/",
             "date": "2026-08-13T05:06:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168279.jpg"
-          },
-          {
-            "title": "PSG crowned UEFA Super Cup champions",
-            "url": "https://sport.news.am/eng/news/168277/",
-            "date": "2026-08-12T20:55:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168277.jpg"
           }
         ]
       },
@@ -9295,6 +9295,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "«Հրապարակ»․ Արմեն Ղուլարյանի հույսը չի «մեռնում»",
+            "url": "https://news.am/hy/news/1055339",
+            "date": "2026-08-14T04:15:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/TxNZBWfxG5a4xHxU.webp"
+          },
+          {
             "title": "Մարտուն Գրիգորյանը 2 ամսով կալանավորվեց",
             "url": "https://news.am/hy/news/1055331",
             "date": "2026-08-13T20:02:31.000Z",
@@ -9347,12 +9353,6 @@
             "url": "https://news.am/hy/news/1055192",
             "date": "2026-08-13T09:29:44.000Z",
             "image": "https://i.ytimg.com/vi/OjoMCzB8eE4/hqdefault.jpg"
-          },
-          {
-            "title": "Ալեն Սիմոնյանը նոր պաշտոն ունի",
-            "url": "https://news.am/hy/news/1055177",
-            "date": "2026-08-13T08:11:00.000Z",
-            "image": "https://news.am/storage/media/26/08/13/xTpVooU7i39Uz8Kq.webp"
           }
         ]
       },
@@ -9427,6 +9427,24 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ՌՊԼ-ի ու «Կրասնոդարի» արձագանքը՝ SPL-ում Սպերցյանի գոլային մեկնարկին",
+            "url": "https://sport.news.am/arm/news/168304/",
+            "date": "2026-08-14T06:14:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168304.jpg"
+          },
+          {
+            "title": "Ֆրատեզին կհեռանա «Ինտերից»",
+            "url": "https://sport.news.am/arm/news/168309/",
+            "date": "2026-08-14T05:56:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168309.jpg"
+          },
+          {
+            "title": "Սպերցյանը՝ հանդիպման լավագույն խաղացող",
+            "url": "https://sport.news.am/arm/news/168307/",
+            "date": "2026-08-14T05:34:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168307.jpg"
+          },
+          {
             "title": "ԵԼ․ «Արարատ-Արմենիայի» մրցակիցը որակավորման փլեյ-օֆֆում",
             "url": "https://sport.news.am/arm/news/168303/",
             "date": "2026-08-13T20:52:00.000Z",
@@ -9467,24 +9485,6 @@
             "url": "https://sport.news.am/arm/news/168297/",
             "date": "2026-08-13T17:40:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168297.jpg"
-          },
-          {
-            "title": "«Ուրարտուն» պարտության մատնեց «Սյունիքին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168296/",
-            "date": "2026-08-13T17:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168296.jpg"
-          },
-          {
-            "title": "Դուշան Վլահովիչը տեղափոխվեց Թուրքիա",
-            "url": "https://sport.news.am/arm/news/168295/",
-            "date": "2026-08-13T16:25:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168295.jpg"
-          },
-          {
-            "title": "Մոուրինյո․ Մրցակիցը ստիպեց մեզ լուրջ խաղալ",
-            "url": "https://sport.news.am/arm/news/168294/",
-            "date": "2026-08-13T15:35:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168294.jpg"
           }
         ]
       },
@@ -9492,6 +9492,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Բրազիլիան ԱՄՆ-ի դեմ փոխադարձ միջոցների գործընթաց է նախաձեռնում մաքսատուրքերի պատճառով",
+            "url": "https://news.am/hy/news/1055357",
+            "date": "2026-08-14T05:34:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/7IBAW6urYMhQv5aS.webp"
+          },
           {
             "title": "Փաշինյանը խոստովանեց, որ տնտեսության դիվերսիֆիկացման քաղաքականությունը տապալվել է, անսպասելի հրաժարական. «Օրվա ամփոփումը»՝ ռուսերեն",
             "url": "https://news.am/hy/news/1055328",
@@ -9545,12 +9551,6 @@
             "url": "https://news.am/hy/news/1055168",
             "date": "2026-08-13T07:50:12.000Z",
             "image": "https://news.am/storage/media/26/08/13/n4wcthcbwNj5zghL.webp"
-          },
-          {
-            "title": "Հայաստանում գործարար Սամվել Ալեքսանյանի ընկերությունը և ևս մեկ կազմակերպություն արտոնություններ ստացան",
-            "url": "https://news.am/hy/news/1055160",
-            "date": "2026-08-13T07:42:59.000Z",
-            "image": "https://news.am/storage/media/26/08/13/cU4obKrOBUKq1WHw.webp"
           }
         ]
       },
@@ -9558,6 +9558,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "ՕԳՈՍՏՈՍԻ 14-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
+            "url": "https://style.news.am/arm/news/115598/",
+            "date": "2026-08-14T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115598.jpg"
+          },
           {
             "title": "Հյուրանոցների պատերազմ բլոգերների հետ. ինչպես շքեղ Amanvari հանգստավայրում 4663 դոլար ամրագրման չեղարկումը հանգեցրեց վիրուսային սկանդալի",
             "url": "https://style.news.am/arm/news/115595/",
@@ -9611,12 +9617,6 @@
             "url": "https://style.news.am/arm/news/115588/",
             "date": "2026-08-13T11:48:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115588.jpg"
-          },
-          {
-            "title": "Ամալ Քլունին նվաճել է Կոմո լիճը՝ Ջոն Գալիանոյի վինտաժ զգեստով",
-            "url": "https://style.news.am/arm/news/115587/",
-            "date": "2026-08-13T11:24:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115587.jpg"
           }
         ]
       },
@@ -9624,6 +9624,12 @@
         "categoryKey": "analytics",
         "label": "Վերլուծություն",
         "articles": [
+          {
+            "title": "Ինչու են պատերազմներն ավելի լայնամասշտաբ դառնում. գիտնականներն պարզել են կոնֆլիկտների սրման օրինաչափությունները",
+            "url": "https://news.am/hy/news/1055144",
+            "date": "2026-08-14T00:37:00.000Z",
+            "image": "https://news.am/storage/media/26/08/13/KXx7Pu6BhOhlN6Wk.jfif"
+          },
           {
             "title": "Արտ-փառատոններն ընդդեմ դեպոպուլյացիայի․ գիտնականները պարզել են, թե երբ է մշակույթն իսկապես փրկում քաղաքները",
             "url": "https://news.am/hy/news/1052890",
@@ -9677,12 +9683,6 @@
             "url": "https://news.am/hy/news/1050276",
             "date": "2026-07-17T04:57:54.000Z",
             "image": "https://news.am/storage/media/26/07/17/Oy5jGdVrdsn7jgS5.webp"
-          },
-          {
-            "title": "Ալիևը Ռուսաստանի բացարձակ թշնամին է. Մոդեստ Կոլերով",
-            "url": "https://news.am/hy/news/1049823",
-            "date": "2026-07-14T17:15:00.000Z",
-            "image": "https://news.am/storage/media/26/07/14/MbeUtQ9UTr4RxC1P.webp"
           }
         ]
       },
@@ -9690,6 +9690,12 @@
         "categoryKey": "medicine",
         "label": "NEWS.am Medicine",
         "articles": [
+          {
+            "title": "npj Aging. Ամուսնությունը և սոցիալական կապերը կարող են դանդաղեցնել կենսաբանական ծերացումը",
+            "url": "https://med.news.am/arm/news/41692/npj-aging-amusnutyuny-ev-socialakan-kapery-karox-en-dandaxecnel-kensabanakan-tseracumy.html",
+            "date": "2026-08-14T04:31:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41692.jpg"
+          },
           {
             "title": "Պրոֆեսորը դարձել է երկարակեցության հետազոտության միակ մասնակիցը. նրա կենսաբանական տարիքը 15 տարով ցածր է գնահատվել",
             "url": "https://med.news.am/arm/news/41693/profesory-dardzel-e-erkarakecutyan-hetazotutyan-miak-masnakicy-nra-kensabanakan-tariqy-15-tarov-catsr-e-gnahatvel.html",
@@ -9743,12 +9749,6 @@
             "url": "https://med.news.am/arm/news/41682/hazvagyut-mankakan-hivandutyunn-ognel-e-bacahaytel-alchaymeri-hivandutyan-hnaravor-mekhanizmy.html",
             "date": "2026-08-12T19:34:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41682.jpg"
-          },
-          {
-            "title": "Հինգ գրամ՝ ուղեղի հետազոտության համար. ստեղծվել է նոր սերնդի մանրակերտ մանրադիտակ",
-            "url": "https://med.news.am/arm/news/41683/hing-gram-uxexi-hetazotutyan-hamar-stextsvel-e-nor-serndi-manrakert-manraditak.html",
-            "date": "2026-08-12T17:49:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41683.jpg"
           }
         ]
       },
@@ -9756,6 +9756,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Մոսկվայի քաղաքապետը հայտնել է 10 անօդաչու սարքի ոչնչացման մասին",
+            "url": "https://news.am/hy/news/1055340",
+            "date": "2026-08-14T04:19:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/CgHWyrB49upT8kQx.webp"
+          },
           {
             "title": "«Ժողովուրդ». «Ուժեղ Հայաստան» խմբակցությունում լարվածությունը չի հանդարտվում",
             "url": "https://news.am/hy/news/1055336",
@@ -9809,12 +9815,6 @@
             "url": "https://news.am/hy/news/1055258",
             "date": "2026-08-13T12:37:00.000Z",
             "image": "https://news.am/storage/media/26/08/13/nU0iFY8gpjfsHL0o.webp"
-          },
-          {
-            "title": "Թուրքիայում զբոսաշրջիկներով զբոսանավ է հրդեհվել",
-            "url": "https://news.am/hy/news/1055254",
-            "date": "2026-08-13T12:35:21.000Z",
-            "image": "https://news.am/storage/media/26/08/13/dXzzVScuf3nz2kCZ.webp"
           }
         ]
       },
@@ -9822,6 +9822,12 @@
         "categoryKey": "society",
         "label": "Հասարակություն",
         "articles": [
+          {
+            "title": "«Հրապարակ»․ Վահե Ղազարյանի հրավերքին վարչապետն էլ է եղել",
+            "url": "https://news.am/hy/news/1055342",
+            "date": "2026-08-14T04:29:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/AJxto3QzIUsnpo62.webp"
+          },
           {
             "title": "Ավտոտնակի տանիքից ընկած և մահացած տղամարդը միայնակ էր ապրում, ՀՀ–ում հարազատներ չուներ",
             "url": "https://news.am/hy/news/1055258",
@@ -9875,12 +9881,6 @@
             "url": "https://news.am/hy/news/1053024",
             "date": "2026-08-02T11:53:00.000Z",
             "image": "https://news.am/storage/media/26/08/02/203XapKWUeCiHdv2.webp"
-          },
-          {
-            "title": "Սիսակյան փողոցի բարձրահարկ շենքի 8-րդ հարկից վերելակը պոկվել է և հայտնվել հորանում. 4 քաղաքացի վնասվածք է ստացել",
-            "url": "https://news.am/hy/news/1052918",
-            "date": "2026-08-01T16:53:19.000Z",
-            "image": "https://news.am/storage/media/26/08/01/yYpPpsxudgNkwyeH.webp"
           }
         ]
       },
@@ -10089,7 +10089,13 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
-            "title": "Чемпионат Саудовской Аравии: Сперцян - лучший игрок матча за «Аль-Ахли»",
+            "title": "РПЛ: Продолжай в том же духе, Эдо",
+            "url": "https://sport.news.am/rus/news/168304/",
+            "date": "2026-08-14T06:14:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168304.jpg"
+          },
+          {
+            "title": "Чемпионат Саудовской Аравии: Сперцян - лучший игрок матча",
             "url": "https://sport.news.am/rus/news/168305/",
             "date": "2026-08-13T21:30:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168305.jpg"
@@ -10141,12 +10147,6 @@
             "url": "https://sport.news.am/rus/news/168296/",
             "date": "2026-08-13T17:07:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168296.jpg"
-          },
-          {
-            "title": "Суперкубок Испании пройдет в Стамбуле",
-            "url": "https://sport.news.am/rus/news/168292/",
-            "date": "2026-08-13T13:37:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168292.jpg"
           }
         ]
       },
@@ -10154,6 +10154,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Бразилия инициирует процесс ответных мер против США из-за пошлин",
+            "url": "https://news.am/ru/news/1055357",
+            "date": "2026-08-14T05:34:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/7IBAW6urYMhQv5aS.webp"
+          },
           {
             "title": "Пашинян признался в провале политики диверсификации экономики, неожиданная отставка: «Итоги дня» – видеоновости на русском",
             "url": "https://news.am/ru/news/1055328",
@@ -10207,12 +10213,6 @@
             "url": "https://news.am/ru/news/1055168",
             "date": "2026-08-13T07:50:12.000Z",
             "image": "https://news.am/storage/media/26/08/13/n4wcthcbwNj5zghL.webp"
-          },
-          {
-            "title": "В Армении компания бизнесмена Самвела Алексаняна и еще одна организация получили льготы",
-            "url": "https://news.am/ru/news/1055160",
-            "date": "2026-08-13T07:42:59.000Z",
-            "image": "https://news.am/storage/media/26/08/13/cU4obKrOBUKq1WHw.webp"
           }
         ]
       },
@@ -10220,6 +10220,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 14 АВГУСТА",
+            "url": "https://style.news.am/rus/news/115598/",
+            "date": "2026-08-14T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115598.jpg"
+          },
           {
             "title": "Война отелей с блогерами: как отмена брони на $4 663 в роскошном курорте Amanvari привела к вирусному скандалу",
             "url": "https://style.news.am/rus/news/115595/",
@@ -10273,12 +10279,6 @@
             "url": "https://style.news.am/rus/news/115587/",
             "date": "2026-08-13T11:24:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115587.jpg"
-          },
-          {
-            "title": "«Слепила из того, что было»: Vanity Fair раскрыл тайную роль Уши Вэнс в стремительном взлете мужа",
-            "url": "https://style.news.am/rus/news/115586/",
-            "date": "2026-08-13T10:28:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115586.jpg"
           }
         ]
       },
@@ -10353,6 +10353,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "npj Aging: Брак и социальные связи могут замедлять биологическое старение",
+            "url": "https://med.news.am/rus/news/41692/npj-aging-brak-i-socialniye-svyazi-mogut-zamedlyat-biologicheskoe-starenie.html",
+            "date": "2026-08-14T04:31:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41692.jpg"
+          },
+          {
             "title": "Профессор стал единственным участником исследования долголетия: его биологический возраст оказался на 15 лет меньше",
             "url": "https://med.news.am/rus/news/41693/professor-stal-edinstvenniym-uchastnikom-issledovaniya-dolgoletiya-ego-biologicheskiiy-vozrast-okazalsya-na-15-let-menshe.html",
             "date": "2026-08-13T18:31:00.000Z",
@@ -10405,12 +10411,6 @@
             "url": "https://med.news.am/rus/news/41682/redkoe-detskoe-zabolevanie-pomoglo-raskriyt-vozmozhniyiy-mekhanizm-bolezni-alcgeiymera.html",
             "date": "2026-08-12T19:34:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41682.jpg"
-          },
-          {
-            "title": "Пять граммов для исследования мозга: создан миниатюрный микроскоп нового поколения",
-            "url": "https://med.news.am/rus/news/41683/pyat-grammov-dlya-issledovaniya-mozga-sozdan-miniatyurniyiy-mikroskop-novogo-pokoleniya.html",
-            "date": "2026-08-12T17:49:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41683.jpg"
           }
         ]
       },
@@ -10418,6 +10418,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Мэр Москвы сообщил об уничтожении 10 беспилотников",
+            "url": "https://news.am/ru/news/1055340",
+            "date": "2026-08-14T04:19:00.000Z",
+            "image": "https://news.am/storage/media/26/08/14/CgHWyrB49upT8kQx.webp"
+          },
           {
             "title": "Сотрудники общинной полиции Мегри выявили в Шванидзоре случай незаконной добычи",
             "url": "https://news.am/ru/news/1055311",
@@ -10471,12 +10477,6 @@
             "url": "https://news.am/ru/news/1055254",
             "date": "2026-08-13T12:35:21.000Z",
             "image": "https://news.am/storage/media/26/08/13/dXzzVScuf3nz2kCZ.webp"
-          },
-          {
-            "title": "В Ереване подрались двое мужчин: оба госпитализированы",
-            "url": "https://news.am/ru/news/1055255",
-            "date": "2026-08-13T12:30:00.000Z",
-            "image": "https://news.am/storage/media/26/08/13/4ua1szsVUic0O42x.webp"
           }
         ]
       },
