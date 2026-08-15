@@ -24,6 +24,8 @@ atteint le rapport à l'utilisateur avant d'être corrigées.
 | **`location.reload()`** | que la page défile toute seule au chargement | le rechargement **restaure la position** ; utiliser une **navigation neuve** (`?v=…`) |
 | **`elementFromPoint` hors fenêtre** | qu'un élément n'est plus cliquable (renvoie `null`) | **assertion préalable** : `rect.top >= 0 && rect.bottom <= innerHeight`, sinon on jette |
 | **`getBoundingClientRect` sur le tambour** | une dizaine de cibles tactiles de 16 à 37px | le cylindre incline ses éléments en 3D et le rect est la boîte **après transformation** ; mesurer en **`offsetHeight` / `offsetWidth`**, qui l'ignorent — les mêmes boutons font 44 et 46px |
+| **une géométrie relue UNE fois pour une SÉRIE de tapotements** | une bande utile fantaisiste — et deux relevés qui se contredisent | tapoter une commande la met au point, **ce qui fait défiler la page** : les coordonnées suivantes désignent un endroit que la page n'a plus. Relire le `rect` (et réaffirmer `rect.top >= 0 && rect.bottom <= innerHeight`) **avant chaque** tapotement. Mesuré sur le curseur de volume : bande de 3px annoncée tantôt en haut, tantôt au centre, avant correction de l'instrument |
+| **conclure d'une cible tactile par `offsetHeight` seul** | qu'une commande agrandie est devenue atteignable | une boîte n'est pas une surface sensible. Le prouver par un **balayage de tapotements qui change la valeur** — c'est ce balayage, et non la boîte, qui a établi que le curseur de volume passait de 3px à 44px |
 | **`.focus()` en JS** | qu'aucun contour de focus n'existe (`outline-style: none`) | le focus programmatique ne déclenche **pas** `:focus-visible` ; lire les règles au **CSSOM** (`:focus-within`, lui, réagit) |
 
 Deux corollaires :

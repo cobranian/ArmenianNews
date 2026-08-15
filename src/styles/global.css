@@ -3224,6 +3224,81 @@ html:lang(hy) .nav__brand {
   .ig-chip {
     padding: 12px 16px;
   }
+
+  /* LE CURSEUR DE VOLUME AVAIT UNE BANDE DE 3px, ET LE POUCE N'A PAS CETTE
+     PRÉCISION. Le pouce visuel fait 14px, mais il ne PORTE PAS le test de
+     survol : mesuré au robot sur /radio/ à 390px, un tapotement à 2px du
+     centre manquait déjà la cible — la valeur ne bougeait pas. La bande utile
+     est donc la boîte de l'`<input>` (`height: 3px`), pas le disque qu'on voit.
+
+     C'EST LA BOÎTE DE L'ÉLÉMENT QUI PORTE LA SURFACE SENSIBLE, PAS LA
+     GLISSIÈRE. Vérifié en isolant les deux : élément à 44px avec la glissière
+     laissée à 3px, la bande utile fait déjà 44px (13 tapotements sur 13).
+     Inutile donc de gonfler la glissière — elle reste le filet de 3px qu'on
+     voit, et l'apparence est rigoureusement celle d'avant.
+
+     LE PIÈGE : la règle de base peint le filet avec le `background` de
+     l'ÉLÉMENT. Monter la hauteur sans passer ce fond à `transparent` ne donne
+     pas une cible de 44px mais une grosse barre grise de 44px.
+
+     Le `margin-top` du pouce vaut (3 − 14) / 2 : il le recentre sur une
+     glissière que `-webkit-appearance: none` a rendue solidaire du haut
+     SOUS BLINK. WebKit (iOS/iPadOS — le moteur que ce bloc vise en premier)
+     centre le pouce de lui-même, donc ce décalage s'y ajoute au lieu de
+     corriger : le pouce y monte de 5,5px. Il mord encore le filet, ce qui
+     dégrade proprement — mais NON MESURÉ SUR UN APPAREIL RÉEL, faute d'en
+     avoir un ici. À confirmer sur un iPhone ; si le pouce se décolle, garder
+     ce `margin-top` derrière `@supports (-webkit-touch-callout: none)`.
+
+     MESURER CECI DEMANDE DE RELIRE LA GÉOMÉTRIE AVANT CHAQUE TAPOTEMENT.
+     Tapoter une commande la met au point, ce qui fait défiler la page : un
+     `getBoundingClientRect` lu une fois puis réutilisé sur une série de
+     tapotements décrit une position que la page n'a plus, et rend une bande
+     utile fantaisiste — deux relevés contradictoires avant qu'on ne le voie.
+     Le relevé propre donne 3px avant, 44px après. */
+  .radio__volume input[type='range'] {
+    height: 44px;
+    background: transparent;
+  }
+  .radio__volume input[type='range']::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--line-strong);
+  }
+  .radio__volume input[type='range']::-webkit-slider-thumb {
+    margin-top: -5.5px;
+  }
+  .radio__volume input[type='range']::-moz-range-track {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--line-strong);
+  }
+  /* La boîte sensible passant de 3 à 44px, le jeton de focus cesse d'épouser
+     le filet et devient un grand rectangle autour d'un trait fin — il dit VRAI
+     (c'est bien la cible), mais il pèse lourd dans une console faite de
+     pastilles et de disques. Il reprend donc la forme de la maison, et son
+     halo tombe de 4 à 2px. Le rayon n'a aucun effet visible ailleurs : le fond
+     de l'élément est `transparent`, seul le contour le suit. */
+  .radio__volume input[type='range']:focus-visible {
+    border-radius: 22px;
+    outline-offset: 2px;
+  }
+
+  /* LE SÉLECTEUR DE PAYS EST LA COMMANDE PRINCIPALE DE L'AGENDA, et sa cible
+     mesurait 160×16 — sous le plancher de 24px de la WCAG 2.5.8, pas seulement
+     sous les 44px visés ici. Le rembourrage de 8px vit sur le `<span>` qui
+     l'entoure, et un `<span>` ne transmet pas le tapotement à un `<select>` :
+     ces 8px étaient une bordure morte. La hauteur passe donc sur le champ
+     lui-même, seul élément dont la surface ouvre vraiment la liste, et le
+     rembourrage vertical de la pastille tombe à zéro pour qu'elle ne grossisse
+     que de 35 à 46px. Le drapeau et le chevron restent inertes
+     (`pointer-events: none`) — ils l'étaient déjà. */
+  .agenda-select {
+    padding-block: 0;
+  }
+  .agenda-select__field {
+    min-height: 44px;
+  }
 }
 
 /* ============================================================
