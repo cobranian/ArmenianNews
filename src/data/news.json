@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T12:33:24.085Z",
+  "generatedAt": "2026-08-16T13:28:52.656Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1434,7 +1434,7 @@
             "url": "https://hy.armradio.am/archives/752724",
             "date": "2026-08-16T11:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_4442-768x513.jpeg",
-            "category": "Կարևոր"
+            "category": "Մշակույթ"
           },
           {
             "title": "100-ամյա հիթեր, հումոր ու իմպրովիզ․ Մարվին Մուոնեկեի ջազային երեկոն «Khachaturian Rooftop»-ում",
@@ -1505,6 +1505,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Ըմբիշներ Յուրիկ Պետրոսյանն ու Սամվել Տերտերյանը ԱԱ կիսաեզրափակչում են",
+            "url": "https://hy.armradio.am/archives/752749",
+            "date": "2026-08-16T12:47:40.000Z",
+            "image": null,
+            "category": "Կարևոր"
+          },
+          {
             "title": "Երկու հայ բռնցքամարտիկ է դուրս եկել Սերբիայում ընթացող Եվրոպայի առաջնության 1/4 եզրափակիչ",
             "url": "https://hy.armradio.am/archives/752737",
             "date": "2026-08-16T11:20:11.000Z",
@@ -1565,13 +1572,6 @@
             "url": "https://hy.armradio.am/archives/751156",
             "date": "2026-08-07T14:24:33.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/9-768x403.png",
-            "category": "Սպորտ"
-          },
-          {
-            "title": "Մեկնարկել են ՀՀ վարչապետի հովանու ներքո ուժային կառույցների միջև անցկացվող բանակային խաղերը",
-            "url": "https://hy.armradio.am/archives/750257",
-            "date": "2026-08-03T09:22:34.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/l-38x0wh-1103x643z-0.7123-768x448.jpeg",
             "category": "Սպորտ"
           }
         ]
@@ -2110,6 +2110,18 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Erdogan : L’adhésion à l’UE n’est plus une priorité pour la Turquie",
+          "url": "https://www.armenews.com/erdogan-ladhesion-a-lue-nest-plus-une-priorite-pour-la-turquie/",
+          "date": "2026-08-16T12:57:45.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Carucature-2009-14-Le-Turc-sur-son-ane-vers-lherbe-verte-de-lEurope.jpg"
+        },
+        {
+          "title": "L’Arménie en tête des pays qui surprennent le plus agréablement les touristes russes selon une enquête publiée par l’agence Tass",
+          "url": "https://www.armenews.com/larmenie-en-tete-des-pays-qui-surprennent-le-plus-agreablement-les-touristes-russes-selon-une-enquete-publiee-par-lagence-tass/",
+          "date": "2026-08-16T12:44:45.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/7890.webp"
+        },
+        {
           "title": "Karékine II d’Etchmiadzine : Puissions-nous bâtir un avenir radieux et prospère pour notre peuple et notre État",
           "url": "https://www.armenews.com/karekine-ii-detchmiadzine-puissions-nous-batir-un-avenir-radieux-et-prospere-pour-notre-peuple-et-notre-etat/",
           "date": "2026-08-16T10:35:18.000Z",
@@ -2156,18 +2168,6 @@
           "url": "https://www.armenews.com/vahan-kostanyan-et-oleksandr-merezhko-discutent-du-programme-de-cooperation-entre-larmenie-et-lukraine/",
           "date": "2026-08-16T06:30:43.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-16-a-07.32.37.png"
-        },
-        {
-          "title": "Alen Simonyan n’a pas pu profiter longtemps de son repos : pourquoi le Premier ministre l’a-t-il choisi pour remplacer Armen Grigoryan ?",
-          "url": "https://www.armenews.com/alen-simonyan-na-pas-pu-profiter-longtemps-de-son-repos-pourquoi-le-premier-ministre-la-t-il-choisi-pour-remplacer-armen-grigoryan/",
-          "date": "2026-08-16T06:30:27.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-16-a-07.22.00.png"
-        },
-        {
-          "title": "L’Assemblée nationale examine la candidature du deuxième représentant de l’opposition à la tête d’une commission",
-          "url": "https://www.armenews.com/lassemblee-nationale-examine-la-candidature-du-deuxieme-representant-de-lopposition-a-la-tete-dune-commission/",
-          "date": "2026-08-16T06:30:10.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-16-a-07.24.33.png"
         }
       ]
     },
@@ -9409,6 +9409,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Անգլիայի սուպերգավաթ․ «Արսենալի» եւ «Մանչեսթեր Սիթիի» մեկնարկային կազմերը",
+            "url": "https://sport.news.am/arm/news/168346/",
+            "date": "2026-08-16T13:11:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168346.jpg"
+          },
+          {
             "title": "Նիկոլ Միքայելյանը 7 գոլ խփեց Ադրբեջանի թիմին (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168345/",
             "date": "2026-08-16T09:48:00.000Z",
@@ -9461,12 +9467,6 @@
             "url": "https://sport.news.am/arm/news/168337/",
             "date": "2026-08-15T18:10:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168337.jpg"
-          },
-          {
-            "title": "Ֆերան Տորեսը՝ ՊՍԺ-ի խաղացող",
-            "url": "https://sport.news.am/arm/news/168336/",
-            "date": "2026-08-15T17:48:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168336.jpg"
           }
         ]
       },
@@ -9474,6 +9474,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Շոգը կարող է Եվրամիությանը արժենալ 180 մլրդ եվրո. Եվրոպայի որ տնտեսություններն են ամենից շատ տուժելու",
+            "url": "https://news.am/hy/news/1055752",
+            "date": "2026-08-16T13:24:00.000Z",
+            "image": "https://news.am/storage/media/26/06/23/f2SAcbYBd6q2FGVm.webp"
+          },
           {
             "title": "Իրանի հետ պատերազմը հարվածել է բրիտանացիների գրպաններին․ գնաճը կրկին մոտենում է 3%-ի",
             "url": "https://news.am/hy/news/1055736",
@@ -9527,12 +9533,6 @@
             "url": "https://news.am/hy/news/1055440",
             "date": "2026-08-14T09:18:00.000Z",
             "image": "https://news.am/storage/media/26/08/14/GF5XnSzdNyJhEC0h.webp"
-          },
-          {
-            "title": "Financial Times․ Պակիստանը և նոր աշխարհաքաղաքական «Ռիսկ» խաղը",
-            "url": "https://news.am/hy/news/1055397",
-            "date": "2026-08-14T08:50:00.000Z",
-            "image": "https://news.am/storage/media/26/08/14/XtfFArBLHZaKCE06.jfif"
           }
         ]
       },
@@ -9673,6 +9673,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Cell Reports Medicine. Կարճ վազքն օրգանիզմում առաջացնում է դիաբետից և ճարպակալումից պաշտպանության հետ կապված փոփոխություններ",
+            "url": "https://med.news.am/arm/news/41707/cell-reports-medicine-kartch-vazqn-organizmum-arajacnum-e-diabetic-ev-tcharpakalumic-pashtpanutyan-het-kapvats-popokhutyunner.html",
+            "date": "2026-08-16T13:21:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41707.jpg"
+          },
+          {
             "title": "JAMA Network Open. Գոտկատեղի չափսը օգնում է պարզել ճարպակալման ռիսկերը, որոնք կարող է «չնկատել» մարմնի զանգվածի ինդեքսը",
             "url": "https://med.news.am/arm/news/41705/jama-network-open-gotkatexi-chapsy-ognum-e-parzel-tcharpakalman-riskery-oronq-karox-e-chnkatel-marmni-zangvatsi-indeqsy.html",
             "date": "2026-08-16T09:44:00.000Z",
@@ -9725,12 +9731,6 @@
             "url": "https://med.news.am/arm/news/41698/inchu-e-qaxaqayin-kyanqy-sparnum-erekhaneri-aroxjutyany.html",
             "date": "2026-08-14T14:43:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41698.jpg"
-          },
-          {
-            "title": "Բջիջների համար նախատեսված «անտեսանելի թիկնոցները» կարող են նոր մոտեցում բացել շաքարախտի բուժման հարցում",
-            "url": "https://med.news.am/arm/news/41697/bjijneri-hamar-nakhatesvats-antesaneli-tiknocnery-karox-en-nor-motecum-bacel-shaqarakhti-buzhman-harcum.html",
-            "date": "2026-08-14T12:40:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41697.jpg"
           }
         ]
       },
@@ -10137,6 +10137,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Жара может обойтись Евросоюзу в 180 млрд. евро: какие экономики Европы пострадают сильнее всего",
+            "url": "https://news.am/ru/news/1055752",
+            "date": "2026-08-16T13:24:00.000Z",
+            "image": "https://news.am/storage/media/26/06/23/f2SAcbYBd6q2FGVm.webp"
+          },
+          {
             "title": "Война с Ираном ударила по британским кошелькам: инфляция вновь приближается к 3%",
             "url": "https://news.am/ru/news/1055736",
             "date": "2026-08-16T10:36:00.000Z",
@@ -10189,12 +10195,6 @@
             "url": "https://news.am/ru/news/1055440",
             "date": "2026-08-14T09:18:00.000Z",
             "image": "https://news.am/storage/media/26/08/14/GF5XnSzdNyJhEC0h.webp"
-          },
-          {
-            "title": "Financial Times: Пакистан и новая геополитическая игра в «Риск»",
-            "url": "https://news.am/ru/news/1055397",
-            "date": "2026-08-14T08:50:00.000Z",
-            "image": "https://news.am/storage/media/26/08/14/XtfFArBLHZaKCE06.jfif"
           }
         ]
       },
@@ -10335,6 +10335,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Cell Reports Medicine: Короткие спринты запускают в организме изменения, связанные с защитой от диабета и ожирения",
+            "url": "https://med.news.am/rus/news/41707/cell-reports-medicine-korotkie-sprintiy-zapuskayut-v-organizme-izmeneniya-svyazanniye-s-zashchitoiy-ot-diabeta-i-ozhireniya.html",
+            "date": "2026-08-16T13:21:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41707.jpg"
+          },
+          {
             "title": "JAMA Network Open: Размер талии помогает выявить риски ожирения, которые может пропустить ИМТ",
             "url": "https://med.news.am/rus/news/41705/jama-network-open-razmer-talii-pomogaet-viyyavit-riski-ozhireniya-kotoriye-mozhet-propustit-imt.html",
             "date": "2026-08-16T09:44:00.000Z",
@@ -10387,12 +10393,6 @@
             "url": "https://med.news.am/rus/news/41698/pochemu-gorodskaya-zhizn-ugrozhaet-zdorovyu-deteiy.html",
             "date": "2026-08-14T14:43:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41698.jpg"
-          },
-          {
-            "title": "«Невидимые плащи» для клеток могут открыть новый подход к лечению диабета",
-            "url": "https://med.news.am/rus/news/41697/nevidimiye-plashchi-dlya-kletok-mogut-otkriyt-noviyiy-podkhod-k-lecheniyu-diabeta.html",
-            "date": "2026-08-14T12:40:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41697.jpg"
           }
         ]
       },
