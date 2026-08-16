@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T09:24:19.241Z",
+  "generatedAt": "2026-08-16T10:19:30.750Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,20 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Հայ առաքելական եկեղեցին այսօր նշում է Խաղողօրհնեքը",
+            "url": "https://hy.armradio.am/archives/752721",
+            "date": "2026-08-16T10:08:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2025/08/MHM0161304-768x502.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Վահան Կոստանյանը մասնակցել է Կիև-Պեչորյան մայրավանքի հիմնադրման 975-ամյակի տոնակատարություններին",
+            "url": "https://hy.armradio.am/archives/752691",
+            "date": "2026-08-16T10:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_4438-768x608.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Վարչապետը ծանոթացել է Միջուկային բժշկության ազգային կենտրոնում ստեղծված պայմաններին և առաջիկա ծրագրերին",
             "url": "https://hy.armradio.am/archives/752654",
             "date": "2026-08-15T13:05:54.000Z",
@@ -1183,20 +1197,6 @@
             "url": "https://hy.armradio.am/archives/752615",
             "date": "2026-08-15T08:30:49.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/QIP-Shot-Screen-3698-768x600.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "65 տարեկանի շեմի վերացումը պետական և հանրային ծառայությունում. ի՞նչ է փոխվում",
-            "url": "https://hy.armradio.am/archives/752606",
-            "date": "2026-08-15T08:00:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/776163839_27844689608528172_1824775569355052470_n-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՆԳՆ համայնքային ոստիկանները բացահայտել են եկեղեցիներից կատարված գողությունները․ երկու անձ ձերբակալվել է",
-            "url": "https://hy.armradio.am/archives/752603",
-            "date": "2026-08-14T19:02:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/000-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2240,6 +2240,12 @@
       "categoryKey": "communaute",
       "articles": [
         {
+          "title": "Le père Sébouh Asatryan, le nouveau responsable des Églises apostoliques arméniennes Saint-Nicolas de Romans et Saint-Nichan de Charvieu-Chavagneux",
+          "url": "https://www.armenews.com/sebouh-asatryan-le-nouveau-responsable-des-eglises-apostoliques-armeniennes-saint-nicolas-de-romans-et-saint-nichan-de-charvieu-chavagneux/",
+          "date": "2026-08-16T10:01:03.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/IMG_2294-scaled.jpg"
+        },
+        {
           "title": "Festival arménien devant l’Eglise Apostolique de Paris le 6 septembre",
           "url": "https://www.armenews.com/festival-armenien-devant-leglise-apostolique-de-paris-le-6-septembre/",
           "date": "2026-08-16T06:30:31.000Z",
@@ -2292,12 +2298,6 @@
           "url": "https://www.armenews.com/conference-historique-avec-gaidz-minassian-a-la-fondation-boghossian-de-bruxelles-le-17-septembre/",
           "date": "2026-08-11T06:30:54.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/07/Capture-decran-2026-07-22-a-11.03.50.png"
-        },
-        {
-          "title": "Amica – Communiqué de presse",
-          "url": "https://www.armenews.com/amica-communique-de-presse/",
-          "date": "2026-08-10T06:30:31.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Screenshot-2026-08-10-at-08-06-20-Communique9aout26-Communique9aout26-2.pdf.png"
         }
       ]
     },
@@ -4082,6 +4082,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Վարչապետը Կեչառիսի վանական համալիրում պատարագի է մասնակցել",
+            "url": "https://armenpress.am/hy/article/1258109",
+            "date": "2026-08-16T10:13:09.000Z",
+            "image": null
+          },
+          {
+            "title": "Արսեն Թորոսյանը լողալով Սևանա լճի մի ափից մյուս ափն է անցել՝ հաղթահարելով գրեթե 6 կիլոմետր տարածություն",
+            "url": "https://armenpress.am/hy/article/1258108",
+            "date": "2026-08-16T09:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/16/3y7JBrMBGOac0sa7nR2z2NIF2ShTtS10DwRCTZjB.webp"
+          },
+          {
             "title": "ՀԱՊԿ-ում Հայաստանի մասնակցության հեռանկարների վերաբերյալ որոշումը պետք է կայացվի ողջամիտ ժամկետներում․ ՀԱՊԿ գլխավոր քարտուղար",
             "url": "https://armenpress.am/hy/article/1258104",
             "date": "2026-08-16T08:05:44.000Z",
@@ -4128,18 +4140,6 @@
             "url": "https://armenpress.am/hy/article/1258086",
             "date": "2026-08-15T09:28:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/15/vjrK026Iky1fGA2aLRh5AAdeyCeBa2WItG14pqWP.webp"
-          },
-          {
-            "title": "Պետգույքի կոմիտեն ներկայացրել է առաջիկայում կայանալիք էլեկտրոնային աճուրդների ցանկը",
-            "url": "https://armenpress.am/hy/article/1258084",
-            "date": "2026-08-15T09:01:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/31/ylc4lPBT0ijQ37ePFAdMGK4sC2emQbIyAW8Rshj0.webp"
-          },
-          {
-            "title": "Ուժի մեջ է մտել մի շարք պաշտոններ զբաղեցնելու համար գործող առավելագույն տարիքի շեմի վերացման կարգավորումը",
-            "url": "https://armenpress.am/hy/article/1258083",
-            "date": "2026-08-15T08:32:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/15/vYlcp6SXYMdvr1xdRJe5mi43UZWlr0ORXmssX8m2.webp"
           }
         ]
       },
@@ -4214,7 +4214,7 @@
           {
             "title": "Հունգարիայում լեհական ավտոբուսի վթարի հետևանքով 12 մարդ է զոհվել",
             "url": "https://armenpress.am/hy/article/1258107",
-            "date": "2026-08-16T09:21:25.000Z",
+            "date": "2026-08-16T09:21:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/16/dxSVhjZHjVB3Y2j2imUQGXthHC26ZWheWfmo0l6Z.webp"
           },
           {
@@ -4539,6 +4539,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Премьер-министр Пашинян принял участие в литургии в монастырском комплексе Кечарис",
+            "url": "https://armenpress.am/ru/article/1258109",
+            "date": "2026-08-16T10:16:00.000Z",
+            "image": null
+          },
+          {
+            "title": "Министр труда и социальных вопросов Армении Арсен Торосян переплыл с одного берега озера Севан на другой",
+            "url": "https://armenpress.am/ru/article/1258108",
+            "date": "2026-08-16T09:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/16/3y7JBrMBGOac0sa7nR2z2NIF2ShTtS10DwRCTZjB.webp"
+          },
+          {
             "title": "Решение о перспективах участия Армении в ОДКБ должно быть принято в разумные сроки: генсек ОДКБ",
             "url": "https://armenpress.am/ru/article/1258104",
             "date": "2026-08-16T08:08:00.000Z",
@@ -4585,18 +4597,6 @@
             "url": "https://armenpress.am/ru/article/1258081",
             "date": "2026-08-15T08:17:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/15/G4LMkNlMH8wdz3oCFbJ1XlTD8dThFopj19UOyq1J.webp"
-          },
-          {
-            "title": "Министр ознакомился с текущим докладом об оказываемых минобороны психологических услугах",
-            "url": "https://armenpress.am/ru/article/1258070",
-            "date": "2026-08-14T17:29:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/Upgt2eNJtdqjNIupVcVHAGQV51YJcERv3pv71rLT.webp"
-          },
-          {
-            "title": "Статистика случаев смерти в Вооруженных силах Армении искажается",
-            "url": "https://armenpress.am/ru/article/1258066",
-            "date": "2026-08-14T15:18:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/5SaxVYaLrpTlbVmqjCdZe4hygcMD8c6SlKilkLIm.webp"
           }
         ]
       },
@@ -9415,6 +9415,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Նիկոլ Միքայելյանը 7 գոլ խփեց Ադրբեջանի թիմին (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168345/",
+            "date": "2026-08-16T09:48:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168345.jpg"
+          },
+          {
             "title": "Տիգրան Բարսեղյանի սուպերգոլը (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168344/",
             "date": "2026-08-16T09:24:00.000Z",
@@ -9467,12 +9473,6 @@
             "url": "https://sport.news.am/arm/news/168336/",
             "date": "2026-08-15T17:48:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168336.jpg"
-          },
-          {
-            "title": "«Արարատ-Արմենիայի» եւ «Արարատի» հաղթանակները (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168335/",
-            "date": "2026-08-15T17:41:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168335.jpg"
           }
         ]
       },
@@ -9547,6 +9547,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Սառցե դեմք». Արդյո՞ք սառը թերապիան իսկապես աշխատում է, և ի՞նչ է անում սառույցը ձեր մաշկի հետ",
+            "url": "https://style.news.am/arm/news/115632/",
+            "date": "2026-08-16T10:15:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115632.jpg"
+          },
+          {
             "title": "Հայկական ոճ. Ի՞նչ տեսք ունի ոճային ամառը",
             "url": "https://style.news.am/arm/news/115633/",
             "date": "2026-08-16T08:30:00.000Z",
@@ -9599,12 +9605,6 @@
             "url": "https://style.news.am/arm/news/115620/",
             "date": "2026-08-15T11:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115620.jpg"
-          },
-          {
-            "title": "Առաջին անգամ Հայաստանում՝ համերգ, որտեղ ոչինչ չեք տեսնի",
-            "url": "https://style.news.am/arm/news/115629/",
-            "date": "2026-08-15T10:50:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115629.jpg"
           }
         ]
       },
@@ -9679,6 +9679,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "JAMA Network Open. Գոտկատեղի չափսը օգնում է պարզել ճարպակալման ռիսկերը, որոնք կարող է «չնկատել» մարմնի զանգվածի ինդեքսը",
+            "url": "https://med.news.am/arm/news/41705/jama-network-open-gotkatexi-chapsy-ognum-e-parzel-tcharpakalman-riskery-oronq-karox-e-chnkatel-marmni-zangvatsi-indeqsy.html",
+            "date": "2026-08-16T09:44:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41705.jpg"
+          },
+          {
             "title": "ՄԱԿ. ԿԴՀ-ում Էբոլա տենդից յուրաքանչյուր 30 րոպեն մեկ մարդ է մահանում",
             "url": "https://med.news.am/arm/news/41704/mak-kdh-um-ebola-tendic-yuraqanchyur-30-ropen-mek-mard-e-mahanum.html",
             "date": "2026-08-15T17:16:00.000Z",
@@ -9731,12 +9737,6 @@
             "url": "https://med.news.am/arm/news/41697/bjijneri-hamar-nakhatesvats-antesaneli-tiknocnery-karox-en-nor-motecum-bacel-shaqarakhti-buzhman-harcum.html",
             "date": "2026-08-14T12:40:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41697.jpg"
-          },
-          {
-            "title": "Արդյո՞ք չի գերագնահատված միջակայքային քաղցելու օգուտը",
-            "url": "https://med.news.am/arm/news/41696/ardyoq-chi-geragnahatvats-mijakayqayin-qaxcelu-oguty.html",
-            "date": "2026-08-14T10:35:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41696.jpg"
           }
         ]
       },
@@ -9744,6 +9744,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Իրանում մահապատժի են ենթարկել մի տղամարդու, որը հունվարյան անկարգությունների ժամանակ վրաերթի էր ենթարկել յոթ ոստիկանի",
+            "url": "https://news.am/hy/news/1055731",
+            "date": "2026-08-16T09:35:00.000Z",
+            "image": "https://news.am/storage/media/26/05/11/8bq5dH8mWLq5ZZzR.webp"
+          },
           {
             "title": "«Զվարթնոց»-ում 4 կին միմյանց հարվածներ են հասցրել, հայհոյանքներ հնչեցրել",
             "url": "https://news.am/hy/news/1055737",
@@ -9797,12 +9803,6 @@
             "url": "https://news.am/hy/news/1055557",
             "date": "2026-08-14T17:58:26.000Z",
             "image": "https://news.am/storage/media/26/08/14/qXRWo7FmFIVwVm8z.webp"
-          },
-          {
-            "title": "Ադրբեջանում 4,9 մագնիտուդով երկրաշարժ է տեղի ունեցել",
-            "url": "https://news.am/hy/news/1055556",
-            "date": "2026-08-14T17:43:50.000Z",
-            "image": "https://news.am/storage/media/26/06/22/62RQAapcResjSeDZ.webp"
           }
         ]
       },
@@ -10077,6 +10077,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Николь Микаэлян забила 7 голов в ворота команды Азербайджана (видео)",
+            "url": "https://sport.news.am/rus/news/168345/",
+            "date": "2026-08-16T09:48:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168345.jpg"
+          },
+          {
             "title": "ЧЕ до 20-и лет: Эмин Оганян - бронзовый призер",
             "url": "https://sport.news.am/rus/news/168340/",
             "date": "2026-08-15T20:20:00.000Z",
@@ -10129,12 +10135,6 @@
             "url": "https://sport.news.am/rus/news/168326/",
             "date": "2026-08-14T20:09:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168326.jpg"
-          },
-          {
-            "title": "Чиро Иммобиле объявил о завершении карьеры",
-            "url": "https://sport.news.am/rus/news/168325/",
-            "date": "2026-08-14T19:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168325.jpg"
           }
         ]
       },
@@ -10209,6 +10209,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Лицо из морозильника»: действительно ли работает холодная косметология и что лёд делает с вашей кожей",
+            "url": "https://style.news.am/rus/news/115632/",
+            "date": "2026-08-16T10:15:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115632.jpg"
+          },
+          {
             "title": "Армянский стиль в лицах: как по-разному выглядит стильное лето",
             "url": "https://style.news.am/rus/news/115633/",
             "date": "2026-08-16T08:30:00.000Z",
@@ -10261,12 +10267,6 @@
             "url": "https://style.news.am/rus/news/115629/",
             "date": "2026-08-15T10:50:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115629.jpg"
-          },
-          {
-            "title": "Золото на 10 миллионов долларов: строители в Бельгии случайно нашли клад при прокладке канализации",
-            "url": "https://style.news.am/rus/news/115619/",
-            "date": "2026-08-15T10:22:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115619.jpg"
           }
         ]
       },
@@ -10341,6 +10341,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "JAMA Network Open: Размер талии помогает выявить риски ожирения, которые может пропустить ИМТ",
+            "url": "https://med.news.am/rus/news/41705/jama-network-open-razmer-talii-pomogaet-viyyavit-riski-ozhireniya-kotoriye-mozhet-propustit-imt.html",
+            "date": "2026-08-16T09:44:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41705.jpg"
+          },
+          {
             "title": "ООН: В ДР Конго от лихорадки Эбола каждые 30 минут умирает человек",
             "url": "https://med.news.am/rus/news/41704/oon-v-dr-kongo-ot-likhoradki-ebola-kazhdiye-30-minut-umiraet-chelovek.html",
             "date": "2026-08-15T17:16:00.000Z",
@@ -10393,12 +10399,6 @@
             "url": "https://med.news.am/rus/news/41697/nevidimiye-plashchi-dlya-kletok-mogut-otkriyt-noviyiy-podkhod-k-lecheniyu-diabeta.html",
             "date": "2026-08-14T12:40:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41697.jpg"
-          },
-          {
-            "title": "Не переоценена ли польза интервального голодания?",
-            "url": "https://med.news.am/rus/news/41696/ne-pereocenena-li-polza-intervalnogo-golodaniya.html",
-            "date": "2026-08-14T10:35:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41696.jpg"
           }
         ]
       },
@@ -10406,6 +10406,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "В Иране казнили мужчину, сбившего семерых полицейских во время январских беспорядков",
+            "url": "https://news.am/ru/news/1055731",
+            "date": "2026-08-16T09:35:00.000Z",
+            "image": "https://news.am/storage/media/26/05/11/8bq5dH8mWLq5ZZzR.webp"
+          },
           {
             "title": "В аэропорту «Звартноц» подрались четыре женщины",
             "url": "https://news.am/ru/news/1055737",
@@ -10459,12 +10465,6 @@
             "url": "https://news.am/ru/news/1055556",
             "date": "2026-08-14T17:43:50.000Z",
             "image": "https://news.am/storage/media/26/06/22/62RQAapcResjSeDZ.webp"
-          },
-          {
-            "title": "«Норатуси Алик» подозревается в применении физического насилия в отношении работника СТО в Ереване",
-            "url": "https://news.am/ru/news/1055535",
-            "date": "2026-08-14T14:36:15.000Z",
-            "image": "https://news.am/storage/media/26/08/14/CcGX5muyiKeNZIKC.webp"
           }
         ]
       },
