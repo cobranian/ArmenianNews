@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T16:20:53.635Z",
+  "generatedAt": "2026-08-16T17:16:47.952Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -3112,6 +3112,12 @@
       "categoryKey": "un-autre-regard",
       "articles": [
         {
+          "title": "Quand la médecine ne peut plus guérir, il lui reste à prendre soin",
+          "url": "https://armenieinfo.tv/quand-la-medecine-ne-peut-plus-guerir-il-lui-reste-a-prendre-soin/",
+          "date": "2026-08-16T17:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-16-aout-2026-13_34_08.png"
+        },
+        {
           "title": "En Arménie, le client est roi, le recours reste sujet",
           "url": "https://armenieinfo.tv/en-armenie-le-client-est-roi-le-recours-reste-sujet/",
           "date": "2026-08-13T17:00:00.000Z",
@@ -3146,12 +3152,6 @@
           "url": "https://armenieinfo.tv/les-frontieres-traversent-parfois-les-corps-sans-passeport/",
           "date": "2026-08-07T17:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-27-juil.-2026-18_39_50.png"
-        },
-        {
-          "title": "L’Arménie noie parfois ce qu’elle ne sait pas nommer",
-          "url": "https://armenieinfo.tv/larmenie-noie-parfois-ce-quelle-ne-sait-pas-nommer/",
-          "date": "2026-08-06T17:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/07/ChatGPT-Image-27-juil.-2026-17_15_081.png"
         }
       ]
     }
@@ -9409,6 +9409,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Ռեալը» հաղթեց Գերմանիայում (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168351/",
+            "date": "2026-08-16T16:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168351.jpg"
+          },
+          {
+            "title": "«Բարսելոնայի» հաղթանակը՝ 5:2 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168350/",
+            "date": "2026-08-16T16:32:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168350.jpg"
+          },
+          {
             "title": "«Արսենալը» նվաճեց Անգլիայի սուպերգավաթը (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168348/",
             "date": "2026-08-16T15:57:00.000Z",
@@ -9455,18 +9467,6 @@
             "url": "https://sport.news.am/arm/news/168340/",
             "date": "2026-08-15T20:20:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168340.jpg"
-          },
-          {
-            "title": "«Ինտերը» պարտության մատնեց «Բետիսին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168339/",
-            "date": "2026-08-15T19:45:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168339.jpg"
-          },
-          {
-            "title": "«Ինտերը» ձեռք բերեց Անգլիայի հավաքականի խաղացողին",
-            "url": "https://sport.news.am/arm/news/168338/",
-            "date": "2026-08-15T18:24:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168338.jpg"
           }
         ]
       },
@@ -9541,6 +9541,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Կարո Հովհաննիսյանը հայր դարձավ, Աիդա Կարապետյանն ամուսնացավ, Անահիտը գերեց Լազարևին ու Բասկովին. Instagram-ը՝ այս շաբաթ",
+            "url": "https://style.news.am/arm/news/115634/",
+            "date": "2026-08-16T16:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115634.jpg"
+          },
+          {
             "title": "«Ես ուզում եմ քեզ հետ սեքսով զբաղվել» ֆիլմը կամ ինչպես սեքսը վերածել կրկեսի",
             "url": "https://style.news.am/arm/news/115628/",
             "date": "2026-08-16T14:06:00.000Z",
@@ -9593,12 +9599,6 @@
             "url": "https://style.news.am/arm/news/115631/",
             "date": "2026-08-15T13:05:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115631.jpg"
-          },
-          {
-            "title": "Ինտիմության ոսկե չափանիշը. ինչու է «իդեալական հեշտոցը» դարձել հարուստների գլխավոր կարգավիճակի աքսեսուարը",
-            "url": "https://style.news.am/arm/news/115621/",
-            "date": "2026-08-15T12:11:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115621.jpg"
           }
         ]
       },
@@ -10071,6 +10071,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Победа «Барселоны» (видео)",
+            "url": "https://sport.news.am/rus/news/168350/",
+            "date": "2026-08-16T16:32:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168350.jpg"
+          },
+          {
             "title": "Роналду: Вероятно, это мой последний сезон",
             "url": "https://sport.news.am/rus/news/168349/",
             "date": "2026-08-16T16:19:00.000Z",
@@ -10123,12 +10129,6 @@
             "url": "https://sport.news.am/rus/news/168332/",
             "date": "2026-08-15T15:15:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168332.jpg"
-          },
-          {
-            "title": "Премьер-лига: «Арарат-Армения» оказался сильнее «Вана»",
-            "url": "https://sport.news.am/rus/news/168334/",
-            "date": "2026-08-15T14:08:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168334.jpg"
           }
         ]
       },
