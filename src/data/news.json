@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T18:34:45.026Z",
+  "generatedAt": "2026-08-17T19:25:39.986Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1355,6 +1355,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Իրանը սպառնում է հարձակման անցնել Հորմուզի նեղուցում, եթե ԱՄՆ-ի հետ դիվանագիտությունը ձախողվի",
+            "url": "https://hy.armradio.am/archives/753028",
+            "date": "2026-08-17T18:57:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/4OU7YMWZTBPVRHKF2FMY4EPO5A-768x432.avif",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Իսրայելում հայտարարել են, որ ՑԱԽԱԼ-ը կմնա Գազայում զբաղեցրած իր դիրքերում",
+            "url": "https://hy.armradio.am/archives/753023",
+            "date": "2026-08-17T18:34:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/1786988387372393_rGJaxi5c-300x191.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Բորիս Ջոնսոնն ասում է, թե գիտի՝ ինչպես վերջ դնել ռուս-ուկրաինական պատերազմին, բայց հույսը կրկին Թրամփի վրա է դնում",
             "url": "https://hy.armradio.am/archives/752935",
             "date": "2026-08-17T14:30:00.000Z",
@@ -1408,20 +1422,6 @@
             "url": "https://hy.armradio.am/archives/752740",
             "date": "2026-08-16T11:33:52.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/cb85a9c0-993f-11f1-9d32-93c6539c1530.jpg-768x432.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Սեուլը պատրաստ է առանց նախապայմանների երկխոսության Փհենյանի հետ",
-            "url": "https://hy.armradio.am/archives/752727",
-            "date": "2026-08-16T11:30:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_4441-768x431.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Բելգիայում տան պատի մեջ 9 միլիոն եվրոյի ոսկու գանձ է հայտնաբերվել",
-            "url": "https://hy.armradio.am/archives/752709",
-            "date": "2026-08-16T10:41:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_4440-768x432.webp",
             "category": "Կարևոր"
           }
         ]
@@ -2705,16 +2705,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786761171-6189.jpg"
         },
         {
-          "title": "L’Arménie offrira un paiement unique de 1 400 $ pour chaque nouveau-né",
-          "url": "https://armenieinfo.tv/larmenie-offrira-un-paiement-unique-de-1-400-pour-chaque-nouveau-ne-2/",
-          "date": "2026-08-17T07:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786761320-9673.jpg"
-        },
-        {
           "title": "La décision sur l’avenir de la participation de l’Arménie à l’OTSC doit être prise dans des délais raisonnables, selon Masadikov",
           "url": "https://armenieinfo.tv/la-decision-sur-lavenir-de-la-participation-de-larmenie-a-lotsc-doit-etre-prise-dans-des-delais-raisonnables-selon-masadikov/",
           "date": "2026-08-17T07:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786876375-4244.jpg"
+        },
+        {
+          "title": "L’Arménie offrira un paiement unique de 1 400 $ pour chaque nouveau-né",
+          "url": "https://armenieinfo.tv/larmenie-offrira-un-paiement-unique-de-1-400-pour-chaque-nouveau-ne-2/",
+          "date": "2026-08-17T07:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786761320-9673.jpg"
         },
         {
           "title": "Mer Caspienne : Moscou et Téhéran opteront-ils pour des «outils souples» ?",
@@ -5011,6 +5011,12 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "ARS Continues to Deliver Essential Humanitarian Assistance to Lebanese Armenians",
+            "url": "https://asbarez.com/ars-continues-to-deliver-essential-humanitarian-assistance-to-lebanese-armenians/",
+            "date": "2026-08-17T19:14:13.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/17121206/Support-The-Armenians-in-Lebanon1-300x193.png"
+          },
+          {
             "title": "Armenia’s Samvel Terteryan Becomes World U20 Wrestling Champ, Beating Azerbaijani Opponent",
             "url": "https://asbarez.com/armenias-samvel-terteryan-becomes-world-u20-wrestling-champ-beating-azerbaijani-opponent/",
             "date": "2026-08-17T18:26:40.000Z",
@@ -5063,12 +5069,6 @@
             "url": "https://asbarez.com/pashinyan-ousts-national-security-chief-appoints-ex-parliament-speaker/",
             "date": "2026-08-13T22:49:06.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/08/13150352/Hajiyevindilijan-1-300x171.jpg"
-          },
-          {
-            "title": "Iran Says No Agreement Reached With Armenia on TRIPP Project",
-            "url": "https://asbarez.com/iran-says-no-agreement-reached-with-armenia-on-tripp-project/",
-            "date": "2026-08-13T19:58:29.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/13125725/Synik-300x170.jpg"
           }
         ]
       },
@@ -5475,6 +5475,18 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Իտալիա Եւ Դանիա Կոչ Կ՛ընեն «Վերադարձի Կեդրոններ» Ստեղծելու՝ Եւրոմիութենէն Դուրս",
+            "url": "https://asbarez.am/archives/507427",
+            "date": "2026-08-17T19:17:12.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17121653/0817EU.jpg"
+          },
+          {
+            "title": "Դպրեվանքի «Գլաձոր» Տարեգիրքի ԻԱ. Տարուան Հատորը Լոյս Տեսաւ",
+            "url": "https://asbarez.am/archives/507415",
+            "date": "2026-08-17T18:51:31.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17115428/0817Klatsor-1.jpg"
+          },
+          {
             "title": "Եւրոմիութիւնը Կ՛ողջունէ Պաքուի Եւ Երեւանի Միջեւ Յառաջընթացը",
             "url": "https://asbarez.am/archives/507398",
             "date": "2026-08-14T22:41:28.000Z",
@@ -5521,18 +5533,6 @@
             "url": "https://asbarez.am/archives/507318",
             "date": "2026-08-13T22:17:45.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/08/13122824/0814Fruit.jpg"
-          },
-          {
-            "title": "Ռուբինեան Արցախահայութեան Վերադարձի Իրաւունքի Հետապնդումը Հակամարտութիւնը Սրելու Սպառնալիք Նկատեց",
-            "url": "https://asbarez.am/archives/507328",
-            "date": "2026-08-13T22:07:29.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/13124346/0814Back.jpg"
-          },
-          {
-            "title": "Բռնագրաւուած Հադրութի Մէջ Պղծուած Է 1621ին Կառուցուած Սուրբ Յարութիւն Հայկական Եկեղեցին",
-            "url": "https://asbarez.am/archives/507338",
-            "date": "2026-08-13T19:53:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/13125303/0814Church.png"
           }
         ]
       },
@@ -5540,6 +5540,48 @@
         "categoryKey": "klkhavor-loorer",
         "label": "Գլխաւոր Լուրեր",
         "articles": [
+          {
+            "title": "Նստարանէս",
+            "url": "https://asbarez.am/archives/507437",
+            "date": "2026-08-17T19:26:35.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2021/08/20132557/Vrej-Armen.jpg"
+          },
+          {
+            "title": "64 Ամեայ Յակոբ Տեղիրմէնճիօղլու Պոլսոյ Իր Բնակարանին Մէջ Սպաննուած Է",
+            "url": "https://asbarez.am/archives/507434",
+            "date": "2026-08-17T19:22:06.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17122042/0817Hagop.jpg"
+          },
+          {
+            "title": "Քեսապի Մէջ Ս. Աստուածածինի Վերափոխման Տօնը Հանդիսաւորապէս Յիշատակուեցաւ",
+            "url": "https://asbarez.am/archives/507430",
+            "date": "2026-08-17T19:18:53.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17121806/0817Kesab1.jpg"
+          },
+          {
+            "title": "Իտալիա Եւ Դանիա Կոչ Կ՛ընեն «Վերադարձի Կեդրոններ» Ստեղծելու՝ Եւրոմիութենէն Դուրս",
+            "url": "https://asbarez.am/archives/507427",
+            "date": "2026-08-17T19:17:12.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17121653/0817EU.jpg"
+          },
+          {
+            "title": "Եգիպտոսի, Սէուտական Արաբիոյ Եւ Թուրքիոյ Արտաքին Գործոց Նախարարներու Հանդիպում",
+            "url": "https://asbarez.am/archives/507423",
+            "date": "2026-08-17T19:04:31.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17120359/0817Egypt-Turk-Saud.jpg"
+          },
+          {
+            "title": "Դպրեվանքի «Գլաձոր» Տարեգիրքի ԻԱ. Տարուան Հատորը Լոյս Տեսաւ",
+            "url": "https://asbarez.am/archives/507415",
+            "date": "2026-08-17T18:51:31.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17115428/0817Klatsor-1.jpg"
+          },
+          {
+            "title": "Քանի Մը Տողով՝ Harpers Index-էն",
+            "url": "https://asbarez.am/archives/507412",
+            "date": "2026-08-17T18:47:49.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17114550/0817harpers-index.png"
+          },
           {
             "title": "Հովուական Այցելութիւն Ֆրեզնոյի Հայ Համայնքին",
             "url": "https://asbarez.am/archives/507384",
@@ -5557,48 +5599,6 @@
             "url": "https://asbarez.am/archives/507401",
             "date": "2026-08-14T21:59:24.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14145839/0815Nakharar.jpg"
-          },
-          {
-            "title": "Այս Տարուան Ընթացքին Բանակին Մէջ Արձանագրուած Է 11 Մահ",
-            "url": "https://asbarez.am/archives/507392",
-            "date": "2026-08-14T21:53:25.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14145309/0815Panag.jpg"
-          },
-          {
-            "title": "«Նարեկացի» Մանկապատանեկան Երգչախումբի Այցելութիւնը Լիբանանի Հայ Ազգային Ծերանոց",
-            "url": "https://asbarez.am/archives/507378",
-            "date": "2026-08-14T21:31:30.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14142916/0814Dzeranots1.jpg"
-          },
-          {
-            "title": "Հայ Դպրոցականները Երկու Պրոնզէ Մետալ Նուաճեցին Արհեստական Բանականութեան Միջազգային Ողիմպիականին",
-            "url": "https://asbarez.am/archives/507375",
-            "date": "2026-08-14T21:28:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14142720/0814AIO.jpg"
-          },
-          {
-            "title": "«Նօա» Դուրս Մնաց «Քանֆրընս լիկ»էն",
-            "url": "https://asbarez.am/archives/507372",
-            "date": "2026-08-14T21:26:26.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14142514/0814noa.jpg"
-          },
-          {
-            "title": "Հանդիպում՝ Հեղինակ Պետրոս Անսրլեանի Հետ",
-            "url": "https://asbarez.am/archives/507366",
-            "date": "2026-08-14T21:21:59.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14142339/0814hmz-1.jpeg"
-          },
-          {
-            "title": "Հայկազեան Համալսարանի Եւ «Հայրենիք» Հրատարակչութեան «Յուշամատեան» Մատենաշարին Մեկնարկ",
-            "url": "https://asbarez.am/archives/507361",
-            "date": "2026-08-14T21:13:15.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14141206/0814OKHOI-1.jpg"
-          },
-          {
-            "title": "Միա Մանուկեան` Ճիւտոյի Եւրոպայի Ախոյեան",
-            "url": "https://asbarez.am/archives/507358",
-            "date": "2026-08-14T21:06:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/14140339/0814Manougian-judo.jpg"
           }
         ]
       },
@@ -5673,6 +5673,18 @@
         "label": "Գաղութներ",
         "articles": [
           {
+            "title": "64 Ամեայ Յակոբ Տեղիրմէնճիօղլու Պոլսոյ Իր Բնակարանին Մէջ Սպաննուած Է",
+            "url": "https://asbarez.am/archives/507434",
+            "date": "2026-08-17T19:22:06.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17122042/0817Hagop.jpg"
+          },
+          {
+            "title": "Քեսապի Մէջ Ս. Աստուածածինի Վերափոխման Տօնը Հանդիսաւորապէս Յիշատակուեցաւ",
+            "url": "https://asbarez.am/archives/507430",
+            "date": "2026-08-17T19:18:53.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/17121806/0817Kesab1.jpg"
+          },
+          {
             "title": "«Նարեկացի» Մանկապատանեկան Երգչախումբի Այցելութիւնը Լիբանանի Հայ Ազգային Ծերանոց",
             "url": "https://asbarez.am/archives/507378",
             "date": "2026-08-14T21:31:30.000Z",
@@ -5719,18 +5731,6 @@
             "url": "https://asbarez.am/archives/507048",
             "date": "2026-08-10T18:59:05.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/08/10115236/0810hmz1.jpg"
-          },
-          {
-            "title": "«Ուոլ Սթրիթ Ճըրնըլ»ը՝ Երուսաղէմի Հայկական Վանքին Վրայ Յարձակումին Անդրադարձաւ",
-            "url": "https://asbarez.am/archives/507043",
-            "date": "2026-08-10T18:48:10.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/10114738/0810jeru.jpg"
-          },
-          {
-            "title": "Հայ Դատի Տարեկան Ձեռնարկը՝ Հոկտեմբեր 11ին",
-            "url": "https://asbarez.am/archives/507010",
-            "date": "2026-08-07T21:44:28.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/07134133/0807Gala.png"
           }
         ]
       },
@@ -5738,6 +5738,12 @@
         "categoryKey": "hotvadzner",
         "label": "Յօդուածներ",
         "articles": [
+          {
+            "title": "Նստարանէս",
+            "url": "https://asbarez.am/archives/507437",
+            "date": "2026-08-17T19:26:35.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2021/08/20132557/Vrej-Armen.jpg"
+          },
           {
             "title": "«Ազգանունէն Անդին․ Հայ Ըլլալը Համաշխարհայնացած Սփիւռքի Մէջ»",
             "url": "https://asbarez.am/archives/507353",
@@ -5791,12 +5797,6 @@
             "url": "https://asbarez.am/archives/507027",
             "date": "2026-08-07T21:16:26.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/08/07141459/0807LauraMelikyan.jpg"
-          },
-          {
-            "title": "Երբ Չես Մոռանում Քո Հարազատ Կրթօջախը",
-            "url": "https://asbarez.am/archives/506809",
-            "date": "2026-08-05T19:10:48.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/08/05115846/0805FOC1.jpg"
           }
         ]
       }
@@ -8765,6 +8765,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Al-Ahli victory, Spertsyan scored in his second consecutive match",
+            "url": "https://sport.news.am/eng/news/168374/",
+            "date": "2026-08-17T18:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168374.jpg"
+          },
+          {
             "title": "Noah beat Alashkert",
             "url": "https://sport.news.am/eng/news/168373/",
             "date": "2026-08-17T17:56:00.000Z",
@@ -8817,12 +8823,6 @@
             "url": "https://sport.news.am/eng/news/168352/",
             "date": "2026-08-17T05:17:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168352.jpg"
-          },
-          {
-            "title": "French Super Cup: Lens defeated PSG",
-            "url": "https://sport.news.am/eng/news/168354/",
-            "date": "2026-08-16T20:49:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168354.jpg"
           }
         ]
       },
@@ -8897,6 +8897,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "\"Luxury Porn\" and Silicon Valley Secrets: How the Wife of an Anthropic Billionaire Tried to Lure Jeffrey Epstein into Her Porn Project",
+            "url": "https://style.news.am/eng/news/115652/",
+            "date": "2026-08-17T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115652.jpg"
+          },
+          {
             "title": "Weapons of Mass Destruction: Smiles and Biceps—How Appearance Shapes Politics",
             "url": "https://style.news.am/eng/news/115650/",
             "date": "2026-08-17T17:21:00.000Z",
@@ -8949,12 +8955,6 @@
             "url": "https://style.news.am/eng/news/115643/",
             "date": "2026-08-17T10:20:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115643.jpg"
-          },
-          {
-            "title": "Covered Only in Foam: Cara Delevingne Teases Fans with a Daring Topless Shot",
-            "url": "https://style.news.am/eng/news/115642/",
-            "date": "2026-08-17T09:17:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115642.jpg"
           }
         ]
       },
@@ -9559,6 +9559,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Շքեղ պոռնո» և Սիլիկոնյան հովտի գաղտնիքները. Ինչպես Anthropic-ի միլիարդատիրոջ կինը փորձեց Ջեֆրի Էպշտեյնին գրավել իր պոռնոնախագծով",
+            "url": "https://style.news.am/arm/news/115652/",
+            "date": "2026-08-17T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115652.jpg"
+          },
+          {
             "title": "Տղամարդիկ և կանայք թշնամիներ չեն. Ինչու է ինտերնետը մեզ պարտադրում սեռերի պատերազմ",
             "url": "https://style.news.am/arm/news/115651/",
             "date": "2026-08-17T18:21:00.000Z",
@@ -9611,12 +9617,6 @@
             "url": "https://style.news.am/arm/news/115644/",
             "date": "2026-08-17T10:40:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115644.jpg"
-          },
-          {
-            "title": "Կապիտան Ջեք Ճնճղուկը վերադառնո՞ւմ է. Ջոնի Դեփը բանակցություններ է վարում «Կարիբյան ծովի ծովահենները» 6-րդ ֆիլմի շուրջ",
-            "url": "https://style.news.am/arm/news/115643/",
-            "date": "2026-08-17T10:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115643.jpg"
           }
         ]
       },
@@ -10089,6 +10089,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Родри прибыл в Барселону (видео)",
+            "url": "https://sport.news.am/rus/news/168375/",
+            "date": "2026-08-17T19:28:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168375.jpg"
+          },
+          {
             "title": "Победа «Аль-Ахли», Сперцян отличился во втором матче подряд (видео)",
             "url": "https://sport.news.am/rus/news/168374/",
             "date": "2026-08-17T18:05:00.000Z",
@@ -10141,12 +10147,6 @@
             "url": "https://sport.news.am/rus/news/168362/",
             "date": "2026-08-17T08:11:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168362.jpg"
-          },
-          {
-            "title": "«Барселона» представит Родри на этой неделе",
-            "url": "https://sport.news.am/rus/news/168355/",
-            "date": "2026-08-17T07:05:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168355.jpg"
           }
         ]
       },
@@ -10221,6 +10221,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Люксовое порно» и тайны Кремниевой долины: как жена миллиардера Anthropic пыталась привлечь Джеффри Эпштейна в свой порно-проект",
+            "url": "https://style.news.am/rus/news/115652/",
+            "date": "2026-08-17T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115652.jpg"
+          },
+          {
             "title": "Мужчины и женщины — не враги: почему интернет навязывает нам войну полов",
             "url": "https://style.news.am/rus/news/115651/",
             "date": "2026-08-17T18:21:00.000Z",
@@ -10273,12 +10279,6 @@
             "url": "https://style.news.am/rus/news/115644/",
             "date": "2026-08-17T10:40:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115644.jpg"
-          },
-          {
-            "title": "Капитан Джек Воробей возвращается? Джонни Депп ведет переговоры об участии в шестой части «Пиратов Карибского моря»",
-            "url": "https://style.news.am/rus/news/115643/",
-            "date": "2026-08-17T10:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115643.jpg"
           }
         ]
       },
