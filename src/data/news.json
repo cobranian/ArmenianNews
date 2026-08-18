@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T04:32:13.710Z",
+  "generatedAt": "2026-08-18T05:25:34.381Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Որոշ շրջաններում կարճատեւ անձրեւ. Երեւանի ամենաշոգ ու ամենազով օգոստոսի 18- ը",
+            "url": "https://hy.armradio.am/archives/753066",
+            "date": "2026-08-18T05:17:36.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2013/10/meteo-300x179.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "«Թաքնվել էին պարտքերի պատճառով»․ ինչ վիճակում են արմավիրցի գերհյուծված հայր ու որդին",
             "url": "https://hy.armradio.am/archives/752960",
             "date": "2026-08-17T17:45:00.000Z",
@@ -1190,13 +1197,6 @@
             "url": "https://hy.armradio.am/archives/752920",
             "date": "2026-08-17T12:52:17.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/02.3-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Կարեն Դեմիրճյան փողոցում օգոստոսի 18-ից մինչև 31-ը ներառյալ երթևեկությունը կդադարեցվի՝ մայթերի բարեկարգման աշխատանքներով պայմանավորված",
-            "url": "https://hy.armradio.am/archives/752917",
-            "date": "2026-08-17T12:47:40.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/ScreenShot-3692-300x188.png",
             "category": "Կարևոր"
           }
         ]
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Մոսկվան ենթարկվել է վերջին երկու տարվա մեջ ամենախոշոր հարվածին",
+            "url": "https://hy.armradio.am/archives/753057",
+            "date": "2026-08-18T04:36:20.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/photo_2026-08-18_08-35-07-768x576.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թուփաք Շաքուրի սպանությունից 30 տարի անց սկսվել է այդ գործով դատավարությունը",
             "url": "https://hy.armradio.am/archives/753054",
             "date": "2026-08-18T04:17:11.000Z",
@@ -1415,13 +1422,6 @@
             "url": "https://hy.armradio.am/archives/752792",
             "date": "2026-08-17T04:50:51.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/70fefcb0-9992-11f1-a7ab-8b30adf0800a.jpg-768x432.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Քուշները հանդիպել է ՀԱՄԱՍ-ի առաջնորդի հետ Գազայի խաղաղության ծրագիրը քննարկելու համար",
-            "url": "https://hy.armradio.am/archives/752788",
-            "date": "2026-08-17T04:39:08.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/773c9aad-853a-4d02-a1f2-01ed9d5eb898-768x432.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2705,16 +2705,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786761171-6189.jpg"
         },
         {
-          "title": "La décision sur l’avenir de la participation de l’Arménie à l’OTSC doit être prise dans des délais raisonnables, selon Masadikov",
-          "url": "https://armenieinfo.tv/la-decision-sur-lavenir-de-la-participation-de-larmenie-a-lotsc-doit-etre-prise-dans-des-delais-raisonnables-selon-masadikov/",
-          "date": "2026-08-17T07:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786876375-4244.jpg"
-        },
-        {
           "title": "L’Arménie offrira un paiement unique de 1 400 $ pour chaque nouveau-né",
           "url": "https://armenieinfo.tv/larmenie-offrira-un-paiement-unique-de-1-400-pour-chaque-nouveau-ne-2/",
           "date": "2026-08-17T07:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786761320-9673.jpg"
+        },
+        {
+          "title": "La décision sur l’avenir de la participation de l’Arménie à l’OTSC doit être prise dans des délais raisonnables, selon Masadikov",
+          "url": "https://armenieinfo.tv/la-decision-sur-lavenir-de-la-participation-de-larmenie-a-lotsc-doit-etre-prise-dans-des-delais-raisonnables-selon-masadikov/",
+          "date": "2026-08-17T07:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1786876375-4244.jpg"
         },
         {
           "title": "Mer Caspienne : Moscou et Téhéran opteront-ils pour des «outils souples» ?",
@@ -3702,6 +3702,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "European Stocks down - 17-08-26",
+            "url": "https://armenpress.am/en/article/1258204",
+            "date": "2026-08-18T04:56:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/cFXkyYxEN2CDTlvOaMIBfSHak9OyjCh7qGe8BOuh.webp"
+          },
+          {
+            "title": "US stocks down - 17-08-26",
+            "url": "https://armenpress.am/en/article/1258203",
+            "date": "2026-08-18T04:55:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/RczO4H6EKzBVPWMYREd38P05eBGZE7d16742elPb.webp"
+          },
+          {
+            "title": "Oil Prices Up - 17-08-26",
+            "url": "https://armenpress.am/en/article/1258201",
+            "date": "2026-08-18T04:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/KXp8FNfTn9nYheYQXomuDT8C3mlBau7ZhSyHNx4g.webp"
+          },
+          {
+            "title": "NYMEX: Precious Metals Prices Up - 17-08-26",
+            "url": "https://armenpress.am/en/article/1258202",
+            "date": "2026-08-18T04:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/d0XoyUTXUnjek7fBSZoRcqEJHLNYakdCbHqEufZI.webp"
+          },
+          {
             "title": "Asian Stocks - 17-08-26",
             "url": "https://armenpress.am/en/article/1258174",
             "date": "2026-08-17T12:44:00.000Z",
@@ -3736,30 +3760,6 @@
             "url": "https://armenpress.am/en/article/1258074",
             "date": "2026-08-15T07:02:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/08/nZl1l7uRbHdyjjQxS7UQKgA93TjDZdD097Kr6krS.webp"
-          },
-          {
-            "title": "Major energy reforms underway with state support, says ENA executive",
-            "url": "https://armenpress.am/en/article/1258051",
-            "date": "2026-08-14T12:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/ez79hAmXrLx1HpURPYaDs2j35SWdjnRjri9AaRoB.webp"
-          },
-          {
-            "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 14/08/26",
-            "url": "https://armenpress.am/en/article/1258052",
-            "date": "2026-08-14T12:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/Pp1ZLiblJYM3xCiKw2Qp2tYRcqlirVWFVtanNYXb.webp"
-          },
-          {
-            "title": "Asian Stocks down - 14/08/26",
-            "url": "https://armenpress.am/en/article/1258050",
-            "date": "2026-08-14T12:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/IVjlAqVCu9K3kYzpkcoypa9yWSh242jCI9HLUPJJ.webp"
-          },
-          {
-            "title": "Financial literacy at the Republican Center for Children and Youth Tent Camp: Idram & IDBank",
-            "url": "https://armenpress.am/en/article/1258037",
-            "date": "2026-08-14T11:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/c8oytyR9NXSDmK4yhFhLNduAdgvVgKO6xJhfwJiv.webp"
           }
         ]
       },
@@ -4159,6 +4159,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "Եվրոպական ինդեքսները նվազել են - 17/08/26",
+            "url": "https://armenpress.am/hy/article/1258204",
+            "date": "2026-08-18T04:55:58.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/cFXkyYxEN2CDTlvOaMIBfSHak9OyjCh7qGe8BOuh.webp"
+          },
+          {
+            "title": "Ամերիկյան ինդեքսները նվազել են - 17/08/26",
+            "url": "https://armenpress.am/hy/article/1258203",
+            "date": "2026-08-18T04:55:04.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/RczO4H6EKzBVPWMYREd38P05eBGZE7d16742elPb.webp"
+          },
+          {
+            "title": "NYMEX. Թանկարժեք մետաղների գներն աճել են - 17/08/26",
+            "url": "https://armenpress.am/hy/article/1258202",
+            "date": "2026-08-18T04:54:14.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/d0XoyUTXUnjek7fBSZoRcqEJHLNYakdCbHqEufZI.webp"
+          },
+          {
+            "title": "Նավթի գներն աճել են - 17/08/26",
+            "url": "https://armenpress.am/hy/article/1258201",
+            "date": "2026-08-18T04:53:23.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/KXp8FNfTn9nYheYQXomuDT8C3mlBau7ZhSyHNx4g.webp"
+          },
+          {
             "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ - 17/08/26",
             "url": "https://armenpress.am/hy/article/1258175",
             "date": "2026-08-17T12:44:41.000Z",
@@ -4193,30 +4217,6 @@
             "url": "https://armenpress.am/hy/article/1258077",
             "date": "2026-08-15T07:06:09.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/14/FJOAiNY5zCkxdlrSomAcxlJUBpiL5Fbc8XRKlUsM.webp"
-          },
-          {
-            "title": "Ամերիկյան ինդեքսները նվազել են - 14/08/26",
-            "url": "https://armenpress.am/hy/article/1258076",
-            "date": "2026-08-15T07:04:50.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "NYMEX. Թանկարժեք մետաղների գներն աճել են - 14/08/26",
-            "url": "https://armenpress.am/hy/article/1258075",
-            "date": "2026-08-15T07:03:39.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/11/09EWA6nPuQXWpuygEttFjMVkEY7TQ6py9BZZogmX.webp"
-          },
-          {
-            "title": "Նավթի գներն աճել են - 14/08/26",
-            "url": "https://armenpress.am/hy/article/1258074",
-            "date": "2026-08-15T07:02:34.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/08/nZl1l7uRbHdyjjQxS7UQKgA93TjDZdD097Kr6krS.webp"
-          },
-          {
-            "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ - 14/08/26",
-            "url": "https://armenpress.am/hy/article/1258052",
-            "date": "2026-08-14T12:48:23.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/Pp1ZLiblJYM3xCiKw2Qp2tYRcqlirVWFVtanNYXb.webp"
           }
         ]
       },
@@ -4616,6 +4616,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "Европейские индексы снизились - 17-08-26",
+            "url": "https://armenpress.am/ru/article/1258204",
+            "date": "2026-08-18T04:56:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/cFXkyYxEN2CDTlvOaMIBfSHak9OyjCh7qGe8BOuh.webp"
+          },
+          {
+            "title": "Американские индексы снизились - 17-08-26",
+            "url": "https://armenpress.am/ru/article/1258203",
+            "date": "2026-08-18T04:55:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/RczO4H6EKzBVPWMYREd38P05eBGZE7d16742elPb.webp"
+          },
+          {
+            "title": "Цены на драгоценные металлы выросли - 17-08-26",
+            "url": "https://armenpress.am/ru/article/1258202",
+            "date": "2026-08-18T04:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/d0XoyUTXUnjek7fBSZoRcqEJHLNYakdCbHqEufZI.webp"
+          },
+          {
+            "title": "Цены на нефть выросли - 17-08-26",
+            "url": "https://armenpress.am/ru/article/1258201",
+            "date": "2026-08-18T04:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/18/KXp8FNfTn9nYheYQXomuDT8C3mlBau7ZhSyHNx4g.webp"
+          },
+          {
             "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 17-08-26",
             "url": "https://armenpress.am/ru/article/1258175",
             "date": "2026-08-17T12:44:00.000Z",
@@ -4650,30 +4674,6 @@
             "url": "https://armenpress.am/ru/article/1258074",
             "date": "2026-08-15T07:02:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/08/nZl1l7uRbHdyjjQxS7UQKgA93TjDZdD097Kr6krS.webp"
-          },
-          {
-            "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 14/08/26",
-            "url": "https://armenpress.am/ru/article/1258052",
-            "date": "2026-08-14T12:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/Pp1ZLiblJYM3xCiKw2Qp2tYRcqlirVWFVtanNYXb.webp"
-          },
-          {
-            "title": "Азиатские индексы снизились - 14/08/26",
-            "url": "https://armenpress.am/ru/article/1258050",
-            "date": "2026-08-14T12:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/IVjlAqVCu9K3kYzpkcoypa9yWSh242jCI9HLUPJJ.webp"
-          },
-          {
-            "title": "Финансовая грамотность в палаточном лагере Республиканского центра детей и подростков: Idram и IDBank",
-            "url": "https://armenpress.am/ru/article/1258037",
-            "date": "2026-08-14T11:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/c8oytyR9NXSDmK4yhFhLNduAdgvVgKO6xJhfwJiv.webp"
-          },
-          {
-            "title": "Бабкен Тунян предлагает создать в Национальном Собрании Армении рабочую группу по экономическим вопросам",
-            "url": "https://armenpress.am/ru/article/1258010",
-            "date": "2026-08-14T08:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/14/YxcJQw9x0SMZIop5qme6mZCU6UxpK27kcpruJTSp.webp"
           }
         ]
       },
@@ -6141,6 +6141,24 @@
         "label": "Վերջին Լուրեր",
         "articles": [
           {
+            "title": "Դժուարութիւնների եւ փորձութիւնների միջով անցնելով՝ մարդը շատ աւելի սթափ է սկսում գնահատել իր իրական հարստութիւնը. Գագիկ Ծառուկեան",
+            "url": "https://www.oragark.com/hy/gagik-dzarukyan-letter/",
+            "date": "2026-08-18T05:22:24.000Z",
+            "image": null
+          },
+          {
+            "title": "Հայոց պետականութեան հիմունքները",
+            "url": "https://www.oragark.com/hy/the-foundations-of-armenian-statehood/",
+            "date": "2026-08-18T05:19:48.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/08/Tatool-Ohanian-780x470-1-768x463.jpg"
+          },
+          {
+            "title": "ՀՕՄը կը շարունակէ մարդասիրական կենսական օժանդակութիւն տրամադրել կարիքաւոր լիբանանահայերու",
+            "url": "https://www.oragark.com/hy/the-ars-continues-to-deliver-humanitarian-assistance-lebanese-armenians/",
+            "date": "2026-08-18T05:15:35.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/08/Support-The-Armenians-in-Lebanon-1-768x960.png"
+          },
+          {
             "title": "Ցեղասպանութեան միջազգային ճանաչումը նախ եւ առաջ Հայաստանի Հանրապետութեան անվտանգութեանն առնչուող խնդիր է. Քրիստինէ Վարդանեան",
             "url": "https://www.oragark.com/hy/nternational-recognition-of-the-genocide-is-a-matter-of-security-of-the-republic-of-armenia-christine-vardanyan/",
             "date": "2026-08-15T06:26:58.000Z",
@@ -6181,24 +6199,6 @@
             "url": "https://www.oragark.com/hy/alen-simonyan-appointed-secretary-of-the-national-security-council/",
             "date": "2026-08-14T07:19:53.000Z",
             "image": "https://www.oragark.com/wp-content/uploads/2026/08/images-12-300x196.jpg"
-          },
-          {
-            "title": "Սպահանի հայոց թեմի յայտարարութիւն",
-            "url": "https://www.oragark.com/hy/statement-from-the-armenian-diocese-of-isfahan/",
-            "date": "2026-08-14T07:02:13.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/08/esfahan-tem-278x300.jpg"
-          },
-          {
-            "title": "Արցախի քաղաքական գործիչները թեժ քննարկումների մէջ են",
-            "url": "https://www.oragark.com/hy/artsakh-politicians-are-in-heated-discussions/",
-            "date": "2026-08-14T06:54:00.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/08/artsakh-rep-danielyan-768x576.jpg"
-          },
-          {
-            "title": "Էրտողանի կողմէ Ցեղասպանութեան ժխտումը աւելի մեծ ուշադրութիւն կը հրաւիրէ թրքական զանգուածային ոճիրներուն վրայ",
-            "url": "https://www.oragark.com/hy/erdogans-denial-of-genocide-attracts-more-attention-to-turkish-mass-crimes-2/",
-            "date": "2026-08-14T06:44:07.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2022/08/SASounian-768x432.jpg"
           }
         ]
       }
@@ -9427,6 +9427,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Արման Ծառուկյանի նոր մականունը",
+            "url": "https://sport.news.am/arm/news/168376/",
+            "date": "2026-08-18T05:04:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168376.jpg"
+          },
+          {
             "title": "Ռոդրի․ «Բարսելոնայում» խաղալն իմ երազանքն է (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168375/",
             "date": "2026-08-17T19:28:00.000Z",
@@ -9479,12 +9485,6 @@
             "url": "https://sport.news.am/arm/news/168367/",
             "date": "2026-08-17T13:22:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168367.jpg"
-          },
-          {
-            "title": "Մ-19 ԵԱ. Հայաստանի 5 ներկայացուցիչ քառորդ եզրափակիչում է",
-            "url": "https://sport.news.am/arm/news/168366/",
-            "date": "2026-08-17T12:48:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168366.jpg"
           }
         ]
       },
@@ -9559,6 +9559,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ՕԳՈՍՏՈՍԻ 18-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
+            "url": "https://style.news.am/arm/news/115653/",
+            "date": "2026-08-18T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115653.jpg"
+          },
+          {
             "title": "«Շքեղ պոռնո» և Սիլիկոնյան հովտի գաղտնիքները. Ինչպես Anthropic-ի միլիարդատիրոջ կինը փորձեց Ջեֆրի Էպշտեյնին գրավել իր պոռնոնախագծով",
             "url": "https://style.news.am/arm/news/115652/",
             "date": "2026-08-17T19:01:00.000Z",
@@ -9611,12 +9617,6 @@
             "url": "https://style.news.am/arm/news/115645/",
             "date": "2026-08-17T11:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115645.jpg"
-          },
-          {
-            "title": "Մահացու սելֆիներ. Ինչի՞ է հանգեցնում ազդեցիկ անձանց՝ շնաձկան սելֆիների նկատմամբ մոլուցքը",
-            "url": "https://style.news.am/arm/news/115644/",
-            "date": "2026-08-17T10:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115644.jpg"
           }
         ]
       },
@@ -10089,6 +10089,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Арман Царукян объявил свое новое прозвище в UFC",
+            "url": "https://sport.news.am/rus/news/168376/",
+            "date": "2026-08-18T05:04:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168376.jpg"
+          },
+          {
             "title": "Родри прибыл в Барселону (видео)",
             "url": "https://sport.news.am/rus/news/168375/",
             "date": "2026-08-17T19:28:00.000Z",
@@ -10141,12 +10147,6 @@
             "url": "https://sport.news.am/rus/news/168357/",
             "date": "2026-08-17T08:19:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168357.jpg"
-          },
-          {
-            "title": "Наир Тикнизян прибыл в Грецию и подпишет контракт с «Олимпиакосом»",
-            "url": "https://sport.news.am/rus/news/168362/",
-            "date": "2026-08-17T08:11:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168362.jpg"
           }
         ]
       },
@@ -10221,6 +10221,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 18 АВГУСТА",
+            "url": "https://style.news.am/rus/news/115653/",
+            "date": "2026-08-18T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115653.jpg"
+          },
+          {
             "title": "«Люксовое порно» и тайны Кремниевой долины: как жена миллиардера Anthropic пыталась привлечь Джеффри Эпштейна в свой порно-проект",
             "url": "https://style.news.am/rus/news/115652/",
             "date": "2026-08-17T19:01:00.000Z",
@@ -10273,12 +10279,6 @@
             "url": "https://style.news.am/rus/news/115645/",
             "date": "2026-08-17T11:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115645.jpg"
-          },
-          {
-            "title": "Смертельные селфи: к чему приводит одержимость инфлюенсеров селфи с акулами",
-            "url": "https://style.news.am/rus/news/115644/",
-            "date": "2026-08-17T10:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115644.jpg"
           }
         ]
       },
