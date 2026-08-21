@@ -21,7 +21,8 @@
     "screenshot": "node scripts/shoot.mjs",
     "radio-check": "node scripts/radio-check.mjs",
     "og-image": "node scripts/og-image.mjs",
-    "prerender": "node scripts/prerender.mjs"
+    "prerender": "node scripts/prerender.mjs",
+    "fonts-sync": "node scripts/fonts-sync.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

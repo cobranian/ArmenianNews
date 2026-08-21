@@ -5,6 +5,12 @@
    Armenian flag; basalt & tufa are the country's stone.
    ============================================================ */
 
+/* Les @font-face — GÉNÉRÉS par `npm run fonts-sync` (scripts/fonts-sync.mjs),
+   auto-hébergés dans public/fonts/. Vite inline cet import dans la feuille
+   du bundle : une seule requête CSS, même origine, plus de feuille Google
+   bloquante. Voir la section « Familles » plus bas pour le casting. */
+@import './fonts.css';
+
 :root {
   /* --- Volcanic ground --- */
   --basalt: #100f0d;

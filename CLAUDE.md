@@ -73,7 +73,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 209 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 219 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -82,9 +82,10 @@ npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
+npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **209 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **219 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -722,6 +723,26 @@ redéfinis plus bas, où une règle groupée se ferait écraser à spécificité
 Et **ne mesurez jamais une hauteur de capitale sur un rendu de 11px** : le
 rasteur y arrondit et exagère l'écart — c'est ce qui avait produit une
 sur-correction de 6 % sur la pastille arménienne.
+
+**Les polices sont auto-hébergées, et ce sont les fichiers mêmes de Google
+Fonts.** `public/fonts/` (62 woff2, 1,5 Mo, découpés par `unicode-range`
+comme Google les servait), `src/styles/fonts.css` (107 `@font-face`, importé
+en tête de `global.css`) et le manifeste `src/styles/fonts.json` sont tous
+trois **écrits par `npm run fonts-sync`** (`scripts/fonts-sync.mjs`) — ne les
+éditez pas à la main, et ne remettez pas de `<link>` `fonts.googleapis.com`
+dans `index.html` : ajoutez la famille à `FONTS_CSS2` et relancez. La feuille
+Google était une ressource bloquante cross-origin — ~800 ms sur le premier
+rendu mobile (Lighthouse, 21 août 2026), 1,7 s avant le premier pixel même
+JavaScript désactivé. Les glyphes n'ont pas bougé d'un pixel (captures
+avant/après sur fr/en/hy/ru, 1400 et 390 px). `site-meta.mjs` **précharge par
+langue** les 2 à 4 fichiers du premier écran (table `PRELOAD` : Fraunces
+italique + romain et Hanken sous fr/en, les deux Noto arméniennes sous hy,
+Fraunces italique + Literata + Golos sous ru) ; une entrée absente du
+manifeste fait échouer le build. `firebase.json` met `fonts/**` en cache
+immuable — **sur les deux cibles**, comme `headers`. `test/fonts.test.mjs`
+garde la cohérence des trois artefacts et l'absence de Google dans
+`index.html`. Les pages autonomes (`pages/lien*.html`) et `og-image.mjs`, eux,
+chargent encore Google Fonts : ce sont des HTML hors bundle, rarement servis.
 
 **Les deux tambours (mobile, ≤640px).** `src/components/useSourceDrum.js` est un
 hook générique : il pose sur des éléments l'angle (`--a`) et l'opacité (`--o`)
