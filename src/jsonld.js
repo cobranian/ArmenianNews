@@ -71,7 +71,10 @@ export function radioJsonLd(lang, t) {
         // Les champs absents de la fiche sont absents du balisage : baliser un
         // fait qu'on n'affiche pas serait affirmer sans source par une autre
         // porte.
-        ...(STATION_FACTS[id].city ? { areaServed: STATION_FACTS[id].city } : {}),
+        // `city` est une clé (src/stations.js) : on émet le nom dans la langue
+        // de la page, comme la fiche affichée — plus « Երևան » sur /radio/ en
+        // français.
+        ...(STATION_FACTS[id].city ? { areaServed: t(`radio.city.${STATION_FACTS[id].city}`) } : {}),
         ...(STATION_FACTS[id].langue ? { inLanguage: STATION_FACTS[id].langue } : {}),
       },
     })),

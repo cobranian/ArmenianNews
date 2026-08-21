@@ -29,7 +29,10 @@ export const SEO = {
       'Armenian news, Armenia, Artsakh, Armenian diaspora, Armenian events, Armenian community',
   },
   hy: {
-    tagline: 'Հայկական լուրեր, միջոցառումներ և սոցիալական ցանցեր',
+    // Raccourcie (le <title> faisait 65 caractères avec la marque, coupé
+    // vers 60 dans les résultats) : la description porte déjà les quatre
+    // piliers, le titre n'a besoin que des deux qu'on cherche.
+    tagline: 'Հայկական լուրեր և միջոցառումներ',
     description:
       'Հայկական լուրեր, տասնհինգ ռադիոկայան ուղիղ եթերում, միջոցառումներ և սոցիալական ցանցեր Հայաստանից և սփյուռքից, թարմացվում է ամեն ժամ։',
     keywords:
@@ -91,7 +94,10 @@ export const VIEW_SEO = {
   // surveiller. Ne le réintroduisez pas.
   agenda: {
     fr: {
-      title: 'Agenda arménien : événements en Suisse et dans le monde',
+      // 70 caractères avec la marque dans l'ancienne forme (« … : événements
+      // en Suisse et dans le monde ») : Google coupe vers 60, la marque
+      // sautait. 48 désormais. Le mot-clé reste en tête.
+      title: 'Agenda arménien : Suisse et monde',
       description:
         'Concerts, conférences et rassemblements de la diaspora arménienne, en Suisse et dans le monde : agenda recensé depuis Armenopole et mis à jour chaque heure.',
     },
@@ -110,6 +116,35 @@ export const VIEW_SEO = {
       description:
         'Концерты, лекции и встречи армянской диаспоры по всему миру: календарь событий с Armenopole, обновляемый каждый час.',
     },
+  },
+}
+
+// La page « À propos » : qui édite, d'où, avec quelles sources et quelles
+// règles. Le titre mène par « À propos » + la marque — ici la marque EST le
+// sujet, comme sur l'accueil.
+VIEW_SEO.about = {
+  fr: {
+    title: 'À propos',
+    description:
+      // AUCUN NOMBRE ici (ni rédactions, ni radios) : les comptes gardés par
+      // test/radio-count et test/source-count sont ceux des textes listés là ;
+      // un chiffre de plus, ici, vieillirait en silence.
+      'Qui édite Arménie Info, d’où, avec quelles sources et quelles règles : rédactions, radios en direct et agenda arméniens, chaque heure, sans publicité ni compte.',
+  },
+  en: {
+    title: 'About',
+    description:
+      'Who runs Armenia News, from where, with which sources and rules: Armenian newsrooms, live radio and diaspora events, gathered every hour, no ads, no account.',
+  },
+  hy: {
+    title: 'Կայքի մասին',
+    description:
+      'Ով է վարում Armenia News-ը և ինչ կանոններով․ հայկական խմբագրություններ, ուղիղ ռադիո և սփյուռքի միջոցառումներ՝ ամեն ժամ, առանց գովազդի և հաշվի։',
+  },
+  ru: {
+    title: 'О сайте',
+    description:
+      'Кто ведёт Armenia News и по каким правилам: армянские редакции, радио в прямом эфире и события диаспоры — каждый час, без рекламы и регистрации.',
   },
 }
 

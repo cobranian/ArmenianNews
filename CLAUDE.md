@@ -69,11 +69,11 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 12 pages produites (lang, canonical, hreflang réciproques) et les 2 sitemaps/robots
-npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
+npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : lang, canonical, hreflang réciproques), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
+npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 219 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 234 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -85,7 +85,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **219 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **234 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -541,10 +541,13 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   fichier absent.
 
   `lien` affiche le domaine qui la sert — son URL et son contenu concordent.
-  `lien-fr` est la même carte tournée vers le public français, d'où son
-  **`noindex`** : deux pages françaises quasi identiques sur un même domaine,
-  c'est du contenu dupliqué. Le `noindex` ne gêne en rien le partage social,
-  Facebook et WhatsApp lisant l'Open Graph et non la directive robots.
+  `lien-fr` est la même carte tournée vers le public français. **Les trois
+  cartes sont en `noindex`** (lien-fr depuis toujours, les deux autres depuis
+  l'audit du 21 août 2026) : une carte indexable est une page de 15 ko qui dit
+  la même chose que l'accueil sous un autre titre, un doublon qui concurrence
+  la page qu'elle annonce. Le `noindex` ne gêne en rien le partage social,
+  Facebook et WhatsApp lisant l'Open Graph et non la directive robots ;
+  `npm run check` l'exige désormais sur chaque carte.
 
   Un fichier manquant **interrompt le build**. Sans cela il se déploierait en
   silence, et une URL déjà partagée répondrait 404. `npm run check` vérifie en
@@ -598,10 +601,19 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   documenté en tête du module et figé par `test/agenda-events.test.mjs`.
 
 **Les vues.** Une page n'est plus seulement un couple (vitrine, langue) mais un
-**triplet** (vitrine, langue, vue). Trois vues existent : `home` (l'accueil,
+**triplet** (vitrine, langue, vue). Quatre vues existent : `home` (l'accueil,
 déjà là sans porter de nom jusqu'ici), `radio` et `agenda` — les deux pages
 piliers qui donnent une URL propre aux deux jeux de données que ce site est
-seul à agréger. La table `VIEWS` vit dans `sites.config.js`, à côté de
+seul à agréger — et `about` (`/a-propos/`, `/about/`), la page qui dit qui
+édite, d'où, avec quelles sources et quelles règles (ajoutée après l'audit
+SEO du 21 août 2026 : un agrégateur que personne ne signe se lit comme une
+ferme de liens). **Ajouter une vue touche sept endroits**, et deux d'entre
+eux ne préviennent pas : `VIEWS` (`sites.config.js`), `VIEW_SEO` (`src/seo.js`,
+sinon `site-meta` lance), la route d'`App.jsx`, le composant, `SANS_AGENDA`
+dans `scripts/lib/agenda-guard.mjs` (une vue inconnue fait échouer `check`,
+mais une vue **mal classée** laisserait passer des `Event`), le bloc « Pages »
+du pied de page et la page 404 (silencieux tous deux : la page existerait sans
+lien entrant). `test/about.test.mjs` montre le tour complet. La table `VIEWS` vit dans `sites.config.js`, à côté de
 `LANG_URL` : tout en dérive (`urlFor(lang, view)`, `pathFor(lang, view)`,
 `viewFromPath(siteId, pathname)`) — **aucune URL n'est écrite à la main** en
 dehors des tests.

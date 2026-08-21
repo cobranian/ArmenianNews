@@ -1,4 +1,6 @@
 import { useI18n } from '../i18n.jsx'
+import { pathFor } from '../../sites.config.js'
+import { VIEW_SEO } from '../seo.js'
 import { KnotMark } from './Ornament.jsx'
 
 const SOURCES = [
@@ -15,12 +17,31 @@ const SOURCES = [
 const CONTACT = 'contact@armenieinfo.ch'
 
 export function Footer() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  // Les trois pages du site, dans la langue de la page — sur les douze pages.
+  // Avant l'audit du 21 août 2026, l'accueil portait 264 liens sortants pour
+  // DEUX liens vers ses propres pages piliers, et /radio/ ne liait jamais
+  // /agenda/ : le PageRank interne restait sur l'accueil. Les libellés sont
+  // ceux des <title> des vues (VIEW_SEO), pour que l'ancre dise ce que la page
+  // cible annonce à Google.
+  const pages = [
+    [pathFor(lang, 'home'), t('footer.home')],
+    [pathFor(lang, 'radio'), VIEW_SEO.radio[lang].title],
+    [pathFor(lang, 'agenda'), VIEW_SEO.agenda[lang].title],
+    [pathFor(lang, 'about'), VIEW_SEO.about[lang].title],
+  ]
   return (
     <footer className="footer">
       <div className="container">
         <KnotMark />
         <div className="footer__title">{t('site.title')}</div>
+        <nav className="footer__pages" aria-label={t('footer.pages')}>
+          {pages.map(([href, label]) => (
+            <a key={href} href={href}>
+              {label}
+            </a>
+          ))}
+        </nav>
         <nav className="footer__sources" aria-label={t('footer.sources')}>
           {SOURCES.map(([label, url]) => (
             <a key={url} href={url} rel="noopener noreferrer">

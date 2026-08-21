@@ -27,6 +27,9 @@ export const SITES = {
     // Organization).
     alternateName: ['Armenia Info', 'Արմենիա Ինֆո'],
     email: 'contact@armenieinfo.ch',
+    // Qui édite — le nom sous lequel le site se signe (page « À propos »,
+    // `founder` de l'Organization). Une seule source, les deux vitrines.
+    editor: 'Nano of Sassoun',
     // Carte de partage (og:image), propre à la vitrine : elle porte la marque
     // ET la langue du domaine, donc elle ne peut pas être partagée. Chemin
     // depuis la racine du domaine ; le fichier vit dans public/.
@@ -98,6 +101,9 @@ export const SITES = {
     // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
     // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
     email: 'contact@armenieinfo.ch',
+    // Qui édite — le nom sous lequel le site se signe (page « À propos »,
+    // `founder` de l'Organization). Une seule source, les deux vitrines.
+    editor: 'Nano of Sassoun',
     // Carte de partage ANGLAISE — voir le commentaire du .ch pour la raison des
     // deux noms différents. Régénérer avec `npm run og-image`.
     ogImage: '/og-image-org.jpg',
@@ -212,6 +218,11 @@ export const VIEWS = {
   // d'événements : le mot cherché est « events ». C'est la seule vue dont le
   // slug change d'une langue à l'autre, et c'est la raison d'être de la table.
   agenda: { slugs: { fr: 'agenda/', en: 'events/', hy: 'events/', ru: 'events/' } },
+  // « À propos » — qui édite, d'où, avec quelles sources et quelles règles.
+  // Ajoutée après l'audit SEO du 21 août 2026 : un agrégateur que personne ne
+  // signe se lit comme une ferme de liens. Même règle de slug que `events` :
+  // latin partout, traduit là où le mot change (a-propos / about).
+  about: { slugs: { fr: 'a-propos/', en: 'about/', hy: 'about/', ru: 'about/' } },
 }
 
 // Un slug sans ses slashes de bord. Sert à COMPARER (viewFromPath) là où

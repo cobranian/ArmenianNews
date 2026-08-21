@@ -1,6 +1,7 @@
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
 import { STATION_FACTS } from '../stations.js'
+import { VIEW_SEO } from '../seo.js'
 import { radioJsonLd } from '../jsonld.js'
 import { Radio } from './Radio.jsx'
 
@@ -32,7 +33,10 @@ export function RadioPage() {
             {ids.map((id) => {
               const f = STATION_FACTS[id]
               const champs = [
-                ['radio.page.city', f.city],
+                // `city` est une clé (yerevan, beirut, glendale) : « Երևան »
+                // s'affichait tel quel sous fr/en/ru. Même règle que genre et
+                // langue, gardée par test/stations.test.mjs.
+                ['radio.page.city', f.city && t(`radio.city.${f.city}`)],
                 ['radio.page.genre', f.genre && t(`radio.genre.${f.genre}`)],
                 ['radio.page.lang', f.langue && t(`radio.page.lang.${f.langue}`)],
                 ['radio.page.fm', f.fm && `${f.fm} MHz`],
@@ -56,6 +60,13 @@ export function RadioPage() {
           </ul>
           <p className="viewpage__back">
             <a href={pathFor(lang, 'home')}>{t('radio.page.home')}</a>
+          </p>
+          {/* Le pont radio ⇄ agenda : chaque page pilier lie l'autre, dans sa
+              langue — l'audit du 21 août 2026 avait mesuré qu'aucune des deux
+              ne le faisait. Le libellé est le <title> de la page cible. */}
+          <p className="viewpage__also">
+            {t('viewpage.also')}{' '}
+            <a href={pathFor(lang, 'agenda')}>{VIEW_SEO.agenda[lang].title}</a>
           </p>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { pathFor } from '../../sites.config.js'
 import { worldCountryKey, countryLabel, countryFlag } from '../worldPlace.js'
 import { evenementsAVenir } from '../agendaEvents.js'
 import { agendaJsonLd } from '../jsonld.js'
+import { VIEW_SEO } from '../seo.js'
 import agenda from '../data/agenda.json'
 
 // La vue /agenda : la liste COMPLÈTE, groupée par pays, là où l'accueil ne
@@ -76,6 +77,11 @@ export function AgendaPage() {
       <div className="container">
         <p className="viewpage__back">
           <a href={pathFor(lang, 'home')}>{t('agenda.page.home')}</a>
+        </p>
+        {/* Le pont agenda ⇄ radio — voir RadioPage.jsx, même raison. */}
+        <p className="viewpage__also">
+          {t('viewpage.also')}{' '}
+          <a href={pathFor(lang, 'radio')}>{VIEW_SEO.radio[lang].title}</a>
         </p>
       </div>
 

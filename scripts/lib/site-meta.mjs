@@ -125,6 +125,9 @@ function jsonLd(site, lang) {
       url: `${site.host}/`,
       email: site.email,
       description: SEO[lang].description,
+      // Qui signe le site (sites.config.js `editor`) : ce que la page
+      // « À propos » dit en clair, répété ici pour les machines.
+      ...(site.editor ? { founder: { '@type': 'Person', name: site.editor } } : {}),
       // Les deux marques se déclarent l'une l'autre : c'est ce qui les présente
       // comme des sites sœurs plutôt que comme deux copies concurrentes.
       sameAs: Object.values(SITES)

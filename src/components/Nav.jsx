@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
 import { orderedLangs, SITE_ID } from '../site.js'
-import { LANG_URL, langPath } from '../../sites.config.js'
+import { LANG_URL, langPath, pathFor } from '../../sites.config.js'
 import { KnotMark } from './Ornament.jsx'
 
 export function Nav({ view = 'home' }) {
@@ -27,10 +27,16 @@ export function Nav({ view = 'home' }) {
   // pages de vue ont une nav morte, et une page sans lien entrant interne ne
   // circule pas.
   const home = view === 'home' ? '' : langPath(SITE_ID, lang)
+  // Sur l'accueil, « En direct » et « Agenda » font défiler vers leur section
+  // (qui porte elle-même le lien vers la page pilier). Hors de l'accueil, ils
+  // mènent à la PAGE pilier de la langue courante (/radio/, /agenda/), pas à
+  // une ancre de l'accueil : c'est là qu'est la matière, et c'est ce qui relie
+  // radio ⇄ agenda entre elles — l'audit du 21 août 2026 avait mesuré qu'aucune
+  // des deux ne liait l'autre.
   const links = [
-    [`${home}#direct`, t('nav.radio')],
+    [view === 'home' ? '#direct' : pathFor(lang, 'radio'), t('nav.radio')],
     [`${home}#actualites`, t('nav.news')],
-    [`${home}#agenda`, t('nav.agenda')],
+    [view === 'home' ? '#agenda' : pathFor(lang, 'agenda'), t('nav.agenda')],
     [`${home}#reseaux`, t('nav.social')],
   ]
 

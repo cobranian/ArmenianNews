@@ -2428,6 +2428,75 @@ html:lang(hy) .nav__brand {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
+/* La page « À propos » : du texte courant, à une mesure lisible. Les familles
+   viennent des rôles (--font-body), donc les quatre écritures gardent leur
+   correction optique ; rien n'est redéfini ici. */
+.about__body {
+  max-width: 68ch;
+}
+.about__body p {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0 0 14px;
+}
+.about__body p a,
+.about__list a,
+.about__sources a {
+  color: var(--apricot-ink);
+}
+.about__list,
+.about__sources {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 18px;
+}
+.about__list li {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  padding: 8px 0 8px 18px;
+  border-left: 2px solid var(--line);
+  margin-bottom: 6px;
+}
+.about__sources li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1rem;
+}
+.about__langs {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+/* « Voir aussi » — le pont entre /radio/ et /agenda/. Même registre que le
+   retour à l'accueil juste au-dessus, le lien en abricot. */
+.viewpage__also {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.viewpage__also a {
+  color: var(--apricot-ink);
+}
 .viewpage__count {
   font-family: var(--font-mono);
   font-size-adjust: var(--fsa-util);
@@ -2978,6 +3047,31 @@ html:lang(hy) .nav__brand {
   margin-top: 8px;
   margin-bottom: 18px;
   letter-spacing: calc(-0.02em * var(--track-scale));
+}
+/* Les trois pages du site (maillage interne) — juste sous la marque, au-dessus
+   des sources, et seules à porter l'abricot avec le contact : ce sont les
+   liens qui restent dans le site, les sources en sortent. */
+.footer__pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  justify-content: center;
+  margin: 18px 0 6px;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.footer__pages a {
+  color: var(--apricot-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.footer__pages a:hover,
+.footer__pages a:focus-visible {
+  border-bottom-color: currentColor;
+  outline: none;
 }
 .footer__sources {
   display: flex;

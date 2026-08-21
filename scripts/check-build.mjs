@@ -295,6 +295,12 @@ for (const site of Object.values(SITES)) {
           lien.includes(`rel="canonical" href="${site.host}/${name}.html"`),
         ],
         [`og:image ${site.ogImage}`, lien.includes(`content="${site.host}${site.ogImage}"`)],
+        // noindex sur TOUTES les cartes de liens, pas seulement lien-fr : une
+        // carte indexable est une page de 15 ko qui dit la même chose que
+        // l'accueil sous un autre titre — un doublon qui se présente à Google
+        // en concurrent de la page qu'elle annonce. Le partage social n'en a
+        // pas besoin : Facebook et WhatsApp lisent l'Open Graph, pas robots.
+        ['noindex', /<meta name="robots" content="noindex/.test(lien)],
         // Les six balises, pas la seule `og:image`. Ces pages sont des HTML
         // complets hors du bundle : `site-meta.mjs` ne les voit pas, donc le
         // bloc complet qu'il pose sur les douze pages React n'y arrive JAMAIS

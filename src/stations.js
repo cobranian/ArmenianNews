@@ -26,7 +26,7 @@ export const STATION_FACTS = {
     // « How to Listen » affiche deux valeurs contradictoires pour Erevan
     // (103.8 ET 69.8 MHz, dans le même onglet) et Wikipédia en indique une
     // troisième (107.7). Aucune des trois n'est retenue — champ absent.
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'general',
     langue: 'hy',
     bitrate: '128',
@@ -37,7 +37,7 @@ export const STATION_FACTS = {
     ],
   },
   im: {
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'youth',
     langue: 'hy',
     fm: '103.8',
@@ -49,7 +49,7 @@ export const STATION_FACTS = {
     ],
   },
   arevik: {
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'kids',
     langue: 'hy',
     fm: '97.3',
@@ -76,7 +76,7 @@ export const STATION_FACTS = {
     // La fondation possède des bureaux à Erevan ET à Gyumri (les deux adresses
     // figurent au bas de radiomariam.am) : la ville d'émission retenue ici
     // vient d'un annuaire à monitoring audio (ACRCloud), qui pointe Erevan.
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'religious',
     langue: 'hy',
     fm: '104.1',
@@ -88,7 +88,7 @@ export const STATION_FACTS = {
   vov: {
     // Seule station du lot à ne pas émettre depuis l'Arménie : Radio Van émet
     // depuis le Liban, pour la diaspora arménienne du pays.
-    city: 'Beirut',
+    city: 'beirut',
     genre: 'news',
     langue: 'hy',
     fm: '94.7 / 95.0',
@@ -103,7 +103,7 @@ export const STATION_FACTS = {
   lav: {
     // Se décrit elle-même comme la première radio internet d'Arménie : aucune
     // fréquence FM n'est publiée nulle part, donc le champ reste absent.
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'music',
     langue: 'hy',
     bitrate: '256',
@@ -116,7 +116,7 @@ export const STATION_FACTS = {
   fama: {
     // Radio de l'Université pédagogique d'Erevan (« Առաջին Համալսարանական
     // Ռադիո »), pas une station musicale généraliste malgré son flux pop.
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'university',
     langue: 'hy',
     bitrate: '192',
@@ -129,7 +129,7 @@ export const STATION_FACTS = {
   yerevannights: {
     // Basée à Glendale (Californie), pas en Arménie malgré son nom — deux
     // annuaires indépendants s'accordent sur cette ville.
-    city: 'Glendale',
+    city: 'glendale',
     genre: 'music',
     langue: 'hy',
     bitrate: '128',
@@ -140,7 +140,7 @@ export const STATION_FACTS = {
     ],
   },
   gospel: {
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'religious',
     langue: 'hy',
     bitrate: '128',
@@ -166,7 +166,7 @@ export const STATION_FACTS = {
     // (Une autre page du même annuaire titre « 106.9 » pour une entrée
     // distincte du nom similaire : non retenue, elle ne correspond pas à ce
     // flux ni à la fiche détaillée de la station.)
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'jazz',
     fm: '89.3',
     bitrate: '256',
@@ -184,7 +184,7 @@ export const STATION_FACTS = {
     // une description d'annuaire : Աստվածաշունչ (Bible), Սուրբ հայրեր (Pères
     // de l'Église), Աղոթքներ (prières). C'est une radio d'Église, comme
     // mariam et gospel.
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'religious',
     langue: 'hy',
     fm: '91.1',
@@ -203,7 +203,7 @@ export const STATION_FACTS = {
     // 101.9 ; ils se contredisent entre eux, et le site prime sur les deux.
     // Seule la fréquence d'Erevan est retenue : ce réseau en compte neuf, et
     // le champ n'en porte qu'une.
-    city: 'Երևան',
+    city: 'yerevan',
     genre: 'general',
     langue: 'hy',
     fm: '102',
@@ -229,7 +229,7 @@ export const STATION_FACTS = {
     // « Beirut », en lettres latines, parce que `vov` — l'autre antenne
     // libanaise de la liste — l'écrit déjà ainsi. Deux graphies de la même
     // ville dans la même liste de fiches se verraient au premier coup d'œil.
-    city: 'Beirut',
+    city: 'beirut',
     genre: 'music',
     langue: 'hy',
     bitrate: '128',

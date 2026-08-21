@@ -56,6 +56,22 @@ test('chaque genre de station a son libelle dans les quatre langues', () => {
   }
 })
 
+test('chaque ville de station a son libelle dans les quatre langues', () => {
+  // Meme regle que les genres : `city` est une cle depuis l'audit du 21 aout
+  // 2026 — avant, « Երևան » etait ecrit en dur et s'affichait tel quel sur la
+  // page francaise (et partait dans RadioStation.areaServed).
+  const villes = [...new Set(Object.values(STATION_FACTS).map((f) => f.city).filter(Boolean))]
+  assert.ok(villes.length, 'aucune ville a verifier')
+  for (const v of villes) {
+    assert.match(v, /^[a-z]+$/, `${v} : une ville doit etre une cle ascii minuscule`)
+    assert.equal(
+      declarations(`radio.city.${v}`),
+      ALL_LANGS.length,
+      `radio.city.${v} manque dans un des quatre blocs STRINGS de src/i18n.jsx`,
+    )
+  }
+})
+
 test('chaque langue d antenne a son libelle dans les quatre langues', () => {
   const langues = [...new Set(Object.values(STATION_FACTS).map((f) => f.langue).filter(Boolean))]
   assert.ok(langues.length, 'aucune langue d antenne a verifier')
