@@ -73,7 +73,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 174 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 191 tests : dérivations de sites.config.js, page 404 et redirections Firebase, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -84,7 +84,7 @@ npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, résea
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **174 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **191 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -457,9 +457,8 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 
   **`public/og-image.jpg` subsiste, et ne doit pas être supprimé.** Plus
   aucune page ne le référence, mais des aperçus en circulation le pointent
-  encore — et Firebase réécrit tout chemin manquant vers `index.html` qu'il
-  sert en **200**, donc un scraper y lirait une image cassée plutôt qu'un 404
-  franc. C'est le même piège que celui déjà documenté pour une balise
+  encore, et un scraper qui le redemande doit trouver une image, pas un 404.
+  C'est le même piège que celui déjà documenté pour une balise
   `og:image` parfaite pointant un fichier absent. `npm run check` vérifie donc
   sa présence en plus de celle des deux cartes vives ; il n'est plus régénéré,
   et c'est sans conséquence — son seul rôle est de répondre.
@@ -473,7 +472,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   sa carte lui est antérieure et son URL est déjà partagée.
   `npm run check` vérifie que chaque page annonce **sa** carte, **aucune carte
   étrangère**, et que le fichier existe vraiment dans `dist/` — une balise
-  parfaite pointant sur un fichier absent servirait de l'`index.html` en 200,
+  parfaite pointant sur un fichier absent servirait un 404,
   que les scrapers lisent comme une image cassée. Les deux `dist/` contiennent
   **les deux** fichiers (Vite copie tout `public/`) : c'est sans conséquence,
   chaque vitrine ne référence que le sien.
@@ -547,8 +546,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   Facebook et WhatsApp lisant l'Open Graph et non la directive robots.
 
   Un fichier manquant **interrompt le build**. Sans cela il se déploierait en
-  silence, et Firebase répondrait à son URL par `index.html` en 200 — donc
-  l'application entière au lieu d'un 404 franc. `npm run check` vérifie en
+  silence, et une URL déjà partagée répondrait 404. `npm run check` vérifie en
   outre, pour chaque carte, le `<html lang>`, le canonical (propre à **cette**
   page), l'`og:image` et l'absence du domaine ou de la carte du voisin.
 
@@ -1189,6 +1187,20 @@ de production servent toujours depuis la racine de leur domaine.
   `x-default` sont identiques sur les quatre pages, chacune se citant
   elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc
   par Google — silencieusement. C'est pourquoi un seul générateur les produit.
+- **`firebase.json` n'a plus de rewrite `**` → `index.html`, et ne doit pas le
+  retrouver.** Ce catch-all servait l'accueil en **200** à toute URL inconnue
+  (`/does-not-exist`, `armenieinfo.ch/events/`, `armenianews.org/fr/`…) : des
+  soft 404 en nombre illimité, un doublon de l'accueil par lien cassé, mesuré
+  en production le 21 août 2026. Le site n'en a pas besoin — chaque vue est un
+  dossier réel, et la redirection `/radio` → `/radio/` est le comportement de
+  répertoire de Firebase, pas le rewrite. Depuis, `build-sites.mjs` écrit un
+  `404.html` par vitrine (`scripts/lib/not-found.mjs`, langue du domaine,
+  `noindex`, liens vers les trois vues de chaque langue), le bloc `redirects`
+  (dupliqué, comme `headers`) envoie les slugs jumeaux vers la vue du domaine
+  et `/fr/` du .org vers le .ch, et une étape du workflow **sonde la
+  production après le déploiement** — parce que ni `npm run check` ni les
+  tests ne voient un code HTTP. `test/not-found.test.mjs` garde la page et la
+  configuration.
 - **Le bloc `headers` de `firebase.json` est dupliqué** entre les deux cibles,
   CSP comprise. Ajouter un host de flux radio à `media-src` d'un seul côté
   passe la préversion et casse la lecture en production sur l'autre domaine.

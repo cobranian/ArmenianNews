@@ -285,3 +285,31 @@ jobs:
           armenia-news-org|armenia-news-b146e
           EOF
           exit $fail
+
+      # Ce que `npm run check` ne peut PAS voir : un code HTTP. Il compare des
+      # chaînes dans dist/ ; or le soft 404 — l'accueil servi en 200 à toute URL
+      # inconnue, par le rewrite ** → index.html — était une propriété de la
+      # configuration Firebase, pas du HTML. Il a tenu des semaines sans qu'un
+      # seul contrôle ne tombe. On sonde donc la production après chaque
+      # déploiement : une URL qui ne peut pas exister doit répondre 404, et le
+      # slug jumeau de l'autre langue doit rediriger. Quelques essais espacés,
+      # parce que le CDN met parfois une dizaine de secondes à servir la
+      # nouvelle version.
+      - name: Sonder la production (404 francs, slugs jumeaux)
+        run: |
+          probe() {  # url, code attendu
+            for i in 1 2 3 4; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' "$1")
+              [ "$code" = "$2" ] && { echo "✓ $1 → $code"; return 0; }
+              sleep 10
+            done
+            echo "::error::$1 répond $code, attendu $2"
+            return 1
+          }
+          fail=0
+          probe "https://armenieinfo.ch/sonde-404-$GITHUB_RUN_ID/" 404 || fail=1
+          probe "https://armenianews.org/sonde-404-$GITHUB_RUN_ID/" 404 || fail=1
+          probe "https://armenieinfo.ch/events/" 301 || fail=1
+          probe "https://armenianews.org/agenda/" 301 || fail=1
+          probe "https://armenianews.org/fr/" 301 || fail=1
+          exit $fail

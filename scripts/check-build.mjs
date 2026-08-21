@@ -206,12 +206,41 @@ for (const site of Object.values(SITES)) {
 for (const site of Object.values(SITES)) {
   const dir = path.join(root, 'dist', site.id)
 
+  // La page 404 de la vitrine : Firebase la sert avec un vrai statut 404 à
+  // toute URL sans fichier, depuis le retrait du rewrite ** → index.html. Sans
+  // elle, Firebase servirait sa propre page d'erreur, nue et en anglais — et
+  // rien ne le dirait, puisque le déploiement réussirait. On exige la langue
+  // du domaine, le noindex, et aucune URL du voisin.
+  try {
+    const nf = await readFile(path.join(dir, '404.html'), 'utf-8')
+    const kos = [
+      [`<html lang="${primaryLang(site.id)}">`, nf.includes(`<html lang="${primaryLang(site.id)}">`)],
+      ['noindex', /<meta name="robots" content="noindex/.test(nf)],
+      [
+        'aucun host du voisin',
+        Object.values(SITES)
+          .filter((s) => s.id !== site.id)
+          .every((s) => !nf.includes(s.host)),
+      ],
+    ]
+      .filter(([, ok]) => !ok)
+      .map(([n]) => n)
+    if (kos.length) {
+      console.error(`✗ dist/${site.id}/404.html\n    ${kos.join('\n    ')}`)
+      bad += kos.length
+    } else {
+      console.log(`✓ dist/${site.id}/404.html (${primaryLang(site.id)})`)
+    }
+  } catch {
+    console.error(`✗ dist/${site.id}/404.html — absent (scripts/lib/not-found.mjs)`)
+    bad++
+  }
+
   // La balise og:image peut être parfaite et le fichier absent : `ogImage` est
   // une chaîne dans sites.config.js, rien n'oblige quiconque à l'avoir généré.
-  // Le partage servirait alors un 404 — et comme Firebase réécrit tout chemin
-  // manquant vers index.html, ce ne serait même pas un 404 franc mais du HTML
-  // servi en 200, que les scrapers lisent comme une image cassée. On vérifie
-  // donc le fichier, et qu'il pèse quelque chose.
+  // Le partage servirait alors un 404, que les scrapers lisent comme une image
+  // cassée (du temps du rewrite ** → index.html, c'était même du HTML servi en
+  // 200 à sa place). On vérifie donc le fichier, et qu'il pèse quelque chose.
   const ogPath = path.join(dir, site.ogImage.replace(/^\//, ''))
   try {
     const { size } = await stat(ogPath)
@@ -226,10 +255,10 @@ for (const site of Object.values(SITES)) {
   // passé à `og-image-ch.jpg` le 1er août 2026 pour casser le cache des
   // réseaux après le redessin de l'Ararat — mais des aperçus en circulation la
   // pointent encore. La supprimer ne casserait aucun test, aucun build et
-  // aucune page : elle ne rendrait un 200 d'`index.html` à ceux qui la
-  // demandent, que les scrapers lisent comme une image cassée. Exactement le
-  // piège du bloc ci-dessus, sur un fichier que plus rien ne relie au code —
-  // donc que rien ne protégerait sans cette ligne.
+  // aucune page : elle rendrait seulement un 404 à ceux qui la demandent, que
+  // les scrapers lisent comme une image cassée. Exactement le piège du bloc
+  // ci-dessus, sur un fichier que plus rien ne relie au code — donc que rien
+  // ne protégerait sans cette ligne.
   if (site.id === 'ch') {
     const legacy = path.join(dir, 'og-image.jpg')
     try {
@@ -240,7 +269,7 @@ for (const site of Object.values(SITES)) {
       console.error(
         '✗ dist/ch/og-image.jpg — la carte héritée a disparu.\n' +
           "    Elle n'est plus référencée mais reste demandée par les aperçus\n" +
-          '    déjà partagés ; sans elle, Firebase sert index.html en 200.',
+          '    déjà partagés ; sans elle, ils recevraient un 404.',
       )
       bad++
     }

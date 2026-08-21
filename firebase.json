@@ -7,10 +7,11 @@
         "**/.*",
         "**/node_modules/**"
       ],
-      "rewrites": [
+      "redirects": [
         {
-          "source": "**",
-          "destination": "/index.html"
+          "regex": "^/events/?$",
+          "destination": "/agenda/",
+          "type": 301
         }
       ],
       "headers": [
@@ -58,10 +59,16 @@
         "**/.*",
         "**/node_modules/**"
       ],
-      "rewrites": [
+      "redirects": [
         {
-          "source": "**",
-          "destination": "/index.html"
+          "regex": "^/agenda/?$",
+          "destination": "/events/",
+          "type": 301
+        },
+        {
+          "regex": "^/fr/?$",
+          "destination": "https://armenieinfo.ch/",
+          "type": 301
         }
       ],
       "headers": [
