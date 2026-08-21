@@ -11,6 +11,7 @@ import { Agenda } from './components/Agenda.jsx'
 import { Social } from './components/Social.jsx'
 import { RadioPage } from './components/RadioPage.jsx'
 import { AgendaPage } from './components/AgendaPage.jsx'
+import { AboutPage } from './components/AboutPage.jsx'
 import { Footer } from './components/Footer.jsx'
 
 // La vue vient de l'URL, comme la langue — lue une fois au montage. Il n'y a pas
@@ -41,6 +42,8 @@ export default function App() {
         <RadioPage />
       ) : view === 'agenda' ? (
         <AgendaPage />
+      ) : view === 'about' ? (
+        <AboutPage />
       ) : (
         <>
           <Hero />

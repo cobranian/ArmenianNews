@@ -119,5 +119,34 @@ export const VIEW_SEO = {
   },
 }
 
+// La page « À propos » : qui édite, d'où, avec quelles sources et quelles
+// règles. Le titre mène par « À propos » + la marque — ici la marque EST le
+// sujet, comme sur l'accueil.
+VIEW_SEO.about = {
+  fr: {
+    title: 'À propos',
+    description:
+      // AUCUN NOMBRE ici (ni rédactions, ni radios) : les comptes gardés par
+      // test/radio-count et test/source-count sont ceux des textes listés là ;
+      // un chiffre de plus, ici, vieillirait en silence.
+      'Qui édite Arménie Info, d’où, avec quelles sources et quelles règles : rédactions, radios en direct et agenda arméniens, chaque heure, sans publicité ni compte.',
+  },
+  en: {
+    title: 'About',
+    description:
+      'Who runs Armenia News, from where, with which sources and rules: Armenian newsrooms, live radio and diaspora events, gathered every hour, no ads, no account.',
+  },
+  hy: {
+    title: 'Կայքի մասին',
+    description:
+      'Ով է վարում Armenia News-ը և ինչ կանոններով․ հայկական խմբագրություններ, ուղիղ ռադիո և սփյուռքի միջոցառումներ՝ ամեն ժամ, առանց գովազդի և հաշվի։',
+  },
+  ru: {
+    title: 'О сайте',
+    description:
+      'Кто ведёт Armenia News и по каким правилам: армянские редакции, радио в прямом эфире и события диаспоры — каждый час, без рекламы и регистрации.',
+  },
+}
+
 // Codes de locale Open Graph, un par langue.
 export const OG_LOCALE = { fr: 'fr_FR', en: 'en_US', hy: 'hy_AM', ru: 'ru_RU' }

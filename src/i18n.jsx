@@ -25,6 +25,38 @@ const STRINGS = {
     'footer.pages': 'Pages du site',
     'footer.home': 'Accueil',
     'viewpage.also': 'Voir aussi',
+    // Page « À propos » (vue `about`). Tout ce qui y est affirmé est vérifiable
+    // dans le dépôt ; aucun nombre écrit en toutes lettres (les comptes sont
+    // gardés ailleurs), le nombre de stations entre par {n}.
+    'about.h1': 'À propos d’Arménie Info',
+    'about.intro':
+      'Arménie Info est un site indépendant, basé en Suisse, qui rassemble chaque heure la vie arménienne telle que la racontent ses propres médias : les dépêches des rédactions, les radios en direct, l’agenda de la diaspora et ses réseaux sociaux. Rien n’est réécrit — chaque titre renvoie à l’éditeur qui l’a publié.',
+    'about.what.title': 'Ce que vous trouvez ici',
+    'about.what.body':
+      'Un instantané statique, reconstruit toutes les heures par un programme qui relit les sources et regénère les pages. Il n’y a ni compte, ni formulaire, ni base de données.',
+    'about.what.news': 'les dernières dépêches des rédactions arméniennes, rubrique par rubrique, dans la langue de la page ;',
+    'about.what.radio': '{n} stations en écoute directe, chacune avec une fiche sourcée (ville, genre, langue d’antenne) ;',
+    'about.what.agenda': 'les événements de la diaspora, pays par pays, recensés depuis Armenopole ;',
+    'about.what.social': 'une sélection de comptes Instagram curés à la main et le mur Facebook de Don Narek.',
+    'about.what.sites':
+      'Le même instantané est servi sous deux noms, un par domaine et par langue de tête :',
+    'about.rules.title': 'Les règles',
+    'about.rules.links':
+      'Rien n’est réécrit ni résumé : les titres sont ceux des rédactions, et chaque carte mène à l’article d’origine, chez son éditeur.',
+    'about.rules.hourly':
+      'Tout est daté. Le bandeau du haut donne l’heure de l’instantané ; chaque dépêche affiche son âge.',
+    'about.rules.noads':
+      'Pas de publicité, pas de compte, pas de cookie de suivi dans l’Espace économique européen — la politique de confidentialité, en pied de page, dit exactement ce qui est mesuré.',
+    'about.rules.facts':
+      'Aucun fait de station n’est affirmé sans source ; un champ qui n’a pas pu être vérifié est laissé vide plutôt que deviné.',
+    'about.sources.title': 'Les rédactions',
+    'about.sources.body':
+      'Les dépêches proviennent des sites de ces rédactions, lues telles quelles. Chacune paraît sous la ou les langues dans lesquelles elle publie :',
+    'about.sources.langs': 'Langues',
+    'about.sources.other':
+      'L’agenda vient d’Armenopole, les radios de leurs propres flux, et les images des réseaux sociaux des comptes cités.',
+    'about.contact.title': 'Contact',
+    'about.contact.body': 'Une erreur, une source à proposer, une station qui se tait ? Écrivez à',
 
     'news.title': 'Actualités',
     'news.subtitle': "Les dernières publications de chaque rubrique du Courrier d'Erevan",
@@ -261,6 +293,35 @@ const STRINGS = {
     'footer.pages': 'Site pages',
     'footer.home': 'Home',
     'viewpage.also': 'See also',
+    'about.h1': 'About Armenia News',
+    'about.intro':
+      'Armenia News is an independent, Switzerland-based site that gathers Armenian life every hour as its own media tell it: the newsrooms’ dispatches, live radio, the diaspora’s events and its social networks. Nothing is rewritten — every headline links back to the outlet that published it.',
+    'about.what.title': 'What you will find here',
+    'about.what.body':
+      'A static snapshot, rebuilt every hour by a program that re-reads the sources and regenerates the pages. There is no account, no form, no database.',
+    'about.what.news': 'the latest dispatches from Armenian newsrooms, section by section, in the language of the page;',
+    'about.what.radio': '{n} stations streaming live, each with a sourced fact sheet (city, genre, broadcast language);',
+    'about.what.agenda': 'diaspora events, country by country, sourced from Armenopole;',
+    'about.what.social': 'a hand-curated selection of Instagram accounts and Don Narek’s Facebook wall.',
+    'about.what.sites':
+      'The same snapshot is served under two names, one per domain and lead language:',
+    'about.rules.title': 'The rules',
+    'about.rules.links':
+      'Nothing is rewritten or summarised: headlines are the newsrooms’ own, and every card leads to the original article, on its publisher’s site.',
+    'about.rules.hourly':
+      'Everything is dated. The banner at the top gives the time of the snapshot; every dispatch shows its age.',
+    'about.rules.noads':
+      'No ads, no account, no tracking cookie in the European Economic Area — the privacy policy in the footer says exactly what is measured.',
+    'about.rules.facts':
+      'No station fact is stated without a source; a field that could not be verified is left empty rather than guessed.',
+    'about.sources.title': 'The newsrooms',
+    'about.sources.body':
+      'Dispatches come from these newsrooms’ own sites, read as they are. Each appears under the language(s) it publishes in:',
+    'about.sources.langs': 'Languages',
+    'about.sources.other':
+      'The events come from Armenopole, the radio from the stations’ own streams, and the social images from the accounts cited.',
+    'about.contact.title': 'Contact',
+    'about.contact.body': 'A mistake, a source to suggest, a station gone silent? Write to',
 
     'news.title': 'News',
     'news.subtitle': "The latest stories from each section of Le Courrier d'Erevan",
@@ -497,6 +558,35 @@ const STRINGS = {
     'footer.pages': 'Կայքի էջերը',
     'footer.home': 'Գլխավոր էջ',
     'viewpage.also': 'Տես նաև',
+    'about.h1': 'Armenia News-ի մասին',
+    'about.intro':
+      'Armenia News-ը Շվեյցարիայում հիմնված անկախ կայք է, որն ամեն ժամ հավաքում է հայկական կյանքը այնպես, ինչպես այն պատմում են հայկական լրատվամիջոցները՝ խմբագրությունների լուրերը, ուղիղ եթերի ռադիոն, սփյուռքի միջոցառումներն ու սոցիալական ցանցերը։ Ոչինչ չի վերաշարադրվում․ յուրաքանչյուր վերնագիր տանում է այն հրատարակչի մոտ, որը հրապարակել է այն։',
+    'about.what.title': 'Ինչ կգտնեք այստեղ',
+    'about.what.body':
+      'Ստատիկ պատկեր, որն ամեն ժամ վերակառուցում է ծրագիրը՝ վերընթերցելով աղբյուրները և վերստեղծելով էջերը։ Չկա ոչ հաշիվ, ոչ ձև, ոչ տվյալների բազա։',
+    'about.what.news': 'հայկական խմբագրությունների վերջին լուրերը՝ բաժին առ բաժին, էջի լեզվով․',
+    'about.what.radio': '{n} ռադիոկայան ուղիղ եթերում, յուրաքանչյուրը՝ աղբյուրներով հիմնավորված քարտով (քաղաք, ժանր, եթերի լեզու)․',
+    'about.what.agenda': 'սփյուռքի միջոցառումները՝ երկիր առ երկիր, Armenopole-ից․',
+    'about.what.social': 'ձեռքով ընտրված Instagram հաշիվներ և Դոն Նարեկի Facebook պատը։',
+    'about.what.sites':
+      'Նույն պատկերը մատուցվում է երկու անունով՝ մեկը յուրաքանչյուր դոմենի և գլխավոր լեզվի համար․',
+    'about.rules.title': 'Կանոնները',
+    'about.rules.links':
+      'Ոչինչ չի վերաշարադրվում կամ ամփոփվում․ վերնագրերը խմբագրություններինն են, և յուրաքանչյուր քարտ տանում է բնօրինակ հոդվածին՝ հրատարակչի կայքում։',
+    'about.rules.hourly':
+      'Ամեն ինչ թվագրված է։ Վերևի շերտը ցույց է տալիս պատկերի ժամը, յուրաքանչյուր լուր՝ իր տարիքը։',
+    'about.rules.noads':
+      'Ոչ գովազդ, ոչ հաշիվ, ոչ հետևող cookie Եվրոպական տնտեսական տարածքում․ ստորին մասի գաղտնիության քաղաքականությունը հստակ ասում է, թե ինչ է չափվում։',
+    'about.rules.facts':
+      'Ռադիոկայանի ոչ մի փաստ չի հաստատվում առանց աղբյուրի․ չստուգված դաշտը մնում է դատարկ, ոչ թե գուշակված։',
+    'about.sources.title': 'Խմբագրությունները',
+    'about.sources.body':
+      'Լուրերը գալիս են այս խմբագրությունների կայքերից՝ առանց փոփոխության։ Յուրաքանչյուրը հայտնվում է այն լեզվով կամ լեզուներով, որոնցով հրապարակում է․',
+    'about.sources.langs': 'Լեզուներ',
+    'about.sources.other':
+      'Միջոցառումները՝ Armenopole-ից, ռադիոն՝ կայանների սեփական հոսքերից, սոցիալական ցանցերի պատկերները՝ նշված հաշիվներից։',
+    'about.contact.title': 'Կապ',
+    'about.contact.body': 'Սխա՞լ, առաջարկվող աղբյո՞ւր, լռած ռադիոկայա՞ն։ Գրեք՝',
 
     'news.title': 'Լուրեր',
     'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումները',
@@ -715,6 +805,35 @@ const STRINGS = {
     'footer.pages': 'Страницы сайта',
     'footer.home': 'Главная',
     'viewpage.also': 'См. также',
+    'about.h1': 'О сайте Armenia News',
+    'about.intro':
+      'Armenia News — независимый сайт, базирующийся в Швейцарии, который каждый час собирает армянскую жизнь такой, какой её рассказывают сами армянские медиа: сообщения редакций, радио в прямом эфире, события диаспоры и её социальные сети. Ничего не переписывается — каждый заголовок ведёт к изданию, которое его опубликовало.',
+    'about.what.title': 'Что вы здесь найдёте',
+    'about.what.body':
+      'Статический снимок, который каждый час пересобирает программа: она перечитывает источники и заново генерирует страницы. Здесь нет ни учётной записи, ни формы, ни базы данных.',
+    'about.what.news': 'последние сообщения армянских редакций, рубрика за рубрикой, на языке страницы;',
+    'about.what.radio': '{n} радиостанций в прямом эфире, каждая — с карточкой фактов с указанием источников (город, жанр, язык вещания);',
+    'about.what.agenda': 'события диаспоры, страна за страной, по данным Armenopole;',
+    'about.what.social': 'подборка Instagram-аккаунтов, отобранных вручную, и стена Facebook Дон Нарека.',
+    'about.what.sites':
+      'Один и тот же снимок подаётся под двумя именами — по одному на домен и его основной язык:',
+    'about.rules.title': 'Правила',
+    'about.rules.links':
+      'Ничего не переписывается и не пересказывается: заголовки принадлежат редакциям, и каждая карточка ведёт к оригинальной статье на сайте издателя.',
+    'about.rules.hourly':
+      'Всё датировано. Лента вверху показывает время снимка; у каждого сообщения указан его возраст.',
+    'about.rules.noads':
+      'Без рекламы, без регистрации, без отслеживающих cookie в Европейской экономической зоне — политика конфиденциальности внизу страницы точно говорит, что измеряется.',
+    'about.rules.facts':
+      'Ни один факт о радиостанции не утверждается без источника; поле, которое не удалось проверить, остаётся пустым, а не угаданным.',
+    'about.sources.title': 'Редакции',
+    'about.sources.body':
+      'Сообщения берутся с сайтов этих редакций без изменений. Каждая появляется на том языке или языках, на которых публикуется:',
+    'about.sources.langs': 'Языки',
+    'about.sources.other':
+      'События — с Armenopole, радио — из собственных потоков станций, изображения соцсетей — из указанных аккаунтов.',
+    'about.contact.title': 'Контакт',
+    'about.contact.body': 'Ошибка, источник, который стоит добавить, замолчавшая станция? Напишите на',
 
     'news.title': 'Новости',
     'news.subtitle': 'Последние публикации из каждой рубрики «Курьера Еревана»',

@@ -65,6 +65,7 @@ export function notFoundHtml(siteId) {
         [pathFor(p.lang, 'home'), t.home],
         [pathFor(p.lang, 'radio'), VIEW_SEO.radio[p.lang].title],
         [pathFor(p.lang, 'agenda'), VIEW_SEO.agenda[p.lang].title],
+        [pathFor(p.lang, 'about'), VIEW_SEO.about[p.lang].title],
       ]
         .map(([href, label]) => `<a href="${href}" hreflang="${p.lang}">${esc(label)}</a>`)
         .join('')

@@ -28,6 +28,7 @@ export function Footer() {
     [pathFor(lang, 'home'), t('footer.home')],
     [pathFor(lang, 'radio'), VIEW_SEO.radio[lang].title],
     [pathFor(lang, 'agenda'), VIEW_SEO.agenda[lang].title],
+    [pathFor(lang, 'about'), VIEW_SEO.about[lang].title],
   ]
   return (
     <footer className="footer">

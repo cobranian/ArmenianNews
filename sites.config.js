@@ -212,6 +212,11 @@ export const VIEWS = {
   // d'événements : le mot cherché est « events ». C'est la seule vue dont le
   // slug change d'une langue à l'autre, et c'est la raison d'être de la table.
   agenda: { slugs: { fr: 'agenda/', en: 'events/', hy: 'events/', ru: 'events/' } },
+  // « À propos » — qui édite, d'où, avec quelles sources et quelles règles.
+  // Ajoutée après l'audit SEO du 21 août 2026 : un agrégateur que personne ne
+  // signe se lit comme une ferme de liens. Même règle de slug que `events` :
+  // latin partout, traduit là où le mot change (a-propos / about).
+  about: { slugs: { fr: 'a-propos/', en: 'about/', hy: 'about/', ru: 'about/' } },
 }
 
 // Un slug sans ses slashes de bord. Sert à COMPARER (viewFromPath) là où

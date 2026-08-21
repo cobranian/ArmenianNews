@@ -69,7 +69,10 @@ export function agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }) {
   // veut pas. L'échec aurait été bruyant — donc pas dangereux — mais son
   // message aurait désigné le balisage au lieu de la vue oubliée. Ici il dit la
   // cause, et il oblige à trancher les deux états plutôt qu'à en hériter un.
-  if (!['home', 'agenda', 'radio'].includes(view)) {
+  // Les vues SANS agenda : ni graphe du plugin, ni Event d'aucune sorte. Une
+  // vue nouvelle doit être classée ici explicitement — le repli est l'échec.
+  const SANS_AGENDA = ['radio', 'about']
+  if (!['home', 'agenda', ...SANS_AGENDA].includes(view)) {
     return [[`vue « ${view} » : son état d'agenda n'est pas décidé ici`, false]]
   }
 
@@ -79,8 +82,8 @@ export function agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }) {
       : ['le graphe du plugin est absent', !hasPluginGraph(html)]
 
   const events =
-    view === 'radio'
-      ? ['aucun Event sur /radio', !hasEvent(html)]
+    SANS_AGENDA.includes(view)
+      ? [`aucun Event sur /${view}`, !hasEvent(html)]
       : [
           'des Event sont présents si l’agenda en a',
           view === 'agenda'
