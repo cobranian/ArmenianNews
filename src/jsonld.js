@@ -9,7 +9,7 @@
 // résultat enrichi : le seul de ce projet qui en produise est Event, sur
 // /agenda.
 import { STATION_FACTS } from './stations.js'
-import { evenementComplet } from './agendaEvents.js'
+import { evenementComplet, eventLd } from './agendaEvents.js'
 import { urlFor } from '../sites.config.js'
 
 // Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>. Même garde
@@ -21,10 +21,10 @@ const safe = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
 //
 //   1. SEULS LES ÉVÉNEMENTS À VENIR. Baliser un événement passé comme à venir
 //      enfreint les règles de Google et expose la page à une action manuelle.
-//   2. LE LIEU SE LIMITE À LA DONNÉE. agenda.json ne porte qu'un `location`
-//      textuel (« Genève », « Uruguay ») — jamais d'adresse. On émet donc un
-//      Place nommé, sans `address`. Search Console le signalera en avertissement
-//      NON BLOQUANT : c'est le comportement correct.
+//   2. LE NŒUD Event EST COMPOSÉ AILLEURS — `eventLd` (src/agendaEvents.js),
+//      partagé avec le plugin de l'accueil. Le lieu, la date murale, le 23:59
+//      lu comme « toute la journée » : tout y est décidé une fois. Ne recomposez
+//      pas un Event ici, c'est ce qui avait fait diverger les deux pages.
 //   3. AUCUN Event SANS SES TROIS CHAMPS. `startDate` est requis par Google ;
 //      un événement sans date en serait dépourvu. La comparaison temporelle
 //      ci-dessous les écarte déjà — mais par accident de conversion, et dans un
@@ -49,16 +49,7 @@ export function agendaJsonLd(lang, evenements, maintenant = Date.now()) {
     itemListElement: avenir.map((ev, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      item: {
-        '@type': 'Event',
-        name: ev.title,
-        startDate: ev.date,
-        url: ev.url,
-        eventStatus: 'https://schema.org/EventScheduled',
-        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-        location: { '@type': 'Place', name: ev.location },
-        ...(ev.image ? { image: ev.image } : {}),
-      },
+      item: eventLd(ev),
     })),
   })
 }

@@ -73,7 +73,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 191 tests : dérivations de sites.config.js, page 404 et redirections Firebase, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 204 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -84,7 +84,7 @@ npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, résea
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **191 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **204 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -1151,6 +1151,23 @@ de production servent toujours depuis la racine de leur domaine.
   de l'agenda (`Agenda.jsx`), qui appelaient `toLocaleDateString(locale, …)` en
   direct. Ne rouvrez pas ce trou en formatant une date hors des formateurs du
   contexte.
+
+  **Et le même piège existe côté FUSEAU, sur les dates de l'agenda.** Armenopole
+  n'écrit que « AOÛ 30 12:30 » — l'heure murale du lieu, sans année ni offset.
+  `isoFromMonthDay` (`scripts/lib/util.mjs`) l'a longtemps passée par
+  `new Date(année, mois, jour, h, m).toISOString()` : composée dans le fuseau
+  de la machine qui scrape (UTC sur le runner), donc 12:30 à Genève publié
+  comme `12:30Z`, et les 23:59 (« pas d'heure » chez Armenopole, 27 événements
+  sur 155) basculant au lendemain pour un lecteur suisse — le prérendu disait
+  31, son navigateur 1 — et dans le JSON-LD. Un scrape lancé depuis Zurich
+  donnait d'autres valeurs que la CI. Rien ne tombait : une date décalée est
+  une date valide. Depuis le 21 août 2026 la date stockée est une **heure
+  murale sans fuseau** (`2026-08-30T12:30`), que tout moteur lit en heure
+  locale — `getDate()` rend le même jour partout — et le nœud `Event` est
+  composé **une fois** (`eventLd`, `src/agendaEvents.js`) pour l'accueil et
+  pour `/agenda/`, 23:59 émis comme date seule. Ne remettez pas de `Z`, et ne
+  recomposez pas d'`Event` hors de ce module : `test/util-dates.test.mjs` et
+  `test/event-ld.test.mjs` le gardent.
 
   **Le même piège vaut pour `Intl.RelativeTimeFormat`**, et c'est pourquoi
   l'âge des dépêches a lui aussi ses tables écrites en dur

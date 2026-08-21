@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { applyMeta } from './scripts/lib/site-meta.mjs'
 import { AGENDA_LD_ATTR, AGENDA_LD_VALUE } from './scripts/lib/agenda-ld.mjs'
-import { evenementComplet } from './src/agendaEvents.js'
+import { evenementComplet, eventLd } from './src/agendaEvents.js'
 import { primaryLang } from './sites.config.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -50,25 +50,13 @@ function agendaEventsJsonLd() {
       } catch {
         return // no snapshot yet — inject nothing
       }
-      // Le même filtre que la vue /agenda/ et que `npm run check` : écrit une
-      // seule fois (src/agendaEvents.js), sinon les trois divergent sur la même
-      // liste d'événements.
+      // Le même filtre que la vue /agenda/ et que `npm run check`, et le MÊME
+      // nœud Event que la vue : tous deux écrits une seule fois
+      // (src/agendaEvents.js), sinon les pages divergent sur la même liste
+      // d'événements — c'est arrivé (lieu adressé ici, pas là).
       const events = [...(agenda.switzerland || []), ...(agenda.world || [])]
         .filter(evenementComplet)
-        .map((e) => {
-          const node = {
-            '@type': 'Event',
-            name: e.title,
-            startDate: e.date,
-            url: e.url,
-            eventStatus: 'https://schema.org/EventScheduled',
-          }
-          if (e.location) {
-            node.location = { '@type': 'Place', name: e.location, address: e.location }
-          }
-          if (e.image) node.image = e.image
-          return node
-        })
+        .map(eventLd)
       if (!events.length) return
       const jsonld = { '@context': 'https://schema.org', '@graph': events }
       return [

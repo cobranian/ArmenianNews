@@ -13,14 +13,18 @@ test('seuls les evenements a venir sont balises', () => {
   assert.deepEqual(noms, ['Soirée'])
 })
 
-// Baliser une adresse que la donnee ne contient pas serait inventer un fait.
-// Search Console signalera l'adresse manquante en AVERTISSEMENT non bloquant :
-// c'est le comportement correct, pas un defaut a corriger.
-test('le lieu se limite au texte reel, sans adresse inventee', () => {
+// Le lieu se limite au texte reel : pas de PostalAddress inventee (rue, code
+// postal) que la donnee ne contient pas. Mais le texte qu'on A — « Genève » —
+// est emis aussi comme `address`, parce que Google exige une adresse sur le
+// Place d'un Event ; sans elle la fiche est retrogradee. L'accueil le faisait
+// deja (plugin de vite.config.js) pendant que cette vue ne le faisait pas :
+// les deux passent desormais par `eventLd` (src/agendaEvents.js).
+test('le lieu se limite au texte reel : name et address portent la meme chaine', () => {
   const item = JSON.parse(agendaJsonLd('fr', EVS)).itemListElement[0].item
   assert.equal(item.location['@type'], 'Place')
   assert.equal(item.location.name, 'Genève')
-  assert.ok(!('address' in item.location), 'aucune adresse ne doit etre inventee')
+  assert.equal(item.location.address, 'Genève')
+  assert.equal(typeof item.location.address, 'string', 'pas de PostalAddress inventee')
 })
 
 test('aucune chaine ne peut fermer le script', () => {
