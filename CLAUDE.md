@@ -73,7 +73,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 204 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 209 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -84,7 +84,7 @@ npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, résea
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 ```
 
-Il y a désormais **204 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **209 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -832,6 +832,20 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   (`scripts/lib/image.mjs`), une image pèse **~72 ko** au lieu de 170-250,
   donc **+100 posts ≈ +7 Mo, deux fois** — le coefficient a baissé, le
   mécanisme non.
+
+- **Deux JSON sont ALLÉGÉS au build, et le composant qui les importe ne le
+  voit pas.** Le plugin `lightData()` (`vite.config.js`, fonctions pures dans
+  `scripts/lib/light-data.mjs`) remplace, pour le bundle seulement, le contenu
+  de `news.json` par les seules langues de la vitrine bâtie (fr sur le .ch,
+  en/hy/ru sur le .org — `TAB_ORDER` décide donc aussi de ce qui est
+  **embarqué**) et celui d'`instagram.json` par ses comptes **sans posts**. Le
+  fichier sur disque ne change pas : scraper, tests et prérendu lisent le
+  vrai. Mesuré le 21 août 2026 : bundle du .ch 1,45 Mo → 0,72 Mo brut, sans
+  une carte de moins (196 images, 70 cartes, 90 tuiles prérendues avant comme
+  après). Conséquence : `ig.accounts[].posts` est **toujours vide** côté
+  navigateur, et un `news.json` qu'un composant lirait pour une autre langue
+  que la sienne y est absent. `test/light-data.test.mjs` garde les deux
+  filtres et leur branchement.
 
 ## Déploiement
 

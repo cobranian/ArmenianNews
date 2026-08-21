@@ -1,3 +1,9 @@
+// AU BUILD, CE FICHIER EST FILTRÉ À LA VITRINE : le plugin `lightData()` de
+// vite.config.js ne laisse passer que les langues que le site bâti sert (fr sur
+// le .ch ; en/hy/ru sur le .org), via `newsForLangs` et le `TAB_ORDER`
+// ci-dessous. Le bundle du .ch ne contient donc aucune dépêche anglaise — c'est
+// voulu (−400 Ko de JSON brut), et c'est pourquoi `TAB_ORDER` décide AUSSI de
+// ce qui est embarqué, pas seulement de ce qui est affiché.
 import news from './data/news.json'
 
 // Quelle source paraît sous quelle langue, et où lire ses étagères.
