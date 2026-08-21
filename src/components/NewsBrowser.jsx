@@ -77,10 +77,16 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
     : undefined
   return (
     <article className="card">
+      {/* Même cible que le titre juste en dessous : hors de l'arbre
+          d'accessibilité et du parcours clavier, sinon chaque carte annonce
+          deux fois le même lien (le premier sans texte : image en alt="").
+          Lighthouse SEO comptait 70 liens sans texte distinct par accueil. */}
       <a
         className={`card__media${hasPhoto ? '' : ' card__media--motif'}`}
         href={item.url}
         rel="noopener noreferrer"
+        aria-hidden="true"
+        tabIndex={-1}
         style={hasPhoto ? undefined : { '--c1': theme.c1, '--c2': theme.c2, '--ink': theme.ink }}
       >
         {/* ArmRadio's CDN 403s hotlinked images when a Referer is sent, so
@@ -104,7 +110,15 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
         <a className="card__title" href={item.url} rel="noopener noreferrer">
           {item.title || t('news.empty')}
         </a>
-        <a className="card__more" href={item.url} rel="noopener noreferrer">
+        {/* « Lire la suite » × 70 sur une page : des liens au texte identique
+            vers des cibles différentes. L'aria-label garde l'intitulé court
+            à l'écran et donne au lecteur d'écran — et au robot — la cible. */}
+        <a
+          className="card__more"
+          href={item.url}
+          rel="noopener noreferrer"
+          aria-label={item.title ? `${t('news.readmore')} — ${item.title}` : undefined}
+        >
           {t('news.readmore')}
         </a>
         {/* L'âge de la dépêche, sous l'appel à l'action. C'est un <time> et non

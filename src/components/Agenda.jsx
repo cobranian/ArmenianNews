@@ -58,7 +58,10 @@ function EventCard({ ev, place }) {
         {place && <span className="agenda-card__place">{place}</span>}
       </div>
       <div className="agenda-card__body">
-        <h4 className="agenda-card__title">{ev.title}</h4>
+        {/* h3, pas h4 : la section porte un h2 et rien entre les deux — un
+            saut de niveau que Lighthouse signalait sur les quatre accueils.
+            Le style est porté par la classe, pas par la balise. */}
+        <h3 className="agenda-card__title">{ev.title}</h3>
         <div className="agenda-card__foot">
           {when && <span className="agenda-card__when">{when}</span>}
           <span className="agenda-card__go" aria-hidden="true">↗</span>

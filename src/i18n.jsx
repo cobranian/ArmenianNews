@@ -20,6 +20,11 @@ const STRINGS = {
     'nav.radio': 'En direct',
     'nav.agenda': 'Agenda',
     'nav.social': 'Réseaux',
+    // Maillage interne (audit SEO du 21 août 2026) : les trois pages du site,
+    // liées depuis chaque page — pied de page et « Voir aussi » des vues.
+    'footer.pages': 'Pages du site',
+    'footer.home': 'Accueil',
+    'viewpage.also': 'Voir aussi',
 
     'news.title': 'Actualités',
     'news.subtitle': "Les dernières publications de chaque rubrique du Courrier d'Erevan",
@@ -247,6 +252,9 @@ const STRINGS = {
     'nav.radio': 'Live',
     'nav.agenda': 'Events',
     'nav.social': 'Social',
+    'footer.pages': 'Site pages',
+    'footer.home': 'Home',
+    'viewpage.also': 'See also',
 
     'news.title': 'News',
     'news.subtitle': "The latest stories from each section of Le Courrier d'Erevan",
@@ -477,6 +485,9 @@ const STRINGS = {
     'nav.radio': 'Ուղիղ',
     'nav.agenda': 'Միջոցառումներ',
     'nav.social': 'Ցանցեր',
+    'footer.pages': 'Կայքի էջերը',
+    'footer.home': 'Գլխավոր էջ',
+    'viewpage.also': 'Տես նաև',
 
     'news.title': 'Լուրեր',
     'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումները',
@@ -689,6 +700,9 @@ const STRINGS = {
     'nav.radio': 'В эфире',
     'nav.agenda': 'Афиша',
     'nav.social': 'Соцсети',
+    'footer.pages': 'Страницы сайта',
+    'footer.home': 'Главная',
+    'viewpage.also': 'См. также',
 
     'news.title': 'Новости',
     'news.subtitle': 'Последние публикации из каждой рубрики «Курьера Еревана»',
