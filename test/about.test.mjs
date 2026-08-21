@@ -68,6 +68,19 @@ test('les chaînes de la page existent dans les quatre langues', () => {
   assert.equal((i18n.match(/'about\.what\.radio': '\{n\}/g) || []).length, ALL_LANGS.length)
 })
 
+test('l’éditeur est nommé une fois (sites.config.js) et cité dans les quatre intros', () => {
+  for (const site of Object.values(SITES)) assert.equal(site.editor, 'Nano of Sassoun')
+  // {editor} dans chaque intro, remplacé par AboutPage ; un bloc qui écrirait
+  // le nom en dur divergerait le jour où il change.
+  const intros = [...i18n.matchAll(/'about\.intro':\s*\n?\s*'([^']*)'/g)].map((m) => m[1])
+  assert.equal(intros.length, ALL_LANGS.length)
+  for (const s of intros) assert.ok(s.includes('{editor}'), `intro sans {editor} : ${s.slice(0, 40)}`)
+  assert.match(lire('../src/components/AboutPage.jsx'), /t\('about\.intro'\)\.replace\('\{editor\}', site\.editor\)/)
+  // Et l'Organization de chaque page le porte en founder.
+  const head = headFor({ siteId: 'ch', lang: 'fr' })
+  assert.ok(head.includes('"founder":{"@type":"Person","name":"Nano of Sassoun"}'))
+})
+
 test('App route la vue, le pied de page et la 404 la lient', () => {
   assert.match(lire('../src/App.jsx'), /view === 'about' \? \(\s*<AboutPage \/>/)
   assert.match(lire('../src/components/Footer.jsx'), /pathFor\(lang, 'about'\)/)

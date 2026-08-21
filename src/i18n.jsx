@@ -30,7 +30,7 @@ const STRINGS = {
     // gardés ailleurs), le nombre de stations entre par {n}.
     'about.h1': 'À propos d’Arménie Info',
     'about.intro':
-      'Arménie Info est un site indépendant, basé en Suisse, qui rassemble chaque heure la vie arménienne telle que la racontent ses propres médias : les dépêches des rédactions, les radios en direct, l’agenda de la diaspora et ses réseaux sociaux. Rien n’est réécrit — chaque titre renvoie à l’éditeur qui l’a publié.',
+      'Arménie Info est un site indépendant, basé en Suisse et édité par {editor}, qui rassemble chaque heure la vie arménienne telle que la racontent ses propres médias : les dépêches des rédactions, les radios en direct, l’agenda de la diaspora et ses réseaux sociaux. Rien n’est réécrit — chaque titre renvoie à l’éditeur qui l’a publié.',
     'about.what.title': 'Ce que vous trouvez ici',
     'about.what.body':
       'Un instantané statique, reconstruit toutes les heures par un programme qui relit les sources et regénère les pages. Il n’y a ni compte, ni formulaire, ni base de données.',
@@ -295,7 +295,7 @@ const STRINGS = {
     'viewpage.also': 'See also',
     'about.h1': 'About Armenia News',
     'about.intro':
-      'Armenia News is an independent, Switzerland-based site that gathers Armenian life every hour as its own media tell it: the newsrooms’ dispatches, live radio, the diaspora’s events and its social networks. Nothing is rewritten — every headline links back to the outlet that published it.',
+      'Armenia News is an independent, Switzerland-based site edited by {editor}, which gathers Armenian life every hour as its own media tell it: the newsrooms’ dispatches, live radio, the diaspora’s events and its social networks. Nothing is rewritten — every headline links back to the outlet that published it.',
     'about.what.title': 'What you will find here',
     'about.what.body':
       'A static snapshot, rebuilt every hour by a program that re-reads the sources and regenerates the pages. There is no account, no form, no database.',
@@ -560,7 +560,7 @@ const STRINGS = {
     'viewpage.also': 'Տես նաև',
     'about.h1': 'Armenia News-ի մասին',
     'about.intro':
-      'Armenia News-ը Շվեյցարիայում հիմնված անկախ կայք է, որն ամեն ժամ հավաքում է հայկական կյանքը այնպես, ինչպես այն պատմում են հայկական լրատվամիջոցները՝ խմբագրությունների լուրերը, ուղիղ եթերի ռադիոն, սփյուռքի միջոցառումներն ու սոցիալական ցանցերը։ Ոչինչ չի վերաշարադրվում․ յուրաքանչյուր վերնագիր տանում է այն հրատարակչի մոտ, որը հրապարակել է այն։',
+      'Armenia News-ը Շվեյցարիայում հիմնված անկախ կայք է, որը խմբագրում է {editor}-ը և որն ամեն ժամ հավաքում է հայկական կյանքը այնպես, ինչպես այն պատմում են հայկական լրատվամիջոցները՝ խմբագրությունների լուրերը, ուղիղ եթերի ռադիոն, սփյուռքի միջոցառումներն ու սոցիալական ցանցերը։ Ոչինչ չի վերաշարադրվում․ յուրաքանչյուր վերնագիր տանում է այն հրատարակչի մոտ, որը հրապարակել է այն։',
     'about.what.title': 'Ինչ կգտնեք այստեղ',
     'about.what.body':
       'Ստատիկ պատկեր, որն ամեն ժամ վերակառուցում է ծրագիրը՝ վերընթերցելով աղբյուրները և վերստեղծելով էջերը։ Չկա ոչ հաշիվ, ոչ ձև, ոչ տվյալների բազա։',
@@ -807,7 +807,7 @@ const STRINGS = {
     'viewpage.also': 'См. также',
     'about.h1': 'О сайте Armenia News',
     'about.intro':
-      'Armenia News — независимый сайт, базирующийся в Швейцарии, который каждый час собирает армянскую жизнь такой, какой её рассказывают сами армянские медиа: сообщения редакций, радио в прямом эфире, события диаспоры и её социальные сети. Ничего не переписывается — каждый заголовок ведёт к изданию, которое его опубликовало.',
+      'Armenia News — независимый сайт, базирующийся в Швейцарии, который ведёт {editor} и который каждый час собирает армянскую жизнь такой, какой её рассказывают сами армянские медиа: сообщения редакций, радио в прямом эфире, события диаспоры и её социальные сети. Ничего не переписывается — каждый заголовок ведёт к изданию, которое его опубликовало.',
     'about.what.title': 'Что вы здесь найдёте',
     'about.what.body':
       'Статический снимок, который каждый час пересобирает программа: она перечитывает источники и заново генерирует страницы. Здесь нет ни учётной записи, ни формы, ни базы данных.',

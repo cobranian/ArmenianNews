@@ -73,7 +73,7 @@ npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : l
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 233 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 234 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -85,7 +85,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **233 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **234 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le

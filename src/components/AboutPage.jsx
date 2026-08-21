@@ -57,7 +57,9 @@ export function AboutPage() {
     <main className="viewpage about">
       <div className="container">
         <h1 className="viewpage__title">{t('about.h1')}</h1>
-        <p className="viewpage__intro">{t('about.intro')}</p>
+        {/* Le nom de l'éditeur vient de sites.config.js (`editor`) : une seule
+            source pour l'intro et le `founder` de l'Organization. */}
+        <p className="viewpage__intro">{t('about.intro').replace('{editor}', site.editor)}</p>
       </div>
 
       <section className="section" id="quoi">

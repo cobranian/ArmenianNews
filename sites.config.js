@@ -27,6 +27,9 @@ export const SITES = {
     // Organization).
     alternateName: ['Armenia Info', 'Արմենիա Ինֆո'],
     email: 'contact@armenieinfo.ch',
+    // Qui édite — le nom sous lequel le site se signe (page « À propos »,
+    // `founder` de l'Organization). Une seule source, les deux vitrines.
+    editor: 'Nano of Sassoun',
     // Carte de partage (og:image), propre à la vitrine : elle porte la marque
     // ET la langue du domaine, donc elle ne peut pas être partagée. Chemin
     // depuis la racine du domaine ; le fichier vit dans public/.
@@ -98,6 +101,9 @@ export const SITES = {
     // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
     // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
     email: 'contact@armenieinfo.ch',
+    // Qui édite — le nom sous lequel le site se signe (page « À propos »,
+    // `founder` de l'Organization). Une seule source, les deux vitrines.
+    editor: 'Nano of Sassoun',
     // Carte de partage ANGLAISE — voir le commentaire du .ch pour la raison des
     // deux noms différents. Régénérer avec `npm run og-image`.
     ogImage: '/og-image-org.jpg',
