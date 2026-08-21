@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T03:55:56.438Z",
+  "generatedAt": "2026-08-21T04:36:18.491Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Վանաձորում ու Գյումրիում փոշիացած ԵՄ միլիոնները․ ո՞վ է վճարելու անավարտ ծրագրերի ծանր «գինը»",
+            "url": "https://hy.armradio.am/archives/753815",
+            "date": "2026-08-21T04:34:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/453781467_1021913196606243_6522494704311430197_n-1536x1024-1-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "50 միլիարդի շինարարության կողքին՝ Գյումրիի փոսաշատ փողոցները․ 37 փողոց սպասում է ՎԶԵԲ-ի ծրագրին",
             "url": "https://hy.armradio.am/archives/753692",
             "date": "2026-08-20T18:15:00.000Z",
@@ -1190,13 +1197,6 @@
             "url": "https://hy.armradio.am/archives/753721",
             "date": "2026-08-20T13:45:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/ChatGPT-Image-20-%D0%B0%D0%B2%D0%B3.-2026-%D0%B3.-17_40_24-768x460.png",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Քննարկվել է Երևանի խոշոր քաղաքային ծրագրերի ընթացքը",
-            "url": "https://hy.armradio.am/archives/753718",
-            "date": "2026-08-20T13:21:49.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/13A0786-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1355,6 +1355,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Հյուսիսային Կորեան բալիստիկ հրթիռներ է արձակել Թրամփի խաղաղասիրական հայտարարությունից հետո",
+            "url": "https://hy.armradio.am/archives/753809",
+            "date": "2026-08-21T04:13:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/images-5-1-300x168.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Ֆինլանդիան մեղադրել է Ռուսաստանին` օդային սահմանը խախտելու մեջ",
+            "url": "https://hy.armradio.am/archives/753812",
+            "date": "2026-08-21T04:02:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/smartcrop-1-768x480.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Իրանի ԱԳՆ-ն ԱՄՆ-ի պատժամիջոցների խստացումն անվանել է տնտեսական ահաբեկչություն",
             "url": "https://hy.armradio.am/archives/753795",
             "date": "2026-08-20T18:47:00.000Z",
@@ -1408,20 +1422,6 @@
             "url": "https://hy.armradio.am/archives/753504",
             "date": "2026-08-19T16:48:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/72852847_1004-e1787165571595-768x425.webp",
-            "category": "Միջազգային"
-          },
-          {
-            "title": "Վերջին 24 ժամվա ընթացքում ռուս-վրացական սահմանը հատել է ավելի քան 20 հազար մարդ. Վրաստանին ՆԳՆ-ն հերքել է տեղեկությունը",
-            "url": "https://hy.armradio.am/archives/753482",
-            "date": "2026-08-19T16:46:51.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/777867403_1425800089423929_4446216833782910534_n-768x432.jpg",
-            "category": "Միջազգային"
-          },
-          {
-            "title": "«Թունավոր» ալգորիթմներ և միտումնավոր կախվածություն․ ինչու են նահանգները դատի տվել Meta-ին",
-            "url": "https://hy.armradio.am/archives/753463",
-            "date": "2026-08-19T15:27:42.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2025/09/2025-09-03T041329Z_1814972555_RC23KGAJ6EAG_RTRMADP_3_SINGAPORE-CRIME-META-768x482.jpg",
             "category": "Միջազգային"
           }
         ]
@@ -5890,67 +5890,67 @@
       },
       {
         "categoryKey": "news",
-        "label": "A.R.F. Corner",
+        "label": "News",
         "articles": [
           {
-            "title": "ARF Bureau Member Mourad Papazian: Weakening the Diaspora Means Weakening Armenia",
-            "url": "https://www.oragark.com/arf-bureau-member-mourad-papazian-weakening-the-diaspora-means-weakening-armenia/",
-            "date": "2026-08-20T08:09:58.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2025/03/mourad-papazian_1016-768x416.jpg"
+            "title": "The Artsakh Weekly Report",
+            "url": "https://www.oragark.com/the-artsakh-weekly-report-2/",
+            "date": "2026-08-17T05:18:23.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2023/12/artsakh-mamik-papik-768x486.jpg"
           },
           {
-            "title": "Political Presence as National Strategy",
-            "url": "https://www.oragark.com/political-presence-as-national-strategy/",
-            "date": "2026-08-17T06:06:19.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/07/levon-arf-podium-768x539.jpg"
+            "title": "The Artsakh Weekly Report",
+            "url": "https://www.oragark.com/the-artsakh-weekly-report/",
+            "date": "2026-08-03T00:57:48.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2023/12/artsakh-mamik-papik-768x486.jpg"
           },
           {
-            "title": "ARF Members, Supporters and Sympathizers Will Not Be Intimidated and Will Continue Their Struggle Against the Current Regime with Determination – Statement by the ARF Supreme Body of Armenia",
-            "url": "https://www.oragark.com/arf-members-supporters-and-sympathizers-will-not-be-intimidated-and-will-continue-their-struggle-against-the-current-regime-with-determination-statement-by-the-arf-supreme-body-of-armenia/",
-            "date": "2026-07-22T17:53:11.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2025/10/arf-logo-AS-OF-FEB20._imresizer-768x512.jpg"
+            "title": "Ruben Vardanyan’s Legal Team Appeals 20-Year Azerbaijani Prison Sentence to European Court",
+            "url": "https://www.oragark.com/ruben-vardanyans-legal-team-appeals-20-year-azerbaijani-prison-sentence-to-european-court/",
+            "date": "2026-07-23T06:18:10.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2025/03/Capture-Vardanyan-768x414.jpg"
           },
           {
-            "title": "Resilience is Not Optional",
-            "url": "https://www.oragark.com/resilience-is-not-optional/",
-            "date": "2026-07-18T07:39:50.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/07/levon-arf-podium-768x539.jpg"
+            "title": "Homenetmen Kicks Off First PR Conference in Yerevan",
+            "url": "https://www.oragark.com/homenetmen-kicks-off-first-pr-conference-in-yerevan/",
+            "date": "2026-07-22T06:08:35.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/07/IMG_0139-768x399.jpeg"
           },
           {
-            "title": "ARF Members Commemorate the 70th Birthday of Vahan Hovhannisyan",
-            "url": "https://www.oragark.com/arf-members-commemorate-the-70th-birthday-of-vahan-hovhannisyan/",
-            "date": "2026-03-02T11:04:20.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/03/637125099_1222277230119527_5579201109729492715_n-768x512.jpg"
+            "title": "Inflation Accelerates Again in Armenia as Food Prices Strain Household Budgets",
+            "url": "https://www.oragark.com/inflation-accelerates-again-in-armenia-as-food-prices-strain-household-budgets/",
+            "date": "2026-07-20T06:25:11.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/07/inflation-768x552.jpg"
           },
           {
-            "title": "ARF Western USA Commemorates ARF 135th Anniversary at Alex Theatre",
-            "url": "https://www.oragark.com/arf-western-usa-commemorates-arf-135th-anniversary-at-alex-theatre/",
-            "date": "2026-01-29T12:34:29.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/01/IMG_2856-768x576.jpeg"
+            "title": "Opposition Blocs Enter New Parliament with Pledge to Continue Struggle Against Pashinyan",
+            "url": "https://www.oragark.com/opposition-blocs-enter-new-parliament-with-pledge-to-continue-struggle-against-pashinyan/",
+            "date": "2026-07-18T07:25:54.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2023/07/parliament-7-11-768x431.jpg"
           },
           {
-            "title": "ARF Western U.S. Hosts 135th Anniversary Commemoration in Glendale",
-            "url": "https://www.oragark.com/arf-western-u-s-hosts-135th-anniversary-commemoration-in-glendale/",
-            "date": "2026-01-26T11:34:50.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/01/IMG_2856-768x576.jpeg"
+            "title": "RCDS Calls on International Partners to Impose Visa Restrictions on Individuals Promoting Hate Speech Against Nagorno-Karabakh Refugees",
+            "url": "https://www.oragark.com/rcds-calls-on-international-partners-to-impose-visa-restrictions-on-individuals-promoting-hate-speech-against-nagorno-karabakh-refugees/",
+            "date": "2026-07-17T07:01:36.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/07/l-fPH7K9WFS7-768x513.jpg"
           },
           {
-            "title": "ARF Western United States to Host ARF 135th Anniversary Celebration at The Alex Theatre",
-            "url": "https://www.oragark.com/arf-western-united-states-to-host-arf-135th-anniversary-celebration-at-the-alex-theatre/",
-            "date": "2026-01-22T02:42:48.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/01/arf135-updated-flyer-1-768x994.jpg"
+            "title": "ANCA Testifies in Favor of Restricting U.S. Aid to Azerbaijan, Demanding Release of Armenian Hostages",
+            "url": "https://www.oragark.com/anca-testifies-in-favor-of-restricting-u-s-aid-to-azerbaijan-demanding-release-of-armenian-hostages/",
+            "date": "2026-07-04T06:55:36.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/07/063026_Yerimyan_ANCATestimony_4x3-1-768x576.jpg"
           },
           {
-            "title": "ARF Western USA Concludes Professional Leadership Development Program with Resounding Success",
-            "url": "https://www.oragark.com/arf-western-usa-concludes-professional-leadership-development-program-with-resounding-success/",
-            "date": "2025-04-09T08:02:11.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2025/04/pd_group-2-300x226.jpg"
+            "title": "Declaration of the Armenian Revolutionary Federation Western United States 60th Regional Convention",
+            "url": "https://www.oragark.com/declaration-of-the-armenian-revolutionary-federation-western-united-states-60th-regional-convention/",
+            "date": "2026-07-02T07:06:38.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2024/01/arf_wus_english_transparent_bg-768x773.png"
           },
           {
-            "title": "Successful ARF Western U.S.A. 134th Anniversary Unites Community in Common Cause",
-            "url": "https://www.oragark.com/successful-arf-western-u-s-a-134th-anniversary-unites-community-in-common-cause/",
-            "date": "2025-04-07T06:32:23.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2025/04/3-Karnig-1-768x576.jpg"
+            "title": "ANCA’s Hamparian Strengthens Armenian-Hellenic Alliance at National Pro-Cyprus Conference",
+            "url": "https://www.oragark.com/ancas-hamparian-strengthens-armenian-hellenic-alliance-at-national-pro-cyprus-conference/",
+            "date": "2026-06-19T06:50:18.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/06/hamparian-1-768x517.jpg"
           }
         ]
       },
@@ -9313,6 +9313,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "«Հրապարակ»․ ՔՊ-ն որոշել է ԱԺ պաշտոններում ընտրությունը սերիալի վերածել",
+            "url": "https://news.am/hy/news/1056713",
+            "date": "2026-08-21T03:54:00.000Z",
+            "image": "https://news.am/storage/media/26/08/21/pREoj3HkJLDo4Gva.webp"
+          },
+          {
             "title": "«Ժողովուրդ». ՔՊ պատգամավոր Թագուհի Ղազարյանը սխալ թվեր է հրապարակել ամբիոնից",
             "url": "https://news.am/hy/news/1056707",
             "date": "2026-08-21T03:40:00.000Z",
@@ -9365,12 +9371,6 @@
             "url": "https://news.am/hy/news/1056610",
             "date": "2026-08-20T11:23:00.000Z",
             "image": "https://news.am/storage/media/26/08/20/t32z3iqvVKcXlNNV.webp"
-          },
-          {
-            "title": "ԱԳՆ․ Չինաստանը համաձայն է Ճապոնիայի մասին Ռուսաստանի ԱԳ նախարարի հայտարարության հետ",
-            "url": "https://news.am/hy/news/1056495",
-            "date": "2026-08-20T11:03:00.000Z",
-            "image": "https://news.am/storage/media/26/08/20/Jx9nA1DxEumw0ypc.webp"
           }
         ]
       },
@@ -9775,6 +9775,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "«Ժողովուրդ». Իրավապահները մտահոգված են նոր հաշվեհարդարներով․ Աջափնյակի կրակոցների գործով վտանգը դեռ չի չեզոքացվել",
+            "url": "https://news.am/hy/news/1056723",
+            "date": "2026-08-21T04:38:49.000Z",
+            "image": "https://news.am/storage/media/26/08/21/0SbjEVQi1cIsRTD8.webp"
+          },
+          {
             "title": "Գերմանիան «սպառազինությունների մրցավազք» է կանխատեսում դրոններից պաշտպանության ոլորտում",
             "url": "https://news.am/hy/news/1056675",
             "date": "2026-08-20T16:51:00.000Z",
@@ -9827,12 +9833,6 @@
             "url": "https://news.am/hy/news/1056457",
             "date": "2026-08-19T20:11:00.000Z",
             "image": "https://news.am/storage/media/26/08/19/Apyb6PXwabccNuWB.webp"
-          },
-          {
-            "title": "Գյումրիում գազի արտահոսքից պայթյուն է եղել, փլուզվել է տան մոտ 40 քմ հատվածը․ մեկ անձ հոսպիտալացվել է",
-            "url": "https://news.am/hy/news/1056395",
-            "date": "2026-08-19T13:11:00.000Z",
-            "image": "https://news.am/storage/media/26/08/19/s0WaTvMPeLbE5U2S.webp"
           }
         ]
       },
