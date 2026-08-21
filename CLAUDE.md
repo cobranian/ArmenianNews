@@ -744,6 +744,14 @@ garde la cohérence des trois artefacts et l'absence de Google dans
 `index.html`. Les pages autonomes (`pages/lien*.html`) et `og-image.mjs`, eux,
 chargent encore Google Fonts : ce sont des HTML hors bundle, rarement servis.
 
+**`.hero__title` part de `opacity: 0.02`, pas de 0 — ne le « nettoyez »
+pas.** Chrome ignore pour le LCP tout élément peint à opacité 0 : à 0, le
+titre — le plus grand texte du premier écran — ne devenait candidat qu'au
+début de son fondu, et le LCP se re-déclenchait 650 ms après le premier
+rendu (mesuré 1,77 s → 2,42 s). À 0.02 il est invisible à l'œil mais compté
+dès le premier paint (mesuré après : un seul candidat, `hero__title`, au même
+instant que le FCP). Les autres éléments du héros gardent leur `rise` depuis 0.
+
 **Les deux tambours (mobile, ≤640px).** `src/components/useSourceDrum.js` est un
 hook générique : il pose sur des éléments l'angle (`--a`) et l'opacité (`--o`)
 qui les répartissent sur un **cylindre tournant à 360°, qui boucle** — après le
