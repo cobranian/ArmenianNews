@@ -7,10 +7,11 @@
         "**/.*",
         "**/node_modules/**"
       ],
-      "rewrites": [
+      "redirects": [
         {
-          "source": "**",
-          "destination": "/index.html"
+          "regex": "^/events/?$",
+          "destination": "/agenda/",
+          "type": 301
         }
       ],
       "headers": [
@@ -47,6 +48,15 @@
               "value": "public, max-age=31536000, immutable"
             }
           ]
+        },
+        {
+          "source": "fonts/**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
         }
       ],
       "site": "armenie-info"
@@ -58,10 +68,16 @@
         "**/.*",
         "**/node_modules/**"
       ],
-      "rewrites": [
+      "redirects": [
         {
-          "source": "**",
-          "destination": "/index.html"
+          "regex": "^/agenda/?$",
+          "destination": "/events/",
+          "type": 301
+        },
+        {
+          "regex": "^/fr/?$",
+          "destination": "https://armenieinfo.ch/",
+          "type": 301
         }
       ],
       "headers": [
@@ -92,6 +108,15 @@
         },
         {
           "source": "assets/**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "fonts/**",
           "headers": [
             {
               "key": "Cache-Control",

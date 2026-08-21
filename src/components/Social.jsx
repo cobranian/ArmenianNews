@@ -5,6 +5,13 @@ import { Carousel } from './Carousel.jsx'
 import { Lightbox } from './Lightbox.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import fb from '../data/facebook.json'
+// AU BUILD, CE N'EST PAS LE POOL ENTIER : le plugin `lightData()` de
+// vite.config.js sert `instagram.json` SANS les `posts` de chaque compte (496 Ko
+// de JSON que le mur n'affichait pas — il ne rend que `instagram-feed.json`).
+// `ig.accounts[].posts` est donc toujours vide ici, et le repli ci-dessous
+// (« si le tirage est vide, montrer le pool ») ne rend plus rien : un tirage
+// vide est un mur vide, visible, plutôt que 1 448 tuiles. Ne lisez rien d'autre
+// que handle / name / url / group / count depuis ce module.
 import ig from '../data/instagram.json'
 import feed from '../data/instagram-feed.json'
 

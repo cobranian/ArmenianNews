@@ -5,8 +5,67 @@
 // /ru/ à partir du HTML déjà bâti. Un seul générateur pour les deux, sinon les
 // quatre pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
+import { readFileSync } from 'node:fs'
 import { SITES, ALL_LANGS, urlFor, xDefaultFor } from '../../sites.config.js'
 import { SEO, VIEW_SEO, OG_LOCALE } from '../../src/seo.js'
+
+// Le manifeste des polices auto-hébergées, écrit par `npm run fonts-sync`
+// (scripts/fonts-sync.mjs) : un fichier par entrée, avec famille, style,
+// sous-ensemble et graisses. Lu ici pour précharger le premier écran.
+// `readFileSync` plutôt qu'un import JSON : ce module est aussi chargé par
+// vite.config.js, et l'attribut `with { type: 'json' }` n'y est pas garanti.
+const FONTS = JSON.parse(
+  readFileSync(new URL('../../src/styles/fonts.json', import.meta.url), 'utf-8'),
+).fonts
+
+// Ce qu'on PRÉCHARGE, par langue : les fichiers que le premier écran rend à
+// coup sûr — le display (la marque, le sous-titre en italique) et le corps,
+// dans l'écriture de la page. Deux à quatre fichiers, pas plus : précharger
+// trop repousse ce qui compte. Les autres sous-ensembles (latin-ext,
+// vietnamese…) restent paresseux via unicode-range, comme avant.
+//
+// La marque est latine sous en/ru (« Armenia News », en Fraunces italique) et
+// arménienne sous hy (« Արմենիա Ինֆո ») — d'où Fraunces italique préchargée
+// sous ru mais pas sous hy. Une entrée absente du manifeste fait ÉCHOUER le
+// build : un preload vers un fichier inexistant serait un 404 à chaque visite.
+const PRELOAD = {
+  fr: [
+    ['Fraunces', 'italic', 'latin'],
+    ['Fraunces', 'normal', 'latin'],
+    ['Hanken Grotesk', 'normal', 'latin'],
+  ],
+  en: [
+    ['Fraunces', 'italic', 'latin'],
+    ['Fraunces', 'normal', 'latin'],
+    ['Hanken Grotesk', 'normal', 'latin'],
+  ],
+  hy: [
+    ['Noto Serif Armenian', 'normal', 'armenian'],
+    ['Noto Sans Armenian', 'normal', 'armenian'],
+  ],
+  ru: [
+    ['Fraunces', 'italic', 'latin'],
+    ['Literata', 'italic', 'cyrillic'],
+    ['Literata', 'normal', 'cyrillic'],
+    ['Golos Text', 'normal', 'cyrillic'],
+  ],
+}
+
+export function fontPreloads(lang) {
+  const wanted = PRELOAD[lang]
+  if (!wanted) throw new Error(`pas de liste de preload pour ${lang}`)
+  return wanted.map(([family, style, subset]) => {
+    const hits = FONTS.filter((f) => f.family === family && f.style === style && f.subset === subset)
+    // Une police statique a un fichier par graisse : on précharge la 400.
+    const hit = hits.find((f) => f.weights.some((w) => /^400\b/.test(w))) ?? hits[0]
+    if (!hit) {
+      throw new Error(
+        `police à précharger absente du manifeste : ${family} ${style} ${subset} — relancer npm run fonts-sync`,
+      )
+    }
+    return `/fonts/${hit.file}`
+  })
+}
 
 export const META_MARKER = '<!--SITE_META-->'
 
@@ -127,6 +186,14 @@ export function headFor({ siteId, lang, view = 'home' }) {
       (l) => `<link rel="alternate" hreflang="${l}" href="${urlFor(l, view)}" />`,
     ),
     `<link rel="alternate" hreflang="x-default" href="${xDefaultFor(view)}" />`,
+    '',
+    '<!-- Polices du premier écran, préchargées PAR LANGUE (voir PRELOAD dans',
+    '     scripts/lib/site-meta.mjs). `crossorigin` est obligatoire sur un',
+    '     preload de police, même en même origine, sinon le fichier est',
+    '     téléchargé deux fois. -->',
+    ...fontPreloads(lang).map(
+      (href) => `<link rel="preload" as="font" type="font/woff2" href="${href}" crossorigin />`,
+    ),
     '',
   ]
 

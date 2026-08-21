@@ -42,9 +42,8 @@ export const SITES = {
     //
     // `public/og-image.jpg` SUBSISTE et ne doit pas être supprimé : plus
     // aucune page ne le référence, mais des aperçus en circulation le
-    // pointent encore. Firebase réécrit tout chemin manquant vers index.html
-    // et le sert en 200 — un scraper y verrait donc une image cassée plutôt
-    // qu'un 404 franc. Le fichier porte le MÊME dessin que `og-image-ch.jpg`
+    // pointent encore, et un scraper qui le redemande doit trouver une image,
+    // pas un 404. Le fichier porte le MÊME dessin que `og-image-ch.jpg`
     // au jour de la bascule ; il n'est plus régénéré (og-image.mjs écrit sur
     // `ogImage`), et c'est sans conséquence : son seul rôle est de répondre.
     ogImage: '/og-image-ch.jpg',
@@ -248,8 +247,9 @@ export function langPath(siteId, lang) {
 }
 
 // La vue que désigne un chemin. Le chemin fait autorité ; tout ce qui n'est pas
-// reconnu retombe sur `home`, parce que c'est ce que Firebase sert réellement
-// (réécriture ** → /index.html).
+// reconnu retombe sur `home`. En production un chemin inconnu n'atteint plus
+// l'application (Firebase sert 404.html, voir scripts/lib/not-found.mjs) ; le
+// repli ne sert qu'au serveur de développement et à la prévisualisation.
 export function viewFromPath(siteId, pathname) {
   const lang = langFromPath(siteId, pathname)
   const base = langPath(siteId, lang)

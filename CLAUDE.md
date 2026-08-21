@@ -73,7 +73,7 @@ npm run check        # contrôle les 12 pages produites (lang, canonical, hrefla
 npm run prerender    # cuit les 12 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 174 tests : dérivations de sites.config.js, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 219 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -82,9 +82,10 @@ npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
+npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **174 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **219 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -457,9 +458,8 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 
   **`public/og-image.jpg` subsiste, et ne doit pas être supprimé.** Plus
   aucune page ne le référence, mais des aperçus en circulation le pointent
-  encore — et Firebase réécrit tout chemin manquant vers `index.html` qu'il
-  sert en **200**, donc un scraper y lirait une image cassée plutôt qu'un 404
-  franc. C'est le même piège que celui déjà documenté pour une balise
+  encore, et un scraper qui le redemande doit trouver une image, pas un 404.
+  C'est le même piège que celui déjà documenté pour une balise
   `og:image` parfaite pointant un fichier absent. `npm run check` vérifie donc
   sa présence en plus de celle des deux cartes vives ; il n'est plus régénéré,
   et c'est sans conséquence — son seul rôle est de répondre.
@@ -473,7 +473,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   sa carte lui est antérieure et son URL est déjà partagée.
   `npm run check` vérifie que chaque page annonce **sa** carte, **aucune carte
   étrangère**, et que le fichier existe vraiment dans `dist/` — une balise
-  parfaite pointant sur un fichier absent servirait de l'`index.html` en 200,
+  parfaite pointant sur un fichier absent servirait un 404,
   que les scrapers lisent comme une image cassée. Les deux `dist/` contiennent
   **les deux** fichiers (Vite copie tout `public/`) : c'est sans conséquence,
   chaque vitrine ne référence que le sien.
@@ -547,8 +547,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   Facebook et WhatsApp lisant l'Open Graph et non la directive robots.
 
   Un fichier manquant **interrompt le build**. Sans cela il se déploierait en
-  silence, et Firebase répondrait à son URL par `index.html` en 200 — donc
-  l'application entière au lieu d'un 404 franc. `npm run check` vérifie en
+  silence, et une URL déjà partagée répondrait 404. `npm run check` vérifie en
   outre, pour chaque carte, le `<html lang>`, le canonical (propre à **cette**
   page), l'`og:image` et l'absence du domaine ou de la carte du voisin.
 
@@ -725,6 +724,34 @@ Et **ne mesurez jamais une hauteur de capitale sur un rendu de 11px** : le
 rasteur y arrondit et exagère l'écart — c'est ce qui avait produit une
 sur-correction de 6 % sur la pastille arménienne.
 
+**Les polices sont auto-hébergées, et ce sont les fichiers mêmes de Google
+Fonts.** `public/fonts/` (62 woff2, 1,5 Mo, découpés par `unicode-range`
+comme Google les servait), `src/styles/fonts.css` (107 `@font-face`, importé
+en tête de `global.css`) et le manifeste `src/styles/fonts.json` sont tous
+trois **écrits par `npm run fonts-sync`** (`scripts/fonts-sync.mjs`) — ne les
+éditez pas à la main, et ne remettez pas de `<link>` `fonts.googleapis.com`
+dans `index.html` : ajoutez la famille à `FONTS_CSS2` et relancez. La feuille
+Google était une ressource bloquante cross-origin — ~800 ms sur le premier
+rendu mobile (Lighthouse, 21 août 2026), 1,7 s avant le premier pixel même
+JavaScript désactivé. Les glyphes n'ont pas bougé d'un pixel (captures
+avant/après sur fr/en/hy/ru, 1400 et 390 px). `site-meta.mjs` **précharge par
+langue** les 2 à 4 fichiers du premier écran (table `PRELOAD` : Fraunces
+italique + romain et Hanken sous fr/en, les deux Noto arméniennes sous hy,
+Fraunces italique + Literata + Golos sous ru) ; une entrée absente du
+manifeste fait échouer le build. `firebase.json` met `fonts/**` en cache
+immuable — **sur les deux cibles**, comme `headers`. `test/fonts.test.mjs`
+garde la cohérence des trois artefacts et l'absence de Google dans
+`index.html`. Les pages autonomes (`pages/lien*.html`) et `og-image.mjs`, eux,
+chargent encore Google Fonts : ce sont des HTML hors bundle, rarement servis.
+
+**`.hero__title` part de `opacity: 0.02`, pas de 0 — ne le « nettoyez »
+pas.** Chrome ignore pour le LCP tout élément peint à opacité 0 : à 0, le
+titre — le plus grand texte du premier écran — ne devenait candidat qu'au
+début de son fondu, et le LCP se re-déclenchait 650 ms après le premier
+rendu (mesuré 1,77 s → 2,42 s). À 0.02 il est invisible à l'œil mais compté
+dès le premier paint (mesuré après : un seul candidat, `hero__title`, au même
+instant que le FCP). Les autres éléments du héros gardent leur `rise` depuis 0.
+
 **Les deux tambours (mobile, ≤640px).** `src/components/useSourceDrum.js` est un
 hook générique : il pose sur des éléments l'angle (`--a`) et l'opacité (`--o`)
 qui les répartissent sur un **cylindre tournant à 360°, qui boucle** — après le
@@ -834,6 +861,20 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   (`scripts/lib/image.mjs`), une image pèse **~72 ko** au lieu de 170-250,
   donc **+100 posts ≈ +7 Mo, deux fois** — le coefficient a baissé, le
   mécanisme non.
+
+- **Deux JSON sont ALLÉGÉS au build, et le composant qui les importe ne le
+  voit pas.** Le plugin `lightData()` (`vite.config.js`, fonctions pures dans
+  `scripts/lib/light-data.mjs`) remplace, pour le bundle seulement, le contenu
+  de `news.json` par les seules langues de la vitrine bâtie (fr sur le .ch,
+  en/hy/ru sur le .org — `TAB_ORDER` décide donc aussi de ce qui est
+  **embarqué**) et celui d'`instagram.json` par ses comptes **sans posts**. Le
+  fichier sur disque ne change pas : scraper, tests et prérendu lisent le
+  vrai. Mesuré le 21 août 2026 : bundle du .ch 1,45 Mo → 0,72 Mo brut, sans
+  une carte de moins (196 images, 70 cartes, 90 tuiles prérendues avant comme
+  après). Conséquence : `ig.accounts[].posts` est **toujours vide** côté
+  navigateur, et un `news.json` qu'un composant lirait pour une autre langue
+  que la sienne y est absent. `test/light-data.test.mjs` garde les deux
+  filtres et leur branchement.
 
 ## Déploiement
 
@@ -1154,6 +1195,23 @@ de production servent toujours depuis la racine de leur domaine.
   direct. Ne rouvrez pas ce trou en formatant une date hors des formateurs du
   contexte.
 
+  **Et le même piège existe côté FUSEAU, sur les dates de l'agenda.** Armenopole
+  n'écrit que « AOÛ 30 12:30 » — l'heure murale du lieu, sans année ni offset.
+  `isoFromMonthDay` (`scripts/lib/util.mjs`) l'a longtemps passée par
+  `new Date(année, mois, jour, h, m).toISOString()` : composée dans le fuseau
+  de la machine qui scrape (UTC sur le runner), donc 12:30 à Genève publié
+  comme `12:30Z`, et les 23:59 (« pas d'heure » chez Armenopole, 27 événements
+  sur 155) basculant au lendemain pour un lecteur suisse — le prérendu disait
+  31, son navigateur 1 — et dans le JSON-LD. Un scrape lancé depuis Zurich
+  donnait d'autres valeurs que la CI. Rien ne tombait : une date décalée est
+  une date valide. Depuis le 21 août 2026 la date stockée est une **heure
+  murale sans fuseau** (`2026-08-30T12:30`), que tout moteur lit en heure
+  locale — `getDate()` rend le même jour partout — et le nœud `Event` est
+  composé **une fois** (`eventLd`, `src/agendaEvents.js`) pour l'accueil et
+  pour `/agenda/`, 23:59 émis comme date seule. Ne remettez pas de `Z`, et ne
+  recomposez pas d'`Event` hors de ce module : `test/util-dates.test.mjs` et
+  `test/event-ld.test.mjs` le gardent.
+
   **Le même piège vaut pour `Intl.RelativeTimeFormat`**, et c'est pourquoi
   l'âge des dépêches a lui aussi ses tables écrites en dur
   (`src/relativeTime.js`). L'employer pour fr/en/ru en réservant une table à
@@ -1189,6 +1247,20 @@ de production servent toujours depuis la racine de leur domaine.
   `x-default` sont identiques sur les quatre pages, chacune se citant
   elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc
   par Google — silencieusement. C'est pourquoi un seul générateur les produit.
+- **`firebase.json` n'a plus de rewrite `**` → `index.html`, et ne doit pas le
+  retrouver.** Ce catch-all servait l'accueil en **200** à toute URL inconnue
+  (`/does-not-exist`, `armenieinfo.ch/events/`, `armenianews.org/fr/`…) : des
+  soft 404 en nombre illimité, un doublon de l'accueil par lien cassé, mesuré
+  en production le 21 août 2026. Le site n'en a pas besoin — chaque vue est un
+  dossier réel, et la redirection `/radio` → `/radio/` est le comportement de
+  répertoire de Firebase, pas le rewrite. Depuis, `build-sites.mjs` écrit un
+  `404.html` par vitrine (`scripts/lib/not-found.mjs`, langue du domaine,
+  `noindex`, liens vers les trois vues de chaque langue), le bloc `redirects`
+  (dupliqué, comme `headers`) envoie les slugs jumeaux vers la vue du domaine
+  et `/fr/` du .org vers le .ch, et une étape du workflow **sonde la
+  production après le déploiement** — parce que ni `npm run check` ni les
+  tests ne voient un code HTTP. `test/not-found.test.mjs` garde la page et la
+  configuration.
 - **Le bloc `headers` de `firebase.json` est dupliqué** entre les deux cibles,
   CSP comprise. Ajouter un host de flux radio à `media-src` d'un seul côté
   passe la préversion et casse la lecture en production sur l'autre domaine.

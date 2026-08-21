@@ -68,17 +68,18 @@
          que le russe n'utilise pas) — le piège est là, la famille a l'air
          d'avoir du cyrillique et n'en a pas.
 
-         Le surcoût est de ~590 octets gzip sur cette feuille, mise en cache
-         pour les quatre pages. Les .woff2 eux-mêmes restent paresseux : Google
-         découpe par `unicode-range`, donc une page latine n'en télécharge
-         aucun de plus. Ne « rationalisez » pas la liste en retirant une
-         famille sans texte de contrôle dans son écriture. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Armenian:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Golos+Text:wght@400..700&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
+         LES POLICES SONT AUTO-HÉBERGÉES (public/fonts/, déclarées dans
+         src/styles/fonts.css, importée par global.css) : ce sont les mêmes
+         .woff2 découpés par `unicode-range` que servait Google Fonts, obtenus
+         par `npm run fonts-sync` (scripts/fonts-sync.mjs). La feuille Google
+         était une ressource bloquante cross-origin qui coûtait ~800 ms au
+         premier rendu mobile ; servies d'ici, les polices partent sur la
+         connexion déjà ouverte et les deux ou trois fichiers du premier écran
+         sont préchargés PAR LANGUE par scripts/lib/site-meta.mjs (bloc
+         SITE_META ci-dessus). Ne remettez pas de <link> fonts.googleapis.com
+         ici : ajoutez la famille à FONTS_CSS2 et relancez la synchronisation.
+         Une page latine ne télécharge toujours aucun .woff2 de plus — le
+         découpage par unicode-range est conservé tel quel. -->
   </head>
   <body>
     <div id="root"></div>

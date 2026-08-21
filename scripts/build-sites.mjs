@@ -22,6 +22,7 @@ import { SITES, ALL_LANGS, ALL_VIEWS, LANGS, pathFor } from '../sites.config.js'
 import { replaceMeta } from './lib/site-meta.mjs'
 import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
+import { notFoundHtml } from './lib/not-found.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -109,8 +110,9 @@ async function derivePages(site) {
 // avant qu'elle ne devienne propre à chaque vitrine.
 //
 // L'absence du fichier est une ERREUR DURE, pas un avertissement : une carte
-// manquante se déploierait en silence, et Firebase répondrait à son URL par
-// index.html en 200 — donc l'application entière au lieu d'un 404 franc.
+// manquante se déploierait en silence, et son URL — déjà partagée sur les
+// réseaux — répondrait 404 ; du temps du rewrite ** → index.html, c'était
+// même l'application entière servie en 200 à sa place.
 async function copyStandalone(site) {
   for (const name of site.standalone ?? []) {
     const src = path.join(root, 'pages', `${name}.${site.id}.html`)
@@ -149,6 +151,12 @@ async function writeSeoFiles(site, stamp) {
   console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
+  // La page 404, dans la langue du domaine. Firebase la sert avec un vrai
+  // statut 404 à toute URL sans fichier — depuis que firebase.json n'a plus
+  // de rewrite ** → index.html. Sans ce fichier, Firebase servirait sa propre
+  // page d'erreur, nue et en anglais. Voir scripts/lib/not-found.mjs.
+  await writeFile(path.join(dist, '404.html'), notFoundHtml(site.id), 'utf-8')
+  console.log(`  → dist/${site.id}/404.html`)
 }
 
 const stamp = await lastmod()

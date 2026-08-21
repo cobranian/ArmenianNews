@@ -1,0 +1,608 @@
+{
+  "source": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Armenian:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Golos+Text:wght@400..700&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap",
+  "fonts": [
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "subset": "vietnamese",
+      "weights": [
+        "400",
+        "600"
+      ],
+      "file": "fraunces-6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjdfeQ_5Y.woff2"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "subset": "latin-ext",
+      "weights": [
+        "400",
+        "600"
+      ],
+      "file": "fraunces-6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjdPeQ_5Y.woff2"
+    },
+    {
+      "family": "Fraunces",
+      "style": "italic",
+      "subset": "latin",
+      "weights": [
+        "400",
+        "600"
+      ],
+      "file": "fraunces-6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjeveQ.woff2"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700",
+        "900"
+      ],
+      "file": "fraunces-6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxCBTeO-U.woff2"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700",
+        "900"
+      ],
+      "file": "fraunces-6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxCFTeO-U.woff2"
+    },
+    {
+      "family": "Fraunces",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700",
+        "900"
+      ],
+      "file": "fraunces-6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeA.woff2"
+    },
+    {
+      "family": "Golos Text",
+      "style": "normal",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "golos-text-q5uCsoe9Lv5t7Meb31EcEx58hLxR.woff2"
+    },
+    {
+      "family": "Golos Text",
+      "style": "normal",
+      "subset": "cyrillic",
+      "weights": [
+        "400 700"
+      ],
+      "file": "golos-text-q5uCsoe9Lv5t7Meb31EcExd8hLxR.woff2"
+    },
+    {
+      "family": "Golos Text",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "golos-text-q5uCsoe9Lv5t7Meb31EcEx18hLxR.woff2"
+    },
+    {
+      "family": "Golos Text",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400 700"
+      ],
+      "file": "golos-text-q5uCsoe9Lv5t7Meb31EcExN8hA.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "italic",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "hanken-grotesk-ieVo2YZDLWuGJpnzaiwFXS9tYtpY_d6T_POl0fRJeyWyosBD5XxxKA.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "italic",
+      "subset": "vietnamese",
+      "weights": [
+        "400"
+      ],
+      "file": "hanken-grotesk-ieVo2YZDLWuGJpnzaiwFXS9tYtpY_d6T_POl0fRJeyWyosBB5XxxKA.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "italic",
+      "subset": "latin-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "hanken-grotesk-ieVo2YZDLWuGJpnzaiwFXS9tYtpY_d6T_POl0fRJeyWyosBA5XxxKA.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "italic",
+      "subset": "latin",
+      "weights": [
+        "400"
+      ],
+      "file": "hanken-grotesk-ieVo2YZDLWuGJpnzaiwFXS9tYtpY_d6T_POl0fRJeyWyosBO5Xw.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "normal",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "hanken-grotesk-ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CjCQ.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "hanken-grotesk-ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CjCQ.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "hanken-grotesk-ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CjCQ.woff2"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "hanken-grotesk-ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "italic",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F6pfjptAgt5VM-kVkqdyU8n1ioa2Hdgv-s.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "italic",
+      "subset": "cyrillic",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F6pfjptAgt5VM-kVkqdyU8n1ioa0Xdgv-s.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "italic",
+      "subset": "vietnamese",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F6pfjptAgt5VM-kVkqdyU8n1ioa2ndgv-s.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "italic",
+      "subset": "latin-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F6pfjptAgt5VM-kVkqdyU8n1ioa23dgv-s.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "italic",
+      "subset": "latin",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F6pfjptAgt5VM-kVkqdyU8n1ioa1Xdg.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F63fjptAgt5VM-kVkqdyU8n1iIq129k.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "cyrillic",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F63fjptAgt5VM-kVkqdyU8n1isq129k.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F63fjptAgt5VM-kVkqdyU8n1iAq129k.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F63fjptAgt5VM-kVkqdyU8n1iEq129k.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400"
+      ],
+      "file": "ibm-plex-mono--F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "700"
+      ],
+      "file": "ibm-plex-mono--F6qfjptAgt5VM-kVkqdyU8n3pQPwl1FgtIU.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "cyrillic",
+      "weights": [
+        "700"
+      ],
+      "file": "ibm-plex-mono--F6qfjptAgt5VM-kVkqdyU8n3pQPwlRFgtIU.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "700"
+      ],
+      "file": "ibm-plex-mono--F6qfjptAgt5VM-kVkqdyU8n3pQPwl9FgtIU.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "700"
+      ],
+      "file": "ibm-plex-mono--F6qfjptAgt5VM-kVkqdyU8n3pQPwl5FgtIU.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "700"
+      ],
+      "file": "ibm-plex-mono--F6qfjptAgt5VM-kVkqdyU8n3pQPwlBFgg.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmQ0iSh8g.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "cyrillic",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmSkiSh8g.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "greek-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmQkiSh8g.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "greek",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmTUiSh8g.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "vietnamese",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmQUiSh8g.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "latin-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmQEiSh8g.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "italic",
+      "subset": "latin",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3NQ6P12-iJxAIgLYT1PLs1a-t7PU0AbeE9KPxYzNiCp1OUedn8VrLmTkiS.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "cyrillic-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J_zWTFCW.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "cyrillic",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J_XWTFCW.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "greek-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J_3WTFCW.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "greek",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J_LWTFCW.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J_7WTFCW.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J__WTFCW.woff2"
+    },
+    {
+      "family": "Literata",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400 700"
+      ],
+      "file": "literata-or3PQ6P12-iJxAIgLa78DkTtAoDhk0oVpaK3YLanFLHpPf2TbLi4J_HWTA.woff2"
+    },
+    {
+      "family": "Noto Sans Armenian",
+      "style": "normal",
+      "subset": "armenian",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "noto-sans-armenian-ZgN7jOZKPa7CHqq0h37c7ReDUubm2SEdFXp7ig73qtTY5idbxZhVoDur.woff2"
+    },
+    {
+      "family": "Noto Sans Armenian",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "noto-sans-armenian-ZgN7jOZKPa7CHqq0h37c7ReDUubm2SEdFXp7ig73qtTY5idbxYZVoDur.woff2"
+    },
+    {
+      "family": "Noto Sans Armenian",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "noto-sans-armenian-ZgN7jOZKPa7CHqq0h37c7ReDUubm2SEdFXp7ig73qtTY5idbxYhVoA.woff2"
+    },
+    {
+      "family": "Noto Serif Armenian",
+      "style": "normal",
+      "subset": "armenian",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "noto-serif-armenian-3XFBEqMt3YoFsciDRZxptyCUKJmytZ0kVU-XvF7QaZuL85rnQ9bfH8E2ew.woff2"
+    },
+    {
+      "family": "Noto Serif Armenian",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "noto-serif-armenian-3XFBEqMt3YoFsciDRZxptyCUKJmytZ0kVU-XvF7QaZuL85rnQ9bBH8E2ew.woff2"
+    },
+    {
+      "family": "Noto Serif Armenian",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400",
+        "500",
+        "600",
+        "700"
+      ],
+      "file": "noto-serif-armenian-3XFBEqMt3YoFsciDRZxptyCUKJmytZ0kVU-XvF7QaZuL85rnQ9bPH8E.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "italic",
+      "subset": "vietnamese",
+      "weights": [
+        "400"
+      ],
+      "file": "space-mono-i7dNIFZifjKcF5UAWdDRYERMSHK_IwU.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "italic",
+      "subset": "latin-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "space-mono-i7dNIFZifjKcF5UAWdDRYERMSXK_IwU.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "italic",
+      "subset": "latin",
+      "weights": [
+        "400"
+      ],
+      "file": "space-mono-i7dNIFZifjKcF5UAWdDRYERMR3K_.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "400"
+      ],
+      "file": "space-mono-i7dPIFZifjKcF5UAWdDRYE58RWq7.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "400"
+      ],
+      "file": "space-mono-i7dPIFZifjKcF5UAWdDRYE98RWq7.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "400"
+      ],
+      "file": "space-mono-i7dPIFZifjKcF5UAWdDRYEF8RQ.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "normal",
+      "subset": "vietnamese",
+      "weights": [
+        "700"
+      ],
+      "file": "space-mono-i7dMIFZifjKcF5UAWdDRaPpZUFqaHjyV.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "normal",
+      "subset": "latin-ext",
+      "weights": [
+        "700"
+      ],
+      "file": "space-mono-i7dMIFZifjKcF5UAWdDRaPpZUFuaHjyV.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "style": "normal",
+      "subset": "latin",
+      "weights": [
+        "700"
+      ],
+      "file": "space-mono-i7dMIFZifjKcF5UAWdDRaPpZUFWaHg.woff2"
+    }
+  ]
+}
