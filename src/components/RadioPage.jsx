@@ -33,7 +33,10 @@ export function RadioPage() {
             {ids.map((id) => {
               const f = STATION_FACTS[id]
               const champs = [
-                ['radio.page.city', f.city],
+                // `city` est une clé (yerevan, beirut, glendale) : « Երևան »
+                // s'affichait tel quel sous fr/en/ru. Même règle que genre et
+                // langue, gardée par test/stations.test.mjs.
+                ['radio.page.city', f.city && t(`radio.city.${f.city}`)],
                 ['radio.page.genre', f.genre && t(`radio.genre.${f.genre}`)],
                 ['radio.page.lang', f.langue && t(`radio.page.lang.${f.langue}`)],
                 ['radio.page.fm', f.fm && `${f.fm} MHz`],

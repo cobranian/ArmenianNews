@@ -29,7 +29,10 @@ export const SEO = {
       'Armenian news, Armenia, Artsakh, Armenian diaspora, Armenian events, Armenian community',
   },
   hy: {
-    tagline: 'Հայկական լուրեր, միջոցառումներ և սոցիալական ցանցեր',
+    // Raccourcie (le <title> faisait 65 caractères avec la marque, coupé
+    // vers 60 dans les résultats) : la description porte déjà les quatre
+    // piliers, le titre n'a besoin que des deux qu'on cherche.
+    tagline: 'Հայկական լուրեր և միջոցառումներ',
     description:
       'Հայկական լուրեր, տասնհինգ ռադիոկայան ուղիղ եթերում, միջոցառումներ և սոցիալական ցանցեր Հայաստանից և սփյուռքից, թարմացվում է ամեն ժամ։',
     keywords:
@@ -91,7 +94,10 @@ export const VIEW_SEO = {
   // surveiller. Ne le réintroduisez pas.
   agenda: {
     fr: {
-      title: 'Agenda arménien : événements en Suisse et dans le monde',
+      // 70 caractères avec la marque dans l'ancienne forme (« … : événements
+      // en Suisse et dans le monde ») : Google coupe vers 60, la marque
+      // sautait. 48 désormais. Le mot-clé reste en tête.
+      title: 'Agenda arménien : Suisse et monde',
       description:
         'Concerts, conférences et rassemblements de la diaspora arménienne, en Suisse et dans le monde : agenda recensé depuis Armenopole et mis à jour chaque heure.',
     },
