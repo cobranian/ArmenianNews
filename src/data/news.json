@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T16:20:16.593Z",
+  "generatedAt": "2026-08-22T17:17:43.161Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -3118,6 +3118,12 @@
       "categoryKey": "un-autre-regard",
       "articles": [
         {
+          "title": "Peut-on perdre sa langue sans perdre son pays ?",
+          "url": "https://armenieinfo.tv/peut-on-perdre-sa-langue-sans-perdre-son-pays/",
+          "date": "2026-08-22T17:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/armenie_langue_cover_1080x1350.png"
+        },
+        {
           "title": "Turquie : la guerre que la neutralité n’a pas empêchée",
           "url": "https://armenieinfo.tv/turquie-la-guerre-que-la-neutralite-na-pas-empechee/",
           "date": "2026-08-21T17:00:00.000Z",
@@ -3164,12 +3170,6 @@
           "url": "https://armenieinfo.tv/en-armenie-le-client-est-roi-le-recours-reste-sujet/",
           "date": "2026-08-13T17:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-12-aout-2026-22_23_08.png"
-        },
-        {
-          "title": "Les rails arméniens s’arrêtent là où commence la géopolitique",
-          "url": "https://armenieinfo.tv/les-rails-armeniens-sarretent-la-ou-commence-la-geopolitique/",
-          "date": "2026-08-12T17:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-12-aout-2026-12_53_29.png"
         }
       ]
     }
@@ -9757,6 +9757,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Իջևան-Սևան-Երևան ավտոճանապարհին մեքենան բախվել է ծառին. կան վիրավորներ",
+            "url": "https://news.am/hy/news/1057072",
+            "date": "2026-08-22T17:01:00.000Z",
+            "image": "https://news.am/storage/media/26/08/22/prill8m30IHMci8G.webp"
+          },
+          {
             "title": "Գերմանիայի Գավաթի խաղում անկարգություններ են տեղի ունեցել․ երկրպագուները խուժել են խաղադաշտ, տուժել է 35 ոստիկան",
             "url": "https://news.am/hy/news/1057058",
             "date": "2026-08-22T15:42:00.000Z",
@@ -9809,12 +9815,6 @@
             "url": "https://news.am/hy/news/1057005",
             "date": "2026-08-22T07:19:12.000Z",
             "image": "https://news.am/storage/media/26/08/22/ep9XdfH6qkQinCHD.webp"
-          },
-          {
-            "title": "Ռանչպար բնակավայրում այրվել է մոտ 2000 հակ ապհեստավորված անասնակեր",
-            "url": "https://news.am/hy/news/1056980",
-            "date": "2026-08-22T05:42:13.000Z",
-            "image": "https://news.am/storage/media/26/08/22/MqhUYOSWinx1gQXY.webp"
           }
         ]
       },
@@ -10419,6 +10419,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Японии зафиксировали сильное землетрясение магнитудой 5,9",
+            "url": "https://news.am/ru/news/1057073",
+            "date": "2026-08-22T17:15:23.000Z",
+            "image": "https://news.am/storage/media/26/06/12/cLmrOjpzWquNKh59.webp"
+          },
+          {
+            "title": "На автодороге Иджеван–Севан–Ереван автомобиль врезался в дерево: есть пострадавшие",
+            "url": "https://news.am/ru/news/1057072",
+            "date": "2026-08-22T17:01:00.000Z",
+            "image": "https://news.am/storage/media/26/08/22/prill8m30IHMci8G.webp"
+          },
+          {
             "title": "На матче Кубка в Германии произошли беспорядки: фанаты выбежали на поле, пострадали 35 полицейских",
             "url": "https://news.am/ru/news/1057058",
             "date": "2026-08-22T15:42:00.000Z",
@@ -10465,18 +10477,6 @@
             "url": "https://news.am/ru/news/1057027",
             "date": "2026-08-22T09:02:06.000Z",
             "image": "https://news.am/storage/media/26/08/22/Tz7S8wbNausAz21J.jfif"
-          },
-          {
-            "title": "ЧП на Ереванской ТЭЦ: аист задел электропровода, вспыхнул пожар - shamshyan.com",
-            "url": "https://news.am/ru/news/1057005",
-            "date": "2026-08-22T07:19:12.000Z",
-            "image": "https://news.am/storage/media/26/08/22/ep9XdfH6qkQinCHD.webp"
-          },
-          {
-            "title": "В посёлке Ранчпар сгорело около 2000 тюков складированного корма для скота",
-            "url": "https://news.am/ru/news/1056980",
-            "date": "2026-08-22T05:42:13.000Z",
-            "image": "https://news.am/storage/media/26/08/22/MqhUYOSWinx1gQXY.webp"
           }
         ]
       },
