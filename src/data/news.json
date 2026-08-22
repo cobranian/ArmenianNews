@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T12:32:46.617Z",
+  "generatedAt": "2026-08-22T13:29:11.116Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Երևանում և Սյունիքի հովիտներում ջերմաստիճանը կհասնի +38․․․+40°C-ի",
+            "url": "https://hy.armradio.am/archives/754089",
+            "date": "2026-08-22T13:03:17.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2023/03/exanak-300x199.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ավտոարտադրողները պետք է մտածեն մեքենաների ոչ միայն առաջին, այլև երկրորդ «կյանքի» մասին․ նոր պահանջներ ԵՄ-ում",
             "url": "https://hy.armradio.am/archives/753911",
             "date": "2026-08-22T12:32:00.000Z",
@@ -1191,13 +1198,6 @@
             "date": "2026-08-21T18:40:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/electionsmia-gov-am-768x512-1787335352733-1540x_-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "ՀՀ պաշտպանության նախարարն ընդունել է ՀՀ-ում Հունաստանի դեսպանին",
-            "url": "https://hy.armradio.am/archives/753991",
-            "date": "2026-08-21T17:31:12.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/arm-greece-768x349.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -1280,6 +1280,13 @@
         "categoryKey": "analytics",
         "articles": [
           {
+            "title": "Հայաստան-Ադրբեջան խաղաղության պայմանագիրը չպետք է գերիներին թողնի անորոշության մեջ. «The Washington Times»",
+            "url": "https://hy.armradio.am/archives/754097",
+            "date": "2026-08-22T13:09:54.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/erakoxm-xaxaxutyun-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մաշայից մինչև Պաուլս․ երբ պատերազմների պատճառով պատժվում են երգն ու մուլտֆիլմը",
             "url": "https://hy.armradio.am/archives/753936",
             "date": "2026-08-21T15:19:04.000Z",
@@ -1341,13 +1348,6 @@
             "date": "2026-05-06T14:50:58.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/01/Armenia-EU-flags-300x200.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Եվրոպական առաջնորդները Երևանում․ BBC-ն՝ Հայաստանի աշխարհաքաղաքական շրջադարձի մասին",
-            "url": "https://hy.armradio.am/archives/731855",
-            "date": "2026-05-04T06:27:41.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/05/eqh-300x225.jpg",
-            "category": "Վերլուծական"
           }
         ]
       },
@@ -2110,6 +2110,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Le traité de paix entre l’Arménie et l’Azerbaïdjan ne doit pas laisser les prisonniers dans l’incertitude écrit « The Washington Times »",
+          "url": "https://www.armenews.com/le-traite-de-paix-entre-larmenie-et-lazerbaidjan-ne-doit-pas-laisser-les-prisonniers-dans-lincertitude-ecrit-the-washington-times/",
+          "date": "2026-08-22T13:11:58.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8996.png"
+        },
+        {
           "title": "Avec un investissement de près de 5 millions de dollars d’E-auto d’Arménie : le plus grand centre des voitures chinoises de marque Hongqi de la région ouvre ses portes à Erevan",
           "url": "https://www.armenews.com/avec-un-investissement-de-pres-de-5-millions-de-dollars-de-auto-darmenie-le-plus-grand-centre-des-voitures-chinoises-de-marque-hongqi-de-la-region-ouvre-ses-portes-a-erevan/",
           "date": "2026-08-22T11:33:40.000Z",
@@ -2162,12 +2168,6 @@
           "url": "https://www.armenews.com/un-rapport-accuse-lazerbaidjan-la-georgie-le-kazakhstan-et-louzbekistan-davoir-escroque-les-etats-unis/",
           "date": "2026-08-22T06:30:47.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-22-a-08.21.51.png"
-        },
-        {
-          "title": "Un opposant arménien remis en liberté par la justice",
-          "url": "https://www.armenews.com/un-opposant-armenien-remis-en-liberte-par-la-justice/",
-          "date": "2026-08-22T06:30:34.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-22-a-07.31.25.png"
         }
       ]
     },
@@ -3637,6 +3637,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Pashinyan tours Varchafest 2026 venue",
+            "url": "https://armenpress.am/en/article/1258659",
+            "date": "2026-08-22T13:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/e1dYE5CtGstzXrO7kwHx16uSDg3sK4m4qmEPLrzK.webp"
+          },
+          {
+            "title": "Armenia-Azerbaijan peace deal must not leave prisoners behind - The Washington Times",
+            "url": "https://armenpress.am/en/article/1258656",
+            "date": "2026-08-22T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/gwavyYHQNzbJMTaXQiAehVLzKZf9jlMzO4lhIQaE.webp"
+          },
+          {
             "title": "13th Fresco International Festival opens in Spitak",
             "url": "https://armenpress.am/en/article/1258655",
             "date": "2026-08-22T11:54:00.000Z",
@@ -3683,18 +3695,6 @@
             "url": "https://armenpress.am/en/article/1258639",
             "date": "2026-08-22T07:53:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/22/4zPXqNb4S6rg1uoeIg2GiC3oY3m8vZGlQSys2tux.webp"
-          },
-          {
-            "title": "Armenia recovers $833 million in assets, funds since 2018",
-            "url": "https://armenpress.am/en/article/1258637",
-            "date": "2026-08-22T07:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/22/Q59ZHplkrbSazoVXNLVCkgjp0yBaU4gNetSc83fg.webp"
-          },
-          {
-            "title": "Armenia and South Sudan sign Joint Communiqué on Establishment of Diplomatic Relations",
-            "url": "https://armenpress.am/en/article/1258629",
-            "date": "2026-08-21T17:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/gYWhSVjmgw3TdaArfNJ1x1qoMhRa1O8q5bW3lGyr.webp"
           }
         ]
       },
@@ -3767,6 +3767,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "German foreign minister does not rule out new EU sanctions against Israel",
+            "url": "https://armenpress.am/en/article/1258658",
+            "date": "2026-08-22T13:06:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/ONgwqQkwLg5PpphvICSHM5SnHfqAy77Zhu8BsPXP.webp"
+          },
+          {
             "title": "Drone hits Turkish-run ship in Black Sea",
             "url": "https://armenpress.am/en/article/1258653",
             "date": "2026-08-22T11:25:00.000Z",
@@ -3819,18 +3825,18 @@
             "url": "https://armenpress.am/en/article/1258600",
             "date": "2026-08-21T13:03:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/21/pf5abmJd4gS9rUECimtN85YBrh7SsZIw6667VZgG.webp"
-          },
-          {
-            "title": "Poland nearly halves number of work visas issued to foreigners",
-            "url": "https://armenpress.am/en/article/1258595",
-            "date": "2026-08-21T12:50:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/Un7gXOadUX9x3xLeuBl17qYJSll5XeFXNg4HPVJW.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Pashinyan tours Varchafest 2026 venue",
+            "url": "https://armenpress.am/en/article/1258659",
+            "date": "2026-08-22T13:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/e1dYE5CtGstzXrO7kwHx16uSDg3sK4m4qmEPLrzK.webp"
+          },
           {
             "title": "13th Fresco International Festival opens in Spitak",
             "url": "https://armenpress.am/en/article/1258655",
@@ -3884,12 +3890,6 @@
             "url": "https://armenpress.am/en/article/1257698",
             "date": "2026-08-11T09:50:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/11/rMwEe5eJ7Loazq5ykGxvB64gwGNF6cFin4ucTWXT.webp"
-          },
-          {
-            "title": "13th Fresco International Festival to showcase art, film and culture in Armenia",
-            "url": "https://armenpress.am/en/article/1257688",
-            "date": "2026-08-11T08:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/11/O3cvLntY8UekU4Z2xSFe58aeA2hKHEyCM1bBi4dS.webp"
           }
         ]
       },
@@ -4094,6 +4094,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Վարչապետ Նիկոլ Փաշինյանը շրջել է «Վարչաֆեստ»-ի շրջանակում բացված տաղավարներով",
+            "url": "https://armenpress.am/hy/article/1258659",
+            "date": "2026-08-22T13:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/wv7XF8ZvrrbBAQliXyVn4g1rKBTtgEH52RWQL0Wd.webp"
+          },
+          {
             "title": "Հայաստան-Ադրբեջան խաղաղության պայմանագիրը չպետք է գերիներին թողնի անորոշության մեջ. «The Washington Times»",
             "url": "https://armenpress.am/hy/article/1258656",
             "date": "2026-08-22T12:25:00.000Z",
@@ -4146,12 +4152,6 @@
             "url": "https://armenpress.am/hy/article/1258643",
             "date": "2026-08-22T08:44:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/22/QIUO2I5j3jVdriLDUhwqNxpHm170FkMzeFk4X95K.webp"
-          },
-          {
-            "title": "ՊԵԿ-ում կրիպտոակտիվների և բլոկչեյն տեխնոլոգիաների ոլորտի կարգավորումների ու ռիսկերի կառավարման վերաբերյալ քննարկում է անցկացվել",
-            "url": "https://armenpress.am/hy/article/1258642",
-            "date": "2026-08-22T08:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/22/qMRkgmZ9HkEDiMbWHlcANYFzq2LzR7vR9gu6woKE.webp"
           }
         ]
       },
@@ -4224,6 +4224,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Գերմանիայի արտաքին գործերի նախարարը չի բացառել Իսրայելի դեմ ԵՄ նոր պատժամիջոցների կիրառումը",
+            "url": "https://armenpress.am/hy/article/1258658",
+            "date": "2026-08-22T12:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/ONgwqQkwLg5PpphvICSHM5SnHfqAy77Zhu8BsPXP.webp"
+          },
+          {
+            "title": "Իսրայելի պաշտպանության բանակը կրակ է բացել Սիրիայի հարավում գտնվող զինված արմատականի ուղղությամբ",
+            "url": "https://armenpress.am/hy/article/1258657",
+            "date": "2026-08-22T12:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/VCMMY5vxKh2maM0AZhMLT3CC8zrrzmBXrZ2SV9xc.webp"
+          },
+          {
             "title": "Սամարայի մարզում «Օզոն» ընկերության պահեստի վրա հարձակումից հետո ավելի քան 500 աշխատող է տարհանվել",
             "url": "https://armenpress.am/hy/article/1258654",
             "date": "2026-08-22T11:47:00.000Z",
@@ -4270,24 +4282,18 @@
             "url": "https://armenpress.am/hy/article/1258620",
             "date": "2026-08-21T16:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/21/ycpXOqZ7E8RgEDpCORkMlSVtguVGn5hhFW5qgqAS.webp"
-          },
-          {
-            "title": "Շվեդիայի դպրոցներից մեկում հարձակում է տեղի ունեցել, կան վիրավորներ",
-            "url": "https://armenpress.am/hy/article/1258621",
-            "date": "2026-08-21T16:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/9leUpejkYYPl1RLVli1JqW81ckLP9lBu83XvX3IH.webp"
-          },
-          {
-            "title": "Թուրքիայի արտաքին գործերի նախարարությունը և ևս յոթ իսլամական երկրներ դատապարտել են Իսրայելի քաղաքականությունը",
-            "url": "https://armenpress.am/hy/article/1258619",
-            "date": "2026-08-21T16:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/Q6G4BPcRuDprZbDQadU2v0uSliNkhb4b2XQifLza.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Վարչապետ Նիկոլ Փաշինյանը շրջել է «Վարչաֆեստ»-ի շրջանակում բացված տաղավարներով",
+            "url": "https://armenpress.am/hy/article/1258659",
+            "date": "2026-08-22T13:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/wv7XF8ZvrrbBAQliXyVn4g1rKBTtgEH52RWQL0Wd.webp"
+          },
           {
             "title": "Սպիտակում մեկնարկել է «ՖՐԵՍԿՈ» արդի արվեստի և հոգևոր ֆիլմերի միջազգային ներառական 13-րդ փառատոնը",
             "url": "https://armenpress.am/hy/article/1258655",
@@ -4341,12 +4347,6 @@
             "url": "https://armenpress.am/hy/article/1258420",
             "date": "2026-08-20T05:51:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/20/ROe38pRTsAjjA2bCULjj8n0KczwibMa5zZ2kbXQ1.webp"
-          },
-          {
-            "title": "Yerevan Fashion Week-ը վերադառնում է չորրորդ անգամ՝ այս տարի ավելի ընդլայնված ծրագրով․ այն կանցկացվի հոկտեմբերի 9-11-ը",
-            "url": "https://armenpress.am/hy/article/1258410",
-            "date": "2026-08-19T17:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/19/1YPLMyTCmnzQtppx7P3qW1lRF69pRq3H2QJPSmmi.webp"
           }
         ]
       },
@@ -4551,6 +4551,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Премьер-министр Никол Пашинян осмотрел павильоны, открытые в рамках фестиваля Varchafest",
+            "url": "https://armenpress.am/ru/article/1258659",
+            "date": "2026-08-22T13:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/e1dYE5CtGstzXrO7kwHx16uSDg3sK4m4qmEPLrzK.webp"
+          },
+          {
+            "title": "Мирный договор между Арменией и Азербайджаном не должен оставлять пленных в неопределенности: The Washington Times",
+            "url": "https://armenpress.am/ru/article/1258656",
+            "date": "2026-08-22T12:56:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/gwavyYHQNzbJMTaXQiAehVLzKZf9jlMzO4lhIQaE.webp"
+          },
+          {
             "title": "В Ереване будут построены 4 теннисных корта и стадион для футбола и баскетбола",
             "url": "https://armenpress.am/ru/article/1258648",
             "date": "2026-08-22T10:42:00.000Z",
@@ -4597,18 +4609,6 @@
             "url": "https://armenpress.am/ru/article/1258640",
             "date": "2026-08-22T08:33:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/22/Eyn5rBqBSArYAjbXSP51pCIPmTGyWktJfks1EL0C.webp"
-          },
-          {
-            "title": "Победители Varchafest 2026 будут определены голосованием жюри и зрителей",
-            "url": "https://armenpress.am/ru/article/1258639",
-            "date": "2026-08-22T08:16:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/22/4zPXqNb4S6rg1uoeIg2GiC3oY3m8vZGlQSys2tux.webp"
-          },
-          {
-            "title": "Министр обороны Армении принял посла Греции",
-            "url": "https://armenpress.am/ru/article/1258631",
-            "date": "2026-08-21T17:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/D2gRa9GSmzwZExDhPX06FiOIzK6EfOd9s4plOI9h.webp"
           }
         ]
       },
@@ -4681,6 +4681,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Министр иностранных дел Германии не исключает введения новых санкций ЕС против Израиля",
+            "url": "https://armenpress.am/ru/article/1258658",
+            "date": "2026-08-22T13:12:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/ONgwqQkwLg5PpphvICSHM5SnHfqAy77Zhu8BsPXP.webp"
+          },
+          {
+            "title": "Израильская Армия обороны открыла огонь по вооруженному экстремисту на юге Сирии",
+            "url": "https://armenpress.am/ru/article/1258657",
+            "date": "2026-08-22T13:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/VCMMY5vxKh2maM0AZhMLT3CC8zrrzmBXrZ2SV9xc.webp"
+          },
+          {
             "title": "Беспилотник атаковал судно турецкой компании в Черном море, один человек пропал без вести",
             "url": "https://armenpress.am/ru/article/1258653",
             "date": "2026-08-22T11:35:00.000Z",
@@ -4727,24 +4739,18 @@
             "url": "https://armenpress.am/ru/article/1258619",
             "date": "2026-08-21T16:12:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/21/Q6G4BPcRuDprZbDQadU2v0uSliNkhb4b2XQifLza.webp"
-          },
-          {
-            "title": "МИД Китая раскритиковал угрозы США ввести меры против стран, поддерживающих Иран",
-            "url": "https://armenpress.am/ru/article/1258590",
-            "date": "2026-08-21T11:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/I2ZIYHRag4fuO4b905KWy926ixB7BX87BJSVpAew.webp"
-          },
-          {
-            "title": "Спикер парламента Ирана заявил о необходимостипреодоления «несправедливых санкций» США",
-            "url": "https://armenpress.am/ru/article/1258591",
-            "date": "2026-08-21T11:47:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/5UgxlARKnL1R3DyTed44oNWXG8tfxcyuOBy0h2Ov.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Премьер-министр Никол Пашинян осмотрел павильоны, открытые в рамках фестиваля Varchafest",
+            "url": "https://armenpress.am/ru/article/1258659",
+            "date": "2026-08-22T13:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/e1dYE5CtGstzXrO7kwHx16uSDg3sK4m4qmEPLrzK.webp"
+          },
           {
             "title": "Победители Varchafest 2026 будут определены голосованием жюри и зрителей",
             "url": "https://armenpress.am/ru/article/1258639",
@@ -4798,12 +4804,6 @@
             "url": "https://armenpress.am/ru/article/1257688",
             "date": "2026-08-11T09:01:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/11/O3cvLntY8UekU4Z2xSFe58aeA2hKHEyCM1bBi4dS.webp"
-          },
-          {
-            "title": "В Гюмри стартовал фестиваль Gyumri Art Week 2026",
-            "url": "https://armenpress.am/ru/article/1257560",
-            "date": "2026-08-09T08:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/09/mOp5MhQM1jDazROlNGHeUYnHxxDtps4GKjonnpMi.webp"
           }
         ]
       },
@@ -8897,6 +8897,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Georgina Rodríguez to Adopt Cristiano Ronaldo’s Three Children Just One Week After Their Wedding",
+            "url": "https://style.news.am/eng/news/115735/",
+            "date": "2026-08-22T13:19:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115735.jpg"
+          },
+          {
             "title": "Louis Vuitton Has Created Makeup for Millionaires: The Full Collection Costs Nearly $10,000",
             "url": "https://style.news.am/eng/news/115733/",
             "date": "2026-08-22T12:28:00.000Z",
@@ -8949,12 +8955,6 @@
             "url": "https://style.news.am/eng/news/115719/",
             "date": "2026-08-21T15:24:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115719.jpg"
-          },
-          {
-            "title": "Heidi Klum Shows Off a Sultry Morning Look While on Vacation",
-            "url": "https://style.news.am/eng/news/115716/",
-            "date": "2026-08-21T10:37:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115716.jpg"
           }
         ]
       },
@@ -9493,6 +9493,12 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "Նովակ․ Ռուսաստանը վառելիքի շուկան կկարգավորի ներմուծման հաշվին",
+            "url": "https://news.am/hy/news/1057043",
+            "date": "2026-08-22T13:09:00.000Z",
+            "image": "https://news.am/storage/media/26/08/22/bdz72H4XKkkLCAaW.webp"
+          },
+          {
             "title": "Որքա՞ն վնաս են կրել հայ ծաղկավաճառները․ ՀՀ էկոնոմիկայի նախարարության պատասխանը․ Sputnik Արմենիա",
             "url": "https://news.am/hy/news/1056996",
             "date": "2026-08-22T06:46:34.000Z",
@@ -9545,12 +9551,6 @@
             "url": "https://news.am/hy/news/1056662",
             "date": "2026-08-20T15:34:00.000Z",
             "image": "https://news.am/storage/media/26/05/20/riyUJVHdM9F2wxg7.webp"
-          },
-          {
-            "title": "ՀՀ էկոնոմիկայի նախարարության պարզաբանումը «Հայ-չինական գործընկերության կենտրոն» ՀԿ-ի՝ CIIE-ին մասնակցության վերաբերյալ",
-            "url": "https://news.am/hy/news/1056651",
-            "date": "2026-08-20T13:14:21.000Z",
-            "image": "https://news.am/storage/media/26/08/20/sNL5C2vEzfM3JfEi.webp"
           }
         ]
       },
@@ -9558,6 +9558,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Ջորջինա Ռոդրիգեսը որդեգրում է Կրիշտիանու Ռոնալդուի երեք երեխաներին հարսանիքից մեկ շաբաթ անց",
+            "url": "https://style.news.am/arm/news/115735/",
+            "date": "2026-08-22T13:19:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115735.jpg"
+          },
           {
             "title": "Louis Vuitton-ը ստեղծում է միլիոնատեր կոսմետիկա. Ամբողջական հավաքածուն արժե մոտ 10,000 դոլար",
             "url": "https://style.news.am/arm/news/115733/",
@@ -9611,12 +9617,6 @@
             "url": "https://style.news.am/arm/news/115726/",
             "date": "2026-08-21T19:15:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115726.jpg"
-          },
-          {
-            "title": "Ուսպենսկայան բացահայտել է, թե ինչպիսին պետք է լինի իր ապագա ամուսինը",
-            "url": "https://style.news.am/arm/news/115720/",
-            "date": "2026-08-21T19:03:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115720.jpg"
           }
         ]
       },
@@ -9691,6 +9691,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Հայտնաբերվել է դեղամիջոցների համակցություն, որը կարող է դանդաղեցնել բուժման նկատմամբ կայուն շագանակագեղձի քաղցկեղի աճը",
+            "url": "https://med.news.am/arm/news/41750/haytnabervel-e-dexamijocneri-hamakcutyun-ory-karox-e-dandaxecnel-buzhman-nkatmamb-kayun-shaganakagexdzi-qaxckexi-atchy.html",
+            "date": "2026-08-22T13:34:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41750.jpg"
+          },
+          {
             "title": "JAMA. Ցինկը գրեթե 40%-ով նվազեցրել է վարակների թիվը մանգաղաբջջային անեմիայով փոքր երեխաների մոտ",
             "url": "https://med.news.am/arm/news/41749/jama-cinky-grete-40-ov-nvazecrel-e-varakneri-tivy-mangaxabjjayin-anemiayov-poqr-erekhaneri-mot.html",
             "date": "2026-08-22T11:16:00.000Z",
@@ -9743,12 +9749,6 @@
             "url": "https://med.news.am/arm/news/41738/gitnakannern-aryan-yndameny-mek-analizov-karoxacel-en-tseracman-zhamacuycner-stextsel-arandzin-bjijneri-hamar.html",
             "date": "2026-08-20T18:39:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41738.jpg"
-          },
-          {
-            "title": "Ինչ հիմքո՞վ է Ապահովագրության հիմնադրամը բուժհիմնարկներից գումար հետ պահանջում․ Ասոցիացիաները դիմել են նախարարին",
-            "url": "https://med.news.am/arm/news/41741/inch-himqov-e-apahovagrutyan-himnadramy-buzhhimnarkneric-gumar-het-pahanjum%E2%80%A4-asociacianery-dimel-en-nakhararin.html",
-            "date": "2026-08-20T16:40:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41741.jpg"
           }
         ]
       },
@@ -9756,6 +9756,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Վարչության պետի մասնակցությամբ քննիչները դաժան ծեծի են ենթարկել ոստիկանին․ Իշխանություն",
+            "url": "https://news.am/hy/news/1057051",
+            "date": "2026-08-22T12:43:10.000Z",
+            "image": "https://news.am/storage/media/26/08/22/NJoFo0wyOO3PoIAT.webp"
+          },
           {
             "title": "Ճապոնիայում հայրը յոթամյա որդուն միայնակ է թողել Ֆուձի լեռան վրա և շարունակել վերելքը",
             "url": "https://news.am/hy/news/1057038",
@@ -9809,12 +9815,6 @@
             "url": "https://news.am/hy/news/1056950",
             "date": "2026-08-21T18:05:00.000Z",
             "image": "https://news.am/storage/media/26/08/21/zrspehXM0VF5BlJ9.webp"
-          },
-          {
-            "title": "Ուկրաինան հայտնել է, որ ՌԴ-ի կողմից հասցված հարվածի հետևանքով 14 մարդ է զոհվել, 121-ը՝ վիրավորվել",
-            "url": "https://news.am/hy/news/1056943",
-            "date": "2026-08-21T17:46:22.000Z",
-            "image": "https://news.am/storage/media/26/08/21/n6V68KaVIyyF5tIY.webp"
           }
         ]
       },
@@ -10155,6 +10155,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Новак: Россия будет балансировать рынок топлива за счет импорта",
+            "url": "https://news.am/ru/news/1057043",
+            "date": "2026-08-22T13:09:00.000Z",
+            "image": "https://news.am/storage/media/26/08/22/bdz72H4XKkkLCAaW.webp"
+          },
+          {
             "title": "Сколько потеряли армянские цветоводы из-за ограничений РФ: Ответ Минэкономики - Sputnik Армения",
             "url": "https://news.am/ru/news/1056996",
             "date": "2026-08-22T06:46:00.000Z",
@@ -10207,12 +10213,6 @@
             "url": "https://news.am/ru/news/1056662",
             "date": "2026-08-20T15:34:00.000Z",
             "image": "https://news.am/storage/media/26/05/20/riyUJVHdM9F2wxg7.webp"
-          },
-          {
-            "title": "Разъяснение Министерства экономики Армении относительно участия НПО «Центр армяно-китайского партнерства» в CIIE",
-            "url": "https://news.am/ru/news/1056651",
-            "date": "2026-08-20T13:14:21.000Z",
-            "image": "https://news.am/storage/media/26/08/20/sNL5C2vEzfM3JfEi.webp"
           }
         ]
       },
@@ -10220,6 +10220,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Джорджина Родригес усыновляет троих детей Криштиану Роналду спустя неделю после свадьбы",
+            "url": "https://style.news.am/rus/news/115735/",
+            "date": "2026-08-22T13:19:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115735.jpg"
+          },
           {
             "title": "Louis Vuitton создал косметику для миллионеров: полный набор обойдется почти в $10 000",
             "url": "https://style.news.am/rus/news/115733/",
@@ -10273,12 +10279,6 @@
             "url": "https://style.news.am/rus/news/115720/",
             "date": "2026-08-21T19:03:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115720.jpg"
-          },
-          {
-            "title": "Neutrogena извинилась перед Хайден Панеттьери за расторжение контракта в 2015 году, когда она боролась с послеродовой депрессией",
-            "url": "https://style.news.am/rus/news/115721/",
-            "date": "2026-08-21T18:50:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115721.jpg"
           }
         ]
       },
@@ -10419,6 +10419,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "«Ишханутюн»: Следователи при участии начальника управления жестоко избили полицейского",
+            "url": "https://news.am/ru/news/1057051",
+            "date": "2026-08-22T12:43:10.000Z",
+            "image": "https://news.am/storage/media/26/08/22/NJoFo0wyOO3PoIAT.webp"
+          },
+          {
             "title": "В Японии отец оставил семилетнего сына одного на Фудзи и продолжил восхождение",
             "url": "https://news.am/ru/news/1057038",
             "date": "2026-08-22T12:24:00.000Z",
@@ -10471,12 +10477,6 @@
             "url": "https://news.am/ru/news/1056943",
             "date": "2026-08-21T17:46:22.000Z",
             "image": "https://news.am/storage/media/26/08/21/n6V68KaVIyyF5tIY.webp"
-          },
-          {
-            "title": "На школу в Швеции совершено нападение: Ранены несколько человек",
-            "url": "https://news.am/ru/news/1056933",
-            "date": "2026-08-21T16:27:30.000Z",
-            "image": "https://news.am/storage/media/26/08/21/kIuUC9ToqI2oFlOM.webp"
           }
         ]
       },
