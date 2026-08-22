@@ -833,7 +833,11 @@ const STRINGS = {
     'about.sources.other':
       'События — с Armenopole, радио — из собственных потоков станций, изображения соцсетей — из указанных аккаунтов.',
     'about.contact.title': 'Контакт',
-    'about.contact.body': 'Ошибка, источник, который стоит добавить, замолчавшая станция? Напишите на',
+    // Pas « Ошибка » en tête de phrase : c'est le mot des pages d'erreur
+    // russes (« Ошибка 404 »), et le test en direct de Search Console classait
+    // /ru/about/ en « Soft 404 » — deux fois de suite, 200 OK et page rendue —
+    // quand les trois autres langues passaient. Mesuré le 22 août 2026.
+    'about.contact.body': 'Заметили неточность, хотите предложить источник или станция замолчала? Напишите на',
 
     'news.title': 'Новости',
     'news.subtitle': 'Последние публикации из каждой рубрики «Курьера Еревана»',
