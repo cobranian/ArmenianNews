@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T09:23:34.655Z",
+  "generatedAt": "2026-08-22T10:19:52.852Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Հավն է առաջացել ձվից․ Սյունիքի դպրոցականները համոզեցին ԿԳՄՍ փոխնախարարին",
+            "url": "https://hy.armradio.am/archives/754056",
+            "date": "2026-08-22T10:00:10.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/att.BQtEjgaesaEMI9MOd3NPPb9S0eVo99DqWwmGt_oukrs-768x512.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Օդի ջերմաստիճանը կբարձրանա 5-6 աստիճանով",
             "url": "https://hy.armradio.am/archives/754072",
             "date": "2026-08-22T09:23:18.000Z",
@@ -1191,13 +1198,6 @@
             "date": "2026-08-21T17:07:41.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/hameri-erkir-300x194.jpg",
             "category": "Հասարակություն"
-          },
-          {
-            "title": "E-auto-ն Երևանում բացել է HONGQI-ի՝ տարածաշրջանում խոշորագույն կենտրոնը՝ շուրջ 5 միլիոն ԱՄՆ դոլար ներդրմամբ",
-            "url": "https://hy.armradio.am/archives/753938",
-            "date": "2026-08-21T16:34:52.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/honqci-768x449.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "ԱՄՆ-ն և Կանադան չեն կարողացել առևտրային համաձայնության հասնել",
+            "url": "https://hy.armradio.am/archives/754074",
+            "date": "2026-08-22T09:32:06.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/2fa5b1a0-9e01-11f1-9d7c-99ef97a9447f.jpg-768x432.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Կոնգոյում Էբոլայի բռնկումն արագ տեմպերով տարածվում է․ ՄԱԿ-ը զգուշացնում է հարևան երկրներին սպառնացող վտանգի մասին",
             "url": "https://hy.armradio.am/archives/754019",
             "date": "2026-08-22T08:59:00.000Z",
@@ -1415,13 +1422,6 @@
             "url": "https://hy.armradio.am/archives/753809",
             "date": "2026-08-21T04:13:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/images-5-1-300x168.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ֆինլանդիան մեղադրել է Ռուսաստանին` օդային սահմանը խախտելու մեջ",
-            "url": "https://hy.armradio.am/archives/753812",
-            "date": "2026-08-21T04:02:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/smartcrop-1-768x480.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2110,6 +2110,18 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Dans le cadre de l’opération « L’Arménie, le pays des saveurs » la nouvelle étape du projet de voyage culinaire virtuel est le village de Sasunik",
+          "url": "https://www.armenews.com/dans-le-cadre-de-loperation-larmenie-le-pays-des-saveurs-la-nouvelle-etape-du-projet-de-voyage-culinaire-virtuel-est-le-village-de-sasunik/",
+          "date": "2026-08-22T10:13:57.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/5567.jpg"
+        },
+        {
+          "title": "L’Azerbaïdjan ne nous rendra ni Artsvashen, ni ne se retirera du territoire occupé en République d’Arménie. Nous ne devons pas nous préparer aux prochaines concessions à Aliyev affirme Tatevik Hayrapetyan",
+          "url": "https://www.armenews.com/lazerbaidjan-ne-nous-rendra-ni-artsvashen-ni-ne-se-retirera-du-territoire-occupe-en-republique-darmenie-nous-ne-devons-pas-nous-preparer-aux-prochaines-concessions-a-aliyev-affirme-tatevik-hayra/",
+          "date": "2026-08-22T09:51:03.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8876.jpg"
+        },
+        {
           "title": "Le Premier ministre israélien qualifie le président turc de « dictateur antisémite »",
           "url": "https://www.armenews.com/le-premier-ministre-israelien-qualifie-le-president-turc-de-dictateur-antisemite/",
           "date": "2026-08-22T06:31:57.000Z",
@@ -2156,18 +2168,6 @@
           "url": "https://www.armenews.com/serge-sargsyan-a-presente-ses-voeux-au-catholicos-karekine-ii-a-loccasion-de-son-75e-anniversaire-votre-ministere-spirituel-plus-que-jamais-en-ces-temps-difficiles-joue-un-role-et-une-importance/",
           "date": "2026-08-21T15:30:50.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/6676.jpg"
-        },
-        {
-          "title": "« Flottille pour Gaza » : la Turquie émet un mandat d’arrêt d’international contre Netanyahu",
-          "url": "https://www.armenews.com/flottille-pour-gaza-la-turquie-emet-un-mandat-darret-dinternational-contre-netanyahu/",
-          "date": "2026-08-21T14:43:59.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/HQQATW8WMAABlzw.jpeg"
-        },
-        {
-          "title": "Une inscription pétroglyphe a été découverte lors de fouilles dans le Grand Désert de Tatev",
-          "url": "https://www.armenews.com/une-inscription-petroglyphe-a-ete-decouverte-lors-de-fouilles-dans-le-grand-desert-de-tatev/",
-          "date": "2026-08-21T13:14:07.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8996.jpg"
         }
       ]
     },
@@ -2687,6 +2687,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Le gouvernement arménien présente ses priorités en matière de sécurité et de défense pour 2026-2031",
+          "url": "https://armenieinfo.tv/le-gouvernement-armenien-presente-ses-priorites-en-matiere-de-securite-et-de-defense-pour-2026-2031/",
+          "date": "2026-08-22T10:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1787221993-1422.jpg"
+        },
+        {
           "title": "Je n’ai pas perçu la déclaration des dirigeants de l’UEE comme une exigence, mais comme un geste amical, selon le Premier ministre",
           "url": "https://armenieinfo.tv/je-nai-pas-percu-la-declaration-des-dirigeants-de-luee-comme-une-exigence-mais-comme-un-geste-amical-selon-le-premier-ministre/",
           "date": "2026-08-22T09:00:00.000Z",
@@ -2739,12 +2745,6 @@
           "url": "https://armenieinfo.tv/larmenie-enregistre-une-legere-baisse-de-la-criminalite-au-premier-semestre-2026/",
           "date": "2026-08-21T07:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1787106865-3464.jpg"
-        },
-        {
-          "title": "Arménie–Diaspora : derrière le conflit actuel, un siècle de rapports de force",
-          "url": "https://armenieinfo.tv/armenie-diaspora-derriere-le-conflit-actuel-un-siecle-de-rapports-de-force/",
-          "date": "2026-08-21T05:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/1c50af51-4d5f-4e7f-ac9f-d3a8b40717fe.png"
         }
       ]
     },
@@ -2869,6 +2869,12 @@
     {
       "categoryKey": "diaspora",
       "articles": [
+        {
+          "title": "Arménie–Diaspora : derrière le conflit actuel, un siècle de rapports de force",
+          "url": "https://armenieinfo.tv/armenie-diaspora-derriere-le-conflit-actuel-un-siecle-de-rapports-de-force/",
+          "date": "2026-08-21T05:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/1c50af51-4d5f-4e7f-ac9f-d3a8b40717fe.png"
+        },
         {
           "title": "AU RÉGIME DE MOURAD PAPAZIAN : PARLER AU NOM DE LA DIASPORA SANS MANDAT, C’EST AFFAIBLIR L’ARMÉNIE",
           "url": "https://armenieinfo.tv/au-regime-de-mourad-papazian-parler-au-nom-de-la-diaspora-sans-mandat-cest-affaiblir-larmenie/",
@@ -3631,6 +3637,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "More Russian shipments sent to Armenia via Azerbaijan",
+            "url": "https://armenpress.am/en/article/1258647",
+            "date": "2026-08-22T10:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/MJ3LQFVbmgEqjlc0H1fRLvsf3WuvdRXyBZRVNrse.webp"
+          },
+          {
             "title": "Armenia reimburses citizens affected by Middle East flight disruptions",
             "url": "https://armenpress.am/en/article/1258644",
             "date": "2026-08-22T09:01:00.000Z",
@@ -3683,18 +3695,18 @@
             "url": "https://armenpress.am/en/article/1258611",
             "date": "2026-08-21T14:56:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/21/Z1zaXDbFD6DxZxyNV7Ol2karcyIdG9n3lgpzmXNY.webp"
-          },
-          {
-            "title": "Armenian Defence Minister meets beneficiaries of ‘I Have the Honour’ programme",
-            "url": "https://armenpress.am/en/article/1258609",
-            "date": "2026-08-21T14:16:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/lGWk91Mp05eYdoZBoyILXuxaF4NIzMKVjaGrgVBR.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "More Russian shipments sent to Armenia via Azerbaijan",
+            "url": "https://armenpress.am/en/article/1258647",
+            "date": "2026-08-22T10:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/MJ3LQFVbmgEqjlc0H1fRLvsf3WuvdRXyBZRVNrse.webp"
+          },
           {
             "title": "Armenia’s tax authorities discuss crypto assets, blockchain regulation",
             "url": "https://armenpress.am/en/article/1258642",
@@ -3748,12 +3760,6 @@
             "url": "https://armenpress.am/en/article/1258537",
             "date": "2026-08-21T05:54:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "NYMEX: Precious Metals Prices Up - 20-08-26",
-            "url": "https://armenpress.am/en/article/1258536",
-            "date": "2026-08-21T05:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/29/eCIfSR9QVR4FIkaizQ8xq7jhdMND5cOU5JYQIJAe.webp"
           }
         ]
       },
@@ -4088,6 +4094,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Երևանում կկառուցվի թենիսի 4 կորտ և ֆուտբոլի ու բասկետբոլի համար նախատեսված մարզադաշտ",
+            "url": "https://armenpress.am/hy/article/1258648",
+            "date": "2026-08-22T10:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/BswYplZBjCVe1wRsLc6QFwBEqDcC6GWfnLI26M23.webp"
+          },
+          {
+            "title": "Ռուսաստանից Ադրբեջանի տարածքով Հայաստան է ուղարկվել 630 տոննա ցորեն և 36 տոննա պրոպան",
+            "url": "https://armenpress.am/hy/article/1258647",
+            "date": "2026-08-22T10:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/MJ3LQFVbmgEqjlc0H1fRLvsf3WuvdRXyBZRVNrse.webp"
+          },
+          {
+            "title": "Օդի ջերմաստիճանը հանրապետության ողջ տարածքում օգոստոսի 23-24-ին կբարձրանա 5-6 աստիճանով",
+            "url": "https://armenpress.am/hy/article/1258646",
+            "date": "2026-08-22T09:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/JHfQnIGYZAs11Bnei3wtJ2PWl965WFR7XlLTmpdw.webp"
+          },
+          {
             "title": "Ալավերդիում ապօրինի մասնավորեցված 6 մանկապարտեզ համայնքին վերադարձնելու նպատակով Դատախազությունը պետշահերի հայցեր կներկայացնի դատարան",
             "url": "https://armenpress.am/hy/article/1258645",
             "date": "2026-08-22T09:13:00.000Z",
@@ -4128,30 +4152,18 @@
             "url": "https://armenpress.am/hy/article/1258639",
             "date": "2026-08-22T07:42:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/22/4zPXqNb4S6rg1uoeIg2GiC3oY3m8vZGlQSys2tux.webp"
-          },
-          {
-            "title": "Ջրափրկարարները քաղաքացիներին անվնաս դուրս են բերել ափ",
-            "url": "https://armenpress.am/hy/article/1258638",
-            "date": "2026-08-22T07:32:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/22/5yaEF7x9cJH3fAlqLlGyObPmubp2Mu3m4LWbfAEE.webp"
-          },
-          {
-            "title": "Սյունիքի մարզի դատախազությունը կրկին 1-ին հորիզոնականում է. Գլխավոր դատախազն ամփոփել է 2026 թվականի 1-ին կիսամյակի արդյունքները",
-            "url": "https://armenpress.am/hy/article/1258637",
-            "date": "2026-08-22T07:17:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/22/Q59ZHplkrbSazoVXNLVCkgjp0yBaU4gNetSc83fg.webp"
-          },
-          {
-            "title": "Սուրեն Պապիկյանն ընդունել է Հունաստանի դեսպանին",
-            "url": "https://armenpress.am/hy/article/1258631",
-            "date": "2026-08-21T17:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/D2gRa9GSmzwZExDhPX06FiOIzK6EfOd9s4plOI9h.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Ռուսաստանից Ադրբեջանի տարածքով Հայաստան է ուղարկվել 630 տոննա ցորեն և 36 տոննա պրոպան",
+            "url": "https://armenpress.am/hy/article/1258647",
+            "date": "2026-08-22T10:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/MJ3LQFVbmgEqjlc0H1fRLvsf3WuvdRXyBZRVNrse.webp"
+          },
           {
             "title": "ՊԵԿ-ում կրիպտոակտիվների և բլոկչեյն տեխնոլոգիաների ոլորտի կարգավորումների ու ռիսկերի կառավարման վերաբերյալ քննարկում է անցկացվել",
             "url": "https://armenpress.am/hy/article/1258642",
@@ -4205,12 +4217,6 @@
             "url": "https://armenpress.am/hy/article/1258539",
             "date": "2026-08-21T05:55:16.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/14/FJOAiNY5zCkxdlrSomAcxlJUBpiL5Fbc8XRKlUsM.webp"
-          },
-          {
-            "title": "Ամերիկյան ինդեքսները նվազել են - 20/08/26",
-            "url": "https://armenpress.am/hy/article/1258537",
-            "date": "2026-08-21T05:54:01.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
           }
         ]
       },
@@ -4545,6 +4551,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Температура воздуха на всей территории республики 23-24 августа повысится на 5-6 градусов",
+            "url": "https://armenpress.am/ru/article/1258646",
+            "date": "2026-08-22T09:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/JHfQnIGYZAs11Bnei3wtJ2PWl965WFR7XlLTmpdw.webp"
+          },
+          {
+            "title": "Прокуратура представит в суд иски в защиту госинтересов с целью возвращения 6 незаконно приватизированных детских садов общине Алаверди",
+            "url": "https://armenpress.am/ru/article/1258645",
+            "date": "2026-08-22T09:35:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/08/22/4cGEytSpPrs16xVpHRBFhYbdStUws7ab9NeQABRY.webp"
+          },
+          {
             "title": "Граждане РА получили помощь в приобретении новых авиабилетов из-за отменены обратных рейсов в Армению",
             "url": "https://armenpress.am/ru/article/1258644",
             "date": "2026-08-22T09:18:00.000Z",
@@ -4591,18 +4609,6 @@
             "url": "https://armenpress.am/ru/article/1258628",
             "date": "2026-08-21T17:42:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/21/7MCqKj1MyIeVtG5vV6eFHKQqj3WRhGgDU6MchRJd.webp"
-          },
-          {
-            "title": "Риск заноса и дальнейшего распространения эболы в Армении оценивается как низкий",
-            "url": "https://armenpress.am/ru/article/1258616",
-            "date": "2026-08-21T15:50:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/0HTiPljQn9Q1vMDDO5tCpFZR3xUQrYMza4bURBlz.webp"
-          },
-          {
-            "title": "Лиана Манукян избрана председателем Постоянной комиссии по финансово-кредитным и бюджетным вопросам",
-            "url": "https://armenpress.am/ru/article/1258611",
-            "date": "2026-08-21T14:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/21/Z1zaXDbFD6DxZxyNV7Ol2karcyIdG9n3lgpzmXNY.webp"
           }
         ]
       },
@@ -8891,6 +8897,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Museum Security Guard Ruins Romantic Proposal by Ordering Groom-to-Be to Get Off His Knees",
+            "url": "https://style.news.am/eng/news/115730/",
+            "date": "2026-08-22T09:31:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115730.jpg"
+          },
+          {
             "title": "Meghan Had Her Sights Set on the US Senate, While Harry Pushed for a Meeting with Biden: The Sussexes’ Bold Political Ambitions Came to Nothing",
             "url": "https://style.news.am/eng/news/115729/",
             "date": "2026-08-22T08:18:00.000Z",
@@ -8943,12 +8955,6 @@
             "url": "https://style.news.am/eng/news/115711/",
             "date": "2026-08-21T07:12:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115711.jpg"
-          },
-          {
-            "title": "Culinary Tourism Is on the Rise: Where to Travel for Unforgettable Food Experiences",
-            "url": "https://style.news.am/eng/news/115708/",
-            "date": "2026-08-20T19:01:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115708.jpg"
           }
         ]
       },
@@ -9023,6 +9029,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Rather than eating less, burn more: Scientists identify a new approach to treating obesity",
+            "url": "https://med.news.am/eng/news/41748/rather-than-eating-less-burn-more-scientists-identify-a-new-approach-to-treating-obesity.html",
+            "date": "2026-08-22T09:21:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41748.jpg"
+          },
+          {
+            "title": "The Lancet: Robots place knee implants more precisely, but do not speed up recovery",
+            "url": "https://med.news.am/eng/news/41747/the-lancet-robots-place-knee-implants-more-precisely-but-do-not-speed-up-recovery.html",
+            "date": "2026-08-22T07:48:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41747.jpg"
+          },
+          {
             "title": "High-dose vitamin D linked to better cognitive function in adults at risk of dementia",
             "url": "https://med.news.am/eng/news/41746/high-dose-vitamin-d-linked-to-better-cognitive-function-in-adults-at-risk-of-dementia.html",
             "date": "2026-08-21T18:47:00.000Z",
@@ -9069,18 +9087,6 @@
             "url": "https://med.news.am/eng/news/41735/study-up-to-five-cups-of-coffee-a-day-may-be-not-only-safe-but-potentially-beneficial.html",
             "date": "2026-08-20T10:13:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41735.jpg"
-          },
-          {
-            "title": "Sleep problems after 50 may shorten working life by almost a year",
-            "url": "https://med.news.am/eng/news/41730/sleep-problems-after-50-may-shorten-working-life-by-almost-a-year.html",
-            "date": "2026-08-20T06:43:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41730.jpg"
-          },
-          {
-            "title": "Scientists discover why skin becomes less able to repair itself with age",
-            "url": "https://med.news.am/eng/news/41731/scientists-discover-why-skin-becomes-less-able-to-repair-itself-with-age.html",
-            "date": "2026-08-20T04:33:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41731.jpg"
           }
         ]
       },
@@ -9553,6 +9559,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Թանգարանի անվտանգության աշխատակիցը փչացրել է ռոմանտիկ ամուսնության առաջարկը՝ հրամայելով փեսային վեր կենալ",
+            "url": "https://style.news.am/arm/news/115730/",
+            "date": "2026-08-22T09:31:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115730.jpg"
+          },
+          {
             "title": "Մեգանը ձգտում էր ԱՄՆ Սենատ, մինչդեռ Հարրին ուզում էր հանդիպել Բայդենին. Սասեքսների համարձակ քաղաքական նկրտումները ձախողվել են",
             "url": "https://style.news.am/arm/news/115729/",
             "date": "2026-08-22T08:18:00.000Z",
@@ -9605,12 +9617,6 @@
             "url": "https://style.news.am/arm/news/115723/",
             "date": "2026-08-21T17:05:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115723.jpg"
-          },
-          {
-            "title": "Հայաստանի զբոսաշրջային բումը. Ինչպես է երկիրը գրավում ճանապարհորդներին 2026 թվականին",
-            "url": "https://style.news.am/arm/news/115722/",
-            "date": "2026-08-21T16:31:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115722.jpg"
           }
         ]
       },
@@ -9691,8 +9697,8 @@
             "image": "https://med.news.am/static/news/s/2026/08/41748.jpg"
           },
           {
-            "title": "The Lancet. Ռոբոտները ծնկի պրոթեզներն ավելի ճշգրիտ են տեղադրում, սակայն չեն արագացնում վերականգնումը",
-            "url": "https://med.news.am/arm/news/41747/the-lancet-robotnery-tsnki-proteznern-aveli-tchshgrit-en-texadrum-sakayn-chen-aragacnum-verakangnumy.html",
+            "title": "Ռոբոտները ծնկի պրոթեզներն ավելի ճշգրիտ են տեղադրում, սակայն չեն արագացնում վերականգնումը",
+            "url": "https://med.news.am/arm/news/41747/robotnery-tsnki-proteznern-aveli-tchshgrit-en-texadrum-sakayn-chen-aragacnum-verakangnumy.html",
             "date": "2026-08-22T07:48:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41747.jpg"
           },
@@ -9751,6 +9757,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Իրանի սահմանապահները կանխել են զինված խմբի՝ երկիր ներթափանցելու փորձը",
+            "url": "https://news.am/hy/news/1057023",
+            "date": "2026-08-22T10:22:00.000Z",
+            "image": "https://news.am/storage/media/26/08/22/vJcbB2g2yW2G8OKI.webp"
+          },
+          {
             "title": "Սամարայի մարզում դրոնների հարձակման հետևանքով վնասվել է մեկ ձեռնարկություն և Ozon-ի լոգիստիկ համալիրը",
             "url": "https://news.am/hy/news/1057027",
             "date": "2026-08-22T09:02:06.000Z",
@@ -9803,12 +9815,6 @@
             "url": "https://news.am/hy/news/1056924",
             "date": "2026-08-21T15:01:42.000Z",
             "image": "https://news.am/storage/media/26/08/21/XoSQC8YbcBfN3CaB.webp"
-          },
-          {
-            "title": "Պառավաքար գյուղի բնակիչների տանը ապօրինի պահվող զենք-զինամթերք է հայտնաբերվել",
-            "url": "https://news.am/hy/news/1056906",
-            "date": "2026-08-21T13:31:31.000Z",
-            "image": "https://news.am/storage/media/26/08/21/6iIY9UYtMpJx99y9.webp"
           }
         ]
       },
@@ -10215,6 +10221,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Охранник музея испортил романтическое предложение руки и сердца, приказав жениху встать с колен",
+            "url": "https://style.news.am/rus/news/115730/",
+            "date": "2026-08-22T09:31:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/08/115730.jpg"
+          },
+          {
             "title": "Меган метила в Сенат США, а Гарри рвался к Байдену: дерзкие политические амбиции Сассекских провалились",
             "url": "https://style.news.am/rus/news/115729/",
             "date": "2026-08-22T08:18:00.000Z",
@@ -10267,12 +10279,6 @@
             "url": "https://style.news.am/rus/news/115716/",
             "date": "2026-08-21T10:37:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/08/115716.jpg"
-          },
-          {
-            "title": "Марк Цукерберг купил роскошный замок XIX века в Ирландии за десятки миллионов долларов",
-            "url": "https://style.news.am/rus/news/115715/",
-            "date": "2026-08-21T09:03:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/08/115715.jpg"
           }
         ]
       },
@@ -10401,10 +10407,10 @@
             "image": "https://med.news.am/static/news/s/2026/08/41738.jpg"
           },
           {
-            "title": "Снижение сахара до двух лет связано с меньшим риском деменции в старости",
-            "url": "https://med.news.am/rus/news/41737/snizhenie-sakhara-do-dvukh-let-svyazano-s-menshim-riskom-demencii-v-starosti.html",
-            "date": "2026-08-20T14:16:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41737.jpg"
+            "title": "На каком основании Фонд страхования требует вернуть деньги от медучреждений: ассоциации обратились к министру",
+            "url": "https://med.news.am/rus/news/41741/na-kakom-osnovanii-fond-strakhovaniya-trebuet-vernut-dengi-ot-meduchrezhdeniiy-associacii-obratilis-k-ministru.html",
+            "date": "2026-08-20T16:40:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41741.jpg"
           }
         ]
       },
@@ -10412,6 +10418,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Иранские пограничники предотвратили попытку вооруженной группы проникнуть в страну",
+            "url": "https://news.am/ru/news/1057023",
+            "date": "2026-08-22T10:22:00.000Z",
+            "image": "https://news.am/storage/media/26/08/22/vJcbB2g2yW2G8OKI.webp"
+          },
           {
             "title": "При атаке дронов повреждены предприятие и комплекс Ozon в Самарской области",
             "url": "https://news.am/ru/news/1057027",
@@ -10465,12 +10477,6 @@
             "url": "https://news.am/ru/news/1056896",
             "date": "2026-08-21T13:16:28.000Z",
             "image": "https://news.am/storage/media/26/08/21/EhPmha3u5FnbjD7g.webp"
-          },
-          {
-            "title": "На улице Давида Бека в Ереване столкнулись 3 автомобиля: есть пострадавшие",
-            "url": "https://news.am/ru/news/1056805",
-            "date": "2026-08-21T09:00:00.000Z",
-            "image": "https://news.am/storage/media/26/08/21/gUT8KaHxr2lk62PS.webp"
           }
         ]
       },
