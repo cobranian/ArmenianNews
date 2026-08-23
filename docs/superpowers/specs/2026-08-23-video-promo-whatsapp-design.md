@@ -29,6 +29,18 @@ Le projet est **paramétré par langue dès le départ** (voir « Interface d'é
 plus bas) : une version anglaise pour le `.org` reste possible plus tard sans
 refonte, mais elle **n'est pas dans ce lot**.
 
+> **Amendement du 23 août 2026 — cette phrase n'a pas été tenue.** Le plan
+> d'implémentation, écrit à partir de cette spec, n'a jamais prévu de prop de
+> langue : il fige un schéma Zod à quatre clés (`montrerZones`, `promesse`,
+> `adresse`, `signature`) et le français est écrit en dur dans quatre scènes —
+> `Langues.tsx` (les quatre phrases et leurs pastilles), `Fil.tsx` (la table des
+> mois, « Instantané du », « rédactions ») et `RadioAgenda.tsx` (« radios en
+> direct », « événements, pays »). Une version anglaise demanderait donc bien
+> une refonte de ces quatre fichiers. C'est la spec qui a promis, et le plan qui
+> a lâché ; la revue finale de branche l'a relevé. La phrase reste ici pour
+> mémoire, corrigée par cet encadré plutôt que réécrite — une spec qu'on
+> retouche après coup cesse de dire ce qu'on croyait au moment de décider.
+
 ## La promesse, et pourquoi c'est celle-là
 
 **« Toute la vie arménienne sur une page, refaite chaque heure. »**
@@ -194,6 +206,11 @@ Les textes, durées et chiffres passent par un schéma **Zod** en `defaultProps`
 pour que le Studio permette de les corriger visuellement et que la correction se
 réécrive dans le code. C'est aussi ce qui rendra une version anglaise possible
 sans refonte : la langue devient un prop, pas une réécriture.
+
+> **Amendement du 23 août 2026 :** la première moitié a été tenue (le schéma Zod
+> existe, le Studio édite `promesse`, `adresse` et `signature`), la seconde non —
+> la langue n'est pas un prop. Voir l'encadré de la section « Ce qu'on fabrique,
+> et pour qui ».
 
 ## Vérification
 
