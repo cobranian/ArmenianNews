@@ -20,6 +20,14 @@ Chacune de ces contraintes a été choisie, pas subie :
   lecteur qui déverrouille le son par réflexe, au prix d'une question de droits
   (une piste tierce, ou l'extrait d'une des quinze radios — ce sont des œuvres
   et des programmes qu'on ne rediffuse pas parce qu'on en lie le flux).
+
+  > **Amendement du 23 août 2026 — révisé, sur demande explicite.** La vidéo
+  > porte désormais une nappe sonore. La question de droits reste résolue de
+  > la même façon qu'ici prévu : rien de tiers, la nappe est **synthétisée**
+  > par un script Node pur (`scripts/audio.mjs`), déterministe, sans
+  > `Math.random()` ni `Date.now()` — pas un extrait de radio ni une piste
+  > sous licence à vérifier. Voir `armenie-info-promo/README.md`, section
+  > « Le son », pour le détail.
 - **Français, `.ch`.** Le statut est posté depuis un compte personnel : ce sont
   des contacts francophones qui le verront. Le `.org` a davantage besoin de
   trafic, mais une vidéo en anglais servie à la diaspora suisse convertirait
@@ -234,7 +242,8 @@ sans refonte : la langue devient un prop, pas une réécriture.
 
 - Pas de version anglaise, arménienne ni russe — l'architecture les permet, le
   lot ne les produit pas.
-- Pas de bande-son, dans aucune variante.
+- Pas de bande-son, dans aucune variante. *(Amendement du 23 août 2026 :
+  révisé — voir plus haut.)*
 - Pas d'intégration à la CI : le rendu est une **étape manuelle locale**, comme
   `ig-scrape`, `fb-scrape` et `og-image`. Il a besoin d'un Chrome et du réseau,
   et rien ne justifie de le refaire toutes les heures.
