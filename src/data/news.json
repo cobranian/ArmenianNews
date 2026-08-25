@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T03:46:20.474Z",
+  "generatedAt": "2026-08-25T04:35:31.183Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1355,6 +1355,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "ԱՄՆ-ը չի միացել ՄԱԿ-ում Ռուսաստանին դատապարտող համատեղ հայտարարությանը",
+            "url": "https://hy.armradio.am/archives/754421",
+            "date": "2026-08-25T04:16:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/AP26236520135277-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Պատմական շրջափուլ. Սիրիան ողջունել է ԱՄՆ որոշումը",
+            "url": "https://hy.armradio.am/archives/754418",
+            "date": "2026-08-25T04:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/ca750c34-121f-47ed-afa2-5574d7c525fc-300x168.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱՄՆ-ն Սիրիան հանել է ահաբեկչությունը հովանավորող պետությունների ցուցակից",
             "url": "https://hy.armradio.am/archives/754411",
             "date": "2026-08-24T18:58:00.000Z",
@@ -1409,26 +1423,19 @@
             "date": "2026-08-23T14:43:26.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/78475869_1004-768x336.webp",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Բաքուն փորձում է նվազեցնել լարվածությունը Իսրայելի և Թուրքիայի հարաբերություններում․ Ynet",
-            "url": "https://hy.armradio.am/archives/754156",
-            "date": "2026-08-23T13:28:34.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/azerbaijan_tursiya_izrail-1067x600-1-768x432.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Իրանցի հաքերները Մեծ Բրիտանիայում էլեկտրակայան են շարքից հանել․ The Telegraph",
-            "url": "https://hy.armradio.am/archives/754143",
-            "date": "2026-08-23T11:10:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/l-0x23wh-1080x629z-0.7278-768x447.jpeg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Հայաստանի նոր երաժշտությանը նվիրված BBC- ի երկժամանոց հաղորդումը",
+            "url": "https://hy.armradio.am/archives/754424",
+            "date": "2026-08-25T04:31:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_0984-768x520.jpeg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Երեկո, որտեղ երաժշտությունը կհանդիպի հիշողություններին",
             "url": "https://hy.armradio.am/archives/754117",
@@ -1491,13 +1498,6 @@
             "date": "2026-08-16T11:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_4442-768x513.jpeg",
             "category": "Մշակույթ"
-          },
-          {
-            "title": "100-ամյա հիթեր, հումոր ու իմպրովիզ․ Մարվին Մուոնեկեի ջազային երեկոն «Khachaturian Rooftop»-ում",
-            "url": "https://hy.armradio.am/archives/752535",
-            "date": "2026-08-14T17:30:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/6bc6f28c-5d0e-45d4-8137-2d0511495702-768x432.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -9035,6 +9035,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Lung cancer patient remains tumor-free for 10 years after sodium selenite treatment",
+            "url": "https://med.news.am/eng/news/41763/lung-cancer-patient-remains-tumor-free-for-10-years-after-sodium-selenite-treatment.html",
+            "date": "2026-08-25T04:35:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41763.jpg"
+          },
+          {
             "title": "8-Year-Old Louisiana Girl Dies After Rare Brain-Eating Amoeba Infection",
             "url": "https://med.news.am/eng/news/41764/8-year-old-louisiana-girl-dies-after-rare-brain-eating-amoeba-infection.html",
             "date": "2026-08-24T18:43:00.000Z",
@@ -9087,12 +9093,6 @@
             "url": "https://med.news.am/eng/news/41752/hair-birth-in-four-dimensions-scientists-create-a-unique-map-of-follicle-development.html",
             "date": "2026-08-23T08:37:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41752.jpg"
-          },
-          {
-            "title": "COVID-19 may enhance the breathing response after awakening during sleep",
-            "url": "https://med.news.am/eng/news/41751/covid-19-may-enhance-the-breathing-response-after-awakening-during-sleep.html",
-            "date": "2026-08-22T19:39:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41751.jpg"
           }
         ]
       },
@@ -9433,6 +9433,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Զվարթնոցում» մեծ շուքով դիմավորեցին Եվրոպայի չեմպիոն Արթուր Ավետիսյանին եւ մյուս մեդալակիրներին (ֆոտո, վիդեո)",
+            "url": "https://sport.news.am/arm/news/168531/",
+            "date": "2026-08-25T04:18:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168531.jpg"
+          },
+          {
             "title": "Տիգրան Ավետիսյանը՝ ծանրամարտի Եվրոպայի Մ-15 տարեկանների չեմպիոն",
             "url": "https://sport.news.am/arm/news/168530/",
             "date": "2026-08-24T21:31:00.000Z",
@@ -9485,12 +9491,6 @@
             "url": "https://sport.news.am/arm/news/168521/",
             "date": "2026-08-24T14:41:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168521.jpg"
-          },
-          {
-            "title": "Խուլիան Ալվարեսը պայմանավորվել է «Բարսելոնայի» հետ",
-            "url": "https://sport.news.am/arm/news/168520/",
-            "date": "2026-08-24T13:26:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168520.jpg"
           }
         ]
       },
@@ -9763,6 +9763,18 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "«Իրավունք». Դուք ինադո՞ւ եք անում». ՊՆ-ում վերջին ողբերգական դեպքերը հունից հանել են Նիկոլ Փաշինյանին",
+            "url": "https://news.am/hy/news/1057445",
+            "date": "2026-08-25T04:29:00.000Z",
+            "image": "https://news.am/storage/media/26/08/25/wKSa3Nm4wcqBvBOb.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ Սյունիքում անօդաչու թռչող սարքեր են նկատել",
+            "url": "https://news.am/hy/news/1057443",
+            "date": "2026-08-25T04:15:00.000Z",
+            "image": "https://news.am/storage/media/26/08/25/dG1FWO81zNgfmr6T.webp"
+          },
+          {
             "title": "Ողբերգական դեպք էլիտար շենքում․ աշխատակիցը 7-րդ հարկից վայր է ընկել վերելակի հորանի մեջ եւ մահացել",
             "url": "https://news.am/hy/news/1057418",
             "date": "2026-08-24T17:14:22.000Z",
@@ -9809,18 +9821,6 @@
             "url": "https://news.am/hy/news/1057206",
             "date": "2026-08-23T19:39:00.000Z",
             "image": "https://news.am/storage/media/26/08/23/mm94cfeeICtlhcwl.webp"
-          },
-          {
-            "title": "Քարեր, ավերված շենքեր և փախուստի փորձ. Հունաստանում անկարգություններ են սկսվել միգրանտների կենտրոնում",
-            "url": "https://news.am/hy/news/1057200",
-            "date": "2026-08-23T18:55:00.000Z",
-            "image": "https://news.am/storage/media/26/08/23/oR2pSDXijtFyMbFu.webp"
-          },
-          {
-            "title": "2 քննիչներին ծեծի ենթարկած ոստիկանը և ևս 1 մեղադրյալ կալանավորվել են. ՔԿ",
-            "url": "https://news.am/hy/news/1057205",
-            "date": "2026-08-23T18:01:16.000Z",
-            "image": "https://news.am/storage/media/26/08/23/VFB5hMPH5adnWaKX.webp"
           }
         ]
       },
@@ -9963,6 +9963,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "«Ишханутюн»: После сегодняшнего заседания Национального Собрания правоохранители получили указание начать процесс в отношении Роберта Кочаряна и его сыновей",
+            "url": "https://news.am/ru/news/1057435",
+            "date": "2026-08-24T19:20:26.000Z",
+            "image": "https://news.am/storage/media/26/08/24/RL5RgdaO3VXF8Kpe.webp"
+          },
+          {
             "title": "Медведев: Лишь одно правило сейчас применимо к действующим властям Армении – «не метать бисер перед свиньями",
             "url": "https://news.am/ru/news/1057404",
             "date": "2026-08-24T15:36:25.000Z",
@@ -10015,12 +10021,6 @@
             "url": "https://news.am/ru/news/1057298",
             "date": "2026-08-24T08:50:00.000Z",
             "image": "https://news.am/storage/media/26/08/24/cJrIymnHx058jjxu.webp"
-          },
-          {
-            "title": "Пашинян: В ближайшие 5 лет Армения не планирует возвращаться в ОДКБ и будет рада, если ее исключат",
-            "url": "https://news.am/ru/news/1057286",
-            "date": "2026-08-24T08:43:00.000Z",
-            "image": "https://i.ytimg.com/vi/YCATrZ-0BuA/hqdefault.jpg"
           }
         ]
       },
@@ -10359,6 +10359,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Пациентка с раком легкого оставалась без опухоли 10 лет после лечения селенитом натрия",
+            "url": "https://med.news.am/rus/news/41763/pacientka-s-rakom-legkogo-ostavalas-bez-opukholi-10-let-posle-lecheniya-selenitom-natriya.html",
+            "date": "2026-08-25T04:35:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41763.jpg"
+          },
+          {
             "title": "8-летняя девочка из Луизианы умерла после заражения редкой «мозгоедной» амебой",
             "url": "https://med.news.am/rus/news/41764/8-letnyaya-devochka-iz-luizianiy-umerla-posle-zarazheniya-redkoiy-mozgoednoiy-ameboiy.html",
             "date": "2026-08-24T18:43:00.000Z",
@@ -10411,12 +10417,6 @@
             "url": "https://med.news.am/rus/news/41753/v-evrope-virus-zapadnogo-nila-viyyavili-uzhe-v-12-stranakh.html",
             "date": "2026-08-23T12:49:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41753.jpg"
-          },
-          {
-            "title": "Рождение волоса в четырёх измерениях: учёные создали уникальную карту развития фолликула",
-            "url": "https://med.news.am/rus/news/41752/rozhdenie-volosa-v-chetiyryokh-izmereniyakh-uchyoniye-sozdali-unikalnuyu-kartu-razvitiya-follikula.html",
-            "date": "2026-08-23T08:37:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41752.jpg"
           }
         ]
       },
