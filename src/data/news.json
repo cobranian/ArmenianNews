@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T15:27:51.733Z",
+  "generatedAt": "2026-08-29T19:10:20.367Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -3124,6 +3124,12 @@
       "categoryKey": "un-autre-regard",
       "articles": [
         {
+          "title": "L’Arménie est un peu dans le gaz…",
+          "url": "https://armenieinfo.tv/larmenie-est-un-peu-dans-gaz/",
+          "date": "2026-08-29T17:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-23-aout-2026-18_57_01.png"
+        },
+        {
           "title": "Que lit l’Arménie quand personne ne ne la regarde ?",
           "url": "https://armenieinfo.tv/ne-ne-la-regarde/",
           "date": "2026-08-27T17:00:00.000Z",
@@ -3170,12 +3176,6 @@
           "url": "https://armenieinfo.tv/la-turquie-ne-se-lit-pas-depuis-paris/",
           "date": "2026-08-20T17:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-19-aout-2026-00_59_41.png"
-        },
-        {
-          "title": "En Arménie, certains mariages finissent bien avant le divorce",
-          "url": "https://armenieinfo.tv/en-armenie-certains-mariages-finissent-bien-avant-le-divorce/",
-          "date": "2026-08-19T17:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/ChatGPT-Image-18-aout-2026-22_22_54.png"
         }
       ]
     }
@@ -9035,6 +9035,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Immunity: COVID-19 May Trigger a Mechanism Similar to the Development of Autoimmune Diseases",
+            "url": "https://med.news.am/eng/news/41796/immunity-covid-19-may-trigger-a-mechanism-similar-to-the-development-of-autoimmune-diseases.html",
+            "date": "2026-08-29T17:56:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41796.jpg"
+          },
+          {
             "title": "Scientists Identify Diet That Reduces Liver Fat and Prediabetes Risk More Effectively Than Others",
             "url": "https://med.news.am/eng/news/41795/scientists-identify-diet-that-reduces-liver-fat-and-prediabetes-risk-more-effectively-than-others.html",
             "date": "2026-08-29T13:23:00.000Z",
@@ -9087,12 +9093,6 @@
             "url": "https://med.news.am/eng/news/41787/chinese-scientists-develop-a-way-to-build-muscle-without-exercise.html",
             "date": "2026-08-28T11:26:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41787.jpg"
-          },
-          {
-            "title": "Caffeine vs. a Sleepy Morning: Experiment Produces an Unexpected Result",
-            "url": "https://med.news.am/eng/news/41782/caffeine-vs-a-sleepy-morning-experiment-produces-an-unexpected-result.html",
-            "date": "2026-08-28T04:46:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41782.jpg"
           }
         ]
       },
@@ -9301,6 +9301,30 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Թրամփի իրավական վահանը. Սպիտակ տունը պատրաստվում է դիմակայել դեմոկրատների հետաքննություններին",
+            "url": "https://news.am/hy/news/1058478",
+            "date": "2026-08-29T19:09:00.000Z",
+            "image": "https://news.am/storage/media/26/05/06/MXPl6nfsaRxeWs3F.webp"
+          },
+          {
+            "title": "Մեծ Բրիտանիայի նախկին արտգործնախարարը հայտարարել է 2028 թվականին Լոնդոնի քաղաքապետի պաշտոնի համար պայքարելու մտադրության մասին",
+            "url": "https://news.am/hy/news/1058472",
+            "date": "2026-08-29T18:21:00.000Z",
+            "image": "https://news.am/storage/media/26/08/29/MFe9nRmKe0PCTWrJ.webp"
+          },
+          {
+            "title": "Ռոբերտ Քոչարյանի 4-րդ կալանքը. իշխանությունը փորձում է չեզոքացնել համախմբման առաջնորդին. Մանթաշյան",
+            "url": "https://news.am/hy/news/1058470",
+            "date": "2026-08-29T15:57:11.000Z",
+            "image": "https://news.am/storage/media/26/08/29/yz6xlgaYwoALkI0o.webp"
+          },
+          {
+            "title": "Քոչարյանի կալանքը «թալանի վերադարձ» չէ․ սա իշխանության վախի դրսևորումն է․ Սևակ Խաչատրյան",
+            "url": "https://news.am/hy/news/1058468",
+            "date": "2026-08-29T15:41:56.000Z",
+            "image": "https://news.am/storage/media/26/08/29/4m2vFhSqc3JepNeD.webp"
+          },
+          {
             "title": "Հարցում․ Գերմանիայի բնակիչների երկու երրորդը կարծում է, որ Թրամփի օրոք ԱՄՆ-ի ազդեցությունը երկրի վրա ուժեղացել է",
             "url": "https://news.am/hy/news/1058421",
             "date": "2026-08-29T10:21:00.000Z",
@@ -9335,30 +9359,6 @@
             "url": "https://news.am/hy/news/1058367",
             "date": "2026-08-29T03:40:00.000Z",
             "image": "https://news.am/storage/media/26/08/29/qDBL6BvmeoN9ksTe.webp"
-          },
-          {
-            "title": "Ջորջա Մելոնին ռեկորդ է սահմանում․ Իտալիայի ոչ մի կառավարություն այսքան երկար չի պահպանվել",
-            "url": "https://news.am/hy/news/1058323",
-            "date": "2026-08-28T19:15:00.000Z",
-            "image": "https://news.am/storage/media/26/08/28/yY97pIlj3mq5lcal.webp"
-          },
-          {
-            "title": "Համախմբվածությանը վնաս հասցնող գործողություններն անընդունելի են․ Իրանի գերագույն առաջնորդ",
-            "url": "https://news.am/hy/news/1058358",
-            "date": "2026-08-28T17:54:14.000Z",
-            "image": "https://news.am/storage/media/26/06/13/CyCkcUqxitqLA6kO.webp"
-          },
-          {
-            "title": "Մեդվեդևը հավաստիացրել է, որ զորահավաք չի լինի",
-            "url": "https://news.am/hy/news/1058350",
-            "date": "2026-08-28T16:52:42.000Z",
-            "image": "https://news.am/storage/media/26/06/01/sn6BrHMosMo0JOdf.webp"
-          },
-          {
-            "title": "Հայաստանում ընդդիմության հետապնդումը երկու նպատակ է հետապնդում․ Ռուս փորձագետ",
-            "url": "https://news.am/hy/news/1058349",
-            "date": "2026-08-28T16:49:21.000Z",
-            "image": "https://news.am/storage/media/26/08/28/gevO6j43TyVaSBiy.webp"
           }
         ]
       },
@@ -9433,6 +9433,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Եվրոպայի լիգա․ «Արարատ-Արմենիայի» խաղացանկը",
+            "url": "https://sport.news.am/arm/news/168637/",
+            "date": "2026-08-29T19:13:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168637.jpg"
+          },
+          {
+            "title": "«Նյուքասլ Յունայթեդն» ուժեղ էր «Տոտենհեմից» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168636/",
+            "date": "2026-08-29T18:28:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168636.jpg"
+          },
+          {
+            "title": "«Ալ Ահլիի» պարտությունը, Սպերցյանի գոլային փոխանցումը (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168635/",
+            "date": "2026-08-29T18:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168635.jpg"
+          },
+          {
+            "title": "Ֆուտզալի ՉԼ․ «Յունիսպորտը» դուրս եկավ հիմնական փուլ",
+            "url": "https://sport.news.am/arm/news/168634/",
+            "date": "2026-08-29T15:57:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168634.jpg"
+          },
+          {
             "title": "Բունդեսլիգայի նորեկի սենսացիոն հաղթանակը «Բայերի» նկատմամբ (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168633/",
             "date": "2026-08-29T15:26:00.000Z",
@@ -9467,30 +9491,6 @@
             "url": "https://sport.news.am/arm/news/168628/",
             "date": "2026-08-28T21:01:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168628.jpg"
-          },
-          {
-            "title": "ՊՍԺ-ն 2 գոլ խփեց ավելացված ժամանակում եւ խուսափեց պարտությունից (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168627/",
-            "date": "2026-08-28T20:57:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168627.jpg"
-          },
-          {
-            "title": "«Միլանը» պարտության մատնեց «Վենեցիային» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168626/",
-            "date": "2026-08-28T20:47:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168626.jpg"
-          },
-          {
-            "title": "Բունդեսլիգա․ «Բավարիայի» հաղթական մեկնարկը՝ 5:1 (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168625/",
-            "date": "2026-08-28T20:25:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168625.jpg"
-          },
-          {
-            "title": "Նիկոլաս Ջեքսոնը տեղափոխվեց «Աստոն Վիլա»",
-            "url": "https://sport.news.am/arm/news/168624/",
-            "date": "2026-08-28T19:45:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168624.jpg"
           }
         ]
       },
@@ -9697,6 +9697,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Immunity. COVID-19-ը կարող է գործարկել աուտոիմունային հիվանդությունների զարգացմանը նմանվող մեխանիզմ",
+            "url": "https://med.news.am/arm/news/41796/immunity-covid-19-y-karox-e-gortsarkel-autoimunayin-hivandutyunneri-zargacmany-nmanvox-mekhanizm.html",
+            "date": "2026-08-29T17:56:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41796.jpg"
+          },
+          {
+            "title": "Երազելու իրավունք․ SMA-ով երեխաները կրկին բարձրաձայնում են իրենց խնդիրների մասին",
+            "url": "https://med.news.am/arm/news/41797/erazelu-iravunq%E2%80%A4-sma-ov-erekhanery-krkin-bardzradzaynum-en-irenc-khndirneri-masin.html",
+            "date": "2026-08-29T15:34:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41797.jpg"
+          },
+          {
             "title": "Գիտնականները նշել են այն դիետան, որն ամենից շատն է նվազեցնում լյարդի ճարպը և նախադիաբետի վտանգը",
             "url": "https://med.news.am/arm/news/41795/gitnakannery-nshel-en-ayn-dietan-orn-amenic-shatn-e-nvazecnum-lyardi-tcharpy-ev-nakhadiabeti-vtangy.html",
             "date": "2026-08-29T13:23:00.000Z",
@@ -9743,18 +9755,6 @@
             "url": "https://med.news.am/arm/news/41788/esc-masnagetnery-srti-katvatsneri-bard-hamarakalumy-pokharinel-en-ereq-hstak-kategorianerov.html",
             "date": "2026-08-28T13:28:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41788.jpg"
-          },
-          {
-            "title": "Չինացի գիտնականները սովորել են մկաններ կառուցել առանց մարզվելու",
-            "url": "https://med.news.am/arm/news/41787/chinaci-gitnakannery-sovorel-en-mkanner-karucel-aranc-marzvelu.html",
-            "date": "2026-08-28T11:26:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41787.jpg"
-          },
-          {
-            "title": "Կոֆեինն՝ ընդդեմ առավոտյան քնի. փորձն անսպասելի արդյունք է բացահայտել",
-            "url": "https://med.news.am/arm/news/41782/kofeinn-ynddem-aravotyan-qni-pordzn-anspaseli-ardyunq-e-bacahaytel.html",
-            "date": "2026-08-28T04:46:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41782.jpg"
           }
         ]
       },
@@ -9762,6 +9762,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Մանհեթենում մի տղամարդ ինքնահրկիզման ակտ է կատարել Google-ի գրասենյակի նախասրահում",
+            "url": "https://news.am/hy/news/1058477",
+            "date": "2026-08-29T18:53:00.000Z",
+            "image": "https://news.am/storage/media/26/08/29/b3KuIfQZLfjrPdM8.webp"
+          },
           {
             "title": "Նիգերի պաշտպանության նախարար․ զինվորականները փորձել են ապստամբություն բարձրացնել Նիամեյի բազայում",
             "url": "https://news.am/hy/news/1058445",
@@ -9815,12 +9821,6 @@
             "url": "https://news.am/hy/news/1058206",
             "date": "2026-08-28T07:40:00.000Z",
             "image": "https://news.am/storage/media/26/08/28/PNz3EywDAasFRGSg.webp"
-          },
-          {
-            "title": "Բեռլինի մերձակա դպրոցում հրաձգություն է տեղի ունեցել. երկու մարդ է զոհվել, կասկածյալը ձերբակալվել է",
-            "url": "https://news.am/hy/news/1058123",
-            "date": "2026-08-27T15:06:00.000Z",
-            "image": "https://news.am/storage/media/26/08/27/p8RSw3qyz2G4QZvP.webp"
           }
         ]
       },
@@ -9963,6 +9963,30 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Юридический щит Трампа: Белый дом готовится противостоять расследованиям демократов",
+            "url": "https://news.am/ru/news/1058478",
+            "date": "2026-08-29T19:09:00.000Z",
+            "image": "https://news.am/storage/media/26/05/06/MXPl6nfsaRxeWs3F.webp"
+          },
+          {
+            "title": "Экс-глава МИД Великобритании объявил о намерении побороться за пост мэра Лондона в 2028 году",
+            "url": "https://news.am/ru/news/1058472",
+            "date": "2026-08-29T18:21:00.000Z",
+            "image": "https://news.am/storage/media/26/08/29/MFe9nRmKe0PCTWrJ.webp"
+          },
+          {
+            "title": "Четвёртый арест Роберта Кочаряна: власть пытается нейтрализовать лидера консолидации - Манташян",
+            "url": "https://news.am/ru/news/1058470",
+            "date": "2026-08-29T15:57:11.000Z",
+            "image": "https://news.am/storage/media/26/08/29/yz6xlgaYwoALkI0o.webp"
+          },
+          {
+            "title": "Арест Кочаряна — не «возврат награбленного»: это проявление страха власти - Севак Хачатрян",
+            "url": "https://news.am/ru/news/1058468",
+            "date": "2026-08-29T15:41:56.000Z",
+            "image": "https://news.am/storage/media/26/08/29/4m2vFhSqc3JepNeD.webp"
+          },
+          {
             "title": "Опрос: Две трети жителей Германии считают, что влияние США на страну усилилось при Трампе",
             "url": "https://news.am/ru/news/1058421",
             "date": "2026-08-29T10:21:00.000Z",
@@ -9997,30 +10021,6 @@
             "url": "https://news.am/ru/news/1058358",
             "date": "2026-08-28T17:54:14.000Z",
             "image": "https://news.am/storage/media/26/06/13/CyCkcUqxitqLA6kO.webp"
-          },
-          {
-            "title": "Медведев заверил, что мобилизации не будет",
-            "url": "https://news.am/ru/news/1058350",
-            "date": "2026-08-28T16:52:42.000Z",
-            "image": "https://news.am/storage/media/26/06/01/sn6BrHMosMo0JOdf.webp"
-          },
-          {
-            "title": "Российский эксперт: Преследование оппозиции в Армении преследует две цели",
-            "url": "https://news.am/ru/news/1058349",
-            "date": "2026-08-28T16:49:21.000Z",
-            "image": "https://news.am/storage/media/26/08/28/gevO6j43TyVaSBiy.webp"
-          },
-          {
-            "title": "«Не научились»: Лавров ответил на вопрос о «мягкой силе» в отношении Армении",
-            "url": "https://news.am/ru/news/1058311",
-            "date": "2026-08-28T13:31:37.000Z",
-            "image": "https://news.am/storage/media/26/05/15/BB4hvHOiKSsNexBs.webp"
-          },
-          {
-            "title": "Трамп опубликовал изображение, где Ормузский пролив отмечен как одна из территорий США",
-            "url": "https://news.am/ru/news/1058262",
-            "date": "2026-08-28T10:39:00.000Z",
-            "image": "https://news.am/storage/media/26/08/28/ByYaO8Ww8ZOqYIGB.webp"
           }
         ]
       },
@@ -10095,6 +10095,24 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Поражение «Аль-Ахли», голевая передача Сперцяна (видео)",
+            "url": "https://sport.news.am/rus/news/168635/",
+            "date": "2026-08-29T18:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168635.jpg"
+          },
+          {
+            "title": "ЛЧ по футзалу: «Юниспорт» вышел в основной этап",
+            "url": "https://sport.news.am/rus/news/168634/",
+            "date": "2026-08-29T15:57:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168634.jpg"
+          },
+          {
+            "title": "Сенсационная победа новичка Бундеслиги над «Байером» (видео)",
+            "url": "https://sport.news.am/rus/news/168633/",
+            "date": "2026-08-29T15:26:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/08/168633.jpg"
+          },
+          {
             "title": "«Ширак» разгромил «Ван» (видео)",
             "url": "https://sport.news.am/rus/news/168632/",
             "date": "2026-08-29T13:56:00.000Z",
@@ -10135,24 +10153,6 @@
             "url": "https://sport.news.am/rus/news/168623/",
             "date": "2026-08-28T18:47:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/08/168623.jpg"
-          },
-          {
-            "title": "«Урарту» и «Алашкерт» сыграли вничью (видео)",
-            "url": "https://sport.news.am/rus/news/168622/",
-            "date": "2026-08-28T17:55:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168622.jpg"
-          },
-          {
-            "title": "Лига конференций: Результаты жеребьевки общего этапа",
-            "url": "https://sport.news.am/rus/news/168620/",
-            "date": "2026-08-28T16:06:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168620.jpg"
-          },
-          {
-            "title": "Итальянская Серия А: Стартует второй тур",
-            "url": "https://sport.news.am/rus/news/168616/",
-            "date": "2026-08-28T13:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/08/168616.jpg"
           }
         ]
       },
@@ -10359,6 +10359,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Immunity: COVID-19 может запускать механизм, похожий на развитие аутоиммунных заболеваний",
+            "url": "https://med.news.am/rus/news/41796/immunity-covid-19-mozhet-zapuskat-mekhanizm-pokhozhiiy-na-razvitie-autoimmunniykh-zabolevaniiy.html",
+            "date": "2026-08-29T17:56:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41796.jpg"
+          },
+          {
+            "title": "Право на мечту: дети со СМА вновь говорят о своих проблемах",
+            "url": "https://med.news.am/rus/news/41797/pravo-na-mechtu-deti-so-sma-vnov-govoryat-o-svoikh-problemakh.html",
+            "date": "2026-08-29T15:34:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/08/41797.jpg"
+          },
+          {
             "title": "Ученые назвали диету, которая сильнее других снижает жир в печени и риск предиабета",
             "url": "https://med.news.am/rus/news/41795/ucheniye-nazvali-dietu-kotoraya-silnee-drugikh-snizhaet-zhir-v-pecheni-i-risk-prediabeta.html",
             "date": "2026-08-29T13:23:00.000Z",
@@ -10405,18 +10417,6 @@
             "url": "https://med.news.am/rus/news/41788/esc-ekspertiy-zamenili-slozhnuyu-numeraciyu-infarktov-na-tri-ponyatniye-kategorii.html",
             "date": "2026-08-28T13:28:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/08/41788.jpg"
-          },
-          {
-            "title": "Китайские ученые научились наращивать мышцы без тренировок",
-            "url": "https://med.news.am/rus/news/41787/kitaiyskie-ucheniye-nauchilis-narashchivat-miyshciy-bez-trenirovok.html",
-            "date": "2026-08-28T11:26:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41787.jpg"
-          },
-          {
-            "title": "Кофеин против сонного утра: эксперимент показал неожиданный результат",
-            "url": "https://med.news.am/rus/news/41782/kofein-protiv-sonnogo-utra-eksperiment-pokazal-neozhidanniyiy-rezultat.html",
-            "date": "2026-08-28T04:46:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/08/41782.jpg"
           }
         ]
       },
@@ -10424,6 +10424,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "На Манхэттене мужчина устроил акт самосожжения в вестибюле офиса Google",
+            "url": "https://news.am/ru/news/1058477",
+            "date": "2026-08-29T18:53:00.000Z",
+            "image": "https://news.am/storage/media/26/08/29/b3KuIfQZLfjrPdM8.webp"
+          },
           {
             "title": "Глава Минобороны Нигера: военные пытались поднять мятеж на базе в Ниамее",
             "url": "https://news.am/ru/news/1058445",
@@ -10477,12 +10483,6 @@
             "url": "https://news.am/ru/news/1058110",
             "date": "2026-08-27T13:35:00.000Z",
             "image": "https://news.am/storage/media/26/08/27/5nswe3JTuSDLxEI6.webp"
-          },
-          {
-            "title": "Министерство труда и социальных вопросов Армении: Найденного ребенка можно усыновить через 3 месяца, если родителей не удастся обнаружить",
-            "url": "https://news.am/ru/news/1058097",
-            "date": "2026-08-27T13:01:27.000Z",
-            "image": "https://i.ytimg.com/vi/oHav_pylBbM/hqdefault.jpg"
           }
         ]
       },
