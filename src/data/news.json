@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T14:33:13.152Z",
+  "generatedAt": "2026-09-05T17:07:53.189Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -2032,13 +2032,6 @@
         "categoryKey": "sport",
         "articles": [
           {
-            "title": "Срок ареста Гагика Царукяна продлён на 2 месяца",
-            "url": "https://ru.armradio.am/2026/09/04/%d1%81%d1%80%d0%be%d0%ba-%d0%b0%d1%80%d0%b5%d1%81%d1%82%d0%b0-%d0%b3%d0%b0%d0%b3%d0%b8%d0%ba%d0%b0-%d1%86%d0%b0%d1%80%d1%83%d0%ba%d1%8f%d0%bd%d0%b0-%d0%bf%d1%80%d0%be%d0%b4%d0%bb%d1%91%d0%bd-%d0%bd/",
-            "date": "2026-09-04T14:51:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/c0hoarx9nw1p249vn07wbofws2ixly6m-300x200.webp",
-            "category": "Спорт"
-          },
-          {
             "title": "Капитан женской сборной Армении по футболу перешла в саудовский клуб",
             "url": "https://ru.armradio.am/2026/09/04/%d0%ba%d0%b0%d0%bf%d0%b8%d1%82%d0%b0%d0%bd-%d0%b6%d0%b5%d0%bd%d1%81%d0%ba%d0%be%d0%b9-%d1%81%d0%b1%d0%be%d1%80%d0%bd%d0%be%d0%b9-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d0%bf%d0%be-%d1%84%d1%83/",
             "date": "2026-09-04T13:53:00.000Z",
@@ -2099,6 +2092,13 @@
             "url": "https://ru.armradio.am/2026/08/28/%d0%bc%d0%be%d0%bb%d0%be%d0%b4%d0%b5%d0%b6%d0%bd%d0%b0%d1%8f-%d1%81%d0%b1%d0%be%d1%80%d0%bd%d0%b0%d1%8f-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d0%bf%d0%be-%d1%82%d1%8f%d0%b6%d0%b5%d0%bb%d0%be-2/",
             "date": "2026-08-28T06:15:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/08/788629858_2195488750998816_8040196609722908387_n-e1787853191941-768x584.jpg",
+            "category": "Главная"
+          },
+          {
+            "title": "«Арарат-Армения» победил и примет участие в групповом этапе Лиги Европы",
+            "url": "https://ru.armradio.am/2026/08/28/%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d0%bb-%d0%b8-%d0%bf%d1%80%d0%b8%d0%bc%d0%b5%d1%82-%d1%83%d1%87%d0%b0/",
+            "date": "2026-08-28T05:59:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/MHM0165914-scaled-1-768x508.jpg",
             "category": "Главная"
           }
         ]
@@ -2687,6 +2687,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "L’exposition Armenia Expo-2026 s’ouvre à Erevan",
+          "url": "https://armenieinfo.tv/lexposition-armenia-expo-2026-souvre-a-erevan/",
+          "date": "2026-09-05T15:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788575535-9579.jpg"
+        },
+        {
           "title": "Troisième juge consécutif se retire de l’affaire contre le Catholicos arménien Karékine II",
           "url": "https://armenieinfo.tv/troisieme-juge-consecutif-se-retire-de-laffaire-contre-le-catholicos-armenien-karekine-ii/",
           "date": "2026-09-05T13:00:00.000Z",
@@ -2739,12 +2745,6 @@
           "url": "https://armenieinfo.tv/mer-oughin-34613/",
           "date": "2026-09-03T08:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/mer-oughin-34613.jpg"
-        },
-        {
-          "title": "Est-ce le fruit de la nouvelle pensée économique russe ? – Gor Abrahamyan",
-          "url": "https://armenieinfo.tv/est-ce-le-fruit-de-la-nouvelle-pensee-economique-russe-gor-abrahamyan/",
-          "date": "2026-09-03T07:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788345340-6532.jpg"
         }
       ]
     },
@@ -2804,12 +2804,6 @@
           "url": "https://armenieinfo.tv/une-exposition-retrospective-majeure-de-toros-aladjajian-en-armenie/",
           "date": "2026-08-28T05:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1787826777-7788.jpg"
-        },
-        {
-          "title": "Figure arménienne — Naissance du catholicos Garéguine Ier",
-          "url": "https://armenieinfo.tv/ce-jour-dans-lhistoire-armenienne-2026-08-27/",
-          "date": "2026-08-27T08:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/08/hebdo-histoire-2026-08-27.png"
         }
       ]
     },
@@ -6270,6 +6264,12 @@
       "label": "Diaspora",
       "articles": [
         {
+          "title": "Friday at the AYF Olympics",
+          "url": "https://armenianweekly.com/2026/09/05/friday-at-the-ayf-olympics-3/",
+          "date": "2026-09-05T15:41:07.000Z",
+          "image": "https://armenianweekly.com/wp-content/uploads/2026/09/Victorias-memento-1-768x512.jpg"
+        },
+        {
           "title": "Thursday at the AYF Olympics",
           "url": "https://armenianweekly.com/2026/09/04/thursday-at-the-ayf-olympics-3/",
           "date": "2026-09-04T13:37:42.000Z",
@@ -6322,12 +6322,6 @@
           "url": "https://armenianweekly.com/2026/08/27/intensification-of-neo-bolshevik-campaign-against-diaspora-pan-armenian-institutions/",
           "date": "2026-08-27T13:35:20.000Z",
           "image": "https://armenianweekly.com/wp-content/uploads/2026/08/%D5%80%D5%A1%D5%B5-%D4%B4%D5%A1%D5%BF-%D5%AC%D5%B8%D6%82%D6%80-1024x576-1-1-768x512.jpg"
-        },
-        {
-          "title": "In Argentina, Armenian Genocide seminar examines women, children and silence",
-          "url": "https://armenianweekly.com/2026/08/21/in-argentina-armenian-genocide-seminar-examines-women-children-and-silence/",
-          "date": "2026-08-21T15:20:41.000Z",
-          "image": "https://armenianweekly.com/wp-content/uploads/2026/08/Aurora-Mardiganian-in-the-Armenian-Genocide-Museum-Institute-768x512.jpg"
         }
       ]
     },
@@ -6402,6 +6396,12 @@
       "label": "Opinion",
       "articles": [
         {
+          "title": "Friday at the AYF Olympics",
+          "url": "https://armenianweekly.com/2026/09/05/friday-at-the-ayf-olympics-3/",
+          "date": "2026-09-05T15:41:07.000Z",
+          "image": "https://armenianweekly.com/wp-content/uploads/2026/09/Victorias-memento-1-768x512.jpg"
+        },
+        {
           "title": "Israel’s PR instrumentalizes a diplomat’s Armenian and Arab Christian lineage",
           "url": "https://armenianweekly.com/2026/09/04/israels-pr-instrumentalizes-a-diplomats-armenian-and-arab-christian-lineage/",
           "date": "2026-09-04T14:04:17.000Z",
@@ -6454,12 +6454,6 @@
           "url": "https://armenianweekly.com/2026/08/24/the-nation-is-broader-than-any-government/",
           "date": "2026-08-24T15:32:27.000Z",
           "image": "https://armenianweekly.com/wp-content/uploads/2026/08/william-768x512.jpeg"
-        },
-        {
-          "title": "The meaning behind Gostan Zarian’s “Three Songs”",
-          "url": "https://armenianweekly.com/2026/08/21/the-meaning-behind-gostan-zarians-three-songs/",
-          "date": "2026-08-21T16:17:37.000Z",
-          "image": "https://armenianweekly.com/wp-content/uploads/2026/08/Constant-Zarian-768x512.jpeg"
         }
       ]
     },
@@ -6534,6 +6528,12 @@
       "label": "Youth",
       "articles": [
         {
+          "title": "Friday at the AYF Olympics",
+          "url": "https://armenianweekly.com/2026/09/05/friday-at-the-ayf-olympics-3/",
+          "date": "2026-09-05T15:41:07.000Z",
+          "image": "https://armenianweekly.com/wp-content/uploads/2026/09/Victorias-memento-1-768x512.jpg"
+        },
+        {
           "title": "Thursday at the AYF Olympics",
           "url": "https://armenianweekly.com/2026/09/04/thursday-at-the-ayf-olympics-3/",
           "date": "2026-09-04T13:37:42.000Z",
@@ -6586,12 +6586,6 @@
           "url": "https://armenianweekly.com/2026/08/04/more-than-pows/",
           "date": "2026-08-04T14:06:25.000Z",
           "image": "https://armenianweekly.com/wp-content/uploads/2026/08/POWs-768x512.jpeg"
-        },
-        {
-          "title": "Watertown youth delegate attends Democratic state convention",
-          "url": "https://armenianweekly.com/2026/07/15/watertown-youth-delegate-attends-democratic-state-convention/",
-          "date": "2026-07-15T14:15:28.000Z",
-          "image": "https://armenianweekly.com/wp-content/uploads/2026/07/dcu-768x512.jpeg"
         }
       ]
     },
@@ -7299,6 +7293,12 @@
         "label": "Economy",
         "articles": [
           {
+            "title": "Armenia sets 6% yearly economic growth target: THIS WEEK IN BUSINESS",
+            "url": "https://civilnet.am/en/news/1013968",
+            "date": "2026-09-05T15:05:00.000Z",
+            "image": "https://civilnet.am/storage/media/26/09/04/n6xrKFqehQztJz9U.webp"
+          },
+          {
             "title": "Some Armenian bank bonds yield less than government debt, study finds",
             "url": "https://civilnet.am/en/news/1013982",
             "date": "2026-09-05T09:27:29.000Z",
@@ -7351,12 +7351,6 @@
             "url": "https://civilnet.am/en/news/1013661",
             "date": "2026-08-19T06:25:14.000Z",
             "image": "https://civilnet.am/storage/media/26/08/19/yqs2KI156nVOP1MK.webp"
-          },
-          {
-            "title": "Obstacles and Strategies In the Face of Russian Import Bans",
-            "url": "https://civilnet.am/en/news/1013651",
-            "date": "2026-08-18T16:05:00.000Z",
-            "image": "https://civilnet.am/storage/media/26/08/18/agGLuaU9uJxYERwa.webp"
           }
         ]
       },
@@ -7895,6 +7889,12 @@
         "label": "Տարածաշրջան",
         "articles": [
           {
+            "title": "ԱՄՆ-ը հայտարարել է իրանական երեք նավթատարի խոցման մասին",
+            "url": "https://civilnet.am/hy/news/1013986",
+            "date": "2026-09-05T15:01:19.000Z",
+            "image": "https://civilnet.am/storage/media/26/09/05/w2LKT8On8ADhMAz0.webp"
+          },
+          {
             "title": "«Գործարքն արդեն տեղի է ունեցել». Փաշինյանը` Հայաստանից Ադրբեջան սպասվող արտահանման մասին",
             "url": "https://civilnet.am/hy/news/1013943",
             "date": "2026-09-03T10:33:36.000Z",
@@ -7947,12 +7947,6 @@
             "url": "https://civilnet.am/hy/news/1013712",
             "date": "2026-08-21T07:29:57.000Z",
             "image": "https://civilnet.am/storage/media/26/08/21/v380aSgOj15Qddxz.webp"
-          },
-          {
-            "title": "Ինգուշեթիայի ամառային ճամբարում երեխաները Ուկրաինայում կռվող ռուս զինվորների համար քողարկման ցանցեր են հյուսում",
-            "url": "https://civilnet.am/hy/news/1013698",
-            "date": "2026-08-20T11:51:13.000Z",
-            "image": "https://civilnet.am/storage/media/26/08/20/VqbJo52aP4mYQGxP.webp"
           }
         ]
       },
@@ -8891,6 +8885,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Lewis Hamilton Buys His Dream Car — the Iconic Ferrari F40",
+            "url": "https://style.news.am/eng/news/115969/",
+            "date": "2026-09-05T15:40:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115969.jpg"
+          },
+          {
             "title": "The Unappetizing Truth About Sushi: Scientists Find Parasites in 96% of Tuna",
             "url": "https://style.news.am/eng/news/115967/",
             "date": "2026-09-05T14:31:00.000Z",
@@ -8943,12 +8943,6 @@
             "url": "https://style.news.am/eng/news/115968/",
             "date": "2026-09-05T06:58:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/115968.jpg"
-          },
-          {
-            "title": "Beyoncé Fans Accuse Singer of ‘Disgusting Greed’ Over $1,000 Empty Box",
-            "url": "https://style.news.am/eng/news/115959/",
-            "date": "2026-09-05T06:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115959.jpg"
           }
         ]
       },
@@ -9289,6 +9283,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "ՀԱՊԿ երկրները կողմ են արտահայտվել ՄԱԿ-ի ապագա գլխավոր քարտուղարի չեզոք դիրքորոշմանը",
+            "url": "https://news.am/hy/news/1059841",
+            "date": "2026-09-05T17:08:00.000Z",
+            "image": "https://news.am/storage/media/26/06/24/J3RLThkaqouawAxl.webp"
+          },
+          {
+            "title": "Սերբիայի իշխող կուսակցությունը Վուչիչին առաջադրել է վարչապետի պաշտոնում",
+            "url": "https://news.am/hy/news/1059821",
+            "date": "2026-09-05T14:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/05/9PyfUqm2FYv2qhW9.webp"
+          },
+          {
             "title": "Ազատությունը ինձ համար իմ երկրում ինչ-որ բան կառուցելն է, աշխարհում իմ երկրի պատիվը բարձր պահելն է․ Ծառուկյան",
             "url": "https://news.am/hy/news/1059822",
             "date": "2026-09-05T12:55:12.000Z",
@@ -9335,18 +9341,6 @@
             "url": "https://news.am/hy/news/1059730",
             "date": "2026-09-05T03:54:00.000Z",
             "image": "https://news.am/storage/media/26/09/05/5sXAjHRkJXVHQye1.webp"
-          },
-          {
-            "title": "Կառավարությունը քայլ առ քայլ զիջում է Հայաստանի պետական ու ազգային շահերը. Տիգրան Աբրահամյան",
-            "url": "https://news.am/hy/news/1059714",
-            "date": "2026-09-04T18:23:49.000Z",
-            "image": "https://news.am/storage/media/26/09/04/6GEHsN7qHO2zO6pv.webp"
-          },
-          {
-            "title": "Ընտրություններին մասնակցող որոշ հանրապետականներ խուսափում են Թրամփի աջակցությունից․ Politico",
-            "url": "https://news.am/hy/news/1059704",
-            "date": "2026-09-04T18:12:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/LxdE7FKC3NnruiS2.webp"
           }
         ]
       },
@@ -9421,6 +9415,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Արարատ-Արմենիան» պարտության մատնեց «Արարատին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168783/",
+            "date": "2026-09-05T16:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168783.jpg"
+          },
+          {
+            "title": "Մադրիդի «Աթլետիկոն» պարտվեց Բիլբաոյի «Աթլետիկին»` 0:3 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168782/",
+            "date": "2026-09-05T16:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168782.jpg"
+          },
+          {
+            "title": "Էրլինգ Հոլանդի գոլը հաղթանակ բերեց «Մանչեսթեր Սիթիին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168781/",
+            "date": "2026-09-05T15:54:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168781.jpg"
+          },
+          {
+            "title": "«Ինտերի» մեկնարկային կազմը",
+            "url": "https://sport.news.am/arm/news/168780/",
+            "date": "2026-09-05T14:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168780.jpg"
+          },
+          {
             "title": "«Բարսելոնայի» ավագները",
             "url": "https://sport.news.am/arm/news/168779/",
             "date": "2026-09-05T14:08:00.000Z",
@@ -9455,30 +9473,6 @@
             "url": "https://sport.news.am/arm/news/168775/",
             "date": "2026-09-04T21:01:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168775.jpg"
-          },
-          {
-            "title": "«Լիվերպուլը» հաղթեց Ալեքսանդր Իսակի դուբլի շնորհիվ (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168774/",
-            "date": "2026-09-04T20:53:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168774.jpg"
-          },
-          {
-            "title": "«Կոմոն» հաղթեց խոշոր հաշվով եւ Ա Սերիայի առաջատարն է (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168773/",
-            "date": "2026-09-04T20:46:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168773.jpg"
-          },
-          {
-            "title": "Սպերցյանի գոլը նպաստեց «Ալ Ահլիի» հաղթանակին (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168771/",
-            "date": "2026-09-04T19:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168771.jpg"
-          },
-          {
-            "title": "ՊՍԺ-ն երկարաձգեց պայմանագիրը Լուիս Էնրիկեի հետ",
-            "url": "https://sport.news.am/arm/news/168770/",
-            "date": "2026-09-04T19:42:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168770.jpg"
           }
         ]
       },
@@ -9553,6 +9547,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Լյուիս Հեմիլթոնը գնել է իր երազանքի մեքենան՝ պաշտամունքային Ferrari F40-ը",
+            "url": "https://style.news.am/arm/news/115969/",
+            "date": "2026-09-05T15:40:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115969.jpg"
+          },
+          {
             "title": "Սուշիի մասին տհաճ ճշմարտությունը. գիտնականները պարզել են, որ թյունոսի 96%-ը պարունակում է մակաբույծ որդեր",
             "url": "https://style.news.am/arm/news/115967/",
             "date": "2026-09-05T14:31:00.000Z",
@@ -9605,12 +9605,6 @@
             "url": "https://style.news.am/arm/news/115960/",
             "date": "2026-09-05T07:17:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/115960.jpg"
-          },
-          {
-            "title": "Petrossian խավիարի «կայսրության» ղեկավար Միքայել Պետրոսյանը ընդգրկվել է Vanity Fair-ի ամենաոճային ֆրանսիացիների ցանկում",
-            "url": "https://style.news.am/arm/news/115968/",
-            "date": "2026-09-05T06:58:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115968.jpg"
           }
         ]
       },
@@ -9685,6 +9679,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "npj Science of Food. Ածխաջրային սնունդ ընդունելուց առաջ մեկ գդալ բուսական յուղը կարող է մեղմել շաքարի մակարդակի կտրուկ բարձրացումը",
+            "url": "https://med.news.am/arm/news/41844/npj-science-of-food-atskhajrayin-snund-ynduneluc-araj-mek-gdal-busakan-yuxy-karox-e-mexmel-shaqari-makardaki-ktruk-bardzracumy.html",
+            "date": "2026-09-05T16:53:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41844.jpg"
+          },
+          {
             "title": "Շվեդ գիտնականները 22 աուտոիմունային հիվանդությունների միջև գենետիկական կապեր են բացահայտել",
             "url": "https://med.news.am/arm/news/41843/shved-gitnakannery-22-autoimunayin-hivandutyunneri-mijev%C2%A0genetikakan-kaper-en-bacahaytel.html",
             "date": "2026-09-05T13:39:00.000Z",
@@ -9737,12 +9737,6 @@
             "url": "https://med.news.am/arm/news/41835/thryv-therapeutics-ispanakan-mshakumy-kkangnecni-uxexi-neyrodegeneracian.html",
             "date": "2026-09-04T11:26:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41835.jpg"
-          },
-          {
-            "title": "Science Advances. Ֆրուկտոզան փոփոխում է աղիքները՝ առաջացնելով գիրություն",
-            "url": "https://med.news.am/arm/news/41834/science-advances-fruktozan-popokhum-e-axiqnery-arajacnelov-girutyun.html",
-            "date": "2026-09-04T09:15:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41834.jpg"
           }
         ]
       },
@@ -9883,6 +9877,12 @@
         "label": "Մշակույթ",
         "articles": [
           {
+            "title": "«Ստեղծագործությունն անսահման է». երաժշտության և հիշողության երեկո «Նարեկացի»-ում՝ ի պատիվ Դանիել Երաժշտի 80-ամյակի",
+            "url": "https://news.am/hy/news/1059849",
+            "date": "2026-09-05T16:24:48.000Z",
+            "image": "https://news.am/storage/media/26/09/05/FkkBnPIjf9yUPlYJ.webp"
+          },
+          {
             "title": "Վրաստանում կանցկացվեն Հայաստանի մշակույթի օրեր՝ նվիրված ՀՀ անկախության 35-ամյակին",
             "url": "https://news.am/hy/news/1059607",
             "date": "2026-09-04T09:37:00.000Z",
@@ -9935,12 +9935,6 @@
             "url": "https://news.am/hy/news/1057311",
             "date": "2026-08-24T09:34:31.000Z",
             "image": "https://i.ytimg.com/vi/4_uKbXZbftc/hqdefault.jpg"
-          },
-          {
-            "title": "Ադրբեջանն ու Ուզբեկստանը «հավերժ բարեկամության» պայմանագիր են ստորագրել",
-            "url": "https://news.am/hy/news/1057188",
-            "date": "2026-08-23T16:03:12.000Z",
-            "image": "https://news.am/storage/media/26/08/23/CSwabJiwjhUfVNG2.webp"
           }
         ]
       }
@@ -9950,6 +9944,18 @@
         "categoryKey": "politics",
         "label": "Политика",
         "articles": [
+          {
+            "title": "Страны ОДКБ выступили за равноудаленную позицию будущего генсека ООН",
+            "url": "https://news.am/ru/news/1059841",
+            "date": "2026-09-05T17:08:00.000Z",
+            "image": "https://news.am/storage/media/26/06/24/J3RLThkaqouawAxl.webp"
+          },
+          {
+            "title": "Правящая партия Сербии выдвинула кандидатуру Вучича на пост премьер-министра",
+            "url": "https://news.am/ru/news/1059821",
+            "date": "2026-09-05T14:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/05/9PyfUqm2FYv2qhW9.webp"
+          },
           {
             "title": "Царукян: Свобода для меня — это строить что-то в своей стране, высоко держать честь своей страны в мире",
             "url": "https://news.am/ru/news/1059822",
@@ -9997,18 +10003,6 @@
             "url": "https://news.am/ru/news/1059730",
             "date": "2026-09-05T03:54:00.000Z",
             "image": "https://news.am/storage/media/26/09/05/5sXAjHRkJXVHQye1.webp"
-          },
-          {
-            "title": "Politico: некоторые идущие на выборы республиканцы избегают поддержки Трампа",
-            "url": "https://news.am/ru/news/1059704",
-            "date": "2026-09-04T18:12:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/LxdE7FKC3NnruiS2.webp"
-          },
-          {
-            "title": "Польский депутат неожиданно начала лаять во время заседания сейма",
-            "url": "https://news.am/ru/news/1059682",
-            "date": "2026-09-04T15:46:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/HiaHMuQXeVM4UMJb.webp"
           }
         ]
       },
@@ -10083,6 +10077,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Арарат-Армения» обыграл «Арарат» (видео)",
+            "url": "https://sport.news.am/rus/news/168783/",
+            "date": "2026-09-05T16:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168783.jpg"
+          },
+          {
+            "title": "«Атлетик» разгромил «Атлетико» (видео)",
+            "url": "https://sport.news.am/rus/news/168782/",
+            "date": "2026-09-05T16:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168782.jpg"
+          },
+          {
+            "title": "«Манчестер Сити» победил благодаря голу Эрлинга Холанда (видео)",
+            "url": "https://sport.news.am/rus/news/168781/",
+            "date": "2026-09-05T15:54:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168781.jpg"
+          },
+          {
+            "title": "«Интер» объявил стартовый состав",
+            "url": "https://sport.news.am/rus/news/168780/",
+            "date": "2026-09-05T14:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168780.jpg"
+          },
+          {
             "title": "Анонс матчей дня",
             "url": "https://sport.news.am/rus/news/168772/",
             "date": "2026-09-05T05:06:00.000Z",
@@ -10117,30 +10135,6 @@
             "url": "https://sport.news.am/rus/news/168770/",
             "date": "2026-09-04T19:42:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168770.jpg"
-          },
-          {
-            "title": "Лиги чемпионов: Топ-10 фаворитов на победу",
-            "url": "https://sport.news.am/rus/news/168769/",
-            "date": "2026-09-04T19:27:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168769.jpg"
-          },
-          {
-            "title": "Волевая победа «Ноа» (видео)",
-            "url": "https://sport.news.am/rus/news/168767/",
-            "date": "2026-09-04T17:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168767.jpg"
-          },
-          {
-            "title": "Лига чемпионов: Названа заявка «Реала»",
-            "url": "https://sport.news.am/rus/news/168762/",
-            "date": "2026-09-04T14:45:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168762.jpg"
-          },
-          {
-            "title": "«Пюник» и «Сюник» не выявили победителя (видео)",
-            "url": "https://sport.news.am/rus/news/168764/",
-            "date": "2026-09-04T14:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168764.jpg"
           }
         ]
       },
@@ -10215,6 +10209,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Льюис Хэмилтон купил машину своей мечты — культовый Ferrari F40",
+            "url": "https://style.news.am/rus/news/115969/",
+            "date": "2026-09-05T15:40:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115969.jpg"
+          },
+          {
             "title": "Неаппетитная правда о суши: ученые выяснили, что 96% тунца заражено паразитическими червями",
             "url": "https://style.news.am/rus/news/115967/",
             "date": "2026-09-05T14:31:00.000Z",
@@ -10267,12 +10267,6 @@
             "url": "https://style.news.am/rus/news/115968/",
             "date": "2026-09-05T06:58:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/115968.jpg"
-          },
-          {
-            "title": "Фанаты обвинили Бейонсе обвинили в «отвратительной жадности» из-за пустой коробки за $1000",
-            "url": "https://style.news.am/rus/news/115959/",
-            "date": "2026-09-05T06:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115959.jpg"
           }
         ]
       },
@@ -10347,6 +10341,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "npj Science of Food: Ложка растительного масла перед углеводной пищей может сгладить скачок сахара",
+            "url": "https://med.news.am/rus/news/41844/npj-science-of-food-lozhka-rastitelnogo-masla-pered-uglevodnoiy-pishcheiy-mozhet-sgladit-skachok-sakhara.html",
+            "date": "2026-09-05T16:53:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41844.jpg"
+          },
+          {
             "title": "Шведские ученые раскрыли генетические связи между 22 аутоиммунными заболеваниями",
             "url": "https://med.news.am/rus/news/41843/shvedskie-ucheniye-raskriyli-geneticheskie-svyazi-mezhdu-22-autoimmunniymi-zabolevaniyami.html",
             "date": "2026-09-05T13:39:00.000Z",
@@ -10399,12 +10399,6 @@
             "url": "https://med.news.am/rus/news/41835/thryv-therapeutics-ispanskaya-razrabotka-ostanovit-neiyrodegeneraciyu-mozga.html",
             "date": "2026-09-04T11:26:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41835.jpg"
-          },
-          {
-            "title": "Science Advances: фруктоза меняет кишечник, провоцируя ожирение",
-            "url": "https://med.news.am/rus/news/41834/science-advances-fruktoza-menyaet-kishechnik-provociruya-ozhirenie.html",
-            "date": "2026-09-04T09:15:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41834.jpg"
           }
         ]
       },
@@ -10545,6 +10539,12 @@
         "label": "Культура",
         "articles": [
           {
+            "title": "«Творчество безгранично»: вечер музыки и памяти в «Нарекаци» в честь 80-летия Даниела Еражишта",
+            "url": "https://news.am/ru/news/1059849",
+            "date": "2026-09-05T16:24:48.000Z",
+            "image": "https://news.am/storage/media/26/09/05/FkkBnPIjf9yUPlYJ.webp"
+          },
+          {
             "title": "МОНКС: В Грузии пройдут Дни культуры Армении",
             "url": "https://news.am/ru/news/1059607",
             "date": "2026-09-04T09:37:00.000Z",
@@ -10597,12 +10597,6 @@
             "url": "https://news.am/ru/news/1056929",
             "date": "2026-08-21T15:49:23.000Z",
             "image": "https://news.am/storage/media/26/08/21/EjwXgA4R8uykaezC.webp"
-          },
-          {
-            "title": "Стартует 13-й международный фестиваль «ФРЕСКО»",
-            "url": "https://news.am/ru/news/1056518",
-            "date": "2026-08-20T06:44:00.000Z",
-            "image": "https://news.am/storage/media/26/08/20/tRxA9oPceraUXjN1.webp"
           }
         ]
       }
