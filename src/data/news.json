@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T11:56:51.993Z",
+  "generatedAt": "2026-09-06T15:04:17.300Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Սեպտեմբերի 6-7-ը Արարատ Միրզոյանն աշխատանքային այցով կգտնվի Ռիգայում",
+            "url": "https://hy.armradio.am/archives/756740",
+            "date": "2026-09-06T13:44:45.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2025/11/m6kDby21zStr0F8PyOh8I3sWY2Z3IAwv1zKI8uJl-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Հայաստան-Թուրքիա սահմանային անցակետերը պատրաստ են սահմանների բացմանը և տեղաշարժին. ՀՀ նախագահ",
             "url": "https://hy.armradio.am/archives/756683",
             "date": "2026-09-05T14:11:15.000Z",
@@ -1116,19 +1123,19 @@
             "date": "2026-09-03T14:22:39.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/791942803_122106545997453385_7852283327663668906_n-1-768x561.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Քննարկվել են Հայաստան-Եվրամիություն հարաբերությունների օրակարգին առնչվող մի շարք հարցեր",
-            "url": "https://hy.armradio.am/archives/756330",
-            "date": "2026-09-03T13:17:55.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/791074861_1383741637181761_7947515311333618685_n-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Տեղի համայնքապետարանը հերքում է լուրը, թե իբր ադրբեջանիցները Հակարիի կամրջի մոտ փորձում են առաջ գալ",
+            "url": "https://hy.armradio.am/archives/756738",
+            "date": "2026-09-06T13:15:37.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2023/08/hakari-kamurj-768x389.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Կանխվել է բազմաբնակարան շենքում բռնկված հրդեհի տարածումը",
             "url": "https://hy.armradio.am/archives/756723",
@@ -1191,13 +1198,6 @@
             "date": "2026-09-04T17:59:03.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/pn-300x180.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Հանքարդյունաբերական ընկերության կողմից հողը փչացնելու վերաբերյալ քրեական վարույթով պատճառված 4.9 մլն դրամի վնասը վերականգնվել է",
-            "url": "https://hy.armradio.am/archives/756570",
-            "date": "2026-09-04T14:56:33.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/04%E2%80%A409%E2%80%A402026-768x433.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -4082,6 +4082,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Հակարիի կամրջի մոտ ադրբեջանցիների՝ իբր առաջ գալու փորձի մասին լուրը իրականությանը չի համապատասխանում",
+            "url": "https://armenpress.am/hy/article/1259795",
+            "date": "2026-09-06T13:11:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/06/9ybGsjnwwNDq8o0k9wI73WkCypWXVuXT2y0yoYYA.webp"
+          },
+          {
+            "title": "Հայաստանում օդի ջերմաստիճանն առաջիկա օրերին կնվազի 4-7 աստիճանով",
+            "url": "https://armenpress.am/hy/article/1259793",
+            "date": "2026-09-06T12:26:30.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/06/8IUdmdYTqcFgmprqdYzm25iKiBqZAcPeURUaVO8K.webp"
+          },
+          {
             "title": "Թալին-Քարակերտ հանրապետական նշանակության ավտոճանապարհն ասֆալտապատվում է",
             "url": "https://armenpress.am/hy/article/1259792",
             "date": "2026-09-06T11:58:00.000Z",
@@ -4128,18 +4140,6 @@
             "url": "https://armenpress.am/hy/article/1259781",
             "date": "2026-09-05T14:14:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/05/3B485bJIpsxAnKJPer45wqLQCgCfdLa6fHc22nUk.webp"
-          },
-          {
-            "title": "2018-ի հեղափոխությունն՝ անմիջական մասնակցի ներկայացմամբ. կայացավ Արմեն Գրիգորյանի «Քայլ արա, մերժի՜ր Սերժին» գրքի շնորհանդեսը",
-            "url": "https://armenpress.am/hy/article/1259775",
-            "date": "2026-09-05T13:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/8keNpmKZtwvFRfPvWyYF7ptsYfCGL2ksQ7nYjBd4.webp"
-          },
-          {
-            "title": "Եթե յուրաքանչյուր տարի նման ծրագրեր մուտք գործեն Սրաշեն, գյուղացիների բեռը մեծապես կթեթևանա. շահառուն գոհ է ԿԽՄԿ-ից",
-            "url": "https://armenpress.am/hy/article/1259772",
-            "date": "2026-09-05T12:50:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/5sf5iZb9JcDXXacOyBkPIJkrjm6cpexrNCQ16e6m.webp"
           }
         ]
       },
@@ -4539,6 +4539,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Информация о якобы попытке азербайджанцев продвинуться у моста Хакари не соответствует действительности",
+            "url": "https://armenpress.am/ru/article/1259795",
+            "date": "2026-09-06T14:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/06/9ybGsjnwwNDq8o0k9wI73WkCypWXVuXT2y0yoYYA.webp"
+          },
+          {
+            "title": "Температура воздуха в Армении в ближайшие дни понизится на 4-7 градусов",
+            "url": "https://armenpress.am/ru/article/1259793",
+            "date": "2026-09-06T13:49:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/06/8IUdmdYTqcFgmprqdYzm25iKiBqZAcPeURUaVO8K.webp"
+          },
+          {
             "title": "Никол Пашинян присутствовал на богослужении в церкви Сурб Ованнес в Арташате",
             "url": "https://armenpress.am/ru/article/1259791",
             "date": "2026-09-06T10:20:00.000Z",
@@ -4585,18 +4597,6 @@
             "url": "https://armenpress.am/ru/article/1259765",
             "date": "2026-09-05T12:26:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/05/eCZF2FBJYNpUaRSwyzXi8EPlTaFZnZiAocok2iiv.webp"
-          },
-          {
-            "title": "Флориан Эскудье назначен послом Франции в Армении",
-            "url": "https://armenpress.am/ru/article/1259763",
-            "date": "2026-09-05T11:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/AHlDpUVylddkyo4o0APY6RibDDTO8j2fmqYeBOrm.webp"
-          },
-          {
-            "title": "Вечер в музее: уникальное сочетание музыки и истории в Гюмри",
-            "url": "https://armenpress.am/ru/article/1259753",
-            "date": "2026-09-05T08:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/dxR7Y2FjXOS7d1B6qcxYeO9u0OXKEtXdLDoEnDe6.webp"
           }
         ]
       },
@@ -6264,6 +6264,12 @@
       "label": "Diaspora",
       "articles": [
         {
+          "title": "Saturday at the AYF Olympics",
+          "url": "https://armenianweekly.com/2026/09/06/saturday-at-the-ayf-olympics-3/",
+          "date": "2026-09-06T14:14:42.000Z",
+          "image": "https://armenianweekly.com/wp-content/uploads/2026/09/Untitled-design-768x512.png"
+        },
+        {
           "title": "Friday at the AYF Olympics",
           "url": "https://armenianweekly.com/2026/09/05/friday-at-the-ayf-olympics-3/",
           "date": "2026-09-05T15:41:07.000Z",
@@ -6316,12 +6322,6 @@
           "url": "https://armenianweekly.com/2026/08/27/chris-bohjalian-and-nancy-kricorian-discuss-the-amateur/",
           "date": "2026-08-27T13:45:42.000Z",
           "image": "https://armenianweekly.com/wp-content/uploads/2026/08/the-amateur-768x512.jpeg"
-        },
-        {
-          "title": "Intensification of neo-Bolshevik campaign against diaspora, pan-Armenian institutions",
-          "url": "https://armenianweekly.com/2026/08/27/intensification-of-neo-bolshevik-campaign-against-diaspora-pan-armenian-institutions/",
-          "date": "2026-08-27T13:35:20.000Z",
-          "image": "https://armenianweekly.com/wp-content/uploads/2026/08/%D5%80%D5%A1%D5%B5-%D4%B4%D5%A1%D5%BF-%D5%AC%D5%B8%D6%82%D6%80-1024x576-1-1-768x512.jpg"
         }
       ]
     },
@@ -6396,6 +6396,12 @@
       "label": "Opinion",
       "articles": [
         {
+          "title": "Saturday at the AYF Olympics",
+          "url": "https://armenianweekly.com/2026/09/06/saturday-at-the-ayf-olympics-3/",
+          "date": "2026-09-06T14:14:42.000Z",
+          "image": "https://armenianweekly.com/wp-content/uploads/2026/09/Untitled-design-768x512.png"
+        },
+        {
           "title": "Friday at the AYF Olympics",
           "url": "https://armenianweekly.com/2026/09/05/friday-at-the-ayf-olympics-3/",
           "date": "2026-09-05T15:41:07.000Z",
@@ -6448,12 +6454,6 @@
           "url": "https://armenianweekly.com/2026/08/25/noncombat-deaths-expose-a-deeper-crisis-in-armenias-army/",
           "date": "2026-08-25T14:30:59.000Z",
           "image": "https://armenianweekly.com/wp-content/uploads/2026/08/A-military-parade-marks-Republic-Day-on-May-28-2026.-Photo_-President-of-Armenia-768x512.jpeg"
-        },
-        {
-          "title": "The nation is broader than any government",
-          "url": "https://armenianweekly.com/2026/08/24/the-nation-is-broader-than-any-government/",
-          "date": "2026-08-24T15:32:27.000Z",
-          "image": "https://armenianweekly.com/wp-content/uploads/2026/08/william-768x512.jpeg"
         }
       ]
     },
@@ -6528,6 +6528,12 @@
       "label": "Youth",
       "articles": [
         {
+          "title": "Saturday at the AYF Olympics",
+          "url": "https://armenianweekly.com/2026/09/06/saturday-at-the-ayf-olympics-3/",
+          "date": "2026-09-06T14:14:42.000Z",
+          "image": "https://armenianweekly.com/wp-content/uploads/2026/09/Untitled-design-768x512.png"
+        },
+        {
           "title": "Friday at the AYF Olympics",
           "url": "https://armenianweekly.com/2026/09/05/friday-at-the-ayf-olympics-3/",
           "date": "2026-09-05T15:41:07.000Z",
@@ -6580,12 +6586,6 @@
           "url": "https://armenianweekly.com/2026/08/10/ayf-interns-visit-syunik-a-two-day-travel-diary/",
           "date": "2026-08-10T17:33:18.000Z",
           "image": "https://armenianweekly.com/wp-content/uploads/2026/08/collage-768x512.jpeg"
-        },
-        {
-          "title": "More than POWs",
-          "url": "https://armenianweekly.com/2026/08/04/more-than-pows/",
-          "date": "2026-08-04T14:06:25.000Z",
-          "image": "https://armenianweekly.com/wp-content/uploads/2026/08/POWs-768x512.jpeg"
         }
       ]
     },
@@ -9415,6 +9415,24 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Մանչեսթեր Յունայթեդը» վերջին վայրկյաններին բաց թողեց հաղթանակը (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168793/",
+            "date": "2026-09-06T15:03:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168793.jpg"
+          },
+          {
+            "title": "ԲԿՄԱ-ն ուժեղ էր «Ուրարտուից» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168792/",
+            "date": "2026-09-06T14:51:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168792.jpg"
+          },
+          {
+            "title": "Ֆուտզալի Հայաստանի հավաքականի կազմը․ թիմը հավաք կանցկացնի",
+            "url": "https://sport.news.am/arm/news/168791/",
+            "date": "2026-09-06T13:48:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168791.jpg"
+          },
+          {
             "title": "ՄԼՍ․ Կազեմիրոյի եւ Լուիս Սուարեսի գոլերը (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168790/",
             "date": "2026-09-06T09:05:00.000Z",
@@ -9455,24 +9473,6 @@
             "url": "https://sport.news.am/arm/news/168784/",
             "date": "2026-09-05T17:59:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168784.jpg"
-          },
-          {
-            "title": "«Արարատ-Արմենիան» պարտության մատնեց «Արարատին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168783/",
-            "date": "2026-09-05T16:53:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168783.jpg"
-          },
-          {
-            "title": "Մադրիդի «Աթլետիկոն» պարտվեց Բիլբաոյի «Աթլետիկին»` 0:3 (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168782/",
-            "date": "2026-09-05T16:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168782.jpg"
-          },
-          {
-            "title": "Էրլինգ Հոլանդի գոլը հաղթանակ բերեց «Մանչեսթեր Սիթիին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168781/",
-            "date": "2026-09-05T15:54:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168781.jpg"
           }
         ]
       },
@@ -9480,6 +9480,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Իրանը ստեղծել է տնտեսական պատերազմի շտաբ՝ ռազմական գործողությունների հետևանքների դեմ պայքարելու համար",
+            "url": "https://news.am/hy/news/1059915",
+            "date": "2026-09-06T12:09:00.000Z",
+            "image": "https://news.am/storage/media/26/06/23/iNPYci16NQ8coGPL.webp"
+          },
           {
             "title": "Թրամփի վարկանիշն ընկել է մինչև ռեկորդային 33%-ը․ ամերիկացիները հիասթափվել են նախագահի տնտեսական քաղաքականությունից — FT-ի հարցումը",
             "url": "https://news.am/hy/news/1059903",
@@ -9533,12 +9539,6 @@
             "url": "https://news.am/hy/news/1059636",
             "date": "2026-09-04T23:11:00.000Z",
             "image": "https://news.am/storage/media/26/09/04/og8zrSKt6fbFxRze.webp"
-          },
-          {
-            "title": "2025 թվականին աշխարհում միլիարդատերերի թիվն ավելացել է 8,2%-ով",
-            "url": "https://news.am/hy/news/1059679",
-            "date": "2026-09-04T15:31:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/3CbBplFftdULx1GB.webp"
           }
         ]
       },
@@ -9546,6 +9546,18 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "«Գեղեցիկ կադրը դեռ կինո չէ». Հովհաննես Ղազարյանը՝ ռեժիսորի աչքի, դերասանի ազատության և ժամանակի մասին",
+            "url": "https://style.news.am/arm/news/115978/",
+            "date": "2026-09-06T14:05:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115978.jpg"
+          },
+          {
+            "title": "Մահվան մղում՝ «Դեռահասների սեքսը և մահը «Միասմա» ճամբարում» ֆիլմում",
+            "url": "https://style.news.am/arm/news/115972/",
+            "date": "2026-09-06T12:35:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115972.jpg"
+          },
           {
             "title": "Էվիկն ու Յանն այսօր ամուսնանում են",
             "url": "https://style.news.am/arm/news/115982/",
@@ -9593,18 +9605,6 @@
             "url": "https://style.news.am/arm/news/115977/",
             "date": "2026-09-05T20:43:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/115977.jpg"
-          },
-          {
-            "title": "Իվետա Մուկուչյանը, Սուպեր Սաքոն ու Սարո Թովմասյանը երգել են Ալեն Սիմոնյանի հարսանիքին",
-            "url": "https://style.news.am/arm/news/115975/",
-            "date": "2026-09-05T18:46:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115975.jpg"
-          },
-          {
-            "title": "Լյուիս Հեմիլթոնը գնել է իր երազանքի մեքենան՝ պաշտամունքային Ferrari F40-ը",
-            "url": "https://style.news.am/arm/news/115969/",
-            "date": "2026-09-05T15:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115969.jpg"
           }
         ]
       },
@@ -9679,6 +9679,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "JNHA. Անարատ յոգուրտը կարող է 11–13%-ով նվազեցնել սրտի հիվանդությունների հավանականությունը",
+            "url": "https://med.news.am/arm/news/41847/jnha-anarat-yogurty-karox-e-1113-ov-nvazecnel-srti-hivandutyunneri-havanakanutyuny.html",
+            "date": "2026-09-06T13:23:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41847.jpg"
+          },
+          {
             "title": "Գիտնականները երիտասարդ ուղեղի անսպասելի թերություն են հայտնաբերել վնասվածքից հետո վերականգնվելիս",
             "url": "https://med.news.am/arm/news/41846/gitnakannery-eritasard-uxexi-anspaseli-terutyun-en-haytnaberel-vnasvatsqic-heto-verakangnvelis.html",
             "date": "2026-09-06T08:56:00.000Z",
@@ -9731,12 +9737,6 @@
             "url": "https://med.news.am/arm/news/41837/ad109-dexamijocn-ardyunavet-mijoc-e-hamarvum-qni-obstruktiv-apnoei-dem%E2%80%A4-ajrccm.html",
             "date": "2026-09-04T15:21:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41837.jpg"
-          },
-          {
-            "title": "Frontiers. Արյան հետազոտությունը կկանխատեսի արթրոզի բուժման արդյունավետությունը",
-            "url": "https://med.news.am/arm/news/41836/frontiers-aryan-hetazotutyuny-kkankhatesi-artrozi-buzhman-ardyunavetutyuny.html",
-            "date": "2026-09-04T13:18:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41836.jpg"
           }
         ]
       },
@@ -9744,6 +9744,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Կոնգոյի ԴՀ-ում հարսանիքի ժամանակ բռնկված հրդեհի հետևանքով առնվազն 22 մարդ է զոհվել",
+            "url": "https://news.am/hy/news/1059939",
+            "date": "2026-09-06T14:11:00.000Z",
+            "image": "https://news.am/storage/media/26/09/06/E8YpoVBXE6wMjFm5.webp"
+          },
           {
             "title": "Էջմիածնի թիվ 9 հիմնական դպրոցի 13 և 12-ամյա աշակերտները վիճաբանել ու փոխադարձ հարվածներ են հասցրել․ մեկի քիթն է վնասվել, մյուսը ստացել է քերծվածքներ",
             "url": "https://news.am/hy/news/1059905",
@@ -9797,12 +9803,6 @@
             "url": "https://news.am/hy/news/1059709",
             "date": "2026-09-04T17:27:41.000Z",
             "image": "https://news.am/storage/media/26/09/04/aSG4Drz1wDyik6Kd.webp"
-          },
-          {
-            "title": "Գերմանիայի ոստիկանությունը նամակ է ստացել՝ էներգաօբյեկտներում իրականացված դիվերսիաների խոստովանությամբ",
-            "url": "https://news.am/hy/news/1059688",
-            "date": "2026-09-04T16:13:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/U4h3um2LD55ZDVee.webp"
           }
         ]
       },
@@ -10077,6 +10077,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Назван состав сборной Армении по футзалу",
+            "url": "https://sport.news.am/rus/news/168791/",
+            "date": "2026-09-06T13:48:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168791.jpg"
+          },
+          {
             "title": "Анонс матчей дня",
             "url": "https://sport.news.am/rus/news/168788/",
             "date": "2026-09-06T05:07:00.000Z",
@@ -10129,12 +10135,6 @@
             "url": "https://sport.news.am/rus/news/168780/",
             "date": "2026-09-05T14:55:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168780.jpg"
-          },
-          {
-            "title": "Анонс матчей дня",
-            "url": "https://sport.news.am/rus/news/168772/",
-            "date": "2026-09-05T05:06:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168772.jpg"
           }
         ]
       },
@@ -10142,6 +10142,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Иран создал штаб экономической войны для борьбы с последствиями военных действий",
+            "url": "https://news.am/ru/news/1059915",
+            "date": "2026-09-06T12:09:00.000Z",
+            "image": "https://news.am/storage/media/26/06/23/iNPYci16NQ8coGPL.webp"
+          },
           {
             "title": "Рейтинг Трампа рухнул до рекордных 33%: американцы разочаровались в экономической политике президента — опрос FT",
             "url": "https://news.am/ru/news/1059903",
@@ -10195,12 +10201,6 @@
             "url": "https://news.am/ru/news/1059679",
             "date": "2026-09-04T15:58:00.000Z",
             "image": "https://news.am/storage/media/26/09/04/3CbBplFftdULx1GB.webp"
-          },
-          {
-            "title": "Иран предлагает создать новую архитектуру экономического сотрудничества с соседями",
-            "url": "https://news.am/ru/news/1059658",
-            "date": "2026-09-04T12:51:23.000Z",
-            "image": "https://news.am/storage/media/26/09/04/dmUEzJelgcNJKyRI.webp"
           }
         ]
       },
@@ -10208,6 +10208,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Влечение к смерти в картине «Подростковый секс и смерть в лагере «Миазма»»",
+            "url": "https://style.news.am/rus/news/115972/",
+            "date": "2026-09-06T12:35:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115972.jpg"
+          },
           {
             "title": "Вазелин вместо крема, маски и бальзама: действительно ли один продукт может заменить половину косметички?",
             "url": "https://style.news.am/rus/news/115973/",
@@ -10261,12 +10267,6 @@
             "url": "https://style.news.am/rus/news/115964/",
             "date": "2026-09-05T11:22:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/115964.jpg"
-          },
-          {
-            "title": "Джейн Фонда обрушилась с критикой на «техно-бро, олигархов и миллиардеров», желающих жить вечно с роботами: «Это будут их дети»",
-            "url": "https://style.news.am/rus/news/115963/",
-            "date": "2026-09-05T10:36:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115963.jpg"
           }
         ]
       },
@@ -10341,6 +10341,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "JNHA: Цельный йогурт может снижать риск сердечных заболеваний на 11–13%",
+            "url": "https://med.news.am/rus/news/41847/jnha-celniyiy-iyogurt-mozhet-snizhat-risk-serdechniykh-zabolevaniiy-na-1113.html",
+            "date": "2026-09-06T13:23:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41847.jpg"
+          },
+          {
             "title": "Ученые обнаружили неожиданный недостаток молодого мозга при восстановлении после травмы",
             "url": "https://med.news.am/rus/news/41846/ucheniye-obnaruzhili-neozhidanniyiy-nedostatok-molodogo-mozga-pri-vosstanovlenii-posle-travmiy.html",
             "date": "2026-09-06T08:56:00.000Z",
@@ -10393,12 +10399,6 @@
             "url": "https://med.news.am/rus/news/41837/ajrccm-preparat-ad109-effektiven-protiv-obstruktivnogo-apnoe-sna.html",
             "date": "2026-09-04T15:21:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41837.jpg"
-          },
-          {
-            "title": "Frontiers: анализ крови предскажет эффективность лечения артроза",
-            "url": "https://med.news.am/rus/news/41836/frontiers-analiz-krovi-predskazhet-effektivnost-lecheniya-artroza.html",
-            "date": "2026-09-04T13:18:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41836.jpg"
           }
         ]
       },
@@ -10406,6 +10406,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "В ДР Конго в результате пожара на свадьбе погибли не менее 22 человек",
+            "url": "https://news.am/ru/news/1059939",
+            "date": "2026-09-06T14:11:00.000Z",
+            "image": "https://news.am/storage/media/26/09/06/E8YpoVBXE6wMjFm5.webp"
+          },
           {
             "title": "В Эчмиадзине подрались ученики средних классов: они получили травмы",
             "url": "https://news.am/ru/news/1059905",
@@ -10459,12 +10465,6 @@
             "url": "https://news.am/ru/news/1059709",
             "date": "2026-09-04T17:27:41.000Z",
             "image": "https://news.am/storage/media/26/09/04/aSG4Drz1wDyik6Kd.webp"
-          },
-          {
-            "title": "Полиция Германии получила письмо с признанием в диверсиях на энергообъектах",
-            "url": "https://news.am/ru/news/1059688",
-            "date": "2026-09-04T16:13:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/U4h3um2LD55ZDVee.webp"
           }
         ]
       },
