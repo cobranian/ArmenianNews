@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T15:04:17.300Z",
+  "generatedAt": "2026-09-06T17:59:44.268Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Ռուսաստանը ստիպված է պաշտպանել իր շուկան. Օվերչուկը հայ գործընկերներին առաջարկում է համագործակցել իրենց հետ",
+            "url": "https://hy.armradio.am/archives/756742",
+            "date": "2026-09-06T14:39:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/2039604145_0_83_2770_1641_1280x0_80_0_0_6d2356bcc11fa375cd18f731d9d0b17d.jpg-768x431.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Սեպտեմբերի 6-7-ը Արարատ Միրզոյանն աշխատանքային այցով կգտնվի Ռիգայում",
             "url": "https://hy.armradio.am/archives/756740",
             "date": "2026-09-06T13:44:45.000Z",
@@ -1116,13 +1123,6 @@
             "date": "2026-09-03T14:44:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/786422990_865801903283801_8073842241820473158_n-768x512.jpg",
             "category": "Քաղաքական"
-          },
-          {
-            "title": "Ի՞նչ կտա TRIPP-ը Սյունիքին․ ամերիկացի պաշտոնյաները ծրագիրը քննարկել են սյունեցիների հետ",
-            "url": "https://hy.armradio.am/archives/756333",
-            "date": "2026-09-03T14:22:39.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/791942803_122106545997453385_7852283327663668906_n-1-768x561.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Մոսկվայից Կիև. կհաջողվի՞ Թրամփի բանագնացներին կանգնեցնել պատերազմը",
+            "url": "https://hy.armradio.am/archives/756733",
+            "date": "2026-09-06T16:03:16.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/AP26249445127234-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թրամփի հատուկ դեսպանները Կիևում են",
             "url": "https://hy.armradio.am/archives/756729",
             "date": "2026-09-06T11:40:09.000Z",
@@ -1415,13 +1422,6 @@
             "url": "https://hy.armradio.am/archives/756526",
             "date": "2026-09-04T13:03:21.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/AP26247155624727-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ձմռան շեմին Եվրոպան կրկին մտավախության մեջ է․ Ուկրաինան չի կարողանում վաճառել հացահատիկի հսկայական բերքը",
-            "url": "https://hy.armradio.am/archives/756528",
-            "date": "2026-09-04T12:53:23.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2023/03/coren-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2240,6 +2240,12 @@
       "categoryKey": "communaute",
       "articles": [
         {
+          "title": "« Arménia » débute sa 32ème rentrée par son stand arménien au Forum des associations de Bourg-Lès-Valence, dimanche 6 septembre",
+          "url": "https://www.armenews.com/armenia-debute-sa-32eme-rentree-par-son-stand-armenien-au-forum-des-associations-de-bourg-les-valence-dimanche-6-septembre/",
+          "date": "2026-09-06T16:57:00.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/IMG_2392-scaled.jpg"
+        },
+        {
           "title": "Réservez vite votre place pour notre évènement exceptionnel : « UGAB : 120 ans en mouvement »",
           "url": "https://www.armenews.com/reservez-vite-votre-place-pour-notre-evenement-exceptionnel-ugab-120-ans-en-mouvement/",
           "date": "2026-09-06T06:30:37.000Z",
@@ -2292,12 +2298,6 @@
           "url": "https://www.armenews.com/communique-de-lassociation-padus-araxes/",
           "date": "2026-09-03T09:56:19.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-03-a-11.55.36.png"
-        },
-        {
-          "title": "Tachtahantes à Avignon le 13 septembre",
-          "url": "https://www.armenews.com/tachtahantes-a-avignon-le-13-septembre/",
-          "date": "2026-09-03T06:30:39.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/FB_IMG_1783850865120.jpg"
         }
       ]
     },
@@ -9415,6 +9415,36 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Արսենալի» կամային հաղթանակը «Չելսիի» նկատմամբ (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168798/",
+            "date": "2026-09-06T17:30:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168798.jpg"
+          },
+          {
+            "title": "US Open. Արինա Սաբալենկան քառորդ եզրափակիչում է",
+            "url": "https://sport.news.am/arm/news/168797/",
+            "date": "2026-09-06T17:15:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168797.jpg"
+          },
+          {
+            "title": "«Շիրակը» հաղթեց «Սարդարապատին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168796/",
+            "date": "2026-09-06T16:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168796.jpg"
+          },
+          {
+            "title": "«Բարսելոնան» խնդիրներ չունեցավ՝ 5:0 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/168795/",
+            "date": "2026-09-06T16:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168795.jpg"
+          },
+          {
+            "title": "Անդրեա Կիմի Անտոնելին՝ Իտալիայի Մեծ մրցանակում հաղթած առաջին իտալացին է 60 տարում",
+            "url": "https://sport.news.am/arm/news/168794/",
+            "date": "2026-09-06T15:18:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168794.jpg"
+          },
+          {
             "title": "«Մանչեսթեր Յունայթեդը» վերջին վայրկյաններին բաց թողեց հաղթանակը (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/168793/",
             "date": "2026-09-06T15:03:00.000Z",
@@ -9443,36 +9473,6 @@
             "url": "https://sport.news.am/arm/news/168788/",
             "date": "2026-09-06T05:07:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168788.jpg"
-          },
-          {
-            "title": "US Open. Կարեն Խաչանովը վստահ հաղթանակով դուրս եկավ 1/8 եզրափակիչ",
-            "url": "https://sport.news.am/arm/news/168789/",
-            "date": "2026-09-05T21:21:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168789.jpg"
-          },
-          {
-            "title": "«Ռոման» վերջին րոպեներին 2 գոլ խփեց եւ հաղթեց «Ատալանտային» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168787/",
-            "date": "2026-09-05T20:41:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168787.jpg"
-          },
-          {
-            "title": "ITF J60 ․ Մարիա Ազիզյանը` Բուրգասի պատանեկան մրցաշարի հաղթող",
-            "url": "https://sport.news.am/arm/news/168786/",
-            "date": "2026-09-05T19:49:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168786.jpg"
-          },
-          {
-            "title": "«Բավարիան» չկարողացավ հաղթել «Շալկեին»",
-            "url": "https://sport.news.am/arm/news/168785/",
-            "date": "2026-09-05T18:44:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168785.jpg"
-          },
-          {
-            "title": "«Ինտերի» կամային հաղթանակը «Նապոլիի» նկատմամբ 0:2-ից հետո (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168784/",
-            "date": "2026-09-05T17:59:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168784.jpg"
           }
         ]
       },
@@ -9547,6 +9547,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Մաքուր միջավայրում մաքուր մտքեր են ծնվում․ Հակոբ Միկոյանի «ՄաքրաՊատումը»",
+            "url": "https://style.news.am/arm/news/115979/",
+            "date": "2026-09-06T17:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115979.jpg"
+          },
+          {
             "title": "«Գեղեցիկ կադրը դեռ կինո չէ». Հովհաննես Ղազարյանը՝ ռեժիսորի աչքի, դերասանի ազատության և ժամանակի մասին",
             "url": "https://style.news.am/arm/news/115978/",
             "date": "2026-09-06T14:05:00.000Z",
@@ -9599,12 +9605,6 @@
             "url": "https://style.news.am/arm/news/115970/",
             "date": "2026-09-06T05:00:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/115970.jpg"
-          },
-          {
-            "title": "Սոնա Եսայանն ու Գրիգ Գևորգյանը սպասում են իրենց առաջնեկին",
-            "url": "https://style.news.am/arm/news/115977/",
-            "date": "2026-09-05T20:43:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115977.jpg"
           }
         ]
       },
@@ -9679,6 +9679,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Բացահայտվել է բորբոքման «փոխարկիչը». ինչպես է ռեզիստինն ակտիվացնում վտանգավոր իմունային մեխանիզմը",
+            "url": "https://med.news.am/arm/news/41848/bacahaytvel-e-borboqman-pokharkichy-inchpes-e-rezistinn-aktivacnum-vtangavor-imunayin-mekhanizmy.html",
+            "date": "2026-09-06T17:47:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41848.jpg"
+          },
+          {
             "title": "JNHA. Անարատ յոգուրտը կարող է 11–13%-ով նվազեցնել սրտի հիվանդությունների հավանականությունը",
             "url": "https://med.news.am/arm/news/41847/jnha-anarat-yogurty-karox-e-1113-ov-nvazecnel-srti-hivandutyunneri-havanakanutyuny.html",
             "date": "2026-09-06T13:23:00.000Z",
@@ -9731,12 +9737,6 @@
             "url": "https://med.news.am/arm/news/41838/gotkatexi-shrjagitsy-karox-e-matnanshel-aroxjakan-risker-oronq-mzi-n-hashvi-chi-arnum%E2%80%A4-jama.html",
             "date": "2026-09-04T17:16:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41838.jpg"
-          },
-          {
-            "title": "AD109 դեղամիջոցն արդյունավետ միջոց է համարվում քնի օբստրուկտիվ ապնոէի դեմ․ AJRCCM",
-            "url": "https://med.news.am/arm/news/41837/ad109-dexamijocn-ardyunavet-mijoc-e-hamarvum-qni-obstruktiv-apnoei-dem%E2%80%A4-ajrccm.html",
-            "date": "2026-09-04T15:21:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41837.jpg"
           }
         ]
       },
@@ -9744,6 +9744,24 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Ոստիկանությունն առաջին անգամ պահպանություն է տեղակայել Երուսաղեմում հայկական սրբավայրի մոտ, սակայն վիրավորանքները շարունակվում են",
+            "url": "https://news.am/hy/news/1059961",
+            "date": "2026-09-06T16:24:02.000Z",
+            "image": "https://news.am/storage/media/26/09/06/UsHwpDiGp5ahZb07.webp"
+          },
+          {
+            "title": "Ավերածություններ Գեղարոտում ուժգին քամու հետևանքով․ տապալվել են էլեկտրասյուներ, վնասվել են գազախողովակներ",
+            "url": "https://news.am/hy/news/1059957",
+            "date": "2026-09-06T15:43:08.000Z",
+            "image": "https://news.am/storage/media/26/09/06/BcjUXeNFo98VHi7v.webp"
+          },
+          {
+            "title": "Քյոլնում Rheinmetall պաշտպանական ընկերության դեմ հակապատերազմական ակցիան վերածվել է ոստիկանության հետ բախումների. տուժել է 11 ոստիկան",
+            "url": "https://news.am/hy/news/1059947",
+            "date": "2026-09-06T15:42:00.000Z",
+            "image": "https://news.am/storage/media/26/09/06/oHFIJIOqEJugrdry.webp"
+          },
           {
             "title": "Կոնգոյի ԴՀ-ում հարսանիքի ժամանակ բռնկված հրդեհի հետևանքով առնվազն 22 մարդ է զոհվել",
             "url": "https://news.am/hy/news/1059939",
@@ -9785,24 +9803,6 @@
             "url": "https://news.am/hy/news/1059777",
             "date": "2026-09-05T07:41:52.000Z",
             "image": "https://news.am/storage/media/26/09/05/yF88s73RFBv7No1o.webp"
-          },
-          {
-            "title": "Ոստիկանները կանխեցին վտանգավոր զարգացումները․ առգրավվել են ինքնաձիգ, ատրճանակ և դանակներ",
-            "url": "https://news.am/hy/news/1059774",
-            "date": "2026-09-05T07:17:57.000Z",
-            "image": "https://news.am/storage/media/26/09/05/1TyXfrhU8aR6sKVG.webp"
-          },
-          {
-            "title": "Բոլիվիայում ռազմական բազայում պայթյուն է որոտացել. զոհերի թիվը կարող է հասնել 15-ի, սուգ է հայտարարվել",
-            "url": "https://news.am/hy/news/1059738",
-            "date": "2026-09-05T05:02:00.000Z",
-            "image": "https://news.am/storage/media/26/09/05/NpomXqPISRkyxo7S.webp"
-          },
-          {
-            "title": "Շատվանում 27-ամյա երիտասարդի են դանակահարել. 25-ամյա կասկածյալը ձերբակալվել է",
-            "url": "https://news.am/hy/news/1059709",
-            "date": "2026-09-04T17:27:41.000Z",
-            "image": "https://news.am/storage/media/26/09/04/aSG4Drz1wDyik6Kd.webp"
           }
         ]
       },
@@ -10077,6 +10077,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Арсенал» одержал волевую победу над «Челси» (видео)",
+            "url": "https://sport.news.am/rus/news/168798/",
+            "date": "2026-09-06T17:30:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168798.jpg"
+          },
+          {
+            "title": "«Ширак» обыграл «Сардарапат» (видео)",
+            "url": "https://sport.news.am/rus/news/168796/",
+            "date": "2026-09-06T16:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168796.jpg"
+          },
+          {
+            "title": "Крупная победа «Барселоны» (видео)",
+            "url": "https://sport.news.am/rus/news/168795/",
+            "date": "2026-09-06T16:17:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168795.jpg"
+          },
+          {
+            "title": "БКМА оказался сильнее «Урарту» (видео)",
+            "url": "https://sport.news.am/rus/news/168792/",
+            "date": "2026-09-06T14:51:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168792.jpg"
+          },
+          {
             "title": "Назван состав сборной Армении по футзалу",
             "url": "https://sport.news.am/rus/news/168791/",
             "date": "2026-09-06T13:48:00.000Z",
@@ -10111,30 +10135,6 @@
             "url": "https://sport.news.am/rus/news/168784/",
             "date": "2026-09-05T17:59:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168784.jpg"
-          },
-          {
-            "title": "«Арарат-Армения» обыграл «Арарат» (видео)",
-            "url": "https://sport.news.am/rus/news/168783/",
-            "date": "2026-09-05T16:53:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168783.jpg"
-          },
-          {
-            "title": "«Атлетик» разгромил «Атлетико» (видео)",
-            "url": "https://sport.news.am/rus/news/168782/",
-            "date": "2026-09-05T16:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168782.jpg"
-          },
-          {
-            "title": "«Манчестер Сити» победил благодаря голу Эрлинга Холанда (видео)",
-            "url": "https://sport.news.am/rus/news/168781/",
-            "date": "2026-09-05T15:54:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168781.jpg"
-          },
-          {
-            "title": "«Интер» объявил стартовый состав",
-            "url": "https://sport.news.am/rus/news/168780/",
-            "date": "2026-09-05T14:55:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168780.jpg"
           }
         ]
       },
@@ -10341,6 +10341,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Раскрыт «переключатель» воспаления: как резистин активирует опасный иммунный механизм",
+            "url": "https://med.news.am/rus/news/41848/raskriyt-pereklyuchatel-vospaleniya-kak-rezistin-aktiviruet-opasniyiy-immunniyiy-mekhanizm.html",
+            "date": "2026-09-06T17:47:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41848.jpg"
+          },
+          {
             "title": "JNHA: Цельный йогурт может снижать риск сердечных заболеваний на 11–13%",
             "url": "https://med.news.am/rus/news/41847/jnha-celniyiy-iyogurt-mozhet-snizhat-risk-serdechniykh-zabolevaniiy-na-1113.html",
             "date": "2026-09-06T13:23:00.000Z",
@@ -10393,12 +10399,6 @@
             "url": "https://med.news.am/rus/news/41838/jama-obkhvat-talii-mozhet-ukaziyvat-na-riski-dlya-zdorovya-kotoriye-ne-uchitiyvaet-imt.html",
             "date": "2026-09-04T17:16:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41838.jpg"
-          },
-          {
-            "title": "AJRCCM: препарат AD109 эффективен против обструктивного апноэ сна",
-            "url": "https://med.news.am/rus/news/41837/ajrccm-preparat-ad109-effektiven-protiv-obstruktivnogo-apnoe-sna.html",
-            "date": "2026-09-04T15:21:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41837.jpg"
           }
         ]
       },
@@ -10406,6 +10406,24 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Полиция впервые выставила охрану у армянской святыни в Иерусалиме, но оскорбления продолжаются",
+            "url": "https://news.am/ru/news/1059961",
+            "date": "2026-09-06T16:24:02.000Z",
+            "image": "https://news.am/storage/media/26/09/06/UsHwpDiGp5ahZb07.webp"
+          },
+          {
+            "title": "Сильный ветер стал причиной разрушений в Гегароте: повалены электрические столбы, повреждены газопроводы",
+            "url": "https://news.am/ru/news/1059957",
+            "date": "2026-09-06T15:43:08.000Z",
+            "image": "https://news.am/storage/media/26/09/06/BcjUXeNFo98VHi7v.webp"
+          },
+          {
+            "title": "Антивоенная акция против оборонной компании Rheinmetall в Кельне переросла в столкновения с полицией: пострадали 11 силовиков",
+            "url": "https://news.am/ru/news/1059947",
+            "date": "2026-09-06T15:42:00.000Z",
+            "image": "https://news.am/storage/media/26/09/06/oHFIJIOqEJugrdry.webp"
+          },
           {
             "title": "В ДР Конго в результате пожара на свадьбе погибли не менее 22 человек",
             "url": "https://news.am/ru/news/1059939",
@@ -10447,24 +10465,6 @@
             "url": "https://news.am/ru/news/1059777",
             "date": "2026-09-05T07:41:52.000Z",
             "image": "https://news.am/storage/media/26/09/05/yF88s73RFBv7No1o.webp"
-          },
-          {
-            "title": "В Ереване полицейские предотвратили опасное развитие событий: изъяты автомат, пистолет и ножи",
-            "url": "https://news.am/ru/news/1059774",
-            "date": "2026-09-05T07:17:57.000Z",
-            "image": "https://news.am/storage/media/26/09/05/1TyXfrhU8aR6sKVG.webp"
-          },
-          {
-            "title": "В Боливии прогремел взрыв на военной базе: число погибших может достигать до 15, объявлен траур",
-            "url": "https://news.am/ru/news/1059738",
-            "date": "2026-09-05T05:02:00.000Z",
-            "image": "https://news.am/storage/media/26/09/05/NpomXqPISRkyxo7S.webp"
-          },
-          {
-            "title": "В Шатване зарезали 27-летнего молодого человека: 25-летний подозреваемый задержан",
-            "url": "https://news.am/ru/news/1059709",
-            "date": "2026-09-04T17:27:41.000Z",
-            "image": "https://news.am/storage/media/26/09/04/aSG4Drz1wDyik6Kd.webp"
           }
         ]
       },
