@@ -1,9 +1,15 @@
 {
-  "generatedAt": "2026-09-07T05:40:01.676Z",
+  "generatedAt": "2026-09-07T11:33:00.742Z",
   "courrier": [
     {
       "sectionKey": "actualite",
       "articles": [
+        {
+          "title": "La pose de la première pierre du projet TRIPP pourrait avoir lieu début 2027",
+          "url": "https://courrier.am/fr/la-pose-de-la-premiere-pierre-du-projet-tripp-pourrait-avoir-lieu-debut-2027",
+          "date": "2026-09-07T07:22:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/530x350/public/w0qxts1n0rzz81k89spzunxqfo5ii3wp.png?itok=w1CYzF2p"
+        },
         {
           "title": "Des responsables arméniens et américains se rendent sur le tracé du TRIPP dans le Syunik",
           "url": "https://courrier.am/fr/des-responsables-armeniens-et-americains-se-rendent-sur-le-trace-du-tripp-dans-le-syunik",
@@ -57,12 +63,6 @@
           "url": "https://courrier.am/fr/-tant-qu-il-n-existe-pas-d-alternative-concrete-la-question-d-un-referendum-ne-se-pose-pas-",
           "date": "2026-07-31T04:35:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/530x350/public/l-0x0wh-786x458z-1_5.jpeg?itok=xUnskWQW"
-        },
-        {
-          "title": "\" Si l'on ne trouve pas de solution au problème arménien à court terme, l'UEE pourrait bien être en train de tirer vers sa fin \"",
-          "url": "https://courrier.am/fr/-si-l-on-ne-trouve-pas-de-solution-au-probleme-armenien-a-court-terme-l-uee-pourrait-bien-etre-en-train-de-tirer-vers-sa-fin-",
-          "date": "2026-07-30T04:33:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/530x350/public/images-4_17-_x588-quality90.jpg?itok=X61wb7HH"
         }
       ]
     },
@@ -678,6 +678,13 @@
         "categoryKey": "economics",
         "articles": [
           {
+            "title": "Supply concerns drive FAO Food Price Index higher",
+            "url": "https://en.armradio.am/2026/09/07/supply-concerns-drive-fao-food-price-index-higher/",
+            "date": "2026-09-07T07:46:01.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/09/851-768x513.jpg",
+            "category": "Economics"
+          },
+          {
             "title": "Six Armenian companies showcase products at Texworld Paris",
             "url": "https://en.armradio.am/2026/09/02/six-armenian-companies-showcase-products-at-texworld-paris/",
             "date": "2026-09-02T10:41:49.000Z",
@@ -738,13 +745,6 @@
             "url": "https://en.armradio.am/2026/08/25/armenia-iran-discuss-expanding-trade-investment-and-energy-cooperation/",
             "date": "2026-08-25T12:39:41.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/08/786344623_943910001332759_3028774400766651955_n-768x512.jpg",
-            "category": "Economics"
-          },
-          {
-            "title": "Armenia and Azerbaijan discuss cross-border electricity cooperation in Lachin",
-            "url": "https://en.armradio.am/2026/08/25/armenia-and-azerbaijan-discuss-cross-border-electricity-cooperation-in-lachin/",
-            "date": "2026-08-25T11:25:45.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2019/07/Power-grids-768x444.jpg",
             "category": "Economics"
           }
         ]
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Վարչապետը հրաժեշտի հանդիպում է ունեցել Հունաստանի դեսպանի հետ",
+            "url": "https://hy.armradio.am/archives/756849",
+            "date": "2026-09-07T11:10:10.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/13A4523-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ռուսաստանը ստիպված է պաշտպանել իր շուկան. Օվերչուկը հայ գործընկերներին առաջարկում է համագործակցել իրենց հետ",
             "url": "https://hy.armradio.am/archives/756742",
             "date": "2026-09-06T14:39:00.000Z",
@@ -1116,19 +1123,54 @@
             "date": "2026-09-03T15:48:01.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/l-J1Hl9f1dro-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "ՀՀ նախագահը Չեխիայի նախագահի հետ քննարկել է երկու երկրների հարաբերությունների օրակարգային հարցերը",
-            "url": "https://hy.armradio.am/archives/756396",
-            "date": "2026-09-03T14:44:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/786422990_865801903283801_8073842241820473158_n-768x512.jpg",
-            "category": "Քաղաքական"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Հիմնանորոգման աշխատանքներով պայմանավորված՝ փակ է լինելու Ոսկերիչների փողոցը",
+            "url": "https://hy.armradio.am/archives/756854",
+            "date": "2026-09-07T11:30:37.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2021/11/poxoc-768x448.jpeg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "Ալավերդիում՝ վթարային ջրանջատում",
+            "url": "https://hy.armradio.am/archives/756822",
+            "date": "2026-09-07T08:13:19.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/jur-300x200.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Բյուրեղավանում կոչ են անում ծորակից ջուր չխմել",
+            "url": "https://hy.armradio.am/archives/756818",
+            "date": "2026-09-07T07:43:20.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/photo_2026-09-07_11-38-23-768x448.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "ՊԵԿ- ը հայտնում է չլիցենզավորված առցանց խաղերի նկատմամբ պետական վերահսկողությունը ուժեղացնելու մասին",
+            "url": "https://hy.armradio.am/archives/756816",
+            "date": "2026-09-07T07:34:43.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2025/05/PEK-768x488.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Հողամասի նկատմամբ վերականգնվել է Արենի համայնքի սեփականության իրավունքը. Գլխավոր դատախազություն",
+            "url": "https://hy.armradio.am/archives/756801",
+            "date": "2026-09-07T07:25:10.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/070926-768x576.jpg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "Երկու կանանց սեռական շահագործման վերաբերյալ քրեական վարույթի նախաքննությունն ավարտվել է",
+            "url": "https://hy.armradio.am/archives/756798",
+            "date": "2026-09-07T06:26:20.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/07.09.26-768x433.jpg",
+            "category": "Հասարակություն"
+          },
           {
             "title": "Նախնական տվյալներով՝ վեց քաղաքացի Բյուրեղավանում աղիքային վարակի գանգատներով դիմել է բուժօգնության",
             "url": "https://hy.armradio.am/archives/756787",
@@ -1156,54 +1198,26 @@
             "date": "2026-09-06T11:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2025/07/hrdeh-768x511.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "«Քայլ արա, մերժի՛ր Սերժին»․ հեղափոխության հիշողությունները՝ 8 տարի անց",
-            "url": "https://hy.armradio.am/archives/756672",
-            "date": "2026-09-05T13:57:43.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/68655-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Նոր դպրոցներ ու նոր միջավայր. Արմավիրի մարզում շահագործվել են Երասխահունի ու Նոր Կեսարիայի նորակառույց դպրոցները",
-            "url": "https://hy.armradio.am/archives/756652",
-            "date": "2026-09-05T11:36:31.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/793071346_2232536890862949_3540115772161562136_n-768x578.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Օդի ջերմաստիճանը կնվազի 5-8 աստիճանով",
-            "url": "https://hy.armradio.am/archives/756650",
-            "date": "2026-09-05T11:27:17.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2019/12/exanak-768x493.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "Վարչապետը ներկա է գտնվել Արմեն Գրիգորյանի «Քայլ արա, մերժի՛ր Սերժին» գրքի շնորհանդեսին",
-            "url": "https://hy.armradio.am/archives/756640",
-            "date": "2026-09-05T11:01:06.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/68640_b-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Դրվագներ ՀՀ բանակի նոր համազգեստի զորային փորձարկումից",
-            "url": "https://hy.armradio.am/archives/756627",
-            "date": "2026-09-05T09:28:47.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/dasht-768x408.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "ՀՀ-ում Ֆրանսիայի նորանշանակ դեսպանն այսօր ստանձնել է իր պաշտոնը",
-            "url": "https://hy.armradio.am/archives/756617",
-            "date": "2026-09-05T09:14:38.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/IMG_4684-768x490.jpeg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "economics",
         "articles": [
+          {
+            "title": "Գործարար աշխարհը կարող է զգալի ներդրում ունենալ. հայ եւ թուրք գործարարների համատեղ ուղերձը",
+            "url": "https://hy.armradio.am/archives/756828",
+            "date": "2026-09-07T09:28:12.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/MHM0165946-1-768x494.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Մատակարարման հետ կապված մտահոգությունների պատճառով պարենը թանկանում է. ՄԱԿ",
+            "url": "https://hy.armradio.am/archives/756791",
+            "date": "2026-09-07T05:59:33.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/851-768x513.jpg",
+            "category": "Տնտեսական"
+          },
           {
             "title": "Ադրբեջանից Հայաստան կուղարկվի 16 վագոն դիզելային վառելիք",
             "url": "https://hy.armradio.am/archives/756610",
@@ -1258,20 +1272,6 @@
             "url": "https://hy.armradio.am/archives/756308",
             "date": "2026-09-03T12:06:34.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2023/01/mexri2-768x511.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Արտահանման շուկաների դիվերսիֆիկացումը պետք է դառնա ՀՀ Կառավարության ռազմավարությունը. վարչապետ",
-            "url": "https://hy.armradio.am/archives/756303",
-            "date": "2026-09-03T11:47:36.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2025/08/import-export-768x496.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Բիշքեկից հետո Մոսկվա․ առաջիկայում Փաշինյանն ու Պուտինը կրկին կհանդիպեն",
-            "url": "https://hy.armradio.am/archives/756102",
-            "date": "2026-09-02T13:30:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/ScreenShot-3745-768x484.png",
             "category": "Կարևոր"
           }
         ]
@@ -1355,6 +1355,27 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Պուտինը զանգահարել է Ալիեւին",
+            "url": "https://hy.armradio.am/archives/756834",
+            "date": "2026-09-07T09:55:45.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/TASS_49566282-768x433.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Կաբարդինո- Բալկարիայում ձնահյուսի հետեւանքով 11 լեռնագնաց է զոհվել",
+            "url": "https://hy.armradio.am/archives/756825",
+            "date": "2026-09-07T08:55:39.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/6a2e7c51de0fa58963c8a3c4ad4b7b43-768x510.webp",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Ուկրաինայում հանցավոր խմբավորում են բացահայտել հենց Գլխավոր դատախազությունում",
+            "url": "https://hy.armradio.am/archives/756794",
+            "date": "2026-09-07T06:24:24.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/b2663250-a9db-11f1-803f-7f2a9199ddc4.jpg-768x431.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱՄՆ բանագնացները «որոշ» գաղափարներ են բերել Կիեւ, բայց պատերազմը մինչեւ ձմեռ դժվար թե ավարտվի",
             "url": "https://hy.armradio.am/archives/756782",
             "date": "2026-09-07T05:04:14.000Z",
@@ -1401,27 +1422,6 @@
             "url": "https://hy.armradio.am/archives/756664",
             "date": "2026-09-05T12:26:37.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/0cde6b70-a910-11f1-9eff-150801023722.jpg-768x431.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Իրանը չի ցանկանում համաձայնագիր կնքել ԱՄՆ-ի հետ և պատրաստվում է շարունակել պատերազմը. NYT",
-            "url": "https://hy.armradio.am/archives/756637",
-            "date": "2026-09-05T09:53:45.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/78568665_1004-e1788601981284-768x420.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՄԱԿ-ի Գլխավոր ասամբլեան կողմ է արտահայտվել աշխարհի ավելի իրատեսական քարտեզների կիրառմանը",
-            "url": "https://hy.armradio.am/archives/756634",
-            "date": "2026-09-05T09:46:22.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/795472010_3463251010521210_109559600321475810_n-300x169.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ԱՄՆ-ն Կիևին և Մոսկվային կոչ է արել դադարեցնել հարձակումները Թրամփի դեսպանների այցի ընթացքում. NYT",
-            "url": "https://hy.armradio.am/archives/756588",
-            "date": "2026-09-04T18:53:05.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/555-1-e1788547946362-768x459.webp",
             "category": "Կարևոր"
           }
         ]
@@ -1505,6 +1505,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "«Արարատ-Արմենիա»-«Սպարտա Պրահա» խաղի տոմսերն արդեն վաճառքում են",
+            "url": "https://hy.armradio.am/archives/756813",
+            "date": "2026-09-07T07:30:26.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/FMTQvbHoMaQFdVfGMSmQJ7fBlXLlFHYbrpcGoovz-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թենիսիստ Կարեն Խաչանովը դուրս է եկել US Open-ի 1/8 եզրափակիչ",
             "url": "https://hy.armradio.am/archives/756718",
             "date": "2026-09-06T10:30:00.000Z",
@@ -1566,13 +1573,6 @@
             "date": "2026-08-31T18:33:16.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/08/189591c0-a553-11f1-9acf-19576105f049.jpg-768x432.webp",
             "category": "Կարևոր"
-          },
-          {
-            "title": "«Սևանի շուրջը» երկօրյա հեծանվային արշավն ավարտվել է",
-            "url": "https://hy.armradio.am/archives/755459",
-            "date": "2026-08-30T13:38:15.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/08/IMG_4606-768x511.jpeg",
-            "category": "Ազդ անցյալից"
           }
         ]
       }
@@ -1581,6 +1581,62 @@
       {
         "categoryKey": "politics",
         "articles": [
+          {
+            "title": "Премьер-министр провел прощальную встречу с послом Греции",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%bf%d1%80%d0%b5%d0%bc%d1%8c%d0%b5%d1%80-%d0%bc%d0%b8%d0%bd%d0%b8%d1%81%d1%82%d1%80-%d0%bf%d1%80%d0%be%d0%b2%d0%b5%d0%bb-%d0%bf%d1%80%d0%be%d1%89%d0%b0%d0%bb%d1%8c%d0%bd%d1%83%d1%8e-%d0%b2%d1%81-5/",
+            "date": "2026-09-07T11:25:37.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/13A4523-768x512.jpg",
+            "category": "Главная"
+          },
+          {
+            "title": "Песков: РФ и Армения по итогам встречи Путина и Пашиняна изучат торговые вопросы",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%bf%d0%b5%d1%81%d0%ba%d0%be%d0%b2-%d1%80%d1%84-%d0%b8-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bf%d0%be-%d0%b8%d1%82%d0%be%d0%b3%d0%b0%d0%bc-%d0%b2%d1%81%d1%82%d1%80%d0%b5%d1%87%d0%b8-%d0%bf/",
+            "date": "2026-09-07T10:54:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/thumbs_b_c_8e52a0edc51152ffb49ddb700ce1e602-768x432.jpg",
+            "category": "Главная"
+          },
+          {
+            "title": "Айк Конджорян обсудил региональные события с послом Швейцарии",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%b0%d0%b9%d0%ba-%d0%ba%d0%be%d0%bd%d0%b4%d0%b6%d0%be%d1%80%d1%8f%d0%bd-%d0%be%d0%b1%d1%81%d1%83%d0%b4%d0%b8%d0%bb-%d1%80%d0%b5%d0%b3%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d1%8c%d0%bd%d1%8b%d0%b5-%d1%81/",
+            "date": "2026-09-07T09:50:25.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/l-0x626wh-7437x4333z-0.1057-768x447.jpeg",
+            "category": "Главная"
+          },
+          {
+            "title": "Председатель НС Армении и посол Швейцарии обсудили вопросы региональной безопасности",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%bf%d1%80%d0%b5%d0%b4%d1%81%d0%b5%d0%b4%d0%b0%d1%82%d0%b5%d0%bb%d1%8c-%d0%bd%d1%81-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d0%b8-%d0%bf%d0%be%d1%81%d0%be%d0%bb-%d1%88%d0%b2%d0%b5%d0%b9%d1%86/",
+            "date": "2026-09-07T09:24:13.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/l-0x86wh-2048x1194z-0.3838-56-768x448.jpeg",
+            "category": "Главная"
+          },
+          {
+            "title": "Открытие пограничных пунктов пропуска связывает экономики Армении и Турции",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%be%d1%82%d0%ba%d1%80%d1%8b%d1%82%d0%b8%d0%b5-%d0%bf%d0%be%d0%b3%d1%80%d0%b0%d0%bd%d0%b8%d1%87%d0%bd%d1%8b%d1%85-%d0%bf%d1%83%d0%bd%d0%ba%d1%82%d0%be%d0%b2-%d0%bf%d1%80%d0%be%d0%bf%d1%83%d1%81/",
+            "date": "2026-09-07T08:57:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/l-3x0wh-786x458z-1-768x448.jpeg",
+            "category": "Главная"
+          },
+          {
+            "title": "Арарат Мирзоян с рабочим визитом в Риге, где встретится с министром ИД Латвии Байбой Браже",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%bc%d0%b8%d1%80%d0%b7%d0%be%d1%8f%d0%bd-%d1%81-%d1%80%d0%b0%d0%b1%d0%be%d1%87%d0%b8%d0%bc-%d0%b2%d0%b8%d0%b7%d0%b8%d1%82%d0%be%d0%bc-%d0%b2-%d1%80%d0%b8%d0%b3/",
+            "date": "2026-09-07T06:31:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/l-0x5wh-2048x1193z-0.3838-1-768x447.jpeg",
+            "category": "Главная"
+          },
+          {
+            "title": "Флориан Эскюдье назначен чрезвычайным и полномочным послом Франции в Армении",
+            "url": "https://ru.armradio.am/2026/09/07/%d1%84%d0%bb%d0%be%d1%80%d0%b8%d0%b0%d0%bd-%d1%8d%d1%81%d0%ba%d1%8e%d0%b4%d1%8c%d0%b5-%d0%bd%d0%b0%d0%b7%d0%bd%d0%b0%d1%87%d0%b5%d0%bd-%d1%87%d1%80%d0%b5%d0%b7%d0%b2%d1%8b%d1%87%d0%b0%d0%b9%d0%bd/",
+            "date": "2026-09-07T06:15:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/AHlDpUVylddkyo4o0APY6RibDDTO8j2fmqYeBOrm-768x512.jpg",
+            "category": "Главная"
+          },
+          {
+            "title": "Интервью пресс-секретаря премьер-министра WSJ: Пашинян обладает четким народным мандатом на установление мира с Азербайджаном",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%b8%d0%bd%d1%82%d0%b5%d1%80%d0%b2%d1%8c%d1%8e-%d0%bf%d1%80%d0%b5%d1%81%d1%81-%d1%81%d0%b5%d0%ba%d1%80%d0%b5%d1%82%d0%b0%d1%80%d1%8f-%d0%bf%d1%80%d0%b5%d0%bc%d1%8c%d0%b5%d1%80-%d0%bc%d0%b8%d0%bd/",
+            "date": "2026-09-07T05:56:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/eCZF2FBJYNpUaRSwyzXi8EPlTaFZnZiAocok2iiv-768x512.webp",
+            "category": "Главная"
+          },
           {
             "title": "Европарламент одобрил временную отмену пошлин на товары из Армении",
             "url": "https://ru.armradio.am/2026/09/04/%d0%b5%d0%b2%d1%80%d0%be%d0%bf%d0%b0%d1%80%d0%bb%d0%b0%d0%bc%d0%b5%d0%bd%d1%82-%d0%be%d0%b4%d0%be%d0%b1%d1%80%d0%b8%d0%bb-%d0%b2%d1%80%d0%b5%d0%bc%d0%b5%d0%bd%d0%bd%d1%83%d1%8e-%d0%be%d1%82%d0%bc/",
@@ -1594,68 +1650,26 @@
             "date": "2026-09-04T11:57:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/09/4CnxdN5wRCeiRTBT0lT6jvpLvDfRMPH7jH8BxyOT-768x512.jpg",
             "category": "Все новости"
-          },
-          {
-            "title": "Рубен Рубинян и посол Катара обсудили региональные вопросы и процессы",
-            "url": "https://ru.armradio.am/2026/09/04/%d1%80%d1%83%d0%b1%d0%b5%d0%bd-%d1%80%d1%83%d0%b1%d0%b8%d0%bd%d1%8f%d0%bd-%d0%b8-%d0%bf%d0%be%d1%81%d0%be%d0%bb-%d0%ba%d0%b0%d1%82%d0%b0%d1%80%d0%b0-%d0%be%d0%b1%d1%81%d1%83%d0%b4%d0%b8%d0%bb%d0%b8/",
-            "date": "2026-09-04T11:38:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/gboaMAZzw8lGACrfZfJ4AMCzVzQxoDvToTsmHsXW-768x512.jpg",
-            "category": "Все новости"
-          },
-          {
-            "title": "Президент Туркменистана принял приглашение посетить Армению в рамках COP17",
-            "url": "https://ru.armradio.am/2026/09/04/%d0%bf%d1%80%d0%b5%d0%b7%d0%b8%d0%b4%d0%b5%d0%bd%d1%82-%d1%82%d1%83%d1%80%d0%ba%d0%bc%d0%b5%d0%bd%d0%b8%d1%81%d1%82%d0%b0%d0%bd%d0%b0-%d0%bf%d1%80%d0%b8%d0%bd%d1%8f%d0%bb-%d0%bf%d1%80%d0%b8%d0%b3/",
-            "date": "2026-09-04T11:19:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/oap4uu7q3b90p53vtx6kiwtcog2ws29i-768x527.webp",
-            "category": "Все новости"
-          },
-          {
-            "title": "Трамп вновь привлёк внимание к проекту TRIPP и миру между Арменией и Азербайджаном",
-            "url": "https://ru.armradio.am/2026/09/04/%d1%82%d1%80%d0%b0%d0%bc%d0%bf-%d0%b2%d0%bd%d0%be%d0%b2%d1%8c-%d0%bf%d1%80%d0%b8%d0%b2%d0%bb%d1%91%d0%ba-%d0%b2%d0%bd%d0%b8%d0%bc%d0%b0%d0%bd%d0%b8%d0%b5-%d0%ba-%d0%bf%d1%80%d0%be%d0%b5%d0%ba%d1%82/",
-            "date": "2026-09-04T10:21:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/%D4%B9%D6%80%D5%A1%D5%B4%D6%83-%D5%93%D5%A1%D5%B7%D5%AB%D5%B6%D5%B5%D5%A1%D5%B6-%D4%B1%D5%AC%D5%AB%D6%87-1-768x512.jpg",
-            "category": "Все новости"
-          },
-          {
-            "title": "Министр иностранных дел Малайзии поздравил Арарата Мирзояна с переназначением",
-            "url": "https://ru.armradio.am/2026/09/04/%d0%bc%d0%b8%d0%bd%d0%b8%d1%81%d1%82%d1%80-%d0%b8%d0%bd%d0%be%d1%81%d1%82%d1%80%d0%b0%d0%bd%d0%bd%d1%8b%d1%85-%d0%b4%d0%b5%d0%bb-%d0%bc%d0%b0%d0%bb%d0%b0%d0%b9%d0%b7%d0%b8%d0%b8-%d0%bf%d0%be%d0%b7/",
-            "date": "2026-09-04T08:54:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/ona34EopfQOWXHcd8GRh6tSCnsynrSbQ675kb5od-768x512.jpg",
-            "category": "Все новости"
-          },
-          {
-            "title": "Министр иностранных дел Туниса поздравил Арарата Мирзояна с переназначением",
-            "url": "https://ru.armradio.am/2026/09/04/%d0%bc%d0%b8%d0%bd%d0%b8%d1%81%d1%82%d1%80-%d0%b8%d0%bd%d0%be%d1%81%d1%82%d1%80%d0%b0%d0%bd%d0%bd%d1%8b%d1%85-%d0%b4%d0%b5%d0%bb-%d1%82%d1%83%d0%bd%d0%b8%d1%81%d0%b0-%d0%bf%d0%be%d0%b7%d0%b4%d1%80/",
-            "date": "2026-09-04T07:56:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/CE7EZwWYGHL7rqcVBYEcJzQNWY7TioveHDaUpcUZ-768x512.jpg",
-            "category": "Все новости"
-          },
-          {
-            "title": "Ваагн Хачатурян: Армении предстоит большой объём работы на пути к членству в ЕС",
-            "url": "https://ru.armradio.am/2026/09/04/%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%b4%d0%be%d0%bb%d0%b6%d0%bd%d0%b0-%d0%b2%d1%8b%d0%bf%d0%be%d0%bb%d0%bd%d0%b8%d1%82%d1%8c-%d0%b1%d0%be%d0%bb%d1%8c%d1%88%d0%be%d0%b9-%d0%be%d0%b1%d1%8a/",
-            "date": "2026-09-04T06:29:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/wwvLfteOr3aehv5hya8fEVmTT8rteJwGpHPWjKnq-768x512.jpg",
-            "category": "Все новости"
-          },
-          {
-            "title": "Обсужден ряд вопросов, касающихся повестки дня отношений Армении и ЕС",
-            "url": "https://ru.armradio.am/2026/09/03/%d0%be%d0%b1%d1%81%d1%83%d0%b6%d0%b4%d0%b5%d0%bd-%d1%80%d1%8f%d0%b4-%d0%b2%d0%be%d0%bf%d1%80%d0%be%d1%81%d0%be%d0%b2-%d0%ba%d0%b0%d1%81%d0%b0%d1%8e%d1%89%d0%b8%d1%85%d1%81%d1%8f-%d0%bf%d0%be%d0%b2/",
-            "date": "2026-09-03T14:48:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/791074861_1383741637181761_7947515311333618685_n-scaled-1-768x512.jpg",
-            "category": "Главная"
-          },
-          {
-            "title": "Никол Пашнян принял посла Франции Оливье Декотиньи, завершающего дипломатическую миссию в Армении",
-            "url": "https://ru.armradio.am/2026/09/03/%d0%bd%d0%b8%d0%ba%d0%be%d0%bb-%d0%bf%d0%b0%d1%88%d0%bd%d1%8f%d0%bd-%d0%bf%d1%80%d0%b8%d0%bd%d1%8f%d0%bb-%d0%bf%d0%be%d1%81%d0%bb%d0%b0-%d1%84%d1%80%d0%b0%d0%bd%d1%86%d0%b8%d0%b8-%d0%be%d0%bb%d0%b8/",
-            "date": "2026-09-03T14:18:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/l-0x110wh-1440x839z-0.5458-1-768x447.jpeg",
-            "category": "Главная"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "В рамках COP17 в центре Еревана будет действовать Зона городского биоразнообразия",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%b2-%d1%80%d0%b0%d0%bc%d0%ba%d0%b0%d1%85-cop17-%d0%b2-%d1%86%d0%b5%d0%bd%d1%82%d1%80%d0%b5-%d0%b5%d1%80%d0%b5%d0%b2%d0%b0%d0%bd%d0%b0-%d0%b1%d1%83%d0%b4%d0%b5%d1%82-%d0%b4%d0%b5%d0%b9%d1%81%d1%82/",
+            "date": "2026-09-07T08:33:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/8skB2gd8CizLaNolRae9Uh3i1iBGU5BWd08E5riX-768x512.jpg",
+            "category": "Главная"
+          },
+          {
+            "title": "Ожидаются кратковременные дожди и грозы, температура воздуха 7-9 сентября понизится на 4-7 градусов",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%be%d0%b6%d0%b8%d0%b4%d0%b0%d1%8e%d1%82%d1%81%d1%8f-%d0%ba%d1%80%d0%b0%d1%82%d0%ba%d0%be%d0%b2%d1%80%d0%b5%d0%bc%d0%b5%d0%bd%d0%bd%d1%8b%d0%b5-%d0%b4%d0%be%d0%b6%d0%b4%d0%b8-%d0%b8-%d0%b3%d1%80-22/",
+            "date": "2026-09-07T06:47:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/lgd1d-768x508.png",
+            "category": "Главная"
+          },
           {
             "title": "Пашинян встретился со студентами Образовательного комплекса МВД в преддверии Дня спасателя",
             "url": "https://ru.armradio.am/2026/09/04/%d0%b2-%d0%bf%d1%80%d0%b5%d0%b4%d0%b4%d0%b2%d0%b5%d1%80%d0%b8%d0%b8-%d0%b4%d0%bd%d1%8f-%d1%81%d0%bf%d0%b0%d1%81%d0%b0%d1%82%d0%b5%d0%bb%d1%8f-%d0%bf%d1%80%d0%b5%d0%bc%d1%8c%d0%b5%d1%80-%d0%bc%d0%b8/",
@@ -1710,20 +1724,6 @@
             "url": "https://ru.armradio.am/2026/09/01/%d0%be%d0%b6%d0%b8%d0%b4%d0%b0%d1%8e%d1%82%d1%81%d1%8f-%d0%b4%d0%be%d0%b6%d0%b4%d0%b8-%d0%b8-%d0%b3%d1%80%d0%be%d0%b7%d1%8b-22/",
             "date": "2026-09-01T07:15:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/08/andzrev_shabat.am1_-6-768x432.jpg",
-            "category": "Главная"
-          },
-          {
-            "title": "Lydian Armenia будет ежегодно выделять 9 млн долларов общинам возле рудника Амулсар — соглашение подписано в Ереване",
-            "url": "https://ru.armradio.am/2026/08/31/lydian-armenia-%d0%b1%d1%83%d0%b4%d0%b5%d1%82-%d0%b5%d0%b6%d0%b5%d0%b3%d0%be%d0%b4%d0%bd%d0%be-%d0%b2%d1%8b%d0%b4%d0%b5%d0%bb%d1%8f%d1%82%d1%8c-9-%d0%bc%d0%bb%d0%bd-%d0%b4%d0%be%d0%bb%d0%bb%d0%b0/",
-            "date": "2026-08-31T10:50:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/v7Vl09VVHWF3LpjwUAggCWzbwA9fKi062MZjAaXr-768x512.jpg",
-            "category": "Все новости"
-          },
-          {
-            "title": "Никол Пашинян выразил соболезнования в связи со смертью народного артиста Республики Армения Грачья Гаспаряна",
-            "url": "https://ru.armradio.am/2026/08/28/%d0%bd%d0%b8%d0%ba%d0%be%d0%bb-%d0%bf%d0%b0%d1%88%d0%b8%d0%bd%d1%8f%d0%bd-%d0%b2%d1%8b%d1%80%d0%b0%d0%b7%d0%b8%d0%bb-%d1%81%d0%be%d0%b1%d0%be%d0%bb%d0%b5%d0%b7%d0%bd%d0%be%d0%b2%d0%b0%d0%bd%d0%b8-17/",
-            "date": "2026-08-28T11:04:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/eju2fucw1in6uh7kc0fuaydhhk6bqhxv-1-768x527.webp",
             "category": "Главная"
           }
         ]
@@ -1882,6 +1882,27 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Путин позвонил Алиеву",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%bf%d1%83%d1%82%d0%b8%d0%bd-%d0%b8-%d0%b0%d0%bb%d0%b8%d0%b5%d0%b2-%d0%b4%d0%be%d0%b3%d0%be%d0%b2%d0%be%d1%80%d0%b8%d0%bb%d0%b8%d1%81%d1%8c-%d0%b0%d0%ba%d1%82%d0%b8%d0%b2%d0%b8%d0%b7%d0%b8%d1%80/",
+            "date": "2026-09-07T10:18:24.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/TASS_49566282-768x433.jpg",
+            "category": "В мире"
+          },
+          {
+            "title": "В США пять человек погибли при крушении грузового самолета Amazon",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%b2-%d1%81%d1%88%d0%b0-%d0%bf%d1%8f%d1%82%d1%8c-%d1%87%d0%b5%d0%bb%d0%be%d0%b2%d0%b5%d0%ba-%d0%bf%d0%be%d0%b3%d0%b8%d0%b1%d0%bb%d0%b8-%d0%bf%d1%80%d0%b8-%d0%ba%d1%80%d1%83%d1%88%d0%b5%d0%bd%d0%b8/",
+            "date": "2026-09-07T07:26:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/b92d12f0-aa5f-11f1-ad2a-89d6215aa4d9.jpg-768x432.webp",
+            "category": "В мире"
+          },
+          {
+            "title": "На выборах в Саксонии-Анхальт уверенно победила АдГ",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%bd%d0%b0-%d0%b2%d1%8b%d0%b1%d0%be%d1%80%d0%b0%d1%85-%d0%b2-%d1%81%d0%b0%d0%ba%d1%81%d0%be%d0%bd%d0%b8%d0%b8-%d0%b0%d0%bd%d1%85%d0%b0%d0%bb%d1%8c%d1%82-%d1%83%d0%b2%d0%b5%d1%80%d0%b5%d0%bd%d0%bd/",
+            "date": "2026-09-07T07:05:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/smartcrop-6-768x480.jpg",
+            "category": "В мире"
+          },
+          {
             "title": "Вице‑президент США не исключает конца света и присутствия Антихриста среди нас",
             "url": "https://ru.armradio.am/2026/09/04/%d0%b2%d0%b8%d1%86%d0%b5-%d0%bf%d1%80%d0%b5%d0%b7%d0%b8%d0%b4%d0%b5%d0%bd%d1%82-%d1%81%d1%88%d0%b0-%d0%bd%d0%b5-%d0%b8%d1%81%d0%ba%d0%bb%d1%8e%d1%87%d0%b0%d0%b5%d1%82-%d0%ba%d0%be%d0%bd%d1%86/",
             "date": "2026-09-04T10:50:00.000Z",
@@ -1928,27 +1949,6 @@
             "url": "https://ru.armradio.am/2026/09/02/%d1%85%d0%be%d1%81%d0%b5-%d0%bc%d0%b0%d0%bd%d1%83%d1%8d%d0%bb%d1%8c-%d0%b0%d0%bb%d1%8c%d0%b1%d0%b0%d1%80%d0%b5%d1%81-%d0%b8%d1%81%d0%bf%d0%b0%d0%bd%d0%b8%d1%8f-%d0%bf%d0%be%d1%81%d1%82%d0%b0%d0%b2/",
             "date": "2026-09-02T09:38:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/09/2709265-768x549.jpg",
-            "category": "В мире"
-          },
-          {
-            "title": "Владимир Путин: Россия хочет положить конец, а не заморозить конфликт на Украине",
-            "url": "https://ru.armradio.am/2026/09/02/%d0%b2%d0%bb%d0%b0%d0%b4%d0%b8%d0%bc%d0%b8%d1%80-%d0%bf%d1%83%d1%82%d0%b8%d0%bd-%d1%80%d0%be%d1%81%d1%81%d0%b8%d1%8f-%d1%85%d0%be%d1%87%d0%b5%d1%82-%d0%bf%d0%be%d0%bb%d0%be%d0%b6%d0%b8%d1%82%d1%8c/",
-            "date": "2026-09-02T08:55:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/1e4084aa-4a48-4ed9-9c7a-ba3c9e0ff32d.jpg-768x487.webp",
-            "category": "В мире"
-          },
-          {
-            "title": "Зеленский: Украина начинает закрывать небо над Россией, оно становится опасным для самолетов",
-            "url": "https://ru.armradio.am/2026/09/02/%d0%b7%d0%b5%d0%bb%d0%b5%d0%bd%d1%81%d0%ba%d0%b8%d0%b9-%d1%83%d0%ba%d1%80%d0%b0%d0%b8%d0%bd%d0%b0-%d0%bd%d0%b0%d1%87%d0%b8%d0%bd%d0%b0%d0%b5%d1%82-%d0%b7%d0%b0%d0%ba%d1%80%d1%8b%d0%b2%d0%b0%d1%82/",
-            "date": "2026-09-02T07:48:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/2_zelenskiy__2026_gettyimages_2270796175_ce8a513ab2a645469fe150e728141f15_650x410-300x189.jpg",
-            "category": "В мире"
-          },
-          {
-            "title": "ВВС: уходит в отставку министр армии США Дэн Дрисколл, который участвовал в переговорах о мире в Украине",
-            "url": "https://ru.armradio.am/2026/09/01/%d0%b2%d0%b2%d1%81-%d1%83%d1%85%d0%be%d0%b4%d0%b8%d1%82-%d0%b2-%d0%be%d1%82%d1%81%d1%82%d0%b0%d0%b2%d0%ba%d1%83-%d0%bc%d0%b8%d0%bd%d0%b8%d1%81%d1%82%d1%80-%d0%b0%d1%80%d0%bc%d0%b8%d0%b8-%d1%81%d1%88/",
-            "date": "2026-09-01T10:41:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/36346f1b08bf8deb794b0831c5dd54be-768x430.jpeg",
             "category": "В мире"
           }
         ]
@@ -2032,6 +2032,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Билеты на матч «Арарат-Армения» — «Спарта Прага» уже в продаже",
+            "url": "https://ru.armradio.am/2026/09/07/%d0%b1%d0%b8%d0%bb%d0%b5%d1%82%d1%8b-%d0%bd%d0%b0-%d0%bc%d0%b0%d1%82%d1%87-%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d1%81%d0%bf/",
+            "date": "2026-09-07T08:12:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/09/FMTQvbHoMaQFdVfGMSmQJ7fBlXLlFHYbrpcGoovz-768x512.jpg",
+            "category": "Главная"
+          },
+          {
             "title": "Капитан женской сборной Армении по футболу перешла в саудовский клуб",
             "url": "https://ru.armradio.am/2026/09/04/%d0%ba%d0%b0%d0%bf%d0%b8%d1%82%d0%b0%d0%bd-%d0%b6%d0%b5%d0%bd%d1%81%d0%ba%d0%be%d0%b9-%d1%81%d0%b1%d0%be%d1%80%d0%bd%d0%be%d0%b9-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d0%bf%d0%be-%d1%84%d1%83/",
             "date": "2026-09-04T13:53:00.000Z",
@@ -2093,13 +2100,6 @@
             "date": "2026-08-28T06:15:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/08/788629858_2195488750998816_8040196609722908387_n-e1787853191941-768x584.jpg",
             "category": "Главная"
-          },
-          {
-            "title": "«Арарат-Армения» победил и примет участие в групповом этапе Лиги Европы",
-            "url": "https://ru.armradio.am/2026/08/28/%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bf%d0%be%d0%b1%d0%b5%d0%b4%d0%b8%d0%bb-%d0%b8-%d0%bf%d1%80%d0%b8%d0%bc%d0%b5%d1%82-%d1%83%d1%87%d0%b0/",
-            "date": "2026-08-28T05:59:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/08/MHM0165914-scaled-1-768x508.jpg",
-            "category": "Главная"
           }
         ]
       }
@@ -2110,70 +2110,82 @@
       "categoryKey": "actualites",
       "articles": [
         {
-          "title": "Turquie: l’épave d’un cargo, coulé après une collision, localisée",
-          "url": "https://www.armenews.com/turquie-lepave-dun-cargo-coule-apres-une-collision-localisee/",
-          "date": "2026-09-06T06:54:47.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/HRWW6rtakAABcob.jpeg"
+          "title": "J’ai rendu mon passeport arménien, je ne reviendrai plus jamais en Arménie affirme le lieutenant-général Norat Ter-Grigoryants",
+          "url": "https://www.armenews.com/jai-rendu-mon-passeport-armenien-je-ne-reviendrai-plus-jamais-en-armenie-affirme-le-lieutenant-general-norat-ter-grigoryants/",
+          "date": "2026-09-07T10:14:25.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/8743.webp"
         },
         {
-          "title": "Le procureur chargé de l’affaire du Catholicos et de six évêques « a quitté ses fonctions à sa demande »",
-          "url": "https://www.armenews.com/le-procureur-charge-de-laffaire-du-catholicos-et-de-six-eveques-a-quitte-ses-fonctions-a-sa-demande/",
-          "date": "2026-09-06T06:30:51.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-06-a-07.09.27.png"
+          "title": "L’information concernant la prétendue tentative d’Azerbaïdjanais de se rassembler près du pont de Hakari entre l’Artsakh occupé et l’Arménie est infondée",
+          "url": "https://www.armenews.com/linformation-concernant-la-pretendue-tentative-dazerbaidjanais-de-se-rassembler-pres-du-pont-de-hakari-entre-lartsakh-occupe-et-larmenie-est-infondee/",
+          "date": "2026-09-07T09:00:17.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/6747.jpg"
         },
         {
-          "title": "Pachinian dispose d’un mandat public clair pour instaurer la paix avec l’Azerbaïdjan : un porte-parole l’affirme au WSJ",
-          "url": "https://www.armenews.com/pachinian-dispose-dun-mandat-public-clair-pour-instaurer-la-paix-avec-lazerbaidjan-un-porte-parole-laffirme-au-wsj/",
-          "date": "2026-09-06T06:30:39.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-05-a-23.28.43.png"
+          "title": "Le patriarche arménien de Constantinople prie à l’église Sainte-Croix d’Akhtamar, pour le rétablissement des relations arméno-turques",
+          "url": "https://www.armenews.com/le-patriarche-armenien-de-constantinople-prie-a-leglise-sainte-croix-dakhtamar-pour-le-retablissement-des-relations-armeno-turques/",
+          "date": "2026-09-07T08:41:30.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/9893.png"
         },
         {
-          "title": "Pashinyan : « Mes conclusions sur la révolution changent chaque semaine depuis 2018 »",
-          "url": "https://www.armenews.com/pashinyan-mes-conclusions-sur-la-revolution-changent-chaque-semaine-depuis-2018/",
-          "date": "2026-09-06T06:30:33.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-06-a-07.45.05.png"
+          "title": "Huit pays musulmans condamnent les appels de ministres israéliens à déplacer les Gazaouis",
+          "url": "https://www.armenews.com/huit-pays-musulmans-condamnent-les-appels-de-ministres-israeliens-a-deplacer-les-gazaouis/",
+          "date": "2026-09-07T06:47:54.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/14852083542_4bb24ca172_c.jpg"
         },
         {
-          "title": "« Un procès peut coûter cher. Le silence coûterait encore plus cher. Aidez NAM à défendre sa liberté d’informer. »",
-          "url": "https://www.armenews.com/proces-geragos-axa-aidez-nam-a-defendre-sa-liberte-dinformer/",
-          "date": "2026-09-06T06:30:23.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/47138440082_ca1fba983c_c.jpg"
+          "title": "La Turquie relève sa prévision d’inflation à 28,4% pour la fin de l’année",
+          "url": "https://www.armenews.com/la-turquie-releve-sa-prevision-dinflation-a-284-pour-la-fin-de-lannee-2/",
+          "date": "2026-09-07T06:43:25.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/image_1665156794_t7ZgdR0gM6H86y0OZAiTVyLtUM2no0pKQgZ2w2w2.jpg"
         },
         {
-          "title": "Prisonniers arméniens à Bakou : quand le régime azerbaïdjanais se délivre à lui-même un certificat de bonne conduite",
-          "url": "https://www.armenews.com/prisonniers-armeniens-a-bakou-quand-le-regime-azerbaidjanais-se-delivre-a-lui-meme-un-certificat-de-bonne-conduite/",
-          "date": "2026-09-06T06:30:17.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/def764f1-e847-46c4-897c-331f7d057c1c.jpeg"
+          "title": "Le FMI a mis en garde contre les risques croissants de vagues de chaleur et de pénuries d’eau en Arménie",
+          "url": "https://www.armenews.com/le-fmi-a-mis-en-garde-contre-les-risques-croissants-de-vagues-de-chaleur-et-de-penuries-deau-en-armenie/",
+          "date": "2026-09-07T06:31:05.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/8mbysp9vpz1064la14q2bv1yhcs5gbwt.jpg"
         },
         {
-          "title": "« 60 tonnes de poisson exportées d’Arménie vers les Émirats arabes unis » : les pisciculteurs doutent de leur origine arménienne, l’Inspection réagit",
-          "url": "https://www.armenews.com/60-tonnes-de-poisson-exportees-darmenie-vers-les-emirats-arabes-unis-les-pisciculteurs-doutent-de-leur-origine-armenienne-linspection-reagit/",
-          "date": "2026-09-06T06:30:14.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-06-a-07.21.49.png"
+          "title": "Les États-Unis ont utilisé l’accès de l’Arménie aux puces NVIDIA comme levier dans les négociations avec l’Azerbaïdjan",
+          "url": "https://www.armenews.com/les-etats-unis-ont-utilise-lacces-de-larmenie-aux-puces-nvidia-comme-levier-dans-les-negociations-avec-lazerbaidjan/",
+          "date": "2026-09-07T06:30:52.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/a653ih2pkrueu0zl70x8lhxno7ruz40m.jpg"
         },
         {
-          "title": "Le président Khatchatourian affirme que l’Arménie est prête à tout moment à ce que la Turquie ouvre sa frontière",
-          "url": "https://www.armenews.com/le-president-khatchatourian-affirme-que-larmenie-est-prete-a-tout-moment-a-ce-que-la-turquie-ouvre-sa-frontiere/",
-          "date": "2026-09-06T06:30:02.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-05-a-23.37.18.png"
+          "title": "« Pragmatique, déterminé, fort » : l’émissaire de Trump décrit Pachinian et Aliev",
+          "url": "https://www.armenews.com/pragmatique-determine-fort-lemissaire-de-trump-decrit-pachinian-et-aliev/",
+          "date": "2026-09-07T06:30:49.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Screenshot-2026-09-07-at-07-09-28-%D5%8A%D6%80%D5%A1%D5%A3%D5%B4%D5%A1%D5%BF%D5%AB%D5%AF-%D5%BE%D5%B3%D5%BC%D5%A1%D5%AF%D5%A1%D5%B6-%D5%B8%D6%82%D5%AA%D5%A5%D5%B2.-%D4%B9%D6%80%D5%A1%D5%B4%D6%83%D5%AB-%D5%A2%D5%A1%D5%B6%D5%A1%D5%A3%D5%B6%D5%A1%D6%81%D5%A8-%D5%93%D5%A1%D5%B7%D5%AB%D5%B6%D5%B5%D5%A1%D5%B6%D5%AB-%D6%87-%D4%B1%D5%AC%D5%AB%D6%87%D5%AB-%D5%B4%D5%A1%D5%BD%D5%AB%D5%B6.png"
         },
         {
-          "title": "TURQUIE. Une otage kurde libérée après 31 ans de captivité",
-          "url": "https://www.armenews.com/turquie-une-otage-kurde-liberee-apres-31-ans-de-captivite/",
-          "date": "2026-09-06T06:30:01.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-06-a-07.26.53.png"
+          "title": "Overchuk propose à ses partenaires arméniens de coopérer avec la Russie",
+          "url": "https://www.armenews.com/overchuk-propose-a-ses-partenaires-armeniens-de-cooperer-avec-la-russie/",
+          "date": "2026-09-07T06:30:42.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/ae5d59a9-033d-4707-8252-08ddd95ee7ae_w1023_n_r1_s_s.jpg"
         },
         {
-          "title": "Les écoles nouvellement construites en Arménie à Yeraskhahun et Nor Kesaria ont ouvert leurs portes dans la région d’Armavir",
-          "url": "https://www.armenews.com/les-ecoles-nouvellement-construites-en-armenie-a-yeraskhahun-et-nor-kesaria-ont-ouvert-leurs-portes-dans-la-region-darmavir/",
-          "date": "2026-09-06T04:10:02.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/7688.jpg"
+          "title": "L’Arménie sous les projecteurs des médias internationaux grâce au Tour d’Arménie cycliste",
+          "url": "https://www.armenews.com/larmenie-sous-les-projecteurs-des-medias-internationaux-grace-au-tour-darmenie-cycliste/",
+          "date": "2026-09-07T06:30:41.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/343341.jpg"
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "Le capitaine de l’équipe nationale d’Arménie, Eduard Spertsyan, dans l’équipe type de la 5e journée du Championnat d’Arabie Saoudite",
+          "url": "https://www.armenews.com/le-capitaine-de-lequipe-nationale-darmenie-eduard-spertsyan-dans-lequipe-type-de-la-5e-journee-du-championnat-darabie-saoudite/",
+          "date": "2026-09-07T09:50:18.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/8843.png"
+        },
+        {
+          "title": "Le joueur de tennis Russe d’origine arménienne Karen Khachanov s’est qualifié pour les huitièmes de finale de l’US Open",
+          "url": "https://www.armenews.com/le-joueur-de-tennis-russe-dorigine-armenienne-karen-khachanov-sest-qualifie-pour-les-huitiemes-de-finale-de-lus-open/",
+          "date": "2026-09-07T06:10:42.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/6633.jpeg"
+        },
         {
           "title": "Maral Artin, la capitaine de l’équipe féminine d’Arménie de football évoluera au club saoudien d’Al-Himmah",
           "url": "https://www.armenews.com/maral-artin-la-capitaine-de-lequipe-feminine-darmenie-de-football-evoluera-au-club-saoudien-dal-himmah/",
@@ -2221,24 +2233,24 @@
           "url": "https://www.armenews.com/linternational-armenien-edgar-sevikyan-transfere-de-hongrie-vers-israel/",
           "date": "2026-08-25T09:59:10.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/6644-1.jpg"
-        },
-        {
-          "title": "Rafik Aleksanyan (Arménie) devient champion du monde de MMA des U17",
-          "url": "https://www.armenews.com/rafik-aleksanyan-armenie-devient-champion-du-monde-de-mma-des-u17/",
-          "date": "2026-08-24T15:04:50.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/342455.jpg"
-        },
-        {
-          "title": "Membre de la sélection d’Arménie de football Lara Kazandjian poursuit sa carrière au sein du club espagnol de Saragosse",
-          "url": "https://www.armenews.com/membre-de-la-selection-darmenie-de-football-lara-kazandjian-poursuit-sa-carriere-au-sein-du-club-espagnol-de-saragosse/",
-          "date": "2026-08-21T18:55:47.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/8976.jpg"
         }
       ]
     },
     {
       "categoryKey": "communaute",
       "articles": [
+        {
+          "title": "« Un procès peut coûter cher. Le silence coûterait encore plus cher. Aidez NAM à défendre sa liberté d’informer. »",
+          "url": "https://www.armenews.com/proces-geragos-axa-aidez-nam-a-defendre-sa-liberte-dinformer/",
+          "date": "2026-09-07T06:30:23.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/47138440082_ca1fba983c_c.jpg"
+        },
+        {
+          "title": "Programme de rentrée de la JAF Paris et réunion le 12 septembre",
+          "url": "https://www.armenews.com/programme-de-rentree-de-la-jaf-paris-et-reunion-le-12-septembre/",
+          "date": "2026-09-07T06:30:07.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/07/89ff5312-7db0-11f0-bcd0-7fc7d34c0715_019f157a-8323-7d70-b1ba-7a8982cd955f.jpeg"
+        },
         {
           "title": "« Arménia » débute sa 32ème rentrée par son stand arménien au Forum des associations de Bourg-Lès-Valence, dimanche 6 septembre",
           "url": "https://www.armenews.com/armenia-debute-sa-32eme-rentree-par-son-stand-armenien-au-forum-des-associations-de-bourg-les-valence-dimanche-6-septembre/",
@@ -2250,12 +2262,6 @@
           "url": "https://www.armenews.com/reservez-vite-votre-place-pour-notre-evenement-exceptionnel-ugab-120-ans-en-mouvement/",
           "date": "2026-09-06T06:30:37.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/09/1-scaled.png"
-        },
-        {
-          "title": "« Un procès peut coûter cher. Le silence coûterait encore plus cher. Aidez NAM à défendre sa liberté d’informer. »",
-          "url": "https://www.armenews.com/proces-geragos-axa-aidez-nam-a-defendre-sa-liberte-dinformer/",
-          "date": "2026-09-06T06:30:23.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/47138440082_ca1fba983c_c.jpg"
         },
         {
           "title": "L’association Idjé-Val visant à développer les liens entre Valence et Idjévan (Arménia) au Forum des associations de Valence",
@@ -2292,18 +2298,18 @@
           "url": "https://www.armenews.com/deces-de-josephine-kassarian-ancienne-directrice-de-lecole-saint-mesrop-dalfortville/",
           "date": "2026-09-03T10:05:28.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-03-a-11.59.36.png"
-        },
-        {
-          "title": "Communiqué de l’Association Padus Araxes",
-          "url": "https://www.armenews.com/communique-de-lassociation-padus-araxes/",
-          "date": "2026-09-03T09:56:19.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/Capture-decran-2026-09-03-a-11.55.36.png"
         }
       ]
     },
     {
       "categoryKey": "culture",
       "articles": [
+        {
+          "title": "Mikael Petrossian figure parmi les 20 Français les mieux habillés selon Vanity Fair France",
+          "url": "https://www.armenews.com/mikael-petrossian-figure-parmi-les-20-francais-les-mieux-habilles-selon-vanity-fair-france/",
+          "date": "2026-09-07T06:30:03.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/0caxgpx88q0q09hv0mk8t1hhukv4wl1k.jpg"
+        },
         {
           "title": "Voyage à travers la culture arménienne le 26 septembre à Draguignan",
           "url": "https://www.armenews.com/voyage-a-travers-la-culture-armenienne-le-26-septembre-a-draguignan/",
@@ -2357,12 +2363,6 @@
           "url": "https://www.armenews.com/rentree-de-lecole-de-danse-yeraz-a-partir-du-5-septembre-a-alfortville/",
           "date": "2026-08-30T06:30:28.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/08/Capture-decran-2026-08-17-a-12.50.00.png"
-        },
-        {
-          "title": "Double exposition à Marseille à partir du 1er septembre",
-          "url": "https://www.armenews.com/double-exposition-a-marseille-a-partir-du-1er-septembre/",
-          "date": "2026-08-29T06:30:21.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/08/expo.jpg"
         }
       ]
     },
@@ -2687,6 +2687,42 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Redémarrage de l’unité 2 de la centrale nucléaire arménienne",
+          "url": "https://armenieinfo.tv/redemarrage-de-lunite-2-de-la-centrale-nucleaire-armenienne/",
+          "date": "2026-09-07T11:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788518008-3455.jpg"
+        },
+        {
+          "title": "Avons-nous besoin de la base militaire 102 ? Territoire et patrie ou État et souveraineté",
+          "url": "https://armenieinfo.tv/avons-nous-besoin-de-la-base-militaire-102-territoire-et-patrie-ou-etat-et-souverainete/",
+          "date": "2026-09-07T09:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788748353-8086.jpg"
+        },
+        {
+          "title": "L’avenir de la base militaire 102 : bluff ou chantage pré-négociation russe ?",
+          "url": "https://armenieinfo.tv/lavenir-de-la-base-militaire-102-bluff-ou-chantage-pre-negociation-russe/",
+          "date": "2026-09-07T08:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788748412-2374.jpg"
+        },
+        {
+          "title": "Les postes-frontières Arménie-Turquie prêts pour l’ouverture et le mouvement, selon le président arménien",
+          "url": "https://armenieinfo.tv/les-postes-frontieres-armenie-turquie-prets-pour-louverture-et-le-mouvement-selon-le-president-armenien/",
+          "date": "2026-09-07T07:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788662020-5843.jpg"
+        },
+        {
+          "title": "La joueuse de tennis arménienne de 15 ans, Maria Azizyan, remporte le tournoi junior ITF J60 de Bourgas",
+          "url": "https://armenieinfo.tv/la-joueuse-de-tennis-armenienne-de-15-ans-maria-azizyan-remporte-le-tournoi-junior-itf-j60-de-bourgas/",
+          "date": "2026-09-07T06:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788661996-8588.jpg"
+        },
+        {
+          "title": "Prisonniers arméniens : les résultats de la diplomatie discrète face aux mobilisations symboliques",
+          "url": "https://armenieinfo.tv/prisonniers-armeniens-les-resultats-de-la-diplomatie-discrete-face-aux-mobilisations-symboliques/",
+          "date": "2026-09-07T05:45:43.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/2cc26169-a074-4d9c-9e88-b2fa8f84a944.png"
+        },
+        {
           "title": "L’Arménie accueille pour la première fois le symposium international « Musique et Minorités »",
           "url": "https://armenieinfo.tv/larmenie-accueille-pour-la-premiere-fois-le-symposium-international-musique-et-minorites/",
           "date": "2026-09-06T11:00:00.000Z",
@@ -2709,48 +2745,18 @@
           "url": "https://armenieinfo.tv/la-russie-va-t-elle-retirer-sa-base-militaire-darmenie/",
           "date": "2026-09-06T07:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788575683-8481.jpg"
-        },
-        {
-          "title": "L’exposition Armenia Expo-2026 s’ouvre à Erevan",
-          "url": "https://armenieinfo.tv/lexposition-armenia-expo-2026-souvre-a-erevan/",
-          "date": "2026-09-05T15:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788575535-9579.jpg"
-        },
-        {
-          "title": "Troisième juge consécutif se retire de l’affaire contre le Catholicos arménien Karékine II",
-          "url": "https://armenieinfo.tv/troisieme-juge-consecutif-se-retire-de-laffaire-contre-le-catholicos-armenien-karekine-ii/",
-          "date": "2026-09-05T13:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788575710-5822.jpg"
-        },
-        {
-          "title": "Florian Escudié arrive en Arménie et prend ses fonctions d’ambassadeur de France",
-          "url": "https://armenieinfo.tv/florian-escudie-arrive-en-armenie-et-prend-ses-fonctions-dambassadeur-de-france/",
-          "date": "2026-09-05T08:56:53.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-10-1.png"
-        },
-        {
-          "title": "Pachinian affirme que la base militaire russe n’est pas une ‘nécessité vitale’ pour l’Arménie",
-          "url": "https://armenieinfo.tv/pachinian-affirme-que-la-base-militaire-russe-nest-pas-une-necessite-vitale-pour-larmenie/",
-          "date": "2026-09-04T12:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788489322-5296.jpg"
-        },
-        {
-          "title": "L’UE se rapproche de l’assouplissement des importations arméniennes face aux restrictions russes",
-          "url": "https://armenieinfo.tv/lue-se-rapproche-de-lassouplissement-des-importations-armeniennes-face-aux-restrictions-russes/",
-          "date": "2026-09-04T10:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788489334-5382.jpg"
-        },
-        {
-          "title": "Ordre des faits de 2022 : un article dénonce une réécriture russe de la chronologie",
-          "url": "https://armenieinfo.tv/mer-oughin-34668/",
-          "date": "2026-09-04T08:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/mer-oughin-34668.jpg"
         }
       ]
     },
     {
       "categoryKey": "art-culture",
       "articles": [
+        {
+          "title": "L’exposition Armenia Expo-2026 s’ouvre à Erevan",
+          "url": "https://armenieinfo.tv/lexposition-armenia-expo-2026-souvre-a-erevan/",
+          "date": "2026-09-05T15:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788575535-9579.jpg"
+        },
         {
           "title": "Figure arménienne — Mort du gymnaste Albert Azaryan",
           "url": "https://armenieinfo.tv/ce-jour-dans-lhistoire-armenienne-2026-09-05/",
@@ -2857,12 +2863,6 @@
           "url": "https://armenieinfo.tv/la-cour-dappel-de-bakou-examine-les-recours-des-prisonniers-armeniens/",
           "date": "2026-07-12T07:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783737105-1425.jpg"
-        },
-        {
-          "title": "La femme de Ruben Vardanyan publie une déclaration sur la visite prévue de la délégation humanitaire internationale à Bakou",
-          "url": "https://armenieinfo.tv/la-femme-de-ruben-vardanyan-publie-une-declaration-sur-la-visite-prevue-de-la-delegation-humanitaire-internationale-a-bakou/",
-          "date": "2026-07-11T10:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1783679575-1114.jpg"
         }
       ]
     },
@@ -2935,6 +2935,12 @@
       "categoryKey": "france",
       "articles": [
         {
+          "title": "Florian Escudié arrive en Arménie et prend ses fonctions d’ambassadeur de France",
+          "url": "https://armenieinfo.tv/florian-escudie-arrive-en-armenie-et-prend-ses-fonctions-dambassadeur-de-france/",
+          "date": "2026-09-05T08:56:53.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-10-1.png"
+        },
+        {
           "title": "La France salue le premier anniversaire de l’accord de paix entre l’Arménie et l’Azerbaïdjan",
           "url": "https://armenieinfo.tv/la-france-salue-le-premier-anniversaire-de-laccord-de-paix-entre-larmenie-et-lazerbaidjan/",
           "date": "2026-08-09T06:43:05.000Z",
@@ -2994,6 +3000,18 @@
       "categoryKey": "geopolitique",
       "articles": [
         {
+          "title": "Pachinian affirme que la base militaire russe n’est pas une ‘nécessité vitale’ pour l’Arménie",
+          "url": "https://armenieinfo.tv/pachinian-affirme-que-la-base-militaire-russe-nest-pas-une-necessite-vitale-pour-larmenie/",
+          "date": "2026-09-04T12:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788489322-5296.jpg"
+        },
+        {
+          "title": "L’UE se rapproche de l’assouplissement des importations arméniennes face aux restrictions russes",
+          "url": "https://armenieinfo.tv/lue-se-rapproche-de-lassouplissement-des-importations-armeniennes-face-aux-restrictions-russes/",
+          "date": "2026-09-04T10:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1788489334-5382.jpg"
+        },
+        {
           "title": "Le résultat d’un référendum sur le choix entre l’UE et l’UEE pourrait décevoir la Russie, selon Simonyan",
           "url": "https://armenieinfo.tv/le-resultat-dun-referendum-sur-le-choix-entre-lue-et-luee-pourrait-decevoir-la-russie-selon-simonyan/",
           "date": "2026-08-27T06:00:00.000Z",
@@ -3046,6 +3064,12 @@
     {
       "categoryKey": "politique",
       "articles": [
+        {
+          "title": "Ordre des faits de 2022 : un article dénonce une réécriture russe de la chronologie",
+          "url": "https://armenieinfo.tv/mer-oughin-34668/",
+          "date": "2026-09-04T08:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/mer-oughin-34668.jpg"
+        },
         {
           "title": "Raffi Artalcian : la vitalité politique arménienne se réduit aux luttes internes",
           "url": "https://armenieinfo.tv/mer-oughin-34622/",
@@ -3625,70 +3649,112 @@
         "categoryKey": "armenia",
         "articles": [
           {
-            "title": "Pashinyan: My conclusions about revolution change every week since 2018",
-            "url": "https://armenpress.am/en/article/1259775",
-            "date": "2026-09-05T13:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/8keNpmKZtwvFRfPvWyYF7ptsYfCGL2ksQ7nYjBd4.webp"
+            "title": "Oxford AI and media expert Dr. Alex Connock among key speakers at Armenia–UK Business Forum 2026",
+            "url": "https://armenpress.am/en/article/1259852",
+            "date": "2026-09-07T11:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/ygGDwwCcLcj21mR0DgvV8J7g8sWjfxmd8WAbPiYc.webp"
           },
           {
-            "title": "ICRC programs boost agricultural activity in Syunik’s Srashen village",
-            "url": "https://armenpress.am/en/article/1259772",
-            "date": "2026-09-05T12:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/5sf5iZb9JcDXXacOyBkPIJkrjm6cpexrNCQ16e6m.webp"
+            "title": "Economy Minister, World Bank vice president discuss digitalization and AI cooperation",
+            "url": "https://armenpress.am/en/article/1259851",
+            "date": "2026-09-07T11:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/tyWUn6xTGbWPHa8KUMl5dzBHLG6ZZVswOXQqQZ0j.webp"
           },
           {
-            "title": "ICRC programs support border communities in Syunik",
-            "url": "https://armenpress.am/en/article/1259769",
-            "date": "2026-09-05T12:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/GQd1pWSOZxIJqjUO4gfSwqT7vfcctxk7lu4LCRUR.webp"
+            "title": "Pashinyan bids farewell to outgoing Greek ambassador",
+            "url": "https://armenpress.am/en/article/1259849",
+            "date": "2026-09-07T11:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/sSL83a1H0BMfcGFVcleSLKZdpKdXUSYMgO3ajbz9.webp"
           },
           {
-            "title": "Rights of foreign nationals and asylum seekers addressed at Abovyan Penitentiary",
-            "url": "https://armenpress.am/en/article/1259770",
-            "date": "2026-09-05T12:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/OS67AcaNsyvzvTOS8GAjlfTUR4UgWC4lF4M4UTuR.webp"
+            "title": "Kremlin reveals agenda of upcoming Pashinyan-Putin meeting",
+            "url": "https://armenpress.am/en/article/1259848",
+            "date": "2026-09-07T11:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/KvEmhVfSINOsDYdzwHYhZI3wdsexhP6efRAfOWRU.webp"
           },
           {
-            "title": "Tour EXPO 2026 opens at Yerevan railway station",
-            "url": "https://armenpress.am/en/article/1259766",
-            "date": "2026-09-05T11:20:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/QYFzALikzGvYb0C0SAnUSa5buaBPyZ2aiApSZCjI.webp"
+            "title": "Sports minister meets tennis stars Avanesyan and Charaeva",
+            "url": "https://armenpress.am/en/article/1259847",
+            "date": "2026-09-07T11:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/g0vjCr033YW5HmgvA9BRWnwR3047dx3X4AMNrvLa.webp"
           },
           {
-            "title": "Pashinyan has clear public mandate to establish peace with Azerbaijan: spox tells WSJ",
-            "url": "https://armenpress.am/en/article/1259765",
-            "date": "2026-09-05T11:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/eCZF2FBJYNpUaRSwyzXi8EPlTaFZnZiAocok2iiv.webp"
+            "title": "Deputy Speaker Vardevanyan holds meeting with Swiss ambassador",
+            "url": "https://armenpress.am/en/article/1259843",
+            "date": "2026-09-07T10:42:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/7PJXoCUiHksSFCNT0pYCpU1lcUtvs5EHUJeOseDk.webp"
           },
           {
-            "title": "France names new ambassador to Armenia",
-            "url": "https://armenpress.am/en/article/1259763",
-            "date": "2026-09-05T10:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/AHlDpUVylddkyo4o0APY6RibDDTO8j2fmqYeBOrm.webp"
+            "title": "Registration open for Investment and Financial Forum of Armenia 2026",
+            "url": "https://armenpress.am/en/article/1259839",
+            "date": "2026-09-07T10:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/AChrxjgvTHNGbqhsrxFs4mIkA6W8coRfwNKG9lyf.webp"
           },
           {
-            "title": "ICRC support upgrades Kapan Medical Center",
-            "url": "https://armenpress.am/en/article/1259758",
-            "date": "2026-09-05T10:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/a8z2borQ3VfiwPKUQkPvYhA8czqsbu5L5aUzjkPc.webp"
+            "title": "Armenian economy minister attends opening of 15th AIM Congress in Dubai",
+            "url": "https://armenpress.am/en/article/1259838",
+            "date": "2026-09-07T10:01:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FlDlc9ZNf7YNFMohzaWkb1s1yBU6Z92C759h8VwR.webp"
           },
           {
-            "title": "Municipal consolidation boosts activity around Kapan, says local official",
-            "url": "https://armenpress.am/en/article/1259754",
-            "date": "2026-09-05T09:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/gLSwt3iJBbTqMXljur0lmki2n9ypPE0XbGRAbJGP.webp"
+            "title": "PM appoints new Deputy Finance Minister",
+            "url": "https://armenpress.am/en/article/1259836",
+            "date": "2026-09-07T09:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/MKKSuJgdZ5xhrqsEDOFSjq6dzc3hdtbpQ22mwaKc.webp"
           },
           {
-            "title": "Armenia stresses importance of expanding friendship-based ties with Ukraine: minister",
-            "url": "https://armenpress.am/en/article/1259756",
-            "date": "2026-09-05T09:29:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/V85qvivCGGdQNWhs8UB8eU1PfmY9dES5ioYLYror.webp"
+            "title": "Deputy Speaker, Swiss ambassador discuss Armenia-EU ties",
+            "url": "https://armenpress.am/en/article/1259833",
+            "date": "2026-09-07T09:35:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/nLnwztaUxKTrNnXB8u6tQwkgrk8slOuUoIS8vbck.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Oxford AI and media expert Dr. Alex Connock among key speakers at Armenia–UK Business Forum 2026",
+            "url": "https://armenpress.am/en/article/1259852",
+            "date": "2026-09-07T11:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/ygGDwwCcLcj21mR0DgvV8J7g8sWjfxmd8WAbPiYc.webp"
+          },
+          {
+            "title": "Economy Minister, World Bank vice president discuss digitalization and AI cooperation",
+            "url": "https://armenpress.am/en/article/1259851",
+            "date": "2026-09-07T11:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/tyWUn6xTGbWPHa8KUMl5dzBHLG6ZZVswOXQqQZ0j.webp"
+          },
+          {
+            "title": "Registration open for Investment and Financial Forum of Armenia 2026",
+            "url": "https://armenpress.am/en/article/1259839",
+            "date": "2026-09-07T10:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/AChrxjgvTHNGbqhsrxFs4mIkA6W8coRfwNKG9lyf.webp"
+          },
+          {
+            "title": "Armenian economy minister attends opening of 15th AIM Congress in Dubai",
+            "url": "https://armenpress.am/en/article/1259838",
+            "date": "2026-09-07T10:01:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FlDlc9ZNf7YNFMohzaWkb1s1yBU6Z92C759h8VwR.webp"
+          },
+          {
+            "title": "PM appoints new Deputy Finance Minister",
+            "url": "https://armenpress.am/en/article/1259836",
+            "date": "2026-09-07T09:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/MKKSuJgdZ5xhrqsEDOFSjq6dzc3hdtbpQ22mwaKc.webp"
+          },
+          {
+            "title": "Armenia to crack down on unlicensed online gambling",
+            "url": "https://armenpress.am/en/article/1259819",
+            "date": "2026-09-07T07:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/hq48VSPHTVaImTd65oN9uiebvsJVqICNUbhBEhVq.webp"
+          },
+          {
+            "title": "Border crossing points connect peoples and economies, Armenian and Turkish business groups say in joint statement",
+            "url": "https://armenpress.am/en/article/1259816",
+            "date": "2026-09-07T07:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/anZWkfftbgM3wQZaMHLyw3tNvdyBz5aKrnI7V6em.webp"
+          },
           {
             "title": "Armenia, Czech Republic discuss cooperation in transport, energy",
             "url": "https://armenpress.am/en/article/1259755",
@@ -3706,54 +3772,24 @@
             "url": "https://armenpress.am/en/article/1259748",
             "date": "2026-09-05T07:04:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "NYMEX: Precious Metals Prices - 04-09-26",
-            "url": "https://armenpress.am/en/article/1259747",
-            "date": "2026-09-05T07:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/12/kkqTy9SChWnbdXQtqUQgAiTncXFJxavjWiN6Ejx1.webp"
-          },
-          {
-            "title": "Oil Prices Down - 04-09-26",
-            "url": "https://armenpress.am/en/article/1259746",
-            "date": "2026-09-05T07:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/21/Ych30hsTxBwO1p1mhjodWm4sgEMQevU7gK6xYbXh.webp"
-          },
-          {
-            "title": "Armenia Expo-2026 international exhibition opens in Yerevan",
-            "url": "https://armenpress.am/en/article/1259729",
-            "date": "2026-09-04T14:08:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/YtVWY2pN9Z0UyWXmEjrLM71rbwbgMO5cZu4Z5fd5.webp"
-          },
-          {
-            "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 04-09-26",
-            "url": "https://armenpress.am/en/article/1259724",
-            "date": "2026-09-04T13:12:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/0lhZzWhEbAxBszcVdmWPAdvtz3PnvWfcs51fFVAi.webp"
-          },
-          {
-            "title": "Asian Stocks up - 04-09-26",
-            "url": "https://armenpress.am/en/article/1259723",
-            "date": "2026-09-04T13:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/03/61pYKBhqn2F9A7NbBJMY0idkDnydsvpFIzm0vszp.webp"
-          },
-          {
-            "title": "EU Parliament committee approves trade liberalization measures for Armenian products",
-            "url": "https://armenpress.am/en/article/1259703",
-            "date": "2026-09-04T10:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/Gn2WCakSc51UJit0NqjalaSiflRFWAq44PJgQ0Hb.webp"
-          },
-          {
-            "title": "Armenian NPP back on power grid after maintenance",
-            "url": "https://armenpress.am/en/article/1259673",
-            "date": "2026-09-04T07:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/TrtoozR2nZO3VT2CRyJOcg4947uZ98rXQS6NWobL.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "Iran to declare ‘restricted’ maritime zone beyond Strait of Hormuz",
+            "url": "https://armenpress.am/en/article/1259806",
+            "date": "2026-09-07T06:43:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/puJYb46cEmQxJ6ReZZcFW4uT0Wv1FPeUqe5EqSlS.webp"
+          },
+          {
+            "title": "5 dead, 5 injured after Amazon cargo aircraft overruns runway in Miami",
+            "url": "https://armenpress.am/en/article/1259799",
+            "date": "2026-09-07T05:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/A6IvOPdGOY45ebMtZuVEk3MoJdQdxA5pEmjytgBD.webp"
+          },
           {
             "title": "Seven Indonesian airports remain shut due to volcanic ash",
             "url": "https://armenpress.am/en/article/1259798",
@@ -3801,18 +3837,6 @@
             "url": "https://armenpress.am/en/article/1259726",
             "date": "2026-09-04T14:07:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/04/Jn6v3C9JLphsJ80j7BwixOV9t7HPJCJ2BYKHM7Er.webp"
-          },
-          {
-            "title": "Yemeni government forces lose territory in clashes with Houthis",
-            "url": "https://armenpress.am/en/article/1259722",
-            "date": "2026-09-04T13:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/FCF3Un7rZE4HTH4Tot7iqD1kjvpH2BaqyYWhzxtj.webp"
-          },
-          {
-            "title": "US diesel prices hit record high",
-            "url": "https://armenpress.am/en/article/1259716",
-            "date": "2026-09-04T12:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/TmfG66OyvUk6aBkcRTu4LoowyyRk5wTkOdIGH0KJ.webp"
           }
         ]
       },
@@ -3885,6 +3909,24 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "Sports minister meets tennis stars Avanesyan and Charaeva",
+            "url": "https://armenpress.am/en/article/1259847",
+            "date": "2026-09-07T11:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/g0vjCr033YW5HmgvA9BRWnwR3047dx3X4AMNrvLa.webp"
+          },
+          {
+            "title": "Olympic champion Samuel Sánchez named Tour of Armenia ambassador",
+            "url": "https://armenpress.am/en/article/1259832",
+            "date": "2026-09-07T09:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/CSUHhuwJwuo6N9M6L3vm6QojemEkBUscKvofqb4i.webp"
+          },
+          {
+            "title": "Ararat-Armenia–Sparta Praha match tickets now on sale",
+            "url": "https://armenpress.am/en/article/1259801",
+            "date": "2026-09-07T06:11:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FMTQvbHoMaQFdVfGMSmQJ7fBlXLlFHYbrpcGoovz.webp"
+          },
+          {
             "title": "Armenia's Maral Artin joins Saudi club Al-Hmmah",
             "url": "https://armenpress.am/en/article/1259709",
             "date": "2026-09-04T11:56:00.000Z",
@@ -3925,24 +3967,6 @@
             "url": "https://armenpress.am/en/article/1259201",
             "date": "2026-08-29T10:47:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/29/rmysluRZgcBcv9tAS6oXlcCzhslvDcreaiD2iHnJ.webp"
-          },
-          {
-            "title": "Ararat-Armenia’s Europa League opponents revealed",
-            "url": "https://armenpress.am/en/article/1259137",
-            "date": "2026-08-28T11:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/28/gs7J4EgUgjg55oR6Ss6RDm5sf1fXpHIw7b3LZzsH.webp"
-          },
-          {
-            "title": "Armenian and Georgian football federation delegations meet in Tbilisi",
-            "url": "https://armenpress.am/en/article/1258946",
-            "date": "2026-08-26T14:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/hHz89qwUtSo30oPozCo0ssTDbURUTjaXBggvhXv0.webp"
-          },
-          {
-            "title": "Armenia announces teams for 46th FIDE Chess Olympiad",
-            "url": "https://armenpress.am/en/article/1258927",
-            "date": "2026-08-26T11:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/j4JvNraFpBFFdq6YY4MIWjrnWkvOPqMsErufI3di.webp"
           }
         ]
       },
@@ -4082,70 +4106,112 @@
         "categoryKey": "armenia",
         "articles": [
           {
-            "title": "Հակարիի կամրջի մոտ ադրբեջանցիների՝ իբր առաջ գալու փորձի մասին լուրը իրականությանը չի համապատասխանում",
-            "url": "https://armenpress.am/hy/article/1259795",
-            "date": "2026-09-06T13:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/9ybGsjnwwNDq8o0k9wI73WkCypWXVuXT2y0yoYYA.webp"
+            "title": "Օքսֆորդի ԱԲ և մեդիա ոլորտների փորձագետ դոկտոր, պրոֆեսոր Ալեքս Քոնոքը՝ «Հայաստան- Միացյալ Թագավորություն բիզնես համաժողով 2026»-ի հիմնական խոսնակ",
+            "url": "https://armenpress.am/hy/article/1259852",
+            "date": "2026-09-07T11:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/ygGDwwCcLcj21mR0DgvV8J7g8sWjfxmd8WAbPiYc.webp"
           },
           {
-            "title": "Հայաստանում օդի ջերմաստիճանն առաջիկա օրերին կնվազի 4-7 աստիճանով",
-            "url": "https://armenpress.am/hy/article/1259793",
-            "date": "2026-09-06T12:26:30.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/8IUdmdYTqcFgmprqdYzm25iKiBqZAcPeURUaVO8K.webp"
+            "title": "Գևորգ Պապոյանն ու Համաշխարհային բանկի փոխնախագահը քննարկել են թվայնացման և ԱԲ ոլորտներում համագործակցության հնարավորությունները",
+            "url": "https://armenpress.am/hy/article/1259851",
+            "date": "2026-09-07T11:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/tyWUn6xTGbWPHa8KUMl5dzBHLG6ZZVswOXQqQZ0j.webp"
           },
           {
-            "title": "Թալին-Քարակերտ հանրապետական նշանակության ավտոճանապարհն ասֆալտապատվում է",
-            "url": "https://armenpress.am/hy/article/1259792",
-            "date": "2026-09-06T11:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/w1qHiQ9BZe7YBjsRXgKFeH2lRw4IAnrDzqs4Qa9B.webp"
+            "title": "ՀՀ վարչապետը հրաժեշտի հանդիպում է ունեցել Հունաստանի դեսպանի հետ",
+            "url": "https://armenpress.am/hy/article/1259849",
+            "date": "2026-09-07T11:14:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/sSL83a1H0BMfcGFVcleSLKZdpKdXUSYMgO3ajbz9.webp"
           },
           {
-            "title": "Նիկոլ Փաշինյանը պատարագի է մասնակցել Արտաշատի Սուրբ Հովհաննես եկեղեցում",
-            "url": "https://armenpress.am/hy/article/1259791",
-            "date": "2026-09-06T09:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/CKYpn7DAncxj6lw1tkO4PDIpCP5fncPhtqlHjUep.webp"
+            "title": "Պեսկովը բացահայտել է, թե որն է լինելու Փաշինյան-Պուտին առաջիկա հանդիպման օրակարգի հիմնական թեման",
+            "url": "https://armenpress.am/hy/article/1259848",
+            "date": "2026-09-07T11:05:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/KvEmhVfSINOsDYdzwHYhZI3wdsexhP6efRAfOWRU.webp"
           },
           {
-            "title": "Հրշեջ-փրկարարները բազմաբնակարան շենքում կանխել են հրդեհի տարածումը",
-            "url": "https://armenpress.am/hy/article/1259789",
-            "date": "2026-09-06T09:26:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/WbPof7kL14x9wqg13L1V7zFU4nlTZpwXwafEgm1q.webp"
+            "title": "Ժաննա Անդրեասյանն ընդունել է Հայաստանը ներկայացնող թենիսիստներ Էլինա Ավանեսյանին և Ալինա Չարաևային",
+            "url": "https://armenpress.am/hy/article/1259847",
+            "date": "2026-09-07T11:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/g0vjCr033YW5HmgvA9BRWnwR3047dx3X4AMNrvLa.webp"
           },
           {
-            "title": "ԿԽՄԿ-ի աջակցությամբ Վայոց ձորի ԲԿ-ի անհետաձգելի բուժօգնության նոր բաժանմունքը կգործի միջազգային բոլոր չափանիշներին համապատասխան",
-            "url": "https://armenpress.am/hy/article/1259788",
-            "date": "2026-09-06T09:01:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/7fnXg3ZAgQ4AryH9rmPGjyPKC74hdS6zb3iAsMFw.webp"
+            "title": "Որոշվել է երկու ծառայողի նկատմամբ կիրառել «Ծառայության դադարեցում» կարգապահական տույժը. կայացել է ՆԳՆ կարգապահական հանձնաժողովի հերթական նիստը",
+            "url": "https://armenpress.am/hy/article/1259844",
+            "date": "2026-09-07T10:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/iwezqMeCwerF5tY87AdKpOqbRC5RhxlTXXWOBX3U.webp"
           },
           {
-            "title": "Կոռնիձորում հավատում են խաղաղությանը և արդեն մտածում հավակնոտ ծրագրեր իրականացնելու մասին",
-            "url": "https://armenpress.am/hy/article/1259786",
-            "date": "2026-09-06T08:27:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/5bLAqdUQ3D9oPO3HvaOcKLICmOKKB77aumESzSNA.webp"
+            "title": "Արամ Վարդևանյանն ընդունել է Հայաստանում Շվեյցարիայի դեսպանին",
+            "url": "https://armenpress.am/hy/article/1259843",
+            "date": "2026-09-07T10:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/7PJXoCUiHksSFCNT0pYCpU1lcUtvs5EHUJeOseDk.webp"
           },
           {
-            "title": "Շիրակի մարզի Արթիկ համայնքում փորձարկվելու է էլեկտրաշչակ",
-            "url": "https://armenpress.am/hy/article/1259787",
-            "date": "2026-09-06T07:40:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/eqt1uLCDax1vRh732H1cXluQEjpPR7F1nckL6Kk2.webp"
+            "title": "Անահիտ Մանասյանի գլխավորությամբ ՄԻՊ աշխատակազմում տեղի է ունեցել աշխատանքային խորհրդակցություն",
+            "url": "https://armenpress.am/hy/article/1259842",
+            "date": "2026-09-07T10:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/bxYmlhP3RKO6SP7txOIdOc1qfiLpMp8LcMuc24Yp.webp"
           },
           {
-            "title": "Հրշեջ-փրկարարները մարել են Ոսկեվազ գյուղում բռնկված հրդեհը",
-            "url": "https://armenpress.am/hy/article/1259785",
-            "date": "2026-09-06T07:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/iD8d7NXkKAuagP9TPChzlNSL5345QsGr9xvM3X82.webp"
+            "title": "Հայաստանի ներդրումային և ֆինանսական երկրորդ համաժողովի գրանցումը բաց է",
+            "url": "https://armenpress.am/hy/article/1259839",
+            "date": "2026-09-07T10:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/AChrxjgvTHNGbqhsrxFs4mIkA6W8coRfwNKG9lyf.webp"
           },
           {
-            "title": "«Tour of Armenia» միջազգային հեծանվավազքի խորհրդանիշը կլինի եղնիկը",
-            "url": "https://armenpress.am/hy/article/1259781",
-            "date": "2026-09-05T14:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/3B485bJIpsxAnKJPer45wqLQCgCfdLa6fHc22nUk.webp"
+            "title": "Գևորգ Պապոյանը Դուբայում մասնակցել է Ամենամյա ներդրումային համաժողովի բացման արարողությանը",
+            "url": "https://armenpress.am/hy/article/1259838",
+            "date": "2026-09-07T09:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FlDlc9ZNf7YNFMohzaWkb1s1yBU6Z92C759h8VwR.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Օքսֆորդի ԱԲ և մեդիա ոլորտների փորձագետ դոկտոր, պրոֆեսոր Ալեքս Քոնոքը՝ «Հայաստան- Միացյալ Թագավորություն բիզնես համաժողով 2026»-ի հիմնական խոսնակ",
+            "url": "https://armenpress.am/hy/article/1259852",
+            "date": "2026-09-07T11:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/ygGDwwCcLcj21mR0DgvV8J7g8sWjfxmd8WAbPiYc.webp"
+          },
+          {
+            "title": "Գևորգ Պապոյանն ու Համաշխարհային բանկի փոխնախագահը քննարկել են թվայնացման և ԱԲ ոլորտներում համագործակցության հնարավորությունները",
+            "url": "https://armenpress.am/hy/article/1259851",
+            "date": "2026-09-07T11:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/tyWUn6xTGbWPHa8KUMl5dzBHLG6ZZVswOXQqQZ0j.webp"
+          },
+          {
+            "title": "Հայաստանի ներդրումային և ֆինանսական երկրորդ համաժողովի գրանցումը բաց է",
+            "url": "https://armenpress.am/hy/article/1259839",
+            "date": "2026-09-07T10:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/AChrxjgvTHNGbqhsrxFs4mIkA6W8coRfwNKG9lyf.webp"
+          },
+          {
+            "title": "Գևորգ Պապոյանը Դուբայում մասնակցել է Ամենամյա ներդրումային համաժողովի բացման արարողությանը",
+            "url": "https://armenpress.am/hy/article/1259838",
+            "date": "2026-09-07T09:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FlDlc9ZNf7YNFMohzaWkb1s1yBU6Z92C759h8VwR.webp"
+          },
+          {
+            "title": "Համլետ Սահակյանն ազատվել է ՊԵԿ փոխնախագահի պաշտոնից և նշանակվել ֆինանսների նախարարի տեղակալ",
+            "url": "https://armenpress.am/hy/article/1259836",
+            "date": "2026-09-07T09:49:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/MKKSuJgdZ5xhrqsEDOFSjq6dzc3hdtbpQ22mwaKc.webp"
+          },
+          {
+            "title": "Չլիցենզավորված առցանց խաղային գործունեության նկատմամբ պետական վերահսկողությունը կուժեղանա. ՊԵԿ",
+            "url": "https://armenpress.am/hy/article/1259819",
+            "date": "2026-09-07T07:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/hq48VSPHTVaImTd65oN9uiebvsJVqICNUbhBEhVq.webp"
+          },
+          {
+            "title": "Սահմանային անցակետերը կապում են ժողովուրդներին ու տնտեսությունները. Հայաստանի ԱԳՄ-ն ու Վանի առևտրաարդյունաբերական պալատը հայտարարություն են տարածել",
+            "url": "https://armenpress.am/hy/article/1259816",
+            "date": "2026-09-07T07:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/anZWkfftbgM3wQZaMHLyw3tNvdyBz5aKrnI7V6em.webp"
+          },
           {
             "title": "Հայաստանն ու Չեխիան քննարկում են Երևանի մետրոյի և ատոմակայանի օգտագործված վառելիքի հետ կապված ծրագրեր․ Խաչատուրյան",
             "url": "https://armenpress.am/hy/article/1259755",
@@ -4163,48 +4229,6 @@
             "url": "https://armenpress.am/hy/article/1259748",
             "date": "2026-09-05T07:04:49.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "NYMEX. Թանկարժեք մետաղների գներ - 04/09/26",
-            "url": "https://armenpress.am/hy/article/1259747",
-            "date": "2026-09-05T07:03:32.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/12/kkqTy9SChWnbdXQtqUQgAiTncXFJxavjWiN6Ejx1.webp"
-          },
-          {
-            "title": "Նավթի գները նվազել են - 04/09/26",
-            "url": "https://armenpress.am/hy/article/1259746",
-            "date": "2026-09-05T07:02:10.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/21/Ych30hsTxBwO1p1mhjodWm4sgEMQevU7gK6xYbXh.webp"
-          },
-          {
-            "title": "Երևանում մեկնարկել է «Armenia Expo-2026» միջազգային ցուցահանդեսը",
-            "url": "https://armenpress.am/hy/article/1259729",
-            "date": "2026-09-04T14:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/YtVWY2pN9Z0UyWXmEjrLM71rbwbgMO5cZu4Z5fd5.webp"
-          },
-          {
-            "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ-04/09/26",
-            "url": "https://armenpress.am/hy/article/1259724",
-            "date": "2026-09-04T13:12:24.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/0lhZzWhEbAxBszcVdmWPAdvtz3PnvWfcs51fFVAi.webp"
-          },
-          {
-            "title": "Ասիական ինդեքսներն աճել են - 04/09/26",
-            "url": "https://armenpress.am/hy/article/1259723",
-            "date": "2026-09-04T13:10:12.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/03/61pYKBhqn2F9A7NbBJMY0idkDnydsvpFIzm0vszp.webp"
-          },
-          {
-            "title": "Եվրախորհրդարանի միջազգային առևտրի հանձնաժողովը հավանություն է տվել Հայաստանի համար մաքսատուրքերի ժամանակավոր վերացմանը",
-            "url": "https://armenpress.am/hy/article/1259703",
-            "date": "2026-09-04T10:55:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/Gn2WCakSc51UJit0NqjalaSiflRFWAq44PJgQ0Hb.webp"
-          },
-          {
-            "title": "ՀԱԷԿ-ի երկրորդ էներգաբլոկը պլանային վերանորոգման աշխատանքներից հետո միացվել է ՀՀ միասնական էներգահամակարգին",
-            "url": "https://armenpress.am/hy/article/1259673",
-            "date": "2026-09-04T07:07:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/TrtoozR2nZO3VT2CRyJOcg4947uZ98rXQS6NWobL.webp"
           }
         ]
       },
@@ -4212,70 +4236,76 @@
         "categoryKey": "world",
         "articles": [
           {
-            "title": "Մայամիի օդանավակայանում Amazon-ի բեռնատար ինքնաթիռը վթարային վայրէջք է կատարել. կան զոհեր և վիրավորներ",
-            "url": "https://armenpress.am/hy/article/1259799",
-            "date": "2026-09-07T05:40:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/A6IvOPdGOY45ebMtZuVEk3MoJdQdxA5pEmjytgBD.webp"
+            "title": "Ուիթքոֆի և Քուշների մասնակցությամբ բանակցությունները «քայլ են դեպի խաղաղություն». Կրեմլ",
+            "url": "https://armenpress.am/hy/article/1259850",
+            "date": "2026-09-07T11:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/8P3EjnxFh17NNqbZMoPxYrCWSANB8T5HzOBMvn9z.webp"
           },
           {
-            "title": "Ինդոնեզիայում յոթ օդանավակայան է փակվել հրաբխային մոխրի տարածման պատճառով",
-            "url": "https://armenpress.am/hy/article/1259798",
-            "date": "2026-09-07T05:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/rwMjqjv4fyeRk4M4vds3arGaHCOrLmAH1SIgQ8BQ.webp"
+            "title": "Իրանը սպառնացել է թիրախավորել ամերիկյան նավթային ընկերություններն իր օբյեկտներին հարվածելու դեպքում",
+            "url": "https://armenpress.am/hy/article/1259846",
+            "date": "2026-09-07T10:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/vvClJ6oT3fb1mwSgIagvR4QEK8cU2g7cXgTDrZSt.webp"
           },
           {
-            "title": "Հյուսիսային Կորեայի առաջնորդը ներկայացրել է «Կանգ Կոն» նոր կործանիչը",
-            "url": "https://armenpress.am/hy/article/1259797",
-            "date": "2026-09-07T05:08:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/EjA8hLYRiBPBbIf2XvJNeqnQyGUwZjRTC5aE0Xst.webp"
+            "title": "Իրանը բացատրել է ԱԷՄԳ-ի տեսուչների՝ միջուկային օբյեկտներ մուտքի սահմանափակումը",
+            "url": "https://armenpress.am/hy/article/1259845",
+            "date": "2026-09-07T10:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/A7X394vAIFEUaRaZIYq0XVxMGK6zGIGGKRdlBaWR.webp"
           },
           {
-            "title": "ԱՄՆ նախագահի բանագնացները դրական են գնահատել ուկրաինական պատերազմի հարցով մոսկովյան բանակցությունները",
-            "url": "https://armenpress.am/hy/article/1259796",
-            "date": "2026-09-07T04:54:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/WtADK5rd6cckhpE2gluK86fsdJcH8cXlzngehNUk.webp"
+            "title": "ՄԱԿ-ի մարդու իրավունքների գերագույն հանձնակատարը նախազգուշացրել է ԱԲ-ի սպառնալիքների մասին",
+            "url": "https://armenpress.am/hy/article/1259840",
+            "date": "2026-09-07T10:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FW9L52OISFkVurfKNJ8vcQmNS5asXEs4dqqrbdEH.webp"
           },
           {
-            "title": "ԱՄՆ-ն կոչնչացնի Իրանի նավթային տանկերները, եթե այդ երկիրը շարունակի հարվածել ամերիկյան նավերին․ Փիթ Հեգսեթ",
-            "url": "https://armenpress.am/hy/article/1259790",
-            "date": "2026-09-06T09:44:40.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/b1CSN8WURHQUmodxQJ859doQPW0rNGEYK6cm2L5N.webp"
+            "title": "Իրանը մտադիր է մասնակցել ՄԱԿ-ի Գլխավոր ասամբլեային",
+            "url": "https://armenpress.am/hy/article/1259841",
+            "date": "2026-09-07T10:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/DLDBX14M40XogAI29sy4i7tr2PKECVxbVcXraMsP.webp"
           },
           {
-            "title": "Հյուսիսային Եմենում սպանվել է հութիների՝ իրանցի և լիբանանցի ռազմական չորս խորհրդական",
-            "url": "https://armenpress.am/hy/article/1259780",
-            "date": "2026-09-05T13:59:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/TvdXZV9LMrY39ogshXa7RyDdj7X6jYqzoJZS6pBt.webp"
+            "title": "Իրանը պատվիրակություն է ուղարկել Կատար անհետացած իրանցի օդաչուների ճակատագիրը պարզելու համար",
+            "url": "https://armenpress.am/hy/article/1259837",
+            "date": "2026-09-07T09:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/Wv7aqs6zat1YaErfPpYU6Ptt8Wby66OSCjR8E2F7.webp"
           },
           {
-            "title": "Հունաստանում ավիաշոուի ժամանակ F-4 Phantom կործանիչ է կործանվել",
-            "url": "https://armenpress.am/hy/article/1259778",
-            "date": "2026-09-05T13:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/QVLBVkL1ntGdwO9OoT3gVXVBhAjpSDw6YX1NXeYi.webp"
+            "title": "Կաբարդինո Բալկարիայում ձնահյուսի տակ զոհված լեռնագնացների թիվը հասել է 11-ի",
+            "url": "https://armenpress.am/hy/article/1259835",
+            "date": "2026-09-07T09:46:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/oabBhX03zr5Qvo5XAh98wWNFpD95yhZpcV0lguja.webp"
           },
           {
-            "title": "Հաքերները հրապարակել են Բեռլինի պետական կառույցներից գողացված շուրջ 1,4 միլիոն ֆայլ",
-            "url": "https://armenpress.am/hy/article/1259777",
-            "date": "2026-09-05T13:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/kvr9m8GTIrJESObL8V8ufTEAjhW6hhHT3NYM2sUb.webp"
+            "title": "ԱՄԷ-ն Իրանի հարձակումներից հետո կառուցում է առևտրային և էներգետիկ այլընտրանքային ուղիներ",
+            "url": "https://armenpress.am/hy/article/1259831",
+            "date": "2026-09-07T09:14:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/qqqjJu8Od93jsIMfATccOcqOlk8RsPO0VWQdLtBb.webp"
           },
           {
-            "title": "ՄԱԿ-ը հավանություն է տվել Աֆրիկայի իրական չափերն արտացոլող աշխարհի քարտեզի կիրառմանը",
-            "url": "https://armenpress.am/hy/article/1259776",
-            "date": "2026-09-05T13:17:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/GWM1XD1ObvPIHUlu8qFgarxyl1W5vCvwYHfGGuuK.webp"
+            "title": "Իրանը Հարավային Կորեային կոչ է արել մեղսակից չդառնալ ԱՄՆ-ի գործողություններին",
+            "url": "https://armenpress.am/hy/article/1259828",
+            "date": "2026-09-07T09:05:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/aO2Z7KUAk9huEcs49XBtKUeMa0ww3S6bPs6yGZl8.webp"
           },
           {
-            "title": "Պուտինը հանձնարարել է երեք օր հարվածներ չհասցնել Կիևին․ Ուկրաինան ևս դադարեցրել է օդային հարվածները",
-            "url": "https://armenpress.am/hy/article/1259774",
-            "date": "2026-09-05T12:35:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/nv0E6bJLac55F9ofwNChM2mroVXzebEvPmh1xehb.webp"
+            "title": "Նեպալում սողանքի զոհերի թիվը հասել է 1355-ի",
+            "url": "https://armenpress.am/hy/article/1259829",
+            "date": "2026-09-07T09:04:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/pDDhLxM5RPTwe9MdDKtPeLu4uW19hgMyuYh78AGw.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Մոսկվայի «Տապան» թանգարանում տեղի է ունեցել հոգևոր երգեցողության փառատոն",
+            "url": "https://armenpress.am/hy/article/1259824",
+            "date": "2026-09-07T07:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/DOXUuxjJxIsw6DBvOBp5XlFQlw8gqAgf0W1WQyEq.webp"
+          },
           {
             "title": "Ինչ է մնում, երբ հիշողությունները սկսում են խամրել․ երևանյան բեմ կբարձրանա «Քանի չեմ մոռացել» պարային ներկայացումը",
             "url": "https://armenpress.am/hy/article/1259773",
@@ -4329,18 +4359,30 @@
             "url": "https://armenpress.am/hy/article/1259359",
             "date": "2026-09-01T09:11:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/01/0rWRur2LfORcQPkFES6qE6JopbtanIIr8FbRBSm9.webp"
-          },
-          {
-            "title": "Դասական երաժշտություն և պատմական շունչ. Գյումրիում կանցկացվի «Երեկոն թանգարանում» բացառիկ միջոցառումը",
-            "url": "https://armenpress.am/hy/article/1259348",
-            "date": "2026-09-01T07:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/01/VPRHrjyyrYVMfE6gFAyMWeC7T2p8BiBXdusqR1mZ.webp"
           }
         ]
       },
       {
         "categoryKey": "sports",
         "articles": [
+          {
+            "title": "Ժաննա Անդրեասյանն ընդունել է Հայաստանը ներկայացնող թենիսիստներ Էլինա Ավանեսյանին և Ալինա Չարաևային",
+            "url": "https://armenpress.am/hy/article/1259847",
+            "date": "2026-09-07T11:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/g0vjCr033YW5HmgvA9BRWnwR3047dx3X4AMNrvLa.webp"
+          },
+          {
+            "title": "Հեծանվասպորտի օլիմպիական չեմպիոն Սամուել Սանչեսը կժամանի Հայաստան՝ որպես «Tour of Armenia 2026»-ի պաշտոնական դեսպան",
+            "url": "https://armenpress.am/hy/article/1259832",
+            "date": "2026-09-07T09:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/CSUHhuwJwuo6N9M6L3vm6QojemEkBUscKvofqb4i.webp"
+          },
+          {
+            "title": "«Արարատ-Արմենիա»-«Սպարտա Պրահա» խաղի տոմսերի վաճառքը մեկնարկել է",
+            "url": "https://armenpress.am/hy/article/1259801",
+            "date": "2026-09-07T06:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FMTQvbHoMaQFdVfGMSmQJ7fBlXLlFHYbrpcGoovz.webp"
+          },
           {
             "title": "«Օլիմպիակոս»-ը չպահպանեց հաղթական հաշիվը. Տիկնիզյանը չմասնակցեց խաղին",
             "url": "https://armenpress.am/hy/article/1259784",
@@ -4382,24 +4424,6 @@
             "url": "https://armenpress.am/hy/article/1259550",
             "date": "2026-09-03T07:44:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/03/1ivp0MhgdsNfu1QrH5ZtNViB4DiGQi6RJDNKlUO6.webp"
-          },
-          {
-            "title": "Արգենտինայում հաջորդ տուրի ֆուտբոլային բոլոր խաղերը 1 րոպեով կընդհատվեն՝ ի պատիվ Մեսիի",
-            "url": "https://armenpress.am/hy/article/1259548",
-            "date": "2026-09-03T07:37:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/03/qYX75vwmb4RYBujeHFWJ9X1oZCtuwPxwaMf7Vtgd.webp"
-          },
-          {
-            "title": "Էդգար Սևիկյանը վարձավճարով հանդես կգա իսպանական ակումբում",
-            "url": "https://armenpress.am/hy/article/1259434",
-            "date": "2026-09-02T05:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/02/ONhcpjIn116QkGJAvlx0zkuhF3c53lxfH2XSFvDB.webp"
-          },
-          {
-            "title": "Կառլեն Հովհաննիսյանը տեղափոխվում է ռուսական «Ակրոն»",
-            "url": "https://armenpress.am/hy/article/1259420",
-            "date": "2026-09-01T15:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/01/q2a4fG8abU3CRHbgZQDph78oaKqGoCIeVqtbEz2q.webp"
           }
         ]
       },
@@ -4472,6 +4496,12 @@
         "categoryKey": "projects",
         "articles": [
           {
+            "title": "«Նոր գիրք»-33/26. Հերբերթ, Մակդոնալդ, Ռիզով",
+            "url": "https://armenpress.am/hy/article/1259804",
+            "date": "2026-09-07T06:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/6ON8UgfSOAwNPGTwie7fVFUH6K2iMgpkYXnAQCYl.webp"
+          },
+          {
             "title": "«Երևանյան բեսթսելեր». «Իկիգայ» գիրքն՝ առաջատար. փաստավավերագրական, հուլիս, 2026",
             "url": "https://armenpress.am/hy/article/1259655",
             "date": "2026-09-04T06:01:00.000Z",
@@ -4524,12 +4554,6 @@
             "url": "https://armenpress.am/hy/article/1257881",
             "date": "2026-08-14T05:42:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/13/9jdxp7FQt62eMVPWkUEs1XhZUnBI52J7z69QjY5o.webp"
-          },
-          {
-            "title": "Աիդա Կազարյան. հայկական արմատները գեղանկարչության մեջ",
-            "url": "https://armenpress.am/hy/article/1257889",
-            "date": "2026-08-13T08:01:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/13/nS6DfLyU5S1j1CYnbOO98AVouctUI9hKZ5SYcIHO.webp"
           }
         ]
       }
@@ -4539,70 +4563,106 @@
         "categoryKey": "armenia",
         "articles": [
           {
-            "title": "Информация о якобы попытке азербайджанцев продвинуться у моста Хакари не соответствует действительности",
-            "url": "https://armenpress.am/ru/article/1259795",
-            "date": "2026-09-06T14:19:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/9ybGsjnwwNDq8o0k9wI73WkCypWXVuXT2y0yoYYA.webp"
+            "title": "Эксперт Оксфордского университета по искусственному интеллекту и медиа Алекс Коннок выступит на Армяно-британском бизнес-форуме 2026",
+            "url": "https://armenpress.am/ru/article/1259852",
+            "date": "2026-09-07T11:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/ygGDwwCcLcj21mR0DgvV8J7g8sWjfxmd8WAbPiYc.webp"
           },
           {
-            "title": "Температура воздуха в Армении в ближайшие дни понизится на 4-7 градусов",
-            "url": "https://armenpress.am/ru/article/1259793",
-            "date": "2026-09-06T13:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/8IUdmdYTqcFgmprqdYzm25iKiBqZAcPeURUaVO8K.webp"
+            "title": "Геворг Папоян и вице-президент Всемирного банка обсудили возможности сотрудничества в области цифровизации и искусственного интеллекта",
+            "url": "https://armenpress.am/ru/article/1259851",
+            "date": "2026-09-07T11:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/tyWUn6xTGbWPHa8KUMl5dzBHLG6ZZVswOXQqQZ0j.webp"
           },
           {
-            "title": "Никол Пашинян присутствовал на богослужении в церкви Сурб Ованнес в Арташате",
-            "url": "https://armenpress.am/ru/article/1259791",
-            "date": "2026-09-06T10:20:00.000Z",
-            "image": null
+            "title": "Премьер-министр Армении встретился с послом Греции, завершающим свою дипмиссию в РА",
+            "url": "https://armenpress.am/ru/article/1259849",
+            "date": "2026-09-07T11:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/sSL83a1H0BMfcGFVcleSLKZdpKdXUSYMgO3ajbz9.webp"
           },
           {
-            "title": "В поселке Артик Ширакской области будет проведено тестирование электрической сирены",
-            "url": "https://armenpress.am/ru/article/1259787",
-            "date": "2026-09-06T10:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/eqt1uLCDax1vRh732H1cXluQEjpPR7F1nckL6Kk2.webp"
+            "title": "Песков раскрыл основную тему повестки предстоящей встречи Пашинян-Путин",
+            "url": "https://armenpress.am/ru/article/1259848",
+            "date": "2026-09-07T11:13:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/KvEmhVfSINOsDYdzwHYhZI3wdsexhP6efRAfOWRU.webp"
           },
           {
-            "title": "В Корнидзоре верят в мир и уже думают о реализации амбициозных программ",
-            "url": "https://armenpress.am/ru/article/1259786",
-            "date": "2026-09-06T10:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/5bLAqdUQ3D9oPO3HvaOcKLICmOKKB77aumESzSNA.webp"
+            "title": "Арам Вардеванян принял посла Швейцарии в Армении",
+            "url": "https://armenpress.am/ru/article/1259843",
+            "date": "2026-09-07T10:37:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/7PJXoCUiHksSFCNT0pYCpU1lcUtvs5EHUJeOseDk.webp"
           },
           {
-            "title": "При поддержке МККК новое отделение неотложной помощи МЦ «Вайоц Дзор» будет функционировать в соответствии со всеми международными стандартами",
-            "url": "https://armenpress.am/ru/article/1259788",
-            "date": "2026-09-06T10:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/7fnXg3ZAgQ4AryH9rmPGjyPKC74hdS6zb3iAsMFw.webp"
+            "title": "Открыта регистрация на Второй инвестиционно-финансовый форум Армении",
+            "url": "https://armenpress.am/ru/article/1259839",
+            "date": "2026-09-07T10:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/AChrxjgvTHNGbqhsrxFs4mIkA6W8coRfwNKG9lyf.webp"
           },
           {
-            "title": "В уголовно-исполнительном учреждении «Абовян» обсуждались вопросы обеспечения прав иностранцев и лиц, ищущих убежища",
-            "url": "https://armenpress.am/ru/article/1259770",
-            "date": "2026-09-05T13:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/OS67AcaNsyvzvTOS8GAjlfTUR4UgWC4lF4M4UTuR.webp"
+            "title": "Министр экономики Армении принял участие в церемонии открытия ежегодной инвестиционной конференции в Дубае",
+            "url": "https://armenpress.am/ru/article/1259838",
+            "date": "2026-09-07T10:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FlDlc9ZNf7YNFMohzaWkb1s1yBU6Z92C759h8VwR.webp"
           },
           {
-            "title": "В Армении в ближайшие дни температура воздуха понизится на 5-8 градусов",
-            "url": "https://armenpress.am/ru/article/1259767",
-            "date": "2026-09-05T12:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/c3kEhBxtVH8Liw6vXH4wqi2xKcasSOmKCOI9D28G.webp"
+            "title": "Гамлет Саакян освобожден от должности заместителя председателя Комитета госдоходов и назначен заместителем министра финансов Армении",
+            "url": "https://armenpress.am/ru/article/1259836",
+            "date": "2026-09-07T10:11:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/MKKSuJgdZ5xhrqsEDOFSjq6dzc3hdtbpQ22mwaKc.webp"
           },
           {
-            "title": "На Ереванском железнодорожном вокзале открылась выставка Tour EXPO 2026",
-            "url": "https://armenpress.am/ru/article/1259766",
-            "date": "2026-09-05T12:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/QYFzALikzGvYb0C0SAnUSa5buaBPyZ2aiApSZCjI.webp"
+            "title": "Ваагн Алексанян и Андреа Барбара Бауманн обсудили повестку армяно-европейских отношений",
+            "url": "https://armenpress.am/ru/article/1259833",
+            "date": "2026-09-07T09:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/nLnwztaUxKTrNnXB8u6tQwkgrk8slOuUoIS8vbck.webp"
           },
           {
-            "title": "Пашинян обладает четким народным мандатом на установление мира с Азербайджаном: интервью пресс-секретаря премьер-министра WSJ",
-            "url": "https://armenpress.am/ru/article/1259765",
-            "date": "2026-09-05T12:26:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/eCZF2FBJYNpUaRSwyzXi8EPlTaFZnZiAocok2iiv.webp"
+            "title": "Ованнес Юкинян назначен пресс-секретарем министра образования, науки, культуры и спорта Армении",
+            "url": "https://armenpress.am/ru/article/1259830",
+            "date": "2026-09-07T09:13:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/24bFjp54HOm6Ng0SZ4VlQ2wvmNlx8GVTMy4s0bS8.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Эксперт Оксфордского университета по искусственному интеллекту и медиа Алекс Коннок выступит на Армяно-британском бизнес-форуме 2026",
+            "url": "https://armenpress.am/ru/article/1259852",
+            "date": "2026-09-07T11:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/ygGDwwCcLcj21mR0DgvV8J7g8sWjfxmd8WAbPiYc.webp"
+          },
+          {
+            "title": "Геворг Папоян и вице-президент Всемирного банка обсудили возможности сотрудничества в области цифровизации и искусственного интеллекта",
+            "url": "https://armenpress.am/ru/article/1259851",
+            "date": "2026-09-07T11:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/tyWUn6xTGbWPHa8KUMl5dzBHLG6ZZVswOXQqQZ0j.webp"
+          },
+          {
+            "title": "Открыта регистрация на Второй инвестиционно-финансовый форум Армении",
+            "url": "https://armenpress.am/ru/article/1259839",
+            "date": "2026-09-07T10:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/AChrxjgvTHNGbqhsrxFs4mIkA6W8coRfwNKG9lyf.webp"
+          },
+          {
+            "title": "Министр экономики Армении принял участие в церемонии открытия ежегодной инвестиционной конференции в Дубае",
+            "url": "https://armenpress.am/ru/article/1259838",
+            "date": "2026-09-07T10:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/FlDlc9ZNf7YNFMohzaWkb1s1yBU6Z92C759h8VwR.webp"
+          },
+          {
+            "title": "Гамлет Саакян освобожден от должности заместителя председателя Комитета госдоходов и назначен заместителем министра финансов Армении",
+            "url": "https://armenpress.am/ru/article/1259836",
+            "date": "2026-09-07T10:11:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/MKKSuJgdZ5xhrqsEDOFSjq6dzc3hdtbpQ22mwaKc.webp"
+          },
+          {
+            "title": "Пограничные пункты пропуска связывают народы и экономики - Заявление Союза промышленников и предпринимателей Армении и Торгово-промышленной палаты Вана",
+            "url": "https://armenpress.am/ru/article/1259816",
+            "date": "2026-09-07T07:37:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/anZWkfftbgM3wQZaMHLyw3tNvdyBz5aKrnI7V6em.webp"
+          },
           {
             "title": "Армения и Чехия обсуждают проекты, связанные с метрополитеном Еревана и отработанным топливом атомной электростанции: Хачатурян",
             "url": "https://armenpress.am/ru/article/1259755",
@@ -4626,42 +4686,6 @@
             "url": "https://armenpress.am/ru/article/1259747",
             "date": "2026-09-05T07:03:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/12/kkqTy9SChWnbdXQtqUQgAiTncXFJxavjWiN6Ejx1.webp"
-          },
-          {
-            "title": "Цены на нефть снизились - 04-09-26",
-            "url": "https://armenpress.am/ru/article/1259746",
-            "date": "2026-09-05T07:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/21/Ych30hsTxBwO1p1mhjodWm4sgEMQevU7gK6xYbXh.webp"
-          },
-          {
-            "title": "В Ереване стартовала трехдневная выставка «Armenia Expo-2026»",
-            "url": "https://armenpress.am/ru/article/1259729",
-            "date": "2026-09-04T14:08:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/YtVWY2pN9Z0UyWXmEjrLM71rbwbgMO5cZu4Z5fd5.webp"
-          },
-          {
-            "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 04-09-26",
-            "url": "https://armenpress.am/ru/article/1259724",
-            "date": "2026-09-04T13:12:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/0lhZzWhEbAxBszcVdmWPAdvtz3PnvWfcs51fFVAi.webp"
-          },
-          {
-            "title": "Азиатские индексы выросли - 04-09-26",
-            "url": "https://armenpress.am/ru/article/1259723",
-            "date": "2026-09-04T13:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/03/61pYKBhqn2F9A7NbBJMY0idkDnydsvpFIzm0vszp.webp"
-          },
-          {
-            "title": "Комиссия Европарламента по международной торговле одобрила временную отмену пошлин на товары из Армении",
-            "url": "https://armenpress.am/ru/article/1259703",
-            "date": "2026-09-04T11:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/Gn2WCakSc51UJit0NqjalaSiflRFWAq44PJgQ0Hb.webp"
-          },
-          {
-            "title": "Второй энергоблок АЭС Армении после планового ремонта подключен к единой энергосистеме РА",
-            "url": "https://armenpress.am/ru/article/1259673",
-            "date": "2026-09-04T07:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/TrtoozR2nZO3VT2CRyJOcg4947uZ98rXQS6NWobL.webp"
           }
         ]
       },
@@ -4669,70 +4693,76 @@
         "categoryKey": "world",
         "articles": [
           {
-            "title": "Лидер Северной Кореи представил новый эсминец “Кан Гон”",
-            "url": "https://armenpress.am/ru/article/1259797",
-            "date": "2026-09-07T05:16:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/EjA8hLYRiBPBbIf2XvJNeqnQyGUwZjRTC5aE0Xst.webp"
+            "title": "Иран пригрозил нанести удары по американским нефтяным компаниям, если США нанесут удары по его объектам",
+            "url": "https://armenpress.am/ru/article/1259846",
+            "date": "2026-09-07T11:01:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/vvClJ6oT3fb1mwSgIagvR4QEK8cU2g7cXgTDrZSt.webp"
           },
           {
-            "title": "Посланники президента США положительно оценили московские переговоры по украинскому урегулированию",
-            "url": "https://armenpress.am/ru/article/1259796",
-            "date": "2026-09-07T05:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/07/WtADK5rd6cckhpE2gluK86fsdJcH8cXlzngehNUk.webp"
+            "title": "Иран объяснил причину ограничения доступа инспекторов МАГАТЭ к ядерным объектам",
+            "url": "https://armenpress.am/ru/article/1259845",
+            "date": "2026-09-07T10:59:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/A7X394vAIFEUaRaZIYq0XVxMGK6zGIGGKRdlBaWR.webp"
           },
           {
-            "title": "США уничтожат иранские нефтяные танкеры, если Иран продолжит атаковать американские корабли: Пит Хегсет",
-            "url": "https://armenpress.am/ru/article/1259790",
-            "date": "2026-09-06T10:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/06/b1CSN8WURHQUmodxQJ859doQPW0rNGEYK6cm2L5N.webp"
+            "title": "Иран намерен принять участие в Генеральной Ассамблее Организации Объединенных Наций",
+            "url": "https://armenpress.am/ru/article/1259841",
+            "date": "2026-09-07T10:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/DLDBX14M40XogAI29sy4i7tr2PKECVxbVcXraMsP.webp"
           },
           {
-            "title": "Во время авиашоу в Греции потерпел крушение истребитель F-4 Phantom",
-            "url": "https://armenpress.am/ru/article/1259778",
-            "date": "2026-09-05T13:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/QVLBVkL1ntGdwO9OoT3gVXVBhAjpSDw6YX1NXeYi.webp"
+            "title": "Иран направил в Катар делегацию для выяснения судьбы пропавших иранских пилотов",
+            "url": "https://armenpress.am/ru/article/1259837",
+            "date": "2026-09-07T10:11:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/Wv7aqs6zat1YaErfPpYU6Ptt8Wby66OSCjR8E2F7.webp"
           },
           {
-            "title": "ООН одобрила использование карты мира, отражающей истинные размеры Африки",
-            "url": "https://armenpress.am/ru/article/1259776",
-            "date": "2026-09-05T13:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/GWM1XD1ObvPIHUlu8qFgarxyl1W5vCvwYHfGGuuK.webp"
+            "title": "Число альпинистов, погибших под лавиной в Кабардино-Балкарии, возросло до 11",
+            "url": "https://armenpress.am/ru/article/1259835",
+            "date": "2026-09-07T10:01:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/oabBhX03zr5Qvo5XAh98wWNFpD95yhZpcV0lguja.webp"
           },
           {
-            "title": "Путин приказал в течение трех дней воздержаться от ударов по Киеву. Украина также приостановила авиаудары",
-            "url": "https://armenpress.am/ru/article/1259774",
-            "date": "2026-09-05T13:35:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/nv0E6bJLac55F9ofwNChM2mroVXzebEvPmh1xehb.webp"
+            "title": "ОАЭ после иранских атак создают альтернативные торговые и энергетические маршруты",
+            "url": "https://armenpress.am/ru/article/1259831",
+            "date": "2026-09-07T09:19:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/qqqjJu8Od93jsIMfATccOcqOlk8RsPO0VWQdLtBb.webp"
           },
           {
-            "title": "Уиткофф и Кушнер прибыли в Россию с предложением положить конец войне на Украине",
-            "url": "https://armenpress.am/ru/article/1259771",
-            "date": "2026-09-05T13:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/zLXBObSIVGvtvKqNTGN2DWjHsp0kofSuhYmToidH.webp"
+            "title": "Иран призвал Южную Корею не становиться соучастницей действий США",
+            "url": "https://armenpress.am/ru/article/1259828",
+            "date": "2026-09-07T09:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/aO2Z7KUAk9huEcs49XBtKUeMa0ww3S6bPs6yGZl8.webp"
           },
           {
-            "title": "Иранский нефтеналивной танкер поражен четырьмя американскими ракетами у острова Харг",
-            "url": "https://armenpress.am/ru/article/1259768",
-            "date": "2026-09-05T12:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/05/i9uQBmQeiS6Vwv7BBJUSVOf60ea2e8Oy9fcsInqg.webp"
+            "title": "Число погибших в результате израильских ударов на юге Ливана возросло до 11 человек",
+            "url": "https://armenpress.am/ru/article/1259821",
+            "date": "2026-09-07T07:50:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/KpkuUtuDmAkGv5q0HXnQy2ARky7wPVfnolBFKeK9.webp"
           },
           {
-            "title": "Польша сформировала дополнительный зенитный полк на юге страны",
-            "url": "https://armenpress.am/ru/article/1259744",
-            "date": "2026-09-04T18:01:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/xLqgBkVnDgedLX3dAUc2Dbklj1JlbasxRsDNdtvO.webp"
+            "title": "В Портсмуте произошли столкновения с полицией из-за мигрантов",
+            "url": "https://armenpress.am/ru/article/1259817",
+            "date": "2026-09-07T07:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/gSbxeVJMldP7uEcKIeHfG22bpopixGQbp6K3WDrV.webp"
           },
           {
-            "title": "В \"Хезболлах\" заявили, что не считают катастрофой захват Израилем высот на юге Ливана",
-            "url": "https://armenpress.am/ru/article/1259742",
-            "date": "2026-09-04T17:33:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/04/gw0Iaao7d5C0hPpV7Q6BaZUfbymjp6pUMMxI39BE.webp"
+            "title": "МИД Ирана обвиняет США в дестабилизации ситуации в Ормузском проливе",
+            "url": "https://armenpress.am/ru/article/1259815",
+            "date": "2026-09-07T07:20:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/07/30/gDxNuiBNXVF8gdh7Pdnjz84CErS5LDMxow4dG5Gv.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "В Большом зале музея “Тапан” при Московском армянском храмовом комплексе прошел фестиваль духовных песнопений",
+            "url": "https://armenpress.am/ru/article/1259824",
+            "date": "2026-09-07T08:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/DOXUuxjJxIsw6DBvOBp5XlFQlw8gqAgf0W1WQyEq.webp"
+          },
           {
             "title": "Вечер в музее: уникальное сочетание музыки и истории в Гюмри",
             "url": "https://armenpress.am/ru/article/1259753",
@@ -4786,18 +4816,18 @@
             "url": "https://armenpress.am/ru/article/1258998",
             "date": "2026-08-27T08:35:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/27/gCjxBgDMcP3tDtBbPkARLRDKD6mhXeycH7LxFrk6.webp"
-          },
-          {
-            "title": "Дебед примет XII Международный фестиваль документального кино «Ծիրանի ծառ» (Tsirani tsar ,Абрикосовое дерево)",
-            "url": "https://armenpress.am/ru/article/1258909",
-            "date": "2026-08-26T10:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/UTi3rcxLoykWHfHFRqiqMkROPsXa0Bf597yzq6eO.webp"
           }
         ]
       },
       {
         "categoryKey": "sports",
         "articles": [
+          {
+            "title": "Олимпийский чемпион по велоспорту Самуэль Санчес прибудет в Армению в качестве официального посла Tour of Armenia 2026",
+            "url": "https://armenpress.am/ru/article/1259832",
+            "date": "2026-09-07T09:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/CSUHhuwJwuo6N9M6L3vm6QojemEkBUscKvofqb4i.webp"
+          },
           {
             "title": "Капитан женской сборной Армении по футболу переходит в саудовскую команду",
             "url": "https://armenpress.am/ru/article/1259709",
@@ -4851,12 +4881,6 @@
             "url": "https://armenpress.am/ru/article/1259315",
             "date": "2026-08-31T15:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/31/MGqnmhSpvmS5UUIJusOFVJaxKz9ORIW942xQPLQ2.webp"
-          },
-          {
-            "title": "“Интер” одержал победу: Мхитарян не участвовал в игре",
-            "url": "https://armenpress.am/ru/article/1259239",
-            "date": "2026-08-31T06:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/31/Jq8jtLOGcO4flMRjM8IfAVFWRiLPZWyAsYLeS14m.webp"
           }
         ]
       },
@@ -4929,6 +4953,12 @@
         "categoryKey": "projects",
         "articles": [
           {
+            "title": "“Новая книга” - 33/26”: Фрэнк Герберт, Меган Макдональд, Игорь Рызов",
+            "url": "https://armenpress.am/ru/article/1259804",
+            "date": "2026-09-07T06:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/07/6ON8UgfSOAwNPGTwie7fVFUH6K2iMgpkYXnAQCYl.webp"
+          },
+          {
             "title": "“Ереванский бестселлер”: лидирует “Икигай”: художественно-документальные книги, июль, 2026",
             "url": "https://armenpress.am/ru/article/1259655",
             "date": "2026-09-04T06:23:00.000Z",
@@ -4981,12 +5011,6 @@
             "url": "https://armenpress.am/ru/article/1255184",
             "date": "2026-07-10T06:23:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/07/10/IBCJMd9YMjy2zUkN6rhmXBRtKdmtmHRfJVQJxd9m.webp"
-          },
-          {
-            "title": "“Ереванский бестселлер”: художественно-документальная литература: лидирует “Ежедневное вдохновение” Робина Шармы: май, 2026",
-            "url": "https://armenpress.am/ru/article/1254615",
-            "date": "2026-07-03T06:13:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/07/03/14McPoluSXP9XxELHbXTIHT3L3giUF3nY4aFk4LN.webp"
           }
         ]
       }
@@ -5815,6 +5839,12 @@
             "image": "https://www.oragark.com/wp-content/uploads/2022/03/Harut_Sassounian-292x300.jpeg"
           },
           {
+            "title": "Third Judge Declines Catholicos Case as Pashinyan’s Campaign Against Church Intensifies",
+            "url": "https://www.oragark.com/third-judge-declines-catholicos-case-as-pashinyans-campaign-against-church-intensifies/",
+            "date": "2026-09-06T05:43:04.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2025/10/terter_garegin_b_catholicos-822x463-1-768x433.jpg"
+          },
+          {
             "title": "Artsakh Exists",
             "url": "https://www.oragark.com/artsakh-exists/",
             "date": "2026-09-03T05:48:05.000Z",
@@ -5849,12 +5879,6 @@
             "url": "https://www.oragark.com/can-raphael-lemkins-relatives-force-the-lemkin-institute-to-remove-his-name/",
             "date": "2026-08-31T02:00:44.000Z",
             "image": "https://www.oragark.com/wp-content/uploads/2026/08/lemkin-institute-300x145.png"
-          },
-          {
-            "title": "Lorik Humanitarian Fund Launches 2026-2027 Scholarship Campaign for Artsakh Students",
-            "url": "https://www.oragark.com/lorik-humanitarian-fund-launches-2026-2027-scholarship-campaign-for-artsakh-students/",
-            "date": "2026-08-31T01:51:16.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/08/Aznavour-Scholarship-2025-26-results-768x960.png"
           }
         ]
       },
@@ -5935,6 +5959,12 @@
             "image": "https://www.oragark.com/wp-content/uploads/2026/09/E50ED72E-4F7A-465D-A568-D0B600465632-768x768.png"
           },
           {
+            "title": "Third Judge Declines Catholicos Case as Pashinyan’s Campaign Against Church Intensifies",
+            "url": "https://www.oragark.com/third-judge-declines-catholicos-case-as-pashinyans-campaign-against-church-intensifies/",
+            "date": "2026-09-06T05:43:04.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2025/10/terter_garegin_b_catholicos-822x463-1-768x433.jpg"
+          },
+          {
             "title": "Pashinyan’s Reckless Foreign Policy Leaves Armenia With Ultimatums, Not Allies",
             "url": "https://www.oragark.com/pashinyans-reckless-foreign-policy-leaves-armenia-with-ultimatums-not-allies/",
             "date": "2026-09-03T04:50:00.000Z",
@@ -5981,12 +6011,6 @@
             "url": "https://www.oragark.com/aliyev-expands-demands-as-pashinyan-moves-ahead-with-changes-sought-by-baku/",
             "date": "2026-08-13T06:18:28.000Z",
             "image": "https://www.oragark.com/wp-content/uploads/2026/05/aliyev-trump-pashinyan-768x428.jpg"
-          },
-          {
-            "title": "Baku Dictates Terms as Pashinyan Turns the State Against His Opponents and the Church",
-            "url": "https://www.oragark.com/baku-dictates-terms-as-pashinyan-turns-the-state-against-his-opponents-and-the-church/",
-            "date": "2026-08-07T02:41:38.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/02/ARtsakh-prisoners-1-300x169.jpg"
           }
         ]
       },
@@ -7757,6 +7781,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Փաշինյան-Պուտին հանդիպման օրակարգում հնարավոր հանրաքվեն կլինի․ Պեսկով",
+            "url": "https://civilnet.am/hy/news/1014006",
+            "date": "2026-09-07T11:14:13.000Z",
+            "image": "https://civilnet.am/storage/media/26/09/07/GMfPBpuaVwoPSsEU.webp"
+          },
+          {
             "title": "Փաշինյանը չի բացառում, որ նոր ատոմակայանի տեխնոլոգիայի ընտրությունը լինի ռուսականը",
             "url": "https://civilnet.am/hy/news/1013947",
             "date": "2026-09-03T11:28:30.000Z",
@@ -7809,12 +7839,6 @@
             "url": "https://civilnet.am/hy/news/1013824",
             "date": "2026-08-27T07:06:15.000Z",
             "image": "https://civilnet.am/storage/media/26/08/27/32yUihrB38jGFXw3.webp"
-          },
-          {
-            "title": "Ռոբերտ Քոչարյանի թեման ընտրազանգվածը տաք պահելու համար է. Հակոբ Բադալյան",
-            "url": "https://civilnet.am/hy/news/1013813",
-            "date": "2026-08-26T12:05:00.000Z",
-            "image": "https://civilnet.am/storage/media/26/08/26/W7B8mquErZ0IUUZv.webp"
           }
         ]
       },
@@ -7822,6 +7846,12 @@
         "categoryKey": "economy",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Եվրոպան ձմռանը մոտենում է գազի ցածր պաշարներով և բարձրացող գներով",
+            "url": "https://civilnet.am/hy/news/1014005",
+            "date": "2026-09-07T10:26:08.000Z",
+            "image": "https://civilnet.am/storage/media/26/09/07/57qDqVeWMbGg4VZ3.webp"
+          },
           {
             "title": "Շուկայական անոմալիա. հայկական որոշ բանկերի պարտատոմսեր ավելի ցածր եկամտաբերություն ունեն, քան պետականները",
             "url": "https://civilnet.am/hy/news/1013982",
@@ -7875,12 +7905,6 @@
             "url": "https://civilnet.am/hy/news/1013867",
             "date": "2026-08-29T21:09:08.000Z",
             "image": "https://civilnet.am/storage/media/26/08/31/vO2MgT678ZoAu8iJ.webp"
-          },
-          {
-            "title": "Իսրայելցի պրոֆեսորը քննադատում է The Economist-ի՝ Աճեմօղլուի քննադատությունը",
-            "url": "https://civilnet.am/hy/news/1013866",
-            "date": "2026-08-29T21:06:12.000Z",
-            "image": "https://civilnet.am/storage/media/26/08/30/aI1FiSKeGk9zkNun.webp"
           }
         ]
       },
@@ -8621,6 +8645,18 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Trump supports idea of renaming New Mexico state as “New America”",
+            "url": "https://news.am/en/news/1060005",
+            "date": "2026-09-07T07:12:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/iG9HR8ypOjM29h8W.webp"
+          },
+          {
+            "title": "Trump calls Hormuz strait a US territory",
+            "url": "https://news.am/en/news/1059985",
+            "date": "2026-09-07T04:24:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/FpHQMuSTbZnMl1Jb.webp"
+          },
+          {
             "title": "Newspaper: Armenia PM warns teammates that not everyone should give interviews on Russia",
             "url": "https://news.am/en/news/1059539",
             "date": "2026-09-04T04:36:00.000Z",
@@ -8667,18 +8703,6 @@
             "url": "https://news.am/en/news/1058626",
             "date": "2026-08-31T08:01:00.000Z",
             "image": "https://i.ytimg.com/vi/KpSrj9BFBDE/hqdefault.jpg"
-          },
-          {
-            "title": "Armenia 2nd president Robert Kocharyan issues message from prison: This must be stopped, or everyone should start learning Turkish",
-            "url": "https://news.am/en/news/1058624",
-            "date": "2026-08-31T07:21:00.000Z",
-            "image": "https://i.ytimg.com/vi/_RsT2aS-a6A/hqdefault.jpg"
-          },
-          {
-            "title": "Russia’s Putin congratulates jailed Armenia ex-President Robert Kocharyan on his birthday, wishes him “endurance in the face of trials”",
-            "url": "https://news.am/en/news/1058610",
-            "date": "2026-08-31T06:30:00.000Z",
-            "image": "https://news.am/storage/media/26/08/31/P5jiw9I2qXuucWJy.webp"
           }
         ]
       },
@@ -8753,64 +8777,64 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Eric Garcia has broken his nose",
+            "url": "https://sport.news.am/eng/news/168807/",
+            "date": "2026-09-07T11:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168807.jpg"
+          },
+          {
+            "title": "Europa League: Ararat-Armenia's squad list",
+            "url": "https://sport.news.am/eng/news/168812/",
+            "date": "2026-09-07T10:37:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168812.jpg"
+          },
+          {
+            "title": "Elina Avanesyan: Participating in the Los Angeles Olympic Games is one of our big dreams",
+            "url": "https://sport.news.am/eng/news/168813/",
+            "date": "2026-09-07T10:08:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168813.jpg"
+          },
+          {
+            "title": "Esposito signs contract extension with Inter Milan",
+            "url": "https://sport.news.am/eng/news/168810/",
+            "date": "2026-09-07T09:42:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168810.jpg"
+          },
+          {
+            "title": "French Championship: Results of the third round and standings",
+            "url": "https://sport.news.am/eng/news/168806/",
+            "date": "2026-09-07T09:03:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168806.jpg"
+          },
+          {
+            "title": "Arteta: It was an exceptional performance",
+            "url": "https://sport.news.am/eng/news/168803/",
+            "date": "2026-09-07T08:04:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168803.jpg"
+          },
+          {
+            "title": "Jamie Vardy returns to England",
+            "url": "https://sport.news.am/eng/news/168809/",
+            "date": "2026-09-07T07:50:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168809.jpg"
+          },
+          {
+            "title": "Bundesliga: Results of the second round and the league standings",
+            "url": "https://sport.news.am/eng/news/168800/",
+            "date": "2026-09-07T07:22:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168800.jpg"
+          },
+          {
+            "title": "Real Sociedad head coach: Zakharyan needs to be patient and wait for his chance",
+            "url": "https://sport.news.am/eng/news/168799/",
+            "date": "2026-09-07T06:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168799.jpg"
+          },
+          {
             "title": "Europa League: Tickets for the Ararat-Armenia vs. Sparta Prague match are already on sale",
             "url": "https://sport.news.am/eng/news/168805/",
             "date": "2026-09-07T05:04:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168805.jpg"
-          },
-          {
-            "title": "Juventus draw 1-1 with Milan",
-            "url": "https://sport.news.am/eng/news/168802/",
-            "date": "2026-09-06T20:43:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168802.jpg"
-          },
-          {
-            "title": "Arsenal come from behind to beat Chelsea",
-            "url": "https://sport.news.am/eng/news/168798/",
-            "date": "2026-09-06T17:30:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168798.jpg"
-          },
-          {
-            "title": "Barcelona thrash Valencia",
-            "url": "https://sport.news.am/eng/news/168795/",
-            "date": "2026-09-06T16:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168795.jpg"
-          },
-          {
-            "title": "Real Betis defeats Real Madrid",
-            "url": "https://sport.news.am/eng/news/168776/",
-            "date": "2026-09-04T21:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168776.jpg"
-          },
-          {
-            "title": "PSG lost to Monaco",
-            "url": "https://sport.news.am/eng/news/168775/",
-            "date": "2026-09-04T21:01:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168775.jpg"
-          },
-          {
-            "title": "Spertsyan's goal contributed to Al-Ahli's victory",
-            "url": "https://sport.news.am/eng/news/168771/",
-            "date": "2026-09-04T19:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168771.jpg"
-          },
-          {
-            "title": "Noah beat Gandzasar",
-            "url": "https://sport.news.am/eng/news/168767/",
-            "date": "2026-09-04T17:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168767.jpg"
-          },
-          {
-            "title": "Pyunik and Syunik draw",
-            "url": "https://sport.news.am/eng/news/168764/",
-            "date": "2026-09-04T14:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168764.jpg"
-          },
-          {
-            "title": "Alessio Romagnoli move to Al-Sadd",
-            "url": "https://sport.news.am/eng/news/168757/",
-            "date": "2026-09-04T12:01:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168757.jpg"
           }
         ]
       },
@@ -8885,64 +8909,64 @@
         "label": "NEWS.am Style",
         "articles": [
           {
-            "title": "Lewis Hamilton Buys His Dream Car — the Iconic Ferrari F40",
-            "url": "https://style.news.am/eng/news/115969/",
-            "date": "2026-09-05T15:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115969.jpg"
+            "title": "Rolex Watches Worth $5 Million Each: Four Unique Daytonas Inspired by the Seasons to Go Under the Hammer for Charity",
+            "url": "https://style.news.am/eng/news/115996/",
+            "date": "2026-09-07T11:37:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115996.jpg"
           },
           {
-            "title": "The Unappetizing Truth About Sushi: Scientists Find Parasites in 96% of Tuna",
-            "url": "https://style.news.am/eng/news/115967/",
-            "date": "2026-09-05T14:31:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115967.jpg"
+            "title": "Former OnlyFans Manager Calls Platform a “Bottomless Pit”: “Sexual Freedom Is a Lie”",
+            "url": "https://style.news.am/eng/news/115995/",
+            "date": "2026-09-07T11:17:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115995.jpg"
           },
           {
-            "title": "What Do Jeff Bezos, Shakespeare and Genghis Khan Have in Common?",
-            "url": "https://style.news.am/eng/news/115966/",
-            "date": "2026-09-05T13:38:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115966.jpg"
+            "title": "Fashion Victim or the Real Bigfoot? Hairy ‘Monster’ Terrifies an Entire US Town",
+            "url": "https://style.news.am/eng/news/115992/",
+            "date": "2026-09-07T10:34:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115992.jpg"
           },
           {
-            "title": "‘Chinese Nostradamus’ Makes Grim Predictions for 2027: Ground Invasion of Iran and Civil War in the US",
-            "url": "https://style.news.am/eng/news/115965/",
-            "date": "2026-09-05T12:07:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115965.jpg"
+            "title": "Trump’s New Hairstyle Sends the Internet Into a Frenzy: Did Grandpa Buy a New Wig?",
+            "url": "https://style.news.am/eng/news/115994/",
+            "date": "2026-09-07T10:15:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115994.jpg"
           },
           {
-            "title": "Aryna Sabalenka Furious Over Marijuana Smell at US Open",
-            "url": "https://style.news.am/eng/news/115964/",
-            "date": "2026-09-05T11:22:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115964.jpg"
+            "title": "Nicola Peltz Receives Rising Star Award in Venice as Brooklyn Beckham Stays by Her Side",
+            "url": "https://style.news.am/eng/news/115991/",
+            "date": "2026-09-07T09:43:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115991.jpg"
           },
           {
-            "title": "Jane Fonda Slams ‘Tech Bros, Oligarchs and Billionaires’ Who Want to Live Forever With Robots: ‘They’ll Be Their Children’",
-            "url": "https://style.news.am/eng/news/115963/",
-            "date": "2026-09-05T10:36:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115963.jpg"
+            "title": "‘We Need an App for Girls and Gays’: Bebe Rexha Declares War on Men Obsessed With Her Huge Breasts",
+            "url": "https://style.news.am/eng/news/115990/",
+            "date": "2026-09-07T09:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115990.jpg"
           },
           {
-            "title": "A Waist-Deep Wedding: Bride Walks Down the Aisle in Flooded Church",
-            "url": "https://style.news.am/eng/news/115962/",
-            "date": "2026-09-05T09:19:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115962.jpg"
+            "title": "Jennifer Lopez’s Breasts as a Weapon: At 57, J.Lo Has Everyone Talking About Her Again",
+            "url": "https://style.news.am/eng/news/115989/",
+            "date": "2026-09-07T08:29:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115989.jpg"
           },
           {
-            "title": "Luxury at H&M Prices: Elie Saab Brings Couture Codes to the Mass Market",
-            "url": "https://style.news.am/eng/news/115961/",
-            "date": "2026-09-05T08:25:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115961.jpg"
+            "title": "Susan Sarandon: ‘I’m Still Losing Roles Because of My Support for Palestine’",
+            "url": "https://style.news.am/eng/news/115988/",
+            "date": "2026-09-07T08:13:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115988.jpg"
           },
           {
-            "title": "George Clooney Rules Out Presidential Run — and Names Three Democratic Favorites for 2028",
-            "url": "https://style.news.am/eng/news/115960/",
-            "date": "2026-09-05T07:17:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115960.jpg"
+            "title": "Ciara Is Pregnant: 40-Year-Old Singer Expecting Her Fifth Child",
+            "url": "https://style.news.am/eng/news/115987/",
+            "date": "2026-09-07T07:36:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115987.jpg"
           },
           {
-            "title": "Petrossian Caviar Empire Head Mikael Petrossian Named One of Vanity Fair’s Best-Dressed Frenchmen",
-            "url": "https://style.news.am/eng/news/115968/",
-            "date": "2026-09-05T06:58:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115968.jpg"
+            "title": "Rob Reiner’s Posthumous Triumph: Emmy Win Nine Months After Brutal Murder",
+            "url": "https://style.news.am/eng/news/115986/",
+            "date": "2026-09-07T07:19:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115986.jpg"
           }
         ]
       },
@@ -9083,6 +9107,18 @@
         "label": "Incidents",
         "articles": [
           {
+            "title": "Israel strikes residential areas in southern Lebanon, there are casualties, injuries",
+            "url": "https://news.am/en/news/1060033",
+            "date": "2026-09-07T08:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/IoxNy9jgP8I8dRRM.webp"
+          },
+          {
+            "title": "Six – according to preliminary data – from Armenia’s Byureghavan town seek medical care after complaints typical of intestinal infection",
+            "url": "https://news.am/en/news/1059996",
+            "date": "2026-09-07T05:25:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/IHTwSC2iw8K0WEcv.webp"
+          },
+          {
             "title": "Identities of casualties, the injured in Wednesday's tragic road accident in Armenia determined",
             "url": "https://news.am/en/news/1059338",
             "date": "2026-09-03T07:10:00.000Z",
@@ -9129,18 +9165,6 @@
             "url": "https://news.am/en/news/1058282",
             "date": "2026-08-28T12:09:00.000Z",
             "image": "https://news.am/storage/media/26/08/28/T5ezwd7uMKOF3RLL.webp"
-          },
-          {
-            "title": "Azerbaijan “attacks” Russia again",
-            "url": "https://news.am/en/news/1058074",
-            "date": "2026-08-27T11:54:00.000Z",
-            "image": "https://news.am/storage/media/26/05/07/yRxZiQg47ipoTWdt.webp"
-          },
-          {
-            "title": "ArmLur.am: Armenia soldier found hanging at home",
-            "url": "https://news.am/en/news/1057654",
-            "date": "2026-08-25T14:31:00.000Z",
-            "image": "https://news.am/storage/media/26/06/02/SNvqjT3YFtaxFqK0.webp"
           }
         ]
       },
@@ -9283,6 +9307,24 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Թրամփը հրապարակել է Կանադայի վարչապետի հետ լուսանկար և նրան անվանել նահանգապետ",
+            "url": "https://news.am/hy/news/1060071",
+            "date": "2026-09-07T11:29:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/KIO8a86uBumVPsSy.webp"
+          },
+          {
+            "title": "Արամ Վարդևանյանը ՀՀ–ում Շվեյցարիայի դեսպանին է ներկայացրել Հայաստանի ներքաղաքական իրավիճակը",
+            "url": "https://news.am/hy/news/1060081",
+            "date": "2026-09-07T10:49:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/NXQbLnDwcPVQbm7e.webp"
+          },
+          {
+            "title": "Թրամփը սատարել է Նյու Մեքսիկո նահանգը Նյու Ամերիկա վերանվանելու գաղափարին",
+            "url": "https://news.am/hy/news/1060005",
+            "date": "2026-09-07T07:12:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/iG9HR8ypOjM29h8W.webp"
+          },
+          {
             "title": "Թրամփը Հորմուզի նեղուցը ԱՄՆ-ի տարածք է անվանել",
             "url": "https://news.am/hy/news/1059985",
             "date": "2026-09-07T04:24:24.000Z",
@@ -9323,24 +9365,6 @@
             "url": "https://news.am/hy/news/1059821",
             "date": "2026-09-05T14:57:00.000Z",
             "image": "https://news.am/storage/media/26/09/05/9PyfUqm2FYv2qhW9.webp"
-          },
-          {
-            "title": "Ազատությունը ինձ համար իմ երկրում ինչ-որ բան կառուցելն է, աշխարհում իմ երկրի պատիվը բարձր պահելն է․ Ծառուկյան",
-            "url": "https://news.am/hy/news/1059822",
-            "date": "2026-09-05T12:55:12.000Z",
-            "image": "https://news.am/storage/media/26/09/05/P0EY9oWxPMnhNdeW.webp"
-          },
-          {
-            "title": "Մեր երկրին էլի է հեղափոխություն պետք. Փաշինյան",
-            "url": "https://news.am/hy/news/1059806",
-            "date": "2026-09-05T10:44:58.000Z",
-            "image": "https://news.am/storage/media/26/09/05/gzjuoTvo6Y9yBdFb.webp"
-          },
-          {
-            "title": "Խաչատուրյանը սխալմա՞մբ է զոհերի թիվը 1000-ով ավելացրել",
-            "url": "https://news.am/hy/news/1059751",
-            "date": "2026-09-05T05:46:40.000Z",
-            "image": "https://news.am/storage/media/26/09/05/oldLhsknB3i0lA2V.webp"
           }
         ]
       },
@@ -9348,6 +9372,12 @@
         "categoryKey": "business",
         "label": "Բիզնես",
         "articles": [
+          {
+            "title": "Ամերիաբանկը Գրքի երևանյան միջազգային փառատոնի գործընկեր",
+            "url": "https://news.am/hy/news/1060070",
+            "date": "2026-09-07T10:11:22.000Z",
+            "image": "https://i.ytimg.com/vi/wFxcvKUnU0o/hqdefault.jpg"
+          },
           {
             "title": "Jaguar Land Rover-ը սկսում է կամավոր ազատումների ծրագիր՝ փորձելով 1,7 մլրդ ֆունտ ստեռլինգով կրճատել ծախսերը",
             "url": "https://news.am/hy/news/1059860",
@@ -9377,12 +9407,6 @@
             "url": "https://news.am/hy/news/1059652",
             "date": "2026-09-04T12:43:40.000Z",
             "image": "https://news.am/storage/media/26/09/04/1BSsD7PtPhb0D0l4.webp"
-          },
-          {
-            "title": "Մարքեթինգ, որը հաղթում է.ինչպես են Վահագն Ստեփանյանն ու Eric Moore-ը գնահատում հայ մասնագետի ներդրումը միջազգային նախագծերում",
-            "url": "https://news.am/hy/news/1059585",
-            "date": "2026-09-04T08:25:29.000Z",
-            "image": "https://news.am/storage/media/26/09/04/mjMcdGZhbCELRImV.webp"
           },
           {
             "title": "«Իրավունք». Արցախյան գեներալ-բիզնեսմենները անհասանելի են արցախահայերի համար",
@@ -9415,64 +9439,64 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
-            "title": "Պրեմիեր լիգա․ Երրորդ տուրի արդյունքներն ու մրցաշարային դրությունը",
-            "url": "https://sport.news.am/arm/news/168801/",
-            "date": "2026-09-07T05:31:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168801.jpg"
+            "title": "«Բարսելոնայի» պաշտպանը քթի կոտրվածք է ստացել թիմակցին բախվելու հետեւանքով",
+            "url": "https://sport.news.am/arm/news/168807/",
+            "date": "2026-09-07T11:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168807.jpg"
           },
           {
-            "title": "ԵԼ․ «Արարատ-Արմենիա» - «Սպարտա Պրահա» հանդիպման տոմսերն արդեն վաճառքում են",
-            "url": "https://sport.news.am/arm/news/168805/",
-            "date": "2026-09-07T05:04:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168805.jpg"
+            "title": "ԵԼ․ «Արարատ-Արմենիայի» հայտացուցակը",
+            "url": "https://sport.news.am/arm/news/168812/",
+            "date": "2026-09-07T10:37:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168812.jpg"
           },
           {
-            "title": "«Յուվենտուսն» ու «Միլանը» խաղացին ոչ ոքի (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168802/",
-            "date": "2026-09-06T20:43:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168802.jpg"
+            "title": "Էլինա Ավանեսյան․ Լոս Անջելեսի Օլիմպիական խաղերին մասնակցելը մեր մեծ երազանքներից մեկն է (ֆոտո)",
+            "url": "https://sport.news.am/arm/news/168813/",
+            "date": "2026-09-07T10:08:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168813.jpg"
           },
           {
-            "title": "«Արսենալի» կամային հաղթանակը «Չելսիի» նկատմամբ (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168798/",
-            "date": "2026-09-06T17:30:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168798.jpg"
+            "title": "«Ինտերը» նոր պայմանագիր կնքեց 21-ամյա Էսպոզիտոյի հետ",
+            "url": "https://sport.news.am/arm/news/168810/",
+            "date": "2026-09-07T09:42:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168810.jpg"
           },
           {
-            "title": "US Open. Արինա Սաբալենկան քառորդ եզրափակիչում է",
-            "url": "https://sport.news.am/arm/news/168797/",
-            "date": "2026-09-06T17:15:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168797.jpg"
+            "title": "Ֆրանսիայի առաջնություն․ Երրորդ տուրի արդյունքներն ու մրցաշարային դրությունը",
+            "url": "https://sport.news.am/arm/news/168806/",
+            "date": "2026-09-07T09:03:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168806.jpg"
           },
           {
-            "title": "«Շիրակը» հաղթեց «Սարդարապատին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168796/",
-            "date": "2026-09-06T16:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168796.jpg"
+            "title": "Արտետա․ Անհավանական խաղ էր, շատ կարեւոր հաղթանակ",
+            "url": "https://sport.news.am/arm/news/168803/",
+            "date": "2026-09-07T08:04:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168803.jpg"
           },
           {
-            "title": "«Բարսելոնան» խնդիրներ չունեցավ՝ 5:0 (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168795/",
-            "date": "2026-09-06T16:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168795.jpg"
+            "title": "39-ամյա Ջեյմի Վարդին վերադարձավ Անգլիա",
+            "url": "https://sport.news.am/arm/news/168809/",
+            "date": "2026-09-07T07:50:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168809.jpg"
           },
           {
-            "title": "Անդրեա Կիմի Անտոնելին՝ Իտալիայի Մեծ մրցանակում հաղթած առաջին իտալացին է 60 տարում",
-            "url": "https://sport.news.am/arm/news/168794/",
-            "date": "2026-09-06T15:18:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168794.jpg"
+            "title": "Բունդեսլիգա․ Երկրորդ տուրի արդյունքներն ու մրցաշարային դրությունը",
+            "url": "https://sport.news.am/arm/news/168800/",
+            "date": "2026-09-07T07:22:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168800.jpg"
           },
           {
-            "title": "«Մանչեսթեր Յունայթեդը» վերջին վայրկյաններին բաց թողեց հաղթանակը (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168793/",
-            "date": "2026-09-06T15:03:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168793.jpg"
+            "title": "US Open. Ալկարասը քառորդ եզրափակիչում է, Մեդվեդեւը դուրս մնաց պայքարից",
+            "url": "https://sport.news.am/arm/news/168808/",
+            "date": "2026-09-07T06:56:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168808.jpg"
           },
           {
-            "title": "ԲԿՄԱ-ն ուժեղ էր «Ուրարտուից» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/168792/",
-            "date": "2026-09-06T14:51:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168792.jpg"
+            "title": "«Ռեալ Սոսիեդադի» գլխավոր մարզիչ․ Զախարյանը պետք է համբերատար լինի և սպասի իր հնարավորությանը",
+            "url": "https://sport.news.am/arm/news/168799/",
+            "date": "2026-09-07T06:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168799.jpg"
           }
         ]
       },
@@ -9480,6 +9504,18 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Պապոյանը ՀԲ փոխնախագահի հետ անդրադարձել է Հայաստանում NVIDIA–ի նախաձեռնություններին և ներդրումային ծրագրերին",
+            "url": "https://news.am/hy/news/1060085",
+            "date": "2026-09-07T11:16:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/0ZywepW01q3ARbJr.webp"
+          },
+          {
+            "title": "Սահմանային անցակետերը կապում են տնտեսությունները. Հայաստանի ԱԳՄ-ի և Վանի առևտրաարդյունաբերական պալատի հայտարարությունը",
+            "url": "https://news.am/hy/news/1060035",
+            "date": "2026-09-07T07:52:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/GM70UZC6o7As5T45.webp"
+          },
           {
             "title": "Իրանը ստեղծել է տնտեսական պատերազմի շտաբ՝ ռազմական գործողությունների հետևանքների դեմ պայքարելու համար",
             "url": "https://news.am/hy/news/1059915",
@@ -9527,18 +9563,6 @@
             "url": "https://news.am/hy/news/1059809",
             "date": "2026-09-05T12:40:00.000Z",
             "image": "https://news.am/storage/media/26/09/05/U871AtHRxgP66CO3.webp"
-          },
-          {
-            "title": "«Փաստ». Ինչի՞ է ձգտում «սրտի օլիգարխ չունեցող» Փաշինյանը",
-            "url": "https://news.am/hy/news/1059726",
-            "date": "2026-09-05T03:40:00.000Z",
-            "image": "https://news.am/storage/media/26/09/05/Xh5E56VYOnvyaUSh.webp"
-          },
-          {
-            "title": "Եվրոպայում մրցանակ են հանձնել համբույրների, քիթ մաքրելու և միզարանների վերաբերյալ կատարած հետազոտությունների համար",
-            "url": "https://news.am/hy/news/1059636",
-            "date": "2026-09-04T23:11:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/og8zrSKt6fbFxRze.webp"
           }
         ]
       },
@@ -9547,64 +9571,64 @@
         "label": "NEWS.am Style",
         "articles": [
           {
-            "title": "ՍԵՊՏԵՄԲԵՐԻ 7-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
-            "url": "https://style.news.am/arm/news/115983/",
-            "date": "2026-09-07T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115983.jpg"
+            "title": "Rolex-ը 5 միլիոն դոլարով. Չորս եղանակներից ոգեշնչված չորս յուրօրինակ Daytona ժամացույցներ կվաճառվեն բարեգործական նպատակներով",
+            "url": "https://style.news.am/arm/news/115996/",
+            "date": "2026-09-07T11:37:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115996.jpg"
           },
           {
-            "title": "Մաքուր միջավայրում մաքուր մտքեր են ծնվում․ Հակոբ Միկոյանի «ՄաքրաՊատումը»",
-            "url": "https://style.news.am/arm/news/115979/",
-            "date": "2026-09-06T17:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115979.jpg"
+            "title": "OnlyFans-ի նախկին մենեջերը հարթակն անվանել է «անհատակ փոս». «Սեռական ազատությունը սուտ է»",
+            "url": "https://style.news.am/arm/news/115995/",
+            "date": "2026-09-07T11:17:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115995.jpg"
           },
           {
-            "title": "«Գեղեցիկ կադրը դեռ կինո չէ». Հովհաննես Ղազարյանը՝ ռեժիսորի աչքի, դերասանի ազատության և ժամանակի մասին",
-            "url": "https://style.news.am/arm/news/115978/",
-            "date": "2026-09-06T14:05:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115978.jpg"
+            "title": "Նորաձևության զոհ, թե՞ իրական Բիգֆութ. Բրդոտ «հրեշը» վախեցրել է ԱՄՆ-ի մի ամբողջ քաղաք",
+            "url": "https://style.news.am/arm/news/115992/",
+            "date": "2026-09-07T10:34:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115992.jpg"
           },
           {
-            "title": "Մահվան մղում՝ «Դեռահասների սեքսը և մահը «Միասմա» ճամբարում» ֆիլմում",
-            "url": "https://style.news.am/arm/news/115972/",
-            "date": "2026-09-06T12:35:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115972.jpg"
+            "title": "Թրամփի նոր սանրվածքը կրկին իրարանցում է առաջացրել ինտերնետում. պապիկը նոր կեղծամ է գնել",
+            "url": "https://style.news.am/arm/news/115994/",
+            "date": "2026-09-07T10:15:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115994.jpg"
           },
           {
-            "title": "Էվիկն ու Յանն այսօր ամուսնանում են",
-            "url": "https://style.news.am/arm/news/115982/",
-            "date": "2026-09-06T11:57:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115982.jpg"
+            "title": "Նիկոլա Պելցը Վենետիկում ստացել է Rising Star մրցանակը. Բրուքլին Բեքհեմը նրա կողքին էր",
+            "url": "https://style.news.am/arm/news/115991/",
+            "date": "2026-09-07T09:43:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115991.jpg"
           },
           {
-            "title": "Վազելին՝ կրեմի, դիմակի և բալզամի փոխարեն. կարո՞ղ է արդյոք մեկ միջոցը փոխարինել կոսմետիկ պարագաների կեսին",
-            "url": "https://style.news.am/arm/news/115973/",
-            "date": "2026-09-06T10:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115973.jpg"
+            "title": "«Մեզ հավելված է պետք աղջիկների և գեյերի համար». Բեբե Ռեքսան պատերազմ է հայտարարել իր մեծ կրծքերով տարված տղամարդկանց",
+            "url": "https://style.news.am/arm/news/115990/",
+            "date": "2026-09-07T09:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115990.jpg"
           },
           {
-            "title": "Հայկական ոճ. ճանապարհորդական գլամուր և քաղաքային շքեղություն",
-            "url": "https://style.news.am/arm/news/115974/",
-            "date": "2026-09-06T08:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115974.jpg"
+            "title": "Կուրծքը որպես զենք. 57 տարեկան Ջենիֆեր Լոպեսը կրկին բոլորին ստիպել է խոսել իր մասին",
+            "url": "https://style.news.am/arm/news/115989/",
+            "date": "2026-09-07T08:29:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115989.jpg"
           },
           {
-            "title": "«Ես պետք է այստեղ բնակարան գնեմ». «Եվրատեսիլ 2026»-ի հաղթող DARA-ն Coca-Cola Fest 2026-ի բեմից պատմել է Հայաստանից ստացած իր տպավորությունների մասին",
-            "url": "https://style.news.am/arm/news/115981/",
-            "date": "2026-09-06T07:35:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115981.jpg"
+            "title": "Սյուզան Սարանդոն. «Ես դեռ դերեր եմ կորցնում Պաղեստինին իմ աջակցության պատճառով»",
+            "url": "https://style.news.am/arm/news/115988/",
+            "date": "2026-09-07T08:13:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115988.jpg"
           },
           {
-            "title": "Սիրված հիթեր և հայկական մոտիվներ. Սիրուշոն դարձավ Coca-Cola Fest 2026-ի բեմի գլխավոր աստղը",
-            "url": "https://style.news.am/arm/news/115980/",
-            "date": "2026-09-06T06:46:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115980.jpg"
+            "title": "Սիարան հղի է. 40-ամյա երգչուհին սպասում է իր հինգերորդ երեխային",
+            "url": "https://style.news.am/arm/news/115987/",
+            "date": "2026-09-07T07:36:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115987.jpg"
           },
           {
-            "title": "«Մարդիկ պետք է հասկանան, որ բժիշկներն էլ մարդ են». Դավիթ Տոնոյանը՝ բժշկության, բլոգինգի և այն թեմաների մասին, որոնցից ամաչում ենք խոսել",
-            "url": "https://style.news.am/arm/news/115976/",
-            "date": "2026-09-06T06:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115976.jpg"
+            "title": "Ռոբ Ռեյների հետմահու հաղթանակը «Էմմի» մրցանակաբաշխությունում դաժան սպանությունից ինը ամիս անց",
+            "url": "https://style.news.am/arm/news/115986/",
+            "date": "2026-09-07T07:19:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115986.jpg"
           }
         ]
       },
@@ -9745,6 +9769,42 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Հրշեջ-փրկարարները մեկուսացրել են «Երևանյան» լճին հարակից ձորում բռնկված հրդեհը",
+            "url": "https://news.am/hy/news/1060087",
+            "date": "2026-09-07T11:23:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/272AWOxpT0VnfLjV.webp"
+          },
+          {
+            "title": "Ուսումնարանի 17-ամյա ուսանողը բռունցքով մի քանի անգամ հարվածել է կուրսընկերոջը. վերջինս հոսպիտալացվել է",
+            "url": "https://news.am/hy/news/1060083",
+            "date": "2026-09-07T11:10:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/G55DZax50fPAeypU.webp"
+          },
+          {
+            "title": "Խոշոր հրդեհ՝ Երեւանյան լճի հարակից տարածքում",
+            "url": "https://news.am/hy/news/1060076",
+            "date": "2026-09-07T10:32:36.000Z",
+            "image": "https://i.ytimg.com/vi/c2awzZvIZ9U/hqdefault.jpg"
+          },
+          {
+            "title": "«Նուբարաշեն» ՔԿՀ-ի ծառայողները կանխել են ատամնաբուժարան տեղափոխված դատապարտյալին թմրանյութի փոխանցումը",
+            "url": "https://news.am/hy/news/1060053",
+            "date": "2026-09-07T09:08:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/UFSrnq5imtfcuJXG.webp"
+          },
+          {
+            "title": "Իսրայելը հարձակվել է Լիբանանի հարավի բնակելի թաղամասերի վրա",
+            "url": "https://news.am/hy/news/1060033",
+            "date": "2026-09-07T08:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/IoxNy9jgP8I8dRRM.webp"
+          },
+          {
+            "title": "Սևաստոպոլում դրոնների հարձակման հետևանքով դեռահաս աղջիկ է մահացել",
+            "url": "https://news.am/hy/news/1059992",
+            "date": "2026-09-07T05:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/WVOfLLPa7w7q5RsE.webp"
+          },
+          {
             "title": "Բյուրեղավանից աղիքային վարակին բնորոշ գանգատներով բուժօգնության է դիմել նախնական տվյալներով 6 քաղաքացի",
             "url": "https://news.am/hy/news/1059996",
             "date": "2026-09-07T05:25:00.000Z",
@@ -9767,42 +9827,6 @@
             "url": "https://news.am/hy/news/1059957",
             "date": "2026-09-06T15:43:08.000Z",
             "image": "https://news.am/storage/media/26/09/06/BcjUXeNFo98VHi7v.webp"
-          },
-          {
-            "title": "Քյոլնում Rheinmetall պաշտպանական ընկերության դեմ հակապատերազմական ակցիան վերածվել է ոստիկանության հետ բախումների. տուժել է 11 ոստիկան",
-            "url": "https://news.am/hy/news/1059947",
-            "date": "2026-09-06T15:42:00.000Z",
-            "image": "https://news.am/storage/media/26/09/06/oHFIJIOqEJugrdry.webp"
-          },
-          {
-            "title": "Կոնգոյի ԴՀ-ում հարսանիքի ժամանակ բռնկված հրդեհի հետևանքով առնվազն 22 մարդ է զոհվել",
-            "url": "https://news.am/hy/news/1059939",
-            "date": "2026-09-06T14:11:00.000Z",
-            "image": "https://news.am/storage/media/26/09/06/E8YpoVBXE6wMjFm5.webp"
-          },
-          {
-            "title": "Էջմիածնի թիվ 9 հիմնական դպրոցի 13 և 12-ամյա աշակերտները վիճաբանել ու փոխադարձ հարվածներ են հասցրել․ մեկի քիթն է վնասվել, մյուսը ստացել է քերծվածքներ",
-            "url": "https://news.am/hy/news/1059905",
-            "date": "2026-09-06T09:12:51.000Z",
-            "image": "https://news.am/storage/media/26/09/06/Ss770qYurYxXmnsw.webp"
-          },
-          {
-            "title": "Խոշոր հրդեհ Արարատյան փողոցի շենքերից մեկում. բնակիչները տարհանվել են",
-            "url": "https://news.am/hy/news/1059902",
-            "date": "2026-09-06T08:53:07.000Z",
-            "image": "https://news.am/storage/media/26/06/24/qYbTzhWV8HQIYKik.webp"
-          },
-          {
-            "title": "Հրդեհ է բռնկվել Ոսկեվազ գյուղի գործարաններից մեկում",
-            "url": "https://news.am/hy/news/1059894",
-            "date": "2026-09-06T07:16:07.000Z",
-            "image": "https://news.am/storage/media/26/06/24/qYbTzhWV8HQIYKik.webp"
-          },
-          {
-            "title": "ԻՀՊԿ-ն հայտարարել է Իրանում ահաբեկչություններ նախապատրաստող երկու զինյալի ոչնչացման մասին",
-            "url": "https://news.am/hy/news/1059817",
-            "date": "2026-09-05T14:11:00.000Z",
-            "image": "https://news.am/storage/media/26/06/11/dDzbfJ0EsYIZyx7L.webp"
           }
         ]
       },
@@ -9877,6 +9901,12 @@
         "label": "Մշակույթ",
         "articles": [
           {
+            "title": "Եվրոպական ժառանգության օրերի շրջանակում մի շարք մշակութային կառույցներ անվճար կհյուրընկալեն հետաքրքրված անձանց․ ԿԳՄՍՆ",
+            "url": "https://news.am/hy/news/1060072",
+            "date": "2026-09-07T10:10:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/Pd2CVn4jiCuY71KM.webp"
+          },
+          {
             "title": "«Ստեղծագործությունն անսահման է». երաժշտության և հիշողության երեկո «Նարեկացի»-ում՝ ի պատիվ Դանիել Երաժշտի 80-ամյակի",
             "url": "https://news.am/hy/news/1059849",
             "date": "2026-09-05T16:24:48.000Z",
@@ -9929,12 +9959,6 @@
             "url": "https://news.am/hy/news/1057532",
             "date": "2026-08-25T08:11:00.000Z",
             "image": "https://news.am/storage/media/26/08/25/CQxFkltCKXwjpin3.webp"
-          },
-          {
-            "title": "Թավա տոլմա․ համախմբող ուտեստի յուրահատուկ մեկնաբանությունը",
-            "url": "https://news.am/hy/news/1057311",
-            "date": "2026-08-24T09:34:31.000Z",
-            "image": "https://i.ytimg.com/vi/4_uKbXZbftc/hqdefault.jpg"
           }
         ]
       }
@@ -9944,6 +9968,18 @@
         "categoryKey": "politics",
         "label": "Политика",
         "articles": [
+          {
+            "title": "Трамп опубликовал изображение с премьером Канады и назвал его губернатором",
+            "url": "https://news.am/ru/news/1060071",
+            "date": "2026-09-07T11:29:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/KIO8a86uBumVPsSy.webp"
+          },
+          {
+            "title": "Трамп поддержал идею переименовать штат Нью-Мексико в Нью-Америка",
+            "url": "https://news.am/ru/news/1060005",
+            "date": "2026-09-07T07:12:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/iG9HR8ypOjM29h8W.webp"
+          },
           {
             "title": "Трамп назвал Ормузский пролив территорией США",
             "url": "https://news.am/ru/news/1059985",
@@ -9991,18 +10027,6 @@
             "url": "https://news.am/ru/news/1059822",
             "date": "2026-09-05T12:55:12.000Z",
             "image": "https://news.am/storage/media/26/09/05/P0EY9oWxPMnhNdeW.webp"
-          },
-          {
-            "title": "Нашей стране снова нужна революция",
-            "url": "https://news.am/ru/news/1059806",
-            "date": "2026-09-05T10:44:58.000Z",
-            "image": "https://news.am/storage/media/26/09/05/gzjuoTvo6Y9yBdFb.webp"
-          },
-          {
-            "title": "Ваагн Хачатурян по ошибке увеличил число жертв на 1000?",
-            "url": "https://news.am/ru/news/1059751",
-            "date": "2026-09-05T05:46:40.000Z",
-            "image": "https://news.am/storage/media/26/09/05/oldLhsknB3i0lA2V.webp"
           }
         ]
       },
@@ -10077,6 +10101,42 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Защитник «Барселоны» сломал нос",
+            "url": "https://sport.news.am/rus/news/168807/",
+            "date": "2026-09-07T11:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168807.jpg"
+          },
+          {
+            "title": "Лига Европы: Названа заявка «Арарат-Армении»",
+            "url": "https://sport.news.am/rus/news/168812/",
+            "date": "2026-09-07T10:37:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168812.jpg"
+          },
+          {
+            "title": "Чемпионат Франции: Результаты третьего тура и турнирное положение",
+            "url": "https://sport.news.am/rus/news/168806/",
+            "date": "2026-09-07T09:03:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168806.jpg"
+          },
+          {
+            "title": "Артета: Мне понравилось, как мы боролись и рисковали",
+            "url": "https://sport.news.am/rus/news/168803/",
+            "date": "2026-09-07T08:04:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168803.jpg"
+          },
+          {
+            "title": "Немецкая Бундеслига։ Результаты второго тура и турнирное положение",
+            "url": "https://sport.news.am/rus/news/168800/",
+            "date": "2026-09-07T07:22:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168800.jpg"
+          },
+          {
+            "title": "Главный тренер «Реала Сосьедад»: Захаряну нужно дождаться своего шанса",
+            "url": "https://sport.news.am/rus/news/168799/",
+            "date": "2026-09-07T06:05:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/168799.jpg"
+          },
+          {
             "title": "Премьер-лига: Результаты третьего тура и турнирное положение",
             "url": "https://sport.news.am/rus/news/168801/",
             "date": "2026-09-07T05:31:00.000Z",
@@ -10099,42 +10159,6 @@
             "url": "https://sport.news.am/rus/news/168802/",
             "date": "2026-09-06T20:43:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/168802.jpg"
-          },
-          {
-            "title": "«Арсенал» одержал волевую победу над «Челси» (видео)",
-            "url": "https://sport.news.am/rus/news/168798/",
-            "date": "2026-09-06T17:30:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168798.jpg"
-          },
-          {
-            "title": "«Ширак» обыграл «Сардарапат» (видео)",
-            "url": "https://sport.news.am/rus/news/168796/",
-            "date": "2026-09-06T16:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168796.jpg"
-          },
-          {
-            "title": "Крупная победа «Барселоны» (видео)",
-            "url": "https://sport.news.am/rus/news/168795/",
-            "date": "2026-09-06T16:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168795.jpg"
-          },
-          {
-            "title": "БКМА оказался сильнее «Урарту» (видео)",
-            "url": "https://sport.news.am/rus/news/168792/",
-            "date": "2026-09-06T14:51:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168792.jpg"
-          },
-          {
-            "title": "Назван состав сборной Армении по футзалу",
-            "url": "https://sport.news.am/rus/news/168791/",
-            "date": "2026-09-06T13:48:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168791.jpg"
-          },
-          {
-            "title": "Анонс матчей дня",
-            "url": "https://sport.news.am/rus/news/168788/",
-            "date": "2026-09-06T05:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/168788.jpg"
           }
         ]
       },
@@ -10142,6 +10166,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Пограничные пункты пропуска связывают экономики: заявление Союза промышленников и предпринимателей Армении и Торгово-промышленной палаты Вана",
+            "url": "https://news.am/ru/news/1060035",
+            "date": "2026-09-07T07:52:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/GM70UZC6o7As5T45.webp"
+          },
           {
             "title": "Иран создал штаб экономической войны для борьбы с последствиями военных действий",
             "url": "https://news.am/ru/news/1059915",
@@ -10195,12 +10225,6 @@
             "url": "https://news.am/ru/news/1059636",
             "date": "2026-09-04T23:11:00.000Z",
             "image": "https://news.am/storage/media/26/09/04/og8zrSKt6fbFxRze.webp"
-          },
-          {
-            "title": "Количество миллиардеров в мире в 2025 году выросло на 8,2%",
-            "url": "https://news.am/ru/news/1059679",
-            "date": "2026-09-04T15:58:00.000Z",
-            "image": "https://news.am/storage/media/26/09/04/3CbBplFftdULx1GB.webp"
           }
         ]
       },
@@ -10209,64 +10233,64 @@
         "label": "NEWS.am Style",
         "articles": [
           {
-            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 7 СЕНТЯБРЯ",
-            "url": "https://style.news.am/rus/news/115983/",
-            "date": "2026-09-07T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115983.jpg"
+            "title": "Rolex за $5 млн: четыре уникальные Daytona, посвященные временам года, выставят на благотворительный аукцион",
+            "url": "https://style.news.am/rus/news/115996/",
+            "date": "2026-09-07T11:37:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115996.jpg"
           },
           {
-            "title": "Влечение к смерти в картине «Подростковый секс и смерть в лагере «Миазма»»",
-            "url": "https://style.news.am/rus/news/115972/",
-            "date": "2026-09-06T12:35:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115972.jpg"
+            "title": "Бывший менеджер OnlyFans назвала платформу «бездонной ямой»: «Сексуальная свобода — это ложь»",
+            "url": "https://style.news.am/rus/news/115995/",
+            "date": "2026-09-07T11:17:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115995.jpg"
           },
           {
-            "title": "Вазелин вместо крема, маски и бальзама: действительно ли один продукт может заменить половину косметички?",
-            "url": "https://style.news.am/rus/news/115973/",
-            "date": "2026-09-06T10:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115973.jpg"
+            "title": "Жертва моды или настоящий Бигфут: Мохнатый «монстр» перепугал целый городок в США",
+            "url": "https://style.news.am/rus/news/115992/",
+            "date": "2026-09-07T10:34:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115992.jpg"
           },
           {
-            "title": "Армянский стиль в лицах: гламур путешественницы и городской шик",
-            "url": "https://style.news.am/rus/news/115974/",
-            "date": "2026-09-06T08:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115974.jpg"
+            "title": "Новая прическа Трампа снова взбудоражила интернет: Дедушка купил новый парик",
+            "url": "https://style.news.am/rus/news/115994/",
+            "date": "2026-09-07T10:15:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115994.jpg"
           },
           {
-            "title": "«Мне нужно купить здесь квартиру»: победительница «Евровидения-2026» DARA о своих впечатлениях от Армении на Coca-Cola Fest 2026",
-            "url": "https://style.news.am/rus/news/115981/",
-            "date": "2026-09-06T07:35:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115981.jpg"
+            "title": "Никола Пельтц получила награду Rising Star в Венеции: Бруклин Бекхэм не отходил от нее ни на шаг",
+            "url": "https://style.news.am/rus/news/115991/",
+            "date": "2026-09-07T09:43:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115991.jpg"
           },
           {
-            "title": "Рубрика Зодиак: red flags каждого знака",
-            "url": "https://style.news.am/rus/news/115970/",
-            "date": "2026-09-06T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115970.jpg"
+            "title": "«Нам нужно приложение для девушек и геев»: Биби Рекса объявила войну мужчинам, помешанным на ее огромной груди",
+            "url": "https://style.news.am/rus/news/115990/",
+            "date": "2026-09-07T09:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115990.jpg"
           },
           {
-            "title": "Льюис Хэмилтон купил машину своей мечты — культовый Ferrari F40",
-            "url": "https://style.news.am/rus/news/115969/",
-            "date": "2026-09-05T15:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115969.jpg"
+            "title": "Грудь как оружие: Дженнифер Лопес в 57 лет снова заставила всех говорить о себе",
+            "url": "https://style.news.am/rus/news/115989/",
+            "date": "2026-09-07T08:29:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115989.jpg"
           },
           {
-            "title": "Неаппетитная правда о суши: ученые выяснили, что 96% тунца заражено паразитическими червями",
-            "url": "https://style.news.am/rus/news/115967/",
-            "date": "2026-09-05T14:31:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115967.jpg"
+            "title": "Сьюзан Сарандон: «Я все еще теряю роли из-за поддержки Палестины»",
+            "url": "https://style.news.am/rus/news/115988/",
+            "date": "2026-09-07T08:13:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115988.jpg"
           },
           {
-            "title": "Что объединяет Безоса, Шекспира и Чингисхана?",
-            "url": "https://style.news.am/rus/news/115966/",
-            "date": "2026-09-05T13:38:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115966.jpg"
+            "title": "Сиара беременна: 40-летняя певица ждет пятого ребенка",
+            "url": "https://style.news.am/rus/news/115987/",
+            "date": "2026-09-07T07:36:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115987.jpg"
           },
           {
-            "title": "Мрачные предсказания «китайского Нострадамуса» на 2027 год: Наземное вторжение в Иран и гражданская война в США",
-            "url": "https://style.news.am/rus/news/115965/",
-            "date": "2026-09-05T12:07:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/115965.jpg"
+            "title": "Посмертный триумф Роба Рейнера: «Эмми» спустя девять месяцев после жестокого убийства",
+            "url": "https://style.news.am/rus/news/115986/",
+            "date": "2026-09-07T07:19:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/115986.jpg"
           }
         ]
       },
@@ -10341,6 +10365,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "NatMet: 19 видов кишечных бактерий могут участвовать в поражении печени",
+            "url": "https://med.news.am/rus/news/41851/natmet-19-vidov-kishechniykh-bakteriiy-mogut-uchastvovat-v-porazhenii-pecheni.html",
+            "date": "2026-09-07T11:21:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41851.jpg"
+          },
+          {
+            "title": "Diabetologia: диабет первого типа может быть не одной болезнью, а двумя",
+            "url": "https://med.news.am/rus/news/41850/diabetologia-diabet-pervogo-tipa-mozhet-biyt-ne-odnoiy-boleznyu-a-dvumya.html",
+            "date": "2026-09-07T09:26:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/09/41850.jpg"
+          },
+          {
             "title": "Препарат для похудения может влиять на старение: ученые обнаружили неожиданный эффект семаглутида",
             "url": "https://med.news.am/rus/news/41849/preparat-dlya-pokhudeniya-mozhet-vliyat-na-starenie-ucheniye-obnaruzhili-neozhidanniyiy-effekt-semaglutida.html",
             "date": "2026-09-07T04:37:00.000Z",
@@ -10387,18 +10423,6 @@
             "url": "https://med.news.am/rus/news/41841/v-ssha-naznachenie-preparatov-ot-ozhireniya-detyam-do-12-let-viyroslo-v-310-raz-za-sem-let.html",
             "date": "2026-09-05T09:26:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/09/41841.jpg"
-          },
-          {
-            "title": "Circulation: эволокумаб продлил жизнь пациентам из группы риска инфаркта",
-            "url": "https://med.news.am/rus/news/41840/circulation-evolokumab-prodlil-zhizn-pacientam-iz-gruppiy-riska-infarkta.html",
-            "date": "2026-09-05T04:38:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41840.jpg"
-          },
-          {
-            "title": "TCTV: новый препарат удвоил выживаемость при раке легких",
-            "url": "https://med.news.am/rus/news/41839/tctv-noviyiy-preparat-udvoil-viyzhivaemost-pri-rake-legkikh.html",
-            "date": "2026-09-04T19:20:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/09/41839.jpg"
           }
         ]
       },
@@ -10406,6 +10430,36 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Крупный пожар на прилегающей к Ереванскому озеру территории",
+            "url": "https://news.am/ru/news/1060076",
+            "date": "2026-09-07T10:32:36.000Z",
+            "image": "https://i.ytimg.com/vi/c2awzZvIZ9U/hqdefault.jpg"
+          },
+          {
+            "title": "Сотрудники УИУ «Нубарашен» предотвратили передачу наркотиков осуждённому в стоматологической клинике",
+            "url": "https://news.am/ru/news/1060053",
+            "date": "2026-09-07T09:08:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/UFSrnq5imtfcuJXG.webp"
+          },
+          {
+            "title": "Израиль атаковал жилые кварталы на юге Ливана",
+            "url": "https://news.am/ru/news/1060033",
+            "date": "2026-09-07T08:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/IoxNy9jgP8I8dRRM.webp"
+          },
+          {
+            "title": "В Севастополе погибла девочка-подросток в результате атаки дронов",
+            "url": "https://news.am/ru/news/1059992",
+            "date": "2026-09-07T05:57:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/WVOfLLPa7w7q5RsE.webp"
+          },
+          {
+            "title": "В Бюрегаване опять зафиксировано отравление, за помощью обратились 6 граждан",
+            "url": "https://news.am/ru/news/1059996",
+            "date": "2026-09-07T05:25:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/IHTwSC2iw8K0WEcv.webp"
+          },
           {
             "title": "Пять человек погибли в результате происшествия с грузовым Boeing 767 в Майами",
             "url": "https://news.am/ru/news/1059987",
@@ -10435,36 +10489,6 @@
             "url": "https://news.am/ru/news/1059939",
             "date": "2026-09-06T14:11:00.000Z",
             "image": "https://news.am/storage/media/26/09/06/E8YpoVBXE6wMjFm5.webp"
-          },
-          {
-            "title": "В Эчмиадзине подрались ученики средних классов: они получили травмы",
-            "url": "https://news.am/ru/news/1059905",
-            "date": "2026-09-06T09:12:51.000Z",
-            "image": "https://news.am/storage/media/26/09/06/Ss770qYurYxXmnsw.webp"
-          },
-          {
-            "title": "Крупный пожар в одном из зданий на улице Араратян в Ереване: жители эвакуированы",
-            "url": "https://news.am/ru/news/1059902",
-            "date": "2026-09-06T08:53:07.000Z",
-            "image": "https://news.am/storage/media/26/06/24/qYbTzhWV8HQIYKik.webp"
-          },
-          {
-            "title": "В заводе в селе Воскеваз вспыхнул пожар",
-            "url": "https://news.am/ru/news/1059894",
-            "date": "2026-09-06T07:16:07.000Z",
-            "image": "https://news.am/storage/media/26/06/24/qYbTzhWV8HQIYKik.webp"
-          },
-          {
-            "title": "КСИР заявил о ликвидации двух боевиков, готовивших теракты в Иране",
-            "url": "https://news.am/ru/news/1059817",
-            "date": "2026-09-05T14:11:00.000Z",
-            "image": "https://news.am/storage/media/26/06/11/dDzbfJ0EsYIZyx7L.webp"
-          },
-          {
-            "title": "В Ноемберяне ограбили дом старшего экопатрульного: похитили 12 000 долларов США, 1 млн драмов РА и золотые украшения",
-            "url": "https://news.am/ru/news/1059793",
-            "date": "2026-09-05T09:21:56.000Z",
-            "image": "https://news.am/storage/media/26/09/05/uczSkiZGD1Frp65i.webp"
           }
         ]
       },
@@ -10539,6 +10563,12 @@
         "label": "Культура",
         "articles": [
           {
+            "title": "Бесплатный вход и десятки мероприятий: В Армении пройдут Дни европейского наследия",
+            "url": "https://news.am/ru/news/1060072",
+            "date": "2026-09-07T10:10:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/Pd2CVn4jiCuY71KM.webp"
+          },
+          {
             "title": "«Творчество безгранично»: вечер музыки и памяти в «Нарекаци» в честь 80-летия Даниела Еражишта",
             "url": "https://news.am/ru/news/1059849",
             "date": "2026-09-05T16:24:48.000Z",
@@ -10591,12 +10621,6 @@
             "url": "https://news.am/ru/news/1057188",
             "date": "2026-08-23T16:03:12.000Z",
             "image": "https://news.am/storage/media/26/08/23/CSwabJiwjhUfVNG2.webp"
-          },
-          {
-            "title": "Живое дыхание монгольской культуры в китайском Ордосе",
-            "url": "https://news.am/ru/news/1056929",
-            "date": "2026-08-21T15:49:23.000Z",
-            "image": "https://news.am/storage/media/26/08/21/EjwXgA4R8uykaezC.webp"
           }
         ]
       }
