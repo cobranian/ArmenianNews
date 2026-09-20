@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T10:35:51.802Z",
+  "generatedAt": "2026-09-20T14:28:27.355Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Մերցի ճակատագիրը վճռվում է Գերմանիայի արևելքում ընթացող ընտրություններում",
+            "url": "https://hy.armradio.am/archives/759219",
+            "date": "2026-09-20T13:07:18.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/QIP-Shot-Screen-3737-300x171.png",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱԹՍ-ների զանգվածային հարձակում Մոսկվայի վրա. երկու զոհ կա",
             "url": "https://hy.armradio.am/archives/759188",
             "date": "2026-09-20T10:30:00.000Z",
@@ -1416,13 +1423,6 @@
             "date": "2026-09-18T14:05:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/9686b940-b360-11f1-8f19-bd786ea30d0b.jpg-768x431.webp",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Ռուսական վերահսկողության տակ գտնվող տարածքների բնակիչները նույնպես կքվեարկեն․ Դումայի ընտրությունները կտևեն 3 օր",
-            "url": "https://hy.armradio.am/archives/758973",
-            "date": "2026-09-18T13:43:43.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/elections-e1789738925436-768x402.webp",
-            "category": "Միջազգային"
           }
         ]
       },
@@ -2110,6 +2110,18 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Nous devons créer l’école de la Quatrième République d’Arménie a indiqué le Premier ministre arménien lors de l’inauguration de l’école de Shatjrek",
+          "url": "https://www.armenews.com/nous-devons-creer-lecole-de-la-quatrieme-republique-darmenie-a-indique-le-premier-ministre-armenien-lors-de-linauguration-de-lecole-de-shatjrek/",
+          "date": "2026-09-20T14:12:48.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/344167.jpg"
+        },
+        {
+          "title": "L’ambassadeur de Russie en Arménie visite les centres d’extraction de cuivre et de molybdène de Zangezur et d’Agarak dans la région de Syunik",
+          "url": "https://www.armenews.com/lambassadeur-de-russie-en-armenie-visite-les-centres-dextraction-de-cuivre-et-de-molybdene-de-zangezur-et-dagarak-dans-la-region-de-syunik/",
+          "date": "2026-09-20T11:32:03.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/6643-1.webp"
+        },
+        {
           "title": "Décès de Richard Giragosian, directeur du Centre d’études régionales",
           "url": "https://www.armenews.com/deces-de-richard-giragosian-directeur-du-centre-detudes-regionales/",
           "date": "2026-09-20T10:05:36.000Z",
@@ -2156,24 +2168,18 @@
           "url": "https://www.armenews.com/louganda-suspend-sa-cooperation-militaire-avec-la-turquie-sur-fond-de-differend-concernant-un-opposant/",
           "date": "2026-09-20T06:30:42.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/09/HSojIkSXAAAhboi-scaled.jpeg"
-        },
-        {
-          "title": "« Un procès peut coûter cher. Le silence coûterait encore plus cher. Aidez NAM à défendre sa liberté d’informer. »",
-          "url": "https://www.armenews.com/proces-geragos-axa-aidez-nam-a-defendre-sa-liberte-dinformer/",
-          "date": "2026-09-20T06:30:23.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/47138440082_ca1fba983c_c.jpg"
-        },
-        {
-          "title": "Garéguine II consacre la nouvelle église Sainte-Mère-de-Dieu de Byureghavan",
-          "url": "https://www.armenews.com/gareguine-ii-consacre-la-nouvelle-eglise-sainte-mere-de-dieu-de-byureghavan/",
-          "date": "2026-09-20T06:30:19.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/3-1.jpg"
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "Edmen Shahbazyan remporte le tournoi UFC 331 et brandit le drapeau arménien dans l’octogone",
+          "url": "https://www.armenews.com/edmen-shahbazyan-remporte-le-tournoi-ufc-331-et-brandit-le-drapeau-armenien-dans-loctogone/",
+          "date": "2026-09-20T14:03:01.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/09/7788-2.png"
+        },
         {
           "title": "Arman Tsarukyan (Arménie) à l’UFC 331 (MMA) met KO le Brésilien Mauricio Ruffi au premier round…l’Arménien défie désormais Mark Zuckerberg le fondateur de Meta…",
           "url": "https://www.armenews.com/arman-tsarukyan-armenie-a-lufc-331-mma-met-ko-le-bresilien-mauricio-ruffi-au-premier-roundlarmenien-defie-desormais-mark-zuckerberg-le-fondateur-de-meta/",
@@ -2227,12 +2233,6 @@
           "url": "https://www.armenews.com/robert-emmiyan-reelu-president-de-la-federation-armenienne-dathletisme/",
           "date": "2026-09-14T11:32:51.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/09/12005.jpg"
-        },
-        {
-          "title": "Le nageur Hovhannès Gabrielyan a parcouru à la nage une section de 74 kilomètres du lac Sevan (Arménie)",
-          "url": "https://www.armenews.com/le-nageur-hovhannes-gabrielyan-a-parcouru-a-la-nage-une-section-de-74-kilometres-du-lac-sevan-armenie/",
-          "date": "2026-09-14T05:43:51.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/343758.jpg"
         }
       ]
     },
@@ -2687,6 +2687,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Sécurité de l’Arménie : un député du parti au pouvoir critique la ligne « dachnak »",
+          "url": "https://armenieinfo.tv/mer-oughin-34989/",
+          "date": "2026-09-20T11:02:44.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/mer-oughin-34989.jpg"
+        },
+        {
           "title": "Arménie : la base militaire russe a un rôle « symbolique », selon l’expert Leonid Nersissian",
           "url": "https://armenieinfo.tv/mer-oughin-34949/",
           "date": "2026-09-20T10:00:00.000Z",
@@ -2739,12 +2745,6 @@
           "url": "https://armenieinfo.tv/ararat-armenia-subit-une-lourde-defaite/",
           "date": "2026-09-17T15:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1789612531-5991.jpg"
-        },
-        {
-          "title": "Pachinian accepte l’invitation de Poutine pour une rencontre à Moscou",
-          "url": "https://armenieinfo.tv/pachinian-accepte-linvitation-de-poutine-pour-une-rencontre-a-moscou/",
-          "date": "2026-09-17T07:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1789525993-3610.jpg"
         }
       ]
     },
@@ -3105,12 +3105,6 @@
           "url": "https://armenieinfo.tv/mer-oughin-34857/",
           "date": "2026-09-14T07:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/mer-oughin-34857.jpg"
-        },
-        {
-          "title": "Arménie-Russie : un politologue arménien décrypte la crise et ses leviers de pression",
-          "url": "https://armenieinfo.tv/mer-oughin-34825/",
-          "date": "2026-09-14T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/09/mer-oughin-34825.jpg"
         }
       ]
     },
@@ -9433,6 +9427,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Արարատը» հաղթեց «Սյունիքին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169114/",
+            "date": "2026-09-20T13:56:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169114.jpg"
+          },
+          {
+            "title": "Հայաստանի հավաքականը սկսեց մարզական հավաքը",
+            "url": "https://sport.news.am/arm/news/169113/",
+            "date": "2026-09-20T13:14:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169113.jpg"
+          },
+          {
+            "title": "«Նապոլին» բաց թողեց հաղթանակը (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169112/",
+            "date": "2026-09-20T12:39:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169112.jpg"
+          },
+          {
+            "title": "Փոփոխություն Հայաստանի հավաքականում",
+            "url": "https://sport.news.am/arm/news/169111/",
+            "date": "2026-09-20T10:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169111.jpg"
+          },
+          {
             "title": "Շախմատային օլիմպիադա․ Հայաստանի թիմերի մրցակիցները 5-րդ խաղափուլում",
             "url": "https://sport.news.am/arm/news/169110/",
             "date": "2026-09-20T06:18:00.000Z",
@@ -9467,30 +9485,6 @@
             "url": "https://sport.news.am/arm/news/169105/",
             "date": "2026-09-19T19:29:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/169105.jpg"
-          },
-          {
-            "title": "«Բորուսիան» չորրորդ հաղթանակը տարավ եւ առաջատարն է (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169104/",
-            "date": "2026-09-19T18:54:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169104.jpg"
-          },
-          {
-            "title": "«Ռոման» բաց թողեց 2 գոլի առավելությունը, «Ինտերին» փրկեց Մարտինեսի դուբլը (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169103/",
-            "date": "2026-09-19T17:56:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169103.jpg"
-          },
-          {
-            "title": "Հայաստանի Մ-17 հավաքականը պարտվեց Լիբանանի Մ-17 թիմին",
-            "url": "https://sport.news.am/arm/news/169102/",
-            "date": "2026-09-19T17:44:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169102.jpg"
-          },
-          {
-            "title": "Միջմայրցամաքային գավաթ․ «Ալ Ահլին» Սպերցյանի հետ պարտվեց եւ դուրս մնաց պայքարից (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169101/",
-            "date": "2026-09-19T16:42:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169101.jpg"
           }
         ]
       },
@@ -9565,6 +9559,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Աշտարակ 2». Հիմարությունը քաջության քողի ներքո",
+            "url": "https://style.news.am/arm/news/116220/",
+            "date": "2026-09-20T12:07:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/116220.jpg"
+          },
+          {
             "title": "Սեքսի մասին ամենասկանդալային գրքերը",
             "url": "https://style.news.am/arm/news/116224/",
             "date": "2026-09-20T10:13:00.000Z",
@@ -9617,12 +9617,6 @@
             "url": "https://style.news.am/arm/news/116215/",
             "date": "2026-09-19T12:19:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/116215.jpg"
-          },
-          {
-            "title": "Մատանի, հակաբեղմնավորիչներ և կպչուն հաղորդագրություններ. Քիմ Քարդաշյանին հաջողվել է պաշտպանություն ստանալ իր չորս երեխաների համար",
-            "url": "https://style.news.am/arm/news/116214/",
-            "date": "2026-09-19T11:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/116214.jpg"
           }
         ]
       },
@@ -10227,6 +10221,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Вышка 2: глупость под видом смелости",
+            "url": "https://style.news.am/rus/news/116220/",
+            "date": "2026-09-20T12:07:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/09/116220.jpg"
+          },
+          {
             "title": "Литература до появления стоп-слова: топ самых скандальных книг о сексе",
             "url": "https://style.news.am/rus/news/116224/",
             "date": "2026-09-20T10:13:00.000Z",
@@ -10279,12 +10279,6 @@
             "url": "https://style.news.am/rus/news/116213/",
             "date": "2026-09-19T10:27:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/09/116213.jpg"
-          },
-          {
-            "title": "Брат принцессы Дианы рассказал, что Карл III после ее смерти звучал «как человек, выигравший в лотерею»",
-            "url": "https://style.news.am/rus/news/116212/",
-            "date": "2026-09-19T09:20:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/09/116212.jpg"
           }
         ]
       },
