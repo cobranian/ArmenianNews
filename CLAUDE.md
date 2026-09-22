@@ -1199,9 +1199,11 @@ de production servent toujours depuis la racine de leur domaine.
   banc qui reproduise un 403 propre à la CI — un poste résidentiel « prouve »
   le contraire. La parade est un **cron dans le Worker** qui préchauffe les 22
   réponses en **KV** sans visiteur (`proxy/README.md`, section « Cron + KV »),
-  et elle exige un `wrangler kv namespace create` puis un déploiement : tant
-  qu'ils ne sont pas faits, ArmRadio se backfille à chaque run avec pour seul
-  signe des `✗ armradio/…: 403 [… « Just a moment… »]` dans le log.
+  déployée le 22 septembre 2026 (namespace `CACHE`, id dans `wrangler.toml`,
+  cron toutes les dix minutes). L'en-tête `x-armradio-source: kv | origin`
+  dit d'où vient une réponse. Si ArmRadio se fige à nouveau, le signe est
+  `✗ armradio/…: 403 [… « Just a moment… »]` dans le log : vérifiez d'abord
+  que le cron tourne (tableau de bord Cloudflare → Worker → Logs), pas le UA.
 - **Les images des cartes ArmRadio passent aussi par le Worker.** Le navigateur
   reçoit un **503** en hotlinkant les vignettes de `{en,hy,ru}.armradio.am`
   (protection anti-hotlink Cloudflare) — et wsrv.nl ne peut pas les récupérer non
