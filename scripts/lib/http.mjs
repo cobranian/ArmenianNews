@@ -18,6 +18,30 @@ import https from 'node:https'
 // test/http-ua.test.mjs pins the rule.
 export const UA = 'Mozilla/5.0 (compatible; ArmenieInfo/1.0; +https://armenieinfo.ch)'
 
+// Why a 4xx happened, in the error itself. « HTTP 403 for <url> » is what the
+// CI log said for two weeks of ArmRadio failures, and it cannot tell a
+// Cloudflare challenge (`cf-mitigated: challenge`) from an upstream WAF or a
+// Worker error — three different fixes. Headers plus the first bytes of the
+// body, tags stripped, are enough to tell them apart from the log alone.
+async function describe(res) {
+  const hdr = ['cf-mitigated', 'server', 'cf-ray']
+    .map((h) => (res.headers.get(h) ? `${h}=${res.headers.get(h)}` : null))
+    .filter(Boolean)
+    .join(' ')
+  let body = ''
+  try {
+    body = (await res.text())
+      .replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 160)
+  } catch {
+    /* a body we cannot read is not worth a second failure */
+  }
+  return ` [${hdr}${body ? ` « ${body} »` : ''}]`
+}
+
 export async function fetchText(url, { retries = 2, timeout = 20000 } = {}) {
   let lastErr
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -34,7 +58,7 @@ export async function fetchText(url, { retries = 2, timeout = 20000 } = {}) {
         redirect: 'follow',
       })
       clearTimeout(timer)
-      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}${await describe(res)}`)
       return await res.text()
     } catch (err) {
       clearTimeout(timer)
