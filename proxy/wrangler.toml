@@ -5,3 +5,19 @@ name = "armradio-proxy"
 main = "armradio-worker.js"
 compatibility_date = "2026-07-01"
 workers_dev = true
+
+# Cron + KV : the relay is served from a cache warmed WITHOUT a visitor, because
+# armradio.am challenges the Worker's upstream call whenever the caller is a
+# datacenter IP (the CI). See the comment above `warm()` in armradio-worker.js.
+#
+# One-time setup, from this directory, after `npx wrangler login`:
+#   npx wrangler kv namespace create CACHE     # prints the namespace id
+# then paste that id below and `npx wrangler deploy`. Deploying with the
+# placeholder fails loudly — on purpose: without KV the Worker silently
+# behaves as before, and ArmRadio stays frozen from the CI.
+[triggers]
+crons = ["*/10 * * * *"]
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "REMPLACER-PAR-L-ID-DU-NAMESPACE"

@@ -32,6 +32,43 @@ proxy: `lang` picks between three fixed hosts (`en`/`hy`/`ru`.armradio.am) and
 > filling them all with the same articles — but they stay stale until you
 > redeploy.
 
+## Cron + KV: why the relay is served from a cache (September 2026)
+
+Being inside Cloudflare's network stopped being enough. Measured on 22
+September 2026 with the manual `diag` workflow (`gh workflow run diag.yml`,
+curl only, ~30 s): called from a GitHub runner, `?lang=…&path=/wp-json/…`
+returns the origin's **JavaScript challenge** (« Just a moment… », no
+`cf-mitigated` header because the Worker only copies status and body), while
+`?path=/nope` returns the Worker's own 400 and `/` returns 200 — so the Worker
+is reached, and only its upstream call is refused. The very same relay URL
+returns 200 from a residential IP. Cloudflare carries the visitor's identity
+(IP, bot score) into orange-to-orange subrequests, and there is nothing the
+Worker can put in its own request to undo that.
+
+A **Cron Trigger has no visitor**. Every ten minutes `scheduled()` fetches the
+22 REST responses the scraper asks for and stores them in a **KV namespace**
+(`CACHE`, one-hour TTL); the relay answers from KV first and goes upstream only
+on a miss. The response header `x-armradio-source: kv | origin` says which way
+an answer came.
+
+One-time setup, from this directory:
+
+```bash
+npx wrangler login                          # interactive, once
+npx wrangler kv namespace create CACHE      # prints the namespace id
+#   → paste the id into wrangler.toml ([[kv_namespaces]] … id = "…")
+npx wrangler deploy
+```
+
+Deploying with the placeholder id **fails on purpose**: without KV the Worker
+silently behaves as before, and ArmRadio stays frozen from the CI. To verify,
+wait ten minutes (first cron), then `gh workflow run hourly.yml` and look for
+`✓ armradio/en/politics (10)` — or from any machine:
+
+```bash
+curl -sI "$ARMRADIO_PROXY/?lang=hy&path=%2Fwp-json%2Fwp%2Fv2%2Fposts%3Fcategories%3D12%26per_page%3D10%26_embed%3D1" | grep x-armradio-source
+```
+
 ## One-time setup (dashboard, no CLI)
 
 1. Create a free account at <https://dash.cloudflare.com> (no domain needed).

@@ -1188,6 +1188,20 @@ de production servent toujours depuis la racine de leur domaine.
   `400 forbidden upstream` et chaque rubrique se backfille en silence — le seul
   signe est un mur ArmRadio ru figé. Redéployer : `cd proxy && npx wrangler
   deploy`.
+- **Le Worker ne suffit plus : armradio.am défie sa sous-requête quand
+  l'APPELANT est la CI.** Depuis mi-septembre 2026, le relais `?path=` répond
+  « Just a moment… » (défi JavaScript de l'amont) depuis un runner GitHub, et
+  200 depuis une IP résidentielle — même Worker, même URL. Cloudflare propage
+  l'identité du visiteur (IP, score de bot) dans les sous-requêtes vers une
+  autre zone Cloudflare, et le UA que le Worker envoie n'y change rien. Ne
+  cherchez donc pas la cause dans `fetchText` ni dans le UA : la sonde
+  `gh workflow run diag.yml` (curl seul, 30 s, sans instantané) est le seul
+  banc qui reproduise un 403 propre à la CI — un poste résidentiel « prouve »
+  le contraire. La parade est un **cron dans le Worker** qui préchauffe les 22
+  réponses en **KV** sans visiteur (`proxy/README.md`, section « Cron + KV »),
+  et elle exige un `wrangler kv namespace create` puis un déploiement : tant
+  qu'ils ne sont pas faits, ArmRadio se backfille à chaque run avec pour seul
+  signe des `✗ armradio/…: 403 [… « Just a moment… »]` dans le log.
 - **Les images des cartes ArmRadio passent aussi par le Worker.** Le navigateur
   reçoit un **503** en hotlinkant les vignettes de `{en,hy,ru}.armradio.am`
   (protection anti-hotlink Cloudflare) — et wsrv.nl ne peut pas les récupérer non

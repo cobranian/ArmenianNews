@@ -2,9 +2,12 @@
 //
 // Why this exists: armradio.am sits behind Cloudflare, which serves an
 // intermittent 403 "managed challenge" to datacenter IPs (GitHub Actions
-// runners). A Cloudflare Worker runs *inside* Cloudflare's network, so its
-// subrequests to the (also-Cloudflare-fronted) origin are not subject to that
-// eyeball-IP challenge — giving the hourly scraper a stable path to the feed.
+// runners). A Cloudflare Worker runs *inside* Cloudflare's network, which
+// used to be enough. It no longer is: since September 2026 the origin
+// challenges the Worker's subrequest too whenever the *visitor* calling the
+// Worker is a datacenter IP — see the comment above `warm()`. The relay is
+// therefore served from a KV cache that a Cron Trigger fills with no visitor
+// in the loop.
 //
 // Three modes:
 //   GET /                          → the newswire headlines (REST, RSS fallback)
@@ -26,6 +29,55 @@ const HOST_BY_LANG = {
   en: 'en.armradio.am',
   hy: 'hy.armradio.am',
   ru: 'ru.armradio.am',
+}
+
+// WHY THERE IS A CRON AND A KV CACHE — the visitor leaks into the subrequest.
+//
+// When this Worker is called from a GitHub Actions runner, armradio.am's own
+// Cloudflare answers the Worker's upstream fetch with a JavaScript challenge
+// (« Just a moment… »); called from a residential IP, the very same relay URL
+// returns 200. Measured 22 September 2026 with the `diag` workflow: the Worker
+// itself is reachable from the CI (`?path=/nope` → its own 400), only the
+// upstream call fails, and only for that caller. Cloudflare carries the
+// visitor's identity (IP, bot score) into orange-to-orange subrequests, and a
+// datacenter visitor with a non-browser UA scores as automated. Nothing in
+// the request the Worker builds can change that — UA and headers are its own.
+//
+// A Cron Trigger has no visitor. `scheduled()` fetches the 22 REST responses
+// the scraper asks for (see WARM_PATHS) every ten minutes and stores them in
+// KV; the relay serves from KV first and only then goes upstream. The scraper's
+// request strings must match WARM_PATHS byte for byte — hence the same
+// category ids as scripts/sources/armradio.mjs (HY/RU fixed, EN resolved from
+// the categories list, same slugs). KV `expirationTtl` is an hour: six missed
+// crons before a rubric goes stale, and the scraper's backfill covers the rest.
+const SECTION_SLUGS = ['politics', 'society', 'economics', 'analytics', 'world', 'culture', 'sport']
+const HY_IDS = [12, 4, 11, 9, 5, 6, 1]
+const RU_IDS = [4, 5, 8, 6, 7, 9, 1]
+const CATEGORIES_PATH = '/wp-json/wp/v2/categories?per_page=100&_fields=id,slug'
+const postsPath = (id) => `/wp-json/wp/v2/posts?categories=${id}&per_page=10&_embed=1`
+const KV_TTL = 3600
+const kvKey = (lang, path) => `${lang} ${path}`
+
+async function warm(env) {
+  const put = async (lang, path) => {
+    const res = await fromOrigin(`https://${HOST_BY_LANG[lang]}${path}`, 'application/json')
+    if (!res.ok) return null
+    const body = await res.text()
+    await env.CACHE.put(kvKey(lang, path), body, { expirationTtl: KV_TTL })
+    return body
+  }
+  const jobs = []
+  for (const [lang, ids] of [['hy', HY_IDS], ['ru', RU_IDS]]) {
+    for (const id of ids) jobs.push(put(lang, postsPath(id)))
+  }
+  const cats = await put('en', CATEGORIES_PATH)
+  if (cats) {
+    const idBySlug = Object.fromEntries(JSON.parse(cats).map((c) => [c.slug, c.id]))
+    for (const slug of SECTION_SLUGS) {
+      if (idBySlug[slug]) jobs.push(put('en', postsPath(idBySlug[slug])))
+    }
+  }
+  await Promise.allSettled(jobs)
 }
 
 const REST =
@@ -83,7 +135,11 @@ function imageTarget(params) {
 }
 
 export default {
-  async fetch(request) {
+  async scheduled(_event, env) {
+    if (env.CACHE) await warm(env)
+  },
+
+  async fetch(request, env, ctx) {
     const { searchParams } = new URL(request.url)
 
     // Image mode — relay one media file as bytes (article thumbnails).
@@ -110,14 +166,29 @@ export default {
       const target = relayTarget(searchParams)
       if (!target) return new Response('forbidden upstream', { status: 400 })
 
+      const json = (body, status, source) =>
+        new Response(body, {
+          status,
+          headers: {
+            'content-type': 'application/json; charset=utf-8',
+            'cache-control': 'public, max-age=300',
+            // Which way this answer came: `kv` (warmed by the cron, immune to
+            // the visitor's bot score) or `origin`. Read it from the CI log
+            // when a rubric fails — see the comment above WARM_PATHS.
+            'x-armradio-source': source,
+          },
+        })
+
+      const key = kvKey(searchParams.get('lang') || 'en', searchParams.get('path'))
+      const hit = env?.CACHE ? await env.CACHE.get(key) : null
+      if (hit) return json(hit, 200, 'kv')
+
       const res = await fromOrigin(target, 'application/json')
-      return new Response(await res.text(), {
-        status: res.status,
-        headers: {
-          'content-type': 'application/json; charset=utf-8',
-          'cache-control': 'public, max-age=300',
-        },
-      })
+      const body = await res.text()
+      if (res.ok && env?.CACHE) {
+        ctx.waitUntil(env.CACHE.put(key, body, { expirationTtl: KV_TTL }))
+      }
+      return json(body, res.status, 'origin')
     }
 
     // Default mode — newswire headlines. Prefer clean JSON from the REST API.
