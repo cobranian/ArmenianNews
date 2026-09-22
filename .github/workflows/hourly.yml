@@ -2,7 +2,11 @@ name: Hourly snapshot & deploy
 
 on:
   schedule:
-    - cron: '0 * * * *' # every hour, on the hour (UTC)
+    # Off the top of the hour on purpose. GitHub sheds scheduled runs under
+    # load, and :00 is its busiest minute: with '0 * * * *' this job fired only
+    # 6 times a day (measured 15–22 September 2026 — gaps of 3 to 6 hours
+    # between snapshots), every run reporting success.
+    - cron: '23 * * * *' # every hour (UTC)
   workflow_dispatch: {} # allow manual runs
   push:
     branches: [main]

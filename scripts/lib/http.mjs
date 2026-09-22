@@ -1,9 +1,22 @@
-// Minimal fetch helper with a browser-like UA and retries.
+// Minimal fetch helper with a self-identifying UA and retries.
 import https from 'node:https'
 
-const UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-  '(KHTML, like Gecko) Chrome/124.0 Safari/537.36'
+// The UA must NOT claim a versioned browser ("Chrome/124.0"…), and this is the
+// single most expensive line of the scrapers. From 9 September 2026, Cloudflare
+// answers 403 on armenpress.am, civilnet.am and every news.am host to any UA
+// that says "Chrome" without Chrome's TLS fingerprint — which Node never has,
+// undici or node:https alike. The same UA also drew intermittent 403s from the
+// ArmRadio Worker (workers.dev sits behind Cloudflare too), from the CI's
+// datacenter IPs only. A UA that claims no browser passes on all eleven hosts
+// of this repo, each through the client its module uses (measured 22 September
+// 2026). It does NOT lift the undici/node:https split below: with this UA,
+// undici still gets 403 on the three Cloudflare hosts and node:https 200.
+//
+// Nothing else guards this: a browser UA passes lint, tests and build, and
+// backfillSections then re-serves the previous snapshot over every 403. The
+// site showed thirteen days of frozen wires before a reader noticed.
+// test/http-ua.test.mjs pins the rule.
+export const UA = 'Mozilla/5.0 (compatible; ArmenieInfo/1.0; +https://armenieinfo.ch)'
 
 export async function fetchText(url, { retries = 2, timeout = 20000 } = {}) {
   let lastErr
@@ -40,8 +53,9 @@ export async function fetchText(url, { retries = 2, timeout = 20000 } = {}) {
 // machine, same OpenSSL TLS, same HTTP/1.1, any headers — header names, casing,
 // Accept*, and sec-fetch-* were ruled out one at a time on armenpress; only the
 // client itself predicts the 403. Both sit behind Cloudflare, which is the most
-// likely reason (a TLS/HTTP fingerprint check), and both filter on User-Agent
-// too, hence the browser UA below.
+// likely reason (a TLS/HTTP fingerprint check). They filter on User-Agent too,
+// but the other way round from what one expects: a *browser* UA is what gets
+// blocked (see UA above). news.am's four hosts joined them in September 2026.
 //
 // Moving either caller to fetchText 403s every page, and the empty result is
 // then silently backfilled from the previous snapshot — it reads as "the site

@@ -73,7 +73,7 @@ npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : l
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 234 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL du Courrier, cinq brins Instagram
+npm test             # 241 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -85,7 +85,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **234 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **241 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -183,6 +183,16 @@ composants importent au build :
       rubriques, que le backfill masquerait ensuite en silence. **CivilNet tombe
       exactement dans le même piège** — d'où l'aide partagée, qui n'existait pas
       quand Armenpress était seul concerné.
+    - **Le User-Agent ne doit PAS se dire « Chrome »** (ni aucun navigateur
+      versionné). Depuis le 9 septembre 2026, Cloudflare répond 403 sur
+      Armenpress, CivilNet et les quatre hôtes NEWS.am à tout UA qui annonce
+      Chrome sans en avoir l'empreinte TLS — ce que Node n'a jamais. Le dépôt a
+      servi **treize jours** de dépêches figées, 40 runs « success » d'affilée,
+      avant qu'un lecteur ne le voie : le backfill masque les 403 et rien ne
+      les compte. `UA` (`scripts/lib/http.mjs`) s'identifie désormais comme
+      `ArmenieInfo/1.0`, et `test/http-ua.test.mjs` interdit le retour d'un UA
+      de navigateur. Le premier réflexe devant un mur figé reste le même :
+      `gh run view <id> --log | grep '✗'`.
   - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
   - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
     WordPress, francophone.
@@ -1051,15 +1061,23 @@ de production servent toujours depuis la racine de leur domaine.
 
   Deux l'ont été par un détour, et ce sont ces deux-là qu'on « simplifie » par
   erreur :
-  - **Courrier d'Erevan lit ses dates dans le SITEMAP**, pas dans ses pages. Sa
-    grille de rubrique n'en affiche aucune, et sa page d'article n'en donne
-    qu'au **jour près**, en clair — donc « il y a 18 h » ou « 1 j » selon
-    l'heure de lecture, pour **80 requêtes** par instantané. Le `<lastmod>` du
-    sitemap Drupal est à la **minute**, en **2 requêtes** pour 5 400 articles.
-    C'est formellement une date de *modification* : vérifiée sur 8 articles,
-    elle tombe à chaque fois sur le jour imprimé — ce site ne réédite pas.
-    **Son RSS existe (`/fr/rss.xml`) et revient VIDE** (293 octets, zéro
-    `<item>`) : ne le rebranchez pas en croyant faire plus simple.
+  - **Courrier d'Erevan lit ses dates dans le SITEMAP d'abord**, et dans sa
+    grille à défaut. Depuis la refonte du site (11 septembre 2026), la grille
+    `article.card` porte un `<time datetime>`, mais **au jour près** (figé à
+    `T12:00:00Z`) — donc « il y a 18 h » ou « 1 j » selon l'heure de lecture.
+    Le `<lastmod>` de `/sitemap.xml?page=N` est à la **minute**, en **2
+    requêtes** pour 5 700 articles. C'est formellement une date de
+    *modification* : vérifiée sur 8 articles, elle tombe à chaque fois sur le
+    jour imprimé — ce site ne réédite pas.
+
+    **Cette refonte a été silencieuse onze jours durant** : l'ancien sélecteur
+    ne trouvait plus rien, chaque rubrique levait « No articles parsed », le
+    backfill resservait l'instantané du 11 septembre, et ses 80 vignettes
+    (`styles/530x350`, supprimées à la refonte) répondaient **404** — des
+    cartes figées **et** sans image, tous les contrôles au vert. Les URL ont
+    perdu leur préfixe de langue (`/fr/actualite` → 301, `/hy/…` → 404).
+    `test/courrier-grid.test.mjs` lit la grille actuelle depuis une fixture
+    réelle ; si le site refond encore, c'est lui qui tombera.
 
     **Ce détour a un prix, et il a été payé :** les dates ne rejoignent les
     articles que par **appariement d'URL**, et les deux côtés n'écrivent pas la

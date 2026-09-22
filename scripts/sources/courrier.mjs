@@ -4,23 +4,36 @@ import { absUrl, clean } from '../lib/util.mjs'
 
 const BASE = 'https://courrier.am'
 
-// DATES : elles viennent du SITEMAP, et c'est le détour qui les rend possibles.
+// LE SITE A ÉTÉ REFONDU LE 11 SEPTEMBRE 2026, et la refonte a été SILENCIEUSE
+// pour ce module : le nouveau thème Drupal (« card ») ne portait plus l'ancien
+// sélecteur, chaque rubrique levait « No articles parsed », et
+// `backfillSections` resservait l'instantané du 11 septembre — dont les 80
+// vignettes (`styles/530x350`, supprimées à la refonte) répondaient 404. Onze
+// jours de cartes figées et sans image, tous les contrôles au vert. Le
+// sélecteur d'une grille est un contrat avec un site qui ne l'a pas signé ;
+// `test/courrier-grid.test.mjs` lit la grille actuelle depuis une fixture.
 //
-// La grille de rubrique n'affiche aucune date. La page d'article en affiche une,
-// mais en clair et au jour près — « 30.07.2026 » dans `.date-display-single`,
-// sans attribut lisible par une machine. La lire coûterait 80 requêtes par
-// instantané (8 rubriques × 10) pour une précision d'un jour : un article publié
-// ce matin s'afficherait « il y a 18 h » ou « 1 j » selon l'heure de la lecture.
+// Ce qui a changé, et ce qui n'a pas changé :
+//  - plus de préfixe de langue : `/fr/actualite` redirige 301 vers
+//    `/actualite`, `/hy/actualite` répond 404 (l'édition hy n'existait déjà
+//    que de nom, voir scrape.mjs) ;
+//  - la grille est `article.card` → `.card__title a`, `.card__media img`,
+//    et porte désormais un `<time datetime>` — mais AU JOUR près, figé à
+//    « T12:00:00Z » ;
+//  - le sitemap est à `/sitemap.xml?page=N` (index à `/sitemap.xml`, deux
+//    pages), et garde son `<lastmod>` À LA MINUTE.
 //
-// Le sitemap Drupal, lui, donne un `<lastmod>` À LA MINUTE pour chaque URL, en
-// DEUX requêtes pour 5 400 articles. C'est formellement une date de
-// *modification* et non de publication — vérifié sur 8 articles pris au hasard
-// du dernier instantané, le jour du `lastmod` correspond exactement à celui
-// imprimé sur la page, à chaque fois. Le site ne réédite pas ses dépêches.
-//
-// Le flux RSS, lui, existe (`/fr/rss.xml`) mais revient VIDE : 293 octets, zéro
-// <item>. Ne le rebranchez pas en croyant simplifier.
+// DATES : le sitemap prime, la carte est le repli. Deux requêtes donnent la
+// minute pour 5 700 articles ; la carte ne donnerait que le jour, et « il y a
+// 18 h » deviendrait « 1 j » selon l'heure de lecture. Le `<lastmod>` est
+// formellement une date de *modification* — vérifié sur 8 articles avant la
+// refonte, le jour correspondait à celui imprimé à chaque fois ; le site ne
+// réédite pas ses dépêches. Les `<loc>` récents sont sans préfixe, comme la
+// grille (`https://courrier.am/<slug>`) ; les anciens gardent
+// `/actualite/<slug>` — ils ne sont plus dans aucune grille.
 const SITEMAP_PAGES = [1, 2]
+export const sitemapUrl = (page) => `${BASE}/sitemap.xml?page=${page}`
+export const sectionUrl = (slug) => `${BASE}/${slug}`
 
 // Les dates ne rejoignent les articles que par APPARIEMENT D'URL, et les deux
 // côtés n'écrivent pas la même URL pour le même article. Trois écarts sont
@@ -79,11 +92,11 @@ export const normUrl = (u) => {
 // URL → date ISO, depuis le sitemap. Un échec renvoie une table vide : les
 // articles partent alors sans date, exactement comme avant, plutôt que de faire
 // tomber la rubrique.
-async function sitemapDates(lang) {
+async function sitemapDates() {
   const map = new Map()
   for (const page of SITEMAP_PAGES) {
     try {
-      const xml = await fetchText(`${BASE}/${lang}/sitemap.xml?page=${page}`, { timeout: 45000 })
+      const xml = await fetchText(sitemapUrl(page), { timeout: 45000 })
       for (const m of xml.matchAll(/<url><loc>([^<]+)<\/loc>(?:<lastmod>([^<]+)<\/lastmod>)?/g)) {
         if (!m[2]) continue
         const d = new Date(m[2])
@@ -108,47 +121,57 @@ export const SECTIONS = [
   { key: 'diasporas', slug: 'diasporas' },
 ]
 
-// Pull the most recent `limit` articles of a section's Drupal Views grid.
-// The FR and HY editions share the same slugs and grid markup — only the
-// /fr vs /hy path prefix differs.
-async function articlesForSection({ key, slug }, lang = 'fr', limit = 10, dates = new Map()) {
-  const html = await fetchText(`${BASE}/${lang}/${slug}`)
+// Lit la grille « card » d'une rubrique (HTML → articles). Pure : pas de
+// réseau, testée sur une fixture réelle.
+export function parseSectionHtml(html, limit = 10, dates = new Map()) {
   const $ = cheerio.load(html)
-
   const articles = []
   const seen = new Set()
-  $('.views-bootstrap-grid-plugin-style .column').each((_, c) => {
+  $('article.card').each((_, c) => {
     if (articles.length >= limit) return
-    const col = $(c)
-    let titleEl = col.find('.views-field-title-field-et a').first()
-    if (!titleEl.length) titleEl = col.find('a').filter((_, a) => clean($(a).text())).first()
+    const card = $(c)
+    let titleEl = card.find('.card__title a').first()
+    if (!titleEl.length) titleEl = card.find('a').filter((_, a) => clean($(a).text())).first()
 
     const title = clean(titleEl.text())
     const href = titleEl.attr('href')
     if (!title || !href || seen.has(href)) return
     seen.add(href)
 
-    const img = col.find('.views-field-field-image img').first().attr('src')
+    const img = card.find('.card__media img').first().attr('src')
     const url = absUrl(href, BASE)
+    // La carte ne date qu'au jour ; on ne s'en sert qu'à défaut du sitemap.
+    let cardDate = null
+    const dt = card.find('time[datetime]').first().attr('datetime')
+    if (dt) {
+      const d = new Date(dt)
+      if (!Number.isNaN(d.getTime())) cardDate = d.toISOString()
+    }
     articles.push({
       title,
       url,
-      date: dates.get(normUrl(url)) ?? null,
+      date: dates.get(normUrl(url)) ?? cardDate,
       image: img ? absUrl(img, BASE) : null,
     })
   })
+  return articles
+}
 
+async function articlesForSection({ key, slug }, limit = 10, dates = new Map()) {
+  const articles = parseSectionHtml(await fetchText(sectionUrl(slug)), limit, dates)
   if (!articles.length) throw new Error(`No articles parsed for section ${slug}`)
   return { sectionKey: key, articles }
 }
 
+// `lang` ne sert plus qu'aux libellés de journal : le site n'a qu'une édition,
+// sans préfixe d'URL (voir l'en-tête).
 export async function scrapeCourrier(lang = 'fr') {
-  const dates = await sitemapDates(lang)
+  const dates = await sitemapDates()
   console.log(`  · courrier/sitemap : ${dates.size} dates`)
   const out = []
   for (const section of SECTIONS) {
     try {
-      const sec = await articlesForSection(section, lang, 10, dates)
+      const sec = await articlesForSection(section, 10, dates)
       out.push(sec)
       const dated = sec.articles.filter((a) => a.date).length
       console.log(`  ✓ courrier/${lang}/${section.slug} (${sec.articles.length}, ${dated} datés)`)
