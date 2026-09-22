@@ -1,0 +1,47 @@
+# Sonde réseau depuis une IP de la CI — manuelle, sans build ni déploiement.
+#
+# Pourquoi elle existe : un 403 vu depuis la CI ne se reproduit souvent pas
+# depuis un poste résidentiel (Cloudflare note l'IP autant que l'UA), et le job
+# horaire ne peut pas servir de banc d'essai — dix minutes et un instantané
+# commité par essai. Ici, curl seul, une trentaine de secondes, et pour chaque
+# couple (User-Agent, URL) : statut, cf-mitigated, server, et le début du corps.
+name: diag
+on:
+  workflow_dispatch: {}
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sonde
+        env:
+          ARMRADIO_PROXY: ${{ vars.ARMRADIO_PROXY }}
+          ASBAREZ_PROXY: ${{ vars.ASBAREZ_PROXY }}
+        run: |
+          set +e
+          curl -s https://ifconfig.me; echo " (IP du runner)"
+          UAS=(
+            'Mozilla/5.0 (compatible; ArmenieInfo/1.0; +https://armenieinfo.ch)'
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
+            'curl/8.5.0'
+          )
+          URLS=(
+            "$ARMRADIO_PROXY/?lang=en&path=%2Fwp-json%2Fwp%2Fv2%2Fcategories%3Fper_page%3D100%26_fields%3Did%2Cslug"
+            "$ARMRADIO_PROXY/?lang=en&path=%2Fnope"
+            "$ARMRADIO_PROXY/"
+            "$ASBAREZ_PROXY/?edition=en&path=%2Fwp-json%2Fwp%2Fv2%2Fposts%3Fper_page%3D1%26_fields%3Did"
+            "https://en.armradio.am/wp-json/wp/v2/categories?per_page=100&_fields=id,slug"
+            "https://hy.armradio.am/wp-json/wp/v2/posts?categories=4&per_page=1&_fields=id"
+            "https://armenpress.am/fr/articles/armenia"
+            "https://civilnet.am/fr/news/politics"
+          )
+          for ua in "${UAS[@]}"; do
+            echo "=== UA: $ua"
+            for u in "${URLS[@]}"; do
+              curl -s -m 25 -o body -D hdr -A "$ua" "$u"
+              st=$(head -1 hdr | tr -d '\r')
+              mit=$(grep -i '^cf-mitigated\|^server\|^cf-ray' hdr | tr -d '\r' | tr '\n' ' ')
+              b=$(sed -E 's/<(script|style)[^>]*>.*<\/(script|style)>//g; s/<[^>]*>/ /g' body | tr -s ' \n' ' ' | cut -c1-90)
+              echo "$st | $mit| $u"
+              echo "      « $b »"
+            done
+          done
