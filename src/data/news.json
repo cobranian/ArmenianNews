@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T19:23:18.977Z",
+  "generatedAt": "2026-09-25T22:39:26.761Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -413,16 +413,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/786071064_122327790854224244_5767225921196492757_n.jpg.avif?itok=N9QIyYdv"
         },
         {
-          "title": "La Géorgie et l'Azerbaïdjan lancent un système numérique pour le transport routier de marchandises",
-          "url": "https://courrier.am/la-georgie-et-l-azerbaidjan-lancent-un-systeme-numerique-pour-le-transport-routier-de-marchandises",
-          "date": "2026-07-24T11:19:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/cp20170612-astrata-georgi-transporte.jpg.avif?itok=SnZNS7fh"
-        },
-        {
           "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
           "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
           "date": "2026-07-24T11:22:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
+        },
+        {
+          "title": "La Géorgie et l'Azerbaïdjan lancent un système numérique pour le transport routier de marchandises",
+          "url": "https://courrier.am/la-georgie-et-l-azerbaidjan-lancent-un-systeme-numerique-pour-le-transport-routier-de-marchandises",
+          "date": "2026-07-24T11:19:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/cp20170612-astrata-georgi-transporte.jpg.avif?itok=SnZNS7fh"
         },
         {
           "title": "Port d'Anaklia : une délégation géorgienne s'inspire de Rotterdam, mais les doutes persistent",
@@ -1355,6 +1355,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Մեծ աղմուկ ՀԴԲ-ում. հաքերները գողացել են գործակալների բժշկական տվյալները",
+            "url": "https://hy.armradio.am/archives/760462",
+            "date": "2026-09-25T19:01:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/fee8fca0-b8fb-11f1-b1d1-571ed4d7ff2c.png-768x430.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թեհրանը Վաշինգտոնին նոր առաջարկներ է ներկայացրել և սպասում է պատասխանի",
             "url": "https://hy.armradio.am/archives/760388",
             "date": "2026-09-25T14:57:00.000Z",
@@ -1416,13 +1423,6 @@
             "date": "2026-09-24T13:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/IMG_5128-300x189.jpeg",
             "category": "Միջազգային"
-          },
-          {
-            "title": "Միացյալ Թագավորությունը չի չեղարկի Ալիշեր Ուսմանովի և Միխայիլ Ֆրիդմանի նկատմամբ սահմանված պատժամիջոցները",
-            "url": "https://hy.armradio.am/archives/760011",
-            "date": "2026-09-24T07:00:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/78491411_1004-768x336.webp",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -5469,6 +5469,24 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Բացումը Կատարուեցաւ ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողովին",
+            "url": "https://asbarez.am/archives/509507",
+            "date": "2026-09-25T22:40:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25153918/0926HayTad1.jpg"
+          },
+          {
+            "title": "Սահակեան Արցախի Գերիները Ազատ Արձակելու Պայքարը Ծանօթացուց Լոս Անճելըսի Հայութեան",
+            "url": "https://asbarez.am/archives/509464",
+            "date": "2026-09-25T21:52:38.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25144659/0924Siranoush1.jpg"
+          },
+          {
+            "title": "«Հայկազեան» Հայագիտական Հանդէսի 45րդ Հատորի Երկու Գիրքերուն Շնորհանդէսը Երեւանի Մէջ",
+            "url": "https://asbarez.am/archives/509460",
+            "date": "2026-09-25T21:36:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25143701/0925HYGZ1.jpg"
+          },
+          {
             "title": "Փաշինեան Եւ Փեզեշքեան Կարեւոր Նկատեցին Տարածաշրջանին Մէջ Խաղաղութեան Եւ Կայունութեան Ապահովումը",
             "url": "https://asbarez.am/archives/509430",
             "date": "2026-09-24T21:50:58.000Z",
@@ -5509,24 +5527,6 @@
             "url": "https://asbarez.am/archives/509402",
             "date": "2026-09-24T19:09:20.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24120739/0925Church.jpg"
-          },
-          {
-            "title": "Թեհրան Դէմ Չէ «Թրամփի Ուղի»ին, Եթէ Անիկա Յարգէ Հայաստանի Ինքնիշխանութիւնը Եւ Սահմանին Վրայ Ամերիկեան Ներկայութիւն Չըլլայ",
-            "url": "https://asbarez.am/archives/509382",
-            "date": "2026-09-23T23:15:04.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151835/0924Iran.png"
-          },
-          {
-            "title": "Փաշինեան Եւ Էրտողան Հանդիպում Ունեցան ՄԱԿի Ընդհանուր Ժողովին Զուգահեռ",
-            "url": "https://asbarez.am/archives/509379",
-            "date": "2026-09-23T22:17:07.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151641/0924Erdoghan.jpg"
-          },
-          {
-            "title": "«Քաղաքացիական Պայմանագիր»ի Պատգամաւորները Դուրս Եկան Արցախցիներուն Հարցերուն Վերաբերող Քննարկումէն, Երբ Յիշուեցան Արցախի Պետական Մարմինները",
-            "url": "https://asbarez.am/archives/509376",
-            "date": "2026-09-23T22:10:44.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151000/0924Artzakh.jpg"
           }
         ]
       },
@@ -5535,6 +5535,48 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
+            "title": "Բացումը Կատարուեցաւ ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողովին",
+            "url": "https://asbarez.am/archives/509507",
+            "date": "2026-09-25T22:40:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25153918/0926HayTad1.jpg"
+          },
+          {
+            "title": "Փասատինայի Հայկական Ճեմարանը Տօնեց Հայաստանի Անկախութեան 35 Ամեակը",
+            "url": "https://asbarez.am/archives/509490",
+            "date": "2026-09-25T22:20:36.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25151952/0925Blair1.jpeg"
+          },
+          {
+            "title": "City of Smile USA-ի Ղեկավարութեան Փոփոխութիւն",
+            "url": "https://asbarez.am/archives/509485",
+            "date": "2026-09-25T22:15:21.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25151455/0925City.jpg"
+          },
+          {
+            "title": "Մուսա Լերան Անմար Կրակը՝ Անցեալէն Դէպի Մերօրեայ Ապրումներ",
+            "url": "https://asbarez.am/archives/509481",
+            "date": "2026-09-25T22:10:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25150959/0925HJ-Musa.png"
+          },
+          {
+            "title": "Ընդդիմութիւն-Իշխանութիւն Գոյակեցութեան Կարելիութիւնը՝ Ըստ Տրամաբանութեան․․․",
+            "url": "https://asbarez.am/archives/509479",
+            "date": "2026-09-25T22:06:20.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2022/07/12122652/0000Boghos-Kupelian-1.jpg"
+          },
+          {
+            "title": "Սահակեան Արցախի Գերիները Ազատ Արձակելու Պայքարը Ծանօթացուց Լոս Անճելըսի Հայութեան",
+            "url": "https://asbarez.am/archives/509464",
+            "date": "2026-09-25T21:52:38.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25144659/0924Siranoush1.jpg"
+          },
+          {
+            "title": "«Հայկազեան» Հայագիտական Հանդէսի 45րդ Հատորի Երկու Գիրքերուն Շնորհանդէսը Երեւանի Մէջ",
+            "url": "https://asbarez.am/archives/509460",
+            "date": "2026-09-25T21:36:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25143701/0925HYGZ1.jpg"
+          },
+          {
             "title": "Փաշինեան Եւ Փեզեշքեան Կարեւոր Նկատեցին Տարածաշրջանին Մէջ Խաղաղութեան Եւ Կայունութեան Ապահովումը",
             "url": "https://asbarez.am/archives/509430",
             "date": "2026-09-24T21:50:58.000Z",
@@ -5551,48 +5593,6 @@
             "url": "https://asbarez.am/archives/509444",
             "date": "2026-09-24T20:57:49.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24135714/0925USA.jpg"
-          },
-          {
-            "title": "Սիրանուշ Սահակեան Պատասխանեց Ատրպէյճանի Մարդու Իրաւունքներու Պաշտպանին",
-            "url": "https://asbarez.am/archives/509440",
-            "date": "2026-09-24T20:54:54.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24135418/0924Siranoush-1.jpg"
-          },
-          {
-            "title": "Եւրոպական Միութեան Խորհուրդը Ընդունեց Հայաստանի Համար Առեւտուրի Արտօնեալ Պայմաններու Դրութիւնը",
-            "url": "https://asbarez.am/archives/509436",
-            "date": "2026-09-24T20:47:12.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134642/0925Fruit.jpg"
-          },
-          {
-            "title": "Տարիքը Եւ Դեղամիջոցների Ընտրութիւնը",
-            "url": "https://asbarez.am/archives/509411",
-            "date": "2026-09-24T20:15:04.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24132534/Untitled.jpg"
-          },
-          {
-            "title": "Հայաստանի Մէջ Պիտի Գումարուի ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողով",
-            "url": "https://asbarez.am/archives/509407",
-            "date": "2026-09-24T19:13:07.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24121150/0925Tad.png"
-          },
-          {
-            "title": "Կառավարութիւնը Հրապարակեց «Եկեղեցւոյ Ճգնաժամ»ին Վերաբերող Զեկոյցը, Զոր Մայր Աթոռը Հակասահմանադրական Նկատեց",
-            "url": "https://asbarez.am/archives/509402",
-            "date": "2026-09-24T19:09:20.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24120739/0925Church.jpg"
-          },
-          {
-            "title": "Թեհրան Դէմ Չէ «Թրամփի Ուղի»ին, Եթէ Անիկա Յարգէ Հայաստանի Ինքնիշխանութիւնը Եւ Սահմանին Վրայ Ամերիկեան Ներկայութիւն Չըլլայ",
-            "url": "https://asbarez.am/archives/509382",
-            "date": "2026-09-23T23:15:04.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151835/0924Iran.png"
-          },
-          {
-            "title": "Դաշնակցութիւնը Կա՛յ Ու Կը Մնա՛յ",
-            "url": "https://asbarez.am/archives/509323",
-            "date": "2026-09-23T22:29:54.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23134427/0922ARF-HJ.jpg"
           }
         ]
       },
@@ -5600,6 +5600,42 @@
         "categoryKey": "kaghoutigyanken",
         "label": "Գաղութի Կեանքէն",
         "articles": [
+          {
+            "title": "Բացումը Կատարուեցաւ ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողովին",
+            "url": "https://asbarez.am/archives/509507",
+            "date": "2026-09-25T22:40:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25153918/0926HayTad1.jpg"
+          },
+          {
+            "title": "Փասատինայի Հայկական Ճեմարանը Տօնեց Հայաստանի Անկախութեան 35 Ամեակը",
+            "url": "https://asbarez.am/archives/509490",
+            "date": "2026-09-25T22:20:36.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25151952/0925Blair1.jpeg"
+          },
+          {
+            "title": "City of Smile USA-ի Ղեկավարութեան Փոփոխութիւն",
+            "url": "https://asbarez.am/archives/509485",
+            "date": "2026-09-25T22:15:21.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25151455/0925City.jpg"
+          },
+          {
+            "title": "Մուսա Լերան Անմար Կրակը՝ Անցեալէն Դէպի Մերօրեայ Ապրումներ",
+            "url": "https://asbarez.am/archives/509481",
+            "date": "2026-09-25T22:10:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25150959/0925HJ-Musa.png"
+          },
+          {
+            "title": "Սահակեան Արցախի Գերիները Ազատ Արձակելու Պայքարը Ծանօթացուց Լոս Անճելըսի Հայութեան",
+            "url": "https://asbarez.am/archives/509464",
+            "date": "2026-09-25T21:52:38.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25144659/0924Siranoush1.jpg"
+          },
+          {
+            "title": "«Հայկազեան» Հայագիտական Հանդէսի 45րդ Հատորի Երկու Գիրքերուն Շնորհանդէսը Երեւանի Մէջ",
+            "url": "https://asbarez.am/archives/509460",
+            "date": "2026-09-25T21:36:24.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25143701/0925HYGZ1.jpg"
+          },
           {
             "title": "Տարիքը Եւ Դեղամիջոցների Ընտրութիւնը",
             "url": "https://asbarez.am/archives/509411",
@@ -5623,42 +5659,6 @@
             "url": "https://asbarez.am/archives/509343",
             "date": "2026-09-23T21:20:20.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23141915/0923Judge_Maria_Hernandez.jpg"
-          },
-          {
-            "title": "Սփիւռքի Ազգային Զօրաշարժի Խորհրդաժողովի Կլոր Սեղաններու Համառօտագիրներ (Դ․)",
-            "url": "https://asbarez.am/archives/509328",
-            "date": "2026-09-23T20:54:49.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23135348/Diasporaconference2-1.jpg"
-          },
-          {
-            "title": "ՀՕՄի Նախաձեռնութեամբ՝ Արցախահայ Գաղթականներու Նուիրուած Քննարկում ՄԱԿի Մէջ",
-            "url": "https://asbarez.am/archives/509207",
-            "date": "2026-09-22T22:37:30.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/22152215/0922UN-Geneva-Flyrer-Armenian-1.jpeg"
-          },
-          {
-            "title": "Առաջնորդը Գնահատագիր Շնորհեց «Արարատ-Էսքիճեան» Թանգարանի Տնօրէնուհի Մակի Մանկասարեան Գոշինին",
-            "url": "https://asbarez.am/archives/509234",
-            "date": "2026-09-22T21:00:13.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/22135901/0922GOSCHIN1-1.jpg"
-          },
-          {
-            "title": "«Ծիլ Տուր Հայերէն» Համահայկական Պատանեկան Ստեղծագործական Մրցում",
-            "url": "https://asbarez.am/archives/509228",
-            "date": "2026-09-22T20:49:17.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/22135056/0922dsil.jpg"
-          },
-          {
-            "title": "ԹՈՒՄՕն 17 Միլիոն Տոլար Հանգանակեց Իր 15ամեակի Տօնակատարութեան Ընթացքին",
-            "url": "https://asbarez.am/archives/509220",
-            "date": "2026-09-22T20:43:36.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/22143016/077-20260920SE_Tumo-_JCZ0023-1.jpg"
-          },
-          {
-            "title": "Եպիսկոպոսական Պատարագ Մոնթեպելլոյի Ս. Խաչ Մայր Տաճարին Մէջ",
-            "url": "https://asbarez.am/archives/509197",
-            "date": "2026-09-22T19:24:38.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/22122307/0922MONTEBELLO1.jpg"
           }
         ]
       },
@@ -5666,6 +5666,24 @@
         "categoryKey": "գաղութներ",
         "label": "Գաղութներ",
         "articles": [
+          {
+            "title": "Բացումը Կատարուեցաւ ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողովին",
+            "url": "https://asbarez.am/archives/509507",
+            "date": "2026-09-25T22:40:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25153918/0926HayTad1.jpg"
+          },
+          {
+            "title": "Մուսա Լերան Անմար Կրակը՝ Անցեալէն Դէպի Մերօրեայ Ապրումներ",
+            "url": "https://asbarez.am/archives/509481",
+            "date": "2026-09-25T22:10:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25150959/0925HJ-Musa.png"
+          },
+          {
+            "title": "Սահակեան Արցախի Գերիները Ազատ Արձակելու Պայքարը Ծանօթացուց Լոս Անճելըսի Հայութեան",
+            "url": "https://asbarez.am/archives/509464",
+            "date": "2026-09-25T21:52:38.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25144659/0924Siranoush1.jpg"
+          },
           {
             "title": "Հայաստանի Մէջ Պիտի Գումարուի ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողով",
             "url": "https://asbarez.am/archives/509407",
@@ -5707,24 +5725,6 @@
             "url": "https://asbarez.am/archives/509220",
             "date": "2026-09-22T20:43:36.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/22143016/077-20260920SE_Tumo-_JCZ0023-1.jpg"
-          },
-          {
-            "title": "Հայ Դատը Սեւան Պասմաճեանին Պիտի Շնորհէ Սթիւ Արթինեանի Անուան «Տեսլապաշտ Գործիչ» Մրցանակը",
-            "url": "https://asbarez.am/archives/509136",
-            "date": "2026-09-18T22:55:29.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/18120224/0918ANC.png"
-          },
-          {
-            "title": "Հայկազեան Եւ Խաչատուր Աբովեանի Անուան Համալսարաններուն Գիտաժողովը",
-            "url": "https://asbarez.am/archives/509127",
-            "date": "2026-09-18T18:58:08.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/18115409/0918HGZ1.jpg"
-          },
-          {
-            "title": "Եգիպտոսի Արտաքին Նախարարութիւնը Մեծարեց Եգիպտահայերու Երկդարեայ Ներդրումը",
-            "url": "https://asbarez.am/archives/509110",
-            "date": "2026-09-18T18:24:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/18112357/0918egpt1-1.jpg"
           }
         ]
       },
@@ -5732,6 +5732,18 @@
         "categoryKey": "hotvadzner",
         "label": "Յօդուածներ",
         "articles": [
+          {
+            "title": "Մուսա Լերան Անմար Կրակը՝ Անցեալէն Դէպի Մերօրեայ Ապրումներ",
+            "url": "https://asbarez.am/archives/509481",
+            "date": "2026-09-25T22:10:56.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/25150959/0925HJ-Musa.png"
+          },
+          {
+            "title": "Ընդդիմութիւն-Իշխանութիւն Գոյակեցութեան Կարելիութիւնը՝ Ըստ Տրամաբանութեան․․․",
+            "url": "https://asbarez.am/archives/509479",
+            "date": "2026-09-25T22:06:20.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2022/07/12122652/0000Boghos-Kupelian-1.jpg"
+          },
           {
             "title": "Դաշնակցութիւնը Կա՛յ Ու Կը Մնա՛յ",
             "url": "https://asbarez.am/archives/509323",
@@ -5779,18 +5791,6 @@
             "url": "https://asbarez.am/archives/508568",
             "date": "2026-09-09T01:41:10.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/08183617/1_9826.jpg"
-          },
-          {
-            "title": "Քաղաքական Մեր Ներկան",
-            "url": "https://asbarez.am/archives/508530",
-            "date": "2026-09-08T21:15:09.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/03/27142559/Razmig-Shirinain-1.jpg"
-          },
-          {
-            "title": "Ազատութեան Ժառանգութիւնը",
-            "url": "https://asbarez.am/archives/508272",
-            "date": "2026-09-01T21:57:05.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/01145604/0000Grish.jpg"
           }
         ]
       }
@@ -8759,6 +8759,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Nations League: Mbappe's goal secured a winning debut for Zidane",
+            "url": "https://sport.news.am/eng/news/169234/",
+            "date": "2026-09-25T20:46:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169234.jpg"
+          },
+          {
             "title": "Nations League: Armenia national team beat Latvia",
             "url": "https://sport.news.am/eng/news/169225/",
             "date": "2026-09-25T17:51:00.000Z",
@@ -8811,12 +8817,6 @@
             "url": "https://sport.news.am/eng/news/169212/",
             "date": "2026-09-25T07:27:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/169212.jpg"
-          },
-          {
-            "title": "Xavi: We were better than Germany and deserved more",
-            "url": "https://sport.news.am/eng/news/169209/",
-            "date": "2026-09-25T07:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169209.jpg"
           }
         ]
       },
@@ -9421,6 +9421,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Ազգերի լիգա․ Մբապեի գոլն ապահովեց Զիդանի հաղթական նորամուտը, օրվա արդյունքները (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169234/",
+            "date": "2026-09-25T20:46:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169234.jpg"
+          },
+          {
+            "title": "Բռնցքամարտի ԵԱ․ Ռուսաստանը 7 ոսկե մեդալով առաջինն է",
+            "url": "https://sport.news.am/arm/news/169231/",
+            "date": "2026-09-25T19:38:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169231.jpg"
+          },
+          {
             "title": "Եղիշե Մելիքյան․ Ուզում եմ բոլորը հասկանան, որ դժվար ժամանակահատված է հավաքականում",
             "url": "https://sport.news.am/arm/news/169230/",
             "date": "2026-09-25T19:08:00.000Z",
@@ -9467,18 +9479,6 @@
             "url": "https://sport.news.am/arm/news/169222/",
             "date": "2026-09-25T16:34:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/169222.jpg"
-          },
-          {
-            "title": "Շախմատային օլիմպիադա․ Հայաստանի թիմը հաղթեց ադրբեջանցիներին",
-            "url": "https://sport.news.am/arm/news/169221/",
-            "date": "2026-09-25T15:37:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169221.jpg"
-          },
-          {
-            "title": "Շախմատային օլիմպիադա․ Կանանց Հայաստանի թիմը պարտվեց չինացիներին",
-            "url": "https://sport.news.am/arm/news/169220/",
-            "date": "2026-09-25T15:12:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169220.jpg"
           }
         ]
       },
@@ -10083,6 +10083,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Лига наций: Гол Мбаппе обеспечил Зидану победный дебют, результаты дня (видео)",
+            "url": "https://sport.news.am/rus/news/169234/",
+            "date": "2026-09-25T20:46:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169234.jpg"
+          },
+          {
             "title": "Лига наций: Сборная Армении уверенно обыграла Латвию (видео)",
             "url": "https://sport.news.am/rus/news/169225/",
             "date": "2026-09-25T17:51:00.000Z",
@@ -10135,12 +10141,6 @@
             "url": "https://sport.news.am/rus/news/169216/",
             "date": "2026-09-25T12:05:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/169216.jpg"
-          },
-          {
-            "title": "«Барселона» отказалась от идеи подписания Хулиана Альвареса",
-            "url": "https://sport.news.am/rus/news/169210/",
-            "date": "2026-09-25T11:03:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169210.jpg"
           }
         ]
       },
