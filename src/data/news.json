@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T20:38:19.649Z",
+  "generatedAt": "2026-09-24T23:55:25.842Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -283,16 +283,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/images_1_3.jpg.avif?itok=HtZ7YZ9U"
         },
         {
-          "title": "Du Plessis-Robinson à l'Arménie rurale : le pari du bus hôpital",
-          "url": "https://courrier.am/du-plessis-robinson-a-l-armenie-rurale-le-pari-du-bus-hopital",
-          "date": "2026-07-23T07:31:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/image1_17.jpg.avif?itok=Rtrkc88K"
-        },
-        {
           "title": "Les Xes Jeux de la Francophonie entrent dans leur dernière année de préparation",
           "url": "https://courrier.am/les-xes-jeux-de-la-francophonie-entrent-dans-leur-derniere-annee-de-preparation",
           "date": "2026-07-23T13:10:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/427971691_773397858167211_2125471420174612368_n.png.avif?itok=ULwnCMIz"
+        },
+        {
+          "title": "Du Plessis-Robinson à l'Arménie rurale : le pari du bus hôpital",
+          "url": "https://courrier.am/du-plessis-robinson-a-l-armenie-rurale-le-pari-du-bus-hopital",
+          "date": "2026-07-23T07:31:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/image1_17.jpg.avif?itok=Rtrkc88K"
         },
         {
           "title": "« Faire de la culture un moteur du développement national »",
@@ -413,16 +413,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/786071064_122327790854224244_5767225921196492757_n.jpg.avif?itok=N9QIyYdv"
         },
         {
-          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
-          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
-          "date": "2026-07-24T11:22:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
-        },
-        {
           "title": "La Géorgie et l'Azerbaïdjan lancent un système numérique pour le transport routier de marchandises",
           "url": "https://courrier.am/la-georgie-et-l-azerbaidjan-lancent-un-systeme-numerique-pour-le-transport-routier-de-marchandises",
           "date": "2026-07-24T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/cp20170612-astrata-georgi-transporte.jpg.avif?itok=SnZNS7fh"
+        },
+        {
+          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
+          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
+          "date": "2026-07-24T11:22:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
         },
         {
           "title": "Port d'Anaklia : une délégation géorgienne s'inspire de Rotterdam, mais les doutes persistent",
@@ -1055,6 +1055,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "ՀՀ վարչապետ Նիկոլ Փաշինյանի ելույթը ՄԱԿ-ում",
+            "url": "https://hy.armradio.am/archives/760252",
+            "date": "2026-09-24T22:26:09.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/IMG_5138-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Փաշինյանն ու Կոբախիձեն քննարկել են հայ-վրացական հարաբերությունների օրակարգը",
             "url": "https://hy.armradio.am/archives/760248",
             "date": "2026-09-24T20:04:23.000Z",
@@ -1115,13 +1122,6 @@
             "url": "https://hy.armradio.am/archives/760085",
             "date": "2026-09-24T11:10:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/01/Armenia-EU-flags-300x200.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Խաղաղություն և տնտեսական կապեր. ՀՀ ԱԳՄԱ նախարարի մասնակցությունը ԹՐԻՓՓ-ի հանդիպմանը",
-            "url": "https://hy.armradio.am/archives/760031",
-            "date": "2026-09-24T08:21:56.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/824025002_1510476631109829_71342056358972336_n-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -4100,6 +4100,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Հայաստանում սպասում են հակամարտության հետեւանքով Ադրբեջանում անազատության մեջ հայտնված հայերի վերադարձին. Նիկոլ Փաշինյանը հայտարարել է ՄԱԿ-ում",
+            "url": "https://armenpress.am/hy/article/1261278",
+            "date": "2026-09-24T23:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/25/w5xAHhIGCIl95ToHpHCJFZK6JrbR80FZTuy7Ki3K.webp"
+          },
+          {
+            "title": "TRIPP-ի իրագործումը հնարավորություն կտա, որ ոչ միայն Հայաստանը, այլեւ ամբողջ Հարավային Կովկասը դառնա Խաղաղության խաչմերուկ. Փաշինյանի ելույթը ՄԱԿ-ի բարձր ամբիոնից",
+            "url": "https://armenpress.am/hy/article/1261277",
+            "date": "2026-09-24T22:50:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/25/kwCBTRwFz7VcEvEvyWVFJ3FHLW14mMuH4Lt5YRqw.webp"
+          },
+          {
             "title": "Չինաստանի դեսպանը համոզված է, որ Հայաստանի կողմից իրականացվող բալանսավորված արտաքին քաղաքականությունն իսկապես առավելություն է բերում երկրին",
             "url": "https://armenpress.am/hy/article/1261275",
             "date": "2026-09-24T19:03:00.000Z",
@@ -4146,18 +4158,6 @@
             "url": "https://armenpress.am/hy/article/1261255",
             "date": "2026-09-24T14:36:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/24/2YgOXvEwWgS17K4MTiw6VILUXHo7UaTqFZZjLyPO.webp"
-          },
-          {
-            "title": "Լիլիթ Մակունցն ու ԱՄՆ գործերի ժամանակավոր հավատարմատարն անդրադարձել են TRIPP նախագծի իրականացմանն ուղղված աշխատանքների ընթացքին",
-            "url": "https://armenpress.am/hy/article/1261253",
-            "date": "2026-09-24T14:23:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/24/xLWZyof1ZwYXfEwXzRTXmb6M3Ux9QS7RUPkhriIb.webp"
-          },
-          {
-            "title": "ՔՊ խմբակցությունը հանդիպել է ԵԺԿ գլխավոր քարտուղարի գլխավորած պատվիրակությանը",
-            "url": "https://armenpress.am/hy/article/1261252",
-            "date": "2026-09-24T14:18:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/09/24/WjtUcM0Y8IB5g1D2sDe0k624rHgIzQzifUc1gC3z.webp"
           }
         ]
       },
@@ -5017,13 +5017,31 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "Attorney Responds to Baku’s Claims that Armenian Hostages’ Concerns are ‘Groundless’",
+            "url": "https://asbarez.com/attorney-responds-to-bakus-claims-that-armenian-hostages-concerns-are-groundless/",
+            "date": "2026-09-24T22:01:45.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/08/06140331/screenshot-5-1762253429499-770x_-300x200.png"
+          },
+          {
+            "title": "U.S. Pushes to Turn ‘Trump Route’ Project Into Investment and Commerce Opportunity",
+            "url": "https://asbarez.com/u-s-pushes-to-turn-trump-route-project-into-investment-and-commerce-opportunity/",
+            "date": "2026-09-24T21:42:03.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/09/24143804/Witkoff-300x200.jpeg"
+          },
+          {
+            "title": "Government Releases ‘Crisis in Church’ Report, Which Etchmiadzin Calls ‘Unconstitutional’",
+            "url": "https://asbarez.com/government-releases-crisis-in-church-report-etchmiadzin-calls-it-unconstitutional/",
+            "date": "2026-09-24T21:29:39.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/09/09112955/Faith-and-Renewal2-Credit_Adobe-Stock-576x375-1-300x195.jpg"
+          },
+          {
             "title": "Rights Lawyer Brings Artsakh Hostage Fight to Los Angeles as ARF Rallies Community",
             "url": "https://asbarez.com/rights-lawyer-brings-artsakh-hostage-fight-to-los-angeles-as-arf-rallies-community/",
             "date": "2026-09-24T20:41:41.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/09/24132720/SahakyanPanel-300x160.jpg"
           },
           {
-            "title": "James Cameron to Visit Yerevan",
+            "title": "‘Avatar’ Filmmaker James Cameron to Visit Yerevan",
             "url": "https://asbarez.com/james-cameron-to-visit-yerevan/",
             "date": "2026-09-24T18:47:28.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/09/24114646/james-cameron-300x169.jpg"
@@ -5057,24 +5075,6 @@
             "url": "https://asbarez.com/david-karamian-to-present-new-book-on-khatchkars-of-noratus-cemetery/",
             "date": "2026-09-23T20:02:52.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/09/23133430/davidkaramianlecture-1-300x195.jpg"
-          },
-          {
-            "title": "City of Smile USA Announces New Board Chairs",
-            "url": "https://asbarez.com/city-of-smile-usa-announces-new-board-chairs/",
-            "date": "2026-09-23T19:53:53.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/09/23125315/city-of-smile-logo-300x163.png"
-          },
-          {
-            "title": "AECP Gala to Honor Founder and President Dr. Roger V. Ohanesian with Lifetime Achievement Award",
-            "url": "https://asbarez.com/aecp-gala-to-honor-founder-and-president-dr-roger-v-ohanesian-with-lifetime-achievement-award/",
-            "date": "2026-09-23T17:16:50.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/09/23101640/Roger-Ohanesian-MD-1-300x201.jpg"
-          },
-          {
-            "title": "Armenia’s Women’s Support Center to Host Domestic Violence Awareness Event in Belmont",
-            "url": "https://asbarez.com/armenias-womens-support-center-to-host-domestic-violence-awareness-event-in-belmont/",
-            "date": "2026-09-23T16:44:05.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/09/23095106/FINAL-SOCIAL_-DV-EVENT-October-8-BPL_v8_scott-Instagram-Post-45-1-300x201.png"
           }
         ]
       },
@@ -5149,7 +5149,7 @@
         "label": "Arts & Culture",
         "articles": [
           {
-            "title": "James Cameron to Visit Yerevan",
+            "title": "‘Avatar’ Filmmaker James Cameron to Visit Yerevan",
             "url": "https://asbarez.com/james-cameron-to-visit-yerevan/",
             "date": "2026-09-24T18:47:28.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/09/24114646/james-cameron-300x169.jpg"
@@ -5483,8 +5483,32 @@
           {
             "title": "Փաշինեան Եւ Փեզեշքեան Կարեւոր Նկատեցին Տարածաշրջանին Մէջ Խաղաղութեան Եւ Կայունութեան Ապահովումը",
             "url": "https://asbarez.am/archives/509430",
-            "date": "2026-09-24T20:41:56.000Z",
+            "date": "2026-09-24T21:50:58.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134119/0925Iran.jpg"
+          },
+          {
+            "title": "Փաշինեան Հանդիպում Ունեցաւ Անթոնիօ Կիւթերեշի Հետ",
+            "url": "https://asbarez.am/archives/509433",
+            "date": "2026-09-24T21:50:04.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134252/0925Gut.jpg"
+          },
+          {
+            "title": "Միացեալ Նահանգներ Կը Փորձէ «Թրամփի Ուղի»ն Վերածել Ներդրումային Առիթի",
+            "url": "https://asbarez.am/archives/509444",
+            "date": "2026-09-24T20:57:49.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24135714/0925USA.jpg"
+          },
+          {
+            "title": "Սիրանուշ Սահակեան Պատասխանեց Ատրպէյճանի Մարդու Իրաւունքներու Պաշտպանին",
+            "url": "https://asbarez.am/archives/509440",
+            "date": "2026-09-24T20:54:54.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24135418/0924Siranoush-1.jpg"
+          },
+          {
+            "title": "Եւրոպական Միութեան Խորհուրդը Ընդունեց Հայաստանի Համար Առեւտուրի Արտօնեալ Պայմաններու Դրութիւնը",
+            "url": "https://asbarez.am/archives/509436",
+            "date": "2026-09-24T20:47:12.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134642/0925Fruit.jpg"
           },
           {
             "title": "Հայաստանի Մէջ Պիտի Գումարուի ՀՅԴ Հայ Դատի Համահայկական Խորհրդաժողով",
@@ -5515,30 +5539,6 @@
             "url": "https://asbarez.am/archives/509376",
             "date": "2026-09-23T22:10:44.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151000/0924Artzakh.jpg"
-          },
-          {
-            "title": "«Մենք Միասին Պատմութիւն Կերտած Ենք». Թրամփը Շնորհաւորեց Փաշինեանը",
-            "url": "https://asbarez.am/archives/509373",
-            "date": "2026-09-23T22:07:42.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23150723/0924Trump.jpg"
-          },
-          {
-            "title": "«Թրամփի Ուղի»ի Վերաբերող Քննարկում. Հայաստանի, Ատրպէյճանի, Իրանի, Ռուսիոյ, Թուրքիոյ Եւ Միացեալ Նահանգներու Պատկերացումները",
-            "url": "https://asbarez.am/archives/509370",
-            "date": "2026-09-23T22:05:23.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23150319/0924TR1.jpg"
-          },
-          {
-            "title": "Պատանի Էլեն Ալավերտեանի Յաջողութիւնը",
-            "url": "https://asbarez.am/archives/509349",
-            "date": "2026-09-23T21:24:14.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23142346/0923Ellen.jpg"
-          },
-          {
-            "title": "Հանդիպում Քալիֆորնիոյ Նահանգային Խորհրդարանի Անդամ Մարք Կոնզալեսի Հետ",
-            "url": "https://asbarez.am/archives/509346",
-            "date": "2026-09-23T21:22:48.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23142229/0923GonzalezMontebello.jpeg"
           }
         ]
       },
@@ -5549,8 +5549,32 @@
           {
             "title": "Փաշինեան Եւ Փեզեշքեան Կարեւոր Նկատեցին Տարածաշրջանին Մէջ Խաղաղութեան Եւ Կայունութեան Ապահովումը",
             "url": "https://asbarez.am/archives/509430",
-            "date": "2026-09-24T20:41:56.000Z",
+            "date": "2026-09-24T21:50:58.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134119/0925Iran.jpg"
+          },
+          {
+            "title": "Փաշինեան Հանդիպում Ունեցաւ Անթոնիօ Կիւթերեշի Հետ",
+            "url": "https://asbarez.am/archives/509433",
+            "date": "2026-09-24T21:50:04.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134252/0925Gut.jpg"
+          },
+          {
+            "title": "Միացեալ Նահանգներ Կը Փորձէ «Թրամփի Ուղի»ն Վերածել Ներդրումային Առիթի",
+            "url": "https://asbarez.am/archives/509444",
+            "date": "2026-09-24T20:57:49.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24135714/0925USA.jpg"
+          },
+          {
+            "title": "Սիրանուշ Սահակեան Պատասխանեց Ատրպէյճանի Մարդու Իրաւունքներու Պաշտպանին",
+            "url": "https://asbarez.am/archives/509440",
+            "date": "2026-09-24T20:54:54.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24135418/0924Siranoush-1.jpg"
+          },
+          {
+            "title": "Եւրոպական Միութեան Խորհուրդը Ընդունեց Հայաստանի Համար Առեւտուրի Արտօնեալ Պայմաններու Դրութիւնը",
+            "url": "https://asbarez.am/archives/509436",
+            "date": "2026-09-24T20:47:12.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/24134642/0925Fruit.jpg"
           },
           {
             "title": "Տարիքը Եւ Դեղամիջոցների Ընտրութիւնը",
@@ -5581,30 +5605,6 @@
             "url": "https://asbarez.am/archives/509323",
             "date": "2026-09-23T22:29:54.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23134427/0922ARF-HJ.jpg"
-          },
-          {
-            "title": "Փաշինեան Եւ Էրտողան Հանդիպում Ունեցան ՄԱԿի Ընդհանուր Ժողովին Զուգահեռ",
-            "url": "https://asbarez.am/archives/509379",
-            "date": "2026-09-23T22:17:07.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151641/0924Erdoghan.jpg"
-          },
-          {
-            "title": "«Քաղաքացիական Պայմանագիր»ի Պատգամաւորները Դուրս Եկան Արցախցիներուն Հարցերուն Վերաբերող Քննարկումէն, Երբ Յիշուեցան Արցախի Պետական Մարմինները",
-            "url": "https://asbarez.am/archives/509376",
-            "date": "2026-09-23T22:10:44.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23151000/0924Artzakh.jpg"
-          },
-          {
-            "title": "«Մենք Միասին Պատմութիւն Կերտած Ենք». Թրամփը Շնորհաւորեց Փաշինեանը",
-            "url": "https://asbarez.am/archives/509373",
-            "date": "2026-09-23T22:07:42.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23150723/0924Trump.jpg"
-          },
-          {
-            "title": "«Թրամփի Ուղի»ի Վերաբերող Քննարկում. Հայաստանի, Ատրպէյճանի, Իրանի, Ռուսիոյ, Թուրքիոյ Եւ Միացեալ Նահանգներու Պատկերացումները",
-            "url": "https://asbarez.am/archives/509370",
-            "date": "2026-09-23T22:05:23.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/09/23150319/0924TR1.jpg"
           }
         ]
       },
@@ -6147,6 +6147,36 @@
         "label": "Վերջին Լուրեր",
         "articles": [
           {
+            "title": "Էրդողանը բռնակալ է, նա սպանում է քրդերին, ժխտում է Հայոց ցեղասպանութիւնը. Նեթանեահու",
+            "url": "https://www.oragark.com/hy/erdogan-is-a-tyrant-he-kills-kurds-denies-the-armenian-genocide-netanyahu/",
+            "date": "2026-09-24T22:25:28.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/09/NTOG-300x252.png"
+          },
+          {
+            "title": "Հայաստանում կը գումարուի ՀՅԴ Հայ դատի համահայկական խորհրդաժողովը",
+            "url": "https://www.oragark.com/hy/the-pan-armenian-conference-of-the-arf-armenian-cause-is-being-convened-in-armenia/",
+            "date": "2026-09-24T22:16:54.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/09/%D5%80%D5%A1%D5%B5-%D5%A4%D5%A1%D5%BF-768x432.png"
+          },
+          {
+            "title": "Փաշինեան հակահայկական յայտարարութիւններ կը կատարէ Երեւանի մէջ կայացած միջազգային համաժողովին",
+            "url": "https://www.oragark.com/hy/pashinyan-makes-anti-armenian-statements-at-international-conference-in-yerevan-2/",
+            "date": "2026-09-24T22:12:26.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2025/03/Sassounian-12-300x296.jpg"
+          },
+          {
+            "title": "Պայքարը շարունակւում է",
+            "url": "https://www.oragark.com/hy/the-struggle-continues/",
+            "date": "2026-09-24T22:09:00.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2023/02/vahe-hovhanissyan-768x436.jpg"
+          },
+          {
+            "title": "Տարօն Տէր Խաչատուրեանի խօսքը՝ Թորոնթոյի նորահաստատ «Նարեկ» Հայ Կրթական եւ Մշակութային Կեդրոնի պաշտօնական բացման հանդիսութեան",
+            "url": "https://www.oragark.com/hy/speech-by-daron-der-khachattorian-narek-armenian-educational-and-cultural-centre-toronto/",
+            "date": "2026-09-24T21:58:58.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/09/%D5%8F%D5%A1%D6%80%D6%85%D5%B6-%D5%8F%D4%BD-1024x576-1-768x432.png"
+          },
+          {
             "title": "Սիրանուշ Սահակեանը Լոս Անջելես է բերել Արցախի պատանդների ազատութեան պայքարը",
             "url": "https://www.oragark.com/hy/sahakyan-brings-artsakh-hostage-fight-to-los-angeles-arf-western-usa/",
             "date": "2026-09-24T08:45:20.000Z",
@@ -6175,36 +6205,6 @@
             "url": "https://www.oragark.com/hy/armenia-faction-press-conference/",
             "date": "2026-09-23T05:03:00.000Z",
             "image": "https://www.oragark.com/wp-content/uploads/2026/09/%D4%BB%D5%B7%D5%AD%D5%A1%D5%B6-768x479.jpg"
-          },
-          {
-            "title": "Սիրիա, այնուհետեւ՝ ամենուր. կը տարածուե՞ն արդեօք անկարգութիւնները Մերձաւոր Արեւելքի այլ պետութիւնների վրայ",
-            "url": "https://www.oragark.com/hy/syria-then-everywhere-will-the-unrest-spread-to-other-middle-eastern-countries/",
-            "date": "2026-09-23T04:48:30.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/09/images2-300x300.jpg"
-          },
-          {
-            "title": "Հայ դատի Ամերիկայի յանձնախմբի գործիչներն ամերիկահայութեան ռազմավարական առաջնահերթութիւնները ներկայացրել են Վաշինկտոնում",
-            "url": "https://www.oragark.com/hy/anca-advocates-take-armenian-american-strategic-priorities-to-capitol-hill/",
-            "date": "2026-09-23T04:37:21.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/09/091526_USCapitol_IMG_6713-768x576.jpg"
-          },
-          {
-            "title": "ԱՄՆ Հայ ուսանողները մերժում են Փաշինեանի հետ փակ հանդիպումը",
-            "url": "https://www.oragark.com/hy/armenian-students-in-the-us-reject-closed-door-meeting-with-pashinyan/",
-            "date": "2026-09-23T04:26:07.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/09/1790082228369-768x960.jpg"
-          },
-          {
-            "title": "Հ․Հ․ Անկախութեան խաւարային ստուերը՝ 44-օրեայ պատերազմը",
-            "url": "https://www.oragark.com/hy/ar-the-dark-shadow-of-independence-the-44-day-war/",
-            "date": "2026-09-22T05:17:42.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/09/Screenshot-2026-09-21-221611-300x227.png"
-          },
-          {
-            "title": "Հայ Օգնութեան Միութեան նախաձեռնութիւնը՝ Գաղթականական Արդարութիւն Արցախահայ Կիներու եւ Երեխաներու համար թեմայով",
-            "url": "https://www.oragark.com/hy/ars-to-convene-hrc-63-side-event-on-refugee-justice-for-armenian-women-and-children-of-artsakh/",
-            "date": "2026-09-22T05:13:27.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/09/Side-event-UN--768x420.jpg"
           }
         ]
       }
@@ -8771,6 +8771,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "UEFA Nations League: Klopp and Xavi's debut, Haaland's brace",
+            "url": "https://sport.news.am/eng/news/169205/",
+            "date": "2026-09-24T20:44:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169205.jpg"
+          },
+          {
             "title": "Yeghishe Melikyan: Tomorrow you will see a team that is ready to win",
             "url": "https://sport.news.am/eng/news/169195/",
             "date": "2026-09-24T14:17:00.000Z",
@@ -8823,12 +8829,6 @@
             "url": "https://sport.news.am/eng/news/169181/",
             "date": "2026-09-24T06:08:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/169181.jpg"
-          },
-          {
-            "title": "Chess Olympiad: Opponents of the Armenian teams in round 8",
-            "url": "https://sport.news.am/eng/news/169179/",
-            "date": "2026-09-24T05:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169179.jpg"
           }
         ]
       },
@@ -10095,6 +10095,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Лига наций: Дебют Клоппа и Хави, дубль Холанда, все результаты дня (видео)",
+            "url": "https://sport.news.am/rus/news/169205/",
+            "date": "2026-09-24T20:44:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/09/169205.jpg"
+          },
+          {
             "title": "Хави назвал фаворитов на «Золотой мяч»",
             "url": "https://sport.news.am/rus/news/169192/",
             "date": "2026-09-24T16:07:00.000Z",
@@ -10147,12 +10153,6 @@
             "url": "https://sport.news.am/rus/news/169186/",
             "date": "2026-09-24T10:10:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/09/169186.jpg"
-          },
-          {
-            "title": "Агент Захаряна отреагировал на невызов игрока в сборную России",
-            "url": "https://sport.news.am/rus/news/169183/",
-            "date": "2026-09-24T09:12:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/09/169183.jpg"
           }
         ]
       },
