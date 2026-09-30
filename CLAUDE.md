@@ -364,12 +364,16 @@ composants importent au build :
       modernes prennent le leur dans le payload, déjà localisé. Images
       hotlinkées en direct sur les quatre hôtes (aucune protection anti-hotlink,
       vérifié avec un `Referer` étranger) — donc ni proxy, ni wsrv.
-  - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **tous les pays de la nav
-    d'armenopole** (26, hors Suisse gérée à part), en plafonnant chaque pays à 20
-    événements, puis dédoublonne par URL. **N'utilise pas `greece`/`belgium`** :
-    ce ne sont pas de vraies pages pays (elles renvoient un flux générique
-    identique — Erevan/Angleterre/Chypre mêlés — d'où l'ancien « slug non
-    fiable »). Alimente le sélecteur de pays de l'agenda (voir « L'exception »
+  - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **les vraies pages pays
+    d'armenopole** (18, hors Suisse gérée à part), en plafonnant chaque pays à 20
+    événements, puis dédoublonne par URL. **Un slug inconnu redirige (302) vers
+    le flux générique** `/armenian/events` — brazil, egypt, iraq, israel, jordan,
+    qatar, syria, turkey le 30 sept. 2026, greece/belgium avant. Ses événements
+    prenaient le slug, les régions non mappées (Île-de-France, Ontario…)
+    retombaient dessus, et le dédoublonnage garde la **première** page : le menu
+    affichait « Brésil » avec 20 événements de Paris, Californie, Zurich,
+    Éthiopie. D'où `redirect: 'manual'` : un slug devenu générique sort en `✗`
+    dans le log au lieu d'étiqueter un faux pays. Alimente le sélecteur de pays de l'agenda (voir « L'exception »
     plus bas).
   - `instagram.mjs` — sélection aléatoire depuis le pool Instagram, **par
     brin** : chaque compte déclare son `group` (`institutions` |
@@ -700,7 +704,7 @@ résolu depuis le texte `location`**, pas par le slug de la page : le même
 événement est recensé sur plusieurs pages pays (donc `country` est souvent la
 communauté qui organise, pas le lieu), et Agenda **dédoublonne par URL** pour ne
 pas resservir 2-3 copies du même événement. `scripts/sources/armenopole.mjs`
-scrape **les 26 pays de la nav d'armenopole** (plafonnés à 20 événements chacun)
+scrape **les 18 vraies pages pays d'armenopole** (plafonnées à 20 événements chacune)
 et dédoublonne aussi à la source — le menu couvre donc tout ce que le site
 propose, en se purgeant des pays sans événement.
 

@@ -42,7 +42,7 @@ async function describe(res) {
   return ` [${hdr}${body ? ` « ${body} »` : ''}]`
 }
 
-export async function fetchText(url, { retries = 2, timeout = 20000 } = {}) {
+export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 'follow' } = {}) {
   let lastErr
   for (let attempt = 0; attempt <= retries; attempt++) {
     const ctrl = new AbortController()
@@ -55,7 +55,7 @@ export async function fetchText(url, { retries = 2, timeout = 20000 } = {}) {
           'Accept-Language': 'fr,en;q=0.8,hy;q=0.5',
         },
         signal: ctrl.signal,
-        redirect: 'follow',
+        redirect,
       })
       clearTimeout(timer)
       if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}${await describe(res)}`)

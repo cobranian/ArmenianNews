@@ -5,19 +5,22 @@ import { absUrl, clean, isoFromMonthDay } from '../lib/util.mjs'
 const BASE = 'https://armenopole.com'
 
 // Every country armenopole exposes in its own events nav (Switzerland is
-// scraped separately, above). This is the site's real list — earlier we also
-// hit `greece` and `belgium`, but those slugs aren't real country pages: they
-// return an identical generic feed (Erevan/Angleterre/Chypre mixed), which is
-// exactly what made the page slug unreliable. The UI groups by the country
-// resolved from each event's location and only shows countries that actually
-// have upcoming events, so listing them all here is safe — empty ones just
-// don't appear in the selector.
+// scraped separately, above). Only slugs that are REAL country pages belong
+// here: an unknown slug 302-redirects to the generic `/armenian/events` feed
+// (Paris, California, Zürich, Ethiopia… mixed), and its events would be
+// tagged with that slug. Since the UI falls back to the slug for any region it
+// can't map (Île-de-France, Ontario…), and the URL dedupe below keeps the
+// FIRST page that lists an event, one fake slug early in the list swallowed
+// events from half the world. Measured 30 Sept 2026: `brazil` showed 20
+// events, none in Brazil. The same held for `greece` and `belgium` before, and
+// on that date for brazil, egypt, iraq, israel, jordan, qatar, syria and
+// turkey — hence `redirect: 'manual'` in scrapeCountry, which turns the next
+// slug to go generic into a logged ✗ instead of a mislabelled country.
 const WORLD_COUNTRIES = [
-  'argentina', 'armenia', 'australia', 'brazil', 'bulgaria',
-  'canada', 'cyprus', 'egypt', 'france', 'germany',
-  'iraq', 'israel', 'italy', 'jordan', 'lebanon',
-  'netherlands', 'poland', 'qatar', 'russia', 'singapore',
-  'syria', 'turkey', 'uae', 'unitedkingdom', 'uruguay', 'usa',
+  'argentina', 'armenia', 'australia', 'bulgaria', 'canada',
+  'cyprus', 'france', 'germany', 'italy', 'lebanon',
+  'netherlands', 'poland', 'russia', 'singapore', 'uae',
+  'unitedkingdom', 'uruguay', 'usa',
 ]
 
 function parseEventsPage(html) {
@@ -67,7 +70,8 @@ function parseEventsPage(html) {
 
 async function scrapeCountry(country) {
   try {
-    const html = await fetchText(`${BASE}/armenian/events/${country}`)
+    // `manual`: a redirect means the slug is not a country page (see above).
+    const html = await fetchText(`${BASE}/armenian/events/${country}`, { redirect: 'manual' })
     return parseEventsPage(html).map((e) => ({ ...e, country }))
   } catch (err) {
     console.warn(`  ✗ armenopole/${country}: ${err.message}`)
