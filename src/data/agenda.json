@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T08:40:43.736Z",
+  "generatedAt": "2026-10-10T15:28:16.803Z",
   "switzerland": [
     {
       "title": "Hommage à Luciano Pavarotti - Opera Gala",
@@ -26,6 +26,15 @@
       "date": "2026-10-17T23:00",
       "rawDate": "OCT 17 23:00",
       "image": "https://armenopole.com/images/events/eylc17vj.jpg?v=105812",
+      "country": "switzerland"
+    },
+    {
+      "title": "From Medieval Patronage of the Armenian Noblewoman to Epigraphic Inscription",
+      "url": "https://armenopole.com/from%C2%A0medieval%C2%A0patronage%C2%A0of-the%C2%A0armenian%C2%A0noblewoman%C2%A0to%C2%A0epigraphic-inscription.html",
+      "location": "Genève",
+      "date": "2026-10-20T18:15",
+      "rawDate": "OCT 20 18:15",
+      "image": "https://armenopole.com/images/events/from%C2%A0medieval%C2%A0patronage%C2%A0of-the%C2%A0armenian%C2%A0noblewoman%C2%A0to%C2%A0epigraphic-inscription.jpg?v=240479",
       "country": "switzerland"
     },
     {
@@ -119,15 +128,6 @@
       "rawDate": "OCT 10 11:00",
       "image": "https://armenopole.com/images/events/reprise-des-ateliers-d-initiation-au-chant-modal-armenien-1.jpg?v=109156",
       "country": "france"
-    },
-    {
-      "title": "Hearing & Reading Scripture Together: The Daily Program",
-      "url": "https://armenopole.com/hearing-reading-scripture-together-the-daily-program-usa-2026-10-5.html",
-      "location": "New York",
-      "date": "2026-10-10T12:30",
-      "rawDate": "OCT 10 12:30",
-      "image": "https://armenopole.com/images/events/hearing-reading-scripture-together-the-daily-program-usa-2026-10-5.jpg?v=90971",
-      "country": "usa"
     },
     {
       "title": "L’Épopée des Arméniens et des marins Musa Dagh - Ras El Mina, septembre 1915",
@@ -542,6 +542,15 @@
       "rawDate": "OCT 16 12:13",
       "image": "https://armenopole.com/images/events/hayashen-community-lunch-club-unitedkingdom-2026-10-16.jpg?v=221053",
       "country": "unitedkingdom"
+    },
+    {
+      "title": "Hearing & Reading Scripture Together: The Daily Program",
+      "url": "https://armenopole.com/hearing-reading-scripture-together-the-daily-program-usa-2026-10-5.html",
+      "location": "New York",
+      "date": "2026-10-16T12:30",
+      "rawDate": "OCT 16 12:30",
+      "image": "https://armenopole.com/images/events/hearing-reading-scripture-together-the-daily-program-usa-2026-10-5.jpg?v=90971",
+      "country": "usa"
     },
     {
       "title": "90th Annual Food Festival",
