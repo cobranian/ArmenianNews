@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T15:28:16.803Z",
+  "generatedAt": "2026-10-10T20:11:16.024Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -82,12 +82,6 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Unveil.png.avif?itok=mYZqmJ1R"
         },
         {
-          "title": "L’Arménie vue du ciel : le VIIIe festival international d’aérostation débute le 6 octobre",
-          "url": "https://courrier.am/larmenie-vue-du-ciel-le-viiie-festival-international-daerostation-debute-le-6-octobre",
-          "date": "2026-10-05T06:37:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/b760424531_1493575182813046_3443977649520147907_n.jpg.avif?itok=oqk73Pgo"
-        },
-        {
           "title": "Le message de Zhanna Andreasyan aux enseignants",
           "url": "https://courrier.am/le-message-de-zhanna-andreasyan-aux-enseignants",
           "date": "2026-10-05T09:07:00.000Z",
@@ -98,6 +92,12 @@
           "url": "https://courrier.am/worldskills-larmenie-decroche-sa-premiere-medaille-depuis-ses-debuts-dans-la-competition",
           "date": "2026-10-05T06:18:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/2%20%281%29.jpg.avif?itok=wzGNaP8y"
+        },
+        {
+          "title": "L’Arménie vue du ciel : le VIIIe festival international d’aérostation débute le 6 octobre",
+          "url": "https://courrier.am/larmenie-vue-du-ciel-le-viiie-festival-international-daerostation-debute-le-6-octobre",
+          "date": "2026-10-05T06:37:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/b760424531_1493575182813046_3443977649520147907_n.jpg.avif?itok=oqk73Pgo"
         },
         {
           "title": "Deux stades de plus de 10 000 places prévus à Vanadzor et Ijevan pour le Mondial U20 2029",
@@ -1130,6 +1130,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "«Երևանն առջևում ունի 2808 տարի». Հայաստանում 470 միլիոն դոլարի ներդրումային նախագիծ է մեկնարկում",
+            "url": "https://hy.armradio.am/archives/763387",
+            "date": "2026-10-10T17:17:26.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/13A9848-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "«Ի՞նչ կարշմ»․ Վայքի ամենաանսովոր համի պատմությունը փառատոնի առիթ",
             "url": "https://hy.armradio.am/archives/763371",
             "date": "2026-10-10T14:55:00.000Z",
@@ -1142,6 +1149,13 @@
             "date": "2026-10-10T14:18:27.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/844207029_1699249121557100_7378379611891351036_n-768x512.jpg",
             "category": "Կարևոր"
+          },
+          {
+            "title": "Երևանում տեղադրվել է Մհեր Մկրտչյանի արձանը",
+            "url": "https://hy.armradio.am/archives/763383",
+            "date": "2026-10-10T13:52:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/QIP-Shot-Screen-3769-768x473.jpg",
+            "category": "Հասարակություն"
           },
           {
             "title": "Yerevan Fashion Week 2026․ երբ պատմությունը դառնում է նորաձևություն",
@@ -1184,20 +1198,6 @@
             "date": "2026-10-10T08:59:07.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/%D0%9C%D1%83%D0%B6%D1%87%D0%B8%D0%BD%D0%B0-%D0%B2-%D1%81%D0%B0%D0%B4%D1%83-%D0%BF%D0%BE%D0%B4-%D0%B3%D0%BE%D0%BB%D1%83%D0%B1%D1%8B%D0%BC-%D0%BD%D0%B5%D0%B1%D0%BE%D0%BC-768x432.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Թվային հարթակ, 24/7 ռեժիմով շինարարություն և բնակարանային ֆոնդի ռենովացիա. քաղաքաշինության ոլորտի նոր նախաձեռնությունները",
-            "url": "https://hy.armradio.am/archives/763294",
-            "date": "2026-10-10T08:45:26.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/QIP-Shot-Screen-3766-300x212.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Գերմանիան ընդլայնում է կրթական հնարավորությունները Հայաստանի մարզերում",
-            "url": "https://hy.armradio.am/archives/763241",
-            "date": "2026-10-10T08:35:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3807-768x458.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1212,11 +1212,11 @@
             "category": "Կարևոր"
           },
           {
-            "title": "Ամուլսարի ծրագիրը տարեկան շուրջ 1,5 տոկոս դրական ազդեցություն կունենա Հայաստանի ՀՆԱ-ի վրա. Էկոնոմիկայի նախարար",
+            "title": "Ամուլսարի ծրագիրը տարեկան շուրջ 1,5%-ով կնպաստի Հայաստանի ՀՆԱ-ի աճին",
             "url": "https://hy.armradio.am/archives/763312",
             "date": "2026-10-10T10:48:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/MHM0166632-768x534.jpg",
-            "category": "Կարևոր"
+            "category": "Տնտեսական"
           },
           {
             "title": "Տրվել է Ամուլսարի հանքավայրի շահագործման պաշտոնական մեկնարկը",
@@ -1376,11 +1376,11 @@
             "category": "Կարևոր"
           },
           {
-            "title": "7,7 մագնիտուդով հզոր երկրաշարժ Պանամայում. կան տասնյակ տուժածներ և ավերածություններ",
+            "title": "7,7 մագնիտուդով երկրաշարժ Պանամայում. կան տասնյակ տուժածներ և ավերածություններ",
             "url": "https://hy.armradio.am/archives/763316",
             "date": "2026-10-10T11:14:03.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/79624121_1004-768x336.webp",
-            "category": "Կարևոր"
+            "category": "Միջազգային"
           },
           {
             "title": "Թրամփը հայտարարել է Պուտինի հետ ռուսական դիզելի մատակարարման շուրջ պայմանավորվածության մասին. Զելենսկին քննադատել է գործարքը",
@@ -2110,6 +2110,12 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "L’exploitation de la mine d’Amulsar devrait générer 130 millions de dollars de recettes fiscales annuelles pour le budget de l’État affirme le ministre arménien de l’Économie",
+          "url": "https://www.armenews.com/lexploitation-de-la-mine-damulsar-devrait-generer-130-millions-de-dollars-de-recettes-fiscales-annuelles-pour-le-budget-de-letat-affirme-le-ministre-armenien-de-leconomie/",
+          "date": "2026-10-10T18:37:02.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8332.webp"
+        },
+        {
           "title": "Une forteresse vieille de 3 000 ans découverte grâce à des images satellite à Mush (Arménie occidentale), qui pourrait avoir été la première capitale de l’Urartu",
           "url": "https://www.armenews.com/une-forteresse-vieille-de-3-000-ans-decouverte-grace-a-des-images-satellite-a-mush-armenie-occidentale-qui-pourrait-avoir-ete-la-premiere-capitale-de-lurartu/",
           "date": "2026-10-10T10:54:02.000Z",
@@ -2162,18 +2168,18 @@
           "url": "https://www.armenews.com/asabarez-reagit-aux-propos-dalen-simonian-contre-les-diasporas-de-france-et-des-usa/",
           "date": "2026-10-10T06:31:55.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/HT7tArOXYAAcfvx.jpeg"
-        },
-        {
-          "title": "Karapetian s’engage une nouvelle fois à unir l’opposition arménienne",
-          "url": "https://www.armenews.com/karapetian-sengage-une-nouvelle-fois-a-unir-lopposition-armenienne/",
-          "date": "2026-10-10T06:30:58.000Z",
-          "image": null
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "L’Inter Milan s’impose sur Parme (3-0), l’Arménien Henrikh Mkhitaryan, passeur décisif",
+          "url": "https://www.armenews.com/linter-milan-simpose-sur-parme-3-0-larmenien-henrikh-mkhitaryan-passeur-decisif/",
+          "date": "2026-10-10T18:44:58.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/7754.jpeg"
+        },
         {
           "title": "Henrikh Mkhitaryan : Je me dis souvent que si mon père n’était pas décédé si jeune, je ne serais peut-être pas devenu footballeur",
           "url": "https://www.armenews.com/henrikh-mkhitaryan-je-me-dis-souvent-que-si-mon-pere-netait-pas-decede-si-jeune-je-ne-serais-peut-etre-pas-devenu-footballeur/",
@@ -2227,18 +2233,18 @@
           "url": "https://www.armenews.com/quatre-gymnastes-representeront-larmenie-aux-championnats-du-monde/",
           "date": "2026-10-05T10:05:48.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/7884.jpg"
-        },
-        {
-          "title": "Alina Charaeva (Arménie) se qualifie pour les 1/16e de finale du tournoi de Pékin (WTA-1000) après avoir éliminé Elena Rybakina la numéro une mondiale",
-          "url": "https://www.armenews.com/alina-charaeva-armenie-se-qualifie-pour-les-huitiemes-de-finale-du-tournoi-de-pekin-wta-1000-apres-avoir-elimine-elena-rybakina-la-numero-une-mondiale/",
-          "date": "2026-10-05T09:47:00.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/6670-1.jpg"
         }
       ]
     },
     {
       "categoryKey": "communaute",
       "articles": [
+        {
+          "title": "Bourg-lès-Valence : Succès pour l’association Arménia qui proposait des quiz dédiés à l’Arménie",
+          "url": "https://www.armenews.com/succes-pour-lassociation-armenia-qui-proposait-des-quiz-dedies-a-larmenie/",
+          "date": "2026-10-10T17:20:59.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/IMG_2633-scaled.jpg"
+        },
         {
           "title": "Présentation de « La cuisine des Arméniens » le 14 octobre à la MCA de Paris",
           "url": "https://www.armenews.com/presentation-de-la-cuisine-des-armeniens-le-14-octobre-a-la-mca-de-paris/",
@@ -2292,12 +2298,6 @@
           "url": "https://www.armenews.com/la-belle-conference-autour-du-pere-komitas-a-beaumont/",
           "date": "2026-10-07T06:30:37.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/IMG_2650.jpg"
-        },
-        {
-          "title": "Conférence sur les otages le 16 octobre à Erevan ou en ligne",
-          "url": "https://www.armenews.com/conference-sur-les-otages-le-16-octobre-a-erevan-ou-en-ligne/",
-          "date": "2026-10-06T06:30:15.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/poster-Fr_b_Page_1.jpg.jpeg"
         }
       ]
     },
@@ -4088,6 +4088,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "«Համաշխարհային առևտրի կենտրոն Երևան» նախագիծը միշտ արդիական կլինի Երևանի համար և կնպաստի քաղաքի ինքնության ձևակերպմանը. վարչապետ",
+            "url": "https://armenpress.am/hy/article/1262501",
+            "date": "2026-10-10T17:29:07.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/10/oCHzovCFx6d9cSCHchTAgJKPtA3yW0acbPnKR8vj.webp"
+          },
+          {
             "title": "Թարգմանչական արվեստը՝ պատուհան դեպի այլ երկրներ. Հայաստանի գրողների միությունը Թարգմանչաց տոնը նշանավորեց «Կանթեղ» մրցանակաբաշխությամբ",
             "url": "https://armenpress.am/hy/article/1262499",
             "date": "2026-10-10T14:40:00.000Z",
@@ -4140,12 +4146,6 @@
             "url": "https://armenpress.am/hy/article/1262478",
             "date": "2026-10-10T10:25:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/10/RZOjmoPfz42VGkU60QVkM6tmTarp5bDmtX13fHMj.webp"
-          },
-          {
-            "title": "Վարչապետն Ամուլսարի հանքավայրի շահագործման մեկնարկը կարևոր քայլ է համարում Հայաստանի տնտեսության զարգացման համար",
-            "url": "https://armenpress.am/hy/article/1262477",
-            "date": "2026-10-10T10:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/10/SVFuwNj7kGTNQGp2LloRFXM5enc5qkx9Kn8BIQyu.webp"
           }
         ]
       },
@@ -4545,6 +4545,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Проект «Всемирный торговый центр Ереван» всегда будет актуальным для Еревана и будет способствовать формированию идентичности города: премьер-министр",
+            "url": "https://armenpress.am/ru/article/1262501",
+            "date": "2026-10-10T17:48:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/10/oCHzovCFx6d9cSCHchTAgJKPtA3yW0acbPnKR8vj.webp"
+          },
+          {
             "title": "Предложения об «упрощенных» способах получения водительских прав — мошенничество: Министерство внутренних дел",
             "url": "https://armenpress.am/ru/article/1262490",
             "date": "2026-10-10T13:48:00.000Z",
@@ -4597,12 +4603,6 @@
             "url": "https://armenpress.am/ru/article/1262475",
             "date": "2026-10-10T10:27:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/10/1dq8MxmkXBFbfyugE0Z123pqPMCcLi0qczbFRYWJ.webp"
-          },
-          {
-            "title": "В Ванадзоре прошла общественная инициатива, направленная на предотвращение насилия в отношении женщин",
-            "url": "https://armenpress.am/ru/article/1262472",
-            "date": "2026-10-10T10:08:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/09/2PRvCIafrT6Mm0C7dxOqW0LsPnPcA4XVdxNy13qD.webp"
           }
         ]
       },
@@ -8759,6 +8759,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "La Liga: Barcelona's 8th victory",
+            "url": "https://sport.news.am/eng/news/169488/",
+            "date": "2026-10-10T18:34:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169488.jpg"
+          },
+          {
+            "title": "Inter thrash Parma, Mkhitaryan provided an assist",
+            "url": "https://sport.news.am/eng/news/169487/",
+            "date": "2026-10-10T18:26:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169487.jpg"
+          },
+          {
             "title": "Ronaldo's 980th goal",
             "url": "https://sport.news.am/eng/news/169475/",
             "date": "2026-10-09T20:16:00.000Z",
@@ -8805,18 +8817,6 @@
             "url": "https://sport.news.am/eng/news/169449/",
             "date": "2026-10-08T05:27:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169449.jpg"
-          },
-          {
-            "title": "FIFA: Armenia national team ranked 108th",
-            "url": "https://sport.news.am/eng/news/169446/",
-            "date": "2026-10-07T14:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169446.jpg"
-          },
-          {
-            "title": "Knarik Grigoryan - Match Inspector for the FIFA Women’s World Cup qualifiers",
-            "url": "https://sport.news.am/eng/news/169444/",
-            "date": "2026-10-07T12:09:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169444.jpg"
           }
         ]
       },
@@ -9023,6 +9023,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Cannabis Does Not Improve Sleep: Study Reveals an Unexpected Effect",
+            "url": "https://med.news.am/eng/news/42084/cannabis-does-not-improve-sleep-study-reveals-an-unexpected-effect.html",
+            "date": "2026-10-10T18:34:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42084.jpg"
+          },
+          {
+            "title": "Blood Markers May Reveal Signs of Accelerated Immune Aging",
+            "url": "https://med.news.am/eng/news/42086/blood-markers-may-reveal-signs-of-accelerated-immune-aging.html",
+            "date": "2026-10-10T16:56:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42086.jpg"
+          },
+          {
             "title": "Scientists Discover How Horseback Riding Affects Behavior in Children with Autism",
             "url": "https://med.news.am/eng/news/42085/scientists-discover-how-horseback-riding-affects-behavior-in-children-with-autism.html",
             "date": "2026-10-10T14:42:00.000Z",
@@ -9069,18 +9081,6 @@
             "url": "https://med.news.am/eng/news/42074/who-reports-8700-confirmed-ebola-cases-in-the-democratic-republic-of-the-congo.html",
             "date": "2026-10-09T07:30:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42074.jpg"
-          },
-          {
-            "title": "Nature: Sugar During Antibiotic Treatment Disrupts the Gut Microbiome More Severely",
-            "url": "https://med.news.am/eng/news/42072/nature-sugar-during-antibiotic-treatment-disrupts-the-gut-microbiome-more-severely.html",
-            "date": "2026-10-09T04:36:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42072.jpg"
-          },
-          {
-            "title": "Nature Metabolism: Ultra-Processed Food Makes the Body Use Energy Differently",
-            "url": "https://med.news.am/eng/news/42070/nature-metabolism-ultra-processed-food-makes-the-body-use-energy-differently.html",
-            "date": "2026-10-08T19:36:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42070.jpg"
           }
         ]
       },
@@ -9289,6 +9289,42 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "«Ես կարգավորել եմ 8 պատերազմ». Թրամփը կրկին վրդովվել է, որ մնացել է առանց Խաղաղության Նոբելյան մրցանակի",
+            "url": "https://news.am/hy/news/1067102",
+            "date": "2026-10-10T19:54:00.000Z",
+            "image": "https://news.am/storage/media/26/10/07/HamBEO5LtJGK77D2.webp"
+          },
+          {
+            "title": "Մեքլենբուրգ-Առաջավոր Պոմերանիայի իշխանությունները կարող են ձևավորել կոալիցիա՝ առանց ընտրություններում հաղթած ԱԳհ-ին ներառելու",
+            "url": "https://news.am/hy/news/1067099",
+            "date": "2026-10-10T19:09:00.000Z",
+            "image": "https://news.am/storage/media/26/10/10/zYiNjolj6ksk3m6j.webp"
+          },
+          {
+            "title": "Կոբախիձե․ Ռուսաստանի դեմ պատժամիջոցներից Վրաստանի հրաժարումը ռացիոնալ որոշում էր",
+            "url": "https://news.am/hy/news/1067088",
+            "date": "2026-10-10T18:08:00.000Z",
+            "image": "https://news.am/storage/media/26/06/02/xhatcrk8lybjfhmF.webp"
+          },
+          {
+            "title": "Թրամփ. Ժամանակն է, որ Ուկրաինան փոխի նախագահին",
+            "url": "https://news.am/hy/news/1067097",
+            "date": "2026-10-10T17:08:38.000Z",
+            "image": "https://news.am/storage/media/26/06/10/zAYu6fUJgtj6EiFd.webp"
+          },
+          {
+            "title": "Մահմուդ Աբասը Պաղեստինում նախագահական և խորհրդարանական ընտրությունները հետաձգել է մինչև 2027 թվականի սեպտեմբեր",
+            "url": "https://news.am/hy/news/1067079",
+            "date": "2026-10-10T16:36:00.000Z",
+            "image": "https://news.am/storage/media/26/09/17/3lGABiMtE8H2Y5Gy.webp"
+          },
+          {
+            "title": "Փաշինյանի միջնորդությամբ արգելանք է դրված ոչ միայն իմ, այլև` կնոջս բանկային հաշիվների վրա. Էդգար Ղազարյան",
+            "url": "https://news.am/hy/news/1067093",
+            "date": "2026-10-10T16:28:13.000Z",
+            "image": "https://news.am/storage/media/26/10/02/Eunb0jSihr3eB6ra.webp"
+          },
+          {
             "title": "Ուհանի նախկին քաղաքապետը դատապարտվել է 14 տարվա ազատազրկման՝ 8,5 մլն դոլարի կաշառք ստանալու համար",
             "url": "https://news.am/hy/news/1067058",
             "date": "2026-10-10T13:40:00.000Z",
@@ -9311,42 +9347,6 @@
             "url": "https://news.am/hy/news/1067012",
             "date": "2026-10-10T07:34:00.000Z",
             "image": "https://news.am/storage/media/26/10/10/oSSj8v8QHG2dBwnh.webp"
-          },
-          {
-            "title": "Էրեբունուց Երևան դարձած մեր մայրաքաղաքը երբեք Էրիվան չի դառնալու. Սամվել Կարապետյան",
-            "url": "https://news.am/hy/news/1067013",
-            "date": "2026-10-10T06:39:31.000Z",
-            "image": "https://news.am/storage/media/26/09/27/7W6l8XpMmczMuVWz.webp"
-          },
-          {
-            "title": "Հայաստանի և Երևանի համար հնարավոր է հաստատել խաղաղություն առանց զիջումների. «Ուժեղ Հայաստան»",
-            "url": "https://news.am/hy/news/1067002",
-            "date": "2026-10-10T05:36:11.000Z",
-            "image": "https://news.am/storage/media/26/10/10/dMyOAC81Pgu48jZ0.webp"
-          },
-          {
-            "title": "Թրամփն իրեն Խաղաղության Նոբելյան մրցանակ չշնորհելն անվանել է «անջնջելի բիծ» Նորվեգիայի հեղինակության վրա",
-            "url": "https://news.am/hy/news/1066996",
-            "date": "2026-10-10T05:32:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/dgNWpGqPqJQECFMF.webp"
-          },
-          {
-            "title": "«Հրապարակ». Կադրային բանկի անակնկալները. զավեշտալի մանրամասներ",
-            "url": "https://news.am/hy/news/1066991",
-            "date": "2026-10-10T04:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/10/XyhqtLyxKwzQnGl4.webp"
-          },
-          {
-            "title": "«Հրապարակ». Սրբազանի գործը մտել է փակուղի",
-            "url": "https://news.am/hy/news/1066990",
-            "date": "2026-10-10T03:54:00.000Z",
-            "image": "https://news.am/storage/media/26/10/10/dCK0L6BYD771UFbt.webp"
-          },
-          {
-            "title": "Փորձեր են արվում խաթարել Թուրքիայի և Ադրբեջանի միջև հարաբերությունները. Էրդողանի վարչակազմ",
-            "url": "https://news.am/hy/news/1066979",
-            "date": "2026-10-09T19:14:21.000Z",
-            "image": "https://news.am/storage/media/26/06/09/F5aW0CBDGKulfxyI.webp"
           }
         ]
       },
@@ -9421,6 +9421,48 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Մանչեսթեր Յունայթեդը» հաղթանակը բաց թողեց ավելացված ժամանակում (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169489/",
+            "date": "2026-10-10T18:47:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169489.jpg"
+          },
+          {
+            "title": "Լա Լիգա․ «Բարսելոնայի» 8-րդ հաղթանակը (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169488/",
+            "date": "2026-10-10T18:34:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169488.jpg"
+          },
+          {
+            "title": "«Ինտերը» հաղթեց «Պարմային», Մխիթարյանը կատարեց գոլային փոխանցում (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169487/",
+            "date": "2026-10-10T18:26:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169487.jpg"
+          },
+          {
+            "title": "«Արարատ-Արմենիան» ու «Ալաշկերտը» հաղթողին չպարզեցին (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169486/",
+            "date": "2026-10-10T16:57:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169486.jpg"
+          },
+          {
+            "title": "Մադրիդի «Աթլետիկոն» պարտության մատնեց «Ալավեսին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169485/",
+            "date": "2026-10-10T16:22:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169485.jpg"
+          },
+          {
+            "title": "«Չելսին» խնդիրներ չունեցավ՝ 5:1 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169484/",
+            "date": "2026-10-10T16:11:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169484.jpg"
+          },
+          {
+            "title": "«Բավարիան» չհաղթեց «Աուգսբուրգին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169483/",
+            "date": "2026-10-10T15:40:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169483.jpg"
+          },
+          {
             "title": "«Ինտերի» մեկնարկային կազմը",
             "url": "https://sport.news.am/arm/news/169482/",
             "date": "2026-10-10T14:54:00.000Z",
@@ -9437,48 +9479,6 @@
             "url": "https://sport.news.am/arm/news/169480/",
             "date": "2026-10-10T13:25:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169480.jpg"
-          },
-          {
-            "title": "«Մասթերս»․ Ալկարասի հաղթական մեկնարկը",
-            "url": "https://sport.news.am/arm/news/169479/",
-            "date": "2026-10-10T13:10:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169479.jpg"
-          },
-          {
-            "title": "Օրվա հանդիպումների անոնս",
-            "url": "https://sport.news.am/arm/news/169478/",
-            "date": "2026-10-10T05:03:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169478.jpg"
-          },
-          {
-            "title": "«Բորուսիան» ոչ ոքի խաղաց «Վերդերի» հետ եւ առաջատարն է (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169477/",
-            "date": "2026-10-09T20:35:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169477.jpg"
-          },
-          {
-            "title": "Ռոնալդուի 980-րդ գոլը (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169475/",
-            "date": "2026-10-09T20:16:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169475.jpg"
-          },
-          {
-            "title": "«Ալ Ահլիի» տպավորիչ հաղթանակը, Էդուարդ Սպերցյանը՝ գոլային փոխանցման հեղինակ (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169474/",
-            "date": "2026-10-09T18:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169474.jpg"
-          },
-          {
-            "title": "Պատանեկան ԵԱ. Հակոբ Շարբաթյանն ու Ռոմիկ Հարությունյանը կպայքարեն ոսկե մեդալների համար (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169473/",
-            "date": "2026-10-09T15:29:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169473.jpg"
-          },
-          {
-            "title": "Աշխարհի ամենաթանկ ֆուտբոլիստների տասնյակը",
-            "url": "https://sport.news.am/arm/news/169467/",
-            "date": "2026-10-09T14:34:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169467.jpg"
           }
         ]
       },
@@ -9486,6 +9486,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Գերմանիան մերժել է ԵՄ 2028–2034 թվականների բյուջեի նոր նախագիծը",
+            "url": "https://news.am/hy/news/1067084",
+            "date": "2026-10-10T17:22:00.000Z",
+            "image": "https://news.am/storage/media/26/09/21/tRWe0N7gkC6VBQRV.webp"
+          },
           {
             "title": "Իռլանդիան առաջարկել է 159 մլրդ եվրոյով կրճատել ԵՄ յոթնամյա բյուջեն",
             "url": "https://news.am/hy/news/1067056",
@@ -9539,12 +9545,6 @@
             "url": "https://news.am/hy/news/1066951",
             "date": "2026-10-09T14:29:28.000Z",
             "image": "https://news.am/storage/media/26/10/09/H9GxJG4VTQs0sKtG.webp"
-          },
-          {
-            "title": "25 դրամով ենք վաճառում լոլիկը, էն էլ չգիտենք՝ երբ կտան էդ գումարը. Վերին Դվինի բնակիչ",
-            "url": "https://news.am/hy/news/1066908",
-            "date": "2026-10-09T12:49:06.000Z",
-            "image": "https://i.ytimg.com/vi/SQy6rY444zc/hqdefault.jpg"
           }
         ]
       },
@@ -9685,6 +9685,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Կանեփը չի օգնում ավելի լավ քնել. հետազոտությունն անսպասելի ազդեցություն է հայտնաբերել",
+            "url": "https://med.news.am/arm/news/42084/kanepy-chi-ognum-aveli-lav-qnel-hetazotutyunn-anspaseli-azdecutyun-e-haytnaberel.html",
+            "date": "2026-10-10T18:34:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42084.jpg"
+          },
+          {
+            "title": "Արյան մեջ հայտնաբերվել են նշաններ, որոնք կարող են մատնանշել իմունիտետի արագացված ծերացումը",
+            "url": "https://med.news.am/arm/news/42086/aryan-mej-haytnabervel-en-nshanner-oronq-karox-en-matnanshel-imuniteti-aragacvats-tseracumy.html",
+            "date": "2026-10-10T16:56:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42086.jpg"
+          },
+          {
             "title": "Գիտնականները պարզել են, թե ինչպես է ձիավարությունն ազդում աուտիզմ ունեցող երեխաների վարքի վրա",
             "url": "https://med.news.am/arm/news/42085/gitnakannery-parzel-en-te-inchpes-e-dziavarutyunn-azdum-autizm-unecox-erekhaneri-varqi-vra.html",
             "date": "2026-10-10T14:42:00.000Z",
@@ -9721,8 +9733,8 @@
             "image": "https://med.news.am/static/news/s/2026/10/42080.jpg"
           },
           {
-            "title": "«Օզեմպիկական շուք». ինչու միայն հանուն սլացիկ լինելու չի կարելի նիհարեցնող դեղամիջոցներ ընդունել",
-            "url": "https://med.news.am/arm/news/42078/ozempikakan-shuq-inchu-miayn-hanun-slacik-linelu-chi-kareli-niharecnox-dexamijocner-yndunel.html",
+            "title": "«Օզեմպիկական շիկ». ինչու միայն հանուն սլացիկ լինելու չի կարելի նիհարեցնող դեղամիջոցներ ընդունել",
+            "url": "https://med.news.am/arm/news/42078/ozempikakan-shik-inchu-miayn-hanun-slacik-linelu-chi-kareli-niharecnox-dexamijocner-yndunel.html",
             "date": "2026-10-09T15:42:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42078.jpg"
           },
@@ -9731,18 +9743,6 @@
             "url": "https://med.news.am/arm/news/42077/gitnakannern-apacucel-en-zbosanqneri-oguty-miaynak-mardkanc-hamar%E2%80%A4-frontiers-in-psychology.html",
             "date": "2026-10-09T13:38:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42077.jpg"
-          },
-          {
-            "title": "Թրամփի վարչակազմի նախկին բարձրաստիճան պաշտոնյան աջակցություն է հայտնել Գևորգ Թամամյանի թեկնածությանը",
-            "url": "https://med.news.am/arm/news/42079/trampi-varchakazmi-nakhkin-bardzrastitchan-pashtonyan-ajakcutyun-e-haytnel-gevorg-tamamyani-teknatsutyany.html",
-            "date": "2026-10-09T13:08:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42079.jpg"
-          },
-          {
-            "title": "Ձիթապտղի յուղը ածխաջրերի օգտագործումից առաջ իջեցրել է գլյուկոզայի մակարդակի բարձրացումը. Diabetes",
-            "url": "https://med.news.am/arm/news/42075/dzitaptxi-yuxy-atskhajreri-ogtagortsumic-araj-ijecrel-e-glyukozayi-makardaki-bardzracumy-diabetes.html",
-            "date": "2026-10-09T11:21:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42075.jpg"
           }
         ]
       },
@@ -9750,6 +9750,24 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Այսօր մահացած զինծառայողը 3 ամսից պետք է զորացրվեր. մանրամասներ",
+            "url": "https://news.am/hy/news/1067098",
+            "date": "2026-10-10T17:14:04.000Z",
+            "image": "https://news.am/storage/media/26/09/24/JwpYykTKWUnXOG4k.webp"
+          },
+          {
+            "title": "Anthropic-ի Claude ԱԲ-մոդելը սպանության մասին տեղեկություններ է հորինել և դրանք փոխանցել ԱՄՆ ոստիկանությանը",
+            "url": "https://news.am/hy/news/1067074",
+            "date": "2026-10-10T16:51:00.000Z",
+            "image": "https://news.am/storage/media/26/09/23/00NRXcI89vp9zGtj.webp"
+          },
+          {
+            "title": "Ֆրանսիայում դեռահասը կորցրել է ատամները և կոտրել ծնոտը՝ արցունքաբեր նռնակի հարվածից հետո",
+            "url": "https://news.am/hy/news/1067080",
+            "date": "2026-10-10T15:50:00.000Z",
+            "image": "https://news.am/storage/media/26/10/03/joSIX2FuEQEbLHbj.webp"
+          },
           {
             "title": "Կոլումբիական համալսարանը ներողություն է խնդրել մակարոնի սոուսի անվանման մեջ հոկտեմբերի 7-ը հիշատակելու համար",
             "url": "https://news.am/hy/news/1067069",
@@ -9791,24 +9809,6 @@
             "url": "https://news.am/hy/news/1066976",
             "date": "2026-10-09T18:35:01.000Z",
             "image": "https://news.am/storage/media/26/06/17/3oX4q66lB4cpF1KI.webp"
-          },
-          {
-            "title": "«BMW»-ն դուրս է եկել ճանապարհի երթևեկելի գոտուց և կողաշրջված հայտնվել ձորակում. Արարատի փոխքաղաքապետի եղբայրը տեղում մահացել է",
-            "url": "https://news.am/hy/news/1066961",
-            "date": "2026-10-09T16:12:11.000Z",
-            "image": "https://news.am/storage/media/26/10/09/gYNzMNIlN9WatlGO.webp"
-          },
-          {
-            "title": "Կգուրգուրեն այդ ադրբեջանցուն, հետո շարադրություն կտան, որ հետը տանի Ադրբեջան. Սամվել Կարապետյան",
-            "url": "https://news.am/hy/news/1066894",
-            "date": "2026-10-09T11:58:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/yBuBAAUNFc5f7E3p.webp"
-          },
-          {
-            "title": "Ապօրինի զենք-զինամթերքի կամավոր հանձնումներ՝ Դավիթաշենում ու Վայոց Ձորում",
-            "url": "https://news.am/hy/news/1066809",
-            "date": "2026-10-09T07:13:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/09G7Lo5rLy0PxpOj.webp"
           }
         ]
       },
@@ -9951,6 +9951,42 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "«Я урегулировал 8 войн»: Трамп снова возмутился, что остался без Нобелевской премии мира",
+            "url": "https://news.am/ru/news/1067102",
+            "date": "2026-10-10T19:54:00.000Z",
+            "image": "https://news.am/storage/media/26/10/07/HamBEO5LtJGK77D2.webp"
+          },
+          {
+            "title": "Власти Мекленбург-Передней Померании могут сформировать коалицию, не включающую победившую на выборах АдГ",
+            "url": "https://news.am/ru/news/1067099",
+            "date": "2026-10-10T19:09:00.000Z",
+            "image": "https://news.am/storage/media/26/10/10/zYiNjolj6ksk3m6j.webp"
+          },
+          {
+            "title": "Кобахидзе: Отказ Грузии от санкций против России был рациональным решением",
+            "url": "https://news.am/ru/news/1067088",
+            "date": "2026-10-10T18:08:00.000Z",
+            "image": "https://news.am/storage/media/26/06/02/xhatcrk8lybjfhmF.webp"
+          },
+          {
+            "title": "Трамп: Украине пора сменить президента",
+            "url": "https://news.am/ru/news/1067097",
+            "date": "2026-10-10T17:08:38.000Z",
+            "image": "https://news.am/storage/media/26/06/10/zAYu6fUJgtj6EiFd.webp"
+          },
+          {
+            "title": "Махмуд Аббас перенёс президентские и парламентские выборы в Палестине на сентябрь 2027 года",
+            "url": "https://news.am/ru/news/1067079",
+            "date": "2026-10-10T16:36:00.000Z",
+            "image": "https://news.am/storage/media/26/09/17/3lGABiMtE8H2Y5Gy.webp"
+          },
+          {
+            "title": "Эдгар Казарян: По ходатайству Пашиняна арест наложен не только на мои, но и на банковские счета моей жены",
+            "url": "https://news.am/ru/news/1067093",
+            "date": "2026-10-10T16:28:13.000Z",
+            "image": "https://news.am/storage/media/26/10/02/Eunb0jSihr3eB6ra.webp"
+          },
+          {
             "title": "Бывшего мэра Уханя приговорили к 14 годам тюрьмы за взятки на $8,5 млн",
             "url": "https://news.am/ru/news/1067058",
             "date": "2026-10-10T13:40:00.000Z",
@@ -9973,42 +10009,6 @@
             "url": "https://news.am/ru/news/1067012",
             "date": "2026-10-10T07:34:00.000Z",
             "image": "https://news.am/storage/media/26/10/10/oSSj8v8QHG2dBwnh.webp"
-          },
-          {
-            "title": "Самвел Карапетян: Наша столица, ставшая Ереваном из Эребуни, никогда не станет Эриванью",
-            "url": "https://news.am/ru/news/1067013",
-            "date": "2026-10-10T06:39:31.000Z",
-            "image": "https://news.am/storage/media/26/09/27/7W6l8XpMmczMuVWz.webp"
-          },
-          {
-            "title": "«Сильная Армения»: Мир для Армении и Еревана возможно установить без уступок",
-            "url": "https://news.am/ru/news/1067002",
-            "date": "2026-10-10T05:36:11.000Z",
-            "image": "https://news.am/storage/media/26/10/10/dMyOAC81Pgu48jZ0.webp"
-          },
-          {
-            "title": "Трамп назвал неприсуждение ему Нобелевской премии мира «несмываемым пятном» на репутации Норвегии",
-            "url": "https://news.am/ru/news/1066996",
-            "date": "2026-10-10T05:32:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/dgNWpGqPqJQECFMF.webp"
-          },
-          {
-            "title": "Неожиданности кадрового банка: курьёзные подробности - «Грапарак»",
-            "url": "https://news.am/ru/news/1066991",
-            "date": "2026-10-10T04:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/10/XyhqtLyxKwzQnGl4.webp"
-          },
-          {
-            "title": "«Грапарак»: Дело архиепископа зашло в тупик",
-            "url": "https://news.am/ru/news/1066990",
-            "date": "2026-10-10T03:54:00.000Z",
-            "image": "https://news.am/storage/media/26/10/10/dCK0L6BYD771UFbt.webp"
-          },
-          {
-            "title": "Администрация Эрдогана: Предпринимаются попытки подорвать отношения между Турцией и Азербайджаном",
-            "url": "https://news.am/ru/news/1066979",
-            "date": "2026-10-09T19:14:21.000Z",
-            "image": "https://news.am/storage/media/26/06/09/F5aW0CBDGKulfxyI.webp"
           }
         ]
       },
@@ -10083,6 +10083,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Ла Лига: 8-я победа «Барселоны» (видео)",
+            "url": "https://sport.news.am/rus/news/169488/",
+            "date": "2026-10-10T18:34:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169488.jpg"
+          },
+          {
+            "title": "«Интер» оказался сильнее «Пармы», Мхитарян - автор голевой передачи (видео)",
+            "url": "https://sport.news.am/rus/news/169487/",
+            "date": "2026-10-10T18:26:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169487.jpg"
+          },
+          {
             "title": "Назван стартовый состав «Интера»",
             "url": "https://sport.news.am/rus/news/169482/",
             "date": "2026-10-10T14:54:00.000Z",
@@ -10129,18 +10141,6 @@
             "url": "https://sport.news.am/rus/news/169468/",
             "date": "2026-10-09T12:07:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169468.jpg"
-          },
-          {
-            "title": "Бундеслига: Стартует 5-й тур",
-            "url": "https://sport.news.am/rus/news/169464/",
-            "date": "2026-10-09T10:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169464.jpg"
-          },
-          {
-            "title": "Ла Лига։ Стартует 8-й тур",
-            "url": "https://sport.news.am/rus/news/169463/",
-            "date": "2026-10-09T08:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169463.jpg"
           }
         ]
       },
@@ -10148,6 +10148,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Германия отвергла новый проект бюджета ЕС на 2028–2034 годы",
+            "url": "https://news.am/ru/news/1067084",
+            "date": "2026-10-10T17:22:00.000Z",
+            "image": "https://news.am/storage/media/26/09/21/tRWe0N7gkC6VBQRV.webp"
+          },
           {
             "title": "Ирландия предложила сократить семилетний бюджет ЕС на €159 млрд",
             "url": "https://news.am/ru/news/1067056",
@@ -10201,12 +10207,6 @@
             "url": "https://news.am/ru/news/1066951",
             "date": "2026-10-09T14:29:28.000Z",
             "image": "https://news.am/storage/media/26/10/09/H9GxJG4VTQs0sKtG.webp"
-          },
-          {
-            "title": "Житель Верхнего Двина: Продаем помидоры по 25 драмов и не знаем, когда нам отдадут эти деньги",
-            "url": "https://news.am/ru/news/1066908",
-            "date": "2026-10-09T12:49:06.000Z",
-            "image": "https://i.ytimg.com/vi/SQy6rY444zc/hqdefault.jpg"
           }
         ]
       },
@@ -10347,6 +10347,18 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Каннабис не помогает лучше спать: исследование выявило неожиданный эффект",
+            "url": "https://med.news.am/rus/news/42084/kannabis-ne-pomogaet-luchshe-spat-issledovanie-viyyavilo-neozhidanniyiy-effekt.html",
+            "date": "2026-10-10T18:34:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42084.jpg"
+          },
+          {
+            "title": "В крови обнаружены признаки, которые могут указывать на ускоренное старение иммунитета",
+            "url": "https://med.news.am/rus/news/42086/v-krovi-obnaruzheniy-priznaki-kotoriye-mogut-ukaziyvat-na-uskorennoe-starenie-immuniteta.html",
+            "date": "2026-10-10T16:56:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42086.jpg"
+          },
+          {
             "title": "Ученые выяснили, как занятия верховой ездой влияют на поведение детей с аутизмом",
             "url": "https://med.news.am/rus/news/42085/ucheniye-viyyasnili-kak-zanyatiya-verkhovoiy-ezdoiy-vliyayut-na-povedenie-deteiy-s-autizmom.html",
             "date": "2026-10-10T14:42:00.000Z",
@@ -10393,18 +10405,6 @@
             "url": "https://med.news.am/rus/news/42075/diabetes-olivkovoe-maslo-pered-uglevodami-snizilo-podem-urovnya-glyukoziy.html",
             "date": "2026-10-09T11:21:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42075.jpg"
-          },
-          {
-            "title": "Проблему ожирения нельзя решить за один визит к врачу: В Армении запускают программу для пациентов",
-            "url": "https://med.news.am/rus/news/42076/problemu-ozhireniya-nelzya-reshit-za-odin-vizit-k-vrachu-v-armenii-zapuskayut-programmu-dlya-pacientov.html",
-            "date": "2026-10-09T09:24:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42076.jpg"
-          },
-          {
-            "title": "ВОЗ сообщила о 8,7 тыс. подтвержденных случаев Эболы в ДР Конго",
-            "url": "https://med.news.am/rus/news/42074/voz-soobshchila-o-87-tiys-podtverzhdenniykh-sluchaev-eboliy-v-dr-kongo.html",
-            "date": "2026-10-09T07:30:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42074.jpg"
           }
         ]
       },
@@ -10412,6 +10412,24 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Погибший сегодня военнослужащий должен был демобилизоваться через 3 месяца: подробности",
+            "url": "https://news.am/ru/news/1067098",
+            "date": "2026-10-10T17:14:04.000Z",
+            "image": "https://news.am/storage/media/26/09/24/JwpYykTKWUnXOG4k.webp"
+          },
+          {
+            "title": "ИИ-модель Claude Anthropic выдумала сведения об убийстве и передала их полиции США",
+            "url": "https://news.am/ru/news/1067074",
+            "date": "2026-10-10T16:51:00.000Z",
+            "image": "https://news.am/storage/media/26/09/23/00NRXcI89vp9zGtj.webp"
+          },
+          {
+            "title": "Во Франции подросток лишился зубов и сломал челюсть после попадания слезоточивой гранаты",
+            "url": "https://news.am/ru/news/1067080",
+            "date": "2026-10-10T15:50:00.000Z",
+            "image": "https://news.am/storage/media/26/10/03/joSIX2FuEQEbLHbj.webp"
+          },
           {
             "title": "Колумбийский университет извинился за упоминание 7 октября в названии соуса для пасты",
             "url": "https://news.am/ru/news/1067069",
@@ -10453,24 +10471,6 @@
             "url": "https://news.am/ru/news/1066976",
             "date": "2026-10-09T18:35:01.000Z",
             "image": "https://news.am/storage/media/26/06/17/3oX4q66lB4cpF1KI.webp"
-          },
-          {
-            "title": "В Армении в результате ДТП погиб брат вице-мэра города Арарат",
-            "url": "https://news.am/ru/news/1066961",
-            "date": "2026-10-09T16:12:11.000Z",
-            "image": "https://news.am/storage/media/26/10/09/gYNzMNIlN9WatlGO.webp"
-          },
-          {
-            "title": "Самвел Карапетян: Азербайджанца приласкают, потом дадут ему сочинение, чтобы отвез в Азербайджан",
-            "url": "https://news.am/ru/news/1066894",
-            "date": "2026-10-09T11:58:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/yBuBAAUNFc5f7E3p.webp"
-          },
-          {
-            "title": "На перекрестке у аэропорта «Звартноц» автомобиль марки «Kia Forte» врезался в столб",
-            "url": "https://news.am/ru/news/1066790",
-            "date": "2026-10-09T06:21:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/V95rfgnfamN35SK6.webp"
           }
         ]
       },
