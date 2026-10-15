@@ -6,6 +6,7 @@ import {
   parseReply,
   applyRubrics,
   MAX_BATCH,
+  BATCH_SIZE,
   classifyRubrics,
   DEFAULT_MODEL,
   FALLBACK_MODELS,
@@ -34,8 +35,31 @@ test('collectPending : fils mixed seulement, sans doublon, hors cache, titre req
 })
 
 test('collectPending plafonne le lot', () => {
-  assert.equal(MAX_BATCH, 80)
+  assert.equal(MAX_BATCH, 120)
+  assert.equal(BATCH_SIZE, 40)
   assert.equal(collectPending(sample(), {}, map, 1).length, 1)
+})
+
+// Mesuré le 15 octobre 2026 en production : 80 titres d'un coup dépassaient le
+// délai à chaque essai (CI et local, 90 s), 40 passaient en 3 s. D'où des lots
+// de 40, chacun avec son propre délai : un lot perdu ne perd pas les autres.
+test('classifyRubrics decoupe en lots de BATCH_SIZE ; un lot en echec n empeche pas les suivants', async () => {
+  const titles = Array.from({ length: 50 }, (_, i) => ({ title: `T${i}`, url: `u${i}` }))
+  const news = { armenpress: { en: [{ categoryKey: 'fact-check', articles: titles }] } }
+  const sizes = []
+  let call = 0
+  const fetchImpl = async (_url, init) => {
+    const n = JSON.parse(init.body).messages[1].content.split('\n').length
+    sizes.push(n)
+    if (call++ === 0) throw new Error('timeout')
+    const out = Object.fromEntries(Array.from({ length: n }, (_, i) => [i + 1, 'sports']))
+    return { ok: true, status: 200, json: async () => ({ choices: [{ message: { content: JSON.stringify(out) } }] }) }
+  }
+  const cache = await classifyRubrics(news, {}, { apiKey: 'k', fetchImpl, log: quiet })
+  assert.deepEqual(sizes, [40, 10])
+  assert.equal(Object.keys(cache).length, 10)
+  assert.equal(cache.u45, 'sports')
+  assert.equal(cache.u0, undefined)
 })
 
 test('buildMessages numerote a partir de 1, une ligne par titre', () => {

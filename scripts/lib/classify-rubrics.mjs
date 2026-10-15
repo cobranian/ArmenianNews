@@ -2,16 +2,21 @@
 //
 // Les rubriques d'origine claires passent par la table ; seuls les fils
 // `{ mixed }` (« Top Stories », « Actualité »…) sont classés ici, article par
-// article, sur leur TITRE, par un modèle gratuit OpenRouter — UN appel groupé
-// par instantané, dans le quota gratuit. Le résultat est mis en cache par URL
-// (src/data/rubric-cache.json) : un article n'est classé qu'une fois.
+// article, sur leur TITRE, par un modèle gratuit OpenRouter — au plus
+// MAX_BATCH / BATCH_SIZE appels par instantané, dans le quota gratuit. Le
+// résultat est mis en cache par URL (src/data/rubric-cache.json) : un article
+// n'est classé qu'une fois.
 //
 // LE PIÈGE : tout échec (pas de clé, quota, réponse illisible, délai) envoie
 // les articles non classés dans le défaut de leur fil. Le scrape continue et
 // le site reste juste en apparence ; le seul signe est « ✗ classify » au log.
 import { RUBRICS, RUBRIC_MAP, mixedDefault } from '../../src/rubrics.js'
 
-export const MAX_BATCH = 80
+// Titres par instantané, et par appel. Le lot n'est pas un détail : mesuré le
+// 15 octobre 2026, le modèle gratuit dépassait le délai à CHAQUE essai sur 80
+// titres (90 s, en CI comme en local) et répondait en 3 s sur 40.
+export const MAX_BATCH = 120
+export const BATCH_SIZE = 40
 export const DEFAULT_MODEL = 'nvidia/nemotron-3.5-lightning:free'
 export const FALLBACK_MODELS = ['google/gemma-4-31b-it:free']
 const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
@@ -107,9 +112,10 @@ export function applyRubrics(news, cache, map = RUBRIC_MAP) {
   return Object.fromEntries(Object.entries(cache).filter(([url]) => live.has(url)))
 }
 
-// L'appel réseau : un lot, un appel. Rend le cache enrichi de ce que le modèle
-// a classé. NE LÈVE JAMAIS — un échec laisse les articles à classer au
-// prochain instantané, et applyRubrics leur donne le défaut de leur fil d'ici là.
+// L'appel réseau : un appel par lot de BATCH_SIZE, chacun avec son délai. Rend
+// le cache enrichi de ce que le modèle a classé. NE LÈVE JAMAIS — un lot en
+// échec reste à classer au prochain instantané (applyRubrics lui donne le
+// défaut de son fil d'ici là), sans emporter les autres lots.
 // La clé n'est jamais écrite dans le log.
 export async function classifyRubrics(
   news,
@@ -138,33 +144,36 @@ export async function classifyRubrics(
   const models = forced ? [forced] : [DEFAULT_MODEL, ...FALLBACK_MODELS]
   if (forced && !forced.endsWith(':free'))
     log.warn(`  ⚠ classify: ${forced} n'est pas un modèle :free — consomme des crédits`)
-  try {
-    const res = await fetchImpl(ENDPOINT, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://armenieinfo.ch',
-        'X-Title': 'Armenie Info',
-      },
-      body: JSON.stringify({
-        models,
-        temperature: 0,
-        reasoning: { enabled: false },
-        messages: buildMessages(pending),
-      }),
-      signal: AbortSignal.timeout(timeoutMs),
-    })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    const body = await res.json()
-    const got = parseReply(body?.choices?.[0]?.message?.content, pending.length)
-    for (const [i, rubric] of got) next[pending[i].url] = rubric
-    const used = body?.model || models[0]
-    const count = `classify: ${got.size}/${pending.length} titres classés (${used})`
-    if (got.size) log.log(`  ✓ ${count}`)
-    else log.warn(`  ✗ ${count} — réponse inexploitable`)
-  } catch (err) {
-    log.warn(`  ✗ classify: ${err.message} — ${pending.length} titres dans leur rubrique par défaut`)
+  for (let start = 0; start < pending.length; start += BATCH_SIZE) {
+    const batch = pending.slice(start, start + BATCH_SIZE)
+    try {
+      const res = await fetchImpl(ENDPOINT, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://armenieinfo.ch',
+          'X-Title': 'Armenie Info',
+        },
+        body: JSON.stringify({
+          models,
+          temperature: 0,
+          reasoning: { enabled: false },
+          messages: buildMessages(batch),
+        }),
+        signal: AbortSignal.timeout(timeoutMs),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const body = await res.json()
+      const got = parseReply(body?.choices?.[0]?.message?.content, batch.length)
+      for (const [i, rubric] of got) next[batch[i].url] = rubric
+      const used = body?.model || models[0]
+      const count = `classify: ${got.size}/${batch.length} titres classés (${used})`
+      if (got.size) log.log(`  ✓ ${count}`)
+      else log.warn(`  ✗ ${count} — réponse inexploitable`)
+    } catch (err) {
+      log.warn(`  ✗ classify: ${err.message} — ${batch.length} titres dans leur rubrique par défaut`)
+    }
   }
   return next
 }

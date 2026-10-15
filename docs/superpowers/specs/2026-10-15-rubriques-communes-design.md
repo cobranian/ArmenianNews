@@ -76,11 +76,13 @@ Appelé par `scripts/scrape.mjs` après les sources, avant l'écriture de
 
 1. Rassembler les articles des fils `mixed` dont l'URL n'est pas dans
    `src/data/rubric-cache.json` (`{ url: rubrique }`).
-2. **Un seul appel OpenRouter groupé** par instantané (≈ 24/jour, dans le quota
-   gratuit) : liste numérotée de titres en entrée, JSON `{ "n": "rubrique" }`
-   en sortie. Modèle `:free` configurable (`OPENROUTER_MODEL`, défaut fixé à
-   l'implémentation après essai), température 0. Au-delà d'un plafond de titres
-   par appel (≈ 80), le reste attend l'instantané suivant.
+2. **Des appels OpenRouter groupés par lots de 40**, au plus 120 titres par
+   instantané (≤ 72 appels/jour, dans le quota gratuit) : liste numérotée de
+   titres en entrée, JSON `{ "n": "rubrique" }` en sortie. Modèle `:free`
+   configurable (`OPENROUTER_MODEL`), température 0, raisonnement coupé. Le
+   reste attend l'instantané suivant. *Révisé le 15 octobre 2026 : le lot
+   unique de 80 prévu à l'origine dépassait le délai à chaque essai en
+   production ; 40 répond en ~3 s.*
 3. Toute valeur hors des neuf clés est rejetée (l'article prend le défaut).
 4. Écrire `rubric` sur chaque article des fils `mixed` dans `news.json`
    (cache ou défaut), et purger du cache les URL qui ont quitté le flux.
