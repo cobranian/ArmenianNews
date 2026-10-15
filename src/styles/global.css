@@ -1436,7 +1436,14 @@ html:lang(hy) .nav__brand {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(224, 73, 47, 0.55); }
   50% { opacity: 0.55; box-shadow: 0 0 0 6px rgba(224, 73, 47, 0); }
 }
-/* --- active source panel: stacked rubric carousels --- */
+/* Dans un titre d'étagère (h3 en bloc), le point est en ligne : sans display
+   il ignorerait sa largeur et sa hauteur. */
+.shelf__title .newsfeed__live-dot {
+  display: inline-block;
+  margin-left: 0.5em;
+  vertical-align: middle;
+}
+/* --- active rubric panel: one carousel per source, stacked --- */
 .newsfeed__source {
   display: flex;
   flex-direction: column;
