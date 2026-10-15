@@ -168,3 +168,39 @@ export function mixedDefault(sourceId, key, map = RUBRIC_MAP) {
   const v = map[sourceId]?.[key]
   return v && typeof v === 'object' ? v.mixed : null
 }
+
+// Horodatage d'un article ; un article non daté (ou mal daté) part en dernier.
+const time = (a) => {
+  const t = Date.parse(a.date)
+  return Number.isNaN(t) ? -Infinity : t
+}
+
+// Les sources (forme de buildSources, NewsBrowser.jsx) recomposées en
+// rubriques : pour chaque rubrique, une étagère par source, dans l'ordre des
+// sources reçu (donc celui de TAB_ORDER). Une source fusionne toutes ses
+// rubriques d'origine qui mènent à la même rubrique commune (NEWS.am business
+// + economics), sans doublon d'URL. Chaque carte garde le libellé de sa
+// rubrique d'origine (`catLabel`). Rubrique ou étagère vide : absente.
+export function groupByRubric(sources, { cap = SHELF_CAP, map = RUBRIC_MAP } = {}) {
+  const out = []
+  for (const key of RUBRICS) {
+    const shelves = []
+    for (const source of sources) {
+      const seen = new Set()
+      const items = []
+      for (const c of source.cats || [])
+        for (const a of c.articles || []) {
+          if (!a?.url || seen.has(a.url)) continue
+          if (rubricOf(source.id, c.key, a, map) !== key) continue
+          seen.add(a.url)
+          items.push({ ...a, catLabel: c.label })
+        }
+      if (!items.length) continue
+      // Stable : deux non datés gardent leur ordre (NaN vaut 0 pour sort).
+      items.sort((x, y) => time(y) - time(x))
+      shelves.push({ source, articles: items.slice(0, cap) })
+    }
+    if (shelves.length) out.push({ key, shelves })
+  }
+  return out
+}
