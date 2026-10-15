@@ -7,6 +7,8 @@ import {
   applyRubrics,
   MAX_BATCH,
   classifyRubrics,
+  DEFAULT_MODEL,
+  FALLBACK_MODELS,
 } from '../scripts/lib/classify-rubrics.mjs'
 
 const map = {
@@ -110,4 +112,28 @@ test('classifyRubrics : rien a classer → aucun appel', async () => {
   const fetchImpl = async () => { called = true }
   await classifyRubrics({ a: [] }, {}, { apiKey: 'k', fetchImpl, log: quiet })
   assert.equal(called, false)
+})
+
+test('classifyRubrics : corps de requete (models, reasoning coupe, temperature 0)', async () => {
+  const news = { armenpress: { en: [{ categoryKey: 'fact-check', articles: [{ title: 'T1', url: 'u1' }] }] } }
+  const bodies = []
+  const fetchImpl = async (_url, init) => {
+    bodies.push(JSON.parse(init.body))
+    return { ok: true, status: 200, json: async () => ({ choices: [{ message: { content: '{}' } }] }) }
+  }
+  const saved = process.env.OPENROUTER_MODEL
+  delete process.env.OPENROUTER_MODEL
+  try {
+    await classifyRubrics(news, {}, { apiKey: 'k', fetchImpl, log: quiet })
+    await classifyRubrics(news, {}, { apiKey: 'k', model: 'x', fetchImpl, log: quiet })
+  } finally {
+    if (saved === undefined) delete process.env.OPENROUTER_MODEL
+    else process.env.OPENROUTER_MODEL = saved
+  }
+  assert.deepEqual(bodies[0].models, [DEFAULT_MODEL, ...FALLBACK_MODELS])
+  assert.deepEqual(bodies[1].models, ['x'])
+  for (const b of bodies) {
+    assert.deepEqual(b.reasoning, { enabled: false })
+    assert.equal(b.temperature, 0)
+  }
 })

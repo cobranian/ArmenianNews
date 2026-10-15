@@ -12,7 +12,8 @@
 import { RUBRICS, RUBRIC_MAP, mixedDefault } from '../../src/rubrics.js'
 
 export const MAX_BATCH = 80
-export const DEFAULT_MODEL = 'meta-llama/llama-3.3-70b-instruct:free'
+export const DEFAULT_MODEL = 'nvidia/nemotron-3.5-lightning:free'
+export const FALLBACK_MODELS = ['google/gemma-4-31b-it:free']
 const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
 
 // Chaque étagère de chaque source, quelle que soit la forme du flux : une liste
@@ -114,9 +115,9 @@ export async function classifyRubrics(
   cache,
   {
     apiKey = process.env.OPENROUTER_API_KEY,
-    model = process.env.OPENROUTER_MODEL || DEFAULT_MODEL,
+    model,
     fetchImpl = fetch,
-    timeoutMs = 20000,
+    timeoutMs = 30000,
     log = console,
   } = {},
 ) {
@@ -130,6 +131,10 @@ export async function classifyRubrics(
     log.warn(`  ✗ classify: OPENROUTER_API_KEY absente — ${pending.length} titres dans leur rubrique par défaut`)
     return next
   }
+  // OpenRouter essaie les modèles dans l'ordre ; OPENROUTER_MODEL ou l'option
+  // `model` imposent un modèle unique.
+  const forced = model || process.env.OPENROUTER_MODEL
+  const models = forced ? [forced] : [DEFAULT_MODEL, ...FALLBACK_MODELS]
   try {
     const res = await fetchImpl(ENDPOINT, {
       method: 'POST',
@@ -139,16 +144,22 @@ export async function classifyRubrics(
         'HTTP-Referer': 'https://armenieinfo.ch',
         'X-Title': 'Armenie Info',
       },
-      body: JSON.stringify({ model, temperature: 0, messages: buildMessages(pending) }),
+      body: JSON.stringify({
+        models,
+        temperature: 0,
+        reasoning: { enabled: false },
+        messages: buildMessages(pending),
+      }),
       signal: AbortSignal.timeout(timeoutMs),
     })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const body = await res.json()
     const got = parseReply(body?.choices?.[0]?.message?.content, pending.length)
     for (const [i, rubric] of got) next[pending[i].url] = rubric
-    const msg = `  classify: ${got.size}/${pending.length} titres classés (${model})`
-    if (got.size) log.log(`  ✓${msg.slice(1)}`)
-    else log.warn(`  ✗${msg.slice(1)} — réponse inexploitable`)
+    const used = body?.model || models[0]
+    const count = `classify: ${got.size}/${pending.length} titres classés (${used})`
+    if (got.size) log.log(`  ✓ ${count}`)
+    else log.warn(`  ✗ ${count} — réponse inexploitable`)
   } catch (err) {
     log.warn(`  ✗ classify: ${err.message} — ${pending.length} titres dans leur rubrique par défaut`)
   }
