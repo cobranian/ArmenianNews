@@ -163,7 +163,6 @@ function buildSources(t, lang) {
   const armenpress = {
     id: 'armenpress',
     brand: 'Armenpress',
-    name: t('browser.armenpress'),
     live: true,
     images: true,
     // Sur le poids, pas sur un blocage — voir le commentaire de `wsrv`.
@@ -175,7 +174,6 @@ function buildSources(t, lang) {
   const armradio = {
     id: 'armradio',
     brand: 'ArmRadio',
-    name: t('browser.armradio'),
     live: true,
     images: true,
     armProxy: true,
@@ -186,7 +184,6 @@ function buildSources(t, lang) {
   const courrier = {
     id: 'courrier',
     brand: "Courrier d'Erevan",
-    name: t('browser.courrier'),
     live: false,
     images: true,
     cats: shelvesFor('courrier', lang)
@@ -196,7 +193,6 @@ function buildSources(t, lang) {
   const armenews = {
     id: 'armenews',
     brand: "Nouvelles d'Arménie",
-    name: t('browser.armenews'),
     live: false,
     images: true,
     proxy: true,
@@ -207,7 +203,6 @@ function buildSources(t, lang) {
   const artzakank = {
     id: 'artzakank',
     brand: 'Artzakank',
-    name: t('browser.artzakank'),
     live: false,
     images: true,
     proxy: true,
@@ -218,7 +213,6 @@ function buildSources(t, lang) {
   const armenieinfotv = {
     id: 'armenieinfotv',
     brand: 'ArménieInfo.tv',
-    name: t('browser.armenieinfotv'),
     live: false,
     images: true,
     proxy: true,
@@ -234,7 +228,6 @@ function buildSources(t, lang) {
   const asbarez = {
     id: 'asbarez',
     brand: 'Asbarez',
-    name: t('browser.asbarez'),
     live: false,
     images: true,
     cats: shelvesFor('asbarez', lang)
@@ -247,7 +240,6 @@ function buildSources(t, lang) {
   const oragark = {
     id: 'oragark',
     brand: 'Oragark',
-    name: t('browser.oragark'),
     live: false,
     images: true,
     cats: shelvesFor('oragark', lang)
@@ -262,7 +254,6 @@ function buildSources(t, lang) {
   const armenianweekly = {
     id: 'armenianweekly',
     brand: 'Armenian Weekly',
-    name: t('browser.armenianweekly'),
     live: false,
     images: true,
     cats: shelvesFor('armenianweekly', lang)
@@ -276,7 +267,6 @@ function buildSources(t, lang) {
   const californiacourier = {
     id: 'californiacourier',
     brand: 'California Courier',
-    name: t('browser.californiacourier'),
     live: false,
     images: true,
     cats: shelvesFor('californiacourier', lang)
@@ -291,7 +281,6 @@ function buildSources(t, lang) {
   const civilnet = {
     id: 'civilnet',
     brand: 'CivilNet',
-    name: t('browser.civilnet'),
     live: false,
     images: true,
     cats: shelvesFor('civilnet', lang)
@@ -308,7 +297,6 @@ function buildSources(t, lang) {
   const newsam = {
     id: 'newsam',
     brand: 'NEWS.am',
-    name: t('browser.newsam'),
     live: false,
     images: true,
     cats: shelvesFor('newsam', lang)

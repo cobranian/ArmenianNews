@@ -136,6 +136,8 @@ export async function classifyRubrics(
   // `model` imposent un modèle unique.
   const forced = model || process.env.OPENROUTER_MODEL
   const models = forced ? [forced] : [DEFAULT_MODEL, ...FALLBACK_MODELS]
+  if (forced && !forced.endsWith(':free'))
+    log.warn(`  ⚠ classify: ${forced} n'est pas un modèle :free — consomme des crédits`)
   try {
     const res = await fetchImpl(ENDPOINT, {
       method: 'POST',

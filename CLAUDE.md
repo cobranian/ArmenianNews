@@ -1016,7 +1016,9 @@ de production servent toujours depuis la racine de leur domaine.
   remarque. **`RUBRIC_MAP`** replie chaque rubrique d'origine sur une rubrique
   commune ; une rubrique d'origine nouvelle doit y être déclarée, sinon elle
   tombe en silence dans Arménie — `test/rubric-map.test.mjs` la confronte au
-  dernier instantané. Seul l'onglet actif (Arménie) est prérendu ; chaque
+  dernier instantané — en CI ce test est sauté (il gèlerait le job horaire,
+  `npm test` précédant le scrape) : ajoutez l'entrée `RUBRIC_MAP` dans le même
+  commit que la rubrique du scraper, le seul signe est `✗ rubric:` au log. Seul l'onglet actif (Arménie) est prérendu ; chaque
   langue ne montrant que ses sources, le HTML reste dans la langue de la page.
   Ne réintroduisez pas d'onglet hors-langue sans mesurer ce qu'il prérend.
 

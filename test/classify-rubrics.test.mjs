@@ -138,3 +138,23 @@ test('classifyRubrics : corps de requete (models, reasoning coupe, temperature 0
     assert.equal(b.temperature, 0)
   }
 })
+
+test('classifyRubrics : avertit si le modele impose n est pas :free', async () => {
+  const news = { armenpress: { en: [{ categoryKey: 'fact-check', articles: [{ title: 'T1', url: 'u1' }] }] } }
+  const fetchImpl = async () => ({ ok: true, status: 200, json: async () => ({ choices: [{ message: { content: '{}' } }] }) })
+  const run = async (model) => {
+    const warns = []
+    const log = { log() {}, warn: (m) => warns.push(m) }
+    await classifyRubrics(news, {}, { apiKey: 'k', model, fetchImpl, log })
+    return warns.filter((w) => w.includes('pas un modèle :free'))
+  }
+  const saved = process.env.OPENROUTER_MODEL
+  delete process.env.OPENROUTER_MODEL
+  try {
+    assert.equal((await run('x')).length, 1)
+    assert.equal((await run('x:free')).length, 0)
+    assert.equal((await run(undefined)).length, 0)
+  } finally {
+    if (saved !== undefined) process.env.OPENROUTER_MODEL = saved
+  }
+})

@@ -204,3 +204,21 @@ export function groupByRubric(sources, { cap = SHELF_CAP, map = RUBRIC_MAP } = {
   }
   return out
 }
+
+// Les couples « source|rubrique d'origine » d'un news.json que `map` ignore.
+// Une source indexée par langue a un objet { lang: [étagères] }, les autres une
+// liste plate ; Courrier est indexé par `sectionKey`, les autres par
+// `categoryKey`. Sans doublon d'une langue à l'autre.
+export function unmappedKeys(news, map = RUBRIC_MAP) {
+  const out = new Set()
+  for (const [source, feed] of Object.entries(news || {})) {
+    if (source === 'generatedAt' || !feed) continue
+    const lists = Array.isArray(feed) ? [feed] : Object.values(feed)
+    for (const list of lists)
+      for (const shelf of list || []) {
+        const key = shelf.categoryKey ?? shelf.sectionKey
+        if (map[source]?.[key] === undefined) out.add(`${source}|${key}`)
+      }
+  }
+  return [...out]
+}

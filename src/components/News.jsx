@@ -3,8 +3,8 @@ import { SectionHead } from './SectionHead.jsx'
 import { NewsBrowser } from './NewsBrowser.jsx'
 import { visibleSources } from '../newsSources.js'
 
-// La section Actualités : un bandeau, un titre, puis le navigateur de sources
-// (un rail de marques sur grand écran, un tambour sous 640px).
+// La section Actualités : un bandeau, un titre, puis le navigateur
+// de rubriques (neuf onglets communs, une étagère par source dans chacun).
 //
 // LE BANDEAU EST DÉRIVÉ, ET IL DOIT LE RESTER. Il nommait autrefois cinq
 // sources en dur — « ArmRadio · Courrier d'Erevan · Nouvelles d'Arménie ·

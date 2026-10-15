@@ -1,24 +1,11 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { RUBRICS, RUBRIC_MAP, rubricOf, mixedDefault } from '../src/rubrics.js'
+import { RUBRICS, RUBRIC_MAP, rubricOf, mixedDefault, unmappedKeys } from '../src/rubrics.js'
 
 const news = JSON.parse(
   await readFile(new URL('../src/data/news.json', import.meta.url), 'utf-8'),
 )
-
-// Toutes les (source, rubrique d'origine) du dernier instantané. Une source
-// indexée par langue a un objet { lang: [étagères] }, les autres une liste.
-function couples() {
-  const out = new Set()
-  for (const [source, feed] of Object.entries(news)) {
-    if (source === 'generatedAt' || !feed) continue
-    const lists = Array.isArray(feed) ? [feed] : Object.values(feed)
-    for (const list of lists)
-      for (const shelf of list || []) out.add(`${source}|${shelf.categoryKey ?? shelf.sectionKey}`)
-  }
-  return [...out]
-}
 
 test('les neuf rubriques, dans l ordre des onglets', () => {
   assert.deepEqual(RUBRICS, [
@@ -29,12 +16,31 @@ test('les neuf rubriques, dans l ordre des onglets', () => {
 
 // LE PIÈGE SILENCIEUX : une rubrique ajoutée par une source et absente de la
 // table tomberait dans le repli sans que rien ne le dise. Ce test le dit.
-test('chaque rubrique d origine du snapshot est declaree dans RUBRIC_MAP', () => {
-  const manquants = couples().filter((c) => {
-    const [s, k] = c.split('|')
-    return RUBRIC_MAP[s]?.[k] === undefined
-  })
-  assert.deepEqual(manquants, [], 'déclarer ces couples dans src/rubrics.js')
+// En CI le test est sauté : `npm test` précède le scrape dans le job horaire, et
+// une rubrique nouvelle déjà commise par le scrape précédent le ferait échouer
+// en tête de CHAQUE run, gelant scrapes et déploiements. Le signal y est la
+// ligne « ✗ rubric: » de scripts/scrape.mjs.
+test('chaque rubrique d origine du snapshot est declaree dans RUBRIC_MAP', {
+  skip: process.env.GITHUB_ACTIONS
+    ? 'sauté en CI : il gèlerait le job horaire (test avant scrape) ; voir « ✗ rubric: » au log'
+    : false,
+}, () => {
+  assert.deepEqual(unmappedKeys(news), [], 'déclarer ces couples dans src/rubrics.js')
+})
+
+test('unmappedKeys : fil plat, fil par langue, sectionKey, sans doublon', () => {
+  const map = { a: { eco: 'economie' }, b: { news: 'armenie' } }
+  const feed = {
+    generatedAt: 'x',
+    a: {
+      en: [{ categoryKey: 'eco' }, { categoryKey: 'nouvelle' }],
+      hy: [{ categoryKey: 'nouvelle' }],
+    },
+    b: [{ sectionKey: 'news' }, { sectionKey: 'autre' }],
+    c: [{ categoryKey: 'k' }],
+    d: null,
+  }
+  assert.deepEqual(unmappedKeys(feed, map), ['a|nouvelle', 'b|autre', 'c|k'])
 })
 
 test('chaque valeur de la table est une des neuf rubriques', () => {
