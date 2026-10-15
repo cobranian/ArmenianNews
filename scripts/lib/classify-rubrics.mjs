@@ -64,7 +64,8 @@ export function buildMessages(items) {
     'societe = société, faits divers, santé, éducation, droits ; ' +
     "diaspora = communautés arméniennes hors d'Arménie ; " +
     'culture = arts, patrimoine, religion, mode ; sports = sport ; ' +
-    'opinion = éditoriaux, chroniques, analyses signées. ' +
+    'opinion = UNIQUEMENT éditoriaux, chroniques et tribunes signés par leur auteur. ' +
+    "Une déclaration ou une citation d'un responsable (titre « X : … » ou entre guillemets) est une information, pas une opinion : classe-la selon son sujet (souvent politique). " +
     'Les titres peuvent être en français, anglais, arménien ou russe. ' +
     'Réponds UNIQUEMENT par un objet JSON {"numéro": "rubrique"}, sans aucun texte autour.'
   return [

@@ -42,6 +42,7 @@ test('buildMessages numerote a partir de 1, une ligne par titre', () => {
   const [sys, user] = buildMessages([{ url: 'x', title: 'Un\ntitre  ' }, { url: 'y', title: 'Deux' }])
   assert.equal(sys.role, 'system')
   for (const r of ['armenie', 'opinion']) assert.match(sys.content, new RegExp(r))
+  assert.match(sys.content, /pas une opinion/)
   assert.equal(user.content, '1. Un titre\n2. Deux')
 })
 
