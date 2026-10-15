@@ -206,7 +206,7 @@ composants importent au build :
     multi-niveaux** (proxy Cloudflare Worker → API REST → flux RSS → Google News)
     car armradio.am est derrière Cloudflare, qui renvoie par intermittence un 403
     aux IP des datacenters de la CI. Sert **en/hy/ru** — le fil (ticker) reste
-    anglais, mais l'onglet ArmRadio du navigateur d'actualités suit la langue
+    anglais, mais l'étagère ArmRadio du navigateur d'actualités suit la langue
     (ru via `ru.armradio.am`, voir « À savoir »).
   - `asbarez.mjs` — Asbarez, le quotidien arménien de Los Angeles, en **deux
     éditions** : anglaise (`asbarez.com`, 7 rubriques) et arménienne occidentale
@@ -787,7 +787,7 @@ dernier revient le premier, dans les deux sens. Deux appelants s'en servent :
 
 | Appelant | Ce qui tourne | État replié / déplié |
 |---|---|---|
-| `NewsBrowser.jsx` | les 8 à 9 rubriques | — |
+| `NewsBrowser.jsx` | jusqu'à 9 rubriques (une vide est masquée) | — |
 | `Radio.jsx` | les 15 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
 
 Cinq choses à savoir avant d'y toucher, toutes payées une fois :
@@ -1027,10 +1027,8 @@ de production servent toujours depuis la racine de leur domaine.
   défaut, le site a l'air juste, et le seul signe est `✗ classify` au log
   (`gh run view <id> --log | grep classify`). Modèle en service :
   `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, repli
-  `google/gemma-4-31b-it:free`, délai 30 s. Le premier choix du plan
-  (llama-3.3-70b `:free`) était déjà retiré (404) le 15 octobre 2026, les
-  modèles gratuits à raisonnement dépassent le délai et les points d'accès
-  gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
+  `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
+  raisonnement dépassent le délai, les points d'accès gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
   `DEFAULT_MODEL` (ou posez `OPENROUTER_MODEL`) après avoir listé
   `https://openrouter.ai/api/v1/models` (ids finissant par `:free`).
 - **Chaque carte affiche l'âge de sa dépêche, et une source non datée n'affiche
@@ -1154,7 +1152,7 @@ de production servent toujours depuis la racine de leur domaine.
     pas.** Le titre entier reste dans le DOM : Google et les lecteurs d'écran le
     lisent, seul l'affichage est écourté. Couper à la source ferait indexer
     « Porte-parole du MAE » comme titre, sur la **seule source quadrilingue**.
-    Voir le piège de l'ordre des onglets ci-dessus : le HTML prérendu compte.
+    Voir « Les onglets du fil sont des RUBRIQUES » : seule la rubrique Arménie est prérendue, ses titres sont ce que Google lit.
 
   Le « … » plus « LIRE LA SUITE » est le traitement juste pour un chapô. Les
   50 % ne sont pas une dette : c'est la source qui parle comme une agence.
