@@ -20,6 +20,8 @@ import { scrapeCivilnet } from './sources/civilnet.mjs'
 import { scrapeNewsam } from './sources/newsam.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
+import { classifyRubrics, applyRubrics } from './lib/classify-rubrics.mjs'
+import { unmappedKeys } from '../src/rubrics.js'
 
 // Backfill each empty category from the previous snapshot, so a transient
 // upstream block never wipes a rubric. `keyName` is 'sectionKey' | 'categoryKey'.
@@ -276,7 +278,7 @@ async function main() {
     igPosts = prevIg.posts
   }
 
-  await writeJson('news.json', {
+  const newsOut = {
     generatedAt,
     courrier,
     armradio,
@@ -290,7 +292,17 @@ async function main() {
     californiacourier,
     civilnet,
     newsam,
-  })
+  }
+
+  // Les fils fourre-tout sont classés dans les rubriques communes. Un échec
+  // n'arrête rien : les articles prennent le défaut de leur fil (voir
+  // scripts/lib/classify-rubrics.mjs) — le seul signe est « ✗ classify ».
+  for (const k of unmappedKeys(newsOut))
+    console.warn(`  ✗ rubric: ${k} non déclarée dans RUBRIC_MAP — rangée dans Arménie`)
+  console.log('\nRubriques (fils fourre-tout):')
+  const rubricCache = await classifyRubrics(newsOut, (await readJson('rubric-cache.json')) || {})
+  await writeJson('rubric-cache.json', applyRubrics(newsOut, rubricCache))
+  await writeJson('news.json', newsOut)
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })

@@ -73,7 +73,7 @@ npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : l
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 241 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram
+npm test             # 267 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -85,7 +85,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **241 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **267 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -103,7 +103,9 @@ qui date les articles du Courrier (`test/courrier-dates.test.mjs`, voir
 « À savoir »), et les cinq brins du mur Instagram — leur déclaration en quatre
 langues, le tirage à la ronde et l'exclusion du pool
 (`test/instagram-strands.test.mjs`, `test/instagram-draw.test.mjs`,
-`test/instagram-pool.test.mjs`) — aucun ne touche le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
+`test/instagram-pool.test.mjs`), et les rubriques communes du fil
+(`test/rubric-map.test.mjs`, `test/rubric-group.test.mjs`,
+`test/rubric-i18n.test.mjs`, `test/classify-rubrics.test.mjs`) — aucun ne touche le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -204,7 +206,7 @@ composants importent au build :
     multi-niveaux** (proxy Cloudflare Worker → API REST → flux RSS → Google News)
     car armradio.am est derrière Cloudflare, qui renvoie par intermittence un 403
     aux IP des datacenters de la CI. Sert **en/hy/ru** — le fil (ticker) reste
-    anglais, mais l'onglet ArmRadio du navigateur d'actualités suit la langue
+    anglais, mais l'étagère ArmRadio du navigateur d'actualités suit la langue
     (ru via `ru.armradio.am`, voir « À savoir »).
   - `asbarez.mjs` — Asbarez, le quotidien arménien de Los Angeles, en **deux
     éditions** : anglaise (`asbarez.com`, 7 rubriques) et arménienne occidentale
@@ -679,7 +681,7 @@ a plus de `setLang` à appeler, le sélecteur de `Nav.jsx` est un jeu de liens
 le **chrome de l'interface** est traduit ; le **contenu** (articles, posts)
 reste dans sa langue d'origine — un lecteur russe voit Armenpress **et**
 ArmRadio en russe, mais Courrier (et les autres sources francophones) en
-français, et Courrier reste le premier onglet (comme pour hy). Le français est
+français, sous les rubriques communes. Le français est
 la langue par défaut et doit porter tous ses accents (é, è, à, ê, ç…).
 
 **Le sélecteur de pays de l'agenda.** L'agenda est **un seul carrousel piloté
@@ -785,7 +787,7 @@ dernier revient le premier, dans les deux sens. Deux appelants s'en servent :
 
 | Appelant | Ce qui tourne | État replié / déplié |
 |---|---|---|
-| `NewsBrowser.jsx` | les 5 à 7 marques de sources | — |
+| `NewsBrowser.jsx` | jusqu'à 9 rubriques (une vide est masquée) | — |
 | `Radio.jsx` | les 15 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
 
 Cinq choses à savoir avant d'y toucher, toutes payées une fois :
@@ -815,18 +817,17 @@ Cinq choses à savoir avant d'y toucher, toutes payées une fois :
   piste, sans quoi le navigateur panoramiquerait pendant que la roue tourne.
   Mesuré : 44,9 % de la surface confisque encore le geste, contre 100 % avant.
 
-**Le rail des sources sur grand écran : deux rangs centrés, pas une ligne.**
+**Le rail des rubriques sur grand écran : deux rangs centrés, pas une ligne.**
 Le conteneur est plafonné par `--maxw`, donc le rail ne s'élargit pas au-delà :
-en français il faut 1446px pour 1128px disponibles, **à toute largeur d'écran**.
+les neuf rubriques ne tiennent pas sur une ligne, **à toute largeur d'écran**.
 La règle d'avant promettait « centrées quand elles tiennent, défilantes sinon » —
 le premier cas ne se produisait jamais, et on payait 14px de barre de défilement
 système au milieu d'une manchette. `column-gap: clamp(14px, 5vw, 64px)` est
 **mesuré, pas choisi** : c'est l'écart qui place la césure, et les quatre langues
-n'ont pas les mêmes noms — mesuré à 1400px le 12 août 2026 : fr 4+3, **en 5+3**,
-hy 5+2, ru cinq marques sur une seule ligne. Ne descendez pas sous 64 sans
-revérifier les quatre : à 56px, l'anglais laissait Oragark seul sur un second
-rang. Le chiffre anglais **suit le nombre d'onglets** (5+2 à sept marques, 5+3 à
-huit) : c'est une mesure à refaire à chaque source ajoutée, pas une constante. Et le coefficient est **5**vw, pas 4 :
+n'ont pas les mêmes libellés — mesuré à 1400px le 15 octobre 2026 : fr 7+2,
+en 7+2, hy 5+4, ru 6+2 (huit rubriques : l'une est vide). Le découpage **suit le
+nombre de rubriques affichées par langue**, pas les sources : une mesure à
+refaire quand une rubrique s'ajoute ou se vide, pas une constante. Et le coefficient est **5**vw, pas 4 :
 à 4vw le terme médian vaut 56px sur un écran de 1400px, donc le plafond n'est
 jamais atteint.
 
@@ -844,7 +845,8 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
 
 - **Généré par le scrape (ne pas éditer à la main)** — `news.json`,
   `agenda.json`, `instagram-feed.json`, `meta.json`. Ils sont réécrits à chaque
-  snapshot horaire.
+  snapshot horaire. Exception : `rubric-cache.json` (classement des fils
+  fourre-tout) s'édite à la main pour corriger un classement, une URL par ligne.
 - **Rafraîchi à la main, jamais par la CI** — `src/data/instagram.json` (le
   **pool** Instagram : la **liste des comptes** est curée à la main, leurs
   **posts** sont récoltés par `npm run ig-scrape` ; le job horaire y pioche une
@@ -1006,55 +1008,31 @@ de production servent toujours depuis la racine de leur domaine.
   entier, pas une panne. Le pool reste valide et le mur correct, donc ni test,
   ni lint, ni build ne le dira — seule cette ligne le dit, une fois, dans un
   flot de plusieurs centaines de téléchargements.
-- **Les onglets du fil suivent la langue choisie, Armenpress en tête.**
-  `NewsBrowser` ne rend que l'onglet actif : la source par défaut (toujours
-  Armenpress) est donc la seule que le prérendu injecte dans le HTML, et la
-  seule que Google lit sans exécuter de JS. La règle (`buildSources`) : **chaque
-  langue n'affiche que les sources qui publient dans cette langue**, Armenpress
-  en tête partout. L'ordre vit dans **`TAB_ORDER`** (`NewsBrowser.jsx`), une
-  liste par langue :
-  - `fr` → Armenpress, ArménieInfo.tv, Courrier d'Erevan, Nouvelles d'Arménie, Artzakank, California Courier, CivilNet
-  - `en` → Armenpress, ArmRadio, NEWS.am, Asbarez, Armenian Weekly, CivilNet, California Courier, Oragark
-  - `hy` → Armenpress, ArmRadio, NEWS.am, Asbarez, CivilNet, California Courier, Oragark
-  - `ru` → Armenpress, ArmRadio, NEWS.am, California Courier, CivilNet
+- **Les onglets du fil sont des RUBRIQUES, pas des sources.** Neuf rubriques
+  communes (`RUBRICS`, `src/rubrics.js`) ; dans chacune, une étagère par
+  source, dans l'ordre de **`TAB_ORDER`** (`src/newsSources.js`), qui décide
+  toujours quelle source paraît sous quelle langue — une source absente de
+  `TAB_ORDER` n'apparaît nulle part, et seul `test/source-count.test.mjs` le
+  remarque. **`RUBRIC_MAP`** replie chaque rubrique d'origine sur une rubrique
+  commune ; une rubrique d'origine nouvelle doit y être déclarée, sinon elle
+  tombe en silence dans Arménie — `test/rubric-map.test.mjs` la confronte au
+  dernier instantané — en CI ce test est sauté (il gèlerait le job horaire,
+  `npm test` précédant le scrape) : ajoutez l'entrée `RUBRIC_MAP` dans le même
+  commit que la rubrique du scraper, le seul signe est `✗ rubric:` au log. Seul l'onglet actif (Arménie) est prérendu ; chaque
+  langue ne montrant que ses sources, le HTML reste dans la langue de la page.
+  Ne réintroduisez pas d'onglet hors-langue sans mesurer ce qu'il prérend.
 
-  **Cet ordre est écrit à la main, et il ne l'a pas toujours été.** Il était
-  calculé — Armenpress épinglé, puis tri alphabétique de marque, accents repliés
-  (`é = e`, ArménieInfo.tv triait comme « Armenie ») — précisément pour qu'une
-  nouvelle source se place toute seule. Cette propriété est **perdue à dessein** :
-  le rang porte désormais une intention éditoriale que l'alphabet ne sait pas
-  exprimer — sous `fr`, les quatre fils proprement francophones passent devant
-  les sources traduites ou multilingues ; sous `en`/`hy`, NEWS.am monte au
-  troisième rang.
-
-  La conséquence est à connaître avant d'ajouter une source : **une source
-  absente de `TAB_ORDER` n'apparaît nulle part**, et rien ne le signale. Le seul
-  garde-fou est indirect — `test/source-count.test.mjs` lit ce tableau pour
-  vérifier le nombre de rédactions annoncé par les cartes de liens, donc un
-  oubli fait mentir ce décompte et casse le test. Ne renommez pas `TAB_ORDER`
-  sans mettre ce test à jour : il le lit comme du texte (Node ne sait pas
-  importer du JSX).
-
-  Les sources 100 % francophones (Courrier, armenews, artzakank, armenieinfotv)
-  n'apparaissent donc que sous `fr` ; ArmRadio et NEWS.am (`en`/`hy`/`ru`, sans
-  édition française) sont **retirés** sous `fr` au lieu d'y servir des titres
-  anglais sous `<html lang="fr">`. Asbarez et Oragark ont chacun une édition
-  anglaise et une
-  arménienne occidentale (pas de russe), donc ils rejoignent `en`/`hy` mais pas
-  `ru` — et jamais `fr`. The California Courier traduit la chronique de Sassounian
-  dans une rubrique par langue, donc — comme Armenpress — il paraît dans **les
-  quatre** (`en` = son fil anglais ; `fr`/`ru`/`hy` = sa chronique). CivilNet
-  publie une édition complète dans chacune des quatre, donc il y paraît aussi :
-  `fr` et `ru` reçoivent ces deux-là en plus d'Armenpress. Comme aucun de ces ajouts n'est
-  jamais l'onglet par défaut (Armenpress reste épinglé en tête), ils ne changent
-  rien au HTML prérendu. **Côté SEO c'est sûr** : Armenpress mappe 1:1 sur la langue
-  d'interface, donc sous `fr` il prérend son édition française — du texte
-  français sous `lang="fr"`, ce qu'une requête française doit trouver.
-  (Auparavant Courrier menait pour prérendre le plus de texte français ; la règle
-  par langue fait d'Armenpress la tête naturelle.) Comme le badge de langue par
-  onglet vaudrait désormais toujours la langue d'interface, il a été **supprimé**
-  (redondant). Ne réintroduisez pas d'onglet hors-langue sans mesurer ce que
-  devient le HTML prérendu.
+  **Les fils fourre-tout (`{ mixed }`) sont classés au scrape par un modèle
+  gratuit OpenRouter** (`scripts/lib/classify-rubrics.mjs`, secret
+  `OPENROUTER_API_KEY`, cache `src/data/rubric-cache.json`). **Le piège :** une
+  clé expirée ou un quota épuisé ne casse rien — chaque fil retombe dans son
+  défaut, le site a l'air juste, et le seul signe est `✗ classify` au log
+  (`gh run view <id> --log | grep classify`). Modèle en service :
+  `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, repli
+  `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
+  raisonnement dépassent le délai, les points d'accès gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
+  `DEFAULT_MODEL` (ou posez `OPENROUTER_MODEL`) après avoir listé
+  `https://openrouter.ai/api/v1/models` (ids finissant par `:free`).
 - **Chaque carte affiche l'âge de sa dépêche, et une source non datée n'affiche
   RIEN — sans le moindre signe.** `src/relativeTime.js` rend « 45 min », « 6 h »,
   « 2 j » sous « LIRE LA SUITE » ; `NewsBrowser.jsx` n'émet le `<time>` que si
@@ -1176,7 +1154,7 @@ de production servent toujours depuis la racine de leur domaine.
     pas.** Le titre entier reste dans le DOM : Google et les lecteurs d'écran le
     lisent, seul l'affichage est écourté. Couper à la source ferait indexer
     « Porte-parole du MAE » comme titre, sur la **seule source quadrilingue**.
-    Voir le piège de l'ordre des onglets ci-dessus : le HTML prérendu compte.
+    Voir « Les onglets du fil sont des RUBRIQUES » : seule la rubrique Arménie est prérendue, ses titres sont ce que Google lit.
 
   Le « … » plus « LIRE LA SUITE » est le traitement juste pour un chapô. Les
   50 % ne sont pas une dette : c'est la source qui parle comme une agence.
