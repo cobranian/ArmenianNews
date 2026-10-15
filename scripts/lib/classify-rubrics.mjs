@@ -13,7 +13,7 @@ import { RUBRICS, RUBRIC_MAP, mixedDefault } from '../../src/rubrics.js'
 
 export const MAX_BATCH = 80
 export const DEFAULT_MODEL = 'meta-llama/llama-3.3-70b-instruct:free'
-export const ENDPOINT ='https://openrouter.ai/api/v1/chat/completions'
+const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
 
 // Chaque étagère de chaque source, quelle que soit la forme du flux : une liste
 // plate, ou un objet indexé par langue.
@@ -103,4 +103,54 @@ export function applyRubrics(news, cache, map = RUBRIC_MAP) {
     article.rubric = RUBRICS.includes(cache[article.url]) ? cache[article.url] : fallback
   }
   return Object.fromEntries(Object.entries(cache).filter(([url]) => live.has(url)))
+}
+
+// L'appel réseau : un lot, un appel. Rend le cache enrichi de ce que le modèle
+// a classé. NE LÈVE JAMAIS — un échec laisse les articles à classer au
+// prochain instantané, et applyRubrics leur donne le défaut de leur fil d'ici là.
+// La clé n'est jamais écrite dans le log.
+export async function classifyRubrics(
+  news,
+  cache,
+  {
+    apiKey = process.env.OPENROUTER_API_KEY,
+    model = process.env.OPENROUTER_MODEL || DEFAULT_MODEL,
+    fetchImpl = fetch,
+    timeoutMs = 20000,
+    log = console,
+  } = {},
+) {
+  const next = { ...cache }
+  const pending = collectPending(news, next)
+  if (!pending.length) {
+    log.log('  classify: aucun titre nouveau')
+    return next
+  }
+  if (!apiKey) {
+    log.warn(`  ✗ classify: OPENROUTER_API_KEY absente — ${pending.length} titres dans leur rubrique par défaut`)
+    return next
+  }
+  try {
+    const res = await fetchImpl(ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://armenieinfo.ch',
+        'X-Title': 'Armenie Info',
+      },
+      body: JSON.stringify({ model, temperature: 0, messages: buildMessages(pending) }),
+      signal: AbortSignal.timeout(timeoutMs),
+    })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const body = await res.json()
+    const got = parseReply(body?.choices?.[0]?.message?.content, pending.length)
+    for (const [i, rubric] of got) next[pending[i].url] = rubric
+    const msg = `  classify: ${got.size}/${pending.length} titres classés (${model})`
+    if (got.size) log.log(`  ✓${msg.slice(1)}`)
+    else log.warn(`  ✗${msg.slice(1)} — réponse inexploitable`)
+  } catch (err) {
+    log.warn(`  ✗ classify: ${err.message} — ${pending.length} titres dans leur rubrique par défaut`)
+  }
+  return next
 }

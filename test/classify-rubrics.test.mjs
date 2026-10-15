@@ -6,6 +6,7 @@ import {
   parseReply,
   applyRubrics,
   MAX_BATCH,
+  classifyRubrics,
 } from '../scripts/lib/classify-rubrics.mjs'
 
 const map = {
@@ -69,4 +70,44 @@ test('applyRubrics : cache, sinon defaut ; purge des URL sorties du flux', () =>
   // Une rubrique fixe n'est pas touchée.
   assert.equal(news.a.en[1].articles[0].rubric, undefined)
   assert.deepEqual(pruned, { u1: 'politique', n1: 'invalide' })
+})
+
+const quiet = { log() {}, warn() {} }
+const reply = (content, ok = true, status = 200) => async () => ({
+  ok,
+  status,
+  json: async () => ({ choices: [{ message: { content } }] }),
+})
+// classifyRubrics lit la vraie RUBRIC_MAP : les jeux d'essai passent donc par
+// une rubrique réellement fourre-tout (armenpress fact-check).
+test('classifyRubrics : ajoute au cache ce que le modele a classe', async () => {
+  const news = { armenpress: { en: [{ categoryKey: 'fact-check', articles: [{ title: 'T1', url: 'u1' }] }] } }
+  const cache = await classifyRubrics(news, {}, { apiKey: 'k', fetchImpl: reply('{"1":"politique"}'), log: quiet })
+  assert.deepEqual(cache, { u1: 'politique' })
+})
+
+test('classifyRubrics sans cle : cache inchange, aucun appel', async () => {
+  let called = false
+  const fetchImpl = async () => { called = true }
+  const news = { armenpress: { en: [{ categoryKey: 'fact-check', articles: [{ title: 'T1', url: 'u1' }] }] } }
+  const cache = await classifyRubrics(news, { x: 'monde' }, { apiKey: '', fetchImpl, log: quiet })
+  assert.equal(called, false)
+  assert.deepEqual(cache, { x: 'monde' })
+})
+
+test('classifyRubrics : HTTP 429 ou exception → cache inchange, pas de levee', async () => {
+  const news = { armenpress: { en: [{ categoryKey: 'fact-check', articles: [{ title: 'T1', url: 'u1' }] }] } }
+  assert.deepEqual(
+    await classifyRubrics(news, {}, { apiKey: 'k', fetchImpl: reply('', false, 429), log: quiet }),
+    {},
+  )
+  const boom = async () => { throw new Error('timeout') }
+  assert.deepEqual(await classifyRubrics(news, {}, { apiKey: 'k', fetchImpl: boom, log: quiet }), {})
+})
+
+test('classifyRubrics : rien a classer → aucun appel', async () => {
+  let called = false
+  const fetchImpl = async () => { called = true }
+  await classifyRubrics({ a: [] }, {}, { apiKey: 'k', fetchImpl, log: quiet })
+  assert.equal(called, false)
 })

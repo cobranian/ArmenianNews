@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "test": "node --test test/*.mjs",
     "check": "node scripts/check-build.mjs",
-    "scrape": "node scripts/scrape.mjs",
+    "scrape": "node --env-file-if-exists=.env scripts/scrape.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
     "ig-select": "node scripts/ig-select.mjs",
     "reencode": "node scripts/reencode-images.mjs",
