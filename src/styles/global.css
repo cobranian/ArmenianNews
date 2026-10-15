@@ -1450,15 +1450,6 @@ html:lang(hy) .nav__brand {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: none; }
 }
-.newsfeed__intro {
-  margin: 0 0 6px;
-  font-family: var(--font-mono);
-  font-size-adjust: var(--fsa-util);
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  color: var(--text-faint);
-  text-align: center;
-}
 /* Le repère de position du tambour n'existe que sur mobile — sur large écran le
    rail montre déjà toutes les marques d'un coup. */
 .newsfeed__dots {

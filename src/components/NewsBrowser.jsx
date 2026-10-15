@@ -4,6 +4,7 @@ import { Carousel } from './Carousel.jsx'
 import { useSourceDrum } from './useSourceDrum.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import { TAB_ORDER, shelvesFor } from '../newsSources.js'
+import { groupByRubric, DEFAULT_RUBRIC } from '../rubrics.js'
 
 // The wsrv.nl image CDN: fetched server-side, resized, re-served with CORS.
 // Sources reach it for TWO different reasons, and only the first is a blocker.
@@ -153,13 +154,11 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // English news feed; fr/ru/hy = his column). CivilNet publishes a full edition in
 // each of the four, so it appears in all four too.
 //
-// SEO note: NewsBrowser renders only the active tab, so sources[0] (now always
-// Armenpress) is the one source the prerender bakes into the HTML for crawlers.
-// That is deliberate and safe: Armenpress maps 1:1 to the UI language, so under
-// fr it prerenders its French edition — French copy under lang="fr", which is
-// what a French query should find. (Previously Courrier led to prerender the
-// most French text; the language rule makes Armenpress the natural lead.)
-// Every rubric is its own carousel — nothing is merged, empty rubrics dropped.
+// SEO note: NewsBrowser renders only the active tab, which is now the Armenia
+// rubric (DEFAULT_RUBRIC): its shelves, from several sources, are what the
+// prerender bakes into the HTML for crawlers. All of it is in the page's
+// language, since each language only shows the sources that publish in it
+// (Armenpress maps 1:1 to the UI language, so it still leads the shelves).
 function buildSources(t, lang) {
   const armenpress = {
     id: 'armenpress',
@@ -342,56 +341,55 @@ function buildSources(t, lang) {
 
 export function NewsBrowser() {
   const { t, lang } = useI18n()
-  const sources = buildSources(t, lang)
+  // Les sources se construisent comme avant (marque, drapeaux d'image,
+  // rubriques d'origine par langue) puis se recomposent en rubriques communes :
+  // un onglet par rubrique, une étagère par source dans chacune. TAB_ORDER
+  // décide toujours de la présence et de l'ordre des SOURCES — donc des
+  // étagères —, src/rubrics.js de celui des onglets.
+  const rubrics = groupByRubric(buildSources(t, lang))
   const now = useNow()
   const tabRefs = useRef({})
   const trackRef = useRef(null)
-  const [activeId, setActiveId] = useState(sources[0]?.id)
-  const active = sources.find((s) => s.id === activeId) || sources[0]
+  const [activeKey, setActiveKey] = useState(DEFAULT_RUBRIC)
+  // Repli sur la première rubrique non vide : une langue sans « Arménie » ne
+  // doit jamais ouvrir sur un panneau vide.
+  const active = rubrics.find((r) => r.key === activeKey) || rubrics[0]
 
-  // Sous 640px, ce même tablist devient un tambour vertical : le hook y ajoute
-  // la perspective et fait de l'aimantation une sélection. Il est appelé
-  // inconditionnellement — les hooks ne se sautent pas — et il ne fait rien tant
-  // que la piste n'existe pas, ce qui couvre le cas « aucune source ».
+  // Sous 640px, ce même tablist devient un tambour vertical (voir
+  // useSourceDrum). Appelé inconditionnellement — les hooks ne se sautent pas —
+  // et inerte tant que la piste n'existe pas.
   useSourceDrum({
     trackRef,
     itemRefs: tabRefs,
-    ids: sources.map((s) => s.id),
-    activeId: active?.id,
-    onSettle: setActiveId,
+    ids: rubrics.map((r) => r.key),
+    activeId: active?.key,
+    onSettle: setActiveKey,
   })
 
-  if (!sources.length) return null
+  if (!rubrics.length) return null
 
-  // Roving-tab keyboard nav across the source tabs.
-  //
-  // Les flèches VERTICALES ne valent que là où le tablist est vertical, c'est-à-dire
-  // dans le tambour. Ailleurs elles étaient confisquées : sur un écran large, où
-  // le tablist est un rail horizontal, quelqu'un qui tabulait jusqu'à un onglet
-  // et pressait Flèche bas pour faire défiler la page changeait de source à la
-  // place, et la page ne bougeait pas. Le besoin propre au mobile se payait sur
-  // les douze pages. On interroge la même media query que le hook — plutôt que
-  // de lui demander son état, qui n'est pas réactif et se périmerait au premier
-  // changement de largeur.
+  // Roving-tab entre les rubriques. Les flèches VERTICALES ne valent que dans
+  // le tambour (≤640px) : sur le rail horizontal, Flèche bas doit faire
+  // défiler la page, pas changer de rubrique.
   const onKeyDown = (e) => {
     const vertical =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(max-width: 640px)').matches
-    const i = sources.findIndex((s) => s.id === active.id)
+    const i = rubrics.findIndex((r) => r.key === active.key)
     let next = null
     if (e.key === 'ArrowRight' || (vertical && e.key === 'ArrowDown'))
-      next = (i + 1) % sources.length
+      next = (i + 1) % rubrics.length
     else if (e.key === 'ArrowLeft' || (vertical && e.key === 'ArrowUp'))
-      next = (i - 1 + sources.length) % sources.length
+      next = (i - 1 + rubrics.length) % rubrics.length
     else if (e.key === 'Home') next = 0
-    else if (e.key === 'End') next = sources.length - 1
+    else if (e.key === 'End') next = rubrics.length - 1
     if (next == null) return
     e.preventDefault()
-    setActiveId(sources[next].id)
-    tabRefs.current[sources[next].id]?.focus()
+    setActiveKey(rubrics[next].key)
+    tabRefs.current[rubrics[next].key]?.focus()
   }
 
-  const panelId = `newsfeed-panel-${active.id}`
+  const panelId = `newsfeed-panel-${active.key}`
 
   return (
     <div className="newsfeed">
@@ -402,25 +400,23 @@ export function NewsBrowser() {
         aria-label={t('news.title')}
         ref={trackRef}
       >
-        {sources.map((src) => {
-          const isActive = src.id === active.id
+        {rubrics.map((r) => {
+          const isActive = r.key === active.key
           return (
             <button
-              key={src.id}
-              ref={(el) => (tabRefs.current[src.id] = el)}
+              key={r.key}
+              ref={(el) => (tabRefs.current[r.key] = el)}
               type="button"
               role="tab"
-              id={`newsfeed-tab-${src.id}`}
+              id={`newsfeed-tab-${r.key}`}
               aria-selected={isActive}
               aria-controls={isActive ? panelId : undefined}
-              aria-label={src.live ? `${src.brand} — ${t('browser.live')}` : undefined}
               tabIndex={isActive ? 0 : -1}
               className={`newsfeed__tab ${isActive ? 'is-active' : ''}`}
-              onClick={() => setActiveId(src.id)}
+              onClick={() => setActiveKey(r.key)}
               onKeyDown={onKeyDown}
             >
-              <span className="newsfeed__tab-brand">{src.brand}</span>
-              {src.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
+              <span className="newsfeed__tab-brand">{t(`rubric.${r.key}`)}</span>
             </button>
           )
         })}
@@ -428,15 +424,12 @@ export function NewsBrowser() {
       </div>
 
       {/* Le repère du tambour, mobile seulement (display:none au-dessus de
-          640px). C'est le SEUL endroit où le nombre de sources est écrit — le
-          rail horizontal ne le disait jamais, et c'est précisément le défaut
-          qu'on répare. `aria-hidden` parce qu'il redit ce que `aria-selected`
-          porte déjà : un lecteur d'écran entend « onglet 3 sur 7 » tout seul. */}
+          640px). `aria-hidden` : aria-selected dit déjà « onglet 3 sur 9 ». */}
       <div className="newsfeed__dots" aria-hidden="true">
-        {sources.map((s) => (
+        {rubrics.map((r) => (
           <span
-            key={s.id}
-            className={`newsfeed__dot${s.id === active.id ? ' is-on' : ''}`}
+            key={r.key}
+            className={`newsfeed__dot${r.key === active.key ? ' is-on' : ''}`}
           />
         ))}
       </div>
@@ -445,20 +438,31 @@ export function NewsBrowser() {
         className="newsfeed__source"
         role="tabpanel"
         id={panelId}
-        aria-labelledby={`newsfeed-tab-${active.id}`}
-        key={active.id}
+        aria-labelledby={`newsfeed-tab-${active.key}`}
+        key={active.key}
       >
-        <p className="newsfeed__intro">{active.name}</p>
-        {active.cats.map((c) => (
-          <Carousel key={c.key} title={c.label} reveal={false}>
-            {c.articles.map((a, i) => (
+        {active.shelves.map(({ source, articles }) => (
+          <Carousel
+            key={source.id}
+            // Le titre est un nœud (marque + point « en direct ») : `label`
+            // nomme alors les flèches, voir Carousel.jsx.
+            label={source.live ? `${source.brand} — ${t('browser.live')}` : source.brand}
+            title={
+              <>
+                {source.brand}
+                {source.live && <span className="newsfeed__live-dot" aria-hidden="true" />}
+              </>
+            }
+            reveal={false}
+          >
+            {articles.map((a, i) => (
               <ArticleCard
                 key={a.url || i}
                 item={a}
-                catLabel={c.label}
-                showImage={active.images}
-                proxy={active.proxy}
-                armProxy={active.armProxy}
+                catLabel={a.catLabel}
+                showImage={source.images}
+                proxy={source.proxy}
+                armProxy={source.armProxy}
                 now={now}
               />
             ))}
