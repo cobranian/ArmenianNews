@@ -117,7 +117,8 @@ export function parseArticleJson(text) {
 
 export function parseClaims(text) {
   const a = extract(text, '[', ']')
-  if (!Array.isArray(a)) return []
+  // null = réponse illisible (distinct de [] = « aucun fait à vérifier »).
+  if (!Array.isArray(a)) return null
   return [...new Set(a.filter((x) => typeof x === 'string').map(clean).filter((x) => x && x.length <= 80))].slice(0, 150)
 }
 

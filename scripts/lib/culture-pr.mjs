@@ -7,13 +7,20 @@ const pct = (x) => `${(x * 100).toFixed(1)} %`
 
 export function buildPrBody({ title, meta, unsupported, overlap, warnings = [] }) {
   const lines = [`## ${title}`, '']
-  for (const w of warnings) lines.push(`> ⚠️ ${w}`)
-  if (warnings.length) lines.push('')
-  if (unsupported.length) {
+  // Les faits ⚠️ passent avant tout : c'est ce que le relecteur doit voir d'abord.
+  if (unsupported === null) {
+    lines.push(
+      '### ⚠️ À vérifier en premier',
+      'Vérification automatique des faits indisponible (réponse du modèle illisible) : vérifiez à la main toutes les dates, tous les chiffres et tous les noms propres.',
+    )
+  } else if (unsupported.length) {
     lines.push('### ⚠️ À vérifier en premier', 'Introuvables tels quels dans les sources :', ...unsupported.map((c) => `- ⚠️ ${c}`))
   } else {
     lines.push('### Faits', 'Toutes les dates, chiffres et noms propres extraits se retrouvent dans les sources.')
   }
+  lines.push('')
+  for (const w of warnings) lines.push(`> ⚠️ ${w}`)
+  if (warnings.length) lines.push('')
   lines.push(
     '',
     `### Recouvrement avec Wikipédia : ${pct(overlap)}${overlap > OVERLAP_THRESHOLD ? ` — ⚠️ au-dessus du seuil de ${pct(OVERLAP_THRESHOLD)} : reformulez les passages trop proches de la source` : ''}`,

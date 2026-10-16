@@ -38,7 +38,7 @@ const { values } = parseArgs({
 
 const output = async (k, v) => {
   console.log(`${k}=${v}`)
-  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `${k}=${String(v).replace(/\n/g, ' ')}\n`)
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `${k}=${String(v).replace(/[\r\n]+/g, ' ')}\n`)
 }
 
 const sujets = JSON.parse(await readFile(path.join(DIR, 'sujets.json'), 'utf-8'))
@@ -59,7 +59,12 @@ if (values.topic) {
 if (!pick) {
   console.log('Liste de sujets épuisée : génération d’idées.')
   const { text } = await chat({ ...cfg, messages: buildIdeasMessages(sujets.topics.map((t) => t.title)) })
-  await writeFile(values['out-body'], ideasIssueBody(parseIdeas(text)))
+  const issueBody = ideasIssueBody(parseIdeas(text))
+  if (values.dry) {
+    console.log(issueBody)
+    process.exit(0)
+  }
+  await writeFile(values['out-body'], issueBody)
   await output('issue', '1')
   process.exit(0)
 }
@@ -88,7 +93,8 @@ const draftRes = await chat({ ...cfg, messages: buildDraftMessages({ topic, sour
 const draft = parseArticleJson(draftRes.text)
 if (!draft) throw new Error(`brouillon illisible (JSON attendu) — modèle ${draftRes.model}`)
 const claimsRes = await chat({ ...cfg, temperature: 0, messages: buildClaimsMessages(draft.body) })
-const unsupported = findUnsupported(parseClaims(claimsRes.text), [...sources.map((s) => s.extract), ...facts])
+const claims = parseClaims(claimsRes.text)
+const unsupported = claims === null ? null : findUnsupported(claims, [...sources.map((s) => s.extract), ...facts])
 const overlap = overlapRatio(draft.body, sources.map((s) => s.extract))
 
 const meta = {

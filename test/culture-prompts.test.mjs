@@ -34,7 +34,8 @@ test('parseArticleJson : réponse inexploitable → null', () => {
 
 test('parseClaims : tableau, dédoublonné, borné', () => {
   assert.deepEqual(parseClaims('```json\n["1869", "Kütahya", "1869", 5, ""]\n```'), ['1869', 'Kütahya'])
-  assert.deepEqual(parseClaims('rien'), [])
+  assert.equal(parseClaims('rien'), null)
+  assert.deepEqual(parseClaims('[]'), [])
 })
 
 test('findUnsupported : chiffres exacts, noms pliés, arménien et russe', () => {
