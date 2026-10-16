@@ -87,7 +87,9 @@ const facts = qid
   : []
 const candidates = await fetchCommonsCandidates({
   files: [fr?.pageImage, en?.pageImage],
-  search: topic.title,
+  // Le titre français seul égare Commons : « Le kochari » a rendu le plat
+  // égyptien koshary. Le titre anglais + « Armenian » vise la bonne culture.
+  search: `${topic.wikipedia.en || topic.title} Armenian`,
 }).catch((e) => (warnings.push(`Commons indisponible (${e.message}).`), []))
 
 const draftRes = await chat({ ...cfg, messages: buildDraftMessages({ topic, sources, facts, event }) })
