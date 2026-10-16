@@ -27,6 +27,16 @@ test('agendaMatch : mot-clé plié, fenêtre de 21 jours, passé ignoré', () =>
   assert.equal(agendaMatch(T('ete', ['été']), { world: [ev('Fête de l’ETE', 1)] }, NOW).title, 'Fête de l’ETE')
 })
 
+test('agendaMatch : mot entier, pluriel admis', () => {
+  const m = (kw, title) => agendaMatch(T('x', [kw]), { world: [ev(title, 2)] }, NOW) !== null
+  assert.equal(m('ani', 'Concert à l’Armani Hall'), false)
+  assert.equal(m('ani', 'Voyage à Ani'), true)
+  assert.equal(m('ani', 'Ani, la cité'), true)
+  assert.equal(m('tatev', 'Tatevik Hovhannisyan en concert'), false)
+  assert.equal(m('khatchkar', 'Exposition de khatchkars'), true)
+  assert.equal(m('komitas', 'Hommage à Komitas’s legacy'), true)
+})
+
 test('pickTopic : le sujet de l’événement le plus proche passe devant la liste', () => {
   const topics = [T('komitas'), T('duduk'), T('kochari')]
   const agenda = { switzerland: [ev('Duduk', 10), ev('Kochari', 4)] }

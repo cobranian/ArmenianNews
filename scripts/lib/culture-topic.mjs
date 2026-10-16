@@ -24,8 +24,15 @@ export function availableTopics(topics, { openBranches = [], existing = [] } = {
   return topics.filter((t) => t.status === 'pending' && !open.has(`culture/${t.slug}`) && !done.has(t.slug))
 }
 
+// Mot entier ou expression, pluriel admis : « Armani » ne doit pas désigner Ani,
+// « Tatevik » pas Tatev ; le pluriel « khatchkars » reste reconnu.
+const motEntier = (kw) => {
+  const echappe = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(`(^|[^\\p{L}\\p{N}])${echappe}(?:s|['’]s)?(?=$|[^\\p{L}\\p{N}])`, 'u')
+}
+
 export function agendaMatch(topic, agenda, now = Date.now()) {
-  const keys = (Array.isArray(topic.keywords) ? topic.keywords : []).map(fold).filter(Boolean)
+  const keys = (Array.isArray(topic.keywords) ? topic.keywords : []).map(fold).filter(Boolean).map(motEntier)
   if (!keys.length || !agenda) return null
   const all = [...(agenda.switzerland ?? []), ...(agenda.world ?? [])]
   const limit = now + WINDOW_DAYS * 86400000
@@ -33,7 +40,7 @@ export function agendaMatch(topic, agenda, now = Date.now()) {
     evenementsAVenir(all, now)
       .filter((e) => new Date(e.date).getTime() <= limit)
       .sort((a, b) => a.date.localeCompare(b.date))
-      .find((e) => keys.some((k) => fold(e.title).includes(k))) ?? null
+      .find((e) => keys.some((re) => re.test(fold(e.title)))) ?? null
   )
 }
 
