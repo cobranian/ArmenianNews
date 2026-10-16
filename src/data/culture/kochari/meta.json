@@ -1,0 +1,67 @@
+{
+  "slug": "kochari",
+  "sources": [
+    {
+      "lang": "fr",
+      "title": "Kochari",
+      "url": "https://fr.wikipedia.org/wiki/Kochari",
+      "revision": 238750799
+    },
+    {
+      "lang": "en",
+      "title": "Kochari",
+      "url": "https://en.wikipedia.org/wiki/Kochari",
+      "revision": 1360629671
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Kochari - Armenian folk dance.png",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kochari_-_Armenian_folk_dance.png/1920px-Kochari_-_Armenian_folk_dance.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2136,
+      "height": 1443,
+      "mime": "image/png",
+      "author": "Hayordi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Kochari_-_Armenian_folk_dance.png"
+    },
+    {
+      "file": "File:Խաչքար-Սուրբ Հովհաննես.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0c/%D4%BD%D5%A1%D5%B9%D6%84%D5%A1%D6%80-%D5%8D%D5%B8%D6%82%D6%80%D5%A2_%D5%80%D5%B8%D5%BE%D5%B0%D5%A1%D5%B6%D5%B6%D5%A5%D5%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 960,
+      "height": 1280,
+      "mime": "image/jpeg",
+      "author": "Maro Alikhanyan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:%D4%BD%D5%A1%D5%B9%D6%84%D5%A1%D6%80-%D5%8D%D5%B8%D6%82%D6%80%D5%A2_%D5%80%D5%B8%D5%BE%D5%B0%D5%A1%D5%B6%D5%B6%D5%A5%D5%BD.jpg"
+    },
+    {
+      "file": "File:Խաչքար-Սբ. Հովհաննես.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/%D4%BD%D5%A1%D5%B9%D6%84%D5%A1%D6%80-%D5%8D%D5%A2._%D5%80%D5%B8%D5%BE%D5%B0%D5%A1%D5%B6%D5%B6%D5%A5%D5%BD.jpg/1920px-%D4%BD%D5%A1%D5%B9%D6%84%D5%A1%D6%80-%D5%8D%D5%A2._%D5%80%D5%B8%D5%BE%D5%B0%D5%A1%D5%B6%D5%B6%D5%A5%D5%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3024,
+      "height": 4032,
+      "mime": "image/jpeg",
+      "author": "Maro Alikhanyan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:%D4%BD%D5%A1%D5%B9%D6%84%D5%A1%D6%80-%D5%8D%D5%A2._%D5%80%D5%B8%D5%BE%D5%B0%D5%A1%D5%B6%D5%B6%D5%A5%D5%BD.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Kochari - Armenian folk dance.png",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kochari_-_Armenian_folk_dance.png/1920px-Kochari_-_Armenian_folk_dance.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 811,
+    "mime": "image/png",
+    "author": "Hayordi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Kochari_-_Armenian_folk_dance.png"
+  },
+  "agendaEvent": null,
+  "overlap": 0.016,
+  "model": "gemini-flash-latest"
+}
