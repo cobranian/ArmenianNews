@@ -135,11 +135,16 @@ export function parseIdeas(text) {
     }))
 }
 
+// Plié, et typographie unifiée des deux côtés : Wikipédia écrit « 1 200 »
+// avec une espace fine insécable (U+202F) et « 1869–1935 » avec un demi-
+// cadratin ; le modèle, avec une espace et un trait d'union ordinaires.
 const fold = (s) =>
   String(s ?? '')
     .toLowerCase()
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
+    .replace(/[\s\u00A0\u2000-\u200A\u202F\u205F\u3000]+/gu, ' ')
+    .replace(/[\u2010-\u2015\u2212]/g, '-')
 
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
@@ -151,16 +156,19 @@ const wholeWord = (s) => new RegExp(`(^|[^\\p{L}\\p{N}])${esc(s)}(?=$|[^\\p{L}\\
 // ⚠️ en tête de PR. Un nombre doit apparaître EXACTEMENT (1869 ne valide pas
 // 186) ; un nom, par chacun de ses mots de 3 lettres ou plus (plié), en mot
 // entier ; une expression à plusieurs nombres (« 1 200 ») doit apparaître
-// telle quelle.
+// telle quelle. Un nombre accompagné de mots (« Paris 1935 ») exige le nombre
+// ET chacun des mots : 1935 seul ne valide pas Paris.
 export function findUnsupported(claims, sourceTexts) {
   const hay = fold(sourceTexts.join('\n'))
   return claims.filter((c) => {
-    const f = fold(c)
+    const f = fold(c).trim().replace(/[.,;:!?]+$/, '').trim()
+    if (!f) return false
     if (wholeWord(f).test(hay)) return false
-    const groups = c.match(/\d+/g) ?? []
-    if (groups.length === 1) return !new RegExp(`(^|\\D)${groups[0]}(\\D|$)`).test(hay)
+    const groups = f.match(/\d+/g) ?? []
     if (groups.length > 1) return true
-    const words = f.split(/[^\p{L}\p{N}]+/u).filter((w) => w.length >= 3)
-    return words.length > 0 && !words.every((w) => wholeWord(w).test(hay))
+    const words = f.split(/[^\p{L}\p{N}]+/u).filter((w) => w.length >= 3 && !/\d/.test(w))
+    const wordsOk = words.every((w) => wholeWord(w).test(hay))
+    if (groups.length === 1) return !new RegExp(`(^|\\D)${groups[0]}(\\D|$)`).test(hay) || !wordsOk
+    return words.length > 0 && !wordsOk
   })
 }

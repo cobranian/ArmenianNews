@@ -53,6 +53,23 @@ test('findUnsupported : mots entiers, expressions à plusieurs nombres', () => {
   assert.deepEqual(findUnsupported(['Mesrop Machtots'], ['Mesrop Machtots invente']), [])
 })
 
+test('findUnsupported : espaces et tirets typographiques, ponctuation finale', () => {
+  assert.deepEqual(findUnsupported(['1 200'], ['soit 1\u202F200 fidèles']), [])
+  assert.deepEqual(findUnsupported(['1 200'], ['soit 1\u00A0200 fidèles']), [])
+  assert.deepEqual(findUnsupported(['1869\u20131935'], ['Komitas (1869-1935)']), [])
+  assert.deepEqual(findUnsupported(['1869-1935'], ['Komitas (1869\u20141935)']), [])
+  assert.deepEqual(findUnsupported(['1 200.'], ['soit 1 200 fidèles']), [])
+  assert.deepEqual(findUnsupported(['Kütahya !'], ['né à Kütahya']), [])
+})
+
+test('findUnsupported : un nombre accompagné de mots exige aussi les mots', () => {
+  const src = ['Komitas est né en 1935 à Kütahya.']
+  assert.deepEqual(findUnsupported(['Paris 1935'], src), ['Paris 1935'])
+  assert.deepEqual(findUnsupported(['Kütahya 1935'], src), [])
+  assert.deepEqual(findUnsupported(['en 1935'], src), [], 'mots courts ignorés')
+  assert.deepEqual(findUnsupported(['Kütahya 1936'], src), ['Kütahya 1936'])
+})
+
 test('traduction : langue cible nommée, fidélité, JSON du texte relu', () => {
   const [sys, user] = buildTranslateMessages({ lang: 'hy', title: 'T', description: 'D', body: '## B' })
   assert.match(sys.content, /arménien oriental/)
