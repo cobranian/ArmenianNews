@@ -16,6 +16,7 @@ import { cultureLangsBySlug } from './culture-links.mjs'
 import { longDate } from './brief-links.mjs'
 import { renderMarkdown } from './culture-markdown.mjs'
 import { esc, pageShell } from './static-shell.mjs'
+import { validEvent } from './culture-validate.mjs'
 
 const card = (lang) => (x) =>
   `<li class="culture-card"><a href="${culturePath(lang, x.slug)}"><span class="culture-card__title">${esc(x.langs[lang].title)}</span><span class="culture-card__desc">${esc(x.langs[lang].description)}</span></a></li>`
@@ -30,8 +31,9 @@ function figure(lang, article) {
       </figure>`
 }
 
-function eventBlock(lang, ev, now) {
-  if (!ev?.url || !ev?.title || !ev?.date) return ''
+function eventBlock(lang, raw, now) {
+  const ev = validEvent(raw)
+  if (!ev) return ''
   if (!(new Date(ev.date).getTime() >= now)) return ''
   const s = CULTURE_STRINGS[lang]
   return `<p class="culture__event">${esc(s.event)} : <a href="${esc(ev.url)}" rel="noopener">${esc(ev.title)}</a> — ${esc(longDate(lang, ev.date.slice(0, 10)))}${ev.location ? `, ${esc(ev.location)}` : ''}</p>`

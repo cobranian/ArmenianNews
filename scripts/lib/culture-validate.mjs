@@ -32,6 +32,26 @@ function parseLang(text) {
   }
 }
 
+// L'événement d'agenda est rendu tel quel dans la page (lien + date) : il
+// n'est retenu que s'il est sain, sinon il est tenu pour ABSENT — jamais une
+// exception, puisque le build horaire écrit ces pages (un `date` numérique
+// faisait lever `ev.date.slice`), jamais un href non https (`javascript:`).
+export function validEvent(ev) {
+  if (!ev || typeof ev !== 'object') return null
+  if (!nonEmpty(ev.title)) return null
+  if (typeof ev.url !== 'string' || !ev.url.startsWith('https://')) return null
+  // AAAA-MM-JJ en tête : la page en tire la date longue par `slice(0, 10)`.
+  if (typeof ev.date !== 'string' || !DATE.test(ev.date.slice(0, 10))) return null
+  if (!Number.isFinite(new Date(ev.date).getTime())) return null
+  if (ev.location != null && typeof ev.location !== 'string') return { ...ev, location: null }
+  return ev
+}
+
+// Les cibles des liens Markdown `](…)` d'un corps.
+export function linkTargets(body) {
+  return new Set([...String(body ?? '').matchAll(/\]\(([^)\s]*)[^)]*\)/g)].map((m) => m[1]))
+}
+
 export function chosenImage(meta) {
   const c = Array.isArray(meta?.candidates) ? meta.candidates : []
   return Number.isInteger(meta?.imageChoice) ? (c[meta.imageChoice] ?? null) : null
@@ -54,6 +74,8 @@ export function validateArticle({ slug, meta, texts, images }) {
   }
   if ((chosenImage(meta)?.commonsUrl ?? null) !== (img?.commonsUrl ?? null))
     errors.push("image changée (imageChoice) — reposez l'étiquette « traduire »")
+  if (meta?.agendaEvent != null && !validEvent(meta.agendaEvent))
+    errors.push('meta.json : agendaEvent invalide (ignoré)')
 
   let fr
   try {
@@ -66,6 +88,7 @@ export function validateArticle({ slug, meta, texts, images }) {
 
   const langs = { fr }
   const hash = bodyHash(fr.body)
+  const frLinks = linkTargets(fr.body)
   for (const l of TRANSLATED) {
     if (texts?.[l] == null) {
       errors.push(`${l}.md absent — posez l'étiquette « traduire »`)
@@ -80,6 +103,12 @@ export function validateArticle({ slug, meta, texts, images }) {
     }
     if (t.sourceHash !== hash) {
       errors.push(`${l}.md : traduction périmée — reposez l'étiquette « traduire »`)
+      continue
+    }
+    // Une traduction ne publie aucun lien que le français relu ne porte pas :
+    // un lien inventé par le modèle n'a été vu par personne.
+    if ([...linkTargets(t.body)].some((u) => !frLinks.has(u))) {
+      errors.push(`${l}.md : liens absents du français relu`)
       continue
     }
     langs[l] = t

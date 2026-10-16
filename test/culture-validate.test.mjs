@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { validateArticle, chosenImage, factsChecked } from '../scripts/lib/culture-validate.mjs'
-import { serializeFrontMatter } from '../scripts/lib/culture-markdown.mjs'
+import { serializeFrontMatter, bodyHash } from '../scripts/lib/culture-markdown.mjs'
 import { meta, texts, candidate } from './helpers/culture-fixture.mjs'
 
 const ok = (over = {}) => ({ slug: 'komitas', meta: meta('komitas'), texts: texts(), images: { webp: true, jpg: true }, ...over })
@@ -78,4 +78,29 @@ test('chosenImage et factsChecked', () => {
   assert.equal(factsChecked('- [X] Faits vérifiés'), true)
   assert.equal(factsChecked('- [ ] Faits vérifiés'), false)
   assert.equal(factsChecked(null), false)
+})
+
+test('agendaEvent présent mais invalide : signalé, non bloquant ; absent : silencieux', () => {
+  const r = validateArticle(ok({ meta: meta('komitas', { agendaEvent: { title: 'C', url: 'javascript:x', date: '2026-10-25' } }) }))
+  assert.ok(r.errors.includes('meta.json : agendaEvent invalide (ignoré)'))
+  assert.equal(Object.keys(r.langs).length, 4)
+  const n = validateArticle(ok({ meta: meta('komitas', { agendaEvent: { title: 'C', url: 'https://e/1', date: 5 } }) }))
+  assert.match(n.errors.join('\n'), /agendaEvent invalide/)
+  assert.deepEqual(validateArticle(ok()).errors, [])
+  const good = { title: 'C', url: 'https://e/1', date: '2026-10-25T20:00' }
+  assert.deepEqual(validateArticle(ok({ meta: meta('komitas', { agendaEvent: good }) })).errors, [])
+})
+
+test('traduction : un lien absent du français relu retire la langue', () => {
+  const frBody = 'Voir [Komitas](https://fr.wikipedia.org/wiki/Komitas).'
+  const t = texts({ frBody })
+  const tr = (body) =>
+    serializeFrontMatter({ title: 'T', description: 'D', date: '2026-10-19', sourceHash: bodyHash(frBody), model: 'm' }, body)
+  t.en = tr('See [Komitas](https://fr.wikipedia.org/wiki/Komitas).')
+  t.hy = tr('Տես [Կոմիտաս](https://evil.example/x).')
+  t.ru = tr('См. [Комитас](https://fr.wikipedia.org/wiki/Komitas) и [ещё](https://ru.example/y "t").')
+  const r = validateArticle(ok({ texts: t }))
+  assert.deepEqual(Object.keys(r.langs), ['fr', 'en'])
+  assert.ok(r.errors.includes('hy.md : liens absents du français relu'))
+  assert.ok(r.errors.includes('ru.md : liens absents du français relu'))
 })

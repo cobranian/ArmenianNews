@@ -95,6 +95,26 @@ test('writeCulturePages : langues de la vitrine seulement, images copiées', asy
   assert.match(await readFile(path.join(ch, 'culture/index.html'), 'utf-8'), /<html lang="fr">/)
 })
 
+test('événement invalide : ignoré sans exception (date numérique, URL non https, sans titre)', async () => {
+  const good = { title: 'Concert', url: 'https://e/1', date: '2026-10-25T20:00' }
+  for (const bad of [
+    { ...good, date: 1761418800000 },
+    { ...good, url: 'javascript:alert(1)' },
+    { ...good, title: '' },
+    { url: good.url, date: good.date },
+    { ...good, date: 'demain' },
+  ]) {
+    const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
+    await writeArticle(dir, 'komitas', { m: meta('komitas', { agendaEvent: bad }) })
+    const list = await loadCulture(dir, silent)
+    const dist = await mkdtemp(path.join(tmpdir(), 'dist-'))
+    assert.equal(await writeCulturePages(SITES.ch, dist, list, CSS, dir, NOW), 2, JSON.stringify(bad))
+    const html = await readFile(path.join(dist, 'culture/komitas/index.html'), 'utf-8')
+    assert.ok(!html.includes('culture__event'), JSON.stringify(bad))
+    assert.ok(!html.includes('javascript:'))
+  }
+})
+
 test('chaque font-family .culture est suivie de son font-size-adjust', async () => {
   const css = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf-8')
   const start = css.indexOf('/* === Culture')
