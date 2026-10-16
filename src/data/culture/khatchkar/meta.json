@@ -1,0 +1,72 @@
+{
+  "slug": "khatchkar",
+  "sources": [
+    {
+      "lang": "fr",
+      "title": "Khatchkar",
+      "url": "https://fr.wikipedia.org/wiki/Khatchkar",
+      "revision": 237222808
+    },
+    {
+      "lang": "en",
+      "title": "Khachkar",
+      "url": "https://en.wikipedia.org/wiki/Khachkar",
+      "revision": 1375736065
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:382 Khatchkars à Noradouz.JPG",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/382_Khatchkars_%C3%A0_Noradouz.JPG/1920px-382_Khatchkars_%C3%A0_Noradouz.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2304,
+      "height": 3072,
+      "mime": "image/jpeg",
+      "author": "Moreau.henri",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:382_Khatchkars_%C3%A0_Noradouz.JPG"
+    },
+    {
+      "file": "File:31 - Toulouse - Khatchkar - Monument à la mémoire des victimes du génocide des arméniens - Place d'Arménie - revers.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/31_-_Toulouse_-_Khatchkar_-_Monument_%C3%A0_la_m%C3%A9moire_des_victimes_du_g%C3%A9nocide_des_arm%C3%A9niens_-_Place_d%27Arm%C3%A9nie_-_revers.jpg/1920px-31_-_Toulouse_-_Khatchkar_-_Monument_%C3%A0_la_m%C3%A9moire_des_victimes_du_g%C3%A9nocide_des_arm%C3%A9niens_-_Place_d%27Arm%C3%A9nie_-_revers.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2736,
+      "height": 3052,
+      "mime": "image/jpeg",
+      "author": "Didier Descouens",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:31_-_Toulouse_-_Khatchkar_-_Monument_%C3%A0_la_m%C3%A9moire_des_victimes_du_g%C3%A9nocide_des_arm%C3%A9niens_-_Place_d%27Arm%C3%A9nie_-_revers.jpg"
+    },
+    {
+      "file": "File:KhatchkarDsegh1.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/KhatchkarDsegh1.jpg/1920px-KhatchkarDsegh1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4983,
+      "height": 3662,
+      "mime": "image/jpeg",
+      "author": "Armenak Margarian",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:KhatchkarDsegh1.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:382 Khatchkars à Noradouz.JPG",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/382_Khatchkars_%C3%A0_Noradouz.JPG/1920px-382_Khatchkars_%C3%A0_Noradouz.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 1600,
+    "mime": "image/jpeg",
+    "author": "Moreau.henri",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:382_Khatchkars_%C3%A0_Noradouz.JPG"
+  },
+  "agendaEvent": {
+    "title": "Bénédiction de KHATCHKAR à Saint-Chamond",
+    "url": "https://armenopole.com/benediction-de-khatchkar-a-saint-chamond.html",
+    "date": "2026-10-18T10:30",
+    "location": "Auvergne-Rhône-Alpes"
+  },
+  "overlap": 0.02,
+  "model": "gemini-flash-latest"
+}
