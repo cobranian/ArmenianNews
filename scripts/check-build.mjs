@@ -343,9 +343,15 @@ for (const site of Object.values(SITES)) {
     bad++
     continue
   }
-  const urls = (xml.match(/<url>/g) || []).length
-  const dates = (xml.match(/<lastmod>/g) || []).length
-  const alts = (xml.match(/xhtml:link/g) || []).length
+  // Les entrées de la brève (index + pages datées) sont variables : on ne
+  // compte ici que les entrées de vue.
+  const vues = xml
+    .split('<url>')
+    .filter((b) => !/<loc>[^<]*\/(breve|brief)\//.test(b))
+    .join('<url>')
+  const urls = (vues.match(/<url>/g) || []).length
+  const dates = (vues.match(/<lastmod>/g) || []).length
+  const alts = (vues.match(/xhtml:link/g) || []).length
   const attendu = site.pages.length * ALL_VIEWS.length
   const checks = [
     [`${attendu} <url>`, urls === attendu],

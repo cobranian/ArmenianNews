@@ -10,7 +10,8 @@
 // l'horodatage du DERNIER SCRAPE. Un rebuild sans scrape réémet donc la même
 // valeur. Ne jamais y substituer new Date() : ce serait exactement le bug
 // contre lequel ce commentaire prévenait.
-import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor } from '../../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor, briefUrl } from '../../sites.config.js'
+import { briefLangsByDate, briefAlternates } from './brief-links.mjs'
 
 // Les annotations xhtml:link dans le sitemap répètent ce que portent les
 // <link hreflang> du HTML. Google accepte les deux et recoupe : c'est une
@@ -29,13 +30,41 @@ function alternates(view) {
   ].join('\n')
 }
 
-export function sitemapFor(siteId, lastmod) {
+const xhtml = (alts) =>
+  alts.map(([h, href]) => `    <xhtml:link rel="alternate" hreflang="${h}" href="${href}" />`).join('\n')
+
+// Les brèves : l'index de chaque langue (toujours servi), et chaque page
+// datée EXISTANTE, avec les mêmes alternates que son <head> (brief-links.mjs).
+// lastmod d'une page datée = son generatedAt : elle ne change jamais.
+function briefEntries(site, lastmod, briefs) {
+  const byDate = briefLangsByDate(briefs)
+  return site.pages.flatMap(({ lang }) => [
+    `  <url>
+    <loc>${briefUrl(lang)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+${xhtml(briefAlternates(null, byDate))}
+  </url>`,
+    ...(briefs[lang] ?? []).map(
+      (b) => `  <url>
+    <loc>${briefUrl(lang, b.date)}</loc>
+    <lastmod>${b.generatedAt}</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+${xhtml(briefAlternates(b.date, byDate))}
+  </url>`,
+    ),
+  ])
+}
+
+export function sitemapFor(siteId, lastmod, briefs = {}) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   if (!lastmod) throw new Error('lastmod manquant — attendu meta.json → generatedAt')
 
-  const urls = site.pages
-    .flatMap((page) =>
+  const urls = [
+    ...site.pages.flatMap((page) =>
       ALL_VIEWS.map(
         (view) => `  <url>
     <loc>${urlFor(page.lang, view)}</loc>
@@ -45,8 +74,9 @@ export function sitemapFor(siteId, lastmod) {
 ${alternates(view)}
   </url>`,
       ),
-    )
-    .join('\n')
+    ),
+    ...briefEntries(site, lastmod, briefs),
+  ].join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
