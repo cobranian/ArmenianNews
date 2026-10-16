@@ -6,8 +6,10 @@
 // quatre pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
 import { readFileSync } from 'node:fs'
-import { SITES, ALL_LANGS, urlFor, xDefaultFor } from '../../sites.config.js'
+import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl } from '../../sites.config.js'
 import { SEO, VIEW_SEO, OG_LOCALE } from '../../src/seo.js'
+import { BRIEF_STRINGS } from '../../src/briefStrings.js'
+import { briefAlternates, longDate } from './brief-links.mjs'
 
 // Le manifeste des polices auto-hébergées, écrit par `npm run fonts-sync`
 // (scripts/fonts-sync.mjs) : un fichier par entrée, avec famille, style,
@@ -101,7 +103,7 @@ export const GA_MARKER = '<!--GA_TAG-->'
 const attr = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
-function jsonLd(site, lang) {
+function siteGraph(site, lang) {
   const graph = [
     {
       '@type': 'WebSite',
@@ -142,53 +144,32 @@ function jsonLd(site, lang) {
       image: `${site.host}${site.ogImage}`,
     },
   ]
-  // Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>.
-  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')
+  return graph
 }
 
-export function headFor({ siteId, lang, view = 'home' }) {
-  const site = SITES[siteId]
-  if (!site) throw new Error(`site inconnu : ${siteId}`)
-  if (!SEO[lang]) throw new Error(`langue sans chaînes SEO : ${lang}`)
-  if (!OG_LOCALE[lang]) throw new Error(`langue sans locale Open Graph : ${lang}`)
-  if (view !== 'home' && !VIEW_SEO[view]?.[lang]) {
-    throw new Error(`vue ${view} sans chaînes SEO en ${lang}`)
-  }
+// Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>.
+const ldScript = (graph) =>
+  JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')
 
-  const url = urlFor(lang, view)
-  // L'accueil mène par la marque (elle est le sujet) ; une page de vue mène par
-  // le mot-clé (la marque n'est pas encore cherchée, et Google tronque la fin).
-  const title =
-    view === 'home'
-      ? `${site.brand} · ${SEO[lang].tagline}`
-      : `${VIEW_SEO[view][lang].title} · ${site.brand}`
-  const description =
-    view === 'home' ? SEO[lang].description : VIEW_SEO[view][lang].description
-  // `keywords` reste celui de l'ACCUEIL sur toute vue : ce meta n'a plus aucune
-  // incidence sur le classement Google depuis 2009, donc lui composer une
-  // variante par vue serait de l'entretien pour un signal mort. Décision du
-  // propriétaire — le garder est un choix assumé, pas un oubli.
-  const { keywords } = SEO[lang]
-  // La carte de partage suit la VITRINE, pas la langue ni la vue : les pages
-  // /radio du .org gardent la carte anglaise du domaine, comme son accueil.
-  // C'est voulu — une carte par langue ou par vue supposerait bien plus de
-  // fichiers à tenir, alors que la marque, elle, est unique par domaine. Voir
-  // `ogImage` dans sites.config.js.
+// Le <head> commun à toutes les pages bâties : accueil, vues, brèves. Ce qui
+// varie est passé en paramètres ; le reste (préchargements, Search Console,
+// bloc Open Graph de six balises pour l'image, Twitter, JSON-LD) est écrit
+// UNE fois — la brève ne doit pas devenir une seconde copie à tenir à jour.
+function composeHead({ site, lang, url, title, description, keywords, alternates, ogType, graph }) {
+  // La carte de partage suit la VITRINE, pas la langue ni la vue (voir
+  // `ogImage` dans sites.config.js).
   const image = `${site.host}${site.ogImage}`
 
   const lines = [
     `<meta name="description" content="${attr(description)}" />`,
-    `<meta name="keywords" content="${attr(keywords)}" />`,
+    ...(keywords ? [`<meta name="keywords" content="${attr(keywords)}" />`] : []),
     `<title>${attr(title)}</title>`,
     `<link rel="canonical" href="${url}" />`,
     '',
     '<!-- Versions linguistiques. Réciproques et identiques sur les quatre',
     '     pages : une page absente de son propre bloc fait ignorer tout le',
     '     bloc par Google. Générées depuis sites.config.js — ne pas éditer. -->',
-    ...ALL_LANGS.map(
-      (l) => `<link rel="alternate" hreflang="${l}" href="${urlFor(l, view)}" />`,
-    ),
-    `<link rel="alternate" hreflang="x-default" href="${xDefaultFor(view)}" />`,
+    ...alternates.map(([h, href]) => `<link rel="alternate" hreflang="${h}" href="${href}" />`),
     '',
     '<!-- Polices du premier écran, préchargées PAR LANGUE (voir PRELOAD dans',
     '     scripts/lib/site-meta.mjs). `crossorigin` est obligatoire sur un',
@@ -210,7 +191,7 @@ export function headFor({ siteId, lang, view = 'home' }) {
 
   lines.push(
     '<!-- Open Graph / partage social -->',
-    '<meta property="og:type" content="website" />',
+    `<meta property="og:type" content="${ogType}" />`,
     `<meta property="og:site_name" content="${attr(site.brand)}" />`,
     `<meta property="og:title" content="${attr(title)}" />`,
     `<meta property="og:description" content="${attr(description)}" />`,
@@ -243,11 +224,90 @@ export function headFor({ siteId, lang, view = 'home' }) {
     `<meta name="twitter:image" content="${image}" />`,
     '',
     '<!-- Données structurées (schema.org) -->',
-    `<script type="application/ld+json">${jsonLd(site, lang)}</script>`,
+    `<script type="application/ld+json">${ldScript(graph)}</script>`,
   )
 
   const body = lines.map((l) => (l ? `    ${l}` : '')).join('\n')
   return `    ${META_START}\n${body}\n    ${META_END}`
+}
+
+
+export function headFor({ siteId, lang, view = 'home' }) {
+  const site = SITES[siteId]
+  if (!site) throw new Error(`site inconnu : ${siteId}`)
+  if (!SEO[lang]) throw new Error(`langue sans chaînes SEO : ${lang}`)
+  if (!OG_LOCALE[lang]) throw new Error(`langue sans locale Open Graph : ${lang}`)
+  if (view !== 'home' && !VIEW_SEO[view]?.[lang]) {
+    throw new Error(`vue ${view} sans chaînes SEO en ${lang}`)
+  }
+
+  const url = urlFor(lang, view)
+  // L'accueil mène par la marque (elle est le sujet) ; une page de vue mène par
+  // le mot-clé (la marque n'est pas encore cherchée, et Google tronque la fin).
+  const title =
+    view === 'home'
+      ? `${site.brand} · ${SEO[lang].tagline}`
+      : `${VIEW_SEO[view][lang].title} · ${site.brand}`
+  const description =
+    view === 'home' ? SEO[lang].description : VIEW_SEO[view][lang].description
+  // `keywords` reste celui de l'ACCUEIL sur toute vue : ce meta n'a plus aucune
+  // incidence sur le classement Google depuis 2009, donc lui composer une
+  // variante par vue serait de l'entretien pour un signal mort. Décision du
+  // propriétaire — le garder est un choix assumé, pas un oubli.
+  const { keywords } = SEO[lang]
+  // La carte de partage suit la VITRINE, pas la langue ni la vue : les pages
+  // /radio du .org gardent la carte anglaise du domaine, comme son accueil.
+  // C'est voulu — une carte par langue ou par vue supposerait bien plus de
+  // fichiers à tenir, alors que la marque, elle, est unique par domaine. Voir
+  // `ogImage` dans sites.config.js.
+
+  return composeHead({
+    site, lang, url, title, description, keywords,
+    alternates: [
+      ...ALL_LANGS.map((l) => [l, urlFor(l, view)]),
+      ['x-default', xDefaultFor(view)],
+    ],
+    ogType: 'website',
+    graph: siteGraph(site, lang),
+  })
+}
+
+// L'en-tête d'une page de brève : `/breve/` (date null) ou une page datée.
+// Mêmes balises que les vues, via composeHead ; ce qui change : le hreflang
+// (langues présentes ce jour-là, voir brief-links.mjs), og:type article et un
+// NewsArticle qui cite les URL sources.
+export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate }) {
+  const site = SITES[siteId]
+  if (!site) throw new Error(`site inconnu : ${siteId}`)
+  const s = BRIEF_STRINGS[lang]
+  if (!s) throw new Error(`pas de chaînes de brève en ${lang}`)
+  const url = briefUrl(lang, date)
+  const title = date
+    ? `${s.title} — ${longDate(lang, date)} · ${site.brand}`
+    : `${s.title} · ${site.brand}`
+  const description = (date && brief?.intro) || s.description
+  const graph = siteGraph(site, lang)
+  if (date && brief) {
+    graph.push({
+      '@type': 'NewsArticle',
+      '@id': `${url}#article`,
+      headline: `${s.title} — ${longDate(lang, date)}`,
+      description,
+      url,
+      mainEntityOfPage: url,
+      datePublished: brief.generatedAt,
+      inLanguage: lang,
+      isAccessibleForFree: true,
+      publisher: { '@id': `${site.host}/#organization` },
+      citation: brief.topics.flatMap((t) => t.sources.map((x) => x.url)),
+    })
+  }
+  return composeHead({
+    site, lang, url, title, description,
+    alternates: briefAlternates(date, byDate),
+    ogType: date ? 'article' : 'website',
+    graph,
+  })
 }
 
 // La balise beacon de Cloudflare Web Analytics pour cette vitrine, ou '' si elle
