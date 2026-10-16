@@ -270,6 +270,33 @@ export function briefPath(lang, date = null) {
   return briefUrl(lang, date).slice(SITES[siteOf(lang)].host.length)
 }
 
+// Les articles « Culture » (scripts/lib/culture-pages.mjs). Pas une vue, comme
+// la brève : des HTML statiques écrits au build. Même slug latin dans les
+// quatre langues (« culture » ne change pas la requête), et SLASH FINAL, pour
+// la même raison que VIEWS et BRIEF_SLUGS. Le slug d'article est commun aux
+// quatre langues : les hreflang d'un article ne diffèrent que par le préfixe.
+export const CULTURE_SLUGS = { fr: 'culture/', en: 'culture/', hy: 'culture/', ru: 'culture/' }
+export const CULTURE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+
+export function cultureUrl(lang, slug = null) {
+  const base = CULTURE_SLUGS[lang]
+  if (!base) throw new Error(`pas de section Culture en ${lang}`)
+  if (slug !== null && !CULTURE_SLUG.test(slug)) throw new Error(`slug d'article invalide : ${slug}`)
+  return LANG_URL[lang] + base + (slug ? `${slug}/` : '')
+}
+
+export function culturePath(lang, slug = null) {
+  return cultureUrl(lang, slug).slice(SITES[siteOf(lang)].host.length)
+}
+
+// L'image d'un article vit UNE fois par vitrine, sous la section de sa langue
+// de tête (/culture/<slug>/), et sert aussi /hy/ et /ru/.
+export function cultureImagePath(slug, ext) {
+  if (!CULTURE_SLUG.test(slug)) throw new Error(`slug d'article invalide : ${slug}`)
+  if (ext !== 'webp' && ext !== 'jpg') throw new Error(`extension d'image invalide : ${ext}`)
+  return `/culture/${slug}/image.${ext}`
+}
+
 // Le chemin de la page d'accueil d'une langue — '/' ou '/hy/'. Sert aux ancres
 // de la nav sur les pages de vue (voir Nav.jsx).
 export function langPath(siteId, lang) {
