@@ -172,3 +172,16 @@ export function findUnsupported(claims, sourceTexts) {
     return words.length > 0 && !wordsOk
   })
 }
+
+// L'événement de l'agenda est une source à part entière : le brouillon a le
+// droit d'en citer le titre, le lieu et la date. Sans ces textes dans la botte
+// de foin, « Saint-Chamond » ou « 18 octobre 2026 » sortaient en ⚠️ à chaque
+// article lié à l'agenda — de fausses alertes qui noient les vraies.
+const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+export function eventFacts(event) {
+  if (!event) return []
+  const out = [event.title, event.location].filter((s) => typeof s === 'string' && s)
+  const m = String(event.date ?? '').match(/^(\d{4})-(\d{2})-(\d{2})/)
+  if (m) out.push(`${Number(m[3])} ${MOIS[Number(m[2]) - 1]} ${m[1]}`, `${Number(m[3])} ${MOIS[Number(m[2]) - 1]}`)
+  return out
+}

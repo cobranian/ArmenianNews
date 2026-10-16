@@ -18,7 +18,7 @@ import { pickTopic } from './lib/culture-topic.mjs'
 import { articleSlugs } from './lib/culture-load.mjs'
 import { llmConfig, chat } from './lib/culture-llm.mjs'
 import {
-  buildDraftMessages, buildClaimsMessages, buildIdeasMessages, parseArticleJson, parseClaims, parseIdeas, findUnsupported,
+  buildDraftMessages, buildClaimsMessages, buildIdeasMessages, parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts,
 } from './lib/culture-prompts.mjs'
 import { fetchWikipedia, fetchWikidataFacts, fetchCommonsCandidates, downloadImage } from './lib/culture-sources.mjs'
 import { makeImages } from './lib/culture-image.mjs'
@@ -95,7 +95,7 @@ const draft = parseArticleJson(draftRes.text)
 if (!draft) throw new Error(`brouillon illisible (JSON attendu) — modèle ${draftRes.model}`)
 const claimsRes = await chat({ ...cfg, temperature: 0, messages: buildClaimsMessages(draft.body) })
 const claims = parseClaims(claimsRes.text)
-const unsupported = claims === null ? null : findUnsupported(claims, [...sources.map((s) => s.extract), ...facts])
+const unsupported = claims === null ? null : findUnsupported(claims, [...sources.map((s) => s.extract), ...facts, ...eventFacts(event)])
 const overlap = overlapRatio(draft.body, sources.map((s) => s.extract))
 
 const meta = {

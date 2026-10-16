@@ -2,8 +2,20 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages,
-  parseArticleJson, parseClaims, parseIdeas, findUnsupported, MAX_EXTRACT,
+  parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts, MAX_EXTRACT,
 } from '../scripts/lib/culture-prompts.mjs'
+
+// Les fausses alertes de la PR #13 (khatchkar) : tout venait de l'agenda.
+test('eventFacts : titre, lieu et date de l’événement ne sont plus signalés', () => {
+  const event = { title: 'Bénédiction de KHATCHKAR à Saint-Chamond', location: 'Auvergne-Rhône-Alpes', date: '2026-10-18T10:30' }
+  assert.deepEqual(eventFacts(event), [
+    'Bénédiction de KHATCHKAR à Saint-Chamond', 'Auvergne-Rhône-Alpes', '18 octobre 2026', '18 octobre',
+  ])
+  const claims = ['Bénédiction de KHATCHKAR à Saint-Chamond', 'Saint-Chamond', 'Auvergne-Rhône-Alpes', '18 octobre 2026', 'une trentaine']
+  assert.deepEqual(findUnsupported(claims, ['Le khatchkar est une stèle.', ...eventFacts(event)]), ['une trentaine'])
+  assert.deepEqual(eventFacts(null), [])
+  assert.deepEqual(eventFacts({ title: 'T', date: 'demain' }), ['T'])
+})
 
 const topic = { slug: 'komitas', title: 'Komitas' }
 const sources = [{ lang: 'fr', title: 'Komitas', extract: 'Komitas est né en 1869. ' + 'x'.repeat(MAX_EXTRACT) }]
