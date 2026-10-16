@@ -4145,7 +4145,12 @@ html:lang(hy) .nav__brand {
   text-decoration: none;
 }
 @media (pointer: coarse) {
-  .culture-teaser__all {
+  /* Commandes isolées seulement : les liens du crédit et de l'événement sont
+     au fil d'une phrase (exemptés), alors que le fil d'Ariane et les sources
+     sont des cibles à part entière. */
+  .culture-teaser__all,
+  .culture__kicker a,
+  .culture__sources a {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
