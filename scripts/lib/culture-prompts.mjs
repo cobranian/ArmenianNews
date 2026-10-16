@@ -140,17 +140,26 @@ const fold = (s) =>
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
 
+const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+// Mot ou expression entière : « Ani » ne doit pas être validé par « Aniv »
+// ni « partie », ni « Ere » par « Erevan ».
+const wholeWord = (s) => new RegExp(`(^|[^\\p{L}\\p{N}])${esc(s)}(?=$|[^\\p{L}\\p{N}])`, 'u')
+
 // Les éléments factuels du brouillon introuvables dans les sources : la liste
 // ⚠️ en tête de PR. Un nombre doit apparaître EXACTEMENT (1869 ne valide pas
-// 186) ; un nom, par chacun de ses mots de 3 lettres ou plus (plié).
+// 186) ; un nom, par chacun de ses mots de 3 lettres ou plus (plié), en mot
+// entier ; une expression à plusieurs nombres (« 1 200 ») doit apparaître
+// telle quelle.
 export function findUnsupported(claims, sourceTexts) {
   const hay = fold(sourceTexts.join('\n'))
   return claims.filter((c) => {
-    const nums = c.match(/\d+/g)
-    if (nums) return !nums.every((n) => new RegExp(`(^|\\D)${n}(\\D|$)`).test(hay))
-    const words = fold(c)
-      .split(/[^\p{L}\p{N}]+/u)
-      .filter((w) => w.length >= 3)
-    return words.length > 0 && !words.every((w) => hay.includes(w))
+    const f = fold(c)
+    if (wholeWord(f).test(hay)) return false
+    const groups = c.match(/\d+/g) ?? []
+    if (groups.length === 1) return !new RegExp(`(^|\\D)${groups[0]}(\\D|$)`).test(hay)
+    if (groups.length > 1) return true
+    const words = f.split(/[^\p{L}\p{N}]+/u).filter((w) => w.length >= 3)
+    return words.length > 0 && !words.every((w) => wholeWord(w).test(hay))
   })
 }

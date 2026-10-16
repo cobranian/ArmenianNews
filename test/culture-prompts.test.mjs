@@ -44,6 +44,14 @@ test('findUnsupported : chiffres exacts, noms pliés, arménien et russe', () =>
   assert.deepEqual(findUnsupported(['Le', 'à'], src), [], 'mots trop courts ignorés')
 })
 
+test('findUnsupported : mots entiers, expressions à plusieurs nombres', () => {
+  assert.deepEqual(findUnsupported(['Ani'], ['Aniv partie']), ['Ani'])
+  assert.deepEqual(findUnsupported(['Ere'], ['Erevan']), ['Ere'])
+  assert.deepEqual(findUnsupported(['1 200'], ['1 et 200']), ['1 200'])
+  assert.deepEqual(findUnsupported(['1 200'], ['soit 1 200 fidèles']), [])
+  assert.deepEqual(findUnsupported(['Mesrop Machtots'], ['Mesrop Machtots invente']), [])
+})
+
 test('traduction : langue cible nommée, fidélité, JSON du texte relu', () => {
   const [sys, user] = buildTranslateMessages({ lang: 'hy', title: 'T', description: 'D', body: '## B' })
   assert.match(sys.content, /arménien oriental/)
