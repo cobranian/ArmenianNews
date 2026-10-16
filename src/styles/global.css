@@ -3826,3 +3826,155 @@ html:lang(hy) .nav__brand {
     transform: none;
   }
 }
+
+/* === Brève quotidienne (pages statiques, scripts/lib/brief-pages.mjs) ===
+   Hors de React : ces règles stylent un HTML écrit par Node, qui charge la
+   même feuille. Convention du fichier : chaque font-family est suivie de son
+   font-size-adjust. */
+.brief-body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+.brief-nav {
+  border-bottom: 1px solid var(--line);
+}
+.brief-nav__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 18px;
+}
+.brief-nav__brand {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--apricot-ink);
+  text-decoration: none;
+}
+.brief-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.brief-nav__links a {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-decoration: none;
+}
+.brief-nav__links a:hover,
+.brief-nav__links a:focus-visible {
+  color: var(--apricot-ink);
+}
+.brief {
+  max-width: 46rem;
+  padding-block: 40px 64px;
+}
+.brief__kicker,
+.brief__rubric {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+}
+.brief__date {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0.2em 0 0.5em;
+  text-wrap: balance;
+}
+.brief__intro,
+.brief__text {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+.brief__intro {
+  color: var(--text-soft);
+  margin: 0 0 2em;
+}
+.brief__topics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line-strong);
+}
+.brief__topic {
+  padding: 1.4em 0;
+  border-bottom: 1px solid var(--line);
+}
+.brief__topic-title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin: 0.3em 0 0.4em;
+}
+.brief__text {
+  margin: 0 0 0.6em;
+}
+.brief__sources,
+.brief__disclaimer,
+.brief__pager,
+.brief__archive li {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+.brief__sources a,
+.brief__pager a,
+.brief__archive a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-apricot);
+}
+.brief__sources a:hover,
+.brief__pager a:hover,
+.brief__archive a:hover {
+  color: var(--apricot-ink);
+}
+.brief__disclaimer {
+  margin-top: 2em;
+}
+.brief__pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2.4em;
+}
+.brief__archive h2 {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: 1.2rem;
+  margin: 3em 0 0.6em;
+}
+.brief__archive ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2 14rem;
+}
+.brief__archive li {
+  padding: 0.25em 0;
+}
+@media (pointer: coarse) {
+  .brief-nav__links a,
+  .brief__pager a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n.jsx'
-import { pathFor } from '../../sites.config.js'
+import { pathFor, briefPath } from '../../sites.config.js'
+import { BRIEF_STRINGS } from '../briefStrings.js'
 import { VIEW_SEO } from '../seo.js'
 import { KnotMark } from './Ornament.jsx'
 
@@ -28,6 +29,7 @@ export function Footer() {
     [pathFor(lang, 'home'), t('footer.home')],
     [pathFor(lang, 'radio'), VIEW_SEO.radio[lang].title],
     [pathFor(lang, 'agenda'), VIEW_SEO.agenda[lang].title],
+    [briefPath(lang), BRIEF_STRINGS[lang].title],
     [pathFor(lang, 'about'), VIEW_SEO.about[lang].title],
   ]
   return (
