@@ -5,6 +5,7 @@ import { useSourceDrum } from './useSourceDrum.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import { TAB_ORDER, shelvesFor } from '../newsSources.js'
 import { groupByRubric, DEFAULT_RUBRIC } from '../rubrics.js'
+import { SOURCE_NAMES } from '../newsLangs.js'
 
 // The wsrv.nl image CDN: fetched server-side, resized, re-served with CORS.
 // Sources reach it for TWO different reasons, and only the first is a blocker.
@@ -162,7 +163,7 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 function buildSources(t, lang) {
   const armenpress = {
     id: 'armenpress',
-    brand: 'Armenpress',
+    brand: SOURCE_NAMES.armenpress,
     live: true,
     images: true,
     // Sur le poids, pas sur un blocage — voir le commentaire de `wsrv`.
@@ -173,7 +174,7 @@ function buildSources(t, lang) {
   }
   const armradio = {
     id: 'armradio',
-    brand: 'ArmRadio',
+    brand: SOURCE_NAMES.armradio,
     live: true,
     images: true,
     armProxy: true,
@@ -183,7 +184,7 @@ function buildSources(t, lang) {
   }
   const courrier = {
     id: 'courrier',
-    brand: "Courrier d'Erevan",
+    brand: SOURCE_NAMES.courrier,
     live: false,
     images: true,
     cats: shelvesFor('courrier', lang)
@@ -192,7 +193,7 @@ function buildSources(t, lang) {
   }
   const armenews = {
     id: 'armenews',
-    brand: "Nouvelles d'Arménie",
+    brand: SOURCE_NAMES.armenews,
     live: false,
     images: true,
     proxy: true,
@@ -202,7 +203,7 @@ function buildSources(t, lang) {
   }
   const artzakank = {
     id: 'artzakank',
-    brand: 'Artzakank',
+    brand: SOURCE_NAMES.artzakank,
     live: false,
     images: true,
     proxy: true,
@@ -212,7 +213,7 @@ function buildSources(t, lang) {
   }
   const armenieinfotv = {
     id: 'armenieinfotv',
-    brand: 'ArménieInfo.tv',
+    brand: SOURCE_NAMES.armenieinfotv,
     live: false,
     images: true,
     proxy: true,
@@ -227,7 +228,7 @@ function buildSources(t, lang) {
   // English images hotlink directly; Armenian has none and falls back to motifs.
   const asbarez = {
     id: 'asbarez',
-    brand: 'Asbarez',
+    brand: SOURCE_NAMES.asbarez,
     live: false,
     images: true,
     cats: shelvesFor('asbarez', lang)
@@ -239,7 +240,7 @@ function buildSources(t, lang) {
   // only; its category labels ride in the data. Images hotlink direct.
   const oragark = {
     id: 'oragark',
-    brand: 'Oragark',
+    brand: SOURCE_NAMES.oragark,
     live: false,
     images: true,
     cats: shelvesFor('oragark', lang)
@@ -253,7 +254,7 @@ function buildSources(t, lang) {
   // hotlink protection, and medium_large lands around 77 Ko.
   const armenianweekly = {
     id: 'armenianweekly',
-    brand: 'Armenian Weekly',
+    brand: SOURCE_NAMES.armenianweekly,
     live: false,
     images: true,
     cats: shelvesFor('armenianweekly', lang)
@@ -266,7 +267,7 @@ function buildSources(t, lang) {
   // English news feed. One category per language, its label carried in the data.
   const californiacourier = {
     id: 'californiacourier',
-    brand: 'California Courier',
+    brand: SOURCE_NAMES.californiacourier,
     live: false,
     images: true,
     cats: shelvesFor('californiacourier', lang)
@@ -280,7 +281,7 @@ function buildSources(t, lang) {
   // so each rubric's name rides in the data, already in its own language.
   const civilnet = {
     id: 'civilnet',
-    brand: 'CivilNet',
+    brand: SOURCE_NAMES.civilnet,
     live: false,
     images: true,
     cats: shelvesFor('civilnet', lang)
@@ -296,7 +297,7 @@ function buildSources(t, lang) {
   // protection on any of the four hosts).
   const newsam = {
     id: 'newsam',
-    brand: 'NEWS.am',
+    brand: SOURCE_NAMES.newsam,
     live: false,
     images: true,
     cats: shelvesFor('newsam', lang)

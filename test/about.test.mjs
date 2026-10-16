@@ -94,7 +94,7 @@ test('App route la vue, le pied de page et la 404 la lient', () => {
 
 test('AboutPage liste toutes les rédactions de TAB_ORDER, avec une page d’accueil chacune', () => {
   const src = lire('../src/components/AboutPage.jsx')
-  const tabs = lire('../src/newsSources.js')
+  const tabs = lire('../src/newsLangs.js')
   const ids = [...new Set([...tabs.matchAll(/^\s+'([a-z]+)',?$/gm)].map((m) => m[1]))]
   assert.ok(ids.length >= 10, `TAB_ORDER lu comme texte : ${ids.length} ids`)
   for (const id of ids) {
