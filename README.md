@@ -570,6 +570,21 @@ gh workflow run articles.yml        # un brouillon à la demande
 3. Poser l'étiquette **`traduire`** : en, hy et ru sont produits depuis le français relu. Retoucher `fr.md` ensuite périme les traductions : reposer l'étiquette.
 4. Fusionner quand le statut `culture-check` est vert. Il **ne bloque pas** la fusion : c'est au relecteur de le regarder.
 
+**Fermer une PR sans la fusionner rejette le sujet pour de bon** :
+`articles-closed.yml` le passe `rejected` dans `sujets.json` sur `main`, et le
+brouillon du lundi ne le reprendra plus. Pour retenter ce sujet, remettez son
+`status` à `pending` dans `src/data/culture/sujets.json`
+(`npm run culture:status -- <slug> pending`).
+
+**Corriger un article DÉJÀ publié : jamais `fr.md` directement sur `main`.**
+Chaque traduction porte l'empreinte (`sourceHash`) du français dont elle est
+issue ; retoucher `fr.md` sur `main` périme en, hy et ru d'un coup, le build
+les retire sans échouer, et leurs URL déjà indexées répondent **404** (le
+seul signe : la ligne `⚠ culture : N traduction(s) non publiée(s)` du log de
+build). La procédure : créer une branche `culture/<slug>` depuis `main`, y
+corriger `fr.md`, ouvrir une PR, poser l'étiquette **`traduire`** pour
+régénérer les traductions depuis le texte corrigé, puis fusionner.
+
 **Ajouter des sujets** : `src/data/culture/sujets.json`. Vérifier d'abord que
 le titre existe tel quel sur Wikipédia (fr et en) ; un titre inexact donne un
 brouillon vide ou un mauvais article.

@@ -69,7 +69,7 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
+npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
