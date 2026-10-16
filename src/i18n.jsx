@@ -3,6 +3,7 @@ import { LANGS, langFromPath } from '../sites.config.js'
 import { SITE_ID } from './site.js'
 import { hyLongDate, hyMonthAbbr, hyWeekdayTime } from './hyDate.js'
 import { relativeAge } from './relativeTime.js'
+import { rubricStrings } from './rubricLabels.js'
 
 // LANGS lives in sites.config.js because Node cannot parse JSX — the build
 // scripts and tests run outside the browser and need this data as plain
@@ -59,15 +60,7 @@ const STRINGS = {
     'about.contact.body': 'Une erreur, une source à proposer, une station qui se tait ? Écrivez à',
 
     'news.title': 'Actualités',
-    'rubric.armenie': 'Arménie',
-    'rubric.politique': 'Politique',
-    'rubric.economie': 'Économie',
-    'rubric.monde': 'Monde',
-    'rubric.societe': 'Société',
-    'rubric.diaspora': 'Diaspora',
-    'rubric.culture': 'Culture',
-    'rubric.sports': 'Sports',
-    'rubric.opinion': 'Opinion',
+    ...rubricStrings('fr'),
     'news.subtitle': "Les dernières publications de chaque rubrique du Courrier d'Erevan",
     'news.armradio': "En direct d'Arménie · Public Radio of Armenia",
     'news.readmore': 'Lire la suite',
@@ -333,15 +326,7 @@ const STRINGS = {
     'about.contact.body': 'A mistake, a source to suggest, a station gone silent? Write to',
 
     'news.title': 'News',
-    'rubric.armenie': 'Armenia',
-    'rubric.politique': 'Politics',
-    'rubric.economie': 'Economy',
-    'rubric.monde': 'World',
-    'rubric.societe': 'Society',
-    'rubric.diaspora': 'Diaspora',
-    'rubric.culture': 'Culture',
-    'rubric.sports': 'Sports',
-    'rubric.opinion': 'Opinion',
+    ...rubricStrings('en'),
     'news.subtitle': "The latest stories from each section of Le Courrier d'Erevan",
     'news.armradio': 'Live from Armenia · Public Radio of Armenia',
     'news.readmore': 'Read more',
@@ -607,15 +592,7 @@ const STRINGS = {
     'about.contact.body': 'Սխա՞լ, առաջարկվող աղբյո՞ւր, լռած ռադիոկայա՞ն։ Գրեք՝',
 
     'news.title': 'Լուրեր',
-    'rubric.armenie': 'Հայաստան',
-    'rubric.politique': 'Քաղաքականություն',
-    'rubric.economie': 'Տնտեսություն',
-    'rubric.monde': 'Աշխարհ',
-    'rubric.societe': 'Հասարակություն',
-    'rubric.diaspora': 'Սփյուռք',
-    'rubric.culture': 'Մշակույթ',
-    'rubric.sports': 'Սպորտ',
-    'rubric.opinion': 'Կարծիք',
+    ...rubricStrings('hy'),
     'news.subtitle': '«Կուրիեր» թերթի յուրաքանչյուր բաժնի վերջին հրապարակումները',
     'news.armradio': 'Ուղիղ Հայաստանից · Հանրային ռադիո',
     'news.readmore': 'Կարդալ ավելին',
@@ -867,15 +844,7 @@ const STRINGS = {
     'about.contact.body': 'Заметили неточность, хотите предложить источник или станция замолчала? Напишите на',
 
     'news.title': 'Новости',
-    'rubric.armenie': 'Армения',
-    'rubric.politique': 'Политика',
-    'rubric.economie': 'Экономика',
-    'rubric.monde': 'Мир',
-    'rubric.societe': 'Общество',
-    'rubric.diaspora': 'Диаспора',
-    'rubric.culture': 'Культура',
-    'rubric.sports': 'Спорт',
-    'rubric.opinion': 'Мнение',
+    ...rubricStrings('ru'),
     'news.subtitle': 'Последние публикации из каждой рубрики «Курьера Еревана»',
     'news.armradio': 'Прямой эфир из Армении · Общественное радио Армении',
     'news.readmore': 'Читать далее',

@@ -282,8 +282,13 @@ test('replaceMeta refuse un HTML sans sentinelles', () => {
   )
 })
 
+// Les entrées de la brève (sitemap.mjs → briefEntries) ont leurs propres tests
+// (brief-pages.test.mjs) ; ici on ne compte que les entrées de vue.
+const sansBreve = (xml) =>
+  xml.split('<url>').filter((b) => !/<loc>[^<]*\/(breve|brief)\//.test(b)).join('<url>')
+
 test('le sitemap du .ch liste ses pages, une par vue', () => {
-  const xml = sitemapFor('ch', '2026-07-28T10:00:00.000Z')
+  const xml = sansBreve(sitemapFor('ch', '2026-07-28T10:00:00.000Z'))
   assert.equal((xml.match(/<url>/g) || []).length, ALL_VIEWS.length)
   assert.ok(xml.includes('<loc>https://armenieinfo.ch/</loc>'))
   assert.ok(xml.includes('<loc>https://armenieinfo.ch/radio/</loc>'))
@@ -291,7 +296,7 @@ test('le sitemap du .ch liste ses pages, une par vue', () => {
 })
 
 test('le sitemap du .org liste ses trois langues fois ses vues', () => {
-  const xml = sitemapFor('org', '2026-07-28T10:00:00.000Z')
+  const xml = sansBreve(sitemapFor('org', '2026-07-28T10:00:00.000Z'))
   assert.equal((xml.match(/<url>/g) || []).length, 3 * ALL_VIEWS.length)
   for (const loc of [
     'https://armenianews.org/',
@@ -324,7 +329,7 @@ test('les deux sitemaps declarent le namespace xhtml de leurs alternates', () =>
 // qui relie les deux vitrines dans les sitemaps ; le perdre isolerait le .ch de
 // ses trois traductions sans qu'aucun compte d'alternates ne bouge.
 test('le sitemap du .org cite la version francaise, hebergee sur le .ch', () => {
-  const xml = sitemapFor('org', '2026-07-28T10:00:00.000Z')
+  const xml = sansBreve(sitemapFor('org', '2026-07-28T10:00:00.000Z'))
   assert.ok(xml.includes(`hreflang="fr" href="${LANG_URL.fr}"`), 'accueil fr absent')
   assert.ok(
     xml.includes(`hreflang="fr" href="${urlFor('fr', 'radio')}"`),

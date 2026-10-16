@@ -23,6 +23,7 @@ import { replaceMeta } from './lib/site-meta.mjs'
 import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 import { notFoundHtml } from './lib/not-found.mjs'
+import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -145,9 +146,18 @@ async function lastmod() {
   process.exit(1)
 }
 
-async function writeSeoFiles(site, stamp) {
+// Les brèves quotidiennes : HTML statiques, après le build Vite (il faut le
+// nom haché de la feuille CSS). Voir scripts/lib/brief-pages.mjs.
+async function writeBriefs(site, briefs) {
   const dist = path.join(root, 'dist', site.id)
-  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp), 'utf-8')
+  const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
+  const n = await writeBriefPages(site, dist, briefs, cssHrefFrom(built))
+  console.log(`  → dist/${site.id} : ${n} pages de brève`)
+}
+
+async function writeSeoFiles(site, stamp, briefs) {
+  const dist = path.join(root, 'dist', site.id)
+  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs), 'utf-8')
   console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
@@ -160,12 +170,14 @@ async function writeSeoFiles(site, stamp) {
 }
 
 const stamp = await lastmod()
+const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
 
 for (const site of Object.values(SITES)) {
   viteBuild(site.id)
   await derivePages(site)
   await copyStandalone(site)
-  await writeSeoFiles(site, stamp)
+  await writeBriefs(site, briefs)
+  await writeSeoFiles(site, stamp, briefs)
 }
 
 console.log(

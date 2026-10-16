@@ -18,8 +18,17 @@ import { RUBRICS, RUBRIC_MAP, mixedDefault } from '../../src/rubrics.js'
 export const MAX_BATCH = 120
 export const BATCH_SIZE = 40
 export const DEFAULT_MODEL = 'nvidia/nemotron-3.5-lightning:free'
-export const FALLBACK_MODELS = ['google/gemma-4-31b-it:free']
-const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
+// 16 octobre 2026 : lightning ne répond plus (>60 s), gemma est en 429,
+// super-120b répond en moins d'une seconde — d'où son rang en tête des replis.
+export const FALLBACK_MODELS = ['nvidia/nemotron-3-super-120b-a12b:free', 'google/gemma-4-31b-it:free']
+
+// La chaîne de modèles qu'OpenRouter essaie dans l'ordre. OPENROUTER_MODEL ou
+// un modèle imposé la réduisent à un seul. Partagée avec la brève
+// (scripts/lib/brief-generate.mjs) : un changement de modèle vaut pour les deux.
+export function modelChain(forced = process.env.OPENROUTER_MODEL) {
+  return forced ? [forced] : [DEFAULT_MODEL, ...FALLBACK_MODELS]
+}
+export const ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
 
 // Chaque étagère de chaque source, quelle que soit la forme du flux : une liste
 // plate, ou un objet indexé par langue.
@@ -141,7 +150,7 @@ export async function classifyRubrics(
   // OpenRouter essaie les modèles dans l'ordre ; OPENROUTER_MODEL ou l'option
   // `model` imposent un modèle unique.
   const forced = model || process.env.OPENROUTER_MODEL
-  const models = forced ? [forced] : [DEFAULT_MODEL, ...FALLBACK_MODELS]
+  const models = modelChain(forced)
   if (forced && !forced.endsWith(':free'))
     log.warn(`  ⚠ classify: ${forced} n'est pas un modèle :free — consomme des crédits`)
   for (let start = 0; start < pending.length; start += BATCH_SIZE) {

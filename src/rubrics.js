@@ -1,6 +1,6 @@
 // Les rubriques communes du navigateur d'actualités.
 //
-// Module JS PLAT, comme src/seo.js et src/newsSources.js : le scraper (Node),
+// Module JS PLAT, comme src/seo.js et src/newsLangs.js : le scraper (Node),
 // les tests et le bundle lisent la même table, et un export non-composant dans
 // un .jsx ferait passer le lint de 5 à 6 avertissements. Il n'importe AUCUN
 // JSON : Node ne sait pas importer un module qui en importe sans attribut.

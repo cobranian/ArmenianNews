@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
 import { orderedLangs, SITE_ID } from '../site.js'
-import { LANG_URL, langPath, pathFor } from '../../sites.config.js'
+import { LANG_URL, langPath, pathFor, briefPath } from '../../sites.config.js'
+import { BRIEF_STRINGS } from '../briefStrings.js'
 import { KnotMark } from './Ornament.jsx'
 
 export function Nav({ view = 'home' }) {
@@ -37,6 +38,7 @@ export function Nav({ view = 'home' }) {
     [view === 'home' ? '#direct' : pathFor(lang, 'radio'), t('nav.radio')],
     [`${home}#actualites`, t('nav.news')],
     [view === 'home' ? '#agenda' : pathFor(lang, 'agenda'), t('nav.agenda')],
+    [briefPath(lang), BRIEF_STRINGS[lang].nav],
     [`${home}#reseaux`, t('nav.social')],
   ]
 

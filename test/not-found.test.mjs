@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { SITES, pathFor, primaryLang } from '../sites.config.js'
+import { SITES, pathFor, primaryLang, briefPath } from '../sites.config.js'
 import { notFoundHtml } from '../scripts/lib/not-found.mjs'
 
 // La page 404 est ce que Firebase sert, avec un VRAI statut 404, à toute URL
@@ -32,6 +32,8 @@ for (const site of Object.values(SITES)) {
         const href = pathFor(page.lang, view)
         assert.ok(html.includes(`href="${href}"`), `lien vers ${href}`)
       }
+      const brief = briefPath(page.lang)
+      assert.ok(html.includes(`href="${brief}"`), `lien vers ${brief}`)
     }
   })
 

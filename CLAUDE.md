@@ -69,14 +69,15 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : lang, canonical, hreflang réciproques), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
+npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 267 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 314 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
+npm run brief         # générer la brève du jour hors du scrape (--force ignore la règle des 7 h, --dry n'écrit rien)
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
@@ -85,7 +86,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **267 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **314 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -734,7 +735,7 @@ la palette « abricot sur basalte » y sont définies.
 
 **Une convention du fichier à ne pas casser : chaque `font-family:
 var(--font-X)` est immédiatement suivie de son `font-size-adjust:
-var(--fsa-X)`** — 17 paires pour le display, 34 pour l'utilitaire, 3 pour le
+var(--fsa-X)`** — 22 paires pour le display, 47 pour l'utilitaire, 7 pour le
 corps. C'est ce qui donne aux quatre langues la même taille *vue* alors que
 chaque écriture a sa propre hauteur d'œil (le russe rendait 7 % plus gros, les
 titres arméniens et russes 4,3 %). Le raisonnement complet, les mesures et les
@@ -855,6 +856,7 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   la main).
   Voir le **README.md** pour la procédure d'ajout de posts et de rafraîchissement
   des deux murs.
+- **`src/data/briefs/{lang}/AAAA-MM-JJ.json` est généré par le scrape, une fois, et jamais régénéré** : une correction se fait à la main dans le JSON. Ne jamais l'écraser par un second passage.
 - Schéma du pool Instagram :
   `{ exclude: [shortcode], accounts: [{ handle, name, url, group, count?,
   posts: [{url, date}] }] }`, où `group` vaut `institutions`, `personnalites`,
@@ -1010,7 +1012,7 @@ de production servent toujours depuis la racine de leur domaine.
   flot de plusieurs centaines de téléchargements.
 - **Les onglets du fil sont des RUBRIQUES, pas des sources.** Neuf rubriques
   communes (`RUBRICS`, `src/rubrics.js`) ; dans chacune, une étagère par
-  source, dans l'ordre de **`TAB_ORDER`** (`src/newsSources.js`), qui décide
+  source, dans l'ordre de **`TAB_ORDER`** (`src/newsLangs.js`), qui décide
   toujours quelle source paraît sous quelle langue — une source absente de
   `TAB_ORDER` n'apparaît nulle part, et seul `test/source-count.test.mjs` le
   remarque. **`RUBRIC_MAP`** replie chaque rubrique d'origine sur une rubrique
@@ -1028,8 +1030,8 @@ de production servent toujours depuis la racine de leur domaine.
   clé expirée ou un quota épuisé ne casse rien — chaque fil retombe dans son
   défaut, le site a l'air juste, et le seul signe est `✗ classify` au log
   (`gh run view <id> --log | grep classify`). Modèle en service :
-  `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, repli
-  `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
+  `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, replis
+  `nvidia/nemotron-3-super-120b-a12b:free` puis `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
   raisonnement dépassent le délai, les points d'accès gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
   `DEFAULT_MODEL` (ou posez `OPENROUTER_MODEL`) après avoir listé
   `https://openrouter.ai/api/v1/models` (ids finissant par `:free`).
@@ -1196,6 +1198,7 @@ de production servent toujours depuis la racine de leur domaine.
   un changement de `HOST_BY_LANG` ou du mode image, `wrangler deploy` ou les
   vignettes retombent sur un motif. (Les images Armenpress, elles, hotlinkent
   directement — pas de 503.)
+- **Brève quotidienne : le hreflang d'une page datée ne cite que les langues présentes ce jour-là** (`scripts/lib/brief-links.mjs`, partagé avec le sitemap). Une journée sans brève ne casse rien : le seul signe est `✗ brief/{lang}` au log (`gh run view <id> --log | grep brief`). Le modèle ne fournit jamais d'URL : elles viennent des articles sélectionnés.
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
 - **La langue vient de l'URL, plus de `localStorage`.** Chaque langue a son

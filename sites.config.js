@@ -249,6 +249,27 @@ export function pathFor(lang, view = 'home') {
   return urlFor(lang, view).slice(host.length)
 }
 
+// La brève quotidienne (scripts/lib/brief-pages.mjs). Ce n'est PAS une vue :
+// pas de route React, pas de prérendu — des HTML statiques écrits au build,
+// une page par jour et par langue. D'où une table à part, mais les mêmes
+// règles que VIEWS : slug latin, traduit là où le mot change (« brève » n'est
+// pas un mot anglais), et SLASH FINAL, pour la même raison (Firebase redirige
+// en 301 toute URL de répertoire vers sa forme à slash final).
+export const BRIEF_SLUGS = { fr: 'breve/', en: 'brief/', hy: 'brief/', ru: 'brief/' }
+
+const BRIEF_DATE = /^\d{4}-\d{2}-\d{2}$/
+
+export function briefUrl(lang, date = null) {
+  const slug = BRIEF_SLUGS[lang]
+  if (!slug) throw new Error(`pas de brève en ${lang}`)
+  if (date !== null && !BRIEF_DATE.test(date)) throw new Error(`date de brève invalide : ${date}`)
+  return LANG_URL[lang] + slug + (date ? `${date}/` : '')
+}
+
+export function briefPath(lang, date = null) {
+  return briefUrl(lang, date).slice(SITES[siteOf(lang)].host.length)
+}
+
 // Le chemin de la page d'accueil d'une langue — '/' ou '/hy/'. Sert aux ancres
 // de la nav sur les pages de vue (voir Nav.jsx).
 export function langPath(siteId, lang) {

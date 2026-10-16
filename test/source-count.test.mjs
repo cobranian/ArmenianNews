@@ -33,16 +33,16 @@ const MOTS = {
 // (Il a remplacé un ternaire `pool` + tri alphabétique ; ce test lisait les
 // branches du ternaire.)
 //
-// Il vit désormais dans `src/newsSources.js` — un module JS plat — et non plus
+// Il vit désormais dans `src/newsLangs.js` — un module JS plat — et non plus
 // dans NewsBrowser.jsx : `News.jsx` doit compter les sources pour son bandeau
 // sans importer le composant, et un export non-composant dans un `.jsx`
 // coûterait un 6e avertissement de lint (voir CLAUDE.md, section Lint). On le
 // lit toujours COMME DU TEXTE, faute de mieux : ce module importe news.json, et
 // Node refuse un import JSON sans attribut d'import.
 function poolsParLangue() {
-  const src = read('src/newsSources.js')
+  const src = read('src/newsLangs.js')
   const bloc = src.match(/export const TAB_ORDER = \{[\s\S]*?\n\}/)
-  assert.ok(bloc, 'tableau TAB_ORDER introuvable dans src/newsSources.js')
+  assert.ok(bloc, 'tableau TAB_ORDER introuvable dans src/newsLangs.js')
   const pools = {}
   for (const m of bloc[0].matchAll(/(\w+):\s*\[([\s\S]*?)\]/g)) {
     pools[m[1]] = (m[2].match(/'[^']+'/g) || []).length
