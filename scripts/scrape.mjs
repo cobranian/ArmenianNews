@@ -21,6 +21,7 @@ import { scrapeNewsam } from './sources/newsam.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 import { classifyRubrics, applyRubrics } from './lib/classify-rubrics.mjs'
+import { generateBriefs } from './lib/brief-generate.mjs'
 import { unmappedKeys } from '../src/rubrics.js'
 
 // Backfill each empty category from the previous snapshot, so a transient
@@ -303,6 +304,11 @@ async function main() {
   const rubricCache = await classifyRubrics(newsOut, (await readJson('rubric-cache.json')) || {})
   await writeJson('rubric-cache.json', applyRubrics(newsOut, rubricCache))
   await writeJson('news.json', newsOut)
+  // La brève quotidienne, une fois par jour et par langue (scripts/lib/
+  // brief-generate.mjs). Lue sur newsOut, donc avec les rubriques du
+  // classeur. Un échec n'écrit rien ; le passage suivant réessaie.
+  console.log('\nBrève quotidienne:')
+  await generateBriefs({ news: newsOut, dir: join(DATA_DIR, 'briefs') })
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })

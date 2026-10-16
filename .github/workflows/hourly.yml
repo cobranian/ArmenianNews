@@ -66,7 +66,7 @@ jobs:
           # public/sitemap.xml n'est plus versionné : il en faut un par vitrine,
           # et ils sont générés au build (scripts/lib/sitemap.mjs), avec un
           # lastmod lu dans meta.json.generatedAt — donc l'heure de CE scrape.
-          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json src/data/rubric-cache.json
+          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json src/data/rubric-cache.json src/data/briefs
           if git diff --cached --quiet; then
             echo "No data changes."
           else
