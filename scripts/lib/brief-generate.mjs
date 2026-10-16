@@ -77,7 +77,7 @@ export function parseBrief(text, articles) {
       sources.push({ source: a.source, url: a.url, title: a.title })
     }
     if (!sources.length) continue
-    const r = clean(t?.rubric).toLowerCase()
+    const r = clean(t?.rubric).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     topics.push({ title, text: body, rubric: RUBRICS.includes(r) ? r : null, sources })
     if (topics.length === MAX_TOPICS) break
   }

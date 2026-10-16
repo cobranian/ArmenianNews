@@ -155,7 +155,7 @@ const ldScript = (graph) =>
 // varie est passé en paramètres ; le reste (préchargements, Search Console,
 // bloc Open Graph de six balises pour l'image, Twitter, JSON-LD) est écrit
 // UNE fois — la brève ne doit pas devenir une seconde copie à tenir à jour.
-function composeHead({ site, lang, url, title, description, keywords, alternates, ogType, graph }) {
+function composeHead({ site, lang, url, title, description, keywords, alternates, ogType, graph, robots = null }) {
   // La carte de partage suit la VITRINE, pas la langue ni la vue (voir
   // `ogImage` dans sites.config.js).
   const image = `${site.host}${site.ogImage}`
@@ -163,6 +163,7 @@ function composeHead({ site, lang, url, title, description, keywords, alternates
   const lines = [
     `<meta name="description" content="${attr(description)}" />`,
     ...(keywords ? [`<meta name="keywords" content="${attr(keywords)}" />`] : []),
+    ...(robots ? [`<meta name="robots" content="${attr(robots)}" />`] : []),
     `<title>${attr(title)}</title>`,
     `<link rel="canonical" href="${url}" />`,
     '',
@@ -275,7 +276,7 @@ export function headFor({ siteId, lang, view = 'home' }) {
 // Mêmes balises que les vues, via composeHead ; ce qui change : le hreflang
 // (langues présentes ce jour-là, voir brief-links.mjs), og:type article et un
 // NewsArticle qui cite les URL sources.
-export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate }) {
+export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, robots = null }) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   const s = BRIEF_STRINGS[lang]
@@ -294,6 +295,8 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate }
       description,
       url,
       mainEntityOfPage: url,
+      image: `${site.host}${site.ogImage}`,
+      author: { '@id': `${site.host}/#organization` },
       datePublished: brief.generatedAt,
       inLanguage: lang,
       isAccessibleForFree: true,
@@ -306,6 +309,7 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate }
     alternates: briefAlternates(date, byDate),
     ogType: date ? 'article' : 'website',
     graph,
+    robots,
   })
 }
 

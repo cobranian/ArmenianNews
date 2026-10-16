@@ -13,6 +13,7 @@ import path from 'node:path'
 import { ALL_LANGS, briefPath, pathFor, langPath, siteOf } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
+import { RUBRICS } from '../../src/rubrics.js'
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
 import { briefHeadFor, beaconTag, gaTag } from './site-meta.mjs'
 import { briefLangsByDate, longDate } from './brief-links.mjs'
@@ -21,6 +22,29 @@ const esc = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 const DATE_FILE = /^(\d{4}-\d{2}-\d{2})\.json$/
+
+const nonEmpty = (v) => typeof v === 'string' && v.trim() !== ''
+
+// Valide EN PROFONDEUR et renvoie la brève nettoyée (ou lève). Le JSON peut
+// avoir été édité à la main : un sujet sans `sources` ferait lever le rendu et
+// le JSON-LD, donc tout le build, donc le déploiement horaire.
+function cleanBrief(b, lang, date) {
+  if (!b || b.date !== date || b.lang !== lang || !Array.isArray(b.topics))
+    throw new Error('contenu incohérent')
+  if (typeof b.generatedAt !== 'string' || Number.isNaN(Date.parse(b.generatedAt)))
+    throw new Error('generatedAt absent ou illisible')
+  const topics = []
+  for (const t of b.topics) {
+    if (!nonEmpty(t?.title) || !nonEmpty(t?.text) || !Array.isArray(t.sources)) continue
+    const sources = t.sources.filter(
+      (x) => typeof x?.url === 'string' && /^https?:\/\//.test(x.url) && typeof x.source === 'string',
+    )
+    if (!sources.length) continue
+    topics.push({ ...t, rubric: RUBRICS.includes(t.rubric) ? t.rubric : null, sources })
+  }
+  if (!topics.length) throw new Error('aucun sujet valide')
+  return { ...b, topics }
+}
 
 // Toutes les brèves, par langue, la plus récente d'abord. Un fichier illisible
 // ou dont la date ne correspond pas à son nom est IGNORÉ avec un avertissement :
@@ -38,9 +62,7 @@ export async function loadBriefs(dir, log = console) {
       const m = f.match(DATE_FILE)
       if (!m) continue
       try {
-        const b = JSON.parse(await readFile(path.join(dir, lang, f), 'utf-8'))
-        if (b.date !== m[1] || b.lang !== lang || !Array.isArray(b.topics) || !b.topics.length)
-          throw new Error('contenu incohérent')
+        const b = cleanBrief(JSON.parse(await readFile(path.join(dir, lang, f), 'utf-8')), lang, m[1])
         out[lang].push(b)
       } catch (err) {
         log.warn(`  ⚠ brève ${lang}/${f} ignorée : ${err.message}`)
@@ -125,7 +147,8 @@ function topicsHtml(lang, brief) {
   const s = BRIEF_STRINGS[lang]
   return brief.topics
     .map((t) => {
-      const rubric = t.rubric ? `<span class="brief__rubric">${esc(RUBRIC_LABELS[lang][t.rubric])}</span>` : ''
+      const label = t.rubric ? RUBRIC_LABELS[lang]?.[t.rubric] : null
+      const rubric = label ? `<span class="brief__rubric">${esc(label)}</span>` : ''
       return `        <li class="brief__topic">
           ${rubric}
           <h2 class="brief__topic-title">${esc(t.title)}</h2>
@@ -184,7 +207,7 @@ ${briefBlock(lang, latest)}
       <h1 class="brief__date">${esc(s.title)}</h1>
       <p class="brief__intro">${esc(s.empty)}</p>
     </main>`
-  const head = briefHeadFor({ siteId, lang, byDate })
+  const head = briefHeadFor({ siteId, lang, byDate, robots: latest ? null : 'noindex, follow' })
   return shell({ siteId, lang, head, cssHref, body })
 }
 

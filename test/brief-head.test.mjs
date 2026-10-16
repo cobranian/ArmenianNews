@@ -57,6 +57,8 @@ test('briefHeadFor : page datée', () => {
   assert.ok(!h.includes('hreflang="en"'))
   assert.ok(h.includes('<meta property="og:type" content="article" />'))
   assert.ok(h.includes('"@type":"NewsArticle"'))
+  assert.ok(h.includes('"image":"https://armenianews.org/og-image-org.jpg"'))
+  assert.ok(h.includes('"author":{"@id":"https://armenianews.org/#organization"}'))
   assert.ok(h.includes('"citation":["https://a/1"]'))
   assert.ok(h.includes('content="Intro hy"'))
 })

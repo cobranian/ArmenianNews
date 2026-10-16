@@ -150,3 +150,9 @@ test('generateBriefs : réponse invalide ou réseau en échec → rien écrit, n
   assert.ok(warns.some((w) => /✗ brief\/fr: HTTP 429/.test(w)))
   assert.ok(warns.every((w) => !w.includes('Bearer')))
 })
+
+test('parseBrief : la rubrique est normalisée (casse, diacritiques)', () => {
+  const b = parseBrief(JSON.stringify({ intro: 'i', topics: [topic([1], { rubric: 'Économie' }), topic([2], { rubric: ' POLITIQUE ' }), topic([3])] }), articles)
+  assert.equal(b.topics[0].rubric, 'economie')
+  assert.equal(b.topics[1].rubric, 'politique')
+})

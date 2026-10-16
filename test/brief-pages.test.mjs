@@ -123,3 +123,77 @@ test('sitemap : index des quatre langues, pages datées existantes seulement', (
   // Sans brèves : les entrées d'index existent quand même.
   assert.ok(sitemapFor('ch', '2026-10-16T05:00:00Z').includes(`<loc>${briefUrl('fr')}</loc>`))
 })
+
+// --- Validation profonde : une brève corrompue à la main ne casse jamais le build.
+async function loadFrom(files) {
+  const dir = await mkdtemp(path.join(tmpdir(), 'briefs-'))
+  await mkdir(path.join(dir, 'fr'))
+  for (const [name, obj] of Object.entries(files))
+    await writeFile(path.join(dir, 'fr', name), JSON.stringify(obj))
+  const warns = []
+  const got = await loadBriefs(dir, { warn: (m) => warns.push(m) })
+  return { got, warns }
+}
+const goodTopic = { title: 'Bon', text: 'ok', rubric: 'politique', sources: [{ source: 'armenpress', url: 'https://a/1', title: 'A' }] }
+
+test('loadBriefs : un sujet sans sources est retiré, le reste charge', async () => {
+  const { got, warns } = await loadFrom({
+    '2026-10-16.json': b('fr', '2026-10-16', { topics: [{ title: 'X', text: 'y', rubric: null }, goodTopic] }),
+  })
+  assert.equal(got.fr.length, 1)
+  assert.equal(got.fr[0].topics.length, 1)
+  assert.equal(warns.length, 0)
+})
+
+test('loadBriefs : seul sujet sans sources → fichier ignoré avec avertissement', async () => {
+  const { got, warns } = await loadFrom({
+    '2026-10-16.json': b('fr', '2026-10-16', { topics: [{ title: 'X', text: 'y', rubric: null }] }),
+  })
+  assert.equal(got.fr.length, 0)
+  assert.equal(warns.length, 1)
+})
+
+test('loadBriefs : generatedAt absent ou illisible → ignoré avec avertissement', async () => {
+  const noDate = b('fr', '2026-10-16'); delete noDate.generatedAt
+  const { got, warns } = await loadFrom({
+    '2026-10-16.json': noDate,
+    '2026-10-15.json': b('fr', '2026-10-15', { generatedAt: 'pas une date' }),
+  })
+  assert.equal(got.fr.length, 0)
+  assert.equal(warns.length, 2)
+})
+
+test('loadBriefs : URL non http(s) retirée, rubrique inconnue → null, build sans "undefined"', async () => {
+  const bad = { title: 'Mauvais', text: 't', rubric: 'météo', sources: [
+    { source: 'armenpress', url: 'javascript:alert(1)', title: 'J' },
+    { source: 'civilnet', url: 'https://b/2', title: 'B' },
+  ] }
+  const onlyBad = { title: 'Pire', text: 't', rubric: null, sources: [{ source: 'armenpress', url: 'javascript:alert(1)', title: 'J' }] }
+  const { got } = await loadFrom({
+    '2026-10-16.json': b('fr', '2026-10-16', { topics: [bad, onlyBad] }),
+  })
+  assert.equal(got.fr[0].topics.length, 1)
+  assert.deepEqual(got.fr[0].topics[0].sources.map((x) => x.url), ['https://b/2'])
+  assert.equal(got.fr[0].topics[0].rubric, null)
+  const briefs = { fr: got.fr, en: [], hy: [], ru: [] }
+  const dist = await mkdtemp(path.join(tmpdir(), 'dist-'))
+  await writeBriefPages(SITES.ch, dist, briefs, CSS)
+  const html = await readFile(path.join(dist, 'breve', '2026-10-16', 'index.html'), 'utf-8')
+  assert.ok(!html.includes('javascript:'))
+  assert.ok(!html.includes('undefined'))
+  assert.ok(!sitemapFor('ch', '2026-10-16T05:00:00Z', briefs).includes('undefined'))
+})
+
+test('topicsHtml : rubrique sans libellé → pas de pastille', () => {
+  const brief = b('fr', '2026-10-16', { topics: [{ ...goodTopic, rubric: 'inconnue' }] })
+  const html = briefPageHtml({ siteId: 'ch', lang: 'fr', brief, list: [brief], byDate: briefLangsByDate({ fr: [brief] }), cssHref: CSS })
+  assert.ok(!html.includes('brief__rubric'))
+})
+
+test('index vide : noindex, follow ; index rempli : pas de robots', () => {
+  const empty = briefIndexHtml({ siteId: 'ch', lang: 'fr', list: [], byDate: new Map(), cssHref: CSS })
+  assert.ok(empty.includes('<meta name="robots" content="noindex, follow" />'))
+  const list = [b('fr', '2026-10-16')]
+  const full = briefIndexHtml({ siteId: 'ch', lang: 'fr', list, byDate: briefLangsByDate({ fr: list }), cssHref: CSS })
+  assert.ok(!full.includes('name="robots"'))
+})
