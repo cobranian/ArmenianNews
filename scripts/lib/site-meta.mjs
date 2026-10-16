@@ -229,8 +229,7 @@ function composeHead({ site, lang, url, title, description, keywords, alternates
 
   const body = lines.map((l) => (l ? `    ${l}` : '')).join('\n')
   return `    ${META_START}\n${body}\n    ${META_END}`
-}
-
+}
 
 export function headFor({ siteId, lang, view = 'home' }) {
   const site = SITES[siteId]

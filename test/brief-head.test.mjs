@@ -6,6 +6,7 @@ import { briefHeadFor, headFor } from '../scripts/lib/site-meta.mjs'
 import { briefUrl } from '../sites.config.js'
 
 const HEAD_SNAPSHOT = readFileSync(new URL('./fixtures/head-ch-fr-radio.txt', import.meta.url), 'utf-8')
+  .replace(/\r\n/g, '\n')
 
 const b = (lang, date, extra = {}) => ({
   date, lang, generatedAt: `${date}T03:23:00Z`, model: 'm', intro: `Intro ${lang}`,
@@ -72,6 +73,12 @@ test('briefHeadFor échappe < dans le JSON-LD', () => {
   const evil = b('fr', '2026-10-16', { intro: '</script><script>alert(1)</script>' })
   const h = briefHeadFor({ siteId: 'ch', lang: 'fr', date: '2026-10-16', brief: evil, byDate: briefLangsByDate({ fr: [evil] }) })
   assert.ok(!h.includes('</script><script>'))
+})
+
+test('briefHeadFor échappe " et & dans la description', () => {
+  const odd = b('fr', '2026-10-16', { intro: 'Le "oui" & le non' })
+  const h = briefHeadFor({ siteId: 'ch', lang: 'fr', date: '2026-10-16', brief: odd, byDate: briefLangsByDate({ fr: [odd] }) })
+  assert.ok(h.includes('<meta name="description" content="Le &quot;oui&quot; &amp; le non" />'))
 })
 
 test('headFor inchangé par la factorisation', () => {
