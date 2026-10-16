@@ -10,6 +10,7 @@
  * Toute panne du modèle lève : pas de PR, relance manuelle.
  */
 import { readFile, writeFile, mkdir, appendFile, access } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
@@ -31,7 +32,7 @@ const { values } = parseArgs({
   options: {
     topic: { type: 'string' },
     'open-branches': { type: 'string' },
-    'out-body': { type: 'string', default: path.join(root, 'culture-body.md') },
+    'out-body': { type: 'string', default: path.join(tmpdir(), 'culture-body.md') },
     dry: { type: 'boolean', default: false },
   },
 })

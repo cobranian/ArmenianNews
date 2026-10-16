@@ -54,6 +54,17 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data/culture
           git diff --cached --quiet || git commit -m "Culture : traductions de « $SLUG »"
+          # Un relecteur a pu pousser pendant la traduction : sans rebase, le
+          # push est refusé et bash -e abandonne l'étape avant le statut.
+          if ! git pull --rebase origin "$BRANCH"; then
+            git rebase --abort || true
+            gh pr edit "$PR" --remove-label traduire || true
+            gh pr comment "$PR" --body "La branche a changé pendant la traduction et le rebase a échoué : relancez la traduction en reposant l'étiquette « traduire »." || true
+            # Le statut va sur la tête DISTANTE : le commit local n'a pas été poussé.
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse "origin/$BRANCH")" \
+              -f state=failure -f context=culture-check -f description="Traduction à relancer : la branche a changé pendant la traduction" || true
+            exit 1
+          fi
           git push origin "HEAD:$BRANCH"
           gh pr edit "$PR" --remove-label traduire || true
           [ -f "$RUNNER_TEMP/summary.md" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/summary.md"

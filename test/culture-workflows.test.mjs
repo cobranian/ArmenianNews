@@ -18,6 +18,18 @@ for (const f of FILES) {
   })
 }
 
+test('traduction : rebase avant le push (un relecteur a pu pousser entre-temps)', async () => {
+  const y = await read('articles-translate.yml')
+  assert.match(y, /pull --rebase origin "\$BRANCH"/)
+  assert.ok(y.indexOf('pull --rebase') < y.indexOf('git push origin "HEAD:$BRANCH"'), 'rebase avant le push')
+  assert.match(y, /rebase --abort/)
+})
+
+test('culture-draft : --out-body par défaut hors du dépôt', async () => {
+  const src = await readFile(new URL('../scripts/culture-draft.mjs', import.meta.url), 'utf-8')
+  assert.match(src, /'out-body': \{ type: 'string', default: path\.join\(tmpdir\(\), 'culture-body\.md'\) \}/)
+})
+
 test('les robots publient le statut culture-check eux-mêmes', async () => {
   for (const f of ['articles.yml', 'articles-translate.yml']) assert.match(await read(f), /statuses\/.*context=culture-check/s, f)
 })
