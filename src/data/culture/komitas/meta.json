@@ -1,0 +1,67 @@
+{
+  "slug": "komitas",
+  "sources": [
+    {
+      "lang": "fr",
+      "title": "Komitas",
+      "url": "https://fr.wikipedia.org/wiki/Komitas",
+      "revision": 238737888
+    },
+    {
+      "lang": "en",
+      "title": "Komitas",
+      "url": "https://en.wikipedia.org/wiki/Komitas",
+      "revision": 1376475560
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:The Soviet Union 1969 CPA 3799 stamp (Komitas and Rural Scene).jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/The_Soviet_Union_1969_CPA_3799_stamp_%28Komitas_and_Rural_Scene%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1709,
+      "height": 1236,
+      "mime": "image/jpeg",
+      "author": "USSR Post",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:The_Soviet_Union_1969_CPA_3799_stamp_(Komitas_and_Rural_Scene).jpg"
+    },
+    {
+      "file": "File:Komitas sculpture in Komitas park, Yerevan (1).jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Komitas_sculpture_in_Komitas_park%2C_Yerevan_%281%29.jpg/1920px-Komitas_sculpture_in_Komitas_park%2C_Yerevan_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3732,
+      "height": 2041,
+      "mime": "image/jpeg",
+      "author": "Armineaghayan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Komitas_sculpture_in_Komitas_park,_Yerevan_(1).jpg"
+    },
+    {
+      "file": "File:Statue of Komitas Vardapet (fragment).jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Statue_of_Komitas_Vardapet_%28fragment%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1882,
+      "height": 2825,
+      "mime": "image/jpeg",
+      "author": "Tony Bowden",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Komitas_Vardapet_(fragment).jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:The Soviet Union 1969 CPA 3799 stamp (Komitas and Rural Scene).jpg",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/The_Soviet_Union_1969_CPA_3799_stamp_%28Komitas_and_Rural_Scene%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 868,
+    "mime": "image/jpeg",
+    "author": "USSR Post",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:The_Soviet_Union_1969_CPA_3799_stamp_(Komitas_and_Rural_Scene).jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0.002,
+  "model": "gemini-flash-latest"
+}
