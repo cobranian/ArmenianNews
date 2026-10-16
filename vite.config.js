@@ -9,6 +9,8 @@ import { evenementComplet, eventLd } from './src/agendaEvents.js'
 import { SITES, primaryLang } from './sites.config.js'
 import { accountsOnly, newsForLangs } from './scripts/lib/light-data.mjs'
 import { TAB_ORDER } from './src/newsSources.js'
+import { loadCulture } from './scripts/lib/culture-load.mjs'
+import { teaserFor } from './scripts/lib/culture-links.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -105,7 +107,27 @@ function lightData() {
   }
 }
 
+// Le bloc « À lire » de l'accueil : les 3 derniers articles Culture de chaque
+// langue de CETTE vitrine — titres et descriptions seulement, comme
+// lightData() n'embarque que les langues servies. Les avertissements d'un
+// article invalide sont déjà écrits par build-sites.mjs : ici, silence.
+function cultureTeaser() {
+  const ID = 'virtual:culture-teaser'
+  const langs = SITES[SITE_ID].pages.map((p) => p.lang)
+  return {
+    name: 'culture-teaser',
+    resolveId(id) {
+      return id === ID ? `\0${ID}` : null
+    },
+    async load(id) {
+      if (id !== `\0${ID}`) return null
+      const articles = await loadCulture(join(__dirname, 'src/data/culture'), { warn: () => {} })
+      return `export default ${JSON.stringify(teaserFor(articles, langs))}`
+    },
+  }
+}
+
 export default defineConfig({
   base,
-  plugins: [react(), lightData(), siteMeta(), agendaEventsJsonLd()],
+  plugins: [react(), lightData(), cultureTeaser(), siteMeta(), agendaEventsJsonLd()],
 })
