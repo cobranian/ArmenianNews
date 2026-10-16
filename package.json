@@ -13,6 +13,7 @@
     "lint": "eslint .",
     "test": "node --test test/*.mjs",
     "check": "node scripts/check-build.mjs",
+    "culture:draft": "node --env-file-if-exists=.env scripts/culture-draft.mjs",
     "scrape": "node --env-file-if-exists=.env scripts/scrape.mjs",
     "brief": "node scripts/brief.mjs",
     "ig-scrape": "node scripts/ig-scrape.mjs",
