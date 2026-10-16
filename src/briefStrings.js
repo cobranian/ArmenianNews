@@ -20,6 +20,8 @@ export const BRIEF_STRINGS = {
     disclaimer: 'Synthèse automatique des titres du jour — lisez les articles d’origine.',
     empty: 'La première brève paraîtra demain matin.',
     home: 'Accueil',
+    radio: 'En direct',
+    agenda: 'Agenda',
   },
   en: {
     title: 'The daily brief',
@@ -35,6 +37,8 @@ export const BRIEF_STRINGS = {
     disclaimer: 'Automated summary of the day’s headlines — read the original articles.',
     empty: 'The first brief will appear tomorrow morning.',
     home: 'Home',
+    radio: 'Live',
+    agenda: 'Events',
   },
   hy: {
     title: 'Օրվա ամփոփում',
@@ -50,6 +54,8 @@ export const BRIEF_STRINGS = {
     disclaimer: 'Օրվա վերնագրերի ավտոմատ ամփոփում․ կարդացեք բնօրինակ հոդվածները։',
     empty: 'Առաջին ամփոփումը կհրապարակվի վաղը առավոտյան։',
     home: 'Գլխավոր էջ',
+    radio: 'Ուղիղ',
+    agenda: 'Միջոցառումներ',
   },
   ru: {
     title: 'Сводка дня',
@@ -65,5 +71,7 @@ export const BRIEF_STRINGS = {
     disclaimer: 'Автоматическая сводка заголовков дня — читайте оригинальные статьи.',
     empty: 'Первая сводка появится завтра утром.',
     home: 'Главная',
+    radio: 'В эфире',
+    agenda: 'Афиша',
   },
 }

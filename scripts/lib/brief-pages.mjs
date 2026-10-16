@@ -14,7 +14,6 @@ import { ALL_LANGS, briefPath, pathFor, langPath, siteOf } from '../../sites.con
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
-import { VIEW_SEO } from '../../src/seo.js'
 import { briefHeadFor, beaconTag, gaTag } from './site-meta.mjs'
 import { briefLangsByDate, longDate } from './brief-links.mjs'
 
@@ -62,9 +61,9 @@ function shell({ siteId, lang, head, cssHref, body }) {
   const s = BRIEF_STRINGS[lang]
   const nav = [
     [langPath(siteId, lang), s.home],
-    [pathFor(lang, 'radio'), VIEW_SEO.radio[lang].title],
-    [pathFor(lang, 'agenda'), VIEW_SEO.agenda[lang].title],
-    [briefPath(lang), s.title],
+    [pathFor(lang, 'radio'), s.radio],
+    [pathFor(lang, 'agenda'), s.agenda],
+    [briefPath(lang), s.nav],
   ]
     .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`)
     .join('')

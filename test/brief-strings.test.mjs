@@ -17,3 +17,15 @@ test('la marque visible concorde avec site.title d’i18n.jsx', async () => {
   // Les blocs STRINGS d'i18n.jsx sont dans l'ordre fr, en, hy, ru.
   ALL_LANGS.forEach((l, i) => assert.equal(BRIEF_STRINGS[l].brand, titles[i], l))
 })
+
+test('radio et agenda concordent avec nav.radio / nav.agenda d’i18n.jsx', async () => {
+  const src = await readFile(new URL('../src/i18n.jsx', import.meta.url), 'utf-8')
+  const radio = [...src.matchAll(/'nav\.radio':\s*'([^']+)'/g)].map((m) => m[1])
+  const agenda = [...src.matchAll(/'nav\.agenda':\s*'([^']+)'/g)].map((m) => m[1])
+  assert.equal(radio.length, ALL_LANGS.length)
+  assert.equal(agenda.length, ALL_LANGS.length)
+  ALL_LANGS.forEach((l, i) => {
+    assert.equal(BRIEF_STRINGS[l].radio, radio[i], `${l}.radio`)
+    assert.equal(BRIEF_STRINGS[l].agenda, agenda[i], `${l}.agenda`)
+  })
+})
