@@ -233,6 +233,16 @@ html {
   scroll-padding-top: 96px;
   background: var(--basalt);
 }
+/* Juste au-dessus de la bascule du burger (760px), les liens de la nav passent
+   sur deux ou trois rangs : barre de 109px en fr à 761–780px, 109 à 139px en
+   hy à 761–800px (mesuré le 16 octobre 2026, lien Culture compris). Avec 96px,
+   une ancre (#agenda) atterrissait SOUS la barre collante. Dès 820px la barre
+   ne dépasse plus 79px dans aucune langue ; 840px laisse une marge. */
+@media (min-width: 761px) and (max-width: 840px) {
+  html {
+    scroll-padding-top: 160px;
+  }
+}
 
 body {
   margin: 0;
