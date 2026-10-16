@@ -6,10 +6,12 @@
 // quatre pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
 import { readFileSync } from 'node:fs'
-import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl } from '../../sites.config.js'
+import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath } from '../../sites.config.js'
 import { SEO, VIEW_SEO, OG_LOCALE } from '../../src/seo.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
+import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { briefAlternates, longDate } from './brief-links.mjs'
+import { cultureAlternates } from './culture-links.mjs'
 
 // Le manifeste des polices auto-hébergées, écrit par `npm run fonts-sync`
 // (scripts/fonts-sync.mjs) : un fichier par entrée, avec famille, style,
@@ -155,10 +157,12 @@ const ldScript = (graph) =>
 // varie est passé en paramètres ; le reste (préchargements, Search Console,
 // bloc Open Graph de six balises pour l'image, Twitter, JSON-LD) est écrit
 // UNE fois — la brève ne doit pas devenir une seconde copie à tenir à jour.
-function composeHead({ site, lang, url, title, description, keywords, alternates, ogType, graph, robots = null }) {
+function composeHead({ site, lang, url, title, description, keywords, alternates, ogType, graph, robots = null, ogImage = null }) {
   // La carte de partage suit la VITRINE, pas la langue ni la vue (voir
-  // `ogImage` dans sites.config.js).
-  const image = `${site.host}${site.ogImage}`
+  // `ogImage` dans sites.config.js) — sauf un article Culture, qui porte la sienne
+  // (1200×630, sRGB, sans ICC, produite par culture-image.mjs : les six balises
+  // ci-dessous restent vraies).
+  const image = ogImage ?? `${site.host}${site.ogImage}`
 
   const lines = [
     `<meta name="description" content="${attr(description)}" />`,
@@ -310,6 +314,49 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
     ogType: date ? 'article' : 'website',
     graph,
     robots,
+  })
+}
+
+// L'en-tête d'une page Culture : l'index (`slug` null) ou un article. Mêmes
+// balises que les vues et la brève, via composeHead ; hreflang limité aux
+// langues présentes pour cet article (culture-links.mjs), og:type article,
+// carte de partage propre à l'article quand il a une image.
+export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySlug, robots = null }) {
+  const site = SITES[siteId]
+  if (!site) throw new Error(`site inconnu : ${siteId}`)
+  const s = CULTURE_STRINGS[lang]
+  if (!s) throw new Error(`pas de chaînes Culture en ${lang}`)
+  const url = cultureUrl(lang, slug)
+  const a = slug ? article?.langs?.[lang] : null
+  if (slug && !a) throw new Error(`article ${slug} absent en ${lang}`)
+  const title = a ? `${a.title} · ${site.brand}` : `${s.title} · ${site.brand}`
+  const description = a ? a.description : s.description
+  const ogImage = a && article.image ? `${site.host}${cultureImagePath(slug, 'jpg')}` : null
+  const graph = siteGraph(site, lang)
+  if (a) {
+    graph.push({
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: a.title,
+      description,
+      url,
+      mainEntityOfPage: url,
+      image: ogImage ?? `${site.host}${site.ogImage}`,
+      author: { '@id': `${site.host}/#organization` },
+      publisher: { '@id': `${site.host}/#organization` },
+      datePublished: a.date,
+      inLanguage: lang,
+      isAccessibleForFree: true,
+      citation: article.sources.map((x) => x.url),
+    })
+  }
+  return composeHead({
+    site, lang, url, title, description,
+    alternates: cultureAlternates(slug, bySlug),
+    ogType: a ? 'article' : 'website',
+    graph,
+    robots,
+    ogImage,
   })
 }
 
