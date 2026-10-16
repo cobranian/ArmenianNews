@@ -1,0 +1,56 @@
+{
+  "slug": "kochari",
+  "sources": [
+    {
+      "lang": "fr",
+      "title": "Kochari",
+      "url": "https://fr.wikipedia.org/wiki/Kochari",
+      "revision": 238750799
+    },
+    {
+      "lang": "en",
+      "title": "Kochari",
+      "url": "https://en.wikipedia.org/wiki/Kochari",
+      "revision": 1360629671
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Egyptian food Koshary.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Egyptian_food_Koshary.jpg/1920px-Egyptian_food_Koshary.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3031,
+      "height": 2101,
+      "mime": "image/jpeg",
+      "author": "Dina Said",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Egyptian_food_Koshary.jpg"
+    },
+    {
+      "file": "File:Kochari - Armenian folk dance.png",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kochari_-_Armenian_folk_dance.png/1920px-Kochari_-_Armenian_folk_dance.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2136,
+      "height": 1443,
+      "mime": "image/png",
+      "author": "Hayordi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Kochari_-_Armenian_folk_dance.png"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Egyptian food Koshary.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Egyptian_food_Koshary.jpg/1920px-Egyptian_food_Koshary.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 832,
+    "mime": "image/jpeg",
+    "author": "Dina Said",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Egyptian_food_Koshary.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0.013,
+  "model": "gemini-flash-latest"
+}
