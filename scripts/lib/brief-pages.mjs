@@ -10,16 +10,14 @@
  */
 import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { ALL_LANGS, briefPath, pathFor, langPath, siteOf } from '../../sites.config.js'
+import { ALL_LANGS, briefPath, siteOf } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
 import { RUBRICS } from '../../src/rubrics.js'
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
-import { briefHeadFor, beaconTag, gaTag } from './site-meta.mjs'
+import { briefHeadFor } from './site-meta.mjs'
 import { briefLangsByDate, longDate } from './brief-links.mjs'
-
-const esc = (s) =>
-  String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+import { esc, pageShell } from './static-shell.mjs'
 
 const DATE_FILE = /^(\d{4}-\d{2}-\d{2})\.json$/
 
@@ -77,44 +75,6 @@ export function cssHrefFrom(html) {
   const m = html.match(/<link[^>]+rel="stylesheet"[^>]+href="(\/assets\/[^"]+\.css)"/)
   if (!m) throw new Error('feuille CSS de Vite introuvable dans index.html — build incomplet')
   return m[1]
-}
-
-function shell({ siteId, lang, head, cssHref, body }) {
-  const s = BRIEF_STRINGS[lang]
-  const nav = [
-    [langPath(siteId, lang), s.home],
-    [pathFor(lang, 'radio'), s.radio],
-    [pathFor(lang, 'agenda'), s.agenda],
-    [briefPath(lang), s.nav],
-  ]
-    .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`)
-    .join('')
-  return `<!doctype html>
-<html lang="${lang}">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#100f0d" />
-    ${head}
-    ${gaTag(siteId)}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <script src="/theme-init.js"></script>
-    <link rel="stylesheet" href="${cssHref}">
-  </head>
-  <body class="brief-body">
-    <header class="brief-nav">
-      <div class="container brief-nav__inner">
-        <a class="brief-nav__brand" href="${langPath(siteId, lang)}">${esc(s.brand)}</a>
-        <nav class="brief-nav__links">${nav}</nav>
-      </div>
-    </header>
-${body}
-    ${beaconTag(siteId)}
-  </body>
-</html>
-`
 }
 
 // Les sources d'un sujet, groupées par rédaction : le modèle cite souvent
@@ -185,7 +145,7 @@ ${briefBlock(lang, brief)}
       <nav class="brief__pager">${pager}</nav>
     </main>`
   const head = briefHeadFor({ siteId, lang, date: brief.date, brief, byDate })
-  return shell({ siteId, lang, head, cssHref, body })
+  return pageShell({ siteId, lang, head, cssHref, body })
 }
 
 export function briefIndexHtml({ siteId, lang, list, byDate, cssHref }) {
@@ -208,7 +168,7 @@ ${briefBlock(lang, latest)}
       <p class="brief__intro">${esc(s.empty)}</p>
     </main>`
   const head = briefHeadFor({ siteId, lang, byDate, robots: latest ? null : 'noindex, follow' })
-  return shell({ siteId, lang, head, cssHref, body })
+  return pageShell({ siteId, lang, head, cssHref, body })
 }
 
 // Les pages d'UNE vitrine : seulement ses langues (sites.config.js). Le .ch

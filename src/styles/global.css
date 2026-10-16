@@ -3978,3 +3978,176 @@ html:lang(hy) .nav__brand {
     min-height: 44px;
   }
 }
+
+/* === Culture (pages statiques, scripts/lib/culture-pages.mjs, et bloc
+   « À lire » de l'accueil, CultureTeaser.jsx) ===
+   Convention du fichier : chaque font-family est suivie de son
+   font-size-adjust. */
+.culture {
+  max-width: 46rem;
+  padding-block: 40px 64px;
+}
+.culture__kicker {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.culture__kicker a {
+  color: var(--apricot-ink);
+  text-decoration: none;
+}
+.culture__title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0.2em 0 0.3em;
+  text-wrap: balance;
+}
+.culture__date,
+.culture__credit,
+.culture__sources,
+.culture__event {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+.culture__intro {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0 0 2em;
+}
+.culture__figure {
+  margin: 1.6em 0;
+}
+.culture__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.culture__figure--motif {
+  aspect-ratio: 1200 / 630;
+  border: 1px solid var(--line);
+  background: repeating-linear-gradient(45deg, var(--line) 0 1px, transparent 1px 14px);
+}
+.culture__credit {
+  margin-top: 0.5em;
+}
+.culture__body {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+.culture__body h2,
+.culture__body h3,
+.culture__sources h2,
+.culture__more h2 {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  line-height: 1.25;
+  margin: 1.6em 0 0.5em;
+}
+.culture__body h2 {
+  font-size: 1.45rem;
+}
+.culture__body h3,
+.culture__sources h2,
+.culture__more h2 {
+  font-size: 1.2rem;
+}
+.culture__body a,
+.culture__credit a,
+.culture__sources a,
+.culture__event a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-apricot);
+}
+.culture__body a:hover,
+.culture__credit a:hover,
+.culture__sources a:hover,
+.culture__event a:hover {
+  color: var(--apricot-ink);
+}
+.culture__event {
+  margin: 2em 0;
+  padding: 1em;
+  border: 1px solid var(--line-apricot);
+}
+.culture__sources {
+  margin-top: 2.4em;
+  border-top: 1px solid var(--line);
+}
+.culture__sources ul {
+  padding-left: 1.2em;
+}
+.culture-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+.culture-card a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  height: 100%;
+  padding: 1em;
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+.culture-card a:hover,
+.culture-card a:focus-visible {
+  border-color: var(--line-apricot);
+}
+.culture-card__title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+.culture-card__desc {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+.culture-teaser {
+  padding-block: 48px;
+}
+.culture-teaser__title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 0 0 0.8em;
+}
+.culture-teaser__all {
+  display: inline-block;
+  margin-top: 1.2em;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+  text-decoration: none;
+}
+@media (pointer: coarse) {
+  .culture-teaser__all {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
