@@ -19,9 +19,11 @@
 import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang } from '../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath } from '../sites.config.js'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
 import { agendaGuardChecks } from './lib/agenda-guard.mjs'
+import { loadBriefs } from './lib/brief-pages.mjs'
+import { briefLangsByDate, briefAlternates } from './lib/brief-links.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
@@ -379,6 +381,36 @@ for (const site of Object.values(SITES)) {
     console.error(`✗ dist/${site.id}/robots.txt — absent`)
     bad++
   }
+}
+
+// Les brèves : chaque page attendue existe, dans sa langue, avec SON canonical,
+// un bloc hreflang exactement égal à briefAlternates (donc sans langue absente
+// ce jour-là), sans le domaine voisin, et listée dans le sitemap. Les liens de
+// nav sont rendus par React — non vérifiables ici avant le prérendu — et sont
+// gardés par test/brief-links-ui.test.mjs.
+{
+  const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
+  const byDate = briefLangsByDate(briefs)
+  for (const site of Object.values(SITES)) {
+    const other = Object.values(SITES).find((s) => s.id !== site.id).host
+    const sitemap = await readFile(path.join(root, 'dist', site.id, 'sitemap.xml'), 'utf-8').catch(() => '')
+    for (const { lang } of site.pages) {
+      for (const date of [null, ...(briefs[lang] ?? []).map((b) => b.date)]) {
+        const rel = path.join('dist', site.id, briefPath(lang, date).replace(/^\//, ''), 'index.html')
+        const html = await readFile(path.join(root, rel), 'utf-8').catch(() => null)
+        const fail = (why) => { console.error(`✗ ${rel} — ${why}`); bad++ }
+        if (!html) { fail('absent'); continue }
+        if (!html.includes(`<html lang="${lang}">`)) fail(`<html lang="${lang}"> manquant`)
+        if (!html.includes(`<link rel="canonical" href="${briefUrl(lang, date)}" />`)) fail('canonical')
+        const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
+        if (JSON.stringify(got) !== JSON.stringify(briefAlternates(date, byDate))) fail('hreflang')
+        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '')
+        if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
+        if (!sitemap.includes(`<loc>${briefUrl(lang, date)}</loc>`)) fail('absente du sitemap')
+      }
+    }
+  }
+  console.log('✓ pages de brève contrôlées')
 }
 
 if (bad) {

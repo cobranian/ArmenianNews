@@ -303,7 +303,7 @@ jobs:
       # slug jumeau de l'autre langue doit rediriger. Quelques essais espacés,
       # parce que le CDN met parfois une dizaine de secondes à servir la
       # nouvelle version.
-      - name: Sonder la production (404 francs, slugs jumeaux)
+      - name: Sonder la production (404 francs, slugs jumeaux, brève)
         run: |
           probe() {  # url, code attendu
             for i in 1 2 3 4; do
@@ -315,6 +315,8 @@ jobs:
             return 1
           }
           fail=0
+          probe "https://armenieinfo.ch/breve/" 200 || fail=1
+          probe "https://armenianews.org/brief/" 200 || fail=1
           probe "https://armenieinfo.ch/sonde-404-$GITHUB_RUN_ID/" 404 || fail=1
           probe "https://armenianews.org/sonde-404-$GITHUB_RUN_ID/" 404 || fail=1
           probe "https://armenieinfo.ch/events/" 301 || fail=1

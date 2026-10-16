@@ -1,17 +1,15 @@
-// La forme de news.json et l'ordre des sources par langue, lisibles par Node.
-//
-// Module JS PLAT, sans import JSON : le scraper (scripts/lib/brief-select.mjs)
-// doit lire TAB_ORDER, et src/newsSources.js importe news.json — Node refuse
-// un import JSON sans attribut. newsSources.js ré-exporte d'ici.
-
-// Quelle source paraît sous quelle langue, et où lire ses étagères.
+// Quelle source paraît sous quelle langue, et où lire ses étagères — et la
+// forme de news.json, lisibles par Node.
 //
 // Module JS **plat**, comme `src/seo.js`, `src/site.js`, `src/worldPlace.js`,
 // `src/hyDate.js` et `src/agendaEvents.js`, et pour la même raison : `News.jsx`
 // doit compter les sources visibles sans importer `NewsBrowser.jsx`, et ajouter
 // un export non-composant à un `.jsx` ferait passer le lint de 5 à 6
 // avertissements `react-refresh` (voir CLAUDE.md, section Lint). Ne le
-// reconsolidez pas dans `NewsBrowser.jsx`.
+// reconsolidez pas dans `NewsBrowser.jsx`. Sans import JSON : le scraper
+// (scripts/lib/brief-select.mjs) doit lire TAB_ORDER, et src/newsSources.js
+// importe news.json — Node refuse un import JSON sans attribut ;
+// newsSources.js ré-exporte d'ici.
 //
 // Il porte aussi la CONNAISSANCE DE LA FORME des données, en un seul endroit :
 // certaines sources sont indexées par langue dans `news.json`, les autres sont

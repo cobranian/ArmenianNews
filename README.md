@@ -263,6 +263,7 @@ from the other's benign no-op.
 npm install
 npm run scrape       # refresh src/data/{news,agenda,meta,instagram-feed}.json from the live sources
 npm run ig-scrape    # refresh the Instagram pool (local, logged-in Chrome — never in CI)
+npm run brief        # generate today's news brief outside the scrape (--force ignores the 7 h rule, --dry writes nothing)
 npm run ig-select    # re-draw instagram-feed.json from the current pool, no network involved
 npm run fb-scrape    # refresh the Don Narek wall (local, logged-in Chrome — never in CI; needs -- --connect)
 npm run dev          # http://localhost:5173/ — the .ch showcase, French
