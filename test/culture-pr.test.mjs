@@ -22,6 +22,8 @@ test('corps de PR : faits ⚠️ en tête, recouvrement, sources, images, mode d
   assert.match(body, /\[Concert\]\(https:\/\/e\/1\)/)
   assert.match(body, /gemini-flash-latest/)
   assert.match(body, /étiquette \*\*traduire\*\*/)
+  assert.match(body, /\*\*En dernier\*\*, cochez la case/)
+  assert.match(body, /fusionne et publie/)
   assert.equal(factsChecked(body), false)
   assert.equal(factsChecked(body.replace('- [ ] Faits vérifiés', '- [x] Faits vérifiés')), true)
 })

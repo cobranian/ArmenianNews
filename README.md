@@ -565,10 +565,10 @@ gh workflow run articles.yml        # un brouillon à la demande
 
 **Relire une PR**
 
-1. Corriger `fr.md` (onglet « Files changed », menu ⋯ → *Edit file*) : longueur, faits, ton.
-2. Cocher « Faits vérifiés » dans le corps de la PR (liste ⚠️ = points à vérifier d'abord).
-3. Poser l'étiquette **`traduire`** : en, hy et ru sont produits depuis le français relu. Retoucher `fr.md` ensuite périme les traductions : reposer l'étiquette.
-4. Fusionner quand le statut `culture-check` est vert. Il **ne bloque pas** la fusion : c'est au relecteur de le regarder.
+1. Corriger `fr.md` (onglet « Files changed », menu ⋯ → *Edit file*) : longueur, faits, ton (liste ⚠️ = points à vérifier d'abord).
+2. **En dernier**, cocher « Faits vérifiés » dans le corps de la PR. `articles-publish.yml` traduit alors en/hy/ru depuis le français relu, contrôle, **fusionne la PR et relance le déploiement** — l'article est en ligne 5 à 10 minutes plus tard. Cocher la case est donc un geste DÉFINITIF : une case cochée trop tôt publie le texte tel quel.
+
+Si le contrôle échoue, rien n'est publié et un commentaire dit pourquoi ; corriger puis enregistrer (ou décocher/recocher) relance. Une correction poussée alors que la case est déjà cochée relance aussi la publication. L'étiquette **`traduire`** reste disponible pour retraduire **sans** publier.
 
 **Fermer une PR sans la fusionner rejette le sujet pour de bon** :
 `articles-closed.yml` le passe `rejected` dans `sujets.json` sur `main`, et le

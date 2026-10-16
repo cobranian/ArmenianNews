@@ -1,0 +1,107 @@
+# Publication en un geste : quand le relecteur coche « Faits vérifiés » dans la
+# PR (ou pousse une correction alors que la case est déjà cochée), le robot
+# traduit si besoin, contrôle, FUSIONNE et relance le déploiement.
+#
+# Deux pièges GitHub, tous deux contournés ici :
+# - un commit poussé avec le GITHUB_TOKEN ne déclenche aucun autre workflow :
+#   ce job traduit, contrôle et publie le statut lui-même ;
+# - une fusion faite avec le GITHUB_TOKEN ne déclenche PAS le push sur main,
+#   donc pas le déploiement : on le lance explicitement (workflow_dispatch est
+#   la seule exception autorisée), sinon l'article attendrait l'heure suivante.
+#
+# La relecture humaine reste la condition : rien ne part tant que la case
+# n'est pas cochée. Cocher la case est donc le DERNIER geste.
+name: Culture — publication
+
+on:
+  pull_request:
+    types: [edited, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  actions: write
+
+concurrency:
+  group: culture-publish-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    if: >-
+      startsWith(github.head_ref, 'culture/') &&
+      github.event.pull_request.state == 'open' &&
+      (contains(github.event.pull_request.body, '- [x] Faits vérifiés') ||
+       contains(github.event.pull_request.body, '- [X] Faits vérifiés'))
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+      BRANCH: ${{ github.head_ref }}
+      BODY: ${{ github.event.pull_request.body }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Contrôler, traduire si besoin
+        id: prep
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+        run: |
+          SLUG="${BRANCH#culture/}"
+          printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
+          if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then
+            echo "Déjà conforme : pas de traduction."
+            exit 0
+          fi
+          cat "$RUNNER_TEMP/check.txt"
+          # Traductions absentes ou périmées (ou autre défaut) : on traduit le
+          # français ACTUEL. Une langue en échec n'arrête pas les autres.
+          node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md" || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/culture
+          git diff --cached --quiet || git commit -m "Culture : traductions de « $SLUG »"
+          if ! git pull --rebase origin "$BRANCH"; then
+            git rebase --abort || true
+            gh pr comment "$PR" --body "La branche a changé pendant la traduction : la publication reprendra au prochain enregistrement de la PR." || true
+            exit 1
+          fi
+          git push origin "HEAD:$BRANCH"
+          [ -f "$RUNNER_TEMP/summary.md" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/summary.md" || true
+
+      - name: Contrôle final, fusion, déploiement
+        run: |
+          SLUG="${BRANCH#culture/}"
+          SHA="$(git rev-parse HEAD)"
+          if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          cat "$RUNNER_TEMP/check.txt"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
+            -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"
+          if [ "$state" != success ]; then
+            {
+              echo "**Publication suspendue** — le contrôle a trouvé :"
+              echo
+              grep '^✗' "$RUNNER_TEMP/check.txt" | head -10 | sed 's/^/- /'
+              echo
+              echo "Corrigez puis enregistrez la PR (ou décochez et recochez « Faits vérifiés ») pour relancer."
+            } > "$RUNNER_TEMP/fail.md"
+            gh pr comment "$PR" --body-file "$RUNNER_TEMP/fail.md" || true
+            exit 1
+          fi
+          gh pr merge "$PR" --merge --match-head-commit "$SHA"
+          # Branche supprimée par l'API : « gh pr merge --delete-branch » voudrait
+          # basculer le clone local sur main, absent d'un checkout superficiel.
+          gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$BRANCH" || true
+          gh workflow run hourly.yml --ref main
+          gh pr comment "$PR" --body "✅ Fusionné : l'article sera en ligne sur armenieinfo.ch et armenianews.org dans 5 à 10 minutes (déploiement lancé)." || true

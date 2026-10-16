@@ -4,7 +4,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
-const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml']
+const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml']
 const read = (f) => readFile(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf-8')
 
 for (const f of FILES) {
