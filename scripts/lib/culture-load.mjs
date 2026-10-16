@@ -3,7 +3,7 @@
 import { readdir, readFile, access } from 'node:fs/promises'
 import path from 'node:path'
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
-import { validateArticle } from './culture-validate.mjs'
+import { validateArticle, TRANSLATED } from './culture-validate.mjs'
 
 export async function readArticle(dir, slug) {
   const base = path.join(dir, slug)
@@ -23,21 +23,46 @@ export async function readArticle(dir, slug) {
   return { slug, meta, texts, images: { webp: await has('image.webp'), jpg: await has('image.jpg') } }
 }
 
-export async function articleSlugs(dir) {
-  let entries = []
+async function dirNames(dir) {
   try {
-    entries = await readdir(dir, { withFileTypes: true })
+    const entries = await readdir(dir, { withFileTypes: true })
+    return entries.filter((e) => e.isDirectory()).map((e) => e.name).sort()
   } catch {
     return []
   }
-  return entries
-    .filter((e) => e.isDirectory() && CULTURE_SLUG.test(e.name))
-    .map((e) => e.name)
-    .sort()
+}
+
+export async function articleSlugs(dir) {
+  return (await dirNames(dir)).filter((n) => CULTURE_SLUG.test(n))
+}
+
+// Un dossier dont le nom n'est pas un slug (« Komitas/ ») n'est jamais publié :
+// sans ce signalement, l'article ne paraîtrait nulle part, sans un mot.
+export async function invalidDirs(dir) {
+  return (await dirNames(dir)).filter((n) => !CULTURE_SLUG.test(n))
+}
+
+export const invalidDirMessage = (name) => `culture/${name} : nom de dossier invalide (ignoré)`
+
+// Les traductions écartées par validateArticle (absentes, périmées, illisibles
+// ou porteuses d'un lien inventé) parmi les articles publiés. Le cas typique :
+// fr.md retouché directement sur main → empreinte périmée → en/hy/ru
+// disparaissent, et leurs URL déjà indexées répondent 404. Le build reste vert
+// (spec §3.5) mais doit le dire d'une ligne qu'on ne rate pas.
+export function unpublishedTranslations(articles) {
+  return articles.reduce((n, a) => n + TRANSLATED.filter((l) => !a.langs[l]).length, 0)
+}
+
+export function unpublishedLine(articles) {
+  const n = unpublishedTranslations(articles)
+  return n
+    ? `⚠ culture : ${n} traduction(s) non publiée(s) (périmées ou absentes) — voir les avertissements ci-dessus`
+    : null
 }
 
 export async function loadCulture(dir, log = console) {
   const out = []
+  for (const name of await invalidDirs(dir)) log.warn(`  ⚠ ${invalidDirMessage(name)}`)
   for (const slug of await articleSlugs(dir)) {
     const raw = await readArticle(dir, slug)
     const { errors, langs } = validateArticle(raw)

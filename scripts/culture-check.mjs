@@ -12,7 +12,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
-import { readArticle, articleSlugs } from './lib/culture-load.mjs'
+import { readArticle, articleSlugs, invalidDirs, invalidDirMessage } from './lib/culture-load.mjs'
 import { validateArticle, factsChecked } from './lib/culture-validate.mjs'
 import { validateTopics } from './lib/culture-topic.mjs'
 
@@ -31,6 +31,7 @@ try {
 } catch (e) {
   errors.push(`sujets.json illisible : ${e.message}`)
 }
+errors.push(...(await invalidDirs(values.dir)).map(invalidDirMessage))
 const slugs = positionals.length ? positionals : await articleSlugs(values.dir)
 for (const slug of slugs) {
   const { errors: errs } = validateArticle(await readArticle(values.dir, slug))

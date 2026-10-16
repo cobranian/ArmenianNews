@@ -24,7 +24,7 @@ import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 import { notFoundHtml } from './lib/not-found.mjs'
 import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
-import { loadCulture } from './lib/culture-load.mjs'
+import { loadCulture, unpublishedLine } from './lib/culture-load.mjs'
 import { writeCulturePages } from './lib/culture-pages.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -185,6 +185,8 @@ async function writeSeoFiles(site, stamp, briefs, culture) {
 const stamp = await lastmod()
 const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
 const culture = await loadCulture(CULTURE_DIR)
+const cultureStale = unpublishedLine(culture)
+if (cultureStale) console.warn(`\n${cultureStale}\n`)
 
 for (const site of Object.values(SITES)) {
   viteBuild(site.id)

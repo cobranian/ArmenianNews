@@ -2,7 +2,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
-import { mkdtemp, writeFile } from 'node:fs/promises'
+import { mkdtemp, writeFile, mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -43,6 +43,15 @@ test('case « Faits vérifiés » : exigée seulement avec --pr-body', async () 
   assert.equal(run('--dir', d, '--pr-body', body, 'komitas').status, 1)
   await writeFile(body, '- [x] Faits vérifiés')
   assert.equal(run('--dir', d, '--pr-body', body, 'komitas').status, 0)
+})
+
+test('dossier au nom invalide : exit 1, cause nommée', async () => {
+  const d = await dir()
+  await writeArticle(d, 'komitas')
+  await mkdir(path.join(d, 'Duduk'))
+  const r = run('--dir', d)
+  assert.equal(r.status, 1, r.stdout)
+  assert.match(r.stdout, /culture\/Duduk : nom de dossier invalide/)
 })
 
 test('sujets.json invalide : exit 1', async () => {
