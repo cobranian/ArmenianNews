@@ -1,0 +1,72 @@
+# Le brouillon Culture de la semaine (spec §1.1). Ouvre UNE PR par article ;
+# rien ne part en production avant la fusion par un humain.
+#
+# PIÈGE GitHub : une PR ouverte ou un commit poussé avec le GITHUB_TOKEN ne
+# déclenche AUCUN autre workflow. articles-check.yml ne tournerait donc jamais
+# sur les commits du robot : ce job publie lui-même le statut culture-check.
+name: Culture — brouillon hebdomadaire
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # lundi 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  statuses: write
+
+concurrency:
+  group: culture-draft
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Branches des PR ouvertes
+        run: |
+          gh pr list --state open --limit 200 --json headRefName --jq '[.[].headRefName]' > "$RUNNER_TEMP/open.json"
+
+      - name: Rédiger
+        id: draft
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+        run: |
+          node scripts/culture-draft.mjs --open-branches "$RUNNER_TEMP/open.json" --out-body "$RUNNER_TEMP/body.md"
+
+      - name: Ouvrir l'issue d'idées
+        if: steps.draft.outputs.issue == '1'
+        run: |
+          gh issue create --title "Culture : idées de sujets" --body-file "$RUNNER_TEMP/body.md"
+
+      - name: Ouvrir la PR de relecture
+        if: steps.draft.outputs.slug != ''
+        env:
+          SLUG: ${{ steps.draft.outputs.slug }}
+          TITLE: ${{ steps.draft.outputs.title }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "culture/$SLUG"
+          git add src/data/culture
+          git commit -m "Culture : brouillon « $TITLE »"
+          git push -u origin "culture/$SLUG"
+          gh label create traduire --color F28C28 --description "Traduire le français relu en en, hy et ru" 2>/dev/null || true
+          gh pr create --base main --head "culture/$SLUG" --title "Culture : $TITLE" --body-file "$RUNNER_TEMP/body.md"
+          if node scripts/culture-check.mjs "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          cat "$RUNNER_TEMP/check.txt"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
+            -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"

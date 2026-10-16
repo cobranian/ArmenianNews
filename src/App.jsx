@@ -7,6 +7,7 @@ import { Nav } from './components/Nav.jsx'
 import { Hero } from './components/Hero.jsx'
 import { Radio } from './components/Radio.jsx'
 import { News } from './components/News.jsx'
+import { CultureTeaser } from './components/CultureTeaser.jsx'
 import { Agenda } from './components/Agenda.jsx'
 import { Social } from './components/Social.jsx'
 import { RadioPage } from './components/RadioPage.jsx'
@@ -50,6 +51,7 @@ export default function App() {
           <main>
             <Radio />
             <News />
+            <CultureTeaser />
             <Agenda />
             <Social />
           </main>

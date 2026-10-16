@@ -1,0 +1,16 @@
+{
+  "topics": [
+    { "slug": "komitas", "title": "Komitas", "wikipedia": { "fr": "Komitas", "en": "Komitas" }, "keywords": ["komitas"], "status": "pending" },
+    { "slug": "kochari", "title": "Le kochari", "wikipedia": { "fr": "Kochari", "en": "Kochari" }, "keywords": ["kochari", "kotchari", "քոչարի"], "status": "pending" },
+    { "slug": "duduk", "title": "Le duduk", "wikipedia": { "fr": "Doudouk", "en": "Duduk" }, "keywords": ["duduk", "doudouk", "դուդուկ"], "status": "pending" },
+    { "slug": "alphabet-armenien", "title": "L'alphabet de Mesrop Machtots", "wikipedia": { "fr": "Alphabet arménien", "en": "Armenian alphabet" }, "keywords": ["machtots", "mashtots", "alphabet arménien"], "status": "pending" },
+    { "slug": "khatchkar", "title": "Les khatchkars", "wikipedia": { "fr": "Khatchkar", "en": "Khachkar" }, "keywords": ["khatchkar", "khachkar", "խաչքար"], "status": "pending" },
+    { "slug": "bataille-de-sardarapat", "title": "La bataille de Sardarapat", "wikipedia": { "fr": "Bataille de Sardarapat", "en": "Battle of Sardarabad" }, "keywords": ["sardarapat", "sardarabad"], "status": "pending" },
+    { "slug": "aram-khatchatourian", "title": "Aram Khatchatourian", "wikipedia": { "fr": "Aram Khatchatourian", "en": "Aram Khachaturian" }, "keywords": ["khatchatourian", "khachaturian"], "status": "pending" },
+    { "slug": "charles-aznavour", "title": "Charles Aznavour", "wikipedia": { "fr": "Charles Aznavour", "en": "Charles Aznavour" }, "keywords": ["aznavour"], "status": "pending" },
+    { "slug": "monastere-de-tatev", "title": "Le monastère de Tatev", "wikipedia": { "fr": "Monastère de Tatev", "en": "Tatev Monastery" }, "keywords": ["tatev"], "status": "pending" },
+    { "slug": "lavash", "title": "Le lavash", "wikipedia": { "fr": "Lavash", "en": "Lavash" }, "keywords": ["lavash", "lavach"], "status": "pending" },
+    { "slug": "serguei-paradjanov", "title": "Sergueï Paradjanov", "wikipedia": { "fr": "Sergueï Paradjanov", "en": "Sergei Parajanov" }, "keywords": ["paradjanov", "parajanov"], "status": "pending" },
+    { "slug": "ani", "title": "Ani, la ville aux mille et une églises", "wikipedia": { "fr": "Ani", "en": "Ani" }, "keywords": ["ani"], "status": "pending" }
+  ]
+}

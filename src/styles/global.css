@@ -233,6 +233,16 @@ html {
   scroll-padding-top: 96px;
   background: var(--basalt);
 }
+/* Juste au-dessus de la bascule du burger (760px), les liens de la nav passent
+   sur deux ou trois rangs : barre de 109px en fr à 761–780px, 109 à 139px en
+   hy à 761–800px (mesuré le 16 octobre 2026, lien Culture compris). Avec 96px,
+   une ancre (#agenda) atterrissait SOUS la barre collante. Dès 820px la barre
+   ne dépasse plus 79px dans aucune langue ; 840px laisse une marge. */
+@media (min-width: 761px) and (max-width: 840px) {
+  html {
+    scroll-padding-top: 160px;
+  }
+}
 
 body {
   margin: 0;
@@ -535,10 +545,21 @@ html:lang(hy) {
   width: 26px;
   height: 26px;
 }
+/* Entre la bascule du burger (760px) et ~1200px, les six liens ne tiennent pas
+   sur une ligne à côté de la marque et du sélecteur de langue. Sans retour à la
+   ligne, la liste refusait de descendre sous la somme de ses mots les plus
+   longs et poussait `.lang` hors de l'écran : page défilable de côté, texture
+   fixe découverte (mesuré avec le lien Culture : /hy/ 1109px à 1100, / du .ch
+   970px à 900). Les liens passent donc sur deux rangs centrés, chacun entier
+   (`nowrap` sur le lien) ; `min-width: 0` laisse la liste rétrécir. Aucun seuil
+   par langue : la césure suit la longueur réelle des libellés. */
 .nav__links {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: clamp(12px, 2.6vw, 34px);
+  min-width: 0;
+  gap: 2px clamp(12px, 2.6vw, 34px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -551,6 +572,7 @@ html:lang(hy) {
   font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  white-space: nowrap;
   padding: 6px 1px;
   transition: color 0.2s var(--ease);
 }
@@ -3255,6 +3277,13 @@ html:lang(hy) .nav__brand {
     left: 0;
     right: 0;
     flex-direction: column;
+    /* Le retour à la ligne de la règle de base ferait partir cette colonne de
+       hauteur bornée (max-height) en colonnes côte à côte. Et son centrage,
+       sur l'axe vertical d'une boîte repliée à 0px, ferait déborder les liens
+       vers le haut ET le bas : le quatrième apparaissait dans le rembourrage,
+       sous la barre, menu fermé. */
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 0;
     background: rgba(16, 15, 13, 0.97);
@@ -3976,5 +4005,183 @@ html:lang(hy) .nav__brand {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
+  }
+}
+
+/* === Culture (pages statiques, scripts/lib/culture-pages.mjs, et bloc
+   « À lire » de l'accueil, CultureTeaser.jsx) ===
+   Convention du fichier : chaque font-family est suivie de son
+   font-size-adjust. */
+.culture {
+  max-width: 46rem;
+  padding-block: 40px 64px;
+}
+.culture__kicker {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.culture__kicker a {
+  color: var(--apricot-ink);
+  text-decoration: none;
+}
+.culture__title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0.2em 0 0.3em;
+  text-wrap: balance;
+}
+.culture__date,
+.culture__credit,
+.culture__sources,
+.culture__event {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+.culture__intro {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0 0 2em;
+}
+.culture__figure {
+  margin: 1.6em 0;
+}
+.culture__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.culture__figure--motif {
+  aspect-ratio: 1200 / 630;
+  border: 1px solid var(--line);
+  background: repeating-linear-gradient(45deg, var(--line) 0 1px, transparent 1px 14px);
+}
+.culture__credit {
+  margin-top: 0.5em;
+}
+.culture__body {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+.culture__body h2,
+.culture__body h3,
+.culture__sources h2,
+.culture__more h2 {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  line-height: 1.25;
+  margin: 1.6em 0 0.5em;
+}
+.culture__body h2 {
+  font-size: 1.45rem;
+}
+.culture__body h3,
+.culture__sources h2,
+.culture__more h2 {
+  font-size: 1.2rem;
+}
+.culture__body a,
+.culture__credit a,
+.culture__sources a,
+.culture__event a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-apricot);
+}
+.culture__body a:hover,
+.culture__credit a:hover,
+.culture__sources a:hover,
+.culture__event a:hover {
+  color: var(--apricot-ink);
+}
+.culture__event {
+  margin: 2em 0;
+  padding: 1em;
+  border: 1px solid var(--line-apricot);
+}
+.culture__sources {
+  margin-top: 2.4em;
+  border-top: 1px solid var(--line);
+}
+.culture__sources ul {
+  padding-left: 1.2em;
+}
+.culture-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+.culture-card a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  height: 100%;
+  padding: 1em;
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+.culture-card a:hover,
+.culture-card a:focus-visible {
+  border-color: var(--line-apricot);
+}
+.culture-card__title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+.culture-card__desc {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+.culture-teaser {
+  padding-block: 48px;
+}
+.culture-teaser__title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 0 0 0.8em;
+}
+.culture-teaser__all {
+  display: inline-block;
+  margin-top: 1.2em;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+  text-decoration: none;
+}
+@media (pointer: coarse) {
+  /* Commandes isolées seulement : les liens du crédit et de l'événement sont
+     au fil d'une phrase (exemptés), alors que le fil d'Ariane et les sources
+     sont des cibles à part entière. */
+  .culture-teaser__all,
+  .culture__kicker a,
+  .culture__sources a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }

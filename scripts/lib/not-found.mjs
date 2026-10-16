@@ -18,8 +18,9 @@
  * le site sert : un lecteur arrivé sur /hy/radio-typo/ lit l'anglais mais
  * trouve sa ligne arménienne juste en dessous.
  */
-import { SITES, pathFor, primaryLang, LANGS, briefPath } from '../../sites.config.js'
+import { SITES, pathFor, primaryLang, LANGS, briefPath, culturePath } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
+import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { VIEW_SEO } from '../../src/seo.js'
 
 // Les chaînes de la page, par langue. Courtes et factuelles : c'est une page
@@ -67,6 +68,7 @@ export function notFoundHtml(siteId) {
         [pathFor(p.lang, 'radio'), VIEW_SEO.radio[p.lang].title],
         [pathFor(p.lang, 'agenda'), VIEW_SEO.agenda[p.lang].title],
         [briefPath(p.lang), BRIEF_STRINGS[p.lang].title],
+        [culturePath(p.lang), CULTURE_STRINGS[p.lang].title],
         [pathFor(p.lang, 'about'), VIEW_SEO.about[p.lang].title],
       ]
         .map(([href, label]) => `<a href="${href}" hreflang="${p.lang}">${esc(label)}</a>`)

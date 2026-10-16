@@ -1,0 +1,75 @@
+# Traduit le français RELU quand l'étiquette « traduire » est posée (spec §1.2).
+# Pousse un commit sur la branche de la PR, retire l'étiquette, commente, puis
+# publie le statut culture-check lui-même (le commit du robot ne déclenche pas
+# articles-check.yml — voir articles.yml).
+name: Culture — traduction
+
+on:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: culture-translate-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    if: github.event.label.name == 'traduire' && startsWith(github.head_ref, 'culture/')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+      BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Traduire
+        id: tr
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+        run: |
+          SLUG="${BRANCH#culture/}"
+          node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md"
+
+      - name: Pousser, commenter, publier le statut
+        if: always()
+        run: |
+          SLUG="${BRANCH#culture/}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/culture
+          git diff --cached --quiet || git commit -m "Culture : traductions de « $SLUG »"
+          # Un relecteur a pu pousser pendant la traduction : sans rebase, le
+          # push est refusé et bash -e abandonne l'étape avant le statut.
+          if ! git pull --rebase origin "$BRANCH"; then
+            git rebase --abort || true
+            gh pr edit "$PR" --remove-label traduire || true
+            gh pr comment "$PR" --body "La branche a changé pendant la traduction et le rebase a échoué : relancez la traduction en reposant l'étiquette « traduire »." || true
+            # Le statut va sur la tête DISTANTE : le commit local n'a pas été poussé.
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse "origin/$BRANCH")" \
+              -f state=failure -f context=culture-check -f description="Traduction à relancer : la branche a changé pendant la traduction" || true
+            exit 1
+          fi
+          git push origin "HEAD:$BRANCH"
+          gh pr edit "$PR" --remove-label traduire || true
+          [ -f "$RUNNER_TEMP/summary.md" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/summary.md"
+          gh pr view "$PR" --json body --jq .body > "$RUNNER_TEMP/body.md"
+          if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          cat "$RUNNER_TEMP/check.txt"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
+            -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"

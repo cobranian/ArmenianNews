@@ -16,10 +16,12 @@
  * Dérivé de sites.config.js : ajouter une page ou une langue étend
  * automatiquement le contrôle, sans toucher à ce fichier.
  */
-import { readFile, stat } from 'node:fs/promises'
+import { access, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath } from '../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
+import { loadCulture } from './lib/culture-load.mjs'
+import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
 import { agendaGuardChecks } from './lib/agenda-guard.mjs'
 import { loadBriefs } from './lib/brief-pages.mjs'
@@ -345,11 +347,11 @@ for (const site of Object.values(SITES)) {
     bad++
     continue
   }
-  // Les entrées de la brève (index + pages datées) sont variables : on ne
+  // Les entrées de la brève et de Culture sont variables : on ne
   // compte ici que les entrées de vue.
   const vues = xml
     .split('<url>')
-    .filter((b) => !/<loc>[^<]*\/(breve|brief)\//.test(b))
+    .filter((b) => !/<loc>[^<]*\/(breve|brief|culture)\//.test(b))
     .join('<url>')
   const urls = (vues.match(/<url>/g) || []).length
   const dates = (vues.match(/<lastmod>/g) || []).length
@@ -411,6 +413,44 @@ for (const site of Object.values(SITES)) {
     }
   }
   console.log('✓ pages de brève contrôlées')
+}
+
+// Les pages Culture : chaque page attendue existe, dans sa langue, avec SON
+// canonical, un hreflang égal à cultureAlternates (sans langue absente pour
+// cet article), sans le domaine voisin, listée au sitemap (sauf un index vide,
+// qui est noindex), et l'image d'un article existe vraiment dans dist/ — une
+// og:image parfaite sur un fichier absent sert un 404 aux réseaux.
+{
+  const culture = await loadCulture(path.join(root, 'src/data/culture'), { warn: () => {} })
+  const bySlug = cultureLangsBySlug(culture)
+  for (const site of Object.values(SITES)) {
+    const other = Object.values(SITES).find((s) => s.id !== site.id).host
+    const sitemap = await readFile(path.join(root, 'dist', site.id, 'sitemap.xml'), 'utf-8').catch(() => '')
+    for (const { lang } of site.pages) {
+      const mine = culture.filter((a) => a.langs[lang])
+      for (const slug of [null, ...mine.map((a) => a.slug)]) {
+        const rel = path.join('dist', site.id, culturePath(lang, slug).replace(/^\//, ''), 'index.html')
+        const html = await readFile(path.join(root, rel), 'utf-8').catch(() => null)
+        const fail = (why) => { console.error(`✗ ${rel} — ${why}`); bad++ }
+        if (!html) { fail('absent'); continue }
+        if (!html.includes(`<html lang="${lang}">`)) fail(`<html lang="${lang}"> manquant`)
+        if (!html.includes(`<link rel="canonical" href="${cultureUrl(lang, slug)}" />`)) fail('canonical')
+        const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
+        if (JSON.stringify(got) !== JSON.stringify(cultureAlternates(slug, bySlug))) fail('hreflang')
+        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '')
+        if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
+        if (mine.length && !sitemap.includes(`<loc>${cultureUrl(lang, slug)}</loc>`)) fail('absente du sitemap')
+        const article = slug && mine.find((a) => a.slug === slug)
+        if (article?.image) {
+          for (const ext of ['webp', 'jpg']) {
+            const img = path.join(root, 'dist', site.id, cultureImagePath(slug, ext).replace(/^\//, ''))
+            await access(img).catch(() => fail(`image.${ext} absente de dist`))
+          }
+        }
+      }
+    }
+  }
+  console.log('✓ pages Culture contrôlées')
 }
 
 if (bad) {

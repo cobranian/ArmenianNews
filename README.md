@@ -546,6 +546,55 @@ Notes:
   `unexpected payload shape`, the endpoint moved — fix it there, don't fall back
   to scraping the DOM.
 
+## Articles Culture : relire une PR
+
+Chaque lundi, `articles.yml` rédige (Gemini, secret `GEMINI_API_KEY`) un
+brouillon d'article culturel depuis Wikipédia et ouvre une **PR** : l'article
+ne part jamais sur `main` sans relecture humaine.
+
+**Réglage unique du dépôt.** Settings → Actions → General → « Allow GitHub
+Actions to create and approve pull requests » doit être coché, sinon
+`gh pr create` échoue après le push de la branche.
+
+**Mise en route (une fois)**
+
+```bash
+gh secret set GEMINI_API_KEY        # coller la clé (Google AI Studio, gratuite)
+gh workflow run articles.yml        # un brouillon à la demande
+```
+
+**Relire une PR**
+
+1. Corriger `fr.md` (onglet « Files changed », menu ⋯ → *Edit file*) : longueur, faits, ton.
+2. Cocher « Faits vérifiés » dans le corps de la PR (liste ⚠️ = points à vérifier d'abord).
+3. Poser l'étiquette **`traduire`** : en, hy et ru sont produits depuis le français relu. Retoucher `fr.md` ensuite périme les traductions : reposer l'étiquette.
+4. Fusionner quand le statut `culture-check` est vert. Il **ne bloque pas** la fusion : c'est au relecteur de le regarder.
+
+**Fermer une PR sans la fusionner rejette le sujet pour de bon** :
+`articles-closed.yml` le passe `rejected` dans `sujets.json` sur `main`, et le
+brouillon du lundi ne le reprendra plus. Pour retenter ce sujet, remettez son
+`status` à `pending` dans `src/data/culture/sujets.json`
+(`npm run culture:status -- <slug> pending`).
+
+**Corriger un article DÉJÀ publié : jamais `fr.md` directement sur `main`.**
+Chaque traduction porte l'empreinte (`sourceHash`) du français dont elle est
+issue ; retoucher `fr.md` sur `main` périme en, hy et ru d'un coup, le build
+les retire sans échouer, et leurs URL déjà indexées répondent **404** (le
+seul signe : la ligne `⚠ culture : N traduction(s) non publiée(s)` du log de
+build). La procédure : créer une branche `culture/<slug>` depuis `main`, y
+corriger `fr.md`, ouvrir une PR, poser l'étiquette **`traduire`** pour
+régénérer les traductions depuis le texte corrigé, puis fusionner.
+
+**Ajouter des sujets** : `src/data/culture/sujets.json`. Vérifier d'abord que
+le titre existe tel quel sur Wikipédia (fr et en) ; un titre inexact donne un
+brouillon vide ou un mauvais article.
+
+**Le premier article doit être relu par le propriétaire** : longueur (700 à
+1 000 mots), et — une fois — qualité de l'arménien par un lecteur de la langue.
+
+Commandes locales : `npm run culture:draft -- --topic slug --dry`,
+`npm run culture:translate -- slug`, `npm run culture:check`.
+
 ## Newswire source chain (armradio)
 
 `en.armradio.am` is a WordPress site behind Cloudflare, which serves an
