@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-16",
+  "lang": "fr",
+  "generatedAt": "2026-10-16T17:38:54.037Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "intro": "L'actualité arménienne du jour est marquée par des développements sur la scène internationale, notamment autour de la COP-17 à Erevan, des échanges diplomatiques avec l'Iran, la Turquie et l'UE, ainsi que des questions de biodiversité et de coopération régionale.",
+  "topics": [
+    {
+      "title": "La COP-17 à Erevan mobilise l'attention nationale et internationale",
+      "text": "La cérémonie d'ouverture du sommet « Leaders pour la nature » de la COP-17 a eu lieu à Erevan, avec l'inauguration du pavillon national arménien. Plusieurs sources soulignent l'importance de cet événement pour la biodiversité et la coopération régionale, notamment avec des annonces de financement et des appels à l'action mondiale.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/cop-17-a-erevan-armenie-la-ceremonie-douverture-de-la-session-pleniere-du-sommet-leaders-pour-la-nature-a-eu-lieu/",
+          "title": "COP-17 à Erevan (Arménie) : La cérémonie d’ouverture de la session plénière du Sommet « Leaders pour la nature » a eu lieu"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/cop17-a-erevan-inauguration-du-pavillon-national-armenien/",
+          "title": "COP17 à Erevan : Inauguration du pavillon national arménien"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/cop17-erevan-les-dirigeants-appellent-accelerer-laction-mondiale-en-faveur-de-la-biodiversite",
+          "title": "COP17 : à Erevan, les dirigeants appellent à accélérer l’action mondiale en faveur de la biodiversité"
+        }
+      ]
+    },
+    {
+      "title": "Nikol Pashinyan multiplie les échanges diplomatiques à Erevan",
+      "text": "Le Premier ministre arménien s'est entretenu avec le président iranien Massoud Pezeshkian, la vice-présidente de la Commission européenne Teresa Ribera, et le directeur général de l'UNESCO. Ces rencontres portent sur la coopération dans les domaines de l'éducation, des sciences, de la culture, ainsi que sur les enjeux euro-arméniens et irano-arméniens.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-et-le-directeur-general-de-lunesco-saccordent-sur-le-renforcement-de-la-cooperation-dans-les-domaines-de-leducation-des-sciences-et-de-la-culture/",
+          "title": "Nikol Pachinian et le Directeur général de l’UNESCO s’accordent sur le renforcement de la coopération dans les domaines de l’éducation, des sciences et de la culture"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263047",
+          "title": "Le Premier ministre Nikol Pashinyan s’est entretenu avec le Directeur général de l’UNESCO"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-et-teresa-ribera-la-vice-presidente-de-la-commission-europeenne-discutent-a-erevan-des-enjeux-de-la-cooperation-entre-larmenie-et-lue/",
+          "title": "Nikol Pachinian et Teresa Ribera la vice-présidente de la Commission européenne discutent à Erevan des enjeux de la coopération entre l’Arménie et l’UE"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-et-le-president-iranien-massoud-pezeshkian-ont-echange-a-erevan-leurs-points-de-vue-sur-des-sujets-lies-aux-programmes-conjoints/",
+          "title": "Nikol Pachinian et le président iranien Massoud Pezeshkian ont échangé à Erevan leurs points de vue sur des sujets liés aux programmes conjoints"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263031",
+          "title": "Nikol Pashinyan et Massoud Pezeshkian se sont entretenus"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263033",
+          "title": "Le Premier ministre et la vice-présidente de la Commission européenne ont discuté de l’avancement de la coopération entre l’Arménie et l’UE"
+        }
+      ]
+    },
+    {
+      "title": "La biodiversité au cœur des débats arméniens",
+      "text": "Plusieurs titres évoquent la crise de la biodiversité, avec des appels à un leadership politique (Hambardzum Matevosyan), l'annonce d'une enveloppe de 500 millions de dollars pour sa préservation (COP17), et des discussions sur les écosystèmes communs du Caucase du Sud. L'Arménie alloue également des fonds supplémentaires à la recherche scientifique.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263071",
+          "title": "Hambardzum Matevosyan : la crise de la biodiversité exige un leadership politique"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263049",
+          "title": "COP17 : une enveloppe de 500 millions de dollars annoncée pour la préservation de la biodiversité"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263014",
+          "title": "Irakli Kobakhidze : les écosystèmes communs du Caucase du Sud constituent un socle pour une coopération régionale plus étroite et un développement durable"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-alloue-236-milliards-de-drams-supplementaires-la-recherche-scientifique",
+          "title": "L’Arménie alloue 2,36 milliards de drams supplémentaires à la recherche scientifique"
+        }
+      ]
+    },
+    {
+      "title": "Progrès dans la normalisation des relations arméno-turques",
+      "text": "Le ministre turc de l'Agriculture et des Forêts a déclaré à Erevan que le processus de normalisation des relations entre l'Arménie et la Turquie s'accélère. Par ailleurs, l'Arménie et la Türkiye discutent du commerce direct, signe d'un réchauffement progressif des liens bilatéraux.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-ministre-turc-de-lagriculture-et-des-forets-ibrahim-yumakli-a-declare-a-erevan-que-le-processus-de-normalisation-des-relations-entre-larmenie-et-la-turquie-saccelere/",
+          "title": "Le ministre turc de l’Agriculture et des Forêts, Ibrahim Yumakli a déclaré à Erevan que le processus de normalisation des relations entre l’Arménie et la Turquie s’accélère"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263051",
+          "title": "L’Arménie et la Türkiye discutent du commerce direct"
+        }
+      ]
+    }
+  ]
+}
