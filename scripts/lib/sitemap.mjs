@@ -10,8 +10,9 @@
 // l'horodatage du DERNIER SCRAPE. Un rebuild sans scrape réémet donc la même
 // valeur. Ne jamais y substituer new Date() : ce serait exactement le bug
 // contre lequel ce commentaire prévenait.
-import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor, briefUrl } from '../../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor, briefUrl, cultureUrl } from '../../sites.config.js'
 import { briefLangsByDate, briefAlternates } from './brief-links.mjs'
+import { cultureLangsBySlug, cultureAlternates } from './culture-links.mjs'
 
 // Les annotations xhtml:link dans le sitemap répètent ce que portent les
 // <link hreflang> du HTML. Google accepte les deux et recoupe : c'est une
@@ -58,7 +59,37 @@ ${xhtml(briefAlternates(b.date, byDate))}
   ])
 }
 
-export function sitemapFor(siteId, lastmod, briefs = {}) {
+// Les articles Culture : l'index d'une langue s'il a au moins un article (vide,
+// il est en noindex — le lister serait contradictoire), et chaque article
+// présent dans cette langue, avec les mêmes alternates que son <head>.
+// lastmod = la date de l'article (il ne change plus une fois publié).
+function cultureEntries(site, culture) {
+  const bySlug = cultureLangsBySlug(culture)
+  return site.pages.flatMap(({ lang }) => {
+    const mine = culture.filter((a) => a.langs[lang])
+    if (!mine.length) return []
+    return [
+      `  <url>
+    <loc>${cultureUrl(lang)}</loc>
+    <lastmod>${mine[0].date}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+${xhtml(cultureAlternates(null, bySlug))}
+  </url>`,
+      ...mine.map(
+        (a) => `  <url>
+    <loc>${cultureUrl(lang, a.slug)}</loc>
+    <lastmod>${a.date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+${xhtml(cultureAlternates(a.slug, bySlug))}
+  </url>`,
+      ),
+    ]
+  })
+}
+
+export function sitemapFor(siteId, lastmod, briefs = {}, culture = []) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   if (!lastmod) throw new Error('lastmod manquant — attendu meta.json → generatedAt')
@@ -76,6 +107,7 @@ ${alternates(view)}
       ),
     ),
     ...briefEntries(site, lastmod, briefs),
+    ...cultureEntries(site, culture),
   ].join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>

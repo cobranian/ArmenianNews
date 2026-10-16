@@ -24,6 +24,8 @@ import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 import { notFoundHtml } from './lib/not-found.mjs'
 import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
+import { loadCulture } from './lib/culture-load.mjs'
+import { writeCulturePages } from './lib/culture-pages.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -155,9 +157,20 @@ async function writeBriefs(site, briefs) {
   console.log(`  → dist/${site.id} : ${n} pages de brève`)
 }
 
-async function writeSeoFiles(site, stamp, briefs) {
+// Les articles Culture : HTML statiques, comme la brève. Un article invalide
+// a déjà été écarté par loadCulture (avertissement au log) — le build ne
+// casse jamais à cause du contenu. Voir scripts/lib/culture-pages.mjs.
+const CULTURE_DIR = path.join(root, 'src/data/culture')
+async function writeCulture(site, culture) {
   const dist = path.join(root, 'dist', site.id)
-  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs), 'utf-8')
+  const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
+  const n = await writeCulturePages(site, dist, culture, cssHrefFrom(built), CULTURE_DIR)
+  console.log(`  → dist/${site.id} : ${n} pages Culture`)
+}
+
+async function writeSeoFiles(site, stamp, briefs, culture) {
+  const dist = path.join(root, 'dist', site.id)
+  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs, culture), 'utf-8')
   console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
@@ -171,13 +184,15 @@ async function writeSeoFiles(site, stamp, briefs) {
 
 const stamp = await lastmod()
 const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
+const culture = await loadCulture(CULTURE_DIR)
 
 for (const site of Object.values(SITES)) {
   viteBuild(site.id)
   await derivePages(site)
   await copyStandalone(site)
   await writeBriefs(site, briefs)
-  await writeSeoFiles(site, stamp, briefs)
+  await writeCulture(site, culture)
+  await writeSeoFiles(site, stamp, briefs, culture)
 }
 
 console.log(
