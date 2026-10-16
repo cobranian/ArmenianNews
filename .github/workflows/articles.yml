@@ -42,6 +42,7 @@ jobs:
         id: draft
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
           ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
         run: |

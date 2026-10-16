@@ -15,6 +15,13 @@ test('llmConfig : défauts Gemini, surcharges, clé dédiée prioritaire', () =>
   )
 })
 
+test('llmConfig : pointé sur OpenRouter, la clé OpenRouter est prise, jamais la clé Gemini', () => {
+  const env = { ARTICLES_BASE_URL: 'https://openrouter.ai/api/v1', OPENROUTER_API_KEY: 'o', GEMINI_API_KEY: 'g' }
+  assert.equal(llmConfig(env).apiKey, 'o')
+  assert.equal(llmConfig({ ...env, OPENROUTER_API_KEY: '' }).apiKey, '')
+  assert.equal(llmConfig({ OPENROUTER_API_KEY: 'o', GEMINI_API_KEY: 'g' }).apiKey, 'g')
+})
+
 test('chat : URL composée, en-têtes, modèle réellement servi', async () => {
   const seen = {}
   const r = await chat({
