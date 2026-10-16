@@ -146,7 +146,7 @@ titres du jour — lisez les articles d'origine. » Liens « veille » / « lend
 vers les brèves voisines existantes, et vers l'accueil.
 
 **`/breve/`** : la dernière brève en entier, puis l'archive (toutes les dates,
-groupées par mois, la plus récente d'abord). Canonical sur elle-même : elle
+en liste plate, la plus récente d'abord). Canonical sur elle-même : elle
 change chaque jour, comme l'accueil.
 
 Langue vide (aucune brève encore) : `/breve/` existe quand même, avec un
@@ -193,7 +193,8 @@ vues :
   `generatedAt`).
 - `npm run check` (`scripts/check-build.mjs`) contrôle chaque page de brève :
   `lang`, canonical, hreflang réciproques, absence du domaine voisin, présence
-  dans le sitemap, et le lien de la nav.
+  dans le sitemap. Les liens de nav et de pied de page, rendus par React, sont
+  gardés par un test qui lit les composants comme du texte.
 
 ## 3. Erreurs, tests, déploiement
 
