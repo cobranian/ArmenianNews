@@ -535,10 +535,21 @@ html:lang(hy) {
   width: 26px;
   height: 26px;
 }
+/* Entre la bascule du burger (760px) et ~1200px, les six liens ne tiennent pas
+   sur une ligne à côté de la marque et du sélecteur de langue. Sans retour à la
+   ligne, la liste refusait de descendre sous la somme de ses mots les plus
+   longs et poussait `.lang` hors de l'écran : page défilable de côté, texture
+   fixe découverte (mesuré avec le lien Culture : /hy/ 1109px à 1100, / du .ch
+   970px à 900). Les liens passent donc sur deux rangs centrés, chacun entier
+   (`nowrap` sur le lien) ; `min-width: 0` laisse la liste rétrécir. Aucun seuil
+   par langue : la césure suit la longueur réelle des libellés. */
 .nav__links {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: clamp(12px, 2.6vw, 34px);
+  min-width: 0;
+  gap: 2px clamp(12px, 2.6vw, 34px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -551,6 +562,7 @@ html:lang(hy) {
   font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  white-space: nowrap;
   padding: 6px 1px;
   transition: color 0.2s var(--ease);
 }
@@ -3255,6 +3267,13 @@ html:lang(hy) .nav__brand {
     left: 0;
     right: 0;
     flex-direction: column;
+    /* Le retour à la ligne de la règle de base ferait partir cette colonne de
+       hauteur bornée (max-height) en colonnes côte à côte. Et son centrage,
+       sur l'axe vertical d'une boîte repliée à 0px, ferait déborder les liens
+       vers le haut ET le bas : le quatrième apparaissait dans le rembourrage,
+       sous la barre, menu fermé. */
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 0;
     background: rgba(16, 15, 13, 0.97);
