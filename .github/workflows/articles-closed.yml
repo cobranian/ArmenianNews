@@ -1,0 +1,39 @@
+# PR Culture fermée SANS fusion → le sujet passe `rejected` sur main, pour
+# qu'il ne revienne pas le lundi suivant. Le push sur main par GITHUB_TOKEN
+# ne déclenche pas de déploiement (rien à déployer).
+name: Culture — sujet rejeté
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  reject:
+    if: github.event.pull_request.merged == false && startsWith(github.head_ref, 'culture/')
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Marquer le sujet rejeté
+        run: |
+          SLUG="${BRANCH#culture/}"
+          node scripts/culture-status.mjs "$SLUG" rejected
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/culture/sujets.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Culture : sujet « $SLUG » rejeté"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
