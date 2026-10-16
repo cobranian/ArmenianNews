@@ -1028,8 +1028,8 @@ de production servent toujours depuis la racine de leur domaine.
   clé expirée ou un quota épuisé ne casse rien — chaque fil retombe dans son
   défaut, le site a l'air juste, et le seul signe est `✗ classify` au log
   (`gh run view <id> --log | grep classify`). Modèle en service :
-  `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, repli
-  `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
+  `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, replis
+  `nvidia/nemotron-3-super-120b-a12b:free` puis `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
   raisonnement dépassent le délai, les points d'accès gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
   `DEFAULT_MODEL` (ou posez `OPENROUTER_MODEL`) après avoir listé
   `https://openrouter.ai/api/v1/models` (ids finissant par `:free`).
