@@ -384,6 +384,25 @@ for (const site of Object.values(SITES)) {
     console.error(`✗ dist/${site.id}/robots.txt — absent`)
     bad++
   }
+
+  // llms.txt : présent, et ne cite que des URL de SA vitrine (hors le renvoi
+  // final vers le llms.txt du voisin).
+  try {
+    const llms = await readFile(path.join(dir, 'llms.txt'), 'utf-8')
+    const other = Object.values(SITES).find((s) => s.id !== site.id)
+    const foreign = [...llms.matchAll(/\]\((https:\/\/[^)]+)\)/g)]
+      .map((m) => m[1])
+      .filter((u) => !u.startsWith(site.host + '/') && u !== `${other?.host}/llms.txt`)
+    if (!llms.startsWith(`# ${site.brand}\n`) || foreign.length) {
+      console.error(`✗ dist/${site.id}/llms.txt — titre ou URL étrangère (${foreign.slice(0, 3).join(', ')})`)
+      bad++
+    } else {
+      console.log(`✓ dist/${site.id}/llms.txt`)
+    }
+  } catch {
+    console.error(`✗ dist/${site.id}/llms.txt — absent`)
+    bad++
+  }
 }
 
 // Le sélecteur de langue des pages statiques est le SEUL endroit qui doit

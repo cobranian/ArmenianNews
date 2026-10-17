@@ -23,6 +23,7 @@ import { replaceMeta } from './lib/site-meta.mjs'
 import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 import { notFoundHtml } from './lib/not-found.mjs'
+import { llmsFor } from './lib/llms.mjs'
 import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
 import { loadCulture, unpublishedLine } from './lib/culture-load.mjs'
 import { writeCulturePages } from './lib/culture-pages.mjs'
@@ -174,6 +175,9 @@ async function writeSeoFiles(site, stamp, briefs, culture) {
   console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
+  // La carte du site pour les assistants IA (scripts/lib/llms.mjs).
+  await writeFile(path.join(dist, 'llms.txt'), llmsFor(site.id, { briefs, culture }), 'utf-8')
+  console.log(`  → dist/${site.id}/llms.txt`)
   // La page 404, dans la langue du domaine. Firebase la sert avec un vrai
   // statut 404 à toute URL sans fichier — depuis que firebase.json n'a plus
   // de rewrite ** → index.html. Sans ce fichier, Firebase servirait sa propre
