@@ -38,6 +38,16 @@ function bakedNow() {
 // le même instant.
 export const RENDER_NOW = bakedNow() ?? Date.now()
 
+// Le fuseau du premier rendu (minutes, au sens de getTimezoneOffset) : celui
+// du prérendu, inscrit en data-tz — l'agenda y lit ses heures murales
+// (evenementsAVenir). `undefined` hors hydratation : le fuseau de la machine.
+function bakedTz() {
+  if (PRERENDERING) return new Date(prerender.now).getTimezoneOffset()
+  const n = Number(root?.dataset.tz)
+  return HYDRATING && root?.dataset.tz !== undefined && Number.isFinite(n) ? n : undefined
+}
+export const RENDER_TZ = bakedTz()
+
 // Faut-il, au montage, passer à l'heure réelle ? Jamais pendant le prérendu :
 // le HTML cuit doit rester celui du premier rendu.
 export const SHOULD_TICK = !PRERENDERING

@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
+import { evenementComplet, evenementsAVenir, instantMural } from '../src/agendaEvents.js'
 
 const MAINTENANT = new Date('2050-06-15T00:00:00.000Z').getTime()
 const AVENIR = '2050-06-16T00:00:00.000Z'
@@ -80,4 +80,18 @@ test('maintenant est injectable', () => {
   const liste = [ev({ date: PASSE })]
   assert.equal(evenementsAVenir(liste, MAINTENANT).length, 0)
   assert.equal(evenementsAVenir(liste, new Date('2050-06-13T00:00:00.000Z').getTime()).length, 1)
+})
+
+test('instantMural : l’heure murale lue dans un fuseau donné, sinon celui de la machine', () => {
+  assert.equal(instantMural('2026-10-17T23:00', 0), Date.parse('2026-10-17T23:00:00Z'))
+  assert.equal(instantMural('2026-10-17T23:00', -120), Date.parse('2026-10-17T21:00:00Z'))
+  assert.equal(instantMural('2026-10-17T23:00Z', -120), Date.parse('2026-10-17T23:00:00Z'), 'un Z garde son instant')
+  assert.equal(instantMural('2026-10-17T23:00'), new Date('2026-10-17T23:00').getTime())
+})
+
+test('evenementsAVenir : le même instant, deux fuseaux, deux listes — d’où le fuseau du prérendu', () => {
+  const soir = [ev({ date: '2026-10-17T23:00', url: 'https://x/soir' })]
+  const t = Date.parse('2026-10-17T21:56:00Z')
+  assert.equal(evenementsAVenir(soir, t, 0).length, 1, 'en UTC : 23:00 est à venir')
+  assert.equal(evenementsAVenir(soir, t, -120).length, 0, 'à Genève : 23:00 = 21:00Z, passé')
 })

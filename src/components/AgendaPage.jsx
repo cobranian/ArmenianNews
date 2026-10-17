@@ -4,7 +4,7 @@ import { pathFor } from '../../sites.config.js'
 import { worldCountryKey, countryLabel, countryFlag } from '../worldPlace.js'
 import { evenementsAVenir } from '../agendaEvents.js'
 import { agendaJsonLd } from '../jsonld.js'
-import { useClientNow } from '../useClientNow.js'
+import { useClientClock } from '../useClientNow.js'
 import { VIEW_SEO } from '../seo.js'
 import agenda from '../data/agenda.json'
 
@@ -16,7 +16,9 @@ export function AgendaPage() {
   const { t, lang, formatDate } = useI18n()
   // L'heure du prérendu au premier rendu, la réelle au montage : un événement
   // passé entre les deux changerait la liste, donc l'hydratation (renderClock.js).
-  const now = useClientNow(60 * 60 * 1000)
+  // Et le fuseau : l'heure murale « 23:00 » n'est pas le même instant pour le
+  // prérendu (UTC) et pour un lecteur à Genève.
+  const { now, tz } = useClientClock(60 * 60 * 1000)
 
   const { total, parPays } = useMemo(() => {
     const tous = [...(agenda.switzerland || []), ...(agenda.world || [])]
@@ -26,7 +28,7 @@ export function AgendaPage() {
     // ici « à la main » est exactement ce qui avait laissé passer, sur cette
     // page-ci, un événement sans date : rendu avec un <time> vide, compté dans
     // le total, mais absent du balisage.
-    const frais = evenementsAVenir(tous, now)
+    const frais = evenementsAVenir(tous, now, tz)
     const groupes = new Map()
     for (const ev of frais) {
       const cle = worldCountryKey(ev)
@@ -37,7 +39,7 @@ export function AgendaPage() {
       countryLabel(a[0], lang).localeCompare(countryLabel(b[0], lang), lang),
     )
     return { total: frais.length, parPays }
-  }, [lang, now])
+  }, [lang, now, tz])
 
   return (
     <main className="viewpage">
@@ -104,6 +106,7 @@ export function AgendaPage() {
             lang,
             parPays.flatMap(([, e]) => e),
             now,
+            tz,
           ),
         }}
       />

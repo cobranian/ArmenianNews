@@ -36,11 +36,23 @@ export const evenementComplet = (e) => Boolean(e && e.title && e.date && e.url)
 //
 // `maintenant` est injectable pour que ce filtre soit testable sans horloge —
 // même signature et même raison que `agendaJsonLd` (src/jsonld.js).
-export function evenementsAVenir(evenements, maintenant = Date.now()) {
+//
+// `decalage` (minutes, au sens de getTimezoneOffset) fixe le fuseau dans
+// lequel lire l'heure murale ; absent, c'est celui de la machine. Il sert à
+// l'hydratation : « 23:00 » ce soir est à venir pour le prérendu en UTC et
+// passé pour un lecteur à Genève — la liste change, et React refait toute la
+// page (mesuré en production le 17 octobre 2026). Le premier rendu lit donc
+// l'heure murale dans le fuseau du PRÉRENDU (src/renderClock.js).
+export function instantMural(date, decalage) {
+  if (decalage == null || /(Z|[+-]\d\d:?\d\d)$/.test(date)) return new Date(date).getTime()
+  return Date.parse(`${date}Z`) + decalage * 60000
+}
+
+export function evenementsAVenir(evenements, maintenant = Date.now(), decalage) {
   const vus = new Set()
   return evenements.filter((ev) => {
     if (!evenementComplet(ev)) return false
-    if (vus.has(ev.url) || new Date(ev.date).getTime() < maintenant) return false
+    if (vus.has(ev.url) || instantMural(ev.date, decalage) < maintenant) return false
     vus.add(ev.url)
     return true
   })

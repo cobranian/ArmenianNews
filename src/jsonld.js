@@ -9,7 +9,7 @@
 // résultat enrichi : le seul de ce projet qui en produise est Event, sur
 // /agenda.
 import { STATION_FACTS } from './stations.js'
-import { evenementComplet, eventLd } from './agendaEvents.js'
+import { evenementComplet, instantMural, eventLd } from './agendaEvents.js'
 import { urlFor } from '../sites.config.js'
 
 // Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>. Même garde
@@ -34,9 +34,9 @@ const safe = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
 //
 // `maintenant` est un troisième paramètre injectable (défaut : Date.now())
 // pour que ce filtre soit testable sans horloge ni réseau — ne le retirez pas.
-export function agendaJsonLd(lang, evenements, maintenant = Date.now()) {
+export function agendaJsonLd(lang, evenements, maintenant = Date.now(), decalage) {
   const avenir = evenements.filter(
-    (ev) => evenementComplet(ev) && new Date(ev.date).getTime() >= maintenant,
+    (ev) => evenementComplet(ev) && instantMural(ev.date, decalage) >= maintenant,
   )
   return safe({
     '@context': 'https://schema.org',

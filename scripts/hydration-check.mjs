@@ -42,7 +42,10 @@ for (const site of Object.values(SITES)) {
 const VISITS = [
   { name: 'bureau', viewport: { width: 1400, height: 900 } },
   { name: 'mobile', viewport: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 } },
-  { name: 'clair+3h', viewport: { width: 1400, height: 900 }, theme: 'light', shiftMs: 3 * 3600 * 1000 },
+  // Autre fuseau que la machine du prérendu (UTC en CI, l'heure suisse au
+  // poste) : l'agenda y a divergé en production, jamais sur le banc local.
+  { name: 'clair+3h+Tokyo', viewport: { width: 1400, height: 900 }, theme: 'light', shiftMs: 3 * 3600 * 1000, tz: 'Asia/Tokyo' },
+  { name: 'Los Angeles', viewport: { width: 1400, height: 900 }, tz: 'America/Los_Angeles' },
 ]
 
 const browser = await puppeteer.launch({ executablePath, headless: 'new', args: ['--no-sandbox'] })
@@ -67,6 +70,7 @@ try {
             const tab = await ctx.newPage()
             try {
               await tab.setViewport(v.viewport)
+              if (v.tz) await tab.emulateTimezone(v.tz)
               const warnings = []
               // Un build React de développement (NODE_ENV=development npm run
               // build) donne le détail de chaque écart — texte serveur/client
