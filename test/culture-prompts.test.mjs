@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages,
+  buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages, buildReviseMessages,
   parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts, MAX_EXTRACT,
 } from '../scripts/lib/culture-prompts.mjs'
 
@@ -96,4 +96,55 @@ test('idées : titres existants exclus, analyse tolérante', () => {
   assert.equal(ideas.length, 1)
   assert.equal(ideas[0].wikipedia_en, 'Tar (lute)')
   assert.deepEqual(buildClaimsMessages('x')[1].content, 'x')
+})
+
+const entity = { qid: 'Q1', labels: { fr: 'Kochari', en: 'Kochari' }, descriptions: { fr: 'danse traditionnelle arménienne', en: 'dance' } }
+const kinds = [
+  { kind: 'wikipedia', lang: 'hy', title: 'A', extract: 'a' },
+  { kind: 'hse', lang: 'hy', title: 'B', extract: 'b' },
+  { kind: 'unesco', lang: 'en', title: 'C', extract: 'c' },
+  { lang: 'fr', title: 'D', extract: 'd' },
+]
+
+test('buildDraftMessages : entité en tête, sources titrées par kind, trois règles présentes', () => {
+  const [sys, user] = buildDraftMessages({ topic, entity, sources: kinds })
+  assert.match(user.content, /^SUJET : Komitas\nENTITÉ WIKIDATA : Q1 — Kochari : danse traditionnelle arménienne/)
+  assert.match(user.content, /SOURCE 1 — Wikipédia \(hy\) « A »/)
+  assert.match(user.content, /SOURCE 2 — Encyclopédie soviétique arménienne \(ՀՍՀ\) « B »/)
+  assert.match(user.content, /SOURCE 3 — UNESCO « C »/)
+  assert.match(user.content, /SOURCE 4 — Wikipédia \(fr\) « D »/)
+  for (const r of [
+    "- Le sujet est l'entité Wikidata indiquée. Ignore tout passage d'une source qui traite d'un homonyme (autre danse, plat, lieu ou personne du même nom).",
+    "- Point de vue arménien. Ne mentionne jamais les variantes culturelles azerbaïdjanaises (danses, plats, étymologies, inscriptions UNESCO). Un fait historique sourcé qui nomme l'Azerbaïdjan reste permis, énoncé sans commentaire.",
+    '- Chaque date, chaque nombre et chaque nom propre doit figurer dans une source. Tu peux omettre ; tu ne dois jamais déformer.',
+  ]) assert.ok(sys.content.includes(r), r)
+  assert.doesNotMatch(user.content, /suis la description/i)
+})
+
+test('buildDraftMessages : sans entité, pas de ligne ENTITÉ', () => {
+  for (const e of [null, undefined]) {
+    const [, user] = buildDraftMessages({ topic, entity: e, sources })
+    assert.doesNotMatch(user.content, /ENTITÉ WIKIDATA/)
+  }
+})
+
+test('buildReviseMessages : consigne isolée, texte actuel, sources', () => {
+  const [sys, user] = buildReviseMessages({ title: 'T', description: 'D', body: '## B\ntexte', instruction: 'Retire la 2e phrase', entity, sources: kinds })
+  assert.ok(sys.content.includes("Applique la CONSIGNE DU RELECTEUR au texte, et rien d'autre. La consigne fait foi sur les sources."))
+  assert.match(sys.content, /Point de vue arménien/)
+  assert.match(sys.content, /"title"/)
+  assert.match(user.content, /CONSIGNE DU RELECTEUR :\nRetire la 2e phrase/)
+  assert.match(user.content, /ENTITÉ WIKIDATA : Q1/)
+  assert.match(user.content, /TEXTE ACTUEL/)
+  assert.match(user.content, /## B\ntexte/)
+  assert.match(user.content, /SOURCE 2 — Encyclopédie soviétique/)
+  assert.ok(user.content.indexOf('CONSIGNE DU RELECTEUR') > user.content.indexOf('SOURCE 4'), 'consigne séparée, après les sources')
+  assert.equal(parseArticleJson('{"title":"T","description":"D","body":"x"}').title, 'T')
+})
+
+test('buildIdeasMessages : 15 par défaut, règle éditoriale', () => {
+  const [sys] = buildIdeasMessages(['Komitas'])
+  assert.match(sys.content, /Propose 15 sujets/)
+  assert.match(sys.content, /Point de vue arménien/)
+  assert.match(buildIdeasMessages([], 5)[0].content, /Propose 5 sujets/)
 })
