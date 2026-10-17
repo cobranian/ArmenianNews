@@ -1,16 +1,28 @@
-// Le choix du sujet de la semaine (spec §1.1) : un sujet de la liste curée
+// Le choix du sujet du jour (spec §1.1) : un sujet de la liste curée
 // dont un événement de l'agenda tombe dans les 21 jours passe devant — le
 // plus proche d'abord ; sinon le premier disponible.
 //
 // « Disponible » = `pending` ET sans PR ouverte ET sans dossier déjà présent.
 // Sans la deuxième condition, un sujet en relecture serait rédigé une seconde
-// fois le lundi suivant ; sans la troisième, un statut remis à `pending` à la
+// fois la nuit suivante ; sans la troisième, un statut remis à `pending` à la
 // main ferait réécrire un article publié.
 import { evenementsAVenir } from '../../src/agendaEvents.js'
 import { CULTURE_SLUG } from '../../sites.config.js'
 
 export const WINDOW_DAYS = 21
 export const STATUSES = ['pending', 'published', 'rejected']
+
+// Le rythme quotidien (un brouillon par nuit) : dès MAX_OPEN PR
+// Culture en relecture, la nuit ne rédige rien — une file qui grossit sans
+// relecteur ne fait que vieillir des brouillons. Sous MIN_AVAILABLE sujets
+// encore disponibles, une issue d'idées est proposée (une semaine d'avance).
+export const MAX_OPEN = 2
+export const MIN_AVAILABLE = 7
+
+export const queueFull = (openBranches, max = MAX_OPEN) =>
+  openBranches.filter((b) => String(b).startsWith('culture/')).length >= max
+
+export const needsIdeas = (available, min = MIN_AVAILABLE) => available < min
 
 const fold = (s) =>
   String(s ?? '')
@@ -44,15 +56,16 @@ export function agendaMatch(topic, agenda, now = Date.now()) {
   )
 }
 
-export function pickTopic({ topics, openBranches = [], existing = [], agenda = null, now = Date.now() }) {
-  const avail = availableTopics(topics, { openBranches, existing })
-  const matched = avail
-    .map((topic) => ({ topic, event: agendaMatch(topic, agenda, now) }))
-    .filter((x) => x.event)
-    .sort((a, b) => a.event.date.localeCompare(b.event.date))
-  if (matched.length) return matched[0]
-  return avail.length ? { topic: avail[0], event: null } : null
+// Les sujets disponibles dans l'ordre où les essayer : ceux d'un événement
+// proche (le plus proche d'abord), puis les autres dans l'ordre de la liste.
+// Un sujet sauté (aucune page fr ni en utilisable) cède la place au suivant.
+export function rankTopics({ topics, openBranches = [], existing = [], agenda = null, now = Date.now() }) {
+  const ranked = availableTopics(topics, { openBranches, existing }).map((topic) => ({ topic, event: agendaMatch(topic, agenda, now) }))
+  const matched = ranked.filter((x) => x.event).sort((a, b) => a.event.date.localeCompare(b.event.date))
+  return [...matched, ...ranked.filter((x) => !x.event)]
 }
+
+export const pickTopic = (args) => rankTopics(args)[0] ?? null
 
 export function setTopicStatus(file, slug, status) {
   if (!STATUSES.includes(status)) throw new Error(`statut invalide : ${status}`)
@@ -70,7 +83,7 @@ export function validateTopics(file) {
     else if (seen.has(t.slug)) errs.push(`${at} : slug en double`)
     seen.add(t?.slug)
     if (!STATUSES.includes(t?.status)) errs.push(`${at} : statut invalide`)
-    if (!t?.wikipedia?.fr && !t?.wikipedia?.en) errs.push(`${at} : aucun article Wikipédia (fr ou en)`)
+    if (!/^Q\d+$/.test(t?.qid ?? '')) errs.push(`${at} : « qid » Wikidata requis (Q123)`)
     if (!Array.isArray(t?.keywords)) errs.push(`${at} : « keywords » doit être un tableau`)
   })
   return errs

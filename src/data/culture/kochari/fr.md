@@ -20,4 +20,4 @@ Sur le plan de son itinéraire historique et territorial, la danse s’est propa
 
 Chez les Grecs pontiques, la danse porte le nom de *Kótsari* (Κότσαρι) et s'inscrit, à l'instar du kochari arménien, dans la catégorie des danses vigoureuses et martiales. Exécutée originellement en cercle fermé sur un rythme pair de 2/4, elle tire son appellation pontique des termes *kotsi* (ou *kots*, provenant du grec médiéval *kottion*, qui désigne le talon) et *airo* (lever ou élever). L’ensemble signifie « lever le talon », le talon étant considéré par les Grecs comme la partie maîtresse du pied sollicitée par le danseur.
 
-Ces traditions ont fait l'objet d'une attention institutionnelle au niveau mondial. Le kochari arménien a ainsi été inscrit en 2017 sur la liste du patrimoine culturel immatériel nécessitant une sauvegarde urgente de l'UNESCO.
+Ces traditions ont fait l'objet d'une attention institutionnelle au niveau mondial. Le kochari arménien a ainsi été inscrit en 2017 sur la liste représentative du patrimoine culturel immatériel de l'humanité de l'UNESCO.

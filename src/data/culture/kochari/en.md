@@ -2,7 +2,7 @@
 title: "The Kochari: History, Steps, and Memory of an Emblematic Dance"
 description: "Discover the kochari, an ancient circle dance from the Armenian Highlands, from its unique movements to its UNESCO intangible heritage inscription."
 date: "2026-10-16"
-sourceHash: "17b14afb4bbd4d5a"
+sourceHash: "b22592164b655a32"
 model: "gemini-flash-latest"
 ---
 
@@ -22,4 +22,4 @@ In terms of its historical and territorial trajectory, the dance spread to the e
 
 Among Pontic Greeks, the dance is known as *Kotsari* (Κότσαρι) and falls, like the Armenian kochari, into the category of vigorous and martial dances. Originally performed in a closed circle to an even 2/4 rhythm, it derives its Pontic name from the terms *kotsi* (or *kots*, from medieval Greek *kottion*, meaning heel) and *airo* (to lift or raise). Together, it means “to lift the heel,” the heel being considered by the Greeks as the primary part of the foot engaged by the dancer.
 
-These traditions have garnered institutional attention on a global level. The Armenian kochari was thus inscribed in 2017 on UNESCO's List of Intangible Cultural Heritage in Need of Urgent Safeguarding.
+These traditions have garnered institutional attention on a global level. The Armenian kochari was thus inscribed in 2017 on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity.

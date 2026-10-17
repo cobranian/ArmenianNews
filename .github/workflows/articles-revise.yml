@@ -1,0 +1,146 @@
+# Corrections par commentaire : le propriétaire écrit `/corrige <consigne>`
+# sous une PR Culture (depuis son téléphone), le robot l'applique au fr.md,
+# relance les contrôles, réécrit la section automatique du corps de PR,
+# décoche « Faits vérifiés » si elle l'était, publie culture-check et répond.
+#
+# SÉCURITÉ : un commentaire est une consigne envoyée à un modèle, dans un job
+# qui détient des clés. Seul le PROPRIÉTAIRE du dépôt le déclenche (garde du
+# `if:` du job), et le texte du commentaire n'atteint le script que par env:
+# puis fichier — jamais interpolé dans un run:. Le script relit la commande
+# (parseReviseCommand) avant tout appel au modèle.
+#
+# Comme les autres robots Culture : un commit poussé avec le GITHUB_TOKEN ne
+# déclenche aucun workflow, d'où le statut culture-check publié ici.
+name: Culture — correction par commentaire
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  issues: write # la réaction 👀 passe par l'API des commentaires d'issue
+
+jobs:
+  revise:
+    if: >-
+      github.event.issue.pull_request &&
+      github.event.comment.author_association == 'OWNER' &&
+      startsWith(github.event.comment.body, '/corrige')
+    # Sous le job, pas au niveau du workflow : là, n'importe quel commentaire de
+    # la PR (job ensuite sauté par le if:) entrerait dans le groupe et
+    # évincerait en silence un /corrige en attente. GitHub ne garde qu'UN run
+    # en attente : un troisième /corrige rapproché remplace le deuxième.
+    concurrency:
+      group: culture-revise-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ github.event.issue.number }}
+      COMMENT_ID: ${{ github.event.comment.id }}
+    steps:
+      - name: Accuser réception
+        run: gh api -X POST "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" -f content=eyes || true
+
+      - name: PR concernée
+        id: pr
+        run: |
+          gh pr view "$PR" --json headRefName,state,isCrossRepository,body > "$RUNNER_TEMP/pr.json"
+          BRANCH="$(jq -r .headRefName "$RUNNER_TEMP/pr.json")"
+          case "$BRANCH" in
+            culture/*) ;;
+            *) echo "Branche hors Culture : rien à faire."; exit 0 ;;
+          esac
+          # Le slug devient un chemin et une ref : rien d'autre que [a-z0-9-].
+          if ! printf '%s' "$BRANCH" | grep -Eq '^culture/[a-z0-9-]+$'; then
+            echo "Branche au nom inattendu : rien à faire."; exit 0
+          fi
+          if [ "$(jq -r .state "$RUNNER_TEMP/pr.json")" != "OPEN" ]; then
+            echo "PR fermée : rien à faire."; exit 0
+          fi
+          if [ "$(jq -r .isCrossRepository "$RUNNER_TEMP/pr.json")" != "false" ]; then
+            echo "PR issue d'un fork : rien à faire."; exit 0
+          fi
+          jq -r .body "$RUNNER_TEMP/pr.json" > "$RUNNER_TEMP/body.md"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v7
+        if: steps.pr.outputs.branch != ''
+        with:
+          ref: ${{ steps.pr.outputs.branch }}
+      - uses: actions/setup-node@v6
+        if: steps.pr.outputs.branch != ''
+        with:
+          node-version: 24
+          cache: npm
+      - if: steps.pr.outputs.branch != ''
+        run: npm ci
+
+      - name: Réviser
+        id: rev
+        if: steps.pr.outputs.branch != ''
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+          COMMENT: ${{ github.event.comment.body }}
+          BRANCH: ${{ steps.pr.outputs.branch }}
+        run: |
+          SLUG="${BRANCH#culture/}"
+          printf '%s' "$COMMENT" > "$RUNNER_TEMP/instruction.md"
+          node scripts/culture-revise.mjs "$SLUG" \
+            --instruction "$RUNNER_TEMP/instruction.md" \
+            --pr-body "$RUNNER_TEMP/body.md" \
+            --out-body "$RUNNER_TEMP/new-body.md" \
+            --out-reply "$RUNNER_TEMP/reply.md"
+
+      - name: Pousser, mettre à jour la PR, publier le statut
+        id: pub
+        if: steps.rev.outcome == 'success' && steps.pr.outputs.branch != ''
+        env:
+          BRANCH: ${{ steps.pr.outputs.branch }}
+        run: |
+          SLUG="${BRANCH#culture/}"
+          # Commande non reconnue : le script n'a rien réécrit, rien à pousser.
+          [ -f "$RUNNER_TEMP/new-body.md" ] || exit 0
+          # Chaque échec s'inscrit dans la réponse, que l'étape suivante poste
+          # quoi qu'il arrive : sous bash -e, il partirait sinon sans un mot.
+          fail() { printf '\n⚠️ **Publication incomplète** : %s\n' "$1" >> "$RUNNER_TEMP/reply.md"; exit 1; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/culture
+          git diff --cached --quiet || git commit -m "Culture : révision « $SLUG »" || fail "commit impossible."
+          # Un relecteur a pu pousser pendant la révision : sans rebase, le
+          # push est refusé.
+          if ! git pull --rebase origin "$BRANCH"; then
+            git rebase --abort || true
+            # Le statut va sur la tête DISTANTE : le commit local n'a pas été poussé.
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse "origin/$BRANCH")" \
+              -f state=failure -f context=culture-check -f description="Révision à relancer : la branche a changé pendant la révision" || true
+            fail "la branche a changé pendant la révision et le rebase a échoué : rien n'a été poussé, renvoyez la consigne /corrige."
+          fi
+          git push origin "HEAD:$BRANCH" || fail "le push a échoué : la révision n'est pas sur la branche, renvoyez la consigne /corrige."
+          gh pr edit "$PR" --body-file "$RUNNER_TEMP/new-body.md" || fail "la révision est poussée, mais le corps de la PR n'a pas été mis à jour."
+          if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/new-body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          cat "$RUNNER_TEMP/check.txt"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
+            -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")" \
+            || fail "le statut culture-check n'a pas été publié."
+
+      - name: Répondre
+        if: always() && steps.pr.outputs.branch != ''
+        env:
+          REVISE: ${{ steps.rev.outcome }}
+        run: |
+          if [ -f "$RUNNER_TEMP/reply.md" ]; then
+            gh pr comment "$PR" --body-file "$RUNNER_TEMP/reply.md"
+          else
+            gh pr comment "$PR" --body "❌ La révision a échoué avant toute modification : voir le journal du workflow « Culture — correction par commentaire »."
+          fi
+          [ "$REVISE" = success ] || exit 1
