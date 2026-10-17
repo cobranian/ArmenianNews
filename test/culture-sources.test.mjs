@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  fetchWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, wikitextToText,
+  fetchWikipedia, fetchTopicWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, wikitextToText,
 } from '../scripts/lib/culture-sources.mjs'
 
 // Un faux fetch qui route par hôte/paramètre et note les appels.
@@ -33,6 +33,35 @@ test('fetchWikipedia : page absente → null, homonymie → lève', async () => 
   assert.equal(await fetchWikipedia('fr', 'X', missing.impl), null)
   const dab = router([[() => true, { query: { pages: [{ title: 'Ani', extract: 'Ani peut désigner', pageprops: { disambiguation: '' } }] } }]])
   await assert.rejects(fetchWikipedia('fr', 'Ani', dab.impl), /page d’homonymie : fr:Ani/)
+})
+
+// Un titre surchargé à la main peut désigner un homonyme : seul le qid fait foi.
+test('fetchTopicWikipedia : page d’une autre entité ou d’homonymie écartée avec avertissement', async () => {
+  const page = (title, qid, extra = {}) => ({ query: { pages: [{ title, extract: `Texte ${title}`, revisions: [{ revid: 1 }], pageprops: { wikibase_item: qid, ...extra } }] } })
+  const { impl } = router([
+    [(u) => u.host === 'fr.wikipedia.org', page('Kochari', 'Q1')],
+    [(u) => u.host === 'en.wikipedia.org', page('Koshary', 'Q2')],
+    [(u) => u.host === 'hy.wikipedia.org', page('Քոչարի', 'Q1', { disambiguation: '' })],
+  ])
+  const { wiki, warnings } = await fetchTopicWikipedia({ fr: 'Kochari', en: 'Koshary', hy: 'Քոչարի' }, 'Q1', { fetchImpl: impl })
+  assert.deepEqual(Object.keys(wiki), ['fr'])
+  assert.equal(wiki.fr.title, 'Kochari')
+  assert.deepEqual(warnings, [
+    'page en « Koshary » écartée : autre entité Wikidata (Q2 au lieu de Q1).',
+    'page hy « Քոչարի » écartée : page d’homonymie.',
+    'Pas d’article Wikipédia en ru.',
+  ])
+})
+
+test('fetchTopicWikipedia : page absente, panne réseau, rien en fr', async () => {
+  const impl = async (url) => {
+    const u = new URL(url)
+    if (u.host === 'en.wikipedia.org') return { ok: false, status: 503, json: async () => ({}) }
+    return { ok: true, status: 200, json: async () => ({ query: { pages: [{ title: 'X', missing: true }] } }) }
+  }
+  const { wiki, warnings } = await fetchTopicWikipedia({ fr: 'X', en: 'Y' }, 'Q1', { fetchImpl: impl, langs: ['fr', 'en'] })
+  assert.deepEqual(wiki, {})
+  assert.deepEqual(warnings, ['Wikipédia fr : « X » introuvable.', 'Wikipédia en indisponible (HTTP 503 en.wikipedia.org).'])
 })
 
 test('wikidataTime : précisions jour, mois, année, avant notre ère', () => {

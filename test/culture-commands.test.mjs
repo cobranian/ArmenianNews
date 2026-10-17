@@ -159,18 +159,19 @@ test('readIdeas : relit exactement le bloc JSON écrit par ideasIssueBody', () =
   assert.throws(() => readIdeas('pas de bloc'), /json/i)
 })
 
-test('applyIdeaCommand : ajout (article retiré du slug, wikipedia seulement si fourni)', () => {
+test('applyIdeaCommand : ajout (article retiré du slug, jamais de titre Wikipédia recopié)', () => {
   const ideas = readIdeas(ideasIssueBody(IDEAS))
   const r = applyIdeaCommand({ ideas, sujets: SUJETS(), cmd: { action: 'add', numbers: [1, 2] } })
   const added = r.sujets.topics.slice(2)
-  assert.deepEqual(added[0], { slug: 'tar', title: 'Le tar', qid: 'Q1', wikipedia: { fr: 'Tar (luth)', en: 'Tar (lute)' }, keywords: ['tar'], status: 'pending' })
-  assert.deepEqual(added[1], { slug: 'lavash', title: 'Le lavash', qid: 'Q2', wikipedia: { en: 'Lavash' }, keywords: ['lavash'], status: 'pending' })
+  // Le titre proposé par le modèle n'est pas vérifié : en surcharge, il
+  // l'emporterait sur les sitelinks du qid et ramènerait les homonymes.
+  assert.deepEqual(added[0], { slug: 'tar', title: 'Le tar', qid: 'Q1', keywords: ['tar'], status: 'pending' })
+  assert.deepEqual(added[1], { slug: 'lavash', title: 'Le lavash', qid: 'Q2', keywords: ['lavash'], status: 'pending' })
   assert.deepEqual(r.ideas.map((x) => x.status), ['added', 'added', 'proposed', 'proposed'])
   assert.equal(r.done, false)
   assert.match(r.reply, /Le tar/)
   assert.deepEqual(validateTopics(r.sujets), [])
   assert.equal(ideas[0].status, 'proposed', 'entrée non mutée')
-  // Sans wikipedia : la clé est omise.
   assert.deepEqual(addOne('the-duduk', 'Q5').sujets.topics[2], { slug: 'duduk', title: 'x', qid: 'Q5', keywords: [], status: 'pending' })
   // L'article n'est retiré que s'il reste quelque chose.
   assert.equal(addOne('la', 'Q6').sujets.topics[2].slug, 'la')

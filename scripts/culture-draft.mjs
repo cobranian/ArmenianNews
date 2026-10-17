@@ -10,20 +10,23 @@
  * Écrit dans $GITHUB_OUTPUT : `skipped=queue` (file de relecture pleine),
  * `slug` et `title` (brouillon écrit), `ideas=1` (idées à proposer).
  * Toute panne du modèle pendant la rédaction lève : pas de PR, relance manuelle.
+ * Un sujet sans page Wikipédia fr ni en utilisable (absente, homonymie, autre
+ * entité Wikidata) est sauté (« ✗ sujet … sauté ») et le suivant est essayé,
+ * MAX_TRIES au plus ; si aucun n'aboutit, sortie 1.
  */
 import { readFile, writeFile, mkdir, appendFile, access } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
-import { pickTopic, availableTopics, queueFull, needsIdeas } from './lib/culture-topic.mjs'
+import { rankTopics, availableTopics, queueFull, needsIdeas } from './lib/culture-topic.mjs'
 import { articleSlugs } from './lib/culture-load.mjs'
 import { chatDraft } from './lib/culture-llm.mjs'
 import {
   buildDraftMessages, buildClaimsMessages, buildIdeasMessages, parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts,
 } from './lib/culture-prompts.mjs'
 import {
-  fetchEntity, resolveTitles, fetchWikipedia, hseTitle, fetchHse, fetchCommonsCandidates, downloadImage,
+  fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, hseTitle, fetchHse, fetchCommonsCandidates, downloadImage,
 } from './lib/culture-sources.mjs'
 import { loadUnesco, unescoSource } from './lib/culture-unesco.mjs'
 import { mechanicalClaims, entityTexts, splitClaims, editorialAlerts } from './lib/culture-checks.mjs'
@@ -51,9 +54,8 @@ const output = async (k, v) => {
 }
 
 const LANGS = ['fr', 'en', 'hy', 'ru']
-// fetchWikipedia lève sur une page d'homonymie : c'est une erreur de sujet,
-// pas une panne réseau, et elle doit faire échouer le job.
-const isDisambiguation = (e) => /homonymie/.test(e?.message ?? '')
+// Sujets essayés par nuit : au-delà, c'est sujets.json qu'il faut revoir.
+const MAX_TRIES = 3
 
 const sujets = JSON.parse(await readFile(path.join(DIR, 'sujets.json'), 'utf-8'))
 const openBranches = values['open-branches'] ? JSON.parse(await readFile(values['open-branches'], 'utf-8')) : []
@@ -68,17 +70,29 @@ if (queueFull(openBranches)) {
 const agenda = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf-8'))
 const existing = await articleSlugs(DIR)
 
-let pick
+let tries
 if (values.topic) {
   const topic = sujets.topics.find((t) => t.slug === values.topic)
   if (!topic) throw new Error(`sujet inconnu : ${values.topic}`)
-  pick = { topic, event: null }
+  tries = [{ topic, event: null }]
 } else {
-  pick = pickTopic({ topics: sujets.topics, openBranches, existing, agenda, now: Date.now() })
+  tries = rankTopics({ topics: sujets.topics, openBranches, existing, agenda, now: Date.now() }).slice(0, MAX_TRIES)
 }
 
-if (pick) await draftArticle(pick)
-else console.log('Aucun sujet disponible : pas de brouillon cette nuit.')
+let pick = null
+for (const t of tries) {
+  const skipped = await draftArticle(t)
+  if (!skipped) {
+    pick = t
+    break
+  }
+  console.warn(`✗ sujet ${t.topic.slug} sauté : ${skipped}`)
+}
+if (!tries.length) console.log('Aucun sujet disponible : pas de brouillon cette nuit.')
+else if (!pick) {
+  console.error(`✗ aucun des ${tries.length} sujet(s) essayé(s) n’a de page Wikipédia fr ni en utilisable — vérifiez leur qid dans sujets.json.`)
+  process.exit(1)
+}
 
 // Le sujet qui vient d'être rédigé n'est plus disponible : sa PR va s'ouvrir.
 const remaining = availableTopics(sujets.topics, {
@@ -96,28 +110,19 @@ if (needsIdeas(remaining) && !values['ideas-open']) {
   }
 }
 
+// Rend `null` une fois le brouillon écrit, ou la raison pour laquelle le sujet
+// est sauté (aucune page fr ni en utilisable) — rien n'est alors écrit.
 async function draftArticle({ topic, event }) {
   if (existing.includes(topic.slug)) throw new Error(`src/data/culture/${topic.slug}/ existe déjà — rien à rédiger`)
   console.log(`Sujet : ${topic.slug} (${topic.qid})${event ? ` (événement : ${event.title}, ${event.date})` : ''}`)
 
-  const warnings = []
   const entity = await fetchEntity(topic.qid)
   const titles = resolveTitles(topic, entity)
-  const wiki = {}
-  for (const l of LANGS) {
-    if (!titles[l]) {
-      if (l !== 'fr') warnings.push(`Pas d’article Wikipédia en ${l}.`) // fr : avertissement dédié plus bas
-      continue
-    }
-    try {
-      wiki[l] = await fetchWikipedia(l, titles[l])
-      if (!wiki[l]) warnings.push(`Wikipédia ${l} : « ${titles[l]} » introuvable.`)
-    } catch (e) {
-      if (isDisambiguation(e)) throw e
-      warnings.push(`Wikipédia ${l} indisponible (${e.message}).`)
-    }
+  const { wiki, warnings } = await fetchTopicWikipedia(titles, topic.qid, { langs: LANGS })
+  if (!wiki.fr && !wiki.en) {
+    const why = warnings.filter((w) => !/^Pas d’article Wikipédia en (hy|ru)\./.test(w))
+    return `aucune page Wikipédia fr ni en utilisable pour ${topic.qid}${why.length ? ` (${why.join(' ; ')})` : ''}`
   }
-  if (!wiki.fr && !wiki.en) throw new Error(`aucune source Wikipédia fr ni en pour ${topic.slug} (${topic.qid}) — vérifiez sujets.json`)
   if (!wiki.fr) warnings.push('Pas d’article Wikipédia en français : brouillon rédigé depuis les autres langues.')
 
   const hTitle = hseTitle(entity)
@@ -180,7 +185,7 @@ async function draftArticle({ topic, event }) {
 
   if (values.dry) {
     console.log(`\n${frText}\n----\n${body}`)
-    return
+    return null
   }
 
   const base = path.join(DIR, topic.slug)
@@ -198,6 +203,7 @@ async function draftArticle({ topic, event }) {
   await writeFile(values['out-body'], body)
   await output('slug', topic.slug)
   await output('title', draft.title)
+  return null
 }
 
 // Une idée n'est gardée que si son article Wikipédia existe vraiment (le modèle

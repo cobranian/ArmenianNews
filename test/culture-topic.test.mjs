@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import {
-  availableTopics, agendaMatch, pickTopic, setTopicStatus, validateTopics, WINDOW_DAYS,
+  availableTopics, agendaMatch, pickTopic, rankTopics, setTopicStatus, validateTopics, WINDOW_DAYS,
   queueFull, needsIdeas, MAX_OPEN, MIN_AVAILABLE,
 } from '../scripts/lib/culture-topic.mjs'
 
@@ -49,6 +49,17 @@ test('pickTopic : le sujet de l’événement le plus proche passe devant la lis
 test('pickTopic : sans événement, le premier disponible ; sans sujet, null', () => {
   assert.deepEqual(pickTopic({ topics: [T('a'), T('b')], agenda: null, now: NOW }), { topic: T('a'), event: null })
   assert.equal(pickTopic({ topics: [T('a', ['a'], 'published')], agenda: null, now: NOW }), null)
+})
+
+// Un sujet sauté (aucune page fr ni en utilisable) cède la place au suivant :
+// l'ordre de repli est celui de pickTopic, événements d'abord, puis la liste.
+test('rankTopics : événements par date, puis la liste ; le premier est pickTopic', () => {
+  const topics = [T('komitas'), T('duduk'), T('kochari'), T('ani', ['ani'], 'published')]
+  const agenda = { switzerland: [ev('Duduk', 10), ev('Kochari', 4)] }
+  const ranked = rankTopics({ topics, agenda, now: NOW })
+  assert.deepEqual(ranked.map((x) => [x.topic.slug, x.event?.title ?? null]), [['kochari', 'Kochari'], ['duduk', 'Duduk'], ['komitas', null]])
+  assert.deepEqual(pickTopic({ topics, agenda, now: NOW }), ranked[0])
+  assert.deepEqual(rankTopics({ topics: [], agenda, now: NOW }), [])
 })
 
 test('setTopicStatus', () => {

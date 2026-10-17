@@ -56,15 +56,16 @@ export function agendaMatch(topic, agenda, now = Date.now()) {
   )
 }
 
-export function pickTopic({ topics, openBranches = [], existing = [], agenda = null, now = Date.now() }) {
-  const avail = availableTopics(topics, { openBranches, existing })
-  const matched = avail
-    .map((topic) => ({ topic, event: agendaMatch(topic, agenda, now) }))
-    .filter((x) => x.event)
-    .sort((a, b) => a.event.date.localeCompare(b.event.date))
-  if (matched.length) return matched[0]
-  return avail.length ? { topic: avail[0], event: null } : null
+// Les sujets disponibles dans l'ordre où les essayer : ceux d'un événement
+// proche (le plus proche d'abord), puis les autres dans l'ordre de la liste.
+// Un sujet sauté (aucune page fr ni en utilisable) cède la place au suivant.
+export function rankTopics({ topics, openBranches = [], existing = [], agenda = null, now = Date.now() }) {
+  const ranked = availableTopics(topics, { openBranches, existing }).map((topic) => ({ topic, event: agendaMatch(topic, agenda, now) }))
+  const matched = ranked.filter((x) => x.event).sort((a, b) => a.event.date.localeCompare(b.event.date))
+  return [...matched, ...ranked.filter((x) => !x.event)]
 }
+
+export const pickTopic = (args) => rankTopics(args)[0] ?? null
 
 export function setTopicStatus(file, slug, status) {
   if (!STATUSES.includes(status)) throw new Error(`statut invalide : ${status}`)

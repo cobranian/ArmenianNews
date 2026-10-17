@@ -133,12 +133,14 @@ export function applyIdeaCommand({ ideas, sujets, cmd }) {
       lines.push(`- n° ${n} (${idea.title}) : non ajoutée, ${why} est déjà dans sujets.json (sujet « ${twin.slug} »).`)
       continue
     }
-    const wikipedia = Object.fromEntries(Object.entries(idea.wikipedia ?? {}).filter(([, v]) => v))
+    // Le qid suffit : ses sitelinks désignent les bonnes pages. Les titres
+    // Wikipédia de l'idée, proposés par le modèle, ne sont pas recopiés — en
+    // surcharge (`topic.wikipedia`), ils l'emporteraient sur les sitelinks et
+    // ramèneraient les homonymes.
     topics.push({
       slug,
       title: idea.title,
       qid: idea.qid,
-      ...(Object.keys(wikipedia).length ? { wikipedia } : {}),
       keywords: Array.isArray(idea.keywords) ? idea.keywords : [],
       status: 'pending',
     })

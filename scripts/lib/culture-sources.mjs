@@ -42,7 +42,8 @@ export async function fetchWikipedia(lang, title, fetchImpl = fetch) {
   if (!p || p.missing || p.invalid || !p.extract) return null
   // Une homonymie n'est jamais un article : on lève plutôt que de rendre null,
   // pour ne pas la confondre avec une page absente (et ne pas rédiger dessus).
-  if (p.pageprops && 'disambiguation' in p.pageprops) throw new Error(`page d’homonymie : ${lang}:${title}`)
+  if (p.pageprops && 'disambiguation' in p.pageprops)
+    throw Object.assign(new Error(`page d’homonymie : ${lang}:${title}`), { disambiguation: true })
   return {
     kind: 'wikipedia',
     lang,
@@ -54,6 +55,35 @@ export async function fetchWikipedia(lang, title, fetchImpl = fetch) {
     wikidata: p.pageprops?.wikibase_item ?? null,
     pageImage: p.pageimage ?? null,
   }
+}
+
+// Les pages Wikipédia d'un sujet, chacune vérifiée contre son qid : un titre
+// (surcharge manuelle, ou sitelink devenu redirection) peut désigner un
+// homonyme — « Kochari » a rendu le koshary égyptien. Une page d'une autre
+// entité, ou d'homonymie, est écartée avec un avertissement pour la PR ; elle
+// ne fait pas échouer le sujet à elle seule.
+export async function fetchTopicWikipedia(titles, qid, { langs = ENTITY_LANGS, fetchImpl = fetch } = {}) {
+  const wiki = {}
+  const warnings = []
+  for (const l of langs) {
+    const title = titles?.[l]
+    if (!title) {
+      if (l !== 'fr') warnings.push(`Pas d’article Wikipédia en ${l}.`) // fr : avertissement dédié chez l'appelant
+      continue
+    }
+    let page
+    try {
+      page = await fetchWikipedia(l, title, fetchImpl)
+    } catch (e) {
+      warnings.push(e.disambiguation ? `page ${l} « ${title} » écartée : page d’homonymie.` : `Wikipédia ${l} indisponible (${e.message}).`)
+      continue
+    }
+    if (!page) warnings.push(`Wikipédia ${l} : « ${title} » introuvable.`)
+    else if (page.wikidata !== qid)
+      warnings.push(`page ${l} « ${page.title} » écartée : autre entité Wikidata (${page.wikidata ?? 'aucune'} au lieu de ${qid}).`)
+    else wiki[l] = page
+  }
+  return { wiki, warnings }
 }
 
 // Le texte brut d'un wikitexte : modèles, références, balises et liens retirés.
