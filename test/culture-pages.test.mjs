@@ -57,24 +57,45 @@ test('flèches : vers l’autre article de la langue, jamais vers soi ni hors la
   const bySlug = cultureLangsBySlug(list)
   const fr = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
   // Deux articles : une seule flèche (« suivant »), sinon les deux mèneraient au même endroit.
-  assert.ok(fr.includes('rel="next" href="/culture/duduk/"'))
-  assert.ok(!fr.includes('rel="prev"'))
-  assert.ok(!fr.includes('rel="next" href="/culture/komitas/"'))
+  assert.ok(fr.includes('data-step="next" rel="next" href="/culture/duduk/"'))
+  assert.ok(!fr.includes('data-step="prev"'))
+  assert.ok(!fr.includes('data-step="next" rel="next" href="/culture/komitas/"'))
   assert.ok(fr.includes('<script src="/culture-keys.js" defer></script>'))
   const ru = cultureArticleHtml({ siteId: 'org', lang: 'ru', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
   assert.ok(!ru.includes('culture-pager'), 'seul article en russe : pas de flèche')
 })
 
-test('flèches : boucle sur trois articles', async () => {
+test('flèches : boucle à l’écran, mais rel seulement sur les liens qui ne font pas le tour', async () => {
   const { list } = await fixture()
   const third = { ...list[0], slug: 'khatchkar', date: '2026-10-01' }
   const all = [...list, third]
   const bySlug = cultureLangsBySlug(all)
   const first = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: all[0], list: all, bySlug, cssHref: CSS, now: NOW })
-  assert.ok(first.includes('rel="prev" href="/culture/khatchkar/"'), 'avant le premier : le dernier')
-  assert.ok(first.includes('rel="next" href="/culture/duduk/"'))
+  assert.ok(first.includes('data-step="prev" href="/culture/khatchkar/"'), 'avant le premier : le dernier, sans rel')
+  assert.ok(!first.includes('rel="prev"'))
+  assert.ok(first.includes('data-step="next" rel="next" href="/culture/duduk/"'))
   const last = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: third, list: all, bySlug, cssHref: CSS, now: NOW })
-  assert.ok(last.includes('rel="next" href="/culture/komitas/"'), 'après le dernier : le premier')
+  assert.ok(last.includes('data-step="next" href="/culture/komitas/"'), 'après le dernier : le premier, sans rel')
+  assert.ok(!last.includes('rel="next"'))
+  assert.ok(last.includes('data-step="prev" rel="prev" href="/culture/duduk/"'))
+})
+
+test('« À lire aussi » : sans l’article lui-même, seulement la langue de la page, voisins en dernier', async () => {
+  const { list } = await fixture()
+  const bySlug = cultureLangsBySlug(list)
+  const fr = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
+  const more = fr.slice(fr.indexOf('culture__more'))
+  assert.ok(more.includes('href="/culture/duduk/"'), 'seul autre article : repris même s’il est voisin')
+  assert.ok(!more.includes('href="/culture/komitas/"'))
+  const ru = cultureArticleHtml({ siteId: 'org', lang: 'ru', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
+  assert.ok(!ru.includes('culture__more'), 'rien d’autre en russe')
+  const extra = ['a', 'b', 'c'].map((slug, k) => ({ ...list[0], slug, date: `2026-09-0${k + 1}` }))
+  const all = [...list, ...extra]
+  const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: all[0], list: all, bySlug: cultureLangsBySlug(all), cssHref: CSS, now: NOW })
+  const m = html.slice(html.indexOf('culture__more'))
+  // Voisins de komitas : duduk (suivant) et c (précédent, en boucle) → À lire aussi : a, b, puis un voisin.
+  assert.ok(m.includes('/culture/a/') && m.includes('/culture/b/'))
+  assert.equal((m.match(/class="culture-card"/g) ?? []).length, 3)
 })
 
 test('sélecteur de langue : même article s’il est traduit, sinon l’index de la langue', async () => {
@@ -82,7 +103,7 @@ test('sélecteur de langue : même article s’il est traduit, sinon l’index d
   const bySlug = cultureLangsBySlug(list)
   const duduk = list.find((x) => x.slug === 'duduk')
   const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: duduk, list, bySlug, cssHref: CSS, now: NOW })
-  assert.ok(html.includes('class="lang"'))
+  assert.ok(html.includes('<div class="lang" role="group" aria-label="Langue">'), 'libellé traduit')
   assert.ok(html.includes('href="https://armenianews.org/hy/culture/duduk/" hreflang="hy"'))
   assert.ok(html.includes('href="https://armenianews.org/ru/culture/" hreflang="ru"'), 'duduk absent en russe')
   assert.ok(html.includes('hreflang="fr" lang="fr" title="Français" aria-current="page"'))

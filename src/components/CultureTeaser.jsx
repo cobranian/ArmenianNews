@@ -13,16 +13,44 @@ import { CULTURE_STRINGS } from '../cultureStrings.js'
 // → rien de rendu. Toutes les diapositives sont dans le DOM (le prérendu les
 // cuit, Google lit leurs liens) ; seules les inactives sont `inert`, donc
 // hors du parcours clavier et de l'arbre d'accessibilité.
+//
+// `inert` est posé par la PROPRIÉTÉ DOM (setInert), pas par un attribut JSX :
+// React 18 ne connaît pas l'attribut et React 19 en fait un booléen — une
+// chaîne vide y vaut faux, et les diapositives cachées reviendraient dans le
+// parcours clavier sans un mot. La propriété se reflète en attribut, que le
+// prérendu cuit.
+const setInert = (inert) => (el) => {
+  if (el) el.inert = inert
+}
+
+// Distance dans la boucle : la dernière diapositive est voisine de la première.
+const ringDistance = (a, b, n) => Math.min((a - b + n) % n, (b - a + n) % n)
 export function CultureTeaser() {
   const { lang } = useI18n()
   const items = TEASER[lang] ?? []
   const [index, setIndex] = useState(0)
   const [broken, setBroken] = useState({})
+  // Tant que personne ne s'est approché du carrousel, toutes les images
+  // restent différées (loading="lazy") : la section est sous le pli. Dès un
+  // premier signe d'intérêt, la diapositive affichée et ses deux voisines
+  // passent en chargement immédiat — sinon chaque image ne partirait qu'en
+  // glissant à l'écran, et le cadre défilerait vide.
+  const [warm, setWarm] = useState(false)
   const touch = useRef(null)
+  const region = useRef(null)
   if (!items.length) return null
   const s = CULTURE_STRINGS[lang]
   const n = items.length
-  const go = (d) => setIndex((x) => (x + d + n) % n)
+  const go = (d) => {
+    // Le focus est sur un lien de la diapositive qui s'en va : elle va devenir
+    // inert, le navigateur lâcherait le focus sur <body> et les flèches
+    // suivantes n'atteindraient plus le carrousel. On le rend au carrousel.
+    const el = region.current
+    if (el && el !== document.activeElement && el.contains(document.activeElement)) el.focus()
+    setWarm(true)
+    setIndex((x) => (x + d + n) % n)
+  }
+  const warmUp = () => setWarm(true)
 
   const onKeyDown = (e) => {
     if (n < 2 || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
@@ -56,13 +84,19 @@ export function CultureTeaser() {
         </a>
       </div>
       <div
+        ref={region}
         className="cc"
         role="region"
         aria-roledescription="carousel"
         aria-label={s.carousel}
         tabIndex={n > 1 ? 0 : undefined}
         onKeyDown={onKeyDown}
-        onTouchStart={onTouchStart}
+        onFocus={warmUp}
+        onPointerEnter={warmUp}
+        onTouchStart={(e) => {
+          warmUp()
+          onTouchStart(e)
+        }}
         onTouchEnd={onTouchEnd}
       >
         <div className="cc__viewport">
@@ -77,12 +111,12 @@ export function CultureTeaser() {
                   aria-roledescription="slide"
                   aria-label={`${i + 1} / ${n}`}
                   aria-hidden={active ? undefined : 'true'}
-                  {...(active ? {} : { inert: '' })}
+                  ref={setInert(!active)}
                 >
                   <a className="cc__media" href={href} tabIndex={-1} aria-hidden="true">
                     {x.image && !broken[x.slug] ? (
                       <img
-                        loading="lazy"
+                        loading={warm && ringDistance(i, index, n) <= 1 ? 'eager' : 'lazy'}
                         decoding="async"
                         src={cultureImagePath(x.slug, 'webp')}
                         alt=""

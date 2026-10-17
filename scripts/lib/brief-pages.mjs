@@ -10,7 +10,7 @@
  */
 import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { ALL_LANGS, briefPath, briefUrl, siteOf } from '../../sites.config.js'
+import { ALL_LANGS, briefPath, briefUrl, langHrefsFor, siteOf } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
 import { RUBRICS } from '../../src/rubrics.js'
@@ -23,8 +23,7 @@ import { esc, pageShell } from './static-shell.mjs'
 // langue si elle a paru, sinon l'index de cette langue (les quatre langues ne
 // paraissent pas toujours le même jour — voir brief-links.mjs).
 export function briefLangHrefs(date, byDate) {
-  const present = date === null ? ALL_LANGS : (byDate.get(date) ?? [])
-  return Object.fromEntries(ALL_LANGS.map((l) => [l, briefUrl(l, present.includes(l) ? date : null)]))
+  return langHrefsFor(date === null ? ALL_LANGS : (byDate.get(date) ?? []), briefUrl, date)
 }
 
 const DATE_FILE = /^(\d{4}-\d{2}-\d{2})\.json$/

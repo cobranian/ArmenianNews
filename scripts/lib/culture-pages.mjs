@@ -9,7 +9,7 @@
  */
 import { copyFile, mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { ALL_LANGS, culturePath, cultureUrl, cultureImagePath, siteOf } from '../../sites.config.js'
+import { ALL_LANGS, culturePath, cultureUrl, cultureImagePath, langHrefsFor, siteOf } from '../../sites.config.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { cultureHeadFor } from './site-meta.mjs'
 import { cultureLangsBySlug } from './culture-links.mjs'
@@ -34,29 +34,52 @@ const card = (lang) => (x) =>
 // traduit, sinon l'index Culture de cette langue (cultureAlternates ne cite
 // que les langues présentes — même règle, pour la même raison).
 export function cultureLangHrefs(slug, bySlug) {
-  const present = slug === null ? ALL_LANGS : (bySlug.get(slug) ?? [])
-  return Object.fromEntries(ALL_LANGS.map((l) => [l, cultureUrl(l, present.includes(l) ? slug : null)]))
+  return langHrefsFor(slug === null ? ALL_LANGS : (bySlug.get(slug) ?? []), cultureUrl, slug)
 }
 
 // Article précédent / suivant, dans l'ordre de l'index (le plus récent
-// d'abord), en BOUCLE : après le dernier revient le premier. Deux articles
-// seulement → une seule flèche, sinon les deux mèneraient au même endroit.
-// rel="prev"/"next" : c'est ce que lit /culture-keys.js pour les flèches du
-// clavier.
-function pager(lang, article, list) {
-  const s = CULTURE_STRINGS[lang]
+// d'abord), en BOUCLE à l'écran : après le dernier revient le premier. Deux
+// articles seulement → une seule flèche, sinon les deux mèneraient au même
+// endroit.
+//
+// rel="prev"/"next" n'est posé QUE sur un lien qui ne fait pas le tour : pour
+// un robot, ces deux valeurs décrivent une suite linéaire, et un « précédent »
+// du plus récent vers le plus ancien la contredirait. Les flèches du clavier
+// (/culture-keys.js) lisent data-step, présent sur les deux liens.
+function neighbours(lang, article, list) {
   const items = list.filter((x) => x.langs[lang])
   const i = items.findIndex((x) => x.slug === article.slug)
-  if (i < 0 || items.length < 2) return ''
-  const next = items[(i + 1) % items.length]
-  const prev = items.length > 2 ? items[(i - 1 + items.length) % items.length] : null
-  const link = (x, rel, label, arrow) =>
-    `<a class="culture-step culture-step--${rel}" rel="${rel}" href="${culturePath(lang, x.slug)}">${thumb(x)}<span class="culture-step__label"><span class="culture-step__arrow" aria-hidden="true">${arrow}</span> ${esc(label)}</span><span class="culture-step__title">${esc(x.langs[lang].title)}</span></a>`
+  if (i < 0 || items.length < 2) return null
+  const n = items.length
+  return {
+    items,
+    i,
+    next: { x: items[(i + 1) % n], wraps: i === n - 1 },
+    prev: n > 2 ? { x: items[(i - 1 + n) % n], wraps: i === 0 } : null,
+  }
+}
+
+function pager(lang, nb) {
+  if (!nb) return ''
+  const s = CULTURE_STRINGS[lang]
+  const link = ({ x, wraps }, step, label, arrow) =>
+    `<a class="culture-step culture-step--${step}" data-step="${step}"${wraps ? '' : ` rel="${step}"`} href="${culturePath(lang, x.slug)}">${thumb(x)}<span class="culture-step__label"><span class="culture-step__arrow" aria-hidden="true">${arrow}</span> ${esc(label)}</span><span class="culture-step__title">${esc(x.langs[lang].title)}</span></a>`
   return `<nav class="culture-pager" aria-label="${esc(s.carousel)}">
-        ${prev ? link(prev, 'prev', s.prev, '‹') : '<span></span>'}
-        <span class="culture-pager__count">${i + 1} / ${items.length}</span>
-        ${link(next, 'next', s.next, '›')}
+        ${nb.prev ? link(nb.prev, 'prev', s.prev, '‹') : '<span></span>'}
+        <span class="culture-pager__count">${nb.i + 1} / ${nb.items.length}</span>
+        ${link(nb.next, 'next', s.next, '›')}
       </nav>`
+}
+
+// « À lire aussi » : trois autres articles de la langue, ceux que les flèches
+// ne montrent pas d'abord — chaque article garde ainsi trois liens internes
+// distincts de plus, au lieu des seuls voisins de la boucle.
+function readAlso(lang, article, list, nb) {
+  const near = new Set([nb?.next.x.slug, nb?.prev?.x.slug].filter(Boolean))
+  const others = list.filter((x) => x.slug !== article.slug && x.langs[lang])
+  const picked = [...others.filter((x) => !near.has(x.slug)), ...others.filter((x) => near.has(x.slug))].slice(0, 3)
+  if (!picked.length) return ''
+  return `<section class="culture__more"><h2>${esc(CULTURE_STRINGS[lang].readAlso)}</h2><ul class="culture-list">${picked.map(card(lang)).join('')}</ul></section>`
 }
 
 function figure(lang, article) {
@@ -88,6 +111,7 @@ function sourceLabel(x) {
 export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now() }) {
   const s = CULTURE_STRINGS[lang]
   const a = article.langs[lang]
+  const nb = neighbours(lang, article, list)
   const sources = article.sources
     .map((x) => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.title ?? x.url)}</a>${sourceLabel(x)}</li>`)
     .join('')
@@ -106,7 +130,8 @@ ${renderMarkdown(a.body)}
         <p>${esc(s.sourcesNote)}</p>
         <p>${esc(s.aiNote)}</p>
       </section>
-      ${pager(lang, article, list)}
+      ${pager(lang, nb)}
+      ${readAlso(lang, article, list, nb)}
     </main>`
   const head = cultureHeadFor({ siteId, lang, slug: article.slug, article, bySlug })
   return pageShell({

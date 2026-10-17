@@ -390,7 +390,7 @@ for (const site of Object.values(SITES)) {
 // citer le domaine voisin (.ch ↔ .org). On le retire avant le contrôle
 // « cite le voisin », et on exige à la place que ses quatre liens soient
 // exactement ceux attendus — un lien vers une traduction absente serait un 404.
-const LANG_BAR = /<div class="lang" role="group" aria-label="Language">.*?<\/div>/
+const LANG_BAR = /<div class="lang" role="group" aria-label="[^"]*">.*?<\/div>/
 function langBarProblem(html, expected) {
   const bar = html.match(LANG_BAR)?.[0]
   if (!bar) return 'sélecteur de langue absent'
