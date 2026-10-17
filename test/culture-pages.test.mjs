@@ -52,14 +52,44 @@ test('événement : affiché s’il est à venir, masqué sinon', async () => {
   assert.ok(!cultureArticleHtml({ ...args, now: new Date('2026-11-01').getTime() }).includes('Concert'))
 })
 
-test('« À lire aussi » : sans l’article lui-même, seulement la langue de la page', async () => {
+test('flèches : vers l’autre article de la langue, jamais vers soi ni hors langue', async () => {
   const { list } = await fixture()
   const bySlug = cultureLangsBySlug(list)
   const fr = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
-  assert.ok(fr.includes('href="/culture/duduk/"'))
-  assert.ok(!fr.includes('culture-card"><a href="/culture/komitas/"'))
+  // Deux articles : une seule flèche (« suivant »), sinon les deux mèneraient au même endroit.
+  assert.ok(fr.includes('rel="next" href="/culture/duduk/"'))
+  assert.ok(!fr.includes('rel="prev"'))
+  assert.ok(!fr.includes('rel="next" href="/culture/komitas/"'))
+  assert.ok(fr.includes('<script src="/culture-keys.js" defer></script>'))
   const ru = cultureArticleHtml({ siteId: 'org', lang: 'ru', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
-  assert.ok(!ru.includes('/ru/culture/duduk/'), 'duduk n’existe pas en russe')
+  assert.ok(!ru.includes('culture-pager'), 'seul article en russe : pas de flèche')
+})
+
+test('flèches : boucle sur trois articles', async () => {
+  const { list } = await fixture()
+  const third = { ...list[0], slug: 'khatchkar', date: '2026-10-01' }
+  const all = [...list, third]
+  const bySlug = cultureLangsBySlug(all)
+  const first = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: all[0], list: all, bySlug, cssHref: CSS, now: NOW })
+  assert.ok(first.includes('rel="prev" href="/culture/khatchkar/"'), 'avant le premier : le dernier')
+  assert.ok(first.includes('rel="next" href="/culture/duduk/"'))
+  const last = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: third, list: all, bySlug, cssHref: CSS, now: NOW })
+  assert.ok(last.includes('rel="next" href="/culture/komitas/"'), 'après le dernier : le premier')
+})
+
+test('sélecteur de langue : même article s’il est traduit, sinon l’index de la langue', async () => {
+  const { list } = await fixture()
+  const bySlug = cultureLangsBySlug(list)
+  const duduk = list.find((x) => x.slug === 'duduk')
+  const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: duduk, list, bySlug, cssHref: CSS, now: NOW })
+  assert.ok(html.includes('class="lang"'))
+  assert.ok(html.includes('href="https://armenianews.org/hy/culture/duduk/" hreflang="hy"'))
+  assert.ok(html.includes('href="https://armenianews.org/ru/culture/" hreflang="ru"'), 'duduk absent en russe')
+  assert.ok(html.includes('hreflang="fr" lang="fr" title="Français" aria-current="page"'))
+  const idx = cultureIndexHtml({ siteId: 'org', lang: 'en', list, bySlug, cssHref: CSS })
+  assert.ok(idx.includes('href="https://armenieinfo.ch/culture/" hreflang="fr"'))
+  const bar = idx.slice(idx.indexOf('class="lang"'))
+  assert.ok(bar.indexOf('hreflang="en"') < bar.indexOf('hreflang="fr"'), 'langue du domaine en tête')
 })
 
 test('page : une source ՀՍՀ et une source UNESCO sont étiquetées ; une source sans kind reste Wikipedia', async () => {
@@ -82,7 +112,8 @@ test('article sans image : motif, pas de <img>', async () => {
   const { list } = await fixture()
   const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[1], list, bySlug: cultureLangsBySlug(list), cssHref: CSS, now: NOW })
   assert.ok(html.includes('culture__figure--motif'))
-  assert.ok(!html.includes('<img'))
+  // Aucune image de CET article (la flèche vers komitas porte la sienne).
+  assert.ok(!html.includes('/culture/duduk/image'))
 })
 
 test('index : cartes de la langue ; vide → noindex', async () => {

@@ -197,3 +197,13 @@ test('index vide : noindex, follow ; index rempli : pas de robots', () => {
   const full = briefIndexHtml({ siteId: 'ch', lang: 'fr', list, byDate: briefLangsByDate({ fr: list }), cssHref: CSS })
   assert.ok(!full.includes('name="robots"'))
 })
+
+test('sélecteur de langue : brève du même jour si elle a paru, sinon l’index de la langue', () => {
+  const briefs = { fr: [b('fr', '2026-10-16')], en: [b('en', '2026-10-16')], hy: [], ru: [] }
+  const byDate = briefLangsByDate(briefs)
+  const html = briefPageHtml({ siteId: 'ch', lang: 'fr', brief: briefs.fr[0], list: briefs.fr, byDate, cssHref: '/a.css' })
+  const bar = html.slice(html.indexOf('class="lang"'))
+  assert.ok(bar.includes(`href="${briefUrl('en', '2026-10-16')}" hreflang="en"`))
+  assert.ok(bar.includes(`href="${briefUrl('hy')}" hreflang="hy"`), 'pas de brève hy ce jour-là')
+  assert.ok(bar.includes('hreflang="fr" lang="fr" title="Français" aria-current="page"'))
+})

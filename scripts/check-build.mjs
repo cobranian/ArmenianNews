@@ -24,7 +24,8 @@ import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
 import { agendaGuardChecks } from './lib/agenda-guard.mjs'
-import { loadBriefs } from './lib/brief-pages.mjs'
+import { loadBriefs, briefLangHrefs } from './lib/brief-pages.mjs'
+import { cultureLangHrefs } from './lib/culture-pages.mjs'
 import { briefLangsByDate, briefAlternates } from './lib/brief-links.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -385,6 +386,20 @@ for (const site of Object.values(SITES)) {
   }
 }
 
+// Le sélecteur de langue des pages statiques est le SEUL endroit qui doit
+// citer le domaine voisin (.ch ↔ .org). On le retire avant le contrôle
+// « cite le voisin », et on exige à la place que ses quatre liens soient
+// exactement ceux attendus — un lien vers une traduction absente serait un 404.
+const LANG_BAR = /<div class="lang" role="group" aria-label="Language">.*?<\/div>/
+function langBarProblem(html, expected) {
+  const bar = html.match(LANG_BAR)?.[0]
+  if (!bar) return 'sélecteur de langue absent'
+  const got = Object.fromEntries([...bar.matchAll(/href="([^"]+)" hreflang="([^"]+)"/g)].map((m) => [m[2], m[1]]))
+  return ALL_LANGS.every((l) => got[l] === expected[l]) && Object.keys(got).length === ALL_LANGS.length
+    ? null
+    : 'sélecteur de langue : liens inattendus'
+}
+
 // Les brèves : chaque page attendue existe, dans sa langue, avec SON canonical,
 // un bloc hreflang exactement égal à briefAlternates (donc sans langue absente
 // ce jour-là), sans le domaine voisin, et listée dans le sitemap. Les liens de
@@ -406,7 +421,9 @@ for (const site of Object.values(SITES)) {
         if (!html.includes(`<link rel="canonical" href="${briefUrl(lang, date)}" />`)) fail('canonical')
         const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
         if (JSON.stringify(got) !== JSON.stringify(briefAlternates(date, byDate))) fail('hreflang')
-        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '')
+        const barWhy = langBarProblem(html, briefLangHrefs(date, byDate))
+        if (barWhy) fail(barWhy)
+        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')
         if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
         if (!sitemap.includes(`<loc>${briefUrl(lang, date)}</loc>`)) fail('absente du sitemap')
       }
@@ -437,7 +454,9 @@ for (const site of Object.values(SITES)) {
         if (!html.includes(`<link rel="canonical" href="${cultureUrl(lang, slug)}" />`)) fail('canonical')
         const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
         if (JSON.stringify(got) !== JSON.stringify(cultureAlternates(slug, bySlug))) fail('hreflang')
-        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '')
+        const barWhy = langBarProblem(html, cultureLangHrefs(slug, bySlug))
+        if (barWhy) fail(barWhy)
+        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')
         if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
         if (mine.length && !sitemap.includes(`<loc>${cultureUrl(lang, slug)}</loc>`)) fail('absente du sitemap')
         const article = slug && mine.find((a) => a.slug === slug)

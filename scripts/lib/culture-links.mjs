@@ -28,7 +28,15 @@ export function teaserFor(articles, langs, n = 3) {
       articles
         .filter((a) => a.langs[l])
         .slice(0, n)
-        .map((a) => ({ slug: a.slug, title: a.langs[l].title, description: a.langs[l].description, date: a.date })),
+        .map((a) => ({
+          slug: a.slug,
+          title: a.langs[l].title,
+          description: a.langs[l].description,
+          date: a.date,
+          // Le carrousel de l'accueil pose l'image copiée au build
+          // (cultureImagePath) ; false → motif, jamais d'<img> vers un 404.
+          image: Boolean(a.image),
+        })),
     ]),
   )
 }

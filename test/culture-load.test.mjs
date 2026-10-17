@@ -81,5 +81,5 @@ test('teaserFor : trois plus récents par langue, langue absente exclue', async 
   const t = teaserFor(await loadCulture(dir, silent()), ['fr', 'ru'])
   assert.deepEqual(t.fr.map((x) => x.slug), ['e', 'd', 'c'])
   assert.deepEqual(t.ru.map((x) => x.slug), ['d', 'c', 'b'])
-  assert.deepEqual(Object.keys(t.fr[0]).sort(), ['date', 'description', 'slug', 'title'])
+  assert.deepEqual(Object.keys(t.fr[0]).sort(), ['date', 'description', 'image', 'slug', 'title'])
 })

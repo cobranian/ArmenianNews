@@ -1,7 +1,7 @@
 // La coquille HTML des pages statiques (brève, Culture) : même feuille CSS
 // hachée, theme-init.js, balises GA et Cloudflare de la vitrine, et une nav
 // commune. Une seule copie — deux coquilles divergeraient (nav, balises).
-import { pathFor, langPath, briefPath, culturePath } from '../../sites.config.js'
+import { LANGS, pathFor, langPath, briefPath, culturePath, primaryLang } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { beaconTag, gaTag } from './site-meta.mjs'
@@ -9,7 +9,24 @@ import { esc } from './culture-markdown.mjs'
 
 export { esc }
 
-export function pageShell({ siteId, lang, head, cssHref, body }) {
+// Le sélecteur de langue, le même que celui de l'accueil (Nav.jsx, classe
+// .lang) : quatre liens, la langue du domaine en tête. `langHrefs` donne, par
+// langue, la page VISÉE — la même page dans l'autre langue si elle existe,
+// sinon l'index de la section : jamais un lien vers un 404.
+function langSwitch(siteId, lang, langHrefs) {
+  if (!langHrefs) return ''
+  const first = primaryLang(siteId)
+  const links = [...LANGS]
+    .sort((a, b) => (a.code === first ? -1 : b.code === first ? 1 : 0))
+    .map(
+      (l) =>
+        `<a href="${langHrefs[l.code]}" hreflang="${l.code}" lang="${l.code}" title="${esc(l.name)}"${l.code === lang ? ' aria-current="page"' : ''}>${esc(l.label)}</a>`,
+    )
+    .join('')
+  return `<div class="lang" role="group" aria-label="Language">${links}</div>`
+}
+
+export function pageShell({ siteId, lang, head, cssHref, body, langHrefs = null, scripts = [] }) {
   const s = BRIEF_STRINGS[lang]
   const nav = [
     [langPath(siteId, lang), s.home],
@@ -39,9 +56,11 @@ export function pageShell({ siteId, lang, head, cssHref, body }) {
       <div class="container brief-nav__inner">
         <a class="brief-nav__brand" href="${langPath(siteId, lang)}">${esc(s.brand)}</a>
         <nav class="brief-nav__links">${nav}</nav>
+        ${langSwitch(siteId, lang, langHrefs)}
       </div>
     </header>
 ${body}
+    ${scripts.map((src) => `<script src="${src}" defer></script>`).join('')}
     ${beaconTag(siteId)}
   </body>
 </html>
