@@ -53,6 +53,12 @@ test('isUnavailable : 429/404/503/timeout oui, 401/400/réponse vide non', () =>
   assert.equal(isUnavailable(Object.assign(new Error('a'), { name: 'AbortError' })), true)
   for (const s of [400, 401, 403]) assert.equal(isUnavailable(httpErr(s)), false, String(s))
   assert.equal(isUnavailable(new Error('réponse vide (m)')), false)
+  // Panne réseau, sans statut HTTP : undici lève TypeError « fetch failed ».
+  assert.equal(isUnavailable(new TypeError('fetch failed')), true)
+  for (const code of ['ECONNRESET', 'ETIMEDOUT', 'ENOTFOUND', 'EAI_AGAIN'])
+    assert.equal(isUnavailable(Object.assign(new Error('x'), { cause: { code } })), true, code)
+  assert.equal(isUnavailable(Object.assign(new Error('x'), { cause: { code: 'ERR_INVALID_URL' } })), false)
+  assert.equal(isUnavailable(new TypeError('x is not a function')), false, 'un bug n’est pas une panne')
 })
 
 test('chat : l’erreur HTTP porte status', async () => {

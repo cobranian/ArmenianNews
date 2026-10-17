@@ -49,11 +49,15 @@ export const CULTURE_FALLBACK_MODELS = [
 ]
 export const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1/'
 
-// « Le service ne répond pas » (429, 404, 5xx, délai) — par opposition à une
-// requête ou une clé fautive (400/401/403) ou une réponse vide, que changer de
-// modèle ne réparerait pas.
+// « Le service ne répond pas » (429, 404, 5xx, délai, réseau coupé) — par
+// opposition à une requête ou une clé fautive (400/401/403) ou une réponse
+// vide, que changer de modèle ne réparerait pas.
+const NETWORK_CODES = new Set(['ECONNRESET', 'ETIMEDOUT', 'ENOTFOUND', 'EAI_AGAIN'])
 export function isUnavailable(err) {
   if (err?.name === 'TimeoutError' || err?.name === 'AbortError') return true
+  // Sans statut : undici lève TypeError « fetch failed », la cause porte le code.
+  if (err instanceof TypeError && /fetch failed/.test(err.message)) return true
+  if (NETWORK_CODES.has(err?.cause?.code)) return true
   const s = err?.status
   return s === 429 || s === 404 || (typeof s === 'number' && s >= 500)
 }
