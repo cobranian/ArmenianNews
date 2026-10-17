@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { findUnsupported } from '../scripts/lib/culture-prompts.mjs'
-import { mechanicalClaims, entityTexts, splitClaims, EDITORIAL_TERMS, editorialAlerts } from '../scripts/lib/culture-checks.mjs'
+import { mechanicalClaims, entityTexts, splitClaims, EDITORIAL_TERMS, editorialAlerts, verifyClaims } from '../scripts/lib/culture-checks.mjs'
 
 test('mechanicalClaims : années, nombres, dates en toutes lettres ; ignore les chiffres isolés', () => {
   const c = mechanicalClaims('Né le 12 mars 1915, il part en mars 1920 avec 1 200 livres, en 1915 et 3 amis. Il a 45 ans.')
@@ -37,4 +37,27 @@ test('editorialAlerts : termes signalés, Arménie non, une alerte par phrase', 
   assert.equal(editorialAlerts('L’Arménie chante.').length, 0)
   const long = editorialAlerts('Azerbaïdjan ' + 'x'.repeat(300) + '.')
   assert.ok(long[0].length <= 160)
+})
+
+// La vérification des faits est un contrôle, pas une condition : sa panne ne
+// jette pas le brouillon, et un repli de modèle est toujours annoncé.
+test('verifyClaims : faits introuvables, repli annoncé, panne → null sans lever', async () => {
+  const body = 'Komitas est né en 1869 à Kütahya.'
+  const ok = await verifyClaims({ body, haystack: ['Komitas est né en 1869.'], chat: async () => ({ text: '["Kütahya", "1870"]', model: 'gemini', fellBack: false }) })
+  assert.deepEqual(ok.unsupported, { facts: ['1870'], names: ['Kütahya'] })
+  assert.deepEqual(ok.warnings, [])
+  assert.equal(ok.error, null)
+
+  let seen
+  const fb = await verifyClaims({ body, haystack: [body], chat: async (args) => ((seen = args), { text: '[]', model: 'google/gemma-4-31b-it:free', fellBack: true }) })
+  assert.equal(seen.temperature, 0)
+  assert.deepEqual(fb.warnings, ['Liste des faits extraite par le modèle de secours google/gemma-4-31b-it:free (Gemini indisponible).'])
+
+  const ko = await verifyClaims({ body, haystack: [], chat: async () => { throw new Error('HTTP 503 (gemini)') } })
+  assert.equal(ko.unsupported, null)
+  assert.equal(ko.error, 'HTTP 503 (gemini)')
+  assert.deepEqual(ko.warnings, ['Extraction automatique des faits en échec (HTTP 503 (gemini)).'])
+
+  const bad = await verifyClaims({ body, haystack: [], chat: async () => ({ text: 'pas du JSON', model: 'm', fellBack: false }) })
+  assert.equal(bad.unsupported, null, 'réponse illisible : null, jamais « rien à signaler »')
 })

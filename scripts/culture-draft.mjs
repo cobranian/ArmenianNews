@@ -23,13 +23,13 @@ import { rankTopics, availableTopics, queueFull, needsIdeas } from './lib/cultur
 import { articleSlugs } from './lib/culture-load.mjs'
 import { chatDraft } from './lib/culture-llm.mjs'
 import {
-  buildDraftMessages, buildClaimsMessages, buildIdeasMessages, parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts,
+  buildDraftMessages, buildIdeasMessages, parseArticleJson, parseIdeas, eventFacts,
 } from './lib/culture-prompts.mjs'
 import {
   fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, hseTitle, fetchHse, fetchCommonsCandidates, downloadImage,
 } from './lib/culture-sources.mjs'
 import { loadUnesco, unescoSource } from './lib/culture-unesco.mjs'
-import { mechanicalClaims, entityTexts, splitClaims, editorialAlerts } from './lib/culture-checks.mjs'
+import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
 import { makeImages } from './lib/culture-image.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { serializeFrontMatter } from './lib/culture-markdown.mjs'
@@ -143,12 +143,13 @@ async function draftArticle({ topic, event }) {
   if (draftRes.fellBack) warnings.push(`Rédigé par le modèle de secours ${draftRes.model} (Gemini indisponible).`)
   const draft = parseArticleJson(draftRes.text)
   if (!draft) throw new Error(`brouillon illisible (JSON attendu) — modèle ${draftRes.model}`)
-  const claimsRes = await chatDraft({ temperature: 0, messages: buildClaimsMessages(draft.body) })
-  const claims = parseClaims(claimsRes.text)
   const haystack = [...sources.map((s) => s.extract), ...facts, ...eventFacts(event), ...entityTexts(entity)]
-  // Réponse illisible : null, jamais présentée comme « rien à signaler ».
-  const unsupported =
-    claims === null ? null : splitClaims(findUnsupported([...new Set([...claims, ...mechanicalClaims(draft.body)])], haystack))
+  // Panne ou réponse illisible : null, jamais « rien à signaler » — et le
+  // brouillon fini est gardé.
+  const verdict = await verifyClaims({ body: draft.body, haystack, chat: chatDraft })
+  if (verdict.error) console.warn(`✗ claims : ${verdict.error}`)
+  warnings.push(...verdict.warnings)
+  const { unsupported } = verdict
   const editorial = editorialAlerts(draft.body)
   // Le recouvrement mesure la paraphrase de Wikipédia seulement : la phrase
   // UNESCO est écrite par nous, l'ՀՍՀ est en arménien.

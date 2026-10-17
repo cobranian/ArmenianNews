@@ -21,11 +21,11 @@ import { parseArgs } from 'node:util'
 import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply, UNRECOGNIZED_REPLY } from './lib/culture-commands.mjs'
 import { chatDraft } from './lib/culture-llm.mjs'
 import {
-  buildReviseMessages, buildClaimsMessages, parseArticleJson, parseClaims, findUnsupported, eventFacts,
+  buildReviseMessages, parseArticleJson, eventFacts,
 } from './lib/culture-prompts.mjs'
 import { fetchEntity, refetchSources } from './lib/culture-sources.mjs'
 import { loadUnesco } from './lib/culture-unesco.mjs'
-import { mechanicalClaims, entityTexts, splitClaims, editorialAlerts } from './lib/culture-checks.mjs'
+import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { parseFrontMatter, serializeFrontMatter } from './lib/culture-markdown.mjs'
 import { buildAutoSection, replaceAutoSection, isChecked, uncheck } from './lib/culture-pr.mjs'
@@ -88,15 +88,11 @@ if (res.fellBack) warnings.push(`Révisé par le modèle de secours ${res.model}
 
 // La vérification des faits est un contrôle, pas une condition : sa panne
 // donne `null` (« vérifiez tout à la main »), jamais « rien à signaler ».
-let claims = null
-try {
-  claims = parseClaims((await chatDraft({ temperature: 0, messages: buildClaimsMessages(revised.body) })).text)
-} catch (e) {
-  console.warn(`✗ claims : ${e.message}`)
-}
 const haystack = [...sources.map((s) => s.extract), ...(entity?.facts ?? []), ...eventFacts(meta.agendaEvent), ...entityTexts(entity)]
-const unsupported =
-  claims === null ? null : splitClaims(findUnsupported([...new Set([...claims, ...mechanicalClaims(revised.body)])], haystack))
+const verdict = await verifyClaims({ body: revised.body, haystack, chat: chatDraft })
+if (verdict.error) console.warn(`✗ claims : ${verdict.error}`)
+warnings.push(...verdict.warnings)
+const { unsupported } = verdict
 const editorial = editorialAlerts(revised.body)
 const overlap = overlapRatio(revised.body, sources.filter((s) => s.kind === 'wikipedia').map((s) => s.extract))
 

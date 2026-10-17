@@ -1,7 +1,7 @@
 // Contrôles mécaniques d'un brouillon Culture, sans modèle : ce qu'il faut
 // vérifier à la main (nombres, dates, noms) et l'alerte de ligne éditoriale.
 // Ils n'alertent jamais pour bloquer : la décision reste humaine.
-import { fold } from './culture-prompts.mjs'
+import { fold, buildClaimsMessages, parseClaims, findUnsupported } from './culture-prompts.mjs'
 
 const MOIS = 'janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre'
 // « 12 mars 1915 » puis « mars 1915 » ; « 1er » accepté.
@@ -40,7 +40,29 @@ export function splitClaims(unsupported) {
   return { facts, names }
 }
 
-export const EDITORIAL_TERMS = ['azerbaïdjan', 'azerbaidjan', 'azerbaijan', 'azéri', 'azeri', 'köçəri']
+// Les faits du texte (liste du modèle + nombres et dates mécaniques) confrontés
+// aux sources. Contrôle, pas condition : une panne du modèle ne lève pas — le
+// brouillon fini est gardé et `unsupported` vaut null (« vérifiez tout à la
+// main »), jamais « rien à signaler ». Un repli de modèle est annoncé dans la PR.
+// `chat` est chatDraft (injecté : ce module reste sans réseau).
+export async function verifyClaims({ body, haystack, chat }) {
+  const warnings = []
+  let claims = null
+  let error = null
+  try {
+    const res = await chat({ temperature: 0, messages: buildClaimsMessages(body) })
+    if (res.fellBack) warnings.push(`Liste des faits extraite par le modèle de secours ${res.model} (Gemini indisponible).`)
+    claims = parseClaims(res.text)
+  } catch (e) {
+    error = e.message
+    warnings.push(`Extraction automatique des faits en échec (${e.message}).`)
+  }
+  const unsupported =
+    claims === null ? null : splitClaims(findUnsupported([...new Set([...claims, ...mechanicalClaims(body)])], haystack))
+  return { unsupported, warnings, error }
+}
+
+export const EDITORIAL_TERMS =['azerbaïdjan', 'azerbaidjan', 'azerbaijan', 'azéri', 'azeri', 'köçəri']
 
 // Comparaison pliée des deux côtés (« köçəri » devient « kocəri »), en début
 // de mot : « azerbaïdjanaise » compte, « Arménie » non.
