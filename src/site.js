@@ -9,7 +9,7 @@
 //
 // N'importe QUE sites.config.js : orderedLangs reçoit LANGS en paramètre
 // plutôt que de l'importer, ce qui évite le cycle i18n → site → i18n.
-import { primaryLang } from '../sites.config.js'
+import { orderLangsFor } from '../sites.config.js'
 
 // Posé au build par scripts/build-sites.mjs (VITE_SITE_ID). `npm run dev`
 // n'en pose pas et travaille donc sur le .ch, la vitrine française.
@@ -22,6 +22,5 @@ export const SITE_ID = import.meta.env?.VITE_SITE_ID ?? 'ch'
 // L'ordre suit le DOMAINE, pas la langue affichée : sur les trois pages du
 // .org la barre reste « EN FR ՀԱՅ РУ », seule la mise en évidence se déplace.
 export function orderedLangs(langs) {
-  const first = primaryLang(SITE_ID)
-  return [...langs].sort((a, b) => (a.code === first ? -1 : b.code === first ? 1 : 0))
+  return orderLangsFor(SITE_ID, langs)
 }

@@ -107,9 +107,10 @@ function lightData() {
   }
 }
 
-// Le carrousel Culture de l'accueil : les 12 derniers articles Culture de chaque
-// langue de CETTE vitrine — titres et descriptions seulement, comme
-// lightData() n'embarque que les langues servies. Les avertissements d'un
+// Le carrousel Culture de l'accueil : les 12 derniers articles Culture de
+// chaque langue de CETTE vitrine — titre, description et présence d'une image
+// (un booléen : le carrousel pose lui-même le chemin), comme lightData()
+// n'embarque que les langues servies. Les avertissements d'un
 // article invalide sont déjà écrits par build-sites.mjs : ici, silence.
 function cultureTeaser() {
   const ID = 'virtual:culture-teaser'

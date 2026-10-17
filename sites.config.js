@@ -334,6 +334,22 @@ export function primaryLang(siteId) {
   return SITES[siteId].pages[0].lang
 }
 
+// La langue du domaine en tête, le reste dans l'ordre reçu. UNE règle pour
+// les deux sélecteurs de langue : celui de l'accueil (src/site.js) et celui
+// des pages statiques (scripts/lib/static-shell.mjs).
+export function orderLangsFor(siteId, langs) {
+  const first = primaryLang(siteId)
+  return [...langs].sort((a, b) => (a.code === first ? -1 : b.code === first ? 1 : 0))
+}
+
+// Le lien d'un sélecteur de langue sur une page qui n'existe pas forcément
+// dans toutes les langues (brève, article Culture) : la même page si elle
+// existe dans cette langue (`present`), sinon l'index de la section —
+// jamais un 404. `urlFn(lang, key)` construit l'URL, `key === null` l'index.
+export function langHrefsFor(present, urlFn, key) {
+  return Object.fromEntries(ALL_LANGS.map((l) => [l, urlFn(l, present.includes(l) ? key : null)]))
+}
+
 export function siteOf(lang) {
   const hit = Object.values(SITES).find((s) => s.pages.some((p) => p.lang === lang))
   if (!hit) throw new Error(`langue sans site : ${lang}`)
