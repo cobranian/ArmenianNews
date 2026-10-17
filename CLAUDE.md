@@ -73,12 +73,12 @@ npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : l
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 433 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 497 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
 npm run brief         # générer la brève du jour hors du scrape (--force ignore la règle des 7 h, --dry n'écrit rien)
-npm run culture:draft     # rédiger le brouillon Culture de la semaine (--topic slug, --dry) — Gemini, GEMINI_API_KEY
+npm run culture:draft     # rédiger le brouillon Culture du jour (quotidien, 03:00 UTC) (--topic slug, --dry) — Gemini, GEMINI_API_KEY
 npm run culture:translate # traduire le fr.md relu d'un article en en/hy/ru (slug)
 npm run culture:check     # contrôle strict des articles Culture (celui des PR)
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
@@ -89,7 +89,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **433 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **497 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -1586,19 +1586,29 @@ de production servent toujours depuis la racine de leur domaine.
   quatorze textes qui écrivent « quinze » en toutes lettres dans quatre langues,
   descriptions Google comprises, et tout serait à refaire à l'envers au retour.
   `offAir: true` rend la puce inerte sans toucher au compte.
-- **Articles Culture : trois pièges silencieux.** (1) Une PR ouverte ou un
-  commit poussé avec le `GITHUB_TOKEN` ne déclenche aucun autre workflow :
-  `articles.yml` et `articles-translate.yml` publient donc EUX-MÊMES le statut
-  `culture-check` — un contrôle `pull_request` seul ne verrait jamais les
-  commits du robot, et la PR aurait l'air vérifiée. (2) Chaque traduction
-  porte l'empreinte du `fr.md` dont elle vient (`sourceHash`) : retoucher le
-  français après la traduction la déclare périmée, et le build la retire au
-  lieu de publier une version qui dit autre chose. (3) Cocher « Faits
-  vérifiés » PUBLIE : `articles-publish.yml` traduit, contrôle, fusionne avec
-  le `GITHUB_TOKEN` — et cette fusion ne déclenche PAS le push sur `main`,
-  d'où le `gh workflow run hourly.yml` explicite ; sans lui l'article
-  attendrait le run horaire suivant. Le pourquoi est dans
-  `docs/superpowers/specs/2026-10-16-articles-culture-design.md`.
+- **Articles Culture : neuf pièges silencieux** (un brouillon par jour,
+  03:00 UTC). (1) Un commit ou une PR poussés avec le `GITHUB_TOKEN` ne
+  déclenchent aucun autre workflow : `articles.yml` et
+  `articles-translate.yml` publient EUX-MÊMES le statut `culture-check`, sans
+  quoi la PR aurait l'air vérifiée. (2) Chaque traduction porte l'empreinte du
+  `fr.md` source (`sourceHash`) : retoucher le français la déclare périmée, et
+  le build la retire. (3) Cocher « Faits vérifiés » PUBLIE : traduit, contrôle,
+  fusionne — et cette fusion ne déclenche PAS le push sur `main`, d'où le
+  `gh workflow run hourly.yml` explicite. (4) Un titre Wikipédia deviné attrape
+  les homonymes (fr « Kochari » = le koshary égyptien) : les sujets se
+  résolvent par `qid` Wikidata (`sujets.json`), les titres viennent des
+  sitelinks. (5) `/corrige`, `/ajoute`, `/rejette` sont des consignes envoyées
+  au modèle ou écrites sur `main` : la garde est `author_association ==
+  'OWNER'` (et, pour les idées, issue écrite par `github-actions[bot]` — dépôt
+  public, une issue au même titre se contrefait). Ne l'élargissez jamais.
+  (6) Le grounding Google Search de Gemini interdit de stocker/publier ses
+  résultats : jamais pour un brouillon. (7) Les traductions n'ont aucun repli de
+  modèle, à dessein (du hy/ru/en non relu serait publié) : une panne Gemini
+  retarde la publication, avec un commentaire. (8) Pas de réaction 👀 sur une
+  commande = elle a été écartée (GitHub ne garde qu'un run en attente par
+  groupe) : renvoyez-la. (9) Une branche `culture/*` ouverte avant ce chantier
+  n'a pas `scripts/culture-revise.mjs` : `/corrige` y échoue jusqu'au rebase.
+  Le pourquoi : `docs/superpowers/specs/2026-10-16-articles-culture-design.md`.
 - **Le plancher tactile de 44px est déjà tenu — par `@media (pointer: coarse)`.**
   Ce bloc agrandit `.theme-toggle`, `.nav__toggle`, les pastilles de langue,
   `.shelf__arrow`, `.radio__chip`, `.ig-chip` et

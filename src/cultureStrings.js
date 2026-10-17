@@ -11,7 +11,7 @@ export const CULTURE_STRINGS = {
     description:
       'Histoire, musique, danse et patrimoine arméniens : des articles de fond, sourcés, en quatre langues.',
     sources: 'Sources',
-    sourcesNote: 'Textes de Wikipédia sous licence CC BY-SA 4.0, utilisés comme sources.',
+    sourcesNote: 'Textes de Wikipédia (CC BY-SA 4.0) et de Wikisource (CC BY-SA 3.0), utilisés comme sources.',
     aiNote:
       'Article rédigé avec un outil d’IA à partir des sources citées, puis vérifié et corrigé par la rédaction.',
     image: 'Image',
@@ -27,7 +27,7 @@ export const CULTURE_STRINGS = {
     description:
       'Armenian history, music, dance and heritage: in-depth, sourced articles in four languages.',
     sources: 'Sources',
-    sourcesNote: 'Wikipedia texts under the CC BY-SA 4.0 licence, used as sources.',
+    sourcesNote: 'Texts from Wikipedia (CC BY-SA 4.0) and Wikisource (CC BY-SA 3.0), used as sources.',
     aiNote:
       'Written with an AI tool from the sources cited and checked by our editors; translated automatically from the reviewed French text.',
     image: 'Image',
@@ -43,7 +43,7 @@ export const CULTURE_STRINGS = {
     description:
       'Հայոց պատմություն, երաժշտություն, պար և ժառանգություն․ աղբյուրներով հոդվածներ՝ չորս լեզվով։',
     sources: 'Աղբյուրներ',
-    sourcesNote: 'Վիքիպեդիայի տեքստերը՝ CC BY-SA 4.0 արտոնագրով, օգտագործված որպես աղբյուր։',
+    sourcesNote: 'Վիքիպեդիայի (CC BY-SA 4.0) և Վիքիդարանի (CC BY-SA 3.0) տեքստերը՝ օգտագործված որպես աղբյուր։',
     aiNote:
       'Հոդվածը գրվել է արհեստական բանականության գործիքով՝ նշված աղբյուրներից, ստուգվել է խմբագրության կողմից և ավտոմատ թարգմանվել ֆրանսերենից։',
     image: 'Պատկեր',
@@ -59,7 +59,7 @@ export const CULTURE_STRINGS = {
     description:
       'История, музыка, танец и наследие Армении: подробные статьи с источниками на четырёх языках.',
     sources: 'Источники',
-    sourcesNote: 'Тексты Википедии по лицензии CC BY-SA 4.0, использованные как источники.',
+    sourcesNote: 'Тексты Википедии (CC BY-SA 4.0) и Викитеки (CC BY-SA 3.0), использованные как источники.',
     aiNote:
       'Статья написана с помощью инструмента ИИ по указанным источникам, проверена редакцией и автоматически переведена с французского.',
     image: 'Изображение',

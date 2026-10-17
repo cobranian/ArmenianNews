@@ -14,7 +14,7 @@ const last = (r) => r.stdout.trim().split('\n').at(-1)
 
 async function dir() {
   const d = await mkdtemp(path.join(tmpdir(), 'culture-cli-'))
-  await writeFile(path.join(d, 'sujets.json'), JSON.stringify({ topics: [{ slug: 'komitas', title: 'K', wikipedia: { fr: 'K' }, keywords: [], status: 'pending' }] }))
+  await writeFile(path.join(d, 'sujets.json'), JSON.stringify({ topics: [{ slug: 'komitas', title: 'K', qid: 'Q351670', keywords: [], status: 'pending' }] }))
   return d
 }
 

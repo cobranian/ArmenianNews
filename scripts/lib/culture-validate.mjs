@@ -116,6 +116,11 @@ export function validateArticle({ slug, meta, texts, images }) {
   return { errors, langs }
 }
 
+// La case « Faits vérifiés » cochée. Seule définition : /corrige la décoche
+// avec la même (culture-pr.mjs), pour que décocher et contrôler ne divergent
+// jamais. Groupes : 1 = retrait et puce, 2 = libellé.
+export const FACTS_CHECKED = /^(\s*[-*] )\[[xX]\]( Faits vérifiés)/m
+
 export function factsChecked(prBody) {
-  return /^\s*[-*] \[[xX]\] Faits vérifiés/m.test(String(prBody ?? ''))
+  return FACTS_CHECKED.test(String(prBody ?? ''))
 }

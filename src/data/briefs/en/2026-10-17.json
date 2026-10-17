@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-17",
+  "lang": "en",
+  "generatedAt": "2026-10-17T05:48:26.881Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "intro": "Today's news highlights key developments in Armenia's domestic and international engagements, with significant focus on the COP17 climate conference in Yerevan, biodiversity initiatives, diplomatic exchanges, and diaspora cultural events.",
+  "topics": [
+    {
+      "title": "COP17 Climate Conference Opens in Yerevan with Global Participation",
+      "text": "The COP17 climate conference has kicked off in Yerevan, featuring participation from world leaders including the UN Secretary-General and the Iranian president. The Yerevan Declaration was adopted following the leaders' summit, announcing $500 million in biodiversity funding. Discussions emphasized global action on biodiversity loss and environmental protection.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014831",
+          "title": "COP17 climate conference kicks off in Yerevan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263055",
+          "title": "COP17: Yerevan Declaration adopted following leaders’ summit"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263049",
+          "title": "$500 million biodiversity funding announced at COP17 Leaders' Summit in Yerevan"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/16/un-secretary-general-calls-for-urgent-action-to-protect-biodiversity-at-cop17-in-yerevan/",
+          "title": "UN Secretary-General calls for urgent action to protect biodiversity at COP17 in Yerevan"
+        }
+      ]
+    },
+    {
+      "title": "Armenia Deepens Diplomatic and Economic Ties with Turkey and Cyprus",
+      "text": "Armenian officials held discussions with Turkish and Cypriot counterparts on expanding direct trade, agricultural cooperation, and economic ties. The economy minister and Turkey’s agriculture minister conferred on direct trade, while Armenia and Cyprus discussed broadening economic and agricultural collaboration. These talks reflect ongoing normalization efforts.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/16/armenia-turkey-discuss-opportunities-for-direct-trade/",
+          "title": "Armenia, Turkey discuss opportunities for direct trade"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263051",
+          "title": "Armenia, Türkiye discuss direct trade"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068394",
+          "title": "Armenia economy minister, Turkey agriculture minister confer on direct trade"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263042",
+          "title": "Armenia, Cyprus discuss expanding agricultural cooperation and economic ties"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068371",
+          "title": "Papoyan highlights importance of Armenian products gaining a foothold in the Cypriot market at meeting with Senekis"
+        }
+      ]
+    },
+    {
+      "title": "UN Secretary-General Visits Yerevan, Engages with Officials and TUMO Center",
+      "text": "UN Secretary-General António Guterres visited the TUMO Center in Yerevan and met with President Vahagn Khachaturyan at the presidential residence. During his visit, he called for urgent action to protect biodiversity at COP17. The visit underscored international engagement with Armenia’s technological and environmental initiatives.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/16/un-secretary-general-antonio-guterres-visits-tumo-center-in-yerevan/",
+          "title": "UN Secretary-General António Guterres visits TUMO Center in Yerevan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263080",
+          "title": "Vahagn Khachaturyan meets UN Secretary-General António Guterres at presidential residence"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/16/un-secretary-general-calls-for-urgent-action-to-protect-biodiversity-at-cop17-in-yerevan/",
+          "title": "UN Secretary-General calls for urgent action to protect biodiversity at COP17 in Yerevan"
+        }
+      ]
+    },
+    {
+      "title": "Diaspora Events Highlight Cultural Heritage and Community Engagement",
+      "text": "A film preserving the legacy of Artsakh, 'There’s No Place Like Home,' is set to screen in Glendale, aiming to preserve cultural memory. Meanwhile, the Homenetmen Massis chapter seeks community support to expand its youth center, and a Ferrahian graduate shared reflections on climbing Mount Ararat, underscoring diaspora ties to homeland and identity.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/film-preserving-legacy-of-artsakh-theres-no-place-like-home-to-show-in-glendale/",
+          "title": "Film Preserving Legacy of Artsakh, ‘There’s No Place Like Home,’ to Show in Glendale"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/ferrahian-alumnas-reflections-on-climbing-mt-ararat/",
+          "title": "Ferrahian Graduate Natelle Ezadjian’s Reflections on Climbing Mt. Ararat"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/homenetmen-massis-seeks-community-support-to-expand-its-youth-center/",
+          "title": "Homenetmen Massis Seeks Community Support to Expand Youth Center"
+        }
+      ]
+    },
+    {
+      "title": "Sports Updates: Armenian Athletes Compete Internationally",
+      "text": "Tigran Karapetyan secured the European U23 vice-championship title, marking a significant achievement for Armenian athletics. In football, Mkrtchyan’s goal helped Nurnberg avoid defeat, while the Armenia U15 national team conceded 8 goals in the UEFA Development Cup. These results reflect ongoing participation and challenges in international competitions.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169602/",
+          "title": "Tigran Karapetyan is the European U23 vice-champion"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169600/",
+          "title": "Mkrtchyan’s goal saves Nurnberg from defeat"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169593/",
+          "title": "UEFA Development Cup: Armenia U15 national team concedes 8 goals"
+        }
+      ]
+    }
+  ]
+}

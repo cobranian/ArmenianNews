@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  fetchWikipedia, fetchWikidataFacts, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA,
+  fetchWikipedia, fetchTopicWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, fetchHseSource, wikitextToText,
 } from '../scripts/lib/culture-sources.mjs'
 
 // Un faux fetch qui route par hôte/paramètre et note les appels.
@@ -22,17 +22,46 @@ test('fetchWikipedia : extrait, révision, Wikidata, image de tête, UA honnête
     query: { pages: [{ title: 'Komitas', extract: 'Texte', revisions: [{ revid: 42 }], pageprops: { wikibase_item: 'Q312' }, pageimage: 'Komitas.jpg' }] },
   }]])
   const r = await fetchWikipedia('fr', 'Komitas', impl)
-  assert.deepEqual(r, { lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 42, extract: 'Texte', wikidata: 'Q312', pageImage: 'Komitas.jpg' })
+  assert.deepEqual(r, { kind: 'wikipedia', lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 42, extract: 'Texte', license: 'CC BY-SA 4.0', wikidata: 'Q312', pageImage: 'Komitas.jpg' })
   assert.equal(calls[0].init.headers['User-Agent'], WIKI_UA)
   assert.ok(!/Mozilla|Chrome/.test(WIKI_UA))
   assert.equal(calls[0].u.searchParams.get('redirects'), '1')
 })
 
-test('fetchWikipedia : page absente ou homonymie → null', async () => {
+test('fetchWikipedia : page absente → null, homonymie → lève', async () => {
   const missing = router([[() => true, { query: { pages: [{ title: 'X', missing: true }] } }]])
   assert.equal(await fetchWikipedia('fr', 'X', missing.impl), null)
   const dab = router([[() => true, { query: { pages: [{ title: 'Ani', extract: 'Ani peut désigner', pageprops: { disambiguation: '' } }] } }]])
-  assert.equal(await fetchWikipedia('fr', 'Ani', dab.impl), null)
+  await assert.rejects(fetchWikipedia('fr', 'Ani', dab.impl), /page d’homonymie : fr:Ani/)
+})
+
+// Un titre surchargé à la main peut désigner un homonyme : seul le qid fait foi.
+test('fetchTopicWikipedia : page d’une autre entité ou d’homonymie écartée avec avertissement', async () => {
+  const page = (title, qid, extra = {}) => ({ query: { pages: [{ title, extract: `Texte ${title}`, revisions: [{ revid: 1 }], pageprops: { wikibase_item: qid, ...extra } }] } })
+  const { impl } = router([
+    [(u) => u.host === 'fr.wikipedia.org', page('Kochari', 'Q1')],
+    [(u) => u.host === 'en.wikipedia.org', page('Koshary', 'Q2')],
+    [(u) => u.host === 'hy.wikipedia.org', page('Քոչարի', 'Q1', { disambiguation: '' })],
+  ])
+  const { wiki, warnings } = await fetchTopicWikipedia({ fr: 'Kochari', en: 'Koshary', hy: 'Քոչարի' }, 'Q1', { fetchImpl: impl })
+  assert.deepEqual(Object.keys(wiki), ['fr'])
+  assert.equal(wiki.fr.title, 'Kochari')
+  assert.deepEqual(warnings, [
+    'page en « Koshary » écartée : autre entité Wikidata (Q2 au lieu de Q1).',
+    'page hy « Քոչարի » écartée : page d’homonymie.',
+    'Pas d’article Wikipédia en ru.',
+  ])
+})
+
+test('fetchTopicWikipedia : page absente, panne réseau, rien en fr', async () => {
+  const impl = async (url) => {
+    const u = new URL(url)
+    if (u.host === 'en.wikipedia.org') return { ok: false, status: 503, json: async () => ({}) }
+    return { ok: true, status: 200, json: async () => ({ query: { pages: [{ title: 'X', missing: true }] } }) }
+  }
+  const { wiki, warnings } = await fetchTopicWikipedia({ fr: 'X', en: 'Y' }, 'Q1', { fetchImpl: impl, langs: ['fr', 'en'] })
+  assert.deepEqual(wiki, {})
+  assert.deepEqual(warnings, ['Wikipédia fr : « X » introuvable.', 'Wikipédia en indisponible (HTTP 503 en.wikipedia.org).'])
 })
 
 test('wikidataTime : précisions jour, mois, année, avant notre ère', () => {
@@ -83,4 +112,94 @@ test('downloadImage : refuse une page d’erreur trop petite', async () => {
   await assert.rejects(downloadImage('https://u/x.jpg', tiny), /trop petite/)
   const err = async () => ({ ok: false, status: 403 })
   await assert.rejects(downloadImage('https://u/x.jpg', err), /HTTP 403/)
+})
+
+const claim = (value) => [{ mainsnak: { datavalue: { value } } }]
+const ENTITY = { entities: { Q777: {
+  labels: { fr: { value: 'Kochari' }, en: { value: 'Kochari' }, hy: { value: 'Քոչարի' }, ru: { value: 'Кочари' }, de: { value: 'Kochari' } },
+  descriptions: { fr: { value: 'danse arménienne' }, en: { value: 'Armenian dance' } },
+  aliases: { fr: [{ value: 'Kotchari' }], en: [{ value: 'Qochari' }, { value: 'Kochari dance' }] },
+  sitelinks: { frwiki: { title: 'Kochari' }, enwiki: { title: 'Kochari (dance)' }, hywiki: { title: 'Քոչարի' }, dewiki: { title: 'Kochari' } },
+  claims: { P18: claim('Kochari.jpg'), P571: claim({ time: '+1800-00-00T00:00:00Z', precision: 9 }) },
+} } }
+
+test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru, P18, faits', async () => {
+  const { impl, calls } = router([[(u) => u.host === 'www.wikidata.org', ENTITY]])
+  const e = await fetchEntity('Q777', impl)
+  assert.equal(calls.length, 1)
+  assert.match(calls[0].u.pathname, /Special:EntityData\/Q777\.json$/)
+  assert.deepEqual(e, {
+    qid: 'Q777',
+    labels: { fr: 'Kochari', en: 'Kochari', hy: 'Քոչարի', ru: 'Кочари' },
+    descriptions: { fr: 'danse arménienne', en: 'Armenian dance' },
+    aliases: { fr: ['Kotchari'], en: ['Qochari', 'Kochari dance'] },
+    sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: 'Քոչարի', ru: undefined },
+    image: 'Kochari.jpg',
+    facts: ['Fondation ou création : 1800'],
+  })
+})
+
+test('fetchEntity : entité minimale (rien de renseigné)', async () => {
+  const { impl } = router([[() => true, { entities: { Q1: {} } }]])
+  const e = await fetchEntity('Q1', impl)
+  assert.equal(e.image, null)
+  assert.deepEqual(e.facts, [])
+  assert.deepEqual(e.aliases, { fr: [], en: [] })
+})
+
+test('resolveTitles : sitelinks, surcharge manuelle prioritaire, langue absente omise', () => {
+  const entity = { sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: undefined, ru: undefined } }
+  assert.deepEqual(resolveTitles({}, entity), { fr: 'Kochari', en: 'Kochari (dance)' })
+  assert.deepEqual(resolveTitles({ wikipedia: { en: 'Kochari', ru: 'Кочари' } }, entity), { fr: 'Kochari', en: 'Kochari', ru: 'Кочари' })
+})
+
+test('hseTitle : sitelink sans parenthèse, repli sur le libellé, capitales arméniennes', () => {
+  assert.equal(hseTitle({ sitelinks: { hy: 'Քոչարի (պար)' }, labels: { hy: 'Այլ' } }), 'ՀՍՀ/ՔՈՉԱՐԻ')
+  assert.equal(hseTitle({ sitelinks: {}, labels: { hy: 'Կոմիտաս' } }), 'ՀՍՀ/ԿՈՄԻՏԱՍ')
+  assert.equal(hseTitle({ sitelinks: {}, labels: {} }), null)
+  // « և » se met en capitales « ԵՒ » (Unicode) ; l'ՀՍՀ, en arménien
+  // oriental, écrit « ԵՎ ».
+  assert.equal('և'.toUpperCase(), 'ԵՒ')
+  assert.equal(hseTitle({ sitelinks: { hy: 'Երևան' } }), 'ՀՍՀ/ԵՐԵՎԱՆ')
+  assert.equal(hseTitle({ sitelinks: {}, labels: { hy: 'Գեղարդ և Գառնի' } }), 'ՀՍՀ/ԳԵՂԱՐԴ ԵՎ ԳԱՌՆԻ')
+})
+
+test('wikitextToText : modèles, références, liens, gras', () => {
+  const w = "{{ՀՍՀ\n| A = {{x|y}}\n}}\n'''Կոմիտաս''' է [[երաժիշտ|կոմպոզիտոր]] և [[Երևան]]<ref>src</ref><ref name=a/>''։''"
+  assert.equal(wikitextToText(w), 'Կոմիտաս է կոմպոզիտոր և Երևան։')
+})
+
+test('fetchHse : page absente → null ; contenu → texte nettoyé, licence CC BY-SA 3.0, URL hy.wikisource', async () => {
+  const missing = router([[() => true, { query: { pages: [{ title: 'ՀՍՀ/X', missing: true }] } }]])
+  assert.equal(await fetchHse('ՀՍՀ/X', missing.impl), null)
+  const { impl, calls } = router([[(u) => u.host === 'hy.wikisource.org', {
+    query: { pages: [{ title: 'ՀՍՀ/ԿՈՄԻՏԱՍ', revisions: [{ revid: 377903, slots: { main: { content: "'''ԿՈՄԻՏԱՍ''' [[հայ|հայ]] կոմպոզիտոր<ref>r</ref>" } } }] }] },
+  }]])
+  const r = await fetchHse('ՀՍՀ/ԿՈՄԻՏԱՍ', impl)
+  assert.equal(r.kind, 'hse')
+  assert.equal(r.lang, 'hy')
+  assert.equal(r.revision, 377903)
+  assert.equal(r.extract, 'ԿՈՄԻՏԱՍ հայ կոմպոզիտոր')
+  assert.equal(r.license, 'CC BY-SA 3.0')
+  assert.ok(r.url.startsWith('https://hy.wikisource.org/wiki/'))
+  assert.equal(calls[0].init.headers['User-Agent'], WIKI_UA)
+  assert.equal(calls[0].u.searchParams.get('rvslots'), 'main')
+  // Une entrée renommée sur Wikisource redirige : suivre, comme pour Wikipédia.
+  assert.equal(calls[0].u.searchParams.get('redirects'), '1')
+})
+
+test('fetchHseSource : pas de titre → rien ; entrée absente ou Wikisource en panne → avertissement', async () => {
+  const entity = { sitelinks: {}, labels: { hy: 'Կոմիտաս' } }
+  assert.deepEqual(await fetchHseSource({ sitelinks: {}, labels: {} }, async () => { throw new Error('jamais appelé') }), { source: null, warnings: [] })
+  const missing = router([[() => true, { query: { pages: [{ title: 'ՀՍՀ/ԿՈՄԻՏԱՍ', missing: true }] } }]])
+  assert.deepEqual(await fetchHseSource(entity, missing.impl), { source: null, warnings: ['Pas d’entrée ՀՍՀ trouvée (ՀՍՀ/ԿՈՄԻՏԱՍ).'] })
+  const down = async () => ({ ok: false, status: 503, json: async () => ({}) })
+  assert.deepEqual(await fetchHseSource(entity, down), {
+    source: null,
+    warnings: ['Pas d’entrée ՀՍՀ trouvée (ՀՍՀ/ԿՈՄԻՏԱՍ) : Wikisource indisponible (HTTP 503 hy.wikisource.org).'],
+  })
+  const found = router([[() => true, { query: { pages: [{ title: 'ՀՍՀ/ԿՈՄԻՏԱՍ', revisions: [{ revid: 1, slots: { main: { content: 'ԿՈՄԻՏԱՍ' } } }] }] } }]])
+  const r = await fetchHseSource(entity, found.impl)
+  assert.equal(r.source.kind, 'hse')
+  assert.deepEqual(r.warnings, [])
 })

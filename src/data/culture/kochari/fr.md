@@ -16,8 +16,8 @@ Les formes plus modernes du kochari ont ajouté un « pas en tremolo », qui con
 
 ## Parcours historique et variantes régionales
 
-Sur le plan de son itinéraire historique et territorial, la danse s’est propagée dans la partie orientale de l’Arménie après le génocide arménien. Parallèlement à la tradition arménienne, des variantes sont dansées aujourd'hui par d'autres peuples : les Assyriens, les Azerbaïdjanais et les Grecs pontiques.
+Sur le plan de son itinéraire historique et territorial, la danse s’est propagée dans la partie orientale de l’Arménie après le génocide arménien. Parallèlement à la tradition arménienne, des variantes sont dansées aujourd'hui par d'autres peuples, notamment les Assyriens et les Grecs pontiques.
 
 Chez les Grecs pontiques, la danse porte le nom de *Kótsari* (Κότσαρι) ; Grecs pontiques et Arméniens partagent de nombreuses danses vigoureuses et martiales comme le kochari. Contrairement à la plupart des danses pontiques, elle suit un rythme pair de 2/4 et se dansait à l’origine en cercle fermé. Son nom viendrait de *kotsi* (*kots* en pontique, du grec médiéval *kottion*, le talon) et de *airo* (lever) : « lever le talon », le talon étant considéré par les Grecs comme la partie du pied qu’utilise principalement le danseur.
 
-Ces traditions ont fait l'objet d'une attention institutionnelle au niveau mondial. Le kochari arménien a été inscrit par l'UNESCO en 2017 sur la liste représentative du patrimoine culturel immatériel. En novembre 2018, le kochari a également été inscrit, avec le tenzere et comme variante du yalli, au titre des danses collectives traditionnelles du Nakhitchevan, sur la liste du patrimoine immatériel nécessitant une sauvegarde urgente.
+Ces traditions ont fait l'objet d'une attention institutionnelle au niveau mondial. Le kochari arménien a été inscrit par l'UNESCO en 2017 sur la liste représentative du patrimoine culturel immatériel.

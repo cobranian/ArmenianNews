@@ -17,7 +17,7 @@ import { parseArgs } from 'node:util'
 import { parseFrontMatter, serializeFrontMatter, bodyHash } from './lib/culture-markdown.mjs'
 import { TRANSLATED, chosenImage } from './lib/culture-validate.mjs'
 import { setTopicStatus } from './lib/culture-topic.mjs'
-import { llmConfig, chat } from './lib/culture-llm.mjs'
+import { llmConfig, chat, isUnavailable } from './lib/culture-llm.mjs'
 import { buildTranslateMessages, parseArticleJson } from './lib/culture-prompts.mjs'
 import { downloadImage } from './lib/culture-sources.mjs'
 import { makeImages } from './lib/culture-image.mjs'
@@ -82,7 +82,9 @@ for (const lang of TRANSLATED) {
     console.log(`  ✓ ${slug}/${lang}`)
   } catch (e) {
     failed++
-    lines.push(`- ✗ ${lang} — ${e.message}`)
+    lines.push(isUnavailable(e)
+      ? `- ✗ ${lang} — traduction reportée : Gemini indisponible (${e.message})`
+      : `- ✗ ${lang} — ${e.message}`)
     console.warn(`  ✗ ${slug}/${lang} : ${e.message}`)
   }
 }

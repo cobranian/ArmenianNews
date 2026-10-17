@@ -39,11 +39,19 @@ function eventBlock(lang, raw, now) {
   return `<p class="culture__event">${esc(s.event)} : <a href="${esc(ev.url)}" rel="noopener">${esc(ev.title)}</a> — ${esc(longDate(lang, ev.date.slice(0, 10)))}${ev.location ? `, ${esc(ev.location)}` : ''}</p>`
 }
 
+// Étiquette d'une source selon son `kind`. Absent = Wikipedia : les articles
+// déjà publiés n'ont pas de `kind` et doivent s'afficher comme avant.
+function sourceLabel(x) {
+  if (x.kind === 'hse') return ' (ՀՍՀ, Wikisource)'
+  if (x.kind === 'unesco') return ' (UNESCO)'
+  return x.lang ? ` (Wikipedia ${esc(x.lang)})` : ''
+}
+
 export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now() }) {
   const s = CULTURE_STRINGS[lang]
   const a = article.langs[lang]
   const sources = article.sources
-    .map((x) => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.title ?? x.url)}</a>${x.lang ? ` (Wikipedia ${esc(x.lang)})` : ''}</li>`)
+    .map((x) => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.title ?? x.url)}</a>${sourceLabel(x)}</li>`)
     .join('')
   const more = list
     .filter((x) => x.slug !== article.slug && x.langs[lang])
