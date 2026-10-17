@@ -15,7 +15,10 @@ export function mechanicalClaims(body) {
   const text = String(body ?? '')
   const out = []
   const reste = text.replace(DATE_RE, (m) => {
-    out.push(m.trim())
+    // Seule l'année est une affirmation vérifiable : la phrase française
+    // « 12 mars 1915 » ne se retrouverait pas telle quelle dans une source
+    // en/hy/ru (faux positif). Le jour, lui, n'est pas émis.
+    out.push(m.match(/\d{4}$/)[0])
     return ' '
   })
   for (const m of reste.match(NOMBRE_RE) ?? []) out.push(m)

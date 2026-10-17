@@ -1,15 +1,23 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { findUnsupported } from '../scripts/lib/culture-prompts.mjs'
 import { mechanicalClaims, entityTexts, splitClaims, EDITORIAL_TERMS, editorialAlerts } from '../scripts/lib/culture-checks.mjs'
 
 test('mechanicalClaims : années, nombres, dates en toutes lettres ; ignore les chiffres isolés', () => {
   const c = mechanicalClaims('Né le 12 mars 1915, il part en mars 1920 avec 1 200 livres, en 1915 et 3 amis. Il a 45 ans.')
-  assert.ok(c.includes('12 mars 1915'))
-  assert.ok(c.includes('mars 1920'))
   assert.ok(c.includes('1915'))
+  assert.ok(c.includes('1920'))
+  assert.ok(!c.includes('12'))
   assert.ok(c.includes('45'))
   assert.ok(!c.includes('3'))
   assert.equal(new Set(c).size, c.length)
+})
+
+test('mechanicalClaims : une date en toutes lettres ne donne que son année', () => {
+  const c = mechanicalClaims('Le 12 mars 1915 puis en mars 1920, et 1 200 personnes')
+  for (const y of ['1915', '1920', '1 200']) assert.ok(c.includes(y))
+  assert.ok(!c.some((x) => x.includes('mars')))
+  assert.deepEqual(findUnsupported(mechanicalClaims('Il naît le 12 mars 1915.'), ['Born on March 12, 1915.']), [])
 })
 
 test('splitClaims : chiffres vers facts, noms vers names', () => {
