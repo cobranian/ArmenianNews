@@ -1015,8 +1015,9 @@ de production servent toujours depuis la racine de leur domaine.
   flot de plusieurs centaines de téléchargements.
 - **Les onglets du fil sont des RUBRIQUES, pas des sources.** Neuf rubriques
   communes (`RUBRICS`, `src/rubrics.js`) ; dans chacune, une étagère par
-  source, dans l'ordre de **`TAB_ORDER`** (`src/newsLangs.js`), qui décide
-  toujours quelle source paraît sous quelle langue — une source absente de
+  source, **la plus fraîche en tête** (Armenpress compris, voulu) ;
+  **`TAB_ORDER`** (`src/newsLangs.js`) ne fait que départager les égalités et
+  décide toujours quelle source paraît sous quelle langue — une source absente de
   `TAB_ORDER` n'apparaît nulle part, et seul `test/source-count.test.mjs` le
   remarque. **`RUBRIC_MAP`** replie chaque rubrique d'origine sur une rubrique
   commune ; une rubrique d'origine nouvelle doit y être déclarée, sinon elle

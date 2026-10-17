@@ -9,7 +9,7 @@ const map = {
 const art = (url, date, extra = {}) => ({ title: url, url, date, ...extra })
 const src = (id, cats) => ({ id, brand: id.toUpperCase(), cats })
 
-test('une etagere par source, dans l ordre des sources', () => {
+test('une etagere par source, la plus fraiche en tete', () => {
   const out = groupByRubric(
     [
       src('a', [{ key: 'eco', label: 'Eco A', articles: [art('a1', '2026-10-01')] }]),
@@ -18,8 +18,25 @@ test('une etagere par source, dans l ordre des sources', () => {
     { map },
   )
   assert.deepEqual(out.map((r) => r.key), ['economie'])
-  assert.deepEqual(out[0].shelves.map((s) => s.source.id), ['a', 'b'])
-  assert.equal(out[0].shelves[0].articles[0].catLabel, 'Eco A')
+  assert.deepEqual(out[0].shelves.map((s) => s.source.id), ['b', 'a'])
+  assert.equal(out[0].shelves[1].articles[0].catLabel, 'Eco A')
+})
+
+// La fraicheur d'une etagere est celle de sa carte la plus recente, pas de sa
+// premiere carte d'origine ; a egalite (ou sans date), l'ordre des sources
+// (TAB_ORDER) departage.
+test('etageres triees par derniere depeche, ordre des sources a egalite', () => {
+  const out = groupByRubric(
+    [
+      src('a', [{ key: 'eco', label: 'A', articles: [art('a1', '2026-10-01T08:00Z')] }]),
+      src('b', [{ key: 'eco', label: 'B', articles: [art('b0', '2026-09-01'), art('b1', '2026-10-01T09:00Z')] }]),
+      src('c', [{ key: 'eco', label: 'C', articles: [art('c1', '2026-10-01T08:00Z')] }]),
+      src('d', [{ key: 'eco', label: 'D', articles: [art('d1', null)] }]),
+      src('e', [{ key: 'eco', label: 'E', articles: [art('e1', null)] }]),
+    ],
+    { map: { ...map, c: map.a, d: map.a, e: map.a } },
+  )
+  assert.deepEqual(out[0].shelves.map((s) => s.source.id), ['b', 'a', 'c', 'd', 'e'])
 })
 
 // Review Focus : NEWS.am range le même article sous business ET economics.

@@ -176,8 +176,11 @@ const time = (a) => {
 }
 
 // Les sources (forme de buildSources, NewsBrowser.jsx) recomposées en
-// rubriques : pour chaque rubrique, une étagère par source, dans l'ordre des
-// sources reçu (donc celui de TAB_ORDER). Une source fusionne toutes ses
+// rubriques : pour chaque rubrique, une étagère par source, la rédaction à la
+// dépêche la plus récente en tête — Armenpress compris, c'est voulu. L'ordre
+// des sources reçu (TAB_ORDER) ne fait plus que départager deux étagères à
+// égalité ou sans date. Il est figé à l'instantané : prérendu et navigateur
+// lisent le même JSON, donc le même ordre. Une source fusionne toutes ses
 // rubriques d'origine qui mènent à la même rubrique commune (NEWS.am business
 // + economics), sans doublon d'URL. Chaque carte garde le libellé de sa
 // rubrique d'origine (`catLabel`). Rubrique ou étagère vide : absente.
@@ -200,6 +203,8 @@ export function groupByRubric(sources, { cap = SHELF_CAP, map = RUBRIC_MAP } = {
       items.sort((x, y) => time(y) - time(x))
       shelves.push({ source, articles: items.slice(0, cap) })
     }
+    // Stable : à égalité, l'ordre de TAB_ORDER tient.
+    shelves.sort((x, y) => time(y.articles[0]) - time(x.articles[0]))
     if (shelves.length) out.push({ key, shelves })
   }
   return out

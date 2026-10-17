@@ -159,7 +159,7 @@ function ArticleCard({ item, catLabel, showImage = true, proxy = false, armProxy
 // rubric (DEFAULT_RUBRIC): its shelves, from several sources, are what the
 // prerender bakes into the HTML for crawlers. All of it is in the page's
 // language, since each language only shows the sources that publish in it
-// (Armenpress maps 1:1 to the UI language, so it still leads the shelves).
+// (shelves are ordered by freshest dispatch, see groupByRubric).
 function buildSources(t, lang) {
   const armenpress = {
     id: 'armenpress',
@@ -333,8 +333,8 @@ export function NewsBrowser() {
   // Les sources se construisent comme avant (marque, drapeaux d'image,
   // rubriques d'origine par langue) puis se recomposent en rubriques communes :
   // un onglet par rubrique, une étagère par source dans chacune. TAB_ORDER
-  // décide toujours de la présence et de l'ordre des SOURCES — donc des
-  // étagères —, src/rubrics.js de celui des onglets.
+  // décide toujours de la présence des SOURCES ; les étagères, elles, sont
+  // triées par fraîcheur (groupByRubric), comme les onglets par src/rubrics.js.
   const rubrics = groupByRubric(buildSources(t, lang))
   const now = useNow()
   const tabRefs = useRef({})
