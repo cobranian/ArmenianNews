@@ -26,7 +26,7 @@ import {
   buildDraftMessages, buildIdeasMessages, parseArticleJson, parseIdeas, eventFacts,
 } from './lib/culture-prompts.mjs'
 import {
-  fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, hseTitle, fetchHse, fetchCommonsCandidates, downloadImage,
+  fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, fetchHseSource, fetchCommonsCandidates, downloadImage,
 } from './lib/culture-sources.mjs'
 import { loadUnesco, unescoSource } from './lib/culture-unesco.mjs'
 import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
@@ -125,8 +125,8 @@ async function draftArticle({ topic, event }) {
   }
   if (!wiki.fr) warnings.push('Pas d’article Wikipédia en français : brouillon rédigé depuis les autres langues.')
 
-  const hTitle = hseTitle(entity)
-  const hse = hTitle ? await fetchHse(hTitle).catch((e) => (warnings.push(`ՀՍՀ (Wikisource) indisponible (${e.message}).`), null)) : null
+  const { source: hse, warnings: hseWarnings } = await fetchHseSource(entity)
+  warnings.push(...hseWarnings)
   const unescoEntry = loadUnesco()[topic.slug]
   const unesco = unescoEntry ? unescoSource(unescoEntry) : null
 

@@ -108,15 +108,17 @@ export function wikitextToText(s) {
 
 // Titre de la Grande Encyclopédie soviétique arménienne (ՀՍՀ) sur hy.wikisource :
 // « ՀՍՀ/ » + le titre en capitales, sans la précision entre parenthèses.
+// La ligature « և » se met en capitales « ԵՒ » (Unicode) ; l'ՀՍՀ, en arménien
+// oriental, écrit « ԵՎ » (« ԵՐԵՎԱՆ ») — sans cette reprise, l'entrée est manquée.
 export function hseTitle(entity) {
   const raw = entity?.sitelinks?.hy ?? entity?.labels?.hy
   const base = String(raw ?? '').replace(/\s*\([^)]*\)\s*$/, '').trim()
-  return base ? `ՀՍՀ/${base.toUpperCase()}` : null
+  return base ? `ՀՍՀ/${base.toUpperCase().replace(/ԵՒ/g, 'ԵՎ')}` : null
 }
 
 export async function fetchHse(title, fetchImpl = fetch) {
   const j = await getJson(
-    api('hy.wikisource.org', { prop: 'revisions', rvprop: 'ids|content', rvslots: 'main', titles: title }),
+    api('hy.wikisource.org', { redirects: '1', prop: 'revisions', rvprop: 'ids|content', rvslots: 'main', titles: title }),
     fetchImpl,
   )
   const p = j?.query?.pages?.[0]
@@ -130,6 +132,20 @@ export async function fetchHse(title, fetchImpl = fetch) {
     revision: p.revisions[0].revid ?? null,
     extract: wikitextToText(content),
     license: 'CC BY-SA 3.0',
+  }
+}
+
+// L'entrée ՀՍՀ d'une entité, pour le brouillon. Un titre attendu sans entrée
+// (ou Wikisource en panne) est signalé dans la PR : sans quoi l'absence de
+// cette source passerait pour un sujet que l'ՀՍՀ ne traite pas.
+export async function fetchHseSource(entity, fetchImpl = fetch) {
+  const title = hseTitle(entity)
+  if (!title) return { source: null, warnings: [] }
+  try {
+    const source = await fetchHse(title, fetchImpl)
+    return { source, warnings: source ? [] : [`Pas d’entrée ՀՍՀ trouvée (${title}).`] }
+  } catch (e) {
+    return { source: null, warnings: [`Pas d’entrée ՀՍՀ trouvée (${title}) : Wikisource indisponible (${e.message}).`] }
   }
 }
 

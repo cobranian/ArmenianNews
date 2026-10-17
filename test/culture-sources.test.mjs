@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  fetchWikipedia, fetchTopicWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, wikitextToText,
+  fetchWikipedia, fetchTopicWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, fetchHseSource, wikitextToText,
 } from '../scripts/lib/culture-sources.mjs'
 
 // Un faux fetch qui route par hôte/paramètre et note les appels.
@@ -157,6 +157,11 @@ test('hseTitle : sitelink sans parenthèse, repli sur le libellé, capitales arm
   assert.equal(hseTitle({ sitelinks: { hy: 'Քոչարի (պար)' }, labels: { hy: 'Այլ' } }), 'ՀՍՀ/ՔՈՉԱՐԻ')
   assert.equal(hseTitle({ sitelinks: {}, labels: { hy: 'Կոմիտաս' } }), 'ՀՍՀ/ԿՈՄԻՏԱՍ')
   assert.equal(hseTitle({ sitelinks: {}, labels: {} }), null)
+  // « և » se met en capitales « ԵՒ » (Unicode) ; l'ՀՍՀ, en arménien
+  // oriental, écrit « ԵՎ ».
+  assert.equal('և'.toUpperCase(), 'ԵՒ')
+  assert.equal(hseTitle({ sitelinks: { hy: 'Երևան' } }), 'ՀՍՀ/ԵՐԵՎԱՆ')
+  assert.equal(hseTitle({ sitelinks: {}, labels: { hy: 'Գեղարդ և Գառնի' } }), 'ՀՍՀ/ԳԵՂԱՐԴ ԵՎ ԳԱՌՆԻ')
 })
 
 test('wikitextToText : modèles, références, liens, gras', () => {
@@ -179,4 +184,22 @@ test('fetchHse : page absente → null ; contenu → texte nettoyé, licence CC 
   assert.ok(r.url.startsWith('https://hy.wikisource.org/wiki/'))
   assert.equal(calls[0].init.headers['User-Agent'], WIKI_UA)
   assert.equal(calls[0].u.searchParams.get('rvslots'), 'main')
+  // Une entrée renommée sur Wikisource redirige : suivre, comme pour Wikipédia.
+  assert.equal(calls[0].u.searchParams.get('redirects'), '1')
+})
+
+test('fetchHseSource : pas de titre → rien ; entrée absente ou Wikisource en panne → avertissement', async () => {
+  const entity = { sitelinks: {}, labels: { hy: 'Կոմիտաս' } }
+  assert.deepEqual(await fetchHseSource({ sitelinks: {}, labels: {} }, async () => { throw new Error('jamais appelé') }), { source: null, warnings: [] })
+  const missing = router([[() => true, { query: { pages: [{ title: 'ՀՍՀ/ԿՈՄԻՏԱՍ', missing: true }] } }]])
+  assert.deepEqual(await fetchHseSource(entity, missing.impl), { source: null, warnings: ['Pas d’entrée ՀՍՀ trouvée (ՀՍՀ/ԿՈՄԻՏԱՍ).'] })
+  const down = async () => ({ ok: false, status: 503, json: async () => ({}) })
+  assert.deepEqual(await fetchHseSource(entity, down), {
+    source: null,
+    warnings: ['Pas d’entrée ՀՍՀ trouvée (ՀՍՀ/ԿՈՄԻՏԱՍ) : Wikisource indisponible (HTTP 503 hy.wikisource.org).'],
+  })
+  const found = router([[() => true, { query: { pages: [{ title: 'ՀՍՀ/ԿՈՄԻՏԱՍ', revisions: [{ revid: 1, slots: { main: { content: 'ԿՈՄԻՏԱՍ' } } }] }] } }]])
+  const r = await fetchHseSource(entity, found.impl)
+  assert.equal(r.source.kind, 'hse')
+  assert.deepEqual(r.warnings, [])
 })
