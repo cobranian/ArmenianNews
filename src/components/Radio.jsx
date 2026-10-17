@@ -38,6 +38,11 @@ const YERAZ_PROXY = 'https://radio-yeraz-proxy.cobranian.workers.dev/'
  *   Im Radio (aamiry02) : "activestreams":0, streamstatus 0, bitrate 0
  *   Arevik  (aamiryan)  : "activestreams":1, streamstatus 1, bitrate 128
  *
+ * Le 17 octobre 2026, Im Radio est revenue (`activestreams` 1, CORS présent :
+ * elle repasse par l'analyseur) et c'est Armenian Gospel Radio qui s'est tue —
+ * même diagnostic sur son propre DNAS (`s8.myradiostream.com:15554`) : 401,
+ * `activestreams` 0. Le drapeau a changé de station, pas de sens.
+ *
  * TROIS MESURES À CONNAÎTRE AVANT DE « RÉPARER » UNE URL DE CE TABLEAU, parce
  * que chacune écarte une fausse piste qui coûte une heure :
  *
@@ -64,7 +69,7 @@ const YERAZ_PROXY = 'https://radio-yeraz-proxy.cobranian.workers.dev/'
  * flux qui meurt chez l'hébergeur ne fait échouer ni test, ni lint, ni build. */
 const STATIONS = [
   { id: 'public', stream: 'https://eu1.stream4cast.com/proxy/publicra/stream' },
-  { id: 'im', stream: 'https://eu1.stream4cast.com/proxy/aamiry02/stream', offAir: true },
+  { id: 'im', stream: 'https://eu1.stream4cast.com/proxy/aamiry02/stream' },
   { id: 'arevik', stream: 'https://eu1.stream4cast.com/proxy/aamiryan/stream' },
   { id: 'culture', stream: 'https://eu1.stream4cast.com/proxy/aamiry01/stream' },
   { id: 'mariam', stream: MARIAM_PROXY },
@@ -81,7 +86,7 @@ const STATIONS = [
   { id: 'yerevannights', stream: 'https://icecast.worldweb.services/Web' },
   // Direct port URL: the path form (/15554/listen.mp3) 302-redirects here, and
   // the CSP host-source must name the non-default port explicitly.
-  { id: 'gospel', stream: 'https://s8.myradiostream.com:15554/listen.mp3' },
+  { id: 'gospel', stream: 'https://s8.myradiostream.com:15554/listen.mp3', offAir: true },
   { id: 'yeraz', stream: YERAZ_PROXY },
   // Radio Jazz FM (89.3 MHz, Erevan) — the only jazz station of the set. Like
   // the stream4cast mounts it is HTTPS and sends Access-Control-Allow-Origin: *,
@@ -286,7 +291,7 @@ export function Radio({ more = true }) {
     //
     // C'est ce second chemin qui compte : `useSourceDrum` appelle `pick` avec
     // le rang arrêté au centre, sans savoir ce qu'est une station. Sans cette
-    // garde, faire tourner la roue jusqu'à Im Radio couperait le flux en cours
+    // garde, faire tourner la roue jusqu'à une station hors antenne couperait le flux en cours
     // pour un mount qui répond 401 — donc « Flux indisponible. » et un bouton
     // « Réessayer » qui ne peut pas aboutir, à la place d'une station qui
     // jouait. La roue reste posée sur son rang, qui porte « hors antenne » en
