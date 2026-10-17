@@ -128,6 +128,9 @@ const STATIONS = [
   { id: 'tsayn', stream: 'https://cast5.asurahosting.com/proxy/jean/live', plain: true },
 ]
 
+const mediaSession = () =>
+  typeof navigator !== 'undefined' ? navigator.mediaSession : null
+
 const prefersReducedMotion = () =>
   typeof matchMedia !== 'undefined' &&
   matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -175,6 +178,7 @@ export function Radio({ more = true }) {
   const rafRef = useRef(0)
 
   const [stationId, setStationId] = useState('public')
+  const stationIdRef = useRef(stationId) // voir `pick`
   const [playing, setPlaying] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -235,6 +239,12 @@ export function Radio({ more = true }) {
 
   function pause() {
     elFor(station)?.pause()
+    // Une pause pendant un chargement (ou après un `stalled`) laisserait
+    // `loading` levé : l'écran verrouillé, qui compte le chargement comme
+    // lecture, resterait bloqué sur ⏸. On ne le baisse PAS dans le gestionnaire
+    // `pause` de l'élément : au changement de station, l'ancien élément émet
+    // `pause` après que `pick` a levé `loading` pour le nouveau.
+    setLoading(false)
   }
 
   function toggle() {
@@ -245,8 +255,16 @@ export function Radio({ more = true }) {
   // `force` : lancer la lecture même à l'arrêt — c'est ce que veut un ⏭ pressé
   // sur l'écran de verrouillage. Un clic sur une puce, lui, ne lance rien.
   function pick(id, force = false) {
-    if (id === stationId) return
-    const prev = station
+    // La station courante est lue dans une référence, pas dans l'état : deux ⏭
+    // pressés avant le rendu suivant liraient sinon la même station, le second
+    // serait perdu — et `prev` désignerait le mauvais élément, laissant deux
+    // flux jouer en même temps.
+    const cur = stationIdRef.current
+    if (id === cur) {
+      if (force && !playing) play()
+      return
+    }
+    const prev = STATIONS.find((s) => s.id === cur)
     const next = STATIONS.find((s) => s.id === id)
     // Une station hors antenne ne se sélectionne pas — ni au clic (sa puce est
     // `aria-disabled`), ni quand le TAMBOUR mobile s'immobilise sur son rang.
@@ -259,9 +277,10 @@ export function Radio({ more = true }) {
     // jouait. La roue reste posée sur son rang, qui porte « hors antenne » en
     // toutes lettres : elle explique elle-même pourquoi rien n'a changé.
     if (!next || next.offAir) return
+    stationIdRef.current = id
     setStationId(id)
     elFor(prev)?.pause() // stop whatever the previous station was using
-    const audio = next.plain ? plainAudioRef.current : audioRef.current
+    const audio = elFor(next)
     if (!audio) return
     audio.src = next.stream
     if (playing || loading || force) {
@@ -330,11 +349,11 @@ export function Radio({ more = true }) {
   sessionRef.current = {
     play,
     pause,
-    step: (dir) => pick(stepStation(STATIONS, stationId, dir), true),
+    step: (dir) => pick(stepStation(STATIONS, stationIdRef.current, dir), true),
   }
 
   useEffect(() => {
-    const ms = typeof navigator !== 'undefined' ? navigator.mediaSession : null
+    const ms = mediaSession()
     if (!ms) return
     const actions = {
       play: () => sessionRef.current.play(),
@@ -343,19 +362,19 @@ export function Radio({ more = true }) {
       previoustrack: () => sessionRef.current.step(-1),
       nexttrack: () => sessionRef.current.step(1),
     }
-    const set = (fn) => (a) => {
+    const poser = (a, h) => {
       try {
-        ms.setActionHandler(a, fn(a))
+        ms.setActionHandler(a, h)
       } catch {
         /* action inconnue de ce navigateur — les autres restent posées */
       }
     }
-    Object.keys(actions).forEach(set((a) => actions[a]))
-    return () => Object.keys(actions).forEach(set(() => null))
+    for (const [a, h] of Object.entries(actions)) poser(a, h)
+    return () => Object.keys(actions).forEach((a) => poser(a, null))
   }, [])
 
   useEffect(() => {
-    const ms = typeof navigator !== 'undefined' ? navigator.mediaSession : null
+    const ms = mediaSession()
     if (!ms || typeof MediaMetadata === 'undefined') return
     const icon = new URL(`${import.meta.env.BASE_URL}favicon-192.png`, location.href).href
     ms.metadata = new MediaMetadata({
@@ -366,7 +385,7 @@ export function Radio({ more = true }) {
   }, [stationId, t])
 
   useEffect(() => {
-    const ms = typeof navigator !== 'undefined' ? navigator.mediaSession : null
+    const ms = mediaSession()
     // `loading` compte comme lecture : au changement de station, l'ancien
     // élément émet `pause` avant que le nouveau ne joue, et l'écran verrouillé
     // basculerait sur ▶ le temps du chargement.

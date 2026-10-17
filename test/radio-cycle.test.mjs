@@ -29,8 +29,9 @@ test('la liste boucle aux deux bouts', () => {
   assert.equal(stepStation(S, 'a', -1), 'd')
 })
 
-test('une station inconnue repart du début de la liste', () => {
+test('une station inconnue : ⏭ donne la première, ⏮ la dernière', () => {
   assert.equal(stepStation(S, 'zzz', 1), 'a')
+  assert.equal(stepStation(S, 'zzz', -1), 'd')
 })
 
 test('si rien d’autre n’est à l’antenne, on reste sur place', () => {

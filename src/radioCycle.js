@@ -9,7 +9,8 @@ export function stepStation(stations, currentId, dir) {
   const n = stations.length
   if (!n) return currentId
   const from = stations.findIndex((s) => s.id === currentId)
-  // Station inconnue : on part d'« avant le début » pour tomber sur la première.
+  // Station inconnue : ⏭ part d'« avant le début » et tombe sur la première,
+  // ⏮ part du début et tombe sur la dernière.
   const start = from === -1 ? (dir > 0 ? -1 : 0) : from
   for (let k = 1; k <= n; k++) {
     const s = stations[(((start + dir * k) % n) + n) % n]
