@@ -128,6 +128,12 @@ const STATIONS = [
   { id: 'tsayn', stream: 'https://cast5.asurahosting.com/proxy/jean/live', plain: true },
 ]
 
+// Passage automatique à la station suivante quand un flux est indisponible
+// (voir `skipFrom`). Un flux qui charge plus longtemps que ceci sans jouer est
+// tenu pour indisponible : certains serveurs morts n'émettent jamais d'erreur.
+const STALL_MS = 15000
+const PLAYABLE = STATIONS.filter((s) => !s.offAir).length
+
 const mediaSession = () =>
   typeof navigator !== 'undefined' ? navigator.mediaSession : null
 
@@ -179,6 +185,9 @@ export function Radio({ more = true }) {
 
   const [stationId, setStationId] = useState('public')
   const stationIdRef = useRef(stationId) // voir `pick`
+  const wantRef = useRef(false) // l'auditeur veut entendre quelque chose (voir `skipFrom`)
+  const failsRef = useRef(0) // stations sautées d'affilée sans qu'aucune ne joue
+  const onlineWaitRef = useRef(false)
   const [playing, setPlaying] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -214,11 +223,17 @@ export function Radio({ more = true }) {
   async function play() {
     const audio = elFor(station)
     if (!audio) return
+    wantRef.current = true
+    failsRef.current = 0
     // only one element ever plays
     ;(isPlain ? audioRef.current : plainAudioRef.current)?.pause()
     setError(false)
     setLoading(true)
-    if (audio.src !== station.stream) audio.src = station.stream
+    // Un élément resté en erreur ne se relance pas par un simple `play()` : le
+    // navigateur le refuse tant que la source n'est pas rechargée. Sans ce
+    // rechargement, « Réessayer » et la reprise au retour du réseau échouaient,
+    // et la reprise faisait sauter une station qui marchait.
+    if (audio.src !== station.stream || audio.error) audio.src = station.stream
     if (!isPlain) {
       ensureGraph()
       if (ctxRef.current?.state === 'suspended') {
@@ -231,13 +246,13 @@ export function Radio({ more = true }) {
     }
     try {
       await audio.play()
-    } catch {
-      setLoading(false)
-      setError(true)
+    } catch (err) {
+      failed(station.id, err)
     }
   }
 
   function pause() {
+    wantRef.current = false
     elFor(station)?.pause()
     // Une pause pendant un chargement (ou après un `stalled`) laisserait
     // `loading` levé : l'écran verrouillé, qui compte le chargement comme
@@ -284,18 +299,79 @@ export function Radio({ more = true }) {
     if (!audio) return
     audio.src = next.stream
     if (playing || loading || force) {
+      wantRef.current = true
       setLoading(true)
       setError(false)
       if (!next.plain) {
         ensureGraph()
         if (ctxRef.current?.state === 'suspended') ctxRef.current.resume().catch(() => {})
       }
-      audio.play().catch(() => {
-        setLoading(false)
-        setError(true)
-      })
+      audio.play().catch((err) => failed(id, err))
     }
   }
+
+  // `play()` a été refusé pour la station `id`.
+  function failed(id, err) {
+    // Lecture remplacée par un changement de station (deux ⏭ rapides) : rien
+    // n'est en panne, la nouvelle station est déjà en route.
+    if (err?.name === 'AbortError') return
+    // La même panne remonte souvent deux fois (événement `error` ET refus de
+    // `play()`). Si la première a déjà fait sauter la station, la seconde
+    // arrive en retard : elle afficherait « Flux indisponible » sur la station
+    // suivante, en plein chargement.
+    if (id !== stationIdRef.current) return
+    setLoading(false)
+    setError(true)
+    // Lecture automatique refusée par le navigateur : une autre station serait
+    // refusée de même. Seul un geste de l'auditeur débloque.
+    if (err?.name === 'NotAllowedError') return
+    skipFrom(id)
+  }
+
+  // Le flux de la station `id` est indisponible : on passe à la suivante, sans
+  // que l'auditeur ait à déverrouiller son téléphone (demandé après un essai en
+  // voiture). Trois garde-fous :
+  // - seulement si l'auditeur veut écouter (pas après une pause) et si `id` est
+  //   toujours la station courante — la même panne remonte souvent deux fois
+  //   (refus de `play()` ET événement `error`), la seconde ne doit rien sauter ;
+  // - hors réseau (un tunnel), changer de station ne servirait à rien : chacune
+  //   échouerait en une fraction de seconde et on finirait arrêté. On attend le
+  //   retour du réseau et on reprend la station courante ;
+  // - après un tour complet sans qu'aucune station ne joue, on s'arrête sur
+  //   « Flux indisponible » au lieu de tourner sans fin.
+  function skipFrom(id) {
+    if (!wantRef.current || id !== stationIdRef.current) return
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      if (onlineWaitRef.current) return
+      onlineWaitRef.current = true
+      window.addEventListener(
+        'online',
+        () => {
+          onlineWaitRef.current = false
+          // La station COURANTE, pas `id` : un ⏭ pressé hors réseau a pu la
+          // changer depuis.
+          if (wantRef.current) sessionRef.current?.play()
+        },
+        { once: true },
+      )
+      return
+    }
+    failsRef.current += 1
+    if (failsRef.current >= PLAYABLE) {
+      failsRef.current = 0
+      wantRef.current = false
+      return
+    }
+    pick(stepStation(STATIONS, id, 1), true)
+  }
+
+  // Un flux qui reste en chargement sans jamais jouer ni échouer.
+  useEffect(() => {
+    if (!loading) return
+    const id = stationIdRef.current
+    const timer = setTimeout(() => sessionRef.current?.skipFrom(id), STALL_MS)
+    return () => clearTimeout(timer)
+  }, [loading, stationId])
 
   // Keep both elements' volume in sync.
   useEffect(() => {
@@ -308,16 +384,22 @@ export function Radio({ more = true }) {
   useEffect(() => {
     const els = [audioRef.current, plainAudioRef.current].filter(Boolean)
     const onPlaying = () => {
+      failsRef.current = 0
       setPlaying(true)
       setLoading(false)
       setError(false)
     }
     const onWaiting = () => setLoading(true)
     const onPause = () => setPlaying(false)
-    const onError = () => {
+    const onError = (e) => {
+      // L'élément d'une station qu'on vient de quitter peut encore échouer : ce
+      // n'est pas la station écoutée, ni l'affichage ni le saut ne la regardent.
+      const cur = STATIONS.find((s) => s.id === stationIdRef.current)
+      if (e.target !== (cur?.plain ? plainAudioRef.current : audioRef.current)) return
       setPlaying(false)
       setLoading(false)
       setError(true)
+      sessionRef.current?.skipFrom(cur.id)
     }
     els.forEach((el) => {
       el.addEventListener('playing', onPlaying)
@@ -349,7 +431,11 @@ export function Radio({ more = true }) {
   sessionRef.current = {
     play,
     pause,
-    step: (dir) => pick(stepStation(STATIONS, stationIdRef.current, dir), true),
+    skipFrom,
+    step: (dir) => {
+      failsRef.current = 0
+      pick(stepStation(STATIONS, stationIdRef.current, dir), true)
+    },
   }
 
   useEffect(() => {
