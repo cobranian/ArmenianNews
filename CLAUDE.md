@@ -1223,7 +1223,7 @@ de production servent toujours depuis la racine de leur domaine.
   un changement de `HOST_BY_LANG` ou du mode image, `wrangler deploy` ou les
   vignettes retombent sur un motif. (Les images Armenpress, elles, hotlinkent
   directement — pas de 503.)
-- **Brève quotidienne : le hreflang d'une page datée ne cite que les langues présentes ce jour-là** (`scripts/lib/brief-links.mjs`, partagé avec le sitemap). Une journée sans brève ne casse rien : le seul signe est `✗ brief/{lang}` au log (`gh run view <id> --log | grep brief`). Le modèle ne fournit jamais d'URL : elles viennent des articles sélectionnés.
+- **Brève quotidienne : le hreflang d'une page datée ne cite que les langues présentes ce jour-là** (`scripts/lib/brief-links.mjs`, partagé avec le sitemap). Une journée sans brève ne casse rien : le seul signe est `✗ brief/{lang}` au log (`gh run view <id> --log | grep brief`). Le modèle ne fournit jamais d'URL : elles viennent des articles sélectionnés. Seul filtre de texte : l'alphabet (`brief-script.mjs`) — un sujet hy/ru qui écrit du latin hors titres sources (ou l'inverse en fr/en) est écarté ; signe au log : `✗ brief/hy: alphabet`. Les modèles :free le faisaient (« successoffice », « football » en russe, 17 oct. 2026).
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
 - **La langue vient de l'URL, plus de `localStorage`.** Chaque langue a son
