@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  fetchWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA,
+  fetchWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, wikitextToText,
 } from '../scripts/lib/culture-sources.mjs'
 
 // Un faux fetch qui route par hôte/paramètre et note les appels.
@@ -22,7 +22,7 @@ test('fetchWikipedia : extrait, révision, Wikidata, image de tête, UA honnête
     query: { pages: [{ title: 'Komitas', extract: 'Texte', revisions: [{ revid: 42 }], pageprops: { wikibase_item: 'Q312' }, pageimage: 'Komitas.jpg' }] },
   }]])
   const r = await fetchWikipedia('fr', 'Komitas', impl)
-  assert.deepEqual(r, { kind: 'wikipedia', lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 42, extract: 'Texte', wikidata: 'Q312', pageImage: 'Komitas.jpg' })
+  assert.deepEqual(r, { kind: 'wikipedia', lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 42, extract: 'Texte', license: 'CC BY-SA 4.0', wikidata: 'Q312', pageImage: 'Komitas.jpg' })
   assert.equal(calls[0].init.headers['User-Agent'], WIKI_UA)
   assert.ok(!/Mozilla|Chrome/.test(WIKI_UA))
   assert.equal(calls[0].u.searchParams.get('redirects'), '1')
@@ -122,4 +122,32 @@ test('resolveTitles : sitelinks, surcharge manuelle prioritaire, langue absente 
   const entity = { sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: undefined, ru: undefined } }
   assert.deepEqual(resolveTitles({}, entity), { fr: 'Kochari', en: 'Kochari (dance)' })
   assert.deepEqual(resolveTitles({ wikipedia: { en: 'Kochari', ru: 'Кочари' } }, entity), { fr: 'Kochari', en: 'Kochari', ru: 'Кочари' })
+})
+
+test('hseTitle : sitelink sans parenthèse, repli sur le libellé, capitales arméniennes', () => {
+  assert.equal(hseTitle({ sitelinks: { hy: 'Քոչարի (պար)' }, labels: { hy: 'Այլ' } }), 'ՀՍՀ/ՔՈՉԱՐԻ')
+  assert.equal(hseTitle({ sitelinks: {}, labels: { hy: 'Կոմիտաս' } }), 'ՀՍՀ/ԿՈՄԻՏԱՍ')
+  assert.equal(hseTitle({ sitelinks: {}, labels: {} }), null)
+})
+
+test('wikitextToText : modèles, références, liens, gras', () => {
+  const w = "{{ՀՍՀ\n| A = {{x|y}}\n}}\n'''Կոմիտաս''' է [[երաժիշտ|կոմպոզիտոր]] և [[Երևան]]<ref>src</ref><ref name=a/>''։''"
+  assert.equal(wikitextToText(w), 'Կոմիտաս է կոմպոզիտոր և Երևան։')
+})
+
+test('fetchHse : page absente → null ; contenu → texte nettoyé, licence CC BY-SA 3.0, URL hy.wikisource', async () => {
+  const missing = router([[() => true, { query: { pages: [{ title: 'ՀՍՀ/X', missing: true }] } }]])
+  assert.equal(await fetchHse('ՀՍՀ/X', missing.impl), null)
+  const { impl, calls } = router([[(u) => u.host === 'hy.wikisource.org', {
+    query: { pages: [{ title: 'ՀՍՀ/ԿՈՄԻՏԱՍ', revisions: [{ revid: 377903, slots: { main: { content: "'''ԿՈՄԻՏԱՍ''' [[հայ|հայ]] կոմպոզիտոր<ref>r</ref>" } } }] }] },
+  }]])
+  const r = await fetchHse('ՀՍՀ/ԿՈՄԻՏԱՍ', impl)
+  assert.equal(r.kind, 'hse')
+  assert.equal(r.lang, 'hy')
+  assert.equal(r.revision, 377903)
+  assert.equal(r.extract, 'ԿՈՄԻՏԱՍ հայ կոմպոզիտոր')
+  assert.equal(r.license, 'CC BY-SA 3.0')
+  assert.ok(r.url.startsWith('https://hy.wikisource.org/wiki/'))
+  assert.equal(calls[0].init.headers['User-Agent'], WIKI_UA)
+  assert.equal(calls[0].u.searchParams.get('rvslots'), 'main')
 })

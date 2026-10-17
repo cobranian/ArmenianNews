@@ -49,8 +49,56 @@ export async function fetchWikipedia(lang, title, fetchImpl = fetch) {
     url: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`,
     revision: p.revisions?.[0]?.revid ?? null,
     extract: p.extract,
+    license: 'CC BY-SA 4.0',
     wikidata: p.pageprops?.wikibase_item ?? null,
     pageImage: p.pageimage ?? null,
+  }
+}
+
+// Le texte brut d'un wikitexte : modèles, références, balises et liens retirés.
+export function wikitextToText(s) {
+  let t = String(s ?? '')
+  let prev
+  do {
+    prev = t
+    t = t.replace(/\{\{[^{}]*\}\}/g, '') // de l'intérieur vers l'extérieur : modèles imbriqués
+  } while (t !== prev)
+  return t
+    .replace(/<ref[^>]*\/>/gi, '')
+    .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, '')
+    .replace(/<[^>]*>/g, '')
+    .replace(/\[\[[^\]|]*\|([^\]]*)\]\]/g, '$1')
+    .replace(/\[\[([^\]]*)\]\]/g, '$1')
+    .replace(/'{2,}/g, '')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+}
+
+// Titre de la Grande Encyclopédie soviétique arménienne (ՀՍՀ) sur hy.wikisource :
+// « ՀՍՀ/ » + le titre en capitales, sans la précision entre parenthèses.
+export function hseTitle(entity) {
+  const raw = entity?.sitelinks?.hy ?? entity?.labels?.hy
+  const base = String(raw ?? '').replace(/\s*\([^)]*\)\s*$/, '').trim()
+  return base ? `ՀՍՀ/${base.toUpperCase()}` : null
+}
+
+export async function fetchHse(title, fetchImpl = fetch) {
+  const j = await getJson(
+    api('hy.wikisource.org', { prop: 'revisions', rvprop: 'ids|content', rvslots: 'main', titles: title }),
+    fetchImpl,
+  )
+  const p = j?.query?.pages?.[0]
+  const content = p?.revisions?.[0]?.slots?.main?.content
+  if (!p || p.missing || p.invalid || !content) return null
+  return {
+    kind: 'hse',
+    lang: 'hy',
+    title: p.title,
+    url: `https://hy.wikisource.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_')).replace(/%2F/g, '/')}`,
+    revision: p.revisions[0].revid ?? null,
+    extract: wikitextToText(content),
+    license: 'CC BY-SA 3.0',
   }
 }
 
