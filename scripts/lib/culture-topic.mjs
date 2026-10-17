@@ -1,16 +1,28 @@
-// Le choix du sujet de la semaine (spec §1.1) : un sujet de la liste curée
+// Le choix du sujet du jour (spec §1.1) : un sujet de la liste curée
 // dont un événement de l'agenda tombe dans les 21 jours passe devant — le
 // plus proche d'abord ; sinon le premier disponible.
 //
 // « Disponible » = `pending` ET sans PR ouverte ET sans dossier déjà présent.
 // Sans la deuxième condition, un sujet en relecture serait rédigé une seconde
-// fois le lundi suivant ; sans la troisième, un statut remis à `pending` à la
+// fois la nuit suivante ; sans la troisième, un statut remis à `pending` à la
 // main ferait réécrire un article publié.
 import { evenementsAVenir } from '../../src/agendaEvents.js'
 import { CULTURE_SLUG } from '../../sites.config.js'
 
 export const WINDOW_DAYS = 21
 export const STATUSES = ['pending', 'published', 'rejected']
+
+// Le rythme quotidien (un brouillon par nuit) : dès MAX_OPEN PR
+// Culture en relecture, la nuit ne rédige rien — une file qui grossit sans
+// relecteur ne fait que vieillir des brouillons. Sous MIN_AVAILABLE sujets
+// encore disponibles, une issue d'idées est proposée (une semaine d'avance).
+export const MAX_OPEN = 2
+export const MIN_AVAILABLE = 7
+
+export const queueFull = (openBranches, max = MAX_OPEN) =>
+  openBranches.filter((b) => String(b).startsWith('culture/')).length >= max
+
+export const needsIdeas = (available, min = MIN_AVAILABLE) => available < min
 
 const fold = (s) =>
   String(s ?? '')

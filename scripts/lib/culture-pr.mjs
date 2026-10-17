@@ -101,23 +101,34 @@ const slugify = (s) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
 
+// L'issue d'idées : une liste numérotée lisible sur téléphone, puis le JSON
+// que `/ajoute` relit (`n` désigne l'idée, `qid` l'identifie sans homonyme).
+// Chaque idée a déjà été vérifiée : son article Wikipédia existe (`url`) et
+// son élément Wikidata n'est pas déjà dans sujets.json.
 export function ideasIssueBody(ideas) {
-  const entries = ideas.map((x) => ({
+  const entries = ideas.map((x, i) => ({
+    n: i + 1,
     slug: slugify(x.title),
     title: x.title,
+    qid: x.qid,
     wikipedia: { ...(x.wikipedia_fr ? { fr: x.wikipedia_fr } : {}), ...(x.wikipedia_en ? { en: x.wikipedia_en } : {}) },
     keywords: x.keywords,
-    status: 'pending',
+    status: 'proposed',
   }))
   return [
-    'La liste `src/data/culture/sujets.json` est épuisée. Voici des idées générées ;',
-    'copiez celles que vous retenez dans le tableau `topics`, **vérifiez les titres Wikipédia**, puis fermez cette issue.',
+    'Il reste moins d’une semaine de sujets dans `src/data/culture/sujets.json`. Voici des idées, chacune liée à un article Wikipédia existant :',
     '',
-    ...ideas.map((x) => `- ${x.title}`),
+    ...ideas.map((x, i) => `${i + 1}. ${x.title} — [Wikipédia](${x.url})`),
+    '',
+    'Pour les retenir, commentez avec leurs numéros : `/ajoute 1 4 7`. Pour les écarter : `/rejette 2 3`.',
+    '',
+    '<details><summary>Données (lues par /ajoute)</summary>',
     '',
     '```json',
     JSON.stringify(entries, null, 2),
     '```',
+    '',
+    '</details>',
     '',
   ].join('\n')
 }

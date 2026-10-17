@@ -1,14 +1,15 @@
-# Le brouillon Culture de la semaine (spec §1.1). Ouvre UNE PR par article ;
-# rien ne part en production avant la fusion par un humain.
+# Le brouillon Culture du jour (spec §1.1). Ouvre UNE PR par article, au plus
+# deux en relecture à la fois (MAX_OPEN) ; rien ne part en production avant la
+# fusion par un humain. Sous une semaine de sujets, ouvre une issue d'idées.
 #
 # PIÈGE GitHub : une PR ouverte ou un commit poussé avec le GITHUB_TOKEN ne
 # déclenche AUCUN autre workflow. articles-check.yml ne tournerait donc jamais
 # sur les commits du robot : ce job publie lui-même le statut culture-check.
-name: Culture — brouillon hebdomadaire
+name: Culture — brouillon quotidien
 
 on:
   schedule:
-    - cron: '0 6 * * 1' # lundi 06:00 UTC
+    - cron: '0 3 * * *' # chaque nuit, 03:00 UTC
   workflow_dispatch: {}
 
 permissions:
@@ -38,6 +39,12 @@ jobs:
         run: |
           gh pr list --state open --limit 200 --json headRefName --jq '[.[].headRefName]' > "$RUNNER_TEMP/open.json"
 
+      - name: Issue d'idées déjà ouverte ?
+        id: open-ideas
+        run: |
+          n=$(gh issue list --state open --search 'in:title "Culture : idées de sujets"' --json number --jq 'length')
+          if [ "$n" -gt 0 ]; then echo "flag=--ideas-open" >> "$GITHUB_OUTPUT"; fi
+
       - name: Rédiger
         id: draft
         env:
@@ -45,13 +52,9 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
           ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+          IDEAS_FLAG: ${{ steps.open-ideas.outputs.flag }}
         run: |
-          node scripts/culture-draft.mjs --open-branches "$RUNNER_TEMP/open.json" --out-body "$RUNNER_TEMP/body.md"
-
-      - name: Ouvrir l'issue d'idées
-        if: steps.draft.outputs.issue == '1'
-        run: |
-          gh issue create --title "Culture : idées de sujets" --body-file "$RUNNER_TEMP/body.md"
+          node scripts/culture-draft.mjs --open-branches "$RUNNER_TEMP/open.json" --out-body "$RUNNER_TEMP/body.md" --out-ideas "$RUNNER_TEMP/ideas.md" $IDEAS_FLAG
 
       - name: Ouvrir la PR de relecture
         if: steps.draft.outputs.slug != ''
@@ -71,3 +74,10 @@ jobs:
           cat "$RUNNER_TEMP/check.txt"
           gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
             -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"
+
+      # Après la PR : les deux peuvent partir la même nuit, et un échec de
+      # l'issue ne doit pas retenir le brouillon.
+      - name: Ouvrir l'issue d'idées
+        if: steps.draft.outputs.ideas == '1'
+        run: |
+          gh issue create --title "Culture : idées de sujets" --body-file "$RUNNER_TEMP/ideas.md"

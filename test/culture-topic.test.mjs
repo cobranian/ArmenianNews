@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import {
   availableTopics, agendaMatch, pickTopic, setTopicStatus, validateTopics, WINDOW_DAYS,
+  queueFull, needsIdeas, MAX_OPEN, MIN_AVAILABLE,
 } from '../scripts/lib/culture-topic.mjs'
 
 const NOW = new Date('2026-10-19T08:00').getTime()
@@ -72,4 +73,20 @@ test('src/data/culture/sujets.json est valide', async () => {
   const file = JSON.parse(await readFile(new URL('../src/data/culture/sujets.json', import.meta.url), 'utf-8'))
   assert.deepEqual(validateTopics(file), [])
   assert.ok(file.topics.length >= 12)
+})
+
+test('queueFull : 0, 1, 2 PR culture ; branches non culture ignorées', () => {
+  assert.equal(MAX_OPEN, 2)
+  assert.equal(queueFull([]), false)
+  assert.equal(queueFull(['culture/duduk']), false)
+  assert.equal(queueFull(['culture/duduk', 'culture/ani']), true)
+  assert.equal(queueFull(['culture/duduk', 'fix/culture-x', 'dependabot/npm', 'main']), false)
+  assert.equal(queueFull(['culture/duduk'], 1), true)
+})
+
+test('needsIdeas : 6 oui, 7 non', () => {
+  assert.equal(MIN_AVAILABLE, 7)
+  assert.equal(needsIdeas(6), true)
+  assert.equal(needsIdeas(7), false)
+  assert.equal(needsIdeas(0), true)
 })

@@ -33,3 +33,21 @@ test('culture-draft : --out-body par défaut hors du dépôt', async () => {
 test('les robots publient le statut culture-check eux-mêmes', async () => {
   for (const f of ['articles.yml', 'articles-translate.yml']) assert.match(await read(f), /statuses\/.*context=culture-check/s, f)
 })
+
+test('articles.yml : cron quotidien 0 3 * * *', async () => {
+  const y = await read('articles.yml')
+  assert.match(y, /cron: '0 3 \* \* \*'/)
+  assert.doesNotMatch(y, /cron: '0 6 \* \* 1'/)
+  assert.match(y, /^name: Culture — brouillon quotidien$/m)
+})
+
+test('articles.yml : idées seulement sans issue ouverte (--ideas-open)', async () => {
+  const y = await read('articles.yml')
+  assert.match(y, /gh issue list --state open --search 'in:title "Culture : idées de sujets"'/)
+  assert.match(y, /--ideas-open/)
+  assert.match(y, /if: steps\.draft\.outputs\.ideas == '1'/)
+  assert.doesNotMatch(y, /outputs\.issue/)
+  const src = await readFile(new URL('../scripts/culture-draft.mjs', import.meta.url), 'utf-8')
+  assert.match(src, /'ideas-open': \{ type: 'boolean'/)
+  assert.match(src, /'out-ideas': \{ type: 'string', default: path\.join\(tmpdir\(\), 'culture-ideas\.md'\) \}/)
+})

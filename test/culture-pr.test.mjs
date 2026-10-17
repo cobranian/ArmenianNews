@@ -116,10 +116,17 @@ test('corps sous 65 000 caractères, pire cas', () => {
   assert.match(body, /… \(90 de plus\)/)
 })
 
-test('issue d’idées : entrées prêtes à coller dans sujets.json', () => {
-  const body = ideasIssueBody([{ title: 'Le tar', wikipedia_fr: 'Tar (luth)', wikipedia_en: 'Tar (lute)', keywords: ['tar'] }])
-  assert.match(body, /Le tar/)
+test('issue d’idées : numérotée, JSON avec n/qid/status proposed, mode d’emploi', () => {
+  const body = ideasIssueBody([
+    { title: 'Le tar', qid: 'Q1', wikipedia_fr: 'Tar (luth)', wikipedia_en: 'Tar (lute)', keywords: ['tar'], url: 'https://fr.wikipedia.org/wiki/Tar_(luth)' },
+    { title: 'Le lavash', qid: 'Q2', wikipedia_fr: '', wikipedia_en: 'Lavash', keywords: ['lavash'], url: 'https://en.wikipedia.org/wiki/Lavash' },
+  ])
+  assert.match(body, /^1\. Le tar — \[Wikipédia\]\(https:\/\/fr\.wikipedia\.org\/wiki\/Tar_\(luth\)\)$/m)
+  assert.match(body, /^2\. Le lavash — \[Wikipédia\]\(https:\/\/en\.wikipedia\.org\/wiki\/Lavash\)$/m)
   const json = JSON.parse(body.match(/```json\n([\s\S]*?)\n```/)[1])
-  assert.equal(json[0].slug, 'le-tar')
-  assert.equal(json[0].status, 'pending')
+  assert.deepEqual(json[0], { n: 1, slug: 'le-tar', title: 'Le tar', qid: 'Q1', wikipedia: { fr: 'Tar (luth)', en: 'Tar (lute)' }, keywords: ['tar'], status: 'proposed' })
+  assert.equal(json[1].n, 2)
+  assert.deepEqual(json[1].wikipedia, { en: 'Lavash' })
+  assert.match(body, /`\/ajoute 1 4 7`/)
+  assert.match(body, /`\/rejette 2 3`/)
 })
