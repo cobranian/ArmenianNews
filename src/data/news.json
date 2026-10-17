@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T12:00:10.069Z",
+  "generatedAt": "2026-10-17T14:18:46.485Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -80,16 +80,16 @@
       "sectionKey": "societe",
       "articles": [
         {
-          "title": "COP17 : à Erevan, les dirigeants appellent à accélérer l’action mondiale en faveur de la biodiversité",
-          "url": "https://courrier.am/cop17-erevan-les-dirigeants-appellent-accelerer-laction-mondiale-en-faveur-de-la-biodiversite",
-          "date": "2026-10-16T08:44:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/20261015_state_of_biodiversity_action_report_launch_photo-10_55590301612_o.jpg.avif?itok=dz6O7zyi"
-        },
-        {
           "title": "L’Arménie alloue 2,36 milliards de drams supplémentaires à la recherche scientifique",
           "url": "https://courrier.am/larmenie-alloue-236-milliards-de-drams-supplementaires-la-recherche-scientifique",
           "date": "2026-10-16T07:20:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_2.png.avif?itok=xs4QaAIn"
+        },
+        {
+          "title": "COP17 : à Erevan, les dirigeants appellent à accélérer l’action mondiale en faveur de la biodiversité",
+          "url": "https://courrier.am/cop17-erevan-les-dirigeants-appellent-accelerer-laction-mondiale-en-faveur-de-la-biodiversite",
+          "date": "2026-10-16T08:44:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/20261015_state_of_biodiversity_action_report_launch_photo-10_55590301612_o.jpg.avif?itok=dz6O7zyi"
         },
         {
           "title": "Joyeux anniversaire, Erevan ! La capitale arménienne célèbre ses 2 808 ans",
@@ -116,12 +116,6 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Unveil.png.avif?itok=mYZqmJ1R"
         },
         {
-          "title": "Le message de Zhanna Andreasyan aux enseignants",
-          "url": "https://courrier.am/le-message-de-zhanna-andreasyan-aux-enseignants",
-          "date": "2026-10-05T09:07:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/835677395_1138478548507681_1425274539775171074_n.jpg.avif?itok=Gx-T4W2M"
-        },
-        {
           "title": "WorldSkills : l’Arménie décroche sa première médaille depuis ses débuts dans la compétition",
           "url": "https://courrier.am/worldskills-larmenie-decroche-sa-premiere-medaille-depuis-ses-debuts-dans-la-competition",
           "date": "2026-10-05T06:18:00.000Z",
@@ -132,6 +126,12 @@
           "url": "https://courrier.am/larmenie-vue-du-ciel-le-viiie-festival-international-daerostation-debute-le-6-octobre",
           "date": "2026-10-05T06:37:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/b760424531_1493575182813046_3443977649520147907_n.jpg.avif?itok=oqk73Pgo"
+        },
+        {
+          "title": "Le message de Zhanna Andreasyan aux enseignants",
+          "url": "https://courrier.am/le-message-de-zhanna-andreasyan-aux-enseignants",
+          "date": "2026-10-05T09:07:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/835677395_1138478548507681_1425274539775171074_n.jpg.avif?itok=Gx-T4W2M"
         },
         {
           "title": "Deux stades de plus de 10 000 places prévus à Vanadzor et Ijevan pour le Mondial U20 2029",
@@ -338,11 +338,11 @@
           "rubric": "politique"
         },
         {
-          "title": "Du Plessis-Robinson à l'Arménie rurale : le pari du bus hôpital",
-          "url": "https://courrier.am/du-plessis-robinson-a-l-armenie-rurale-le-pari-du-bus-hopital",
-          "date": "2026-07-23T07:31:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/image1_17.jpg.avif?itok=Rtrkc88K",
-          "rubric": "societe"
+          "title": "Les Xes Jeux de la Francophonie entrent dans leur dernière année de préparation",
+          "url": "https://courrier.am/les-xes-jeux-de-la-francophonie-entrent-dans-leur-derniere-annee-de-preparation",
+          "date": "2026-07-23T13:10:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/427971691_773397858167211_2125471420174612368_n.png.avif?itok=ULwnCMIz",
+          "rubric": "culture"
         }
       ]
     },
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Ժապարովը Փաշինյանին հրավիրել է Ղրղզստան՝ մասնակցելու «Բիշքեկ+25» գագաթնաժողովին",
+            "url": "https://hy.armradio.am/archives/764948",
+            "date": "2026-10-17T11:42:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/70224_b-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Հայաստանի վարչապետը և Ղրղզստանի նախագահը ստորագրել են համատեղ հայտարարություն, երկրների միջև փոխանակվել են մի շարք փաստաթղթեր",
             "url": "https://hy.armradio.am/archives/764902",
             "date": "2026-10-17T09:56:35.000Z",
@@ -1136,19 +1143,26 @@
             "date": "2026-10-16T11:28:47.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/70174_b-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Հայաստանի եւ Մոլդովայի առջև ծառացած մարտահրավերների, դրանց ընդհանրությունների մասին են խոսել Ռուբինյանն ու Գրոսուն",
-            "url": "https://hy.armradio.am/archives/764694",
-            "date": "2026-10-16T10:08:40.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/1-2-768x512.jpeg",
-            "category": "Քաղաքական"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "COP17. ավելի քան 10 օր Երևանում կքննարկեն աշխարհի մարտահրավերները",
+            "url": "https://hy.armradio.am/archives/764940",
+            "date": "2026-10-17T13:56:05.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/55592291717_dcab4e2b79_o-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "«10 միլիարդ դոլարի ակնկալիք»․ Դիարբեքիրի գործարարները սպասում են հայ-թուրքական սահմանի բացմանը",
+            "url": "https://hy.armradio.am/archives/764936",
+            "date": "2026-10-17T13:14:54.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2024/05/margara-768x474.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Հրապարակվել են հոկտեմբերի 25-ին կայանալիք ՏԻՄ ընտրությունների ընտրողների վերջնական ցուցակները",
             "url": "https://hy.armradio.am/archives/764927",
@@ -1204,20 +1218,6 @@
             "date": "2026-10-16T18:15:58.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/5-2-768x493.jpg",
             "category": "Հասարակություն"
-          },
-          {
-            "title": "Սուրեն Պապիկյանը մի խումբ սպաների կոչումներ է շնորհել",
-            "url": "https://hy.armradio.am/archives/764806",
-            "date": "2026-10-16T17:54:14.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/kochum-768x512.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "Դի Կապրիոն ողջունել է Երևանում մեկնարկած՝ վտանգված տեսակների վերականգնմանն ուղղված կոալիցիան",
-            "url": "https://hy.armradio.am/archives/764803",
-            "date": "2026-10-16T17:45:35.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2017/08/Leonardo_DiCaprio-e1792172725863-768x475.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1525,6 +1525,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Վալերիկ Մովսիսյանը 4-րդն է Եվրոպայի երիտասարդների ու Մ23 տարեկանների առաջնությունում",
+            "url": "https://hy.armradio.am/archives/764943",
+            "date": "2026-10-17T13:29:23.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/854194357_1429091312697842_8525217064167210107_n-e1792243754586-768x471.jpg",
+            "category": "Սպորտ"
+          },
+          {
             "title": "Արթուր Ալեքսանյանը ողնաշարի վիրահատության է ենթարկվել",
             "url": "https://hy.armradio.am/archives/764908",
             "date": "2026-10-17T10:03:49.000Z",
@@ -1586,13 +1593,6 @@
             "date": "2026-10-13T16:50:28.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2025/04/487680264_987150500225261_3791719179634499520_n-768x512.jpg",
             "category": "Սպորտ"
-          },
-          {
-            "title": "Հայկ Մարտիրոսյանը ACS SUPERCHESS թիմի կազմում դարձել է Ռումինիայի թիմային սուպերլիգայի հաղթող",
-            "url": "https://hy.armradio.am/archives/763551",
-            "date": "2026-10-12T08:06:56.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/846087650_28662863240074868_5445516976262970660_n-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       }
@@ -2130,6 +2130,20 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Plácido Domingo était l’invité d’honneur Concert de gala à Erevan pour le 75e anniversaire de Gegham Grigoryan",
+          "url": "https://www.armenews.com/placido-domingo-etait-linvite-dhonneur-concert-de-gala-a-erevan-pour-le-75e-anniversaire-de-gegham-grigoryan/",
+          "date": "2026-10-17T13:07:07.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/7885-1.jpeg",
+          "rubric": "culture"
+        },
+        {
+          "title": "Le Directeur général de l’UNESCO, Khaled El-Enany, visite le temple de Zvartnots en Arménie",
+          "url": "https://www.armenews.com/le-directeur-general-de-lunesco-khaled-el-enany-visite-le-temple-de-zvartnots-en-armenie/",
+          "date": "2026-10-17T12:42:23.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/7733.jpg",
+          "rubric": "culture"
+        },
+        {
           "title": "COP17 en Arménie : Bakou lance une nouvelle offensive contre Erevan sous couvert de défense de l’environnement",
           "url": "https://www.armenews.com/cop17-en-armenie-bakou-lance-une-nouvelle-offensive-contre-erevan-sous-couvert-de-defense-de-lenvironnement/",
           "date": "2026-10-17T08:06:33.000Z",
@@ -2184,26 +2198,18 @@
           "date": "2026-10-17T06:30:35.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-17-a-08.01.40.png",
           "rubric": "politique"
-        },
-        {
-          "title": "« Aucune poursuite pour corruption et trafic d’influence » contre Martine Vassal",
-          "url": "https://www.armenews.com/aucune-poursuite-pour-corruption-et-trafic-dinfluence-contre-martine-vassal/",
-          "date": "2026-10-17T06:30:26.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-17-a-07.28.59.png",
-          "rubric": "opinion"
-        },
-        {
-          "title": "Décryptage – Nikol Pachinian apporte des précisions, Ilham Aliev fait monter les enchères, par Hakob Badalian",
-          "url": "https://www.armenews.com/decryptage-nikol-pachinian-apporte-des-precisions-ilham-aliev-fait-monter-les-encheres-par-hakob-badalian/",
-          "date": "2026-10-17T06:30:01.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/68252_b.jpeg",
-          "rubric": "opinion"
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "Le champion olympique de l’Arménie, Artur Aleksanyan, a été opéré de la colonne vertébrale",
+          "url": "https://www.armenews.com/le-champion-olympique-de-larmenie-artur-aleksanyan-a-ete-opere-de-la-colonne-vertebrale/",
+          "date": "2026-10-17T12:54:25.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/9982.jpg"
+        },
         {
           "title": "Europa League : Ararat-Armenia a commis des erreurs cruciales face à Jagiellonia et s’est incliné 1-3",
           "url": "https://www.armenews.com/europa-league-ararat-armenia-a-commis-des-erreurs-cruciales-face-a-jagiellonia-et-sest-incline-1-3/",
@@ -2257,12 +2263,6 @@
           "url": "https://www.armenews.com/linter-milan-simpose-sur-parme-3-0-larmenien-henrikh-mkhitaryan-passeur-decisif/",
           "date": "2026-10-10T18:44:58.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/7754.jpeg"
-        },
-        {
-          "title": "Henrikh Mkhitaryan : Je me dis souvent que si mon père n’était pas décédé si jeune, je ne serais peut-être pas devenu footballeur",
-          "url": "https://www.armenews.com/henrikh-mkhitaryan-je-me-dis-souvent-que-si-mon-pere-netait-pas-decede-si-jeune-je-ne-serais-peut-etre-pas-devenu-footballeur/",
-          "date": "2026-10-10T08:23:47.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/7883.jpg"
         }
       ]
     },
@@ -2783,16 +2783,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35352.jpg"
         },
         {
-          "title": "Arménie : une commission parlementaire examine les relations Église-État",
-          "url": "https://armenieinfo.tv/mer-oughin-35327/",
-          "date": "2026-10-12T06:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35327.jpg"
-        },
-        {
           "title": "Karabakh : la dissolution de l’armée évoquée, sans décision prise",
           "url": "https://armenieinfo.tv/mer-oughin-35316/",
           "date": "2026-10-12T06:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35316.jpg"
+        },
+        {
+          "title": "Arménie : une commission parlementaire examine les relations Église-État",
+          "url": "https://armenieinfo.tv/mer-oughin-35327/",
+          "date": "2026-10-12T06:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35327.jpg"
         }
       ]
     },
@@ -3687,6 +3687,30 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Zhanna Andreasyan meets UNESCO Director-General Khaled El-Enany",
+            "url": "https://armenpress.am/en/article/1263125",
+            "date": "2026-10-17T13:34:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/85oH1pjVsXv3DRCA3dX80IdXnhxfb7NdDO8tgH9g.webp"
+          },
+          {
+            "title": "UNESCO Director-General visits Zvartnots Cathedral",
+            "url": "https://armenpress.am/en/article/1263123",
+            "date": "2026-10-17T12:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/lPqYBW6TQ5gxMx135r0XYG9xN0dKhgNFxiJt6hzS.webp"
+          },
+          {
+            "title": "COP17 will create new opportunities for international cooperation for Armenia, says Ararat Mirzoyan",
+            "url": "https://armenpress.am/en/article/1263121",
+            "date": "2026-10-17T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/KbJbpgweluMmcRwRb58aLyTYGw2I8iCAXmBIt48J.webp"
+          },
+          {
+            "title": "COP17 also holds political, economic and security significance for Armenia, says Alen Simonyan",
+            "url": "https://armenpress.am/en/article/1263117",
+            "date": "2026-10-17T12:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/dWOByJ4pY0ZTZnAPhjetIWKGCabkbYQA17Q7pZsL.webp"
+          },
+          {
             "title": "Tigran Avinyan comments on agreement establishing sister-city relations between Yerevan and Bishkek",
             "url": "https://armenpress.am/en/article/1263114",
             "date": "2026-10-17T10:51:00.000Z",
@@ -3721,30 +3745,6 @@
             "url": "https://armenpress.am/en/article/1263101",
             "date": "2026-10-17T08:22:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/17/0IvxNHmbqjzYXEeCTHSgQtQZW6wWrGxHhkZNbOTZ.webp"
-          },
-          {
-            "title": "Kyrgyzstan keen to develop friendly ties with Armenia, says Sadyr Japarov",
-            "url": "https://armenpress.am/en/article/1263099",
-            "date": "2026-10-17T08:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/Ch8fKGm3P3KYnQOCWuJQdh7syR0f84VjJYqDbAOp.webp"
-          },
-          {
-            "title": "Armenia and Kyrgyzstan have every basis to give fresh substance to ties, says Pashinyan",
-            "url": "https://armenpress.am/en/article/1263096",
-            "date": "2026-10-17T08:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/xzMFVC5NCxUX3i8fKu4FOrM95DnUJNiVaBuvwnsp.webp"
-          },
-          {
-            "title": "Vahagn Khachaturyan meets UN Secretary-General António Guterres at presidential residence",
-            "url": "https://armenpress.am/en/article/1263080",
-            "date": "2026-10-16T17:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/16/c6JYgVR0QJAXUKI2ItY26zo4lTsCY49lk4COhGfO.webp"
-          },
-          {
-            "title": "Copper demand to rise by around 7 million tonnes by 2040, says Mher Grigoryan",
-            "url": "https://armenpress.am/en/article/1263076",
-            "date": "2026-10-16T16:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/16/Z1xlJ5ygJmDGKe2bK9ODi9Zxc6xuffzGkBQ37KDf.webp"
           }
         ]
       },
@@ -3882,6 +3882,18 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Zhanna Andreasyan meets UNESCO Director-General Khaled El-Enany",
+            "url": "https://armenpress.am/en/article/1263125",
+            "date": "2026-10-17T13:34:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/85oH1pjVsXv3DRCA3dX80IdXnhxfb7NdDO8tgH9g.webp"
+          },
+          {
+            "title": "UNESCO Director-General visits Zvartnots Cathedral",
+            "url": "https://armenpress.am/en/article/1263123",
+            "date": "2026-10-17T12:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/lPqYBW6TQ5gxMx135r0XYG9xN0dKhgNFxiJt6hzS.webp"
+          },
+          {
             "title": "Armenian sports and culture minister, OIF secretary general discuss Yerevan 2027 Games",
             "url": "https://armenpress.am/en/article/1263021",
             "date": "2026-10-16T10:15:00.000Z",
@@ -3928,18 +3940,6 @@
             "url": "https://armenpress.am/en/article/1262489",
             "date": "2026-10-10T13:33:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/10/IC27pHtKE4hT5b1fB5eXwOc0hjF6lPUZQTWZk0zN.webp"
-          },
-          {
-            "title": "Yerevan Fashion Week: Armenian education and culture minister meets Polimoda's Massimiliano Giornetti",
-            "url": "https://armenpress.am/en/article/1262436",
-            "date": "2026-10-09T13:51:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/09/V9AKUx8DYu2RJTDMBTlrI1HgJbIs4hnYpvDBlZfi.webp"
-          },
-          {
-            "title": "Prime minister visits festival of national culture and cuisine with CIS heads of state",
-            "url": "https://armenpress.am/en/article/1262362",
-            "date": "2026-10-08T17:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/08/VMMfWfyfUt7zQdoK5ZEwVRBOv7gw3Gf7djkOmNI1.webp"
           }
         ]
       },
@@ -4164,70 +4164,88 @@
         "categoryKey": "armenia",
         "articles": [
           {
-            "title": "Ըմբիշ Սուրեն Աղաջանյանն աշխարհի առաջնությունից մեծ սպասելիքներ ունի",
-            "url": "https://armenpress.am/hy/article/1263128",
-            "date": "2026-10-17T11:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/6J6vfGuuG95s4QwSyjoY5HcGDdtYSzaQJ8EJfIsn.webp"
+            "title": "Mining Armenia Forum 2026. Ամերիաբանկը՝ հանքարդյունաբերության գործընկեր",
+            "url": "https://armenpress.am/hy/article/1263142",
+            "date": "2026-10-17T14:15:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/4afgufcPoMGd2q93bcSczYs7WyRN2gD3a7A5RkNl.webp"
           },
           {
-            "title": "Ըմբիշ Կարեն Ասլանյանը դրական է տրամադրված աշխարհի առաջնությունից առաջ",
-            "url": "https://armenpress.am/hy/article/1263126",
-            "date": "2026-10-17T11:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/1X8yWtAsj4Yc4yfOoNOePMUC6qGTUgfBjtzJZK0E.webp"
+            "title": "Ինչ է նախատեսվում Սևանա և Իսիկ Կուլ լճերի պահպանությանն ուղղված հուշագրով. մանրամասնում է ՀՀ շրջակա միջավայրի նախարարը",
+            "url": "https://armenpress.am/hy/article/1263141",
+            "date": "2026-10-17T13:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/P0UeBSTV5QRVREPYNdJufD1lmlB8v79qRo7K69MI.webp"
           },
           {
-            "title": "Ժաննա Անդրեասյանը հանդիպել է ՅՈՒՆԵՍԿՕ-ի գլխավոր տնօրեն Խալեդ Էլ-Էնանիին",
-            "url": "https://armenpress.am/hy/article/1263125",
-            "date": "2026-10-17T10:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/85oH1pjVsXv3DRCA3dX80IdXnhxfb7NdDO8tgH9g.webp"
+            "title": "Նիկոլ Փաշինյանը կարևորել է Հայաստանում հանքարդյունաբերությունը հնարավորինս բարձր ստանդարտների համապատասխանեցնելը",
+            "url": "https://armenpress.am/hy/article/1263139",
+            "date": "2026-10-17T13:46:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/RSE6XEjLVSMtdoqZ84C0Elo5Iy4SNBonZDDyIYWY.webp"
           },
           {
-            "title": "ՅՈՒՆԵՍԿՕ-ի գլխավոր տնօրենն այցելել է Զվարթնոց տաճար",
-            "url": "https://armenpress.am/hy/article/1263123",
-            "date": "2026-10-17T10:47:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/lPqYBW6TQ5gxMx135r0XYG9xN0dKhgNFxiJt6hzS.webp"
+            "title": "ԿԳՄՍ նախարար Ժաննա Անդրեասյանի շնորհավորական ուղերձը Ոչ նյութական մշակութային ժառանգության միջազգային օրվա առթիվ",
+            "url": "https://armenpress.am/hy/article/1263138",
+            "date": "2026-10-17T13:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/nLfep3PTWxpGLwOrnfIwBNjLsYvVxB4GSHW2f6rH.webp"
           },
           {
-            "title": "COP17-ը Հայաստանի համար միջազգային համագործակցության նոր հնարավորություններ կստեղծի. Արարատ Միրզոյան",
-            "url": "https://armenpress.am/hy/article/1263121",
-            "date": "2026-10-17T10:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/KbJbpgweluMmcRwRb58aLyTYGw2I8iCAXmBIt48J.webp"
+            "title": "Հայաստանում լեռնամետալուրգիական ոլորտի վերլուծական կենտրոն կստեղծվի",
+            "url": "https://armenpress.am/hy/article/1263134",
+            "date": "2026-10-17T13:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/RUkhUpJYzTwKcXeQQdfPWwnh6MBgNAo4W5BRshat.webp"
           },
           {
-            "title": "COP17-ը Հայաստանի համար կարևոր նշանակություն ունի նաև քաղաքական, տնտեսական և անվտանգության տեսանկյունից. Ալեն Սիմոնյան",
-            "url": "https://armenpress.am/hy/article/1263117",
-            "date": "2026-10-17T09:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/dWOByJ4pY0ZTZnAPhjetIWKGCabkbYQA17Q7pZsL.webp"
+            "title": "Հրապարակվել է ՀՀ վարչապետի և Ղրղզստանի նախագահի ստորագրած համատեղ հայտարարությունը",
+            "url": "https://armenpress.am/hy/article/1263137",
+            "date": "2026-10-17T13:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/OSNaDoAqIZeN53WVyKH9EY3fIMIrYLiNTba5M3dp.webp"
           },
           {
-            "title": "Ամեն ինչ անելու եմ աշխարհի առաջնության երրորդ ոսկին նվաճելու համար. Մալխաս Ամոյան",
-            "url": "https://armenpress.am/hy/article/1263119",
-            "date": "2026-10-17T09:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/yENPTeFqYFZNRE5vbxZRTxfuqjWa8dsBxtYCgRCC.webp"
+            "title": "Վերացվել է «Վիլ ֆուդ» ընկերության պահածոների արտադրամասի արտադրական գործունեության կասեցումը",
+            "url": "https://armenpress.am/hy/article/1263136",
+            "date": "2026-10-17T13:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/ZMsl4SmA8XNAlODHdRo66ZIfDKe7XchmmzqYwgbp.webp"
           },
           {
-            "title": "Աշխարհի առաջնությանն ընդառաջ հունահռոմեական ոճի մեր ըմբիշները լավ մարզավիճակում են. Արմեն Բաբալարյան",
-            "url": "https://armenpress.am/hy/article/1263116",
-            "date": "2026-10-17T09:41:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/4x4xjYkRoEdYlWB8hmAJcEeomavTpnz3rHcAWfsg.webp"
+            "title": "Վերացվել է «Պիրաժոկ» հանրային սննդի օբյեկտի արտադրական գործունեության կասեցումը",
+            "url": "https://armenpress.am/hy/article/1263135",
+            "date": "2026-10-17T13:14:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/ybu1J6VeS5iGjLWCnxuxXtZxPJBqC6pYqsYqyHmC.webp"
           },
           {
-            "title": "Տիգրան Ավինյանը՝ Երևանի և Բիշքեկի միջև քույր քաղաքների հարաբերություններ հաստատելու համաձայնագրի մասին",
-            "url": "https://armenpress.am/hy/article/1263114",
-            "date": "2026-10-17T09:17:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/NkGJKadZ4aorLiCmsUKq7BtmH98QuS4Ps1BsFQcj.webp"
+            "title": "Վերացվել է լիմոնադի արտադրամասի արտադրական գործունեության կասեցումը",
+            "url": "https://armenpress.am/hy/article/1263132",
+            "date": "2026-10-17T12:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/UC4EZexB9fsSkgbW0dM8bebQbOreNh8EVAFq6tCy.webp"
           },
           {
-            "title": "Սադիր Ժապարովը Նիկոլ Փաշինյանին հրավիրել է Ղրղզստան՝ մասնակցելու «Բիշքեկ+25» լեռնային համաշխարհային երկրորդ գագաթնաժողովին",
-            "url": "https://armenpress.am/hy/article/1263113",
-            "date": "2026-10-17T09:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/JB3D1ciUWj2A2EOY3zufl2GkKWTIrMC5B8r8aCWo.webp"
+            "title": "COP17. Հայաստանի տաղավարում ներկայացված է բնության և հայ մարդու դարավոր կապը",
+            "url": "https://armenpress.am/hy/article/1263127",
+            "date": "2026-10-17T12:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/Do3TgM0xr7CThYYZkoiAcvAE9DbfrsafepeOpn3U.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Mining Armenia Forum 2026. Ամերիաբանկը՝ հանքարդյունաբերության գործընկեր",
+            "url": "https://armenpress.am/hy/article/1263142",
+            "date": "2026-10-17T14:15:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/4afgufcPoMGd2q93bcSczYs7WyRN2gD3a7A5RkNl.webp"
+          },
+          {
+            "title": "Նիկոլ Փաշինյանը կարևորել է Հայաստանում հանքարդյունաբերությունը հնարավորինս բարձր ստանդարտների համապատասխանեցնելը",
+            "url": "https://armenpress.am/hy/article/1263139",
+            "date": "2026-10-17T13:46:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/RSE6XEjLVSMtdoqZ84C0Elo5Iy4SNBonZDDyIYWY.webp"
+          },
+          {
+            "title": "Հայաստանում լեռնամետալուրգիական ոլորտի վերլուծական կենտրոն կստեղծվի",
+            "url": "https://armenpress.am/hy/article/1263134",
+            "date": "2026-10-17T13:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/RUkhUpJYzTwKcXeQQdfPWwnh6MBgNAo4W5BRshat.webp"
+          },
           {
             "title": "ՀՀ պատվիրակությունը Մոսկվայում մասնակցել է «Ռուսաստանյան էներգետիկ շաբաթ» IX միջազգային ֆորումին",
             "url": "https://armenpress.am/hy/article/1263112",
@@ -4269,24 +4287,6 @@
             "url": "https://armenpress.am/hy/article/1263058",
             "date": "2026-10-16T13:06:05.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/09/23/HU8PpOFN0aUhXOGVyMMOlQZjajJ70MhffnF5odYM.webp"
-          },
-          {
-            "title": "Ասիական ինդեքսներ - 16/10/26",
-            "url": "https://armenpress.am/hy/article/1263057",
-            "date": "2026-10-16T13:04:18.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/26/liWvIt4Auu5cPk4gWXeoHGq19eaI1p0zOYT9T8Ey.webp"
-          },
-          {
-            "title": "Գևորգ Պապոյանն ու Իբրահիմ Յումաքլին քննարկել են Հայաստան-Թուրքիա ուղիղ առևտրի հաստատմամբ բացվող հնարավորությունները",
-            "url": "https://armenpress.am/hy/article/1263051",
-            "date": "2026-10-16T12:54:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/16/LBKwj5C6hfGZkYYJLjwWWtShPSmQXI5Y3ilGlWlY.webp"
-          },
-          {
-            "title": "Գևորգ Պապոյանը Կիպրոսի գործընկերոջ հետ քննարկել է գյուղատնտեսության ոլորտում համագործակցության զարգացման հնարավորություն",
-            "url": "https://armenpress.am/hy/article/1263042",
-            "date": "2026-10-16T11:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/16/S9KgrAF36ljjLQMDHXBnogAQjBV25sHSAgWS99f8.webp"
           }
         ]
       },
@@ -4359,6 +4359,12 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "ԿԳՄՍ նախարար Ժաննա Անդրեասյանի շնորհավորական ուղերձը Ոչ նյութական մշակութային ժառանգության միջազգային օրվա առթիվ",
+            "url": "https://armenpress.am/hy/article/1263138",
+            "date": "2026-10-17T13:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/nLfep3PTWxpGLwOrnfIwBNjLsYvVxB4GSHW2f6rH.webp"
+          },
+          {
             "title": "Ժաննա Անդրեասյանը հանդիպել է ՅՈՒՆԵՍԿՕ-ի գլխավոր տնօրեն Խալեդ Էլ-Էնանիին",
             "url": "https://armenpress.am/hy/article/1263125",
             "date": "2026-10-17T10:58:00.000Z",
@@ -4411,12 +4417,6 @@
             "url": "https://armenpress.am/hy/article/1262911",
             "date": "2026-10-15T13:20:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/15/YPdA6SWhs5Z7HFLsKB1pK8eFVZSfD0t2AatG2Kby.webp"
-          },
-          {
-            "title": "Հայաստանի հուշարձանները ՅՈՒՆԵՍԿՕ-ի ցանկերում. ձեռքբերումները, խնդիրները և Նորավանքի հայտի մերժման պատճառները",
-            "url": "https://armenpress.am/hy/article/1262906",
-            "date": "2026-10-15T13:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/15/IltVmVYMiD1HPKZBrKLouqzG4zFpqPwB1HI6X3yz.webp"
           }
         ]
       },
@@ -4641,6 +4641,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Опубликовано совместное заявление премьер-министра Армении и президента Кыргызстана",
+            "url": "https://armenpress.am/ru/article/1263137",
+            "date": "2026-10-17T14:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/OSNaDoAqIZeN53WVyKH9EY3fIMIrYLiNTba5M3dp.webp"
+          },
+          {
+            "title": "COP17: в павильоне Армении представлена уходящая корнями в глубь веков связь армян с природой",
+            "url": "https://armenpress.am/ru/article/1263127",
+            "date": "2026-10-17T13:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/Do3TgM0xr7CThYYZkoiAcvAE9DbfrsafepeOpn3U.webp"
+          },
+          {
+            "title": "Жанна Андреасян провела встречу с Генеральным директором ЮНЕСКО Халедом Эль-Энани",
+            "url": "https://armenpress.am/ru/article/1263125",
+            "date": "2026-10-17T12:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/85oH1pjVsXv3DRCA3dX80IdXnhxfb7NdDO8tgH9g.webp"
+          },
+          {
             "title": "Генеральный директор ЮНЕСКО посетил храм Звартноц",
             "url": "https://armenpress.am/ru/article/1263123",
             "date": "2026-10-17T11:42:00.000Z",
@@ -4681,24 +4699,6 @@
             "url": "https://armenpress.am/ru/article/1263113",
             "date": "2026-10-17T10:07:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/17/JB3D1ciUWj2A2EOY3zufl2GkKWTIrMC5B8r8aCWo.webp"
-          },
-          {
-            "title": "Тигран Авинян — о соглашении об установлении побратимских отношений между Ереваном и Бишкеком",
-            "url": "https://armenpress.am/ru/article/1263114",
-            "date": "2026-10-17T10:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/NkGJKadZ4aorLiCmsUKq7BtmH98QuS4Ps1BsFQcj.webp"
-          },
-          {
-            "title": "Армения и Кыргызстан откроют новую страницу в двусторонних отношениях",
-            "url": "https://armenpress.am/ru/article/1263107",
-            "date": "2026-10-17T10:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/H40soXQcb1mNHgJamnQr4sjDKKpvoaESWPw77wiy.webp"
-          },
-          {
-            "title": "Леонардо Ди Каприо выразил поддержку инициативе Армении и Колумбии, направленной на восстановление видов, находящихся под угрозой исчезновения",
-            "url": "https://armenpress.am/ru/article/1263104",
-            "date": "2026-10-17T09:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/17/c5kNC2ARrGPlau09VQb6PfBtQhYq5MUpwGjLsW25.webp"
           }
         ]
       },
@@ -4771,6 +4771,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Папа Лев XIV впервые после операции появится на публике",
+            "url": "https://armenpress.am/ru/article/1263118",
+            "date": "2026-10-17T12:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/lnCRPpYkcNKqxJZyXsSk9IKxSX02rOB5hUzEC2Rz.webp"
+          },
+          {
+            "title": "Трамп обвинил Байдена в развязывании российско-украинской войны",
+            "url": "https://armenpress.am/ru/article/1263124",
+            "date": "2026-10-17T12:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/a7AQa6etNG2YtvPvBOS7ZHoL9z804x2sNFuTdMuZ.webp"
+          },
+          {
             "title": "Саммит ЕС отложил до конца года вопрос о дополнительном финансировании Украины",
             "url": "https://armenpress.am/ru/article/1263082",
             "date": "2026-10-16T17:58:00.000Z",
@@ -4817,24 +4829,18 @@
             "url": "https://armenpress.am/ru/article/1263025",
             "date": "2026-10-16T10:29:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/16/aqKq8UITknB1PQPvmJP8FFznEnBMuijqvEWgBPcD.webp"
-          },
-          {
-            "title": "Военно-воздушные силы НАТО в Польше были подняты в воздух во второй раз за день",
-            "url": "https://armenpress.am/ru/article/1263017",
-            "date": "2026-10-16T09:44:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/16/5L7EYa8oaeldeUBG2lOcztIku5CCC4uyDBCFkRSH.webp"
-          },
-          {
-            "title": "Общие экосистемы Южного Кавказа служат основой для более тесного регионального сотрудничества и устойчивого развития - Ираклий Кобахидзе",
-            "url": "https://armenpress.am/ru/article/1263014",
-            "date": "2026-10-16T08:59:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/16/aVlKb2nvn2T9T0A0DjGiPCoBVLyII80RhhA15SFq.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Жанна Андреасян провела встречу с Генеральным директором ЮНЕСКО Халедом Эль-Энани",
+            "url": "https://armenpress.am/ru/article/1263125",
+            "date": "2026-10-17T12:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/17/85oH1pjVsXv3DRCA3dX80IdXnhxfb7NdDO8tgH9g.webp"
+          },
           {
             "title": "Генеральный директор ЮНЕСКО посетил храм Звартноц",
             "url": "https://armenpress.am/ru/article/1263123",
@@ -4888,12 +4894,6 @@
             "url": "https://armenpress.am/ru/article/1262511",
             "date": "2026-10-11T13:53:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/11/qMlfZ4CNk6600VPN8iKNsMGMldbsx8Q3TSAw5hAc.webp"
-          },
-          {
-            "title": "Армения представлена ​​на всемирной выставке From Seeds to Foods в Риме своей кухней, историческим и культурным наследием",
-            "url": "https://armenpress.am/ru/article/1262489",
-            "date": "2026-10-10T13:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/10/IC27pHtKE4hT5b1fB5eXwOc0hjF6lPUZQTWZk0zN.webp"
           }
         ]
       },
@@ -8362,6 +8362,12 @@
         "label": "Աշխարհ",
         "articles": [
           {
+            "title": "Մոսկվայում հարյուրավոր չվերթներ են չեղարկվել",
+            "url": "https://civilnet.am/hy/news/1014838",
+            "date": "2026-10-17T12:05:05.000Z",
+            "image": "https://civilnet.am/storage/media/26/10/17/xwMBpuIcPnu3Zx6g.webp"
+          },
+          {
             "title": "Լեոնարդո դի Կապրիոն «Օսկար» ստացավ",
             "url": "https://civilnet.am/hy/news/165195",
             "date": "2026-10-17T11:03:10.000Z",
@@ -8414,12 +8420,6 @@
             "url": "https://civilnet.am/hy/news/1014401",
             "date": "2026-09-26T06:00:00.000Z",
             "image": "https://civilnet.am/storage/media/26/09/25/8GyagX7AFq3y6841.webp"
-          },
-          {
-            "title": "Թուրքիան և Պակիստանը քննարկում են Սաուդյան Արաբիային ռազմական աջակցությունը հութիների դեմ",
-            "url": "https://civilnet.am/hy/news/1014399",
-            "date": "2026-09-26T05:30:00.000Z",
-            "image": "https://civilnet.am/storage/media/26/09/25/nASegJU7kMVInbsO.webp"
           }
         ]
       },
@@ -9104,6 +9104,18 @@
         "label": "Economics",
         "articles": [
           {
+            "title": "Mining sector should become pioneer in developing open joint-stock companies, Armenia PM says",
+            "url": "https://news.am/en/news/1068572",
+            "date": "2026-10-17T13:28:00.000Z",
+            "image": "https://i.ytimg.com/vi/gRfg2kTTs6s/hqdefault.jpg"
+          },
+          {
+            "title": "Zangezur Copper and Molybdenum Combine CEO: Mining industry will remain driving force of Armenia’s economy in future",
+            "url": "https://news.am/en/news/1068551",
+            "date": "2026-10-17T11:16:00.000Z",
+            "image": "https://i.ytimg.com/vi/oSjW8yULsp0/hqdefault.jpg"
+          },
+          {
             "title": "Ruling force MP: Armenia should abandon extremes in mining sector",
             "url": "https://news.am/en/news/1068537",
             "date": "2026-10-17T09:35:00.000Z",
@@ -9150,18 +9162,6 @@
             "url": "https://news.am/en/news/1067588",
             "date": "2026-10-13T12:06:00.000Z",
             "image": "https://news.am/storage/media/26/10/13/g6dKCUzmFPqp9Gvm.webp"
-          },
-          {
-            "title": "Mining Armenia Forum 2026 to be held on October 16-17",
-            "url": "https://news.am/en/news/1067362",
-            "date": "2026-10-12T12:35:00.000Z",
-            "image": "https://news.am/storage/media/26/10/12/bRNxfFUSUDmKRHEQ.webp"
-          },
-          {
-            "title": "US dollar exchange rate slightly up, euro down in Armenia",
-            "url": "https://news.am/en/news/1067359",
-            "date": "2026-10-12T12:04:00.000Z",
-            "image": "https://news.am/storage/media/26/10/12/DC9iMCSrcQAjJEXY.webp"
           }
         ]
       },
@@ -9169,6 +9169,18 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Michelin Guide Scandal: Prestigious Restaurant Guide Accused of Using AI to Write Reviews",
+            "url": "https://style.news.am/eng/news/116698/",
+            "date": "2026-10-17T14:18:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116698.jpg"
+          },
+          {
+            "title": "Rolex Instead of Gold: Why Billionaires Are Investing in Watches, Rubies, and Klimt Paintings",
+            "url": "https://style.news.am/eng/news/116693/",
+            "date": "2026-10-17T13:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116693.jpg"
+          },
           {
             "title": "“It’s Not a Catastrophe”: LVMH Heir Explains Why Luxury Brands Shouldn’t Panic Over the Crisis",
             "url": "https://style.news.am/eng/news/116692/",
@@ -9216,18 +9228,6 @@
             "url": "https://style.news.am/eng/news/116689/",
             "date": "2026-10-17T06:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116689.jpg"
-          },
-          {
-            "title": "The First Woman to Paint Erotic Art: The Story of Renaissance Artist Lavinia Fontana",
-            "url": "https://style.news.am/eng/news/116684/",
-            "date": "2026-10-16T19:06:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116684.jpg"
-          },
-          {
-            "title": "Prince Harry Accused of Profiting from Princess Diana’s Death After Receiving $100,000 for Sharing Stories About His Mother",
-            "url": "https://style.news.am/eng/news/116685/",
-            "date": "2026-10-16T17:46:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116685.jpg"
           }
         ]
       },
@@ -9368,6 +9368,12 @@
         "label": "Incidents",
         "articles": [
           {
+            "title": "Clashes erupt in France’s Paris, Lyon, Marseille during price hike protests",
+            "url": "https://news.am/en/news/1068550",
+            "date": "2026-10-17T11:07:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/nHiRbqtm2z57EEwr.webp"
+          },
+          {
             "title": "Bus carrying 35 schoolchildren catches fire in Germany",
             "url": "https://news.am/en/news/1068426",
             "date": "2026-10-16T15:37:00.000Z",
@@ -9420,12 +9426,6 @@
             "url": "https://news.am/en/news/1067278",
             "date": "2026-10-12T08:04:00.000Z",
             "image": "https://news.am/storage/media/26/10/12/OEAfhiix3Ywj8lEK.webp"
-          },
-          {
-            "title": "El Pais: At least 10 dead, 16 injured in Mexico prison brawl",
-            "url": "https://news.am/en/news/1066773",
-            "date": "2026-10-09T05:34:00.000Z",
-            "image": "https://news.am/storage/media/26/10/09/ELZKfAWRkSJ6JV3w.webp"
           }
         ]
       },
@@ -9568,6 +9568,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "ԿԸՀ ղեկավարի դեմ ցույցեր. Հնդկաստանում ձերբակալել են «Խավարասերների կուսակցության» առաջնորդին",
+            "url": "https://news.am/hy/news/1068539",
+            "date": "2026-10-17T12:36:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/r1yIwAFxj6giv5CA.webp"
+          },
+          {
             "title": "Եգիպտոսի նախագահը հայտարարել է, որ 2030 թվականին կհեռանա իր պաշտոնից",
             "url": "https://news.am/hy/news/1068547",
             "date": "2026-10-17T10:46:00.000Z",
@@ -9620,12 +9626,6 @@
             "url": "https://news.am/hy/news/1068418",
             "date": "2026-10-16T15:07:00.000Z",
             "image": "https://news.am/storage/media/26/10/16/cAVj0d1YuOqo0pxH.webp"
-          },
-          {
-            "title": "Politico․ Եվրոպացի առաջնորդները Զելենսկուն չեն հորդորել մեղմել Թրամփի հասցեին հնչող հռետորաբանությունը",
-            "url": "https://news.am/hy/news/1068350",
-            "date": "2026-10-16T11:02:08.000Z",
-            "image": "https://news.am/storage/media/26/10/16/h6aHj1r8Q9hDP40L.jfif"
           }
         ]
       },
@@ -9766,6 +9766,12 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "Հանքարդյունաբերության ոլորտը պետք է առաջամարտիկ դառնա բաց բաժնետիրական ընկերությունների կայացման գործում․ Փաշինյան",
+            "url": "https://news.am/hy/news/1068572",
+            "date": "2026-10-17T13:28:03.000Z",
+            "image": "https://i.ytimg.com/vi/gRfg2kTTs6s/hqdefault.jpg"
+          },
+          {
             "title": "ՀՀ տնտեսության լոկոմոտիվը ապագայում դառնալու է հենց հանքարդյունաբերությունը. «ԶՊՄԿ»–ի գլխավոր տնօրեն",
             "url": "https://news.am/hy/news/1068551",
             "date": "2026-10-17T11:16:54.000Z",
@@ -9818,12 +9824,6 @@
             "url": "https://news.am/hy/news/1068378",
             "date": "2026-10-16T12:02:50.000Z",
             "image": "https://news.am/storage/media/26/10/16/Tgiqy1anVTdx9C2P.webp"
-          },
-          {
-            "title": "Պապոյանը Կիպրոսի գործընկերոջ հետ հանդիպմանը կարևորել է Կիպրոսի շուկայում հայկական արտադրանքի ներկայացվածությունը",
-            "url": "https://news.am/hy/news/1068371",
-            "date": "2026-10-16T11:39:00.000Z",
-            "image": "https://news.am/storage/media/26/10/16/RJAjOUGxyZWkeZCB.webp"
           }
         ]
       },
@@ -9831,6 +9831,18 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Սկանդալ Michelin Guide-ի շուրջ. հայտնի ռեստորանային ուղեցույցը մեղադրվում է ակնարկներ գրելու համար արհեստական ​​բանականություն օգտագործելու մեջ",
+            "url": "https://style.news.am/arm/news/116698/",
+            "date": "2026-10-17T14:18:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116698.jpg"
+          },
+          {
+            "title": "Rolex-ը՝ ոսկու փոխարեն. Ինչու են միլիարդատերերը ներդրում կատարում ժամացույցների, ռուբինների և Կլիմտի նկարների մեջ",
+            "url": "https://style.news.am/arm/news/116693/",
+            "date": "2026-10-17T13:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116693.jpg"
+          },
           {
             "title": "«Սարսափելի բան չկա». LVMH-ի ժառանգորդը բացատրում է, թե ինչու շքեղ ապրանքանիշերը չպետք է խուճապի մատնվեն ճգնաժամի պատճառով",
             "url": "https://style.news.am/arm/news/116692/",
@@ -9878,18 +9890,6 @@
             "url": "https://style.news.am/arm/news/116689/",
             "date": "2026-10-17T06:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116689.jpg"
-          },
-          {
-            "title": "ՀՈԿՏԵՄԲԵՐԻ 17-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
-            "url": "https://style.news.am/arm/news/116688/",
-            "date": "2026-10-17T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116688.jpg"
-          },
-          {
-            "title": "Առաջին կինը, որը ստեղծում էր էրոտիկ նկարներ. Վերածննդի դարաշրջանի նկարչուհի Լավինիա Ֆոնտանայի պատմությունը",
-            "url": "https://style.news.am/arm/news/116684/",
-            "date": "2026-10-16T19:06:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116684.jpg"
           }
         ]
       },
@@ -9964,6 +9964,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Թոքի քաղցկեղի ամենամահաբեր տեսակի դեմ պայքարի նոր եղանակ է հայտնաբերվել",
+            "url": "https://med.news.am/arm/news/42137/toqi-qaxckexi-amenamahaber-tesaki-dem-payqari-nor-exanak-e-haytnabervel.html",
+            "date": "2026-10-17T11:24:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42137.jpg"
+          },
+          {
             "title": "Տարեցների շրջանում ցերեկային հաճախակի քունը կարող է դեմենցիայի վաղ ախտանշան լինել․ The Journals of Gerontology",
             "url": "https://med.news.am/arm/news/42136/tarecneri-shrjanum-cerekayin-hatchakhaki-quny-karox-e-demenciayi-vax-akhtanshan-linel%E2%80%A4-the-journals-of-gerontology.html",
             "date": "2026-10-17T08:46:00.000Z",
@@ -10016,12 +10022,6 @@
             "url": "https://med.news.am/arm/news/42128/science-corporation-y-tesoxutyuny-verakangnox-chip-e-texadrel-stargardti-hivandutyamb-arajin-pacienti-achqum.html",
             "date": "2026-10-16T06:55:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42128.jpg"
-          },
-          {
-            "title": "Սմարթֆոնի օգտագործման սովորությունները կարող են օգնել սթրեսի հայտնաբերմանը 76 տոկոս ճշգրտությամբ. գիտնականներ",
-            "url": "https://med.news.am/arm/news/42127/smartfoni-ogtagortsman-sovorutyunnery-karox-en-ognel-stresi-haytnabermany-76-tokos-tchshgrtutyamb-gitnakanner.html",
-            "date": "2026-10-16T04:41:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42127.jpg"
           }
         ]
       },
@@ -10029,6 +10029,18 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "«ԱԳՀ» կուսակցության պատգամավորների հարբած աշխատակիցները ծեծկռտուք են կազմակերպել Բունդեսթագում․ Der Spiegel",
+            "url": "https://news.am/hy/news/1068542",
+            "date": "2026-10-17T13:01:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/7S6jYgjWC7ZcBPrU.webp"
+          },
+          {
+            "title": "Քննիչները չեն բացառում Գերմանիայում վերջին տասնամյակների ամենամեծ անտառային հրդեհի դիտավորյալ հրկիզման վարկածը",
+            "url": "https://news.am/hy/news/1068525",
+            "date": "2026-10-17T12:18:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/YIxKVgS33wyuqdYl.webp"
+          },
           {
             "title": "Բանգլադեշի հանգստավայրում բռնկված հրդեհի հետևանքով 10 մարդ է զոհվել․ նրանց մեջ կան երեխաներ",
             "url": "https://news.am/hy/news/1068541",
@@ -10076,18 +10088,6 @@
             "url": "https://news.am/hy/news/1068344",
             "date": "2026-10-16T13:02:00.000Z",
             "image": "https://news.am/storage/media/26/10/16/YTOyhmBn6Vrj2rDm.webp"
-          },
-          {
-            "title": "Ստեփանավանի ոստիկանները թմրամիջոց պատրաստելու և օգտագործելու դեպք են բացահայտել․ նախաձեռնվել է քրվարույթ",
-            "url": "https://news.am/hy/news/1068380",
-            "date": "2026-10-16T12:05:00.000Z",
-            "image": "https://news.am/storage/media/26/10/16/QatfmiwasiMlzRO1.webp"
-          },
-          {
-            "title": "Տիգրանաշենի ոլորաններում բախվել են «ԳԱԶ 53» բեռնատարը, «Mitsubishi»-ն և իրանական համարանիշներով ավտոբուսը․ կան վիրավորներ",
-            "url": "https://news.am/hy/news/1068334",
-            "date": "2026-10-16T10:32:00.000Z",
-            "image": "https://news.am/storage/media/26/10/16/5XrFnEHLQhcFADjo.webp"
           }
         ]
       },
@@ -10230,6 +10230,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "В Индии арестовали основателя «Партии тараканов» на фоне протестов против главы избиркома",
+            "url": "https://news.am/ru/news/1068539",
+            "date": "2026-10-17T12:36:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/r1yIwAFxj6giv5CA.webp"
+          },
+          {
             "title": "Президент Египта заявил, что покинет свой пост в 2030 году",
             "url": "https://news.am/ru/news/1068547",
             "date": "2026-10-17T10:46:00.000Z",
@@ -10282,12 +10288,6 @@
             "url": "https://news.am/ru/news/1068350",
             "date": "2026-10-16T11:02:08.000Z",
             "image": "https://news.am/storage/media/26/10/16/h6aHj1r8Q9hDP40L.jfif"
-          },
-          {
-            "title": "Хамоян: Следственный комитет Армении совершает преступление",
-            "url": "https://news.am/ru/news/1068343",
-            "date": "2026-10-16T10:51:44.000Z",
-            "image": "https://i.ytimg.com/vi/6s2C5wKI4a8/hqdefault.jpg"
           }
         ]
       },
@@ -10362,6 +10362,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Мадридский «Атлетико» вырвал победу в концовке матча (видео)",
+            "url": "https://sport.news.am/rus/news/169609/",
+            "date": "2026-10-17T14:00:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169609.jpg"
+          },
+          {
+            "title": "«Челси» победил благодаря дублю Педру Нету (видео)",
+            "url": "https://sport.news.am/rus/news/169608/",
+            "date": "2026-10-17T13:36:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169608.jpg"
+          },
+          {
             "title": "«Интер»: Мхитарян в деле (видео)",
             "url": "https://sport.news.am/rus/news/169603/",
             "date": "2026-10-17T06:04:00.000Z",
@@ -10408,18 +10420,6 @@
             "url": "https://sport.news.am/rus/news/169596/",
             "date": "2026-10-16T14:54:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169596.jpg"
-          },
-          {
-            "title": "Чемпионат Франции: Стартует 7-й тур",
-            "url": "https://sport.news.am/rus/news/169594/",
-            "date": "2026-10-16T12:22:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169594.jpg"
-          },
-          {
-            "title": "Капитан «Челси» перенес операцию и пропустит 3 недели",
-            "url": "https://sport.news.am/rus/news/169595/",
-            "date": "2026-10-16T11:36:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169595.jpg"
           }
         ]
       },
@@ -10427,6 +10427,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Пашинян: Горнодобывающий сектор должен стать пионером в развитии открытых акционерных обществ",
+            "url": "https://news.am/ru/news/1068572",
+            "date": "2026-10-17T13:28:03.000Z",
+            "image": "https://i.ytimg.com/vi/gRfg2kTTs6s/hqdefault.jpg"
+          },
           {
             "title": "Роман Худолий: Локомотивом экономики Армении продолжит оставаться горнорудная отрасль",
             "url": "https://news.am/ru/news/1068551",
@@ -10480,12 +10486,6 @@
             "url": "https://news.am/ru/news/1068378",
             "date": "2026-10-16T12:02:50.000Z",
             "image": "https://news.am/storage/media/26/10/16/Tgiqy1anVTdx9C2P.webp"
-          },
-          {
-            "title": "Папоян на встрече с Сенекисом подчеркнул важность представленности армянской продукции на рынке Кипра",
-            "url": "https://news.am/ru/news/1068371",
-            "date": "2026-10-16T11:39:00.000Z",
-            "image": "https://news.am/storage/media/26/10/16/RJAjOUGxyZWkeZCB.webp"
           }
         ]
       },
@@ -10493,6 +10493,18 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Скандал вокруг Michelin Guide: знаменитый ресторанный гид обвинили в использовании ИИ для написания отзывов",
+            "url": "https://style.news.am/rus/news/116698/",
+            "date": "2026-10-17T14:18:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116698.jpg"
+          },
+          {
+            "title": "Rolex вместо золота: почему миллиардеры вкладываются в часы, рубины и картины Климта",
+            "url": "https://style.news.am/rus/news/116693/",
+            "date": "2026-10-17T13:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116693.jpg"
+          },
           {
             "title": "«Катастрофы нет»: наследник LVMH объяснил, почему люксовым брендам не стоит паниковать из-за кризиса",
             "url": "https://style.news.am/rus/news/116692/",
@@ -10540,18 +10552,6 @@
             "url": "https://style.news.am/rus/news/116689/",
             "date": "2026-10-17T06:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116689.jpg"
-          },
-          {
-            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 17 ОКТЯБРЯ",
-            "url": "https://style.news.am/rus/news/116688/",
-            "date": "2026-10-17T05:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116688.jpg"
-          },
-          {
-            "title": "Первая женщина, писавшая эротические картины: история художницы эпохи Возрождения Лавинии Фонтаны",
-            "url": "https://style.news.am/rus/news/116684/",
-            "date": "2026-10-16T19:06:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116684.jpg"
           }
         ]
       },
@@ -10692,6 +10692,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Der Spiegel: Пьяные сотрудники депутатов от «Альтернативы для Германии» устроили драку в Бундестаге",
+            "url": "https://news.am/ru/news/1068542",
+            "date": "2026-10-17T13:01:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/7S6jYgjWC7ZcBPrU.webp"
+          },
+          {
+            "title": "Следователи не исключают умышленный поджог крупнейшего за десятилетия лесного пожара в Германии",
+            "url": "https://news.am/ru/news/1068525",
+            "date": "2026-10-17T12:18:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/YIxKVgS33wyuqdYl.webp"
+          },
+          {
             "title": "При пожаре на курорте в Бангладеш погибли 10 человек, в том числе дети",
             "url": "https://news.am/ru/news/1068541",
             "date": "2026-10-17T11:24:00.000Z",
@@ -10738,18 +10750,6 @@
             "url": "https://news.am/ru/news/1068344",
             "date": "2026-10-16T13:02:00.000Z",
             "image": "https://news.am/storage/media/26/10/16/YTOyhmBn6Vrj2rDm.webp"
-          },
-          {
-            "title": "Полицейские Степанавана выявили случай изготовления и употребления наркотиков",
-            "url": "https://news.am/ru/news/1068380",
-            "date": "2026-10-16T12:05:00.000Z",
-            "image": "https://news.am/storage/media/26/10/16/QatfmiwasiMlzRO1.webp"
-          },
-          {
-            "title": "На автодороге Ереван - Мегри столкнулись три машины: есть пострадавшие",
-            "url": "https://news.am/ru/news/1068334",
-            "date": "2026-10-16T10:32:00.000Z",
-            "image": "https://news.am/storage/media/26/10/16/5XrFnEHLQhcFADjo.webp"
           }
         ]
       },
