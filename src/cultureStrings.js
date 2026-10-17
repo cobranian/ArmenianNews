@@ -24,7 +24,6 @@ export const CULTURE_STRINGS = {
     next: 'Article suivant',
     read: 'Lire l’article',
     carousel: 'Articles Culture',
-    langs: 'Langue',
   },
   en: {
     nav: 'Culture',
@@ -45,7 +44,6 @@ export const CULTURE_STRINGS = {
     next: 'Next article',
     read: 'Read the article',
     carousel: 'Culture articles',
-    langs: 'Language',
   },
   hy: {
     nav: 'Մշակույթ',
@@ -66,7 +64,6 @@ export const CULTURE_STRINGS = {
     next: 'Հաջորդ հոդվածը',
     read: 'Կարդալ հոդվածը',
     carousel: 'Մշակույթի հոդվածներ',
-    langs: 'Լեզու',
   },
   ru: {
     nav: 'Культура',
@@ -87,6 +84,5 @@ export const CULTURE_STRINGS = {
     next: 'Следующая статья',
     read: 'Читать статью',
     carousel: 'Статьи о культуре',
-    langs: 'Язык',
   },
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
 import { orderedLangs, SITE_ID } from '../site.js'
-import { LANG_URL, langPath, pathFor, briefPath, culturePath } from '../../sites.config.js'
+import { LANG_URL, LANG_SWITCH_LABEL, langPath, pathFor, briefPath, culturePath } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../briefStrings.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
 import { KnotMark } from './Ornament.jsx'
@@ -80,7 +80,7 @@ export function Nav({ view = 'home' }) {
               attend en plus des hreflang. L'ordre vient du domaine (voir
               orderedLangs), pas de la langue affichée : la barre reste stable
               quand on navigue à l'intérieur du .org. */}
-          <div className="lang" role="group" aria-label="Language">
+          <div className="lang" role="group" aria-label={LANG_SWITCH_LABEL[lang]}>
             {orderedLangs(LANGS).map((l) => (
               // `lang` et `hrefLang` ne disent pas la même chose et les deux
               // sont justes : hrefLang qualifie la page VISÉE, lang l'écriture

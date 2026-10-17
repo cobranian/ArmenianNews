@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { mkdtemp, readFile, access } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
-import { cultureIndexHtml, cultureArticleHtml, writeCulturePages } from '../scripts/lib/culture-pages.mjs'
+import { cultureIndexHtml, cultureArticleHtml, writeCulturePages, readAlsoPicks } from '../scripts/lib/culture-pages.mjs'
 import { loadCulture } from '../scripts/lib/culture-load.mjs'
 import { cultureLangsBySlug } from '../scripts/lib/culture-links.mjs'
 import { SITES } from '../sites.config.js'
@@ -80,22 +80,23 @@ test('flèches : boucle à l’écran, mais rel seulement sur les liens qui ne f
   assert.ok(last.includes('data-step="prev" rel="prev" href="/culture/duduk/"'))
 })
 
-test('« À lire aussi » : sans l’article lui-même, seulement la langue de la page, voisins en dernier', async () => {
+test('« À lire aussi » : jamais soi-même ni les voisins des flèches ; rien de neuf → pas de section', async () => {
   const { list } = await fixture()
   const bySlug = cultureLangsBySlug(list)
   const fr = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
-  const more = fr.slice(fr.indexOf('culture__more'))
-  assert.ok(more.includes('href="/culture/duduk/"'), 'seul autre article : repris même s’il est voisin')
-  assert.ok(!more.includes('href="/culture/komitas/"'))
-  const ru = cultureArticleHtml({ siteId: 'org', lang: 'ru', article: list[0], list, bySlug, cssHref: CSS, now: NOW })
-  assert.ok(!ru.includes('culture__more'), 'rien d’autre en russe')
+  assert.ok(!fr.includes('culture__more'), 'deux articles : le seul autre est déjà la flèche')
   const extra = ['a', 'b', 'c'].map((slug, k) => ({ ...list[0], slug, date: `2026-09-0${k + 1}` }))
-  const all = [...list, ...extra]
+  const all = [...list, ...extra] // komitas, duduk, a, b, c — voisins de komitas : duduk et c
   const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: all[0], list: all, bySlug: cultureLangsBySlug(all), cssHref: CSS, now: NOW })
   const m = html.slice(html.indexOf('culture__more'))
-  // Voisins de komitas : duduk (suivant) et c (précédent, en boucle) → À lire aussi : a, b, puis un voisin.
-  assert.ok(m.includes('/culture/a/') && m.includes('/culture/b/'))
-  assert.equal((m.match(/class="culture-card"/g) ?? []).length, 3)
+  assert.deepEqual([...m.matchAll(/class="culture-card"><a href="\/culture\/([a-z]+)\//g)].map((x) => x[1]), ['a', 'b'])
+})
+
+test('« À lire aussi » : choisi autour de l’article, pas toujours les plus récents', () => {
+  const list = Array.from({ length: 20 }, (_, k) => ({ slug: `s${k}`, langs: { fr: { title: 'T', description: 'D' } } }))
+  assert.deepEqual(readAlsoPicks('fr', list[10], list).map((x) => x.slug), ['s12', 's8', 's13'])
+  assert.deepEqual(readAlsoPicks('fr', list[0], list).map((x) => x.slug), ['s2', 's18', 's3'])
+  assert.deepEqual(readAlsoPicks('en', list[0], list), [], 'langue absente')
 })
 
 test('sélecteur de langue : même article s’il est traduit, sinon l’index de la langue', async () => {

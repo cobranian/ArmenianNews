@@ -334,6 +334,11 @@ export function primaryLang(siteId) {
   return SITES[siteId].pages[0].lang
 }
 
+// Le nom du groupe de boutons de langue, lu par les lecteurs d'écran — dans
+// la langue de la PAGE. Une table pour les deux sélecteurs (Nav.jsx et les
+// pages statiques), contrôlée par check-build sur chaque page statique.
+export const LANG_SWITCH_LABEL = { fr: 'Langue', en: 'Language', hy: 'Լեզու', ru: 'Язык' }
+
 // La langue du domaine en tête, le reste dans l'ordre reçu. UNE règle pour
 // les deux sélecteurs de langue : celui de l'accueil (src/site.js) et celui
 // des pages statiques (scripts/lib/static-shell.mjs).
