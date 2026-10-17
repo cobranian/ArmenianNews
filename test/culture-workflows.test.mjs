@@ -42,6 +42,23 @@ test('articles-revise.yml : OWNER et /corrige exigés dans le if', async () => {
   assert.match(y, /"OPEN"/, 'PR ouverte seulement')
 })
 
+test('articles-revise.yml : concurrence au niveau du job, pas du workflow', async () => {
+  const y = await read('articles-revise.yml')
+  // Au niveau du workflow, n'importe quel commentaire (job ensuite sauté par
+  // le if:) entrerait dans le groupe et évincerait un /corrige en attente.
+  assert.doesNotMatch(y, /^concurrency:/m)
+  const job = y.slice(y.indexOf('\n  revise:\n'))
+  assert.match(job, /^ {4}concurrency:\n {6}group: culture-revise-\$\{\{ github\.event\.issue\.number \}\}\n {6}cancel-in-progress: false$/m)
+})
+
+test('articles-revise.yml : la réponse part dans une dernière étape always()', async () => {
+  const y = await read('articles-revise.yml')
+  const last = y.slice(y.lastIndexOf('      - name:'))
+  assert.match(last, /if: always\(\)/)
+  assert.match(last, /gh pr comment "\$PR" --body-file "\$RUNNER_TEMP\/reply\.md"/)
+  assert.ok(y.indexOf('git push origin') < y.lastIndexOf('      - name:'), 'le push précède l’étape de réponse')
+})
+
 test('articles-revise.yml : rebase avant push', async () => {
   const y = await read('articles-revise.yml')
   assert.match(y, /pull --rebase origin "\$BRANCH"/)

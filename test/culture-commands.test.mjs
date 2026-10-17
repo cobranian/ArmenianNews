@@ -2,8 +2,15 @@
 // workflow articles-revise.yml confie au script, sans réseau.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply } from '../scripts/lib/culture-commands.mjs'
+import { mkdtemp, writeFile, readFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import path from 'node:path'
+import { spawnSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
+import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply, UNRECOGNIZED_REPLY } from '../scripts/lib/culture-commands.mjs'
 import { refetchSources } from '../scripts/lib/culture-sources.mjs'
+
+const script = fileURLToPath(new URL('../scripts/culture-revise.mjs', import.meta.url))
 
 test('parseReviseCommand : début de commentaire seulement, consigne vide → null, multiligne gardé', () => {
   assert.equal(parseReviseCommand('/corrige retire le paragraphe sur le plat'), 'retire le paragraphe sur le plat')
@@ -43,6 +50,23 @@ test('reviseReply : modèle, paragraphes, nouveaux ⚠️, case décochée ; err
   const fail = reviseReply({ error: 'HTTP 429 (gemini-flash-latest)' })
   assert.match(fail, /HTTP 429/)
   assert.match(fail, /inchangé/)
+})
+
+test('culture-revise : commande vide ou mal écrite → réponse d’aide, sortie 0, sans modèle', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'revise-'))
+  for (const [i, text] of ['/corrige', '/CORRIGE retire le plat', '/corrigez le titre'].entries()) {
+    const f = (n) => path.join(dir, `${n}${i}.md`)
+    await writeFile(f('i'), text)
+    await writeFile(f('b'), '- [x] Faits vérifiés\n')
+    const r = spawnSync(process.execPath, [script, 'komitas', '--instruction', f('i'), '--pr-body', f('b'), '--out-body', f('o'), '--out-reply', f('r')], {
+      encoding: 'utf-8',
+      env: { ...process.env, GEMINI_API_KEY: '', OPENROUTER_API_KEY: '', ARTICLES_API_KEY: '', ARTICLES_BASE_URL: 'http://127.0.0.1:9/' },
+    })
+    assert.equal(r.status, 0, text)
+    assert.equal(await readFile(f('r'), 'utf-8'), UNRECOGNIZED_REPLY, text)
+    await assert.rejects(readFile(f('o')), /ENOENT/, 'aucun corps de PR réécrit')
+  }
+  assert.match(UNRECOGNIZED_REPLY, /Consigne vide ou commande non reconnue : écrivez `\/corrige <consigne>`\./)
 })
 
 // Faux fetch : rend la révision demandée, échoue sur l'hôte « ru ».

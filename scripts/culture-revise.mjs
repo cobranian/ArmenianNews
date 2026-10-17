@@ -10,14 +10,15 @@
  * contrôles du brouillon, réécrit la section automatique du corps de PR — et
  * décoche « Faits vérifiés » : ce qui a été vérifié n'est plus ce qui est écrit.
  *
- * Commentaire qui n'est pas une commande : sortie 0, aucun appel au modèle.
+ * Commentaire qui n'est pas une commande : sortie 0, aucun appel au modèle,
+ * une réponse d'aide.
  * Panne du modèle : sortie 1, fr.md inchangé, réponse avec l'erreur.
  */
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
-import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply } from './lib/culture-commands.mjs'
+import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply, UNRECOGNIZED_REPLY } from './lib/culture-commands.mjs'
 import { chatDraft } from './lib/culture-llm.mjs'
 import {
   buildReviseMessages, buildClaimsMessages, parseArticleJson, parseClaims, findUnsupported, eventFacts,
@@ -49,6 +50,7 @@ if (!/^[a-z0-9-]+$/.test(slug ?? '')) throw new Error(`slug invalide : ${slug}`)
 const instruction = parseReviseCommand(await readFile(values.instruction, 'utf-8'))
 if (!instruction) {
   console.log('Pas de commande /corrige avec consigne : rien à faire.')
+  await writeFile(values['out-reply'], UNRECOGNIZED_REPLY)
   process.exit(0)
 }
 

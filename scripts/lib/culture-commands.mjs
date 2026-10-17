@@ -16,6 +16,10 @@ export function parseReviseCommand(text) {
   return instruction || null
 }
 
+// Le if: du workflow compare sans casse et laisse passer « /corrige » seul :
+// sans cette réponse, le propriétaire ne verrait qu'un 👀 suivi de rien.
+export const UNRECOGNIZED_REPLY = 'Consigne vide ou commande non reconnue : écrivez `/corrige <consigne>`.\n'
+
 const paragraphs = (body) =>
   String(body ?? '')
     .replace(/\r\n/g, '\n')

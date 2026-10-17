@@ -23,16 +23,19 @@ permissions:
   statuses: write
   issues: write # la réaction 👀 passe par l'API des commentaires d'issue
 
-concurrency:
-  group: culture-revise-${{ github.event.issue.number }}
-  cancel-in-progress: false
-
 jobs:
   revise:
     if: >-
       github.event.issue.pull_request &&
       github.event.comment.author_association == 'OWNER' &&
       startsWith(github.event.comment.body, '/corrige')
+    # Sous le job, pas au niveau du workflow : là, n'importe quel commentaire de
+    # la PR (job ensuite sauté par le if:) entrerait dans le groupe et
+    # évincerait en silence un /corrige en attente. GitHub ne garde qu'UN run
+    # en attente : un troisième /corrige rapproché remplace le deuxième.
+    concurrency:
+      group: culture-revise-${{ github.event.issue.number }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -97,37 +100,47 @@ jobs:
             --out-body "$RUNNER_TEMP/new-body.md" \
             --out-reply "$RUNNER_TEMP/reply.md"
 
-      - name: Pousser, mettre à jour la PR, publier le statut, répondre
-        if: always() && steps.pr.outputs.branch != ''
+      - name: Pousser, mettre à jour la PR, publier le statut
+        id: pub
+        if: steps.rev.outcome == 'success' && steps.pr.outputs.branch != ''
         env:
           BRANCH: ${{ steps.pr.outputs.branch }}
-          OUTCOME: ${{ steps.rev.outcome }}
         run: |
           SLUG="${BRANCH#culture/}"
-          if [ "$OUTCOME" = success ] && [ -f "$RUNNER_TEMP/new-body.md" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/data/culture
-            git diff --cached --quiet || git commit -m "Culture : révision « $SLUG »"
-            # Un relecteur a pu pousser pendant la révision : sans rebase, le
-            # push est refusé et bash -e abandonne l'étape avant le statut.
-            if ! git pull --rebase origin "$BRANCH"; then
-              git rebase --abort || true
-              gh pr comment "$PR" --body "La branche a changé pendant la révision et le rebase a échoué : renvoyez la consigne /corrige." || true
-              gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse "origin/$BRANCH")" \
-                -f state=failure -f context=culture-check -f description="Révision à relancer : la branche a changé pendant la révision" || true
-              exit 1
-            fi
-            git push origin "HEAD:$BRANCH"
-            gh pr edit "$PR" --body-file "$RUNNER_TEMP/new-body.md"
-            if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/new-body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
-            cat "$RUNNER_TEMP/check.txt"
-            gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
-              -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"
+          # Commande non reconnue : le script n'a rien réécrit, rien à pousser.
+          [ -f "$RUNNER_TEMP/new-body.md" ] || exit 0
+          # Chaque échec s'inscrit dans la réponse, que l'étape suivante poste
+          # quoi qu'il arrive : sous bash -e, il partirait sinon sans un mot.
+          fail() { printf '\n⚠️ **Publication incomplète** : %s\n' "$1" >> "$RUNNER_TEMP/reply.md"; exit 1; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/culture
+          git diff --cached --quiet || git commit -m "Culture : révision « $SLUG »" || fail "commit impossible."
+          # Un relecteur a pu pousser pendant la révision : sans rebase, le
+          # push est refusé.
+          if ! git pull --rebase origin "$BRANCH"; then
+            git rebase --abort || true
+            # Le statut va sur la tête DISTANTE : le commit local n'a pas été poussé.
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse "origin/$BRANCH")" \
+              -f state=failure -f context=culture-check -f description="Révision à relancer : la branche a changé pendant la révision" || true
+            fail "la branche a changé pendant la révision et le rebase a échoué : rien n'a été poussé, renvoyez la consigne /corrige."
           fi
+          git push origin "HEAD:$BRANCH" || fail "le push a échoué : la révision n'est pas sur la branche, renvoyez la consigne /corrige."
+          gh pr edit "$PR" --body-file "$RUNNER_TEMP/new-body.md" || fail "la révision est poussée, mais le corps de la PR n'a pas été mis à jour."
+          if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/new-body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          cat "$RUNNER_TEMP/check.txt"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
+            -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")" \
+            || fail "le statut culture-check n'a pas été publié."
+
+      - name: Répondre
+        if: always() && steps.pr.outputs.branch != ''
+        env:
+          REVISE: ${{ steps.rev.outcome }}
+        run: |
           if [ -f "$RUNNER_TEMP/reply.md" ]; then
             gh pr comment "$PR" --body-file "$RUNNER_TEMP/reply.md"
-          elif [ "$OUTCOME" != success ]; then
+          else
             gh pr comment "$PR" --body "❌ La révision a échoué avant toute modification : voir le journal du workflow « Culture — correction par commentaire »."
           fi
-          [ "$OUTCOME" = success ] || exit 1
+          [ "$REVISE" = success ] || exit 1
