@@ -73,7 +73,7 @@ npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : l
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 497 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 528 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -84,12 +84,13 @@ npm run culture:check     # contrôle strict des articles Culture (celui des PR)
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
+npm run hydration-check # après build + prerender : les 16 pages s'hydratent-elles sans écart ? (local, Chrome)
 npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **497 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **528 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -780,6 +781,21 @@ immuable — **sur les deux cibles**, comme `headers`. `test/fonts.test.mjs`
 garde la cohérence des trois artefacts et l'absence de Google dans
 `index.html`. Les pages autonomes (`pages/lien*.html`) et `og-image.mjs`, eux,
 chargent encore Google Fonts : ce sont des HTML hors bundle, rarement servis.
+
+**Le HTML prérendu est HYDRATÉ, et un seul texte divergent annule tout.**
+`main.jsx` fait `hydrateRoot` sur une racine cuite (`createRoot` jetait la
+page : rien ne s'affichait avant que React l'ait refaite). Au premier écart,
+React 18 refait toute la racine **en silence** — on retombe sur l'ancien coût,
+aucun test ne tombe. D'où trois règles : le prérendu cuit `renderToString`
+(`window.__PRERENDER__`), pas le DOM monté ; tout ce qui dépend de l'heure, du
+thème ou de l'écran part de la valeur du prérendu et change **au montage**
+(`src/renderClock.js`, `useClientNow`, thème de `Nav.jsx`) ; et
+`npm run hydration-check` le prouve — avec `NODE_ENV=development npm run build`
+pour lire chaque écart en clair (React n'avertit qu'une fois par page). Les
+`.reveal` ne sont masqués que sous `html.js` (posé par `theme-init.js`) : le
+prérendu ne doit plus y ajouter `is-visible`. Mesure (17 oct. 2026, bridage
+réel) : TBT −25 %, LCP ~3,1 → ~2,9 s. **Le LCP « simulé » de Lighthouse (~10 s)
+est un artefact** de ce site — mesurez avec `--throttling-method=devtools`.
 
 **`.hero__title` part de `opacity: 0.02`, pas de 0 — ne le « nettoyez »
 pas.** Chrome ignore pour le LCP tout élément peint à opacité 0 : à 0, le

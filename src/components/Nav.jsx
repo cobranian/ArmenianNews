@@ -5,23 +5,38 @@ import { LANG_URL, LANG_SWITCH_LABEL, langPath, pathFor, briefPath, culturePath 
 import { BRIEF_STRINGS } from '../briefStrings.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
 import { KnotMark } from './Ornament.jsx'
+import { HYDRATING, PRERENDERING } from '../renderClock.js'
 
 export function Nav({ view = 'home' }) {
   const { t, lang } = useI18n()
   const [open, setOpen] = useState(false)
-  const [theme, setTheme] = useState(
-    () => document.documentElement.dataset.theme || 'dark',
+  // Le premier rendu d'une page hydratée doit reproduire le HTML cuit, et le
+  // prérendu est fait en thème SOMBRE (aucun localStorage dans le navigateur du
+  // build). Lire ici le thème du lecteur ferait diverger le bouton (☀/☾,
+  // aria-pressed) et React referait toute la page (src/renderClock.js). Le
+  // vrai thème — déjà appliqué par theme-init.js avant le premier affichage,
+  // donc sans flash — est lu au montage.
+  const [theme, setTheme] = useState(() =>
+    HYDRATING || PRERENDERING ? 'dark' : document.documentElement.dataset.theme || 'dark',
   )
-
-  // Apply + persist the day/night theme (set on <html> so CSS variables cascade).
   useEffect(() => {
-    document.documentElement.dataset.theme = theme
+    const t = document.documentElement.dataset.theme
+    if (t === 'light' || t === 'dark') setTheme(t)
+  }, [])
+
+  // Appliquer + enregistrer AU CLIC, pas dans un effet sur `theme` : un effet
+  // écrirait le « sombre » du premier rendu dans <html> et dans localStorage
+  // avant que le montage n'ait relu le thème du lecteur — et l'effacerait.
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    document.documentElement.dataset.theme = next
     try {
-      localStorage.setItem('theme', theme)
+      localStorage.setItem('theme', next)
     } catch {
       /* ignore */
     }
-  }, [theme])
+    setTheme(next)
+  }
 
   // Hors de l'accueil, les ancres ne désignent rien : /radio n'a ni #actualites
   // ni #agenda. Elles doivent donc porter le chemin de l'accueil de LA LANGUE
@@ -67,7 +82,7 @@ export function Nav({ view = 'home' }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button
             className="theme-toggle"
-            onClick={() => setTheme((c) => (c === 'dark' ? 'light' : 'dark'))}
+            onClick={toggleTheme}
             aria-pressed={theme === 'light'}
             aria-label={theme === 'dark' ? 'Mode jour' : 'Mode nuit'}
             title={theme === 'dark' ? 'Mode jour' : 'Mode nuit'}

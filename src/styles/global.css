@@ -3230,12 +3230,17 @@ html:lang(hy) .nav__brand {
 /* ============================================================
    Reveal-on-scroll
    ============================================================ */
-.reveal {
+/* Masqué seulement quand JavaScript tourne (html.js, posé par theme-init.js
+   avant le premier affichage). Sans script, le HTML prérendu se lit tel quel ;
+   avec, le bloc attend son is-visible (useReveal). Le prérendu posait autrefois
+   is-visible dans le HTML cuit : depuis que main.jsx HYDRATE ce HTML, cette
+   classe serait un écart avec le premier rendu client (src/renderClock.js). */
+html.js .reveal {
   opacity: 0;
   transform: translateY(26px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
-.reveal.is-visible {
+html.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }

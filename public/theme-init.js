@@ -7,3 +7,8 @@ try {
 } catch {
   /* no localStorage (private mode, blocked cookies) — keep the default theme */
 }
+
+// Signale que JavaScript tourne : les blocs « révélés au défilement » ne sont
+// masqués que sous html.js (global.css). Posé ici, avant le premier affichage
+// et hors de la racine React, pour ne créer aucun écart d'hydratation.
+document.documentElement.classList.add('js')
