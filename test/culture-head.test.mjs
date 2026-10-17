@@ -44,3 +44,37 @@ test('index : quatre langues, pas d’Article, robots transmis', () => {
 test('article absent dans la langue demandée : lève', () => {
   assert.throws(() => cultureHeadFor({ siteId: 'org', lang: 'ru', slug: 'komitas', article: art(), bySlug }))
 })
+
+// --- SEO (audit du 17 octobre 2026).
+const ldOf = (h) => JSON.parse(h.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1].replace(/\\u003c/g, '<'))
+
+test('Article : sujet désigné par son entité Wikidata, nom de la Wikipédia de la langue', () => {
+  const article = {
+    ...art(),
+    meta: { qid: 'Q12345' },
+    sources: [
+      { kind: 'wikipedia', lang: 'fr', title: 'Komitas (fr)', url: 'https://fr.wikipedia.org/wiki/Komitas' },
+      { kind: 'wikipedia', lang: 'en', title: 'Komitas', url: 'https://en.wikipedia.org/wiki/Komitas' },
+    ],
+  }
+  const g = ldOf(cultureHeadFor({ siteId: 'org', lang: 'en', slug: 'komitas', article, bySlug }))['@graph']
+  const about = g.find((n) => n['@type'] === 'Article').about
+  assert.equal(about['@id'], 'http://www.wikidata.org/entity/Q12345')
+  assert.equal(about.name, 'Komitas')
+  assert.deepEqual(about.sameAs, ['https://www.wikidata.org/wiki/Q12345', 'https://en.wikipedia.org/wiki/Komitas'])
+})
+
+test('Article sans qid : pas de champ about (jamais un qid inventé)', () => {
+  const g = ldOf(cultureHeadFor({ siteId: 'ch', lang: 'fr', slug: 'komitas', article: art(), bySlug }))['@graph']
+  assert.equal(g.find((n) => n['@type'] === 'Article').about, undefined)
+})
+
+test('fil d’Ariane : Accueil › Culture › article, URL absolues de la vitrine', () => {
+  const g = ldOf(cultureHeadFor({ siteId: 'ch', lang: 'fr', slug: 'komitas', article: art(), bySlug }))['@graph']
+  const bc = g.find((n) => n['@type'] === 'BreadcrumbList')
+  assert.deepEqual(bc.itemListElement.map((x) => [x.position, x.name, x.item]), [
+    [1, 'Accueil', 'https://armenieinfo.ch/'],
+    [2, 'Culture arménienne', 'https://armenieinfo.ch/culture/'],
+    [3, 'Komitas, <le> père', 'https://armenieinfo.ch/culture/komitas/'],
+  ])
+})
