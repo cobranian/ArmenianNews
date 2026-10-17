@@ -5,7 +5,9 @@
 # traitées barrées), répond, et ferme l'issue quand plus rien n'attend.
 #
 # SÉCURITÉ : seul le PROPRIÉTAIRE du dépôt déclenche ce job (garde du `if:`),
-# jamais sur une PR, jamais sur une autre issue. Le commentaire et le corps de
+# jamais sur une PR, et seulement sur l'issue ouverte PAR LE ROBOT : le dépôt
+# est public, une issue homonyme d'un tiers porterait un bloc JSON fabriqué
+# qu'un /ajoute ferait entrer dans sujets.json. Le commentaire et le corps de
 # l'issue n'atteignent le script que par env: ou par fichier — jamais
 # interpolés dans un run:. Le script relit la commande (parseIdeaCommand).
 #
@@ -26,11 +28,15 @@ jobs:
     if: >-
       !github.event.issue.pull_request &&
       github.event.issue.title == 'Culture : idées de sujets' &&
+      github.event.issue.user.login == 'github-actions[bot]' &&
       github.event.comment.author_association == 'OWNER' &&
       (startsWith(github.event.comment.body, '/ajoute') || startsWith(github.event.comment.body, '/rejette'))
     # Sous le job, pas au niveau du workflow : là, n'importe quel commentaire
     # (job ensuite sauté par le if:) entrerait dans le groupe et évincerait en
-    # silence une commande en attente.
+    # silence une commande en attente. GitHub ne garde qu'UN run en attente :
+    # une troisième commande rapprochée remplace la deuxième, qui ne reçoit
+    # alors ni 👀 ni réponse — un 👀 absent veut dire « commande perdue,
+    # renvoyez-la ».
     concurrency:
       group: culture-ideas
       cancel-in-progress: false
@@ -86,7 +92,7 @@ jobs:
             for i in 1 2 3; do
               git pull --rebase origin main && git push origin HEAD:main && { pushed=1; break; }
               git rebase --abort 2>/dev/null || true
-              sleep 10
+              [ "$i" -lt 3 ] && sleep 10
             done
             # Sans sujets.json sur main, l'issue ne doit pas annoncer d'ajout.
             [ -n "$pushed" ] || fail "sujets.json n'a pas pu être poussé sur main : rien n'a changé, renvoyez la commande."
@@ -99,12 +105,18 @@ jobs:
           APPLY: ${{ steps.apply.outcome }}
           PUB: ${{ steps.pub.outcome }}
         run: |
+          # La fermeture n'est annoncée qu'une fois faite (on peut commenter
+          # une issue fermée : la réponse part après).
+          if [ "$PUB" = success ] && [ -f "$RUNNER_TEMP/done" ]; then
+            if gh issue close "$ISSUE"; then
+              printf '%s\n' "Plus aucune idée en attente : issue fermée." >> "$RUNNER_TEMP/reply.md"
+            else
+              printf '\n%s\n' "⚠️ Plus aucune idée en attente, mais l'issue n'a pas pu être fermée : fermez-la à la main." >> "$RUNNER_TEMP/reply.md"
+            fi
+          fi
           if [ -f "$RUNNER_TEMP/reply.md" ]; then
             gh issue comment "$ISSUE" --body-file "$RUNNER_TEMP/reply.md"
           else
             gh issue comment "$ISSUE" --body "❌ La commande a échoué avant toute modification : voir le journal du workflow « Culture — idées de sujets »."
-          fi
-          if [ "$PUB" = success ] && [ -f "$RUNNER_TEMP/done" ]; then
-            gh issue close "$ISSUE"
           fi
           [ "$APPLY" = success ] && [ "$PUB" != failure ] || exit 1

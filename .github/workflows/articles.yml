@@ -41,8 +41,10 @@ jobs:
 
       - name: Issue d'idées déjà ouverte ?
         id: open-ideas
+        # Seules les issues du robot comptent : le dépôt est public, une issue
+        # homonyme ouverte par un tiers empêcherait sinon toute proposition.
         run: |
-          n=$(gh issue list --state open --search 'in:title "Culture : idées de sujets"' --json number --jq 'length')
+          n=$(gh issue list --state open --author app/github-actions --search 'in:title "Culture : idées de sujets"' --json number --jq 'length')
           if [ "$n" -gt 0 ]; then echo "flag=--ideas-open" >> "$GITHUB_OUTPUT"; fi
 
       - name: Rédiger

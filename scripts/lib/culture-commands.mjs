@@ -147,7 +147,9 @@ export function applyIdeaCommand({ ideas, sujets, cmd }) {
   }
   const left = next.filter((x) => x.status === 'proposed').length
   const done = left === 0
-  const reply = [...lines, '', done ? 'Plus aucune idée en attente : issue fermée.' : `Encore ${left} idée(s) en attente.`, ''].join('\n')
+  // Pas d'annonce de fermeture ici : le workflow l'ajoute une fois l'issue
+  // réellement fermée.
+  const reply = [...lines, '', ...(done ? [] : [`Encore ${left} idée(s) en attente.`, ''])].join('\n')
   return { ideas: next, sujets: { ...sujets, topics }, reply, done }
 }
 

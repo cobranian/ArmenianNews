@@ -198,6 +198,7 @@ test('applyIdeaCommand : rejet, numéro inconnu, déjà traité, slug ou qid dé
   assert.match(r.reply, /Q11932/)
   assert.match(r.reply, /khatchkars/)
   assert.equal(r.done, true, 'plus aucune idée proposée')
+  assert.doesNotMatch(r.reply, /fermée/, 'la fermeture est annoncée par le workflow, une fois faite')
   assert.deepEqual(validateTopics(r.sujets), [])
 })
 

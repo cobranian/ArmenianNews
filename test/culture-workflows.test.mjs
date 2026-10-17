@@ -73,6 +73,8 @@ test('articles-ideas.yml : OWNER exigé, pas sur une PR, titre exact, /ajoute ou
   const cond = m[1]
   assert.match(cond, /!github\.event\.issue\.pull_request &&/)
   assert.match(cond, /github\.event\.issue\.title == 'Culture : idées de sujets' &&/)
+  // Dépôt public : une issue homonyme d'un tiers porterait un JSON fabriqué.
+  assert.match(cond, /github\.event\.issue\.user\.login == 'github-actions\[bot\]' &&/)
   assert.match(cond, /github\.event\.comment\.author_association == 'OWNER' &&/)
   assert.match(cond, /\(startsWith\(github\.event\.comment\.body, '\/ajoute'\) \|\| startsWith\(github\.event\.comment\.body, '\/rejette'\)\)/)
   // Le seul || est celui des deux commandes, entre parenthèses : aucune
@@ -98,6 +100,18 @@ test('articles-ideas.yml : commit sur main par la boucle rebase/push, puis issue
   assert.match(last, /if: always\(\)/)
   assert.match(last, /gh issue comment "\$ISSUE" --body-file "\$RUNNER_TEMP\/reply\.md"/)
   assert.match(last, /gh issue close "\$ISSUE"/)
+  // « issue fermée » n'est écrit qu'une fois la fermeture réussie, et la
+  // réponse part après.
+  assert.match(last, /if gh issue close "\$ISSUE"; then\n\s+printf '%s\\n' "Plus aucune idée en attente : issue fermée\."/)
+  assert.ok(last.indexOf('gh issue close') < last.indexOf('gh issue comment'), 'fermeture avant la réponse')
+  // Pas d'attente inutile après le dernier essai.
+  assert.match(y, /\[ "\$i" -lt 3 \] && sleep 10/)
+  assert.match(y, /👀 absent/, 'commande perdue documentée')
+})
+
+test('articles.yml : seule une issue d’idées DU ROBOT compte comme ouverte', async () => {
+  const y = await read('articles.yml')
+  assert.match(y, /gh issue list --state open --author app\/github-actions --search 'in:title "Culture : idées de sujets"'/)
 })
 
 test('culture-draft : --out-body par défaut hors du dépôt', async () => {
@@ -118,7 +132,7 @@ test('articles.yml : cron quotidien 0 3 * * *', async () => {
 
 test('articles.yml : idées seulement sans issue ouverte (--ideas-open)', async () => {
   const y = await read('articles.yml')
-  assert.match(y, /gh issue list --state open --search 'in:title "Culture : idées de sujets"'/)
+  assert.match(y, /gh issue list --state open --author app\/github-actions --search 'in:title "Culture : idées de sujets"'/)
   assert.match(y, /--ideas-open/)
   assert.match(y, /if: steps\.draft\.outputs\.ideas == '1'/)
   assert.doesNotMatch(y, /outputs\.issue/)
