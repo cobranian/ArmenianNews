@@ -207,3 +207,25 @@ test('sélecteur de langue : brève du même jour si elle a paru, sinon l’inde
   assert.ok(bar.includes(`href="${briefUrl('hy')}" hreflang="hy"`), 'pas de brève hy ce jour-là')
   assert.ok(bar.includes('hreflang="fr" lang="fr" title="Français" aria-current="page"'))
 })
+
+// --- SEO (audit du 17 octobre 2026).
+const h1Of = (html) => html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, '')
+
+test('page datée : le H1 nomme la page ET porte sa date', () => {
+  const list = [b('fr', '2026-10-16')]
+  const html = briefPageHtml({ siteId: 'ch', lang: 'fr', brief: list[0], list, byDate: briefLangsByDate({ fr: list }), cssHref: CSS })
+  assert.equal(html.split('<h1').length - 1, 1)
+  const h1 = h1Of(html)
+  assert.ok(h1.includes('La brève du jour'), h1)
+  assert.ok(h1.includes('vendredi 16 octobre 2026'), h1)
+})
+
+test('index : ne recopie pas le texte de la dernière brève (doublon de la page datée)', () => {
+  const list = [b('fr', '2026-10-16')]
+  const html = briefIndexHtml({ siteId: 'ch', lang: 'fr', list, byDate: briefLangsByDate({ fr: list }), cssHref: CSS })
+  assert.equal(h1Of(html), 'La brève du jour')
+  assert.ok(!html.includes('Texte &amp; suite.'), 'le texte des sujets reste sur la page datée')
+  assert.ok(html.includes('Titre &quot;1&quot; &lt;script&gt;'), 'les titres restent, en liens')
+  assert.ok(html.includes('Intro &amp; &lt;b&gt;'), 'le chapô reste')
+  assert.ok(html.includes(`<a href="${briefPath('fr', '2026-10-16')}">Lire la brève complète →</a>`))
+})

@@ -276,6 +276,37 @@ export function headFor({ siteId, lang, view = 'home' }) {
   })
 }
 
+// Le fil d'Ariane d'une page hors accueil : Accueil › section › page. Les
+// libellés sont ceux de la navigation visible de la langue (BRIEF_STRINGS.home,
+// titres de section) ; le dernier maillon est la page elle-même.
+function breadcrumb(lang, trail) {
+  const items = [[BRIEF_STRINGS[lang].home, urlFor(lang, 'home')], ...trail]
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, item], i) => ({
+      '@type': 'ListItem', position: i + 1, name, item,
+    })),
+  }
+}
+
+// Le sujet d'un article Culture, désigné par son entité Wikidata : c'est ce qui
+// relie « duduk » à l'entité que connaissent Google et les moteurs IA, au lieu
+// d'une chaîne de caractères à interpréter. Le qid est celui qui a servi à
+// trouver les sources (meta.json) — donc le bon homonyme, vérifié au brouillon.
+// `name` vient de la page Wikipédia de la langue, sinon du titre de l'article.
+export function articleAbout(article, lang, fallbackName) {
+  const qid = article?.meta?.qid
+  if (!/^Q\d+$/.test(qid ?? '')) return null
+  // meta.json antérieurs à `kind` : Wikipédia seulement (culture-sources.mjs).
+  const wiki = article.sources.find((x) => (x.kind ?? 'wikipedia') === 'wikipedia' && x.lang === lang)
+  return {
+    '@type': 'Thing',
+    '@id': `http://www.wikidata.org/entity/${qid}`,
+    name: wiki?.title ?? fallbackName,
+    sameAs: [`https://www.wikidata.org/wiki/${qid}`, ...(wiki ? [wiki.url] : [])],
+  }
+}
+
 // L'en-tête d'une page de brève : `/breve/` (date null) ou une page datée.
 // Mêmes balises que les vues, via composeHead ; ce qui change : le hreflang
 // (langues présentes ce jour-là, voir brief-links.mjs), og:type article et un
@@ -307,6 +338,9 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
       publisher: { '@id': `${site.host}/#organization` },
       citation: brief.topics.flatMap((t) => t.sources.map((x) => x.url)),
     })
+    graph.push(breadcrumb(lang, [[s.title, briefUrl(lang)], [longDate(lang, date), url]]))
+  } else {
+    graph.push(breadcrumb(lang, [[s.title, url]]))
   }
   return composeHead({
     site, lang, url, title, description,
@@ -334,6 +368,7 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
   const ogImage = a && article.image ? `${site.host}${cultureImagePath(slug, 'jpg')}` : null
   const graph = siteGraph(site, lang)
   if (a) {
+    const about = articleAbout(article, lang, a.title)
     graph.push({
       '@type': 'Article',
       '@id': `${url}#article`,
@@ -348,7 +383,11 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
       inLanguage: lang,
       isAccessibleForFree: true,
       citation: article.sources.map((x) => x.url),
+      ...(about ? { about } : {}),
     })
+    graph.push(breadcrumb(lang, [[s.title, cultureUrl(lang)], [a.title, url]]))
+  } else {
+    graph.push(breadcrumb(lang, [[s.title, url]]))
   }
   return composeHead({
     site, lang, url, title, description,

@@ -12,9 +12,16 @@
  * hourly build reruns this, so the baked HTML is never staler than the
  * snapshot it ships with.
  *
- * main.jsx uses createRoot (not hydrateRoot): React clears the container and
- * re-renders on load, so the baked markup is never reconciled and cannot
- * mismatch. That is deliberate — do not "fix" it by hydrating.
+ * The baked markup is HYDRATED by main.jsx (hydrateRoot), not thrown away —
+ * with createRoot the browser painted nothing until React had rebuilt the
+ * whole page (first paint 1.48 s vs 0.23 s without JS, simulated mobile LCP
+ * 9.9 s vs 2.3 s, 17 Oct 2026). Hydration only pays if the baked HTML is
+ * EXACTLY the first client render, so this script no longer snapshots the
+ * mounted DOM (effects already ran, adjacent text nodes merged): it sets
+ * window.__PRERENDER__ = { now } and main.jsx answers with renderToString.
+ * `now` is baked as <div id="root" data-now> so the visitor's first render
+ * uses the same instant (src/renderClock.js). `npm run hydration-check`
+ * proves the result hydrates without a mismatch.
  *
  * Browser: uses puppeteer-core against an already-installed Chrome/Edge.
  * Set PUPPETEER_EXECUTABLE_PATH to override the auto-detected path.
@@ -71,15 +78,16 @@ try {
           const file = path.join(root, 'dist', site.id, rel.replace(/^\//, ''), 'index.html')
           const tab = await browser.newPage()
           try {
+            const now = Date.now()
+            await tab.evaluateOnNewDocument((n) => {
+              window.__PRERENDER__ = { now: n }
+            }, now)
             await tab.goto(origin + rel, { waitUntil: 'networkidle0' })
+            await tab.waitForSelector('html[data-prerendered="ok"]', { timeout: 30000 })
 
-            // .reveal starts at opacity:0 and only becomes visible once
-            // useReveal's IntersectionObserver fires on scroll. Serialising as-is
-            // would ship a transparent page. Stamp every .reveal visible before
-            // reading the DOM.
-            await tab.evaluate(() => {
-              document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'))
-            })
+            // .reveal is no longer stamped is-visible here: the baked HTML must
+            // be the client's first render, and .reveal is only hidden under
+            // html.js (global.css), so the raw HTML reads fine without script.
 
             // La page doit avoir démarré dans SA langue : si le prérendu de /hy/
             // cuit du contenu anglais, la résolution de langue par URL est
@@ -110,7 +118,11 @@ try {
             const marker = '<div id="root"></div>'
             if (!html.includes(marker)) throw new Error(`marker ${marker} not found in ${file}`)
 
-            await writeFile(file, html.replace(marker, `<div id="root">${rendered}</div>`), 'utf-8')
+            await writeFile(
+              file,
+              html.replace(marker, () => `<div id="root" data-now="${now}">${rendered}</div>`),
+              'utf-8',
+            )
             console.log(
               `✓ ${site.id}${rel} (${page.lang}, ${view}) — ${rendered.length.toLocaleString('en-US')} chars`,
             )

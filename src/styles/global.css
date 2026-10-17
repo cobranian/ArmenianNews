@@ -3230,12 +3230,17 @@ html:lang(hy) .nav__brand {
 /* ============================================================
    Reveal-on-scroll
    ============================================================ */
-.reveal {
+/* Masqué seulement quand JavaScript tourne (html.js, posé par theme-init.js
+   avant le premier affichage). Sans script, le HTML prérendu se lit tel quel ;
+   avec, le bloc attend son is-visible (useReveal). Le prérendu posait autrefois
+   is-visible dans le HTML cuit : depuis que main.jsx HYDRATE ce HTML, cette
+   classe serait un écart avec le premier rendu client (src/renderClock.js). */
+html.js .reveal {
   opacity: 0;
   transform: translateY(26px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
-.reveal.is-visible {
+html.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
@@ -3922,6 +3927,36 @@ html:lang(hy) .nav__brand {
   line-height: 1.1;
   margin: 0.2em 0 0.5em;
   text-wrap: balance;
+}
+/* Le H1 d'une page datée enveloppe le surtitre et la date (voir
+   brief-pages.mjs) : chaque moitié garde l'apparence qu'elle avait quand le
+   surtitre était un <p> à part — d'où le poids et l'interligne rétablis. */
+.brief__heading {
+  margin: 0.75rem 0 0;
+}
+.brief__heading > span {
+  display: block;
+}
+.brief__heading .brief__kicker {
+  font-weight: 400;
+  line-height: 1.5;
+}
+.brief__topics--teaser .brief__topic {
+  padding: 0.9em 0;
+}
+.brief__topics--teaser .brief__topic-title a {
+  color: var(--text);
+}
+.brief__topics--teaser .brief__topic-title a:hover {
+  color: var(--apricot-ink);
+}
+.brief__more {
+  margin-top: 1.4em;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 .brief__intro,
 .brief__text {

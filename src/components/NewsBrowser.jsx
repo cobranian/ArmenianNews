@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { Carousel } from './Carousel.jsx'
 import { useSourceDrum } from './useSourceDrum.js'
@@ -6,6 +6,7 @@ import { Motif, hash, THEMES } from './motifs.jsx'
 import { TAB_ORDER, shelvesFor } from '../newsSources.js'
 import { groupByRubric, DEFAULT_RUBRIC } from '../rubrics.js'
 import { SOURCE_NAMES } from '../newsLangs.js'
+import { useClientNow } from '../useClientNow.js'
 
 // The wsrv.nl image CDN: fetched server-side, resized, re-served with CORS.
 // Sources reach it for TWO different reasons, and only the first is a blocker.
@@ -52,14 +53,11 @@ const armradioImg = (url) => {
 // minutes. Les secondes, elles, ne s'affichent qu'en théorie — l'instantané
 // étant horaire et le build prenant quelques minutes, la dépêche la plus
 // fraîche a déjà quelques minutes quand un lecteur la voit.
-function useNow(step = 60000) {
-  const [now, setNow] = useState(() => Date.now())
-  useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), step)
-    return () => clearInterval(id)
-  }, [step])
-  return now
-}
+//
+// Le premier rendu prend l'heure du PRÉRENDU, pas celle du lecteur : un « 6 h »
+// cuit contre un « 9 h » calculé ferait échouer l'hydratation de toute la page
+// (src/renderClock.js). L'heure réelle arrive au montage.
+const useNow = useClientNow
 
 // One article card, sized to sit inside a shelf track (see .card in CSS).
 // A card with no usable image — or one that fails to load — falls back to a

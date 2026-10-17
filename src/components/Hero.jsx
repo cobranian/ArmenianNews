@@ -33,7 +33,11 @@ export function Hero() {
         <KnotMark />
         <div className="hero__date">
           <span>{t('site.snapshot')}</span>
-          <strong>{formatDate(meta.generatedAt)}</strong>
+          {/* Rendue dans le fuseau de la machine : celui du prérendu (UTC en CI) peut
+              différer d'un jour de celui du lecteur vers minuit. Écart toléré, sur
+              ce seul texte, pour ne pas faire échouer l'hydratation de la page
+              (src/renderClock.js). */}
+          <strong suppressHydrationWarning>{formatDate(meta.generatedAt)}</strong>
           <span className="hero__cadence">{t('site.cadence')}</span>
         </div>
       </div>
