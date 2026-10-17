@@ -2,6 +2,7 @@
 // Le corps de la PR de relecture (spec §1.1) et de l'issue d'idées. Le texte
 // est du Markdown GitHub : GitHub l'assainit, rien n'y est exécuté.
 import { OVERLAP_THRESHOLD } from './culture-overlap.mjs'
+import { FACTS_CHECKED, factsChecked } from './culture-validate.mjs'
 
 const pct = (x) => `${(x * 100).toFixed(1)} %`
 
@@ -89,9 +90,12 @@ export function replaceAutoSection(body, auto) {
   return body.slice(0, i) + wrap(auto) + body.slice(j + AUTO_END.length)
 }
 
-const CHECKED = /^(- )\[[xX]\]( Faits vérifiés)/m
-export const isChecked = (body) => CHECKED.test(String(body ?? ''))
-export const uncheck = (body) => String(body).replace(CHECKED, '$1[ ]$2')
+// La détection même de culture-check (factsChecked) : ce que le contrôle tient
+// pour coché est exactement ce que /corrige décoche. Toutes les cases cochées
+// sont décochées, pas seulement la première.
+const CHECKED_ALL = new RegExp(FACTS_CHECKED.source, 'gm')
+export const isChecked = factsChecked
+export const uncheck = (body) => String(body ?? '').replace(CHECKED_ALL, '$1[ ]$2')
 
 const slugify = (s) =>
   s

@@ -101,10 +101,21 @@ test('uncheck / isChecked', () => {
   assert.equal(isChecked(on), true)
   assert.equal(isChecked('- [X] Faits vérifiés'), true)
   assert.equal(isChecked('- [ ] Faits vérifiés'), false)
-  assert.equal(isChecked('* [x] Faits vérifiés'), false)
   assert.equal(uncheck(on), '- [ ] Faits vérifiés')
   assert.equal(uncheck('a\n- [X] Faits vérifiés\nb'), 'a\n- [ ] Faits vérifiés\nb')
   assert.equal(uncheck('- [ ] Faits vérifiés'), '- [ ] Faits vérifiés')
+})
+
+// /corrige décoche ce que culture-check tient pour coché — ni plus, ni moins :
+// une case « * [x] » ou indentée, vue cochée par le contrôle mais pas décochée,
+// laisserait publier un texte que personne n'a vérifié.
+test('isChecked / uncheck : même détection que factsChecked (culture-check)', () => {
+  const bodies = ['- [x] Faits vérifiés', '* [x] Faits vérifiés', '  - [X] Faits vérifiés', 'a\n* [X] Faits vérifiés\nb', '- [x] Faits vérifiés\n\n* [x] Faits vérifiés','- [ ] Faits vérifiés', 'Faits vérifiés', '']
+  for (const b of bodies) {
+    assert.equal(isChecked(b), factsChecked(b), JSON.stringify(b))
+    assert.equal(factsChecked(uncheck(b)), false, `décoché : ${JSON.stringify(b)}`)
+  }
+  assert.equal(uncheck('  * [x] Faits vérifiés'), '  * [ ] Faits vérifiés', 'puce et retrait gardés')
 })
 
 test('corps sous 65 000 caractères, pire cas', () => {
