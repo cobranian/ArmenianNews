@@ -1,0 +1,104 @@
+{
+  "slug": "duduk",
+  "qid": "Q737917",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Duduk",
+      "url": "https://fr.wikipedia.org/wiki/Duduk",
+      "revision": 235624337,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Duduk",
+      "url": "https://en.wikipedia.org/wiki/Duduk",
+      "revision": 1374078453,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Դուդուկ",
+      "url": "https://hy.wikipedia.org/wiki/%D4%B4%D5%B8%D6%82%D5%A4%D5%B8%D6%82%D5%AF",
+      "revision": 10911560,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Дудук",
+      "url": "https://ru.wikipedia.org/wiki/%D0%94%D1%83%D0%B4%D1%83%D0%BA",
+      "revision": 153452123,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "hse",
+      "lang": "hy",
+      "title": "ՀՍՀ/ԴՈՒԴՈՒԿ",
+      "url": "https://hy.wikisource.org/wiki/%D5%80%D5%8D%D5%80/%D4%B4%D5%88%D5%92%D4%B4%D5%88%D5%92%D4%BF",
+      "revision": 369917,
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "kind": "unesco",
+      "lang": "en",
+      "title": "Duduk and its music",
+      "url": "https://ich.unesco.org/en/RL/duduk-and-its-music-00092",
+      "revision": null,
+      "license": "UNESCO"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Duduk teacher statue.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Duduk_teacher_statue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1905,
+      "height": 1983,
+      "mime": "image/jpeg",
+      "author": "Armenak Margarian",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Duduk_teacher_statue.jpg"
+    },
+    {
+      "file": "File:Armenian duduk vamelo areg.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Armenian_duduk_vamelo_areg.jpg/1920px-Armenian_duduk_vamelo_areg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2200,
+      "height": 1238,
+      "mime": "image/jpeg",
+      "author": "Vamelo",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Armenian_duduk_vamelo_areg.jpg"
+    },
+    {
+      "file": "File:Duduk mouthpiece.png",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/Duduk_mouthpiece.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1500,
+      "height": 750,
+      "mime": "image/png",
+      "author": "Armen Enikolopov",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Duduk_mouthpiece.png"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Duduk teacher statue.jpg",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Duduk_teacher_statue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 1249,
+    "mime": "image/jpeg",
+    "author": "Armenak Margarian",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Duduk_teacher_statue.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0.013,
+  "model": "gemini-flash-latest"
+}
