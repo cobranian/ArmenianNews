@@ -138,7 +138,7 @@ export function parseIdeas(text) {
 // Plié, et typographie unifiée des deux côtés : Wikipédia écrit « 1 200 »
 // avec une espace fine insécable (U+202F) et « 1869–1935 » avec un demi-
 // cadratin ; le modèle, avec une espace et un trait d'union ordinaires.
-const fold = (s) =>
+export const fold = (s) =>
   String(s ?? '')
     .toLowerCase()
     .normalize('NFD')
