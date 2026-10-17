@@ -110,6 +110,9 @@ try {
             }
 
             const rendered = await tab.$eval('#root', (el) => el.innerHTML)
+            // Le fuseau du navigateur du prérendu : l'agenda y a lu ses heures
+            // murales, le premier rendu du lecteur doit faire de même.
+            const tz = await tab.evaluate((n) => new Date(n).getTimezoneOffset(), now)
             if (!rendered.trim()) {
               throw new Error(`${site.id}${rel} : #root vide — refus de cuire une page blanche`)
             }
@@ -120,7 +123,7 @@ try {
 
             await writeFile(
               file,
-              html.replace(marker, () => `<div id="root" data-now="${now}">${rendered}</div>`),
+              html.replace(marker, () => `<div id="root" data-now="${now}" data-tz="${tz}">${rendered}</div>`),
               'utf-8',
             )
             console.log(
