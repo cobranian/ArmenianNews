@@ -5,32 +5,42 @@ import { OVERLAP_THRESHOLD } from './culture-overlap.mjs'
 
 const pct = (x) => `${(x * 100).toFixed(1)} %`
 
-export function buildPrBody({ title, meta, unsupported, overlap, warnings = [] }) {
+export const AUTO_START = '<!-- culture:auto:start -->'
+export const AUTO_END = '<!-- culture:auto:end -->'
+
+// Le texte de l'article est collé dans la PR : ses intertitres descendent de
+// deux crans pour ne pas rivaliser avec les titres de section de la page.
+const lowerHeadings = (md) => md.replace(/^(#{2,3}) /gm, (_, h) => (h === '##' ? '#### ' : '##### '))
+
+function sourceLabel(s) {
+  if (s.kind === 'unesco') return 'UNESCO'
+  if (s.kind === 'hse') return `Encyclopédie soviétique arménienne (ՀՍՀ, Wikisource), révision ${s.revision}`
+  return `Wikipédia ${s.lang}, révision ${s.revision}`
+}
+
+// La partie que le robot réécrit à chaque révision (entre les marqueurs).
+export function buildAutoSection({ title, frBody = '', meta, unsupported, editorial = [], overlap, warnings = [] }) {
   const lines = [`## ${title}`, '']
-  // Les faits ⚠️ passent avant tout : c'est ce que le relecteur doit voir d'abord.
+  // Les alertes passent avant tout : c'est ce que le relecteur doit voir d'abord.
+  const alerts = []
   if (unsupported === null) {
-    lines.push(
-      '### ⚠️ À vérifier en premier',
-      'Vérification automatique des faits indisponible (réponse du modèle illisible) : vérifiez à la main toutes les dates, tous les chiffres et tous les noms propres.',
-    )
-  } else if (unsupported.length) {
-    lines.push('### ⚠️ À vérifier en premier', 'Introuvables tels quels dans les sources :', ...unsupported.map((c) => `- ⚠️ ${c}`))
+    alerts.push('Vérification automatique des faits indisponible (réponse du modèle illisible) : vérifiez à la main toutes les dates, tous les chiffres et tous les noms propres.')
   } else {
-    lines.push('### Faits', 'Toutes les dates, chiffres et noms propres extraits se retrouvent dans les sources.')
+    for (const f of unsupported.facts) alerts.push(`⚠️ ${f} — introuvable tel quel dans les sources`)
   }
-  lines.push('')
-  for (const w of warnings) lines.push(`> ⚠️ ${w}`)
-  if (warnings.length) lines.push('')
-  lines.push(
-    '',
-    `### Recouvrement avec Wikipédia : ${pct(overlap)}${overlap > OVERLAP_THRESHOLD ? ` — ⚠️ au-dessus du seuil de ${pct(OVERLAP_THRESHOLD)} : reformulez les passages trop proches de la source` : ''}`,
-    '',
-    '### Sources',
-    ...meta.sources.map((s) => `- [${s.title}](${s.url}) — Wikipédia ${s.lang}, révision ${s.revision}`),
-  )
-  const ev = meta.agendaEvent
-  if (ev) lines.push('', '### Événement lié', `- [${ev.title}](${ev.url}) — ${String(ev.date).slice(0, 10)}${ev.location ? `, ${ev.location}` : ''}`)
-  lines.push('', '### Image')
+  for (const e of editorial) alerts.push(`ligne éditoriale : ${e}`)
+  if (overlap > OVERLAP_THRESHOLD) {
+    alerts.push(`recouvrement avec Wikipédia : ${pct(overlap)}, au-dessus du seuil de ${pct(OVERLAP_THRESHOLD)} — reformulez les passages trop proches de la source`)
+  }
+  for (const w of warnings) alerts.push(w)
+  if (alerts.length) lines.push('### ⚠️ À vérifier en premier', ...alerts.map((a) => `- ${a}`))
+  else lines.push('Rien à signaler : les faits extraits se retrouvent dans les sources, la ligne éditoriale et le recouvrement sont dans les limites.')
+  lines.push('', '### Texte', '', lowerHeadings(frBody), '')
+  const names = unsupported?.names ?? []
+  if (names.length) {
+    lines.push(`<details><summary>Noms à confirmer (${names.length})</summary>`, '', ...names.map((n) => `- ${n}`), '', '</details>', '')
+  }
+  lines.push('### Image')
   if (meta.candidates?.length) {
     meta.candidates.forEach((c, i) => {
       lines.push(
@@ -38,26 +48,41 @@ export function buildPrBody({ title, meta, unsupported, overlap, warnings = [] }
         `   <img src="${c.thumbUrl}" width="240">`,
       )
     })
-    lines.push('', 'Pour en changer : modifiez `"imageChoice"` dans `meta.json` (0, 1 ou 2) **avant** de poser l’étiquette.')
+    lines.push('', 'Pour en changer : modifiez `"imageChoice"` dans `meta.json` (0, 1 ou 2) **avant** de cocher la case.')
   } else {
     lines.push('Aucune image libre trouvée : la page affichera un motif.')
   }
-  lines.push(
+  lines.push('', '### Sources', ...meta.sources.map((s) => `- [${s.title}](${s.url}) — ${sourceLabel(s)}`))
+  const ev = meta.agendaEvent
+  if (ev) lines.push('', '### Événement lié', `- [${ev.title}](${ev.url}) — ${String(ev.date).slice(0, 10)}${ev.location ? `, ${ev.location}` : ''}`)
+  lines.push('', '### Modèle', `- Rédaction : \`${meta.model}\``, '')
+  return lines.join('\n')
+}
+
+export function buildPrBody(args) {
+  return [
+    AUTO_START + buildAutoSection(args) + AUTO_END,
     '',
-    '### Modèle',
-    `- Rédaction : \`${meta.model}\``,
-    '',
-    '### Relecture',
-    '1. Corrigez `fr.md` si besoin (onglet « Files changed », menu ⋯ → *Edit file*).',
-    '2. **En dernier**, cochez la case ci-dessous : le robot traduit en en, hy et ru depuis votre texte, contrôle, **fusionne et publie** (5 à 10 minutes).',
-    '',
-    'Si le contrôle échoue, il ne publie pas et explique pourquoi en commentaire. L’étiquette **traduire** reste disponible pour retraduire sans publier.',
+    'Pour corriger : commentez `/corrige <consigne>` (ex. `/corrige retire le paragraphe sur le plat`).',
+    'Pour publier, **en dernier** : cochez la case.',
     '',
     '- [ ] Faits vérifiés',
     '',
-  )
-  return lines.join('\n')
+  ].join('\n')
 }
+
+// Remplace le contenu entre marqueurs ; tout le reste (case cochée comprise)
+// est gardé tel quel. Sans marqueurs, la section est préfixée.
+export function replaceAutoSection(body, auto) {
+  const i = body.indexOf(AUTO_START)
+  const j = body.indexOf(AUTO_END)
+  if (i === -1 || j === -1 || j < i) return AUTO_START + auto + AUTO_END + body
+  return body.slice(0, i + AUTO_START.length) + auto + body.slice(j)
+}
+
+const CHECKED = /^(\s*[-*] )\[[xX]\]( Faits vérifiés)/m
+export const isChecked = (body) => CHECKED.test(String(body ?? ''))
+export const uncheck = (body) => String(body).replace(CHECKED, '$1[ ]$2')
 
 const slugify = (s) =>
   s
