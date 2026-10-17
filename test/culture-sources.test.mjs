@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  fetchWikipedia, fetchWikidataFacts, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA,
+  fetchWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA,
 } from '../scripts/lib/culture-sources.mjs'
 
 // Un faux fetch qui route par hôte/paramètre et note les appels.
@@ -22,17 +22,17 @@ test('fetchWikipedia : extrait, révision, Wikidata, image de tête, UA honnête
     query: { pages: [{ title: 'Komitas', extract: 'Texte', revisions: [{ revid: 42 }], pageprops: { wikibase_item: 'Q312' }, pageimage: 'Komitas.jpg' }] },
   }]])
   const r = await fetchWikipedia('fr', 'Komitas', impl)
-  assert.deepEqual(r, { lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 42, extract: 'Texte', wikidata: 'Q312', pageImage: 'Komitas.jpg' })
+  assert.deepEqual(r, { kind: 'wikipedia', lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 42, extract: 'Texte', wikidata: 'Q312', pageImage: 'Komitas.jpg' })
   assert.equal(calls[0].init.headers['User-Agent'], WIKI_UA)
   assert.ok(!/Mozilla|Chrome/.test(WIKI_UA))
   assert.equal(calls[0].u.searchParams.get('redirects'), '1')
 })
 
-test('fetchWikipedia : page absente ou homonymie → null', async () => {
+test('fetchWikipedia : page absente → null, homonymie → lève', async () => {
   const missing = router([[() => true, { query: { pages: [{ title: 'X', missing: true }] } }]])
   assert.equal(await fetchWikipedia('fr', 'X', missing.impl), null)
   const dab = router([[() => true, { query: { pages: [{ title: 'Ani', extract: 'Ani peut désigner', pageprops: { disambiguation: '' } }] } }]])
-  assert.equal(await fetchWikipedia('fr', 'Ani', dab.impl), null)
+  await assert.rejects(fetchWikipedia('fr', 'Ani', dab.impl), /page d’homonymie : fr:Ani/)
 })
 
 test('wikidataTime : précisions jour, mois, année, avant notre ère', () => {
@@ -83,4 +83,43 @@ test('downloadImage : refuse une page d’erreur trop petite', async () => {
   await assert.rejects(downloadImage('https://u/x.jpg', tiny), /trop petite/)
   const err = async () => ({ ok: false, status: 403 })
   await assert.rejects(downloadImage('https://u/x.jpg', err), /HTTP 403/)
+})
+
+const claim = (value) => [{ mainsnak: { datavalue: { value } } }]
+const ENTITY = { entities: { Q777: {
+  labels: { fr: { value: 'Kochari' }, en: { value: 'Kochari' }, hy: { value: 'Քոչարի' }, ru: { value: 'Кочари' }, de: { value: 'Kochari' } },
+  descriptions: { fr: { value: 'danse arménienne' }, en: { value: 'Armenian dance' } },
+  aliases: { fr: [{ value: 'Kotchari' }], en: [{ value: 'Qochari' }, { value: 'Kochari dance' }] },
+  sitelinks: { frwiki: { title: 'Kochari' }, enwiki: { title: 'Kochari (dance)' }, hywiki: { title: 'Քոչարի' }, dewiki: { title: 'Kochari' } },
+  claims: { P18: claim('Kochari.jpg'), P571: claim({ time: '+1800-00-00T00:00:00Z', precision: 9 }) },
+} } }
+
+test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru, P18, faits', async () => {
+  const { impl, calls } = router([[(u) => u.host === 'www.wikidata.org', ENTITY]])
+  const e = await fetchEntity('Q777', impl)
+  assert.equal(calls.length, 1)
+  assert.match(calls[0].u.pathname, /Special:EntityData\/Q777\.json$/)
+  assert.deepEqual(e, {
+    qid: 'Q777',
+    labels: { fr: 'Kochari', en: 'Kochari', hy: 'Քոչարի', ru: 'Кочари' },
+    descriptions: { fr: 'danse arménienne', en: 'Armenian dance' },
+    aliases: { fr: ['Kotchari'], en: ['Qochari', 'Kochari dance'] },
+    sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: 'Քոչարի', ru: undefined },
+    image: 'Kochari.jpg',
+    facts: ['Fondation ou création : 1800'],
+  })
+})
+
+test('fetchEntity : entité minimale (rien de renseigné)', async () => {
+  const { impl } = router([[() => true, { entities: { Q1: {} } }]])
+  const e = await fetchEntity('Q1', impl)
+  assert.equal(e.image, null)
+  assert.deepEqual(e.facts, [])
+  assert.deepEqual(e.aliases, { fr: [], en: [] })
+})
+
+test('resolveTitles : sitelinks, surcharge manuelle prioritaire, langue absente omise', () => {
+  const entity = { sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: undefined, ru: undefined } }
+  assert.deepEqual(resolveTitles({}, entity), { fr: 'Kochari', en: 'Kochari (dance)' })
+  assert.deepEqual(resolveTitles({ wikipedia: { en: 'Kochari', ru: 'Кочари' } }, entity), { fr: 'Kochari', en: 'Kochari', ru: 'Кочари' })
 })

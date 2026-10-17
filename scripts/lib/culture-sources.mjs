@@ -39,8 +39,11 @@ export async function fetchWikipedia(lang, title, fetchImpl = fetch) {
   )
   const p = j?.query?.pages?.[0]
   if (!p || p.missing || p.invalid || !p.extract) return null
-  if (p.pageprops && 'disambiguation' in p.pageprops) return null
+  // Une homonymie n'est jamais un article : on lève plutôt que de rendre null,
+  // pour ne pas la confondre avec une page absente (et ne pas rédiger dessus).
+  if (p.pageprops && 'disambiguation' in p.pageprops) throw new Error(`page d’homonymie : ${lang}:${title}`)
   return {
+    kind: 'wikipedia',
     lang,
     title: p.title,
     url: `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`,
@@ -70,9 +73,8 @@ const TIME_PROPS = {
   P582: 'Fin',
 }
 
-export async function fetchWikidataFacts(qid, fetchImpl = fetch) {
-  const j = await getJson(`https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`, fetchImpl)
-  const entity = Object.values(j?.entities ?? {})[0]
+// Les faits datés d'une entité Wikidata, tels que le brouillon les cite.
+export function factsFromEntity(entity) {
   const claims = entity?.claims ?? {}
   const out = []
   for (const [p, label] of Object.entries(TIME_PROPS)) {
@@ -80,6 +82,42 @@ export async function fetchWikidataFacts(qid, fetchImpl = fetch) {
     if (t) out.push(`${label} : ${t}`)
   }
   return out
+}
+
+const ENTITY_LANGS = ['fr', 'en', 'hy', 'ru']
+
+// Une seule requête : libellés, descriptions, alias, titres Wikipédia (sitelinks)
+// et image de tête. Le sujet est identifié par son qid, jamais par un titre
+// deviné — c'est ce qui a fait tirer le plat égyptien « koshary » pour kochari.
+export async function fetchEntity(qid, fetchImpl = fetch) {
+  const j = await getJson(`https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`, fetchImpl)
+  const e = Object.values(j?.entities ?? {})[0] ?? {}
+  const pick = (obj, langs) => Object.fromEntries(langs.map((l) => [l, obj?.[l]?.value]).filter(([, v]) => v))
+  const aliases = (l) => (e.aliases?.[l] ?? []).map((a) => a.value)
+  return {
+    qid,
+    labels: pick(e.labels, ENTITY_LANGS),
+    descriptions: pick(e.descriptions, ['fr', 'en']),
+    aliases: { fr: aliases('fr'), en: aliases('en') },
+    sitelinks: Object.fromEntries(ENTITY_LANGS.map((l) => [l, e.sitelinks?.[`${l}wiki`]?.title])),
+    image: e.claims?.P18?.[0]?.mainsnak?.datavalue?.value ?? null,
+    facts: factsFromEntity(e),
+  }
+}
+
+// Titres Wikipédia à lire : les sitelinks, chaque langue surchargeable à la main
+// (`topic.wikipedia`) là où le lien Wikidata ne convient pas. Langue absente omise.
+export function resolveTitles(topic, entity) {
+  const out = {}
+  for (const l of ENTITY_LANGS) {
+    const t = topic?.wikipedia?.[l] ?? entity?.sitelinks?.[l]
+    if (t) out[l] = t
+  }
+  return out
+}
+
+export async function fetchWikidataFacts(qid, fetchImpl = fetch) {
+  return (await fetchEntity(qid, fetchImpl)).facts
 }
 
 export const stripHtml = (s) =>

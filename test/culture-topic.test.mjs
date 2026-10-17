@@ -7,7 +7,7 @@ import {
 
 const NOW = new Date('2026-10-19T08:00').getTime()
 const day = (n) => new Date(NOW + n * 86400000).toISOString().slice(0, 16)
-const T = (slug, keywords = [slug], status = 'pending') => ({ slug, title: slug, wikipedia: { fr: slug }, keywords, status })
+const T = (slug, keywords = [slug], status = 'pending') => ({ slug, title: slug, qid: 'Q1', keywords, status })
 const ev = (title, d, url = `https://e/${title}`) => ({ title, date: day(d), url, location: 'Genève' })
 
 test('availableTopics : pending, sans PR ouverte, sans dossier existant', () => {
@@ -58,9 +58,13 @@ test('setTopicStatus', () => {
   assert.throws(() => setTopicStatus(f, 'a', 'drafted'), /statut/)
 })
 
-test('validateTopics : doublon, slug, statut, sources, mots-clés', () => {
-  const errs = validateTopics({ topics: [T('a'), T('a'), { ...T('B') }, { ...T('c'), status: 'x' }, { ...T('d'), wikipedia: {} }, { ...T('e'), keywords: 'e' }] })
-  assert.equal(errs.length, 5, errs.join('\n'))
+test('validateTopics : doublon, slug, statut, qid requis, wikipedia facultatif, mots-clés', () => {
+  const errs = validateTopics({ topics: [
+    T('a'), T('a'), { ...T('B') }, { ...T('c'), status: 'x' },
+    { ...T('d'), qid: undefined }, { ...T('f'), qid: 'kochari' }, { ...T('e'), keywords: 'e' },
+  ] })
+  assert.equal(errs.length, 6, errs.join('\n'))
+  assert.deepEqual(validateTopics({ topics: [T('a'), { ...T('b'), wikipedia: { en: 'B' } }] }), [])
   assert.deepEqual(validateTopics({ topics: 'x' }), ['sujets.json : « topics » doit être un tableau'])
 })
 

@@ -70,7 +70,7 @@ export function validateTopics(file) {
     else if (seen.has(t.slug)) errs.push(`${at} : slug en double`)
     seen.add(t?.slug)
     if (!STATUSES.includes(t?.status)) errs.push(`${at} : statut invalide`)
-    if (!t?.wikipedia?.fr && !t?.wikipedia?.en) errs.push(`${at} : aucun article Wikipédia (fr ou en)`)
+    if (!/^Q\d+$/.test(t?.qid ?? '')) errs.push(`${at} : « qid » Wikidata requis (Q123)`)
     if (!Array.isArray(t?.keywords)) errs.push(`${at} : « keywords » doit être un tableau`)
   })
   return errs
