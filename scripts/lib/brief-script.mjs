@@ -1,0 +1,54 @@
+// Le garde-fou d'ÉCRITURE de la brève : un sujet arménien ou russe ne publie
+// pas de mots en lettres latines sortis de nulle part, et l'inverse en
+// français et en anglais.
+//
+// Mesuré le 17 octobre 2026 : les modèles :free intercalaient dans la brève
+// arménienne « remporter », « capitaine », « successoffice », un mot à moitié
+// latin (« Մասսudz »), et dans la russe « football », « wellbeing ». Un texte
+// valide, publié, indexé — rien ne tombait.
+//
+// Ce n'est PAS une relecture éditoriale (la publication reste automatique) :
+// seulement la cohérence de l'alphabet. Un mot d'une autre écriture reste
+// permis quand il vient des TITRES SOURCES du sujet (un nom propre, une
+// marque citée telle quelle), quand c'est le nom d'une rédaction, ou quand
+// c'est un sigle en capitales (COP, UNESCO). Un mot qui MÉLANGE deux
+// alphabets n'est jamais permis : aucune langue n'en écrit.
+import { SOURCE_NAMES } from '../../src/newsLangs.js'
+
+const EXPECTED = { fr: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
+const SCRIPTS = {
+  Latin: /\p{Script=Latin}/u,
+  Armenian: /\p{Script=Armenian}/u,
+  Cyrillic: /\p{Script=Cyrillic}/u,
+}
+
+const words = (s) => String(s ?? '').match(/[\p{L}\p{M}]+/gu) ?? []
+
+// Les mots qu'un sujet a le droit d'écrire dans une autre écriture : ceux de
+// ses titres sources, et les noms des rédactions.
+export function allowedWords(titles = []) {
+  const set = new Set()
+  for (const t of [...titles, ...Object.keys(SOURCE_NAMES), ...Object.values(SOURCE_NAMES)])
+    for (const w of words(t)) set.add(w.toLowerCase())
+  return set
+}
+
+// Les mots fautifs d'un texte pour une langue donnée (vide = texte propre).
+export function strayWords(text, lang, allowed = new Set()) {
+  const expected = EXPECTED[lang]
+  if (!expected) return []
+  const out = []
+  for (const w of words(text)) {
+    const found = Object.keys(SCRIPTS).filter((s) => SCRIPTS[s].test(w))
+    if (found.length > 1) {
+      out.push(w) // alphabets mêlés dans un même mot
+      continue
+    }
+    if (!found.length || found[0] === expected) continue
+    if (w.length < 3) continue
+    if (/^\p{Lu}{2,7}$/u.test(w)) continue // sigle
+    if (allowed.has(w.toLowerCase())) continue
+    out.push(w)
+  }
+  return out
+}

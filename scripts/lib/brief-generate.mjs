@@ -4,8 +4,13 @@
 // LE MODÈLE NE FOURNIT JAMAIS D'URL. Il reçoit des titres numérotés et répond
 // par des numéros ; c'est le code qui en fait des liens, depuis les articles
 // envoyés. Un numéro inconnu est ignoré. Ce n'est pas un filtre sur le texte
-// (le propriétaire a choisi la publication automatique, sans garde-fou), c'est
+// (le propriétaire a choisi la publication automatique, sans relecture), c'est
 // ce qui empêche un lien inventé de mener à un 404 ou à un site tiers.
+//
+// Le SEUL filtre de texte est celui de l'alphabet (brief-script.mjs) : un sujet
+// qui écrit des mots latins dans une brève arménienne ou russe — ou l'inverse —
+// est écarté. Ajouté le 18 octobre 2026, après « successoffice » et
+// « wagnelibentley » publiés en arménien.
 //
 // LE PIÈGE, le même que le classeur : un échec n'écrit rien et ne casse rien.
 // Le passage de l'heure suivante réessaie ; le seul signe est « ✗ brief » au
@@ -16,6 +21,7 @@ import { RUBRICS } from '../../src/rubrics.js'
 import { ALL_LANGS } from '../../sites.config.js'
 import { ENDPOINT, modelChain } from './classify-rubrics.mjs'
 import { selectArticles, yerevanClock, isBriefDue, MIN_ARTICLES } from './brief-select.mjs'
+import { allowedWords, strayWords } from './brief-script.mjs'
 
 export const MIN_TOPICS = 3
 export const MAX_TOPICS = 7
@@ -53,7 +59,9 @@ const clean = (s) => (typeof s === 'string' ? s.replace(/\s+/g, ' ').trim() : ''
 
 // La réponse du modèle → { intro, topics }, ou null si elle est inexploitable.
 // Tolère le texte et les clôtures autour du JSON. Ne lève jamais.
-export function parseBrief(text, articles) {
+// Avec `lang`, écarte les sujets dont l'alphabet déraille (brief-script.mjs) et
+// vide une introduction fautive ; `rejected` reçoit les mots en cause, pour le log.
+export function parseBrief(text, articles, lang = null, rejected = []) {
   const m = String(text ?? '').match(/\{[\s\S]*\}/)
   if (!m) return null
   let obj
@@ -77,12 +85,29 @@ export function parseBrief(text, articles) {
       sources.push({ source: a.source, url: a.url, title: a.title })
     }
     if (!sources.length) continue
+    if (lang) {
+      const allowed = allowedWords(sources.map((x) => x.title))
+      const bad = strayWords(`${title} ${body}`, lang, allowed)
+      if (bad.length) {
+        rejected.push(...bad)
+        continue
+      }
+    }
     const r = clean(t?.rubric).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     topics.push({ title, text: body, rubric: RUBRICS.includes(r) ? r : null, sources })
     if (topics.length === MAX_TOPICS) break
   }
   if (topics.length < MIN_TOPICS) return null
-  return { intro: clean(obj?.intro), topics }
+  let intro = clean(obj?.intro)
+  if (lang && intro) {
+    const allowed = allowedWords(topics.flatMap((t) => t.sources.map((x) => x.title)))
+    const bad = strayWords(intro, lang, allowed)
+    if (bad.length) {
+      rejected.push(...bad)
+      intro = ''
+    }
+  }
+  return { intro, topics }
 }
 
 const exists = (p) => access(p).then(() => true, () => false)
@@ -141,7 +166,9 @@ export async function generateBriefs({
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const body = await res.json()
-      const brief = parseBrief(body?.choices?.[0]?.message?.content, articles)
+      const rejected = []
+      const brief = parseBrief(body?.choices?.[0]?.message?.content, articles, lang, rejected)
+      if (rejected.length) log.warn(`  ✗ brief/${lang}: alphabet — écarté : ${[...new Set(rejected)].slice(0, 8).join(', ')}`)
       if (!brief) {
         log.warn(`  ✗ brief/${lang}: réponse invalide`)
         continue
