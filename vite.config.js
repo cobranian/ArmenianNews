@@ -107,7 +107,7 @@ function lightData() {
   }
 }
 
-// Le bloc « À lire » de l'accueil : les 3 derniers articles Culture de chaque
+// Le carrousel Culture de l'accueil : les 12 derniers articles Culture de chaque
 // langue de CETTE vitrine — titres et descriptions seulement, comme
 // lightData() n'embarque que les langues servies. Les avertissements d'un
 // article invalide sont déjà écrits par build-sites.mjs : ici, silence.
@@ -122,7 +122,7 @@ function cultureTeaser() {
     async load(id) {
       if (id !== `\0${ID}`) return null
       const articles = await loadCulture(join(__dirname, 'src/data/culture'), { warn: () => {} })
-      return `export default ${JSON.stringify(teaserFor(articles, langs))}`
+      return `export default ${JSON.stringify(teaserFor(articles, langs, 12))}`
     },
   }
 }

@@ -10,7 +10,7 @@
  */
 import { readdir, readFile, mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { ALL_LANGS, briefPath, siteOf } from '../../sites.config.js'
+import { ALL_LANGS, briefPath, briefUrl, siteOf } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
 import { RUBRICS } from '../../src/rubrics.js'
@@ -18,6 +18,14 @@ import { SOURCE_NAMES } from '../../src/newsLangs.js'
 import { briefHeadFor } from './site-meta.mjs'
 import { briefLangsByDate, longDate } from './brief-links.mjs'
 import { esc, pageShell } from './static-shell.mjs'
+
+// Le sélecteur de langue d'une brève : la brève du MÊME jour dans l'autre
+// langue si elle a paru, sinon l'index de cette langue (les quatre langues ne
+// paraissent pas toujours le même jour — voir brief-links.mjs).
+export function briefLangHrefs(date, byDate) {
+  const present = date === null ? ALL_LANGS : (byDate.get(date) ?? [])
+  return Object.fromEntries(ALL_LANGS.map((l) => [l, briefUrl(l, present.includes(l) ? date : null)]))
+}
 
 const DATE_FILE = /^(\d{4}-\d{2}-\d{2})\.json$/
 
@@ -145,7 +153,7 @@ ${briefBlock(lang, brief)}
       <nav class="brief__pager">${pager}</nav>
     </main>`
   const head = briefHeadFor({ siteId, lang, date: brief.date, brief, byDate })
-  return pageShell({ siteId, lang, head, cssHref, body })
+  return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(brief.date, byDate) })
 }
 
 export function briefIndexHtml({ siteId, lang, list, byDate, cssHref }) {
@@ -168,7 +176,7 @@ ${briefBlock(lang, latest)}
       <p class="brief__intro">${esc(s.empty)}</p>
     </main>`
   const head = briefHeadFor({ siteId, lang, byDate, robots: latest ? null : 'noindex, follow' })
-  return pageShell({ siteId, lang, head, cssHref, body })
+  return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(null, byDate) })
 }
 
 // Les pages d'UNE vitrine : seulement ses langues (sites.config.js). Le .ch
