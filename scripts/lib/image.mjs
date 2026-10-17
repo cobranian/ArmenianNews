@@ -2,8 +2,9 @@
  * La règle d'encodage des images bundlées, sortie des deux scrapes pour être
  * testable : ceux-ci pilotent un Chrome et ne sont pas exécutables en test.
  *
- * `sharp` est une dépendance de DÉVELOPPEMENT et doit le rester. Les deux
- * scrapes sont manuels et locaux ; ni le build ni la CI n'appellent ce module.
+ * `sharp` est une dépendance de DÉVELOPPEMENT et doit le rester : le build ne
+ * l'appelle pas. Le scrape horaire, si (images de California Courier,
+ * scripts/lib/mirror-images.mjs) — `npm ci` installe les dépendances de dev.
  */
 import sharp from 'sharp'
 

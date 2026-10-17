@@ -3,8 +3,11 @@ import { fetchText } from '../lib/http.mjs'
 import { clean, safeUrl } from '../lib/util.mjs'
 
 // The California Courier (thecaliforniacourier.com) — the Glendale Armenian
-// weekly. One WordPress REST install (open, no UA filter, no Cloudflare), like
-// oragark. Its distinctive asset: Harut Sassounian's Column is translated into
+// weekly. One WordPress REST install, like oragark. Since 17 Oct 2026 it sits
+// behind a Cloudflare challenge for browsers (and wsrv, and i0.wp.com) but not
+// for GitHub's runners: the API still answers the CI, and the images are
+// copied to public/cc/ by scrape.mjs (scripts/lib/mirror-images.mjs) — never
+// hotlinked, they would 403 in every reader's browser. Its distinctive asset: Harut Sassounian's Column is translated into
 // separate, fresh, illustrated categories per language — so this is the only
 // source besides Armenpress to serve all four UI languages, and the only second
 // source the fr and ru editions ever get.

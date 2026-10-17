@@ -16,6 +16,8 @@ import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
+import { mirrorImages, pruneMirror } from './lib/mirror-images.mjs'
+import { encode } from './lib/image.mjs'
 import { scrapeCivilnet } from './sources/civilnet.mjs'
 import { scrapeNewsam } from './sources/newsam.mjs'
 import { scrapeAgenda } from './sources/armenopole.mjs'
@@ -220,6 +222,15 @@ async function main() {
       'categoryKey',
     )
   }
+  // Ses images sont derrière un défi Cloudflare pour tout navigateur, mais pas
+  // pour la CI : recopiées dans public/cc/ (voir scripts/lib/mirror-images.mjs).
+  // Après le backfill, pour que le ménage ne retire pas les images des
+  // articles resservis.
+  const ccArticles = Object.values(californiacourier).flat().flatMap((s) => s.articles || [])
+  const ccMirror = { dir: join(__dirname, '..', 'public', 'cc'), prefix: '/cc/' }
+  const { copied, failed } = await mirrorImages(ccArticles, { ...ccMirror, encode })
+  const removed = pruneMirror(ccArticles, ccMirror)
+  console.log(`  ✓ californiacourier images: ${copied} recopiées, ${failed} en échec, ${removed} retirées`)
 
   // CivilNet — the Yerevan independent newsroom, quadrilingue like Armenpress
   // (fr/en/hy/ru map 1:1). Its four editions do not share a rubric list, so the

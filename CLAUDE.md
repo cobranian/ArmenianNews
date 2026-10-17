@@ -271,8 +271,8 @@ composants importent au build :
       liste d'ids figée qui viderait une rubrique le jour où le site ajoute une
       sous-catégorie.
   - `californiacourier.mjs` — The California Courier (thecaliforniacourier.com),
-    l'hebdomadaire arménien de Glendale. Une install WordPress REST ouverte (ni
-    filtre UA, ni Cloudflare), comme oragark. **Son atout : la chronique de Harut
+    l'hebdomadaire arménien de Glendale. Une install WordPress REST, comme
+    oragark. **Son atout : la chronique de Harut
     Sassounian est traduite dans une rubrique fraîche et illustrée par langue** —
     donc c'est **l'une des trois sources quadrilingues**, avec Armenpress et
     CivilNet. Mapping
@@ -282,7 +282,12 @@ composants importent au build :
     `french` ; `ru` → `russian` ; `hy` → `eastern-armenian`. Les libellés sont
     **fixés à la main** (les noms de rubrique WordPress sont des noms de langue —
     « French », « Russian » — ou « mainpost », inutilisables comme titres) et
-    portés dans les données. Images hotlinkées en direct.
+    portés dans les données. **Ses images ne se hotlinkent plus** : depuis le
+    17 octobre 2026, Cloudflare défie tout navigateur (et wsrv, et i0.wp.com)
+    mais pas les runners GitHub. Le scrape les recopie donc dans `public/cc/`
+    (`scripts/lib/mirror-images.mjs`), **commité** par le job horaire — un push
+    rebâtit sans scraper. Un scrape local, défié lui aussi, met `image: null`
+    aux nouvelles : motif, sans panne. Signe : `✗ image` au log.
   - `civilnet.mjs` — CivilNet (civilnet.am), la rédaction indépendante d'Erevan.
     **Troisième source quadrilingue** (fr/en/hy/ru, 1:1 avec la langue
     d'interface, comme Armenpress) — et le deuxième onglet que fr et ru
