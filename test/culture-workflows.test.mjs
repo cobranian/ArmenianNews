@@ -5,7 +5,10 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
 const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml', 'articles-ideas.yml']
-const read = (f) => readFile(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf-8')
+// Fins de ligne normalisées : sous Windows (core.autocrlf), git extrait les
+// workflows en CRLF, et les motifs multilignes ne verraient plus rien.
+const read = async (f) =>
+  (await readFile(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf-8')).replace(/\r\n/g, '\n')
 
 for (const f of FILES) {
   test(`${f} : aucun secret Firebase`, async () => {
