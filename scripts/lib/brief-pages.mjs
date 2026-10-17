@@ -126,9 +126,12 @@ function topicsHtml(lang, brief) {
     .join('\n')
 }
 
+// Le H1 d'une page datée porte le NOM de la page ET sa date : « La brève du
+// jour » seul vivait dans un <p> au-dessus, et le H1 ne disait qu'une date —
+// le seul titre que lisent les moteurs ne nommait pas ce qu'est la page.
 function briefBlock(lang, brief) {
   const s = BRIEF_STRINGS[lang]
-  return `      <h1 class="brief__date">${esc(longDate(lang, brief.date))}</h1>
+  return `      <h1 class="brief__heading"><span class="brief__kicker">${esc(s.title)}</span> <span class="brief__date">${esc(longDate(lang, brief.date))}</span></h1>
       ${brief.intro ? `<p class="brief__intro">${esc(brief.intro)}</p>` : ''}
       <ol class="brief__topics">
 ${topicsHtml(lang, brief)}
@@ -147,12 +150,37 @@ export function briefPageHtml({ siteId, lang, brief, list, byDate, cssHref }) {
     newer ? `<a rel="next" href="${briefPath(lang, newer.date)}">${esc(s.next)}</a>` : '<span></span>',
   ].join('')
   const body = `    <main class="container brief" data-brief="${brief.date}">
-      <p class="brief__kicker">${esc(s.title)}</p>
 ${briefBlock(lang, brief)}
       <nav class="brief__pager">${pager}</nav>
     </main>`
   const head = briefHeadFor({ siteId, lang, date: brief.date, brief, byDate })
   return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(brief.date, byDate) })
+}
+
+// L'index ne RECOPIE PAS la dernière brève : il en donne le chapô et les titres,
+// qui mènent à la page datée. Recopiée en entier, elle faisait de /breve/ un
+// doublon quotidien de /breve/AAAA-MM-JJ/ (62 lignes de texte sur 63, mesuré
+// le 17 octobre 2026), et Google choisissait seul laquelle garder.
+function briefTeaser(lang, brief) {
+  const s = BRIEF_STRINGS[lang]
+  const href = briefPath(lang, brief.date)
+  const titles = brief.topics
+    .map((t) => {
+      const label = t.rubric ? RUBRIC_LABELS[lang]?.[t.rubric] : null
+      const rubric = label ? `<span class="brief__rubric">${esc(label)}</span>` : ''
+      return `        <li class="brief__topic">
+          ${rubric}
+          <h2 class="brief__topic-title"><a href="${href}">${esc(t.title)}</a></h2>
+        </li>`
+    })
+    .join('\n')
+  return `      <h1 class="brief__date">${esc(s.title)}</h1>
+      <p class="brief__kicker">${esc(s.latest)} · <time datetime="${brief.date}">${esc(longDate(lang, brief.date))}</time></p>
+      ${brief.intro ? `<p class="brief__intro">${esc(brief.intro)}</p>` : ''}
+      <ol class="brief__topics brief__topics--teaser">
+${titles}
+      </ol>
+      <p class="brief__more"><a href="${href}">${esc(s.read)}</a></p>`
 }
 
 export function briefIndexHtml({ siteId, lang, list, byDate, cssHref }) {
@@ -163,8 +191,7 @@ export function briefIndexHtml({ siteId, lang, list, byDate, cssHref }) {
     .join('')
   const body = latest
     ? `    <main class="container brief" data-brief="index">
-      <p class="brief__kicker">${esc(s.latest)}</p>
-${briefBlock(lang, latest)}
+${briefTeaser(lang, latest)}
       <section class="brief__archive">
         <h2>${esc(s.archive)}</h2>
         <ul>${archive}</ul>
