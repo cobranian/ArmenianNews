@@ -18,7 +18,10 @@ test('corps : alertes avant le texte, texte avant les sources, case en dernier',
   const at = (s) => body.indexOf(s)
   assert.ok(at(AUTO_START) === 0)
   assert.ok(at('⚠️ 1870') < at('### Texte'))
-  assert.ok(at('> ⚠️ Pas d’article') < at('### Texte') || at('- ⚠️ Pas d’article') < at('### Texte'))
+  assert.ok(at('- Pas d’article Wikipédia en français') >= 0)
+  assert.ok(at('- Pas d’article Wikipédia en français') < at('### Texte'))
+  assert.ok(body.startsWith(AUTO_START + '\n## Komitas'))
+  assert.ok(body.includes('\n' + AUTO_END + '\n'))
   assert.match(body, /21\.0 %.*seuil/)
   assert.ok(at('### Texte') < at('### Image'))
   assert.ok(at('### Image') < at('### Sources'))
@@ -87,10 +90,10 @@ test('corps : vérification des faits illisible (null) jamais présentée comme 
 test('replaceAutoSection : case cochée préservée', () => {
   const body = buildPrBody(base).replace('- [ ] Faits vérifiés', '- [x] Faits vérifiés')
   const out = replaceAutoSection(body, 'NOUVEAU')
-  assert.ok(out.startsWith(AUTO_START + 'NOUVEAU' + AUTO_END))
   assert.equal(out.slice(out.indexOf(AUTO_END)), body.slice(body.indexOf(AUTO_END)))
   assert.equal(isChecked(out), true)
-  assert.equal(replaceAutoSection('vieux corps', 'A'), AUTO_START + 'A' + AUTO_END + 'vieux corps')
+  assert.ok(out.startsWith(AUTO_START + '\nNOUVEAU\n' + AUTO_END))
+  assert.equal(replaceAutoSection('vieux corps', 'A'), AUTO_START + '\nA\n' + AUTO_END + '\nvieux corps')
 })
 
 test('uncheck / isChecked', () => {
@@ -98,14 +101,19 @@ test('uncheck / isChecked', () => {
   assert.equal(isChecked(on), true)
   assert.equal(isChecked('- [X] Faits vérifiés'), true)
   assert.equal(isChecked('- [ ] Faits vérifiés'), false)
+  assert.equal(isChecked('* [x] Faits vérifiés'), false)
   assert.equal(uncheck(on), '- [ ] Faits vérifiés')
   assert.equal(uncheck('a\n- [X] Faits vérifiés\nb'), 'a\n- [ ] Faits vérifiés\nb')
   assert.equal(uncheck('- [ ] Faits vérifiés'), '- [ ] Faits vérifiés')
 })
 
-test('corps sous 65 000 caractères pour un article de 1 000 mots', () => {
-  const frBody = Array.from({ length: 1000 }, (_, i) => `mot${i}`).join(' ')
-  assert.ok(buildPrBody({ ...base, frBody }).length < 65000)
+test('corps sous 65 000 caractères, pire cas', () => {
+  const frBody = Array.from({ length: 1000 }, (_, i) => `mot${i}`.padEnd(13, 'x')).join(' ')
+  const facts = Array.from({ length: 150 }, (_, i) => `fait numéro ${i} assez long pour une phrase de contrôle`)
+  const names = Array.from({ length: 150 }, (_, i) => `Nom Propre ${i}`)
+  const body = buildPrBody({ ...base, frBody, unsupported: { facts, names } })
+  assert.ok(body.length < 65000, String(body.length))
+  assert.match(body, /… \(90 de plus\)/)
 })
 
 test('issue d’idées : entrées prêtes à coller dans sujets.json', () => {

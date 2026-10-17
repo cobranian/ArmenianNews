@@ -12,6 +12,9 @@ export const AUTO_END = '<!-- culture:auto:end -->'
 // deux crans pour ne pas rivaliser avec les titres de section de la page.
 const lowerHeadings = (md) => md.replace(/^(#{2,3}) /gm, (_, h) => (h === '##' ? '#### ' : '##### '))
 
+// Garde-fou de taille (GitHub plafonne le corps à 65 536 caractères).
+const MAX_NAMES = 60
+
 function sourceLabel(s) {
   if (s.kind === 'unesco') return 'UNESCO'
   if (s.kind === 'hse') return `Encyclopédie soviétique arménienne (ՀՍՀ, Wikisource), révision ${s.revision}`
@@ -38,7 +41,9 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
   lines.push('', '### Texte', '', lowerHeadings(frBody), '')
   const names = unsupported?.names ?? []
   if (names.length) {
-    lines.push(`<details><summary>Noms à confirmer (${names.length})</summary>`, '', ...names.map((n) => `- ${n}`), '', '</details>', '')
+    const shown = names.slice(0, MAX_NAMES)
+    const more = names.length - shown.length
+    lines.push(`<details><summary>Noms à confirmer (${names.length})</summary>`, '', ...shown.map((n) => `- ${n}`), ...(more ? [`- … (${more} de plus)`] : []), '', '</details>', '')
   }
   lines.push('### Image')
   if (meta.candidates?.length) {
@@ -59,9 +64,13 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
   return lines.join('\n')
 }
 
+// Les marqueurs sont sur leur propre ligne : une ligne qui commence par `<!--`
+// ouvre un bloc HTML CommonMark et le titre qui suit s'afficherait en clair.
+const wrap = (auto) => `${AUTO_START}\n${auto.replace(/^\n+|\n+$/g, '')}\n${AUTO_END}`
+
 export function buildPrBody(args) {
   return [
-    AUTO_START + buildAutoSection(args) + AUTO_END,
+    wrap(buildAutoSection(args)),
     '',
     'Pour corriger : commentez `/corrige <consigne>` (ex. `/corrige retire le paragraphe sur le plat`).',
     'Pour publier, **en dernier** : cochez la case.',
@@ -76,11 +85,11 @@ export function buildPrBody(args) {
 export function replaceAutoSection(body, auto) {
   const i = body.indexOf(AUTO_START)
   const j = body.indexOf(AUTO_END)
-  if (i === -1 || j === -1 || j < i) return AUTO_START + auto + AUTO_END + body
-  return body.slice(0, i + AUTO_START.length) + auto + body.slice(j)
+  if (i === -1 || j === -1 || j < i) return wrap(auto) + '\n' + body
+  return body.slice(0, i) + wrap(auto) + body.slice(j + AUTO_END.length)
 }
 
-const CHECKED = /^(\s*[-*] )\[[xX]\]( Faits vérifiés)/m
+const CHECKED = /^(- )\[[xX]\]( Faits vérifiés)/m
 export const isChecked = (body) => CHECKED.test(String(body ?? ''))
 export const uncheck = (body) => String(body).replace(CHECKED, '$1[ ]$2')
 
