@@ -810,12 +810,12 @@ const STRINGS = {
     'footer.home': 'Главная',
     'viewpage.also': 'См. также',
     'about.h1': 'О сайте Armenia News',
-    // Formulé à l'AFFIRMATIVE, et c'est voulu. /ru/about/ restait « Soft 404 »
-    // au test en direct de Search Console (17 oct. 2026, HTML rendu complet,
-    // 200) alors que fr/en/hy passaient — et seul le russe accumulait les
-    // négations : « Ничего не… », « нет ни учётной записи, ни формы, ни базы
-    // данных », « остаётся пустым », « без… без… без… ». Lu comme une page
-    // vide. Ne réintroduisez pas ces tournures. Voir aussi about.contact.body.
+    // /ru/about/ est classée « Soft 404 » par le test en direct de Search
+    // Console (août puis 17-18 oct. 2026 : 200, HTML rendu complet), alors que
+    // /ru/radio/ et les « À propos » fr/en/hy passent. Deux hypothèses ont été
+    // RÉFUTÉES par un nouveau test : le mot « Ошибка » (août) et l'accumulation
+    // de négations (« Ничего не… », « нет ни… », réécrites à l'affirmative le
+    // 18 oct.). La cause reste inconnue — ne pas y voir une règle d'écriture.
     'about.intro':
       'Armenia News — независимый сайт, базирующийся в Швейцарии, который ведёт {editor} и который каждый час собирает армянскую жизнь такой, какой её рассказывают сами армянские медиа: сообщения редакций, радио в прямом эфире, события диаспоры и её социальные сети. Каждый заголовок приводится дословно и ведёт к изданию, которое его опубликовало.',
     'about.what.title': 'Что вы здесь найдёте',
