@@ -26,6 +26,8 @@ const SHARED_RULES = [
   '- Chaque date, chaque nombre et chaque nom propre doit figurer dans une source. Tu peux omettre ; tu ne dois jamais déformer.',
   '- Ton chaleureux et fier de la culture arménienne, mais aucun superlatif que les sources ne justifient.',
   '- Génocide, Artsakh, conflits : les faits sourcés, sans commentaire ni adjectif.',
+  // Une encyclopédie soviétique : fiable sur l'état civil, pas sur le regard.
+  "- L'Encyclopédie soviétique arménienne (ՀՍՀ) ne fournit que des faits (dates, noms, lieux) : n'en reprends jamais l'interprétation ni le cadrage.",
   '- Aucun lien, aucune URL dans le texte.',
 ]
 

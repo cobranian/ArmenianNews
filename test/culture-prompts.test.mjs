@@ -31,6 +31,16 @@ test('brouillon : règles, sources tronquées, faits, événement', () => {
   assert.ok(user.content.length < MAX_EXTRACT + 2000, 'extrait tronqué')
 })
 
+// L'ՀՍՀ est une encyclopédie soviétique : ses dates et ses noms servent, son
+// cadrage idéologique non — au brouillon comme à la révision.
+test('règle ՀՍՀ : faits seulement, jamais interprétation ni cadrage (brouillon et révision)', () => {
+  const [draftSys] = buildDraftMessages({ topic, sources })
+  const [reviseSys] = buildReviseMessages({ title: 'T', description: 'D', body: 'B', instruction: 'I', sources })
+  for (const sys of [draftSys, reviseSys]) {
+    assert.match(sys.content, /Encyclopédie soviétique arménienne \(ՀՍՀ\)[^\n]*faits[^\n]*\(dates, noms, lieux\)[^\n]*jamais[^\n]*interprétation[^\n]*cadrage/)
+  }
+})
+
 test('parseArticleJson : clôtures, texte autour, description rognée', () => {
   const raw = 'Voici :\n```json\n{"title":" Komitas ","description":"' + 'mot '.repeat(60) + '","body":"A\\n\\n## B"}\n```\nFin.'
   const a = parseArticleJson(raw)
