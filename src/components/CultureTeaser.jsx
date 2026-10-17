@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import TEASER from 'virtual:culture-teaser'
 import { useI18n } from '../i18n.jsx'
 import { culturePath, cultureImagePath } from '../../sites.config.js'
@@ -14,14 +14,11 @@ import { CULTURE_STRINGS } from '../cultureStrings.js'
 // cuit, Google lit leurs liens) ; seules les inactives sont `inert`, donc
 // hors du parcours clavier et de l'arbre d'accessibilité.
 //
-// `inert` est posé par la PROPRIÉTÉ DOM (setInert), pas par un attribut JSX :
-// React 18 ne connaît pas l'attribut et React 19 en fait un booléen — une
-// chaîne vide y vaut faux, et les diapositives cachées reviendraient dans le
-// parcours clavier sans un mot. La propriété se reflète en attribut, que le
-// prérendu cuit.
-const setInert = (inert) => (el) => {
-  if (el) el.inert = inert
-}
+// `inert` est posé par la PROPRIÉTÉ DOM (effet sur l'index), pas par un
+// attribut JSX : React 18 ne connaît pas l'attribut et React 19 en fait un
+// booléen — une chaîne vide y vaut faux, et les diapositives cachées
+// reviendraient dans le parcours clavier sans un mot. La propriété se reflète
+// en attribut, que le prérendu cuit.
 
 // Distance dans la boucle : la dernière diapositive est voisine de la première.
 const ringDistance = (a, b, n) => Math.min((a - b + n) % n, (b - a + n) % n)
@@ -38,6 +35,11 @@ export function CultureTeaser() {
   const [warm, setWarm] = useState(false)
   const touch = useRef(null)
   const region = useRef(null)
+  const track = useRef(null)
+  useEffect(() => {
+    const slides = track.current?.children ?? []
+    for (let i = 0; i < slides.length; i++) slides[i].inert = i !== index
+  }, [index, items.length])
   if (!items.length) return null
   const s = CULTURE_STRINGS[lang]
   const n = items.length
@@ -45,8 +47,9 @@ export function CultureTeaser() {
     // Le focus est sur un lien de la diapositive qui s'en va : elle va devenir
     // inert, le navigateur lâcherait le focus sur <body> et les flèches
     // suivantes n'atteindraient plus le carrousel. On le rend au carrousel.
-    const el = region.current
-    if (el && el !== document.activeElement && el.contains(document.activeElement)) el.focus()
+    // Seulement depuis une DIAPOSITIVE : sur les boutons ‹ ›, le focus doit
+    // rester où il est, pour qu'un second Entrée avance encore.
+    if (track.current?.contains(document.activeElement)) region.current?.focus()
     setWarm(true)
     setIndex((x) => (x + d + n) % n)
   }
@@ -100,7 +103,7 @@ export function CultureTeaser() {
         onTouchEnd={onTouchEnd}
       >
         <div className="cc__viewport">
-          <ul className="cc__track" style={{ transform: `translateX(${-index * 100}%)` }}>
+          <ul ref={track} className="cc__track" style={{ transform: `translateX(${-index * 100}%)` }}>
             {items.map((x, i) => {
               const href = culturePath(lang, x.slug)
               const active = i === index
@@ -111,7 +114,6 @@ export function CultureTeaser() {
                   aria-roledescription="slide"
                   aria-label={`${i + 1} / ${n}`}
                   aria-hidden={active ? undefined : 'true'}
-                  ref={setInert(!active)}
                 >
                   <a className="cc__media" href={href} tabIndex={-1} aria-hidden="true">
                     {x.image && !broken[x.slug] ? (

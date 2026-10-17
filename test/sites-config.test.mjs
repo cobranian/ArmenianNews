@@ -52,3 +52,8 @@ test('siteOf route chaque langue vers son domaine', () => {
   assert.equal(siteOf('hy'), 'org')
   assert.equal(siteOf('ru'), 'org')
 })
+
+test('libellé du sélecteur de langue : présent et non vide dans chaque langue', async () => {
+  const { LANG_SWITCH_LABEL, ALL_LANGS } = await import('../sites.config.js')
+  for (const l of ALL_LANGS) assert.ok(typeof LANG_SWITCH_LABEL[l] === 'string' && LANG_SWITCH_LABEL[l].trim(), l)
+})

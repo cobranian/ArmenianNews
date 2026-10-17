@@ -19,7 +19,7 @@
 import { access, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
+import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
@@ -390,10 +390,12 @@ for (const site of Object.values(SITES)) {
 // citer le domaine voisin (.ch ↔ .org). On le retire avant le contrôle
 // « cite le voisin », et on exige à la place que ses quatre liens soient
 // exactement ceux attendus — un lien vers une traduction absente serait un 404.
-const LANG_BAR = /<div class="lang" role="group" aria-label="[^"]*">.*?<\/div>/
-function langBarProblem(html, expected) {
-  const bar = html.match(LANG_BAR)?.[0]
-  if (!bar) return 'sélecteur de langue absent'
+const LANG_BAR = /<div class="lang" role="group" aria-label="([^"]*)">.*?<\/div>/
+function langBarProblem(html, expected, lang) {
+  const hit = html.match(LANG_BAR)
+  if (!hit) return 'sélecteur de langue absent'
+  const [bar, label] = hit
+  if (!LANG_SWITCH_LABEL[lang] || label !== LANG_SWITCH_LABEL[lang]) return `sélecteur de langue : libellé « ${label} »`
   const got = Object.fromEntries([...bar.matchAll(/href="([^"]+)" hreflang="([^"]+)"/g)].map((m) => [m[2], m[1]]))
   return ALL_LANGS.every((l) => got[l] === expected[l]) && Object.keys(got).length === ALL_LANGS.length
     ? null
@@ -421,7 +423,7 @@ function langBarProblem(html, expected) {
         if (!html.includes(`<link rel="canonical" href="${briefUrl(lang, date)}" />`)) fail('canonical')
         const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
         if (JSON.stringify(got) !== JSON.stringify(briefAlternates(date, byDate))) fail('hreflang')
-        const barWhy = langBarProblem(html, briefLangHrefs(date, byDate))
+        const barWhy = langBarProblem(html, briefLangHrefs(date, byDate), lang)
         if (barWhy) fail(barWhy)
         const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')
         if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
@@ -454,7 +456,7 @@ function langBarProblem(html, expected) {
         if (!html.includes(`<link rel="canonical" href="${cultureUrl(lang, slug)}" />`)) fail('canonical')
         const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
         if (JSON.stringify(got) !== JSON.stringify(cultureAlternates(slug, bySlug))) fail('hreflang')
-        const barWhy = langBarProblem(html, cultureLangHrefs(slug, bySlug))
+        const barWhy = langBarProblem(html, cultureLangHrefs(slug, bySlug), lang)
         if (barWhy) fail(barWhy)
         const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')
         if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)

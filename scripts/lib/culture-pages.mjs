@@ -71,13 +71,31 @@ function pager(lang, nb) {
       </nav>`
 }
 
-// « À lire aussi » : trois autres articles de la langue, ceux que les flèches
-// ne montrent pas d'abord — chaque article garde ainsi trois liens internes
-// distincts de plus, au lieu des seuls voisins de la boucle.
-function readAlso(lang, article, list, nb) {
-  const near = new Set([nb?.next.x.slug, nb?.prev?.x.slug].filter(Boolean))
-  const others = list.filter((x) => x.slug !== article.slug && x.langs[lang])
-  const picked = [...others.filter((x) => !near.has(x.slug)), ...others.filter((x) => near.has(x.slug))].slice(0, 3)
+// « À lire aussi » : jusqu'à trois autres articles de la langue, choisis
+// AUTOUR de l'article lu dans l'ordre de l'index (deux crans après, deux
+// avant, trois après…), en sautant ceux que les flèches montrent déjà. Pris
+// en tête d'index, ils renverraient presque tous vers les trois plus récents
+// et les anciens ne seraient jamais recommandés. Rien de neuf à proposer →
+// pas de section : répéter les flèches n'apporterait aucun lien.
+export function readAlsoPicks(lang, article, list) {
+  const items = list.filter((x) => x.langs[lang])
+  const n = items.length
+  const i = items.findIndex((x) => x.slug === article.slug)
+  if (i < 0) return []
+  const skip = new Set([article.slug, items[(i + 1) % n].slug])
+  if (n > 2) skip.add(items[(i - 1 + n) % n].slug)
+  const out = []
+  for (let k = 2; k < n && out.length < 3; k++)
+    for (const x of [items[(i + k) % n], items[(i - k + n) % n]])
+      if (!skip.has(x.slug) && out.length < 3) {
+        skip.add(x.slug)
+        out.push(x)
+      }
+  return out
+}
+
+function readAlso(lang, article, list) {
+  const picked = readAlsoPicks(lang, article, list)
   if (!picked.length) return ''
   return `<section class="culture__more"><h2>${esc(CULTURE_STRINGS[lang].readAlso)}</h2><ul class="culture-list">${picked.map(card(lang)).join('')}</ul></section>`
 }
@@ -131,7 +149,7 @@ ${renderMarkdown(a.body)}
         <p>${esc(s.aiNote)}</p>
       </section>
       ${pager(lang, nb)}
-      ${readAlso(lang, article, list, nb)}
+      ${readAlso(lang, article, list)}
     </main>`
   const head = cultureHeadFor({ siteId, lang, slug: article.slug, article, bySlug })
   return pageShell({

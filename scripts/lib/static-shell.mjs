@@ -1,7 +1,7 @@
 // La coquille HTML des pages statiques (brève, Culture) : même feuille CSS
 // hachée, theme-init.js, balises GA et Cloudflare de la vitrine, et une nav
 // commune. Une seule copie — deux coquilles divergeraient (nav, balises).
-import { LANGS, pathFor, langPath, briefPath, culturePath, orderLangsFor } from '../../sites.config.js'
+import { LANGS, LANG_SWITCH_LABEL, pathFor, langPath, briefPath, culturePath, orderLangsFor } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { beaconTag, gaTag } from './site-meta.mjs'
@@ -21,7 +21,7 @@ function langSwitch(siteId, lang, langHrefs) {
         `<a href="${langHrefs[l.code]}" hreflang="${l.code}" lang="${l.code}" title="${esc(l.name)}"${l.code === lang ? ' aria-current="page"' : ''}>${esc(l.label)}</a>`,
     )
     .join('')
-  return `<div class="lang" role="group" aria-label="${esc(CULTURE_STRINGS[lang].langs)}">${links}</div>`
+  return `<div class="lang" role="group" aria-label="${esc(LANG_SWITCH_LABEL[lang])}">${links}</div>`
 }
 
 export function pageShell({ siteId, lang, head, cssHref, body, langHrefs = null, scripts = [] }) {
