@@ -3,6 +3,7 @@ import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
 import { useSourceDrum } from './useSourceDrum.js'
 import { pathFor } from '../../sites.config.js'
+import { stepStation } from '../radioCycle.js'
 
 /* Live broadcast console — a native HTML5 <audio> player for Public Radio of
  * Armenia. We deliberately do NOT embed player.armradio.am (an old jQuery/jPlayer
@@ -241,7 +242,9 @@ export function Radio({ more = true }) {
     else play()
   }
 
-  function pick(id) {
+  // `force` : lancer la lecture même à l'arrêt — c'est ce que veut un ⏭ pressé
+  // sur l'écran de verrouillage. Un clic sur une puce, lui, ne lance rien.
+  function pick(id, force = false) {
     if (id === stationId) return
     const prev = station
     const next = STATIONS.find((s) => s.id === id)
@@ -261,7 +264,7 @@ export function Radio({ more = true }) {
     const audio = next.plain ? plainAudioRef.current : audioRef.current
     if (!audio) return
     audio.src = next.stream
-    if (playing || loading) {
+    if (playing || loading || force) {
       setLoading(true)
       setError(false)
       if (!next.plain) {
@@ -313,6 +316,62 @@ export function Radio({ more = true }) {
         el.removeEventListener('error', onError)
       })
   }, [])
+
+  // --- Écran de verrouillage (Media Session) ---
+  // Android remplit le lecteur de l'écran verrouillé et de la notification à
+  // partir de `navigator.mediaSession` : nom de la station, marque du site,
+  // l'Ararat, et les boutons ⏮ ⏯ ⏭. Sans gestionnaire `nexttrack` /
+  // `previoustrack`, ces deux boutons n'apparaissent pas.
+  //
+  // Les gestionnaires sont posés UNE fois et passent par une référence remise à
+  // jour à chaque rendu : posés avec `play` / `pick` directement, ils
+  // garderaient la station du montage et ⏭ repartirait toujours de la première.
+  const sessionRef = useRef(null)
+  sessionRef.current = {
+    play,
+    pause,
+    step: (dir) => pick(stepStation(STATIONS, stationId, dir), true),
+  }
+
+  useEffect(() => {
+    const ms = typeof navigator !== 'undefined' ? navigator.mediaSession : null
+    if (!ms) return
+    const actions = {
+      play: () => sessionRef.current.play(),
+      pause: () => sessionRef.current.pause(),
+      stop: () => sessionRef.current.pause(),
+      previoustrack: () => sessionRef.current.step(-1),
+      nexttrack: () => sessionRef.current.step(1),
+    }
+    const set = (fn) => (a) => {
+      try {
+        ms.setActionHandler(a, fn(a))
+      } catch {
+        /* action inconnue de ce navigateur — les autres restent posées */
+      }
+    }
+    Object.keys(actions).forEach(set((a) => actions[a]))
+    return () => Object.keys(actions).forEach(set(() => null))
+  }, [])
+
+  useEffect(() => {
+    const ms = typeof navigator !== 'undefined' ? navigator.mediaSession : null
+    if (!ms || typeof MediaMetadata === 'undefined') return
+    const icon = new URL(`${import.meta.env.BASE_URL}favicon-192.png`, location.href).href
+    ms.metadata = new MediaMetadata({
+      title: t(`radio.st.${stationId}`),
+      artist: t('site.title'),
+      artwork: [{ src: icon, sizes: '192x192', type: 'image/png' }],
+    })
+  }, [stationId, t])
+
+  useEffect(() => {
+    const ms = typeof navigator !== 'undefined' ? navigator.mediaSession : null
+    // `loading` compte comme lecture : au changement de station, l'ancien
+    // élément émet `pause` avant que le nouveau ne joue, et l'écran verrouillé
+    // basculerait sur ▶ le temps du chargement.
+    if (ms) ms.playbackState = playing || loading ? 'playing' : 'paused'
+  }, [playing, loading])
 
   // --- Spectrum visualizer ---
   useEffect(() => {
