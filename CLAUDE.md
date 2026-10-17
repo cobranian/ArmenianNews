@@ -1561,9 +1561,8 @@ de production servent toujours depuis la racine de leur domaine.
   - **401 ≠ 404.** Sur un Shoutcast, 401 « resource currently unavailable »
     signifie que le compte existe et qu'aucun encodeur n'y est connecté ; un
     mount inexistant répond 404. Un 401 n'est donc jamais une URL périmée — la
-    chercher ailleurs est du temps perdu. C'est le cas d'Im Radio, marquée
-    `offAir: true` dans `Radio.jsx` le 10 août 2026 : le lecteur officiel
-    d'Arménie Publique sert exactement le même mount, et il est muet pareil.
+    chercher ailleurs est du temps perdu. Im Radio (août–octobre 2026) puis
+    Gospel en sont les cas : détail dans le commentaire `offAir` de `Radio.jsx`.
   - **Le verdict est dans les octets, pas dans le code HTTP.** Un proxy devant
     un flux mort répond 200 avec un corps vide. `radio-check` attend le premier
     octet d'audio, puis raccroche.
