@@ -7,7 +7,9 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
-import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply, UNRECOGNIZED_REPLY } from '../scripts/lib/culture-commands.mjs'
+import { parseReviseCommand, changedParagraphs, newAlerts, reviseReply, UNRECOGNIZED_REPLY, parseIdeaCommand, readIdeas, applyIdeaCommand, writeIdeas } from '../scripts/lib/culture-commands.mjs'
+import { ideasIssueBody } from '../scripts/lib/culture-pr.mjs'
+import { validateTopics } from '../scripts/lib/culture-topic.mjs'
 import { refetchSources } from '../scripts/lib/culture-sources.mjs'
 
 const script = fileURLToPath(new URL('../scripts/culture-revise.mjs', import.meta.url))
@@ -114,4 +116,125 @@ test('refetchSources : une révision rendue différente de celle demandée est o
   const impl = async () => ({ ok: true, status: 200, json: async () => ({ query: { badrevids: { 9: { revid: 9, missing: true } } } }) })
   const out = await refetchSources([{ kind: 'wikipedia', lang: 'fr', title: 'X', url: 'u', revision: 9 }], { unesco: {}, fetchImpl: impl })
   assert.deepEqual(out, [])
+})
+
+// --- /ajoute et /rejette : l'issue « Culture : idées de sujets » ---
+const ideasScript = fileURLToPath(new URL('../scripts/culture-ideas.mjs', import.meta.url))
+const IDEAS = [
+  { title: 'Le tar', qid: 'Q1', wikipedia_fr: 'Tar (luth)', wikipedia_en: 'Tar (lute)', keywords: ['tar'], url: 'https://fr.wikipedia.org/wiki/Tar_(luth)' },
+  { title: 'Le lavash', qid: 'Q2', wikipedia_fr: '', wikipedia_en: 'Lavash', keywords: ['lavash'], url: 'https://en.wikipedia.org/wiki/Lavash' },
+  { title: "L'alphabet de Machtots", qid: 'Q11932', wikipedia_fr: 'Alphabet arménien', keywords: ['machtots'], url: 'https://fr.wikipedia.org/wiki/Alphabet_arm%C3%A9nien' },
+  { title: 'Les khatchkars', qid: 'Q99', wikipedia_fr: 'Khatchkar', keywords: ['khatchkar'], url: 'https://fr.wikipedia.org/wiki/Khatchkar' },
+]
+const SUJETS = () => ({
+  topics: [
+    { slug: 'komitas', title: 'Komitas', qid: 'Q351670', keywords: ['komitas'], status: 'published' },
+    { slug: 'khatchkar', title: 'Les khatchkars', qid: 'Q654476', keywords: ['khatchkar'], status: 'published' },
+  ],
+})
+const idea = (slug, qid) => ({ n: 1, slug, title: 'x', qid, wikipedia: {}, keywords: [], status: 'proposed' })
+const addOne = (slug, qid) => applyIdeaCommand({ ideas: [idea(slug, qid)], sujets: SUJETS(), cmd: { action: 'add', numbers: [1] } })
+
+test('parseIdeaCommand : espaces ou virgules, début seulement, /rejette', () => {
+  assert.deepEqual(parseIdeaCommand('/ajoute 1 4 7'), { action: 'add', numbers: [1, 4, 7] })
+  assert.deepEqual(parseIdeaCommand('/ajoute 1,4,7'), { action: 'add', numbers: [1, 4, 7] })
+  assert.deepEqual(parseIdeaCommand('  /ajoute 1, 4 ,7\r\n'), { action: 'add', numbers: [1, 4, 7] })
+  assert.deepEqual(parseIdeaCommand('/ajoute 3 3 1'), { action: 'add', numbers: [3, 1] })
+  assert.deepEqual(parseIdeaCommand('/rejette 2 3'), { action: 'reject', numbers: [2, 3] })
+  assert.equal(parseIdeaCommand('merci /ajoute 1'), null)
+  assert.equal(parseIdeaCommand('/ajoute'), null)
+  assert.equal(parseIdeaCommand('/ajoute   '), null)
+  assert.equal(parseIdeaCommand('/ajoutez 1'), null)
+  assert.equal(parseIdeaCommand('/AJOUTE 1'), null)
+  assert.equal(parseIdeaCommand('/ajoute 1 et 2'), null)
+  assert.equal(parseIdeaCommand('/ajoute 0'), null)
+  assert.equal(parseIdeaCommand(undefined), null)
+})
+
+test('readIdeas : relit exactement le bloc JSON écrit par ideasIssueBody', () => {
+  const ideas = readIdeas(ideasIssueBody(IDEAS))
+  assert.equal(ideas.length, 4)
+  assert.deepEqual(ideas[0], { n: 1, slug: 'le-tar', title: 'Le tar', qid: 'Q1', wikipedia: { fr: 'Tar (luth)', en: 'Tar (lute)' }, keywords: ['tar'], status: 'proposed' })
+  assert.deepEqual(readIdeas(ideasIssueBody(IDEAS).replace(/\n/g, '\r\n')), ideas, 'corps édité depuis le web (CRLF)')
+  assert.throws(() => readIdeas('pas de bloc'), /json/i)
+})
+
+test('applyIdeaCommand : ajout (article retiré du slug, wikipedia seulement si fourni)', () => {
+  const ideas = readIdeas(ideasIssueBody(IDEAS))
+  const r = applyIdeaCommand({ ideas, sujets: SUJETS(), cmd: { action: 'add', numbers: [1, 2] } })
+  const added = r.sujets.topics.slice(2)
+  assert.deepEqual(added[0], { slug: 'tar', title: 'Le tar', qid: 'Q1', wikipedia: { fr: 'Tar (luth)', en: 'Tar (lute)' }, keywords: ['tar'], status: 'pending' })
+  assert.deepEqual(added[1], { slug: 'lavash', title: 'Le lavash', qid: 'Q2', wikipedia: { en: 'Lavash' }, keywords: ['lavash'], status: 'pending' })
+  assert.deepEqual(r.ideas.map((x) => x.status), ['added', 'added', 'proposed', 'proposed'])
+  assert.equal(r.done, false)
+  assert.match(r.reply, /Le tar/)
+  assert.deepEqual(validateTopics(r.sujets), [])
+  assert.equal(ideas[0].status, 'proposed', 'entrée non mutée')
+  // Sans wikipedia : la clé est omise.
+  assert.deepEqual(addOne('the-duduk', 'Q5').sujets.topics[2], { slug: 'duduk', title: 'x', qid: 'Q5', keywords: [], status: 'pending' })
+  // L'article n'est retiré que s'il reste quelque chose.
+  assert.equal(addOne('la', 'Q6').sujets.topics[2].slug, 'la')
+  assert.equal(addOne('l-alphabet', 'Q7').sujets.topics[2].slug, 'alphabet')
+  assert.equal(addOne('les-khatchkars', 'Q8').sujets.topics[2].slug, 'khatchkars')
+  assert.equal(addOne('lesgui', 'Q9').sujets.topics[2].slug, 'lesgui', 'un mot qui commence par « les » reste entier')
+})
+
+test('applyIdeaCommand : rejet, numéro inconnu, déjà traité, slug ou qid déjà dans sujets.json, done', () => {
+  let r = applyIdeaCommand({ ideas: readIdeas(ideasIssueBody(IDEAS)), sujets: SUJETS(), cmd: { action: 'reject', numbers: [2, 9] } })
+  assert.equal(r.ideas[1].status, 'rejected')
+  assert.equal(r.sujets.topics.length, 2)
+  assert.match(r.reply, /9.*inconnu/)
+  r = applyIdeaCommand({ ideas: r.ideas, sujets: r.sujets, cmd: { action: 'add', numbers: [2, 1] } })
+  assert.match(r.reply, /2.*déjà/)
+  assert.equal(r.ideas[1].status, 'rejected', 'une idée rejetée ne s’ajoute plus')
+  assert.equal(r.sujets.topics.length, 3)
+  r = applyIdeaCommand({ ideas: r.ideas, sujets: r.sujets, cmd: { action: 'add', numbers: [1] } })
+  assert.match(r.reply, /1.*déjà/)
+  assert.equal(r.sujets.topics.length, 3)
+  // n°3 : son qid est déjà un sujet ; n°4 : son slug (sans l'article) aussi.
+  const sujets = { topics: [...r.sujets.topics, { slug: 'alphabet-armenien', title: 'A', qid: 'Q11932', keywords: [], status: 'pending' }, { slug: 'khatchkars', title: 'K', qid: 'Q1000', keywords: [], status: 'pending' }] }
+  r = applyIdeaCommand({ ideas: r.ideas, sujets, cmd: { action: 'add', numbers: [3, 4] } })
+  assert.equal(r.sujets.topics.length, sujets.topics.length, 'rien ajouté')
+  assert.match(r.reply, /Q11932/)
+  assert.match(r.reply, /khatchkars/)
+  assert.equal(r.done, true, 'plus aucune idée proposée')
+  assert.deepEqual(validateTopics(r.sujets), [])
+})
+
+test('writeIdeas : JSON réécrit, lignes traitées barrées, le reste intact', () => {
+  const body = ideasIssueBody(IDEAS)
+  const r = applyIdeaCommand({ ideas: readIdeas(body), sujets: SUJETS(), cmd: { action: 'add', numbers: [1] } })
+  const r2 = applyIdeaCommand({ ideas: r.ideas, sujets: r.sujets, cmd: { action: 'reject', numbers: [2] } })
+  const out = writeIdeas(body, r2.ideas)
+  assert.deepEqual(readIdeas(out), r2.ideas)
+  assert.match(out, /^1\. ~~Le tar — \[Wikipédia\]\(https:\/\/fr\.wikipedia\.org\/wiki\/Tar_\(luth\)\)~~$/m)
+  assert.match(out, /^2\. ~~Le lavash — \[Wikipédia\]\(https:\/\/en\.wikipedia\.org\/wiki\/Lavash\)~~$/m)
+  assert.match(out, /^3\. L'alphabet de Machtots — /m)
+  assert.equal(writeIdeas(out, r2.ideas), out, 'idempotent : pas de double barre')
+  assert.ok(out.includes('`/ajoute 1 4 7`'), 'mode d’emploi conservé')
+})
+
+test('culture-ideas : /ajoute écrit sujets.json, le corps, la réponse et done ; commande vide → aide, rien changé', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'ideas-'))
+  const f = (n) => path.join(dir, n)
+  await writeFile(f('body.md'), ideasIssueBody(IDEAS.slice(0, 2)))
+  await writeFile(f('sujets.json'), JSON.stringify(SUJETS(), null, 2) + '\n')
+  const run = async (comment) => {
+    await writeFile(f('c.md'), comment)
+    return spawnSync(process.execPath, [ideasScript, '--comment', f('c.md'), '--issue-body', f('body.md'), '--sujets', f('sujets.json'), '--out-body', f('new.md'), '--out-reply', f('reply.md'), '--out-done', f('done')], { encoding: 'utf-8' })
+  }
+  let r = await run('/AJOUTE 1')
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(await readFile(f('reply.md'), 'utf-8'), /\/ajoute 1 4 7/)
+  assert.equal(JSON.parse(await readFile(f('sujets.json'), 'utf-8')).topics.length, 2)
+  await assert.rejects(readFile(f('new.md')))
+  await assert.rejects(readFile(f('done')))
+  r = await run('/ajoute 1,2')
+  assert.equal(r.status, 0, r.stderr)
+  const sujets = JSON.parse(await readFile(f('sujets.json'), 'utf-8'))
+  assert.deepEqual(sujets.topics.map((t) => t.slug), ['komitas', 'khatchkar', 'tar', 'lavash'])
+  assert.deepEqual(validateTopics(sujets), [])
+  assert.deepEqual(readIdeas(await readFile(f('new.md'), 'utf-8')).map((x) => x.status), ['added', 'added'])
+  assert.match(await readFile(f('reply.md'), 'utf-8'), /Le lavash/)
+  assert.equal(await readFile(f('done'), 'utf-8'), '1')
 })

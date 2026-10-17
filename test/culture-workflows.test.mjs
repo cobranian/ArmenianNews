@@ -4,7 +4,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
-const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml']
+const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml', 'articles-ideas.yml']
 const read = (f) => readFile(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf-8')
 
 for (const f of FILES) {
@@ -64,6 +64,40 @@ test('articles-revise.yml : rebase avant push', async () => {
   assert.match(y, /pull --rebase origin "\$BRANCH"/)
   assert.ok(y.indexOf('pull --rebase') < y.indexOf('git push origin "HEAD:$BRANCH"'), 'rebase avant le push')
   assert.match(y, /rebase --abort/)
+})
+
+test('articles-ideas.yml : OWNER exigé, pas sur une PR, titre exact, /ajoute ou /rejette', async () => {
+  const y = await read('articles-ideas.yml')
+  const m = y.match(/^ {4}if: >-\n((?: {6}.*\n)+)/m)
+  assert.ok(m, 'if: du job')
+  const cond = m[1]
+  assert.match(cond, /!github\.event\.issue\.pull_request &&/)
+  assert.match(cond, /github\.event\.issue\.title == 'Culture : idées de sujets' &&/)
+  assert.match(cond, /github\.event\.comment\.author_association == 'OWNER' &&/)
+  assert.match(cond, /\(startsWith\(github\.event\.comment\.body, '\/ajoute'\) \|\| startsWith\(github\.event\.comment\.body, '\/rejette'\)\)/)
+  // Le seul || est celui des deux commandes, entre parenthèses : aucune
+  // alternative ne contourne les gardes.
+  assert.equal(cond.match(/\|\|/g).length, 1)
+  assert.match(y, /issue_comment:\n\s+types: \[created\]/)
+  assert.doesNotMatch(y, /^concurrency:/m, 'concurrence au niveau du job')
+  assert.match(y.slice(y.indexOf('\n  ideas:\n')), /^ {4}concurrency:\n {6}group: culture-ideas\n {6}cancel-in-progress: false$/m)
+  assert.match(y, /^permissions:\n {2}contents: write\n {2}issues: write\n\n/m)
+  assert.match(y, /COMMENT: \$\{\{ github\.event\.comment\.body \}\}/)
+  // Le corps est relu APRÈS l'attente du groupe : celui de l'événement daterait
+  // d'avant le /ajoute précédent.
+  assert.match(y, /gh issue view "\$ISSUE" --json body/)
+  assert.match(y, /ref: main/)
+})
+
+test('articles-ideas.yml : commit sur main par la boucle rebase/push, puis issue, réponse always()', async () => {
+  const y = await read('articles-ideas.yml')
+  assert.match(y, /git commit -m "Culture : sujets ajoutés depuis les idées"/)
+  assert.match(y, /for i in 1 2 3; do\n\s+git pull --rebase origin main && git push origin HEAD:main/)
+  assert.ok(y.indexOf('git push origin HEAD:main') < y.indexOf('gh issue edit "$ISSUE" --body-file'), 'sujets.json sur main avant de réécrire l’issue')
+  const last = y.slice(y.lastIndexOf('      - name:'))
+  assert.match(last, /if: always\(\)/)
+  assert.match(last, /gh issue comment "\$ISSUE" --body-file "\$RUNNER_TEMP\/reply\.md"/)
+  assert.match(last, /gh issue close "\$ISSUE"/)
 })
 
 test('culture-draft : --out-body par défaut hors du dépôt', async () => {
