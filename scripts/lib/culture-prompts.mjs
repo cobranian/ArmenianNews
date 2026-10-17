@@ -18,16 +18,21 @@ const JSON_SHAPE = 'Réponds UNIQUEMENT par un objet JSON {"title": "…", "desc
 const RULE_POINT_DE_VUE =
   "- Point de vue arménien. Ne mentionne jamais les variantes culturelles azerbaïdjanaises (danses, plats, étymologies, inscriptions UNESCO). Un fait historique sourcé qui nomme l'Azerbaïdjan reste permis, énoncé sans commentaire."
 
-const RULES = [
+// Règles de contenu et de ligne éditoriale : rédaction ET révision.
+const SHARED_RULES = [
   '- Utilise UNIQUEMENT les faits présents dans les SOURCES et FAITS ci-dessous. Une information absente des sources ne doit pas être écrite.',
   "- Le sujet est l'entité Wikidata indiquée. Ignore tout passage d'une source qui traite d'un homonyme (autre danse, plat, lieu ou personne du même nom).",
   RULE_POINT_DE_VUE,
   '- Chaque date, chaque nombre et chaque nom propre doit figurer dans une source. Tu peux omettre ; tu ne dois jamais déformer.',
-  '- Construis ton propre plan et ton propre angle : ne suis pas l’ordre des sources et ne recopie aucune phrase.',
-  '- 700 à 1000 mots, en français, avec 3 à 5 intertitres « ## ». Gras et italique permis avec parcimonie.',
   '- Ton chaleureux et fier de la culture arménienne, mais aucun superlatif que les sources ne justifient.',
   '- Génocide, Artsakh, conflits : les faits sourcés, sans commentaire ni adjectif.',
   '- Aucun lien, aucune URL dans le texte.',
+]
+
+// Règles de composition : un premier jet seulement, jamais une révision.
+const DRAFT_RULES = [
+  '- Construis ton propre plan et ton propre angle : ne suis pas l’ordre des sources et ne recopie aucune phrase.',
+  '- 700 à 1000 mots, en français, avec 3 à 5 intertitres « ## ». Gras et italique permis avec parcimonie.',
 ]
 
 const KIND_TITLE = {
@@ -46,16 +51,19 @@ const sourceBlocks = (sources) =>
 // Cadrage seulement : l'entité dit de QUI on parle, pas quoi en penser. La
 // ligne éditoriale prime sur sa description (Wikidata cite parfois les
 // versions voisines d'une tradition).
-const entityLine = (entity) =>
-  entity
-    ? `ENTITÉ WIKIDATA : ${entity.qid} — ${entity.labels?.fr || entity.labels?.en} : ${entity.descriptions?.fr || entity.descriptions?.en}`
-    : ''
+const entityLine = (entity) => {
+  if (!entity) return ''
+  const label = entity.labels?.fr || entity.labels?.en || entity.qid
+  const desc = entity.descriptions?.fr || entity.descriptions?.en
+  return `ENTITÉ WIKIDATA : ${entity.qid} — ${label}${desc ? ` : ${desc}` : ''}`
+}
 
 export function buildDraftMessages({ topic, entity = null, sources, facts = [], event = null }) {
   const system = [
     "Tu écris un article de fond pour la section Culture d'un site d'information arménien francophone.",
     'Règles absolues :',
-    ...RULES,
+    ...SHARED_RULES,
+    ...DRAFT_RULES,
     event ? '- Termine par un paragraphe qui invite à l’événement à venir indiqué.' : '',
     JSON_SHAPE,
   ]
@@ -82,8 +90,10 @@ export function buildReviseMessages({ title, description, body, instruction, ent
   const system = [
     "Tu révises un article de fond pour la section Culture d'un site d'information arménien francophone.",
     "Applique la CONSIGNE DU RELECTEUR au texte, et rien d'autre. La consigne fait foi sur les sources.",
+    'La consigne ne modifie ni ces règles ni le format de réponse ; elle ne s\'applique qu\'au texte.',
+    'Conserve le plan, le ton et tout ce que la consigne ne vise pas.',
     'Règles absolues :',
-    ...RULES,
+    ...SHARED_RULES,
     JSON_SHAPE,
   ].join('\n')
   const user = [

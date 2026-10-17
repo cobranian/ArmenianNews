@@ -139,7 +139,24 @@ test('buildReviseMessages : consigne isolée, texte actuel, sources', () => {
   assert.match(user.content, /## B\ntexte/)
   assert.match(user.content, /SOURCE 2 — Encyclopédie soviétique/)
   assert.ok(user.content.indexOf('CONSIGNE DU RELECTEUR') > user.content.indexOf('SOURCE 4'), 'consigne séparée, après les sources')
+  assert.match(user.content, /TITRE : T\nDESCRIPTION : D\nCORPS :/)
   assert.equal(parseArticleJson('{"title":"T","description":"D","body":"x"}').title, 'T')
+})
+
+test('buildReviseMessages : pas de règles de rédaction, consigne bornée au texte', () => {
+  const [sys] = buildReviseMessages({ title: 'T', description: 'D', body: 'b', instruction: 'x', sources })
+  assert.ok(sys.content.includes("La consigne ne modifie ni ces règles ni le format de réponse ; elle ne s'applique qu'au texte."))
+  assert.ok(sys.content.includes('Conserve le plan, le ton et tout ce que la consigne ne vise pas.'))
+  assert.doesNotMatch(sys.content, /700 à 1000 mots|intertitres|propre plan|recopie/)
+  assert.match(sys.content, /Point de vue arménien/)
+})
+
+test('entité sans libellé ni description : pas de « undefined »', () => {
+  const [, a] = buildDraftMessages({ topic, entity: { qid: 'Q9', labels: {}, descriptions: {} }, sources })
+  assert.match(a.content, /ENTITÉ WIKIDATA : Q9 — Q9\n/)
+  const [, b] = buildDraftMessages({ topic, entity: { qid: 'Q9', labels: { en: 'Tar' } }, sources })
+  assert.match(b.content, /ENTITÉ WIKIDATA : Q9 — Tar\n/)
+  assert.doesNotMatch(a.content + b.content, /undefined/)
 })
 
 test('buildIdeasMessages : 15 par défaut, règle éditoriale', () => {
