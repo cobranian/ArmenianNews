@@ -4,7 +4,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
-const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml']
+const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml']
 const read = (f) => readFile(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf-8')
 
 for (const f of FILES) {
@@ -14,12 +14,36 @@ for (const f of FILES) {
   test(`${f} : aucune donnée non fiable interpolée dans un run:`, async () => {
     const y = await read(f)
     const runs = [...y.matchAll(/run: \|\n((?:\s{10,}.*\n?)+)/g)].map((m) => m[1]).join('\n')
-    assert.doesNotMatch(runs, /\$\{\{\s*(github\.event\.pull_request\.(title|body|head\.ref)|github\.head_ref|steps\.[^}]*outputs\.title)/)
+    assert.doesNotMatch(runs, /\$\{\{\s*(github\.event\.pull_request\.(title|body|head\.ref)|github\.event\.comment\.body|github\.event\.issue\.(title|body)|github\.head_ref|steps\.[^}]*outputs\.(title|branch))/)
   })
 }
 
 test('traduction : rebase avant le push (un relecteur a pu pousser entre-temps)', async () => {
   const y = await read('articles-translate.yml')
+  assert.match(y, /pull --rebase origin "\$BRANCH"/)
+  assert.ok(y.indexOf('pull --rebase') < y.indexOf('git push origin "HEAD:$BRANCH"'), 'rebase avant le push')
+  assert.match(y, /rebase --abort/)
+})
+
+test('articles-revise.yml : OWNER et /corrige exigés dans le if', async () => {
+  const y = await read('articles-revise.yml')
+  const m = y.match(/^ {4}if: >-\n((?: {6}.*\n)+)/m)
+  assert.ok(m, 'if: du job')
+  const cond = m[1]
+  assert.match(cond, /github\.event\.issue\.pull_request/)
+  assert.match(cond, /github\.event\.comment\.author_association == 'OWNER'/)
+  assert.match(cond, /startsWith\(github\.event\.comment\.body, '\/corrige'\)/)
+  assert.doesNotMatch(cond, /\|\|/, 'aucune alternative qui contournerait la garde')
+  assert.match(y, /issue_comment:\n\s+types: \[created\]/)
+  assert.match(y, /cancel-in-progress: false/)
+  // Le corps du commentaire n'atteint le script que par env: puis fichier.
+  assert.match(y, /COMMENT: \$\{\{ github\.event\.comment\.body \}\}/)
+  assert.match(y, /culture\/\*\)/, 'branche culture/ seulement')
+  assert.match(y, /"OPEN"/, 'PR ouverte seulement')
+})
+
+test('articles-revise.yml : rebase avant push', async () => {
+  const y = await read('articles-revise.yml')
   assert.match(y, /pull --rebase origin "\$BRANCH"/)
   assert.ok(y.indexOf('pull --rebase') < y.indexOf('git push origin "HEAD:$BRANCH"'), 'rebase avant le push')
   assert.match(y, /rebase --abort/)
@@ -31,7 +55,7 @@ test('culture-draft : --out-body par défaut hors du dépôt', async () => {
 })
 
 test('les robots publient le statut culture-check eux-mêmes', async () => {
-  for (const f of ['articles.yml', 'articles-translate.yml']) assert.match(await read(f), /statuses\/.*context=culture-check/s, f)
+  for (const f of ['articles.yml', 'articles-translate.yml', 'articles-revise.yml']) assert.match(await read(f), /statuses\/.*context=culture-check/s, f)
 })
 
 test('articles.yml : cron quotidien 0 3 * * *', async () => {

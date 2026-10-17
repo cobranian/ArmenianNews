@@ -7,6 +7,7 @@
 // Wikimedia, et c'est la leçon de septembre 2026 — un UA qui se dit « Chrome »
 // sans en avoir l'empreinte TLS se fait refuser (voir CLAUDE.md).
 import { isFreeLicense } from './culture-license.mjs'
+import { unescoSource } from './culture-unesco.mjs'
 
 export const WIKI_UA = 'ArmenieInfo/1.0 (https://armenieinfo.ch/a-propos/; contact@armenieinfo.ch)'
 const HEADERS = { 'User-Agent': WIKI_UA, 'Api-User-Agent': WIKI_UA }
@@ -100,6 +101,40 @@ export async function fetchHse(title, fetchImpl = fetch) {
     extract: wikitextToText(content),
     license: 'CC BY-SA 3.0',
   }
+}
+
+// Relit les sources d'un article TELLES QUE LE BROUILLON LES A LUES : meta.json
+// n'en garde que la révision, pas le texte. Wikipédia et ՀՍՀ sont demandés par
+// `revids=` — jamais par titre, qui rendrait la version courante — et en
+// wikitexte : l'extrait texte de TextExtracts ignore la révision demandée.
+// UNESCO vient de la table curée (jamais du réseau). Une source en échec, ou
+// rendue à une autre révision, est omise : la botte de foin rétrécit, les ⚠️
+// éventuels grossissent, rien n'est inventé.
+export async function refetchSources(metaSources = [], { unesco = {}, fetchImpl = fetch } = {}) {
+  const out = []
+  for (const s of metaSources) {
+    const kind = s.kind ?? 'wikipedia' // meta.json antérieurs à `kind` : Wikipédia seulement
+    if (kind === 'unesco') {
+      const entry = Object.values(unesco).find((e) => e.url === s.url)
+      if (entry) out.push(unescoSource(entry))
+      continue
+    }
+    if (!s.revision || (kind !== 'wikipedia' && kind !== 'hse')) continue
+    const host = kind === 'hse' ? 'hy.wikisource.org' : `${s.lang}.wikipedia.org`
+    try {
+      const j = await getJson(
+        api(host, { prop: 'revisions', rvprop: 'ids|content', rvslots: 'main', revids: String(s.revision) }),
+        fetchImpl,
+      )
+      const rev = j?.query?.pages?.[0]?.revisions?.[0]
+      const content = rev?.slots?.main?.content
+      if (!content || rev.revid !== s.revision) continue
+      out.push({ kind, lang: s.lang, title: s.title, url: s.url, revision: s.revision, license: s.license, extract: wikitextToText(content) })
+    } catch {
+      // omise : l'appelant compare le nombre de sources rendues
+    }
+  }
+  return out
 }
 
 export function wikidataTime(v) {
