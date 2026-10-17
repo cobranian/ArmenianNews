@@ -62,6 +62,22 @@ test('« À lire aussi » : sans l’article lui-même, seulement la langue de l
   assert.ok(!ru.includes('/ru/culture/duduk/'), 'duduk n’existe pas en russe')
 })
 
+test('page : une source ՀՍՀ et une source UNESCO sont étiquetées ; une source sans kind reste Wikipedia', async () => {
+  const { list } = await fixture()
+  const sources = [
+    { url: 'https://fr.wikipedia.org/wiki/A', title: 'A', lang: 'fr' },
+    { url: 'https://hy.wikisource.org/wiki/B', title: 'B', kind: 'hse', lang: 'hy' },
+    { url: 'https://ich.unesco.org/fr/RL/c', title: 'C', kind: 'unesco' },
+    { url: 'https://en.wikipedia.org/wiki/D', title: 'D', kind: 'wikipedia', lang: 'en' },
+  ]
+  const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: { ...list[0], sources }, list, bySlug: cultureLangsBySlug(list), cssHref: CSS, now: NOW })
+  assert.ok(html.includes('>A</a> (Wikipedia fr)'))
+  assert.ok(html.includes('>B</a> (ՀՍՀ, Wikisource)'))
+  assert.ok(html.includes('>C</a> (UNESCO)'))
+  assert.ok(html.includes('>D</a> (Wikipedia en)'))
+  assert.ok(html.includes('Wikisource (CC BY-SA 3.0)'))
+})
+
 test('article sans image : motif, pas de <img>', async () => {
   const { list } = await fixture()
   const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[1], list, bySlug: cultureLangsBySlug(list), cssHref: CSS, now: NOW })
