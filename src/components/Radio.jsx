@@ -180,6 +180,10 @@ function useYerevanClock() {
   return time
 }
 
+// `stepRef` : une référence que le lecteur remplit avec `step(dir)` — la même
+// fonction que ⏮ / ⏭ de l'écran verrouillé. Les boutons de /radio/ (RadioPage)
+// passent par elle plutôt que de recopier la logique de saut.
+//
 // `more` : afficher ou non le lien vers /radio/ sous le lecteur.
 //
 // Il n'a de sens QUE sur l'accueil. Sur /radio/ le lecteur est déjà à
@@ -187,7 +191,7 @@ function useYerevanClock() {
 // déclencherait une navigation de document — donc un rechargement qui COUPE le
 // flux qu'on est en train d'écouter. D'où un drapeau plutôt qu'un second
 // composant : deux lecteurs divergeraient au premier correctif.
-export function Radio({ more = true }) {
+export function Radio({ more = true, stepRef = null }) {
   const { t, lang } = useI18n()
   const time = useYerevanClock()
 
@@ -579,6 +583,14 @@ export function Radio({ more = true }) {
       pick(stepStation(STATIONS, stationIdRef.current, dir), true)
     },
   }
+
+  useEffect(() => {
+    if (!stepRef) return
+    stepRef.current = (dir) => sessionRef.current.step(dir)
+    return () => {
+      stepRef.current = null
+    }
+  }, [stepRef])
 
   useEffect(() => {
     const ms = mediaSession()

@@ -11,7 +11,7 @@ const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 // Une clé absente d'un bloc STRINGS retombe en silence sur le français : la
 // page russe afficherait un paragraphe français, cuit dans le HTML prérendu.
 // On lit i18n.jsx comme du texte (Node n'importe pas le JSX).
-const CLES = ['radio.remote.title', 'radio.remote.keys', 'radio.remote.skip', 'radio.remote.icon']
+const CLES = ['radio.remote.title', 'radio.remote.keys', 'radio.remote.skip', 'radio.remote.icon', 'radio.remote.prev', 'radio.remote.next']
 
 test('les quatre textes du bloc radio.remote existent dans les quatre langues', () => {
   const src = read('src/i18n.jsx')

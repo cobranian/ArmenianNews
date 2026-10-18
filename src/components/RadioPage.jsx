@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
 import { STATION_FACTS } from '../stations.js'
@@ -16,6 +17,7 @@ import { Radio } from './Radio.jsx'
 export function RadioPage() {
   const { t, lang } = useI18n()
   const ids = Object.keys(STATION_FACTS)
+  const stepRef = useRef(null) // rempli par <Radio> : step(-1) / step(1)
 
   return (
     <main className="viewpage">
@@ -24,25 +26,38 @@ export function RadioPage() {
         <p className="viewpage__intro">{t('radio.page.intro')}</p>
       </div>
 
-      <Radio more={false} />
+      <Radio more={false} stepRef={stepRef} />
 
       {/* Ce qui se passe une fois la page quittée : ⏮ / ⏭ de l'écran verrouillé
           et du volant (Media Session, voir Radio.jsx), et le saut automatique
-          d'un flux muet. Le dessin reprend la bascule d'une commande au volant ;
-          les glyphes ⏮ ⏭ restent hors du texte, car iOS les rend en emoji. */}
+          d'un flux muet. La bascule reprend celle d'une commande au volant, et
+          elle fonctionne : ses deux boutons appellent le même `step` que l'écran
+          verrouillé (saut des stations hors antenne, lecture lancée). Les
+          glyphes ⏮ ⏭ sont dessinés en SVG : iOS les rend en emoji. */}
       <section className="radio-remote" aria-labelledby="radio-remote-title">
         <div className="container radio-remote__inner">
-          <svg
-            className="radio-remote__rocker"
-            viewBox="0 0 132 56"
-            role="img"
-            aria-label={t('radio.remote.icon')}
-          >
-            <rect x="1" y="1" width="130" height="54" rx="27" />
-            <line x1="66" y1="14" x2="66" y2="42" />
-            <path className="radio-remote__glyph" d="M33 19h3v18h-3zM50 19v18l-13-9z" />
-            <path className="radio-remote__glyph" d="M82 19l13 9-13 9zM96 19h3v18h-3z" />
-          </svg>
+          <div className="radio-remote__rocker" role="group" aria-label={t('radio.remote.icon')}>
+            <button
+              type="button"
+              className="radio-remote__key"
+              aria-label={t('radio.remote.prev')}
+              onClick={() => stepRef.current?.(-1)}
+            >
+              <svg viewBox="0 0 20 18" aria-hidden="true" focusable="false">
+                <path d="M0 0h3v18H0zM17 0v18L4 9z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="radio-remote__key"
+              aria-label={t('radio.remote.next')}
+              onClick={() => stepRef.current?.(1)}
+            >
+              <svg viewBox="0 0 20 18" aria-hidden="true" focusable="false">
+                <path d="M3 0l13 9-13 9zM17 0h3v18h-3z" />
+              </svg>
+            </button>
+          </div>
           <div className="radio-remote__text">
             <h2 id="radio-remote-title" className="radio-remote__title">
               {t('radio.remote.title')}

@@ -2529,7 +2529,9 @@ html:lang(hy) .nav__brand {
 
 /* Sous le lecteur de /radio/ : les commandes hors de la page (écran
    verrouillé, volant) et le saut d'un flux muet. Le seul ornement est la
-   bascule ⏮ | ⏭ dessinée à gauche, en écho aux boutons du volant. */
+   bascule ⏮ | ⏭ à gauche, en écho aux boutons du volant — et ce sont de vrais
+   boutons (RadioPage → step() de Radio). Chaque moitié fait 66×56, 55×47 sur
+   mobile : au-dessus du plancher tactile de 44px sans le bloc pointer: coarse. */
 .radio-remote {
   padding: clamp(28px, 4vw, 44px) 0 0;
 }
@@ -2540,18 +2542,50 @@ html:lang(hy) .nav__brand {
 }
 .radio-remote__rocker {
   flex: none;
+  display: flex;
   width: 132px;
   height: 56px;
   margin-top: 4px;
+  border: 1.5px solid var(--line-apricot);
+  border-radius: 999px;
+  overflow: hidden;
 }
-.radio-remote__rocker rect,
-.radio-remote__rocker line {
-  fill: none;
-  stroke: var(--line-apricot);
-  stroke-width: 1.5;
+.radio-remote__key {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--apricot-ink);
+  cursor: pointer;
+  transition: background-color 0.18s var(--ease), color 0.18s var(--ease);
 }
-.radio-remote__glyph {
-  fill: var(--apricot-ink);
+.radio-remote__key + .radio-remote__key {
+  border-left: 1px solid var(--line-apricot);
+}
+.radio-remote__key svg {
+  width: 20px;
+  height: 18px;
+  fill: currentColor;
+}
+/* Survol réservé aux souris : au doigt, :hover reste collé après le
+   tapotement et le bouton pressé semblerait encore enfoncé. */
+@media (hover: hover) {
+  .radio-remote__key:hover {
+    background: var(--drum-glow);
+    color: var(--apricot-ink-strong);
+  }
+}
+.radio-remote__key:active {
+  background: var(--line-apricot);
+}
+/* Jeton de focus — voir `.newsfeed__tab:focus-visible`. Décalé vers
+   l'intérieur : la bascule coupe ce qui dépasse (overflow: hidden). */
+.radio-remote__key:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: -5px;
+  border-radius: 999px;
 }
 .radio-remote__text {
   max-width: 62ch;
@@ -2578,6 +2612,10 @@ html:lang(hy) .nav__brand {
     width: 110px;
     height: 47px;
     margin-top: 0;
+  }
+  .radio-remote__key svg {
+    width: 17px;
+    height: 15px;
   }
 }
 
