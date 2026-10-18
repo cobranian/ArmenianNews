@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-18",
+  "lang": "en",
+  "generatedAt": "2026-10-18T06:11:19.319Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "intro": "Armenian media today highlight developments in mining policy, environmental cooperation, and cultural figures, with multiple outlets covering government statements on industry standards and international environmental agreements.",
+  "topics": [
+    {
+      "title": "Armenia pushes for higher standards in mining sector",
+      "text": "Prime Minister Nikol Pashinyan emphasized the need to align Armenia’s mining industry with the highest possible standards. This was echoed by a ruling party MP who urged abandoning extremes in the sector, while the CEO of Zangezur Copper and Molybdenum Combine affirmed mining’s continued role as a driving force of the economy.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263139",
+          "title": "Pashinyan stresses importance of bringing Armenia’s mining industry into line with the highest possible standards"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068572",
+          "title": "Mining sector should become pioneer in developing open joint-stock companies, Armenia PM says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068551",
+          "title": "Zangezur Copper and Molybdenum Combine CEO: Mining industry will remain driving force of Armenia’s economy in future"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068537",
+          "title": "Ruling force MP: Armenia should abandon extremes in mining sector"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068529",
+          "title": "Andrew Thake: Future of Armenia’s mining industry is very bright"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1068517",
+          "title": "Canada’s Hayasa Metals mining company president on investments: Armenia has clear legislative framework that works well"
+        }
+      ]
+    },
+    {
+      "title": "Armenia and Kyrgyzstan deepen bilateral cooperation",
+      "text": "Armenian and Kyrgyz leaders signed a joint statement and cooperation documents across various sectors. The Kyrgyz president invited Pashinyan to the second Global Mountain Summit 'Bishkek+25', and officials commented on newly established sister-city relations between Yerevan and Bishkek.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263137",
+          "title": "Joint statement signed by Armenian Prime Minister and Kyrgyz President published"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263114",
+          "title": "Tigran Avinyan comments on agreement establishing sister-city relations between Yerevan and Bishkek"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263113",
+          "title": "Sadyr Japarov invites Nikol Pashinyan to Kyrgyzstan for second Global Mountain Summit “Bishkek+25”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263106",
+          "title": "Armenia and Kyrgyzstan sign documents on cooperation across various sectors"
+        }
+      ]
+    },
+    {
+      "title": "Armenia advances environmental cooperation on transboundary lakes",
+      "text": "Armenia’s environment minister explained the memorandum on protecting Lakes Sevan and Issyk-Kul, outlining its envisaged measures. The UNESCO Director-General also visited Armenia, meeting officials and touring the Zvartnots Cathedral.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263141",
+          "title": "What does the memorandum on protecting Lakes Sevan and Issyk-Kul envisage? Armenia’s environment minister explains"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263125",
+          "title": "Zhanna Andreasyan meets UNESCO Director-General Khaled El-Enany"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263123",
+          "title": "UNESCO Director-General visits Zvartnots Cathedral"
+        }
+      ]
+    },
+    {
+      "title": "Armenia sees new opportunities from COP17 participation",
+      "text": "Foreign Minister Ararat Mirzoyan said COP17 will create new opportunities for international cooperation for Armenia. Parliamentary Speaker Alen Simonyan added that the conference also holds political, economic, and security significance for the country.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263121",
+          "title": "COP17 will create new opportunities for international cooperation for Armenia, says Ararat Mirzoyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263117",
+          "title": "COP17 also holds political, economic and security significance for Armenia, says Alen Simonyan"
+        }
+      ]
+    }
+  ]
+}

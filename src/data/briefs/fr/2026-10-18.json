@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-18",
+  "lang": "fr",
+  "generatedAt": "2026-10-18T06:11:19.319Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "intro": "Les actualités arméniennes du jour sont marquées par des développements politiques régionaux, notamment les relations avec le Kirghizistan et les tensions avec l’Azerbaïdjan, ainsi que par des initiatives économiques et culturelles soutenues par le gouvernement et la diaspora.",
+  "topics": [
+    {
+      "title": "Rencontre entre le Premier ministre arménien et le président kirghize à Erevan",
+      "text": "Le Premier ministre arménien Nikol Pashinyan et le président kirghiz Sadyr Japarov ont signé une déclaration conjointe et échangé plusieurs documents lors d’une visite officielle à Erevan. Les deux dirigeants ont également fait des déclarations à la presse, soulignant l’intérêt mutuel pour le développement de relations amicales.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-et-le-president-kirghize-signent-a-erevan-une-declaration-conjointe-entre-larmenie-et-la-kirghizie/",
+          "title": "Le Premier ministre arménien et le président kirghize signent à Erevan une déclaration conjointe entre l’Arménie et la Kirghizie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263106",
+          "title": "Le Premier ministre arménien et le Président kirghiz ont signé une déclaration conjointe et plusieurs documents ont été échangés entre les deux pays"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263107",
+          "title": "Nikol Pashinyan et Sadyr Japarov se sont rencontrés dans le cadre de la visite officielle"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263096",
+          "title": "Nikol Pashinyan et Sadyr Japarov ont fait des déclarations à la presse"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263099",
+          "title": "Le Kirghizistan est intéressé par le développement de relations amicales avec l’Arménie, déclare Sadyr Japarov"
+        }
+      ]
+    },
+    {
+      "title": "Le secteur minier arménien promu comme pionnier des institutions d’actionnariat ouvert",
+      "text": "Le Premier ministre Nikol Pashinyan a affirmé que le secteur minier devrait être un pionnier dans le développement d’institutions d’actionnariat ouvert en Arménie, lors de l’inauguration d’une nouvelle usine de transformation du verre. Cette position est reprise dans une déclaration officielle du gouvernement arménien.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-secteur-minier-devrait-etre-un-pionnier-dans-le-developpement-dinstitutions-dactionnariat-ouvert-en-armenie-affirme-nikol-pachinian/",
+          "title": "Le secteur minier devrait être un pionnier dans le développement d’institutions d’actionnariat ouvert en Arménie affirme Nikol Pachinian"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263139",
+          "title": "Premier ministre։ le secteur minier doit être à l’avant-garde du développement des institutions de participation ouverte au capital en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Visite du directeur général de l’UNESCO au temple de Zvartnots en Arménie",
+      "text": "Khaled El-Enany, directeur général de l’UNESCO, a visité le temple de Zvartnots, site inscrit au patrimoine mondial de l’humanité, dans le cadre de ses déplacements en Arménie. Cette visite souligne l’importance du patrimoine culturel arménien sur la scène internationale.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-directeur-general-de-lunesco-khaled-el-enany-visite-le-temple-de-zvartnots-en-armenie/",
+          "title": "Le Directeur général de l’UNESCO, Khaled El-Enany, visite le temple de Zvartnots en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Tensions turco-azerbaïdjanaises évoquées après l’absence d’Erdogan au sommet de Bakou",
+      "text": "L’absence du président turc Recep Tayyip Erdogan au sommet de Bakou a été interprétée comme un signe de tensions entre la Turquie et l’Azerbaïdjan, selon une analyse diffusée par ArmenieInfoTV. Cette évolution est suivie de près en raison de ses implications régionales.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35423/",
+          "title": "Erdogan absent du sommet de Bakou, tensions turco-azerbaïdjanaises en question"
+        }
+      ]
+    },
+    {
+      "title": "Soutien de Leonardo DiCaprio à l’initiative arméno-colombienne pour la restauration des espèces menacées",
+      "text": "L’acteur et écologiste Leonardo DiCaprio a apporté son soutien à une initiative conjointe entre l’Arménie et la Colombie visant à restaurer des espèces menacées. Cette initiative s’inscrit dans le cadre des efforts environnementaux internationaux auxquels l’Arménie participe activement.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263104",
+          "title": "Leonardo DiCaprio apporte son soutien à l’initiative de l’Arménie et de la Colombie visant à restaurer les espèces menacées"
+        }
+      ]
+    }
+  ]
+}
