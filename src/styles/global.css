@@ -2527,6 +2527,60 @@ html:lang(hy) .nav__brand {
   margin: 16px 0 0;
 }
 
+/* Sous le lecteur de /radio/ : les commandes hors de la page (écran
+   verrouillé, volant) et le saut d'un flux muet. Le seul ornement est la
+   bascule ⏮ | ⏭ dessinée à gauche, en écho aux boutons du volant. */
+.radio-remote {
+  padding: clamp(28px, 4vw, 44px) 0 0;
+}
+.radio-remote__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 3vw, 36px);
+}
+.radio-remote__rocker {
+  flex: none;
+  width: 132px;
+  height: 56px;
+  margin-top: 4px;
+}
+.radio-remote__rocker rect,
+.radio-remote__rocker line {
+  fill: none;
+  stroke: var(--line-apricot);
+  stroke-width: 1.5;
+}
+.radio-remote__glyph {
+  fill: var(--apricot-ink);
+}
+.radio-remote__text {
+  max-width: 62ch;
+}
+.radio-remote__title {
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.radio-remote__text p {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0 0 8px;
+}
+@media (max-width: 640px) {
+  .radio-remote__inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .radio-remote__rocker {
+    width: 110px;
+    height: 47px;
+    margin-top: 0;
+  }
+}
+
 .stations {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
