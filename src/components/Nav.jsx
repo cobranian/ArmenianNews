@@ -114,9 +114,12 @@ export function Nav({ view = 'home' }) {
                 // L'ancre (#agenda, #reseaux…) suit aussi : les id de section
                 // sont les mêmes dans les quatre langues. Ajoutée au clic et
                 // non au rendu, pour que le href cuit par le prérendu reste
-                // identique à celui de l'hydratation.
+                // identique à celui de l'hydratation. On part du href COURANT,
+                // pas de urlFor : gtag l'a déjà décoré au mousedown (?_gl=…,
+                // le lien inter-domaines de GA), et le recomposer l'effacerait.
                 onClick={(e) => {
-                  if (location.hash) e.currentTarget.href = urlFor(l.code, view) + location.hash
+                  const a = e.currentTarget
+                  if (location.hash) a.href = a.href.split('#')[0] + location.hash
                 }}
                 hrefLang={l.code}
                 lang={l.code}
