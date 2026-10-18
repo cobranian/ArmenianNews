@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
 import { orderedLangs, SITE_ID } from '../site.js'
-import { LANG_URL, LANG_SWITCH_LABEL, langPath, pathFor, briefPath, culturePath } from '../../sites.config.js'
+import { LANG_SWITCH_LABEL, langPath, pathFor, urlFor, briefPath, culturePath } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../briefStrings.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
 import { KnotMark } from './Ornament.jsx'
@@ -106,7 +106,18 @@ export function Nav({ view = 'home' }) {
               // lecteur d'écran au lieu de les épeler en français.
               <a
                 key={l.code}
-                href={LANG_URL[l.code]}
+                // La MÊME vue dans l'autre langue (/radio/ → /hy/radio/,
+                // /agenda/ → /events/), pas son accueil — comme le font déjà
+                // les pages statiques (brève, Culture : langHrefsFor). Toutes
+                // les vues existent dans les quatre langues, donc jamais de 404.
+                href={urlFor(l.code, view)}
+                // L'ancre (#agenda, #reseaux…) suit aussi : les id de section
+                // sont les mêmes dans les quatre langues. Ajoutée au clic et
+                // non au rendu, pour que le href cuit par le prérendu reste
+                // identique à celui de l'hydratation.
+                onClick={(e) => {
+                  if (location.hash) e.currentTarget.href = urlFor(l.code, view) + location.hash
+                }}
                 hrefLang={l.code}
                 lang={l.code}
                 aria-current={lang === l.code ? 'page' : undefined}
