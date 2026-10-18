@@ -18,6 +18,7 @@ const MAX_NAMES = 60
 
 function sourceLabel(s) {
   if (s.kind === 'unesco') return 'UNESCO'
+  if (s.kind === 'peopleofar') return 'PeopleOfAr (blog, tous droits réservés) — hors vérification des faits : ce qu’il est seul à porter reste en ⚠️'
   if (s.kind === 'hse') return `Encyclopédie soviétique arménienne (ՀՍՀ, Wikisource), révision ${s.revision}`
   return `Wikipédia ${s.lang}, révision ${s.revision}`
 }

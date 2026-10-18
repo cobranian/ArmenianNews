@@ -25,6 +25,7 @@ import {
 } from './lib/culture-prompts.mjs'
 import { fetchEntity, refetchSources } from './lib/culture-sources.mjs'
 import { loadUnesco } from './lib/culture-unesco.mjs'
+import { checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
 import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { parseFrontMatter, serializeFrontMatter } from './lib/culture-markdown.mjs'
@@ -88,13 +89,13 @@ if (res.fellBack) warnings.push(`Révisé par le modèle de secours ${res.model}
 
 // La vérification des faits est un contrôle, pas une condition : sa panne
 // donne `null` (« vérifiez tout à la main »), jamais « rien à signaler ».
-const haystack = [...sources.map((s) => s.extract), ...(entity?.facts ?? []), ...eventFacts(meta.agendaEvent), ...entityTexts(entity)]
+const haystack = [...sources.filter(checksFacts).map((s) => s.extract), ...(entity?.facts ?? []), ...eventFacts(meta.agendaEvent), ...entityTexts(entity)]
 const verdict = await verifyClaims({ body: revised.body, haystack, chat: chatDraft })
 if (verdict.error) console.warn(`✗ claims : ${verdict.error}`)
 warnings.push(...verdict.warnings)
 const { unsupported } = verdict
 const editorial = editorialAlerts(revised.body)
-const overlap = overlapRatio(revised.body, sources.filter((s) => s.kind === 'wikipedia').map((s) => s.extract))
+const overlap = overlapRatio(revised.body, sources.filter(measuresOverlap).map((s) => s.extract))
 
 // Tout le front-matter est gardé (la date d'abord) ; seuls titre et description suivent la révision.
 await writeFile(frPath, serializeFrontMatter({ ...fr.data, title: revised.title, description: revised.description }, revised.body))

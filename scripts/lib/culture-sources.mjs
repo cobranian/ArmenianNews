@@ -8,6 +8,7 @@
 // sans en avoir l'empreinte TLS se fait refuser (voir CLAUDE.md).
 import { isFreeLicense } from './culture-license.mjs'
 import { unescoSource } from './culture-unesco.mjs'
+import { refetchPeopleofar } from './culture-peopleofar.mjs'
 
 export const WIKI_UA = 'ArmenieInfo/1.0 (https://armenieinfo.ch/a-propos/; contact@armenieinfo.ch)'
 const HEADERS = { 'User-Agent': WIKI_UA, 'Api-User-Agent': WIKI_UA }
@@ -163,6 +164,11 @@ export async function refetchSources(metaSources = [], { unesco = {}, fetchImpl 
     if (kind === 'unesco') {
       const entry = Object.values(unesco).find((e) => e.url === s.url)
       if (entry) out.push(unescoSource(entry))
+      continue
+    }
+    if (kind === 'peopleofar') {
+      const post = await refetchPeopleofar(s, fetchImpl).catch(() => null)
+      if (post) out.push(post)
       continue
     }
     if (!s.revision || (kind !== 'wikipedia' && kind !== 'hse')) continue

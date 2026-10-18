@@ -123,6 +123,7 @@ function eventBlock(lang, raw, now) {
 function sourceLabel(x) {
   if (x.kind === 'hse') return ' (ՀՍՀ, Wikisource)'
   if (x.kind === 'unesco') return ' (UNESCO)'
+  if (x.kind === 'peopleofar') return ' (PeopleOfAr)'
   return x.lang ? ` (Wikipedia ${esc(x.lang)})` : ''
 }
 

@@ -28,6 +28,8 @@ const SHARED_RULES = [
   '- Génocide, Artsakh, conflits : les faits sourcés, sans commentaire ni adjectif.',
   // Une encyclopédie soviétique : fiable sur l'état civil, pas sur le regard.
   "- L'Encyclopédie soviétique arménienne (ՀՍՀ) ne fournit que des faits (dates, noms, lieux) : n'en reprends jamais l'interprétation ni le cadrage.",
+  // Un blog : utile pour un angle ou une anecdote, jamais contre l'encyclopédie.
+  "- PeopleOfAr est un blog d'amateurs : n'en reprends que des faits précis, jamais ses hypothèses ni ses origines spéculatives ; en cas de désaccord avec Wikipédia ou l'ՀՍՀ, suis ces dernières. Aucune de ses phrases ne doit être reprise.",
   '- Aucun lien, aucune URL dans le texte.',
 ]
 
@@ -41,6 +43,7 @@ const KIND_TITLE = {
   wikipedia: (s) => `Wikipédia (${s.lang})`,
   hse: () => 'Encyclopédie soviétique arménienne (ՀՍՀ)',
   unesco: () => 'UNESCO',
+  peopleofar: () => 'PeopleOfAr (blog, anglais)',
 }
 
 // Une source sans `kind` (anciens brouillons) vaut Wikipédia.

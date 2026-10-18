@@ -29,6 +29,7 @@ import {
   fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, fetchHseSource, fetchCommonsCandidates, downloadImage,
 } from './lib/culture-sources.mjs'
 import { loadUnesco, unescoSource } from './lib/culture-unesco.mjs'
+import { fetchPeopleofarSources, checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
 import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
 import { makeImages } from './lib/culture-image.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
@@ -130,7 +131,10 @@ async function draftArticle({ topic, event }) {
   const unescoEntry = loadUnesco()[topic.slug]
   const unesco = unescoEntry ? unescoSource(unescoEntry) : null
 
-  const sources = [...LANGS.map((l) => wiki[l]), hse, unesco].filter(Boolean)
+  const { sources: blog, warnings: blogWarnings } = await fetchPeopleofarSources(entity)
+  warnings.push(...blogWarnings)
+
+  const sources = [...LANGS.map((l) => wiki[l]), hse, unesco, ...blog].filter(Boolean)
   const facts = entity.facts
   const candidates = await fetchCommonsCandidates({
     files: [entity.image, wiki.fr?.pageImage, wiki.en?.pageImage],
@@ -143,7 +147,8 @@ async function draftArticle({ topic, event }) {
   if (draftRes.fellBack) warnings.push(`Rédigé par le modèle de secours ${draftRes.model} (Gemini indisponible).`)
   const draft = parseArticleJson(draftRes.text)
   if (!draft) throw new Error(`brouillon illisible (JSON attendu) — modèle ${draftRes.model}`)
-  const haystack = [...sources.map((s) => s.extract), ...facts, ...eventFacts(event), ...entityTexts(entity)]
+  // PeopleOfAr est un blog : ce qu'il est seul à porter reste en ⚠️.
+  const haystack = [...sources.filter(checksFacts).map((s) => s.extract), ...facts, ...eventFacts(event), ...entityTexts(entity)]
   // Panne ou réponse illisible : null, jamais « rien à signaler » — et le
   // brouillon fini est gardé.
   const verdict = await verifyClaims({ body: draft.body, haystack, chat: chatDraft })
@@ -151,14 +156,12 @@ async function draftArticle({ topic, event }) {
   warnings.push(...verdict.warnings)
   const { unsupported } = verdict
   const editorial = editorialAlerts(draft.body)
-  // Le recouvrement mesure la paraphrase de Wikipédia seulement : la phrase
-  // UNESCO est écrite par nous, l'ՀՍՀ est en arménien.
-  const overlap = overlapRatio(draft.body, sources.filter((s) => s.kind === 'wikipedia').map((s) => s.extract))
+  const overlap = overlapRatio(draft.body, sources.filter(measuresOverlap).map((s) => s.extract))
 
   const meta = {
     slug: topic.slug,
     qid: topic.qid,
-    sources: sources.map(({ kind, lang, title, url, revision, license }) => ({ kind, lang, title, url, revision, license })),
+    sources: sources.map(({ kind, lang, title, url, revision, license, postId }) => ({ kind, lang, title, url, revision, license, ...(postId ? { postId } : {}) })),
     candidates,
     imageChoice: null,
     image: null,
