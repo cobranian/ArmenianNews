@@ -269,7 +269,7 @@ const STRINGS = {
     'radio.page.home': 'Retour à l’accueil',
     'radio.remote.title': 'Changer de station sans revenir sur le site',
     'radio.remote.keys':
-      'Une fois la radio lancée, les boutons « précédent » et « suivant » de l’écran verrouillé de votre téléphone passent d’une station à l’autre. Ceux du volant aussi, quand le téléphone est relié à la voiture en Bluetooth.',
+      'Une fois la radio lancée, les boutons « précédent » et « suivant » de l’écran verrouillé de votre téléphone passent d’une station à l’autre. Ceux du volant aussi, quand le téléphone est relié à la voiture en Bluetooth. La radio s’écoute aussi avec des écouteurs ou un casque audio.',
     'radio.remote.skip': 'Et si une station coupe, le lecteur passe tout seul à la suivante.',
     'radio.remote.icon': 'Boutons précédent et suivant',
     'radio.remote.prev': 'Station précédente',
@@ -518,7 +518,7 @@ const STRINGS = {
     'radio.page.home': 'Back to the home page',
     'radio.remote.title': 'Switch stations without coming back to the site',
     'radio.remote.keys':
-      'Once the radio is playing, the previous and next buttons on your phone’s lock screen move from one station to the next. So do the buttons on your steering wheel, when the phone is connected to the car over Bluetooth.',
+      'Once the radio is playing, the previous and next buttons on your phone’s lock screen move from one station to the next. So do the buttons on your steering wheel, when the phone is connected to the car over Bluetooth. You can also listen with earphones or headphones.',
     'radio.remote.skip': 'And if a station drops out, the player moves on to the next one by itself.',
     'radio.remote.icon': 'Previous and next buttons',
     'radio.remote.prev': 'Previous station',
@@ -798,7 +798,7 @@ const STRINGS = {
     'radio.page.home': 'Վերադառնալ գլխավոր էջ',
     'radio.remote.title': 'Փոխեք կայանը՝ առանց կայք վերադառնալու',
     'radio.remote.keys':
-      'Ռադիոն միացնելուց հետո հեռախոսի կողպված էկրանի «նախորդ» և «հաջորդ» կոճակներով կարող եք անցնել մի կայանից մյուսը։ Նույնը՝ մեքենայի ղեկի կոճակներով, երբ հեռախոսը Bluetooth-ով միացված է մեքենային։',
+      'Ռադիոն միացնելուց հետո հեռախոսի կողպված էկրանի «նախորդ» և «հաջորդ» կոճակներով կարող եք անցնել մի կայանից մյուսը։ Նույնը՝ մեքենայի ղեկի կոճակներով, երբ հեռախոսը Bluetooth-ով միացված է մեքենային։ Ռադիոն կարող եք լսել նաև ականջակալներով։',
     'radio.remote.skip': 'Իսկ եթե կայանն անջատվի, նվագարկիչն ինքը կանցնի հաջորդին։',
     'radio.remote.icon': '«Նախորդ» և «հաջորդ» կոճակներ',
     'radio.remote.prev': 'Նախորդ կայանը',
@@ -1057,7 +1057,7 @@ const STRINGS = {
     'radio.page.home': 'Вернуться на главную',
     'radio.remote.title': 'Переключайте станции, не возвращаясь на сайт',
     'radio.remote.keys':
-      'Когда радио играет, кнопки «назад» и «вперёд» на экране блокировки телефона переключают станции. Кнопки на руле тоже, если телефон подключён к машине по Bluetooth.',
+      'Когда радио играет, кнопки «назад» и «вперёд» на экране блокировки телефона переключают станции. Кнопки на руле тоже, если телефон подключён к машине по Bluetooth. Слушать радио можно и в наушниках.',
     'radio.remote.skip': 'А если станция пропадёт, плеер сам перейдёт на следующую.',
     'radio.remote.icon': 'Кнопки «назад» и «вперёд»',
     'radio.remote.prev': 'Предыдущая станция',
