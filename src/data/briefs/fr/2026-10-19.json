@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-19",
+  "lang": "fr",
+  "generatedAt": "2026-10-19T05:02:26.105Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "intro": "L'actualité arménienne du jour couvre plusieurs thématiques, avec une forte présence des sujets liés à la politique, à l'économie et à la diaspora, reflétant à la fois des développements internes et des enjeux internationaux.",
+  "topics": [
+    {
+      "title": "L'Arménie et l'UE poussent pour la libéralisation des visas et des liens énergétiques plus profonds",
+      "text": "Lors du Sommet sur la biodiversité à Erevan, l'Arménie et l'Union européenne ont exprimé leur volonté commune de faciliter les échanges via la libéralisation des visas et de renforcer leur coopération dans le domaine énergétique. Cette initiative s'inscrit dans un cadre plus large de rapprochement entre Erevan et Bruxelles.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/larmenie-et-lue-poussent-pour-la-liberalisation-des-visas-et-des-liens-energetiques-plus-profonds-au-sommet-sur-la-biodiversite-a-erevan/",
+          "title": "L’Arménie et l’UE poussent pour la libéralisation des visas et des liens énergétiques plus profonds au Sommet sur la biodiversité à Erevan"
+        }
+      ]
+    },
+    {
+      "title": "L'ouverture de la frontière arméno-turque pourrait être plus rapide que prévu",
+      "text": "Selon des déclarations rapportées par Alexanian, l'ouverture de la frontière entre l'Arménie et la Turquie pourrait intervenir plus tôt qu'anticipé, ce qui marquerait une avancée significative dans les relations bilatérales après des décennies de fermeture.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/louverture-de-la-frontiere-armeno-turque-pourrait-etre-plus-rapide-que-prevu-selon-alexanian/",
+          "title": "L’ouverture de la frontière arméno-turque pourrait être plus rapide que prévu, selon Alexanian"
+        }
+      ]
+    },
+    {
+      "title": "L'équipe de l'OTAN prête à poursuivre la coopération avec le ministère arménien de la Défense",
+      "text": "L'OTAN a confirmé sa disponibilité à maintenir et développer sa coopération avec le ministère arménien de la Défense, dans un contexte de réévaluation des partenariats sécuritaires de l'Arménie face à son environnement régional complexe.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/lequipe-de-lotan-prete-a-poursuivre-la-cooperation-avec-le-ministere-armenien-de-la-defense/",
+          "title": "L’équipe de l’OTAN prête à poursuivre la coopération avec le ministère arménien de la Défense"
+        }
+      ]
+    },
+    {
+      "title": "Manifestation à Londres contre les restrictions sur le port du hijab dans les écoles d'Azerbaïdjan",
+      "text": "Une manifestation a eu lieu à Londres pour protester contre les restrictions imposées par l'Azerbaïdjan concernant le port du hijab dans les établissements scolaires, un sujet qui suscite des réactions au sein de la diaspora et des défenseurs des libertés religieuses.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/manifestation-a-londres-contre-les-restrictions-sur-le-port-du-hijab-dans-les-ecoles-dazerbaidjan/",
+          "title": "Manifestation à Londres contre les restrictions sur le port du hijab dans les écoles d’Azerbaïdjan"
+        }
+      ]
+    },
+    {
+      "title": "Rosatom reçoit des signaux positifs de la part de l'Arménie",
+      "text": "Le groupe nucléaire russe Rosatom a indiqué avoir reçu des signaux encourageants de la part des autorités arméniennes, laissant entrevoir une possible poursuite ou approfondissement de la coopération dans le secteur de l'énergie nucléaire, malgré les tensions géopolitiques régionales.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/rosatom-recoit-des-signaux-positifs-de-la-part-de-larmenie/",
+          "title": "Rosatom reçoit des signaux positifs de la part de l’Arménie"
+        }
+      ]
+    }
+  ]
+}

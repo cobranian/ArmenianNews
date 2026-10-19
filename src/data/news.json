@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T00:16:21.700Z",
+  "generatedAt": "2026-10-19T04:56:31.578Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -80,16 +80,16 @@
       "sectionKey": "societe",
       "articles": [
         {
-          "title": "L’Arménie alloue 2,36 milliards de drams supplémentaires à la recherche scientifique",
-          "url": "https://courrier.am/larmenie-alloue-236-milliards-de-drams-supplementaires-la-recherche-scientifique",
-          "date": "2026-10-16T07:20:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_2.png.avif?itok=xs4QaAIn"
-        },
-        {
           "title": "COP17 : à Erevan, les dirigeants appellent à accélérer l’action mondiale en faveur de la biodiversité",
           "url": "https://courrier.am/cop17-erevan-les-dirigeants-appellent-accelerer-laction-mondiale-en-faveur-de-la-biodiversite",
           "date": "2026-10-16T08:44:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/20261015_state_of_biodiversity_action_report_launch_photo-10_55590301612_o.jpg.avif?itok=dz6O7zyi"
+        },
+        {
+          "title": "L’Arménie alloue 2,36 milliards de drams supplémentaires à la recherche scientifique",
+          "url": "https://courrier.am/larmenie-alloue-236-milliards-de-drams-supplementaires-la-recherche-scientifique",
+          "date": "2026-10-16T07:20:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_2.png.avif?itok=xs4QaAIn"
         },
         {
           "title": "Joyeux anniversaire, Erevan ! La capitale arménienne célèbre ses 2 808 ans",
@@ -210,16 +210,16 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
-          "title": "L’art populaire arménien au cœur d’un nouveau dialogue scientifique",
-          "url": "https://courrier.am/lart-populaire-armenien-au-coeur-dun-nouveau-dialogue-scientifique",
-          "date": "2026-10-15T12:56:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/conference%20poster%20EN%202.png.avif?itok=IvA7DOlG"
-        },
-        {
           "title": "Tbilissi accueille une rétrospective consacrée à Yervand Kochar",
           "url": "https://courrier.am/tbilissi-accueille-une-retrospective-consacree-yervand-kochar",
           "date": "2026-10-15T12:32:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_1_8.png.avif?itok=h1lWCrll"
+        },
+        {
+          "title": "L’art populaire arménien au cœur d’un nouveau dialogue scientifique",
+          "url": "https://courrier.am/lart-populaire-armenien-au-coeur-dun-nouveau-dialogue-scientifique",
+          "date": "2026-10-15T12:56:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/conference%20poster%20EN%202.png.avif?itok=IvA7DOlG"
         },
         {
           "title": "Mode : l’Arménie explore une coopération avec l’école italienne Polimoda",
@@ -451,16 +451,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/786071064_122327790854224244_5767225921196492757_n.jpg.avif?itok=N9QIyYdv"
         },
         {
-          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
-          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
-          "date": "2026-07-24T11:22:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
-        },
-        {
           "title": "La Géorgie et l'Azerbaïdjan lancent un système numérique pour le transport routier de marchandises",
           "url": "https://courrier.am/la-georgie-et-l-azerbaidjan-lancent-un-systeme-numerique-pour-le-transport-routier-de-marchandises",
           "date": "2026-07-24T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/cp20170612-astrata-georgi-transporte.jpg.avif?itok=SnZNS7fh"
+        },
+        {
+          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
+          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
+          "date": "2026-07-24T11:22:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
         },
         {
           "title": "Port d'Anaklia : une délégation géorgienne s'inspire de Rotterdam, mais les doutes persistent",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "COP17-ի հյուրընկալումը Հայաստանի համար ինքնանպատակ չէ․ Արարատ Միրզոյան",
+            "url": "https://hy.armradio.am/archives/765034",
+            "date": "2026-10-19T04:06:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/mirzoyan-768x392.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ժապարովը Փաշինյանին հրավիրել է Ղրղզստան՝ մասնակցելու «Բիշքեկ+25» գագաթնաժողովին",
             "url": "https://hy.armradio.am/archives/764948",
             "date": "2026-10-17T11:42:00.000Z",
@@ -1136,19 +1143,19 @@
             "date": "2026-10-16T11:44:45.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/pashinyan-pezeshqyan-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "ՀՀ վարչապետը և Եվրոպական հանձնաժողովի փոխնախագահը քննարկել են Հայաստան-ԵՄ համագործակցության զարգացմանը վերաբերող հարցեր",
-            "url": "https://hy.armradio.am/archives/764704",
-            "date": "2026-10-16T11:28:47.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/70174_b-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "COP17-ի բացման հանդիսավոր արարողությունը՝ արվեստի և բնության համադրությամբ",
+            "url": "https://hy.armradio.am/archives/765028",
+            "date": "2026-10-19T04:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/856747559_122141929803388072_3624533388740045716_n-768x512.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Հայաստանը COP17-ի նախագահությունը դիտարկում է գործնական արդյունքների հասնելու հնարավորություն. վարչապետը մասնակցել է COP17 համաժողովի բացմանը",
             "url": "https://hy.armradio.am/archives/765021",
@@ -1211,13 +1218,6 @@
             "date": "2026-10-17T10:48:55.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/4G3A1757-768x512.jpg",
             "category": "Հասարակություն"
-          },
-          {
-            "title": "Հայաստանն ու Ղրղզստանը համաձայնագիր են ստորագրել քաղաքացիների այցելությունների և գտնվելու կարգի մասին",
-            "url": "https://hy.armradio.am/archives/764910",
-            "date": "2026-10-17T10:42:15.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/852484307_1533480035476155_818895968505680545_n-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Կանադական բանակի վարժանքների ժամանակ հրդեհի հետևանքով չորս մարդ զոհվել է, կան տասնյակ վիրավորներ",
+            "url": "https://hy.armradio.am/archives/765040",
+            "date": "2026-10-19T04:22:28.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/79692055_1004-e1792382599517-768x402.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Հոկտեմբերի 18. ավերված քաղաքների լուսաբացը Ֆրանսիայում",
             "url": "https://hy.armradio.am/archives/764996",
             "date": "2026-10-18T15:00:00.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/764884",
             "date": "2026-10-17T09:28:14.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5557-300x189.jpeg",
-            "category": "Միջազգային"
-          },
-          {
-            "title": "ԵՄ գագաթնաժողովը վերահաստատել է Ուկրաինային աջակցությունը, սակայն 2027-ի ֆինանսավորման հարցը բաց է մնացել",
-            "url": "https://hy.armradio.am/archives/764842",
-            "date": "2026-10-17T09:03:45.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5553-300x214.jpeg",
             "category": "Միջազգային"
           }
         ]
@@ -1525,6 +1525,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Հայաստանի մարմնամարզության հավաքականի անդամներն ԱԱ-ի եզրափակիչում են",
+            "url": "https://hy.armradio.am/archives/765037",
+            "date": "2026-10-19T04:26:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2021/08/Artur-Davtyan-2-scaled-1-768x512.jpg",
+            "category": "Սպորտ"
+          },
+          {
             "title": "ԱԱ 2026. հայ մարմնամարզիկները եզրափակիչում կպայքարեն աշխարհի չեմպիոնի տիտղոսի համար",
             "url": "https://hy.armradio.am/archives/765005",
             "date": "2026-10-18T13:55:01.000Z",
@@ -1586,13 +1593,6 @@
             "date": "2026-10-14T12:39:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/847884846_17977511859137914_8740402698245215607_n-768x439.jpg",
             "category": "Սպորտ"
-          },
-          {
-            "title": "Հունահռոմեական ոճի ըմբիշներ Գասպար Տերտերյանն ու Մարտիկ Պետրոսյանը՝ Մ23 աշխարհի առաջնության արծաթե մեդալակիրներ",
-            "url": "https://hy.armradio.am/archives/764109",
-            "date": "2026-10-14T11:35:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/72kg-GR-Gaspar-Terteryan-ARM-df.-Nilson-Sinisterra-Angulo-COL-_25328-X3%E2%80%A4jpg-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       }
@@ -3125,16 +3125,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35352.jpg"
         },
         {
-          "title": "Arménie : une commission parlementaire examine les relations Église-État",
-          "url": "https://armenieinfo.tv/mer-oughin-35327/",
-          "date": "2026-10-12T06:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35327.jpg"
-        },
-        {
           "title": "Karabakh : la dissolution de l’armée évoquée, sans décision prise",
           "url": "https://armenieinfo.tv/mer-oughin-35316/",
           "date": "2026-10-12T06:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35316.jpg"
+        },
+        {
+          "title": "Arménie : une commission parlementaire examine les relations Église-État",
+          "url": "https://armenieinfo.tv/mer-oughin-35327/",
+          "date": "2026-10-12T06:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35327.jpg"
         }
       ]
     },
@@ -9832,6 +9832,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ՀՈԿՏԵՄԲԵՐԻ 19-ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
+            "url": "https://style.news.am/arm/news/116707/",
+            "date": "2026-10-19T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116707.jpg"
+          },
+          {
             "title": "Սիրուշոյի եւ Իվետա Մուկուչյանի նոր տեսահոլովակները, Իվետայի 40-ամյակն ու սիրելիի շնորհավորանքը, Անդրեի ու Արթուր Խաչենցի ջերմ հոլովակները՝ դուստրերի հետ․ Instagram",
             "url": "https://style.news.am/arm/news/116706/",
             "date": "2026-10-18T16:30:00.000Z",
@@ -9884,12 +9890,6 @@
             "url": "https://style.news.am/arm/news/116698/",
             "date": "2026-10-17T14:18:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116698.jpg"
-          },
-          {
-            "title": "Rolex-ը՝ ոսկու փոխարեն. Ինչու են միլիարդատերերը ներդրում կատարում ժամացույցների, ռուբինների և Կլիմտի նկարների մեջ",
-            "url": "https://style.news.am/arm/news/116693/",
-            "date": "2026-10-17T13:32:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116693.jpg"
           }
         ]
       },
@@ -10030,6 +10030,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Միլանի կենտրոնում անկարգությունների ընթացքում ավելի քան 200 մարդ բերման է ենթարկվել ոստիկանություն",
+            "url": "https://news.am/hy/news/1068744",
+            "date": "2026-10-19T04:18:00.000Z",
+            "image": "https://news.am/storage/media/26/10/19/9fcKF733YadOg0KK.webp"
+          },
+          {
             "title": "Մոտ 7 հազար մարդ է մասնակցել Լիմոժում անցկացված երթին՝ քաղաքապետարանի հրկիզումից հետո",
             "url": "https://news.am/hy/news/1068730",
             "date": "2026-10-18T17:53:11.000Z",
@@ -10082,12 +10088,6 @@
             "url": "https://news.am/hy/news/1068620",
             "date": "2026-10-18T05:48:03.000Z",
             "image": "https://news.am/storage/media/26/10/18/LXVWTfgKr6SW8wgN.webp"
-          },
-          {
-            "title": "Անկարգություններ Ֆրանսիայում․ հրդեհներ, թալանված խանութներ և 1200 ձերբակալված",
-            "url": "https://news.am/hy/news/1068619",
-            "date": "2026-10-18T05:40:52.000Z",
-            "image": "https://news.am/storage/media/26/10/18/mwwLhFLhyiwSKFhC.jfif"
           }
         ]
       },
@@ -10494,6 +10494,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 19 ОКТЯБРЯ",
+            "url": "https://style.news.am/rus/news/116707/",
+            "date": "2026-10-19T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116707.jpg"
+          },
+          {
             "title": "«К Востоку от Эдема» – новый сериал по классике от Netflix, за который, наконец, не стыдно",
             "url": "https://style.news.am/rus/news/116701/",
             "date": "2026-10-18T12:38:00.000Z",
@@ -10546,12 +10552,6 @@
             "url": "https://style.news.am/rus/news/116692/",
             "date": "2026-10-17T12:04:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116692.jpg"
-          },
-          {
-            "title": "Шер раскрыла секрет своего легендарного «голого» платья для Met Gala",
-            "url": "https://style.news.am/rus/news/116697/",
-            "date": "2026-10-17T11:29:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116697.jpg"
           }
         ]
       },
@@ -10626,6 +10626,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Приложения для наблюдения после операции снизили риск повторной госпитализации на 15%",
+            "url": "https://med.news.am/rus/news/42143/prilozheniya-dlya-nablyudeniya-posle-operacii-snizili-risk-povtornoiy-gospitalizacii-na-15.html",
+            "date": "2026-10-19T04:41:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42143.jpg"
+          },
+          {
             "title": "Наушники с шумоподавлением снизили риск тошноты после гинекологических операций на 32%",
             "url": "https://med.news.am/rus/news/42142/naushniki-s-shumopodavleniem-snizili-risk-toshnotiy-posle-ginekologicheskikh-operaciiy-na-32.html",
             "date": "2026-10-18T19:12:00.000Z",
@@ -10678,12 +10684,6 @@
             "url": "https://med.news.am/rus/news/42134/at-buriykh-vodoroslyakh-nashli-sakhar-dlya-borbiy-s-kletochniymi-povrezhdeniyami.html",
             "date": "2026-10-16T19:31:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42134.jpg"
-          },
-          {
-            "title": "Stem Cell Reports: никотин при беременности навсегда ослабил иммунитет потомства",
-            "url": "https://med.news.am/rus/news/42133/stem-cell-reports-nikotin-pri-beremennosti-navsegda-oslabil-immunitet-potomstva.html",
-            "date": "2026-10-16T17:29:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42133.jpg"
           }
         ]
       },
@@ -10691,6 +10691,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Более 200 человек доставлены в полицию в ходе беспорядков в центре Милана",
+            "url": "https://news.am/ru/news/1068744",
+            "date": "2026-10-19T04:18:00.000Z",
+            "image": "https://news.am/storage/media/26/10/19/9fcKF733YadOg0KK.webp"
+          },
           {
             "title": "Около 7 тысяч человек вышли на шествие в Лиможе после поджога городской ратуши",
             "url": "https://news.am/ru/news/1068730",
@@ -10744,12 +10750,6 @@
             "url": "https://news.am/ru/news/1068620",
             "date": "2026-10-18T05:48:03.000Z",
             "image": "https://news.am/storage/media/26/10/18/LXVWTfgKr6SW8wgN.webp"
-          },
-          {
-            "title": "Беспорядки во Франции: поджоги, разграбленные магазины и 1200 задержанных",
-            "url": "https://news.am/ru/news/1068619",
-            "date": "2026-10-18T05:40:52.000Z",
-            "image": "https://news.am/storage/media/26/10/18/mwwLhFLhyiwSKFhC.jfif"
           }
         ]
       },

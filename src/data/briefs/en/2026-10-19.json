@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-19",
+  "lang": "en",
+  "generatedAt": "2026-10-19T05:02:26.105Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "intro": "Armenian media coverage today centers on the ongoing COP17 biodiversity summit in Yerevan, with multiple outlets reporting on diplomatic initiatives, speeches by national leaders, and international participation. Sports achievements by Armenian athletes also feature prominently across sources.",
+  "topics": [
+    {
+      "title": "Armenia hosts COP17 biodiversity summit with high-level participation",
+      "text": "Armenian officials, including Prime Minister Nikol Pashinyan and Foreign Minister, opened the COP17 summit in Yerevan, emphasizing the need to turn biodiversity commitments into concrete action. The CBD Executive Secretary praised Armenia’s organizational efforts, and the country invited other nations to join the CARES initiative. The opening ceremony included a cultural concert program.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263158",
+          "title": "COP17: Official opening concert program"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263156",
+          "title": "CBD Executive Secretary praises Armenia’s efforts in organizing COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263157",
+          "title": "Armenia invites countries at COP17 to join CARES"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263155",
+          "title": "COP17: Armenian FM stresses need to turn biodiversity protection commitments into action"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263152",
+          "title": "\"May Yerevan become a milestone of renewed political determination”: Pashinyan opens COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263151",
+          "title": "PM Nikol Pashinyan's speech at COP17 opening ceremony"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263150",
+          "title": "COP17 opening ceremony"
+        }
+      ]
+    },
+    {
+      "title": "Armenian gymnasts reach finals at World Championships",
+      "text": "Artur Davtyan, Artur Avetisyan, Hamlet Manukyan, and Mamikon Khachatryan have advanced to the finals of the World Championships, according to reports from News.am. Their qualification highlights continued strength in Armenian gymnastics on the international stage.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169637/",
+          "title": "Real Madrid thrash Sevilla"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169625/",
+          "title": "World Championships: Artur Davtyan, Artur Avetisyan, Hamlet Manukyan, and Mamikon Khachatryan are in the final"
+        }
+      ]
+    },
+    {
+      "title": "Armenian athlete wins double gold at European Youth Championships",
+      "text": "Emma Poghosyan secured two gold medals at the European Youth Championships, marking a significant achievement for Armenian youth sports. The victory was reported by News.am as part of its sports coverage.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169624/",
+          "title": "European Youth Championships: Emma Poghosyan - double champion"
+        }
+      ]
+    }
+  ]
+}
