@@ -211,7 +211,7 @@ const STRINGS = {
     // sous silence — le nombre est écrit en toutes lettres parce que t() ne
     // sait pas interpoler. Si vous touchez à STATIONS (Radio.jsx), les quatre
     // traductions ci-dessous doivent suivre ; un test le vérifie.
-    'radio.subtitle': 'Seize radios arméniennes, en flux continu',
+    'radio.subtitle': 'Dix-sept radios arméniennes, en flux continu',
     'radio.onair': 'En direct',
     'radio.tz': 'Erevan',
     'radio.play': 'Écouter en direct',
@@ -249,13 +249,14 @@ const STRINGS = {
     'radio.st.yerevanfm': 'Radio Yerevan',
     'radio.st.tsayn': 'Yeridasartoutian Tsayne',
     'radio.st.radioa': 'Radio A',
-    'radio.more': 'Les seize radios arméniennes en direct',
+    'radio.st.aypfm': 'AYP FM',
+    'radio.more': 'Les dix-sept radios arméniennes en direct',
 
     // Page /radio
     'radio.page.h1': 'Radios arméniennes en direct',
     'radio.page.intro':
-      'Seize radios arméniennes en flux continu, réunies sur une seule page : les stations publiques d’Erevan, les antennes indépendantes et celles de la diaspora. Aucune inscription, rien à installer — le son démarre au clic et suit la bascule jour / nuit du site. Les flux sont ceux des stations elles-mêmes ; ArménieInfo n’héberge ni ne réencode aucun signal.',
-    'radio.page.list': 'Les seize stations',
+      'Dix-sept radios arméniennes en flux continu, réunies sur une seule page : les stations publiques d’Erevan, les antennes indépendantes et celles de la diaspora. Aucune inscription, rien à installer — le son démarre au clic et suit la bascule jour / nuit du site. Les flux sont ceux des stations elles-mêmes ; ArménieInfo n’héberge ni ne réencode aucun signal.',
+    'radio.page.list': 'Les dix-sept stations',
     'radio.page.city': 'Ville',
     // Les villes des fiches de station sont des CLÉS (src/stations.js), comme
     // genre et langue : « Երևան » s'affichait tel quel sur la page française,
@@ -264,6 +265,7 @@ const STRINGS = {
     'radio.city.beirut': 'Beyrouth',
     'radio.city.glendale': 'Glendale',
     'radio.city.bourglesvalence': 'Bourg-lès-Valence',
+    'radio.city.alfortville': 'Alfortville',
     'radio.page.genre': 'Genre',
     'radio.page.lang': 'Langue d’antenne',
     'radio.page.fm': 'FM',
@@ -474,7 +476,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Yerevan · 128 kbps',
     'radio.title': 'Live radio',
-    'radio.subtitle': 'Sixteen Armenian stations, streaming live',
+    'radio.subtitle': 'Seventeen Armenian stations, streaming live',
     'radio.onair': 'On air',
     'radio.tz': 'Yerevan',
     'radio.play': 'Listen live',
@@ -503,18 +505,20 @@ const STRINGS = {
     'radio.st.yerevanfm': 'Radio Yerevan',
     'radio.st.tsayn': 'Yeridasartoutian Tsayne',
     'radio.st.radioa': 'Radio A',
-    'radio.more': 'All sixteen Armenian radio stations',
+    'radio.st.aypfm': 'AYP FM',
+    'radio.more': 'All seventeen Armenian radio stations',
 
     // Page /radio
     'radio.page.h1': 'Armenian radio online',
     'radio.page.intro':
-      'Sixteen Armenian stations streaming live on one page: the public networks of Yerevan, the independent broadcasters and the diaspora’s own. No sign-up, nothing to install — sound starts on click and follows the site’s day / night switch. The streams are the stations’ own; Armenia News neither hosts nor re-encodes any signal.',
-    'radio.page.list': 'The sixteen stations',
+      'Seventeen Armenian stations streaming live on one page: the public networks of Yerevan, the independent broadcasters and the diaspora’s own. No sign-up, nothing to install — sound starts on click and follows the site’s day / night switch. The streams are the stations’ own; Armenia News neither hosts nor re-encodes any signal.',
+    'radio.page.list': 'The seventeen stations',
     'radio.page.city': 'City',
     'radio.city.yerevan': 'Yerevan',
     'radio.city.beirut': 'Beirut',
     'radio.city.glendale': 'Glendale',
     'radio.city.bourglesvalence': 'Bourg-lès-Valence',
+    'radio.city.alfortville': 'Alfortville',
     'radio.page.genre': 'Format',
     'radio.page.lang': 'On-air language',
     'radio.page.fm': 'FM',
@@ -749,7 +753,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Երևան · 128 kbps',
     'radio.title': 'Ուղիղ եթեր',
-    'radio.subtitle': 'Տասնվեց հայկական ռադիոկայան՝ ուղիղ եթերում',
+    'radio.subtitle': 'Տասնյոթ հայկական ռադիոկայան՝ ուղիղ եթերում',
     'radio.onair': 'Ուղիղ',
     'radio.tz': 'Երևան',
     'radio.play': 'Միացնել',
@@ -784,19 +788,21 @@ const STRINGS = {
     'radio.st.yerevanfm': 'Ռադիո Երևան',
     'radio.st.tsayn': 'Երիտասարդութեան ձայնը',
     'radio.st.radioa': 'Ռատիօ Ա',
-    'radio.more': 'Բոլոր տասնվեց հայկական ռադիոկայանները՝ ուղիղ եթերում',
+    'radio.st.aypfm': 'AYP FM',
+    'radio.more': 'Բոլոր տասնյոթ հայկական ռադիոկայանները՝ ուղիղ եթերում',
 
     // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
     // task-5-report.md).
     'radio.page.h1': 'Հայկական ռադիո ուղիղ եթերում',
     'radio.page.intro':
-      'Տասնվեց հայկական ռադիոկայաններ՝ ուղիղ հեռարձակմամբ մեկ էջում. Երևանի հանրային ցանցերը, անկախ հեռարձակողները և սփյուռքի իրենը։ Ոչ մի գրանցում, ոչինչ տեղադրելու կարիք չկա. ձայնը սկսվում է սեղմումով և հետևում է կայքի ցերեկ / գիշեր անջատիչին։ Հոսքերը կայանների սեփականն են. Armenia News-ը չի հյուրընկալում և չի վերակոդավորում որևէ ազդանշան։',
-    'radio.page.list': 'Տասնվեց ռադիոկայանները',
+      'Տասնյոթ հայկական ռադիոկայաններ՝ ուղիղ հեռարձակմամբ մեկ էջում. Երևանի հանրային ցանցերը, անկախ հեռարձակողները և սփյուռքի իրենը։ Ոչ մի գրանցում, ոչինչ տեղադրելու կարիք չկա. ձայնը սկսվում է սեղմումով և հետևում է կայքի ցերեկ / գիշեր անջատիչին։ Հոսքերը կայանների սեփականն են. Armenia News-ը չի հյուրընկալում և չի վերակոդավորում որևէ ազդանշան։',
+    'radio.page.list': 'Տասնյոթ ռադիոկայանները',
     'radio.page.city': 'Քաղաք',
     'radio.city.yerevan': 'Երևան',
     'radio.city.beirut': 'Բեյրութ',
     'radio.city.glendale': 'Գլենդեյլ',
     'radio.city.bourglesvalence': 'Բուր-լե-Վալանս',
+    'radio.city.alfortville': 'Ալֆորվիլ',
     'radio.page.genre': 'Ժանր',
     'radio.page.lang': 'Եթերի լեզուն',
     'radio.page.fm': 'FM',
@@ -1016,7 +1022,7 @@ const STRINGS = {
 
     'radio.eyebrow': 'Ереван · 128 кбит/с',
     'radio.title': 'Прямой эфир',
-    'radio.subtitle': 'Шестнадцать армянских радиостанций в прямом эфире',
+    'radio.subtitle': 'Семнадцать армянских радиостанций в прямом эфире',
     'radio.onair': 'В эфире',
     'radio.tz': 'Ереван',
     'radio.play': 'Слушать в эфире',
@@ -1045,19 +1051,21 @@ const STRINGS = {
     'radio.st.yerevanfm': 'Радио Ереван',
     'radio.st.tsayn': 'Yeridasartoutian Tsayne',
     'radio.st.radioa': 'Radio A',
-    'radio.more': 'Все шестнадцать армянских радиостанций в прямом эфире',
+    'radio.st.aypfm': 'AYP FM',
+    'radio.more': 'Все семнадцать армянских радиостанций в прямом эфире',
 
     // Page /radio — traductions hy/ru à relire par un locuteur natif (voir
     // task-5-report.md).
     'radio.page.h1': 'Армянское радио онлайн',
     'radio.page.intro':
-      'Шестнадцать армянских радиостанций в прямом эфире на одной странице: общественные сети Еревана, независимые вещатели и станции диаспоры. Никакой регистрации, ничего устанавливать не нужно — звук начинается по клику и следует дневному / ночному переключателю сайта. Потоки принадлежат самим станциям; Armenia News не хостит и не перекодирует ни один сигнал.',
-    'radio.page.list': 'Шестнадцать радиостанций',
+      'Семнадцать армянских радиостанций в прямом эфире на одной странице: общественные сети Еревана, независимые вещатели и станции диаспоры. Никакой регистрации, ничего устанавливать не нужно — звук начинается по клику и следует дневному / ночному переключателю сайта. Потоки принадлежат самим станциям; Armenia News не хостит и не перекодирует ни один сигнал.',
+    'radio.page.list': 'Семнадцать радиостанций',
     'radio.page.city': 'Город',
     'radio.city.yerevan': 'Ереван',
     'radio.city.beirut': 'Бейрут',
     'radio.city.glendale': 'Глендейл',
     'radio.city.bourglesvalence': 'Бур-ле-Валанс',
+    'radio.city.alfortville': 'Альфорвиль',
     'radio.page.genre': 'Жанр',
     'radio.page.lang': 'Язык эфира',
     'radio.page.fm': 'FM',

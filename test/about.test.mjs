@@ -32,8 +32,8 @@ test('VIEW_SEO.about existe dans les quatre langues, sans nombre écrit en toute
   }
   // Les comptes (radios, rédactions) sont gardés ailleurs ; en écrire un ici
   // vieillirait en silence.
-  assert.doesNotMatch(VIEW_SEO.about.fr.description, /seize|quinze|douze|onze|sept/i)
-  assert.doesNotMatch(VIEW_SEO.about.en.description, /sixteen|fifteen|twelve|eleven|seven/i)
+  assert.doesNotMatch(VIEW_SEO.about.fr.description, /dix-sept|seize|quinze|douze|onze|sept/i)
+  assert.doesNotMatch(VIEW_SEO.about.en.description, /seventeen|sixteen|fifteen|twelve|eleven|seven/i)
 })
 
 test('le <head> d’une page about se génère pour chaque langue, avec ses hreflang', () => {

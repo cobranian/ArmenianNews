@@ -1,4 +1,4 @@
-// Les faits sourcés sur les seize stations du lecteur.
+// Les faits sourcés sur les dix-sept stations du lecteur.
 //
 // Module PLAT (pas de JSX) : test/stations.test.mjs doit le lire depuis Node.
 // Même raison que src/seo.js, src/site.js, src/worldPlace.js, src/hyDate.js.
@@ -260,6 +260,28 @@ export const STATION_FACTS = {
       'https://radioa.net/chronologie/',
       'https://www.radio-browser.info/history/047e7524-1f31-4dcb-9388-2ce0e665c109',
       'https://stream.votreradiosurlenet.eu/radioa.mp3',
+    ],
+  },
+  aypfm: {
+    // AYP FM, « la radio arménienne d'Île-de-France », créée en 1993 : tout
+    // vient de sa page « Qui sommes-nous » — 99.5 FM en région parisienne,
+    // siège au 41 rue des Écoles, 94140 Alfortville. Ville = celle du siège,
+    // pas « Paris » : la page n'en donne pas d'autre.
+    //
+    // Genre : la page décrit trois axes — information, promotion culturelle,
+    // débats. Un généraliste, comme `radioa`.
+    //
+    // LANGUE VOLONTAIREMENT ABSENTE : la page dit que les JOURNAUX sont « en
+    // français et en arménien », rien sur le reste de l'antenne, et le champ
+    // (comme `inLanguage` du balisage) n'en porte qu'une.
+    city: 'alfortville',
+    genre: 'general',
+    fm: '99.5',
+    bitrate: '192',
+    sources: [
+      'https://radio-aypfm.com/fr/about-us',
+      'https://radio-aypfm.com/assets/js/script.js',
+      'https://stric6.streamakaci.com/radioayp.mp3',
     ],
   },
 }
