@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { STATION_FACTS } from '../src/stations.js'
+import { STATION_FACTS, langueKey, inLanguage } from '../src/stations.js'
 import { ALL_LANGS } from '../sites.config.js'
 
 // Node ne sait pas importer du JSX : on lit STATIONS comme du texte, exactement
@@ -73,7 +73,7 @@ test('chaque ville de station a son libelle dans les quatre langues', () => {
 })
 
 test('chaque langue d antenne a son libelle dans les quatre langues', () => {
-  const langues = [...new Set(Object.values(STATION_FACTS).map((f) => f.langue).filter(Boolean))]
+  const langues = [...new Set(Object.values(STATION_FACTS).filter((f) => f.langue).map(langueKey))]
   assert.ok(langues.length, 'aucune langue d antenne a verifier')
   for (const l of langues) {
     assert.equal(
@@ -101,9 +101,31 @@ test('aucun champ vide ni rempli d un point d interrogation', () => {
     for (const [k, v] of Object.entries(f)) {
       if (k === 'sources') continue
       if (v == null) continue
-      assert.equal(typeof v, 'string', `${id}.${k} doit etre une chaine ou absent`)
-      assert.ok(v.trim().length > 0, `${id}.${k} est vide`)
-      assert.doesNotMatch(v, /\?|TBD|TODO|inconnu/i, `${id}.${k} n est pas un fait`)
+      // `langue` seul peut etre une liste (antenne bilingue) : chaque element
+      // passe alors les memes controles qu'un champ simple.
+      const valeurs = k === 'langue' && Array.isArray(v) ? v : [v]
+      for (const x of valeurs) {
+        assert.equal(typeof x, 'string', `${id}.${k} doit etre une chaine ou absent`)
+        assert.ok(x.trim().length > 0, `${id}.${k} est vide`)
+        assert.doesNotMatch(x, /\?|TBD|TODO|inconnu/i, `${id}.${k} n est pas un fait`)
+      }
     }
   }
+})
+
+// Une langue d'antenne est un code BCP 47 (deux lettres) ou une liste de
+// codes : c'est ce que `inLanguage` émet tel quel dans le balisage. Une
+// faute de frappe (« frhy », « FR ») passerait le test des libellés si la clé
+// i18n avait la même faute, et partirait chez Google.
+test('les langues d antenne sont des codes, seuls ou en liste', () => {
+  for (const [id, f] of Object.entries(STATION_FACTS)) {
+    if (!f.langue) continue
+    const codes = [].concat(f.langue)
+    assert.ok(codes.length > 0, `${id} : liste de langues vide`)
+    for (const c of codes) assert.match(c, /^[a-z]{2}$/, `${id} : « ${c} » n est pas un code de langue`)
+    assert.equal(new Set(codes).size, codes.length, `${id} : langue en double`)
+  }
+  assert.deepEqual(inLanguage({ langue: ['fr', 'hy'] }), ['fr', 'hy'])
+  assert.equal(inLanguage({ langue: 'hy' }), 'hy')
+  assert.equal(langueKey({ langue: ['fr', 'hy'] }), 'fr-hy')
 })

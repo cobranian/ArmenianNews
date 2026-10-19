@@ -288,6 +288,7 @@ const STRINGS = {
     'radio.genre.university': 'Universitaire',
     'radio.genre.youth': 'Jeunesse',
     'radio.page.lang.hy': 'Arménien',
+    'radio.page.lang.fr-hy': 'Français et arménien',
   },
   en: {
     // La marque suit le domaine (.org = Armenia News), pas la langue — voir
@@ -541,6 +542,7 @@ const STRINGS = {
     'radio.genre.university': 'University',
     'radio.genre.youth': 'Youth',
     'radio.page.lang.hy': 'Armenian',
+    'radio.page.lang.fr-hy': 'French and Armenian',
   },
   hy: {
     // « Արմենիա Ին֖ո » — la seule langue dont la marque affichée s'écarte du
@@ -825,6 +827,7 @@ const STRINGS = {
     'radio.genre.university': 'Համալսարանական',
     'radio.genre.youth': 'Երիտասարդական',
     'radio.page.lang.hy': 'Հայերեն',
+    'radio.page.lang.fr-hy': 'Ֆրանսերեն և հայերեն',
   },
   ru: {
     // Forme latine délibérée : la marque suit le domaine (.org = Armenia
@@ -1088,6 +1091,7 @@ const STRINGS = {
     'radio.genre.university': 'Университетское',
     'radio.genre.youth': 'Молодёжное',
     'radio.page.lang.hy': 'Армянский',
+    'radio.page.lang.fr-hy': 'Французский и армянский',
   },
 }
 

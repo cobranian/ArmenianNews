@@ -8,7 +8,7 @@
 // N'AFFICHE RIEN de particulier dans les résultats. Ne pas en attendre de
 // résultat enrichi : le seul de ce projet qui en produise est Event, sur
 // /agenda.
-import { STATION_FACTS } from './stations.js'
+import { STATION_FACTS, inLanguage } from './stations.js'
 import { evenementComplet, instantMural, eventLd } from './agendaEvents.js'
 import { urlFor } from '../sites.config.js'
 
@@ -75,7 +75,7 @@ export function radioJsonLd(lang, t) {
         // de la page, comme la fiche affichée — plus « Երևան » sur /radio/ en
         // français.
         ...(STATION_FACTS[id].city ? { areaServed: t(`radio.city.${STATION_FACTS[id].city}`) } : {}),
-        ...(STATION_FACTS[id].langue ? { inLanguage: STATION_FACTS[id].langue } : {}),
+        ...(STATION_FACTS[id].langue ? { inLanguage: inLanguage(STATION_FACTS[id]) } : {}),
       },
     })),
   })

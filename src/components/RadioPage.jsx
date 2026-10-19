@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
-import { STATION_FACTS } from '../stations.js'
+import { STATION_FACTS, langueKey } from '../stations.js'
 import { VIEW_SEO } from '../seo.js'
 import { radioJsonLd } from '../jsonld.js'
 import { Radio } from './Radio.jsx'
@@ -80,7 +80,7 @@ export function RadioPage() {
                 // langue, gardée par test/stations.test.mjs.
                 ['radio.page.city', f.city && t(`radio.city.${f.city}`)],
                 ['radio.page.genre', f.genre && t(`radio.genre.${f.genre}`)],
-                ['radio.page.lang', f.langue && t(`radio.page.lang.${f.langue}`)],
+                ['radio.page.lang', f.langue && t(`radio.page.lang.${langueKey(f)}`)],
                 ['radio.page.fm', f.fm && `${f.fm} MHz`],
                 ['radio.page.bitrate', f.bitrate && `${f.bitrate} kbps`],
               ].filter(([, v]) => v)

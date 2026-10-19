@@ -20,6 +20,20 @@
 //
 // Détail de la recherche station par station : voir
 // .superpowers/sdd/2026-07-31-seo-longue-traine/task-4-report.md
+// `langue` vaut un code (`'hy'`) ou, pour une antenne bilingue, une LISTE
+// (`['fr', 'hy']`). Deux lecteurs en dérivent, et ne doivent rien recomposer
+// eux-mêmes : la page affiche le libellé `radio.page.lang.<clé>` (« fr-hy »
+// pour une liste — un libellé entier par combinaison, parce que la
+// conjonction et la casse changent d'une langue à l'autre : « Français et
+// arménien », « French and Armenian »), et le balisage émet `inLanguage`,
+// qui accepte une liste.
+export function langueKey(f) {
+  return Array.isArray(f.langue) ? f.langue.join('-') : f.langue
+}
+export function inLanguage(f) {
+  return Array.isArray(f.langue) && f.langue.length === 1 ? f.langue[0] : f.langue
+}
+
 export const STATION_FACTS = {
   public: {
     // La fréquence FM de la Première chaîne est ambiguë : la page officielle
@@ -248,11 +262,13 @@ export const STATION_FACTS = {
     // Genre : sa propre grille (/chronologie/) mêle informations, chansons,
     // poésie, histoire, émission de l'Église évangélique — un généraliste.
     //
-    // LANGUE VOLONTAIREMENT ABSENTE : la station se dit « franco-arménienne »
-    // et sa grille est titrée dans les deux langues, mais rien ne dit dans
-    // laquelle on parle à l'antenne. Deviner « hy » serait une approximation.
+    // Langue : la station se dit « franco-arménienne » (ֆրանսահայկական) et sa
+    // grille (/chronologie/) titre chaque émission dans les deux langues
+    // (« Les Informations / Լուրեր », « La matinale de Suzanne / Բարի Լոյս… »).
+    // Bilinguisme retenu par l'éditeur du site le 19 octobre 2026.
     city: 'bourglesvalence',
     genre: 'general',
+    langue: ['fr', 'hy'],
     fm: '97.8',
     bitrate: '120',
     sources: [
@@ -271,11 +287,12 @@ export const STATION_FACTS = {
     // Genre : la page décrit trois axes — information, promotion culturelle,
     // débats. Un généraliste, comme `radioa`.
     //
-    // LANGUE VOLONTAIREMENT ABSENTE : la page dit que les JOURNAUX sont « en
-    // français et en arménien », rien sur le reste de l'antenne, et le champ
-    // (comme `inLanguage` du balisage) n'en porte qu'une.
+    // Langue : la page dit que les journaux sont « présentés plusieurs fois
+    // par jour en français et en arménien ». Bilinguisme de l'antenne
+    // retenu par l'éditeur du site le 19 octobre 2026.
     city: 'alfortville',
     genre: 'general',
+    langue: ['fr', 'hy'],
     fm: '99.5',
     bitrate: '192',
     sources: [
