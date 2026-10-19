@@ -236,6 +236,12 @@ jobs:
               gh issue close "$n" --comment "Prérendu revenu : les douze pages sont cuites. $RUN_URL"
             done
 
+      # IndexNow, premier temps : recopier les sitemaps EN LIGNE avant que le
+      # déploiement ne les remplace. Après, on soumet l'écart (étape en fin de
+      # job). Ne peut pas échouer : le script n'écrit que des ✓/✗ au log.
+      - name: IndexNow — recopier les sitemaps en ligne
+        run: node scripts/indexnow.mjs --save "$RUNNER_TEMP/sitemaps-avant"
+
       - name: Deploy to Firebase Hosting
         env:
           # Dedicated deploy identity (github-action-*), Firebase Hosting Admin
@@ -333,3 +339,12 @@ jobs:
           probe "https://armenianews.org/agenda/" 301 || fail=1
           probe "https://armenianews.org/fr/" 301 || fail=1
           exit $fail
+
+      # IndexNow, second temps : prévenir Bing des pages nouvelles ou changées
+      # (au jour près — scripts/lib/indexnow.mjs). Seul canal pour le .ch, dont
+      # le quota de soumission manuelle dans Bing Webmaster Tools est de ZÉRO.
+      # Après la sonde, pour ne jamais annoncer une page encore absente du CDN.
+      # Un refus n'échoue pas le job : le signe est « ✗ indexnow » au log.
+      - name: IndexNow — soumettre les pages nouvelles
+        if: success()
+        run: node scripts/indexnow.mjs --since "$RUNNER_TEMP/sitemaps-avant"

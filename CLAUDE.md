@@ -1370,6 +1370,12 @@ de production servent toujours depuis la racine de leur domaine.
     sa propre propriété (« Armenia News », `G-N6STD6Z5CC`), créée le 29 juillet
     2026 — elle démarre donc vide, et le trafic .org antérieur reste chez
     « Arménie Info ». Cette coupure est attendue, ce n'est pas une perte.
+- **IndexNow prévient Bing des pages nouvelles, et c'est le SEUL canal du
+  .ch** : Bing Webmaster Tools lui accorde 0 soumission manuelle par jour.
+  `hourly.yml` recopie les sitemaps en ligne avant le déploiement et soumet
+  l'écart après (`scripts/indexnow.mjs`, au jour près). `public/<clé>.txt`
+  prouve la propriété des deux hôtes : le supprimer ou le renommer fait
+  répondre 403 à chaque envoi, sans que le job échoue — signe : `✗ indexnow`.
 - **Le `lastmod` des sitemaps vient de `meta.json.generatedAt`**, jamais de
   l'heure du build. Un push sur `main` rebâtit sans scraper ; un `lastmod` pris
   au build annoncerait une fraîcheur qui n'a pas eu lieu. C'est la garde que
