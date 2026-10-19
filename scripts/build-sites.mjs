@@ -12,14 +12,14 @@
  * Sortie : dist/ch/ et dist/org/, chacun prêt pour sa cible Firebase.
  */
 import { spawnSync } from 'node:child_process'
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 // LANGS vient de sites.config.js, PAS de src/i18n.jsx : Node ne sait pas
 // parser .jsx (ERR_UNKNOWN_FILE_EXTENSION), et ce script tourne sous Node.
 // C'est la raison pour laquelle la liste a été déplacée à Task 1.
 import { SITES, ALL_LANGS, ALL_VIEWS, LANGS, pathFor } from '../sites.config.js'
-import { replaceMeta } from './lib/site-meta.mjs'
+import { applyAnalytics, replaceMeta } from './lib/site-meta.mjs'
 import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 import { notFoundHtml } from './lib/not-found.mjs'
@@ -121,12 +121,17 @@ async function copyStandalone(site) {
   for (const name of site.standalone ?? []) {
     const src = path.join(root, 'pages', `${name}.${site.id}.html`)
     const dst = path.join(root, 'dist', site.id, `${name}.html`)
+    let html
     try {
-      await copyFile(src, dst)
+      html = await readFile(src, 'utf-8')
     } catch {
       console.error(`pages/${name}.${site.id}.html introuvable — build interrompu.`)
       process.exit(1)
     }
+    // GA4 + beacon de CETTE vitrine, par le même générateur que les pages
+    // React : un ID écrit à la main dans la carte serait celui du voisin le
+    // jour où l'on recopie une carte d'un site à l'autre.
+    await writeFile(dst, applyAnalytics(html, site.id))
     console.log(`  → dist/${site.id}/${name}.html`)
   }
 }

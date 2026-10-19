@@ -26,6 +26,61 @@ import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
 import { agendaGuardChecks } from './lib/agenda-guard.mjs'
 import { loadBriefs, briefLangHrefs } from './lib/brief-pages.mjs'
 import { cultureLangHrefs } from './lib/culture-pages.mjs'
+
+// Les contrôles d'audience (GA4 + beacon Cloudflare) d'une page de la vitrine
+// `site`. Partagés entre les pages React et les cartes de liens de pages/ :
+// ce sont les cartes qu'on partage sur les réseaux, et elles sont restées sans
+// mesure jusqu'au 19 octobre 2026 parce qu'aucun contrôle ne les regardait.
+function analyticsChecks(site, html) {
+  const count = (re) => (html.match(re) || []).length
+  return [
+    // GA4 : même piège que le beacon, et il a été réel. L'ID était en dur
+    // dans index.html et ga-init.js — deux fichiers partagés — donc le .org
+    // se mesurait dans la propriété du .ch. Un `includes` sur un ID unique
+    // aurait validé cet état exact. On compte donc DEUX occurrences (l'une
+    // dans data-ga-id, l'autre dans l'URL de gtag.js) et on interdit
+    // explicitement l'ID du voisin.
+    [
+      site.gaMeasurementId ? `GA4 ${site.id} (${site.gaMeasurementId})` : 'sans GA4',
+      site.gaMeasurementId
+        ? count(new RegExp(site.gaMeasurementId, 'g')) === 2
+        : !html.includes('googletagmanager.com'),
+    ],
+    [
+      'aucun ID GA4 étranger',
+      Object.values(SITES)
+        .filter((s) => s.id !== site.id && s.gaMeasurementId)
+        .every((s) => !html.includes(s.gaMeasurementId)),
+    ],
+    // L'ordre des deux balises est ce qui rend le Consent Mode effectif :
+    // ga-init.js (synchrone) doit précéder gtag.js (async), sinon le premier
+    // hit part sans état de consentement. Inversées, les deux balises restent
+    // présentes et le contrôle ci-dessus passerait sans rien voir.
+    [
+      'ga-init.js avant gtag.js',
+      !site.gaMeasurementId ||
+        (html.indexOf('/ga-init.js') !== -1 &&
+          html.indexOf('/ga-init.js') < html.indexOf('googletagmanager.com/gtag/js')),
+    ],
+    // Le beacon Cloudflare porte le jeton de SA vitrine, et rien d'autre.
+    // Le mode d'échec visé n'est pas « absent » mais « celui du voisin » :
+    // une page du .org portant le jeton du .ch se mesure sans erreur, dans le
+    // mauvais tableau de bord, et rien ne le signale.
+    [
+      site.cfBeaconToken ? `beacon ${site.id} (${site.cfBeaconToken.slice(0, 8)}…)` : 'sans beacon',
+      site.cfBeaconToken
+        ? count(new RegExp(site.cfBeaconToken, 'g')) === 1
+        : !html.includes('static.cloudflareinsights.com'),
+    ],
+    [
+      'aucun jeton beacon étranger',
+      Object.values(SITES)
+        .filter((s) => s.id !== site.id && s.cfBeaconToken)
+        .every((s) => !html.includes(s.cfBeaconToken)),
+    ],
+  ]
+}
+
 import { briefLangsByDate, briefAlternates } from './lib/brief-links.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -121,50 +176,7 @@ for (const site of Object.values(SITES)) {
         // — aucun autre lint ni test unitaire ne lit le ld+json du build, donc
         // ce contrôle est le seul à voir le fichier réellement déployé.
         ...agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }),
-        // GA4 : même piège que le beacon, et il a été réel. L'ID était en dur
-        // dans index.html et ga-init.js — deux fichiers partagés — donc le .org
-        // se mesurait dans la propriété du .ch. Un `includes` sur un ID unique
-        // aurait validé cet état exact. On compte donc DEUX occurrences (l'une
-        // dans data-ga-id, l'autre dans l'URL de gtag.js) et on interdit
-        // explicitement l'ID du voisin.
-        [
-          site.gaMeasurementId ? `GA4 ${site.id} (${site.gaMeasurementId})` : 'sans GA4',
-          site.gaMeasurementId
-            ? count(new RegExp(site.gaMeasurementId, 'g')) === 2
-            : !html.includes('googletagmanager.com'),
-        ],
-        [
-          'aucun ID GA4 étranger',
-          Object.values(SITES)
-            .filter((s) => s.id !== site.id && s.gaMeasurementId)
-            .every((s) => !html.includes(s.gaMeasurementId)),
-        ],
-        // L'ordre des deux balises est ce qui rend le Consent Mode effectif :
-        // ga-init.js (synchrone) doit précéder gtag.js (async), sinon le premier
-        // hit part sans état de consentement. Inversées, les deux balises restent
-        // présentes et le contrôle ci-dessus passerait sans rien voir.
-        [
-          'ga-init.js avant gtag.js',
-          !site.gaMeasurementId ||
-            (html.indexOf('/ga-init.js') !== -1 &&
-              html.indexOf('/ga-init.js') < html.indexOf('googletagmanager.com/gtag/js')),
-        ],
-        // Le beacon Cloudflare porte le jeton de SA vitrine, et rien d'autre.
-        // Le mode d'échec visé n'est pas « absent » mais « celui du voisin » :
-        // une page du .org portant le jeton du .ch se mesure sans erreur, dans le
-        // mauvais tableau de bord, et rien ne le signale.
-        [
-          site.cfBeaconToken ? `beacon ${site.id} (${site.cfBeaconToken.slice(0, 8)}…)` : 'sans beacon',
-          site.cfBeaconToken
-            ? count(new RegExp(site.cfBeaconToken, 'g')) === 1
-            : !html.includes('static.cloudflareinsights.com'),
-        ],
-        [
-          'aucun jeton beacon étranger',
-          Object.values(SITES)
-            .filter((s) => s.id !== site.id && s.cfBeaconToken)
-            .every((s) => !html.includes(s.cfBeaconToken)),
-        ],
+        ...analyticsChecks(site, html),
         // Même mode d'échec pour la vérification Search Console : une page portant
         // le jeton de l'autre vitrine se déploie sans erreur et ne valide jamais.
         [
@@ -320,6 +332,7 @@ for (const site of Object.values(SITES)) {
             `<meta property="og:image:${prop}" content="[^"]+"`,
           ).test(lien),
         ]),
+        ...analyticsChecks(site, lien),
         [
           'aucun host ni carte du voisin',
           Object.values(SITES)

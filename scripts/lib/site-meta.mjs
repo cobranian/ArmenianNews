@@ -448,6 +448,24 @@ export function gaTag(siteId) {
   )
 }
 
+// Les deux mesures d'audience d'une vitrine, posées à leurs marqueurs. Sert
+// au HTML source (via applyMeta) ET aux cartes de liens de pages/, que
+// site-meta ne voit pas autrement : ce sont elles qu'on partage sur Facebook
+// et WhatsApp, et sans balise l'origine de ce trafic était perdue — la visite
+// arrivait sur l'accueil avec la carte pour seul référent.
+//
+// Refus, et pas un remplacement silencieux : sans ces marqueurs la page
+// perdrait sa mesure d'audience sans qu'aucun build ne s'en plaigne.
+export function applyAnalytics(html, siteId) {
+  if (!html.includes(BEACON_MARKER)) {
+    throw new Error(`marqueur ${BEACON_MARKER} absent du HTML — page sans analytics, refus`)
+  }
+  if (!html.includes(GA_MARKER)) {
+    throw new Error(`marqueur ${GA_MARKER} absent du HTML — page sans GA4, refus`)
+  }
+  return html.replace(BEACON_MARKER, beaconTag(siteId)).replace(GA_MARKER, gaTag(siteId))
+}
+
 const setLang = (html, lang) => html.replace(/<html\s+lang="[^"]*"/, `<html lang="${lang}"`)
 
 // Pour le HTML SOURCE (index.html du dépôt), qui porte les marqueurs.
@@ -455,19 +473,10 @@ export function applyMeta(html, { siteId, lang, view = 'home' }) {
   if (!html.includes(META_MARKER)) {
     throw new Error(`marqueur ${META_MARKER} absent du HTML — page sans métadonnées, refus`)
   }
-  // Refus, et pas un remplacement silencieux : sans ce marqueur les deux
-  // vitrines perdraient leur mesure d'audience sans qu'aucun build ne s'en
-  // plaigne.
-  if (!html.includes(BEACON_MARKER)) {
-    throw new Error(`marqueur ${BEACON_MARKER} absent du HTML — page sans analytics, refus`)
-  }
-  if (!html.includes(GA_MARKER)) {
-    throw new Error(`marqueur ${GA_MARKER} absent du HTML — page sans GA4, refus`)
-  }
-  return setLang(html, lang)
-    .replace(META_MARKER, headFor({ siteId, lang, view }).trimStart())
-    .replace(BEACON_MARKER, beaconTag(siteId))
-    .replace(GA_MARKER, gaTag(siteId))
+  return applyAnalytics(setLang(html, lang), siteId).replace(
+    META_MARKER,
+    headFor({ siteId, lang, view }).trimStart(),
+  )
 }
 
 // Pour le HTML DÉJÀ BÂTI, qui porte les sentinelles. Idempotent : rejouable
