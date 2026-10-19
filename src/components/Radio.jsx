@@ -58,13 +58,13 @@ const YERAZ_PROXY = 'https://radio-yeraz-proxy.cobranian.workers.dev/'
  *   forme `eu1.stream4cast.com:8070` : c'est le MÊME DNAS, même 401.
  *
  * Ce qu'une station marquée `offAir` fait : elle reste listée et comptée —
- * retirer une puce ferait mentir les quatorze textes qui écrivent « quinze » en
+ * retirer une puce ferait mentir les quatorze textes qui écrivent « seize » en
  * toutes lettres dans quatre langues, descriptions Google comprises, et tout
  * serait à refaire à l'envers le jour du retour. Sa puce est simplement inerte
  * et porte « hors antenne ».
  *
  * POUR SAVOIR QUAND RETIRER LE DRAPEAU : `npm run radio-check`. Il interroge
- * les quinze flux et signale les deux écarts — une station muette qui n'est pas
+ * les seize flux et signale les deux écarts — une station muette qui n'est pas
  * marquée, et une station marquée qui rediffuse. Rien d'autre ne le dira : un
  * flux qui meurt chez l'hébergeur ne fait échouer ni test, ni lint, ni build. */
 const STATIONS = [
@@ -131,6 +131,12 @@ const STATIONS = [
   // LES DEUX blocs de firebase.json — la préversion ne joue pas la CSP, donc
   // l'oubli ne se voit qu'en production. Sans CORS lui aussi → `plain`.
   { id: 'tsayn', stream: 'https://cast5.asurahosting.com/proxy/jean/live', plain: true },
+  // Radio A (radioa.net), la radio franco-arménienne de Bourg-lès-Valence,
+  // ajoutée le 19 octobre 2026. Le flux est celui que sert le lecteur de sa
+  // propre page « Écoutez le direct » (data-qtmplayer-file). Shoutcast derrière
+  // nginx, en HTTPS, mais SANS en-tête CORS → `plain`. Hôte ajouté à
+  // `media-src`, dans les deux blocs de firebase.json.
+  { id: 'radioa', stream: 'https://stream.votreradiosurlenet.eu/radioa.mp3', plain: true },
 ]
 
 // Passage automatique à la station suivante quand un flux est indisponible
@@ -714,14 +720,14 @@ export function Radio({ more = true, stepRef = null }) {
   const stationName = (id) => t(`radio.st.${id}`)
 
   // Sous 640px, la rangée de puces passe en `nowrap` + `overflow-x` (voir
-  // global.css) : deux stations sur quinze se voient à 360px, trois à 560px, et
+  // global.css) : deux stations sur seize se voient à 360px, trois à 560px, et
   // `scrollbar-width: none` fait qu'aucun indice ne dit que les autres
   // existent. Replié = cet état, inchangé ; déplié = la mise en page de BASE
   // reprend (`flex-wrap: wrap`), celle que le site sert déjà partout au-dessus
   // de 640px. On ne dessine donc rien de neuf, on rend atteignable ce qui
   // existe.
   //
-  // Les quinze puces restent en permanence dans le `radiogroup` : replier change
+  // Les seize puces restent en permanence dans le `radiogroup` : replier change
   // la forme, jamais la composition. Rien n'est retiré aux lecteurs d'écran, et
   // il n'y a aucun radio enfermé dans un conteneur fermé — c'est ce qui écarte
   // <details>, qui aurait coupé le groupe en deux.
@@ -729,10 +735,10 @@ export function Radio({ more = true, stepRef = null }) {
   const stationsRef = useRef(null)
   const chipRefs = useRef({})
 
-  // Replié, les quinze stations sont sur un TAMBOUR — la même roue à 360° que le
+  // Replié, les seize stations sont sur un TAMBOUR — la même roue à 360° que le
   // sélecteur de sources d'actualités (`useSourceDrum`), qui boucle : après la
   // quinzième revient la première. Déplié, la roue s'éteint et rend la main à la
-  // grille où les quinze s'affichent à plat. Les deux états servent deux
+  // grille où les seize s'affichent à plat. Les deux états servent deux
   // gestes : faire défiler pour écouter de proche en proche, ou tout voir d'un
   // coup pour choisir.
   //
@@ -897,7 +903,7 @@ export function Radio({ more = true, stepRef = null }) {
               `radio.page.*`, les descriptions de src/seo.js, les cartes de
               pages/ — parce que `t()` ne sait pas interpoler, et
               `test/radio-count.test.mjs` existe pour les empêcher de mentir
-              ensemble. Écrire « quinze » dans une clé de plus ferait entrer un
+              ensemble. Écrire « seize » dans une clé de plus ferait entrer un
               quinzième texte dans cette famille. L'injecter le rend incapable
               de mentir, et n'ajoute rien à tenir à jour. La clé ne porte donc
               que les mots.

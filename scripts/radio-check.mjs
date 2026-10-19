@@ -1,4 +1,4 @@
-// npm run radio-check — les douze flux radio diffusent-ils vraiment ?
+// npm run radio-check — les flux radio de STATIONS diffusent-ils vraiment ?
 //
 // POURQUOI CE SCRIPT EXISTE. Un flux qui meurt chez son hébergeur ne fait
 // échouer NI test, NI lint, NI build : le dépôt ne contient qu'une URL, et une
@@ -9,7 +9,7 @@
 //
 // IL N'EST PAS DANS `npm test`, ET C'EST DÉLIBÉRÉ. Les 174 tests du dépôt ne
 // touchent jamais le réseau — c'est ce qui les rend rapides et sûrs en CI. Un
-// contrôle qui dépend de douze hébergeurs tiers échouerait sur un hoquet
+// contrôle qui dépend d'une quinzaine d'hébergeurs tiers échouerait sur un hoquet
 // réseau, sur une IP de datacenter bloquée (Voice of Van refuse les IP de CI,
 // voir Radio.jsx), ou pendant la maintenance nocturne d'une régie à Erevan —
 // et un test qui échoue pour des raisons étrangères au dépôt finit par être
@@ -282,7 +282,7 @@ async function main() {
   console.log(
     '\nUne station muette se marque « offAir: true » dans le tableau STATIONS de\n' +
       "src/components/Radio.jsx : sa puce devient inerte et porte « hors antenne »,\n" +
-      'sans toucher au compte de douze écrit en toutes lettres dans quatorze textes.\n',
+      'sans toucher au nombre de stations écrit en toutes lettres dans les textes du site.\n',
   )
   process.exitCode = 1
 }

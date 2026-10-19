@@ -1,4 +1,4 @@
-// Les faits sourcés sur les quinze stations du lecteur.
+// Les faits sourcés sur les seize stations du lecteur.
 //
 // Module PLAT (pas de JSX) : test/stations.test.mjs doit le lire depuis Node.
 // Même raison que src/seo.js, src/site.js, src/worldPlace.js, src/hyDate.js.
@@ -215,7 +215,7 @@ export const STATION_FACTS = {
     ],
   },
   tsayn: {
-    // Beyrouth — la seule station du lecteur hors d'Arménie.
+    // Beyrouth.
     //
     // FRÉQUENCE VOLONTAIREMENT ABSENTE : trois sources, trois réponses. Son
     // propre site annonce « FM 104.9 - 106.7 MHZ », un annuaire dit 87.9, un
@@ -237,6 +237,29 @@ export const STATION_FACTS = {
       'https://yeridasartoutiantsayne.com/',
       'https://mytuner-radio.com/fr/radio/yeridasartoutian-tsayne-446353/',
       'https://cast5.asurahosting.com/proxy/jean/live',
+    ],
+  },
+  radioa: {
+    // Radio A, Bourg-lès-Valence (Drôme), fondée en 1982 — ville, année et
+    // 97.8 FM sont écrits par la station elle-même sur son accueil (en
+    // arménien occidental : « Պուրկ Լէ Վալանս », « 97.8FM »). L'annuaire
+    // Radio Browser la nomme « Radio A 97.8 » : concordance.
+    //
+    // Genre : sa propre grille (/chronologie/) mêle informations, chansons,
+    // poésie, histoire, émission de l'Église évangélique — un généraliste.
+    //
+    // LANGUE VOLONTAIREMENT ABSENTE : la station se dit « franco-arménienne »
+    // et sa grille est titrée dans les deux langues, mais rien ne dit dans
+    // laquelle on parle à l'antenne. Deviner « hy » serait une approximation.
+    city: 'bourglesvalence',
+    genre: 'general',
+    fm: '97.8',
+    bitrate: '120',
+    sources: [
+      'https://radioa.net/',
+      'https://radioa.net/chronologie/',
+      'https://www.radio-browser.info/history/047e7524-1f31-4dcb-9388-2ce0e665c109',
+      'https://stream.votreradiosurlenet.eu/radioa.mp3',
     ],
   },
 }

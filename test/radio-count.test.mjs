@@ -28,12 +28,12 @@ const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 // src/i18n.jsx vers sites.config.js. src/seo.js, lui, est un module plat : on
 // l'importe.
 const NOMBRES = {
-  fr: 'Quinze',
-  en: 'Fifteen',
-  hy: 'Տասնհինգ',
-  ru: 'Пятнадцать',
+  fr: 'Seize',
+  en: 'Sixteen',
+  hy: 'Տասնվեց',
+  ru: 'Шестнадцать',
 }
-const ATTENDU = 15
+const ATTENDU = 16
 
 // Les endroits à mettre à jour quand ce nombre change. Enuméré dans CHAQUE
 // message d'échec : un message qui n'en cite qu'une partie fait réparer une

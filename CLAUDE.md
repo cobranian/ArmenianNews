@@ -85,7 +85,7 @@ npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans ré
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 npm run hydration-check # après build + prerender : les 16 pages s'hydratent-elles sans écart ? (local, Chrome)
-npm run radio-check  # les 12 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
+npm run radio-check  # les 16 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
@@ -813,7 +813,7 @@ dernier revient le premier, dans les deux sens. Deux appelants s'en servent :
 | Appelant | Ce qui tourne | État replié / déplié |
 |---|---|---|
 | `NewsBrowser.jsx` | jusqu'à 9 rubriques (une vide est masquée) | — |
-| `Radio.jsx` | les 15 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
+| `Radio.jsx` | les 16 stations | déplié = grille à plat, la roue s'éteint (`enabled: false`) |
 
 Cinq choses à savoir avant d'y toucher, toutes payées une fois :
 
@@ -856,9 +856,9 @@ refaire quand une rubrique s'ajoute ou se vide, pas une constante. Et le coeffic
 à 4vw le terme médian vaut 56px sur un écran de 1400px, donc le plafond n'est
 jamais atteint.
 
-**Les quinze stations sont dépliables (mobile).** `.radio__stations` porte déjà
+**Les seize stations sont dépliables (mobile).** `.radio__stations` porte déjà
 `flex-wrap: wrap` en règle de base ; le bloc `≤640px` le force en `nowrap` +
-`overflow-x`, ce qui ne montrait que deux stations sur quinze sans le moindre
+`overflow-x`, ce qui ne montrait que deux stations sur seize sans le moindre
 indice. La bascule rend simplement atteignable la mise en page que le site sert
 déjà partout ailleurs. **Le nombre vient de `STATIONS.length` et entre par un
 gabarit `{n}`** dans la chaîne i18n — jamais écrit à la main, pour deux raisons :
@@ -1569,7 +1569,7 @@ de production servent toujours depuis la racine de leur domaine.
   premier signalement vient d'un lecteur qui clique et n'entend rien : ni test,
   ni lint, ni build ne regardent le réseau. D'où `npm run radio-check`, à
   lancer depuis une IP résidentielle (Voice of Van refuse les IP de
-  datacenter). Il contrôle les quinze flux **dans les deux sens** — une station
+  datacenter). Il contrôle les seize flux **dans les deux sens** — une station
   muette non marquée, et une station marquée qui rediffuse ; sans ce second
   sens, un `offAir` resterait posé pour toujours après le retour de la station.
 
@@ -1604,7 +1604,7 @@ de production servent toujours depuis la racine de leur domaine.
   ```
 
   **Marquer plutôt que retirer** : une station retirée ferait mentir les
-  quatorze textes qui écrivent « quinze » en toutes lettres dans quatre langues,
+  quatorze textes qui écrivent « seize » en toutes lettres dans quatre langues,
   descriptions Google comprises, et tout serait à refaire à l'envers au retour.
   `offAir: true` rend la puce inerte sans toucher au compte.
 - **Articles Culture : neuf pièges silencieux** (un brouillon par jour,
