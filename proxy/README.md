@@ -156,3 +156,31 @@ curl "https://asbarez-proxy.<your-subdomain>.workers.dev/?ed=en&path=%2Fwp-json%
 ```bash
 ASBAREZ_PROXY="https://asbarez-proxy.<your-subdomain>.workers.dev" npm run scrape
 ```
+
+---
+
+# Hourly trigger (`hourly-trigger-worker.js`)
+
+GitHub's own cron sheds runs under load: `hourly.yml` fired only 5–6 times a day
+(14–19 October 2026). This Worker calls the workflow's `workflow_dispatch` at
+`:23` every hour. It has no public URL — the Cron Trigger is its only entry
+point. The GitHub schedule stays as a fallback.
+
+## Setup
+
+1. Create a **fine-grained** personal access token on GitHub (Settings →
+   Developer settings → Fine-grained tokens): repository access *Only select
+   repositories* → `ArmenianNews`; permission **Actions: Read and write**,
+   nothing else. Note its expiry date.
+2. Deploy: `cd proxy && npx wrangler deploy -c wrangler-trigger.toml`
+3. Add the token as a secret named `GH_TOKEN` — Cloudflare dashboard → Workers
+   → `hourly-trigger` → Settings → Variables and Secrets (type *Secret*), or
+   `npx wrangler secret put GH_TOKEN -c wrangler-trigger.toml`.
+
+## Check it works
+
+After the next `:23`, `gh run list --workflow=hourly.yml --event=workflow_dispatch`
+shows a new run. A failed dispatch throws, so it appears as an error in the
+Worker's logs: `401` = token expired or wrong, `404` = workflow file renamed,
+`422` = `workflow_dispatch` removed from it (`test/hourly-trigger.test.mjs`
+guards the last two).

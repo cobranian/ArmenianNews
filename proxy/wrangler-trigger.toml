@@ -1,0 +1,17 @@
+# Hourly trigger for the snapshot workflow — see the header of
+# hourly-trigger-worker.js. Deploy: cd proxy && npx wrangler deploy -c wrangler-trigger.toml
+# then set the GH_TOKEN secret (dashboard: Worker → Settings → Variables and
+# Secrets, type "Secret"), or: npx wrangler secret put GH_TOKEN -c wrangler-trigger.toml
+name = "hourly-trigger"
+main = "hourly-trigger-worker.js"
+compatibility_date = "2026-07-01"
+# No public URL: the cron is the only entry point.
+workers_dev = false
+
+[triggers]
+# Same minute as the GitHub schedule in hourly.yml, off the busy top of the hour.
+crons = ["23 * * * *"]
+
+# Keep invocation logs, so a 401 (expired token) can be read after the fact.
+[observability]
+enabled = true

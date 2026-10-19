@@ -73,7 +73,7 @@ npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : l
 npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 528 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 560 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -90,7 +90,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **528 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **560 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -941,6 +941,16 @@ dispatch manuel et sur push vers `main` :
   pour qu'un changement de code ou de docs parte en prod vite, sans passer 3-4 min
   à re-scraper ni créer un snapshot en trop. Pour un snapshot frais à la demande,
   lancez le run manuel `workflow_dispatch`.
+
+**« Toutes les heures » n'est PAS tenu par GitHub** : son cron saute des
+passages sous charge — 5 à 6 par jour, même décalé à `:23` (mesuré du 14 au
+19 octobre 2026), tous les runs « success ». Le déclencheur principal est donc
+le Worker Cloudflare `hourly-trigger` (`proxy/hourly-trigger-worker.js`), qui
+appelle `workflow_dispatch` à `:23` avec un jeton GitHub à grain fin
+(`GH_TOKEN`, « Actions: Read and write » sur ce seul dépôt). **Ce jeton
+expire**, et rien ne le dit : le site retombe sur le cron de GitHub. Si les
+instantanés s'espacent (`gh run list --workflow=hourly.yml`), lisez d'abord
+les logs du Worker (un `401` = jeton expiré).
 
 Les deux vitrines se déploient sur **Firebase Hosting**, mais dans **deux
 projets Firebase distincts** — c'est le point le plus surprenant de ce

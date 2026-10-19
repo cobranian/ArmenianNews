@@ -6,6 +6,10 @@ on:
     # load, and :00 is its busiest minute: with '0 * * * *' this job fired only
     # 6 times a day (measured 15–22 September 2026 — gaps of 3 to 6 hours
     # between snapshots), every run reporting success.
+    # Even at :23 it still fired only 5–6 times a day (14–19 October 2026), so
+    # the primary trigger is now the Cloudflare Worker `hourly-trigger`
+    # (proxy/hourly-trigger-worker.js), which calls workflow_dispatch at :23.
+    # This schedule stays as a fallback; an overlap just cancels the older run.
     - cron: '23 * * * *' # every hour (UTC)
   workflow_dispatch: {} # allow manual runs
   push:
