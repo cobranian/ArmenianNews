@@ -537,14 +537,21 @@ Notes:
   reports what the account publishes. To genuinely freshen the wall, **remove or
   replace those accounts by hand** in the `accounts` array. This is a deliberate
   editorial choice, not a bug.
-- It calls the profile-grid feed (`/api/v1/feed/user/<handle>/username/`), **not**
-  `web_profile_info`. The latter is the endpoint every guide online suggests, and
-  it's a trap: it still answers `200` with the account's bio and post *count*, but
-  its `edges` array comes back **empty** — which reads as a working call that found
-  no posts, rather than as a breakage. Don't "fix" the script by switching to it.
-- Instagram's markup and endpoints shift; if a run starts returning
-  `unexpected payload shape`, the endpoint moved — fix it there, don't fall back
-  to scraping the DOM.
+- It sends **no API request of its own**. It opens each profile, scrolls the grid
+  with the mouse wheel at an irregular pace (pauses of 2–4.5 s, occasional longer
+  stops, 8–16 s between profiles), and reads the post batches the page itself
+  receives from `graphql` (`timelineItems` in `scripts/lib/ig-harvest.mjs`). A
+  full run takes ~30–40 min; that slowness is deliberate.
+- Since October 2026, `/api/v1/feed/user/…` (by username *or* by numeric id)
+  **redirects to the home page**: a 200 with HTML, which fails as
+  `Unexpected token '<'`. 27 such failures in a row earned the session a **429**,
+  so the script now stops the round after 3 consecutive failures, or at once on
+  a login/challenge redirect. Don't go back to `web_profile_info` either: it
+  answers `200` with the bio but an **empty** `edges` array.
+- If a run reports `aucun fil de posts reçu par la page de profil`, Instagram
+  renamed the `xdt_api__v1__feed__user_timeline_graphql_connection` key — fix
+  `timelineItems`, don't fall back to scraping the DOM.
+- Images already in `src/data/ig/` are not downloaded again.
 
 ## Articles Culture : relire une PR
 

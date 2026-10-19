@@ -79,3 +79,37 @@ export function stopPaging({ kept, want, freshRaw, cursor }) {
   if (freshRaw === 0) return true // le curseur tourne en rond : que du déjà-vu
   return false
 }
+
+/**
+ * Décode une réponse `graphql` de la page de profil : `null` si ce n'est pas
+ * le fil des posts (la page en tire une quinzaine d'autres), sinon les posts au
+ * format de la récolte et le curseur de la suite (`null` en fin de catalogue).
+ *
+ * Depuis octobre 2026, `/api/v1/feed/user/…` (par nom comme par identifiant)
+ * répond par une REDIRECTION vers l'accueil : 200, du HTML, et un
+ * `JSON.parse` qui échoue sur « <!DOCTYPE ». Le fil vit désormais ici, dans les
+ * réponses que la page reçoit elle-même quand on la fait défiler.
+ *
+ * Aucun filtre sur l'auteur, et c'est voulu : la grille d'un profil montre
+ * aussi les posts en COLLABORATION, dont l'auteur principal est l'autre compte
+ * (sur van.nemra, tous sont signés nemrabandofficial). Un filtre « auteur =
+ * compte visité » a vidé ce compte en silence au premier essai, le 19 oct. 2026.
+ */
+export function timelineItems(json) {
+  const conn = json?.data?.xdt_api__v1__feed__user_timeline_graphql_connection
+  if (!conn) return null
+  const items = (conn.edges || [])
+    .map((e) => e?.node)
+    .filter(Boolean)
+    .map((n) => ({
+      shortcode: n.code,
+      ts: n.taken_at,
+      // Un carrousel n'a pas d'image à lui : c'est sa première diapositive.
+      candidates:
+        n.image_versions2?.candidates || n.carousel_media?.[0]?.image_versions2?.candidates || [],
+      // 1 = photo, 2 = vidéo/reel, 8 = carrousel.
+      isVideo: n.media_type === 2,
+    }))
+  const info = conn.page_info || {}
+  return { items, cursor: info.has_next_page ? info.end_cursor || null : null }
+}

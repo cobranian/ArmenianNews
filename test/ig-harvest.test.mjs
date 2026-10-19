@@ -9,6 +9,7 @@ import {
   pickImage,
   shortcodeOf,
   stopPaging,
+  timelineItems,
   wantedFor,
 } from '../scripts/lib/ig-harvest.mjs'
 
@@ -115,4 +116,57 @@ test('stopPaging s arrete quand la page ne rend que du deja-vu', () => {
 // tronquerait la recolte en silence, avec le symptome d un compte peu actif.
 test('stopPaging poursuit sur une page entierement exclue', () => {
   assert.equal(stopPaging({ kept: 0, want: 9, freshRaw: 24, cursor: 'x' }), false)
+})
+
+// Le fil de la page de profil (graphql), seule source depuis que
+// /api/v1/feed/user/… redirige vers l'accueil (octobre 2026).
+const fil = (edges, page_info = { has_next_page: true, end_cursor: 'C1' }) => ({
+  data: { xdt_api__v1__feed__user_timeline_graphql_connection: { edges, page_info } },
+})
+const noeud = (code, extra = {}) => ({
+  node: {
+    code,
+    taken_at: 1787597326,
+    media_type: 1,
+    user: { username: 'naregjewelry' },
+    image_versions2: { candidates: [{ url: 'w1080', width: 1080 }] },
+    ...extra,
+  },
+})
+
+test('timelineItems : une autre réponse graphql n’est pas le fil', () => {
+  assert.equal(timelineItems({ data: { xdt_viewer: {} } }), null)
+  assert.equal(timelineItems(null), null)
+})
+
+test('timelineItems : photo, reel et carrousel au format de la récolte', () => {
+  const r = timelineItems(
+    fil([
+      noeud('A'),
+      noeud('B', { media_type: 2 }),
+      noeud('C', {
+        media_type: 8,
+        image_versions2: undefined,
+        carousel_media: [{ image_versions2: { candidates: [{ url: 'slide1', width: 1080 }] } }],
+      }),
+    ]),
+  )
+  assert.deepEqual(
+    r.items.map((i) => [i.shortcode, i.isVideo, i.candidates[0].url]),
+    [['A', false, 'w1080'], ['B', true, 'w1080'], ['C', false, 'slide1']],
+  )
+  assert.equal(r.items[0].ts, 1787597326)
+  assert.equal(r.cursor, 'C1')
+})
+
+test('timelineItems : fin de catalogue = curseur nul', () => {
+  const r = timelineItems(fil([noeud('A')], { has_next_page: false, end_cursor: 'X' }))
+  assert.equal(r.cursor, null)
+})
+
+test('timelineItems : garde les posts en collaboration signés par l’autre compte', () => {
+  const r = timelineItems(
+    fil([noeud('A'), noeud('B', { user: { username: 'nemrabandofficial' } }), noeud('C', { user: undefined })]),
+  )
+  assert.deepEqual(r.items.map((i) => i.shortcode), ['A', 'B', 'C'])
 })

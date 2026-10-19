@@ -6,11 +6,12 @@
  * re-shuffles the pool this script writes; without a run, the wall re-serves the
  * same posts forever while looking fresh.
  *
- * It drives a real Chrome on your machine and calls Instagram's own profile-grid
- * feed from inside the logged-in page, so the session cookies ride along. That is
- * ONE request per account, where scraping the grid and then each post for its
- * date would be ~90 navigations — enough for Instagram to cut us off with
- * "Please wait a few minutes".
+ * It drives a real Chrome on your machine and browses like a reader: it opens
+ * each profile, pauses, scrolls the grid with the wheel at an irregular pace,
+ * and reads the post batches (12 at a time) that the page itself receives from
+ * `graphql`. No request of our own is sent — since October 2026 the
+ * `/api/v1/feed/user/…` endpoints redirect to the home page. The slow pace is
+ * the point: a fast run got the session rate-limited (429).
  *
  * Start a Chrome logged into Instagram once (same debug window fb-scrape uses):
  *
@@ -21,26 +22,22 @@
  *   node scripts/ig-scrape.mjs --connect --dry   # report what it finds, write nothing
  *   node scripts/ig-scrape.mjs --connect         # download images + rewrite the pool
  */
-import { readdir, readFile, unlink, writeFile } from 'node:fs/promises'
+import { access, readdir, readFile, unlink, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import puppeteer from 'puppeteer-core'
 import {
   keepable,
-  pageCount,
   pickImage,
   shortcodeOf,
   stopPaging,
+  timelineItems,
   wantedFor,
 } from './lib/ig-harvest.mjs'
 import { encode } from './lib/image.mjs'
 
 const DRY = process.argv.includes('--dry')
 const CONNECT = process.argv.includes('--connect')
-
-// The public web-client id Instagram's own front-end sends on this endpoint.
-// Without it the request comes back 401 even with a valid session.
-const IG_APP_ID = '936619743392459'
 
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -50,6 +47,9 @@ const IG_DIR = path.join(root, 'src/data/ig')
 const PROFILE = path.join(root, '.cache/ig-chrome-profile')
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+// Un lecteur ne défile pas au métronome : chaque pause est tirée dans un
+// intervalle, jamais fixe.
+const pause = (min, max) => sleep(Math.round(min + Math.random() * (max - min)))
 
 // The pool before this run. Accepts the pre-migration `permalinks` shape so the
 // first run can still fall back to it for an account that fails.
@@ -124,84 +124,79 @@ if (!cookies.some((c) => c.name === 'sessionid' && c.value)) {
   process.exit(1)
 }
 
-// One request per page, issued from the page so the session cookies ride along.
-// Throws on a non-200 — the caller degrades that account.
-//
-// This is the profile-grid feed. Its sibling `web_profile_info` is the endpoint
-// you'll find in every guide online, and it still answers 200 with the account's
-// bio and post COUNT — but its `edges` array now comes back empty, so it reads as
-// a working call that found no posts. Don't go back to it.
-const harvestPage = (handle, count, maxId) =>
-  page.evaluate(
-    async (h, appId, n, cursor) => {
-      const qs = new URLSearchParams({ count: String(n) })
-      if (cursor) qs.set('max_id', cursor)
-      const res = await fetch(
-        `/api/v1/feed/user/${encodeURIComponent(h)}/username/?${qs}`,
-        { headers: { 'x-ig-app-id': appId }, credentials: 'include' },
-      )
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const json = await res.json()
-      if (!Array.isArray(json?.items)) throw new Error('unexpected payload shape')
-      return {
-        items: json.items.map((it) => ({
-          shortcode: it.code,
-          ts: it.taken_at,
-          // A carousel post carries no image of its own — its first slide does.
-          // The full candidate list travels: picking a size is a Node-side
-          // decision (scripts/lib/ig-harvest.mjs), not a browser-side one.
-          candidates:
-            it.image_versions2?.candidates ||
-            it.carousel_media?.[0]?.image_versions2?.candidates ||
-            [],
-          // 1 = photo, 2 = video/reel, 8 = carousel.
-          isVideo: it.media_type === 2,
-        })),
-        nextMaxId: json.next_max_id || null,
-      }
-    },
-    handle,
-    IG_APP_ID,
-    count,
-    maxId || null,
-  )
+// Une session renvoyée vers la connexion ou un « challenge » ne se répare pas
+// en continuant : les comptes suivants échoueraient tous, et chaque visite de
+// plus aggrave le soupçon d'Instagram. On arrête la tournée.
+class SessionBlocked extends Error {}
 
-// Suit `next_max_id` jusqu'à tenir `want` posts NON EXCLUS, ou jusqu'à
-// épuisement du compte. Une boucle de pagination sur un compte dont on ignore
-// la taille est un chèque en blanc : `wantedFor` plafonne déjà à MAX_COUNT, et
-// la pause entre les pages est la même précaution que celle entre les comptes —
-// ce script existe parce qu'Instagram coupe l'accès sur un rythme trop soutenu.
+// Visite le profil comme un lecteur et lit les paquets de posts que la page
+// reçoit. Rien n'est demandé directement : on défile, la page charge la suite.
 async function harvestAll(handle, want) {
-  const per = pageCount(want, EXCLUDE.size)
-  const bruts = new Set() // tout shortcode rencontré, exclus compris
-  const vus = new Map() // ce qu'on garde
-  let cursor = null
-  let pages = 0
-  for (;;) {
-    const { items, nextMaxId } = await harvestPage(handle, per, cursor)
-    pages++
-
-    // La progression se mesure sur les shortcodes BRUTS, pas sur ce qui est
-    // retenu : une page de posts neufs mais tous exclus est une vraie
-    // progression (les posts valides attendent à la page suivante), pas une
-    // stagnation. Voir stopPaging (scripts/lib/ig-harvest.mjs).
-    let freshRaw = 0
-    for (const it of items) {
-      if (!it.shortcode || !it.ts || bruts.has(it.shortcode)) continue
-      bruts.add(it.shortcode)
-      freshRaw++
+  const batches = []
+  const onResponse = async (res) => {
+    if (!res.url().includes('/graphql')) return
+    let json
+    try {
+      json = await res.json()
+    } catch {
+      return // pas du JSON, ou corps déjà libéré : ce n'est pas le fil
     }
-    for (const it of keepable(items, EXCLUDE)) {
-      if (it.shortcode && it.ts && !vus.has(it.shortcode)) vus.set(it.shortcode, it)
-    }
-
-    cursor = nextMaxId
-    if (stopPaging({ kept: vus.size, want, freshRaw, cursor })) break
-    // Même précaution qu'entre les comptes : ce script existe parce
-    // qu'Instagram coupe l'accès sur un rythme trop soutenu.
-    await sleep(1500)
+    const batch = timelineItems(json)
+    if (batch) batches.push(batch)
   }
-  return { items: [...vus.values()], pages }
+  page.on('response', onResponse)
+  try {
+    await page.goto(`https://www.instagram.com/${encodeURIComponent(handle)}/`, {
+      waitUntil: 'domcontentloaded',
+      timeout: 60000,
+    })
+    if (/\/accounts\/login|\/challenge\//.test(page.url())) {
+      throw new SessionBlocked(`redirigé vers ${new URL(page.url()).pathname}`)
+    }
+    // Le premier paquet arrive avec la page ; un lecteur regarde l'en-tête
+    // du profil avant de défiler.
+    for (let t = 0; t < 30 && !batches.length; t++) await sleep(500)
+    await pause(2500, 5000)
+
+    const bruts = new Set() // tout shortcode rencontré, exclus compris
+    const vus = new Map() // ce qu'on garde
+    let lus = 0
+    let idle = 0
+    for (;;) {
+      if (lus < batches.length) {
+        idle = 0
+        // La progression se mesure sur les shortcodes BRUTS, pas sur ce qui
+        // est retenu : un paquet de posts neufs mais tous exclus est une
+        // vraie progression. Voir stopPaging (scripts/lib/ig-harvest.mjs).
+        let freshRaw = 0
+        let cursor = null
+        for (; lus < batches.length; lus++) {
+          const { items, cursor: c } = batches[lus]
+          for (const it of items) {
+            if (!it.shortcode || !it.ts || bruts.has(it.shortcode)) continue
+            bruts.add(it.shortcode)
+            freshRaw++
+          }
+          for (const it of keepable(items, EXCLUDE)) {
+            if (it.shortcode && it.ts && !vus.has(it.shortcode)) vus.set(it.shortcode, it)
+          }
+          cursor = c
+        }
+        if (stopPaging({ kept: vus.size, want, freshRaw, cursor })) break
+      } else if (++idle > 4) {
+        break // plus rien ne charge : fin de grille, ou la page s'est tue
+      }
+      // Un coup de molette d'amplitude variable, puis le temps de regarder ;
+      // de temps en temps, un arrêt plus long sur un post.
+      await page.mouse.wheel({ deltaY: Math.round(500 + Math.random() * 600) })
+      await pause(2000, 4500)
+      if (Math.random() < 0.15) await pause(4000, 9000)
+    }
+    if (!batches.length) throw new Error('aucun fil de posts reçu par la page de profil')
+    return { items: [...vus.values()], pages: batches.length }
+  } finally {
+    page.off('response', onResponse)
+  }
 }
 
 // Newest first. Instagram floats PINNED posts to the head of the list whatever
@@ -209,17 +204,28 @@ async function harvestAll(handle, want) {
 const newest = (items, want) => [...items].sort((a, b) => b.ts - a.ts).slice(0, want)
 
 const results = []
+// Trois échecs d'affilée ne sont plus trois comptes en panne mais une session
+// bridée : la run du 19 octobre 2026 a enchaîné 27 échecs, et c'est cette
+// rafale qui a valu le 429. On arrête la tournée, les comptes restants gardent
+// leurs posts précédents.
+const MAX_ECHECS = 3
+let echecs = 0
+let arret = null
+let visites = 0
 for (const acc of pool.accounts) {
-  if (ONLY && !ONLY.includes(acc.handle)) {
+  if ((ONLY && !ONLY.includes(acc.handle)) || arret) {
     results.push({ acc, posts: [], ok: false, skipped: true })
     continue
   }
+  // Entre deux profils, le temps qu'un lecteur passe à autre chose.
+  if (visites++) await pause(8000, 16000)
   const want = wantedFor(acc)
   try {
     const { items, pages } = await harvestAll(acc.handle, want)
     const posts = newest(items, want)
     if (!posts.length) throw new Error('no posts returned')
     results.push({ acc, posts, ok: true })
+    echecs = 0
     const newestDate = new Date(posts[0].ts * 1000).toISOString().slice(0, 10)
     const p = pages > 1 ? `, ${pages} pages` : ''
     console.log(`  ✓ ${acc.handle} (${posts.length} posts, newest ${newestDate}${p})`)
@@ -232,9 +238,10 @@ for (const acc of pool.accounts) {
   } catch (err) {
     results.push({ acc, posts: [], ok: false })
     console.log(`  ✗ ${acc.handle}: ${err.message} — keeping previous posts`)
+    if (err instanceof SessionBlocked) arret = `session bloquée (${err.message})`
+    else if (++echecs >= MAX_ECHECS) arret = `${echecs} échecs d'affilée`
+    if (arret) console.log(`  ⛔ tournée arrêtée : ${arret} — les comptes restants gardent leurs posts`)
   }
-  // Stay under Instagram's rate limiter.
-  await sleep(2000)
 }
 
 const okCount = results.filter((r) => r.ok).length
@@ -272,6 +279,12 @@ if (!okCount) {
 const permalink = (p) =>
   `https://www.instagram.com/${p.isVideo ? 'reel' : 'p'}/${p.shortcode}/`
 
+// Une image déjà sur disque n'est pas retéléchargée : un shortcode désigne
+// toujours la même photo, et retélécharger ~3 800 fichiers en rafale est tout sauf
+// le comportement d'un lecteur. Un .jpg resté de la migration est réencodé.
+const present = (p) =>
+  access(path.join(IG_DIR, `${p.shortcode}.webp`)).then(() => true, () => false)
+
 // Instagram's CDN serves the image to anyone with the URL, but wants a plausible
 // referer. A failed download is NOT fatal: the post stays in the pool and its
 // tile falls back to the deterministic Armenian motif (src/components/motifs.jsx).
@@ -295,6 +308,7 @@ async function download(p) {
 }
 
 const accounts = []
+let reused = 0
 for (const { acc, posts, ok } of results) {
   if (!ok) {
     // Degrade this account alone, exactly as scrape.mjs backfills a dead source.
@@ -304,8 +318,12 @@ for (const { acc, posts, ok } of results) {
   const kept = []
   for (const p of posts) {
     try {
-      const bytes = await download(p)
-      console.log(`  ✓ ${p.shortcode}.webp (${(bytes / 1024).toFixed(0)} KB)`)
+      if (await present(p)) {
+        reused++
+      } else {
+        const bytes = await download(p)
+        console.log(`  ✓ ${p.shortcode}.webp (${(bytes / 1024).toFixed(0)} KB)`)
+      }
     } catch (err) {
       console.log(`  ✗ ${p.shortcode}.webp: ${err.message} — keeping motif fallback`)
     }
@@ -322,6 +340,7 @@ for (const { acc, posts, ok } of results) {
 const json = { ...pool, accounts }
 await writeFile(POOL, JSON.stringify(json, null, 2) + '\n')
 console.log(`\n✓ wrote src/data/instagram.json (${accounts.reduce((n, a) => n + a.posts.length, 0)} posts)`)
+console.log(`✓ ${reused} image(s) déjà présente(s), non retéléchargée(s)`)
 
 // Drop images no post points at any more, so replacing the pool doesn't leave
 // the bundle carrying every photo we have ever harvested.

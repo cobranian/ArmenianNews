@@ -1003,12 +1003,14 @@ de production servent toujours depuis la racine de leur domaine.
   (Cloudflare / anti-scraping) — d'où la chaîne de sources pour le newswire et,
   pour Instagram, une récolte **locale** (`npm run ig-scrape`) depuis un Chrome
   connecté, à relancer à la main de temps en temps.
-- `ig-scrape.mjs` interroge le flux de la grille de profil,
-  `/api/v1/feed/user/<handle>/username/`. **N'y substituez pas
-  `web_profile_info`** (l'endpoint que conseillent tous les tutoriels) : il
-  répond bien 200, avec la bio et le *nombre* de posts, mais son tableau `edges`
-  revient **vide** — ça se lit comme un compte sans publication, pas comme une
-  panne. Le piège est silencieux.
+- `ig-scrape.mjs` **n'appelle plus aucune API** : il ouvre chaque profil, défile
+  à la molette à rythme irrégulier et lit les réponses `graphql` que la page
+  reçoit (`timelineItems`, `scripts/lib/ig-harvest.mjs`). Depuis octobre 2026,
+  `/api/v1/feed/user/…` — par nom comme par identifiant — **redirige vers
+  l'accueil** : 200, du HTML, « Unexpected token '<' » sur les 27 comptes. Les
+  27 échecs enchaînés ont valu un **429** à la session ; d'où la lenteur voulue
+  (~30-40 min la tournée) et l'arrêt après 3 échecs d'affilée. N'y remettez pas
+  non plus `web_profile_info` : 200 avec la bio, mais `edges` **vide**.
 - Un identifiant Instagram ne peut pas contenir de tiret : un handle mal saisi
   (ex. `armenian-trend`) renvoie un 404 et fait échouer le compte.
 - **La fraîcheur du mur est plafonnée par l'activité réelle des comptes, et un
