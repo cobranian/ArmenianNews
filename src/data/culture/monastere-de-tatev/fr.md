@@ -1,0 +1,33 @@
+---
+title: "Le monastère de Tatev : citadelle spirituelle et phare médiéval du Syunik"
+description: "Perché au-dessus des gorges du Vorotan, le monastère de Tatev est l'un des plus illustres centres spirituels, architecturaux et universitaires d'Arménie."
+date: "2026-10-20"
+---
+
+## Aux origines d'un promontoire sacré
+
+Situé dans le sud-est de l'Arménie, au cœur du marz de Syunik et à une vingtaine de kilomètres de Goris, le monastère de Tatev s'élève sur un vaste plateau basaltique surplombant le profond canyon de la rivière Vorotan. Placé dès 1995 par l'Arménie sur sa liste indicative du patrimoine mondial de l'UNESCO, ce haut lieu de l'Église apostolique arménienne perpétue une mémoire millénaire. Bien avant l'établissement des grandes structures monastiques, le plateau abritait un sanctuaire païen, remplacé par une église modeste à la suite de la christianisation de l'Arménie au IVe siècle.
+
+La tradition rapporte deux explications sur l'origine du nom du site. L'une le rattache à saint Eustathe (*Eustateus*), disciple de l'apôtre saint Thaddée venu prêcher et mort en martyr dans cette contrée, sur la tombe duquel un premier sanctuaire fut béni par saint Grégoire l'Illuminateur. L'autre explication, issue de la tradition populaire, évoque les paroles que le maître bâtisseur aurait prononcées au bord du gouffre, une fois la coupole achevée : *« Togh astvats indz ta-tev »* (« Puisse Dieu me donner des ailes »). Devenu dès le IXe siècle le siège de l'évêché du Syunik, Tatev s'est imposé comme un centre névralgique, tout à la fois spirituel, politique et culturel.
+
+## Un ensemble architectural d'exception
+
+L'ensemble monastique fortifié se distingue par ses édifices majeurs et son ingéniosité technique. L'église principale, dédiée aux saints apôtres Pierre et Paul (*Sourp Poghos-Petros*), fut construite entre 895 et 906 à l'initiative de l'évêque Hovhannes, avec le concours financier du prince souverain Ashot de Syunik, de son épouse la princesse Shoushan, ainsi que des princes Grigor Soupan et Dzagik. Lors de son inauguration en 906, de grandes figures du royaume étaient présentes, dont le roi Smbat Ier Bagratouni et le catholicos Hovhannes V Draskhanakerttsi. Cette basilique à coupole arbore sur sa façade orientale des niches ornées des portraits en bas-relief d'Ashot et de Shoushan, accompagnés de figures protectrices sculptées. Dès 930, l'évêque Hakob Dvinetsi fit décorer les murs intérieurs de fresques réalisées par des artistes locaux aux côtés de peintres venus de Constantinople, représentant notamment le Jugement dernier et le Christ trônant au milieu des saints.
+
+Au sud de la cathédrale se trouve l'église Saint-Grégoire-l'Illuminateur (*Sourp Grigor Lousavoritch*). Édifiée initialement vers 848 par le prince Philippe de Syunik, elle fut détruite par un séisme en 1138 puis entièrement reconstruite en 1295 à l'instigation de l'évêque métropolite Stepanos Orbélian. Le long des fortifications nord prend place l'église Sainte-Mère-de-Dieu (*Sourp Astvatsatsin*), construite en 1087 au-dessus du mausolée de l'entrée.
+
+Le site conserve également un monument singulier : le *Gavazan*. Érigée vers 904-906 au sud de la cathédrale et dédiée à la Sainte Trinité, cette colonne octogonale de huit à neuf mètres de haut repose sur une base articulée et porte un khatchkar. Conçue pour osciller sans basculer et reprendre sa position verticale, elle servait notamment à avertir la communauté monastique des secousses sismiques.
+
+## Le rayonnement intellectuel de l'Université médiévale
+
+Au-delà de son rôle cultuel, Tatev s'est illustré comme l'un des foyers de savoir les plus réputés du monde arménien. Dans le sillage du déclin de l'université de Gladzor, le grand érudit Hovhan Vorotnetsi s'installa dans la région sous la protection des princes Orbélian et y fonda l'Université de Tatev dans le dernier quart du XIVe siècle. Après sa mort en 1388, son disciple Grégoire de Tatev (*Grigor Tatevatsi*) reprit la direction de l'école et en porta le prestige à son apogée.
+
+L'enseignement y était structuré en trois départements principaux : l'étude des saintes Écritures et des humanités (philosophie, théologie, grammaire, oratoire, histoire et sciences), l'art du scriptorium (calligraphie, enluminure et peinture de miniatures) et la musique sacrée. L'université formait des théologiens, des copistes et des maîtres enseignants. Les savants de Tatev menèrent notamment une vive résistance doctrinale face aux prosélytes dominicains des Frères Unificateurs (*Fratres Unitores*). Ils jouèrent également un rôle décisif dans les démarches qui aboutirent, en 1441, au transfert historique du siège catholicossal suprême depuis Sis jusqu'au monastère d'Etchmiadzin. La tombe de Grégoire de Tatev, couverte par un mausolée édifié en 1787, repose toujours contre le flanc ouest de l'église Saint-Grégoire.
+
+## Des épreuves séculaires à la renaissance moderne
+
+Propriétaire de vastes domaines agricoles et percevant des redevances sur des centaines de localités, le monastère fut le théâtre de vives tensions féodales, marquées par des soulèvements de villageois à Tsouraberd au Xe siècle. Tatev traversa ensuite de multiples ravages : les invasions seldjoukides en 1170, au cours desquelles environ dix mille manuscrits furent incendiés, les campagnes destructrices de Tamerlan entre 1381 et 1387, puis l'incursion de Shah Rukh en 1434. Malgré ces destructions, le complexe reprit vie aux XVIIe et XVIIIe siècles grâce à des rénovations successives et à l'aménagement d'édifices économiques, à l'image du moulin à huile (*Dzit Han*).
+
+Le monastère tint également un rôle charnière dans l'histoire contemporaine du Zanguezour. Lors des combats d'autodéfense conduits par Garéguine Njdeh, le congrès tenu à Tatev proclama, le 26 avril 1921, la République de la Montagne arménienne. Dix ans plus tard, le séisme dévastateur de 1931 ébranla profondément les lieux, abattant le clocher et la coupole de l'église Saints-Pierre-et-Paul.
+
+Après une première phase de restauration débutée en 1974, le site a fait l'objet d'un vaste élan de mise en valeur à partir de 2008 grâce au programme « Renaissance de Tatev », porté par Ruben Vardanyan. Ce projet a permis la restauration du moulin à huile en 2010, de l'entrée nord, de la source monastique en 2016, ainsi que de l'église Sainte-Mère-de-Dieu en 2018. En octobre 2010, la mise en service du téléphérique « Ailes de Tatev », reliant Halidzor au monastère sur 5 750 mètres au-dessus du Vorotan, a transformé l'accès à ce joyau architectural du Syunik, lui redonnant toute sa place au cœur du patrimoine vivant de l'Arménie.
