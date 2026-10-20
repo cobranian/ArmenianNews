@@ -608,6 +608,16 @@ export function Radio({ more = true, stepRef = null }) {
     }
   }, [stepRef])
 
+  // **iOS : les boutons ±10 s masquent ⏮ ⏭.** Safari pose de lui-même des
+  // gestionnaires `seekbackward` / `seekforward` sur tout `<audio>`, et l'écran
+  // verrouillé (comme les commandes du volant, en Bluetooth ou CarPlay) leur
+  // donne la priorité sur `previoustrack` / `nexttrack` : l'iPhone affichait
+  // « reculer / avancer de 10 s », inertes sur un direct, et aucun moyen de
+  // changer de station (capture du 18 oct. 2026). Android n'a pas ce défaut.
+  // D'où les trois actions de déplacement remises à `null` EXPLICITEMENT — les
+  // omettre laisse le comportement par défaut de WebKit. Et la pose est rejouée
+  // à chaque démarrage : la lecture passe d'un élément audio à l'autre, et iOS
+  // réévalue les commandes quand la source active change.
   useEffect(() => {
     const ms = mediaSession()
     if (!ms) return
@@ -617,6 +627,9 @@ export function Radio({ more = true, stepRef = null }) {
       stop: () => sessionRef.current.pause(),
       previoustrack: () => sessionRef.current.step(-1),
       nexttrack: () => sessionRef.current.step(1),
+      seekbackward: null,
+      seekforward: null,
+      seekto: null,
     }
     const poser = (a, h) => {
       try {
@@ -627,7 +640,7 @@ export function Radio({ more = true, stepRef = null }) {
     }
     for (const [a, h] of Object.entries(actions)) poser(a, h)
     return () => Object.keys(actions).forEach((a) => poser(a, null))
-  }, [])
+  }, [playing])
 
   useEffect(() => {
     const ms = mediaSession()
