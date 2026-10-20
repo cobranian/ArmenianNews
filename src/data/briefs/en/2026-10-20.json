@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-20",
+  "lang": "en",
+  "generatedAt": "2026-10-20T04:30:04.721Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Daily briefing of Armenian media highlights political developments, international cooperation, and cultural events shaping the region today.",
+  "topics": [
+    {
+      "title": "Aram I meets U.S. Ambassador to Lebanon",
+      "text": "Aram I engaged in discussions with the U.S. Ambassador to Lebanon, reflecting ongoing diplomatic outreach in the region.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/aram-i-meets-with-u-s-ambassador-to-lebanon/",
+          "title": "Aram I Meets with U.S. Ambassador to Lebanon"
+        }
+      ]
+    },
+    {
+      "title": "Israeli defense contractor signs $235 million rocket deal with Azerbaijan",
+      "text": "An Israeli defense contractor, reported to be Elbit Systems, finalized a $235 million agreement to supply rocket systems to Azerbaijan, marking a significant defense deal.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/israeli-defense-contractor-reportedly-inks-235-million-rocket-deal-with-azerbaijan/",
+          "title": "Israeli Defense Contractor Reportedly Inks $235 Million Rocket Deal with Azerbaijan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263234",
+          "title": "Israel's Elbit Systems signs $235 million contract to supply Azerbaijan with rocket systems – Globes"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan’s party bypasses constitutional reform council",
+      "text": "The ruling party continues to navigate around the Constitutional Reform Council, highlighting ongoing political tensions regarding governance changes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/pashinyans-party-continues-to-bypass-constitutional-reform-council/",
+          "title": "Pashinyan’s Party Continues to Bypass Constitutional Reform Council"
+        }
+      ]
+    },
+    {
+      "title": "Government downplays environmental concerns over Amulsar gold mine",
+      "text": "Authorities minimize environmental impact worries regarding the Amulsar gold mine project, a point of contention among activists.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014876",
+          "title": "Government downplays environmental concerns over Amulsar gold mine"
+        }
+      ]
+    },
+    {
+      "title": "Astrid Schomaker urges countries to reduce harmful nature subsidies",
+      "text": "Astrid Schomaker emphasized the need for nations to cut subsidies that negatively affect biodiversity and nature conservation efforts.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263258",
+          "title": "Robert Abisoghomonyan stresses importance of stronger links between education, food security and biodiversity agendas at COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263250",
+          "title": "Astrid Schomaker stresses need to close gap between biodiversity knowledge and action"
+        }
+      ]
+    },
+    {
+      "title": "London’s St. Yeghiche Church celebrates 25th anniversary",
+      "text": "The Armenian community in London marked the 25th anniversary of St. Yeghiche Church and the Feast of the Holy Translators.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/londons-st-yeghiche-church-celebrates-its-25th-anniversary-and-the-feast-of-the-holy-translators/",
+          "title": "London’s St. Yeghiche Church Celebrates Its 25th Anniversary and the Feast of the Holy Translators"
+        }
+      ]
+    },
+    {
+      "title": "Elizabet Abraamian wins European Women’s Singles Table Tennis Championship",
+      "text": "Elizabet Abraamian made history as the first qualifier to win the European Women’s Singles Table Tennis Championship.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/elizabet-abraamian-becomes-first-ever-qualifier-to-win-european-womens-singles-table-tennis-championship/",
+          "title": "Elizabet Abraamian Becomes First Ever Qualifier to Win European Women’s Singles Table Tennis Championship"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169643/",
+          "title": "Elizabeth Abrahamyan won Russia's first gold medal at the European Table Tennis Championships"
+        }
+      ]
+    }
+  ]
+}
