@@ -163,7 +163,19 @@ const PLAYABLE = STATIONS.filter((s) => !s.offAir).length
 // L'élément <audio> d'une station — la seule écriture de cette règle (voir
 // `elFor`). Au niveau du module pour que les gestionnaires posés une fois au
 // montage puissent s'en servir sans dépendance d'effet.
-const pickEl = (s, cors, plain) => (s?.plain ? plain : cors)
+//
+// **Sur iPhone / iPad, toutes les stations passent par l'élément nu.** Deux
+// raisons, toutes deux vues sur l'écran verrouillé (20 oct. 2026 : ⏭ faisait
+// tomber le lecteur sur « À l'arrêt ») : iOS suspend le graphe Web Audio du
+// spectre quand l'écran se verrouille, sans pouvoir le relancer en arrière-plan,
+// et passer d'un élément à l'autre depuis l'écran verrouillé n'a pas de session
+// à reprendre. Un seul élément sans graphe, dont on change la source : le
+// spectre est perdu, mais il ne se voit pas sur un écran verrouillé.
+const appleMobile = () =>
+  typeof navigator !== 'undefined' &&
+  (/iP(hone|ad|od)/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
+const pickEl = (s, cors, plain) => (s?.plain || appleMobile() ? plain : cors)
 
 const mediaSession = () =>
   typeof navigator !== 'undefined' ? navigator.mediaSession : null
@@ -284,7 +296,7 @@ export function Radio({ more = true, stepRef = null }) {
     wantRef.current = true
     failsRef.current = 0
     // only one element ever plays
-    ;(isPlain ? audioRef.current : plainAudioRef.current)?.pause()
+    for (const el of [audioRef.current, plainAudioRef.current]) if (el !== audio) el?.pause()
     setError(false)
     setLoading(true)
     setAttempt((a) => a + 1)
@@ -293,7 +305,7 @@ export function Radio({ more = true, stepRef = null }) {
     // rechargement, « Réessayer » et la reprise au retour du réseau échouaient,
     // et la reprise faisait sauter une station qui marchait.
     if (audio.src !== station.stream || audio.error) setSrc(audio, station.stream)
-    if (!isPlain) {
+    if (audio === audioRef.current) {
       ensureGraph()
       if (ctxRef.current?.state === 'suspended') {
         try {
@@ -354,9 +366,14 @@ export function Radio({ more = true, stepRef = null }) {
     stationIdRef.current = id
     setStationId(id)
     const prevEl = elFor(prev)
-    markOwnPause(prevEl)
-    prevEl?.pause() // stop whatever the previous station was using
     const audio = elFor(next)
+    // Même élément : on change seulement la source, SANS pause. Sur iOS, un
+    // élément mis en pause écran verrouillé clôt la session « À l'écoute », et
+    // la station suivante n'a plus rien à reprendre.
+    if (prevEl !== audio) {
+      markOwnPause(prevEl)
+      prevEl?.pause() // stop whatever the previous station was using
+    }
     if (!audio) return
     setSrc(audio, next.stream)
     if (playing || loading || force) {
@@ -364,7 +381,7 @@ export function Radio({ more = true, stepRef = null }) {
       setLoading(true)
       setError(false)
       setAttempt((a) => a + 1)
-      if (!next.plain) {
+      if (audio === audioRef.current) {
         ensureGraph()
         if (ctxRef.current?.state === 'suspended') ctxRef.current.resume().catch(() => {})
       }
@@ -639,8 +656,24 @@ export function Radio({ more = true, stepRef = null }) {
       }
     }
     for (const [a, h] of Object.entries(actions)) poser(a, h)
-    return () => Object.keys(actions).forEach((a) => poser(a, null))
   }, [playing])
+
+  // Retrait au démontage seulement : retirés à chaque bascule de `playing`, les
+  // boutons disparaîtraient un instant à chaque changement de station.
+  useEffect(
+    () => () => {
+      const ms = mediaSession()
+      if (!ms) return
+      for (const a of ['play', 'pause', 'stop', 'previoustrack', 'nexttrack']) {
+        try {
+          ms.setActionHandler(a, null)
+        } catch {
+          /* action inconnue de ce navigateur */
+        }
+      }
+    },
+    [],
+  )
 
   useEffect(() => {
     const ms = mediaSession()
