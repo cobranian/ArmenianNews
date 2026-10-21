@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T12:23:35.555Z",
+  "generatedAt": "2026-10-21T13:23:39.808Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -275,6 +275,13 @@
       "sectionKey": "francophonie",
       "articles": [
         {
+          "title": "L’engagement de SPFA pour l’Arménie, et avec la Francophonie pour les Arméniennes",
+          "url": "https://courrier.am/lengagement-de-spfa-pour-larmenie-et-avec-la-francophonie-pour-les-armeniennes",
+          "date": "2026-10-21T12:00:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/SPFA%202026.jpg.avif?itok=QA5qNGeg",
+          "rubric": "diaspora"
+        },
+        {
           "title": "Jeux de la Francophonie 2027 : appel à candidatures pour les concours culturels",
           "url": "https://courrier.am/jeux-de-la-francophonie-2027-appel-candidatures-pour-les-concours-culturels",
           "date": "2026-10-19T18:50:00.000Z",
@@ -336,13 +343,6 @@
           "date": "2026-09-22T18:57:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-09/8b6a9d22-febd-4d6b-953f-a0559bae2660.jpg.avif?itok=kSNwFecI",
           "rubric": "culture"
-        },
-        {
-          "title": "L'Arménie et la France discutent du renforcement de leur partenariat stratégique",
-          "url": "https://courrier.am/l-armenie-et-la-france-discutent-du-renforcement-de-leur-partenariat-strategique-",
-          "date": "2026-07-24T06:29:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/images_1_3.jpg.avif?itok=HtZ7YZ9U",
-          "rubric": "politique"
         }
       ]
     },
@@ -1150,6 +1150,27 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "ԵԽԽՎ անդամ Աուրորա Ֆլորիդիան այցելել է Հայոց ցեղասպանության թանգարան",
+            "url": "https://hy.armradio.am/archives/765705",
+            "date": "2026-10-21T12:45:36.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/856643246_1530394149114954_4557345236653389340_n-768x431.jpg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "Ամուսնու կողմից կնոջն ընտանեկան բռնության ենթարկելու վերաբերյալ քրեական վարույթի նախաքննությունն ավարտվել է",
+            "url": "https://hy.armradio.am/archives/765702",
+            "date": "2026-10-21T12:41:09.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/21.10.2026-768x433.jpg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "Հայկական ավելի մրցունակությունը տեղական շուկայում նվազել է",
+            "url": "https://hy.armradio.am/archives/765681",
+            "date": "2026-10-21T12:32:49.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_20260922_132503-768x576.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱԺ հանձնաժողովը դրական եզրակացություն տվեց ԹՐԻՓՓ-ի վերաբերյալ հայ-ամերիկյան շրջանակային համաձայնագրի վավերացման նախագծին",
             "url": "https://hy.armradio.am/archives/765685",
             "date": "2026-10-21T12:01:38.000Z",
@@ -1197,27 +1218,6 @@
             "date": "2026-10-21T06:42:22.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/09/jur-300x200.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Խուզարկություններ Ստեփանավանում, ձերբակալվել է 14 անձ. ՀԿ",
-            "url": "https://hy.armradio.am/archives/765630",
-            "date": "2026-10-21T05:51:41.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2025/09/dzerbakalutyun-1536x806-1-768x403.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՄԻՊ ներկայացուցիչներն «Արմավիր» ՔԿՀ- ում խոսել են հացադուլի մեջ գտնվողների հետ",
-            "url": "https://hy.armradio.am/archives/765627",
-            "date": "2026-10-21T05:29:45.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/%D4%B1%D6%80%D5%B4%D5%A1%D5%BE%D5%AB%D6%80-%D5%94%D4%BF%D5%80-768x493.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Հայտնի են ռազմամարզական խաղերի հաղթողները",
-            "url": "https://hy.armradio.am/archives/765593",
-            "date": "2026-10-20T19:09:19.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/bcba59cd-0fc6-44ae-834e-f0c713b84fcf-768x520.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Պուտինը Թրամփի խնդրանքով ազատ է արձակել ամերիկացի Սթիվեն Հաբարդին",
+            "url": "https://hy.armradio.am/archives/765726",
+            "date": "2026-10-21T13:16:46.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/83914ac0-8497-11ef-bf4c-1f355eb87d3c.jpg-768x431.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Պուտինը հանդիպում է Ուիթքոֆի հետ. վերջինս հանդիպումից հետո կվերադառնա Օսլո",
             "url": "https://hy.armradio.am/archives/765660",
             "date": "2026-10-21T09:47:48.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/765504",
             "date": "2026-10-20T12:50:10.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/79711404_1004-e1792500604773-768x386.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ալբերտան քվեարկեց Կանադայի կազմում մնալու օգտին",
-            "url": "https://hy.armradio.am/archives/765379",
-            "date": "2026-10-20T07:52:12.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/d8ef58d0-cc3a-11f1-b905-13f9aa1f2723.jpg-768x432.webp",
             "category": "Կարևոր"
           }
         ]
@@ -1602,6 +1602,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Комитет НС дал положительное заключение по проекту ратификации рамочного соглашения между Арменией и США по проекту «TRIPP»",
+            "url": "https://ru.armradio.am/2026/10/21/%d0%ba%d0%be%d0%bc%d0%b8%d1%82%d0%b5%d1%82-%d0%bd%d1%81-%d0%b4%d0%b0%d0%bb-%d0%bf%d0%be%d0%bb%d0%be%d0%b6%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d0%bd%d0%be%d0%b5-%d0%b7%d0%b0%d0%ba%d0%bb%d1%8e%d1%87%d0%b5-2/",
+            "date": "2026-10-21T12:58:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/aj-1-768x385.jpg",
+            "category": "Главная"
+          },
+          {
             "title": "Арарат Мирзоян о вопросах ответственности Армении в рамках проекта TRIPP",
             "url": "https://ru.armradio.am/2026/10/21/%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%bc%d0%b8%d1%80%d0%b7%d0%be%d1%8f%d0%bd-%d0%be-%d0%b2%d0%be%d0%bf%d1%80%d0%be%d1%81%d0%b0%d1%85-%d0%be%d1%82%d0%b2%d0%b5%d1%82%d1%81%d1%82%d0%b2%d0%b5%d0%bd/",
             "date": "2026-10-21T08:48:00.000Z",
@@ -1662,13 +1669,6 @@
             "url": "https://ru.armradio.am/2026/10/19/%d0%b0%d0%bc%d0%b1%d0%b0%d1%80%d0%b4%d0%b7%d1%83%d0%bc-%d0%bc%d0%b0%d1%82%d0%b5%d0%b2%d0%be%d1%81%d1%8f%d0%bd-%d0%b8%d0%b7%d0%b1%d1%80%d0%b0%d0%bd-%d0%bf%d1%80%d0%b5%d0%b7%d0%b8%d0%b4%d0%b5%d0%bd/",
             "date": "2026-10-19T10:23:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/10/photo-5381957277796998914-y-1792399284554-1540x_-768x512.jpg",
-            "category": "Главная"
-          },
-          {
-            "title": "Армения и ВПП ООН расширяют сотрудничество в области управления стихийными бедствиями",
-            "url": "https://ru.armradio.am/2026/10/19/%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%b8-%d0%b2%d0%bf%d0%bf-%d0%be%d0%be%d0%bd-%d1%80%d0%b0%d1%81%d1%88%d0%b8%d1%80%d1%8f%d1%8e%d1%82-%d1%81%d0%be%d1%82%d1%80%d1%83%d0%b4%d0%bd%d0%b8%d1%87/",
-            "date": "2026-10-19T09:58:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/iwTEsfIygZnprm7t-768x512.webp",
             "category": "Главная"
           }
         ]
@@ -1902,6 +1902,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Зеленский: Украина готова согласиться на заморозку нынешней линии фронта",
+            "url": "https://ru.armradio.am/2026/10/21/%d0%b7%d0%b5%d0%bb%d0%b5%d0%bd%d1%81%d0%ba%d0%b8%d0%b9-%d1%83%d0%ba%d1%80%d0%b0%d0%b8%d0%bd%d0%b0-%d0%b3%d0%be%d1%82%d0%be%d0%b2%d0%b0-%d1%81%d0%be%d0%b3%d0%bb%d0%b0%d1%81%d0%b8%d1%82%d1%8c%d1%81/",
+            "date": "2026-10-21T12:27:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/vd2da2-c7969x4483x143sx396s-wt-5dcc7e89b4ef826456c306048e8279bc-768x432.jpg",
+            "category": "В мире"
+          },
+          {
             "title": "Израиль нанес авиа и артиллерийские удары по югу Ливана",
             "url": "https://ru.armradio.am/2026/10/21/%d0%b8%d0%b7%d1%80%d0%b0%d0%b8%d0%bb%d1%8c-%d0%bd%d0%b0%d0%bd%d0%b5%d1%81-%d0%b0%d0%b2%d0%b8%d0%b0-%d0%b8-%d0%b0%d1%80%d1%82%d0%b8%d0%bb%d0%bb%d0%b5%d1%80%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5-%d1%83/",
             "date": "2026-10-21T11:58:00.000Z",
@@ -1962,13 +1969,6 @@
             "url": "https://ru.armradio.am/2026/10/20/%d0%b2-%d0%bf%d0%b0%d1%80%d0%b8%d0%b6%d0%b5-%d0%b8-%d0%b2-%d0%bd%d0%b5%d1%81%d0%ba%d0%be%d0%bb%d1%8c%d0%ba%d0%b8%d1%85-%d0%b4%d1%80%d1%83%d0%b3%d0%b8%d1%85-%d0%b3%d0%be%d1%80%d0%be%d0%b4%d0%b0%d1%85/",
             "date": "2026-10-20T06:29:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/10/YGZTUsqO1FaKhICVJXXBmJ2JphZvm9rfBlwLAMeC-768x512.webp",
-            "category": "В мире"
-          },
-          {
-            "title": "The Financial Times: США угрожают ЕС из-за ограничений на европейском рынке связи",
-            "url": "https://ru.armradio.am/2026/10/19/the-financial-times-%d1%81%d1%88%d0%b0-%d1%83%d0%b3%d1%80%d0%be%d0%b6%d0%b0%d1%8e%d1%82-%d0%b5%d1%81-%d0%b8%d0%b7-%d0%b7%d0%b0-%d0%be%d0%b3%d1%80%d0%b0%d0%bd%d0%b8%d1%87%d0%b5%d0%bd%d0%b8%d0%b9/",
-            "date": "2026-10-19T14:48:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/anu9fzdp5lgxgfza5inwjp9pieftut4a-768x527.jpeg",
             "category": "В мире"
           }
         ]
@@ -3711,6 +3711,36 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Mirzoyan unaware of legal mechanism to expel Armenia from EAEU or suspend its membership",
+            "url": "https://armenpress.am/en/article/1263444",
+            "date": "2026-10-21T13:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/nkpBbn5ZcIcYIU9c8uPEZ8wLEMSsFvHm0rPRq5a3.webp"
+          },
+          {
+            "title": "Mirzoyan questions spirit of partnership in possible Russian gas price hike",
+            "url": "https://armenpress.am/en/article/1263445",
+            "date": "2026-10-21T13:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/05/25/306CaAhlOpjzHjD405onqjRb8aVT7Djbk9ua2r1p.webp"
+          },
+          {
+            "title": "FM says procedures for Armenians crossing Azerbaijan under TRIPP need clarification",
+            "url": "https://armenpress.am/en/article/1263442",
+            "date": "2026-10-21T12:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/K3V0gRwegt1Dcgk4Mu40G2F7wA5oJTLqbThHzYTd.webp"
+          },
+          {
+            "title": "Armenia’s Rescue Service director and Beijing vice-mayor highlight experience-sharing and closer cooperation",
+            "url": "https://armenpress.am/en/article/1263438",
+            "date": "2026-10-21T12:40:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/I82ew959jCXKmuXADY9Xy3tNjjmhwaaEJxVIOTKv.webp"
+          },
+          {
+            "title": "FM says some 'partners' want to see Armenia as a “sham” state",
+            "url": "https://armenpress.am/en/article/1263437",
+            "date": "2026-10-21T12:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/Q3KofWsEg06E5HsgfYHZN8ob4LjyyFiZUlshYPLQ.webp"
+          },
+          {
             "title": "Armenian FM dismisses concerns over intrastate rail connectivity under TRIPP",
             "url": "https://armenpress.am/en/article/1263434",
             "date": "2026-10-21T12:03:00.000Z",
@@ -3739,42 +3769,30 @@
             "url": "https://armenpress.am/en/article/1263428",
             "date": "2026-10-21T11:33:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/21/8AGeXKh6LChomx2d4MEZ5THnBcfyB3sCz7zjQste.webp"
-          },
-          {
-            "title": "Armenian FM concerned over lengthy TRIPP procedures",
-            "url": "https://armenpress.am/en/article/1263427",
-            "date": "2026-10-21T11:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/DevpbpgMmxtID4IUPtVnOOkKuAwjmgTmSIsiLMR8.webp"
-          },
-          {
-            "title": "FM warns against portraying reported border crossing by Azerbaijani shepherd as security threat",
-            "url": "https://armenpress.am/en/article/1263425",
-            "date": "2026-10-21T11:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/Tbk4IwcfWvo65ZD0Zbu6At9CmIlVpF9JgoXkTNX7.webp"
-          },
-          {
-            "title": "FM sees no contradiction between TRIPP project and EAEU regulations",
-            "url": "https://armenpress.am/en/article/1263422",
-            "date": "2026-10-21T10:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/O8tdCptkII6bCFUCzZzAiobsm8d81OQXN9ZjzV95.webp"
-          },
-          {
-            "title": "Armenia, Tajikistan discuss expanding environmental cooperation",
-            "url": "https://armenpress.am/en/article/1263417",
-            "date": "2026-10-21T10:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/8Ljy5rMUYHKiY56QwjNXx4Z7REnbIUCLLKOvw8Fi.webp"
-          },
-          {
-            "title": "FM hopes Armenia, Russia will find solutions to railway problems",
-            "url": "https://armenpress.am/en/article/1263413",
-            "date": "2026-10-21T10:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/dGyDCERSDzeIs2Vkt07UdjOwsCceZTYvzREnMGKT.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 21-10-26",
+            "url": "https://armenpress.am/en/article/1263448",
+            "date": "2026-10-21T13:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/iHmBW7khIYsy7kGFOLC7lmbjqbZlNfANiQFghrdg.webp"
+          },
+          {
+            "title": "Asian Stocks - 21-10-26",
+            "url": "https://armenpress.am/en/article/1263446",
+            "date": "2026-10-21T13:02:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/kb68SckdSk6RuVTXCWxsMhHJ7UAB6e5WpkQXqavv.webp"
+          },
+          {
+            "title": "Mirzoyan questions spirit of partnership in possible Russian gas price hike",
+            "url": "https://armenpress.am/en/article/1263445",
+            "date": "2026-10-21T13:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/05/25/306CaAhlOpjzHjD405onqjRb8aVT7Djbk9ua2r1p.webp"
+          },
           {
             "title": "European Stocks - 20-10-26",
             "url": "https://armenpress.am/en/article/1263362",
@@ -3816,24 +3834,6 @@
             "url": "https://armenpress.am/en/article/1263319",
             "date": "2026-10-20T11:41:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/20/ty484mmfI3i0wVCGYtee6GKHczm5sx01BDXQaN0f.webp"
-          },
-          {
-            "title": "Armenian exports reach new markets as diversification efforts continue",
-            "url": "https://armenpress.am/en/article/1263295",
-            "date": "2026-10-20T09:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/olPAlh3YZgNz5qpDkah3Rd4uQfZ3uc33Us0gnlEK.webp"
-          },
-          {
-            "title": "Armenian welfare ministry seeks to extend pension cashback program",
-            "url": "https://armenpress.am/en/article/1263270",
-            "date": "2026-10-20T06:42:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/NO6WEHCGnMhPb0HYplpHnhQUMMWP9UFzVShahScA.webp"
-          },
-          {
-            "title": "US stocks - 19-10-26",
-            "url": "https://armenpress.am/en/article/1263262",
-            "date": "2026-10-20T04:41:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/UEvGPUlWU8LlbfZXfOF4p1josykVneVOtO81qCgh.webp"
           }
         ]
       },
@@ -4188,6 +4188,36 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Բնության վիճակի գնահատման միասնական չափորոշիչները կարող են օգնել բիզնեսին գնահատել ռիսկերն ու հնարավորությունները. քննարկում՝ COP-17-ի շրջանակում",
+            "url": "https://armenpress.am/hy/article/1263453",
+            "date": "2026-10-21T13:17:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/FdweYdBEykDYl2o6fshwN61eeIW37pOJAQnQlGd9.webp"
+          },
+          {
+            "title": "Չգիտեմ՝ դա որքանով գործընկերային կլինի. Միրզոյանը՝ ՌԴ-ի կողմից գազի գնի հնարավոր բարձրացման մասին",
+            "url": "https://armenpress.am/hy/article/1263445",
+            "date": "2026-10-21T12:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/05/25/306CaAhlOpjzHjD405onqjRb8aVT7Djbk9ua2r1p.webp"
+          },
+          {
+            "title": "Արարատ Միրզոյանին հայտնի չէ ԵԱՏՄ-ից Հայաստանին հեռացնելու կամ անդամակցությունը սառեցնելու իրավական մեխանիզմ",
+            "url": "https://armenpress.am/hy/article/1263444",
+            "date": "2026-10-21T12:50:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/nkpBbn5ZcIcYIU9c8uPEZ8wLEMSsFvHm0rPRq5a3.webp"
+          },
+          {
+            "title": "Այս հարցը դեռ ճշգրտման կարիք ունի. Միրզոյանը՝ ՀՀ քաղաքացիների՝ Ադրբեջանի տարածքով ԹՐԻՓՓ-ի ընթացակարգով անցնելու հնարավորության մասին",
+            "url": "https://armenpress.am/hy/article/1263442",
+            "date": "2026-10-21T12:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/K3V0gRwegt1Dcgk4Mu40G2F7wA5oJTLqbThHzYTd.webp"
+          },
+          {
+            "title": "Ամուսնու կողմից կնոջն ընտանեկան բռնության ենթարկելու վերաբերյալ քրեական վարույթի նախաքննությունն ավարտվել է",
+            "url": "https://armenpress.am/hy/article/1263441",
+            "date": "2026-10-21T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/lmcoidoTQYBvBXQHS2x9JfF2qCh1nRdQDMPY5Wdt.webp"
+          },
+          {
             "title": "Հայաստանի ՆԳՆ փրկարար ծառայության տնօրենն ու Պեկինի փոխքաղաքապետը կարևորել են փորձի փոխանակումն ու համագործակցության ընդլայնումը",
             "url": "https://armenpress.am/hy/article/1263438",
             "date": "2026-10-21T12:25:00.000Z",
@@ -4216,42 +4246,30 @@
             "url": "https://armenpress.am/hy/article/1263432",
             "date": "2026-10-21T11:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/21/cQUfF6r7EaFBQPc0nDrN3pYivIwUrabo3SXe1JYf.webp"
-          },
-          {
-            "title": "COP17. Մաքսային վարչարարությունն ու կենսաբազմազանության հարցերը. ի՞նչ ծրագրեր են իրականացվում",
-            "url": "https://armenpress.am/hy/article/1263431",
-            "date": "2026-10-21T11:29:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/byd7LMHuJeNDoUYR0VyjdcfGlPqfC6hFeoQI2nKs.webp"
-          },
-          {
-            "title": "Գիտական առաջընթացը և նոր տեխնոլոգիաները պետք է կիրառվեն հանուն խաղաղության․ Ժաննա Անդրեասյան",
-            "url": "https://armenpress.am/hy/article/1263428",
-            "date": "2026-10-21T11:20:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/8AGeXKh6LChomx2d4MEZ5THnBcfyB3sCz7zjQste.webp"
-          },
-          {
-            "title": "Միրզոյանին մտահոգում է ԹՐԻՓՓ-ի իրականացման գործընթացների տևողությունը",
-            "url": "https://armenpress.am/hy/article/1263427",
-            "date": "2026-10-21T11:19:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/DevpbpgMmxtID4IUPtVnOOkKuAwjmgTmSIsiLMR8.webp"
-          },
-          {
-            "title": "Ակբա բանկը հրապարակել է Կայուն զարգացման առաջին հաշվետվությունը",
-            "url": "https://armenpress.am/hy/article/1263426",
-            "date": "2026-10-21T11:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/ob9IdNkuQM9d5FrhpSre6RGH4nxBDYezSqvnGasF.webp"
-          },
-          {
-            "title": "Արարատ Միրզոյանն անդրադարձել է Հայաստանի սահմանը հատած ադրբեջանցի հովվի մասին տեղեկություններին",
-            "url": "https://armenpress.am/hy/article/1263425",
-            "date": "2026-10-21T11:07:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/Tbk4IwcfWvo65ZD0Zbu6At9CmIlVpF9JgoXkTNX7.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ - 21/10/26",
+            "url": "https://armenpress.am/hy/article/1263448",
+            "date": "2026-10-21T12:56:22.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/iHmBW7khIYsy7kGFOLC7lmbjqbZlNfANiQFghrdg.webp"
+          },
+          {
+            "title": "Ասիական ինդեքսներ - 21/10/26",
+            "url": "https://armenpress.am/hy/article/1263446",
+            "date": "2026-10-21T12:54:27.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/kb68SckdSk6RuVTXCWxsMhHJ7UAB6e5WpkQXqavv.webp"
+          },
+          {
+            "title": "Չգիտեմ՝ դա որքանով գործընկերային կլինի. Միրզոյանը՝ ՌԴ-ի կողմից գազի գնի հնարավոր բարձրացման մասին",
+            "url": "https://armenpress.am/hy/article/1263445",
+            "date": "2026-10-21T12:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/05/25/306CaAhlOpjzHjD405onqjRb8aVT7Djbk9ua2r1p.webp"
+          },
           {
             "title": "Եվրոպական ինդեքսներ - 20/10/26",
             "url": "https://armenpress.am/hy/article/1263362",
@@ -4293,30 +4311,42 @@
             "url": "https://armenpress.am/hy/article/1263319",
             "date": "2026-10-20T11:26:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/20/ty484mmfI3i0wVCGYtee6GKHczm5sx01BDXQaN0f.webp"
-          },
-          {
-            "title": "Հայաստանից վերջին 10 ամսում 908.6 տոննա ծաղիկ է արտահանվել աշխարհի 30 երկիր",
-            "url": "https://armenpress.am/hy/article/1263295",
-            "date": "2026-10-20T08:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/olPAlh3YZgNz5qpDkah3Rd4uQfZ3uc33Us0gnlEK.webp"
-          },
-          {
-            "title": "Գեղարքունիքում ավարտվել է անասնակերի և հացահատիկի բերքահավաքը",
-            "url": "https://armenpress.am/hy/article/1263293",
-            "date": "2026-10-20T08:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/1wxh35BpuNmSsdOmDob0AECs8mGOf23C9MMZLcWx.webp"
-          },
-          {
-            "title": "Աշխատանքի և բարեկեցության նախարարությունն առաջարկում է թոշակառուների հետվճարի ծրագիրը շարունակել ևս 3 տարի",
-            "url": "https://armenpress.am/hy/article/1263270",
-            "date": "2026-10-20T06:13:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/NO6WEHCGnMhPb0HYplpHnhQUMMWP9UFzVShahScA.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "Պուտինը և Ուիթքոֆն ավարտել են հանդիպումը",
+            "url": "https://armenpress.am/hy/article/1263452",
+            "date": "2026-10-21T13:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/nzMWqqVktSgvj9ZEToWKTJ01z4TENHLNNrtIPRBk.webp"
+          },
+          {
+            "title": "Մակրոնը հայտարարել է, որ համաշխարհային ղեկավարները «հիմար» մեկնաբանություններ են արել Ֆրանսիայում անկարգությունների վերաբերյալ",
+            "url": "https://armenpress.am/hy/article/1263450",
+            "date": "2026-10-21T13:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/kafBzipsPQ7QessNmWHaMIZ2ryMh2uX0cCULpOib.webp"
+          },
+          {
+            "title": "Թուրքիան, Կատարը, Ինդոնեզիան և Պակիստանը պաշտպանական համագործակցության հուշագիր են ստորագրել",
+            "url": "https://armenpress.am/hy/article/1263449",
+            "date": "2026-10-21T12:59:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/GaEpldp3QK97BQ7PoIxJcsVnHk0lcOtRHZnNdqhV.webp"
+          },
+          {
+            "title": "Մակրոնն անակնկալ այցով ժամանել է Սաուդյան Արաբիա",
+            "url": "https://armenpress.am/hy/article/1263443",
+            "date": "2026-10-21T12:48:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/7TYpcPdCqhXXJ8NCJDwW4x9Onva6mrtmZ8ypjky8.webp"
+          },
+          {
+            "title": "Հարստացված ուրանը դուրս չի բերվի Իրանից. Ռեզայի",
+            "url": "https://armenpress.am/hy/article/1263440",
+            "date": "2026-10-21T12:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/nzp4c1FZUch5sqZjdRa7eX32xRWlqM0Jj9kE1AVf.webp"
+          },
           {
             "title": "Մոլդովայում քննարկվել է Մերձդնեստրի տարածաշրջանի աստիճանական վերաինտեգրման գործընթացը. Moldpres",
             "url": "https://armenpress.am/hy/article/1263436",
@@ -4346,36 +4376,6 @@
             "url": "https://armenpress.am/hy/article/1263421",
             "date": "2026-10-21T10:52:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/21/wP0Onzm6YH9D9GS6dlqwdlqwbl4bvUM5CwjuB8AY.webp"
-          },
-          {
-            "title": "Ռուսաստանի դեմ ԵՄ-ի պատժամիջոցները կմնան ուժի մեջ. ֆոն դեր Լայեն",
-            "url": "https://armenpress.am/hy/article/1263418",
-            "date": "2026-10-21T10:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/GjG7EZrtyXa6VcfRycKlcHXZ1UrmspCrAEsGMmo1.webp"
-          },
-          {
-            "title": "Պուտինը հայտարարել է Ուկրաինայում ռազմական գործողություններին մասնակցելու համար դատապարտված ամերիկացու ազատ արձակման մասին",
-            "url": "https://armenpress.am/hy/article/1263414",
-            "date": "2026-10-21T10:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/whyN46laSZB4lWcmhfhLhUOMUVOPLCfTQbb8z66v.webp"
-          },
-          {
-            "title": "Պուտինն ու Ուիթքոֆը քննարկել են ուկրաինական հակամարտությունն ու Իրանի շուրջ իրադրությունը",
-            "url": "https://armenpress.am/hy/article/1263411",
-            "date": "2026-10-21T09:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/U1QLmWqNzXTpimHyGS6B0JGmBjKzaiTjGTUpauPZ.webp"
-          },
-          {
-            "title": "Ադրբեջանն արգելել է Թուրքիայի 31 քաղաքացու մուտքը",
-            "url": "https://armenpress.am/hy/article/1263408",
-            "date": "2026-10-21T09:48:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/X9NIVpDXyo5XY45BPoCjMbGbxQVSVXS1CC7Y1tNP.webp"
-          },
-          {
-            "title": "Քուշները Զելենսկու հետ բանակցությունների ժամանակ ներկայացրել է Թրամփի պահանջներից մեկը. Axios",
-            "url": "https://armenpress.am/hy/article/1263405",
-            "date": "2026-10-21T08:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/uUDNQ0vE5jP5amTMINxMwH3FG4LZJkJXYaaoqPIC.webp"
           }
         ]
       },
@@ -4665,6 +4665,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Не знаю, насколько это будет по-партнерски -Мирзоян о возможном повышении цен на газ со стороны России",
+            "url": "https://armenpress.am/ru/article/1263445",
+            "date": "2026-10-21T13:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/05/25/306CaAhlOpjzHjD405onqjRb8aVT7Djbk9ua2r1p.webp"
+          },
+          {
+            "title": "Арарату Мирзояну неизвестен какой-либо правовой механизм исключения Армении из ЕАЭС или заморозки ее членства",
+            "url": "https://armenpress.am/ru/article/1263444",
+            "date": "2026-10-21T13:11:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/nkpBbn5ZcIcYIU9c8uPEZ8wLEMSsFvHm0rPRq5a3.webp"
+          },
+          {
+            "title": "Этот вопрос еще нуждается в уточнении - Мирзоян о возможности проезда граждан Армении через территорию Азербайджана по процедуре TRIPP",
+            "url": "https://armenpress.am/ru/article/1263442",
+            "date": "2026-10-21T13:02:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/K3V0gRwegt1Dcgk4Mu40G2F7wA5oJTLqbThHzYTd.webp"
+          },
+          {
             "title": "Министр иностранных дел и международной торговли Армении предлагает провести обсуждение новой Конституции в общенациональном формате",
             "url": "https://armenpress.am/ru/article/1263432",
             "date": "2026-10-21T12:12:00.000Z",
@@ -4705,30 +4723,30 @@
             "url": "https://armenpress.am/ru/article/1263413",
             "date": "2026-10-21T10:20:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/21/dGyDCERSDzeIs2Vkt07UdjOwsCceZTYvzREnMGKT.webp"
-          },
-          {
-            "title": "Глава МИДМТ Армении поздравил Дана Некулаеску с назначением на пост министра иностранных дел Румынии",
-            "url": "https://armenpress.am/ru/article/1263397",
-            "date": "2026-10-21T10:12:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/lXYwHiuaLyLJlAuiaoZPyzMNORnKoymn1hx9rVda.webp"
-          },
-          {
-            "title": "Иногда мы слышим от азербайджанских чиновников формулировки, которые, мягко говоря, не способствуют миру – глава МИДМТ Армении",
-            "url": "https://armenpress.am/ru/article/1263407",
-            "date": "2026-10-21T09:51:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/Fth6sx7Mjrms6E6axGjo35DpbNG9MuV2kUPDhOrN.webp"
-          },
-          {
-            "title": "Это новый, беспрецедентный уровень экономического сотрудничества между Арменией и США - Мирзоян о проекте TRIPP",
-            "url": "https://armenpress.am/ru/article/1263400",
-            "date": "2026-10-21T09:37:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/vP1fF8kDLu8RIaNWP0WlccgtVZOu8F0hKTlxFDNG.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Не знаю, насколько это будет по-партнерски -Мирзоян о возможном повышении цен на газ со стороны России",
+            "url": "https://armenpress.am/ru/article/1263445",
+            "date": "2026-10-21T13:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/05/25/306CaAhlOpjzHjD405onqjRb8aVT7Djbk9ua2r1p.webp"
+          },
+          {
+            "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 21-10-26",
+            "url": "https://armenpress.am/ru/article/1263448",
+            "date": "2026-10-21T12:56:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/iHmBW7khIYsy7kGFOLC7lmbjqbZlNfANiQFghrdg.webp"
+          },
+          {
+            "title": "Азиатские индексы - 21-10-26",
+            "url": "https://armenpress.am/ru/article/1263446",
+            "date": "2026-10-21T12:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/kb68SckdSk6RuVTXCWxsMhHJ7UAB6e5WpkQXqavv.webp"
+          },
           {
             "title": "Европейские индексы - 20-10-26",
             "url": "https://armenpress.am/ru/article/1263362",
@@ -4770,30 +4788,30 @@
             "url": "https://armenpress.am/ru/article/1263319",
             "date": "2026-10-20T11:37:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/20/ty484mmfI3i0wVCGYtee6GKHczm5sx01BDXQaN0f.webp"
-          },
-          {
-            "title": "За последние 10 месяцев из Армении было экспортировано 908,6 тонн цветов в 30 стран мира",
-            "url": "https://armenpress.am/ru/article/1263295",
-            "date": "2026-10-20T09:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/olPAlh3YZgNz5qpDkah3Rd4uQfZ3uc33Us0gnlEK.webp"
-          },
-          {
-            "title": "Европейские индексы - 19-10-26",
-            "url": "https://armenpress.am/ru/article/1263263",
-            "date": "2026-10-20T04:40:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/j1LBtdGY7uL2FAj2CCalhhLUqM4kLuXMbjOwun2r.webp"
-          },
-          {
-            "title": "Американские индексы - 19-10-26",
-            "url": "https://armenpress.am/ru/article/1263262",
-            "date": "2026-10-20T04:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/UEvGPUlWU8LlbfZXfOF4p1josykVneVOtO81qCgh.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "Макрон прибыл с неожиданным визитом в Саудовскую Аравию",
+            "url": "https://armenpress.am/ru/article/1263443",
+            "date": "2026-10-21T12:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/7TYpcPdCqhXXJ8NCJDwW4x9Onva6mrtmZ8ypjky8.webp"
+          },
+          {
+            "title": "Обогащенный уран не будет вывозиться из Ирана: Мохсен Резаи",
+            "url": "https://armenpress.am/ru/article/1263440",
+            "date": "2026-10-21T12:44:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/nzp4c1FZUch5sqZjdRa7eX32xRWlqM0Jj9kE1AVf.webp"
+          },
+          {
+            "title": "В Молдове обсудили постепенную реинтеграцию Приднестровского региона - Moldpres",
+            "url": "https://armenpress.am/ru/article/1263436",
+            "date": "2026-10-21T12:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/21/jt6gGqUxLHeEuIPMqvEmrgOW73kAvynrF8GkAac4.webp"
+          },
           {
             "title": "Хуситы объявили о ракетном ударе по штаб-квартире армии Саудовской Аравии в Адене",
             "url": "https://armenpress.am/ru/article/1263435",
@@ -4835,24 +4853,6 @@
             "url": "https://armenpress.am/ru/article/1263411",
             "date": "2026-10-21T10:01:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/21/U1QLmWqNzXTpimHyGS6B0JGmBjKzaiTjGTUpauPZ.webp"
-          },
-          {
-            "title": "На переговорах с Зеленским Кушнер представил одно из требований Трампа: Axios",
-            "url": "https://armenpress.am/ru/article/1263405",
-            "date": "2026-10-21T09:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/uUDNQ0vE5jP5amTMINxMwH3FG4LZJkJXYaaoqPIC.webp"
-          },
-          {
-            "title": "Россия и Украина сообщили о новых взаимных ударах",
-            "url": "https://armenpress.am/ru/article/1263404",
-            "date": "2026-10-21T09:22:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/hSBB4DvadTw0Ffim8onj0slZIyIcBU6uj3zkTMJK.webp"
-          },
-          {
-            "title": "Премьер-министр Норвегии ожидает, что Уиткофф вернется в Осло после переговоров в России",
-            "url": "https://armenpress.am/ru/article/1263399",
-            "date": "2026-10-21T08:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/1InRbrREco8AbTrnzI0GDDPCoN42hoLMHSuCUqIe.webp"
           }
         ]
       },
@@ -8930,6 +8930,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia FM on Eurasian Economic Union report: We’re studying it – but sovereignty, independence are above all",
+            "url": "https://news.am/en/news/1069373",
+            "date": "2026-10-21T12:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/yTRgjILzuzv9ulyy.webp"
+          },
+          {
             "title": "CSTO Secretary General not ruling out Armenia deciding to remain in organization",
             "url": "https://news.am/en/news/1069357",
             "date": "2026-10-21T11:40:00.000Z",
@@ -8982,12 +8988,6 @@
             "url": "https://news.am/en/news/1068972",
             "date": "2026-10-20T04:14:00.000Z",
             "image": "https://news.am/storage/media/26/10/20/KDbAGlb61l8BR9bl.webp"
-          },
-          {
-            "title": "Armenia premier is asked why Azerbaijan delegation is not attending COP17 conference in Yerevan, whether there is tension",
-            "url": "https://news.am/en/news/1068310",
-            "date": "2026-10-16T09:30:00.000Z",
-            "image": "https://i.ytimg.com/vi/3vQuvTPACYA/hqdefault.jpg"
           }
         ]
       },
@@ -9194,6 +9194,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Naked Corsets Take Over the Red Carpet: Which Stars Turned Nudity Into Art — and Who Went Too Far?",
+            "url": "https://style.news.am/eng/news/116756/",
+            "date": "2026-10-21T12:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116756.jpg"
+          },
+          {
             "title": "Queen Camilla Declares War on New York Over Winnie-the-Pooh",
             "url": "https://style.news.am/eng/news/116755/",
             "date": "2026-10-21T11:28:00.000Z",
@@ -9246,12 +9252,6 @@
             "url": "https://style.news.am/eng/news/116746/",
             "date": "2026-10-21T06:26:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116746.jpg"
-          },
-          {
-            "title": "Men Reveal the Part of a Woman’s Body That Drives Them Wild",
-            "url": "https://style.news.am/eng/news/116741/",
-            "date": "2026-10-20T19:01:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116741.jpg"
           }
         ]
       },
@@ -9592,6 +9592,36 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Միրզոյանը չի պատկերացնում Հայաստանի ՀԱՊԿ վերադարձը",
+            "url": "https://news.am/hy/news/1069391",
+            "date": "2026-10-21T13:13:26.000Z",
+            "image": "https://news.am/storage/media/26/10/21/61D0wn1d4NPBORE7.webp"
+          },
+          {
+            "title": "ԱԺ պատգամավոր Լիլիթ Ստեփանյանի հրաժարականի դիմումի մասին ԱԺ նախագահի հայտարարությունը",
+            "url": "https://news.am/hy/news/1069382",
+            "date": "2026-10-21T12:46:19.000Z",
+            "image": "https://news.am/storage/media/26/10/21/PytW7sIgHKpNOlFr.webp"
+          },
+          {
+            "title": "Հայտնի են դարձել Ադրբեջանում անցանկալի անձ հայտարարված Թուրքիայի 31 քաղաքացիների անունները",
+            "url": "https://news.am/hy/news/1069381",
+            "date": "2026-10-21T12:44:23.000Z",
+            "image": "https://news.am/storage/media/26/10/21/EDaVWynIGOl4OuxT.webp"
+          },
+          {
+            "title": "Վախ տարածելով՝ փորձում են ընտրական առավելություն ստանալ․ Արամ Վարդևանյան",
+            "url": "https://news.am/hy/news/1069379",
+            "date": "2026-10-21T12:37:02.000Z",
+            "image": "https://news.am/storage/media/26/10/21/61IuAP6H9DerVi4q.webp"
+          },
+          {
+            "title": "Ուսումնասիրում ենք, բայց ինքնիշխանությունն ու անկախությունն ամեն ինչից վեր են․ Միրզոյանը ԵԱՏՄ-ի զեկույցի մասին",
+            "url": "https://news.am/hy/news/1069373",
+            "date": "2026-10-21T12:22:30.000Z",
+            "image": "https://news.am/storage/media/26/10/21/yTRgjILzuzv9ulyy.webp"
+          },
+          {
             "title": "ՀԱՊԿ գլխավոր քարտուղարը չի բացառում, որ Հայաստանը կորոշի մնալ կազմակերպությունում",
             "url": "https://news.am/hy/news/1069357",
             "date": "2026-10-21T11:40:42.000Z",
@@ -9620,36 +9650,6 @@
             "url": "https://news.am/hy/news/1069295",
             "date": "2026-10-21T08:26:40.000Z",
             "image": "https://i.ytimg.com/vi/au2fqLZ77aY/hqdefault.jpg"
-          },
-          {
-            "title": "«Իրավունք». ՔՊ-ն ողջ ռեսուրսը կենտրոնացրել է Ստեփանավանի ու Արթիկի վրա. «Աստված չանի, ՔՊ–ն չանցնի»",
-            "url": "https://news.am/hy/news/1069227",
-            "date": "2026-10-21T04:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/SY0C38RlTCqTvVgX.webp"
-          },
-          {
-            "title": "«Ժողովուրդ». Արմավիրի մարզպետը էլի քաղաքապետ է ուզում դառնալ. ՀՀԿ-ից՝ ՔՊ",
-            "url": "https://news.am/hy/news/1069225",
-            "date": "2026-10-21T04:01:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/EAYmIysnPaJXiKWP.webp"
-          },
-          {
-            "title": "«Հրապարակ»․ Ադրբեջանը դժգոհ է՝ հարցը «տեղում դոփում է». ինչ է որոշել Փաշինյանը",
-            "url": "https://news.am/hy/news/1069228",
-            "date": "2026-10-21T03:54:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/KWmpXZXVHtScpf5t.webp"
-          },
-          {
-            "title": "«Ժողովուրդ». Աննա Հակոբյանի արշավը՝ առանց Փաշինյանի ok-ի՞․ ստորագրահավաքը ցանկալի թափը չի հավաքում",
-            "url": "https://news.am/hy/news/1069224",
-            "date": "2026-10-21T03:40:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/xlBBzH5T2VnOzyuq.webp"
-          },
-          {
-            "title": "Պայմանագրային զինծառայողն ազատվել է աշխատանքից իր հոր՝ «Ուժեղ Հայաստան»-ին միանալու պատճառով",
-            "url": "https://news.am/hy/news/1069215",
-            "date": "2026-10-20T20:57:13.000Z",
-            "image": "https://news.am/storage/media/26/10/21/DrKQftY3F9VP2RCZ.webp"
           }
         ]
       },
@@ -9657,6 +9657,18 @@
         "categoryKey": "business",
         "label": "Բիզնես",
         "articles": [
+          {
+            "title": "«Հրազդան ցեմենտ»–ը որ աշխատի ցեմենտը կէժանանա, լավ կլինի. սպասում ենք բացմանը. աշխատակից",
+            "url": "https://news.am/hy/news/1069363",
+            "date": "2026-10-21T11:59:40.000Z",
+            "image": "https://i.ytimg.com/vi/GAOI7hlJhNo/hqdefault.jpg"
+          },
+          {
+            "title": "«Մտածում ենք ստորագրահավաք կազմակերպենք, դիմենք կառավարությանը. 560 միլիոնի վնաս ենք արդեն կրել»",
+            "url": "https://news.am/hy/news/1069356",
+            "date": "2026-10-21T11:35:31.000Z",
+            "image": "https://i.ytimg.com/vi/SRT1U2oF9Ug/hqdefault.jpg"
+          },
           {
             "title": "Գործարարի համար ամենավատ բանը անորոշությունն է, հիմա մենք անորոշ սպասում ենք. Արսեն Պողոսյան",
             "url": "https://news.am/hy/news/1069353",
@@ -9704,18 +9716,6 @@
             "url": "https://news.am/hy/news/1068992",
             "date": "2026-10-20T04:58:00.000Z",
             "image": "https://news.am/storage/media/26/10/20/UWhVGju4RBvdv7oX.webp"
-          },
-          {
-            "title": "Աշխարհաքաղաքական ցնցումները երբեմն առողջարար ազդեցություն են ունենում հայկական տնտեսության վրա․ Ջրբաշյան",
-            "url": "https://news.am/hy/news/1068817",
-            "date": "2026-10-19T17:19:00.000Z",
-            "image": "https://news.am/storage/media/26/10/19/OOQ27DI4g5pofXLK.webp"
-          },
-          {
-            "title": "Միլանում անկարգություններից հետո լյուքս բուտիկները փակվում են. վնասը հասել է 1 միլիոն եվրոյի",
-            "url": "https://news.am/hy/news/1068930",
-            "date": "2026-10-19T16:13:35.000Z",
-            "image": "https://news.am/storage/media/26/10/19/xF1ZmjHaHV9Hh5oO.webp"
           }
         ]
       },
@@ -9724,10 +9724,22 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Կիմիխը հոր մահվան պատճառով բաց կթողնի «Արսենալի» դեմ հանդիպումը",
+            "url": "https://sport.news.am/arm/news/169692/",
+            "date": "2026-10-21T12:21:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169692.jpg"
+          },
+          {
             "title": "Ռաֆինյա․ Ցանկանում էինք հեռանալ գոնե 1 միավորով, բայց ոչ մի ահավոր բան չի պատահել",
             "url": "https://sport.news.am/arm/news/169690/",
             "date": "2026-10-21T11:07:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169690.jpg"
+          },
+          {
+            "title": "NBA. Օրվա արդյունքներն ու լավագույն դրվագները (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169691/",
+            "date": "2026-10-21T10:37:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169691.jpg"
           },
           {
             "title": "10 ամենաթանկ ֆուտբոլիստները, որոնք առաջիկայում կարող են ստանալ ազատ գործակալի կարգավիճակ",
@@ -9770,18 +9782,6 @@
             "url": "https://sport.news.am/arm/news/169684/",
             "date": "2026-10-21T07:04:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169684.jpg"
-          },
-          {
-            "title": "Խվիչա Կվարացխելիան ծանր վնասվածք է ստացել․ կարող է բաց թողնել 9 ամիս",
-            "url": "https://sport.news.am/arm/news/169683/",
-            "date": "2026-10-21T06:37:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169683.jpg"
-          },
-          {
-            "title": "«Փյունիկը» տնային հանդիպումները կանցկացնի Freedom Arena-ում",
-            "url": "https://sport.news.am/arm/news/169682/",
-            "date": "2026-10-21T06:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169682.jpg"
           }
         ]
       },
@@ -9856,6 +9856,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Մերկ կորսետները գրավել են կարմիր գորգը. Աստղերից ով է մերկությունը վերածել արվեստի, և ո՞վ է չափն անցել",
+            "url": "https://style.news.am/arm/news/116756/",
+            "date": "2026-10-21T12:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116756.jpg"
+          },
+          {
             "title": "Թագուհի Կամիլան պատերազմ է հայտարարել Նյու Յորքին՝ Վինի-Թուխի պատճառով",
             "url": "https://style.news.am/arm/news/116755/",
             "date": "2026-10-21T11:28:00.000Z",
@@ -9908,12 +9914,6 @@
             "url": "https://style.news.am/arm/news/116745/",
             "date": "2026-10-21T07:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116745.jpg"
-          },
-          {
-            "title": "Էնդրյու Սքոթը կարող է Օսկարի պատմություն մտնել. դերասանը կմրցի ինքն իր դեմ",
-            "url": "https://style.news.am/arm/news/116747/",
-            "date": "2026-10-21T06:49:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116747.jpg"
           }
         ]
       },
@@ -10054,6 +10054,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Մակրոնը մտադիր չէ Ֆրանսիայում արտակարգ դրություն հայտարարել բողոքի ակցիաների և անկարգությունների պատճառով",
+            "url": "https://news.am/hy/news/1069368",
+            "date": "2026-10-21T12:55:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/3DKEv4EiatoAQsuD.webp"
+          },
+          {
             "title": "Գեղարքունիքում պարեկները Kia–ի ուղևորի մոտից թմրանյութ են գտել. նա հայտնի ԲԿ–ներից մեկում բժիշկ-սրտաբան է",
             "url": "https://news.am/hy/news/1069374",
             "date": "2026-10-21T12:16:00.000Z",
@@ -10106,12 +10112,6 @@
             "url": "https://news.am/hy/news/1069149",
             "date": "2026-10-20T13:56:00.000Z",
             "image": "https://news.am/storage/media/26/10/20/EymUxNokY54xJL35.webp"
-          },
-          {
-            "title": "Փարիզում անկարգությունների ժամանակ երկու մարդ է զոհվել",
-            "url": "https://news.am/hy/news/1069127",
-            "date": "2026-10-20T13:05:26.000Z",
-            "image": "https://news.am/storage/media/26/10/19/0xC2oseSlGuQfgPq.webp"
           }
         ]
       },
@@ -10254,7 +10254,31 @@
         "label": "Политика",
         "articles": [
           {
-            "title": "Глава МИД Армении отреагировал на доклад о возможности прекращения членства в ЕАЭС: Изучаем, но суверенитет и независимость превыше всего",
+            "title": "Глава МИД Армении не представляет себе возвращение в ОДКБ",
+            "url": "https://news.am/ru/news/1069391",
+            "date": "2026-10-21T13:13:26.000Z",
+            "image": "https://news.am/storage/media/26/10/21/61D0wn1d4NPBORE7.webp"
+          },
+          {
+            "title": "Спикер парламента Армении отреагировал на заявление депутата Лилит Степанян об отставке",
+            "url": "https://news.am/ru/news/1069382",
+            "date": "2026-10-21T12:46:19.000Z",
+            "image": "https://news.am/storage/media/26/10/21/PytW7sIgHKpNOlFr.webp"
+          },
+          {
+            "title": "Стали известны имена 31 гражданина Турции, объявленных персонами нон-грата в Азербайджане",
+            "url": "https://news.am/ru/news/1069381",
+            "date": "2026-10-21T12:44:23.000Z",
+            "image": "https://news.am/storage/media/26/10/21/EDaVWynIGOl4OuxT.webp"
+          },
+          {
+            "title": "Арам Вардеванян - представителям властей Армении: Не распространяйте страх и не пытайтесь таким образом получить преимущество",
+            "url": "https://news.am/ru/news/1069379",
+            "date": "2026-10-21T12:37:02.000Z",
+            "image": "https://news.am/storage/media/26/10/21/61IuAP6H9DerVi4q.webp"
+          },
+          {
+            "title": "Глава МИД Армении отреагировал на доклад о возможности приостановки членства в ЕАЭС: Изучаем, но суверенитет и независимость превыше всего",
             "url": "https://news.am/ru/news/1069373",
             "date": "2026-10-21T12:22:30.000Z",
             "image": "https://news.am/storage/media/26/10/21/yTRgjILzuzv9ulyy.webp"
@@ -10288,30 +10312,6 @@
             "url": "https://news.am/ru/news/1069295",
             "date": "2026-10-21T08:29:56.000Z",
             "image": "https://i.ytimg.com/vi/au2fqLZ77aY/hqdefault.jpg"
-          },
-          {
-            "title": "«Иравунк». «Гражданский договор» сосредоточил весь ресурс на Степанаване и Артике",
-            "url": "https://news.am/ru/news/1069227",
-            "date": "2026-10-21T04:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/SY0C38RlTCqTvVgX.webp"
-          },
-          {
-            "title": "«Грапарак»: Азербайджан недоволен — вопрос «топчется на месте». Что решил Пашинян?",
-            "url": "https://news.am/ru/news/1069228",
-            "date": "2026-10-21T03:54:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/KWmpXZXVHtScpf5t.webp"
-          },
-          {
-            "title": "Контрактный военнослужащий был уволен с работы из-за присоединения его отца к «Сильной Армении»",
-            "url": "https://news.am/ru/news/1069215",
-            "date": "2026-10-20T20:57:13.000Z",
-            "image": "https://news.am/storage/media/26/10/21/DrKQftY3F9VP2RCZ.webp"
-          },
-          {
-            "title": "Трамп связал беспорядки во Франции с массовой миграцией",
-            "url": "https://news.am/ru/news/1069213",
-            "date": "2026-10-20T20:33:14.000Z",
-            "image": "https://news.am/storage/media/26/10/15/7IA3NAM5jef3Qunb.webp"
           }
         ]
       },
@@ -10319,6 +10319,18 @@
         "categoryKey": "business",
         "label": "Бизнес",
         "articles": [
+          {
+            "title": "Участник акции протеста: Если «Раздан цемент» заработает, цемент подешевеет",
+            "url": "https://news.am/ru/news/1069363",
+            "date": "2026-10-21T11:59:40.000Z",
+            "image": "https://i.ytimg.com/vi/GAOI7hlJhNo/hqdefault.jpg"
+          },
+          {
+            "title": "Арсен Погосян о ситуации вокруг компании «Раздан цемент»: Мы находимся в неопределенном ожидании",
+            "url": "https://news.am/ru/news/1069353",
+            "date": "2026-10-21T11:29:07.000Z",
+            "image": "https://i.ytimg.com/vi/12nbv3Pes2E/hqdefault.jpg"
+          },
           {
             "title": "Сотрудник компании «Раздан цемент»: Сделка по покупке постоянно затягивается - ждем какого-то соглашения",
             "url": "https://news.am/ru/news/1069351",
@@ -10366,18 +10378,6 @@
             "url": "https://news.am/ru/news/1068829",
             "date": "2026-10-19T10:21:18.000Z",
             "image": "https://news.am/storage/media/26/10/19/P6OFDteRsFbVb9rR.webp"
-          },
-          {
-            "title": "Во Франции во время беспорядков повредили около 1500 магазинов: ущерб оценили в сотни миллионов евро",
-            "url": "https://news.am/ru/news/1068659",
-            "date": "2026-10-18T10:45:48.000Z",
-            "image": "https://news.am/storage/media/26/10/18/DbUD8SDsFg4hg5Pv.webp"
-          },
-          {
-            "title": "Netflix оформил права на свой логотип и название в России",
-            "url": "https://news.am/ru/news/1068640",
-            "date": "2026-10-18T09:51:00.000Z",
-            "image": "https://news.am/storage/media/26/10/14/G8u8UVNA0ATBLhp2.webp"
           }
         ]
       },
@@ -10452,6 +10452,18 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Министр экономики Армении: Содействие государства на этот раз коснется КАРГО-перевозок",
+            "url": "https://news.am/ru/news/1069397",
+            "date": "2026-10-21T13:27:43.000Z",
+            "image": "https://news.am/storage/media/26/10/21/GJt5u33fzbDtWPyT.webp"
+          },
+          {
+            "title": "В Армению доставили крупный рогатый скот породы флекви",
+            "url": "https://news.am/ru/news/1069376",
+            "date": "2026-10-21T12:19:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/PpcbHzB9ZhFru4af.webp"
+          },
+          {
             "title": "Курсы валют в Армении",
             "url": "https://news.am/ru/news/1069365",
             "date": "2026-10-21T12:02:00.000Z",
@@ -10498,18 +10510,6 @@
             "url": "https://news.am/ru/news/1069281",
             "date": "2026-10-21T07:41:00.000Z",
             "image": "https://news.am/storage/media/26/10/21/kpekvcsDo1gHU7xM.webp"
-          },
-          {
-            "title": "Армения вошла в список трех крупнейших импортеров фруктовых и овощных соков из России",
-            "url": "https://news.am/ru/news/1069242",
-            "date": "2026-10-21T06:00:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/lyZagghaqZ98XnLi.webp"
-          },
-          {
-            "title": "Армения стала вторым крупнейшим поставщиком лука на грузинский рынок",
-            "url": "https://news.am/ru/news/1069243",
-            "date": "2026-10-21T05:50:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/N4NuRFQwGIsBHk7P.webp"
           }
         ]
       },
@@ -10517,6 +10517,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Голые корсеты захватили красные дорожки: кто из звезд превратил обнаженность в искусство, а кто переборщил?",
+            "url": "https://style.news.am/rus/news/116756/",
+            "date": "2026-10-21T12:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116756.jpg"
+          },
           {
             "title": "Королева Камилла объявила войну Нью-Йорку из-за Винни-Пуха",
             "url": "https://style.news.am/rus/news/116755/",
@@ -10570,12 +10576,6 @@
             "url": "https://style.news.am/rus/news/116747/",
             "date": "2026-10-21T06:49:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116747.jpg"
-          },
-          {
-            "title": "Ким Кардашьян ошеломила Сеть, перевоплотившись в собственную дочь: ее не отличить от 13-летней Норт Уэст",
-            "url": "https://style.news.am/rus/news/116746/",
-            "date": "2026-10-21T06:26:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116746.jpg"
           }
         ]
       },
@@ -10716,6 +10716,24 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Калининградской области разбился истребитель Су-30",
+            "url": "https://news.am/ru/news/1069394",
+            "date": "2026-10-21T13:23:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/QnAmtYpoqy6L753j.webp"
+          },
+          {
+            "title": "Макрон не намерен вводить режим ЧП во Франции из-за протестов и беспорядков",
+            "url": "https://news.am/ru/news/1069368",
+            "date": "2026-10-21T12:55:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/3DKEv4EiatoAQsuD.webp"
+          },
+          {
+            "title": "В Гегаркунике у пассажира «Kia» нашли наркотики: он - врач-кардиолог в одном из известных медцентров",
+            "url": "https://news.am/ru/news/1069374",
+            "date": "2026-10-21T12:16:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/BWoxEYSbNC4eYCLW.webp"
+          },
+          {
             "title": "В Италии пятьсот военных направили в Милан патрулировать улицы из-за протестов",
             "url": "https://news.am/ru/news/1069355",
             "date": "2026-10-21T12:08:00.000Z",
@@ -10756,24 +10774,6 @@
             "url": "https://news.am/ru/news/1069178",
             "date": "2026-10-20T16:04:33.000Z",
             "image": "https://news.am/storage/media/26/10/20/HzYmRIRzJIYTYrHp.webp"
-          },
-          {
-            "title": "В Ереване автомобиль врезался в кондитерский цех",
-            "url": "https://news.am/ru/news/1069149",
-            "date": "2026-10-20T13:56:00.000Z",
-            "image": "https://news.am/storage/media/26/10/20/EymUxNokY54xJL35.webp"
-          },
-          {
-            "title": "Смерти на фоне беспорядков: в Париже открыли два расследования",
-            "url": "https://news.am/ru/news/1069127",
-            "date": "2026-10-20T13:05:26.000Z",
-            "image": "https://news.am/storage/media/26/10/19/0xC2oseSlGuQfgPq.webp"
-          },
-          {
-            "title": "В селе Парпи спор из-за денег закончился смертельным выстрелом",
-            "url": "https://news.am/ru/news/1069118",
-            "date": "2026-10-20T12:17:00.000Z",
-            "image": "https://news.am/storage/media/26/10/20/v2oLOPglBpcXnYo0.webp"
           }
         ]
       },
