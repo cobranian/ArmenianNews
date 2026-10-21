@@ -1,0 +1,122 @@
+{
+  "slug": "lavash",
+  "qid": "Q909438",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Lavash",
+      "url": "https://fr.wikipedia.org/wiki/Lavash",
+      "revision": 237853446,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Lavash",
+      "url": "https://en.wikipedia.org/wiki/Lavash",
+      "revision": 1365668943,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Լավաշ",
+      "url": "https://hy.wikipedia.org/wiki/%D4%BC%D5%A1%D5%BE%D5%A1%D5%B7",
+      "revision": 10682103,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Лаваш",
+      "url": "https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B2%D0%B0%D1%88",
+      "revision": 151488805,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "hse",
+      "lang": "hy",
+      "title": "ՀՍՀ/ԼԱՎԱՇ",
+      "url": "https://hy.wikisource.org/wiki/%D5%80%D5%8D%D5%80/%D4%BC%D4%B1%D5%8E%D4%B1%D5%87",
+      "revision": 373835,
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "kind": "unesco",
+      "lang": "en",
+      "title": "Lavash, the preparation, meaning and appearance of traditional bread as an expression of culture in Armenia",
+      "url": "https://ich.unesco.org/en/RL/lavash-the-preparation-meaning-and-appearance-of-traditional-bread-as-an-expression-of-culture-in-armenia-00985",
+      "revision": null,
+      "license": "UNESCO"
+    },
+    {
+      "kind": "peopleofar",
+      "lang": "en",
+      "title": "Armenian Flatbread ‘Lavash’ is inscribed on UNESCO’s list of Intangible Cultural Heritage of Humanity",
+      "url": "https://www.peopleofar.com/2014/11/28/armenian-flatbread-lavash-is-inscribed-on-unescos-list-of-intangible-cultural-heritage-of-humanity/",
+      "revision": "2014-12-27T19:20:53",
+      "license": "Tous droits réservés",
+      "postId": 6204
+    },
+    {
+      "kind": "peopleofar",
+      "lang": "en",
+      "title": "Armenian Flatbread: Lavash",
+      "url": "https://www.peopleofar.com/2014/06/03/armenian-flatbread-lavash/",
+      "revision": "2017-07-09T13:10:34",
+      "license": "Tous droits réservés",
+      "postId": 5872
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Pan armenio en el mercado de Yerevan.JPG",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Pan_armenio_en_el_mercado_de_Yerevan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 800,
+      "height": 600,
+      "mime": "image/jpeg",
+      "author": "Wiquijote",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Pan_armenio_en_el_mercado_de_Yerevan.JPG"
+    },
+    {
+      "file": "File:Lavash arménien.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Lavash_arm%C3%A9nien.jpg/1920px-Lavash_arm%C3%A9nien.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3208,
+      "height": 2703,
+      "mime": "image/jpeg",
+      "author": "Combrian",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Lavash_arm%C3%A9nien.jpg"
+    },
+    {
+      "file": "File:Lavash in a tonir oven Armenia 2026.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Lavash_in_a_tonir_oven_Armenia_2026.jpg/1920px-Lavash_in_a_tonir_oven_Armenia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1920,
+      "height": 2560,
+      "mime": "image/jpeg",
+      "author": "Furkan Akkurt",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Lavash_in_a_tonir_oven_Armenia_2026.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Pan armenio en el mercado de Yerevan.JPG",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Pan_armenio_en_el_mercado_de_Yerevan.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 800,
+    "height": 600,
+    "mime": "image/jpeg",
+    "author": "Wiquijote",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Pan_armenio_en_el_mercado_de_Yerevan.JPG"
+  },
+  "agendaEvent": null,
+  "overlap": 0,
+  "model": "gemini-flash-latest"
+}
