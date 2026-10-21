@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T18:23:41.396Z",
+  "generatedAt": "2026-10-21T18:46:32.716Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ուկրաինան պատրաստ է սառեցնել պատերազմն առաջնագծում․ Զելենսկի",
+            "url": "https://hy.armradio.am/archives/765825",
+            "date": "2026-10-21T18:33:54.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2025/08/2025-08-04T152129Z_1127401981_RC2FCDALZ6D0_RTRMADP_3_UKRAINE-CRISIS-ZELENSKIY-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մակրոնը մեղադրել է օտարերկրյա առաջնորդներին Ֆրանսիայի անկարգությունների թեման շահարկելու մեջ",
             "url": "https://hy.armradio.am/archives/765820",
             "date": "2026-10-21T17:29:37.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/765620",
             "date": "2026-10-21T04:33:48.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/fullscreen-mwu-768x432.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ճապոնիան դեպի Մարս տիեզերակայան է արձակել",
-            "url": "https://hy.armradio.am/archives/765617",
-            "date": "2026-10-21T04:14:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/owl_detail_620_f4cea0c5b0476b3ee395fcb61575592d-300x200.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -3161,10 +3161,10 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35352.jpg"
         },
         {
-          "title": "Karabakh : la dissolution de l’armée évoquée, sans décision prise",
-          "url": "https://armenieinfo.tv/mer-oughin-35316/",
+          "title": "Arménie : une commission parlementaire examine les relations Église-État",
+          "url": "https://armenieinfo.tv/mer-oughin-35327/",
           "date": "2026-10-12T06:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35316.jpg"
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35327.jpg"
         }
       ]
     },
@@ -9598,6 +9598,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Զինված անձինք փորձել են գրավել Լիբիայի Հաշվեքննիչ պալատի շենքը Տրիպոլիում",
+            "url": "https://news.am/hy/news/1069468",
+            "date": "2026-10-21T18:30:47.000Z",
+            "image": "https://news.am/storage/media/26/10/21/SvSjpg67NCI8fmPc.webp"
+          },
+          {
             "title": "Փաշինյանը կրկին անձամբ մտել է ընտրական պայքարի մեջ. Ամստերդամ",
             "url": "https://news.am/hy/news/1069451",
             "date": "2026-10-21T16:48:11.000Z",
@@ -9650,12 +9656,6 @@
             "url": "https://news.am/hy/news/1069379",
             "date": "2026-10-21T12:37:02.000Z",
             "image": "https://news.am/storage/media/26/10/21/61IuAP6H9DerVi4q.webp"
-          },
-          {
-            "title": "Ուսումնասիրում ենք, բայց ինքնիշխանությունն ու անկախությունն ամեն ինչից վեր են․ Միրզոյանը ԵԱՏՄ-ի զեկույցի մասին",
-            "url": "https://news.am/hy/news/1069373",
-            "date": "2026-10-21T12:22:30.000Z",
-            "image": "https://news.am/storage/media/26/10/21/yTRgjILzuzv9ulyy.webp"
           }
         ]
       },
@@ -9730,6 +9730,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ՉԼ․ «Կոմոն» ուժեղ էր «Մանչեսթեր Յունայթեդից»՝ 4:1 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169703/",
+            "date": "2026-10-21T18:39:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169703.jpg"
+          },
+          {
             "title": "ՉԼ․ «Ռեալի» մեկնարկային կազմը",
             "url": "https://sport.news.am/arm/news/169702/",
             "date": "2026-10-21T18:01:00.000Z",
@@ -9782,12 +9788,6 @@
             "url": "https://sport.news.am/arm/news/169694/",
             "date": "2026-10-21T13:45:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169694.jpg"
-          },
-          {
-            "title": "Դանի Օլմոն բաց կթողնի մեկ ամիս",
-            "url": "https://sport.news.am/arm/news/169693/",
-            "date": "2026-10-21T13:37:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169693.jpg"
           }
         ]
       },
@@ -9795,6 +9795,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Հայաստանի իշխանությունները փորձում են նախապատրաստել ժողովրդին սոցիալ-տնտեսական իրավիճակի կտրուկ վատթարացմանը. «Օրվա ամփոփում»՝ ռուսերեն",
+            "url": "https://news.am/hy/news/1069469",
+            "date": "2026-10-21T18:35:19.000Z",
+            "image": "https://img.youtube.com/vi/CPsEge290g4/maxresdefault.jpg"
+          },
           {
             "title": "TRIPP-ի տնտեսական օգուտը ՀՀ-ի համար կախված է նրանից՝ արդյոք այն «Խաղաղության խաչմերուկի» մաս կդառնա. Վաչե Գաբրիելյան",
             "url": "https://news.am/hy/news/1069402",
@@ -9848,12 +9854,6 @@
             "url": "https://news.am/hy/news/1069365",
             "date": "2026-10-21T12:02:00.000Z",
             "image": "https://news.am/storage/media/26/10/21/6oonZsrWNgmeWwZN.webp"
-          },
-          {
-            "title": "Էկոնոմիկայի նախարար. հայկական ծագման ապրանքների արտահանումը դեպի ԱՄԷ հասել է 130 մլն դոլարի",
-            "url": "https://news.am/hy/news/1069412",
-            "date": "2026-10-21T11:01:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/WORWMo3Ss0sDgvHg.webp"
           }
         ]
       },
@@ -10000,6 +10000,12 @@
             "image": "https://med.news.am/static/news/s/2026/10/42161.jpg"
           },
           {
+            "title": "Երբ առողջ սննդակարգն ու սպորտը բավարար չեն. ում կարող են օգնել նիհարեցնող դեղամիջոցները",
+            "url": "https://med.news.am/arm/news/42159/erb-aroxj-snndakargn-u-sporty-bavarar-chen-um-karox-en-ognel-niharecnox-dexamijocnery.html",
+            "date": "2026-10-21T15:46:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42159.jpg"
+          },
+          {
             "title": "Մշակվել է նոր սերնդի ձողախողովակ, որը հնարավորություն է տալիս ուսումնասիրել վտանգավոր վահանիկները պսակաձև զարկերակների ներսից",
             "url": "https://med.news.am/arm/news/42160/mshakvel-e-nor-serndi-dzoxakhoxovak-ory-hnaravorutyun-e-talis-usumnasirel-vtangavor-vahaniknery-psakadzev-zarkerakneri-nersic.html",
             "date": "2026-10-21T13:38:00.000Z",
@@ -10046,12 +10052,6 @@
             "url": "https://med.news.am/arm/news/42152/imunayin-hamakargn-axineri-hivandutyan-masin-ahazangum-e-akhtoroshumic-10-tari-araj%E2%80%A4-gut.html",
             "date": "2026-10-20T10:52:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42152.jpg"
-          },
-          {
-            "title": "Գործերը հետաձգելու սովորությունը դարձել է երիտասարդների սթրեսի գլխավոր պատճառը․ PLOS",
-            "url": "https://med.news.am/arm/news/42151/gortsery-hetadzgelu-sovorutyuny-dardzel-e-eritasardneri-stresi-glkhavor-pattchary%E2%80%A4-plos.html",
-            "date": "2026-10-20T08:48:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42151.jpg"
           }
         ]
       },
@@ -10059,6 +10059,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Զինված անձինք փորձել են գրավել Լիբիայի Հաշվեքննիչ պալատի շենքը Տրիպոլիում",
+            "url": "https://news.am/hy/news/1069468",
+            "date": "2026-10-21T18:30:47.000Z",
+            "image": "https://news.am/storage/media/26/10/21/SvSjpg67NCI8fmPc.webp"
+          },
           {
             "title": "Կոտայքի մարզի գյուղերից մեկում 13-ամյա տղան պահմտոցի խաղալիս հոսանքահարվել ու տեղափոխվել է հիվանդանոց",
             "url": "https://news.am/hy/news/1069464",
@@ -10112,12 +10118,6 @@
             "url": "https://news.am/hy/news/1069374",
             "date": "2026-10-21T12:16:00.000Z",
             "image": "https://news.am/storage/media/26/10/21/BWoxEYSbNC4eYCLW.webp"
-          },
-          {
-            "title": "Իտալիայում բողոքի ցույցերի պատճառով հինգ հարյուր զինվորական է ուղարկվել Միլանի փողոցները պարեկելու",
-            "url": "https://news.am/hy/news/1069355",
-            "date": "2026-10-21T12:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/GDKmtugmYscnruD9.webp"
           }
         ]
       },
@@ -10125,6 +10125,12 @@
         "categoryKey": "society",
         "label": "Հասարակություն",
         "articles": [
+          {
+            "title": "Հայաստանի իշխանությունները փորձում են նախապատրաստել ժողովրդին սոցիալ-տնտեսական իրավիճակի կտրուկ վատթարացմանը. «Օրվա ամփոփում»՝ ռուսերեն",
+            "url": "https://news.am/hy/news/1069469",
+            "date": "2026-10-21T18:35:19.000Z",
+            "image": "https://img.youtube.com/vi/CPsEge290g4/maxresdefault.jpg"
+          },
           {
             "title": "Գերմանիայի երիտասարդությունը զանգվածային բողոքի ցույցեր է պատրաստում Ֆրանսիայի անկարգությունների ֆոնին. DW",
             "url": "https://news.am/hy/news/1069423",
@@ -10178,12 +10184,6 @@
             "url": "https://news.am/hy/news/1066626",
             "date": "2026-10-08T12:49:00.000Z",
             "image": "https://news.am/storage/media/26/10/08/KeJTukLRWIv8KAf8.webp"
-          },
-          {
-            "title": "Ծիծաղից մինչև ճիչ. գիտնականները պարզել են, թե հասարակությունը որ ձայներն է ընդունում, իսկ որոնք՝ դատապարտում",
-            "url": "https://news.am/hy/news/1066271",
-            "date": "2026-10-08T01:43:00.000Z",
-            "image": "https://images.unsplash.com/photo-1756028518787-5a4ad70f0b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjU2NDZ8MHwxfHNlYXJjaHwyfHwlRDElODElRDAlQkMlRDAlQjUlRDElODV8ZW58MHx8fHwxNzkxMzU4ODY4fDA&ixlib=rb-4.1.0&q=80&w=1080"
           }
         ]
       },
@@ -10260,6 +10260,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Вооруженные люди попытались захватить здание Счетной палаты Ливии в Триполи",
+            "url": "https://news.am/ru/news/1069468",
+            "date": "2026-10-21T18:30:47.000Z",
+            "image": "https://news.am/storage/media/26/10/21/SvSjpg67NCI8fmPc.webp"
+          },
+          {
             "title": "Амстердам: Пашинян вновь лично включился в предвыборную борьбу",
             "url": "https://news.am/ru/news/1069451",
             "date": "2026-10-21T16:48:11.000Z",
@@ -10312,12 +10318,6 @@
             "url": "https://news.am/ru/news/1069379",
             "date": "2026-10-21T12:37:02.000Z",
             "image": "https://news.am/storage/media/26/10/21/61IuAP6H9DerVi4q.webp"
-          },
-          {
-            "title": "Глава МИД Армении отреагировал на доклад о возможности приостановки членства в ЕАЭС: Изучаем, но суверенитет и независимость превыше всего",
-            "url": "https://news.am/ru/news/1069373",
-            "date": "2026-10-21T12:22:30.000Z",
-            "image": "https://news.am/storage/media/26/10/21/yTRgjILzuzv9ulyy.webp"
           }
         ]
       },
@@ -10458,6 +10458,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Власти Армении пытаются подготовить население к резкому ухудшению социально-экономической ситуации: «Итоги дня» – видеоновости на русском",
+            "url": "https://news.am/ru/news/1069469",
+            "date": "2026-10-21T18:34:42.000Z",
+            "image": "https://img.youtube.com/vi/CPsEge290g4/maxresdefault.jpg"
+          },
+          {
             "title": "Ваче Габриелян: Экономическая выгода TRIPP для Армении зависит от того, станет ли он частью «Перекрестка мира»",
             "url": "https://news.am/ru/news/1069402",
             "date": "2026-10-21T17:56:00.000Z",
@@ -10510,12 +10516,6 @@
             "url": "https://news.am/ru/news/1069365",
             "date": "2026-10-21T12:02:00.000Z",
             "image": "https://news.am/storage/media/26/10/21/6oonZsrWNgmeWwZN.webp"
-          },
-          {
-            "title": "Министр экономики: Экспорт товаров армянского происхождения в направлении ОАЭ достиг $130 млн",
-            "url": "https://news.am/ru/news/1069412",
-            "date": "2026-10-21T11:01:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/WORWMo3Ss0sDgvHg.webp"
           }
         ]
       },
@@ -10722,6 +10722,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Вооруженные люди попытались захватить здание Счетной палаты Ливии в Триполи",
+            "url": "https://news.am/ru/news/1069468",
+            "date": "2026-10-21T18:30:47.000Z",
+            "image": "https://news.am/storage/media/26/10/21/SvSjpg67NCI8fmPc.webp"
+          },
+          {
             "title": "В одном из сёл Котайкской области 13-летний мальчик, играя в прятки, получил удар током и был доставлен в больницу",
             "url": "https://news.am/ru/news/1069464",
             "date": "2026-10-21T17:59:46.000Z",
@@ -10774,12 +10780,6 @@
             "url": "https://news.am/ru/news/1069374",
             "date": "2026-10-21T12:16:00.000Z",
             "image": "https://news.am/storage/media/26/10/21/BWoxEYSbNC4eYCLW.webp"
-          },
-          {
-            "title": "В Италии пятьсот военных направили в Милан патрулировать улицы из-за протестов",
-            "url": "https://news.am/ru/news/1069355",
-            "date": "2026-10-21T12:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/GDKmtugmYscnruD9.webp"
           }
         ]
       },
@@ -10787,6 +10787,12 @@
         "categoryKey": "society",
         "label": "Общество",
         "articles": [
+          {
+            "title": "Власти Армении пытаются подготовить население к резкому ухудшению социально-экономической ситуации: «Итоги дня» – видеоновости на русском",
+            "url": "https://news.am/ru/news/1069469",
+            "date": "2026-10-21T18:34:42.000Z",
+            "image": "https://img.youtube.com/vi/CPsEge290g4/maxresdefault.jpg"
+          },
           {
             "title": "DW: Молодежь Германии готовит массовые протесты на фоне беспорядков во Франции",
             "url": "https://news.am/ru/news/1069423",
@@ -10840,12 +10846,6 @@
             "url": "https://news.am/ru/news/1066626",
             "date": "2026-10-08T12:49:00.000Z",
             "image": "https://news.am/storage/media/26/10/08/KeJTukLRWIv8KAf8.webp"
-          },
-          {
-            "title": "От смеха до крика: учёные выяснили, какие звуки общество принимает, а какие осуждает",
-            "url": "https://news.am/ru/news/1066271",
-            "date": "2026-10-08T01:43:00.000Z",
-            "image": "https://images.unsplash.com/photo-1756028518787-5a4ad70f0b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjU2NDZ8MHwxfHNlYXJjaHwyfHwlRDElODElRDAlQkMlRDAlQjUlRDElODV8ZW58MHx8fHwxNzkxMzU4ODY4fDA&ixlib=rb-4.1.0&q=80&w=1080"
           }
         ]
       },
