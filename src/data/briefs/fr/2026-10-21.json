@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-21",
+  "lang": "fr",
+  "generatedAt": "2026-10-21T04:29:10.834Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Voici les faits marquants de la journée en Arménie et à l'étranger.",
+  "topics": [
+    {
+      "title": "Pashinyan à Bruxelles pour le sommet UE",
+      "text": "Le Premier ministre arménien Nikol Pashinyan se rend à Bruxelles pour participer au sommet consacré à l'élargissement de l'Union européenne.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263338",
+          "title": "Nikol Pashinyan participera à Bruxelles au sommet consacré à l’élargissement de l’Union européenne"
+        }
+      ]
+    },
+    {
+      "title": "Risque économique en cas de suspension de l'UEE",
+      "text": "Deux rapports de l'Union économique eurasiatique estiment qu'une suspension de l'adhésion arménienne pourrait entraîner une chute du PIB de 15,6 % et une baisse de 50 % des exportations.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-cas-de-suspension-de-ladhesion-a-lunion-economique-eurasiatique-uee-le-pib-de-larmenie-pourrait-chuter-de-156-precise-un-rapport-de-luee/",
+          "title": "En cas de suspension de l’adhésion à l’Union économique eurasiatique (UEE), le PIB de l’Arménie pourrait chuter de 15,6 % précise un rapport de l’UEE"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-cas-de-suspension-de-ladhesion-de-larmenie-a-luee-les-exportations-armeniennes-pourraient-chuter-de-50/",
+          "title": "En cas de suspension de l’adhésion de l’Arménie à l’UEE, les exportations arméniennes pourraient chuter de 50 %"
+        }
+      ]
+    },
+    {
+      "title": "Justice arménienne et plainte Simonyan",
+      "text": "La justice arménienne a rejeté la plainte en diffamation du secrétaire du Conseil de sécurité Armen Grigoryan Simonyan contre un député de l'opposition.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-justice-armenienne-rejette-la-plainte-en-diffamation-du-secretaire-du-conseil-de-securite-simonyan-contre-un-depute-de-lopposition/",
+          "title": "La justice arménienne rejette la plainte en diffamation du secrétaire du Conseil de sécurité Simonyan contre un député de l’opposition"
+        }
+      ]
+    },
+    {
+      "title": "Événements culturels et mémoriaux",
+      "text": "Un khatchkar arménien a été installé à Saint-Chamond en France, et Greenpeace a interpellé la COP17 sur la préservation de la biodiversité. Une cérémonie d'hommage est également prévue en marge de la diaspora.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263312",
+          "title": "Greenpeace appelle la COP17 à prendre des mesures concrètes pour préserver la biodiversité et protéger la nature"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ceremonie-dhommage-le-24-octobre-a-margny-les-compiegne/",
+          "title": "Cérémonie d’hommage le 21 novembre à Margny les Compiègne"
+        }
+      ]
+    },
+    {
+      "title": "Un léopard baptisé Aghasi repéré à Vayots Dzor",
+      "text": "Un léopard a été aperçu dans la région de Vayots Dzor en Arménie et a été baptisé Aghasi en hommage à un gardien de l'aire de conservation communautaire de Gndasar.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-leopard-apercu-dans-la-region-de-vayots-dzor-en-armenie-baptise-aghasi-en-hommage-au-gardien-de-laire-de-conservation-communautaire-de-gndasar/",
+          "title": "Un léopard aperçu dans la région de Vayots Dzor en Arménie, baptisé Aghasi en hommage au gardien de l’aire de conservation communautaire de Gndasar"
+        }
+      ]
+    },
+    {
+      "title": "Démantèlement de préparatifs d'assassinat",
+      "text": "Le ministère arménien de l'Intérieur a annoncé avoir démantelé plus d'une vingtaine de préparatifs d'assassinat depuis le début de l'année 2025.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-ministere-armenien-de-linterieur-a-demantele-plus-dune-vingtaine-de-preparatifs-dassassinat-depuis-debut-2025/",
+          "title": "Le ministère arménien de l’Intérieur a démantelé plus d’une vingtaine de préparatifs d’assassinat depuis début 2025"
+        }
+      ]
+    },
+    {
+      "title": "Limogeage du chef du protocole",
+      "text": "Nikol Pashinyan a limogé son chef du protocole pour avoir confondu le Kirghizstan et le Kazakhstan lors d'une rencontre officielle.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pachinian-limoge-son-chef-du-protocole-pour-avoir-confondu-le-kirghizstan-et-le-kazakhstan/",
+          "title": "Pachinian limoge son chef du protocole pour avoir confondu le Kirghizstan et le Kazakhstan"
+        }
+      ]
+    }
+  ]
+}
