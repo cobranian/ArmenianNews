@@ -1,0 +1,188 @@
+{
+  "date": "2026-10-22",
+  "lang": "fr",
+  "generatedAt": "2026-10-22T03:30:21.308Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "L'actualité arménienne du jour est marquée par des développements diplomatiques autour du TRIPP, des annonces liées à la COP17 et une série d'événements culturels et économiques.",
+  "topics": [
+    {
+      "title": "TRIPP et relations Armenia-États-Unis",
+      "text": "La commission parlementaire arménienne a approuvé le projet de ratification de l'accord-cadre TRIPP entre l'Arménie et les États-Unis. Ararat Mirzoyan a exprimé son incompréhension face au refus azerbaïdjanais de libérer les prisonniers arméniens et a souligné la nécessité de clarifier les modalités de passage par l'Azerbaïdjan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-commission-parlementaire-en-armenie-approuve-le-projet-de-ratification-de-laccord-cadre-tripp-entre-larmenie-et-les-etats-unis/",
+          "title": "La commission parlementaire en Arménie, approuve le projet de ratification de l’accord-cadre TRIPP entre l’Arménie et les États-Unis"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ararat-mirzoyan-ne-comprend-sincerement-pas-pourquoi-les-autorites-azerbaidjanaises-refusent-de-liberer-les-prisonniers-armeniens/",
+          "title": "Ararat Mirzoyan « ne comprend sincèrement pas » pourquoi les autorités azerbaïdjanaises refusent de libérer les prisonniers Arméniens"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263442",
+          "title": "Ararat Mirzoyan estime que les modalités de passage des Arméniens par l’Azerbaïdjan dans le cadre du TRIPP doivent être clarifiées"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263427",
+          "title": "Ararat Mirzoyan s’inquiète de la durée des procédures de mise en œuvre du projet TRIPP"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/bakou-continue-de-soulever-la-question-de-la-reforme-constitutionnelle-de-la-republique-darmenie-affirme-ararat-mirzoyan/",
+          "title": "Bakou continue de soulever la question de la réforme constitutionnelle de la République d’Arménie affirme Ararat Mirzoyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lazerbaidjan-a-inscrit-31-citoyens-turcs-sur-sa-liste-de-personnes-indesirables/",
+          "title": "L’Azerbaïdjan a inscrit 31 citoyens turcs sur sa liste de personnes indésirables"
+        }
+      ]
+    },
+    {
+      "title": "COP17 et initiatives environnementales",
+      "text": "À Erevan, le lancement de l'Alliance internationale pour la nature positive a eu lieu dans le cadre de la COP17. Nazik Avdalyan a présenté un nouveau projet lié aux normes écologiques et aux centres sportifs, tandis que le ministre des Affaires étrangères a proposé un débat national sur la nouvelle Constitution.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263464",
+          "title": "À Erevan, le lancement de l’Alliance internationale pour la nature positive a eu lieu dans le cadre de la COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263463",
+          "title": "Normes écologiques et centres sportifs : Nazik Avdalyan présente un nouveau projet dans le cadre de la COP17"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lengagement-de-spfa-pour-larmenie-et-avec-la-francophonie-pour-les-armeniennes",
+          "title": "L’engagement de SPFA pour l’Arménie, et avec la Francophonie pour les Arméniennes"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263432",
+          "title": "Le ministre arménien des Affaires étrangères propose un débat national sur le projet de nouvelle Constitution"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/cop17-la-culture-armenienne-lhonneur-dans-la-zone-verte",
+          "title": "COP17 : la culture arménienne à l’honneur dans la Zone verte"
+        }
+      ]
+    },
+    {
+      "title": "Économie et agriculture",
+      "text": "Soixante-quatre bovins de race allemande Fleckvieh sont arrivés en Arménie. Le ministre de l'Économie a affirmé que la hausse du prix du gaz ne créerait pas de situation inextricable pour le pays, et Hasmik Hakobyan a déclaré que l'Arménie ne pouvait être exclue de l'UEE.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/64-bovins-de-race-allemande-fleckvieh-sont-arrives-en-armenie/",
+          "title": "64 bovins de race allemande Fleckvieh sont arrivés en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-ne-peut-etre-exclue-de-luee-meme-si-tous-les-autres-pays-le-souhaitent-affirme-hasmik-hakobyan/",
+          "title": "L’Arménie ne peut être exclue de l’UEE, même si tous les autres pays le souhaitent affirme Hasmik Hakobyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-hausse-du-prix-du-gaz-ne-creera-pas-une-situation-inextricable-pour-larmenie-affirme-le-ministre-armenien-de-leconomie/",
+          "title": "La hausse du prix du gaz ne créera pas une situation inextricable pour l’Arménie affirme le ministre arménien de l’Économie"
+        }
+      ]
+    },
+    {
+      "title": "Culture et événements médiatiques",
+      "text": "La céramique arménienne est à l'honneur à la Maison de l'Amérique latine jusqu'au 25 octobre dans le cadre de « Regards Croisés ». Le dernier film de Robert Guédiguian est sorti en salles. Une conférence littéraire bilingue à la JAF Paris a été reportée au 20 novembre.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/regards-croises-la-ceramique-armenienne-a-lhonneur-a-la-maison-de-lamerique-latine-jusquau-25-octobre/",
+          "title": "« Regards Croisés » : La céramique arménienne à l’honneur à la Maison de l’Amérique latine jusqu’au 25 octobre"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/conference-litteraire-bilingue-le-23-octobre-a-la-jaf-paris/",
+          "title": "Conférence littéraire bilingue à la JAF Paris – reportée au 20 novembre"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-dernier-film-de-robert-guediguian-dans-les-salles-a-partir-daujourdhui/",
+          "title": "Le dernier film de Robert Guédiguian dans les salles à partir d’aujourd’hui"
+        }
+      ]
+    },
+    {
+      "title": "Société et affaires locales",
+      "text": "Une cérémonie de remise de prix a récompensé l'initiative « Vision des jeunes pour le lac Sevan en 2050 ». Le président de l'Assemblée nationale et l'ambassadeur de Serbie ont discuté des relations bilatérales. Une carte postale du Shirak met en lumière les derniers habitants d'un village en difficulté.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/ceremonie-de-remise-des-prix-pour-linitiative-vision-des-jeunes-pour-le-lac-sevan-en-2050/",
+          "title": "Cérémonie de remise des prix pour l’initiative « Vision des jeunes pour le lac Sevan en 2050 »"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263389",
+          "title": "Le président de l’Assemblée nationale arménienne et l’ambassadeur de Serbie discutent des relations bilatérales"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1014897",
+          "title": "Carte postale du Shirak: les derniers habitants d’un village qui se meurt"
+        }
+      ]
+    },
+    {
+      "title": "Monde et tensions régionales",
+      "text": "L'Azerbaïdjan a inscrit 31 citoyens turcs sur sa liste de personnes indésirables, suite à des tensions autour du hijab à l'école. Dimitri Peskov a indiqué que le Kremlin n'avait pas encore examiné le rapport sur la suspension de l'adhésion de l'Arménie à l'UEE.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/azerbaidjan-31-ressortissants-turcs-interdits-dentree-sur-fond-de-tensions-autour-du-hijab-a-lecole/",
+          "title": "Azerbaïdjan : 31 ressortissants turcs interdits d’entrée sur fond de tensions autour du hijab à l’école"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-ne-peut-etre-exclue-de-luee-meme-si-tous-les-autres-pays-le-souhaitent-affirme-hasmik-hakobyan/",
+          "title": "L’Arménie ne peut être exclue de l’UEE, même si tous les autres pays le souhaitent affirme Hasmik Hakobyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/dimitri-peskov-le-kremlin-na-pas-encore-pris-connaissance-du-rapport-sur-la-suspension-de-ladhesion-de-larmenie-a-lunion-economique-eurasiatique-uee/",
+          "title": "Dimitri Peskov : Le Kremlin n’a pas encore pris connaissance du rapport sur la suspension de l’adhésion de l’Arménie à l’Union économique eurasiatique (UEE)"
+        }
+      ]
+    },
+    {
+      "title": "Diaspora et engagements internationaux",
+      "text": "SPFA s'engage pour l'Arménie en lien avec la Francophonie. Le dîner au profit de l'ASAF a été reporté. Le ministre arménien des Affaires étrangères Abbas Araghchi plaide pour un mécanisme régional de sécurité sans forces étrangères.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lengagement-de-spfa-pour-larmenie-et-avec-la-francophonie-pour-les-armeniennes",
+          "title": "L’engagement de SPFA pour l’Arménie, et avec la Francophonie pour les Arméniennes"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/diner-au-profit-dun-centre-hospitalier-en-armenie-le-23-octobre-a-marseille/",
+          "title": "Dîner au profit de l’ASAF reporté"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/abbas-araghchi-plaide-pour-un-mecanisme-regional-de-securite-sans-forces-etrangeres",
+          "title": "Abbas Araghchi plaide pour un mécanisme régional de sécurité sans forces étrangères"
+        }
+      ]
+    }
+  ]
+}

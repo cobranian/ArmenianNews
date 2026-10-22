@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-22",
+  "lang": "en",
+  "generatedAt": "2026-10-22T03:30:21.308Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Armenian and international media report on diplomatic developments, economic data, and cultural events across the South Caucasus and beyond.",
+  "topics": [
+    {
+      "title": "EU–Armenia cooperation deepening",
+      "text": "Romanian Foreign Minister expressed readiness to deepen the EU–Armenia agenda following congratulations from Armenian Minister Mirzoyan. The exchange signals continued diplomatic engagement between Yerevan and Brussels.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263476",
+          "title": "Ready to further deepen ambitious EU–Armenia cooperation agenda, Romanian Foreign Minister says in response to Mirzoyan’s congratulations"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069307",
+          "title": "FM Mirzoyan: Azerbaijan continues raising matter of amending Armenia’s constitution"
+        }
+      ]
+    },
+    {
+      "title": "Border breach allegations",
+      "text": "Yerevan neither confirmed nor denied a second border incident this month, as reported by Armenian sources. The development follows earlier reports of border breaches between Armenia and Azerbaijan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/yerevan-neither-confirms-nor-denies-a-second-border-breach-this-month/",
+          "title": "Yerevan Neither Confirms Nor Denies a Second Border Breach this Month"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263379",
+          "title": "Nigeria confirms Ebola case in patient who arrived from Uganda"
+        }
+      ]
+    },
+    {
+      "title": "Armenian exports to EU",
+      "text": "Armenian exports to EU member states rose by 51% according to data from Papoyan and the economy minister. The growth reflects expanding trade ties between Yerevan and Brussels.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263466",
+          "title": "Armenian exports to EU member states rise by 51%, says Papoyan"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069428",
+          "title": "Armenia exports to EU up 51%, economy minister says"
+        }
+      ]
+    },
+    {
+      "title": "Mirzoyan on CSTO and EAEU",
+      "text": "The Armenian FM stated he is unaware of a legal mechanism to expel Armenia from the EAEU, while also saying he does not see Armenia returning to the CSTO. Sovereignty and independence were cited as top priorities.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263444",
+          "title": "Mirzoyan unaware of legal mechanism to expel Armenia from EAEU or suspend its membership"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069373",
+          "title": "Armenia FM on Eurasian Economic Union report: We’re studying it – but sovereignty, independence are above all"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069357",
+          "title": "CSTO Secretary General not ruling out Armenia deciding to remain in organization"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169687/",
+          "title": "Luis Enrique: It was a top-level match against an incredibly strong opponent"
+        }
+      ]
+    },
+    {
+      "title": "TRIPP agreement and US cooperation",
+      "text": "The TRIPP agreement marks an unprecedented level of Armenia–US economic cooperation, according to Mirzoyan. The FM also noted that prohibited goods including weapons cannot transit under the mechanism.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/21/tripp-agreement-marks-unprecedented-level-of-armenia-us-economic-cooperation-mirzoyan/",
+          "title": "TRIPP Agreement marks unprecedented level of Armenia-US economic cooperation – Mirzoyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263456",
+          "title": "Prohibited goods, including weapons and ammunition, cannot transit under TRIPP, Armenian FM says"
+        }
+      ]
+    },
+    {
+      "title": "COP17 and environmental initiatives",
+      "text": "The International Nature Prescribing Alliance was launched at COP17 in Yerevan. Discussions also covered green standards for sports centres and common nature assessment standards for businesses.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263469",
+          "title": "2026 Young Ecofeminist international awards ceremony held at COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263464",
+          "title": "International Nature Prescribing Alliance launched at COP17 in Yerevan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263463",
+          "title": "Green standards and sports centres: Nazik Avdalyan discusses new project at COP17"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169695/",
+          "title": "Juan Balanta: I have high hopes that we will secure our first victory in the Europa League tomorrow"
+        }
+      ]
+    },
+    {
+      "title": "Cultural and sports highlights",
+      "text": "Mkhitaryan assisted in a Champions League win for Inter. Young Armenian innovators developed an affordable underwater drone for cultural heritage preservation. Football results and player performances featured across European competitions.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169706/",
+          "title": "Champions League: Wins for Real and Inter, an assist by Mkhitaryan, all results of the day (video)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169686/",
+          "title": "Yamal equaled Mbappe's record in the Champions League"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169685/",
+          "title": "Foden is the 6th player in Manchester City's history to score a hat-trick in the Champions League"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169689/",
+          "title": "Champions League: Best goals, saves, and assists of the day (video)"
+        }
+      ]
+    }
+  ]
+}
