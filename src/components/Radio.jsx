@@ -236,6 +236,10 @@ export function Radio({ more = true, stepRef = null }) {
   const failsRef = useRef(0) // stations sautées d'affilée sans qu'aucune ne joue
   const onlineWaitRef = useRef(null) // { cancel } tant qu'on attend le réseau
   const lapStartRef = useRef(null) // station d'où est parti un tour de sauts
+  // Sens du dernier ⏮ / ⏭ : le saut automatique d'un flux muet le suit. Sans
+  // lui, ⏮ vers une station muette sautait EN AVANT, donc revenait sur la
+  // station de départ — ⏮ restait bloqué (Im Radio en 401, 22 oct. 2026).
+  const skipDirRef = useRef(1)
   // Élément que le composant met lui-même en pause (changement de station) :
   // son événement `pause` ne vient pas de l'auditeur. Voir `onPause`.
   const ownPauseRef = useRef(null)
@@ -430,7 +434,7 @@ export function Radio({ more = true, stepRef = null }) {
       giveUp()
       return
     }
-    pick(stepStation(STATIONS, id, 1), true)
+    pick(stepStation(STATIONS, id, skipDirRef.current), true)
   }
 
   // Tour complet sans qu'aucune station ne joue : on s'arrête, quel que soit le
@@ -613,6 +617,7 @@ export function Radio({ more = true, stepRef = null }) {
     cancelNetworkWait,
     step: (dir) => {
       failsRef.current = 0
+      skipDirRef.current = dir < 0 ? -1 : 1
       pick(stepStation(STATIONS, stationIdRef.current, dir), true)
     },
   }
@@ -844,17 +849,42 @@ export function Radio({ more = true, stepRef = null }) {
 
         <div className="radio reveal">
           <div className="radio__console">
-            <button
-              type="button"
-              className={`radio__play${playing ? ' is-playing' : ''}`}
-              onClick={toggle}
-              aria-pressed={playing}
-              aria-label={playing ? t('radio.pause') : t('radio.play')}
-            >
-              <span className="radio__play-glyph" aria-hidden="true">
-                {playing ? '❚❚' : '▶'}
-              </span>
-            </button>
+            {/* ⏮ ⏭ appellent le même `step` que l'écran verrouillé : saut des
+                stations hors antenne, boucle aux deux bouts, lecture lancée.
+                Glyphes en SVG — iOS rend ⏮ ⏭ en emoji. */}
+            <div className="radio__transport">
+              <button
+                type="button"
+                className="radio__step"
+                aria-label={t('radio.remote.prev')}
+                onClick={() => sessionRef.current.step(-1)}
+              >
+                <svg viewBox="0 0 20 18" aria-hidden="true" focusable="false">
+                  <path d="M0 0h3v18H0zM17 0v18L4 9z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className={`radio__play${playing ? ' is-playing' : ''}`}
+                onClick={toggle}
+                aria-pressed={playing}
+                aria-label={playing ? t('radio.pause') : t('radio.play')}
+              >
+                <span className="radio__play-glyph" aria-hidden="true">
+                  {playing ? '❚❚' : '▶'}
+                </span>
+              </button>
+              <button
+                type="button"
+                className="radio__step"
+                aria-label={t('radio.remote.next')}
+                onClick={() => sessionRef.current.step(1)}
+              >
+                <svg viewBox="0 0 20 18" aria-hidden="true" focusable="false">
+                  <path d="M3 0l13 9-13 9zM17 0h3v18h-3z" />
+                </svg>
+              </button>
+            </div>
 
             <div className="radio__body">
               <div className="radio__meta">
@@ -940,7 +970,10 @@ export function Radio({ more = true, stepRef = null }) {
                 role="radio"
                 aria-checked={s.id === stationId}
                 aria-disabled={s.offAir || undefined}
-                onClick={() => pick(s.id)}
+                onClick={() => {
+                  skipDirRef.current = 1
+                  pick(s.id)
+                }}
               >
                 {stationName(s.id)}
                 {s.offAir && (
