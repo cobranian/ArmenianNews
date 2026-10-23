@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T14:23:31.964Z",
+  "generatedAt": "2026-10-23T14:51:07.919Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Ի՞նչ է նախատեսում Թրամփի Խաղաղության խորհրդի կանոնադրությունը․ փաստաթուղթը՝ TRIPP-ի նախագծին զուգահեռ՝ ԱԺ օրակարգում",
+            "url": "https://hy.armradio.am/archives/766226",
+            "date": "2026-10-23T14:29:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3844-300x183.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մայր օրենքի չհրապարակված նախագիծը՝ «կռվախնձոր»․ քաղաքական պայքարը կհասնի՞ արտահերթ ընտրությունների",
             "url": "https://hy.armradio.am/archives/766220",
             "date": "2026-10-23T13:53:00.000Z",
@@ -1136,19 +1143,19 @@
             "date": "2026-10-22T14:53:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3834-768x432.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Հայաստանում ներքաղաքական անկայունություն հրահրելու երրորդ փորձն է. Փաշինյանը՝ ԵԱՏՄ զեկույցի մասին",
-            "url": "https://hy.armradio.am/archives/765948",
-            "date": "2026-10-22T09:08:23.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/MHM0166982-768x523.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Հայկական բնության մասին պատմող այգի՝ Երևանի սրտում",
+            "url": "https://hy.armradio.am/archives/766246",
+            "date": "2026-10-23T14:47:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3845-300x181.jpg",
+            "category": "Կարևոր"
+          },
           {
             "title": "Կանաչ էներգիայի զարգացումը՝ COP 17–ի քննարկման առանցքում",
             "url": "https://hy.armradio.am/archives/766206",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766130",
             "date": "2026-10-23T05:40:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/new-passport-4-768x512.jpeg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Սյունիքում էկոպարեկները գտել են անտառում կորած անչափահաս երեխաներին",
-            "url": "https://hy.armradio.am/archives/766102",
-            "date": "2026-10-22T18:51:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/QIP-Shot-Screen-3787-768x503.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1902,6 +1902,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Белый дом: Украина и РФ заключили перемирие в Олешках для эвакуации гражданских",
+            "url": "https://ru.armradio.am/2026/10/23/%d0%b1%d0%b5%d0%bb%d1%8b%d0%b9-%d0%b4%d0%be%d0%bc-%d1%83%d0%ba%d1%80%d0%b0%d0%b8%d0%bd%d0%b0-%d0%b8-%d1%80%d1%84-%d0%b7%d0%b0%d0%ba%d0%bb%d1%8e%d1%87%d0%b8%d0%bb%d0%b8-%d0%bf%d0%b5%d1%80%d0%b5%d0%bc/",
+            "date": "2026-10-23T14:49:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/1790366906-4231-768x513.webp",
+            "category": "В мире"
+          },
+          {
+            "title": "SHOT: самый большой пассажирский борт мира ожидает посадки в Москве",
+            "url": "https://ru.armradio.am/2026/10/23/shot-%d1%81%d0%b0%d0%bc%d1%8b%d0%b9-%d0%b1%d0%be%d0%bb%d1%8c%d1%88%d0%be%d0%b9-%d0%bf%d0%b0%d1%81%d1%81%d0%b0%d0%b6%d0%b8%d1%80%d1%81%d0%ba%d0%b8%d0%b9-%d0%b1%d0%be%d1%80%d1%82-%d0%bc%d0%b8%d1%80/",
+            "date": "2026-10-23T14:28:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/emirates-a380-1-1600x1067-1-768x512.jpg",
+            "category": "В мире"
+          },
+          {
             "title": "Румыния и ЕС обвинили Россию в новой атаке БПЛА в Черном море, где в результате удара дрона затонуло судно",
             "url": "https://ru.armradio.am/2026/10/23/%d1%80%d1%83%d0%bc%d1%8b%d0%bd%d0%b8%d1%8f-%d0%b8-%d0%b5%d1%81-%d0%be%d0%b1%d0%b2%d0%b8%d0%bd%d0%b8%d0%bb%d0%b8-%d1%80%d0%be%d1%81%d1%81%d0%b8%d1%8e-%d0%b2-%d0%bd%d0%be%d0%b2%d0%be%d0%b9-%d0%b0%d1%82/",
             "date": "2026-10-23T14:08:00.000Z",
@@ -1955,20 +1969,6 @@
             "url": "https://ru.armradio.am/2026/10/22/%d0%bc%d0%b0%d0%ba%d1%80%d0%be%d0%bd-%d0%bf%d0%be%d0%be%d0%b1%d0%b5%d1%89%d0%b0%d0%bb-%d0%bd%d0%b5-%d0%b4%d0%be%d0%bf%d1%83%d1%81%d1%82%d0%b8%d1%82%d1%8c-%d0%bd%d0%be%d0%b2%d1%8b%d1%85-%d0%b1%d0%b5/",
             "date": "2026-10-22T08:25:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/10/o276lztp1jkc1t5n131mo9xoz89ebz6i-768x527.webp",
-            "category": "В мире"
-          },
-          {
-            "title": "Зеленский: Украина готова согласиться на заморозку нынешней линии фронта",
-            "url": "https://ru.armradio.am/2026/10/21/%d0%b7%d0%b5%d0%bb%d0%b5%d0%bd%d1%81%d0%ba%d0%b8%d0%b9-%d1%83%d0%ba%d1%80%d0%b0%d0%b8%d0%bd%d0%b0-%d0%b3%d0%be%d1%82%d0%be%d0%b2%d0%b0-%d1%81%d0%be%d0%b3%d0%bb%d0%b0%d1%81%d0%b8%d1%82%d1%8c%d1%81/",
-            "date": "2026-10-21T12:27:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/vd2da2-c7969x4483x143sx396s-wt-5dcc7e89b4ef826456c306048e8279bc-768x432.jpg",
-            "category": "В мире"
-          },
-          {
-            "title": "Израиль нанес авиа и артиллерийские удары по югу Ливана",
-            "url": "https://ru.armradio.am/2026/10/21/%d0%b8%d0%b7%d1%80%d0%b0%d0%b8%d0%bb%d1%8c-%d0%bd%d0%b0%d0%bd%d0%b5%d1%81-%d0%b0%d0%b2%d0%b8%d0%b0-%d0%b8-%d0%b0%d1%80%d1%82%d0%b8%d0%bb%d0%bb%d0%b5%d1%80%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5-%d1%83/",
-            "date": "2026-10-21T11:58:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/thumbs_b_c_be0a7581fe7449a8d7bbaa709541e886-768x432.webp",
             "category": "В мире"
           }
         ]
@@ -9140,6 +9140,12 @@
         "label": "Economics",
         "articles": [
           {
+            "title": "Russia has invested more than $10 bln in Azerbaijan's economy over past 5-8 years, Azerbaijani ambassador says",
+            "url": "https://news.am/en/news/1069912",
+            "date": "2026-10-23T14:15:00.000Z",
+            "image": "https://news.am/storage/media/26/10/23/Y3ruoCVCQ5OtvPNg.webp"
+          },
+          {
             "title": "US dollar, euro drop in Armenia",
             "url": "https://news.am/en/news/1069867",
             "date": "2026-10-23T11:57:00.000Z",
@@ -9192,12 +9198,6 @@
             "url": "https://news.am/en/news/1069299",
             "date": "2026-10-21T08:34:00.000Z",
             "image": "https://news.am/storage/media/26/05/28/r1qzr7pfmu0mfGx5.webp"
-          },
-          {
-            "title": "Armenia among top 3 importers of fruit, vegetable juices from Russia",
-            "url": "https://news.am/en/news/1069242",
-            "date": "2026-10-21T06:00:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/lyZagghaqZ98XnLi.webp"
           }
         ]
       },
@@ -9536,6 +9536,12 @@
         "label": "Culture",
         "articles": [
           {
+            "title": "Artsakh cultural ensembles’ participation in Vienna international festival cancelled, embassy letter describes them as \"dangerous\"",
+            "url": "https://news.am/en/news/1069908",
+            "date": "2026-10-23T13:49:00.000Z",
+            "image": "https://news.am/storage/media/26/10/23/OBABExw6dqOAOXoO.webp"
+          },
+          {
             "title": "Armenian Foreign Minister and UNESCO Director-General discuss cooperation",
             "url": "https://news.am/en/news/1068412",
             "date": "2026-10-16T13:31:00.000Z",
@@ -9588,12 +9594,6 @@
             "url": "https://news.am/en/news/1060164",
             "date": "2026-09-07T16:40:29.000Z",
             "image": "https://news.am/storage/media/26/09/07/pg363EBllQZQW1vo.webp"
-          },
-          {
-            "title": "Famous composer, conductor Loris Tjeknavorian gets Armenia citizenship (VIDEO)",
-            "url": "https://news.am/en/news/1057855",
-            "date": "2026-08-26T13:04:00.000Z",
-            "image": "https://news.am/storage/media/26/08/26/f3kREQrLqIaASXNP.webp"
           }
         ]
       }
@@ -9736,7 +9736,7 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
-            "title": "Հակոբ Փիլոսյան. ԱԱ-ում մեդալների ակնկալիքներ ունենք Վարազդատ Լալայանից, Գարիկ Կարապետյանից",
+            "title": "Հակոբ Փիլոսյան. ԱԱ-ում մեդալների ակնկալիքներ ունենք Վարազդատ Լալայանից, Գարիկ Կարապետյանից (ֆոտո, վիդեո)",
             "url": "https://sport.news.am/arm/news/169750/",
             "date": "2026-10-23T14:03:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169750.jpg"
@@ -10000,6 +10000,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Խոլեստերինը կարող է խանգարել ուղեղին ազատվել թունավոր սպիտակուցներից. bioRxiv",
+            "url": "https://med.news.am/arm/news/42176/kholesteriny-karox-e-khangarel-uxexin-azatvel-tunavor-spitakucneric-biorxiv.html",
+            "date": "2026-10-23T14:49:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42176.jpg"
+          },
+          {
             "title": "Կարճ ուժային մարզումը բարելավել է հավասարակշռությունը և ուժը 65 տարեկանից հետո. PLOS One",
             "url": "https://med.news.am/arm/news/42175/kartch-uzhayin-marzumy-barelavel-e-havasarakshrutyuny-ev-uzhy-65-tarekanic-heto-plos-one.html",
             "date": "2026-10-23T12:56:00.000Z",
@@ -10052,12 +10058,6 @@
             "url": "https://med.news.am/arm/news/42168/fransiayum-arajin-angam-mard-e-varakvel-shamonda-virusov.html",
             "date": "2026-10-22T10:48:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42168.jpg"
-          },
-          {
-            "title": "Մոնղոլիայի առողջապահության նախկին նախարարը միացել է Գևորգ Թամամյանի միջազգային խորհրդատվական խորհրդին",
-            "url": "https://med.news.am/arm/news/42169/monxoliayi-aroxjapahutyan-nakhkin-nakharary-miacel-e-gevorg-tamamyani-mijazgayin-khorhrdatvakan-khorhrdin.html",
-            "date": "2026-10-22T09:37:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42169.jpg"
           }
         ]
       },
@@ -10065,6 +10065,18 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Վրաստանում ձերբակալել, ապա ազատ են արձակել իրեն Մոնթե Մելքոնյանի սպանող անվանած ադրբեջանցուն",
+            "url": "https://news.am/hy/news/1069923",
+            "date": "2026-10-23T14:52:11.000Z",
+            "image": "https://news.am/storage/media/26/10/23/YF1xPeLLiSRIjyII.webp"
+          },
+          {
+            "title": "Նախկին կնոջ ու երեխայի ներկայությամբ ինքնшհրկիզում կատարած տղամարդը հիվանդանոցում մահացել է",
+            "url": "https://news.am/hy/news/1069922",
+            "date": "2026-10-23T14:51:14.000Z",
+            "image": "https://news.am/storage/media/26/10/23/zZeNUkR9QLgqGU5M.webp"
+          },
           {
             "title": "Հորդանանում եկեղեցում հրաձգության հետևանքով զոհվել է առնվազն 7, վիրավորվել 10 մարդ",
             "url": "https://news.am/hy/news/1069872",
@@ -10112,18 +10124,6 @@
             "url": "https://news.am/hy/news/1069812",
             "date": "2026-10-23T08:47:10.000Z",
             "image": "https://news.am/storage/media/26/10/23/iBVDSO1Rv4fpYMfU.webp"
-          },
-          {
-            "title": "Վթարի ենթարկված ավտոբուսի բոլոր 11 ուղևորները Հնդկաստանի քաղաքացիներ են. նրանք աշխատանքի էին գնում",
-            "url": "https://news.am/hy/news/1069811",
-            "date": "2026-10-23T08:35:00.000Z",
-            "image": "https://news.am/storage/media/26/10/23/HLBeGFcG4d3lHEWe.webp"
-          },
-          {
-            "title": "Երևանում «Hyundai» ավտոբուսը կnղաշրջվել է․ 11 վիրավnրները օտարերկրացիներ են",
-            "url": "https://news.am/hy/news/1069801",
-            "date": "2026-10-23T07:38:00.000Z",
-            "image": "https://news.am/storage/media/26/10/23/Jtu9z0adOqfTg5dP.webp"
           }
         ]
       },
@@ -10662,6 +10662,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "bioRxiv: холестерин может мешать мозгу избавляться от токсичных белков",
+            "url": "https://med.news.am/rus/news/42176/biorxiv-kholesterin-mozhet-meshat-mozgu-izbavlyatsya-ot-toksichniykh-belkov.html",
+            "date": "2026-10-23T14:49:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42176.jpg"
+          },
+          {
             "title": "PLOS One: короткая силовая разминка улучшила баланс и силу после 65 лет",
             "url": "https://med.news.am/rus/news/42175/plos-one-korotkaya-silovaya-razminka-uluchshila-balans-i-silu-posle-65-let.html",
             "date": "2026-10-23T12:56:00.000Z",
@@ -10714,12 +10720,6 @@
             "url": "https://med.news.am/rus/news/42168/vo-francii-zafiksirovali-perviyiy-sluchaiy-zarazheniya-cheloveka-virusom-shamonda.html",
             "date": "2026-10-22T10:48:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42168.jpg"
-          },
-          {
-            "title": "Китайские ученые создали аппарат для наблюдения за мозгом весом в 1 грамм",
-            "url": "https://med.news.am/rus/news/42165/kitaiyskie-ucheniye-sozdali-apparat-dlya-nablyudeniya-za-mozgom-vesom-v-1-gramm.html",
-            "date": "2026-10-22T08:43:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42165.jpg"
           }
         ]
       },
@@ -10727,6 +10727,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "В Грузии задержали, а затем отпустили азербайджанца, назвавшего себя убийцей Монте Мелконяна",
+            "url": "https://news.am/ru/news/1069923",
+            "date": "2026-10-23T14:52:11.000Z",
+            "image": "https://news.am/storage/media/26/10/23/YF1xPeLLiSRIjyII.webp"
+          },
           {
             "title": "Не менее 7 человек погибли, 10 пострадали при стрельбе в церкви в Иордании",
             "url": "https://news.am/ru/news/1069872",
@@ -10780,12 +10786,6 @@
             "url": "https://news.am/ru/news/1069811",
             "date": "2026-10-23T08:35:00.000Z",
             "image": "https://news.am/storage/media/26/10/23/HLBeGFcG4d3lHEWe.webp"
-          },
-          {
-            "title": "В Ереване перевернулся автобус марки «Hyundai»: 11 пострадавших - иностранцы",
-            "url": "https://news.am/ru/news/1069801",
-            "date": "2026-10-23T07:38:00.000Z",
-            "image": "https://news.am/storage/media/26/10/23/Jtu9z0adOqfTg5dP.webp"
           }
         ]
       },
