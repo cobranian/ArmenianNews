@@ -128,6 +128,8 @@ if (sujets.topics.some((t) => t.slug === slug)) {
 
 if (failed) lines.push('', 'Reposez l’étiquette **traduire** pour réessayer.')
 else if (optionalFailed)
-  lines.push('', 'Traductions de/it facultatives : l’article paraît sans elles, et le sélecteur de langue mène à l’index de leur section. Reposez l’étiquette **traduire** pour réessayer.')
+  // Reposer « traduire » retraduirait aussi fr/en/hy/ru, déjà relus : de/it
+  // seules sont reprises par le rattrapage hebdomadaire.
+  lines.push('', 'Traductions de/it facultatives : l’article paraît sans elles, et le sélecteur de langue mène à l’index de leur section. Une fois l’article publié, le rattrapage hebdomadaire (`articles-backfill.yml`) les réessaiera ; pour ne pas attendre : `gh workflow run articles-backfill.yml`.')
 if (values.summary) await writeFile(values.summary, `${lines.join('\n')}\n`)
 process.exit(failed ? 1 : 0)

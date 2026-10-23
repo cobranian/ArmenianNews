@@ -129,3 +129,15 @@ test('articles-revise / articles-translate : une branche de rattrapage n’est p
   assert.match(await wf('articles-translate.yml'), /!startsWith\(github\.head_ref, 'culture\/backfill-'\)/)
   assert.match(await wf('articles-revise.yml'), /culture\/backfill-\*\) echo "[^"]*"; exit 0 ;;\n\s*culture\/\*\) ;;/)
 })
+
+// Reposer « traduire » retraduirait TOUTES les langues : pour un échec de/it
+// seul, le bon conseil est le rattrapage hebdomadaire.
+test('culture-translate : un échec de/it seul renvoie au rattrapage, pas à l’étiquette', async () => {
+  const src = (await readFile(new URL('../scripts/culture-translate.mjs', import.meta.url), 'utf-8')).replace(/\r\n/g, '\n')
+  const optional = src.match(/else if \(optionalFailed\)\n([\s\S]*?)\nif \(values\.summary\)/)?.[1]
+  assert.ok(optional, 'branche optionalFailed introuvable')
+  assert.match(optional, /articles-backfill\.yml/)
+  assert.match(optional, /gh workflow run articles-backfill\.yml/)
+  assert.doesNotMatch(optional, /Reposez/)
+  assert.match(src, /if \(failed\) lines\.push\('', 'Reposez l’étiquette \*\*traduire\*\* pour réessayer\.'\)/)
+})
