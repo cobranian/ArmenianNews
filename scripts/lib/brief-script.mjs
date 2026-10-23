@@ -77,9 +77,20 @@ const FRENCH_MARKERS_BY_LANG = {
 // en mots-outils minuscules au milieu des phrases. On n'exempte PAS le
 // vocabulaire des titres sources : ils sont tous français, et la brève qui les
 // recopie en prose aurait alors toutes ses fautes exemptées.
+//
+// Second indice, ajouté après la brève « it » du 23 octobre 2026 (titres
+// italiens, textes français, passée parce que chaque sujet court n'avait qu'un
+// seul mot-outil) : les mots minuscules qui portent un accent que ni
+// l'allemand ni l'italien n'écrivent en milieu de mot — « développement »,
+// « sécurité », « frontières ». L'italien n'accentue que la DERNIÈRE lettre
+// (« perché », « città », « più ») ; ç, ê, ë, î, ï, ô, û, œ n'y existent pas.
+const FRENCH_ACCENT = /[çêëîïôûœ]|[éèà]\p{L}/u
 export function frenchWords(text, lang) {
   const markers = FRENCH_MARKERS_BY_LANG[lang]
   if (!markers) return []
-  const found = new Set(words(text).filter((w) => markers.has(w)))
+  // Minuscules seulement, pour les deux indices : « Arménie », « Grégory » sont
+  // des noms propres, pas une fuite.
+  const lower = words(text).filter((w) => w === w.toLowerCase())
+  const found = new Set(lower.filter((w) => markers.has(w) || FRENCH_ACCENT.test(w)))
   return found.size >= 2 ? [...found] : []
 }

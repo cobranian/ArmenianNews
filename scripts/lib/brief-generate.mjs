@@ -89,6 +89,9 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
   // de et it lisent le fil français : leur faute propre est de répondre en français.
   const translated = Boolean(lang) && contentLang(lang) !== lang
   const topics = []
+  // Sujets examinés / écartés comme français : voir la règle après la boucle.
+  let examined = 0
+  let french = 0
   for (const t of Array.isArray(obj?.topics) ? obj.topics : []) {
     const title = clean(t?.title)
     const body = clean(t?.text)
@@ -105,7 +108,12 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
     if (lang) {
       const allowed = allowedWords(sources.map((x) => x.title))
       const bad = strayWords(`${title} ${body}`, lang, allowed)
-      if (translated) bad.push(...frenchWords(`${title} ${body}`, lang))
+      examined++
+      if (translated) {
+        const fr = frenchWords(`${title} ${body}`, lang)
+        if (fr.length) french++
+        bad.push(...fr)
+      }
       if (bad.length) {
         rejected.push(...bad)
         continue
@@ -116,6 +124,15 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
     if (topics.length === MAX_TOPICS) break
   }
   if (topics.length < MIN_TOPICS) return null
+  // Un modèle qui a écrit en français la moitié de ses sujets ou plus a basculé
+  // de langue : ses sujets restants, trop courts pour porter deux indices, ne
+  // valent pas mieux (brève « it » du 23 octobre 2026 : « Pashinian fustige la
+  // Russie alors que… » passait seul). On écarte la brève entière ; elle est
+  // retentée au passage suivant.
+  if (translated && french * 2 >= examined) {
+    rejected.push('(brève entière : moitié des sujets en français)')
+    return null
+  }
   let intro = clean(obj?.intro)
   if (lang && intro) {
     const allowed = allowedWords(topics.flatMap((t) => t.sources.map((x) => x.title)))

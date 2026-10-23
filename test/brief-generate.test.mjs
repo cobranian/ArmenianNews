@@ -1,4 +1,5 @@
 import { test } from 'node:test'
+import { frenchWords } from '../scripts/lib/brief-script.mjs'
 import assert from 'node:assert/strict'
 import { mkdtemp, readFile, writeFile, mkdir, readdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
@@ -239,4 +240,42 @@ test('parseBrief : un sujet français rejeté même quand ses titres sources le 
   const reply = JSON.stringify({ intro: 'Intro', topics: [t, t, t] })
   assert.equal(parseBrief(reply, src, 'de'), null)
   assert.equal(parseBrief(reply, src, 'it'), null)
+})
+
+// La brève « it » réellement publiée le 23 octobre 2026 : titres italiens,
+// textes français, chaque sujet trop court pour porter deux mots-outils. Elle
+// passait la garde ; elle doit désormais être écartée en entier.
+test('parseBrief : la brève it du 23 octobre 2026 (titres italiens, textes français) est écartée', () => {
+  const src = Array.from({ length: 7 }, (_, i) => ({ id: i + 1, source: 'armenews', rubric: 'armenie', title: 'T', url: `https://x/${i + 1}`, date: 'x' }))
+  const t = (id, title, text) => ({ title, text, rubric: 'armenie', ids: [id] })
+  const reply = JSON.stringify({
+    intro: '',
+    topics: [
+      t(1, 'Energia verde e COP 17', 'Le développement des énergies vertes constitue le point central des discussions lors de la COP 17 qui se déroule à Erevan en Arménie.'),
+      t(2, 'Situazione politica e OTSC', "L'Arménie a de facto quitté l'OTSC, selon le Secrétaire général de l'Organisation du traité de sécurité collective."),
+      t(3, 'Relazioni internazionali e sanzioni', "Pashinian fustige la Russie alors que l'Arménie risque de nouvelles sanctions."),
+      t(4, 'Calcio: risultati e classifiche', "L'internazionale armeno Eduard Spertsyan figura al 99° posto nel Marca dei 100 migliori calciatori al mondo."),
+      t(5, 'Donazione USA per la sicurezza dei confini', "Les États-Unis ont fait don de 1,4 million di dollari d'equipaggiamenti per rafforzare la sicurezza delle frontières arméniennes."),
+      t(6, 'Acquisizione manoscritti al Matenadaran', 'Des manuscrits précieux seront acquis pour le Matenadaran.'),
+      t(7, 'Concerto di Gregory Bakian', 'Salle comble per le esibizione di Gregory Bakian ad Erevan.'),
+    ],
+  })
+  const rejected = []
+  assert.equal(parseBrief(reply, src, 'it', rejected), null)
+  assert.ok(rejected.some((w) => /brève entière/.test(w)))
+  // La même réponse reste acceptée en fr : c'est la langue attendue.
+  assert.ok(parseBrief(reply, src, 'fr'))
+})
+
+test('frenchWords : accents français en milieu de mot, jamais les finales italiennes ni les noms propres', () => {
+  assert.deepEqual(frenchWords('Lo sviluppo è al centro: perché la città ha più energia e così via.', 'it'), [])
+  assert.deepEqual(frenchWords('Der Präsident der Republik Arménie traf Grégory in Eriwan.', 'de'), [])
+  assert.ok(frenchWords('il développement della sécurité', 'it').length >= 2)
+})
+
+test('parseBrief : la brève it corrigée à la main le 23 octobre 2026 passe la garde', async () => {
+
+  const b = JSON.parse(await readFile(new URL('../src/data/briefs/it/2026-10-23.json', import.meta.url), 'utf-8'))
+  for (const t of b.topics) assert.deepEqual(frenchWords(`${t.title} ${t.text}`, 'it'), [], t.title)
+  assert.deepEqual(frenchWords(b.intro, 'it'), [])
 })
