@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T07:23:43.654Z",
+  "generatedAt": "2026-10-23T07:43:30.394Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -7,7 +7,7 @@
         {
           "title": "OTSC : les dirigeants pourraient examiner la situation de l’Arménie lors du sommet du 11 novembre",
           "url": "https://courrier.am/otsc-les-dirigeants-pourraient-examiner-la-situation-de-larmenie-lors-du-sommet-du-11-novembre",
-          "date": "2026-10-23T12:00:00.000Z",
+          "date": "2026-10-23T07:02:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_2_1.png.avif?itok=vBVngbMr",
           "rubric": "politique"
         },
@@ -1225,6 +1225,13 @@
         "categoryKey": "economics",
         "articles": [
           {
+            "title": "ImID համակարգում 2026 թ. հոկտեմբերի 23-ին նկատվում են որոշակի դանդաղումներ. ՊԵԿ",
+            "url": "https://hy.armradio.am/archives/766149",
+            "date": "2026-10-23T07:25:28.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2025/05/PEK-768x488.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Հայաստանի դիմումը՝ ԵՏՀ սեղանին․ Երևանը բողոքարկում է ռուսական սահմանափակումները",
             "url": "https://hy.armradio.am/archives/765994",
             "date": "2026-10-22T16:10:00.000Z",
@@ -1285,13 +1292,6 @@
             "url": "https://hy.armradio.am/archives/765269",
             "date": "2026-10-19T15:45:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3833-768x431.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Հանքարդյունաբերության հնարավորություններից մինչև ներդրումների պայմաններ․ Mining Armenia Forum-ն ամփոփում է ոլորտի մարտահրավերները",
-            "url": "https://hy.armradio.am/archives/764954",
-            "date": "2026-10-17T14:12:22.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/mining-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1602,6 +1602,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Суд продлил арест Седрака Кочаряна",
+            "url": "https://ru.armradio.am/2026/10/23/%d1%81%d1%83%d0%b4-%d0%bf%d1%80%d0%be%d0%b4%d0%bb%d0%b8%d0%bb-%d0%b0%d1%80%d0%b5%d1%81%d1%82-%d1%81%d0%b5%d0%b4%d1%80%d0%b0%d0%ba%d0%b0-%d0%ba%d0%be%d1%87%d0%b0%d1%80%d1%8f%d0%bd%d0%b0/",
+            "date": "2026-10-23T07:24:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/images-2026-10-23T103650.792-300x225.jpg",
+            "category": "Главная"
+          },
+          {
             "title": "Passport Reports: Армянский паспорт позволяет свободно посещать 32,8% стран мира",
             "url": "https://ru.armradio.am/2026/10/23/passport-reports-%d0%b0%d1%80%d0%bc%d1%8f%d0%bd%d1%81%d0%ba%d0%b8%d0%b9-%d0%bf%d0%b0%d1%81%d0%bf%d0%be%d1%80%d1%82-%d0%bf%d0%be%d0%b7%d0%b2%d0%be%d0%bb%d1%8f%d0%b5%d1%82-%d1%81%d0%b2%d0%be%d0%b1/",
             "date": "2026-10-23T07:03:00.000Z",
@@ -1663,13 +1670,6 @@
             "date": "2026-10-22T09:32:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/10/aj-1-768x385.jpg",
             "category": "Все новости"
-          },
-          {
-            "title": "Арарат Мирзоян: через TRIPP не может перевозиться оружие и боеприпасы",
-            "url": "https://ru.armradio.am/2026/10/21/%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%bc%d0%b8%d1%80%d0%b7%d0%be%d1%8f%d0%bd-%d1%87%d0%b5%d1%80%d0%b5%d0%b7-tripp-%d0%bd%d0%b5-%d0%bc%d0%be%d0%b6%d0%b5%d1%82-%d0%bf%d0%b5%d1%80%d0%b5%d0%b2%d0%be/",
-            "date": "2026-10-21T14:18:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/images-2026-10-21T175451.336-300x193.jpg",
-            "category": "Главная"
           }
         ]
       },
@@ -2175,7 +2175,7 @@
           "title": "Décryptage – « L’accord du siècle » au Parlement arménien : une chronologie importante, par Hakob Badalyan",
           "url": "https://www.armenews.com/decryptage-laccord-du-siecle-au-parlement-armenien-une-chronologie-importante-par-hakob-badalyan/",
           "date": "2026-10-23T06:30:10.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/HVKo8PXXMAAQQZF-1.jpeg",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-23-a-07.09.46.png",
           "rubric": "culture"
         },
         {
@@ -3161,10 +3161,10 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35352.jpg"
         },
         {
-          "title": "Arménie : une commission parlementaire examine les relations Église-État",
-          "url": "https://armenieinfo.tv/mer-oughin-35327/",
+          "title": "Karabakh : la dissolution de l’armée évoquée, sans décision prise",
+          "url": "https://armenieinfo.tv/mer-oughin-35316/",
           "date": "2026-10-12T06:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35327.jpg"
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35316.jpg"
         }
       ]
     },
@@ -4194,6 +4194,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "ImID համակարգում նկատվում են որոշակի դանդաղումներ. ՊԵԿ",
+            "url": "https://armenpress.am/hy/article/1263608",
+            "date": "2026-10-23T07:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/23/6F7e5VGRqD57jUDNtIRh4sYzyN37mEhN58arz7FK.webp"
+          },
+          {
             "title": "Դատարանը կարճել է կարգալույծ հռչակված երկու քահանաների հայցերով գործերի վարույթները",
             "url": "https://armenpress.am/hy/article/1263607",
             "date": "2026-10-23T07:18:00.000Z",
@@ -4246,12 +4252,6 @@
             "url": "https://armenpress.am/hy/article/1263564",
             "date": "2026-10-23T05:32:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/22/q3shkv20uhajFR4gQfUh4e5LMw0ehyjuOfjONG1U.webp"
-          },
-          {
-            "title": "COP17-ի բանակցություններում Հայաստանը փորձում է կոնսենսուս ձևավորել շահագրգիռ կողմերի միջև",
-            "url": "https://armenpress.am/hy/article/1263568",
-            "date": "2026-10-23T05:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/22/JptFbIe36f31OtU1u3jfTF8VHeXi2WGJ5Ol7o5Gz.webp"
           }
         ]
       },
@@ -9862,6 +9862,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Hermès-ը ուժեղացնում է խանութների անվտանգությունը Ֆրանսիայում տեղի ունեցած անկարգություններից հետո",
+            "url": "https://style.news.am/arm/news/116788/",
+            "date": "2026-10-23T07:38:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116788.jpg"
+          },
+          {
             "title": "Փիթբուլը բացահայտել է Ջենիֆեր Լոպեսի հետ իր վիրուսային լուսանկարի գաղտնիքը",
             "url": "https://style.news.am/arm/news/116787/",
             "date": "2026-10-23T07:18:00.000Z",
@@ -9914,12 +9920,6 @@
             "url": "https://style.news.am/arm/news/116777/",
             "date": "2026-10-22T15:39:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116777.jpg"
-          },
-          {
-            "title": "Dolce & Gabbana-ն և Mytheresa-ն շքեղ հավաքածու են ներկայացրել 2026 թվականի Սուրբ Ծննդյան համար",
-            "url": "https://style.news.am/arm/news/116776/",
-            "date": "2026-10-22T15:17:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116776.jpg"
           }
         ]
       },
@@ -10060,6 +10060,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Երևանում «Hyundai» ավտոբուսը կnղաշրջվել է․ 11 վիրավnրները օտարերկրացիներ են",
+            "url": "https://news.am/hy/news/1069801",
+            "date": "2026-10-23T07:38:00.000Z",
+            "image": "https://news.am/storage/media/26/10/23/Jtu9z0adOqfTg5dP.webp"
+          },
+          {
             "title": "Հայտնաբերել են սպանության փորձի և խուլիգանության հատկանիշներով հետախուզվող 22 և 23 տարեկան երիտասարդները (վիդեո)",
             "url": "https://news.am/hy/news/1069796",
             "date": "2026-10-23T07:05:00.000Z",
@@ -10112,12 +10118,6 @@
             "url": "https://news.am/hy/news/1069499",
             "date": "2026-10-22T05:08:00.000Z",
             "image": "https://news.am/storage/media/26/10/22/nKo32OCTUcrF4wAo.webp"
-          },
-          {
-            "title": "Մեկ մարդ զոհվել է, ութը տուժել են Սաուդյան Արաբիայում օդանավակայանի վրա հարձակման հետևանքով",
-            "url": "https://news.am/hy/news/1069488",
-            "date": "2026-10-22T04:22:05.000Z",
-            "image": "https://news.am/storage/media/26/10/22/qB3F47uGWKZDMAXq.webp"
           }
         ]
       },
@@ -10524,6 +10524,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Hermès усиливает охрану бутиков после погромов во Франции",
+            "url": "https://style.news.am/rus/news/116788/",
+            "date": "2026-10-23T07:38:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116788.jpg"
+          },
+          {
             "title": "Питбуль раскрыл секрет вирусного фото с Дженнифер Лопес",
             "url": "https://style.news.am/rus/news/116787/",
             "date": "2026-10-23T07:18:00.000Z",
@@ -10576,12 +10582,6 @@
             "url": "https://style.news.am/rus/news/116777/",
             "date": "2026-10-22T15:39:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116777.jpg"
-          },
-          {
-            "title": "Dolce&Gabbana и Mytheresa представили роскошную коллекцию к Рождеству 2026 года",
-            "url": "https://style.news.am/rus/news/116776/",
-            "date": "2026-10-22T15:17:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116776.jpg"
           }
         ]
       },
