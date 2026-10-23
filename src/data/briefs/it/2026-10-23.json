@@ -3,11 +3,11 @@
   "lang": "it",
   "generatedAt": "2026-10-23T15:36:40.026Z",
   "model": "nvidia/nemotron-3.5-lightning:free",
-  "intro": "",
+  "intro": "Le energie verdi al centro della COP 17 di Erevan, il rapporto dell’Armenia con l’OTSC e con la Russia, il sostegno americano alla sicurezza dei confini e alcune notizie di sport e di cultura.",
   "topics": [
     {
       "title": "Energia verde e COP 17",
-      "text": "Le développement des énergies vertes constitue le point central des discussions lors de la COP 17 qui se déroule à Erevan en Arménie.",
+      "text": "Lo sviluppo delle energie verdi è al centro delle discussioni della COP 17, in corso a Erevan, in Armenia.",
       "rubric": "economie",
       "sources": [
         {
@@ -19,7 +19,7 @@
     },
     {
       "title": "Situazione politica e OTSC",
-      "text": "L'Arménie a de facto quitté l'OTSC, selon le Secrétaire général de l'Organisation du traité de sécurité collective.",
+      "text": "Secondo il segretario generale dell’Organizzazione del Trattato di sicurezza collettiva, l’Armenia ha di fatto lasciato l’OTSC. I dirigenti dell’organizzazione potrebbero esaminare la situazione dell’Armenia al vertice dell’11 novembre.",
       "rubric": null,
       "sources": [
         {
@@ -36,7 +36,7 @@
     },
     {
       "title": "Relazioni internazionali e sanzioni",
-      "text": "Pashinian fustige la Russie alors que l'Arménie risque de nouvelles sanctions.",
+      "text": "Pashinyan attacca la Russia, mentre l’Armenia rischia nuove sanzioni.",
       "rubric": null,
       "sources": [
         {
@@ -48,7 +48,7 @@
     },
     {
       "title": "Calcio: risultati e classifiche",
-      "text": "L'internazionale armeno Eduard Spertsyan figura al 99° posto nel Marca dei 100 migliori calciatori al mondo. L'Ararat-Armenia ha subito una pesante sconfitta in campionato e si è incline contro l'AZ Alkmaar nei playoff di Europa League.",
+      "text": "Il nazionale armeno Eduard Spertsyan è 99° nella classifica di Marca dei 100 migliori calciatori del mondo. I campioni d’Armenia dell’Ararat-Armenia sono stati sconfitti dall’AZ Alkmaar al terzo turno preliminare della UEFA Europa League.",
       "rubric": "sports",
       "sources": [
         {
@@ -65,7 +65,7 @@
     },
     {
       "title": "Donazione USA per la sicurezza dei confini",
-      "text": "Les États-Unis ont fait don de 1,4 million di dollari d'equipaggiamenti per rafforzare la sicurezza delle frontières arméniennes.",
+      "text": "Gli Stati Uniti hanno donato equipaggiamenti per 1,4 milioni di dollari per rafforzare la sicurezza dei confini armeni.",
       "rubric": null,
       "sources": [
         {
@@ -76,8 +76,8 @@
       ]
     },
     {
-      "title": "Acquisizione manoscritti al Matenadaran",
-      "text": "Des manuscrits précieux seront acquis pour le Matenadaran.",
+      "title": "Acquisizione di manoscritti al Matenadaran",
+      "text": "Il Matenadaran acquisirà alcuni manoscritti preziosi.",
       "rubric": null,
       "sources": [
         {
@@ -89,7 +89,7 @@
     },
     {
       "title": "Concerto di Gregory Bakian",
-      "text": "Salle comble per le esibizione di Gregory Bakian ad Erevan.",
+      "text": "Tutto esaurito per il concerto di Gregory Bakian a Erevan.",
       "rubric": null,
       "sources": [
         {
