@@ -49,11 +49,12 @@ jobs:
       - run: npm ci
 
       # La PR de la semaine passée n'est pas fusionnée : en ouvrir une seconde
-      # retraduirait les mêmes articles.
+      # retraduirait les mêmes articles. Une PR de fork ne compte pas : nommée
+      # culture/backfill-*, elle bloquerait sinon le rattrapage indéfiniment.
       - name: Rattrapage déjà en relecture ?
         id: open
         run: |
-          n=$(gh pr list --state open --limit 200 --json headRefName --jq '[.[] | select(.headRefName | startswith("culture/backfill-"))] | length')
+          n=$(gh pr list --state open --limit 200 --json headRefName,isCrossRepository --jq '[.[] | select(.isCrossRepository == false and (.headRefName | startswith("culture/backfill-")))] | length')
           echo "count=$n" >> "$GITHUB_OUTPUT"
           [ "$n" = 0 ] || echo "Un rattrapage est déjà en relecture : rien à faire."
 

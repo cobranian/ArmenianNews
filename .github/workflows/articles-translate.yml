@@ -19,7 +19,11 @@ concurrency:
 
 jobs:
   translate:
-    if: github.event.label.name == 'traduire' && startsWith(github.head_ref, 'culture/')
+    # Un rattrapage de/it (culture/backfill-*) n'est pas un article à traduire.
+    if: >-
+      github.event.label.name == 'traduire' &&
+      startsWith(github.head_ref, 'culture/') &&
+      !startsWith(github.head_ref, 'culture/backfill-')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}

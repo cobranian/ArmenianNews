@@ -113,3 +113,19 @@ test('articles-closed / articles-check : une branche de rattrapage n’est pas u
   assert.match(check, /backfill-\*\) set -- ;;/)
   assert.match(check, /node scripts\/culture-check\.mjs "\$@"/)
 })
+
+// Une PR de fork nommée culture/backfill-* suffirait sinon à bloquer le
+// rattrapage hebdomadaire indéfiniment.
+test('articles-backfill.yml : seules les PR du dépôt comptent comme rattrapage ouvert', async () => {
+  const y = await read()
+  assert.match(y, /gh pr list [^\n]*--json headRefName,isCrossRepository /)
+  assert.match(y, /select\(\.isCrossRepository == false and \(\.headRefName \| startswith\("culture\/backfill-"\)\)\)/)
+})
+
+// /corrige et l'étiquette « traduire » traiteraient sinon backfill-AAAA-MM-JJ
+// comme le slug d'un article inexistant.
+test('articles-revise / articles-translate : une branche de rattrapage n’est pas un article', async () => {
+  const wf = async (f) => (await readFile(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf-8')).replace(/\r\n/g, '\n')
+  assert.match(await wf('articles-translate.yml'), /!startsWith\(github\.head_ref, 'culture\/backfill-'\)/)
+  assert.match(await wf('articles-revise.yml'), /culture\/backfill-\*\) echo "[^"]*"; exit 0 ;;\n\s*culture\/\*\) ;;/)
+})
