@@ -47,7 +47,7 @@ const STRINGS = {
     'about.rules.hourly':
       'Tout est daté. Le bandeau du haut donne l’heure de l’instantané ; chaque dépêche affiche son âge.',
     'about.rules.noads':
-      'Pas de publicité, pas de compte, pas de cookie de suivi dans l’Espace économique européen — la politique de confidentialité, en pied de page, dit exactement ce qui est mesuré.',
+      'Pas de publicité, pas de compte. Pas de cookie de suivi dans l’Espace économique européen ni au Royaume-Uni ; ailleurs, Suisse comprise, Google Analytics en dépose un — la politique de confidentialité, en pied de page, dit exactement ce qui est mesuré et comment le refuser.',
     'about.rules.facts':
       'Aucun fait de station n’est affirmé sans source ; un champ qui n’a pas pu être vérifié est laissé vide plutôt que deviné.',
     'about.sources.title': 'Les rédactions',
@@ -133,7 +133,7 @@ const STRINGS = {
       "Ce site est un instantané statique : ni compte, ni formulaire, ni base de données. Il ne vous demande rien et ne conserve rien qui vous identifie personnellement.",
     'privacy.analytics.title': "Mesure d'audience",
     'privacy.analytics.body':
-      "Nous utilisons Google Analytics et Cloudflare Web Analytics pour compter les visites et savoir quelles rubriques sont lues. Hors Espace économique européen et Royaume-Uni, Google Analytics dépose un cookie qui permet de reconnaître un visiteur d'une visite à l'autre. Depuis l'EEE et le Royaume-Uni, ce cookie n'est pas déposé : la mesure y est anonyme et sans cookie, comme l'exige le RGPD. Cloudflare Web Analytics ne dépose aucun cookie, où que vous soyez.",
+      "Nous utilisons Google Analytics et Cloudflare Web Analytics pour compter les visites et savoir quelles rubriques sont lues. Hors Espace économique européen et Royaume-Uni — en Suisse notamment —, Google Analytics dépose un cookie qui permet de reconnaître un visiteur d'une visite à l'autre. Depuis l'EEE et le Royaume-Uni, ce cookie n'est pas déposé : la mesure y est anonyme et sans cookie, comme l'exige le RGPD. Cloudflare Web Analytics ne dépose aucun cookie, où que vous soyez.",
     'privacy.analytics.optout':
       "Pour refuser ce cookie, bloquez-le dans votre navigateur. Le site fonctionne à l'identique sans lui.",
     'privacy.storage.title': 'Conservé sur votre appareil',
@@ -332,7 +332,7 @@ const STRINGS = {
     'about.rules.hourly':
       'Alles ist datiert. Das Band oben nennt die Uhrzeit der Momentaufnahme; jede Meldung zeigt ihr Alter.',
     'about.rules.noads':
-      'Keine Werbung, kein Konto, kein Tracking-Cookie im Europäischen Wirtschaftsraum – die Datenschutzerklärung in der Fusszeile sagt genau, was gemessen wird.',
+      'Keine Werbung, kein Konto. Kein Tracking-Cookie im Europäischen Wirtschaftsraum und im Vereinigten Königreich; anderswo, auch in der Schweiz, setzt Google Analytics eines – die Datenschutzerklärung in der Fusszeile sagt genau, was gemessen wird und wie Sie es ablehnen.',
     'about.rules.facts':
       'Keine Angabe zu einem Sender ohne Quelle; ein Feld, das sich nicht überprüfen liess, bleibt leer, statt erraten zu werden.',
     'about.sources.title': 'Die Redaktionen',
@@ -399,7 +399,7 @@ const STRINGS = {
       'Diese Website ist eine statische Momentaufnahme: kein Konto, kein Formular, keine Datenbank. Sie verlangt nichts von Ihnen und speichert nichts, was Sie persönlich identifiziert.',
     'privacy.analytics.title': 'Reichweitenmessung',
     'privacy.analytics.body':
-      'Wir verwenden Google Analytics und Cloudflare Web Analytics, um Besuche zu zählen und zu erfahren, welche Rubriken gelesen werden. Ausserhalb des Europäischen Wirtschaftsraums und des Vereinigten Königreichs setzt Google Analytics ein Cookie, das einen Besucher von einem Besuch zum nächsten wiedererkennt. Im EWR und im Vereinigten Königreich wird dieses Cookie nicht gesetzt: Die Messung erfolgt dort anonym und ohne Cookie, wie es die DSGVO verlangt. Cloudflare Web Analytics setzt keinerlei Cookie, wo immer Sie sich befinden.',
+      'Wir verwenden Google Analytics und Cloudflare Web Analytics, um Besuche zu zählen und zu erfahren, welche Rubriken gelesen werden. Ausserhalb des Europäischen Wirtschaftsraums und des Vereinigten Königreichs – also auch in der Schweiz – setzt Google Analytics ein Cookie, das einen Besucher von einem Besuch zum nächsten wiedererkennt. Im EWR und im Vereinigten Königreich wird dieses Cookie nicht gesetzt: Die Messung erfolgt dort anonym und ohne Cookie, wie es die DSGVO verlangt. Cloudflare Web Analytics setzt keinerlei Cookie, wo immer Sie sich befinden.',
     'privacy.analytics.optout':
       'Um dieses Cookie abzulehnen, blockieren Sie es in Ihrem Browser. Die Website funktioniert auch ohne dieses Cookie genau gleich.',
     'privacy.storage.title': 'Auf Ihrem Gerät gespeichert',
@@ -565,7 +565,7 @@ const STRINGS = {
     'about.rules.hourly':
       'Tutto è datato. La fascia in alto indica l’ora dell’istantanea; ogni articolo mostra da quanto tempo è uscito.',
     'about.rules.noads':
-      'Niente pubblicità, niente account, nessun cookie di tracciamento nello Spazio economico europeo: l’informativa sulla privacy, a piè di pagina, dice esattamente che cosa viene misurato.',
+      'Niente pubblicità, niente account. Nessun cookie di tracciamento nello Spazio economico europeo e nel Regno Unito; altrove, Svizzera compresa, Google Analytics ne installa uno: l’informativa sulla privacy, a piè di pagina, dice esattamente che cosa viene misurato e come rifiutarlo.',
     'about.rules.facts':
       'Nessun dato su una stazione è affermato senza fonte; un campo che non è stato possibile verificare resta vuoto anziché essere indovinato.',
     'about.sources.title': 'Le redazioni',
@@ -632,7 +632,7 @@ const STRINGS = {
       'Questo sito è un’istantanea statica: niente account, niente moduli, niente database. Non vi chiede nulla e non conserva nulla che vi identifichi personalmente.',
     'privacy.analytics.title': 'Misurazione del pubblico',
     'privacy.analytics.body':
-      'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Nel SEE e nel Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
+      'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, quindi anche in Svizzera, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Nel SEE e nel Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
     'privacy.analytics.optout':
       'Per rifiutare questo cookie, bloccatelo nel vostro browser. Il sito funziona allo stesso modo anche senza.',
     'privacy.storage.title': 'Conservato sul vostro dispositivo',
@@ -801,7 +801,7 @@ const STRINGS = {
     'about.rules.hourly':
       'Everything is dated. The banner at the top gives the time of the snapshot; every dispatch shows its age.',
     'about.rules.noads':
-      'No ads, no account, no tracking cookie in the European Economic Area — the privacy policy in the footer says exactly what is measured.',
+      'No ads, no account. No tracking cookie in the European Economic Area or the UK; elsewhere, Switzerland included, Google Analytics sets one — the privacy policy in the footer says exactly what is measured and how to refuse it.',
     'about.rules.facts':
       'No station fact is stated without a source; a field that could not be verified is left empty rather than guessed.',
     'about.sources.title': 'The newsrooms',
@@ -878,7 +878,7 @@ const STRINGS = {
       'This site is a static snapshot: no accounts, no forms, no database. It asks you for nothing and keeps nothing that identifies you personally.',
     'privacy.analytics.title': 'Audience measurement',
     'privacy.analytics.body':
-      'We use Google Analytics and Cloudflare Web Analytics to count visits and see which sections are read. Outside the European Economic Area and the United Kingdom, Google Analytics sets a cookie that lets it recognise a visitor from one visit to the next. From the EEA and the UK that cookie is not set: measurement there is anonymous and cookieless, as the GDPR requires. Cloudflare Web Analytics sets no cookie anywhere.',
+      'We use Google Analytics and Cloudflare Web Analytics to count visits and see which sections are read. Outside the European Economic Area and the United Kingdom — Switzerland included — Google Analytics sets a cookie that lets it recognise a visitor from one visit to the next. From the EEA and the UK that cookie is not set: measurement there is anonymous and cookieless, as the GDPR requires. Cloudflare Web Analytics sets no cookie anywhere.',
     'privacy.analytics.optout':
       'To refuse that cookie, block it in your browser. The site works exactly the same without it.',
     'privacy.storage.title': 'Kept on your device',
@@ -1080,7 +1080,7 @@ const STRINGS = {
     'about.rules.hourly':
       'Ամեն ինչ թվագրված է։ Վերևի շերտը ցույց է տալիս պատկերի ժամը, յուրաքանչյուր լուր՝ իր տարիքը։',
     'about.rules.noads':
-      'Ոչ գովազդ, ոչ հաշիվ, ոչ հետևող cookie Եվրոպական տնտեսական տարածքում․ ստորին մասի գաղտնիության քաղաքականությունը հստակ ասում է, թե ինչ է չափվում։',
+      'Ոչ գովազդ, ոչ հաշիվ։ Եվրոպական տնտեսական տարածքում և Միացյալ Թագավորությունում հետևող cookie չկա, իսկ այլուր, այդ թվում՝ Շվեյցարիայում, Google Analytics-ը տեղադրում է այն․ ստորին մասի գաղտնիության քաղաքականությունը հստակ ասում է, թե ինչ է չափվում և ինչպես հրաժարվել։',
     'about.rules.facts':
       'Ռադիոկայանի ոչ մի փաստ չի հաստատվում առանց աղբյուրի․ չստուգված դաշտը մնում է դատարկ, ոչ թե գուշակված։',
     'about.sources.title': 'Խմբագրությունները',
@@ -1157,7 +1157,7 @@ const STRINGS = {
       'Այս կայքը ստատիկ պատկեր է՝ առանց հաշիվների, ձևաթղթերի կամ տվյալների բազայի։ Այն ձեզնից ոչինչ չի պահանջում և չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի։',
     'privacy.analytics.title': 'Այցելությունների չափում',
     'privacy.analytics.body':
-      'Մենք օգտագործում ենք Google Analytics և Cloudflare Web Analytics՝ այցելությունները հաշվելու և իմանալու, թե որ բաժիններն են կարդացվում։ Եվրոպական տնտեսական տարածքից և Միացյալ Թագավորությունից դուրս Google Analytics-ը տեղադրում է cookie, որը թույլ է տալիս ճանաչել այցելուին մեկ այցից մյուսը։ ԵՏՏ-ից և Միացյալ Թագավորությունից այդ cookie-ն չի տեղադրվում. չափումն այնտեղ անանուն է և առանց cookie-ի, ինչպես պահանջում է GDPR-ը։ Cloudflare Web Analytics-ը ոչ մի տեղ cookie չի տեղադրում։',
+      'Մենք օգտագործում ենք Google Analytics և Cloudflare Web Analytics՝ այցելությունները հաշվելու և իմանալու, թե որ բաժիններն են կարդացվում։ Եվրոպական տնտեսական տարածքից և Միացյալ Թագավորությունից դուրս, այդ թվում՝ Շվեյցարիայում, Google Analytics-ը տեղադրում է cookie, որը թույլ է տալիս ճանաչել այցելուին մեկ այցից մյուսը։ ԵՏՏ-ից և Միացյալ Թագավորությունից այդ cookie-ն չի տեղադրվում. չափումն այնտեղ անանուն է և առանց cookie-ի, ինչպես պահանջում է GDPR-ը։ Cloudflare Web Analytics-ը ոչ մի տեղ cookie չի տեղադրում։',
     'privacy.analytics.optout':
       'Այդ cookie-ն մերժելու համար արգելափակեք այն ձեր դիտարկիչում։ Կայքն առանց դրա աշխատում է ճիշտ նույն կերպ։',
     'privacy.storage.title': 'Պահվում է ձեր սարքում',
@@ -1347,7 +1347,7 @@ const STRINGS = {
     'about.rules.hourly':
       'Всё датировано. Лента вверху показывает время снимка; у каждого сообщения указан его возраст.',
     'about.rules.noads':
-      'Сайт бесплатен и свободен от рекламы и регистрации; в Европейской экономической зоне отслеживающие cookie отключены — политика конфиденциальности внизу страницы точно говорит, что измеряется.',
+      'Сайт бесплатен и свободен от рекламы и регистрации. В Европейской экономической зоне и Великобритании отслеживающие cookie отключены; в остальных странах, включая Швейцарию, Google Analytics их устанавливает — политика конфиденциальности внизу страницы точно говорит, что измеряется и как от этого отказаться.',
     'about.rules.facts':
       'Каждый факт о радиостанции подкреплён источником; в карточке показаны только проверенные поля.',
     'about.sources.title': 'Редакции',
@@ -1428,7 +1428,7 @@ const STRINGS = {
       'Этот сайт — статический снимок: без учётных записей, форм и базы данных. Он ничего у вас не запрашивает и не хранит ничего, что позволяло бы вас лично идентифицировать.',
     'privacy.analytics.title': 'Измерение аудитории',
     'privacy.analytics.body':
-      'Мы используем Google Analytics и Cloudflare Web Analytics, чтобы считать посещения и понимать, какие разделы читают. За пределами Европейской экономической зоны и Великобритании Google Analytics устанавливает cookie, позволяющий узнавать посетителя от визита к визиту. Из ЕЭЗ и Великобритании этот cookie не устанавливается: измерение там анонимное и без cookie, как того требует GDPR. Cloudflare Web Analytics не устанавливает cookie нигде.',
+      'Мы используем Google Analytics и Cloudflare Web Analytics, чтобы считать посещения и понимать, какие разделы читают. За пределами Европейской экономической зоны и Великобритании, в том числе в Швейцарии, Google Analytics устанавливает cookie, позволяющий узнавать посетителя от визита к визиту. Из ЕЭЗ и Великобритании этот cookie не устанавливается: измерение там анонимное и без cookie, как того требует GDPR. Cloudflare Web Analytics не устанавливает cookie нигде.',
     'privacy.analytics.optout':
       'Чтобы отказаться от этого cookie, заблокируйте его в браузере. Сайт работает точно так же и без него.',
     'privacy.storage.title': 'Хранится на вашем устройстве',
