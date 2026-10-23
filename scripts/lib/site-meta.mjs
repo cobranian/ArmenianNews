@@ -12,6 +12,7 @@ import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { briefAlternates, longDate } from './brief-links.mjs'
 import { cultureAlternates } from './culture-links.mjs'
+import { pageSources } from './culture-validate.mjs'
 
 // Le manifeste des polices auto-hébergées, écrit par `npm run fonts-sync`
 // (scripts/fonts-sync.mjs) : un fichier par entrée, avec famille, style,
@@ -385,7 +386,8 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
       datePublished: a.date,
       inLanguage: lang,
       isAccessibleForFree: true,
-      citation: article.sources.map((x) => x.url),
+      // Wikipédia de/it n'est citée que sur la page de sa langue (culture-validate).
+      citation: pageSources(article.sources, lang).map((x) => x.url),
       ...(about ? { about } : {}),
     })
     graph.push(breadcrumb(lang, [[s.title, cultureUrl(lang)], [a.title, url]]))

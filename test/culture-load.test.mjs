@@ -84,3 +84,19 @@ test('teaserFor : trois plus récents par langue, langue absente exclue', async 
   assert.deepEqual(t.ru.map((x) => x.slug), ['d', 'c', 'b'])
   assert.deepEqual(Object.keys(t.fr[0]).sort(), ['date', 'description', 'image', 'slug', 'title'])
 })
+
+// de/it facultatives : leur absence ne compte pas parmi les traductions non
+// publiées et ne s'écrit pas au log (deux lignes par article et par heure) ;
+// une traduction de/it PÉRIMÉE, si — elle disparaît d'une URL déjà en ligne.
+test('loadCulture : de/it absentes silencieuses, de périmée signalée', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
+  const t = texts()
+  t.de = t.en.replace(/sourceHash: \S+/, 'sourceHash: "deadbeef"')
+  await writeArticle(dir, 'komitas', { t })
+  const log = silent()
+  const arts = await loadCulture(dir, log)
+  assert.equal(unpublishedTranslations(arts), 0)
+  assert.deepEqual(Object.keys(arts[0].langs), ['fr', 'en', 'hy', 'ru'])
+  assert.equal(log.w.length, 1, log.w.join('\n'))
+  assert.match(log.w[0], /culture\/komitas : de\.md : traduction périmée/)
+})

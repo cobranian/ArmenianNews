@@ -35,6 +35,10 @@ jobs:
           cache: npm
       - run: npm ci
 
+      # Un échec de/it seul (facultatives) laisse culture-translate sortir en 0,
+      # et culture-check ne lit leurs manques que comme des notes : le statut
+      # culture-check ne dépend que de fr/en/hy/ru et de l'image. Le résumé
+      # commenté sur la PR dit, lui, ce qui manque en de/it.
       - name: Traduire
         id: tr
         continue-on-error: true

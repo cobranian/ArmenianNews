@@ -4222,6 +4222,7 @@ html.js .reveal.is-visible {
   text-wrap: balance;
 }
 .culture__date,
+.culture__translated,
 .culture__credit,
 .culture__sources,
 .culture__event {

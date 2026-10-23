@@ -9,6 +9,7 @@
 import { isFreeLicense } from './culture-license.mjs'
 import { unescoSource } from './culture-unesco.mjs'
 import { refetchPeopleofar } from './culture-peopleofar.mjs'
+import { overlapRatio } from './culture-overlap.mjs'
 
 export const WIKI_UA = 'ArmenieInfo/1.0 (https://armenieinfo.ch/a-propos/; contact@armenieinfo.ch)'
 const HEADERS = { 'User-Agent': WIKI_UA, 'Api-User-Agent': WIKI_UA }
@@ -63,7 +64,7 @@ export async function fetchWikipedia(lang, title, fetchImpl = fetch) {
 // homonyme — « Kochari » a rendu le koshary égyptien. Une page d'une autre
 // entité, ou d'homonymie, est écartée avec un avertissement pour la PR ; elle
 // ne fait pas échouer le sujet à elle seule.
-export async function fetchTopicWikipedia(titles, qid, { langs = ENTITY_LANGS, fetchImpl = fetch } = {}) {
+export async function fetchTopicWikipedia(titles, qid, { langs = DRAFT_LANGS, fetchImpl = fetch } = {}) {
   const wiki = {}
   const warnings = []
   for (const l of langs) {
@@ -219,7 +220,11 @@ export function factsFromEntity(entity) {
   return out
 }
 
-const ENTITY_LANGS = ['fr', 'en', 'hy', 'ru']
+// de et it : leurs sitelinks désignent les pages citées sur la page de leur
+// langue et transmises au traducteur — jamais lues par le brouillon français
+// (DRAFT_LANGS : les seules que fetchTopicWikipedia lit par défaut).
+export const DRAFT_LANGS = ['fr', 'en', 'hy', 'ru']
+const ENTITY_LANGS = [...DRAFT_LANGS, 'de', 'it']
 
 // Une seule requête : libellés, descriptions, alias, titres Wikipédia (sitelinks)
 // et image de tête. Le sujet est identifié par son qid, jamais par un titre
@@ -318,4 +323,22 @@ export async function downloadImage(url, fetchImpl = fetch) {
   const buf = Buffer.from(await res.arrayBuffer())
   if (buf.length < 10000) throw new Error(`image trop petite (${buf.length} o) — page d'erreur ?`)
   return buf
+}
+
+// Le recouvrement d'une traduction de/it avec la Wikipédia de SA langue, celle
+// que meta.sources cite (même seuil que le brouillon) : une traduction qui
+// recopie dewiki n'est pas plus un « contenu propre » qu'un brouillon qui
+// recopie frwiki. La page est relue par son titre, donc dans sa version
+// courante. Rend null quand la langue n'a pas de page (rien à comparer), et
+// `{ error }` quand la page ne peut pas être lue — à l'appelant de le dire.
+export async function translationOverlap(lang, body, metaSources = [], fetchImpl = fetch) {
+  const src = metaSources.find((s) => (s?.kind ?? 'wikipedia') === 'wikipedia' && s.lang === lang && s.title)
+  if (!src) return null
+  try {
+    const page = await fetchWikipedia(lang, src.title, fetchImpl)
+    if (!page) throw new Error(`« ${src.title} » introuvable`)
+    return { title: src.title, ratio: overlapRatio(body, [page.extract]) }
+  } catch (e) {
+    return { title: src.title, error: e.message }
+  }
 }

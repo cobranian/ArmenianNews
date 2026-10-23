@@ -3,7 +3,7 @@
 import { readdir, readFile, access } from 'node:fs/promises'
 import path from 'node:path'
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
-import { validateArticle, TRANSLATED } from './culture-validate.mjs'
+import { validateArticle, REQUIRED, ABSENT_NOTE } from './culture-validate.mjs'
 
 export async function readArticle(dir, slug) {
   const base = path.join(dir, slug)
@@ -48,9 +48,11 @@ export const invalidDirMessage = (name) => `culture/${name} : nom de dossier inv
 // ou porteuses d'un lien inventé) parmi les articles publiés. Le cas typique :
 // fr.md retouché directement sur main → empreinte périmée → en/hy/ru
 // disparaissent, et leurs URL déjà indexées répondent 404. Le build reste vert
-// (spec §3.5) mais doit le dire d'une ligne qu'on ne rate pas.
+// (spec §3.5) mais doit le dire d'une ligne qu'on ne rate pas. Seules les
+// langues REQUIRED comptent : de/it facultatives manquent à presque tous les
+// articles antérieurs, et ce compte ne dirait plus rien.
 export function unpublishedTranslations(articles) {
-  return articles.reduce((n, a) => n + TRANSLATED.filter((l) => !a.langs[l]).length, 0)
+  return articles.reduce((n, a) => n + REQUIRED.filter((l) => !a.langs[l]).length, 0)
 }
 
 export function unpublishedLine(articles) {
@@ -65,8 +67,11 @@ export async function loadCulture(dir, log = console) {
   for (const name of await invalidDirs(dir)) log.warn(`  ⚠ ${invalidDirMessage(name)}`)
   for (const slug of await articleSlugs(dir)) {
     const raw = await readArticle(dir, slug)
-    const { errors, langs } = validateArticle(raw)
+    const { errors, notes, langs } = validateArticle(raw)
     for (const e of errors) log.warn(`  ⚠ culture/${slug} : ${e}`)
+    // Une de/it absente est le cas normal (deux lignes par article et par
+    // heure) ; une de/it périmée ou invalide quitte une URL déjà en ligne.
+    for (const n of notes) if (!n.endsWith(ABSENT_NOTE)) log.warn(`  ⚠ culture/${slug} : ${n}`)
     if (!langs.fr) continue
     out.push({
       slug,

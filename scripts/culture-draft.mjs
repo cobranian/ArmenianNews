@@ -26,8 +26,9 @@ import {
   buildDraftMessages, buildIdeasMessages, parseArticleJson, parseIdeas, eventFacts,
 } from './lib/culture-prompts.mjs'
 import {
-  fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, fetchHseSource, fetchCommonsCandidates, downloadImage,
+  fetchEntity, resolveTitles, fetchWikipedia, fetchTopicWikipedia, fetchHseSource, fetchCommonsCandidates, downloadImage, DRAFT_LANGS,
 } from './lib/culture-sources.mjs'
+import { OPTIONAL } from './lib/culture-validate.mjs'
 import { loadUnesco, unescoSource } from './lib/culture-unesco.mjs'
 import { fetchPeopleofarSources, checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
 import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
@@ -54,7 +55,8 @@ const output = async (k, v) => {
   if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `${k}=${String(v).replace(/[\r\n]+/g, ' ')}\n`)
 }
 
-const LANGS = ['fr', 'en', 'hy', 'ru']
+const LANGS = DRAFT_LANGS
+const TRANSLATION_LANGS = OPTIONAL
 // Sujets essayés par nuit : au-delà, c'est sujets.json qu'il faut revoir.
 const MAX_TRIES = 3
 
@@ -135,6 +137,14 @@ async function draftArticle({ topic, event }) {
   warnings.push(...blogWarnings)
 
   const sources = [...LANGS.map((l) => wiki[l]), hse, unesco, ...blog].filter(Boolean)
+  // Wikipédia de/it : citées sur la page de leur langue et transmises au
+  // traducteur (nom en usage, recouvrement) — mais HORS du brouillon : ni le
+  // prompt, ni la vérification des faits, ni le recouvrement du français ne
+  // les voient, puisque c'est le français qui est relu. Même vérification du
+  // qid que fr/en (homonymes). Pas de page : la traduction se fera sans.
+  const { wiki: wikiTr, warnings: trWarnings } = await fetchTopicWikipedia(titles, topic.qid, { langs: TRANSLATION_LANGS })
+  warnings.push(...trWarnings)
+  const translationSources = TRANSLATION_LANGS.map((l) => wikiTr[l]).filter(Boolean)
   const facts = entity.facts
   const candidates = await fetchCommonsCandidates({
     files: [entity.image, wiki.fr?.pageImage, wiki.en?.pageImage],
@@ -161,7 +171,7 @@ async function draftArticle({ topic, event }) {
   const meta = {
     slug: topic.slug,
     qid: topic.qid,
-    sources: sources.map(({ kind, lang, title, url, revision, license, postId }) => ({ kind, lang, title, url, revision, license, ...(postId ? { postId } : {}) })),
+    sources: [...sources, ...translationSources].map(({ kind, lang, title, url, revision, license, postId }) => ({ kind, lang, title, url, revision, license, ...(postId ? { postId } : {}) })),
     candidates,
     imageChoice: null,
     image: null,

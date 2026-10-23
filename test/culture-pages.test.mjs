@@ -7,7 +7,7 @@ import path from 'node:path'
 import { cultureIndexHtml, cultureArticleHtml, writeCulturePages, readAlsoPicks } from '../scripts/lib/culture-pages.mjs'
 import { loadCulture } from '../scripts/lib/culture-load.mjs'
 import { cultureLangsBySlug } from '../scripts/lib/culture-links.mjs'
-import { SITES } from '../sites.config.js'
+import { SITES, cultureUrl } from '../sites.config.js'
 import { writeArticle, texts, meta } from './helpers/culture-fixture.mjs'
 
 const CSS = '/assets/index-abc.css'
@@ -202,4 +202,30 @@ test('chaque font-family .culture est suivie de son font-size-adjust', async () 
     const fsa = { display: 'display', body: 'body', mono: 'util' }[m[1]]
     assert.match(lines[i + 1], new RegExp(`font-size-adjust: var\\(--fsa-${fsa}\\)`), `ligne ${i}`)
   })
+})
+
+// de/it sont traduites sans relecture : la page le dit sous le titre, avec un
+// lien vers l'article français relu. en/hy/ru ne portent pas cette mention.
+test('page de/it : « traduit du français » + lien vers l’article fr ; Wikipédia de citée sur sa page seulement', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
+  const t = texts()
+  t.de = t.en.replace('Komitas en', 'Komitas de').replace('Body en.', 'Text de.')
+  const sources = [
+    { lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 1 },
+    { kind: 'wikipedia', lang: 'de', title: 'Komitas Vardapet', url: 'https://de.wikipedia.org/wiki/Komitas_Vardapet', revision: 2 },
+  ]
+  await writeArticle(dir, 'komitas', { m: meta('komitas', { sources }), t })
+  const list = await loadCulture(dir, silent)
+  const bySlug = cultureLangsBySlug(list)
+  const page = (lang) => cultureArticleHtml({ siteId: lang === 'en' ? 'org' : 'ch', lang, article: list[0], list, bySlug, cssHref: CSS, now: NOW })
+  const de = page('de')
+  assert.ok(de.includes('Aus dem Französischen übersetzt'))
+  assert.ok(de.includes(`href="${cultureUrl('fr', 'komitas')}"`))
+  assert.ok(de.includes('>Komitas Vardapet</a> (Wikipedia de)'))
+  const fr = page('fr')
+  const en = page('en')
+  assert.ok(!en.includes('Aus dem Französischen') && !en.includes('culture__translated'))
+  assert.ok(!fr.includes('culture__translated'))
+  assert.ok(!fr.includes('de.wikipedia.org'), 'source de absente de la page fr (balisage compris)')
+  assert.ok(!en.includes('de.wikipedia.org'))
 })

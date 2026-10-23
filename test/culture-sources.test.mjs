@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  fetchWikipedia, fetchTopicWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, fetchHseSource, wikitextToText,
+  fetchWikipedia, fetchTopicWikipedia, fetchWikidataFacts, fetchEntity, resolveTitles, fetchCommonsCandidates, downloadImage, wikidataTime, stripHtml, WIKI_UA, hseTitle, fetchHse, fetchHseSource, wikitextToText, translationOverlap,
 } from '../scripts/lib/culture-sources.mjs'
 
 // Un faux fetch qui route par hôte/paramètre et note les appels.
@@ -119,21 +119,21 @@ const ENTITY = { entities: { Q777: {
   labels: { fr: { value: 'Kochari' }, en: { value: 'Kochari' }, hy: { value: 'Քոչարի' }, ru: { value: 'Кочари' }, de: { value: 'Kochari' } },
   descriptions: { fr: { value: 'danse arménienne' }, en: { value: 'Armenian dance' } },
   aliases: { fr: [{ value: 'Kotchari' }], en: [{ value: 'Qochari' }, { value: 'Kochari dance' }] },
-  sitelinks: { frwiki: { title: 'Kochari' }, enwiki: { title: 'Kochari (dance)' }, hywiki: { title: 'Քոչարի' }, dewiki: { title: 'Kochari' } },
+  sitelinks: { frwiki: { title: 'Kochari' }, enwiki: { title: 'Kochari (dance)' }, hywiki: { title: 'Քոչարի' }, dewiki: { title: 'Kotschari' }, itwiki: { title: 'Kochari (danza)' } },
   claims: { P18: claim('Kochari.jpg'), P571: claim({ time: '+1800-00-00T00:00:00Z', precision: 9 }) },
 } } }
 
-test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru, P18, faits', async () => {
+test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru/de/it, P18, faits', async () => {
   const { impl, calls } = router([[(u) => u.host === 'www.wikidata.org', ENTITY]])
   const e = await fetchEntity('Q777', impl)
   assert.equal(calls.length, 1)
   assert.match(calls[0].u.pathname, /Special:EntityData\/Q777\.json$/)
   assert.deepEqual(e, {
     qid: 'Q777',
-    labels: { fr: 'Kochari', en: 'Kochari', hy: 'Քոչարի', ru: 'Кочари' },
+    labels: { fr: 'Kochari', en: 'Kochari', hy: 'Քոչարի', ru: 'Кочари', de: 'Kochari' },
     descriptions: { fr: 'danse arménienne', en: 'Armenian dance' },
     aliases: { fr: ['Kotchari'], en: ['Qochari', 'Kochari dance'] },
-    sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: 'Քոչարի', ru: undefined },
+    sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: 'Քոչարի', ru: undefined, de: 'Kotschari', it: 'Kochari (danza)' },
     image: 'Kochari.jpg',
     facts: ['Fondation ou création : 1800'],
   })
@@ -202,4 +202,26 @@ test('fetchHseSource : pas de titre → rien ; entrée absente ou Wikisource en 
   const r = await fetchHseSource(entity, found.impl)
   assert.equal(r.source.kind, 'hse')
   assert.deepEqual(r.warnings, [])
+})
+
+// Le recouvrement d'une traduction de/it avec SA Wikipédia : la page est lue
+// par le titre de meta.sources. Pas de page dans cette langue → null (rien à
+// comparer) ; page illisible → `error` (la langue est écrite, avec un ⚠️).
+test('translationOverlap : mesure contre la Wikipédia de la langue, null sans page, error en panne', async () => {
+  const extract = 'eins zwei drei vier fünf sechs sieben acht neun zehn'
+  const page = { query: { pages: [{ title: 'Komitas Vardapet', extract, revisions: [{ revid: 5 }], pageprops: { wikibase_item: 'Q1' } }] } }
+  const { impl, calls } = router([[(u) => u.host === 'de.wikipedia.org', page]])
+  const sources = [
+    { lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas' },
+    { kind: 'wikipedia', lang: 'de', title: 'Komitas Vardapet', url: 'https://de.wikipedia.org/wiki/Komitas_Vardapet' },
+  ]
+  const r = await translationOverlap('de', extract, sources, impl)
+  assert.equal(r.ratio, 1)
+  assert.equal(r.title, 'Komitas Vardapet')
+  assert.equal(calls[0].u.searchParams.get('titles'), 'Komitas Vardapet')
+  assert.equal(await translationOverlap('it', extract, sources, impl), null)
+  const down = await translationOverlap('de', extract, sources, async () => { throw new Error('réseau') })
+  assert.match(down.error, /réseau/)
+  const gone = await translationOverlap('de', extract, sources, router([]).impl)
+  assert.match(gone.error, /HTTP 404|introuvable/)
 })

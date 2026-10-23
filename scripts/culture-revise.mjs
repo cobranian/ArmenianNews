@@ -25,6 +25,7 @@ import {
 } from './lib/culture-prompts.mjs'
 import { fetchEntity, refetchSources } from './lib/culture-sources.mjs'
 import { loadUnesco } from './lib/culture-unesco.mjs'
+import { draftSources } from './lib/culture-validate.mjs'
 import { checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
 import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
@@ -71,8 +72,11 @@ const warnings = []
 const entity = meta.qid
   ? await fetchEntity(meta.qid).catch((e) => (warnings.push(`Wikidata indisponible (${e.message}).`), null))
   : null
-const sources = await refetchSources(meta.sources ?? [], { unesco: loadUnesco() })
-const missing = (meta.sources ?? []).length - sources.length
+// Wikipédia de/it ne servent qu'à leur traduction : la révision du français
+// ne les lit pas, comme le brouillon ne les a pas lues.
+const revisedFrom = draftSources(meta.sources ?? [])
+const sources = await refetchSources(revisedFrom, { unesco: loadUnesco() })
+const missing = revisedFrom.length - sources.length
 if (missing > 0) warnings.push(`${missing} source(s) non relue(s) à leur révision : la vérification des faits est partielle.`)
 
 let res

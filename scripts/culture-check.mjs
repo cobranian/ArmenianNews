@@ -5,6 +5,9 @@
  *   npm run culture:check -- [--pr-body corps.md] [slug…]
  *
  * Sans slug : tous les articles. --pr-body exige la case « Faits vérifiés ».
+ * Les NOTES (de/it facultatives : absentes, périmées, invalides) sont
+ * imprimées mais ne changent jamais le code de sortie : une langue que
+ * personne ne relit ne retient pas un texte relu.
  * La DERNIÈRE ligne de sortie est un résumé de 140 caractères au plus : les
  * workflows la publient telle quelle comme description du statut de commit.
  */
@@ -26,6 +29,7 @@ const { values, positionals } = parseArgs({
 })
 
 const errors = []
+const notes = []
 try {
   errors.push(...validateTopics(JSON.parse(await readFile(path.join(values.dir, 'sujets.json'), 'utf-8'))))
 } catch (e) {
@@ -34,17 +38,19 @@ try {
 errors.push(...(await invalidDirs(values.dir)).map(invalidDirMessage))
 const slugs = positionals.length ? positionals : await articleSlugs(values.dir)
 for (const slug of slugs) {
-  const { errors: errs } = validateArticle(await readArticle(values.dir, slug))
+  const { errors: errs, notes: ns } = validateArticle(await readArticle(values.dir, slug))
   errors.push(...errs.map((e) => `${slug} — ${e}`))
+  notes.push(...ns.map((n) => `${slug} — ${n}`))
 }
 if (values['pr-body']) {
   const body = await readFile(values['pr-body'], 'utf-8').catch(() => '')
   if (!factsChecked(body)) errors.push('case « Faits vérifiés » non cochée dans la PR')
 }
 
+for (const n of notes) console.log(`· ${n}`)
 for (const e of errors) console.log(`✗ ${e}`)
 const summary = errors.length
   ? `✗ ${errors.length} problème(s) : ${errors[0]}`
-  : `✓ culture : ${slugs.length} article(s) conforme(s)`
+  : `✓ culture : ${slugs.length} article(s) conforme(s)${notes.length ? ` · ${notes.length} note(s) de/it` : ''}`
 console.log(summary.length > 140 ? `${summary.slice(0, 139)}…` : summary)
 process.exit(errors.length ? 1 : 0)

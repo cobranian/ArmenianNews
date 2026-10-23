@@ -59,3 +59,13 @@ test('sujets.json invalide : exit 1', async () => {
   await writeFile(path.join(d, 'sujets.json'), JSON.stringify({ topics: [{ slug: 'X' }] }))
   assert.equal(run('--dir', d).status, 1)
 })
+
+test('de/it absentes : notes imprimées, exit 0, résumé vert', async () => {
+  const d = await dir()
+  await writeArticle(d, 'komitas')
+  const r = run('--dir', d, 'komitas')
+  assert.equal(r.status, 0, r.stdout + r.stderr)
+  assert.match(r.stdout, /· komitas — de\.md absent/)
+  assert.match(r.stdout, /· komitas — it\.md absent/)
+  assert.match(last(r), /^✓ .*2 note\(s\)/)
+})

@@ -97,6 +97,7 @@ test('traduction : langue cible nommée, fidélité, JSON du texte relu', () => 
   assert.match(sys.content, /arménien oriental/)
   assert.match(sys.content, /n'ajoute, ne retire/)
   assert.deepEqual(JSON.parse(user.content), { title: 'T', description: 'D', body: '## B' })
+  assert.doesNotMatch(sys.content, /nom en usage/)
 })
 
 test('idées : titres existants exclus, analyse tolérante', () => {
@@ -174,4 +175,15 @@ test('buildIdeasMessages : 15 par défaut, règle éditoriale', () => {
   assert.match(sys.content, /Propose 15 sujets/)
   assert.match(sys.content, /Point de vue arménien/)
   assert.match(buildIdeasMessages([], 5)[0].content, /Propose 5 sujets/)
+})
+
+test('buildTranslateMessages de/it : nom en usage dans la Wikipédia cible, allemand suisse en « ss »', () => {
+  const [de] = buildTranslateMessages({ lang: 'de', title: 'T', description: 'D', body: 'B', nameHint: 'Komitas Vardapet' })
+  assert.match(de.content, /allemand/)
+  assert.match(de.content, /Komitas Vardapet/)
+  assert.match(de.content, /« ss »/)
+  assert.match(de.content, /ß/)
+  const [it] = buildTranslateMessages({ lang: 'it', title: 'T', description: 'D', body: 'B' })
+  assert.match(it.content, /italien/)
+  assert.doesNotMatch(it.content, /nom en usage/)
 })
