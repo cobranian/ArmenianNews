@@ -1,0 +1,96 @@
+{
+  "slug": "ani",
+  "qid": "Q546010",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Ani",
+      "url": "https://fr.wikipedia.org/wiki/Ani",
+      "revision": 228050856,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Ani",
+      "url": "https://en.wikipedia.org/wiki/Ani",
+      "revision": 1379859315,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Անի",
+      "url": "https://hy.wikipedia.org/wiki/%D4%B1%D5%B6%D5%AB",
+      "revision": 10915229,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Ани (город)",
+      "url": "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B8_(%D0%B3%D0%BE%D1%80%D0%BE%D0%B4)",
+      "revision": 155323290,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "hse",
+      "lang": "hy",
+      "title": "ՀՍՀ/ԱՆԻ",
+      "url": "https://hy.wikisource.org/wiki/%D5%80%D5%8D%D5%80/%D4%B1%D5%86%D4%BB",
+      "revision": 383132,
+      "license": "CC BY-SA 3.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Ani seen from Armenia.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Ani_seen_from_Armenia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1772,
+      "height": 1181,
+      "mime": "image/jpeg",
+      "author": "haigoes",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Ani_seen_from_Armenia.jpg"
+    },
+    {
+      "file": "File:Ani as seen from Armenia.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Ani_as_seen_from_Armenia.jpg/1920px-Ani_as_seen_from_Armenia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2775,
+      "height": 3830,
+      "mime": "image/jpeg",
+      "author": "Poshotenk",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Ani_as_seen_from_Armenia.jpg"
+    },
+    {
+      "file": "File:Ani, rovine, veduta verso il monte aragats in armenia.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Ani%2C_rovine%2C_veduta_verso_il_monte_aragats_in_armenia.jpg/1920px-Ani%2C_rovine%2C_veduta_verso_il_monte_aragats_in_armenia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 6720,
+      "height": 4480,
+      "mime": "image/jpeg",
+      "author": "Francesco Bini",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Ani,_rovine,_veduta_verso_il_monte_aragats_in_armenia.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Ani seen from Armenia.jpg",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Ani_seen_from_Armenia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 800,
+    "mime": "image/jpeg",
+    "author": "haigoes",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Ani_seen_from_Armenia.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0.003,
+  "model": "gemini-flash-latest"
+}
