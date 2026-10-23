@@ -320,7 +320,7 @@ const STRINGS = {
     'about.what.title': 'Was Sie hier finden',
     'about.what.body':
       'Eine statische Momentaufnahme, die ein Programm jede Stunde neu erstellt: Es liest die Quellen und erzeugt die Seiten neu. Es gibt weder Konto noch Formular noch Datenbank.',
-    'about.what.news': 'die neuesten Meldungen der armenischen Redaktionen, Rubrik für Rubrik – hier in ihrer französischen Originalfassung;',
+    'about.what.news': 'die neuesten Meldungen der armenischen Redaktionen, Rubrik für Rubrik – hier auf Französisch;',
     'about.what.radio': '{n} Sender zum direkten Hören, jeder mit einem belegten Steckbrief (Stadt, Genre, Sendesprache);',
     'about.what.agenda': 'die Veranstaltungen der Diaspora, Land für Land, zusammengetragen von Armenopole;',
     'about.what.social': 'eine von Hand kuratierte Auswahl von Instagram-Konten und die Facebook-Seite von Don Narek.',
@@ -401,7 +401,7 @@ const STRINGS = {
     'privacy.analytics.body':
       'Wir verwenden Google Analytics und Cloudflare Web Analytics, um Besuche zu zählen und zu erfahren, welche Rubriken gelesen werden. Ausserhalb des Europäischen Wirtschaftsraums und des Vereinigten Königreichs setzt Google Analytics ein Cookie, das einen Besucher von einem Besuch zum nächsten wiedererkennt. Im EWR und im Vereinigten Königreich wird dieses Cookie nicht gesetzt: Die Messung erfolgt dort anonym und ohne Cookie, wie es die DSGVO verlangt. Cloudflare Web Analytics setzt keinerlei Cookie, wo immer Sie sich befinden.',
     'privacy.analytics.optout':
-      'Um dieses Cookie abzulehnen, blockieren Sie es in Ihrem Browser. Die Website funktioniert ohne es genau gleich.',
+      'Um dieses Cookie abzulehnen, blockieren Sie es in Ihrem Browser. Die Website funktioniert auch ohne dieses Cookie genau gleich.',
     'privacy.storage.title': 'Auf Ihrem Gerät gespeichert',
     'privacy.storage.body':
       'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Sie verlässt Ihr Gerät nie und wird uns nie übermittelt.',
@@ -432,7 +432,7 @@ const STRINGS = {
     'namcats.communaute': 'Gemeinschaft',
     'namcats.culture': 'Kultur',
     'namcats.lifestyle': 'Lifestyle',
-    'namcats.magazine': 'Magazine',
+    'namcats.magazine': 'Magazin',
     'azkcats.armenie-artsakh': 'Armenien & Arzach',
     'azkcats.communaute': 'Gemeinschaft',
     'azkcats.divers': 'Vermischtes',
@@ -473,7 +473,7 @@ const STRINGS = {
     'radio.tz': 'Eriwan',
     'radio.play': 'Live hören',
     'radio.pause': 'Pausieren',
-    'radio.loading': 'Verbindung zum Stream …',
+    'radio.loading': 'Verbindung wird hergestellt …',
     'radio.error': 'Stream nicht verfügbar.',
     'radio.retry': 'Erneut versuchen',
     'radio.offair': 'nicht auf Sendung',
@@ -549,11 +549,11 @@ const STRINGS = {
     'viewpage.also': 'Vedi anche',
     'about.h1': 'Informazioni su Arménie Info',
     'about.intro':
-      'Arménie Info è un sito indipendente, con sede in Svizzera e curato da {editor}, che raccoglie ogni ora la vita armena così come la raccontano i suoi stessi media: i dispacci delle redazioni, le radio in diretta, gli eventi della diaspora e i suoi social network. Nulla viene riscritto: ogni titolo rimanda all’editore che lo ha pubblicato.',
+      'Arménie Info è un sito indipendente, con sede in Svizzera e curato da {editor}, che raccoglie ogni ora la vita armena così come la raccontano i suoi stessi media: le notizie delle redazioni, le radio in diretta, gli eventi della diaspora e i suoi social network. Nulla viene riscritto: ogni titolo rimanda all’editore che lo ha pubblicato.',
     'about.what.title': 'Che cosa trovate qui',
     'about.what.body':
       'Un’istantanea statica, ricostruita ogni ora da un programma che rilegge le fonti e rigenera le pagine. Non ci sono account, moduli né database.',
-    'about.what.news': 'gli ultimi dispacci delle redazioni armene, rubrica per rubrica, qui nella loro versione originale francese;',
+    'about.what.news': 'le ultime notizie delle redazioni armene, rubrica per rubrica, qui in francese;',
     'about.what.radio': '{n} stazioni in ascolto diretto, ognuna con una scheda documentata (città, genere, lingua di trasmissione);',
     'about.what.agenda': 'gli eventi della diaspora, paese per paese, raccolti da Armenopole;',
     'about.what.social': 'una selezione di account Instagram scelti a mano e la pagina Facebook di Don Narek.',
@@ -563,14 +563,14 @@ const STRINGS = {
     'about.rules.links':
       'Nulla viene riscritto né riassunto: i titoli sono quelli delle redazioni, e ogni scheda porta all’articolo originale, presso il suo editore.',
     'about.rules.hourly':
-      'Tutto è datato. La fascia in alto indica l’ora dell’istantanea; ogni dispaccio mostra da quanto tempo è uscito.',
+      'Tutto è datato. La fascia in alto indica l’ora dell’istantanea; ogni articolo mostra da quanto tempo è uscito.',
     'about.rules.noads':
       'Niente pubblicità, niente account, nessun cookie di tracciamento nello Spazio economico europeo: l’informativa sulla privacy, a piè di pagina, dice esattamente che cosa viene misurato.',
     'about.rules.facts':
       'Nessun dato su una stazione è affermato senza fonte; un campo che non è stato possibile verificare resta vuoto anziché essere indovinato.',
     'about.sources.title': 'Le redazioni',
     'about.sources.body':
-      'I dispacci provengono dai siti di queste redazioni e sono ripresi così come sono. Ognuna compare nella lingua o nelle lingue in cui pubblica:',
+      'Le notizie provengono dai siti di queste redazioni e sono riprese così come sono. Ognuna compare nella lingua o nelle lingue in cui pubblica:',
     'about.sources.langs': 'Lingue',
     'about.sources.other':
       'Gli eventi provengono da Armenopole, le radio dai loro flussi e le immagini dei social dagli account citati.',
@@ -632,7 +632,7 @@ const STRINGS = {
       'Questo sito è un’istantanea statica: niente account, niente moduli, niente database. Non vi chiede nulla e non conserva nulla che vi identifichi personalmente.',
     'privacy.analytics.title': 'Misurazione del pubblico',
     'privacy.analytics.body':
-      'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Dal SEE e dal Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
+      'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Nel SEE e nel Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
     'privacy.analytics.optout':
       'Per rifiutare questo cookie, bloccatelo nel vostro browser. Il sito funziona allo stesso modo anche senza.',
     'privacy.storage.title': 'Conservato sul vostro dispositivo',
@@ -665,7 +665,7 @@ const STRINGS = {
     'namcats.communaute': 'Comunità',
     'namcats.culture': 'Cultura',
     'namcats.lifestyle': 'Lifestyle',
-    'namcats.magazine': 'Riviste',
+    'namcats.magazine': 'Rivista',
     'azkcats.armenie-artsakh': 'Armenia e Artsakh',
     'azkcats.communaute': 'Comunità',
     'azkcats.divers': 'Varie',

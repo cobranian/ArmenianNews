@@ -32,7 +32,7 @@ export const BRIEF_STRINGS = {
     nav: 'In Kürze',
     brand: 'Arménie Info',
     description:
-      'Jeden Morgen die Themen des Tages, abgeglichen zwischen den armenischen Redaktionen, mit Links zu ihren Artikeln.',
+      'Jeden Morgen die Themen des Tages, aus den armenischen Redaktionen zusammengetragen und abgeglichen, mit Links zu ihren Artikeln.',
     latest: 'Neueste Ausgabe',
     archive: 'Archiv',
     read: 'Ganze Ausgabe lesen →',
