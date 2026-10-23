@@ -317,15 +317,23 @@ jobs:
       # slug jumeau de l'autre langue doit rediriger. Quelques essais espacés,
       # parce que le CDN met parfois une dizaine de secondes à servir la
       # nouvelle version.
-      - name: Sonder la production (404 francs, slugs jumeaux, brève, culture)
+      - name: Sonder la production (404 francs, slugs jumeaux, brève, culture, de/it)
         run: |
-          probe() {  # url, code attendu
+          # url, code attendu[, Location attendu tel que Firebase l'écrit —
+          # relatif pour une destination relative (/agenda/), absolu sinon].
+          # Le code seul ne suffit pas pour une redirection : une destination
+          # mal substituée (…/de/:rest littéral) répondrait 301 elle aussi.
+          probe() {
+            hdr="$RUNNER_TEMP/sonde-entetes"
             for i in 1 2 3 4; do
-              code=$(curl -s -o /dev/null -w '%{http_code}' "$1")
-              [ "$code" = "$2" ] && { echo "✓ $1 → $code"; return 0; }
+              code=$(curl -s -o /dev/null -D "$hdr" -w '%{http_code}' "$1")
+              loc=$(tr -d '\r' < "$hdr" | awk 'tolower($1)=="location:"{print $2}')
+              if [ "$code" = "$2" ] && { [ -z "$3" ] || [ "$loc" = "$3" ]; }; then
+                echo "✓ $1 → $code${3:+ $loc}"; return 0
+              fi
               sleep 10
             done
-            echo "::error::$1 répond $code, attendu $2"
+            echo "::error::$1 répond $code${loc:+ → $loc}, attendu $2${3:+ → $3}"
             return 1
           }
           fail=0
@@ -338,6 +346,13 @@ jobs:
           probe "https://armenieinfo.ch/events/" 301 || fail=1
           probe "https://armenianews.org/agenda/" 301 || fail=1
           probe "https://armenianews.org/fr/" 301 || fail=1
+          # /de/ et /it/ du .ch (2026-10-23) : les pages, leur slug jumeau, et le
+          # renvoi depuis le .org où ces langues n'existent pas.
+          probe "https://armenieinfo.ch/de/" 200 || fail=1
+          probe "https://armenieinfo.ch/it/eventi/" 200 || fail=1
+          probe "https://armenieinfo.ch/de/events/" 301 "/de/veranstaltungen/" || fail=1
+          probe "https://armenianews.org/de" 301 "https://armenieinfo.ch/de/" || fail=1
+          probe "https://armenianews.org/it/eventi/" 301 "https://armenieinfo.ch/it/eventi/" || fail=1
           exit $fail
 
       # IndexNow, second temps : prévenir Bing des pages nouvelles ou changées

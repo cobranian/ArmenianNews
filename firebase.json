@@ -99,7 +99,12 @@
           "type": 301
         },
         {
-          "regex": "^/(?P<lang>de|it)(?:/(?P<rest>.*))?$",
+          "regex": "^/(?P<lang>de|it)/?$",
+          "destination": "https://armenieinfo.ch/:lang/",
+          "type": 301
+        },
+        {
+          "regex": "^/(?P<lang>de|it)/(?P<rest>.+)$",
           "destination": "https://armenieinfo.ch/:lang/:rest",
           "type": 301
         }

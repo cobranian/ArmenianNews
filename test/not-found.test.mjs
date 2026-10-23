@@ -130,7 +130,14 @@ test('firebase.json redirige les slugs de/it vers leur vue et vers le .ch', () =
   const follow = (siteId, p) => {
     for (const r of bySite[SITES[siteId].firebaseSite]) {
       const m = r.regex && toJs(r.regex).exec(p)
-      if (m) return r.destination.replace(/:([a-z]\w*|\d+)/g, (_, k) => (m.groups?.[k] ?? m[k] ?? ''))
+      if (!m) continue
+      // Une destination ne cite JAMAIS un groupe qui n'a pas participé : ce
+      // que Firebase en ferait n'est pas documenté (vide ? « :rest » littéral ?).
+      return r.destination.replace(/:([a-z]\w*|\d+)/g, (_, k) => {
+        const v = m.groups?.[k] ?? m[k]
+        if (v === undefined) throw new Error(`${r.regex} : ${p} laisse :${k} sans valeur`)
+        return v
+      })
     }
     return null
   }
@@ -147,6 +154,20 @@ test('firebase.json redirige les slugs de/it vers leur vue et vers le .ch', () =
   assert.equal(follow('org', '/design/'), null)
   assert.equal(follow('org', '/items/'), null)
   for (const r of bySite[SITES.org.firebaseSite]) assert.equal(r.type, 301)
+  // Aucune règle ne peut laisser un groupe vide : chaque groupe de la
+  // destination est obligatoire dans sa regex (pas de « ? » sur le groupe).
+  for (const p of ['/de', '/de/', '/it/', '/de/x', '/it/eventi/']) assert.doesNotThrow(() => follow('org', p), p)
+
+  // La sonde de production vérifie ces redirections jusqu'à leur Location :
+  // un code 301 seul passerait sur une destination mal substituée.
+  const wf = readFileSync(new URL('../.github/workflows/hourly.yml', import.meta.url), 'utf-8')
+  for (const line of [
+    'probe "https://armenieinfo.ch/de/" 200',
+    'probe "https://armenieinfo.ch/it/eventi/" 200',
+    'probe "https://armenieinfo.ch/de/events/" 301 "/de/veranstaltungen/"',
+    'probe "https://armenianews.org/de" 301 "https://armenieinfo.ch/de/"',
+    'probe "https://armenianews.org/it/eventi/" 301 "https://armenieinfo.ch/it/eventi/"',
+  ]) assert.ok(wf.includes(line), line)
 
   // Les deux blocs `headers` restent identiques (CSP comprise) : voir CLAUDE.md.
   const [a, b] = firebase.hosting
