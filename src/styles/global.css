@@ -103,9 +103,9 @@
 
      C'est pour cela qu'on ne fait pas ce travail en :lang().
      Certaines lignes mêlent trois écritures — le surtitre du héros
-     « ՀԱՅԱՍՏԱՆ · ARMENIA · ARMÉNIE », les quatre pastilles
-     « EN FR ՀԱՅ РУ » — et elles sont présentes sur les QUATRE
-     pages : un :lang() ne peut pas être juste pour les trois à la
+     « ՀԱՅԱՍՏԱՆ · ARMENIA · ARMÉNIE », les pastilles de langue
+     « FR DE IT EN ՀԱՅ РУ » — et elles sont présentes sur TOUTES
+     les pages : un :lang() ne peut pas être juste pour toutes à la
      fois. La pile, si. :lang() ne sert donc qu'aux réglages qui
      sont vraiment par langue (approche, interlignage).
 
@@ -3641,8 +3641,8 @@ html.js .reveal.is-visible {
   .nav__toggle {
     padding: 11px 14px;
   }
-  /* 12px of side padding: with 4 pills (FR EN ՀԱՅ РУ) the theme toggle +
-     lang pill + hamburger now overflow a 360px viewport at 15px padding —
+  /* 12px of side padding: with the language pills, the theme toggle +
+     lang pill + hamburger overflowed a 360px viewport at 15px padding —
      measured 366px scrollWidth. 12px keeps the row on one line; the tallest
      label ("ՀԱՅ") still sets the row height. Don't go below 12px — "FR" is
      already the narrowest chip and its tap width is at the floor here. */

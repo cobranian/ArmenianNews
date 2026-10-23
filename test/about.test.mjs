@@ -10,7 +10,7 @@ import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 // La vue « about » (audit SEO du 21 août 2026). Une vue de plus touche sept
 // endroits ; ces tests gardent ceux qu'aucun autre contrôle ne couvrirait en
-// silence : le texte dans les quatre langues (t() retombe sur le français sans
+// silence : le texte dans toutes les langues (t() retombe sur le français sans
 // rien dire), la garde de l'agenda (une vue inconnue la fait échouer, mais une
 // vue mal classée laisserait passer des Event), et la route du composant.
 
@@ -74,7 +74,7 @@ test('les chaînes de la page existent dans chaque langue', () => {
     const n = (i18n.match(new RegExp(`'${key.replace(/\./g, '\\.')}':`, 'g')) || []).length
     assert.equal(n, BLOC_LANGS.length, `${key} : ${n} déclaration(s)`)
   }
-  // Le nombre de stations entre par {n} dans les quatre versions.
+  // Le nombre de stations entre par {n} dans toutes les versions.
   assert.equal((i18n.match(/'about\.what\.radio': '\{n\}/g) || []).length, BLOC_LANGS.length)
 })
 

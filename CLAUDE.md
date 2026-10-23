@@ -1480,7 +1480,7 @@ de production servent toujours depuis la racine de leur domaine.
   `Event` de la vue `/agenda/` ne viennent **pas** du `<head>` comme ceux de
   l'accueil (que le plugin y écrit au build) : ils viennent du composant React,
   donc de `<div id="root">`, donc du **prérendu**. Exiger leur présence sans
-  regarder le stade fait échouer `check` en CI sur les **quatre** pages agenda,
+  regarder le stade fait échouer `check` en CI sur les **six** pages agenda,
   toutes saines — et passer en local sur exactement les mêmes. Le prérendu
   étant `continue-on-error` à dessein (un prérendu manqué ne doit pas retenir le
   déploiement), **déplacer `check` après lui n'est pas la correction** : c'est

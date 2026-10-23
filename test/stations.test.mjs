@@ -32,13 +32,13 @@ test('aucun fait n est affirme sans source', () => {
 // t(`radio.genre.${f.genre}`). Or t() vaut STRINGS[lang][cle] ?? STRINGS.fr[cle]
 // ?? cle — une cle absente RETOURNE LA CLE. Une station ajoutee avec
 // genre: 'talk' passerait donc les trois tests ci-dessus, le lint, le check et
-// le prerendu, pour afficher « Genre : radio.genre.talk » sur les quatre pages
+// le prerendu, pour afficher « Genre : radio.genre.talk » sur toutes les pages
 // /radio/ — cuit dans le HTML que Google indexe. Meme mecanique que
 // test/radio-count.test.mjs, sur une autre famille de chaines.
 //
-// On compte les DECLARATIONS dans i18n.jsx : quatre par cle, une par bloc
-// STRINGS. Trois suffiraient a l'affichage (le repli sur le francais masque le
-// trou), et c'est precisement ce qu'il faut attraper.
+// On compte les DECLARATIONS dans i18n.jsx : une par cle et par bloc
+// STRINGS. Une de moins suffirait a l'affichage (le repli sur le francais
+// masque le trou), et c'est precisement ce qu'il faut attraper.
 function declarations(cle) {
   return (i18n.match(new RegExp(`'${cle.replace(/\./g, '\\.')}':`, 'g')) || []).length
 }
@@ -85,7 +85,7 @@ test('chaque langue d antenne a son libelle dans chaque langue', () => {
   }
 })
 
-// La reciproque : un libelle traduit quatre fois pour un genre que plus aucune
+// La reciproque : un libelle traduit dans toutes les langues pour un genre que plus aucune
 // station ne porte est une cle morte, dans un fichier dont l'invariant est la
 // parite stricte des cles — elle invite un futur agent a « l'implementer ».
 test('aucun libelle de genre ne survit a la station qui le portait', () => {
