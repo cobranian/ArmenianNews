@@ -208,3 +208,22 @@ test('parseBrief : du français dans une brève de ou it est écarté, pas dans 
   const intro = JSON.stringify({ intro: 'Les sujets du jour sont dans la presse.', topics: [ok, ok, ok] })
   assert.equal(parseBrief(intro, articles, 'it').intro, '')
 })
+
+test('parseBrief : prose valide de/it jamais prise pour du français', () => {
+  const run = (lang, t) => parseBrief(JSON.stringify({ intro: 'Intro', topics: [t, t, t] }), articles, lang)
+  // « des » (génitif) et « du » (pronom) sont allemands.
+  assert.ok(run('de', topic([1], { title: 'Die Regierung des Landes', text: 'Der Chef des Amts sagt: du siehst, des Präsidenten Wort gilt.' })))
+  // « qui » (ici) et « Est » (point cardinal) sont italiens.
+  assert.ok(run('it', topic([1], { title: 'Nell’Est del paese', text: 'Siamo qui, e l’Est resta qui vicino.' })))
+  // Un titre source français cité tel quel est exempté (comme pour l'alphabet).
+  const quoted = [{ id: 1, source: 'armenpress', rubric: 'politique', title: 'Les Arméniens dans les médias', url: 'https://q/1', date: 'x' }]
+  const t = topic([1], { title: 'Die Studie « Les Arméniens dans les médias »', text: 'Sie erscheint heute.' })
+  assert.ok(parseBrief(JSON.stringify({ intro: 'Intro', topics: [t, t, t] }), quoted, 'de'))
+})
+
+test('parseBrief : un sujet tout en français reste écarté en de et en it', () => {
+  const fr = topic([1], { title: 'Une visite pour tous', text: 'Les ministres sont dans la capitale avec leurs équipes.' })
+  const arr = JSON.stringify({ intro: 'Intro', topics: [fr, fr, fr] })
+  assert.equal(parseBrief(arr, articles, 'de'), null)
+  assert.equal(parseBrief(arr, articles, 'it'), null)
+})

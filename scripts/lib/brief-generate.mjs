@@ -105,7 +105,7 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
     if (lang) {
       const allowed = allowedWords(sources.map((x) => x.title))
       const bad = strayWords(`${title} ${body}`, lang, allowed)
-      if (translated) bad.push(...frenchWords(`${title} ${body}`))
+      if (translated) bad.push(...frenchWords(`${title} ${body}`, lang, allowed))
       if (bad.length) {
         rejected.push(...bad)
         continue
@@ -120,7 +120,7 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
   if (lang && intro) {
     const allowed = allowedWords(topics.flatMap((t) => t.sources.map((x) => x.title)))
     const bad = strayWords(intro, lang, allowed)
-    if (translated) bad.push(...frenchWords(intro))
+    if (translated) bad.push(...frenchWords(intro, lang, allowed))
     if (bad.length) {
       rejected.push(...bad)
       intro = ''

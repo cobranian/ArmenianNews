@@ -57,16 +57,28 @@ export function strayWords(text, lang, allowed = new Set()) {
 // cas que l'alphabet ne voit pas, les trois langues s'écrivant en latin. de et
 // it lisent des titres français, et un modèle :free recopie volontiers la
 // langue de ses titres (mesuré le 23 octobre 2026 : brève « it » entièrement
-// en français, publiée telle quelle sans ce garde). Mots-outils propres au
-// français — aucun n'existe en allemand ni en italien (« le », « la », « de »,
-// « un » en sont exclus : l'italien les écrit aussi).
-const FRENCH_MARKERS = new Set([
-  'les', 'des', 'du', 'est', 'dans', 'pour', 'une', 'ont', 'aux', 'qui', 'avec',
-  'sont', 'par', 'sur', 'été', 'entre', 'que', 'ce', 'cette', 'ses', 'leur', 'leurs',
-])
+// en français, publiée telle quelle sans ce garde).
+//
+// Les marqueurs sont PAR LANGUE CIBLE : seuls comptent des mots-outils qui ne
+// sont jamais un mot ordinaire de cette langue. « des » et « du » sont
+// allemands (génitif, pronom) ; « est » (point cardinal), « qui » (« ici ») et
+// « ce » sont italiens — un garde commun rejetterait de la prose valide, en
+// silence. « par » est écarté des deux listes (terme de golf, abréviations) ;
+// « que » reste : ni l'allemand ni l'italien ne l'écrivent.
+const COMMON = ['les', 'une', 'dans', 'pour', 'avec', 'sont', 'que', 'cette', 'ont', 'aux', 'sur', 'été', 'entre', 'ses', 'leur', 'leurs']
+const FRENCH_MARKERS_BY_LANG = {
+  de: new Set([...COMMON, 'est', 'qui']),
+  it: new Set([...COMMON, 'des', 'du']),
+}
 
-// Deux mots-outils français ou plus : du français, pas un nom propre cité.
-export function frenchWords(text) {
-  const found = words(text).map((w) => w.toLowerCase()).filter((w) => FRENCH_MARKERS.has(w))
-  return found.length >= 2 ? [...new Set(found)] : []
+// Deux mots-outils français DISTINCTS ou plus : du français. Les mots des
+// titres sources du sujet (`allowed`, comme pour strayWords) sont exemptés : un
+// titre français cité tel quel n'est pas une brève rédigée en français.
+export function frenchWords(text, lang, allowed = new Set()) {
+  const markers = FRENCH_MARKERS_BY_LANG[lang]
+  if (!markers) return []
+  const found = new Set(
+    words(text).map((w) => w.toLowerCase()).filter((w) => markers.has(w) && !allowed.has(w)),
+  )
+  return found.size >= 2 ? [...found] : []
 }
