@@ -1,0 +1,37 @@
+---
+title: "Das Duduk, jahrtausendealte Stimme und Aprikosenseele Armeniens"
+description: "Entdecken Sie Geschichte, Bau aus Aprikosenholz und weltweiten Einfluss des Duduks, des symbolträchtigen Instruments armenischer Kultur und Musik."
+date: "2026-10-17"
+sourceHash: "dedf0359bb1c0699"
+model: "gemini-flash-latest"
+---
+
+Unter den Instrumenten, die den musikalischen Ausdruck Armeniens verkörpern, nimmt das Duduk – traditionell *Ziranapoch* (ծիրանափող) genannt, wörtlich das «Aprikosenhorn» oder «Aprikosenrohr» – einen zentralen Platz ein. Als echtes Symbol der nationalen Identität unterscheidet sich diese zylindrisch gebohrte Doppelrohrblattoboe durch die unvergleichliche Sanftheit ihrer Klangfarbe deutlich von konisch gebohrten Instrumenten wie der Zurna. Bereits im 5. Jahrhundert unserer Zeitrechnung erwähnte der Historiker Moses von Choren das Instrument unter seiner Bezeichnung *Ziranapoch*. Mehrere armenische Historiker und Musikwissenschaftler führen seine Wurzeln sogar auf 1200 vor unserer Zeitrechnung zurück, während andere Experten von einer belegten Spielpraxis unter der Herrschaft von König Tigranes dem Grossen zwischen 95 und 55 v. Chr. sprechen.
+
+Wie der Ethnomusikologe Jonathan McCollum betont, erscheint das Duduk in zahlreichen mittelalterlichen armenischen Manuskripten und ist das einzige wahrhaft armenische Instrument, das die Zeitalter ohne Unterbrechung überdauert hat. Ihm zufolge liegt seine vorrangige Qualität in seiner einzigartigen Fähigkeit, die Dialektik und die Nuancen der armenischen Sprache auszudrücken. Diese emotionale Kraft veranlasste den Komponisten Aram Chatschaturjan zu der Aussage: «Das Duduk ist das einzige Instrument, dessen Spiel mich zum Weinen bringt.» Als Krönung dieser lebendigen Tradition erklärte die UNESCO 2005 das Duduk und seine Musik zum immateriellen Kulturerbe der Menschheit, bevor sie 2008 in die Repräsentative Liste aufgenommen wurden.
+
+## Handwerkliche Fertigung, aus Aprikosenholz geschnitzt
+
+Der Bau des Duduks beruht auf der Verwendung von abgelagertem Aprikosenholz, seltener Birnbaumholz, das zylindrisch zugeschnitten und gebohrt wird. Die Länge seines Korpus variiert in der Regel zwischen 28 und 40 Zentimetern – mit häufigen Grössen um 30,5 bis 33 Zentimeter, je nach gewünschtem Register und Tonart. Das Instrument weist auf der Oberseite sieben oder acht Grifflöcher auf, während sich auf der Unterseite ein Daumenloch und manchmal ein zusätzliches Stimmloch befinden, das vom Musiker abgedeckt werden kann, um einen tieferen Ton zu erzeugen.
+
+Das bestimmende Element seiner Akustik liegt in seinem breiten Doppelrohrblatt, genannt *Ghamisch* oder *Jeghegn* (եղեգն). Aus einem abgeflachten Schilfrohrstück von 9 bis 14 Zentimetern Länge gefertigt, verfügt es über eine Öffnung, die durch einen beweglichen Ring oder Regulierkragen eingestellt wird. Diese Vorrichtung ermöglicht es, die Intonation und Stabilität des Klangs zu verfeinern. In den 1920er- und 1930er-Jahren modernisierte der armenische Konstrukteur und Komponist W. G. Buni das Instrument, indem er drei Orchestervarianten mit erweitertem Tonumfang schuf, darunter die Baritonversion namens «Buniphon». Heute verfügen einige Modelle über moderne Klappen, die das chromatische Spiel erleichtern.
+
+## Blastechnik und Zirkuläratmung
+
+Der Duduk-Spieler, *Dudukahar* (դուդուկահար) genannt, hält das Rohrblatt fest zwischen den Lippen. Um eine ununterbrochene Klanglinie aufrechtzuerhalten, nutzen die Interpreten die Technik der Zirkuläratmung: Der Musiker speichert Luft in den Wangen, um das Rohrblatt genau in dem Moment weiter mit Luft zu versorgen, in dem er durch die Nase einatmet, wobei die Zunge den Luftstrom reguliert.
+
+Traditionell erklingt das Duduk nicht allein. Die Melodie wird meist von einem zweiten Instrumentalisten unterstützt, dem sogenannten *Damkasch*, der den ständigen Bordunton (*Dum*) hält. Dieses harmonische Fundament liefert konstante Energie und schafft eine tiefe Klangatmosphäre, auf der sich melodische Verzierungen, lyrische Gesänge oder Stücke aus dem Mugham-Genre entfalten. In festlichen und tänzerischen Repertoires verbindet sich das Duduk-Duo mit dem Rhythmus der Trommel *Dhol* oder des *Daf*. Im Laufe der Jahrhunderte begleitete diese Musik alle wichtigen Momente der armenischen Gesellschaft, von Volksfesten und Hochzeiten bis hin zu Begräbniszeremonien.
+
+## Von den grossen Meistern zur zeitgenössischen Erneuerung
+
+Die moderne Geschichte des Duduks ist geprägt von berühmten Meistern, die seine Spielpraxis weitergegeben und perfektioniert haben. Zu den grossen Persönlichkeiten des 20. Jahrhunderts zählen Margar Margarjan, Lewon Madojan, Watsche Howsepjan, Karapet Jeghojan, Chatschik Chatschaturjan sowie Howhannes Kasjan. In jüngerer Zeit haben Musiker wie Geworg Dabaghjan, Sergei Karapetjan, Mkrtitsch Malchasjan, Wladimir Harutjunjan oder Norajr Kartaschjan dieses Repertoire bereichert. Lange Zeit ausschliesslich als Männerdomäne betrachtet, öffnete sich das Instrument Ende des 20. Jahrhunderts für Musikerinnen wie Armine Grigorjan, Anna Sargsjan und Lilit Howsepjan.
+
+Die Gestalt von Dschiwan Gasparjan bleibt untrennbar mit dem internationalen Ruf des Duduks verbunden. Als «Meister des Duduks» bekannt, stand er mit internationalen Künstlern wie Peter Gabriel, Brian May, Lionel Richie, Michael Brook oder dem Komponisten Hans Zimmer auf der Bühne. Dschiwan Gasparjan trat auch beim Eurovision Song Contest 2010 auf, wo er den armenischen Beitrag *Apricot Stone* begleitete.
+
+In Frankreich und innerhalb der Diaspora entfaltete sich die Spielpraxis dank Interpreten wie Levon Minassian, Gérard Madilian, Vardan Grigoryan, Artyom Minasyan oder Haïg Sarikouyoumdjian. Das Instrument hielt auch in andere Ästhetiken Einzug: Didier Malherbe führte es im Rahmen des Hadouk Trios in den Jazz ein, während Gérard Madilian es bereits ab 2000 in die Indie-Rock- und Alternative-Kreationen der Gruppe Deleyaman integrierte. Auch die pädagogische Weitergabe organisiert sich in Europa dank Chris Bégot, dem ersten Europäer mit einem Konservatoriumsdiplom in traditioneller Musik Armeniens und des Kaukasus auf dem armenischen Duduk, der 2022 Gruppenkurse in Valence und 2023 in Lyon ins Leben rief.
+
+## Eine vom weltweiten Kino adaptierte Klangsignatur
+
+Weit über seine Ursprungsregion hinaus hat die charakteristische Klangfarbe des Duduks die weltweite Film- und Fernsehindustrie erobert. Peter Gabriel gehörte zu den Pionieren, die es 1988 in Martin Scorseses Film *Die letzte Versuchung Christi* mit dem Solisten Watsche Howsepjan erfolgreich im Kino einsetzten. Einen gewaltigen Nachhall fand das Instrument anschliessend in Ridley Scotts *Gladiator* (2000) dank der Musik von Hans Zimmer und dem mit einem Golden Globe ausgezeichneten Spiel von Dschiwan Gasparjan.
+
+Das Duduk erklang zudem in Henri Verneuils *Mayrig*, Atom Egoyans *Ararat* mit der Musik von Mychael Danna sowie in Armand Amars Soundtracks zu *Amen.*, *Tage des Ruhms* (*Indigènes*) und *Geh und lebe* (*Va, vis et deviens*). In jüngerer Zeit liess der Musiker Pedro Eustache seine Klänge in John Williams’ *Munich* sowie in den beiden von Hans Zimmer komponierten Teilen von *Dune* ertönen. Fernsehserien wie *Battlestar Galactica* oder *Game of Thrones* sowie bedeutende Videospiele wie *World of Warcraft*, *The Elder Scrolls V: Skyrim* und *Uncharted* schöpfen heute aus dem tiefen Tonumfang und dem ausdrucksstarken Atem dieser Oboe aus Armenien, um ihre fantastischen Welten zu beleben.
