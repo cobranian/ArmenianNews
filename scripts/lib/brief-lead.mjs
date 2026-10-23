@@ -3,31 +3,29 @@
 // de fil propre — elles lisent le fil français (contentLang) — et la brève
 // est le seul contenu écrit dans leur langue : elle passe donc avant le fil.
 //
+// LE PIÈGE : le bloc pointe vers la page datée de la brève. Il ne doit donc
+// retenir QUE les brèves dont brief-pages.mjs bâtit la page — d'où la même
+// validation (loadBriefs), pas une lecture à part : un fichier que le
+// constructeur écarte (langue ou date incohérente, generatedAt absent, aucun
+// sujet sourcé) donnerait sinon un lien mort en production.
+//
 // Ne lève JAMAIS : une brève absente ou cassée retire le bloc, elle ne doit
-// pas retenir le build. La date vient du NOM du fichier (celui que la page
-// datée sert, brief-pages.mjs), pas du champ `date` du JSON.
-import { readdir, readFile } from 'node:fs/promises'
-import { join } from 'node:path'
+// pas retenir le build. Silencieux : build-sites.mjs avertit déjà.
 import { briefUrl } from '../../sites.config.js'
+import { loadBriefs } from './brief-pages.mjs'
 
-const FILE = /^(\d{4}-\d{2}-\d{2})\.json$/
+const quiet = { warn: () => {} }
 
 export async function latestBrief(dir, lang) {
   try {
-    const dates = (await readdir(join(dir, lang)))
-      .map((f) => FILE.exec(f)?.[1])
-      .filter(Boolean)
-      .sort()
-    const date = dates.at(-1)
-    if (!date) return null
-    const b = JSON.parse(await readFile(join(dir, lang, `${date}.json`), 'utf-8'))
-    if (!Array.isArray(b.topics)) return null
-    const topics = b.topics
-      .filter((t) => typeof t?.title === 'string' && t.title)
-      .slice(0, 3)
-      .map((t) => ({ title: t.title }))
-    if (!topics.length) return null
-    return { date, url: briefUrl(lang, date), intro: typeof b.intro === 'string' ? b.intro : '', topics }
+    const b = (await loadBriefs(dir, quiet, [lang]))[lang][0]
+    if (!b) return null
+    return {
+      date: b.date,
+      url: briefUrl(lang, b.date),
+      intro: typeof b.intro === 'string' ? b.intro : '',
+      topics: b.topics.slice(0, 3).map((t) => ({ title: t.title })),
+    }
   } catch {
     return null
   }
