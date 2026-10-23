@@ -71,14 +71,15 @@ const FRENCH_MARKERS_BY_LANG = {
   it: new Set([...COMMON, 'des', 'du']),
 }
 
-// Deux mots-outils français DISTINCTS ou plus : du français. Les mots des
-// titres sources du sujet (`allowed`, comme pour strayWords) sont exemptés : un
-// titre français cité tel quel n'est pas une brève rédigée en français.
-export function frenchWords(text, lang, allowed = new Set()) {
+// Deux mots-outils français DISTINCTS ou plus, ÉCRITS EN MINUSCULES : du
+// français. Les noms propres et les titres cités portent des initiales
+// capitales (« Les Arméniens de France ») ; une fuite de français, elle, se voit
+// en mots-outils minuscules au milieu des phrases. On n'exempte PAS le
+// vocabulaire des titres sources : ils sont tous français, et la brève qui les
+// recopie en prose aurait alors toutes ses fautes exemptées.
+export function frenchWords(text, lang) {
   const markers = FRENCH_MARKERS_BY_LANG[lang]
   if (!markers) return []
-  const found = new Set(
-    words(text).map((w) => w.toLowerCase()).filter((w) => markers.has(w) && !allowed.has(w)),
-  )
+  const found = new Set(words(text).filter((w) => markers.has(w)))
   return found.size >= 2 ? [...found] : []
 }

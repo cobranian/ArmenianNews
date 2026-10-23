@@ -215,10 +215,9 @@ test('parseBrief : prose valide de/it jamais prise pour du français', () => {
   assert.ok(run('de', topic([1], { title: 'Die Regierung des Landes', text: 'Der Chef des Amts sagt: du siehst, des Präsidenten Wort gilt.' })))
   // « qui » (ici) et « Est » (point cardinal) sont italiens.
   assert.ok(run('it', topic([1], { title: 'Nell’Est del paese', text: 'Siamo qui, e l’Est resta qui vicino.' })))
-  // Un titre source français cité tel quel est exempté (comme pour l'alphabet).
-  const quoted = [{ id: 1, source: 'armenpress', rubric: 'politique', title: 'Les Arméniens dans les médias', url: 'https://q/1', date: 'x' }]
-  const t = topic([1], { title: 'Die Studie « Les Arméniens dans les médias »', text: 'Sie erscheint heute.' })
-  assert.ok(parseBrief(JSON.stringify({ intro: 'Intro', topics: [t, t, t] }), quoted, 'de'))
+  // Un nom propre français (initiales capitales) n'est pas une fuite de français.
+  const t = topic([1], { title: 'Les Arméniens de France', text: 'Die Gemeinde feiert heute ihr Jubiläum in Paris.' })
+  assert.ok(run('de', t))
 })
 
 test('parseBrief : un sujet tout en français reste écarté en de et en it', () => {
@@ -226,4 +225,18 @@ test('parseBrief : un sujet tout en français reste écarté en de et en it', ()
   const arr = JSON.stringify({ intro: 'Intro', topics: [fr, fr, fr] })
   assert.equal(parseBrief(arr, articles, 'de'), null)
   assert.equal(parseBrief(arr, articles, 'it'), null)
+})
+
+test('parseBrief : un sujet français rejeté même quand ses titres sources le sont aussi', () => {
+  const src = [
+    { id: 1, source: 'armenpress', rubric: 'politique', url: 'https://r/1', date: 'x', title: 'Les ministres des affaires étrangères sont dans la capitale pour une visite sur la paix' },
+    { id: 2, source: 'civilnet', rubric: 'politique', url: 'https://r/2', date: 'x', title: 'Les ONG ont été reçues par le gouvernement avec leurs équipes entre deux réunions' },
+  ]
+  const t = topic([1, 2], {
+    title: 'Une visite pour tous',
+    text: 'Les ministres sont dans la capitale avec leurs équipes, et que les ONG ont été reçues sur place.',
+  })
+  const reply = JSON.stringify({ intro: 'Intro', topics: [t, t, t] })
+  assert.equal(parseBrief(reply, src, 'de'), null)
+  assert.equal(parseBrief(reply, src, 'it'), null)
 })
