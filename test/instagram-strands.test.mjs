@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { ALL_LANGS } from '../sites.config.js'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 // Node ne sait pas importer du JSX : on lit `igStrands` comme du texte,
 // exactement comme test/stations.test.mjs lit STATIONS et
@@ -70,8 +70,8 @@ test('chaque brin a son titre dans les quatre langues', () => {
   for (const s of strands) {
     assert.equal(
       declarations(s.key),
-      ALL_LANGS.length,
-      `${s.key} manque dans un des quatre blocs STRINGS de src/i18n.jsx ` +
+      BLOC_LANGS.length,
+      `${s.key} manque dans un des blocs STRINGS de src/i18n.jsx ` +
         `— le carrousel afficherait la cle elle-meme`,
     )
   }

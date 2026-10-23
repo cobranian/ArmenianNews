@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { SITES, primaryLang } from '../sites.config.js'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
@@ -97,8 +98,8 @@ test('le bandeau des actualités a sa chaîne, avec {n}, dans les quatre langues
   const valeurs = [...src.matchAll(/'news\.sources':\s*'([^']*)'/g)].map((m) => m[1])
   assert.equal(
     valeurs.length,
-    4,
-    `'news.sources' déclarée ${valeurs.length} fois, attendu 4 (une par langue)`,
+    BLOC_LANGS.length,
+    `'news.sources' déclarée ${valeurs.length} fois, attendu ${BLOC_LANGS.length} (une par bloc)`,
   )
   for (const v of valeurs) {
     assert.ok(v.includes('{n}'), `« ${v} » ne porte pas le gabarit {n}`)

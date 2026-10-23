@@ -32,7 +32,9 @@ test('CULTURE_STRINGS : mêmes clés, non vides, dans les quatre langues', () =>
   const keys = Object.keys(CULTURE_STRINGS.fr).sort()
   for (const l of ALL_LANGS) {
     assert.deepEqual(Object.keys(CULTURE_STRINGS[l]).sort(), keys, l)
-    for (const k of keys) assert.ok(CULTURE_STRINGS[l][k].trim(), `${l}.${k}`)
+    // translatedFrom est vide à dessein hors de/it (test/i18n-parity.test.mjs).
+    for (const k of keys)
+      if (k !== 'translatedFrom') assert.ok(CULTURE_STRINGS[l][k].trim(), `${l}.${k}`)
   }
   assert.equal(CULTURE_STRINGS.fr.nav, 'Culture')
   assert.equal(CULTURE_STRINGS.hy.nav, 'Մշակույթ')

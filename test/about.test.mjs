@@ -6,6 +6,7 @@ import { VIEW_SEO } from '../src/seo.js'
 import { headFor } from '../scripts/lib/site-meta.mjs'
 import { agendaGuardChecks } from '../scripts/lib/agenda-guard.mjs'
 import { notFoundHtml } from '../scripts/lib/not-found.mjs'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 // La vue « about » (audit SEO du 21 août 2026). Une vue de plus touche sept
 // endroits ; ces tests gardent ceux qu'aucun autre contrôle ne couvrirait en
@@ -26,7 +27,7 @@ test('about est une vue à part entière : slugs latins, traduits en français',
 })
 
 test('VIEW_SEO.about existe dans les quatre langues, sans nombre écrit en toutes lettres', () => {
-  for (const l of ALL_LANGS) {
+  for (const l of BLOC_LANGS) {
     assert.ok(VIEW_SEO.about[l]?.title && VIEW_SEO.about[l]?.description, `about ${l}`)
     assert.ok(VIEW_SEO.about[l].description.length <= 160, `${l} : description trop longue`)
   }
@@ -34,6 +35,8 @@ test('VIEW_SEO.about existe dans les quatre langues, sans nombre écrit en toute
   // vieillirait en silence.
   assert.doesNotMatch(VIEW_SEO.about.fr.description, /dix-sept|seize|quinze|douze|onze|sept/i)
   assert.doesNotMatch(VIEW_SEO.about.en.description, /seventeen|sixteen|fifteen|twelve|eleven|seven/i)
+  assert.doesNotMatch(VIEW_SEO.about.de.description, /\b(siebzehn|sechzehn|fünfzehn|zwölf|elf|sieben)\b/i)
+  assert.doesNotMatch(VIEW_SEO.about.it.description, /\b(diciassette|sedici|quindici|dodici|undici|sette)\b/i)
 })
 
 test('le <head> d’une page about se génère pour chaque langue, avec ses hreflang', () => {
@@ -62,10 +65,10 @@ test('les chaînes de la page existent dans les quatre langues', () => {
   ]
   for (const key of keys) {
     const n = (i18n.match(new RegExp(`'${key.replace(/\./g, '\\.')}':`, 'g')) || []).length
-    assert.equal(n, ALL_LANGS.length, `${key} : ${n} déclaration(s)`)
+    assert.equal(n, BLOC_LANGS.length, `${key} : ${n} déclaration(s)`)
   }
   // Le nombre de stations entre par {n} dans les quatre versions.
-  assert.equal((i18n.match(/'about\.what\.radio': '\{n\}/g) || []).length, ALL_LANGS.length)
+  assert.equal((i18n.match(/'about\.what\.radio': '\{n\}/g) || []).length, BLOC_LANGS.length)
 })
 
 test('l’éditeur est nommé une fois (sites.config.js) et cité dans les quatre intros', () => {
@@ -73,7 +76,7 @@ test('l’éditeur est nommé une fois (sites.config.js) et cité dans les quatr
   // {editor} dans chaque intro, remplacé par AboutPage ; un bloc qui écrirait
   // le nom en dur divergerait le jour où il change.
   const intros = [...i18n.matchAll(/'about\.intro':\s*\n?\s*'([^']*)'/g)].map((m) => m[1])
-  assert.equal(intros.length, ALL_LANGS.length)
+  assert.equal(intros.length, BLOC_LANGS.length)
   for (const s of intros) assert.ok(s.includes('{editor}'), `intro sans {editor} : ${s.slice(0, 40)}`)
   assert.match(lire('../src/components/AboutPage.jsx'), /t\('about\.intro'\)\.replace\('\{editor\}', site\.editor\)/)
   // Et l'Organization de chaque page le porte en founder.

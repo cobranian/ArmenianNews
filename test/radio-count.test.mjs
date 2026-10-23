@@ -3,8 +3,9 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { ALL_LANGS, SITES, primaryLang } from '../sites.config.js'
+import { SITES, primaryLang } from '../sites.config.js'
 import { SEO, VIEW_SEO } from '../src/seo.js'
+import { BLOC_LANGS, valeur } from './helpers/i18n-blocks.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
@@ -29,6 +30,8 @@ const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 // l'importe.
 const NOMBRES = {
   fr: 'Dix-sept',
+  de: 'Siebzehn',
+  it: 'Diciassette',
   en: 'Seventeen',
   hy: 'Տասնյոթ',
   ru: 'Семнадцать',
@@ -68,49 +71,56 @@ test('STATIONS déclare bien le nombre de radios annoncé aux lecteurs', () => {
   )
 })
 
-test('les quatre sous-titres radio annoncent le même nombre', () => {
+// Chaque bloc STRINGS est lu par sa langue (test/helpers/i18n-blocks.mjs), y
+// compris un bloc écrit avant que sa langue ne soit servie — de/it l'ont été.
+test('chaque bloc STRINGS a son nombre en toutes lettres', () => {
+  for (const lang of BLOC_LANGS) assert.ok(NOMBRES[lang], `NOMBRES.${lang} manquant`)
+})
+
+test('les sous-titres radio annoncent le même nombre, dans chaque langue', () => {
   const src = read('src/i18n.jsx')
   const trouves = [...src.matchAll(/'radio\.subtitle':\s*'([^']*)'/g)].map((m) => m[1])
 
   assert.equal(
     trouves.length,
-    ALL_LANGS.length,
-    `${ALL_LANGS.length} sous-titres radio attendus, ${trouves.length} trouvés`,
+    BLOC_LANGS.length,
+    `${BLOC_LANGS.length} sous-titres radio attendus, ${trouves.length} trouvés`,
   )
 
-  // Les dictionnaires sont dans l'ordre de ALL_LANGS (fr, en, hy, ru).
-  ALL_LANGS.forEach((lang, i) => {
+  for (const lang of BLOC_LANGS) {
+    const v = valeur(lang, 'radio.subtitle') ?? ''
     assert.ok(
-      trouves[i].startsWith(NOMBRES[lang]),
-      `radio.subtitle (${lang}) devrait commencer par « ${NOMBRES[lang]} » : ${trouves[i]}. ` +
+      v.startsWith(NOMBRES[lang]),
+      `radio.subtitle (${lang}) devrait commencer par « ${NOMBRES[lang]} » : ${v}. ` +
         `À mettre à jour : ${OU}.`,
     )
-  })
+  }
 })
 
 // `radio.more` est le TEXTE DU LIEN de l'accueil vers /radio/ — l'ancre que
 // Google lit pour comprendre de quoi traite la page visée. Les quatre
 // traductions annoncent le nombre ; la française l'annonçait seule autrement,
 // ce qui laissait trois textes hors de toute garde.
-test('les quatre libellés du lien vers /radio/ annoncent le même nombre', () => {
+test('les libellés du lien vers /radio/ annoncent le même nombre, dans chaque langue', () => {
   const src = read('src/i18n.jsx')
   const trouves = [...src.matchAll(/'radio\.more':\s*'([^']*)'/g)].map((m) => m[1])
-  assert.equal(trouves.length, ALL_LANGS.length, `${ALL_LANGS.length} « radio.more » attendus`)
-  ALL_LANGS.forEach((lang, i) => {
+  assert.equal(trouves.length, BLOC_LANGS.length, `${BLOC_LANGS.length} « radio.more » attendus`)
+  for (const lang of BLOC_LANGS) {
+    const v = valeur(lang, 'radio.more') ?? ''
     assert.ok(
-      annonce(trouves[i], lang),
-      `radio.more (${lang}) devrait annoncer « ${NOMBRES[lang]} » : ${trouves[i]}. ` +
+      annonce(v, lang),
+      `radio.more (${lang}) devrait annoncer « ${NOMBRES[lang]} » : ${v}. ` +
         `À mettre à jour : ${OU}.`,
     )
-  })
+  }
 })
 
 // LE CAS LE PLUS COÛTEUX. Ces quatre descriptions sont ce que Google affiche
 // sous le titre dans ses résultats : elles annonceraient douze stations à un
 // lecteur qui en trouverait treize. Elles vivent dans un module PLAT, donc on
 // les importe au lieu de les lire au regex.
-test('les quatre meta descriptions de /radio/ annoncent le même nombre', () => {
-  for (const lang of ALL_LANGS) {
+test('les meta descriptions de /radio/ annoncent le même nombre, dans chaque langue', () => {
+  for (const lang of BLOC_LANGS) {
     const d = VIEW_SEO.radio[lang]?.description
     assert.ok(d, `VIEW_SEO.radio.${lang}.description manquante`)
     assert.ok(
@@ -128,8 +138,8 @@ test('les quatre meta descriptions de /radio/ annoncent le même nombre', () => 
 // trouve nulle part ailleurs. Le défaut n'était visible d'aucun test : la
 // description était juste, seulement incomplète. Maintenant qu'elle porte le
 // nombre, elle peut mentir comme les quatorze autres, d'où ce contrôle.
-test("les quatre descriptions de l'accueil annoncent le même nombre", () => {
-  for (const lang of ALL_LANGS) {
+test("les descriptions de l'accueil annoncent le même nombre, dans chaque langue", () => {
+  for (const lang of BLOC_LANGS) {
     const d = SEO[lang]?.description
     assert.ok(d, `SEO.${lang}.description manquante`)
     assert.ok(
@@ -165,13 +175,14 @@ test('les textes de la page /radio annoncent le meme nombre', () => {
     const trouves = [...src.matchAll(new RegExp(`'${cle}':\\s*\n?\\s*'([^']*)'`, 'g'))].map(
       (m) => m[1],
     )
-    assert.equal(trouves.length, ALL_LANGS.length, `${ALL_LANGS.length} « ${cle} » attendus`)
-    ALL_LANGS.forEach((lang, i) => {
+    assert.equal(trouves.length, BLOC_LANGS.length, `${BLOC_LANGS.length} « ${cle} » attendus`)
+    for (const lang of BLOC_LANGS) {
+      const v = valeur(lang, cle) ?? ''
       assert.ok(
-        annonce(trouves[i], lang),
-        `${cle} (${lang}) devrait annoncer « ${NOMBRES[lang]} » : ${trouves[i]}. ` +
+        annonce(v, lang),
+        `${cle} (${lang}) devrait annoncer « ${NOMBRES[lang]} » : ${v}. ` +
           `À mettre à jour : ${OU}.`,
       )
-    })
+    }
   }
 })

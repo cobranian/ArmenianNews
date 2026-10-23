@@ -24,6 +24,45 @@ export const BRIEF_STRINGS = {
     radio: 'En direct',
     agenda: 'Agenda',
   },
+  // « In Kürze » / « In breve » : le nom usuel d'une rubrique de brèves dans la
+  // presse de langue allemande et italienne. Pas « Notizie » en italien, qui
+  // est déjà le libellé du fil (nav.news).
+  de: {
+    title: 'Der Tag in Kürze',
+    nav: 'In Kürze',
+    brand: 'Arménie Info',
+    description:
+      'Jeden Morgen die Themen des Tages, abgeglichen zwischen den armenischen Redaktionen, mit Links zu ihren Artikeln.',
+    latest: 'Neueste Ausgabe',
+    archive: 'Archiv',
+    read: 'Ganze Ausgabe lesen →',
+    sources: 'Quellen',
+    previous: '← Vortag',
+    next: 'Folgetag →',
+    disclaimer: 'Automatische Zusammenfassung der Schlagzeilen des Tages – lesen Sie die Originalartikel.',
+    empty: 'Die erste Ausgabe erscheint morgen früh.',
+    home: 'Startseite',
+    radio: 'Live',
+    agenda: 'Agenda',
+  },
+  it: {
+    title: 'Il giorno in breve',
+    nav: 'In breve',
+    brand: 'Arménie Info',
+    description:
+      'Ogni mattina i temi del giorno, messi a confronto tra le redazioni armene, con i link ai loro articoli.',
+    latest: 'Ultima edizione',
+    archive: 'Archivio',
+    read: 'Leggi l’edizione completa →',
+    sources: 'Fonti',
+    previous: '← Giorno prima',
+    next: 'Giorno dopo →',
+    disclaimer: 'Sintesi automatica dei titoli del giorno: leggete gli articoli originali.',
+    empty: 'La prima edizione uscirà domani mattina.',
+    home: 'Home',
+    radio: 'In diretta',
+    agenda: 'Eventi',
+  },
   en: {
     title: 'The daily brief',
     nav: 'Brief',

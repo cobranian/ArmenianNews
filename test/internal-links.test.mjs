@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { ALL_LANGS } from '../sites.config.js'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 // Maillage interne (audit SEO du 21 août 2026). L'accueil portait 264 liens
 // sortants pour DEUX liens vers ses propres pages piliers, la nav n'était faite
@@ -43,7 +43,7 @@ test('les trois chaînes du maillage existent dans les quatre langues', () => {
   // afficherait « Pages du site » sur la page russe.
   for (const key of ['footer.pages', 'footer.home', 'viewpage.also']) {
     const n = (i18n.match(new RegExp(`'${key.replace('.', '\\.')}': '`, 'g')) || []).length
-    assert.equal(n, ALL_LANGS.length, `${key} : ${n} déclaration(s), attendu ${ALL_LANGS.length}`)
+    assert.equal(n, BLOC_LANGS.length, `${key} : ${n} déclaration(s), attendu ${BLOC_LANGS.length}`)
   }
 })
 

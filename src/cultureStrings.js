@@ -24,6 +24,53 @@ export const CULTURE_STRINGS = {
     next: 'Article suivant',
     read: 'Lire l’article',
     carousel: 'Articles Culture',
+    // Mention portée sous le titre d'une traduction que personne ne relit
+    // (de, it). Vide ailleurs : la page ne l'affiche pas.
+    translatedFrom: '',
+  },
+  // de et it : « en plusieurs langues » plutôt qu'un nombre, qui ne serait vrai
+  // qu'une fois toutes les traductions publiées.
+  de: {
+    nav: 'Kultur',
+    title: 'Armenische Kultur',
+    description:
+      'Armenische Geschichte, Musik, Tanz und Kulturerbe: fundierte Artikel mit Quellenangaben, in mehreren Sprachen.',
+    sources: 'Quellen',
+    sourcesNote: 'Texte aus Wikipedia (CC BY-SA 4.0) und Wikisource (CC BY-SA 3.0), als Quellen verwendet.',
+    aiNote:
+      'Mit einem KI-Werkzeug aus den genannten Quellen verfasst und von der Redaktion geprüft; automatisch aus dem geprüften französischen Text übersetzt.',
+    image: 'Bild',
+    event: 'Nicht verpassen',
+    empty: 'Der erste Artikel erscheint in Kürze.',
+    teaser: 'Lesenswert',
+    all: 'Alle Artikel',
+    readAlso: 'Ebenfalls lesenswert',
+    prev: 'Vorheriger Artikel',
+    next: 'Nächster Artikel',
+    read: 'Artikel lesen',
+    carousel: 'Kulturartikel',
+    translatedFrom: 'Aus dem Französischen übersetzt',
+  },
+  it: {
+    nav: 'Cultura',
+    title: 'Cultura armena',
+    description:
+      'Storia, musica, danza e patrimonio armeni: articoli di approfondimento, con le loro fonti, in più lingue.',
+    sources: 'Fonti',
+    sourcesNote: 'Testi di Wikipedia (CC BY-SA 4.0) e di Wikisource (CC BY-SA 3.0), utilizzati come fonti.',
+    aiNote:
+      'Scritto con uno strumento di IA a partire dalle fonti citate e verificato dalla redazione; tradotto automaticamente dal testo francese verificato.',
+    image: 'Immagine',
+    event: 'Da non perdere',
+    empty: 'Il primo articolo uscirà a breve.',
+    teaser: 'Da leggere',
+    all: 'Tutti gli articoli',
+    readAlso: 'Leggi anche',
+    prev: 'Articolo precedente',
+    next: 'Articolo successivo',
+    read: 'Leggi l’articolo',
+    carousel: 'Articoli di cultura',
+    translatedFrom: 'Tradotto dal francese',
   },
   en: {
     nav: 'Culture',
@@ -44,6 +91,7 @@ export const CULTURE_STRINGS = {
     next: 'Next article',
     read: 'Read the article',
     carousel: 'Culture articles',
+    translatedFrom: '',
   },
   hy: {
     nav: 'Մշակույթ',
@@ -64,6 +112,7 @@ export const CULTURE_STRINGS = {
     next: 'Հաջորդ հոդվածը',
     read: 'Կարդալ հոդվածը',
     carousel: 'Մշակույթի հոդվածներ',
+    translatedFrom: '',
   },
   ru: {
     nav: 'Культура',
@@ -84,5 +133,6 @@ export const CULTURE_STRINGS = {
     next: 'Следующая статья',
     read: 'Читать статью',
     carousel: 'Статьи о культуре',
+    translatedFrom: '',
   },
 }

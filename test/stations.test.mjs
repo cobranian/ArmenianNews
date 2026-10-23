@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { STATION_FACTS, langueKey, inLanguage } from '../src/stations.js'
-import { ALL_LANGS } from '../sites.config.js'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 // Node ne sait pas importer du JSX : on lit STATIONS comme du texte, exactement
 // comme test/source-count.test.mjs lit TAB_ORDER.
@@ -49,8 +49,8 @@ test('chaque genre de station a son libelle dans les quatre langues', () => {
   for (const g of genres) {
     assert.equal(
       declarations(`radio.genre.${g}`),
-      ALL_LANGS.length,
-      `radio.genre.${g} manque dans un des quatre blocs STRINGS de src/i18n.jsx ` +
+      BLOC_LANGS.length,
+      `radio.genre.${g} manque dans un des blocs STRINGS de src/i18n.jsx ` +
         `— la page /radio/ afficherait la cle elle-meme`,
     )
   }
@@ -66,8 +66,8 @@ test('chaque ville de station a son libelle dans les quatre langues', () => {
     assert.match(v, /^[a-z]+$/, `${v} : une ville doit etre une cle ascii minuscule`)
     assert.equal(
       declarations(`radio.city.${v}`),
-      ALL_LANGS.length,
-      `radio.city.${v} manque dans un des quatre blocs STRINGS de src/i18n.jsx`,
+      BLOC_LANGS.length,
+      `radio.city.${v} manque dans un des blocs STRINGS de src/i18n.jsx`,
     )
   }
 })
@@ -78,8 +78,8 @@ test('chaque langue d antenne a son libelle dans les quatre langues', () => {
   for (const l of langues) {
     assert.equal(
       declarations(`radio.page.lang.${l}`),
-      ALL_LANGS.length,
-      `radio.page.lang.${l} manque dans un des quatre blocs STRINGS de src/i18n.jsx ` +
+      BLOC_LANGS.length,
+      `radio.page.lang.${l} manque dans un des blocs STRINGS de src/i18n.jsx ` +
         `— la page /radio/ afficherait la cle elle-meme`,
     )
   }
