@@ -112,7 +112,7 @@ test('writeBriefPages : chaque vitrine ne bâtit que ses langues', async () => {
   await assert.rejects(readFile(path.join(dist, 'breve', 'index.html')))
 })
 
-test('sitemap : index des quatre langues, pages datées existantes seulement', () => {
+test('sitemap : index de chaque langue, pages datées existantes seulement', () => {
   const briefs = { fr: [b('fr', '2026-10-16')], en: [], hy: [b('hy', '2026-10-16')], ru: [] }
   const org = sitemapFor('org', '2026-10-16T05:00:00Z', briefs)
   assert.ok(org.includes(`<loc>${briefUrl('en')}</loc>`))
@@ -122,6 +122,7 @@ test('sitemap : index des quatre langues, pages datées existantes seulement', (
   assert.ok(org.includes('<lastmod>2026-10-16T03:23:00Z</lastmod>'))
   // Sans brèves : les entrées d'index existent quand même.
   assert.ok(sitemapFor('ch', '2026-10-16T05:00:00Z').includes(`<loc>${briefUrl('fr')}</loc>`))
+  for (const l of ['de', 'it']) assert.ok(sitemapFor('ch', '2026-10-16T05:00:00Z').includes(`<loc>${briefUrl(l)}</loc>`), l)
 })
 
 // --- Validation profonde : une brève corrompue à la main ne casse jamais le build.

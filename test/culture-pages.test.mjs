@@ -160,8 +160,15 @@ test('writeCulturePages : langues de la vitrine seulement, images copiées', asy
   await assert.rejects(access(path.join(dist, 'ru/culture/duduk/index.html')))
   await assert.rejects(access(path.join(dist, 'culture/duduk/image.jpg')))
   const ch = await mkdtemp(path.join(tmpdir(), 'dist-'))
-  assert.equal(await writeCulturePages(SITES.ch, ch, list, CSS, dir, NOW), 3)
+  // .ch : index fr/de/it (3) + komitas fr + duduk fr. de/it n'ont pas
+  // (encore) d'article : leur index existe, vide, donc noindex.
+  assert.equal(await writeCulturePages(SITES.ch, ch, list, CSS, dir, NOW), 5)
   assert.match(await readFile(path.join(ch, 'culture/index.html'), 'utf-8'), /<html lang="fr">/)
+  const de = await readFile(path.join(ch, 'de/kultur/index.html'), 'utf-8')
+  assert.match(de, /<html lang="de">/)
+  assert.ok(de.includes('noindex, follow'))
+  await access(path.join(ch, 'it/cultura/index.html'))
+  await assert.rejects(access(path.join(ch, 'de/kultur/komitas/index.html')))
 })
 
 test('événement invalide : ignoré sans exception (date numérique, URL non https, sans titre)', async () => {
@@ -177,7 +184,7 @@ test('événement invalide : ignoré sans exception (date numérique, URL non ht
     await writeArticle(dir, 'komitas', { m: meta('komitas', { agendaEvent: bad }) })
     const list = await loadCulture(dir, silent)
     const dist = await mkdtemp(path.join(tmpdir(), 'dist-'))
-    assert.equal(await writeCulturePages(SITES.ch, dist, list, CSS, dir, NOW), 2, JSON.stringify(bad))
+    assert.equal(await writeCulturePages(SITES.ch, dist, list, CSS, dir, NOW), 4, JSON.stringify(bad))
     const html = await readFile(path.join(dist, 'culture/komitas/index.html'), 'utf-8')
     assert.ok(!html.includes('culture__event'), JSON.stringify(bad))
     assert.ok(!html.includes('javascript:'))

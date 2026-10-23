@@ -19,14 +19,21 @@ const i18n = lire('../src/i18n.jsx')
 
 test('about est une vue à part entière : slugs latins, traduits en français', () => {
   assert.ok(ALL_VIEWS.includes('about'))
-  assert.deepEqual(VIEWS.about.slugs, { fr: 'a-propos/', en: 'about/', hy: 'about/', ru: 'about/' })
+  assert.deepEqual(VIEWS.about.slugs, {
+    fr: 'a-propos/',
+    de: 'ueber-uns/',
+    it: 'chi-siamo/',
+    en: 'about/',
+    hy: 'about/',
+    ru: 'about/',
+  })
   assert.equal(urlFor('fr', 'about'), 'https://armenieinfo.ch/a-propos/')
   assert.equal(urlFor('hy', 'about'), 'https://armenianews.org/hy/about/')
   assert.equal(viewFromPath('ch', '/a-propos/'), 'about')
   assert.equal(viewFromPath('org', '/ru/about'), 'about')
 })
 
-test('VIEW_SEO.about existe dans les quatre langues, sans nombre écrit en toutes lettres', () => {
+test('VIEW_SEO.about existe dans chaque langue, sans nombre écrit en toutes lettres', () => {
   for (const l of BLOC_LANGS) {
     assert.ok(VIEW_SEO.about[l]?.title && VIEW_SEO.about[l]?.description, `about ${l}`)
     assert.ok(VIEW_SEO.about[l].description.length <= 160, `${l} : description trop longue`)
@@ -55,7 +62,7 @@ test('la garde de l’agenda classe about comme une vue sans Event', () => {
   assert.ok(!ok(agendaGuardChecks('about', '{"@type":"Event"}', { agendaAttendu: true, agendaAVenir: true })))
 })
 
-test('les chaînes de la page existent dans les quatre langues', () => {
+test('les chaînes de la page existent dans chaque langue', () => {
   const keys = [
     'about.h1', 'about.intro', 'about.what.title', 'about.what.body', 'about.what.news',
     'about.what.radio', 'about.what.agenda', 'about.what.social', 'about.what.sites',
@@ -71,7 +78,7 @@ test('les chaînes de la page existent dans les quatre langues', () => {
   assert.equal((i18n.match(/'about\.what\.radio': '\{n\}/g) || []).length, BLOC_LANGS.length)
 })
 
-test('l’éditeur est nommé une fois (sites.config.js) et cité dans les quatre intros', () => {
+test('l’éditeur est nommé une fois (sites.config.js) et cité dans chaque intro', () => {
   for (const site of Object.values(SITES)) assert.equal(site.editor, 'Nano of Sassoun')
   // {editor} dans chaque intro, remplacé par AboutPage ; un bloc qui écrirait
   // le nom en dur divergerait le jour où il change.

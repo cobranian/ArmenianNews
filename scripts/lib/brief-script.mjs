@@ -1,6 +1,6 @@
 // Le garde-fou d'ÉCRITURE de la brève : un sujet arménien ou russe ne publie
 // pas de mots en lettres latines sortis de nulle part, et l'inverse en
-// français et en anglais.
+// français, allemand, italien et anglais.
 //
 // Mesuré le 17 octobre 2026 : les modèles :free intercalaient dans la brève
 // arménienne « remporter », « capitaine », « successoffice », un mot à moitié
@@ -15,7 +15,7 @@
 // alphabets n'est jamais permis : aucune langue n'en écrit.
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
 
-const EXPECTED = { fr: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
+const EXPECTED = { fr: 'Latin', de: 'Latin', it: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
 const SCRIPTS = {
   Latin: /\p{Script=Latin}/u,
   Armenian: /\p{Script=Armenian}/u,

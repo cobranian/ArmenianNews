@@ -130,6 +130,10 @@ export async function generateBriefs({
   const { date, hour } = yerevanClock(now)
   const written = []
   for (const lang of ALL_LANGS) {
+    // Une langue sans consigne de rédaction (LANG_NAME) n'est pas encore
+    // rédigée : sans ce garde, le modèle recevrait « Écris en undefined », et
+    // une brève publiée ne se réécrit jamais.
+    if (!LANG_NAME[lang]) continue
     const file = path.join(dir, lang, `${date}.json`)
     try {
       const has = await exists(file)

@@ -10,10 +10,22 @@ const culture = [{
     en: { title: 'The duduk', description: 'Desc en' },
   },
 }]
-const briefs = { fr: [{ date: '2026-10-17', intro: 'Intro fr' }], en: [], hy: [], ru: [] }
+const briefs = { fr: [{ date: '2026-10-17', intro: 'Intro fr' }], de: [], it: [], en: [], hy: [], ru: [] }
 const links = (txt) => [...txt.matchAll(/\]\((https:\/\/[^)]+)\)/g)].map((m) => m[1])
 
-test('llms.txt du .ch : marque, vues, brève datée, articles — en français seulement', () => {
+test('llms.txt du .ch nomme /de/ et /it/, leurs vues et leurs sections', () => {
+  const t = llmsFor('ch', { briefs, culture })
+  for (const l of ['de', 'it']) {
+    for (const v of ['home', 'radio', 'agenda', 'about']) assert.ok(links(t).includes(urlFor(l, v)), `${l}/${v}`)
+    assert.ok(links(t).includes(briefUrl(l)), `brève ${l}`)
+    assert.ok(links(t).includes(cultureUrl(l)), `culture ${l}`)
+    // L'article n'existe ni en de ni en it : il n'est pas listé sous ces langues.
+    assert.ok(!links(t).includes(cultureUrl(l, 'duduk')), `article ${l}`)
+  }
+  assert.ok(t.includes('/de/') && t.includes('/it/'))
+})
+
+test('llms.txt du .ch : marque, vues, brève datée, articles — sans l’anglais', () => {
   const t = llmsFor('ch', { briefs, culture })
   assert.ok(t.startsWith('# Arménie Info\n'))
   for (const u of [urlFor('fr'), urlFor('fr', 'radio'), urlFor('fr', 'agenda'), urlFor('fr', 'about'),

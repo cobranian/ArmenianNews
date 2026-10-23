@@ -9,12 +9,14 @@ test('cultureUrl : index et article, slash final, par vitrine', () => {
   assert.equal(cultureUrl('hy', 'komitas'), 'https://armenianews.org/hy/culture/komitas/')
   assert.equal(culturePath('ru', 'komitas'), '/ru/culture/komitas/')
   assert.equal(culturePath('en'), '/culture/')
+  assert.equal(cultureUrl('de', 'komitas'), 'https://armenieinfo.ch/de/kultur/komitas/')
+  assert.equal(cultureUrl('it'), 'https://armenieinfo.ch/it/cultura/')
   for (const l of ALL_LANGS) assert.ok(cultureUrl(l, 'a-b1').endsWith('/'))
 })
 
 test('cultureUrl refuse un slug ou une langue invalides', () => {
   for (const bad of ['Komitas', 'a/b', '../x', 'a--b', '-a', 'é']) assert.throws(() => cultureUrl('fr', bad), bad)
-  assert.throws(() => cultureUrl('de'))
+  assert.throws(() => cultureUrl('xx'))
 })
 
 test('cultureImagePath', () => {
@@ -24,11 +26,11 @@ test('cultureImagePath', () => {
   assert.throws(() => cultureImagePath('../x', 'jpg'))
 })
 
-test('CULTURE_SLUGS couvre les quatre langues', () => {
+test('CULTURE_SLUGS couvre toutes les langues', () => {
   assert.deepEqual(Object.keys(CULTURE_SLUGS).sort(), [...ALL_LANGS].sort())
 })
 
-test('CULTURE_STRINGS : mêmes clés, non vides, dans les quatre langues', () => {
+test('CULTURE_STRINGS : mêmes clés, non vides, dans chaque langue', () => {
   const keys = Object.keys(CULTURE_STRINGS.fr).sort()
   for (const l of ALL_LANGS) {
     assert.deepEqual(Object.keys(CULTURE_STRINGS[l]).sort(), keys, l)

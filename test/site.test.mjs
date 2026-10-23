@@ -15,10 +15,10 @@ test('orderedLangs met la langue du domaine en tête', () => {
 
 test("orderedLangs préserve l'ordre relatif des autres langues", () => {
   // Le comparateur renvoie 0 pour toute paire sans la langue de tête : les
-  // trois autres ne gardent leur ordre que grâce à la stabilité de sort.
+  // autres ne gardent leur ordre que grâce à la stabilité de sort.
   assert.deepEqual(
     orderedLangs(LANGS).map((l) => l.code),
-    ['fr', 'en', 'hy', 'ru'],
+    ['fr', 'de', 'it', 'en', 'hy', 'ru'],
   )
 })
 
@@ -26,7 +26,7 @@ test("orderedLangs ne trie pas le tableau reçu sur place", () => {
   // Entrée volontairement dans le DÉSORDRE : fr en dernier, donc le tri doit
   // réellement permuter. Avec LANGS tel quel (fr déjà en tête) le tri ne fait
   // rien, et le test passerait même sans la copie — il ne prouverait rien.
-  const entree = [...LANGS].reverse() // ru, hy, en, fr
+  const entree = [...LANGS].reverse() // ru, hy, en, it, de, fr
   const avant = entree.map((l) => l.code)
   const sortie = orderedLangs(entree)
   assert.equal(sortie[0].code, 'fr', 'la sortie doit bien être triée')

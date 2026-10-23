@@ -32,6 +32,16 @@ const STRINGS = {
     lead: 'Cette adresse ne mène nulle part : la page n’existe pas, ou plus.',
     home: 'Accueil',
   },
+  de: {
+    title: 'Seite nicht gefunden',
+    lead: 'Diese Adresse führt nirgendwohin: Die Seite existiert nicht oder nicht mehr.',
+    home: 'Startseite',
+  },
+  it: {
+    title: 'Pagina non trovata',
+    lead: 'Questo indirizzo non porta da nessuna parte: la pagina non esiste, o non esiste più.',
+    home: 'Home',
+  },
   en: {
     title: 'Page not found',
     lead: 'This address leads nowhere: the page does not exist, or no longer does.',

@@ -1,9 +1,9 @@
 // Génère le <head> propre à un couple (site, langue).
 //
 // Appelé à deux moments : par le plugin Vite pendant `vite build` (page par
-// défaut de chaque site), et par scripts/build-sites.mjs pour dériver /hy/ et
-// /ru/ à partir du HTML déjà bâti. Un seul générateur pour les deux, sinon les
-// quatre pages divergent — et une divergence dans les hreflang les fait
+// défaut de chaque site), et par scripts/build-sites.mjs pour dériver les
+// autres pages à partir du HTML déjà bâti. Un seul générateur pour les deux,
+// sinon les pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
 import { readFileSync } from 'node:fs'
 import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath } from '../../sites.config.js'
@@ -33,6 +33,7 @@ const FONTS = JSON.parse(
 // sous ru mais pas sous hy. Une entrée absente du manifeste fait ÉCHOUER le
 // build : un preload vers un fichier inexistant serait un 404 à chaque visite.
 const PRELOAD = {
+  // de et it composent dans les mêmes familles latines que fr (voir plus bas).
   fr: [
     ['Fraunces', 'italic', 'latin'],
     ['Fraunces', 'normal', 'latin'],
@@ -54,6 +55,8 @@ const PRELOAD = {
     ['Golos Text', 'normal', 'cyrillic'],
   ],
 }
+PRELOAD.de = PRELOAD.fr
+PRELOAD.it = PRELOAD.fr
 
 export function fontPreloads(lang) {
   const wanted = PRELOAD[lang]
@@ -171,7 +174,7 @@ function composeHead({ site, lang, url, title, description, keywords, alternates
     `<title>${attr(title)}</title>`,
     `<link rel="canonical" href="${url}" />`,
     '',
-    '<!-- Versions linguistiques. Réciproques et identiques sur les quatre',
+    '<!-- Versions linguistiques. Réciproques et identiques sur toutes les',
     '     pages : une page absente de son propre bloc fait ignorer tout le',
     '     bloc par Google. Générées depuis sites.config.js — ne pas éditer. -->',
     ...alternates.map(([h, href]) => `<link rel="alternate" hreflang="${h}" href="${href}" />`),

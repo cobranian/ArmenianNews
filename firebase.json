@@ -12,6 +12,16 @@
           "regex": "^/events/?$",
           "destination": "/agenda/",
           "type": 301
+        },
+        {
+          "regex": "^/de/events/?$",
+          "destination": "/de/veranstaltungen/",
+          "type": 301
+        },
+        {
+          "regex": "^/it/events/?$",
+          "destination": "/it/eventi/",
+          "type": 301
         }
       ],
       "headers": [
@@ -86,6 +96,11 @@
         {
           "regex": "^/fr/?$",
           "destination": "https://armenieinfo.ch/",
+          "type": 301
+        },
+        {
+          "regex": "^/(?P<lang>de|it)(?:/(?P<rest>.*))?$",
+          "destination": "https://armenieinfo.ch/:lang/:rest",
           "type": 301
         }
       ],

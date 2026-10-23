@@ -90,7 +90,7 @@ export function Nav({ view = 'home' }) {
             {theme === 'dark' ? '☀' : '☾'}
           </button>
           {/* Chaque langue a son URL — le sélecteur navigue, il ne bascule pas
-              un état. Ce sont donc quatre liens en dur dans le HTML de chaque
+              un état. Ce sont donc des liens en dur (un par langue) dans le HTML de chaque
               page : le maillage réciproque entre les deux domaines, que Google
               attend en plus des hreflang. L'ordre vient du domaine (voir
               orderedLangs), pas de la langue affichée : la barre reste stable
@@ -100,7 +100,7 @@ export function Nav({ view = 'home' }) {
               // `lang` et `hrefLang` ne disent pas la même chose et les deux
               // sont justes : hrefLang qualifie la page VISÉE, lang l'écriture
               // du libellé lui-même. « ՀԱՅ » est de l'arménien et « РУ » du
-              // russe sur les quatre pages, y compris la française. C'est ce
+              // russe sur toutes les pages, y compris la française. C'est ce
               // qui permet à global.css de rattraper leur taille optique, et
               // ce qui fait prononcer ces deux libellés correctement par un
               // lecteur d'écran au lieu de les épeler en français.
@@ -109,10 +109,10 @@ export function Nav({ view = 'home' }) {
                 // La MÊME vue dans l'autre langue (/radio/ → /hy/radio/,
                 // /agenda/ → /events/), pas son accueil — comme le font déjà
                 // les pages statiques (brève, Culture : langHrefsFor). Toutes
-                // les vues existent dans les quatre langues, donc jamais de 404.
+                // les vues existent dans chaque langue, donc jamais de 404.
                 href={urlFor(l.code, view)}
                 // L'ancre (#agenda, #reseaux…) suit aussi : les id de section
-                // sont les mêmes dans les quatre langues. Ajoutée au clic et
+                // sont les mêmes dans toutes les langues. Ajoutée au clic et
                 // non au rendu, pour que le href cuit par le prérendu reste
                 // identique à celui de l'hydratation. On part du href COURANT,
                 // pas de urlFor : gtag l'a déjà décoré au mousedown (?_gl=…,

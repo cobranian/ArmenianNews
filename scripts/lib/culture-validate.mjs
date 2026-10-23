@@ -10,7 +10,12 @@ import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
 import { parseFrontMatter, bodyHash } from './culture-markdown.mjs'
 import { isFreeLicense } from './culture-license.mjs'
 
-export const TRANSLATED = ALL_LANGS.filter((l) => l !== 'fr')
+// de et it sont FACULTATIVES : leur absence ne doit ni faire échouer
+// culture-check ni retenir une PR fr/en/hy/ru. Tant qu'elles n'ont pas leur
+// propre traitement (traduction facultative, avec des `notes`), elles sont
+// simplement hors de TRANSLATED : un article ne paraît pas en de/it.
+export const OPTIONAL = ['de', 'it']
+export const TRANSLATED = ALL_LANGS.filter((l) => l !== 'fr' && !OPTIONAL.includes(l))
 const DATE = /^\d{4}-\d{2}-\d{2}$/
 const nonEmpty = (v) => typeof v === 'string' && v.trim() !== ''
 

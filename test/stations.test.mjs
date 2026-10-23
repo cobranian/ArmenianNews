@@ -43,7 +43,7 @@ function declarations(cle) {
   return (i18n.match(new RegExp(`'${cle.replace(/\./g, '\\.')}':`, 'g')) || []).length
 }
 
-test('chaque genre de station a son libelle dans les quatre langues', () => {
+test('chaque genre de station a son libelle dans chaque langue', () => {
   const genres = [...new Set(Object.values(STATION_FACTS).map((f) => f.genre).filter(Boolean))]
   assert.ok(genres.length, 'aucun genre a verifier — le test ne garde plus rien')
   for (const g of genres) {
@@ -56,7 +56,7 @@ test('chaque genre de station a son libelle dans les quatre langues', () => {
   }
 })
 
-test('chaque ville de station a son libelle dans les quatre langues', () => {
+test('chaque ville de station a son libelle dans chaque langue', () => {
   // Meme regle que les genres : `city` est une cle depuis l'audit du 21 aout
   // 2026 — avant, « Երևան » etait ecrit en dur et s'affichait tel quel sur la
   // page francaise (et partait dans RadioStation.areaServed).
@@ -72,7 +72,7 @@ test('chaque ville de station a son libelle dans les quatre langues', () => {
   }
 })
 
-test('chaque langue d antenne a son libelle dans les quatre langues', () => {
+test('chaque langue d antenne a son libelle dans chaque langue', () => {
   const langues = [...new Set(Object.values(STATION_FACTS).filter((f) => f.langue).map(langueKey))]
   assert.ok(langues.length, 'aucune langue d antenne a verifier')
   for (const l of langues) {

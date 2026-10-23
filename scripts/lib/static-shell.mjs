@@ -10,7 +10,7 @@ import { esc } from './culture-markdown.mjs'
 export { esc }
 
 // Le sélecteur de langue, le même que celui de l'accueil (Nav.jsx, classe
-// .lang) : quatre liens, la langue du domaine en tête. `langHrefs` donne, par
+// .lang) : un lien par langue, la langue du domaine en tête. `langHrefs` donne, par
 // langue, la page VISÉE — la même page dans l'autre langue si elle existe,
 // sinon l'index de la section : jamais un lien vers un 404.
 function langSwitch(siteId, lang, langHrefs) {

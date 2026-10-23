@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { validateArticle, chosenImage, factsChecked } from '../scripts/lib/culture-validate.mjs'
+import { validateArticle, chosenImage, factsChecked, OPTIONAL, TRANSLATED } from '../scripts/lib/culture-validate.mjs'
 import { serializeFrontMatter, bodyHash } from '../scripts/lib/culture-markdown.mjs'
 import { meta, texts, candidate } from './helpers/culture-fixture.mjs'
 
@@ -11,6 +11,16 @@ test('article complet : aucune erreur, quatre langues', () => {
   assert.deepEqual(r.errors, [])
   assert.deepEqual(Object.keys(r.langs), ['fr', 'en', 'hy', 'ru'])
   assert.equal(r.langs.fr.date, '2026-10-19')
+})
+
+// de/it sont facultatives : un article sans de.md ni it.md passe culture-check
+// (aucune erreur) et ne paraît simplement pas dans ces langues.
+test('de et it facultatives : leur absence n’est pas une erreur', () => {
+  assert.deepEqual(OPTIONAL, ['de', 'it'])
+  assert.deepEqual(TRANSLATED, ['en', 'hy', 'ru'])
+  const r = validateArticle(ok())
+  assert.deepEqual(r.errors, [])
+  assert.ok(!('de' in r.langs) && !('it' in r.langs))
 })
 
 test('traduction absente : erreur, les autres langues restent', () => {

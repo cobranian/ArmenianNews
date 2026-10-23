@@ -83,7 +83,14 @@ export const SITES = {
     // les pages `lien.html` — un fichier partagé ne peut pas porter une valeur
     // propre à une vitrine.
     gaMeasurementId: 'G-EB3W5XXSMW',
-    pages: [{ lang: 'fr', path: '/' }],
+    // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
+    // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
+    // lisent le fil français (CONTENT_LANG, src/newsLangs.js).
+    pages: [
+      { lang: 'fr', path: '/' },
+      { lang: 'de', path: '/de/' },
+      { lang: 'it', path: '/it/' },
+    ],
   },
   org: {
     id: 'org',
@@ -160,7 +167,7 @@ export const SITES = {
 // Ordre canonique des langues. Doit correspondre aux codes de LANGS.
 // L'invariant est vérifié par test/sites-config.test.mjs et par une assertion
 // au build (scripts/build-sites.mjs).
-export const ALL_LANGS = ['fr', 'en', 'hy', 'ru']
+export const ALL_LANGS = ['fr', 'de', 'it', 'en', 'hy', 'ru']
 
 // Supported interface languages. Content (articles, posts) stays in its
 // original language; only the chrome is translated. Moved here from
@@ -168,6 +175,8 @@ export const ALL_LANGS = ['fr', 'en', 'hy', 'ru']
 // run outside the browser and need this data as plain JavaScript.
 export const LANGS = [
   { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'de', label: 'DE', name: 'Deutsch' },
+  { code: 'it', label: 'IT', name: 'Italiano' },
   { code: 'en', label: 'EN', name: 'English' },
   { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
   { code: 'ru', label: 'РУ', name: 'Русский' },
@@ -197,7 +206,8 @@ export const X_DEFAULT = LANG_URL.en
 //
 // Mais ils sont TRADUITS là où le mot change la requête : en anglais, « agenda »
 // désigne un ordre du jour ou un mobile, pas une liste d'événements — c'est
-// « events » que les gens tapent. « radio » s'écrit pareil dans les quatre.
+// « events » que les gens tapent. « radio » s'écrit pareil dans les six.
+// Sans accent : « über » s'écrit « ueber » (un ü partirait en %C3%BC).
 //
 // LE SLUG PORTE SON SLASH FINAL, et ce n'est pas cosmétique. Une vue est servie
 // par un dossier (dist/ch/radio/index.html), exactement comme /hy/ et /ru/ ;
@@ -212,17 +222,21 @@ export const X_DEFAULT = LANG_URL.en
 // Rien ne l'aurait signalé : `npm run check` compare des chaînes, pas des codes
 // HTTP, et `vite preview` sert les deux formes en 200.
 export const VIEWS = {
-  home: { slugs: { fr: '', en: '', hy: '', ru: '' } },
-  radio: { slugs: { fr: 'radio/', en: 'radio/', hy: 'radio/', ru: 'radio/' } },
+  home: { slugs: { fr: '', de: '', it: '', en: '', hy: '', ru: '' } },
+  radio: { slugs: { fr: 'radio/', de: 'radio/', it: 'radio/', en: 'radio/', hy: 'radio/', ru: 'radio/' } },
   // « agenda » en anglais désigne un ordre du jour ou un mobile, pas une liste
-  // d'événements : le mot cherché est « events ». C'est la seule vue dont le
-  // slug change d'une langue à l'autre, et c'est la raison d'être de la table.
-  agenda: { slugs: { fr: 'agenda/', en: 'events/', hy: 'events/', ru: 'events/' } },
+  // d'événements : le mot cherché est « events ». Même raison en de/it
+  // (« Agenda » y est un carnet) : veranstaltungen, eventi.
+  agenda: {
+    slugs: { fr: 'agenda/', de: 'veranstaltungen/', it: 'eventi/', en: 'events/', hy: 'events/', ru: 'events/' },
+  },
   // « À propos » — qui édite, d'où, avec quelles sources et quelles règles.
   // Ajoutée après l'audit SEO du 21 août 2026 : un agrégateur que personne ne
   // signe se lit comme une ferme de liens. Même règle de slug que `events` :
   // latin partout, traduit là où le mot change (a-propos / about).
-  about: { slugs: { fr: 'a-propos/', en: 'about/', hy: 'about/', ru: 'about/' } },
+  about: {
+    slugs: { fr: 'a-propos/', de: 'ueber-uns/', it: 'chi-siamo/', en: 'about/', hy: 'about/', ru: 'about/' },
+  },
 }
 
 // Un slug sans ses slashes de bord. Sert à COMPARER (viewFromPath) là où
@@ -255,7 +269,15 @@ export function pathFor(lang, view = 'home') {
 // règles que VIEWS : slug latin, traduit là où le mot change (« brève » n'est
 // pas un mot anglais), et SLASH FINAL, pour la même raison (Firebase redirige
 // en 301 toute URL de répertoire vers sa forme à slash final).
-export const BRIEF_SLUGS = { fr: 'breve/', en: 'brief/', hy: 'brief/', ru: 'brief/' }
+// de/it : le slug est le libellé (« In Kürze », « In breve »), sans accent.
+export const BRIEF_SLUGS = {
+  fr: 'breve/',
+  de: 'in-kuerze/',
+  it: 'in-breve/',
+  en: 'brief/',
+  hy: 'brief/',
+  ru: 'brief/',
+}
 
 const BRIEF_DATE = /^\d{4}-\d{2}-\d{2}$/
 
@@ -271,11 +293,18 @@ export function briefPath(lang, date = null) {
 }
 
 // Les articles « Culture » (scripts/lib/culture-pages.mjs). Pas une vue, comme
-// la brève : des HTML statiques écrits au build. Même slug latin dans les
-// quatre langues (« culture » ne change pas la requête), et SLASH FINAL, pour
-// la même raison que VIEWS et BRIEF_SLUGS. Le slug d'article est commun aux
-// quatre langues : les hreflang d'un article ne diffèrent que par le préfixe.
-export const CULTURE_SLUGS = { fr: 'culture/', en: 'culture/', hy: 'culture/', ru: 'culture/' }
+// la brève : des HTML statiques écrits au build. Slug latin, traduit là où
+// le mot change (kultur, cultura), et SLASH FINAL, pour la même raison que
+// VIEWS et BRIEF_SLUGS. Le slug d'article est commun à toutes les langues :
+// les hreflang d'un article ne diffèrent que par le préfixe.
+export const CULTURE_SLUGS = {
+  fr: 'culture/',
+  de: 'kultur/',
+  it: 'cultura/',
+  en: 'culture/',
+  hy: 'culture/',
+  ru: 'culture/',
+}
 export const CULTURE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 export function cultureUrl(lang, slug = null) {
@@ -290,7 +319,7 @@ export function culturePath(lang, slug = null) {
 }
 
 // L'image d'un article vit UNE fois par vitrine, sous la section de sa langue
-// de tête (/culture/<slug>/), et sert aussi /hy/ et /ru/.
+// de tête (/culture/<slug>/), et sert aussi les autres langues du domaine.
 export function cultureImagePath(slug, ext) {
   if (!CULTURE_SLUG.test(slug)) throw new Error(`slug d'article invalide : ${slug}`)
   if (ext !== 'webp' && ext !== 'jpg') throw new Error(`extension d'image invalide : ${ext}`)
@@ -337,7 +366,14 @@ export function primaryLang(siteId) {
 // Le nom du groupe de boutons de langue, lu par les lecteurs d'écran — dans
 // la langue de la PAGE. Une table pour les deux sélecteurs (Nav.jsx et les
 // pages statiques), contrôlée par check-build sur chaque page statique.
-export const LANG_SWITCH_LABEL = { fr: 'Langue', en: 'Language', hy: 'Լեզու', ru: 'Язык' }
+export const LANG_SWITCH_LABEL = {
+  fr: 'Langue',
+  de: 'Sprache',
+  it: 'Lingua',
+  en: 'Language',
+  hy: 'Լեզու',
+  ru: 'Язык',
+}
 
 // La langue du domaine en tête, le reste dans l'ordre reçu. UNE règle pour
 // les deux sélecteurs de langue : celui de l'accueil (src/site.js) et celui

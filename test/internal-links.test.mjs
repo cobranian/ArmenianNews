@@ -38,7 +38,7 @@ test('radio ⇄ agenda : chaque page pilier lie l’autre', () => {
   assert.match(agenda, /VIEW_SEO\.radio\[lang\]\.title/)
 })
 
-test('les trois chaînes du maillage existent dans les quatre langues', () => {
+test('les trois chaînes du maillage existent dans chaque langue', () => {
   // `t()` retombe sur le français en silence : une clé oubliée dans un bloc
   // afficherait « Pages du site » sur la page russe.
   for (const key of ['footer.pages', 'footer.home', 'viewpage.also']) {

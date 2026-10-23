@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { briefLangsByDate, briefAlternates, longDate } from '../scripts/lib/brief-links.mjs'
 import { briefHeadFor, headFor } from '../scripts/lib/site-meta.mjs'
-import { briefUrl } from '../sites.config.js'
+import { briefUrl, ALL_LANGS } from '../sites.config.js'
 
 const HEAD_SNAPSHOT = readFileSync(new URL('./fixtures/head-ch-fr-radio.txt', import.meta.url), 'utf-8')
   .replace(/\r\n/g, '\n')
@@ -26,9 +26,9 @@ test('briefLangsByDate : langues présentes par date, ordre ALL_LANGS', () => {
   assert.deepEqual(m.get('2026-10-15'), ['en', 'hy'])
 })
 
-test('briefAlternates : index = quatre langues + x-default anglais', () => {
+test('briefAlternates : index = toutes les langues + x-default anglais', () => {
   const alt = briefAlternates(null, briefLangsByDate(briefs))
-  assert.deepEqual(alt.map(([h]) => h), ['fr', 'en', 'hy', 'ru', 'x-default'])
+  assert.deepEqual(alt.map(([h]) => h), [...ALL_LANGS, 'x-default'])
   assert.equal(alt.at(-1)[1], briefUrl('en'))
 })
 
@@ -63,10 +63,10 @@ test('briefHeadFor : page datée', () => {
   assert.ok(h.includes('content="Intro hy"'))
 })
 
-test('briefHeadFor : index sans brève — description par défaut, quatre langues', () => {
+test('briefHeadFor : index sans brève — description par défaut, toutes les langues', () => {
   const h = briefHeadFor({ siteId: 'ch', lang: 'fr', byDate: new Map() })
   assert.ok(h.includes(`<link rel="canonical" href="${briefUrl('fr')}" />`))
-  assert.equal((h.match(/hreflang=/g) || []).length, 5)
+  assert.equal((h.match(/hreflang=/g) || []).length, ALL_LANGS.length + 1)
   assert.ok(h.includes('<title>La brève du jour · Arménie Info</title>'))
   assert.ok(!h.includes('NewsArticle'))
 })

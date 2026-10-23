@@ -16,6 +16,6 @@ test('le sélecteur de langue de Nav.jsx vise la même vue', async () => {
 
 // La condition qui rend ce lien sûr : chaque vue existe dans chaque langue.
 // Une vue réservée à certaines langues demanderait un repli, comme langHrefsFor.
-test('chaque vue existe dans les quatre langues', () => {
+test('chaque vue existe dans chaque langue', () => {
   for (const view of ALL_VIEWS) for (const l of ALL_LANGS) assert.ok(urlFor(l, view), `${view}/${l}`)
 })

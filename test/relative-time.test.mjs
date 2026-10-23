@@ -58,7 +58,7 @@ test('chaque langue rend son unité, dans sa propre écriture', () => {
   assert.doesNotMatch(ago(3 * H, 'fr'), /[԰-֏Ѐ-ӿ]/, 'fr doit rester latin')
 })
 
-test('les quatre langues couvrent les quatre unités', () => {
+test('chaque langue couvre les quatre unités', () => {
   for (const lang of ALL_LANGS) {
     for (const ms of [30 * S, 5 * M, 3 * H, 2 * D]) {
       const out = ago(ms, lang)

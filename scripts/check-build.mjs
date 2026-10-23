@@ -19,7 +19,7 @@
 import { access, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
+import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
@@ -82,6 +82,14 @@ function analyticsChecks(site, html) {
 }
 
 import { briefLangsByDate, briefAlternates } from './lib/brief-links.mjs'
+
+// Une entrée de sitemap de brève ou de Culture, quel que soit le slug de sa
+// langue (breve, in-kuerze, kultur…) — dérivé des tables, pas écrit ici.
+const SECTION_LOC = new RegExp(
+  `<loc>[^<]*/(${[...new Set([...Object.values(BRIEF_SLUGS), ...Object.values(CULTURE_SLUGS)])]
+    .map((x) => x.slice(0, -1))
+    .join('|')})/`,
+)
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
@@ -155,10 +163,13 @@ for (const site of Object.values(SITES)) {
         ['un seul og:site_name', count(/og:site_name"/g) === 1],
         ['un seul <title>', count(/<title>/g) === 1],
         [
-          'les 4 hreflang, réciproques ET de la bonne vue',
+          `les ${ALL_LANGS.length} hreflang, réciproques ET de la bonne vue`,
           ALL_LANGS.every((l) => html.includes(`hreflang="${l}" href="${urlFor(l, view)}"`)),
         ],
-        ['5 alternate exactement (4 langues + x-default)', count(/rel="alternate"/g) === 5],
+        [
+          `${ALL_LANGS.length + 1} alternate exactement (${ALL_LANGS.length} langues + x-default)`,
+          count(/rel="alternate"/g) === ALL_LANGS.length + 1,
+        ],
         ['x-default', html.includes('hreflang="x-default"')],
         ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
         ['theme-color préservé, une fois', count(/name="theme-color"/g) === 1],
@@ -218,7 +229,7 @@ for (const site of Object.values(SITES)) {
 }
 
 // Les fichiers SEO sont écrits hors du flux des pages : sans ce contrôle,
-// `npm run check` peut valider quatre pages parfaites alors que les deux
+// `npm run check` peut valider toutes les pages, parfaites, alors que les deux
 // sitemaps manquent. C'est arrivé — voir la revue de Task 8.
 for (const site of Object.values(SITES)) {
   const dir = path.join(root, 'dist', site.id)
@@ -320,7 +331,7 @@ for (const site of Object.values(SITES)) {
         ['noindex', /<meta name="robots" content="noindex/.test(lien)],
         // Les six balises, pas la seule `og:image`. Ces pages sont des HTML
         // complets hors du bundle : `site-meta.mjs` ne les voit pas, donc le
-        // bloc complet qu'il pose sur les douze pages React n'y arrive JAMAIS
+        // bloc complet qu'il pose sur les pages React n'y arrive JAMAIS
         // tout seul. C'est exactement ce qui s'est produit — l'accueil décrivait
         // son image en entier pendant que lien.html n'en annonçait que trois
         // balises, alors que c'est lien.html qu'on partage. Aucun build, aucun
@@ -365,7 +376,7 @@ for (const site of Object.values(SITES)) {
   // compte ici que les entrées de vue.
   const vues = xml
     .split('<url>')
-    .filter((b) => !/<loc>[^<]*\/(breve|brief|culture)\//.test(b))
+    .filter((b) => !SECTION_LOC.test(b))
     .join('<url>')
   const urls = (vues.match(/<url>/g) || []).length
   const dates = (vues.match(/<lastmod>/g) || []).length
@@ -420,7 +431,7 @@ for (const site of Object.values(SITES)) {
 
 // Le sélecteur de langue des pages statiques est le SEUL endroit qui doit
 // citer le domaine voisin (.ch ↔ .org). On le retire avant le contrôle
-// « cite le voisin », et on exige à la place que ses quatre liens soient
+// « cite le voisin », et on exige à la place que ses liens (un par langue) soient
 // exactement ceux attendus — un lien vers une traduction absente serait un 404.
 const LANG_BAR = /<div class="lang" role="group" aria-label="([^"]*)">.*?<\/div>/
 function langBarProblem(html, expected, lang) {

@@ -93,7 +93,7 @@ test('les cartes de liens annoncent le nombre de rédactions de leur langue', ()
 //
 // Ni le lint, ni le build, ni `npm run check` ne lisent ces chaînes. Même
 // mécanique que le contrôle des genres de station (stations.test.mjs).
-test('le bandeau des actualités a sa chaîne, avec {n}, dans les quatre langues', () => {
+test('le bandeau des actualités a sa chaîne, avec {n}, dans chaque langue', () => {
   const src = read('src/i18n.jsx')
   const valeurs = [...src.matchAll(/'news\.sources':\s*'([^']*)'/g)].map((m) => m[1])
   assert.equal(

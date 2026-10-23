@@ -20,7 +20,7 @@ import { cultureLangsBySlug, cultureAlternates } from './culture-links.mjs'
 //
 // Les alternates d'une entrée citent la MÊME VUE dans les autres langues. Des
 // alternates pointant sur les accueils annonceraient que /radio et l'accueil
-// sont la même page en quatre langues — et Google, plutôt que d'arbitrer,
+// sont la même page en plusieurs langues — et Google, plutôt que d'arbitrer,
 // écarterait le bloc.
 function alternates(view) {
   return [

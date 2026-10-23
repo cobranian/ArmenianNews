@@ -18,6 +18,8 @@ import {
   siteOf,
   primaryLang,
   ALL_VIEWS,
+  BRIEF_SLUGS,
+  X_DEFAULT,
   urlFor,
   xDefaultFor,
 } from '../sites.config.js'
@@ -37,7 +39,7 @@ test('le canonical est auto-référent sur chaque page', () => {
   }
 })
 
-test('les hreflang sont réciproques : chaque page cite les quatre, dont elle-même', () => {
+test('les hreflang sont réciproques : chaque page cite toutes les langues, dont elle-même', () => {
   for (const { siteId, lang } of PAGES) {
     const head = headFor({ siteId, lang })
     for (const other of ALL_LANGS) {
@@ -284,14 +286,17 @@ test('replaceMeta refuse un HTML sans sentinelles', () => {
 
 // Les entrées de la brève (sitemap.mjs → briefEntries) ont leurs propres tests
 // (brief-pages.test.mjs) ; ici on ne compte que les entrées de vue.
-const sansBreve = (xml) =>
-  xml.split('<url>').filter((b) => !/<loc>[^<]*\/(breve|brief)\//.test(b)).join('<url>')
+const BRIEF_RE = new RegExp(`<loc>[^<]*/(${Object.values(BRIEF_SLUGS).map((x) => x.slice(0, -1)).join('|')})/`)
+const sansBreve = (xml) => xml.split('<url>').filter((b) => !BRIEF_RE.test(b)).join('<url>')
 
-test('le sitemap du .ch liste ses pages, une par vue', () => {
+test('le sitemap du .ch liste ses trois langues fois ses vues', () => {
   const xml = sansBreve(sitemapFor('ch', '2026-07-28T10:00:00.000Z'))
-  assert.equal((xml.match(/<url>/g) || []).length, ALL_VIEWS.length)
+  assert.equal((xml.match(/<url>/g) || []).length, SITES.ch.pages.length * ALL_VIEWS.length)
+  assert.equal(SITES.ch.pages.length, 3)
   assert.ok(xml.includes('<loc>https://armenieinfo.ch/</loc>'))
   assert.ok(xml.includes('<loc>https://armenieinfo.ch/radio/</loc>'))
+  assert.ok(xml.includes('<loc>https://armenieinfo.ch/de/veranstaltungen/</loc>'))
+  assert.ok(xml.includes('<loc>https://armenieinfo.ch/it/chi-siamo/</loc>'))
   assert.ok(xml.includes('<lastmod>2026-07-28T10:00:00.000Z</lastmod>'))
 })
 
@@ -386,6 +391,29 @@ test('les hreflang sont reciproques PAR VUE', () => {
       )
     }
   }
+})
+
+// Le compte de ce chantier : six langues × quatre vues. Chaque page porte
+// ALL_LANGS.length + 1 alternates (x-default compris) et se cite elle-même.
+test('vingt-quatre pages, chacune se citant elle-même dans ses alternates', () => {
+  const pages = ALL_LANGS.flatMap((lang) => ALL_VIEWS.map((view) => ({ lang, view })))
+  assert.equal(pages.length, 24)
+  assert.equal(X_DEFAULT, LANG_URL.en)
+  for (const { lang, view } of pages) {
+    const head = headFor({ siteId: siteOf(lang), lang, view })
+    assert.equal((head.match(/rel="alternate"/g) || []).length, ALL_LANGS.length + 1, `${view}/${lang}`)
+    assert.ok(head.includes(`hreflang="${lang}" href="${urlFor(lang, view)}"`), `${view}/${lang} : ne se cite pas`)
+  }
+})
+
+test('les pages de/it portent la marque du .ch, leur langue et leur og:locale', () => {
+  const de = headFor({ siteId: 'ch', lang: 'de', view: 'agenda' })
+  assert.ok(de.includes('og:site_name" content="Arménie Info"'))
+  assert.ok(de.includes('property="og:locale" content="de_DE"'))
+  assert.ok(de.includes('rel="canonical" href="https://armenieinfo.ch/de/veranstaltungen/"'))
+  assert.ok(de.includes(`content="${SITES.ch.host}${SITES.ch.ogImage}"`))
+  const it = headFor({ siteId: 'ch', lang: 'it' })
+  assert.ok(it.includes('property="og:locale" content="it_IT"'))
 })
 
 // Le mode d'échec visé : une page de vue qui recopierait le bloc de l'accueil

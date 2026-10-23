@@ -9,7 +9,7 @@ export const CULTURE_STRINGS = {
     nav: 'Culture',
     title: 'Culture arménienne',
     description:
-      'Histoire, musique, danse et patrimoine arméniens : des articles de fond, sourcés, en quatre langues.',
+      'Histoire, musique, danse et patrimoine arméniens : des articles de fond, sourcés, en six langues.',
     sources: 'Sources',
     sourcesNote: 'Textes de Wikipédia (CC BY-SA 4.0) et de Wikisource (CC BY-SA 3.0), utilisés comme sources.',
     aiNote:
@@ -76,7 +76,7 @@ export const CULTURE_STRINGS = {
     nav: 'Culture',
     title: 'Armenian culture',
     description:
-      'Armenian history, music, dance and heritage: in-depth, sourced articles in four languages.',
+      'Armenian history, music, dance and heritage: in-depth, sourced articles in six languages.',
     sources: 'Sources',
     sourcesNote: 'Texts from Wikipedia (CC BY-SA 4.0) and Wikisource (CC BY-SA 3.0), used as sources.',
     aiNote:
@@ -97,7 +97,7 @@ export const CULTURE_STRINGS = {
     nav: 'Մշակույթ',
     title: 'Հայկական մշակույթ',
     description:
-      'Հայոց պատմություն, երաժշտություն, պար և ժառանգություն․ աղբյուրներով հոդվածներ՝ չորս լեզվով։',
+      'Հայոց պատմություն, երաժշտություն, պար և ժառանգություն․ աղբյուրներով հոդվածներ՝ վեց լեզվով։',
     sources: 'Աղբյուրներ',
     sourcesNote: 'Վիքիպեդիայի (CC BY-SA 4.0) և Վիքիդարանի (CC BY-SA 3.0) տեքստերը՝ օգտագործված որպես աղբյուր։',
     aiNote:
@@ -118,7 +118,7 @@ export const CULTURE_STRINGS = {
     nav: 'Культура',
     title: 'Армянская культура',
     description:
-      'История, музыка, танец и наследие Армении: подробные статьи с источниками на четырёх языках.',
+      'История, музыка, танец и наследие Армении: подробные статьи с источниками на шести языках.',
     sources: 'Источники',
     sourcesNote: 'Тексты Википедии (CC BY-SA 4.0) и Викитеки (CC BY-SA 3.0), использованные как источники.',
     aiNote:

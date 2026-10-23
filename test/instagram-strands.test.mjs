@@ -66,7 +66,7 @@ function declarations(cle) {
   return (i18n.match(new RegExp(`'${cle.replace(/\./g, '\\.')}':`, 'g')) || []).length
 }
 
-test('chaque brin a son titre dans les quatre langues', () => {
+test('chaque brin a son titre dans chaque langue', () => {
   for (const s of strands) {
     assert.equal(
       declarations(s.key),
