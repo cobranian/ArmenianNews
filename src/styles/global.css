@@ -4369,9 +4369,15 @@ html.js .reveal.is-visible {
    dépassent une ligne de titre à 360px : la page devenait défilable de côté
    (mesuré 450px sur un article Culture). La césure par dictionnaire d'abord,
    la coupe brute en dernier recours si le navigateur n'a pas le dictionnaire.
-   Limité à l'allemand : le fil français affiché sur /de/ porte lang="fr" et
-   garde ses titres intacts. */
-:lang(de):is(h1, h2, h3) {
+
+   Limité aux titres RÉDIGÉS EN ALLEMAND par le site : titre et intertitres
+   d'un article Culture traduit, titre, date et sujets d'une brève. Pas une
+   règle sur tous les h1–h3 de /de/ : les titres d'événements de l'agenda
+   (Agenda.jsx, AgendaPage.jsx) viennent d'Armenopole, en français ou autre,
+   sans lang propre — ils seraient coupés selon les motifs allemands, et
+   `hyphens: auto` coupe aussi en fin de ligne ordinaire, pas seulement quand
+   un mot déborde. Le fil d'actualités porte lang="fr" et n'est pas concerné. */
+:lang(de):is(.culture__title, .culture__body h2, .culture__body h3, .brief__heading, .brief__date, .brief__topic-title) {
   hyphens: auto;
   overflow-wrap: break-word;
 }
