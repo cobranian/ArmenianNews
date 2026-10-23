@@ -71,6 +71,20 @@ export const TAB_ORDER = {
   ru: ['armenpress', 'armradio', 'newsam', 'californiacourier', 'civilnet'],
 }
 
+// L'allemand et l'italien (armenieinfo.ch) n'ont AUCUNE rédaction à eux : ils
+// lisent le fil français. Une copie de `TAB_ORDER.fr` divergerait au premier
+// ajout de source, d'où la référence — `TAB_ORDER.de === TAB_ORDER.fr`.
+// Écrit APRÈS le littéral : test/source-count.test.mjs lit ce littéral comme
+// du texte.
+export const CONTENT_LANG = { de: 'fr', it: 'fr' }
+TAB_ORDER.de = TAB_ORDER.fr
+TAB_ORDER.it = TAB_ORDER.fr
+
+// La langue dans laquelle le CONTENU est lu pour une langue d'interface.
+export function contentLang(lang) {
+  return CONTENT_LANG[lang] ?? lang
+}
+
 // Les sources dont le flux est indexé par langue dans news.json. Les autres —
 // celles qui ne publient que dans une seule langue — sont une liste plate.
 const BY_LANG = new Set([
@@ -110,6 +124,7 @@ export const SOURCE_NAMES = {
 
 // Les étagères brutes d'une source pour une langue. Toujours un tableau.
 export function feedFor(news, id, lang) {
-  const feed = BY_LANG.has(id) ? news?.[id]?.[FEED_LANG[id]?.(lang) ?? lang] : news?.[id]
+  const read = contentLang(lang)
+  const feed = BY_LANG.has(id) ? news?.[id]?.[FEED_LANG[id]?.(read) ?? read] : news?.[id]
   return Array.isArray(feed) ? feed : []
 }

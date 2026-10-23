@@ -9,6 +9,7 @@ import { evenementComplet, eventLd } from './src/agendaEvents.js'
 import { SITES, primaryLang } from './sites.config.js'
 import { accountsOnly, newsForLangs } from './scripts/lib/light-data.mjs'
 import { TAB_ORDER } from './src/newsSources.js'
+import { contentLang } from './src/newsLangs.js'
 import { loadCulture } from './scripts/lib/culture-load.mjs'
 import { teaserFor } from './scripts/lib/culture-links.mjs'
 
@@ -88,7 +89,8 @@ function agendaEventsJsonLd() {
 // `enforce: 'pre'` pour passer avant le chargeur de fichiers de Vite ; les ids
 // sont comparés sur leur fin de chemin, parce que Vite les absolutise.
 function lightData() {
-  const langs = SITES[SITE_ID].pages.map((p) => p.lang)
+  // de/it lisent le fil français : c'est la langue de CONTENU qu'on embarque.
+  const langs = [...new Set(SITES[SITE_ID].pages.map((p) => contentLang(p.lang)))]
   const ends = (id, rel) => id.replace(/\\/g, '/').endsWith(rel)
   return {
     name: 'light-data',
