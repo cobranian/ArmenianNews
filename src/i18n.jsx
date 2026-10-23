@@ -302,7 +302,10 @@ const STRINGS = {
   de: {
     'site.title': 'Arménie Info',
     'site.tagline': 'Eine stündliche Momentaufnahme des armenischen Lebens, aus der Welt und der Schweiz',
-    'site.snapshot': 'Momentaufnahme vom',
+    // « Stand vom », pas « Momentaufnahme vom » : le composé de 14 lettres
+    // élargissait la pastille de date du héros à 354px, coupée au bord à 360
+    // ET 390. « Stand vom » est la tournure allemande d'un horodatage.
+    'site.snapshot': 'Stand vom',
     'site.cadence': 'stündlich',
     'nav.news': 'Nachrichten',
     'nav.radio': 'Live',

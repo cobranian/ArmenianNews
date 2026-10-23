@@ -564,6 +564,14 @@ html:lang(hy) {
   margin: 0;
   padding: 0;
 }
+/* Les deux pastilles de/it ont pris 80px au sélecteur : les libellés
+   arméniens, les plus longs (« Միջոցառումներ », 132px), ne tenaient plus sur
+   un rang à 1400px — la barre de /hy/ passait à 79px de haut, seule des trois
+   pages du .org. Un écart resserré pour l'arménien seul rend la ligne d'avant
+   (mesuré : 21px de marge à 1400), sans toucher en ni ru. */
+html:lang(hy) .nav__links {
+  column-gap: clamp(12px, 1.6vw, 22px);
+}
 .nav__links a {
   position: relative;
   color: var(--text-soft);
@@ -635,6 +643,127 @@ html:lang(hy) {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+}
+
+/* Le groupe de droite de la nav : thème, langues, menu. */
+.nav__tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ---------- Sélecteur de langue replié (Nav.jsx) ----------
+   Six pastilles, la marque, le thème et le menu ne tiennent pas sur un
+   téléphone : mesuré à 427px de large à 360 ET 390, page défilable de côté.
+   Sous 900px, un seul bouton porte la langue courante et déplie les six
+   pastilles dans une bande sous la barre — le même vocabulaire que le menu
+   (fond, filet bas), pour que les deux replis se lisent comme un système.
+
+   Pourquoi 900 et pas la bascule mobile (640) : entre le burger (760) et
+   ~900px, les 251px du sélecteur à six pastilles faisaient passer les liens
+   sur TROIS ou quatre rangs (barre de 109 à 139px, mesuré sur les six
+   langues), là où la barre à quatre pastilles s'arrêtait à deux (79px).
+   Replié jusqu'à 900, aucune langue ne dépasse deux rangs.
+
+   Au-dessus, les deux enveloppes sont en `display: contents` : la barre de
+   bureau est exactement celle d'avant, .lang reste enfant direct du groupe.
+
+   Replié SEULEMENT sous html.js (theme-init.js) : sans JavaScript le bouton ne
+   ferait rien, la bande serait inatteignable. Le repli sans JS laisse donc les
+   pastilles en place et fait passer le groupe de droite sur deux rangs.
+
+   Bande fermée en `visibility: hidden` et non en opacité : un menu fermé ne
+   doit pas garder six liens invisibles dans le parcours du clavier (l'inverse
+   du piège du tambour, où l'élément masqué devait RESTER focusable). */
+.lang-fold,
+.lang-fold__panel {
+  display: contents;
+}
+.lang-fold__toggle {
+  display: none;
+  appearance: none;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--apricot-ink);
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 13px 6px 15px;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease);
+}
+.lang-fold__toggle span:lang(hy) {
+  font-weight: 500;
+}
+/* Le chevron : un coin de filet, pas un glyphe — « ▾ » n'existe pas dans
+   Space Mono et tomberait sur une police de secours différente par système. */
+.lang-fold__toggle::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid var(--apricot-deep);
+  border-bottom: 1.5px solid var(--apricot-deep);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.25s var(--ease);
+}
+.lang-fold.is-open .lang-fold__toggle {
+  border-color: var(--line-apricot);
+}
+.lang-fold.is-open .lang-fold__toggle::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+[data-theme='light'] .lang-fold__toggle {
+  background: rgba(36, 27, 16, 0.04);
+}
+
+@media (max-width: 900px) {
+  html:not(.js) .nav__tools {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 8px;
+  }
+  html.js .lang-fold {
+    display: block;
+  }
+  html.js .lang-fold__toggle {
+    display: inline-flex;
+  }
+  html.js .lang-fold__panel {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 14px clamp(20px, 5vw, 56px) 16px;
+    background: rgba(16, 15, 13, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.22s var(--ease),
+      transform 0.22s var(--ease),
+      visibility 0s linear 0.22s;
+  }
+  html.js .lang-fold.is-open .lang-fold__panel {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+  /* `html.js` dans le sélecteur : sans lui, la règle du thème clair perd à
+     spécificité contre celle du repli ci-dessus (bande sombre en mode jour). */
+  html.js[data-theme='light'] .lang-fold__panel {
+    background: rgba(244, 237, 219, 0.97);
+  }
 }
 
 .theme-toggle {
@@ -1474,6 +1603,12 @@ html:lang(hy) .nav__brand {
 }
 .newsfeed__source .shelf {
   margin-bottom: 0;
+}
+/* « Artikel auf Französisch » (de/it) : une note sur TOUT le panneau, pas le
+   titre d'une étagère. Calée à gauche, elle se lisait comme une tête de
+   section orpheline sous un rail et un tambour centrés. */
+.newsfeed__source > .section__eyebrow {
+  text-align: center;
 }
 @keyframes newsfeed-fade {
   from { opacity: 0; transform: translateY(6px); }
@@ -3514,6 +3649,15 @@ html.js .reveal.is-visible {
   .lang button,
   .lang a {
     padding: 14px 12px;
+    /* « FR », « DE », « IT », « EN » et « РУ » ne faisaient que 40px de
+       large à 12px de rembourrage : la hauteur tenait le plancher, pas la
+       largeur. Centré, le libellé ne bouge pas. */
+    min-width: 44px;
+    justify-content: center;
+  }
+  .lang-fold__toggle {
+    min-height: 44px;
+    padding: 0 15px 0 17px;
   }
   .shelf__arrow {
     width: 44px;
@@ -4220,6 +4364,16 @@ html.js .reveal.is-visible {
   line-height: 1.1;
   margin: 0.2em 0 0.3em;
   text-wrap: balance;
+}
+/* Les composés allemands (« Musikwissenschaftsgeschichte », 28 lettres)
+   dépassent une ligne de titre à 360px : la page devenait défilable de côté
+   (mesuré 450px sur un article Culture). La césure par dictionnaire d'abord,
+   la coupe brute en dernier recours si le navigateur n'a pas le dictionnaire.
+   Limité à l'allemand : le fil français affiché sur /de/ porte lang="fr" et
+   garde ses titres intacts. */
+:lang(de):is(h1, h2, h3) {
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 .culture__date,
 .culture__translated,

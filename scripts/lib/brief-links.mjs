@@ -28,7 +28,8 @@ export function briefAlternates(date, byDate) {
 // La date en toutes lettres. Côté NODE seulement (build) : Intl y a l'ICU
 // complet. L'arménien passe malgré tout par src/hyDate.js, comme partout dans
 // le dépôt — une seule table de mois arméniens.
-const LOCALE = { fr: 'fr-FR', en: 'en-US', ru: 'ru-RU' }
+// de/it à la suisse, comme LOCALES (src/i18n.jsx).
+const LOCALE = { fr: 'fr-FR', de: 'de-CH', it: 'it-CH', en: 'en-US', ru: 'ru-RU' }
 export function longDate(lang, date) {
   const [y, m, d] = date.split('-').map(Number)
   if (lang === 'hy') return hyLongDate(new Date(y, m - 1, d))

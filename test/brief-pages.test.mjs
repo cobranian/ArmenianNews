@@ -6,7 +6,7 @@ import path from 'node:path'
 import {
   loadBriefs, cssHrefFrom, briefPageHtml, briefIndexHtml, writeBriefPages,
 } from '../scripts/lib/brief-pages.mjs'
-import { briefLangsByDate } from '../scripts/lib/brief-links.mjs'
+import { briefLangsByDate, longDate } from '../scripts/lib/brief-links.mjs'
 import { sitemapFor } from '../scripts/lib/sitemap.mjs'
 import { SITES, briefUrl, briefPath } from '../sites.config.js'
 
@@ -229,4 +229,13 @@ test('index : ne recopie pas le texte de la dernière brève (doublon de la page
   assert.ok(html.includes('Titre &quot;1&quot; &lt;script&gt;'), 'les titres restent, en liens')
   assert.ok(html.includes('Intro &amp; &lt;b&gt;'), 'le chapô reste')
   assert.ok(html.includes(`<a href="${briefPath('fr', '2026-10-16')}">Lire la brève complète →</a>`))
+})
+
+// Une langue absente de la table des locales ne fait pas d'erreur : Intl
+// retombe sur la locale de la MACHINE qui bâtit (« vendredi » sur un poste
+// français, « Friday » en CI) — la page allemande portait une date française.
+test('longDate : chaque langue écrit la date dans sa propre langue', () => {
+  const want = { fr: 'vendredi', de: 'Freitag', it: 'venerdì', en: 'Friday', ru: 'пятница', hy: 'հոկտեմբերի' }
+  for (const [lang, day] of Object.entries(want))
+    assert.match(longDate(lang, '2026-10-16'), new RegExp(day, 'i'), lang)
 })
