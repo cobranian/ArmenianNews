@@ -1,0 +1,35 @@
+---
+title: "La battaglia di Sardarapat: l'eroica riscossa del maggio 1918"
+description: "Combattuta nel maggio 1918, la battaglia di Sardarapat fermò l'invasione ottomana e permise la proclamazione della Prima Repubblica d'Armenia."
+date: "2026-10-18"
+sourceHash: "0c84c4f0b5b2f5e7"
+model: "gemini-flash-latest"
+---
+
+Alla fine del maggio 1918, a soli quaranta chilometri a ovest di Erevan, il destino della nazione armena si decise nelle terre della pianura dell'Ararat. Combattuta nell'ambito della campagna del Caucaso della prima guerra mondiale, la battaglia di Sardarapat — spesso definita dalla memoria collettiva come la «nuova Avarayr del XX secolo» — oppose dal 21 al 29 maggio le unità regolari e i volontari armeni alle truppe d'invasione dell'Impero ottomano. La posta in gioco andava oltre la semplice difesa di un territorio: si trattava di impedire il puro e semplice annientamento del popolo armeno e di aprire la strada alla rinascita del suo Stato.
+
+## Il pericolo del maggio 1918 e il rifiuto di capitolare
+
+Dopo la rivoluzione russa del 1917 e l'armistizio di Erzincan, l'esercito russo lasciò il fronte caucasico, affidando a modesti distaccamenti armeni la difesa della regione. Già nel febbraio 1918, la 3ª armata ottomana di Mehmet Vehib Pascià riprese l'offensiva nell'Armenia occidentale. Nonostante la firma del trattato di Brest-Litovsk a marzo, le forze ottomane proseguirono la loro avanzata: dopo il fallimento dei negoziati di Trebisonda, la fortezza di Kars cadde il 25 aprile, seguita dalla cattura di Alessandropoli (l'odierna Gyumri) il 15 maggio. Solo una frazione limitata del territorio restava libera, dove si accalcavano circa 350.000 rifugiati scampati al genocidio armeno.
+
+L'invasione gettò i dirigenti in un'angoscia estrema. Durante i negoziati di Batumi, la delegazione armena composta da Aleksandr Khatisyan e Hovhannes Kajaznuni consigliò di non resistere, mentre il generale ottomano Halil Bey affermava il 19 maggio che gli armeni erano ormai sconfitti. A Erevan, il consiglio municipale approvò il 18 maggio la proposta del sindaco Tadevos Tochian di evacuare la città verso Kanaker e di cederla senza combattere. Ma il Comitato speciale del Consiglio nazionale di Erevan, guidato da Aram Manoukian, revocò immediatamente tale decisione. Mobilitando circa 1.500 abitanti, Manoukian fece fortificare gli accessi alla città, in particolare attorno a Erablur. Lo stesso giorno, accompagnato dal comandante Arshavir Shahkhatouni, si recò a Echmiadzin per esortare il Catholicos Giorgio V Soureniants a ripiegare verso Byurakan. Il capo della Chiesa rifiutò categoricamente di fuggire e ordinò di suonare le campane a martello per chiamare il popolo a una resistenza a oltranza.
+
+## La mobilitazione generale nella pianura dell'Ararat
+
+Il comandante generale delle forze armene, il maggior generale Tovmas Nazarbekian, e il suo capo di stato maggiore Evgenij Višinskij riorganizzarono le truppe per sbarrare le vie verso Tiflis ed Erevan. Il maggior generale Movses Silikyan prese il comando del contingente di Erevan, stabilendo il proprio stato maggiore nel Seminario teologico Gevorkian di Echmiadzin accanto al colonnello Alexander Vekilian. La direzione diretta delle operazioni sul fronte di Sardarapat fu affidata al colonnello Daniel Bek-Pirumyan, coadiuvato dal capitano Alexander Chneour.
+
+Da parte armena, le forze contavano tra i 9.000 e i 10.000 uomini all'inizio dei combattimenti (poi ridotti a 6.000 o 6.500 dopo l'invio di rinforzi verso Bash Abaran), sostenuti da 28 cannoni sotto la guida del colonnello Kristapor Araratian. Queste truppe comprendevano la 2ª divisione del corpo armeno — in particolare il 5º reggimento di fanteria del colonnello Poghos-Bek Pirumyan e il 6º reggimento del tenente colonnello Abraham Dolukhanian —, tiratori partigiani guidati da Aleksej Perekrëstov, volontari di Van, Zejtun ed Erzincan guidati da Karapet Hassan-Pashayan, oltre a uno squadrone di 300 cavalieri yazidi al comando di Jangir Agha e Usub Bek. Alle operazioni partecipava anche un giovane ufficiale di cavalleria, il futuro maresciallo Hovhannes Bagramjan. Di fronte a loro, la 36ª divisione ottomana del colonnello Pirselimoğlu Hamdi Bey, integrata nel corpo d'armata di Yakub Shevki Pascià, schierava tra i 7.500 e i 10.000 soldati e cavalieri curdi, dotati di 40 pezzi d'artiglieria.
+
+## Dalla controffensiva del 22 maggio alla vittoria
+
+L'avanzata ottomana divenne critica il 21 maggio: gli attaccanti conquistarono il villaggio e la stazione di Sardarapat, poi Gechrlu e Verin Kolibeklu, avvicinandosi a una ventina di chilometri da Erevan nei pressi della fermata di Ghamishlu. I collegamenti con 100.000 rifugiati rischiavano di essere interrotti. La batteria d'artiglieria del capitano Khoren Igitkhanian arrestò bruscamente tale avanzata nei pressi di Artashar, mentre i ponti sull'Aras, come quello di Margara, venivano distrutti o strenuamente difesi per proteggere le retrovie armene.
+
+Alle prime ore del 22 maggio, dopo un vittorioso scontro notturno condotto dai cavalieri di Jangir Agha a Molla Bayazet, il colonnello Daniel Bek-Pirumyan sferrò una controffensiva generale. Il 5º e il 6º reggimento, sostenuti dal tiro preciso delle batterie di Igitkhanian, Vladimir Sakkilari, Nikolaj Klič e Sergo Atanesian, sfondarono le linee ottomane a Ghamishlu. Dopo combattimenti corpo a corpo alla baionetta, le truppe nemiche furono messe in rotta, lasciando oltre 500 morti e feriti. Le forze armene liberarono Sardarapat, Gechrlu, Molla Bayazet, Ujan e Kosh, avanzando di 15-20 chilometri. Prima della battaglia, l'arcivescovo Garegin Hovsepian aveva arringato il 5º reggimento ribattezzandolo i «Kamikaze» (*Makhapartner*).
+
+Il 24 maggio, il generale Silikyan lanciò un proclama ordinando a tutti gli uomini sotto i cinquant'anni di prendere le armi. Le offensive ottomane del 24 maggio fallirono sotto il fuoco dell'artiglieria armena. Infine, una manovra di accerchiamento orchestrata dalla colonna di Hassan-Pashayan e dal distaccamento di 200 volontari di Mush guidato da Pandukht inferse un colpo letale alle retrovie e al fianco sinistro nemico. Le forze ottomane furono costrette a fuggire in direzione di Alessandropoli e Ani.
+
+## Un trionfo fondativo e un santuario della memoria
+
+Come ha sottolineato lo storico Christopher J. Walker, senza questa resistenza vittoriosa, «è perfettamente possibile che la parola Armenia non avrebbe più designato altro che un termine di geografia antica». Spezzando l'offensiva ottomana a Sardarapat e a Bash Abaran, i combattenti armeni salvarono la popolazione da un nuovo massacro e resero possibile la nascita della Prima Repubblica d'Armenia, proclamata il 28 maggio 1918, cui seguì la firma del trattato di Batumi il 4 giugno.
+
+In occasione del cinquantesimo anniversario della battaglia, nel maggio 1968, fu inaugurato sul campo di battaglia un monumento commemorativo in tufo rosso progettato dall'architetto Rafael Israyelyan e dallo scultore Ara Harutyunyan. Dominato dall'imponente campanile e dai tori alati, il complesso perpetua il ricordo di coloro che offrirono all'Armenia la sopravvivenza e la ritrovata libertà.
