@@ -19,9 +19,10 @@ import { mkdir, writeFile, access } from 'node:fs/promises'
 import path from 'node:path'
 import { RUBRICS } from '../../src/rubrics.js'
 import { ALL_LANGS } from '../../sites.config.js'
+import { contentLang } from '../../src/newsLangs.js'
 import { ENDPOINT, modelChain } from './classify-rubrics.mjs'
 import { selectArticles, yerevanClock, isBriefDue, MIN_ARTICLES } from './brief-select.mjs'
-import { allowedWords, strayWords } from './brief-script.mjs'
+import { allowedWords, strayWords, frenchWords } from './brief-script.mjs'
 
 export const MIN_TOPICS = 3
 export const MAX_TOPICS = 7
@@ -31,6 +32,8 @@ export const BRIEF_TIMEOUT_MS = 180000
 
 const LANG_NAME = {
   fr: 'français',
+  de: 'allemand (usage suisse : « ss », jamais « ß »)',
+  it: 'italien',
   en: 'anglais',
   hy: 'arménien oriental (orthographe de la République d’Arménie)',
   ru: 'russe',
@@ -42,6 +45,13 @@ export function buildBriefMessages(lang, articles) {
     "Tu rédiges la brève quotidienne d'un site d'actualité arménienne, à partir des titres du jour " +
     'de plusieurs rédactions (chaque ligne : numéro, [source · rubrique], titre). ' +
     `Écris en ${LANG_NAME[lang]}, dans un style neutre et factuel. ` +
+    // de et it lisent le fil français : sans cette phrase, le modèle recopierait
+    // des titres français tels quels dans une brève censée être dans l'autre langue.
+    (contentLang(lang) !== lang
+      ? `Les titres sources sont en français : traduis-les, n'en recopie aucun mot à mot. ` +
+        `L'introduction, chaque titre et chaque phrase de ta réponse doivent être entièrement en ${LANG_NAME[lang]} : ` +
+        "pas une seule phrase en français, même si les consignes et les titres ci-dessus le sont. "
+      : '') +
     `Choisis entre ${MIN_TOPICS + 2} et ${MAX_TOPICS} sujets du jour, en privilégiant ceux que PLUSIEURS sources couvrent. ` +
     'Pour chaque sujet : un titre court, 2 ou 3 phrases, une rubrique parmi ' +
     `${RUBRICS.join(', ')}, et la liste des numéros des titres qui le traitent. ` +
@@ -51,7 +61,12 @@ export function buildBriefMessages(lang, articles) {
     '{"intro": "…", "topics": [{"title": "…", "text": "…", "rubric": "…", "ids": [1, 2]}]}, sans aucun texte autour.'
   return [
     { role: 'system', content: system },
-    { role: 'user', content: list },
+    {
+      role: 'user',
+      content: contentLang(lang) !== lang ? `${list}
+
+Réponds en ${LANG_NAME[lang]}, pas en français.` : list,
+    },
   ]
 }
 
@@ -71,6 +86,8 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
     return null
   }
   const byId = new Map(articles.map((a) => [a.id, a]))
+  // de et it lisent le fil français : leur faute propre est de répondre en français.
+  const translated = Boolean(lang) && contentLang(lang) !== lang
   const topics = []
   for (const t of Array.isArray(obj?.topics) ? obj.topics : []) {
     const title = clean(t?.title)
@@ -88,6 +105,7 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
     if (lang) {
       const allowed = allowedWords(sources.map((x) => x.title))
       const bad = strayWords(`${title} ${body}`, lang, allowed)
+      if (translated) bad.push(...frenchWords(`${title} ${body}`))
       if (bad.length) {
         rejected.push(...bad)
         continue
@@ -102,6 +120,7 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
   if (lang && intro) {
     const allowed = allowedWords(topics.flatMap((t) => t.sources.map((x) => x.title)))
     const bad = strayWords(intro, lang, allowed)
+    if (translated) bad.push(...frenchWords(intro))
     if (bad.length) {
       rejected.push(...bad)
       intro = ''
@@ -126,14 +145,18 @@ export async function generateBriefs({
   timeoutMs = BRIEF_TIMEOUT_MS,
   log = console,
   force = false,
+  langNames = LANG_NAME,
 } = {}) {
   const { date, hour } = yerevanClock(now)
   const written = []
   for (const lang of ALL_LANGS) {
     // Une langue sans consigne de rédaction (LANG_NAME) n'est pas encore
     // rédigée : sans ce garde, le modèle recevrait « Écris en undefined », et
-    // une brève publiée ne se réécrit jamais.
-    if (!LANG_NAME[lang]) continue
+    // une brève publiée ne se réécrit jamais. Dit au log, jamais en silence.
+    if (!langNames[lang]) {
+      log.log(`  · brief/${lang}: pas de consigne`)
+      continue
+    }
     const file = path.join(dir, lang, `${date}.json`)
     try {
       const has = await exists(file)

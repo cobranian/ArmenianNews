@@ -52,3 +52,21 @@ export function strayWords(text, lang, allowed = new Set()) {
   }
   return out
 }
+
+// Le français qui s'est glissé dans une brève allemande ou italienne : le seul
+// cas que l'alphabet ne voit pas, les trois langues s'écrivant en latin. de et
+// it lisent des titres français, et un modèle :free recopie volontiers la
+// langue de ses titres (mesuré le 23 octobre 2026 : brève « it » entièrement
+// en français, publiée telle quelle sans ce garde). Mots-outils propres au
+// français — aucun n'existe en allemand ni en italien (« le », « la », « de »,
+// « un » en sont exclus : l'italien les écrit aussi).
+const FRENCH_MARKERS = new Set([
+  'les', 'des', 'du', 'est', 'dans', 'pour', 'une', 'ont', 'aux', 'qui', 'avec',
+  'sont', 'par', 'sur', 'été', 'entre', 'que', 'ce', 'cette', 'ses', 'leur', 'leurs',
+])
+
+// Deux mots-outils français ou plus : du français, pas un nom propre cité.
+export function frenchWords(text) {
+  const found = words(text).map((w) => w.toLowerCase()).filter((w) => FRENCH_MARKERS.has(w))
+  return found.length >= 2 ? [...new Set(found)] : []
+}
