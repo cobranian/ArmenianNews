@@ -4,7 +4,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
-const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml', 'articles-ideas.yml']
+const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml', 'articles-ideas.yml', 'articles-backfill.yml']
 // Fins de ligne normalisées : sous Windows (core.autocrlf), git extrait les
 // workflows en CRLF, et les motifs multilignes ne verraient plus rien.
 const read = async (f) =>

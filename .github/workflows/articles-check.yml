@@ -33,7 +33,14 @@ jobs:
         run: |
           SLUG="${BRANCH#culture/}"
           printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
-          if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          # Un rattrapage de/it (articles-backfill.yml) n'est pas un article :
+          # tous les articles sont contrôlés, sans la case « Faits vérifiés »
+          # (de/it facultatives, non relues — le propriétaire fusionne).
+          case "$SLUG" in
+            backfill-*) set -- ;;
+            *) set -- --pr-body "$RUNNER_TEMP/body.md" "$SLUG" ;;
+          esac
+          if node scripts/culture-check.mjs "$@" > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
           cat "$RUNNER_TEMP/check.txt"
           gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
             -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"
