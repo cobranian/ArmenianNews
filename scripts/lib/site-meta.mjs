@@ -418,10 +418,10 @@ export function beaconTag(siteId) {
   if (!/^[0-9a-f]{32}$/.test(token)) {
     throw new Error(`cfBeaconToken de « ${siteId} » : 32 caractères hexadécimaux attendus`)
   }
-  return (
-    '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" ' +
-    `data-cf-beacon='{"token": "${token}"}'></script>`
-  )
+  // Le beacon n'est pas chargé en dur : /cf-init.js le charge, sauf sur un
+  // navigateur écarté par `?mesure=non` (Cloudflare n'a aucun filtre côté
+  // tableau de bord). Le jeton reste dans la page, sur la balise du chargeur.
+  return `<script src="/cf-init.js" data-cf-beacon='{"token": "${token}"}'></script>`
 }
 
 // Les deux balises GA4 de cette vitrine, ou '' si elle n'a pas d'ID — mieux vaut

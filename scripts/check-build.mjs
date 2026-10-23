@@ -70,7 +70,7 @@ function analyticsChecks(site, html) {
       site.cfBeaconToken ? `beacon ${site.id} (${site.cfBeaconToken.slice(0, 8)}…)` : 'sans beacon',
       site.cfBeaconToken
         ? count(new RegExp(site.cfBeaconToken, 'g')) === 1
-        : !html.includes('static.cloudflareinsights.com'),
+        : !html.includes('/cf-init.js'),
     ],
     [
       'aucun jeton beacon étranger',

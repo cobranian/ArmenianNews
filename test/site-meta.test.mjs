@@ -232,7 +232,7 @@ test('chaque vitrine émet SON jeton Cloudflare, et jamais celui de l\'autre', (
       // Pas de jeton ⇒ aucune balise. Mieux vaut ne pas mesurer que verser ses
       // visites dans le tableau de bord de l'autre vitrine.
       assert.ok(
-        !out.includes('static.cloudflareinsights.com'),
+        !out.includes('/cf-init.js'),
         `${site.id} : sans jeton, aucune balise beacon ne doit être émise`,
       )
     }

@@ -94,7 +94,27 @@ gtag('js', new Date())
 // `gaMeasurementId` est `null` pour cette vitrine, ou si la balise a été
 // recopiée à la main sans son attribut : le message pointe alors l'endroit
 // exact, au lieu de laisser un mur de statistiques vide sans explication.
-if (GA_ID) {
+// MES PROPRES VISITES. `?mesure=non` dans l'URL écarte ce navigateur de la
+// mesure (GA4 ici, Cloudflare dans cf-init.js, qui lit la même clé),
+// `?mesure=oui` l'y remet. Mémorisé dans localStorage : une fois PAR DOMAINE
+// (.ch et .org séparément) et PAR NAVIGATEUR, effacé avec les données du site.
+// `ga-disable-<ID>` est le mécanisme officiel de Google : gtag.js se charge,
+// mais n'envoie rien.
+function sansMesure() {
+  try {
+    var q = new URLSearchParams(location.search).get('mesure')
+    if (q === 'non') localStorage.setItem('sans-mesure', '1')
+    else if (q === 'oui') localStorage.removeItem('sans-mesure')
+    return localStorage.getItem('sans-mesure') === '1'
+  } catch {
+    return false
+  }
+}
+
+if (GA_ID && sansMesure()) {
+  window['ga-disable-' + GA_ID] = true
+  console.info('[ga-init] mesure désactivée pour ce navigateur (?mesure=oui pour la rétablir)')
+} else if (GA_ID) {
   gtag('config', GA_ID)
 } else {
   console.warn('[ga-init] data-ga-id absent — aucune mesure GA4 (voir gaMeasurementId dans sites.config.js)')

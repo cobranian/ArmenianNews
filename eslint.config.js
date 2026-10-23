@@ -62,7 +62,7 @@ export default [
   // theme-init sets the saved day/night theme before first paint; ga-init boots
   // Google Analytics with consent denied by default. Not modules — no import/export.
   {
-    files: ['public/theme-init.js', 'public/ga-init.js', 'public/culture-keys.js'],
+    files: ['public/theme-init.js', 'public/ga-init.js', 'public/cf-init.js', 'public/culture-keys.js'],
     ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 2022,
