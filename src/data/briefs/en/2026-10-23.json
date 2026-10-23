@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-23",
+  "lang": "en",
+  "generatedAt": "2026-10-23T03:28:58.820Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Armenian and international media report on political tensions, economic developments, and cultural events shaping the region.",
+  "topics": [
+    {
+      "title": "Border security concerns rise after second Azerbaijani crossing",
+      "text": "Azerbaijani forces have crossed into Armenian territory for the second time in less than a month, raising serious concerns about border security and regional stability. The incidents underscore ongoing tensions along the Armenia-Azerbaijan border.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/second-azerbaijani-crosses-into-armenia-in-less-than-a-month-raising-serious-border-security-concerns/",
+          "title": "Second Azerbaijani Crosses Into Armenia in Less Than a Month, Raising Serious Border Security Concerns"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169712/",
+          "title": "Spain's King Felipe has invited Messi to an official dinner"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan government faces constitutional and political deadlock",
+      "text": "Prime Minister Pashinyan has vowed to adopt a new constitution at all costs, including the possibility of snap elections, amid a deadlock over a constitutional referendum. The government's stance reflects efforts to break political impasse and push through reforms.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/pashinyan-accuses-russia-of-trying-to-topple-him/",
+          "title": "Pashinyan Accuses Russia of Trying to Topple Him"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014941",
+          "title": "Armenia may hold snap election amid deadlock over constitutional referendum"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014935",
+          "title": "Pashinyan floats snap election to secure constitutional referendum"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069536",
+          "title": "Premier calls Armenia’s relations with EAEU a “challenge”"
+        }
+      ]
+    },
+    {
+      "title": "Economic outlook and support measures discussed",
+      "text": "Armenia's economic outlook was discussed in relation to environment and social development. The government has adopted measures to support exporters, and the Central Bank continues to monitor exchange rates and precious metal prices. Job creation has shown positive growth.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014937",
+          "title": "Environment, social development, and Armenia’s economic outlook"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069630",
+          "title": "US dollar exchange rate relatively stable, euro slightly depreciates in Armenia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263546",
+          "title": "Number of income-generating jobs in Armenia rises 4.9% year-on-year in September"
+        },
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/bend-the-knee-to-pashinyan-or-face-arrest/",
+          "title": "Bend the Knee to Pashinyan or Face Arrest"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069499",
+          "title": "National Security Service: Azerbaijan national found in Armenia's Tavush Province"
+        }
+      ]
+    },
+    {
+      "title": "Cultural events and heritage preservation",
+      "text": "Armenian genealogy conference marks its 10th anniversary, while AUA launches a new Masters program in Art in Education. Cultural preservation efforts continue through various initiatives including reporting on community projects.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/a-weekend-of-discovery-remembrance-and-armenian-heritage-10th-anniversary-armenian-genealogy-conference-a-month-away/",
+          "title": "A Weekend of Discovery, Remembrance and Armenian Heritage: 10th Anniversary Armenian Genealogy Conference A Month Away"
+        },
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/116778/",
+          "title": "Sharon Stone, 68, Recreates Iconic Basic Instinct Scene 34 Years Later"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263542",
+          "title": "Major EU-funded project to expand AI research and innovation launched in Armenia"
+        },
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/armenian-court-dismisses-lawsuit-challenging-catholicos-authority-to-remove-diocesan-primate/",
+          "title": "Armenian Court Dismisses Lawsuit Challenging Catholicos’ Authority to Remove Diocesan Primate"
+        }
+      ]
+    },
+    {
+      "title": "International developments and diplomatic activity",
+      "text": "The International Criminal Court awarded the EU's Sakharov Prize, while diplomatic visits continue between Armenia and Georgia. Armenia is working with Azerbaijan and Turkey to open the Armenia-Turkey border, according to Pashinyan.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263573",
+          "title": "International Criminal Court awarded EU’s Sakharov Prize"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/10/22/the-region-in-brief-188/",
+          "title": "The Region in Brief"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/22/armenia-working-with-azerbaijan-and-turkey-to-open-armenia-turkey-border-pashinyan-says/",
+          "title": "Armenia working with Azerbaijan and Turkey to open Armenia-Turkey border, Pashinyan says"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263480",
+          "title": "European Stocks - 21-10-26"
+        }
+      ]
+    },
+    {
+      "title": "Armenian diaspora activities and community initiatives",
+      "text": "Homenetmen Massis launches a campaign to expand its community center, and the Armenian Evangelical World Council convenes in New Jersey. The diaspora remains active in cultural preservation and community building efforts.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/homenetmen-massis-launches-ambitious-campaign-to-expand-community-center-and-secure-permanent-home-for-youth/",
+          "title": "Homenetmen Massis Launches Ambitious Campaign to Expand Community Center and Secure Permanent Home for Youth"
+        },
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/anca-wr-announces-2026-general-election-endorsements/",
+          "title": "ANCA-WR Announces 2026 General Election Endorsements"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263491",
+          "title": "Armenian officials visit Syunik to discuss launch of TRIPP infrastructure work"
+        }
+      ]
+    },
+    {
+      "title": "Educational and institutional developments",
+      "text": "A new TRIPP infrastructure project is being discussed in Syunik region, while the European Union has launched a project to enhance Lake Sevan ecosystem restoration. Educational reforms and AI research expansion are also underway.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263491",
+          "title": "Armenian officials visit Syunik to discuss launch of TRIPP infrastructure work"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263545",
+          "title": "EU project launched to enhance Lake Sevan ecosystem restoration and biodiversity conservation"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263542",
+          "title": "Major EU-funded project to expand AI research and innovation launched in Armenia"
+        }
+      ]
+    }
+  ]
+}
