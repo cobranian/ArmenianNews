@@ -45,7 +45,21 @@ for (const site of Object.values(SITES)) {
   })
 }
 
-test('les quatre langues ont leurs chaînes, sans repli silencieux', () => {
+test('le 404 du .ch mène aux vues de/it, dans leur langue', () => {
+  const ch = notFoundHtml('ch')
+  for (const lang of ['de', 'it']) {
+    for (const view of ['home', 'radio', 'agenda', 'about']) {
+      assert.ok(ch.includes(`href="${pathFor(lang, view)}" hreflang="${lang}"`), `${lang}/${view}`)
+    }
+    assert.ok(ch.includes(`href="${briefPath(lang)}" hreflang="${lang}"`), `brève ${lang}`)
+    assert.ok(ch.includes(`<li lang="${lang}">`), `ligne ${lang}`)
+  }
+  assert.ok(ch.includes('Startseite'), 'chaînes allemandes')
+  assert.ok(ch.includes('<a href="/it/" hreflang="it">Home</a>'), 'chaînes italiennes')
+  assert.ok(!ch.includes('ß'), 'allemand à la suisse : jamais ß')
+})
+
+test('chaque langue a ses chaînes, sans repli silencieux', () => {
   // La page du .org affiche une ligne par langue servie : un libellé manquant
   // retomberait sur le français sans rien dire, et le lecteur russe verrait
   // « Retour à l\'accueil ». On vérifie que chaque langue écrit la sienne.
@@ -101,4 +115,61 @@ test('firebase.json redirige les slugs jumeaux vers la vue du domaine', () => {
   assert.equal(org[frRe].destination, SITES.ch.host + '/')
   assert.equal(org[frRe].type, 301)
   assert.ok(!matches(frRe, ['/fruits/']), 'la regex est ancrée')
+})
+
+// Les vues de/it ont leurs propres slugs d'agenda : « events » tapé sous /de/
+// ou /it/ du .ch doit mener à la vue, et /de/… ou /it/… tapé sur le .org — où
+// ces langues n'existent pas — doit mener au même chemin sur le .ch.
+// Firebase écrit ses groupes nommés en RE2 (`(?P<nom>…)`, cités `:nom` dans la
+// destination) ; on les traduit en JS pour rejouer la substitution ici.
+test('firebase.json redirige les slugs de/it vers leur vue et vers le .ch', () => {
+  const firebase = JSON.parse(readFileSync(new URL('../firebase.json', import.meta.url), 'utf-8'))
+  const bySite = Object.fromEntries(firebase.hosting.map((h) => [h.site, h.redirects ?? []]))
+  const toJs = (re) => new RegExp(re.replace(/\(\?P</g, '(?<'))
+  // La destination qu'un chemin obtiendrait, ou null s'il ne matche aucune règle.
+  const follow = (siteId, p) => {
+    for (const r of bySite[SITES[siteId].firebaseSite]) {
+      const m = r.regex && toJs(r.regex).exec(p)
+      if (!m) continue
+      // Une destination ne cite JAMAIS un groupe qui n'a pas participé : ce
+      // que Firebase en ferait n'est pas documenté (vide ? « :rest » littéral ?).
+      return r.destination.replace(/:([a-z]\w*|\d+)/g, (_, k) => {
+        const v = m.groups?.[k] ?? m[k]
+        if (v === undefined) throw new Error(`${r.regex} : ${p} laisse :${k} sans valeur`)
+        return v
+      })
+    }
+    return null
+  }
+  assert.equal(follow('ch', '/de/events'), '/de/veranstaltungen/')
+  assert.equal(follow('ch', '/de/events/'), '/de/veranstaltungen/')
+  assert.equal(follow('ch', '/it/events/'), '/it/eventi/')
+  assert.equal(follow('ch', '/de/eventsx/'), null)
+  assert.equal(follow('ch', '/de/'), null)
+
+  assert.equal(follow('org', '/de'), 'https://armenieinfo.ch/de/')
+  assert.equal(follow('org', '/de/'), 'https://armenieinfo.ch/de/')
+  assert.equal(follow('org', '/it/radio/'), 'https://armenieinfo.ch/it/radio/')
+  assert.equal(follow('org', '/de/in-kuerze/2026-10-16/'), 'https://armenieinfo.ch/de/in-kuerze/2026-10-16/')
+  assert.equal(follow('org', '/design/'), null)
+  assert.equal(follow('org', '/items/'), null)
+  for (const r of bySite[SITES.org.firebaseSite]) assert.equal(r.type, 301)
+  // Aucune règle ne peut laisser un groupe vide : chaque groupe de la
+  // destination est obligatoire dans sa regex (pas de « ? » sur le groupe).
+  for (const p of ['/de', '/de/', '/it/', '/de/x', '/it/eventi/']) assert.doesNotThrow(() => follow('org', p), p)
+
+  // La sonde de production vérifie ces redirections jusqu'à leur Location :
+  // un code 301 seul passerait sur une destination mal substituée.
+  const wf = readFileSync(new URL('../.github/workflows/hourly.yml', import.meta.url), 'utf-8')
+  for (const line of [
+    'probe "https://armenieinfo.ch/de/" 200',
+    'probe "https://armenieinfo.ch/it/eventi/" 200',
+    'probe "https://armenieinfo.ch/de/events/" 301 "/de/veranstaltungen/"',
+    'probe "https://armenianews.org/de" 301 "https://armenieinfo.ch/de/"',
+    'probe "https://armenianews.org/it/eventi/" 301 "https://armenieinfo.ch/it/eventi/"',
+  ]) assert.ok(wf.includes(line), line)
+
+  // Les deux blocs `headers` restent identiques (CSP comprise) : voir CLAUDE.md.
+  const [a, b] = firebase.hosting
+  assert.deepEqual(a.headers, b.headers)
 })

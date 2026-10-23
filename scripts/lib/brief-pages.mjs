@@ -54,9 +54,10 @@ function cleanBrief(b, lang, date) {
 // Toutes les brèves, par langue, la plus récente d'abord. Un fichier illisible
 // ou dont la date ne correspond pas à son nom est IGNORÉ avec un avertissement :
 // une brève corrompue ne doit pas empêcher le déploiement horaire.
-export async function loadBriefs(dir, log = console) {
-  const out = Object.fromEntries(ALL_LANGS.map((l) => [l, []]))
-  for (const lang of ALL_LANGS) {
+// `langs` restreint la lecture (brief-lead.mjs n'en veut qu'une).
+export async function loadBriefs(dir, log = console, langs = ALL_LANGS) {
+  const out = Object.fromEntries(langs.map((l) => [l, []]))
+  for (const lang of langs) {
     let files = []
     try {
       files = await readdir(path.join(dir, lang))

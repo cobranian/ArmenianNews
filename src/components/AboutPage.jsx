@@ -1,9 +1,10 @@
 import { useI18n } from '../i18n.jsx'
-import { SITES, pathFor } from '../../sites.config.js'
+import { SITES, ALL_LANGS, pathFor } from '../../sites.config.js'
 import { SITE_ID } from '../site.js'
 import { VIEW_SEO } from '../seo.js'
 import { STATION_FACTS } from '../stations.js'
 import { TAB_ORDER } from '../newsSources.js'
+import { contentLang } from '../newsLangs.js'
 
 // La page « À propos » — qui édite, d'où, avec quelles sources et quelles
 // règles. Ajoutée après l'audit SEO du 21 août 2026 : un agrégateur que
@@ -34,10 +35,11 @@ const HOMES = {
 }
 
 // Les rédactions dans l'ordre de leur première apparition dans TAB_ORDER
-// (fr, puis en, hy, ru), chacune avec les langues sous lesquelles elle paraît.
+// (ordre d'ALL_LANGS), chacune avec les langues dans lesquelles elle publie.
+// de/it lisent le fil français : ce ne sont pas des langues de publication.
 function newsrooms() {
   const seen = new Map()
-  for (const lang of ['fr', 'en', 'hy', 'ru']) {
+  for (const lang of ALL_LANGS.filter((l) => contentLang(l) === l)) {
     for (const id of TAB_ORDER[lang]) {
       if (!seen.has(id)) seen.set(id, [])
       seen.get(id).push(lang)

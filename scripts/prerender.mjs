@@ -7,7 +7,7 @@
  * from sites.config.js with a headless browser and writes the resulting
  * markup back into its own dist/<site>/<path>/index.html — one file per
  * (site, lang, view) triple, so the count follows sites.config.js rather than
- * this comment: four languages × three views = twelve pages today. The
+ * this comment: six languages × four views = twenty-four pages today. The
  * snapshot's articles are therefore in the raw HTML on the first pass. The
  * hourly build reruns this, so the baked HTML is never staler than the
  * snapshot it ships with.

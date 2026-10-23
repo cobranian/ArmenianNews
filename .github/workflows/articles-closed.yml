@@ -12,7 +12,11 @@ permissions:
 
 jobs:
   reject:
-    if: github.event.pull_request.merged == false && startsWith(github.head_ref, 'culture/')
+    # Un rattrapage de/it (culture/backfill-*) n'a pas de sujet à rejeter.
+    if: >-
+      github.event.pull_request.merged == false &&
+      startsWith(github.head_ref, 'culture/') &&
+      !startsWith(github.head_ref, 'culture/backfill-')
     runs-on: ubuntu-latest
     env:
       BRANCH: ${{ github.head_ref }}

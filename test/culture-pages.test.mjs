@@ -7,7 +7,7 @@ import path from 'node:path'
 import { cultureIndexHtml, cultureArticleHtml, writeCulturePages, readAlsoPicks } from '../scripts/lib/culture-pages.mjs'
 import { loadCulture } from '../scripts/lib/culture-load.mjs'
 import { cultureLangsBySlug } from '../scripts/lib/culture-links.mjs'
-import { SITES } from '../sites.config.js'
+import { SITES, cultureUrl } from '../sites.config.js'
 import { writeArticle, texts, meta } from './helpers/culture-fixture.mjs'
 
 const CSS = '/assets/index-abc.css'
@@ -160,8 +160,15 @@ test('writeCulturePages : langues de la vitrine seulement, images copiées', asy
   await assert.rejects(access(path.join(dist, 'ru/culture/duduk/index.html')))
   await assert.rejects(access(path.join(dist, 'culture/duduk/image.jpg')))
   const ch = await mkdtemp(path.join(tmpdir(), 'dist-'))
-  assert.equal(await writeCulturePages(SITES.ch, ch, list, CSS, dir, NOW), 3)
+  // .ch : index fr/de/it (3) + komitas fr + duduk fr. de/it n'ont pas
+  // (encore) d'article : leur index existe, vide, donc noindex.
+  assert.equal(await writeCulturePages(SITES.ch, ch, list, CSS, dir, NOW), 5)
   assert.match(await readFile(path.join(ch, 'culture/index.html'), 'utf-8'), /<html lang="fr">/)
+  const de = await readFile(path.join(ch, 'de/kultur/index.html'), 'utf-8')
+  assert.match(de, /<html lang="de">/)
+  assert.ok(de.includes('noindex, follow'))
+  await access(path.join(ch, 'it/cultura/index.html'))
+  await assert.rejects(access(path.join(ch, 'de/kultur/komitas/index.html')))
 })
 
 test('événement invalide : ignoré sans exception (date numérique, URL non https, sans titre)', async () => {
@@ -177,7 +184,7 @@ test('événement invalide : ignoré sans exception (date numérique, URL non ht
     await writeArticle(dir, 'komitas', { m: meta('komitas', { agendaEvent: bad }) })
     const list = await loadCulture(dir, silent)
     const dist = await mkdtemp(path.join(tmpdir(), 'dist-'))
-    assert.equal(await writeCulturePages(SITES.ch, dist, list, CSS, dir, NOW), 2, JSON.stringify(bad))
+    assert.equal(await writeCulturePages(SITES.ch, dist, list, CSS, dir, NOW), 4, JSON.stringify(bad))
     const html = await readFile(path.join(dist, 'culture/komitas/index.html'), 'utf-8')
     assert.ok(!html.includes('culture__event'), JSON.stringify(bad))
     assert.ok(!html.includes('javascript:'))
@@ -195,4 +202,30 @@ test('chaque font-family .culture est suivie de son font-size-adjust', async () 
     const fsa = { display: 'display', body: 'body', mono: 'util' }[m[1]]
     assert.match(lines[i + 1], new RegExp(`font-size-adjust: var\\(--fsa-${fsa}\\)`), `ligne ${i}`)
   })
+})
+
+// de/it sont traduites sans relecture : la page le dit sous le titre, avec un
+// lien vers l'article français relu. en/hy/ru ne portent pas cette mention.
+test('page de/it : « traduit du français » + lien vers l’article fr ; Wikipédia de citée sur sa page seulement', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
+  const t = texts()
+  t.de = t.en.replace('Komitas en', 'Komitas de').replace('Body en.', 'Text de.')
+  const sources = [
+    { lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas', revision: 1 },
+    { kind: 'wikipedia', lang: 'de', title: 'Komitas Vardapet', url: 'https://de.wikipedia.org/wiki/Komitas_Vardapet', revision: 2 },
+  ]
+  await writeArticle(dir, 'komitas', { m: meta('komitas', { sources }), t })
+  const list = await loadCulture(dir, silent)
+  const bySlug = cultureLangsBySlug(list)
+  const page = (lang) => cultureArticleHtml({ siteId: lang === 'en' ? 'org' : 'ch', lang, article: list[0], list, bySlug, cssHref: CSS, now: NOW })
+  const de = page('de')
+  assert.ok(de.includes('Aus dem Französischen übersetzt'))
+  assert.ok(de.includes(`href="${cultureUrl('fr', 'komitas')}"`))
+  assert.ok(de.includes('>Komitas Vardapet</a> (Wikipedia de)'))
+  const fr = page('fr')
+  const en = page('en')
+  assert.ok(!en.includes('Aus dem Französischen') && !en.includes('culture__translated'))
+  assert.ok(!fr.includes('culture__translated'))
+  assert.ok(!fr.includes('de.wikipedia.org'), 'source de absente de la page fr (balisage compris)')
+  assert.ok(!en.includes('de.wikipedia.org'))
 })

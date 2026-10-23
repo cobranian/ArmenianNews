@@ -8,8 +8,8 @@ export function Hero() {
   return (
     <header className="hero" id="top">
       <div className="container hero__frame">
-        {/* Trois écritures dans une seule ligne, identique sur les quatre
-            pages. Ni la famille ni la taille n'ont besoin de ce `lang` :
+        {/* Trois écritures dans une seule ligne, identique sur toutes
+            les pages. Ni la famille ni la taille n'ont besoin de ce `lang` :
             la pile de --font-mono résout chaque glyphe, et le
             `font-size-adjust: cap-height` posé sur .hero__kicker égalise les
             hauteurs de capitale police par police, à l'intérieur de la ligne.

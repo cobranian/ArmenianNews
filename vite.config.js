@@ -9,8 +9,10 @@ import { evenementComplet, eventLd } from './src/agendaEvents.js'
 import { SITES, primaryLang } from './sites.config.js'
 import { accountsOnly, newsForLangs } from './scripts/lib/light-data.mjs'
 import { TAB_ORDER } from './src/newsSources.js'
+import { contentLang } from './src/newsLangs.js'
 import { loadCulture } from './scripts/lib/culture-load.mjs'
 import { teaserFor } from './scripts/lib/culture-links.mjs'
+import { latestBrief } from './scripts/lib/brief-lead.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -88,7 +90,8 @@ function agendaEventsJsonLd() {
 // `enforce: 'pre'` pour passer avant le chargeur de fichiers de Vite ; les ids
 // sont comparés sur leur fin de chemin, parce que Vite les absolutise.
 function lightData() {
-  const langs = SITES[SITE_ID].pages.map((p) => p.lang)
+  // de/it lisent le fil français : c'est la langue de CONTENU qu'on embarque.
+  const langs = [...new Set(SITES[SITE_ID].pages.map((p) => contentLang(p.lang)))]
   const ends = (id, rel) => id.replace(/\\/g, '/').endsWith(rel)
   return {
     name: 'light-data',
@@ -128,7 +131,28 @@ function cultureTeaser() {
   }
 }
 
+// La brève du jour en tête de l'accueil de/it (BriefLead.jsx) : la dernière
+// brève de chaque langue de CETTE vitrine, réduite à sa date, son intro et
+// ses trois premiers titres. null → pas de bloc, et pas d'erreur : de/it se
+// bâtissent avant leur première brève.
+function briefLead() {
+  const ID = 'virtual:brief-lead'
+  const langs = SITES[SITE_ID].pages.map((p) => p.lang)
+  return {
+    name: 'brief-lead',
+    resolveId(id) {
+      return id === ID ? `\0${ID}` : null
+    },
+    async load(id) {
+      if (id !== `\0${ID}`) return null
+      const dir = join(__dirname, 'src/data/briefs')
+      const entries = await Promise.all(langs.map(async (l) => [l, await latestBrief(dir, l)]))
+      return `export default ${JSON.stringify(Object.fromEntries(entries))}`
+    },
+  }
+}
+
 export default defineConfig({
   base,
-  plugins: [react(), lightData(), cultureTeaser(), siteMeta(), agendaEventsJsonLd()],
+  plugins: [react(), lightData(), cultureTeaser(), briefLead(), siteMeta(), agendaEventsJsonLd()],
 })

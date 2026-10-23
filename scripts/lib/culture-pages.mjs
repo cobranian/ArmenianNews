@@ -16,7 +16,7 @@ import { cultureLangsBySlug } from './culture-links.mjs'
 import { longDate } from './brief-links.mjs'
 import { renderMarkdown } from './culture-markdown.mjs'
 import { esc, pageShell } from './static-shell.mjs'
-import { validEvent } from './culture-validate.mjs'
+import { validEvent, pageSources } from './culture-validate.mjs'
 
 // La vignette d'un article : son image copiée au build, ou le motif. Pas de
 // texte alternatif — le titre est juste à côté, le lecteur d'écran le lirait
@@ -127,17 +127,27 @@ function sourceLabel(x) {
   return x.lang ? ` (Wikipedia ${esc(x.lang)})` : ''
 }
 
+// de/it sont traduites du français sans relecture dans leur langue : la page
+// le dit sous le titre, avec un lien vers l'article français relu. Les autres
+// langues ont `translatedFrom: ''` et ne portent rien (spec 2026-10-23).
+function translatedFrom(lang, slug) {
+  const label = CULTURE_STRINGS[lang].translatedFrom
+  if (!label) return ''
+  return `<p class="culture__translated"><a href="${cultureUrl('fr', slug)}" hreflang="fr">${esc(label)}</a></p>`
+}
+
 export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now() }) {
   const s = CULTURE_STRINGS[lang]
   const a = article.langs[lang]
   const nb = neighbours(lang, article, list)
-  const sources = article.sources
+  const sources = pageSources(article.sources, lang)
     .map((x) => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.title ?? x.url)}</a>${sourceLabel(x)}</li>`)
     .join('')
   const body = `    <main class="container culture" data-culture="${article.slug}">
       <p class="culture__kicker"><a href="${culturePath(lang)}">${esc(s.title)}</a></p>
       <h1 class="culture__title">${esc(a.title)}</h1>
       <p class="culture__date"><time datetime="${a.date}">${esc(longDate(lang, a.date))}</time></p>
+      ${translatedFrom(lang, article.slug)}
       ${figure(lang, article)}
       <div class="culture__body">
 ${renderMarkdown(a.body)}

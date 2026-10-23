@@ -10,6 +10,9 @@ const LANG_NAME = {
   en: 'anglais',
   hy: 'arménien oriental (orthographe de la République d’Arménie)',
   ru: 'russe',
+  // Pour un lectorat suisse : la Suisse n'écrit jamais « ß ».
+  de: 'allemand de Suisse (orthographe suisse : jamais « ß », toujours « ss »)',
+  it: 'italien',
 }
 
 const JSON_SHAPE = 'Réponds UNIQUEMENT par un objet JSON {"title": "…", "description": "… (160 caractères au plus)", "body": "… (Markdown)"}, sans aucun texte autour.'
@@ -126,7 +129,11 @@ export function buildClaimsMessages(body) {
   ]
 }
 
-export function buildTranslateMessages({ lang, title, description, body }) {
+// `nameHint` : le titre de la page Wikipédia de la langue cible (sitelink du
+// qid), c'est-à-dire le nom en usage du sujet dans cette langue — « Komitas
+// Vardapet » en allemand. Un titre, jamais un texte : la traduction se fait
+// depuis le français relu, et depuis lui seul.
+export function buildTranslateMessages({ lang, title, description, body, nameHint = null }) {
   return [
     {
       role: 'system',
@@ -135,8 +142,11 @@ export function buildTranslateMessages({ lang, title, description, body }) {
         "Traduis fidèlement : n'ajoute, ne retire et ne commente rien.",
         'Garde la structure Markdown à l’identique (intertitres « ## », gras, italique, liens).',
         'Noms propres : la graphie établie dans la langue cible.',
+        nameHint ? `Le sujet s’appelle « ${nameHint} » dans la Wikipédia de cette langue : c’est son nom en usage, emploie-le.` : '',
         JSON_SHAPE,
-      ].join('\n'),
+      ]
+        .filter(Boolean)
+        .join('\n'),
     },
     { role: 'user', content: JSON.stringify({ title, description, body }) },
   ]

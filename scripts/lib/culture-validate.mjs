@@ -6,11 +6,32 @@
 // Une erreur est BLOQUANTE (langs vide) quand publier serait fautif : pas de
 // source à citer, licence d'image refusée, fichiers image absents, français
 // illisible. Une traduction absente ou périmée retire seulement sa langue.
+// Une NOTE n'est jamais bloquante : elle concerne une langue facultative
+// (de, it), que culture-check imprime sans échouer.
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
 import { parseFrontMatter, bodyHash } from './culture-markdown.mjs'
 import { isFreeLicense } from './culture-license.mjs'
 
+// TRANSLATED : toutes les langues que culture-translate produit depuis le
+// français. de et it y sont FACULTATIVES (spec 2026-10-23, « Culture de/it ») :
+// une langue que personne ne relit ne retient jamais un texte relu. Absentes,
+// périmées ou invalides, elles vont dans `notes`, jamais dans `errors` — ni
+// culture-check ni la PR fr/en/hy/ru n'en dépendent. REQUIRED garde la règle
+// d'avant.
+export const OPTIONAL = ['de', 'it']
 export const TRANSLATED = ALL_LANGS.filter((l) => l !== 'fr')
+export const REQUIRED = TRANSLATED.filter((l) => !OPTIONAL.includes(l))
+// La note d'une langue facultative simplement pas encore traduite : le cas
+// normal d'un article antérieur à de/it, que le build ne répète pas au log.
+export const ABSENT_NOTE = 'absent (traduction facultative)'
+
+// Les pages Wikipédia de/it (sitelinks du qid) ne servent QU'À leur
+// traduction : nom en usage et contrôle de recouvrement. Le brouillon
+// français n'en a rien lu — elles ne sont donc citées que sur la page de leur
+// langue, et jamais rendues au modèle qui rédige ou révise le français.
+const translationOnly = (s) => (s?.kind ?? 'wikipedia') === 'wikipedia' && OPTIONAL.includes(s?.lang)
+export const pageSources = (sources, lang) => sources.filter((s) => !translationOnly(s) || s.lang === lang)
+export const draftSources = (sources) => sources.filter((s) => !translationOnly(s))
 const DATE = /^\d{4}-\d{2}-\d{2}$/
 const nonEmpty = (v) => typeof v === 'string' && v.trim() !== ''
 
@@ -58,7 +79,7 @@ export function chosenImage(meta) {
 }
 
 export function validateArticle({ slug, meta, texts, images }) {
-  if (!CULTURE_SLUG.test(slug ?? '')) return { errors: [`slug invalide : ${slug}`], langs: {} }
+  if (!CULTURE_SLUG.test(slug ?? '')) return { errors: [`slug invalide : ${slug}`], notes: [], langs: {} }
   const fatal = []
   const errors = []
   if (!meta || meta.slug !== slug) fatal.push('meta.json absent, illisible ou de slug incohérent')
@@ -84,36 +105,39 @@ export function validateArticle({ slug, meta, texts, images }) {
   } catch (e) {
     fatal.push(`fr.md : ${e.message}`)
   }
-  if (fatal.length) return { errors: [...fatal, ...errors], langs: {} }
+  if (fatal.length) return { errors: [...fatal, ...errors], notes: [], langs: {} }
 
   const langs = { fr }
   const hash = bodyHash(fr.body)
   const frLinks = linkTargets(fr.body)
+  const notes = []
   for (const l of TRANSLATED) {
+    const optional = OPTIONAL.includes(l)
+    const report = optional ? notes : errors
     if (texts?.[l] == null) {
-      errors.push(`${l}.md absent — posez l'étiquette « traduire »`)
+      report.push(optional ? `${l}.md ${ABSENT_NOTE}` : `${l}.md absent — posez l'étiquette « traduire »`)
       continue
     }
     let t
     try {
       t = parseLang(texts[l])
     } catch (e) {
-      errors.push(`${l}.md : ${e.message}`)
+      report.push(`${l}.md : ${e.message}`)
       continue
     }
     if (t.sourceHash !== hash) {
-      errors.push(`${l}.md : traduction périmée — reposez l'étiquette « traduire »`)
+      report.push(`${l}.md : traduction périmée — reposez l'étiquette « traduire »`)
       continue
     }
     // Une traduction ne publie aucun lien que le français relu ne porte pas :
     // un lien inventé par le modèle n'a été vu par personne.
     if ([...linkTargets(t.body)].some((u) => !frLinks.has(u))) {
-      errors.push(`${l}.md : liens absents du français relu`)
+      report.push(`${l}.md : liens absents du français relu`)
       continue
     }
     langs[l] = t
   }
-  return { errors, langs }
+  return { errors, notes, langs }
 }
 
 // La case « Faits vérifiés » cochée. Seule définition : /corrige la décoche

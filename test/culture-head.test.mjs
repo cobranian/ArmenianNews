@@ -33,9 +33,10 @@ test('article sans image : carte de la vitrine', () => {
   assert.ok(h.includes('<meta property="og:image" content="https://armenianews.org/og-image-org.jpg" />'))
 })
 
-test('index : quatre langues, pas d’Article, robots transmis', () => {
+test('index : index non vides + lui-même, pas d’Article, robots transmis', () => {
   const h = cultureHeadFor({ siteId: 'org', lang: 'hy', bySlug, robots: 'noindex, follow' })
-  assert.equal(alts(h).length, 5)
+  assert.deepEqual(alts(h).map(([l]) => l), ['fr', 'en', 'hy', 'x-default'])
+  assert.deepEqual(alts(h), cultureAlternates(null, bySlug, 'hy'))
   assert.ok(!h.includes('"Article"'))
   assert.ok(h.includes('<meta name="robots" content="noindex, follow" />'))
   assert.ok(h.includes('<link rel="canonical" href="https://armenianews.org/hy/culture/" />'))

@@ -26,10 +26,16 @@ test('briefLangsByDate : langues présentes par date, ordre ALL_LANGS', () => {
   assert.deepEqual(m.get('2026-10-15'), ['en', 'hy'])
 })
 
-test('briefAlternates : index = quatre langues + x-default anglais', () => {
-  const alt = briefAlternates(null, briefLangsByDate(briefs))
-  assert.deepEqual(alt.map(([h]) => h), ['fr', 'en', 'hy', 'ru', 'x-default'])
+test('briefAlternates : index = langues qui ont une brève + x-default anglais', () => {
+  const byDate = briefLangsByDate(briefs)
+  const alt = briefAlternates(null, byDate, 'fr')
+  assert.deepEqual(alt.map(([h]) => h), ['fr', 'en', 'hy', 'x-default'])
   assert.equal(alt.at(-1)[1], briefUrl('en'))
+  // Réciprocité : chaque index cité cite exactement le même ensemble.
+  for (const l of ['fr', 'en', 'hy']) assert.deepEqual(briefAlternates(null, byDate, l), alt, l)
+  // Un index vide (noindex, jamais cité) se cite tout de même lui-même.
+  assert.deepEqual(briefAlternates(null, byDate, 'de').map(([h]) => h), ['fr', 'de', 'en', 'hy', 'x-default'])
+  assert.deepEqual(briefAlternates(null, new Map(), 'it'), [['it', briefUrl('it')]])
 })
 
 test('briefAlternates : page datée = langues présentes seulement', () => {
@@ -63,10 +69,10 @@ test('briefHeadFor : page datée', () => {
   assert.ok(h.includes('content="Intro hy"'))
 })
 
-test('briefHeadFor : index sans brève — description par défaut, quatre langues', () => {
+test('briefHeadFor : index sans brève — description par défaut, ne cite que lui-même', () => {
   const h = briefHeadFor({ siteId: 'ch', lang: 'fr', byDate: new Map() })
   assert.ok(h.includes(`<link rel="canonical" href="${briefUrl('fr')}" />`))
-  assert.equal((h.match(/hreflang=/g) || []).length, 5)
+  assert.deepEqual([...h.matchAll(/hreflang="([^"]+)"/g)].map((m) => m[1]), ['fr'])
   assert.ok(h.includes('<title>La brève du jour · Arménie Info</title>'))
   assert.ok(!h.includes('NewsArticle'))
 })

@@ -8,7 +8,7 @@ import { ALL_LANGS } from '../sites.config.js'
 // t() rend la clé elle-même si elle manque, et le prérendu cuirait
 // « rubric.economie » dans le HTML : chaque rubrique doit avoir un libellé non
 // vide dans chaque langue, ET i18n.jsx doit étaler chaque langue une fois.
-test('chaque rubrique a son libellé dans les quatre langues', () => {
+test('chaque rubrique a son libellé dans chaque langue', () => {
   for (const l of ALL_LANGS)
     for (const r of RUBRICS) assert.ok(RUBRIC_LABELS[l]?.[r]?.trim(), `${l}.${r}`)
 })

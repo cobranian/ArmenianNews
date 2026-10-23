@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
@@ -13,11 +14,11 @@ const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 // On lit i18n.jsx comme du texte (Node n'importe pas le JSX).
 const CLES = ['radio.remote.title', 'radio.remote.keys', 'radio.remote.skip', 'radio.remote.icon', 'radio.remote.prev', 'radio.remote.next']
 
-test('les quatre textes du bloc radio.remote existent dans les quatre langues', () => {
+test('les quatre textes du bloc radio.remote existent dans chaque langue', () => {
   const src = read('src/i18n.jsx')
   for (const cle of CLES) {
     const n = src.split(`'${cle}':`).length - 1
-    assert.equal(n, 4, `${cle} déclarée ${n} fois dans src/i18n.jsx, 4 attendues (fr, en, hy, ru)`)
+    assert.equal(n, BLOC_LANGS.length, `${cle} déclarée ${n} fois dans src/i18n.jsx, ${BLOC_LANGS.length} attendues (${BLOC_LANGS})`)
   }
 })
 

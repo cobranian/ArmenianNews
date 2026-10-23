@@ -30,6 +30,8 @@ const HOST = 'civilnet.am'
 // or opinion desk, the Armenian one runs Human rights where the others run
 // Society. Asking a language for a rubric it does not have returns an empty
 // feed that backfill would then mask forever.
+// Pas de de ni d'it, et c'est voulu : CivilNet n'a pas ces éditions, et
+// /de/ /it/ lisent le fil fr (CONTENT_LANG, src/newsLangs.js).
 export const CIVILNET_SECTIONS = {
   fr: ['politics', 'economy', 'society', 'region', 'civilnetcheck'],
   en: [

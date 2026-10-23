@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { mkdtemp, readFile, writeFile, mkdir, readdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
+import { selectArticles } from '../scripts/lib/brief-select.mjs'
 import {
   buildBriefMessages,
   parseBrief,
@@ -92,8 +93,8 @@ test('generateBriefs : écrit la brève due, saute les langues trop minces', asy
   const done = await generateBriefs({
     news, now: NOW, dir, apiKey: 'k', fetchImpl: fakeFetch(okReply, calls), log: quiet,
   })
-  assert.deepEqual(done, ['fr'])
-  assert.equal(calls.length, 1, 'en n’a qu’un article : pas d’appel')
+  assert.deepEqual(done, ['fr', 'de', 'it'], 'de et it lisent le fil français')
+  assert.equal(calls.length, 3, 'en n’a qu’un article : pas d’appel')
   assert.equal(calls[0].reasoning.enabled, false)
   const b = JSON.parse(await readFile(path.join(dir, 'fr', '2026-10-16.json'), 'utf-8'))
   assert.equal(b.date, '2026-10-16')
@@ -110,7 +111,7 @@ test('generateBriefs : jamais régénérée, rien avant 7 h, rien sans clé', as
   const calls = []
   assert.deepEqual(
     await generateBriefs({ news, now: NOW, dir, apiKey: 'k', fetchImpl: fakeFetch(okReply, calls), log: quiet }),
-    [],
+    ['de', 'it'], // fr existe déjà : seules les langues absentes sont rédigées
   )
   assert.equal(await readFile(path.join(dir, 'fr', '2026-10-16.json'), 'utf-8'), '{"keep":true}')
 
@@ -123,7 +124,7 @@ test('generateBriefs : jamais régénérée, rien avant 7 h, rien sans clé', as
   // `force` ignore l'heure (CLI), jamais l'existence du fichier.
   assert.deepEqual(
     await generateBriefs({ news, now: early, dir: dir2, apiKey: 'k', force: true, fetchImpl: fakeFetch(okReply, calls), log: quiet }),
-    ['fr'],
+    ['fr', 'de', 'it'],
   )
 
   const dir3 = await mkdtemp(path.join(tmpdir(), 'brief-'))
@@ -155,4 +156,87 @@ test('parseBrief : la rubrique est normalisée (casse, diacritiques)', () => {
   const b = parseBrief(JSON.stringify({ intro: 'i', topics: [topic([1], { rubric: 'Économie' }), topic([2], { rubric: ' POLITIQUE ' }), topic([3])] }), articles)
   assert.equal(b.topics[0].rubric, 'economie')
   assert.equal(b.topics[1].rubric, 'politique')
+})
+
+test('buildBriefMessages : allemand à la suisse et italien, titres sources à traduire', () => {
+  const [de] = buildBriefMessages('de', articles)
+  assert.match(de.content, /allemand/)
+  assert.match(de.content, /ss/)
+  assert.match(de.content, /traduis/)
+  const [it] = buildBriefMessages('it', articles)
+  assert.match(it.content, /italien/)
+  assert.match(it.content, /traduis/)
+  // Une langue qui lit son propre fil n'a pas cette consigne.
+  const [fr] = buildBriefMessages('fr', articles)
+  assert.doesNotMatch(fr.content, /traduis/)
+})
+
+test('selectArticles : de et it lisent les mêmes articles que fr', () => {
+  const urls = (l) => selectArticles(news, l, NOW).map((a) => a.url).sort()
+  assert.ok(urls('fr').length > 0)
+  assert.deepEqual(urls('de'), urls('fr'))
+  assert.deepEqual(urls('it'), urls('fr'))
+})
+
+test('generateBriefs : une langue sans consigne est signalée, sans appel réseau', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'brief-'))
+  const calls = []
+  const lines = []
+  const done = await generateBriefs({
+    news, now: NOW, dir, apiKey: 'k', fetchImpl: fakeFetch(okReply, calls),
+    langNames: { fr: 'français' },
+    log: { log: (m) => lines.push(m), warn: (m) => lines.push(m) },
+  })
+  assert.deepEqual(done, ['fr'])
+  assert.equal(calls.length, 1, 'seul fr a une consigne')
+  for (const l of ['de', 'it', 'en', 'hy', 'ru'])
+    assert.ok(lines.includes(`  · brief/${l}: pas de consigne`), l)
+  assert.deepEqual(await readdir(dir), ['fr'])
+})
+
+test('parseBrief : du français dans une brève de ou it est écarté, pas dans une brève fr', () => {
+  const fr = (t) => JSON.stringify({ intro: 'Intro', topics: [t, t, t] })
+  const french = topic([1], { title: 'Les liens entre Erevan', text: 'Une visite qui est dans les médias.' })
+  const rejected = []
+  assert.equal(parseBrief(fr(french), articles, 'it', rejected), null)
+  assert.ok(rejected.includes('les'))
+  assert.equal(parseBrief(fr(french), articles, 'de'), null)
+  assert.ok(parseBrief(fr(french), articles, 'fr'), 'en français, c’est la langue attendue')
+  const ok = topic([1], { title: 'Visita a Erevan', text: 'Il premier ministro ha ricevuto la procuratrice.' })
+  assert.ok(parseBrief(fr(ok), articles, 'it'))
+  // Une introduction française est vidée, comme une introduction à l'alphabet fautif.
+  const intro = JSON.stringify({ intro: 'Les sujets du jour sont dans la presse.', topics: [ok, ok, ok] })
+  assert.equal(parseBrief(intro, articles, 'it').intro, '')
+})
+
+test('parseBrief : prose valide de/it jamais prise pour du français', () => {
+  const run = (lang, t) => parseBrief(JSON.stringify({ intro: 'Intro', topics: [t, t, t] }), articles, lang)
+  // « des » (génitif) et « du » (pronom) sont allemands.
+  assert.ok(run('de', topic([1], { title: 'Die Regierung des Landes', text: 'Der Chef des Amts sagt: du siehst, des Präsidenten Wort gilt.' })))
+  // « qui » (ici) et « Est » (point cardinal) sont italiens.
+  assert.ok(run('it', topic([1], { title: 'Nell’Est del paese', text: 'Siamo qui, e l’Est resta qui vicino.' })))
+  // Un nom propre français (initiales capitales) n'est pas une fuite de français.
+  const t = topic([1], { title: 'Les Arméniens de France', text: 'Die Gemeinde feiert heute ihr Jubiläum in Paris.' })
+  assert.ok(run('de', t))
+})
+
+test('parseBrief : un sujet tout en français reste écarté en de et en it', () => {
+  const fr = topic([1], { title: 'Une visite pour tous', text: 'Les ministres sont dans la capitale avec leurs équipes.' })
+  const arr = JSON.stringify({ intro: 'Intro', topics: [fr, fr, fr] })
+  assert.equal(parseBrief(arr, articles, 'de'), null)
+  assert.equal(parseBrief(arr, articles, 'it'), null)
+})
+
+test('parseBrief : un sujet français rejeté même quand ses titres sources le sont aussi', () => {
+  const src = [
+    { id: 1, source: 'armenpress', rubric: 'politique', url: 'https://r/1', date: 'x', title: 'Les ministres des affaires étrangères sont dans la capitale pour une visite sur la paix' },
+    { id: 2, source: 'civilnet', rubric: 'politique', url: 'https://r/2', date: 'x', title: 'Les ONG ont été reçues par le gouvernement avec leurs équipes entre deux réunions' },
+  ]
+  const t = topic([1, 2], {
+    title: 'Une visite pour tous',
+    text: 'Les ministres sont dans la capitale avec leurs équipes, et que les ONG ont été reçues sur place.',
+  })
+  const reply = JSON.stringify({ intro: 'Intro', topics: [t, t, t] })
+  assert.equal(parseBrief(reply, src, 'de'), null)
+  assert.equal(parseBrief(reply, src, 'it'), null)
 })

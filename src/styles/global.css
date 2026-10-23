@@ -103,9 +103,9 @@
 
      C'est pour cela qu'on ne fait pas ce travail en :lang().
      Certaines lignes mêlent trois écritures — le surtitre du héros
-     « ՀԱՅԱՍՏԱՆ · ARMENIA · ARMÉNIE », les quatre pastilles
-     « EN FR ՀԱՅ РУ » — et elles sont présentes sur les QUATRE
-     pages : un :lang() ne peut pas être juste pour les trois à la
+     « ՀԱՅԱՍՏԱՆ · ARMENIA · ARMÉNIE », les pastilles de langue
+     « FR DE IT EN ՀԱՅ РУ » — et elles sont présentes sur TOUTES
+     les pages : un :lang() ne peut pas être juste pour toutes à la
      fois. La pile, si. :lang() ne sert donc qu'aux réglages qui
      sont vraiment par langue (approche, interlignage).
 
@@ -564,6 +564,14 @@ html:lang(hy) {
   margin: 0;
   padding: 0;
 }
+/* Les deux pastilles de/it ont pris 80px au sélecteur : les libellés
+   arméniens, les plus longs (« Միջոցառումներ », 132px), ne tenaient plus sur
+   un rang à 1400px — la barre de /hy/ passait à 79px de haut, seule des trois
+   pages du .org. Un écart resserré pour l'arménien seul rend la ligne d'avant
+   (mesuré : 21px de marge à 1400), sans toucher en ni ru. */
+html:lang(hy) .nav__links {
+  column-gap: clamp(12px, 1.6vw, 22px);
+}
 .nav__links a {
   position: relative;
   color: var(--text-soft);
@@ -635,6 +643,127 @@ html:lang(hy) {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+}
+
+/* Le groupe de droite de la nav : thème, langues, menu. */
+.nav__tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ---------- Sélecteur de langue replié (Nav.jsx) ----------
+   Six pastilles, la marque, le thème et le menu ne tiennent pas sur un
+   téléphone : mesuré à 427px de large à 360 ET 390, page défilable de côté.
+   Sous 900px, un seul bouton porte la langue courante et déplie les six
+   pastilles dans une bande sous la barre — le même vocabulaire que le menu
+   (fond, filet bas), pour que les deux replis se lisent comme un système.
+
+   Pourquoi 900 et pas la bascule mobile (640) : entre le burger (760) et
+   ~900px, les 251px du sélecteur à six pastilles faisaient passer les liens
+   sur TROIS ou quatre rangs (barre de 109 à 139px, mesuré sur les six
+   langues), là où la barre à quatre pastilles s'arrêtait à deux (79px).
+   Replié jusqu'à 900, aucune langue ne dépasse deux rangs.
+
+   Au-dessus, les deux enveloppes sont en `display: contents` : la barre de
+   bureau est exactement celle d'avant, .lang reste enfant direct du groupe.
+
+   Replié SEULEMENT sous html.js (theme-init.js) : sans JavaScript le bouton ne
+   ferait rien, la bande serait inatteignable. Le repli sans JS laisse donc les
+   pastilles en place et fait passer le groupe de droite sur deux rangs.
+
+   Bande fermée en `visibility: hidden` et non en opacité : un menu fermé ne
+   doit pas garder six liens invisibles dans le parcours du clavier (l'inverse
+   du piège du tambour, où l'élément masqué devait RESTER focusable). */
+.lang-fold,
+.lang-fold__panel {
+  display: contents;
+}
+.lang-fold__toggle {
+  display: none;
+  appearance: none;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--apricot-ink);
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 13px 6px 15px;
+  cursor: pointer;
+  transition: border-color 0.18s var(--ease);
+}
+.lang-fold__toggle span:lang(hy) {
+  font-weight: 500;
+}
+/* Le chevron : un coin de filet, pas un glyphe — « ▾ » n'existe pas dans
+   Space Mono et tomberait sur une police de secours différente par système. */
+.lang-fold__toggle::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid var(--apricot-deep);
+  border-bottom: 1.5px solid var(--apricot-deep);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.25s var(--ease);
+}
+.lang-fold.is-open .lang-fold__toggle {
+  border-color: var(--line-apricot);
+}
+.lang-fold.is-open .lang-fold__toggle::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+[data-theme='light'] .lang-fold__toggle {
+  background: rgba(36, 27, 16, 0.04);
+}
+
+@media (max-width: 900px) {
+  html:not(.js) .nav__tools {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 8px;
+  }
+  html.js .lang-fold {
+    display: block;
+  }
+  html.js .lang-fold__toggle {
+    display: inline-flex;
+  }
+  html.js .lang-fold__panel {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 14px clamp(20px, 5vw, 56px) 16px;
+    background: rgba(16, 15, 13, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.22s var(--ease),
+      transform 0.22s var(--ease),
+      visibility 0s linear 0.22s;
+  }
+  html.js .lang-fold.is-open .lang-fold__panel {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+  /* `html.js` dans le sélecteur : sans lui, la règle du thème clair perd à
+     spécificité contre celle du repli ci-dessus (bande sombre en mode jour). */
+  html.js[data-theme='light'] .lang-fold__panel {
+    background: rgba(244, 237, 219, 0.97);
+  }
 }
 
 .theme-toggle {
@@ -1474,6 +1603,12 @@ html:lang(hy) .nav__brand {
 }
 .newsfeed__source .shelf {
   margin-bottom: 0;
+}
+/* « Artikel auf Französisch » (de/it) : une note sur TOUT le panneau, pas le
+   titre d'une étagère. Calée à gauche, elle se lisait comme une tête de
+   section orpheline sous un rail et un tambour centrés. */
+.newsfeed__source > .section__eyebrow {
+  text-align: center;
 }
 @keyframes newsfeed-fade {
   from { opacity: 0; transform: translateY(6px); }
@@ -3506,14 +3641,23 @@ html.js .reveal.is-visible {
   .nav__toggle {
     padding: 11px 14px;
   }
-  /* 12px of side padding: with 4 pills (FR EN ՀԱՅ РУ) the theme toggle +
-     lang pill + hamburger now overflow a 360px viewport at 15px padding —
+  /* 12px of side padding: with the language pills, the theme toggle +
+     lang pill + hamburger overflowed a 360px viewport at 15px padding —
      measured 366px scrollWidth. 12px keeps the row on one line; the tallest
      label ("ՀԱՅ") still sets the row height. Don't go below 12px — "FR" is
      already the narrowest chip and its tap width is at the floor here. */
   .lang button,
   .lang a {
     padding: 14px 12px;
+    /* « FR », « DE », « IT », « EN » et « РУ » ne faisaient que 40px de
+       large à 12px de rembourrage : la hauteur tenait le plancher, pas la
+       largeur. Centré, le libellé ne bouge pas. */
+    min-width: 44px;
+    justify-content: center;
+  }
+  .lang-fold__toggle {
+    min-height: 44px;
+    padding: 0 15px 0 17px;
   }
   .shelf__arrow {
     width: 44px;
@@ -4221,7 +4365,24 @@ html.js .reveal.is-visible {
   margin: 0.2em 0 0.3em;
   text-wrap: balance;
 }
+/* Les composés allemands (« Musikwissenschaftsgeschichte », 28 lettres)
+   dépassent une ligne de titre à 360px : la page devenait défilable de côté
+   (mesuré 450px sur un article Culture). La césure par dictionnaire d'abord,
+   la coupe brute en dernier recours si le navigateur n'a pas le dictionnaire.
+
+   Limité aux titres RÉDIGÉS EN ALLEMAND par le site : titre et intertitres
+   d'un article Culture traduit, titre, date et sujets d'une brève. Pas une
+   règle sur tous les h1–h3 de /de/ : les titres d'événements de l'agenda
+   (Agenda.jsx, AgendaPage.jsx) viennent d'Armenopole, en français ou autre,
+   sans lang propre — ils seraient coupés selon les motifs allemands, et
+   `hyphens: auto` coupe aussi en fin de ligne ordinaire, pas seulement quand
+   un mot déborde. Le fil d'actualités porte lang="fr" et n'est pas concerné. */
+:lang(de):is(.culture__title, .culture__body h2, .culture__body h3, .brief__heading, .brief__date, .brief__topic-title) {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
 .culture__date,
+.culture__translated,
 .culture__credit,
 .culture__sources,
 .culture__event {
@@ -4605,6 +4766,112 @@ img.culture-thumb {
   .cc__read,
   .culture__kicker a,
   .culture__sources a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* La brève du jour en tête de l'accueil de/it (BriefLead.jsx). Une manchette
+   de dernière heure : un filet abricot au-dessus, la date en grand à gauche
+   — le seul élément appuyé —, l'intro et trois titres à droite, séparés par
+   un filet. Un téléphone empile les deux colonnes. Le bas est plus court
+   que le haut : le direct qui suit a son propre fond et son rembourrage,
+   et les deux s'empilent (voir .section). */
+.brief-lead {
+  padding-block: clamp(36px, 5vw, 64px) clamp(24px, 3vw, 40px);
+}
+.brief-lead > * {
+  min-width: 0;
+}
+.brief-lead__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  margin: 0 0 18px;
+  padding-top: 18px;
+  border-top: 2px solid var(--apricot);
+}
+.brief-lead__label {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--apricot-ink);
+}
+.brief-lead__date {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: clamp(2rem, 4.4vw, 3.3rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: calc(-0.02em * var(--track-scale));
+  color: var(--text);
+}
+.brief-lead__intro {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 62ch;
+  margin: 0 0 1.1em;
+}
+.brief-lead__topics {
+  list-style: none;
+  margin: 0 0 1.2em;
+  padding: 0;
+}
+.brief-lead__topic {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: var(--text);
+  padding: 0.65em 0;
+  border-top: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.brief-lead__topic:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.brief-lead__read {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.brief-lead__read:hover,
+.brief-lead__read:focus-visible {
+  color: var(--apricot-ink-strong);
+  border-color: currentColor;
+}
+@media (min-width: 900px) {
+  .brief-lead {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+  .brief-lead__head {
+    margin: 0;
+    padding-right: clamp(28px, 4vw, 64px);
+  }
+  .brief-lead__body {
+    padding-left: clamp(28px, 4vw, 64px);
+    border-left: 1px solid var(--line-apricot);
+    padding-top: 20px;
+  }
+}
+@media (pointer: coarse) {
+  .brief-lead__read {
     min-height: 44px;
     display: inline-flex;
     align-items: center;

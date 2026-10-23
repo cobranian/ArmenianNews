@@ -52,6 +52,7 @@ jobs:
           gh pr view "$PR" --json headRefName,state,isCrossRepository,body > "$RUNNER_TEMP/pr.json"
           BRANCH="$(jq -r .headRefName "$RUNNER_TEMP/pr.json")"
           case "$BRANCH" in
+            culture/backfill-*) echo "Rattrapage de/it, pas un article : rien à faire."; exit 0 ;;
             culture/*) ;;
             *) echo "Branche hors Culture : rien à faire."; exit 0 ;;
           esac

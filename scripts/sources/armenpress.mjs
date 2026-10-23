@@ -23,7 +23,9 @@ const BASE = 'https://armenpress.am'
 const HOST = 'armenpress.am'
 
 // Quatre éditions — fr/en/hy/ru — qui mappent 1:1 à la langue de l'interface,
-// contrairement à ArmRadio (pas d'édition française).
+// contrairement à ArmRadio (pas d'édition française). Ni de ni it, et c'est
+// voulu : Armenpress n'a pas ces éditions, et /de/ /it/ lisent le fil fr
+// (CONTENT_LANG, src/newsLangs.js).
 export const ARMENPRESS_LANGS = ['fr', 'en', 'hy', 'ru']
 
 // The seven rubrics of the site's own main nav, in its order. The key is the

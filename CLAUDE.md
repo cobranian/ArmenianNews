@@ -39,11 +39,11 @@ Où va le reste : le **récit** d'un chantier dans son message de commit ; le
 
 **Arménie Info** (`armenieinfo.ch`) et **Armenia News** (`armenianews.org`) —
 deux vitrines d'un **même instantané horaire** de la vie arménienne, servies
-depuis une seule base de code. Le .ch sert le français ; le .org sert l'anglais
-(`/`), l'arménien (`/hy/`) et le russe (`/ru/`). Actualités, agenda et réseaux
-sociaux, dans une esthétique de journal « Apricot Press » (basalte volcanique
-éclairé d'abricot), avec une bascule **jour / nuit**. À elles deux, les
-vitrines couvrent quatre langues : **Français / English / Հայերեն / Русский**.
+depuis une seule base de code. Le .ch sert le français (`/`), l'allemand
+(`/de/`) et l'italien (`/it/`) ; le .org l'anglais (`/`), l'arménien (`/hy/`)
+et le russe (`/ru/`) — six langues, 24 pages (6 × 4 vues). Actualités, agenda
+et réseaux sociaux, esthétique de journal « Apricot Press » (basalte éclairé
+d'abricot), bascule **jour / nuit**.
 
 Une tâche planifiée récupère les sources une fois par heure dans des fichiers
 JSON ; le site est une application statique **Vite + React** qui affiche ces
@@ -69,28 +69,28 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 16 pages produites (4 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
-npm run prerender    # cuit les 16 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
+npm run check        # contrôle les 24 pages produites (6 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
+npm run prerender    # cuit les 24 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 560 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 626 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
 npm run brief         # générer la brève du jour hors du scrape (--force ignore la règle des 7 h, --dry n'écrit rien)
 npm run culture:draft     # rédiger le brouillon Culture du jour (quotidien, 03:00 UTC) (--topic slug, --dry) — Gemini, GEMINI_API_KEY
-npm run culture:translate # traduire le fr.md relu d'un article en en/hy/ru (slug)
+npm run culture:translate # traduire le fr.md relu en en/hy/ru, et de/it facultatives (slug [--langs de,it])
 npm run culture:check     # contrôle strict des articles Culture (celui des PR)
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
-npm run hydration-check # après build + prerender : les 16 pages s'hydratent-elles sans écart ? (local, Chrome)
+npm run hydration-check # après build + prerender : les 24 pages s'hydratent-elles sans écart ? (local, Chrome)
 npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **560 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **626 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -105,7 +105,7 @@ voir « À savoir »), et les deux dérivations des verticales héritées de NEW
 (`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
 publication, et la date de med recomposée en chiffres), et l'appariement d'URL
 qui date les articles du Courrier (`test/courrier-dates.test.mjs`, voir
-« À savoir »), et les cinq brins du mur Instagram — leur déclaration en quatre
+« À savoir »), et les cinq brins du mur Instagram — leur déclaration en six
 langues, le tirage à la ronde et l'exclusion du pool
 (`test/instagram-strands.test.mjs`, `test/instagram-draw.test.mjs`,
 `test/instagram-pool.test.mjs`), et les rubriques communes du fil
@@ -142,15 +142,10 @@ pas mécaniquement :
   motif React standard pour un contexte ; l'avertissement ne concerne que le
   rafraîchissement à chaud en développement.
 
-  `i18n.jsx` en portait **deux** — `LANGS` déclaré en dur et `useI18n` — sur les
-  quatre que totalisait la ligne combinée avec `motifs.jsx`. La liste vit
-  désormais dans `sites.config.js` (racine), parce que Node doit pouvoir la
-  lire sans passer par un parseur JSX ; `i18n.jsx` se contente de la
-  **ré-exporter** (`export { LANGS }`), et une ré-exportation ne déclenche pas
-  la règle. Le décompte a donc **baissé** de 6 à 5 : c'est une amélioration, pas
-  une régression. Ne remettez pas `LANGS` en dur dans `i18n.jsx` pour
-  « simplifier » — cela recasserait le build à deux vitrines et les tests qui
-  vérifient que `sites.config.js` et `LANGS` décrivent les mêmes langues.
+  `LANGS` vit dans `sites.config.js` (Node doit le lire sans parseur JSX) et
+  `i18n.jsx` le **ré-exporte** (`export { LANGS }`), ce qui ne déclenche pas la
+  règle. Ne le remettez pas en dur dans `i18n.jsx` : un avertissement de plus,
+  et le build à deux vitrines recassé.
 
 ## Architecture
 
@@ -238,7 +233,7 @@ composants importent au build :
     - **Les libellés de rubrique voyagent dans les données** (`{ categoryKey,
       label, articles }`), pas via `t('…cats.*')` : chaque édition ne s'affiche
       que sous sa langue (les rubriques anglaises sous `en`, arméniennes sous
-      `hy`), donc router un libellé unilingue à travers les quatre dictionnaires
+      `hy`), donc router un libellé unilingue à travers les six dictionnaires
       i18n n'aurait aucun sens. Les images anglaises hotlinkent en direct côté
       navigateur (`media.asbarez.com` répond 200 depuis une IP résidentielle — le
       lecteur n'est pas en datacenter ; la CSP autorise déjà tout https).
@@ -460,8 +455,8 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 
 - `scripts/lib/site-meta.mjs` génère le `<head>` d'un couple (site, langue).
   Appelé par le plugin `siteMeta()` de `vite.config.js` pour la page par défaut
-  de chaque site, **et** par `scripts/build-sites.mjs` pour dériver `/hy/` et
-  `/ru/`. Un seul générateur pour les quatre pages : des `hreflang` divergents
+  de chaque site, **et** par `scripts/build-sites.mjs` pour dériver les autres.
+  Un seul générateur pour les 24 pages : des `hreflang` divergents
   sont ignorés en bloc par Google. Il pose aussi la balise **Cloudflare Web
   Analytics** (marqueur `<!--CF_BEACON-->` dans `index.html`) à partir du
   `cfBeaconToken` de la vitrine : **un jeton par site**, donc deux tableaux de
@@ -519,7 +514,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   desquels WhatsApp cesse de chercher l'image.
 
   **Ce bloc doit être écrit DEUX fois, et l'oublier une fois ne se voit
-  nulle part.** `site-meta.mjs` le pose sur les douze pages React — et il ne
+  nulle part.** `site-meta.mjs` le pose sur les 24 pages React — et il ne
   voit **pas** `pages/`, dont les cartes de liens sont des HTML complets hors
   du bundle. Le bloc y a donc été recopié à la main, et il faut le tenir à
   jour des deux côtés. Le défaut a réellement été commis : l'accueil décrivait
@@ -528,7 +523,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   signaler : la page était valide, simplement moins bien décrite que sa
   jumelle, et le seul symptôme était une petite carte chez un lecteur.
   `check-build.mjs` exige désormais les six balises sur **chaque** carte de
-  liens, en plus des douze pages.
+  liens, en plus des 24 pages.
 
   **Ne concluez pas d'une seule capture.** Un aperçu petit après un aperçu
   grand peut n'être qu'un changement de client : mesurez la largeur de la
@@ -581,27 +576,27 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   page), l'`og:image` et l'absence du domaine ou de la carte du voisin.
 
   **Le nombre de radios est écrit en toutes lettres** dans ces cartes et dans
-  les quatre `radio.subtitle` (`t()` ne sait pas interpoler). Rien ne les relie
+  les six `radio.subtitle` (`t()` ne sait pas interpoler). Rien ne les relie
   au tableau `STATIONS` de `Radio.jsx` : `test/radio-count.test.mjs` compte les
-  stations et échoue si les six textes divergent. Sans lui, une seizième
-  station ferait mentir six textes en quatre langues, en silence.
+  stations et échoue si un texte diverge. Sans lui, une dix-huitième
+  station ferait mentir ces textes en six langues, en silence.
 - `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
   processus fils — la config de Vite est mise en cache par processus), dérive
   les pages supplémentaires à partir du HTML déjà bâti (pas un rebuild par
   page — juste un échange de métadonnées entre les sentinelles que pose
   `site-meta.mjs`), puis écrit sitemap et robots par vitrine. Une assertion en
   tête du script vérifie que `sites.config.js` et `LANGS` décrivent
-  exactement les mêmes langues — sans elle, ajouter une cinquième langue à
+  exactement les mêmes langues — sans elle, ajouter une langue à
   `LANGS` la rendrait traduite partout et joignable nulle part, en silence.
 - `src/seo.js` porte les chaînes de titre et de description par langue. **JS
-  plat, sans React**, parce que Node doit les lire pour générer `/hy/` et
-  `/ru/` hors du bundle. Même raison que `src/worldPlace.js` — ne le
+  plat, sans React**, parce que Node doit les lire pour générer les pages
+  dérivées hors du bundle. Même raison que `src/worldPlace.js` — ne le
   reconsolidez pas dans `i18n.jsx`.
 - `src/site.js` porte `SITE_ID` (quelle vitrine ce build produit, posé par
   `scripts/build-sites.mjs` via `VITE_SITE_ID` ; `npm run dev` n'en pose pas et
   travaille donc sur le .ch) et `orderedLangs()`, qui place la langue de tête
   du domaine en premier dans le sélecteur sans changer l'ordre relatif des
-  autres — sur les trois pages du .org la barre reste « EN FR ՀԱՅ РУ », seule
+  autres — sur les trois pages du .org la barre reste « EN FR DE IT ՀԱՅ РУ », seule
   la mise en évidence se déplace. Module plat lui aussi, pour la même raison
   que `src/seo.js` : y ajouter ces exports dans `i18n.jsx` ferait remonter le
   lint d'un avertissement `react-refresh` de plus (voir la section Lint).
@@ -647,10 +642,10 @@ dehors des tests.
 Les slugs restent en **caractères latins** : un slug en écriture arménienne
 partirait en pourcent-encodage (`/hy/%D5%BC%D5%A1...`), illisible dans un
 partage, pour aucun gain de classement. Mais ils sont **traduits là où le mot
-change la requête** — `radio` s'écrit pareil dans les quatre langues, alors que
-`agenda` devient `events` en anglais, arménien et russe : en anglais, « agenda »
-désigne un ordre du jour ou un mobile, jamais une liste d'événements, et c'est
-« events » que les gens tapent.
+change la requête** — `radio` s'écrit pareil dans les six langues, alors que
+`agenda` devient `events` (en/hy/ru), `veranstaltungen`, `eventi` : en
+anglais « agenda » désigne un ordre du jour ou un mobile, jamais une liste
+d'événements, et c'est « events » que les gens tapent.
 
 **Le slug porte son slash final** (`radio/`, `agenda/`, `events/`), et ce n'est
 pas cosmétique. Une vue est servie par un dossier (`dist/ch/radio/index.html`),
@@ -663,7 +658,7 @@ curl -I https://armenianews.org/hy   → 301 https://armenianews.org/hy/
 curl -I https://armenianews.org/hy/  → 200
 ```
 
-Un slug sans ce slash aurait donc déclaré, sur les douze pages (`canonical`,
+Un slug sans ce slash aurait donc déclaré, sur toutes les pages (`canonical`,
 les `hreflang`, `og:url`, le JSON-LD, les deux sitemaps, les liens internes),
 une adresse qui **redirige** vers celle réellement servie — aucune page ne se
 serait citée elle-même à son URL finale. Ce piège a réellement été commis
@@ -678,16 +673,19 @@ bord retiré des deux côtés) au chemin, pas le slug brut au chemin — compare
 
 **Internationalisation** — `src/i18n.jsx` expose un contexte React
 (`useI18n()` → `{ t, lang, formatDate, locale }`) avec les dictionnaires
-**fr / en / hy / ru**. `LANGS` vit dans `sites.config.js` et `i18n.jsx` se
-contente de le ré-exporter (voir la section Lint) ; ajouter une langue touche
-donc trois fichiers : une entrée dans `LANGS` **et** une page dans `SITES`
-(`sites.config.js`), un bloc `STRINGS` complet (mêmes clés que `fr`, sinon
-repli silencieux sur le français) et son `LOCALES` (`i18n.jsx`), et un bloc
-`SEO` avec son `OG_LOCALE` (`src/seo.js`). **La langue vient de l'URL, plus de
-`localStorage`** : chaque langue a sa propre adresse, et `LanguageProvider` la
-lit une fois au montage via `langFromPath(SITE_ID, location.pathname)` — il n'y
-a plus de `setLang` à appeler, le sélecteur de `Nav.jsx` est un jeu de liens
-(`<a href={LANG_URL[l.code]}>`) qui navigue vers l'URL de chaque langue. Seul
+**fr / de / it / en / hy / ru**. Ajouter une langue touche une quinzaine
+d'endroits, la plupart muets s'ils manquent : `sites.config.js` (`ALL_LANGS`,
+`LANGS`, une page dans `SITES`, `VIEWS`, `BRIEF_SLUGS`, `CULTURE_SLUGS`,
+`LANG_SWITCH_LABEL`) ; un bloc `STRINGS` complet (mêmes clés que `fr`, sinon
+repli silencieux sur le français) et son `LOCALES` (`i18n.jsx`) ; `SEO` et
+`OG_LOCALE` (`src/seo.js`) ; `briefStrings`, `cultureStrings`, `rubricLabels`,
+`worldPlace`, `relativeTime` (`src/`) ; `PRELOAD` (`site-meta.mjs`) ;
+`LANG_NAME` (`brief-generate.mjs`) et les marqueurs de `brief-script.mjs` ; les
+`redirects` de `firebase.json` (deux cibles) ; `OPTIONAL` / `REQUIRED`
+(`culture-validate.mjs`) ; `CONTENT_LANG` sans fil propre (voir « À savoir »).
+**La langue vient de l'URL** : `LanguageProvider` la lit au montage
+(`langFromPath(SITE_ID, location.pathname)`), le sélecteur de `Nav.jsx` est un
+jeu de liens vers `LANG_URL`. Seul
 le **chrome de l'interface** est traduit ; le **contenu** (articles, posts)
 reste dans sa langue d'origine — un lecteur russe voit Armenpress **et**
 ArmRadio en russe, mais Courrier (et les autres sources francophones) en
@@ -724,7 +722,7 @@ propose, en se purgeant des pays sans événement.
 canonique (`location` d'abord — « Erevan » → `armenia`, « Angleterre » →
 `unitedkingdom` —, puis le slug `country`, et en dernier recours le texte brut
 plié), `countryLabel(key, lang)` / `countryFlag(key)` la rendent. **Le nom de
-pays du sélecteur EST localisé dans les quatre langues** (fr compris) : c'est du
+pays du sélecteur EST localisé dans les six langues** (fr compris) : c'est du
 chrome d'interface (un libellé de contrôle), pas du contenu d'article. Le
 **badge** de chaque carte, lui, garde le texte `location` brut (« Genève »,
 « Erevan », « Angleterre ») pour toutes les langues — non redondant avec le pays
@@ -744,8 +742,8 @@ la palette « abricot sur basalte » y sont définies.
 
 **Une convention du fichier à ne pas casser : chaque `font-family:
 var(--font-X)` est immédiatement suivie de son `font-size-adjust:
-var(--fsa-X)`** — 22 paires pour le display, 47 pour l'utilitaire, 7 pour le
-corps. C'est ce qui donne aux quatre langues la même taille *vue* alors que
+var(--fsa-X)`** — 31 paires pour le display, 57 pour l'utilitaire, 13 pour le
+corps. C'est ce qui donne aux six langues la même taille *vue* alors que
 chaque écriture a sa propre hauteur d'œil (le russe rendait 7 % plus gros, les
 titres arméniens et russes 4,3 %). Le raisonnement complet, les mesures et les
 deux pièges — la métrique *déclarée* des Noto arméniens est leur métrique
@@ -821,7 +819,7 @@ Cinq choses à savoir avant d'y toucher, toutes payées une fois :
   défileur, et un défileur a un début et une fin. Les contournements connus
   triplent la liste dans le DOM — inacceptable ici, puisque ce sont les mêmes
   `<button role="tab">` qui servent de rail horizontal sur large écran et que
-  `npm run prerender` cuit dans les douze pages. La roue est donc pilotée à la
+  `npm run prerender` cuit dans les 24 pages. La roue est donc pilotée à la
   main sur les éléments réels.
 - **Le repli sans JavaScript est porté par le CSS.** C'est le hook qui pose la
   classe `is-drum` ; son **absence** déclenche le repli (une liste plate,
@@ -848,7 +846,7 @@ les neuf rubriques ne tiennent pas sur une ligne, **à toute largeur d'écran**.
 La règle d'avant promettait « centrées quand elles tiennent, défilantes sinon » —
 le premier cas ne se produisait jamais, et on payait 14px de barre de défilement
 système au milieu d'une manchette. `column-gap: clamp(14px, 5vw, 64px)` est
-**mesuré, pas choisi** : c'est l'écart qui place la césure, et les quatre langues
+**mesuré, pas choisi** : c'est l'écart qui place la césure, et les langues
 n'ont pas les mêmes libellés — mesuré à 1400px le 15 octobre 2026 : fr 7+2,
 en 7+2, hy 5+4, ru 6+2 (huit rubriques : l'une est vide). Le découpage **suit le
 nombre de rubriques affichées par langue**, pas les sources : une mesure à
@@ -1311,8 +1309,8 @@ de production servent toujours depuis la racine de leur domaine.
   l'arménien n'a pas d'italique de tradition. Le dégradé abricot, lui, reste.
   Si cette marque repasse un jour en latin, ces trois exceptions redeviennent
   inutiles.
-- **Les `hreflang` doivent rester réciproques.** Les quatre `alternate` plus
-  `x-default` sont identiques sur les quatre pages, chacune se citant
+- **Les `hreflang` doivent rester réciproques.** Les six `alternate` plus
+  `x-default` sont identiques sur les six pages d'une vue, chacune se citant
   elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc
   par Google — silencieusement. C'est pourquoi un seul générateur les produit.
 - **`firebase.json` n'a plus de rewrite `**` → `index.html`, et ne doit pas le
@@ -1406,25 +1404,27 @@ de production servent toujours depuis la racine de leur domaine.
   longue, et **refermée toute seule au retour**. Ne la remplacez pas par un
   échec de job : le déploiement doit continuer, un prérendu manqué ne dégrade
   que le SEO. La capture d'écran, elle, n'a **pas** d'alerte équivalente.
-- **Une troisième liste de langues existe, et elle n'est pas fausse.**
-  `ARMENPRESS_LANGS` (`scripts/sources/armenpress.mjs`) est distincte de
-  `LANGS` et `ALL_LANGS` (`sites.config.js`) : elle décrit les éditions
-  Armenpress à scraper, pas les langues d'interface — une distinction qui tient
-  aujourd'hui parce que les deux listes se recouvrent exactement. L'assertion
-  de `scripts/build-sites.mjs` ne couvre que `sites.config.js` et `LANGS`.
-  Ajouter une cinquième langue d'interface sans toucher `ARMENPRESS_LANGS`
-  laisserait Armenpress scraper une édition manquante en silence pour cette
-  langue — rien ne le rappellera. `CIVILNET_SECTIONS`
-  (`scripts/sources/civilnet.mjs`) est un quatrième tableau du même genre : ses
-  clés sont les éditions CivilNet, et ses valeurs les rubriques propres à
-  chacune. Même angle mort, même conséquence.
+- **`CONTENT_LANG` (`src/newsLangs.js`) décide de trois choses à la fois.**
+  `{ de: 'fr', it: 'fr' }` : de et it n'ont pas de fil propre. Cette table fait
+  lire le fil français à leurs pages (`TAB_ORDER.de = TAB_ORDER.fr`), fait
+  résumer à leur brève les articles **français** (`brief-generate.mjs`), et
+  décide de ce que le bundle du .ch **embarque** (`lightData()` filtre par
+  langue de contenu — son `news.json` allégé est resté octet pour octet celui
+  d'avant de/it). Y toucher change les trois d'un coup. `ARMENPRESS_LANGS` et
+  `CIVILNET_SECTIONS` listent des **éditions** de source, pas des langues
+  d'interface : ni de ni it, à dessein, et l'assertion de `build-sites.mjs` ne
+  les couvre pas. Enfin, les traductions de/it (brève, Culture) sont
+  **facultatives et non relues** : `OPTIONAL` (`culture-validate.mjs`) n'émet
+  que des `notes`, jamais d'erreur, et la garde du français dans une brève de/it
+  (`brief-script.mjs`) ne compte que les marqueurs en **minuscules** — une
+  citation française en minuscules fait écarter son sujet (`✗ brief/de: alphabet`).
 - **Les `hreflang` d'une page de vue héritaient d'un générateur pensé pour les
   accueils, et le bloc entier en aurait payé le prix.** `headFor` composait ses
   alternates depuis `LANG_URL`, donc toujours vers les accueils : recopié tel
   quel sur une page de vue, `/radio/` du .ch aurait déclaré comme équivalent
   anglais **l'accueil** du .org, et non `/radio/` du .org. Google, plutôt que
   d'arbitrer entre deux pages incompatibles, **ignore alors le bloc entier** —
-  silencieusement, sur les douze pages, puisqu'un seul générateur les produit
+  silencieusement, sur toutes les pages, puisqu'un seul générateur les produit
   toutes. `headFor` / `applyMeta` / `replaceMeta` (`scripts/lib/site-meta.mjs`)
   prennent désormais `{ siteId, lang, view }` (`view` vaut `'home'` par défaut,
   ce qui garde les appels existants valides) et composent chaque alternate avec
@@ -1480,7 +1480,7 @@ de production servent toujours depuis la racine de leur domaine.
   `Event` de la vue `/agenda/` ne viennent **pas** du `<head>` comme ceux de
   l'accueil (que le plugin y écrit au build) : ils viennent du composant React,
   donc de `<div id="root">`, donc du **prérendu**. Exiger leur présence sans
-  regarder le stade fait échouer `check` en CI sur les **quatre** pages agenda,
+  regarder le stade fait échouer `check` en CI sur les **six** pages agenda,
   toutes saines — et passer en local sur exactement les mêmes. Le prérendu
   étant `continue-on-error` à dessein (un prérendu manqué ne doit pas retenir le
   déploiement), **déplacer `check` après lui n'est pas la correction** : c'est
@@ -1518,9 +1518,9 @@ de production servent toujours depuis la racine de leur domaine.
   porter au moins une source en `https://`, et `genre` / `langue` sont des
   **clés** — pas du texte affichable, `RadioPage.jsx` les rend par
   `t('radio.genre.'+f.genre)` — donc chacune doit être déclarée **dans les
-  quatre blocs** `STRINGS` de `src/i18n.jsx`. Sans ce dernier contrôle, une
+  six blocs** `STRINGS` de `src/i18n.jsx`. Sans ce dernier contrôle, une
   station ajoutée avec `genre: 'talk'` passerait le test de sourçage, le lint,
-  `npm run check` et le prérendu — et les quatre pages `/radio/` afficheraient
+  `npm run check` et le prérendu — et les six pages `/radio/` afficheraient
   « Genre : radio.genre.talk », cuit dans le HTML que Google indexe (`t()`
   vaut `STRINGS[lang][clé] ?? STRINGS.fr[clé] ?? clé` : une clé absente
   **rend la clé**). Même mécanique que `test/radio-count.test.mjs`, sur une
@@ -1622,7 +1622,7 @@ de production servent toujours depuis la racine de leur domaine.
   ```
 
   **Marquer plutôt que retirer** : une station retirée ferait mentir les
-  quatorze textes qui écrivent « dix-sept » en toutes lettres dans quatre langues,
+  textes qui écrivent « dix-sept » en toutes lettres dans six langues,
   descriptions Google comprises, et tout serait à refaire à l'envers au retour.
   `offAir: true` rend la puce inerte sans toucher au compte.
 - **Articles Culture : neuf pièges silencieux** (un brouillon par jour,
@@ -1650,7 +1650,7 @@ de production servent toujours depuis la racine de leur domaine.
   Le pourquoi : `docs/superpowers/specs/2026-10-16-articles-culture-design.md`.
 - **Le plancher tactile de 44px est déjà tenu — par `@media (pointer: coarse)`.**
   Ce bloc agrandit `.theme-toggle`, `.nav__toggle`, les pastilles de langue,
-  `.shelf__arrow`, `.radio__chip`, `.ig-chip` et
+  `.lang-fold__toggle`, `.shelf__arrow`, `.radio__chip`, `.ig-chip` et
   `.radio__stations-toggle`. **Un audit mené dans un Chrome de bureau ne le voit
   pas** et rapportera une dizaine de fausses cibles trop petites : simulez le
   bloc à la main avant de conclure. Et le rembourrage seul ne suffit pas — la

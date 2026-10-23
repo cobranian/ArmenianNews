@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { accountsOnly, newsForLangs } from '../scripts/lib/light-data.mjs'
+import { TAB_ORDER } from '../src/newsLangs.js'
 
 // Les deux allègements que le plugin `lightData()` (vite.config.js) applique au
 // build : le pool Instagram sans ses posts, news.json sans les langues que la
@@ -70,4 +71,12 @@ test('le plugin lightData est branché dans vite.config.js sur les deux fichiers
   assert.match(src, /newsForLangs\(/)
   assert.match(src, /accountsOnly\(/)
   assert.match(src, /plugins:\s*\[[^\]]*lightData\(\)/)
+})
+
+test('newsForLangs : le .ch servi en fr/de/it embarque exactement le news.json du .ch seul', () => {
+  const news = JSON.parse(lire('../src/data/news.json'))
+  assert.equal(
+    JSON.stringify(newsForLangs(news, ['fr', 'de', 'it'], TAB_ORDER)),
+    JSON.stringify(newsForLangs(news, ['fr'], TAB_ORDER)),
+  )
 })

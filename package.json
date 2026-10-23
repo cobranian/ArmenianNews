@@ -15,6 +15,7 @@
     "check": "node scripts/check-build.mjs",
     "culture:draft": "node --env-file-if-exists=.env scripts/culture-draft.mjs",
     "culture:translate": "node --env-file-if-exists=.env scripts/culture-translate.mjs",
+    "culture:backfill": "node --env-file-if-exists=.env scripts/culture-backfill.mjs",
     "culture:check": "node scripts/culture-check.mjs",
     "culture:status": "node scripts/culture-status.mjs",
     "scrape": "node --env-file-if-exists=.env scripts/scrape.mjs",

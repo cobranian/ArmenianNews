@@ -4,10 +4,12 @@
     <title>Radios arméniennes en direct · Arménie Info</title>
     <link rel="canonical" href="https://armenieinfo.ch/radio/" />
 
-    <!-- Versions linguistiques. Réciproques et identiques sur les quatre
+    <!-- Versions linguistiques. Réciproques et identiques sur toutes les
          pages : une page absente de son propre bloc fait ignorer tout le
          bloc par Google. Générées depuis sites.config.js — ne pas éditer. -->
     <link rel="alternate" hreflang="fr" href="https://armenieinfo.ch/radio/" />
+    <link rel="alternate" hreflang="de" href="https://armenieinfo.ch/de/radio/" />
+    <link rel="alternate" hreflang="it" href="https://armenieinfo.ch/it/radio/" />
     <link rel="alternate" hreflang="en" href="https://armenianews.org/radio/" />
     <link rel="alternate" hreflang="hy" href="https://armenianews.org/hy/radio/" />
     <link rel="alternate" hreflang="ru" href="https://armenianews.org/ru/radio/" />
@@ -37,6 +39,8 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Radios arméniennes en direct · Arménie Info" />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="it_IT" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:locale:alternate" content="hy_AM" />
     <meta property="og:locale:alternate" content="ru_RU" />
@@ -46,5 +50,5 @@
     <meta name="twitter:image" content="https://armenieinfo.ch/og-image-ch.jpg" />
 
     <!-- Données structurées (schema.org) -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://armenieinfo.ch/#website","url":"https://armenieinfo.ch/","name":"Arménie Info","alternateName":["Armenia Info","Արմենիա Ինֆո"],"description":"Actualités, dix-sept radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.","inLanguage":["fr"],"publisher":{"@id":"https://armenieinfo.ch/#organization"}},{"@type":"Organization","@id":"https://armenieinfo.ch/#organization","name":"Arménie Info","alternateName":["Armenia Info","Արմենիա Ինֆո"],"url":"https://armenieinfo.ch/","email":"contact@armenieinfo.ch","description":"Actualités, dix-sept radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.","founder":{"@type":"Person","name":"Nano of Sassoun"},"sameAs":["https://armenianews.org/"],"logo":{"@type":"ImageObject","url":"https://armenieinfo.ch/apple-touch-icon.png","width":180,"height":180},"image":"https://armenieinfo.ch/og-image-ch.jpg"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://armenieinfo.ch/#website","url":"https://armenieinfo.ch/","name":"Arménie Info","alternateName":["Armenia Info","Արմենիա Ինֆո"],"description":"Actualités, dix-sept radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.","inLanguage":["fr","de","it"],"publisher":{"@id":"https://armenieinfo.ch/#organization"}},{"@type":"Organization","@id":"https://armenieinfo.ch/#organization","name":"Arménie Info","alternateName":["Armenia Info","Արմենիա Ինֆո"],"url":"https://armenieinfo.ch/","email":"contact@armenieinfo.ch","description":"Actualités, dix-sept radios en direct, agenda et réseaux sociaux arméniens du monde et de Suisse, mis à jour chaque heure.","founder":{"@type":"Person","name":"Nano of Sassoun"},"sameAs":["https://armenianews.org/"],"logo":{"@type":"ImageObject","url":"https://armenieinfo.ch/apple-touch-icon.png","width":180,"height":180},"image":"https://armenieinfo.ch/og-image-ch.jpg"}]}</script>
     <!--SITE_META:END-->

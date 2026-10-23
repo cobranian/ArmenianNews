@@ -4,8 +4,9 @@
 //
 // LE PIÈGE, le même que la brève : un article ne cite QUE ses langues
 // présentes. Une traduction absente ou périmée n'est pas publiée ; un
-// hreflang vers elle ferait ignorer TOUT le bloc. L'index, lui, existe
-// toujours dans les quatre langues.
+// hreflang vers elle ferait ignorer TOUT le bloc. L'index est servi dans
+// toutes les langues, mais vide il est noindex : un index ne cite donc que les
+// index qui ont au moins un article, plus lui-même.
 //
 // Sans node:fs : vite.config.js l'importe aussi.
 import { ALL_LANGS, cultureUrl } from '../../sites.config.js'
@@ -14,8 +15,12 @@ export function cultureLangsBySlug(articles) {
   return new Map(articles.map((a) => [a.slug, ALL_LANGS.filter((l) => a.langs[l])]))
 }
 
-export function cultureAlternates(slug, bySlug) {
-  const langs = slug === null ? ALL_LANGS : (bySlug.get(slug) ?? [])
+// `lang` : la langue de la page, pour l'index seulement (il se cite toujours).
+export function cultureAlternates(slug, bySlug, lang = null) {
+  const present = new Set([...bySlug.values()].flat())
+  const langs = slug === null
+    ? ALL_LANGS.filter((l) => l === lang || present.has(l))
+    : (bySlug.get(slug) ?? [])
   const out = langs.map((l) => [l, cultureUrl(l, slug)])
   if (langs.includes('en')) out.push(['x-default', cultureUrl('en', slug)])
   return out

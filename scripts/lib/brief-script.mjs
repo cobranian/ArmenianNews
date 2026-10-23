@@ -1,6 +1,6 @@
 // Le garde-fou d'ÉCRITURE de la brève : un sujet arménien ou russe ne publie
 // pas de mots en lettres latines sortis de nulle part, et l'inverse en
-// français et en anglais.
+// français, allemand, italien et anglais.
 //
 // Mesuré le 17 octobre 2026 : les modèles :free intercalaient dans la brève
 // arménienne « remporter », « capitaine », « successoffice », un mot à moitié
@@ -15,7 +15,7 @@
 // alphabets n'est jamais permis : aucune langue n'en écrit.
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
 
-const EXPECTED = { fr: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
+const EXPECTED = { fr: 'Latin', de: 'Latin', it: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
 const SCRIPTS = {
   Latin: /\p{Script=Latin}/u,
   Armenian: /\p{Script=Armenian}/u,
@@ -51,4 +51,35 @@ export function strayWords(text, lang, allowed = new Set()) {
     out.push(w)
   }
   return out
+}
+
+// Le français qui s'est glissé dans une brève allemande ou italienne : le seul
+// cas que l'alphabet ne voit pas, les trois langues s'écrivant en latin. de et
+// it lisent des titres français, et un modèle :free recopie volontiers la
+// langue de ses titres (mesuré le 23 octobre 2026 : brève « it » entièrement
+// en français, publiée telle quelle sans ce garde).
+//
+// Les marqueurs sont PAR LANGUE CIBLE : seuls comptent des mots-outils qui ne
+// sont jamais un mot ordinaire de cette langue. « des » et « du » sont
+// allemands (génitif, pronom) ; « est » (point cardinal), « qui » (« ici ») et
+// « ce » sont italiens — un garde commun rejetterait de la prose valide, en
+// silence. « par » est écarté des deux listes (terme de golf, abréviations) ;
+// « que » reste : ni l'allemand ni l'italien ne l'écrivent.
+const COMMON = ['les', 'une', 'dans', 'pour', 'avec', 'sont', 'que', 'cette', 'ont', 'aux', 'sur', 'été', 'entre', 'ses', 'leur', 'leurs']
+const FRENCH_MARKERS_BY_LANG = {
+  de: new Set([...COMMON, 'est', 'qui']),
+  it: new Set([...COMMON, 'des', 'du']),
+}
+
+// Deux mots-outils français DISTINCTS ou plus, ÉCRITS EN MINUSCULES : du
+// français. Les noms propres et les titres cités portent des initiales
+// capitales (« Les Arméniens de France ») ; une fuite de français, elle, se voit
+// en mots-outils minuscules au milieu des phrases. On n'exempte PAS le
+// vocabulaire des titres sources : ils sont tous français, et la brève qui les
+// recopie en prose aurait alors toutes ses fautes exemptées.
+export function frenchWords(text, lang) {
+  const markers = FRENCH_MARKERS_BY_LANG[lang]
+  if (!markers) return []
+  const found = new Set(words(text).filter((w) => markers.has(w)))
+  return found.size >= 2 ? [...found] : []
 }

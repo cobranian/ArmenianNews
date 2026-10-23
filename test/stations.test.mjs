@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { STATION_FACTS, langueKey, inLanguage } from '../src/stations.js'
-import { ALL_LANGS } from '../sites.config.js'
+import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
 
 // Node ne sait pas importer du JSX : on lit STATIONS comme du texte, exactement
 // comme test/source-count.test.mjs lit TAB_ORDER.
@@ -32,31 +32,31 @@ test('aucun fait n est affirme sans source', () => {
 // t(`radio.genre.${f.genre}`). Or t() vaut STRINGS[lang][cle] ?? STRINGS.fr[cle]
 // ?? cle — une cle absente RETOURNE LA CLE. Une station ajoutee avec
 // genre: 'talk' passerait donc les trois tests ci-dessus, le lint, le check et
-// le prerendu, pour afficher « Genre : radio.genre.talk » sur les quatre pages
+// le prerendu, pour afficher « Genre : radio.genre.talk » sur toutes les pages
 // /radio/ — cuit dans le HTML que Google indexe. Meme mecanique que
 // test/radio-count.test.mjs, sur une autre famille de chaines.
 //
-// On compte les DECLARATIONS dans i18n.jsx : quatre par cle, une par bloc
-// STRINGS. Trois suffiraient a l'affichage (le repli sur le francais masque le
-// trou), et c'est precisement ce qu'il faut attraper.
+// On compte les DECLARATIONS dans i18n.jsx : une par cle et par bloc
+// STRINGS. Une de moins suffirait a l'affichage (le repli sur le francais
+// masque le trou), et c'est precisement ce qu'il faut attraper.
 function declarations(cle) {
   return (i18n.match(new RegExp(`'${cle.replace(/\./g, '\\.')}':`, 'g')) || []).length
 }
 
-test('chaque genre de station a son libelle dans les quatre langues', () => {
+test('chaque genre de station a son libelle dans chaque langue', () => {
   const genres = [...new Set(Object.values(STATION_FACTS).map((f) => f.genre).filter(Boolean))]
   assert.ok(genres.length, 'aucun genre a verifier — le test ne garde plus rien')
   for (const g of genres) {
     assert.equal(
       declarations(`radio.genre.${g}`),
-      ALL_LANGS.length,
-      `radio.genre.${g} manque dans un des quatre blocs STRINGS de src/i18n.jsx ` +
+      BLOC_LANGS.length,
+      `radio.genre.${g} manque dans un des blocs STRINGS de src/i18n.jsx ` +
         `— la page /radio/ afficherait la cle elle-meme`,
     )
   }
 })
 
-test('chaque ville de station a son libelle dans les quatre langues', () => {
+test('chaque ville de station a son libelle dans chaque langue', () => {
   // Meme regle que les genres : `city` est une cle depuis l'audit du 21 aout
   // 2026 — avant, « Երևան » etait ecrit en dur et s'affichait tel quel sur la
   // page francaise (et partait dans RadioStation.areaServed).
@@ -66,26 +66,26 @@ test('chaque ville de station a son libelle dans les quatre langues', () => {
     assert.match(v, /^[a-z]+$/, `${v} : une ville doit etre une cle ascii minuscule`)
     assert.equal(
       declarations(`radio.city.${v}`),
-      ALL_LANGS.length,
-      `radio.city.${v} manque dans un des quatre blocs STRINGS de src/i18n.jsx`,
+      BLOC_LANGS.length,
+      `radio.city.${v} manque dans un des blocs STRINGS de src/i18n.jsx`,
     )
   }
 })
 
-test('chaque langue d antenne a son libelle dans les quatre langues', () => {
+test('chaque langue d antenne a son libelle dans chaque langue', () => {
   const langues = [...new Set(Object.values(STATION_FACTS).filter((f) => f.langue).map(langueKey))]
   assert.ok(langues.length, 'aucune langue d antenne a verifier')
   for (const l of langues) {
     assert.equal(
       declarations(`radio.page.lang.${l}`),
-      ALL_LANGS.length,
-      `radio.page.lang.${l} manque dans un des quatre blocs STRINGS de src/i18n.jsx ` +
+      BLOC_LANGS.length,
+      `radio.page.lang.${l} manque dans un des blocs STRINGS de src/i18n.jsx ` +
         `— la page /radio/ afficherait la cle elle-meme`,
     )
   }
 })
 
-// La reciproque : un libelle traduit quatre fois pour un genre que plus aucune
+// La reciproque : un libelle traduit dans toutes les langues pour un genre que plus aucune
 // station ne porte est une cle morte, dans un fichier dont l'invariant est la
 // parite stricte des cles — elle invite un futur agent a « l'implementer ».
 test('aucun libelle de genre ne survit a la station qui le portait', () => {

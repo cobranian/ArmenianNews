@@ -5,7 +5,7 @@ import { useSourceDrum } from './useSourceDrum.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import { TAB_ORDER, shelvesFor } from '../newsSources.js'
 import { groupByRubric, DEFAULT_RUBRIC } from '../rubrics.js'
-import { SOURCE_NAMES } from '../newsLangs.js'
+import { SOURCE_NAMES, contentLang } from '../newsLangs.js'
 import { useClientNow } from '../useClientNow.js'
 
 // The wsrv.nl image CDN: fetched server-side, resized, re-served with CORS.
@@ -427,7 +427,13 @@ export function NewsBrowser() {
         id={panelId}
         aria-labelledby={`newsfeed-tab-${active.key}`}
         key={active.key}
+        lang={contentLang(lang) !== lang ? contentLang(lang) : undefined}
       >
+        {contentLang(lang) !== lang && (
+          <p className="section__eyebrow" lang={lang}>
+            {t('news.originalLang')}
+          </p>
+        )}
         {active.shelves.map(({ source, articles }) => (
           <Carousel
             key={source.id}

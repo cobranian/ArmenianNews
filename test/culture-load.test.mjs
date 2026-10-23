@@ -57,7 +57,7 @@ test('loadCulture : dossier absent → liste vide', async () => {
   assert.deepEqual(await loadCulture(path.join(tmpdir(), 'nexiste-pas-culture'), silent()), [])
 })
 
-test('alternates : seulement les langues présentes ; index dans les quatre', async () => {
+test('alternates : seulement les langues présentes ; index : les index non vides', async () => {
   const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
   await writeArticle(dir, 'komitas', { t: { ...texts(), hy: null } })
   const arts = await loadCulture(dir, silent())
@@ -69,7 +69,10 @@ test('alternates : seulement les langues présentes ; index dans les quatre', as
     ['ru', 'https://armenianews.org/ru/culture/komitas/'],
     ['x-default', 'https://armenianews.org/culture/komitas/'],
   ])
-  assert.equal(cultureAlternates(null, bySlug).length, 5)
+  // L'index ne cite que les index non vides (+ lui-même) : hy, de, it sont vides.
+  assert.deepEqual(cultureAlternates(null, bySlug, 'fr').map(([h]) => h), ['fr', 'en', 'ru', 'x-default'])
+  for (const l of ['en', 'ru']) assert.deepEqual(cultureAlternates(null, bySlug, l), cultureAlternates(null, bySlug, 'fr'), l)
+  assert.deepEqual(cultureAlternates(null, bySlug, 'hy').map(([h]) => h), ['fr', 'en', 'hy', 'ru', 'x-default'])
   assert.deepEqual(cultureAlternates('inconnu', bySlug), [])
 })
 
@@ -82,4 +85,20 @@ test('teaserFor : trois plus récents par langue, langue absente exclue', async 
   assert.deepEqual(t.fr.map((x) => x.slug), ['e', 'd', 'c'])
   assert.deepEqual(t.ru.map((x) => x.slug), ['d', 'c', 'b'])
   assert.deepEqual(Object.keys(t.fr[0]).sort(), ['date', 'description', 'image', 'slug', 'title'])
+})
+
+// de/it facultatives : leur absence ne compte pas parmi les traductions non
+// publiées et ne s'écrit pas au log (deux lignes par article et par heure) ;
+// une traduction de/it PÉRIMÉE, si — elle disparaît d'une URL déjà en ligne.
+test('loadCulture : de/it absentes silencieuses, de périmée signalée', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
+  const t = texts()
+  t.de = t.en.replace(/sourceHash: \S+/, 'sourceHash: "deadbeef"')
+  await writeArticle(dir, 'komitas', { t })
+  const log = silent()
+  const arts = await loadCulture(dir, log)
+  assert.equal(unpublishedTranslations(arts), 0)
+  assert.deepEqual(Object.keys(arts[0].langs), ['fr', 'en', 'hy', 'ru'])
+  assert.equal(log.w.length, 1, log.w.join('\n'))
+  assert.match(log.w[0], /culture\/komitas : de\.md : traduction périmée/)
 })

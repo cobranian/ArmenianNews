@@ -8,11 +8,14 @@ test('les adresses de la brève', () => {
   assert.equal(briefUrl('hy', '2026-10-16'), 'https://armenianews.org/hy/brief/2026-10-16/')
   assert.equal(briefPath('ru', '2026-10-16'), '/ru/brief/2026-10-16/')
   assert.equal(briefPath('fr'), '/breve/')
+  assert.equal(briefUrl('de'), 'https://armenieinfo.ch/de/in-kuerze/')
+  assert.equal(briefUrl('it'), 'https://armenieinfo.ch/it/in-breve/')
+  assert.equal(briefPath('it', '2026-10-16'), '/it/in-breve/2026-10-16/')
 })
 
 test('slash final partout (Firebase redirige la forme sans)', () => {
   for (const l of ALL_LANGS) {
-    assert.match(BRIEF_SLUGS[l], /^[a-z]+\/$/)
+    assert.match(BRIEF_SLUGS[l], /^[a-z]+(?:-[a-z]+)*\/$/)
     assert.ok(briefUrl(l, '2026-01-02').endsWith('/2026-01-02/'))
   }
 })

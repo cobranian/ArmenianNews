@@ -1,0 +1,93 @@
+# Rattrapage hebdomadaire des traductions Culture de/it (spec 2026-10-23,
+# « Culture de/it »). Retient les articles publiés dont l'allemand ou l'italien
+# est absent, périmé ou invalide — articles antérieurs à de/it, français
+# retouché sur main, ou de/it en échec au passage « traduire » (la publication
+# ne les retente jamais : c'est ici qu'ils le sont). Traduit, puis ouvre UNE PR
+# assignée au propriétaire, qui la fusionne lui-même.
+#
+# Ce job ne fusionne JAMAIS et ne pousse JAMAIS sur main : seulement sur sa
+# branche culture/backfill-AAAA-MM-JJ. Rien à traduire, ou un rattrapage déjà
+# en relecture : il s'arrête sans rien ouvrir.
+#
+# Déclencheurs : planifié et workflow_dispatch seulement (ce dernier exige un
+# droit d'écriture sur le dépôt). Aucun commentaire ne le déclenche, donc
+# aucune consigne étrangère n'atteint le modèle : la garde OWNER des
+# workflows à commentaires n'a pas d'objet ici.
+#
+# PIÈGE GitHub (voir articles.yml) : une PR ouverte ou un commit poussé avec le
+# GITHUB_TOKEN ne déclenche AUCUN autre workflow — ce job publie lui-même le
+# statut culture-check.
+name: Culture — rattrapage de/it
+
+on:
+  schedule:
+    - cron: '0 5 * * 1' # chaque lundi, 05:00 UTC (après le brouillon de 03:00)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: culture-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      # La PR de la semaine passée n'est pas fusionnée : en ouvrir une seconde
+      # retraduirait les mêmes articles. Une PR de fork ne compte pas : nommée
+      # culture/backfill-*, elle bloquerait sinon le rattrapage indéfiniment.
+      - name: Rattrapage déjà en relecture ?
+        id: open
+        run: |
+          n=$(gh pr list --state open --limit 200 --json headRefName,isCrossRepository --jq '[.[] | select(.isCrossRepository == false and (.headRefName | startswith("culture/backfill-")))] | length')
+          echo "count=$n" >> "$GITHUB_OUTPUT"
+          [ "$n" = 0 ] || echo "Un rattrapage est déjà en relecture : rien à faire."
+
+      - name: Inventaire
+        id: list
+        if: steps.open.outputs.count == '0'
+        run: node scripts/culture-backfill.mjs --dry
+
+      # Mêmes variables que articles-translate.yml : llmConfig choisit la clé
+      # selon le point d'accès. La traduction n'a aucun modèle de secours.
+      - name: Traduire
+        if: steps.list.outputs.pending != '0' && steps.list.outputs.pending != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+        run: |
+          node scripts/culture-backfill.mjs --summary "$RUNNER_TEMP/body.md"
+
+      - name: Ouvrir la PR, publier le statut
+        if: steps.list.outputs.pending != '0' && steps.list.outputs.pending != ''
+        run: |
+          BRANCH="culture/backfill-$(date -u +%F)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/culture
+          git diff --cached --quiet && { echo "Aucune traduction écrite : pas de PR."; exit 0; }
+          git switch -c "$BRANCH"
+          git commit -m "Culture : rattrapage des traductions de/it"
+          git push -u origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "Culture : rattrapage des traductions de/it ($(date -u +%F))" --body-file "$RUNNER_TEMP/body.md" --assignee "$GITHUB_REPOSITORY_OWNER"
+          if node scripts/culture-check.mjs > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
+          cat "$RUNNER_TEMP/check.txt"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
+            -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"

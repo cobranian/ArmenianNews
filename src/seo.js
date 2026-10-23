@@ -21,6 +21,22 @@ export const SEO = {
     keywords:
       'actualités arméniennes, Arménie, Artsakh, diaspora arménienne, agenda arménien, communauté arménienne de Suisse',
   },
+  // « Armenien Nachrichten » et « notizie Armenia » : les requêtes telles
+  // qu'on les tape, d'où leur forme sans accord dans les mots-clés.
+  de: {
+    tagline: 'Armenische Nachrichten',
+    description:
+      'Armenische Nachrichten, siebzehn Radiosender live, Veranstaltungen und soziale Netzwerke, weltweit und aus der Schweiz, stündlich aktualisiert.',
+    keywords:
+      'Armenien Nachrichten, armenische Nachrichten, Armenien, Arzach, armenische Diaspora, armenische Veranstaltungen, armenische Gemeinde Schweiz',
+  },
+  it: {
+    tagline: 'Notizie armene',
+    description:
+      'Notizie armene, diciassette radio in diretta, eventi e social network armeni dal mondo e dalla Svizzera, aggiornati ogni ora.',
+    keywords:
+      'notizie Armenia, notizie armene, Armenia, Artsakh, diaspora armena, eventi armeni, comunità armena in Svizzera',
+  },
   en: {
     tagline: 'Armenian news, events and social media',
     description:
@@ -62,6 +78,16 @@ export const VIEW_SEO = {
       description:
         'Dix-sept radios arméniennes en direct, d’Erevan et de la diaspora : actualité, musique, culture et jazz. Écoute gratuite, sans compte ni installation.',
     },
+    de: {
+      title: 'Armenische Radiosender live',
+      description:
+        'Siebzehn armenische Radiosender live aus Eriwan und der Diaspora: Nachrichten, Musik, Kultur und Jazz. Kostenlos hören, ohne Konto und ohne Installation.',
+    },
+    it: {
+      title: 'Radio armene in diretta',
+      description:
+        'Diciassette radio armene in diretta da Erevan e dalla diaspora: notizie, musica, cultura e jazz. Ascolto gratuito, senza account né installazione.',
+    },
     en: {
       title: 'Armenian radio online',
       description:
@@ -101,6 +127,16 @@ export const VIEW_SEO = {
       description:
         'Concerts, conférences et rassemblements de la diaspora arménienne, en Suisse et dans le monde : agenda recensé depuis Armenopole et mis à jour chaque heure.',
     },
+    de: {
+      title: 'Armenische Agenda: Schweiz und Welt',
+      description:
+        'Konzerte, Vorträge und Treffen der armenischen Diaspora in der Schweiz und weltweit: ein Veranstaltungskalender aus Armenopole, stündlich aktualisiert.',
+    },
+    it: {
+      title: 'Eventi armeni: Svizzera e mondo',
+      description:
+        'Concerti, conferenze e incontri della diaspora armena in Svizzera e nel mondo: un calendario di eventi tratto da Armenopole e aggiornato ogni ora.',
+    },
     en: {
       title: 'Armenian events worldwide',
       description:
@@ -131,6 +167,16 @@ VIEW_SEO.about = {
       // un chiffre de plus, ici, vieillirait en silence.
       'Qui édite Arménie Info, d’où, avec quelles sources et quelles règles : rédactions, radios en direct et agenda arméniens, chaque heure, sans publicité ni compte.',
   },
+  de: {
+    title: 'Über uns',
+    description:
+      'Wer Arménie Info herausgibt, von wo, mit welchen Quellen und Regeln: armenische Redaktionen, Live-Radio und Agenda, stündlich, ohne Werbung und ohne Konto.',
+  },
+  it: {
+    title: 'Chi siamo',
+    description:
+      'Chi cura Arménie Info, da dove, con quali fonti e regole: redazioni armene, radio in diretta ed eventi della diaspora, ogni ora, senza pubblicità né account.',
+  },
   en: {
     title: 'About',
     description:
@@ -149,4 +195,13 @@ VIEW_SEO.about = {
 }
 
 // Codes de locale Open Graph, un par langue.
-export const OG_LOCALE = { fr: 'fr_FR', en: 'en_US', hy: 'hy_AM', ru: 'ru_RU' }
+export const OG_LOCALE = {
+  fr: 'fr_FR',
+  // de et it visent tous les lecteurs germanophones et italophones, pas la
+  // seule Suisse (voir la spec du 23 octobre 2026) : de_DE et it_IT.
+  de: 'de_DE',
+  it: 'it_IT',
+  en: 'en_US',
+  hy: 'hy_AM',
+  ru: 'ru_RU',
+}

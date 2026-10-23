@@ -12,12 +12,12 @@ import {
   xDefaultFor,
 } from '../sites.config.js'
 
-test('chaque vue declare un slug pour chacune des quatre langues', () => {
+test('chaque vue declare un slug pour chaque langue', () => {
   for (const view of ALL_VIEWS) {
     assert.deepEqual(
       Object.keys(VIEWS[view].slugs).sort(),
       [...ALL_LANGS].sort(),
-      `la vue ${view} ne couvre pas les quatre langues`,
+      `la vue ${view} ne couvre pas toutes les langues`,
     )
   }
 })
@@ -38,9 +38,9 @@ test('urlFor compose le chemin de langue et le slug de la vue, slash final compr
   assert.equal(urlFor('ru', 'radio'), 'https://armenianews.org/ru/radio/')
 })
 
-// Les quatre accueils sont anterieurs a ce chantier et doivent rester
+// Les accueils sont anterieurs a ce chantier et doivent rester
 // strictement a leur adresse : urlFor(l, 'home') EST LANG_URL[l].
-test('urlFor n a pas bouge les quatre accueils', () => {
+test('urlFor n a pas bouge les accueils', () => {
   for (const l of ALL_LANGS) assert.equal(urlFor(l, 'home'), LANG_URL[l])
 })
 
@@ -65,6 +65,11 @@ test('viewFromPath lit la vue depuis le chemin', () => {
   assert.equal(viewFromPath('ch', '/radio/'), 'radio')
   assert.equal(viewFromPath('org', '/hy/radio'), 'radio')
   assert.equal(viewFromPath('org', '/ru/radio'), 'radio')
+  assert.equal(viewFromPath('ch', '/it/chi-siamo'), 'about')
+  assert.equal(viewFromPath('ch', '/de/ueber-uns/'), 'about')
+  assert.equal(viewFromPath('ch', '/de/veranstaltungen'), 'agenda')
+  assert.equal(viewFromPath('ch', '/it/'), 'home')
+  assert.equal(viewFromPath('ch', '/de/radio/'), 'radio')
 })
 
 // Firebase reecrit tout chemin inconnu vers index.html : la page servie est
@@ -89,4 +94,15 @@ test('le slug de l agenda est traduit la ou le mot change la requete', () => {
   assert.equal(urlFor('en', 'agenda'), 'https://armenianews.org/events/')
   assert.equal(urlFor('hy', 'agenda'), 'https://armenianews.org/hy/events/')
   assert.equal(urlFor('ru', 'agenda'), 'https://armenianews.org/ru/events/')
+  assert.equal(urlFor('de', 'agenda'), 'https://armenieinfo.ch/de/veranstaltungen/')
+  assert.equal(urlFor('it', 'agenda'), 'https://armenieinfo.ch/it/eventi/')
+})
+
+test('les vues de/it vivent sous /de/ et /it/ du .ch', () => {
+  assert.equal(urlFor('de'), 'https://armenieinfo.ch/de/')
+  assert.equal(urlFor('it', 'radio'), 'https://armenieinfo.ch/it/radio/')
+  assert.equal(urlFor('de', 'about'), 'https://armenieinfo.ch/de/ueber-uns/')
+  assert.equal(urlFor('it', 'about'), 'https://armenieinfo.ch/it/chi-siamo/')
+  assert.equal(pathFor('de', 'radio'), '/de/radio/')
+  assert.equal(langPath('ch', 'it'), '/it/')
 })

@@ -1,8 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { validateArticle, chosenImage, factsChecked } from '../scripts/lib/culture-validate.mjs'
+import { validateArticle, chosenImage, factsChecked, OPTIONAL, TRANSLATED, REQUIRED, pageSources, draftSources } from '../scripts/lib/culture-validate.mjs'
 import { serializeFrontMatter, bodyHash } from '../scripts/lib/culture-markdown.mjs'
-import { meta, texts, candidate } from './helpers/culture-fixture.mjs'
+import { meta, texts, candidate, FR_BODY } from './helpers/culture-fixture.mjs'
 
 const ok = (over = {}) => ({ slug: 'komitas', meta: meta('komitas'), texts: texts(), images: { webp: true, jpg: true }, ...over })
 
@@ -11,6 +11,49 @@ test('article complet : aucune erreur, quatre langues', () => {
   assert.deepEqual(r.errors, [])
   assert.deepEqual(Object.keys(r.langs), ['fr', 'en', 'hy', 'ru'])
   assert.equal(r.langs.fr.date, '2026-10-19')
+})
+
+// de/it sont facultatives : un article sans de.md ni it.md passe culture-check
+// (aucune erreur) — deux NOTES, non bloquantes — et ne paraît simplement pas
+// dans ces langues.
+test('de et it facultatives : leur absence est une note, pas une erreur', () => {
+  assert.deepEqual(OPTIONAL, ['de', 'it'])
+  assert.deepEqual(TRANSLATED, ['de', 'it', 'en', 'hy', 'ru'])
+  assert.deepEqual(REQUIRED, ['en', 'hy', 'ru'])
+  const r = validateArticle(ok())
+  assert.deepEqual(r.errors, [])
+  assert.equal(r.notes.length, 2)
+  assert.deepEqual(Object.keys(r.langs), ['fr', 'en', 'hy', 'ru'])
+})
+
+const trDe = (frBody, hash = bodyHash(frBody)) =>
+  serializeFrontMatter({ title: 'Komitas', description: 'Der Vater', date: '2026-10-19', sourceHash: hash, model: 'm' }, 'Text de.')
+
+test('de valide : publiée ; de périmée ou cassée : note, jamais erreur', () => {
+  const t = texts()
+  const frBody = FR_BODY
+  const good = validateArticle(ok({ texts: { ...t, de: trDe(frBody) } }))
+  assert.deepEqual(good.errors, [])
+  assert.deepEqual(Object.keys(good.langs), ['fr', 'de', 'en', 'hy', 'ru'])
+  assert.equal(good.notes.length, 1) // it absente
+  const stale = validateArticle(ok({ texts: { ...t, de: trDe(frBody, 'deadbeef'), it: 'cassé' } }))
+  assert.deepEqual(stale.errors, [])
+  const notes = stale.notes.join(' | ')
+  assert.match(notes, /de\.md : traduction périmée/)
+  assert.match(notes, /it\.md : front-matter absent/)
+  assert.ok(!('de' in stale.langs) && !('it' in stale.langs))
+})
+
+test('sources Wikipédia de/it : citées sur leur page seulement, jamais au brouillon', () => {
+  const src = [
+    { lang: 'fr', title: 'Komitas', url: 'https://fr.wikipedia.org/wiki/Komitas' },
+    { kind: 'wikipedia', lang: 'de', title: 'Komitas Vardapet', url: 'https://de.wikipedia.org/wiki/Komitas_Vardapet' },
+    { kind: 'wikipedia', lang: 'it', title: 'Komitas', url: 'https://it.wikipedia.org/wiki/Komitas' },
+    { kind: 'unesco', lang: 'en', title: 'U', url: 'https://ich.unesco.org/x' },
+  ]
+  assert.deepEqual(pageSources(src, 'fr').map((s) => s.lang), ['fr', 'en'])
+  assert.deepEqual(pageSources(src, 'de').map((s) => s.lang), ['fr', 'de', 'en'])
+  assert.deepEqual(draftSources(src).map((s) => s.lang), ['fr', 'en'])
 })
 
 test('traduction absente : erreur, les autres langues restent', () => {

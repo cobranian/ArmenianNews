@@ -24,6 +24,11 @@
 
 const UNITS = {
   fr: { s: 's', min: 'min', h: 'h', d: 'j' },
+  // Std. (Stunde), T. (Tag) : les abréviations de manchette allemandes, avec
+  // leur point. Sans accord à gérer, comme ailleurs.
+  de: { s: 's', min: 'Min.', h: 'Std.', d: 'T.' },
+  // g (giorno) : « 2 g », comme « 2 j » en français.
+  it: { s: 's', min: 'min', h: 'h', d: 'g' },
   en: { s: 's', min: 'min', h: 'h', d: 'd' },
   // ժամ (heure), րոպե (minute), վրկ (վայրկյան, seconde), օր (jour). Après un
   // numéral l'arménien garde le singulier : pas de forme plurielle à gérer.
