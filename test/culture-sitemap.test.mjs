@@ -19,6 +19,9 @@ test('sitemap .org : index et articles par langue, hreflang des langues présent
   assert.ok(duduk.includes('<lastmod>2026-10-26</lastmod>'))
   assert.ok(!duduk.includes('hreflang="ru"'))
   assert.ok(duduk.includes('hreflang="x-default" href="https://armenianews.org/culture/duduk/"'))
+  // L'index ne cite pas les index vides (de, it) : ils sont noindex.
+  const index = xml.split('<url>').find((b) => b.includes('<loc>https://armenianews.org/culture/</loc>'))
+  assert.deepEqual([...index.matchAll(/hreflang="([^"]+)"/g)].map((m) => m[1]), ['fr', 'en', 'hy', 'ru', 'x-default'])
 })
 
 test('sitemap : un index de langue sans article n’est pas listé (il est noindex)', () => {

@@ -112,17 +112,26 @@ test('writeBriefPages : chaque vitrine ne bâtit que ses langues', async () => {
   await assert.rejects(readFile(path.join(dist, 'breve', 'index.html')))
 })
 
-test('sitemap : index de chaque langue, pages datées existantes seulement', () => {
+test('sitemap : index des langues qui ont une brève, pages datées existantes seulement', () => {
   const briefs = { fr: [b('fr', '2026-10-16')], en: [], hy: [b('hy', '2026-10-16')], ru: [] }
   const org = sitemapFor('org', '2026-10-16T05:00:00Z', briefs)
-  assert.ok(org.includes(`<loc>${briefUrl('en')}</loc>`))
+  // Un index sans brève est noindex : le lister serait contradictoire.
+  assert.ok(!org.includes(`<loc>${briefUrl('en')}</loc>`))
+  assert.ok(!org.includes(`<loc>${briefUrl('ru')}</loc>`))
+  assert.ok(org.includes(`<loc>${briefUrl('hy')}</loc>`))
   assert.ok(org.includes(`<loc>${briefUrl('hy', '2026-10-16')}</loc>`))
   assert.ok(!org.includes(`<loc>${briefUrl('en', '2026-10-16')}</loc>`))
   assert.ok(!org.includes('armenieinfo.ch/breve/2026-10-16/</loc>'))
   assert.ok(org.includes('<lastmod>2026-10-16T03:23:00Z</lastmod>'))
-  // Sans brèves : les entrées d'index existent quand même.
-  assert.ok(sitemapFor('ch', '2026-10-16T05:00:00Z').includes(`<loc>${briefUrl('fr')}</loc>`))
-  for (const l of ['de', 'it']) assert.ok(sitemapFor('ch', '2026-10-16T05:00:00Z').includes(`<loc>${briefUrl(l)}</loc>`), l)
+  // Le .ch : fr a une brève, de/it non — leurs index vides restent hors du sitemap.
+  const ch = sitemapFor('ch', '2026-10-16T05:00:00Z', briefs)
+  assert.ok(ch.includes(`<loc>${briefUrl('fr')}</loc>`))
+  for (const l of ['de', 'it']) assert.ok(!ch.includes(`<loc>${briefUrl(l)}</loc>`), l)
+  // L'index fr ne cite que les index non vides (fr, hy) : pas de hreflang vers un noindex.
+  const frIndex = ch.split('<url>').find((u) => u.includes(`<loc>${briefUrl('fr')}</loc>`))
+  assert.deepEqual([...frIndex.matchAll(/hreflang="([^"]+)"/g)].map((m) => m[1]), ['fr', 'hy'])
+  // Sans aucune brève : aucun index listé.
+  assert.ok(!sitemapFor('ch', '2026-10-16T05:00:00Z').includes(`<loc>${briefUrl('fr')}</loc>`))
 })
 
 // --- Validation profonde : une brève corrompue à la main ne casse jamais le build.

@@ -5,8 +5,9 @@
 // LE PIÈGE : une page datée ne doit citer QUE les langues qui ont une brève ce
 // jour-là. Les quatre langues ne paraissent pas forcément le même jour (modèle
 // en échec, trop peu d'articles) ; un hreflang vers une page absente fait
-// ignorer TOUT le bloc, silencieusement. L'index (/breve/), lui, existe
-// toujours dans les quatre langues.
+// ignorer TOUT le bloc, silencieusement. L'index (/breve/) est servi dans
+// toutes les langues, mais vide il est noindex : un index ne cite donc que les
+// index qui ont au moins une brève, plus lui-même.
 import { ALL_LANGS, briefUrl } from '../../sites.config.js'
 import { hyLongDate } from '../../src/hyDate.js'
 
@@ -18,8 +19,12 @@ export function briefLangsByDate(briefs) {
   return m
 }
 
-export function briefAlternates(date, byDate) {
-  const langs = date === null ? ALL_LANGS : (byDate.get(date) ?? [])
+// `lang` : la langue de la page, pour l'index seulement (il se cite toujours).
+export function briefAlternates(date, byDate, lang = null) {
+  const present = new Set([...byDate.values()].flat())
+  const langs = date === null
+    ? ALL_LANGS.filter((l) => l === lang || present.has(l))
+    : (byDate.get(date) ?? [])
   const out = langs.map((l) => [l, briefUrl(l, date)])
   if (langs.includes('en')) out.push(['x-default', briefUrl('en', date)])
   return out

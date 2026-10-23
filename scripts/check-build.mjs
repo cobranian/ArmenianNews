@@ -447,9 +447,10 @@ function langBarProblem(html, expected, lang) {
 
 // Les brèves : chaque page attendue existe, dans sa langue, avec SON canonical,
 // un bloc hreflang exactement égal à briefAlternates (donc sans langue absente
-// ce jour-là), sans le domaine voisin, et listée dans le sitemap. Les liens de
-// nav sont rendus par React — non vérifiables ici avant le prérendu — et sont
-// gardés par test/brief-links-ui.test.mjs.
+// ce jour-là), sans le domaine voisin, et listée dans le sitemap (sauf un index
+// vide, qui est noindex). Les liens de nav sont rendus par React — non
+// vérifiables ici avant le prérendu — et sont gardés par
+// test/brief-links-ui.test.mjs.
 {
   const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
   const byDate = briefLangsByDate(briefs)
@@ -465,12 +466,12 @@ function langBarProblem(html, expected, lang) {
         if (!html.includes(`<html lang="${lang}">`)) fail(`<html lang="${lang}"> manquant`)
         if (!html.includes(`<link rel="canonical" href="${briefUrl(lang, date)}" />`)) fail('canonical')
         const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
-        if (JSON.stringify(got) !== JSON.stringify(briefAlternates(date, byDate))) fail('hreflang')
+        if (JSON.stringify(got) !== JSON.stringify(briefAlternates(date, byDate, lang))) fail('hreflang')
         const barWhy = langBarProblem(html, briefLangHrefs(date, byDate), lang)
         if (barWhy) fail(barWhy)
         const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')
         if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
-        if (!sitemap.includes(`<loc>${briefUrl(lang, date)}</loc>`)) fail('absente du sitemap')
+        if (briefs[lang]?.length && !sitemap.includes(`<loc>${briefUrl(lang, date)}</loc>`)) fail('absente du sitemap')
       }
     }
   }
@@ -498,7 +499,7 @@ function langBarProblem(html, expected, lang) {
         if (!html.includes(`<html lang="${lang}">`)) fail(`<html lang="${lang}"> manquant`)
         if (!html.includes(`<link rel="canonical" href="${cultureUrl(lang, slug)}" />`)) fail('canonical')
         const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
-        if (JSON.stringify(got) !== JSON.stringify(cultureAlternates(slug, bySlug))) fail('hreflang')
+        if (JSON.stringify(got) !== JSON.stringify(cultureAlternates(slug, bySlug, lang))) fail('hreflang')
         const barWhy = langBarProblem(html, cultureLangHrefs(slug, bySlug), lang)
         if (barWhy) fail(barWhy)
         const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')

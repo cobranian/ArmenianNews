@@ -348,7 +348,7 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
   }
   return composeHead({
     site, lang, url, title, description,
-    alternates: briefAlternates(date, byDate),
+    alternates: briefAlternates(date, byDate, lang),
     ogType: date ? 'article' : 'website',
     graph,
     robots,
@@ -396,7 +396,7 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
   }
   return composeHead({
     site, lang, url, title, description,
-    alternates: cultureAlternates(slug, bySlug),
+    alternates: cultureAlternates(slug, bySlug, lang),
     ogType: a ? 'article' : 'website',
     graph,
     robots,

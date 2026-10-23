@@ -34,29 +34,34 @@ function alternates(view) {
 const xhtml = (alts) =>
   alts.map(([h, href]) => `    <xhtml:link rel="alternate" hreflang="${h}" href="${href}" />`).join('\n')
 
-// Les brèves : l'index de chaque langue (toujours servi), et chaque page
-// datée EXISTANTE, avec les mêmes alternates que son <head> (brief-links.mjs).
+// Les brèves : l'index d'une langue si elle a au moins une brève (vide, il
+// est en noindex — le lister serait contradictoire), et chaque page datée
+// EXISTANTE, avec les mêmes alternates que son <head> (brief-links.mjs).
 // lastmod d'une page datée = son generatedAt : elle ne change jamais.
 function briefEntries(site, lastmod, briefs) {
   const byDate = briefLangsByDate(briefs)
-  return site.pages.flatMap(({ lang }) => [
-    `  <url>
+  return site.pages.flatMap(({ lang }) => {
+    const mine = briefs[lang] ?? []
+    if (!mine.length) return []
+    return [
+      `  <url>
     <loc>${briefUrl(lang)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-${xhtml(briefAlternates(null, byDate))}
+${xhtml(briefAlternates(null, byDate, lang))}
   </url>`,
-    ...(briefs[lang] ?? []).map(
-      (b) => `  <url>
+      ...mine.map(
+        (b) => `  <url>
     <loc>${briefUrl(lang, b.date)}</loc>
     <lastmod>${b.generatedAt}</lastmod>
     <changefreq>never</changefreq>
     <priority>0.6</priority>
 ${xhtml(briefAlternates(b.date, byDate))}
   </url>`,
-    ),
-  ])
+      ),
+    ]
+  })
 }
 
 // Les articles Culture : l'index d'une langue s'il a au moins un article (vide,
@@ -74,7 +79,7 @@ function cultureEntries(site, culture) {
     <lastmod>${mine[0].date}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-${xhtml(cultureAlternates(null, bySlug))}
+${xhtml(cultureAlternates(null, bySlug, lang))}
   </url>`,
       ...mine.map(
         (a) => `  <url>

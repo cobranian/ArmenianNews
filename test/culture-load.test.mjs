@@ -6,7 +6,6 @@ import path from 'node:path'
 import { loadCulture, articleSlugs, invalidDirs, unpublishedTranslations, unpublishedLine } from '../scripts/lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates, teaserFor } from '../scripts/lib/culture-links.mjs'
 import { writeArticle, texts } from './helpers/culture-fixture.mjs'
-import { ALL_LANGS } from '../sites.config.js'
 
 const silent = () => { const w = []; return { warn: (m) => w.push(m), w } }
 
@@ -58,7 +57,7 @@ test('loadCulture : dossier absent → liste vide', async () => {
   assert.deepEqual(await loadCulture(path.join(tmpdir(), 'nexiste-pas-culture'), silent()), [])
 })
 
-test('alternates : seulement les langues présentes ; index dans toutes', async () => {
+test('alternates : seulement les langues présentes ; index : les index non vides', async () => {
   const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
   await writeArticle(dir, 'komitas', { t: { ...texts(), hy: null } })
   const arts = await loadCulture(dir, silent())
@@ -70,7 +69,10 @@ test('alternates : seulement les langues présentes ; index dans toutes', async 
     ['ru', 'https://armenianews.org/ru/culture/komitas/'],
     ['x-default', 'https://armenianews.org/culture/komitas/'],
   ])
-  assert.equal(cultureAlternates(null, bySlug).length, ALL_LANGS.length + 1)
+  // L'index ne cite que les index non vides (+ lui-même) : hy, de, it sont vides.
+  assert.deepEqual(cultureAlternates(null, bySlug, 'fr').map(([h]) => h), ['fr', 'en', 'ru', 'x-default'])
+  for (const l of ['en', 'ru']) assert.deepEqual(cultureAlternates(null, bySlug, l), cultureAlternates(null, bySlug, 'fr'), l)
+  assert.deepEqual(cultureAlternates(null, bySlug, 'hy').map(([h]) => h), ['fr', 'en', 'hy', 'ru', 'x-default'])
   assert.deepEqual(cultureAlternates('inconnu', bySlug), [])
 })
 
