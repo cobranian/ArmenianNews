@@ -13,6 +13,8 @@ import {
   resumesFor,
   resumeLangs,
   summarizeAgenda,
+  withResumeLangs,
+  resumeModels,
 } from '../scripts/lib/agenda-resumes.mjs'
 
 // Extrait RÉEL de la page armenopole « Young Prodigies of Armenia in
@@ -217,4 +219,30 @@ test('summarizeAgenda : texte source modifié → anciennes langues effacées', 
 test('summarizeAgenda : purge les événements passés', async () => {
   const out = await summarizeAgenda({ events: [], cache: { gone: { hash: 'h', attempts: 1, fr: six.fr } }, apiKey: '', log: silent })
   assert.deepEqual(out, {})
+})
+
+test('resumeLangs se recalcule depuis le cache, pas depuis un événement hérité', () => {
+  const ev = { url: 'a', resumeLangs: ['fr', 'de'] } // venu d'un instantané précédent
+  const cache = { a: { hash: 'h', attempts: 1, en: 'y' } }
+  assert.deepEqual(withResumeLangs([ev], cache)[0].resumeLangs, ['en'])
+  assert.deepEqual(withResumeLangs([{ url: 'z' }], cache)[0].resumeLangs, [])
+  assert.deepEqual(ev.resumeLangs, ['fr', 'de']) // pas de mutation
+})
+
+// Mesuré le 24 oct. 2026 : nemotron-3.5-lightning (tête de la chaîne de la
+// brève) écrit un arménien inutilisable (« ենvole travers », « generaciónը ») ;
+// 0 résumé arménien sur 20. nemotron-3-ultra-550b écrit un arménien correct.
+test('les résumés ont leur propre chaîne de modèles, ultra en tête', async () => {
+  assert.equal(resumeModels(undefined)[0], 'nvidia/nemotron-3-ultra-550b-a55b:free')
+  assert.deepEqual(resumeModels('x/y:free'), ['x/y:free'])
+  let sent
+  await summarizeAgenda({
+    events: [{ url: 'ok', title: 'T' }],
+    cache: {},
+    apiKey: 'k',
+    fetchPage: async () => fixture,
+    fetchImpl: async (_u, init) => { sent = JSON.parse(init.body); return { ok: false, status: 500 } },
+    log: silent,
+  })
+  assert.deepEqual(sent.models, resumeModels())
 })

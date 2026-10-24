@@ -9,7 +9,7 @@ import * as cheerio from 'cheerio'
 import { createHash } from 'node:crypto'
 import { strayWords, allowedWords, frenchWords } from './brief-script.mjs'
 import { ALL_LANGS } from '../../sites.config.js'
-import { modelChain, ENDPOINT } from './classify-rubrics.mjs'
+import { DEFAULT_MODEL, ENDPOINT } from './classify-rubrics.mjs'
 import { fetchText } from './http.mjs'
 
 // Un texte source plus court ne dit rien qu'un résumé puisse reprendre.
@@ -68,6 +68,16 @@ export function forbiddenDetail(text) {
 // ---------------------------------------------------------------------------
 // Le modèle, sa réponse, la vérification, le cache.
 
+
+// La chaîne de modèles des résumés, DISTINCTE de celle de la brève et du
+// classement (modelChain) : le résumé doit écrire l'arménien. Mesuré le 24 oct.
+// 2026 sur la même page : nemotron-3.5-lightning rend un arménien inutilisable
+// (« ենvole travers », « generaciónը » — 0 résumé arménien sur 20, tous écartés
+// par la garde d'alphabet) ; nemotron-3-ultra-550b un arménien et un russe
+// corrects, en 14 s. Ce jour-là, nemotron-3-super-120b répondait 404 et
+// gemma-4-31b 429. OPENROUTER_MODEL impose un modèle unique, comme ailleurs.
+export const RESUME_MODELS = ['nvidia/nemotron-3-ultra-550b-a55b:free', DEFAULT_MODEL, 'google/gemma-4-31b-it:free']
+export const resumeModels = (forced = process.env.OPENROUTER_MODEL) => (forced ? [forced] : RESUME_MODELS)
 
 export const MAX_PER_SNAPSHOT = 20
 export const MAX_ATTEMPTS = 3
@@ -249,7 +259,7 @@ export async function summarizeAgenda({
           'X-Title': 'Armenie Info',
         },
         body: JSON.stringify({
-          models: modelChain(),
+          models: resumeModels(),
           temperature: 0.3,
           reasoning: { enabled: false },
           messages: buildResumeMessages(ev, text),
@@ -274,3 +284,8 @@ export async function summarizeAgenda({
   log.log(`  ✓ résumé: ${done} événements traités, langues écrites ${JSON.stringify(written)}`)
   return next
 }
+
+// Les langues disponibles, recalculées depuis le cache à chaque instantané —
+// jamais héritées d'un événement repris par le backfill de l'agenda.
+export const withResumeLangs = (events, cache) =>
+  events.map((ev) => ({ ...ev, resumeLangs: resumeLangs(cache[ev.url]) }))
