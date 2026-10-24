@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T16:23:31.071Z",
+  "generatedAt": "2026-10-24T16:43:39.790Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -80,16 +80,16 @@
       "sectionKey": "societe",
       "articles": [
         {
-          "title": "L’Œuvre d’Orient célèbre 170 ans d’engagement avec la soirée de générosité « Unis pour l’Orient »",
-          "url": "https://courrier.am/loeuvre-dorient-celebre-170-ans-dengagement-avec-la-soiree-de-generosite-unis-pour-lorient",
-          "date": "2026-10-23T11:19:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_3.png.avif?itok=3ggeeb4R"
-        },
-        {
           "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence",
           "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
           "date": "2026-10-23T11:01:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/854316167_122315157092029287_1490370250107810490_n.jpg.avif?itok=m4Q42pf0"
+        },
+        {
+          "title": "L’Œuvre d’Orient célèbre 170 ans d’engagement avec la soirée de générosité « Unis pour l’Orient »",
+          "url": "https://courrier.am/loeuvre-dorient-celebre-170-ans-dengagement-avec-la-soiree-de-generosite-unis-pour-lorient",
+          "date": "2026-10-23T11:19:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_3.png.avif?itok=3ggeeb4R"
         },
         {
           "title": "L’Arménie parmi les 25 meilleures destinations touristiques mondiales de 2027 selon National Geographic",
@@ -451,16 +451,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/786071064_122327790854224244_5767225921196492757_n.jpg.avif?itok=N9QIyYdv"
         },
         {
-          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
-          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
-          "date": "2026-07-24T11:22:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
-        },
-        {
           "title": "La Géorgie et l'Azerbaïdjan lancent un système numérique pour le transport routier de marchandises",
           "url": "https://courrier.am/la-georgie-et-l-azerbaidjan-lancent-un-systeme-numerique-pour-le-transport-routier-de-marchandises",
           "date": "2026-07-24T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/cp20170612-astrata-georgi-transporte.jpg.avif?itok=SnZNS7fh"
+        },
+        {
+          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
+          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
+          "date": "2026-07-24T11:22:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
         },
         {
           "title": "Port d'Anaklia : une délégation géorgienne s'inspire de Rotterdam, mais les doutes persistent",
@@ -1525,6 +1525,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Մարմնամարզիկ Արթուր Ավետիսյանը դարձել է ԱԱ-ի բրոնզե մեդալակիր",
+            "url": "https://hy.armradio.am/archives/766402",
+            "date": "2026-10-24T16:02:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ibkSC1ZvLlyjS3eX-768x512.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մարմնամարզիկ Համլետ Մանուկյանը՝ աշխարհի չեմպիոն, Մամիկոն Խաչատրյանը՝ բրոնզե մեդալակիր",
             "url": "https://hy.armradio.am/archives/766395",
             "date": "2026-10-24T14:52:00.000Z",
@@ -1586,13 +1593,6 @@
             "date": "2026-10-19T04:26:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2021/08/Artur-Davtyan-2-scaled-1-768x512.jpg",
             "category": "Սպորտ"
-          },
-          {
-            "title": "ԱԱ 2026. հայ մարմնամարզիկները եզրափակիչում կպայքարեն աշխարհի չեմպիոնի տիտղոսի համար",
-            "url": "https://hy.armradio.am/archives/765005",
-            "date": "2026-10-18T13:55:01.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/26wcFeatureImage2-768x512.webp",
-            "category": "Կարևոր"
           }
         ]
       }
@@ -2130,6 +2130,13 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Les villageois d’Arteni (Arménie) installent le portrait du général Andranik, retiré du mur de l’école, sur le mur de la Maison de la culture",
+          "url": "https://www.armenews.com/les-villageois-darteni-armenie-installent-le-portrait-du-general-andranik-retire-du-mur-de-lecole-sur-le-mur-de-la-maison-de-la-culture/",
+          "date": "2026-10-24T16:23:43.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/6779.png",
+          "rubric": "armenie"
+        },
+        {
           "title": "Le vice-ministre arménien de la Défense a visité plusieurs unités militaires",
           "url": "https://www.armenews.com/le-vice-ministre-armenien-de-la-defense-a-visite-plusieurs-unites-militaires/",
           "date": "2026-10-24T16:14:57.000Z",
@@ -2191,13 +2198,6 @@
           "date": "2026-10-24T06:30:23.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-24-a-07.59.04.png",
           "rubric": "monde"
-        },
-        {
-          "title": "Les adjoints au maire d’Erevan et de Paris discutent des défis environnementaux communs",
-          "url": "https://www.armenews.com/les-adjoints-au-maire-derevan-et-de-paris-discutent-des-defis-environnementaux-communs/",
-          "date": "2026-10-24T06:30:23.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-24-a-08.17.39.png",
-          "rubric": "societe"
         }
       ]
     },
@@ -2735,6 +2735,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Selon l’orientaliste Arsen Kharatian, Ankara pourrait normaliser avec Erevan sans l’aval de Bakou",
+          "url": "https://armenieinfo.tv/mer-oughin-35533/",
+          "date": "2026-10-24T16:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35533.jpg"
+        },
+        {
           "title": "Ankara-Bakou : l’analyste Gantaharian et l’éventuelle ouverture de la frontière arménienne",
           "url": "https://armenieinfo.tv/mer-oughin-35549/",
           "date": "2026-10-24T15:30:00.000Z",
@@ -2787,12 +2793,6 @@
           "url": "https://armenieinfo.tv/des-artistes-de-lartsakh-exclus-dun-festival-a-vienne-apres-des-pressions-diplomatiques/",
           "date": "2026-10-24T05:00:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/bc77628c-5be7-4081-b3c2-a1174d73025f.png"
-        },
-        {
-          "title": "Hovsep Khurshudyan : « Un preneur de pots-de-vin n’est pas un prisonnier politique »",
-          "url": "https://armenieinfo.tv/mer-oughin-35562/",
-          "date": "2026-10-23T18:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35562.jpg"
         }
       ]
     },
@@ -3113,6 +3113,12 @@
       "categoryKey": "politique",
       "articles": [
         {
+          "title": "Hovsep Khurshudyan : « Un preneur de pots-de-vin n’est pas un prisonnier politique »",
+          "url": "https://armenieinfo.tv/mer-oughin-35562/",
+          "date": "2026-10-23T18:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35562.jpg"
+        },
+        {
           "title": "Mémoire historique et État arménien : un chercheur plaide pour une conciliation",
           "url": "https://armenieinfo.tv/mer-oughin-35471/",
           "date": "2026-10-20T05:30:00.000Z",
@@ -3141,12 +3147,6 @@
           "url": "https://armenieinfo.tv/mer-oughin-35399/",
           "date": "2026-10-16T15:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35399.jpg"
-        },
-        {
-          "title": "Karabakh 2022 : avant le blocus, Erevan et Stepanakert déjà en désaccord",
-          "url": "https://armenieinfo.tv/mer-oughin-35380/",
-          "date": "2026-10-16T05:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35380.jpg"
         }
       ]
     },
@@ -9712,6 +9712,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Աշխարհի նորընծա չեմպիոն Համլետ Մանուկյանի, բրոնզե մեդալակիրներ Մամիկոն Խաչատրյանի եւ Արթուր Ավետիսյանի պարգեւատրումը (ֆոտո, վիդեո)",
+            "url": "https://sport.news.am/arm/news/169771/",
+            "date": "2026-10-24T16:40:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169771.jpg"
+          },
+          {
             "title": "Արթուր Ավետիսյանն՝ աշխարհի բրոնզե մեդալակիր",
             "url": "https://sport.news.am/arm/news/169770/",
             "date": "2026-10-24T15:57:00.000Z",
@@ -9764,12 +9770,6 @@
             "url": "https://sport.news.am/arm/news/169762/",
             "date": "2026-10-24T07:50:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169762.jpg"
-          },
-          {
-            "title": "Օրվա հանդիպումների անոնս",
-            "url": "https://sport.news.am/arm/news/169761/",
-            "date": "2026-10-24T05:03:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169761.jpg"
           }
         ]
       },
@@ -10042,6 +10042,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Խոշոր ավտովթար Երևան-Գյումրի ճանապարհին․ 2 հոգի տեղում մահացել է, 5 վիրավորից 4-ը երեխաներ են",
+            "url": "https://news.am/hy/news/1070087",
+            "date": "2026-10-24T16:37:46.000Z",
+            "image": "https://news.am/storage/media/26/10/24/LfZBNrppWQIar6ON.webp"
+          },
+          {
             "title": "Մահվան ելքով դժբախտ պատահար՝ Երևանում կառուցվող շենքերից մեկում. 65–ամյա տղամարդը 10–րդ հարկից ընկել է ու հայտնվել վերելակի հորանում",
             "url": "https://news.am/hy/news/1070070",
             "date": "2026-10-24T14:28:28.000Z",
@@ -10094,12 +10100,6 @@
             "url": "https://news.am/hy/news/1069922",
             "date": "2026-10-23T14:51:14.000Z",
             "image": "https://news.am/storage/media/26/10/23/zZeNUkR9QLgqGU5M.webp"
-          },
-          {
-            "title": "Հորդանանում եկեղեցում հրաձգության հետևանքով զոհվել է առնվազն 7, վիրավորվել 10 մարդ",
-            "url": "https://news.am/hy/news/1069872",
-            "date": "2026-10-23T12:28:07.000Z",
-            "image": "https://news.am/storage/media/26/10/23/K8mQn3hluLlDhbo9.webp"
           }
         ]
       },
@@ -10242,6 +10242,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "В Албании протестующие забросали камнями здание Минобразования: полиция применила водометы и слезоточивый газ",
+            "url": "https://news.am/ru/news/1070088",
+            "date": "2026-10-24T16:43:49.000Z",
+            "image": "https://news.am/storage/media/26/10/24/BxeElKj8wWgFwBTf.webp"
+          },
+          {
             "title": "В Софии застрелили главу Федерации тхэквондо и экс-депутата Европарламента: среди подозреваемых — двое граждан Турции",
             "url": "https://news.am/ru/news/1070059",
             "date": "2026-10-24T14:41:00.000Z",
@@ -10294,12 +10300,6 @@
             "url": "https://news.am/ru/news/1069928",
             "date": "2026-10-23T16:15:00.000Z",
             "image": "https://news.am/storage/media/26/10/23/PtFjWiykz4FIMJOL.webp"
-          },
-          {
-            "title": "Депутат от правящей в Турции партии: Режим Алиева должен отказаться от тоталитарных форм угнетения",
-            "url": "https://news.am/ru/news/1069927",
-            "date": "2026-10-23T15:45:00.000Z",
-            "image": "https://news.am/storage/media/26/10/23/672LAVN4NW52SxNg.webp"
           }
         ]
       },
@@ -10704,6 +10704,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Албании протестующие забросали камнями здание Минобразования: полиция применила водометы и слезоточивый газ",
+            "url": "https://news.am/ru/news/1070088",
+            "date": "2026-10-24T16:43:49.000Z",
+            "image": "https://news.am/storage/media/26/10/24/BxeElKj8wWgFwBTf.webp"
+          },
+          {
+            "title": "Водомёты и слезоточивый газ: во Франции протесты переросли в столкновения с полицией",
+            "url": "https://news.am/ru/news/1070086",
+            "date": "2026-10-24T16:37:09.000Z",
+            "image": "https://news.am/storage/media/26/10/24/Gl7LT5kV0u0mn7Ad.webp"
+          },
+          {
             "title": "Смертельный несчастный случай в одном из строящихся зданий Еревана: 65-летний мужчина упал с 10-го этажа и оказался в шахте лифта",
             "url": "https://news.am/ru/news/1070070",
             "date": "2026-10-24T14:28:28.000Z",
@@ -10750,18 +10762,6 @@
             "url": "https://news.am/ru/news/1069923",
             "date": "2026-10-23T14:52:11.000Z",
             "image": "https://news.am/storage/media/26/10/23/YF1xPeLLiSRIjyII.webp"
-          },
-          {
-            "title": "Мужчина, совершивший акт самосожжения в присутствии бывшей жены и ребенка, умер в больнице",
-            "url": "https://news.am/ru/news/1069922",
-            "date": "2026-10-23T14:51:14.000Z",
-            "image": "https://news.am/storage/media/26/10/23/zZeNUkR9QLgqGU5M.webp"
-          },
-          {
-            "title": "Не менее 7 человек погибли, 10 пострадали при стрельбе в церкви в Иордании",
-            "url": "https://news.am/ru/news/1069872",
-            "date": "2026-10-23T12:28:07.000Z",
-            "image": "https://news.am/storage/media/26/10/23/K8mQn3hluLlDhbo9.webp"
           }
         ]
       },
