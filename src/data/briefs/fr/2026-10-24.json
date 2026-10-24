@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-24",
+  "lang": "fr",
+  "generatedAt": "2026-10-24T03:29:11.762Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "L'actualité arménienne du jour est marquée par des développements politiques significatifs, notamment la position de l'Arménie au sein de l'OTSC et les tensions avec la Russie, ainsi que des avancées économiques et des événements culturels.",
+  "topics": [
+    {
+      "title": "Position de l'Arménie au sein de l'OTSC",
+      "text": "Le Secrétaire général de l'Organisation du traité de sécurité collective affirme que l'Arménie a de facto quitté l'OTSC, tandis que le Premier ministre évoque un rapport conjoint des pays de l'UEE visant à provoquer une instabilité politique. Le Président arménien Pashinian fustige la Russie alors que de nouvelles sanctions sont envisagées.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/lobjectif-est-de-provoquer-une-instabilite-politique-en-armenie-selon-le-premier-ministre-a-propos-du-rapport-conjoint-des-pays-de-luee/",
+          "title": "L’objectif est de provoquer une instabilité politique en Arménie, selon le Premier ministre à propos du rapport conjoint des pays de l’UEE"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-representants-de-la-ville-de-paris-ont-visite-le-memorial-du-genocide-des-armeniens-a-erevan/",
+          "title": "Des représentants de la Ville de Paris ont visité le Mémorial du génocide des Arméniens à Erevan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-a-de-facto-quitte-lotsc-affirme-le-secretaire-general-de-lorganisation-du-traite-de-securite-collective/",
+          "title": "L’Arménie a de facto quitté l’OTSC affirme le Secrétaire général de l’Organisation du traité de sécurité collective"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-catholicos-de-tous-les-armeniens-a-recu-des-membres-du-clerge-du-diocese-catholique-de-naples/",
+          "title": "Le Catholicos de tous les Arméniens a reçu des membres du clergé du diocèse catholique de Naples"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pashinian-fustige-la-russie-alors-que-larmenie-risque-de-nouvelles-sanctions/",
+          "title": "Pashinian fustige la Russie alors que l’Arménie risque de nouvelles sanctions"
+        }
+      ]
+    },
+    {
+      "title": "Coopération économique Arménie-USA",
+      "text": "Le ministre arménien de l'Environnement et le directeur général du FEM discutent du financement de la biodiversité. Par ailleurs, l'accord-cadre relatif au projet TRIPP sera examiné à l'Assemblée nationale, et les États-Unis font don d'équipements pour renforcer la sécurité des frontières arméniennes.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263653",
+          "title": "Le ministre arménien de l’Environnement et le directeur général du FEM discutent du financement de la biodiversité et des initiatives de suivi"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-etats-unis-font-don-de-14-million-de-dollars-dequipements-pour-renforcer-la-securite-des-frontieres-armeniennes/",
+          "title": "Les États-Unis font don de 1,4 million de dollars d’équipements pour renforcer la sécurité des frontières arméniennes"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-passage-sans-entrave-sous-tripp-ne-signifie-pas-que-tout-cargo-peut-transiter-par-larmenie-selon-le-ministre-mirzoyan/",
+          "title": "Le passage sans entrave sous TRIPP ne signifie pas que tout cargo peut transiter par l’Arménie, selon le ministre Mirzoyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263603",
+          "title": "L’accord-cadre entre l’Arménie et les États-Unis relatif au projet TRIPP sera examiné en séance plénière de l’Assemblée nationale le 27 octobre"
+        }
+      ]
+    },
+    {
+      "title": "Événements culturels et mémoriaux",
+      "text": "Audrey Pulvar et le maire adjoint d'Erevan ont visité le Mémorial du Génocide arménien. Le Catholicos de tous les Arméniens a reçu des membres du clergé catholique de Naples. Un concert de Grégory Bakian a connu salle comble à Erevan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/audrey-pulvar-visite-le-memorial-du-genocide-armenien-a-erevan/",
+          "title": "Audrey Pulvar visite le Mémorial du Génocide Arménien à Erevan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-catholicos-de-tous-les-armeniens-a-recu-des-membres-du-clerge-du-diocese-catholique-de-naples/",
+          "title": "Le Catholicos de tous les Arméniens a reçu des membres du clergé du diocèse catholique de Naples"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/salle-comble-pour-le-concert-de-gregory-bakian-a-erevan/",
+          "title": "Salle comble pour le concert de Grégory Bakian à Erevan"
+        }
+      ]
+    },
+    {
+      "title": "Sports",
+      "text": "L'équipe arménienne Ararat-Armenia a subi une lourde défaite et s'est inclinée face à l'AZ Alkmaar en UEFA Europa League. L'international Eduard Spertsyan figure dans le classement Marca des meilleurs footballeurs mondiaux.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/ararat-armenia-subit-une-lourde-defaite-2/",
+          "title": "« Ararat-Armenia » subit une lourde défaite"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-champion-darmenie-ararat-armenia-sincline-face-a-laz-alkmaar-au-troisieme-tour-des-barrages-de-luefa-europa-league/",
+          "title": "Le champion d’Arménie Ararat-Armenia s’incline face à l’AZ Alkmaar au troisième tour des barrages de l’UEFA Europa League"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/linternational-armenien-eduard-spertsyan-est-99e-du-classement-marca-des-100-meilleurs-footballeurs-du-monde/",
+          "title": "L’international arménien Eduard Spertsyan est 99e du classement Marca des 100 meilleurs footballeurs du monde"
+        }
+      ]
+    },
+    {
+      "title": "Société et santé",
+      "text": "Une discussion sur l'approche « Une seule santé » reliant humaine, animale et environnementale s'est tenue à la COP17. L'Œuvre d'Orient célèbre 170 ans d'engagement, et une conférence sur les prisonniers arméniens détenus à Bakou et la réinsertion a eu lieu.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263659",
+          "title": "La santé humaine, animale et environnementale abordée dans une même perspective : une discussion sur l’approche « Une seule santé » s’est tenue à la COP17"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
+          "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence"
+        }
+      ]
+    },
+    {
+      "title": "Infrastructures et routes",
+      "text": "Des collecte de données est en cours sur l'état du revêtement de 792,5 km de routes inter-États et nationales en Arménie. La Banque mondiale prévoit une croissance soutenue mais met en garde contre les vulnérabilités économiques.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/collecte-de-donnees-en-armenie-sur-letat-du-revetement-de-troncons-de-routes-inter-etats-et-de-routes-nationales-qui-totalisent-7925-km/",
+          "title": "Collecte de données en Arménie sur l’état du revêtement de tronçons de routes inter-États et de routes nationales qui totalisent 792,5 km"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1014945",
+          "title": "La Banque mondiale prévoit une croissance soutenue en Arménie, mais met en garde contre les vulnérabilités économiques"
+        }
+      ]
+    },
+    {
+      "title": "Relations internationales et diaspora",
+      "text": "L'Inde se félicite des progrès entre l'Azerbaïdjan et l'Arménie. Des représentants de Paris ont visité le Mémorial du génocide. Le passeport arménien permet un accès libre à 32,8 % des pays. Une rencontre-débat avec Jean-Christophe Buisson est prévue à Paris.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/linde-se-felicite-des-progres-accomplis-entre-lazerbaidjan-et-larmenie-affirme-a-bakou-le-ministre-indien-des-affaires-etrangeres/",
+          "title": "L’Inde se félicite des progrès accomplis entre l’Azerbaïdjan et l’Arménie affirme à Bakou le Ministre indien des Affaires étrangères"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-representants-de-la-ville-de-paris-ont-visite-le-memorial-du-genocide-des-armeniens-a-erevan/",
+          "title": "Des représentants de la Ville de Paris ont visité le Mémorial du génocide des Arméniens à Erevan"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/un-citoyen-azerbaidjanais-detenu-apres-avoir-traverse-en-armenie/",
+          "title": "Un citoyen azerbaïdjanais détenu après avoir traversé en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/rencontre-debat-avec-jean-christophe-buisson-le-13-novembre-a-lugab-paris/",
+          "title": "Rencontre-débat avec Jean-Christophe Buisson le 13 novembre à l’UGAB Paris"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/deux-evenements-importants-a-suivre-en-armenie-par-arthur-khatchikian/",
+          "title": "Deux événements importants à suivre en Arménie, par Arthur Khatchikian"
+        }
+      ]
+    }
+  ]
+}
