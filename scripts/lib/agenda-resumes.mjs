@@ -196,7 +196,10 @@ export async function summarizeAgenda({
   events,
   cache,
   apiKey = process.env.OPENROUTER_API_KEY,
-  fetchPage = fetchText,
+  // Redirection REFUSÉE : une page d'événement retirée peut renvoyer (302) vers
+  // une page générique, dont le texte serait résumé à la place de l'événement.
+  // Même parade que scripts/sources/armenopole.mjs.
+  fetchPage = (url) => fetchText(url, { redirect: 'manual' }),
   fetchImpl = fetch,
   now = new Date(),
   budgetMs = BUDGET_MS,
@@ -228,26 +231,28 @@ export async function summarizeAgenda({
     entry.checkedAt = now.toISOString()
 
     let text = null
+    let why = 'texte introuvable'
     try {
       text = extractEventText(await fetchPage(ev.url))
     } catch (err) {
-      log.warn(`  ✗ résumé: ${ev.url} — ${err.message}`)
+      why = err.message
     }
     if (!text) {
       entry.attempts++
-      log.warn(`  ✗ résumé: ${ev.url} — texte introuvable`)
+      log.warn(`  ✗ résumé: ${ev.url} — ${why}`)
       continue
     }
 
+    // Texte nouveau (première lecture réussie, ou modifié chez armenopole) :
+    // les essais repartent de zéro, et un texte modifié efface les résumés.
     const hash = sourceHash(text)
-    if (entry.hash && entry.hash !== hash) {
-      for (const l of ALL_LANGS) delete entry[l]
+    if (entry.hash !== hash) {
+      if (entry.hash) for (const l of ALL_LANGS) delete entry[l]
       entry.attempts = 0
     }
     entry.hash = hash
     const missing = ALL_LANGS.filter((l) => !entry[l])
     if (!missing.length || entry.attempts >= MAX_ATTEMPTS) continue
-    entry.attempts++
 
     try {
       const res = await fetchImpl(ENDPOINT, {
@@ -268,10 +273,13 @@ export async function summarizeAgenda({
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const body = await res.json()
-      const { kept, rejected } = vetResumes(parseResumeReply(body?.choices?.[0]?.message?.content), {
-        title: ev.title,
-        text,
-      })
+      // Un essai ne compte que si le modèle a RÉPONDU : une panne passagère
+      // (429, 404, délai — routinière sur les modèles :free) ne doit pas priver
+      // l'événement de résumé jusqu'à ce qu'il quitte l'agenda.
+      entry.attempts++
+      const byLang = parseResumeReply(body?.choices?.[0]?.message?.content)
+      if (!Object.keys(byLang).length) log.warn(`  ✗ résumé: réponse vide ou illisible — ${ev.url}`)
+      const { kept, rejected } = vetResumes(byLang, { title: ev.title, text })
       for (const l of missing) if (kept[l]) {
         entry[l] = kept[l]
         written[l]++

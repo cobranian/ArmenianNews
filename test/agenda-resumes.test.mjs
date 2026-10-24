@@ -246,3 +246,79 @@ test('les résumés ont leur propre chaîne de modèles, ultra en tête', async 
   })
   assert.deepEqual(sent.models, resumeModels())
 })
+
+// Relecture finale : une page d'événement retirée peut rediriger (302) vers une
+// page générique d'armenopole, dont le texte serait résumé comme s'il était
+// celui de l'événement. La lecture par défaut doit REFUSER la redirection.
+test('summarizeAgenda : une page redirigée n’est jamais résumée', async () => {
+  const realFetch = globalThis.fetch
+  const inits = []
+  globalThis.fetch = async (_url, init) => {
+    inits.push(init)
+    return { ok: false, status: 302, headers: new Headers(), text: async () => '' }
+  }
+  let modelCalls = 0
+  try {
+    const out = await summarizeAgenda({
+      events: [{ url: 'https://armenopole.com/retire.html', title: 'T' }],
+      cache: {},
+      apiKey: 'k',
+      fetchImpl: async () => { modelCalls++; return { ok: false, status: 500 } },
+      log: silent,
+    })
+    assert.ok(inits.length > 0)
+    assert.ok(inits.every((i) => i.redirect === 'manual'))
+    assert.equal(modelCalls, 0)
+    assert.equal(out['https://armenopole.com/retire.html'].attempts, 1)
+  } finally {
+    globalThis.fetch = realFetch
+  }
+})
+
+// Relecture finale : une panne passagère du modèle (429, 404, délai) ne doit
+// pas consommer les essais — sinon trois heures de panne privent un événement
+// de résumé jusqu'à ce qu'il quitte l'agenda.
+test('summarizeAgenda : une panne du modèle ne consomme pas d’essai', async () => {
+  let cache = {}
+  for (let i = 0; i < 4; i++)
+    cache = await summarizeAgenda({
+      events: [{ url: 'ok', title: 'T' }],
+      cache,
+      apiKey: 'k',
+      fetchPage: async () => fixture,
+      fetchImpl: async () => ({ ok: false, status: 429 }),
+      log: silent,
+    })
+  assert.equal(cache.ok.attempts, 0)
+  const out = await summarizeAgenda({ events: [{ url: 'ok', title: 'T' }], cache, apiKey: 'k', fetchPage: async () => fixture, fetchImpl: reply(six), log: silent })
+  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+})
+
+// Un texte enfin trouvé après trois pages vides repart de zéro essai.
+test('summarizeAgenda : un texte apparu après des pages vides est résumé', async () => {
+  const cache = { ok: { attempts: 3, checkedAt: '2026-10-01T00:00:00Z' } }
+  const out = await summarizeAgenda({
+    events: [{ url: 'ok', title: 'T' }],
+    cache,
+    apiKey: 'k',
+    fetchPage: async () => fixture,
+    fetchImpl: reply(six),
+    now: new Date('2026-10-24T12:00:00Z'),
+    log: silent,
+  })
+  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+})
+
+// Une réponse sans aucune langue lisible doit laisser une ligne ✗ au log.
+test('summarizeAgenda : une réponse vide laisse un ✗ au log', async () => {
+  const warns = []
+  await summarizeAgenda({
+    events: [{ url: 'ok', title: 'T' }],
+    cache: {},
+    apiKey: 'k',
+    fetchPage: async () => fixture,
+    fetchImpl: reply({ error: 'quota' }),
+    log: { log() {}, warn: (m) => warns.push(m), error() {} },
+  })
+  assert.ok(warns.some((m) => m.includes('✗ résumé') && m.includes('réponse vide')), warns.join('\n'))
+})
