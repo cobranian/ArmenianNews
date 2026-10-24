@@ -622,8 +622,8 @@ réel de l'un avec le no-op bénin de l'autre.
 > y étant indisponible : ce nom était réservé par un projet du même compte. Ce
 > projet a ensuite été supprimé par erreur et recréé sous l'identifiant
 > `armenia-news-b146e`, ce qui a emporté son site avec lui. Le site
-> `armenianews-org` de `armenie-info` subsiste, inutilisé, et peut être
-> supprimé. Firebase réserve les noms d'un projet supprimé une trentaine de
+> `armenianews-org` de `armenie-info`, inutilisé, a été supprimé le 25 octobre
+> 2026. Firebase réserve les noms d'un projet supprimé une trentaine de
 > jours, d'où les tâtonnements de nommage visibles dans l'historique git.
 
 Vite `base`
