@@ -1,6 +1,6 @@
 # Résumé des événements de l'agenda dans la visionneuse
 
-Date : 24 octobre 2026. Statut : approuvé en conversation, à planifier.
+Date : 24 octobre 2026. Statut : mis en œuvre (branche feat/agenda-resume).
 
 ## Intention
 
