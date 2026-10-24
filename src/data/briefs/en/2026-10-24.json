@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-24",
+  "lang": "en",
+  "generatedAt": "2026-10-24T03:29:11.762Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "A selection of today's news from Armenian and international outlets, focusing on political developments, economic updates, and cultural events.",
+  "topics": [
+    {
+      "title": "Armenian Deputy Environment Minister confirms COP17 is in full swing",
+      "text": "The Armenian Deputy Environment Minister stated that COP17 is now in full swing, highlighting the conference's progress and Armenia's role in the discussions.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263678",
+          "title": "COP17 now in full swing, says Armenian Deputy Environment Minister"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263674",
+          "title": "COP17: From smart shopping to wholegrain bread, workshop explores links between healthy eating and biodiversity"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263657",
+          "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 23-10-26"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan outlines peace timeline and constitutional reforms",
+      "text": "Prime Minister Pashinyan outlined a peace timeline, constitutional reforms, and regional alliances during a post-cabinet briefing, addressing the ongoing peace process and domestic changes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "californiacourier",
+          "url": "https://www.thecaliforniacourier.com/pashinyan-outlines-peace-timeline-constitutional-reforms-and-regional-alliances-at-post-cabinet-briefing/",
+          "title": "Pashinyan Outlines Peace Timeline, Constitutional Reforms, and Regional Alliances at Post-Cabinet Briefing"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069756",
+          "title": "Newspaper: Armenia’s Pashinyan preparing for referendum on new constitution"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069751",
+          "title": "CSTO Secretary General: Armenia's membership issue may be discussed on November 11"
+        }
+      ]
+    },
+    {
+      "title": "U.S. officials arrive in Yerevan for nuclear energy talks",
+      "text": "U.S. officials have arrived in Yerevan to engage in talks regarding nuclear energy cooperation between the two nations.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014968",
+          "title": "U.S. officials arrive in Yerevan for nuclear energy talks"
+        }
+      ]
+    },
+    {
+      "title": "Armenian Environment Minister discusses biodiversity financing with GEF CEO",
+      "text": "The Armenian Environment Minister and the GEF CEO discussed biodiversity financing and monitoring initiatives, focusing on environmental cooperation.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263653",
+          "title": "Armenian Environment Minister, GEF CEO discuss biodiversity financing and monitoring initiatives"
+        }
+      ]
+    },
+    {
+      "title": "Armenia strengthens oversight of trade in wild animals and plants",
+      "text": "Armenia has strengthened oversight of trade in wild animals and plants, aligning with CITES regulations to improve environmental governance.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263680",
+          "title": "CITES: Armenia strengthens oversight of trade in wild animals and plants"
+        }
+      ]
+    },
+    {
+      "title": "Yerevan and Paris deputy mayors discuss shared environmental challenges",
+      "text": "Deputy mayors from Yerevan and Paris met to discuss shared environmental challenges and potential cooperation between the two cities.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263675",
+          "title": "Yerevan and Paris deputy mayors discuss shared environmental challenges"
+        }
+      ]
+    },
+    {
+      "title": "Russia has invested over $10 billion in Azerbaijan's economy",
+      "text": "The Azerbaijani ambassador stated that Russia has invested more than $10 billion in Azerbaijan's economy over the past 5-8 years, highlighting significant financial ties.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1069912",
+          "title": "Russia has invested more than $10 bln in Azerbaijan's economy over past 5-8 years, Azerbaijani ambassador says"
+        }
+      ]
+    }
+  ]
+}
