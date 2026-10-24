@@ -888,31 +888,17 @@ toutes lettres, et « Voir les 12 stations » / « Показать все 12 р
   ces cinq fait disparaître le compte du mur sans le moindre signe : `igStrands`
   (`Social.jsx`) ne rend que les brins qu'il déclare, d'où
   `test/instagram-strands.test.mjs`.
-- **Les deux globs de `Social.jsx` acceptent `{jpg,webp}`, et c'est
-  définitif** — pas un vestige de la migration vers WebP. Les verrouiller sur
-  `.webp` transformerait tout fichier resté en JPEG en tuile muette retombée
-  sur son motif, sans message. `test/instagram-pool.test.mjs` lie le filtre du
-  test au glob du composant : verrouillés sur des jeux d'extensions
-  différents, son contrôle « aucune image d'un post exclu ne traîne »
-  passerait au vert sur des fichiers que le site ignore, et ne prouverait plus
-  rien.
-- Les images bundlées vivent dans `src/data/ig/` (Instagram) et `src/data/fb/`
-  (Facebook) : incluses au build, donc jamais de hotlink ni d'expiration. Sans
-  image, une tuile affiche un **motif arménien déterministe** (voir
-  `src/components/motifs.jsx`). `Social.jsx` les charge par `import.meta.glob(...,
-  { eager: true })` : **toutes** les images de ces deux dossiers partent donc dans
-  les **deux** `dist/`, pas seulement celles que le tirage affiche — mesuré,
-  **~107 Mo par vitrine** au 5 août 2026. Le coût d'un compte ajouté au pool
-  n'est donc pas ce qu'il montre, c'est tout ce qui a été récolté, payé à
-  chaque déploiement horaire.
-
-  **La grandeur qui gouverne ce poids n'est ni le nombre de comptes ni celui
-  des tuiles : c'est `Σ count`, et rien dans le dépôt ne la surveille.** Le
-  mur affiche 90 tuiles quoi qu'il arrive ; le `count` de seize comptes est
-  monté le 5 août et le dossier a triplé. Depuis le passage en WebP 800 px
-  (`scripts/lib/image.mjs`), une image pèse **~72 ko** au lieu de 170-250,
-  donc **+100 posts ≈ +7 Mo, deux fois** — le coefficient a baissé, le
-  mécanisme non.
+- **Les images Instagram ne passent PAS par un `import.meta.glob`, et ne
+  doivent pas y revenir.** Un glob de `src/data/ig/` émet chaque fichier dans
+  les deux `dist/`, qu'une tuile l'affiche ou non : 3 734 images, ~238 Mo par
+  vitrine pour 90 tuiles (25 octobre 2026). Le module virtuel
+  `virtual:ig-images` (`igFeedImages`, `vite.config.js` ; règle dans
+  `scripts/lib/ig-images.mjs`) ne livre que celles du **tirage** : 18 Mo par
+  vitrine. Le pool peut donc grossir sans alourdir le site — c'est le dépôt
+  git qui paie. `IG_EXT` accepte `.jpg` **et** `.webp` définitivement (un JPEG
+  resté d'une conversion deviendrait sinon une tuile muette) ; le glob
+  Facebook, lui, reste (25 images). Sans image, une tuile affiche un **motif
+  arménien déterministe** (`src/components/motifs.jsx`).
 
 - **Deux JSON sont ALLÉGÉS au build, et le composant qui les importe ne le
   voit pas.** Le plugin `lightData()` (`vite.config.js`, fonctions pures dans

@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 import { shortcodeOf, wantedFor, MAX_COUNT } from '../scripts/lib/ig-harvest.mjs'
+import { IG_EXT } from '../scripts/lib/ig-images.mjs'
 
 const pool = JSON.parse(
   await readFile(new URL('../src/data/instagram.json', import.meta.url), 'utf-8'),
@@ -60,21 +61,17 @@ test('aucun post exclu ne survit dans le tirage que le site rend', async () => {
 
 test('aucune image d un post exclu ne traine dans src/data/ig', async () => {
   const fichiers = await readdir(new URL('../src/data/ig/', import.meta.url))
-  for (const f of fichiers.filter((x) => /\.(jpg|webp)$/.test(x))) {
-    const code = f.replace(/\.(jpg|webp)$/, '')
+  for (const f of fichiers.filter((x) => IG_EXT.test(x))) {
+    const code = f.replace(IG_EXT, '')
     assert.ok(!exclus.has(code), `${f} appartient a un post exclu — poids mort dans le bundle`)
   }
 })
 
-// Le glob de Social.jsx et le filtre ci-dessus doivent regarder les MEMES
-// extensions. Verrouilles sur des jeux differents, le test passerait au vert
-// sur des fichiers que le site ignore — il ne prouverait plus rien.
-test('le filtre du test suit le glob de Social.jsx', async () => {
-  const src = await readFile(
-    new URL('../src/components/Social.jsx', import.meta.url),
-    'utf-8',
-  )
-  assert.match(src, /data\/ig\/\*\.\{jpg,webp\}/)
+// Le filtre ci-dessus est IG_EXT, la regle meme du bundle
+// (scripts/lib/ig-images.mjs) : sur des jeux d'extensions differents, le test
+// passerait au vert sur des fichiers que le site ignore.
+test('le filtre du test est celui du bundle : jpg et webp', () => {
+  assert.equal(IG_EXT.source, /\.(jpg|webp)$/.source)
 })
 
 test('chaque post porte une URL dont on sait tirer un shortcode', () => {

@@ -14,6 +14,7 @@ import fb from '../data/facebook.json'
 // que handle / name / url / group / count depuis ce module.
 import ig from '../data/instagram.json'
 import feed from '../data/instagram-feed.json'
+import igImg from 'virtual:ig-images'
 
 /* ------------------------------------------------------------------ *
  * Réseaux sociaux — one section, every strand on screen.
@@ -68,21 +69,14 @@ const fbImg = Object.fromEntries(
   Object.entries(FB_IMAGES).map(([path, src]) => [path.split('/').pop(), src]),
 )
 
-// Les deux globs acceptent `{jpg,webp}` DÉFINITIVEMENT, pas seulement pendant la
-// migration vers WebP : un `.jpg` qui survivrait à une conversion incomplète
-// continue de s'afficher. Verrouiller sur `.webp` transformerait tout fichier
-// oublié en tuile muette retombée sur son motif, sans message.
-const IG_IMAGES = import.meta.glob('../data/ig/*.{jpg,webp}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-})
-const igImg = Object.fromEntries(
-  Object.entries(IG_IMAGES).map(([path, src]) => [
-    path.split('/').pop().replace(/\.(jpg|webp)$/, ''),
-    src,
-  ]),
-)
+// Le glob Facebook et IG_EXT (scripts/lib/ig-images.mjs) acceptent `.jpg` ET
+// `.webp` DÉFINITIVEMENT : un `.jpg` qui survivrait à une conversion
+// incomplète continue de s'afficher, au lieu d'une tuile muette.
+//
+// Les images Instagram ne passent PAS par un glob : celui de src/data/ig/
+// embarquait les ~3 700 images du pool (~238 Mo par vitrine) pour 90 tuiles.
+// `igImg` (module virtuel, vite.config.js → igFeedImages) ne livre que celles
+// du tirage, par shortcode. test/ig-images.test.mjs garde le branchement.
 const shortcode = (url) => url.match(/\/(?:p|reel|tv)\/([^/?]+)/)?.[1] || null
 
 /* L'id de la photo de Don Narek lui-même, épinglée en QUEUE du mur Facebook —
