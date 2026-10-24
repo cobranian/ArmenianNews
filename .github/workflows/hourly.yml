@@ -74,7 +74,7 @@ jobs:
           # (scripts/lib/mirror-images.mjs). mkdir : un chemin absent ferait
           # échouer `git add`, et l'instantané entier avec lui.
           mkdir -p public/cc
-          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json src/data/rubric-cache.json src/data/briefs public/cc
+          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json src/data/rubric-cache.json src/data/agenda-resumes.json src/data/agenda-resumes src/data/briefs public/cc
           if git diff --cached --quiet; then
             echo "No data changes."
           else

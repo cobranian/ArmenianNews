@@ -73,7 +73,7 @@ npm run check        # contrôle les 24 pages produites (6 langues × 4 vues : l
 npm run prerender    # cuit les 24 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 626 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 662 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -90,7 +90,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **626 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **662 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -1066,7 +1066,7 @@ de production servent toujours depuis la racine de leur domaine.
   défaut, le site a l'air juste, et le seul signe est `✗ classify` au log
   (`gh run view <id> --log | grep classify`). Modèle en service :
   `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, replis
-  `nvidia/nemotron-3-super-120b-a12b:free` puis `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
+  `nvidia/nemotron-3-super-120b-a12b:free` (404 depuis le 24 oct. 2026) puis `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
   raisonnement dépassent le délai, les points d'accès gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
   `DEFAULT_MODEL` (ou posez `OPENROUTER_MODEL`) après avoir listé
   `https://openrouter.ai/api/v1/models` (ids finissant par `:free`).
@@ -1234,6 +1234,7 @@ de production servent toujours depuis la racine de leur domaine.
   vignettes retombent sur un motif. (Les images Armenpress, elles, hotlinkent
   directement — pas de 503.)
 - **Brève quotidienne : le hreflang d'une page datée ne cite que les langues présentes ce jour-là** (`scripts/lib/brief-links.mjs`, partagé avec le sitemap). Une journée sans brève ne casse rien : le seul signe est `✗ brief/{lang}` au log (`gh run view <id> --log | grep brief`). Le modèle ne fournit jamais d'URL : elles viennent des articles sélectionnés. Seul filtre de texte : l'alphabet (`brief-script.mjs`) — un sujet hy/ru qui écrit du latin hors titres sources (ou l'inverse en fr/en) est écarté ; signe au log : `✗ brief/hy: alphabet`. Les modèles :free le faisaient (« successoffice », « football » en russe, 17 oct. 2026).
+- **Résumés de l'agenda (visionneuse, « Résumé ▾ ») : trois pièges muets.** (1) Le cache `src/data/agenda-resumes.json` et le dossier `src/data/agenda-resumes/` doivent rester dans la ligne `git add` de `hourly.yml` : absents, ils seraient refaits chaque heure sans le moindre signe (`test/agenda-resumes-wiring.test.mjs`). (2) Ils ne sont chargés qu'au premier dépli (`src/agendaResumes.js`, `import.meta.glob` non-eager) : un import statique les mettrait dans le bundle des deux vitrines. (3) Leur chaîne de modèles est **propre** (`RESUME_MODELS`, `scripts/lib/agenda-resumes.mjs`, `nemotron-3-ultra-550b` en tête) : la tête de la brève, `lightning`, écrit un arménien inutilisable — 0 résumé arménien sur 20, tous écartés par la garde d'alphabet (24 oct. 2026). Signe de panne : `✗ résumé` au log.
 - Le README.md du projet est la **référence détaillée** (chaîne de sources
   armradio, curation des feeds, déploiement, proxy Cloudflare Worker).
 - **La langue vient de l'URL, plus de `localStorage`.** Chaque langue a son

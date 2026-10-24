@@ -24,6 +24,8 @@ import { scrapeAgenda } from './sources/armenopole.mjs'
 import { selectInstagram } from './sources/instagram.mjs'
 import { classifyRubrics, applyRubrics } from './lib/classify-rubrics.mjs'
 import { generateBriefs } from './lib/brief-generate.mjs'
+import { summarizeAgenda, withResumeLangs, resumesFor } from './lib/agenda-resumes.mjs'
+import { ALL_LANGS } from '../sites.config.js'
 import { unmappedKeys } from '../src/rubrics.js'
 
 // Backfill each empty category from the previous snapshot, so a transient
@@ -54,7 +56,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = join(__dirname, '..', 'src', 'data')
 
 async function writeJson(name, data) {
-  await mkdir(DATA_DIR, { recursive: true })
+  await mkdir(dirname(join(DATA_DIR, name)), { recursive: true })
   await writeFile(join(DATA_DIR, name), JSON.stringify(data, null, 2) + '\n', 'utf-8')
   console.log(`→ wrote src/data/${name}`)
 }
@@ -320,6 +322,21 @@ async function main() {
   // classeur. Un échec n'écrit rien ; le passage suivant réessaie.
   console.log('\nBrève quotidienne:')
   await generateBriefs({ news: newsOut, dir: join(DATA_DIR, 'briefs') })
+  // Les résumés de l'agenda (scripts/lib/agenda-resumes.mjs) : 20 événements
+  // au plus par instantané, 3 minutes au plus. Un échec n'arrête rien ; le
+  // seul signe est « ✗ résumé ». Le cache ET les six fichiers par langue
+  // doivent figurer dans le `git add` de hourly.yml, sinon ils sont refaits
+  // à chaque heure (test/agenda-resumes-wiring.test.mjs).
+  console.log("\nRésumés de l'agenda:")
+  const resumeCache = await summarizeAgenda({
+    events: [...agenda.switzerland, ...agenda.world],
+    cache: (await readJson('agenda-resumes.json')) || {},
+  })
+  await writeJson('agenda-resumes.json', resumeCache)
+  for (const lang of ALL_LANGS)
+    await writeJson(`agenda-resumes/${lang}.json`, resumesFor(resumeCache, lang))
+  agenda.switzerland = withResumeLangs(agenda.switzerland, resumeCache)
+  agenda.world = withResumeLangs(agenda.world, resumeCache)
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })

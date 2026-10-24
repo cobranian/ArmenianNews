@@ -4,6 +4,7 @@ import { worldCountryKey, countryFlag, countryLabel } from '../worldPlace.js'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
 import { Lightbox } from './Lightbox.jsx'
+import { loadResume } from '../agendaResumes.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import agenda from '../data/agenda.json'
 import { pathFor } from '../../sites.config.js'
@@ -157,13 +158,16 @@ export function Agenda() {
           sub: [ev.location, day, when].filter(Boolean).join(' · '),
           href: ev.url,
           cta: t('agenda.armenopole'),
+          // Le résumé n'est proposé que si le scrape l'a écrit dans cette
+          // langue ; il n'est téléchargé qu'au premier dépli.
+          summary: ev.resumeLangs?.includes(lang) ? () => loadResume(lang, ev.url) : undefined,
           seed,
           c1: theme.c1,
           c2: theme.c2,
           ink: theme.ink,
         }
       }),
-    [events, formatDayNum, formatMonthAbbr, formatWeekdayTime, t],
+    [events, formatDayNum, formatMonthAbbr, formatWeekdayTime, t, lang],
   )
 
   return (
