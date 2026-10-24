@@ -2,7 +2,7 @@
 // une brève absente ou un agenda vide ouvrent une issue. Sans réseau.
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { STALE_HOURS, staleHours, checkNews, checkBriefs, checkAgenda, healthReport } from '../scripts/lib/health.mjs'
+import { STALE_HOURS, staleHours, checkNews, checkBriefs, checkAgenda, checkClassify, checkSteps, healthReport, MAX_UNCLASSIFIED } from '../scripts/lib/health.mjs'
 import { ALL_LANGS } from '../sites.config.js'
 
 const NOW = new Date('2026-10-24T12:00:00Z') // 16 h à Erevan
@@ -76,4 +76,34 @@ test('healthReport : le rapport en panne liste chaque problème en Markdown', ()
   const r = healthReport({ problems: ['a', 'b'] })
   assert.equal(r.ok, false)
   assert.match(r.markdown, /- a\n- b/)
+})
+
+// Le classeur en panne range tout dans le défaut du fil, sans erreur : ses
+// articles restent hors de rubric-cache.json. Mesuré du 16 au 24 octobre 2026 :
+// 0 à 11 non classés sur 291 ; 171 le jour de la panne du 15.
+const mixedNews = (n) => ({
+  courrier: [{ sectionKey: 'actualite', articles: Array.from({ length: n }, (_, i) => ({ title: 't', url: 'https://c/' + i })) }],
+})
+test('checkClassify : quelques articles en attente de classement ne sont pas une panne', () => {
+  const news = mixedNews(MAX_UNCLASSIFIED)
+  assert.deepEqual(checkClassify(news, {}, { courrier: { actualite: { mixed: 'armenie' } } }), [])
+})
+test('checkClassify : au-delà du seuil, le classeur est signalé en panne', () => {
+  const p = checkClassify(mixedNews(MAX_UNCLASSIFIED + 1), {}, { courrier: { actualite: { mixed: 'armenie' } } })
+  assert.equal(p.length, 1)
+  assert.match(p[0], /classement/)
+})
+test('checkClassify : des articles en cache sont classés', () => {
+  const news = mixedNews(100)
+  const cache = Object.fromEntries(Array.from({ length: 100 }, (_, i) => ['https://c/' + i, 'politique']))
+  assert.deepEqual(checkClassify(news, cache, { courrier: { actualite: { mixed: 'armenie' } } }), [])
+})
+
+// Une étape en continue-on-error rend « success » à l'API même en échec :
+// seul steps.<id>.outcome dit la vérité, et le job le passe ici.
+test('checkSteps : une capture d’écran en échec est signalée, un succès ou un saut non', () => {
+  assert.equal(checkSteps({ screenshot: 'failure' }).length, 1)
+  assert.deepEqual(checkSteps({ screenshot: 'success' }), [])
+  assert.deepEqual(checkSteps({ screenshot: 'skipped' }), [])
+  assert.deepEqual(checkSteps({}), [])
 })

@@ -82,17 +82,67 @@ jobs:
             git push
           fi
 
+      - name: Build
+        run: npm run build
+
+      # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
+      # jamais en automatique et ne protège rien. Volontairement SANS
+      # continue-on-error : si les douze pages ou les deux sitemaps sont
+      # incorrects, il vaut mieux ne rien publier que publier un site cassé.
+      # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
+      # donc un faux positif signalerait une vraie divergence de configuration.
+      - name: Contrôler les pages et les fichiers SEO produits
+        run: npm run check
+
+      # Regenerate the Don Narek carousel preview each hour and drop it into
+      # dist/ch/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png)
+      # — dist/ch is the showcase that domain serves.
+      # Best-effort: a screenshot failure must never block the deploy.
+      #
+      # v2 (et non v1) pour deux raisons. La visible : v1 tourne sur Node 20,
+      # que les runners forcent déjà sur Node 24 en annonçant la fin du support.
+      # La vraie : sous v2, `chrome-version: stable` installe **Chrome for
+      # Testing** et non le Chrome officiel — c'est précisément le binaire
+      # contre lequel Puppeteer est versionné, donc `scripts/shoot.mjs` y gagne
+      # un couple navigateur/pilote reproductible.
+      #
+      # La sortie `chrome-path` n'a pas changé de nom, donc l'étape suivante est
+      # intacte. Attention en revanche : les deux étapes sont
+      # `continue-on-error: true`, donc **un job vert ne prouve rien ici** — si
+      # le binaire devenait injoignable, la capture cesserait de se rafraîchir
+      # en silence, exactement le piège documenté dans CLAUDE.md. Après un
+      # changement de cette action, vérifiez le log de l'étape de capture, pas
+      # la seule couleur du job.
+      - name: Set up Chrome (for screenshot)
+        id: chrome
+        continue-on-error: true
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+
+      - name: Screenshot Don Narek carousel into dist/ch/
+        id: screenshot
+        continue-on-error: true
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: npm run screenshot
+
       # Ce que le backfill cache : une source figée (Armenpress treize jours,
       # Courrier onze, septembre 2026 — tous les runs « success »), une brève
       # absente, un agenda vide. Même mécanique que l'alerte de prérendu plus
       # bas : une issue `[sources-down]` assignée, une seule à la fois, son
       # texte mis à jour à chaque passage, refermée toute seule au retour.
-      # Les seuils par source sont dans scripts/lib/health.mjs.
+      # Les seuils par source sont dans scripts/lib/health.mjs. Placé APRÈS la
+      # capture d'écran pour en connaître le résultat ; le classement des
+      # rubriques est lu dans rubric-cache.json.
       - name: Contrôler la fraîcheur des sources
         id: health
         if: github.event_name != 'push'
         # Un contrôle qui plante ne doit jamais retenir le déploiement.
         continue-on-error: true
+        env:
+          # outcome, pas conclusion : l'étape est en continue-on-error.
+          SCREENSHOT_OUTCOME: ${{ steps.screenshot.outcome }}
         run: node scripts/health.mjs --out "$RUNNER_TEMP/sante.md"
 
       - name: Alerter ou refermer — sources figées
@@ -133,50 +183,6 @@ jobs:
             gh issue create --title "[sources-down] Une source ne se met plus à jour" \
               --assignee cobranian --body-file "$RUNNER_TEMP/issue.md"
           fi
-
-      - name: Build
-        run: npm run build
-
-      # Porte de validation du build. Sans elle, check-build.mjs ne s'exécute
-      # jamais en automatique et ne protège rien. Volontairement SANS
-      # continue-on-error : si les douze pages ou les deux sitemaps sont
-      # incorrects, il vaut mieux ne rien publier que publier un site cassé.
-      # Le contrôle est déterministe et entièrement dérivé de sites.config.js,
-      # donc un faux positif signalerait une vraie divergence de configuration.
-      - name: Contrôler les pages et les fichiers SEO produits
-        run: npm run check
-
-      # Regenerate the Don Narek carousel preview each hour and drop it into
-      # dist/ch/ so the deploy publishes it (armenie-info.web.app/don-narek-*.png)
-      # — dist/ch is the showcase that domain serves.
-      # Best-effort: a screenshot failure must never block the deploy.
-      #
-      # v2 (et non v1) pour deux raisons. La visible : v1 tourne sur Node 20,
-      # que les runners forcent déjà sur Node 24 en annonçant la fin du support.
-      # La vraie : sous v2, `chrome-version: stable` installe **Chrome for
-      # Testing** et non le Chrome officiel — c'est précisément le binaire
-      # contre lequel Puppeteer est versionné, donc `scripts/shoot.mjs` y gagne
-      # un couple navigateur/pilote reproductible.
-      #
-      # La sortie `chrome-path` n'a pas changé de nom, donc l'étape suivante est
-      # intacte. Attention en revanche : les deux étapes sont
-      # `continue-on-error: true`, donc **un job vert ne prouve rien ici** — si
-      # le binaire devenait injoignable, la capture cesserait de se rafraîchir
-      # en silence, exactement le piège documenté dans CLAUDE.md. Après un
-      # changement de cette action, vérifiez le log de l'étape de capture, pas
-      # la seule couleur du job.
-      - name: Set up Chrome (for screenshot)
-        id: chrome
-        continue-on-error: true
-        uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: stable
-
-      - name: Screenshot Don Narek carousel into dist/ch/
-        continue-on-error: true
-        env:
-          PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
-        run: npm run screenshot
 
       # Bake the rendered app into each showcase's index.html (twelve files:
       # every (site, lang, view) triple — home, /radio, /agenda|/events — across

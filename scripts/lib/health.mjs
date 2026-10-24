@@ -11,6 +11,8 @@
 import { ALL_LANGS } from '../../sites.config.js'
 import { evenementsAVenir } from '../../src/agendaEvents.js'
 import { yerevanClock } from './brief-select.mjs'
+import { mixedArticles } from './classify-rubrics.mjs'
+import { RUBRIC_MAP } from '../../src/rubrics.js'
 
 // Silence toléré, en heures, avant qu'une source soit dite figée. Mesuré sur
 // trois semaines d'instantanés (4–24 octobre 2026) : chaque seuil vaut à peu
@@ -88,6 +90,30 @@ export function checkBriefs(dates, now = new Date()) {
 export function checkAgenda(agenda, now = new Date()) {
   const all = [...(agenda?.switzerland ?? []), ...(agenda?.world ?? [])]
   return evenementsAVenir(all, now.getTime(), 0).length ? [] : ['**agenda** : aucun événement à venir']
+}
+
+// Le classeur en panne (clé, quota, modèles retirés) range chaque article des
+// fils fourre-tout dans le défaut de son fil, sans erreur : ces articles
+// restent hors de rubric-cache.json. Mesuré du 16 au 24 octobre 2026 : 0 à 11
+// non classés sur 291 en temps normal (les nouveaux de l'heure), 171 le jour
+// de la panne du 15.
+export const MAX_UNCLASSIFIED = 40
+
+export function checkClassify(news, cache, map = RUBRIC_MAP) {
+  const all = mixedArticles(news ?? {}, map)
+  const n = all.filter(({ article }) => !(article.url in (cache ?? {}))).length
+  return n > MAX_UNCLASSIFIED
+    ? [`**classement des rubriques** : ${n} articles sur ${all.length} non classés (« ✗ classify » au log)`]
+    : []
+}
+
+// Les étapes du job en continue-on-error, par leur VRAI résultat
+// (steps.<id>.outcome — l'API rend « success » pour une étape tolérée en échec).
+const STEP_LABELS = {
+  screenshot: '**capture Don Narek** : l’étape a échoué, les PNG de armenie-info.web.app ne sont plus rafraîchis',
+}
+export function checkSteps(outcomes = {}) {
+  return Object.entries(STEP_LABELS).filter(([id]) => outcomes[id] === 'failure').map(([, label]) => label)
 }
 
 export function healthReport({ problems }) {

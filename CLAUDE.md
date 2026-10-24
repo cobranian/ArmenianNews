@@ -687,7 +687,8 @@ de production servent toujours depuis la racine de leur domaine.
   `meta.generatedAt` et le `lastmod` annoncent de la fraîcheur. Depuis le
   24 octobre 2026, `scripts/health.mjs` ouvre alors une issue `[sources-down]`
   (âge de l'article le plus récent par source × langue, brève du jour à midi
-  d'Erevan, agenda vide). **Le piège : ses seuils sont PAR SOURCE**
+  d'Erevan, agenda vide, plus de 40 articles non classés, capture Don Narek
+  en échec). **Le piège : ses seuils sont PAR SOURCE**
   (`STALE_HOURS`, `scripts/lib/health.mjs`, mesurés sur trois semaines). Une
   source nouvelle prend 96 h par défaut : un hebdomadaire ou une revue à
   numéros (Artzakank, `null`) y déclencherait une fausse alerte à chaque
@@ -863,7 +864,8 @@ de production servent toujours depuis la racine de leur domaine.
   toujours notifié, un « Watch » peut être coupé), dédoublonnée sur une panne
   longue, et **refermée toute seule au retour**. Ne la remplacez pas par un
   échec de job : le déploiement doit continuer, un prérendu manqué ne dégrade
-  que le SEO. La capture d'écran, elle, n'a **pas** d'alerte équivalente.
+  que le SEO. La capture d'écran passe par l'issue `[sources-down]`, lue sur
+  `steps.screenshot.outcome`.
 - **`CONTENT_LANG` (`src/newsLangs.js`) décide de trois choses à la fois.**
   `{ de: 'fr', it: 'fr' }` : de et it n'ont pas de fil propre. Cette table fait
   lire le fil français à leurs pages (`TAB_ORDER.de = TAB_ORDER.fr`), fait
