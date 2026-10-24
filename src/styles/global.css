@@ -3954,6 +3954,62 @@ html.js .reveal.is-visible {
 .lb__out:hover span {
   transform: translateX(4px);
 }
+/* Le résumé dépliable de l'agenda (option « A » : une ligne discrète sous le
+   titre). Style des liens utilitaires du site (.section__more a). Sur grand
+   écran, le texte déplié passe sur sa propre ligne SOUS la légende et le
+   bouton (order: 1, pleine largeur) ; sur téléphone, entre les deux (voir le
+   bloc ≤620px). */
+.lb__sum-toggle {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 0 0 2px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line-apricot);
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+  cursor: pointer;
+}
+.lb__sum-toggle:hover {
+  color: var(--apricot-ink-strong);
+  border-color: currentColor;
+}
+.lb__sum-toggle:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 3px;
+}
+.lb__sum {
+  order: 1;
+  flex: 1 0 100%;
+  max-width: 68ch;
+}
+.lb__sum p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.lb__sum-note {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+@media (pointer: coarse) {
+  .lb__sum-toggle {
+    min-height: 44px;
+    padding: 0 6px;
+  }
+}
 .lb__close {
   position: fixed;
   top: clamp(10px, 2.5vw, 22px);
@@ -4134,6 +4190,18 @@ html.js .reveal.is-visible {
     max-width: 100%;
     box-sizing: border-box;
     padding: 0 54px;
+  }
+  .lb__sum-toggle {
+    align-self: center;
+  }
+  /* Déplié, le résumé s'insère entre la légende et le bouton, aligné à gauche,
+     et défile s'il dépasse : l'affiche au-dessus ne doit jamais disparaître. */
+  .lb__sum {
+    order: 0;
+    flex: 0 0 auto;
+    max-height: 30vh;
+    overflow-y: auto;
+    text-align: left;
   }
   /* Un item sans lien de sortie (la photo épinglée de Don Narek) n'a pas de
      .lb__out : son .lb__meta perd 50px — les 40px du bouton plus les 10px de

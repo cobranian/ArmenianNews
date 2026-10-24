@@ -26,7 +26,22 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
   const restoreRef = useRef(null)
 
   const n = items.length
-  const go = useCallback((d) => setCur((i) => (i + d + n) % n), [n])
+  // Le résumé dépliable (agenda) : `item.summary` est une fonction qui le
+  // charge. Les résultats sont rangés PAR INDEX d'item et lus pour l'item
+  // courant seulement — un chargement lent ne peut donc jamais afficher le
+  // résumé d'un autre événement si le lecteur a changé d'image entre-temps.
+  // `null` = pas de résumé : la ligne disparaît pour cet item.
+  const [sumOpen, setSumOpen] = useState(false)
+  const [sums, setSums] = useState(() => new Map())
+
+  // Changer d'image replie le résumé : l'affiche reste le cœur de la visionneuse.
+  const go = useCallback(
+    (d) => {
+      setSumOpen(false)
+      setCur((i) => (i + d + n) % n)
+    },
+    [n],
+  )
 
   // Remember what had focus, lock the page scroll, focus the dialog; put it
   // all back when the lightbox closes.
@@ -76,6 +91,19 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
 
   const item = items[cur]
   const showPhoto = !!item.img
+  const sumText = sums.get(cur)
+  const hasSum = !!item.summary && sumText !== null
+  const toggleSum = () => {
+    if (!sumOpen && !sums.has(cur)) {
+      const idx = cur
+      setSums((m) => new Map(m).set(idx, undefined))
+      item
+        .summary()
+        .catch(() => null)
+        .then((text) => setSums((m) => new Map(m).set(idx, text || null)))
+    }
+    setSumOpen((o) => !o)
+  }
 
   return createPortal(
     <div
@@ -140,7 +168,24 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
           <p className="lb__cap">
             {item.sub && <span className="lb__net">{item.sub}</span>}
             <span className="lb__title">{item.title}</span>
+            {hasSum && (
+              <button
+                className="lb__sum-toggle"
+                type="button"
+                aria-expanded={sumOpen}
+                aria-controls="lb-sum"
+                onClick={toggleSum}
+              >
+                {t('lb.summary')} <span aria-hidden="true">{sumOpen ? '▴' : '▾'}</span>
+              </button>
+            )}
           </p>
+          {sumOpen && typeof sumText === 'string' && (
+            <div className="lb__sum" id="lb-sum">
+              <p>{sumText}</p>
+              <small className="lb__sum-note">{t('lb.summaryNote')}</small>
+            </div>
+          )}
           {/* Un item sans `href` n'a pas de sortie : c'est le cas de la photo
               épinglée de Don Narek, qui est le portrait du mur et non une
               publication à aller lire (voir Social.jsx). La légende reste seule

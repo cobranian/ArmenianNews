@@ -79,6 +79,8 @@ const STRINGS = {
     'agenda.world': 'Monde',
     'agenda.country': 'Pays',
     'agenda.armenopole': 'Voir sur armenopole',
+    'lb.summary': 'Résumé',
+    'lb.summaryNote': 'Résumé automatique',
     'agenda.empty': 'Aucun événement annoncé.',
     'agenda.more': "Tout l'agenda arménien, pays par pays",
 
@@ -360,6 +362,8 @@ const STRINGS = {
     'agenda.world': 'Welt',
     'agenda.country': 'Land',
     'agenda.armenopole': 'Auf armenopole ansehen',
+    'lb.summary': 'Zusammenfassung',
+    'lb.summaryNote': 'Automatische Zusammenfassung',
     'agenda.empty': 'Keine Veranstaltungen angekündigt.',
     'agenda.more': 'Die ganze armenische Agenda, Land für Land',
     'agenda.page.h1': 'Die armenische Agenda, weltweit',
@@ -594,6 +598,8 @@ const STRINGS = {
     'agenda.world': 'Mondo',
     'agenda.country': 'Paese',
     'agenda.armenopole': 'Vedi su armenopole',
+    'lb.summary': 'Riassunto',
+    'lb.summaryNote': 'Riassunto automatico',
     'agenda.empty': 'Nessun evento in programma.',
     'agenda.more': 'Tutti gli eventi armeni, paese per paese',
     'agenda.page.h1': 'Gli eventi armeni nel mondo',
@@ -833,6 +839,8 @@ const STRINGS = {
     'agenda.world': 'World',
     'agenda.country': 'Country',
     'agenda.armenopole': 'View on armenopole',
+    'lb.summary': 'Summary',
+    'lb.summaryNote': 'Automatic summary',
     'agenda.empty': 'No events announced.',
     'agenda.more': 'The full Armenian events calendar',
 
@@ -1113,6 +1121,8 @@ const STRINGS = {
     'agenda.world': 'Աշխարհ',
     'agenda.country': 'Երկիր',
     'agenda.armenopole': 'Դիտել armenopole-ում',
+    'lb.summary': 'Ամփոփում',
+    'lb.summaryNote': 'Ավտոմատ ամփոփում',
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
     'agenda.more': 'Հայկական միջոցառումների ամբողջական օրացույցը՝ երկիր առ երկիր',
 
@@ -1385,6 +1395,8 @@ const STRINGS = {
     'agenda.world': 'Мир',
     'agenda.country': 'Страна',
     'agenda.armenopole': 'Смотреть на armenopole',
+    'lb.summary': 'Кратко',
+    'lb.summaryNote': 'Автоматическое резюме',
     'agenda.empty': 'Анонсов пока нет.',
     'agenda.more': 'Вся армянская афиша событий, по странам',
 
