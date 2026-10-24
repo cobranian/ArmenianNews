@@ -17,7 +17,7 @@ on:
 
 permissions:
   contents: write # commit refreshed data
-  issues: write # ouvrir/refermer l'alerte de prérendu (voir en fin de job)
+  issues: write # ouvrir/refermer les alertes [sources-down] et [prerender-down]
 
 concurrency:
   group: deploy
@@ -80,6 +80,58 @@ jobs:
           else
             git commit -m "data: hourly snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push
+          fi
+
+      # Ce que le backfill cache : une source figée (Armenpress treize jours,
+      # Courrier onze, septembre 2026 — tous les runs « success »), une brève
+      # absente, un agenda vide. Même mécanique que l'alerte de prérendu plus
+      # bas : une issue `[sources-down]` assignée, une seule à la fois, son
+      # texte mis à jour à chaque passage, refermée toute seule au retour.
+      # Les seuils par source sont dans scripts/lib/health.mjs.
+      - name: Contrôler la fraîcheur des sources
+        id: health
+        if: github.event_name != 'push'
+        # Un contrôle qui plante ne doit jamais retenir le déploiement.
+        continue-on-error: true
+        run: node scripts/health.mjs --out "$RUNNER_TEMP/sante.md"
+
+      - name: Alerter ou refermer — sources figées
+        if: github.event_name != 'push' && steps.health.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROBLEMS: ${{ steps.health.outputs.problems }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          ouverte=$(gh issue list --state open --limit 100 --json number,title \
+            --jq '[.[] | select(.title | contains("[sources-down]"))] | .[0].number // empty')
+          if [ "${PROBLEMS:-0}" = "0" ]; then
+            if [ -n "$ouverte" ]; then
+              gh issue close "$ouverte" --comment "Tout est revenu à la normale. $RUN_URL"
+            fi
+            exit 0
+          fi
+          {
+            echo "Le contrôle de fraîcheur signale **$PROBLEMS problème(s)**. Le site continue de servir les anciens articles (backfill) : les lecteurs voient des cartes datées, rien ne casse."
+            echo
+            cat "$RUNNER_TEMP/sante.md"
+            echo
+            echo "Dernier contrôle : $RUN_URL"
+            echo
+            echo "## Trouver la cause"
+            echo
+            echo '```bash'
+            echo "gh run view ${{ github.run_id }} --log | grep '✗'"
+            echo '```'
+            echo
+            echo "Un 403 sur Armenpress, CivilNet ou NEWS.am : voir le User-Agent (CLAUDE.md). « No articles parsed » : le site source a changé de mise en page. Une brève absente : « ✗ brief » et les modèles OpenRouter."
+            echo
+            echo "Cette issue se met à jour à chaque passage et se referme toute seule au retour."
+          } > "$RUNNER_TEMP/issue.md"
+          if [ -n "$ouverte" ]; then
+            gh issue edit "$ouverte" --body-file "$RUNNER_TEMP/issue.md"
+          else
+            gh issue create --title "[sources-down] Une source ne se met plus à jour" \
+              --assignee cobranian --body-file "$RUNNER_TEMP/issue.md"
           fi
 
       - name: Build

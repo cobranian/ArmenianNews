@@ -1164,15 +1164,15 @@ de production servent toujours depuis la racine de leur domaine.
   valide, 1200×630, sans ICC, sous les 600 ko — tous les contrôles au vert, une
   ligne en moins. D'où `subbrand` dans `CARDS`. **Avant de régénérer une carte,
   ouvrez l'ancienne à côté** : ce script ne rend que ce qu'on lui a appris.
-- **Armenpress peut se périmer en silence.** Si une rubrique échoue, le module
-  la renvoie vide et `backfillSections` restitue les articles du
-  snapshot précédent — indéfiniment. Un blocage durable depuis la CI ferait donc
-  resservir les mêmes dépêches pendant que `meta.generatedAt` et le `lastmod` du
-  sitemap continuent d'annoncer de la fraîcheur. Le seul signal est un
-  `console.warn` dans les logs. C'est le même piège que celui documenté pour
-  Instagram, mais Armenpress n'a **aucun repli** — là où armradio en a quatre.
-  Si le mur Armenpress semble figé, vérifiez les logs du job horaire avant de
-  soupçonner le code.
+- **Le backfill ressert indéfiniment une source tombée**, pendant que
+  `meta.generatedAt` et le `lastmod` annoncent de la fraîcheur. Depuis le
+  24 octobre 2026, `scripts/health.mjs` ouvre alors une issue `[sources-down]`
+  (âge de l'article le plus récent par source × langue, brève du jour à midi
+  d'Erevan, agenda vide). **Le piège : ses seuils sont PAR SOURCE**
+  (`STALE_HOURS`, `scripts/lib/health.mjs`, mesurés sur trois semaines). Une
+  source nouvelle prend 96 h par défaut : un hebdomadaire ou une revue à
+  numéros (Artzakank, `null`) y déclencherait une fausse alerte à chaque
+  creux — déclarez son seuil dans le même commit.
 - **Ne tronquez pas les titres Armenpress au deux-points.** Ce sont des chapôs,
   pas des titres : médiane 78 caractères, queue à 189, et ~50 % des cartes
   Armenpress restent coupées par le `line-clamp` (mesuré sur 210 titres,
