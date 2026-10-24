@@ -279,3 +279,33 @@ test('parseBrief : la brève it corrigée à la main le 23 octobre 2026 passe la
   for (const t of b.topics) assert.deepEqual(frenchWords(`${t.title} ${t.text}`, 'it'), [], t.title)
   assert.deepEqual(frenchWords(b.intro, 'it'), [])
 })
+
+// La brève « it » du 24 octobre 2026 : le modèle préfixait ses titres par la
+// CLÉ de rubrique, en français (« Politique : », « Economie : »), et le premier
+// titre était resté entier en français — un seul mot-outil (« les »), sous le
+// seuil de deux qui vaut pour un texte entier.
+const itText = 'Il segretario generale ha dichiarato che il paese ha lasciato l’organizzazione.'
+test('parseBrief : un préfixe « Rubrique : » en clé française est retiré, et donne la rubrique', () => {
+  const b = parseBrief(JSON.stringify({ intro: '', topics: [
+    topic([1], { title: 'Economie : energie verdi e infrastrutture', text: itText, rubric: null }),
+    topic([2], { title: 'Società e diritti umani', text: itText, rubric: 'societe' }),
+    topic([3], { title: 'Calcio: risultati e classifiche', text: itText, rubric: 'sports' }),
+  ] }), articles, 'it')
+  assert.equal(b.topics[0].title, 'Energie verdi e infrastrutture')
+  assert.equal(b.topics[0].rubric, 'economie')
+  assert.equal(b.topics[2].title, 'Calcio: risultati e classifiche', 'un deux-points ordinaire reste')
+})
+
+test('parseBrief : un TITRE resté en français est écarté en it/de, même avec un seul indice', () => {
+  const topics = [
+    topic([1], { title: "Politique : l'Arménie et les organisations internationales", text: itText, rubric: null }),
+    topic([2], { title: 'Società e diritti umani', text: itText }),
+    topic([3], { title: 'Sport', text: itText }),
+    topic([1], { title: 'Diaspora e cultura', text: itText }),
+  ]
+  const rejected = []
+  const b = parseBrief(JSON.stringify({ intro: '', topics }), articles, 'it', rejected)
+  assert.deepEqual(b.topics.map((t) => t.title), ['Società e diritti umani', 'Sport', 'Diaspora e cultura'])
+  assert.ok(rejected.includes('les'))
+  assert.equal(parseBrief(JSON.stringify({ intro: '', topics }), articles, 'fr').topics.length, 4)
+})

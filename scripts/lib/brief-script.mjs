@@ -85,12 +85,15 @@ const FRENCH_MARKERS_BY_LANG = {
 // « sécurité », « frontières ». L'italien n'accentue que la DERNIÈRE lettre
 // (« perché », « città », « più ») ; ç, ê, ë, î, ï, ô, û, œ n'y existent pas.
 const FRENCH_ACCENT = /[çêëîïôûœ]|[éèà]\p{L}/u
-export function frenchWords(text, lang) {
+// `min` vaut 1 pour un TITRE : trop court pour porter deux indices, il est
+// pourtant ce qui se lit en premier (brève « it » du 24 octobre 2026,
+// « l'Arménie et les organisations internationales » : un seul, « les »).
+export function frenchWords(text, lang, min = 2) {
   const markers = FRENCH_MARKERS_BY_LANG[lang]
   if (!markers) return []
   // Minuscules seulement, pour les deux indices : « Arménie », « Grégory » sont
   // des noms propres, pas une fuite.
   const lower = words(text).filter((w) => w === w.toLowerCase())
   const found = new Set(lower.filter((w) => markers.has(w) || FRENCH_ACCENT.test(w)))
-  return found.size >= 2 ? [...found] : []
+  return found.size >= min ? [...found] : []
 }

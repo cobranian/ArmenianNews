@@ -71,6 +71,15 @@ Réponds en ${LANG_NAME[lang]}, pas en français.` : list,
 }
 
 const clean = (s) => (typeof s === 'string' ? s.replace(/\s+/g, ' ').trim() : '')
+const rubricKey = (s) => clean(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+
+// Seule une clé de RUBRICS est retirée : « Calcio: risultati » est un vrai titre.
+function splitRubricPrefix(title) {
+  const m = title.match(/^([^:]{2,20}?)\s*:\s*(.+)$/u)
+  const key = m && rubricKey(m[1])
+  if (!key || !RUBRICS.includes(key)) return { title, rubric: null }
+  return { title: m[2].charAt(0).toUpperCase() + m[2].slice(1), rubric: key }
+}
 
 // La réponse du modèle → { intro, topics }, ou null si elle est inexploitable.
 // Tolère le texte et les clôtures autour du JSON. Ne lève jamais.
@@ -93,7 +102,11 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
   let examined = 0
   let french = 0
   for (const t of Array.isArray(obj?.topics) ? obj.topics : []) {
-    const title = clean(t?.title)
+    // « Economie : … » — le modèle recopie la CLÉ de rubrique (française) en
+    // tête de titre, alors que la rubrique s'affiche déjà au-dessus. On la
+    // retire, et elle sert de rubrique si le modèle n'en a pas donné.
+    const pre = splitRubricPrefix(clean(t?.title))
+    const title = pre.title
     const body = clean(t?.text)
     if (!title || !body) continue
     const seen = new Set()
@@ -110,7 +123,7 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
       const bad = strayWords(`${title} ${body}`, lang, allowed)
       examined++
       if (translated) {
-        const fr = frenchWords(`${title} ${body}`, lang)
+        const fr = [...new Set([...frenchWords(title, lang, 1), ...frenchWords(`${title} ${body}`, lang)])]
         if (fr.length) french++
         bad.push(...fr)
       }
@@ -119,8 +132,8 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
         continue
       }
     }
-    const r = clean(t?.rubric).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
-    topics.push({ title, text: body, rubric: RUBRICS.includes(r) ? r : null, sources })
+    const r = rubricKey(t?.rubric)
+    topics.push({ title, text: body, rubric: RUBRICS.includes(r) ? r : pre.rubric, sources })
     if (topics.length === MAX_TOPICS) break
   }
   if (topics.length < MIN_TOPICS) return null
