@@ -12,6 +12,7 @@ import {
   pruneCache,
   resumesFor,
   resumeLangs,
+  summarizeAgenda,
 } from '../scripts/lib/agenda-resumes.mjs'
 
 // Extrait RÉEL de la page armenopole « Young Prodigies of Armenia in
@@ -130,4 +131,90 @@ test('buildResumeMessages interdit prix, horaires, adresses et demande les six l
     .join('\n')
   for (const l of ['fr', 'de', 'it', 'en', 'hy', 'ru']) assert.match(m, new RegExp(`"${l}"`))
   assert.match(m, /texte source/)
+})
+
+const silent = { log() {}, warn() {}, error() {} }
+const reply = (obj) => async () => ({
+  ok: true,
+  json: async () => ({ choices: [{ message: { content: JSON.stringify(obj) } }], model: 'm' }),
+})
+
+test('summarizeAgenda : écrit les langues valides, compte une page vide, ne lève pas', async () => {
+  const events = [{ url: 'ok', title: 'Young Prodigies of Armenia' }, { url: 'vide', title: 'X' }]
+  const fetchPage = async (u) => (u === 'ok' ? fixture : '<html></html>')
+  const out = await summarizeAgenda({ events, cache: {}, apiKey: 'k', fetchPage, fetchImpl: reply(six), log: silent })
+  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+  assert.equal(out.vide.attempts, 1)
+  assert.deepEqual(resumeLangs(out.vide), [])
+})
+
+test('summarizeAgenda : modèle en échec → aucune exception, entrée sans langue', async () => {
+  const out = await summarizeAgenda({
+    events: [{ url: 'ok', title: 'T' }],
+    cache: {},
+    apiKey: 'k',
+    fetchPage: async () => fixture,
+    fetchImpl: async () => ({ ok: false, status: 429 }),
+    log: silent,
+  })
+  assert.deepEqual(resumeLangs(out.ok), [])
+})
+
+test('summarizeAgenda : page armenopole en échec → aucune exception', async () => {
+  const out = await summarizeAgenda({
+    events: [{ url: 'ok', title: 'T' }],
+    cache: {},
+    apiKey: 'k',
+    fetchPage: async () => { throw new Error('HTTP 302') },
+    fetchImpl: reply(six),
+    log: silent,
+  })
+  assert.equal(out.ok.attempts, 1)
+})
+
+test('summarizeAgenda : sans clé, aucun appel', async () => {
+  let calls = 0
+  await summarizeAgenda({
+    events: [{ url: 'a', title: 'T' }],
+    cache: {},
+    apiKey: '',
+    fetchPage: async () => { calls++; return fixture },
+    fetchImpl: async () => { calls++ },
+    log: silent,
+  })
+  assert.equal(calls, 0)
+})
+
+test('summarizeAgenda : budget épuisé → s’arrête', async () => {
+  let calls = 0
+  const events = Array.from({ length: 5 }, (_, i) => ({ url: 'u' + i, title: 'T' }))
+  await summarizeAgenda({
+    events,
+    cache: {},
+    apiKey: 'k',
+    budgetMs: 0,
+    fetchPage: async () => { calls++; return fixture },
+    fetchImpl: async () => ({ ok: false, status: 500 }),
+    log: silent,
+  })
+  assert.equal(calls, 0)
+})
+
+test('summarizeAgenda : texte source modifié → anciennes langues effacées', async () => {
+  const cache = { ok: { hash: 'ancien', checkedAt: '2026-10-01T00:00:00Z', attempts: 1, ...six } }
+  const out = await summarizeAgenda({
+    events: [{ url: 'ok', title: 'T' }],
+    cache,
+    apiKey: 'k',
+    fetchPage: async () => fixture,
+    fetchImpl: reply({ fr: six.fr }),
+    now: new Date('2026-10-24T12:00:00Z'),
+    log: silent,
+  })
+  assert.deepEqual(resumeLangs(out.ok), ['fr'])
+})
+
+test('summarizeAgenda : purge les événements passés', async () => {
+  const out = await summarizeAgenda({ events: [], cache: { gone: { hash: 'h', attempts: 1, fr: six.fr } }, apiKey: '', log: silent })
+  assert.deepEqual(out, {})
 })

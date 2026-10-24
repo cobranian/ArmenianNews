@@ -9,6 +9,8 @@ import * as cheerio from 'cheerio'
 import { createHash } from 'node:crypto'
 import { strayWords, allowedWords, frenchWords } from './brief-script.mjs'
 import { ALL_LANGS } from '../../sites.config.js'
+import { modelChain, ENDPOINT } from './classify-rubrics.mjs'
+import { fetchText } from './http.mjs'
 
 // Un texte source plus court ne dit rien qu'un résumé puisse reprendre.
 export const MIN_SOURCE = 80
@@ -172,4 +174,103 @@ export function resumesFor(cache, lang) {
   const out = {}
   for (const [url, e] of Object.entries(cache)) if (e?.[lang]) out[url] = e[lang]
   return out
+}
+
+// ---------------------------------------------------------------------------
+// L'étape du scrape. NE LÈVE JAMAIS : une page ou un modèle en échec laisse
+// l'événement sans résumé (ligne `✗ résumé` au log), et le scrape continue.
+// Renvoie le cache purgé des événements passés. La clé n'est jamais loguée.
+export const BUDGET_MS = 180000
+
+export async function summarizeAgenda({
+  events,
+  cache,
+  apiKey = process.env.OPENROUTER_API_KEY,
+  fetchPage = fetchText,
+  fetchImpl = fetch,
+  now = new Date(),
+  budgetMs = BUDGET_MS,
+  max = MAX_PER_SNAPSHOT,
+  timeoutMs = 30000,
+  log = console,
+}) {
+  const next = pruneCache(cache || {}, events)
+  const todo = pendingEvents(events, next, now, max)
+  if (!todo.length) {
+    log.log('  résumé: aucun événement à résumer')
+    return next
+  }
+  if (!apiKey) {
+    log.warn(`  ✗ résumé: OPENROUTER_API_KEY absente — ${todo.length} événements sans résumé`)
+    return next
+  }
+  const start = Date.now()
+  const written = Object.fromEntries(ALL_LANGS.map((l) => [l, 0]))
+  let done = 0
+  for (const ev of todo) {
+    if (Date.now() - start >= budgetMs) {
+      log.warn(`  ✗ résumé: budget de ${Math.round(budgetMs / 1000)} s atteint, ${todo.length - done} événements reportés`)
+      break
+    }
+    done++
+    const entry = { attempts: 0, ...next[ev.url] }
+    next[ev.url] = entry
+    entry.checkedAt = now.toISOString()
+
+    let text = null
+    try {
+      text = extractEventText(await fetchPage(ev.url))
+    } catch (err) {
+      log.warn(`  ✗ résumé: ${ev.url} — ${err.message}`)
+    }
+    if (!text) {
+      entry.attempts++
+      log.warn(`  ✗ résumé: ${ev.url} — texte introuvable`)
+      continue
+    }
+
+    const hash = sourceHash(text)
+    if (entry.hash && entry.hash !== hash) {
+      for (const l of ALL_LANGS) delete entry[l]
+      entry.attempts = 0
+    }
+    entry.hash = hash
+    const missing = ALL_LANGS.filter((l) => !entry[l])
+    if (!missing.length || entry.attempts >= MAX_ATTEMPTS) continue
+    entry.attempts++
+
+    try {
+      const res = await fetchImpl(ENDPOINT, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://armenieinfo.ch',
+          'X-Title': 'Armenie Info',
+        },
+        body: JSON.stringify({
+          models: modelChain(),
+          temperature: 0.3,
+          reasoning: { enabled: false },
+          messages: buildResumeMessages(ev, text),
+        }),
+        signal: AbortSignal.timeout(timeoutMs),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const body = await res.json()
+      const { kept, rejected } = vetResumes(parseResumeReply(body?.choices?.[0]?.message?.content), {
+        title: ev.title,
+        text,
+      })
+      for (const l of missing) if (kept[l]) {
+        entry[l] = kept[l]
+        written[l]++
+      }
+      for (const [l, reason] of rejected) log.warn(`  ✗ résumé/${l}: ${reason} — ${ev.url}`)
+    } catch (err) {
+      log.warn(`  ✗ résumé: ${err.message} — ${ev.url}`)
+    }
+  }
+  log.log(`  ✓ résumé: ${done} événements traités, langues écrites ${JSON.stringify(written)}`)
+  return next
 }
