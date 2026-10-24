@@ -2,7 +2,7 @@
 // une brève absente ou un agenda vide ouvrent une issue. Sans réseau.
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { STALE_HOURS, staleHours, checkNews, checkBriefs, checkAgenda, checkClassify, checkSteps, healthReport, MAX_UNCLASSIFIED } from '../scripts/lib/health.mjs'
+import { STALE_HOURS, staleHours, checkNews, checkBriefs, checkAgenda, checkClassify, checkSteps, checkHarvest, healthReport, MAX_UNCLASSIFIED, MAX_HARVEST_DAYS } from '../scripts/lib/health.mjs'
 import { ALL_LANGS } from '../sites.config.js'
 
 const NOW = new Date('2026-10-24T12:00:00Z') // 16 h à Erevan
@@ -106,4 +106,18 @@ test('checkSteps : une capture d’écran en échec est signalée, un succès ou
   assert.deepEqual(checkSteps({ screenshot: 'success' }), [])
   assert.deepEqual(checkSteps({ screenshot: 'skipped' }), [])
   assert.deepEqual(checkSteps({}), [])
+})
+
+// Le site ne fait que REMÉLANGER le pool ; seule une récolte locale
+// (npm run ig-scrape) apporte des posts neufs. Rien ne le rappelait.
+test('checkHarvest : une récolte de moins de trois semaines ne dit rien', () => {
+  assert.deepEqual(checkHarvest({ harvestedAt: hoursAgo(24 * 20) }, NOW), [])
+})
+test('checkHarvest : au-delà de MAX_HARVEST_DAYS, un rappel de récolte', () => {
+  const p = checkHarvest({ harvestedAt: hoursAgo(24 * (MAX_HARVEST_DAYS + 1)) }, NOW)
+  assert.equal(p.length, 1)
+  assert.match(p[0], /ig-scrape/)
+})
+test('checkHarvest : un pool sans date de récolte n’alerte pas (on ne devine pas)', () => {
+  assert.deepEqual(checkHarvest({}, NOW), [])
 })

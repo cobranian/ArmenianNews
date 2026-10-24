@@ -116,6 +116,20 @@ export function checkSteps(outcomes = {}) {
   return Object.entries(STEP_LABELS).filter(([id]) => outcomes[id] === 'failure').map(([, label]) => label)
 }
 
+// Le site ne fait que remélanger le pool : seule une récolte locale
+// (« npm run ig-scrape », Chrome connecté, ~30-40 min) apporte des posts
+// neufs. Au-delà de trois semaines, un rappel. Sans date de récolte, silence.
+export const MAX_HARVEST_DAYS = 21
+
+export function checkHarvest(pool, now = new Date()) {
+  const t = Date.parse(pool?.harvestedAt)
+  if (!Number.isFinite(t)) return []
+  const days = Math.floor((now.getTime() - t) / 864e5)
+  return days > MAX_HARVEST_DAYS
+    ? [`**mur Instagram** : dernière récolte il y a ${days} j — lancer « npm run ig-scrape » sur le poste (le site ne fait que remélanger les mêmes posts)`]
+    : []
+}
+
 export function healthReport({ problems }) {
   const ok = problems.length === 0
   const markdown = ok ? 'Tout est frais.' : problems.map((p) => `- ${p}`).join('\n')

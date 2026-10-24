@@ -113,3 +113,12 @@ export function timelineItems(json) {
   const info = conn.page_info || {}
   return { items, cursor: info.has_next_page ? info.end_cursor || null : null }
 }
+
+// La date de la dernière tournée COMPLÈTE, que lit le rappel de récolte
+// (scripts/lib/health.mjs). Un passage partiel — `--only`, tournée arrêtée,
+// moins de la moitié des comptes récoltés — garde la date précédente : sinon
+// il ferait taire le rappel sans avoir rafraîchi le mur.
+export function harvestStamp({ only, stopped, ok, tried, now = new Date(), previous }) {
+  const complete = !only?.length && !stopped && tried > 0 && ok * 2 >= tried
+  return complete ? now.toISOString() : previous
+}

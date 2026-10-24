@@ -33,6 +33,7 @@ import {
   stopPaging,
   timelineItems,
   wantedFor,
+  harvestStamp,
 } from './lib/ig-harvest.mjs'
 import { encode } from './lib/image.mjs'
 
@@ -337,7 +338,8 @@ for (const { acc, posts, ok } of results) {
 // `...pool` d'abord : la racine porte `exclude`, que ce script lit sans le
 // posséder. Reconstruire l'objet à partir de rien l'effacerait à la première
 // récolte — un JSON valide, un pool sans exclusion, et rien pour le dire.
-const json = { ...pool, accounts }
+const harvestedAt = harvestStamp({ only: ONLY, stopped: arret, ok: okCount, tried: tentes, previous: pool.harvestedAt })
+const json = { ...pool, ...(harvestedAt ? { harvestedAt } : {}), accounts }
 await writeFile(POOL, JSON.stringify(json, null, 2) + '\n')
 console.log(`\n✓ wrote src/data/instagram.json (${accounts.reduce((n, a) => n + a.posts.length, 0)} posts)`)
 console.log(`✓ ${reused} image(s) déjà présente(s), non retéléchargée(s)`)

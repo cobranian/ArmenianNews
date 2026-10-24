@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
-import { shortcodeOf, wantedFor, MAX_COUNT } from '../scripts/lib/ig-harvest.mjs'
+import { shortcodeOf, wantedFor, MAX_COUNT, harvestStamp } from '../scripts/lib/ig-harvest.mjs'
 import { IG_EXT } from '../scripts/lib/ig-images.mjs'
 
 const pool = JSON.parse(
@@ -141,4 +141,22 @@ test('chaque compte porte handle, name et url', () => {
     // saisi renvoie un 404 et fait echouer le compte, sans autre signe.
     assert.match(acc.handle, /^[\w.]+$/, `handle invalide : ${acc.handle}`)
   }
+})
+
+// harvestedAt ne bouge que pour une tournée COMPLÈTE : ni --only, ni arrêt en
+// route, au moins la moitié des comptes récoltés. Sinon le rappel de récolte
+// (scripts/lib/health.mjs) se tairait après un passage partiel.
+test('harvestStamp : seule une tournée complète date la récolte', () => {
+  const now = new Date('2026-10-25T10:00:00Z')
+  const prev = '2026-10-19T17:31:00.000Z'
+  const ok = { only: null, stopped: null, ok: 25, tried: 27, now, previous: prev }
+  assert.equal(harvestStamp(ok), now.toISOString())
+  assert.equal(harvestStamp({ ...ok, only: ['x'] }), prev)
+  assert.equal(harvestStamp({ ...ok, stopped: '3 échecs d’affilée' }), prev)
+  assert.equal(harvestStamp({ ...ok, ok: 13 }), prev)
+  assert.equal(harvestStamp({ ...ok, previous: undefined, only: ['x'] }), undefined)
+})
+
+test('le pool porte une date de récolte lisible', () => {
+  assert.ok(Number.isFinite(Date.parse(pool.harvestedAt)), 'harvestedAt absent ou illisible')
 })
