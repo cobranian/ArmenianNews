@@ -5,6 +5,10 @@ description: Use before claiming any visual, layout, CSS, mobile or responsive c
 
 # Vérifier le rendu avant de dire que c'est fait
 
+**Lisez aussi `pieges-rendu.md`** (même dossier) : les pièges du CSS et des
+composants déplacés de `CLAUDE.md` — `font-size-adjust`, polices, tambours,
+rail, chargement différé, cibles tactiles.
+
 Ce dépôt sert **douze pages** : deux vitrines × quatre langues × trois vues,
 en **deux thèmes**, sur des écritures latine, arménienne et cyrillique. Une
 mesure prise à un seul endroit ne prouve presque rien.
