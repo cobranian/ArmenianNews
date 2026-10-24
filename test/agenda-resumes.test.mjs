@@ -15,6 +15,8 @@ import {
   summarizeAgenda,
   withResumeLangs,
   resumeModels,
+  CONCURRENCY,
+  MAX_PER_SNAPSHOT,
 } from '../scripts/lib/agenda-resumes.mjs'
 
 // Extrait RÉEL de la page armenopole « Young Prodigies of Armenia in
@@ -116,7 +118,7 @@ test('pendingEvents : nouveaux, puis incomplets, puis périmés ; plafond', () =
     pendingEvents([ev('a'), ev('b'), ev('c'), ev('d'), ev('n'), ev('n')], cache, now).map((e) => e.url),
     ['n', 'b', 'c'],
   )
-  assert.equal(pendingEvents(Array.from({ length: 30 }, (_, i) => ev('u' + i)), {}, now).length, 20)
+  assert.equal(pendingEvents(Array.from({ length: MAX_PER_SNAPSHOT + 10 }, (_, i) => ev('u' + i)), {}, now).length, MAX_PER_SNAPSHOT)
 })
 
 test('pruneCache retire les événements passés ; resumesFor / resumeLangs', () => {
@@ -321,4 +323,30 @@ test('summarizeAgenda : une réponse vide laisse un ✗ au log', async () => {
     log: { log() {}, warn: (m) => warns.push(m), error() {} },
   })
   assert.ok(warns.some((m) => m.includes('✗ résumé') && m.includes('réponse vide')), warns.join('\n'))
+})
+
+// Un événement coûte ~15 s (lecture de la page + modèle) : un par un, le budget
+// de 180 s n'en traitait qu'une douzaine par heure, et 151 événements « monde »
+// attendaient (24 oct. 2026). Plusieurs à la fois, jamais plus de CONCURRENCY.
+test('summarizeAgenda : traite plusieurs événements à la fois, sans dépasser CONCURRENCY', async () => {
+  let inFlight = 0
+  let peak = 0
+  const events = Array.from({ length: 8 }, (_, i) => ({ url: 'c' + i, title: 'T' }))
+  const out = await summarizeAgenda({
+    events,
+    cache: {},
+    apiKey: 'k',
+    fetchPage: async () => fixture,
+    fetchImpl: async (...a) => {
+      inFlight++
+      peak = Math.max(peak, inFlight)
+      await new Promise((r) => setTimeout(r, 20))
+      inFlight--
+      return reply(six)(...a)
+    },
+    log: silent,
+  })
+  assert.ok(CONCURRENCY >= 2 && peak === CONCURRENCY, `pic ${peak}, attendu ${CONCURRENCY}`)
+  assert.equal(Object.values(out).filter((e) => resumeLangs(e).length === 6).length, 8)
+  assert.ok(MAX_PER_SNAPSHOT >= 40)
 })

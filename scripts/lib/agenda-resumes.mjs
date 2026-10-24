@@ -79,7 +79,13 @@ export function forbiddenDetail(text) {
 export const RESUME_MODELS = [STRONG_MODEL, DEFAULT_MODEL, 'google/gemma-4-31b-it:free']
 export const resumeModels = (forced = process.env.OPENROUTER_MODEL) => (forced ? [forced] : RESUME_MODELS)
 
-export const MAX_PER_SNAPSHOT = 20
+// Événements traités EN MÊME TEMPS. Un événement coûte ~15 s (page + modèle) :
+// un par un, le budget n'en couvrait qu'une douzaine par heure, et 151
+// événements « monde » attendaient leur résumé (24 oct. 2026). Trois appels
+// simultanés restent loin des limites du compte OpenRouter ; plus, et les
+// points d'accès gratuits répondent 429.
+export const CONCURRENCY = 3
+export const MAX_PER_SNAPSHOT = 40
 export const MAX_ATTEMPTS = 3
 export const RECHECK_DAYS = 7
 const MIN_LEN = 80
@@ -220,12 +226,22 @@ export async function summarizeAgenda({
   const start = Date.now()
   const written = Object.fromEntries(ALL_LANGS.map((l) => [l, 0]))
   let done = 0
-  for (const ev of todo) {
-    if (Date.now() - start >= budgetMs) {
-      log.warn(`  ✗ résumé: budget de ${Math.round(budgetMs / 1000)} s atteint, ${todo.length - done} événements reportés`)
-      break
+  let next_i = 0
+  let overBudget = false
+  // CONCURRENCY tâches piochent dans la même file ; chacune vérifie le budget
+  // AVANT de prendre un événement, jamais au milieu d'un appel.
+  const worker = async () => {
+    while (next_i < todo.length) {
+      if (Date.now() - start >= budgetMs) {
+        overBudget = true
+        return
+      }
+      const ev = todo[next_i++]
+      done++
+      await summarizeOne(ev)
     }
-    done++
+  }
+  const summarizeOne = async (ev) => {
     const entry = { attempts: 0, ...next[ev.url] }
     next[ev.url] = entry
     entry.checkedAt = now.toISOString()
@@ -240,7 +256,7 @@ export async function summarizeAgenda({
     if (!text) {
       entry.attempts++
       log.warn(`  ✗ résumé: ${ev.url} — ${why}`)
-      continue
+      return
     }
 
     // Texte nouveau (première lecture réussie, ou modifié chez armenopole) :
@@ -252,7 +268,7 @@ export async function summarizeAgenda({
     }
     entry.hash = hash
     const missing = ALL_LANGS.filter((l) => !entry[l])
-    if (!missing.length || entry.attempts >= MAX_ATTEMPTS) continue
+    if (!missing.length || entry.attempts >= MAX_ATTEMPTS) return
 
     try {
       const res = await fetchImpl(ENDPOINT, {
@@ -289,6 +305,9 @@ export async function summarizeAgenda({
       log.warn(`  ✗ résumé: ${err.message} — ${ev.url}`)
     }
   }
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, todo.length) }, worker))
+  if (overBudget)
+    log.warn(`  ✗ résumé: budget de ${Math.round(budgetMs / 1000)} s atteint, ${todo.length - done} événements reportés`)
   log.log(`  ✓ résumé: ${done} événements traités, langues écrites ${JSON.stringify(written)}`)
   return next
 }
