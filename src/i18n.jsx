@@ -78,6 +78,7 @@ const STRINGS = {
     'agenda.switzerland': 'Suisse',
     'agenda.world': 'Monde',
     'agenda.country': 'Pays',
+    'agenda.armenopole': 'Voir sur armenopole',
     'agenda.empty': 'Aucun événement annoncé.',
     'agenda.more': "Tout l'agenda arménien, pays par pays",
 
@@ -358,6 +359,7 @@ const STRINGS = {
     'agenda.switzerland': 'Schweiz',
     'agenda.world': 'Welt',
     'agenda.country': 'Land',
+    'agenda.armenopole': 'Auf armenopole ansehen',
     'agenda.empty': 'Keine Veranstaltungen angekündigt.',
     'agenda.more': 'Die ganze armenische Agenda, Land für Land',
     'agenda.page.h1': 'Die armenische Agenda, weltweit',
@@ -591,6 +593,7 @@ const STRINGS = {
     'agenda.switzerland': 'Svizzera',
     'agenda.world': 'Mondo',
     'agenda.country': 'Paese',
+    'agenda.armenopole': 'Vedi su armenopole',
     'agenda.empty': 'Nessun evento in programma.',
     'agenda.more': 'Tutti gli eventi armeni, paese per paese',
     'agenda.page.h1': 'Gli eventi armeni nel mondo',
@@ -829,6 +832,7 @@ const STRINGS = {
     'agenda.switzerland': 'Switzerland',
     'agenda.world': 'World',
     'agenda.country': 'Country',
+    'agenda.armenopole': 'View on armenopole',
     'agenda.empty': 'No events announced.',
     'agenda.more': 'The full Armenian events calendar',
 
@@ -1108,6 +1112,7 @@ const STRINGS = {
     'agenda.switzerland': 'Շվեյցարիա',
     'agenda.world': 'Աշխարհ',
     'agenda.country': 'Երկիր',
+    'agenda.armenopole': 'Դիտել armenopole-ում',
     'agenda.empty': 'Հայտարարված միջոցառումներ չկան։',
     'agenda.more': 'Հայկական միջոցառումների ամբողջական օրացույցը՝ երկիր առ երկիր',
 
@@ -1379,6 +1384,7 @@ const STRINGS = {
     'agenda.switzerland': 'Швейцария',
     'agenda.world': 'Мир',
     'agenda.country': 'Страна',
+    'agenda.armenopole': 'Смотреть на armenopole',
     'agenda.empty': 'Анонсов пока нет.',
     'agenda.more': 'Вся армянская афиша событий, по странам',
 

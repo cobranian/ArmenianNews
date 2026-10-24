@@ -7,6 +7,11 @@ import { Motif, hash, THEMES } from './motifs.jsx'
 import agenda from '../data/agenda.json'
 import { pathFor } from '../../sites.config.js'
 
+const ARMENOPOLE = 'https://armenopole.com/armenian/events'
+const slugs = new Set(
+  [...(agenda.switzerland || []), ...(agenda.world || [])].map((ev) => ev.country),
+)
+
 // A single event rendered as a "broadsheet clipping" card that lives inside a
 // horizontal, ‹ ›-scrollable track. A top banner shows the event's armenopole
 // image (hotlinked); events with no image — or an image that fails to load —
@@ -122,6 +127,13 @@ export function Agenda() {
   // the carousel is never empty.
   const active = groups[country] ? country : order[0]
   const events = active ? groups[active] : []
+  // La page armenopole du pays affiché. Les slugs connus sont lus dans les
+  // données (le `country` de chaque événement est le slug de la page scrapée) :
+  // une clé hors de cette liste — un lieu non mappé — n'a pas de page chez
+  // armenopole, d'où le repli sur l'agenda général.
+  const armenopoleUrl = slugs.has(active)
+    ? `${ARMENOPOLE}/${active}`
+    : ARMENOPOLE
 
   return (
     <section className="section section--alt" id="agenda">
@@ -180,9 +192,12 @@ export function Agenda() {
             profondeur. Son TEXTE porte la requête ; aucun nombre dedans, le
             compte d'événements bouge à chaque scrape horaire — voir Radio.jsx
             pour le même motif appliqué à /radio/. */}
-        <p className="section__more">
+        <p className="section__more section__more--pair">
           <a href={pathFor(lang, 'agenda')}>
             {t('agenda.more')} <span aria-hidden="true">→</span>
+          </a>
+          <a href={armenopoleUrl} rel="noopener noreferrer">
+            {t('agenda.armenopole')} <span aria-hidden="true">↗</span>
           </a>
         </p>
       </div>

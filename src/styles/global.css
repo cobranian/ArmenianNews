@@ -1041,6 +1041,14 @@ html:lang(hy) .nav__brand {
   text-align: center;
   margin: clamp(20px, 2.6vw, 30px) 0 0;
 }
+/* Deux liens côte à côte (agenda : la page du site, puis armenopole) ; ils
+   passent l'un sous l'autre quand la largeur manque. */
+.section__more--pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px clamp(20px, 4vw, 48px);
+}
 .section__more a {
   font-family: var(--font-mono);
   font-size-adjust: var(--fsa-util);
