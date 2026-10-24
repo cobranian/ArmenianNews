@@ -3,14 +3,14 @@ import { useI18n } from '../i18n.jsx'
 import { worldCountryKey, countryFlag, countryLabel } from '../worldPlace.js'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
+import { Lightbox } from './Lightbox.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import agenda from '../data/agenda.json'
 import { pathFor } from '../../sites.config.js'
 
-const ARMENOPOLE = 'https://armenopole.com/armenian/events'
-const slugs = new Set(
-  [...(agenda.switzerland || []), ...(agenda.world || [])].map((ev) => ev.country),
-)
+// Un tableau vide stable : un `[]` neuf à chaque rendu relancerait le useMemo
+// de la visionneuse.
+const NO_EVENTS = []
 
 // A single event rendered as a "broadsheet clipping" card that lives inside a
 // horizontal, ‹ ›-scrollable track. A top banner shows the event's armenopole
@@ -21,7 +21,13 @@ const slugs = new Set(
 // 'hy-AM' est une locale que le navigateur accepte sans savoir la rendre, et un
 // appel direct à toLocaleDateString ici afficherait ces pastilles dans la langue
 // du lecteur au milieu d'une page arménienne (voir src/hyDate.js).
-function EventCard({ ev, place }) {
+//
+// Un clic ouvre l'affiche en grand dans la visionneuse des réseaux sociaux
+// (Lightbox.jsx), d'où part le bouton « Voir sur armenopole ». La carte reste
+// un vrai lien vers armenopole : sans JavaScript, dans le HTML prérendu que lit
+// Google, et au clic du milieu ou avec Ctrl/Cmd (nouvel onglet), elle mène
+// directement à l'événement — seul le clic simple est intercepté.
+function EventCard({ ev, place, onOpen }) {
   const { formatDayNum, formatMonthAbbr, formatWeekdayTime } = useI18n()
   const d = ev.date ? new Date(ev.date) : null
   const day = d ? formatDayNum(d) : '–'
@@ -38,6 +44,11 @@ function EventCard({ ev, place }) {
       className="agenda-card"
       href={ev.url || '#'}
       rel="noopener noreferrer"
+      onClick={(e) => {
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+        e.preventDefault()
+        onOpen()
+      }}
     >
       <div
         className={`agenda-card__media${showPhoto ? ' agenda-card__media--photo' : ''}`}
@@ -77,7 +88,7 @@ function EventCard({ ev, place }) {
 }
 
 export function Agenda() {
-  const { t, lang } = useI18n()
+  const { t, lang, formatDayNum, formatMonthAbbr, formatWeekdayTime } = useI18n()
 
   // Bucket every event under a canonical country key — Switzerland straight from
   // its own feed, the rest grouped by the country resolved from each event's
@@ -126,14 +137,34 @@ export function Agenda() {
   // Falls back to the first country when Switzerland has no upcoming event, so
   // the carousel is never empty.
   const active = groups[country] ? country : order[0]
-  const events = active ? groups[active] : []
-  // La page armenopole du pays affiché. Les slugs connus sont lus dans les
-  // données (le `country` de chaque événement est le slug de la page scrapée) :
-  // une clé hors de cette liste — un lieu non mappé — n'a pas de page chez
-  // armenopole, d'où le repli sur l'agenda général.
-  const armenopoleUrl = slugs.has(active)
-    ? `${ARMENOPOLE}/${active}`
-    : ARMENOPOLE
+  const events = active ? groups[active] : NO_EVENTS
+
+  // La visionneuse parcourt les événements du pays affiché, comme celle des
+  // réseaux sociaux parcourt un brin.
+  const [box, setBox] = useState(null)
+  const lbItems = useMemo(
+    () =>
+      events.map((ev) => {
+        const seed = hash(ev.url || ev.title || '')
+        const theme = THEMES[seed % THEMES.length]
+        const d = ev.date ? new Date(ev.date) : null
+        const day = d ? `${formatDayNum(d)} ${formatMonthAbbr(d)}` : ''
+        const when = d ? formatWeekdayTime(d) : ''
+        return {
+          img: ev.image || null,
+          alt: ev.title,
+          title: ev.title,
+          sub: [ev.location, day, when].filter(Boolean).join(' · '),
+          href: ev.url,
+          cta: t('agenda.armenopole'),
+          seed,
+          c1: theme.c1,
+          c2: theme.c2,
+          ink: theme.ink,
+        }
+      }),
+    [events, formatDayNum, formatMonthAbbr, formatWeekdayTime, t],
+  )
 
   return (
     <section className="section section--alt" id="agenda">
@@ -174,7 +205,12 @@ export function Agenda() {
               }
             >
               {events.map((ev, i) => (
-                <EventCard key={ev.url || i} ev={ev} place={ev.location} />
+                <EventCard
+                  key={ev.url || i}
+                  ev={ev}
+                  place={ev.location}
+                  onOpen={() => setBox({ index: i })}
+                />
               ))}
             </Carousel>
           ) : (
@@ -192,15 +228,20 @@ export function Agenda() {
             profondeur. Son TEXTE porte la requête ; aucun nombre dedans, le
             compte d'événements bouge à chaque scrape horaire — voir Radio.jsx
             pour le même motif appliqué à /radio/. */}
-        <p className="section__more section__more--pair">
+        <p className="section__more">
           <a href={pathFor(lang, 'agenda')}>
             {t('agenda.more')} <span aria-hidden="true">→</span>
           </a>
-          <a href={armenopoleUrl} rel="noopener noreferrer">
-            {t('agenda.armenopole')} <span aria-hidden="true">↗</span>
-          </a>
         </p>
       </div>
+
+      {box && (
+        <Lightbox
+          items={lbItems}
+          startIndex={box.index}
+          onClose={() => setBox(null)}
+        />
+      )}
     </section>
   )
 }
