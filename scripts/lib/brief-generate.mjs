@@ -20,7 +20,8 @@ import path from 'node:path'
 import { RUBRICS } from '../../src/rubrics.js'
 import { ALL_LANGS } from '../../sites.config.js'
 import { contentLang } from '../../src/newsLangs.js'
-import { ENDPOINT, modelChain } from './classify-rubrics.mjs'
+import { ENDPOINT, modelChain, STRONG_MODEL } from './classify-rubrics.mjs'
+import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
 import { selectArticles, yerevanClock, isBriefDue, MIN_ARTICLES } from './brief-select.mjs'
 import { allowedWords, strayWords, frenchWords } from './brief-script.mjs'
 
@@ -29,6 +30,18 @@ export const MAX_TOPICS = 7
 // Un seul appel par langue et par jour : on peut attendre. Le classeur, lui,
 // dépassait déjà 90 s sur 80 titres (15 octobre 2026).
 export const BRIEF_TIMEOUT_MS = 180000
+
+// hy, ru, de, it : ultra-550b en tête. Mesuré le 25 octobre 2026 sur les mêmes
+// titres : lightning ratait la brève hy entière (« ոստիկանայինVor »), perdait
+// des sujets en ru et it ; ultra en écrivait 7 partout, sans un mot écarté.
+// Ses brèves hy d'avant n'avaient gardé que 3 à 5 sujets. fr/en restent sur la
+// chaîne commune, qui y suffit (7 sujets par jour).
+const STRONG_LANGS = new Set(['hy', 'ru', 'de', 'it'])
+export function briefModels(lang, forced = process.env.OPENROUTER_MODEL) {
+  if (forced) return [forced]
+  const chain = modelChain(null)
+  return STRONG_LANGS.has(lang) ? [STRONG_MODEL, ...chain.filter((m) => m !== STRONG_MODEL)] : chain
+}
 
 const LANG_NAME = {
   fr: 'français',
@@ -72,6 +85,15 @@ Réponds en ${LANG_NAME[lang]}, pas en français.` : list,
 
 const clean = (s) => (typeof s === 'string' ? s.replace(/\s+/g, ' ').trim() : '')
 const rubricKey = (s) => clean(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+// Le modèle écrit souvent la rubrique TRADUITE (« Politica », « Wirtschaft ») :
+// la brève « de » du 23 octobre 2026 n'avait aucune rubrique sur sept sujets.
+const RUBRIC_BY_LABEL = new Map(
+  Object.values(RUBRIC_LABELS).flatMap((labels) => Object.entries(labels).map(([k, l]) => [rubricKey(l), k])),
+)
+const toRubric = (s) => {
+  const k = rubricKey(s)
+  return RUBRICS.includes(k) ? k : RUBRIC_BY_LABEL.get(k) ?? null
+}
 
 // Seule une clé de RUBRICS est retirée : « Calcio: risultati » est un vrai titre.
 function splitRubricPrefix(title) {
@@ -132,8 +154,7 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
         continue
       }
     }
-    const r = rubricKey(t?.rubric)
-    topics.push({ title, text: body, rubric: RUBRICS.includes(r) ? r : pre.rubric, sources })
+    topics.push({ title, text: body, rubric: toRubric(t?.rubric) ?? pre.rubric, sources })
     if (topics.length === MAX_TOPICS) break
   }
   if (topics.length < MIN_TOPICS) return null
@@ -204,7 +225,7 @@ export async function generateBriefs({
         log.warn(`  ✗ brief/${lang}: OPENROUTER_API_KEY absente`)
         continue
       }
-      const models = modelChain(model || process.env.OPENROUTER_MODEL)
+      const models = briefModels(lang, model || process.env.OPENROUTER_MODEL)
       const res = await fetchImpl(ENDPOINT, {
         method: 'POST',
         headers: {

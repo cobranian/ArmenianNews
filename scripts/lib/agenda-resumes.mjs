@@ -9,7 +9,7 @@ import * as cheerio from 'cheerio'
 import { createHash } from 'node:crypto'
 import { strayWords, allowedWords, frenchWords } from './brief-script.mjs'
 import { ALL_LANGS } from '../../sites.config.js'
-import { DEFAULT_MODEL, ENDPOINT } from './classify-rubrics.mjs'
+import { DEFAULT_MODEL, ENDPOINT, STRONG_MODEL } from './classify-rubrics.mjs'
 import { fetchText } from './http.mjs'
 
 // Un texte source plus court ne dit rien qu'un résumé puisse reprendre.
@@ -76,7 +76,7 @@ export function forbiddenDetail(text) {
 // par la garde d'alphabet) ; nemotron-3-ultra-550b un arménien et un russe
 // corrects, en 14 s. Ce jour-là, nemotron-3-super-120b répondait 404 et
 // gemma-4-31b 429. OPENROUTER_MODEL impose un modèle unique, comme ailleurs.
-export const RESUME_MODELS = ['nvidia/nemotron-3-ultra-550b-a55b:free', DEFAULT_MODEL, 'google/gemma-4-31b-it:free']
+export const RESUME_MODELS = [STRONG_MODEL, DEFAULT_MODEL, 'google/gemma-4-31b-it:free']
 export const resumeModels = (forced = process.env.OPENROUTER_MODEL) => (forced ? [forced] : RESUME_MODELS)
 
 export const MAX_PER_SNAPSHOT = 20

@@ -18,9 +18,13 @@ import { RUBRICS, RUBRIC_MAP, mixedDefault } from '../../src/rubrics.js'
 export const MAX_BATCH = 120
 export const BATCH_SIZE = 40
 export const DEFAULT_MODEL = 'nvidia/nemotron-3.5-lightning:free'
-// 16 octobre 2026 : lightning ne répond plus (>60 s), gemma est en 429,
-// super-120b répond en moins d'une seconde — d'où son rang en tête des replis.
-export const FALLBACK_MODELS = ['nvidia/nemotron-3-super-120b-a12b:free', 'google/gemma-4-31b-it:free']
+// Le modèle le plus solide des gratuits : il écrit l'arménien et le russe sans
+// mot d'une autre écriture, là où lightning en glisse (résumés et brèves,
+// mesuré les 24 et 25 octobre 2026). Tête des résumés et des brèves hy/ru/de/it.
+export const STRONG_MODEL = 'nvidia/nemotron-3-ultra-550b-a55b:free'
+// super-120b, premier repli depuis le 16 octobre, répond 404 depuis le 24 —
+// encore listé dans /api/v1/models, mais plus servi (test/models.test.mjs).
+export const FALLBACK_MODELS = [STRONG_MODEL, 'google/gemma-4-31b-it:free']
 
 // La chaîne de modèles qu'OpenRouter essaie dans l'ordre. OPENROUTER_MODEL ou
 // un modèle imposé la réduisent à un seul. Partagée avec la brève

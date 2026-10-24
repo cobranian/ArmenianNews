@@ -1066,10 +1066,13 @@ de production servent toujours depuis la racine de leur domaine.
   défaut, le site a l'air juste, et le seul signe est `✗ classify` au log
   (`gh run view <id> --log | grep classify`). Modèle en service :
   `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, replis
-  `nvidia/nemotron-3-super-120b-a12b:free` (404 depuis le 24 oct. 2026) puis `google/gemma-4-31b-it:free`, délai 30 s. Les modèles `:free` se retirent (404), ceux à
-  raisonnement dépassent le délai, les points d'accès gratuits répondent 429 : devant un 404, un 429 ou un délai, changez
-  `DEFAULT_MODEL` (ou posez `OPENROUTER_MODEL`) après avoir listé
-  `https://openrouter.ai/api/v1/models` (ids finissant par `:free`).
+  `STRONG_MODEL` (`nemotron-3-ultra-550b`) puis `google/gemma-4-31b-it:free`, délai 30 s ;
+  la brève hy/ru/de/it met `STRONG_MODEL` en TÊTE (`briefModels`), lightning y
+  glissant des mots latins. Les modèles `:free` se retirent (404) — **et un
+  modèle mort peut rester listé** dans `https://openrouter.ai/api/v1/models`
+  (super-120b, 24 oct. 2026) : testez par un appel réel, puis ajoutez-le à
+  `RETIRED` (`test/models.test.mjs`). Ceux à raisonnement dépassent le délai,
+  les points d'accès gratuits répondent 429.
 - **Chaque carte affiche l'âge de sa dépêche, et une source non datée n'affiche
   RIEN — sans le moindre signe.** `src/relativeTime.js` rend « 45 min », « 6 h »,
   « 2 j » sous « LIRE LA SUITE » ; `NewsBrowser.jsx` n'émet le `<time>` que si

@@ -69,7 +69,7 @@ test('chat : l’erreur HTTP porte status', async () => {
 })
 
 test('CULTURE_FALLBACK_MODELS : ids :free sur OpenRouter', () => {
-  assert.deepEqual(CULTURE_FALLBACK_MODELS, ['nvidia/nemotron-3-super-120b-a12b:free', 'google/gemma-4-31b-it:free'])
+  assert.deepEqual(CULTURE_FALLBACK_MODELS, ['nvidia/nemotron-3-ultra-550b-a55b:free', 'google/gemma-4-31b-it:free'])
   assert.equal(OPENROUTER_BASE_URL, 'https://openrouter.ai/api/v1/')
 })
 

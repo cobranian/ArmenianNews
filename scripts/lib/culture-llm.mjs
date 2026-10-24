@@ -38,13 +38,13 @@ export async function chat({
   return { text, model: body?.model || model }
 }
 
-// Repli de la RÉDACTION seulement. Modèles :free d'OpenRouter, mêmes ids que
-// classify-rubrics.mjs au 16 oct. 2026. Ils se retirent (404) : voir CLAUDE.md,
+// Repli de la RÉDACTION seulement. Modèles :free d'OpenRouter, mêmes replis
+// que classify-rubrics.mjs (super-120b, 404 depuis le 24 oct. 2026, remplacé). Ils se retirent (404) : voir CLAUDE.md,
 // « modèles :free se retirent » — les relire dans /api/v1/models le cas échéant.
 // La traduction n'en use jamais : un modèle qui change d'une langue à l'autre
 // ferait diverger le ton des quatre éditions.
 export const CULTURE_FALLBACK_MODELS = [
-  'nvidia/nemotron-3-super-120b-a12b:free',
+  'nvidia/nemotron-3-ultra-550b-a55b:free',
   'google/gemma-4-31b-it:free',
 ]
 export const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1/'

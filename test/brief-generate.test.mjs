@@ -10,7 +10,9 @@ import {
   parseBrief,
   generateBriefs,
   MAX_TOPICS,
+  briefModels,
 } from '../scripts/lib/brief-generate.mjs'
+import { STRONG_MODEL, modelChain } from '../scripts/lib/classify-rubrics.mjs'
 
 const articles = [
   { id: 1, source: 'armenpress', rubric: 'politique', title: 'A', url: 'https://a/1', date: 'x' },
@@ -308,4 +310,28 @@ test('parseBrief : un TITRE resté en français est écarté en it/de, même ave
   assert.deepEqual(b.topics.map((t) => t.title), ['Società e diritti umani', 'Sport', 'Diaspora e cultura'])
   assert.ok(rejected.includes('les'))
   assert.equal(parseBrief(JSON.stringify({ intro: '', topics }), articles, 'fr').topics.length, 4)
+})
+
+// Le modèle répond souvent la rubrique TRADUITE (« Politica », « Politik »),
+// pas la clé : la brève « de » du 23 octobre 2026 avait ses sept sujets sans
+// rubrique. Les libellés des six langues (src/rubricLabels.js) sont reconnus.
+test('parseBrief : une rubrique écrite dans la langue de la brève est reconnue', () => {
+  const b = parseBrief(JSON.stringify({ intro: '', topics: [
+    topic([1], { rubric: 'Politica' }),
+    topic([2], { rubric: 'Wirtschaft' }),
+    topic([3], { rubric: 'Քաղաքականություն' }),
+    topic([1], { rubric: 'Società' }),
+    topic([2], { rubric: 'inventée' }),
+  ] }), articles)
+  assert.deepEqual(b.topics.map((t) => t.rubric), ['politique', 'economie', 'politique', 'societe', null])
+})
+
+// Mesuré le 25 octobre 2026 sur les mêmes 27 à 100 titres : lightning rate la
+// brève hy (« ոստիկանայինVor », « միջազգայինembly » — deux essais sur deux),
+// perd des sujets en ru et it ; ultra-550b écrit 7 sujets dans les quatre
+// langues sans un mot écarté. fr/en restent sur la chaîne commune.
+test('briefModels : ultra en tête pour hy, ru, de, it ; chaîne commune pour fr, en', () => {
+  for (const l of ['hy', 'ru', 'de', 'it']) assert.equal(briefModels(l)[0], STRONG_MODEL, l)
+  for (const l of ['fr', 'en']) assert.deepEqual(briefModels(l), modelChain(), l)
+  assert.deepEqual(briefModels('hy', 'x/forcé'), ['x/forcé'])
 })
