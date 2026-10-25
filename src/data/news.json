@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T18:23:31.394Z",
+  "generatedAt": "2026-10-25T19:23:32.269Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "ԿԸՀ-ն հրապարակել է ՏԻՄ ընտրությունների մասնակցության արդյունքները ժամը 20:00-ի դրությամբ",
+            "url": "https://hy.armradio.am/archives/766579",
+            "date": "2026-10-25T18:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/elections-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Լոս Անջելեսում ՀՀ գլխավոր հյուպատոսությունը հերքել է քաղաքացիներին ICE-ին հանձնելու մասին տեղեկությունները",
             "url": "https://hy.armradio.am/archives/766574",
             "date": "2026-10-25T16:44:38.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766530",
             "date": "2026-10-25T13:42:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/866166237_955645607229454_9126815174072191583_n-768x512.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "Սպասվում է կարճատև անձրև",
-            "url": "https://hy.armradio.am/archives/766531",
-            "date": "2026-10-25T13:14:41.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/ChatGPT-Image-11-%D0%B8%D1%8E%D0%BD.-2026-%D0%B3.-20_09_15-768x399.png",
             "category": "Հասարակություն"
           }
         ]
@@ -2735,6 +2735,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Pressions sur l’Arménie : Pachinian dénonce un « plan secret », une tribune appelle à des preuves",
+          "url": "https://armenieinfo.tv/mer-oughin-35595/",
+          "date": "2026-10-25T19:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35595.jpg"
+        },
+        {
           "title": "Vahram Atanessian dénonce les propos d’un ex-dirigeant de la FRA et appelle à écarter l’opposition",
           "url": "https://armenieinfo.tv/mer-oughin-35599/",
           "date": "2026-10-25T17:00:00.000Z",
@@ -2787,12 +2793,6 @@
           "url": "https://armenieinfo.tv/pachinian-accuse-des-cercles-en-russie-et-en-armenie-de-vouloir-eliminer-lindependance-de-larmenie/",
           "date": "2026-10-24T10:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1792722875-4101.jpg"
-        },
-        {
-          "title": "Tribune : les tensions turco-azerbaïdjanaises, une opportunité pour l’Arménie ? Poutine et le « Touran »",
-          "url": "https://armenieinfo.tv/mer-oughin-35572/",
-          "date": "2026-10-24T09:15:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35572.jpg"
         }
       ]
     },
@@ -3113,6 +3113,12 @@
       "categoryKey": "politique",
       "articles": [
         {
+          "title": "Tribune : les tensions turco-azerbaïdjanaises, une opportunité pour l’Arménie ? Poutine et le « Touran »",
+          "url": "https://armenieinfo.tv/mer-oughin-35572/",
+          "date": "2026-10-24T09:15:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35572.jpg"
+        },
+        {
           "title": "Hovsep Khurshudyan : « Un preneur de pots-de-vin n’est pas un prisonnier politique »",
           "url": "https://armenieinfo.tv/mer-oughin-35562/",
           "date": "2026-10-23T18:00:00.000Z",
@@ -3123,12 +3129,6 @@
           "url": "https://armenieinfo.tv/mer-oughin-35471/",
           "date": "2026-10-20T05:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35471.jpg"
-        },
-        {
-          "title": "Erdogan absent du sommet de Bakou, tensions turco-azerbaïdjanaises en question",
-          "url": "https://armenieinfo.tv/mer-oughin-35423/",
-          "date": "2026-10-17T10:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/mer-oughin-35423.jpg"
         }
       ]
     },
@@ -8016,6 +8016,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Էրդողանը պաշտոնանկ է արել Ադրբեջանին քննադատած իր գլխավոր խորհրդականին",
+            "url": "https://civilnet.am/hy/news/1015002",
+            "date": "2026-10-25T19:14:08.000Z",
+            "image": "https://civilnet.am/storage/media/26/10/25/kldATICZwjJXsyLj.webp"
+          },
+          {
+            "title": "ՏԻՄ ընտրություններին ամենաբարձր մասնակցությունը Ստեփանավանում է՝ 68,8%, ամենացածրը՝ Ֆիոլետովոյում՝ 25,4%",
+            "url": "https://civilnet.am/hy/news/1015001",
+            "date": "2026-10-25T18:48:09.000Z",
+            "image": "https://civilnet.am/storage/media/26/10/25/959DKQL1Zg81Kq75.webp"
+          },
+          {
             "title": "Ստեփանավան. բերման ենթարկված ընտրող ու անորակ դրոշմանիշներ",
             "url": "https://civilnet.am/hy/news/1015000",
             "date": "2026-10-25T16:35:54.000Z",
@@ -8062,18 +8074,6 @@
             "url": "https://civilnet.am/hy/news/1014976",
             "date": "2026-10-25T05:36:37.000Z",
             "image": "https://civilnet.am/storage/media/26/10/24/GUKIAn3AG78ViQgK.webp"
-          },
-          {
-            "title": "«Անկախ դիտորդը» մտահոգություն է հայտնում ընտրություններից առաջ թեկնածուների ձերբակալությունների կապակցությամբ",
-            "url": "https://civilnet.am/hy/news/1014983",
-            "date": "2026-10-24T13:04:34.000Z",
-            "image": "https://civilnet.am/storage/media/26/05/29/JB1fhsSPBQo18ozK.webp"
-          },
-          {
-            "title": "Մարտունիում «Մեր համայնք» դաշինքի առաջնորդները հայտնվել են իրավապահների ուշադրության կենտրոնում․ ՀՀԿ",
-            "url": "https://civilnet.am/hy/news/1014982",
-            "date": "2026-10-24T11:49:25.000Z",
-            "image": "https://civilnet.am/storage/media/26/06/29/KHb5fV6OPfzl0VaB.webp"
           }
         ]
       },
@@ -9562,6 +9562,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Միչիգանի նահանգապետը պատասխանել է Միշել Օբամային. ԱՄՆ-ն պատրաստ է կին նախագահ ընտրել",
+            "url": "https://news.am/hy/news/1070248",
+            "date": "2026-10-25T19:25:00.000Z",
+            "image": "https://news.am/storage/media/26/10/25/Ts28s6l0gsX8yIDo.webp"
+          },
+          {
+            "title": "«Նրանք նմանակում են Բերիային». Մասկը պատասխանել է իր ձերբակալությունը պահանջող քննադատներին",
+            "url": "https://news.am/hy/news/1070244",
+            "date": "2026-10-25T18:54:00.000Z",
+            "image": "https://news.am/storage/media/26/10/16/vSqOAEdxnNbwfRLA.webp"
+          },
+          {
             "title": "Իտալիայի փոխվարչապետը խոստացել է հասնել Ուկրաինային օգնության դադարեցմանը",
             "url": "https://news.am/hy/news/1070229",
             "date": "2026-10-25T17:53:00.000Z",
@@ -9608,18 +9620,6 @@
             "url": "https://news.am/hy/news/1070159",
             "date": "2026-10-25T10:53:00.000Z",
             "image": "https://news.am/storage/media/26/10/25/R9hAOT4UQ6aaMhGt.webp"
-          },
-          {
-            "title": "Սերբիայում արտահերթ խորհրդարանական ընտրություններ են՝ գրեթե երկու տարվա ուսանողական ցույցերից հետո",
-            "url": "https://news.am/hy/news/1070122",
-            "date": "2026-10-25T07:35:00.000Z",
-            "image": "https://news.am/storage/media/26/10/25/t0HTBg0dWtqHMsVZ.webp"
-          },
-          {
-            "title": "Իրանում սպառնացել են Իսրայելը «մեկ ժամից էլ պակաս ժամանակում կյանքի համար ոչ պիտանի» դարձնել",
-            "url": "https://news.am/hy/news/1070114",
-            "date": "2026-10-25T06:04:00.000Z",
-            "image": "https://news.am/storage/media/26/09/07/fn92v3H4E6EvLuVv.webp"
           }
         ]
       },
@@ -9694,6 +9694,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Բարսելոնայի» եւ «Ռեալի» մեկնարկային կազմերը",
+            "url": "https://sport.news.am/arm/news/169790/",
+            "date": "2026-10-25T18:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169790.jpg"
+          },
+          {
+            "title": "«Բավարիան» պարտության մատնեց «Ֆրայբուրգին» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169789/",
+            "date": "2026-10-25T18:36:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169789.jpg"
+          },
+          {
             "title": "«Լիվերպուլն» ու «Նյուքասլը» խնդիրներ չունեցան, «Մանչեսթեր Յունայթեդը» պարտվեց խոշոր հաշվով (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/169788/",
             "date": "2026-10-25T15:56:00.000Z",
@@ -9740,18 +9752,6 @@
             "url": "https://sport.news.am/arm/news/169780/",
             "date": "2026-10-25T09:47:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169780.jpg"
-          },
-          {
-            "title": "Համլետ Մանուկյան․ Հաղթանակս նվիրում եմ հայ ազգին, հայ զինվորներին",
-            "url": "https://sport.news.am/arm/news/169779/",
-            "date": "2026-10-25T05:39:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169779.jpg"
-          },
-          {
-            "title": "«Բարսելոնա» - «Ռեալ» եւ օրվա մյուս հանդիպումները",
-            "url": "https://sport.news.am/arm/news/169773/",
-            "date": "2026-10-25T04:55:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169773.jpg"
           }
         ]
       },
@@ -10224,6 +10224,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Губернатор Мичигана ответила Мишель Обаме: США готовы избрать женщину президентом",
+            "url": "https://news.am/ru/news/1070248",
+            "date": "2026-10-25T19:25:00.000Z",
+            "image": "https://news.am/storage/media/26/10/25/Ts28s6l0gsX8yIDo.webp"
+          },
+          {
+            "title": "«Они подражают Берии»: Маск ответил критикам, требующим его ареста",
+            "url": "https://news.am/ru/news/1070244",
+            "date": "2026-10-25T18:54:00.000Z",
+            "image": "https://news.am/storage/media/26/10/16/vSqOAEdxnNbwfRLA.webp"
+          },
+          {
             "title": "Вице-премьер Италии пообещал добиваться прекращения помощи Украине",
             "url": "https://news.am/ru/news/1070229",
             "date": "2026-10-25T17:53:00.000Z",
@@ -10270,18 +10282,6 @@
             "url": "https://news.am/ru/news/1070159",
             "date": "2026-10-25T10:53:00.000Z",
             "image": "https://news.am/storage/media/26/10/25/R9hAOT4UQ6aaMhGt.webp"
-          },
-          {
-            "title": "В Сербии начались внеочередные выборы в парламент на фоне почти двух лет студенческих протестов",
-            "url": "https://news.am/ru/news/1070122",
-            "date": "2026-10-25T07:35:00.000Z",
-            "image": "https://news.am/storage/media/26/10/25/t0HTBg0dWtqHMsVZ.webp"
-          },
-          {
-            "title": "В Иране пригрозили сделать Израиль «непригодным для жизни менее чем за час»",
-            "url": "https://news.am/ru/news/1070114",
-            "date": "2026-10-25T06:04:00.000Z",
-            "image": "https://news.am/storage/media/26/09/07/fn92v3H4E6EvLuVv.webp"
           }
         ]
       },
@@ -10356,6 +10356,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Барселона» и «Реал» объявили стартовые составы",
+            "url": "https://sport.news.am/rus/news/169790/",
+            "date": "2026-10-25T18:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169790.jpg"
+          },
+          {
+            "title": "«Бавария» оказалась сильнее «Фрайбурга» (видео)",
+            "url": "https://sport.news.am/rus/news/169789/",
+            "date": "2026-10-25T18:36:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169789.jpg"
+          },
+          {
             "title": "Москва примет чемпионат мира по тяжелой атлетике",
             "url": "https://sport.news.am/rus/news/169786/",
             "date": "2026-10-25T16:11:00.000Z",
@@ -10402,18 +10414,6 @@
             "url": "https://sport.news.am/rus/news/169777/",
             "date": "2026-10-24T20:52:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169777.jpg"
-          },
-          {
-            "title": "Дортмундская «Боруссия» выиграла и лидирует (видео)",
-            "url": "https://sport.news.am/rus/news/169776/",
-            "date": "2026-10-24T18:40:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169776.jpg"
-          },
-          {
-            "title": "«Наполи» - «Рома» - 3:3 (видео)",
-            "url": "https://sport.news.am/rus/news/169774/",
-            "date": "2026-10-24T17:57:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169774.jpg"
           }
         ]
       },
