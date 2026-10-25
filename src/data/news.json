@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T05:23:27.961Z",
+  "generatedAt": "2026-10-25T06:23:50.156Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -923,6 +923,13 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Naré wins Junior Eurovision 2026 for Armenia",
+            "url": "https://en.armradio.am/2026/10/25/nare-wins-junior-eurovision-2026-for-armenia/",
+            "date": "2026-10-24T21:30:00.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/10/8ed9f7262e648a88b119206869ca8923-fill_size1600x900-768x432.jpg",
+            "category": "Culture"
+          },
+          {
             "title": "Armenian actor Samvel Tadevosyan to receive Golden Globes Beacon Award",
             "url": "https://en.armradio.am/2026/10/15/armenian-actor-samvel-tadevosyan-to-receive-golden-globes-beacon-award/",
             "date": "2026-10-15T10:36:19.000Z",
@@ -983,13 +990,6 @@
             "url": "https://en.armradio.am/2026/08/24/dutch-broadcaster-avrotros-pulls-out-of-2027-eurovision-song-contest/",
             "date": "2026-08-24T12:23:02.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/08/Eurovision-Netherlands-768x432.webp",
-            "category": "Culture"
-          },
-          {
-            "title": "Four ‘extraordinary’ Renaissance paintings stolen from Italian museum",
-            "url": "https://en.armradio.am/2026/08/17/four-extraordinary-renaissance-paintings-stolen-from-italian-museum/",
-            "date": "2026-08-17T06:18:42.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/08/c8b22880-996d-11f1-b2ab-0dd01740f9f6.jpg-768x700.webp",
             "category": "Culture"
           }
         ]
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Ստեղծվել է իրավիճակային վերլուծությունների կենտրոն․ ԿԸՀ-ն հրապարակել է թեժ գծի հեռախոսահամարները",
+            "url": "https://hy.armradio.am/archives/766470",
+            "date": "2026-10-25T05:49:02.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/862326078_1548399753980084_3909743537334626377_n-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Կիևյան փողոցում վիճաբանության մասնակիցներից մեկը ատրճանակ է գործի դրել․ ՆԳՆ ոստիկանություն",
             "url": "https://hy.armradio.am/archives/766467",
             "date": "2026-10-25T05:18:05.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766364",
             "date": "2026-10-24T12:48:51.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3850-768x502.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Հնագիտական պեղումները նոր բացահայտումներ են խոստանում Պռոշաբերդ ամրոցի անցյալից",
-            "url": "https://hy.armradio.am/archives/766354",
-            "date": "2026-10-24T12:05:56.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/857291044_1090756147088211_7994282313977218421_n-768x576.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -8034,6 +8034,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Հայաստանի 21 համայնքում տեղական ընտրություններ են",
+            "url": "https://civilnet.am/hy/news/1014976",
+            "date": "2026-10-25T05:36:37.000Z",
+            "image": "https://civilnet.am/storage/media/26/10/24/GUKIAn3AG78ViQgK.webp"
+          },
+          {
             "title": "«Անկախ դիտորդը» մտահոգություն է հայտնում ընտրություններից առաջ թեկնածուների ձերբակալությունների կապակցությամբ",
             "url": "https://civilnet.am/hy/news/1014983",
             "date": "2026-10-24T13:04:34.000Z",
@@ -8086,12 +8092,6 @@
             "url": "https://civilnet.am/hy/news/1014944",
             "date": "2026-10-22T17:01:33.000Z",
             "image": "https://civilnet.am/storage/media/26/08/26/rK6Xz5kM8xpdawUW.webp"
-          },
-          {
-            "title": "Մասիսի ՔՊ-ական թեկնածուի՝ երեխային հեռախոս խոստանալու դեպքով քրեական վարույթ է նախաձեռնվել",
-            "url": "https://civilnet.am/hy/news/1014943",
-            "date": "2026-10-22T16:30:11.000Z",
-            "image": "https://civilnet.am/storage/media/26/10/22/56cb21msgcvgfSWg.webp"
           }
         ]
       },
@@ -9580,6 +9580,24 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Իրանում սպառնացել են Իսրայելը «մեկ ժամից էլ պակաս ժամանակում կյանքի համար ոչ պիտանի» դարձնել",
+            "url": "https://news.am/hy/news/1070114",
+            "date": "2026-10-25T06:04:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/fn92v3H4E6EvLuVv.webp"
+          },
+          {
+            "title": "«Սպիտակ տունն այնպիսի տեսք ունի, կարծես Սադամ Հուսեյնն այնտեղ ռեստորան է բացել». Օբաման ծաղրել է Թրամփին",
+            "url": "https://news.am/hy/news/1070113",
+            "date": "2026-10-25T05:53:00.000Z",
+            "image": "https://news.am/storage/media/26/08/10/pCXeSsKrr8rqqSgS.webp"
+          },
+          {
+            "title": "Բուլղարիայում անցկացվում են նախագահական ընտրություններ․ պետության գործող ղեկավարը մեծ առավելությամբ առաջատար է",
+            "url": "https://news.am/hy/news/1070111",
+            "date": "2026-10-25T05:41:00.000Z",
+            "image": "https://news.am/storage/media/26/10/25/qSCx2hABuTKflvbB.webp"
+          },
+          {
             "title": "Իրանը պատասխանել է ԱՄՆ սպառնալիքներին. «Մենք ինքնապաշտպանության համար թույլտվություն չենք խնդրելու»",
             "url": "https://news.am/hy/news/1070074",
             "date": "2026-10-24T16:51:00.000Z",
@@ -9620,24 +9638,6 @@
             "url": "https://news.am/hy/news/1070057",
             "date": "2026-10-24T12:31:59.000Z",
             "image": "https://i.ytimg.com/vi/JBmF5SqSBac/hqdefault.jpg"
-          },
-          {
-            "title": "«Ավելի քիչ խոսել՝ ավելի շատ գործել». Վաշինգտոնի համբերությունը սպառվում է ԱԲ ընկերությունների ղեկավարների հարցում․ Axios",
-            "url": "https://news.am/hy/news/1070028",
-            "date": "2026-10-24T12:24:00.000Z",
-            "image": "https://news.am/storage/media/26/05/05/Gk34GUL7sOLDn0Rj.webp"
-          },
-          {
-            "title": "Սկանդալ Իսպանիայում. ընդդիմությունը վարչապետի և նրա թիմակիցների կեղծ պատկերներով տեսահոլովակ է հրապարակել",
-            "url": "https://news.am/hy/news/1070012",
-            "date": "2026-10-24T10:37:00.000Z",
-            "image": "https://news.am/storage/media/26/05/21/SshbOZvAs4FtuIXe.webp"
-          },
-          {
-            "title": "Պեկինը կոչ է արել կանխել տիեզերքում սպառազինությունների մրցավազքն ու այն բախումների դաշտի վերածելը",
-            "url": "https://news.am/hy/news/1069984",
-            "date": "2026-10-24T07:19:00.000Z",
-            "image": "https://news.am/storage/media/26/08/20/Jx9nA1DxEumw0ypc.webp"
           }
         ]
       },
@@ -9712,6 +9712,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Համլետ Մանուկյան․ Հաղթանակս նվիրում եմ հայ ազգին, հայ զինվորներին",
+            "url": "https://sport.news.am/arm/news/169779/",
+            "date": "2026-10-25T05:39:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169779.jpg"
+          },
+          {
             "title": "«Բարսելոնա» - «Ռեալ» եւ օրվա մյուս հանդիպումները",
             "url": "https://sport.news.am/arm/news/169773/",
             "date": "2026-10-25T04:55:00.000Z",
@@ -9764,12 +9770,6 @@
             "url": "https://sport.news.am/arm/news/169770/",
             "date": "2026-10-24T15:57:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169770.jpg"
-          },
-          {
-            "title": "«Արսենալը» պարտության մատնեց «Էվերտոնին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169769/",
-            "date": "2026-10-24T15:56:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169769.jpg"
           }
         ]
       },
@@ -9910,6 +9910,12 @@
         "label": "Վերլուծություն",
         "articles": [
           {
+            "title": "ԿԸՀ-ում ստեղծվել է իրավիճակային վերլուծությունների կենտրոն",
+            "url": "https://news.am/hy/news/1070119",
+            "date": "2026-10-25T06:15:47.000Z",
+            "image": "https://news.am/storage/media/26/10/25/GEHbhw48DEDCOxtx.webp"
+          },
+          {
             "title": "Ինչպե՞ս է քաղաքական մթնոլորտը խանգարում արտերկրում բիզնես գնելուն",
             "url": "https://news.am/hy/news/1067995",
             "date": "2026-10-15T23:51:00.000Z",
@@ -9962,12 +9968,6 @@
             "url": "https://news.am/hy/news/1061160",
             "date": "2026-09-12T06:41:41.000Z",
             "image": "https://news.am/storage/media/26/09/12/ZfEkAw4hdtuM2Fox.webp"
-          },
-          {
-            "title": "Ինչ է ցույց տվել ՀՀ դպրոցականների առաջին միջազգային թեստը․ PISA-2025",
-            "url": "https://news.am/hy/news/1060518",
-            "date": "2026-09-09T09:30:01.000Z",
-            "image": "https://news.am/storage/media/26/09/09/Rh2Bf8qrMe9Nasjs.webp"
           }
         ]
       },
@@ -10042,6 +10042,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Ֆլորիդայում համալսարանի մարզադաշտի մոտ տեղի ունեցած հրաձգության հետևանքով 12 մարդ է տուժել, երեքը ծանր վիճակում են",
+            "url": "https://news.am/hy/news/1070109",
+            "date": "2026-10-25T05:11:29.000Z",
+            "image": "https://news.am/storage/media/26/10/09/ICeWZo26XqDkCl7m.webp"
+          },
+          {
             "title": "Վիճաբանություն Կիեւյան փողոցում. ոստիկանները հայտնաբերել են միջադեպի մասնակիցների",
             "url": "https://news.am/hy/news/1070108",
             "date": "2026-10-25T05:05:13.000Z",
@@ -10094,12 +10100,6 @@
             "url": "https://news.am/hy/news/1070049",
             "date": "2026-10-24T12:16:51.000Z",
             "image": "https://news.am/storage/media/26/10/24/GPkFEaOrzQpQnd58.webp"
-          },
-          {
-            "title": "Իտալիայում երիտասարդական անկարգություններ են հետաքննվում. ոստիկանությունը խուզարկություններ է կատարել ավելի քան 20 քաղաքում",
-            "url": "https://news.am/hy/news/1070016",
-            "date": "2026-10-24T09:12:24.000Z",
-            "image": "https://news.am/storage/media/26/10/24/20Zy5eRxucEdUKaU.webp"
           }
         ]
       },
@@ -10242,6 +10242,24 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "В Иране пригрозили сделать Израиль «непригодным для жизни менее чем за час»",
+            "url": "https://news.am/ru/news/1070114",
+            "date": "2026-10-25T06:04:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/fn92v3H4E6EvLuVv.webp"
+          },
+          {
+            "title": "«Белый дом выглядит так, будто Саддам Хусейн открыл там ресторан»: Обама высмеял Трампа",
+            "url": "https://news.am/ru/news/1070113",
+            "date": "2026-10-25T05:53:00.000Z",
+            "image": "https://news.am/storage/media/26/08/10/pCXeSsKrr8rqqSgS.webp"
+          },
+          {
+            "title": "В Болгарии проходят президентские выборы: действующая глава государства лидирует с большим отрывом",
+            "url": "https://news.am/ru/news/1070111",
+            "date": "2026-10-25T05:41:00.000Z",
+            "image": "https://news.am/storage/media/26/10/25/qSCx2hABuTKflvbB.webp"
+          },
+          {
             "title": "Иран ответил на угрозы США: «Мы не будем спрашивать разрешения на самооборону»",
             "url": "https://news.am/ru/news/1070074",
             "date": "2026-10-24T16:51:00.000Z",
@@ -10282,24 +10300,6 @@
             "url": "https://news.am/ru/news/1070028",
             "date": "2026-10-24T12:24:00.000Z",
             "image": "https://news.am/storage/media/26/05/05/Gk34GUL7sOLDn0Rj.webp"
-          },
-          {
-            "title": "В Испании разразился скандал из-за предвыборного ролика оппозиции с дипфейками премьера и его соратников",
-            "url": "https://news.am/ru/news/1070012",
-            "date": "2026-10-24T10:37:00.000Z",
-            "image": "https://news.am/storage/media/26/05/21/SshbOZvAs4FtuIXe.webp"
-          },
-          {
-            "title": "Китай призвал предотвратить гонку вооружений в космосе и выступил против превращения его в театр конфликта",
-            "url": "https://news.am/ru/news/1069984",
-            "date": "2026-10-24T07:19:00.000Z",
-            "image": "https://news.am/storage/media/26/08/20/Jx9nA1DxEumw0ypc.webp"
-          },
-          {
-            "title": "Нетаньяху: После ухода Трампа Израиль ждут сложные времена",
-            "url": "https://news.am/ru/news/1069939",
-            "date": "2026-10-23T16:35:17.000Z",
-            "image": "https://news.am/storage/media/26/10/23/KwuRIUu0XFHqSF5o.webp"
           }
         ]
       },
