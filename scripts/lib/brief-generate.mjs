@@ -31,16 +31,17 @@ export const MAX_TOPICS = 7
 // dépassait déjà 90 s sur 80 titres (15 octobre 2026).
 export const BRIEF_TIMEOUT_MS = 180000
 
-// hy, ru, de, it : ultra-550b en tête. Mesuré le 25 octobre 2026 sur les mêmes
-// titres : lightning ratait la brève hy entière (« ոստիկանայինVor »), perdait
-// des sujets en ru et it ; ultra en écrivait 7 partout, sans un mot écarté.
-// Ses brèves hy d'avant n'avaient gardé que 3 à 5 sujets. fr/en restent sur la
-// chaîne commune, qui y suffit (7 sujets par jour).
-const STRONG_LANGS = new Set(['hy', 'ru', 'de', 'it'])
+// Ultra-550b en tête dans les six langues. hy/ru/de/it d'abord (24 oct. 2026) :
+// lightning ratait la brève hy entière (« ոստիկանայինVor ») et perdait des
+// sujets en ru et it. fr/en ensuite, sur les brèves du 25 octobre : ultra a
+// écrit 7 sujets dans ses quatre langues, quand lightning n'en tenait que 5 en
+// anglais, avec une erreur de fait (Naré « va passer en 8e » le jour de sa
+// victoire) et un prénom inventé ; en fr, le 22, il faisait d'Araghchi un
+// ministre arménien. Le classeur des rubriques, lui, garde lightning en tête.
 export function briefModels(lang, forced = process.env.OPENROUTER_MODEL) {
   if (forced) return [forced]
   const chain = modelChain(null)
-  return STRONG_LANGS.has(lang) ? [STRONG_MODEL, ...chain.filter((m) => m !== STRONG_MODEL)] : chain
+  return [STRONG_MODEL, ...chain.filter((m) => m !== STRONG_MODEL)]
 }
 
 const LANG_NAME = {

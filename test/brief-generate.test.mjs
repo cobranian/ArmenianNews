@@ -330,8 +330,14 @@ test('parseBrief : une rubrique écrite dans la langue de la brève est reconnue
 // brève hy (« ոստիկանայինVor », « միջազգայինembly » — deux essais sur deux),
 // perd des sujets en ru et it ; ultra-550b écrit 7 sujets dans les quatre
 // langues sans un mot écarté. fr/en restent sur la chaîne commune.
-test('briefModels : ultra en tête pour hy, ru, de, it ; chaîne commune pour fr, en', () => {
-  for (const l of ['hy', 'ru', 'de', 'it']) assert.equal(briefModels(l)[0], STRONG_MODEL, l)
-  for (const l of ['fr', 'en']) assert.deepEqual(briefModels(l), modelChain(), l)
+// Depuis le 25 octobre, fr et en aussi (lightning : 5 sujets et des erreurs de
+// fait en anglais ce jour-là).
+test('briefModels : ultra en tête pour les six langues, sans doublon ni modèle perdu', () => {
+  for (const l of ['fr', 'de', 'it', 'en', 'hy', 'ru']) {
+    const chain = briefModels(l)
+    assert.equal(chain[0], STRONG_MODEL, l)
+    assert.equal(new Set(chain).size, chain.length, l)
+    assert.deepEqual([...chain].sort(), [...new Set([STRONG_MODEL, ...modelChain()])].sort(), l)
+  }
   assert.deepEqual(briefModels('hy', 'x/forcé'), ['x/forcé'])
 })

@@ -660,8 +660,8 @@ de production servent toujours depuis la racine de leur domaine.
   (`gh run view <id> --log | grep classify`). Modèle en service :
   `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, replis
   `STRONG_MODEL` (`nemotron-3-ultra-550b`) puis `google/gemma-4-31b-it:free`, délai 30 s ;
-  la brève hy/ru/de/it met `STRONG_MODEL` en TÊTE (`briefModels`), lightning y
-  glissant des mots latins. Les modèles `:free` se retirent (404) — **et un
+  la brève met `STRONG_MODEL` en TÊTE dans les six langues (`briefModels`) :
+  lightning y glissait des mots latins (hy/ru) et des erreurs de fait (en). Les modèles `:free` se retirent (404) — **et un
   modèle mort peut rester listé** dans `https://openrouter.ai/api/v1/models`
   (super-120b, 24 oct. 2026) : testez par un appel réel, puis ajoutez-le à
   `RETIRED` (`test/models.test.mjs`). Ceux à raisonnement dépassent le délai,
