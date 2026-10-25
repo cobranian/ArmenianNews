@@ -1,0 +1,67 @@
+name: Réseaux — publier un post de test
+
+# Un envoi RÉEL, à la main, hors registre : pour vérifier qu'un compte
+# fraîchement branché publie bien (scripts/social-post.mjs test --yes).
+# Seul quelqu'un qui peut écrire dans le dépôt peut le lancer, et l'environnement
+# « social » n'accepte que la branche main. Les entrées passent par env, jamais
+# interpolées dans le script.
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: Compte
+        type: choice
+        options: [facebook-ch, instagram-ch, linkedin-ch, x-ch, bluesky-ch, telegram-ch, facebook-org, instagram-org, linkedin-org, x-org, bluesky-org, telegram-org]
+      item:
+        description: "Élément (vide = dernier article Culture), ex. culture:komitas"
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: social
+    env:
+      CHANNEL: ${{ inputs.channel }}
+      ITEM: ${{ inputs.item }}
+      BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
+      BLUESKY_APP_PASSWORD_ORG: ${{ secrets.BLUESKY_APP_PASSWORD_ORG }}
+      BLUESKY_HANDLE_CH: ${{ secrets.BLUESKY_HANDLE_CH }}
+      BLUESKY_HANDLE_ORG: ${{ secrets.BLUESKY_HANDLE_ORG }}
+      FB_PAGE_ID_CH: ${{ secrets.FB_PAGE_ID_CH }}
+      FB_PAGE_ID_ORG: ${{ secrets.FB_PAGE_ID_ORG }}
+      FB_PAGE_TOKEN_CH: ${{ secrets.FB_PAGE_TOKEN_CH }}
+      FB_PAGE_TOKEN_ORG: ${{ secrets.FB_PAGE_TOKEN_ORG }}
+      IG_USER_ID_CH: ${{ secrets.IG_USER_ID_CH }}
+      IG_USER_ID_ORG: ${{ secrets.IG_USER_ID_ORG }}
+      LINKEDIN_AUTHOR_CH: ${{ secrets.LINKEDIN_AUTHOR_CH }}
+      LINKEDIN_AUTHOR_ORG: ${{ secrets.LINKEDIN_AUTHOR_ORG }}
+      LINKEDIN_TOKEN_CH: ${{ secrets.LINKEDIN_TOKEN_CH }}
+      LINKEDIN_TOKEN_ORG: ${{ secrets.LINKEDIN_TOKEN_ORG }}
+      TELEGRAM_BOT_TOKEN_CH: ${{ secrets.TELEGRAM_BOT_TOKEN_CH }}
+      TELEGRAM_BOT_TOKEN_ORG: ${{ secrets.TELEGRAM_BOT_TOKEN_ORG }}
+      TELEGRAM_CHAT_CH: ${{ secrets.TELEGRAM_CHAT_CH }}
+      TELEGRAM_CHAT_ORG: ${{ secrets.TELEGRAM_CHAT_ORG }}
+      X_ACCESS_SECRET_CH: ${{ secrets.X_ACCESS_SECRET_CH }}
+      X_ACCESS_SECRET_ORG: ${{ secrets.X_ACCESS_SECRET_ORG }}
+      X_ACCESS_TOKEN_CH: ${{ secrets.X_ACCESS_TOKEN_CH }}
+      X_ACCESS_TOKEN_ORG: ${{ secrets.X_ACCESS_TOKEN_ORG }}
+      X_API_KEY_CH: ${{ secrets.X_API_KEY_CH }}
+      X_API_KEY_ORG: ${{ secrets.X_API_KEY_ORG }}
+      X_API_SECRET_CH: ${{ secrets.X_API_SECRET_CH }}
+      X_API_SECRET_ORG: ${{ secrets.X_API_SECRET_ORG }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Publier
+        run: |
+          if [ -n "$ITEM" ]; then
+            node scripts/social-post.mjs test --channel "$CHANNEL" --item "$ITEM" --yes
+          else
+            node scripts/social-post.mjs test --channel "$CHANNEL" --yes
+          fi
