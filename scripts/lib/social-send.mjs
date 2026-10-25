@@ -7,7 +7,7 @@ import { compose, oauth1Header } from './social.mjs'
 
 // Versions d'API figées. À relever quand une plateforme retire la sienne
 // (Graph : ~2 ans de vie par version ; LinkedIn : ~1 an).
-export const GRAPH = 'https://graph.facebook.com/v23.0'
+export const GRAPH = 'https://graph.facebook.com/v26.0'
 export const LINKEDIN_VERSION = process.env.LINKEDIN_VERSION || '202509'
 const X_TWEETS = 'https://api.x.com/2/tweets'
 const BSKY = 'https://bsky.social/xrpc'
