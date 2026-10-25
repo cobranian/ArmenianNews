@@ -1,0 +1,33 @@
+---
+title: "Le Matenadaran : gardien séculaire du verbe et de la miniature arménienne"
+description: "Découvrez l'histoire et les trésors enluminés du Matenadaran d'Erevan, sanctuaire inestimable de la mémoire écrite arménienne inscrit à l'UNESCO."
+date: "2026-10-25"
+---
+
+Sur les hauteurs d'Erevan, au terme de la grande avenue Mesrop-Machtots, s'élève une bâtisse imposante de basalte gris-bleu. Le Matenadaran, officiellement nommé Institut Machtots de recherches sur les manuscrits anciens, est bien plus qu’un dépôt d'archives ou un musée : il forme le cœur battant de la mémoire nationale arménienne. Son appellation, issue du terme arménien classique associant *matean* (le livre ou le parchemin) et *daran* (le dépôt), désignait jadis la bibliothèque et le scriptorium des monastères médiévaux arméniens, à l'image de ceux de Haghpat ou de Sanahin. Aujourd'hui inscrit au registre international Mémoire du monde de l'UNESCO depuis 1997, il rassemble une collection exceptionnelle qui témoigne de la vitalité intellectuelle et artistique de l'Arménie à travers les âges.
+
+## Une traversée millénaire d'épreuves et de sauvegarde
+
+L'histoire du Matenadaran prend racine aux origines mêmes de la culture écrite arménienne. La tradition fait remonter la première collection au V siècle et à la création de l'alphabet par Mesrop Machtots en 405. Dès cette époque, l'historien Lazare de Pharbe atteste l'existence d'un dépôt de manuscrits auprès du siège ecclésiastique d'Etchmiadzin, où étaient conservés des textes en langues arménienne et grecque.
+
+Tout au long des siècles médiévaux, la préservation des livres relève du défi permanent. En 1170, comme le relate l'historien Stepanos Orbélian, l'incendie de la forteresse de Baghaberd par les Turcs seldjoukides entraîne la destruction de plus de 10 000 manuscrits évacués de Tatev et des couvents voisins. L'activité de la bibliothèque s'intensifie après le retour du Catholicossat de Sis à Etchmiadzin en 1441, mais les pillages se poursuivent, le dernier survenant en 1804. Le rattachement de l'Arménie orientale à la Russie en 1828 ouvre une période de stabilité propice à l'inventaire : un premier catalogue préfacé par Marie-Félicité Brosset répertorie 312 manuscrits en 1840, chiffre qui passe à 2 340 en 1863 puis à 4 660 à la veille de la Première Guerre mondiale.
+
+L'année 1915 marque un tournant dramatique. Alors que le génocide arménien perpétré dans l'Empire ottoman anéantit des milliers d'ouvrages, environ 1 600 manuscrits sont arrachés à la destruction en Arménie occidentale, notamment dans le Vaspourakan (aux monastères de Lim, Ktuts et Varag), ainsi qu'à Taron et Erzurum. Face aux menaces du front, la collection d'Etchmiadzin est évacuée à Moscou pour y être mise en sûreté, avant de regagner l'Arménie en 1922 sur ordre d'Alexandre Miasnikian. Entre-temps, le 17 décembre 1920, le gouvernement soviétique nationalise le dépôt d'Etchmiadzin, qui est transféré à Erevan en 1939. Le 3 mars 1959, l'institution est officiellement établie dans ses murs actuels en tant qu'institut de recherche scientifique.
+
+## Un sanctuaire de pierre au cœur de la capitale
+
+Conçu par l'architecte Marc Grigorian dès les années 1940 et achevé en 1957, le bâtiment principal reprend les canons de l'architecture médiévale arménienne. Sa façade rectangulaire s'inspire du porche (*gavit*) de l'église des Saints-Apôtres d'Ani, ancienne capitale bagratide. Au bas de l'escalier monumental se dresse la statue en basalte de Mesrop Machtots guidant son disciple Korioun, façonnée par le sculpteur Ghoukas Tchoubarian. Six figures majeures de la pensée arménienne veillent sur l'entrée : le maître de la miniature Toros Roslin, le philosophe Grégoire de Tatev, le savant Anania de Shirak, l'historien Moïse de Khorène, le juriste Mkhitar Goch et le poète Frik.
+
+Au-dessus de la majestueuse porte de cuivre est gravée la première phrase traduite en arménien d'après le Livre des Proverbes : « Pour connaître sagesse et instruction, comprendre les paroles intelligentes… » À l'intérieur, le vestibule s'inspire des structures de Sanahin, tandis que le peintre Van Khachatur a orné l'espace d'une mosaïque de la bataille d'Avarayr (451) et de fresques monumentales évoquant Urartu, la période hellénistique et le Moyen Âge chrétien. Afin d'offrir des espaces modernes de recherche, de numérisation et de restauration, un nouveau bâtiment conçu par l'architecte Arthur Meschian a été inauguré le 20 septembre 2011.
+
+## Les chefs-d'œuvre de l'enluminure et du savoir médiéval
+
+Le Matenadaran abrite l'une des collections les plus remarquables au monde, comptant plus de 17 000 manuscrits — dont environ 10 000 en langue arménienne — et quelque 300 000 documents d'archives. Les volumes embrassent tous les champs de la connaissance : théologie, philosophie, droit, histoire, géographie, astronomie et médecine. Ils renferment aussi des traductions d'ouvrages antiques dont les originaux grecs ont disparu, à l'instar de la *Chronique* d'Eusèbe de Césarée ou du traité *Sur la nature* de Zénon de Cition.
+
+L'art de l'enluminure s'y déploie dans toute sa splendeur. Près d'un tiers des codex arméniens sont ornés de peintures et d'ornements polychromes. Parmi les trésors les plus vénérés figurent l'Évangéliaire d'Etchmiadzin de 989, remarquable pour sa reliure sculptée en ivoire et ses précieuses miniatures du VI siècle, ainsi que l'Évangile Lazarian de 887, l'un des plus anciens volumes complets conservés. L'Évangile de Vehamor, attribué au VII siècle, sert traditionnellement à la prestation de serment des présidents de la République d'Arménie.
+
+La collection témoigne également d'une étonnante variété d'échelles : le colossal Homéliaire de Mouch, copié entre 1200 et 1202 au monastère des Saints-Apôtres, mesure 70,5 sur 55 centimètres pour un poids de 27,5 kilogrammes, tandis qu'un minuscule calendrier liturgique de 1434 ne pèse que 19 grammes pour des feuillets de 4 sur 3 centimètres. Les créations des miniaturistes de Cilicie, notamment de Toros Roslin au XIII siècle et de Sargis Pitsak au XIV siècle, illustrent le raffinement d'une tradition visuelle sans équivalent.
+
+## Une invitation à explorer le patrimoine arménien
+
+Cette richesse textuelle et esthétique trouve de multiples résonances au-delà des frontières de l'Arménie, auprès de tous les passionnés d'histoire et de belles-lettres. Pour prolonger cette immersion dans la création et l'héritage d'Arménie, ne manquez pas la rencontre culturelle « À la découverte des collections du musée d’art et de littérature d’Arménie », organisée le 29 octobre 2026 en région Auvergne-Rhône-Alpes.
