@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T04:23:35.590Z",
+  "generatedAt": "2026-10-25T05:23:27.961Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -234,16 +234,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/4G3A9304.jpg.avif?itok=iycOE0EC"
         },
         {
-          "title": "L’art populaire arménien au cœur d’un nouveau dialogue scientifique",
-          "url": "https://courrier.am/lart-populaire-armenien-au-coeur-dun-nouveau-dialogue-scientifique",
-          "date": "2026-10-15T12:56:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/conference%20poster%20EN%202.png.avif?itok=IvA7DOlG"
-        },
-        {
           "title": "Tbilissi accueille une rétrospective consacrée à Yervand Kochar",
           "url": "https://courrier.am/tbilissi-accueille-une-retrospective-consacree-yervand-kochar",
           "date": "2026-10-15T12:32:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_1_8.png.avif?itok=h1lWCrll"
+        },
+        {
+          "title": "L’art populaire arménien au cœur d’un nouveau dialogue scientifique",
+          "url": "https://courrier.am/lart-populaire-armenien-au-coeur-dun-nouveau-dialogue-scientifique",
+          "date": "2026-10-15T12:56:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/conference%20poster%20EN%202.png.avif?itok=IvA7DOlG"
         },
         {
           "title": "Mode : l’Arménie explore une coopération avec l’école italienne Polimoda",
@@ -1075,10 +1075,17 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "ՀՀ վարչապետն ու ԱԳՄԱ նախարարը ցավակցել են Ֆրանսիային՝ տեղի ունեցած ահաբեկչության կապակցությամբ",
+            "url": "https://hy.armradio.am/archives/766462",
+            "date": "2026-10-25T05:00:35.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/b8966750-cef5-11f1-a701-fddedf244c16.jpg-768x432.webp",
+            "category": "Քաղաքական"
+          },
+          {
             "title": "ՏԻՄ ընտրություններ՝ 21 համայնքում",
             "url": "https://hy.armradio.am/archives/766431",
             "date": "2026-10-25T04:00:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/tim-1-768x603.jpg",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/MHM0165066-768x512.jpg",
             "category": "Կարևոր"
           },
           {
@@ -1136,19 +1143,26 @@
             "date": "2026-10-22T15:42:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3836-768x517.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Հայաստանի և Չեխիայի պաշտպանության նախարարները քննարկել են բանակի բարեփոխումներն ու համագործակցությունը ԵՄ-ի և ՆԱՏՕ-ի շրջանակներում",
-            "url": "https://hy.armradio.am/archives/766083",
-            "date": "2026-10-22T15:01:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/861383555_1835177147484827_797174001269371930_n-768x512.jpg",
-            "category": "Քաղաքական"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Կիևյան փողոցում վիճաբանության մասնակիցներից մեկը ատրճանակ է գործի դրել․ ՆԳՆ ոստիկանություն",
+            "url": "https://hy.armradio.am/archives/766467",
+            "date": "2026-10-25T05:18:05.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/vost-1-768x512.jpg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "EBU-ն շնորհավորել է Հայաստանին՝ «Մանկական Եվրատեսիլ 2026»-ում հաղթանակի կապակցությամբ",
+            "url": "https://hy.armradio.am/archives/766457",
+            "date": "2026-10-25T04:34:43.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5643-300x220.jpeg",
+            "category": "Հասարակություն"
+          },
           {
             "title": "Երևան-Աշտարակ ավտոճանապարհին տեղի է ունեցել ՃՏՊ․ կան զոհեր և տուժածներ",
             "url": "https://hy.armradio.am/archives/766435",
@@ -1203,20 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766354",
             "date": "2026-10-24T12:05:56.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/857291044_1090756147088211_7994282313977218421_n-768x576.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "COP 17․ որքանո՞վ է վտանգում պեստիցիդների չարաշահումը Հայաստանի կենսաբազմազանությանը",
-            "url": "https://hy.armradio.am/archives/766329",
-            "date": "2026-10-24T11:50:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/854427854_1551239393700058_6095818765313829583_n-1-768x576.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "COP17․ Բնությունը պահպանելու համար նախ պետք է ճանաչել այն",
-            "url": "https://hy.armradio.am/archives/766350",
-            "date": "2026-10-24T11:17:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/DSC03874-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -9712,6 +9712,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Բարսելոնա» - «Ռեալ» եւ օրվա մյուս հանդիպումները",
+            "url": "https://sport.news.am/arm/news/169773/",
+            "date": "2026-10-25T04:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169773.jpg"
+          },
+          {
             "title": "Ալվարեսի գոլը հաղթանակ բերեց «Աթլետիկոյին» (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/169778/",
             "date": "2026-10-24T20:57:00.000Z",
@@ -9764,12 +9770,6 @@
             "url": "https://sport.news.am/arm/news/169769/",
             "date": "2026-10-24T15:56:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169769.jpg"
-          },
-          {
-            "title": "«Կոմոյին» հաղթանակ բերեց Դուվիկասի դուբլը (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169768/",
-            "date": "2026-10-24T14:56:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169768.jpg"
           }
         ]
       },
@@ -9844,6 +9844,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Հորոսկոպ. ձեր կատարյալ զգեստը Հելոուինի համար",
+            "url": "https://style.news.am/arm/news/116813/",
+            "date": "2026-10-25T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116813.jpg"
+          },
+          {
             "title": "Հայաստանը՝ «Մանկական Եվրատեսիլ 2026»-ի հաղթող",
             "url": "https://style.news.am/arm/news/116823/",
             "date": "2026-10-24T21:22:00.000Z",
@@ -9896,12 +9902,6 @@
             "url": "https://style.news.am/arm/news/116807/",
             "date": "2026-10-24T09:49:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116807.jpg"
-          },
-          {
-            "title": "«Ես գիտեմ, թե որտեղ ես դու». Ջոն Բայդենի որդուն կասկածում են մարմնավաճառուհուն սպառնալու մեջ",
-            "url": "https://style.news.am/arm/news/116806/",
-            "date": "2026-10-24T09:15:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116806.jpg"
           }
         ]
       },
@@ -10042,6 +10042,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Վիճաբանություն Կիեւյան փողոցում. ոստիկանները հայտնաբերել են միջադեպի մասնակիցների",
+            "url": "https://news.am/hy/news/1070108",
+            "date": "2026-10-25T05:05:13.000Z",
+            "image": "https://news.am/storage/media/26/10/25/MdcnWExFQ8YPD8ZU.webp"
+          },
+          {
             "title": "Ծնողները մահացել են, 3 երեխաները հիվանդանոցում են. նոր մանրամասներ ողբերգական վթարից",
             "url": "https://news.am/hy/news/1070103",
             "date": "2026-10-24T18:51:17.000Z",
@@ -10094,12 +10100,6 @@
             "url": "https://news.am/hy/news/1070016",
             "date": "2026-10-24T09:12:24.000Z",
             "image": "https://news.am/storage/media/26/10/24/20Zy5eRxucEdUKaU.webp"
-          },
-          {
-            "title": "Առաջին աշնանային փոթորիկը հարվածել է Գերմանիային․ կան տուժածներ, խափանվել են էլեկտրամատակարարումն ու գնացքների երթևեկությունը",
-            "url": "https://news.am/hy/news/1069991",
-            "date": "2026-10-24T08:50:00.000Z",
-            "image": "https://news.am/storage/media/26/10/24/UTtKdnidAqcJQeEi.webp"
           }
         ]
       },
@@ -10374,6 +10374,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Анонс матчей дня, «Эль-Класико»",
+            "url": "https://sport.news.am/rus/news/169773/",
+            "date": "2026-10-25T04:55:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169773.jpg"
+          },
+          {
             "title": "«Атлетико» победил благодаря голу Альвареса (видео)",
             "url": "https://sport.news.am/rus/news/169778/",
             "date": "2026-10-24T20:57:00.000Z",
@@ -10426,12 +10432,6 @@
             "url": "https://sport.news.am/rus/news/169767/",
             "date": "2026-10-24T14:32:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169767.jpg"
-          },
-          {
-            "title": "«Астон Вилла» оказалась сильнее «Манчестер Сити» (видео)",
-            "url": "https://sport.news.am/rus/news/169766/",
-            "date": "2026-10-24T13:23:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169766.jpg"
           }
         ]
       },
@@ -10506,6 +10506,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Рубрика Зодиак: ваш идеальный костюм на Хэллоуин",
+            "url": "https://style.news.am/rus/news/116813/",
+            "date": "2026-10-25T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116813.jpg"
+          },
+          {
             "title": "Армения победила на Детском Евровидении 2026",
             "url": "https://style.news.am/rus/news/116823/",
             "date": "2026-10-24T21:22:00.000Z",
@@ -10558,12 +10564,6 @@
             "url": "https://style.news.am/rus/news/116807/",
             "date": "2026-10-24T09:49:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116807.jpg"
-          },
-          {
-            "title": "«Я знаю, где ты находишься»: Сына Джона Байдена заподозрили в угрозах проститутке",
-            "url": "https://style.news.am/rus/news/116806/",
-            "date": "2026-10-24T09:15:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116806.jpg"
           }
         ]
       },
@@ -10704,6 +10704,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Стрельба возле стадиона университета во Флориде: 12 человек пострадали, трое в тяжёлом состоянии",
+            "url": "https://news.am/ru/news/1070109",
+            "date": "2026-10-25T05:11:29.000Z",
+            "image": "https://news.am/storage/media/26/10/09/ICeWZo26XqDkCl7m.webp"
+          },
+          {
+            "title": "Конфликт и стрельба на улице Киевян в Ереване: полиция установила участников инцидента",
+            "url": "https://news.am/ru/news/1070108",
+            "date": "2026-10-25T05:05:13.000Z",
+            "image": "https://news.am/storage/media/26/10/25/MdcnWExFQ8YPD8ZU.webp"
+          },
+          {
             "title": "Родители погибли, трое детей находятся в больнице: новые подробности трагического ДТП",
             "url": "https://news.am/ru/news/1070103",
             "date": "2026-10-24T18:51:17.000Z",
@@ -10750,18 +10762,6 @@
             "url": "https://news.am/ru/news/1070049",
             "date": "2026-10-24T12:16:51.000Z",
             "image": "https://news.am/storage/media/26/10/24/GPkFEaOrzQpQnd58.webp"
-          },
-          {
-            "title": "В Италии расследуют беспорядки с участием молодежи: полиция провела обыски более чем в 20 городах",
-            "url": "https://news.am/ru/news/1070016",
-            "date": "2026-10-24T09:12:24.000Z",
-            "image": "https://news.am/storage/media/26/10/24/20Zy5eRxucEdUKaU.webp"
-          },
-          {
-            "title": "Первый осенний шторм обрушился на Германию: есть пострадавшие и перебои с электричеством, нарушено движение поездов",
-            "url": "https://news.am/ru/news/1069991",
-            "date": "2026-10-24T08:50:00.000Z",
-            "image": "https://news.am/storage/media/26/10/24/UTtKdnidAqcJQeEi.webp"
           }
         ]
       },
