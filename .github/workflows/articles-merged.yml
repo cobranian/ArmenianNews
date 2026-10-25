@@ -1,0 +1,91 @@
+# PR Culture fusionnée À LA MAIN avant ses traductions → on traduit sur main.
+#
+# Le cas réel (PR #36, 25 oct. 2026) : la case « Faits vérifiés » et
+# l'étiquette « traduire » ont lancé deux traductions, et la PR a été fusionnée
+# depuis l'interface 45 s plus tard, avec le seul fr.md. Les traductions ont
+# atterri sur la branche déjà fusionnée : l'article est parti en français seul,
+# sans aucun échec visible.
+#
+# Une protection de main exigeant culture-check n'est PAS la parade : le job
+# horaire pousse ses instantanés directement sur main et serait refusé.
+#
+# Seule une fusion humaine déclenche ce workflow : celle d'articles-publish.yml
+# se fait avec le GITHUB_TOKEN, qui ne déclenche aucun événement (et elle a
+# déjà ses traductions).
+name: Culture — traductions après fusion
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+  actions: write
+  pull-requests: write
+
+concurrency:
+  group: culture-merged-main
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    if: >-
+      github.event.pull_request.merged == true &&
+      startsWith(github.head_ref, 'culture/') &&
+      !startsWith(github.head_ref, 'culture/backfill-')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+      BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Traduire ce qui manque, pousser, déployer
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+        run: |
+          SLUG="${BRANCH#culture/}"
+          D="src/data/culture/$SLUG"
+          [ -f "$D/fr.md" ] || { echo "Pas d'article $SLUG sur main : rien à faire."; exit 0; }
+          missing=""
+          for l in en hy ru de it; do [ -f "$D/$l.md" ] || missing="$missing $l"; done
+          if [ -z "$missing" ] && node scripts/culture-check.mjs "$SLUG"; then
+            echo "Traductions présentes et à jour : rien à faire."
+            exit 0
+          fi
+          echo "À traduire (manquantes :${missing:- aucune}, ou périmées)"
+          node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md" || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$D"
+          if git diff --cached --quiet; then
+            gh pr comment "$PR" --body "⚠️ Fusionnée sans traductions, et la traduction automatique n'a rien produit : relancez \`npm run culture:translate $SLUG\`." || true
+            exit 1
+          fi
+          git commit -m "Culture : traductions de « $SLUG » (après fusion)"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              # Un push par GITHUB_TOKEN ne déclenche pas le déploiement.
+              gh workflow run hourly.yml --ref main
+              {
+                echo "Fusionnée avant ses traductions : elles ont été faites sur main et déployées."
+                echo
+                [ -f "$RUNNER_TEMP/summary.md" ] && cat "$RUNNER_TEMP/summary.md"
+              } > "$RUNNER_TEMP/comment.md"
+              gh pr comment "$PR" --body-file "$RUNNER_TEMP/comment.md" || true
+              exit 0
+            fi
+            sleep 10
+          done
+          exit 1

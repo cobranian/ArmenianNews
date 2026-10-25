@@ -23,8 +23,12 @@ permissions:
   statuses: write
   actions: write
 
+# Groupe PARTAGÉ avec articles-translate.yml : cocher la case et poser
+# l'étiquette au même moment lançaient deux traductions concurrentes, dont
+# l'une échouait au rebase (PR #36). Ici on annule un run en cours : ce job
+# retraduit lui-même ce qui manque.
 concurrency:
-  group: culture-publish-${{ github.event.pull_request.number }}
+  group: culture-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:

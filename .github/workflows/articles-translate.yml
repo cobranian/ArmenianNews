@@ -13,8 +13,12 @@ permissions:
   pull-requests: write
   statuses: write
 
+# Groupe PARTAGÉ avec articles-publish.yml (voir son commentaire) : posée
+# pendant une publication, l'étiquette attend son tour au lieu de traduire en
+# parallèle — et la PR peut être fusionnée entre-temps, d'où l'étape « PR
+# encore ouverte ? ».
 concurrency:
-  group: culture-translate-${{ github.event.pull_request.number }}
+  group: culture-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: false
 
 jobs:
@@ -30,14 +34,25 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
       BRANCH: ${{ github.head_ref }}
     steps:
+      # La charge de l'événement date du moment où l'étiquette a été posée : un
+      # run qui a attendu la publication trouverait la branche fusionnée.
+      - name: PR encore ouverte ?
+        id: open
+        run: |
+          state="$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+          [ "$state" = OPEN ] || echo "PR $state : traduction sans objet."
       - uses: actions/checkout@v7
+        if: steps.open.outputs.state == 'OPEN'
         with:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v6
+        if: steps.open.outputs.state == 'OPEN'
         with:
           node-version: 24
           cache: npm
       - run: npm ci
+        if: steps.open.outputs.state == 'OPEN'
 
       # Un échec de/it seul (facultatives) laisse culture-translate sortir en 0,
       # et culture-check ne lit leurs manques que comme des notes : le statut
@@ -45,6 +60,7 @@ jobs:
       # commenté sur la PR dit, lui, ce qui manque en de/it.
       - name: Traduire
         id: tr
+        if: steps.open.outputs.state == 'OPEN'
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -56,7 +72,7 @@ jobs:
           node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md"
 
       - name: Pousser, commenter, publier le statut
-        if: always()
+        if: always() && steps.open.outputs.state == 'OPEN'
         run: |
           SLUG="${BRANCH#culture/}"
           git config user.name "github-actions[bot]"

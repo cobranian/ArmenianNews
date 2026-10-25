@@ -1,0 +1,35 @@
+---
+title: "Das Matenadaran: Jahrhundertealter Hüter des armenischen Wortes und der Miniatur"
+description: "Entdecken Sie die Geschichte und die Schätze des Matenadaran in Jerewan, ein unschätzbares Heiligtum des armenischen Schrifttums und UNESCO-Weltdokumentenerbe."
+date: "2026-10-25"
+sourceHash: "2cc0c6121ba9f9a7"
+model: "gemini-flash-latest"
+---
+
+Auf den Höhen von Jerewan, am Ende der grossen Mesrop-Maschtoz-Avenida, erhebt sich ein imposanter Bau aus graublauem Basalt. Das Matenadaran, offiziell Maschtoz-Institut für alte Handschriften genannt, ist weit mehr als ein Archivdepot oder ein Museum: Es bildet das schlagende Herz des nationalen Gedächtnisses Armeniens. Seine Bezeichnung, hervorgegangen aus dem altarmenischen Begriff, der *matean* (Buch oder Pergament) und *daran* (Aufbewahrungsort) verbindet, bezeichnete einst die Bibliothek und das Skriptorium der mittelalterlichen armenischen Klöster, ganz nach dem Vorbild von Haghpat oder Sanahin. Seit 1997 im internationalen Register des UNESCO-Weltdokumentenerbes eingetragen, vereint es heute eine aussergewöhnliche Sammlung, die von der intellektuellen und künstlerischen Vitalität Armeniens durch die Jahrhunderte zeugt.
+
+## Eine jahrtausendealte Reise voller Prüfungen und Bewahrung
+
+Die Geschichte des Matenadaran wurzelt in den Ursprüngen der armenischen Schriftkultur selbst. Der Überlieferung nach geht die erste Sammlung auf das 5. Jahrhundert und die Schaffung des Alphabets durch Mesrop Maschtoz im Jahr 405 zurück. Bereits zu dieser Zeit bezeugt der Historiker Ghazar Parbezi die Existenz eines Handschriftendepots am kirchlichen Sitz von Etschmiadsin, wo Texte in armenischer und griechischer Sprache aufbewahrt wurden.
+
+Durch alle mittelalterlichen Jahrhunderte hindurch glich die Erhaltung der Bücher einer ständigen Herausforderung. Im Jahr 1170 führte, wie der Historiker Stepanos Orbelian berichtet, die Brandschatzung der Festung Baghaberd durch die Seldschuken zur Vernichtung von mehr als 10'000 Handschriften, die zuvor aus Tatew und benachbarten Klöstern evakuiert worden waren. Die Tätigkeit der Bibliothek intensivierte sich nach der Rückkehr des Katholikats von Sis nach Etschmiadsin im Jahr 1441, doch die Plünderungen hielten an; die letzte ereignete sich 1804. Der Anschluss Ostarmeniens an Russland im Jahr 1828 eröffnete eine Phase der Stabilität, die einer Bestandsaufnahme förderlich war: Ein erster, von Marie-Félicité Brosset mit einem Vorwort versehener Katalog verzeichnete 1840 312 Handschriften – eine Zahl, die 1863 auf 2'340 und am Vorabend des Ersten Weltkriegs auf 4'660 anstieg.
+
+Das Jahr 1915 markiert einen dramatischen Wendepunkt. Während der im Osmanischen Reich verübte Völkermord an den Armeniern Tausende von Werken vernichtete, konnten rund 1'600 Handschriften in Westarmenien der Zerstörung entrissen werden, insbesondere in Vaspurakan (in den Klöstern Lim, Ktuts und Varag) sowie in Taron und Erzurum. Angesichts der Bedrohung durch die Front wurde die Sammlung von Etschmiadsin nach Moskau in Sicherheit gebracht, bevor sie 1922 auf Befehl von Alexander Mjasnikow nach Armenien zurückkehrte. In der Zwischenzeit, am 17. Dezember 1920, verstaatlichte die sowjetische Regierung das Depot von Etschmiadsin, das 1939 nach Jerewan verlegt wurde. Am 3. März 1959 bezog die Institution offiziell ihre heutigen Räumlichkeiten als wissenschaftliches Forschungsinstitut.
+
+## Ein Heiligtum aus Stein im Herzen der Hauptstadt
+
+Das in den 1940er-Jahren vom Architekten Mark Grigorjan entworfene und 1957 vollendete Hauptgebäude greift die Kanones der mittelalterlichen armenischen Architektur auf. Seine rechteckige Fassade ist der Vorhalle (*gawit*) der Apostelkirche in Ani, der einstigen Hauptstadt der Bagratiden, nachempfunden. Am Fusse der Monumentaltreppe steht die Basaltstatue von Mesrop Maschtoz, der seinen Schüler Korjun anleitet, geschaffen vom Bildhauer Ghukas Tschubarjan. Sechs bedeutende Gestalten des armenischen Geisteslebens wachen über den Eingang: der Meister der Miniaturmalerei Toros Roslin, der Philosoph Gregor von Tatew, der Gelehrte Anania Schirakatsi, der Historiker Moses von Choren, der Jurist Mchitar Gosch und der Dichter Frik.
+
+Über dem majestätischen Kupfertor ist der erste ins Armenische übersetzte Satz aus dem Buch der Sprüche eingraviert: «Um Weisheit und Zucht zu erlangen, verständige Worte zu verstehen…» Im Inneren ist die Vorhalle von den Strukturen von Sanahin inspiriert, während der Maler Van Chatschatour den Raum mit einem Mosaik der Schlacht von Avarayr (451) und monumentalen Fresken geschmückt hat, die Urartu, die hellenistische Periode und das christliche Mittelalter heraufbeschwören. Um moderne Räumlichkeiten für Forschung, Digitalisierung und Restaurierung bereitzustellen, wurde am 20. September 2011 ein neues, vom Architekten Arthur Meschjan entworfenes Gebäude eingeweiht.
+
+## Meisterwerke der Buchmalerei und des mittelalterlichen Wissens
+
+Das Matenadaran beherbergt eine der bemerkenswertesten Sammlungen der Welt mit mehr als 17'000 Handschriften – darunter rund 10'000 in armenischer Sprache – und etwa 300'000 Archivdokumenten. Die Bände umfassen alle Wissensgebiete: Theologie, Philosophie, Recht, Geschichte, Geografie, Astronomie und Medizin. Sie enthalten auch Übersetzungen antiker Werke, deren griechische Originale verloren gegangen sind, wie die *Chronik* von Eusebius von Caesarea oder die Abhandlung *Über die Natur* von Zenon von Kition.
+
+Die Kunst der Buchmalerei entfaltet sich hier in ihrer ganzen Pracht. Nahezu ein Drittel der armenischen Kodizes ist mit Malereien und mehrfarbigen Ornamenten verziert. Zu den am meisten verehrten Schätzen gehören das Etschmiadsin-Evangeliar von 989, bemerkenswert für seinen geschnitzten Elfenbeineinband und seine kostbaren Miniaturen aus dem 6. Jahrhundert, sowie das Lasarew-Evangeliar von 887, einer der ältesten vollständig erhaltenen Bände. Das Vehamor-Evangelium, das dem 7. Jahrhundert zugeschrieben wird, dient traditionell der Vereidigung der Präsidenten der Republik Armenien.
+
+Die Sammlung zeugt zudem von einer erstaunlichen Vielfalt an Massstäben: Das kolossale Homiliar von Musch, kopiert zwischen 1200 und 1202 im Apostelkloster, misst 70,5 mal 55 Zentimeter bei einem Gewicht von 27,5 Kilogramm, während ein winziger liturgischer Kalender von 1434 bei Blattmassen von 4 mal 3 Zentimetern nur 19 Gramm wiegt. Die Schöpfungen der kilikischen Miniaturisten, insbesondere von Toros Roslin im 13. Jahrhundert und Sargis Pitsak im 14. Jahrhundert, illustrieren die Raffinesse einer unvergleichlichen visuellen Tradition.
+
+## Eine Einladung zur Erkundung des armenischen Erbes
+
+Dieser textliche und ästhetische Reichtum findet weit über die Grenzen Armeniens hinaus grossen Widerhall bei allen Liebhabern von Geschichte und Literatur. Um dieses Eintauchen in das Schaffen und das Erbe Armeniens zu vertiefen, verpassen Sie nicht die Kulturbegegnung «À la découverte des collections du musée d’art et de littérature d’Arménie», die am 29. Oktober 2026 in der Region Auvergne-Rhône-Alpes stattfindet.
