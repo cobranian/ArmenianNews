@@ -726,6 +726,28 @@ Vite `base` defaults to `/` on both showcases (each domain serves from its own
 root); override with `BASE_PATH=/subpath` — mainly useful with `build:one`,
 since the two production showcases always serve from their domain's root.
 
+## Radio : titre de la chanson en cours
+
+Pendant la lecture, le lecteur affiche « ♪ Artiste — Titre » sous le nom de la
+station, et l'écran verrouillé du téléphone le reprend. Le titre voyage **dans**
+le flux (métadonnées ICY), qu'un `<audio>` ne rend jamais à la page, et les
+adresses de statut des serveurs n'ont pas d'en-tête CORS. Le Worker
+`radio-now-playing` (`proxy/now-playing-worker.js`) ouvre donc le flux, lit le
+premier bloc et raccroche. Il garde la réponse 15 s en cache par station, et le
+site le rappelle toutes les 20 s, **seulement pendant l'écoute**.
+
+```bash
+cd proxy && npx wrangler deploy -c wrangler-now-playing.toml
+curl -s -H 'Origin: https://armenieinfo.ch' 'https://radio-now-playing.cobranian.workers.dev/?s=lav'
+```
+
+`src/nowPlaying.js` décide si le texte est une chanson. Il n'affiche **rien**
+pour un titre vide, le nom de la station (Mariam, Yeraz) ou un créneau
+d'émission daté (la Radio publique). Une station ajoutée à `STATIONS` doit
+figurer dans `STREAMS` ou `SANS_TITRE` du Worker, ce que
+`test/now-playing.test.mjs` vérifie. Le Worker doit ensuite être **redéployé**.
+L'hôte du Worker figure dans `connect-src`, sur les deux CSP de `firebase.json`.
+
 ## Notes & caveats
 
 - Scrapers depend on the source sites' current HTML; if a site redesigns, the

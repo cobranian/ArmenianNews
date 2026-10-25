@@ -4,6 +4,7 @@ import { SectionHead } from './SectionHead.jsx'
 import { useSourceDrum } from './useSourceDrum.js'
 import { pathFor } from '../../sites.config.js'
 import { stepStation } from '../radioCycle.js'
+import { NOW_PLAYING_URL, POLL_MS, songFrom } from '../nowPlaying.js'
 
 /* Live broadcast console — a native HTML5 <audio> player for Public Radio of
  * Armenia. We deliberately do NOT embed player.armradio.am (an old jQuery/jPlayer
@@ -250,6 +251,11 @@ export function Radio({ more = true, stepRef = null }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [volume, setVolume] = useState(0.85)
+  // Chanson en cours : { id, artist, title } de la station qui l'a donnée.
+  // Toujours null au prérendu (on ne la demande qu'en lecture), donc
+  // l'hydratation ne voit jamais de titre.
+  const [song, setSong] = useState(null)
+  const nowSong = playing && song?.id === stationId ? song : null
 
   const station = STATIONS.find((s) => s.id === stationId) || STATIONS[0]
   const isPlain = !!station.plain
@@ -680,16 +686,69 @@ export function Radio({ more = true, stepRef = null }) {
     [],
   )
 
+  // --- Titre en cours ---
+  // Demandé au Worker (proxy/now-playing-worker.js) pendant la lecture
+  // seulement, toutes les POLL_MS. Le titre est rangé avec l'id de sa station :
+  // une réponse tardive de la station précédente ne s'affiche donc jamais sous
+  // la nouvelle (`nowSong` compare les deux).
+  useEffect(() => {
+    if (!playing) return
+    let stopped = false
+    let ctrl = null
+    const ask = async () => {
+      ctrl?.abort()
+      ctrl = new AbortController()
+      try {
+        const r = await fetch(`${NOW_PLAYING_URL}?s=${encodeURIComponent(stationId)}`, {
+          signal: ctrl.signal,
+        })
+        if (!r.ok) throw new Error(String(r.status))
+        const j = await r.json()
+        const s = songFrom(j.title, { stationName: t(`radio.st.${stationId}`), icyName: j.name })
+        if (stopped) return
+        // Même chanson qu'au tour précédent : on garde l'objet, pour ne pas
+        // reposer l'écran verrouillé toutes les 20 s.
+        setSong((prev) =>
+          !s
+            ? null
+            : prev?.id === stationId && prev.artist === s.artist && prev.title === s.title
+              ? prev
+              : { id: stationId, ...s },
+        )
+      } catch {
+        if (!stopped) setSong(null)
+      }
+    }
+    ask()
+    const timer = setInterval(ask, POLL_MS)
+    return () => {
+      stopped = true
+      clearInterval(timer)
+      ctrl?.abort()
+    }
+  }, [playing, stationId, t])
+
+  // L'écran verrouillé suit la chanson : titre en tête, station en dessous.
   useEffect(() => {
     const ms = mediaSession()
     if (!ms || typeof MediaMetadata === 'undefined') return
     const icon = new URL(`${import.meta.env.BASE_URL}favicon-192.png`, location.href).href
-    ms.metadata = new MediaMetadata({
-      title: t(`radio.st.${stationId}`),
-      artist: t('site.title'),
-      artwork: [{ src: icon, sizes: '192x192', type: 'image/png' }],
-    })
-  }, [stationId, t])
+    const name = t(`radio.st.${stationId}`)
+    ms.metadata = new MediaMetadata(
+      nowSong
+        ? {
+            title: nowSong.title,
+            artist: nowSong.artist || name,
+            album: nowSong.artist ? name : t('site.title'),
+            artwork: [{ src: icon, sizes: '192x192', type: 'image/png' }],
+          }
+        : {
+            title: name,
+            artist: t('site.title'),
+            artwork: [{ src: icon, sizes: '192x192', type: 'image/png' }],
+          },
+    )
+  }, [stationId, t, nowSong])
 
   useEffect(() => {
     const ms = mediaSession()
@@ -902,6 +961,19 @@ export function Radio({ more = true, stepRef = null }) {
                   </span>
                 )}
               </div>
+
+              {nowSong && (
+                <p className="radio__song">
+                  <span className="radio__song-note" aria-hidden="true">♪ </span>
+                  {nowSong.artist && (
+                    <>
+                      <span className="radio__song-artist">{nowSong.artist}</span>
+                      {' — '}
+                    </>
+                  )}
+                  <span className="radio__song-title">{nowSong.title}</span>
+                </p>
+              )}
 
               <canvas
                 className="radio__viz"
