@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T13:23:30.623Z",
+  "generatedAt": "2026-10-25T14:23:29.878Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -210,16 +210,16 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
-          "title": "Alexandre Saakov, le photographe arménien de Tbilissi qui a immortalisé Jean Vilar et les grandes figures de son époque",
-          "url": "https://courrier.am/alexandre-saakov-le-photographe-armenien-de-tbilissi-qui-immortalise-jean-vilar-et-les-grandes",
-          "date": "2026-10-21T11:59:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/100.jpg.avif?itok=ccVmZW20"
-        },
-        {
           "title": "COP17 : la culture arménienne à l’honneur dans la Zone verte",
           "url": "https://courrier.am/cop17-la-culture-armenienne-lhonneur-dans-la-zone-verte",
           "date": "2026-10-21T05:43:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/02%20%282%29.jpg.avif?itok=-r2nsqJl"
+        },
+        {
+          "title": "Alexandre Saakov, le photographe arménien de Tbilissi qui a immortalisé Jean Vilar et les grandes figures de son époque",
+          "url": "https://courrier.am/alexandre-saakov-le-photographe-armenien-de-tbilissi-qui-immortalise-jean-vilar-et-les-grandes",
+          "date": "2026-10-21T11:59:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/100.jpg.avif?itok=ccVmZW20"
         },
         {
           "title": "Zhanna Andreyasyan a rencontré le directeur général de l’UNESCO, Khaled El-Enany",
@@ -1150,6 +1150,27 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "ՏԻՄ ընտրություններ Արմավիր և Արաքս համայնքներում",
+            "url": "https://hy.armradio.am/archives/766541",
+            "date": "2026-10-25T14:04:48.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_20260607_080506-1-768x576.jpg",
+            "category": "Հասարակություն"
+          },
+          {
+            "title": "Եզդիաբնակ Շամիրամ համայնքի ղեկավարի պաշտոնի համար առաջադրվել է մեկ թեկնածու",
+            "url": "https://hy.armradio.am/archives/766535",
+            "date": "2026-10-25T13:52:06.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/MHM0165067-768x518.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Ամենայն Հայոց Կաթողիկոսն ընդունել է COP17 համաժողովի ԵՀԽ էկումենիկ պատվիրակությանը",
+            "url": "https://hy.armradio.am/archives/766530",
+            "date": "2026-10-25T13:42:18.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/866166237_955645607229454_9126815174072191583_n-768x512.jpg",
+            "category": "Հասարակություն"
+          },
+          {
             "title": "Սպասվում է կարճատև անձրև",
             "url": "https://hy.armradio.am/archives/766531",
             "date": "2026-10-25T13:14:41.000Z",
@@ -1197,27 +1218,6 @@
             "date": "2026-10-25T08:58:16.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/859815349_1548517653968294_2612549302883618202_n-scaled-e1792918676720-768x478.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Միջազգային տնտեսական համագործակցությունը պետք է ծառայի բնության պահպանությանը, այլ ոչ թե վնասի դրան. Արարատ Միրզոյան",
-            "url": "https://hy.armradio.am/archives/766503",
-            "date": "2026-10-25T08:35:49.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/17929164424418-768x536.jpeg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Այցելած 222 տեղամասերում արձանագրվել է 53 խախտում. «Անկախ դիտորդ»",
-            "url": "https://hy.armradio.am/archives/766497",
-            "date": "2026-10-25T08:23:12.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ditord-768x499.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "ՏԻՄ ընտրությունների ընթացքում ենթադրյալ իրավախախտումների վերաբերյալ ստացվել է 1 ահազանգ․ ՆԳՆ",
-            "url": "https://hy.armradio.am/archives/766498",
-            "date": "2026-10-25T08:20:21.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/859977448_1102323059106320_3943662973331449910_n-768x512.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -1525,6 +1525,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "Արթուր Դավթյանը` մարմնամարզության աշխարհի կրկնակի չեմպիոն",
+            "url": "https://hy.armradio.am/archives/766538",
+            "date": "2026-10-25T13:55:33.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/863106948_1881631866625321_264378111995364657_n-300x200.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մարմնամարզիկ Արթուր Ավետիսյանը դարձել է ԱԱ-ի բրոնզե մեդալակիր",
             "url": "https://hy.armradio.am/archives/766402",
             "date": "2026-10-24T16:02:00.000Z",
@@ -1585,13 +1592,6 @@
             "url": "https://hy.armradio.am/archives/765113",
             "date": "2026-10-19T08:58:03.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5579-768x511.jpeg",
-            "category": "Սպորտ"
-          },
-          {
-            "title": "Հայաստանի մարմնամարզության հավաքականի անդամներն ԱԱ եզրափակիչում են",
-            "url": "https://hy.armradio.am/archives/765037",
-            "date": "2026-10-19T04:26:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2021/08/Artur-Davtyan-2-scaled-1-768x512.jpg",
             "category": "Սպորտ"
           }
         ]
@@ -2270,6 +2270,12 @@
       "categoryKey": "communaute",
       "articles": [
         {
+          "title": "Vif débat « Arménia » sur « l’Arménie au sein de l’Union européenne : pour ou contre ? » à Bourg-lès-Valence",
+          "url": "https://www.armenews.com/vif-debat-armenia-sur-larmenie-au-sein-de-lunion-europeenne-pour-ou-contre-a-bourg-les-valence/",
+          "date": "2026-10-25T13:55:17.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/IMG_2695-scaled.jpg"
+        },
+        {
           "title": "L’ADAAET installe son nouveau comité pour la rentrée 2026-2027 à l’école Tebrotzassère",
           "url": "https://www.armenews.com/ladaaet-installe-son-nouveau-comite-pour-la-rentree-2026-2027-a-lecole-tebrotzassere/",
           "date": "2026-10-25T07:30:03.000Z",
@@ -2322,12 +2328,6 @@
           "url": "https://www.armenews.com/regards-croises-la-ceramique-armenienne-a-lhonneur-a-la-maison-de-lamerique-latine-jusquau-25-octobre/",
           "date": "2026-10-21T06:30:56.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-20-at-20.20.33-1.jpeg"
-        },
-        {
-          "title": "Dîner au profit de l’ASAF reporté",
-          "url": "https://www.armenews.com/diner-au-profit-dun-centre-hospitalier-en-armenie-le-23-octobre-a-marseille/",
-          "date": "2026-10-21T06:30:49.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/09/unnamed-3.png"
         }
       ]
     },
@@ -2735,6 +2735,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Le Parlement arménien débattra de la ratification de l’accord-cadre Arménie-États-Unis sur TRIPP",
+          "url": "https://armenieinfo.tv/le-parlement-armenien-debattra-de-la-ratification-de-laccord-cadre-armenie-etats-unis-sur-tripp/",
+          "date": "2026-10-25T13:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1792751540-3821.jpg"
+        },
+        {
           "title": "Après les frappes sur Yandex, un expert alerte sur la dépendance numérique de l’Arménie",
           "url": "https://armenieinfo.tv/mer-oughin-35517/",
           "date": "2026-10-25T11:15:00.000Z",
@@ -2787,12 +2793,6 @@
           "url": "https://armenieinfo.tv/lecole-tebrotzassere-renouvelle-son-comite-pour-la-rentree-2026-2027/",
           "date": "2026-10-24T08:15:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/10/discours-du-premier-ministre-pour-la-commemoration-du-genocide-armenien.-9-3.png"
-        },
-        {
-          "title": "Efforts pour ouvrir la frontière entre l’Arménie et la Turquie en cours, selon Pachinian",
-          "url": "https://armenieinfo.tv/efforts-pour-ouvrir-la-frontiere-entre-larmenie-et-la-turquie-en-cours-selon-pachinian/",
-          "date": "2026-10-24T07:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1792665166-9694.jpg"
         }
       ]
     },
@@ -4158,6 +4158,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "ԿԸՀ-ն քաղաքական գործիչներին և ԶԼՄ-ներին կոչ է անում զերծ մնալ քարոզչություն կամ հակաքարոզչություն պարունակող հայտարարությունից",
+            "url": "https://armenpress.am/hy/article/1263754",
+            "date": "2026-10-25T14:14:23.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/mV3tXXlHDahMfMYVprzMI5AQwVASomUuwO3DZdMS.webp"
+          },
+          {
+            "title": "ԱԳՄԱ նախարարի տեղակալը մասնակցել է «Բիզնես առաջնորդության մոբիլիզացում հանուն բնության» խորագրով կլոր սեղան-քննարկմանը",
+            "url": "https://armenpress.am/hy/article/1263753",
+            "date": "2026-10-25T14:02:22.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/DS3y5cR7uyb4d6sB5gZMSmKYKXV1GRUW0c3dd1U9.webp"
+          },
+          {
             "title": "ՏԻՄ ընտրություններ․ ՆԳՆ-ն ընտրախախտումների վերաբերյալ 13 ահազանգ է ստացել",
             "url": "https://armenpress.am/hy/article/1263750",
             "date": "2026-10-25T13:03:11.000Z",
@@ -4204,18 +4216,6 @@
             "url": "https://armenpress.am/hy/article/1263743",
             "date": "2026-10-25T08:19:08.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/25/2OyOs16rr3mP1cTK8rvdHt6CNm8k0fdqgSDehTiY.webp"
-          },
-          {
-            "title": "Գեղարքունիքի, Արարատի և Տավուշի մարզերի բնակավայրերում գործարկվելու են էլեկտրաշչակներ",
-            "url": "https://armenpress.am/hy/article/1263742",
-            "date": "2026-10-25T08:11:21.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/opiewwB96ixKUpmOwVAV04w0ibyWN7prj0eECe8P.webp"
-          },
-          {
-            "title": "ՀՀ շրջակա միջավայրի նախարարը COP17-ի շրջանակներում գենետիկական ռեսուրսների հասանելիությանը նվիրված աշխատաժողովի է մասնակցել",
-            "url": "https://armenpress.am/hy/article/1263741",
-            "date": "2026-10-25T07:20:57.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/khuDhJ7MRdvkg0poYNWqczm8BOFvaTvZ43i9dvHK.webp"
           }
         ]
       },
@@ -4418,6 +4418,12 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "Մարմնամարզիկ Արթուր Դավթյանը դարձավ աշխարհի առաջնության կրկնակի չեմպիոն",
+            "url": "https://armenpress.am/hy/article/1263752",
+            "date": "2026-10-25T13:52:16.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/gS44XiYFFExHPqDeGQ6oshG8cy8stqfOaqW000o4.webp"
+          },
+          {
             "title": "Մարմնամարզիկ Արթուր Ավետիսյանը դարձավ ԱԱ-ի բրոնզե մեդալակիր",
             "url": "https://armenpress.am/hy/article/1263734",
             "date": "2026-10-24T16:06:00.000Z",
@@ -4470,12 +4476,6 @@
             "url": "https://armenpress.am/hy/article/1263668",
             "date": "2026-10-23T13:53:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/23/clfoXbegh1L9tZkYo74CRMCsTlHkYW5FPR9V9sGv.webp"
-          },
-          {
-            "title": "Ծանրորդ Աննա Ամրոյանը չի մասնակցի աշխարհի առաջնությանը",
-            "url": "https://armenpress.am/hy/article/1263662",
-            "date": "2026-10-23T13:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/23/aELNJdZrbH74TaJxh5nm3vqQvodZi8oiB94eQESe.webp"
           }
         ]
       },
@@ -4635,6 +4635,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Выборы ОМС: в МВД поступило 13 сообщений о нарушениях избирательного процесса",
+            "url": "https://armenpress.am/ru/article/1263750",
+            "date": "2026-10-25T13:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/k7NbWGJ6I9ZMgYmxxEMruW28JpbpLBP7uiykAPOm.webp"
+          },
+          {
             "title": "Выборы в ОМС: по состоянию на 14:00 часов самая высокая явка избирателей зафиксирована в Степанаване",
             "url": "https://armenpress.am/ru/article/1263749",
             "date": "2026-10-25T13:10:00.000Z",
@@ -4687,12 +4693,6 @@
             "url": "https://armenpress.am/ru/article/1263741",
             "date": "2026-10-25T07:40:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/25/khuDhJ7MRdvkg0poYNWqczm8BOFvaTvZ43i9dvHK.webp"
-          },
-          {
-            "title": "В 21 общине 10 областей Армении началось голосование на выборах в органы местного самоуправления",
-            "url": "https://armenpress.am/ru/article/1263738",
-            "date": "2026-10-25T07:34:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/emlbu7lXtWIMMIuzqHmw4yQsDlr3Wh3CSuNPGzdY.webp"
           }
         ]
       },
@@ -9032,6 +9032,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Artur Davtyan becomes two-time World Champion (photo, video)",
+            "url": "https://sport.news.am/eng/news/169785/",
+            "date": "2026-10-25T13:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169785.jpg"
+          },
+          {
+            "title": "Inter secured a comeback victory in stoppage time (video)",
+            "url": "https://sport.news.am/eng/news/169783/",
+            "date": "2026-10-25T13:33:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169783.jpg"
+          },
+          {
             "title": "Artur Avetisyan – World bronze medalist",
             "url": "https://sport.news.am/eng/news/169770/",
             "date": "2026-10-24T15:57:00.000Z",
@@ -9078,18 +9090,6 @@
             "url": "https://sport.news.am/eng/news/169741/",
             "date": "2026-10-23T09:15:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169741.jpg"
-          },
-          {
-            "title": "Premier League: Matchweek 8 to kick off",
-            "url": "https://sport.news.am/eng/news/169738/",
-            "date": "2026-10-23T08:47:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169738.jpg"
-          },
-          {
-            "title": "Marca: Top 10 best players of the season",
-            "url": "https://sport.news.am/eng/news/169734/",
-            "date": "2026-10-23T08:05:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169734.jpg"
           }
         ]
       },
@@ -9562,6 +9562,24 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "ԲՀԿ–ի համար ամենակարևորը մարդիկ են՝ մեր կուսակիցները, մեր տարածքային կազմակերպությունները. Արման Աբովյան",
+            "url": "https://news.am/hy/news/1070212",
+            "date": "2026-10-25T14:14:52.000Z",
+            "image": "https://news.am/storage/media/26/10/25/rl2E0khfsM13plPg.webp"
+          },
+          {
+            "title": "«Կանխիկը թագավոր է». Ավստրալիայի ընդդիմությունն առաջարկել է օրենքով ամրագրել քաղաքացիների՝ կանխիկ վճարելու իրավունքը",
+            "url": "https://news.am/hy/news/1070197",
+            "date": "2026-10-25T14:05:00.000Z",
+            "image": "https://news.am/storage/media/26/10/25/ofMfd1rdIvDNZNyq.webp"
+          },
+          {
+            "title": "Նիկոլ Փաշինյանը շնորհավորել է իր օրոք ձերբակալված նախկին նախարարի դստերը՝ Եվրատեսիլում հաղթանակի առթիվ",
+            "url": "https://news.am/hy/news/1070207",
+            "date": "2026-10-25T14:01:05.000Z",
+            "image": "https://news.am/storage/media/26/10/25/YJMMpCwRS1BWUjgn.webp"
+          },
+          {
             "title": "Պուտին. Եվրոպան միգրանտներին չի սերմանում իր արժեքները և հրաժարվում է սեփական ավանդույթներից",
             "url": "https://news.am/hy/news/1070183",
             "date": "2026-10-25T13:11:00.000Z",
@@ -9602,24 +9620,6 @@
             "url": "https://news.am/hy/news/1070074",
             "date": "2026-10-24T16:51:00.000Z",
             "image": "https://news.am/storage/media/26/10/24/uGfPV2OxRAqBzjp4.webp"
-          },
-          {
-            "title": "Ալբանիայում ցուցարարները քարեր են նետել կրթության նախարարության շենքի վրա. ոստիկանությունը կիրառել է ջրցան մեքենաներ և արցունքաբեր գազ",
-            "url": "https://news.am/hy/news/1070088",
-            "date": "2026-10-24T16:43:49.000Z",
-            "image": "https://news.am/storage/media/26/10/24/BxeElKj8wWgFwBTf.webp"
-          },
-          {
-            "title": "Սոֆիայում սպանել են Թեքվոնդոյի ֆեդերացիայի ղեկավար և ԵԽ նախկին պատգամավոր Սլավի Բինևին",
-            "url": "https://news.am/hy/news/1070059",
-            "date": "2026-10-24T14:41:00.000Z",
-            "image": "https://images.unsplash.com/photo-1564993719576-7b00be6317cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjU2NDZ8MHwxfHNlYXJjaHwyfHwlRDAlQkYlRDAlQjglRDElODElRDElODIlRDAlQkUlRDAlQkIlRDAlQjUlRDElODJ8ZW58MHx8fHwxNzkyODQ1MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-          },
-          {
-            "title": "Ընդդիմադիր ուժերի հետ կձևավորվի համատեղ աշխատանքային հարթակ. Արցախի պետնախարար",
-            "url": "https://news.am/hy/news/1070065",
-            "date": "2026-10-24T13:46:00.000Z",
-            "image": "https://news.am/storage/media/26/10/24/gtcSHj3VNsASplqv.webp"
           }
         ]
       },
@@ -9694,6 +9694,24 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Արթուր Դավթյանն՝ աշխարհի կրկնակի չեմպիոն (ֆոտո, վիդեո)",
+            "url": "https://sport.news.am/arm/news/169785/",
+            "date": "2026-10-25T13:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169785.jpg"
+          },
+          {
+            "title": "«Սյունիքն» ուժեղ էր ԲԿՄԱ-ից՝ 4:1 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169784/",
+            "date": "2026-10-25T13:49:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169784.jpg"
+          },
+          {
+            "title": "«Ինտերն» ավելացված ժամանակում հասավ կամային հաղթանակի՝ 2:1 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169783/",
+            "date": "2026-10-25T13:33:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169783.jpg"
+          },
+          {
             "title": "ԱԱ. Ծանրորդները մեկնեցին Չինաստան",
             "url": "https://sport.news.am/arm/news/169782/",
             "date": "2026-10-25T12:23:00.000Z",
@@ -9734,24 +9752,6 @@
             "url": "https://sport.news.am/arm/news/169777/",
             "date": "2026-10-24T20:52:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169777.jpg"
-          },
-          {
-            "title": "Դորտմունդի «Բորուսիան» հաղթեց եւ առաջատարն է (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169776/",
-            "date": "2026-10-24T18:40:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169776.jpg"
-          },
-          {
-            "title": "«Չելսին» պարտվեց «Տոտենհեմին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169775/",
-            "date": "2026-10-24T18:35:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169775.jpg"
-          },
-          {
-            "title": "«Նապոլի» - «Ռոմա»՝ 3:3 (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169774/",
-            "date": "2026-10-24T17:57:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169774.jpg"
           }
         ]
       },
@@ -10224,6 +10224,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "«Наличные — король»: оппозиция Австралии предложила закрепить право граждан платить наличными",
+            "url": "https://news.am/ru/news/1070197",
+            "date": "2026-10-25T14:05:00.000Z",
+            "image": "https://news.am/storage/media/26/10/25/ofMfd1rdIvDNZNyq.webp"
+          },
+          {
             "title": "Путин: Европа не прививает мигрантам свои ценности и отказывается от собственных",
             "url": "https://news.am/ru/news/1070183",
             "date": "2026-10-25T13:11:00.000Z",
@@ -10276,12 +10282,6 @@
             "url": "https://news.am/ru/news/1070059",
             "date": "2026-10-24T14:41:00.000Z",
             "image": "https://images.unsplash.com/photo-1564993719576-7b00be6317cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjU2NDZ8MHwxfHNlYXJjaHwyfHwlRDAlQkYlRDAlQjglRDElODElRDElODIlRDAlQkUlRDAlQkIlRDAlQjUlRDElODJ8ZW58MHx8fHwxNzkyODQ1MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-          },
-          {
-            "title": "Госминистр Арцаха: Будет сформирована совместная рабочая платформа с оппозиционными силами",
-            "url": "https://news.am/ru/news/1070065",
-            "date": "2026-10-24T13:46:00.000Z",
-            "image": "https://news.am/storage/media/26/10/24/gtcSHj3VNsASplqv.webp"
           }
         ]
       },
@@ -10356,6 +10356,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Артур Давтян - двукратный чемпион мира (фото, видео)",
+            "url": "https://sport.news.am/rus/news/169785/",
+            "date": "2026-10-25T13:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169785.jpg"
+          },
+          {
+            "title": "«Интер» одержал победу в компенсированное время (видео)",
+            "url": "https://sport.news.am/rus/news/169783/",
+            "date": "2026-10-25T13:33:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169783.jpg"
+          },
+          {
             "title": "«Барселона» - «Реал» и другие матчи дня",
             "url": "https://sport.news.am/rus/news/169773/",
             "date": "2026-10-25T04:55:00.000Z",
@@ -10402,18 +10414,6 @@
             "url": "https://sport.news.am/rus/news/169770/",
             "date": "2026-10-24T15:57:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169770.jpg"
-          },
-          {
-            "title": "«Арсенал» обыграл «Эвертон» (видео)",
-            "url": "https://sport.news.am/rus/news/169769/",
-            "date": "2026-10-24T15:56:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169769.jpg"
-          },
-          {
-            "title": "Гамлет Манукян - чемпион мира, Мамикон Хачатрян - бронзовый призер (видео)",
-            "url": "https://sport.news.am/rus/news/169767/",
-            "date": "2026-10-24T14:32:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169767.jpg"
           }
         ]
       },
