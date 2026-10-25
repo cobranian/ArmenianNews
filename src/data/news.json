@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T15:23:28.688Z",
+  "generatedAt": "2026-10-25T16:23:30.255Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,20 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "ՏԻՄ ընտրություններն ավարտվեցին",
+            "url": "https://hy.armradio.am/archives/766565",
+            "date": "2026-10-25T16:15:50.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/05/elections_19-12-2022_19-02-2023-768x520.jpeg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Քվեարկության գաղտնիության, ընտրողների իրավունքների հետ կապված միջադեպեր․ «Ականատես»",
+            "url": "https://hy.armradio.am/archives/766560",
+            "date": "2026-10-25T15:26:35.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/09/825329563_1521369813349745_3811850185280331536_n-1-768x512.jpg",
+            "category": "Հասարակություն"
+          },
+          {
             "title": "ՏԻՄ ընտրությունների մասնակցության արդյունքները` ժամը 17:00-ի դրությամբ",
             "url": "https://hy.armradio.am/archives/766556",
             "date": "2026-10-25T14:53:01.000Z",
@@ -1203,20 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766525",
             "date": "2026-10-25T12:34:25.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/05/kyh-768x513.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՏԻՄ ընտրությունների մասնակցության արդյունքները ժամը 14:00-ի դրությամբ",
-            "url": "https://hy.armradio.am/archives/766522",
-            "date": "2026-10-25T11:37:33.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/elections-768x448.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "75 ընտրատեղամասում արձանագրվել է 117 խնդիրների և հնարավոր ընտրախախտումների վերաբերյալ գրանցում. «Ականատես»",
-            "url": "https://hy.armradio.am/archives/766518",
-            "date": "2026-10-25T10:54:18.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/elections-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1525,6 +1525,13 @@
         "categoryKey": "sport",
         "articles": [
           {
+            "title": "4 հայ մարզիկ՝ 4 մեդալ",
+            "url": "https://hy.armradio.am/archives/766562",
+            "date": "2026-10-25T16:04:21.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/medal-768x533.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Արթուր Դավթյանը` մարմնամարզության աշխարհի կրկնակի չեմպիոն",
             "url": "https://hy.armradio.am/archives/766538",
             "date": "2026-10-25T13:55:33.000Z",
@@ -1585,13 +1592,6 @@
             "url": "https://hy.armradio.am/archives/765154",
             "date": "2026-10-19T10:51:32.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5580-768x512.jpeg",
-            "category": "Սպորտ"
-          },
-          {
-            "title": "Մարի Ղազարյանը նշանակվել է Եվրոպական հրաձգության կոնֆեդերացիայի մարզիկների հանձնաժողովի անդամ",
-            "url": "https://hy.armradio.am/archives/765113",
-            "date": "2026-10-19T08:58:03.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5579-768x511.jpeg",
             "category": "Սպորտ"
           }
         ]
@@ -2130,6 +2130,20 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Lors de la COP17 à Erevan furent discutés les opportunités de renforcement de la coopération entre l’Arménie et la Banque asiatique de développement (BAD)",
+          "url": "https://www.armenews.com/lors-de-la-cop17-a-erevan-furent-discutes-les-opportunites-de-renforcement-de-la-cooperation-entre-larmenie-et-la-banque-asiatique-de-developpement-bad/",
+          "date": "2026-10-25T16:22:39.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/346292.jpg",
+          "rubric": "politique"
+        },
+        {
+          "title": "La Turquie a achevé l’appel d’offres pour la restauration d’un pont historique à la frontière arménienne annonce le ministre turc",
+          "url": "https://www.armenews.com/la-turquie-a-cheve-lappel-doffres-pour-la-restauration-dun-pont-historique-a-la-frontiere-armenienne-annonce-le-ministre-turc/",
+          "date": "2026-10-25T16:14:24.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8875.jpg",
+          "rubric": "monde"
+        },
+        {
           "title": "« Assez ! »: les journalistes turcs dénoncent la pression du pouvoir",
           "url": "https://www.armenews.com/assez-les-journalistes-turcs-denoncent-la-pression-du-pouvoir/",
           "date": "2026-10-25T07:31:41.000Z",
@@ -2184,20 +2198,6 @@
           "date": "2026-10-25T07:30:26.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-25-a-07.33.14.png",
           "rubric": "politique"
-        },
-        {
-          "title": "Élections municipales dans 21 communes d’Arménie",
-          "url": "https://www.armenews.com/elections-municipales-dans-21-communes-darmenie/",
-          "date": "2026-10-25T07:30:20.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-25-a-07.47.04.png",
-          "rubric": "politique"
-        },
-        {
-          "title": "Décryptage – Nikol Pachinian a révélé l’impasse, par Hakob Badalyan",
-          "url": "https://www.armenews.com/nikol-pachinian-a-revele-limpasse-par-hakob-badalian/",
-          "date": "2026-10-25T07:30:02.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/70376_b.jpeg",
-          "rubric": "opinion"
         }
       ]
     },
@@ -3941,6 +3941,12 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "Gymnast Artur Davtyan becomes two-time world champion",
+            "url": "https://armenpress.am/en/article/1263752",
+            "date": "2026-10-25T15:30:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/gS44XiYFFExHPqDeGQ6oshG8cy8stqfOaqW000o4.webp"
+          },
+          {
             "title": "Armenia’s Hamlet Manukyan wins gold at World Artistic Gymnastics Championships",
             "url": "https://armenpress.am/en/article/1263733",
             "date": "2026-10-24T14:55:00.000Z",
@@ -3993,12 +3999,6 @@
             "url": "https://armenpress.am/en/article/1263305",
             "date": "2026-10-20T10:29:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/20/khzh1UsMC1FBeCCMGLtQSO48IlZKHhXxWXiUyQuw.webp"
-          },
-          {
-            "title": "Armenia’s Narek Grigoryan named 2026 EWF Junior Best Lifter",
-            "url": "https://armenpress.am/en/article/1263280",
-            "date": "2026-10-20T07:20:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/20/6RU9dkJfwJWzJScl2dZ9dOldWOPBaCphlQb6PC2L.webp"
           }
         ]
       },
@@ -9694,6 +9694,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Լիվերպուլն» ու «Նյուքասլը» խնդիրներ չունեցան, «Մանչեսթեր Յունայթեդը» պարտվեց խոշոր հաշվով (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169788/",
+            "date": "2026-10-25T15:56:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169788.jpg"
+          },
+          {
             "title": "Աշխարհի կրկնակի չեմպիոն Արթուր Դավթյանի պարգեւատրումը Ռոտերդամում",
             "url": "https://sport.news.am/arm/news/169787/",
             "date": "2026-10-25T15:18:00.000Z",
@@ -9746,12 +9752,6 @@
             "url": "https://sport.news.am/arm/news/169773/",
             "date": "2026-10-25T04:55:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169773.jpg"
-          },
-          {
-            "title": "Ալվարեսի գոլը հաղթանակ բերեց «Աթլետիկոյին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169778/",
-            "date": "2026-10-24T20:57:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169778.jpg"
           }
         ]
       },
@@ -9759,6 +9759,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Պուտինը նշել է Ռուսաստանի արտաքին և պետական պարտքի մասնաբաժինը",
+            "url": "https://news.am/hy/news/1070209",
+            "date": "2026-10-25T15:36:00.000Z",
+            "image": "https://news.am/storage/media/26/10/19/enYDpwWEoenbYstr.webp"
+          },
           {
             "title": "Ավելի քան 100 առաջատար իսրայելացի տնտեսագետներ Նեթանյահուին նախազգուշացրել են բանկային պատժամիջոցների հետևանքների մասին",
             "url": "https://news.am/hy/news/1070147",
@@ -9812,12 +9818,6 @@
             "url": "https://news.am/hy/news/1069692",
             "date": "2026-10-22T17:58:00.000Z",
             "image": "https://news.am/storage/media/26/10/22/XYRaoMA6L8wDnHLO.webp"
-          },
-          {
-            "title": "Թուրքիայի կենտրոնական բանկը հիմնական տոկոսադրույքը նվազեցրել է մինչև 36%",
-            "url": "https://news.am/hy/news/1069627",
-            "date": "2026-10-22T12:12:00.000Z",
-            "image": "https://news.am/storage/media/26/09/10/ZJAP8M9kVotXP3VR.webp"
           }
         ]
       },
@@ -10356,6 +10356,24 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Москва примет чемпионат мира по тяжелой атлетике",
+            "url": "https://sport.news.am/rus/news/169786/",
+            "date": "2026-10-25T16:11:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169786.jpg"
+          },
+          {
+            "title": "Победы «Ливерпуля» и «Ньюкасла», крупное поражение «Манчестер Юнайтед» (видео)",
+            "url": "https://sport.news.am/rus/news/169788/",
+            "date": "2026-10-25T15:56:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169788.jpg"
+          },
+          {
+            "title": "Церемония награждения двукратного чемпиона мира Артура Давтяна в Роттердаме",
+            "url": "https://sport.news.am/rus/news/169787/",
+            "date": "2026-10-25T15:18:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169787.jpg"
+          },
+          {
             "title": "Артур Давтян - двукратный чемпион мира (фото, видео)",
             "url": "https://sport.news.am/rus/news/169785/",
             "date": "2026-10-25T13:53:00.000Z",
@@ -10396,24 +10414,6 @@
             "url": "https://sport.news.am/rus/news/169774/",
             "date": "2026-10-24T17:57:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169774.jpg"
-          },
-          {
-            "title": "«Алашкерт» победил «Ширак» (видео)",
-            "url": "https://sport.news.am/rus/news/169772/",
-            "date": "2026-10-24T17:11:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169772.jpg"
-          },
-          {
-            "title": "Награждение новоиспеченного чемпиона мира Гамлета Манукяна, бронзовых призеров Мамикона Хачатряна и Артура Аветисяна (фото, видео)",
-            "url": "https://sport.news.am/rus/news/169771/",
-            "date": "2026-10-24T16:40:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169771.jpg"
-          },
-          {
-            "title": "Артур Аветисян - бронзовый призер чемпионата мира",
-            "url": "https://sport.news.am/rus/news/169770/",
-            "date": "2026-10-24T15:57:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169770.jpg"
           }
         ]
       },
@@ -10421,6 +10421,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Путин назвал долю внешнего и государственного долга России",
+            "url": "https://news.am/ru/news/1070209",
+            "date": "2026-10-25T15:36:00.000Z",
+            "image": "https://news.am/storage/media/26/10/19/enYDpwWEoenbYstr.webp"
+          },
           {
             "title": "Более 100 ведущих израильских экономистов предупредили Нетаньяху о последствиях банковских санкций",
             "url": "https://news.am/ru/news/1070147",
@@ -10474,12 +10480,6 @@
             "url": "https://news.am/ru/news/1069692",
             "date": "2026-10-22T17:58:00.000Z",
             "image": "https://news.am/storage/media/26/10/22/XYRaoMA6L8wDnHLO.webp"
-          },
-          {
-            "title": "Центробанк Турции снизил ключевую ставку до 36%",
-            "url": "https://news.am/ru/news/1069627",
-            "date": "2026-10-22T12:12:00.000Z",
-            "image": "https://news.am/storage/media/26/09/10/ZJAP8M9kVotXP3VR.webp"
           }
         ]
       },
