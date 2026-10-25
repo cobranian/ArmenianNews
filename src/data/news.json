@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T14:23:29.878Z",
+  "generatedAt": "2026-10-25T15:23:28.688Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,20 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "ՏԻՄ ընտրությունների մասնակցության արդյունքները` ժամը 17:00-ի դրությամբ",
+            "url": "https://hy.armradio.am/archives/766556",
+            "date": "2026-10-25T14:53:01.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2017/02/kyh-1-768x432.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "ՏԻՄ ընտրություններ Ստեփանավանում և Ֆիոլետովոյում",
+            "url": "https://hy.armradio.am/archives/766551",
+            "date": "2026-10-25T14:42:25.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/06/MHM0165093-768x524.jpg",
+            "category": "Հասարակություն"
+          },
+          {
             "title": "ՏԻՄ ընտրություններ Արմավիր և Արաքս համայնքներում",
             "url": "https://hy.armradio.am/archives/766541",
             "date": "2026-10-25T14:04:48.000Z",
@@ -1203,20 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766518",
             "date": "2026-10-25T10:54:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/06/elections-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Բոլոր չորս տեղամասերից ուղիղ հեռարձակումը վերականգնված է․ ԿԸՀ",
-            "url": "https://hy.armradio.am/archives/766512",
-            "date": "2026-10-25T09:07:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/kyh-768x490.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՏԻՄ ընտրությունների մասնակցության արդյունքները ժամը 11:00-ի դրությամբ",
-            "url": "https://hy.armradio.am/archives/766509",
-            "date": "2026-10-25T08:58:16.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/859815349_1548517653968294_2612549302883618202_n-scaled-e1792918676720-768x478.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2205,6 +2205,18 @@
       "categoryKey": "sport",
       "articles": [
         {
+          "title": "Hamlet Manukyan (Arménie) : Je rêvais de devenir champion du monde au cheval d’arçons",
+          "url": "https://www.armenews.com/hamlet-manukyan-armenie-je-revais-de-devenir-champion-du-monde-au-cheval-darcons/",
+          "date": "2026-10-25T15:15:13.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8896.jpg"
+        },
+        {
+          "title": "Le gymnaste Artur Davtyan (Arménie), double champion du monde au saut de cheval à Rotterdam",
+          "url": "https://www.armenews.com/le-gymnaste-artur-davtyan-armenie-double-champion-du-monde-au-saut-de-cheval-a-rotterdam/",
+          "date": "2026-10-25T15:05:04.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/346289.jpg"
+        },
+        {
           "title": "Le gymnaste Artur Avetisyan (Arménie) a remporté la médaille de bronze des anneaux aux Championnats du monde à Rotterdam",
           "url": "https://www.armenews.com/le-gymnaste-artur-avetisyan-armenie-a-remporte-la-medaille-de-bronze-des-anneaux-aux-championnats-du-monde-a-rotterdam/",
           "date": "2026-10-24T17:55:45.000Z",
@@ -2251,18 +2263,6 @@
           "url": "https://www.armenews.com/david-karapetyan-et-levon-tumasyants-sont-champions-et-medailles-dargent-russes-de-judo/",
           "date": "2026-10-19T16:16:25.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/6656.jpg"
-        },
-        {
-          "title": "La statue de Nikita Simonyan, le footballeur Arménien légendaire, inaugurée près du stade du Spartak de Moscou",
-          "url": "https://www.armenews.com/la-statue-de-nikita-simonyan-le-footballeur-armenien-legendaire-inauguree-pres-du-stade-du-spartak-de-moscou/",
-          "date": "2026-10-19T07:38:29.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8837.jpg"
-        },
-        {
-          "title": "Les quatre membres de l’équipe masculine de gymnastique d’Arménie se sont qualifiés pour les finales des Championnats du monde de Rotterdam",
-          "url": "https://www.armenews.com/les-quatre-membres-de-lequipe-masculine-de-gymnastique-darmenie-se-sont-qualifies-pour-les-finales-des-championnats-du-monde-de-rotterdam/",
-          "date": "2026-10-18T14:23:12.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/6633.webp"
         }
       ]
     },
@@ -4158,6 +4158,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "ՏԻՄ ընտրություններ․ ԿԸՀ-ն հրապարակել է նոր տվյալներ ընտրողների մասնակցության վերաբերյալ",
+            "url": "https://armenpress.am/hy/article/1263755",
+            "date": "2026-10-25T14:29:39.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/XrrgHAp82H6VjnH6axNjcB1Ht4xZt7j9O6ymPoGE.webp"
+          },
+          {
             "title": "ԿԸՀ-ն քաղաքական գործիչներին և ԶԼՄ-ներին կոչ է անում զերծ մնալ քարոզչություն կամ հակաքարոզչություն պարունակող հայտարարությունից",
             "url": "https://armenpress.am/hy/article/1263754",
             "date": "2026-10-25T14:14:23.000Z",
@@ -4210,12 +4216,6 @@
             "url": "https://armenpress.am/hy/article/1263744",
             "date": "2026-10-25T09:09:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/25/MGdof0gLu9ptIOLD19vgpSMu88PZnUj2HRTRyu31.webp"
-          },
-          {
-            "title": "Ոստիկանության գվարդիայի ծառայողները մեքենայից գողություն կատարելու պահին ձերբակալել են 28-ամյա երիտասարդի",
-            "url": "https://armenpress.am/hy/article/1263743",
-            "date": "2026-10-25T08:19:08.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/2OyOs16rr3mP1cTK8rvdHt6CNm8k0fdqgSDehTiY.webp"
           }
         ]
       },
@@ -4635,6 +4635,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "ЦИК призывает политиков и СМИ воздержаться от заявлений, содержащих пропаганду или антипропаганду",
+            "url": "https://armenpress.am/ru/article/1263754",
+            "date": "2026-10-25T14:38:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/mV3tXXlHDahMfMYVprzMI5AQwVASomUuwO3DZdMS.webp"
+          },
+          {
             "title": "Выборы ОМС: в МВД поступило 13 сообщений о нарушениях избирательного процесса",
             "url": "https://armenpress.am/ru/article/1263750",
             "date": "2026-10-25T13:45:00.000Z",
@@ -4687,12 +4693,6 @@
             "url": "https://armenpress.am/ru/article/1263742",
             "date": "2026-10-25T08:43:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/25/opiewwB96ixKUpmOwVAV04w0ibyWN7prj0eECe8P.webp"
-          },
-          {
-            "title": "Министр окружающей среды РА в рамках COP17принял участие в семинаре по вопросам доступа к генетическим ресурсам",
-            "url": "https://armenpress.am/ru/article/1263741",
-            "date": "2026-10-25T07:40:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/khuDhJ7MRdvkg0poYNWqczm8BOFvaTvZ43i9dvHK.webp"
           }
         ]
       },
@@ -4895,6 +4895,24 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "Армянский гимнаст Гамлет Манукян стал чемпионом мира",
+            "url": "https://armenpress.am/ru/article/1263733",
+            "date": "2026-10-25T14:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/24/O3rU1xx7ItdggcH4PUaoBiTK19PiEsiAUkYc4T4e.webp"
+          },
+          {
+            "title": "Армянский гимнаст Артур Аветисян завоевал бронзу на чемпионате мира",
+            "url": "https://armenpress.am/ru/article/1263734",
+            "date": "2026-10-25T14:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/24/TkZgF6bEgn6cypI4NaVZ65pedh8chQRbjkqNIImJ.webp"
+          },
+          {
+            "title": "Армянский гимнаст Артур Давтян стал двукратным чемпионом мира",
+            "url": "https://armenpress.am/ru/article/1263752",
+            "date": "2026-10-25T14:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/gS44XiYFFExHPqDeGQ6oshG8cy8stqfOaqW000o4.webp"
+          },
+          {
             "title": "Во втором матче чемпионата мира Малхас Амоян потерпел поражение",
             "url": "https://armenpress.am/ru/article/1263705",
             "date": "2026-10-24T09:14:00.000Z",
@@ -4935,24 +4953,6 @@
             "url": "https://armenpress.am/ru/article/1263655",
             "date": "2026-10-23T13:00:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/23/Qy6ivZFREm9yHvkHCgvZOHHIMvohIMdgEdrSCRCz.webp"
-          },
-          {
-            "title": "«Интер» обыграл «Шахтер» благодаря голевой передаче Мхитаряна. Другие результаты Лиги чемпионов",
-            "url": "https://armenpress.am/ru/article/1263484",
-            "date": "2026-10-22T06:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/22/YiWqfrO01zDRZIyhBuJEF09N5o9o4sK9bFFKX8zY.webp"
-          },
-          {
-            "title": "Самый титулованный спортсмен независимой Армении Артур Алексанян отмечает 35-летие",
-            "url": "https://armenpress.am/ru/article/1263366",
-            "date": "2026-10-21T05:50:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/wXB3Jzxrx793qRYmax1n5n1WJymuEzeg2GKlMPyt.webp"
-          },
-          {
-            "title": "ПСЖ обыграл “Барселону”, “Рома” одержала победу над “Слованом”: и другие результаты ЛЧ УЕФА",
-            "url": "https://armenpress.am/ru/article/1263363",
-            "date": "2026-10-21T05:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/21/rAPSI0Mg8lk6NKzoJIBae7nFQfBl7GdE89R6NyG4.webp"
           }
         ]
       },
@@ -9164,6 +9164,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Wine Story. What to Drink When You Feel Like Being Melancholic, Falling in Love and Listening to Jazz",
+            "url": "https://style.news.am/eng/news/116818/",
+            "date": "2026-10-25T14:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116818.jpg"
+          },
+          {
             "title": "Armenia wins Junior Eurovision 2026",
             "url": "https://style.news.am/eng/news/116823/",
             "date": "2026-10-24T21:22:00.000Z",
@@ -9216,12 +9222,6 @@
             "url": "https://style.news.am/eng/news/116807/",
             "date": "2026-10-24T09:49:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116807.jpg"
-          },
-          {
-            "title": "“I Know Where You Are”: Hunter Biden Accused of Threatening Sex Worker",
-            "url": "https://style.news.am/eng/news/116806/",
-            "date": "2026-10-24T09:15:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116806.jpg"
           }
         ]
       },
@@ -9562,6 +9562,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Ֆրանսիայում բողոքի ցույցերը կարող են ձգձգվել․ մինչև նոյեմբերի վերջ նոր ակցիաներ են նախատեսված",
+            "url": "https://news.am/hy/news/1070202",
+            "date": "2026-10-25T15:06:00.000Z",
+            "image": "https://news.am/storage/media/26/10/24/p8M2Xf2Kldp9Gpay.webp"
+          },
+          {
             "title": "ԲՀԿ–ի համար ամենակարևորը մարդիկ են՝ մեր կուսակիցները, մեր տարածքային կազմակերպությունները. Արման Աբովյան",
             "url": "https://news.am/hy/news/1070212",
             "date": "2026-10-25T14:14:52.000Z",
@@ -9614,12 +9620,6 @@
             "url": "https://news.am/hy/news/1070111",
             "date": "2026-10-25T05:41:00.000Z",
             "image": "https://news.am/storage/media/26/10/25/qSCx2hABuTKflvbB.webp"
-          },
-          {
-            "title": "Իրանը պատասխանել է ԱՄՆ սպառնալիքներին. «Մենք ինքնապաշտպանության համար թույլտվություն չենք խնդրելու»",
-            "url": "https://news.am/hy/news/1070074",
-            "date": "2026-10-24T16:51:00.000Z",
-            "image": "https://news.am/storage/media/26/10/24/uGfPV2OxRAqBzjp4.webp"
           }
         ]
       },
@@ -9694,6 +9694,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Աշխարհի կրկնակի չեմպիոն Արթուր Դավթյանի պարգեւատրումը Ռոտերդամում",
+            "url": "https://sport.news.am/arm/news/169787/",
+            "date": "2026-10-25T15:18:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169787.jpg"
+          },
+          {
             "title": "Արթուր Դավթյանն՝ աշխարհի կրկնակի չեմպիոն (ֆոտո, վիդեո)",
             "url": "https://sport.news.am/arm/news/169785/",
             "date": "2026-10-25T13:53:00.000Z",
@@ -9746,12 +9752,6 @@
             "url": "https://sport.news.am/arm/news/169778/",
             "date": "2026-10-24T20:57:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169778.jpg"
-          },
-          {
-            "title": "«Լացիոն» ուժեղ էր «Պարմայից» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169777/",
-            "date": "2026-10-24T20:52:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169777.jpg"
           }
         ]
       },
@@ -9826,6 +9826,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Wine Story. ի՞նչ խմել, երբ ուզում ես տխուր լինել, սիրել և լսել ջազ",
+            "url": "https://style.news.am/arm/news/116818/",
+            "date": "2026-10-25T14:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116818.jpg"
+          },
+          {
             "title": "Հետաքրքիր սյուժեով ձանձրալի ֆիլմ. Դակոտա Ջոնսոնի և Էն Հեթուեյի մրցակցությունը՝ «Վերիթիի գաղտնի օրագիրը» ֆիլմում",
             "url": "https://style.news.am/arm/news/116817/",
             "date": "2026-10-25T12:35:00.000Z",
@@ -9878,12 +9884,6 @@
             "url": "https://style.news.am/arm/news/116822/",
             "date": "2026-10-24T20:16:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116822.jpg"
-          },
-          {
-            "title": "ՈւՂԻՂ. Մալթայում մեկնարկել է «Մանկական Եվրատեսիլ 2026»-ը. Հայաստանը կներկայանա 8-րդ համարի ներքո",
-            "url": "https://style.news.am/arm/news/116815/",
-            "date": "2026-10-24T19:00:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116815.jpg"
           }
         ]
       },
@@ -10024,6 +10024,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Ավտովթարի հետևանքով տուժած 5 երեխաներից մեկը մահացել է. Սպուտնիկ Արմենիա",
+            "url": "https://news.am/hy/news/1070218",
+            "date": "2026-10-25T14:33:34.000Z",
+            "image": "https://news.am/storage/media/26/10/25/q5R5makviH98YITO.webp"
+          },
+          {
             "title": "Երկու լիտրանոց գարեջրի շիշ և անհասկանալի խոսք. Բուլղարիայում պաշտոնանկ են արել ընտրական հանձնաժողովի հարբած նախագահին",
             "url": "https://news.am/hy/news/1070184",
             "date": "2026-10-25T13:26:00.000Z",
@@ -10076,12 +10082,6 @@
             "url": "https://news.am/hy/news/1070088",
             "date": "2026-10-24T16:43:49.000Z",
             "image": "https://news.am/storage/media/26/10/24/BxeElKj8wWgFwBTf.webp"
-          },
-          {
-            "title": "Խոշոր ավտովթար Երևան-Գյումրի ճանապարհին․ 2 հոգի տեղում մահացել է, 5 վիրավորից 4-ը երեխաներ են",
-            "url": "https://news.am/hy/news/1070087",
-            "date": "2026-10-24T16:37:46.000Z",
-            "image": "https://news.am/storage/media/26/10/24/LfZBNrppWQIar6ON.webp"
           }
         ]
       },
@@ -10224,10 +10224,28 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Протесты во Франции могут затянуться: новые акции запланированы до конца ноября",
+            "url": "https://news.am/ru/news/1070202",
+            "date": "2026-10-25T15:06:00.000Z",
+            "image": "https://news.am/storage/media/26/10/24/p8M2Xf2Kldp9Gpay.webp"
+          },
+          {
+            "title": "Для ППА самое важное — люди: наши однопартийцы, наши территориальные организации - Арман Абовян",
+            "url": "https://news.am/ru/news/1070212",
+            "date": "2026-10-25T14:14:52.000Z",
+            "image": "https://news.am/storage/media/26/10/25/rl2E0khfsM13plPg.webp"
+          },
+          {
             "title": "«Наличные — король»: оппозиция Австралии предложила закрепить право граждан платить наличными",
             "url": "https://news.am/ru/news/1070197",
             "date": "2026-10-25T14:05:00.000Z",
             "image": "https://news.am/storage/media/26/10/25/ofMfd1rdIvDNZNyq.webp"
+          },
+          {
+            "title": "Никол Пашинян поздравил дочь бывшего министра, задержанного при его правлении, с победой на Евровидении",
+            "url": "https://news.am/ru/news/1070207",
+            "date": "2026-10-25T14:01:05.000Z",
+            "image": "https://news.am/storage/media/26/10/25/YJMMpCwRS1BWUjgn.webp"
           },
           {
             "title": "Путин: Европа не прививает мигрантам свои ценности и отказывается от собственных",
@@ -10264,24 +10282,6 @@
             "url": "https://news.am/ru/news/1070111",
             "date": "2026-10-25T05:41:00.000Z",
             "image": "https://news.am/storage/media/26/10/25/qSCx2hABuTKflvbB.webp"
-          },
-          {
-            "title": "Иран ответил на угрозы США: «Мы не будем спрашивать разрешения на самооборону»",
-            "url": "https://news.am/ru/news/1070074",
-            "date": "2026-10-24T16:51:00.000Z",
-            "image": "https://news.am/storage/media/26/10/24/uGfPV2OxRAqBzjp4.webp"
-          },
-          {
-            "title": "В Албании протестующие забросали камнями здание Минобразования: полиция применила водометы и слезоточивый газ",
-            "url": "https://news.am/ru/news/1070088",
-            "date": "2026-10-24T16:43:49.000Z",
-            "image": "https://news.am/storage/media/26/10/24/BxeElKj8wWgFwBTf.webp"
-          },
-          {
-            "title": "В Софии застрелили главу Федерации тхэквондо и экс-депутата Европарламента: среди подозреваемых — двое граждан Турции",
-            "url": "https://news.am/ru/news/1070059",
-            "date": "2026-10-24T14:41:00.000Z",
-            "image": "https://images.unsplash.com/photo-1564993719576-7b00be6317cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjU2NDZ8MHwxfHNlYXJjaHwyfHwlRDAlQkYlRDAlQjglRDElODElRDElODIlRDAlQkUlRDAlQkIlRDAlQjUlRDElODJ8ZW58MHx8fHwxNzkyODQ1MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
           }
         ]
       },
@@ -10488,6 +10488,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Wine Story. Что пить, когда хочется грустить, любить и слушать джаз",
+            "url": "https://style.news.am/rus/news/116818/",
+            "date": "2026-10-25T14:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116818.jpg"
+          },
+          {
             "title": "Скучное кино на интересную историю: соперничество Дакоты Джонсон и Энн Хэтэуэй в ленте «Тайный дневник Верити»",
             "url": "https://style.news.am/rus/news/116817/",
             "date": "2026-10-25T12:35:00.000Z",
@@ -10540,12 +10546,6 @@
             "url": "https://style.news.am/rus/news/116809/",
             "date": "2026-10-24T15:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116809.jpg"
-          },
-          {
-            "title": "ИИ-певица объявила о беременности и ушла из группы: поклонники не сразу поняли, что ее не существует",
-            "url": "https://style.news.am/rus/news/116812/",
-            "date": "2026-10-24T13:25:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116812.jpg"
           }
         ]
       },
@@ -10686,6 +10686,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Скончался один из пяти детей, пострадавших в ДТП",
+            "url": "https://news.am/ru/news/1070218",
+            "date": "2026-10-25T14:33:34.000Z",
+            "image": "https://news.am/storage/media/26/10/25/q5R5makviH98YITO.webp"
+          },
+          {
             "title": "Двухлитровая бутылка пива и невнятная речь: на президентских выборах в Болгарии отстранили пьяного главу избиркома",
             "url": "https://news.am/ru/news/1070184",
             "date": "2026-10-25T13:26:00.000Z",
@@ -10738,12 +10744,6 @@
             "url": "https://news.am/ru/news/1070087",
             "date": "2026-10-24T16:37:46.000Z",
             "image": "https://news.am/storage/media/26/10/24/LfZBNrppWQIar6ON.webp"
-          },
-          {
-            "title": "Водомёты и слезоточивый газ: во Франции протесты переросли в столкновения с полицией",
-            "url": "https://news.am/ru/news/1070086",
-            "date": "2026-10-24T16:37:09.000Z",
-            "image": "https://news.am/storage/media/26/10/24/Gl7LT5kV0u0mn7Ad.webp"
           }
         ]
       },
