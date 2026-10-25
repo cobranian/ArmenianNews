@@ -829,6 +829,13 @@ de production servent toujours depuis la racine de leur domaine.
     sa propre propriété (« Armenia News », `G-N6STD6Z5CC`), créée le 29 juillet
     2026 — elle démarre donc vide, et le trafic .org antérieur reste chez
     « Arménie Info ». Cette coupure est attendue, ce n'est pas une perte.
+- **Réseaux sociaux : le registre `src/data/social-posted.json` est la seule
+  mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
+  `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
+  ré-amorcé en silence — mais retirer UNE ligne republie cet article. Un compte
+  sans entrée y est amorcé, jamais servi l'archive. Ajouter un secret de canal
+  touche deux endroits : `ACCOUNTS` (`scripts/lib/social.mjs`) et le bloc `env`
+  du job `social` de `hourly.yml` ; `test/social.test.mjs` échoue sur l'oubli.
 - **IndexNow prévient Bing des pages nouvelles, et c'est le SEUL canal du
   .ch** : Bing Webmaster Tools lui accorde 0 soumission manuelle par jour.
   `hourly.yml` recopie les sitemaps en ligne avant le déploiement et soumet

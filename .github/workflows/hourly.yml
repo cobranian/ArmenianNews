@@ -421,3 +421,82 @@ jobs:
       - name: IndexNow — soumettre les pages nouvelles
         if: success()
         run: node scripts/indexnow.mjs --since "$RUNNER_TEMP/sitemaps-avant"
+
+  # Publication sur les réseaux (scripts/social-post.mjs). Job À PART, pour que
+  # ses secrets ne soient visibles que de lui : ni le scrape, ni le build, ni
+  # les scripts tiers du déploiement ne les reçoivent. Les secrets vivent dans
+  # l'environnement GitHub « social » (Settings → Environments), restreint à la
+  # branche main. Après le déploiement ET la sonde : une URL publiée répond déjà.
+  #
+  # Rien ne part tant que la variable SOCIAL_LIVE ne vaut pas « 1 » : le job
+  # simule et imprime les messages. Un canal sans tous ses secrets est ignoré.
+  # Un échec d'envoi rend CE job rouge, jamais le déploiement.
+  social:
+    needs: snapshot
+    if: needs.snapshot.result == 'success'
+    runs-on: ubuntu-latest
+    environment: social
+    permissions:
+      contents: write # pousser le registre src/data/social-posted.json
+    env:
+      SOCIAL_LIVE: ${{ vars.SOCIAL_LIVE }}
+      SOCIAL_KINDS: ${{ vars.SOCIAL_KINDS }}
+      BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
+      BLUESKY_APP_PASSWORD_ORG: ${{ secrets.BLUESKY_APP_PASSWORD_ORG }}
+      BLUESKY_HANDLE_CH: ${{ secrets.BLUESKY_HANDLE_CH }}
+      BLUESKY_HANDLE_ORG: ${{ secrets.BLUESKY_HANDLE_ORG }}
+      FB_PAGE_ID_CH: ${{ secrets.FB_PAGE_ID_CH }}
+      FB_PAGE_ID_ORG: ${{ secrets.FB_PAGE_ID_ORG }}
+      FB_PAGE_TOKEN_CH: ${{ secrets.FB_PAGE_TOKEN_CH }}
+      FB_PAGE_TOKEN_ORG: ${{ secrets.FB_PAGE_TOKEN_ORG }}
+      IG_USER_ID_CH: ${{ secrets.IG_USER_ID_CH }}
+      IG_USER_ID_ORG: ${{ secrets.IG_USER_ID_ORG }}
+      LINKEDIN_AUTHOR_CH: ${{ secrets.LINKEDIN_AUTHOR_CH }}
+      LINKEDIN_AUTHOR_ORG: ${{ secrets.LINKEDIN_AUTHOR_ORG }}
+      LINKEDIN_TOKEN_CH: ${{ secrets.LINKEDIN_TOKEN_CH }}
+      LINKEDIN_TOKEN_ORG: ${{ secrets.LINKEDIN_TOKEN_ORG }}
+      TELEGRAM_BOT_TOKEN_CH: ${{ secrets.TELEGRAM_BOT_TOKEN_CH }}
+      TELEGRAM_BOT_TOKEN_ORG: ${{ secrets.TELEGRAM_BOT_TOKEN_ORG }}
+      TELEGRAM_CHAT_CH: ${{ secrets.TELEGRAM_CHAT_CH }}
+      TELEGRAM_CHAT_ORG: ${{ secrets.TELEGRAM_CHAT_ORG }}
+      X_ACCESS_SECRET_CH: ${{ secrets.X_ACCESS_SECRET_CH }}
+      X_ACCESS_SECRET_ORG: ${{ secrets.X_ACCESS_SECRET_ORG }}
+      X_ACCESS_TOKEN_CH: ${{ secrets.X_ACCESS_TOKEN_CH }}
+      X_ACCESS_TOKEN_ORG: ${{ secrets.X_ACCESS_TOKEN_ORG }}
+      X_API_KEY_CH: ${{ secrets.X_API_KEY_CH }}
+      X_API_KEY_ORG: ${{ secrets.X_API_KEY_ORG }}
+      X_API_SECRET_CH: ${{ secrets.X_API_SECRET_CH }}
+      X_API_SECRET_ORG: ${{ secrets.X_API_SECRET_ORG }}
+    steps:
+      # main et non le commit du déclencheur : le snapshot vient d'y pousser
+      # les données que ce job publie.
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Choisir quoi publier
+        run: node scripts/social-post.mjs plan --out "$RUNNER_TEMP/social-plan.json"
+
+      # AVANT l'envoi : un run annulé ensuite perd au pire une publication, il
+      # n'en double jamais. Un push refusé fait échouer l'étape, donc rien ne
+      # part — le prochain run recalculera le plan.
+      - name: Enregistrer le registre avant l'envoi
+        if: env.SOCIAL_LIVE == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/social-posted.json
+          if git diff --cached --quiet; then
+            echo "Registre inchangé."
+          else
+            git commit -m "social: registre $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Publier
+        run: node scripts/social-post.mjs post --plan "$RUNNER_TEMP/social-plan.json"
