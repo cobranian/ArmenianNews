@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T03:23:26.518Z",
+  "generatedAt": "2026-10-25T04:23:35.590Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "ՏԻՄ ընտրություններ՝ 21 համայնքում",
+            "url": "https://hy.armradio.am/archives/766431",
+            "date": "2026-10-25T04:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/tim-1-768x603.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ի՞նչ է նախատեսում Թրամփի Խաղաղության խորհրդի կանոնադրությունը․ փաստաթուղթը՝ TRIPP-ի նախագծին զուգահեռ՝ ԱԺ օրակարգում",
             "url": "https://hy.armradio.am/archives/766226",
             "date": "2026-10-23T14:29:00.000Z",
@@ -1136,19 +1143,19 @@
             "date": "2026-10-22T15:01:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/861383555_1835177147484827_797174001269371930_n-768x512.jpg",
             "category": "Քաղաքական"
-          },
-          {
-            "title": "COP17-ից մինչև ընտրական ճնշումներ․ Փաշինյանի պատասխանները՝ քննադատություններին",
-            "url": "https://hy.armradio.am/archives/766016",
-            "date": "2026-10-22T14:53:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3834-768x432.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Երևան-Աշտարակ ավտոճանապարհին տեղի է ունեցել ՃՏՊ․ կան զոհեր և տուժածներ",
+            "url": "https://hy.armradio.am/archives/766435",
+            "date": "2026-10-25T04:10:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2021/11/vtar_shabat.am174-768x432.jpg",
+            "category": "Հասարակություն"
+          },
           {
             "title": "Հայաստանը հաղթեց «Մանկական Եվրատեսիլ»-ում",
             "url": "https://hy.armradio.am/archives/766445",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/766350",
             "date": "2026-10-24T11:17:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/DSC03874-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Առաջիկա օրերին սպասվում են կարճատև անձրևներ և ամպրոպ, օդի ջերմաստիճանը չի փոխվի",
-            "url": "https://hy.armradio.am/archives/766344",
-            "date": "2026-10-24T10:08:58.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/QIP-Shot-Screen-3790-768x540.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -4176,6 +4176,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "ՀՀ 10 մարզի 21 համայնքում մեկնարկել է ՏԻՄ ընտրությունների քվեարկությունը",
+            "url": "https://armenpress.am/hy/article/1263738",
+            "date": "2026-10-25T04:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/25/emlbu7lXtWIMMIuzqHmw4yQsDlr3Wh3CSuNPGzdY.webp"
+          },
+          {
             "title": "Հայաստանը հաղթեց «Մանկական Եվրատեսիլ 2026» երգի մրցույթում",
             "url": "https://armenpress.am/hy/article/1263739",
             "date": "2026-10-24T21:27:00.000Z",
@@ -4228,12 +4234,6 @@
             "url": "https://armenpress.am/hy/article/1263729",
             "date": "2026-10-24T13:18:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/24/0sit41yWxBT7pFE3HvgbT116NJNmzSQZE5SHexBu.webp"
-          },
-          {
-            "title": "Մեկնարկել են Արամ Ասատրյանի մասին գեղարվեստական ֆիլմի նկարահանումները",
-            "url": "https://armenpress.am/hy/article/1263727",
-            "date": "2026-10-24T13:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/24/lug8KdtqNLOJBANpWOQu1It5lgxZtag4VHFO7u8x.webp"
           }
         ]
       },
@@ -7484,6 +7484,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia holds local elections in 21 communities",
+            "url": "https://civilnet.am/en/news/1014976",
+            "date": "2026-10-25T04:00:00.000Z",
+            "image": "https://civilnet.am/storage/media/26/10/24/GUKIAn3AG78ViQgK.webp"
+          },
+          {
             "title": "U.S. officials arrive in Yerevan for nuclear energy talks",
             "url": "https://civilnet.am/en/news/1014968",
             "date": "2026-10-23T18:05:00.000Z",
@@ -7536,12 +7542,6 @@
             "url": "https://civilnet.am/en/news/1014899",
             "date": "2026-10-21T12:27:59.000Z",
             "image": "https://civilnet.am/storage/media/26/10/21/gOrYGm0fpgWN5vp5.webp"
-          },
-          {
-            "title": "Eurasian Economic Union: Armenia might lose over 15% of its GDP if it abandons the bloc",
-            "url": "https://civilnet.am/en/news/1014903",
-            "date": "2026-10-21T07:55:50.000Z",
-            "image": "https://civilnet.am/storage/media/26/10/21/LEtA5rmDprHm1O5v.webp"
           }
         ]
       },
