@@ -1,0 +1,8 @@
+# « Titre en cours » des radios (lit les métadonnées ICY des flux) :
+#   cd proxy && npx wrangler deploy -c wrangler-now-playing.toml
+# (auth once with `npx wrangler login`). Publie
+# https://radio-now-playing.cobranian.workers.dev
+name = "radio-now-playing"
+main = "now-playing-worker.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
