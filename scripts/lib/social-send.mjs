@@ -40,9 +40,29 @@ const json = (o, headers = {}) => ({
   body: JSON.stringify(o),
 })
 
+// FB_PAGE_TOKEN_* peut contenir la clé de la Page OU une clé UTILISATEUR
+// longue durée (c'est elle que l'Explorateur et le débogueur mettent sous les
+// yeux, et la confusion a été commise à la mise en place). Publier sur une
+// Page exige une clé de Page : on la dérive à chaque envoi. Une clé de Page
+// reçue telle quelle se redemande elle-même ; en cas d'échec, on la garde.
+async function pageToken(c, f) {
+  try {
+    const { json } = await call(
+      f,
+      `${GRAPH}/${c.pageId}?fields=access_token`,
+      { headers: { authorization: `Bearer ${c.token}` } },
+      'facebook/token',
+    )
+    return json?.access_token || c.token
+  } catch {
+    return c.token
+  }
+}
+
 const SENDERS = {
   async facebook(p, c, f) {
-    const { json: r } = await call(f, `${GRAPH}/${c.pageId}/feed`, form({ ...p, access_token: c.token }), 'facebook')
+    const token = await pageToken(c, f)
+    const { json: r } = await call(f, `${GRAPH}/${c.pageId}/feed`, form({ ...p, access_token: token }), 'facebook')
     return r?.id
   },
 
@@ -58,8 +78,8 @@ const SENDERS = {
     for (let i = 0; i < 10; i++) {
       const { json: st } = await call(
         f,
-        `${GRAPH}/${box.id}?fields=status_code&access_token=${encodeURIComponent(c.token)}`,
-        {},
+        `${GRAPH}/${box.id}?fields=status_code`,
+        { headers: { authorization: `Bearer ${c.token}` } },
         'instagram/status',
       )
       if (st?.status_code === 'FINISHED') break

@@ -151,18 +151,33 @@ test('les éléments viennent des articles publiés, URL et image sur le bon dom
   assert.equal(b.description, '• Un\n• Deux')
 })
 
-test('send : Facebook reçoit le jeton dans le corps, jamais dans l’URL', async () => {
+// La clé posée dans FB_PAGE_TOKEN_* a été, à la mise en place, une clé
+// UTILISATEUR : la Page répond alors 403 (#200). L'envoi dérive la clé de Page.
+test('send : Facebook dérive la clé de Page, aucune clé dans une URL', async () => {
   const calls = []
-  const fakeFetch = async (url, init) => {
+  const fakeFetch = async (url, init = {}) => {
     calls.push({ url, init })
+    if (url.endsWith('?fields=access_token')) return new Response(JSON.stringify({ access_token: 'PAGE-SECRET' }), { status: 200 })
     return new Response(JSON.stringify({ id: '1_2' }), { status: 200 })
   }
-  const id = await send(fb, culture('komitas', '2026-10-20'), { pageId: '42', token: 'SECRET-TOKEN' }, { fetch: fakeFetch })
+  const id = await send(fb, culture('komitas', '2026-10-20'), { pageId: '42', token: 'USER-SECRET' }, { fetch: fakeFetch })
   assert.equal(id, '1_2')
-  assert.equal(calls.length, 1)
-  assert.match(calls[0].url, /^https:\/\/graph\.facebook\.com\/v\d+\.\d+\/42\/feed$/)
-  assert.ok(!calls[0].url.includes('SECRET'))
-  assert.match(calls[0].init.body, /access_token=SECRET-TOKEN/)
+  assert.equal(calls.length, 2)
+  assert.equal(calls[0].init.headers.authorization, 'Bearer USER-SECRET')
+  assert.match(calls[1].url, /^https:\/\/graph\.facebook\.com\/v\d+\.\d+\/42\/feed$/)
+  assert.match(calls[1].init.body, /access_token=PAGE-SECRET/)
+  for (const c of calls) assert.ok(!c.url.includes('SECRET'), c.url)
+})
+
+test('send : si la dérivation échoue, la clé reçue sert telle quelle', async () => {
+  const bodies = []
+  const fakeFetch = async (url, init = {}) => {
+    if (url.endsWith('?fields=access_token')) return new Response('{"error":{"message":"x"}}', { status: 400 })
+    bodies.push(init.body)
+    return new Response(JSON.stringify({ id: '9' }), { status: 200 })
+  }
+  await send(fb, culture('a', '2026-10-20'), { pageId: '1', token: 'PAGE-TOKEN' }, { fetch: fakeFetch })
+  assert.match(bodies[0], /access_token=PAGE-TOKEN/)
 })
 
 test('send : une erreur d’API remonte avec son statut', async () => {
