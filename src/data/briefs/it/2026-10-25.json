@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-25",
+  "lang": "it",
+  "generatedAt": "2026-10-25T03:28:51.533Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna stampa odierna evidenzia sviluppi politici interni, tensioni regionali e successi sportivi e culturali per l'Armenia.",
+  "topics": [
+    {
+      "title": "Pashinyan accusa forze esterne di minare l'indipendenza armena",
+      "text": "Il primo ministro Pashinyan ha denunciato l'esistenza di circoli in Russia e in Armenia che mirerebbero a eliminare l'indipendenza del paese. La dichiarazione arriva in un contesto di crescenti frizioni con Mosca e di dibattito sull'appartenenza all'OTSC.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/pachinian-accuse-des-cercles-en-russie-et-en-armenie-de-vouloir-eliminer-lindependance-de-larmenie/",
+          "title": "Pachinian accuse des ‘cercles en Russie et en Arménie’ de vouloir ‘éliminer’ l’indépendance de l’Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-russie-et-ses-anciens-allies-sovietiques-pourraient-exclure-larmenie-de-leur-bloc-de-defense/",
+          "title": "La Russie et ses anciens alliés soviétiques pourraient exclure l’Arménie de leur bloc de défense"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-secretaire-general-de-lotsc-affirme-que-larmenie-sest-effectivement-deja-retiree-de-lorganisation/",
+          "title": "Le secrétaire général de l’OTSC affirme que l’Arménie s’est « effectivement déjà retirée » de l’organisation"
+        }
+      ]
+    },
+    {
+      "title": "Proseguono gli sforzi per la normalizzazione con la Turchia",
+      "text": "Secondo fonti governative e analisti, i negoziati per l'apertura della frontiera armeno-turca continuano, sebbene Ankara possa subordinare la normalizzazione al consenso di Baku. La dinamica trilaterale resta complessa e incerta.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35533/",
+          "title": "Selon l’orientaliste Arsen Kharatian, Ankara pourrait normaliser avec Erevan sans l’aval de Bakou"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35549/",
+          "title": "Ankara-Bakou : l’analyste Gantaharian et l’éventuelle ouverture de la frontière arménienne"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/efforts-pour-ouvrir-la-frontiere-entre-larmenie-et-la-turquie-en-cours-selon-pachinian/",
+          "title": "Efforts pour ouvrir la frontière entre l’Arménie et la Turquie en cours, selon Pachinian"
+        }
+      ]
+    },
+    {
+      "title": "Repressione dell'opposizione in vista delle elezioni municipali",
+      "text": "Nuovi arresti hanno colpito figure dell'opposizione armena mentre si avvicinano le elezioni locali. L'ex presidente Kocharyan e suo figlio rimangono in detenzione preventiva, segnalando un clima politico teso.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/de-nouveaux-opposants-armeniens-arretes-a-lapproche-des-elections-municipales/",
+          "title": "De nouveaux opposants arméniens arrêtés à l’approche des élections municipales"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/robert-kotcharian-et-son-fils-resteront-en-detention-provisoire/",
+          "title": "Robert Kotcharian et son fils resteront en détention provisoire"
+        }
+      ]
+    },
+    {
+      "title": "Doppio trionfo armeno ai Mondiali di ginnastica a Rotterdam",
+      "text": "La delegazione armena ha conquistato due medaglie ai Campionati mondiali: Artur Avetisyan ha vinto il bronzo agli anelli, mentre Hamlet Manukyan si è laureato campione al cavallo con maniglie, un risultato storico per la ginnastica nazionale.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gymnaste-artur-avetisyan-armenie-a-remporte-la-medaille-de-bronze-des-anneaux-aux-championnats-du-monde-a-rotterdam/",
+          "title": "Le gymnaste Artur Avetisyan (Arménie) a remporté la médaille de bronze des anneaux aux Championnats du monde à Rotterdam"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hamlet-manukyan-armenie-devient-au-cheval-darcons-champion-du-monde-pour-la-premiere-fois/",
+          "title": "Hamlet Manukyan (Arménie) devient au cheval d’arçons champion du monde pour la première fois"
+        }
+      ]
+    },
+    {
+      "title": "Naré vince l'Eurovision Junior 2026 per l'Armenia",
+      "text": "La giovane cantante Naré ha trionfato al concorso Eurovision Junior a Malta con la canzone 'Boo!', regalando all'Armenia la vittoria nella competizione musicale internazionale per giovani talenti.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-avec-nare-et-sa-chanson-boo-remporte-le-concours-de-leurovision-junior-2026/",
+          "title": "L’Arménie avec Naré et sa chanson « Boo! » remporte le concours de l’Eurovision Junior 2026"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nare-representera-larmenie-a-leurovision-junior-ce-soir-a-21h00-a-malte-les-votes-du-public-ont-debute/",
+          "title": "Naré représentera l’Arménie à l’Eurovision Junior ce soir à 21h00 à Malte, les votes du public ont débuté"
+        }
+      ]
+    },
+    {
+      "title": "Preoccupazioni economiche per il raddoppio del prezzo del gas",
+      "text": "Pashinyan ha riferito che il prezzo del gas è raddoppiato negli ultimi otto anni, senza garanzie di stabilità futura. L'aumento pesa sulle finanze pubbliche e sulle famiglie armene in un contesto economico già fragile.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-prix-du-gaz-a-double-en-huit-ans-aucune-garantie-de-stabilite-selon-pachinian/",
+          "title": "Le prix du gaz a doublé en huit ans, aucune garantie de stabilité, selon Pachinian"
+        }
+      ]
+    },
+    {
+      "title": "Artisti dell'Artsakh esclusi da un festival a Vienna",
+      "text": "Rappresentanti culturali dell'Artsakh sono stati estromessi da una manifestazione a Vienna a seguito di pressioni diplomatiche. L'episodio solleva interrogativi sulla libertà di espressione e sul riconoscimento internazionale della comunità armena del Nagorno-Karabakh.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/des-artistes-de-lartsakh-exclus-dun-festival-a-vienne-apres-des-pressions-diplomatiques/",
+          "title": "Des artistes de l’Artsakh exclus d’un festival à Vienne après des pressions diplomatiques"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-25",
+  "lang": "fr",
+  "generatedAt": "2026-10-25T03:28:51.533Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Voici les sujets marquants de l'actualité arménienne du jour.",
+  "topics": [
+    {
+      "title": "Eurovision Junior 2026 : victoire de l’Arménie",
+      "text": "L’Arménie a remporté le concours de l’Eurovision Junior 2026 avec la chanson « Boo! » interprétée par Naré. La victoire a été officialisée après les votes du public, qui ont débuté plus tôt dans la journée.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-avec-nare-et-sa-chanson-boo-remporte-le-concours-de-leurovision-junior-2026/",
+          "title": "L’Arménie avec Naré et sa chanson « Boo! » remporte le concours de l’Eurovision Junior 2026"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nare-representera-larmenie-a-leurovision-junior-ce-soir-a-21h00-a-malte-les-votes-du-public-ont-debute/",
+          "title": "Naré représentera l’Arménie à l’Eurovision Junior ce soir à 21h00 à Malte, les votes du public ont débuté"
+        }
+      ]
+    },
+    {
+      "title": "Artur Avetisyan médaillé de bronze aux mondes de gymnastique",
+      "text": "Le gymnaste arménien Artur Avetisyan a remporté la médaille de bronze aux anneaux lors des Championnats du monde à Rotterdam. Cette performance vient s’ajouter au palmarès sportif du pays.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gymnaste-artur-avetisyan-armenie-a-remporte-la-medaille-de-bronze-des-anneaux-aux-championnats-du-monde-a-rotterdam/",
+          "title": "Le gymnaste Artur Avetisyan (Arménie) a remporté la médaille de bronze des anneaux aux Championnats du monde à Rotterdam"
+        }
+      ]
+    },
+    {
+      "title": "Installation du portrait du général Andranik à Armeni",
+      "text": "Les villageois d’Arteni ont installé le portrait du général Andranik sur le mur de la Maison de la culture, suite à son retrait de celui de l’école. Cette initiative locale reflète la mémoire des figures historiques arméniennes.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-villageois-darteni-armenie-installent-le-portrait-du-general-andranik-retire-du-mur-de-lecole-sur-le-mur-de-la-maison-de-la-culture/",
+          "title": "Les villageois d’Arteni (Arménie) installent le portrait du général Andranik, retiré du mur de l’école, sur le mur de la Maison de la culture"
+        }
+      ]
+    },
+    {
+      "title": "Ankara et Erevan : vers une normalisation sans Bakou ?",
+      "text": "Selon l’orientaliste Arsen Kharatian, la Turquie pourrait normaliser ses relations avec Erevan sans l’accord de Bakou. Cette analyse soulève la question d’un possible dénouement diplomatique en Caucase.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35533/",
+          "title": "Selon l’orientaliste Arsen Kharatian, Ankara pourrait normaliser avec Erevan sans l’aval de Bakou"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35549/",
+          "title": "Ankara-Bakou : l’analyste Gantaharian et l’éventuelle ouverture de la frontière arménienne"
+        }
+      ]
+    },
+    {
+      "title": "Fouilles archéologiques à Proshaberd",
+      "text": "De nouvelles fouilles archéologiques ont débuté à Proshaberd, dans la région de Vayots Dzor en Arménie. Ces travaux visent à mettre au jour le patrimoine historique de la région.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-fouilles-archeologiques-ont-debute-a-proshaberd-dans-la-region-de-vayots-dzor-en-armenie/",
+          "title": "Des fouilles archéologiques ont débuté à Proshaberd dans la région de Vayots Dzor en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Champion du monde de chevaux d’arçons pour Hamlet Manukyan",
+      "text": "Hamlet Manukyan est devenu champion du monde au cheval d’arçons pour la première fois. Cette médaille couronne une carrière sportive pour l’athlète arménien.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hamlet-manukyan-armenie-devient-au-cheval-darcons-champion-du-monde-pour-la-premiere-fois/",
+          "title": "Hamlet Manukyan (Arménie) devient au cheval d’arçons champion du monde pour la première fois"
+        }
+      ]
+    },
+    {
+      "title": "Frontière arménienne-turque : efforts en cours",
+      "text": "Le Premier ministre Nikol Pachinian a indiqué que des efforts étaient en cours pour ouvrir la frontière entre l’Arménie et la Turquie. Cette annonce fait suite à des tractations diplomatiques récentes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/efforts-pour-ouvrir-la-frontiere-entre-larmenie-et-la-turquie-en-cours-selon-pachinian/",
+          "title": "Efforts pour ouvrir la frontière entre l’Arménie et la Turquie en cours, selon Pachinian"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-25",
+  "lang": "en",
+  "generatedAt": "2026-10-25T03:28:51.533Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Armenian and international media report on a mix of political developments, cultural events, and economic updates from October 23-26, 2026.",
+  "topics": [
+    {
+      "title": "Armenia's performance at Junior Eurovision 2026",
+      "text": "Armenia's representative Naré is set to perform eighth at the Junior Eurovision Song Contest 2026 in Malta. Multiple sources confirm she will perform eighth, with coverage of the event kick-off and related decisions from the COP17 conference.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263739",
+          "title": "Armenia wins Junior Eurovision 2026"
+        },
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/116823/",
+          "title": "Armenia wins Junior Eurovision 2026"
+        },
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/116822/",
+          "title": "Armenia's Representative Nare's Performance at the Junior Eurovision Song Contest 2026"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014987",
+          "title": "Pesticide oversight gaps could hamper Armenian produce exports to the EU, report warns"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263719",
+          "title": "Junior Eurovision 2026 kicks off in Malta, Armenia’s Naré to perform eighth"
+        },
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/116815/",
+          "title": "LIVE: Junior Eurovision 2026 has started in Malta. Armenia will perform under the number 8"
+        }
+      ]
+    },
+    {
+      "title": "COP17 decisions and biodiversity discussions",
+      "text": "During the first week of COP17, 14 decisions were adopted. Armenian delegates discussed biodiversity cooperation with Zimbabwe and highlighted the link between taxation and biodiversity conservation.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263735",
+          "title": "COP17: 14 decisions adopted during the first week"
+        },
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/eng/news/42181/scientists-create-immune-cell-atlas-that-could-help-assess-cancer-risk-and-premature-death.html",
+          "title": "Scientists Create Immune Cell Atlas That Could Help Assess Cancer Risk and Premature Death"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263715",
+          "title": "COP17: Armenia, Zimbabwe discuss biodiversity cooperation"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263670",
+          "title": "Officials highlight link between taxation and biodiversity conservation"
+        }
+      ]
+    },
+    {
+      "title": "Political developments in Armenia",
+      "text": "Prime Minister Pashinyan concluded a tour of Yerevan's Ajapnyak district to discuss residents' concerns. He also proposed using AI to assess urban infrastructure repair needs and proposed an urban development project in the same district. Additionally, Pashinyan urged extracurricular education providers to inform parents about tax reimbursements.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263731",
+          "title": "Pashinyan concludes tour of Yerevan’s Ajapnyak district, discusses residents’ concerns"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263730",
+          "title": "Pashinyan proposes using AI to assess urban infrastructure repair needs"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263723",
+          "title": "Pashinyan urges extracurricular education providers to inform parents about tax reimbursements"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263722",
+          "title": "Pashinyan proposes urban development project in Ajapnyak"
+        }
+      ]
+    },
+    {
+      "title": "Economic updates",
+      "text": "Armenian officials warned that pesticide oversight gaps could hamper produce exports to the EU. European, US, and NYMEX stock market movements and oil prices were reported for October 23-26, 2026.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014987",
+          "title": "Pesticide oversight gaps could hamper Armenian produce exports to the EU, report warns"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263692",
+          "title": "European Stocks - 23-10-26"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263691",
+          "title": "US stocks down - 23-10-26"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263690",
+          "title": "NYMEX: Precious Metals Prices Down - 23-10-26"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263687",
+          "title": "Japanese novelist Ryu Murakami dies at 74"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263689",
+          "title": "Oil Prices Up - 23-10-26"
+        }
+      ]
+    },
+    {
+      "title": "Sports results",
+      "text": "Armenian athletes featured in various results, including Amoyan's bout at the World Wrestling Championships, Aghajanyan's victory, and weightlifters' schedules for the 2026 World Championships. Artavazd Avetisyan won a world bronze medal, and Arman Tsarukyan won the RAF championship belt.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169770/",
+          "title": "Artur Avetisyan – World bronze medalist"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263705",
+          "title": "Armenia’s Amoyan loses second bout at World Wrestling Championships"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263701",
+          "title": "Armenian weightlifters’ schedule for 2026 World Championships released"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169763/",
+          "title": "Arman Tsarukyan won the RAF championship belt"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263693",
+          "title": "Armenia’s Aghajanyan scores victory at World Wrestling Championships"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263686",
+          "title": "Armenia’s Amoyan kicks off World Wrestling Championships campaign with victory"
+        }
+      ]
+    }
+  ]
+}
