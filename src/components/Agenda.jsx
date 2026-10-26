@@ -158,6 +158,8 @@ export function Agenda() {
           sub: [ev.location, day, when].filter(Boolean).join(' · '),
           href: ev.url,
           cta: t('agenda.armenopole'),
+          // Boutons de partage (src/share.js) : la page de l'événement.
+          share: ev.url ? { url: ev.url, title: ev.title } : undefined,
           // Le résumé n'est proposé que si le scrape l'a écrit dans cette
           // langue ; il n'est téléchargé qu'au premier dépli.
           summary: ev.resumeLangs?.includes(lang) ? () => loadResume(lang, ev.url) : undefined,

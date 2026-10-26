@@ -229,3 +229,18 @@ test('page de/it : « traduit du français » + lien vers l’article fr ; Wikip
   assert.ok(!fr.includes('de.wikipedia.org'), 'source de absente de la page fr (balisage compris)')
   assert.ok(!en.includes('de.wikipedia.org'))
 })
+
+test('page article : barre de partage, cinq réseaux, URL de la page, titre échappé', async () => {
+  const { list } = await fixture()
+  const html = cultureArticleHtml({ siteId: 'ch', lang: 'fr', article: list[0], list, bySlug: cultureLangsBySlug(list), cssHref: CSS, now: NOW })
+  const url = encodeURIComponent(cultureUrl('fr', 'komitas'))
+  assert.ok(html.includes(`https://www.facebook.com/sharer/sharer.php?u=${url}`))
+  assert.ok(html.includes('https://wa.me/?text='))
+  assert.ok(html.includes(`https://t.me/share/url?url=${url}`))
+  assert.ok(html.includes(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`))
+  // Instagram : un bouton animé par public/share.js, masqué sans JavaScript.
+  assert.match(html, /<li class="share__copy"><button type="button" class="share__btn" data-share-url="https:\/\/armenieinfo\.ch\/culture\/komitas\/"/)
+  assert.ok(html.includes('data-share-title="Komitas &lt;script&gt;"'))
+  assert.ok(html.includes('<script src="/share.js" defer></script>'))
+  assert.ok(html.includes('aria-label="Partager sur WhatsApp"'))
+})

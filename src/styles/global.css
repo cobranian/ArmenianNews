@@ -4275,6 +4275,24 @@ html.js .reveal.is-visible {
   .lb__meta--sans-sortie {
     padding-bottom: 50px;
   }
+  /* .lb__meta passe en colonne : le `flex-basis: 100%` du grand écran y
+     deviendrait une HAUTEUR, et la barre de partage sortait de l'écran par la
+     droite. Ici, simple pleine largeur, centrée comme le reste de la légende. */
+  /* Sélecteur à deux classes : la règle de grand écran (.lb__share,
+     `flex-basis: 100%`) vient PLUS LOIN dans le fichier et l'emporterait. */
+  .lb__meta .lb__share {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  /* Et la colonne ne doit pas « revenir à la ligne » : avec le `flex-wrap:
+     wrap` du grand écran, la barre partait dans une SECONDE colonne, hors
+     de l'écran (mesuré : x 384 sur 390). */
+  .lb__meta {
+    flex-wrap: nowrap;
+  }
+  .lb__share .share {
+    justify-content: center;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .lb {
@@ -4667,6 +4685,86 @@ html.js .reveal.is-visible {
    bande est sur le fond de page, d'où un fond transparent. */
 .brief-nav .lang {
   background: transparent;
+}
+
+/* Boutons de partage (src/share.js) : sous un article Culture et dans la
+   visionneuse de l'agenda. Pastilles de 44px pour tous les pointeurs (le
+   plancher tactile sans le bloc pointer: coarse), trait abricot au repos,
+   pleines au survol. Le bouton Instagram n'agit qu'avec JavaScript (feuille
+   de partage ou copie du lien) : masqué tant que html.js n'est pas posé. */
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 2.2em 0 0;
+}
+.share__label {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+.share__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.share__copy {
+  display: none;
+}
+html.js .share__copy {
+  display: block;
+}
+.share__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line-apricot);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--apricot-ink);
+  cursor: pointer;
+  transition: background-color 0.18s var(--ease), color 0.18s var(--ease);
+}
+.share__btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.share__btn:hover {
+  background: var(--apricot-ink);
+  color: var(--basalt);
+}
+.share__btn:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 3px;
+}
+.share__msg {
+  flex-basis: 100%;
+  margin: 0;
+  min-height: 1.4em;
+  font-size: 0.85rem;
+  color: var(--apricot-ink);
+}
+.share__msg:empty {
+  min-height: 0;
+}
+/* Dans la visionneuse : une ligne à part, sous la légende et le bouton. */
+.lb__share {
+  flex-basis: 100%;
+}
+.lb__share .share {
+  margin: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .share__btn {
+    transition: none;
+  }
 }
 
 /* Vignettes : cartes de l'index et flèches précédent / suivant. Le motif

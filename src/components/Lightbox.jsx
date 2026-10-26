@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useI18n } from '../i18n.jsx'
 import { Motif } from './motifs.jsx'
+import { ShareBar } from './ShareBar.jsx'
 
 /* ------------------------------------------------------------------ *
  * Lightbox — the social cards enlarge in place instead of leaving the
@@ -20,7 +21,7 @@ import { Motif } from './motifs.jsx'
  * same one its card shows, so the enlarged view never comes up blank.
  * ------------------------------------------------------------------ */
 export function Lightbox({ items, startIndex = 0, onClose }) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [cur, setCur] = useState(startIndex)
   const stageRef = useRef(null)
   const restoreRef = useRef(null)
@@ -194,6 +195,14 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
             <a className="lb__out" href={item.href} rel="noopener noreferrer">
               {item.cta} <span aria-hidden="true">→</span>
             </a>
+          )}
+          {/* `item.share` ({ url, title }) : seuls les événements de l'agenda
+              en portent un — les posts du mur social se partagent sur leur
+              réseau d'origine. Pleine largeur, sous la légende. */}
+          {item.share && (
+            <div className="lb__share">
+              <ShareBar lang={lang} url={item.share.url} title={item.share.title} />
+            </div>
           )}
         </div>
       </div>
