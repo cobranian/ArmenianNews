@@ -25,3 +25,17 @@ test('le partage d’un événement vise l’accueil /#ancre, qui ouvre la visio
   assert.doesNotMatch(agenda, /share: ev\.url \? \{ url: ev\.url/)
   assert.match(read('AgendaPage.jsx'), /<li key=\{ev\.url\} id=\{eventAnchor\(ev\)\}>/)
 })
+
+// Choix C de l'éditeur (27 oct. 2026) : dans la visionneuse de l'agenda,
+// « Voir sur Armenopole » en contour SOUS le partage ; sur ordinateur, le
+// résumé s'ouvre de lui-même.
+test('visionneuse agenda : sortie sous le partage, résumé ouvert sur ordinateur', () => {
+  const lb = read('Lightbox.jsx')
+  assert.match(lb, /item\.share \? ' lb__meta--partage' : ''/)
+  assert.match(lb, /window\.matchMedia\('\(min-width: 621px\)'\)\.matches/)
+  const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf-8').replace(/\r\n/g, '\n')
+  assert.match(css, /\.lb__meta--partage \.lb__out \{\n  order: 2;/)
+  // La bascule mobile de la visionneuse : si elle bouge, le seuil du résumé
+  // automatique doit bouger avec elle.
+  assert.match(css, /@media \(max-width: 620px\) \{\n  \/\* Mobile: the image goes full-screen/)
+})

@@ -4774,6 +4774,37 @@ html.js .share__copy {
 .lb__share .share {
   margin: 0;
 }
+/* Agenda (une visionneuse qui porte des boutons de partage) : « Voir sur
+   Armenopole » passe SOUS le partage, en contour et plus petit — choix C de
+   l'éditeur (27 oct. 2026). Partager devient l'action principale, la
+   billetterie la sortie. Le mur social garde son bouton plein. Ordre :
+   légende (0), résumé (1), partage (1, après lui dans le DOM), sortie (2). */
+.lb__meta--partage .lb__share {
+  order: 1;
+}
+.lb__meta--partage .lb__out {
+  order: 2;
+  position: relative;
+  font-size: 0.62rem;
+  padding: 9px 18px;
+  color: var(--apricot-ink);
+  background: transparent;
+  border: 1px solid var(--line-apricot);
+  box-shadow: none;
+}
+.lb__meta--partage .lb__out:hover {
+  transform: none;
+  border-color: var(--apricot-ink);
+  background: rgba(242, 169, 59, 0.1);
+  box-shadow: none;
+}
+/* Le contour fait ~33px de haut : la zone sensible, elle, garde les 44px
+   d'un doigt, sans grossir le bouton visible. */
+.lb__meta--partage .lb__out::after {
+  content: '';
+  position: absolute;
+  inset: -6px 0;
+}
 @media (prefers-reduced-motion: reduce) {
   .share__btn {
     transition: none;
