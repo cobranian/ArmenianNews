@@ -34,7 +34,12 @@ export async function chat({
   if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status} (${model})`), { status: res.status })
   const body = await res.json()
   const text = body?.choices?.[0]?.message?.content
-  if (typeof text !== 'string' || !text.trim()) throw new Error(`réponse vide (${model})`)
+  if (typeof text !== 'string' || !text.trim()) {
+    // finish_reason dit POURQUOI (filtre de contenu, plafond de jetons…) :
+    // sans lui, la panne du 26 oct. 2026 était muette sur sa cause.
+    const why = body?.choices?.[0]?.finish_reason
+    throw Object.assign(new Error(`réponse vide (${model}${why ? `, finish_reason=${why}` : ''})`), { empty: true })
+  }
   return { text, model: body?.model || model }
 }
 
@@ -50,8 +55,8 @@ export const CULTURE_FALLBACK_MODELS = [
 export const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1/'
 
 // « Le service ne répond pas » (429, 404, 5xx, délai, réseau coupé) — par
-// opposition à une requête ou une clé fautive (400/401/403) ou une réponse
-// vide, que changer de modèle ne réparerait pas.
+// opposition à une requête ou une clé fautive (400/401/403), que changer de
+// modèle ne réparerait pas. La réponse vide est à part (voir chatDraft).
 const NETWORK_CODES = new Set(['ECONNRESET', 'ETIMEDOUT', 'ENOTFOUND', 'EAI_AGAIN'])
 export function isUnavailable(err) {
   if (err?.name === 'TimeoutError' || err?.name === 'AbortError') return true
@@ -69,7 +74,11 @@ export async function chatDraft({ messages, temperature, env = process.env, fetc
     const r = await chat({ ...cfg, ...extra })
     return { ...r, fellBack: false }
   } catch (first) {
-    if (!isUnavailable(first) || !env.OPENROUTER_API_KEY) throw first
+    // Une réponse VIDE se replie aussi : Gemini en rendait une à chaque essai
+    // sur un sujet (David de Sassoun, 26 oct. 2026), et ce sujet, classé
+    // premier chaque nuit, bloquait tous les brouillons. Un autre modèle n'a
+    // pas les mêmes filtres.
+    if (!(isUnavailable(first) || first.empty) || !env.OPENROUTER_API_KEY) throw first
     let last = first
     for (const model of CULTURE_FALLBACK_MODELS) {
       try {
@@ -77,7 +86,7 @@ export async function chatDraft({ messages, temperature, env = process.env, fetc
         return { ...r, fellBack: true }
       } catch (e) {
         last = e
-        if (!isUnavailable(e)) throw e
+        if (!(isUnavailable(e) || e.empty)) throw e
       }
     }
     throw last

@@ -134,6 +134,27 @@ test('chatDraft : premier repli indisponible → second repli ; tout échoue →
   await assert.rejects(chatDraft({ messages, env, fetchImpl: down }), (e) => e.status === 429 && /google\/gemma/.test(e.message))
 })
 
+test('chat : réponse vide → empty, finish_reason dans le message', async () => {
+  const args = { messages: [], baseUrl: 'https://h/', model: 'm', apiKey: 'k' }
+  await assert.rejects(
+    chat({ ...args, fetchImpl: fake(200, { choices: [{ message: { content: null }, finish_reason: 'content_filter' }] }) }),
+    (e) => e.empty === true && /finish_reason=content_filter/.test(e.message),
+  )
+})
+
+test('chatDraft : Gemini rend une réponse vide → repli OpenRouter', async () => {
+  const calls = []
+  const f = async (url, init) => {
+    const model = JSON.parse(init.body).model
+    calls.push(url)
+    if (!url.includes('openrouter.ai')) return { ok: true, status: 200, json: async () => ({ choices: [{ message: { content: '' }, finish_reason: 'stop' }] }) }
+    return { ok: true, status: 200, json: async () => ({ model, choices: [{ message: { content: 'repli' } }] }) }
+  }
+  const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: f })
+  assert.deepEqual(r, { text: 'repli', model: CULTURE_FALLBACK_MODELS[0], fellBack: true })
+  assert.equal(calls.length, 2)
+})
+
 test('culture-translate n’importe pas chatDraft (traduction : Gemini seul)', async () => {
   const src = await readFile(new URL('../scripts/culture-translate.mjs', import.meta.url), 'utf-8')
   assert.doesNotMatch(src, /chatDraft/)
