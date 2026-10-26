@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-26",
+  "lang": "de",
+  "generatedAt": "2026-10-26T03:29:01.771Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über innenpolitische Spannungen, internationale Kooperationen sowie kulturelle und sportliche Erfolge.",
+  "topics": [
+    {
+      "title": "Innenpolitische Spannungen und Oppositionsvorwürfe",
+      "text": "Premierminister Paschinjan warnt vor einem geheimen Plan gegen Armenien, während ein Abgeordneter die Opposition scharf kritisiert. Gleichzeitig wird über die Inhaftierung von Oppositionsmitgliedern in mehreren Städten berichtet.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35595/",
+          "title": "Pressions sur l’Arménie : Pachinian dénonce un « plan secret », une tribune appelle à des preuves"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35599/",
+          "title": "Vahram Atanessian dénonce les propos d’un ex-dirigeant de la FRA et appelle à écarter l’opposition"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lopposition-armenienne-reste-inflexible-dans-son-rejet-de-la-constitution-daliyev/",
+          "title": "L’opposition arménienne reste inflexible dans son rejet de la « Constitution d’Aliyev »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/informations-concernant-la-detention-de-membres-de-lopposition-a-artik-martuni-et-yeghegnadzor/",
+          "title": "Informations concernant la détention de membres de l’opposition à Artik, Martuni et Yeghegnadzor"
+        }
+      ]
+    },
+    {
+      "title": "Armenien gewinnt Junior Eurovision Song Contest 2026",
+      "text": "Die Teilnehmerin Naré sicherte Armenien den Sieg beim Junior Eurovision Song Contest. Premierminister Paschinjan gratulierte der Gewinnerin persönlich.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vive-nare-nikol-pachinian-a-felicite-nare-qui-a-gagne-pour-larmenie-le-concours-de-leurovision-junior-de-la-chanson-junior/",
+          "title": "« Vive Naré ! » : Nikol Pachinian a félicité Naré qui a gagné pour l’Arménie le concours de l’Eurovision Junior de la chanson junior"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263739",
+          "title": "L’Arménie remporte le Concours Eurovision de la chanson junior 2026"
+        }
+      ]
+    },
+    {
+      "title": "Zusammenarbeit mit der Asiatischen Entwicklungsbank und UN-Besuch",
+      "text": "Im Rahmen der COP17 in Jerewan wurden Möglichkeiten zur Vertiefung der Kooperation mit der Asiatischen Entwicklungsbank erörtert. Zudem besuchte eine UN-Vertreterin Armenien für die Konferenz.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-la-cop17-a-erevan-furent-discutes-les-opportunites-de-renforcement-de-la-cooperation-entre-larmenie-et-la-banque-asiatique-de-developpement-bad/",
+          "title": "Lors de la COP17 à Erevan furent discutés les opportunités de renforcement de la coopération entre l’Arménie et la Banque asiatique de développement (BAD)"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-visite-de-lassistante-du-secretaire-general-de-lonu-en-armenie-pour-la-cop17/",
+          "title": "La visite de l’assistante du Secrétaire général de l’ONU en Arménie pour la COP17"
+        }
+      ]
+    },
+    {
+      "title": "Türkische Restaurierungsarbeiten an historischer Grenzbrücke",
+      "text": "Die Türkei hat die Ausschreibung für die Restaurierung einer historischen Brücke an der armenischen Grenze abgeschlossen. Der türkische Minister gab den Abschluss des Verfahrens bekannt.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-turquie-a-cheve-lappel-doffres-pour-la-restauration-dun-pont-historique-a-la-frontiere-armenienne-annonce-le-ministre-turc/",
+          "title": "La Turquie a achevé l’appel d’offres pour la restauration d’un pont historique à la frontière arménienne annonce le ministre turc"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Turner feiern Weltmeistertitel",
+      "text": "Hamlet Manukjan wurde Weltmeister am Pauschenpferd, während Artur Dawtjan seinen Titel am Sprung in Rotterdam erfolgreich verteidigte. Beide Athleten sorgten für historische Erfolge für Armenien.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hamlet-manukyan-armenie-je-revais-de-devenir-champion-du-monde-au-cheval-darcons/",
+          "title": "Hamlet Manukyan (Arménie) : Je rêvais de devenir champion du monde au cheval d’arçons"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gymnaste-artur-davtyan-armenie-double-champion-du-monde-au-saut-de-cheval-a-rotterdam/",
+          "title": "Le gymnaste Artur Davtyan (Arménie), double champion du monde au saut de cheval à Rotterdam"
+        }
+      ]
+    },
+    {
+      "title": "Ökumenische Delegation betont Umweltschutz bei COP17",
+      "text": "Katholikos Karekin II und eine Delegation des Ökumenischen Rates der Kirchen hoben bei der COP17 das gemeinsame Engagement für den Erhalt der Schöpfung hervor. Gleichzeitig kritisieren Medien, dass Umweltschäden durch Aserbaidschan ignoriert würden.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-catholicos-karekine-ii-et-la-delegation-oecumenique-du-conseil-oecumenique-des-eglises-coe-a-la-cop17-ont-souligne-lengagement-commun-a-preserver-lharmonie-de-la-creation-et-la-diversite-divi/",
+          "title": "Le Catholicos Karékine II et la délégation œcuménique du Conseil œcuménique des Églises (COE) à la COP17 ont souligné l’engagement commun à préserver l’harmonie de la création et la diversité divine"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alors-querevan-se-vante-daccueillir-la-cop-17-l-ecocide-perpetre-par-lazerbaidjan-a-shikahogh-est-passe-sous-silence/",
+          "title": "Alors qu’Erevan se vante d’accueillir la COP-17, l’« écocide » perpétré par l’Azerbaïdjan à Shikahogh est passé sous silence"
+        }
+      ]
+    },
+    {
+      "title": "Ratifikation des Rahmenabkommens mit den USA steht an",
+      "text": "Das armenische Parlament wird über die Ratifikation des Rahmenabkommens TRIPP mit den Vereinigten Staaten beraten. Der Vertrag regelt die strategische Partnerschaft zwischen beiden Ländern.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-parlement-armenien-debattra-de-la-ratification-de-laccord-cadre-armenie-etats-unis-sur-tripp/",
+          "title": "Le Parlement arménien débattra de la ratification de l’accord-cadre Arménie-États-Unis sur TRIPP"
+        }
+      ]
+    }
+  ]
+}

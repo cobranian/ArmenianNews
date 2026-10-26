@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-26",
+  "lang": "it",
+  "generatedAt": "2026-10-26T03:29:01.771Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna stampa odierna evidenzia la vittoria dell'Armenia all'Eurovision Junior 2026, le tensioni politiche interne con accuse reciproche tra maggioranza e opposizione, i successi sportivi nella ginnastica, gli sviluppi diplomatici e la situazione della diaspora.",
+  "topics": [
+    {
+      "title": "L'Armenia vince l'Eurovision Junior 2026",
+      "text": "La rappresentante armena Naré ha conquistato il primo posto al Concours Eurovision de la chanson junior 2026, portando all'Armenia la vittoria nella competizione musicale europea per giovani talenti. Il Primo Ministro Nikol Pashinyan ha inviato le sue congratulazioni alla giovane artista per questo risultato prestigioso.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vive-nare-nikol-pachinian-a-felicite-nare-qui-a-gagne-pour-larmenie-le-concours-de-leurovision-junior-de-la-chanson-junior/",
+          "title": "« Vive Naré ! » : Nikol Pachinian a félicité Naré qui a gagné pour l’Arménie le concours de l’Eurovision Junior de la chanson junior"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263739",
+          "title": "L’Arménie remporte le Concours Eurovision de la chanson junior 2026"
+        }
+      ]
+    },
+    {
+      "title": "Tensioni politiche e accuse reciproche in Armenia",
+      "text": "Il Primo Ministro Pashinyan ha denunciato l'esistenza di un 'piano segreto' per fare pressione sull'Armenia, mentre una tribuna chiede la presentazione di prove concrete. Parallelamente, Vahram Atanessian ha criticato le dichiarazioni di un ex dirigente della FRA e ha chiesto l'esclusione dell'opposizione, che dal canto suo rimane ferma nel rifiuto di quella che definisce la 'Costituzione di Aliyev'.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35595/",
+          "title": "Pressions sur l’Arménie : Pachinian dénonce un « plan secret », une tribune appelle à des preuves"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35599/",
+          "title": "Vahram Atanessian dénonce les propos d’un ex-dirigeant de la FRA et appelle à écarter l’opposition"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lopposition-armenienne-reste-inflexible-dans-son-rejet-de-la-constitution-daliyev/",
+          "title": "L’opposition arménienne reste inflexible dans son rejet de la « Constitution d’Aliyev »"
+        }
+      ]
+    },
+    {
+      "title": "Successi armeni ai mondiali di ginnastica",
+      "text": "Il ginnasta Artur Davtyan ha conquistato il doppio titolo mondiale al volteggio durante i campionati di Rotterdam. Il connazionale Hamlet Manukyan ha espresso la sua gioia per aver realizzato il sogno di diventare campione del mondo al cavallo con maniglie, confermando l'eccellenza armena nella ginnastica artistica maschile.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hamlet-manukyan-armenie-je-revais-de-devenir-champion-du-monde-au-cheval-darcons/",
+          "title": "Hamlet Manukyan (Arménie) : Je rêvais de devenir champion du monde au cheval d’arçons"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gymnaste-artur-davtyan-armenie-double-champion-du-monde-au-saut-de-cheval-a-rotterdam/",
+          "title": "Le gymnaste Artur Davtyan (Arménie), double champion du monde au saut de cheval à Rotterdam"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione internazionale e COP17 a Erevan",
+      "text": "Durante la COP17 ospitata a Erevan, sono state discusse le opportunità per rafforzare la cooperazione tra l'Armenia e la Banca asiatica di sviluppo. La visita dell'assistente del Segretario generale dell'ONU ha accompagnato i lavori della conferenza, dove il Catholicos Karekin II e una delegazione ecumenica hanno sottolineato l'impegno comune per la salvaguardia del creato.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-la-cop17-a-erevan-furent-discutes-les-opportunites-de-renforcement-de-la-cooperation-entre-larmenie-et-la-banque-asiatique-de-developpement-bad/",
+          "title": "Lors de la COP17 à Erevan furent discutés les opportunités de renforcement de la coopération entre l’Arménie et la Banque asiatique de développement (BAD)"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-visite-de-lassistante-du-secretaire-general-de-lonu-en-armenie-pour-la-cop17/",
+          "title": "La visite de l’assistante du Secrétaire général de l’ONU en Arménie pour la COP17"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-catholicos-karekine-ii-et-la-delegation-oecumenique-du-conseil-oecumenique-des-eglises-coe-a-la-cop17-ont-souligne-lengagement-commun-a-preserver-lharmonie-de-la-creation-et-la-diversite-divi/",
+          "title": "Le Catholicos Karékine II et la délégation œcuménique du Conseil œcuménique des Églises (COE) à la COP17 ont souligné l’engagement commun à préserver l’harmonie de la création et la diversité divine"
+        }
+      ]
+    },
+    {
+      "title": "Sviluppi diplomatici regionali e sicurezza digitale",
+      "text": "Il Parlamento armeno si prepara a dibattere la ratifica dell'accordo quadro TRIPP con gli Stati Uniti. La Turchia ha completato la gara d'appalto per il restauro di un ponte storico alla frontiera armena, mentre un esperto ha lanciato l'allarme sulla dipendenza digitale dell'Armenia in seguito agli attacchi informatici subiti da Yandex.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-parlement-armenien-debattra-de-la-ratification-de-laccord-cadre-armenie-etats-unis-sur-tripp/",
+          "title": "Le Parlement arménien débattra de la ratification de l’accord-cadre Arménie-États-Unis sur TRIPP"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-turquie-a-cheve-lappel-doffres-pour-la-restauration-dun-pont-historique-a-la-frontiere-armenienne-annonce-le-ministre-turc/",
+          "title": "La Turquie a achevé l’appel d’offres pour la restauration d’un pont historique à la frontière arménienne annonce le ministre turc"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35517/",
+          "title": "Après les frappes sur Yandex, un expert alerte sur la dépendance numérique de l’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Detenzioni di esponenti dell'opposizione e dibattito sulla diaspora",
+      "text": "Sono state segnalate detenzioni di membri dell'opposizione nelle località di Artik, Martuni e Yeghegnadzor. In Francia, a Bourg-lès-Valence, si è svolto un acceso dibattito organizzato dall'associazione 'Armenia' sulla prospettiva di adesione dell'Armenia all'Unione europea, mentre in Libano la comunità armena rimane politicamente divisa fin dagli anni Settanta.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/informations-concernant-la-detention-de-membres-de-lopposition-a-artik-martuni-et-yeghegnadzor/",
+          "title": "Informations concernant la détention de membres de l’opposition à Artik, Martuni et Yeghegnadzor"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vif-debat-armenia-sur-larmenie-au-sein-de-lunion-europeenne-pour-ou-contre-a-bourg-les-valence/",
+          "title": "Vif débat « Arménia » sur « l’Arménie au sein de l’Union européenne : pour ou contre ? » à Bourg-lès-Valence"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35580/",
+          "title": "Liban : la communauté arménienne politiquement divisée depuis les années 1970, selon Vahram Atanessian"
+        }
+      ]
+    }
+  ]
+}

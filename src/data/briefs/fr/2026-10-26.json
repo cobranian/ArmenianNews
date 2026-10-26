@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-26",
+  "lang": "fr",
+  "generatedAt": "2026-10-26T03:29:01.771Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La presse arménienne revient sur la victoire de l'Arménie à l'Eurovision Junior 2026 et couvre les débats politiques internes, la coopération internationale lors de la COP17, ainsi que des actualités sportives et culturelles.",
+  "topics": [
+    {
+      "title": "L'Arménie remporte l'Eurovision Junior 2026",
+      "text": "Nikol Pachinian a félicité Naré pour sa victoire au concours Eurovision Junior de la chanson, offrant à l'Arménie son premier trophée dans cette compétition. L'événement est largement relayé par les médias arméniens.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vive-nare-nikol-pachinian-a-felicite-nare-qui-a-gagne-pour-larmenie-le-concours-de-leurovision-junior-de-la-chanson-junior/",
+          "title": "« Vive Naré ! » : Nikol Pachinian a félicité Naré qui a gagné pour l’Arménie le concours de l’Eurovision Junior de la chanson junior"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263739",
+          "title": "L’Arménie remporte le Concours Eurovision de la chanson junior 2026"
+        }
+      ]
+    },
+    {
+      "title": "Tensions politiques et pressions sur le gouvernement",
+      "text": "Le Premier ministre dénonce un « plan secret » visant l'Arménie et appelle à des preuves, tandis que l'opposition maintient son rejet de la « Constitution d'Aliyev ». Des informations font également état de détentions de membres de l'opposition dans plusieurs localités.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35595/",
+          "title": "Pressions sur l’Arménie : Pachinian dénonce un « plan secret », une tribune appelle à des preuves"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lopposition-armenienne-reste-inflexible-dans-son-rejet-de-la-constitution-daliyev/",
+          "title": "L’opposition arménienne reste inflexible dans son rejet de la « Constitution d’Aliyev »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/informations-concernant-la-detention-de-membres-de-lopposition-a-artik-martuni-et-yeghegnadzor/",
+          "title": "Informations concernant la détention de membres de l’opposition à Artik, Martuni et Yeghegnadzor"
+        }
+      ]
+    },
+    {
+      "title": "Coopération internationale et diplomatie à la COP17",
+      "text": "La COP17 à Erevan a été l'occasion de discuter du renforcement de la coopération avec la Banque asiatique de développement. La visite de l'assistante du Secrétaire général de l'ONU et la présence d'une délégation œcuménique ont également marqué l'événement.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-la-cop17-a-erevan-furent-discutes-les-opportunites-de-renforcement-de-la-cooperation-entre-larmenie-et-la-banque-asiatique-de-developpement-bad/",
+          "title": "Lors de la COP17 à Erevan furent discutés les opportunités de renforcement de la coopération entre l’Arménie et la Banque asiatique de développement (BAD)"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-catholicos-karekine-ii-et-la-delegation-oecumenique-du-conseil-oecumenique-des-eglises-coe-a-la-cop17-ont-souligne-lengagement-commun-a-preserver-lharmonie-de-la-creation-et-la-diversite-divi/",
+          "title": "Le Catholicos Karékine II et la délégation œcuménique du Conseil œcuménique des Églises (COE) à la COP17 ont souligné l’engagement commun à préserver l’harmonie de la création et la diversité divine"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-visite-de-lassistante-du-secretaire-general-de-lonu-en-armenie-pour-la-cop17/",
+          "title": "La visite de l’assistante du Secrétaire général de l’ONU en Arménie pour la COP17"
+        }
+      ]
+    },
+    {
+      "title": "Double titre mondial pour la gymnastique arménienne",
+      "text": "Hamlet Manukyan est devenu champion du monde au cheval d'arçons, tandis qu'Artur Davtyan a conservé son titre au saut de cheval à Rotterdam. Ces deux victoires offrent à l'Arménie une performance historique aux championnats du monde.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hamlet-manukyan-armenie-je-revais-de-devenir-champion-du-monde-au-cheval-darcons/",
+          "title": "Hamlet Manukyan (Arménie) : Je rêvais de devenir champion du monde au cheval d’arçons"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gymnaste-artur-davtyan-armenie-double-champion-du-monde-au-saut-de-cheval-a-rotterdam/",
+          "title": "Le gymnaste Artur Davtyan (Arménie), double champion du monde au saut de cheval à Rotterdam"
+        }
+      ]
+    },
+    {
+      "title": "Débat sur l'adhésion de l'Arménie à l'Union européenne",
+      "text": "Un vif débat organisé par l'association « Arménia » à Bourg-lès-Valence a opposé les arguments pour et contre l'intégration de l'Arménie au sein de l'Union européenne, reflétant les divisions au sein de la diaspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vif-debat-armenia-sur-larmenie-au-sein-de-lunion-europeenne-pour-ou-contre-a-bourg-les-valence/",
+          "title": "Vif débat « Arménia » sur « l’Arménie au sein de l’Union européenne : pour ou contre ? » à Bourg-lès-Valence"
+        }
+      ]
+    },
+    {
+      "title": "Ratification de l'accord-cadre Arménie-États-Unis sur TRIPP",
+      "text": "Le Parlement arménien doit débattre de la ratification de l'accord-cadre TRIPP avec les États-Unis, une étape clé dans le développement des relations bilatérales stratégiques.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-parlement-armenien-debattra-de-la-ratification-de-laccord-cadre-armenie-etats-unis-sur-tripp/",
+          "title": "Le Parlement arménien débattra de la ratification de l’accord-cadre Arménie-États-Unis sur TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Restauration d'un pont historique à la frontière turco-arménienne",
+      "text": "La Turquie a achevé l'appel d'offres pour la restauration d'un pont historique situé à la frontière arménienne, une annonce faite par le ministre turc de la Culture et du Tourisme.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-turquie-a-cheve-lappel-doffres-pour-la-restauration-dun-pont-historique-a-la-frontiere-armenienne-annonce-le-ministre-turc/",
+          "title": "La Turquie a achevé l’appel d’offres pour la restauration d’un pont historique à la frontière arménienne annonce le ministre turc"
+        }
+      ]
+    }
+  ]
+}

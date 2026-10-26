@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-26",
+  "lang": "en",
+  "generatedAt": "2026-10-26T03:29:01.771Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Today's headlines highlight local elections in Armenia, political tensions over constitutional changes, and a major sporting achievement for Armenian gymnast Artur Davtyan.",
+  "topics": [
+    {
+      "title": "Armenia Holds Local Elections in 21 Communities",
+      "text": "Local elections are taking place across 21 communities in Armenia. The vote is being monitored as a key test of the political landscape at the municipal level.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1014976",
+          "title": "Armenia holds local elections in 21 communities"
+        }
+      ]
+    },
+    {
+      "title": "Opposition Rejects Constitutional Changes Demanded by Azerbaijan",
+      "text": "Armenian opposition forces have rejected Prime Minister Pashinyan's push for a new constitution, a demand reportedly originating from Azerbaijan. The rejection signals deepening domestic political divisions over the peace process.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/armenian-opposition-rejects-pashinyans-push-for-constitution-demanded-by-azerbaijan/",
+          "title": "Armenian Opposition Rejects Pashinyan’s Push for Constitution Demanded by Azerbaijan"
+        }
+      ]
+    },
+    {
+      "title": "Artur Davtyan Wins Second World Championship Title",
+      "text": "Armenian gymnast Artur Davtyan has become a two-time world champion. The achievement was widely covered by Armenian sports outlets with photo and video highlights.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1263752",
+          "title": "Gymnast Artur Davtyan becomes two-time world champion"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169785/",
+          "title": "Artur Davtyan becomes two-time World Champion (photo, video)"
+        }
+      ]
+    },
+    {
+      "title": "ANCA Hosts Post-Election Townhall for Armenian American Agenda",
+      "text": "The Armenian National Committee of America (ANCA) held a townhall meeting to map out priorities for the Armenian American community with the new U.S. Congress. The event focuses on shaping advocacy efforts in Washington.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/anca-post-election-townhall-to-map-out-armenian-american-agenda-for-the-new-congress/",
+          "title": "ANCA Post-Election Townhall to Map Out Armenian American Agenda for the New Congress"
+        }
+      ]
+    },
+    {
+      "title": "St. Gregory the Illuminator Church Marks 60th Anniversary in San Francisco",
+      "text": "The St. Gregory the Illuminator Church in San Francisco celebrated 60 years of faith and community service. The milestone highlights the enduring presence of the Armenian Apostolic Church in the diaspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/san-franciscos-st-gregory-the-illuminator-church-celebrates-60-years-of-faith-and-community-service/",
+          "title": "San Francisco’s St. Gregory the Illuminator Church Celebrates 60 Years of Faith and Community Service"
+        }
+      ]
+    }
+  ]
+}
