@@ -90,19 +90,38 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
     return () => document.removeEventListener('keydown', onKey)
   }, [go, onClose])
 
+  // Un résumé n'est demandé qu'une fois par item (le ref, pas l'état : deux
+  // ouvertures dans le même rendu ne doivent pas lancer deux chargements).
+  const asked = useRef(new Set())
+  const loadSum = useCallback(
+    (idx) => {
+      if (asked.current.has(idx) || !items[idx]?.summary) return
+      asked.current.add(idx)
+      setSums((m) => new Map(m).set(idx, undefined))
+      items[idx]
+        .summary()
+        .catch(() => null)
+        .then((text) => setSums((m) => new Map(m).set(idx, text || null)))
+    },
+    [items],
+  )
+
+  // Sur ordinateur (visionneuse plus large que sa bascule mobile, 620px), le
+  // résumé s'ouvre de lui-même, à chaque événement : il y a la place, et
+  // c'est l'information qui manque à l'affiche. Au téléphone il reste replié
+  // — déplié, il mangerait l'affiche (voir .lb__sum dans le bloc ≤620px).
+  useEffect(() => {
+    if (!items[cur]?.summary || !window.matchMedia('(min-width: 621px)').matches) return
+    loadSum(cur)
+    setSumOpen(true)
+  }, [cur, items, loadSum])
+
   const item = items[cur]
   const showPhoto = !!item.img
   const sumText = sums.get(cur)
   const hasSum = !!item.summary && sumText !== null
   const toggleSum = () => {
-    if (!sumOpen && !sums.has(cur)) {
-      const idx = cur
-      setSums((m) => new Map(m).set(idx, undefined))
-      item
-        .summary()
-        .catch(() => null)
-        .then((text) => setSums((m) => new Map(m).set(idx, text || null)))
-    }
+    if (!sumOpen) loadSum(cur)
     setSumOpen((o) => !o)
   }
 
@@ -150,7 +169,9 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
         {/* `--sans-sortie` quand l'item n'a pas de lien : le bloc perd la hauteur
             du bouton, et la croix de fermeture — ancrée à son sommet — descendrait
             dans les flèches sur mobile. Le CSS y réserve la place manquante. */}
-        <div className={`lb__meta${item.href ? '' : ' lb__meta--sans-sortie'}`}>
+        <div
+          className={`lb__meta${item.href ? '' : ' lb__meta--sans-sortie'}${item.share ? ' lb__meta--partage' : ''}`}
+        >
           {/* On mobile this pins to the caption's right, level with the title
               (see .lb__close in global.css), so it reads next to "Don Narek"
               rather than over the picture. On desktop it's a fixed,
