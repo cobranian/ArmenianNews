@@ -2948,6 +2948,19 @@ html:lang(hy) .nav__brand {
   font-size: 0.86rem;
   color: var(--text-soft);
 }
+/* L'événement visé par un lien partagé (/agenda/#e-…, eventAnchor) : un
+   filet abricot à gauche et un fond à peine teinté, pour qu'on le trouve
+   d'un coup d'œil en arrivant. */
+.agenda-list > li:target {
+  margin: 0 -14px;
+  padding-left: 11px;
+  padding-right: 14px;
+  border-left: 3px solid var(--apricot);
+  background: rgba(242, 169, 59, 0.07);
+}
+.agenda-list > li:first-child:target {
+  padding-top: 18px;
+}
 
 @media (max-width: 480px) {
   .agenda-list > li {
