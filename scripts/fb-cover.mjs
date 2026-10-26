@@ -31,7 +31,8 @@ const TEXT = '#f3ecdb'
 // Mot pour mot ceux de la carte de partage (scripts/og-image.mjs, CARDS).
 const COPY = {
   org: { kicker: 'NEWS · EVENTS · SOCIAL', tagline: 'An hourly snapshot of Armenian life' },
-  ch: { kicker: 'ACTUALITÉS · AGENDA · RÉSEAUX', tagline: 'Un instantané horaire de la vie arménienne' },
+  // subbrand : la marque en lettres arméniennes, comme sur la carte du .ch.
+  ch: { kicker: 'ACTUALITÉS · AGENDA · RÉSEAUX', subbrand: 'Արմենիա Ինֆո', tagline: 'Un instantané horaire de la vie arménienne' },
 }
 
 // La chaîne de l'Ararat du héros du site (src/components/Ornament.jsx).
@@ -46,7 +47,7 @@ function html(siteId) {
 <html lang="${primaryLang(siteId)}">
 <head>
 <meta charset="utf-8" />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Noto+Serif+Armenian:wght@600&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: ${W}px; height: ${H}px; overflow: hidden; }
@@ -63,7 +64,7 @@ function html(siteId) {
     filter: drop-shadow(0 -4px 40px rgba(242, 169, 59, 0.35));
   }
   .stack {
-    position: absolute; left: 0; right: 0; top: 205px;
+    position: absolute; left: 0; right: 0; top: ${c.subbrand ? 190 : 205}px;
     display: flex; flex-direction: column; align-items: center; text-align: center;
   }
   .kicker {
@@ -74,6 +75,11 @@ function html(siteId) {
     font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 140px;
     line-height: 1; letter-spacing: -0.015em; margin-top: 36px;
   }
+  /* Pas d italique : Noto Serif Armenian n en a pas (voir og-image.mjs). */
+  .subbrand {
+    font-family: 'Noto Serif Armenian', Georgia, serif; font-weight: 600;
+    font-size: 52px; line-height: 1.1; color: ${APRICOT}; margin-top: 14px;
+  }
   .rule { width: 160px; height: 1px; margin-top: 38px; background: rgba(243, 236, 219, 0.28); }
   .tagline {
     font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
@@ -83,12 +89,20 @@ function html(siteId) {
     font-family: 'Space Mono', monospace; font-size: 26px;
     letter-spacing: 0.18em; text-indent: 0.18em; color: ${APRICOT}; margin-top: 34px;
   }
+  /* Une ligne de plus (la marque arménienne) : le bloc se resserre pour
+     rester dans la bande que Facebook montre sur ordinateur, au-dessus des sommets. */
+  .compact .brand { font-size: 124px; margin-top: 28px; }
+  .compact .subbrand { font-size: 46px; margin-top: 10px; }
+  .compact .rule { margin-top: 28px; }
+  .compact .tagline { font-size: 38px; margin-top: 24px; }
+  .compact .domain { margin-top: 24px; }
 </style>
 </head>
-<body>
+<body class="${c.subbrand ? 'compact' : ''}">
   <div class="stack">
     <div class="kicker">${c.kicker}</div>
     <div class="brand">${site.brand}</div>
+    ${c.subbrand ? `<div class="subbrand">${c.subbrand}</div>` : ''}
     <div class="rule"></div>
     <div class="tagline">${c.tagline}</div>
     <div class="domain">${domain}</div>
