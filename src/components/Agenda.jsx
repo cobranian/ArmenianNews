@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { worldCountryKey, countryFlag, countryLabel } from '../worldPlace.js'
 import { SectionHead } from './SectionHead.jsx'
@@ -159,11 +159,12 @@ export function Agenda() {
           sub: [ev.location, day, when].filter(Boolean).join(' · '),
           href: ev.url,
           cta: t('agenda.armenopole'),
-          // Boutons de partage (src/share.js) : l'événement sur NOTRE page
-          // /agenda/ (son ancre), jamais la page d'armenopole — le lien
-          // partagé doit amener le lecteur sur ce site. Le bouton « Voir sur
-          // Armenopole » reste la sortie vers la billetterie.
-          share: ev.url ? { url: `${urlFor(lang, 'agenda')}#${eventAnchor(ev)}`, title: ev.title } : undefined,
+          // Boutons de partage (src/share.js) : l'accueil de CE site, ancré
+          // sur l'événement (#e-…). À l'arrivée, l'effet ci-dessous choisit
+          // son pays, descend au carrousel et ouvre la visionneuse dessus —
+          // jamais la page d'armenopole. « Voir sur Armenopole » reste la
+          // sortie vers la billetterie.
+          share: ev.url ? { url: `${urlFor(lang, 'home')}#${eventAnchor(ev)}`, title: ev.title } : undefined,
           // Le résumé n'est proposé que si le scrape l'a écrit dans cette
           // langue ; il n'est téléchargé qu'au premier dépli.
           summary: ev.resumeLangs?.includes(lang) ? () => loadResume(lang, ev.url) : undefined,
@@ -175,6 +176,34 @@ export function Agenda() {
       }),
     [events, formatDayNum, formatMonthAbbr, formatWeekdayTime, t, lang],
   )
+
+  // Arrivée par un lien partagé (/#e-…) : le pays de l'événement, le carrousel
+  // à l'écran, la visionneuse ouverte sur lui. AU MONTAGE seulement : le
+  // prérendu ne connaît pas l'ancre (elle ne quitte jamais le navigateur), un
+  // état initial qui en dépendrait casserait l'hydratation. Ancre inconnue
+  // (événement passé, retiré) : l'accueil s'affiche normalement.
+  useEffect(() => {
+    const m = /^#(e-[0-9a-z]+)$/.exec(location.hash)
+    if (!m) return
+    for (const key of Object.keys(groups)) {
+      const index = groups[key].findIndex((ev) => eventAnchor(ev) === m[1])
+      if (index < 0) continue
+      setCountry(key)
+      setBox({ index, fromLink: true })
+      document.getElementById('agenda')?.scrollIntoView({ block: 'start' })
+      return
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- une fois, au montage
+  }, [])
+
+  // Fermer la visionneuse ouverte par un lien retire l'ancre de l'adresse :
+  // recharger la page ne la rouvrirait pas.
+  const closeBox = () => {
+    if (box?.fromLink && /^#e-[0-9a-z]+$/.test(location.hash)) {
+      history.replaceState(null, '', location.pathname + location.search)
+    }
+    setBox(null)
+  }
 
   return (
     <section className="section section--alt" id="agenda">
@@ -249,7 +278,7 @@ export function Agenda() {
         <Lightbox
           items={lbItems}
           startIndex={box.index}
-          onClose={() => setBox(null)}
+          onClose={closeBox}
         />
       )}
     </section>

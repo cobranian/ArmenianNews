@@ -59,8 +59,9 @@ export function AgendaPage() {
             </h2>
             <ul className="agenda-list">
               {evs.map((ev) => (
-                // L'id est la cible des liens partagés depuis la visionneuse
-                // de l'accueil (eventAnchor, src/agendaEvents.js).
+                // Une ancre par événement (eventAnchor, src/agendaEvents.js) :
+                // /agenda/#e-… mène droit à lui. Les partages, eux, visent
+                // l'accueil, qui ouvre la visionneuse (Agenda.jsx).
                 <li key={ev.url} id={eventAnchor(ev)}>
                   {/* Toute date passe par les formateurs du contexte : Intl ne
                       résout pas hy-AM dans un navigateur. `formatDate` prend la
