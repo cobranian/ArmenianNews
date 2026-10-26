@@ -15,7 +15,9 @@
 
 // Même liste que STATIONS (src/components/Radio.jsx), mais vers l'ORIGINE du
 // flux : Mariam et Yeraz y passent par des Workers audio, inutiles ici.
-// test/now-playing.test.mjs exige que chaque station y figure, ou dans SANS_TITRE.
+// test/now-playing.test.mjs exige que chaque station y figure, ou dans
+// SANS_TITRE, ET que chaque URL soit celle de Radio.jsx (ou l'UPSTREAM du
+// Worker audio) : un flux déplacé d'un seul côté éteindrait le titre en silence.
 export const STREAMS = {
   public: 'https://eu1.stream4cast.com/proxy/publicra/stream',
   im: 'https://eu1.stream4cast.com/proxy/aamiry02/stream',
@@ -45,11 +47,29 @@ export const SANS_TITRE = {
 const ORIGINS = [
   /^https:\/\/(www\.)?armenieinfo\.ch$/,
   /^https:\/\/(www\.)?armenianews\.org$/,
-  /^https:\/\/[a-z0-9-]+\.web\.app$/,
+  // Nos deux sites Firebase et leurs canaux de prévisualisation, pas tout *.web.app.
+  /^https:\/\/(armenie-info|armenia-news-org)(--[a-z0-9-]+)?\.web\.app$/,
   /^http:\/\/localhost:\d+$/,
 ]
 
 const CACHE_S = 15 // tous les auditeurs d'une station partagent une lecture
+
+// Cache EN MÉMOIRE de l'isolat, pas l'API Cache : sur *.workers.dev (ce
+// Worker n'a pas de route) caches.default n'a aucun effet — chaque auditeur
+// ouvrait sa propre connexion au flux toutes les 20 s. On garde la PROMESSE :
+// des requêtes simultanées pour une station attendent la même lecture. C'est
+// aussi ce qui borne un appel abusif : une lecture par station et par CACHE_S
+// (et par isolat), quel que soit le nombre de requêtes.
+const memo = new Map() // id → { at, promise }
+export function titleFor(id, url, { now = Date.now(), read = readIcyTitle } = {}) {
+  const hit = memo.get(id)
+  if (hit && now - hit.at < CACHE_S * 1000) return hit.promise
+  const promise = Promise.resolve()
+    .then(() => read(url))
+    .catch(() => ({ title: null, name: null }))
+  memo.set(id, { at: now, promise })
+  return promise
+}
 const MAX_METAINT = 64 * 1024
 
 // Bloc ICY → texte. UTF-8 d'abord ; à défaut, Windows-1252 (vieux Shoutcast).
@@ -61,10 +81,11 @@ export function decodeMeta(bytes) {
       return new TextDecoder('windows-1252').decode(bytes)
     }
   })().replace(/\0+$/, '')
-  // Le titre peut contenir une apostrophe (« Don't ») : on s'arrête à `';`
-  // suivi d'un autre champ ou de la fin, pas à la première apostrophe.
-  const m = raw.match(/StreamTitle='([\s\S]*?)';(?=\s*[A-Za-z]+=|\s*$)/)
-  return m ? m[1].trim() : ''
+  // Le titre peut contenir une apostrophe (« Don't ») : on s'arrête au
+  // guillemet suivi d'un autre champ ou de la fin, pas au premier. Le `;`
+  // final et les guillemets simples ne sont pas garantis par tous les serveurs.
+  const m = raw.match(/StreamTitle=(['"])([\s\S]*?)\1;?(?=\s*[A-Za-z]+=|\s*$)/)
+  return m ? m[2].trim() : ''
 }
 
 // Lit le premier bloc de métadonnées d'un flux. null = pas de métadonnées.
@@ -118,7 +139,7 @@ function cors(origin) {
 }
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request) {
     const origin = request.headers.get('origin')
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors(origin) })
     if (request.method !== 'GET') return new Response('method', { status: 405 })
@@ -137,25 +158,6 @@ export default {
 
     // Le cache est indexé par station, sans l'origine : l'en-tête CORS est
     // reposé à chaque réponse.
-    const key = new Request(`https://now-playing.cache/${id}`)
-    const cache = caches.default
-    const hit = await cache.match(key)
-    if (hit) return json(await hit.json(), CACHE_S)
-
-    let body
-    try {
-      body = await readIcyTitle(url)
-    } catch {
-      body = { title: null, name: null }
-    }
-    ctx.waitUntil(
-      cache.put(
-        key,
-        new Response(JSON.stringify(body), {
-          headers: { 'cache-control': `public, max-age=${CACHE_S}` },
-        }),
-      ),
-    )
-    return json(body, CACHE_S)
+    return json(await titleFor(id, url), CACHE_S)
   },
 }

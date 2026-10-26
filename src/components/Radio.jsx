@@ -691,12 +691,19 @@ export function Radio({ more = true, stepRef = null }) {
   // seulement, toutes les POLL_MS. Le titre est rangé avec l'id de sa station :
   // une réponse tardive de la station précédente ne s'affiche donc jamais sous
   // la nouvelle (`nowSong` compare les deux).
+  //
+  // Une requête encore en vol n'est pas annulée par la suivante (le tour est
+  // sauté) : l'annuler effaçait le titre puis le reposait — clignotement.
+  // Un échec isolé garde le titre ; deux d'affilée l'effacent.
   useEffect(() => {
     if (!playing) return
     let stopped = false
     let ctrl = null
+    let busy = false
+    let fails = 0
     const ask = async () => {
-      ctrl?.abort()
+      if (busy) return
+      busy = true
       ctrl = new AbortController()
       try {
         const r = await fetch(`${NOW_PLAYING_URL}?s=${encodeURIComponent(stationId)}`, {
@@ -704,8 +711,9 @@ export function Radio({ more = true, stepRef = null }) {
         })
         if (!r.ok) throw new Error(String(r.status))
         const j = await r.json()
-        const s = songFrom(j.title, { stationName: t(`radio.st.${stationId}`), icyName: j.name })
+        const s = songFrom(j.title, { stationId, stationName: t(`radio.st.${stationId}`), icyName: j.name })
         if (stopped) return
+        fails = 0
         // Même chanson qu'au tour précédent : on garde l'objet, pour ne pas
         // reposer l'écran verrouillé toutes les 20 s.
         setSong((prev) =>
@@ -716,7 +724,9 @@ export function Radio({ more = true, stepRef = null }) {
               : { id: stationId, ...s },
         )
       } catch {
-        if (!stopped) setSong(null)
+        if (!stopped && ++fails >= 2) setSong(null)
+      } finally {
+        busy = false
       }
     }
     ask()
@@ -725,6 +735,9 @@ export function Radio({ more = true, stepRef = null }) {
       stopped = true
       clearInterval(timer)
       ctrl?.abort()
+      // En pause ou en changeant de station, le titre est oublié : à la
+      // reprise, l'ancien ne réapparaît pas avant la première réponse.
+      setSong(null)
     }
   }, [playing, stationId, t])
 
