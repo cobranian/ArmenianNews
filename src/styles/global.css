@@ -787,39 +787,6 @@ html:lang(hy) .nav__links {
   transform: rotate(40deg);
 }
 
-/* Facebook / Instagram dans la barre : les mêmes pastilles rondes que la
-   bascule jour/nuit (34px, 44px sous pointer: coarse), pour qu'outils et
-   comptes se lisent comme une seule rangée. */
-.nav__social {
-  display: flex;
-  gap: 8px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav__social a {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.25);
-  color: var(--apricot-ink);
-  transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
-}
-.nav__social a:hover {
-  border-color: var(--line-apricot);
-  background: rgba(242, 169, 59, 0.1);
-}
-.nav__social a:focus-visible {
-  outline: 2px solid var(--apricot-ink-strong);
-  outline-offset: 2px;
-}
-[data-theme='light'] .nav__social a {
-  background: rgba(36, 27, 16, 0.04);
-}
-
 .nav__toggle {
   display: none;
   appearance: none;
@@ -3727,8 +3694,7 @@ html.js .reveal.is-visible {
    Type scale and visual weight are untouched — only the hit area grows.
    ============================================================ */
 @media (pointer: coarse) {
-  .theme-toggle,
-  .nav__social a {
+  .theme-toggle {
     width: 44px;
     height: 44px;
   }
