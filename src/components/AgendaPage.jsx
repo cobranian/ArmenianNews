@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
 import { worldCountryKey, countryLabel, countryFlag } from '../worldPlace.js'
-import { evenementsAVenir } from '../agendaEvents.js'
+import { evenementsAVenir, eventAnchor } from '../agendaEvents.js'
 import { agendaJsonLd } from '../jsonld.js'
 import { useClientClock } from '../useClientNow.js'
 import { VIEW_SEO } from '../seo.js'
@@ -59,7 +59,9 @@ export function AgendaPage() {
             </h2>
             <ul className="agenda-list">
               {evs.map((ev) => (
-                <li key={ev.url}>
+                // L'id est la cible des liens partagés depuis la visionneuse
+                // de l'accueil (eventAnchor, src/agendaEvents.js).
+                <li key={ev.url} id={eventAnchor(ev)}>
                   {/* Toute date passe par les formateurs du contexte : Intl ne
                       résout pas hy-AM dans un navigateur. `formatDate` prend la
                       chaîne ISO telle quelle — PAS un objet Date (voir sa

@@ -7,7 +7,8 @@ import { Lightbox } from './Lightbox.jsx'
 import { loadResume } from '../agendaResumes.js'
 import { Motif, hash, THEMES } from './motifs.jsx'
 import agenda from '../data/agenda.json'
-import { pathFor } from '../../sites.config.js'
+import { pathFor, urlFor } from '../../sites.config.js'
+import { eventAnchor } from '../agendaEvents.js'
 
 // Un tableau vide stable : un `[]` neuf à chaque rendu relancerait le useMemo
 // de la visionneuse.
@@ -158,8 +159,11 @@ export function Agenda() {
           sub: [ev.location, day, when].filter(Boolean).join(' · '),
           href: ev.url,
           cta: t('agenda.armenopole'),
-          // Boutons de partage (src/share.js) : la page de l'événement.
-          share: ev.url ? { url: ev.url, title: ev.title } : undefined,
+          // Boutons de partage (src/share.js) : l'événement sur NOTRE page
+          // /agenda/ (son ancre), jamais la page d'armenopole — le lien
+          // partagé doit amener le lecteur sur ce site. Le bouton « Voir sur
+          // Armenopole » reste la sortie vers la billetterie.
+          share: ev.url ? { url: `${urlFor(lang, 'agenda')}#${eventAnchor(ev)}`, title: ev.title } : undefined,
           // Le résumé n'est proposé que si le scrape l'a écrit dans cette
           // langue ; il n'est téléchargé qu'au premier dépli.
           summary: ev.resumeLangs?.includes(lang) ? () => loadResume(lang, ev.url) : undefined,
