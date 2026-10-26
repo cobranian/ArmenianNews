@@ -12,6 +12,7 @@ import path from 'node:path'
 import { ALL_LANGS, culturePath, cultureUrl, cultureImagePath, langHrefsFor, siteOf } from '../../sites.config.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { cultureHeadFor } from './site-meta.mjs'
+import { focusY, objectPosition } from './culture-focus.mjs'
 import { cultureLangsBySlug } from './culture-links.mjs'
 import { longDate } from './brief-links.mjs'
 import { renderMarkdown } from './culture-markdown.mjs'
@@ -22,8 +23,10 @@ import { validEvent, pageSources } from './culture-validate.mjs'
 // texte alternatif — le titre est juste à côté, le lecteur d'écran le lirait
 // deux fois.
 function thumb(x) {
+  // Rognée en 3:2 : un portrait garde le haut (culture-focus.mjs).
+  const pos = objectPosition(focusY(x.image))
   return x.image
-    ? `<img class="culture-thumb" loading="lazy" src="${cultureImagePath(x.slug, 'webp')}" alt="" width="${Number(x.image.width) || 1200}" height="${Number(x.image.height) || 800}" decoding="async">`
+    ? `<img class="culture-thumb" loading="lazy" src="${cultureImagePath(x.slug, 'webp')}" alt="" width="${Number(x.image.width) || 1200}" height="${Number(x.image.height) || 800}" decoding="async"${pos ? ` style="object-position: ${pos}"` : ''}>`
     : '<span class="culture-thumb culture-thumb--motif" aria-hidden="true"></span>'
 }
 

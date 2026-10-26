@@ -10,6 +10,7 @@
 //
 // Sans node:fs : vite.config.js l'importe aussi.
 import { ALL_LANGS, cultureUrl } from '../../sites.config.js'
+import { focusY } from './culture-focus.mjs'
 
 export function cultureLangsBySlug(articles) {
   return new Map(articles.map((a) => [a.slug, ALL_LANGS.filter((l) => a.langs[l])]))
@@ -41,6 +42,8 @@ export function teaserFor(articles, langs, n = 3) {
           // Le carrousel de l'accueil pose l'image copiée au build
           // (cultureImagePath) ; false → motif, jamais d'<img> vers un 404.
           image: Boolean(a.image),
+          // Cadrage vertical (culture-focus.mjs) : null = centre.
+          focus: focusY(a.image),
         })),
     ]),
   )
