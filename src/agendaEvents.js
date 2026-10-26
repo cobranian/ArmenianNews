@@ -58,9 +58,10 @@ export function evenementsAVenir(evenements, maintenant = Date.now(), decalage) 
   })
 }
 
-// L'ancre d'un événement sur /agenda/ (`id` de son <li>, AgendaPage.jsx) :
-// c'est là que pointent les boutons de partage de la visionneuse, pour que le
-// lien partagé mène sur CE site et non chez armenopole. Dérivée de l'URL de
+// L'ancre d'un événement : `/#e-…` sur l'accueil, cible des boutons de partage
+// de la visionneuse (Agenda.jsx ouvre alors le carrousel et la visionneuse sur
+// lui), et `id` de son <li> sur /agenda/ (AgendaPage.jsx). Le lien partagé mène
+// ainsi sur CE site et non chez armenopole. Dérivée de l'URL de
 // l'événement (FNV-1a 32 bits, base 36) : stable d'un scrape à l'autre, et
 // la même pour les deux vitrines et les six langues.
 export function eventAnchor(ev) {

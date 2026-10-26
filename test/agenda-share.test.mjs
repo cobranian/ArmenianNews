@@ -14,9 +14,14 @@ test('eventAnchor : stable, propre à chaque URL, utilisable comme id', () => {
 
 // Les boutons de partage de l'agenda doivent amener sur CE site (demande de
 // l'éditeur, 26 oct. 2026), donc viser l'ancre que /agenda/ pose réellement.
-test('le partage d’un événement vise /agenda/#ancre, pas armenopole', () => {
+// Puis (même soir) : le lien doit ouvrir le CARROUSEL de l'accueil, visionneuse
+// ouverte sur l'événement — pas la liste /agenda/.
+test('le partage d’un événement vise l’accueil /#ancre, qui ouvre la visionneuse', () => {
   const agenda = read('Agenda.jsx')
-  assert.match(agenda, /share: ev\.url \? \{ url: `\$\{urlFor\(lang, 'agenda'\)\}#\$\{eventAnchor\(ev\)\}`/)
+  assert.match(agenda, /share: ev\.url \? \{ url: `\$\{urlFor\(lang, 'home'\)\}#\$\{eventAnchor\(ev\)\}`/)
+  // L'arrivée : l'ancre est lue AU MONTAGE (hydratation), puis pays + visionneuse.
+  assert.match(agenda, /\/\^#\(e-\[0-9a-z\]\+\)\$\/\.exec\(location\.hash\)/)
+  assert.match(agenda, /setBox\(\{ index, fromLink: true \}\)/)
   assert.doesNotMatch(agenda, /share: ev\.url \? \{ url: ev\.url/)
   assert.match(read('AgendaPage.jsx'), /<li key=\{ev\.url\} id=\{eventAnchor\(ev\)\}>/)
 })
