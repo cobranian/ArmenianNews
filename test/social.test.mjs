@@ -108,6 +108,15 @@ test('Instagram : crédit de l’image et lien lisible dans la légende', () => 
   assert.equal(imageUrl, 'https://armenieinfo.ch/culture/komitas/image.jpg')
 })
 
+test('Instagram : deux-points à l’anglaise en anglais, à la française en français', () => {
+  const en = compose('instagram', { ...culture('komitas', '2026-10-20'), lang: 'en' }).caption
+  assert.match(en, /Full article: /)
+  assert.match(en, /Image: USSR Post/)
+  assert.doesNotMatch(en, / : /)
+  const fr = compose('instagram', culture('komitas', '2026-10-20')).caption
+  assert.match(fr, /Article complet : /)
+})
+
 test('LinkedIn : les caractères réservés sont échappés', () => {
   assert.equal(escapeLittleText('Komitas (1869) #musique @x'), 'Komitas \\(1869\\) \\#musique \\@x')
 })
