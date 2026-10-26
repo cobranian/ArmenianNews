@@ -248,3 +248,22 @@ test('longDate : chaque langue écrit la date dans sa propre langue', () => {
   for (const [lang, day] of Object.entries(want))
     assert.match(longDate(lang, '2026-10-16'), new RegExp(day, 'i'), lang)
 })
+
+// Partager une brève, c'est partager sa page DATÉE : l'index change chaque
+// jour, un lien partagé doit montrer la brève qu'on a lue.
+test('partage : page datée et index visent la page datée, jamais /breve/', () => {
+  const list = [b('fr', '2026-10-17'), b('fr', '2026-10-16')]
+  const byDate = briefLangsByDate({ fr: list })
+  const dated = encodeURIComponent(briefUrl('fr', '2026-10-16'))
+  const page = briefPageHtml({ siteId: 'ch', lang: 'fr', brief: list[1], list, byDate, cssHref: CSS })
+  assert.ok(page.includes(`https://www.facebook.com/sharer/sharer.php?u=${dated}`))
+  assert.ok(page.includes('<script src="/share.js" defer></script>'))
+  assert.ok(page.includes('data-share-title="La brève du jour · '))
+  const index = briefIndexHtml({ siteId: 'ch', lang: 'fr', list, byDate, cssHref: CSS })
+  assert.ok(index.includes(`sharer.php?u=${encodeURIComponent(briefUrl('fr', '2026-10-17'))}`))
+  assert.ok(!index.includes(`sharer.php?u=${encodeURIComponent(briefUrl('fr'))}"`))
+  // Sans brève, rien à partager.
+  const empty = briefIndexHtml({ siteId: 'org', lang: 'ru', list: [], byDate: new Map(), cssHref: CSS })
+  assert.ok(!empty.includes('class="share"'))
+  assert.ok(!empty.includes('/share.js'))
+})

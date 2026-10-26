@@ -18,6 +18,14 @@ import { SOURCE_NAMES } from '../../src/newsLangs.js'
 import { briefHeadFor } from './site-meta.mjs'
 import { briefLangsByDate, longDate } from './brief-links.mjs'
 import { esc, pageShell } from './static-shell.mjs'
+import { shareBarHtml, SHARE_SCRIPT } from './share-html.mjs'
+
+// Ce qu'on partage d'une brève : sa page DATÉE, jamais /breve/ — l'index
+// change chaque jour, un lien partagé doit montrer la brève qu'on a lue.
+function briefShare(lang, brief) {
+  const s = BRIEF_STRINGS[lang]
+  return shareBarHtml(lang, { url: briefUrl(lang, brief.date), title: `${s.title} · ${longDate(lang, brief.date)}` })
+}
 
 // Le sélecteur de langue d'une brève : la brève du MÊME jour dans l'autre
 // langue si elle a paru, sinon l'index de cette langue (les quatre langues ne
@@ -137,7 +145,8 @@ function briefBlock(lang, brief) {
       <ol class="brief__topics">
 ${topicsHtml(lang, brief)}
       </ol>
-      <p class="brief__disclaimer">${esc(s.disclaimer)}</p>`
+      <p class="brief__disclaimer">${esc(s.disclaimer)}</p>
+      ${briefShare(lang, brief)}`
 }
 
 export function briefPageHtml({ siteId, lang, brief, list, byDate, cssHref }) {
@@ -155,7 +164,7 @@ ${briefBlock(lang, brief)}
       <nav class="brief__pager">${pager}</nav>
     </main>`
   const head = briefHeadFor({ siteId, lang, date: brief.date, brief, byDate })
-  return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(brief.date, byDate) })
+  return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(brief.date, byDate), scripts: [SHARE_SCRIPT] })
 }
 
 // L'index ne RECOPIE PAS la dernière brève : il en donne le chapô et les titres,
@@ -181,7 +190,8 @@ function briefTeaser(lang, brief) {
       <ol class="brief__topics brief__topics--teaser">
 ${titles}
       </ol>
-      <p class="brief__more"><a href="${href}">${esc(s.read)}</a></p>`
+      <p class="brief__more"><a href="${href}">${esc(s.read)}</a></p>
+      ${briefShare(lang, brief)}`
 }
 
 export function briefIndexHtml({ siteId, lang, list, byDate, cssHref }) {
@@ -203,7 +213,7 @@ ${briefTeaser(lang, latest)}
       <p class="brief__intro">${esc(s.empty)}</p>
     </main>`
   const head = briefHeadFor({ siteId, lang, byDate, robots: latest ? null : 'noindex, follow' })
-  return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(null, byDate) })
+  return pageShell({ siteId, lang, head, cssHref, body, langHrefs: briefLangHrefs(null, byDate), scripts: latest ? [SHARE_SCRIPT] : [] })
 }
 
 // Les pages d'UNE vitrine : seulement ses langues (sites.config.js). Le .ch

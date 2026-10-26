@@ -13,24 +13,7 @@ import { ALL_LANGS, culturePath, cultureUrl, cultureImagePath, langHrefsFor, sit
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { cultureHeadFor } from './site-meta.mjs'
 import { focusY, objectPosition } from './culture-focus.mjs'
-import { SHARE_NETWORKS, SHARE_NAMES, SHARE_ICONS, SHARE_STRINGS, shareHref } from '../../src/share.js'
-
-// Les boutons de partage d'un article (src/share.js). Liens simples vers les
-// pages de partage des réseaux ; Instagram, qui n'en a pas, est un bouton
-// que public/share.js anime (feuille de partage du téléphone, sinon copie du
-// lien) — masqué sans JavaScript (.share__copy, html.js).
-function shareBar(lang, { url, title }) {
-  const s = SHARE_STRINGS[lang]
-  const icon = (n) => `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${SHARE_ICONS[n]}"/></svg>`
-  const items = SHARE_NETWORKS.map((n) => {
-    const label = esc(s.on(SHARE_NAMES[n]))
-    const href = shareHref(n, { url, title })
-    return href
-      ? `<li><a class="share__btn" href="${esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="${label}" title="${label}">${icon(n)}</a></li>`
-      : `<li class="share__copy"><button type="button" class="share__btn" data-share-url="${esc(url)}" data-share-title="${esc(title)}" data-share-copied="${esc(s.copied)}" aria-label="${label}" title="${label}">${icon(n)}</button></li>`
-  }).join('')
-  return `<div class="share"><p class="share__label">${esc(s.share)}</p><ul class="share__list">${items}</ul><p class="share__msg" role="status" aria-live="polite"></p></div>`
-}
+import { shareBarHtml, SHARE_SCRIPT } from './share-html.mjs'
 import { cultureLangsBySlug } from './culture-links.mjs'
 import { longDate } from './brief-links.mjs'
 import { renderMarkdown } from './culture-markdown.mjs'
@@ -174,7 +157,7 @@ export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHre
 ${renderMarkdown(a.body)}
       </div>
       ${eventBlock(lang, article.meta?.agendaEvent, now)}
-      ${shareBar(lang, { url: cultureUrl(lang, article.slug), title: a.title })}
+      ${shareBarHtml(lang, { url: cultureUrl(lang, article.slug), title: a.title })}
       <section class="culture__sources">
         <h2>${esc(s.sources)}</h2>
         <ul>${sources}</ul>
@@ -192,7 +175,7 @@ ${renderMarkdown(a.body)}
     cssHref,
     body,
     langHrefs: cultureLangHrefs(article.slug, bySlug),
-    scripts: ['/culture-keys.js', '/share.js'],
+    scripts: ['/culture-keys.js', SHARE_SCRIPT],
   })
 }
 
