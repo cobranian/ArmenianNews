@@ -122,6 +122,9 @@ export function CultureTeaser() {
                         decoding="async"
                         src={cultureImagePath(x.slug, 'webp')}
                         alt=""
+                        // Rognée en 4:3 : un portrait garde le haut
+                        // (scripts/lib/culture-focus.mjs, calculé au build).
+                        style={x.focus == null ? undefined : { objectPosition: `50% ${Math.round(x.focus * 100)}%` }}
                         onError={() => setBroken((b) => ({ ...b, [x.slug]: true }))}
                       />
                     ) : (
