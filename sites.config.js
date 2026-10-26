@@ -19,6 +19,14 @@ export const SITES = {
     firebaseSite: 'armenie-info',
     firebaseProject: 'armenie-info',
     brand: 'Arménie Info',
+    // Les comptes de CETTE vitrine (pied de page + `sameAs` du JSON-LD). Chaque
+    // site renvoie aux siens : un lien du .ch vers les comptes anglais ferait
+    // suivre au lecteur une marque qu'il ne lit pas. Facebook : l'adresse de
+    // profil vers laquelle redirige l'id de Page de l'API (1301521739721369).
+    social: {
+      facebook: 'https://www.facebook.com/61595719987355',
+      instagram: 'https://www.instagram.com/armenieinfo_ch/',
+    },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
     // domaine tout neuf, des signaux de nom contradictoires (masthead vs.
     // JSON-LD) laissent Google deviner lequel retenir ; alternateName est le
@@ -101,6 +109,11 @@ export const SITES = {
     firebaseSite: 'armenia-news-org',
     firebaseProject: 'armenia-news-b146e',
     brand: 'Armenia News',
+    // Page API 1463024403551157 → profil 61595909671165.
+    social: {
+      facebook: 'https://www.facebook.com/61595909671165',
+      instagram: 'https://www.instagram.com/armenianews_org/',
+    },
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme
     // francophone, que la marque .ch continue de porter.

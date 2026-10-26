@@ -138,9 +138,14 @@ function siteGraph(site, lang) {
       ...(site.editor ? { founder: { '@type': 'Person', name: site.editor } } : {}),
       // Les deux marques se déclarent l'une l'autre : c'est ce qui les présente
       // comme des sites sœurs plutôt que comme deux copies concurrentes.
-      sameAs: Object.values(SITES)
-        .filter((s) => s.id !== site.id)
-        .map((s) => `${s.host}/`),
+      // Ses propres comptes sociaux aussi : c'est ce qui relie, pour Google,
+      // la Page et le compte Instagram au site.
+      sameAs: [
+        ...Object.values(SITES)
+          .filter((s) => s.id !== site.id)
+          .map((s) => `${s.host}/`),
+        ...Object.values(site.social ?? {}),
+      ],
       logo: {
         '@type': 'ImageObject',
         url: `${site.host}/apple-touch-icon.png`,

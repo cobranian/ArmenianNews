@@ -3378,6 +3378,41 @@ html:lang(hy) .nav__brand {
   margin-bottom: 18px;
   letter-spacing: calc(-0.02em * var(--track-scale));
 }
+/* Les comptes Facebook / Instagram de la vitrine, collés à la marque qu'ils
+   prolongent. Cercle de 44px pour TOUS les pointeurs (plancher tactile tenu
+   sans passer par le bloc pointer: coarse). Trait abricot discret au repos,
+   plein au survol : ce sont des invitations, pas des sources. */
+.footer__social {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-apricot);
+  color: var(--apricot-ink);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.footer__social a:hover {
+  background: var(--apricot-ink);
+  color: #0b0a08;
+}
+.footer__social a:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer__social a {
+    transition: none;
+  }
+}
 /* Les trois pages du site (maillage interne) — juste sous la marque, au-dessus
    des sources, et seules à porter l'abricot avec le contact : ce sont les
    liens qui restent dans le site, les sources en sortent. */
