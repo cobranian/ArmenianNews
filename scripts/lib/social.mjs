@@ -192,8 +192,9 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
 // --- Les textes ------------------------------------------------------------
 
 const STRINGS = {
-  fr: { read: 'Article complet', bio: 'lien dans la bio', image: 'Image', tags: '#Arménie #CultureArménienne' },
-  en: { read: 'Full article', bio: 'link in bio', image: 'Image', tags: '#Armenia #ArmenianCulture' },
+  // `colon` : espace avant les deux-points en français, pas en anglais.
+  fr: { colon: ' : ', read: 'Article complet', bio: 'lien dans la bio', image: 'Image', tags: '#Arménie #CultureArménienne' },
+  en: { colon: ': ', read: 'Full article', bio: 'link in bio', image: 'Image', tags: '#Armenia #ArmenianCulture' },
 }
 
 const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' })
@@ -236,7 +237,7 @@ export function escapeLittleText(s) {
 function credit(item, s) {
   const img = item.image
   if (!img?.author && !img?.license) return null
-  return `${s.image} : ${[img.author, img.license].filter(Boolean).join(', ')}`
+  return `${s.image}${s.colon}${[img.author, img.license].filter(Boolean).join(', ')}`
 }
 
 export function compose(platform, item) {
@@ -268,7 +269,7 @@ export function compose(platform, item) {
     case 'telegram':
       return { text: `${head}\n\n${item.url}` }
     case 'instagram': {
-      const link = `${s.read} : ${item.url.replace(/^https:\/\//, '')} (${s.bio})`
+      const link = `${s.read}${s.colon}${item.url.replace(/^https:\/\//, '')} (${s.bio})`
       const parts = [head, link, credit(item, s), s.tags].filter(Boolean)
       return { imageUrl: item.image.url, caption: truncate(parts.join('\n\n'), 2200) }
     }
