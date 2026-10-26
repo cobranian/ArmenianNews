@@ -29,8 +29,12 @@ test('le JSON-LD Organization cite les comptes de sa vitrine, pas ceux du voisin
   }
 })
 
-test('le pied de page rend les liens sociaux depuis sites.config.js', () => {
-  const src = readFileSync(new URL('../src/components/Footer.jsx', import.meta.url), 'utf-8')
+test('la barre du haut ET le pied de page rendent les comptes depuis sites.config.js', () => {
+  const read = (f) => readFileSync(new URL(`../src/components/${f}`, import.meta.url), 'utf-8')
+  const src = read('SocialLinks.jsx')
   assert.match(src, /SITES\[SITE_ID\]\?\.social/)
-  assert.match(src, /aria-label=\{SOCIAL_NAMES\[platform\]\}/)
+  assert.match(src, /aria-label=\{NAMES\[platform\]\}/)
+  // Au pied de page seulement, personne ne les voyait (26 oct. 2026).
+  assert.match(read('Nav.jsx'), /<SocialLinks className="nav__social"/)
+  assert.match(read('Footer.jsx'), /<SocialLinks className="footer__social"/)
 })

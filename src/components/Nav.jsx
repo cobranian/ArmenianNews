@@ -5,6 +5,7 @@ import { LANG_SWITCH_LABEL, langPath, pathFor, urlFor, briefPath, culturePath } 
 import { BRIEF_STRINGS } from '../briefStrings.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
 import { KnotMark } from './Ornament.jsx'
+import { SocialLinks } from './SocialLinks.jsx'
 import { HYDRATING, PRERENDERING } from '../renderClock.js'
 
 export function Nav({ view = 'home' }) {
@@ -84,6 +85,9 @@ export function Nav({ view = 'home' }) {
         </ul>
 
         <div className="nav__tools">
+          {/* Les comptes Facebook / Instagram : au pied de page seulement, on
+              ne les voyait pas (bas d'une page très longue). */}
+          <SocialLinks className="nav__social" size={16} />
           <button
             className="theme-toggle"
             onClick={toggleTheme}

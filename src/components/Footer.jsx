@@ -1,6 +1,6 @@
 import { useI18n } from '../i18n.jsx'
-import { pathFor, briefPath, culturePath, SITES } from '../../sites.config.js'
-import { SITE_ID } from '../site.js'
+import { pathFor, briefPath, culturePath } from '../../sites.config.js'
+import { SocialLinks } from './SocialLinks.jsx'
 import { BRIEF_STRINGS } from '../briefStrings.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
 import { VIEW_SEO } from '../seo.js'
@@ -18,26 +18,6 @@ const SOURCES = [
 ]
 
 const CONTACT = 'contact@armenieinfo.ch'
-
-// Les comptes de la vitrine bâtie (sites.config.js `social`). Icônes tracées
-// ici, en currentColor : ni police d'icônes ni requête vers Meta.
-const SOCIAL_ICONS = {
-  facebook: (
-    <path
-      fill="currentColor"
-      d="M13.4 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.6V21z"
-    />
-  ),
-  instagram: (
-    <g fill="none" stroke="currentColor" strokeWidth="1.7">
-      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
-    </g>
-  ),
-}
-const SOCIAL_NAMES = { facebook: 'Facebook', instagram: 'Instagram' }
-const social = Object.entries(SITES[SITE_ID]?.social ?? {})
 
 export function Footer() {
   const { t, lang } = useI18n()
@@ -60,19 +40,7 @@ export function Footer() {
       <div className="container">
         <KnotMark />
         <div className="footer__title">{t('site.title')}</div>
-        {social.length > 0 && (
-          <ul className="footer__social">
-            {social.map(([platform, url]) => (
-              <li key={platform}>
-                <a href={url} rel="noopener noreferrer" aria-label={SOCIAL_NAMES[platform]} title={SOCIAL_NAMES[platform]}>
-                  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
-                    {SOCIAL_ICONS[platform]}
-                  </svg>
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <SocialLinks className="footer__social" />
         <nav className="footer__pages" aria-label={t('footer.pages')}>
           {pages.map(([href, label]) => (
             <a key={href} href={href}>
