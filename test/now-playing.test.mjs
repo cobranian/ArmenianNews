@@ -3,26 +3,73 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { STREAMS, SANS_TITRE, decodeMeta, readIcyTitle } from '../proxy/now-playing-worker.js'
+import { STREAMS, SANS_TITRE, decodeMeta, readIcyTitle, titleFor } from '../proxy/now-playing-worker.js'
 import { NOW_PLAYING_URL, songFrom } from '../src/nowPlaying.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 
-const stationIds = () => {
-  const bloc = read('src/components/Radio.jsx').match(/const STATIONS = \[[\s\S]*?\n\]/)
-  return [...bloc[0].matchAll(/\bid:\s*'([^']+)'/g)].map((m) => m[1])
-}
+const radioSrc = read('src/components/Radio.jsx')
+const STATIONS_BLOC = radioSrc.match(/const STATIONS = \[[\s\S]*?\n\]/)[0]
+// id → valeur brute de `stream` : une URL entre guillemets, ou une constante.
+const stationStreams = new Map(
+  [...STATIONS_BLOC.matchAll(/\{\s*id:\s*'([^']+)',\s*stream:\s*('([^']+)'|[A-Z_]+)/g)].map((m) => [
+    m[1],
+    m[3] ?? m[2],
+  ]),
+)
+const ids = [...STATIONS_BLOC.matchAll(/\bid:\s*'([^']+)'/g)].map((m) => m[1])
 
 // Une station ajoutée à Radio.jsx sans entrée dans le Worker n'afficherait
 // jamais de titre, sans que rien ne le signale.
 test('chaque station est lue par le Worker, ou écartée avec sa raison', () => {
-  for (const id of stationIds()) {
+  for (const id of ids) {
     assert.ok(STREAMS[id] || SANS_TITRE[id], `station « ${id} » absente de STREAMS et de SANS_TITRE (proxy/now-playing-worker.js)`)
   }
   for (const id of [...Object.keys(STREAMS), ...Object.keys(SANS_TITRE)]) {
-    assert.ok(stationIds().includes(id), `« ${id} » du Worker n'est plus une station`)
+    assert.ok(ids.includes(id), `« ${id} » du Worker n'est plus une station`)
   }
+})
+
+// STREAMS recopie les flux de Radio.jsx : un flux déplacé d'un seul côté
+// (Im et Gospel ont déjà bougé) laisserait le Worker lire l'ancienne adresse,
+// et le titre disparaîtrait sans bruit. Une constante (MARIAM_PROXY…) désigne
+// un Worker audio : c'est alors son UPSTREAM qui doit concorder.
+test('chaque URL de STREAMS est celle que joue Radio.jsx', () => {
+  for (const [id, url] of Object.entries(STREAMS)) {
+    const s = stationStreams.get(id)
+    assert.ok(s, `flux de « ${id} » introuvable dans STATIONS`)
+    if (s.startsWith('http')) {
+      assert.equal(url, s, `« ${id} » : le Worker lit ${url}, le site joue ${s}`)
+      continue
+    }
+    const proxy = radioSrc.match(new RegExp(`const ${s} = '([^']+)'`))?.[1]
+    assert.ok(proxy, `constante ${s} introuvable dans Radio.jsx`)
+    const worker = { MARIAM_PROXY: 'radio-mariam-worker.js', YERAZ_PROXY: 'radio-yeraz-worker.js' }[s]
+    assert.ok(worker, `${s} : Worker audio inconnu de ce test`)
+    const upstream = read(`proxy/${worker}`).match(/const UPSTREAM = '([^']+)'/)?.[1]
+    assert.equal(url, upstream, `« ${id} » : le Worker lit ${url}, ${worker} relaie ${upstream}`)
+  }
+})
+
+test('titleFor : une seule lecture par station et par fenêtre, partagée', async () => {
+  let reads = 0
+  const read = async () => ({ title: `t${++reads}`, name: null })
+  const a = titleFor('t-x', 'u', { now: 1000, read })
+  const b = titleFor('t-x', 'u', { now: 1000, read })
+  assert.equal(a, b, 'deux requêtes simultanées attendent la même lecture')
+  assert.equal((await titleFor('t-x', 'u', { now: 10000, read })).title, 't1')
+  assert.equal((await titleFor('t-x', 'u', { now: 20000, read })).title, 't2')
+  assert.equal(reads, 2)
+  // Une panne de lecture rend un titre nul, pas une exception.
+  const boom = async () => { throw new Error('x') }
+  assert.deepEqual(await titleFor('t-y', 'u', { now: 0, read: boom }), { title: null, name: null })
+})
+
+test('le Worker n’ouvre le CORS qu’à nos sites', () => {
+  const src = read('proxy/now-playing-worker.js').replace(/^\s*\/\/.*$/gm, '')
+  assert.doesNotMatch(src, /caches\.default/, 'l’API Cache est sans effet sur workers.dev')
+  assert.doesNotMatch(src, /\[a-z0-9-\]\+\\\.web\\\.app/, 'tout *.web.app serait autorisé')
 })
 
 // La CSP est dupliquée entre les deux vitrines : un connect-src oublié d'un
@@ -45,6 +92,9 @@ test('decodeMeta lit le titre, apostrophe comprise', () => {
   assert.equal(decodeMeta(enc("StreamTitle='';")), '')
   // Windows-1252 quand ce n'est pas de l'UTF-8 valide : « é » = 0xE9.
   assert.equal(decodeMeta(new Uint8Array([...enc("StreamTitle='Caf"), 0xe9, ...enc("';")])), 'Café')
+  // Sans `;` final et bourré d'espaces, ou entre guillemets doubles.
+  assert.equal(decodeMeta(enc("StreamTitle='Artist - Song'      ")), 'Artist - Song')
+  assert.equal(decodeMeta(enc('StreamTitle="Artist - Song";')), 'Artist - Song')
 })
 
 function fauxFlux({ metaint, meta, headers = {}, chunk = 7 }) {
@@ -90,7 +140,9 @@ test('songFrom n’affiche rien quand ce n’est pas une chanson', () => {
   assert.equal(songFrom('  -  '), null)
   assert.equal(songFrom('Radio Mariam Armenia', { icyName: 'Radio Mariam Armenia' }), null)
   assert.equal(songFrom('RADIO MARIAM ARMENIA', { stationName: 'Radio Mariam Armenia' }), null)
-  assert.equal(songFrom('RADIOTATRON 24 HOKTEMBER 2026 01 - 17-01 KHUMHAR'), null)
+  assert.equal(songFrom('RADIOTATRON 24 HOKTEMBER 2026 01 - 17-01 KHUMHAR', { stationId: 'public' }), null)
+  // La règle de la date ne vaut que pour la Radio publique.
+  assert.ok(songFrom('Djivan Gasparyan - Live 12 September 1999', { stationId: 'lav' }))
   assert.equal(songFrom('www.lavradio.am'), null)
   // Une année seule n'est pas une date d'émission.
   assert.ok(songFrom('Komitas - Groung 1915'))
