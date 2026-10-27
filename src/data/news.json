@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T19:31:21.495Z",
+  "generatedAt": "2026-10-27T20:23:33.988Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -80,16 +80,16 @@
       "sectionKey": "societe",
       "articles": [
         {
-          "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence",
-          "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
-          "date": "2026-10-23T11:01:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/854316167_122315157092029287_1490370250107810490_n.jpg.avif?itok=m4Q42pf0"
-        },
-        {
           "title": "L’Œuvre d’Orient célèbre 170 ans d’engagement avec la soirée de générosité « Unis pour l’Orient »",
           "url": "https://courrier.am/loeuvre-dorient-celebre-170-ans-dengagement-avec-la-soiree-de-generosite-unis-pour-lorient",
           "date": "2026-10-23T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_3.png.avif?itok=3ggeeb4R"
+        },
+        {
+          "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence",
+          "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
+          "date": "2026-10-23T11:01:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/854316167_122315157092029287_1490370250107810490_n.jpg.avif?itok=m4Q42pf0"
         },
         {
           "title": "L’Arménie parmi les 25 meilleures destinations touristiques mondiales de 2027 selon National Geographic",
@@ -98,16 +98,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/MkiHCWsjkgwxpZA7RphgDC_smedium.jpg.avif?itok=zZt4XzEL"
         },
         {
-          "title": "Marie-Lou Papazian : « Donner à chacun les moyens de construire son avenir »",
-          "url": "https://courrier.am/marie-lou-papazian-donner-chacun-les-moyens-de-construire-son-avenir",
-          "date": "2026-10-20T07:13:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1.png.avif?itok=MDEXe5dg"
-        },
-        {
           "title": "COP17 : l’alimentation scolaire, un levier pour préserver la biodiversité en Arménie",
           "url": "https://courrier.am/cop17-lalimentation-scolaire-un-levier-pour-preserver-la-biodiversite-en-armenie",
           "date": "2026-10-20T07:28:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/855412236_122142071535388072_7829252391526261431_n.jpg.avif?itok=s1Riicah"
+        },
+        {
+          "title": "Marie-Lou Papazian : « Donner à chacun les moyens de construire son avenir »",
+          "url": "https://courrier.am/marie-lou-papazian-donner-chacun-les-moyens-de-construire-son-avenir",
+          "date": "2026-10-20T07:13:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1.png.avif?itok=MDEXe5dg"
         },
         {
           "title": "«Nous ne sommes pas des animaux». Mohamed, livreur à bout de course",
@@ -116,16 +116,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1.jpg.avif?itok=9sdq4lT9"
         },
         {
-          "title": "L’Arménie alloue 2,36 milliards de drams supplémentaires à la recherche scientifique",
-          "url": "https://courrier.am/larmenie-alloue-236-milliards-de-drams-supplementaires-la-recherche-scientifique",
-          "date": "2026-10-16T07:20:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_2.png.avif?itok=xs4QaAIn"
-        },
-        {
           "title": "COP17 : à Erevan, les dirigeants appellent à accélérer l’action mondiale en faveur de la biodiversité",
           "url": "https://courrier.am/cop17-erevan-les-dirigeants-appellent-accelerer-laction-mondiale-en-faveur-de-la-biodiversite",
           "date": "2026-10-16T08:44:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/20261015_state_of_biodiversity_action_report_launch_photo-10_55590301612_o.jpg.avif?itok=dz6O7zyi"
+        },
+        {
+          "title": "L’Arménie alloue 2,36 milliards de drams supplémentaires à la recherche scientifique",
+          "url": "https://courrier.am/larmenie-alloue-236-milliards-de-drams-supplementaires-la-recherche-scientifique",
+          "date": "2026-10-16T07:20:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_2.png.avif?itok=xs4QaAIn"
         },
         {
           "title": "Joyeux anniversaire, Erevan ! La capitale arménienne célèbre ses 2 808 ans",
@@ -623,6 +623,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Spain’s Queen Sofia visits Geghard Monastery in Armenia",
+            "url": "https://en.armradio.am/2026/10/27/spains-queen-sofia-visits-geghard-monastery-in-armenia/",
+            "date": "2026-10-27T16:51:00.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/10/IMG_5665-768x512.jpg",
+            "category": "Society"
+          },
+          {
             "title": "Queen Sofía of Spain arrives in Armenia",
             "url": "https://en.armradio.am/2026/10/27/queen-sofia-of-spain-arrives-in-armenia/",
             "date": "2026-10-27T08:51:11.000Z",
@@ -683,13 +690,6 @@
             "url": "https://en.armradio.am/2026/10/20/armenias-education-ministry-signs-mou-with-ghent-university-to-promote-armenian-studies/",
             "date": "2026-10-20T12:06:28.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/10/Gent-University-768x512.jpg",
-            "category": "Society"
-          },
-          {
-            "title": "New leopard spotted in Armenia’s Gndasar Community Conserved Area",
-            "url": "https://en.armradio.am/2026/10/20/new-leopard-caught-on-camera-in-armenias-gndasar-community-conserved-area/",
-            "date": "2026-10-20T06:22:28.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/10/Leopard-768x428.jpg",
             "category": "Society"
           }
         ]
@@ -5647,6 +5647,13 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
+            "title": "Ապրուած Օրեր. Ը. Աղեքսանդրիոյ Փոքր Հայաշխարհը",
+            "url": "https://asbarez.am/archives/511482",
+            "date": "2026-10-27T19:36:15.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/27121955/1027RA1.jpg",
+            "rubric": "culture"
+          },
+          {
             "title": "Սաղաթէլեան Եւ Վարդանեան Շնորհակալութիւն Յայտնեցին ՀՅԴի Թեկնածուները Ընտրողներուն",
             "url": "https://asbarez.am/archives/511460",
             "date": "2026-10-26T22:53:56.000Z",
@@ -5708,13 +5715,6 @@
             "date": "2026-10-26T20:13:53.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/08/28135321/0000Kevork-Bedigian.jpg",
             "rubric": "societe"
-          },
-          {
-            "title": "ՄԱՀԱԶԴ. ԱՆԱՀԻՏ ՔԷՇԻՇԵԱՆ",
-            "url": "https://asbarez.am/archives/511403",
-            "date": "2026-10-26T19:47:24.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/26124450/Anahid-Keshishian.jpg",
-            "rubric": "politique"
           }
         ]
       },
@@ -5855,6 +5855,13 @@
         "label": "Յօդուածներ",
         "articles": [
           {
+            "title": "Ապրուած Օրեր. Ը. Աղեքսանդրիոյ Փոքր Հայաշխարհը",
+            "url": "https://asbarez.am/archives/511482",
+            "date": "2026-10-27T19:36:15.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/27121955/1027RA1.jpg",
+            "rubric": "culture"
+          },
+          {
             "title": "Պոլիս… Շնորհակալ Եմ…",
             "url": "https://asbarez.am/archives/511411",
             "date": "2026-10-26T20:13:53.000Z",
@@ -5915,13 +5922,6 @@
             "url": "https://asbarez.am/archives/510638",
             "date": "2026-10-15T18:28:47.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/10/15112720/1015AP.jpg",
-            "rubric": "societe"
-          },
-          {
-            "title": "Ապրուած Օրեր. Զ. Երկու Ապրիլ 24",
-            "url": "https://asbarez.am/archives/510520",
-            "date": "2026-10-14T19:08:19.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/14114345/1013RA1.jpg",
             "rubric": "societe"
           }
         ]
@@ -9544,6 +9544,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Էրդողանն ու Մակրոնը հեռախոսով քննարկել են Թուրքիայի և Ֆրանսիայի հարաբերություններն ու ՄԱԿ-ի ապագան",
+            "url": "https://news.am/hy/news/1070786",
+            "date": "2026-10-27T20:15:05.000Z",
+            "image": "https://news.am/storage/media/26/05/18/dM7NJ1p2NYRXTSEw.webp"
+          },
+          {
+            "title": "Կոբախիձե՞, թե՞ Սիմոնյան․ վրացի ակտիվիստի տուգանքի շուրջ տարակարծություններ են առաջացել",
+            "url": "https://news.am/hy/news/1070781",
+            "date": "2026-10-27T20:11:00.000Z",
+            "image": "https://news.am/storage/media/26/10/27/ueEXCdsG0sl6uTu4.webp"
+          },
+          {
             "title": "Գերմանիան, Ֆրանսիան, Իտալիան և Հունաստանը դեմ են արտահայտվել ԵՄ-ին Կանադայի ասոցացված անդամակցության գաղափարին. Euronews",
             "url": "https://news.am/hy/news/1070774",
             "date": "2026-10-27T19:25:00.000Z",
@@ -9590,18 +9602,6 @@
             "url": "https://news.am/hy/news/1070762",
             "date": "2026-10-27T16:49:51.000Z",
             "image": "https://news.am/storage/media/26/10/23/gN50xs39ZArMMgtb.webp"
-          },
-          {
-            "title": "Խաղաղությունը դեռ թղթի վրա չկա, բայց Սյունիքով անցնող ճանապարհի հարցն արդեն առաջ են տանում. Նարեկ Կարապետյան",
-            "url": "https://news.am/hy/news/1070755",
-            "date": "2026-10-27T16:04:24.000Z",
-            "image": "https://news.am/storage/media/26/10/27/ZyiFhqbvNIIUZjpU.jfif"
-          },
-          {
-            "title": "Էրդողանը փակ խորհրդակցություն է անցկացրել՝ հետախուզության, ՊՆ-ի և այլ առանցքային գերատեսչությունների ղեկավարների հետ",
-            "url": "https://news.am/hy/news/1070744",
-            "date": "2026-10-27T15:00:01.000Z",
-            "image": "https://news.am/storage/media/26/10/27/IKEvzC5dMN2cIoM7.webp"
           }
         ]
       },
@@ -9676,6 +9676,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Կարեն Ասլանյան․ Նվաճեցի աշխարհի չեմպիոնի տիտղոսը, որովհետեւ ինքս ինձ չխանգարեցի",
+            "url": "https://sport.news.am/arm/news/169860/",
+            "date": "2026-10-27T20:14:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169860.jpg"
+          },
+          {
             "title": "«Լացիոյի» տպավորիչ հաղթանակը՝ 6:2 (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/169859/",
             "date": "2026-10-27T19:29:00.000Z",
@@ -9728,12 +9734,6 @@
             "url": "https://sport.news.am/arm/news/169850/",
             "date": "2026-10-27T14:35:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169850.jpg"
-          },
-          {
-            "title": "ԱԱ. Գեւորգ Թադեւոսյանը՝ բրոնզե մեդալակիր (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169851/",
-            "date": "2026-10-27T13:59:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169851.jpg"
           }
         ]
       },
@@ -10006,6 +10006,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "ԱՄՆ-ը նոր հարված է հասցրել Խաղաղ օվկիանոսում նավարկող նավին. զոհվել է հինգ մարդ",
+            "url": "https://news.am/hy/news/1070779",
+            "date": "2026-10-27T19:50:00.000Z",
+            "image": "https://news.am/storage/media/26/10/27/tb3sXaz0UZ2NX9W6.webp"
+          },
+          {
             "title": "Նիդեռլանդների սաֆարի պարկում ընձառյուծը հոշոտել է 40 տարվա աշխատանքային փորձ ունեցող աշխատակցուհուն",
             "url": "https://news.am/hy/news/1070769",
             "date": "2026-10-27T18:39:00.000Z",
@@ -10058,12 +10064,6 @@
             "url": "https://news.am/hy/news/1070658",
             "date": "2026-10-27T10:57:00.000Z",
             "image": "https://news.am/storage/media/26/10/27/zp46sLrBdcsjDXh6.webp"
-          },
-          {
-            "title": "Սասուն Միքայելյանը, Անդրանիկ Քոչարյանը և Գագիկ Ջհանգիրյանը միասին այցելեցին Վազգեն Սարգսյանի շիրիմին",
-            "url": "https://news.am/hy/news/1070606",
-            "date": "2026-10-27T08:34:06.000Z",
-            "image": "https://img.youtube.com/vi/2yKBehie2LM/maxresdefault.jpg"
           }
         ]
       },
@@ -10206,6 +10206,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Эрдоган и Макрон обсудили по телефону отношения Турции и Франции и будущее ООН",
+            "url": "https://news.am/ru/news/1070786",
+            "date": "2026-10-27T20:15:05.000Z",
+            "image": "https://news.am/storage/media/26/05/18/dM7NJ1p2NYRXTSEw.webp"
+          },
+          {
+            "title": "Кобахидзе или Симоньян: вокруг штрафа грузинскому активисту возникли разночтения",
+            "url": "https://news.am/ru/news/1070781",
+            "date": "2026-10-27T20:11:00.000Z",
+            "image": "https://news.am/storage/media/26/10/27/ueEXCdsG0sl6uTu4.webp"
+          },
+          {
             "title": "Euronews: Германия, Франция, Италия и Греция выступили против идеи ассоциированного членства Канады в ЕС",
             "url": "https://news.am/ru/news/1070774",
             "date": "2026-10-27T19:25:00.000Z",
@@ -10252,18 +10264,6 @@
             "url": "https://news.am/ru/news/1070762",
             "date": "2026-10-27T16:49:51.000Z",
             "image": "https://news.am/storage/media/26/10/23/gN50xs39ZArMMgtb.webp"
-          },
-          {
-            "title": "Нарек Карапетян: «Мир еще не закреплен на бумаге, но вопрос дороги через Сюник уже продвигают»",
-            "url": "https://news.am/ru/news/1070755",
-            "date": "2026-10-27T16:04:00.000Z",
-            "image": "https://news.am/storage/media/26/10/27/ZyiFhqbvNIIUZjpU.jfif"
-          },
-          {
-            "title": "Эрдоган провёл закрытое совещание с участием глав разведки, Минобороны и других ключевых ведомств",
-            "url": "https://news.am/ru/news/1070744",
-            "date": "2026-10-27T15:00:01.000Z",
-            "image": "https://news.am/storage/media/26/10/27/IKEvzC5dMN2cIoM7.webp"
           }
         ]
       },
@@ -10668,6 +10668,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "США нанесли новый удар по судну в Тихом океане: погибли пять человек",
+            "url": "https://news.am/ru/news/1070779",
+            "date": "2026-10-27T19:50:00.000Z",
+            "image": "https://news.am/storage/media/26/10/27/tb3sXaz0UZ2NX9W6.webp"
+          },
+          {
             "title": "В сафари-парке в Нидерландах леопард растерзал сотрудницу с 40-летним стажем",
             "url": "https://news.am/ru/news/1070769",
             "date": "2026-10-27T18:39:00.000Z",
@@ -10720,12 +10726,6 @@
             "url": "https://news.am/ru/news/1070658",
             "date": "2026-10-27T10:57:00.000Z",
             "image": "https://news.am/storage/media/26/10/27/zp46sLrBdcsjDXh6.webp"
-          },
-          {
-            "title": "Сасун Микаелян, Андраник Кочарян и Гагик Джангирян вместе посетили могилу Вазгена Саркисяна",
-            "url": "https://news.am/ru/news/1070606",
-            "date": "2026-10-27T08:34:06.000Z",
-            "image": "https://img.youtube.com/vi/2yKBehie2LM/maxresdefault.jpg"
           }
         ]
       },
