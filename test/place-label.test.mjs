@@ -23,6 +23,9 @@ test('placeLabel traduit les régions, les villes et les pays', () => {
   // Un nom de pays seul passe par COUNTRIES.
   assert.equal(placeLabel('Russie', 'en'), 'Russia')
   assert.equal(placeLabel('Émirats arabes unis', 'ru'), 'ОАЭ')
+  // Alias anglais d'un pays ou d'une ville.
+  assert.equal(placeLabel('Cyprus', 'ru'), 'Кипр')
+  assert.equal(placeLabel('Yerevan', 'hy'), 'Երևան')
 })
 
 test('le français garde le texte de la source, un lieu inconnu aussi', () => {

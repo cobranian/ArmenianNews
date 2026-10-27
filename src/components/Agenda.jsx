@@ -110,7 +110,7 @@ export function Agenda() {
     for (const ev of agenda.switzerland || []) push('switzerland', ev)
     for (const ev of agenda.world || []) push(worldCountryKey(ev), ev)
 
-    const labelOf = (key) => countryLabel(key, lang, rep[key]?.location)
+    const labelOf = (key) => countryLabel(key, lang, placeLabel(rep[key]?.location, lang))
     const foldLabel = (k) =>
       labelOf(k).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     // Every country on the same footing, alphabetical by localized name.

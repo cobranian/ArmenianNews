@@ -88,7 +88,7 @@ const fold = (s) =>
 // table garde son texte français ; un nom de pays passe par COUNTRIES. Les
 // noms de pays seuls n'ont donc pas à figurer ici. `fr` est absent : le
 // français affiche le texte de la source tel quel.
-// Exporté pour test/i18n-parity.test.mjs (même raison que COUNTRIES).
+// Exporté pour test/place-label.test.mjs, qui vérifie les cinq langues.
 export const PLACES = {
   // Suisse
   geneve:     { de: 'Genf', it: 'Ginevra', en: 'Geneva', hy: 'Ժնև', ru: 'Женева' },
@@ -107,7 +107,6 @@ export const PLACES = {
   'new jersey':    { de: 'New Jersey', it: 'New Jersey', en: 'New Jersey', hy: 'Նյու Ջերսի', ru: 'Нью-Джерси' },
   massachusetts:   { de: 'Massachusetts', it: 'Massachusetts', en: 'Massachusetts', hy: 'Մասաչուսեթս', ru: 'Массачусетс' },
   california:      { de: 'Kalifornien', it: 'California', en: 'California', hy: 'Կալիֆոռնիա', ru: 'Калифорния' },
-  californie:      { de: 'Kalifornien', it: 'California', en: 'California', hy: 'Կալիֆոռնիա', ru: 'Калифорния' },
   colorado:        { de: 'Colorado', it: 'Colorado', en: 'Colorado', hy: 'Կոլորադո', ru: 'Колорадо' },
   texas:           { de: 'Texas', it: 'Texas', en: 'Texas', hy: 'Տեխաս', ru: 'Техас' },
   pennsylvanie:    { de: 'Pennsylvania', it: 'Pennsylvania', en: 'Pennsylvania', hy: 'Փենսիլվանիա', ru: 'Пенсильвания' },
@@ -141,6 +140,9 @@ export const PLACES = {
   venetie:         { de: 'Venetien', it: 'Veneto', en: 'Veneto', hy: 'Վենետո', ru: 'Венето' },
   'buenos aires':  { de: 'Buenos Aires', it: 'Buenos Aires', en: 'Buenos Aires', hy: 'Բուենոս Այրես', ru: 'Буэнос-Айрес' },
 }
+// Variantes d'écriture d'un même lieu : une seule entrée, pas deux copies.
+PLACES.californie = PLACES.california
+PLACES.yerevan = PLACES.erevan
 
 // Le lieu d'un événement dans la langue du lecteur. Ordre : la table PLACES,
 // puis un nom de pays (« Russie », « Australie ») via COUNTRIES, sinon le texte
@@ -151,7 +153,9 @@ export function placeLabel(location, lang) {
   const p = PLACES[k]?.[lang]
   if (p) return p
   const c = COUNTRIES[PLACE_TO_COUNTRY[k] || k]
-  if (c && fold(c.fr) === k) return c[lang] || location
+  // Un nom de pays (« Russie », ou l'alias « Cyprus »), pas une ville qui y
+  // mène : celles-ci sont dans PLACES.
+  if (c && (fold(c.fr) === k || fold(c.en) === k)) return c[lang] || location
   return location
 }
 
