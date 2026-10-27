@@ -1,0 +1,109 @@
+{
+  "slug": "sayat-nova-et-la-tradition-des-ashoughs",
+  "qid": "Q366289",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Sayat-Nova",
+      "url": "https://fr.wikipedia.org/wiki/Sayat-Nova",
+      "revision": 240705308,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Sayat-Nova",
+      "url": "https://en.wikipedia.org/wiki/Sayat-Nova",
+      "revision": 1371558955,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Սայաթ-Նովա",
+      "url": "https://hy.wikipedia.org/wiki/%D5%8D%D5%A1%D5%B5%D5%A1%D5%A9-%D5%86%D5%B8%D5%BE%D5%A1",
+      "revision": 10896401,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Саят-Нова",
+      "url": "https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D1%8F%D1%82-%D0%9D%D0%BE%D0%B2%D0%B0",
+      "revision": 153570908,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "de",
+      "title": "Sayat Nova",
+      "url": "https://de.wikipedia.org/wiki/Sayat_Nova",
+      "revision": 260710076,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "it",
+      "title": "Sayat-Nova",
+      "url": "https://it.wikipedia.org/wiki/Sayat-Nova",
+      "revision": 152107544,
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Sayat Nova statue.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Sayat_Nova_statue.jpg/1920px-Sayat_Nova_statue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4734,
+      "height": 3271,
+      "mime": "image/jpeg",
+      "author": "Armenak Margarian",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Sayat_Nova_statue.jpg"
+    },
+    {
+      "file": "File:Sayat-Nova Avenue, Yerevan, Armenia.png",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Sayat-Nova_Avenue%2C_Yerevan%2C_Armenia.png/1920px-Sayat-Nova_Avenue%2C_Yerevan%2C_Armenia.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3024,
+      "height": 4032,
+      "mime": "image/png",
+      "author": "Just Aren20",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Sayat-Nova_Avenue,_Yerevan,_Armenia.png"
+    },
+    {
+      "file": "File:Sayat-Nova by Adibek Grigoryan.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Sayat-Nova_by_Adibek_Grigoryan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1612,
+      "height": 2720,
+      "mime": "image/jpeg",
+      "author": "Armenian sculptor Adibek Grigoryan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Sayat-Nova_by_Adibek_Grigoryan.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Sayat Nova statue.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Sayat_Nova_statue.jpg/1920px-Sayat_Nova_statue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 829,
+    "mime": "image/jpeg",
+    "author": "Armenak Margarian",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Sayat_Nova_statue.jpg"
+  },
+  "agendaEvent": {
+    "title": "Soirée musique et danse arméniennes",
+    "url": "https://armenopole.com/soiree-musique-et-danse-armeniennes.html",
+    "date": "2026-10-30T19:00",
+    "location": "Auvergne-Rhône-Alpes"
+  },
+  "overlap": 0,
+  "model": "gemini-flash-latest"
+}
