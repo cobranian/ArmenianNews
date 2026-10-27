@@ -471,9 +471,10 @@ canonique (`location` d'abord — « Erevan » → `armenia`, « Angleterre » �
 plié), `countryLabel(key, lang)` / `countryFlag(key)` la rendent. **Le nom de
 pays du sélecteur EST localisé dans les six langues** (fr compris) : c'est du
 chrome d'interface (un libellé de contrôle), pas du contenu d'article. Le
-**badge** de chaque carte, lui, garde le texte `location` brut (« Genève »,
-« Erevan », « Angleterre ») pour toutes les langues — non redondant avec le pays
-du menu, et fidèle au « Le Pays reste en Français ». Résoudre depuis `location`
+**badge** de chaque carte (et la visionneuse, et `/events/`) est traduit lui
+aussi depuis le 27 octobre 2026 par `placeLabel` (table `PLACES`) : un lecteur
+anglais lisait « Angleterre ». **Un lieu absent de `PLACES` reste en français,
+sans le moindre signe** — en ajouter un quand le flux en montre un nouveau. Résoudre depuis `location`
 avant le slug corrige au passage une donnée fausse (un événement en Angleterre
 listé sous le slug `greece`). Ce module reste **volontairement un `.js` à part,
 pas dans `i18n.jsx`** : y ajouter un export non-composant ferait passer le lint
