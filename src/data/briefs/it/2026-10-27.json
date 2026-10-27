@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-27",
+  "lang": "it",
+  "generatedAt": "2026-10-27T03:29:00.751Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata dall'approfondimento dei legami tra Armenia e Unione Europea, dalle vittorie sportive armene e dalle tensioni diplomatiche con l'Azerbaigian.",
+  "topics": [
+    {
+      "title": "Quinta riunione del gruppo di lavoro congiunto Armenia-UE a Erevan",
+      "text": "Si è svolta a Erevan la quinta riunione del gruppo di lavoro congiunto tra Armenia e Unione Europea. L'incontro ha permesso di discutere l'approfondimento del partenariato e la diversificazione degli scambi commerciali tra le due parti.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263888",
+          "title": "La cinquième réunion du groupe de travail conjoint Arménie-UE s’est tenue à Erevan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263879",
+          "title": "Ararat Mirzoyan et le directeur général de la Commission européenne ont évoqué l’approfondissement du partenariat Arménie-UE et la diversification des échanges commerciaux"
+        }
+      ]
+    },
+    {
+      "title": "Visita del ministro degli Esteri olandese e del direttore generale della Commissione europea",
+      "text": "Il ministro degli Esteri dei Paesi Bassi è arrivato in Armenia per una visita ufficiale. Parallelamente, il Primo ministro armeno ha ricevuto Gert Jan Koopman, direttore generale della DG Near della Commissione europea, per discutere la cooperazione bilaterale.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263886",
+          "title": "Le ministre néerlandais des Affaires étrangères est arrivé en Arménie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263821",
+          "title": "Le Premier ministre a reçu Gert Jan Koopman, directeur général de la direction générale du voisinage et des négociations d’élargissement de la Commission européenne"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263812",
+          "title": "Le ministre néerlandais des Affaires étrangères se rendra en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Vittorie armene nella lotta greco-romana ai Mondiali di Astana",
+      "text": "Karen Aslanyan ha raggiunto la finale dei Campionati mondiali di lotta greco-romana ad Astana, dove affronterà un avversario azerbaigiano. Anche Aslanyan e Galstyan si sono qualificati per i quarti di finale della competizione.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/karen-aslanyan-armenie-est-en-finale-des-championnats-de-lutte-greco-romaine-a-astana-il-affrontera-demain-un-azerbaidjanais/",
+          "title": "Karen Aslanyan (Arménie) est en finale des championnats de lutte gréco-romaine à Astana, il affrontera demain un Azerbaïdjanais"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263789",
+          "title": "Les lutteurs Aslanyan et Galstyan se qualifient pour les quarts de finale des Championnats du monde"
+        }
+      ]
+    },
+    {
+      "title": "Il partito Contratto Civile vince le elezioni locali nella maggioranza dei comuni",
+      "text": "Secondo i risultati diffusi, il partito al governo Contratto Civile ha conquistato la vittoria nella maggior parte dei comuni armeni durante le recenti elezioni locali. Il risultato consolida la posizione della formazione politica del Primo ministro.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015009",
+          "title": "Le parti au pouvoir en Arménie, Contrat civil, remporte les élections locales dans la majorité des communes"
+        }
+      ]
+    },
+    {
+      "title": "Dichiarazioni azerbaigiane sulla pace e richieste di scuse all'Armenia",
+      "text": "Il ministro degli Esteri azerbaigiano Jeyhun Bayramov ha affermato che la società armena deve accettare l'importanza della pace. Il consigliere presidenziale Hajiyev ha aggiunto che gli armeni dovrebbero scusarsi con gli azerbaigiani impossibilitati a tornare nelle loro case da 30 anni.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/jeyhun-bayramov-la-societe-armenienne-doit-accepter-que-la-paix-est-importante-pour-elle-meme-comme-pour-la-societe-azerbaidjanaise/",
+          "title": "Jeyhun Bayramov : la société arménienne doit accepter que la paix est importante pour elle-même comme pour la société azerbaïdjanaise"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hajiyev-la-societe-armenienne-devrait-presenter-ses-excuses-aux-azerbaidjanais-qui-nont-pas-pu-retourner-dans-leurs-foyers-depuis-30-ans/",
+          "title": "Hajiyev : la société arménienne devrait présenter ses excuses aux Azerbaïdjanais qui n’ont pas pu retourner dans leurs foyers depuis 30 ans"
+        }
+      ]
+    },
+    {
+      "title": "I mille maggiori contribuenti hanno versato 1.638 miliardi di dram in nove mesi",
+      "text": "I primi mille contribuenti dell'Armenia hanno pagato 1.638 miliardi di dram, pari a quasi 4 miliardi di euro, nelle casse statali nei primi nove mesi dell'anno. Il dato evidenzia il peso fiscale delle grandi imprese sul bilancio nazionale.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-1-000-plus-importants-contribuables-darmenie-ont-verse-1-638-milliards-de-drams-pres-de-4-milliards-deuros-au-budget-de-letat-en-9-mois/",
+          "title": "Les 1 000 plus importants contribuables d’Arménie ont versé 1 638 milliards de drams -près de 4 milliards d’euros- au budget de l’État en 9 mois"
+        }
+      ]
+    },
+    {
+      "title": "Distruzione di parte della riserva di Shikahogh e finanziamenti per l'ambiente",
+      "text": "Secondo un rapporto, gli azerbaigiani avrebbero distrutto circa un sesto della riserva di Shikahogh in Armenia. A margine della COP17, è stato annunciato che il finanziamento totale del Fondo per l'ambiente mondiale salirà a 4,4 miliardi di dollari.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-azerbaidjanais-ont-detruit-environ-un-sixieme-de-la-reserve-de-shikahogh-en-armenie-selon-hetq-am/",
+          "title": "Les Azerbaïdjanais ont détruit environ un sixième de la réserve de Shikahogh en Arménie selon Hetq.am"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263880",
+          "title": "En marge de la COP17, il a été annoncé que le financement total du Fonds pour l’environnement mondial serait porté à 4,4 milliards de dollars"
+        }
+      ]
+    }
+  ]
+}
