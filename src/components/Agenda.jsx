@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
-import { worldCountryKey, countryFlag, countryLabel } from '../worldPlace.js'
+import { worldCountryKey, countryFlag, countryLabel, placeLabel } from '../worldPlace.js'
 import { SectionHead } from './SectionHead.jsx'
 import { Carousel } from './Carousel.jsx'
 import { Lightbox } from './Lightbox.jsx'
@@ -110,7 +110,7 @@ export function Agenda() {
     for (const ev of agenda.switzerland || []) push('switzerland', ev)
     for (const ev of agenda.world || []) push(worldCountryKey(ev), ev)
 
-    const labelOf = (key) => countryLabel(key, lang, rep[key]?.location)
+    const labelOf = (key) => countryLabel(key, lang, placeLabel(rep[key]?.location, lang))
     const foldLabel = (k) =>
       labelOf(k).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     // Every country on the same footing, alphabetical by localized name.
@@ -156,7 +156,7 @@ export function Agenda() {
           img: ev.image || null,
           alt: ev.title,
           title: ev.title,
-          sub: [ev.location, day, when].filter(Boolean).join(' · '),
+          sub: [placeLabel(ev.location, lang), day, when].filter(Boolean).join(' · '),
           href: ev.url,
           cta: t('agenda.armenopole'),
           // Boutons de partage (src/share.js) : l'accueil de CE site, ancré
@@ -247,7 +247,7 @@ export function Agenda() {
                 <EventCard
                   key={ev.url || i}
                   ev={ev}
-                  place={ev.location}
+                  place={placeLabel(ev.location, lang)}
                   onOpen={() => setBox({ index: i })}
                 />
               ))}

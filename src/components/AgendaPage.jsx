@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { pathFor } from '../../sites.config.js'
-import { worldCountryKey, countryLabel, countryFlag } from '../worldPlace.js'
+import { worldCountryKey, countryLabel, countryFlag, placeLabel } from '../worldPlace.js'
 import { evenementsAVenir, eventAnchor } from '../agendaEvents.js'
 import { agendaJsonLd } from '../jsonld.js'
 import { useClientClock } from '../useClientNow.js'
@@ -75,7 +75,7 @@ export function AgendaPage() {
                       {ev.title}
                     </a>
                   </h3>
-                  <p className="agenda-list__where">{ev.location}</p>
+                  <p className="agenda-list__where">{placeLabel(ev.location, lang)}</p>
                 </li>
               ))}
             </ul>

@@ -74,7 +74,7 @@ npm run check        # contrôle les 24 pages produites (6 langues × 4 vues : l
 npm run prerender    # cuit les 24 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 662 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # 743 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -91,7 +91,7 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **662 tests** (`node --test test/*.mjs`) : ils gardent les
+Il y a désormais **743 tests** (`node --test test/*.mjs`) : ils gardent les
 invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
 une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
 `test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
@@ -471,9 +471,10 @@ canonique (`location` d'abord — « Erevan » → `armenia`, « Angleterre » �
 plié), `countryLabel(key, lang)` / `countryFlag(key)` la rendent. **Le nom de
 pays du sélecteur EST localisé dans les six langues** (fr compris) : c'est du
 chrome d'interface (un libellé de contrôle), pas du contenu d'article. Le
-**badge** de chaque carte, lui, garde le texte `location` brut (« Genève »,
-« Erevan », « Angleterre ») pour toutes les langues — non redondant avec le pays
-du menu, et fidèle au « Le Pays reste en Français ». Résoudre depuis `location`
+**badge** de chaque carte (et la visionneuse, et `/events/`) est traduit lui
+aussi depuis le 27 octobre 2026 par `placeLabel` (table `PLACES`) : un lecteur
+anglais lisait « Angleterre ». **Un lieu absent de `PLACES` reste en français,
+sans le moindre signe** — en ajouter un quand le flux en montre un nouveau. Résoudre depuis `location`
 avant le slug corrige au passage une donnée fausse (un événement en Angleterre
 listé sous le slug `greece`). Ce module reste **volontairement un `.js` à part,
 pas dans `i18n.jsx`** : y ajouter un export non-composant ferait passer le lint
