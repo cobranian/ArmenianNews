@@ -95,7 +95,7 @@ test('SOCIAL_KINDS : culture par défaut, valeur inconnue refusée', () => {
 test('X : 280 au plus, l’URL comptée 23', () => {
   const long = { ...culture('x', '2026-10-20'), title: 'T'.repeat(400), description: 'D'.repeat(400) }
   const { text } = compose('x', long)
-  assert.ok(text.endsWith('\n\nhttps://armenieinfo.ch/culture/x/'))
+  assert.ok(text.endsWith('\n\nhttps://armenieinfo.ch/culture/x/?utm_source=x&utm_medium=social'))
   const body = text.slice(0, text.lastIndexOf('\n\n'))
   assert.ok(body.length + 2 + 23 <= 280, `${body.length}`)
   assert.ok(body.endsWith('…'))
@@ -241,4 +241,18 @@ test('send : une vignette en échec ou hors des vitrines n’empêche pas le pos
     assert.ok(!urls.some((u) => u.includes('ailleurs.example')), 'hôte étranger téléchargé')
     assert.ok(!urls.some((u) => u.endsWith('uploadBlob')))
   }
+})
+
+// Sans marqueur, GA4 ne sait pas quel réseau amène les lecteurs (28 oct. 2026).
+test('compose : chaque lien cliquable porte son réseau en utm_source', () => {
+  const it = culture('komitas', '2026-10-20')
+  const tag = (p) => `https://armenieinfo.ch/culture/komitas/?utm_source=${p}&utm_medium=social`
+  assert.equal(compose('facebook', it).link, tag('facebook'))
+  assert.equal(compose('linkedin', it).url, tag('linkedin'))
+  assert.equal(compose('bluesky', it).embed.uri, tag('bluesky'))
+  assert.ok(compose('telegram', it).text.endsWith(`\n\n${tag('telegram')}`))
+  // Instagram : lien non cliquable, texte lisible laissé nu.
+  assert.match(compose('instagram', it).caption, /armenieinfo\.ch\/culture\/komitas\/ \(/)
+  // L'élément d'origine n'est pas modifié : il sert aux autres canaux.
+  assert.equal(it.url, 'https://armenieinfo.ch/culture/komitas/')
 })
