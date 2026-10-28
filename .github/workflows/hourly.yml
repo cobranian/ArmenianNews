@@ -477,6 +477,10 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
+          cache: npm
+
+      # `sharp` réduit la vignette Bluesky (scripts/lib/social-send.mjs).
+      - run: npm ci
 
       - name: Choisir quoi publier
         run: node scripts/social-post.mjs plan --out "$RUNNER_TEMP/social-plan.json"
