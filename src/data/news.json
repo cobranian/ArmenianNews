@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T12:23:54.078Z",
+  "generatedAt": "2026-10-28T12:45:54.490Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Իսպանիայի թագուհին այցելել է Գառնիի հեթանոսական տաճար և «Քարերի սիմֆոնիա» բնական հուշարձան",
+            "url": "https://hy.armradio.am/archives/767190",
+            "date": "2026-10-28T12:33:38.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3863-768x517.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Բարձր մակարդակի հանդիպումներ COP17-ում․ երկրները քննարկում են բնության պահպանությանն ուղղված քայլերը",
             "url": "https://hy.armradio.am/archives/767182",
             "date": "2026-10-28T12:19:17.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/767040",
             "date": "2026-10-27T15:00:11.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2022/02/wizz.air_-768x415-1-300x162.jpg",
-            "category": "Հասարակություն"
-          },
-          {
-            "title": "Նիդերլանդները կօգնի Հայաստանին անհետ կորածներին կամ նրանց մարմինները գտնելու հարցում",
-            "url": "https://hy.armradio.am/archives/767005",
-            "date": "2026-10-27T14:14:53.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/17930942889063-768x512.jpeg",
             "category": "Հասարակություն"
           }
         ]
@@ -1602,6 +1602,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Словения выражает поддержку курсу Армении на сближение с ЕС — Тоне Кайзер",
+            "url": "https://ru.armradio.am/2026/10/28/%d1%81%d0%bb%d0%be%d0%b2%d0%b5%d0%bd%d0%b8%d1%8f-%d0%b2%d1%8b%d1%80%d0%b0%d0%b6%d0%b0%d0%b5%d1%82-%d0%bf%d0%be%d0%b4%d0%b4%d0%b5%d1%80%d0%b6%d0%ba%d1%83-%d0%ba%d1%83%d1%80%d1%81%d1%83-%d0%b0%d1%80/",
+            "date": "2026-10-28T12:27:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/Tone-Kajzer-2026-768x512.jpg",
+            "category": "Все новости"
+          },
+          {
             "title": "Арарат Мирзоян: Армения не видит своего возвращения в ОДКБ",
             "url": "https://ru.armradio.am/2026/10/28/%d0%b0%d1%80%d0%b0%d1%80%d0%b0%d1%82-%d0%bc%d0%b8%d1%80%d0%b7%d0%be%d1%8f%d0%bd-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d1%8f-%d0%bd%d0%b5-%d0%b2%d0%b8%d0%b4%d0%b8%d1%82-%d1%81%d0%b2%d0%be%d0%b5%d0%b3/",
             "date": "2026-10-28T09:24:00.000Z",
@@ -1662,13 +1669,6 @@
             "url": "https://ru.armradio.am/2026/10/27/%d0%b4%d0%b6%d0%b5%d1%81%d1%81%d0%b8%d0%ba%d0%b0-%d1%80%d0%be%d1%81%d0%b2%d0%b0%d0%bb%d0%bb-%d0%ba%d0%be%d0%bd%d1%84%d0%b5%d1%80%d0%b5%d0%bd%d1%86%d0%b8%d1%8f-cop17-%d0%bf%d1%80%d0%be%d1%88%d0%bb/",
             "date": "2026-10-27T10:18:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/10/8gloftN44knm8zu1-768x511.webp",
-            "category": "Главная"
-          },
-          {
-            "title": "Ее Величество Королева София Испанская прибыла в Армению",
-            "url": "https://ru.armradio.am/2026/10/27/%d0%b5%d0%b5-%d0%b2%d0%b5%d0%bb%d0%b8%d1%87%d0%b5%d1%81%d1%82%d0%b2%d0%be-%d0%ba%d0%be%d1%80%d0%be%d0%bb%d0%b5%d0%b2%d0%b0-%d1%81%d0%be%d1%84%d0%b8%d1%8f-%d0%b8%d1%81%d0%bf%d0%b0%d0%bd%d1%81%d0%ba/",
-            "date": "2026-10-27T09:33:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/867599114_976898815467159_2643520666716600299_n-scaled-1-768x512.jpg",
             "category": "Главная"
           }
         ]
@@ -2165,18 +2165,18 @@
           "rubric": "politique"
         },
         {
-          "title": "Erevan nie une nouvelle fois avoir enfreint les règles de l’Union eurasienne",
-          "url": "https://www.armenews.com/erevan-nie-une-nouvelle-fois-avoir-enfreint-les-regles-de-lunion-eurasienne/",
-          "date": "2026-10-28T07:30:56.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Screenshot-2026-10-28-at-06-45-27-Yerevan-Again-Denies-Breaking-Eurasian-Union-Rules.png",
-          "rubric": "politique"
-        },
-        {
           "title": "Deux employés du ministère de l’Éducation sanctionnés pour les conditions déplorables d’accueil des enfants dans un camp de vacances à Tsaghkadzor",
           "url": "https://www.armenews.com/deux-employes-du-ministere-de-leducation-sanctionnes-pour-les-conditions-deplorables-daccueil-des-enfants-dans-un-camp-de-vacances-a-tsaghkadzor/",
           "date": "2026-10-28T07:30:56.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/Screenshot-2026-10-28-at-07-13-26-%D4%BE%D5%A1%D5%B2%D5%AF%D5%A1%D5%B1%D5%B8%D6%80%D5%AB-%D5%B3%D5%A1%D5%B4%D5%A2%D5%A1%D6%80%D5%B8%D6%82%D5%B4-%D5%A5%D6%80%D5%A5%D5%AD%D5%A1%D5%B6%D5%A5%D6%80%D5%AB-%D5%A1%D5%B6%D5%B4%D5%AD%D5%AB%D5%A9%D5%A1%D6%80-%D5%BA%D5%A1%D5%B5%D5%B4%D5%A1%D5%B6%D5%B6%D5%A5%D6%80%D5%AB-%D5%A3%D5%B8%D6%80%D5%AE%D5%B8%D5%BE-%D4%BF%D4%B3%D5%84%D5%8D%D5%86-2-%D5%A1%D5%B7%D5%AD%D5%A1%D5%BF%D5%A1%D5%AF%D5%AB%D6%81-%D5%A7-%D5%BA%D5%A1%D5%BF%D5%AA%D5%BE%D5%A5%D5%AC.png",
           "rubric": "societe"
+        },
+        {
+          "title": "Erevan nie une nouvelle fois avoir enfreint les règles de l’Union eurasienne",
+          "url": "https://www.armenews.com/erevan-nie-une-nouvelle-fois-avoir-enfreint-les-regles-de-lunion-eurasienne/",
+          "date": "2026-10-28T07:30:56.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Screenshot-2026-10-28-at-06-45-27-Yerevan-Again-Denies-Breaking-Eurasian-Union-Rules.png",
+          "rubric": "politique"
         },
         {
           "title": "La Russie et l’Iran approfondissent leur coopération nucléaire dans un contexte d’affaiblissement de la surveillance internationale",
@@ -2193,11 +2193,11 @@
           "rubric": "opinion"
         },
         {
-          "title": "La destruction de la mémoire historique ne doit pas devenir un nouveau chapitre passé sous silence dans l’histoire de l’indifférence internationale",
-          "url": "https://www.armenews.com/la-destruction-de-la-memoire-historique-ne-doit-pas-devenir-un-nouveau-chapitre-passe-sous-silence-dans-lhistoire-de-lindifference-internationale/",
+          "title": "L’opposition critique l’accord sur la « route Trump » conclu avec les États-Unis",
+          "url": "https://www.armenews.com/lopposition-critique-laccord-sur-la-route-trump-conclu-avec-les-etats-unis/",
           "date": "2026-10-28T07:30:39.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Screenshot-2026-10-28-at-07-59-56-Statement-Destruction-of-historical-memory-must-not-become-another-silent-chapter-in-history-of-international-indifference-NEWS.am_.png",
-          "rubric": "opinion"
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/e53253d1-45d1-4a4d-4d8a-08df13aec0bb_w1597_n_r1_s_s.jpg",
+          "rubric": "politique"
         }
       ]
     },
@@ -3663,6 +3663,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Armenia-India Environmental Cooperation on the Sidelines of COP17",
+            "url": "https://armenpress.am/en/article/1264111",
+            "date": "2026-10-28T12:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/2XLV2zBSbknEXTvi3RPFehdyqkcrwsjaC8KxZves.webp"
+          },
+          {
+            "title": "Fake WhatsApp and Telegram accounts opened in name of Armenian environment minister",
+            "url": "https://armenpress.am/en/article/1264104",
+            "date": "2026-10-28T12:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/JD3lWNBpSCt601VV04rjUHBV5zDS81VG8vaKc0CU.webp"
+          },
+          {
+            "title": "Yerevan hosts qualifying round of 2027 European U20 men’s volleyball championship",
+            "url": "https://armenpress.am/en/article/1264106",
+            "date": "2026-10-28T12:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/b9CXVsglc9ojkozJMs9AMicek4BHkYFyzkZJec3T.webp"
+          },
+          {
             "title": "Armenian defense minister chairs Public Council meeting",
             "url": "https://armenpress.am/en/article/1264105",
             "date": "2026-10-28T12:19:00.000Z",
@@ -3703,24 +3721,6 @@
             "url": "https://armenpress.am/en/article/1264088",
             "date": "2026-10-28T09:59:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/28/vwGiktErsk95emTNCDqypB9ffCnVnW7T066VzTOH.webp"
-          },
-          {
-            "title": "Economy minister addresses reasons behind export-import trade deficit",
-            "url": "https://armenpress.am/en/article/1264084",
-            "date": "2026-10-28T09:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/NnkSfvDyM6AI9dS5HnnbIKudxBufo7Va0PgaATHk.webp"
-          },
-          {
-            "title": "Armenia’s parliament passes domestic violence prevention package in first reading",
-            "url": "https://armenpress.am/en/article/1264089",
-            "date": "2026-10-28T09:50:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/Jm73adNtSnhbd30Kb4xsmkHZMrLFGd5bganepB32.webp"
-          },
-          {
-            "title": "Armenian parliament ratifies Charter of Board of Peace",
-            "url": "https://armenpress.am/en/article/1264086",
-            "date": "2026-10-28T09:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/pbFMzDdXckZ5XpBuUxUBlUJNzak42hLVGod9RvCO.webp"
           }
         ]
       },
@@ -3923,6 +3923,12 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "Yerevan hosts qualifying round of 2027 European U20 men’s volleyball championship",
+            "url": "https://armenpress.am/en/article/1264106",
+            "date": "2026-10-28T12:24:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/b9CXVsglc9ojkozJMs9AMicek4BHkYFyzkZJec3T.webp"
+          },
+          {
             "title": "Armenian team set to begin campaign at 2026 IWF World Championships",
             "url": "https://armenpress.am/en/article/1264037",
             "date": "2026-10-28T05:36:00.000Z",
@@ -3975,12 +3981,6 @@
             "url": "https://armenpress.am/en/article/1263791",
             "date": "2026-10-26T08:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/26/9LgXDfzug0B7uisRU6M4xtoyrzwhQMtAlMcPGyyA.webp"
-          },
-          {
-            "title": "Armenian wrestlers Aslanyan and Galstyan advance to World Championships quarterfinals",
-            "url": "https://armenpress.am/en/article/1263789",
-            "date": "2026-10-26T08:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/26/eerF5wVT5QO4EgM7cGUcvnH5n2eG65FHrqkKbcfE.webp"
           }
         ]
       },
@@ -4140,6 +4140,36 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Իսպանիայի թագուհի Սոֆիան այցելել է Գառնիի հեթանոսական տաճար և «Քարերի սիմֆոնիա» բնական հուշարձան",
+            "url": "https://armenpress.am/hy/article/1264115",
+            "date": "2026-10-28T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/5BTvLaVIYS2MM0aWGzKRGGxKSZcxDz3dLHbbTYKl.webp"
+          },
+          {
+            "title": "ՀՀ վարչապետը գնացքների բախման հետևանքով զոհերի առնչությամբ ցավակցել է Իսպանիայի կառավարությանն ու ժողովրդին",
+            "url": "https://armenpress.am/hy/article/1264116",
+            "date": "2026-10-28T12:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/k6MzDYBmhSkdECpNhjtWAFuuIgeXNQwlnQvAgsaF.webp"
+          },
+          {
+            "title": "Շինարարություն և բնապահպանական պատասխանատվություն. DALAN TECHNOPARK-Ը՝ COP17-ում",
+            "url": "https://armenpress.am/hy/article/1264113",
+            "date": "2026-10-28T12:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/ZXcaeLRIV16DRX0YyT5pBksGQySF3xNFkl40aeHh.webp"
+          },
+          {
+            "title": "ՀՀ շրջակա միջավայրի նախարարը COP17-ի շրջանակներում հանդիպել է Հնդկաստանի գործընկերոջ հետ",
+            "url": "https://armenpress.am/hy/article/1264111",
+            "date": "2026-10-28T12:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/2XLV2zBSbknEXTvi3RPFehdyqkcrwsjaC8KxZves.webp"
+          },
+          {
+            "title": "Ֆասթ Բանկի ֆինանսավորմամբ վերանորոգվել են Գյումրու դրամատիկական թատրոնի ենթակառուցվածքները",
+            "url": "https://armenpress.am/hy/article/1264110",
+            "date": "2026-10-28T12:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/mvjkFTy1UWeQvYcz2LlQDqMfl41wBFHllU1qzDYr.webp"
+          },
+          {
             "title": "Թվային ապագա և կայուն զարգացում. IDBank-ի Վարչության նախագահի հարցազրույցը Forbes ամսագրին",
             "url": "https://armenpress.am/hy/article/1264109",
             "date": "2026-10-28T12:23:00.000Z",
@@ -4168,42 +4198,18 @@
             "url": "https://armenpress.am/hy/article/1264104",
             "date": "2026-10-28T12:06:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/28/JD3lWNBpSCt601VV04rjUHBV5zDS81VG8vaKc0CU.webp"
-          },
-          {
-            "title": "ԱԺ փոխնախագահը Ադրբեջանի՝ խաղաղությանը վնասող հայտարարություններին նույն կերպ պատասխանելը սխալ է համարում",
-            "url": "https://armenpress.am/hy/article/1264103",
-            "date": "2026-10-28T12:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/AwQeO5hY9HrDFFe6nkVwyIq4LMP93nznaNziQAHO.webp"
-          },
-          {
-            "title": "Համբարձում Մաթևոսյանն ու Կատրին Շնեեբերգերը քննարկել են Հայաստան–Շվեյցարիա բնապահպանական համագործակցության ընդլայնման հնարավորությունները",
-            "url": "https://armenpress.am/hy/article/1264101",
-            "date": "2026-10-28T11:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/2FsWBkFK6S7rm2W7UP0Kwc5G5jXnOs470NhLs6ow.webp"
-          },
-          {
-            "title": "ՀՀ վարչապետը կառավարությունում հյուրընկալել է Սաուդյան Արաբիայի արքայազն Աբդուլազիզ բին Թալալ Ալ Սաուդին",
-            "url": "https://armenpress.am/hy/article/1264099",
-            "date": "2026-10-28T10:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/qjKbJAguo2PU9vVAbvdOcM5WKWtO0g2sQ6XV1lfu.webp"
-          },
-          {
-            "title": "ՀՏԶՀ-ի պատվիրատվությամբ Արարատի մարզում ևս մեկ դպրոց է կառուցվել",
-            "url": "https://armenpress.am/hy/article/1264098",
-            "date": "2026-10-28T10:44:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/HiKyjasFiqRGl6LlBjJS4ybru68MxoT4ojfxzPMA.webp"
-          },
-          {
-            "title": "Ծավ բնակավայրում խմելու ջրում սնդիկի պարունակությունը չի գերազանցում սահմանված առավելագույն թույլատրելի մակարդակը և համարվում է անվտանգ․ԱՆ",
-            "url": "https://armenpress.am/hy/article/1264095",
-            "date": "2026-10-28T10:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/BX50jC4iWWbuq2Em307pfRKsn5frlkwJGY0DexsG.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Ֆասթ Բանկի ֆինանսավորմամբ վերանորոգվել են Գյումրու դրամատիկական թատրոնի ենթակառուցվածքները",
+            "url": "https://armenpress.am/hy/article/1264110",
+            "date": "2026-10-28T12:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/mvjkFTy1UWeQvYcz2LlQDqMfl41wBFHllU1qzDYr.webp"
+          },
           {
             "title": "Թվային ապագա և կայուն զարգացում. IDBank-ի Վարչության նախագահի հարցազրույցը Forbes ամսագրին",
             "url": "https://armenpress.am/hy/article/1264109",
@@ -4257,18 +4263,24 @@
             "url": "https://armenpress.am/hy/article/1264004",
             "date": "2026-10-27T13:16:32.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/08/26/liWvIt4Auu5cPk4gWXeoHGq19eaI1p0zOYT9T8Ey.webp"
-          },
-          {
-            "title": "ՊԵԿ-ը բացահայտել է կեղծ, շուկայականից էականորեն ցածր գներով ստվերային շրջանառվող օղիների դեպքեր",
-            "url": "https://armenpress.am/hy/article/1263944",
-            "date": "2026-10-27T08:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/27/IaS7nQRp22uTaqGpyuyZq4QpqrqCNU5knp5O2hON.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "Պուտինը և Փեզեշքիանը քննարկել են Բուշերի ատոմակայան ռուսական անձնակազմի վերադարձի հարցը",
+            "url": "https://armenpress.am/hy/article/1264117",
+            "date": "2026-10-28T12:40:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/rcpYg5nsMmkVNIn83vpvFLp16h4GZBCXTtjPNCbc.webp"
+          },
+          {
+            "title": "Գնացքների վթարի պատճառով Մադրիդում չեղարկվել է ԱՀԿ-ի գագաթնաժողովի եզրափակիչ օրը",
+            "url": "https://armenpress.am/hy/article/1264112",
+            "date": "2026-10-28T12:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/1MrMRluJi18M0JMzoYOshQDZ0OWVtABDXDZMfEHe.webp"
+          },
           {
             "title": "Իսպանիայում գնացքների բախման միջադեպում դերակատարում է ունեցել ազդանշանի խափանումը. Reuters",
             "url": "https://armenpress.am/hy/article/1264108",
@@ -4316,24 +4328,24 @@
             "url": "https://armenpress.am/hy/article/1264064",
             "date": "2026-10-28T08:05:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/28/A0zljwxDB2rzTg7WVHmd6VENUSmf7kpb61s2uKXS.webp"
-          },
-          {
-            "title": "Ռուսաստանը մեկ շաբաթում պատերազմից ի վեր ռեկորդային 2,76 միլիարդ դոլարի նավթի արտահանում է իրականացրել․ Bloomberg",
-            "url": "https://armenpress.am/hy/article/1264062",
-            "date": "2026-10-28T07:52:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/1n50G4Qq8p8UsCln0oArRJOgcu94iYiv4OhyyVne.webp"
-          },
-          {
-            "title": "Թրամփը պլանավորում է հանդիպել Սի Ծինփինի հետ և քննարկել միջուկային զինաթափումը",
-            "url": "https://armenpress.am/hy/article/1264056",
-            "date": "2026-10-28T07:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/zM7d7rYou4uGzUCuZzAd6i3v0oeHQirAr4UboSXn.webp"
           }
         ]
       },
       {
         "categoryKey": "culture",
         "articles": [
+          {
+            "title": "Իսպանիայի թագուհի Սոֆիան այցելել է Գառնիի հեթանոսական տաճար և «Քարերի սիմֆոնիա» բնական հուշարձան",
+            "url": "https://armenpress.am/hy/article/1264115",
+            "date": "2026-10-28T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/5BTvLaVIYS2MM0aWGzKRGGxKSZcxDz3dLHbbTYKl.webp"
+          },
+          {
+            "title": "Ֆասթ Բանկի ֆինանսավորմամբ վերանորոգվել են Գյումրու դրամատիկական թատրոնի ենթակառուցվածքները",
+            "url": "https://armenpress.am/hy/article/1264110",
+            "date": "2026-10-28T12:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/mvjkFTy1UWeQvYcz2LlQDqMfl41wBFHllU1qzDYr.webp"
+          },
           {
             "title": "Moveius բալետը COP17-ի շրջանակում հանդես է եկել երևանյան բեմում",
             "url": "https://armenpress.am/hy/article/1264065",
@@ -4381,18 +4393,6 @@
             "url": "https://armenpress.am/hy/article/1263825",
             "date": "2026-10-26T11:08:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/26/omDs54gC5iScaB1Rq6rBCu11Zhxc5uMbXHmz2abR.webp"
-          },
-          {
-            "title": "Վարչապետը տիկնոջ հետ ներկա է գտնվել «Լռության էքսպոնատներ» խորագրով հատուկ ցուցադրության բացմանը",
-            "url": "https://armenpress.am/hy/article/1263760",
-            "date": "2026-10-25T17:44:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/ASb0zAb2f73NuYLDEbKfYBsWeEqdq4zjr8p6Gv1M.webp"
-          },
-          {
-            "title": "Հայաստանը հաղթեց «Մանկական Եվրատեսիլ 2026» երգի մրցույթում",
-            "url": "https://armenpress.am/hy/article/1263739",
-            "date": "2026-10-24T21:27:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/25/enr8dgji2YmLqbsA7HgFRN1npFPXbAEGpZXJLZG0.webp"
           }
         ]
       },
@@ -4617,6 +4617,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Министр окружающей среды Армении в рамках COP17 встретился со своим индийским коллегой",
+            "url": "https://armenpress.am/ru/article/1264111",
+            "date": "2026-10-28T12:40:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/2XLV2zBSbknEXTvi3RPFehdyqkcrwsjaC8KxZves.webp"
+          },
+          {
+            "title": "Цифровое будущее и устойчивое развитие: интервью председателя правления IDBank журналу Forbes",
+            "url": "https://armenpress.am/ru/article/1264109",
+            "date": "2026-10-28T12:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/kP5wfoAI5DER61YfLifz7DC3owzDAakLWzdwDQST.webp"
+          },
+          {
             "title": "В Ереване стартовал первый квалификационный раунд чемпионата Европы по волейболу среди юниоров до 20 лет",
             "url": "https://armenpress.am/ru/article/1264106",
             "date": "2026-10-28T12:23:00.000Z",
@@ -4663,24 +4675,18 @@
             "url": "https://armenpress.am/ru/article/1264086",
             "date": "2026-10-28T09:51:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/28/pbFMzDdXckZ5XpBuUxUBlUJNzak42hLVGod9RvCO.webp"
-          },
-          {
-            "title": "НС Армении ратифицировал Рамочное соглашение между Арменией и США по TRIPP",
-            "url": "https://armenpress.am/ru/article/1264087",
-            "date": "2026-10-28T09:41:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/STC3AFL2wrsIdT4jCpERzBJEdHoYy91M5VmzI7Ru.webp"
-          },
-          {
-            "title": "Армения и Нигерия обсудили вопросы расширения сотрудничества в области охраны окружающей среды",
-            "url": "https://armenpress.am/ru/article/1264085",
-            "date": "2026-10-28T09:33:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/WDqsYHWl44RqqKcIEpVvqEWwj3wM8M2sn55vbp0m.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Цифровое будущее и устойчивое развитие: интервью председателя правления IDBank журналу Forbes",
+            "url": "https://armenpress.am/ru/article/1264109",
+            "date": "2026-10-28T12:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/kP5wfoAI5DER61YfLifz7DC3owzDAakLWzdwDQST.webp"
+          },
           {
             "title": "Министр экономики о причинах дефицита экспорта и импорта в Армении",
             "url": "https://armenpress.am/ru/article/1264084",
@@ -4734,18 +4740,24 @@
             "url": "https://armenpress.am/ru/article/1263933",
             "date": "2026-10-27T07:56:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/27/Pwf6C9jfTJ2offcDga7GGt0sTYPeVF3DmKNw05lX.webp"
-          },
-          {
-            "title": "Министры иностранных дел Армении и Нидерландов обсудили возможности углубления экономического партнерства",
-            "url": "https://armenpress.am/ru/article/1263920",
-            "date": "2026-10-27T07:20:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/27/iqVPMA5Pg2RlozUIHmZPztVHXqjOB623giQKL3Cw.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "Из-за крушения поездов в Мадриде был отменен заключительный день саммита ВОЗ",
+            "url": "https://armenpress.am/ru/article/1264112",
+            "date": "2026-10-28T12:41:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/1MrMRluJi18M0JMzoYOshQDZ0OWVtABDXDZMfEHe.webp"
+          },
+          {
+            "title": "Сбой в работе сигнализации сыграл роль в железнодорожной катастрофе в Испании - Reuters",
+            "url": "https://armenpress.am/ru/article/1264108",
+            "date": "2026-10-28T12:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/28/1SnCJVn5WY75R2jctjSExnJOMl66AJ5bPi82ujkN.webp"
+          },
           {
             "title": "Нидерланды предоставят Украине невоенную помощь на сумму более 1 миллиарда евро",
             "url": "https://armenpress.am/ru/article/1264102",
@@ -4793,18 +4805,6 @@
             "url": "https://armenpress.am/ru/article/1264056",
             "date": "2026-10-28T07:20:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/28/zM7d7rYou4uGzUCuZzAd6i3v0oeHQirAr4UboSXn.webp"
-          },
-          {
-            "title": "Иран не предпринимал попыток восстановить ядерные объекты, поврежденные ударами США - Гросси",
-            "url": "https://armenpress.am/ru/article/1264052",
-            "date": "2026-10-28T07:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/A1N9IexaKSje6Ak4Wf81k8NsaD9GAZYOpicjNrcX.webp"
-          },
-          {
-            "title": "Трамп заявил, что конфликт с Ираном закончится тогда, когда он сам этого захочет",
-            "url": "https://armenpress.am/ru/article/1264049",
-            "date": "2026-10-28T06:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/28/Wiodtzylb2Q4s3XXsLyo8MHUnkTjUFuLxK0ZCbTb.webp"
           }
         ]
       },
@@ -8882,6 +8882,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia, Slovenia FMs continue Yerevan discussions – this time in working lunch format",
+            "url": "https://news.am/en/news/1070942",
+            "date": "2026-10-28T12:09:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/NhUFf76iWShgSnwZ.webp"
+          },
+          {
             "title": "Armenia legislature deputy speaker: Situation with ban on entry of some Armenian MPs to Russia is incomprehensible",
             "url": "https://news.am/en/news/1070930",
             "date": "2026-10-28T11:22:00.000Z",
@@ -8934,12 +8940,6 @@
             "url": "https://news.am/en/news/1070866",
             "date": "2026-10-28T08:27:00.000Z",
             "image": "https://news.am/storage/media/26/10/28/mivDaEg3hhvEeiV3.webp"
-          },
-          {
-            "title": "Armenia, Slovenia sign memorandum of understanding (VIDEO)",
-            "url": "https://news.am/en/news/1070856",
-            "date": "2026-10-28T08:15:00.000Z",
-            "image": "https://news.am/storage/media/26/10/28/98gsXxJMQsmah0jj.webp"
           }
         ]
       },
@@ -9544,6 +9544,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Նիդեռլանդները 2027-2029 թվականներին 1,2 միլիարդ եվրոյի ոչ ռազմական աջակցություն կտրամադրեն Ուկրաինային",
+            "url": "https://news.am/hy/news/1070940",
+            "date": "2026-10-28T12:44:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/buNLJF7j1jhX4A1c.webp"
+          },
+          {
             "title": "Հավաքների կազմակերպումը ոստիկանությունը պետք է դիտարկի որպես քաղաքացիների իրավունքների իրացման հարթակ․ փոխնախարար",
             "url": "https://news.am/hy/news/1070945",
             "date": "2026-10-28T12:11:00.000Z",
@@ -9596,12 +9602,6 @@
             "url": "https://news.am/hy/news/1070934",
             "date": "2026-10-28T11:12:00.000Z",
             "image": "https://news.am/storage/media/26/10/28/eOFAQSmGT9DTNLFk.webp"
-          },
-          {
-            "title": "Չինաստանը դեմ է արտահայտվել Մերձավոր Արևելքի քաղաքացիական օդանավակայաններին հասցված հարվածներին",
-            "url": "https://news.am/hy/news/1070888",
-            "date": "2026-10-28T10:58:00.000Z",
-            "image": "https://news.am/storage/media/26/08/20/Jx9nA1DxEumw0ypc.webp"
           }
         ]
       },
@@ -9742,10 +9742,28 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "Նիդեռլանդները 2027-2029 թվականներին 1,2 միլիարդ եվրոյի ոչ ռազմական աջակցություն կտրամադրեն Ուկրաինային",
+            "url": "https://news.am/hy/news/1070940",
+            "date": "2026-10-28T12:44:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/buNLJF7j1jhX4A1c.webp"
+          },
+          {
+            "title": "Իսրայելի հնարավոր «ռազմական արկածախնդրությունը» սպառնում է գազի մատակարարումներին․ Իրանի ԱԳՆ",
+            "url": "https://news.am/hy/news/1070937",
+            "date": "2026-10-28T12:29:00.000Z",
+            "image": "https://news.am/storage/media/26/09/29/9VlsMhnhDT3gBtG2.webp"
+          },
+          {
             "title": "Դոլարի ու եվրոյի փոխարժեքները նվազել են",
             "url": "https://news.am/hy/news/1070939",
             "date": "2026-10-28T12:04:00.000Z",
             "image": "https://news.am/storage/media/26/10/28/11t8IqbQFj9XiZFn.webp"
+          },
+          {
+            "title": "Ոնց որ նավթավերամշակման գործարանը համեմատեք բիտումի գործարանի հետ. Կարապետյանը՝ Գաբրիելյանին",
+            "url": "https://news.am/hy/news/1070932",
+            "date": "2026-10-28T11:15:39.000Z",
+            "image": "https://i.ytimg.com/vi/O8h-cPfjyqo/hqdefault.jpg"
           },
           {
             "title": "Բյուջեով պլանավորված պետական ներդրումների զգալի մասը չի իրականացվում․ «Լույս» հիմնադրամ",
@@ -9782,24 +9800,6 @@
             "url": "https://news.am/hy/news/1070885",
             "date": "2026-10-28T09:08:13.000Z",
             "image": "https://i.ytimg.com/vi/tPAD-WxnivI/hqdefault.jpg"
-          },
-          {
-            "title": "Մեր միջի հարուստը դուք եք, «Флаг в руки», արե՛ք. Եղոյանը՝ ընդդիմությանը",
-            "url": "https://news.am/hy/news/1070883",
-            "date": "2026-10-28T09:03:03.000Z",
-            "image": "https://i.ytimg.com/vi/gCKGIr9zxa4/hqdefault.jpg"
-          },
-          {
-            "title": "Չիր ու չամիչ, մեկ էլ Զատկի ձու. Խաչատրյանը` արտահանման մասին",
-            "url": "https://news.am/hy/news/1070877",
-            "date": "2026-10-28T08:56:32.000Z",
-            "image": "https://i.ytimg.com/vi/4eIm7Iv8xuA/hqdefault.jpg"
-          },
-          {
-            "title": "Ջերմուկի գործարանով չենք ապրելու, մեզ տասնյակ նոր արտադրություններ են պետք. Նարեկ Կարապետյան",
-            "url": "https://news.am/hy/news/1070874",
-            "date": "2026-10-28T08:50:44.000Z",
-            "image": "https://i.ytimg.com/vi/CAHxHeKPHhM/hqdefault.jpg"
           }
         ]
       },
@@ -9940,6 +9940,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Մեբուֆոտենինի քթի սփրեյը մինչև ութ շաբաթով նվազեցրել է դեպրեսիայի ախտանիշները․ JAMA",
+            "url": "https://med.news.am/arm/news/42206/mebufotenini-qti-spreyy-minchev-ut-shabatov-nvazecrel-e-depresiayi-akhtanishnery%E2%80%A4-jama.html",
+            "date": "2026-10-28T12:50:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42206.jpg"
+          },
+          {
             "title": "Դեմենցիայի նկատմամբ կայուն մարդկանց մոտ անհաս նեյրոններն այլ կերպ են գործում․ Cell Stem Cell",
             "url": "https://med.news.am/arm/news/42205/demenciayi-nkatmamb-kayun-mardkanc-mot-anhas-neyronnern-ayl-kerp-en-gortsum%E2%80%A4-cell-stem-cell.html",
             "date": "2026-10-28T10:46:00.000Z",
@@ -9992,12 +9998,6 @@
             "url": "https://med.news.am/arm/news/42196/marmnakan-patizhnery-erekhanerin-dardznum-en-tagnapayin-u-agresiv%E2%80%A4-parenting-across-cultures.html",
             "date": "2026-10-27T08:17:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42196.jpg"
-          },
-          {
-            "title": "Առողջության համընդհանուր ապահովագրության շրջանակում այցերը կարելի է ամրագրել առցանց",
-            "url": "https://med.news.am/arm/news/42199/aroxjutyan-hamyndhanur-apahovagrutyan-shrjanakum-aycery-kareli-e-amragrel-arcanc.html",
-            "date": "2026-10-27T06:27:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42199.jpg"
           }
         ]
       },
@@ -10206,6 +10206,36 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Пашинян: Есть уголовное дело по железной дороге в Мегри",
+            "url": "https://news.am/ru/news/1070957",
+            "date": "2026-10-28T12:45:15.000Z",
+            "image": "https://news.am/storage/media/26/10/22/HuWdunoXFpUn40WK.webp"
+          },
+          {
+            "title": "Нидерланды направят Украине €1,2 млрд невоенной помощи в 2027-2029 годах",
+            "url": "https://news.am/ru/news/1070940",
+            "date": "2026-10-28T12:44:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/buNLJF7j1jhX4A1c.webp"
+          },
+          {
+            "title": "Зеленский впервые предложил гарантии безопасности для России при заключении мира",
+            "url": "https://news.am/ru/news/1070956",
+            "date": "2026-10-28T12:43:14.000Z",
+            "image": "https://news.am/storage/media/26/10/28/aYETCdaamVSuUhJN.webp"
+          },
+          {
+            "title": "МВД: В Армении стартовал курс на тему «Координация проведения собраний в соответствии с правами человека»",
+            "url": "https://news.am/ru/news/1070945",
+            "date": "2026-10-28T12:11:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/YMqejLMzLOtfgXPx.webp"
+          },
+          {
+            "title": "Главы МИД Армении и Словении продолжили обсуждения в формате рабочего обеда",
+            "url": "https://news.am/ru/news/1070942",
+            "date": "2026-10-28T12:09:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/NhUFf76iWShgSnwZ.webp"
+          },
+          {
             "title": "«Убирайся в Россию!»: Премьера Словакии Фицо освистали в Праге",
             "url": "https://news.am/ru/news/1070926",
             "date": "2026-10-28T11:44:00.000Z",
@@ -10234,36 +10264,6 @@
             "url": "https://news.am/ru/news/1070927",
             "date": "2026-10-28T11:14:37.000Z",
             "image": "https://news.am/storage/media/26/10/28/j6xFGIECiFQSNSkz.webp"
-          },
-          {
-            "title": "Ilta-Sanomat: Стубб и Стёре передали послание Европы России",
-            "url": "https://news.am/ru/news/1070889",
-            "date": "2026-10-28T11:14:00.000Z",
-            "image": "https://news.am/storage/media/26/10/27/ncJxvQRTQBby5srd.webp"
-          },
-          {
-            "title": "Недвижимое и движимое имущество, а также денежные средства учредителя партии «Оринац еркир» Артура Багдасаряна находятся под арестом",
-            "url": "https://news.am/ru/news/1070934",
-            "date": "2026-10-28T11:12:00.000Z",
-            "image": "https://news.am/storage/media/26/10/28/eOFAQSmGT9DTNLFk.webp"
-          },
-          {
-            "title": "Китай выступил против ударов по гражданским аэропортам на Ближнем Востоке",
-            "url": "https://news.am/ru/news/1070888",
-            "date": "2026-10-28T10:58:00.000Z",
-            "image": "https://news.am/storage/media/26/08/20/Jx9nA1DxEumw0ypc.webp"
-          },
-          {
-            "title": "В правящей партии Армении отреагировали на требование Гаджиева извиниться перед Азербайджаном",
-            "url": "https://news.am/ru/news/1070924",
-            "date": "2026-10-28T10:56:07.000Z",
-            "image": "https://news.am/storage/media/26/10/28/vfGEGYAzRo1f69uo.webp"
-          },
-          {
-            "title": "Сарик Минасян: Если будет война с Турцией, российская военная база сможет продержаться 20 минут",
-            "url": "https://news.am/ru/news/1070919",
-            "date": "2026-10-28T10:28:00.000Z",
-            "image": "https://news.am/storage/media/26/10/28/yzdrjCU92HyeDwha.webp"
           }
         ]
       },
@@ -10404,6 +10404,18 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Нидерланды направят Украине €1,2 млрд невоенной помощи в 2027-2029 годах",
+            "url": "https://news.am/ru/news/1070940",
+            "date": "2026-10-28T12:44:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/buNLJF7j1jhX4A1c.webp"
+          },
+          {
+            "title": "МИД Ирана: возможная «военная авантюра» Израиля угрожает газовым поставкам",
+            "url": "https://news.am/ru/news/1070937",
+            "date": "2026-10-28T12:29:00.000Z",
+            "image": "https://news.am/storage/media/26/09/29/9VlsMhnhDT3gBtG2.webp"
+          },
+          {
             "title": "Курсы валют в Армении",
             "url": "https://news.am/ru/news/1070939",
             "date": "2026-10-28T12:04:00.000Z",
@@ -10450,18 +10462,6 @@
             "url": "https://news.am/ru/news/1070877",
             "date": "2026-10-28T08:56:00.000Z",
             "image": "https://i.ytimg.com/vi/4eIm7Iv8xuA/hqdefault.jpg"
-          },
-          {
-            "title": "Депутат: Армении необходимы десятки, если не сотни новых производственных предприятий",
-            "url": "https://news.am/ru/news/1070874",
-            "date": "2026-10-28T08:50:00.000Z",
-            "image": "https://i.ytimg.com/vi/CAHxHeKPHhM/hqdefault.jpg"
-          },
-          {
-            "title": "Армен Ашотян: Как пять маршрутов «Восток - Запад» делят регион и почему проект TRIPP - ловушка?",
-            "url": "https://news.am/ru/news/1070849",
-            "date": "2026-10-28T07:35:00.000Z",
-            "image": "https://news.am/storage/media/26/10/28/TtGeZYH4DTmH5otN.webp"
           }
         ]
       },
@@ -10602,6 +10602,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "JAMA: назальный мебуфотенин уменьшил симптомы депрессии на срок до восьми недель",
+            "url": "https://med.news.am/rus/news/42206/jama-nazalniyiy-mebufotenin-umenshil-simptomiy-depressii-na-srok-do-vosmi-nedel.html",
+            "date": "2026-10-28T12:50:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42206.jpg"
+          },
+          {
             "title": "Cell Stem Cell: у устойчивых к деменции людей иначе работают незрелые нейроны",
             "url": "https://med.news.am/rus/news/42205/cell-stem-cell-u-ustoiychiviykh-k-demencii-lyudeiy-inache-rabotayut-nezreliye-neiyroniy.html",
             "date": "2026-10-28T10:46:00.000Z",
@@ -10654,12 +10660,6 @@
             "url": "https://med.news.am/rus/news/42196/parenting-across-culturestelesniye-nakazaniya-rastyat-trevozhniykh-i-agressivniykh-deteiy-pokazalo-issledovanie.html",
             "date": "2026-10-27T08:17:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42196.jpg"
-          },
-          {
-            "title": "Circulation: врачи объяснили влияние гормонов и психики на женское сердце",
-            "url": "https://med.news.am/rus/news/42195/circulation-vrachi-obyasnili-vliyanie-gormonov-i-psikhiki-na-zhenskoe-serdce.html",
-            "date": "2026-10-27T06:13:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42195.jpg"
           }
         ]
       },
