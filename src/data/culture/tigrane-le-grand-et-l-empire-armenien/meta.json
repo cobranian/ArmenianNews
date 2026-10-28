@@ -1,0 +1,104 @@
+{
+  "slug": "tigrane-le-grand-et-l-empire-armenien",
+  "qid": "Q201303",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Tigrane II d'Arménie",
+      "url": "https://fr.wikipedia.org/wiki/Tigrane_II_d'Arm%C3%A9nie",
+      "revision": 236504255,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Tigranes the Great",
+      "url": "https://en.wikipedia.org/wiki/Tigranes_the_Great",
+      "revision": 1381572963,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Տիգրան Մեծ",
+      "url": "https://hy.wikipedia.org/wiki/%D5%8F%D5%AB%D5%A3%D6%80%D5%A1%D5%B6_%D5%84%D5%A5%D5%AE",
+      "revision": 10918531,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Тигран II",
+      "url": "https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D0%B3%D1%80%D0%B0%D0%BD_II",
+      "revision": 153559188,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "de",
+      "title": "Tigranes II.",
+      "url": "https://de.wikipedia.org/wiki/Tigranes_II.",
+      "revision": 261043917,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "it",
+      "title": "Tigrane II",
+      "url": "https://it.wikipedia.org/wiki/Tigrane_II",
+      "revision": 152826859,
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Empire of Tigranes the Great of Armenia Mayor.png",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Empire_of_Tigranes_the_Great_of_Armenia_Mayor.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 975,
+      "height": 571,
+      "mime": "image/png",
+      "author": "Omicroñ'R",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Empire_of_Tigranes_the_Great_of_Armenia_Mayor.png"
+    },
+    {
+      "file": "File:Political system of Great Armenia by Tigranes the Great.png",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Political_system_of_Great_Armenia_by_Tigranes_the_Great.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 992,
+      "height": 560,
+      "mime": "image/png",
+      "author": "Omicroñ'R",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Political_system_of_Great_Armenia_by_Tigranes_the_Great.png"
+    },
+    {
+      "file": "File:Tigran the Great, King of Kings.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Tigran_the_Great%2C_King_of_Kings.jpg/1920px-Tigran_the_Great%2C_King_of_Kings.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2000,
+      "height": 2000,
+      "mime": "image/jpeg",
+      "author": "Robert Pashayan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Tigran_the_Great,_King_of_Kings.jpg"
+    }
+  ],
+  "imageChoice": 2,
+  "image": {
+    "file": "File:Tigran the Great, King of Kings.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Tigran_the_Great%2C_King_of_Kings.jpg/1920px-Tigran_the_Great%2C_King_of_Kings.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 1200,
+    "mime": "image/jpeg",
+    "author": "Robert Pashayan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Tigran_the_Great,_King_of_Kings.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0.008,
+  "model": "gemini-flash-latest"
+}
