@@ -1,0 +1,91 @@
+name: Réseaux — vérifier les clés
+
+# Chaque jour, chaque compte branché se connecte et lit son propre nom, SANS
+# rien publier (scripts/social-post.mjs check). Une clé morte (Facebook
+# invalidée, mot de passe d'application Bluesky révoqué, bot Telegram retiré
+# du canal) ne se voyait sinon qu'au prochain article — et le registre
+# l'aurait déjà marqué « parti ». Une issue [social-down], assignée, s'ouvre
+# à la panne et se referme toute seule au retour, comme [sources-down].
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: social
+    env:
+      BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
+      BLUESKY_APP_PASSWORD_ORG: ${{ secrets.BLUESKY_APP_PASSWORD_ORG }}
+      BLUESKY_HANDLE_CH: ${{ secrets.BLUESKY_HANDLE_CH }}
+      BLUESKY_HANDLE_ORG: ${{ secrets.BLUESKY_HANDLE_ORG }}
+      FB_PAGE_ID_CH: ${{ secrets.FB_PAGE_ID_CH }}
+      FB_PAGE_ID_ORG: ${{ secrets.FB_PAGE_ID_ORG }}
+      FB_PAGE_TOKEN_CH: ${{ secrets.FB_PAGE_TOKEN_CH }}
+      FB_PAGE_TOKEN_ORG: ${{ secrets.FB_PAGE_TOKEN_ORG }}
+      IG_USER_ID_CH: ${{ secrets.IG_USER_ID_CH }}
+      IG_USER_ID_ORG: ${{ secrets.IG_USER_ID_ORG }}
+      LINKEDIN_AUTHOR_CH: ${{ secrets.LINKEDIN_AUTHOR_CH }}
+      LINKEDIN_AUTHOR_ORG: ${{ secrets.LINKEDIN_AUTHOR_ORG }}
+      LINKEDIN_TOKEN_CH: ${{ secrets.LINKEDIN_TOKEN_CH }}
+      LINKEDIN_TOKEN_ORG: ${{ secrets.LINKEDIN_TOKEN_ORG }}
+      TELEGRAM_BOT_TOKEN_CH: ${{ secrets.TELEGRAM_BOT_TOKEN_CH }}
+      TELEGRAM_BOT_TOKEN_ORG: ${{ secrets.TELEGRAM_BOT_TOKEN_ORG }}
+      TELEGRAM_CHAT_CH: ${{ secrets.TELEGRAM_CHAT_CH }}
+      TELEGRAM_CHAT_ORG: ${{ secrets.TELEGRAM_CHAT_ORG }}
+      X_ACCESS_SECRET_CH: ${{ secrets.X_ACCESS_SECRET_CH }}
+      X_ACCESS_SECRET_ORG: ${{ secrets.X_ACCESS_SECRET_ORG }}
+      X_ACCESS_TOKEN_CH: ${{ secrets.X_ACCESS_TOKEN_CH }}
+      X_ACCESS_TOKEN_ORG: ${{ secrets.X_ACCESS_TOKEN_ORG }}
+      X_API_KEY_CH: ${{ secrets.X_API_KEY_CH }}
+      X_API_KEY_ORG: ${{ secrets.X_API_KEY_ORG }}
+      X_API_SECRET_CH: ${{ secrets.X_API_SECRET_CH }}
+      X_API_SECRET_ORG: ${{ secrets.X_API_SECRET_ORG }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Se connecter à chaque compte
+        id: check
+        run: node scripts/social-post.mjs check --out "$RUNNER_TEMP/cles.md"
+
+      - name: Ouvrir, mettre à jour ou refermer l'issue [social-down]
+        if: always() && steps.check.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROBLEMS: ${{ steps.check.outputs.problems }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          ouverte=$(gh issue list --state open --limit 100 --json number,title             --jq '[.[] | select(.title | contains("[social-down]"))] | .[0].number // empty')
+          if [ "$PROBLEMS" = "0" ]; then
+            if [ -n "$ouverte" ]; then
+              gh issue close "$ouverte" --comment "Toutes les clés répondent à nouveau. $RUN_URL"
+            fi
+            exit 0
+          fi
+          {
+            echo "Un ou plusieurs comptes ne se connectent plus : leurs prochains posts échoueront."
+            echo
+            cat "$RUNNER_TEMP/cles.md"
+            echo
+            echo "Réparer : docs/social-setup.md (clé à recoller dans l'environnement « social »)."
+            echo "Puis retirer de src/data/social-posted.json les articles marqués « partis » pendant la panne."
+            echo
+            echo "Exécution : $RUN_URL"
+            echo
+            echo "Cette issue se met à jour chaque jour et se referme toute seule au retour."
+          } > "$RUNNER_TEMP/issue.md"
+          if [ -n "$ouverte" ]; then
+            gh issue edit "$ouverte" --body-file "$RUNNER_TEMP/issue.md"
+          else
+            gh issue create --title "[social-down] Une clé de réseau social ne marche plus"               --assignee cobranian --body-file "$RUNNER_TEMP/issue.md"
+          fi

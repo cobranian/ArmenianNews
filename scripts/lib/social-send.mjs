@@ -190,6 +190,42 @@ const SENDERS = {
   },
 }
 
+// Vérifier un compte SANS rien publier : une lecture qui exige les mêmes
+// droits que l'envoi. Une clé morte ne se voit sinon qu'au prochain article
+// — parfois des jours plus tard, et le registre l'aura déjà marqué « parti »
+// (FB_PAGE_TOKEN invalidé sans prévenir le 26 oct. 2026). Renvoie le nom du
+// compte vu par la plateforme, ou lève avec la raison.
+const VERIFIERS = {
+  async facebook(c, f) {
+    const token = await pageToken(c, f)
+    const { json: r } = await call(f, `${GRAPH}/${c.pageId}?fields=name`, { headers: { authorization: `Bearer ${token}` } }, 'facebook')
+    return r?.name
+  },
+  async instagram(c, f) {
+    const { json: r } = await call(f, `${GRAPH}/${c.userId}?fields=username`, { headers: { authorization: `Bearer ${c.token}` } }, 'instagram')
+    return r?.username && `@${r.username}`
+  },
+  async bluesky(c, f) {
+    const { json: s } = await call(f, `${BSKY}/com.atproto.server.createSession`, json({ identifier: c.handle, password: c.password }), 'bluesky')
+    return s?.handle && `@${s.handle}`
+  },
+  async telegram(c, f) {
+    // getChat échoue si la clé est morte OU si le bot a perdu l'accès au canal.
+    const { json: r } = await call(f, `${TELEGRAM}/bot${c.token}/getChat`, json({ chat_id: c.chat }), 'telegram')
+    return r?.result?.title
+  },
+  async linkedin(c, f) {
+    const { json: r } = await call(f, 'https://api.linkedin.com/v2/userinfo', { headers: { authorization: `Bearer ${c.token}` } }, 'linkedin')
+    return r?.name
+  },
+}
+
+export async function verify(channel, creds, { fetch: f = fetch } = {}) {
+  const v = VERIFIERS[channel.platform]
+  if (!v) return null // X : pas de lecture gratuite ; non vérifié
+  return (await v(creds, f)) ?? '(compte sans nom)'
+}
+
 export async function send(channel, item, creds, { fetch: f = fetch, wait = (ms) => new Promise((r) => setTimeout(r, ms)) } = {}) {
   const sender = SENDERS[channel.platform]
   if (!sender) throw new Error(`plateforme inconnue : ${channel.platform}`)

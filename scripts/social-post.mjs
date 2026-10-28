@@ -10,11 +10,14 @@
 //   node --env-file=.env scripts/social-post.mjs test --channel facebook-ch [--item culture:komitas] [--yes]
 //        Local : aperçu d'un message, et avec --yes, un envoi réel hors
 //        registre — pour vérifier des identifiants neufs.
+//   node scripts/social-post.mjs check [--out <fichier>]
+//        Chaque compte configuré se connecte et lit son nom, sans rien
+//        publier (social-check.yml, chaque jour → issue [social-down]).
 //
 // Variables : SOCIAL_LIVE (« 1 » pour publier), SOCIAL_KINDS (« culture » par
 // défaut, « culture,brief » pour la brève), et les secrets de chaque canal
 // (secretNames()). Un canal sans tous ses secrets est ignoré.
-import { readFile, writeFile } from 'node:fs/promises'
+import { appendFile, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadBriefs } from './lib/brief-pages.mjs'
@@ -30,7 +33,7 @@ import {
   emptyLedger,
   redact,
 } from './lib/social.mjs'
-import { send } from './lib/social-send.mjs'
+import { send, verify } from './lib/social-send.mjs'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const LEDGER = path.join(root, 'src/data/social-posted.json')
@@ -125,9 +128,32 @@ async function doTest() {
   }
 }
 
-const run = { plan: doPlan, post: doPost, test: doTest }[cmd]
+// Chaque compte configuré se connecte et lit son propre nom, sans publier.
+// `--out fichier` écrit la liste des échecs (Markdown) pour l'issue
+// [social-down] ; `problems=N` part dans $GITHUB_OUTPUT.
+async function doCheck() {
+  const lines = []
+  const channels = activeChannels()
+  if (!channels.length) console.log('· social : aucun canal configuré')
+  for (const channel of channels) {
+    const creds = credentials(channel, process.env)
+    try {
+      const who = await verify(channel, creds)
+      console.log(who === null ? `· social/${channel.id} : non vérifiable (pas de lecture gratuite)` : `✓ social/${channel.id} : ${who}`)
+    } catch (e) {
+      const msg = redact(e.message, Object.values(creds))
+      console.log(`✗ social/${channel.id} : ${msg}`)
+      lines.push(`- **${channel.id}** : ${msg}`)
+    }
+  }
+  const out = opt('--out')
+  if (out) await writeFile(out, lines.join('\n') + '\n')
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `problems=${lines.length}\n`)
+}
+
+const run = { plan: doPlan, post: doPost, test: doTest, check: doCheck }[cmd]
 if (!run) {
-  console.error('usage : social-post.mjs plan|post|test …')
+  console.error('usage : social-post.mjs plan|post|test|check …')
   process.exit(2)
 }
 run().catch((e) => {

@@ -48,6 +48,11 @@ encore.
 
 ## En cas de panne
 
+Chaque jour à 06:17 UTC, `social-check.yml` connecte chaque compte SANS publier
+(`node scripts/social-post.mjs check`) et ouvre une issue `[social-down]` si une
+clé est refusée ; elle se referme seule au retour. À lancer aussi à la main
+après avoir recollé une clé : `gh workflow run social-check.yml`.
+
 `gh run view <id> --log | grep social` : `✓` publié, `✗` échec (la raison
 suit), `amorcé` = compte neuf. Pour republier un article, retirez sa ligne du
 registre pour ce compte.
