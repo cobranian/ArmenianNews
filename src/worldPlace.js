@@ -46,6 +46,10 @@ export const COUNTRIES = {
   turkey:        { fr: 'Turquie',     de: 'Türkei', it: 'Turchia', en: 'Turkey',         hy: 'Թուրքիա',        ru: 'Турция',         flag: '🇹🇷' },
   uae:           { fr: 'Émirats arabes unis', de: 'Vereinigte Arabische Emirate', it: 'Emirati Arabi Uniti', en: 'United Arab Emirates', hy: 'ԱՄԷ', ru: 'ОАЭ',        flag: '🇦🇪' },
   uruguay:       { fr: 'Uruguay',     de: 'Uruguay', it: 'Uruguay', en: 'Uruguay',        hy: 'Ուրուգվայ',      ru: 'Уругвай',        flag: '🇺🇾' },
+  austria:       { fr: 'Autriche',    de: 'Österreich', it: 'Austria', en: 'Austria',        hy: 'Ավստրիա',        ru: 'Австрия',        flag: '🇦🇹' },
+  china:         { fr: 'Chine',       de: 'China', it: 'Cina', en: 'China',          hy: 'Չինաստան',       ru: 'Китай',          flag: '🇨🇳' },
+  spain:         { fr: 'Espagne',     de: 'Spanien', it: 'Spagna', en: 'Spain',          hy: 'Իսպանիա',        ru: 'Испания',        flag: '🇪🇸' },
+  sweden:        { fr: 'Suède',       de: 'Schweden', it: 'Svezia', en: 'Sweden',         hy: 'Շվեդիա',         ru: 'Швеция',         flag: '🇸🇪' },
 }
 
 // Free-text `location` values (accent-folded, lowercased) → canonical country
@@ -72,6 +76,10 @@ const PLACE_TO_COUNTRY = {
   egypte: 'egypt', irak: 'iraq', israel: 'israel', jordanie: 'jordan', pologne: 'poland',
   qatar: 'qatar', singapour: 'singapore', syrie: 'syria', turquie: 'turkey',
   uruguay: 'uruguay', 'emirats arabes unis': 'uae',
+  // Pages pays apparues chez Armenopole en octobre 2026
+  autriche: 'austria', vienne: 'austria', bruxelles: 'belgium', anvers: 'belgium',
+  'sao paulo': 'brazil', chine: 'china', shanghai: 'china', espagne: 'spain',
+  catalogne: 'spain', 'communaute de madrid': 'spain', suede: 'sweden',
 }
 
 const fold = (s) =>
@@ -139,6 +147,14 @@ export const PLACES = {
   // Italie, Argentine
   venetie:         { de: 'Venetien', it: 'Veneto', en: 'Veneto', hy: 'Վենետո', ru: 'Венето' },
   'buenos aires':  { de: 'Buenos Aires', it: 'Buenos Aires', en: 'Buenos Aires', hy: 'Բուենոս Այրես', ru: 'Буэнос-Айрес' },
+  // Autriche, Belgique, Brésil, Chine, Espagne (pages ouvertes en octobre 2026)
+  vienne:          { de: 'Wien', it: 'Vienna', en: 'Vienna', hy: 'Վիեննա', ru: 'Вена' },
+  bruxelles:       { de: 'Brüssel', it: 'Bruxelles', en: 'Brussels', hy: 'Բրյուսել', ru: 'Брюссель' },
+  anvers:          { de: 'Antwerpen', it: 'Anversa', en: 'Antwerp', hy: 'Անտվերպեն', ru: 'Антверпен' },
+  'sao paulo':     { de: 'São Paulo', it: 'San Paolo', en: 'São Paulo', hy: 'Սան Պաուլու', ru: 'Сан-Паулу' },
+  shanghai:        { de: 'Shanghai', it: 'Shanghai', en: 'Shanghai', hy: 'Շանհայ', ru: 'Шанхай' },
+  catalogne:       { de: 'Katalonien', it: 'Catalogna', en: 'Catalonia', hy: 'Կատալոնիա', ru: 'Каталония' },
+  'communaute de madrid': { de: 'Autonome Gemeinschaft Madrid', it: 'Comunità di Madrid', en: 'Community of Madrid', hy: 'Մադրիդի համայնք', ru: 'Сообщество Мадрида' },
 }
 // Variantes d'écriture d'un même lieu : une seule entrée, pas deux copies.
 PLACES.californie = PLACES.california

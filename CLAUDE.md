@@ -180,7 +180,7 @@ composants importent au build :
   | `armenianweekly` | en | WordPress REST | sous-catégories résolues depuis l'arbre |
   | `courrier` | fr | grille HTML + sitemap | dates par appariement d'URL (`www.`, accents) |
   | `armenews`, `artzakank`, `armenieinfotv` | fr | WordPress / HTML | artzakank publie par numéros |
-  | `armenopole` | agenda | 18 pages pays | slug inconnu = 302 générique (`redirect: 'manual'`) |
+  | `armenopole` | agenda | 21 pages pays | slug inconnu = 302 générique (`redirect: 'manual'`) |
   | `instagram` | mur | tirage à la ronde par brin | voir « Données » |
 
   **Trois règles valent pour toutes** : le User-Agent ne se dit **jamais**
@@ -461,7 +461,7 @@ résolu depuis le texte `location`**, pas par le slug de la page : le même
 événement est recensé sur plusieurs pages pays (donc `country` est souvent la
 communauté qui organise, pas le lieu), et Agenda **dédoublonne par URL** pour ne
 pas resservir 2-3 copies du même événement. `scripts/sources/armenopole.mjs`
-scrape **les 18 vraies pages pays d'armenopole** (plafonnées à 20 événements chacune)
+scrape **les 21 vraies pages pays d'armenopole** (plafonnées à 20 événements chacune)
 et dédoublonne aussi à la source — le menu couvre donc tout ce que le site
 propose, en se purgeant des pays sans événement.
 
