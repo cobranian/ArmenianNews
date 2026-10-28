@@ -240,10 +240,23 @@ function credit(item, s) {
   return `${s.image}${s.colon}${[img.author, img.license].filter(Boolean).join(', ')}`
 }
 
+// Chaque lien publié dit de quel réseau il vient : sans ce marqueur, GA4
+// range ces visites en « direct » ou « referral » mêlés, et rien ne permet de
+// savoir quel réseau vaut l'effort. Le canonical des pages ignore la query,
+// donc rien ne change pour l'indexation. Instagram n'a pas de lien cliquable
+// dans un post (« lien dans la bio ») : son texte reste nu.
+export function tagged(url, platform) {
+  const u = new URL(url)
+  u.searchParams.set('utm_source', platform)
+  u.searchParams.set('utm_medium', 'social')
+  return u.toString()
+}
+
 export function compose(platform, item) {
   const s = STRINGS[item.lang]
   if (!s) throw new Error(`pas de gabarit social en ${item.lang}`)
   const head = `${item.title}\n\n${item.description}`
+  if (platform !== 'instagram') item = { ...item, url: tagged(item.url, platform) }
   switch (platform) {
     case 'facebook':
       return { message: head, link: item.url }
