@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-28",
+  "lang": "it",
+  "generatedAt": "2026-10-28T03:30:41.172Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata da sviluppi diplomatici tra Armenia e Paesi Bassi, successi sportivi nella lotta, commemorazioni politiche e scoperte archeologiche.",
+  "topics": [
+    {
+      "title": "Cooperazione armeno-olandese in economia e diplomazia",
+      "text": "Il ministro degli Esteri olandese ha incontrato il premier Pashinyan e il ministro Mirzoyan per discutere l'approfondimento dei legami economici e l'apertura di nuovi mercati per i fiori armeni. Le parti hanno anche affrontato temi di cooperazione bilaterale e regionale.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264026",
+          "title": "Le ministre néerlandais des Affaires étrangères s’est informé des possibilités d’exportation des fleurs arméniennes"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264002",
+          "title": "Le Premier ministre Nikol Pashinyan a reçu une délégation conduite par le ministre néerlandais des Affaires étrangères"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263933",
+          "title": "Les Pays-Bas souhaitent aider l’Arménie à trouver de nouveaux marchés d’exportation pour les fleurs"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263920",
+          "title": "Les ministres des Affaires étrangères arménien et néerlandais ont évoqué les possibilités d’approfondir la coopération économique"
+        }
+      ]
+    },
+    {
+      "title": "Lotta: due ori e un bronzo per l'Armenia ai Mondiali",
+      "text": "Karen Aslanyan ha conquistato il titolo mondiale nella lotta greco-romana battendo un avversario azerbaigiano in finale. Gevorg Tadevosyan ha invece ottenuto la medaglia di bronzo nella stessa competizione.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264018",
+          "title": "Lutte gréco-romaine : Gevorg Tadevosyan décroche le bronze aux Championnats du monde"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/karen-aslanyan-armenie-simpose-8-4-sur-un-lutteur-azerbaidjanais-et-devient-champion-du-monde-de-lutte-greco-romaine-a-astana/",
+          "title": "Karen Aslanyan (Arménie) s’impose (8-4) sur un lutteur azerbaïdjanais et devient champion du monde de lutte gréco-romaine à Astana"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264011",
+          "title": "Le lutteur Karen Aslanyan a battu son adversaire azerbaïdjanais et est devenu champion du monde"
+        }
+      ]
+    },
+    {
+      "title": "Commemorazione delle vittime dell'attentato al Parlamento del 1999",
+      "text": "Il premier Nikol Pashinyan e il presidente dell'Assemblea nazionale Alen Simonyan hanno reso omaggio alle vittime dell'attacco del 27 ottobre 1999. La cerimonia si è svolta a Erevan in memoria dei deputati e funzionari uccisi.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-et-le-president-de-lassemblee-nationale-darmenie-ont-rendu-hommage-aux-victimes-de-lattentat-du-parlement-du-27-octobre-1999/",
+          "title": "Le Premier ministre et le président de l’Assemblée nationale d’Arménie ont rendu hommage aux victimes de l’attentat du Parlement du 27 octobre 1999"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263926",
+          "title": "Le Premier ministre et le président de l’Assemblée nationale rendent hommage aux victimes du 27 octobre"
+        }
+      ]
+    },
+    {
+      "title": "Prospettive sul processo di pace e corridoi regionali",
+      "text": "Il ministro degli Esteri Ararat Mirzoyan ha indicato che gli interessi economici comuni tra Armenia e Azerbaigian possono garantire la pace e che il paese potrebbe diventare un crocevia Est-Ovest. Il TRIPP potrebbe essere attuato prima della firma dell'accordo di pace definitivo.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015035",
+          "title": "Le TRIPP pourrait être mis en œuvre avant la signature de l’accord de paix, selon Mirzoyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263983",
+          "title": "Ararat Mirzoyan estime que les intérêts économiques de l’Arménie et de l’Azerbaïdjan constituent une véritable garantie de paix"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ararat-mirzoyan-a-propos-de-la-tripp-larmenie-deviendra-un-carrefour-essentiel-de-la-communication-est-ouest/",
+          "title": "Ararat Mirzoyan à propos de la TRIPP L’Arménie deviendra un carrefour essentiel de la communication Est-Ouest"
+        }
+      ]
+    },
+    {
+      "title": "Scoperte archeologiche eccezionali a Medzamor",
+      "text": "Gli scavi nel sito di Medzamor hanno portato alla luce orecchini d'oro, una moneta di Ottaviano Augusto e un pugnale di bronzo. I reperti confermano l'importanza storica dell'insediamento nell'età del ferro e in epoca romana.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/boucles-doreilles-en-or-piece-de-monnaie-doctave-auguste-poignard-en-bronze-decouvertes-exceptionnelles-sur-le-site-archeologique-de-medzamor-en-armenie/",
+          "title": "Boucles d’oreilles en or, pièce de monnaie d’Octave Auguste, poignard en bronze : découvertes exceptionnelles sur le site archéologique de Medzamor en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Visita della regina Sofia di Spagna in Armenia",
+      "text": "Sua Maestà la regina Sofia è arrivata a Erevan per una visita ufficiale di tre giorni. Il premier Pashinyan l'ha ricevuta per colloqui sulle relazioni bilaterali e la cooperazione culturale.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263989",
+          "title": "Le Premier ministre Nikol Pashinyan a reçu la Reine Sophie d’Espagn"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/sa-majeste-la-reine-sofia-despagne-est-arrivee-en-armenie-pour-une-visite-de-trois-jours/",
+          "title": "Sa Majesté la reine Sofia d’Espagne est arrivée en Arménie pour une visite de trois jours"
+        }
+      ]
+    },
+    {
+      "title": "Società civile contro la riduzione dei poteri locali sui progetti minerari",
+      "text": "Organizzazioni della società civile armene chiedono il ritiro di un disegno di legge che limiterebbe l'autorità delle comunità sui progetti estrattivi. La mobilitazione mira a preservare il diritto di veto locale sulle concessioni minerarie.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015013",
+          "title": "Des organisations de la société civile arménienne demandent le retrait d’un projet de loi réduisant le pouvoir des communautés sur les projets miniers"
+        }
+      ]
+    }
+  ]
+}

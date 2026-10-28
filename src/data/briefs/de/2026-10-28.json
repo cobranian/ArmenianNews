@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-28",
+  "lang": "de",
+  "generatedAt": "2026-10-28T03:30:41.172Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über diplomatische Treffen, wirtschaftliche Kooperationen, sportliche Erfolge und innenpolitische Themen.",
+  "topics": [
+    {
+      "title": "Niederländischer Aussenminister in Jerewan",
+      "text": "Der niederländische Aussenminister Caspar Veldkamp besuchte Armenien und traf Premierminister Nikol Paschinjan sowie Aussenminister Ararat Mirsojan. Dabei ging es um die Vertiefung der wirtschaftlichen Zusammenarbeit und neue Exportmöglichkeiten für armenische Blumen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264026",
+          "title": "Le ministre néerlandais des Affaires étrangères s’est informé des possibilités d’exportation des fleurs arméniennes"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264002",
+          "title": "Le Premier ministre Nikol Pashinyan a reçu une délégation conduite par le ministre néerlandais des Affaires étrangères"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263933",
+          "title": "Les Pays-Bas souhaitent aider l’Arménie à trouver de nouveaux marchés d’exportation pour les fleurs"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263920",
+          "title": "Les ministres des Affaires étrangères arménien et néerlandais ont évoqué les possibilités d’approfondir la coopération économique"
+        }
+      ]
+    },
+    {
+      "title": "TRIPP-Abkommen vor Friedensvertrag möglich",
+      "text": "Aussenminister Ararat Mirsojan erklärte, das Transportkorridor-Abkommen TRIPP könne noch vor der Unterzeichnung eines Friedensvertrags mit Aserbaidschan umgesetzt werden. Er betonte, dass gemeinsame wirtschaftliche Interessen eine Friedensgarantie darstellten.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015035",
+          "title": "Le TRIPP pourrait être mis en œuvre avant la signature de l’accord de paix, selon Mirzoyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263983",
+          "title": "Ararat Mirzoyan estime que les intérêts économiques de l’Arménie et de l’Azerbaïdjan constituent une véritable garantie de paix"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ararat-mirzoyan-a-propos-de-la-tripp-larmenie-deviendra-un-carrefour-essentiel-de-la-communication-est-ouest/",
+          "title": "Ararat Mirzoyan à propos de la TRIPP L’Arménie deviendra un carrefour essentiel de la communication Est-Ouest"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Ringer gewinnen Gold und Bronze bei Weltmeisterschaften",
+      "text": "Karen Aslanjan besiegte im Finale einen aserbaidschanischen Gegner und wurde Weltmeister im griechisch-römischen Ringen in Astana. Geworg Tadewosjan holte Bronze bei den gleichen Titelkämpfen.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264018",
+          "title": "Lutte gréco-romaine : Gevorg Tadevosyan décroche le bronze aux Championnats du monde"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/karen-aslanyan-armenie-simpose-8-4-sur-un-lutteur-azerbaidjanais-et-devient-champion-du-monde-de-lutte-greco-romaine-a-astana/",
+          "title": "Karen Aslanyan (Arménie) s’impose (8-4) sur un lutteur azerbaïdjanais et devient champion du monde de lutte gréco-romaine à Astana"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264011",
+          "title": "Le lutteur Karen Aslanyan a battu son adversaire azerbaïdjanais et est devenu champion du monde"
+        }
+      ]
+    },
+    {
+      "title": "Gedenken an Parlamentsattentat von 1999",
+      "text": "Premierminister Nikol Paschinjan und Parlamentspräsident Alen Simonyan gedachten der Opfer des Anschlags auf das armenische Parlament vom 27. Oktober 1999. Die Zeremonie fand am Jahrestag der Tat statt.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-et-le-president-de-lassemblee-nationale-darmenie-ont-rendu-hommage-aux-victimes-de-lattentat-du-parlement-du-27-octobre-1999/",
+          "title": "Le Premier ministre et le président de l’Assemblée nationale d’Arménie ont rendu hommage aux victimes de l’attentat du Parlement du 27 octobre 1999"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263926",
+          "title": "Le Premier ministre et le président de l’Assemblée nationale rendent hommage aux victimes du 27 octobre"
+        }
+      ]
+    },
+    {
+      "title": "Besuch der spanischen Königin Sofia in Armenien",
+      "text": "Königin Sofia von Spanien traf zu einem dreitägigen offiziellen Besuch in Jerewan ein. Sie wurde von Premierminister Nikol Paschinjan empfangen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1263989",
+          "title": "Le Premier ministre Nikol Pashinyan a reçu la Reine Sophie d’Espagn"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/sa-majeste-la-reine-sofia-despagne-est-arrivee-en-armenie-pour-une-visite-de-trois-jours/",
+          "title": "Sa Majesté la reine Sofia d’Espagne est arrivée en Arménie pour une visite de trois jours"
+        }
+      ]
+    },
+    {
+      "title": "Zusammenarbeit zwischen Jerewan und Lyon vertieft",
+      "text": "Der stellvertretende Bürgermeister von Jerewan und Vizepräsidenten der Metropole Lyon diskutierten über Kooperationsprojekte. Auch die armenisch-französischen Beziehungen in verschiedenen Bereichen wurden thematisiert.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264009",
+          "title": "Le vice-maire d’Erevan et les vice-présidents de la Métropole de Lyon ont discuté de questions liées à la cooperation"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264014",
+          "title": "David Khoudatyan et Florian Escudié ont évoqué la coopération entre l’Arménie et la France dans plusieurs domaines"
+        }
+      ]
+    },
+    {
+      "title": "Aussergewöhnliche Funde bei Ausgrabungen in Medzamor",
+      "text": "Archäologen entdeckten auf dem Gelände von Medzamor Goldohrringe, eine Münze von Kaiser Augustus und einen Bronzedolch. Die Funde gelten als bedeutende Zeugnisse der frühen Geschichte Armeniens.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/boucles-doreilles-en-or-piece-de-monnaie-doctave-auguste-poignard-en-bronze-decouvertes-exceptionnelles-sur-le-site-archeologique-de-medzamor-en-armenie/",
+          "title": "Boucles d’oreilles en or, pièce de monnaie d’Octave Auguste, poignard en bronze : découvertes exceptionnelles sur le site archéologique de Medzamor en Arménie"
+        }
+      ]
+    }
+  ]
+}
