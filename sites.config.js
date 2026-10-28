@@ -28,6 +28,7 @@ export const SITES = {
       instagram: 'https://www.instagram.com/armenieinfo_ch/',
       bluesky: 'https://bsky.app/profile/armenieinfo.bsky.social',
       telegram: 'https://t.me/armenieinfo_ch',
+      linkedin: 'https://www.linkedin.com/company/armenieinfo/',
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
     // domaine tout neuf, des signaux de nom contradictoires (masthead vs.
@@ -117,6 +118,7 @@ export const SITES = {
       instagram: 'https://www.instagram.com/armenianews_org/',
       bluesky: 'https://bsky.app/profile/armenianews.bsky.social',
       telegram: 'https://t.me/armenianews_org',
+      linkedin: 'https://www.linkedin.com/company/armenianews/',
     },
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme

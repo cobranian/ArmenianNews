@@ -14,6 +14,7 @@ test('chaque vitrine déclare ses propres comptes', () => {
     assert.match(site.social.instagram, /^https:\/\/www\.instagram\.com\/[a-z0-9_.]+\/$/)
     assert.match(site.social.bluesky, /^https:\/\/bsky\.app\/profile\/[a-z0-9.-]+$/)
     assert.match(site.social.telegram, /^https:\/\/t\.me\/[a-z0-9_]+$/)
+    assert.match(site.social.linkedin, /^https:\/\/www\.linkedin\.com\/company\/[a-z0-9-]+\/$/)
     for (const url of Object.values(site.social)) {
       assert.ok(!seen.has(url), `${url} partagé entre deux vitrines`)
       seen.add(url)
