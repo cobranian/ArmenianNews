@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T18:24:24.154Z",
+  "generatedAt": "2026-10-28T18:56:33.264Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "ԱՄՆ-ն և Ռուսաստանը քննարկում են ամերիկյան նավթային ընկերությունների վերադարձը Ռուսաստան․ Financial Times",
+            "url": "https://hy.armradio.am/archives/767271",
+            "date": "2026-10-28T18:40:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/79722995_1004-768x336.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մեծ խաղի մեկնարկը. Թրամփն ազդարարում է Պուտին-Զելենսկի շուտափույթ հանդիպման մասին՝ Կիևի հուսահատ դիմադրության և Եվրոպայի պառակտման պայմաններում",
             "url": "https://hy.armradio.am/archives/767241",
             "date": "2026-10-28T17:42:00.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/767093",
             "date": "2026-10-28T04:19:27.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/2127008453_329_60_2170_1096_1920x0_80_0_0_1c0ab4d6c13bc962c62ebff9a8bdfaaa-768x432.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Իսրայելում հաղթում է ընդդիմադիր դաշինքը եւ… իշխող կուսակցությունը",
-            "url": "https://hy.armradio.am/archives/767090",
-            "date": "2026-10-28T04:00:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/RzR1zkb9HL6B3vTqbzy6Lg-768x512.webp",
             "category": "Կարևոր"
           }
         ]
@@ -2130,6 +2130,13 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Construction et responsabilité environnementale : Dalan Technopark à la COP17",
+          "url": "https://www.armenews.com/construction-et-responsabilite-environnementale-dalan-technopark-a-la-cop17/",
+          "date": "2026-10-28T18:25:33.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8897.jpg",
+          "rubric": "economie"
+        },
+        {
           "title": "Maria Zakharova : La nouvelle salve d’accusations infondées lancée par Erevan contre Moscou n’a été suivie d’aucune proposition constructive ni d’aucune décision responsable",
           "url": "https://www.armenews.com/maria-zakharova-la-nouvelle-salve-daccusations-infondees-lancee-par-erevan-contre-moscou-na-ete-suivie-daucune-proposition-constructive-ni-daucune-decision-responsable/",
           "date": "2026-10-28T16:37:26.000Z",
@@ -2191,13 +2198,6 @@
           "date": "2026-10-28T07:30:58.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/51-1.jpg",
           "rubric": "culture"
-        },
-        {
-          "title": "Le maire de Glendale : « Nous ne savons pas combien d’Arméniens ont été arrêtés, les autorités fédérales ne collaborent pas avec nous »",
-          "url": "https://www.armenews.com/le-maire-de-glendale-nous-ne-savons-pas-combien-darmeniens-ont-ete-arretes-les-autorites-federales-ne-collaborent-pas-avec-nous/",
-          "date": "2026-10-28T07:30:58.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/Screenshot-2026-10-28-at-07-56-11-Glendale-mayor-We-dont-know-how-many-Armenians-were-arrested-federal-authorities-are-not-collaborating-with-us-NEWS.am_.png",
-          "rubric": "politique"
         }
       ]
     },
@@ -6939,6 +6939,13 @@
         "label": "Latest news",
         "articles": [
           {
+            "title": "Foreign Minister Mirzoyan says Armenia is ready to sign peace treaty with Azerbaijan in 2026",
+            "url": "https://www.thecaliforniacourier.com/foreign-minister-mirzoyan-says-armenia-is-ready-to-sign-peace-treaty-with-azerbaijan-in-2026/",
+            "date": "2026-10-28T18:51:48.000Z",
+            "image": "/cc/326a4089de84e50c.webp",
+            "rubric": "politique"
+          },
+          {
             "title": "Pashinyan says election results signal need for new opposition",
             "url": "https://www.thecaliforniacourier.com/pashinyan-says-election-results-signal-need-for-new-opposition/",
             "date": "2026-10-27T10:14:12.000Z",
@@ -7000,13 +7007,6 @@
             "date": "2026-10-14T18:39:11.000Z",
             "image": "/cc/a4db2842d4710f86.webp",
             "rubric": "monde"
-          },
-          {
-            "title": "Karabakh and the Price of Ignoring Early Warnings",
-            "url": "https://www.thecaliforniacourier.com/karabakh-and-the-price-of-ignoring-early-warnings/",
-            "date": "2026-10-13T17:33:35.000Z",
-            "image": "/cc/97129d78d1eb65da.webp",
-            "rubric": "politique"
           }
         ]
       }
@@ -8882,6 +8882,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia PM avoids answering question about difference between South Caucasus Railway company concession management and TRIPP project",
+            "url": "https://news.am/en/news/1070982",
+            "date": "2026-10-28T13:44:00.000Z",
+            "image": "https://i.ytimg.com/vi/HsQAh-w5tro/hqdefault.jpg"
+          },
+          {
             "title": "Not possible to return Armenians held in Azerbaijan through third countries, Armenia FM says",
             "url": "https://news.am/en/news/1070969",
             "date": "2026-10-28T13:07:00.000Z",
@@ -8934,12 +8940,6 @@
             "url": "https://news.am/en/news/1070895",
             "date": "2026-10-28T09:22:00.000Z",
             "image": "https://news.am/storage/media/26/10/28/0RpafbBM88Dd07zS.webp"
-          },
-          {
-            "title": "FM: Slovenia ready to share its European integration experience with Armenia",
-            "url": "https://news.am/en/news/1070890",
-            "date": "2026-10-28T09:22:00.000Z",
-            "image": "https://news.am/storage/media/26/10/28/nkyuC0Hp0kmOEj8I.webp"
           }
         ]
       },
@@ -9278,6 +9278,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Testosterone Does Not Guarantee Good Health: What a 15-Year Study of Men Revealed",
+            "url": "https://med.news.am/eng/news/42209/testosterone-does-not-guarantee-good-health-what-a-15-year-study-of-men-revealed.html",
+            "date": "2026-10-28T18:48:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42209.jpg"
+          },
+          {
             "title": "KH: Patient in South Korea dies from heart muscle rupture during acupuncture",
             "url": "https://med.news.am/eng/news/42208/kh-patient-in-south-korea-dies-from-heart-muscle-rupture-during-acupuncture.html",
             "date": "2026-10-28T16:54:00.000Z",
@@ -9330,12 +9336,6 @@
             "url": "https://med.news.am/eng/news/42200/french-researchers-explore-why-womens-body-temperature-fluctuates-more-than-mens.html",
             "date": "2026-10-27T14:35:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42200.jpg"
-          },
-          {
-            "title": "Frontiers: A Diverse Diet May Reduce the Risk of Peptic Ulcers in Older Adults",
-            "url": "https://med.news.am/eng/news/42198/frontiers-a-diverse-diet-may-reduce-the-risk-of-peptic-ulcers-in-older-adults.html",
-            "date": "2026-10-27T12:20:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42198.jpg"
           }
         ]
       },
@@ -9544,6 +9544,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "«Կտեսնեմ». Թրամփը չի բացառել իր մասնակցությունը Իսրայելի նոր կառավարության ձևավորմանը",
+            "url": "https://news.am/hy/news/1071046",
+            "date": "2026-10-28T18:53:00.000Z",
+            "image": "https://news.am/storage/media/26/05/25/XiEgO0mW0QHVgP0X.webp"
+          },
+          {
+            "title": "Ռուսաստանը Հայաստանի արձագանքը ԵԱՏՄ պայմանագրի կասեցման զեկույցին ագրեսիվ է անվանել. «Օրվա ամփոփում»՝ ռուսերեն",
+            "url": "https://news.am/hy/news/1071053",
+            "date": "2026-10-28T18:33:27.000Z",
+            "image": "https://img.youtube.com/vi/LoWQ3D-SqX8/maxresdefault.jpg"
+          },
+          {
             "title": "Պուտինի, Թրամփի և Զելենսկու հանդիպման համար կողմերը պետք է մեծ աշխատանք կատարեն. Պեսկով",
             "url": "https://news.am/hy/news/1071039",
             "date": "2026-10-28T17:52:00.000Z",
@@ -9590,18 +9602,6 @@
             "url": "https://news.am/hy/news/1071018",
             "date": "2026-10-28T15:50:49.000Z",
             "image": "https://news.am/storage/media/26/06/22/dz8Qr4rzOSXBIQGj.webp"
-          },
-          {
-            "title": "Հայաստանի արդարադատության նախարարը հաստատեց․ դատարանի որոշումների կատարումը պարտադիր է բոլորի համար",
-            "url": "https://news.am/hy/news/1071017",
-            "date": "2026-10-28T15:36:30.000Z",
-            "image": "https://news.am/storage/media/26/10/28/yJ7lNctswTcehTol.webp"
-          },
-          {
-            "title": "Սխա՞լ եմ ասում, պարոն վարչապետ.Միրզոյանն իշխանափոխության առաջարկ արեց ընդդիմությանը",
-            "url": "https://news.am/hy/news/1071015",
-            "date": "2026-10-28T15:25:15.000Z",
-            "image": "https://i.ytimg.com/vi/RmmQtotyNTw/hqdefault.jpg"
           }
         ]
       },
@@ -9808,6 +9808,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Աղքատների և անօթևանների համար». Վիկտորյա Բոնյան քննադատել է Louis Vuitton-ն ու Chanel-ը՝ Ֆիլիպ Կիրկորովի սիրելի ապրանքանիշերը",
+            "url": "https://style.news.am/arm/news/116870/",
+            "date": "2026-10-28T18:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116870.jpg"
+          },
+          {
             "title": "«Ես միշտ կլինեմ քո կողքին». Լամին Յամալի ընկերուհին նոր լուսանկարներ է հրապարակել «Ոսկե գնդակ»-ի «բեքսթեյջից»",
             "url": "https://style.news.am/arm/news/116873/",
             "date": "2026-10-28T18:03:00.000Z",
@@ -9860,12 +9866,6 @@
             "url": "https://style.news.am/arm/news/116862/",
             "date": "2026-10-28T11:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116862.jpg"
-          },
-          {
-            "title": "Միխայիլ Բոյարսկին կրկին վերադարձել է «Երեք հրացանակիրների» աշխարհ",
-            "url": "https://style.news.am/arm/news/116864/",
-            "date": "2026-10-28T10:05:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116864.jpg"
           }
         ]
       },
@@ -9940,6 +9940,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Տեստոստերոնը ամուր առողջություն չի երաշխավորում. ինչ է ցույց տվել 15 տարվա ընթացքում տղամարդկանց ուսումնասիրությունը",
+            "url": "https://med.news.am/arm/news/42209/testosterony-amur-aroxjutyun-chi-erashkhavorum-inch-e-cuyc-tvel-15-tarva-yntacqum-txamardkanc-usumnasirutyuny.html",
+            "date": "2026-10-28T18:48:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42209.jpg"
+          },
+          {
             "title": "Հարավային Կորեայում բուժառուն ասեղնաբուժության ժամանակ մահացել է սրտամկանի պատռվածքից. KH",
             "url": "https://med.news.am/arm/news/42208/haravayin-koreayum-buzharun-asexnabuzhutyan-zhamanak-mahacel-e-srtamkani-patrvatsqic-kh.html",
             "date": "2026-10-28T16:54:00.000Z",
@@ -9992,12 +9998,6 @@
             "url": "https://med.news.am/arm/news/42200/fransiayum-parzel-en-or-i-tarberutyun-txamardkanc-kananc-marmni-jermastitchann-aveli-hatchakh-e-tatanvum.html",
             "date": "2026-10-27T14:35:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42200.jpg"
-          },
-          {
-            "title": "Բազմազան սննդակարգը տարեցների շրջանում նվազեցնում է ստամոքսի խոցի ռիսկը․ Frontiers",
-            "url": "https://med.news.am/arm/news/42198/bazmazan-snndakargy-tarecneri-shrjanum-nvazecnum-e-stamoqsi-khoci-risky%E2%80%A4-frontiers.html",
-            "date": "2026-10-27T12:20:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42198.jpg"
           }
         ]
       },
@@ -10005,6 +10005,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "«Լուդինգ»-ի համահիմնադիր Վարժապետյանն ազատ է արձակվել",
+            "url": "https://news.am/hy/news/1071055",
+            "date": "2026-10-28T18:34:21.000Z",
+            "image": "https://news.am/storage/media/26/10/28/4i1fUQYQccsWmMKy.webp"
+          },
           {
             "title": "Իսպանիայում եռօրյա սուգ են հայտարարել արագընթաց գնացքների մահացու բախումից հետո",
             "url": "https://news.am/hy/news/1071041",
@@ -10058,12 +10064,6 @@
             "url": "https://news.am/hy/news/1070968",
             "date": "2026-10-28T13:56:00.000Z",
             "image": "https://news.am/storage/media/26/10/28/cyMu8WiJG2gjM1Fh.webp"
-          },
-          {
-            "title": "Վալոդյա Գրիգորյանը կապ չի ունեցել եղբորս սպшնության հետ. Նարեկ Օհանյան",
-            "url": "https://news.am/hy/news/1070973",
-            "date": "2026-10-28T13:23:34.000Z",
-            "image": "https://i.ytimg.com/vi/glqOGcF16nE/hqdefault.jpg"
           }
         ]
       },
@@ -10071,6 +10071,12 @@
         "categoryKey": "society",
         "label": "Հասարակություն",
         "articles": [
+          {
+            "title": "«Լուդինգ»-ի համահիմնադիր Վարժապետյանն ազատ է արձակվել",
+            "url": "https://news.am/hy/news/1071055",
+            "date": "2026-10-28T18:34:21.000Z",
+            "image": "https://news.am/storage/media/26/10/28/4i1fUQYQccsWmMKy.webp"
+          },
           {
             "title": "Բնակարանաշինության աջակցություն ենք տալիս նաև այն բնակավայրերին, որտեղ դպրոց ենք կառուցել. փոխվարչապետ",
             "url": "https://news.am/hy/news/1071008",
@@ -10124,12 +10130,6 @@
             "url": "https://news.am/hy/news/1069010",
             "date": "2026-10-20T06:32:00.000Z",
             "image": "https://news.am/storage/media/26/10/20/TQQ0AJlFsq1bHnjU.webp"
-          },
-          {
-            "title": "Ֆրանսիացի ցուցարարները հայտարարել են հոկտեմբերի 24-ին բողոքի ակցիաների երկրորդ փուլի մասին",
-            "url": "https://news.am/hy/news/1068851",
-            "date": "2026-10-19T11:56:00.000Z",
-            "image": "https://news.am/storage/media/26/10/19/0mTGmcR1B126onXJ.webp"
           }
         ]
       },
@@ -10206,6 +10206,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "«Я посмотрю»: Трамп не исключил участия в формировании нового правительства Израиля",
+            "url": "https://news.am/ru/news/1071046",
+            "date": "2026-10-28T18:53:00.000Z",
+            "image": "https://news.am/storage/media/26/05/25/XiEgO0mW0QHVgP0X.webp"
+          },
+          {
+            "title": "Россия назвала агрессивной реакцию Армении на доклад о приостановке договора о ЕАЭС: «Итоги дня» – видеоновости на русском",
+            "url": "https://news.am/ru/news/1071053",
+            "date": "2026-10-28T18:32:32.000Z",
+            "image": "https://img.youtube.com/vi/LoWQ3D-SqX8/maxresdefault.jpg"
+          },
+          {
             "title": "Песков: Для встречи Путина, Трампа и Зеленского сторонам предстоит проделать большую работу",
             "url": "https://news.am/ru/news/1071039",
             "date": "2026-10-28T17:52:00.000Z",
@@ -10252,18 +10264,6 @@
             "url": "https://news.am/ru/news/1071018",
             "date": "2026-10-28T15:38:13.000Z",
             "image": "https://news.am/storage/media/26/06/22/dz8Qr4rzOSXBIQGj.webp"
-          },
-          {
-            "title": "Министр юстиции Армении подтвердила: Выполнение решений суда обязательно для всех",
-            "url": "https://news.am/ru/news/1071017",
-            "date": "2026-10-28T15:36:30.000Z",
-            "image": "https://news.am/storage/media/26/10/28/yJ7lNctswTcehTol.webp"
-          },
-          {
-            "title": "Мирзоян предложил оппозиции способ смены власти: Разве я не прав, господин премьер-министр?",
-            "url": "https://news.am/ru/news/1071015",
-            "date": "2026-10-28T15:25:15.000Z",
-            "image": "https://i.ytimg.com/vi/RmmQtotyNTw/hqdefault.jpg"
           }
         ]
       },
@@ -10470,6 +10470,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "«Для бедных и бомжей»: Виктория Боня раскритиковала Louis Vuitton и Chanel – любимые бренды Филиппа Киркорова",
+            "url": "https://style.news.am/rus/news/116870/",
+            "date": "2026-10-28T18:32:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/10/116870.jpg"
+          },
+          {
             "title": "«Я всегда буду рядом»: девушка Ламина Ямаля поделилась новыми кадрами с закулисья «Золотого мяча»",
             "url": "https://style.news.am/rus/news/116873/",
             "date": "2026-10-28T18:03:00.000Z",
@@ -10522,12 +10528,6 @@
             "url": "https://style.news.am/rus/news/116865/",
             "date": "2026-10-28T08:47:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/10/116865.jpg"
-          },
-          {
-            "title": "Кевин Джонас случайно отправил фото своего пениса в семейный чат с братьями о футболе",
-            "url": "https://style.news.am/rus/news/116860/",
-            "date": "2026-10-28T07:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/10/116860.jpg"
           }
         ]
       },
@@ -10602,6 +10602,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Тестостерон не гарантирует крепкого здоровья: что показало исследование мужчин на протяжении 15 лет",
+            "url": "https://med.news.am/rus/news/42209/testosteron-ne-garantiruet-krepkogo-zdorovya-chto-pokazalo-issledovanie-muzhchin-na-protyazhenii-15-let.html",
+            "date": "2026-10-28T18:48:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42209.jpg"
+          },
+          {
             "title": "KH: в Южной Корее пациент умер от разрыва сердечной мышцы во время иглоукалывания",
             "url": "https://med.news.am/rus/news/42208/kh-v-yuzhnoiy-koree-pacient-umer-ot-razriyva-serdechnoiy-miyshciy-vo-vremya-igloukaliyvaniya.html",
             "date": "2026-10-28T16:54:00.000Z",
@@ -10654,12 +10660,6 @@
             "url": "https://med.news.am/rus/news/42200/vo-francii-viyyasnili-chto-temperatura-u-zhenshchin-kolebletsya-chashche-chem-u-muzhchin.html",
             "date": "2026-10-27T14:35:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42200.jpg"
-          },
-          {
-            "title": "Frontiers: разнообразное питание снижает риск язвы желудка в пожилом возрасте",
-            "url": "https://med.news.am/rus/news/42198/frontiers-raznoobraznoe-pitanie-snizhaet-risk-yazviy-zheludka-v-pozhilom-vozraste.html",
-            "date": "2026-10-27T12:20:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42198.jpg"
           }
         ]
       },
