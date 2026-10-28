@@ -16,11 +16,19 @@ const BASE = 'https://armenopole.com'
 // on that date for brazil, egypt, iraq, israel, jordan, qatar, syria and
 // turkey — hence `redirect: 'manual'` in scrapeCountry, which turns the next
 // slug to go generic into a logged ✗ instead of a mislabelled country.
+//
+// The list follows armenopole's own nav, which moves: on 28 Oct 2026 bulgaria,
+// cyprus, poland and singapore had gone generic (✗ every hour since at least
+// 21 Oct) while austria, belgium, brazil, china, spain, sweden and turkey had
+// become real pages. Re-check it against the nav when ✗ armenopole/<slug>
+// lines persist: `curl -s https://armenopole.com/armenian/events | grep -o
+// 'armenian/events/[a-z-]*' | sort -u`.
 const WORLD_COUNTRIES = [
-  'argentina', 'armenia', 'australia', 'bulgaria', 'canada',
-  'cyprus', 'france', 'germany', 'italy', 'lebanon',
-  'netherlands', 'poland', 'russia', 'singapore', 'uae',
-  'unitedkingdom', 'uruguay', 'usa',
+  'argentina', 'armenia', 'australia', 'austria', 'belgium',
+  'brazil', 'canada', 'china', 'france', 'germany',
+  'italy', 'lebanon', 'netherlands', 'russia', 'spain',
+  'sweden', 'turkey', 'uae', 'unitedkingdom', 'uruguay',
+  'usa',
 ]
 
 function parseEventsPage(html) {

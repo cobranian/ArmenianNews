@@ -225,7 +225,7 @@ résidentielle et 403 à un runner.
     hotlinkées en direct sur les quatre hôtes (aucune protection anti-hotlink,
     vérifié avec un `Referer` étranger) — donc ni proxy, ni wsrv.
 - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **les vraies pages pays
-  d'armenopole** (18, hors Suisse gérée à part), en plafonnant chaque pays à 20
+  d'armenopole** (21, hors Suisse gérée à part ; la liste suit la navigation du site, qui bouge — voir le commentaire de `WORLD_COUNTRIES`), en plafonnant chaque pays à 20
   événements, puis dédoublonne par URL. **Un slug inconnu redirige (302) vers
   le flux générique** `/armenian/events` — brazil, egypt, iraq, israel, jordan,
   qatar, syria, turkey le 30 sept. 2026, greece/belgium avant. Ses événements
