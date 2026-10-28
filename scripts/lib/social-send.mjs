@@ -3,7 +3,6 @@
 //
 // Aucun jeton dans une URL écrite au log : Telegram met le sien dans le
 // chemin, d'où l'interdiction d'imprimer `url` dans les erreurs.
-import sharp from 'sharp'
 import { compose, oauth1Header } from './social.mjs'
 import { SITES } from '../../sites.config.js'
 
@@ -73,6 +72,10 @@ export async function blueskyThumb(url, jwt, f) {
     if (!THUMB_HOSTS.has(new URL(url).host)) throw new Error(`hôte refusé : ${new URL(url).host}`)
     const res = await f(url, { signal: AbortSignal.timeout(30_000) })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    // Import différé : sans `sharp` installé, seule la vignette manque — le
+    // plan et les autres réseaux tournent. Un import en tête de fichier a
+    // fait planter tous les envois (28 oct. 2026, workflows sans npm ci).
+    const { default: sharp } = await import('sharp')
     const img = await sharp(Buffer.from(await res.arrayBuffer()))
       .resize({ width: 1200, withoutEnlargement: true })
       .jpeg({ quality: 80, mozjpeg: true })
