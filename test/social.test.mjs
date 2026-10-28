@@ -256,3 +256,33 @@ test('compose : chaque lien cliquable porte son réseau en utm_source', () => {
   // L'élément d'origine n'est pas modifié : il sert aux autres canaux.
   assert.equal(it.url, 'https://armenieinfo.ch/culture/komitas/')
 })
+
+// Vérifier une clé sans rien publier (social-check.yml, 28 oct. 2026).
+import { verify } from '../scripts/lib/social-send.mjs'
+const chan = (id) => CHANNELS.find((c) => c.id === id)
+
+test('verify : chaque plateforme LIT, n’écrit jamais', async () => {
+  const calls = []
+  const fakeFetch = async (url, init = {}) => {
+    calls.push({ url, init })
+    if (url.endsWith('?fields=access_token')) return new Response(JSON.stringify({ access_token: 'PAGE' }))
+    if (url.includes('fields=name')) return new Response(JSON.stringify({ name: 'Arménie Info' }))
+    if (url.includes('fields=username')) return new Response(JSON.stringify({ username: 'armenieinfo_ch' }))
+    if (url.endsWith('createSession')) return new Response(JSON.stringify({ handle: 'armenieinfo.ch', accessJwt: 'J' }))
+    if (url.endsWith('/getChat')) return new Response(JSON.stringify({ ok: true, result: { title: 'Arménie Info' } }))
+    return new Response('{}', { status: 500 })
+  }
+  assert.equal(await verify(chan('facebook-ch'), { pageId: '1', token: 'U' }, { fetch: fakeFetch }), 'Arménie Info')
+  assert.equal(await verify(chan('instagram-ch'), { userId: '2', token: 'U' }, { fetch: fakeFetch }), '@armenieinfo_ch')
+  assert.equal(await verify(chan('bluesky-ch'), { handle: 'did:plc:x', password: 'p' }, { fetch: fakeFetch }), '@armenieinfo.ch')
+  assert.equal(await verify(chan('telegram-ch'), { token: 'T', chat: '@armenieinfo_ch' }, { fetch: fakeFetch }), 'Arménie Info')
+  assert.equal(await verify(chan('x-ch'), {}, { fetch: fakeFetch }), null)
+  for (const c of calls) {
+    assert.ok(!/\/(feed|media|media_publish|createRecord|sendMessage|posts|tweets)\b/.test(c.url), `écriture : ${c.url}`)
+  }
+})
+
+test('verify : une clé refusée remonte avec son statut', async () => {
+  const fakeFetch = async () => new Response(JSON.stringify({ message: 'Invalid identifier or password' }), { status: 401 })
+  await assert.rejects(verify(chan('bluesky-org'), { handle: 'h', password: 'p' }, { fetch: fakeFetch }), /HTTP 401 Invalid identifier/)
+})
