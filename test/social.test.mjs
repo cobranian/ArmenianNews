@@ -193,3 +193,52 @@ test('send : une erreur d’API remonte avec son statut', async () => {
   const fakeFetch = async () => new Response(JSON.stringify({ error: { message: 'Invalid OAuth access token' } }), { status: 400 })
   await assert.rejects(send(fb, culture('a', '2026-10-20'), { pageId: '1', token: 't' }, { fetch: fakeFetch }), /HTTP 400 Invalid OAuth/)
 })
+
+// Sans vignette, la carte Bluesky n'est qu'un cadre de texte (28 oct. 2026).
+test('compose : Bluesky porte une vignette, la carte du site pour une brève', () => {
+  assert.equal(compose('bluesky', culture('komitas', '2026-10-20')).thumbUrl, 'https://armenieinfo.ch/culture/komitas/image.jpg')
+  assert.equal(compose('bluesky', culture('komitas', '2026-10-20', null)).thumbUrl, 'https://armenieinfo.ch/og-image-ch.jpg')
+})
+
+const bsky = CHANNELS.find((c) => c.id === 'bluesky-ch')
+const jpeg = () =>
+  import('sharp').then(({ default: sharp }) =>
+    sharp({ create: { width: 1600, height: 900, channels: 3, background: '#e0a060' } }).jpeg().toBuffer(),
+  )
+
+test('send : Bluesky dépose la vignette réduite puis la cite dans la carte', async () => {
+  const img = await jpeg()
+  const calls = []
+  const fakeFetch = async (url, init = {}) => {
+    calls.push({ url, init })
+    if (url.endsWith('createSession')) return new Response(JSON.stringify({ did: 'did:x', accessJwt: 'JWT' }))
+    if (url.endsWith('image.jpg')) return new Response(img)
+    if (url.endsWith('uploadBlob')) return new Response(JSON.stringify({ blob: { $type: 'blob', ref: { $link: 'b1' }, mimeType: 'image/jpeg', size: 1 } }))
+    return new Response(JSON.stringify({ uri: 'at://p' }))
+  }
+  const uri = await send(bsky, culture('komitas', '2026-10-20'), { handle: 'h', password: 'p' }, { fetch: fakeFetch })
+  assert.equal(uri, 'at://p')
+  const up = calls.find((c) => c.url.endsWith('uploadBlob'))
+  assert.equal(up.init.headers['content-type'], 'image/jpeg')
+  const { default: sharp } = await import('sharp')
+  assert.equal((await sharp(up.init.body).metadata()).width, 1200)
+  const post = JSON.parse(calls.at(-1).init.body)
+  assert.equal(post.record.embed.external.thumb.ref.$link, 'b1')
+})
+
+test('send : une vignette en échec ou hors des vitrines n’empêche pas le post', async () => {
+  for (const image of [{ width: 1, height: 1 }, null]) {
+    const urls = []
+    const fakeFetch = async (url) => {
+      urls.push(url)
+      if (url.endsWith('createSession')) return new Response(JSON.stringify({ did: 'did:x', accessJwt: 'JWT' }))
+      if (url.endsWith('createRecord')) return new Response(JSON.stringify({ uri: 'at://p' }))
+      return new Response('nope', { status: 404 })
+    }
+    const item = culture('komitas', '2026-10-20', image)
+    if (image) item.image.url = 'https://ailleurs.example/x.jpg'
+    assert.equal(await send(bsky, item, { handle: 'h', password: 'p' }, { fetch: fakeFetch }), 'at://p')
+    assert.ok(!urls.some((u) => u.includes('ailleurs.example')), 'hôte étranger téléchargé')
+    assert.ok(!urls.some((u) => u.endsWith('uploadBlob')))
+  }
+})

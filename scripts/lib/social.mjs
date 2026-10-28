@@ -265,6 +265,9 @@ export function compose(platform, item) {
         text: truncate(head, 300),
         lang: item.lang,
         embed: { uri: item.url, title: truncate(item.title, 300), description: truncate(item.description, 300) },
+        // Sans vignette, la carte de lien Bluesky n'est qu'un cadre de texte.
+        // Une brève n'a pas d'image : elle prend la carte de partage du site.
+        thumbUrl: item.image?.url ?? SITES[siteOf(item.lang)].host + SITES[siteOf(item.lang)].ogImage,
       }
     case 'telegram':
       return { text: `${head}\n\n${item.url}` }
