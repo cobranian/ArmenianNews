@@ -40,7 +40,7 @@ d'Arménie Info, en sur ceux d'Armenia News. Il tourne dans le job `social` de
 | Instagram | `IG_USER_ID_*` (+ le jeton de Page) | Compte pro lié à la Page ; `GET /{page-id}?fields=instagram_business_account` ; droit `instagram_content_publish` | Seuls les articles avec une image entre 4:5 et 1,91:1 partent ; le crédit de l'image est dans la légende |
 | LinkedIn | `LINKEDIN_AUTHOR_*` (`urn:li:person:…` ou `urn:li:organization:…`), `LINKEDIN_TOKEN_*` | Produit « Share on LinkedIn » (profil) ; une **page entreprise** demande le produit « Community Management API », soumis à validation | **Le jeton expire après 60 jours** : à renouveler, sinon `✗ social/linkedin` |
 | X | `X_API_KEY_*`, `X_API_SECRET_*`, `X_ACCESS_TOKEN_*`, `X_ACCESS_SECRET_*` | developer.x.com, app en lecture + écriture, jetons OAuth 1.0a de l'utilisateur | L'écriture par API est payante ou très limitée selon l'offre en vigueur : vérifier le tarif avant |
-| Bluesky | `BLUESKY_HANDLE_*`, `BLUESKY_APP_PASSWORD_*` | Réglages → Confidentialité et sécurité → Mots de passe d'application | Gratuit. Jamais le mot de passe principal |
+| Bluesky | `BLUESKY_HANDLE_*` (le **DID** `did:plc:…`, pas le pseudo), `BLUESKY_APP_PASSWORD_*` | Réglages → Confidentialité et sécurité → Mots de passe d'application | Gratuit. Jamais le mot de passe principal. Pseudos = domaines (@armenieinfo.ch, @armenianews.org) via un TXT `_atproto` chez Infomaniak : le DID ne bouge pas si le pseudo change, la connexion non plus |
 | Telegram (canal) | `TELEGRAM_BOT_TOKEN_*`, `TELEGRAM_CHAT_*` (`@nomducanal`) | @BotFather, puis ajouter le bot comme admin du canal | Gratuit |
 
 YouTube n'est pas couvert : il faut une vidéo, ce que le site ne produit pas

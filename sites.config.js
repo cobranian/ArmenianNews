@@ -26,7 +26,7 @@ export const SITES = {
     social: {
       facebook: 'https://www.facebook.com/61595719987355',
       instagram: 'https://www.instagram.com/armenieinfo_ch/',
-      bluesky: 'https://bsky.app/profile/armenieinfo.bsky.social',
+      bluesky: 'https://bsky.app/profile/armenieinfo.ch',
       telegram: 'https://t.me/armenieinfo_ch',
       linkedin: 'https://www.linkedin.com/company/armenieinfo/',
     },
@@ -116,7 +116,7 @@ export const SITES = {
     social: {
       facebook: 'https://www.facebook.com/61595909671165',
       instagram: 'https://www.instagram.com/armenianews_org/',
-      bluesky: 'https://bsky.app/profile/armenianews.bsky.social',
+      bluesky: 'https://bsky.app/profile/armenianews.org',
       telegram: 'https://t.me/armenianews_org',
       linkedin: 'https://www.linkedin.com/company/armenianews/',
     },
