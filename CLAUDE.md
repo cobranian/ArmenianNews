@@ -74,7 +74,7 @@ npm run check        # contrôle les 24 pages produites (6 langues × 4 vues : l
 npm run prerender    # cuit les 24 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # 743 tests : dérivations de sites.config.js, page 404 et redirections Firebase, dates murales de l'agenda et nœud Event, allègement des JSON au build, polices auto-hébergées, maillage interne, vue « À propos », hreflang par vue, langues, sitemaps, cartes de partage, nombre de radios, sourçage des stations, dates arméniennes, dérivations héritées de NEWS.am, appariement d'URL et grille du Courrier, User-Agent des scrapers, cinq brins Instagram, rubriques communes (table, regroupement, libellés, classeur)
+npm test             # toute la suite (~760 tests), sans réseau
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -91,27 +91,9 @@ npm run og-image     # régénérer la carte de partage du .org (local, Chrome +
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
-Il y a désormais **743 tests** (`node --test test/*.mjs`) : ils gardent les
-invariants de `sites.config.js` (une langue = une URL, un couple langue/vue =
-une URL), la réciprocité des `hreflang` **par vue** (`test/views.test.mjs`,
-`test/site-meta.test.mjs`), l'ordre du sélecteur, la forme des sitemaps, le
-fait que chaque vitrine annonce **sa** carte de partage, la concordance entre
-le tableau `STATIONS` et les six textes qui annoncent un nombre de radios, le
-sourçage des fiches de station (`test/stations.test.mjs`, voir « À savoir »),
-les deux filtres de l'agenda (`test/agenda-events.test.mjs` : aucun événement
-sans date n'est rendu ni balisé) et les deux stades de sa garde
-(`test/agenda-guard.test.mjs`, voir « À savoir »),
-la conformité des tables de dates arméniennes au CLDR (`test/hy-date.test.mjs`,
-voir « À savoir »), et les deux dérivations des verticales héritées de NEWS.am
-(`test/newsam-legacy.test.mjs` : l'URL de vignette devinée depuis le mois de
-publication, et la date de med recomposée en chiffres), et l'appariement d'URL
-qui date les articles du Courrier (`test/courrier-dates.test.mjs`, voir
-le skill `toucher-une-source`), et les cinq brins du mur Instagram — leur déclaration en six
-langues, le tirage à la ronde et l'exclusion du pool
-(`test/instagram-strands.test.mjs`, `test/instagram-draw.test.mjs`,
-`test/instagram-pool.test.mjs`), et les rubriques communes du fil
-(`test/rubric-map.test.mjs`, `test/rubric-group.test.mjs`,
-`test/rubric-i18n.test.mjs`, `test/classify-rubrics.test.mjs`) — aucun ne touche le réseau. Le lint et l'exécution réelle des scripts complètent la vérification.
+Les tests (`node --test test/*.mjs`) ne touchent jamais le réseau ; chaque
+fichier dit en tête l'invariant qu'il garde — c'est là qu'il faut lire, pas
+ici. Le lint et l'exécution réelle des scripts complètent la vérification.
 
 ### Lint : ce qu'il faut savoir avant d'y toucher
 
@@ -618,14 +600,8 @@ version en ligne (un no-op réussi, pas un échec) — site par site, ce verdict
 porte que sur celui-ci, alors qu'une sortie combinée ferait confondre l'échec
 réel de l'un avec le no-op bénin de l'autre.
 
-> **Ces noms ont bougé deux fois — ne vous fiez qu'au tableau ci-dessus.** Un
-> site `armenianews-org` a d'abord été créé dans `armenie-info`, `armenia-news`
-> y étant indisponible : ce nom était réservé par un projet du même compte. Ce
-> projet a ensuite été supprimé par erreur et recréé sous l'identifiant
-> `armenia-news-b146e`, ce qui a emporté son site avec lui. Le site
-> `armenianews-org` de `armenie-info`, inutilisé, a été supprimé le 25 octobre
-> 2026. Firebase réserve les noms d'un projet supprimé une trentaine de
-> jours, d'où les tâtonnements de nommage visibles dans l'historique git.
+> **Ces noms ont bougé deux fois — ne vous fiez qu'au tableau ci-dessus** ;
+> le pourquoi des tâtonnements est dans l'historique git.
 
 Vite `base`
 vaut `/` par défaut sur les deux (chaque domaine sert depuis sa propre racine) ;
