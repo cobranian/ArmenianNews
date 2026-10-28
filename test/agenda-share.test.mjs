@@ -34,8 +34,8 @@ test('visionneuse agenda : sortie sous le partage, résumé ouvert sur ordinateu
   assert.match(lb, /item\.share \? ' lb__meta--partage' : ''/)
   assert.match(lb, /window\.matchMedia\('\(min-width: 621px\)'\)\.matches/)
   const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf-8').replace(/\r\n/g, '\n')
-  assert.match(css, /\.lb__meta--partage \.lb__out \{\n  order: 2;/)
+  assert.match(css, /\.lb__meta--partage \.lb__out \{\n {2}order: 2;/)
   // La bascule mobile de la visionneuse : si elle bouge, le seuil du résumé
   // automatique doit bouger avec elle.
-  assert.match(css, /@media \(max-width: 620px\) \{\n  \/\* Mobile: the image goes full-screen/)
+  assert.match(css, /@media \(max-width: 620px\) \{\n {2}\/\* Mobile: the image goes full-screen/)
 })

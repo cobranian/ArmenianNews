@@ -3,7 +3,9 @@
 //
 // Aucun jeton dans une URL écrite au log : Telegram met le sien dans le
 // chemin, d'où l'interdiction d'imprimer `url` dans les erreurs.
+import sharp from 'sharp'
 import { compose, oauth1Header } from './social.mjs'
+import { SITES } from '../../sites.config.js'
 
 // Versions d'API figées. À relever quand une plateforme retire la sienne
 // (Graph : ~2 ans de vie par version ; LinkedIn : ~1 an).
@@ -56,6 +58,35 @@ async function pageToken(c, f) {
     return json?.access_token || c.token
   } catch {
     return c.token
+  }
+}
+
+// La vignette d'une carte de lien Bluesky est un blob déposé AVANT le post.
+// Bluesky refuse un blob de plus de ~1 Mo : l'image est réduite à 1200 px de
+// large en JPEG. Elle ne vient que des deux vitrines — aucun contenu publié
+// ne fait télécharger une adresse arbitraire. Un échec n'empêche jamais le
+// post : il part sans vignette, comme avant, avec un avertissement au log.
+const THUMB_HOSTS = new Set(Object.values(SITES).map((s) => new URL(s.host).host))
+export async function blueskyThumb(url, jwt, f) {
+  if (!url) return null
+  try {
+    if (!THUMB_HOSTS.has(new URL(url).host)) throw new Error(`hôte refusé : ${new URL(url).host}`)
+    const res = await f(url, { signal: AbortSignal.timeout(30_000) })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const img = await sharp(Buffer.from(await res.arrayBuffer()))
+      .resize({ width: 1200, withoutEnlargement: true })
+      .jpeg({ quality: 80, mozjpeg: true })
+      .toBuffer()
+    const { json: r } = await call(
+      f,
+      `${BSKY}/com.atproto.repo.uploadBlob`,
+      { method: 'POST', headers: { 'content-type': 'image/jpeg', authorization: `Bearer ${jwt}` }, body: img },
+      'bluesky/vignette',
+    )
+    return r?.blob ?? null
+  } catch (e) {
+    console.log(`⚠ bluesky : vignette omise (${e.message})`)
+    return null
   }
 }
 
@@ -132,12 +163,13 @@ const SENDERS = {
       json({ identifier: c.handle, password: c.password }),
       'bluesky/session',
     )
+    const thumb = await blueskyThumb(p.thumbUrl, s.accessJwt, f)
     const record = {
       $type: 'app.bsky.feed.post',
       text: p.text,
       createdAt: new Date().toISOString(),
       langs: [p.lang],
-      embed: { $type: 'app.bsky.embed.external', external: p.embed },
+      embed: { $type: 'app.bsky.embed.external', external: thumb ? { ...p.embed, thumb } : p.embed },
     }
     const { json: r } = await call(
       f,
