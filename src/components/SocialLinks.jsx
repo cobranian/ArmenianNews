@@ -3,7 +3,7 @@ import { SITE_ID } from '../site.js'
 
 // Les comptes de la vitrine bâtie (sites.config.js `social`), dans la barre
 // du haut ET au pied de page. Icônes tracées ici, en currentColor : ni police
-// d'icônes ni requête vers Meta. Seul export du fichier : un composant, pour
+// d'icônes ni requête vers les réseaux. Seul export du fichier : un composant, pour
 // ne pas ajouter d'avertissement react-refresh (voir CLAUDE.md, Lint).
 const ICONS = {
   facebook: (
@@ -19,8 +19,23 @@ const ICONS = {
       <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
     </g>
   ),
+  // Le papillon, réduit à 80 % : à pleine largeur il paraît plus gros que
+  // les trois autres.
+  bluesky: (
+    <path
+      fill="currentColor"
+      transform="translate(2.4 2.4) scale(0.8)"
+      d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"
+    />
+  ),
+  telegram: (
+    <path
+      fill="currentColor"
+      d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"
+    />
+  ),
 }
-const NAMES = { facebook: 'Facebook', instagram: 'Instagram' }
+const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram' }
 const ACCOUNTS = Object.entries(SITES[SITE_ID]?.social ?? {})
 
 export function SocialLinks({ className, size = 22 }) {
