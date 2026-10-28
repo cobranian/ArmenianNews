@@ -34,8 +34,16 @@ const ICONS = {
       d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"
     />
   ),
+  // Le « in » seul, sans le carré : à côté des trois autres tracés nus, le
+  // carré plein paraissait plus lourd.
+  linkedin: (
+    <path
+      fill="currentColor"
+      d="M6.9 19.5H3.6V9h3.3zM5.25 7.6a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8M20.4 19.5h-3.3v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.2h-3.3V9h3.2v1.4c.4-.8 1.5-1.7 3.1-1.7 3.3 0 4 2.2 4 5z"
+    />
+  ),
 }
-const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram' }
+const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', linkedin: 'LinkedIn' }
 const ACCOUNTS = Object.entries(SITES[SITE_ID]?.social ?? {})
 
 export function SocialLinks({ className, size = 22 }) {
