@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/linkedin-pending.mjs --hook",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
