@@ -32,6 +32,9 @@ export const SITES = {
       bluesky: 'https://bsky.app/profile/armenieinfo.ch',
       telegram: 'https://t.me/armenieinfo_ch',
       linkedin: 'https://www.linkedin.com/company/armenieinfo/',
+      // `@armenieinfo` était pris. Le .org n'a pas encore de chaîne : YouTube
+      // exige une vérification d'identité pour en créer une seconde.
+      youtube: 'https://www.youtube.com/@armenieinfo-ch',
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
     // domaine tout neuf, des signaux de nom contradictoires (masthead vs.

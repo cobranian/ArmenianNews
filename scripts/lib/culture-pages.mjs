@@ -19,6 +19,21 @@ import { longDate } from './brief-links.mjs'
 import { renderMarkdown } from './culture-markdown.mjs'
 import { esc, pageShell } from './static-shell.mjs'
 import { validEvent, pageSources } from './culture-validate.mjs'
+import { videoFor, embedUrl } from './culture-videos.mjs'
+
+// Le Short d'un article, dans SA langue seulement (culture-videos.mjs). Lecteur
+// youtube-nocookie en chargement différé : rien ne part vers YouTube tant que
+// le lecteur n'approche pas de l'écran, et aucun cookie avant la lecture.
+function videoBlock(lang, video) {
+  if (!video) return ''
+  const s = CULTURE_STRINGS[lang]
+  return `<section class="culture__video">
+        <h2>${esc(s.video)}</h2>
+        <div class="culture__video-frame">
+          <iframe src="${embedUrl(video.youtube)}" title="${esc(video.title)}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </section>`
+}
 
 // La vignette d'un article : son image copiée au build, ou le motif. Pas de
 // texte alternatif — le titre est juste à côté, le lecteur d'écran le lirait
@@ -140,9 +155,10 @@ function translatedFrom(lang, slug) {
   return `<p class="culture__translated"><a href="${cultureUrl('fr', slug)}" hreflang="fr">${esc(label)}</a></p>`
 }
 
-export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now() }) {
+export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now(), videos = {} }) {
   const s = CULTURE_STRINGS[lang]
   const a = article.langs[lang]
+  const video = videoFor(videos, article.slug, lang)
   const nb = neighbours(lang, article, list)
   const sources = pageSources(article.sources, lang)
     .map((x) => `<li><a href="${esc(x.url)}" rel="noopener">${esc(x.title ?? x.url)}</a>${sourceLabel(x)}</li>`)
@@ -156,6 +172,7 @@ export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHre
       <div class="culture__body">
 ${renderMarkdown(a.body)}
       </div>
+      ${videoBlock(lang, video)}
       ${eventBlock(lang, article.meta?.agendaEvent, now)}
       ${shareBarHtml(lang, { url: cultureUrl(lang, article.slug), title: a.title })}
       <section class="culture__sources">
@@ -167,7 +184,7 @@ ${renderMarkdown(a.body)}
       ${pager(lang, nb)}
       ${readAlso(lang, article, list)}
     </main>`
-  const head = cultureHeadFor({ siteId, lang, slug: article.slug, article, bySlug })
+  const head = cultureHeadFor({ siteId, lang, slug: article.slug, article, bySlug, video })
   return pageShell({
     siteId,
     lang,
@@ -196,7 +213,7 @@ export function cultureIndexHtml({ siteId, lang, list, bySlug, cssHref }) {
 
 // Les pages d'UNE vitrine : seulement ses langues. Les images ne sont copiées
 // que pour les articles publiés dans au moins une de ses langues.
-export async function writeCulturePages(site, dist, articles, cssHref, srcDir, now = Date.now()) {
+export async function writeCulturePages(site, dist, articles, cssHref, srcDir, now = Date.now(), videos = {}) {
   const bySlug = cultureLangsBySlug(articles)
   let n = 0
   const put = async (rel, html) => {
@@ -211,7 +228,7 @@ export async function writeCulturePages(site, dist, articles, cssHref, srcDir, n
     for (const article of articles.filter((a) => a.langs[lang]))
       await put(
         culturePath(lang, article.slug),
-        cultureArticleHtml({ siteId: site.id, lang, article, list: articles, bySlug, cssHref, now }),
+        cultureArticleHtml({ siteId: site.id, lang, article, list: articles, bySlug, cssHref, now, videos }),
       )
   }
   for (const a of articles) {

@@ -16,6 +16,7 @@ import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { briefAlternates, longDate } from './brief-links.mjs'
 import { cultureAlternates } from './culture-links.mjs'
 import { pageSources } from './culture-validate.mjs'
+import { videoLd } from './culture-videos.mjs'
 
 // Le manifeste des polices auto-hébergées, écrit par `npm run fonts-sync`
 // (scripts/fonts-sync.mjs) : un fichier par entrée, avec famille, style,
@@ -367,7 +368,7 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
 // balises que les vues et la brève, via composeHead ; hreflang limité aux
 // langues présentes pour cet article (culture-links.mjs), og:type article,
 // carte de partage propre à l'article quand il a une image.
-export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySlug, robots = null }) {
+export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySlug, robots = null, video = null }) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   const s = CULTURE_STRINGS[lang]
@@ -397,7 +398,10 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
       // Wikipédia de/it n'est citée que sur la page de sa langue (culture-validate).
       citation: pageSources(article.sources, lang).map((x) => x.url),
       ...(about ? { about } : {}),
+      // La vidéo de l'article, dans cette langue seulement (culture-videos.mjs).
+      ...(video ? { video: { '@id': `${url}#video` } } : {}),
     })
+    if (video) graph.push(videoLd(video, lang, url, site))
     graph.push(breadcrumb(lang, [[s.title, cultureUrl(lang)], [a.title, url]]))
   } else {
     graph.push(breadcrumb(lang, [[s.title, url]]))

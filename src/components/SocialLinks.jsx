@@ -42,8 +42,17 @@ const ICONS = {
       d="M6.9 19.5H3.6V9h3.3zM5.25 7.6a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8M20.4 19.5h-3.3v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.2h-3.3V9h3.2v1.4c.4-.8 1.5-1.7 3.1-1.7 3.3 0 4 2.2 4 5z"
     />
   ),
+  // Le bouton de lecture seul, en creux dans un rectangle arrondi plein : la
+  // forme qu'on reconnaît, sans le rouge de la marque (tout est currentColor).
+  youtube: (
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8M10 15V9l5.2 3z"
+    />
+  ),
 }
-const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', linkedin: 'LinkedIn' }
+const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', linkedin: 'LinkedIn', youtube: 'YouTube' }
 const ACCOUNTS = Object.entries(SITES[SITE_ID]?.social ?? {})
 
 export function SocialLinks({ className, size = 22 }) {
