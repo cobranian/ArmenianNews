@@ -1,0 +1,104 @@
+{
+  "slug": "temple-paien-de-garni",
+  "qid": "Q684072",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Temple de Garni",
+      "url": "https://fr.wikipedia.org/wiki/Temple_de_Garni",
+      "revision": 235469070,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Garni Temple",
+      "url": "https://en.wikipedia.org/wiki/Garni_Temple",
+      "revision": 1381579633,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Գառնու հեթանոսական տաճար",
+      "url": "https://hy.wikipedia.org/wiki/%D4%B3%D5%A1%D5%BC%D5%B6%D5%B8%D6%82_%D5%B0%D5%A5%D5%A9%D5%A1%D5%B6%D5%B8%D5%BD%D5%A1%D5%AF%D5%A1%D5%B6_%D5%BF%D5%A1%D5%B3%D5%A1%D6%80",
+      "revision": 10906458,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Гарни (храм)",
+      "url": "https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D1%80%D0%BD%D0%B8_(%D1%85%D1%80%D0%B0%D0%BC)",
+      "revision": 154228314,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "de",
+      "title": "Tempel von Garni",
+      "url": "https://de.wikipedia.org/wiki/Tempel_von_Garni",
+      "revision": 267623879,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "it",
+      "title": "Tempio di Garni",
+      "url": "https://it.wikipedia.org/wiki/Tempio_di_Garni",
+      "revision": 151181495,
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Ancient temple in Garni.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Ancient_temple_in_Garni.jpg/1920px-Ancient_temple_in_Garni.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4608,
+      "height": 3456,
+      "mime": "image/jpeg",
+      "author": "Katsiaryna Naliuka",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Ancient_temple_in_Garni.jpg"
+    },
+    {
+      "file": "File:Templo de Garni, Armenia, 2016-10-02, DD 03.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Templo_de_Garni%2C_Armenia%2C_2016-10-02%2C_DD_03.jpg/1920px-Templo_de_Garni%2C_Armenia%2C_2016-10-02%2C_DD_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 7711,
+      "height": 5023,
+      "mime": "image/jpeg",
+      "author": "Diego Delso",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Templo_de_Garni,_Armenia,_2016-10-02,_DD_03.jpg"
+    },
+    {
+      "file": "File:Garni temple 2021 drone.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Garni_temple_2021_drone.jpg/1920px-Garni_temple_2021_drone.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3104,
+      "height": 2250,
+      "mime": "image/jpeg",
+      "author": "Yerevantsi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Garni_temple_2021_drone.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Ancient temple in Garni.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Ancient_temple_in_Garni.jpg/1920px-Ancient_temple_in_Garni.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 900,
+    "mime": "image/jpeg",
+    "author": "Katsiaryna Naliuka",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Ancient_temple_in_Garni.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0.01,
+  "model": "gemini-flash-latest"
+}
