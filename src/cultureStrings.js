@@ -15,6 +15,7 @@ export const CULTURE_STRINGS = {
     aiNote:
       'Article rédigé avec un outil d’IA à partir des sources citées, puis vérifié et corrigé par la rédaction.',
     image: 'Image',
+    video: 'En vidéo',
     event: 'À ne pas manquer',
     empty: 'Le premier article paraîtra bientôt.',
     teaser: 'À lire',
@@ -40,6 +41,7 @@ export const CULTURE_STRINGS = {
     aiNote:
       'Mit einem KI-Werkzeug aus den genannten Quellen verfasst und von der Redaktion geprüft; automatisch aus dem geprüften französischen Text übersetzt.',
     image: 'Bild',
+    video: 'Im Video',
     event: 'Nicht verpassen',
     empty: 'Der erste Artikel erscheint in Kürze.',
     teaser: 'Lesenswert',
@@ -61,6 +63,7 @@ export const CULTURE_STRINGS = {
     aiNote:
       'Scritto con uno strumento di IA a partire dalle fonti citate e verificato dalla redazione; tradotto automaticamente dal testo francese verificato.',
     image: 'Immagine',
+    video: 'In video',
     event: 'Da non perdere',
     empty: 'Il primo articolo uscirà a breve.',
     teaser: 'Da leggere',
@@ -82,6 +85,7 @@ export const CULTURE_STRINGS = {
     aiNote:
       'Written with an AI tool from the sources cited and checked by our editors; translated automatically from the reviewed French text.',
     image: 'Image',
+    video: 'Watch the video',
     event: 'Don’t miss',
     empty: 'The first article is coming soon.',
     teaser: 'Read',
@@ -103,6 +107,7 @@ export const CULTURE_STRINGS = {
     aiNote:
       'Հոդվածը գրվել է արհեստական բանականության գործիքով՝ նշված աղբյուրներից, ստուգվել է խմբագրության կողմից և ավտոմատ թարգմանվել ֆրանսերենից։',
     image: 'Պատկեր',
+    video: 'Տեսանյութ',
     event: 'Չբաց թողնեք',
     empty: 'Առաջին հոդվածը շուտով կհրապարակվի։',
     teaser: 'Կարդալու',
@@ -124,6 +129,7 @@ export const CULTURE_STRINGS = {
     aiNote:
       'Статья написана с помощью инструмента ИИ по указанным источникам, проверена редакцией и автоматически переведена с французского.',
     image: 'Изображение',
+    video: 'Видео',
     event: 'Не пропустите',
     empty: 'Первая статья скоро появится.',
     teaser: 'Читать',

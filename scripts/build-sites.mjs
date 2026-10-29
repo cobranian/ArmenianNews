@@ -28,6 +28,7 @@ import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
 import { loadCulture, unpublishedLine } from './lib/culture-load.mjs'
 import { writeCulturePages } from './lib/culture-pages.mjs'
 import { writeAgendaPaysPages } from './lib/agenda-pays.mjs'
+import { loadCultureVideos } from './lib/culture-videos.mjs'
 import { evenementsAVenir, paysDeLAgenda } from '../src/agendaEvents.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -169,10 +170,10 @@ async function writeBriefs(site, briefs) {
 // a déjà été écarté par loadCulture (avertissement au log) — le build ne
 // casse jamais à cause du contenu. Voir scripts/lib/culture-pages.mjs.
 const CULTURE_DIR = path.join(root, 'src/data/culture')
-async function writeCulture(site, culture) {
+async function writeCulture(site, culture, videos) {
   const dist = path.join(root, 'dist', site.id)
   const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
-  const n = await writeCulturePages(site, dist, culture, cssHrefFrom(built), CULTURE_DIR)
+  const n = await writeCulturePages(site, dist, culture, cssHrefFrom(built), CULTURE_DIR, Date.now(), videos)
   console.log(`  → dist/${site.id} : ${n} pages Culture`)
 }
 
@@ -213,6 +214,7 @@ const stamp = await lastmod()
 const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
 const culture = await loadCulture(CULTURE_DIR)
 const pays = await loadAgendaPays()
+const videos = await loadCultureVideos(path.join(root, 'src/data/culture-videos.json'))
 const cultureStale = unpublishedLine(culture)
 if (cultureStale) console.warn(`\n${cultureStale}\n`)
 
@@ -221,7 +223,7 @@ for (const site of Object.values(SITES)) {
   await derivePages(site)
   await copyStandalone(site)
   await writeBriefs(site, briefs)
-  await writeCulture(site, culture)
+  await writeCulture(site, culture, videos)
   await writeAgendaPays(site, pays)
   await writeSeoFiles(site, stamp, briefs, culture, pays)
 }
