@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T16:59:30.272Z",
+  "generatedAt": "2026-10-29T17:23:35.327Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Կոնգրեսի համար պայքարը և Թրամփի իշխանության փորձությունը",
+            "url": "https://hy.armradio.am/archives/767513",
+            "date": "2026-10-29T17:10:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/ScreenShot-3871-300x179.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Ֆլավիու Բոլսոնարուն իրեն հռչակել է «Բրազիլիայի առաջնորդ»",
             "url": "https://hy.armradio.am/archives/767329",
             "date": "2026-10-29T06:27:27.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/767170",
             "date": "2026-10-28T10:22:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/1200x675_cmsv2_98b301b6-634d-51b7-86f4-a0a4ea1b9d68-9970180-768x432.avif",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ԵՄ կառույցները խումբ են կազմում Աբու Դաբիում ուկրաինական հարցով բանակցությունների համար",
-            "url": "https://hy.armradio.am/archives/767163",
-            "date": "2026-10-28T09:56:13.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/images-3-1-300x198.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2208,7 +2208,7 @@
           "title": "Vazgen Tevanyan (Arménie) est en finale des championnats du monde de lutte libre à Astana",
           "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-en-finale-des-championnats-du-monde-de-lutte-libre-a-astana/",
           "date": "2026-10-29T12:32:37.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/7783.jpg"
+          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8878.jpg"
         },
         {
           "title": "Victoire impressionnante d’Unisport Erevan en Ligue des Champions de futsal",
@@ -4270,6 +4270,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Շտայնմայերը Չինաստանին կոչ է արել ազդեցություն գործադրել ՌԴ-ի վրա՝ Ուկրաինայում խաղաղության հասնելու համար",
+            "url": "https://armenpress.am/hy/article/1264268",
+            "date": "2026-10-29T17:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/29/bCCx6U77BEwhNOuHNE8vEoCOs1wqMQxWjzRVinL3.webp"
+          },
+          {
             "title": "Չեխիան և Հունգարիան ծրագրում են կառուցել 10 միլիարդ եվրո արժողությամբ արագընթաց երկաթուղի",
             "url": "https://armenpress.am/hy/article/1264267",
             "date": "2026-10-29T16:50:00.000Z",
@@ -4322,12 +4328,6 @@
             "url": "https://armenpress.am/hy/article/1264248",
             "date": "2026-10-29T13:12:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/29/rJquJdzR7bokWZchUT7FwWQjw2STd9J8TNvI9dhU.webp"
-          },
-          {
-            "title": "Պլուտոնից այն կողմ հայտնաբերվել է հնարավոր նոր գաճաճ մոլորակ",
-            "url": "https://armenpress.am/hy/article/1264244",
-            "date": "2026-10-29T12:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/29/e6OaYE8aM0aBG3oRZq8PQzbcVPbPt7unuPZPpcBl.webp"
           }
         ]
       },
@@ -9014,6 +9014,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Sevan team wins the Solidarity Cup of the “Integration Through Football” programme",
+            "url": "https://sport.news.am/eng/news/169908/",
+            "date": "2026-10-29T17:11:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169908.jpg"
+          },
+          {
             "title": "Vazgen Tevanyan defeated Mamedov despite a broken finger and has reached the final",
             "url": "https://sport.news.am/eng/news/169903/",
             "date": "2026-10-29T12:05:00.000Z",
@@ -9066,12 +9072,6 @@
             "url": "https://sport.news.am/eng/news/169886/",
             "date": "2026-10-28T19:58:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169886.jpg"
-          },
-          {
-            "title": "Inter beat Venezia, while AC Milan lose to Bologna (video)",
-            "url": "https://sport.news.am/eng/news/169885/",
-            "date": "2026-10-28T19:25:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169885.jpg"
           }
         ]
       },
@@ -9544,6 +9544,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Bloomberg-ը և երկու ընկերություն վճարում են Truth Social-ում Թրամփի գրառումներին արագացված հասանելիության համար. Reuters",
+            "url": "https://news.am/hy/news/1071294",
+            "date": "2026-10-29T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/09/29/WUTulyrJsvXkLeda.webp"
+          },
+          {
             "title": "Արամ Սարգսյանը դիմել է գլխավոր դատախազին «Հարավկովկասյան երկաթուղու» գործունեության առնչությամբ քրվարույթ հարուցելու պահանջով",
             "url": "https://news.am/hy/news/1071312",
             "date": "2026-10-29T16:39:22.000Z",
@@ -9596,12 +9602,6 @@
             "url": "https://news.am/hy/news/1071278",
             "date": "2026-10-29T15:05:00.000Z",
             "image": "https://news.am/storage/media/26/06/05/HLp6wufBV77Rc4vY.webp"
-          },
-          {
-            "title": "Հայաստանում ծնված Գևորգ Գրիգորյանը ՌԴ-ում դատապարտվել է 9,5 տարվա ազատազրկման՝ ռազմական «ֆեյքերի» համար. «Медиазона»",
-            "url": "https://news.am/hy/news/1071286",
-            "date": "2026-10-29T14:06:28.000Z",
-            "image": "https://news.am/storage/media/26/10/16/QuGuww5QkMoElP75.webp"
           }
         ]
       },
@@ -9676,6 +9676,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Ինտեգրում ֆուտբոլի միջոցով» ծրագրի Համերաշխության գավաթը նվաճեց Սևանի թիմը",
+            "url": "https://sport.news.am/arm/news/169908/",
+            "date": "2026-10-29T17:11:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169908.jpg"
+          },
+          {
             "title": "Ռոբերտ Արզումանյան. Միասին փորձել ենք ստեղծել մեր ֆուտբոլը՝ մեր խաղային ձեռագրով, հստակ ինքնությամբ ու սկզբունքներով",
             "url": "https://sport.news.am/arm/news/169907/",
             "date": "2026-10-29T15:08:00.000Z",
@@ -9728,12 +9734,6 @@
             "url": "https://sport.news.am/arm/news/169900/",
             "date": "2026-10-29T09:06:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169900.jpg"
-          },
-          {
-            "title": "ԱԱ․ Վազգեն Թեւանյանը քառորդ եզրափակիչում է եւ կգոտեմարտի աշխարհի կրկնակի չեմպիոնի հետ",
-            "url": "https://sport.news.am/arm/news/169898/",
-            "date": "2026-10-29T08:17:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169898.jpg"
           }
         ]
       },
@@ -9741,6 +9741,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Bloomberg-ը և երկու ընկերություն վճարում են Truth Social-ում Թրամփի գրառումներին արագացված հասանելիության համար. Reuters",
+            "url": "https://news.am/hy/news/1071294",
+            "date": "2026-10-29T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/09/29/WUTulyrJsvXkLeda.webp"
+          },
           {
             "title": "Ամիօ բանկի Վարչության նախագահ Անդրանիկ Գրիգորյանը Forbes-ի հատուկ հրապարակման շրջանակում անդրադարձել է կայուն ֆինանսավորման դերին",
             "url": "https://news.am/hy/news/1071302",
@@ -9794,12 +9800,6 @@
             "url": "https://news.am/hy/news/1071170",
             "date": "2026-10-29T08:41:18.000Z",
             "image": "https://i.ytimg.com/vi/5ySN30TkXAs/hqdefault.jpg"
-          },
-          {
-            "title": "Օբաման պարզաբանել է իր կատակը և Սպիտակ տունը հայտնի ռեստորանի հետ համեմատելը",
-            "url": "https://news.am/hy/news/1071153",
-            "date": "2026-10-29T08:28:00.000Z",
-            "image": "https://news.am/storage/media/26/10/29/198tSt0EUxlBxznn.webp"
           }
         ]
       },
@@ -9940,6 +9940,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Գլիոբլաստոման ուղեղի բջիջներին ստիպում է օգնել իրեն աճելու հարցում. հետազոտությունը նոր մեխանիզմ է բացահայտել",
+            "url": "https://med.news.am/arm/news/42212/glioblastoman-uxexi-bjijnerin-stipum-e-ognel-iren-atchelu-harcum-hetazotutyuny-nor-mekhanizm-e-bacahaytel.html",
+            "date": "2026-10-29T16:51:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/10/42212.jpg"
+          },
+          {
             "title": "Դեմենցայից տառապող մարդկանց մոտ «խոսքային տարիքն» ավելի բարձր է եղել. Science Advances",
             "url": "https://med.news.am/arm/news/42215/demencayic-tarapox-mardkanc-mot-khosqayin-tariqn-aveli-bardzr-e-exel-science-advances.html",
             "date": "2026-10-29T14:52:00.000Z",
@@ -9992,12 +9998,6 @@
             "url": "https://med.news.am/arm/news/42207/qovidic-heto-zargacox-hamakhtanishy-karox-e-tarinerov-metsacnel-hipertoniayi-risky-jaha.html",
             "date": "2026-10-28T14:51:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/10/42207.jpg"
-          },
-          {
-            "title": "Մեբուֆոտենինի քթի սփրեյը մինչև ութ շաբաթով նվազեցրել է դեպրեսիայի ախտանիշները․ JAMA",
-            "url": "https://med.news.am/arm/news/42206/mebufotenini-qti-spreyy-minchev-ut-shabatov-nvazecrel-e-depresiayi-akhtanishnery%E2%80%A4-jama.html",
-            "date": "2026-10-28T12:50:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/10/42206.jpg"
           }
         ]
       },
@@ -10005,6 +10005,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Իրանի հետախուզությունը հայտարարել է չորս ահաբեկչական բջջի վնասազերծման և 19 մարդու ձերբակալման մասին",
+            "url": "https://news.am/hy/news/1071295",
+            "date": "2026-10-29T17:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/03/O2xRz3qBfwYT16vE.webp"
+          },
           {
             "title": "Իսպանիայում հաստատել են աշխատանքի նախկին նախարար Ֆատիմա Բանյեսի մահը երկաթուղային աղետում",
             "url": "https://news.am/hy/news/1071293",
@@ -10058,12 +10064,6 @@
             "url": "https://news.am/hy/news/1071259",
             "date": "2026-10-29T12:38:00.000Z",
             "image": "https://news.am/storage/media/26/10/29/HC4fEZX5tUTO2CbN.webp"
-          },
-          {
-            "title": "Իսպանիայում ռեստորանատերը երկաթուղային վթարից հետո կերակրել է 400 մարդու",
-            "url": "https://news.am/hy/news/1071232",
-            "date": "2026-10-29T12:19:00.000Z",
-            "image": "https://news.am/storage/media/26/10/29/GyaXHi1vlO0m6Civ.webp"
           }
         ]
       },
@@ -10206,6 +10206,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Reuters: Bloomberg и две торговые компании платят за ускоренный доступ к постам Трампа в Truth Social",
+            "url": "https://news.am/ru/news/1071294",
+            "date": "2026-10-29T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/09/29/WUTulyrJsvXkLeda.webp"
+          },
+          {
             "title": "Арам Саркисян обратился к генпрокурору с требованием возбудить уголовное производство в связи с деятельностью «Южно-Кавказской железной дороги»",
             "url": "https://news.am/ru/news/1071312",
             "date": "2026-10-29T16:39:22.000Z",
@@ -10258,12 +10264,6 @@
             "url": "https://news.am/ru/news/1071286",
             "date": "2026-10-29T14:06:28.000Z",
             "image": "https://news.am/storage/media/26/10/16/QuGuww5QkMoElP75.webp"
-          },
-          {
-            "title": "Первый кандидат на пост мэра Берлина турецкого происхождения Элиф Эралп заявила об опасениях за безопасность семьи",
-            "url": "https://news.am/ru/news/1071264",
-            "date": "2026-10-29T14:04:00.000Z",
-            "image": "https://news.am/storage/media/26/10/29/2b6ama0fZZKa1FPx.webp"
           }
         ]
       },
@@ -10338,6 +10338,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Команда Севана выиграла Кубок солидарности в рамках программы «Интеграция через футбол»",
+            "url": "https://sport.news.am/rus/news/169908/",
+            "date": "2026-10-29T17:11:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/10/169908.jpg"
+          },
+          {
             "title": "Кубок Армении։ «Арарат-Армения» в дополнительное время обыграл «Олимпию» (видео)",
             "url": "https://sport.news.am/rus/news/169906/",
             "date": "2026-10-29T14:10:00.000Z",
@@ -10390,12 +10396,6 @@
             "url": "https://sport.news.am/rus/news/169889/",
             "date": "2026-10-29T06:27:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169889.jpg"
-          },
-          {
-            "title": "Сборная Португалии поздравила Роналду",
-            "url": "https://sport.news.am/rus/news/169888/",
-            "date": "2026-10-29T05:10:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169888.jpg"
           }
         ]
       },
@@ -10403,6 +10403,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Reuters: Bloomberg и две торговые компании платят за ускоренный доступ к постам Трампа в Truth Social",
+            "url": "https://news.am/ru/news/1071294",
+            "date": "2026-10-29T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/09/29/WUTulyrJsvXkLeda.webp"
+          },
           {
             "title": "Председатель правления Амио банка Андраник Григорян рассказал о роли устойчивого финансирования в специальной публикации Forbes",
             "url": "https://news.am/ru/news/1071302",
@@ -10456,12 +10462,6 @@
             "url": "https://news.am/ru/news/1071170",
             "date": "2026-10-29T08:41:18.000Z",
             "image": "https://i.ytimg.com/vi/5ySN30TkXAs/hqdefault.jpg"
-          },
-          {
-            "title": "Обама объяснился за шутку и сравнение Белого дома с популярным рестораном",
-            "url": "https://news.am/ru/news/1071153",
-            "date": "2026-10-29T08:28:00.000Z",
-            "image": "https://news.am/storage/media/26/10/29/198tSt0EUxlBxznn.webp"
           }
         ]
       },
@@ -10668,6 +10668,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Иранская разведка заявила о ликвидации четырех террористических ячеек и задержании 19 человек",
+            "url": "https://news.am/ru/news/1071295",
+            "date": "2026-10-29T17:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/03/O2xRz3qBfwYT16vE.webp"
+          },
+          {
             "title": "В Испании подтвердили гибель экс-министра труда Фатимы Баньес в железнодорожной катастрофе",
             "url": "https://news.am/ru/news/1071293",
             "date": "2026-10-29T16:51:00.000Z",
@@ -10720,12 +10726,6 @@
             "url": "https://news.am/ru/news/1071259",
             "date": "2026-10-29T12:38:00.000Z",
             "image": "https://news.am/storage/media/26/10/29/HC4fEZX5tUTO2CbN.webp"
-          },
-          {
-            "title": "В Испании ресторатор накормил 400 человек после железнодорожной аварии",
-            "url": "https://news.am/ru/news/1071232",
-            "date": "2026-10-29T12:19:00.000Z",
-            "image": "https://news.am/storage/media/26/10/29/GyaXHi1vlO0m6Civ.webp"
           }
         ]
       },
