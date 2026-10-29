@@ -5,6 +5,9 @@
 // vite.config.js). Il ne doit donc utiliser aucune API propre à l'un ou à
 // l'autre — et surtout jamais importer src/i18n.jsx, qui l'importe déjà :
 // le cycle casserait le bundle.
+//
+// src/worldPlace.js, lui, est un module plat sans import : aucun cycle.
+import { COUNTRIES } from './src/worldPlace.js'
 
 export const SITES = {
   ch: {
@@ -343,6 +346,42 @@ export function cultureImagePath(slug, ext) {
   if (!CULTURE_SLUG.test(slug)) throw new Error(`slug d'article invalide : ${slug}`)
   if (ext !== 'webp' && ext !== 'jpg') throw new Error(`extension d'image invalide : ${ext}`)
   return `/culture/${slug}/image.${ext}`
+}
+
+// Les pages Agenda par pays (scripts/lib/agenda-pays.mjs) : /agenda/suisse/,
+// /de/veranstaltungen/schweiz/, armenianews.org/events/switzerland/. Des HTML
+// statiques, comme la brève et Culture, rangés SOUS la vue agenda.
+//
+// Le slug est le nom du pays DANS LA LANGUE de la page, car c'est lui qu'on
+// tape (« evenements armeniens suisse », « armenische veranstaltungen
+// schweiz ») ; hy et ru prennent le nom anglais, pour la règle des caractères
+// latins (voir VIEWS). Dérivé de COUNTRIES, jamais écrit à la main : une table
+// de slugs à part divergerait des noms affichés. L'allemand translittère ses
+// trémas (Österreich → oesterreich), comme on les tape sans clavier allemand.
+const COUNTRY_SLUG_LANG = { fr: 'fr', de: 'de', it: 'it', en: 'en', hy: 'en', ru: 'en' }
+const UMLAUT = { ä: 'ae', ö: 'oe', ü: 'ue', ß: 'ss', Ä: 'ae', Ö: 'oe', Ü: 'ue' }
+
+export function agendaCountrySlug(lang, key) {
+  const names = COUNTRIES[key]
+  if (!names) throw new Error(`pays inconnu : ${key}`)
+  const src = COUNTRY_SLUG_LANG[lang]
+  if (!src) throw new Error(`pas de page pays en ${lang}`)
+  let s = names[src]
+  if (src === 'de') s = s.replace(/[äöüßÄÖÜ]/g, (c) => UMLAUT[c])
+  return s
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+export function agendaCountryUrl(lang, key) {
+  return urlFor(lang, 'agenda') + `${agendaCountrySlug(lang, key)}/`
+}
+
+export function agendaCountryPath(lang, key) {
+  return agendaCountryUrl(lang, key).slice(SITES[siteOf(lang)].host.length)
 }
 
 // Le chemin de la page d'accueil d'une langue — '/' ou '/hy/'. Sert aux ancres

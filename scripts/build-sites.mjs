@@ -27,6 +27,8 @@ import { llmsFor } from './lib/llms.mjs'
 import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
 import { loadCulture, unpublishedLine } from './lib/culture-load.mjs'
 import { writeCulturePages } from './lib/culture-pages.mjs'
+import { writeAgendaPaysPages } from './lib/agenda-pays.mjs'
+import { evenementsAVenir, paysDeLAgenda } from '../src/agendaEvents.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -174,9 +176,25 @@ async function writeCulture(site, culture) {
   console.log(`  → dist/${site.id} : ${n} pages Culture`)
 }
 
-async function writeSeoFiles(site, stamp, briefs, culture) {
+// Les pages Agenda par pays : HTML statiques, comme Culture. Voir
+// scripts/lib/agenda-pays.mjs.
+async function writeAgendaPays(site, pays) {
   const dist = path.join(root, 'dist', site.id)
-  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs, culture), 'utf-8')
+  const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
+  const n = await writeAgendaPaysPages(site, dist, pays, cssHrefFrom(built))
+  console.log(`  → dist/${site.id} : ${n} pages Agenda par pays`)
+}
+
+// UNE horloge pour les deux vitrines : les pages pays du .ch et du .org se
+// citent par hreflang, elles doivent couvrir exactement les mêmes pays.
+async function loadAgendaPays() {
+  const a = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf-8'))
+  return paysDeLAgenda(evenementsAVenir([...(a.switzerland || []), ...(a.world || [])]))
+}
+
+async function writeSeoFiles(site, stamp, briefs, culture, pays) {
+  const dist = path.join(root, 'dist', site.id)
+  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs, culture, pays), 'utf-8')
   console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
@@ -194,6 +212,7 @@ async function writeSeoFiles(site, stamp, briefs, culture) {
 const stamp = await lastmod()
 const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
 const culture = await loadCulture(CULTURE_DIR)
+const pays = await loadAgendaPays()
 const cultureStale = unpublishedLine(culture)
 if (cultureStale) console.warn(`\n${cultureStale}\n`)
 
@@ -203,7 +222,8 @@ for (const site of Object.values(SITES)) {
   await copyStandalone(site)
   await writeBriefs(site, briefs)
   await writeCulture(site, culture)
-  await writeSeoFiles(site, stamp, briefs, culture)
+  await writeAgendaPays(site, pays)
+  await writeSeoFiles(site, stamp, briefs, culture, pays)
 }
 
 console.log(

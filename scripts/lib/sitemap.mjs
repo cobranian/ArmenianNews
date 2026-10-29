@@ -10,9 +10,11 @@
 // l'horodatage du DERNIER SCRAPE. Un rebuild sans scrape réémet donc la même
 // valeur. Ne jamais y substituer new Date() : ce serait exactement le bug
 // contre lequel ce commentaire prévenait.
-import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor, briefUrl, cultureUrl } from '../../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, urlFor, xDefaultFor, briefUrl, cultureUrl, agendaCountryUrl } from '../../sites.config.js'
 import { briefLangsByDate, briefAlternates } from './brief-links.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './culture-links.mjs'
+import { agendaPaysAlternates } from './site-meta.mjs'
+import { PAYS_INDEX_MIN } from '../../src/agendaEvents.js'
 
 // Les annotations xhtml:link dans le sitemap répètent ce que portent les
 // <link hreflang> du HTML. Google accepte les deux et recoupe : c'est une
@@ -94,7 +96,24 @@ ${xhtml(cultureAlternates(a.slug, bySlug))}
   })
 }
 
-export function sitemapFor(siteId, lastmod, briefs = {}, culture = []) {
+// Les pages Agenda par pays : seulement les INDEXABLES (PAYS_INDEX_MIN). Une
+// page en noindex listée au sitemap serait un signal contradictoire.
+function agendaPaysEntries(site, lastmod, pays) {
+  const keys = [...pays.entries()].filter(([, evs]) => evs.length >= PAYS_INDEX_MIN).map(([k]) => k)
+  return site.pages.flatMap(({ lang }) =>
+    keys.map(
+      (k) => `  <url>
+    <loc>${agendaCountryUrl(lang, k)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+${xhtml(agendaPaysAlternates(k))}
+  </url>`,
+    ),
+  )
+}
+
+export function sitemapFor(siteId, lastmod, briefs = {}, culture = [], pays = new Map()) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   if (!lastmod) throw new Error('lastmod manquant — attendu meta.json → generatedAt')
@@ -113,6 +132,7 @@ ${alternates(view)}
     ),
     ...briefEntries(site, lastmod, briefs),
     ...cultureEntries(site, culture),
+    ...agendaPaysEntries(site, lastmod, pays),
   ].join('\n')
 
   return `<?xml version="1.0" encoding="UTF-8"?>

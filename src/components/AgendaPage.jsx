@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { useI18n } from '../i18n.jsx'
-import { pathFor } from '../../sites.config.js'
-import { worldCountryKey, countryLabel, countryFlag, placeLabel } from '../worldPlace.js'
-import { evenementsAVenir, eventAnchor } from '../agendaEvents.js'
+import { pathFor, agendaCountryPath } from '../../sites.config.js'
+import { worldCountryKey, countryLabel, countryFlag, placeLabel, COUNTRIES } from '../worldPlace.js'
+import { evenementsAVenir, eventAnchor, PAYS_INDEX_MIN } from '../agendaEvents.js'
 import { agendaJsonLd } from '../jsonld.js'
 import { useClientClock } from '../useClientNow.js'
 import { VIEW_SEO } from '../seo.js'
@@ -55,7 +55,16 @@ export function AgendaPage() {
         <section className="section" id={cle} key={cle}>
           <div className="container">
             <h2 className="section__title">
-              <span aria-hidden="true">{countryFlag(cle)}</span> {countryLabel(cle, lang)}
+              <span aria-hidden="true">{countryFlag(cle)}</span>{' '}
+              {/* Le lien vers la page du pays, seulement si elle est
+                  indexable : même seuil que le build (PAYS_INDEX_MIN). La
+                  règle est monotone, donc un lien rendu après le build vise
+                  toujours une page bâtie — voir src/agendaEvents.js. */}
+              {COUNTRIES[cle] && evs.length >= PAYS_INDEX_MIN ? (
+                <a href={agendaCountryPath(lang, cle)}>{countryLabel(cle, lang)}</a>
+              ) : (
+                countryLabel(cle, lang)
+              )}
             </h2>
             <ul className="agenda-list">
               {evs.map((ev) => (

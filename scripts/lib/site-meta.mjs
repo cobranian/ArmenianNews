@@ -6,7 +6,10 @@
 // sinon les pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
 import { readFileSync } from 'node:fs'
-import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath } from '../../sites.config.js'
+import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath, agendaCountryUrl } from '../../sites.config.js'
+import { AGENDA_PAYS_STRINGS } from '../../src/agendaPaysStrings.js'
+import { countryLabel } from '../../src/worldPlace.js'
+import { eventLd } from '../../src/agendaEvents.js'
 import { SEO, VIEW_SEO, OG_LOCALE } from '../../src/seo.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
@@ -406,6 +409,40 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
     graph,
     robots,
     ogImage,
+  })
+}
+
+// Les alternates d'une page pays : le même pays dans les six langues. La page
+// existe dans toutes (même données, même horloge pour les deux vitrines — voir
+// build-sites.mjs), donc le bloc est complet et réciproque par construction.
+export function agendaPaysAlternates(key) {
+  return [
+    ...ALL_LANGS.map((l) => [l, agendaCountryUrl(l, key)]),
+    ['x-default', agendaCountryUrl('en', key)],
+  ]
+}
+
+// L'en-tête d'une page Agenda par pays (scripts/lib/agenda-pays.mjs). Le
+// balisage `Event` décrit EXACTEMENT la liste affichée (`events`, déjà filtrée
+// et dédoublonnée) — chaque nœud par eventLd, comme l'accueil et /agenda/.
+export function agendaPaysHeadFor({ siteId, lang, key, events, robots = null }) {
+  const site = SITES[siteId]
+  if (!site) throw new Error(`site inconnu : ${siteId}`)
+  const s = AGENDA_PAYS_STRINGS[lang]
+  if (!s) throw new Error(`pas de chaînes Agenda par pays en ${lang}`)
+  const country = countryLabel(key, lang)
+  const url = agendaCountryUrl(lang, key)
+  const graph = siteGraph(site, lang)
+  graph.push(...events.map(eventLd))
+  graph.push(breadcrumb(lang, [[BRIEF_STRINGS[lang].agenda, urlFor(lang, 'agenda')], [country, url]]))
+  return composeHead({
+    site, lang, url,
+    title: `${s.title(country)} · ${site.brand}`,
+    description: s.description(country),
+    alternates: agendaPaysAlternates(key),
+    ogType: 'website',
+    graph,
+    robots,
   })
 }
 
