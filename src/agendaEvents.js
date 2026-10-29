@@ -1,3 +1,5 @@
+import { COUNTRIES, worldCountryKey } from './worldPlace.js'
+
 // Les deux filtres canoniques de l'agenda — écrits UNE fois, lus des deux
 // mondes.
 //
@@ -56,6 +58,42 @@ export function evenementsAVenir(evenements, maintenant = Date.now(), decalage) 
     vus.add(ev.url)
     return true
   })
+}
+
+// Les pages Agenda par pays (scripts/lib/agenda-pays.mjs). Deux seuils :
+//   - PAYS_PAGE_MIN : la page EXISTE dès un événement à venir, sinon 404 ;
+//   - PAYS_INDEX_MIN : en dessous, elle existe mais en `noindex`, hors du
+//     sitemap et sans lien depuis /agenda/ — une page à un événement est trop
+//     mince pour qu'on la propose à Google, et ce palier évite qu'un pays
+//     oscillant entre 2 et 4 événements fasse naître et mourir une URL
+//     indexée d'une heure à l'autre.
+//
+// LE PIÈGE du lien depuis /agenda/ (AgendaPage.jsx) : il n'y est posé que si
+// le pays atteint PAYS_INDEX_MIN AU RENDU, alors que la page a été écrite au
+// BUILD, plus tôt. La règle est monotone (le temps ne fait que retirer des
+// événements), donc un lien rendu après le build vise toujours une page
+// bâtie. Ne remplacez pas ces seuils par une règle qui pourrait croître avec
+// le temps : un lien vers une page jamais écrite serait un 404 sans signe.
+// Seule réserve, le fuseau : un lecteur à l'ouest de l'UTC lit l'heure murale
+// plus tard que la CI et peut compter un événement que le build a jugé passé.
+// Il faudrait plusieurs événements du même pays dans ces quelques heures pour
+// que le lien vise un pays sans page ; au pire, il vise une page en noindex.
+export const PAYS_PAGE_MIN = 1
+export const PAYS_INDEX_MIN = 3
+
+// Les pays qui ont une page, avec leurs événements (déjà filtrés par
+// evenementsAVenir). Seules les clés de COUNTRIES en ont une : un lieu non
+// résolu forme sa propre clé (worldCountryKey), sans nom traduit ni slug.
+export function paysDeLAgenda(aVenir) {
+  const par = new Map()
+  for (const ev of aVenir) {
+    const k = worldCountryKey(ev)
+    if (!COUNTRIES[k]) continue
+    if (!par.has(k)) par.set(k, [])
+    par.get(k).push(ev)
+  }
+  for (const [k, evs] of par) if (evs.length < PAYS_PAGE_MIN) par.delete(k)
+  return par
 }
 
 // L'ancre d'un événement : `/#e-…` sur l'accueil, cible des boutons de partage

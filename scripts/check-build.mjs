@@ -16,16 +16,17 @@
  * Dérivé de sites.config.js : ajouter une page ou une langue étend
  * automatiquement le contrôle, sans toucher à ce fichier.
  */
-import { access, readFile, stat } from 'node:fs/promises'
+import { access, readdir, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
+import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
 import { agendaGuardChecks } from './lib/agenda-guard.mjs'
 import { loadBriefs, briefLangHrefs } from './lib/brief-pages.mjs'
 import { cultureLangHrefs } from './lib/culture-pages.mjs'
+import { agendaPaysAlternates } from './lib/site-meta.mjs'
 
 // Les contrôles d'audience (GA4 + beacon Cloudflare) d'une page de la vitrine
 // `site`. Partagés entre les pages React et les cartes de liens de pages/ :
@@ -90,6 +91,12 @@ const SECTION_LOC = new RegExp(
     .map((x) => x.slice(0, -1))
     .join('|')})/`,
 )
+
+// Une entrée de page Agenda par pays : un segment SOUS le slug de la vue agenda
+// (/agenda/suisse/, /events/france/). Le slug seul est la vue elle-même, que
+// le décompte des vues doit garder — d'où l'exigence d'un second segment.
+const AGENDA_SLUGS = [...new Set(Object.values(VIEWS.agenda.slugs))].map((x) => x.slice(0, -1))
+const PAYS_LOC = new RegExp(`<loc>[^<]*/(${AGENDA_SLUGS.join('|')})/[a-z0-9-]+/</loc>`)
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 let bad = 0
@@ -376,7 +383,7 @@ for (const site of Object.values(SITES)) {
   // compte ici que les entrées de vue.
   const vues = xml
     .split('<url>')
-    .filter((b) => !SECTION_LOC.test(b))
+    .filter((b) => !SECTION_LOC.test(b) && !PAYS_LOC.test(b))
     .join('<url>')
   const urls = (vues.match(/<url>/g) || []).length
   const dates = (vues.match(/<lastmod>/g) || []).length
@@ -516,6 +523,52 @@ function langBarProblem(html, expected, lang) {
     }
   }
   console.log('✓ pages Culture contrôlées')
+}
+
+// Les pages Agenda par pays. Jugées sur ce que le build a ÉCRIT, pas sur un
+// recalcul : ce contrôle tourne quelques minutes après le build, et un
+// événement passé entre les deux changerait la liste attendue. Chaque dossier
+// présent sous la vue agenda doit être une page saine (langue, canonical,
+// hreflang complet, au moins un Event) ; chaque page pays du sitemap doit
+// exister et être indexable.
+{
+  for (const site of Object.values(SITES)) {
+    const other = Object.values(SITES).find((s) => s.id !== site.id).host
+    const sitemap = await readFile(path.join(root, 'dist', site.id, 'sitemap.xml'), 'utf-8').catch(() => '')
+    let n = 0
+    for (const { lang } of site.pages) {
+      const sub = pathFor(lang, 'agenda').replace(/^\//, '')
+      const dirs = (await readdir(path.join(root, 'dist', site.id, sub), { withFileTypes: true }).catch(() => []))
+        .filter((d) => d.isDirectory())
+      for (const d of dirs) {
+        const rel = path.join('dist', site.id, sub, d.name, 'index.html')
+        const fail = (why) => { console.error(`✗ ${rel} — ${why}`); bad++ }
+        const html = await readFile(path.join(root, rel), 'utf-8').catch(() => null)
+        if (!html) { fail('absent'); continue }
+        n++
+        const key = html.match(/data-agenda-pays="([a-z]+)"/)?.[1]
+        if (!key) { fail('data-agenda-pays absent'); continue }
+        const url = `${urlFor(lang, 'agenda')}${d.name}/`
+        if (!html.includes(`<html lang="${lang}">`)) fail(`<html lang="${lang}"> manquant`)
+        if (!html.includes(`<link rel="canonical" href="${url}" />`)) fail('canonical')
+        const got = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]])
+        if (JSON.stringify(got) !== JSON.stringify(agendaPaysAlternates(key))) fail('hreflang')
+        const foreign = html.replaceAll(/<link rel="alternate"[^>]+>/g, '').replace(LANG_BAR, '')
+        if (foreign.includes(`href="${other}`)) fail(`cite ${other}`)
+        if (!html.includes('"@type":"Event"')) fail('aucun Event')
+        const noindex = html.includes('<meta name="robots" content="noindex')
+        const listed = sitemap.includes(`<loc>${url}</loc>`)
+        if (!noindex && !listed) fail('indexable mais absente du sitemap')
+        if (noindex && listed) fail('noindex mais listée au sitemap')
+      }
+    }
+    for (const m of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      if (!PAYS_LOC.test(m[0])) continue
+      const rel = path.join('dist', site.id, m[1].slice(site.host.length).replace(/^\//, ''), 'index.html')
+      await access(path.join(root, rel)).catch(() => { console.error(`✗ sitemap → ${rel} absent`); bad++ })
+    }
+    console.log(`✓ dist/${site.id} : ${n} pages Agenda par pays contrôlées`)
+  }
 }
 
 if (bad) {
