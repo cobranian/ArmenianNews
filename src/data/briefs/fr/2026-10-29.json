@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-29",
+  "lang": "fr",
+  "generatedAt": "2026-10-29T03:28:28.060Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La visite de la reine Sophie d'Espagne et du prince saoudien Abdulaziz bin Talal Al Saud marque l'actualité diplomatique, tandis que l'Assemblée nationale a ratifié l'accord TRIPP malgré les critiques du Premier ministre. Sur le plan environnemental, l'Arménie est active à la COP17, et sur le plan sportif, Erevan accueillera les Championnats d'Europe de Muay Thaï en 2027.",
+  "topics": [
+    {
+      "title": "Visite de la reine Sophie d'Espagne en Arménie",
+      "text": "La reine Sophie d'Espagne est arrivée en Arménie et a visité le temple païen de Garni ainsi que le monument naturel « Symphonie des Pierres ». Le Premier ministre Nikol Pashinyan a également présenté ses condoléances à l'Espagne suite à une collision ferroviaire meurtrière.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-armenie-la-reine-despagne-a-visite-le-temple-paien-de-garni-et-le-monument-naturel-symphonie-des-pierres/",
+          "title": "En Arménie, la Reine d’Espagne a visité le temple païen de Garni et le monument naturel « Symphonie des Pierres »"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-reine-sofia-despagne-est-arrivee-en-armenie",
+          "title": "La reine Sofía d’Espagne est arrivée en Arménie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264115",
+          "title": "La reine Sophie d’Espagne a visité le temple païen de Garni et le monument naturel de la « Symphonie des pierres »"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264116",
+          "title": "Le Premier ministre présente ses condoléances à l’Espagne après une collision ferroviaire meurtrière"
+        }
+      ]
+    },
+    {
+      "title": "Visite du prince saoudien Abdulaziz bin Talal Al Saud et remise du prix Prince Talal",
+      "text": "Le Premier ministre a reçu le prince Abdulaziz bin Talal Al Saud d'Arabie saoudite, qui a déclaré vouloir revenir en Arménie. Parallèlement, une cérémonie de remise du prix Prince Talal, doté d'un fonds d'un million de dollars, s'est tenue à Erevan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264158",
+          "title": "Cérémonie de remise du prix Prince Talal à Erevan, doté d'un fonds de prix d'un million de dollars"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lorsque-je-viens-en-armenie-jai-envie-dy-revenir-declaration-du-prince-darabie-saoudite-au-premier-ministre-armenien/",
+          "title": "Lorsque je viens en Arménie, j’ai envie d’y revenir. Déclaration du prince d’Arabie saoudite au Premier ministre arménien"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264099",
+          "title": "Le Premier ministre a reçu au siège du Gouvernement le prince Abdulaziz bin Talal Al Saud d’Arabie saoudite"
+        }
+      ]
+    },
+    {
+      "title": "Ratification de l'accord TRIPP et critiques du Premier ministre",
+      "text": "L'Assemblée nationale d'Arménie a approuvé la ratification de l'accord TRIPP. Le Premier ministre a toutefois critiqué la recherche d'un garant pour ce projet, soulignant que les forces politiques doivent répondre de leurs paroles lors des élections.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264138",
+          "title": "Le Premier ministre critique la recherche d’un garant pour le projet TRIPP"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264133",
+          "title": "Selon Pashinyan, les forces politiques doivent répondre de leurs paroles lors des élections"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lassemblee-nationale-darmenie-vient-dapprouve-la-ratification-de-laccord-tripp/",
+          "title": "L’Assemblée nationale d’Arménie vient d’approuve la ratification de l’accord TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Participation arménienne à la COP17 et coopération environnementale",
+      "text": "Le ministre arménien de l'Environnement a rencontré ses homologues indien et suisse en marge de la COP17 pour renforcer la coopération. Dalan Technopark a présenté son approche de la responsabilité environnementale, tandis que l'UE cherche des moyens de faire payer les grands pays émergents.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/construction-et-responsabilite-environnementale-dalan-technopark-a-la-cop17/",
+          "title": "Construction et responsabilité environnementale : Dalan Technopark à la COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264111",
+          "title": "Le ministre arménien de l’Environnement a rencontré son homologue indien en marge de la COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264101",
+          "title": "Hambardzum Matevosyan et Katrin Schneeberger ont examiné les possibilités de renforcer la coopération environnementale entre l’Arménie et la Suisse"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/a-la-cop17-lue-veut-trouver-des-moyens-de-faire-payer-les-grands-pays-emergents/",
+          "title": "A la COP17, l’UE veut trouver « des moyens » de faire payer les grands pays émergents"
+        }
+      ]
+    },
+    {
+      "title": "L'Arménie accueillera les Championnats d'Europe de Muay Thaï 2027",
+      "text": "Erevan a été désignée pour organiser les Championnats d'Europe de Muay Thaï IFMA en 2027, avec la participation attendue de plus de 600 athlètes et 300 officiels provenant de 44 pays. Par ailleurs, Erevan accueille actuellement les qualifications européennes de volley-ball U20.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-accueillera-en-2027-les-championnats-deurope-de-muay-thai-ifma-avec-plus-de-600-athletes-et-300-officiels-de-44-pays/",
+          "title": "L’Arménie accueillera en 2027 les Championnats d’Europe de Muay Thaï IFMA avec plus de 600 athlètes et 300 officiels de 44 pays"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/volley-ball-erevan-accueille-les-qualifications-europeennes-u20",
+          "title": "Volley-ball : Erevan accueille les qualifications européennes U20"
+        }
+      ]
+    },
+    {
+      "title": "Tensions diplomatiques avec Moscou et questions de sécurité régionale",
+      "text": "Maria Zakharova a dénoncé une nouvelle salve d'accusations infondées d'Erevan contre Moscou, sans proposition constructive. Un député arménien a par ailleurs affirmé que la 102e base militaire russe ne pourrait tenir que 20 minutes en cas de conflit avec la Turquie, tandis qu'un politologue note des divergences entre Ankara et Bakou.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/maria-zakharova-la-nouvelle-salve-daccusations-infondees-lancee-par-erevan-contre-moscou-na-ete-suivie-daucune-proposition-constructive-ni-daucune-decision-responsable/",
+          "title": "Maria Zakharova : La nouvelle salve d’accusations infondées lancée par Erevan contre Moscou n’a été suivie d’aucune proposition constructive ni d’aucune décision responsable"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-cas-de-conflit-avec-la-turquie-la-102e-base-militaire-russe-darmenie-ne-pourrait-tenir-que-20-minutes-le-saviez-vous-affirme-le-depute-sarik-minasyan/",
+          "title": "En cas de conflit avec la Turquie, la 102e base militaire russe d’Arménie ne pourrait tenir que 20 minutes, le saviez-vous ? affirme le député Sarik Minasyan"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35608/",
+          "title": "Selon un politologue, Ankara et Bakou divergent, et Erevan doit rester hors de leurs différends"
+        }
+      ]
+    },
+    {
+      "title": "Actualités culturelles : nouvelle salle à l'Opéra et hommages de l'UNESCO",
+      "text": "Une nouvelle salle de concert a ouvert ses portes à l'Opéra d'Erevan. L'UNESCO célèbre par ailleurs le centenaire de la place de la République d'Erevan et l'héritage de Hrachya Acharyan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/une-nouvelle-salle-de-concert-ouvre-ses-portes-lopera-derevan",
+          "title": "Une nouvelle salle de concert ouvre ses portes à l’Opéra d'Erevan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lunesco-celebre-hrachya-acharyan-et-le-centenaire-de-la-place-de-la-republique-derevan",
+          "title": "L’UNESCO célèbre Hrachya Acharyan et le centenaire de la place de la République d’Erevan"
+        }
+      ]
+    }
+  ]
+}

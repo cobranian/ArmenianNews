@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-29",
+  "lang": "it",
+  "generatedAt": "2026-10-29T03:28:28.060Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata da visite diplomatiche di alto profilo, dall'approvazione parlamentare dell'accordo TRIPP e da sviluppi su ambiente, economia e sport.",
+  "topics": [
+    {
+      "title": "Visita della regina Sofia di Spagna in Armenia",
+      "text": "La regina Sofia ha visitato il tempio pagano di Garni e il monumento naturale \"Sinfonia delle pietre\". La visita rientra in un più ampio programma di impegni culturali e diplomatici nella capitale armena.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-armenie-la-reine-despagne-a-visite-le-temple-paien-de-garni-et-le-monument-naturel-symphonie-des-pierres/",
+          "title": "En Arménie, la Reine d’Espagne a visité le temple païen de Garni et le monument naturel « Symphonie des Pierres »"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-reine-sofia-despagne-est-arrivee-en-armenie",
+          "title": "La reine Sofía d’Espagne est arrivée en Arménie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264115",
+          "title": "La reine Sophie d’Espagne a visité le temple païen de Garni et le monument naturel de la « Symphonie des pierres »"
+        }
+      ]
+    },
+    {
+      "title": "Incontro tra il premier Pashinyan e il principe saudita Abdulaziz bin Talal Al Saud",
+      "text": "Il primo ministro ha ricevuto il principe saudita presso la sede del governo. Il principe ha espresso apprezzamento per l'Armenia manifestando il desiderio di tornarvi.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lorsque-je-viens-en-armenie-jai-envie-dy-revenir-declaration-du-prince-darabie-saoudite-au-premier-ministre-armenien/",
+          "title": "Lorsque je viens en Arménie, j’ai envie d’y revenir. Déclaration du prince d’Arabie saoudite au Premier ministre arménien"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264099",
+          "title": "Le Premier ministre a reçu au siège du Gouvernement le prince Abdulaziz bin Talal Al Saud d’Arabie saoudite"
+        }
+      ]
+    },
+    {
+      "title": "Ratifica parlamentare dell'accordo TRIPP e critiche del premier",
+      "text": "L'Assemblea nazionale ha approvato la ratifica dell'accordo TRIPP. Contestualmente, il primo ministro ha criticato la ricerca di un garante per il progetto.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264138",
+          "title": "Le Premier ministre critique la recherche d’un garant pour le projet TRIPP"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lassemblee-nationale-darmenie-vient-dapprouve-la-ratification-de-laccord-tripp/",
+          "title": "L’Assemblée nationale d’Arménie vient d’approuve la ratification de l’accord TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Tensioni diplomatiche tra Erevan e Mosca",
+      "text": "Maria Zakharova ha respinto le nuove accuse armene definendole infondate e prive di proposte costruttive. Un deputato armeno ha inoltre affermato che la base russa 102 resisterebbe solo 20 minuti in caso di conflitto con la Turchia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/maria-zakharova-la-nouvelle-salve-daccusations-infondees-lancee-par-erevan-contre-moscou-na-ete-suivie-daucune-proposition-constructive-ni-daucune-decision-responsable/",
+          "title": "Maria Zakharova : La nouvelle salve d’accusations infondées lancée par Erevan contre Moscou n’a été suivie d’aucune proposition constructive ni d’aucune décision responsable"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-cas-de-conflit-avec-la-turquie-la-102e-base-militaire-russe-darmenie-ne-pourrait-tenir-que-20-minutes-le-saviez-vous-affirme-le-depute-sarik-minasyan/",
+          "title": "En cas de conflit avec la Turquie, la 102e base militaire russe d’Arménie ne pourrait tenir que 20 minutes, le saviez-vous ? affirme le député Sarik Minasyan"
+        }
+      ]
+    },
+    {
+      "title": "COP17: partecipazione armena e posizione dell'UE",
+      "text": "Il ministro dell'Ambiente armeno ha incontrato i colleghi indiano e svizzero a margine della conferenza. Dalan Technopark ha presentato progetti su costruzione e responsabilità ambientale. L'UE cerca meccanismi per coinvolgere finanziariamente i grandi paesi emergenti.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/construction-et-responsabilite-environnementale-dalan-technopark-a-la-cop17/",
+          "title": "Construction et responsabilité environnementale : Dalan Technopark à la COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264111",
+          "title": "Le ministre arménien de l’Environnement a rencontré son homologue indien en marge de la COP17"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264101",
+          "title": "Hambardzum Matevosyan et Katrin Schneeberger ont examiné les possibilités de renforcer la coopération environnementale entre l’Arménie et la Suisse"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/a-la-cop17-lue-veut-trouver-des-moyens-de-faire-payer-les-grands-pays-emergents/",
+          "title": "A la COP17, l’UE veut trouver « des moyens » de faire payer les grands pays émergents"
+        }
+      ]
+    },
+    {
+      "title": "Acquisto uva completato al 99% e sicurezza alimentare",
+      "text": "Il ministro dell'Economia ha annunciato il quasi completamento dell'acquisto dell'uva dai coltivatori. In ambito FAO, si sottolinea che la diversità delle colture agricole è condizione essenziale per la sicurezza alimentare globale.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lachat-de-raisins-aux-agriculteurs-est-acheve-a-99-indique-le-ministre-de-leconomie-darmenie/",
+          "title": "L’achat de raisins aux agriculteurs est achevé à 99 % indique le Ministre de l’Économie d’Arménie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264100",
+          "title": "La préservation de la diversité des cultures agricoles est une condition essentielle de la sécurité alimentaire mondiale, selon Kent Nnadozie"
+        }
+      ]
+    },
+    {
+      "title": "Armenia ospiterà i Campionati europei di Muay Thai 2027",
+      "text": "L'IFMA ha assegnato all'Armenia l'organizzazione dei campionati europei 2027. Sono attesi oltre 600 atleti e 300 ufficiali da 44 paesi.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-accueillera-en-2027-les-championnats-deurope-de-muay-thai-ifma-avec-plus-de-600-athletes-et-300-officiels-de-44-pays/",
+          "title": "L’Arménie accueillera en 2027 les Championnats d’Europe de Muay Thaï IFMA avec plus de 600 athlètes et 300 officiels de 44 pays"
+        }
+      ]
+    }
+  ]
+}

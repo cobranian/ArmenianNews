@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-29",
+  "lang": "de",
+  "generatedAt": "2026-10-29T03:28:28.060Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Die armenische Nachrichtenlandschaft am heutigen Tag bietet ein breites Spektrum an Themen, von politischen Entwicklungen bis hin zu kulturellen Ereignissen und sportlichen Highlights.",
+  "topics": [
+    {
+      "title": "Premierminister kritisiert Suche nach Garant für TRIPP-Projekt",
+      "text": "Der Premierminister äußerte sich kritisch zur Suche nach einem Garanten für das Projekt TRIPP. Es wurde betont, dass politische Kräfte für ihre Aussagen während Wahlen verantwortlich gemacht werden müssen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264138",
+          "title": "Le Premier ministre critique la recherche d’un garant pour le projet TRIPP"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-reine-sofia-despagne-est-arrivee-en-armenie",
+          "title": "La reine Sofía d’Espagne est arrivée en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Königin Sophie von Spanien besucht Heiligtum von Garni",
+      "text": "Die Königin Sophie von Spanien besuchte das heidnische Tempel von Garni und das Naturdenkmal \"Symphonie der Steine\". Auch die Reina Letizia war zuvor zu diesem Besuch in Armenien erwartet worden.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-armenie-la-reine-despagne-a-visite-le-temple-paien-de-garni-et-le-monument-naturel-symphonie-des-pierres/",
+          "title": "En Arménie, la Reine d’Espagne a visité le temple païen de Garni et le monument naturel « Symphonie des Pierres »"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264115",
+          "title": "La reine Sophie d’Espagne a visité le temple païen de Garni et le monument naturel de la « Symphonie des pierres »"
+        }
+      ]
+    },
+    {
+      "title": "Konzerte und kulturelle Ereignisse in Eriwan",
+      "text": "Eine neue Konzerthalle eröffnete ihre Türen im Opernhaus von Eriwan. Zudem gedenkt die UNESCO Hrachya Acharyan und das hundertjährige Jubiläum des Republik-Platzes in Eriwan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/une-nouvelle-salle-de-concert-ouvre-ses-portes-lopera-derevan",
+          "title": "Une nouvelle salle de concert ouvre ses portes à l’Opéra d'Erevan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lunesco-celebre-hrachya-acharyan-et-le-centenaire-de-la-place-de-la-republique-derevan",
+          "title": "L’UNESCO célèbre Hrachya Acharyan et le centenaire de la place de la République d’Erevan"
+        }
+      ]
+    },
+    {
+      "title": "Armenien empfängt saudischen Prinzen",
+      "text": "Premierminister erhielt im Regierungssitz den saudischen Prinzen Abdulaziz bin Talal Al Saud. Der Prinz äußerte sich positiv über einen Aufenthalt in Armenien und die Möglichkeit, dorthin zurückzukehren.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264158",
+          "title": "Cérémonie de remise du prix Prince Talal à Erevan, doté d'un fonds de prix d'un million de dollars"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264099",
+          "title": "Le Premier ministre a reçu au siège du Gouvernement le prince Abdulaziz bin Talal Al Saud d’Arabie saoudite"
+        }
+      ]
+    },
+    {
+      "title": "Umweltkooperation mit der Schweiz",
+      "text": "Hambardzum Matevosyan und Katrin Schneeberger prüften Möglichkeiten zur Stärkung der Umweltzusammenarbeit zwischen Armenien und der Schweiz. Auch der Umweltminister traf seinen indischen Kollegen im Rahmen der COP17.",
+      "rubric": null,
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264101",
+          "title": "Hambardzum Matevosyan et Katrin Schneeberger ont examiné les possibilités de renforcer la coopération environnementale entre l’Arménie et la Suisse"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264111",
+          "title": "Le ministre arménien de l’Environnement a rencontré son homologue indien en marge de la COP17"
+        }
+      ]
+    },
+    {
+      "title": "Sportliche Ereignisse und Agrarwirtschaft",
+      "text": "Armenien wird 2027 die Europameisterschaften im Muay Thai IFMA ausrichten, wobei mit über 600 Athleten und 300 Funktionären aus 44 Ländern zu rechnen ist. Der Kauf von Trauben bei Landwirten ist fast abgeschlossen.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-accueillera-en-2027-les-championnats-deurope-de-muay-thai-ifma-avec-plus-de-600-athletes-et-300-officiels-de-44-pays/",
+          "title": "L’Arménie accueillera en 2027 les Championnats d’Europe de Muay Thaï IFMA avec plus de 600 athlètes et 300 officiels de 44 pays"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lachat-de-raisins-aux-agriculteurs-est-acheve-a-99-indique-le-ministre-de-leconomie-darmenie/",
+          "title": "L’achat de raisins aux agriculteurs est achevé à 99 % indique le Ministre de l’Économie d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Parlament billigt TRIPP-Abkommen",
+      "text": "Die Nationale Versammlung hat die Ratifizierung des TRIPP-Abkommens genehmigt. Dies steht im Kontext politischer Verantwortung und internationaler Verträge.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lassemblee-nationale-darmenie-vient-dapprouve-la-ratification-de-laccord-tripp/",
+          "title": "L’Assemblée nationale d’Arménie vient d’approuve la ratification de l’accord TRIPP"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-reine-sofia-despagne-est-arrivee-en-armenie",
+          "title": "La reine Sofía d’Espagne est arrivée en Arménie"
+        }
+      ]
+    }
+  ]
+}
