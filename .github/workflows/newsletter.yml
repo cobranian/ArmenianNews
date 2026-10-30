@@ -1,0 +1,64 @@
+name: Lettre — envoi hebdomadaire
+
+# Une fois par semaine ISO et par vitrine, le numéro de la semaine part à
+# Buttondown (scripts/newsletter-send.mjs). Trois passages (lundi, mardi,
+# mercredi) : le registre src/data/newsletter-sent.json fait qu'un seul envoie,
+# et rattrape un lundi sauté par le cron de GitHub (il en saute, voir
+# CLAUDE.md). NEWSLETTER_STATUS (variable de l'environnement `newsletter`)
+# choisit le statut Buttondown ; non posée, le numéro est créé en BROUILLON.
+on:
+  schedule:
+    - cron: '30 5 * * 1,2,3'
+  workflow_dispatch:
+
+# Deux runs simultanés planifieraient le même numéro avant que l'un ait poussé
+# le registre.
+concurrency:
+  group: newsletter
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    environment: newsletter
+    permissions:
+      contents: write # pousser le registre src/data/newsletter-sent.json
+    env:
+      NEWSLETTER_STATUS: ${{ vars.NEWSLETTER_STATUS }}
+      BUTTONDOWN_API_KEY_CH: ${{ secrets.BUTTONDOWN_API_KEY_CH }}
+      BUTTONDOWN_API_KEY_ORG: ${{ secrets.BUTTONDOWN_API_KEY_ORG }}
+    steps:
+      # main et non le commit du déclencheur : brèves, Culture et agenda y sont
+      # poussés chaque heure par le snapshot.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Choisir quoi envoyer
+        run: node scripts/newsletter-send.mjs plan --out "$RUNNER_TEMP/newsletter-plan.json"
+
+      # AVANT l'envoi : un run annulé ensuite perd au pire un numéro, il n'en
+      # double jamais. Un push refusé fait échouer l'étape, donc rien ne part —
+      # le passage suivant recalculera le plan.
+      - name: Enregistrer le registre avant l'envoi
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/newsletter-sent.json
+          if git diff --cached --quiet; then
+            echo "Registre inchangé."
+          else
+            git commit -m "newsletter: registre $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Envoyer
+        run: node scripts/newsletter-send.mjs send --plan "$RUNNER_TEMP/newsletter-plan.json"
