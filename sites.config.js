@@ -103,12 +103,9 @@ export const SITES = {
     // dans laquelle elle est écrite — le formulaire du pied de page ne
     // s'affiche que sur cette langue. Elle doit être la langue de tête
     // (test/newsletter-footer.test.mjs). `null` retire le formulaire.
-    // `buttondown: null` tant que le compte n'existe pas : ni formulaire, ni
-    // envoi (`✗ newsletter/ch: désactivée`). Le vrai nom d'utilisateur va ici
-    // une fois que Nareg a créé ET confirmé le compte (README, « Lettre et
-    // RSS », étape 1) — un nom deviné publierait un formulaire qui inscrit
-    // chez un inconnu, ou nulle part.
-    newsletter: { buttondown: null, lang: 'fr' },
+    // `buttondown: null` retire formulaire ET envoi (`✗ newsletter/ch: désactivée`).
+    // Compte créé et vérifié le 31 oct. 2026 (buttondown.com/armenieinfo).
+    newsletter: { buttondown: 'armenieinfo', lang: 'fr' },
     // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
     // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
     // lisent le fil français (CONTENT_LANG, src/newsLangs.js).
@@ -191,9 +188,9 @@ export const SITES = {
     // balise codée en dur, et rien ne le signalait — le .org était mesuré, mais
     // au mauvais endroit. `null` est accepté et n'émet aucune balise.
     gaMeasurementId: 'G-N6STD6Z5CC',
-    // Voir `newsletter` du .ch : `null` jusqu'à ce que le compte soit créé
-    // et confirmé.
-    newsletter: { buttondown: null, lang: 'en' },
+    // Voir `newsletter` du .ch. Compte créé et vérifié le 31 oct. 2026
+    // (buttondown.com/armenianews).
+    newsletter: { buttondown: 'armenianews', lang: 'en' },
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },

@@ -39,15 +39,15 @@ test('vitrine sans compte Buttondown : désactivée, même avec clé', () => {
   assert.ok(lines.includes('✗ newsletter/ch: désactivée (pas de compte Buttondown)'))
 })
 
-test('par défaut, le compte est lu dans sites.config.js (null aujourd’hui)', () => {
-  const lines = []
-  const r = planSends({ registry: {}, digests: { ch: digest(), org: digest() }, hasKey: keys, log: (l) => lines.push(l) })
-  assert.deepEqual(r, [])
-  assert.ok(lines.includes('✗ newsletter/org: désactivée (pas de compte Buttondown)'))
+test('par défaut, le compte est lu dans sites.config.js', () => {
+  const r = planSends({ registry: {}, digests: { ch: digest(), org: digest() }, hasKey: keys, log: quiet })
+  assert.deepEqual(r.map((s) => s.siteId), ['ch', 'org'])
   const avant = SITES.ch.newsletter
+  const lines = []
   try {
-    SITES.ch.newsletter = { ...avant, buttondown: 'compte-test' }
-    assert.deepEqual(planSends({ registry: {}, digests: { ch: digest() }, hasKey: keys, log: quiet }).map((s) => s.siteId), ['ch'])
+    SITES.ch.newsletter = { ...avant, buttondown: null }
+    assert.deepEqual(planSends({ registry: {}, digests: { ch: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
+    assert.ok(lines.includes('✗ newsletter/ch: désactivée (pas de compte Buttondown)'))
   } finally {
     SITES.ch.newsletter = avant
   }

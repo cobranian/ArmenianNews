@@ -81,11 +81,17 @@ function avecCompte(siteId, buttondown, fn) {
   }
 }
 
-test('aucun compte confirmé : ni action ni formulaire, sur aucune page', () => {
+test('comptes confirmés (31 oct. 2026) : formulaire sur la seule langue de tête', () => {
+  // Noms vérifiés dans Buttondown. En changer un sans créer le compte
+  // publierait un formulaire qui inscrit chez un inconnu, ou nulle part.
+  assert.equal(SITES.ch.newsletter.buttondown, 'armenieinfo')
+  assert.equal(SITES.org.newsletter.buttondown, 'armenianews')
   for (const id of Object.keys(SITES)) {
-    assert.equal(SITES[id].newsletter.buttondown, null, `${id} : compte Buttondown non confirmé posé`)
-    assert.equal(newsletterAction(id), null)
-    for (const { lang } of SITES[id].pages) assert.equal(newsletterFormAction(id, lang), null, `${id}/${lang}`)
+    for (const { lang } of SITES[id].pages) {
+      const action = newsletterFormAction(id, lang)
+      if (lang === SITES[id].newsletter.lang) assert.equal(action, newsletterAction(id), `${id}/${lang}`)
+      else assert.equal(action, null, `${id}/${lang}`)
+    }
   }
 })
 
