@@ -19,7 +19,7 @@
 import { access, readdir, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
+import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath, feedUrl, feedPath } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
@@ -433,6 +433,28 @@ for (const site of Object.values(SITES)) {
   } catch {
     console.error(`✗ dist/${site.id}/llms.txt — absent`)
     bad++
+  }
+
+  // Flux RSS : un par langue, bien formé, qui se cite lui-même, et aucun
+  // élément ne pointe vers l'hôte du voisin.
+  for (const { lang } of site.pages) {
+    const rel = `dist/${site.id}${feedPath(lang)}`
+    try {
+      const feed = await readFile(path.join(root, rel), 'utf-8')
+      const other = Object.values(SITES).find((s) => s.id !== site.id)
+      const foreign = [...feed.matchAll(/<item>[\s\S]*?<link>([^<]+)<\/link>/g)]
+        .map((m) => m[1])
+        .filter((u) => u.startsWith(other.host + '/'))
+      if (!feed.startsWith('<?xml') || !feed.includes(`<atom:link href="${feedUrl(lang)}"`) || foreign.length) {
+        console.error(`✗ ${rel} — en-tête, atom:link ou lien étranger (${foreign.slice(0, 3).join(', ')})`)
+        bad++
+      } else {
+        console.log(`✓ ${rel}`)
+      }
+    } catch {
+      console.error(`✗ ${rel} — absent`)
+      bad++
+    }
   }
 }
 

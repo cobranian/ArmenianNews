@@ -343,6 +343,18 @@ export function culturePath(lang, slug = null) {
   return cultureUrl(lang, slug).slice(SITES[siteOf(lang)].host.length)
 }
 
+// Le flux RSS d'une langue (scripts/lib/feed.mjs) : feed.xml sous la page de
+// la langue — /feed.xml, /de/feed.xml, /hy/feed.xml. Un fichier statique, donc
+// sans slash final.
+export function feedUrl(lang) {
+  const site = SITES[siteOf(lang)]
+  return site.host + langPath(site.id, lang) + 'feed.xml'
+}
+
+export function feedPath(lang) {
+  return feedUrl(lang).slice(SITES[siteOf(lang)].host.length)
+}
+
 // L'image d'un article vit UNE fois par vitrine, sous la section de sa langue
 // de tête (/culture/<slug>/), et sert aussi les autres langues du domaine.
 export function cultureImagePath(slug, ext) {

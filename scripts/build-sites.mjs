@@ -18,12 +18,13 @@ import { fileURLToPath } from 'node:url'
 // LANGS vient de sites.config.js, PAS de src/i18n.jsx : Node ne sait pas
 // parser .jsx (ERR_UNKNOWN_FILE_EXTENSION), et ce script tourne sous Node.
 // C'est la raison pour laquelle la liste a été déplacée à Task 1.
-import { SITES, ALL_LANGS, ALL_VIEWS, LANGS, pathFor } from '../sites.config.js'
+import { SITES, ALL_LANGS, ALL_VIEWS, LANGS, pathFor, feedPath } from '../sites.config.js'
 import { applyAnalytics, replaceMeta } from './lib/site-meta.mjs'
 import { stripAgendaLd } from './lib/agenda-ld.mjs'
 import { sitemapFor, robotsFor } from './lib/sitemap.mjs'
 import { notFoundHtml } from './lib/not-found.mjs'
 import { llmsFor } from './lib/llms.mjs'
+import { feedFor } from './lib/feed.mjs'
 import { loadBriefs, cssHrefFrom, writeBriefPages } from './lib/brief-pages.mjs'
 import { loadCulture, unpublishedLine } from './lib/culture-load.mjs'
 import { writeCulturePages } from './lib/culture-pages.mjs'
@@ -202,6 +203,13 @@ async function writeSeoFiles(site, stamp, briefs, culture, pays) {
   // La carte du site pour les assistants IA (scripts/lib/llms.mjs).
   await writeFile(path.join(dist, 'llms.txt'), llmsFor(site.id, { briefs, culture }), 'utf-8')
   console.log(`  → dist/${site.id}/llms.txt`)
+  // Un flux RSS par langue (scripts/lib/feed.mjs), sous la page de la langue.
+  for (const { lang } of site.pages) {
+    const rel = feedPath(lang).replace(/^\//, '')
+    await mkdir(path.dirname(path.join(dist, rel)), { recursive: true })
+    await writeFile(path.join(dist, rel), feedFor(lang, { briefs, culture }), 'utf-8')
+    console.log(`  → dist/${site.id}${feedPath(lang)}`)
+  }
   // La page 404, dans la langue du domaine. Firebase la sert avec un vrai
   // statut 404 à toute URL sans fichier — depuis que firebase.json n'a plus
   // de rewrite ** → index.html. Sans ce fichier, Firebase servirait sa propre
