@@ -175,7 +175,7 @@ for (const site of Object.values(SITES)) {
         ],
         [
           `${ALL_LANGS.length + 1} alternate exactement (${ALL_LANGS.length} langues + x-default)`,
-          count(/rel="alternate"/g) === ALL_LANGS.length + 1,
+          count(/rel="alternate" hreflang=/g) === ALL_LANGS.length + 1,
         ],
         ['x-default', html.includes('hreflang="x-default"')],
         ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
