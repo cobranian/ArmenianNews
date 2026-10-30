@@ -4,7 +4,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { isoWeek, digestFor } from '../scripts/lib/newsletter.mjs'
-import { briefUrl } from '../sites.config.js'
+import { briefUrl, urlFor, agendaCountryUrl } from '../sites.config.js'
 
 const now = new Date('2026-11-02T05:30:00Z') // lundi, semaine 45
 const day = (n) => new Date(Date.UTC(2026, 10, 2 - n)).toISOString().slice(0, 10)
@@ -63,4 +63,15 @@ test('hors fenêtre exclu', () => {
 test('Markdown sûr', () => {
   const d = digestFor('ch', { briefs: briefsOf('fr', { 1: 'Titre ] avec (parenthèse) et [crochet' }), culture: [], events: [], now })
   assert.ok(d.body.includes('[Titre \\] avec \\(parenthèse\\) et \\[crochet]('))
+})
+
+test('lien agenda : lieu inconnu, pays trop mince, pays assez fourni', () => {
+  const ev = (i, location, country) => ({ title: `E${i}`, url: `https://armenopole.com/e${i}.html`, location, country, date: '2026-11-04T12:00' })
+  const evs = [ev(1, 'Atlantis', 'atlantis'), ev(2, 'Genève', 'switzerland'), ev(3, 'Genève', 'switzerland'), ev(4, 'Genève', 'switzerland'), ev(5, 'Paris', 'france')]
+  const d = digestFor('ch', { briefs: briefsOf('fr'), culture: [], events: evs, now })
+  const ligne = (t) => d.body.split(/\r?\n/).find((l) => l.includes(t))
+  assert.ok(ligne('E1').includes('(' + urlFor('fr', 'agenda') + '?utm'))
+  assert.ok(ligne('E5').includes('(' + urlFor('fr', 'agenda') + '?utm'))
+  assert.ok(ligne('E2').includes(agendaCountryUrl('fr', 'switzerland') + '?utm'))
+  assert.ok(ligne('E5').includes('utm_campaign=hebdo-2026-W45'))
 })

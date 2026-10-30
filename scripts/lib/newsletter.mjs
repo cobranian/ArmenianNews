@@ -3,7 +3,7 @@
 // dépend que de ses arguments — `now` est injecté, jamais lu — pour que les
 // tests ne vieillissent pas. L'envoi vit ailleurs.
 import { SITES, briefUrl, cultureUrl, agendaCountryUrl, urlFor } from '../../sites.config.js'
-import { evenementsAVenir, instantMural } from '../../src/agendaEvents.js'
+import { evenementsAVenir, instantMural, paysDeLAgenda, PAYS_INDEX_MIN } from '../../src/agendaEvents.js'
 import { worldCountryKey, placeLabel } from '../../src/worldPlace.js'
 import { NEWSLETTER_STRINGS } from '../../src/newsletterStrings.js'
 
@@ -50,8 +50,18 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
   // Heure murale lue comme UTC (décalage 0) : le résultat ne dépend pas de la
   // machine qui compose le numéro.
   const fmtDate = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', timeZone: 'UTC' })
+  const aVenir = evenementsAVenir(events || [], t0, 0)
+  // Même règle que le sitemap : un lien vers un pays seulement si sa page est
+  // bâtie ET indexable (clé connue, au moins PAYS_INDEX_MIN événements à venir,
+  // tous événements à venir comptés, pas seulement ceux du numéro). Sinon
+  // l'index de l'agenda — jamais d'exception pour un lieu inconnu.
+  const pays = paysDeLAgenda(aVenir)
+  const lienAgenda = (e) => {
+    const k = worldCountryKey(e)
+    return ((pays.get(k)?.length ?? 0) >= PAYS_INDEX_MIN ? agendaCountryUrl(lang, k) : urlFor(lang, 'agenda')) + utm
+  }
   const limite = t0 + FENETRE_AGENDA * JOUR
-  const lesEvenements = evenementsAVenir(events || [], t0, 0)
+  const lesEvenements = aVenir
     .filter((e) => instantMural(e.date, 0) < limite)
     .sort((a, b) => instantMural(a.date, 0) - instantMural(b.date, 0))
     .slice(0, MAX_EVENEMENTS)
@@ -78,7 +88,7 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
         .map((e) => {
           const lieu = placeLabel(e.location, lang)
           const texte = `${e.title} — ${fmtDate.format(new Date(`${e.date}Z`))}${lieu ? ` — ${lieu}` : ''}`
-          return `- ${lien(texte, agendaCountryUrl(lang, worldCountryKey(e)) + utm)}`
+          return `- ${lien(texte, lienAgenda(e))}`
         })
         .join('\n'),
       lien(S.more, urlFor(lang, 'agenda') + utm),
