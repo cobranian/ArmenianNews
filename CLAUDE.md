@@ -78,6 +78,7 @@ npm test             # toute la suite (~760 tests), sans réseau
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
+npm run newsletter -- plan --dry # aperçu local des deux lettres hebdomadaires (Buttondown ; procédure : README « Lettre et RSS »)
 npm run brief         # générer la brève du jour hors du scrape (--force ignore la règle des 7 h, --dry n'écrit rien)
 npm run culture:draft     # rédiger le brouillon Culture du jour (quotidien, 03:00 UTC) (--topic slug, --dry) — Gemini, GEMINI_API_KEY
 npm run culture:translate # traduire le fr.md relu en en/hy/ru, et de/it facultatives (slug [--langs de,it])
@@ -806,6 +807,12 @@ de production servent toujours depuis la racine de leur domaine.
     sa propre propriété (« Armenia News », `G-N6STD6Z5CC`), créée le 29 juillet
     2026 — elle démarre donc vide, et le trafic .org antérieur reste chez
     « Arménie Info ». Cette coupure est attendue, ce n'est pas une perte.
+- **Lettre hebdomadaire : deux pièges muets** (procédure : README « Lettre et RSS »).
+  (1) Le registre `src/data/newsletter-sent.json` est la seule mémoire des numéros
+  partis : en retirer une ligne renvoie cette semaine aux abonnés, et il est poussé
+  AVANT l'envoi. (2) `check-build.mjs` compte les alternates AVEC `hreflang=` : le
+  lien d'autodécouverte RSS est aussi un `rel="alternate"`, un compte sur le
+  `rel="alternate"` nu ferait échouer les 24 pages.
 - **Réseaux sociaux : le registre `src/data/social-posted.json` est la seule
   mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
   `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
@@ -824,10 +831,6 @@ de production servent toujours depuis la racine de leur domaine.
   au build annoncerait une fraîcheur qui n'a pas eu lieu. C'est la garde que
   portait `scripts/scrape.mjs` avant le déplacement — elle tient toujours, elle
   a juste changé de fichier (`scripts/lib/sitemap.mjs`).
-- **`hreflang` ne transfère aucune autorité entre les domaines.** Il fait servir
-  la bonne langue et empêche la déduplication ; ce n'est pas un signal de
-  classement. `armenianews.org` démarre avec l'autorité d'un domaine neuf : un
-  décollage lent est normal, pas un bug.
 - **Un changement de layout de `dist/` atteint des scripts qu'aucune tâche ne
   touche.** `npm run preview` et `npm run screenshot` (`scripts/shoot.mjs`)
   servaient et écrivaient dans `dist/` racine ; depuis le découpage en deux
