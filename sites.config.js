@@ -32,8 +32,7 @@ export const SITES = {
       bluesky: 'https://bsky.app/profile/armenieinfo.ch',
       telegram: 'https://t.me/armenieinfo_ch',
       linkedin: 'https://www.linkedin.com/company/armenieinfo/',
-      // `@armenieinfo` était pris. Le .org n'a pas encore de chaîne : YouTube
-      // exige une vérification d'identité pour en créer une seconde.
+      // `@armenieinfo` était pris.
       youtube: 'https://www.youtube.com/@armenieinfo-ch',
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
@@ -125,6 +124,7 @@ export const SITES = {
       bluesky: 'https://bsky.app/profile/armenianews.org',
       telegram: 'https://t.me/armenianews_org',
       linkedin: 'https://www.linkedin.com/company/armenianews/',
+      youtube: 'https://www.youtube.com/@armenianewsorg',
     },
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme
