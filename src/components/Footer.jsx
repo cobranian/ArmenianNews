@@ -5,6 +5,7 @@ import {
   culturePath,
   feedPath,
   newsletterFormAction,
+  SITES,
 } from '../../sites.config.js'
 import { SITE_ID } from '../site.js'
 import { SocialLinks } from './SocialLinks.jsx'
@@ -24,7 +25,8 @@ const SOURCES = [
   ['Centre arménien de Genève', 'https://www.centre-armenien-geneve.ch/'],
 ]
 
-const CONTACT = 'contact@armenieinfo.ch'
+// L'adresse de la vitrine servie (sites.config.js) : le .org a la sienne.
+const CONTACT = SITES[SITE_ID].email
 
 export function Footer() {
   const { t, lang } = useI18n()

@@ -137,9 +137,9 @@ export const SITES = {
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme
     // francophone, que la marque .ch continue de porter.
     alternateName: ['Armenia Info', 'Arménie Info', 'Արմենիա Ինֆո'],
-    // Le .org n'a pas encore de boîte aux lettres propre ; on annonce celle qui
-    // existe réellement plutôt qu'une adresse morte dans le JSON-LD.
-    email: 'contact@armenieinfo.ch',
+    // Boîte propre au .org depuis le 31 oct. 2026 (pied de page, « À propos »,
+    // JSON-LD).
+    email: 'contact@armenianews.org',
     // Qui édite — le nom sous lequel le site se signe (page « À propos »,
     // `founder` de l'Organization). Une seule source, les deux vitrines.
     editor: 'Nano of Sassoun',
