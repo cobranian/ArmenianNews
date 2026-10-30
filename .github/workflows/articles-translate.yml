@@ -42,11 +42,11 @@ jobs:
           state="$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
           echo "state=$state" >> "$GITHUB_OUTPUT"
           [ "$state" = OPEN ] || echo "PR $state : traduction sans objet."
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         if: steps.open.outputs.state == 'OPEN'
         with:
           ref: ${{ github.head_ref }}
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         if: steps.open.outputs.state == 'OPEN'
         with:
           node-version: 24
