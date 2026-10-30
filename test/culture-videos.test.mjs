@@ -57,7 +57,8 @@ test('la vidéo ne paraît que sur la page de sa langue, avec son VideoObject', 
   assert.ok(fr.includes('"video":{"@id":"https://armenieinfo.ch/culture/komitas/#video"}'))
 
   const en = page('org', 'en')
-  assert.ok(!en.includes('youtube'), 'une vidéo française sur la page anglaise')
+  // Le lecteur, pas « youtube » : le pied de page du .org cite sa chaîne.
+  assert.ok(!en.includes('youtube-nocookie'), 'une vidéo française sur la page anglaise')
   assert.ok(!en.includes('VideoObject'))
 })
 
