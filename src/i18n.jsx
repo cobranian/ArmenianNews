@@ -39,7 +39,7 @@ const STRINGS = {
       'Arménie Info est un site indépendant, basé en Suisse et édité par {editor}, qui rassemble chaque heure la vie arménienne telle que la racontent ses propres médias : les dépêches des rédactions, les radios en direct, l’agenda de la diaspora et ses réseaux sociaux. Rien n’est réécrit — chaque titre renvoie à l’éditeur qui l’a publié.',
     'about.what.title': 'Ce que vous trouvez ici',
     'about.what.body':
-      'Un instantané statique, reconstruit toutes les heures par un programme qui relit les sources et regénère les pages. Il n’y a ni compte, ni formulaire, ni base de données.',
+      'Un instantané statique, reconstruit toutes les heures par un programme qui relit les sources et regénère les pages. Il n’y a ni compte ni base de données ; le seul formulaire, facultatif, inscrit à la lettre hebdomadaire.',
     'about.what.news': 'les dernières dépêches des rédactions arméniennes, rubrique par rubrique, dans la langue de la page ;',
     'about.what.radio': '{n} stations en écoute directe, chacune avec une fiche sourcée (ville, genre, langue d’antenne) ;',
     'about.what.agenda': 'les événements de la diaspora, pays par pays, recensés depuis Armenopole ;',
@@ -138,7 +138,7 @@ const STRINGS = {
     // quatre langues.
     'privacy.title': 'Politique de confidentialité',
     'privacy.intro':
-      "Ce site est un instantané statique : ni compte, ni formulaire, ni base de données. Il ne vous demande rien et ne conserve rien qui vous identifie personnellement.",
+      "Ce site est un instantané statique : ni compte, ni base de données. Le lire ne demande rien, et il ne conserve rien qui vous identifie personnellement — la seule donnée personnelle est l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site.",
     'privacy.analytics.title': "Mesure d'audience",
     'privacy.analytics.body':
       "Nous utilisons Google Analytics et Cloudflare Web Analytics pour compter les visites et savoir quelles rubriques sont lues. Hors Espace économique européen et Royaume-Uni — en Suisse notamment —, Google Analytics dépose un cookie qui permet de reconnaître un visiteur d'une visite à l'autre. Depuis l'EEE et le Royaume-Uni, ce cookie n'est pas déposé : la mesure y est anonyme et sans cookie, comme l'exige le RGPD. Cloudflare Web Analytics ne dépose aucun cookie, où que vous soyez.",
@@ -155,7 +155,7 @@ const STRINGS = {
       "Les articles, événements et publications proviennent de sites tiers, cités et liés. Suivre un lien vous conduit chez l'éditeur concerné, dont la politique de confidentialité s'applique alors.",
     'privacy.rights.title': 'Vos droits',
     'privacy.rights.body':
-      "Vous pouvez demander l'accès aux données vous concernant, leur rectification ou leur effacement. Le site ne collectant aucune donnée nominative, cela se limite en pratique aux mesures d'audience agrégées.",
+      "Vous pouvez demander l'accès aux données vous concernant, leur rectification ou leur effacement. En dehors de l'adresse e-mail confiée pour la lettre — effacée sur demande ou par le lien de désinscription —, cela se limite en pratique aux mesures d'audience agrégées.",
     'privacy.contact': 'Pour toute question :',
 
     'sections.actualite': 'Actualités',
@@ -335,7 +335,7 @@ const STRINGS = {
       'Arménie Info ist eine unabhängige Website mit Sitz in der Schweiz, herausgegeben von {editor}. Sie versammelt jede Stunde das armenische Leben, wie es seine eigenen Medien erzählen: die Meldungen der Redaktionen, Radiosender live, die Agenda der Diaspora und ihre sozialen Netzwerke. Nichts wird umgeschrieben – jeder Titel führt zu dem Medium, das ihn veröffentlicht hat.',
     'about.what.title': 'Was Sie hier finden',
     'about.what.body':
-      'Eine statische Momentaufnahme, die ein Programm jede Stunde neu erstellt: Es liest die Quellen und erzeugt die Seiten neu. Es gibt weder Konto noch Formular noch Datenbank.',
+      'Eine statische Momentaufnahme, die ein Programm jede Stunde neu erstellt: Es liest die Quellen und erzeugt die Seiten neu. Es gibt weder Konto noch Datenbank; das einzige Formular, freiwillig, dient der Anmeldung zum wöchentlichen Newsletter.',
     'about.what.news': 'die neuesten Meldungen der armenischen Redaktionen, Rubrik für Rubrik – hier auf Französisch;',
     'about.what.radio': '{n} Sender zum direkten Hören, jeder mit einem belegten Steckbrief (Stadt, Genre, Sendesprache);',
     'about.what.agenda': 'die Veranstaltungen der Diaspora, Land für Land, zusammengetragen von Armenopole;',
@@ -415,7 +415,7 @@ const STRINGS = {
     'footer.sources': 'Quellen',
     'privacy.title': 'Datenschutzerklärung',
     'privacy.intro':
-      'Diese Website ist eine statische Momentaufnahme: kein Konto, kein Formular, keine Datenbank. Sie verlangt nichts von Ihnen und speichert nichts, was Sie persönlich identifiziert.',
+      'Diese Website ist eine statische Momentaufnahme: kein Konto, keine Datenbank. Das Lesen verlangt nichts von Ihnen, und sie speichert nichts, was Sie persönlich identifiziert – einziges personenbezogenes Datum ist die E-Mail-Adresse, die Sie für den Newsletter angeben können; sie wird von Buttondown gespeichert, nicht von der Website.',
     'privacy.analytics.title': 'Reichweitenmessung',
     'privacy.analytics.body':
       'Wir verwenden Google Analytics und Cloudflare Web Analytics, um Besuche zu zählen und zu erfahren, welche Rubriken gelesen werden. Ausserhalb des Europäischen Wirtschaftsraums und des Vereinigten Königreichs – also auch in der Schweiz – setzt Google Analytics ein Cookie, das einen Besucher von einem Besuch zum nächsten wiedererkennt. Im EWR und im Vereinigten Königreich wird dieses Cookie nicht gesetzt: Die Messung erfolgt dort anonym und ohne Cookie, wie es die DSGVO verlangt. Cloudflare Web Analytics setzt keinerlei Cookie, wo immer Sie sich befinden.',
@@ -432,7 +432,7 @@ const STRINGS = {
       'Die Artikel, Veranstaltungen und Beiträge stammen von Websites Dritter, die genannt und verlinkt sind. Ein Link führt Sie zum jeweiligen Anbieter, dessen Datenschutzerklärung dann gilt.',
     'privacy.rights.title': 'Ihre Rechte',
     'privacy.rights.body':
-      'Sie können Auskunft über die Sie betreffenden Daten, deren Berichtigung oder Löschung verlangen. Da die Website keine personenbezogenen Daten erhebt, beschränkt sich dies in der Praxis auf die zusammengefasste Reichweitenmessung.',
+      'Sie können Auskunft über die Sie betreffenden Daten, deren Berichtigung oder Löschung verlangen. Abgesehen von der für den Newsletter angegebenen E-Mail-Adresse – auf Anfrage oder über den Abmeldelink gelöscht – beschränkt sich dies in der Praxis auf die zusammengefasste Reichweitenmessung.',
     'privacy.contact': 'Bei Fragen:',
     'sections.actualite': 'Aktuell',
     'sections.societe': 'Gesellschaft',
@@ -579,7 +579,7 @@ const STRINGS = {
       'Arménie Info è un sito indipendente, con sede in Svizzera e curato da {editor}, che raccoglie ogni ora la vita armena così come la raccontano i suoi stessi media: le notizie delle redazioni, le radio in diretta, gli eventi della diaspora e i suoi social network. Nulla viene riscritto: ogni titolo rimanda all’editore che lo ha pubblicato.',
     'about.what.title': 'Che cosa trovate qui',
     'about.what.body':
-      'Un’istantanea statica, ricostruita ogni ora da un programma che rilegge le fonti e rigenera le pagine. Non ci sono account, moduli né database.',
+      'Un’istantanea statica, ricostruita ogni ora da un programma che rilegge le fonti e rigenera le pagine. Non ci sono account né database; l’unico modulo, facoltativo, serve a iscriversi alla newsletter settimanale.',
     'about.what.news': 'le ultime notizie delle redazioni armene, rubrica per rubrica, qui in francese;',
     'about.what.radio': '{n} stazioni in ascolto diretto, ognuna con una scheda documentata (città, genere, lingua di trasmissione);',
     'about.what.agenda': 'gli eventi della diaspora, paese per paese, raccolti da Armenopole;',
@@ -659,7 +659,7 @@ const STRINGS = {
     'footer.sources': 'Fonti',
     'privacy.title': 'Informativa sulla privacy',
     'privacy.intro':
-      'Questo sito è un’istantanea statica: niente account, niente moduli, niente database. Non vi chiede nulla e non conserva nulla che vi identifichi personalmente.',
+      'Questo sito è un’istantanea statica: niente account, niente database. Leggerlo non richiede nulla, e non conserva nulla che vi identifichi personalmente — l’unico dato personale è l’indirizzo e-mail che sceglieste di fornire per la newsletter, conservato da Buttondown e non dal sito.',
     'privacy.analytics.title': 'Misurazione del pubblico',
     'privacy.analytics.body':
       'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, quindi anche in Svizzera, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Nel SEE e nel Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
@@ -676,7 +676,7 @@ const STRINGS = {
       'Articoli, eventi e pubblicazioni provengono da siti di terzi, citati e collegati. Seguendo un link si arriva presso l’editore interessato, alla cui informativa sulla privacy si è allora soggetti.',
     'privacy.rights.title': 'I vostri diritti',
     'privacy.rights.body':
-      'Potete chiedere l’accesso ai dati che vi riguardano, la loro rettifica o la loro cancellazione. Poiché il sito non raccoglie alcun dato nominativo, in pratica ciò riguarda soltanto le misurazioni aggregate del pubblico.',
+      'Potete chiedere l’accesso ai dati che vi riguardano, la loro rettifica o la loro cancellazione. A parte l’indirizzo e-mail fornito per la newsletter — cancellato su richiesta o tramite il link di disiscrizione —, in pratica ciò riguarda soltanto le misurazioni aggregate del pubblico.',
     'privacy.contact': 'Per qualsiasi domanda:',
     'sections.actualite': 'Attualità',
     'sections.societe': 'Società',
@@ -826,7 +826,7 @@ const STRINGS = {
       'Armenia News is an independent, Switzerland-based site edited by {editor}, which gathers Armenian life every hour as its own media tell it: the newsrooms’ dispatches, live radio, the diaspora’s events and its social networks. Nothing is rewritten — every headline links back to the outlet that published it.',
     'about.what.title': 'What you will find here',
     'about.what.body':
-      'A static snapshot, rebuilt every hour by a program that re-reads the sources and regenerates the pages. There is no account, no form, no database.',
+      'A static snapshot, rebuilt every hour by a program that re-reads the sources and regenerates the pages. There is no account and no database; the only form, optional, signs you up for the weekly newsletter.',
     'about.what.news': 'the latest dispatches from Armenian newsrooms, section by section, in the language of the page;',
     'about.what.radio': '{n} stations streaming live, each with a sourced fact sheet (city, genre, broadcast language);',
     'about.what.agenda': 'diaspora events, country by country, sourced from Armenopole;',
@@ -916,7 +916,7 @@ const STRINGS = {
 
     'privacy.title': 'Privacy policy',
     'privacy.intro':
-      'This site is a static snapshot: no accounts, no forms, no database. It asks you for nothing and keeps nothing that identifies you personally.',
+      'This site is a static snapshot: no accounts, no database. Reading it asks nothing of you, and it keeps nothing that identifies you personally — the only personal data is the email address you may choose to give for the newsletter, held by Buttondown, not by the site.',
     'privacy.analytics.title': 'Audience measurement',
     'privacy.analytics.body':
       'We use Google Analytics and Cloudflare Web Analytics to count visits and see which sections are read. Outside the European Economic Area and the United Kingdom — Switzerland included — Google Analytics sets a cookie that lets it recognise a visitor from one visit to the next. From the EEA and the UK that cookie is not set: measurement there is anonymous and cookieless, as the GDPR requires. Cloudflare Web Analytics sets no cookie anywhere.',
@@ -933,7 +933,7 @@ const STRINGS = {
       'Articles, events and posts come from third-party sites, credited and linked. Following a link takes you to that publisher, whose own privacy policy then applies.',
     'privacy.rights.title': 'Your rights',
     'privacy.rights.body':
-      'You may request access to data concerning you, its correction or its deletion. As the site collects no personal data, in practice this is limited to aggregated audience measurement.',
+      'You may request access to data concerning you, its correction or its deletion. Apart from the email address given for the newsletter — deleted on request or via the unsubscribe link — in practice this is limited to aggregated audience measurement.',
     'privacy.contact': 'Questions:',
 
     'sections.actualite': 'News',
@@ -1116,7 +1116,7 @@ const STRINGS = {
       'Armenia News-ը Շվեյցարիայում հիմնված անկախ կայք է, որը խմբագրում է {editor}-ը և որն ամեն ժամ հավաքում է հայկական կյանքը այնպես, ինչպես այն պատմում են հայկական լրատվամիջոցները՝ խմբագրությունների լուրերը, ուղիղ եթերի ռադիոն, սփյուռքի միջոցառումներն ու սոցիալական ցանցերը։ Ոչինչ չի վերաշարադրվում․ յուրաքանչյուր վերնագիր տանում է այն հրատարակչի մոտ, որը հրապարակել է այն։',
     'about.what.title': 'Ինչ կգտնեք այստեղ',
     'about.what.body':
-      'Ստատիկ պատկեր, որն ամեն ժամ վերակառուցում է ծրագիրը՝ վերընթերցելով աղբյուրները և վերստեղծելով էջերը։ Չկա ոչ հաշիվ, ոչ ձև, ոչ տվյալների բազա։',
+      'Ստատիկ պատկեր, որն ամեն ժամ վերակառուցում է ծրագիրը՝ վերընթերցելով աղբյուրները և վերստեղծելով էջերը։ Չկա ոչ հաշիվ, ոչ տվյալների բազա. միակ ձևը՝ կամընտիր, շաբաթական տեղեկագրին բաժանորդագրվելու համար է։',
     'about.what.news': 'հայկական խմբագրությունների վերջին լուրերը՝ բաժին առ բաժին, էջի լեզվով․',
     'about.what.radio': '{n} ռադիոկայան ուղիղ եթերում, յուրաքանչյուրը՝ աղբյուրներով հիմնավորված քարտով (քաղաք, ժանր, եթերի լեզու)․',
     'about.what.agenda': 'սփյուռքի միջոցառումները՝ երկիր առ երկիր, Armenopole-ից․',
@@ -1206,7 +1206,7 @@ const STRINGS = {
 
     'privacy.title': 'Գաղտնիության քաղաքականություն',
     'privacy.intro':
-      'Այս կայքը ստատիկ պատկեր է՝ առանց հաշիվների, ձևաթղթերի կամ տվյալների բազայի։ Այն ձեզնից ոչինչ չի պահանջում և չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի։',
+      'Այս կայքը ստատիկ պատկեր է՝ առանց հաշիվների և տվյալների բազայի։ Ընթերցելու համար ձեզնից ոչինչ չի պահանջվում, և կայքը չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի․ միակ անձնական տվյալը էլ. փոստի հասցեն է, որը կարող եք տրամադրել տեղեկագրի համար, և այն պահվում է Buttondown-ում, ոչ թե կայքում։',
     'privacy.analytics.title': 'Այցելությունների չափում',
     'privacy.analytics.body':
       'Մենք օգտագործում ենք Google Analytics և Cloudflare Web Analytics՝ այցելությունները հաշվելու և իմանալու, թե որ բաժիններն են կարդացվում։ Եվրոպական տնտեսական տարածքից և Միացյալ Թագավորությունից դուրս, այդ թվում՝ Շվեյցարիայում, Google Analytics-ը տեղադրում է cookie, որը թույլ է տալիս ճանաչել այցելուին մեկ այցից մյուսը։ ԵՏՏ-ից և Միացյալ Թագավորությունից այդ cookie-ն չի տեղադրվում. չափումն այնտեղ անանուն է և առանց cookie-ի, ինչպես պահանջում է GDPR-ը։ Cloudflare Web Analytics-ը ոչ մի տեղ cookie չի տեղադրում։',
@@ -1223,7 +1223,7 @@ const STRINGS = {
       'Հոդվածները, միջոցառումները և հրապարակումները գալիս են երրորդ կողմի կայքերից՝ նշված և հղումով։ Հղմանը հետևելը ձեզ տանում է տվյալ հրատարակչի մոտ, որտեղ գործում է նրա գաղտնիության քաղաքականությունը։',
     'privacy.rights.title': 'Ձեր իրավունքները',
     'privacy.rights.body':
-      'Դուք կարող եք պահանջել ձեզ վերաբերող տվյալների հասանելիություն, ուղղում կամ ջնջում։ Քանի որ կայքը անձնական տվյալներ չի հավաքում, գործնականում դա սահմանափակվում է ամփոփ չափումներով։',
+      'Դուք կարող եք պահանջել ձեզ վերաբերող տվյալների հասանելիություն, ուղղում կամ ջնջում։ Բացի տեղեկագրի համար տրամադրված էլ. փոստի հասցեից, որը ջնջվում է խնդրանքով կամ բաժանորդագրությունը դադարեցնելու հղումով, գործնականում դա սահմանափակվում է ամփոփ չափումներով։',
     'privacy.contact': 'Հարցերի համար՝',
 
     'sections.actualite': 'Լուրեր',
@@ -1488,7 +1488,7 @@ const STRINGS = {
 
     'privacy.title': 'Политика конфиденциальности',
     'privacy.intro':
-      'Этот сайт — статический снимок: без учётных записей, форм и базы данных. Он ничего у вас не запрашивает и не хранит ничего, что позволяло бы вас лично идентифицировать.',
+      'Этот сайт — статический снимок: без учётных записей и базы данных. Для чтения от вас ничего не требуется, и сайт не хранит ничего, что позволяло бы вас лично идентифицировать; единственные персональные данные — адрес электронной почты, который вы можете указать для рассылки, и хранит его Buttondown, а не сайт.',
     'privacy.analytics.title': 'Измерение аудитории',
     'privacy.analytics.body':
       'Мы используем Google Analytics и Cloudflare Web Analytics, чтобы считать посещения и понимать, какие разделы читают. За пределами Европейской экономической зоны и Великобритании, в том числе в Швейцарии, Google Analytics устанавливает cookie, позволяющий узнавать посетителя от визита к визиту. Из ЕЭЗ и Великобритании этот cookie не устанавливается: измерение там анонимное и без cookie, как того требует GDPR. Cloudflare Web Analytics не устанавливает cookie нигде.',
@@ -1505,7 +1505,7 @@ const STRINGS = {
       'Статьи, события и публикации поступают со сторонних сайтов — со ссылкой и указанием источника. Переход по ссылке ведёт к соответствующему изданию, где действует его собственная политика конфиденциальности.',
     'privacy.rights.title': 'Ваши права',
     'privacy.rights.body':
-      'Вы можете запросить доступ к касающимся вас данным, их исправление или удаление. Поскольку сайт не собирает персональных данных, на практике это ограничивается сводными показателями аудитории.',
+      'Вы можете запросить доступ к касающимся вас данным, их исправление или удаление. Помимо адреса электронной почты, указанного для рассылки (он удаляется по запросу или по ссылке для отписки), на практике это ограничивается сводными показателями аудитории.',
     'privacy.contact': 'Вопросы:',
 
     'sections.actualite': 'Новости',
