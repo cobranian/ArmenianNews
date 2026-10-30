@@ -24,11 +24,12 @@ const CLES = [
   'newsletter.label',
   'newsletter.submit',
   'newsletter.note',
+  'newsletter.newtab',
   'privacy.newsletter.title',
   'privacy.newsletter.body',
 ]
 
-test('les sept clés existent dans les six langues', () => {
+test('les huit clés existent dans les six langues', () => {
   assert.equal(BLOC_LANGS.length, 6)
   for (const lang of BLOC_LANGS) {
     for (const cle of CLES) {
@@ -123,4 +124,23 @@ test('le pied de page passe par newsletterFormAction', async () => {
 test('langue de la lettre = langue de tête de la vitrine', () => {
   assert.equal(SITES.ch.newsletter.lang, primaryLang('ch'))
   assert.equal(SITES.org.newsletter.lang, primaryLang('org'))
+})
+
+test('formulaire : seulement sur la langue de tête, pour chaque (vitrine, langue), compte simulé', () => {
+  const sauve = {}
+  for (const [id, lead] of [['ch', 'fr'], ['org', 'en']]) {
+    sauve[id] = SITES[id].newsletter.buttondown
+    SITES[id].newsletter.buttondown = 'compte-test'
+    assert.equal(SITES[id].newsletter.lang, lead)
+  }
+  try {
+    for (const site of Object.values(SITES)) {
+      for (const page of site.pages) {
+        const attendu = site.newsletter.lang === page.lang
+        assert.equal(newsletterFormAction(site.id, page.lang) !== null, attendu, `${site.id}/${page.lang}`)
+      }
+    }
+  } finally {
+    for (const id of Object.keys(sauve)) SITES[id].newsletter.buttondown = sauve[id]
+  }
 })

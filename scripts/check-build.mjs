@@ -19,7 +19,7 @@
 import { access, readdir, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath, feedUrl, feedPath } from '../sites.config.js'
+import { newsletterAction, SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath, feedUrl, feedPath } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
@@ -166,6 +166,14 @@ for (const site of Object.values(SITES)) {
           html.includes(`rel="canonical" href="${urlFor(page.lang, view)}" />`),
         ],
         ['un seul canonical', count(/rel="canonical"/g) === 1],
+        [
+          // Le formulaire d'inscription : aucun tant que le compte n'existe pas,
+          // et sur la seule langue de tête quand il existe. Vu après prérendu
+          // (avant, la racine est vide : la garde ne peut alors pas échouer).
+          'formulaire newsletter : seulement sur la langue de tête, et seulement si le compte existe',
+          !html.includes('footer__newsletter') ||
+            (newsletterAction(site.id) !== null && site.newsletter?.lang === page.lang),
+        ],
         [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
         ['un seul og:site_name', count(/og:site_name"/g) === 1],
         ['un seul <title>', count(/<title>/g) === 1],

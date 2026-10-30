@@ -30,6 +30,7 @@ const STRINGS = {
     'newsletter.label': 'Votre adresse e-mail',
     'newsletter.submit': "S'abonner",
     'newsletter.note': 'Un e-mail par semaine. Désinscription en un clic.',
+    'newsletter.newtab': "(s'ouvre dans un nouvel onglet)",
     'viewpage.also': 'Voir aussi',
     // Page « À propos » (vue `about`). Tout ce qui y est affirmé est vérifiable
     // dans le dépôt ; aucun nombre écrit en toutes lettres (les comptes sont
@@ -135,7 +136,7 @@ const STRINGS = {
     // laquelle repose la licéité du dépôt de cookies. Si la configuration du
     // consentement change dans public/ga-init.js — notamment la liste des
     // régions où le cookie est refusé — ces chaînes doivent suivre, dans les
-    // quatre langues.
+    // six langues.
     'privacy.title': 'Politique de confidentialité',
     'privacy.intro':
       "Ce site est un instantané statique : ni compte, ni base de données. Le lire ne demande rien, et il ne conserve rien qui vous identifie personnellement — la seule donnée personnelle est l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site.",
@@ -329,6 +330,7 @@ const STRINGS = {
     'newsletter.label': 'Ihre E-Mail-Adresse',
     'newsletter.submit': 'Abonnieren',
     'newsletter.note': 'Eine E-Mail pro Woche. Abmeldung mit einem Klick.',
+    'newsletter.newtab': '(öffnet in einem neuen Tab)',
     'viewpage.also': 'Siehe auch',
     'about.h1': 'Über Arménie Info',
     'about.intro':
@@ -426,7 +428,7 @@ const STRINGS = {
       'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Sie verlässt Ihr Gerät nie und wird uns nie übermittelt.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
-      'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse Buttondown anvertraut, einem in den USA gehosteten Dienst: Sie wird also im Ausland verarbeitet, gemäss der Datenschutzerklärung von Buttondown, das Öffnungen und Klicks messen kann. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und eine Anfrage an die untenstehende Adresse lässt sie löschen.',
+      'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse dem Dienst Buttondown anvertraut, der in den USA gehostet wird: Sie wird also im Ausland verarbeitet, gemäss der Datenschutzerklärung von Buttondown, die Öffnungen und Klicks messen kann. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und es genügt eine Anfrage an die untenstehende Adresse, um sie löschen zu lassen.',
     'privacy.content.title': 'Inhalte Dritter',
     'privacy.content.body':
       'Die Artikel, Veranstaltungen und Beiträge stammen von Websites Dritter, die genannt und verlinkt sind. Ein Link führt Sie zum jeweiligen Anbieter, dessen Datenschutzerklärung dann gilt.',
@@ -571,8 +573,9 @@ const STRINGS = {
     'footer.rss': 'Feed RSS',
     'newsletter.title': 'La settimana armena, ogni lunedì',
     'newsletter.label': 'Il vostro indirizzo e-mail',
-    'newsletter.submit': 'Iscriviti',
+    'newsletter.submit': 'Iscrizione',
     'newsletter.note': 'Un’e-mail a settimana. Disiscrizione con un clic.',
+    'newsletter.newtab': '(si apre in una nuova scheda)',
     'viewpage.also': 'Vedi anche',
     'about.h1': 'Informazioni su Arménie Info',
     'about.intro':
@@ -820,6 +823,7 @@ const STRINGS = {
     'newsletter.label': 'Your email address',
     'newsletter.submit': 'Subscribe',
     'newsletter.note': 'One email a week. Unsubscribe in one click.',
+    'newsletter.newtab': '(opens in a new tab)',
     'viewpage.also': 'See also',
     'about.h1': 'About Armenia News',
     'about.intro':
@@ -1110,6 +1114,7 @@ const STRINGS = {
     'newsletter.label': 'Ձեր էլ. փոստի հասցեն',
     'newsletter.submit': 'Բաժանորդագրվել',
     'newsletter.note': 'Մեկ նամակ շաբաթական։ Բաժանորդագրությունից դուրս գալը՝ մեկ սեղմումով։',
+    'newsletter.newtab': '(բացվում է նոր ներդիրում)',
     'viewpage.also': 'Տես նաև',
     'about.h1': 'Armenia News-ի մասին',
     'about.intro':
@@ -1382,6 +1387,7 @@ const STRINGS = {
     'newsletter.label': 'Ваш адрес электронной почты',
     'newsletter.submit': 'Подписаться',
     'newsletter.note': 'Одно письмо в неделю. Отписка в один клик.',
+    'newsletter.newtab': '(откроется в новой вкладке)',
     'viewpage.also': 'См. также',
     'about.h1': 'О сайте Armenia News',
     // /ru/about/ est classée « Soft 404 » par le test en direct de Search
@@ -1499,7 +1505,7 @@ const STRINGS = {
       'Ваш выбор дневной / ночной темы сохраняется локально браузером. Он никогда не покидает ваше устройство и не передаётся нам.',
     'privacy.newsletter.title': 'Рассылка',
     'privacy.newsletter.body':
-      'Если вы подпишетесь, ваш адрес электронной почты будет передан Buttondown — сервису, размещённому в США: поэтому он обрабатывается за рубежом в соответствии с политикой конфиденциальности Buttondown, и Buttondown может учитывать открытия писем и переходы по ссылкам. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
+      'Если вы подпишетесь, ваш адрес электронной почты будет доверен Buttondown — сервису, размещённому в США: поэтому он обрабатывается за рубежом в соответствии с политикой конфиденциальности Buttondown, и Buttondown может учитывать открытия писем и переходы по ссылкам. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
     'privacy.content.title': 'Материалы третьих сторон',
     'privacy.content.body':
       'Статьи, события и публикации поступают со сторонних сайтов — со ссылкой и указанием источника. Переход по ссылке ведёт к соответствующему изданию, где действует его собственная политика конфиденциальности.',

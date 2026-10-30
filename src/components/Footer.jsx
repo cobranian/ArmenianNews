@@ -68,6 +68,7 @@ export function Footer() {
             action={newsletter}
             method="post"
             target="_blank"
+            rel="noopener"
           >
             <p className="footer__newsletter-title">{t('newsletter.title')}</p>
             <label className="footer__newsletter-label" htmlFor="newsletter-email">
@@ -80,11 +81,15 @@ export function Footer() {
                 name="email"
                 required
                 autoComplete="email"
+                aria-describedby="newsletter-note"
               />
               <input type="hidden" name="embed" value="1" />
-              <button type="submit">{t('newsletter.submit')}</button>
+              <button type="submit">
+                {t('newsletter.submit')}
+                <span className="visually-hidden"> {t('newsletter.newtab')}</span>
+              </button>
             </div>
-            <p className="footer__newsletter-note">{t('newsletter.note')}</p>
+            <p className="footer__newsletter-note" id="newsletter-note">{t('newsletter.note')}</p>
           </form>
         )}
         <nav className="footer__sources" aria-label={t('footer.sources')}>
