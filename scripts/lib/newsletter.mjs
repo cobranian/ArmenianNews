@@ -75,9 +75,13 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
     return ((pays.get(k)?.length ?? 0) >= PAYS_INDEX_MIN ? agendaCountryUrl(lang, k) : urlFor(lang, 'agenda')) + utm
   }
   const limite = t0 + FENETRE_AGENDA * JOUR
+  // Les pays retenus par la vitrine (sites.config.js), par ordre de priorité ;
+  // sans liste, le monde entier par ordre chronologique.
+  const retenus = SITES[siteId].newsletter.agendaPays ?? null
+  const rang = (e) => (retenus ? retenus.indexOf(worldCountryKey(e)) : 0)
   const lesEvenements = aVenir
-    .filter((e) => instantMural(e.date, 0) < limite)
-    .sort((a, b) => instantMural(a.date, 0) - instantMural(b.date, 0))
+    .filter((e) => instantMural(e.date, 0) < limite && rang(e) >= 0)
+    .sort((a, b) => rang(a) - rang(b) || instantMural(a.date, 0) - instantMural(b.date, 0))
     .slice(0, MAX_EVENEMENTS)
 
   const parts = [S.intro]

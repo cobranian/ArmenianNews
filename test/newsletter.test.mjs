@@ -66,14 +66,34 @@ test('Markdown sûr', () => {
 })
 
 test('lien agenda : lieu inconnu, pays trop mince, pays assez fourni', () => {
+  // Sur le .org : son agenda reste mondial, le lieu inconnu y figure.
   const ev = (i, location, country) => ({ title: `E${i}`, url: `https://armenopole.com/e${i}.html`, location, country, date: '2026-11-04T12:00' })
   const evs = [ev(1, 'Atlantis', 'atlantis'), ev(2, 'Genève', 'switzerland'), ev(3, 'Genève', 'switzerland'), ev(4, 'Genève', 'switzerland'), ev(5, 'Paris', 'france')]
-  const d = digestFor('ch', { briefs: briefsOf('fr'), culture: [], events: evs, now })
+  const d = digestFor('org', { briefs: briefsOf('en'), culture: [], events: evs, now })
   const ligne = (t) => d.body.split(/\r?\n/).find((l) => l.includes(t))
-  assert.ok(ligne('E1').includes('(' + urlFor('fr', 'agenda') + '?utm'))
-  assert.ok(ligne('E5').includes('(' + urlFor('fr', 'agenda') + '?utm'))
-  assert.ok(ligne('E2').includes(agendaCountryUrl('fr', 'switzerland') + '?utm'))
+  assert.ok(ligne('E1').includes('(' + urlFor('en', 'agenda') + '?utm'))
+  assert.ok(ligne('E5').includes('(' + urlFor('en', 'agenda') + '?utm'))
+  assert.ok(ligne('E2').includes(agendaCountryUrl('en', 'switzerland') + '?utm'))
   assert.ok(ligne('E5').includes('utm_campaign=hebdo-2026-W45'))
+})
+
+test('agenda du .ch : Suisse puis France, rien d’autre ; le .org reste mondial', () => {
+  const ev = (i, location, country, j) => ({ title: `E${i}`, url: `https://armenopole.com/e${i}.html`, location, country, date: `2026-11-${String(3 + j).padStart(2, '0')}T12:00` })
+  // Une France abondante et plus proche ne doit pas évincer la Suisse.
+  const evs = [
+    ...Array.from({ length: 9 }, (_, i) => ev(`F${i}`, 'Paris', 'france', 1)),
+    ev('S1', 'Genève', 'switzerland', 5),
+    ev('S2', 'Lausanne', 'switzerland', 2),
+    ev('L', 'Los Angeles', 'usa', 0),
+    ev('A', 'Sydney', 'australia', 0),
+  ]
+  const titres = (d) => (d.body.match(/\[E[^ \]]+/g) || []).map((s) => s.slice(1))
+  const ch = titres(digestFor('ch', { briefs: briefsOf('fr'), culture: [], events: evs, now }))
+  assert.deepEqual(ch.slice(0, 2), ['ES2', 'ES1'])
+  assert.equal(ch.length, 8)
+  assert.ok(ch.slice(2).every((t) => t.startsWith('EF')), ch.join())
+  const org = titres(digestFor('org', { briefs: briefsOf('en'), culture: [], events: evs, now }))
+  assert.ok(org.includes('EL') && org.includes('EA'), org.join())
 })
 
 test('fenêtre : la semaine ISO précédente, lundi–dimanche, quel que soit le jour du passage', () => {

@@ -105,7 +105,10 @@ export const SITES = {
     // (test/newsletter-footer.test.mjs). `null` retire le formulaire.
     // `buttondown: null` retire formulaire ET envoi (`✗ newsletter/ch: désactivée`).
     // Compte créé et vérifié le 31 oct. 2026 (buttondown.com/armenieinfo).
-    newsletter: { buttondown: 'armenieinfo', lang: 'fr' },
+    // `agendaPays` : l'agenda de la lettre ne garde que ces pays, dans cet
+    // ordre de priorité (la Suisse d'abord, la France complète) — sans quoi la
+    // France, bien plus fournie, prendrait toutes les places. Absent = monde.
+    newsletter: { buttondown: 'armenieinfo', lang: 'fr', agendaPays: ['switzerland', 'france'] },
     // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
     // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
     // lisent le fil français (CONTENT_LANG, src/newsLangs.js).
