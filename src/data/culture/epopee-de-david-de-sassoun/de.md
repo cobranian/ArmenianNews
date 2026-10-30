@@ -2,7 +2,7 @@
 title: "Das Epos von David von Sassun: Tausend Jahre mündliche Überlieferung"
 description: "Von der mündlichen Tradition bis zum UNESCO-Erbe lebt das armenische Epos über vier Generationen von Helden aus Sassun weiter."
 date: "2026-10-26"
-sourceHash: "2f68fae3137f560f"
+sourceHash: "94ce7a8e2cea4534"
 model: "gemini-flash-latest"
 ---
 
@@ -20,7 +20,7 @@ Fachleute datieren die Entstehung des erzählerischen Kerns um das 10. Jahrhunde
 
 ## Vom Sammeln zur gedruckten Seite
 
-Nach der ersten Ausgabe von 1874 veröffentlichte Manuk Abeghjan 1889 in Schuschi eine zweite Fassung. Zwischen 1936 und 1951 trug ein Team unter der Leitung von Abeghjan, G. Abow und A. Ghanalanjan fast sechzig Varianten in drei wissenschaftlichen Bänden mit insgesamt über 2500 Seiten zusammen. Ein synthetischer Text, die sogenannte «Volksausgabe», erschien 1939 in Jerewan und diente bis in die 1960er-Jahre als Grundlage für sämtliche Übersetzungen: ins Russische (Waleri Brjussow, 1881; Kollektivfassung 1939), Französische (1964), Englische (Leon Zaven Surmelian, 1964), Georgische, Chinesische, Deutsche usw. Howhannes Tumanjan verfasste 1903 eine poetische Fassung, Jeghische Tscharenz 1933 eine weitere, und Awetik Issahakjan arbeitete bereits ab 1922 über Mher den Jüngeren. Insgesamt wurden rund fünfzig Varianten erfasst, und die Zahl der bekannten Versionen erreicht 160.
+Nach der ersten Ausgabe von 1874 veröffentlichte Manuk Abeghjan 1889 in Schuschi eine zweite Fassung. Zwischen 1936 und 1951 trug ein Team unter der Leitung von Abeghjan, G. Abow und A. Ghanalanjan fast sechzig Varianten in drei wissenschaftlichen Bänden mit insgesamt über 2500 Seiten zusammen. Ein synthetischer Text, die sogenannte «Volksausgabe», erschien 1939 in Jerewan und diente bis in die 1960er-Jahre als Grundlage für sämtliche Übersetzungen: ins Russische (Kollektivfassung, 1939), Französische (1964), Englische (Leon Zaven Surmelian, 1964), Georgische, Chinesische, Deutsche usw. Howhannes Tumanjan verfasste 1903 eine poetische Fassung, Jeghische Tscharenz 1933 eine weitere, und Awetik Issahakjan arbeitete bereits ab 1922 über Mher den Jüngeren. Insgesamt wurden rund fünfzig Varianten erfasst, und die Zahl der bekannten Versionen erreicht 160.
 
 ## Eine lebendige Tradition
 
