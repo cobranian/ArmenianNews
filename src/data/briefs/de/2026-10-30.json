@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-30",
+  "lang": "de",
+  "generatedAt": "2026-10-30T03:28:37.796Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Die heutige Berichterstattung wird von innenpolitischen Spannungen in Armenien, der Verfassungsdebatte und den Beziehungen zu Nachbarländern dominiert. Ergänzt wird das Bild durch gesellschaftliche Reformen, sportliche Erfolge und Kulturthemen.",
+  "topics": [
+    {
+      "title": "Parlamentsstreit und Verfassungsdebatte",
+      "text": "Im armenischen Parlament kam es zu handgreiflichen Auseinandersetzungen zwischen Abgeordneten. Gleichzeitig dringt die Opposition auf ein Verfassungsreferendum, während Premierminister Paschinjan betont, die Verfassung mit dem Volk und nicht mit Aserbaidschan zu besprechen. Die Diskussionen um die Unabhängigkeitserklärung verschärfen den innenpolitischen Konflikt weiter.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pachinian-se-plie-a-bakou-et-declare-le-texte-de-la-declaration-dindependance-est-anti-etatique-il-est-impossible-davoir-un-etat-independant-avec-un-tel-texte/",
+          "title": "Pachinian se plie à Bakou et déclare : le texte de la Déclaration d’indépendance est anti-étatique (…) Il est impossible d’avoir un État indépendant avec un tel texte"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015074",
+          "title": "L’éthique parlementaire à coups de poing"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015070",
+          "title": "Soumettons la Constitution à un référendum: si le peuple dit « non », nous démissionnerons, affirme Mirzoyan"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015066",
+          "title": "Nous discuterons de la Constitution avec le peuple arménien, pas avec l’Azerbaïdjan, affirme Pachinia"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/une-bagarre-a-eclate-au-parlement-ce-matin/",
+          "title": "Une bagarre a éclaté au Parlement ce matin (vidéo)"
+        }
+      ]
+    },
+    {
+      "title": "Neue Verfassung soll Mitte November vorgestellt werden",
+      "text": "Ein Entwurf für eine neue Verfassung wird der Öffentlichkeit Mitte November präsentiert. Dies steht im Zusammenhang mit den Forderungen nach einem Referendum und den anhaltenden Diskussionen über die rechtlichen Grundlagen des Staates.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-projet-de-nouvelle-constitution-presente-au-public-la-mi-novembre",
+          "title": "Le projet de nouvelle Constitution présenté au public à la mi-novembre"
+        }
+      ]
+    },
+    {
+      "title": "Einführung der allgemeinen Krankenversicherung und biometrisches System",
+      "text": "Personen mit einem Einkommen bis 200'000 Dram werden in das System der allgemeinen Krankenversicherung einbezogen. Ab dem 1. November tritt zudem ein neues biometrisches Identifikationssystem in Kraft.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264240",
+          "title": "Les personnes percevant un salaire allant jusqu'à 200 000 drams seront également incluses dans le système d'assurance maladie universelle"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-nouveau-systeme-biometrique-est-lance-en-armenie-a-partir-du-1er-novembre/",
+          "title": "Le nouveau système biométrique est lancé en Arménie à partir du 1er novembre"
+        }
+      ]
+    },
+    {
+      "title": "Diplomatische Kontakte mit Slowenien",
+      "text": "Premierminister Paschinjan und Parlamentspräsident Simonyan empfingen den slowenischen Aussenminister. Dabei standen bilaterale Beziehungen und europäische Zusammenarbeit im Fokus.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264245",
+          "title": "Le Premier ministre a reçu le ministre des Affaires étrangères et européennes de Slovénie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264235",
+          "title": "Alen Simonyan a rencontré le ministre slovène des Affaires étrangères et européennes"
+        }
+      ]
+    },
+    {
+      "title": "Aserbaidschan verzichtet auf Turkstaaten-Gipfel in der Türkei",
+      "text": "Staatspräsident Alijew wird nicht am Gipfel der Organisation der Turkstaaten in der Türkei teilnehmen. Die Gründe für die Absenz wurden in den Meldungen nicht näher erläutert.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/aliyev-ne-participera-pas-au-sommet-de-lorganisation-des-etats-turcophones-en-turquie/",
+          "title": "Aliyev ne participera pas au sommet de l’Organisation des États turcophones en Turquie"
+        }
+      ]
+    },
+    {
+      "title": "Sportliche Erfolge bei Ringen und Futsal",
+      "text": "Ringer Wasgen Tewanjan erreichte das Finale der Weltmeisterschaften in Astana. Im Futsal feierte Unisport Jerewan einen deutlichen Sieg in der Champions League.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-en-finale-des-championnats-du-monde-de-lutte-libre-a-astana/",
+          "title": "Vazgen Tevanyan (Arménie) est en finale des championnats du monde de lutte libre à Astana"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/victoire-impressionnante-dunisport-erevan-en-ligue-des-champions-de-futsal/",
+          "title": "Victoire impressionnante d’Unisport Erevan en Ligue des Champions de futsal"
+        }
+      ]
+    },
+    {
+      "title": "COP17 in Jerewan: Kulturvertreter aus Arzach ausgeschlossen",
+      "text": "Bei der UN-Biodiversitätskonferenz COP17 in Jerewan wurden offizielle Vertreter aus Arzach von der Teilnahme ausgeschlossen. Ihre Kultur fand jedoch ausserhalb des Veranstaltungsortes statt.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/cop17-a-erevan-les-representants-de-lartsakh-exclus-de-la-conference-leur-culture-sinvite-aux-portes-de-levenement/",
+          "title": "COP17 à Erevan : les représentants de l’Artsakh exclus de la conférence, leur culture s’invite aux portes de l’événement"
+        }
+      ]
+    }
+  ]
+}

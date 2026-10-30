@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-30",
+  "lang": "fr",
+  "generatedAt": "2026-10-30T03:28:37.796Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "L'actualité est marquée par les débats constitutionnels et les tensions parlementaires en Arménie, ainsi que par la tenue de la COP17 à Erevan et des résultats sportifs notables.",
+  "topics": [
+    {
+      "title": "Débats sur la Constitution et référendum",
+      "text": "Le projet de nouvelle Constitution sera présenté au public à la mi-novembre. Le ministre des Affaires étrangères Ararat Mirzoyan a proposé de le soumettre à référendum, liant le sort du gouvernement au résultat, tandis que le Premier ministre Nikol Pachinian insiste pour que la discussion se fasse avec le peuple arménien et non avec l'Azerbaïdjan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015070",
+          "title": "Soumettons la Constitution à un référendum: si le peuple dit « non », nous démissionnerons, affirme Mirzoyan"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015066",
+          "title": "Nous discuterons de la Constitution avec le peuple arménien, pas avec l’Azerbaïdjan, affirme Pachinia"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-projet-de-nouvelle-constitution-presente-au-public-la-mi-novembre",
+          "title": "Le projet de nouvelle Constitution présenté au public à la mi-novembre"
+        }
+      ]
+    },
+    {
+      "title": "Tensions et bagarre au Parlement arménien",
+      "text": "Une bagarre a éclaté au Parlement, illustrant les tensions autour de l'éthique parlementaire. Parallèlement, l'ancienne députée Lilit Stepanyan a été nommée gouverneure de la région de Kotayk.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015074",
+          "title": "L’éthique parlementaire à coups de poing"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lancienne-deputee-lilit-stepanyan-nommee-gouverneure-de-la-region-de-kotayk/",
+          "title": "L’ancienne députée Lilit Stepanyan nommée gouverneure de la région de Kotayk."
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/une-bagarre-a-eclate-au-parlement-ce-matin/",
+          "title": "Une bagarre a éclaté au Parlement ce matin (vidéo)"
+        }
+      ]
+    },
+    {
+      "title": "COP17 à Erevan : exclusion des représentants de l'Artsakh",
+      "text": "La conférence sur la biodiversité (COP17) se tient à Erevan. Les représentants de l'Artsakh en ont été exclus, tandis que leur culture est mise en avant aux abords de l'événement. Des initiatives cinématographiques parallèles, comme le festival SunChild, accompagnent la conférence.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/cop17-a-erevan-les-representants-de-lartsakh-exclus-de-la-conference-leur-culture-sinvite-aux-portes-de-levenement/",
+          "title": "COP17 à Erevan : les représentants de l’Artsakh exclus de la conférence, leur culture s’invite aux portes de l’événement"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/sunchild-le-cinema-au-service-de-la-biodiversite-en-marge-de-la-cop17",
+          "title": "SunChild : le cinéma au service de la biodiversité en marge de la COP17"
+        }
+      ]
+    },
+    {
+      "title": "Lancement du système biométrique et extension de l'assurance maladie",
+      "text": "Le nouveau système biométrique entre en vigueur en Arménie à partir du 1er novembre. Par ailleurs, les personnes percevant un salaire jusqu'à 200 000 drams seront incluses dans le système d'assurance maladie universelle.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264240",
+          "title": "Les personnes percevant un salaire allant jusqu'à 200 000 drams seront également incluses dans le système d'assurance maladie universelle"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-nouveau-systeme-biometrique-est-lance-en-armenie-a-partir-du-1er-novembre/",
+          "title": "Le nouveau système biométrique est lancé en Arménie à partir du 1er novembre"
+        }
+      ]
+    },
+    {
+      "title": "Visite du ministre slovène des Affaires étrangères",
+      "text": "Le ministre slovène des Affaires étrangères et européennes a été reçu par le Premier ministre Nikol Pachinian et a rencontré le président de l'Assemblée nationale Alen Simonyan lors de sa visite en Arménie.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264245",
+          "title": "Le Premier ministre a reçu le ministre des Affaires étrangères et européennes de Slovénie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264235",
+          "title": "Alen Simonyan a rencontré le ministre slovène des Affaires étrangères et européennes"
+        }
+      ]
+    },
+    {
+      "title": "Succès arméniens en lutte libre et en futsal",
+      "text": "Le lutteur Vazgen Tevanyan s'est qualifié pour la finale des championnats du monde de lutte libre à Astana. L'équipe d'Unisport Erevan a remporté une victoire impressionnante en Ligue des champions de futsal.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-en-finale-des-championnats-du-monde-de-lutte-libre-a-astana/",
+          "title": "Vazgen Tevanyan (Arménie) est en finale des championnats du monde de lutte libre à Astana"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/victoire-impressionnante-dunisport-erevan-en-ligue-des-champions-de-futsal/",
+          "title": "Victoire impressionnante d’Unisport Erevan en Ligue des Champions de futsal"
+        }
+      ]
+    },
+    {
+      "title": "Aliyev absent du sommet de l'Organisation des États turcophones",
+      "text": "Le président azerbaïdjanais Ilham Aliyev ne participera pas au sommet de l'Organisation des États turcophones qui se tient en Turquie.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/aliyev-ne-participera-pas-au-sommet-de-lorganisation-des-etats-turcophones-en-turquie/",
+          "title": "Aliyev ne participera pas au sommet de l’Organisation des États turcophones en Turquie"
+        }
+      ]
+    }
+  ]
+}

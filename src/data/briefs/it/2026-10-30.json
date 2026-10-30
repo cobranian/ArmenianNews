@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-30",
+  "lang": "it",
+  "generatedAt": "2026-10-30T03:28:37.796Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata da tensioni politiche interne, con scontri in parlamento e dibattiti sulla Costituzione, mentre sul fronte internazionale si registra l'assenza di Aliyev al vertice turcofono e l'esclusione dei rappresentanti dell'Artsakh dalla COP17. In ambito sociale ed economico procede l'attuazione dell'assicurazione sanitaria universale e del nuovo sistema biometrico.",
+  "topics": [
+    {
+      "title": "Scontri in parlamento e dibattito sull'etica parlamentare",
+      "text": "Una rissa è scoppiata questa mattina all'Assemblea nazionale, episodio che ha riacceso il dibattito sull'etica parlamentare. Fonti parlamentari indicano che l'episodio è legato alle forti tensioni politiche in corso.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015074",
+          "title": "L’éthique parlementaire à coups de poing"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/une-bagarre-a-eclate-au-parlement-ce-matin/",
+          "title": "Une bagarre a éclaté au Parlement ce matin (vidéo)"
+        }
+      ]
+    },
+    {
+      "title": "Dibattito sulla revisione costituzionale e referendum",
+      "text": "Il progetto di nuova Costituzione sarà presentato al pubblico a metà novembre. Il ministro degli Esteri Mirzoyan ha proposto di sottoporla a referendum, impegnandosi a dimettersi in caso di esito negativo, mentre Pashinyan afferma che la discussione avverrà con il popolo armeno e non con l'Azerbaigian.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015070",
+          "title": "Soumettons la Constitution à un référendum: si le peuple dit « non », nous démissionnerons, affirme Mirzoyan"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015066",
+          "title": "Nous discuterons de la Constitution avec le peuple arménien, pas avec l’Azerbaïdjan, affirme Pachinia"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-projet-de-nouvelle-constitution-presente-au-public-la-mi-novembre",
+          "title": "Le projet de nouvelle Constitution présenté au public à la mi-novembre"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan critica il testo della Dichiarazione d'indipendenza",
+      "text": "Il Primo ministro ha definito il testo della Dichiarazione d'indipendenza come anti-statale, sostenendo che sia impossibile avere uno Stato indipendente con un simile documento. La dichiarazione ha suscitato forti reazioni nell'arena politica.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pachinian-se-plie-a-bakou-et-declare-le-texte-de-la-declaration-dindependance-est-anti-etatique-il-est-impossible-davoir-un-etat-independant-avec-un-tel-texte/",
+          "title": "Pachinian se plie à Bakou et déclare : le texte de la Déclaration d’indépendance est anti-étatique (…) Il est impossible d’avoir un État indépendant avec un tel texte"
+        }
+      ]
+    },
+    {
+      "title": "Aliyev non parteciperà al vertice dell'Organizzazione degli Stati turcofoni",
+      "text": "Il presidente azero non sarà presente al summit in programma in Turchia. L'assenza avviene in un contesto di negoziati di pace ancora in corso tra Baku ed Erevan.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/aliyev-ne-participera-pas-au-sommet-de-lorganisation-des-etats-turcophones-en-turquie/",
+          "title": "Aliyev ne participera pas au sommet de l’Organisation des États turcophones en Turquie"
+        }
+      ]
+    },
+    {
+      "title": "Esclusione dei rappresentanti dell'Artsakh dalla COP17 a Erevan",
+      "text": "I rappresentanti dell'Artsakh sono stati esclusi dalla conferenza COP17 in corso nella capitale armena. La loro cultura è stata comunque rappresentata all'esterno dell'evento attraverso iniziative collaterali.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/cop17-a-erevan-les-representants-de-lartsakh-exclus-de-la-conference-leur-culture-sinvite-aux-portes-de-levenement/",
+          "title": "COP17 à Erevan : les représentants de l’Artsakh exclus de la conférence, leur culture s’invite aux portes de l’événement"
+        }
+      ]
+    },
+    {
+      "title": "Estensione dell'assicurazione sanitaria universale e avvio del sistema biometrico",
+      "text": "I percettori di salari fino a 200.000 dram saranno inclusi nel sistema di assicurazione sanitaria universale. Dal 1° novembre è inoltre entrato in funzione il nuovo sistema di identificazione biometrica nel paese.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264240",
+          "title": "Les personnes percevant un salaire allant jusqu'à 200 000 drams seront également incluses dans le système d'assurance maladie universelle"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-nouveau-systeme-biometrique-est-lance-en-armenie-a-partir-du-1er-novembre/",
+          "title": "Le nouveau système biométrique est lancé en Arménie à partir du 1er novembre"
+        }
+      ]
+    },
+    {
+      "title": "Vazgen Tevanyan in finale ai mondiali di lotta libera",
+      "text": "Il lottatore armeno Vazgen Tevanyan ha raggiunto la finale dei campionati mondiali di lotta libera in svolgimento ad Astana. Un risultato di rilievo per lo sport armeno a livello internazionale.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-en-finale-des-championnats-du-monde-de-lutte-libre-a-astana/",
+          "title": "Vazgen Tevanyan (Arménie) est en finale des championnats du monde de lutte libre à Astana"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "date": "2026-10-30",
+  "lang": "en",
+  "generatedAt": "2026-10-30T03:28:37.796Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian media today focus on a physical brawl in parliament and Prime Minister Pashinyan's controversial characterization of the 1990 Declaration of Independence as \"anti-state.\" Other prominent topics include Armenia's upcoming biometric document rollout, economic measures regarding inflation and oil imports, wrestling successes at the World Championships, and continued assistance for displaced Karabakh residents.",
+  "topics": [
+    {
+      "title": "Brawl erupts in Armenian parliament",
+      "text": "Physical altercations broke out between lawmakers during a parliamentary session. Prime Minister Pashinyan subsequently praised the actions of his Civil Contract faction members, stating that such confrontations will continue. The ruling majority faction called a closed session following the incident.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/pashinyan-praises-his-party-members-after-brawl-in-parliament/",
+          "title": "Pashinyan Praises His Party Members after Brawl in Parliament"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015089",
+          "title": "Brawl breaks out in Armenia’s parliament between lawmakers"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071210",
+          "title": "PM Pashinyan again comments on Armenia parliament brawl: From now on, it will be like this"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071179",
+          "title": "Armenia premier welcomes parliament majority faction members’ actions during legislature brawl"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071110",
+          "title": "Brawl breaks out in Armenia parliament"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan labels Declaration of Independence 'anti-state'",
+      "text": "Prime Minister Nikol Pashinyan declared that the text of Armenia's 1990 Declaration of Independence is \"anti-state.\" He linked this assessment to the goal of making peace with Azerbaijan irreversible and suggested the matter is unlikely to lead to snap parliamentary elections. The statement drew criticism from opposition circles.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/armenias-declaration-of-independence-anti-state-pashinyan-declares/",
+          "title": "Armenia’s Declaration of Independence is ‘Anti-State,’ Pashinyan Declares"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/29/pashinyan-calls-armenias-declaration-of-independence-anti-state-says-peace-must-become-irreversible/",
+          "title": "Pashinyan calls Armenia’s Declaration of Independence ‘anti-state,’ says peace must become irreversible"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071194",
+          "title": "Premier: Text of Armenia’s Declaration of Independence is anti-state"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071193",
+          "title": "Armenia PM: My goal is to end my activities under conditions of signed peace treaty"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071186",
+          "title": "Unlikely that the matter will reach snap parliamentary elections, Armenia’s Pashinyan says regarding holding referendum on new constitution"
+        }
+      ]
+    },
+    {
+      "title": "Armenia to launch biometric passports and ID cards on November 1",
+      "text": "The government has approved the procedure for issuing new biometric passports and identity cards, with the system set to launch on November 1. The move aims to modernize identification documents and enhance security features for citizens.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/29/armenia-to-launch-new-biometric-passport-and-id-system-on-november-1/",
+          "title": "Armenia to launch new biometric passport and ID system on November 1"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264240",
+          "title": "Armenia to introduce new biometric passports and ID cards starting November 1"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071155",
+          "title": "Armenia government approves procedure for issuing biometric passports"
+        }
+      ]
+    },
+    {
+      "title": "Central Bank vows to contain inflation amid potential Russian gas price hike",
+      "text": "Armenia's Central Bank pledged to keep inflation in check should Russia raise gas prices. Separately, the government adopted a new decision on oil product imports, and the finance minister discussed development cooperation with a visiting Saudi Arabian delegation.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071282",
+          "title": "Armenia finance minister to visiting Saudi Arabia prince: Development cannot wait until world peace is established"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015085",
+          "title": "Armenia’s central bank vows to keep inflation in check should Russia raise gas price"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071119",
+          "title": "Armenia adopts new decision on oil product imports"
+        }
+      ]
+    },
+    {
+      "title": "Armenian wrestlers advance at World Championships",
+      "text": "Vazgen Tevanyan reached the final of the World Wrestling Championships despite competing with a broken finger, defeating a two-time world champion en route. Tevanyan will compete for the gold medal, while other Armenian wrestlers also recorded victories in earlier rounds.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169908/",
+          "title": "Sevan team wins the Solidarity Cup of the “Integration Through Football” programme"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264238",
+          "title": "Armenia’s Tevanyan to compete for gold at World Wrestling Championships"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169903/",
+          "title": "Vazgen Tevanyan defeated Mamedov despite a broken finger and has reached the final"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264207",
+          "title": "Tevanyan advances to World Wrestling Championships semifinals"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169901/",
+          "title": "World Championships: Vazgen Tevanyan defeats two-time world champion"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264186",
+          "title": "Armenia's bronze medalist wrestler credits teamwork for World Championships success"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264176",
+          "title": "Armenia's Tevanyan opens World Championships campaign with 9-3 win"
+        }
+      ]
+    },
+    {
+      "title": "Social assistance extended for displaced Karabakh residents through 2027",
+      "text": "Armenia will extend social assistance programs for forcibly displaced Nagorno-Karabakh residents through 2027. However, reports indicate the amount of financial assistance to vulnerable families is set to be sharply reduced. The government also discussed expanding universal health insurance coverage.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/29/armenia-extends-social-assistance-programs-for-displaced-karabakh-residents-through-2027/",
+          "title": "Armenia extends social assistance programs for displaced Karabakh residents through 2027"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071120",
+          "title": "Amount of financial assistance to vulnerable families forcibly displaced from Karabakh to be sharply reduced in Armenia"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/29/armenia-to-expand-universal-health-insurance-to-workers-earning-up-to-200000-drams/",
+          "title": "Armenia to expand universal health insurance to workers earning up to 200,000 drams"
+        }
+      ]
+    },
+    {
+      "title": "Constitutional reform plans face domestic and external challenges",
+      "text": "Armenia's parliament ratified the TRIPP agreement but lacks the two-thirds majority required for constitutional changes. The justice minister stated the internal agenda is to write a new constitution rather than amend the current one. CivilNet reports that reform plans remain at odds with Baku's demands.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/10/29/yerevan-ratifies-tripp-lacks-two-thirds-for-constitutional-changes/",
+          "title": "Yerevan ratifies TRIPP, lacks two-thirds for constitutional changes"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071167",
+          "title": "Armenia justice minister: Our internal agenda is not to remove something from constitution, but to write new one"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015073",
+          "title": "Armenia’s constitutional reform plans remain at odds with Baku’s demands"
+        }
+      ]
+    }
+  ]
+}
