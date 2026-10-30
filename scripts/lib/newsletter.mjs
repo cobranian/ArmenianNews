@@ -21,11 +21,21 @@ export function isoWeek(now) {
   return `${d.getUTCFullYear()}-W${String(n).padStart(2, '0')}`
 }
 
-// Un titre ne doit pas pouvoir fermer son lien : on échappe [ ] ( ).
-const echappe = (s) => String(s).replace(/([[\]()])/g, '\\$1')
+// Un texte tiers (titre, description) ne doit ni fermer son lien ([ ] ( )),
+// ni ouvrir une balise (< >), ni basculer en italique ou en gras (* _) dans le
+// Markdown que rend Buttondown. La barre oblique inverse est échappée aussi :
+// sinon un « \ » final échapperait le « ] » du lien.
+export const echappe = (s) => String(s).replace(/([\\[\]()<>*_])/g, '\\$1')
 const lien = (texte, url) => `[${echappe(texte)}](${url})`
 
 const jourISO = (t) => new Date(t).toISOString().slice(0, 10)
+
+// Lundi 00:00 UTC de la semaine ISO de `now`, en millisecondes.
+function lundiDe(now) {
+  const d = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
+  const dow = new Date(d).getUTCDay() || 7
+  return d - (dow - 1) * JOUR
+}
 
 export function digestFor(siteId, { briefs, culture, events, now }) {
   const lang = SITES[siteId].newsletter.lang
@@ -33,10 +43,14 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
   const week = isoWeek(now)
   const utm = `?utm_source=newsletter&utm_medium=email&utm_campaign=hebdo-${week}`
   const t0 = now.getTime()
-  // Les 7 jours qui précèdent le jour de `now` (celui-ci exclu : sa brève
-  // ouvrira le numéro suivant).
-  const debut = jourISO(t0 - 7 * JOUR)
-  const fin = jourISO(t0)
+  // La semaine ISO PRÉCÉDENTE, du lundi au dimanche inclus (UTC), quel que
+  // soit le jour du passage : le rattrapage d'un mardi ou d'un mercredi couvre
+  // la même semaine que le lundi — sans perdre le début de la semaine écoulée
+  // ni empiéter sur la semaine en cours. `week` (clé du registre et de l'UTM)
+  // reste la semaine de l'envoi ; l'objet date le lundi de la semaine couverte.
+  const lundi = lundiDe(now) - 7 * JOUR
+  const debut = jourISO(lundi)
+  const fin = jourISO(lundi + 7 * JOUR)
   const dansFenetre = (date) => date >= debut && date < fin
 
   const lesBreves = (briefs?.[lang] || [])
@@ -76,7 +90,7 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
       lesArticles
         .map((a) => {
           const { title, description } = a.langs[lang]
-          return `- ${lien(title, cultureUrl(lang, a.slug) + utm)}${description ? `\n  ${description}` : ''}`
+          return `- ${lien(title, cultureUrl(lang, a.slug) + utm)}${description ? `\n  ${echappe(description)}` : ''}`
         })
         .join('\n'),
     )
@@ -94,5 +108,5 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
       lien(S.more, urlFor(lang, 'agenda') + utm),
     )
   }
-  return { week, subject: S.subject(fmtDate.format(new Date(t0))), body: parts.join('\n\n') + '\n' }
+  return { week, subject: S.subject(fmtDate.format(new Date(lundi))), body: parts.join('\n\n') + '\n' }
 }

@@ -75,3 +75,35 @@ test('lien agenda : lieu inconnu, pays trop mince, pays assez fourni', () => {
   assert.ok(ligne('E2').includes(agendaCountryUrl('fr', 'switzerland') + '?utm'))
   assert.ok(ligne('E5').includes('utm_campaign=hebdo-2026-W45'))
 })
+
+test('fenêtre : la semaine ISO précédente, lundi–dimanche, quel que soit le jour du passage', () => {
+  // day(7) = lundi 26 oct., day(1) = dimanche 1er nov. ; day(0) = lundi 2 nov.
+  const briefs = { fr: [brief(day(8), 'Dimanche-avant'), brief(day(7), 'Lundi-couvert'), brief(day(1), 'Dimanche-couvert'), brief(day(0), 'Lundi-courant'), brief(day(-1), 'Mardi-courant')] }
+  const lundi = digestFor('ch', { briefs, culture: [], events: [], now })
+  const mardi = digestFor('ch', { briefs, culture: [], events: [], now: new Date('2026-11-03T05:50:00Z') })
+  const mercredi = digestFor('ch', { briefs, culture: [], events: [], now: new Date('2026-11-04T23:59:00Z') })
+  for (const d of [lundi, mardi, mercredi]) {
+    assert.ok(d.body.includes('Lundi-couvert') && d.body.includes('Dimanche-couvert'))
+    assert.ok(!d.body.includes('Dimanche-avant') && !d.body.includes('Lundi-courant') && !d.body.includes('Mardi-courant'))
+    assert.equal(d.week, '2026-W45') // clé du registre : la semaine de l'envoi
+    assert.equal(d.subject, 'Arménie Info — la semaine du 26 octobre') // lundi de la semaine couverte
+  }
+  assert.equal(mardi.body, lundi.body)
+  // Un passage du dimanche couvre encore la semaine d'avant, pas la sienne.
+  const dimanche = digestFor('ch', { briefs, culture: [], events: [], now: new Date('2026-11-08T12:00:00Z') })
+  assert.ok(dimanche.body.includes('Lundi-couvert') && !dimanche.body.includes('Lundi-courant'))
+})
+
+test('Markdown sûr : < > * _ et barre inverse échappés dans les titres, descriptions et événements', () => {
+  const piege = 'A <b>x</b> *gras* _it_ \\'
+  const attendu = 'A \\<b\\>x\\</b\\> \\*gras\\* \\_it\\_ \\\\'
+  const art = { slug: 'duduk', date: day(2), langs: { fr: { title: piege, description: `Desc ${piege}` } } }
+  const ev = { title: piege, url: 'https://armenopole.com/p.html', location: 'Genève', country: 'switzerland', date: '2026-11-05T12:00' }
+  const d = digestFor('ch', { briefs: briefsOf('fr', { 1: piege }), culture: [art], events: [ev], now })
+  assert.ok(!d.body.includes('<b>'))
+  assert.equal(d.body.split(`[${attendu}](`).length - 1, 2) // brève + article
+  assert.ok(d.body.includes(`\n  Desc ${attendu}`))
+  assert.ok(d.body.includes(`- [${attendu} — `))
+  // Les URL, elles, ne sont pas touchées (utm_source garde ses _).
+  assert.ok(d.body.includes('?utm_source=newsletter&utm_medium=email'))
+})

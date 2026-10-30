@@ -13,8 +13,14 @@ import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 
 export const FEED_MAX = 30
 
-const xml = (s) =>
+// Les caractères de contrôle interdits en XML 1.0 (tous sauf tabulation, saut
+// de ligne et retour chariot) sont RETIRÉS, pas échappés : même `&#1;` est
+// illégal. Un seul, venu d'un titre tiers, rend le flux entier illisible pour
+// un lecteur strict — sans que rien ne casse au build.
+export const xml = (s) =>
   String(s ?? '')
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g, '')
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')

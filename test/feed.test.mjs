@@ -3,7 +3,7 @@
 // doit être identique d'un build à l'autre tant que les données ne changent pas.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { feedFor, feedItems, FEED_MAX } from '../scripts/lib/feed.mjs'
+import { feedFor, feedItems, FEED_MAX, xml } from '../scripts/lib/feed.mjs'
 import { SITES, feedUrl, feedPath, briefUrl, cultureUrl, urlFor } from '../sites.config.js'
 import { SEO } from '../src/seo.js'
 
@@ -51,6 +51,20 @@ test('feed échappe & < > " \'', () => {
   assert.ok(xml.includes('&amp;'))
   assert.ok(xml.includes('&lt;b&gt;'))
   assert.ok(!xml.includes('<b>'))
+  assert.ok(xml.includes('&quot;q&quot;'))
+  assert.ok(xml.includes('&apos;s&apos;'))
+})
+
+test('xml() retire les caractères de contrôle interdits en XML 1.0, garde \\t \\n \\r', () => {
+  const interdits = Array.from({ length: 32 }, (_, i) => String.fromCharCode(i)).filter((c) => !'\t\n\r'.includes(c))
+  assert.equal(interdits.length, 29)
+  assert.equal(xml(`a${interdits.join('')}b`), 'ab')
+  assert.equal(xml('a\tb\nc\rd'), 'a\tb\nc\rd')
+  assert.equal(xml('x\u0001 & y'), 'x &amp; y')
+  const culture = [{ slug: 'x', date: '2026-10-20', langs: { fr: { title: 'Titre\u0000\u000b\u001f propre', description: 'd\u0008' } } }]
+  const flux = feedFor('fr', { briefs: {}, culture })
+  assert.ok(flux.includes('<title>Titre propre</title>'))
+  assert.doesNotMatch(flux, /[\x00-\x08\x0b\x0c\x0e-\x1f]/) // eslint-disable-line no-control-regex
 })
 
 test('flux vide valide', () => {
