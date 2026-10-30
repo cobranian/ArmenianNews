@@ -2,7 +2,7 @@
 title: "The Duduk, Armenia's Millenary Voice and Apricot Wood Soul"
 description: "Discover the history, apricot wood craftsmanship, and global reach of the duduk, an iconic instrument of Armenian culture and music."
 date: "2026-10-17"
-sourceHash: "dedf0359bb1c0699"
+sourceHash: "3b52b79363ae8d3d"
 model: "gemini-flash-latest"
 ---
 

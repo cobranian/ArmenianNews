@@ -2,7 +2,7 @@
 title: "I temerari di Sassun: mille anni di memoria orale"
 description: "Dalla tradizione orale al riconoscimento UNESCO, l'epopea armena delle quattro generazioni di eroi di Sassun continua a vivere."
 date: "2026-10-26"
-sourceHash: "2f68fae3137f560f"
+sourceHash: "94ce7a8e2cea4534"
 model: "gemini-flash-latest"
 ---
 
@@ -20,7 +20,7 @@ Gli specialisti collocano la formazione del nucleo narrativo intorno al X secolo
 
 ## Dalla raccolta alla pagina stampata
 
-Dopo la prima edizione del 1874, Manuk Abeghian pubblicò una seconda versione nel 1889 a Shusha. Tra il 1936 e il 1951, un gruppo guidato da Abeghian, G. Abov e A. Ghanalanyan raccolse quasi sessanta varianti in tre volumi accademici per un totale di oltre 2.500 pagine. Un testo sintetico, detto «edizione popolare», apparve nel 1939 a Erevan e servì da base per tutte le traduzioni fino agli anni '60: russo (Valerij Brjusov, 1881; versione collettiva 1939), francese (1964), inglese (Leon Zaven Surmelian, 1964), georgiano, cinese, tedesco, ecc. Hovhannes Tumanyan ne diede una versione poetica nel 1903, Yeghishe Charents un'altra nel 1933, Avetik Isahakyan lavorò su Mher il Piccolo sin dal 1922. In totale sono state censite una cinquantina di varianti, e il numero di versioni note raggiunge le 160.
+Dopo la prima edizione del 1874, Manuk Abeghian pubblicò una seconda versione nel 1889 a Shusha. Tra il 1936 e il 1951, un gruppo guidato da Abeghian, G. Abov e A. Ghanalanyan raccolse quasi sessanta varianti in tre volumi accademici per un totale di oltre 2.500 pagine. Un testo sintetico, detto «edizione popolare», apparve nel 1939 a Erevan e servì da base per tutte le traduzioni fino agli anni '60: russo (versione collettiva, 1939), francese (1964), inglese (Leon Zaven Surmelian, 1964), georgiano, cinese, tedesco, ecc. Hovhannes Tumanyan ne diede una versione poetica nel 1903, Yeghishe Charents un'altra nel 1933, Avetik Isahakyan lavorò su Mher il Piccolo sin dal 1922. In totale sono state censite una cinquantina di varianti, e il numero di versioni note raggiunge le 160.
 
 ## Una tradizione vivente
 

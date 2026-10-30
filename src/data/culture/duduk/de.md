@@ -2,7 +2,7 @@
 title: "Das Duduk, jahrtausendealte Stimme und Aprikosenseele Armeniens"
 description: "Entdecken Sie Geschichte, Bau aus Aprikosenholz und weltweiten Einfluss des Duduks, des symbolträchtigen Instruments armenischer Kultur und Musik."
 date: "2026-10-17"
-sourceHash: "dedf0359bb1c0699"
+sourceHash: "3b52b79363ae8d3d"
 model: "gemini-flash-latest"
 ---
 
@@ -32,6 +32,6 @@ In Frankreich und innerhalb der Diaspora entfaltete sich die Spielpraxis dank In
 
 ## Eine vom weltweiten Kino adaptierte Klangsignatur
 
-Weit über seine Ursprungsregion hinaus hat die charakteristische Klangfarbe des Duduks die weltweite Film- und Fernsehindustrie erobert. Peter Gabriel gehörte zu den Pionieren, die es 1988 in Martin Scorseses Film *Die letzte Versuchung Christi* mit dem Solisten Watsche Howsepjan erfolgreich im Kino einsetzten. Einen gewaltigen Nachhall fand das Instrument anschliessend in Ridley Scotts *Gladiator* (2000) dank der Musik von Hans Zimmer und dem mit einem Golden Globe ausgezeichneten Spiel von Dschiwan Gasparjan.
+Weit über seine Ursprungsregion hinaus hat die charakteristische Klangfarbe des Duduks die weltweite Film- und Fernsehindustrie erobert. Peter Gabriel gehörte zu den Pionieren, die es 1988 in Martin Scorseses Film *Die letzte Versuchung Christi* mit dem Solisten Watsche Howsepjan erfolgreich im Kino einsetzten. Einen gewaltigen Nachhall fand das Instrument anschliessend in Ridley Scotts *Gladiator* (2000) dank der mit einem Golden Globe ausgezeichneten Musik von Hans Zimmer und dem Spiel von Dschiwan Gasparjan.
 
 Das Duduk erklang zudem in Henri Verneuils *Mayrig*, Atom Egoyans *Ararat* mit der Musik von Mychael Danna sowie in Armand Amars Soundtracks zu *Amen.*, *Tage des Ruhms* (*Indigènes*) und *Geh und lebe* (*Va, vis et deviens*). In jüngerer Zeit liess der Musiker Pedro Eustache seine Klänge in John Williams’ *Munich* sowie in den beiden von Hans Zimmer komponierten Teilen von *Dune* ertönen. Fernsehserien wie *Battlestar Galactica* oder *Game of Thrones* sowie bedeutende Videospiele wie *World of Warcraft*, *The Elder Scrolls V: Skyrim* und *Uncharted* schöpfen heute aus dem tiefen Tonumfang und dem ausdrucksstarken Atem dieser Oboe aus Armenien, um ihre fantastischen Welten zu beleben.

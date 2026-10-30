@@ -2,7 +2,7 @@
 title: "The Epic of David of Sassoun: A Thousand Years of Oral Memory"
 description: "From oral tradition to UNESCO inscription, the Armenian epic of four generations of Sassoun heroes continues to live on."
 date: "2026-10-26"
-sourceHash: "2f68fae3137f560f"
+sourceHash: "94ce7a8e2cea4534"
 model: "gemini-flash-latest"
 ---
 
@@ -20,7 +20,7 @@ Scholars date the formation of the narrative core to around the 10th century, th
 
 ## From Field Collection to the Printed Page
 
-After the first edition in 1874, Manuk Abeghian published a second version in 1889 in Shushi. Between 1936 and 1951, a team led by Abeghian, G. Abov, and A. Ghanalanian gathered nearly sixty variants into three scholarly volumes totaling more than 2,500 pages. A synthetic text, known as the "popular edition," was published in 1939 in Yerevan and served as the basis for all translations until the 1960s: Russian (Valery Bryusov, 1881; collective version 1939), French (1964), English (Leon Zaven Surmelian, 1964), Georgian, Chinese, German, and others. Hovhannes Toumanian produced a poetic version in 1903, Yeghishe Charents another in 1933, and Avetik Isahakyan worked on Little Mher as early as 1922. In total, around fifty variants have been inventoried, and the number of known versions reaches 160.
+After the first edition in 1874, Manuk Abeghian published a second version in 1889 in Shushi. Between 1936 and 1951, a team led by Abeghian, G. Abov, and A. Ghanalanian gathered nearly sixty variants into three scholarly volumes totaling more than 2,500 pages. A synthetic text, known as the "popular edition," was published in 1939 in Yerevan and served as the basis for all translations until the 1960s: Russian (collective version, 1939), French (1964), English (Leon Zaven Surmelian, 1964), Georgian, Chinese, German, and others. Hovhannes Toumanian produced a poetic version in 1903, Yeghishe Charents another in 1933, and Avetik Isahakyan worked on Little Mher as early as 1922. In total, around fifty variants have been inventoried, and the number of known versions reaches 160.
 
 ## A Living Tradition
 

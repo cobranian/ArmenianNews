@@ -2,7 +2,7 @@
 title: "Il Duduk, voce millenaria e anima di albicocco dell'Armenia"
 description: "Scopri la storia, la fattura in legno d'albicocco e la diffusione mondiale del Duduk, strumento emblematico della cultura e della musica armena."
 date: "2026-10-17"
-sourceHash: "dedf0359bb1c0699"
+sourceHash: "3b52b79363ae8d3d"
 model: "gemini-flash-latest"
 ---
 
@@ -32,6 +32,6 @@ In Francia e all'interno della diaspora, la pratica è fiorita grazie a interpre
 
 ## Una firma sonora adottata dal cinema mondiale
 
-Al di là della sua terra d'origine, il timbro così caratteristico del Duduk ha conquistato l'industria cinematografica e televisiva mondiale. Peter Gabriel è stato uno dei pionieri a utilizzarlo con successo nel cinema ne *L'ultima tentazione di Cristo* di Martin Scorsese nel 1988, con il solista Vatche Hovsepian. Lo strumento ha poi trovato una risonanza massiccia ne *Il gladiatore* di Ridley Scott (2000), grazie alla colonna sonora di Hans Zimmer e all'esecuzione di Djivan Gasparyan, premiata con un Golden Globe.
+Al di là della sua terra d'origine, il timbro così caratteristico del Duduk ha conquistato l'industria cinematografica e televisiva mondiale. Peter Gabriel è stato uno dei pionieri a utilizzarlo con successo nel cinema ne *L'ultima tentazione di Cristo* di Martin Scorsese nel 1988, con il solista Vatche Hovsepian. Lo strumento ha poi trovato una risonanza massiccia ne *Il gladiatore* di Ridley Scott (2000), grazie alla colonna sonora di Hans Zimmer, premiata con un Golden Globe, e all'esecuzione di Djivan Gasparyan.
 
 Il Duduk ha risuonato anche in *Mayrig* di Henri Verneuil, *Ararat* di Atom Egoyan con la colonna sonora di Mychael Danna, o ancora nelle colonne sonore di Armand Amar per *Amen.*, *Days of Glory* e *Vai e vivrai*. Più di recente, il musicista Pedro Eustache ne ha fatto ascoltare le sonorità in *Munich* di John Williams e nei due capitoli di *Dune* composti da Hans Zimmer. Serie televisive come *Battlestar Galactica* o *Il Trono di Spade*, nonché importanti videogiochi come *World of Warcraft*, *The Elder Scrolls V: Skyrim* e *Uncharted*, attingono ormai alla tessitura grave e al soffio espressivo di questo oboe d'Armenia per animare i propri universi immaginari.

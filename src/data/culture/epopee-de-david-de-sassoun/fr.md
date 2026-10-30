@@ -18,7 +18,7 @@ Les spécialistes situent la formation du noyau narratif autour du Xe siècle, m
 
 ## De la collecte à la page imprimée
 
-Après la première édition de 1874, Manuk Abeghian publie une seconde version en 1889 à Chouchi. Entre 1936 et 1951, une équipe dirigée par Abeghian, G. Abov et A. Ganalanyan rassemble près de soixante variantes en trois volumes savants totalisant plus de 2 500 pages. Un texte synthétique, dit « édition populaire », paraît en 1939 à Erevan et sert de base à toutes les traductions jusqu'aux années 1960 : russe (Valery Brioussov, 1881 ; version collective 1939), français (1964), anglais (Leon Zaven Surmelian, 1964), géorgien, chinois, allemand, etc. Hovhannes Toumanian en donne une version poétique en 1903, Ieghiché Tcharents une autre en 1933, Avétik Issahakian travaille sur Mher le Petit dès 1922. Au total, une cinquantaine de variantes ont été recensées, et le nombre de versions connues atteint 160.
+Après la première édition de 1874, Manuk Abeghian publie une seconde version en 1889 à Chouchi. Entre 1936 et 1951, une équipe dirigée par Abeghian, G. Abov et A. Ganalanyan rassemble près de soixante variantes en trois volumes savants totalisant plus de 2 500 pages. Un texte synthétique, dit « édition populaire », paraît en 1939 à Erevan et sert de base à toutes les traductions jusqu'aux années 1960 : russe (version collective, 1939), français (1964), anglais (Leon Zaven Surmelian, 1964), géorgien, chinois, allemand, etc. Hovhannes Toumanian en donne une version poétique en 1903, Ieghiché Tcharents une autre en 1933, Avétik Issahakian travaille sur Mher le Petit dès 1922. Au total, une cinquantaine de variantes ont été recensées, et le nombre de versions connues atteint 160.
 
 ## Une tradition vivante
 
