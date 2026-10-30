@@ -3470,6 +3470,97 @@ html:lang(hy) .nav__brand {
 .footer__sources a:hover {
   color: var(--apricot-ink-strong);
 }
+/* Inscription à la lettre hebdomadaire — seulement sous la langue de tête de
+   chaque vitrine (Footer.jsx). Un encadré au filet abricot, centré et étroit,
+   pour qu'il se lise comme une invitation du colophon et non comme un bandeau.
+   Le champ et le bouton font 44px de haut pour TOUS les pointeurs (comme
+   `.footer__social a`) : le plancher tactile tient sans le bloc
+   pointer: coarse, et un Chrome de bureau mesure la même chose qu'un
+   téléphone. La rangée passe à la ligne d'elle-même sous ~320px utiles : le
+   champ (croissance 999) prend alors toute la place libre de sa ligne, et le
+   bouton, seul sur la sienne, s'étire sur toute la largeur au lieu de rester
+   calé à gauche (mesuré à 375px). */
+.footer__newsletter {
+  max-width: 30rem;
+  margin: 26px auto 4px;
+  padding: 18px 18px 14px;
+  border: 1px solid var(--line-apricot);
+  border-radius: 4px;
+}
+.footer__newsletter-title {
+  font-family: var(--font-display);
+  font-size-adjust: var(--fsa-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--apricot-ink);
+  margin: 0 0 12px;
+}
+.footer__newsletter-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+.footer__newsletter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer__newsletter-row input[type='email'] {
+  flex: 999 1 12rem;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  /* 16px : en dessous, Safari iOS zoome la page au focus du champ. */
+  font-size: 1rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line-apricot);
+  border-radius: 3px;
+}
+.footer__newsletter-row button {
+  flex: 1 0 auto;
+  min-height: 44px;
+  padding: 0 18px;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--basalt);
+  background: var(--apricot-ink);
+  border: 1px solid var(--apricot-ink);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.18s var(--ease);
+}
+.footer__newsletter-row button:hover {
+  background: var(--apricot-ink-strong);
+}
+.footer__newsletter-row input[type='email']:focus-visible,
+.footer__newsletter-row button:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 2px;
+}
+.footer__newsletter-note {
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  margin: 10px 0 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer__newsletter-row button {
+    transition: none;
+  }
+}
 /* The address is the only thing in the footer you are invited to act on, so it
    takes the apricot the sources and the colophon deliberately don't. */
 .footer__contact {

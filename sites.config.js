@@ -99,6 +99,12 @@ export const SITES = {
     // les pages `lien.html` — un fichier partagé ne peut pas porter une valeur
     // propre à une vitrine.
     gaMeasurementId: 'G-EB3W5XXSMW',
+    // Lettre hebdomadaire (Buttondown) : le nom de la liste, et la SEULE langue
+    // dans laquelle elle est écrite — le formulaire du pied de page ne
+    // s'affiche que sur cette langue. Elle doit être la langue de tête
+    // (test/newsletter-footer.test.mjs). `null` retire le formulaire.
+    // Nom provisoire, à confirmer quand le compte existe.
+    newsletter: { buttondown: 'armenieinfo', lang: 'fr' },
     // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
     // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
     // lisent le fil français (CONTENT_LANG, src/newsLangs.js).
@@ -181,6 +187,8 @@ export const SITES = {
     // balise codée en dur, et rien ne le signalait — le .org était mesuré, mais
     // au mauvais endroit. `null` est accepté et n'émet aucune balise.
     gaMeasurementId: 'G-N6STD6Z5CC',
+    // Voir `newsletter` du .ch. Nom provisoire.
+    newsletter: { buttondown: 'armenianews', lang: 'en' },
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },
@@ -430,6 +438,15 @@ export function viewFromPath(siteId, pathname) {
 // bloc d'alternates rend le bloc incohérent.
 export function xDefaultFor(view = 'home') {
   return urlFor('en', view)
+}
+
+// L'URL d'envoi du formulaire d'inscription d'une vitrine, ou null si elle
+// n'a pas de lettre. Buttondown répond dans un nouvel onglet (target=_blank) :
+// aucune requête ne part du site lui-même, d'où le seul `form-action` de la
+// CSP (firebase.json, les DEUX blocs headers).
+export function newsletterAction(siteId) {
+  const nl = SITES[siteId].newsletter
+  return nl ? `https://buttondown.com/api/emails/embed-subscribe/${nl.buttondown}` : null
 }
 
 export function primaryLang(siteId) {

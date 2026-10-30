@@ -25,6 +25,11 @@ const STRINGS = {
     // liées depuis chaque page — pied de page et « Voir aussi » des vues.
     'footer.pages': 'Pages du site',
     'footer.home': 'Accueil',
+    'footer.rss': 'Flux RSS',
+    'newsletter.title': 'La semaine arménienne, chaque lundi',
+    'newsletter.label': 'Votre adresse e-mail',
+    'newsletter.submit': "S'abonner",
+    'newsletter.note': 'Un e-mail par semaine. Désinscription en un clic.',
     'viewpage.also': 'Voir aussi',
     // Page « À propos » (vue `about`). Tout ce qui y est affirmé est vérifiable
     // dans le dépôt ; aucun nombre écrit en toutes lettres (les comptes sont
@@ -142,6 +147,9 @@ const STRINGS = {
     'privacy.storage.title': 'Conservé sur votre appareil',
     'privacy.storage.body':
       "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Il ne quitte jamais votre appareil et ne nous est jamais transmis.",
+    'privacy.newsletter.title': "Lettre d'information",
+    'privacy.newsletter.body':
+      "Si vous vous abonnez, votre adresse e-mail est confiée à Buttondown, qui envoie la lettre et ne la partage pas. Elle ne sert qu'à cet envoi ; chaque lettre contient un lien de désinscription, et une demande à l'adresse ci-dessous la fait effacer.",
     'privacy.content.title': 'Contenu de tiers',
     'privacy.content.body':
       "Les articles, événements et publications proviennent de sites tiers, cités et liés. Suivre un lien vous conduit chez l'éditeur concerné, dont la politique de confidentialité s'applique alors.",
@@ -316,6 +324,11 @@ const STRINGS = {
     'nav.social': 'Social Media',
     'footer.pages': 'Seiten der Website',
     'footer.home': 'Startseite',
+    'footer.rss': 'RSS-Feed',
+    'newsletter.title': 'Die armenische Woche, jeden Montag',
+    'newsletter.label': 'Ihre E-Mail-Adresse',
+    'newsletter.submit': 'Abonnieren',
+    'newsletter.note': 'Eine E-Mail pro Woche. Abmeldung mit einem Klick.',
     'viewpage.also': 'Siehe auch',
     'about.h1': 'Über Arménie Info',
     'about.intro':
@@ -411,6 +424,9 @@ const STRINGS = {
     'privacy.storage.title': 'Auf Ihrem Gerät gespeichert',
     'privacy.storage.body':
       'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Sie verlässt Ihr Gerät nie und wird uns nie übermittelt.',
+    'privacy.newsletter.title': 'Newsletter',
+    'privacy.newsletter.body':
+      'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse Buttondown anvertraut, das den Newsletter versendet und sie nicht weitergibt. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und eine Anfrage an die untenstehende Adresse lässt sie löschen.',
     'privacy.content.title': 'Inhalte Dritter',
     'privacy.content.body':
       'Die Artikel, Veranstaltungen und Beiträge stammen von Websites Dritter, die genannt und verlinkt sind. Ein Link führt Sie zum jeweiligen Anbieter, dessen Datenschutzerklärung dann gilt.',
@@ -552,6 +568,11 @@ const STRINGS = {
     'nav.social': 'Social',
     'footer.pages': 'Pagine del sito',
     'footer.home': 'Home',
+    'footer.rss': 'Feed RSS',
+    'newsletter.title': 'La settimana armena, ogni lunedì',
+    'newsletter.label': 'Il vostro indirizzo e-mail',
+    'newsletter.submit': 'Iscriviti',
+    'newsletter.note': 'Un’e-mail a settimana. Disiscrizione con un clic.',
     'viewpage.also': 'Vedi anche',
     'about.h1': 'Informazioni su Arménie Info',
     'about.intro':
@@ -647,6 +668,9 @@ const STRINGS = {
     'privacy.storage.title': 'Conservato sul vostro dispositivo',
     'privacy.storage.body':
       'La vostra scelta del tema giorno / notte è salvata localmente dal browser. Non lascia mai il vostro dispositivo e non ci viene mai trasmessa.',
+    'privacy.newsletter.title': 'Newsletter',
+    'privacy.newsletter.body':
+      'Se vi iscrivete, il vostro indirizzo e-mail è affidato a Buttondown, che invia la newsletter e non lo condivide. Serve soltanto a questo invio; ogni newsletter contiene un link di disiscrizione, e una richiesta all’indirizzo qui sotto lo fa cancellare.',
     'privacy.content.title': 'Contenuti di terzi',
     'privacy.content.body':
       'Articoli, eventi e pubblicazioni provengono da siti di terzi, citati e collegati. Seguendo un link si arriva presso l’editore interessato, alla cui informativa sulla privacy si è allora soggetti.',
@@ -791,6 +815,11 @@ const STRINGS = {
     'nav.social': 'Social',
     'footer.pages': 'Site pages',
     'footer.home': 'Home',
+    'footer.rss': 'RSS feed',
+    'newsletter.title': 'The Armenian week, every Monday',
+    'newsletter.label': 'Your email address',
+    'newsletter.submit': 'Subscribe',
+    'newsletter.note': 'One email a week. Unsubscribe in one click.',
     'viewpage.also': 'See also',
     'about.h1': 'About Armenia News',
     'about.intro':
@@ -896,6 +925,9 @@ const STRINGS = {
     'privacy.storage.title': 'Kept on your device',
     'privacy.storage.body':
       'Your day / night theme choice is stored locally by your browser. It never leaves your device and is never sent to us.',
+    'privacy.newsletter.title': 'Newsletter',
+    'privacy.newsletter.body':
+      'If you subscribe, your email address is entrusted to Buttondown, which sends the newsletter and does not share it. It is used for this mailing only; every issue contains an unsubscribe link, and a request to the address below has it deleted.',
     'privacy.content.title': 'Third-party content',
     'privacy.content.body':
       'Articles, events and posts come from third-party sites, credited and linked. Following a link takes you to that publisher, whose own privacy policy then applies.',
@@ -1073,6 +1105,11 @@ const STRINGS = {
     'nav.social': 'Ցանցեր',
     'footer.pages': 'Կայքի էջերը',
     'footer.home': 'Գլխավոր էջ',
+    'footer.rss': 'RSS հոսք',
+    'newsletter.title': 'Հայկական շաբաթը՝ ամեն երկուշաբթի',
+    'newsletter.label': 'Ձեր էլ. փոստի հասցեն',
+    'newsletter.submit': 'Բաժանորդագրվել',
+    'newsletter.note': 'Մեկ նամակ շաբաթական։ Բաժանորդագրությունից դուրս գալը՝ մեկ սեղմումով։',
     'viewpage.also': 'Տես նաև',
     'about.h1': 'Armenia News-ի մասին',
     'about.intro':
@@ -1178,6 +1215,9 @@ const STRINGS = {
     'privacy.storage.title': 'Պահվում է ձեր սարքում',
     'privacy.storage.body':
       'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Այն երբեք չի հեռանում ձեր սարքից և երբեք մեզ չի փոխանցվում։',
+    'privacy.newsletter.title': 'Տեղեկագիր',
+    'privacy.newsletter.body':
+      'Եթե բաժանորդագրվեք, ձեր էլ. փոստի հասցեն կվստահվի Buttondown-ին, որն ուղարկում է տեղեկագիրը և այն չի փոխանցում այլոց։ Այն ծառայում է միայն այդ առաքմանը. յուրաքանչյուր նամակ պարունակում է բաժանորդագրությունը դադարեցնելու հղում, իսկ ստորև նշված հասցեին ուղղված խնդրանքով այն կջնջվի։',
     'privacy.content.title': 'Երրորդ կողմի բովանդակություն',
     'privacy.content.body':
       'Հոդվածները, միջոցառումները և հրապարակումները գալիս են երրորդ կողմի կայքերից՝ նշված և հղումով։ Հղմանը հետևելը ձեզ տանում է տվյալ հրատարակչի մոտ, որտեղ գործում է նրա գաղտնիության քաղաքականությունը։',
@@ -1337,6 +1377,11 @@ const STRINGS = {
     'nav.social': 'Соцсети',
     'footer.pages': 'Страницы сайта',
     'footer.home': 'Главная',
+    'footer.rss': 'RSS-лента',
+    'newsletter.title': 'Армянская неделя, каждый понедельник',
+    'newsletter.label': 'Ваш адрес электронной почты',
+    'newsletter.submit': 'Подписаться',
+    'newsletter.note': 'Одно письмо в неделю. Отписка в один клик.',
     'viewpage.also': 'См. также',
     'about.h1': 'О сайте Armenia News',
     // /ru/about/ est classée « Soft 404 » par le test en direct de Search
@@ -1452,6 +1497,9 @@ const STRINGS = {
     'privacy.storage.title': 'Хранится на вашем устройстве',
     'privacy.storage.body':
       'Ваш выбор дневной / ночной темы сохраняется локально браузером. Он никогда не покидает ваше устройство и не передаётся нам.',
+    'privacy.newsletter.title': 'Рассылка',
+    'privacy.newsletter.body':
+      'Если вы подпишетесь, ваш адрес электронной почты будет передан Buttondown — сервису, который отправляет рассылку и никому его не передаёт. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
     'privacy.content.title': 'Материалы третьих сторон',
     'privacy.content.body':
       'Статьи, события и публикации поступают со сторонних сайтов — со ссылкой и указанием источника. Переход по ссылке ведёт к соответствующему изданию, где действует его собственная политика конфиденциальности.',

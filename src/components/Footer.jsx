@@ -1,5 +1,13 @@
 import { useI18n } from '../i18n.jsx'
-import { pathFor, briefPath, culturePath } from '../../sites.config.js'
+import {
+  pathFor,
+  briefPath,
+  culturePath,
+  feedPath,
+  SITES,
+  newsletterAction,
+} from '../../sites.config.js'
+import { SITE_ID } from '../site.js'
 import { SocialLinks } from './SocialLinks.jsx'
 import { BRIEF_STRINGS } from '../briefStrings.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
@@ -34,7 +42,13 @@ export function Footer() {
     [briefPath(lang), BRIEF_STRINGS[lang].title],
     [culturePath(lang), CULTURE_STRINGS[lang].title],
     [pathFor(lang, 'about'), VIEW_SEO.about[lang].title],
+    [feedPath(lang), t('footer.rss')],
   ]
+  // La lettre n'est écrite que dans la langue de tête de la vitrine : le
+  // formulaire ne paraît que sur ses pages (fr sur le .ch, en sur le .org).
+  // Ni état React ni valeur dépendant de l'heure — le HTML prérendu est
+  // hydraté, et un seul écart ferait refaire toute la racine en silence.
+  const newsletter = SITES[SITE_ID].newsletter?.lang === lang
   return (
     <footer className="footer">
       <div className="container">
@@ -48,6 +62,31 @@ export function Footer() {
             </a>
           ))}
         </nav>
+        {newsletter && (
+          <form
+            className="footer__newsletter"
+            action={newsletterAction(SITE_ID)}
+            method="post"
+            target="_blank"
+          >
+            <p className="footer__newsletter-title">{t('newsletter.title')}</p>
+            <label className="footer__newsletter-label" htmlFor="newsletter-email">
+              {t('newsletter.label')}
+            </label>
+            <div className="footer__newsletter-row">
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                required
+                autoComplete="email"
+              />
+              <input type="hidden" name="embed" value="1" />
+              <button type="submit">{t('newsletter.submit')}</button>
+            </div>
+            <p className="footer__newsletter-note">{t('newsletter.note')}</p>
+          </form>
+        )}
         <nav className="footer__sources" aria-label={t('footer.sources')}>
           {SOURCES.map(([label, url]) => (
             <a key={url} href={url} rel="noopener noreferrer">
@@ -80,6 +119,9 @@ export function Footer() {
 
             <h3>{t('privacy.storage.title')}</h3>
             <p>{t('privacy.storage.body')}</p>
+
+            <h3>{t('privacy.newsletter.title')}</h3>
+            <p>{t('privacy.newsletter.body')}</p>
 
             <h3>{t('privacy.content.title')}</h3>
             <p>{t('privacy.content.body')}</p>
