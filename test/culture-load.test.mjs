@@ -4,7 +4,7 @@ import { mkdtemp, writeFile, mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { loadCulture, articleSlugs, invalidDirs, unpublishedTranslations, unpublishedLine } from '../scripts/lib/culture-load.mjs'
-import { cultureLangsBySlug, cultureAlternates, teaserFor, indexFor } from '../scripts/lib/culture-links.mjs'
+import { cultureLangsBySlug, cultureAlternates, teaserFor } from '../scripts/lib/culture-links.mjs'
 import { writeArticle, texts } from './helpers/culture-fixture.mjs'
 
 const silent = () => { const w = []; return { warn: (m) => w.push(m), w } }
@@ -87,19 +87,15 @@ test('teaserFor : trois plus récents par langue, langue absente exclue', async 
   assert.deepEqual(Object.keys(t.fr[0]).sort(), ['date', 'description', 'focus', 'image', 'slug', 'title'])
 })
 
-// Le sommaire de l'accueil : TOUS les articles (le carrousel s'arrête à
-// douze), même ordre que le carrousel, slug et titre seulement.
-test('indexFor : tous les articles par langue, du plus récent au plus ancien', async () => {
+// Le carrousel de l'accueil n'a plus de limite (vite.config.js passe
+// Infinity) : chaque article publié y figure, les futurs compris.
+test('teaserFor sans limite : tous les articles de la langue', async () => {
   const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
-  for (const [s, d] of [['a', '2026-10-01'], ['b', '2026-10-08'], ['c', '2026-10-15'], ['d', '2026-10-22']])
-    await writeArticle(dir, s, { t: texts({ date: d, title: s.toUpperCase() }) })
-  await writeArticle(dir, 'e', { t: { ...texts({ date: '2026-10-29', title: 'E' }), ru: null } })
-  const arts = await loadCulture(dir, silent())
-  const i = indexFor(arts, ['fr', 'ru'])
-  assert.deepEqual(i.fr.map((x) => x.slug), ['e', 'd', 'c', 'b', 'a'])
-  assert.deepEqual(i.ru.map((x) => x.slug), ['d', 'c', 'b', 'a'])
-  assert.deepEqual(i.fr.slice(0, 3).map((x) => x.slug), teaserFor(arts, ['fr']).fr.map((x) => x.slug))
-  assert.deepEqual(Object.keys(i.fr[0]).sort(), ['slug', 'title'])
+  for (let i = 1; i <= 15; i++)
+    await writeArticle(dir, 'a' + i, { t: texts({ date: `2026-10-${String(i).padStart(2, '0')}`, title: 'A' + i }) })
+  const t = teaserFor(await loadCulture(dir, silent()), ['fr'], Infinity)
+  assert.equal(t.fr.length, 15)
+  assert.equal(t.fr[0].slug, 'a15')
 })
 
 // de/it facultatives : leur absence ne compte pas parmi les traductions non

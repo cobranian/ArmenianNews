@@ -48,16 +48,3 @@ export function teaserFor(articles, langs, n = 3) {
     ]),
   )
 }
-
-// Le sommaire sous le carrousel de l'accueil : TOUS les articles de chaque
-// langue, réduits à leur slug et leur titre — le carrousel, lui, s'arrête à
-// douze. Même ordre que teaserFor (le plus récent d'abord), pour que les
-// douze premiers du sommaire soient les douze du carrousel.
-export function indexFor(articles, langs) {
-  return Object.fromEntries(
-    langs.map((l) => [
-      l,
-      articles.filter((a) => a.langs[l]).map((a) => ({ slug: a.slug, title: a.langs[l].title })),
-    ]),
-  )
-}

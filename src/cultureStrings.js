@@ -25,8 +25,6 @@ export const CULTURE_STRINGS = {
     next: 'Article suivant',
     read: 'Lire l’article',
     carousel: 'Articles Culture',
-    // Titre du sommaire sous le carrousel : TOUS les articles de la langue.
-    index: 'Tous les sujets',
     // Mention portée sous le titre d'une traduction que personne ne relit
     // (de, it). Vide ailleurs : la page ne l'affiche pas.
     translatedFrom: '',
@@ -53,8 +51,6 @@ export const CULTURE_STRINGS = {
     next: 'Nächster Artikel',
     read: 'Artikel lesen',
     carousel: 'Kulturartikel',
-    // Titre du sommaire sous le carrousel : TOUS les articles de la langue.
-    index: 'Alle Themen',
     translatedFrom: 'Aus dem Französischen übersetzt',
   },
   it: {
@@ -77,8 +73,6 @@ export const CULTURE_STRINGS = {
     next: 'Articolo successivo',
     read: 'Leggi l’articolo',
     carousel: 'Articoli di cultura',
-    // Titre du sommaire sous le carrousel : TOUS les articles de la langue.
-    index: 'Tutti i temi',
     translatedFrom: 'Tradotto dal francese',
   },
   en: {
@@ -101,8 +95,6 @@ export const CULTURE_STRINGS = {
     next: 'Next article',
     read: 'Read the article',
     carousel: 'Culture articles',
-    // Titre du sommaire sous le carrousel : TOUS les articles de la langue.
-    index: 'All topics',
     translatedFrom: '',
   },
   hy: {
@@ -125,8 +117,6 @@ export const CULTURE_STRINGS = {
     next: 'Հաջորդ հոդվածը',
     read: 'Կարդալ հոդվածը',
     carousel: 'Մշակույթի հոդվածներ',
-    // Titre du sommaire sous le carrousel : TOUS les articles de la langue.
-    index: 'Բոլոր թեմաները',
     translatedFrom: '',
   },
   ru: {
@@ -149,8 +139,6 @@ export const CULTURE_STRINGS = {
     next: 'Следующая статья',
     read: 'Читать статью',
     carousel: 'Статьи о культуре',
-    // Titre du sommaire sous le carrousel : TOUS les articles de la langue.
-    index: 'Все темы',
     translatedFrom: '',
   },
 }
