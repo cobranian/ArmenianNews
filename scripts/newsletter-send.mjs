@@ -10,8 +10,9 @@
 //        Envoie le plan. Une réponse non 2xx fait échouer l'étape, corps de la
 //        réponse au log.
 //   --dry (sur les deux) : n'écrit rien, n'envoie rien, imprime le Markdown.
-//        En `plan --dry`, l'absence de clé n'écarte pas une vitrine : c'est
-//        l'aperçu local des deux numéros.
+//        En `plan --dry`, ni l'absence de clé ni l'absence de compte
+//        Buttondown (`buttondown: null`) n'écartent une vitrine : c'est
+//        l'aperçu local des deux numéros, avant même que les comptes existent.
 //
 // Variables : BUTTONDOWN_API_KEY_CH, BUTTONDOWN_API_KEY_ORG (une vitrine sans
 // clé est ignorée) et NEWSLETTER_STATUS (statut Buttondown, `draft` par défaut).
@@ -29,18 +30,34 @@ const REGISTRY = path.join(root, 'src/data/newsletter-sent.json')
 export const BUTTONDOWN_EMAILS = 'https://api.buttondown.com/v1/emails'
 
 const keyFor = (siteId, env = process.env) => env[`BUTTONDOWN_API_KEY_${siteId.toUpperCase()}`] || null
+const hasAccountIn = (siteId) => Boolean(SITES[siteId]?.newsletter?.buttondown)
 
-// Quels numéros partent : ni une semaine déjà inscrite au registre, ni une
-// semaine vide (digest null), ni une vitrine sans clé.
-export function planSends({ registry, digests, hasKey = (id) => Boolean(keyFor(id)), log = console.log }) {
+// Quels numéros partent : ni une vitrine sans compte Buttondown confirmé
+// (`buttondown: null` dans sites.config.js), ni une semaine vide (digest
+// null), ni une semaine déjà inscrite au registre — ou antérieure à celle-ci :
+// un registre en avance (« 2026-W46 » face au numéro W45) n'envoie pas, la
+// comparaison de chaînes `AAAA-Wss` suit l'ordre des semaines —, ni une
+// vitrine sans clé.
+export function planSends({
+  registry,
+  digests,
+  hasKey = (id) => Boolean(keyFor(id)),
+  hasAccount = hasAccountIn,
+  log = console.log,
+}) {
   const sends = []
   for (const [siteId, digest] of Object.entries(digests)) {
+    if (!hasAccount(siteId)) {
+      log(`✗ newsletter/${siteId}: désactivée (pas de compte Buttondown)`)
+      continue
+    }
     if (!digest) {
       log(`✗ newsletter/${siteId}: semaine vide`)
       continue
     }
-    if (registry?.[siteId] === digest.week) {
-      log(`· newsletter/${siteId}: ${digest.week} déjà envoyé`)
+    const deja = registry?.[siteId]
+    if (typeof deja === 'string' && deja >= digest.week) {
+      log(`· newsletter/${siteId}: ${deja} déjà envoyé (numéro ${digest.week})`)
       continue
     }
     if (!hasKey(siteId)) {
@@ -75,6 +92,16 @@ export function buttondownRequest(digest, { key, status } = {}) {
       body: JSON.stringify({ subject: digest.subject, body: digest.body, status: status || 'draft' }),
     },
   }
+}
+
+// Un 2xx ne prouve pas que Buttondown a pris le statut demandé : un champ
+// `status` ignoré ou renommé créerait le numéro dans un autre état (envoyé au
+// lieu de brouillon, ou l'inverse) sans la moindre erreur HTTP. Rend null si
+// la réponse porte le statut demandé, sinon le message d'échec.
+export function checkCreated(requested, json) {
+  const got = json && typeof json === 'object' ? json.status : undefined
+  if (got === requested) return null
+  return `Buttondown a répondu « ${got ?? 'aucun statut'} » au lieu de « ${requested} »`
 }
 
 const redact = (s, key) => (key ? String(s).split(key).join('***') : String(s))
@@ -115,8 +142,15 @@ async function doPlan(opt, dry) {
   const sends = planSends({
     registry,
     digests: await loadDigests(new Date()),
-    ...(dry ? { hasKey: () => true } : {}),
+    ...(dry ? { hasKey: () => true, hasAccount: () => true } : {}),
   })
+  if (dry) {
+    for (const id of Object.keys(SITES)) {
+      if (SITES[id].newsletter && !hasAccountIn(id)) {
+        console.log(`✗ newsletter/${id}: désactivée (pas de compte Buttondown) — aperçu quand même (--dry)`)
+      }
+    }
+  }
   if (!sends.length) console.log('· newsletter : rien à envoyer')
   for (const s of sends) console.log(`· newsletter/${s.siteId}: à envoyer ${s.digest.week}`)
   if (dry) {
@@ -152,12 +186,19 @@ async function doSend(opt, dry) {
       const res = await fetch(url, { ...init, signal: AbortSignal.timeout(30000) })
       const text = await res.text()
       if (!res.ok) throw new Error(`HTTP ${res.status} — ${text.slice(0, 2000)}`)
-      let id = null
+      let json = null
       try {
-        id = JSON.parse(text).id ?? null
+        json = JSON.parse(text)
       } catch {
-        /* un corps illisible sur un 2xx ne vaut pas un échec */
+        /* corps illisible : checkCreated le signale (aucun statut) */
       }
+      const ecart = checkCreated(status, json)
+      if (ecart) {
+        failed++
+        console.log(`✗ newsletter/${s.siteId}: ${ecart}`)
+        continue
+      }
+      const id = json?.id ?? null
       console.log(`✓ newsletter/${s.siteId}: ${s.digest.week} créé en « ${status} » (${id ?? 'sans identifiant'})`)
     } catch (e) {
       failed++

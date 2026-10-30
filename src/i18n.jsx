@@ -149,7 +149,7 @@ const STRINGS = {
       "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Il ne quitte jamais votre appareil et ne nous est jamais transmis.",
     'privacy.newsletter.title': "Lettre d'information",
     'privacy.newsletter.body':
-      "Si vous vous abonnez, votre adresse e-mail est confiée à Buttondown, qui envoie la lettre et ne la partage pas. Elle ne sert qu'à cet envoi ; chaque lettre contient un lien de désinscription, et une demande à l'adresse ci-dessous la fait effacer.",
+      "Si vous vous abonnez, votre adresse e-mail est confiée à Buttondown, un service hébergé aux États-Unis : elle est donc traitée à l'étranger, selon la politique de confidentialité de Buttondown, qui peut mesurer l'ouverture des lettres et les clics. Elle ne sert qu'à cet envoi ; chaque lettre contient un lien de désinscription, et une demande à l'adresse ci-dessous la fait effacer.",
     'privacy.content.title': 'Contenu de tiers',
     'privacy.content.body':
       "Les articles, événements et publications proviennent de sites tiers, cités et liés. Suivre un lien vous conduit chez l'éditeur concerné, dont la politique de confidentialité s'applique alors.",
@@ -426,7 +426,7 @@ const STRINGS = {
       'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Sie verlässt Ihr Gerät nie und wird uns nie übermittelt.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
-      'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse Buttondown anvertraut, das den Newsletter versendet und sie nicht weitergibt. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und eine Anfrage an die untenstehende Adresse lässt sie löschen.',
+      'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse Buttondown anvertraut, einem in den USA gehosteten Dienst: Sie wird also im Ausland verarbeitet, gemäss der Datenschutzerklärung von Buttondown, das Öffnungen und Klicks messen kann. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und eine Anfrage an die untenstehende Adresse lässt sie löschen.',
     'privacy.content.title': 'Inhalte Dritter',
     'privacy.content.body':
       'Die Artikel, Veranstaltungen und Beiträge stammen von Websites Dritter, die genannt und verlinkt sind. Ein Link führt Sie zum jeweiligen Anbieter, dessen Datenschutzerklärung dann gilt.',
@@ -670,7 +670,7 @@ const STRINGS = {
       'La vostra scelta del tema giorno / notte è salvata localmente dal browser. Non lascia mai il vostro dispositivo e non ci viene mai trasmessa.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
-      'Se vi iscrivete, il vostro indirizzo e-mail è affidato a Buttondown, che invia la newsletter e non lo condivide. Serve soltanto a questo invio; ogni newsletter contiene un link di disiscrizione, e una richiesta all’indirizzo qui sotto lo fa cancellare.',
+      'Se vi iscrivete, il vostro indirizzo e-mail è affidato a Buttondown, un servizio ospitato negli Stati Uniti: viene quindi trattato all’estero, secondo l’informativa sulla privacy di Buttondown, che può misurare aperture e clic. Serve soltanto a questo invio; ogni newsletter contiene un link di disiscrizione, e una richiesta all’indirizzo qui sotto lo fa cancellare.',
     'privacy.content.title': 'Contenuti di terzi',
     'privacy.content.body':
       'Articoli, eventi e pubblicazioni provengono da siti di terzi, citati e collegati. Seguendo un link si arriva presso l’editore interessato, alla cui informativa sulla privacy si è allora soggetti.',
@@ -927,7 +927,7 @@ const STRINGS = {
       'Your day / night theme choice is stored locally by your browser. It never leaves your device and is never sent to us.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
-      'If you subscribe, your email address is entrusted to Buttondown, which sends the newsletter and does not share it. It is used for this mailing only; every issue contains an unsubscribe link, and a request to the address below has it deleted.',
+      'If you subscribe, your email address is entrusted to Buttondown, a service hosted in the United States: it is therefore processed abroad, under Buttondown’s privacy policy, and Buttondown may measure opens and clicks. It is used for this mailing only; every issue contains an unsubscribe link, and a request to the address below has it deleted.',
     'privacy.content.title': 'Third-party content',
     'privacy.content.body':
       'Articles, events and posts come from third-party sites, credited and linked. Following a link takes you to that publisher, whose own privacy policy then applies.',
@@ -1217,7 +1217,7 @@ const STRINGS = {
       'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Այն երբեք չի հեռանում ձեր սարքից և երբեք մեզ չի փոխանցվում։',
     'privacy.newsletter.title': 'Տեղեկագիր',
     'privacy.newsletter.body':
-      'Եթե բաժանորդագրվեք, ձեր էլ. փոստի հասցեն կվստահվի Buttondown-ին, որն ուղարկում է տեղեկագիրը և այն չի փոխանցում այլոց։ Այն ծառայում է միայն այդ առաքմանը. յուրաքանչյուր նամակ պարունակում է բաժանորդագրությունը դադարեցնելու հղում, իսկ ստորև նշված հասցեին ուղղված խնդրանքով այն կջնջվի։',
+      'Եթե բաժանորդագրվեք, ձեր էլ. փոստի հասցեն կվստահվի Buttondown-ին՝ Միացյալ Նահանգներում տեղակայված ծառայության, ուստի այն մշակվում է արտերկրում՝ Buttondown-ի գաղտնիության քաղաքականության համաձայն, և Buttondown-ը կարող է հաշվել նամակների բացումներն ու հղումների սեղմումները։ Այն ծառայում է միայն այդ առաքմանը. յուրաքանչյուր նամակ պարունակում է բաժանորդագրությունը դադարեցնելու հղում, իսկ ստորև նշված հասցեին ուղղված խնդրանքով այն կջնջվի։',
     'privacy.content.title': 'Երրորդ կողմի բովանդակություն',
     'privacy.content.body':
       'Հոդվածները, միջոցառումները և հրապարակումները գալիս են երրորդ կողմի կայքերից՝ նշված և հղումով։ Հղմանը հետևելը ձեզ տանում է տվյալ հրատարակչի մոտ, որտեղ գործում է նրա գաղտնիության քաղաքականությունը։',
@@ -1499,7 +1499,7 @@ const STRINGS = {
       'Ваш выбор дневной / ночной темы сохраняется локально браузером. Он никогда не покидает ваше устройство и не передаётся нам.',
     'privacy.newsletter.title': 'Рассылка',
     'privacy.newsletter.body':
-      'Если вы подпишетесь, ваш адрес электронной почты будет передан Buttondown — сервису, который отправляет рассылку и никому его не передаёт. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
+      'Если вы подпишетесь, ваш адрес электронной почты будет передан Buttondown — сервису, размещённому в США: поэтому он обрабатывается за рубежом в соответствии с политикой конфиденциальности Buttondown, и Buttondown может учитывать открытия писем и переходы по ссылкам. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
     'privacy.content.title': 'Материалы третьих сторон',
     'privacy.content.body':
       'Статьи, события и публикации поступают со сторонних сайтов — со ссылкой и указанием источника. Переход по ссылке ведёт к соответствующему изданию, где действует его собственная политика конфиденциальности.',

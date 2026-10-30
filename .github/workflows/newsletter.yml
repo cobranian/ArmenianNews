@@ -6,9 +6,18 @@ name: Lettre — envoi hebdomadaire
 # et rattrape un lundi sauté par le cron de GitHub (il en saute, voir
 # CLAUDE.md). NEWSLETTER_STATUS (variable de l'environnement `newsletter`)
 # choisit le statut Buttondown ; non posée, le numéro est créé en BROUILLON.
+#
+# Le passage PLANIFIÉ ne tourne que si la variable de dépôt NEWSLETTER_ENABLED
+# vaut `true` (variable du DÉPÔT : le `if:` du job est évalué avant que
+# l'environnement `newsletter` ne soit chargé) — à poser seulement après le test manuel du brouillon (README,
+# « Lettre et RSS »). Le lancement manuel (workflow_dispatch) tourne toujours :
+# c'est lui qui sert à ce test.
+#
+# :50 et non :23/:30 : le snapshot horaire (hourly.yml) pousse sur main sans
+# rebase vers :23-:28 ; un push du registre au même moment le ferait échouer.
 on:
   schedule:
-    - cron: '30 5 * * 1,2,3'
+    - cron: '50 5 * * 1,2,3'
   workflow_dispatch:
 
 # Deux runs simultanés planifieraient le même numéro avant que l'un ait poussé
@@ -19,6 +28,7 @@ concurrency:
 
 jobs:
   send:
+    if: github.event_name == 'workflow_dispatch' || vars.NEWSLETTER_ENABLED == 'true'
     runs-on: ubuntu-latest
     environment: newsletter
     permissions:

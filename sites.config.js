@@ -103,8 +103,12 @@ export const SITES = {
     // dans laquelle elle est écrite — le formulaire du pied de page ne
     // s'affiche que sur cette langue. Elle doit être la langue de tête
     // (test/newsletter-footer.test.mjs). `null` retire le formulaire.
-    // Nom provisoire, à confirmer quand le compte existe.
-    newsletter: { buttondown: 'armenieinfo', lang: 'fr' },
+    // `buttondown: null` tant que le compte n'existe pas : ni formulaire, ni
+    // envoi (`✗ newsletter/ch: désactivée`). Le vrai nom d'utilisateur va ici
+    // une fois que Nareg a créé ET confirmé le compte (README, « Lettre et
+    // RSS », étape 1) — un nom deviné publierait un formulaire qui inscrit
+    // chez un inconnu, ou nulle part.
+    newsletter: { buttondown: null, lang: 'fr' },
     // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
     // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
     // lisent le fil français (CONTENT_LANG, src/newsLangs.js).
@@ -187,8 +191,9 @@ export const SITES = {
     // balise codée en dur, et rien ne le signalait — le .org était mesuré, mais
     // au mauvais endroit. `null` est accepté et n'émet aucune balise.
     gaMeasurementId: 'G-N6STD6Z5CC',
-    // Voir `newsletter` du .ch. Nom provisoire.
-    newsletter: { buttondown: 'armenianews', lang: 'en' },
+    // Voir `newsletter` du .ch : `null` jusqu'à ce que le compte soit créé
+    // et confirmé.
+    newsletter: { buttondown: null, lang: 'en' },
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },
@@ -441,12 +446,20 @@ export function xDefaultFor(view = 'home') {
 }
 
 // L'URL d'envoi du formulaire d'inscription d'une vitrine, ou null si elle
-// n'a pas de lettre. Buttondown répond dans un nouvel onglet (target=_blank) :
-// aucune requête ne part du site lui-même, d'où le seul `form-action` de la
-// CSP (firebase.json, les DEUX blocs headers).
+// n'a pas de lettre ou pas encore de compte Buttondown (`buttondown: null`).
+// Buttondown répond dans un nouvel onglet (target=_blank) : aucune requête ne
+// part du site lui-même, d'où le seul `form-action` de la CSP (firebase.json,
+// les DEUX blocs headers).
 export function newsletterAction(siteId) {
   const nl = SITES[siteId].newsletter
-  return nl ? `https://buttondown.com/api/emails/embed-subscribe/${nl.buttondown}` : null
+  return nl?.buttondown ? `https://buttondown.com/api/emails/embed-subscribe/${nl.buttondown}` : null
+}
+
+// L'action du formulaire à poser sur une page (vitrine, langue), ou null s'il
+// ne doit pas y paraître : compte Buttondown confirmé ET langue de la lettre.
+export function newsletterFormAction(siteId, lang) {
+  const action = newsletterAction(siteId)
+  return action && SITES[siteId].newsletter.lang === lang ? action : null
 }
 
 export function primaryLang(siteId) {

@@ -48,15 +48,18 @@ contenu existe déjà : brève quotidienne (6 langues), articles Culture, agenda
 - **Fournisseur** : Buttondown, un compte par vitrine (gratuit jusqu'à un petit
   nombre d'abonnés — limites à vérifier à l'ouverture des comptes). Double
   opt-in et désinscription gérés par Buttondown.
-- **Rythme** : lundi. Cron lundi, mardi et mercredi 05:30 UTC (le cron GitHub
-  saute des passages) ; un registre `src/data/newsletter-sent.json` garantit un
+- **Rythme** : lundi. Cron lundi, mardi et mercredi 05:50 UTC (le cron GitHub
+  saute des passages ; :50 pour éviter le push du snapshot horaire), et
+  seulement si la variable de dépôt `NEWSLETTER_ENABLED` vaut `true`
+  (révision du 30 oct., revue finale) ; un registre `src/data/newsletter-sent.json` garantit un
   seul envoi par semaine ISO et par vitrine, poussé **avant** l'envoi (même
   règle que `social-posted.json`).
 - **Mode brouillon d'abord** : par défaut l'API crée un **brouillon** que Nareg
   envoie à la main ; la variable de dépôt `NEWSLETTER_STATUS` passe à l'envoi
   automatique après deux numéros relus.
-- **Contenu du numéro** : les sujets des brèves des 7 derniers jours (un par
-  jour, lien vers la brève datée), les articles Culture des 7 derniers jours,
+- **Contenu du numéro** : les sujets des brèves de la semaine ISO précédente,
+  lundi–dimanche, quel que soit le jour du passage (un par jour, lien vers la
+  brève datée), les articles Culture de la même semaine,
   les 8 prochains événements à 14 jours (lien vers la page agenda du pays).
   Liens marqués `utm_source=newsletter&utm_medium=email&utm_campaign=hebdo-AAAA-Www`.
   Semaine sans brève ni article : pas d'envoi, `✗ newsletter/<site>: semaine vide` au log.

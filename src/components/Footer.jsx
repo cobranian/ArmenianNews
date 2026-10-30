@@ -4,8 +4,7 @@ import {
   briefPath,
   culturePath,
   feedPath,
-  SITES,
-  newsletterAction,
+  newsletterFormAction,
 } from '../../sites.config.js'
 import { SITE_ID } from '../site.js'
 import { SocialLinks } from './SocialLinks.jsx'
@@ -45,10 +44,11 @@ export function Footer() {
     [feedPath(lang), t('footer.rss')],
   ]
   // La lettre n'est écrite que dans la langue de tête de la vitrine : le
-  // formulaire ne paraît que sur ses pages (fr sur le .ch, en sur le .org).
+  // formulaire ne paraît que sur ses pages (fr sur le .ch, en sur le .org),
+  // et seulement une fois le compte Buttondown confirmé (sites.config.js).
   // Ni état React ni valeur dépendant de l'heure — le HTML prérendu est
   // hydraté, et un seul écart ferait refaire toute la racine en silence.
-  const newsletter = SITES[SITE_ID].newsletter?.lang === lang
+  const newsletter = newsletterFormAction(SITE_ID, lang)
   return (
     <footer className="footer">
       <div className="container">
@@ -65,7 +65,7 @@ export function Footer() {
         {newsletter && (
           <form
             className="footer__newsletter"
-            action={newsletterAction(SITE_ID)}
+            action={newsletter}
             method="post"
             target="_blank"
           >
