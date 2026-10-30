@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import TEASER from 'virtual:culture-teaser'
+import TEASER, { INDEX } from 'virtual:culture-teaser'
 import { useI18n } from '../i18n.jsx'
 import { culturePath, cultureImagePath } from '../../sites.config.js'
 import { CULTURE_STRINGS } from '../cultureStrings.js'
@@ -25,6 +25,7 @@ const ringDistance = (a, b, n) => Math.min((a - b + n) % n, (b - a + n) % n)
 export function CultureTeaser() {
   const { lang } = useI18n()
   const items = TEASER[lang] ?? []
+  const all = INDEX[lang] ?? []
   const [index, setIndex] = useState(0)
   const [broken, setBroken] = useState({})
   // Tant que personne ne s'est approché du carrousel, toutes les images
@@ -159,6 +160,23 @@ export function CultureTeaser() {
           </div>
         )}
       </div>
+      {all.length > 0 && (
+        // Le sommaire : TOUS les articles de la langue, quand le carrousel
+        // s'arrête à douze. Des liens simples (le prérendu les cuit, Google
+        // les suit) ; celui que montre le carrousel est mis en évidence.
+        <nav className="cc-index" aria-labelledby="culture-index-title">
+          <h3 id="culture-index-title" className="cc-index__title">
+            {s.index} <span className="cc-index__count">({all.length})</span>
+          </h3>
+          <ul className="cc-index__list">
+            {all.map((x) => (
+              <li key={x.slug} className={x.slug === items[index]?.slug ? 'cc-index__item is-shown' : 'cc-index__item'}>
+                <a href={culturePath(lang, x.slug)}>{x.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </section>
   )
 }

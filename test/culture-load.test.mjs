@@ -4,7 +4,7 @@ import { mkdtemp, writeFile, mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { loadCulture, articleSlugs, invalidDirs, unpublishedTranslations, unpublishedLine } from '../scripts/lib/culture-load.mjs'
-import { cultureLangsBySlug, cultureAlternates, teaserFor } from '../scripts/lib/culture-links.mjs'
+import { cultureLangsBySlug, cultureAlternates, teaserFor, indexFor } from '../scripts/lib/culture-links.mjs'
 import { writeArticle, texts } from './helpers/culture-fixture.mjs'
 
 const silent = () => { const w = []; return { warn: (m) => w.push(m), w } }
@@ -85,6 +85,21 @@ test('teaserFor : trois plus récents par langue, langue absente exclue', async 
   assert.deepEqual(t.fr.map((x) => x.slug), ['e', 'd', 'c'])
   assert.deepEqual(t.ru.map((x) => x.slug), ['d', 'c', 'b'])
   assert.deepEqual(Object.keys(t.fr[0]).sort(), ['date', 'description', 'focus', 'image', 'slug', 'title'])
+})
+
+// Le sommaire de l'accueil : TOUS les articles (le carrousel s'arrête à
+// douze), même ordre que le carrousel, slug et titre seulement.
+test('indexFor : tous les articles par langue, du plus récent au plus ancien', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'culture-'))
+  for (const [s, d] of [['a', '2026-10-01'], ['b', '2026-10-08'], ['c', '2026-10-15'], ['d', '2026-10-22']])
+    await writeArticle(dir, s, { t: texts({ date: d, title: s.toUpperCase() }) })
+  await writeArticle(dir, 'e', { t: { ...texts({ date: '2026-10-29', title: 'E' }), ru: null } })
+  const arts = await loadCulture(dir, silent())
+  const i = indexFor(arts, ['fr', 'ru'])
+  assert.deepEqual(i.fr.map((x) => x.slug), ['e', 'd', 'c', 'b', 'a'])
+  assert.deepEqual(i.ru.map((x) => x.slug), ['d', 'c', 'b', 'a'])
+  assert.deepEqual(i.fr.slice(0, 3).map((x) => x.slug), teaserFor(arts, ['fr']).fr.map((x) => x.slug))
+  assert.deepEqual(Object.keys(i.fr[0]).sort(), ['slug', 'title'])
 })
 
 // de/it facultatives : leur absence ne compte pas parmi les traductions non
