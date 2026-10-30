@@ -385,7 +385,7 @@ test('les hreflang sont reciproques PAR VUE', () => {
         `${view}/${lang} : x-default ne suit pas la vue`,
       )
       assert.equal(
-        (head.match(/rel="alternate"/g) || []).length,
+        (head.match(/rel="alternate" hreflang=/g) || []).length,
         ALL_LANGS.length + 1,
         `${view}/${lang} : nombre d'alternates`,
       )
@@ -401,7 +401,7 @@ test('vingt-quatre pages, chacune se citant elle-même dans ses alternates', () 
   assert.equal(X_DEFAULT, LANG_URL.en)
   for (const { lang, view } of pages) {
     const head = headFor({ siteId: siteOf(lang), lang, view })
-    assert.equal((head.match(/rel="alternate"/g) || []).length, ALL_LANGS.length + 1, `${view}/${lang}`)
+    assert.equal((head.match(/rel="alternate" hreflang=/g) || []).length, ALL_LANGS.length + 1, `${view}/${lang}`)
     assert.ok(head.includes(`hreflang="${lang}" href="${urlFor(lang, view)}"`), `${view}/${lang} : ne se cite pas`)
   }
 })
@@ -480,4 +480,29 @@ test('les pages de vue gardent la carte de partage de leur vitrine', () => {
       }
     }
   }
+})
+
+// --- Autodécouverte du flux RSS -------------------------------------------
+const RSS_LINKS = (h) => [...h.matchAll(/<link rel="alternate" type="application\/rss\+xml"[^>]*>/g)].map((m) => m[0])
+const nHreflang = (h) => (h.match(/rel="alternate" hreflang=/g) ?? []).length
+
+test('head : un seul lien RSS, hreflang intacts', async () => {
+  const { feedUrl } = await import('../sites.config.js')
+  const { briefHeadFor, cultureHeadFor } = await import('../scripts/lib/site-meta.mjs')
+  const home = headFor({ siteId: 'ch', lang: 'de', view: 'radio' })
+  const links = RSS_LINKS(home)
+  assert.equal(links.length, 1)
+  assert.ok(links[0].includes(`href="${feedUrl('de')}"`))
+  assert.equal(nHreflang(home), ALL_LANGS.length + 1)
+
+  const byDate = new Map([['2026-10-16', ['en']]])
+  const brief = briefHeadFor({ siteId: 'org', lang: 'en', byDate })
+  assert.equal(RSS_LINKS(brief).length, 1)
+  assert.ok(RSS_LINKS(brief)[0].includes(`href="${feedUrl('en')}"`))
+  assert.equal(brief.match(/type="application\/rss\+xml"/g).length, 1)
+
+  const bySlug = new Map([['komitas', ['hy']]])
+  const cult = cultureHeadFor({ siteId: 'org', lang: 'hy', bySlug })
+  assert.equal(RSS_LINKS(cult).length, 1)
+  assert.ok(RSS_LINKS(cult)[0].includes(`href="${feedUrl('hy')}"`))
 })

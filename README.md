@@ -726,6 +726,76 @@ Vite `base` defaults to `/` on both showcases (each domain serves from its own
 root); override with `BASE_PATH=/subpath` — mainly useful with `build:one`,
 since the two production showcases always serve from their domain's root.
 
+## Lettre et RSS
+
+**Flux RSS.** Six flux, un par langue, cuits au build (`scripts/lib/feed.mjs`,
+fichiers statiques, rien à l'exécution) : `armenieinfo.ch/feed.xml`,
+`armenieinfo.ch/de/feed.xml`, `armenieinfo.ch/it/feed.xml`,
+`armenianews.org/feed.xml`, `armenianews.org/hy/feed.xml`,
+`armenianews.org/ru/feed.xml`. Chacun porte les 30 plus récentes brèves et
+articles Culture de sa langue (résumés seulement) ; le `<head>` de chaque page
+les annonce et le pied de page les lie.
+
+**Lettre hebdomadaire.** Une par vitrine (français pour le .ch, anglais pour le
+.org), composée sans modèle par `scripts/lib/newsletter.mjs` (sujets des brèves,
+articles Culture et prochains événements) et envoyée par
+[Buttondown](https://buttondown.com) : **deux comptes**, un par vitrine. Leurs
+noms d'utilisateur vont dans `sites.config.js` (`SITES.*.newsletter.buttondown`),
+qui vaut **`null` tant que le compte n'est pas créé et confirmé** : ni
+formulaire au pied de page, ni envoi (`✗ newsletter/<site>: désactivée (pas de
+compte Buttondown)` au log). Une fois le vrai nom posé, le formulaire
+n'apparaît que sur les pages de la langue de la lettre.
+
+**Envoi.** `newsletter.yml` tourne le lundi, le mardi et le mercredi à 05:50 UTC
+(à l'écart du push du snapshot horaire, vers :23-:28) — **seulement si la
+variable de dépôt `NEWSLETTER_ENABLED` vaut `true`** (variable du **dépôt**,
+pas de l'environnement `newsletter` : le `if:` du job est évalué avant que
+l'environnement ne soit chargé) ; le lancement manuel,
+lui, tourne toujours. Chaque numéro couvre la **semaine ISO précédente**, du
+lundi au dimanche, quel que soit le jour du passage. Trois passages parce que
+le cron de GitHub en saute ; le registre
+`src/data/newsletter-sent.json` fait qu'un seul des trois envoie. Le registre
+garantit **un numéro par semaine ISO et par vitrine** et est poussé **avant**
+l'envoi ; **supprimer une ligne renvoie le numéro de cette semaine** aux
+abonnés. Une semaine sans brève ni article n'envoie rien (`✗ newsletter/<site>:
+semaine vide` au log). Le job tourne dans l'environnement GitHub `newsletter`,
+qui porte les secrets `BUTTONDOWN_API_KEY_CH` et `BUTTONDOWN_API_KEY_ORG`.
+
+**Brouillon par défaut.** Sans variable `NEWSLETTER_STATUS`, le numéro est créé
+en **brouillon** que Nareg relit et envoie à la main chez Buttondown. Si la
+réponse de Buttondown porte un autre statut que celui demandé (ou aucun),
+l'étape échoue : `✗ newsletter/<site>: Buttondown a répondu « X » au lieu de
+« draft »`.
+
+```bash
+npm run newsletter -- plan --dry    # aperçu local des deux numéros, n'écrit ni n'envoie rien (même sans compte)
+```
+
+**Procédure de mise en service (à suivre dans l'ordre).** Buttondown ne
+documente pas le champ `status` : on ne fait donc pas confiance au mode
+brouillon avant de l'avoir vu.
+
+1. Créer les deux comptes (double opt-in, logo, adresse d'expéditeur) et
+   **désactiver le suivi des ouvertures et des clics** dans les réglages de
+   Buttondown si l'offre le permet ; créer l'environnement `newsletter` et ses
+   deux secrets ; une fois chaque compte **confirmé**, reporter son vrai nom
+   d'utilisateur dans `sites.config.js` (`buttondown`, `null` jusque-là).
+2. Le **premier** envoi est un `gh workflow run newsletter.yml` **manuel**, avec
+   les clés de comptes dont **le seul abonné est Nareg**. Vérifier chez
+   Buttondown que chaque numéro est bien un **brouillon** et qu'il n'est **pas
+   parti**.
+3. Seulement ensuite, poser la variable de dépôt `NEWSLETTER_ENABLED=true`
+   (`gh variable set NEWSLETTER_ENABLED --body true`) : sans elle, aucun
+   passage planifié ne tourne. Puis ajouter de vrais abonnés.
+4. `NEWSLETTER_STATUS` (la valeur exacte reste à confirmer dans la documentation
+   ou auprès du support de Buttondown) ne se pose qu'après **deux numéros
+   relus** et **avec l'accord de Nareg**.
+
+**Test d'inscription réel.** Le formulaire poste vers buttondown.com (CSP
+`form-action` dans les **deux** blocs `headers` de `firebase.json`). Une fois les
+comptes ouverts, tester une vraie inscription en production : une redirection de
+confirmation vers un autre hôte serait bloquée par la CSP, sans le moindre signe.
+
 ## Radio : titre de la chanson en cours
 
 Pendant la lecture, le lecteur affiche « ♪ Artiste — Titre » sous le nom de la

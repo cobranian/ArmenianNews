@@ -6,7 +6,7 @@
 // sinon les pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
 import { readFileSync } from 'node:fs'
-import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath, agendaCountryUrl } from '../../sites.config.js'
+import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath, agendaCountryUrl, feedUrl } from '../../sites.config.js'
 import { AGENDA_PAYS_STRINGS } from '../../src/agendaPaysStrings.js'
 import { countryLabel } from '../../src/worldPlace.js'
 import { eventLd } from '../../src/agendaEvents.js'
@@ -188,6 +188,9 @@ function composeHead({ site, lang, url, title, description, keywords, alternates
     '     pages : une page absente de son propre bloc fait ignorer tout le',
     '     bloc par Google. Générées depuis sites.config.js — ne pas éditer. -->',
     ...alternates.map(([h, href]) => `<link rel="alternate" hreflang="${h}" href="${href}" />`),
+    '',
+    '<!-- Autodécouverte du flux RSS de la langue (même hôte que la page). -->',
+    `<link rel="alternate" type="application/rss+xml" title="${attr(site.brand)}" href="${feedUrl(lang)}" />`,
     '',
     '<!-- Polices du premier écran, préchargées PAR LANGUE (voir PRELOAD dans',
     '     scripts/lib/site-meta.mjs). `crossorigin` est obligatoire sur un',

@@ -24,6 +24,7 @@
     "ig-select": "node scripts/ig-select.mjs",
     "reencode": "node scripts/reencode-images.mjs",
     "fb-scrape": "node scripts/fb-scrape.mjs",
+    "newsletter": "node scripts/newsletter-send.mjs",
     "screenshot": "node scripts/shoot.mjs",
     "radio-check": "node scripts/radio-check.mjs",
     "og-image": "node scripts/og-image.mjs",

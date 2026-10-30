@@ -19,7 +19,7 @@
 import { access, readdir, readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath } from '../sites.config.js'
+import { newsletterAction, SITES, ALL_LANGS, LANG_SWITCH_LABEL, ALL_VIEWS, BRIEF_SLUGS, CULTURE_SLUGS, VIEWS, urlFor, pathFor, primaryLang, briefUrl, briefPath, cultureUrl, culturePath, cultureImagePath, feedUrl, feedPath } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { cultureLangsBySlug, cultureAlternates } from './lib/culture-links.mjs'
 import { evenementComplet, evenementsAVenir } from '../src/agendaEvents.js'
@@ -166,6 +166,14 @@ for (const site of Object.values(SITES)) {
           html.includes(`rel="canonical" href="${urlFor(page.lang, view)}" />`),
         ],
         ['un seul canonical', count(/rel="canonical"/g) === 1],
+        [
+          // Le formulaire d'inscription : aucun tant que le compte n'existe pas,
+          // et sur la seule langue de tête quand il existe. Vu après prérendu
+          // (avant, la racine est vide : la garde ne peut alors pas échouer).
+          'formulaire newsletter : seulement sur la langue de tête, et seulement si le compte existe',
+          !html.includes('footer__newsletter') ||
+            (newsletterAction(site.id) !== null && site.newsletter?.lang === page.lang),
+        ],
         [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
         ['un seul og:site_name', count(/og:site_name"/g) === 1],
         ['un seul <title>', count(/<title>/g) === 1],
@@ -175,7 +183,7 @@ for (const site of Object.values(SITES)) {
         ],
         [
           `${ALL_LANGS.length + 1} alternate exactement (${ALL_LANGS.length} langues + x-default)`,
-          count(/rel="alternate"/g) === ALL_LANGS.length + 1,
+          count(/rel="alternate" hreflang=/g) === ALL_LANGS.length + 1,
         ],
         ['x-default', html.includes('hreflang="x-default"')],
         ['une seule paire de sentinelles', count(/<!--SITE_META:START-->/g) === 1],
@@ -433,6 +441,28 @@ for (const site of Object.values(SITES)) {
   } catch {
     console.error(`✗ dist/${site.id}/llms.txt — absent`)
     bad++
+  }
+
+  // Flux RSS : un par langue, bien formé, qui se cite lui-même, et aucun
+  // élément ne pointe vers l'hôte du voisin.
+  for (const { lang } of site.pages) {
+    const rel = `dist/${site.id}${feedPath(lang)}`
+    try {
+      const feed = await readFile(path.join(root, rel), 'utf-8')
+      const other = Object.values(SITES).find((s) => s.id !== site.id)
+      const foreign = [...feed.matchAll(/<item>[\s\S]*?<link>([^<]+)<\/link>/g)]
+        .map((m) => m[1])
+        .filter((u) => u.startsWith(other.host + '/'))
+      if (!feed.startsWith('<?xml') || !feed.includes(`<atom:link href="${feedUrl(lang)}"`) || foreign.length) {
+        console.error(`✗ ${rel} — en-tête, atom:link ou lien étranger (${foreign.slice(0, 3).join(', ')})`)
+        bad++
+      } else {
+        console.log(`✓ ${rel}`)
+      }
+    } catch {
+      console.error(`✗ ${rel} — absent`)
+      bad++
+    }
   }
 }
 
