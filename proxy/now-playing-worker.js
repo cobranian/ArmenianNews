@@ -145,7 +145,8 @@ export default {
     if (request.method !== 'GET') return new Response('method', { status: 405 })
 
     const id = new URL(request.url).searchParams.get('s') || ''
-    const url = STREAMS[id]
+    // Object.hasOwn : « ?s=__proto__ » ne doit pas lire le prototype.
+    const url = Object.hasOwn(STREAMS, id) ? STREAMS[id] : undefined
     const json = (body, maxAge) =>
       new Response(JSON.stringify(body), {
         headers: {
