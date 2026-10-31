@@ -57,13 +57,8 @@ export function Footer() {
         <KnotMark />
         <div className="footer__title">{t('site.title')}</div>
         <SocialLinks className="footer__social" />
-        <nav className="footer__pages" aria-label={t('footer.pages')}>
-          {pages.map(([href, label]) => (
-            <a key={href} href={href}>
-              {label}
-            </a>
-          ))}
-        </nav>
+        {/* Juste sous les comptes : la lettre est un autre moyen de suivre le
+            site, elle se range avec eux et non entre les pages et les sources. */}
         {newsletter && (
           <form
             className="footer__newsletter"
@@ -73,16 +68,20 @@ export function Footer() {
             rel="noopener"
           >
             <p className="footer__newsletter-title">{t('newsletter.title')}</p>
-            <label className="footer__newsletter-label" htmlFor="newsletter-email">
-              {t('newsletter.label')}
-            </label>
+            <p className="footer__newsletter-note" id="newsletter-note">{t('newsletter.note')}</p>
             <div className="footer__newsletter-row">
+              {/* Étiquette lue par les lecteurs d'écran ; à l'œil, le même
+                  texte tient dans le champ. */}
+              <label className="visually-hidden" htmlFor="newsletter-email">
+                {t('newsletter.label')}
+              </label>
               <input
                 id="newsletter-email"
                 type="email"
                 name="email"
                 required
                 autoComplete="email"
+                placeholder={t('newsletter.label')}
                 aria-describedby="newsletter-note"
               />
               <input type="hidden" name="embed" value="1" />
@@ -91,9 +90,15 @@ export function Footer() {
                 <span className="visually-hidden"> {t('newsletter.newtab')}</span>
               </button>
             </div>
-            <p className="footer__newsletter-note" id="newsletter-note">{t('newsletter.note')}</p>
           </form>
         )}
+        <nav className="footer__pages" aria-label={t('footer.pages')}>
+          {pages.map(([href, label]) => (
+            <a key={href} href={href}>
+              {label}
+            </a>
+          ))}
+        </nav>
         <nav className="footer__sources" aria-label={t('footer.sources')}>
           {SOURCES.map(([label, url]) => (
             <a key={url} href={url} rel="noopener noreferrer">
