@@ -37,16 +37,31 @@ const ACCOUNTS = {
   telegram: (s) => ({ token: `TELEGRAM_BOT_TOKEN_${s}`, chat: `TELEGRAM_CHAT_${s}` }),
 }
 
-// La langue de tête de chaque vitrine : fr pour le .ch, en pour le .org.
-const SITE_LANG = { ch: 'fr', org: 'en' }
+// Un jeu de comptes par langue. ch et org gardent leurs anciens noms (le
+// registre et les secrets en dépendent) : fr et en, langues de tête des deux
+// vitrines, ont toutes les plateformes. Les autres langues (comptes ouverts à
+// partir du 31 oct. 2026) n'ont que les quatre réseaux branchés en automatique
+// — LinkedIn n'a pas d'API pour ce site, X a été refusé. Un compte se branche
+// en posant ses secrets ; tant qu'il en manque un, le canal est ignoré.
+const LANG_PLATFORMS = ['facebook', 'instagram', 'bluesky', 'telegram']
+const ACCOUNT_SETS = [
+  { key: 'ch', lang: 'fr', platforms: Object.keys(ACCOUNTS) },
+  { key: 'org', lang: 'en', platforms: Object.keys(ACCOUNTS) },
+  { key: 'de', lang: 'de', platforms: LANG_PLATFORMS },
+  { key: 'it', lang: 'it', platforms: LANG_PLATFORMS },
+  { key: 'es', lang: 'es', platforms: LANG_PLATFORMS },
+  { key: 'hy', lang: 'hy', platforms: LANG_PLATFORMS },
+  { key: 'ru', lang: 'ru', platforms: LANG_PLATFORMS },
+]
+const CHANNEL_LANGS = ACCOUNT_SETS.map((a) => a.lang)
 
-export const CHANNELS = Object.entries(SITE_LANG).flatMap(([siteId, lang]) =>
-  Object.entries(ACCOUNTS).map(([platform, names]) => ({
-    id: `${platform}-${siteId}`,
+export const CHANNELS = ACCOUNT_SETS.flatMap(({ key, lang, platforms }) =>
+  platforms.map((platform) => ({
+    id: `${platform}-${key}`,
     platform,
-    siteId,
+    siteId: siteOf(lang),
     lang,
-    env: names(siteId.toUpperCase()),
+    env: ACCOUNTS[platform](key.toUpperCase()),
   })),
 )
 
@@ -83,7 +98,7 @@ const BRIEF_TOPICS = 3
 
 export function briefItems(briefs) {
   const out = []
-  for (const lang of Object.values(SITE_LANG))
+  for (const lang of CHANNEL_LANGS)
     for (const b of briefs[lang] ?? [])
       out.push({
         id: `brief:${b.date}`,
@@ -109,7 +124,7 @@ export function briefItems(briefs) {
 export function announceItems(list) {
   const out = []
   for (const a of list)
-    for (const lang of Object.values(SITE_LANG)) {
+    for (const lang of CHANNEL_LANGS) {
       const t = a.langs[lang]
       if (!t) continue
       const site = SITES[siteOf(lang)]
@@ -132,7 +147,7 @@ export function announceItems(list) {
 export function cultureItems(articles) {
   const out = []
   for (const a of articles)
-    for (const lang of Object.values(SITE_LANG)) {
+    for (const lang of CHANNEL_LANGS) {
       const t = a.langs[lang]
       if (!t) continue
       out.push({
@@ -220,9 +235,15 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
 // --- Les textes ------------------------------------------------------------
 
 const STRINGS = {
-  // `colon` : espace avant les deux-points en français, pas en anglais.
+  // `colon` : espace avant les deux-points en français ; en arménien, le
+  // « but » (՝) — le deux-points latin s'y lirait comme un point final (։).
   fr: { colon: ' : ', read: 'Article complet', bio: 'lien dans la bio', image: 'Image', tags: '#Arménie #CultureArménienne' },
   en: { colon: ': ', read: 'Full article', bio: 'link in bio', image: 'Image', tags: '#Armenia #ArmenianCulture' },
+  de: { colon: ': ', read: 'Ganzer Artikel', bio: 'Link in der Bio', image: 'Bild', tags: '#Armenien #ArmenischeKultur' },
+  it: { colon: ': ', read: 'Articolo completo', bio: 'link nella bio', image: 'Immagine', tags: '#Armenia #CulturaArmena' },
+  es: { colon: ': ', read: 'Artículo completo', bio: 'enlace en la bio', image: 'Imagen', tags: '#Armenia #CulturaArmenia' },
+  hy: { colon: '՝ ', read: 'Ամբողջական հոդվածը', bio: 'հղումը՝ պրոֆիլում', image: 'Լուսանկարը', tags: '#Հայաստան #ՀայկականՄշակույթ' },
+  ru: { colon: ': ', read: 'Читать полностью', bio: 'ссылка в профиле', image: 'Фото', tags: '#Армения #АрмянскаяКультура' },
 }
 
 const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' })

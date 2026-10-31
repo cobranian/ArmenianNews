@@ -87,6 +87,34 @@ test('chaque secret est déclaré dans le job social de hourly.yml', () => {
   for (const name of secretNames()) assert.match(yml, new RegExp(`${name}: \\$\\{\\{ secrets\\.${name} \\}\\}`), name)
 })
 
+test('un jeu de comptes par langue : ch/org gardent leurs noms, les autres langues ont les quatre réseaux auto', () => {
+  // Renommer facebook-ch ou FB_PAGE_ID_CH ré-amorcerait le compte et
+  // couperait ses secrets : les anciens noms sont figés.
+  assert.deepEqual(chan('facebook-ch').env, { pageId: 'FB_PAGE_ID_CH', token: 'FB_PAGE_TOKEN_CH' })
+  assert.equal(chan('facebook-org').lang, 'en')
+  for (const lang of ['de', 'it', 'es', 'hy', 'ru']) {
+    const ids = CHANNELS.filter((c) => c.lang === lang).map((c) => c.id)
+    assert.deepEqual(ids, ['facebook', 'instagram', 'bluesky', 'telegram'].map((p) => `${p}-${lang}`), lang)
+  }
+  assert.equal(chan('telegram-es').siteId, 'org')
+  assert.equal(chan('instagram-de').siteId, 'ch')
+  assert.deepEqual(chan('bluesky-hy').env, { handle: 'BLUESKY_HANDLE_HY', password: 'BLUESKY_APP_PASSWORD_HY' })
+})
+
+test('chaque langue de canal a son gabarit, et chaque secret est déclaré dans les trois workflows', () => {
+  for (const c of CHANNELS) {
+    const it = { ...culture('komitas', '2026-10-20'), lang: c.lang }
+    assert.doesNotThrow(() => compose(c.platform, it), c.id)
+  }
+  assert.match(compose('instagram', { ...culture('komitas', '2026-10-20'), lang: 'hy' }).caption, /Լուսանկարը՝ USSR Post/)
+  for (const f of ['hourly.yml', 'social-test.yml', 'social-check.yml']) {
+    const yml = readFileSync(new URL(`../.github/workflows/${f}`, import.meta.url), 'utf8')
+    for (const name of secretNames()) assert.match(yml, new RegExp(`${name}: \\$\\{\\{ secrets\\.${name} \\}\\}`), `${f} ${name}`)
+  }
+  const options = readFileSync(new URL('../.github/workflows/social-test.yml', import.meta.url), 'utf8').match(/options: \[([^\]]*)\]/)[1]
+  assert.deepEqual(options.split(',').map((s) => s.trim()), CHANNELS.map((c) => c.id))
+})
+
 test('SOCIAL_KINDS : culture par défaut, valeur inconnue refusée', () => {
   assert.deepEqual(parseKinds(undefined), ['culture'])
   assert.deepEqual(parseKinds('culture, brief'), ['culture', 'brief'])

@@ -1,7 +1,11 @@
 /**
  * Photo de couverture de la Page Facebook d'une vitrine.
  *
- *   node scripts/fb-cover.mjs org <fichier.jpg>
+ *   node scripts/fb-cover.mjs <ch|org|de|it|es|hy|ru> <fichier.jpg>
+ *
+ * ch/org : les Pages de tête (fr, en). de/it/es/hy/ru : les Pages par langue
+ * (31 oct. 2026) — mêmes marque et décor, textes dans la langue de la Page,
+ * repris de `nav.*` et de `site.tagline` (src/i18n.jsx).
  *
  * ÉTAPE MANUELLE (Chrome local + Google Fonts), jamais en CI : le fichier
  * n'est pas servi par le site, il est posé à la main sur la Page.
@@ -28,26 +32,34 @@ const BASALT = '#100f0d'
 const APRICOT = '#f2a93b'
 const TEXT = '#f3ecdb'
 
-// Mot pour mot ceux de la carte de partage (scripts/og-image.mjs, CARDS).
+// ch/org : mot pour mot ceux de la carte de partage (scripts/og-image.mjs,
+// CARDS). `site` : la vitrine dont la Page porte la marque ; `path` : la
+// langue, ajoutée au domaine affiché.
 const COPY = {
-  org: { kicker: 'NEWS · EVENTS · SOCIAL', tagline: 'An hourly snapshot of Armenian life' },
+  org: { site: 'org', kicker: 'NEWS · EVENTS · SOCIAL', tagline: 'An hourly snapshot of Armenian life' },
   // subbrand : la marque en lettres arméniennes, comme sur la carte du .ch.
-  ch: { kicker: 'ACTUALITÉS · AGENDA · RÉSEAUX', subbrand: 'Արմենիա Ինֆո', tagline: 'Un instantané horaire de la vie arménienne' },
+  ch: { site: 'ch', kicker: 'ACTUALITÉS · AGENDA · RÉSEAUX', subbrand: 'Արմենիա Ինֆո', tagline: 'Un instantané horaire de la vie arménienne' },
+  de: { site: 'ch', path: '/de', kicker: 'NACHRICHTEN · AGENDA · SOCIAL MEDIA', subbrand: 'Արմենիա Ինֆո', tagline: 'Eine stündliche Momentaufnahme des armenischen Lebens' },
+  it: { site: 'ch', path: '/it', kicker: 'NOTIZIE · EVENTI · SOCIAL', subbrand: 'Արմենիա Ինֆո', tagline: 'Un’istantanea oraria della vita armena' },
+  es: { site: 'org', path: '/es', kicker: 'NOTICIAS · EVENTOS · REDES', tagline: 'Una instantánea horaria de la vida armenia' },
+  hy: { site: 'org', path: '/hy', kicker: 'ԼՈՒՐԵՐ · ՄԻՋՈՑԱՌՈՒՄՆԵՐ · ՑԱՆՑԵՐ', subbrand: 'Արմենիա Ինֆո', tagline: 'Հայկական կյանքի ժամային պատկեր', upright: true },
+  ru: { site: 'org', path: '/ru', kicker: 'НОВОСТИ · АФИША · СОЦСЕТИ', tagline: 'Ежечасный снимок армянской жизни' },
 }
 
 // La chaîne de l'Ararat du héros du site (src/components/Ornament.jsx).
 const RANGE = `M0 150 L0 96 L210 96 L430 30 L520 70 L610 18 L760 96 L905 50 L980 78
   L1130 14 L1250 70 L1320 52 L1440 96 L1440 150 Z`
 
-function html(siteId) {
-  const site = SITES[siteId]
-  const c = COPY[siteId]
-  const domain = site.host.replace(/^https?:\/\//, '')
+function html(id) {
+  const c = COPY[id]
+  const site = SITES[c.site]
+  const domain = site.host.replace(/^https?:\/\//, '') + (c.path ?? '')
+  const lang = c.path ? id : primaryLang(c.site)
   return `<!doctype html>
-<html lang="${primaryLang(siteId)}">
+<html lang="${lang}">
 <head>
 <meta charset="utf-8" />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Noto+Serif+Armenian:wght@600&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Noto+Serif+Armenian:wght@600&family=Space+Mono:wght@400&family=Noto+Serif:ital,wght@0,400;1,400&family=Noto+Sans+Mono&display=swap" rel="stylesheet" />
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: ${W}px; height: ${H}px; overflow: hidden; }
@@ -68,7 +80,7 @@ function html(siteId) {
     display: flex; flex-direction: column; align-items: center; text-align: center;
   }
   .kicker {
-    font-family: 'Space Mono', monospace; font-size: 24px;
+    font-family: 'Space Mono', 'Noto Sans Mono', 'Noto Serif Armenian', monospace; font-size: 24px;
     letter-spacing: 0.34em; text-indent: 0.34em; color: ${APRICOT};
   }
   .brand {
@@ -82,7 +94,7 @@ function html(siteId) {
   }
   .rule { width: 160px; height: 1px; margin-top: 38px; background: rgba(243, 236, 219, 0.28); }
   .tagline {
-    font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
+    font-family: 'Fraunces', 'Noto Serif', 'Noto Serif Armenian', Georgia, serif; font-style: ${c.upright ? 'normal' : 'italic'}; font-weight: 400;
     font-size: 42px; margin-top: 34px;
   }
   .domain {
@@ -140,7 +152,7 @@ function stripIcc(buf) {
 
 const [id = 'org', out] = process.argv.slice(2)
 if (!COPY[id] || !out) {
-  console.error('usage : node scripts/fb-cover.mjs <ch|org> <fichier.jpg>')
+  console.error(`usage : node scripts/fb-cover.mjs <${Object.keys(COPY).join('|')}> <fichier.jpg>`)
   process.exit(1)
 }
 const browser = await puppeteer.launch({
@@ -155,7 +167,7 @@ try {
   await page.evaluate(() => document.fonts.ready)
   const jpeg = stripIcc(await page.screenshot({ type: 'jpeg', quality: 90 }))
   await writeFile(out, jpeg)
-  console.log(`✓ ${out}  (${SITES[id].brand}, ${W}×${H}, ${(jpeg.length / 1024).toFixed(0)} ko)`)
+  console.log(`✓ ${out}  (${SITES[COPY[id].site].brand} ${id}, ${W}×${H}, ${(jpeg.length / 1024).toFixed(0)} ko)`)
 } finally {
   await browser.close()
 }

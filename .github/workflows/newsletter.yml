@@ -41,6 +41,7 @@ jobs:
       BUTTONDOWN_API_KEY_IT: ${{ secrets.BUTTONDOWN_API_KEY_IT }}
       BUTTONDOWN_API_KEY_HY: ${{ secrets.BUTTONDOWN_API_KEY_HY }}
       BUTTONDOWN_API_KEY_RU: ${{ secrets.BUTTONDOWN_API_KEY_RU }}
+      BUTTONDOWN_API_KEY_ES: ${{ secrets.BUTTONDOWN_API_KEY_ES }}
     steps:
       # main et non le commit du déclencheur : brèves, Culture et agenda y sont
       # poussés chaque heure par le snapshot.
