@@ -13,7 +13,7 @@ import { clean, safeUrl } from '../lib/util.mjs'
 //
 // Source mono-langue : liste plate d'étagères dans news.json, hors BY_LANG.
 // Même approche que soyarmenio : `_fields` + un appel `media?include=…`, pas de `_embed`.
-const BASE = 'https://www.diarioarmenia.org.ar/wp-json/wp/v2'
+export const BASE = 'https://www.diarioarmenia.org.ar/wp-json/wp/v2'
 
 // La catégorie Agenda (événements de la communauté argentine) n'est JAMAIS une
 // étagère du fil : la tâche agenda la lit à part.
@@ -40,11 +40,11 @@ export function isLayoutCategory(slug) {
   return /^(slider|destacado-?\d*)$/.test(String(slug || ''))
 }
 
-function decodeEntities(html) {
+export function decodeEntities(html) {
   return clean(cheerio.load(`<x>${html || ''}</x>`)('x').text())
 }
 
-function imageMap(mediaJson) {
+export function imageMap(mediaJson) {
   const list = JSON.parse(mediaJson)
   const map = new Map()
   if (!Array.isArray(list)) return map
@@ -80,7 +80,7 @@ export function parseRest(postsJson, mediaJson = '[]', { agendaId = null } = {})
     .filter(Boolean)
 }
 
-async function categories() {
+export async function categories() {
   const cats = JSON.parse(
     await fetchText(`${BASE}/categories?per_page=100&_fields=id,slug,name`),
   )
@@ -88,7 +88,7 @@ async function categories() {
   return Object.fromEntries(cats.map((c) => [c.slug, { id: c.id, name: decodeEntities(c.name) }]))
 }
 
-async function mediaFor(postsJson) {
+export async function mediaFor(postsJson) {
   const ids = [...new Set(JSON.parse(postsJson).map((p) => p.featured_media).filter(Boolean))]
   if (!ids.length) return '[]'
   return fetchText(

@@ -17,6 +17,7 @@ import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeSoyArmenio } from './sources/soyarmenio.mjs'
 import { scrapeNorSevan } from './sources/norsevan.mjs'
 import { scrapeDiarioArmenia } from './sources/diarioarmenia.mjs'
+import { scrapeDiarioAgenda, mergeDiarioIntoWorld, isDiarioEvent } from './sources/diarioarmenia-agenda.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { mirrorImages, pruneMirror } from './lib/mirror-images.mjs'
@@ -273,18 +274,6 @@ async function main() {
   const removed = pruneMirror(ccArticles, ccMirror)
   console.log(`  ✓ californiacourier images: ${copied} recopiées, ${failed} en échec, ${removed} retirées`)
 
-  // Diario Armenia sert une vignette 200×200 à tout Referer étranger : ses
-  // images sont recopiées dans public/da/ (le téléchargement n'envoie aucun
-  // Referer), comme celles du Courier dans public/cc/. `daItems` est LA liste
-  // que le ménage compare au dossier : la tâche agenda y AJOUTE ses événements
-  // (leurs images passent aussi par /da/) AVANT mirrorImages et pruneMirror —
-  // sinon le ménage supprimerait leurs fichiers.
-  const daItems = diarioarmenia.flatMap((s) => s.articles || [])
-  const daMirror = { dir: join(__dirname, '..', 'public', 'da'), prefix: '/da/' }
-  const daCopy = await mirrorImages(daItems, { ...daMirror, encode })
-  const daRemoved = pruneMirror(daItems, daMirror)
-  console.log(`  ✓ diarioarmenia images: ${daCopy.copied} recopiées, ${daCopy.failed} en échec, ${daRemoved} retirées`)
-
   // CivilNet — the Yerevan independent newsroom, quadrilingue like Armenpress
   // (fr/en/hy/ru map 1:1). Its four editions do not share a rubric list, so the
   // shelf labels ride in the data. Backfilled per language, like armenpress.
@@ -330,6 +319,35 @@ async function main() {
       agenda[key] = prevAgenda[key]
     }
   }
+
+  // Diario Armenia, catégorie Agenda : la communauté d'Argentine, fusionnée dans
+  // `world` (dédoublonnage par URL). Un échec resert les événements de
+  // l'instantané précédent — images déjà en /da/ — au lieu de les effacer.
+  console.log('\nAgenda argentin (diarioarmenia.org.ar):')
+  let daEvents = []
+  try {
+    daEvents = await scrapeDiarioAgenda()
+  } catch (err) {
+    console.warn(`  ✗ diarioarmenia/agenda: ${err.message}`)
+  }
+  if (!daEvents.length) {
+    daEvents = (prevAgenda?.world || []).filter(isDiarioEvent)
+    if (daEvents.length) console.warn(`  ↺ keeping ${daEvents.length} previous diarioarmenia agenda events`)
+  }
+  agenda.world = mergeDiarioIntoWorld(agenda.world, daEvents)
+
+  // Diario Armenia sert une vignette 200×200 à tout Referer étranger : ses
+  // images sont recopiées dans public/da/ (le téléchargement n'envoie aucun
+  // Referer), comme celles du Courier dans public/cc/. `daItems` est LA liste
+  // que le ménage compare au dossier : articles du fil ET événements de
+  // l'agenda. Ce bloc vient donc APRÈS le scrape de l'agenda (backfill compris) —
+  // avant, pruneMirror supprimerait les fichiers des événements. Les images sont
+  // réécrites en /da/ avant que news.json et agenda.json ne soient écrits.
+  const daItems = [...diarioarmenia.flatMap((s) => s.articles || []), ...agenda.world.filter(isDiarioEvent)]
+  const daMirror = { dir: join(__dirname, '..', 'public', 'da'), prefix: '/da/' }
+  const daCopy = await mirrorImages(daItems, { ...daMirror, encode })
+  const daRemoved = pruneMirror(daItems, daMirror)
+  console.log(`  ✓ diarioarmenia images: ${daCopy.copied} recopiées, ${daCopy.failed} en échec, ${daRemoved} retirées`)
 
   console.log('\nInstagram (curated · re-randomised):')
   let igPosts = []
@@ -383,7 +401,9 @@ async function main() {
   // à chaque heure (test/agenda-resumes-wiring.test.mjs).
   console.log("\nRésumés de l'agenda:")
   const resumeCache = await summarizeAgenda({
-    events: [...agenda.switzerland, ...agenda.world],
+    // Les résumés lisent une page armenopole : les annonces de Diario Armenia
+    // n'en ont pas (elles échoueraient toutes, en mangeant le budget).
+    events: [...agenda.switzerland, ...agenda.world].filter((e) => !isDiarioEvent(e)),
     cache: (await readJson('agenda-resumes.json')) || {},
   })
   await writeJson('agenda-resumes.json', resumeCache)

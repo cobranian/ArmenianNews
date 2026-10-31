@@ -57,7 +57,7 @@ export const COUNTRIES = {
 // cantons/cities (so a Geneva event listed on a world page still lands under
 // Switzerland), plus the sub-national places seen in the feed (US states, a
 // Dutch region) so "New York" resolves to the United States.
-const PLACE_TO_COUNTRY = {
+export const PLACE_TO_COUNTRY = {
   // Switzerland — cantons and cities seen in the feed
   suisse: 'switzerland', geneve: 'switzerland', valais: 'switzerland',
   zurich: 'switzerland', vaud: 'switzerland', fribourg: 'switzerland',
