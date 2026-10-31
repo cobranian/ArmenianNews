@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-31",
+  "lang": "fr",
+  "generatedAt": "2026-10-31T03:29:05.009Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "L'actualité du jour est marquée par les suites de la COP17 à Erevan, les discussions sur le processus de paix avec l'Azerbaïdjan et les résultats sportifs arméniens aux championnats du monde.",
+  "topics": [
+    {
+      "title": "Clôture de la COP17 à Erevan",
+      "text": "Les dernières séances plénières officielles de la 17e Conférence des Parties à la Convention sur la diversité biologique se tiennent actuellement dans la capitale arménienne. En marge du sommet, un forum de l'Union européenne a placé la jeunesse au cœur du développement durable et le pays a émis un timbre-poste commémoratif. Le lutteur Artur Aleksanyan a par ailleurs été reconduit dans ses fonctions d'Ambassadeur national de l'UNICEF à cette occasion.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264365",
+          "title": "COP17: Artur Aleksanyan reconduit dans ses fonctions d’Ambassadeur national de l’UNICEF"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264324",
+          "title": "Les dernières séances plénières officielles de la COP17 se tiennent actuellement à Erevan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/cop17-un-forum-de-lunion-europeenne-place-la-jeunesse-au-coeur-du-developpement-durable",
+          "title": "COP17 : un forum de l’Union européenne place la jeunesse au cœur du développement durable"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/haypost-la-poste-armenienne-a-emis-un-timbre-poste-dedie-la-la-17e-conference-des-parties-a-la-convention-des-nations-unies-sur-la-diversite-biologique-cop17/",
+          "title": "HayPost, la poste arménienne a émis un timbre-poste dédié la la 17e Conférence des Parties à la Convention des Nations Unies sur la diversité biologique (COP17)"
+        }
+      ]
+    },
+    {
+      "title": "Processus de paix arméno-azerbaïdjanais : positions et propositions",
+      "text": "Le ministre azerbaïdjanais des Affaires étrangères Jeyhun Bayramov affirme que l'Arménie doit prendre les mesures nécessaires pour signer un accord de paix. Bakou, par la voix de Hikmet Hajiyev, indique avoir une proposition à formuler malgré l'absence d'accès à la mer de l'Arménie. Le président turc Recep Tayyip Erdogan a réaffirmé le soutien d'Ankara à ce processus.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-doit-prendre-les-mesures-necessaires-pour-signer-un-accord-de-paix-affirme-jeyhun-bayramov/",
+          "title": "L’Arménie doit prendre les mesures nécessaires pour signer un accord de paix affirme Jeyhun Bayramov"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hajiyev-larmenie-na-pas-dacces-a-la-mer-mais-bakou-a-une-proposition-a-faire/",
+          "title": "Hajiyev : L’Arménie n’a pas d’accès à la mer, mais Bakou a une proposition à faire"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/erdogan-reaffirme-son-soutien-au-processus-de-paix-armeno-azerbaidjanais/",
+          "title": "Erdogan réaffirme son soutien au processus de paix arméno-azerbaïdjanais"
+        }
+      ]
+    },
+    {
+      "title": "Débat constitutionnel et perspectives politiques en Arménie",
+      "text": "Une analyse décrypte le nombre de voix requis pour adopter une nouvelle Constitution en Arménie. Le vice-président de l'Assemblée nationale, Ruben Rubinyan, propose à l'opposition de ne pas bloquer le référendum et de mener campagne pour le « non ». Un politologue estime par ailleurs qu'il n'y a pas de réelle concurrence aux législatives et s'interroge sur l'alternative au pouvoir actuel.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015102",
+          "title": "Décryptage: combien de voix sont nécessaires pour adopter une nouvelle Constitution en Arménie?"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015096",
+          "title": "Rubinyan propose à l’opposition de ne pas bloquer le référendum et de mener la campagne du «non»"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35674/",
+          "title": "Arménie : pas de réelle concurrence aux législatives, selon le politologue Robert Ghevondian"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35668/",
+          "title": "Après les municipales, une tribune s’interroge : qui peut incarner l’alternative au pouvoir en Arménie ?"
+        }
+      ]
+    },
+    {
+      "title": "Résultats arméniens aux championnats du monde de lutte et d'haltérophilie",
+      "text": "Aux championnats du monde de lutte libre à Astana, Vazgen Tevanyan a décroché la médaille d'argent. En haltérophilie, à Ningbo en Chine, Alexandra Grigoryan a terminé 4e de l'épreuve de l'épaulé-jeté, obtenant la médaille de bronze dans ce mouvement spécifique. Samvel Gevorgyan a évoqué la longue attente d'une médaille d'or pour Karen Aslanyan.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnats-du-monde-a-ningbo-chine-alexandra-grigoryan-armenie-termine-4e-et-decroche-la-medaille-de-bronze-a-lepaule-jete/",
+          "title": "Championnats du monde à Ningbo (Chine) : Alexandra Grigoryan (Arménie) termine 4e et décroche la médaille de bronze à l’épaulé-jeté"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-vice-champion-du-monde-de-lutte-libre-a-astana-kazakhstan/",
+          "title": "Vazgen Tevanyan (Arménie) est vice-champion du monde de lutte libre à Astana (Kazakhstan)"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/samvel-gevorgyan-nous-revions-depuis-longtemps-dune-medaille-dor-avec-karen-aslanyan/",
+          "title": "Samvel Gevorgyan : Nous rêvions depuis longtemps d’une médaille d’or avec Karen Aslanyan"
+        }
+      ]
+    },
+    {
+      "title": "Coopération bilatérale : Iran, Slovénie et libéralisation des visas avec l'UE",
+      "text": "L'Arménie et l'Iran discutent d'une coopération dans le domaine des hautes technologies. Parallèlement, Erevan et Ljubljana souhaitent approfondir leur coopération bilatérale. Le vice-Premier ministre Mher Grigoryan a également échangé avec Johannes Luchner sur le processus de libéralisation du régime des visas avec l'Union européenne.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264292",
+          "title": "L’Arménie et l’Iran discutent de leur coopération dans le domaine des hautes technologies"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264300",
+          "title": "Mher Grigoryan et Johannes Luchner ont discuté du processus de libéralisation du régime des visas"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-et-la-slovenie-veulent-approfondir-leur-cooperation-bilaterale",
+          "title": "L’Arménie et la Slovénie veulent approfondir leur coopération bilatérale"
+        }
+      ]
+    },
+    {
+      "title": "Acquisition de manuscrits médiévaux et hommage à Hrachya Acharyan",
+      "text": "L'État arménien a débloqué 148,5 millions de drams pour acquérir deux manuscrits médiévaux exceptionnels. À Paris, l'UNESCO a célébré le patrimoine arménien en rendant hommage au linguiste Hrachya Acharyan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lunesco-paris-celebre-le-patrimoine-armenien-et-rend-hommage-hrachya-acharyan",
+          "title": "À l’UNESCO, Paris célèbre le patrimoine arménien et rend hommage à Hrachya Acharyan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-debloque-1485-millions-de-drams-pour-acquerir-deux-manuscrits-medievaux-exceptionnels",
+          "title": "L’Arménie débloque 148,5 millions de drams pour acquérir deux manuscrits médiévaux exceptionnels"
+        }
+      ]
+    },
+    {
+      "title": "Alen Simonyan à la réunion des secrétaires du Conseil de sécurité de la CEI",
+      "text": "Le président de l'Assemblée nationale arménienne, Alen Simonyan, participera à la 14e réunion des secrétaires des Conseils de sécurité des pays de la CEI qui se tiendra en Russie.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-participera-a-la-14e-reunion-des-secretaires-du-conseil-de-securite-de-la-cei-en-russie/",
+          "title": "Alen Simonyan participera à la 14e réunion des secrétaires du Conseil de sécurité de la CEI en Russie"
+        }
+      ]
+    }
+  ]
+}

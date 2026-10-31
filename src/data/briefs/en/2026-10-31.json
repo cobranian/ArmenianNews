@@ -1,0 +1,218 @@
+{
+  "date": "2026-10-31",
+  "lang": "en",
+  "generatedAt": "2026-10-31T03:29:05.009Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Today's coverage highlights Armenia's constitutional reform debate, the issue of Armenian hostages in Azerbaijan, diplomatic engagements with India and regional bodies, sports achievements at world championships, and economic developments including energy talks and a major crypto hack.",
+  "topics": [
+    {
+      "title": "Constitutional reform debate intensifies in Armenia",
+      "text": "The ruling party has asked the opposition to support a constitutional referendum, while the Justice Ministry seeks to discipline a judge who recused himself from the Catholicos trial. Parliament's speaker urged the opposition to let voters decide on a new constitution, and CivilNet published an explainer on the votes needed for adoption.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015111",
+          "title": "Ruling party asks opposition to support constitutional referendum"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264374",
+          "title": "Constitutional Reform Council holds latest meeting"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015103",
+          "title": "Justice ministry seeks to discipline judge who recused himself from Catholicos trial"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015102",
+          "title": "Explainer: Votes Armenia needs to adopt a new constitution"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015101",
+          "title": "Parliament speaker urges opposition to let voters decide on new constitution"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015099",
+          "title": "What triggered the major brawl in Armenia’s parliament?"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015094",
+          "title": "Pashinyan’s risky bet on constitutional change and peace with Azerbaijan"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015090",
+          "title": "Armenia’s local elections keep democratic form but lose real competition"
+        }
+      ]
+    },
+    {
+      "title": "ANC-International publishes dossier on Armenian hostages held by Azerbaijan",
+      "text": "ANC-International has released a dossier detailing 20 Armenian hostages being held by Azerbaijan. The publication has been covered by multiple Armenian news outlets, highlighting the ongoing humanitarian concern.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/anc-international-publishes-dossier-on-20-armenian-hostages-being-held-by-azerbaijan/",
+          "title": "ANC–International Publishes Dossier on 20 Armenian Hostages Being Held by Azerbaijan"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/10/30/anc-international-publishes-dossier-on-armenian-hostages/",
+          "title": "ANC-International publishes dossier on Armenian hostages"
+        }
+      ]
+    },
+    {
+      "title": "Armenia and India hold political consultations in New Delhi",
+      "text": "Armenia and India conducted their 12th round of political consultations in New Delhi, discussing development prospects for bilateral relations. The meetings included engagement with Indian industry and investment organizations.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/30/armenia-india-hold-12th-round-of-political-consultations-in-new-delhi/",
+          "title": "Armenia, India hold 12th round of political consultations in New Delhi"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071477",
+          "title": "Armenia-India relations’ development prospects talked about in New Delhi (PHOTOS)"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264283",
+          "title": "Armenian deputy FM holds meetings with Indian industry and investment organizations"
+        }
+      ]
+    },
+    {
+      "title": "Armenian athletes win medals at World Championships",
+      "text": "Wrestler Vazgen Tevanyan won a silver medal at the World Wrestling Championships, while weightlifter Alexandra Grigoryan secured a bronze medal at the World Weightlifting Championships, marking Armenia's first medal at the 2026 event. Greco-Roman wrestlers also claimed gold and bronze medals.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264371",
+          "title": "Wrestler Vazgen Tevanyan wins World Championships silver"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169933/",
+          "title": "Vazgen Tevanyan becomes world vice-champion"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/30/armenias-alexandra-grigoryan-wins-bronze-at-world-weightlifting-championships/",
+          "title": "Armenia’s Alexandra Grigoryan wins bronze at World Weightlifting Championships"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264347",
+          "title": "Alexandra Grigoryan wins Armenia's first medal at 2026 World Weightlifting Championships"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264335",
+          "title": "Armenia’s Greco-Roman wrestlers claim gold and bronze at World Championships, but fall short of expectations"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169925/",
+          "title": "World Championships: Alexandra Grigoryan finishes fourth overall and wins bronze in the clean and jerk"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169922/",
+          "title": "World Championships: Arsen Harutyunyan and Arman Andreasyan are out of the running for the title"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264279",
+          "title": "Armenia’s Alexandra Grigoryan to compete at World Weightlifting Championships on October 30"
+        }
+      ]
+    },
+    {
+      "title": "Regional energy and transport corridor discussions advance",
+      "text": "Armenia is considering purchasing gas from Azerbaijan alongside supplies from Russia and Iran. Azerbaijan's Foreign Minister stated that the Middle and Zangezur Corridors will increase the country's opportunities, while Turkish business leaders are pressing for trade with Armenia as Ankara sets conditions.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "californiacourier",
+          "url": "https://www.thecaliforniacourier.com/armenia-is-considering-purchasing-gas-from-azerbaijan-along-with-supplies-from-russia-and-iran/",
+          "title": "Armenia is considering purchasing gas from Azerbaijan, along with supplies from Russia and Iran"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071481",
+          "title": "Middle and “Zangezur” Corridors will increase Azerbaijan’s opportunities, FM says"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015038",
+          "title": "Turkish business leaders press for Armenia trade as Ankara sets conditions"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071415",
+          "title": "Armenian ruling force-nominated candidate for consumer protection commission member: No fuel imported from Azerbaijan to Armenia in last few months"
+        }
+      ]
+    },
+    {
+      "title": "Binance suffers $6.3 billion crypto hack",
+      "text": "Hackers stole $6.3 billion from Binance in what is being described as the world's largest crypto heist. The exchange says it is beginning to recover the stolen funds. The incident was reported by multiple financial and technology news sources.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/30/binance-says-it-is-beginning-to-recover-crypto-funds-after-6-3bn-hack-thought-to-be-largest-ever/",
+          "title": "Binance says it is beginning to recover crypto funds after $6.3bn hack thought to be largest ever"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264310",
+          "title": "Hackers steal $6.3 billion from Binance in world's biggest crypto heist"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/30/crypto-giant-binance-hit-by-6-3bn-hack-suspected-to-be-largest-in-history/",
+          "title": "Crypto giant Binance hit by $6.3bn hack suspected to be largest in history"
+        }
+      ]
+    },
+    {
+      "title": "Armenian officials engage in regional and international diplomacy",
+      "text": "Foreign Minister Ararat Mirzoyan will attend the Manama Dialogue security forum in Bahrain. National Assembly Speaker Alen Simonyan will attend a CIS Security Council Secretaries meeting in Russia, as will Armenia's Security Council chief. Armenia and the EU discussed progress in the visa liberalization process.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264377",
+          "title": "Ararat Mirzoyan to attend Manama Dialogue security forum in Bahrain"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/30/alen-simonyan-to-attend-cis-security-council-secretaries-meeting-in-russia/",
+          "title": "Alen Simonyan to attend CIS Security Council Secretaries’ meeting in Russia"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071455",
+          "title": "Armenia Security Council chief to attend CIS colleagues’ meeting in Russia"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/10/30/armenia-eu-discuss-progress-in-visa-liberalization-process/",
+          "title": "Armenia, EU discuss progress in visa liberalization process"
+        }
+      ]
+    }
+  ]
+}

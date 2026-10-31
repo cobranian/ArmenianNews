@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-31",
+  "lang": "de",
+  "generatedAt": "2026-10-31T03:29:05.009Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über den Friedensprozess mit Aserbaidschan, die COP17 in Jerewan, innenpolitische Debatten sowie sportliche Erfolge.",
+  "topics": [
+    {
+      "title": "Friedensprozess mit Aserbaidschan",
+      "text": "Aserbaidschans Aussenminister Dschejhun Bajramow fordert von Armenien notwendige Schritte zur Unterzeichnung eines Friedensabkommens. Präsident Erdogan bekräftigte die Unterstützung der Türkei für den Prozess. Baku signalisiert zudem eine Vorschlag trotz fehlenden Meereszugangs Armeniens.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-doit-prendre-les-mesures-necessaires-pour-signer-un-accord-de-paix-affirme-jeyhun-bayramov/",
+          "title": "L’Arménie doit prendre les mesures nécessaires pour signer un accord de paix affirme Jeyhun Bayramov"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hajiyev-larmenie-na-pas-dacces-a-la-mer-mais-bakou-a-une-proposition-a-faire/",
+          "title": "Hajiyev : L’Arménie n’a pas d’accès à la mer, mais Bakou a une proposition à faire"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/erdogan-reaffirme-son-soutien-au-processus-de-paix-armeno-azerbaidjanais/",
+          "title": "Erdogan réaffirme son soutien au processus de paix arméno-azerbaïdjanais"
+        }
+      ]
+    },
+    {
+      "title": "COP17 in Jerewan",
+      "text": "Die offiziellen Plenarsitzungen der UN-Biodiversitätskonferenz COP17 finden derzeit in Jerewan statt. Ein EU-Forum stellt die Jugend in den Mittelpunkt nachhaltiger Entwicklung. Haypost gab eine Sonderbriefmarke zum Anlass heraus.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264324",
+          "title": "Les dernières séances plénières officielles de la COP17 se tiennent actuellement à Erevan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/cop17-un-forum-de-lunion-europeenne-place-la-jeunesse-au-coeur-du-developpement-durable",
+          "title": "COP17 : un forum de l’Union européenne place la jeunesse au cœur du développement durable"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/haypost-la-poste-armenienne-a-emis-un-timbre-poste-dedie-la-la-17e-conference-des-parties-a-la-convention-des-nations-unies-sur-la-diversite-biologique-cop17/",
+          "title": "HayPost, la poste arménienne a émis un timbre-poste dédié la la 17e Conférence des Parties à la Convention des Nations Unies sur la diversité biologique (COP17)"
+        }
+      ]
+    },
+    {
+      "title": "Verfassungsreform und Referendum",
+      "text": "Civilnet analysiert, wie viele Stimmen für die Annahme einer neuen Verfassung nötig wären. Parlamentsvizepräsident Ruben Rubinyan schlägt der Opposition vor, das Referendum nicht zu blockieren, sondern für ein «Nein» zu werben.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015102",
+          "title": "Décryptage: combien de voix sont nécessaires pour adopter une nouvelle Constitution en Arménie?"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015096",
+          "title": "Rubinyan propose à l’opposition de ne pas bloquer le référendum et de mener la campagne du «non»"
+        }
+      ]
+    },
+    {
+      "title": "Sportliche Erfolge bei Weltmeisterschaften",
+      "text": "Ringer Wasgen Tevanyan wurde in Astana Vize-Weltmeister im Freistil. Gewichtheberin Alexandra Grigorjan erreichte in Ningbo Rang vier und gewann Bronze im Stossen. Samwel Gevorgyan äusserte sich zum lang ersehnten Gold mit Karen Aslanjan.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnats-du-monde-a-ningbo-chine-alexandra-grigoryan-armenie-termine-4e-et-decroche-la-medaille-de-bronze-a-lepaule-jete/",
+          "title": "Championnats du monde à Ningbo (Chine) : Alexandra Grigoryan (Arménie) termine 4e et décroche la médaille de bronze à l’épaulé-jeté"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-vice-champion-du-monde-de-lutte-libre-a-astana-kazakhstan/",
+          "title": "Vazgen Tevanyan (Arménie) est vice-champion du monde de lutte libre à Astana (Kazakhstan)"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/samvel-gevorgyan-nous-revions-depuis-longtemps-dune-medaille-dor-avec-karen-aslanyan/",
+          "title": "Samvel Gevorgyan : Nous rêvions depuis longtemps d’une médaille d’or avec Karen Aslanyan"
+        }
+      ]
+    },
+    {
+      "title": "US-Botschaft und regionale Geopolitik",
+      "text": "Laut dem stellvertretenden Sekretär des russischen Sicherheitsrats beschäftigt die US-Botschaft in Armenien zwischen 2500 und 3000 Personen. Alen Simonyan wird an der Sitzung der Sicherheitsratssekretäre der GUS in Russland teilnehmen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lambassade-des-etats-unis-dans-la-petite-armenie-emploie-entre-2-500-et-3-000-personnes-selon-le-secretaire-adjoint-du-conseil-de-securite-russe/",
+          "title": "L’ambassade des États-Unis dans la « Petite » Arménie emploie entre 2 500 et 3 000 personnes selon le Secrétaire adjoint du Conseil de sécurité russe"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-participera-a-la-14e-reunion-des-secretaires-du-conseil-de-securite-de-la-cei-en-russie/",
+          "title": "Alen Simonyan participera à la 14e réunion des secrétaires du Conseil de sécurité de la CEI en Russie"
+        }
+      ]
+    },
+    {
+      "title": "Kultur und Kulturerbe",
+      "text": "Armenien stellt 148,5 Millionen Dram für den Erwerb zweier aussergewöhnlicher mittelalterlicher Manuskripte bereit. In Paris würdigt die UNESCO das armenische Erbe und ehrt Hratschja Atscharjan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lunesco-paris-celebre-le-patrimoine-armenien-et-rend-hommage-hrachya-acharyan",
+          "title": "À l’UNESCO, Paris célèbre le patrimoine arménien et rend hommage à Hrachya Acharyan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-debloque-1485-millions-de-drams-pour-acquerir-deux-manuscrits-medievaux-exceptionnels",
+          "title": "L’Arménie débloque 148,5 millions de drams pour acquérir deux manuscrits médiévaux exceptionnels"
+        }
+      ]
+    },
+    {
+      "title": "Wirtschaft und Visaliberalisierung",
+      "text": "Armenpress berichtet über Gespräche zwischen Mher Grigorjan und Johannes Luchner zur Liberalisierung des Visaregimes. Armenews vergleicht das nominale BIP Armeniens mit anderen Ländern der Region.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/quel-est-le-pib-nominal-de-larmenie-par-rapport-aux-autres-pays-de-la-region/",
+          "title": "Quel est le PIB nominal de l’Arménie par rapport aux autres pays de la région ?"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264300",
+          "title": "Mher Grigoryan et Johannes Luchner ont discuté du processus de libéralisation du régime des visas"
+        }
+      ]
+    }
+  ]
+}
