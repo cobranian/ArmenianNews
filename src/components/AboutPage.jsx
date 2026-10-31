@@ -32,6 +32,7 @@ const HOMES = {
   asbarez: 'https://asbarez.com',
   armenianweekly: 'https://armenianweekly.com',
   oragark: 'https://www.oragark.com',
+  norsevan: 'https://www.norsevan.com',
 }
 
 // Les rédactions dans l'ordre de leur première apparition dans TAB_ORDER

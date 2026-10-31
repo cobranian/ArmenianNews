@@ -245,6 +245,17 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
+  // Nor Sevan — espagnol (catégories du flux) + arménien occidental (une étagère).
+  // Sous es/hy seulement ; étiquettes dans les données, images en lien direct.
+  const norsevan = {
+    id: 'norsevan',
+    brand: SOURCE_NAMES.norsevan,
+    live: false,
+    images: true,
+    cats: shelvesFor('norsevan', lang)
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
   // Soy Armenio — le quotidien espagnol de la diaspora latino-américaine. Espagnol
   // seul : liste plate, nommée dans TAB_ORDER.es uniquement. Rubriques et images
   // comme Oragark (étiquettes dans les données, images en lien direct).
@@ -342,6 +353,7 @@ function buildSources(t, lang) {
     oragark,
     soyarmenio,
     diarioarmenia,
+    norsevan,
     armenianweekly,
     californiacourier,
     civilnet,

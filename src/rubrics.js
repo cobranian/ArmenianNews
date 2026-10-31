@@ -124,6 +124,20 @@ export const RUBRIC_MAP = {
     institucionales: 'diaspora',
     artsaj: 'armenie',
   },
+  // Nor Sevan : étagères = catégories du flux (slugifiées) ; `hayeren` réunit tous
+  // les billets en écriture arménienne. Argentina garde ses billets hors sujet.
+  norsevan: {
+    armenia: mixed('armenie'),
+    internacional: 'monde',
+    colectividad: 'diaspora',
+    artsaj: 'armenie',
+    argentina: mixed('diaspora'),
+    turquia: 'monde',
+    opinion: 'opinion',
+    'derechos-humanos': mixed('societe'),
+    general: mixed('armenie'),
+    hayeren: mixed('diaspora'),
+  },
   oragark: {
     featured: mixed('armenie'),
     news: mixed('armenie'),

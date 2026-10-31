@@ -15,6 +15,7 @@ import { scrapeArmenpress, ARMENPRESS_LANGS } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeSoyArmenio } from './sources/soyarmenio.mjs'
+import { scrapeNorSevan } from './sources/norsevan.mjs'
 import { scrapeDiarioArmenia } from './sources/diarioarmenia.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
@@ -195,6 +196,20 @@ async function main() {
     oragark[lang] = backfillSections(orEditions[lang], prevNews?.oragark?.[lang], 'categoryKey')
   }
 
+  // Nor Sevan — RSS Wix, espagnol + arménien occidental ; backfill par langue,
+  // comme Oragark.
+  console.log('\nNor Sevan — norsevan.com (es/hy):')
+  let nsEditions = { es: [], hy: [] }
+  try {
+    nsEditions = await scrapeNorSevan(20)
+  } catch (err) {
+    console.error('  norsevan failed wholesale:', err.message)
+  }
+  const norsevan = {}
+  for (const lang of ['es', 'hy']) {
+    norsevan[lang] = backfillSections(nsEditions[lang], prevNews?.norsevan?.[lang], 'categoryKey')
+  }
+
   // Soy Armenio — le quotidien espagnol de la diaspora latino-américaine. Une
   // seule langue (es) : liste plate d'étagères, comme Courrier, hors BY_LANG.
   console.log('\nSoy Armenio — soyarmenio.com (es, 7 rubriques):')
@@ -340,6 +355,7 @@ async function main() {
     oragark,
     soyarmenio,
     diarioarmenia,
+    norsevan,
     armenianweekly,
     californiacourier,
     civilnet,

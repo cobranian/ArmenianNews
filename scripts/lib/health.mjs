@@ -34,6 +34,8 @@ export const STALE_HOURS = {
   // ~3 articles par jour hors Agenda (97 en octobre dont 36 d'Agenda) : un creux de
   // week-end dépasse 48 h ; 72 h laisse une marge sans cacher un vrai gel.
   diarioarmenia: 72,
+  'norsevan/es': 96, // ~1-2 billets par jour
+  'norsevan/hy': null, // billets arméniens rares
   'civilnet/fr': 288, // 168 h
   'civilnet/ru': 168, // 96 h
   californiacourier: 504, // hebdomadaire : 347 h
