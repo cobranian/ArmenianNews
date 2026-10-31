@@ -44,11 +44,13 @@ export const SITES = {
         facebook: 'https://www.facebook.com/61596218245485',
         instagram: 'https://www.instagram.com/armenieinfo_de/',
         telegram: 'https://t.me/armenieinfo_de',
+        bluesky: 'https://bsky.app/profile/de.armenieinfo.ch',
       },
       it: {
         facebook: 'https://www.facebook.com/61595804863665',
         instagram: 'https://www.instagram.com/armenieinfo_it/',
         telegram: 'https://t.me/armenieinfo_it',
+        bluesky: 'https://bsky.app/profile/it.armenieinfo.ch',
       },
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
@@ -156,22 +158,26 @@ export const SITES = {
       linkedin: 'https://www.linkedin.com/company/armenianews/',
       youtube: 'https://www.youtube.com/@armenianewsorg',
     },
-    // Voir `socialByLang` du .ch. Instagram ru : compte suspendu à la création
-    // (appel en cours, 31 oct. 2026) — ru garde l'Instagram de la vitrine.
+    // Voir `socialByLang` du .ch. Pseudos Bluesky par langue = sous-domaines
+    // (TXT `_atproto.<langue>` chez Infomaniak, 31 oct. 2026).
     socialByLang: {
       es: {
         facebook: 'https://www.facebook.com/61596028233855',
         instagram: 'https://www.instagram.com/armenianews_es/',
         telegram: 'https://t.me/armenianews_es',
+        bluesky: 'https://bsky.app/profile/es.armenianews.org',
       },
       hy: {
         facebook: 'https://www.facebook.com/61596095491007',
         instagram: 'https://www.instagram.com/armenianews_hy/',
         telegram: 'https://t.me/armenianews_hy',
+        bluesky: 'https://bsky.app/profile/hy.armenianews.org',
       },
       ru: {
         facebook: 'https://www.facebook.com/61596338480535',
+        instagram: 'https://www.instagram.com/armenianews_ru/',
         telegram: 'https://t.me/armenianews_ru',
+        bluesky: 'https://bsky.app/profile/ru.armenianews.org',
       },
     },
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
