@@ -83,11 +83,11 @@ function avecListes(lists, fn) {
   }
 }
 
-test('comptes confirmés : fr, de, it, en (31 oct. 2026) ; hy et ru attendent leur compte', () => {
+test('comptes confirmés dans les six langues (31 oct. 2026)', () => {
   // Noms vérifiés dans Buttondown. En poser un sans créer le compte
   // publierait un formulaire qui inscrit chez un inconnu, ou nulle part.
   assert.deepEqual(SITES.ch.newsletter.lists, { fr: 'armenieinfo', de: 'armenieinfo-de', it: 'armenieinfo-it' })
-  assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', hy: null, ru: null })
+  assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' })
 })
 
 test('une liste déclarée pour CHAQUE langue de chaque vitrine, et aucune autre', () => {
