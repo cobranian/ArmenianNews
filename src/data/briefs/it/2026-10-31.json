@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-31",
+  "lang": "it",
+  "generatedAt": "2026-10-31T04:29:48.768Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna odierna evidenzia i progressi verso un accord di pace tra Armenia e Azerbaigian, le dinamiche politiche interne legate a una possibile nuova Costituzione e la partecipazione armena alla COP17, insieme a risultati sportivi di rilievo e cooperazioni internazionali.",
+  "topics": [
+    {
+      "title": "Processo di pace tra Armenia e Azerbaigian",
+      "text": "Il ministro degli Esteri azero Jeyhun Bayramov ha dichiarato che l'Armenia deve adottare le misure necessarie per firmare un accordo di pace. Il presidente turco Erdogan ha ribadito il proprio sostegno al processo negoziale, mentre Baku ha avanzato una proposta nonostante l'assenza di accesso al mare per l'Armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-doit-prendre-les-mesures-necessaires-pour-signer-un-accord-de-paix-affirme-jeyhun-bayramov/",
+          "title": "L’Arménie doit prendre les mesures nécessaires pour signer un accord de paix affirme Jeyhun Bayramov"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hajiyev-larmenie-na-pas-dacces-a-la-mer-mais-bakou-a-une-proposition-a-faire/",
+          "title": "Hajiyev : L’Arménie n’a pas d’accès à la mer, mais Bakou a une proposition à faire"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/erdogan-reaffirme-son-soutien-au-processus-de-paix-armeno-azerbaidjanais/",
+          "title": "Erdogan réaffirme son soutien au processus de paix arméno-azerbaïdjanais"
+        }
+      ]
+    },
+    {
+      "title": "Dibattito sulla nuova Costituzione armena",
+      "text": "Un'analisi dettaglia il numero di voti richiesti per adottare una nuova Costituzione in Armenia. Il vicepresidente dell'Assemblea nazionale Rubinyan ha proposto all'opposizione di non ostacolare il referendum e di condurre una campagna per il \"no\".",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015102",
+          "title": "Décryptage: combien de voix sont nécessaires pour adopter une nouvelle Constitution en Arménie?"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015096",
+          "title": "Rubinyan propose à l’opposition de ne pas bloquer le référendum et de mener la campagne du «non»"
+        }
+      ]
+    },
+    {
+      "title": "Armenia alla COP17 di Erevan",
+      "text": "Si stanno svolgendo a Erevan le ultime sessioni plenarie ufficiali della COP17. Un forum dell'Unione europea ha posto i giovani al centro dello sviluppo sostenibile, mentre la posta armena ha emesso un francobollo commemorativo per l'evento.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264324",
+          "title": "Les dernières séances plénières officielles de la COP17 se tiennent actuellement à Erevan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/cop17-un-forum-de-lunion-europeenne-place-la-jeunesse-au-coeur-du-developpement-durable",
+          "title": "COP17 : un forum de l’Union européenne place la jeunesse au cœur du développement durable"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/haypost-la-poste-armenienne-a-emis-un-timbre-poste-dedie-la-la-17e-conference-des-parties-a-la-convention-des-nations-unies-sur-la-diversite-biologique-cop17/",
+          "title": "HayPost, la poste arménienne a émis un timbre-poste dédié la la 17e Conférence des Parties à la Convention des Nations Unies sur la diversité biologique (COP17)"
+        }
+      ]
+    },
+    {
+      "title": "Successi armeni ai mondiali di sport",
+      "text": "Ai campionati mondiali di sollevamento pesi a Ningbo, Alexandra Grigoryan ha conquistato il bronzo nello slancio. Nella lotta libera ad Astana, Vazgen Tevanyan ha ottenuto il titolo di vicecampione del mondo.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnats-du-monde-a-ningbo-chine-alexandra-grigoryan-armenie-termine-4e-et-decroche-la-medaille-de-bronze-a-lepaule-jete/",
+          "title": "Championnats du monde à Ningbo (Chine) : Alexandra Grigoryan (Arménie) termine 4e et décroche la médaille de bronze à l’épaulé-jeté"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-vice-champion-du-monde-de-lutte-libre-a-astana-kazakhstan/",
+          "title": "Vazgen Tevanyan (Arménie) est vice-champion du monde de lutte libre à Astana (Kazakhstan)"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione internazionale e liberalizzazione visti",
+      "text": "Armenia e Iran hanno discusso la cooperazione nel settore delle alte tecnologie. Il vicepremier Mher Grigoryan e Johannes Luchner hanno affrontato il processo di liberalizzazione del regime dei visti con l'Unione europea.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264292",
+          "title": "L’Arménie et l’Iran discutent de leur coopération dans le domaine des hautes technologies"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264300",
+          "title": "Mher Grigoryan et Johannes Luchner ont discuté du processus de libéralisation du régime des visas"
+        }
+      ]
+    },
+    {
+      "title": "Acquisizione di manoscritti medievali e patrimonio UNESCO",
+      "text": "L'Armenia ha stanziato 148,5 milioni di dram per acquistare due eccezionali manoscritti medievali. A Parigi, l'UNESCO ha celebrato il patrimonio armeno rendendo omaggio a Hrachya Acharyan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lunesco-paris-celebre-le-patrimoine-armenien-et-rend-hommage-hrachya-acharyan",
+          "title": "À l’UNESCO, Paris célèbre le patrimoine arménien et rend hommage à Hrachya Acharyan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-debloque-1485-millions-de-drams-pour-acquerir-deux-manuscrits-medievaux-exceptionnels",
+          "title": "L’Arménie débloque 148,5 millions de drams pour acquérir deux manuscrits médiévaux exceptionnels"
+        }
+      ]
+    },
+    {
+      "title": "Presenza diplomatica statunitense e sicurezza regionale",
+      "text": "Secondo il vicesegretario del Consiglio di sicurezza russo, l'ambasciata degli Stati Uniti in Armenia impiegherebbe tra 2.500 e 3.000 persone. Il presidente dell'Assemblea nazionale Alen Simonyan parteciperà alla riunione dei segretari dei Consigli di sicurezza della CSI in Russia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lambassade-des-etats-unis-dans-la-petite-armenie-emploie-entre-2-500-et-3-000-personnes-selon-le-secretaire-adjoint-du-conseil-de-securite-russe/",
+          "title": "L’ambassade des États-Unis dans la « Petite » Arménie emploie entre 2 500 et 3 000 personnes selon le Secrétaire adjoint du Conseil de sécurité russe"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-participera-a-la-14e-reunion-des-secretaires-du-conseil-de-securite-de-la-cei-en-russie/",
+          "title": "Alen Simonyan participera à la 14e réunion des secrétaires du Conseil de sécurité de la CEI en Russie"
+        }
+      ]
+    }
+  ]
+}
