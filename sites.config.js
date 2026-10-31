@@ -105,13 +105,14 @@ export const SITES = {
     // paraît que si la liste de SA langue a un compte ; `null` = ni formulaire
     // ni envoi (`· newsletter/de: en attente`). Toutes les langues de la
     // vitrine doivent y figurer (test/newsletter-footer.test.mjs).
-    // Compte fr créé et vérifié le 31 oct. 2026 (buttondown.com/armenieinfo).
+    // Comptes fr, de, it créés le 31 oct. 2026 (buttondown.com/armenieinfo,
+    // armenieinfo-de, armenieinfo-it — contact+de@ et contact+it@armenieinfo.ch).
     // NE METTEZ UN NOM qu'une fois le compte créé : un nom deviné publierait
     // un formulaire qui inscrit chez un inconnu.
     // `agendaPays` : l'agenda de la lettre ne garde que ces pays, dans cet
     // ordre de priorité (la Suisse d'abord, la France complète) — sans quoi la
     // France, bien plus fournie, prendrait toutes les places. Absent = monde.
-    newsletter: { lists: { fr: 'armenieinfo', de: null, it: null }, agendaPays: ['switzerland', 'france'] },
+    newsletter: { lists: { fr: 'armenieinfo', de: 'armenieinfo-de', it: 'armenieinfo-it' }, agendaPays: ['switzerland', 'france'] },
     // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
     // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
     // lisent le fil français (CONTENT_LANG, src/newsLangs.js).

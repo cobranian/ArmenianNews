@@ -49,9 +49,9 @@ test('par défaut, le compte est lu dans sites.config.js', () => {
     SITES.ch.newsletter = { ...avant, lists: { ...avant.lists, fr: null } }
     assert.deepEqual(planSends({ registry: {}, digests: { ch: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
     assert.ok(lines.includes('· newsletter/ch: en attente (pas de compte Buttondown)'))
-    // de n'a pas encore de compte : rien ne part, même avec une clé.
-    assert.deepEqual(planSends({ registry: {}, digests: { de: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
-    assert.ok(lines.includes('· newsletter/de: en attente (pas de compte Buttondown)'))
+    // hy n'a pas encore de compte : rien ne part, même avec une clé.
+    assert.deepEqual(planSends({ registry: {}, digests: { hy: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
+    assert.ok(lines.includes('· newsletter/hy: en attente (pas de compte Buttondown)'))
   } finally {
     SITES.ch.newsletter = avant
   }
