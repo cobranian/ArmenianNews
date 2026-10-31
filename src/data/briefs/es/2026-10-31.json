@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-31",
+  "lang": "es",
+  "generatedAt": "2026-10-31T15:12:36.092Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la actividad diplomática en el Cáucaso Sur, la clausura de la COP17 en Ereván y temas sociales en Armenia y la diáspora.",
+  "topics": [
+    {
+      "title": "Azerbaiyán propone integrar a Armenia en la red de transporte regional",
+      "text": "Desde Bakú, Hikmet Hajiyev declaró que Azerbaiyán propone la integración de Armenia en la red de transporte del Cáucaso Meridional. La iniciativa se enmarca en los esfuerzos de conectividad regional tras el conflicto.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/hikmet-hajiyev-azerbaiyan-rutas-transporte-armenia/",
+          "title": "Hikmet Hajiyev afirma desde Bakú que Azerbaiyán propone integrar a Armenia en la red de transporte del Cáucaso Meridional"
+        }
+      ]
+    },
+    {
+      "title": "Clausura de la COP17 en Ereván con iniciativas ambientales y culturales",
+      "text": "La conferencia COP17 finalizó con un concierto en la capital armenia. En el marco del evento se presentó el programa \"Semillas\" para crear un banco de variedades agrícolas endémicas en Armenia.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264410",
+          "title": "COP17 cerró con un concierto en Ereván"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/semillas-cop17-banco-variedades-agricolas-endemicas-armenia/",
+          "title": "Presentan el programa “Semillas” en la COP17 para crear un banco de variedades agrícolas endémicas en Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Condena a 10 años de prisión a un ruso-armenio en Siberia por criticar a Moscú",
+      "text": "Un tribunal siberiano sentenció a un ciudadano ruso-armenio a una década de cárcel por criticar la inacción de Moscú en Nagorno-Karabaj. El caso refleja la sensibilidad judicial rusa sobre el conflicto.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/siberia-condena-criticar-inaccion-moscu-nagorno-karabaj/",
+          "title": "Siberia condena a 10 años de prisión a un ruso-armenio por criticar la inacción de Moscú en Nagorno-Karabaj"
+        }
+      ]
+    },
+    {
+      "title": "Grecia rechaza el pacto marítimo entre Turquía y Libia",
+      "text": "El gobierno griego calificó de \"ilegal e inválido\" el acuerdo marítimo firmado entre Turquía y Libia. La disputa por las zonas económicas exclusivas en el Mediterráneo oriental sigue escalando.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/grecia-acuerdo-maritimo-turquia-libia-ilegal/",
+          "title": "Grecia califica de «ilegal e inválido» el pacto marítimo entre Turquía y Libia"
+        }
+      ]
+    },
+    {
+      "title": "Paro nacional en Argentina por el feminicidio de la docente Nancy Godoy",
+      "text": "El crimen de la maestra Nancy Godoy provocó dolor y una huelga nacional en Argentina. Organizaciones sociales exigen justicia y políticas efectivas contra la violencia de género.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "norsevan",
+          "url": "https://www.norsevan.com/post/dolor-y-paro-nacional-por-el-feminicidio-de-la-docente-nancy-godoy",
+          "title": "Dolor y paro nacional por el feminicidio de la docente Nancy Godoy"
+        }
+      ]
+    },
+    {
+      "title": "La colectividad armenia de Argentina no asistirá a la reunión Armenia-Diáspora",
+      "text": "Representantes de la comunidad armenia en Argentina anunciaron que no participarán en el próximo encuentro oficial Armenia-Diáspora. No se precisaron los motivos de la decisión en los titulares disponibles.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "norsevan",
+          "url": "https://www.norsevan.com/post/la-colectividad-armenia-de-argentina-no-participara-en-la-reunion-armenia-diaspora",
+          "title": "La colectividad armenia de Argentina no participará en la reunión Armenia-Diáspora"
+        }
+      ]
+    },
+    {
+      "title": "Misión empresarial armenia viaja a la India para diversificar el comercio",
+      "text": "Armenia envió una delegación comercial a la India con el objetivo de ampliar y diversificar el intercambio bilateral. La iniciativa busca reducir la dependencia de mercados tradicionales.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-mision-empresarial-india-comercio-bilateral/",
+          "title": "Armenia envia una misión empresarial a la India para diversificar el comercio bilateral"
+        }
+      ]
+    }
+  ]
+}
