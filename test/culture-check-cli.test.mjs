@@ -60,12 +60,13 @@ test('sujets.json invalide : exit 1', async () => {
   assert.equal(run('--dir', d).status, 1)
 })
 
-test('de/it absentes : notes imprimées, exit 0, résumé vert', async () => {
+test('de/it/es absentes : notes imprimées, exit 0, résumé vert', async () => {
   const d = await dir()
   await writeArticle(d, 'komitas')
   const r = run('--dir', d, 'komitas')
   assert.equal(r.status, 0, r.stdout + r.stderr)
   assert.match(r.stdout, /· komitas — de\.md absent/)
   assert.match(r.stdout, /· komitas — it\.md absent/)
-  assert.match(last(r), /^✓ .*2 note\(s\)/)
+  assert.match(r.stdout, /· komitas — es\.md absent/)
+  assert.match(last(r), /^✓ .*3 note\(s\)/)
 })

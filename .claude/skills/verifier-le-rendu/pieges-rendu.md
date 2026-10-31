@@ -7,7 +7,7 @@ ne fait tomber un test, un lint ou un build. Lire avant de toucher
 **Une convention du fichier à ne pas casser : chaque `font-family:
 var(--font-X)` est immédiatement suivie de son `font-size-adjust:
 var(--fsa-X)`** — 31 paires pour le display, 57 pour l'utilitaire, 13 pour le
-corps. C'est ce qui donne aux six langues la même taille *vue* alors que
+corps. C'est ce qui donne aux sept langues la même taille *vue* alors que
 chaque écriture a sa propre hauteur d'œil (le russe rendait 7 % plus gros, les
 titres arméniens et russes 4,3 %). Le raisonnement complet, les mesures et les
 deux pièges — la métrique *déclarée* des Noto arméniens est leur métrique
@@ -68,7 +68,7 @@ Cinq choses à savoir avant d'y toucher, toutes payées une fois :
   défileur, et un défileur a un début et une fin. Les contournements connus
   triplent la liste dans le DOM — inacceptable ici, puisque ce sont les mêmes
   `<button role="tab">` qui servent de rail horizontal sur large écran et que
-  `npm run prerender` cuit dans les 24 pages. La roue est donc pilotée à la
+  `npm run prerender` cuit dans les 28 pages. La roue est donc pilotée à la
   main sur les éléments réels.
 - **Le repli sans JavaScript est porté par le CSS.** C'est le hook qui pose la
   classe `is-drum` ; son **absence** déclenche le repli (une liste plate,

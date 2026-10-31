@@ -70,6 +70,17 @@ export const RUBRIC_LABELS = {
     sports: 'Спорт',
     opinion: 'Мнение',
   },
+  es: {
+    armenie: 'Armenia',
+    politique: 'Política',
+    economie: 'Economía',
+    monde: 'Mundo',
+    societe: 'Sociedad',
+    diaspora: 'Diáspora',
+    culture: 'Cultura',
+    sports: 'Deportes',
+    opinion: 'Opinión',
+  },
 }
 
 export const rubricStrings = (lang) =>

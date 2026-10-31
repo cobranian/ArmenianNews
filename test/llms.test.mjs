@@ -36,10 +36,10 @@ test('llms.txt du .ch : marque, vues, brève datée, articles — sans l’angla
   assert.deepEqual(links(t).filter((u) => !u.startsWith(SITES.ch.host + '/')), [`${SITES.org.host}/llms.txt`])
 })
 
-test('llms.txt du .org : trois langues, article absent d’une langue non listé', () => {
+test('llms.txt du .org : quatre langues, article absent d’une langue non listé', () => {
   const t = llmsFor('org', { briefs, culture })
   assert.ok(t.startsWith('# Armenia News\n'))
-  for (const l of ['en', 'hy', 'ru']) assert.ok(links(t).includes(urlFor(l)), l)
+  for (const l of ['en', 'es', 'hy', 'ru']) assert.ok(links(t).includes(urlFor(l)), l)
   assert.ok(links(t).includes(cultureUrl('en', 'duduk')))
   assert.ok(!links(t).includes(cultureUrl('hy', 'duduk')))
   assert.deepEqual(links(t).filter((u) => u.startsWith(SITES.ch.host)), [`${SITES.ch.host}/llms.txt`])

@@ -10,7 +10,8 @@
 // /agenda.
 import { STATION_FACTS, inLanguage } from './stations.js'
 import { evenementComplet, instantMural, eventLd } from './agendaEvents.js'
-import { urlFor } from '../sites.config.js'
+import { urlFor, SITES } from '../sites.config.js'
+import { SITE_ID } from './site.js'
 
 // Échappe "<" pour qu'aucune chaîne ne puisse fermer le <script>. Même garde
 // que scripts/lib/site-meta.mjs.
@@ -49,7 +50,7 @@ export function agendaJsonLd(lang, evenements, maintenant = Date.now(), decalage
     itemListElement: avenir.map((ev, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      item: eventLd(ev),
+      item: eventLd(ev, SITES[SITE_ID].host),
     })),
   })
 }

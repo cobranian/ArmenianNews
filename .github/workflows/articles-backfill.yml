@@ -1,7 +1,7 @@
-# Rattrapage hebdomadaire des traductions Culture de/it (spec 2026-10-23,
-# « Culture de/it »). Retient les articles publiés dont l'allemand ou l'italien
-# est absent, périmé ou invalide — articles antérieurs à de/it, français
-# retouché sur main, ou de/it en échec au passage « traduire » (la publication
+# Rattrapage hebdomadaire des traductions Culture de/it/es (spec 2026-10-23,
+# « Culture de/it/es »). Retient les articles publiés dont l'allemand, l'italien ou l'espagnol
+# est absent, périmé ou invalide — articles antérieurs à de/it/es, français
+# retouché sur main, ou de/it/es en échec au passage « traduire » (la publication
 # ne les retente jamais : c'est ici qu'ils le sont). Traduit, puis ouvre UNE PR
 # assignée au propriétaire, qui la fusionne lui-même.
 #
@@ -17,7 +17,7 @@
 # PIÈGE GitHub (voir articles.yml) : une PR ouverte ou un commit poussé avec le
 # GITHUB_TOKEN ne déclenche AUCUN autre workflow — ce job publie lui-même le
 # statut culture-check.
-name: Culture — rattrapage de/it
+name: Culture — rattrapage de/it/es
 
 on:
   schedule:
@@ -84,9 +84,9 @@ jobs:
           git add src/data/culture
           git diff --cached --quiet && { echo "Aucune traduction écrite : pas de PR."; exit 0; }
           git switch -c "$BRANCH"
-          git commit -m "Culture : rattrapage des traductions de/it"
+          git commit -m "Culture : rattrapage des traductions de/it/es"
           git push -u origin "$BRANCH"
-          gh pr create --base main --head "$BRANCH" --title "Culture : rattrapage des traductions de/it ($(date -u +%F))" --body-file "$RUNNER_TEMP/body.md" --assignee "$GITHUB_REPOSITORY_OWNER"
+          gh pr create --base main --head "$BRANCH" --title "Culture : rattrapage des traductions de/it/es ($(date -u +%F))" --body-file "$RUNNER_TEMP/body.md" --assignee "$GITHUB_REPOSITORY_OWNER"
           if node scripts/culture-check.mjs > "$RUNNER_TEMP/check.txt"; then state=success; else state=failure; fi
           cat "$RUNNER_TEMP/check.txt"
           gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \

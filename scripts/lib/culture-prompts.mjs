@@ -13,6 +13,7 @@ const LANG_NAME = {
   // Pour un lectorat suisse : la Suisse n'écrit jamais « ß ».
   de: 'allemand de Suisse (orthographe suisse : jamais « ß », toujours « ss »)',
   it: 'italien',
+  es: 'espagnol latino-américain neutre (ustedes, pas de voseo)',
 }
 
 const JSON_SHAPE = 'Réponds UNIQUEMENT par un objet JSON {"title": "…", "description": "… (160 caractères au plus)", "body": "… (Markdown)"}, sans aucun texte autour.'
@@ -138,7 +139,7 @@ export function buildTranslateMessages({ lang, title, description, body, nameHin
     {
       role: 'system',
       content: [
-        `Tu traduis un article du français vers le ${LANG_NAME[lang]}.`,
+        `Tu traduis un article du français vers ${/^[aeiouyéèh]/.test(LANG_NAME[lang]) ? 'l’' : 'le '}${LANG_NAME[lang]}.`,
         "Traduis fidèlement : n'ajoute, ne retire et ne commente rien.",
         'Garde la structure Markdown à l’identique (intertitres « ## », gras, italique, liens).',
         'Noms propres : la graphie établie dans la langue cible.',

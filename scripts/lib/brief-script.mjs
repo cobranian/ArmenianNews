@@ -1,6 +1,6 @@
 // Le garde-fou d'ÉCRITURE de la brève : un sujet arménien ou russe ne publie
 // pas de mots en lettres latines sortis de nulle part, et l'inverse en
-// français, allemand, italien et anglais.
+// français, allemand, italien, anglais et espagnol.
 //
 // Mesuré le 17 octobre 2026 : les modèles :free intercalaient dans la brève
 // arménienne « remporter », « capitaine », « successoffice », un mot à moitié
@@ -15,7 +15,7 @@
 // alphabets n'est jamais permis : aucune langue n'en écrit.
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
 
-const EXPECTED = { fr: 'Latin', de: 'Latin', it: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
+const EXPECTED = { fr: 'Latin', de: 'Latin', it: 'Latin', en: 'Latin', es: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
 const SCRIPTS = {
   Latin: /\p{Script=Latin}/u,
   Armenian: /\p{Script=Armenian}/u,
@@ -53,8 +53,9 @@ export function strayWords(text, lang, allowed = new Set()) {
   return out
 }
 
-// Le français qui s'est glissé dans une brève allemande ou italienne : le seul
-// cas que l'alphabet ne voit pas, les trois langues s'écrivant en latin. de et
+// Le français qui s'est glissé dans une brève allemande, italienne ou
+// espagnole (celle-ci gardée aussi contre l'anglais, voir ES_MARKERS) : le seul
+// cas que l'alphabet ne voit pas, ces langues s'écrivant en latin. de et
 // it lisent des titres français, et un modèle :free recopie volontiers la
 // langue de ses titres (mesuré le 23 octobre 2026 : brève « it » entièrement
 // en français, publiée telle quelle sans ce garde).
@@ -70,6 +71,16 @@ const FRENCH_MARKERS_BY_LANG = {
   de: new Set([...COMMON, 'est', 'qui']),
   it: new Set([...COMMON, 'des', 'du']),
 }
+// es : l'espagnol lit son propre fil, la fuite est le français OU l'anglais
+// (le modèle recopie la langue d'un titre). « que », « entre », « sur » sont
+// espagnols : absents. L'accent français ne peut pas être FRENCH_ACCENT, qui
+// prend « también » (é + lettre) pour du français.
+const ES_MARKERS = new Set([
+  // ni « les » ni « une » : mots espagnols ordinaires (« les permitirá », « que une »)
+  ...['dans', 'pour', 'avec', 'sont', 'cette', 'ont', 'aux', 'été', 'ses', 'leur', 'leurs', 'est', 'qui', 'des', 'du'],
+  ...['the', 'and', 'with', 'which', 'from', 'this', 'that', 'were', 'been', 'have'],
+])
+const ES_ACCENT = /[àâçèêëîïôûùœ]/u
 
 // Deux mots-outils français DISTINCTS ou plus, ÉCRITS EN MINUSCULES : du
 // français. Les noms propres et les titres cités portent des initiales
@@ -89,11 +100,12 @@ const FRENCH_ACCENT = /[çêëîïôûœ]|[éèà]\p{L}/u
 // pourtant ce qui se lit en premier (brève « it » du 24 octobre 2026,
 // « l'Arménie et les organisations internationales » : un seul, « les »).
 export function frenchWords(text, lang, min = 2) {
-  const markers = FRENCH_MARKERS_BY_LANG[lang]
+  const markers = lang === 'es' ? ES_MARKERS : FRENCH_MARKERS_BY_LANG[lang]
   if (!markers) return []
+  const accent = lang === 'es' ? ES_ACCENT : FRENCH_ACCENT
   // Minuscules seulement, pour les deux indices : « Arménie », « Grégory » sont
   // des noms propres, pas une fuite.
   const lower = words(text).filter((w) => w === w.toLowerCase())
-  const found = new Set(lower.filter((w) => markers.has(w) || FRENCH_ACCENT.test(w)))
+  const found = new Set(lower.filter((w) => markers.has(w) || accent.test(w)))
   return found.size >= min ? [...found] : []
 }

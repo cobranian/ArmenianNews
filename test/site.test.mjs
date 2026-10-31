@@ -18,7 +18,7 @@ test("orderedLangs préserve l'ordre relatif des autres langues", () => {
   // autres ne gardent leur ordre que grâce à la stabilité de sort.
   assert.deepEqual(
     orderedLangs(LANGS).map((l) => l.code),
-    ['fr', 'de', 'it', 'en', 'hy', 'ru'],
+    ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru'],
   )
 })
 

@@ -70,11 +70,12 @@ jobs:
           # public/sitemap.xml n'est plus versionné : il en faut un par vitrine,
           # et ils sont générés au build (scripts/lib/sitemap.mjs), avec un
           # lastmod lu dans meta.json.generatedAt — donc l'heure de CE scrape.
-          # public/cc : images de California Courier recopiées par le scrape
+          # public/cc, public/da : images de California Courier et de Diario Armenia
+          # recopiées par le scrape
           # (scripts/lib/mirror-images.mjs). mkdir : un chemin absent ferait
           # échouer `git add`, et l'instantané entier avec lui.
-          mkdir -p public/cc
-          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json src/data/rubric-cache.json src/data/agenda-resumes.json src/data/agenda-resumes src/data/briefs public/cc
+          mkdir -p public/cc public/da
+          git add src/data/news.json src/data/agenda.json src/data/meta.json src/data/instagram-feed.json src/data/rubric-cache.json src/data/agenda-resumes.json src/data/agenda-resumes src/data/briefs public/cc public/da
           if git diff --cached --quiet; then
             echo "No data changes."
           else
@@ -411,6 +412,10 @@ jobs:
           probe "https://armenieinfo.ch/de/events/" 301 "/de/veranstaltungen/" || fail=1
           probe "https://armenianews.org/de" 301 "https://armenieinfo.ch/de/" || fail=1
           probe "https://armenianews.org/it/eventi/" 301 "https://armenieinfo.ch/it/eventi/" || fail=1
+          probe "https://armenianews.org/es/" 200 || fail=1
+          probe "https://armenianews.org/es/eventos/" 200 || fail=1
+          probe "https://armenianews.org/es/events/" 301 "/es/eventos/" || fail=1
+          probe "https://armenieinfo.ch/es/" 301 "https://armenianews.org/es/" || fail=1
           exit $fail
 
       # IndexNow, second temps : prévenir Bing des pages nouvelles ou changées

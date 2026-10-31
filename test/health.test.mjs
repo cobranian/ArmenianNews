@@ -44,6 +44,12 @@ test('checkNews : les hebdomadaires ont un seuil plus long que les agences', () 
   assert.deepEqual(checkNews(news, NOW), [])
 })
 
+test('Armenpress es : seuil de 96 h (rien le week-end) ; 63 h de silence ne signale rien', () => {
+  assert.equal(staleHours('armenpress', 'es'), 96)
+  const news = { generatedAt: NOW.toISOString(), armenpress: { es: [{ articles: [art(63)] }] } }
+  assert.deepEqual(checkNews(news, NOW), [])
+})
+
 test('STALE_HOURS : chaque seuil est un nombre d’heures positif ou null', () => {
   for (const [k, v] of Object.entries(STALE_HOURS)) assert.ok(v === null || (Number.isFinite(v) && v > 0), k)
 })

@@ -201,6 +201,7 @@ export const SITES = {
     newsletter: { lists: { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' } },
     pages: [
       { lang: 'en', path: '/' },
+      { lang: 'es', path: '/es/' },
       { lang: 'hy', path: '/hy/' },
       { lang: 'ru', path: '/ru/' },
     ],
@@ -210,7 +211,7 @@ export const SITES = {
 // Ordre canonique des langues. Doit correspondre aux codes de LANGS.
 // L'invariant est vérifié par test/sites-config.test.mjs et par une assertion
 // au build (scripts/build-sites.mjs).
-export const ALL_LANGS = ['fr', 'de', 'it', 'en', 'hy', 'ru']
+export const ALL_LANGS = ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru']
 
 // Supported interface languages. Content (articles, posts) stays in its
 // original language; only the chrome is translated. Moved here from
@@ -221,6 +222,7 @@ export const LANGS = [
   { code: 'de', label: 'DE', name: 'Deutsch' },
   { code: 'it', label: 'IT', name: 'Italiano' },
   { code: 'en', label: 'EN', name: 'English' },
+  { code: 'es', label: 'ES', name: 'Español' },
   { code: 'hy', label: 'ՀԱՅ', name: 'Հայերեն' },
   { code: 'ru', label: 'РУ', name: 'Русский' },
 ]
@@ -265,20 +267,20 @@ export const X_DEFAULT = LANG_URL.en
 // Rien ne l'aurait signalé : `npm run check` compare des chaînes, pas des codes
 // HTTP, et `vite preview` sert les deux formes en 200.
 export const VIEWS = {
-  home: { slugs: { fr: '', de: '', it: '', en: '', hy: '', ru: '' } },
-  radio: { slugs: { fr: 'radio/', de: 'radio/', it: 'radio/', en: 'radio/', hy: 'radio/', ru: 'radio/' } },
+  home: { slugs: { fr: '', de: '', it: '', en: '', es: '', hy: '', ru: '' } },
+  radio: { slugs: { fr: 'radio/', de: 'radio/', it: 'radio/', en: 'radio/', es: 'radio/', hy: 'radio/', ru: 'radio/' } },
   // « agenda » en anglais désigne un ordre du jour ou un mobile, pas une liste
   // d'événements : le mot cherché est « events ». Même raison en de/it
   // (« Agenda » y est un carnet) : veranstaltungen, eventi.
   agenda: {
-    slugs: { fr: 'agenda/', de: 'veranstaltungen/', it: 'eventi/', en: 'events/', hy: 'events/', ru: 'events/' },
+    slugs: { fr: 'agenda/', de: 'veranstaltungen/', it: 'eventi/', en: 'events/', es: 'eventos/', hy: 'events/', ru: 'events/' },
   },
   // « À propos » — qui édite, d'où, avec quelles sources et quelles règles.
   // Ajoutée après l'audit SEO du 21 août 2026 : un agrégateur que personne ne
   // signe se lit comme une ferme de liens. Même règle de slug que `events` :
   // latin partout, traduit là où le mot change (a-propos / about).
   about: {
-    slugs: { fr: 'a-propos/', de: 'ueber-uns/', it: 'chi-siamo/', en: 'about/', hy: 'about/', ru: 'about/' },
+    slugs: { fr: 'a-propos/', de: 'ueber-uns/', it: 'chi-siamo/', en: 'about/', es: 'acerca-de/', hy: 'about/', ru: 'about/' },
   },
 }
 
@@ -318,6 +320,7 @@ export const BRIEF_SLUGS = {
   de: 'in-kuerze/',
   it: 'in-breve/',
   en: 'brief/',
+  es: 'resumen/',
   hy: 'brief/',
   ru: 'brief/',
 }
@@ -345,6 +348,7 @@ export const CULTURE_SLUGS = {
   de: 'kultur/',
   it: 'cultura/',
   en: 'culture/',
+  es: 'cultura/',
   hy: 'culture/',
   ru: 'culture/',
 }
@@ -391,7 +395,7 @@ export function cultureImagePath(slug, ext) {
 // latins (voir VIEWS). Dérivé de COUNTRIES, jamais écrit à la main : une table
 // de slugs à part divergerait des noms affichés. L'allemand translittère ses
 // trémas (Österreich → oesterreich), comme on les tape sans clavier allemand.
-const COUNTRY_SLUG_LANG = { fr: 'fr', de: 'de', it: 'it', en: 'en', hy: 'en', ru: 'en' }
+const COUNTRY_SLUG_LANG = { fr: 'fr', de: 'de', it: 'it', en: 'en', es: 'es', hy: 'en', ru: 'en' }
 const UMLAUT = { ä: 'ae', ö: 'oe', ü: 'ue', ß: 'ss', Ä: 'ae', Ö: 'oe', Ü: 'ue' }
 
 export function agendaCountrySlug(lang, key) {
@@ -492,6 +496,7 @@ export const LANG_SWITCH_LABEL = {
   de: 'Sprache',
   it: 'Lingua',
   en: 'Language',
+  es: 'Idioma',
   hy: 'Լեզու',
   ru: 'Язык',
 }

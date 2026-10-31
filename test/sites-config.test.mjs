@@ -24,8 +24,8 @@ test('LANG_URL est absolue et finit par un slash', () => {
   assert.equal(LANG_URL.it, 'https://armenieinfo.ch/it/')
 })
 
-test('l’ordre canonique des six langues', () => {
-  assert.deepEqual(ALL_LANGS, ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+test('l’ordre canonique des sept langues', () => {
+  assert.deepEqual(ALL_LANGS, ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru'])
   assert.deepEqual(LANGS.map((l) => l.code), ALL_LANGS)
   assert.deepEqual(LANGS.find((l) => l.code === 'de'), { code: 'de', label: 'DE', name: 'Deutsch' })
   assert.deepEqual(LANGS.find((l) => l.code === 'it'), { code: 'it', label: 'IT', name: 'Italiano' })
@@ -34,8 +34,8 @@ test('l’ordre canonique des six langues', () => {
 // La langue du domaine en tête, le reste dans l'ordre canonique : le .ch
 // ouvre sur ses trois langues, le .org sur l'anglais.
 test('orderLangsFor : la langue du domaine en tête', () => {
-  assert.deepEqual(orderLangsFor('ch', LANGS).map((l) => l.code), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
-  assert.deepEqual(orderLangsFor('org', LANGS).map((l) => l.code), ['en', 'fr', 'de', 'it', 'hy', 'ru'])
+  assert.deepEqual(orderLangsFor('ch', LANGS).map((l) => l.code), ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru'])
+  assert.deepEqual(orderLangsFor('org', LANGS).map((l) => l.code), ['en', 'fr', 'de', 'it', 'es', 'hy', 'ru'])
 })
 
 test('x-default pointe sur la page anglaise', () => {

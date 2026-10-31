@@ -28,7 +28,7 @@ import { esc, pageShell } from './static-shell.mjs'
 // c'est du JSX). L'arménien passe par ses tables écrites en dur : Intl le rend
 // dans Node mais pas dans un navigateur, et la date doit être la même que
 // celle que /agenda/ affiche (voir « À savoir » dans CLAUDE.md).
-const LOCALES = { fr: 'fr-FR', de: 'de-CH', it: 'it-CH', en: 'en-GB', ru: 'ru-RU' }
+const LOCALES = { fr: 'fr-FR', de: 'de-CH', it: 'it-CH', en: 'en-GB', es: 'es-419', ru: 'ru-RU' }
 
 // La date d'un événement, comme formatDate (i18n.jsx) : jour, mois, année.
 // `ev.date` est une heure murale sans fuseau, lue en heure locale par les deux.

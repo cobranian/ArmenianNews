@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { mkdtemp, readFile, writeFile, mkdir, readdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
-import { selectArticles } from '../scripts/lib/brief-select.mjs'
+import { selectArticles, minArticles } from '../scripts/lib/brief-select.mjs'
 import {
   buildBriefMessages,
   parseBrief,
@@ -332,12 +332,59 @@ test('parseBrief : une rubrique écrite dans la langue de la brève est reconnue
 // langues sans un mot écarté. fr/en restent sur la chaîne commune.
 // Depuis le 25 octobre, fr et en aussi (lightning : 5 sujets et des erreurs de
 // fait en anglais ce jour-là).
-test('briefModels : ultra en tête pour les six langues, sans doublon ni modèle perdu', () => {
-  for (const l of ['fr', 'de', 'it', 'en', 'hy', 'ru']) {
+test('briefModels : ultra en tête pour les sept langues, sans doublon ni modèle perdu', () => {
+  for (const l of ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru']) {
     const chain = briefModels(l)
     assert.equal(chain[0], STRONG_MODEL, l)
     assert.equal(new Set(chain).size, chain.length, l)
     assert.deepEqual([...chain].sort(), [...new Set([STRONG_MODEL, ...modelChain()])].sort(), l)
   }
   assert.deepEqual(briefModels('hy', 'x/forcé'), ['x/forcé'])
+})
+
+test('buildBriefMessages es : consigne espagnole, sans undefined ni phrase « titres en français »', () => {
+  const m = buildBriefMessages('es', [{ id: 1, source: 'armenpress', rubric: 'armenia', title: 'Título' }])
+  const all = m.map((x) => x.content).join('\n')
+  assert.match(m[0].content, /espagnol latino-américain neutre/)
+  assert.ok(!all.includes('undefined'))
+  assert.ok(!all.includes('Les titres sources sont en français'))
+})
+
+test('parseBrief es : un sujet écrit en anglais ou en français est écarté, l’espagnol est gardé', () => {
+  const wrap = (t) => JSON.stringify({ intro: 'Intro', topics: [t, t, t] })
+  const en = topic([1], { title: 'Government measures', text: 'The government announced the measures with the region and the parliament.' })
+  const rejected = []
+  assert.equal(parseBrief(wrap(en), articles, 'es', rejected), null)
+  assert.ok(rejected.includes('the'))
+  const fr = topic([1], { title: 'Les liens entre Erevan', text: 'Une visite qui est dans les médias.' })
+  assert.equal(parseBrief(wrap(fr), articles, 'es'), null)
+  const ok = topic([1], { title: 'Visita a Ereván', text: 'La reunión también está prevista en el sur del país.' })
+  assert.ok(parseBrief(wrap(ok), articles, 'es'))
+  const intro = JSON.stringify({ intro: 'The government announced the measures with the region and the parliament.', topics: [ok, ok, ok] })
+  assert.equal(parseBrief(intro, articles, 'es').intro, '')
+})
+
+// ---- espagnol : seuil propre, fourchette de sujets, faux amis ----
+
+test('minArticles : 5 pour l’espagnol, 10 ailleurs', () => {
+  assert.equal(minArticles('es'), 5)
+  assert.equal(minArticles('fr'), 10)
+})
+
+test('generateBriefs : 6 articles suffisent à l’espagnol, pas au français', async () => {
+  const six = { courrier: [{ sectionKey: 'societe', articles: Array.from({ length: 6 }, (_, i) => recent(i)) }],
+    armenpress: { es: [{ categoryKey: 'armenia', articles: Array.from({ length: 6 }, (_, i) => recent(200 + i)) }] } }
+  const dir = await mkdtemp(path.join(tmpdir(), 'brief-'))
+  const calls = []
+  const done = await generateBriefs({ news: six, now: NOW, dir, apiKey: 'k', fetchImpl: fakeFetch(okReply, calls), log: quiet })
+  assert.ok(done.includes('es'), 'es avec 6 articles : brève rédigée')
+  assert.ok(!done.includes('fr'), 'fr avec 6 articles : toujours sautée')
+})
+
+test('buildBriefMessages : jamais plus de sujets demandés que de titres', () => {
+  const cinq = Array.from({ length: 5 }, (_, i) => ({ id: i + 1, source: 's', rubric: 'politique', title: `T${i}` }))
+  const [sys] = buildBriefMessages('es', cinq)
+  assert.match(sys.content, /entre 3 et 5 sujets/)
+  const dix = Array.from({ length: 12 }, (_, i) => ({ id: i + 1, source: 's', rubric: 'politique', title: `T${i}` }))
+  assert.match(buildBriefMessages('fr', dix)[0].content, /entre 5 et 7 sujets/)
 })

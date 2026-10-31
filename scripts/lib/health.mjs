@@ -23,12 +23,19 @@ export const DEFAULT_STALE_HOURS = 96
 export const STALE_HOURS = {
   // Agences : publient chaque heure (silence max mesuré : Armenpress fr 53 h, NEWS.am 25 h).
   armenpress: 72,
+  'armenpress/es': 96, // aucune publication le week-end (mesuré le 31 octobre 2026)
   newsam: 48,
   // Publie par numéros : sept articles le 21 octobre 2026, rien depuis le 14 juillet.
   artzakank: null,
   armenianweekly: 120, // silence max mesuré 63 h
   asbarez: 168, // 92 h
   oragark: 240, // 131 h
+  soyarmenio: 48, // ~12 articles par jour, plus long silence 23 h (mesuré le 31 octobre 2026)
+  // ~3 articles par jour hors Agenda (97 en octobre dont 36 d'Agenda) : un creux de
+  // week-end dépasse 48 h ; 72 h laisse une marge sans cacher un vrai gel.
+  diarioarmenia: 72,
+  'norsevan/es': 96, // ~1-2 billets par jour
+  'norsevan/hy': null, // billets arméniens rares
   'civilnet/fr': 288, // 168 h
   'civilnet/ru': 168, // 96 h
   californiacourier: 504, // hebdomadaire : 347 h

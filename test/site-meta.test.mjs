@@ -289,7 +289,7 @@ test('replaceMeta refuse un HTML sans sentinelles', () => {
 const BRIEF_RE = new RegExp(`<loc>[^<]*/(${Object.values(BRIEF_SLUGS).map((x) => x.slice(0, -1)).join('|')})/`)
 const sansBreve = (xml) => xml.split('<url>').filter((b) => !BRIEF_RE.test(b)).join('<url>')
 
-test('le sitemap du .ch liste ses trois langues fois ses vues', () => {
+test('le sitemap du .ch liste ses quatre langues fois ses vues', () => {
   const xml = sansBreve(sitemapFor('ch', '2026-07-28T10:00:00.000Z'))
   assert.equal((xml.match(/<url>/g) || []).length, SITES.ch.pages.length * ALL_VIEWS.length)
   assert.equal(SITES.ch.pages.length, 3)
@@ -300,13 +300,16 @@ test('le sitemap du .ch liste ses trois langues fois ses vues', () => {
   assert.ok(xml.includes('<lastmod>2026-07-28T10:00:00.000Z</lastmod>'))
 })
 
-test('le sitemap du .org liste ses trois langues fois ses vues', () => {
+test('le sitemap du .org liste ses quatre langues fois ses vues', () => {
   const xml = sansBreve(sitemapFor('org', '2026-07-28T10:00:00.000Z'))
-  assert.equal((xml.match(/<url>/g) || []).length, 3 * ALL_VIEWS.length)
+  assert.equal((xml.match(/<url>/g) || []).length, 4 * ALL_VIEWS.length)
   for (const loc of [
     'https://armenianews.org/',
     'https://armenianews.org/hy/',
     'https://armenianews.org/radio/',
+    'https://armenianews.org/es/',
+    'https://armenianews.org/es/radio/',
+    'https://armenianews.org/es/eventos/',
     'https://armenianews.org/hy/radio/',
     'https://armenianews.org/ru/radio/',
   ]) {
@@ -393,11 +396,11 @@ test('les hreflang sont reciproques PAR VUE', () => {
   }
 })
 
-// Le compte de ce chantier : six langues × quatre vues. Chaque page porte
+// Le compte de ce chantier : sept langues × quatre vues. Chaque page porte
 // ALL_LANGS.length + 1 alternates (x-default compris) et se cite elle-même.
-test('vingt-quatre pages, chacune se citant elle-même dans ses alternates', () => {
+test('vingt-huit pages, chacune se citant elle-même dans ses alternates', () => {
   const pages = ALL_LANGS.flatMap((lang) => ALL_VIEWS.map((view) => ({ lang, view })))
-  assert.equal(pages.length, 24)
+  assert.equal(pages.length, 28)
   assert.equal(X_DEFAULT, LANG_URL.en)
   for (const { lang, view } of pages) {
     const head = headFor({ siteId: siteOf(lang), lang, view })

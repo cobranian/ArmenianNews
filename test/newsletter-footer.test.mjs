@@ -30,8 +30,8 @@ const CLES = [
   'privacy.newsletter.body',
 ]
 
-test('les huit clés existent dans les six langues', () => {
-  assert.equal(BLOC_LANGS.length, 6)
+test('les huit clés existent dans les sept langues', () => {
+  assert.equal(BLOC_LANGS.length, 7)
   for (const lang of BLOC_LANGS) {
     for (const cle of CLES) {
       const v = valeur(lang, cle)
@@ -41,8 +41,8 @@ test('les huit clés existent dans les six langues', () => {
   }
 })
 
-test('confidentialité : hébergement aux États-Unis et mesure des ouvertures, dans les six langues', () => {
-  const ETATS_UNIS = { fr: 'États-Unis', de: 'USA', it: 'Stati Uniti', en: 'United States', hy: 'Միացյալ Նահանգներ', ru: 'США' }
+test('confidentialité : hébergement aux États-Unis et mesure des ouvertures, dans les sept langues', () => {
+  const ETATS_UNIS = { fr: 'États-Unis', de: 'USA', it: 'Stati Uniti', en: 'United States', hy: 'Միացյալ Նահանգներ', ru: 'США', es: 'Estados Unidos' }
   for (const lang of BLOC_LANGS) {
     const v = valeur(lang, 'privacy.newsletter.body')
     assert.ok(v.includes(ETATS_UNIS[lang]), `${lang} : l'hébergement aux États-Unis n'est pas dit`)
@@ -90,9 +90,19 @@ test('comptes confirmés dans les six langues (31 oct. 2026)', () => {
   assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' })
 })
 
-test('une liste déclarée pour CHAQUE langue de chaque vitrine, et aucune autre', () => {
+// L'espagnol n'a PAS de lettre (décision de la spec : pas de compte Buttondown,
+// donc ni formulaire ni envoi). L'exemption est nommée : toute autre langue
+// sans liste fait échouer le test.
+const SANS_LETTRE = ['es']
+
+test('une liste déclarée pour CHAQUE langue de chaque vitrine (sauf SANS_LETTRE), et aucune autre', () => {
   for (const site of Object.values(SITES))
-    assert.deepEqual(Object.keys(site.newsletter.lists).sort(), site.pages.map((p) => p.lang).sort(), site.id)
+    assert.deepEqual(
+      Object.keys(site.newsletter.lists).sort(),
+      site.pages.map((p) => p.lang).filter((l) => !SANS_LETTRE.includes(l)).sort(),
+      site.id,
+    )
+  assert.ok(!('es' in SITES.org.newsletter.lists), 'aucun compte Buttondown pour es')
 })
 
 test('identifiants des lettres : ch et org pour fr et en (registre et secrets d’avant), la langue sinon', () => {
@@ -121,12 +131,17 @@ test('newsletterAction : l’URL du compte de LA langue, null sans compte', () =
 test('formulaire : sur chaque page dont la liste a un compte, vers SA liste', () => {
   for (const site of Object.values(SITES))
     for (const page of site.pages) {
+      if (SANS_LETTRE.includes(page.lang)) continue
       const attendu = site.newsletter.lists[page.lang]
       assert.equal(newsletterAction(site.id, page.lang), attendu ? newsletterAction(site.id, page.lang) : null, `${site.id}/${page.lang}`)
     }
   avecListes({ ch: { de: 'x-de', it: 'x-it' }, org: { hy: 'x-hy', ru: 'x-ru' } }, () => {
     for (const site of Object.values(SITES))
       for (const page of site.pages) {
+        if (SANS_LETTRE.includes(page.lang)) {
+          assert.equal(newsletterAction(site.id, page.lang), null, `${site.id}/${page.lang} : pas de formulaire`)
+          continue
+        }
         const action = newsletterAction(site.id, page.lang)
         assert.ok(action?.endsWith(`/${SITES[site.id].newsletter.lists[page.lang]}`), `${site.id}/${page.lang}`)
       }

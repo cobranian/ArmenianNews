@@ -38,7 +38,7 @@ const FONTS = JSON.parse(
 // sous ru mais pas sous hy. Une entrée absente du manifeste fait ÉCHOUER le
 // build : un preload vers un fichier inexistant serait un 404 à chaque visite.
 const PRELOAD = {
-  // de et it composent dans les mêmes familles latines que fr (voir plus bas).
+  // de, it et es composent dans les mêmes familles latines que fr (voir plus bas).
   fr: [
     ['Fraunces', 'italic', 'latin'],
     ['Fraunces', 'normal', 'latin'],
@@ -62,6 +62,7 @@ const PRELOAD = {
 }
 PRELOAD.de = PRELOAD.fr
 PRELOAD.it = PRELOAD.fr
+PRELOAD.es = PRELOAD.fr
 
 export function fontPreloads(lang) {
   const wanted = PRELOAD[lang]
@@ -419,7 +420,7 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
   })
 }
 
-// Les alternates d'une page pays : le même pays dans les six langues. La page
+// Les alternates d'une page pays : le même pays dans les sept langues. La page
 // existe dans toutes (même données, même horloge pour les deux vitrines — voir
 // build-sites.mjs), donc le bloc est complet et réciproque par construction.
 export function agendaPaysAlternates(key) {
@@ -440,7 +441,7 @@ export function agendaPaysHeadFor({ siteId, lang, key, events, robots = null }) 
   const country = countryLabel(key, lang)
   const url = agendaCountryUrl(lang, key)
   const graph = siteGraph(site, lang)
-  graph.push(...events.map(eventLd))
+  graph.push(...events.map((e) => eventLd(e, site.host)))
   graph.push(breadcrumb(lang, [[BRIEF_STRINGS[lang].agenda, urlFor(lang, 'agenda')], [country, url]]))
   return composeHead({
     site, lang, url,

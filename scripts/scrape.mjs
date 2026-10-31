@@ -11,9 +11,13 @@ import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
-import { scrapeArmenpress } from './sources/armenpress.mjs'
+import { scrapeArmenpress, ARMENPRESS_LANGS } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
+import { scrapeSoyArmenio } from './sources/soyarmenio.mjs'
+import { scrapeNorSevan } from './sources/norsevan.mjs'
+import { scrapeDiarioArmenia } from './sources/diarioarmenia.mjs'
+import { scrapeDiarioAgenda, mergeDiarioIntoWorld, isDiarioEvent } from './sources/diarioarmenia-agenda.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { mirrorImages, pruneMirror } from './lib/mirror-images.mjs'
@@ -143,23 +147,24 @@ async function main() {
   }
   const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
 
-  // Armenpress — the national news agency, and the only quadrilingue
-  // (fr/en/hy/ru) source here (fr/en/hy/ru map 1:1). It does not lead the news
-  // tabs: Courrier is French-only and prerenders more French copy.
-  // Sept rubriques × quatre langues = 28 pages, spaced by its own module.
+  // Armenpress — the national news agency, and the only five-edition
+  // (fr/en/hy/ru/es) source here (the editions map 1:1 to the UI languages).
+  // It does not lead the news tabs: Courrier is French-only and prerenders
+  // more French copy.
+  // Sept rubriques × cinq langues = 35 pages, spaced by its own module.
   // Backfilled per language, exactly like armradio.
-  console.log('\nArmenpress — armenpress.am (fr/en/hy/ru, 7 rubriques):')
+  console.log('\nArmenpress — armenpress.am (fr/en/hy/ru/es, 7 rubriques):')
   // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
   // undefined here would throw and take the whole snapshot down — every other
   // source in this file seeds [] for exactly that reason.
-  let apLangs = { fr: [], en: [], hy: [], ru: [] }
+  let apLangs = { fr: [], en: [], hy: [], ru: [], es: [] }
   try {
     apLangs = await scrapeArmenpress(10)
   } catch (err) {
     console.error('  armenpress failed wholesale:', err.message)
   }
   const armenpress = {}
-  for (const lang of ['fr', 'en', 'hy', 'ru']) {
+  for (const lang of ARMENPRESS_LANGS) {
     armenpress[lang] = backfillSections(apLangs[lang], prevNews?.armenpress?.[lang], 'categoryKey')
   }
 
@@ -192,6 +197,42 @@ async function main() {
   for (const lang of ['en', 'hy']) {
     oragark[lang] = backfillSections(orEditions[lang], prevNews?.oragark?.[lang], 'categoryKey')
   }
+
+  // Nor Sevan — RSS Wix, espagnol + arménien occidental ; backfill par langue,
+  // comme Oragark.
+  console.log('\nNor Sevan — norsevan.com (es/hy):')
+  let nsEditions = { es: [], hy: [] }
+  try {
+    nsEditions = await scrapeNorSevan(20)
+  } catch (err) {
+    console.error('  norsevan failed wholesale:', err.message)
+  }
+  const norsevan = {}
+  for (const lang of ['es', 'hy']) {
+    norsevan[lang] = backfillSections(nsEditions[lang], prevNews?.norsevan?.[lang], 'categoryKey')
+  }
+
+  // Soy Armenio — le quotidien espagnol de la diaspora latino-américaine. Une
+  // seule langue (es) : liste plate d'étagères, comme Courrier, hors BY_LANG.
+  console.log('\nSoy Armenio — soyarmenio.com (es, 7 rubriques):')
+  let soySecs = []
+  try {
+    soySecs = await scrapeSoyArmenio(10)
+  } catch (err) {
+    console.error('  soyarmenio failed wholesale:', err.message)
+  }
+  const soyarmenio = backfillSections(soySecs, prevNews?.soyarmenio, 'categoryKey')
+
+  // Diario Armenia — le quotidien de la communauté d'Argentine. Espagnol seul :
+  // liste plate d'étagères, hors BY_LANG. Images recopiées plus bas (public/da/).
+  console.log('\nDiario Armenia — diarioarmenia.org.ar (es, 7 rubriques):')
+  let daSecs = []
+  try {
+    daSecs = await scrapeDiarioArmenia(10)
+  } catch (err) {
+    console.error('  diarioarmenia failed wholesale:', err.message)
+  }
+  const diarioarmenia = backfillSections(daSecs, prevNews?.diarioarmenia, 'categoryKey')
 
   // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
   // only (no hy/ru/fr edition), so it is a flat list of shelves like Courrier,
@@ -280,6 +321,35 @@ async function main() {
     }
   }
 
+  // Diario Armenia, catégorie Agenda : la communauté d'Argentine, fusionnée dans
+  // `world` (dédoublonnage par URL). Un échec resert les événements de
+  // l'instantané précédent — images déjà en /da/ — au lieu de les effacer.
+  console.log('\nAgenda argentin (diarioarmenia.org.ar):')
+  let daEvents = []
+  try {
+    daEvents = await scrapeDiarioAgenda()
+  } catch (err) {
+    console.warn(`  ✗ diarioarmenia/agenda: ${err.message}`)
+  }
+  if (!daEvents.length) {
+    daEvents = (prevAgenda?.world || []).filter(isDiarioEvent)
+    if (daEvents.length) console.warn(`  ↺ keeping ${daEvents.length} previous diarioarmenia agenda events`)
+  }
+  agenda.world = mergeDiarioIntoWorld(agenda.world, daEvents)
+
+  // Diario Armenia sert une vignette 200×200 à tout Referer étranger : ses
+  // images sont recopiées dans public/da/ (le téléchargement n'envoie aucun
+  // Referer), comme celles du Courier dans public/cc/. `daItems` est LA liste
+  // que le ménage compare au dossier : articles du fil ET événements de
+  // l'agenda. Ce bloc vient donc APRÈS le scrape de l'agenda (backfill compris) —
+  // avant, pruneMirror supprimerait les fichiers des événements. Les images sont
+  // réécrites en /da/ avant que news.json et agenda.json ne soient écrits.
+  const daItems = [...diarioarmenia.flatMap((s) => s.articles || []), ...agenda.world.filter(isDiarioEvent)]
+  const daMirror = { dir: join(__dirname, '..', 'public', 'da'), prefix: '/da/' }
+  const daCopy = await mirrorImages(daItems, { ...daMirror, encode })
+  const daRemoved = pruneMirror(daItems, daMirror)
+  console.log(`  ✓ diarioarmenia images: ${daCopy.copied} recopiées, ${daCopy.failed} en échec, ${daRemoved} retirées`)
+
   console.log('\nInstagram (curated · re-randomised):')
   let igPosts = []
   try {
@@ -302,6 +372,9 @@ async function main() {
     armenpress,
     asbarez,
     oragark,
+    soyarmenio,
+    diarioarmenia,
+    norsevan,
     armenianweekly,
     californiacourier,
     civilnet,
@@ -329,7 +402,9 @@ async function main() {
   // à chaque heure (test/agenda-resumes-wiring.test.mjs).
   console.log("\nRésumés de l'agenda:")
   const resumeCache = await summarizeAgenda({
-    events: [...agenda.switzerland, ...agenda.world],
+    // Les résumés lisent une page armenopole : les annonces de Diario Armenia
+    // n'en ont pas (elles échoueraient toutes, en mangeant le budget).
+    events: [...agenda.switzerland, ...agenda.world].filter((e) => !isDiarioEvent(e)),
     cache: (await readJson('agenda-resumes.json')) || {},
   })
   await writeJson('agenda-resumes.json', resumeCache)

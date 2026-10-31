@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { allowedWords, strayWords } from '../scripts/lib/brief-script.mjs'
+import { allowedWords, strayWords, frenchWords } from '../scripts/lib/brief-script.mjs'
 import { parseBrief } from '../scripts/lib/brief-generate.mjs'
 
 test('strayWords : les mots réellement publiés le 17 octobre 2026 sont repérés', () => {
@@ -52,4 +52,12 @@ test('parseBrief(lang) : une introduction fautive est vidée, pas la brève', ()
 
 test('parseBrief sans langue : comportement inchangé', () => {
   assert.equal(parseBrief(reply([1, 2, 3].map((id) => t('X', 'remporter', id))), articles).topics.length, 3)
+})
+
+test('es : frenchWords repère le français ET l\'anglais, pas l\'espagnol', () => {
+  assert.deepEqual(frenchWords('La reunión también está prevista en el sur del país', 'es'), [])
+  assert.ok(frenchWords('Le gouvernement a annoncé que les mesures sont prises dans la région pour les habitants avec des aides', 'es').length)
+  assert.deepEqual(frenchWords('El puente que une a ambas comunidades les permitirá dialogar', 'es'), [])
+  assert.ok(frenchWords('The government announced the measures with the region', 'es').length)
+  assert.ok(strayWords('Ереван', 'es').length)
 })

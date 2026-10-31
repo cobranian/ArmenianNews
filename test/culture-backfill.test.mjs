@@ -14,25 +14,26 @@ const article = (slug, extra = {}) => ({
   slug, meta: meta(slug), texts: { ...texts(), ...extra }, images: { webp: true, jpg: true },
 })
 
-test('pendingTranslations : à jour → absent ; it absente → it ; de périmée → de', () => {
+test('pendingTranslations : à jour → seulement es ; it absente → it ; de périmée → de', () => {
   const r = pendingTranslations([
     article('a-jour', { de: tr('de'), it: tr('it') }),
     article('sans-it', { de: tr('de') }),
     article('de-perimee', { de: tr('de', 'deadbeef'), it: tr('it') }),
   ])
   assert.deepEqual(r, [
-    { slug: 'sans-it', langs: ['it'] },
-    { slug: 'de-perimee', langs: ['de'] },
+    { slug: 'a-jour', langs: ['es'] },
+    { slug: 'sans-it', langs: ['it', 'es'] },
+    { slug: 'de-perimee', langs: ['de', 'es'] },
   ])
 })
 
 test('pendingTranslations : un article antérieur à de/it demande les deux', () => {
-  assert.deepEqual(pendingTranslations([article('komitas')]), [{ slug: 'komitas', langs: ['de', 'it'] }])
+  assert.deepEqual(pendingTranslations([article('komitas')]), [{ slug: 'komitas', langs: ['de', 'it', 'es'] }])
 })
 
 // Une de.md illisible n'est pas plus publiée qu'une absente : elle est retentée.
 test('pendingTranslations : une de/it invalide est retentée', () => {
-  assert.deepEqual(pendingTranslations([article('k', { de: 'cassé', it: tr('it') })]), [{ slug: 'k', langs: ['de'] }])
+  assert.deepEqual(pendingTranslations([article('k', { de: 'cassé', it: tr('it') })]), [{ slug: 'k', langs: ['de', 'es'] }])
 })
 
 // Sans français publiable, il n'y a rien à traduire : le rattrapage ne touche

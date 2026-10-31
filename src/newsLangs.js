@@ -67,8 +67,17 @@ export const TAB_ORDER = {
     'civilnet',
     'californiacourier',
     'oragark',
+    'norsevan',
   ],
   ru: ['armenpress', 'armradio', 'newsam', 'californiacourier', 'civilnet'],
+  // L'espagnol (armenianews.org/es/) : chaque tâche source y ajoute son id
+  // (armenpress, soyarmenio, diarioarmenia, norsevan).
+  es: [
+    'armenpress',
+    'soyarmenio',
+    'diarioarmenia',
+    'norsevan',
+  ],
 }
 
 // L'allemand et l'italien (armenieinfo.ch) n'ont AUCUNE rédaction à eux : ils
@@ -92,6 +101,7 @@ const BY_LANG = new Set([
   'armradio',
   'asbarez',
   'oragark',
+  'norsevan',
   'californiacourier',
   'civilnet',
   'newsam',
@@ -116,6 +126,9 @@ export const SOURCE_NAMES = {
   armenieinfotv: 'ArménieInfo.tv',
   asbarez: 'Asbarez',
   oragark: 'Oragark',
+  soyarmenio: 'Soy Armenio',
+  diarioarmenia: 'Diario Armenia',
+  norsevan: 'Nor Sevan',
   armenianweekly: 'Armenian Weekly',
   californiacourier: 'California Courier',
   civilnet: 'CivilNet',

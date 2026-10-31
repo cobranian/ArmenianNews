@@ -1,5 +1,5 @@
 // Les textes des pages Agenda par pays (scripts/lib/agenda-pays.mjs), dans les
-// six langues. Module PLAT, comme briefStrings.js : Node le lit au build.
+// sept langues. Module PLAT, comme briefStrings.js : Node le lit au build.
 //
 // Le nom du pays vient TOUJOURS en tête, suivi de « : » ou d'un tiret, et
 // jamais derrière une préposition : « en Suisse », « au Canada », « aux
@@ -67,5 +67,15 @@ export const AGENDA_PAYS_STRINGS = {
     count: (n) => `Предстоящие мероприятия: ${n}`,
     others: 'Другие страны',
     all: 'Все страны',
+  },
+  es: {
+    title: (c) => `${c}: próximos eventos armenios`,
+    description: (c) =>
+      `${c}: conciertos, conferencias, conmemoraciones y fiestas de la comunidad armenia. Fechas y lugares, actualizados cada hora.`,
+    intro:
+      'Conciertos, conferencias, conmemoraciones, fiestas: todos los próximos eventos de la comunidad armenia registrados en este país, con su fecha y su lugar. La lista se actualiza cada hora desde Armenopole.',
+    count: (n) => `Próximos eventos: ${n}`,
+    others: 'Otros países',
+    all: 'Todos los países',
   },
 }

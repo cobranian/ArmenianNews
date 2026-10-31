@@ -22,7 +22,7 @@ import { ALL_LANGS } from '../../sites.config.js'
 import { contentLang } from '../../src/newsLangs.js'
 import { ENDPOINT, modelChain, STRONG_MODEL } from './classify-rubrics.mjs'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
-import { selectArticles, yerevanClock, isBriefDue, MIN_ARTICLES } from './brief-select.mjs'
+import { selectArticles, yerevanClock, isBriefDue, minArticles } from './brief-select.mjs'
 import { allowedWords, strayWords, frenchWords } from './brief-script.mjs'
 
 export const MIN_TOPICS = 3
@@ -31,10 +31,10 @@ export const MAX_TOPICS = 7
 // dépassait déjà 90 s sur 80 titres (15 octobre 2026).
 export const BRIEF_TIMEOUT_MS = 180000
 
-// Ultra-550b en tête dans les six langues. hy/ru/de/it d'abord (24 oct. 2026) :
+// Ultra-550b en tête dans les sept langues. hy/ru/de/it d'abord (24 oct. 2026) :
 // lightning ratait la brève hy entière (« ոստիկանայինVor ») et perdait des
 // sujets en ru et it. fr/en ensuite, sur les brèves du 25 octobre : ultra a
-// écrit 7 sujets dans ses quatre langues, quand lightning n'en tenait que 5 en
+// écrit 7 sujets dans quatre langues, quand lightning n'en tenait que 5 en
 // anglais, avec une erreur de fait (Naré « va passer en 8e » le jour de sa
 // victoire) et un prénom inventé ; en fr, le 22, il faisait d'Araghchi un
 // ministre arménien. Le classeur des rubriques, lui, garde lightning en tête.
@@ -49,12 +49,17 @@ const LANG_NAME = {
   de: 'allemand (usage suisse : « ss », jamais « ß »)',
   it: 'italien',
   en: 'anglais',
+  es: 'espagnol latino-américain neutre (ustedes, pas de voseo)',
   hy: 'arménien oriental (orthographe de la République d’Arménie)',
   ru: 'russe',
 }
 
 export function buildBriefMessages(lang, articles) {
   const list = articles.map((a) => `${a.id}. [${a.source} · ${a.rubric}] ${a.title}`).join('\n')
+  // Fourchette de sujets bornée par le nombre de titres (5 titres espagnols un
+  // lundi : jamais plus de sujets que de titres). Inchangée dès 10 titres.
+  const hi = Math.min(MAX_TOPICS, articles.length)
+  const lo = Math.min(MIN_TOPICS + 2, Math.max(MIN_TOPICS, Math.floor(articles.length / 2)))
   const system =
     "Tu rédiges la brève quotidienne d'un site d'actualité arménienne, à partir des titres du jour " +
     'de plusieurs rédactions (chaque ligne : numéro, [source · rubrique], titre). ' +
@@ -66,7 +71,7 @@ export function buildBriefMessages(lang, articles) {
         `L'introduction, chaque titre et chaque phrase de ta réponse doivent être entièrement en ${LANG_NAME[lang]} : ` +
         "pas une seule phrase en français, même si les consignes et les titres ci-dessus le sont. "
       : '') +
-    `Choisis entre ${MIN_TOPICS + 2} et ${MAX_TOPICS} sujets du jour, en privilégiant ceux que PLUSIEURS sources couvrent. ` +
+    `Choisis entre ${lo} et ${hi} sujets du jour, en privilégiant ceux que PLUSIEURS sources couvrent. ` +
     'Pour chaque sujet : un titre court, 2 ou 3 phrases, une rubrique parmi ' +
     `${RUBRICS.join(', ')}, et la liste des numéros des titres qui le traitent. ` +
     "N'affirme rien qui ne figure pas dans les titres ; ne cite aucune URL. " +
@@ -119,7 +124,9 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
   }
   const byId = new Map(articles.map((a) => [a.id, a]))
   // de et it lisent le fil français : leur faute propre est de répondre en français.
-  const translated = Boolean(lang) && contentLang(lang) !== lang
+  // es lit son propre fil, mais sa faute est la même : recopier le français ou
+  // l'anglais d'un titre (frenchWords('es') couvre les deux).
+  const translated = Boolean(lang) && (contentLang(lang) !== lang || lang === 'es')
   const topics = []
   // Sujets examinés / écartés comme français : voir la règle après la boucle.
   let examined = 0
@@ -218,7 +225,7 @@ export async function generateBriefs({
         continue
       }
       const articles = selectArticles(news, lang, now)
-      if (articles.length < MIN_ARTICLES) {
+      if (articles.length < minArticles(lang)) {
         log.log(`  · brief/${lang}: trop peu d'articles (${articles.length})`)
         continue
       }

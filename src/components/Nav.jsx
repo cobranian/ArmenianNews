@@ -10,7 +10,7 @@ import { HYDRATING, PRERENDERING } from '../renderClock.js'
 export function Nav({ view = 'home' }) {
   const { t, lang } = useI18n()
   const [open, setOpen] = useState(false)
-  // Sélecteur de langue replié (≤900px, voir .lang-fold dans global.css) :
+  // Sélecteur de langue replié (≤960px, voir .lang-fold dans global.css) :
   // fermé au prérendu comme à l'hydratation, il ne s'ouvre qu'au toucher.
   const [langOpen, setLangOpen] = useState(false)
   const current = LANGS.find((l) => l.code === lang)
@@ -100,10 +100,10 @@ export function Nav({ view = 'home' }) {
               orderedLangs), pas de la langue affichée : la barre reste stable
               quand on navigue à l'intérieur du .org.
 
-              Six pastilles ne tiennent pas à côté de la marque, du thème et
+              Sept pastilles ne tiennent pas à côté de la marque, du thème et
               du menu sur un téléphone (mesuré : 427px de large à 360 et 390).
-              Sous 900px (pourquoi 900 : global.css, .lang-fold), le bouton
-              ne montre que la langue courante et déplie les six liens dans
+              Sous 960px (pourquoi 960 : global.css, .lang-fold), le bouton
+              ne montre que la langue courante et déplie les sept liens dans
               une bande sous la barre, comme le menu. Les
               liens restent dans le HTML de chaque page, repli ou pas : le
               maillage entre langues ne dépend pas du toucher. Sur grand

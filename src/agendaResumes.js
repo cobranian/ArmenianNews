@@ -3,7 +3,7 @@
 // par langue, téléchargé seulement quand on le demande. Les fichiers sont
 // écrits par le scrape horaire (scripts/lib/agenda-resumes.mjs).
 //
-// Ne remplacez pas ceci par un import statique : les résumés des six langues
+// Ne remplacez pas ceci par un import statique : les résumés des sept langues
 // partiraient dans le bundle des deux vitrines (test/agenda-resumes-wiring.test.mjs).
 const files = import.meta.glob('./data/agenda-resumes/*.json', { import: 'default' })
 const byLang = new Map()

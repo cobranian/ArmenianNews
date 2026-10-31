@@ -47,6 +47,8 @@ test('chaque langue rend son unité, dans sa propre écriture', () => {
   assert.equal(ago(3 * H, 'en'), '3 h') // identique au français, et c'est normal
   assert.equal(ago(3 * H, 'hy'), '3 ժամ')
   assert.equal(ago(3 * H, 'ru'), '3 ч')
+  assert.equal(ago(3 * H, 'es'), '3 h')
+  assert.equal(ago(2 * D, 'es'), '2 d')
 
   // LE défaut à attraper est précis : `Intl.RelativeTimeFormat('hy')` ne résout
   // pas dans un navigateur et retombe sur la langue DU LECTEUR — l'arménien

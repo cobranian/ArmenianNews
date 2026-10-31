@@ -3,7 +3,7 @@ import { fetchTextNode } from '../lib/http.mjs'
 import { clean, safeUrl } from '../lib/util.mjs'
 
 // Armenpress (armenpress.am) is Armenia's national news agency, and the only
-// quadrilingue (fr/en/hy/ru) source here: fr/en/hy/ru map 1:1 to the UI
+// five-edition (fr/en/hy/ru/es) source here: fr/en/hy/ru/es map 1:1 to the UI
 // language. It does not lead the tab order — Courrier d'Erevan is French-only
 // and prerenders more French copy for crawlers.
 //
@@ -11,22 +11,24 @@ import { clean, safeUrl } from '../lib/util.mjs'
 // no CSS selectors here. This breaks if the payload changes shape, not on a
 // redesign.
 //
-// Seven rubrics per language, read from the rubric pages. Two things that the
-// page's own history got wrong, both measured (28 pages (7 rubriques × 4
-// langues), 2026-07-16):
+// Seven rubrics per language, read from the rubric pages (es: same Inertia
+// payload and slugs, measured 2026-10-31; it publishes nothing on weekends).
+// Two things that the page's own history got wrong, both measured (28 pages
+// (7 rubriques × 4 langues), 2026-07-16):
 //   - The rubric pages are NOT empty. Their articles live at
 //     props.data.data.hits — the homepage's props.feed.data.hits path reads as
 //     an empty rubric, which is what "the rubric pages embed an empty feed"
 //     came from. Every rubric returns 12-36 articles, all dated and imaged.
-//   - There is no aggressive rate limit. All 28 pages load back to back.
+//   - There is no aggressive rate limit. All 28 pages load back to back
+//     (35 with es).
 const BASE = 'https://armenpress.am'
 const HOST = 'armenpress.am'
 
-// Quatre éditions — fr/en/hy/ru — qui mappent 1:1 à la langue de l'interface,
+// Cinq éditions — fr/en/hy/ru/es — qui mappent 1:1 à la langue de l'interface,
 // contrairement à ArmRadio (pas d'édition française). Ni de ni it, et c'est
 // voulu : Armenpress n'a pas ces éditions, et /de/ /it/ lisent le fil fr
 // (CONTENT_LANG, src/newsLangs.js).
-export const ARMENPRESS_LANGS = ['fr', 'en', 'hy', 'ru']
+export const ARMENPRESS_LANGS = ['fr', 'en', 'hy', 'ru', 'es']
 
 // The seven rubrics of the site's own main nav, in its order. The key is the
 // URL slug and doubles as the i18n key (see `apcats.*` in src/i18n.jsx).

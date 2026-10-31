@@ -12,6 +12,11 @@ export const BRIEF_HOUR = 7
 export const WINDOW_MS = 24 * 3600 * 1000
 export const MAX_ARTICLES = 100
 export const MIN_ARTICLES = 10
+// L'espagnol n'a que Armenpress es (muet le week-end) et Diario Armenia : 5 à 8
+// articles par 24 h le dimanche et le lundi. Avec 10, la brève sautait et
+// `checkBriefs` ouvrait une fausse issue [sources-down].
+export const MIN_ARTICLES_BY_LANG = { es: 5 }
+export const minArticles = (lang) => MIN_ARTICLES_BY_LANG[lang] ?? MIN_ARTICLES
 
 const CLOCK = new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Asia/Yerevan',

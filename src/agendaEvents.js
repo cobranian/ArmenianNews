@@ -101,7 +101,7 @@ export function paysDeLAgenda(aVenir) {
 // lui), et `id` de son <li> sur /agenda/ (AgendaPage.jsx). Le lien partagé mène
 // ainsi sur CE site et non chez armenopole. Dérivée de l'URL de
 // l'événement (FNV-1a 32 bits, base 36) : stable d'un scrape à l'autre, et
-// la même pour les deux vitrines et les six langues.
+// la même pour les deux vitrines et les sept langues.
 export function eventAnchor(ev) {
   let h = 0x811c9dc5
   for (const ch of String(ev?.url ?? '')) {
@@ -140,7 +140,11 @@ export function startDateLd(date) {
 // fiche est rétrogradée en avertissement. Un texte vaut mieux qu'une
 // PostalAddress inventée. Aucun `organizer` : les événements sont ceux
 // d'Armenopole, pas les nôtres.
-export function eventLd(ev) {
+// `host` (ex. 'https://armenianews.org') absolutise une image relative
+// (`/da/x.webp`, Diario Armenia) : schema.org veut une URL complète, et le
+// balisage est lu hors de la page. Sans `host`, ou pour une URL déjà absolue,
+// l'image est émise telle quelle.
+export function eventLd(ev, host) {
   const node = {
     '@type': 'Event',
     name: ev.title,
@@ -150,6 +154,6 @@ export function eventLd(ev) {
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   }
   if (ev.location) node.location = { '@type': 'Place', name: ev.location, address: ev.location }
-  if (ev.image) node.image = ev.image
+  if (ev.image) node.image = host && ev.image.startsWith('/') && !ev.image.startsWith('//') ? host + ev.image : ev.image
   return node
 }

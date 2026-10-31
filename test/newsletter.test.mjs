@@ -131,7 +131,7 @@ test('Markdown sûr : < > * _ et barre inverse échappés dans les titres, descr
 test('une lettre par langue : chacune dans sa langue, ses liens, son domaine', async () => {
   const { newsletterLetters } = await import('../sites.config.js')
   const { NEWSLETTER_STRINGS } = await import('../src/newsletterStrings.js')
-  const langs = ['fr', 'de', 'it', 'en', 'hy', 'ru']
+  const langs = ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru']
   const briefs = Object.assign({}, ...langs.map((l) => briefsOf(l, { 1: `Sujet-${l}` })))
   const art = { ...article(), langs: Object.fromEntries(langs.map((l) => [l, { title: `Titre-${l}`, description: `Desc-${l}` }])) }
   for (const { siteId, lang } of newsletterLetters()) {

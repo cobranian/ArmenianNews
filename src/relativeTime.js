@@ -34,6 +34,8 @@ const UNITS = {
   // numéral l'arménien garde le singulier : pas de forme plurielle à gérer.
   hy: { s: 'վրկ', min: 'րոպե', h: 'ժամ', d: 'օր' },
   ru: { s: 'с', min: 'мин', h: 'ч', d: 'дн' },
+  // d (día) : « 2 d », comme en anglais ; sans accord, comme ailleurs.
+  es: { s: 's', min: 'min', h: 'h', d: 'd' },
 }
 
 const MINUTE = 60

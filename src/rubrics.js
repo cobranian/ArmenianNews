@@ -102,6 +102,42 @@ export const RUBRIC_MAP = {
     'գաղութներ': 'diaspora',
     hotvadzner: mixed('opinion'),
   },
+  // Soy Armenio : `armenia` est le fil fourre-tout de 14 000 articles.
+  soyarmenio: {
+    'noticias-de-armenia': mixed('armenie'),
+    politica: 'politique',
+    'diaspora-armenia': 'diaspora',
+    cultura: 'culture',
+    economia: 'economie',
+    'noticias-internacionales': 'monde',
+    deporte: 'sports',
+  },
+  // Diario Armenia : `armenia` est le fil fourre-tout (5 000 articles). Pays et
+  // institutions sont des étiquettes, pas des sujets : seules les rubriques
+  // éditoriales vivantes sont des étagères. `agenda` n'y est jamais.
+  diarioarmenia: {
+    armenia: mixed('armenie'),
+    azerbaiyan: 'politique',
+    argentina: 'diaspora',
+    cultura: 'culture',
+    opinion: 'opinion',
+    institucionales: 'diaspora',
+    artsaj: 'armenie',
+  },
+  // Nor Sevan : étagères = catégories du flux (slugifiées) ; `hayeren` réunit tous
+  // les billets en écriture arménienne. Argentina garde ses billets hors sujet.
+  norsevan: {
+    armenia: mixed('armenie'),
+    internacional: 'monde',
+    colectividad: 'diaspora',
+    artsaj: 'armenie',
+    argentina: mixed('diaspora'),
+    turquia: 'monde',
+    opinion: 'opinion',
+    'derechos-humanos': mixed('societe'),
+    general: mixed('armenie'),
+    hayeren: mixed('diaspora'),
+  },
   oragark: {
     featured: mixed('armenie'),
     news: mixed('armenie'),

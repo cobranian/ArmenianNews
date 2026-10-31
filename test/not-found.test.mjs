@@ -59,6 +59,14 @@ test('le 404 du .ch mène aux vues de/it, dans leur langue', () => {
   assert.ok(!ch.includes('ß'), 'allemand à la suisse : jamais ß')
 })
 
+test('le 404 du .org mène aux vues espagnoles, dans leur langue', () => {
+  const org = notFoundHtml('org')
+  for (const view of ['home', 'radio', 'agenda', 'about']) {
+    assert.ok(org.includes(`href="${pathFor('es', view)}" hreflang="es"`), `es/${view}`)
+  }
+  assert.ok(org.includes(`<li lang="es">`), 'ligne es')
+})
+
 test('chaque langue a ses chaînes, sans repli silencieux', () => {
   // La page du .org affiche une ligne par langue servie : un libellé manquant
   // retomberait sur le français sans rien dire, et le lecteur russe verrait
@@ -151,6 +159,13 @@ test('firebase.json redirige les slugs de/it vers leur vue et vers le .ch', () =
   assert.equal(follow('org', '/de/'), 'https://armenieinfo.ch/de/')
   assert.equal(follow('org', '/it/radio/'), 'https://armenieinfo.ch/it/radio/')
   assert.equal(follow('org', '/de/in-kuerze/2026-10-16/'), 'https://armenieinfo.ch/de/in-kuerze/2026-10-16/')
+  // L'espagnol est servi par le .org : /es/ y reste, et le .ch l'y renvoie.
+  assert.equal(follow('org', '/es/'), null)
+  assert.equal(follow('org', '/es/events/'), '/es/eventos/')
+  assert.equal(follow('org', '/es/agenda/'), '/es/eventos/')
+  assert.equal(follow('ch', '/es'), 'https://armenianews.org/es/')
+  assert.equal(follow('ch', '/es/'), 'https://armenianews.org/es/')
+  assert.equal(follow('ch', '/es/radio/'), 'https://armenianews.org/es/radio/')
   assert.equal(follow('org', '/design/'), null)
   assert.equal(follow('org', '/items/'), null)
   for (const r of bySite[SITES.org.firebaseSite]) assert.equal(r.type, 301)

@@ -34,7 +34,7 @@ export function briefAlternates(date, byDate, lang = null) {
 // complet. L'arménien passe malgré tout par src/hyDate.js, comme partout dans
 // le dépôt — une seule table de mois arméniens.
 // de/it à la suisse, comme LOCALES (src/i18n.jsx).
-const LOCALE = { fr: 'fr-FR', de: 'de-CH', it: 'it-CH', en: 'en-US', ru: 'ru-RU' }
+const LOCALE = { fr: 'fr-FR', de: 'de-CH', it: 'it-CH', en: 'en-US', es: 'es-419', ru: 'ru-RU' }
 export function longDate(lang, date) {
   const [y, m, d] = date.split('-').map(Number)
   if (lang === 'hy') return hyLongDate(new Date(y, m - 1, d))

@@ -1,5 +1,5 @@
 // Résumés des événements de l'agenda : 2-3 phrases écrites par un modèle :free
-// OpenRouter, dans les six langues, à partir du texte de présentation de la
+// OpenRouter, dans les sept langues, à partir du texte de présentation de la
 // page armenopole. Affichés dans la visionneuse (Lightbox.jsx), chargés au
 // premier dépli. Conception : docs/superpowers/specs/2026-10-24-agenda-resume-design.md
 //
@@ -96,6 +96,7 @@ const LANG_NAMES = {
   de: 'German',
   it: 'Italian',
   en: 'English',
+  es: 'Latin American Spanish (neutral: ustedes, no voseo)',
   hy: 'Eastern Armenian, in Armenian script',
   ru: 'Russian, in Cyrillic script',
 }
