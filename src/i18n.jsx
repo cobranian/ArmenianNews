@@ -1670,7 +1670,7 @@ const STRINGS = {
       'Armenia News es un sitio independiente, con sede en Suiza y editado por {editor}, que reúne cada hora la vida armenia tal como la cuentan sus propios medios: los despachos de las redacciones, las radios en vivo, la agenda de la diáspora y sus redes sociales. Nada se reescribe: cada titular remite al editor que lo publicó.',
     'about.what.title': 'Lo que encontrará aquí',
     'about.what.body':
-      'Una instantánea estática, reconstruida cada hora por un programa que vuelve a leer las fuentes y regenera las páginas. No hay cuentas ni base de datos; el único formulario, opcional, inscribe a la carta semanal.',
+      'Una instantánea estática, reconstruida cada hora por un programa que vuelve a leer las fuentes y regenera las páginas. No hay cuentas ni base de datos; el único formulario, opcional, inscribe al boletín semanal.',
     'about.what.news': 'los últimos despachos de las redacciones armenias, sección por sección, en el idioma de la página;',
     'about.what.radio': '{n} emisoras en vivo, cada una con una ficha con fuentes (ciudad, género, idioma de transmisión);',
     'about.what.agenda': 'los eventos de la diáspora, país por país, recopilados de Armenopole;',
@@ -1760,7 +1760,7 @@ const STRINGS = {
 
     'privacy.title': 'Política de privacidad',
     'privacy.intro':
-      'Este sitio es una instantánea estática: sin cuentas ni base de datos. Leerlo no le pide nada, y no conserva nada que lo identifique personalmente: el único dato personal es la dirección de correo electrónico que usted decida dar para la carta semanal, conservada por Buttondown y no por el sitio.',
+      'Este sitio es una instantánea estática: sin cuentas ni base de datos. Leerlo no le pide nada, y no conserva nada que lo identifique personalmente: el único dato personal es la dirección de correo electrónico que usted decida dar para el boletín semanal, conservada por Buttondown y no por el sitio.',
     'privacy.analytics.title': 'Medición de audiencia',
     'privacy.analytics.body':
       'Usamos Google Analytics y Cloudflare Web Analytics para contar las visitas y saber qué secciones se leen. Fuera del Espacio Económico Europeo y del Reino Unido —en Suiza, por ejemplo—, Google Analytics deposita una cookie que permite reconocer a un visitante de una visita a otra. Desde el EEE y el Reino Unido esa cookie no se deposita: la medición es allí anónima y sin cookies, como exige el RGPD. Cloudflare Web Analytics no deposita ninguna cookie, esté donde esté.',
@@ -1769,15 +1769,15 @@ const STRINGS = {
     'privacy.storage.title': 'Guardado en su dispositivo',
     'privacy.storage.body':
       'Su elección de tema día / noche se guarda localmente en su navegador. Nunca sale de su dispositivo y nunca se nos transmite.',
-    'privacy.newsletter.title': 'Carta semanal',
+    'privacy.newsletter.title': 'Boletín semanal',
     'privacy.newsletter.body':
-      'Si se suscribe, su dirección de correo electrónico se confía a Buttondown, un servicio alojado en Estados Unidos: se trata, por lo tanto, en el extranjero, conforme a la política de privacidad de Buttondown, que puede medir la apertura de las cartas y los clics. Solo se usa para ese envío; cada carta incluye un enlace para cancelar la suscripción, y una solicitud a la dirección indicada abajo la hace borrar.',
+      'Si se suscribe, su dirección de correo electrónico se confía a Buttondown, un servicio alojado en Estados Unidos: se trata, por lo tanto, en el extranjero, conforme a la política de privacidad de Buttondown, que puede medir la apertura de los boletines y los clics. Solo se usa para ese envío; cada boletín incluye un enlace para cancelar la suscripción, y una solicitud a la dirección indicada abajo la hace borrar.',
     'privacy.content.title': 'Contenido de terceros',
     'privacy.content.body':
       'Los artículos, eventos y publicaciones provienen de sitios de terceros, citados y enlazados. Seguir un enlace lo lleva al editor correspondiente, cuya política de privacidad se aplica entonces.',
     'privacy.rights.title': 'Sus derechos',
     'privacy.rights.body':
-      'Puede solicitar el acceso a los datos que le conciernen, su rectificación o su supresión. Aparte de la dirección de correo electrónico confiada para la carta —borrada a solicitud o mediante el enlace de cancelación—, en la práctica esto se limita a las mediciones de audiencia agregadas.',
+      'Puede solicitar el acceso a los datos que le conciernen, su rectificación o su supresión. Aparte de la dirección de correo electrónico confiada para el boletín —borrada a solicitud o mediante el enlace de cancelación—, en la práctica esto se limita a las mediciones de audiencia agregadas.',
     'privacy.contact': 'Para cualquier pregunta:',
 
     'sections.actualite': 'Noticias',

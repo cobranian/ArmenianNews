@@ -24,6 +24,7 @@ test('about est une vue à part entière : slugs latins, traduits en français',
     de: 'ueber-uns/',
     it: 'chi-siamo/',
     en: 'about/',
+    es: 'acerca-de/',
     hy: 'about/',
     ru: 'about/',
   })

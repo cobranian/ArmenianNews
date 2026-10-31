@@ -18,7 +18,7 @@ import { isFreeLicense } from './culture-license.mjs'
 // périmées ou invalides, elles vont dans `notes`, jamais dans `errors` — ni
 // culture-check ni la PR fr/en/hy/ru n'en dépendent. REQUIRED garde la règle
 // d'avant.
-export const OPTIONAL = ['de', 'it']
+export const OPTIONAL = ['de', 'it', 'es']
 export const TRANSLATED = ALL_LANGS.filter((l) => l !== 'fr')
 export const REQUIRED = TRANSLATED.filter((l) => !OPTIONAL.includes(l))
 // La note d'une langue facultative simplement pas encore traduite : le cas

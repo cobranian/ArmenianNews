@@ -411,6 +411,10 @@ jobs:
           probe "https://armenieinfo.ch/de/events/" 301 "/de/veranstaltungen/" || fail=1
           probe "https://armenianews.org/de" 301 "https://armenieinfo.ch/de/" || fail=1
           probe "https://armenianews.org/it/eventi/" 301 "https://armenieinfo.ch/it/eventi/" || fail=1
+          probe "https://armenianews.org/es/" 200 || fail=1
+          probe "https://armenianews.org/es/eventos/" 200 || fail=1
+          probe "https://armenianews.org/es/events/" 301 "/es/eventos/" || fail=1
+          probe "https://armenieinfo.ch/es/" 301 "https://armenianews.org/es/" || fail=1
           exit $fail
 
       # IndexNow, second temps : prévenir Bing des pages nouvelles ou changées

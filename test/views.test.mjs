@@ -60,6 +60,8 @@ test('langPath donne le chemin de la page d accueil de la langue', () => {
 // comparer un chemin normalise a un slug brut ferait retomber /radio sur
 // 'home', et la garde `data-view` du prerendu ferait echouer le build.
 test('viewFromPath lit la vue depuis le chemin', () => {
+  assert.equal(viewFromPath('org', '/es/eventos'), 'agenda')
+  assert.equal(viewFromPath('org', '/es/eventos/'), 'agenda')
   assert.equal(viewFromPath('ch', '/'), 'home')
   assert.equal(viewFromPath('ch', '/radio'), 'radio')
   assert.equal(viewFromPath('ch', '/radio/'), 'radio')
@@ -96,6 +98,7 @@ test('le slug de l agenda est traduit la ou le mot change la requete', () => {
   assert.equal(urlFor('ru', 'agenda'), 'https://armenianews.org/ru/events/')
   assert.equal(urlFor('de', 'agenda'), 'https://armenieinfo.ch/de/veranstaltungen/')
   assert.equal(urlFor('it', 'agenda'), 'https://armenieinfo.ch/it/eventi/')
+  assert.equal(urlFor('es', 'agenda'), 'https://armenianews.org/es/eventos/')
 })
 
 test('les vues de/it vivent sous /de/ et /it/ du .ch', () => {

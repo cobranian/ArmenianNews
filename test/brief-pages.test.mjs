@@ -106,7 +106,7 @@ test('writeBriefPages : chaque vitrine ne bâtit que ses langues', async () => {
   const dist = await mkdtemp(path.join(tmpdir(), 'dist-'))
   const briefs = { fr: [b('fr', '2026-10-16')], en: [b('en', '2026-10-16')], hy: [], ru: [] }
   const n = await writeBriefPages(SITES.org, dist, briefs, CSS)
-  assert.equal(n, 4) // /brief/, /brief/2026-10-16/, /hy/brief/, /ru/brief/
+  assert.equal(n, 5) // /brief/, /brief/2026-10-16/, /es/resumen/ (vide), /hy/brief/, /ru/brief/
   await readFile(path.join(dist, 'brief', '2026-10-16', 'index.html'), 'utf-8')
   await readFile(path.join(dist, 'hy', 'brief', 'index.html'), 'utf-8')
   await assert.rejects(readFile(path.join(dist, 'breve', 'index.html')))

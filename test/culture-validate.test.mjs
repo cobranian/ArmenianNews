@@ -16,13 +16,13 @@ test('article complet : aucune erreur, quatre langues', () => {
 // de/it sont facultatives : un article sans de.md ni it.md passe culture-check
 // (aucune erreur) — deux NOTES, non bloquantes — et ne paraît simplement pas
 // dans ces langues.
-test('de et it facultatives : leur absence est une note, pas une erreur', () => {
-  assert.deepEqual(OPTIONAL, ['de', 'it'])
-  assert.deepEqual(TRANSLATED, ['de', 'it', 'en', 'hy', 'ru'])
+test('de, it et es facultatives : leur absence est une note, pas une erreur', () => {
+  assert.deepEqual(OPTIONAL, ['de', 'it', 'es'])
+  assert.deepEqual(TRANSLATED, ['de', 'it', 'en', 'es', 'hy', 'ru'])
   assert.deepEqual(REQUIRED, ['en', 'hy', 'ru'])
   const r = validateArticle(ok())
   assert.deepEqual(r.errors, [])
-  assert.equal(r.notes.length, 2)
+  assert.equal(r.notes.length, 3)
   assert.deepEqual(Object.keys(r.langs), ['fr', 'en', 'hy', 'ru'])
 })
 
@@ -35,7 +35,7 @@ test('de valide : publiée ; de périmée ou cassée : note, jamais erreur', () 
   const good = validateArticle(ok({ texts: { ...t, de: trDe(frBody) } }))
   assert.deepEqual(good.errors, [])
   assert.deepEqual(Object.keys(good.langs), ['fr', 'de', 'en', 'hy', 'ru'])
-  assert.equal(good.notes.length, 1) // it absente
+  assert.equal(good.notes.length, 2) // it et es absentes
   const stale = validateArticle(ok({ texts: { ...t, de: trDe(frBody, 'deadbeef'), it: 'cassé' } }))
   assert.deepEqual(stale.errors, [])
   const notes = stale.notes.join(' | ')

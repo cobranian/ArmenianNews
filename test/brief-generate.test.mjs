@@ -332,8 +332,8 @@ test('parseBrief : une rubrique écrite dans la langue de la brève est reconnue
 // langues sans un mot écarté. fr/en restent sur la chaîne commune.
 // Depuis le 25 octobre, fr et en aussi (lightning : 5 sujets et des erreurs de
 // fait en anglais ce jour-là).
-test('briefModels : ultra en tête pour les six langues, sans doublon ni modèle perdu', () => {
-  for (const l of ['fr', 'de', 'it', 'en', 'hy', 'ru']) {
+test('briefModels : ultra en tête pour les sept langues, sans doublon ni modèle perdu', () => {
+  for (const l of ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru']) {
     const chain = briefModels(l)
     assert.equal(chain[0], STRONG_MODEL, l)
     assert.equal(new Set(chain).size, chain.length, l)

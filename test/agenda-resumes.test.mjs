@@ -68,12 +68,13 @@ test('forbiddenDetail laisse passer années, ordinaux, petits nombres', () => {
     assert.equal(forbiddenDetail(s), null, s)
 })
 
-// Six résumés plausibles, chacun dans son alphabet, sans prix, heure ni adresse.
+// Sept résumés plausibles, chacun dans son alphabet, sans prix, heure ni adresse.
 const six = {
   fr: "Une nouvelle génération de jeunes musiciens arméniens part en tournée en Suisse, entre classique, folk et jazz, de Komitas à Piazzolla.",
   de: "Eine neue Generation junger armenischer Musiker geht auf Tournee durch die Schweiz, zwischen Klassik, Folk und Jazz, von Komitas bis Piazzolla.",
   it: "Una nuova generazione di giovani musicisti armeni parte in tournée in Svizzera, tra musica classica, folk e jazz, da Komitas a Piazzolla.",
   en: "A new generation of young Armenian musicians tours Switzerland, blending classical, folk and jazz, from Komitas to Piazzolla.",
+  es: "Una nueva generación de jóvenes músicos armenios realiza una gira por Suiza, entre música clásica, folk y jazz, de Komitas a Piazzolla.",
   hy: "Հայ երիտասարդ երաժիշտների նոր սերունդը համերգային շրջագայություն է կատարում Շվեյցարիայում՝ դասական, ժողովրդական և ջազ երաժշտությամբ։",
   ru: "Новое поколение юных армянских музыкантов отправляется в гастроли по Швейцарии с программой классики, фолка и джаза, от Комитаса до Пьяццоллы.",
 }
@@ -83,7 +84,7 @@ test('parseResumeReply lit JSON nu, fences et texte autour', () => {
   assert.deepEqual(parseResumeReply('```json\n' + JSON.stringify(six) + '\n```'), six)
   assert.deepEqual(parseResumeReply('Voici :\n' + JSON.stringify(six) + '\nBonne journée'), six)
   assert.deepEqual(parseResumeReply('pas de json'), {})
-  assert.deepEqual(parseResumeReply(JSON.stringify({ fr: '', es: 'hola', en: 3 })), {})
+  assert.deepEqual(parseResumeReply(JSON.stringify({ fr: '', xx: 'hola', en: 3 })), {})
 })
 
 test('vetResumes écarte une langue fautive sans toucher aux autres', () => {
@@ -91,7 +92,7 @@ test('vetResumes écarte une langue fautive sans toucher aux autres', () => {
     { ...six, ru: six.ru + ' Начало в 19:00.', hy: six.hy + ' football' },
     { title: 'Young Prodigies of Armenia', text: 'Komitas Piazzolla' },
   )
-  assert.deepEqual(Object.keys(r.kept).sort(), ['de', 'en', 'fr', 'it'])
+  assert.deepEqual(Object.keys(r.kept).sort(), ['de', 'en', 'es', 'fr', 'it'])
   assert.deepEqual(r.rejected.sort(), [['hy', 'alphabet'], ['ru', 'heure']])
 })
 
@@ -129,11 +130,11 @@ test('pruneCache retire les événements passés ; resumesFor / resumeLangs', ()
   assert.deepEqual(resumeLangs(kept.a), ['fr', 'en'])
 })
 
-test('buildResumeMessages interdit prix, horaires, adresses et demande les six langues', () => {
+test('buildResumeMessages interdit prix, horaires, adresses et demande les sept langues', () => {
   const m = buildResumeMessages({ title: 'T', location: 'Genève' }, 'texte source')
     .map((x) => x.content)
     .join('\n')
-  for (const l of ['fr', 'de', 'it', 'en', 'hy', 'ru']) assert.match(m, new RegExp(`"${l}"`))
+  for (const l of ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru']) assert.match(m, new RegExp(`"${l}"`))
   assert.match(m, /texte source/)
 })
 
@@ -147,7 +148,7 @@ test('summarizeAgenda : écrit les langues valides, compte une page vide, ne lè
   const events = [{ url: 'ok', title: 'Young Prodigies of Armenia' }, { url: 'vide', title: 'X' }]
   const fetchPage = async (u) => (u === 'ok' ? fixture : '<html></html>')
   const out = await summarizeAgenda({ events, cache: {}, apiKey: 'k', fetchPage, fetchImpl: reply(six), log: silent })
-  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru'])
   assert.equal(out.vide.attempts, 1)
   assert.deepEqual(resumeLangs(out.vide), [])
 })
@@ -293,7 +294,7 @@ test('summarizeAgenda : une panne du modèle ne consomme pas d’essai', async (
     })
   assert.equal(cache.ok.attempts, 0)
   const out = await summarizeAgenda({ events: [{ url: 'ok', title: 'T' }], cache, apiKey: 'k', fetchPage: async () => fixture, fetchImpl: reply(six), log: silent })
-  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru'])
 })
 
 // Un texte enfin trouvé après trois pages vides repart de zéro essai.
@@ -308,7 +309,7 @@ test('summarizeAgenda : un texte apparu après des pages vides est résumé', as
     now: new Date('2026-10-24T12:00:00Z'),
     log: silent,
   })
-  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+  assert.deepEqual(resumeLangs(out.ok), ['fr', 'de', 'it', 'en', 'es', 'hy', 'ru'])
 })
 
 // Une réponse sans aucune langue lisible doit laisser une ligne ✗ au log.
@@ -347,6 +348,6 @@ test('summarizeAgenda : traite plusieurs événements à la fois, sans dépasser
     log: silent,
   })
   assert.ok(CONCURRENCY >= 2 && peak === CONCURRENCY, `pic ${peak}, attendu ${CONCURRENCY}`)
-  assert.equal(Object.values(out).filter((e) => resumeLangs(e).length === 6).length, 8)
+  assert.equal(Object.values(out).filter((e) => resumeLangs(e).length === 7).length, 8)
   assert.ok(MAX_PER_SNAPSHOT >= 40)
 })

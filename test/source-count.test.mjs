@@ -51,9 +51,14 @@ function poolsParLangue() {
   return pools
 }
 
+// L'espagnol naît sans rédaction (TAB_ORDER.es = []) : chaque tâche source y
+// ajoute la sienne. EXEMPTION NOMMÉE, à retirer dès que armenpress/es y est.
+const SANS_REDACTION_ENCORE = ['es']
+
 test('chaque langue déclare un pool de sources non vide', () => {
   const pools = poolsParLangue()
   for (const [lang, n] of Object.entries(pools)) {
+    if (SANS_REDACTION_ENCORE.includes(lang)) continue
     assert.ok(n >= 1, `pool ${lang} vide`)
     assert.ok(MOTS.fr[n] && MOTS.en[n], `nombre ${n} absent de MOTS — ajoutez-le`)
   }

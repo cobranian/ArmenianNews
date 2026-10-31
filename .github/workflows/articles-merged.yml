@@ -59,7 +59,7 @@ jobs:
           D="src/data/culture/$SLUG"
           [ -f "$D/fr.md" ] || { echo "Pas d'article $SLUG sur main : rien à faire."; exit 0; }
           missing=""
-          for l in en hy ru de it; do [ -f "$D/$l.md" ] || missing="$missing $l"; done
+          for l in en hy ru de it es; do [ -f "$D/$l.md" ] || missing="$missing $l"; done
           if [ -z "$missing" ] && node scripts/culture-check.mjs "$SLUG"; then
             echo "Traductions présentes et à jour : rien à faire."
             exit 0

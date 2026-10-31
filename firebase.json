@@ -22,6 +22,16 @@
           "regex": "^/it/events/?$",
           "destination": "/it/eventi/",
           "type": 301
+        },
+        {
+          "regex": "^/es/?$",
+          "destination": "https://armenianews.org/es/",
+          "type": 301
+        },
+        {
+          "regex": "^/es/(?P<rest>.+)$",
+          "destination": "https://armenianews.org/es/:rest",
+          "type": 301
         }
       ],
       "headers": [
@@ -95,6 +105,11 @@
         {
           "regex": "^/agenda/?$",
           "destination": "/events/",
+          "type": 301
+        },
+        {
+          "regex": "^/es/(?:events|agenda)/?$",
+          "destination": "/es/eventos/",
           "type": 301
         },
         {
