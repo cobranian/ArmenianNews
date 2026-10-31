@@ -495,6 +495,14 @@ export function xDefaultFor(view = 'home') {
   return urlFor('en', view)
 }
 
+// Les comptes à afficher sur une page (vitrine, langue) : ceux de la langue
+// d'abord, ceux de la vitrine pour le reste, dans l'ordre de `social`.
+export function socialFor(siteId, lang) {
+  const site = SITES[siteId]
+  if (!site?.social) return {}
+  return { ...site.social, ...(site.socialByLang?.[lang] ?? {}) }
+}
+
 // Identifiants hérités des deux premières lettres, ÉCRITS EN DUR et non
 // déduits de l'ordre de `pages` : réordonner les pages ferait sinon lire à une
 // autre langue la clé et le registre de `ch` / `org` — la lettre arménienne
@@ -506,14 +514,6 @@ const LETTER_ID = { fr: 'ch', en: 'org' }
 // secret BUTTONDOWN_API_KEY_<ID> : le nom de la vitrine pour sa langue de tête
 // (`ch`, `org` — les clés d'avant le passage à six listes, gardées telles
 // quelles pour ne migrer ni le registre ni les secrets), la langue sinon.
-// Les comptes à afficher sur une page (vitrine, langue) : ceux de la langue
-// d'abord, ceux de la vitrine pour le reste, dans l'ordre de `social`.
-export function socialFor(siteId, lang) {
-  const site = SITES[siteId]
-  if (!site?.social) return {}
-  return { ...site.social, ...(site.socialByLang?.[lang] ?? {}) }
-}
-
 export function newsletterLetters() {
   const out = []
   for (const [siteId, site] of Object.entries(SITES))

@@ -121,6 +121,19 @@ test('SOCIAL_KINDS : culture par défaut, valeur inconnue refusée', () => {
   assert.throws(() => parseKinds('tout'))
 })
 
+// Revue du 1er nov. 2026 : de/it/es sont facultatives et rattrapées par lots.
+// Une traduction arrivée après l'amorçage ne doit pas faire publier l'archive.
+test('une traduction tardive d’un article antérieur à l’amorçage n’est pas publiée', () => {
+  const de = CHANNELS.find((c) => c.id === 'facebook-de')
+  const fr = culture('komitas', '2026-09-01')
+  // Amorcé quand komitas n'existait qu'en français.
+  const seeded = plan({ items: [fr], channels: [de], ledger: null, kinds: ['culture'], now: new Date('2026-11-01T00:00:00Z') })
+  const vieux = { ...fr, lang: 'de' }
+  const neuf = { ...culture('sardarapat', '2026-10-30'), lang: 'de' }
+  const r = plan({ items: [fr, vieux, neuf], channels: [de], ledger: seeded.ledger, kinds: ['culture'], now: new Date('2026-11-05T12:00:00Z') })
+  assert.deepEqual(r.posts.map((p) => p.item.id), ['culture:sardarapat'])
+})
+
 test('X : 280 au plus, l’URL comptée 23', () => {
   const long = { ...culture('x', '2026-10-20'), title: 'T'.repeat(400), description: 'D'.repeat(400) }
   const { text } = compose('x', long)

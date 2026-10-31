@@ -56,11 +56,11 @@ const ICONS = {
 const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', linkedin: 'LinkedIn', youtube: 'YouTube' }
 export function SocialLinks({ className, size = 22 }) {
   const { lang } = useI18n()
-  const ACCOUNTS = Object.entries(socialFor(SITE_ID, lang))
-  if (!ACCOUNTS.length) return null
+  const accounts = Object.entries(socialFor(SITE_ID, lang))
+  if (!accounts.length) return null
   return (
     <ul className={className}>
-      {ACCOUNTS.map(([platform, url]) => (
+      {accounts.map(([platform, url]) => (
         <li key={platform}>
           <a href={url} rel="noopener noreferrer" aria-label={NAMES[platform]} title={NAMES[platform]}>
             <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" focusable="false">

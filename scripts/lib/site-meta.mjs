@@ -6,7 +6,7 @@
 // sinon les pages divergent — et une divergence dans les hreflang les fait
 // silencieusement ignorer par Google.
 import { readFileSync } from 'node:fs'
-import { SITES, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath, agendaCountryUrl, feedUrl } from '../../sites.config.js'
+import { SITES, socialFor, ALL_LANGS, urlFor, xDefaultFor, briefUrl, cultureUrl, cultureImagePath, agendaCountryUrl, feedUrl } from '../../sites.config.js'
 import { AGENDA_PAYS_STRINGS } from '../../src/agendaPaysStrings.js'
 import { countryLabel } from '../../src/worldPlace.js'
 import { eventLd } from '../../src/agendaEvents.js'
@@ -149,7 +149,9 @@ function siteGraph(site, lang) {
         ...Object.values(SITES)
           .filter((s) => s.id !== site.id)
           .map((s) => `${s.host}/`),
-        ...Object.values(site.social ?? {}),
+        // Ceux de la langue de la page en plus (socialByLang) : les mêmes
+        // que son pied de page, sans doublon.
+        ...new Set([...Object.values(site.social ?? {}), ...Object.values(socialFor(site.id, lang))]),
       ],
       logo: {
         '@type': 'ImageObject',

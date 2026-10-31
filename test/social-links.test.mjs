@@ -88,3 +88,10 @@ test('socialFor : la langue remplace la vitrine plateforme par plateforme, le re
   assert.equal(socialFor('org', 'ru').instagram, 'https://www.instagram.com/armenianews_ru/')
   assert.equal(socialFor('ch', 'it').bluesky, 'https://bsky.app/profile/it.armenieinfo.ch')
 })
+
+test('le JSON-LD d’une page de langue déclare aussi les comptes de cette langue', () => {
+  const head = headFor({ siteId: 'ch', lang: 'de' })
+  for (const url of Object.values(socialFor('ch', 'de'))) assert.ok(head.includes(url), url)
+  for (const url of Object.values(SITES.ch.social)) assert.ok(head.includes(url), url)
+  assert.ok(!headFor({ siteId: 'ch', lang: 'it' }).includes(SITES.ch.socialByLang.de.facebook), 'it cite la Page allemande')
+})
