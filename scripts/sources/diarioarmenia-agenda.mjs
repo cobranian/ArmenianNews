@@ -111,7 +111,7 @@ function eventDate(title, body, ref) {
 }
 
 // Un lieu n'est gardé que s'il se résout, via PLACE_TO_COUNTRY, vers un pays AUTRE
-// que l'Argentine ; sinon `parseAgendaPosts` met le pays lui-même (« Argentina »),
+// que l'Argentine ; sinon `parseAgendaPosts` met le pays lui-même (« Argentine », texte français comme chez Armenopole),
 // déduit de la source, sans inventer de ville : Google exige un lieu sur un Event. « Armenia 1353 » est une rue de
 // Buenos Aires : seul « en Ereván » / « en Montevideo » compte.
 function foreignPlace(text) {
@@ -144,7 +144,7 @@ export function parseAgendaPosts(postsJson, mediaJson = '[]', { now = new Date()
     out.push({
       title,
       url,
-      location: foreignPlace(`${title}. ${body}`) || 'Argentina',
+      location: foreignPlace(`${title}. ${body}`) || 'Argentine',
       date,
       rawDate: date,
       image: images.get(p.featured_media) ?? null,

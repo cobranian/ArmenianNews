@@ -72,7 +72,7 @@ export const PLACE_TO_COUNTRY = {
   france: 'france', allemagne: 'germany', russie: 'russia', liban: 'lebanon',
   canada: 'canada', grece: 'greece', italie: 'italy', belgique: 'belgium',
   'pays-bas': 'netherlands', gueldre: 'netherlands', chypre: 'cyprus', cyprus: 'cyprus',
-  argentine: 'argentina', argentina: 'argentina', australie: 'australia', bresil: 'brazil', bulgarie: 'bulgaria',
+  argentine: 'argentina', australie: 'australia', bresil: 'brazil', bulgarie: 'bulgaria',
   egypte: 'egypt', irak: 'iraq', israel: 'israel', jordanie: 'jordan', pologne: 'poland',
   qatar: 'qatar', singapour: 'singapore', syrie: 'syria', turquie: 'turkey',
   uruguay: 'uruguay', 'emirats arabes unis': 'uae',
@@ -146,7 +146,7 @@ export const PLACES = {
   'rhenanie-du-nord-westphalie': { de: 'Nordrhein-Westfalen', it: 'Renania Settentrionale-Vestfalia', en: 'North Rhine-Westphalia', hy: 'Հյուսիսային Հռենոս-Վեստֆալիա', ru: 'Северный Рейн — Вестфалия', es: 'Renania del Norte-Westfalia' },
   // Italie, Argentine
   venetie:         { de: 'Venetien', it: 'Veneto', en: 'Veneto', hy: 'Վենետո', ru: 'Венето', es: 'Véneto' },
-  argentina:       { de: 'Argentinien', it: 'Argentina', en: 'Argentina', hy: 'Արգենտինա', ru: 'Аргентина', es: 'Argentina' },
+  argentine:       { de: 'Argentinien', it: 'Argentina', en: 'Argentina', hy: 'Արգենտինա', ru: 'Аргентина', es: 'Argentina' },
   'buenos aires':  { de: 'Buenos Aires', it: 'Buenos Aires', en: 'Buenos Aires', hy: 'Բուենոս Այրես', ru: 'Буэнос-Айрес', es: 'Buenos Aires' },
   // Autriche, Belgique, Brésil, Chine, Espagne (pages ouvertes en octobre 2026)
   vienne:          { de: 'Wien', it: 'Vienna', en: 'Vienna', hy: 'Վիեննա', ru: 'Вена', es: 'Viena' },

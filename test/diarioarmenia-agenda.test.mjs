@@ -87,7 +87,7 @@ test('parseAgendaPosts : lieu gardé seulement hors Argentine', () => {
   )
   assert.equal(ev[0].location, 'Erevan')
   assert.equal(worldCountryKey(ev[0]), 'armenia')
-  assert.equal(ev[1].location, 'Argentina')
+  assert.equal(ev[1].location, 'Argentine')
   assert.equal(worldCountryKey(ev[1]), 'argentina')
 })
 
@@ -98,10 +98,12 @@ test('une date seule passe evenementsAVenir et eventLd', () => {
   assert.equal(evenementsAVenir([e], NOW.getTime(), -120).length, 1)
   assert.equal(eventLd(e).startDate, '2027-01-05')
   // Google exige un lieu : le pays lui-même, déduit de la source.
-  assert.equal(e.location, 'Argentina')
-  assert.equal(eventLd(e).location.name, 'Argentina')
+  assert.equal(e.location, 'Argentine')
+  assert.equal(eventLd(e).location.name, 'Argentine')
   assert.equal(eventLd(e).location['@type'], 'Place')
   assert.equal(worldCountryKey(e), 'argentina')
+  assert.equal(placeLabel(e.location, 'fr'), 'Argentine')
+  assert.equal(placeLabel(e.location, 'es'), 'Argentina')
   assert.equal(placeLabel(e.location, 'ru'), 'Аргентина')
   assert.equal(placeLabel(e.location, 'hy'), 'Արգենտինա')
 })
