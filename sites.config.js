@@ -196,8 +196,8 @@ export const SITES = {
     // au mauvais endroit. `null` est accepté et n'émet aucune balise.
     gaMeasurementId: 'G-N6STD6Z5CC',
     // Voir `newsletter` du .ch. Comptes en, hy, ru créés le 31 oct. 2026
-    // (armenianews-hy, armenianews-ru : contact+hy@ et contact+ru@armenianews.org).
-    // (buttondown.com/armenianews).
+    // (buttondown.com/armenianews, armenianews-hy, armenianews-ru —
+    // contact+hy@ et contact+ru@armenianews.org).
     newsletter: { lists: { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' } },
     pages: [
       { lang: 'en', path: '/' },
