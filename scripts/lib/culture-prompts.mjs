@@ -139,7 +139,7 @@ export function buildTranslateMessages({ lang, title, description, body, nameHin
     {
       role: 'system',
       content: [
-        `Tu traduis un article du français vers le ${LANG_NAME[lang]}.`,
+        `Tu traduis un article du français vers ${/^[aeiouyéèh]/.test(LANG_NAME[lang]) ? 'l’' : 'le '}${LANG_NAME[lang]}.`,
         "Traduis fidèlement : n'ajoute, ne retire et ne commente rien.",
         'Garde la structure Markdown à l’identique (intertitres « ## », gras, italique, liens).',
         'Noms propres : la graphie établie dans la langue cible.',

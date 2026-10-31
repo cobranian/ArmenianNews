@@ -74,3 +74,17 @@ test('le plugin de vite.config.js passe par eventLd, et n’écrit plus son prop
   assert.match(src, /import \{[^}]*\beventLd\b[^}]*\} from '\.\/src\/agendaEvents\.js'/)
   assert.ok(!src.includes("'@type': 'Event'"), 'vite.config.js compose encore un Event à la main')
 })
+
+test('eventLd : image relative absolutisée avec l’hôte, absolue intacte', () => {
+  const rel = { ...ev, image: '/da/x.webp' }
+  assert.equal(eventLd(rel, 'https://armenianews.org').image, 'https://armenianews.org/da/x.webp')
+  assert.equal(eventLd(ev, 'https://armenianews.org').image, ev.image)
+  assert.equal(eventLd({ ...ev, image: '//cdn.x/a.jpg' }, 'https://armenianews.org').image, '//cdn.x/a.jpg')
+  assert.equal(eventLd(rel).image, '/da/x.webp', 'sans hôte : inchangé')
+})
+
+test('agendaJsonLd : l’image relative d’un événement sort absolue', () => {
+  const futur = { ...ev, date: '2999-01-01T12:00', image: '/da/x.webp' }
+  const ld = JSON.parse(agendaJsonLd('fr', [futur], Date.now()))
+  assert.match(ld.itemListElement[0].item.image, /^https:\/\/armenieinfo\.ch\/da\/x\.webp$/)
+})

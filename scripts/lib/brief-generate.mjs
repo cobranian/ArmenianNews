@@ -22,7 +22,7 @@ import { ALL_LANGS } from '../../sites.config.js'
 import { contentLang } from '../../src/newsLangs.js'
 import { ENDPOINT, modelChain, STRONG_MODEL } from './classify-rubrics.mjs'
 import { RUBRIC_LABELS } from '../../src/rubricLabels.js'
-import { selectArticles, yerevanClock, isBriefDue, MIN_ARTICLES } from './brief-select.mjs'
+import { selectArticles, yerevanClock, isBriefDue, minArticles } from './brief-select.mjs'
 import { allowedWords, strayWords, frenchWords } from './brief-script.mjs'
 
 export const MIN_TOPICS = 3
@@ -56,6 +56,10 @@ const LANG_NAME = {
 
 export function buildBriefMessages(lang, articles) {
   const list = articles.map((a) => `${a.id}. [${a.source} · ${a.rubric}] ${a.title}`).join('\n')
+  // Fourchette de sujets bornée par le nombre de titres (5 titres espagnols un
+  // lundi : jamais plus de sujets que de titres). Inchangée dès 10 titres.
+  const hi = Math.min(MAX_TOPICS, articles.length)
+  const lo = Math.min(MIN_TOPICS + 2, Math.max(MIN_TOPICS, Math.floor(articles.length / 2)))
   const system =
     "Tu rédiges la brève quotidienne d'un site d'actualité arménienne, à partir des titres du jour " +
     'de plusieurs rédactions (chaque ligne : numéro, [source · rubrique], titre). ' +
@@ -67,7 +71,7 @@ export function buildBriefMessages(lang, articles) {
         `L'introduction, chaque titre et chaque phrase de ta réponse doivent être entièrement en ${LANG_NAME[lang]} : ` +
         "pas une seule phrase en français, même si les consignes et les titres ci-dessus le sont. "
       : '') +
-    `Choisis entre ${MIN_TOPICS + 2} et ${MAX_TOPICS} sujets du jour, en privilégiant ceux que PLUSIEURS sources couvrent. ` +
+    `Choisis entre ${lo} et ${hi} sujets du jour, en privilégiant ceux que PLUSIEURS sources couvrent. ` +
     'Pour chaque sujet : un titre court, 2 ou 3 phrases, une rubrique parmi ' +
     `${RUBRICS.join(', ')}, et la liste des numéros des titres qui le traitent. ` +
     "N'affirme rien qui ne figure pas dans les titres ; ne cite aucune URL. " +
@@ -221,7 +225,7 @@ export async function generateBriefs({
         continue
       }
       const articles = selectArticles(news, lang, now)
-      if (articles.length < MIN_ARTICLES) {
+      if (articles.length < minArticles(lang)) {
         log.log(`  · brief/${lang}: trop peu d'articles (${articles.length})`)
         continue
       }

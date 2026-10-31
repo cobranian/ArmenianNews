@@ -545,7 +545,7 @@ html:lang(hy) {
   width: 26px;
   height: 26px;
 }
-/* Entre la bascule du burger (760px) et ~1200px, les six liens ne tiennent pas
+/* Entre la bascule du burger (760px) et ~1200px, les sept liens ne tiennent pas
    sur une ligne à côté de la marque et du sélecteur de langue. Sans retour à la
    ligne, la liste refusait de descendre sous la somme de ses mots les plus
    longs et poussait `.lang` hors de l'écran : page défilable de côté, texture
@@ -660,7 +660,7 @@ html:lang(hy) .nav__links {
    (fond, filet bas), pour que les deux replis se lisent comme un système.
 
    Pourquoi 900 et pas la bascule mobile (640) : entre le burger (760) et
-   ~900px, les 251px du sélecteur à six pastilles faisaient passer les liens
+   ~900px, les 251px du sélecteur à sept pastilles faisaient passer les liens
    sur TROIS ou quatre rangs (barre de 109 à 139px, mesuré sur les six
    langues), là où la barre à quatre pastilles s'arrêtait à deux (79px).
    Replié jusqu'à 900, aucune langue ne dépasse deux rangs.
@@ -677,7 +677,7 @@ html:lang(hy) .nav__links {
    pastilles en place et fait passer le groupe de droite sur deux rangs.
 
    Bande fermée en `visibility: hidden` et non en opacité : un menu fermé ne
-   doit pas garder six liens invisibles dans le parcours du clavier (l'inverse
+   doit pas garder sept liens invisibles dans le parcours du clavier (l'inverse
    du piège du tambour, où l'élément masqué devait RESTER focusable). */
 .lang-fold,
 .lang-fold__panel {

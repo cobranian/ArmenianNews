@@ -9,7 +9,7 @@ description: Use before claiming any visual, layout, CSS, mobile or responsive c
 composants déplacés de `CLAUDE.md` — `font-size-adjust`, polices, tambours,
 rail, chargement différé, cibles tactiles.
 
-Ce dépôt sert **24 pages** : deux vitrines × six langues × quatre vues,
+Ce dépôt sert **28 pages** : sept langues × quatre vues,
 en **deux thèmes**, sur des écritures latine, arménienne et cyrillique. Une
 mesure prise à un seul endroit ne prouve presque rien.
 
@@ -63,7 +63,7 @@ commit.
 - **Largeurs** : 360 et 390 (téléphones), 700 (petite tablette, la largeur qui
   révèle les césures ingrates), 1000 et 1400+ (bureau). La bascule mobile de ce
   site est **640px**.
-- **Langues** : les six. Les longueurs de noms diffèrent — une césure juste en
+- **Langues** : les sept. Les longueurs de noms diffèrent — une césure juste en
   français peut être laide en anglais — et l'arménien a une hauteur de ligne
   propre, qui a déjà fait tomber un bouton de 44px à 43px.
 - **Thèmes** : jour **et** nuit. Un fond en dur ment sous l'un des deux ; un
@@ -80,7 +80,7 @@ commit.
 npm run lint     # 0 erreur, EXACTEMENT 5 avertissements connus (voir CLAUDE.md)
 npm test         # toute la suite (~690 tests)
 npm run build
-npm run check    # les 24 pages, hreflang, sitemaps, cartes de partage
+npm run check    # les 28 pages, hreflang, sitemaps, cartes de partage
 ```
 
 Un **sixième** avertissement de lint est une régression, pas un détail.

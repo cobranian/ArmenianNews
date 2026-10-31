@@ -199,7 +199,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 - **La carte de partage (`og:image`) est propre à chaque vitrine**, décrite par
   `ogImage` dans `sites.config.js` : `/og-image-ch.jpg` pour le .ch (français),
   `/og-image-org.jpg` pour le .org (anglais). Elle suit la **vitrine et non la
-  langue** : les trois pages du .org partagent la carte anglaise, la marque
+  langue** : les quatre pages du .org partagent la carte anglaise, la marque
   étant unique par domaine.
 
   **Renommer une carte est le SEUL moyen de casser le cache des réseaux**, et
@@ -329,7 +329,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   `scripts/build-sites.mjs` via `VITE_SITE_ID` ; `npm run dev` n'en pose pas et
   travaille donc sur le .ch) et `orderedLangs()`, qui place la langue de tête
   du domaine en premier dans le sélecteur sans changer l'ordre relatif des
-  autres — sur les trois pages du .org la barre reste « EN FR DE IT ՀԱՅ РУ », seule
+  autres — sur les quatre pages du .org la barre reste « EN FR DE IT ES ՀԱՅ РУ », seule
   la mise en évidence se déplace. Module plat lui aussi, pour la même raison
   que `src/seo.js` : y ajouter ces exports dans `i18n.jsx` ferait remonter le
   lint d'un avertissement `react-refresh` de plus (voir la section Lint).

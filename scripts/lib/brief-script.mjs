@@ -76,7 +76,8 @@ const FRENCH_MARKERS_BY_LANG = {
 // espagnols : absents. L'accent français ne peut pas être FRENCH_ACCENT, qui
 // prend « también » (é + lettre) pour du français.
 const ES_MARKERS = new Set([
-  ...['les', 'une', 'dans', 'pour', 'avec', 'sont', 'cette', 'ont', 'aux', 'été', 'ses', 'leur', 'leurs', 'est', 'qui', 'des', 'du'],
+  // ni « les » ni « une » : mots espagnols ordinaires (« les permitirá », « que une »)
+  ...['dans', 'pour', 'avec', 'sont', 'cette', 'ont', 'aux', 'été', 'ses', 'leur', 'leurs', 'est', 'qui', 'des', 'du'],
   ...['the', 'and', 'with', 'which', 'from', 'this', 'that', 'were', 'been', 'have'],
 ])
 const ES_ACCENT = /[àâçèêëîïôûùœ]/u

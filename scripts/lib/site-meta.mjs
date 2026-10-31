@@ -441,7 +441,7 @@ export function agendaPaysHeadFor({ siteId, lang, key, events, robots = null }) 
   const country = countryLabel(key, lang)
   const url = agendaCountryUrl(lang, key)
   const graph = siteGraph(site, lang)
-  graph.push(...events.map(eventLd))
+  graph.push(...events.map((e) => eventLd(e, site.host)))
   graph.push(breadcrumb(lang, [[BRIEF_STRINGS[lang].agenda, urlFor(lang, 'agenda')], [country, url]]))
   return composeHead({
     site, lang, url,

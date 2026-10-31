@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { mkdtemp, readFile, writeFile, mkdir, readdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
-import { selectArticles } from '../scripts/lib/brief-select.mjs'
+import { selectArticles, minArticles } from '../scripts/lib/brief-select.mjs'
 import {
   buildBriefMessages,
   parseBrief,
@@ -362,4 +362,29 @@ test('parseBrief es : un sujet écrit en anglais ou en français est écarté, l
   assert.ok(parseBrief(wrap(ok), articles, 'es'))
   const intro = JSON.stringify({ intro: 'The government announced the measures with the region and the parliament.', topics: [ok, ok, ok] })
   assert.equal(parseBrief(intro, articles, 'es').intro, '')
+})
+
+// ---- espagnol : seuil propre, fourchette de sujets, faux amis ----
+
+test('minArticles : 5 pour l’espagnol, 10 ailleurs', () => {
+  assert.equal(minArticles('es'), 5)
+  assert.equal(minArticles('fr'), 10)
+})
+
+test('generateBriefs : 6 articles suffisent à l’espagnol, pas au français', async () => {
+  const six = { courrier: [{ sectionKey: 'societe', articles: Array.from({ length: 6 }, (_, i) => recent(i)) }],
+    armenpress: { es: [{ categoryKey: 'armenia', articles: Array.from({ length: 6 }, (_, i) => recent(200 + i)) }] } }
+  const dir = await mkdtemp(path.join(tmpdir(), 'brief-'))
+  const calls = []
+  const done = await generateBriefs({ news: six, now: NOW, dir, apiKey: 'k', fetchImpl: fakeFetch(okReply, calls), log: quiet })
+  assert.ok(done.includes('es'), 'es avec 6 articles : brève rédigée')
+  assert.ok(!done.includes('fr'), 'fr avec 6 articles : toujours sautée')
+})
+
+test('buildBriefMessages : jamais plus de sujets demandés que de titres', () => {
+  const cinq = Array.from({ length: 5 }, (_, i) => ({ id: i + 1, source: 's', rubric: 'politique', title: `T${i}` }))
+  const [sys] = buildBriefMessages('es', cinq)
+  assert.match(sys.content, /entre 3 et 5 sujets/)
+  const dix = Array.from({ length: 12 }, (_, i) => ({ id: i + 1, source: 's', rubric: 'politique', title: `T${i}` }))
+  assert.match(buildBriefMessages('fr', dix)[0].content, /entre 5 et 7 sujets/)
 })

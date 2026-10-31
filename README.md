@@ -3,7 +3,7 @@
 An **hourly snapshot** of Armenian life — news, events, and social media —
 served as **two showcases from one codebase**: **Arménie Info**
 (armenieinfo.ch, French) and **Armenia News** (armenianews.org, English +
-Armenian `/hy/` + Russian `/ru/`). Same dark *"Apricot Press"* broadsheet
+Spanish `/es/` + Armenian `/hy/` + Russian `/ru/`). Same dark *"Apricot Press"* broadsheet
 aesthetic on both (volcanic basalt lit by apricot, the heraldic orange of the
 Armenian flag), same **day / night** toggle. Combined, the two domains cover
 seven languages: **Français / Deutsch / Italiano** (armenieinfo.ch) and **English / Español / Հայերեն / Русский** (armenianews.org) — see [The two
@@ -14,7 +14,7 @@ renders that data into two static Vite + React bundles (`dist/ch/`,
 `dist/org/`). No backend at runtime.
 
 **Live:** https://armenieinfo.ch (French) · https://armenianews.org
-(English / Հայերեն / Русский)
+(English / Español / Հայերեն / Русский)
 
 ## Sections
 
@@ -847,7 +847,7 @@ L'hôte du Worker figure dans `connect-src`, sur les deux CSP de `firebase.json`
 - GitHub Actions scheduled runs can be delayed a few minutes under load — the
   snapshot is hourly but not necessarily exactly on `:00`.
 - Content (articles, posts) stays in its original language; only the interface
-  chrome is translated. The interface is **quadrilingual** (fr / en / hy / ru);
+  chrome is translated. The interface has **seven languages** (fr / de / it / en / es / hy / ru);
   under the Russian UI a reader sees **Armenpress, CivilNet, NEWS.am and the
   ArmRadio news
   tab in Russian**, while Courrier (and the other French sources) stay French —

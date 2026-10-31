@@ -56,7 +56,8 @@ test('parseBrief sans langue : comportement inchangé', () => {
 
 test('es : frenchWords repère le français ET l\'anglais, pas l\'espagnol', () => {
   assert.deepEqual(frenchWords('La reunión también está prevista en el sur del país', 'es'), [])
-  assert.ok(frenchWords('Le gouvernement a annoncé les mesures dans la région', 'es').length)
+  assert.ok(frenchWords('Le gouvernement a annoncé que les mesures sont prises dans la région pour les habitants avec des aides', 'es').length)
+  assert.deepEqual(frenchWords('El puente que une a ambas comunidades les permitirá dialogar', 'es'), [])
   assert.ok(frenchWords('The government announced the measures with the region', 'es').length)
   assert.ok(strayWords('Ереван', 'es').length)
 })

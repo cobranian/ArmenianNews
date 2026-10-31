@@ -100,10 +100,10 @@ export function Nav({ view = 'home' }) {
               orderedLangs), pas de la langue affichée : la barre reste stable
               quand on navigue à l'intérieur du .org.
 
-              Six pastilles ne tiennent pas à côté de la marque, du thème et
+              Sept pastilles ne tiennent pas à côté de la marque, du thème et
               du menu sur un téléphone (mesuré : 427px de large à 360 et 390).
               Sous 960px (pourquoi 960 : global.css, .lang-fold), le bouton
-              ne montre que la langue courante et déplie les six liens dans
+              ne montre que la langue courante et déplie les sept liens dans
               une bande sous la barre, comme le menu. Les
               liens restent dans le HTML de chaque page, repli ou pas : le
               maillage entre langues ne dépend pas du toucher. Sur grand
