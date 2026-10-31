@@ -85,5 +85,6 @@ test('socialFor : la langue remplace la vitrine plateforme par plateforme, le re
   assert.deepEqual(Object.keys(es), Object.keys(SITES.org.social))
   assert.deepEqual(socialFor('org', 'en'), SITES.org.social)
   assert.equal(socialFor('ch', 'de').facebook, 'https://www.facebook.com/61596218245485')
-  assert.equal(socialFor('org', 'ru').instagram, SITES.org.social.instagram)
+  assert.equal(socialFor('org', 'ru').instagram, 'https://www.instagram.com/armenianews_ru/')
+  assert.equal(socialFor('ch', 'it').bluesky, 'https://bsky.app/profile/it.armenieinfo.ch')
 })
