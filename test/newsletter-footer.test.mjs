@@ -83,10 +83,10 @@ function avecListes(lists, fn) {
   }
 }
 
-test('comptes confirmés : fr et en (31 oct. 2026) ; les autres langues attendent leur compte', () => {
+test('comptes confirmés : fr, de, it, en (31 oct. 2026) ; hy et ru attendent leur compte', () => {
   // Noms vérifiés dans Buttondown. En poser un sans créer le compte
   // publierait un formulaire qui inscrit chez un inconnu, ou nulle part.
-  assert.deepEqual(SITES.ch.newsletter.lists, { fr: 'armenieinfo', de: null, it: null })
+  assert.deepEqual(SITES.ch.newsletter.lists, { fr: 'armenieinfo', de: 'armenieinfo-de', it: 'armenieinfo-it' })
   assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', hy: null, ru: null })
 })
 
@@ -110,7 +110,7 @@ test('identifiants des lettres : ch et org pour fr et en (registre et secrets d�
 })
 
 test('newsletterAction : l’URL du compte de LA langue, null sans compte', () => {
-  avecListes({ ch: { de: 'compte-de' } }, () => {
+  avecListes({ ch: { de: 'compte-de', it: null } }, () => {
     assert.equal(newsletterAction('ch', 'de'), 'https://buttondown.com/api/emails/embed-subscribe/compte-de')
     assert.equal(newsletterAction('ch', 'fr'), 'https://buttondown.com/api/emails/embed-subscribe/armenieinfo')
     assert.equal(newsletterAction('ch', 'it'), null)
