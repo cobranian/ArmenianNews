@@ -1,5 +1,6 @@
-// Le pied de page annonce le flux RSS et, sur la langue de tête de chaque
-// vitrine, le formulaire d'inscription à la lettre hebdomadaire (Buttondown).
+// Le pied de page annonce le flux RSS et, sur chaque langue dont la liste a
+// un compte, le formulaire d'inscription à la lettre hebdomadaire (Buttondown,
+// une liste par langue).
 //
 // Trois pièges muets gardés ici :
 // - une clé absente d'un bloc STRINGS ne casse rien : t() retombe sur le
@@ -8,14 +9,14 @@
 //   côté passe la préversion et bloque l'envoi du formulaire en production sur
 //   l'autre domaine, sans la moindre erreur visible côté site ;
 // - un nom de compte Buttondown deviné publierait un formulaire qui inscrit
-//   chez un inconnu : tant que `buttondown` vaut null, aucun formulaire ;
-// - la lettre est écrite dans UNE langue par vitrine : si elle divergeait de
-//   la langue de tête, le formulaire s'afficherait sur une page dont la lettre
-//   n'est pas dans sa langue.
+//   chez un inconnu : tant que la liste d'une langue vaut null, aucun
+//   formulaire sur cette langue ;
+// - une liste par langue : le formulaire d'une page inscrit à la lettre de
+//   SA langue, jamais à celle d'une autre.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { SITES, newsletterAction, newsletterFormAction, primaryLang } from '../sites.config.js'
+import { SITES, newsletterAction, newsletterLetters } from '../sites.config.js'
 import { BLOC_LANGS, valeur } from './helpers/i18n-blocks.mjs'
 
 const CLES = [
@@ -68,85 +69,81 @@ test('CSP : buttondown autorisé des deux côtés', async () => {
   }
 })
 
-// Pose un compte Buttondown le temps d'un test : SITES est l'objet que lisent
-// newsletterAction et newsletterFormAction, donc la logique éprouvée est celle
+// Pose des comptes Buttondown le temps d'un test : SITES est l'objet que lisent
+// newsletterAction, donc la logique éprouvée est celle
 // du pied de page, pas une copie.
-function avecCompte(siteId, buttondown, fn) {
-  const avant = SITES[siteId].newsletter
+function avecListes(lists, fn) {
+  const avant = {}
+  for (const id of Object.keys(SITES)) avant[id] = SITES[id].newsletter
   try {
-    SITES[siteId].newsletter = { ...avant, buttondown }
+    for (const [id, l] of Object.entries(lists)) SITES[id].newsletter = { ...avant[id], lists: { ...avant[id].lists, ...l } }
     fn()
   } finally {
-    SITES[siteId].newsletter = avant
+    for (const id of Object.keys(avant)) SITES[id].newsletter = avant[id]
   }
 }
 
-test('comptes confirmés (31 oct. 2026) : formulaire sur la seule langue de tête', () => {
-  // Noms vérifiés dans Buttondown. En changer un sans créer le compte
+test('comptes confirmés : fr et en (31 oct. 2026) ; les autres langues attendent leur compte', () => {
+  // Noms vérifiés dans Buttondown. En poser un sans créer le compte
   // publierait un formulaire qui inscrit chez un inconnu, ou nulle part.
-  assert.equal(SITES.ch.newsletter.buttondown, 'armenieinfo')
-  assert.equal(SITES.org.newsletter.buttondown, 'armenianews')
-  for (const id of Object.keys(SITES)) {
-    for (const { lang } of SITES[id].pages) {
-      const action = newsletterFormAction(id, lang)
-      if (lang === SITES[id].newsletter.lang) assert.equal(action, newsletterAction(id), `${id}/${lang}`)
-      else assert.equal(action, null, `${id}/${lang}`)
-    }
+  assert.deepEqual(SITES.ch.newsletter.lists, { fr: 'armenieinfo', de: null, it: null })
+  assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', hy: null, ru: null })
+})
+
+test('une liste déclarée pour CHAQUE langue de chaque vitrine, et aucune autre', () => {
+  for (const site of Object.values(SITES))
+    assert.deepEqual(Object.keys(site.newsletter.lists).sort(), site.pages.map((p) => p.lang).sort(), site.id)
+})
+
+test('identifiants des lettres : ch et org pour fr et en (registre et secrets d’avant), la langue sinon', () => {
+  const ids = Object.fromEntries(newsletterLetters().map((l) => [l.lang, l.id]))
+  assert.deepEqual(ids, { fr: 'ch', de: 'de', it: 'it', en: 'org', hy: 'hy', ru: 'ru' })
+  // Indépendants de l'ordre des pages : réordonner ne déplace pas la clé `org`.
+  const avant = SITES.org.pages
+  try {
+    SITES.org.pages = [...avant].reverse()
+    assert.equal(newsletterLetters().find((l) => l.lang === 'en').id, 'org')
+    assert.equal(newsletterLetters().find((l) => l.lang === 'ru').id, 'ru')
+  } finally {
+    SITES.org.pages = avant
   }
 })
 
-test('newsletterAction : URL Buttondown une fois le compte posé, null sans lettre', () => {
-  avecCompte('ch', 'compte-test', () => {
-    assert.equal(newsletterAction('ch'), 'https://buttondown.com/api/emails/embed-subscribe/compte-test')
+test('newsletterAction : l’URL du compte de LA langue, null sans compte', () => {
+  avecListes({ ch: { de: 'compte-de' } }, () => {
+    assert.equal(newsletterAction('ch', 'de'), 'https://buttondown.com/api/emails/embed-subscribe/compte-de')
+    assert.equal(newsletterAction('ch', 'fr'), 'https://buttondown.com/api/emails/embed-subscribe/armenieinfo')
+    assert.equal(newsletterAction('ch', 'it'), null)
+    assert.equal(newsletterAction('ch', 'en'), null, 'une langue hors de la vitrine')
   })
-  const avant = SITES.ch.newsletter
-  try {
-    SITES.ch.newsletter = null
-    assert.equal(newsletterAction('ch'), null)
-    assert.equal(newsletterFormAction('ch', 'fr'), null)
-  } finally {
-    SITES.ch.newsletter = avant
-  }
 })
 
-test('compte posé : formulaire sur la seule langue de la lettre', () => {
-  for (const id of Object.keys(SITES)) {
-    avecCompte(id, 'compte-test', () => {
-      for (const { lang } of SITES[id].pages) {
-        const action = newsletterFormAction(id, lang)
-        if (lang === SITES[id].newsletter.lang) assert.equal(action, newsletterAction(id), `${id}/${lang}`)
-        else assert.equal(action, null, `${id}/${lang} : formulaire hors de la langue de la lettre`)
-      }
-    })
-  }
-})
-
-test('le pied de page passe par newsletterFormAction', async () => {
-  const src = await readFile(new URL('../src/components/Footer.jsx', import.meta.url), 'utf-8')
-  assert.match(src, /newsletterFormAction\(SITE_ID, lang\)/)
-  assert.ok(!src.includes('newsletterAction('), 'le pied de page contourne la garde du compte')
-})
-
-test('langue de la lettre = langue de tête de la vitrine', () => {
-  assert.equal(SITES.ch.newsletter.lang, primaryLang('ch'))
-  assert.equal(SITES.org.newsletter.lang, primaryLang('org'))
-})
-
-test('formulaire : seulement sur la langue de tête, pour chaque (vitrine, langue), compte simulé', () => {
-  const sauve = {}
-  for (const [id, lead] of [['ch', 'fr'], ['org', 'en']]) {
-    sauve[id] = SITES[id].newsletter.buttondown
-    SITES[id].newsletter.buttondown = 'compte-test'
-    assert.equal(SITES[id].newsletter.lang, lead)
-  }
-  try {
-    for (const site of Object.values(SITES)) {
-      for (const page of site.pages) {
-        const attendu = site.newsletter.lang === page.lang
-        assert.equal(newsletterFormAction(site.id, page.lang) !== null, attendu, `${site.id}/${page.lang}`)
-      }
+test('formulaire : sur chaque page dont la liste a un compte, vers SA liste', () => {
+  for (const site of Object.values(SITES))
+    for (const page of site.pages) {
+      const attendu = site.newsletter.lists[page.lang]
+      assert.equal(newsletterAction(site.id, page.lang), attendu ? newsletterAction(site.id, page.lang) : null, `${site.id}/${page.lang}`)
     }
-  } finally {
-    for (const id of Object.keys(sauve)) SITES[id].newsletter.buttondown = sauve[id]
+  avecListes({ ch: { de: 'x-de', it: 'x-it' }, org: { hy: 'x-hy', ru: 'x-ru' } }, () => {
+    for (const site of Object.values(SITES))
+      for (const page of site.pages) {
+        const action = newsletterAction(site.id, page.lang)
+        assert.ok(action?.endsWith(`/${SITES[site.id].newsletter.lists[page.lang]}`), `${site.id}/${page.lang}`)
+      }
+  })
+})
+
+test('le pied de page passe par newsletterAction(SITE_ID, lang)', async () => {
+  const src = await readFile(new URL('../src/components/Footer.jsx', import.meta.url), 'utf-8')
+  // La langue de la PAGE : une autre ferait inscrire à la lettre d'une autre langue.
+  assert.match(src, /newsletterAction\(SITE_ID, lang\)/)
+  assert.equal(src.match(/newsletterAction\(/g).length, 1)
+})
+
+test('chaque secret de lettre est déclaré dans newsletter.yml', async () => {
+  const yml = await readFile(new URL('../.github/workflows/newsletter.yml', import.meta.url), 'utf-8')
+  for (const { id } of newsletterLetters()) {
+    const nom = `BUTTONDOWN_API_KEY_${id.toUpperCase()}`
+    assert.ok(yml.includes(`${nom}: \${{ secrets.${nom} }}`), `${nom} absent de newsletter.yml`)
   }
 })

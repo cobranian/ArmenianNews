@@ -6,6 +6,7 @@ import { SITES, briefUrl, cultureUrl, agendaCountryUrl, urlFor } from '../../sit
 import { evenementsAVenir, instantMural, paysDeLAgenda, PAYS_INDEX_MIN } from '../../src/agendaEvents.js'
 import { worldCountryKey, placeLabel } from '../../src/worldPlace.js'
 import { NEWSLETTER_STRINGS } from '../../src/newsletterStrings.js'
+import { HY_MONTHS_GENITIVE } from '../../src/hyDate.js'
 
 const JOUR = 86400000
 const FENETRE_AGENDA = 14
@@ -37,8 +38,11 @@ function lundiDe(now) {
   return d - (dow - 1) * JOUR
 }
 
-export function digestFor(siteId, { briefs, culture, events, now }) {
-  const lang = SITES[siteId].newsletter.lang
+// `lang` : la langue de la lettre (une liste par langue, sites.config.js) ;
+// par défaut la langue de tête de la vitrine. L'agenda suit la vitrine
+// (`agendaPays`), pas la langue.
+export function digestFor(siteId, { briefs, culture, events, now, lang = SITES[siteId].pages[0].lang }) {
+  if (!(lang in (SITES[siteId].newsletter?.lists ?? {}))) throw new Error(`pas de lettre ${lang} sur ${siteId}`)
   const S = NEWSLETTER_STRINGS[lang]
   const week = isoWeek(now)
   const utm = `?utm_source=newsletter&utm_medium=email&utm_campaign=hebdo-${week}`
@@ -63,7 +67,12 @@ export function digestFor(siteId, { briefs, culture, events, now }) {
 
   // Heure murale lue comme UTC (décalage 0) : le résultat ne dépend pas de la
   // machine qui compose le numéro.
-  const fmtDate = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', timeZone: 'UTC' })
+  // L'arménien a ses mois écrits en dur (src/hyDate.js) : Intl dépend de
+  // l'ICU de la machine, et un Node à ICU réduit rendrait une autre langue.
+  const fmtDate =
+    lang === 'hy'
+      ? { format: (d) => `${d.getUTCDate()} ${HY_MONTHS_GENITIVE[d.getUTCMonth()]}` }
+      : new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', timeZone: 'UTC' })
   const aVenir = evenementsAVenir(events || [], t0, 0)
   // Même règle que le sitemap : un lien vers un pays seulement si sa page est
   // bâtie ET indexable (clé connue, au moins PAYS_INDEX_MIN événements à venir,

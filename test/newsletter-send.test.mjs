@@ -6,6 +6,7 @@
 // composée, jamais son envoi.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { readFile } from 'node:fs/promises'
 import { planSends, buttondownRequest, checkCreated } from '../scripts/newsletter-send.mjs'
 import { SITES } from '../sites.config.js'
 
@@ -35,19 +36,22 @@ test('vitrine sans compte Buttondown : désactivée, même avec clé', () => {
     hasAccount: (id) => id === 'org',
     log: (l) => lines.push(l),
   })
-  assert.deepEqual(r.map((s) => s.siteId), ['org'])
-  assert.ok(lines.includes('✗ newsletter/ch: désactivée (pas de compte Buttondown)'))
+  assert.deepEqual(r.map((s) => s.id), ['org'])
+  assert.ok(lines.includes('· newsletter/ch: en attente (pas de compte Buttondown)'))
 })
 
 test('par défaut, le compte est lu dans sites.config.js', () => {
   const r = planSends({ registry: {}, digests: { ch: digest(), org: digest() }, hasKey: keys, log: quiet })
-  assert.deepEqual(r.map((s) => s.siteId), ['ch', 'org'])
+  assert.deepEqual(r.map((s) => s.id), ['ch', 'org'])
   const avant = SITES.ch.newsletter
   const lines = []
   try {
-    SITES.ch.newsletter = { ...avant, buttondown: null }
+    SITES.ch.newsletter = { ...avant, lists: { ...avant.lists, fr: null } }
     assert.deepEqual(planSends({ registry: {}, digests: { ch: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
-    assert.ok(lines.includes('✗ newsletter/ch: désactivée (pas de compte Buttondown)'))
+    assert.ok(lines.includes('· newsletter/ch: en attente (pas de compte Buttondown)'))
+    // de n'a pas encore de compte : rien ne part, même avec une clé.
+    assert.deepEqual(planSends({ registry: {}, digests: { de: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
+    assert.ok(lines.includes('· newsletter/de: en attente (pas de compte Buttondown)'))
   } finally {
     SITES.ch.newsletter = avant
   }
@@ -56,18 +60,18 @@ test('par défaut, le compte est lu dans sites.config.js', () => {
 test('semaine suivante = envoi', () => {
   const d = digest()
   const r = planSends({ registry: { ch: '2026-W44' }, digests: { ch: d }, hasKey: keys, hasAccount: keys, log: quiet })
-  assert.deepEqual(r, [{ siteId: 'ch', digest: d }])
+  assert.deepEqual(r, [{ id: 'ch', digest: d, first: false }])
 })
 
 test('registre vide = envoi des deux vitrines', () => {
   const r = planSends({ registry: {}, digests: { ch: digest(), org: digest() }, hasKey: keys, hasAccount: keys, log: quiet })
-  assert.deepEqual(r.map((s) => s.siteId), ['ch', 'org'])
+  assert.deepEqual(r.map((s) => s.id), ['ch', 'org'])
 })
 
 test('digest null écarté', () => {
   const lines = []
   const r = planSends({ registry: {}, digests: { ch: null, org: digest() }, hasKey: keys, hasAccount: keys, log: (l) => lines.push(l) })
-  assert.deepEqual(r.map((s) => s.siteId), ['org'])
+  assert.deepEqual(r.map((s) => s.id), ['org'])
   assert.ok(lines.some((l) => l.includes('✗ newsletter/ch') && l.includes('semaine vide')))
 })
 
@@ -80,7 +84,7 @@ test('vitrine sans clé écartée', () => {
     hasAccount: keys,
     log: (l) => lines.push(l),
   })
-  assert.deepEqual(r.map((s) => s.siteId), ['ch'])
+  assert.deepEqual(r.map((s) => s.id), ['ch'])
   assert.ok(lines.some((l) => l.includes('✗ newsletter/org') && l.includes('pas de clé')))
 })
 
@@ -134,4 +138,14 @@ test('workflow : planifié seulement si NEWSLETTER_ENABLED, à :50 (hors du push
     yml.includes("if: github.event_name == 'workflow_dispatch' || vars.NEWSLETTER_ENABLED == 'true'"),
     'le job planifié doit être gardé par vars.NEWSLETTER_ENABLED',
   )
+})
+
+test('premier numéro d’une lettre : marqué « first » (brouillon forcé), les suivants non', () => {
+  const r = planSends({ registry: { ch: '2026-W44' }, digests: { ch: digest(), de: digest() }, hasKey: keys, hasAccount: keys, log: quiet })
+  assert.deepEqual(r.map((s) => [s.id, s.first]), [['ch', false], ['de', true]])
+})
+
+test('envoi : un premier numéro part en brouillon même si NEWSLETTER_STATUS dit autre chose', async () => {
+  const src = await readFile(new URL('../scripts/newsletter-send.mjs', import.meta.url), 'utf-8')
+  assert.match(src, /const status = s\.first \? 'draft' : global/)
 })

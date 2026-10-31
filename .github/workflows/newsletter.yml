@@ -1,6 +1,6 @@
 name: Lettre — envoi hebdomadaire
 
-# Une fois par semaine ISO et par vitrine, le numéro de la semaine part à
+# Une fois par semaine ISO et par lettre (une par langue), le numéro de la semaine part à
 # Buttondown (scripts/newsletter-send.mjs). Trois passages (lundi, mardi,
 # mercredi) : le registre src/data/newsletter-sent.json fait qu'un seul envoie,
 # et rattrape un lundi sauté par le cron de GitHub (il en saute, voir
@@ -37,6 +37,10 @@ jobs:
       NEWSLETTER_STATUS: ${{ vars.NEWSLETTER_STATUS }}
       BUTTONDOWN_API_KEY_CH: ${{ secrets.BUTTONDOWN_API_KEY_CH }}
       BUTTONDOWN_API_KEY_ORG: ${{ secrets.BUTTONDOWN_API_KEY_ORG }}
+      BUTTONDOWN_API_KEY_DE: ${{ secrets.BUTTONDOWN_API_KEY_DE }}
+      BUTTONDOWN_API_KEY_IT: ${{ secrets.BUTTONDOWN_API_KEY_IT }}
+      BUTTONDOWN_API_KEY_HY: ${{ secrets.BUTTONDOWN_API_KEY_HY }}
+      BUTTONDOWN_API_KEY_RU: ${{ secrets.BUTTONDOWN_API_KEY_RU }}
     steps:
       # main et non le commit du déclencheur : brèves, Culture et agenda y sont
       # poussés chaque heure par le snapshot.
