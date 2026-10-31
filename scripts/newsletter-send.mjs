@@ -16,7 +16,7 @@
 //        l'aperçu local des deux numéros, avant même que les comptes existent.
 //
 // Variables : BUTTONDOWN_API_KEY_<ID> par lettre — CH (fr), ORG (en), DE, IT,
-// HY, RU (une lettre sans clé est ignorée) et NEWSLETTER_STATUS (statut Buttondown, `draft` par défaut).
+// HY, RU, ES (une lettre sans clé est ignorée) et NEWSLETTER_STATUS (statut Buttondown, `draft` par défaut).
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'

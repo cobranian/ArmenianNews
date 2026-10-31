@@ -83,17 +83,16 @@ function avecListes(lists, fn) {
   }
 }
 
-test('comptes confirmés dans les six langues (31 oct. 2026)', () => {
+test('comptes confirmés dans les sept langues (31 oct. 2026)', () => {
   // Noms vérifiés dans Buttondown. En poser un sans créer le compte
   // publierait un formulaire qui inscrit chez un inconnu, ou nulle part.
   assert.deepEqual(SITES.ch.newsletter.lists, { fr: 'armenieinfo', de: 'armenieinfo-de', it: 'armenieinfo-it' })
-  assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' })
+  assert.deepEqual(SITES.org.newsletter.lists, { en: 'armenianews', es: 'armenianews-es', hy: 'armenianews-hy', ru: 'armenianews-ru' })
 })
 
-// L'espagnol n'a PAS de lettre (décision de la spec : pas de compte Buttondown,
-// donc ni formulaire ni envoi). L'exemption est nommée : toute autre langue
-// sans liste fait échouer le test.
-const SANS_LETTRE = ['es']
+// Les langues sans lettre, nommées : toute autre langue sans liste fait
+// échouer le test. Vide depuis le compte espagnol (31 oct. 2026).
+const SANS_LETTRE = []
 
 test('une liste déclarée pour CHAQUE langue de chaque vitrine (sauf SANS_LETTRE), et aucune autre', () => {
   for (const site of Object.values(SITES))
@@ -102,12 +101,11 @@ test('une liste déclarée pour CHAQUE langue de chaque vitrine (sauf SANS_LETTR
       site.pages.map((p) => p.lang).filter((l) => !SANS_LETTRE.includes(l)).sort(),
       site.id,
     )
-  assert.ok(!('es' in SITES.org.newsletter.lists), 'aucun compte Buttondown pour es')
 })
 
 test('identifiants des lettres : ch et org pour fr et en (registre et secrets d’avant), la langue sinon', () => {
   const ids = Object.fromEntries(newsletterLetters().map((l) => [l.lang, l.id]))
-  assert.deepEqual(ids, { fr: 'ch', de: 'de', it: 'it', en: 'org', hy: 'hy', ru: 'ru' })
+  assert.deepEqual(ids, { fr: 'ch', de: 'de', it: 'it', en: 'org', es: 'es', hy: 'hy', ru: 'ru' })
   // Indépendants de l'ordre des pages : réordonner ne déplace pas la clé `org`.
   const avant = SITES.org.pages
   try {

@@ -197,8 +197,9 @@ export const SITES = {
     gaMeasurementId: 'G-N6STD6Z5CC',
     // Voir `newsletter` du .ch. Comptes en, hy, ru créés le 31 oct. 2026
     // (buttondown.com/armenianews, armenianews-hy, armenianews-ru —
-    // contact+hy@ et contact+ru@armenianews.org).
-    newsletter: { lists: { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' } },
+    // contact+hy@ et contact+ru@armenianews.org), es le même soir
+    // (armenianews-es, contact+es@armenianews.org).
+    newsletter: { lists: { en: 'armenianews', es: 'armenianews-es', hy: 'armenianews-hy', ru: 'armenianews-ru' } },
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'es', path: '/es/' },
