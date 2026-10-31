@@ -89,26 +89,35 @@ async function doPost() {
   if (!file) throw new Error('usage : post --plan <fichier>')
   const { dry, posts } = JSON.parse(await readFile(file, 'utf8'))
   let failed = 0
-  for (const { channel: id, item } of posts) {
+  // Un compte après l'autre, mais les comptes EN PARALLÈLE : avec ~30 canaux,
+  // l'envoi en série durait des minutes, et un push sur main annule le run
+  // (concurrency `deploy`) alors que le registre marque déjà tout « parti ».
+  const byChannel = new Map()
+  for (const p of posts) byChannel.set(p.channel, [...(byChannel.get(p.channel) ?? []), p.item])
+  const sendAll = async (id, items) => {
     const channel = CHANNELS.find((c) => c.id === id)
-    if (dry) {
-      console.log(`--- [simulation] ${id} · ${item.id}\n${JSON.stringify(compose(channel.platform, item), null, 2)}`)
-      continue
-    }
-    const creds = credentials(channel, process.env)
-    if (!creds) {
-      console.log(`✗ social/${id} : secrets disparus entre le plan et l'envoi`)
-      failed++
-      continue
-    }
-    try {
-      const ref = await send(channel, item, creds)
-      console.log(`✓ social/${id} : ${item.id} publié (${ref ?? 'sans identifiant'})`)
-    } catch (e) {
-      failed++
-      console.log(`✗ social/${id} : ${item.id} — ${redact(e.message, Object.values(creds))}`)
+    for (const item of items) {
+      if (dry) {
+        console.log(`--- [simulation] ${id} · ${item.id}
+${JSON.stringify(compose(channel.platform, item), null, 2)}`)
+        continue
+      }
+      const creds = credentials(channel, process.env)
+      if (!creds) {
+        console.log(`✗ social/${id} : secrets disparus entre le plan et l'envoi`)
+        failed++
+        continue
+      }
+      try {
+        const ref = await send(channel, item, creds)
+        console.log(`✓ social/${id} : ${item.id} publié (${ref ?? 'sans identifiant'})`)
+      } catch (e) {
+        failed++
+        console.log(`✗ social/${id} : ${item.id} — ${redact(e.message, Object.values(creds))}`)
+      }
     }
   }
+  await Promise.all([...byChannel].map(([id, items]) => sendAll(id, items)))
   if (failed) process.exitCode = 1
 }
 

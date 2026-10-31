@@ -209,10 +209,15 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
     const entry = next.channels[ch.id]
     if (!entry) {
       // Amorçage : TOUT ce qui existe, tous types confondus — activer la brève
-      // plus tard ne doit pas non plus vider l'archive sur ce compte.
+      // plus tard ne doit pas non plus vider l'archive sur ce compte. Et dans
+      // TOUTES les langues : l'id (`culture:<slug>`) est commun aux langues, et
+      // une traduction de/it/es rattrapée après coup ferait sinon passer un
+      // article ancien pour neuf (revue du 1er nov. 2026). Pas de règle de date :
+      // un article garde la date de son brouillon, souvent antérieure à sa
+      // publication.
       next.channels[ch.id] = {
         seededAt: stamp,
-        posted: Object.fromEntries(mine.map((it) => [it.id, 'seed'])),
+        posted: Object.fromEntries(items.map((it) => [it.id, 'seed'])),
       }
       seeded.push(ch.id)
       continue
