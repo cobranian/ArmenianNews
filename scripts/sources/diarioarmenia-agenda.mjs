@@ -19,8 +19,11 @@ import {
 // Event, qui doit décrire la réalité.
 //
 // La date émise est une HEURE MURALE sans fuseau (`2026-11-08T19:00`), jamais un
-// `Z`, et un jour seul (`2026-11-08`) quand le texte ne donne pas d'heure —
-// comme le 23:59 d'Armenopole (startDateLd). Voir « À savoir » du CLAUDE.md.
+// `Z`. Sans heure dans le texte, c'est 23:59 (`2026-11-08T23:59`), la convention
+// « pas d'heure » d'Armenopole : startDateLd n'en publie que le jour. JAMAIS un
+// jour seul : `new Date('2026-11-08')` est lu comme minuit UTC, donc le 7 à l'ouest
+// de l'UTC — /agenda/ prérendu le 8 et hydraté le 7 à Los Angeles, et React refait
+// toute la page (hydration-check, 31 oct. 2026). Voir « À savoir » du CLAUDE.md.
 
 const MONTHS = {
   enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6,
@@ -84,9 +87,9 @@ function scanDates(text, ref) {
   return out
 }
 
-const asDate = ({ date, time }) => (time ? `${date}T${time}` : date)
+const asDate = ({ date, time }) => `${date}T${time || '23:59'}`
 
-// Texte → `AAAA-MM-JJTHH:MM`, `AAAA-MM-JJ` (pas d'heure) ou null. L'année est la
+// Texte → `AAAA-MM-JJTHH:MM` (23:59 = pas d'heure) ou null. L'année est la
 // PROCHAINE occurrence à partir de `now` (« 5 de enero » lu en novembre = l'an
 // suivant) ; l'appelant passe la date de l'annonce, pas l'heure du scrape (voir
 // parseAgendaPosts).
