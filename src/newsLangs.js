@@ -72,7 +72,12 @@ export const TAB_ORDER = {
   ru: ['armenpress', 'armradio', 'newsam', 'californiacourier', 'civilnet'],
   // L'espagnol (armenianews.org/es/) : chaque tâche source y ajoute son id
   // (armenpress, soyarmenio, diarioarmenia, norsevan).
-  es: ['armenpress', 'soyarmenio', 'diarioarmenia', 'norsevan'],
+  es: [
+    'armenpress',
+    'soyarmenio',
+    'diarioarmenia',
+    'norsevan',
+  ],
 }
 
 // L'allemand et l'italien (armenieinfo.ch) n'ont AUCUNE rédaction à eux : ils

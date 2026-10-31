@@ -57,7 +57,8 @@ export function parseFeed(xml, limit = 20) {
       }
       // Un billet sans catégorie (vu le 31 octobre 2026) garde sa place : étagère « General ».
       const label = clean(it.children('category').first().text()) || 'General'
-      const key = slugify(label)
+      // Catégorie sans lettre latine : slugify rend '' -> étagère « General ».
+      const key = slugify(label) || 'general'
       if (!shelves.has(key)) shelves.set(key, { categoryKey: key, label, articles: [] })
       shelves.get(key).articles.push(art)
     })

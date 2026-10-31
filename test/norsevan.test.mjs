@@ -61,3 +61,9 @@ test('chaque étagère est classée dans RUBRIC_MAP', () => {
   assert.equal(TAB_ORDER.es.at(-1), 'norsevan')
   assert.equal(TAB_ORDER.hy.at(-1), 'norsevan')
 })
+
+test('une catégorie sans lettre latine retombe sur general', () => {
+  const rss = '<rss><channel><item><title>Hola</title><link>https://www.norsevan.com/post/hola</link><category>Հայաստան</category><pubDate>Fri, 30 Oct 2026 20:55:09 GMT</pubDate></item></channel></rss>'
+  const { es } = parseFeed(rss)
+  assert.equal(es[0].categoryKey, 'general')
+})
