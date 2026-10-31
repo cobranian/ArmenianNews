@@ -37,8 +37,11 @@ function lundiDe(now) {
   return d - (dow - 1) * JOUR
 }
 
-export function digestFor(siteId, { briefs, culture, events, now }) {
-  const lang = SITES[siteId].newsletter.lang
+// `lang` : la langue de la lettre (une liste par langue, sites.config.js) ;
+// par défaut la langue de tête de la vitrine. L'agenda suit la vitrine
+// (`agendaPays`), pas la langue.
+export function digestFor(siteId, { briefs, culture, events, now, lang = SITES[siteId].pages[0].lang }) {
+  if (!(lang in (SITES[siteId].newsletter?.lists ?? {}))) throw new Error(`pas de lettre ${lang} sur ${siteId}`)
   const S = NEWSLETTER_STRINGS[lang]
   const week = isoWeek(now)
   const utm = `?utm_source=newsletter&utm_medium=email&utm_campaign=hebdo-${week}`

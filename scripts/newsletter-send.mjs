@@ -1,5 +1,6 @@
-// Envoie le numéro hebdomadaire de chaque vitrine à Buttondown, au plus une
-// fois par semaine ISO. Structure calquée sur scripts/social-post.mjs.
+// Envoie le numéro hebdomadaire de chaque lettre (une par langue,
+// newsletterLetters() de sites.config.js) à Buttondown, au plus une fois par
+// semaine ISO. Structure calquée sur scripts/social-post.mjs.
 //
 //   node scripts/newsletter-send.mjs plan --out <plan.json>
 //        Compose les numéros de la semaine en cours, écarte ceux déjà partis
@@ -14,12 +15,12 @@
 //        Buttondown (`buttondown: null`) n'écartent une vitrine : c'est
 //        l'aperçu local des deux numéros, avant même que les comptes existent.
 //
-// Variables : BUTTONDOWN_API_KEY_CH, BUTTONDOWN_API_KEY_ORG (une vitrine sans
-// clé est ignorée) et NEWSLETTER_STATUS (statut Buttondown, `draft` par défaut).
+// Variables : BUTTONDOWN_API_KEY_<ID> par lettre — CH (fr), ORG (en), DE, IT,
+// HY, RU (une lettre sans clé est ignorée) et NEWSLETTER_STATUS (statut Buttondown, `draft` par défaut).
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { SITES } from '../sites.config.js'
+import { newsletterLetters } from '../sites.config.js'
 import { loadBriefs } from './lib/brief-pages.mjs'
 import { loadCulture } from './lib/culture-load.mjs'
 import { digestFor } from './lib/newsletter.mjs'
@@ -29,15 +30,15 @@ const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const REGISTRY = path.join(root, 'src/data/newsletter-sent.json')
 export const BUTTONDOWN_EMAILS = 'https://api.buttondown.com/v1/emails'
 
-const keyFor = (siteId, env = process.env) => env[`BUTTONDOWN_API_KEY_${siteId.toUpperCase()}`] || null
-const hasAccountIn = (siteId) => Boolean(SITES[siteId]?.newsletter?.buttondown)
+const keyFor = (id, env = process.env) => env[`BUTTONDOWN_API_KEY_${id.toUpperCase()}`] || null
+const hasAccountIn = (id) => Boolean(newsletterLetters().find((l) => l.id === id)?.buttondown)
 
-// Quels numéros partent : ni une vitrine sans compte Buttondown confirmé
-// (`buttondown: null` dans sites.config.js), ni une semaine vide (digest
+// Quels numéros partent : ni une lettre sans compte Buttondown confirmé
+// (liste `null` dans sites.config.js), ni une semaine vide (digest
 // null), ni une semaine déjà inscrite au registre — ou antérieure à celle-ci :
 // un registre en avance (« 2026-W46 » face au numéro W45) n'envoie pas, la
 // comparaison de chaînes `AAAA-Wss` suit l'ordre des semaines —, ni une
-// vitrine sans clé.
+// lettre sans clé.
 export function planSends({
   registry,
   digests,
@@ -46,25 +47,25 @@ export function planSends({
   log = console.log,
 }) {
   const sends = []
-  for (const [siteId, digest] of Object.entries(digests)) {
-    if (!hasAccount(siteId)) {
-      log(`✗ newsletter/${siteId}: désactivée (pas de compte Buttondown)`)
+  for (const [id, digest] of Object.entries(digests)) {
+    if (!hasAccount(id)) {
+      log(`✗ newsletter/${id}: désactivée (pas de compte Buttondown)`)
       continue
     }
     if (!digest) {
-      log(`✗ newsletter/${siteId}: semaine vide`)
+      log(`✗ newsletter/${id}: semaine vide`)
       continue
     }
-    const deja = registry?.[siteId]
+    const deja = registry?.[id]
     if (typeof deja === 'string' && deja >= digest.week) {
-      log(`· newsletter/${siteId}: ${deja} déjà envoyé (numéro ${digest.week})`)
+      log(`· newsletter/${id}: ${deja} déjà envoyé (numéro ${digest.week})`)
       continue
     }
-    if (!hasKey(siteId)) {
-      log(`✗ newsletter/${siteId}: pas de clé`)
+    if (!hasKey(id)) {
+      log(`✗ newsletter/${id}: pas de clé`)
       continue
     }
-    sends.push({ siteId, digest })
+    sends.push({ id, digest })
   }
   return sends
 }
@@ -125,15 +126,12 @@ async function loadDigests(now) {
   const agenda = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf8'))
   const events = [...(agenda.switzerland || []), ...(agenda.world || [])]
   const digests = {}
-  for (const siteId of Object.keys(SITES)) {
-    if (!SITES[siteId].newsletter) continue
-    digests[siteId] = digestFor(siteId, { briefs, culture, events, now })
-  }
+  for (const { id, siteId, lang } of newsletterLetters()) digests[id] = digestFor(siteId, { briefs, culture, events, now, lang })
   return digests
 }
 
-const preview = ({ siteId, digest }) =>
-  `--- [simulation] newsletter/${siteId} · ${digest.week}\nObjet : ${digest.subject}\n\n${digest.body}\n`
+const preview = ({ id, digest }) =>
+  `--- [simulation] newsletter/${id} · ${digest.week}\nObjet : ${digest.subject}\n\n${digest.body}\n`
 
 async function doPlan(opt, dry) {
   const out = opt('--out')
@@ -145,21 +143,21 @@ async function doPlan(opt, dry) {
     ...(dry ? { hasKey: () => true, hasAccount: () => true } : {}),
   })
   if (dry) {
-    for (const id of Object.keys(SITES)) {
-      if (SITES[id].newsletter && !hasAccountIn(id)) {
+    for (const { id } of newsletterLetters()) {
+      if (!hasAccountIn(id)) {
         console.log(`✗ newsletter/${id}: désactivée (pas de compte Buttondown) — aperçu quand même (--dry)`)
       }
     }
   }
   if (!sends.length) console.log('· newsletter : rien à envoyer')
-  for (const s of sends) console.log(`· newsletter/${s.siteId}: à envoyer ${s.digest.week}`)
+  for (const s of sends) console.log(`· newsletter/${s.id}: à envoyer ${s.digest.week}`)
   if (dry) {
     for (const s of sends) console.log(preview(s))
     console.log('· newsletter : SIMULATION (--dry) — registre et plan non écrits')
     return
   }
   const next = { ...registry }
-  for (const s of sends) next[s.siteId] = s.digest.week
+  for (const s of sends) next[s.id] = s.digest.week
   await writeFile(REGISTRY, JSON.stringify(next, null, 2) + '\n')
   await writeFile(out, JSON.stringify({ sends }, null, 2))
 }
@@ -175,9 +173,9 @@ async function doSend(opt, dry) {
       console.log(preview(s))
       continue
     }
-    const key = keyFor(s.siteId)
+    const key = keyFor(s.id)
     if (!key) {
-      console.log(`✗ newsletter/${s.siteId}: clé disparue entre le plan et l'envoi`)
+      console.log(`✗ newsletter/${s.id}: clé disparue entre le plan et l'envoi`)
       failed++
       continue
     }
@@ -195,14 +193,14 @@ async function doSend(opt, dry) {
       const ecart = checkCreated(status, json)
       if (ecart) {
         failed++
-        console.log(`✗ newsletter/${s.siteId}: ${ecart}`)
+        console.log(`✗ newsletter/${s.id}: ${ecart}`)
         continue
       }
       const id = json?.id ?? null
-      console.log(`✓ newsletter/${s.siteId}: ${s.digest.week} créé en « ${status} » (${id ?? 'sans identifiant'})`)
+      console.log(`✓ newsletter/${s.id}: ${s.digest.week} créé en « ${status} » (${id ?? 'sans identifiant'})`)
     } catch (e) {
       failed++
-      console.log(`✗ newsletter/${s.siteId}: ${s.digest.week} — ${redact(e.message, key)}`)
+      console.log(`✗ newsletter/${s.id}: ${s.digest.week} — ${redact(e.message, key)}`)
     }
   }
   if (failed) process.exitCode = 1

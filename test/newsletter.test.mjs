@@ -127,3 +127,27 @@ test('Markdown sûr : < > * _ et barre inverse échappés dans les titres, descr
   // Les URL, elles, ne sont pas touchées (utm_source garde ses _).
   assert.ok(d.body.includes('?utm_source=newsletter&utm_medium=email'))
 })
+
+test('une lettre par langue : chacune dans sa langue, ses liens, son domaine', async () => {
+  const { newsletterLetters } = await import('../sites.config.js')
+  const { NEWSLETTER_STRINGS } = await import('../src/newsletterStrings.js')
+  const langs = ['fr', 'de', 'it', 'en', 'hy', 'ru']
+  const briefs = Object.assign({}, ...langs.map((l) => briefsOf(l, { 1: `Sujet-${l}` })))
+  const art = { ...article(), langs: Object.fromEntries(langs.map((l) => [l, { title: `Titre-${l}`, description: `Desc-${l}` }])) }
+  for (const { siteId, lang } of newsletterLetters()) {
+    assert.ok(NEWSLETTER_STRINGS[lang], `textes de la lettre absents en ${lang}`)
+    const d = digestFor(siteId, { briefs, culture: [art], events: events(), now, lang })
+    const S = NEWSLETTER_STRINGS[lang]
+    assert.ok(d.body.startsWith(S.intro), lang)
+    assert.ok(d.body.includes(`Sujet-${lang}`) && d.body.includes(`Titre-${lang}`), lang)
+    for (const autre of langs.filter((l) => l !== lang)) assert.ok(!d.body.includes(`Titre-${autre}`), `${lang} cite ${autre}`)
+    assert.ok(d.body.includes(briefUrl(lang)), `${lang} : lien vers ses brèves`)
+    assert.ok(d.body.includes(urlFor(lang, 'agenda')), `${lang} : lien vers son agenda`)
+    const voisin = siteId === 'ch' ? 'armenianews.org' : 'armenieinfo.ch'
+    assert.ok(!d.body.includes(voisin), `${lang} : domaine du voisin`)
+  }
+})
+
+test('pas de lettre pour une langue hors de la vitrine', () => {
+  assert.throws(() => digestFor('ch', { briefs: briefsOf('en'), culture: [], events: [], now, lang: 'en' }))
+})

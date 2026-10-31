@@ -99,16 +99,19 @@ export const SITES = {
     // les pages `lien.html` — un fichier partagé ne peut pas porter une valeur
     // propre à une vitrine.
     gaMeasurementId: 'G-EB3W5XXSMW',
-    // Lettre hebdomadaire (Buttondown) : le nom de la liste, et la SEULE langue
-    // dans laquelle elle est écrite — le formulaire du pied de page ne
-    // s'affiche que sur cette langue. Elle doit être la langue de tête
-    // (test/newsletter-footer.test.mjs). `null` retire le formulaire.
-    // `buttondown: null` retire formulaire ET envoi (`✗ newsletter/ch: désactivée`).
-    // Compte créé et vérifié le 31 oct. 2026 (buttondown.com/armenieinfo).
+    // Lettre hebdomadaire (Buttondown) : UNE LISTE PAR LANGUE (`lists`, nom
+    // du compte Buttondown), parce que le plan gratuit n'a qu'une liste par
+    // compte (trier par langue = option payante). Le formulaire d'une page ne
+    // paraît que si la liste de SA langue a un compte ; `null` = ni formulaire
+    // ni envoi (`✗ newsletter/de: désactivée`). Toutes les langues de la
+    // vitrine doivent y figurer (test/newsletter-footer.test.mjs).
+    // Compte fr créé et vérifié le 31 oct. 2026 (buttondown.com/armenieinfo).
+    // NE METTEZ UN NOM qu'une fois le compte créé : un nom deviné publierait
+    // un formulaire qui inscrit chez un inconnu.
     // `agendaPays` : l'agenda de la lettre ne garde que ces pays, dans cet
     // ordre de priorité (la Suisse d'abord, la France complète) — sans quoi la
     // France, bien plus fournie, prendrait toutes les places. Absent = monde.
-    newsletter: { buttondown: 'armenieinfo', lang: 'fr', agendaPays: ['switzerland', 'france'] },
+    newsletter: { lists: { fr: 'armenieinfo', de: null, it: null }, agendaPays: ['switzerland', 'france'] },
     // fr DOIT rester en tête : primaryLang('ch') en dépend (404, llms.txt,
     // image Culture servie sous /culture/<slug>/, ordre d'AboutPage). de et it
     // lisent le fil français (CONTENT_LANG, src/newsLangs.js).
@@ -193,7 +196,7 @@ export const SITES = {
     gaMeasurementId: 'G-N6STD6Z5CC',
     // Voir `newsletter` du .ch. Compte créé et vérifié le 31 oct. 2026
     // (buttondown.com/armenianews).
-    newsletter: { buttondown: 'armenianews', lang: 'en' },
+    newsletter: { lists: { en: 'armenianews', hy: null, ru: null } },
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },
@@ -445,21 +448,33 @@ export function xDefaultFor(view = 'home') {
   return urlFor('en', view)
 }
 
-// L'URL d'envoi du formulaire d'inscription d'une vitrine, ou null si elle
-// n'a pas de lettre ou pas encore de compte Buttondown (`buttondown: null`).
+// Les lettres de toutes les vitrines : { id, siteId, lang, buttondown }.
+// `id` est la clé du registre (src/data/newsletter-sent.json) et le suffixe du
+// secret BUTTONDOWN_API_KEY_<ID> : le nom de la vitrine pour sa langue de tête
+// (`ch`, `org` — les clés d'avant le passage à six listes, gardées telles
+// quelles pour ne migrer ni le registre ni les secrets), la langue sinon.
+export function newsletterLetters() {
+  const out = []
+  for (const [siteId, site] of Object.entries(SITES))
+    for (const [lang, buttondown] of Object.entries(site.newsletter?.lists ?? {}))
+      out.push({ id: lang === site.pages[0].lang ? siteId : lang, siteId, lang, buttondown: buttondown || null })
+  return out
+}
+
+// L'URL d'envoi du formulaire d'inscription pour une page (vitrine, langue),
+// ou null si la liste de cette langue n'a pas encore de compte Buttondown.
 // Buttondown répond dans un nouvel onglet (target=_blank) : aucune requête ne
 // part du site lui-même, d'où le seul `form-action` de la CSP (firebase.json,
 // les DEUX blocs headers).
-export function newsletterAction(siteId) {
-  const nl = SITES[siteId].newsletter
-  return nl?.buttondown ? `https://buttondown.com/api/emails/embed-subscribe/${nl.buttondown}` : null
+export function newsletterAction(siteId, lang) {
+  const name = SITES[siteId]?.newsletter?.lists?.[lang]
+  return name ? `https://buttondown.com/api/emails/embed-subscribe/${name}` : null
 }
 
-// L'action du formulaire à poser sur une page (vitrine, langue), ou null s'il
-// ne doit pas y paraître : compte Buttondown confirmé ET langue de la lettre.
+// Ce que pose le pied de page : même chose, nommée pour lui (le test du pied
+// de page exige ce point de passage).
 export function newsletterFormAction(siteId, lang) {
-  const action = newsletterAction(siteId)
-  return action && SITES[siteId].newsletter.lang === lang ? action : null
+  return newsletterAction(siteId, lang)
 }
 
 export function primaryLang(siteId) {

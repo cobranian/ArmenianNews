@@ -35,19 +35,22 @@ test('vitrine sans compte Buttondown : désactivée, même avec clé', () => {
     hasAccount: (id) => id === 'org',
     log: (l) => lines.push(l),
   })
-  assert.deepEqual(r.map((s) => s.siteId), ['org'])
+  assert.deepEqual(r.map((s) => s.id), ['org'])
   assert.ok(lines.includes('✗ newsletter/ch: désactivée (pas de compte Buttondown)'))
 })
 
 test('par défaut, le compte est lu dans sites.config.js', () => {
   const r = planSends({ registry: {}, digests: { ch: digest(), org: digest() }, hasKey: keys, log: quiet })
-  assert.deepEqual(r.map((s) => s.siteId), ['ch', 'org'])
+  assert.deepEqual(r.map((s) => s.id), ['ch', 'org'])
   const avant = SITES.ch.newsletter
   const lines = []
   try {
-    SITES.ch.newsletter = { ...avant, buttondown: null }
+    SITES.ch.newsletter = { ...avant, lists: { ...avant.lists, fr: null } }
     assert.deepEqual(planSends({ registry: {}, digests: { ch: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
     assert.ok(lines.includes('✗ newsletter/ch: désactivée (pas de compte Buttondown)'))
+    // de n'a pas encore de compte : rien ne part, même avec une clé.
+    assert.deepEqual(planSends({ registry: {}, digests: { de: digest() }, hasKey: keys, log: (l) => lines.push(l) }), [])
+    assert.ok(lines.includes('✗ newsletter/de: désactivée (pas de compte Buttondown)'))
   } finally {
     SITES.ch.newsletter = avant
   }
@@ -56,18 +59,18 @@ test('par défaut, le compte est lu dans sites.config.js', () => {
 test('semaine suivante = envoi', () => {
   const d = digest()
   const r = planSends({ registry: { ch: '2026-W44' }, digests: { ch: d }, hasKey: keys, hasAccount: keys, log: quiet })
-  assert.deepEqual(r, [{ siteId: 'ch', digest: d }])
+  assert.deepEqual(r, [{ id: 'ch', digest: d }])
 })
 
 test('registre vide = envoi des deux vitrines', () => {
   const r = planSends({ registry: {}, digests: { ch: digest(), org: digest() }, hasKey: keys, hasAccount: keys, log: quiet })
-  assert.deepEqual(r.map((s) => s.siteId), ['ch', 'org'])
+  assert.deepEqual(r.map((s) => s.id), ['ch', 'org'])
 })
 
 test('digest null écarté', () => {
   const lines = []
   const r = planSends({ registry: {}, digests: { ch: null, org: digest() }, hasKey: keys, hasAccount: keys, log: (l) => lines.push(l) })
-  assert.deepEqual(r.map((s) => s.siteId), ['org'])
+  assert.deepEqual(r.map((s) => s.id), ['org'])
   assert.ok(lines.some((l) => l.includes('✗ newsletter/ch') && l.includes('semaine vide')))
 })
 
@@ -80,7 +83,7 @@ test('vitrine sans clé écartée', () => {
     hasAccount: keys,
     log: (l) => lines.push(l),
   })
-  assert.deepEqual(r.map((s) => s.siteId), ['ch'])
+  assert.deepEqual(r.map((s) => s.id), ['ch'])
   assert.ok(lines.some((l) => l.includes('✗ newsletter/org') && l.includes('pas de clé')))
 })
 

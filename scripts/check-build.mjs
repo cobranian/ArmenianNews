@@ -167,12 +167,11 @@ for (const site of Object.values(SITES)) {
         ],
         ['un seul canonical', count(/rel="canonical"/g) === 1],
         [
-          // Le formulaire d'inscription : aucun tant que le compte n'existe pas,
-          // et sur la seule langue de tête quand il existe. Vu après prérendu
-          // (avant, la racine est vide : la garde ne peut alors pas échouer).
-          'formulaire newsletter : seulement sur la langue de tête, et seulement si le compte existe',
-          !html.includes('footer__newsletter') ||
-            (newsletterAction(site.id) !== null && site.newsletter?.lang === page.lang),
+          // Le formulaire d'inscription : seulement si la liste de la langue
+          // de la page a un compte. Vu après prérendu (avant, la racine est
+          // vide : la garde ne peut alors pas échouer).
+          'formulaire newsletter : seulement si la liste de cette langue a un compte',
+          !html.includes('footer__newsletter') || newsletterAction(site.id, page.lang) !== null,
         ],
         [`og:site_name "${site.brand}"`, html.includes(`og:site_name" content="${site.brand}"`)],
         ['un seul og:site_name', count(/og:site_name"/g) === 1],

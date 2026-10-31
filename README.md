@@ -736,15 +736,27 @@ fichiers statiques, rien à l'exécution) : `armenieinfo.ch/feed.xml`,
 articles Culture de sa langue (résumés seulement) ; le `<head>` de chaque page
 les annonce et le pied de page les lie.
 
-**Lettre hebdomadaire.** Une par vitrine (français pour le .ch, anglais pour le
-.org), composée sans modèle par `scripts/lib/newsletter.mjs` (sujets des brèves,
-articles Culture et prochains événements) et envoyée par
-[Buttondown](https://buttondown.com) : **deux comptes**, un par vitrine. Leurs
-noms d'utilisateur vont dans `sites.config.js` (`SITES.*.newsletter.buttondown`),
-qui vaut **`null` tant que le compte n'est pas créé et confirmé** : ni
-formulaire au pied de page, ni envoi (`✗ newsletter/<site>: désactivée (pas de
-compte Buttondown)` au log). Une fois le vrai nom posé, le formulaire
-n'apparaît que sur les pages de la langue de la lettre.
+**Lettre hebdomadaire.** **Une par langue**, composée sans modèle par
+`scripts/lib/newsletter.mjs` (sujets des brèves, articles Culture et prochains
+événements, tous dans la langue de la lettre ; l'agenda suit la vitrine :
+Suisse puis France sur le .ch, monde sur le .org) et envoyée par
+[Buttondown](https://buttondown.com) : **un compte par langue**, parce que le
+plan gratuit n'a qu'une liste par compte (trier par langue est payant). Leurs
+noms d'utilisateur vont dans `sites.config.js` (`SITES.*.newsletter.lists`),
+une entrée par langue de la vitrine, qui vaut **`null` tant que le compte
+n'est pas créé et confirmé** : ni formulaire sur les pages de cette langue, ni
+envoi (`✗ newsletter/<id>: désactivée (pas de compte Buttondown)` au log).
+L'identifiant `<id>` d'une lettre (registre, secret) est `ch` pour le
+français, `org` pour l'anglais — les noms d'avant les six listes, gardés —
+puis `de`, `it`, `hy`, `ru`. Les textes de de/it sont des traductions non
+relues, comme sur le site.
+
+**Ajouter un compte de langue :** créer le compte Buttondown (une adresse
+e-mail par compte), régler sa langue et désactiver le suivi comme pour les deux
+premiers, poser son nom dans `lists`, puis coller sa clé d'API dans le secret
+`BUTTONDOWN_API_KEY_<ID>` de l'environnement `newsletter` **par l'interface web
+de GitHub** (`gh secret set … < /dev/clipboard` a déjà enregistré des secrets
+vides).
 
 **Envoi.** `newsletter.yml` tourne le lundi, le mardi et le mercredi à 05:50 UTC
 (à l'écart du push du snapshot horaire, vers :23-:28) — **seulement si la
@@ -755,11 +767,12 @@ lui, tourne toujours. Chaque numéro couvre la **semaine ISO précédente**, du
 lundi au dimanche, quel que soit le jour du passage. Trois passages parce que
 le cron de GitHub en saute ; le registre
 `src/data/newsletter-sent.json` fait qu'un seul des trois envoie. Le registre
-garantit **un numéro par semaine ISO et par vitrine** et est poussé **avant**
+garantit **un numéro par semaine ISO et par lettre** et est poussé **avant**
 l'envoi ; **supprimer une ligne renvoie le numéro de cette semaine** aux
 abonnés. Une semaine sans brève ni article n'envoie rien (`✗ newsletter/<site>:
 semaine vide` au log). Le job tourne dans l'environnement GitHub `newsletter`,
-qui porte les secrets `BUTTONDOWN_API_KEY_CH` et `BUTTONDOWN_API_KEY_ORG`.
+qui porte les secrets `BUTTONDOWN_API_KEY_CH`, `_ORG`, `_DE`, `_IT`, `_HY` et
+`_RU`.
 
 **Brouillon par défaut.** Sans variable `NEWSLETTER_STATUS`, le numéro est créé
 en **brouillon** que Nareg relit et envoie à la main chez Buttondown. Si la
