@@ -101,6 +101,34 @@ export function briefItems(briefs) {
   return out
 }
 
+// Les annonces (src/data/social-announcements.json) : textes écrits à la
+// main et relus avant d'être commités. Elles ne sont PAS dans KINDS, donc le
+// job horaire ne les publie jamais : elles partent seulement par
+// `social-post.mjs test --item annonce:<slug>` (social-test.yml), canal par
+// canal. Image : la carte de partage de la vitrine.
+export function announceItems(list) {
+  const out = []
+  for (const a of list)
+    for (const lang of Object.values(SITE_LANG)) {
+      const t = a.langs[lang]
+      if (!t) continue
+      const site = SITES[siteOf(lang)]
+      if (!t.url.startsWith(site.host + '/')) throw new Error(`annonce ${a.slug} (${lang}) : URL hors de ${site.host}`)
+      out.push({
+        id: `annonce:${a.slug}`,
+        kind: 'annonce',
+        lang,
+        date: null,
+        url: t.url,
+        title: t.title,
+        description: t.description,
+        cta: t.cta ?? null,
+        image: { url: site.host + site.ogImage, width: 1200, height: 630, author: null, license: null },
+      })
+    }
+  return out
+}
+
 export function cultureItems(articles) {
   const out = []
   for (const a of articles)
@@ -275,7 +303,9 @@ export function compose(platform, item) {
     }
     case 'bluesky':
       return {
-        text: truncate(head, 300),
+        // La carte de lien porte déjà le titre : quand titre + texte dépassent
+        // 300, on garde le texte entier plutôt que d'en couper la fin.
+        text: graphemes(head).length <= 300 ? head : truncate(item.description, 300),
         lang: item.lang,
         embed: { uri: item.url, title: truncate(item.title, 300), description: truncate(item.description, 300) },
         // Sans vignette, la carte de lien Bluesky n'est qu'un cadre de texte.
@@ -285,7 +315,7 @@ export function compose(platform, item) {
     case 'telegram':
       return { text: `${head}\n\n${item.url}` }
     case 'instagram': {
-      const link = `${s.read}${s.colon}${item.url.replace(/^https:\/\//, '')} (${s.bio})`
+      const link = `${item.cta ?? s.read}${s.colon}${item.url.replace(/^https:\/\//, '')} (${s.bio})`
       const parts = [head, link, credit(item, s), s.tags].filter(Boolean)
       return { imageUrl: item.image.url, caption: truncate(parts.join('\n\n'), 2200) }
     }

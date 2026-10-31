@@ -9,7 +9,8 @@
 //        Envoie le plan. Une simulation n'envoie rien et imprime les textes.
 //   node --env-file=.env scripts/social-post.mjs test --channel facebook-ch [--item culture:komitas] [--yes]
 //        Local : aperçu d'un message, et avec --yes, un envoi réel hors
-//        registre — pour vérifier des identifiants neufs.
+//        registre — pour vérifier des identifiants neufs, ou publier une
+//        annonce (--item annonce:lettre, src/data/social-announcements.json).
 //   node scripts/social-post.mjs check [--out <fichier>]
 //        Chaque compte configuré se connecte et lit son nom, sans rien
 //        publier (social-check.yml, chaque jour → issue [social-down]).
@@ -27,6 +28,7 @@ import {
   credentials,
   parseKinds,
   briefItems,
+  announceItems,
   cultureItems,
   plan,
   compose,
@@ -48,7 +50,8 @@ const quiet = { warn() {}, log() {} }
 async function loadItems() {
   const briefs = await loadBriefs(path.join(root, 'src/data/briefs'), quiet)
   const culture = await loadCulture(path.join(root, 'src/data/culture'), quiet)
-  return [...cultureItems(culture), ...briefItems(briefs)]
+  const announces = JSON.parse(await readFile(path.join(root, 'src/data/social-announcements.json'), 'utf8'))
+  return [...cultureItems(culture), ...briefItems(briefs), ...announceItems(announces)]
 }
 
 async function readLedger() {
