@@ -10,6 +10,7 @@ import {
   compose,
   cultureItems,
   briefItems,
+  announceItems,
   fitsInstagram,
   escapeLittleText,
   oauth1Header,
@@ -285,4 +286,24 @@ test('verify : chaque plateforme LIT, n’écrit jamais', async () => {
 test('verify : une clé refusée remonte avec son statut', async () => {
   const fakeFetch = async () => new Response(JSON.stringify({ message: 'Invalid identifier or password' }), { status: 401 })
   await assert.rejects(verify(chan('bluesky-org'), { handle: 'h', password: 'p' }, { fetch: fakeFetch }), /HTTP 401 Invalid identifier/)
+})
+
+test('annonces : jamais dans le plan horaire, textes entiers, URL et carte du bon domaine', () => {
+  const list = JSON.parse(readFileSync(new URL('../src/data/social-announcements.json', import.meta.url), 'utf8'))
+  const items = announceItems(list)
+  assert.ok(items.length >= 2)
+  const ledger = { version: 1, channels: { 'facebook-ch': { seededAt: 'x', posted: {} } } }
+  for (const kinds of [['culture'], ['culture', 'brief']])
+    assert.deepEqual(plan({ items, channels: [fb], ledger, kinds, now }).posts, [])
+  assert.throws(() => parseKinds('annonce'))
+  for (const it of items) {
+    const host = it.lang === 'fr' ? 'https://armenieinfo.ch' : 'https://armenianews.org'
+    assert.ok(it.url.startsWith(host + '/'), it.url)
+    assert.ok(it.image.url.startsWith(host + '/og-image-'), it.image.url)
+    assert.equal(fitsInstagram(it.image), true)
+    // Bluesky ne doit jamais couper une annonce relue.
+    assert.ok(!compose('bluesky', it).text.endsWith('…'), `${it.id} ${it.lang} trop long pour Bluesky`)
+    assert.ok(compose('instagram', it).caption.includes(it.cta), 'appel à l’action propre à l’annonce')
+  }
+  assert.throws(() => announceItems([{ slug: 'x', langs: { fr: { title: 't', description: 'd', url: 'https://armenianews.org/' } } }]))
 })
