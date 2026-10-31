@@ -65,4 +65,5 @@ export const SHARE_STRINGS = {
   en: { share: 'Share', on: (n) => `Share on ${n}`, copied: 'Link copied: paste it into Instagram' },
   hy: { share: 'Կիսվել', on: (n) => `Կիսվել ${n}-ում`, copied: 'Հղումը պատճենվեց․ տեղադրեք այն Instagram-ում' },
   ru: { share: 'Поделиться', on: (n) => `Поделиться в ${n}`, copied: 'Ссылка скопирована: вставьте её в Instagram' },
+  es: { share: 'Compartir', on: (n) => `Compartir en ${n}`, copied: 'Enlace copiado: péguelo en Instagram' },
 }

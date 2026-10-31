@@ -4,7 +4,7 @@ import { PLACES, placeLabel } from '../src/worldPlace.js'
 
 // Le badge de lieu des cartes de l'agenda : le texte d'Armenopole est en
 // français, le lecteur anglais lisait « Angleterre » (27 oct. 2026).
-const LANGUES = ['de', 'it', 'en', 'hy', 'ru']
+const LANGUES = ['de', 'it', 'en', 'hy', 'ru', 'es']
 
 test('chaque lieu de PLACES a son nom dans les cinq langues non françaises', () => {
   for (const [k, v] of Object.entries(PLACES))

@@ -61,6 +61,15 @@ export const SEO = {
     keywords:
       'армянские новости, Армения, Арцах, армянская диаспора, армянские события, армянская община',
   },
+  // Espagnol latino-américain neutre (es-419). « noticias de Armenia » et
+  // « noticias armenias » : les requêtes telles qu'on les tape.
+  es: {
+    tagline: 'Noticias armenias, eventos y redes sociales',
+    description:
+      'Noticias armenias, diecisiete radios en vivo, eventos y redes sociales desde Armenia y la diáspora, actualizados cada hora.',
+    keywords:
+      'noticias de Armenia, noticias armenias, Armenia, Artsaj, diáspora armenia, eventos armenios, comunidad armenia',
+  },
 }
 
 // Titre et description des PAGES DE VUE, par langue.
@@ -102,6 +111,11 @@ export const VIEW_SEO = {
       title: 'Армянское радио онлайн',
       description:
         'Семнадцать армянских радиостанций в прямом эфире из Еревана и диаспоры: новости, музыка, культура и джаз. Бесплатно, без регистрации и установки.',
+    },
+    es: {
+      title: 'Radios armenias en vivo',
+      description:
+        'Diecisiete radios armenias en vivo desde Ereván y la diáspora: noticias, música, cultura y jazz. Escucha gratuita, sin cuenta ni instalación.',
     },
   },
   // AUCUN NOMBRE DE PAYS dans ces quatre descriptions, et c'est délibéré.
@@ -152,6 +166,11 @@ export const VIEW_SEO = {
       description:
         'Концерты, лекции и встречи армянской диаспоры по всему миру: календарь событий с Armenopole, обновляемый каждый час.',
     },
+    es: {
+      title: 'Eventos armenios en el mundo',
+      description:
+        'Conciertos, charlas y encuentros de la diáspora armenia en todo el mundo: un calendario de eventos recopilado de Armenopole y actualizado cada hora.',
+    },
   },
 }
 
@@ -192,6 +211,11 @@ VIEW_SEO.about = {
     description:
       'Кто ведёт Armenia News и по каким правилам: армянские редакции, радио в прямом эфире и события диаспоры — каждый час, без рекламы и регистрации.',
   },
+  es: {
+    title: 'Acerca de',
+    description:
+      'Quién edita Armenia News, desde dónde, con qué fuentes y reglas: redacciones armenias, radio en vivo y eventos de la diáspora, cada hora, sin anuncios.',
+  },
 }
 
 // Codes de locale Open Graph, un par langue.
@@ -204,4 +228,7 @@ export const OG_LOCALE = {
   en: 'en_US',
   hy: 'hy_AM',
   ru: 'ru_RU',
+  // Espagnol latino-américain neutre : es_419 (Facebook comprend es_LA / es_ES ;
+  // es_419 est le code BCP 47 de la région, voir la spec du 31 octobre 2026).
+  es: 'es_419',
 }

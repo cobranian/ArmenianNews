@@ -9,7 +9,7 @@ export const CULTURE_STRINGS = {
     nav: 'Culture',
     title: 'Culture arménienne',
     description:
-      'Histoire, musique, danse et patrimoine arméniens : des articles de fond, sourcés, en six langues.',
+      'Histoire, musique, danse et patrimoine arméniens : des articles de fond, sourcés, en sept langues.',
     sources: 'Sources',
     sourcesNote: 'Textes de Wikipédia (CC BY-SA 4.0) et de Wikisource (CC BY-SA 3.0), utilisés comme sources.',
     aiNote:
@@ -79,7 +79,7 @@ export const CULTURE_STRINGS = {
     nav: 'Culture',
     title: 'Armenian culture',
     description:
-      'Armenian history, music, dance and heritage: in-depth, sourced articles in six languages.',
+      'Armenian history, music, dance and heritage: in-depth, sourced articles in seven languages.',
     sources: 'Sources',
     sourcesNote: 'Texts from Wikipedia (CC BY-SA 4.0) and Wikisource (CC BY-SA 3.0), used as sources.',
     aiNote:
@@ -101,7 +101,7 @@ export const CULTURE_STRINGS = {
     nav: 'Մշակույթ',
     title: 'Հայկական մշակույթ',
     description:
-      'Հայոց պատմություն, երաժշտություն, պար և ժառանգություն․ աղբյուրներով հոդվածներ՝ վեց լեզվով։',
+      'Հայոց պատմություն, երաժշտություն, պար և ժառանգություն․ աղբյուրներով հոդվածներ՝ յոթ լեզվով։',
     sources: 'Աղբյուրներ',
     sourcesNote: 'Վիքիպեդիայի (CC BY-SA 4.0) և Վիքիդարանի (CC BY-SA 3.0) տեքստերը՝ օգտագործված որպես աղբյուր։',
     aiNote:
@@ -123,7 +123,7 @@ export const CULTURE_STRINGS = {
     nav: 'Культура',
     title: 'Армянская культура',
     description:
-      'История, музыка, танец и наследие Армении: подробные статьи с источниками на шести языках.',
+      'История, музыка, танец и наследие Армении: подробные статьи с источниками на семи языках.',
     sources: 'Источники',
     sourcesNote: 'Тексты Википедии (CC BY-SA 4.0) и Викитеки (CC BY-SA 3.0), использованные как источники.',
     aiNote:
@@ -139,6 +139,28 @@ export const CULTURE_STRINGS = {
     next: 'Следующая статья',
     read: 'Читать статью',
     carousel: 'Статьи о культуре',
+    translatedFrom: '',
+  },
+  es: {
+    nav: 'Cultura',
+    title: 'Cultura armenia',
+    description:
+      'Historia, música, danza y patrimonio armenios: artículos de fondo, con sus fuentes, en siete idiomas.',
+    sources: 'Fuentes',
+    sourcesNote: 'Textos de Wikipedia (CC BY-SA 4.0) y de Wikisource (CC BY-SA 3.0), utilizados como fuentes.',
+    aiNote:
+      'Artículo redactado con una herramienta de IA a partir de las fuentes citadas, verificado por la redacción y traducido automáticamente del texto francés revisado.',
+    image: 'Imagen',
+    video: 'En video',
+    event: 'No se lo pierda',
+    empty: 'El primer artículo aparecerá pronto.',
+    teaser: 'Para leer',
+    all: 'Todos los artículos',
+    readAlso: 'Lea también',
+    prev: 'Artículo anterior',
+    next: 'Artículo siguiente',
+    read: 'Leer el artículo',
+    carousel: 'Artículos de cultura',
     translatedFrom: '',
   },
 }

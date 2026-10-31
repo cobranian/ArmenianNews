@@ -57,6 +57,11 @@ const STRINGS = {
     lead: 'Этот адрес никуда не ведёт: такой страницы нет, или больше нет.',
     home: 'Главная',
   },
+  es: {
+    title: 'Página no encontrada',
+    lead: 'Esta dirección no lleva a ninguna parte: la página no existe, o ya no existe.',
+    home: 'Inicio',
+  },
 }
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')

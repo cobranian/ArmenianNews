@@ -30,8 +30,8 @@ const CLES = [
   'privacy.newsletter.body',
 ]
 
-test('les huit clés existent dans les six langues', () => {
-  assert.equal(BLOC_LANGS.length, 6)
+test('les huit clés existent dans les sept langues', () => {
+  assert.equal(BLOC_LANGS.length, 7)
   for (const lang of BLOC_LANGS) {
     for (const cle of CLES) {
       const v = valeur(lang, cle)
@@ -41,8 +41,8 @@ test('les huit clés existent dans les six langues', () => {
   }
 })
 
-test('confidentialité : hébergement aux États-Unis et mesure des ouvertures, dans les six langues', () => {
-  const ETATS_UNIS = { fr: 'États-Unis', de: 'USA', it: 'Stati Uniti', en: 'United States', hy: 'Միացյալ Նահանգներ', ru: 'США' }
+test('confidentialité : hébergement aux États-Unis et mesure des ouvertures, dans les sept langues', () => {
+  const ETATS_UNIS = { fr: 'États-Unis', de: 'USA', it: 'Stati Uniti', en: 'United States', hy: 'Միացյալ Նահանգներ', ru: 'США', es: 'Estados Unidos' }
   for (const lang of BLOC_LANGS) {
     const v = valeur(lang, 'privacy.newsletter.body')
     assert.ok(v.includes(ETATS_UNIS[lang]), `${lang} : l'hébergement aux États-Unis n'est pas dit`)

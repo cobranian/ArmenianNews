@@ -38,7 +38,7 @@ const FONTS = JSON.parse(
 // sous ru mais pas sous hy. Une entrée absente du manifeste fait ÉCHOUER le
 // build : un preload vers un fichier inexistant serait un 404 à chaque visite.
 const PRELOAD = {
-  // de et it composent dans les mêmes familles latines que fr (voir plus bas).
+  // de, it et es composent dans les mêmes familles latines que fr (voir plus bas).
   fr: [
     ['Fraunces', 'italic', 'latin'],
     ['Fraunces', 'normal', 'latin'],
@@ -62,6 +62,7 @@ const PRELOAD = {
 }
 PRELOAD.de = PRELOAD.fr
 PRELOAD.it = PRELOAD.fr
+PRELOAD.es = PRELOAD.fr
 
 export function fontPreloads(lang) {
   const wanted = PRELOAD[lang]

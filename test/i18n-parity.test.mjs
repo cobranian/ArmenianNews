@@ -17,8 +17,10 @@ import { BLOCS, BLOC_LANGS, clesDe, valeur, valeursDe } from './helpers/i18n-blo
 // chaque table indexée par langue doit porter les mêmes clés que `fr`.
 
 const NOUVELLES = ['de', 'it']
+// es : langue ajoutée le 31 octobre 2026 — son bloc existe avant d'être servie.
+const LANGUES_ES = ['es']
 // Toutes les langues qui ont (ou doivent avoir) un bloc, servies ou non.
-const LANGUES = [...new Set([...ALL_LANGS, ...NOUVELLES])]
+const LANGUES = [...new Set([...ALL_LANGS, ...NOUVELLES, ...LANGUES_ES])]
 
 const H = 3600 * 1000
 const D = 24 * H
@@ -64,13 +66,14 @@ test('OG_LOCALE couvre chaque langue', () => {
   for (const l of LANGUES) assert.ok(OG_LOCALE[l], l)
   assert.equal(OG_LOCALE.de, 'de_DE')
   assert.equal(OG_LOCALE.it, 'it_IT')
+  assert.equal(OG_LOCALE.es, 'es_419')
 })
 
 test('la mention « traduit du français » : présente partout, remplie sous de/it seulement', () => {
   for (const l of LANGUES) assert.equal(typeof CULTURE_STRINGS[l].translatedFrom, 'string', l)
   assert.equal(CULTURE_STRINGS.de.translatedFrom, 'Aus dem Französischen übersetzt')
   assert.equal(CULTURE_STRINGS.it.translatedFrom, 'Tradotto dal francese')
-  for (const l of ['fr', 'en', 'hy', 'ru']) assert.equal(CULTURE_STRINGS[l].translatedFrom, '', l)
+  for (const l of ['fr', 'en', 'hy', 'ru', 'es']) assert.equal(CULTURE_STRINGS[l].translatedFrom, '', l)
 })
 
 test('la marque reste « Arménie Info » sous de/it', () => {
@@ -83,7 +86,7 @@ test('la marque reste « Arménie Info » sous de/it', () => {
 test('chaque langue a son bloc STRINGS dans src/i18n.jsx', () => {
   for (const l of LANGUES) assert.ok(BLOCS[l], `bloc STRINGS.${l} absent`)
   // L'ordre du fichier suit celui du sélecteur (fr, de, it, en, hy, ru).
-  assert.deepEqual(BLOC_LANGS, ['fr', 'de', 'it', 'en', 'hy', 'ru'])
+  assert.deepEqual(BLOC_LANGS, ['fr', 'de', 'it', 'en', 'hy', 'ru', 'es'])
 })
 
 test('chaque bloc STRINGS déclare exactement les clés du bloc fr', () => {
@@ -98,7 +101,7 @@ test('chaque bloc STRINGS déclare exactement les clés du bloc fr', () => {
 test('news.originalLang : présente partout, remplie sous de/it seulement', () => {
   assert.equal(valeur('de', 'news.originalLang'), 'Artikel auf Französisch')
   assert.equal(valeur('it', 'news.originalLang'), 'Articoli in francese')
-  for (const l of ['fr', 'en', 'hy', 'ru']) assert.equal(valeur(l, 'news.originalLang'), '', l)
+  for (const l of ['fr', 'en', 'hy', 'ru', 'es']) assert.equal(valeur(l, 'news.originalLang'), '', l)
 })
 
 test('LOCALES : de-CH et it-CH', () => {
@@ -107,6 +110,7 @@ test('LOCALES : de-CH et it-CH', () => {
   assert.ok(m, 'LOCALES introuvable')
   assert.match(m[1], /\bde: 'de-CH'/)
   assert.match(m[1], /\bit: 'it-CH'/)
+  assert.match(m[1], /\bes: 'es-419'/)
 })
 
 test('chaque pays du sélecteur a son nom allemand et italien', () => {
@@ -126,6 +130,19 @@ test('l’âge des dépêches en allemand et en italien', () => {
   assert.equal(ago(2 * D, 'de'), '2 T.')
   assert.equal(ago(3 * H, 'it'), '3 h')
   assert.equal(ago(2 * D, 'it'), '2 g')
+})
+
+test('l’âge des dépêches en espagnol', () => {
+  assert.equal(ago(3 * H, 'es'), '3 h')
+  assert.equal(ago(2 * D, 'es'), '2 d')
+})
+
+test('chaque pays du sélecteur a son nom espagnol', () => {
+  for (const k of Object.keys(COUNTRIES)) {
+    assert.ok(COUNTRIES[k].es?.trim(), `COUNTRIES.${k}.es`)
+    assert.equal(countryLabel(k, 'es'), COUNTRIES[k].es)
+  }
+  assert.equal(countryLabel('switzerland', 'es'), 'Suiza')
 })
 
 // L'allemand de Suisse n'a pas de ß. Un seul suffit à trahir un texte écrit

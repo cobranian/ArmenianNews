@@ -52,4 +52,12 @@ export const NEWSLETTER_STRINGS = {
     agenda: 'Ближайшие события',
     more: 'Вся афиша',
   },
+  es: {
+    subject: (dateLabel) => `Armenia News — semana del ${dateLabel}`,
+    intro: 'Su semana armenia en breve: los resúmenes del día, la cultura y los próximos eventos.',
+    briefs: 'Los resúmenes de la semana',
+    culture: 'Cultura',
+    agenda: 'Próximamente',
+    more: 'Todos los eventos',
+  },
 }

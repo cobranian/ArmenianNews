@@ -117,4 +117,22 @@ export const BRIEF_STRINGS = {
     radio: 'В эфире',
     agenda: 'Афиша',
   },
+  es: {
+    title: 'El resumen del día',
+    nav: 'Resumen',
+    brand: 'Armenia News',
+    description:
+      'Cada mañana, los temas del día contrastados entre las redacciones armenias, con enlaces a sus artículos.',
+    latest: 'Último resumen',
+    archive: 'Archivo',
+    read: 'Leer el resumen completo →',
+    sources: 'Fuentes',
+    previous: '← Día anterior',
+    next: 'Día siguiente →',
+    disclaimer: 'Síntesis automática de los titulares del día: lea los artículos originales.',
+    empty: 'El primer resumen aparecerá mañana por la mañana.',
+    home: 'Inicio',
+    radio: 'En vivo',
+    agenda: 'Eventos',
+  },
 }

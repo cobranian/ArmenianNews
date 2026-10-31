@@ -7,10 +7,10 @@ import { readFileSync } from 'node:fs'
 const read = (p) => readFileSync(new URL(p, import.meta.url), 'utf8')
 
 // Une clé absente rend la clé elle-même (« lb.summary ») dans la page.
-test('les deux libellés du résumé existent dans les six langues', () => {
+test('les deux libellés du résumé existent dans les sept langues', () => {
   const src = read('../src/i18n.jsx')
-  assert.equal(src.match(/'lb\.summary':/g)?.length, 6)
-  assert.equal(src.match(/'lb\.summaryNote':/g)?.length, 6)
+  assert.equal(src.match(/'lb\.summary':/g)?.length, 7)
+  assert.equal(src.match(/'lb\.summaryNote':/g)?.length, 7)
 })
 
 // Chargés à la demande : un chunk par langue, rien dans le bundle de la page.

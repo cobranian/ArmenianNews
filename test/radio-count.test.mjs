@@ -35,6 +35,7 @@ const NOMBRES = {
   en: 'Seventeen',
   hy: 'Տասնյոթ',
   ru: 'Семнадцать',
+  es: 'Diecisiete',
 }
 const ATTENDU = 17
 
