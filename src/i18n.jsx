@@ -136,7 +136,7 @@ const STRINGS = {
     // laquelle repose la licéité du dépôt de cookies. Si la configuration du
     // consentement change dans public/ga-init.js — notamment la liste des
     // régions où le cookie est refusé — ces chaînes doivent suivre, dans les
-    // six langues.
+    // sept langues.
     'privacy.title': 'Politique de confidentialité',
     'privacy.intro':
       "Ce site est un instantané statique : ni compte, ni base de données. Le lire ne demande rien, et il ne conserve rien qui vous identifie personnellement — la seule donnée personnelle est l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site.",

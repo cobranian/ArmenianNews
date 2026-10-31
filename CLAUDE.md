@@ -5,7 +5,7 @@ travaille sur ce dépôt.
 
 ## Ce qui entre dans ce fichier, et ce qui n'y entre pas
 
-**Ce fichier est un budget, pas un journal.** Il pèse ~73 000 caractères, soit
+**Ce fichier est un budget, pas un journal.** Il pèse ~74 500 caractères, soit
 ~20 000 jetons **chargés à chaque session**, avant qu'une seule ligne de code
 n'ait été lue. Chaque ajout se paie sur toutes les tâches à venir.
 
@@ -41,8 +41,8 @@ Où va le reste : le **récit** d'un chantier dans son message de commit ; le
 **Arménie Info** (`armenieinfo.ch`) et **Armenia News** (`armenianews.org`) —
 deux vitrines d'un **même instantané horaire** de la vie arménienne, servies
 depuis une seule base de code. Le .ch sert le français (`/`), l'allemand
-(`/de/`) et l'italien (`/it/`) ; le .org l'anglais (`/`), l'arménien (`/hy/`)
-et le russe (`/ru/`) — six langues, 24 pages (6 × 4 vues). Actualités, agenda
+(`/de/`) et l'italien (`/it/`) ; le .org l'anglais (`/`), l'espagnol (`/es/`), l'arménien
+(`/hy/`) et le russe (`/ru/`) — sept langues, 28 pages (7 × 4 vues). Actualités, agenda
 et réseaux sociaux, esthétique de journal « Apricot Press » (basalte éclairé
 d'abricot), bascule **jour / nuit**.
 
@@ -70,11 +70,11 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 24 pages produites (6 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les pages Agenda par pays (hreflang, Event, sitemap ⇔ noindex), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
-npm run prerender    # cuit les 24 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
+npm run check        # contrôle les 28 pages produites (7 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les pages Agenda par pays (hreflang, Event, sitemap ⇔ noindex), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
+npm run prerender    # cuit les 28 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
-npm test             # toute la suite (~760 tests), sans réseau
+npm test             # toute la suite (~855 tests), sans réseau
 npm run lint         # ESLint (config plate, eslint.config.js) — passe : 0 erreur, 5 avertissements connus
 npm run scrape       # rafraîchir src/data/{news,agenda,meta,instagram-feed}.json depuis les sources
 npm run ig-scrape    # rafraîchir le pool Instagram (local, Chrome connecté — jamais en CI)
@@ -86,7 +86,7 @@ npm run culture:check     # contrôle strict des articles Culture (celui des PR)
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
-npm run hydration-check # après build + prerender : les 24 pages s'hydratent-elles sans écart ? (local, Chrome)
+npm run hydration-check # après build + prerender : les 28 pages s'hydratent-elles sans écart ? (local, Chrome)
 npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
@@ -153,11 +153,14 @@ composants importent au build :
 
   | Module | Langues | Comment | Le piège à connaître |
   |---|---|---|---|
-  | `armenpress` | fr/en/hy/ru | Inertia, `props.data.data.hits` | `fetchTextNode` obligatoire (undici → 403) |
+  | `armenpress` | fr/en/hy/ru/es | Inertia, `props.data.data.hits` | `fetchTextNode` obligatoire (undici → 403) |
   | `civilnet` | fr/en/hy/ru | Inertia, `props.feed.data.hits` | idem ; id propre à chaque édition |
   | `newsam` | en/hy/ru | Inertia + 3 verticales héritées | med : RSS mort depuis 2013 (garde de fraîcheur) |
   | `californiacourier` | fr/en/hy/ru | WordPress REST | images recopiées dans `public/cc/` (Cloudflare) |
   | `armradio` | en/hy/ru | Worker + KV, chaîne de replis | la CI est défiée : cron du Worker |
+  | `soyarmenio` | es | WordPress REST (`_fields`+media) | Cloudflare ; `_embed` pèse 2,4 Mo |
+  | `diarioarmenia` | es + agenda | WordPress REST | placeholder anti-hotlink, images dans `public/da/` |
+  | `norsevan` | es (+hy) | RSS Wix | billets en écriture arménienne → étagère `hy` |
   | `asbarez` | en/hy | via Worker (`ASBAREZ_PROXY`) | WAF anti-datacenter, aucun repli |
   | `oragark` | en/hy | WordPress REST | — |
   | `armenianweekly` | en | WordPress REST | sous-catégories résolues depuis l'arbre |
@@ -186,7 +189,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 - `scripts/lib/site-meta.mjs` génère le `<head>` d'un couple (site, langue).
   Appelé par le plugin `siteMeta()` de `vite.config.js` pour la page par défaut
   de chaque site, **et** par `scripts/build-sites.mjs` pour dériver les autres.
-  Un seul générateur pour les 24 pages : des `hreflang` divergents
+  Un seul générateur pour les 28 pages : des `hreflang` divergents
   sont ignorés en bloc par Google. Il pose aussi la balise **Cloudflare Web
   Analytics** (marqueur `<!--CF_BEACON-->` dans `index.html`) à partir du
   `cfBeaconToken` de la vitrine : **un jeton par site**, donc deux tableaux de
@@ -244,7 +247,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   desquels WhatsApp cesse de chercher l'image.
 
   **Ce bloc doit être écrit DEUX fois, et l'oublier une fois ne se voit
-  nulle part.** `site-meta.mjs` le pose sur les 24 pages React — et il ne
+  nulle part.** `site-meta.mjs` le pose sur les 28 pages React — et il ne
   voit **pas** `pages/`, dont les cartes de liens sont des HTML complets hors
   du bundle. Le bloc y a donc été recopié à la main, et il faut le tenir à
   jour des deux côtés. Le défaut a réellement été commis : l'accueil décrivait
@@ -253,7 +256,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   signaler : la page était valide, simplement moins bien décrite que sa
   jumelle, et le seul symptôme était une petite carte chez un lecteur.
   `check-build.mjs` exige désormais les six balises sur **chaque** carte de
-  liens, en plus des 24 pages.
+  liens, en plus des 28 pages.
 
   **Ne concluez pas d'une seule capture.** Un aperçu petit après un aperçu
   grand peut n'être qu'un changement de client : mesurez la largeur de la
@@ -306,10 +309,10 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   page), l'`og:image` et l'absence du domaine ou de la carte du voisin.
 
   **Le nombre de radios est écrit en toutes lettres** dans ces cartes et dans
-  les six `radio.subtitle` (`t()` ne sait pas interpoler). Rien ne les relie
+  les sept `radio.subtitle` (`t()` ne sait pas interpoler). Rien ne les relie
   au tableau `STATIONS` de `Radio.jsx` : `test/radio-count.test.mjs` compte les
   stations et échoue si un texte diverge. Sans lui, une dix-huitième
-  station ferait mentir ces textes en six langues, en silence.
+  station ferait mentir ces textes en sept langues, en silence.
 - `scripts/build-sites.mjs` orchestre deux `vite build` (un par site, dans des
   processus fils — la config de Vite est mise en cache par processus), dérive
   les pages supplémentaires à partir du HTML déjà bâti (pas un rebuild par
@@ -372,8 +375,8 @@ dehors des tests.
 Les slugs restent en **caractères latins** : un slug en écriture arménienne
 partirait en pourcent-encodage (`/hy/%D5%BC%D5%A1...`), illisible dans un
 partage, pour aucun gain de classement. Mais ils sont **traduits là où le mot
-change la requête** — `radio` s'écrit pareil dans les six langues, alors que
-`agenda` devient `events` (en/hy/ru), `veranstaltungen`, `eventi` : en
+change la requête** — `radio` s'écrit pareil dans les sept langues, alors que
+`agenda` devient `events` (en/hy/ru), `veranstaltungen`, `eventi`, `eventos` : en
 anglais « agenda » désigne un ordre du jour ou un mobile, jamais une liste
 d'événements, et c'est « events » que les gens tapent.
 
@@ -452,7 +455,7 @@ propose, en se purgeant des pays sans événement.
 canonique (`location` d'abord — « Erevan » → `armenia`, « Angleterre » →
 `unitedkingdom` —, puis le slug `country`, et en dernier recours le texte brut
 plié), `countryLabel(key, lang)` / `countryFlag(key)` la rendent. **Le nom de
-pays du sélecteur EST localisé dans les six langues** (fr compris) : c'est du
+pays du sélecteur EST localisé dans les sept langues** (fr compris) : c'est du
 chrome d'interface (un libellé de contrôle), pas du contenu d'article. Le
 **badge** de chaque carte (et la visionneuse, et `/events/`) est traduit lui
 aussi depuis le 27 octobre 2026 par `placeLabel` (table `PLACES`) : un lecteur
@@ -488,8 +491,7 @@ thème ou de l'écran part de la valeur du prérendu et change **au montage**
 `npm run hydration-check` le prouve — avec `NODE_ENV=development npm run build`
 pour lire chaque écart en clair (React n'avertit qu'une fois par page). Les
 `.reveal` ne sont masqués que sous `html.js` (posé par `theme-init.js`) : le
-prérendu ne doit plus y ajouter `is-visible`. Mesure (17 oct. 2026, bridage
-réel) : TBT −25 %, LCP ~3,1 → ~2,9 s. **Le LCP « simulé » de Lighthouse (~10 s)
+prérendu ne doit plus y ajouter `is-visible`. **Le LCP « simulé » de Lighthouse (~10 s)
 est un artefact** de ce site — mesurez avec `--throttling-method=devtools`.
 
 ## Données : ce qui est scrapé vs. curé à la main
@@ -532,7 +534,7 @@ est un artefact** de ce site — mesurez avec `--throttling-method=devtools`.
   voit pas.** Le plugin `lightData()` (`vite.config.js`, fonctions pures dans
   `scripts/lib/light-data.mjs`) remplace, pour le bundle seulement, le contenu
   de `news.json` par les seules langues de la vitrine bâtie (fr sur le .ch,
-  en/hy/ru sur le .org — `TAB_ORDER` décide donc aussi de ce qui est
+  en/es/hy/ru sur le .org — `TAB_ORDER` décide donc aussi de ce qui est
   **embarqué**) et celui d'`instagram.json` par ses comptes **sans posts**. Le
   fichier sur disque ne change pas : scraper, tests et prérendu lisent le
   vrai. Mesuré le 21 août 2026 : bundle du .ch 1,45 Mo → 0,72 Mo brut, sans
@@ -601,9 +603,6 @@ version en ligne (un no-op réussi, pas un échec) — site par site, ce verdict
 porte que sur celui-ci, alors qu'une sortie combinée ferait confondre l'échec
 réel de l'un avec le no-op bénin de l'autre.
 
-> **Ces noms ont bougé deux fois — ne vous fiez qu'au tableau ci-dessus** ;
-> le pourquoi des tâtonnements est dans l'historique git.
-
 Vite `base`
 vaut `/` par défaut sur les deux (chaque domaine sert depuis sa propre racine) ;
 surchargez avec `BASE_PATH=/sous-chemin` pour un sous-chemin — surtout utile
@@ -611,6 +610,14 @@ avec `build:one`, le build Vite unique de dépannage, puisque les deux vitrines
 de production servent toujours depuis la racine de leur domaine.
 
 ## À savoir
+
+- **Espagnol : trois pièges muets.** (1) Diario Armenia répond 200 + un PNG
+  200×200 de remplacement à toute image appelée avec un Referer étranger : les
+  images sont recopiées dans `public/da/` (comme `public/cc/`), à garder dans le
+  `git add` de `hourly.yml`. (2) Nor Sevan publie aussi des billets en écriture
+  arménienne : ils vont à l'étagère `hy` (`hayeren`), pas à `es`. (3)
+  `test/about.test.mjs` ne lit que les littéraux `TAB_ORDER` **multi-lignes** :
+  gardez un id par ligne, sinon l'oubli d'une source passe sans bruit.
 
 - **Pièges par source** (récolte Instagram, dates du Courrier et
   d'ArménieInfo.tv, titres Armenpress, ArmRadio ru et son Worker) : skill
@@ -638,7 +645,7 @@ de production servent toujours depuis la racine de leur domaine.
   (`gh run view <id> --log | grep classify`). Modèle en service :
   `nvidia/nemotron-3.5-lightning:free`, raisonnement coupé, replis
   `STRONG_MODEL` (`nemotron-3-ultra-550b`) puis `google/gemma-4-31b-it:free`, délai 30 s ;
-  la brève met `STRONG_MODEL` en TÊTE dans les six langues (`briefModels`) :
+  la brève met `STRONG_MODEL` en TÊTE dans toutes les langues (`briefModels`) :
   lightning y glissait des mots latins (hy/ru) et des erreurs de fait (en). Les modèles `:free` se retirent (404) — **et un
   modèle mort peut rester listé** dans `https://openrouter.ai/api/v1/models`
   (super-120b, 24 oct. 2026) : testez par un appel réel, puis ajoutez-le à
@@ -748,8 +755,8 @@ de production servent toujours depuis la racine de leur domaine.
   l'arménien n'a pas d'italique de tradition. Le dégradé abricot, lui, reste.
   Si cette marque repasse un jour en latin, ces trois exceptions redeviennent
   inutiles.
-- **Les `hreflang` doivent rester réciproques.** Les six `alternate` plus
-  `x-default` sont identiques sur les six pages d'une vue, chacune se citant
+- **Les `hreflang` doivent rester réciproques.** Les sept `alternate` plus
+  `x-default` sont identiques sur les sept pages d'une vue, chacune se citant
   elle-même. Une page absente de son propre bloc fait ignorer **tout** le bloc
   par Google — silencieusement. C'est pourquoi un seul générateur les produit.
 - **`firebase.json` n'a plus de rewrite `**` → `index.html`, et ne doit pas le
@@ -812,7 +819,7 @@ de production servent toujours depuis la racine de leur domaine.
   partis : en retirer une ligne renvoie cette semaine aux abonnés, et il est poussé
   AVANT l'envoi. (2) `check-build.mjs` compte les alternates AVEC `hreflang=` : le
   lien d'autodécouverte RSS est aussi un `rel="alternate"`, un compte sur le
-  `rel="alternate"` nu ferait échouer les 24 pages.
+  `rel="alternate"` nu ferait échouer les 28 pages.
 - **Réseaux sociaux : le registre `src/data/social-posted.json` est la seule
   mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
   `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
@@ -967,9 +974,9 @@ de production servent toujours depuis la racine de leur domaine.
   porter au moins une source en `https://`, et `genre` / `langue` sont des
   **clés** — pas du texte affichable, `RadioPage.jsx` les rend par
   `t('radio.genre.'+f.genre)` — donc chacune doit être déclarée **dans les
-  six blocs** `STRINGS` de `src/i18n.jsx`. Sans ce dernier contrôle, une
+  sept blocs** `STRINGS` de `src/i18n.jsx`. Sans ce dernier contrôle, une
   station ajoutée avec `genre: 'talk'` passerait le test de sourçage, le lint,
-  `npm run check` et le prérendu — et les six pages `/radio/` afficheraient
+  `npm run check` et le prérendu — et les sept pages `/radio/` afficheraient
   « Genre : radio.genre.talk », cuit dans le HTML que Google indexe (`t()`
   vaut `STRINGS[lang][clé] ?? STRINGS.fr[clé] ?? clé` : une clé absente
   **rend la clé**). Même mécanique que `test/radio-count.test.mjs`, sur une
@@ -1014,7 +1021,7 @@ de production servent toujours depuis la racine de leur domaine.
   ```
 
   **Marquer plutôt que retirer** : une station retirée ferait mentir les
-  textes qui écrivent « dix-sept » en toutes lettres dans six langues,
+  textes qui écrivent « dix-sept » en toutes lettres dans sept langues,
   descriptions Google comprises, et tout serait à refaire à l'envers au retour.
   `offAir: true` rend la puce inerte sans toucher au compte.
 - **Articles Culture : neuf pièges silencieux** (un brouillon par jour,

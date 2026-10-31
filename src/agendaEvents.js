@@ -101,7 +101,7 @@ export function paysDeLAgenda(aVenir) {
 // lui), et `id` de son <li> sur /agenda/ (AgendaPage.jsx). Le lien partagé mène
 // ainsi sur CE site et non chez armenopole. Dérivée de l'URL de
 // l'événement (FNV-1a 32 bits, base 36) : stable d'un scrape à l'autre, et
-// la même pour les deux vitrines et les six langues.
+// la même pour les deux vitrines et les sept langues.
 export function eventAnchor(ev) {
   let h = 0x811c9dc5
   for (const ch of String(ev?.url ?? '')) {

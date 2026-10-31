@@ -96,7 +96,7 @@ const fold = (s) =>
 // table garde son texte français ; un nom de pays passe par COUNTRIES. Les
 // noms de pays seuls n'ont donc pas à figurer ici. `fr` est absent : le
 // français affiche le texte de la source tel quel.
-// Exporté pour test/place-label.test.mjs, qui vérifie les six langues.
+// Exporté pour test/place-label.test.mjs, qui vérifie les sept langues.
 export const PLACES = {
   // Suisse
   geneve:     { de: 'Genf', it: 'Ginevra', en: 'Geneva', hy: 'Ժնև', ru: 'Женева', es: 'Ginebra' },

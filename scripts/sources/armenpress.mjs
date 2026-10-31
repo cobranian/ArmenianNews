@@ -11,14 +11,16 @@ import { clean, safeUrl } from '../lib/util.mjs'
 // no CSS selectors here. This breaks if the payload changes shape, not on a
 // redesign.
 //
-// Seven rubrics per language (es: same Inertia payload and slugs, measured 2026-10-31; it publishes nothing on weekends), read from the rubric pages. Two things that the
-// page's own history got wrong, both measured (28 pages (7 rubriques × 4
-// langues), 2026-07-16):
+// Seven rubrics per language, read from the rubric pages (es: same Inertia
+// payload and slugs, measured 2026-10-31; it publishes nothing on weekends).
+// Two things that the page's own history got wrong, both measured (28 pages
+// (7 rubriques × 4 langues), 2026-07-16):
 //   - The rubric pages are NOT empty. Their articles live at
 //     props.data.data.hits — the homepage's props.feed.data.hits path reads as
 //     an empty rubric, which is what "the rubric pages embed an empty feed"
 //     came from. Every rubric returns 12-36 articles, all dated and imaged.
-//   - There is no aggressive rate limit. All 28 pages load back to back.
+//   - There is no aggressive rate limit. All 28 pages load back to back
+//     (35 with es).
 const BASE = 'https://armenpress.am'
 const HOST = 'armenpress.am'
 

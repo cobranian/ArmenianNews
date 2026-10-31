@@ -36,6 +36,7 @@ export const SECTIONS = [
 
 // Étiquettes de mise en page du thème (Slider, Destacado1, Destacado 2) : elles
 // regroupent des articles de tous sujets et ne sont pas des rubriques.
+// Documente l'exclusion ; la liste blanche, c'est SECTIONS ci-dessus.
 export function isLayoutCategory(slug) {
   return /^(slider|destacado-?\d*)$/.test(String(slug || ''))
 }

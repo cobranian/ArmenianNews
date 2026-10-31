@@ -665,6 +665,10 @@ html:lang(hy) .nav__links {
    langues), là où la barre à quatre pastilles s'arrêtait à deux (79px).
    Replié jusqu'à 900, aucune langue ne dépasse deux rangs.
 
+   Septième pastille (es, 31 oct. 2026) : +38px, et la barre repassait à
+   109px entre 901 et ~940px sur /es/, /hy/, /de/ et l'accueil .ch (mesuré).
+   Seuil porté à 960 ; au-dessus, 79px sur les sept langues.
+
    Au-dessus, les deux enveloppes sont en `display: contents` : la barre de
    bureau est exactement celle d'avant, .lang reste enfant direct du groupe.
 
@@ -721,7 +725,7 @@ html:lang(hy) .nav__links {
   background: rgba(36, 27, 16, 0.04);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   html:not(.js) .nav__tools {
     flex-wrap: wrap;
     justify-content: flex-end;

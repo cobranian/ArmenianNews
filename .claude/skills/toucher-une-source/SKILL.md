@@ -17,10 +17,10 @@ résidentielle et 403 à un runner.
 ## Les modules de `scripts/sources/`, un par un
 
 - `armenpress.mjs` — Armenpress, l'agence de presse nationale, et la seule
-  source **quadrilingue** (fr/en/hy/ru) : les quatre éditions correspondent
-  1:1 à la langue de l'interface. Application Inertia.js : le JSON du flux est
+  source **à cinq éditions** (fr/en/hy/ru/es) : les éditions correspondent
+  1:1 à la langue de l'interface (es : mêmes slugs, rien le week-end). Application Inertia.js : le JSON du flux est
   embarqué dans la page, donc **aucun sélecteur CSS**. **Sept rubriques ×
-  quatre langues = 28 pages** par snapshot, espacées de 800 ms. L'édition
+  cinq langues = 35 pages** par snapshot, espacées de 800 ms. L'édition
   russe (`armenpress.am/ru`) partage exactement la même structure Inertia et
   les mêmes slugs de rubriques ; ses libellés `apcats.*` sont les noms de sa
   propre navigation (voir `src/i18n.jsx`).
@@ -48,6 +48,34 @@ résidentielle et 403 à un runner.
     `ArmenieInfo/1.0`, et `test/http-ua.test.mjs` interdit le retour d'un UA
     de navigateur. Le premier réflexe devant un mur figé reste le même :
     `gh run view <id> --log | grep '✗'`.
+- `soyarmenio.mjs` — Soy Armenio (soyarmenio.com), quotidien espagnol de la
+  diaspora d'Amérique latine. WordPress REST derrière Cloudflare : notre UA
+  (jamais « Chrome ») passe, les images se lient en direct. **Piège de poids** :
+  `_embed` pèse 2,4 Mo pour 20 articles ; le module demande `_fields`, puis les
+  médias en un seul appel `media?include=…` (~25 Ko pour 10 images). Slugs
+  WordPress réels dans `SECTIONS` (« Armenia » = `noticias-de-armenia`,
+  « Mundo » = `noticias-internacionales`). Source mono-langue, hors `BY_LANG`.
+- `diarioarmenia.mjs` — Diario Armenia (diarioarmenia.org.ar), communauté
+  arménienne d'Argentine ; WordPress REST sans Cloudflare.
+  - **Anti-hotlink muet** : avec un Referer étranger, l'URL d'une image répond
+    200 et une vignette PNG 200×200 ; sans Referer, la vraie photo. Les images
+    sont recopiées dans `public/da/` par `scrape.mjs` (comme `public/cc/`) et
+    committées par `hourly.yml`.
+  - La catégorie **Agenda** n'est jamais une étagère du fil (`SECTIONS` est la
+    liste blanche ; `isLayoutCategory` documente l'exclusion des étiquettes de
+    thème Slider/Destacado). `diarioarmenia-agenda.mjs` la lit à part : ces
+    annonces n'ont aucun champ de date, le jour et l'heure vivent dans la phrase
+    d'ouverture (« el sábado 28 de noviembre a las 18 »). Dates parsées en
+    espagnol (mois, « 1° », listes « 14, 21 y 28 », « del 3 al 16 »), l'année
+    vient de la date de publication ; **pas de date sûre, pas d'événement**.
+    Heure murale sans fuseau, jamais de `Z`.
+- `norsevan.mjs` — Nor Sevan (norsevan.com), Argentine. Wix derrière
+  Cloudflare, sans API : **le RSS est la seule voie** (`blog-feed.xml`, 20
+  billets). La date est le `pubDate` du flux, **pas** le `lastmod` du sitemap
+  (date de modification). Les images du flux (`/v1/fit/w_700…`) livrent un PNG
+  de ~540 Ko : `fullImage` retire le suffixe pour l'original JPEG. Un billet en
+  écriture arménienne (`isArmenianText`) va dans l'étagère `hy` (`hayeren`),
+  jamais sous `es`.
 - `courrier.mjs` — Le Courrier d'Erevan (actualités, par rubrique).
 - `armenews.mjs` — Nouvelles d'Arménie (armenews.com), six rubriques
   WordPress, francophone.

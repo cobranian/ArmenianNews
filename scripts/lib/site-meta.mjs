@@ -420,7 +420,7 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
   })
 }
 
-// Les alternates d'une page pays : le même pays dans les six langues. La page
+// Les alternates d'une page pays : le même pays dans les sept langues. La page
 // existe dans toutes (même données, même horloge pour les deux vitrines — voir
 // build-sites.mjs), donc le bloc est complet et réciproque par construction.
 export function agendaPaysAlternates(key) {

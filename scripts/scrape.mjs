@@ -147,10 +147,11 @@ async function main() {
   }
   const armenieinfotv = backfillSections(aitvSecs, prevNews?.armenieinfotv, 'categoryKey')
 
-  // Armenpress — the national news agency, and the only quadrilingue
-  // (fr/en/hy/ru) source here (fr/en/hy/ru map 1:1). It does not lead the news
-  // tabs: Courrier is French-only and prerenders more French copy.
-  // Sept rubriques × quatre langues = 28 pages, spaced by its own module.
+  // Armenpress — the national news agency, and the only five-edition
+  // (fr/en/hy/ru/es) source here (the editions map 1:1 to the UI languages).
+  // It does not lead the news tabs: Courrier is French-only and prerenders
+  // more French copy.
+  // Sept rubriques × cinq langues = 35 pages, spaced by its own module.
   // Backfilled per language, exactly like armradio.
   console.log('\nArmenpress — armenpress.am (fr/en/hy/ru/es, 7 rubriques):')
   // Seeded per language, not {}: backfillSections reads `fresh.length`, so an

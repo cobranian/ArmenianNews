@@ -1,6 +1,6 @@
 // Le garde-fou d'ÉCRITURE de la brève : un sujet arménien ou russe ne publie
 // pas de mots en lettres latines sortis de nulle part, et l'inverse en
-// français, allemand, italien et anglais.
+// français, allemand, italien, anglais et espagnol.
 //
 // Mesuré le 17 octobre 2026 : les modèles :free intercalaient dans la brève
 // arménienne « remporter », « capitaine », « successoffice », un mot à moitié
@@ -53,8 +53,9 @@ export function strayWords(text, lang, allowed = new Set()) {
   return out
 }
 
-// Le français qui s'est glissé dans une brève allemande ou italienne : le seul
-// cas que l'alphabet ne voit pas, les trois langues s'écrivant en latin. de et
+// Le français qui s'est glissé dans une brève allemande, italienne ou
+// espagnole (celle-ci gardée aussi contre l'anglais, voir ES_MARKERS) : le seul
+// cas que l'alphabet ne voit pas, ces langues s'écrivant en latin. de et
 // it lisent des titres français, et un modèle :free recopie volontiers la
 // langue de ses titres (mesuré le 23 octobre 2026 : brève « it » entièrement
 // en français, publiée telle quelle sans ce garde).

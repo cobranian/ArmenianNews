@@ -31,10 +31,10 @@ export const MAX_TOPICS = 7
 // dépassait déjà 90 s sur 80 titres (15 octobre 2026).
 export const BRIEF_TIMEOUT_MS = 180000
 
-// Ultra-550b en tête dans les six langues. hy/ru/de/it d'abord (24 oct. 2026) :
+// Ultra-550b en tête dans les sept langues. hy/ru/de/it d'abord (24 oct. 2026) :
 // lightning ratait la brève hy entière (« ոստիկանայինVor ») et perdait des
 // sujets en ru et it. fr/en ensuite, sur les brèves du 25 octobre : ultra a
-// écrit 7 sujets dans ses quatre langues, quand lightning n'en tenait que 5 en
+// écrit 7 sujets dans quatre langues, quand lightning n'en tenait que 5 en
 // anglais, avec une erreur de fait (Naré « va passer en 8e » le jour de sa
 // victoire) et un prénom inventé ; en fr, le 22, il faisait d'Araghchi un
 // ministre arménien. Le classeur des rubriques, lui, garde lightning en tête.
