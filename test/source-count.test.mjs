@@ -26,8 +26,8 @@ const read = (rel) => readFileSync(path.join(root, rel), 'utf-8')
 // On lit NewsBrowser.jsx comme du TEXTE : Node ne sait pas importer du JSX
 // (ERR_UNKNOWN_FILE_EXTENSION), exactement comme pour Radio.jsx.
 const MOTS = {
-  fr: { 4: 'Quatre', 5: 'Cinq', 6: 'Six', 7: 'Sept', 8: 'Huit', 9: 'Neuf', 10: 'Dix' },
-  en: { 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten' },
+  fr: { 1: 'Une', 2: 'Deux', 3: 'Trois', 4: 'Quatre', 5: 'Cinq', 6: 'Six', 7: 'Sept', 8: 'Huit', 9: 'Neuf', 10: 'Dix' },
+  en: { 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten' },
 }
 
 // TAB_ORDER porte désormais l'ordre ET la présence, une entrée par langue.
@@ -51,14 +51,9 @@ function poolsParLangue() {
   return pools
 }
 
-// L'espagnol naît sans rédaction (TAB_ORDER.es = []) : chaque tâche source y
-// ajoute la sienne. EXEMPTION NOMMÉE, à retirer dès que armenpress/es y est.
-const SANS_REDACTION_ENCORE = ['es']
-
 test('chaque langue déclare un pool de sources non vide', () => {
   const pools = poolsParLangue()
   for (const [lang, n] of Object.entries(pools)) {
-    if (SANS_REDACTION_ENCORE.includes(lang)) continue
     assert.ok(n >= 1, `pool ${lang} vide`)
     assert.ok(MOTS.fr[n] && MOTS.en[n], `nombre ${n} absent de MOTS — ajoutez-le`)
   }

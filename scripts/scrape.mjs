@@ -11,7 +11,7 @@ import { scrapeArmradioSections } from './sources/armradio.mjs'
 import { scrapeArmenews } from './sources/armenews.mjs'
 import { scrapeArtzakank } from './sources/artzakank.mjs'
 import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
-import { scrapeArmenpress } from './sources/armenpress.mjs'
+import { scrapeArmenpress, ARMENPRESS_LANGS } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
@@ -148,18 +148,18 @@ async function main() {
   // tabs: Courrier is French-only and prerenders more French copy.
   // Sept rubriques × quatre langues = 28 pages, spaced by its own module.
   // Backfilled per language, exactly like armradio.
-  console.log('\nArmenpress — armenpress.am (fr/en/hy/ru, 7 rubriques):')
+  console.log('\nArmenpress — armenpress.am (fr/en/hy/ru/es, 7 rubriques):')
   // Seeded per language, not {}: backfillSections reads `fresh.length`, so an
   // undefined here would throw and take the whole snapshot down — every other
   // source in this file seeds [] for exactly that reason.
-  let apLangs = { fr: [], en: [], hy: [], ru: [] }
+  let apLangs = { fr: [], en: [], hy: [], ru: [], es: [] }
   try {
     apLangs = await scrapeArmenpress(10)
   } catch (err) {
     console.error('  armenpress failed wholesale:', err.message)
   }
   const armenpress = {}
-  for (const lang of ['fr', 'en', 'hy', 'ru']) {
+  for (const lang of ARMENPRESS_LANGS) {
     armenpress[lang] = backfillSections(apLangs[lang], prevNews?.armenpress?.[lang], 'categoryKey')
   }
 

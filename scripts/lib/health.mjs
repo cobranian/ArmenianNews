@@ -23,6 +23,7 @@ export const DEFAULT_STALE_HOURS = 96
 export const STALE_HOURS = {
   // Agences : publient chaque heure (silence max mesuré : Armenpress fr 53 h, NEWS.am 25 h).
   armenpress: 72,
+  'armenpress/es': 96, // aucune publication le week-end (mesuré le 31 octobre 2026)
   newsam: 48,
   // Publie par numéros : sept articles le 21 octobre 2026, rien depuis le 14 juillet.
   artzakank: null,
