@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { SITES } from '../sites.config.js'
+import { SITES, socialFor } from '../sites.config.js'
 import { headFor } from '../scripts/lib/site-meta.mjs'
 
 // Chaque vitrine renvoie à SES comptes : un .ch qui pointerait vers les
@@ -48,10 +48,42 @@ test('toute plateforme déclarée a une icône et un nom dans SocialLinks', () =
 test('le pied de page rend les comptes depuis sites.config.js, la barre du haut non', () => {
   const read = (f) => readFileSync(new URL(`../src/components/${f}`, import.meta.url), 'utf-8')
   const src = read('SocialLinks.jsx')
-  assert.match(src, /SITES\[SITE_ID\]\?\.social/)
+  assert.match(src, /socialFor\(SITE_ID, lang\)/)
   assert.match(src, /aria-label=\{NAMES\[platform\]\}/)
   assert.match(read('Footer.jsx'), /<SocialLinks className="footer__social"/)
   // Essayés dans la barre du haut le 26 oct. 2026, retirés le soir même à la
   // demande de l'éditeur : ils ne vivent qu'au pied de page.
   assert.doesNotMatch(read('Nav.jsx'), /SocialLinks/)
+})
+
+// Un compte d'une langue sous la mauvaise langue (ou la mauvaise vitrine)
+// enverrait un lecteur allemand vers une Page italienne, sans le moindre signe.
+test('comptes par langue : langue de la vitrine, URL valides, aucun doublon', () => {
+  const seen = new Set(Object.values(SITES).flatMap((s) => Object.values(s.social)))
+  for (const site of Object.values(SITES)) {
+    const langs = site.pages.map((p) => p.lang)
+    for (const [lang, accounts] of Object.entries(site.socialByLang ?? {})) {
+      assert.ok(langs.includes(lang), `${site.id}/${lang} : langue hors de la vitrine`)
+      assert.notEqual(lang, langs[0], `${site.id}/${lang} : la langue de tête utilise \`social\``)
+      for (const [platform, url] of Object.entries(accounts)) {
+        assert.ok(platform in site.social, `${site.id}/${lang} : ${platform} inconnu`)
+        assert.ok(!seen.has(url), `${url} en double`)
+        seen.add(url)
+      }
+      if (accounts.facebook) assert.match(accounts.facebook, /^https:\/\/www\.facebook\.com\/\d+$/)
+      if (accounts.instagram) assert.match(accounts.instagram, /^https:\/\/www\.instagram\.com\/[a-z0-9_.]+\/$/)
+      if (accounts.telegram) assert.match(accounts.telegram, /^https:\/\/t\.me\/[a-z0-9_]+$/)
+      if (accounts.bluesky) assert.match(accounts.bluesky, /^https:\/\/bsky\.app\/profile\/[a-z0-9.-]+$/)
+    }
+  }
+})
+
+test('socialFor : la langue remplace la vitrine plateforme par plateforme, le reste suit', () => {
+  const es = socialFor('org', 'es')
+  assert.equal(es.telegram, 'https://t.me/armenianews_es')
+  assert.equal(es.linkedin, SITES.org.social.linkedin)
+  assert.deepEqual(Object.keys(es), Object.keys(SITES.org.social))
+  assert.deepEqual(socialFor('org', 'en'), SITES.org.social)
+  assert.equal(socialFor('ch', 'de').facebook, 'https://www.facebook.com/61596218245485')
+  assert.equal(socialFor('org', 'ru').instagram, SITES.org.social.instagram)
 })

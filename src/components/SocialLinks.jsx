@@ -1,8 +1,9 @@
-import { SITES } from '../../sites.config.js'
+import { socialFor } from '../../sites.config.js'
 import { SITE_ID } from '../site.js'
+import { useI18n } from '../i18n.jsx'
 
-// Les comptes de la vitrine bâtie (sites.config.js `social`), dans la barre
-// du haut ET au pied de page. Icônes tracées ici, en currentColor : ni police
+// Les comptes de la page (sites.config.js `socialFor` : ceux de la langue,
+// puis ceux de la vitrine), au pied de page. Icônes tracées ici, en currentColor : ni police
 // d'icônes ni requête vers les réseaux. Seul export du fichier : un composant, pour
 // ne pas ajouter d'avertissement react-refresh (voir CLAUDE.md, Lint).
 const ICONS = {
@@ -53,9 +54,9 @@ const ICONS = {
   ),
 }
 const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', linkedin: 'LinkedIn', youtube: 'YouTube' }
-const ACCOUNTS = Object.entries(SITES[SITE_ID]?.social ?? {})
-
 export function SocialLinks({ className, size = 22 }) {
+  const { lang } = useI18n()
+  const ACCOUNTS = Object.entries(socialFor(SITE_ID, lang))
   if (!ACCOUNTS.length) return null
   return (
     <ul className={className}>
