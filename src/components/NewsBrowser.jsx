@@ -257,6 +257,18 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
+  // Diario Armenia — le quotidien de la communauté d'Argentine. Espagnol seul,
+  // comme Soy Armenio ; ses images sont recopiées dans /da/ au scrape (le site
+  // sert une vignette 200×200 à tout Referer étranger).
+  const diarioarmenia = {
+    id: 'diarioarmenia',
+    brand: SOURCE_NAMES.diarioarmenia,
+    live: false,
+    images: true,
+    cats: shelvesFor('diarioarmenia', lang)
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
   // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
   // only: no Armenian, Russian or French edition, so it is named in TAB_ORDER.en
   // alone and its feed is a flat list, not keyed by language. Its rubric names
@@ -329,6 +341,7 @@ function buildSources(t, lang) {
     asbarez,
     oragark,
     soyarmenio,
+    diarioarmenia,
     armenianweekly,
     californiacourier,
     civilnet,

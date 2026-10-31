@@ -15,6 +15,7 @@ import { scrapeArmenpress, ARMENPRESS_LANGS } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
 import { scrapeSoyArmenio } from './sources/soyarmenio.mjs'
+import { scrapeDiarioArmenia } from './sources/diarioarmenia.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { mirrorImages, pruneMirror } from './lib/mirror-images.mjs'
@@ -205,6 +206,17 @@ async function main() {
   }
   const soyarmenio = backfillSections(soySecs, prevNews?.soyarmenio, 'categoryKey')
 
+  // Diario Armenia — le quotidien de la communauté d'Argentine. Espagnol seul :
+  // liste plate d'étagères, hors BY_LANG. Images recopiées plus bas (public/da/).
+  console.log('\nDiario Armenia — diarioarmenia.org.ar (es, 7 rubriques):')
+  let daSecs = []
+  try {
+    daSecs = await scrapeDiarioArmenia(10)
+  } catch (err) {
+    console.error('  diarioarmenia failed wholesale:', err.message)
+  }
+  const diarioarmenia = backfillSections(daSecs, prevNews?.diarioarmenia, 'categoryKey')
+
   // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
   // only (no hy/ru/fr edition), so it is a flat list of shelves like Courrier,
   // not a per-language map, and it shows under `en` alone.
@@ -245,6 +257,18 @@ async function main() {
   const { copied, failed } = await mirrorImages(ccArticles, { ...ccMirror, encode })
   const removed = pruneMirror(ccArticles, ccMirror)
   console.log(`  ✓ californiacourier images: ${copied} recopiées, ${failed} en échec, ${removed} retirées`)
+
+  // Diario Armenia sert une vignette 200×200 à tout Referer étranger : ses
+  // images sont recopiées dans public/da/ (le téléchargement n'envoie aucun
+  // Referer), comme celles du Courier dans public/cc/. `daItems` est LA liste
+  // que le ménage compare au dossier : la tâche agenda y AJOUTE ses événements
+  // (leurs images passent aussi par /da/) AVANT mirrorImages et pruneMirror —
+  // sinon le ménage supprimerait leurs fichiers.
+  const daItems = diarioarmenia.flatMap((s) => s.articles || [])
+  const daMirror = { dir: join(__dirname, '..', 'public', 'da'), prefix: '/da/' }
+  const daCopy = await mirrorImages(daItems, { ...daMirror, encode })
+  const daRemoved = pruneMirror(daItems, daMirror)
+  console.log(`  ✓ diarioarmenia images: ${daCopy.copied} recopiées, ${daCopy.failed} en échec, ${daRemoved} retirées`)
 
   // CivilNet — the Yerevan independent newsroom, quadrilingue like Armenpress
   // (fr/en/hy/ru map 1:1). Its four editions do not share a rubric list, so the
@@ -315,6 +339,7 @@ async function main() {
     asbarez,
     oragark,
     soyarmenio,
+    diarioarmenia,
     armenianweekly,
     californiacourier,
     civilnet,

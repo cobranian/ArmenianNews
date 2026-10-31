@@ -112,6 +112,18 @@ export const RUBRIC_MAP = {
     'noticias-internacionales': 'monde',
     deporte: 'sports',
   },
+  // Diario Armenia : `armenia` est le fil fourre-tout (5 000 articles). Pays et
+  // institutions sont des étiquettes, pas des sujets : seules les rubriques
+  // éditoriales vivantes sont des étagères. `agenda` n'y est jamais.
+  diarioarmenia: {
+    armenia: mixed('armenie'),
+    azerbaiyan: 'politique',
+    argentina: 'diaspora',
+    cultura: 'culture',
+    opinion: 'opinion',
+    institucionales: 'diaspora',
+    artsaj: 'armenie',
+  },
   oragark: {
     featured: mixed('armenie'),
     news: mixed('armenie'),

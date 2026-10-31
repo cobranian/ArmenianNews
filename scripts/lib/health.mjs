@@ -31,6 +31,9 @@ export const STALE_HOURS = {
   asbarez: 168, // 92 h
   oragark: 240, // 131 h
   soyarmenio: 48, // ~12 articles par jour, plus long silence 23 h (mesuré le 31 octobre 2026)
+  // ~3 articles par jour hors Agenda (97 en octobre dont 36 d'Agenda) : un creux de
+  // week-end dépasse 48 h ; 72 h laisse une marge sans cacher un vrai gel.
+  diarioarmenia: 72,
   'civilnet/fr': 288, // 168 h
   'civilnet/ru': 168, // 96 h
   californiacourier: 504, // hebdomadaire : 347 h
