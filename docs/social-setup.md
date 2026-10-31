@@ -1,8 +1,11 @@
 # Publication automatique sur les réseaux
 
 `scripts/social-post.mjs` publie chaque **nouvel article Culture** (et, sur
-demande, la brève du jour) sur les comptes configurés : fr sur les comptes
-d'Arménie Info, en sur ceux d'Armenia News. Il tourne dans le job `social` de
+demande, la brève du jour) sur les comptes configurés, **un jeu de comptes par
+langue** : fr sur ceux d'Arménie Info, en sur ceux d'Armenia News, et de, it,
+es, hy, ru chacune sur les siens (Facebook, Instagram, Bluesky, Telegram — ni
+LinkedIn ni X). Une langue ne publie que les articles traduits dans SA langue :
+de, it et es ont des traductions Culture facultatives, donc des trous. Il tourne dans le job `social` de
 `hourly.yml`, après le déploiement et la sonde de production.
 
 ## Ce qui garantit qu'il ne fait pas de bêtise
@@ -27,7 +30,10 @@ d'Arménie Info, en sur ceux d'Armenia News. Il tourne dans le job `social` de
    Deployment branches : **main uniquement**. Y poser les secrets ci-dessous.
 2. Pour chaque compte, poser **tous** ses secrets (un compte incomplet est
    ignoré, sans erreur). Suffixe `_CH` pour Arménie Info (fr), `_ORG` pour
-   Armenia News (en).
+   Armenia News (en), puis la langue : `_DE`, `_IT`, `_ES`, `_HY`, `_RU`
+   (canaux `facebook-es`, `telegram-hy`…). Un secret ajouté doit l'être dans
+   les TROIS workflows (`hourly.yml`, `social-test.yml`, `social-check.yml`) :
+   `test/social.test.mjs` échoue sinon.
 3. Vérifier en local, avec les mêmes valeurs dans `.env` (jamais versionné) :
    `node --env-file=.env scripts/social-post.mjs test --channel facebook-ch`
    (aperçu), puis `--yes` pour un vrai post.
@@ -45,6 +51,23 @@ d'Arménie Info, en sur ceux d'Armenia News. Il tourne dans le job `social` de
 
 YouTube n'est pas couvert : il faut une vidéo, ce que le site ne produit pas
 encore.
+
+## Brancher une langue (de, it, es, hy, ru)
+
+- **Facebook + Instagram** : une Page par langue (ex. « Armenia News en
+  Español »), et un compte Instagram pro lié à CETTE Page. La même app Meta
+  sert ; la clé utilisateur prolongée voit toutes les Pages : collez la MÊME
+  clé dans `FB_PAGE_TOKEN_<LANGUE>` (le code dérive la clé de Page à chaque
+  envoi). Les ids se lisent dans l'Explorateur Graph :
+  `me/accounts?fields=id,name,instagram_business_account{id,username}`.
+  Ré-autoriser l'app pour y cocher la nouvelle Page peut invalider l'ancienne
+  clé : recollez alors la nouvelle partout (`_CH`, `_ORG` compris).
+- **Bluesky** : un compte par adresse e-mail — `contact+es@armenianews.org`
+  (le « + » marche chez Infomaniak). Un mot de passe d'application par compte ;
+  `BLUESKY_HANDLE_<LANGUE>` = son DID.
+- **Telegram** : un canal public par langue ; le même bot
+  (@armenieinfo_publication_bot) y est ajouté comme admin « Post Messages »
+  seulement, et sa clé recollée dans `TELEGRAM_BOT_TOKEN_<LANGUE>`.
 
 ## En cas de panne
 

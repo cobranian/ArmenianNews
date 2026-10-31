@@ -21,23 +21,58 @@ jobs:
     environment: social
     env:
       BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
+      BLUESKY_APP_PASSWORD_DE: ${{ secrets.BLUESKY_APP_PASSWORD_DE }}
+      BLUESKY_APP_PASSWORD_ES: ${{ secrets.BLUESKY_APP_PASSWORD_ES }}
+      BLUESKY_APP_PASSWORD_HY: ${{ secrets.BLUESKY_APP_PASSWORD_HY }}
+      BLUESKY_APP_PASSWORD_IT: ${{ secrets.BLUESKY_APP_PASSWORD_IT }}
       BLUESKY_APP_PASSWORD_ORG: ${{ secrets.BLUESKY_APP_PASSWORD_ORG }}
+      BLUESKY_APP_PASSWORD_RU: ${{ secrets.BLUESKY_APP_PASSWORD_RU }}
       BLUESKY_HANDLE_CH: ${{ secrets.BLUESKY_HANDLE_CH }}
+      BLUESKY_HANDLE_DE: ${{ secrets.BLUESKY_HANDLE_DE }}
+      BLUESKY_HANDLE_ES: ${{ secrets.BLUESKY_HANDLE_ES }}
+      BLUESKY_HANDLE_HY: ${{ secrets.BLUESKY_HANDLE_HY }}
+      BLUESKY_HANDLE_IT: ${{ secrets.BLUESKY_HANDLE_IT }}
       BLUESKY_HANDLE_ORG: ${{ secrets.BLUESKY_HANDLE_ORG }}
+      BLUESKY_HANDLE_RU: ${{ secrets.BLUESKY_HANDLE_RU }}
       FB_PAGE_ID_CH: ${{ secrets.FB_PAGE_ID_CH }}
+      FB_PAGE_ID_DE: ${{ secrets.FB_PAGE_ID_DE }}
+      FB_PAGE_ID_ES: ${{ secrets.FB_PAGE_ID_ES }}
+      FB_PAGE_ID_HY: ${{ secrets.FB_PAGE_ID_HY }}
+      FB_PAGE_ID_IT: ${{ secrets.FB_PAGE_ID_IT }}
       FB_PAGE_ID_ORG: ${{ secrets.FB_PAGE_ID_ORG }}
+      FB_PAGE_ID_RU: ${{ secrets.FB_PAGE_ID_RU }}
       FB_PAGE_TOKEN_CH: ${{ secrets.FB_PAGE_TOKEN_CH }}
+      FB_PAGE_TOKEN_DE: ${{ secrets.FB_PAGE_TOKEN_DE }}
+      FB_PAGE_TOKEN_ES: ${{ secrets.FB_PAGE_TOKEN_ES }}
+      FB_PAGE_TOKEN_HY: ${{ secrets.FB_PAGE_TOKEN_HY }}
+      FB_PAGE_TOKEN_IT: ${{ secrets.FB_PAGE_TOKEN_IT }}
       FB_PAGE_TOKEN_ORG: ${{ secrets.FB_PAGE_TOKEN_ORG }}
+      FB_PAGE_TOKEN_RU: ${{ secrets.FB_PAGE_TOKEN_RU }}
       IG_USER_ID_CH: ${{ secrets.IG_USER_ID_CH }}
+      IG_USER_ID_DE: ${{ secrets.IG_USER_ID_DE }}
+      IG_USER_ID_ES: ${{ secrets.IG_USER_ID_ES }}
+      IG_USER_ID_HY: ${{ secrets.IG_USER_ID_HY }}
+      IG_USER_ID_IT: ${{ secrets.IG_USER_ID_IT }}
       IG_USER_ID_ORG: ${{ secrets.IG_USER_ID_ORG }}
+      IG_USER_ID_RU: ${{ secrets.IG_USER_ID_RU }}
       LINKEDIN_AUTHOR_CH: ${{ secrets.LINKEDIN_AUTHOR_CH }}
       LINKEDIN_AUTHOR_ORG: ${{ secrets.LINKEDIN_AUTHOR_ORG }}
       LINKEDIN_TOKEN_CH: ${{ secrets.LINKEDIN_TOKEN_CH }}
       LINKEDIN_TOKEN_ORG: ${{ secrets.LINKEDIN_TOKEN_ORG }}
       TELEGRAM_BOT_TOKEN_CH: ${{ secrets.TELEGRAM_BOT_TOKEN_CH }}
+      TELEGRAM_BOT_TOKEN_DE: ${{ secrets.TELEGRAM_BOT_TOKEN_DE }}
+      TELEGRAM_BOT_TOKEN_ES: ${{ secrets.TELEGRAM_BOT_TOKEN_ES }}
+      TELEGRAM_BOT_TOKEN_HY: ${{ secrets.TELEGRAM_BOT_TOKEN_HY }}
+      TELEGRAM_BOT_TOKEN_IT: ${{ secrets.TELEGRAM_BOT_TOKEN_IT }}
       TELEGRAM_BOT_TOKEN_ORG: ${{ secrets.TELEGRAM_BOT_TOKEN_ORG }}
+      TELEGRAM_BOT_TOKEN_RU: ${{ secrets.TELEGRAM_BOT_TOKEN_RU }}
       TELEGRAM_CHAT_CH: ${{ secrets.TELEGRAM_CHAT_CH }}
+      TELEGRAM_CHAT_DE: ${{ secrets.TELEGRAM_CHAT_DE }}
+      TELEGRAM_CHAT_ES: ${{ secrets.TELEGRAM_CHAT_ES }}
+      TELEGRAM_CHAT_HY: ${{ secrets.TELEGRAM_CHAT_HY }}
+      TELEGRAM_CHAT_IT: ${{ secrets.TELEGRAM_CHAT_IT }}
       TELEGRAM_CHAT_ORG: ${{ secrets.TELEGRAM_CHAT_ORG }}
+      TELEGRAM_CHAT_RU: ${{ secrets.TELEGRAM_CHAT_RU }}
       X_ACCESS_SECRET_CH: ${{ secrets.X_ACCESS_SECRET_CH }}
       X_ACCESS_SECRET_ORG: ${{ secrets.X_ACCESS_SECRET_ORG }}
       X_ACCESS_TOKEN_CH: ${{ secrets.X_ACCESS_TOKEN_CH }}

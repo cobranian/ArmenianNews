@@ -824,9 +824,11 @@ de production servent toujours depuis la racine de leur domaine.
   mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
   `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
   ré-amorcé en silence — mais retirer UNE ligne republie cet article. Un compte
-  sans entrée y est amorcé, jamais servi l'archive. Ajouter un secret de canal
-  touche deux endroits : `ACCOUNTS` (`scripts/lib/social.mjs`) et le bloc `env`
-  du job `social` de `hourly.yml` ; `test/social.test.mjs` échoue sur l'oubli.
+  sans entrée y est amorcé, jamais servi l'archive. Un jeu de comptes par
+  langue (`ACCOUNT_SETS`, `scripts/lib/social.mjs`) : `ch`/`org` gardent ces
+  noms pour fr/en — les renommer ré-amorcerait les comptes. Un secret de canal
+  se déclare dans les TROIS workflows (`hourly.yml`, `social-test.yml`,
+  `social-check.yml`) ; `test/social.test.mjs` échoue sur l'oubli.
 - **IndexNow prévient Bing des pages nouvelles, et c'est le SEUL canal du
   .ch** : Bing Webmaster Tools lui accorde 0 soumission manuelle par jour.
   `hourly.yml` recopie les sitemaps en ligne avant le déploiement et soumet
