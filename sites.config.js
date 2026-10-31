@@ -35,6 +35,22 @@ export const SITES = {
       // `@armenieinfo` était pris.
       youtube: 'https://www.youtube.com/@armenieinfo-ch',
     },
+    // Les comptes propres à une langue (ouverts le 31 oct. 2026) : au pied de
+    // page de CETTE langue, ils remplacent ceux de la vitrine plateforme par
+    // plateforme (socialFor). Une plateforme absente garde le compte de la
+    // vitrine — LinkedIn et YouTube n'existent qu'en un exemplaire.
+    socialByLang: {
+      de: {
+        facebook: 'https://www.facebook.com/61596218245485',
+        instagram: 'https://www.instagram.com/armenieinfo_de/',
+        telegram: 'https://t.me/armenieinfo_de',
+      },
+      it: {
+        facebook: 'https://www.facebook.com/61595804863665',
+        instagram: 'https://www.instagram.com/armenieinfo_it/',
+        telegram: 'https://t.me/armenieinfo_it',
+      },
+    },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
     // domaine tout neuf, des signaux de nom contradictoires (masthead vs.
     // JSON-LD) laissent Google deviner lequel retenir ; alternateName est le
@@ -139,6 +155,24 @@ export const SITES = {
       telegram: 'https://t.me/armenianews_org',
       linkedin: 'https://www.linkedin.com/company/armenianews/',
       youtube: 'https://www.youtube.com/@armenianewsorg',
+    },
+    // Voir `socialByLang` du .ch. Instagram ru : compte suspendu à la création
+    // (appel en cours, 31 oct. 2026) — ru garde l'Instagram de la vitrine.
+    socialByLang: {
+      es: {
+        facebook: 'https://www.facebook.com/61596028233855',
+        instagram: 'https://www.instagram.com/armenianews_es/',
+        telegram: 'https://t.me/armenianews_es',
+      },
+      hy: {
+        facebook: 'https://www.facebook.com/61596095491007',
+        instagram: 'https://www.instagram.com/armenianews_hy/',
+        telegram: 'https://t.me/armenianews_hy',
+      },
+      ru: {
+        facebook: 'https://www.facebook.com/61596338480535',
+        telegram: 'https://t.me/armenianews_ru',
+      },
     },
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le
     // pont doit couvrir à la fois l'ancien nom bilingue et sa forme
@@ -466,6 +500,14 @@ const LETTER_ID = { fr: 'ch', en: 'org' }
 // secret BUTTONDOWN_API_KEY_<ID> : le nom de la vitrine pour sa langue de tête
 // (`ch`, `org` — les clés d'avant le passage à six listes, gardées telles
 // quelles pour ne migrer ni le registre ni les secrets), la langue sinon.
+// Les comptes à afficher sur une page (vitrine, langue) : ceux de la langue
+// d'abord, ceux de la vitrine pour le reste, dans l'ordre de `social`.
+export function socialFor(siteId, lang) {
+  const site = SITES[siteId]
+  if (!site?.social) return {}
+  return { ...site.social, ...(site.socialByLang?.[lang] ?? {}) }
+}
+
 export function newsletterLetters() {
   const out = []
   for (const [siteId, site] of Object.entries(SITES))
