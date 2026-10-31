@@ -5,7 +5,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { parseSpanishEventDate, parseAgendaPosts, mergeDiarioIntoWorld } from '../scripts/sources/diarioarmenia-agenda.mjs'
 import { evenementComplet, evenementsAVenir, eventLd } from '../src/agendaEvents.js'
-import { worldCountryKey } from '../src/worldPlace.js'
+import { worldCountryKey, placeLabel } from '../src/worldPlace.js'
 
 const NOW = new Date('2026-10-31T12:00:00')
 
@@ -87,7 +87,7 @@ test('parseAgendaPosts : lieu gardé seulement hors Argentine', () => {
   )
   assert.equal(ev[0].location, 'Erevan')
   assert.equal(worldCountryKey(ev[0]), 'armenia')
-  assert.equal(ev[1].location, '')
+  assert.equal(ev[1].location, 'Argentina')
   assert.equal(worldCountryKey(ev[1]), 'argentina')
 })
 
@@ -97,7 +97,13 @@ test('une date seule passe evenementsAVenir et eventLd', () => {
   assert.equal(evenementsAVenir([e], NOW.getTime()).length, 1)
   assert.equal(evenementsAVenir([e], NOW.getTime(), -120).length, 1)
   assert.equal(eventLd(e).startDate, '2027-01-05')
-  assert.equal(eventLd(e).location, undefined)
+  // Google exige un lieu : le pays lui-même, déduit de la source.
+  assert.equal(e.location, 'Argentina')
+  assert.equal(eventLd(e).location.name, 'Argentina')
+  assert.equal(eventLd(e).location['@type'], 'Place')
+  assert.equal(worldCountryKey(e), 'argentina')
+  assert.equal(placeLabel(e.location, 'ru'), 'Аргентина')
+  assert.equal(placeLabel(e.location, 'hy'), 'Արգենտինա')
 })
 
 test('mergeDiarioIntoWorld : dédoublonne par URL et trie', () => {
@@ -112,4 +118,12 @@ test('mergeDiarioIntoWorld : dédoublonne par URL et trie', () => {
   const out = mergeDiarioIntoWorld(world, da)
   assert.deepEqual(out.map((e) => e.url), ['u2', 'u3', 'u1'])
   assert.equal(out.find((e) => e.url === 'u1').title, 'a')
+})
+
+test("mergeDiarioIntoWorld : la copie fraîche d'un événement Diario bat l'ancienne du backfill", () => {
+  const old = { title: 'old', url: 'https://www.diarioarmenia.org.ar/x/', date: '2026-11-01' }
+  const fresh = { title: 'new', url: 'https://www.diarioarmenia.org.ar/x/', date: '2026-11-02' }
+  const out = mergeDiarioIntoWorld([old, { title: 'a', url: 'u1', date: '2026-12-01' }], [fresh])
+  assert.equal(out.length, 2)
+  assert.equal(out.find((e) => e.url === fresh.url).date, '2026-11-02')
 })

@@ -111,7 +111,8 @@ function eventDate(title, body, ref) {
 }
 
 // Un lieu n'est gardé que s'il se résout, via PLACE_TO_COUNTRY, vers un pays AUTRE
-// que l'Argentine (le pays vient de `country`). « Armenia 1353 » est une rue de
+// que l'Argentine ; sinon `parseAgendaPosts` met le pays lui-même (« Argentina »),
+// déduit de la source, sans inventer de ville : Google exige un lieu sur un Event. « Armenia 1353 » est une rue de
 // Buenos Aires : seul « en Ereván » / « en Montevideo » compte.
 function foreignPlace(text) {
   const head = text.slice(0, 600)
@@ -143,7 +144,7 @@ export function parseAgendaPosts(postsJson, mediaJson = '[]', { now = new Date()
     out.push({
       title,
       url,
-      location: foreignPlace(`${title}. ${body}`),
+      location: foreignPlace(`${title}. ${body}`) || 'Argentina',
       date,
       rawDate: date,
       image: images.get(p.featured_media) ?? null,
@@ -174,7 +175,9 @@ export async function scrapeDiarioAgenda(limit = 50) {
 export function mergeDiarioIntoWorld(world, daEvents) {
   const seen = new Set()
   const out = []
-  for (const e of [...world, ...daEvents]) {
+  // Les copies Diario déjà dans `world` (backfill d'armenopole) sont écartées :
+  // la copie fraîche doit gagner, pas l'ancienne.
+  for (const e of [...world.filter((w) => !isDiarioEvent(w)), ...daEvents]) {
     const id = e.url || `${e.title}|${e.date}`
     if (seen.has(id)) continue
     seen.add(id)
