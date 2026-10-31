@@ -96,6 +96,7 @@ const LANG_NAMES = {
   de: 'German',
   it: 'Italian',
   en: 'English',
+  es: 'Latin American Spanish (neutral: ustedes, no voseo)',
   hy: 'Eastern Armenian, in Armenian script',
   ru: 'Russian, in Cyrillic script',
 }

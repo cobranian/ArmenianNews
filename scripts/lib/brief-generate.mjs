@@ -49,6 +49,7 @@ const LANG_NAME = {
   de: 'allemand (usage suisse : « ss », jamais « ß »)',
   it: 'italien',
   en: 'anglais',
+  es: 'espagnol latino-américain neutre (ustedes, pas de voseo)',
   hy: 'arménien oriental (orthographe de la République d’Arménie)',
   ru: 'russe',
 }

@@ -15,7 +15,7 @@
 // alphabets n'est jamais permis : aucune langue n'en écrit.
 import { SOURCE_NAMES } from '../../src/newsLangs.js'
 
-const EXPECTED = { fr: 'Latin', de: 'Latin', it: 'Latin', en: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
+const EXPECTED = { fr: 'Latin', de: 'Latin', it: 'Latin', en: 'Latin', es: 'Latin', hy: 'Armenian', ru: 'Cyrillic' }
 const SCRIPTS = {
   Latin: /\p{Script=Latin}/u,
   Armenian: /\p{Script=Armenian}/u,
@@ -70,6 +70,15 @@ const FRENCH_MARKERS_BY_LANG = {
   de: new Set([...COMMON, 'est', 'qui']),
   it: new Set([...COMMON, 'des', 'du']),
 }
+// es : l'espagnol lit son propre fil, la fuite est le français OU l'anglais
+// (le modèle recopie la langue d'un titre). « que », « entre », « sur » sont
+// espagnols : absents. L'accent français ne peut pas être FRENCH_ACCENT, qui
+// prend « también » (é + lettre) pour du français.
+const ES_MARKERS = new Set([
+  ...['les', 'une', 'dans', 'pour', 'avec', 'sont', 'cette', 'ont', 'aux', 'été', 'ses', 'leur', 'leurs', 'est', 'qui', 'des', 'du'],
+  ...['the', 'and', 'with', 'which', 'from', 'this', 'that', 'were', 'been', 'have'],
+])
+const ES_ACCENT = /[àâçèêëîïôûùœ]/u
 
 // Deux mots-outils français DISTINCTS ou plus, ÉCRITS EN MINUSCULES : du
 // français. Les noms propres et les titres cités portent des initiales
@@ -89,11 +98,12 @@ const FRENCH_ACCENT = /[çêëîïôûœ]|[éèà]\p{L}/u
 // pourtant ce qui se lit en premier (brève « it » du 24 octobre 2026,
 // « l'Arménie et les organisations internationales » : un seul, « les »).
 export function frenchWords(text, lang, min = 2) {
-  const markers = FRENCH_MARKERS_BY_LANG[lang]
+  const markers = lang === 'es' ? ES_MARKERS : FRENCH_MARKERS_BY_LANG[lang]
   if (!markers) return []
+  const accent = lang === 'es' ? ES_ACCENT : FRENCH_ACCENT
   // Minuscules seulement, pour les deux indices : « Arménie », « Grégory » sont
   // des noms propres, pas une fuite.
   const lower = words(text).filter((w) => w === w.toLowerCase())
-  const found = new Set(lower.filter((w) => markers.has(w) || FRENCH_ACCENT.test(w)))
+  const found = new Set(lower.filter((w) => markers.has(w) || accent.test(w)))
   return found.size >= min ? [...found] : []
 }

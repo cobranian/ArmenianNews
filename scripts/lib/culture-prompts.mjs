@@ -13,6 +13,7 @@ const LANG_NAME = {
   // Pour un lectorat suisse : la Suisse n'écrit jamais « ß ».
   de: 'allemand de Suisse (orthographe suisse : jamais « ß », toujours « ss »)',
   it: 'italien',
+  es: 'espagnol latino-américain neutre (ustedes, pas de voseo)',
 }
 
 const JSON_SHAPE = 'Réponds UNIQUEMENT par un objet JSON {"title": "…", "description": "… (160 caractères au plus)", "body": "… (Markdown)"}, sans aucun texte autour.'

@@ -123,7 +123,7 @@ const ENTITY = { entities: { Q777: {
   claims: { P18: claim('Kochari.jpg'), P571: claim({ time: '+1800-00-00T00:00:00Z', precision: 9 }) },
 } } }
 
-test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru/de/it, P18, faits', async () => {
+test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru/de/it/es, P18, faits', async () => {
   const { impl, calls } = router([[(u) => u.host === 'www.wikidata.org', ENTITY]])
   const e = await fetchEntity('Q777', impl)
   assert.equal(calls.length, 1)
@@ -133,7 +133,7 @@ test('fetchEntity : libellés, descriptions, alias, sitelinks fr/en/hy/ru/de/it,
     labels: { fr: 'Kochari', en: 'Kochari', hy: 'Քոչարի', ru: 'Кочари', de: 'Kochari' },
     descriptions: { fr: 'danse arménienne', en: 'Armenian dance' },
     aliases: { fr: ['Kotchari'], en: ['Qochari', 'Kochari dance'] },
-    sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: 'Քոչարի', ru: undefined, de: 'Kotschari', it: 'Kochari (danza)' },
+    sitelinks: { fr: 'Kochari', en: 'Kochari (dance)', hy: 'Քոչարի', ru: undefined, de: 'Kotschari', it: 'Kochari (danza)', es: undefined },
     image: 'Kochari.jpg',
     facts: ['Fondation ou création : 1800'],
   })

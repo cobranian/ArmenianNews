@@ -224,7 +224,7 @@ export function factsFromEntity(entity) {
 // langue et transmises au traducteur — jamais lues par le brouillon français
 // (DRAFT_LANGS : les seules que fetchTopicWikipedia lit par défaut).
 export const DRAFT_LANGS = ['fr', 'en', 'hy', 'ru']
-const ENTITY_LANGS = [...DRAFT_LANGS, 'de', 'it']
+const ENTITY_LANGS = [...DRAFT_LANGS, 'de', 'it', 'es']
 
 // Une seule requête : libellés, descriptions, alias, titres Wikipédia (sitelinks)
 // et image de tête. Le sujet est identifié par son qid, jamais par un titre

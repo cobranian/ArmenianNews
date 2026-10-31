@@ -341,3 +341,11 @@ test('briefModels : ultra en tête pour les sept langues, sans doublon ni modèl
   }
   assert.deepEqual(briefModels('hy', 'x/forcé'), ['x/forcé'])
 })
+
+test('buildBriefMessages es : consigne espagnole, sans undefined ni phrase « titres en français »', () => {
+  const m = buildBriefMessages('es', [{ id: 1, source: 'armenpress', rubric: 'armenia', title: 'Título' }])
+  const all = m.map((x) => x.content).join('\n')
+  assert.match(m[0].content, /espagnol latino-américain neutre/)
+  assert.ok(!all.includes('undefined'))
+  assert.ok(!all.includes('Les titres sources sont en français'))
+})
