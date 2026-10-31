@@ -745,7 +745,7 @@ plan gratuit n'a qu'une liste par compte (trier par langue est payant). Leurs
 noms d'utilisateur vont dans `sites.config.js` (`SITES.*.newsletter.lists`),
 une entrée par langue de la vitrine, qui vaut **`null` tant que le compte
 n'est pas créé et confirmé** : ni formulaire sur les pages de cette langue, ni
-envoi (`✗ newsletter/<id>: désactivée (pas de compte Buttondown)` au log).
+envoi (`· newsletter/<id>: en attente (pas de compte Buttondown)` au log — un « · » et non un « ✗ » : c'est attendu).
 L'identifiant `<id>` d'une lettre (registre, secret) est `ch` pour le
 français, `org` pour l'anglais — les noms d'avant les six listes, gardés —
 puis `de`, `it`, `hy`, `ru`. Les textes de de/it sont des traductions non
@@ -775,7 +775,10 @@ qui porte les secrets `BUTTONDOWN_API_KEY_CH`, `_ORG`, `_DE`, `_IT`, `_HY` et
 `_RU`.
 
 **Brouillon par défaut.** Sans variable `NEWSLETTER_STATUS`, le numéro est créé
-en **brouillon** que Nareg relit et envoie à la main chez Buttondown. Si la
+en **brouillon** que Nareg relit et envoie à la main chez Buttondown. Le **premier numéro
+d'une lettre** (aucune ligne au registre) part **toujours** en brouillon, quel
+que soit `NEWSLETTER_STATUS` : une langue nouvelle est relue une fois avant
+de partir seule. Si la
 réponse de Buttondown porte un autre statut que celui demandé (ou aucun),
 l'étape échoue : `✗ newsletter/<site>: Buttondown a répondu « X » au lieu de
 « draft »`.

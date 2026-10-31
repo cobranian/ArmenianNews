@@ -49,7 +49,7 @@ export function planSends({
   const sends = []
   for (const [id, digest] of Object.entries(digests)) {
     if (!hasAccount(id)) {
-      log(`✗ newsletter/${id}: désactivée (pas de compte Buttondown)`)
+      log(`· newsletter/${id}: en attente (pas de compte Buttondown)`)
       continue
     }
     if (!digest) {
@@ -65,7 +65,10 @@ export function planSends({
       log(`✗ newsletter/${id}: pas de clé`)
       continue
     }
-    sends.push({ id, digest })
+    // Premier numéro d'une lettre (aucune ligne au registre) : toujours en
+    // brouillon, quel que soit NEWSLETTER_STATUS, pour qu'une langue nouvelle
+    // soit relue une fois avant de partir seule.
+    sends.push({ id, digest, first: typeof deja !== 'string' })
   }
   return sends
 }
@@ -145,7 +148,7 @@ async function doPlan(opt, dry) {
   if (dry) {
     for (const { id } of newsletterLetters()) {
       if (!hasAccountIn(id)) {
-        console.log(`✗ newsletter/${id}: désactivée (pas de compte Buttondown) — aperçu quand même (--dry)`)
+        console.log(`· newsletter/${id}: en attente (pas de compte Buttondown) — aperçu quand même (--dry)`)
       }
     }
   }
@@ -166,13 +169,14 @@ async function doSend(opt, dry) {
   const file = opt('--plan')
   if (!file) throw new Error('usage : send --plan <fichier> [--dry]')
   const { sends } = JSON.parse(await readFile(file, 'utf8'))
-  const status = process.env.NEWSLETTER_STATUS || 'draft'
+  const global = process.env.NEWSLETTER_STATUS || 'draft'
   let failed = 0
   for (const s of sends) {
     if (dry) {
       console.log(preview(s))
       continue
     }
+    const status = s.first ? 'draft' : global
     const key = keyFor(s.id)
     if (!key) {
       console.log(`✗ newsletter/${s.id}: clé disparue entre le plan et l'envoi`)

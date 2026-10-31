@@ -36,7 +36,8 @@ export const NEWSLETTER_STRINGS = {
     more: 'Tutti gli eventi',
   },
   hy: {
-    subject: (dateLabel) => `Armenia News — շաբաթվա ամփոփում (${dateLabel})`,
+    // Marque VUE sur /hy/ (STRINGS.hy['site.title']), pas celle des métadonnées.
+    subject: (dateLabel) => `Արմենիա Ինֆո — շաբաթվա ամփոփում (${dateLabel})`,
     intro: 'Հայկական շաբաթը համառոտ՝ օրվա ամփոփումները, մշակույթը և առաջիկա միջոցառումները։',
     briefs: 'Շաբաթվա ամփոփումները',
     culture: 'Մշակույթ',

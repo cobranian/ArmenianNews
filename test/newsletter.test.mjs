@@ -151,3 +151,10 @@ test('une lettre par langue : chacune dans sa langue, ses liens, son domaine', a
 test('pas de lettre pour une langue hors de la vitrine', () => {
   assert.throws(() => digestFor('ch', { briefs: briefsOf('en'), culture: [], events: [], now, lang: 'en' }))
 })
+
+test('lettre arménienne : marque vue sur /hy/, dates écrites en dur (jamais Intl)', () => {
+  const evs = [{ ...events(1)[0], date: '2026-11-05T10:00' }]
+  const d = digestFor('org', { briefs: briefsOf('hy'), culture: [], events: evs, now, lang: 'hy' })
+  assert.equal(d.subject, 'Արմենիա Ինֆո — շաբաթվա ամփոփում (26 հոկտեմբերի)')
+  assert.ok(d.body.includes('5 նոյեմբերի'), d.body)
+})

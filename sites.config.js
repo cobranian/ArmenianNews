@@ -103,7 +103,7 @@ export const SITES = {
     // du compte Buttondown), parce que le plan gratuit n'a qu'une liste par
     // compte (trier par langue = option payante). Le formulaire d'une page ne
     // paraît que si la liste de SA langue a un compte ; `null` = ni formulaire
-    // ni envoi (`✗ newsletter/de: désactivée`). Toutes les langues de la
+    // ni envoi (`· newsletter/de: en attente`). Toutes les langues de la
     // vitrine doivent y figurer (test/newsletter-footer.test.mjs).
     // Compte fr créé et vérifié le 31 oct. 2026 (buttondown.com/armenieinfo).
     // NE METTEZ UN NOM qu'une fois le compte créé : un nom deviné publierait
@@ -448,6 +448,12 @@ export function xDefaultFor(view = 'home') {
   return urlFor('en', view)
 }
 
+// Identifiants hérités des deux premières lettres, ÉCRITS EN DUR et non
+// déduits de l'ordre de `pages` : réordonner les pages ferait sinon lire à une
+// autre langue la clé et le registre de `ch` / `org` — la lettre arménienne
+// partirait aux abonnés anglais.
+const LETTER_ID = { fr: 'ch', en: 'org' }
+
 // Les lettres de toutes les vitrines : { id, siteId, lang, buttondown }.
 // `id` est la clé du registre (src/data/newsletter-sent.json) et le suffixe du
 // secret BUTTONDOWN_API_KEY_<ID> : le nom de la vitrine pour sa langue de tête
@@ -457,24 +463,19 @@ export function newsletterLetters() {
   const out = []
   for (const [siteId, site] of Object.entries(SITES))
     for (const [lang, buttondown] of Object.entries(site.newsletter?.lists ?? {}))
-      out.push({ id: lang === site.pages[0].lang ? siteId : lang, siteId, lang, buttondown: buttondown || null })
+      out.push({ id: LETTER_ID[lang] ?? lang, siteId, lang, buttondown: buttondown || null })
   return out
 }
 
 // L'URL d'envoi du formulaire d'inscription pour une page (vitrine, langue),
-// ou null si la liste de cette langue n'a pas encore de compte Buttondown.
+// ou null si la liste de cette langue n'a pas encore de compte Buttondown :
+// le pied de page ne pose le formulaire que sur une URL non nulle.
 // Buttondown répond dans un nouvel onglet (target=_blank) : aucune requête ne
 // part du site lui-même, d'où le seul `form-action` de la CSP (firebase.json,
 // les DEUX blocs headers).
 export function newsletterAction(siteId, lang) {
   const name = SITES[siteId]?.newsletter?.lists?.[lang]
   return name ? `https://buttondown.com/api/emails/embed-subscribe/${name}` : null
-}
-
-// Ce que pose le pied de page : même chose, nommée pour lui (le test du pied
-// de page exige ce point de passage).
-export function newsletterFormAction(siteId, lang) {
-  return newsletterAction(siteId, lang)
 }
 
 export function primaryLang(siteId) {

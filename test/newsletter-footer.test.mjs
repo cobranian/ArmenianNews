@@ -16,7 +16,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { SITES, newsletterAction, newsletterFormAction, newsletterLetters } from '../sites.config.js'
+import { SITES, newsletterAction, newsletterLetters } from '../sites.config.js'
 import { BLOC_LANGS, valeur } from './helpers/i18n-blocks.mjs'
 
 const CLES = [
@@ -70,7 +70,7 @@ test('CSP : buttondown autorisé des deux côtés', async () => {
 })
 
 // Pose des comptes Buttondown le temps d'un test : SITES est l'objet que lisent
-// newsletterAction et newsletterFormAction, donc la logique éprouvée est celle
+// newsletterAction, donc la logique éprouvée est celle
 // du pied de page, pas une copie.
 function avecListes(lists, fn) {
   const avant = {}
@@ -95,9 +95,18 @@ test('une liste déclarée pour CHAQUE langue de chaque vitrine, et aucune autre
     assert.deepEqual(Object.keys(site.newsletter.lists).sort(), site.pages.map((p) => p.lang).sort(), site.id)
 })
 
-test('identifiants des lettres : ch et org pour les langues de tête (registre et secrets d’avant), la langue sinon', () => {
+test('identifiants des lettres : ch et org pour fr et en (registre et secrets d’avant), la langue sinon', () => {
   const ids = Object.fromEntries(newsletterLetters().map((l) => [l.lang, l.id]))
   assert.deepEqual(ids, { fr: 'ch', de: 'de', it: 'it', en: 'org', hy: 'hy', ru: 'ru' })
+  // Indépendants de l'ordre des pages : réordonner ne déplace pas la clé `org`.
+  const avant = SITES.org.pages
+  try {
+    SITES.org.pages = [...avant].reverse()
+    assert.equal(newsletterLetters().find((l) => l.lang === 'en').id, 'org')
+    assert.equal(newsletterLetters().find((l) => l.lang === 'ru').id, 'ru')
+  } finally {
+    SITES.org.pages = avant
+  }
 })
 
 test('newsletterAction : l’URL du compte de LA langue, null sans compte', () => {
@@ -113,21 +122,22 @@ test('formulaire : sur chaque page dont la liste a un compte, vers SA liste', ()
   for (const site of Object.values(SITES))
     for (const page of site.pages) {
       const attendu = site.newsletter.lists[page.lang]
-      assert.equal(newsletterFormAction(site.id, page.lang), attendu ? newsletterAction(site.id, page.lang) : null, `${site.id}/${page.lang}`)
+      assert.equal(newsletterAction(site.id, page.lang), attendu ? newsletterAction(site.id, page.lang) : null, `${site.id}/${page.lang}`)
     }
   avecListes({ ch: { de: 'x-de', it: 'x-it' }, org: { hy: 'x-hy', ru: 'x-ru' } }, () => {
     for (const site of Object.values(SITES))
       for (const page of site.pages) {
-        const action = newsletterFormAction(site.id, page.lang)
+        const action = newsletterAction(site.id, page.lang)
         assert.ok(action?.endsWith(`/${SITES[site.id].newsletter.lists[page.lang]}`), `${site.id}/${page.lang}`)
       }
   })
 })
 
-test('le pied de page passe par newsletterFormAction', async () => {
+test('le pied de page passe par newsletterAction(SITE_ID, lang)', async () => {
   const src = await readFile(new URL('../src/components/Footer.jsx', import.meta.url), 'utf-8')
-  assert.match(src, /newsletterFormAction\(SITE_ID, lang\)/)
-  assert.ok(!src.includes('newsletterAction('), 'le pied de page contourne la garde du compte')
+  // La langue de la PAGE : une autre ferait inscrire à la lettre d'une autre langue.
+  assert.match(src, /newsletterAction\(SITE_ID, lang\)/)
+  assert.equal(src.match(/newsletterAction\(/g).length, 1)
 })
 
 test('chaque secret de lettre est déclaré dans newsletter.yml', async () => {

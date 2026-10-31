@@ -6,6 +6,7 @@ import { SITES, briefUrl, cultureUrl, agendaCountryUrl, urlFor } from '../../sit
 import { evenementsAVenir, instantMural, paysDeLAgenda, PAYS_INDEX_MIN } from '../../src/agendaEvents.js'
 import { worldCountryKey, placeLabel } from '../../src/worldPlace.js'
 import { NEWSLETTER_STRINGS } from '../../src/newsletterStrings.js'
+import { HY_MONTHS_GENITIVE } from '../../src/hyDate.js'
 
 const JOUR = 86400000
 const FENETRE_AGENDA = 14
@@ -66,7 +67,12 @@ export function digestFor(siteId, { briefs, culture, events, now, lang = SITES[s
 
   // Heure murale lue comme UTC (décalage 0) : le résultat ne dépend pas de la
   // machine qui compose le numéro.
-  const fmtDate = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', timeZone: 'UTC' })
+  // L'arménien a ses mois écrits en dur (src/hyDate.js) : Intl dépend de
+  // l'ICU de la machine, et un Node à ICU réduit rendrait une autre langue.
+  const fmtDate =
+    lang === 'hy'
+      ? { format: (d) => `${d.getUTCDate()} ${HY_MONTHS_GENITIVE[d.getUTCMonth()]}` }
+      : new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', timeZone: 'UTC' })
   const aVenir = evenementsAVenir(events || [], t0, 0)
   // Même règle que le sitemap : un lien vers un pays seulement si sa page est
   // bâtie ET indexable (clé connue, au moins PAYS_INDEX_MIN événements à venir,
