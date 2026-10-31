@@ -349,3 +349,17 @@ test('buildBriefMessages es : consigne espagnole, sans undefined ni phrase « ti
   assert.ok(!all.includes('undefined'))
   assert.ok(!all.includes('Les titres sources sont en français'))
 })
+
+test('parseBrief es : un sujet écrit en anglais ou en français est écarté, l’espagnol est gardé', () => {
+  const wrap = (t) => JSON.stringify({ intro: 'Intro', topics: [t, t, t] })
+  const en = topic([1], { title: 'Government measures', text: 'The government announced the measures with the region and the parliament.' })
+  const rejected = []
+  assert.equal(parseBrief(wrap(en), articles, 'es', rejected), null)
+  assert.ok(rejected.includes('the'))
+  const fr = topic([1], { title: 'Les liens entre Erevan', text: 'Une visite qui est dans les médias.' })
+  assert.equal(parseBrief(wrap(fr), articles, 'es'), null)
+  const ok = topic([1], { title: 'Visita a Ereván', text: 'La reunión también está prevista en el sur del país.' })
+  assert.ok(parseBrief(wrap(ok), articles, 'es'))
+  const intro = JSON.stringify({ intro: 'The government announced the measures with the region and the parliament.', topics: [ok, ok, ok] })
+  assert.equal(parseBrief(intro, articles, 'es').intro, '')
+})

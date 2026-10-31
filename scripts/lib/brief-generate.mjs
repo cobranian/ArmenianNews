@@ -120,7 +120,9 @@ export function parseBrief(text, articles, lang = null, rejected = []) {
   }
   const byId = new Map(articles.map((a) => [a.id, a]))
   // de et it lisent le fil français : leur faute propre est de répondre en français.
-  const translated = Boolean(lang) && contentLang(lang) !== lang
+  // es lit son propre fil, mais sa faute est la même : recopier le français ou
+  // l'anglais d'un titre (frenchWords('es') couvre les deux).
+  const translated = Boolean(lang) && (contentLang(lang) !== lang || lang === 'es')
   const topics = []
   // Sujets examinés / écartés comme français : voir la règle après la boucle.
   let examined = 0
