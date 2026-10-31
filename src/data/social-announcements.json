@@ -15,5 +15,22 @@
         "cta": "Sign up"
       }
     }
+  },
+  {
+    "slug": "lettre-langues",
+    "langs": {
+      "fr": {
+        "title": "La lettre d'Arménie Info, aussi en allemand et en italien",
+        "description": "Die armenische Woche, jeden Montag, auf Deutsch : armenieinfo.ch/de/\nLa settimana armena, ogni lunedì, in italiano : armenieinfo.ch/it/\n\nUn e-mail par semaine, gratuit, désinscription en un clic.",
+        "url": "https://armenieinfo.ch/de/#newsletter-email",
+        "cta": "S'inscrire"
+      },
+      "en": {
+        "title": "The Armenia News letter, now in Armenian and Russian",
+        "description": "Հայկական շաբաթը՝ ամեն երկուշաբթի․ armenianews.org/hy/\nАрмянская неделя, каждый понедельник: armenianews.org/ru/\n\nOne email a week, free, unsubscribe in one click.",
+        "url": "https://armenianews.org/hy/#newsletter-email",
+        "cta": "Sign up"
+      }
+    }
   }
 ]
