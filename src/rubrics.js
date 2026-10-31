@@ -102,6 +102,16 @@ export const RUBRIC_MAP = {
     'գաղութներ': 'diaspora',
     hotvadzner: mixed('opinion'),
   },
+  // Soy Armenio : `armenia` est le fil fourre-tout de 14 000 articles.
+  soyarmenio: {
+    'noticias-de-armenia': mixed('armenie'),
+    politica: 'politique',
+    'diaspora-armenia': 'diaspora',
+    cultura: 'culture',
+    economia: 'economie',
+    'noticias-internacionales': 'monde',
+    deporte: 'sports',
+  },
   oragark: {
     featured: mixed('armenie'),
     news: mixed('armenie'),

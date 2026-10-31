@@ -245,6 +245,18 @@ function buildSources(t, lang) {
       .filter((s) => s.articles?.length)
       .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
   }
+  // Soy Armenio — le quotidien espagnol de la diaspora latino-américaine. Espagnol
+  // seul : liste plate, nommée dans TAB_ORDER.es uniquement. Rubriques et images
+  // comme Oragark (étiquettes dans les données, images en lien direct).
+  const soyarmenio = {
+    id: 'soyarmenio',
+    brand: SOURCE_NAMES.soyarmenio,
+    live: false,
+    images: true,
+    cats: shelvesFor('soyarmenio', lang)
+      .filter((s) => s.articles?.length)
+      .map((s) => ({ key: s.categoryKey, label: s.label, articles: s.articles })),
+  }
   // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
   // only: no Armenian, Russian or French edition, so it is named in TAB_ORDER.en
   // alone and its feed is a flat list, not keyed by language. Its rubric names
@@ -316,6 +328,7 @@ function buildSources(t, lang) {
     armenieinfotv,
     asbarez,
     oragark,
+    soyarmenio,
     armenianweekly,
     californiacourier,
     civilnet,

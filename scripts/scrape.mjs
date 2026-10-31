@@ -14,6 +14,7 @@ import { scrapeArmenieInfoTv } from './sources/armenieinfotv.mjs'
 import { scrapeArmenpress, ARMENPRESS_LANGS } from './sources/armenpress.mjs'
 import { scrapeAsbarez } from './sources/asbarez.mjs'
 import { scrapeOragark } from './sources/oragark.mjs'
+import { scrapeSoyArmenio } from './sources/soyarmenio.mjs'
 import { scrapeArmenianWeekly } from './sources/armenianweekly.mjs'
 import { scrapeCaliforniaCourier } from './sources/californiacourier.mjs'
 import { mirrorImages, pruneMirror } from './lib/mirror-images.mjs'
@@ -193,6 +194,17 @@ async function main() {
     oragark[lang] = backfillSections(orEditions[lang], prevNews?.oragark?.[lang], 'categoryKey')
   }
 
+  // Soy Armenio — le quotidien espagnol de la diaspora latino-américaine. Une
+  // seule langue (es) : liste plate d'étagères, comme Courrier, hors BY_LANG.
+  console.log('\nSoy Armenio — soyarmenio.com (es, 7 rubriques):')
+  let soySecs = []
+  try {
+    soySecs = await scrapeSoyArmenio(10)
+  } catch (err) {
+    console.error('  soyarmenio failed wholesale:', err.message)
+  }
+  const soyarmenio = backfillSections(soySecs, prevNews?.soyarmenio, 'categoryKey')
+
   // The Armenian Weekly — the ARF's English weekly out of Watertown, MA. English
   // only (no hy/ru/fr edition), so it is a flat list of shelves like Courrier,
   // not a per-language map, and it shows under `en` alone.
@@ -302,6 +314,7 @@ async function main() {
     armenpress,
     asbarez,
     oragark,
+    soyarmenio,
     armenianweekly,
     californiacourier,
     civilnet,
