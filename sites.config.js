@@ -195,9 +195,10 @@ export const SITES = {
     // balise codée en dur, et rien ne le signalait — le .org était mesuré, mais
     // au mauvais endroit. `null` est accepté et n'émet aucune balise.
     gaMeasurementId: 'G-N6STD6Z5CC',
-    // Voir `newsletter` du .ch. Compte créé et vérifié le 31 oct. 2026
+    // Voir `newsletter` du .ch. Comptes en, hy, ru créés le 31 oct. 2026
+    // (armenianews-hy, armenianews-ru : contact+hy@ et contact+ru@armenianews.org).
     // (buttondown.com/armenianews).
-    newsletter: { lists: { en: 'armenianews', hy: null, ru: null } },
+    newsletter: { lists: { en: 'armenianews', hy: 'armenianews-hy', ru: 'armenianews-ru' } },
     pages: [
       { lang: 'en', path: '/' },
       { lang: 'hy', path: '/hy/' },
