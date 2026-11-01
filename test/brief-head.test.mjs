@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { briefLangsByDate, briefAlternates, longDate } from '../scripts/lib/brief-links.mjs'
-import { briefHeadFor, headFor } from '../scripts/lib/site-meta.mjs'
+import { briefHeadFor, headFor, briefDescription, withBrand, DESC_MAX, TITLE_MAX } from '../scripts/lib/site-meta.mjs'
 import { briefUrl } from '../sites.config.js'
 
 const HEAD_SNAPSHOT = readFileSync(new URL('./fixtures/head-ch-fr-radio.txt', import.meta.url), 'utf-8')
@@ -66,7 +66,7 @@ test('briefHeadFor : page datée', () => {
   assert.ok(h.includes('"image":"https://armenianews.org/og-image-org.jpg"'))
   assert.ok(h.includes('"author":{"@id":"https://armenianews.org/#organization"}'))
   assert.ok(h.includes('"citation":["https://a/1"]'))
-  assert.ok(h.includes('content="Intro hy"'))
+  assert.ok(h.includes('<meta name="description" content="T" />'))
 })
 
 test('briefHeadFor : index sans brève — description par défaut, ne cite que lui-même', () => {
@@ -84,7 +84,7 @@ test('briefHeadFor échappe < dans le JSON-LD', () => {
 })
 
 test('briefHeadFor échappe " et & dans la description', () => {
-  const odd = b('fr', '2026-10-16', { intro: 'Le "oui" & le non' })
+  const odd = b('fr', '2026-10-16', { topics: [{ title: 'Le "oui" & le non', text: 'x', rubric: 'politique', sources: [] }] })
   const h = briefHeadFor({ siteId: 'ch', lang: 'fr', date: '2026-10-16', brief: odd, byDate: briefLangsByDate({ fr: [odd] }) })
   assert.ok(h.includes('<meta name="description" content="Le &quot;oui&quot; &amp; le non" />'))
 })
@@ -92,4 +92,24 @@ test('briefHeadFor échappe " et & dans la description', () => {
 test('headFor inchangé par la factorisation', () => {
   // Instantané de garde : la sortie capturée AVANT la factorisation.
   assert.equal(headFor({ siteId: 'ch', lang: 'fr', view: 'radio' }), HEAD_SNAPSHOT)
+})
+
+test("briefDescription : les sujets du jour, pas l'intro, sans dépasser DESC_MAX", () => {
+  const t = (title) => ({ title, text: 'x', rubric: 'politique', sources: [] })
+  assert.equal(briefDescription({ intro: 'Voici les faits marquants.', topics: [t('Un'), t('Deux')] }, 'défaut'), 'Un · Deux')
+  const long = { topics: Array.from({ length: 6 }, (_, i) => t('Sujet numéro ' + i + ' assez long pour remplir la place')) }
+  const d = briefDescription(long, 'défaut')
+  assert.ok([...d].length <= DESC_MAX, d)
+  assert.ok(d.startsWith('Sujet numéro 0'))
+  const huge = briefDescription({ topics: [t('mot '.repeat(80).trim())] }, 'défaut')
+  assert.ok([...huge].length <= DESC_MAX && huge.endsWith('…'))
+  assert.equal(briefDescription({ intro: 'Intro', topics: [] }, 'défaut'), 'Intro')
+  assert.equal(briefDescription({ topics: [] }, 'défaut'), 'défaut')
+})
+
+test('withBrand : la marque seulement si le titre tient dans TITLE_MAX', () => {
+  assert.equal(withBrand('Komitas', 'Arménie Info'), 'Komitas · Arménie Info')
+  const long = 'Ani, la cité aux mille et une églises : gloire et résilience'
+  assert.equal(withBrand(long, 'Arménie Info'), long)
+  assert.ok([...withBrand('x'.repeat(TITLE_MAX - 15), 'Arménie Info')].length <= TITLE_MAX)
 })

@@ -326,6 +326,34 @@ export function articleAbout(article, lang, fallbackName) {
   }
 }
 
+// Au-delà de ~60 caractères, Google coupe le <title> : sur un article Culture
+// (70 à 110 caractères avec la marque), c'est la fin du titre qui disparaissait.
+// La marque n'est donc ajoutée que si le tout tient.
+export const TITLE_MAX = 60
+export function withBrand(title, brand) {
+  const full = `${title} · ${brand}`
+  return [...full].length <= TITLE_MAX ? full : title
+}
+
+// La description d'une brève datée : ses sujets, pas l'intro du modèle. L'intro
+// était générique (« Voici les faits marquants… »), répétée d'un jour à l'autre,
+// parfois de 400 caractères, et en arménien en orthographe classique — mesuré
+// le 1er nov. 2026 sur les 355 pages en ligne. Les titres des sujets sont
+// propres à chaque jour et portent les mots que les gens cherchent.
+export const DESC_MAX = 155
+export function briefDescription(brief, fallback) {
+  const titles = (brief?.topics ?? []).map((t) => t.title?.trim()).filter(Boolean)
+  if (!titles.length) return brief?.intro || fallback
+  let out = ''
+  for (const t of titles) {
+    const next = out ? `${out} · ${t}` : t
+    if ([...next].length > DESC_MAX) break
+    out = next
+  }
+  if (!out) out = [...titles[0]].slice(0, DESC_MAX - 1).join('').replace(/\s+\S*$/, '') + '…'
+  return out
+}
+
 // L'en-tête d'une page de brève : `/breve/` (date null) ou une page datée.
 // Mêmes balises que les vues, via composeHead ; ce qui change : le hreflang
 // (langues présentes ce jour-là, voir brief-links.mjs), og:type article et un
@@ -339,7 +367,7 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
   const title = date
     ? `${s.title} — ${longDate(lang, date)} · ${site.brand}`
     : `${s.title} · ${site.brand}`
-  const description = (date && brief?.intro) || s.description
+  const description = date && brief ? briefDescription(brief, s.description) : s.description
   const graph = siteGraph(site, lang)
   if (date && brief) {
     graph.push({
@@ -382,7 +410,7 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
   const url = cultureUrl(lang, slug)
   const a = slug ? article?.langs?.[lang] : null
   if (slug && !a) throw new Error(`article ${slug} absent en ${lang}`)
-  const title = a ? `${a.title} · ${site.brand}` : `${s.title} · ${site.brand}`
+  const title = a ? withBrand(a.title, site.brand) : `${s.title} · ${site.brand}`
   const description = a ? a.description : s.description
   const ogImage = a && article.image ? `${site.host}${cultureImagePath(slug, 'jpg')}` : null
   const graph = siteGraph(site, lang)
