@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { useReveal } from '../hooks/useReveal.js'
 import { Carousel } from './Carousel.jsx'
@@ -280,12 +280,22 @@ function AccountChips({ id, accounts, t }) {
 // (#facebook, #instagram… depuis les cartes de liens).
 export function SocialWall() {
   const { t } = useI18n()
-  useReveal('social-wall')
+  const wallRef = useRef(null)
+  useReveal('social-wall', wallRef)
+  // Rejouer l'ancre si l'arrivée du mur l'a déplacée : une cible DANS le mur
+  // (#facebook, #instagram…) n'existait pas encore, une cible APRÈS lui
+  // (#newsletter-email au pied de page) vient d'être repoussée de plusieurs
+  // milliers de pixels. Une cible au-dessus ne bouge pas : on n'y touche pas.
+  // Seulement au premier montage, peu après le chargement : passé ce délai, le
+  // lecteur a pu défiler ailleurs, et on ne le déplace pas d'autorité.
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1))
-    if (!id || id === 'reseaux') return
+    const wall = wallRef.current
+    if (!id || !wall || performance.now() > 15000) return
     const el = document.getElementById(id)
-    if (el?.closest('.social')) requestAnimationFrame(() => el.scrollIntoView())
+    if (!el) return
+    const inOrAfter = wall.contains(el) || wall.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING
+    if (inOrAfter) requestAnimationFrame(() => el.scrollIntoView())
   }, [])
 
   // Which set is enlarged, and where in it. null = closed.
@@ -382,7 +392,7 @@ export function SocialWall() {
 
   return (
     <>
-        <div className="social">
+        <div className="social" ref={wallRef}>
           {/* The networks were linked to as #facebook and #instagram for months.
               Those anchors now land on their own strand, not just the section.
               Moving Facebook last did not move #facebook: the anchor rides on

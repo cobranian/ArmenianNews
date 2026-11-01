@@ -74,7 +74,10 @@ try {
   for (const v of VIEWS) {
     const page = await browser.newPage()
     await page.setViewport({ width: v.width, height: v.height, deviceScaleFactor: 2 })
-    await page.goto(url, { waitUntil: 'networkidle0' })
+    // Le mur n'est plus dans la page cuite (SocialSection.jsx) : l'ancre le
+    // fait charger tout de suite, puis on attend que l'étagère existe.
+    await page.goto(`${url}#facebook`, { waitUntil: 'networkidle0' })
+    await page.waitForSelector(SELECTOR, { timeout: 20000 })
     // Trip the reveal-on-scroll animation for this strand, and promote its
     // cards to eager: `networkidle0` settles long before a lazy image below
     // the fold is requested, and the element capture reaches past the
