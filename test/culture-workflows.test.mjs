@@ -161,3 +161,13 @@ test('articles.yml : idées seulement sans issue ouverte (--ideas-open)', async 
   assert.match(src, /'ideas-open': \{ type: 'boolean'/)
   assert.match(src, /'out-ideas': \{ type: 'string', default: path\.join\(tmpdir\(\), 'culture-ideas\.md'\) \}/)
 })
+
+// Scan sécurité du 31 oct. 2026 (F1) : deux PR de fork nommées culture/*
+// remplissaient la file de relecture et bloquaient chaque brouillon.
+test('articles.yml : les PR de forks ne comptent pas dans la file de relecture', async () => {
+  const y = await read('articles.yml')
+  const line = y.split('\n').find((l) => l.includes('gh pr list') && l.includes('open.json'))
+  assert.ok(line, 'étape « Branches des PR ouvertes » introuvable')
+  assert.match(line, /select\(\.isCrossRepository == false\)/)
+  assert.doesNotMatch(line, /--author/, 'les PR de correction ouvertes à la main doivent compter')
+})
