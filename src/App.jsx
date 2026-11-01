@@ -11,7 +11,7 @@ import { CultureTeaser } from './components/CultureTeaser.jsx'
 import { BriefLead } from './components/BriefLead.jsx'
 import { contentLang } from './newsLangs.js'
 import { Agenda } from './components/Agenda.jsx'
-import { Social } from './components/Social.jsx'
+import { SocialSection } from './components/SocialSection.jsx'
 import { RadioPage } from './components/RadioPage.jsx'
 import { AgendaPage } from './components/AgendaPage.jsx'
 import { AboutPage } from './components/AboutPage.jsx'
@@ -57,7 +57,7 @@ export default function App() {
             <News />
             <CultureTeaser />
             <Agenda />
-            <Social />
+            <SocialSection />
           </main>
         </>
       )}

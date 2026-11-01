@@ -1090,6 +1090,13 @@ html:lang(hy) .nav__brand {
    the order lives in the JSX alone — no CSS `order`, nothing to
    restate here. See Social.jsx.
    ============================================================ */
+/* La place du mur tant qu'il n'est pas chargé (SocialSection.jsx). Mesuré le
+   1er nov. 2026 : 3 200 à 3 460px de 360 à 1 400px de large ; 3 000 évite que
+   son arrivée repousse le pied de page sans laisser un grand vide si une
+   étagère venait à manquer. */
+.social-pending {
+  min-height: 3000px;
+}
 .social {
   display: flex;
   flex-direction: column;
