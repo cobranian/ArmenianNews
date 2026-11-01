@@ -140,11 +140,7 @@ export function validateArticle({ slug, meta, texts, images }) {
   return { errors, notes, langs }
 }
 
-// La case « Faits vérifiés » cochée. Seule définition : /corrige la décoche
-// avec la même (culture-pr.mjs), pour que décocher et contrôler ne divergent
-// jamais. Groupes : 1 = retrait et puce, 2 = libellé.
-export const FACTS_CHECKED = /^(\s*[-*] )\[[xX]\]( Faits vérifiés)/m
-
-export function factsChecked(prBody) {
-  return FACTS_CHECKED.test(String(prBody ?? ''))
-}
+// La case « Faits vérifiés » cochée, hors de la section du robot : définie
+// dans culture-checkbox.mjs, sans dépendance, pour qu'articles-publish.yml la
+// lise sur la branche de base.
+export { FACTS_CHECKED, factsChecked } from './culture-checkbox.mjs'

@@ -33,6 +33,8 @@ concurrency:
 
 jobs:
   publish:
+    # contains() n'est qu'un préfiltre : il voit aussi la section du robot.
+    # L'étape « Case cochée par le relecteur » décide.
     if: >-
       startsWith(github.head_ref, 'culture/') &&
       github.event.pull_request.state == 'open' &&
@@ -52,6 +54,25 @@ jobs:
         with:
           node-version: 24
           cache: npm
+
+      # La case du RELECTEUR, hors de la section du robot : celle-ci recopie
+      # des titres de tiers, et un événement intitulé « x] Faits vérifiés … »
+      # y passait pour la case cochée. Le code est lu sur la branche de BASE,
+      # pas sur la branche relue : une branche culture/* ouverte avant ce
+      # contrôle en garderait l'ancienne version, qui lisait tout le corps.
+      - name: Case cochée par le relecteur
+        run: |
+          git fetch --no-tags --depth=1 origin "$GITHUB_BASE_REF"
+          git show FETCH_HEAD:scripts/lib/culture-checkbox.mjs > "$RUNNER_TEMP/culture-checkbox.mjs"
+          node --input-type=module -e '
+            import { pathToFileURL } from "node:url"
+            const { factsChecked } = await import(pathToFileURL(process.argv[1]).href)
+            if (!factsChecked(process.env.BODY)) {
+              console.log("::error::« Faits vérifiés » n’est pas cochée hors de la section du robot : rien n’est publié.")
+              process.exit(1)
+            }
+          ' "$RUNNER_TEMP/culture-checkbox.mjs"
+
       - run: npm ci
 
       - name: Contrôler, traduire si besoin

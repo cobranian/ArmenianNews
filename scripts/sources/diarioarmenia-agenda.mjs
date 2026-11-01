@@ -32,9 +32,13 @@ const MONTHS = {
 
 // « 8 de noviembre », « 1° de noviembre », « 14, 21 y 28 de noviembre » (le
 // PREMIER jour de la liste), « del 3 al 16 de enero de 2027 » (le premier aussi).
+// Le blanc après un jour n'appartient qu'à son ordinal (`(?:\s*[°º…])?`), jamais
+// au jour nu : deux `\s*` voisins (fin d'un jour, début du séparateur) se
+// partageraient le même blanc, et chaque « N , » de la liste doublerait les
+// découpages à essayer — « 1 ,1 ,1 ,… » sans mois bloquait le scrape (2^n).
 const DATE_RE = new RegExp(
-  '(?<!\\d)(\\d{1,2})\\s*(?:[°º]|o(?=\\s))?' +
-    '(?:\\s*(?:,|\\sy|\\sal)\\s*\\d{1,2}\\s*(?:[°º]|o(?=\\s))?)*' +
+  '(?<!\\d)(\\d{1,2})(?:\\s*(?:[°º]|o(?=\\s)))?' +
+    '(?:\\s*(?:,|\\sy|\\sal)\\s*\\d{1,2}(?:\\s*(?:[°º]|o(?=\\s)))?)*' +
     '\\s+de\\s+(' + Object.keys(MONTHS).join('|') + ')\\b(?:\\s+de\\s+(\\d{4}))?',
   'gi',
 )

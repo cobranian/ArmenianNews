@@ -100,7 +100,7 @@ jobs:
           PROBLEMS: ${{ steps.check.outputs.problems }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          ouverte=$(gh issue list --state open --limit 100 --json number,title             --jq '[.[] | select(.title | contains("[social-down]"))] | .[0].number // empty')
+          ouverte=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '[.[] | select(.title | contains("[social-down]"))] | .[0].number // empty')
           if [ "$PROBLEMS" = "0" ]; then
             if [ -n "$ouverte" ]; then
               gh issue close "$ouverte" --comment "Toutes les clés répondent à nouveau. $RUN_URL"

@@ -126,6 +126,24 @@ test('les robots publient le statut culture-check eux-mêmes', async () => {
   for (const f of ['articles.yml', 'articles-translate.yml', 'articles-revise.yml']) assert.match(await read(f), /statuses\/.*context=culture-check/s, f)
 })
 
+// La décision de publier ne doit dépendre ni du contains() du if: (qui voit
+// la section du robot), ni du code de la branche relue (une branche ouverte
+// avant le correctif en garde l'ancien) : elle lit le module de la BASE.
+test('articles-publish.yml : la case est contrôlée par le code de la base, avant tout', async () => {
+  const y = await read('articles-publish.yml')
+  const gate = y.indexOf('git show FETCH_HEAD:scripts/lib/culture-checkbox.mjs')
+  assert.ok(gate > 0)
+  assert.match(y, /git fetch --no-tags --depth=1 origin "\$GITHUB_BASE_REF"/)
+  assert.match(y, /factsChecked\(process\.env\.BODY\)/)
+  assert.ok(gate < y.indexOf('npm ci'), 'avant npm ci')
+  assert.ok(gate < y.indexOf('scripts/culture-check.mjs'), 'avant la traduction')
+  assert.ok(gate < y.indexOf('gh pr merge'), 'avant la fusion')
+  assert.doesNotMatch(y.slice(gate - 600, gate + 600), /continue-on-error/)
+  // Lu seul par git show : un import le rendrait inutilisable.
+  const src = await readFile(new URL('../scripts/lib/culture-checkbox.mjs', import.meta.url), 'utf-8')
+  assert.doesNotMatch(src, /^\s*import\b|\bimport\s*\(|^\s*export\s+[^\n]*\bfrom\s+['"]/m)
+})
+
 test('articles.yml : cron quotidien 0 3 * * *', async () => {
   const y = await read('articles.yml')
   assert.match(y, /cron: '0 3 \* \* \*'/)
