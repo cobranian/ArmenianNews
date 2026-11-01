@@ -32,5 +32,52 @@
         "cta": "Sign up"
       }
     }
+  },
+  {
+    "slug": "whatsapp",
+    "langs": {
+      "fr": {
+        "title": "Arménie Info a sa chaîne WhatsApp",
+        "description": "Les articles Culture et l'essentiel de l'actualité arménienne, directement dans WhatsApp. Pas de discussion, pas de numéro visible : vous lisez, c'est tout.\n\nRejoindre la chaîne : https://whatsapp.com/channel/0029Vb90wT859PwWxvIZvr2z",
+        "url": "https://armenieinfo.ch/",
+        "cta": "Rejoindre"
+      },
+      "de": {
+        "title": "Arménie Info hat einen WhatsApp-Kanal",
+        "description": "Kulturartikel und das Wichtigste aus Armenien, direkt in WhatsApp. Keine Diskussion, keine sichtbare Nummer: einfach lesen.\n\nDem Kanal folgen: https://whatsapp.com/channel/0029Vb9vZgXC6ZvmgkLTjd1B",
+        "url": "https://armenieinfo.ch/de/",
+        "cta": "Folgen"
+      },
+      "it": {
+        "title": "Arménie Info ha un canale WhatsApp",
+        "description": "Gli articoli di cultura e l'essenziale dell'attualità armena, direttamente su WhatsApp. Nessuna discussione, nessun numero visibile: si legge e basta.\n\nSegui il canale: https://whatsapp.com/channel/0029Vb9L8jsF6smuUOyG0N2n",
+        "url": "https://armenieinfo.ch/it/",
+        "cta": "Segui"
+      },
+      "en": {
+        "title": "Armenia News is now on WhatsApp",
+        "description": "Culture stories and the essential Armenian news, straight to WhatsApp. No chat, no visible phone number: you just read.\n\nFollow the channel: https://whatsapp.com/channel/0029Vb8pTg4B4hdVlBkSzi04",
+        "url": "https://armenianews.org/",
+        "cta": "Follow"
+      },
+      "es": {
+        "title": "Armenia News ya tiene canal de WhatsApp",
+        "description": "Los artículos de cultura y lo esencial de la actualidad armenia, directamente en WhatsApp. Sin conversaciones ni números visibles: solo lectura.\n\nSeguir el canal: https://whatsapp.com/channel/0029VbDbwntAojYorCFVdw1M",
+        "url": "https://armenianews.org/es/",
+        "cta": "Seguir"
+      },
+      "hy": {
+        "title": "Արմենիա Ինֆոն այժմ WhatsApp-ում է",
+        "description": "Մշակութային հոդվածներն ու հայկական լուրերի կարևորագույնը՝ ուղիղ WhatsApp-ում։ Ոչ մի զրույց, ոչ մի տեսանելի համար․ պարզապես կարդում եք։\n\nՀետևել ալիքին՝ https://whatsapp.com/channel/0029VbDTnRK6mYPSuckkko0s",
+        "url": "https://armenianews.org/hy/",
+        "cta": "Հետևել"
+      },
+      "ru": {
+        "title": "У Armenia News появился канал в WhatsApp",
+        "description": "Статьи о культуре и главные армянские новости прямо в WhatsApp. Без переписки и без видимых номеров — только чтение.\n\nПодписаться на канал: https://whatsapp.com/channel/0029VbE1aLv11ulUZyEnvf0r",
+        "url": "https://armenianews.org/ru/",
+        "cta": "Подписаться"
+      }
+    }
   }
 ]

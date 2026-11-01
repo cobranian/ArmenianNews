@@ -338,7 +338,7 @@ test('annonces : jamais dans le plan horaire, textes entiers, URL et carte du bo
     assert.deepEqual(plan({ items, channels: [fb], ledger, kinds, now }).posts, [])
   assert.throws(() => parseKinds('annonce'))
   for (const it of items) {
-    const host = it.lang === 'fr' ? 'https://armenieinfo.ch' : 'https://armenianews.org'
+    const host = ['fr', 'de', 'it'].includes(it.lang) ? 'https://armenieinfo.ch' : 'https://armenianews.org'
     assert.ok(it.url.startsWith(host + '/'), it.url)
     assert.ok(it.image.url.startsWith(host + '/og-image-'), it.image.url)
     assert.equal(fitsInstagram(it.image), true)
