@@ -59,3 +59,29 @@ test('hook SessionStart branché, registre hors git', () => {
   assert.ok(cmds.some((c) => c.includes('linkedin-pending.mjs --hook')))
   assert.match(readFileSync(new URL('../.gitignore', import.meta.url), 'utf8'), /^\.cache$/m)
 })
+
+// WhatsApp : même rappel, canaux sans secret, hors de CHANNELS (le job horaire
+// ne doit jamais tenter d'y publier).
+test('WhatsApp : canaux manuels, hors du job horaire, rappel distinct', async () => {
+  const { WHATSAPP_CHANNELS } = await import('../scripts/lib/linkedin-pending.mjs')
+  const { CHANNELS } = await import('../scripts/lib/social.mjs')
+  assert.deepEqual(WHATSAPP_CHANNELS.map((c) => c.id), ['whatsapp-ch', 'whatsapp-org', 'whatsapp-de', 'whatsapp-it', 'whatsapp-es', 'whatsapp-hy', 'whatsapp-ru'])
+  for (const c of WHATSAPP_CHANNELS) assert.match(c.url, /^https:\/\/whatsapp\.com\/channel\/[A-Za-z0-9]+$/, c.id)
+  assert.ok(!CHANNELS.some((c) => c.platform === 'whatsapp'))
+  const r = pending({ items, ledger: emptyLedger(), kinds, channels: WHATSAPP_CHANNELS.filter((c) => ['fr', 'en'].includes(c.lang)) })
+  assert.deepEqual(r.posts.map((p) => `${p.channel}/${p.item.id}`).sort(), ['whatsapp-ch/culture:b', 'whatsapp-org/culture:b'])
+})
+
+test('postText marque le lien du réseau qui le publie', () => {
+  assert.match(postText(item('b', '2026-10-02'), 'whatsapp'), /utm_source=whatsapp&utm_medium=social$/)
+})
+
+test('le hook sépare LinkedIn et WhatsApp', () => {
+  const msg = hookMessage([
+    { channel: 'linkedin-ch', item: item('b', '2026-10-02') },
+    { channel: 'whatsapp-org', item: item('b', '2026-10-02', 'en') },
+  ])
+  assert.match(msg, /RAPPEL LINKEDIN : 1 publication/)
+  assert.match(msg, /RAPPEL WHATSAPP : 1 publication.*\n- whatsapp-org \(Armenia News\)/)
+  assert.match(msg, /publier-whatsapp/)
+})
