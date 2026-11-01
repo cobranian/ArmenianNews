@@ -205,8 +205,13 @@
 [data-theme='light'] .nav {
   background: rgba(244, 237, 219, 0.8);
 }
-[data-theme='light'] .nav__links {
-  background: rgba(244, 237, 219, 0.97);
+/* Le fond opaque ne sert qu'au menu déroulant mobile : posé à toutes les
+   largeurs, il dessinait sur ordinateur une boîte claire sur le flou de la
+   barre, très visible dès que les liens passaient sur deux rangs. */
+@media (max-width: 760px) {
+  [data-theme='light'] .nav__links {
+    background: rgba(244, 237, 219, 0.97);
+  }
 }
 [data-theme='light'] .lang,
 [data-theme='light'] .theme-toggle,
@@ -553,13 +558,18 @@ html:lang(hy) {
    970px à 900). Les liens passent donc sur deux rangs centrés, chacun entier
    (`nowrap` sur le lien) ; `min-width: 0` laisse la liste rétrécir. Aucun seuil
    par langue : la césure suit la longueur réelle des libellés. */
+/* Écart plafonné à 26px (34 auparavant) : la barre plafonne à 1240px, et la
+   pastille ES (31 oct. 2026) a pris au sélecteur juste assez pour que les six
+   liens manquent de 3px (fr) à 12px (de, « Social Media »). Le dernier lien
+   partait au second rang à TOUTES les largeurs de bureau, 1600px compris
+   (mesuré le 1er nov. 2026). */
 .nav__links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-width: 0;
-  gap: 2px clamp(12px, 2.6vw, 34px);
+  gap: 2px clamp(12px, 2.6vw, 26px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -568,9 +578,11 @@ html:lang(hy) {
    arméniens, les plus longs (« Միջոցառումներ », 132px), ne tenaient plus sur
    un rang à 1400px — la barre de /hy/ passait à 79px de haut, seule des trois
    pages du .org. Un écart resserré pour l'arménien seul rend la ligne d'avant
-   (mesuré : 21px de marge à 1400), sans toucher en ni ru. */
+   (mesuré : 21px de marge à 1400), sans toucher en ni ru. La pastille ES et
+   le lien Réseaux ont repris cette marge : il manquait 18px à 22px d'écart,
+   d'où 16px (12px de marge, mesuré le 1er nov. 2026). */
 html:lang(hy) .nav__links {
-  column-gap: clamp(12px, 1.6vw, 22px);
+  column-gap: clamp(12px, 1.6vw, 16px);
 }
 .nav__links a {
   position: relative;
