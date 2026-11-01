@@ -128,6 +128,7 @@ const STRINGS = {
     'lb.next': 'Image suivante',
 
     'footer.built': "Instantané statique · sources liées à leurs sites d'origine",
+    'footer.rights': 'Tous droits réservés.',
     'footer.write': 'Écrivez-nous',
     'footer.sources': 'Sources',
 
@@ -416,6 +417,7 @@ const STRINGS = {
     'lb.prev': 'Vorheriges Bild',
     'lb.next': 'Nächstes Bild',
     'footer.built': 'Statische Momentaufnahme · Quellen mit ihren Originalseiten verlinkt',
+    'footer.rights': 'Alle Rechte vorbehalten.',
     'footer.write': 'Schreiben Sie uns',
     'footer.sources': 'Quellen',
     'privacy.title': 'Datenschutzerklärung',
@@ -664,6 +666,7 @@ const STRINGS = {
     'lb.prev': 'Immagine precedente',
     'lb.next': 'Immagine successiva',
     'footer.built': 'Istantanea statica · fonti collegate ai loro siti d’origine',
+    'footer.rights': 'Tutti i diritti riservati.',
     'footer.write': 'Scriveteci',
     'footer.sources': 'Fonti',
     'privacy.title': 'Informativa sulla privacy',
@@ -924,6 +927,7 @@ const STRINGS = {
     'lb.next': 'Next image',
 
     'footer.built': 'Static snapshot · sources linked to their original sites',
+    'footer.rights': 'All rights reserved.',
     'footer.write': 'Write to us',
     'footer.sources': 'Sources',
 
@@ -1218,6 +1222,7 @@ const STRINGS = {
     'lb.next': 'Հաջորդ պատկերը',
 
     'footer.built': 'Ստատիկ պատկեր · աղբյուրները կապված են իրենց կայքերին',
+    'footer.rights': 'Բոլոր իրավունքները պաշտպանված են։',
     'footer.write': 'Գրեք մեզ',
     'footer.sources': 'Աղբյուրներ',
 
@@ -1504,6 +1509,7 @@ const STRINGS = {
     'lb.next': 'Следующее изображение',
 
     'footer.built': 'Статический снимок · источники со ссылками на их сайты',
+    'footer.rights': 'Все права защищены.',
     'footer.write': 'Напишите нам',
     'footer.sources': 'Источники',
 
@@ -1773,6 +1779,7 @@ const STRINGS = {
     'lb.next': 'Imagen siguiente',
 
     'footer.built': 'Instantánea estática · fuentes enlazadas a sus sitios de origen',
+    'footer.rights': 'Todos los derechos reservados.',
     'footer.write': 'Escríbanos',
     'footer.sources': 'Fuentes',
 
