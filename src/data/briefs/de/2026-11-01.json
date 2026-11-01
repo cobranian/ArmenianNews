@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-01",
+  "lang": "de",
+  "generatedAt": "2026-11-01T04:29:17.350Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere Medien berichten über den Abschluss der COP17 in Jerewan sowie über sicherheitspolitische und gesellschaftliche Themen in Armenien.",
+  "topics": [
+    {
+      "title": "Abschluss der COP17 in Jerewan",
+      "text": "Die UN-Klimakonferenz COP17 ist in Jerewan zu Ende gegangen und hat die sogenannte Jerewaner Erklärung angenommen. Laut Armenpress wurden rund fünfzig Beschlüsse gefasst, die die Erwartungen übertrafen. Der WWF begrüsste die Ergebnisse, während Greenpeace die Massnahmen als unzureichend kritisierte.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-cop17-qui-vient-de-sachever-en-armenie-a-adopte-la-declaration-de-la-voie-derevan/",
+          "title": "La COP17 qui vient de s’achever en Arménie, a adopté la déclaration de la « Voie d’Erevan »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-wwf-a-plutot-bien-accueilli-les-resultats-de-la-cop17-a-erevan-en-armenie-tandis-que-greenpeace-a-critique-linsuffisance-des-mesures-prises/",
+          "title": "Le WWF a plutôt bien accueilli les résultats de la COP17 à Erevan en Arménie, tandis que Greenpeace a critiqué l’insuffisance des mesures prises"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264410",
+          "title": "À Erevan, la clôture de la COP17 célébrée par un concert festif"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264392",
+          "title": "COP17: une cinquantaine de décisions adoptées, des résultats au-delà des attentes"
+        }
+      ]
+    },
+    {
+      "title": "Aserbaidschanische Truppenbewegungen am Schwarzen See",
+      "text": "Nach Angaben von Sputnik Armenien verstärken aserbaidschanische Streitkräfte ihre Positionen im Sektor des Schwarzen Sees auf armenischem Hoheitsgebiet. Die Meldung deutet auf anhaltende Spannungen an der Grenze hin.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-forces-armees-azerbaidjanaises-renforcent-leurs-positions-dans-le-secteur-du-lac-noir-en-armenie-affirme-sputnik-armenie/",
+          "title": "Les forces armées azerbaïdjanaises renforcent leurs positions dans le secteur du Lac Noir en Arménie, affirme « Sputnik Arménie »"
+        }
+      ]
+    },
+    {
+      "title": "Schliessung der öffentlichen Brunnen in Jerewan",
+      "text": "Die 35 öffentlichen Trinkbrunnen der Hauptstadt werden vom 1. November bis Mai nächsten Jahres geschlossen. Die Massnahme betrifft die Wasserversorgung im öffentlichen Raum während der Wintermonate.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-35-fontaines-publiques-de-la-capitale-armenienne-seront-fermeees-du-1er-novembre-a-mai-prochain/",
+          "title": "Les 35 fontaines publiques de la capitale arménienne seront ferméees du 1er novembre à mai prochain"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Medaillengewinne bei Karate-Weltmeisterschaften",
+      "text": "Artur Voskanyan, Hovhannes Hakobyan und Erik Hovsepyan gewannen unter armenischer Flagge Bronzemedaillen bei den Weltmeisterschaften im traditionellen Karate. Es handelt sich um einen Erfolg für den armenischen Kampfsport.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/sous-les-couleurs-de-larmenie-artur-voskanyan-hovhannes-hakobyan-et-erik-hovsepyan-gagnent-des-medailles-de-bronze-aux-championnats-du-monde-de-karate-traditionnel/",
+          "title": "Sous les couleurs de l’Arménie, Artur Voskanyan, Hovhannes Hakobyan et Erik Hovsepyan, gagnent des médailles de bronze aux Championnats du monde de karaté traditionnel"
+        }
+      ]
+    },
+    {
+      "title": "Armenien bei den Olympischen Jugendspielen in Dakar",
+      "text": "Fünf armenische Athleten nehmen an den Olympischen Jugendspielen teil, deren Eröffnungsfeier heute in Dakar stattfindet. Die Delegation repräsentiert Armenien in mehreren Disziplinen.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-aura-5-participants-aux-jeux-olympiques-de-la-jeunesse-dont-la-ceremonie-douverture-se-deroulera-aujourdhui-a-dakar-senegal/",
+          "title": "L’Arménie aura 5 participants aux Jeux Olympiques de la Jeunesse dont la cérémonie d’ouverture se déroulera aujourd’hui à Dakar (Sénégal)"
+        }
+      ]
+    },
+    {
+      "title": "Armenisch-französische Zusammenarbeit im Katastrophenschutz",
+      "text": "Armenien und Frankreich diskutieren über die Stärkung der Rettungskapazitäten. Das Thema wurde im Rahmen bilateraler Gespräche erörtert.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264391",
+          "title": "L'Arménie et la France discutent du renforcement des capacités de secours"
+        }
+      ]
+    },
+    {
+      "title": "Russische Fragen zur US-Botschaft in Jerewan",
+      "text": "Moskau äussert sich zur Grösse der US-Botschaft in Armenien und fragt nach dem Bedarf von rund 3000 Mitarbeitern vor Ort. Die Bemerkung spiegelt geopolitische Sensibilitäten wider.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/moscou-sinterroge-sur-la-presence-de-3-000-employes-a-lambassade-americaine-en-armenie/",
+          "title": "Moscou s’interroge sur la présence de « 3 000 employés » à l’ambassade américaine en Arménie"
+        }
+      ]
+    }
+  ]
+}
