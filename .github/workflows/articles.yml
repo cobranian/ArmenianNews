@@ -36,8 +36,12 @@ jobs:
       - run: npm ci
 
       - name: Branches des PR ouvertes
+        # Seules les PR du dépôt comptent (scan sécurité du 31 oct. 2026, F1) :
+        # le dépôt est public, deux PR de fork nommées culture/* rempliraient la
+        # file de relecture et bloqueraient chaque brouillon. Pas de filtre
+        # d'auteur : les PR de correction ouvertes à la main doivent compter.
         run: |
-          gh pr list --state open --limit 200 --json headRefName --jq '[.[].headRefName]' > "$RUNNER_TEMP/open.json"
+          gh pr list --state open --limit 200 --json headRefName,isCrossRepository --jq '[.[] | select(.isCrossRepository == false) | .headRefName]' > "$RUNNER_TEMP/open.json"
 
       - name: Issue d'idées déjà ouverte ?
         id: open-ideas
