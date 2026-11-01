@@ -113,6 +113,17 @@ export function Footer() {
           <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
         </p>
         <p className="footer__note">{t('footer.built')}</p>
+        {/* Les droits, rendus explicites (1er nov. 2026) : sans licence, le
+            code et les textes sont déjà « tous droits réservés », mais une
+            mention visible simplifie une demande de retrait en cas de copie.
+            L'année est celle de la première publication, écrite en dur : une
+            année calculée pourrait différer entre le prérendu et la visite,
+            et l'hydratation refuserait la page (voir main.jsx). */}
+        <p className="footer__note">
+          {/* « · » et non « . » : un point latin après « Արմենիա Ինֆո »
+              trancherait sur la ponctuation arménienne (« ։ »). */}
+          © 2026 {t('site.title')} · {t('footer.rights')}
+        </p>
 
         {/* Politique de confidentialité — un <details>, délibérément.
             Repliée, elle n'encombre pas le pied de page ; dépliée, elle reste
