@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T16:51:45.136Z",
+  "generatedAt": "2026-11-01T17:23:29.482Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -2205,6 +2205,12 @@
       "categoryKey": "sport",
       "articles": [
         {
+          "title": "L’arméno-américain Jean-Paul Lebosnoyan bat par KO technique l’azerbaïdjanais Farman Hasanov à l’UFC Fight Night 292",
+          "url": "https://www.armenews.com/larmeno-americain-jean-paul-lebosnoyan-bat-par-ko-technique-lazerbaidjanais-farman-hasanov-a-lufc-fight-night-292/",
+          "date": "2026-11-01T17:07:57.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/8905.webp"
+        },
+        {
           "title": "L’ex-russe Alina Charaeva 100e joueuse mondiale, qui représente l’Arménie, remporte le tournoi WTA Challenger de Courmayeur, en Italie",
           "url": "https://www.armenews.com/lex-russe-alina-charaeva-100e-joueuse-mondiale-qui-represente-larmenie-remporte-le-tournoi-wta-challenger-de-courmayeur-en-italie/",
           "date": "2026-11-01T16:51:54.000Z",
@@ -2257,12 +2263,6 @@
           "url": "https://www.armenews.com/karen-aslanyan-armenie-est-en-finale-des-championnats-de-lutte-greco-romaine-a-astana-il-affrontera-demain-un-azerbaidjanais/",
           "date": "2026-10-26T14:50:13.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/8805.jpeg"
-        },
-        {
-          "title": "Hamlet Manukyan (Arménie) : Je rêvais de devenir champion du monde au cheval d’arçons",
-          "url": "https://www.armenews.com/hamlet-manukyan-armenie-je-revais-de-devenir-champion-du-monde-au-cheval-darcons/",
-          "date": "2026-10-25T15:15:13.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/8896.jpg"
         }
       ]
     },
@@ -10600,6 +10600,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Real Madrid thrash Racing (video)",
+            "url": "https://sport.news.am/eng/news/169963/",
+            "date": "2026-11-01T17:16:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/169963.jpg"
+          },
+          {
             "title": "Barcelona thrash Alaves (video)",
             "url": "https://sport.news.am/eng/news/169955/",
             "date": "2026-10-31T21:58:00.000Z",
@@ -10652,12 +10658,6 @@
             "url": "https://sport.news.am/eng/news/169922/",
             "date": "2026-10-30T08:57:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169922.jpg"
-          },
-          {
-            "title": "NBA: Game results, highlights of the day",
-            "url": "https://sport.news.am/eng/news/169920/",
-            "date": "2026-10-30T08:39:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169920.jpg"
           }
         ]
       },
@@ -11130,6 +11130,24 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Bloomberg. Բոլսոնարուի՝ ԱՄՆ մեկնելը բարդացրել է երկրում պառակտումը հաղթահարելու Բրազիլիայի նախագահի փորձերը",
+            "url": "https://news.am/hy/news/1071800",
+            "date": "2026-11-01T17:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/70Om1EaEbllyEDrh.webp"
+          },
+          {
+            "title": "Շվեյցարիան վերականգնել է դիվանագիտական կապերը Հյուսիսային Կորեայի հետ",
+            "url": "https://news.am/hy/news/1071799",
+            "date": "2026-11-01T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/10/12/7YB9Rei43IXnOCCy.webp"
+          },
+          {
+            "title": "«Ուժեղ Հայաստանը» Ստեփանավանի ընտրությունների արդյունքներն անվավեր ճանաչելու մասին դիմում է ներկայացրել",
+            "url": "https://news.am/hy/news/1071822",
+            "date": "2026-11-01T17:06:50.000Z",
+            "image": "https://news.am/storage/media/26/11/01/R6PHMuPW7IDf3JiJ.webp"
+          },
+          {
             "title": "Թրամփը կորցնում է ընտրողների աջակցությունը․ դեմոկրատները յոթ կետով առաջ են հանրապետականներից. NBC News",
             "url": "https://news.am/hy/news/1071798",
             "date": "2026-11-01T16:56:00.000Z",
@@ -11170,24 +11188,6 @@
             "url": "https://news.am/hy/news/1071788",
             "date": "2026-11-01T15:40:00.000Z",
             "image": "https://news.am/storage/media/26/09/07/1xbKJG1e5MVVuGCJ.webp"
-          },
-          {
-            "title": "Իրանի պաշտպանության նախարարը սպառնացել է պատասխանել ցանկացած նոր հարձակման. «Մեզ անակնկալի չեն բերի»",
-            "url": "https://news.am/hy/news/1071781",
-            "date": "2026-11-01T14:24:00.000Z",
-            "image": "https://news.am/storage/media/26/10/30/13FPVVNjYI0PlNyw.webp"
-          },
-          {
-            "title": "Հարավային Կովկասի փորձը ցույց է տալիս ոչ միայն երկարատև առճակատման գինը, այլև այն հնարավորությունները, որոնք կարող է ստեղծել դիվանագիտությունը. Միրզոյան",
-            "url": "https://news.am/hy/news/1071796",
-            "date": "2026-11-01T14:12:16.000Z",
-            "image": "https://news.am/storage/media/26/11/01/NdMHFZag6syynUZF.webp"
-          },
-          {
-            "title": "Ընտրություններում հաղթած Սերբիայի ուսանողական շարժումը բանկերին կոչ է արել ստուգել պետմիջոցների միջազգային փոխանցումները",
-            "url": "https://news.am/hy/news/1071779",
-            "date": "2026-11-01T13:53:00.000Z",
-            "image": "https://news.am/storage/media/26/10/20/f6Pjur3zrtvuld8t.webp"
           }
         ]
       },
@@ -11262,6 +11262,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Մադրիդի «Ռեալի» հաղթանակը՝ 3:0 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169963/",
+            "date": "2026-11-01T17:16:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/169963.jpg"
+          },
+          {
+            "title": "«Արարատ-Արմենիան» ուժեղ էր «Գանձասարից»՝ 3:0 (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/169962/",
+            "date": "2026-11-01T16:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/169962.jpg"
+          },
+          {
             "title": "«Լացիոն» պարտության մատնեց «Կալյարիին» եւ առաջատարն է (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/169961/",
             "date": "2026-11-01T15:59:00.000Z",
@@ -11308,18 +11320,6 @@
             "url": "https://sport.news.am/arm/news/169955/",
             "date": "2026-10-31T21:58:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/169955.jpg"
-          },
-          {
-            "title": "«Միլանը» պարտության մատնեց «Ինտերին» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169954/",
-            "date": "2026-10-31T21:42:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/169954.jpg"
-          },
-          {
-            "title": "«Բավարիան» ու Դորտմունդի «Բորուսիան» հաղթողին չպարզեցին (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/169953/",
-            "date": "2026-10-31T19:29:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169953.jpg"
           }
         ]
       },
@@ -11792,6 +11792,24 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Bloomberg: Отъезд в США Болсонару осложнил попытки президента Бразилии преодолеть раскол в стране",
+            "url": "https://news.am/ru/news/1071800",
+            "date": "2026-11-01T17:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/28/70Om1EaEbllyEDrh.webp"
+          },
+          {
+            "title": "Швейцария восстановила дипломатические связи с Северной Кореей",
+            "url": "https://news.am/ru/news/1071799",
+            "date": "2026-11-01T17:07:00.000Z",
+            "image": "https://news.am/storage/media/26/10/12/7YB9Rei43IXnOCCy.webp"
+          },
+          {
+            "title": "«Сильная Армения» подала заявление о признании недействительными результатов выборов в Степанаване",
+            "url": "https://news.am/ru/news/1071822",
+            "date": "2026-11-01T17:06:50.000Z",
+            "image": "https://news.am/storage/media/26/11/01/R6PHMuPW7IDf3JiJ.webp"
+          },
+          {
             "title": "Трамп теряет поддержку избирателей: демократы опережают республиканцев на семь пунктов - NBC News",
             "url": "https://news.am/ru/news/1071798",
             "date": "2026-11-01T16:56:00.000Z",
@@ -11832,24 +11850,6 @@
             "url": "https://news.am/ru/news/1071788",
             "date": "2026-11-01T15:40:00.000Z",
             "image": "https://news.am/storage/media/26/09/07/1xbKJG1e5MVVuGCJ.webp"
-          },
-          {
-            "title": "Министр обороны Ирана пригрозил ответом на любую новую атаку: «Нас врасплох не застанут»",
-            "url": "https://news.am/ru/news/1071781",
-            "date": "2026-11-01T14:24:00.000Z",
-            "image": "https://news.am/storage/media/26/10/30/13FPVVNjYI0PlNyw.webp"
-          },
-          {
-            "title": "Мирзоян: Опыт Южного Кавказа показывает не только цену длительного противостояния, но и возможности, которые может создать дипломатия",
-            "url": "https://news.am/ru/news/1071796",
-            "date": "2026-11-01T14:12:16.000Z",
-            "image": "https://news.am/storage/media/26/11/01/NdMHFZag6syynUZF.webp"
-          },
-          {
-            "title": "Победившее на выборах Студенческое движение Сербии призвало банки проверить международные переводы госсредств",
-            "url": "https://news.am/ru/news/1071779",
-            "date": "2026-11-01T13:53:00.000Z",
-            "image": "https://news.am/storage/media/26/10/20/f6Pjur3zrtvuld8t.webp"
           }
         ]
       },
@@ -11924,6 +11924,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Реал» крупно обыграл «Расинг» (видео)",
+            "url": "https://sport.news.am/rus/news/169963/",
+            "date": "2026-11-01T17:16:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/169963.jpg"
+          },
+          {
+            "title": "«Арарат-Армения» разгромил «Гандзасар» (видео)",
+            "url": "https://sport.news.am/rus/news/169962/",
+            "date": "2026-11-01T16:58:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/169962.jpg"
+          },
+          {
             "title": "«Лацио» победил «Кальяри» и лидирует (видео)",
             "url": "https://sport.news.am/rus/news/169961/",
             "date": "2026-11-01T15:59:00.000Z",
@@ -11970,18 +11982,6 @@
             "url": "https://sport.news.am/rus/news/169951/",
             "date": "2026-10-31T19:06:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/10/169951.jpg"
-          },
-          {
-            "title": "«Милан» и «Интер» объявили стартовые составы",
-            "url": "https://sport.news.am/rus/news/169950/",
-            "date": "2026-10-31T18:46:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169950.jpg"
-          },
-          {
-            "title": "«Алашкерт» оказался сильнее «Арарата» (видео)",
-            "url": "https://sport.news.am/rus/news/169949/",
-            "date": "2026-10-31T17:59:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/10/169949.jpg"
           }
         ]
       },
