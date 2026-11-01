@@ -71,7 +71,9 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
 // suivie d'une espace y est désarmée (`&#91;`, qui s'affiche « [ » à
 // l'identique), pour qu'aucune ligne n'y forme « - [x] Faits vérifiés », que
 // le préfiltre d'articles-publish.yml cherche partout (contains, sans casse).
-const disarm = (s) => s.replace(/\[([xX])\] /g, '&#91;$1] ')
+// Les NUL sont retirés au passage (F7) : ils tronqueraient le corps passé
+// par variable d'environnement, et un faux marqueur de fin deviendrait le dernier.
+const disarm = (s) => s.replaceAll(String.fromCharCode(0), '').replace(/\[([xX])\] /g, '&#91;$1] ')
 const wrap = (auto) => `${AUTO_START}\n${disarm(auto.replace(/^\n+|\n+$/g, ''))}\n${AUTO_END}`
 
 export function buildPrBody(args) {

@@ -134,7 +134,9 @@ test('articles-publish.yml : la case est contrôlée par le code de la base, ava
   const gate = y.indexOf('git show FETCH_HEAD:scripts/lib/culture-checkbox.mjs')
   assert.ok(gate > 0)
   assert.match(y, /git fetch --no-tags --depth=1 origin "\$GITHUB_BASE_REF"/)
-  assert.match(y, /factsChecked\(process\.env\.BODY\)/)
+  // Corps passé en JSON (F7) : un octet NUL ne tronque pas la variable.
+  assert.match(y, /BODY_JSON: \$\{\{ toJSON\(github\.event\.pull_request\.body\) \}\}/)
+  assert.match(y, /factsChecked\(JSON\.parse\(process\.env\.BODY_JSON\)\)/)
   assert.ok(gate < y.indexOf('npm ci'), 'avant npm ci')
   assert.ok(gate < y.indexOf('scripts/culture-check.mjs'), 'avant la traduction')
   assert.ok(gate < y.indexOf('gh pr merge'), 'avant la fusion')

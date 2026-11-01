@@ -46,6 +46,9 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
       BRANCH: ${{ github.head_ref }}
       BODY: ${{ github.event.pull_request.body }}
+      # Le même corps, encodé en JSON : un octet NUL y reste « \u0000 » au lieu
+      # de tronquer la variable (F7). C'est celui que lit la décision.
+      BODY_JSON: ${{ toJSON(github.event.pull_request.body) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -67,7 +70,7 @@ jobs:
           node --input-type=module -e '
             import { pathToFileURL } from "node:url"
             const { factsChecked } = await import(pathToFileURL(process.argv[1]).href)
-            if (!factsChecked(process.env.BODY)) {
+            if (!factsChecked(JSON.parse(process.env.BODY_JSON))) {
               console.log("::error::« Faits vérifiés » n’est pas cochée hors de la section du robot : rien n’est publié.")
               process.exit(1)
             }
