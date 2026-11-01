@@ -2,12 +2,11 @@
 // Le corps de la PR de relecture (spec §1.1) et de l'issue d'idées. Le texte
 // est du Markdown GitHub : GitHub l'assainit, rien n'y est exécuté.
 import { OVERLAP_THRESHOLD } from './culture-overlap.mjs'
-import { FACTS_CHECKED, factsChecked } from './culture-validate.mjs'
+import { AUTO_START, AUTO_END, FACTS_CHECKED, factsChecked } from './culture-checkbox.mjs'
 
 const pct = (x) => `${(x * 100).toFixed(1)} %`
 
-export const AUTO_START = '<!-- culture:auto:start -->'
-export const AUTO_END = '<!-- culture:auto:end -->'
+export { AUTO_START, AUTO_END }
 
 // Le texte de l'article est collé dans la PR : ses intertitres descendent de
 // deux crans pour ne pas rivaliser avec les titres de section de la page.
@@ -68,7 +67,12 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
 
 // Les marqueurs sont sur leur propre ligne : une ligne qui commence par `<!--`
 // ouvre un bloc HTML CommonMark et le titre qui suit s'afficherait en clair.
-const wrap = (auto) => `${AUTO_START}\n${auto.replace(/^\n+|\n+$/g, '')}\n${AUTO_END}`
+// Le contenu vient en partie du modèle (texte, faits, noms) : toute « [x] »
+// suivie d'une espace y est désarmée (`&#91;`, qui s'affiche « [ » à
+// l'identique), pour qu'aucune ligne n'y forme « - [x] Faits vérifiés », que
+// le préfiltre d'articles-publish.yml cherche partout (contains, sans casse).
+const disarm = (s) => s.replace(/\[([xX])\] /g, '&#91;$1] ')
+const wrap = (auto) => `${AUTO_START}\n${disarm(auto.replace(/^\n+|\n+$/g, ''))}\n${AUTO_END}`
 
 export function buildPrBody(args) {
   return [

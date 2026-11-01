@@ -37,6 +37,21 @@ test('parseSpanishEventDate : pas de date sûre = null', () => {
   assert.equal(parseSpanishEventDate('el 12 de foo', NOW), null)
 })
 
+// Titre et début du texte viennent de l'API WordPress de Diario Armenia : une
+// liste « 1 ,1 ,1 ,… » sans mois ne doit pas faire exploser la regex. Quand deux
+// `\s*` voisins se partageaient le blanc avant chaque virgule, le coût doublait à
+// chaque élément (ces deux listes : plusieurs secondes ; 40 éléments : des heures)
+// et bloquait le scrape.
+test('parseSpanishEventDate : une longue liste sans mois reste instantanée', () => {
+  for (const s of ['1 ,'.repeat(28) + '1', '1  y '.repeat(26) + '1']) {
+    const t = performance.now()
+    assert.equal(parseSpanishEventDate(s, NOW), null)
+    assert.ok(performance.now() - t < 500, `${s.length} car. : ${Math.round(performance.now() - t)} ms`)
+  }
+  // La même liste, suivie d'un mois, se lit toujours (premier jour).
+  assert.equal(parseSpanishEventDate('1 ,'.repeat(30) + '2 de noviembre', NOW), '2026-11-01T23:59')
+})
+
 test('parseSpanishEventDate : jamais de Z', () => {
   for (const t of ['sábado 8 de noviembre a las 19 hs', '5 de enero', '16 de noviembre 12:30 hs'])
     assert.doesNotMatch(parseSpanishEventDate(t, NOW), /Z/)

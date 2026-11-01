@@ -153,7 +153,10 @@ jobs:
           PROBLEMS: ${{ steps.health.outputs.problems }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          ouverte=$(gh issue list --state open --limit 100 --json number,title \
+          # Seules les issues du robot comptent : le dépôt est public, une issue
+          # au même titre ouverte par un tiers serait sinon éditée ou refermée.
+          ouverte=$(gh issue list --state open --author app/github-actions --search 'in:title "[sources-down]"' \
+            --limit 100 --json number,title \
             --jq '[.[] | select(.title | contains("[sources-down]"))] | .[0].number // empty')
           if [ "${PROBLEMS:-0}" = "0" ]; then
             if [ -n "$ouverte" ]; then
@@ -232,7 +235,10 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           echo "::warning::Prérendu échoué — le site part en SPA nu, sans texte pour les crawlers."
-          ouverte=$(gh issue list --state open --limit 100 --json number,title \
+          # Seules les issues du robot comptent (dépôt public : une issue au
+          # même titre ouverte par un tiers ferait sinon taire l'alerte).
+          ouverte=$(gh issue list --state open --author app/github-actions --search 'in:title "[prerender-down]"' \
+            --limit 100 --json number,title \
             --jq '[.[] | select(.title | contains("[prerender-down]"))] | .[0].number // empty')
           if [ -n "$ouverte" ]; then
             echo "Alerte déjà ouverte : #$ouverte — on n'en rouvre pas une par heure."
@@ -287,7 +293,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          gh issue list --state open --limit 100 --json number,title \
+          # Seules les issues du robot : jamais celle d'un tiers au même titre.
+          gh issue list --state open --author app/github-actions --search 'in:title "[prerender-down]"' \
+            --limit 100 --json number,title \
             --jq '.[] | select(.title | contains("[prerender-down]")) | .number' \
           | while read -r n; do
               [ -n "$n" ] || continue
