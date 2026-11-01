@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-01",
+  "lang": "es",
+  "generatedAt": "2026-11-01T03:28:57.604Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca la conclusión de la COP17 en Ereván con la aprobación de la Vía de Ereván para la biodiversidad, mientras se desarrollan tensiones regionales y debates internos en Armenia.",
+  "topics": [
+    {
+      "title": "Conclusión de la COP17 en Ereván",
+      "text": "La cumbre de la COP17 aprobó la Vía de Ereván para la biodiversidad y cerró sus actividades con un concierto en la capital armenia.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/cop17-via-erevan-biodiversidad-acuerdo-historico/",
+          "title": "La cumbre de la COP17 aprueba la Vía de Ereván para la biodiversidad"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264410",
+          "title": "COP17 cerró con un concierto en Ereván"
+        }
+      ]
+    },
+    {
+      "title": "Acuerdo fronterizo entre Georgia y Azerbaiyán",
+      "text": "Georgia anunció un acuerdo con Azerbaiyán para acelerar la delimitación fronteriza y modernizar el paso fronterizo conocido como Ruta de la Seda.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/georgia-acuerdo-azerbaiyan-acelerar-delimitacion-fronteriza/",
+          "title": "Georgia anuncia un acuerdo con Azerbaiyán para acelerar la delimitación fronteriza y modernizar el paso «Ruta de la Seda»"
+        }
+      ]
+    },
+    {
+      "title": "Disputa marítima en el Mediterráneo oriental",
+      "text": "Grecia calificó de ilegal e inválido el pacto marítimo firmado entre Turquía y Libia, en un contexto de tensiones por la delimitación de zonas económicas exclusivas.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/grecia-acuerdo-maritimo-turquia-libia-ilegal/",
+          "title": "Grecia califica de «ilegal e inválido» el pacto marítimo entre Turquía y Libia"
+        }
+      ]
+    },
+    {
+      "title": "Exigen investigar a la filial armenia de Ferrocarriles Rusos",
+      "text": "Se solicita una investigación a la filial armenia de Ferrocarriles Rusos por presunto incumplimiento del acuerdo de concesión vigente.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/investigar-armenia-ferrocarriles-rusos-acuerdo-concesion/",
+          "title": "Exigen investigar a la filial armenia de Ferrocarriles Rusos por incumplimiento del acuerdo de concesión"
+        }
+      ]
+    },
+    {
+      "title": "Condena a ruso-armenio en Siberia por críticas a Moscú",
+      "text": "Un tribunal de Siberia condenó a 10 años de prisión a un ciudadano ruso-armenio por criticar la inacción de Moscú en Nagorno-Karabaj.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/siberia-condena-criticar-inaccion-moscu-nagorno-karabaj/",
+          "title": "Siberia condena a 10 años de prisión a un ruso-armenio por criticar la inacción de Moscú en Nagorno-Karabaj"
+        }
+      ]
+    },
+    {
+      "title": "Debate público y xenofobia en Armenia",
+      "text": "Organizaciones piden erradicar el uso de etiquetas xenófobas en el debate público armenio, señalando la necesidad de un discurso más inclusivo.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/uso-etiquetas-xenofobas-debate-publico-armenia/",
+          "title": "Piden erradicar el uso de etiquetas xenófobas en el debate público de Armenia"
+        }
+      ]
+    }
+  ]
+}

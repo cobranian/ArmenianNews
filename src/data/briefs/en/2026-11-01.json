@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-01",
+  "lang": "en",
+  "generatedAt": "2026-11-01T03:28:57.604Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenia ratified a trade agreement with the United Arab Emirates and launched the HayPass biometric system, while COP17 concluded in Yerevan with numerous decisions adopted. Internationally, research highlighted health impacts ranging from wildfire smoke exposure during pregnancy to stem cell transplants for Parkinson's disease.",
+  "topics": [
+    {
+      "title": "Armenia ratifies trade deal with UAE",
+      "text": "Armenia has ratified a trade agreement with the United Arab Emirates, marking a significant step in economic cooperation between the two nations. The development was highlighted as the main business news of the week.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015107",
+          "title": "Armenia ratifies trade deal with United Arab Emirates: THIS WEEK IN BUSINESS"
+        }
+      ]
+    },
+    {
+      "title": "COP17 concludes in Yerevan with dozens of decisions",
+      "text": "The COP17 conference wrapped up in Yerevan, adopting around 50 decisions with outcomes reported to have exceeded expectations. A concert was held to mark the closing of the event.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264410",
+          "title": "Concert marks COP17’s closing in Yerevan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264392",
+          "title": "COP17 adopts around 50 decisions as outcomes exceed expectations"
+        }
+      ]
+    },
+    {
+      "title": "Armenia launches HayPass biometric system",
+      "text": "Armenia officially launched its new HayPass biometric identification system with the opening of the first service centre. The Prime Minister attended the official opening of the HayPass office at Yerevan Mall.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264402",
+          "title": "Armenia officially launches new biometric system as HayPass opens first service centre"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264385",
+          "title": "Prime Minister attends official opening of HayPass office at Yerevan Mall"
+        }
+      ]
+    },
+    {
+      "title": "Armenian FM meets counterparts from Bahrain and Lebanon",
+      "text": "The Minister of Foreign Affairs of Armenia held separate meetings with the Foreign Ministers of Bahrain and Lebanon. The discussions focused on bilateral relations and regional cooperation.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071651",
+          "title": "Meeting of the Minister of Foreign Affairs and International Trade of Armenia with the Minister of Foreign Affairs of Bahrain"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071634",
+          "title": "Meeting of the Minister of Foreign Affairs and International Trade of Armenia with the Minister of Foreign Affairs of Lebanon"
+        }
+      ]
+    },
+    {
+      "title": "Armenia and France discuss rescue capabilities",
+      "text": "Officials from Armenia and France held discussions on strengthening rescue capabilities. The talks aim to enhance cooperation in civil protection and emergency response.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264391",
+          "title": "Armenia and France discuss strengthening rescue capabilities"
+        }
+      ]
+    },
+    {
+      "title": "CEC assigns ballot numbers for local elections",
+      "text": "The Central Electoral Commission has assigned ballot numbers to parties contesting the upcoming local elections. This step finalizes the ballot preparation process for the vote.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264389",
+          "title": "CEC assigns ballot numbers to parties contesting local elections"
+        }
+      ]
+    },
+    {
+      "title": "Global health research highlights environmental and medical advances",
+      "text": "New research links wildfire smoke exposure during pregnancy to increased autism risk in children. Meanwhile, Japan performed the world's first stem cell transplant in a Parkinson's patient, and scientists discovered a method to reverse heart tissue scarring linked to atrial fibrillation.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/eng/news/42227/japan-performs-worlds-first-stem-cell-transplant-in-a-patient-with-parkinsons-disease.html",
+          "title": "Japan Performs World's First Stem Cell Transplant in a Patient with Parkinson's Disease"
+        },
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/eng/news/42226/wildfire-smoke-exposure-during-pregnancy-increases-autism-risk-in-children.html",
+          "title": "Wildfire Smoke Exposure During Pregnancy Increases Autism Risk in Children"
+        },
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/eng/news/42228/scientists-discover-a-way-to-reverse-heart-tissue-scarring-associated-with-atrial-fibrillation.html",
+          "title": "Scientists Discover a Way to Reverse Heart Tissue Scarring Associated with Atrial Fibrillation"
+        }
+      ]
+    }
+  ]
+}

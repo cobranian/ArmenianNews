@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-01",
+  "lang": "fr",
+  "generatedAt": "2026-11-01T03:28:57.604Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La clôture de la COP17 à Erevan domine l'actualité avec plusieurs décisions adoptées et des réactions contrastées. Par ailleurs, la situation sécuritaire aux frontières et les activités de la diaspora retiennent l'attention.",
+  "topics": [
+    {
+      "title": "Clôture de la COP17 à Erevan et adoption de la « Voie d'Erevan »",
+      "text": "La conférence sur la biodiversité s'est achevée par l'adoption d'une cinquantaine de décisions et de la déclaration de la « Voie d'Erevan », saluée comme un résultat au-delà des attentes. Un concert festif a marqué la clôture officielle de l'événement dans la capitale arménienne.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-cop17-qui-vient-de-sachever-en-armenie-a-adopte-la-declaration-de-la-voie-derevan/",
+          "title": "La COP17 qui vient de s’achever en Arménie, a adopté la déclaration de la « Voie d’Erevan »"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264410",
+          "title": "À Erevan, la clôture de la COP17 célébrée par un concert festif"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264392",
+          "title": "COP17: une cinquantaine de décisions adoptées, des résultats au-delà des attentes"
+        }
+      ]
+    },
+    {
+      "title": "Réactions contrastées des ONG environnementales sur les résultats de la COP17",
+      "text": "Le WWF a plutôt bien accueilli les conclusions de la conférence, tandis que Greenpeace a critiqué l'insuffisance des mesures adoptées pour la protection de la biodiversité.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-wwf-a-plutot-bien-accueilli-les-resultats-de-la-cop17-a-erevan-en-armenie-tandis-que-greenpeace-a-critique-linsuffisance-des-mesures-prises/",
+          "title": "Le WWF a plutôt bien accueilli les résultats de la COP17 à Erevan en Arménie, tandis que Greenpeace a critiqué l’insuffisance des mesures prises"
+        }
+      ]
+    },
+    {
+      "title": "Renforcement des positions azerbaïdjanaises près du Lac Noir",
+      "text": "Selon Sputnik Arménie, les forces armées azerbaïdjanaises consolident leurs positions dans le secteur du Lac Noir en territoire arménien. Moscou s'interroge par ailleurs sur la présence de nombreux employés à l'ambassade américaine en Arménie.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-forces-armees-azerbaidjanaises-renforcent-leurs-positions-dans-le-secteur-du-lac-noir-en-armenie-affirme-sputnik-armenie/",
+          "title": "Les forces armées azerbaïdjanaises renforcent leurs positions dans le secteur du Lac Noir en Arménie, affirme « Sputnik Arménie »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/moscou-sinterroge-sur-la-presence-de-3-000-employes-a-lambassade-americaine-en-armenie/",
+          "title": "Moscou s’interroge sur la présence de « 3 000 employés » à l’ambassade américaine en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Coopération arméno-française sur les capacités de secours",
+      "text": "L'Arménie et la France ont discuté du renforcement des capacités de secours lors d'entretiens officiels. Cette coopération s'inscrit dans le cadre du partenariat bilatéral entre les deux pays.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264391",
+          "title": "L'Arménie et la France discutent du renforcement des capacités de secours"
+        }
+      ]
+    },
+    {
+      "title": "Médailles arméniennes aux Championnats du monde de karaté traditionnel",
+      "text": "Trois athlètes arméniens — Artur Voskanyan, Hovhannes Hakobyan et Erik Hovsepyan — ont remporté des médailles de bronze sous les couleurs nationales lors de la compétition mondiale.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/sous-les-couleurs-de-larmenie-artur-voskanyan-hovhannes-hakobyan-et-erik-hovsepyan-gagnent-des-medailles-de-bronze-aux-championnats-du-monde-de-karate-traditionnel/",
+          "title": "Sous les couleurs de l’Arménie, Artur Voskanyan, Hovhannes Hakobyan et Erik Hovsepyan, gagnent des médailles de bronze aux Championnats du monde de karaté traditionnel"
+        }
+      ]
+    },
+    {
+      "title": "Fermeture hivernale des fontaines publiques d'Erevan",
+      "text": "Les 35 fontaines publiques de la capitale arménienne seront fermées du 1er novembre jusqu'au mois de mai prochain, une mesure saisonnière habituelle.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-35-fontaines-publiques-de-la-capitale-armenienne-seront-fermeees-du-1er-novembre-a-mai-prochain/",
+          "title": "Les 35 fontaines publiques de la capitale arménienne seront ferméees du 1er novembre à mai prochain"
+        }
+      ]
+    },
+    {
+      "title": "Projets de coopération décentralisée entre Idjevan et Valence",
+      "text": "L'association Idje-Val poursuit ses projets de liens entre la ville arménienne d'Idjevan et Valence en France, orientés vers le renforcement des capacités locales en Arménie.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-projets-de-lassociation-idje-val-de-liens-entre-idjevan-armenie-et-valence-tournes-vers-le-renforcement-de-larmenie/",
+          "title": "Les projets de l’association Idje-Val de liens entre Idjevan (Arménie) et Valence tournés vers le renforcement de l’Arménie"
+        }
+      ]
+    }
+  ]
+}
