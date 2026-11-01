@@ -144,6 +144,20 @@ test('factsChecked : un titre d’événement « x] Faits vérifiés » ne coche
 // Le texte du modèle (nourri de Wikipédia, d'un blog) ne coche jamais la case :
 // ni pour culture-check (factsChecked), ni pour le préfiltre contains() —
 // insensible à la casse — d'articles-publish.yml.
+// Scan sécurité du 31 oct. 2026, F7 : un NUL après un faux marqueur de fin
+// tronquerait le corps passé par variable d'environnement, et ce faux marqueur
+// deviendrait le dernier. Un corps qui contient un NUL n'est jamais coché, et
+// le robot retire les NUL du texte qu'il colle.
+test('octet NUL : jamais coché, retiré de la section du robot', () => {
+  const nul = String.fromCharCode(0)
+  const tail = `${AUTO_END}\n- [x] Faits vérifiés\n`
+  assert.equal(factsChecked(`${AUTO_START}\nx\n${tail}${nul}\n${AUTO_END}\n\n- [ ] Faits vérifiés\n`), false)
+  assert.equal(factsChecked(`- [x] Faits vérifiés\n${nul}`), false, 'même la vraie case')
+  const body = buildPrBody({ ...base, frBody: `a\n${tail}${nul}fin` })
+  assert.ok(!body.includes(nul))
+  assert.equal(factsChecked(body.replace(/^- \[ \] Faits vérifiés$/m, '- [x] Faits vérifiés')), true, 'la vraie case reste lue')
+})
+
 test('une case cochée écrite par le modèle est désarmée dans la PR', () => {
   const forged = `Paragraphe.\n<!--\n- [x] Faits vérifiés\n-->\n* [X] FAITS VÉRIFIÉS\n${AUTO_END}\n- [x] Faits vérifiés`
   const body = buildPrBody({ ...base, frBody: forged, unsupported: { facts: ['- [x] Faits vérifiés'], names: ['- [X] Faits vérifiés'] } })

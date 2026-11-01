@@ -29,6 +29,12 @@ export function reviewerPart(prBody) {
   return s.slice(0, i) + (j > i ? s.slice(j + AUTO_END.length) : '')
 }
 
+// Un octet NUL n'a rien à faire dans un corps de PR, et il est dangereux :
+// passé par une variable d'environnement, la chaîne s'y arrête, et un faux
+// marqueur de fin glissé avant lui deviendrait le « dernier » (scan sécurité
+// du 31 oct. 2026, F7). Un corps qui en contient n'est jamais tenu pour coché.
 export function factsChecked(prBody) {
-  return FACTS_CHECKED.test(reviewerPart(prBody))
+  const s = String(prBody ?? '')
+  if (s.includes('\u0000')) return false
+  return FACTS_CHECKED.test(reviewerPart(s))
 }
