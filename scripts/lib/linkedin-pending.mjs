@@ -6,7 +6,7 @@
 //
 // Même choix d'articles que le job horaire (`plan`, social.mjs) : mêmes
 // types (SOCIAL_KINDS, Culture par défaut), même ordre, même plafond.
-import { SITES } from '../../sites.config.js'
+import { SITES, socialFor } from '../../sites.config.js'
 import { CHANNELS, plan, tagged } from './social.mjs'
 
 // Pages entreprise créées le 28 oct. 2026 : id d'organisation pour l'URL
@@ -14,22 +14,43 @@ import { CHANNELS, plan, tagged } from './social.mjs'
 export const LINKEDIN_ORG = { ch: '146900320', org: '146899338' }
 export const LINKEDIN_CHANNELS = CHANNELS.filter((c) => c.platform === 'linkedin')
 
+// WhatsApp, même régime que LinkedIn : aucune API ne publie dans une chaîne
+// (l'API Business ne sert que les conversations), et automatiser un compte
+// personnel expose le numéro à un blocage. Une chaîne par vitrine, publiée
+// pendant les séances avec Claude, sur rappel du même hook (1er nov. 2026).
+// Ces canaux n'ont pas de secret : ils restent HORS de CHANNELS, que le job
+// horaire parcourt.
+// Une chaîne par langue (7, créées le 1er nov. 2026), mêmes clés que les jeux
+// de comptes de social.mjs (ch/org pour fr/en). `url` vient de sites.config.js
+// (`whatsapp` dans social / socialByLang) : une langue sans chaîne n'a pas
+// d'url, et le hook n'en parle pas.
+const WA_KEYS = [['ch', 'fr', 'ch'], ['org', 'en', 'org'], ['de', 'de', 'ch'], ['it', 'it', 'ch'], ['es', 'es', 'org'], ['hy', 'hy', 'org'], ['ru', 'ru', 'org']]
+export const WHATSAPP_CHANNELS = WA_KEYS.map(([key, lang, siteId]) => ({
+  id: `whatsapp-${key}`,
+  platform: 'whatsapp',
+  siteId,
+  lang,
+  url: socialFor(siteId, lang).whatsapp ?? null,
+}))
+export const MANUAL_CHANNELS = [...LINKEDIN_CHANNELS, ...WHATSAPP_CHANNELS.filter((c) => c.url)]
+const channelOf = (id) => [...LINKEDIN_CHANNELS, ...WHATSAPP_CHANNELS].find((c) => c.id === id)
+
 export const adminUrl = (siteId) => `https://www.linkedin.com/company/${LINKEDIN_ORG[siteId]}/admin/dashboard/`
 
 // Le texte à coller : en clair (pas le « little text » échappé de l'API),
 // lien marqué pour GA4. LinkedIn tire l'aperçu de l'URL.
-export function postText(item) {
-  return `${item.title}\n\n${item.description}\n\n${tagged(item.url, 'linkedin')}`
+export function postText(item, platform = 'linkedin') {
+  return `${item.title}\n\n${item.description}\n\n${tagged(item.url, platform)}`
 }
 
 // Premier passage d'un canal : comme le job horaire, on amorce l'archive pour
 // ne pas l'inonder — mais on laisse le dernier article Culture en attente,
 // pour qu'une page neuve ne reste pas vide.
-export function pending({ items, ledger, kinds, now = new Date() }) {
+export function pending({ items, ledger, kinds, now = new Date(), channels = LINKEDIN_CHANNELS }) {
   const seededBefore = new Set(Object.keys(ledger?.channels ?? {}))
-  const r = plan({ items, channels: LINKEDIN_CHANNELS, ledger, kinds, now })
+  const r = plan({ items, channels, ledger, kinds, now })
   for (const id of r.seeded) {
-    const ch = LINKEDIN_CHANNELS.find((c) => c.id === id)
+    const ch = channels.find((c) => c.id === id)
     const last = items
       .filter((it) => it.lang === ch.lang && kinds.includes(it.kind))
       .sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id))[0]
@@ -46,16 +67,15 @@ export function pending({ items, ledger, kinds, now = new Date() }) {
 
 export function hookMessage(posts) {
   if (!posts.length) return ''
-  const lines = posts.map((p) => {
-    const site = LINKEDIN_CHANNELS.find((c) => c.id === p.channel).siteId
-    return `- ${p.channel} (${SITES[site].brand}) : ${p.item.id} — « ${p.item.title} »`
-  })
+  const line = (p) => `- ${p.channel} (${SITES[channelOf(p.channel).siteId].brand}) : ${p.item.id} — « ${p.item.title} »`
+  const li = posts.filter((p) => channelOf(p.channel).platform === 'linkedin')
+  const wa = posts.filter((p) => channelOf(p.channel).platform === 'whatsapp')
   return [
-    `RAPPEL LINKEDIN : ${posts.length} publication(s) en attente sur les pages LinkedIn.`,
-    ...lines,
+    ...(li.length ? [`RAPPEL LINKEDIN : ${li.length} publication(s) en attente sur les pages LinkedIn.`, ...li.map(line)] : []),
+    ...(wa.length ? [`RAPPEL WHATSAPP : ${wa.length} publication(s) en attente sur les chaînes WhatsApp.`, ...wa.map(line)] : []),
     '',
     'En début de réponse, annonce-le en une phrase et DEMANDE si tu dois les publier.',
-    'Sur un « oui » : suis le skill `publier-linkedin` (texte exact : `node scripts/linkedin-pending.mjs --list`).',
+    'Sur un « oui » : suis le skill `publier-linkedin` (LinkedIn) ou `publier-whatsapp` (WhatsApp) ; texte exact : `node scripts/linkedin-pending.mjs --list`.',
     'Sans réponse ou sur un « non » : ne publie rien.',
   ].join('\n')
 }

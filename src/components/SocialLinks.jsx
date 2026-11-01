@@ -35,6 +35,13 @@ const ICONS = {
       d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"
     />
   ),
+  // La bulle et le combiné, tracé plein : chaînes ouvertes le 1er nov. 2026.
+  whatsapp: (
+    <path
+      fill="currentColor"
+      d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.2 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2m0 1.8a8 8 0 1 1-4.1 14.9l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 0 1 12 4m-3.2 3.9c-.2 0-.5 0-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5 0 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4l-1.9-.9c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5z"
+    />
+  ),
   // Le « in » seul, sans le carré : à côté des trois autres tracés nus, le
   // carré plein paraissait plus lourd.
   linkedin: (
@@ -53,7 +60,7 @@ const ICONS = {
     />
   ),
 }
-const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', linkedin: 'LinkedIn', youtube: 'YouTube' }
+const NAMES = { facebook: 'Facebook', instagram: 'Instagram', bluesky: 'Bluesky', telegram: 'Telegram', whatsapp: 'WhatsApp', linkedin: 'LinkedIn', youtube: 'YouTube' }
 export function SocialLinks({ className, size = 22 }) {
   const { lang } = useI18n()
   const accounts = Object.entries(socialFor(SITE_ID, lang))

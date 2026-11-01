@@ -1,4 +1,4 @@
-// Les publications LinkedIn en attente (voir scripts/lib/linkedin-pending.mjs).
+// Les publications LinkedIn et WhatsApp en attente (voir scripts/lib/linkedin-pending.mjs).
 //
 //   node scripts/linkedin-pending.mjs --hook     rappel pour le hook SessionStart
 //                                                (silencieux s'il n'y a rien)
@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url'
 import { loadBriefs } from './lib/brief-pages.mjs'
 import { loadCulture } from './lib/culture-load.mjs'
 import { briefItems, cultureItems, emptyLedger, parseKinds } from './lib/social.mjs'
-import { LINKEDIN_CHANNELS, adminUrl, hookMessage, pending, postText } from './lib/linkedin-pending.mjs'
+import { MANUAL_CHANNELS, adminUrl, hookMessage, pending, postText } from './lib/linkedin-pending.mjs'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const LEDGER = path.join(root, '.cache/linkedin-posted.json')
@@ -39,7 +39,7 @@ async function compute() {
   const briefs = await loadBriefs(path.join(root, 'src/data/briefs'), quiet)
   const culture = await loadCulture(path.join(root, 'src/data/culture'), quiet)
   const items = [...cultureItems(culture), ...briefItems(briefs)]
-  const r = pending({ items, ledger: await readLedger(), kinds: parseKinds(process.env.SOCIAL_KINDS || undefined) })
+  const r = pending({ items, ledger: await readLedger(), kinds: parseKinds(process.env.SOCIAL_KINDS || undefined), channels: MANUAL_CHANNELS })
   if (r.seeded.length) await saveLedger(r.ledger)
   return r
 }
@@ -50,14 +50,15 @@ try {
     if (msg) console.log(msg)
   } else if (args.includes('--list')) {
     const { posts } = await compute()
-    if (!posts.length) console.log('Rien à publier sur LinkedIn.')
+    if (!posts.length) console.log('Rien à publier sur LinkedIn ni WhatsApp.')
     for (const p of posts) {
-      const ch = LINKEDIN_CHANNELS.find((c) => c.id === p.channel)
-      console.log(`=== ${p.channel} · ${p.item.id}\nPage : ${adminUrl(ch.siteId)}\nNoter ensuite : node scripts/linkedin-pending.mjs --mark ${p.channel} ${p.item.id}\n--- texte ---\n${postText(p.item)}\n`)
+      const ch = MANUAL_CHANNELS.find((c) => c.id === p.channel)
+      const where = ch.platform === 'whatsapp' ? `Chaîne : ${ch.url}` : `Page : ${adminUrl(ch.siteId)}`
+      console.log(`=== ${p.channel} · ${p.item.id}\n${where}\nNoter ensuite : node scripts/linkedin-pending.mjs --mark ${p.channel} ${p.item.id}\n--- texte ---\n${postText(p.item, ch.platform)}\n`)
     }
   } else if (args[0] === '--mark') {
     const [, channel, id] = args
-    if (!LINKEDIN_CHANNELS.some((c) => c.id === channel) || !id) throw new Error('usage : --mark <linkedin-ch|linkedin-org> <id>')
+    if (!MANUAL_CHANNELS.some((c) => c.id === channel) || !id) throw new Error(`usage : --mark <${MANUAL_CHANNELS.map((c) => c.id).join('|')}> <id>`)
     const ledger = await readLedger()
     ledger.channels[channel] ??= { seededAt: new Date().toISOString(), posted: {} }
     ledger.channels[channel].posted[id] = new Date().toISOString()
