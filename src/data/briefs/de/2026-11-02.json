@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-02",
+  "lang": "de",
+  "generatedAt": "2026-11-02T04:32:00.982Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über innenpolitische, wirtschaftliche und sportliche Themen sowie über Entwicklungen in der Diaspora.",
+  "topics": [
+    {
+      "title": "Einführung biometrischer Pässe in Armenien",
+      "text": "Armenien hat offiziell ein neues biometrisches System gestartet und HayPass hat sein erstes Servicezentrum eröffnet. Premierminister Nikol Paschinjan erhielt den ersten biometrischen Pass von Innenministerin Arpine Sargsjan. Die Pässe entsprechen den aktuellsten internationalen Standards.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/arpine-sargsan-la-ministre-de-linterieur-darmenie-a-remis-le-premier-passeport-biometrique-au-premier-ministre-armenien-nikol-pachinian/",
+          "title": "Arpiné Sargsan, la ministre de l’Intérieur d’Arménie a remis le premier passeport biométrique au Premier ministre arménien Nikol Pachinian"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-lance-officiellement-son-nouveau-systeme-biometrique-alors-que-haypass-ouvre-son-premier-centre-de-services/",
+          "title": "L’Arménie lance officiellement son nouveau système biométrique alors que HayPass ouvre son premier centre de services"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264420",
+          "title": "L’Arménie lance la délivrance de passeports conformes aux normes internationales les plus récentes, annonce le Premier ministre"
+        }
+      ]
+    },
+    {
+      "title": "Rechtsmittel gegen Gemeinderatswahl in Stepanawan",
+      "text": "Die Partei «Starke Armenien» hat einen Einspruch eingereicht, um die Ergebnisse der Kommunalwahlen in Stepanawan für ungültig erklären zu lassen. Dies teilte Gohar Melojan mit. Das Verfahren ist noch hängig.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-parti-armenie-forte-a-depose-un-recours-pour-invalider-les-resultats-des-elections-communautaires-de-stepanavan-affirme-gohar-meloyan/",
+          "title": "Le parti « Arménie Forte » a déposé un recours pour invalider les résultats des élections communautaires de Stepanavan affirme Gohar Meloyan"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Sportler feiern internationale Erfolge",
+      "text": "Der armenisch-amerikanische Kämpfer Jean-Paul Lebosnoyan besiegte den Aserbaidschaner Farman Hassenow bei der UFC Fight Night 292 durch technischen KO. Die für Armenien startende Tennisspielerin Alina Tscharajewa gewann das WTA-Challenger-Turnier in Courmayeur.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmeno-americain-jean-paul-lebosnoyan-bat-par-ko-technique-lazerbaidjanais-farman-hasanov-a-lufc-fight-night-292/",
+          "title": "L’arméno-américain Jean-Paul Lebosnoyan bat par KO technique l’azerbaïdjanais Farman Hasanov à l’UFC Fight Night 292"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lex-russe-alina-charaeva-100e-joueuse-mondiale-qui-represente-larmenie-remporte-le-tournoi-wta-challenger-de-courmayeur-en-italie/",
+          "title": "L’ex-russe Alina Charaeva 100e joueuse mondiale, qui représente l’Arménie, remporte le tournoi WTA Challenger de Courmayeur, en Italie"
+        }
+      ]
+    },
+    {
+      "title": "Aserbaidschan modernisiert Panzerfahrzeuge mit russischer Hilfe",
+      "text": "Aserbaidschan hat eine Vereinbarung mit Russland über die Modernisierung seiner gepanzerten Militärfahrzeuge unterzeichnet. Details zum Umfang und Zeitplan wurden in der Meldung nicht genannt.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lazerbaidjan-a-conclu-un-accord-avec-la-russie-concernant-la-modernisation-des-vehicules-blindes-de-son-armee/",
+          "title": "L’Azerbaïdjan a conclu un accord avec la Russie concernant la modernisation des véhicules blindés de son armée"
+        }
+      ]
+    },
+    {
+      "title": "Veranstaltungen zum Jaurès-Jubiläum in Frankreich",
+      "text": "Anlässlich des Jahrestages der Rede von Jean Jaurès finden in Paris und Toulouse drei Veranstaltungen am 3., 5. und 6. November statt. Die Termine werden von der armenischen Diaspora organisiert.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/trois-evenements-pour-lanniversaire-du-discours-de-jean-jaures-a-paris-et-toulouse-les-3-5-et-6-novembre/",
+          "title": "Trois événements pour l’anniversaire du discours de Jean Jaurès à Paris et Toulouse les 3, 5 et 6 novembre"
+        }
+      ]
+    },
+    {
+      "title": "Abschlussurteil im Fall Sona Mnazakanjan",
+      "text": "Das Urteil im Prozess um den Tod von Sona Mnazakanjan ist rechtskräftig geworden. Der Kassationshof wies die eingelegten Revisionen zurück. Damit ist das Verfahren abgeschlossen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-jugement-dans-laffaire-de-la-mort-de-sona-mnatsakanyan-est-devenu-definitif-la-cour-de-cassation-a-rejete-les-pourvois/",
+          "title": "Le jugement dans l’affaire de la mort de Sona Mnatsakanyan est devenu définitif : la Cour de cassation a rejeté les pourvois"
+        }
+      ]
+    }
+  ]
+}

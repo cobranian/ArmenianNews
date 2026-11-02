@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T03:23:46.797Z",
+  "generatedAt": "2026-11-02T04:23:30.940Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Հրդեհ Մրգաշենում․ կանխվել է հրդեհի տարածումը դեպի հարևան շինություններ",
+            "url": "https://hy.armradio.am/archives/767979",
+            "date": "2026-11-02T04:19:57.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/879961345_2576253856223304_8633753532510147141_n-768x512.jpg",
+            "category": "Հասարակություն"
+          },
+          {
             "title": "«Խաղաղության խաչմերուկ» և «ԹՐԻՓՓ» նախագիծ. Հայաստանի տեսլականը Մանամայի ֆորումի ուշադրության կենտրոնում",
             "url": "https://hy.armradio.am/archives/767944",
             "date": "2026-11-01T14:00:16.000Z",
@@ -1211,13 +1218,6 @@
             "date": "2026-10-31T12:46:07.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/70557_b-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Գևորգ Թամամյանը կարող է հայտնվել ԱՀԿ գլխավոր տնօրենի ընտրության եզրափակիչ եռյակում",
-            "url": "https://hy.armradio.am/archives/767859",
-            "date": "2026-10-31T12:17:13.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/Gevorg-Tamamyan-768x429.jpeg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Կեղծ ահազանգեր՝ միջուկային և ռադիացիոն վտանգի մասին․ կիբերհարձակումներ Ուկրաինայում և Ռուսաստանում",
+            "url": "https://hy.armradio.am/archives/767974",
+            "date": "2026-11-02T04:08:15.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/70904613_1004-e1793592549234-768x421.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Եվրահանձնաժողովը լեհական ճգնաժամում աջակցել է Տուսկին",
             "url": "https://hy.armradio.am/archives/767947",
             "date": "2026-11-01T15:00:00.000Z",
@@ -1436,13 +1443,6 @@
             "date": "2026-10-31T10:42:30.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/callas-300x167.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "G20-ի եվրոպական մասնակիցները հրաժարվել են համատեղ լուսանկարվել Սերգեյ Լավրովի հետ",
-            "url": "https://hy.armradio.am/archives/767823",
-            "date": "2026-10-31T10:26:03.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/10/IMG_5676-768x506.jpeg",
-            "category": "Միջազգային"
           }
         ]
       },
@@ -12254,6 +12254,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Танкер подвергся ударам у побережья Саудовской Аравии в Персидском заливе",
+            "url": "https://news.am/ru/news/1071832",
+            "date": "2026-11-02T04:24:31.000Z",
+            "image": "https://news.am/storage/media/26/11/02/OYeiQK6J9wxGgSYk.webp"
+          },
+          {
             "title": "Бизнес-джет с девятью людьми на борту разбился во Флориде: выживших нет",
             "url": "https://news.am/ru/news/1071831",
             "date": "2026-11-01T21:08:52.000Z",
@@ -12306,12 +12312,6 @@
             "url": "https://news.am/ru/news/1071776",
             "date": "2026-11-01T13:38:00.000Z",
             "image": "https://news.am/storage/media/26/11/01/nyIQlFs5oJNhdxIc.webp"
-          },
-          {
-            "title": "Полиция усилила охрану центра Франкфурта после погромов и разграбления магазинов",
-            "url": "https://news.am/ru/news/1071754",
-            "date": "2026-11-01T10:35:00.000Z",
-            "image": "https://news.am/storage/media/26/11/01/N7y19KbI12Fyq5Vq.webp"
           }
         ]
       },
