@@ -158,3 +158,21 @@ test('lettre arménienne : marque vue sur /hy/, dates écrites en dur (jamais In
   assert.equal(d.subject, 'Արմենիա Ինֆո — շաբաթվա ամփոփում (26 հոկտեմբերի)')
   assert.ok(d.body.includes('5 նոյեմբերի'), d.body)
 })
+
+test('agenda : un même événement recensé sous deux URL ne paraît qu’une fois', () => {
+  // Cas réel (W45) : armenopole publiait « LOGHOFÈTE ou le prénom perdu » et
+  // « Logofhète ou le prénom perdu avec Fred Nevché » à deux URL, même date,
+  // même lieu. Le dédoublonnage par URL ne pouvait pas le voir.
+  const date = '2026-11-05T18:30'
+  const ev = [
+    { title: 'LOGHOFÈTE ou le prénom perdu', url: 'https://armenopole.com/a.html', location: 'Genève', country: 'switzerland', date },
+    { title: 'Logofhète ou le prénom perdu avec Fred Nevché', url: 'https://armenopole.com/b.html', location: 'Genève', country: 'switzerland', date },
+    // Même lieu, même heure, un seul mot en commun : deux événements distincts.
+    { title: 'Concert de printemps', url: 'https://armenopole.com/c.html', location: 'Genève', country: 'switzerland', date },
+    { title: 'Concert du duduk', url: 'https://armenopole.com/d.html', location: 'Genève', country: 'switzerland', date },
+  ]
+  const d = digestFor('ch', { briefs: briefsOf('fr'), culture: [], events: ev, now })
+  assert.equal((d.body.match(/prénom perdu/g) || []).length, 1)
+  assert.ok(d.body.includes('LOGHOFÈTE'))
+  assert.ok(d.body.includes('Concert de printemps') && d.body.includes('Concert du duduk'))
+})

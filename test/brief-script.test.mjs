@@ -61,3 +61,15 @@ test('es : frenchWords repère le français ET l\'anglais, pas l\'espagnol', () 
   assert.ok(frenchWords('The government announced the measures with the region', 'es').length)
   assert.ok(strayWords('Ереван', 'es').length)
 })
+
+test('strayWords : une écriture hors des trois connues est repérée (hébreu, arabe, chinois)', () => {
+  // Publiés dans les brèves arméniennes du 17 octobre au 1er novembre 2026 :
+  // le garde ne connaissait que latin, arménien et cyrillique, et laissait
+  // passer tout le reste sans le voir.
+  assert.deepEqual(strayWords('ԱԺ-ում բռնության դեպքեր, וכן միջազգային', 'hy'), ['וכן'])
+  assert.deepEqual(strayWords('տասնյակերորդ անգամ ברצף հաղթեց', 'hy'), ['ברצף'])
+  assert.deepEqual(strayWords('Նախորդاً նա հանդիպել է', 'hy'), ['Նախորդاً'])
+  assert.deepEqual(strayWords('Կարապետյանը成为了 M23-ում', 'hy'), ['Կարապետյանը成为了'])
+  assert.deepEqual(strayWords('Главные темы дня — וכן', 'ru'), ['וכן'])
+  assert.deepEqual(strayWords('Le sommet de 成为了 Erevan', 'fr'), ['成为了'])
+})

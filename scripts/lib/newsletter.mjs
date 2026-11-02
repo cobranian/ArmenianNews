@@ -31,6 +31,35 @@ const lien = (texte, url) => `[${echappe(texte)}](${url})`
 
 const jourISO = (t) => new Date(t).toISOString().slice(0, 10)
 
+// Armenopole recense parfois le même événement à deux URL, sous deux titres
+// (« LOGHOFÈTE ou le prénom perdu » / « Logofhète ou le prénom perdu avec
+// Fred Nevché », W45). Même date, même lieu et au moins deux mots de titre en
+// commun = un seul événement ; le premier dans l'ordre est gardé. Propre à la
+// lettre : la vue /agenda/ et son balisage gardent le filtre commun.
+const motsTitre = (t) =>
+  new Set(
+    String(t)
+      .normalize('NFD')
+      .replace(/\p{M}/gu, '')
+      .toLowerCase()
+      .match(/\p{L}{3,}/gu) ?? [],
+  )
+function sansDoublons(evenements) {
+  const gardes = []
+  for (const e of evenements) {
+    const mots = motsTitre(e.title)
+    const doublon = gardes.some((g) => {
+      if (g.date !== e.date || g.location !== e.location) return false
+      const autres = motsTitre(g.title)
+      let communs = 0
+      for (const m of mots) if (autres.has(m)) communs++
+      return communs >= 2 && communs * 2 >= Math.min(mots.size, autres.size)
+    })
+    if (!doublon) gardes.push(e)
+  }
+  return gardes
+}
+
 // Lundi 00:00 UTC de la semaine ISO de `now`, en millisecondes.
 function lundiDe(now) {
   const d = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
@@ -88,10 +117,11 @@ export function digestFor(siteId, { briefs, culture, events, now, lang = SITES[s
   // sans liste, le monde entier par ordre chronologique.
   const retenus = SITES[siteId].newsletter.agendaPays ?? null
   const rang = (e) => (retenus ? retenus.indexOf(worldCountryKey(e)) : 0)
-  const lesEvenements = aVenir
-    .filter((e) => instantMural(e.date, 0) < limite && rang(e) >= 0)
-    .sort((a, b) => rang(a) - rang(b) || instantMural(a.date, 0) - instantMural(b.date, 0))
-    .slice(0, MAX_EVENEMENTS)
+  const lesEvenements = sansDoublons(
+    aVenir
+      .filter((e) => instantMural(e.date, 0) < limite && rang(e) >= 0)
+      .sort((a, b) => rang(a) - rang(b) || instantMural(a.date, 0) - instantMural(b.date, 0)),
+  ).slice(0, MAX_EVENEMENTS)
 
   const parts = [S.intro]
   if (lesBreves.length) {

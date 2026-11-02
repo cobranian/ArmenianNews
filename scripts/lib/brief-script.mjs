@@ -40,6 +40,10 @@ export function strayWords(text, lang, allowed = new Set()) {
   const out = []
   for (const w of words(text)) {
     const found = Object.keys(SCRIPTS).filter((s) => SCRIPTS[s].test(w))
+    // Toute autre écriture (hébreu, arabe, chinois…) : aucune des sept langues
+    // ne l'écrit. Sans ce cas, un mot sans lettre des trois écritures connues
+    // passait pour neutre — « וכן » a été publié ainsi en arménien (oct. 2026).
+    if ([...w].some((c) => /\p{L}/u.test(c) && !Object.values(SCRIPTS).some((re) => re.test(c)))) found.push('Other')
     if (found.length > 1) {
       out.push(w) // alphabets mêlés dans un même mot
       continue

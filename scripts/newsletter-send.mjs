@@ -105,6 +105,9 @@ export function buttondownRequest(digest, { key, status } = {}) {
 export function checkCreated(requested, json) {
   const got = json && typeof json === 'object' ? json.status : undefined
   if (got === requested) return null
+  // `about_to_send` avance seul vers `in_flight` puis `sent` (diagramme
+  // d'états de la doc Buttondown) : la réponse peut déjà porter l'un des deux.
+  if (requested === 'about_to_send' && (got === 'in_flight' || got === 'sent')) return null
   return `Buttondown a répondu « ${got ?? 'aucun statut'} » au lieu de « ${requested} »`
 }
 
