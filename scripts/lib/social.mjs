@@ -4,9 +4,15 @@
 // Trois règles de sécurité tiennent tout le module :
 //
 // 1. AU PLUS UNE FOIS. Le registre (src/data/social-posted.json) est écrit et
-//    poussé AVANT l'envoi. Un run annulé au milieu (concurrency: cancel) perd
-//    au pire une publication ; il n'en double jamais une. Sur un compte de
-//    marque, un doublon se voit bien plus qu'un oubli.
+//    poussé AVANT l'envoi. Un run interrompu au milieu perd au pire une
+//    publication ; il n'en double jamais une. Sur un compte de marque, un
+//    doublon se voit bien plus qu'un oubli.
+//    Mais un échec que la plateforme A DIT (« Media ID is not available »,
+//    une clé refusée) n'est pas un doute : rien n'est parti. Depuis le 2 nov.
+//    2026, `settle` retire ces articles du registre et les note dans
+//    `failed` ; le run suivant les retente, MAX_ATTEMPTS fois au plus. Avant,
+//    chacun était perdu pour de bon, et il fallait éditer le registre à la
+//    main (PR #125).
 // 2. JAMAIS D'ARCHIVE. Un canal absent du registre (nouveau, ou registre
 //    effacé) est d'abord AMORCÉ : tout ce qui existe déjà y est marqué « vu »,
 //    rien n'est publié. Sans cela, brancher un compte publierait d'un coup les
@@ -186,6 +192,9 @@ export function supports(platform, item) {
 // --- Le plan ---------------------------------------------------------------
 
 export const MAX_PER_RUN = 2
+// Trois essais, une heure d'écart : de quoi passer une panne passagère de la
+// plateforme, pas de quoi publier en boucle un post qu'elle refuse.
+export const MAX_ATTEMPTS = 3
 // Une brève de la veille vaut encore d'être partagée ; au-delà, c'est du passé.
 const BRIEF_MAX_AGE_DAYS = 1
 
@@ -222,8 +231,10 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
       seeded.push(ch.id)
       continue
     }
+    const failed = entry.failed ?? {}
     const fresh = mine
       .filter((it) => !(it.id in entry.posted))
+      .filter((it) => (failed[it.id]?.attempts ?? 0) < MAX_ATTEMPTS)
       .filter((it) => kinds.includes(it.kind))
       .filter((it) => supports(ch.platform, it))
       .filter((it) => it.kind !== 'brief' || ageDays(it.date, now) <= BRIEF_MAX_AGE_DAYS)
@@ -235,6 +246,39 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
     }
   }
   return { ledger: next, posts, seeded }
+}
+
+// Après l'envoi : un échec dit par la plateforme sort du registre (le run
+// suivant le retente) et entre dans `failed`, avec le nombre d'essais ; un
+// succès efface son échec passé. `results` : [{ channel, id, ok, error? }].
+// Rend un NOUVEAU registre.
+export function settle(ledger, results, now = new Date()) {
+  const next = structuredClone(ledger ?? emptyLedger())
+  next.channels ??= {}
+  for (const r of results) {
+    const entry = next.channels[r.channel]
+    if (!entry) continue
+    if (r.ok) {
+      if (entry.failed) delete entry.failed[r.id]
+      if (entry.failed && !Object.keys(entry.failed).length) delete entry.failed
+      continue
+    }
+    delete entry.posted[r.id]
+    entry.failed ??= {}
+    const attempts = (entry.failed[r.id]?.attempts ?? 0) + 1
+    entry.failed[r.id] = { attempts, last: now.toISOString(), error: String(r.error ?? '').slice(0, 300) }
+  }
+  return next
+}
+
+// Les articles qu'un canal a renoncé à publier (MAX_ATTEMPTS échecs), et ceux
+// qui attendent un nouvel essai. Lu par le tableau de bord.
+export function ledgerFailures(ledger) {
+  const out = []
+  for (const [channel, entry] of Object.entries(ledger?.channels ?? {}))
+    for (const [id, f] of Object.entries(entry.failed ?? {}))
+      out.push({ channel, id, ...f, abandoned: f.attempts >= MAX_ATTEMPTS })
+  return out.sort((a, b) => a.channel.localeCompare(b.channel) || a.id.localeCompare(b.id))
 }
 
 // --- Les textes ------------------------------------------------------------

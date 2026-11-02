@@ -5,8 +5,13 @@
 //        Choisit quoi publier. En mode réel (SOCIAL_LIVE=1), écrit le registre
 //        src/data/social-posted.json — à pousser AVANT l'étape `post`.
 //        Sinon : simulation, le registre n'est pas touché.
-//   node scripts/social-post.mjs post --plan <plan.json>
+//   node scripts/social-post.mjs post --plan <plan.json> [--results <res.jsonl>]
 //        Envoie le plan. Une simulation n'envoie rien et imprime les textes.
+//        --results : une ligne JSON par envoi, écrite AU FIL de l'eau (un run
+//        coupé garde ce qui a déjà été tranché).
+//   node scripts/social-post.mjs settle --results <res.jsonl>
+//        Reporte les résultats dans le registre : un échec en sort et sera
+//        retenté (MAX_ATTEMPTS fois), un succès efface son échec passé.
 //   node --env-file=.env scripts/social-post.mjs test --channel facebook-ch [--item culture:komitas] [--yes]
 //        Local : aperçu d'un message, et avec --yes, un envoi réel hors
 //        registre — pour vérifier des identifiants neufs, ou publier une
@@ -31,11 +36,14 @@ import {
   announceItems,
   cultureItems,
   plan,
+  settle,
   compose,
   emptyLedger,
+  MAX_ATTEMPTS,
   redact,
 } from './lib/social.mjs'
-import { send, verify } from './lib/social-send.mjs'
+import { send } from './lib/social-send.mjs'
+import { checkAccounts } from './lib/account-check.mjs'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const LEDGER = path.join(root, 'src/data/social-posted.json')
@@ -88,6 +96,10 @@ async function doPost() {
   const file = opt('--plan')
   if (!file) throw new Error('usage : post --plan <fichier>')
   const { dry, posts } = JSON.parse(await readFile(file, 'utf8'))
+  const resultsFile = opt('--results')
+  const record = async (r) => {
+    if (resultsFile && !dry) await appendFile(resultsFile, JSON.stringify(r) + '\n')
+  }
   let failed = 0
   // Un compte après l'autre, mais les comptes EN PARALLÈLE : avec ~30 canaux,
   // l'envoi en série durait des minutes, et un push sur main annule le run
@@ -105,20 +117,45 @@ ${JSON.stringify(compose(channel.platform, item), null, 2)}`)
       const creds = credentials(channel, process.env)
       if (!creds) {
         console.log(`✗ social/${id} : secrets disparus entre le plan et l'envoi`)
+        await record({ channel: id, id: item.id, ok: false, error: 'secrets disparus entre le plan et l’envoi' })
         failed++
         continue
       }
       try {
         const ref = await send(channel, item, creds)
         console.log(`✓ social/${id} : ${item.id} publié (${ref ?? 'sans identifiant'})`)
+        await record({ channel: id, id: item.id, ok: true })
       } catch (e) {
         failed++
-        console.log(`✗ social/${id} : ${item.id} — ${redact(e.message, Object.values(creds))}`)
+        const msg = redact(e.message, Object.values(creds))
+        console.log(`✗ social/${id} : ${item.id} — ${msg}`)
+        await record({ channel: id, id: item.id, ok: false, error: msg })
       }
     }
   }
   await Promise.all([...byChannel].map(([id, items]) => sendAll(id, items)))
   if (failed) process.exitCode = 1
+}
+
+async function doSettle() {
+  const file = opt('--results')
+  if (!file) throw new Error('usage : settle --results <fichier>')
+  let text = ''
+  try {
+    text = await readFile(file, 'utf8')
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e
+  }
+  const results = text.split('\n').filter(Boolean).map((l) => JSON.parse(l))
+  if (!results.length) return console.log('· social : aucun résultat à reporter')
+  const next = settle(await readLedger(), results)
+  await writeFile(LEDGER, JSON.stringify(next, null, 2) + '\n')
+  const ko = results.filter((r) => !r.ok)
+  for (const r of ko) {
+    const n = next.channels[r.channel]?.failed?.[r.id]?.attempts
+    console.log(`↻ social/${r.channel} : ${r.id} — échec ${n}, ${n >= MAX_ATTEMPTS ? 'ABANDONNÉ (voir le tableau de bord)' : 'retenté au prochain run'}`)
+  }
+  console.log(`· social : ${results.length - ko.length} succès, ${ko.length} échec(s) reporté(s) au registre`)
 }
 
 async function doTest() {
@@ -145,27 +182,30 @@ async function doTest() {
 // [social-down] ; `problems=N` part dans $GITHUB_OUTPUT.
 async function doCheck() {
   const lines = []
-  const channels = activeChannels()
-  if (!channels.length) console.log('· social : aucun canal configuré')
-  for (const channel of channels) {
-    const creds = credentials(channel, process.env)
-    try {
-      const who = await verify(channel, creds)
-      console.log(who === null ? `· social/${channel.id} : non vérifiable (pas de lecture gratuite)` : `✓ social/${channel.id} : ${who}`)
-    } catch (e) {
-      const msg = redact(e.message, Object.values(creds))
-      console.log(`✗ social/${channel.id} : ${msg}`)
-      lines.push(`- **${channel.id}** : ${msg}`)
-    }
+  if (!activeChannels().length) console.log('· social : aucun canal configuré')
+  const { accounts, tokens } = await checkAccounts(process.env)
+  for (const a of accounts) {
+    if (a.problem) {
+      console.log(`✗ social/${a.channel} : ${a.problem}`)
+      lines.push(`- **${a.channel}** : ${a.problem}`)
+    } else console.log(`✓ social/${a.channel} : ${a.who}${a.warning ? ` — ⚠ ${a.warning}` : ''}`)
+  }
+  for (const t of tokens) {
+    const label = `${t.secret} (${t.channels.length} comptes)`
+    const exp = t.expiresAt ? `expire le ${t.expiresAt.toISOString().slice(0, 10)}` : 'sans échéance'
+    if (t.problem) {
+      console.log(`✗ clé ${label} : ${t.problem}`)
+      lines.push(`- **${t.secret}** : ${t.problem}`)
+    } else console.log(`✓ clé ${label} : ${exp}${t.warning ? ` — ⚠ ${t.warning}` : ''}`)
   }
   const out = opt('--out')
   if (out) await writeFile(out, lines.join('\n') + '\n')
   if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `problems=${lines.length}\n`)
 }
 
-const run = { plan: doPlan, post: doPost, test: doTest, check: doCheck }[cmd]
+const run = { plan: doPlan, post: doPost, settle: doSettle, test: doTest, check: doCheck }[cmd]
 if (!run) {
-  console.error('usage : social-post.mjs plan|post|test|check …')
+  console.error('usage : social-post.mjs plan|post|settle|test|check …')
   process.exit(2)
 }
 run().catch((e) => {

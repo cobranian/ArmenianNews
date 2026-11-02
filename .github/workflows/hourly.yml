@@ -19,13 +19,17 @@ permissions:
   contents: write # commit refreshed data
   issues: write # ouvrir/refermer les alertes [sources-down] et [prerender-down]
 
-concurrency:
-  group: deploy
-  cancel-in-progress: true
-
+# Les groupes sont posés PAR JOB, pas sur le workflow : posé ici, un run plus
+# récent annulait aussi le job social, parfois ENTRE l'écriture du registre et
+# l'envoi — tout était marqué « parti », rien n'était envoyé (revue du
+# 2 nov. 2026). Le snapshot garde l'annulation (le plus récent gagne) ; le job
+# social, lui, n'est jamais annulé.
 jobs:
   snapshot:
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -449,8 +453,14 @@ jobs:
     if: needs.snapshot.result == 'success'
     runs-on: ubuntu-latest
     environment: social
+    # Jamais annulé : un seul envoi à la fois, les suivants attendent (GitHub
+    # n'en garde qu'un en attente — le plan suivant reprendra le reste).
+    concurrency:
+      group: social
+      cancel-in-progress: false
     permissions:
       contents: write # pousser le registre src/data/social-posted.json
+      actions: write # relancer le tableau de bord après un échec
     env:
       SOCIAL_LIVE: ${{ vars.SOCIAL_LIVE }}
       SOCIAL_KINDS: ${{ vars.SOCIAL_KINDS }}
@@ -551,4 +561,31 @@ jobs:
           fi
 
       - name: Publier
-        run: node scripts/social-post.mjs post --plan "$RUNNER_TEMP/social-plan.json"
+        run: node scripts/social-post.mjs post --plan "$RUNNER_TEMP/social-plan.json" --results "$RUNNER_TEMP/social-results.jsonl"
+
+      # Même après un échec de « Publier » : un envoi que la plateforme a
+      # refusé sort du registre et repart au run suivant (3 essais au plus,
+      # scripts/lib/social.mjs `settle`). Sans cette étape, il serait perdu.
+      - name: Reporter les résultats au registre
+        if: always() && env.SOCIAL_LIVE == '1'
+        run: |
+          node scripts/social-post.mjs settle --results "$RUNNER_TEMP/social-results.jsonl"
+          git add src/data/social-posted.json
+          if git diff --cached --quiet; then
+            echo "Registre inchangé."
+            exit 0
+          fi
+          git commit -m "social: résultats $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          # Le snapshot suivant a pu pousser entre-temps : trois essais.
+          for i in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            sleep 5
+          done
+          exit 1
+
+      # Le tableau de bord le dit tout de suite, sans attendre son passage.
+      - name: Prévenir le tableau de bord
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run social-check.yml --ref main || true
