@@ -365,7 +365,7 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
   if (!s) throw new Error(`pas de chaînes de brève en ${lang}`)
   const url = briefUrl(lang, date)
   const title = date
-    ? `${s.title} — ${longDate(lang, date)} · ${site.brand}`
+    ? withBrand(`${s.title} — ${longDate(lang, date)}`, site.brand)
     : `${s.title} · ${site.brand}`
   const description = date && brief ? briefDescription(brief, s.description) : s.description
   const graph = siteGraph(site, lang)
@@ -475,7 +475,7 @@ export function agendaPaysHeadFor({ siteId, lang, key, events, robots = null }) 
   graph.push(breadcrumb(lang, [[BRIEF_STRINGS[lang].agenda, urlFor(lang, 'agenda')], [country, url]]))
   return composeHead({
     site, lang, url,
-    title: `${s.title(country)} · ${site.brand}`,
+    title: withBrand(s.title(country), site.brand),
     description: s.description(country),
     alternates: agendaPaysAlternates(key),
     ogType: 'website',

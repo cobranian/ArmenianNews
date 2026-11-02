@@ -1,12 +1,12 @@
 ---
-title: "Ani (historische Stadt), die Stadt der tausendundein Kirchen: Ruhm und Widerstandskraft der ehemaligen armenischen Hauptstadt"
+title: "Ani, die Stadt der tausendundein Kirchen: Ruhm und Widerstandskraft der ehemaligen armenischen Hauptstadt"
 description: "Als mittelalterliche Bagratiden-Hauptstadt bleibt Ani, die «Stadt der 1001 Kirchen», ein architektonisches Juwel und Symbol einstiger armenischer Grösse."
 date: "2026-10-23"
 sourceHash: "0f22fe68e0d639f0"
 model: "gemini-flash-latest"
 ---
 
-Auf einem dreieckigen Felsvorsprung erbaut, der von den Schluchten des Flusses Achurjan und dem Tal von Zaghkotsadsor begrenzt wird, erhebt sich die mittelalterliche Metropole Ani (historische Stadt) auf rund 1340 Metern Höhe im Herzen der historischen Provinz Schirak. Heute in der türkischen Provinz Kars gelegen, gegenüber den armenischen Dörfern Charkow, Norschen und Aniawan, wacht die einstige Hauptstadt über eine geschlossene Grenze. Als «Stadt der tausendundein Kirchen» und «Hauptstadt des Jahres 1000» bezeichnet, bleibt Ani für die Armenier das strahlendste und greifbarste Symbol ihrer vergangenen Grösse. Trotz der Prüfungen der Zeit zeugen ihre Bauten aus Vulkantuff von einer aussergewöhnlichen politischen, spirituellen und architektonischen Ausstrahlungskraft.
+Auf einem dreieckigen Felsvorsprung erbaut, der von den Schluchten des Flusses Achurjan und dem Tal von Zaghkotsadsor begrenzt wird, erhebt sich die mittelalterliche Metropole Ani auf rund 1340 Metern Höhe im Herzen der historischen Provinz Schirak. Heute in der türkischen Provinz Kars gelegen, gegenüber den armenischen Dörfern Charkow, Norschen und Aniawan, wacht die einstige Hauptstadt über eine geschlossene Grenze. Als «Stadt der tausendundein Kirchen» und «Hauptstadt des Jahres 1000» bezeichnet, bleibt Ani für die Armenier das strahlendste und greifbarste Symbol ihrer vergangenen Grösse. Trotz der Prüfungen der Zeit zeugen ihre Bauten aus Vulkantuff von einer aussergewöhnlichen politischen, spirituellen und architektonischen Ausstrahlungskraft.
 
 ## Von der Kamsarakan-Festung zur Bagratiden-Metropole
 
