@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-02",
+  "lang": "fr",
+  "generatedAt": "2026-11-02T03:31:44.326Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Voici les informations marquantes de la journée en Arménie et à l'international.",
+  "topics": [
+    {
+      "title": "Élections communautaires de Stepanavan",
+      "text": "Le parti « Arménie Forte » a déposé un recours visant à invalider les résultats des élections communautaires de Stepanavan, comme l'a annoncé Gohar Meloyan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-parti-armenie-forte-a-depose-un-recours-pour-invalider-les-resultats-des-elections-communautaires-de-stepanavan-affirme-gohar-meloyan/",
+          "title": "Le parti « Arménie Forte » a déposé un recours pour invalider les résultats des élections communautaires de Stepanavan affirme Gohar Meloyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-jugement-dans-laffaire-de-la-mort-de-sona-mnatsakanyan-est-devenu-definitif-la-cour-de-cassation-a-rejete-les-pourvois/",
+          "title": "Le jugement dans l’affaire de la mort de Sona Mnatsakanyan est devenu définitif : la Cour de cassation a rejeté les pourvois"
+        }
+      ]
+    },
+    {
+      "title": "Tournoi WTA Challenger de Courmayeur",
+      "text": "L'ex-russe Alina Charaeva, 100e joueuse mondiale qui représente l'Arménie, a remporté le tournoi WTA Challenger de Courmayeur en Italie.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lex-russe-alina-charaeva-100e-joueuse-mondiale-qui-represente-larmenie-remporte-le-tournoi-wta-challenger-de-courmayeur-en-italie/",
+          "title": "L’ex-russe Alina Charaeva 100e joueuse mondiale, qui représente l’Arménie, remporte le tournoi WTA Challenger de Courmayeur, en Italie"
+        }
+      ]
+    },
+    {
+      "title": "Nouvelle ambassade du Canada",
+      "text": "L'ambassadrice d'Arménie au Canada, Anahit Harutyunyan, a participé au dîner de gala annuel du Fonds arménien à Toronto.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lambassadrice-darmenie-au-canada-anahit-harutyunyan-a-participe-au-diner-de-gala-annuel-du-fonds-armenien-a-toronto/",
+          "title": "L’ambassadrice d’Arménie au Canada, Anahit Harutyunyan, a participé au dîner de gala annuel du Fonds arménien à Toronto"
+        }
+      ]
+    },
+    {
+      "title": "Conflit et diplomatie au Caucase du Sud",
+      "text": "L'expérience du Caucase du Sud illustre non seulement le prix d'une confrontation prolongée, mais aussi les possibilités offertes par la diplomatie, selon Ararat Mirzoyan au Dialogue de Manama.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lexperience-du-caucase-du-sud-illustre-non-seulement-le-prix-dune-confrontation-prolongee-mais-aussi-les-possibilites-offertes-par-la-diplomatie-affirme-ararat-mirzoyan-au-di/",
+          "title": "L’expérience du Caucase du Sud illustre non seulement le prix d’une confrontation prolongée, mais aussi les possibilités offertes par la diplomatie affirme Ararat Mirzoyan au « Dialogue de Manama »"
+        }
+      ]
+    },
+    {
+      "title": "Modernisation des véhicules blindés",
+      "text": "L'Azerbaïdjan a conclu un accord avec la Russie concernant la modernisation des véhicules blindés de son armée.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lazerbaidjan-a-conclu-un-accord-avec-la-russie-concernant-la-modernisation-des-vehicules-blindes-de-son-armee/",
+          "title": "L’Azerbaïdjan a conclu un accord avec la Russie concernant la modernisation des véhicules blindés de son armée"
+        }
+      ]
+    },
+    {
+      "title": "Passeports biométriques",
+      "text": "Le ministère russe des Affaires étrangères a démenti les informations faisant état d'un refus d'approuver la candidature du nouvel ambassadeur d'Arménie. Par ailleurs, Arpiné Sargsan, ministre de l'Intérieur, a remis le premier passeport biométrique au Premier ministre Nikol Pachinian.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-ministere-russe-des-affaires-etrangeres-dement-les-informations-faisant-etat-dun-refus-dapprouver-la-candidature-du-nouvel-ambassadeur-darmenie/",
+          "title": "Le ministère russe des Affaires étrangères dément les informations faisant état d’un refus d’approuver la candidature du nouvel ambassadeur d’Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/arpine-sargsan-la-ministre-de-linterieur-darmenie-a-remis-le-premier-passeport-biometrique-au-premier-ministre-armenien-nikol-pachinian/",
+          "title": "Arpiné Sargsan, la ministre de l’Intérieur d’Arménie a remis le premier passeport biométrique au Premier ministre arménien Nikol Pachinian"
+        }
+      ]
+    },
+    {
+      "title": "Bibliothèque du Congrès américain",
+      "text": "À Washington, deux ouvrages présentant Erevan comme un patrimoine azerbaïdjanais sont entrés au catalogue de la Bibliothèque du Congrès américain.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/loffensive-historiographique-de-bakou-se-poursuit-deux-ouvrages-presentant-erevan-comme-un-patrimoine-azerbaidjanais-entrent-au-catalogue-de-la-bibliotheque-du-congres-americain/",
+          "title": "Washington : deux ouvrages présentant Erevan comme un patrimoine azerbaïdjanais entrent au catalogue de la Bibliothèque du Congrès américain"
+        }
+      ]
+    }
+  ]
+}

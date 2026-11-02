@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-02",
+  "lang": "it",
+  "generatedAt": "2026-11-02T03:31:44.326Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Le panorama quotidiano delle notizie dall'Armenia offre un quadro vario tra politica, sport e cultura.",
+  "topics": [
+    {
+      "title": "Politica: ricorso contro i risultati elettorali di Stepanavan",
+      "text": "Il partito 'Armenia Forte' ha presentato ricorso per l'annullamento dei risultati delle elezioni comunitarie di Stepanavan, come riferito da Gohar Meloyan. La vicenda evidenzia le tensioni nel contesto politico locale.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-parti-armenie-forte-a-depose-un-recours-pour-invalider-les-resultats-des-elections-communautaires-de-stepanavan-affirme-gohar-meloyan/",
+          "title": "Le parti « Arménie Forte » a déposé un recours pour invalider les résultats des élections communautaires de Stepanavan affirme Gohar Meloyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-ministere-russe-des-affaires-etrangeres-dement-les-informations-faisant-etat-dun-refus-dapprouver-la-candidature-du-nouvel-ambassadeur-darmenie/",
+          "title": "Le ministère russe des Affaires étrangères dément les informations faisant état d’un refus d’approuver la candidature du nouvel ambassadeur d’Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-jugement-dans-laffaire-de-la-mort-de-sona-mnatsakanyan-est-devenu-definitif-la-cour-de-cassation-a-rejete-les-pourvois/",
+          "title": "Le jugement dans l’affaire de la mort de Sona Mnatsakanyan est devenu définitif : la Cour de cassation a rejeté les pourvois"
+        }
+      ]
+    },
+    {
+      "title": "Sport: successi UFC e tennis",
+      "text": "Nella boxe mista, l'atleta armeno-americano Jean-Paul Lebosnoyan ha sconfitto per KO tecnico l'azerbaigiano Farman Hasanov all'UFC Fight Night 292. Nel tennis, l'ex russa Alina Charaeva, ora 100esima al mondo ma che rappresenta l'Armenia, ha vinto il torneo WTA Challenger di Courmayeur in Italia.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmeno-americain-jean-paul-lebosnoyan-bat-par-ko-technique-lazerbaidjanais-farman-hasanov-a-lufc-fight-night-292/",
+          "title": "L’arméno-américain Jean-Paul Lebosnoyan bat par KO technique l’azerbaïdjanais Farman Hasanov à l’UFC Fight Night 292"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lex-russe-alina-charaeva-100e-joueuse-mondiale-qui-represente-larmenie-remporte-le-tournoi-wta-challenger-de-courmayeur-en-italie/",
+          "title": "L’ex-russe Alina Charaeva 100e joueuse mondiale, qui représente l’Arménie, remporte le tournoi WTA Challenger de Courmayeur, en Italie"
+        }
+      ]
+    },
+    {
+      "title": "Iniziative culturali a Toronto",
+      "text": "L'ambasciatrice d'Armenia in Canada, Anahit Harutyunyan, ha partecipato al gala dinner annuale del Armenian Fund a Toronto, rafforzando i legami con la diaspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lambassadrice-darmenie-au-canada-anahit-harutyunyan-a-participe-au-diner-de-gala-annuel-du-fonds-armenien-a-toronto/",
+          "title": "L’ambassadrice d’Arménie au Canada, Anahit Harutyunyan, a participé au dîner de gala annuel du Fonds arménien à Toronto"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/trois-evenements-pour-lanniversaire-du-discours-de-jean-jaures-a-paris-et-toulouse-les-3-5-et-6-novembre/",
+          "title": "Trois événements pour l’anniversaire du discours de Jean Jaurès à Paris et Toulouse les 3, 5 et 6 novembre"
+        }
+      ]
+    },
+    {
+      "title": "Mondo: accordi militari e tensioni",
+      "text": "L'Azerbaigian ha siglato un accordo con la Russia per la modernizzazione dei veicoli blindati del suo esercito. Parallelamente, due opere che raffigurano Erevan come patrimonio azerbaigiano sono state inserite nel catalogo della Library of Congress americana, sollevando questioni di natura storica e politica.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lazerbaidjan-a-conclu-un-accord-avec-la-russie-concernant-la-modernisation-des-vehicules-blindes-de-son-armee/",
+          "title": "L’Azerbaïdjan a conclu un accord avec la Russie concernant la modernisation des véhicules blindés de son armée"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/loffensive-historiographique-de-bakou-se-poursuit-deux-ouvrages-presentant-erevan-comme-un-patrimoine-azerbaidjanais-entrent-au-catalogue-de-la-bibliotheque-du-congres-americain/",
+          "title": "Washington : deux ouvrages présentant Erevan comme un patrimoine azerbaïdjanais entrent au catalogue de la Bibliothèque du Congrès américain"
+        }
+      ]
+    },
+    {
+      "title": "Politica: dichiarazioni al Dialogue de Manama",
+      "text": "Il ministro degli Esteri armeno Ararat Mirzoyan ha affermato che l'esperienza del Caucaso del Sud illustra non solo il prezzo di un confronto protratto, ma anche le possibilità offerte dalla diplomazia, in occasione del Dialogue de Manama.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lexperience-du-caucase-du-sud-illustre-non-seulement-le-prix-dune-confrontation-prolongee-mais-aussi-les-possibilites-offertes-par-la-diplomatie-affirme-ararat-mirzoyan-au-di/",
+          "title": "L’expérience du Caucase du Sud illustre non seulement le prix d’une confrontation prolongée, mais aussi les possibilités offertes par la diplomatie affirme Ararat Mirzoyan au « Dialogue de Manama »"
+        }
+      ]
+    },
+    {
+      "title": "Cultura: eventi e spettacoli",
+      "text": "Un novembre ricco di appuntamenti per Corinne e Richard Zarzavatdjian. Inoltre, è in programma lo spettacolo di danza 'Hommage' il 27 novembre a Clamart, mentre il Premier ministro ha annunciato il rilascio di passaporti conformi agli standard internazionali più recenti.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-mois-de-novembre-charge-et-gourmand-pour-corinne-et-richard-zarzavatdjian/",
+          "title": "Un mois de novembre chargé… et gourmand pour Corinne et Richard Zarzavatdjian !"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/hommage-spectacle-de-danse-le-27-novembre-a-clamart/",
+          "title": "« Hommage », spectacle de danse le 27 novembre à Clamart"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264420",
+          "title": "L’Arménie lance la délivrance de passeports conformes aux normes internationales les plus récentes, annonce le Premier ministre"
+        }
+      ]
+    }
+  ]
+}
