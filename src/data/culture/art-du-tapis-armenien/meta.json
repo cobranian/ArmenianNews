@@ -1,0 +1,88 @@
+{
+  "slug": "art-du-tapis-armenien",
+  "qid": "Q2067009",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Tapis arménien",
+      "url": "https://fr.wikipedia.org/wiki/Tapis_arm%C3%A9nien",
+      "revision": 228435957,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Armenian carpet",
+      "url": "https://en.wikipedia.org/wiki/Armenian_carpet",
+      "revision": 1379443220,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Հայկական գորգ",
+      "url": "https://hy.wikipedia.org/wiki/%D5%80%D5%A1%D5%B5%D5%AF%D5%A1%D5%AF%D5%A1%D5%B6_%D5%A3%D5%B8%D6%80%D5%A3",
+      "revision": 10953256,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Армянский ковёр",
+      "url": "https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%BC%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BE%D0%B2%D1%91%D1%80",
+      "revision": 155720667,
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Carpets from Shushi Carpet Museum.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Carpets_from_Shushi_Carpet_Museum.jpg/1920px-Carpets_from_Shushi_Carpet_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3274,
+      "height": 3718,
+      "mime": "image/jpeg",
+      "author": "Sununa",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Carpets_from_Shushi_Carpet_Museum.jpg"
+    },
+    {
+      "file": "File:Carpet Tsakhkagorg.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Carpet_Tsakhkagorg.jpg/1920px-Carpet_Tsakhkagorg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2816,
+      "height": 4503,
+      "mime": "image/jpeg",
+      "author": "Sununa",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Carpet_Tsakhkagorg.jpg"
+    },
+    {
+      "file": "File:Carpet Khachagorg.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Carpet_Khachagorg.jpg/1920px-Carpet_Khachagorg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3137,
+      "height": 3648,
+      "mime": "image/jpeg",
+      "author": "Sununa",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Carpet_Khachagorg.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Carpets from Shushi Carpet Museum.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Carpets_from_Shushi_Carpet_Museum.jpg/1920px-Carpets_from_Shushi_Carpet_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 1363,
+    "mime": "image/jpeg",
+    "author": "Sununa",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Carpets_from_Shushi_Carpet_Museum.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0,
+  "model": "gemini-flash-latest"
+}
