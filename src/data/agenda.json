@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T13:23:32.709Z",
+  "generatedAt": "2026-11-02T14:24:20.996Z",
   "switzerland": [
     {
       "title": "Benefizkonzert für Armenien",
@@ -351,6 +351,24 @@
       "rawDate": "NOV 4 0:00",
       "image": "https://armenopole.com/images/events/guillaume-toumanian-s-inwardness.jpg?v=64833",
       "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "The Armenian Community of Sudan",
+      "url": "https://armenopole.com/the-armenian-community-of-sudan.html",
+      "location": "Beyrouth",
+      "date": "2026-11-04T18:00",
+      "rawDate": "NOV 4 18:00",
+      "image": "https://armenopole.com/images/events/the-armenian-community-of-sudan.jpg?v=51011",
+      "country": "lebanon",
       "resumeLangs": [
         "fr",
         "de",
@@ -1380,6 +1398,24 @@
       "image": "https://armenopole.com/images/events/soiree-paella-france.jpg?v=96851",
       "country": "france",
       "resumeLangs": []
+    },
+    {
+      "title": "Fishing Day",
+      "url": "https://armenopole.com/fishing-day.html",
+      "location": "Nouvelle-Galles du Sud",
+      "date": "2026-11-08T00:00",
+      "rawDate": "NOV 8 0:00",
+      "image": "https://armenopole.com/images/events/fishing-day.jpg?v=96804",
+      "country": "australia",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
     },
     {
       "title": "44ème Anniversaire de l'Église Saint-Nichan",
