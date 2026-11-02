@@ -92,6 +92,10 @@ export function buttondownRequest(digest, { key, status } = {}) {
         Authorization: `Token ${key}`,
         'Content-Type': 'application/json',
         'User-Agent': UA,
+        // Buttondown refuse tout envoi réel par API sans cet en-tête (400
+        // « sending_requires_confirmation », mesuré le 2 nov. 2026). Jamais
+        // pour un brouillon : il ne doit accompagner qu'un envoi voulu.
+        ...(status && status !== 'draft' ? { 'X-Buttondown-Live-Dangerously': 'true' } : {}),
       },
       body: JSON.stringify({ subject: digest.subject, body: digest.body, status: status || 'draft' }),
     },
