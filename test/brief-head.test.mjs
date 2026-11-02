@@ -113,3 +113,20 @@ test('withBrand : la marque seulement si le titre tient dans TITLE_MAX', () => {
   assert.equal(withBrand(long, 'Arménie Info'), long)
   assert.ok([...withBrand('x'.repeat(TITLE_MAX - 15), 'Arménie Info')].length <= TITLE_MAX)
 })
+
+test('titres des brèves datées et des pages Agenda par pays : jamais au-delà de TITLE_MAX', async () => {
+  // Recrawl du 2 nov. 2026 : 7 brèves (dont TOUTES les espagnoles) et 2 pages
+  // agenda allemandes à 61-67 caractères, marque comprise.
+  const { agendaPaysHeadFor } = await import('../scripts/lib/site-meta.mjs')
+  const titre = (h) => h.match(/<title>([^<]*)<\/title>/)[1]
+  for (const [siteId, lang] of [['org', 'es'], ['ch', 'it'], ['ch', 'de']]) {
+    const date = '2026-11-01'
+    const brief = b(lang, date)
+    const h = briefHeadFor({ siteId, lang, date, brief, byDate: briefLangsByDate({ [lang]: [brief] }) })
+    assert.ok([...titre(h)].length <= TITLE_MAX, `${lang} : ${titre(h)}`)
+  }
+  for (const key of ['unitedkingdom', 'usa']) {
+    const h = agendaPaysHeadFor({ siteId: 'ch', lang: 'de', key, events: [] })
+    assert.ok([...titre(h)].length <= TITLE_MAX, titre(h))
+  }
+})
