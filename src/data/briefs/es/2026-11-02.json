@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-02",
+  "lang": "es",
+  "generatedAt": "2026-11-02T06:31:26.756Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Las noticias más relevantes de hoy incluyen la reunión del ministro de Defensa con medios de comunicación, el discurso de la canciller en Manama y los preparativos para la apertura de fronteras.",
+  "topics": [
+    {
+      "title": "Reunión del ministro de Defensa con medios de comunicación",
+      "text": "Suren Papikyan se reunió con representantes de medios de comunicación en un curso organizado por el Ministerio de Defensa, según informaron las fuentes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264440",
+          "title": "Suren Papikyan se reunió con representantes de medios de comunicación en un curso organizado por el Ministerio de Defensa"
+        }
+      ]
+    },
+    {
+      "title": "Discurso de Ararat Mirzoyan en Manama",
+      "text": "El canciller Ararat Mirzoyan participó en el foro “Diálogo de Manama”, donde ofreció un discurso ante la comunidad internacional, según detallaron las agencias.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264438",
+          "title": "Discurso de Ararat Mirzoyan en el foro “Diálogo de Manama”"
+        }
+      ]
+    },
+    {
+      "title": "Participación armenia en Campeonato Mundial de Halterofilia",
+      "text": "Armenia tendrá dos representantes en el Campeonato Mundial de Halterofilia el 2 de noviembre y comenzará su participación en el Campeonato Mundial clasificatorio, informaron las fuentes deportivas.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264431",
+          "title": "Armenia tendrá dos representantes en el Campeonato Mundial de Halterofilia el 2 de noviembre"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264430",
+          "title": "Armenia comienza su participación en el Campeonato Mundial clasificatorio"
+        }
+      ]
+    },
+    {
+      "title": "Impacto económico de la apertura fronteriza entre Armenia y Turquía",
+      "text": "Empresas de Armenia y Turquía calculan el impacto de la apertura fronteriza, anticipando efectos positivos en el comercio y la economía regional, según análisis económicos.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/empresas-armenia-turquia-impacto-apertura-fronteriza/",
+          "title": "empresas de Armenia y Turquía calculan el impacto de la apertura fronteriza"
+        }
+      ]
+    },
+    {
+      "title": "Lanzamiento oficial de HayPass biométrico",
+      "text": "Armenia presentó de forma oficial los nuevos documentos biométricos con la apertura de HayPass, una iniciativa para modernizar la identificación ciudadana y los trámites fronterizos.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-presenta-nuevos-documentos-biometricos-haypass/",
+          "title": "Armenia presenta de forma oficial los nuevos documentos biométricos con la apertura de HayPass"
+        }
+      ]
+    },
+    {
+      "title": "Candidato armenio para liderar la OMS",
+      "text": "Gevorg Tamamyan, figura política armenia, es considerado un firme candidato para liderar la Organización Mundial de la Salud (OMS), según informaron fuentes políticas.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/gevorg-tamamyan-candidato-director-general-oms/",
+          "title": "El armenio Gevorg Tamamyan es un firme candidato para liderar la OMS"
+        }
+      ]
+    }
+  ]
+}

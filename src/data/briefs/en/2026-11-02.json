@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-02",
+  "lang": "en",
+  "generatedAt": "2026-11-02T06:31:26.756Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Armenian and international headlines cover political developments, cultural milestones, and sporting events.",
+  "topics": [
+    {
+      "title": "UNESCO events mark Hrachia Acharian anniversary",
+      "text": "Events in Paris concluded marking the 150th birth anniversary of Hrachia Acharian and the centenary of Republic Square, organized by UNESCO.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264441",
+          "title": "UNESCO events marking Hrachia Acharian’s 150th birth anniversary and centenary of Republic Square conclude in Paris"
+        }
+      ]
+    },
+    {
+      "title": "Armenian FM at Manama Dialogue",
+      "text": "The Armenian Foreign Minister stated that peace is a deliberate and strategic choice during his speech at the Manama Dialogue in Bahrain.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264438",
+          "title": "“Peace is, above all, a deliberate and strategic choice,” Armenian FM says at Manama Dialogue"
+        }
+      ]
+    },
+    {
+      "title": "Armenian defense minister meets media",
+      "text": "The Armenian defense minister met with media representatives to discuss current issues.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264440",
+          "title": "Armenian defense minister meets with media representatives"
+        }
+      ]
+    },
+    {
+      "title": "Armenian weightlifters at World Championships",
+      "text": "Armenian weightlifters continue their campaign at the World Championships taking place in China.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264431",
+          "title": "Armenian weightlifters continue campaign at World Championships in China"
+        }
+      ]
+    },
+    {
+      "title": "Armenian team at ISSF World Championship",
+      "text": "The Armenian team is set to begin competition at the ISSF World Championship in Qatar.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264430",
+          "title": "Armenian team set to begin competition at ISSF World Championship in Qatar"
+        }
+      ]
+    }
+  ]
+}
