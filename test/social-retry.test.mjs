@@ -165,7 +165,7 @@ test('checkAccounts : Facebook sans clé de Page dérivable → problème (avant
   assert.match(accounts[0].problem, /aucune clé de Page/)
 })
 
-const hourly = readFileSync('.github/workflows/hourly.yml', 'utf8')
+const hourly = readFileSync('.github/workflows/hourly.yml', 'utf8').replace(/\r\n/g, '\n')
 const socialJob = hourly.slice(hourly.indexOf('\n  social:'))
 
 test('hourly.yml : le résultat des envois est reporté au registre, même après un échec', () => {
