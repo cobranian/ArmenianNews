@@ -47,8 +47,8 @@ test('chat : 429, réponse vide, clé absente → erreur sans la clé', async ()
 
 const httpErr = (status) => Object.assign(new Error(`HTTP ${status} (m)`), { status })
 
-test('isUnavailable : 429/404/503/timeout oui, 401/400/réponse vide non', () => {
-  for (const s of [429, 404, 503, 500]) assert.equal(isUnavailable(httpErr(s)), true, String(s))
+test('isUnavailable : 402/429/404/503/timeout oui, 401/400/réponse vide non', () => {
+  for (const s of [402, 429, 404, 503, 500]) assert.equal(isUnavailable(httpErr(s)), true, String(s))
   assert.equal(isUnavailable(Object.assign(new Error('t'), { name: 'TimeoutError' })), true)
   assert.equal(isUnavailable(Object.assign(new Error('a'), { name: 'AbortError' })), true)
   for (const s of [400, 401, 403]) assert.equal(isUnavailable(httpErr(s)), false, String(s))
@@ -69,7 +69,10 @@ test('chat : l’erreur HTTP porte status', async () => {
 })
 
 test('CULTURE_FALLBACK_MODELS : ids :free sur OpenRouter', () => {
-  assert.deepEqual(CULTURE_FALLBACK_MODELS, ['nvidia/nemotron-3-ultra-550b-a55b:free', 'google/gemma-4-31b-it:free'])
+  assert.deepEqual(CULTURE_FALLBACK_MODELS, [
+    'nvidia/nemotron-3.5-super-vl:free', 'nvidia/nemotron-3-ultra-550b-a55b:free', 'google/gemma-4-31b-it:free',
+  ])
+  for (const m of CULTURE_FALLBACK_MODELS) assert.match(m, /:free$/, `${m} consommerait des crédits`)
   assert.equal(OPENROUTER_BASE_URL, 'https://openrouter.ai/api/v1/')
 })
 
@@ -96,6 +99,22 @@ test('chatDraft : Gemini 429 → premier repli OpenRouter avec la clé OpenRoute
   assert.match(calls[1].url, /^https:\/\/openrouter\.ai\/api\/v1\/chat\/completions$/)
 })
 
+// Le cas réel du 2 nov. 2026 : crédit prépayé Gemini à zéro.
+test('chatDraft : Gemini 402 (crédit épuisé) → repli OpenRouter', async () => {
+  const calls = []
+  const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: router(402, calls) })
+  assert.deepEqual(r, { text: 'repli', model: CULTURE_FALLBACK_MODELS[0], fellBack: true })
+})
+
+test('chat : raisonnement coupé sur OpenRouter, jamais envoyé à Gemini', async () => {
+  const seen = {}
+  const ok = { choices: [{ message: { content: 'ok' } }] }
+  await chat({ messages, baseUrl: OPENROUTER_BASE_URL, model: 'm', apiKey: 'k', fetchImpl: fake(200, ok, seen) })
+  assert.deepEqual(JSON.parse(seen.init.body).reasoning, { enabled: false })
+  await chat({ messages, baseUrl: DEFAULT_BASE_URL, model: 'm', apiKey: 'k', fetchImpl: fake(200, ok, seen) })
+  assert.equal('reasoning' in JSON.parse(seen.init.body), false)
+})
+
 test('chatDraft : Gemini disponible → pas de repli', async () => {
   const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G' }, fetchImpl: router(200) })
   assert.deepEqual(r, { text: 'gemini', model: DEFAULT_MODEL, fellBack: false })
@@ -119,17 +138,18 @@ test('chatDraft : sans OPENROUTER_API_KEY → rejette l’erreur Gemini', async 
   assert.equal(calls.length, 1)
 })
 
-test('chatDraft : premier repli indisponible → second repli ; tout échoue → dernière erreur', async () => {
+test('chatDraft : replis indisponibles → suivant ; tout échoue → dernière erreur', async () => {
   const calls = []
   const f = async (url, init) => {
     const model = JSON.parse(init.body).model
     calls.push(model)
-    if (!url.includes('openrouter.ai') || model === CULTURE_FALLBACK_MODELS[0]) return { ok: false, status: 404, json: async () => ({}) }
+    if (!url.includes('openrouter.ai') || model !== CULTURE_FALLBACK_MODELS.at(-1)) return { ok: false, status: 404, json: async () => ({}) }
     return { ok: true, status: 200, json: async () => ({ model, choices: [{ message: { content: 'deux' } }] }) }
   }
   const env = { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }
   const r = await chatDraft({ messages, env, fetchImpl: f })
-  assert.equal(r.model, CULTURE_FALLBACK_MODELS[1])
+  assert.equal(r.model, CULTURE_FALLBACK_MODELS.at(-1))
+  assert.deepEqual(calls.slice(1), CULTURE_FALLBACK_MODELS)
   const down = async () => ({ ok: false, status: 429, json: async () => ({}) })
   await assert.rejects(chatDraft({ messages, env, fetchImpl: down }), (e) => e.status === 429 && /google\/gemma/.test(e.message))
 })
