@@ -28,6 +28,7 @@ import {
   checkSocial,
   checkManual,
   checkDeadlines,
+  checkIndexing,
   lastOutcome,
   renderDashboard,
   notification,
@@ -150,6 +151,7 @@ const sections = [
   await guarded('📰 Articles', articleRows),
   await guarded('📣 Réseaux (envoi automatique : Facebook, Instagram, Telegram, Bluesky)', social),
   await guarded('✋ Publication à la main', manual),
+  await guarded('🔎 Référencement', async () => checkIndexing({ gscConfigured: env.GSC_CONFIGURED === 'true' })),
   await guarded('📅 Échéances', async () => checkDeadlines(now)),
 ]
 

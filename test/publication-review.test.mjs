@@ -73,7 +73,7 @@ test('settle : un plan jamais poussé n’invente aucun incertain', () => {
   assert.deepEqual(ledgerFailures(settle(base(), [], now, r.posts)), [])
 })
 
-const hourly = readFileSync('.github/workflows/hourly.yml', 'utf8')
+const hourly = readFileSync('.github/workflows/hourly.yml', 'utf8').replace(/\r\n/g, '\n')
 const socialJob = hourly.slice(hourly.indexOf('\n  social:'))
 
 test('hourly.yml : le report repart de main et REFAIT settle, avec le plan', () => {
@@ -156,13 +156,13 @@ test('aucun brouillon réussi dans les runs lus → signalé', () => {
 // --- Workflows
 
 test('articles-publish : des traductions de secours ne sont pas fusionnées d’office', () => {
-  const y = readFileSync('.github/workflows/articles-publish.yml', 'utf8')
+  const y = readFileSync('.github/workflows/articles-publish.yml', 'utf8').replace(/\r\n/g, '\n')
   assert.match(y, /grep -q "modèle de secours"[\s\S]*fallback=1/)
   assert.match(y, /- name: Contrôle final, fusion, déploiement\n\s*if: steps\.prep\.outputs\.fallback != '1'/)
 })
 
 test('social-check.yml : les secrets ne sont visibles que de l’étape qui mesure', () => {
-  const y = readFileSync('.github/workflows/social-check.yml', 'utf8')
+  const y = readFileSync('.github/workflows/social-check.yml', 'utf8').replace(/\r\n/g, '\n')
   const job = y.slice(y.indexOf('\n  check:'), y.indexOf('    steps:'))
   assert.doesNotMatch(job, /FB_PAGE_TOKEN|GEMINI_API_KEY/, 'pas au niveau du job : npm ci les verrait')
   assert.match(y, /- name: Mesurer\n\s*env:[\s\S]*GEMINI_API_KEY/)

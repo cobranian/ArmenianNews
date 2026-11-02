@@ -58,6 +58,8 @@ jobs:
       # d'installation des paquets) ni les étapes gh ne les reçoivent.
       - name: Mesurer
         env:
+          # Présence seulement : la clé elle-même n'entre pas dans cette étape.
+          GSC_CONFIGURED: ${{ secrets.GSC_SERVICE_ACCOUNT != '' }}
           SOCIAL_LIVE: ${{ vars.SOCIAL_LIVE }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

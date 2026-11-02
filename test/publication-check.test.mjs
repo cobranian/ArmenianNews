@@ -124,7 +124,7 @@ test('renderDashboard : en-tête, liste d’actions, marqueur d’alertes', () =
 })
 
 test('le workflow trouve l’issue par le même titre que la bibliothèque', () => {
-  const y = readFileSync('.github/workflows/social-check.yml', 'utf8')
+  const y = readFileSync('.github/workflows/social-check.yml', 'utf8').replace(/\r\n/g, '\n')
   assert.ok(y.includes(`--title "${DASHBOARD_TITLE}"`))
   assert.match(y, /startswith\("\[tableau-de-bord\]"\)/)
   assert.ok(DASHBOARD_TITLE.startsWith('[tableau-de-bord]'))
@@ -135,7 +135,7 @@ test('le workflow trouve l’issue par le même titre que la bibliothèque', () 
 
 test('chaque workflow d’articles relance le tableau de bord en cas d’échec', () => {
   for (const f of ['articles.yml', 'articles-publish.yml', 'articles-translate.yml', 'articles-backfill.yml', 'hourly.yml']) {
-    const y = readFileSync(`.github/workflows/${f}`, 'utf8')
+    const y = readFileSync(`.github/workflows/${f}`, 'utf8').replace(/\r\n/g, '\n')
     assert.match(y, /gh workflow run social-check\.yml --ref main/, f)
     assert.match(y, /actions: write/, `${f} : permission de lancer un workflow`)
   }

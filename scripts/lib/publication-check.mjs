@@ -207,6 +207,22 @@ export function checkManual({ articles, videos, langs, whatsappChannels }) {
   return out
 }
 
+// Le référencement : IndexNow (Bing, Yandex, Yahoo) n'a besoin d'aucun
+// secret ; Google, si (GSC_SERVICE_ACCOUNT, docs/google-search-console.md).
+export function checkIndexing({ gscConfigured }) {
+  return [
+    { key: 'idx-indexnow', level: 'ok', text: 'Bing, Yandex, Yahoo : prévenus automatiquement à chaque page nouvelle (IndexNow)' },
+    gscConfigured
+      ? { key: 'idx-google', level: 'ok', text: 'Google : sitemap renvoyé automatiquement à la Search Console à chaque page nouvelle' }
+      : {
+          key: 'idx-google-off',
+          level: 'faire',
+          text: 'Google : pas prévenu automatiquement (secret GSC_SERVICE_ACCOUNT absent) — il découvre les pages seul, plus lentement',
+          action: 'Créer le compte de service Search Console (docs/google-search-console.md, 10 minutes)',
+        },
+  ]
+}
+
 export function checkDeadlines(now = new Date(), list = DEADLINES) {
   return list.map((d) => {
     const left = days(new Date(`${d.date}T00:00:00Z`), now)

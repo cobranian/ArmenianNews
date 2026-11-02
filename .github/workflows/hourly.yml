@@ -447,6 +447,16 @@ jobs:
         if: success()
         run: node scripts/indexnow.mjs --since "$RUNNER_TEMP/sitemaps-avant"
 
+      # Google ne lit pas IndexNow : on lui renvoie le sitemap de chaque
+      # vitrine qui porte des pages nouvelles (Search Console, sitemaps.submit
+      # — scripts/lib/gsc.mjs). Même écart, même moment qu'IndexNow. Sans le
+      # secret, le pas est sauté ; un refus n'échoue pas le job (« ✗ gsc »).
+      - name: Google — renvoyer les sitemaps changés
+        if: success()
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: node scripts/gsc-sitemaps.mjs --since "$RUNNER_TEMP/sitemaps-avant"
+
   # Publication sur les réseaux (scripts/social-post.mjs). Job À PART, pour que
   # ses secrets ne soient visibles que de lui : ni le scrape, ni le build, ni
   # les scripts tiers du déploiement ne les reçoivent. Les secrets vivent dans
