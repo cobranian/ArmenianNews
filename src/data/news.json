@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T22:23:52.393Z",
+  "generatedAt": "2026-11-02T23:23:29.775Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -104,16 +104,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_2_2.png.avif?itok=VAoACx8s"
         },
         {
-          "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence",
-          "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
-          "date": "2026-10-23T11:01:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/854316167_122315157092029287_1490370250107810490_n.jpg.avif?itok=m4Q42pf0"
-        },
-        {
           "title": "L’Œuvre d’Orient célèbre 170 ans d’engagement avec la soirée de générosité « Unis pour l’Orient »",
           "url": "https://courrier.am/loeuvre-dorient-celebre-170-ans-dengagement-avec-la-soiree-de-generosite-unis-pour-lorient",
           "date": "2026-10-23T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_3.png.avif?itok=3ggeeb4R"
+        },
+        {
+          "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence",
+          "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
+          "date": "2026-10-23T11:01:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/854316167_122315157092029287_1490370250107810490_n.jpg.avif?itok=m4Q42pf0"
         },
         {
           "title": "L’Arménie parmi les 25 meilleures destinations touristiques mondiales de 2027 selon National Geographic",
@@ -122,16 +122,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/MkiHCWsjkgwxpZA7RphgDC_smedium.jpg.avif?itok=zZt4XzEL"
         },
         {
-          "title": "Marie-Lou Papazian : « Donner à chacun les moyens de construire son avenir »",
-          "url": "https://courrier.am/marie-lou-papazian-donner-chacun-les-moyens-de-construire-son-avenir",
-          "date": "2026-10-28T09:00:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1.png.avif?itok=MDEXe5dg"
-        },
-        {
           "title": "COP17 : l’alimentation scolaire, un levier pour préserver la biodiversité en Arménie",
           "url": "https://courrier.am/cop17-lalimentation-scolaire-un-levier-pour-preserver-la-biodiversite-en-armenie",
           "date": "2026-10-20T07:28:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/855412236_122142071535388072_7829252391526261431_n.jpg.avif?itok=s1Riicah"
+        },
+        {
+          "title": "Marie-Lou Papazian : « Donner à chacun les moyens de construire son avenir »",
+          "url": "https://courrier.am/marie-lou-papazian-donner-chacun-les-moyens-de-construire-son-avenir",
+          "date": "2026-10-28T09:00:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1.png.avif?itok=MDEXe5dg"
         },
         {
           "title": "«Nous ne sommes pas des animaux». Mohamed, livreur à bout de course",
@@ -258,16 +258,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/02%20%282%29.jpg.avif?itok=-r2nsqJl"
         },
         {
-          "title": "Zhanna Andreyasyan a rencontré le directeur général de l’UNESCO, Khaled El-Enany",
-          "url": "https://courrier.am/zhanna-andreyasyan-rencontre-le-directeur-general-de-lunesco-khaled-el-enany",
-          "date": "2026-10-19T09:53:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/4G3A1757.jpg.avif?itok=bB-Xkwj8"
-        },
-        {
           "title": "Plácido Domingo rend hommage à Gegham Grigoryan sur la scène de l’Opéra d’Erevan",
           "url": "https://courrier.am/placido-domingo-rend-hommage-gegham-grigoryan-sur-la-scene-de-lopera-derevan",
           "date": "2026-10-19T10:14:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/4G3A9304.jpg.avif?itok=iycOE0EC"
+        },
+        {
+          "title": "Zhanna Andreyasyan a rencontré le directeur général de l’UNESCO, Khaled El-Enany",
+          "url": "https://courrier.am/zhanna-andreyasyan-rencontre-le-directeur-general-de-lunesco-khaled-el-enany",
+          "date": "2026-10-19T09:53:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/4G3A1757.jpg.avif?itok=bB-Xkwj8"
         }
       ]
     },
@@ -6045,22 +6045,34 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Փաշինեան Հանրային Ճնշում Կը Խոստանայ Ընդդիմութեան Վրայ, Եթէ Դէմ Ըլլան Նոր Սահմանադրութեան. Ընդդիմադիրները Կ՛արձագանգեն",
+            "url": "https://asbarez.am/archives/511904",
+            "date": "2026-11-02T23:24:51.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/19143634/ArmeniaConstiution-1.jpeg"
+          },
+          {
+            "title": "Սահմանազատման Յաջորդ Փուլը Կրնայ Կատարուիլ Սիւնիքի` «Թրամփի Ուղի»ի Հատուածին Մէջ",
+            "url": "https://asbarez.am/archives/511885",
+            "date": "2026-11-02T23:12:17.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02140933/1103sahmanazatum.jpg"
+          },
+          {
             "title": "Հայաստանի Դեսպանը Իրանցի Պատգամաւորներուն Ներկայացուց «Թրամփի Ուղի»ի Հիմնական Սկզբունքները",
             "url": "https://asbarez.am/archives/511892",
-            "date": "2026-11-02T22:24:37.000Z",
+            "date": "2026-11-02T23:11:08.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02142340/1103Iran.png"
           },
           {
             "title": "Ըստ Իշխանական Պատգամաւորին՝ Գերիներու Հարցը Խաղաղութեան Հաստատման Գործընթացէն Անջատ Է",
             "url": "https://asbarez.am/archives/511888",
-            "date": "2026-11-02T22:17:19.000Z",
+            "date": "2026-11-02T23:09:14.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02141659/1103Artzakh.jpg"
           },
           {
-            "title": "Սահմանազատման Յաջորդ Փուլը Կրնայ Կատարուիլ Սիւնիքի` «Թրամփի Ուղի»ի Հատուածին Մէջ",
-            "url": "https://asbarez.am/archives/511885",
-            "date": "2026-11-02T22:10:21.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02140933/1103sahmanazatum.jpg"
+            "title": "Գեղամ Մանուկեան Բացառեց «Հայաստան» Խմբակցութեան Քուէներու Տրամադրումը Սահմանադրութեան Օրակարգին Վերաբերող Քննարկման",
+            "url": "https://asbarez.am/archives/511895",
+            "date": "2026-11-02T23:07:20.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02143703/1103Kegham-1.jpg"
           },
           {
             "title": "Հայկազեան Համալսարանը Նշեց Գիրքի Օրը",
@@ -6091,18 +6103,6 @@
             "url": "https://asbarez.am/archives/511794",
             "date": "2026-10-30T21:43:44.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/10/30144314/1031Hajiyev.jpg"
-          },
-          {
-            "title": "Ընդդիմութիւնը Կ՛արձագանգէ Նոր Սահմանադրութեան Վերաբերող Փաշինեանի Յայտարարութիւններուն",
-            "url": "https://asbarez.am/archives/511788",
-            "date": "2026-10-30T21:27:58.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/30142706/1031Anna.jpg"
-          },
-          {
-            "title": "Թեհրան «Թրամփի Ուղի»ի Շուրջ Լուրջ Մտահոգութիւններ Ունի, Բայց Կը Վստահի Երեւանին. Իրանի Դեսպան",
-            "url": "https://asbarez.am/archives/511785",
-            "date": "2026-10-30T21:23:54.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/30142203/1031IRAN.jpg"
           }
         ]
       },
@@ -6111,32 +6111,39 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
+            "title": "Փաշինեան Հանրային Ճնշում Կը Խոստանայ Ընդդիմութեան Վրայ, Եթէ Դէմ Ըլլան Նոր Սահմանադրութեան. Ընդդիմադիրները Կ՛արձագանգեն",
+            "url": "https://asbarez.am/archives/511904",
+            "date": "2026-11-02T23:24:51.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/19143634/ArmeniaConstiution-1.jpeg",
+            "rubric": "politique"
+          },
+          {
+            "title": "Սահմանազատման Յաջորդ Փուլը Կրնայ Կատարուիլ Սիւնիքի` «Թրամփի Ուղի»ի Հատուածին Մէջ",
+            "url": "https://asbarez.am/archives/511885",
+            "date": "2026-11-02T23:12:17.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02140933/1103sahmanazatum.jpg",
+            "rubric": "politique"
+          },
+          {
             "title": "Հայաստանի Դեսպանը Իրանցի Պատգամաւորներուն Ներկայացուց «Թրամփի Ուղի»ի Հիմնական Սկզբունքները",
             "url": "https://asbarez.am/archives/511892",
-            "date": "2026-11-02T22:24:37.000Z",
+            "date": "2026-11-02T23:11:08.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02142340/1103Iran.png",
             "rubric": "monde"
           },
           {
             "title": "Ըստ Իշխանական Պատգամաւորին՝ Գերիներու Հարցը Խաղաղութեան Հաստատման Գործընթացէն Անջատ Է",
             "url": "https://asbarez.am/archives/511888",
-            "date": "2026-11-02T22:17:19.000Z",
+            "date": "2026-11-02T23:09:14.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02141659/1103Artzakh.jpg",
             "rubric": "politique"
           },
           {
-            "title": "Սահմանազատման Յաջորդ Փուլը Կրնայ Կատարուիլ Սիւնիքի` «Թրամփի Ուղի»ի Հատուածին Մէջ",
-            "url": "https://asbarez.am/archives/511885",
-            "date": "2026-11-02T22:10:21.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02140933/1103sahmanazatum.jpg",
+            "title": "Գեղամ Մանուկեան Բացառեց «Հայաստան» Խմբակցութեան Քուէներու Տրամադրումը Սահմանադրութեան Օրակարգին Վերաբերող Քննարկման",
+            "url": "https://asbarez.am/archives/511895",
+            "date": "2026-11-02T23:07:20.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02143703/1103Kegham-1.jpg",
             "rubric": "politique"
-          },
-          {
-            "title": "«Սթիւ Արթինեան» Սրահի Բացում ՀՅԴ Հոլիվուտի «Գարեգին Նժդեհ» Ակումբին Մէջ",
-            "url": "https://asbarez.am/archives/511870",
-            "date": "2026-11-02T21:33:11.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02133010/1102Artinian1.jpg",
-            "rubric": "culture"
           },
           {
             "title": "Մարդկային Եւ Ազգային «Յուսատու Թեւեր»",
@@ -6172,13 +6179,6 @@
             "date": "2026-11-02T19:44:34.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02114403/1102hygz1.jpg",
             "rubric": "economie"
-          },
-          {
-            "title": "Վազգէն Թեւանեան Ըմբշամարտի Աշխարհի Փոխախոյեան Դարձաւ",
-            "url": "https://asbarez.am/archives/511815",
-            "date": "2026-11-02T19:41:03.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02114025/1102vasken-Tevanyan.jpg",
-            "rubric": "monde"
           }
         ]
       },
@@ -6186,12 +6186,6 @@
         "categoryKey": "kaghoutigyanken",
         "label": "Գաղութի Կեանքէն",
         "articles": [
-          {
-            "title": "«Սթիւ Արթինեան» Սրահի Բացում ՀՅԴ Հոլիվուտի «Գարեգին Նժդեհ» Ակումբին Մէջ",
-            "url": "https://asbarez.am/archives/511870",
-            "date": "2026-11-02T21:33:11.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/02133010/1102Artinian1.jpg"
-          },
           {
             "title": "Մարդկային Եւ Ազգային «Յուսատու Թեւեր»",
             "url": "https://asbarez.am/archives/511855",
@@ -6245,6 +6239,12 @@
             "url": "https://asbarez.am/archives/511656",
             "date": "2026-10-29T21:10:32.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/03/27142559/Razmig-Shirinain-1.jpg"
+          },
+          {
+            "title": "Վերանայենք Մեր Առողջական Վիճակը․ Ի՞նչ Նշանների Պէտք Է Ուշադրութիւն Դարձնել",
+            "url": "https://asbarez.am/archives/511668",
+            "date": "2026-10-29T19:22:51.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/29122339/1031AH.png"
           }
         ]
       },
@@ -6982,6 +6982,12 @@
       "label": "Diáspora",
       "articles": [
         {
+          "title": "Bakú 1918: la memoria de una ciudad que perdió a sus armenios en una masacre",
+          "url": "https://soyarmenio.com/baku-1918-masacre-armenios-paz-armenia/",
+          "date": "2026-11-02T11:10:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/04/Armenia-Azerbaiyan-1918-baku1905-0015.jpg"
+        },
+        {
           "title": "El Consejo Mundial Evangélico Armenio renueva liderazgo y fija conferencia para 2027 en Armenia",
           "url": "https://soyarmenio.com/consejo-mundial-evangelico-armenio-conferencia-2027-armenia/",
           "date": "2026-10-23T19:00:00.000Z",
@@ -7034,12 +7040,6 @@
           "url": "https://soyarmenio.com/armenia-impulsa-desarrollo-rugby-diaspora-2026/",
           "date": "2026-10-06T15:40:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2026/10/armenia-rugby-diaspora-767x511.jpg"
-        },
-        {
-          "title": "El metro de Teherán rinde homenaje a los soldados armenios caídos en la guerra Irán-Irak",
-          "url": "https://soyarmenio.com/metro-teheran-exposicion-retratos-soldados-armenios-2026/",
-          "date": "2026-10-01T16:35:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/10/metro-Teheran-soldados-armenios-768x512.jpg"
         }
       ]
     },
@@ -7138,6 +7138,18 @@
           "image": "https://soyarmenio.com/wp-content/uploads/2026/11/eleveight-inversion-armenia-768x432.jpg"
         },
         {
+          "title": "Discuten nuevo paquete legislativo para regular el comercio electrónico en Armenia conforme a las directivas de la Unión Europea",
+          "url": "https://soyarmenio.com/comercio-electronico-armenia-directivas-union-europea/",
+          "date": "2026-11-02T12:00:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/06/comercio-electronico.jpg"
+        },
+        {
+          "title": "Las remesas a Armenia se duplican entre enero y septiembre de 2026 y supera los US$2.000 millones",
+          "url": "https://soyarmenio.com/remesas-armenia-se-duplican-septiembre-2026/",
+          "date": "2026-11-02T11:30:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/AMD-66-768x433.jpg"
+        },
+        {
           "title": "empresas de Armenia y Turquía calculan el impacto de la apertura fronteriza",
           "url": "https://soyarmenio.com/empresas-armenia-turquia-impacto-apertura-fronteriza/",
           "date": "2026-11-01T11:41:00.000Z",
@@ -7160,18 +7172,6 @@
           "url": "https://soyarmenio.com/cop17-erevan-mineria-zcmc-icmm-biodiversidad-armenia/",
           "date": "2026-10-29T17:30:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2026/10/cop17-mineria-biodiversidad-767x511.jpg"
-        },
-        {
-          "title": "Impulsan el etiquetado digital de mercancías en Armenia para combatir la economía sumergida e integrar estándares de la UEE",
-          "url": "https://soyarmenio.com/etiquetado-digital-mercancias-armenia-estandares-uee/",
-          "date": "2026-10-29T16:30:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2025/05/productos-marcado-obligatorio.jpg"
-        },
-        {
-          "title": "¿Cómo comercian Armenia y Turquía sin relaciones diplomáticas?",
-          "url": "https://soyarmenio.com/comercian-armenia-turquia-rutas-georgia/",
-          "date": "2026-10-29T14:45:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/05/comercio-directo-armenia-turquia.jpg"
         }
       ]
     },
