@@ -209,18 +209,30 @@ export function checkManual({ articles, videos, langs, whatsappChannels }) {
 
 // Le référencement : IndexNow (Bing, Yandex, Yahoo) n'a besoin d'aucun
 // secret ; Google, si (GSC_SERVICE_ACCOUNT, docs/google-search-console.md).
-export function checkIndexing({ gscConfigured }) {
-  return [
-    { key: 'idx-indexnow', level: 'ok', text: 'Bing, Yandex, Yahoo : prévenus automatiquement à chaque page nouvelle (IndexNow)' },
-    gscConfigured
-      ? { key: 'idx-google', level: 'ok', text: 'Google : sitemap renvoyé automatiquement à la Search Console à chaque page nouvelle' }
-      : {
-          key: 'idx-google-off',
-          level: 'faire',
-          text: 'Google : pas prévenu automatiquement (secret GSC_SERVICE_ACCOUNT absent) — il découvre les pages seul, plus lentement',
-          action: 'Créer le compte de service Search Console (docs/google-search-console.md, 10 minutes)',
-        },
-  ]
+// `google` : null (pas de clé), ou [{ site, ok, error?, lastSubmitted? }]
+// rendu par une vraie connexion en lecture seule.
+export function checkIndexing({ google }) {
+  const rows = [{ key: 'idx-indexnow', level: 'ok', text: 'Bing, Yandex, Yahoo : prévenus automatiquement à chaque page nouvelle (IndexNow)' }]
+  if (google)
+    for (const g of google)
+      rows.push(
+        g.ok
+          ? { key: `idx-google-${g.site}`, level: 'ok', text: `Google (${g.site}) : accès vérifié, sitemap renvoyé automatiquement à chaque page nouvelle${g.lastSubmitted ? ` — dernier envoi ${g.lastSubmitted.slice(0, 16).replace('T', ' ')} UTC` : ''}` }
+          : {
+              key: `idx-google-${g.site}-ko`,
+              level: 'faire',
+              text: `Google (${g.site}) : ${g.error}`,
+              action: 'Vérifier le compte gsc-sitemaps dans Search Console (Utilisateurs, accès Total) et le secret GSC_SERVICE_ACCOUNT',
+            },
+      )
+  else
+    rows.push({
+      key: 'idx-google-off',
+      level: 'faire',
+      text: 'Google : pas prévenu automatiquement (secret GSC_SERVICE_ACCOUNT absent) — il découvre les pages seul, plus lentement',
+      action: 'Créer le compte de service Search Console (docs/google-search-console.md, 10 minutes)',
+    })
+  return rows
 }
 
 export function checkDeadlines(now = new Date(), list = DEADLINES) {
