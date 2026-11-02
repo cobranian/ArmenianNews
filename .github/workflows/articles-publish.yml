@@ -133,3 +133,9 @@ jobs:
           gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$BRANCH" || true
           gh workflow run hourly.yml --ref main
           gh pr comment "$PR" --body "✅ Fusionné : l'article sera en ligne sur armenieinfo.ch et armenianews.org dans 5 à 10 minutes (déploiement lancé)." || true
+
+      # Un échec ici ne doit plus attendre qu'on le découvre : le tableau de
+      # bord (social-check.yml) est relancé et notifie s'il y a du neuf.
+      - name: Prévenir le tableau de bord
+        if: failure()
+        run: gh workflow run social-check.yml --ref main || true

@@ -1,25 +1,49 @@
-name: Réseaux — vérifier les clés
+name: Publication — tableau de bord
 
-# Chaque jour, chaque compte branché se connecte et lit son propre nom, SANS
-# rien publier (scripts/social-post.mjs check). Une clé morte (Facebook
-# invalidée, mot de passe d'application Bluesky révoqué, bot Telegram retiré
-# du canal) ne se voyait sinon qu'au prochain article — et le registre
-# l'aurait déjà marqué « parti ». Une issue [social-down], assignée, s'ouvre
-# à la panne et se referme toute seule au retour, comme [sources-down].
+# Le tableau de bord de la publication des articles : une issue ÉPINGLÉE,
+# « [tableau-de-bord] Publication des articles », réécrite à chaque passage
+# (scripts/publication-check.mjs). Elle dit tout ce qui peut arrêter un
+# article : Gemini (crédit, clé), les modèles de secours, les PR en attente,
+# les workflows d'articles, chaque compte de réseau (connexion, droits de
+# publication, échéance de la clé Facebook, quota Instagram), les envois
+# abandonnés, la vidéo et WhatsApp à la main, les jetons qui expirent.
+#
+# Une alerte NOUVELLE ajoute un commentaire, qui notifie l'assigné ; une
+# alerte déjà signalée ne le refait pas. Né le 2 nov. 2026 : le crédit Gemini
+# était à zéro, et le propriétaire l'a appris en dernier.
+#
+# Le nom du fichier reste social-check.yml (il remplace l'ancien contrôle des
+# clés et son issue [social-down]) : test/social.test.mjs y exige les secrets.
 on:
   schedule:
-    - cron: '17 6 * * *'
+    # 02:17 : avant le brouillon de 03:00, pour qu'un crédit épuisé se voie
+    # avant de coûter une nuit. 14:17 : un second regard dans la journée.
+    - cron: '17 2 * * *'
+    - cron: '17 14 * * *'
+  # Aussi lancé par l'étape d'échec des workflows d'articles et du job social.
   workflow_dispatch:
 
 permissions:
   contents: read
   issues: write
+  pull-requests: read
+  actions: read
+
+concurrency:
+  group: publication-check
+  cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
     environment: social
     env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SOCIAL_LIVE: ${{ vars.SOCIAL_LIVE }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+      ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
       BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
       BLUESKY_APP_PASSWORD_DE: ${{ secrets.BLUESKY_APP_PASSWORD_DE }}
       BLUESKY_APP_PASSWORD_ES: ${{ secrets.BLUESKY_APP_PASSWORD_ES }}
@@ -89,38 +113,35 @@ jobs:
           cache: npm
       - run: npm ci
 
-      - name: Se connecter à chaque compte
-        id: check
-        run: node scripts/social-post.mjs check --out "$RUNNER_TEMP/cles.md"
-
-      - name: Ouvrir, mettre à jour ou refermer l'issue [social-down]
-        if: always() && steps.check.outcome == 'success'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PROBLEMS: ${{ steps.check.outputs.problems }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      - name: Retrouver l'issue du tableau de bord
+        id: issue
         run: |
-          ouverte=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '[.[] | select(.title | contains("[social-down]"))] | .[0].number // empty')
-          if [ "$PROBLEMS" = "0" ]; then
-            if [ -n "$ouverte" ]; then
-              gh issue close "$ouverte" --comment "Toutes les clés répondent à nouveau. $RUN_URL"
-            fi
-            exit 0
-          fi
-          {
-            echo "Un ou plusieurs comptes ne se connectent plus : leurs prochains posts échoueront."
-            echo
-            cat "$RUNNER_TEMP/cles.md"
-            echo
-            echo "Réparer : docs/social-setup.md (clé à recoller dans l'environnement « social »)."
-            echo "Puis retirer de src/data/social-posted.json les articles marqués « partis » pendant la panne."
-            echo
-            echo "Exécution : $RUN_URL"
-            echo
-            echo "Cette issue se met à jour chaque jour et se referme toute seule au retour."
-          } > "$RUNNER_TEMP/issue.md"
-          if [ -n "$ouverte" ]; then
-            gh issue edit "$ouverte" --body-file "$RUNNER_TEMP/issue.md"
+          n=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '[.[] | select(.title | startswith("[tableau-de-bord]"))] | .[0].number // empty')
+          echo "number=$n" >> "$GITHUB_OUTPUT"
+          if [ -n "$n" ]; then gh issue view "$n" --json body --jq .body > "$RUNNER_TEMP/previous.md"; fi
+
+      - name: Mesurer
+        run: |
+          node scripts/publication-check.mjs --body "$RUNNER_TEMP/body.md"             --comment "$RUNNER_TEMP/comment.md" --previous "$RUNNER_TEMP/previous.md"
+
+      - name: Écrire le tableau de bord, notifier s'il y a du neuf
+        env:
+          N: ${{ steps.issue.outputs.number }}
+        run: |
+          if [ -z "$N" ]; then
+            url=$(gh issue create --title "[tableau-de-bord] Publication des articles"               --assignee cobranian --body-file "$RUNNER_TEMP/body.md")
+            N="${url##*/}"
+            gh issue pin "$N" || true
           else
-            gh issue create --title "[social-down] Une clé de réseau social ne marche plus"               --assignee cobranian --body-file "$RUNNER_TEMP/issue.md"
+            gh issue edit "$N" --body-file "$RUNNER_TEMP/body.md"
           fi
+          if [ -s "$RUNNER_TEMP/comment.md" ]; then
+            gh issue comment "$N" --body-file "$RUNNER_TEMP/comment.md"
+          fi
+
+      # L'ancien contrôle ouvrait [social-down] : le tableau de bord le remplace.
+      - name: Refermer l'ancienne issue [social-down]
+        run: |
+          for n in $(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '.[] | select(.title | contains("[social-down]")) | .number'); do
+            gh issue close "$n" --comment "Remplacée par l'issue épinglée « [tableau-de-bord] Publication des articles »."
+          done

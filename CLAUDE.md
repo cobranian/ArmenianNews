@@ -823,12 +823,23 @@ de production servent toujours depuis la racine de leur domaine.
 - **Réseaux sociaux : le registre `src/data/social-posted.json` est la seule
   mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
   `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
-  ré-amorcé en silence — mais retirer UNE ligne republie cet article. Un compte
+  ré-amorcé en silence — mais retirer UNE ligne republie cet article. Un envoi
+  refusé par la plateforme en sort tout seul (`settle`, entrée `failed`) et
+  repart au run suivant, 3 fois au plus ; au-delà il est abandonné, signalé au
+  tableau de bord, et se relance par `social-post.mjs retry`. Un compte
   sans entrée y est amorcé, jamais servi l'archive. Un jeu de comptes par
   langue (`ACCOUNT_SETS`, `scripts/lib/social.mjs`) : `ch`/`org` gardent ces
   noms pour fr/en — les renommer ré-amorcerait les comptes. Un secret de canal
   se déclare dans les TROIS workflows (`hourly.yml`, `social-test.yml`,
   `social-check.yml`) ; `test/social.test.mjs` échoue sur l'oubli.
+- **Le tableau de bord de la publication est une issue épinglée**,
+  `[tableau-de-bord] Publication des articles`, réécrite par `social-check.yml`
+  (02:17 et 14:17 UTC, et après chaque échec d'un workflow d'articles) :
+  Gemini et ses secours, PR en attente, comptes et clés, envois abandonnés,
+  échéances. Une alerte nouvelle y ajoute un commentaire (c'est lui qui
+  notifie). Une échéance qu'aucune API ne dit (jeton du Worker…) se déclare
+  dans `DEADLINES` (`scripts/lib/publication-check.mjs`) — sinon elle tombe
+  en silence.
 - **IndexNow prévient Bing des pages nouvelles, et c'est le SEUL canal du
   .ch** : Bing Webmaster Tools lui accorde 0 soumission manuelle par jour.
   `hourly.yml` recopie les sitemaps en ligne avant le déploiement et soumet
@@ -1042,9 +1053,11 @@ de production servent toujours depuis la racine de leur domaine.
   'OWNER'` (et, pour les idées, issue écrite par `github-actions[bot]` — dépôt
   public, une issue au même titre se contrefait). Ne l'élargissez jamais.
   (6) Le grounding Google Search de Gemini interdit de stocker/publier ses
-  résultats : jamais pour un brouillon. (7) Les traductions n'ont aucun repli de
-  modèle, à dessein (du hy/ru/en non relu serait publié) : une panne Gemini
-  retarde la publication, avec un commentaire. (8) Pas de réaction 👀 sur une
+  résultats : jamais pour un brouillon. (7) Depuis le 2 nov. 2026, les traductions
+  se replient sur le secours `:free` quand Gemini tombe (un crédit à zéro
+  bloquait TOUTE publication) : un seul modèle par run (`sticky`), et la garde
+  d'alphabet (`translationScriptProblem`, 10 %) refuse le latin glissé dans
+  l'arménien — ne la desserrez pas, c'est la seule relecture de ces textes. (8) Pas de réaction 👀 sur une
   commande = elle a été écartée (GitHub ne garde qu'un run en attente par
   groupe) : renvoyez-la. (9) Une branche `culture/*` ouverte avant ce chantier
   n'a pas `scripts/culture-revise.mjs` : `/corrige` y échoue jusqu'au rebase.

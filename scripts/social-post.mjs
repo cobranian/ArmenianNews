@@ -12,6 +12,9 @@
 //   node scripts/social-post.mjs settle --results <res.jsonl>
 //        Reporte les résultats dans le registre : un échec en sort et sera
 //        retenté (MAX_ATTEMPTS fois), un succès efface son échec passé.
+//   node scripts/social-post.mjs retry --channel instagram-hy --item culture:duduk
+//        Remet en file un article ABANDONNÉ (3 échecs) une fois la cause
+//        réglée : efface son échec et sa marque « parti ». À pousser (PR).
 //   node --env-file=.env scripts/social-post.mjs test --channel facebook-ch [--item culture:komitas] [--yes]
 //        Local : aperçu d'un message, et avec --yes, un envoi réel hors
 //        registre — pour vérifier des identifiants neufs, ou publier une
@@ -158,6 +161,21 @@ async function doSettle() {
   console.log(`· social : ${results.length - ko.length} succès, ${ko.length} échec(s) reporté(s) au registre`)
 }
 
+async function doRetry() {
+  const channel = opt('--channel')
+  const id = opt('--item')
+  if (!channel || !id) throw new Error('usage : retry --channel <canal> --item <id>')
+  const ledger = await readLedger()
+  const entry = ledger.channels?.[channel]
+  if (!entry) throw new Error(`canal absent du registre : ${channel}`)
+  const had = Boolean(entry.failed?.[id]) || id in entry.posted
+  if (entry.failed) delete entry.failed[id]
+  if (entry.failed && !Object.keys(entry.failed).length) delete entry.failed
+  delete entry.posted[id]
+  await writeFile(LEDGER, JSON.stringify(ledger, null, 2) + '\n')
+  console.log(had ? `· ${channel} : ${id} remis en file — poussez src/data/social-posted.json` : `· ${channel} : ${id} n'était pas au registre (rien à faire)`)
+}
+
 async function doTest() {
   const id = opt('--channel')
   const channel = CHANNELS.find((c) => c.id === id)
@@ -203,9 +221,9 @@ async function doCheck() {
   if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `problems=${lines.length}\n`)
 }
 
-const run = { plan: doPlan, post: doPost, settle: doSettle, test: doTest, check: doCheck }[cmd]
+const run = { plan: doPlan, post: doPost, settle: doSettle, retry: doRetry, test: doTest, check: doCheck }[cmd]
 if (!run) {
-  console.error('usage : social-post.mjs plan|post|settle|test|check …')
+  console.error('usage : social-post.mjs plan|post|settle|retry|test|check …')
   process.exit(2)
 }
 run().catch((e) => {
