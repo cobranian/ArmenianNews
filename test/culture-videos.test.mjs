@@ -66,7 +66,7 @@ test('videoLd : nœud complet, rattaché à la page et à l’éditeur', () => {
   const n = videoLd(V, 'fr', 'https://armenieinfo.ch/culture/x/', SITES.ch)
   assert.equal(n['@id'], 'https://armenieinfo.ch/culture/x/#video')
   assert.deepEqual(n.thumbnailUrl, ['https://i.ytimg.com/vi/dvMyEVpzB4Y/hqdefault.jpg'])
-  assert.equal(n.uploadDate, '2026-10-29')
+  assert.equal(n.uploadDate, '2026-10-29T00:00:00+00:00')
   assert.equal(n.inLanguage, 'fr')
   assert.deepEqual(n.publisher, { '@id': 'https://armenieinfo.ch/#organization' })
 })

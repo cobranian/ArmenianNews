@@ -67,7 +67,9 @@ export function videoLd(video, lang, pageUrl, site) {
     name: video.title,
     description: video.description,
     thumbnailUrl: [thumbUrl(video.youtube)],
-    uploadDate: video.uploadDate,
+    // Date seule dans le JSON (jour de mise en ligne) ; Google recommande un
+    // fuseau, sans quoi il prend celui de Googlebot et Search Console avertit.
+    uploadDate: `${video.uploadDate}T00:00:00+00:00`,
     duration: video.duration,
     embedUrl: embedUrl(video.youtube),
     url: watchUrl(video.youtube),
