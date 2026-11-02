@@ -113,3 +113,23 @@ export function frenchWords(text, lang, min = 2) {
   const found = new Set(lower.filter((w) => markers.has(w) || accent.test(w)))
   return found.size >= min ? [...found] : []
 }
+
+// La garde d'alphabet d'une TRADUCTION Culture (culture-translate.mjs). Plus
+// souple que celle de la brève : un article cite des noms propres dans leur
+// écriture d'origine. Mesuré le 2 nov. 2026 sur les 21 articles publiés : au
+// plus 1,1 % de lettres « étrangères » en en/de/it/es, 6,3 % en hy/ru. Au-delà
+// de 10 %, ou avec un seul mot qui MÉLANGE deux alphabets (« Մասսudz »), la
+// traduction n'est pas écrite. Rend la raison du refus, ou null.
+export const MAX_FOREIGN_SHARE = 0.1
+export function translationScriptProblem(text, lang) {
+  const expected = SCRIPTS[EXPECTED[lang]]
+  if (!expected) return null
+  const clean = String(text ?? '').replace(/\]\([^)]*\)/g, ']') // URL des liens Markdown
+  const letters = [...clean].filter((c) => /\p{L}/u.test(c))
+  if (!letters.length) return 'texte vide'
+  const share = letters.filter((c) => !expected.test(c)).length / letters.length
+  if (share > MAX_FOREIGN_SHARE) return `${Math.round(share * 100)} % de lettres hors de l'alphabet attendu`
+  const mixed = words(clean).filter((w) => Object.values(SCRIPTS).filter((re) => re.test(w)).length > 1)
+  if (mixed.length) return `mot(s) mêlant deux alphabets : ${mixed.slice(0, 3).join(', ')}`
+  return null
+}

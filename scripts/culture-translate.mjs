@@ -10,6 +10,11 @@
  * n'atteint `main` qu'avec la fusion. Une langue en échec n'empêche pas les
  * autres d'être écrites.
  *
+ * Gemini en panne ou sans crédit : la traduction passe au modèle de secours
+ * (culture-llm.mjs, `chatResilient`), le MÊME pour toutes les langues du run,
+ * et le résumé de la PR le dit en tête. Toute traduction passe la garde
+ * d'alphabet : refusée, elle n'est pas écrite.
+ *
  * de et it sont FACULTATIVES (culture-validate, OPTIONAL) : le titre de leur
  * Wikipédia (meta.sources) est transmis comme nom en usage, et la traduction
  * est comparée à l'extrait de cette page — au-dessus de OVERLAP_THRESHOLD,
@@ -23,7 +28,8 @@ import { parseArgs } from 'node:util'
 import { parseFrontMatter, serializeFrontMatter, bodyHash } from './lib/culture-markdown.mjs'
 import { TRANSLATED, OPTIONAL, chosenImage } from './lib/culture-validate.mjs'
 import { setTopicStatus } from './lib/culture-topic.mjs'
-import { llmConfig, chat, isUnavailable } from './lib/culture-llm.mjs'
+import { chatResilient, explain } from './lib/culture-llm.mjs'
+import { translationScriptProblem } from './lib/brief-script.mjs'
 import { buildTranslateMessages, parseArticleJson } from './lib/culture-prompts.mjs'
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
@@ -74,7 +80,8 @@ if ((chosen?.commonsUrl ?? null) !== (meta.image?.commonsUrl ?? null)) {
   }
 }
 
-const cfg = llmConfig()
+// Partagé entre les langues : après un repli, toutes vont au même modèle.
+const sticky = {}
 for (const lang of langs) {
   const optional = OPTIONAL.includes(lang)
   try {
@@ -82,13 +89,15 @@ for (const lang of langs) {
     const nameHint = optional
       ? (meta.sources ?? []).find((s) => (s?.kind ?? 'wikipedia') === 'wikipedia' && s.lang === lang)?.title ?? null
       : null
-    const res = await chat({
-      ...cfg,
+    const res = await chatResilient({
+      sticky,
       temperature: 0.2,
       messages: buildTranslateMessages({ lang, title: fr.data.title, description: fr.data.description, body: fr.body, nameHint }),
     })
     const t = parseArticleJson(res.text)
     if (!t) throw new Error('réponse illisible (JSON attendu)')
+    const script = translationScriptProblem([t.title, t.description, t.body].join('\n'), lang)
+    if (script) throw new Error(`garde d'alphabet (\`${res.model}\`) : ${script} — traduction non écrite`)
     if (optional) {
       const o = await translationOverlap(lang, t.body, meta.sources ?? [])
       if (o?.error) lines.push(`- ⚠️ ${lang} — recouvrement non mesuré : Wikipédia ${lang} illisible (${o.error})`)
@@ -111,11 +120,20 @@ for (const lang of langs) {
   } catch (e) {
     if (optional) optionalFailed++
     else failed++
-    lines.push(isUnavailable(e)
-      ? `- ✗ ${lang} — traduction reportée : Gemini indisponible (${e.message})`
-      : `- ✗ ${lang} — ${e.message}`)
+    // Le secours lui aussi tombé : la cause qui compte est celle du PRINCIPAL
+    // (un crédit à recharger), pas le 429 du dernier modèle gratuit essayé.
+    lines.push(e.primaryError
+      ? `- ✗ ${lang} — ${explain(e.primaryError)} ; secours sans réponse (${e.message})`
+      : `- ✗ ${lang} — ${e.status || e.empty ? explain(e) : e.message}`)
     console.warn(`  ✗ ${slug}/${lang} : ${e.message}`)
   }
+}
+
+// En tête du résumé : le propriétaire doit savoir qu'il y a quelque chose à
+// faire (payer, changer de clé), pas seulement qu'une langue a échoué.
+if (sticky.model) {
+  lines.splice(1, 0, `> ⚠️ **${explain(sticky.primaryError)}.** Traductions faites par le modèle de secours \`${sticky.model}\` : relisez-les avec plus de soin.`, '')
+  console.warn(`  ⚠ repli : ${explain(sticky.primaryError)}`)
 }
 
 const sujetsPath = path.join(DIR, 'sujets.json')

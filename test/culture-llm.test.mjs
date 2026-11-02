@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import {
-  chat, chatDraft, isUnavailable, llmConfig, DEFAULT_BASE_URL, DEFAULT_MODEL,
+  chat, chatDraft, chatResilient, isUnavailable, isKeyRefused, explain, llmConfig, DEFAULT_BASE_URL, DEFAULT_MODEL,
   CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL,
 } from '../scripts/lib/culture-llm.mjs'
 
@@ -92,7 +92,10 @@ test('chatDraft : Gemini 429 → premier repli OpenRouter avec la clé OpenRoute
   const r = await chatDraft({
     messages, env: { GEMINI_API_KEY: 'G_KEY', OPENROUTER_API_KEY: 'OR_KEY' }, fetchImpl: router(429, calls),
   })
-  assert.deepEqual(r, { text: 'repli', model: CULTURE_FALLBACK_MODELS[0], fellBack: true })
+  assert.equal(r.text, 'repli')
+  assert.equal(r.model, CULTURE_FALLBACK_MODELS[0])
+  assert.equal(r.fellBack, true)
+  assert.equal(r.primaryError.status, 429)
   assert.equal(calls.length, 2)
   assert.match(calls[0].url, /generativelanguage/)
   assert.equal(calls[1].auth, 'Bearer OR_KEY')
@@ -103,7 +106,8 @@ test('chatDraft : Gemini 429 → premier repli OpenRouter avec la clé OpenRoute
 test('chatDraft : Gemini 402 (crédit épuisé) → repli OpenRouter', async () => {
   const calls = []
   const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: router(402, calls) })
-  assert.deepEqual(r, { text: 'repli', model: CULTURE_FALLBACK_MODELS[0], fellBack: true })
+  assert.equal(r.fellBack, true)
+  assert.equal(r.primaryError.status, 402)
 })
 
 test('chat : raisonnement coupé sur OpenRouter, jamais envoyé à Gemini', async () => {
@@ -117,16 +121,70 @@ test('chat : raisonnement coupé sur OpenRouter, jamais envoyé à Gemini', asyn
 
 test('chatDraft : Gemini disponible → pas de repli', async () => {
   const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G' }, fetchImpl: router(200) })
-  assert.deepEqual(r, { text: 'gemini', model: DEFAULT_MODEL, fellBack: false })
+  assert.deepEqual(r, { text: 'gemini', model: DEFAULT_MODEL, fellBack: false, primaryError: null })
 })
 
-test('chatDraft : Gemini 401 → rejette sans repli', async () => {
+// Clé Gemini révoquée ou facturation coupée : le secours est un AUTRE
+// fournisseur, avec sa propre clé — il peut répondre.
+test('chatDraft : Gemini 401/403 → repli chez OpenRouter', async () => {
+  for (const status of [401, 403]) {
+    const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: router(status) })
+    assert.equal(r.fellBack, true, String(status))
+    assert.equal(r.primaryError.status, status)
+  }
+})
+
+test('chatDraft : 401 quand le principal EST OpenRouter → rejette sans repli', async () => {
   const calls = []
+  const fetchImpl = async (url, init) => {
+    calls.push(url)
+    return { ok: false, status: 401, json: async () => ({}) }
+  }
   await assert.rejects(
-    chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: router(401, calls) }),
+    chatDraft({ messages, env: { ARTICLES_BASE_URL: OPENROUTER_BASE_URL, OPENROUTER_API_KEY: 'OR' }, fetchImpl }),
     (e) => e.status === 401,
   )
-  assert.equal(calls.some((c) => c.url.includes('openrouter.ai')), false)
+  assert.equal(calls.length, 1)
+})
+
+test('chatDraft : 400 (requête fautive) → rejette sans repli', async () => {
+  const calls = []
+  await assert.rejects(
+    chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: router(400, calls) }),
+    (e) => e.status === 400,
+  )
+  assert.equal(calls.length, 1)
+})
+
+test('chatResilient : sticky — après un repli, les appels suivants vont droit au secours', async () => {
+  const calls = []
+  const env = { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }
+  const sticky = {}
+  const a = await chatResilient({ messages, env, fetchImpl: router(402, calls), sticky })
+  const b = await chatResilient({ messages, env, fetchImpl: router(402, calls), sticky })
+  assert.equal(sticky.model, CULTURE_FALLBACK_MODELS[0])
+  assert.equal(a.model, b.model, 'le même modèle pour toutes les langues')
+  assert.equal(b.primaryError.status, 402)
+  assert.equal(calls.filter((c) => c.url.includes('generativelanguage')).length, 1, 'Gemini mort n’est plus réessayé')
+})
+
+test('chatResilient : tout tombe → l’erreur porte la cause du PRINCIPAL', async () => {
+  const fetchImpl = async (url) => ({ ok: false, status: url.includes('openrouter') ? 429 : 402, json: async () => ({}) })
+  await assert.rejects(
+    chatResilient({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl }),
+    (e) => e.status === 429 && e.primaryError?.status === 402,
+  )
+})
+
+test('explain : un 402 dit qu’il faut payer, pas « indisponible »', () => {
+  assert.match(explain(httpErr(402)), /crédit épuisé.*recharg/)
+  assert.match(explain(httpErr(401)), /clé refusée/)
+  assert.match(explain(httpErr(403)), /clé refusée/)
+  assert.match(explain(httpErr(429)), /quota/)
+  assert.match(explain(httpErr(404)), /retiré/)
+  assert.match(explain(httpErr(503)), /panne/)
+  assert.equal(isKeyRefused(httpErr(403)), true)
+  assert.equal(isKeyRefused(httpErr(402)), false)
 })
 
 test('chatDraft : sans OPENROUTER_API_KEY → rejette l’erreur Gemini', async () => {
@@ -171,7 +229,8 @@ test('chatDraft : Gemini rend une réponse vide → repli OpenRouter', async () 
     return { ok: true, status: 200, json: async () => ({ model, choices: [{ message: { content: 'repli' } }] }) }
   }
   const r = await chatDraft({ messages, env: { GEMINI_API_KEY: 'G', OPENROUTER_API_KEY: 'OR' }, fetchImpl: f })
-  assert.deepEqual(r, { text: 'repli', model: CULTURE_FALLBACK_MODELS[0], fellBack: true })
+  assert.deepEqual({ ...r, primaryError: undefined }, { text: 'repli', model: CULTURE_FALLBACK_MODELS[0], fellBack: true, primaryError: undefined })
+  assert.equal(r.primaryError.empty, true)
   assert.equal(calls.length, 2)
 })
 
