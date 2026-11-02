@@ -28,7 +28,10 @@ export async function chat({
   const res = await fetchImpl(url, {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model, temperature, messages }),
+    // Sur OpenRouter, le raisonnement est coupé comme pour la brève et le
+    // classement : allumé, nemotron-3-ultra dépassait le délai de 180 s même
+    // sur un paragraphe (mesuré le 2 nov. 2026). Gemini ne reçoit rien de plus.
+    body: JSON.stringify({ model, temperature, messages, ...(/openrouter\.ai/.test(baseUrl) ? { reasoning: { enabled: false } } : {}) }),
     signal: AbortSignal.timeout(timeoutMs),
   })
   if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status} (${model})`), { status: res.status })
@@ -43,20 +46,27 @@ export async function chat({
   return { text, model: body?.model || model }
 }
 
-// Repli de la RÉDACTION seulement. Modèles :free d'OpenRouter, mêmes replis
-// que classify-rubrics.mjs (super-120b, 404 depuis le 24 oct. 2026, remplacé). Ils se retirent (404) : voir CLAUDE.md,
-// « modèles :free se retirent » — les relire dans /api/v1/models le cas échéant.
+// Repli de la RÉDACTION seulement. Modèles :free d'OpenRouter. Ils se retirent
+// (404) : voir CLAUDE.md, « modèles :free se retirent » — les relire dans
+// /api/v1/models le cas échéant. Ordre mesuré le 2 nov. 2026 (Gemini en 402,
+// crédit prépayé à zéro) : super-vl a rendu 400 mots de français accentué, en
+// JSON, en 9 s ; ultra dépassait 180 s, raisonnement coupé ou non ; les deux
+// gemma répondaient 429 (« rate-limited upstream »). inkling:free répond 403
+// hors des « harnais agentiques » : inutilisable ici.
 // La traduction n'en use jamais : un modèle qui change d'une langue à l'autre
 // ferait diverger le ton des quatre éditions.
 export const CULTURE_FALLBACK_MODELS = [
+  'nvidia/nemotron-3.5-super-vl:free',
   'nvidia/nemotron-3-ultra-550b-a55b:free',
   'google/gemma-4-31b-it:free',
 ]
 export const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1/'
 
-// « Le service ne répond pas » (429, 404, 5xx, délai, réseau coupé) — par
+// « Le service ne répond pas » (402, 429, 404, 5xx, délai, réseau coupé) — par
 // opposition à une requête ou une clé fautive (400/401/403), que changer de
-// modèle ne réparerait pas. La réponse vide est à part (voir chatDraft).
+// modèle ne réparerait pas. 402 : crédit prépayé Gemini épuisé — le brouillon
+// du 2 nov. 2026 est mort sur « HTTP 402 (gemini-flash-latest) » sans essayer
+// le moindre repli. La réponse vide est à part (voir chatDraft).
 const NETWORK_CODES = new Set(['ECONNRESET', 'ETIMEDOUT', 'ENOTFOUND', 'EAI_AGAIN'])
 export function isUnavailable(err) {
   if (err?.name === 'TimeoutError' || err?.name === 'AbortError') return true
@@ -64,7 +74,7 @@ export function isUnavailable(err) {
   if (err instanceof TypeError && /fetch failed/.test(err.message)) return true
   if (NETWORK_CODES.has(err?.cause?.code)) return true
   const s = err?.status
-  return s === 429 || s === 404 || (typeof s === 'number' && s >= 500)
+  return s === 402 || s === 429 || s === 404 || (typeof s === 'number' && s >= 500)
 }
 
 export async function chatDraft({ messages, temperature, env = process.env, fetchImpl } = {}) {
