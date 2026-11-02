@@ -155,7 +155,7 @@ function translatedFrom(lang, slug) {
   return `<p class="culture__translated"><a href="${cultureUrl('fr', slug)}" hreflang="fr">${esc(label)}</a></p>`
 }
 
-export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now(), videos = {} }) {
+export function cultureArticleHtml({ siteId, lang, article, list, bySlug, cssHref, now = Date.now(), videos = {}, seoTitles = {} }) {
   const s = CULTURE_STRINGS[lang]
   const a = article.langs[lang]
   const video = videoFor(videos, article.slug, lang)
@@ -184,7 +184,8 @@ ${renderMarkdown(a.body)}
       ${pager(lang, nb)}
       ${readAlso(lang, article, list)}
     </main>`
-  const head = cultureHeadFor({ siteId, lang, slug: article.slug, article, bySlug, video })
+  const seoTitle = seoTitles?.[article.slug]?.[lang] ?? null
+  const head = cultureHeadFor({ siteId, lang, slug: article.slug, article, bySlug, video, seoTitle })
   return pageShell({
     siteId,
     lang,
@@ -213,7 +214,7 @@ export function cultureIndexHtml({ siteId, lang, list, bySlug, cssHref }) {
 
 // Les pages d'UNE vitrine : seulement ses langues. Les images ne sont copiées
 // que pour les articles publiés dans au moins une de ses langues.
-export async function writeCulturePages(site, dist, articles, cssHref, srcDir, now = Date.now(), videos = {}) {
+export async function writeCulturePages(site, dist, articles, cssHref, srcDir, now = Date.now(), videos = {}, seoTitles = {}) {
   const bySlug = cultureLangsBySlug(articles)
   let n = 0
   const put = async (rel, html) => {
@@ -228,7 +229,7 @@ export async function writeCulturePages(site, dist, articles, cssHref, srcDir, n
     for (const article of articles.filter((a) => a.langs[lang]))
       await put(
         culturePath(lang, article.slug),
-        cultureArticleHtml({ siteId: site.id, lang, article, list: articles, bySlug, cssHref, now, videos }),
+        cultureArticleHtml({ siteId: site.id, lang, article, list: articles, bySlug, cssHref, now, videos, seoTitles }),
       )
   }
   for (const a of articles) {
