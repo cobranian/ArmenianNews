@@ -136,7 +136,7 @@ test('chatDraft : Gemini 401/403 → repli chez OpenRouter', async () => {
 
 test('chatDraft : 401 quand le principal EST OpenRouter → rejette sans repli', async () => {
   const calls = []
-  const fetchImpl = async (url, init) => {
+  const fetchImpl = async (url) => {
     calls.push(url)
     return { ok: false, status: 401, json: async () => ({}) }
   }

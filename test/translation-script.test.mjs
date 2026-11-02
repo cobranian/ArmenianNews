@@ -8,7 +8,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { translationScriptProblem, MAX_FOREIGN_SHARE } from '../scripts/lib/brief-script.mjs'
 
 test('une traduction propre passe, noms propres latins compris', () => {
-  assert.equal(translationScriptProblem('Կոմիտասը (Komitas) հայ երգահան է, ով հավաքել է հազարավոր երգեր։', 'hy'), null)
+  assert.equal(translationScriptProblem('Կոմիտասը (Komitas) հայ երգահան է, ով հավաքել է հազարավոր ժողովրդական երգեր Հայաստանի գյուղերում և քաղաքներում, դրանք գրի առել ու մշակել երգչախմբի համար։', 'hy'), null)
   assert.equal(translationScriptProblem('Комитас — армянский композитор, собравший тысячи песен.', 'ru'), null)
   assert.equal(translationScriptProblem('Komitas was an Armenian composer ([source](https://hy.wikipedia.org/wiki/Կոմիտաս)).', 'en'), null)
 })
