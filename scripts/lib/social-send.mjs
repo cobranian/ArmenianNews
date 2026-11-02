@@ -13,9 +13,29 @@ export const LINKEDIN_VERSION = process.env.LINKEDIN_VERSION || '202509'
 const X_TWEETS = 'https://api.x.com/2/tweets'
 const BSKY = 'https://bsky.social/xrpc'
 const TELEGRAM = 'https://api.telegram.org'
+export const IG_READY_MS = 90_000
+export const IG_POLL_MS = 5_000
+export const IG_PUBLISH_TRIES = 4
+
+// Les appels qui PUBLIENT. Une erreur y est ambiguë si elle n'est pas un refus
+// net (4xx) : un délai dépassé, une coupure, un 5xx peuvent arriver APRÈS que
+// la plateforme a publié. Ces échecs-là ne sont jamais retentés (un doublon
+// sur un compte de marque se voit plus qu'un oubli) : `uncertain`, à vérifier
+// à la main. Partout ailleurs (préparation, session, vignette), rien n'est
+// encore parti : l'échec est sûr, le run suivant retente.
+const FINAL = new Set(['facebook', 'instagram/publish', 'bluesky', 'telegram', 'linkedin', 'x'])
+export function isUncertain(err) {
+  if (!err?.final) return false
+  return !(err.status >= 400 && err.status < 500)
+}
 
 async function call(f, url, init, what) {
-  const res = await f(url, { ...init, signal: AbortSignal.timeout(30_000) })
+  let res
+  try {
+    res = await f(url, { ...init, signal: AbortSignal.timeout(30_000) })
+  } catch (e) {
+    throw Object.assign(new Error(`${what} : ${e.name === 'TimeoutError' ? 'délai dépassé' : e.message}`), { final: FINAL.has(what) })
+  }
   const text = await res.text()
   let json = null
   try {
@@ -25,7 +45,7 @@ async function call(f, url, init, what) {
   }
   if (!res.ok) {
     const msg = json?.error?.message ?? json?.detail ?? json?.message ?? json?.description ?? text.slice(0, 200)
-    throw new Error(`${what} : HTTP ${res.status} ${msg}`)
+    throw Object.assign(new Error(`${what} : HTTP ${res.status} ${msg}`), { status: res.status, final: FINAL.has(what) })
   }
   return { res, json }
 }
@@ -108,8 +128,13 @@ const SENDERS = {
       'instagram/media',
     )
     // Le conteneur se prépare côté Meta (téléchargement de l'image) ; le
-    // publier trop tôt répond « media not ready ».
-    for (let i = 0; i < 10; i++) {
+    // publier trop tôt répond « Media ID is not available ». Avant le 2 nov.
+    // 2026, la boucle s'arrêtait après 30 s et publiait QUAND MÊME : quatre
+    // posts perdus ce jour-là (duduk ×2, Sayat-Nova, tapis), alors que huit
+    // comptes publiaient en parallèle et chargeaient Meta. On attend donc
+    // FINISHED jusqu'à IG_READY_MS, et sans FINISHED on ne publie pas.
+    // Compté en essais et non en horloge : les tests injectent `wait`.
+    for (let polls = 0; ; polls++) {
       const { json: st } = await call(
         f,
         `${GRAPH}/${box.id}?fields=status_code`,
@@ -119,15 +144,26 @@ const SENDERS = {
       if (st?.status_code === 'FINISHED') break
       if (st?.status_code === 'ERROR' || st?.status_code === 'EXPIRED')
         throw new Error(`instagram : conteneur ${st.status_code}`)
-      await wait(3000)
+      if (polls * IG_POLL_MS >= IG_READY_MS) throw new Error(`instagram : conteneur pas prêt après ${IG_READY_MS / 1000} s (${st?.status_code ?? 'statut inconnu'})`)
+      await wait(IG_POLL_MS)
     }
-    const { json: r } = await call(
-      f,
-      `${GRAPH}/${c.userId}/media_publish`,
-      form({ creation_id: box.id, access_token: c.token }),
-      'instagram/publish',
-    )
-    return r?.id
+    // Même FINISHED, Meta répond parfois « not available » une ou deux
+    // secondes encore : le conteneur n'est pas publié, on peut réessayer sans
+    // risque de doublon.
+    for (let i = 1; ; i++) {
+      try {
+        const { json: r } = await call(
+          f,
+          `${GRAPH}/${c.userId}/media_publish`,
+          form({ creation_id: box.id, access_token: c.token }),
+          'instagram/publish',
+        )
+        return r?.id
+      } catch (e) {
+        if (i >= IG_PUBLISH_TRIES || !/not available|not ready/i.test(e.message)) throw e
+        await wait(IG_POLL_MS)
+      }
+    }
   },
 
   async linkedin(p, c, f) {
@@ -197,7 +233,16 @@ const SENDERS = {
 // compte vu par la plateforme, ou lève avec la raison.
 const VERIFIERS = {
   async facebook(c, f) {
-    const token = await pageToken(c, f)
+    // STRICT, contrairement à l'envoi : sans clé de Page dérivable, la clé ne
+    // peut pas publier, même si elle lit encore le nom de la Page.
+    const { json: t } = await call(
+      f,
+      `${GRAPH}/${c.pageId}?fields=access_token`,
+      { headers: { authorization: `Bearer ${c.token}` } },
+      'facebook/token',
+    )
+    const token = t?.access_token
+    if (!token) throw new Error('facebook : aucune clé de Page pour cette Page (droits de l’app à réautoriser)')
     const { json: r } = await call(f, `${GRAPH}/${c.pageId}?fields=name`, { headers: { authorization: `Bearer ${token}` } }, 'facebook')
     return r?.name
   },
@@ -218,6 +263,43 @@ const VERIFIERS = {
     const { json: r } = await call(f, 'https://api.linkedin.com/v2/userinfo', { headers: { authorization: `Bearer ${c.token}` } }, 'linkedin')
     return r?.name
   },
+}
+
+// Ce que lire son nom ne dit PAS : la clé Facebook (une clé utilisateur, qui
+// sert aussi Instagram) a-t-elle encore les droits de PUBLIER, et quand
+// expire-t-elle ? Une clé qui lit la Page sans `pages_manage_posts` passait
+// le contrôle quotidien et échouait au premier article. `debug_token` le dit,
+// et une clé utilisateur peut s'inspecter elle-même (le propriétaire est
+// développeur de l'app). Rend { expiresAt: Date|null, missing: [droits] }.
+export const FB_PUBLISH_SCOPES = ['pages_manage_posts', 'instagram_content_publish']
+export async function tokenHealth(token, { fetch: f = fetch } = {}) {
+  const q = new URLSearchParams({ input_token: token, access_token: token })
+  const { json } = await call(f, `${GRAPH}/debug_token?${q}`, {}, 'facebook/debug_token')
+  const d = json?.data ?? {}
+  if (d.is_valid === false) throw new Error(`facebook : clé invalide (${d.error?.message ?? 'debug_token'})`)
+  const scopes = new Set(d.scopes ?? [])
+  // 0 = n'expire jamais (clé de Page dérivée d'une clé longue durée).
+  const exp = Number(d.expires_at) || 0
+  const dataExp = Number(d.data_access_expires_at) || 0
+  const soonest = [exp, dataExp].filter((t) => t > 0).sort((a, b) => a - b)[0]
+  return {
+    expiresAt: soonest ? new Date(soonest * 1000) : null,
+    missing: FB_PUBLISH_SCOPES.filter((s) => !scopes.has(s)),
+  }
+}
+
+// Le quota de publication Instagram (100 posts par 24 h glissantes et par
+// compte, en 2026). Exige `instagram_content_publish` : une lecture qui
+// réussit prouve aussi ce droit. Rend { used, total } ou lève.
+export async function instagramQuota(c, { fetch: f = fetch } = {}) {
+  const { json } = await call(
+    f,
+    `${GRAPH}/${c.userId}/content_publishing_limit?fields=quota_usage,config`,
+    { headers: { authorization: `Bearer ${c.token}` } },
+    'instagram/quota',
+  )
+  const d = json?.data?.[0] ?? {}
+  return { used: Number(d.quota_usage) || 0, total: Number(d.config?.quota_total) || null }
 }
 
 export async function verify(channel, creds, { fetch: f = fetch } = {}) {

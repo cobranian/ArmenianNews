@@ -1,86 +1,44 @@
-name: Réseaux — vérifier les clés
+name: Publication — tableau de bord
 
-# Chaque jour, chaque compte branché se connecte et lit son propre nom, SANS
-# rien publier (scripts/social-post.mjs check). Une clé morte (Facebook
-# invalidée, mot de passe d'application Bluesky révoqué, bot Telegram retiré
-# du canal) ne se voyait sinon qu'au prochain article — et le registre
-# l'aurait déjà marqué « parti ». Une issue [social-down], assignée, s'ouvre
-# à la panne et se referme toute seule au retour, comme [sources-down].
+# Le tableau de bord de la publication des articles : une issue ÉPINGLÉE,
+# « [tableau-de-bord] Publication des articles », réécrite à chaque passage
+# (scripts/publication-check.mjs). Elle dit tout ce qui peut arrêter un
+# article : Gemini (crédit, clé), les modèles de secours, les PR en attente,
+# les workflows d'articles, chaque compte de réseau (connexion, droits de
+# publication, échéance de la clé Facebook, quota Instagram), les envois
+# abandonnés, la vidéo et WhatsApp à la main, les jetons qui expirent.
+#
+# Une alerte NOUVELLE ajoute un commentaire, qui notifie l'assigné ; une
+# alerte déjà signalée ne le refait pas. Né le 2 nov. 2026 : le crédit Gemini
+# était à zéro, et le propriétaire l'a appris en dernier.
+#
+# Le nom du fichier reste social-check.yml (il remplace l'ancien contrôle des
+# clés et son issue [social-down]) : test/social.test.mjs y exige les secrets.
 on:
   schedule:
-    - cron: '17 6 * * *'
+    # 02:17 : avant le brouillon de 03:00, pour qu'un crédit épuisé se voie
+    # avant de coûter une nuit. 14:17 : un second regard dans la journée.
+    - cron: '17 2 * * *'
+    - cron: '17 14 * * *'
+  # Aussi lancé par l'étape d'échec des workflows d'articles et du job social.
   workflow_dispatch:
 
 permissions:
   contents: read
   issues: write
+  pull-requests: read
+  actions: read
+
+concurrency:
+  group: publication-check
+  cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
     environment: social
     env:
-      BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
-      BLUESKY_APP_PASSWORD_DE: ${{ secrets.BLUESKY_APP_PASSWORD_DE }}
-      BLUESKY_APP_PASSWORD_ES: ${{ secrets.BLUESKY_APP_PASSWORD_ES }}
-      BLUESKY_APP_PASSWORD_HY: ${{ secrets.BLUESKY_APP_PASSWORD_HY }}
-      BLUESKY_APP_PASSWORD_IT: ${{ secrets.BLUESKY_APP_PASSWORD_IT }}
-      BLUESKY_APP_PASSWORD_ORG: ${{ secrets.BLUESKY_APP_PASSWORD_ORG }}
-      BLUESKY_APP_PASSWORD_RU: ${{ secrets.BLUESKY_APP_PASSWORD_RU }}
-      BLUESKY_HANDLE_CH: ${{ secrets.BLUESKY_HANDLE_CH }}
-      BLUESKY_HANDLE_DE: ${{ secrets.BLUESKY_HANDLE_DE }}
-      BLUESKY_HANDLE_ES: ${{ secrets.BLUESKY_HANDLE_ES }}
-      BLUESKY_HANDLE_HY: ${{ secrets.BLUESKY_HANDLE_HY }}
-      BLUESKY_HANDLE_IT: ${{ secrets.BLUESKY_HANDLE_IT }}
-      BLUESKY_HANDLE_ORG: ${{ secrets.BLUESKY_HANDLE_ORG }}
-      BLUESKY_HANDLE_RU: ${{ secrets.BLUESKY_HANDLE_RU }}
-      FB_PAGE_ID_CH: ${{ secrets.FB_PAGE_ID_CH }}
-      FB_PAGE_ID_DE: ${{ secrets.FB_PAGE_ID_DE }}
-      FB_PAGE_ID_ES: ${{ secrets.FB_PAGE_ID_ES }}
-      FB_PAGE_ID_HY: ${{ secrets.FB_PAGE_ID_HY }}
-      FB_PAGE_ID_IT: ${{ secrets.FB_PAGE_ID_IT }}
-      FB_PAGE_ID_ORG: ${{ secrets.FB_PAGE_ID_ORG }}
-      FB_PAGE_ID_RU: ${{ secrets.FB_PAGE_ID_RU }}
-      FB_PAGE_TOKEN_CH: ${{ secrets.FB_PAGE_TOKEN_CH }}
-      FB_PAGE_TOKEN_DE: ${{ secrets.FB_PAGE_TOKEN_DE }}
-      FB_PAGE_TOKEN_ES: ${{ secrets.FB_PAGE_TOKEN_ES }}
-      FB_PAGE_TOKEN_HY: ${{ secrets.FB_PAGE_TOKEN_HY }}
-      FB_PAGE_TOKEN_IT: ${{ secrets.FB_PAGE_TOKEN_IT }}
-      FB_PAGE_TOKEN_ORG: ${{ secrets.FB_PAGE_TOKEN_ORG }}
-      FB_PAGE_TOKEN_RU: ${{ secrets.FB_PAGE_TOKEN_RU }}
-      IG_USER_ID_CH: ${{ secrets.IG_USER_ID_CH }}
-      IG_USER_ID_DE: ${{ secrets.IG_USER_ID_DE }}
-      IG_USER_ID_ES: ${{ secrets.IG_USER_ID_ES }}
-      IG_USER_ID_HY: ${{ secrets.IG_USER_ID_HY }}
-      IG_USER_ID_IT: ${{ secrets.IG_USER_ID_IT }}
-      IG_USER_ID_ORG: ${{ secrets.IG_USER_ID_ORG }}
-      IG_USER_ID_RU: ${{ secrets.IG_USER_ID_RU }}
-      LINKEDIN_AUTHOR_CH: ${{ secrets.LINKEDIN_AUTHOR_CH }}
-      LINKEDIN_AUTHOR_ORG: ${{ secrets.LINKEDIN_AUTHOR_ORG }}
-      LINKEDIN_TOKEN_CH: ${{ secrets.LINKEDIN_TOKEN_CH }}
-      LINKEDIN_TOKEN_ORG: ${{ secrets.LINKEDIN_TOKEN_ORG }}
-      TELEGRAM_BOT_TOKEN_CH: ${{ secrets.TELEGRAM_BOT_TOKEN_CH }}
-      TELEGRAM_BOT_TOKEN_DE: ${{ secrets.TELEGRAM_BOT_TOKEN_DE }}
-      TELEGRAM_BOT_TOKEN_ES: ${{ secrets.TELEGRAM_BOT_TOKEN_ES }}
-      TELEGRAM_BOT_TOKEN_HY: ${{ secrets.TELEGRAM_BOT_TOKEN_HY }}
-      TELEGRAM_BOT_TOKEN_IT: ${{ secrets.TELEGRAM_BOT_TOKEN_IT }}
-      TELEGRAM_BOT_TOKEN_ORG: ${{ secrets.TELEGRAM_BOT_TOKEN_ORG }}
-      TELEGRAM_BOT_TOKEN_RU: ${{ secrets.TELEGRAM_BOT_TOKEN_RU }}
-      TELEGRAM_CHAT_CH: ${{ secrets.TELEGRAM_CHAT_CH }}
-      TELEGRAM_CHAT_DE: ${{ secrets.TELEGRAM_CHAT_DE }}
-      TELEGRAM_CHAT_ES: ${{ secrets.TELEGRAM_CHAT_ES }}
-      TELEGRAM_CHAT_HY: ${{ secrets.TELEGRAM_CHAT_HY }}
-      TELEGRAM_CHAT_IT: ${{ secrets.TELEGRAM_CHAT_IT }}
-      TELEGRAM_CHAT_ORG: ${{ secrets.TELEGRAM_CHAT_ORG }}
-      TELEGRAM_CHAT_RU: ${{ secrets.TELEGRAM_CHAT_RU }}
-      X_ACCESS_SECRET_CH: ${{ secrets.X_ACCESS_SECRET_CH }}
-      X_ACCESS_SECRET_ORG: ${{ secrets.X_ACCESS_SECRET_ORG }}
-      X_ACCESS_TOKEN_CH: ${{ secrets.X_ACCESS_TOKEN_CH }}
-      X_ACCESS_TOKEN_ORG: ${{ secrets.X_ACCESS_TOKEN_ORG }}
-      X_API_KEY_CH: ${{ secrets.X_API_KEY_CH }}
-      X_API_KEY_ORG: ${{ secrets.X_API_KEY_ORG }}
-      X_API_SECRET_CH: ${{ secrets.X_API_SECRET_CH }}
-      X_API_SECRET_ORG: ${{ secrets.X_API_SECRET_ORG }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -89,38 +47,130 @@ jobs:
           cache: npm
       - run: npm ci
 
-      - name: Se connecter à chaque compte
-        id: check
-        run: node scripts/social-post.mjs check --out "$RUNNER_TEMP/cles.md"
+      - name: Retrouver l'issue du tableau de bord
+        id: issue
+        run: |
+          n=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '[.[] | select(.title | startswith("[tableau-de-bord]"))] | .[0].number // empty')
+          echo "number=$n" >> "$GITHUB_OUTPUT"
+          if [ -n "$n" ]; then gh issue view "$n" --json body --jq .body > "$RUNNER_TEMP/previous.md"; fi
 
-      - name: Ouvrir, mettre à jour ou refermer l'issue [social-down]
-        if: always() && steps.check.outcome == 'success'
+      # Les secrets ne sont visibles QUE de cette étape : ni `npm ci` (scripts
+      # d'installation des paquets) ni les étapes gh ne les reçoivent.
+      - name: Mesurer
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PROBLEMS: ${{ steps.check.outputs.problems }}
+          SOCIAL_LIVE: ${{ vars.SOCIAL_LIVE }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}
+          ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
+          BLUESKY_APP_PASSWORD_CH: ${{ secrets.BLUESKY_APP_PASSWORD_CH }}
+          BLUESKY_APP_PASSWORD_DE: ${{ secrets.BLUESKY_APP_PASSWORD_DE }}
+          BLUESKY_APP_PASSWORD_ES: ${{ secrets.BLUESKY_APP_PASSWORD_ES }}
+          BLUESKY_APP_PASSWORD_HY: ${{ secrets.BLUESKY_APP_PASSWORD_HY }}
+          BLUESKY_APP_PASSWORD_IT: ${{ secrets.BLUESKY_APP_PASSWORD_IT }}
+          BLUESKY_APP_PASSWORD_ORG: ${{ secrets.BLUESKY_APP_PASSWORD_ORG }}
+          BLUESKY_APP_PASSWORD_RU: ${{ secrets.BLUESKY_APP_PASSWORD_RU }}
+          BLUESKY_HANDLE_CH: ${{ secrets.BLUESKY_HANDLE_CH }}
+          BLUESKY_HANDLE_DE: ${{ secrets.BLUESKY_HANDLE_DE }}
+          BLUESKY_HANDLE_ES: ${{ secrets.BLUESKY_HANDLE_ES }}
+          BLUESKY_HANDLE_HY: ${{ secrets.BLUESKY_HANDLE_HY }}
+          BLUESKY_HANDLE_IT: ${{ secrets.BLUESKY_HANDLE_IT }}
+          BLUESKY_HANDLE_ORG: ${{ secrets.BLUESKY_HANDLE_ORG }}
+          BLUESKY_HANDLE_RU: ${{ secrets.BLUESKY_HANDLE_RU }}
+          FB_PAGE_ID_CH: ${{ secrets.FB_PAGE_ID_CH }}
+          FB_PAGE_ID_DE: ${{ secrets.FB_PAGE_ID_DE }}
+          FB_PAGE_ID_ES: ${{ secrets.FB_PAGE_ID_ES }}
+          FB_PAGE_ID_HY: ${{ secrets.FB_PAGE_ID_HY }}
+          FB_PAGE_ID_IT: ${{ secrets.FB_PAGE_ID_IT }}
+          FB_PAGE_ID_ORG: ${{ secrets.FB_PAGE_ID_ORG }}
+          FB_PAGE_ID_RU: ${{ secrets.FB_PAGE_ID_RU }}
+          FB_PAGE_TOKEN_CH: ${{ secrets.FB_PAGE_TOKEN_CH }}
+          FB_PAGE_TOKEN_DE: ${{ secrets.FB_PAGE_TOKEN_DE }}
+          FB_PAGE_TOKEN_ES: ${{ secrets.FB_PAGE_TOKEN_ES }}
+          FB_PAGE_TOKEN_HY: ${{ secrets.FB_PAGE_TOKEN_HY }}
+          FB_PAGE_TOKEN_IT: ${{ secrets.FB_PAGE_TOKEN_IT }}
+          FB_PAGE_TOKEN_ORG: ${{ secrets.FB_PAGE_TOKEN_ORG }}
+          FB_PAGE_TOKEN_RU: ${{ secrets.FB_PAGE_TOKEN_RU }}
+          IG_USER_ID_CH: ${{ secrets.IG_USER_ID_CH }}
+          IG_USER_ID_DE: ${{ secrets.IG_USER_ID_DE }}
+          IG_USER_ID_ES: ${{ secrets.IG_USER_ID_ES }}
+          IG_USER_ID_HY: ${{ secrets.IG_USER_ID_HY }}
+          IG_USER_ID_IT: ${{ secrets.IG_USER_ID_IT }}
+          IG_USER_ID_ORG: ${{ secrets.IG_USER_ID_ORG }}
+          IG_USER_ID_RU: ${{ secrets.IG_USER_ID_RU }}
+          LINKEDIN_AUTHOR_CH: ${{ secrets.LINKEDIN_AUTHOR_CH }}
+          LINKEDIN_AUTHOR_ORG: ${{ secrets.LINKEDIN_AUTHOR_ORG }}
+          LINKEDIN_TOKEN_CH: ${{ secrets.LINKEDIN_TOKEN_CH }}
+          LINKEDIN_TOKEN_ORG: ${{ secrets.LINKEDIN_TOKEN_ORG }}
+          TELEGRAM_BOT_TOKEN_CH: ${{ secrets.TELEGRAM_BOT_TOKEN_CH }}
+          TELEGRAM_BOT_TOKEN_DE: ${{ secrets.TELEGRAM_BOT_TOKEN_DE }}
+          TELEGRAM_BOT_TOKEN_ES: ${{ secrets.TELEGRAM_BOT_TOKEN_ES }}
+          TELEGRAM_BOT_TOKEN_HY: ${{ secrets.TELEGRAM_BOT_TOKEN_HY }}
+          TELEGRAM_BOT_TOKEN_IT: ${{ secrets.TELEGRAM_BOT_TOKEN_IT }}
+          TELEGRAM_BOT_TOKEN_ORG: ${{ secrets.TELEGRAM_BOT_TOKEN_ORG }}
+          TELEGRAM_BOT_TOKEN_RU: ${{ secrets.TELEGRAM_BOT_TOKEN_RU }}
+          TELEGRAM_CHAT_CH: ${{ secrets.TELEGRAM_CHAT_CH }}
+          TELEGRAM_CHAT_DE: ${{ secrets.TELEGRAM_CHAT_DE }}
+          TELEGRAM_CHAT_ES: ${{ secrets.TELEGRAM_CHAT_ES }}
+          TELEGRAM_CHAT_HY: ${{ secrets.TELEGRAM_CHAT_HY }}
+          TELEGRAM_CHAT_IT: ${{ secrets.TELEGRAM_CHAT_IT }}
+          TELEGRAM_CHAT_ORG: ${{ secrets.TELEGRAM_CHAT_ORG }}
+          TELEGRAM_CHAT_RU: ${{ secrets.TELEGRAM_CHAT_RU }}
+          X_ACCESS_SECRET_CH: ${{ secrets.X_ACCESS_SECRET_CH }}
+          X_ACCESS_SECRET_ORG: ${{ secrets.X_ACCESS_SECRET_ORG }}
+          X_ACCESS_TOKEN_CH: ${{ secrets.X_ACCESS_TOKEN_CH }}
+          X_ACCESS_TOKEN_ORG: ${{ secrets.X_ACCESS_TOKEN_ORG }}
+          X_API_KEY_CH: ${{ secrets.X_API_KEY_CH }}
+          X_API_KEY_ORG: ${{ secrets.X_API_KEY_ORG }}
+          X_API_SECRET_CH: ${{ secrets.X_API_SECRET_CH }}
+          X_API_SECRET_ORG: ${{ secrets.X_API_SECRET_ORG }}
+        run: |
+          node scripts/publication-check.mjs --body "$RUNNER_TEMP/body.md"             --comment "$RUNNER_TEMP/comment.md" --previous "$RUNNER_TEMP/previous.md"
+
+      - name: Écrire le tableau de bord, notifier s'il y a du neuf
+        env:
+          N: ${{ steps.issue.outputs.number }}
+        run: |
+          if [ -z "$N" ]; then
+            url=$(gh issue create --title "[tableau-de-bord] Publication des articles"               --assignee cobranian --body-file "$RUNNER_TEMP/body.md")
+            N="${url##*/}"
+          else
+            gh issue edit "$N" --body-file "$RUNNER_TEMP/body.md"
+          fi
+          # À chaque passage : sans effet si déjà épinglée, et rattrape un
+          # épinglage qui aurait échoué.
+          gh issue pin "$N" 2>/dev/null || true
+          if [ -s "$RUNNER_TEMP/comment.md" ]; then
+            gh issue comment "$N" --body-file "$RUNNER_TEMP/comment.md"
+          fi
+
+      # L'ancien contrôle ouvrait [social-down] : le tableau de bord le remplace.
+      - name: Refermer l'ancienne issue [social-down]
+        run: |
+          for n in $(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '.[] | select(.title | contains("[social-down]")) | .number'); do
+            gh issue close "$n" --comment "Remplacée par l'issue épinglée « [tableau-de-bord] Publication des articles »."
+          done
+
+      # Le tableau de bord lui-même en panne ne doit pas se taire : une issue
+      # assignée (qui notifie) le dit, une seule à la fois.
+      - name: Signaler une panne du tableau de bord
+        if: failure()
+        env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          ouverte=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '[.[] | select(.title | contains("[social-down]"))] | .[0].number // empty')
-          if [ "$PROBLEMS" = "0" ]; then
-            if [ -n "$ouverte" ]; then
-              gh issue close "$ouverte" --comment "Toutes les clés répondent à nouveau. $RUN_URL"
-            fi
-            exit 0
-          fi
-          {
-            echo "Un ou plusieurs comptes ne se connectent plus : leurs prochains posts échoueront."
-            echo
-            cat "$RUNNER_TEMP/cles.md"
-            echo
-            echo "Réparer : docs/social-setup.md (clé à recoller dans l'environnement « social »)."
-            echo "Puis retirer de src/data/social-posted.json les articles marqués « partis » pendant la panne."
-            echo
-            echo "Exécution : $RUN_URL"
-            echo
-            echo "Cette issue se met à jour chaque jour et se referme toute seule au retour."
-          } > "$RUNNER_TEMP/issue.md"
-          if [ -n "$ouverte" ]; then
-            gh issue edit "$ouverte" --body-file "$RUNNER_TEMP/issue.md"
+          n=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title \
+            --jq '[.[] | select(.title | startswith("[tableau-de-bord-en-panne]"))] | .[0].number // empty')
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --body "Toujours en panne : $RUN_URL"
           else
-            gh issue create --title "[social-down] Une clé de réseau social ne marche plus"               --assignee cobranian --body-file "$RUNNER_TEMP/issue.md"
+            gh issue create --title "[tableau-de-bord-en-panne] Le tableau de bord de la publication ne s'écrit plus" \
+              --assignee cobranian --body "Le workflow « Publication — tableau de bord » a échoué : $RUN_URL. Les alertes de publication ne partent plus tant qu'il n'est pas réparé."
           fi
+
+      - name: Refermer l'alerte de panne du tableau de bord
+        if: success()
+        run: |
+          for n in $(gh issue list --state open --author app/github-actions --limit 100 --json number,title \
+            --jq '.[] | select(.title | startswith("[tableau-de-bord-en-panne]")) | .number'); do
+            gh issue close "$n" --comment "Le tableau de bord s'écrit de nouveau."
+          done

@@ -17,6 +17,7 @@ permissions:
   pull-requests: write
   issues: write
   statuses: write
+  actions: write # relancer le tableau de bord après un échec
 
 concurrency:
   group: culture-draft
@@ -87,3 +88,9 @@ jobs:
         if: steps.draft.outputs.ideas == '1'
         run: |
           gh issue create --title "Culture : idées de sujets" --body-file "$RUNNER_TEMP/ideas.md"
+
+      # Un échec ici ne doit plus attendre qu'on le découvre : le tableau de
+      # bord (social-check.yml) est relancé et notifie s'il y a du neuf.
+      - name: Prévenir le tableau de bord
+        if: failure()
+        run: gh workflow run social-check.yml --ref main || true

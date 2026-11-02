@@ -28,6 +28,7 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
+  actions: write # relancer le tableau de bord après un échec
 
 concurrency:
   group: culture-backfill
@@ -64,7 +65,8 @@ jobs:
         run: node scripts/culture-backfill.mjs --dry
 
       # Mêmes variables que articles-translate.yml : llmConfig choisit la clé
-      # selon le point d'accès. La traduction n'a aucun modèle de secours.
+      # selon le point d'accès. Gemini en panne : le modèle de secours prend le
+      # relais (culture-llm.mjs, chatResilient), sous la garde d'alphabet.
       - name: Traduire
         if: steps.list.outputs.pending != '0' && steps.list.outputs.pending != ''
         env:
@@ -91,3 +93,9 @@ jobs:
           cat "$RUNNER_TEMP/check.txt"
           gh api "repos/$GITHUB_REPOSITORY/statuses/$(git rev-parse HEAD)" \
             -f state="$state" -f context=culture-check -f description="$(tail -n 1 "$RUNNER_TEMP/check.txt")"
+
+      # Un échec ici ne doit plus attendre qu'on le découvre : le tableau de
+      # bord (social-check.yml) est relancé et notifie s'il y a du neuf.
+      - name: Prévenir le tableau de bord
+        if: failure()
+        run: gh workflow run social-check.yml --ref main || true

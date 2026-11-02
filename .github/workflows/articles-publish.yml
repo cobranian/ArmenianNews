@@ -107,8 +107,21 @@ jobs:
           fi
           git push origin "HEAD:$BRANCH"
           [ -f "$RUNNER_TEMP/summary.md" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/summary.md" || true
+          # Traduit par le modèle de SECOURS (Gemini en panne ou sans crédit) :
+          # on ne fusionne pas d'office un hy/ru qu'aucun humain n'a vu. Un
+          # second geste suffit : au recochage, les traductions sont déjà là,
+          # le contrôle passe sans retraduire, et l'article part.
+          if grep -q "modèle de secours" "$RUNNER_TEMP/summary.md" 2>/dev/null; then
+            echo "fallback=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Traductions de secours — attendre le relecteur
+        if: steps.prep.outputs.fallback == '1'
+        run: |
+          gh pr comment "$PR" --body "⏸️ **Pas encore fusionné.** Gemini n'a pas répondu : les traductions viennent du modèle de secours (voir le commentaire ci-dessus). Jetez un œil à en/hy/ru dans l'onglet *Files changed*, puis **décochez et recochez « Faits vérifiés »** : l'article partira aussitôt, sans nouvelle traduction." || true
 
       - name: Contrôle final, fusion, déploiement
+        if: steps.prep.outputs.fallback != '1'
         run: |
           SLUG="${BRANCH#culture/}"
           SHA="$(git rev-parse HEAD)"
@@ -133,3 +146,9 @@ jobs:
           gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$BRANCH" || true
           gh workflow run hourly.yml --ref main
           gh pr comment "$PR" --body "✅ Fusionné : l'article sera en ligne sur armenieinfo.ch et armenianews.org dans 5 à 10 minutes (déploiement lancé)." || true
+
+      # Un échec ici ne doit plus attendre qu'on le découvre : le tableau de
+      # bord (social-check.yml) est relancé et notifie s'il y a du neuf.
+      - name: Prévenir le tableau de bord
+        if: failure()
+        run: gh workflow run social-check.yml --ref main || true

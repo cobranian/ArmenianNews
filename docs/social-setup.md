@@ -71,11 +71,28 @@ encore.
 
 ## En cas de panne
 
-Chaque jour à 06:17 UTC, `social-check.yml` connecte chaque compte SANS publier
-(`node scripts/social-post.mjs check`) et ouvre une issue `[social-down]` si une
-clé est refusée ; elle se referme seule au retour. À lancer aussi à la main
-après avoir recollé une clé : `gh workflow run social-check.yml`.
+Deux fois par jour (02:17 et 14:17 UTC), `social-check.yml` réécrit l'issue
+épinglée **`[tableau-de-bord] Publication des articles`** : chaque compte se
+connecte SANS publier, la clé Facebook dit ses droits de publication
+(`pages_manage_posts`, `instagram_content_publish`) et son échéance, chaque
+Instagram son quota. Une alerte nouvelle y ajoute un commentaire, qui vous
+notifie. À lancer aussi à la main après avoir recollé une clé :
+`gh workflow run social-check.yml`. Le détail en local :
+`node --env-file=.env scripts/social-post.mjs check`.
 
 `gh run view <id> --log | grep social` : `✓` publié, `✗` échec (la raison
-suit), `amorcé` = compte neuf. Pour republier un article, retirez sa ligne du
-registre pour ce compte.
+suit), `↻` reporté au registre, `amorcé` = compte neuf.
+
+Un envoi **refusé** n'est plus perdu : il sort du registre et repart au run
+suivant, trois fois au plus. Au troisième échec il est **abandonné** et le
+tableau de bord le dit. Un envoi **incertain** (délai dépassé, erreur 5xx au
+moment de publier, run coupé) n'est jamais retenté — la plateforme a peut-être
+publié — et le tableau de bord demande d'aller voir sur le compte.
+
+```bash
+# absent du compte, ou abandonné et la cause réglée : le remettre en file
+node scripts/social-post.mjs retry --channel instagram-hy --item culture:duduk
+# bien publié (incertain), ou on y renonce : classer l'alerte
+node scripts/social-post.mjs retry --drop --channel instagram-hy --item culture:duduk
+# puis PR de src/data/social-posted.json
+```
