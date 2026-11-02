@@ -18,7 +18,7 @@ import { ALL_LANGS } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { chat, llmConfig, explain, CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL } from './lib/culture-llm.mjs'
 import { checkAccounts } from './lib/account-check.mjs'
-import { ledgerFailures } from './lib/social.mjs'
+import { ledgerFailures, redact } from './lib/social.mjs'
 import { WHATSAPP_CHANNELS } from './lib/linkedin-pending.mjs'
 import {
   checkModels,
@@ -41,8 +41,15 @@ if (!values.body) throw new Error('usage : publication-check --body <fichier> [-
 const env = process.env
 const now = new Date()
 
-// Une mesure qui lève devient une ligne « bloquant » : mieux vaut une fausse
-// alerte lisible qu'un tableau qui se tait.
+// L'issue est PUBLIQUE : aucune valeur secrète n'y entre, même par le message
+// d'une erreur inattendue. Toute valeur d'au moins 6 caractères d'une
+// variable au nom de secret est masquée.
+const SECRET_NAME = /KEY|TOKEN|PASSWORD|SECRET|HANDLE|CHAT|PAGE_ID|USER_ID|AUTHOR/
+const secretValues = Object.entries(env).filter(([k]) => SECRET_NAME.test(k)).map(([, v]) => v)
+const clean = (t) => redact(t, secretValues)
+
+// Une mesure qui lève devient une ligne « à faire » : mieux vaut une alerte
+// lisible qu'un tableau qui se tait.
 async function guarded(title, fn) {
   try {
     return { title, rows: await fn() }
@@ -110,13 +117,22 @@ async function articleRows() {
   const prs = (await gh('/pulls?state=open&per_page=100')).filter(
     (p) => p.head?.ref?.startsWith('culture/') && p.head?.repo?.full_name === repo,
   )
+  // Le statut culture-check de la tête : la traduction finit verte même en
+  // échec (continue-on-error), c'est ce statut qui dit la vérité.
+  for (const p of prs) {
+    const { statuses = [] } = await gh(`/commits/${p.head.sha}/status`)
+    p.check = statuses.find((x) => x.context === 'culture-check') ?? null
+  }
   const open = new Set(prs.map((p) => p.head.ref))
-  return [...checkPullRequests(prs, now), ...(await workflows(open)), ...checkTranslations(articles, others)]
+  const rows = [...checkPullRequests(prs, now), ...(await workflows(open))]
+  return [...rows, ...checkTranslations(await articles(), others)]
 }
 
-// --- Données du dépôt
+// --- Données du dépôt (lues dans les mesures : une lecture qui casse devient
+// une ligne, pas un tableau absent).
 const quiet = { warn() {}, log() {} }
-const articles = await loadCulture(path.join(root, 'src/data/culture'), quiet)
+let cache = null
+const articles = async () => (cache ??= await loadCulture(path.join(root, 'src/data/culture'), quiet))
 const others = ALL_LANGS.filter((l) => l !== 'fr')
 
 async function social() {
@@ -126,7 +142,7 @@ async function social() {
 }
 async function manual() {
   const videos = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
-  return checkManual({ articles, videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
+  return checkManual({ articles: await articles(), videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
 }
 
 const sections = [
@@ -136,6 +152,11 @@ const sections = [
   await guarded('✋ Publication à la main', manual),
   await guarded('📅 Échéances', async () => checkDeadlines(now)),
 ]
+
+for (const sec of sections) for (const r of sec.rows) {
+  r.text = clean(r.text)
+  if (r.action) r.action = clean(r.action)
+}
 
 const runUrl = env.GITHUB_RUN_ID ? `${env.GITHUB_SERVER_URL}/${repo}/actions/runs/${env.GITHUB_RUN_ID}` : ''
 await writeFile(values.body, renderDashboard(sections, { now, runUrl }))

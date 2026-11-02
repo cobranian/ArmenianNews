@@ -17,8 +17,25 @@ export const IG_READY_MS = 90_000
 export const IG_POLL_MS = 5_000
 export const IG_PUBLISH_TRIES = 4
 
+// Les appels qui PUBLIENT. Une erreur y est ambiguë si elle n'est pas un refus
+// net (4xx) : un délai dépassé, une coupure, un 5xx peuvent arriver APRÈS que
+// la plateforme a publié. Ces échecs-là ne sont jamais retentés (un doublon
+// sur un compte de marque se voit plus qu'un oubli) : `uncertain`, à vérifier
+// à la main. Partout ailleurs (préparation, session, vignette), rien n'est
+// encore parti : l'échec est sûr, le run suivant retente.
+const FINAL = new Set(['facebook', 'instagram/publish', 'bluesky', 'telegram', 'linkedin', 'x'])
+export function isUncertain(err) {
+  if (!err?.final) return false
+  return !(err.status >= 400 && err.status < 500)
+}
+
 async function call(f, url, init, what) {
-  const res = await f(url, { ...init, signal: AbortSignal.timeout(30_000) })
+  let res
+  try {
+    res = await f(url, { ...init, signal: AbortSignal.timeout(30_000) })
+  } catch (e) {
+    throw Object.assign(new Error(`${what} : ${e.name === 'TimeoutError' ? 'délai dépassé' : e.message}`), { final: FINAL.has(what) })
+  }
   const text = await res.text()
   let json = null
   try {
@@ -28,7 +45,7 @@ async function call(f, url, init, what) {
   }
   if (!res.ok) {
     const msg = json?.error?.message ?? json?.detail ?? json?.message ?? json?.description ?? text.slice(0, 200)
-    throw new Error(`${what} : HTTP ${res.status} ${msg}`)
+    throw Object.assign(new Error(`${what} : HTTP ${res.status} ${msg}`), { status: res.status, final: FINAL.has(what) })
   }
   return { res, json }
 }

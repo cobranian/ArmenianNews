@@ -84,7 +84,15 @@ jobs:
             echo "No data changes."
           else
             git commit -m "data: hourly snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            # Le job social d'un run précédent peut pousser son registre
+            # pendant ce scrape (il n'est plus annulé) : on se remet à jour.
+            # Il ne touche que social-posted.json, donc aucun conflit possible.
+            for i in 1 2 3; do
+              git pull --rebase && git push && break
+              git rebase --abort 2>/dev/null || true
+              [ "$i" = 3 ] && exit 1
+              sleep 5
+            done
           fi
 
       - name: Build
@@ -556,36 +564,43 @@ jobs:
             echo "Registre inchangé."
           else
             git commit -m "social: registre $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git pull --rebase
-            git push
+            if ! { git pull --rebase && git push; }; then
+              git rebase --abort 2>/dev/null || true
+              exit 1
+            fi
           fi
 
       - name: Publier
+        id: post
         run: node scripts/social-post.mjs post --plan "$RUNNER_TEMP/social-plan.json" --results "$RUNNER_TEMP/social-results.jsonl"
 
       # Même après un échec de « Publier » : un envoi que la plateforme a
       # refusé sort du registre et repart au run suivant (3 essais au plus,
       # scripts/lib/social.mjs `settle`). Sans cette étape, il serait perdu.
+      # `settle` est une fonction du registre et des résultats : en cas de
+      # course avec un autre push, on ne rebase pas (un conflit laisserait le
+      # dépôt à mi-rebase), on repart de main et on REFAIT le report.
       - name: Reporter les résultats au registre
         if: always() && env.SOCIAL_LIVE == '1'
         run: |
-          node scripts/social-post.mjs settle --results "$RUNNER_TEMP/social-results.jsonl"
-          git add src/data/social-posted.json
-          if git diff --cached --quiet; then
-            echo "Registre inchangé."
-            exit 0
-          fi
-          git commit -m "social: résultats $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          # Le snapshot suivant a pu pousser entre-temps : trois essais.
-          for i in 1 2 3; do
-            git pull --rebase && git push && exit 0
+          for i in 1 2 3 4; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            node scripts/social-post.mjs settle --results "$RUNNER_TEMP/social-results.jsonl" --plan "$RUNNER_TEMP/social-plan.json"
+            git add src/data/social-posted.json
+            if git diff --cached --quiet; then
+              echo "Registre inchangé."
+              exit 0
+            fi
+            git commit -q -m "social: résultats $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push -q origin HEAD:main && exit 0
             sleep 5
           done
           exit 1
 
       # Le tableau de bord le dit tout de suite, sans attendre son passage.
       - name: Prévenir le tableau de bord
-        if: failure()
+        if: failure() || fromJSON(steps.post.outputs.failures || '0') > 0
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run social-check.yml --ref main || true

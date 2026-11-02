@@ -15,6 +15,8 @@
 //   node scripts/social-post.mjs retry --channel instagram-hy --item culture:duduk
 //        Remet en file un article ABANDONNÉ (3 échecs) une fois la cause
 //        réglée : efface son échec et sa marque « parti ». À pousser (PR).
+//        --drop : y renoncer (ou confirmer qu'un envoi INCERTAIN est bien
+//        parti) : l'article reste « parti », l'alerte disparaît.
 //   node --env-file=.env scripts/social-post.mjs test --channel facebook-ch [--item culture:komitas] [--yes]
 //        Local : aperçu d'un message, et avec --yes, un envoi réel hors
 //        registre — pour vérifier des identifiants neufs, ou publier une
@@ -45,7 +47,7 @@ import {
   MAX_ATTEMPTS,
   redact,
 } from './lib/social.mjs'
-import { send } from './lib/social-send.mjs'
+import { send, isUncertain } from './lib/social-send.mjs'
 import { checkAccounts } from './lib/account-check.mjs'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
@@ -131,18 +133,33 @@ ${JSON.stringify(compose(channel.platform, item), null, 2)}`)
       } catch (e) {
         failed++
         const msg = redact(e.message, Object.values(creds))
-        console.log(`✗ social/${id} : ${item.id} — ${msg}`)
-        await record({ channel: id, id: item.id, ok: false, error: msg })
+        const uncertain = isUncertain(e)
+        console.log(`✗ social/${id} : ${item.id} — ${msg}${uncertain ? ' (INCERTAIN : peut-être publié, pas retenté)' : ''}`)
+        await record({ channel: id, id: item.id, ok: false, uncertain, error: msg })
       }
     }
   }
   await Promise.all([...byChannel].map(([id, items]) => sendAll(id, items)))
-  if (failed) process.exitCode = 1
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `failures=${failed}\n`)
+  // Avec --results, un échec est repris par `settle` (retenté ou signalé au
+  // tableau de bord) : le job reste vert, sinon chaque hoquet d'Instagram
+  // rendrait l'heure rouge. Sans --results (à la main), le code dit l'échec.
+  if (failed && !resultsFile) process.exitCode = 1
 }
 
 async function doSettle() {
   const file = opt('--results')
-  if (!file) throw new Error('usage : settle --results <fichier>')
+  if (!file) throw new Error('usage : settle --results <fichier> [--plan <plan.json>]')
+  // Le plan : un envoi prévu sans résultat (run coupé) est noté incertain.
+  let planned = []
+  if (opt('--plan')) {
+    try {
+      const p = JSON.parse(await readFile(opt('--plan'), 'utf8'))
+      if (!p.dry) planned = p.posts
+    } catch (e) {
+      if (e.code !== 'ENOENT') throw e
+    }
+  }
   let text = ''
   try {
     text = await readFile(file, 'utf8')
@@ -150,14 +167,17 @@ async function doSettle() {
     if (e.code !== 'ENOENT') throw e
   }
   const results = text.split('\n').filter(Boolean).map((l) => JSON.parse(l))
-  if (!results.length) return console.log('· social : aucun résultat à reporter')
-  const next = settle(await readLedger(), results)
+  if (!results.length && !planned.length) return console.log('· social : aucun résultat à reporter')
+  const next = settle(await readLedger(), results, new Date(), planned)
   await writeFile(LEDGER, JSON.stringify(next, null, 2) + '\n')
   const ko = results.filter((r) => !r.ok)
   for (const r of ko) {
-    const n = next.channels[r.channel]?.failed?.[r.id]?.attempts
-    console.log(`↻ social/${r.channel} : ${r.id} — échec ${n}, ${n >= MAX_ATTEMPTS ? 'ABANDONNÉ (voir le tableau de bord)' : 'retenté au prochain run'}`)
+    const f = next.channels[r.channel]?.failed?.[r.id]
+    if (f?.uncertain) console.log(`? social/${r.channel} : ${r.id} — incertain, à vérifier sur le compte (tableau de bord)`)
+    else console.log(`↻ social/${r.channel} : ${r.id} — échec ${f?.attempts}, ${f?.attempts >= MAX_ATTEMPTS ? 'ABANDONNÉ (voir le tableau de bord)' : 'retenté au prochain run'}`)
   }
+  const lost = planned.filter((p) => !results.some((r) => r.channel === p.channel && r.id === p.item.id))
+  for (const p of lost) console.log(`? social/${p.channel} : ${p.item.id} — aucun résultat (run coupé), à vérifier sur le compte`)
   console.log(`· social : ${results.length - ko.length} succès, ${ko.length} échec(s) reporté(s) au registre`)
 }
 
@@ -168,12 +188,15 @@ async function doRetry() {
   const ledger = await readLedger()
   const entry = ledger.channels?.[channel]
   if (!entry) throw new Error(`canal absent du registre : ${channel}`)
+  const drop = args.includes('--drop')
   const had = Boolean(entry.failed?.[id]) || id in entry.posted
   if (entry.failed) delete entry.failed[id]
   if (entry.failed && !Object.keys(entry.failed).length) delete entry.failed
-  delete entry.posted[id]
+  if (drop) entry.posted[id] = entry.posted[id] ?? `abandonné ${new Date().toISOString()}`
+  else delete entry.posted[id]
   await writeFile(LEDGER, JSON.stringify(ledger, null, 2) + '\n')
-  console.log(had ? `· ${channel} : ${id} remis en file — poussez src/data/social-posted.json` : `· ${channel} : ${id} n'était pas au registre (rien à faire)`)
+  if (!had) return console.log(`· ${channel} : ${id} n'était pas au registre (rien à faire)`)
+  console.log(`· ${channel} : ${id} ${drop ? 'classé (ne repartira pas)' : 'remis en file'} — poussez src/data/social-posted.json`)
 }
 
 async function doTest() {

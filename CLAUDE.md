@@ -824,9 +824,12 @@ de production servent toujours depuis la racine de leur domaine.
   mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
   `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
   ré-amorcé en silence — mais retirer UNE ligne republie cet article. Un envoi
-  refusé par la plateforme en sort tout seul (`settle`, entrée `failed`) et
-  repart au run suivant, 3 fois au plus ; au-delà il est abandonné, signalé au
-  tableau de bord, et se relance par `social-post.mjs retry`. Un compte
+  REFUSÉ (4xx, ou panne avant l'appel qui publie) en sort tout seul (`settle`,
+  entrée `failed`) et repart, 3 fois au plus. Un échec AMBIGU (délai, 5xx sur
+  l'appel qui publie, run coupé) y reste, noté `uncertain` : la plateforme a
+  pu publier, le retenter ferait un doublon (`isUncertain`, social-send.mjs) —
+  ne « simplifiez » pas en retentant tout. Les deux se règlent par
+  `social-post.mjs retry [--drop]`, sur l'indication du tableau de bord. Un compte
   sans entrée y est amorcé, jamais servi l'archive. Un jeu de comptes par
   langue (`ACCOUNT_SETS`, `scripts/lib/social.mjs`) : `ch`/`org` gardent ces
   noms pour fr/en — les renommer ré-amorcerait les comptes. Un secret de canal
@@ -1057,7 +1060,8 @@ de production servent toujours depuis la racine de leur domaine.
   se replient sur le secours `:free` quand Gemini tombe (un crédit à zéro
   bloquait TOUTE publication) : un seul modèle par run (`sticky`), et la garde
   d'alphabet (`translationScriptProblem`, 10 %) refuse le latin glissé dans
-  l'arménien — ne la desserrez pas, c'est la seule relecture de ces textes. (8) Pas de réaction 👀 sur une
+  l'arménien — ne la desserrez pas. Traduit par le secours, l'article n'est
+  PAS fusionné d'office (`articles-publish.yml`) : le relecteur recoche. (8) Pas de réaction 👀 sur une
   commande = elle a été écartée (GitHub ne garde qu'un run en attente par
   groupe) : renvoyez-la. (9) Une branche `culture/*` ouverte avant ce chantier
   n'a pas `scripts/culture-revise.mjs` : `/corrige` y échoue jusqu'au rebase.

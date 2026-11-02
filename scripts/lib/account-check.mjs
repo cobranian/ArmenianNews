@@ -46,16 +46,26 @@ export async function checkAccounts(env = process.env, { fetch: f = fetch, now =
   const tokens = []
   for (const [value, t] of fbTokens) {
     const row = { secret: t.secret, channels: t.channels, expiresAt: null, missing: [] }
+    // Les droits exigés suivent les comptes que la clé sert : une clé qui ne
+    // sert que Facebook n'a pas besoin de publier sur Instagram.
+    const need = new Set(['pages_manage_posts'])
+    if (t.channels.some((c) => c.startsWith('instagram-'))) need.add('instagram_content_publish')
+    let health
     try {
-      Object.assign(row, await tokenHealth(value, { fetch: f }))
-      if (row.missing.length) row.problem = `droits manquants : ${row.missing.join(', ')} — la publication échouera`
-      else if (row.expiresAt) {
-        const days = Math.floor((row.expiresAt - now) / 86_400_000)
-        if (days < 0) row.problem = `clé expirée le ${row.expiresAt.toISOString().slice(0, 10)}`
-        else if (days <= TOKEN_WARN_DAYS) row.warning = `clé expire dans ${days} jour(s), le ${row.expiresAt.toISOString().slice(0, 10)}`
-      }
+      health = await tokenHealth(value, { fetch: f })
     } catch (e) {
-      row.warning = `échéance illisible (${redact(e.message, [value])})`
+      // Une clé que Meta dit invalide est un problème ; une API muette, un doute.
+      if (/clé invalide/.test(e.message)) row.problem = redact(e.message, [value])
+      else row.warning = `échéance illisible (${redact(e.message, [value])})`
+      tokens.push(row)
+      continue
+    }
+    Object.assign(row, health, { missing: health.missing.filter((s) => need.has(s)) })
+    if (row.missing.length) row.problem = `droits manquants : ${row.missing.join(', ')} — la publication échouera`
+    else if (row.expiresAt) {
+      const days = Math.floor((row.expiresAt - now) / 86_400_000)
+      if (days < 0) row.problem = `clé expirée le ${row.expiresAt.toISOString().slice(0, 10)}`
+      else if (days <= TOKEN_WARN_DAYS) row.warning = `clé expire dans ${days} jour(s), le ${row.expiresAt.toISOString().slice(0, 10)}`
     }
     tokens.push(row)
   }

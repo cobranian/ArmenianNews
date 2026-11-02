@@ -65,7 +65,8 @@ jobs:
         run: node scripts/culture-backfill.mjs --dry
 
       # Mêmes variables que articles-translate.yml : llmConfig choisit la clé
-      # selon le point d'accès. La traduction n'a aucun modèle de secours.
+      # selon le point d'accès. Gemini en panne : le modèle de secours prend le
+      # relais (culture-llm.mjs, chatResilient), sous la garde d'alphabet.
       - name: Traduire
         if: steps.list.outputs.pending != '0' && steps.list.outputs.pending != ''
         env:

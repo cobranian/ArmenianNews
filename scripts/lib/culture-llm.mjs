@@ -34,7 +34,16 @@ export async function chat({
     body: JSON.stringify({ model, temperature, messages, ...(/openrouter\.ai/.test(baseUrl) ? { reasoning: { enabled: false } } : {}) }),
     signal: AbortSignal.timeout(timeoutMs),
   })
-  if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status} (${model})`), { status: res.status })
+  if (!res.ok) {
+    // Gemini répond 400 (et non 401) à une clé invalide : « API_KEY_INVALID ».
+    // Le corps n'entre jamais dans le message (il pourrait citer la requête).
+    let keyInvalid = false
+    if (res.status === 400) {
+      const raw = await res.text?.().catch(() => '')
+      keyInvalid = /API_KEY_INVALID|API key not valid|API key expired/i.test(raw ?? '')
+    }
+    throw Object.assign(new Error(`HTTP ${res.status} (${model})`), { status: res.status, keyInvalid })
+  }
   const body = await res.json()
   const text = body?.choices?.[0]?.message?.content
   if (typeof text !== 'string' || !text.trim()) {
@@ -87,7 +96,7 @@ export function isUnavailable(err) {
 // rend parfois 403 PERMISSION_DENIED pour un projet sans facturation). Changer
 // de modèle chez le même fournisseur n'y peut rien ; changer de FOURNISSEUR,
 // avec une autre clé, si. D'où deux questions distinctes.
-export const isKeyRefused = (err) => err?.status === 401 || err?.status === 403
+export const isKeyRefused = (err) => err?.status === 401 || err?.status === 403 || err?.keyInvalid === true
 
 // Ce que le propriétaire doit FAIRE, en clair. Un 402 était annoncé
 // « Gemini indisponible, traduction reportée », comme une panne passagère —
@@ -96,7 +105,7 @@ export const GEMINI_BILLING_URL = 'https://aistudio.google.com/'
 export function explain(err, provider = 'Gemini') {
   const s = err?.status
   if (s === 402) return `${provider} : crédit épuisé (HTTP 402) — rechargez le crédit prépayé (${GEMINI_BILLING_URL} → Facturation)`
-  if (isKeyRefused(err)) return `${provider} : clé refusée (HTTP ${s}) — clé révoquée, expirée ou facturation désactivée`
+  if (isKeyRefused(err)) return `${provider} : clé refusée (HTTP ${s}) — clé invalide, révoquée, expirée ou facturation désactivée`
   if (s === 429) return `${provider} : quota atteint (HTTP 429) — passager, ou plafond du forfait`
   if (s === 404) return `${provider} : modèle introuvable (HTTP 404) — retiré par le fournisseur`
   if (typeof s === 'number' && s >= 500) return `${provider} : panne du service (HTTP ${s})`
@@ -119,9 +128,21 @@ export async function chatResilient({ messages, temperature, env = process.env, 
   const fallbackOk = Boolean(env.OPENROUTER_API_KEY)
   const viaFallback = async (model) => chat({ ...extra, baseUrl: OPENROUTER_BASE_URL, model, apiKey: env.OPENROUTER_API_KEY })
 
+  // Le modèle retenu d'abord ; s'il sature à son tour (429, délai), les
+  // autres — mieux vaut un ton qui change qu'une langue qui manque.
   if (sticky?.model) {
-    const r = await viaFallback(sticky.model)
-    return { ...r, fellBack: true, primaryError: sticky.primaryError }
+    const order = [sticky.model, ...CULTURE_FALLBACK_MODELS.filter((m) => m !== sticky.model)]
+    let last
+    for (const model of order) {
+      try {
+        const r = await viaFallback(model)
+        return { ...r, fellBack: true, primaryError: sticky.primaryError }
+      } catch (e) {
+        last = e
+        if (!(isUnavailable(e) || e.empty)) break
+      }
+    }
+    throw Object.assign(last, { primaryError: sticky.primaryError })
   }
   let first
   try {

@@ -83,11 +83,16 @@ notifie. À lancer aussi à la main après avoir recollé une clé :
 `gh run view <id> --log | grep social` : `✓` publié, `✗` échec (la raison
 suit), `↻` reporté au registre, `amorcé` = compte neuf.
 
-Un envoi refusé n'est plus perdu : il sort du registre et repart au run
+Un envoi **refusé** n'est plus perdu : il sort du registre et repart au run
 suivant, trois fois au plus. Au troisième échec il est **abandonné** et le
-tableau de bord le dit ; une fois la cause réglée :
+tableau de bord le dit. Un envoi **incertain** (délai dépassé, erreur 5xx au
+moment de publier, run coupé) n'est jamais retenté — la plateforme a peut-être
+publié — et le tableau de bord demande d'aller voir sur le compte.
 
 ```bash
+# absent du compte, ou abandonné et la cause réglée : le remettre en file
 node scripts/social-post.mjs retry --channel instagram-hy --item culture:duduk
+# bien publié (incertain), ou on y renonce : classer l'alerte
+node scripts/social-post.mjs retry --drop --channel instagram-hy --item culture:duduk
 # puis PR de src/data/social-posted.json
 ```

@@ -248,14 +248,27 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
   return { ledger: next, posts, seeded }
 }
 
-// Après l'envoi : un échec dit par la plateforme sort du registre (le run
-// suivant le retente) et entre dans `failed`, avec le nombre d'essais ; un
-// succès efface son échec passé. `results` : [{ channel, id, ok, error? }].
+// Après l'envoi : un échec SÛR (la plateforme a refusé, ou rien n'était encore
+// parti) sort du registre — le run suivant le retente — et entre dans
+// `failed`, avec le nombre d'essais ; un succès efface son échec passé.
+// Un échec INCERTAIN (délai, coupure, 5xx sur l'appel qui publie) et un envoi
+// prévu sans résultat (run interrompu) RESTENT au registre : jamais de
+// doublon. Ils sont notés `uncertain`, et le tableau de bord demande de
+// vérifier sur le compte.
+// `results` : [{ channel, id, ok, uncertain?, error? }] ; `planned` : les
+// envois du plan, [{ channel, item: { id } }].
 // Rend un NOUVEAU registre.
-export function settle(ledger, results, now = new Date()) {
+export function settle(ledger, results, now = new Date(), planned = []) {
   const next = structuredClone(ledger ?? emptyLedger())
   next.channels ??= {}
-  for (const r of results) {
+  const seen = new Set(results.map((r) => `${r.channel} ${r.id}`))
+  // Seulement ce que le registre marque « parti » : si le plan n'a pas pu être
+  // poussé, rien n'est parti et il n'y a rien à vérifier.
+  const missing = planned
+    .filter((p) => !seen.has(`${p.channel} ${p.item.id}`))
+    .filter((p) => p.item.id in (next.channels[p.channel]?.posted ?? {}))
+    .map((p) => ({ channel: p.channel, id: p.item.id, ok: false, uncertain: true, error: 'aucun résultat : run interrompu pendant l’envoi' }))
+  for (const r of [...results, ...missing]) {
     const entry = next.channels[r.channel]
     if (!entry) continue
     if (r.ok) {
@@ -263,10 +276,15 @@ export function settle(ledger, results, now = new Date()) {
       if (entry.failed && !Object.keys(entry.failed).length) delete entry.failed
       continue
     }
-    delete entry.posted[r.id]
     entry.failed ??= {}
+    const error = String(r.error ?? '').slice(0, 300)
+    if (r.uncertain) {
+      entry.failed[r.id] = { uncertain: true, last: now.toISOString(), error }
+      continue
+    }
+    delete entry.posted[r.id]
     const attempts = (entry.failed[r.id]?.attempts ?? 0) + 1
-    entry.failed[r.id] = { attempts, last: now.toISOString(), error: String(r.error ?? '').slice(0, 300) }
+    entry.failed[r.id] = { attempts, last: now.toISOString(), error }
   }
   return next
 }
@@ -277,7 +295,7 @@ export function ledgerFailures(ledger) {
   const out = []
   for (const [channel, entry] of Object.entries(ledger?.channels ?? {}))
     for (const [id, f] of Object.entries(entry.failed ?? {}))
-      out.push({ channel, id, ...f, abandoned: f.attempts >= MAX_ATTEMPTS })
+      out.push({ channel, id, ...f, abandoned: !f.uncertain && f.attempts >= MAX_ATTEMPTS })
   return out.sort((a, b) => a.channel.localeCompare(b.channel) || a.id.localeCompare(b.id))
 }
 

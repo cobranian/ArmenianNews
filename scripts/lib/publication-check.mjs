@@ -104,18 +104,35 @@ export function checkWorkflows(outcomes, { now = new Date(), lastDraftSuccess = 
         action: k === 'publish' ? 'Lire le commentaire « Publication suspendue » de la PR' : 'Lire le journal du run',
       })
   }
-  if (lastDraftSuccess) {
-    const h = (now - new Date(lastDraftSuccess)) / 3_600_000
-    if (h > DRAFT_STALE_HOURS)
-      out.push({ key: 'draft-stale', level: 'faire', text: `Aucun brouillon réussi depuis ${Math.floor(h)} h`, action: 'Lire le journal de « Culture — brouillon quotidien »' })
-  }
+  // Aucun succès dans les derniers runs lus compte aussi : c'est pire.
+  const h = lastDraftSuccess ? (now - new Date(lastDraftSuccess)) / 3_600_000 : Infinity
+  if (outcomes['articles.yml'] !== undefined && h > DRAFT_STALE_HOURS)
+    out.push({
+      key: 'draft-stale',
+      level: 'faire',
+      text: lastDraftSuccess ? `Aucun brouillon réussi depuis ${Math.floor(h)} h` : 'Aucun brouillon réussi dans les derniers passages',
+      action: 'Lire le journal de « Culture — brouillon quotidien »',
+    })
   return out
 }
 
+// `pr.check` : le statut culture-check de la tête de la PR (success, failure,
+// pending, ou absent). La traduction est `continue-on-error` : son run finit
+// vert même quand elle a échoué — c'est ce statut qui dit la vérité.
+export const CHECK_PENDING_HOURS = 6
 export function checkPullRequests(prs, now = new Date()) {
   const out = []
   for (const pr of prs) {
     const age = days(now, new Date(pr.created_at))
+    if (pr.check?.state === 'failure')
+      out.push({
+        key: `pr-${pr.number}-check`,
+        level: 'faire',
+        text: `PR #${pr.number} : contrôle culture-check en échec (${pr.check.description ?? '?'}) — [ouvrir](${pr.html_url})`,
+        action: 'Lire le dernier commentaire du robot sur la PR (traduction refusée, modèle sans réponse…)',
+      })
+    else if (pr.check?.state === 'pending' && (now - new Date(pr.check.updated_at)) / 3_600_000 > CHECK_PENDING_HOURS)
+      out.push({ key: `pr-${pr.number}-pending`, level: 'faire', text: `PR #${pr.number} : contrôle en attente depuis plus de ${CHECK_PENDING_HOURS} h`, action: 'Relancer : décocher puis recocher « Faits vérifiés »' })
     out.push({
       key: `pr-${pr.number}${age > PR_WAIT_DAYS ? '-old' : ''}`,
       level: age > PR_WAIT_DAYS ? 'faire' : 'info',
@@ -163,12 +180,19 @@ export function checkSocial({ live, accounts, tokens, failures }) {
     else out.push({ key: `token-${t.secret}`, level: 'ok', text: `Clé ${t.secret} (${t.channels.length} comptes) : droits de publication présents, ${exp}` })
   }
   for (const f of failures) {
-    if (f.abandoned)
+    if (f.uncertain)
+      out.push({
+        key: `uncertain-${f.channel}-${f.id}`,
+        level: 'faire',
+        text: `**${f.channel}** : envoi de ${f.id} INCERTAIN (${f.error}) — peut-être publié, pas retenté pour éviter un doublon`,
+        action: `Regarder le compte ${f.channel} : publié → \`node scripts/social-post.mjs retry --drop --channel ${f.channel} --item ${f.id}\` ; absent → même commande sans --drop (PR)`,
+      })
+    else if (f.abandoned)
       out.push({
         key: `abandon-${f.channel}-${f.id}`,
         level: 'faire',
         text: `**${f.channel}** a renoncé à ${f.id} après ${f.attempts} échecs : ${f.error}`,
-        action: `Une fois la cause réglée : \`node scripts/social-post.mjs retry --channel ${f.channel} --item ${f.id}\` (PR)`,
+        action: `Une fois la cause réglée : \`node scripts/social-post.mjs retry --channel ${f.channel} --item ${f.id}\` (ou \`--drop\` pour y renoncer), puis PR`,
       })
     else out.push({ key: `retry-${f.channel}-${f.id}`, level: 'info', text: `${f.channel} : ${f.id} sera retenté (échec ${f.attempts}) — ${f.error}` })
   }
