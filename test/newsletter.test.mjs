@@ -176,3 +176,10 @@ test('agenda : un même événement recensé sous deux URL ne paraît qu’une f
   assert.ok(d.body.includes('LOGHOFÈTE'))
   assert.ok(d.body.includes('Concert de printemps') && d.body.includes('Concert du duduk'))
 })
+
+test('Culture : le résumé passe à la ligne sous son titre (rendu Buttondown du 2 nov. 2026)', () => {
+  // Un simple retour à la ligne est une coupure douce en Markdown : Buttondown
+  // collait le résumé au titre, sur la même ligne.
+  const d = digestFor('ch', { briefs: briefsOf('fr'), culture: [article()], events: [], now })
+  assert.ok(d.body.includes(')<br>\n  Un hautbois.'))
+})

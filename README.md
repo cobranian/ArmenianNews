@@ -804,9 +804,19 @@ brouillon avant de l'avoir vu.
 3. Seulement ensuite, poser la variable de dépôt `NEWSLETTER_ENABLED=true`
    (`gh variable set NEWSLETTER_ENABLED --body true`) : sans elle, aucun
    passage planifié ne tourne. Puis ajouter de vrais abonnés.
-4. `NEWSLETTER_STATUS` (la valeur exacte reste à confirmer dans la documentation
-   ou auprès du support de Buttondown) ne se pose qu'après **deux numéros
-   relus** et **avec l'accord de Nareg**.
+4. `NEWSLETTER_STATUS=about_to_send` (environnement `newsletter`) — **posé le
+   2 novembre 2026** avec l'accord de Nareg, après relecture de W45 : les sept
+   lettres partent désormais seules le lundi à 05:50 UTC. Buttondown exige
+   alors l'en-tête `X-Buttondown-Live-Dangerously` (400
+   `sending_requires_confirmation` sans lui), posé par `buttondownRequest`.
+
+**Surveillance de l'envoi.** Un numéro **refusé** par Buttondown (non 2xx,
+rien de créé) est rendu au registre et repart au passage suivant (mardi,
+mercredi) — sans cela, il restait inscrit et la semaine était perdue. Une
+erreur réseau, elle, ne rend rien (le numéro a peut-être été créé : un doublon
+coûte plus qu'un oubli). Après l'envoi, `verify` relit chaque numéro jusqu'à
+`sent` (~10 min). Tout échec ouvre une issue `[newsletter-down]` assignée,
+refermée seule au premier passage qui **livre** un numéro.
 
 **Test d'inscription réel.** Le formulaire poste vers buttondown.com (CSP
 `form-action` dans les **deux** blocs `headers` de `firebase.json`). Une fois les
