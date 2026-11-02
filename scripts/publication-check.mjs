@@ -18,6 +18,8 @@ import { ALL_LANGS } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { chat, llmConfig, explain, CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL } from './lib/culture-llm.mjs'
 import { checkAccounts } from './lib/account-check.mjs'
+import { parseServiceAccount, jwtAssertion, listUrl, TOKEN_URL } from './lib/gsc.mjs'
+import { SITES } from '../sites.config.js'
 import { ledgerFailures, redact } from './lib/social.mjs'
 import { WHATSAPP_CHANNELS } from './lib/linkedin-pending.mjs'
 import {
@@ -141,6 +143,28 @@ async function social() {
   const { accounts, tokens } = await checkAccounts(env, { now })
   return checkSocial({ live: env.SOCIAL_LIVE === '1', accounts, tokens, failures: ledgerFailures(ledger) })
 }
+// Google : une vraie connexion, en LECTURE seule (liste des sitemaps).
+async function googleAccess() {
+  const sa = parseServiceAccount(env.GSC_SERVICE_ACCOUNT)
+  if (!sa) return null
+  const tok = await fetch(TOKEN_URL, {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: jwtAssertion(sa) }),
+    signal: AbortSignal.timeout(30_000),
+  })
+  const t = await tok.json().catch(() => ({}))
+  if (!t.access_token) return Object.keys(SITES).map((site) => ({ site, ok: false, error: `clé refusée par Google (HTTP ${tok.status} ${t.error ?? ''})` }))
+  const out = []
+  for (const [site, cfg] of Object.entries(SITES)) {
+    const res = await fetch(listUrl(cfg.host), { headers: { authorization: `Bearer ${t.access_token}` }, signal: AbortSignal.timeout(30_000) })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) out.push({ site, ok: false, error: `accès refusé à la propriété (HTTP ${res.status})` })
+    else out.push({ site, ok: true, lastSubmitted: (body.sitemap ?? []).map((m) => m.lastSubmitted).filter(Boolean).sort().at(-1) ?? null })
+  }
+  return out
+}
+
 async function manual() {
   const videos = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
   return checkManual({ articles: await articles(), videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
@@ -151,7 +175,7 @@ const sections = [
   await guarded('📰 Articles', articleRows),
   await guarded('📣 Réseaux (envoi automatique : Facebook, Instagram, Telegram, Bluesky)', social),
   await guarded('✋ Publication à la main', manual),
-  await guarded('🔎 Référencement', async () => checkIndexing({ gscConfigured: env.GSC_CONFIGURED === 'true' })),
+  await guarded('🔎 Référencement', async () => checkIndexing({ google: await googleAccess() })),
   await guarded('📅 Échéances', async () => checkDeadlines(now)),
 ]
 

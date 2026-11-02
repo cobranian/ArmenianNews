@@ -41,7 +41,18 @@ test('hourly.yml : Google après IndexNow, même écart, secret seulement à cet
   assert.equal(y.match(/GSC_SERVICE_ACCOUNT: \$\{\{/g).length, 1)
 })
 
-test('tableau de bord : Google non branché = action à faire', () => {
-  assert.equal(checkIndexing({ gscConfigured: false }).find((r) => r.key === 'idx-google-off').level, 'faire')
-  assert.equal(checkIndexing({ gscConfigured: true }).find((r) => r.key === 'idx-google').level, 'ok')
+test('tableau de bord : Google non branché, accès vérifié, accès refusé', () => {
+  assert.equal(checkIndexing({ google: null }).find((r) => r.key === 'idx-google-off').level, 'faire')
+  const ok = checkIndexing({ google: [{ site: 'ch', ok: true, lastSubmitted: '2026-11-02T21:30:00Z' }] })
+  assert.match(ok.find((r) => r.key === 'idx-google-ch').text, /accès vérifié.*2026-11-02 21:30/)
+  const ko = checkIndexing({ google: [{ site: 'org', ok: false, error: 'accès refusé à la propriété (HTTP 403)' }] })
+  assert.equal(ko.find((r) => r.key === 'idx-google-org-ko').level, 'faire')
+})
+
+test('social-check.yml : la clé Google n’entre que dans l’étape qui mesure', () => {
+  const y = readFileSync('.github/workflows/social-check.yml', 'utf8').replace(/\r\n/g, '\n')
+  const m = y.indexOf('- name: Mesurer')
+  const next = y.indexOf('- name:', m + 5)
+  assert.ok(y.slice(m, next).includes('GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}'))
+  assert.equal(y.match(/secrets\.GSC_SERVICE_ACCOUNT/g).length, 1)
 })

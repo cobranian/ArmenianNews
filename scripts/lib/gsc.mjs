@@ -35,6 +35,12 @@ export function parseServiceAccount(raw) {
   return sa
 }
 
+// Lecture seule : la liste des sitemaps d'une propriété. Prouve que la clé
+// est valide ET que le compte a bien accès à la propriété.
+export function listUrl(host) {
+  return `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteProperty(host))}/sitemaps`
+}
+
 const b64url = (v) => Buffer.from(typeof v === 'string' ? v : JSON.stringify(v)).toString('base64url')
 
 // L'assertion JWT (RS256) échangée contre un jeton d'accès : sans dépendance,
