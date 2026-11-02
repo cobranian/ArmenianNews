@@ -50,7 +50,7 @@ jobs:
       - name: Retrouver l'issue du tableau de bord
         id: issue
         run: |
-          n=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '[.[] | select(.title | startswith("[tableau-de-bord]"))] | .[0].number // empty')
+          n=$(gh issue list --state open --author app/github-actions --search 'in:title "tableau-de-bord"' --limit 100 --json number,title             --jq '[.[] | select(.title | startswith("[tableau-de-bord]"))] | sort_by(.number) | .[0].number // empty')
           echo "number=$n" >> "$GITHUB_OUTPUT"
           if [ -n "$n" ]; then gh issue view "$n" --json body --jq .body > "$RUNNER_TEMP/previous.md"; fi
 
@@ -150,7 +150,7 @@ jobs:
       # L'ancien contrôle ouvrait [social-down] : le tableau de bord le remplace.
       - name: Refermer l'ancienne issue [social-down]
         run: |
-          for n in $(gh issue list --state open --author app/github-actions --limit 100 --json number,title             --jq '.[] | select(.title | contains("[social-down]")) | .number'); do
+          for n in $(gh issue list --state open --author app/github-actions --search 'in:title "social-down"' --limit 100 --json number,title             --jq '.[] | select(.title | contains("[social-down]")) | .number'); do
             gh issue close "$n" --comment "Remplacée par l'issue épinglée « [tableau-de-bord] Publication des articles »."
           done
 
@@ -161,7 +161,7 @@ jobs:
         env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          n=$(gh issue list --state open --author app/github-actions --limit 100 --json number,title \
+          n=$(gh issue list --state open --author app/github-actions --search 'in:title "tableau-de-bord-en-panne"' --limit 100 --json number,title \
             --jq '[.[] | select(.title | startswith("[tableau-de-bord-en-panne]"))] | .[0].number // empty')
           if [ -n "$n" ]; then
             gh issue comment "$n" --body "Toujours en panne : $RUN_URL"
@@ -173,7 +173,7 @@ jobs:
       - name: Refermer l'alerte de panne du tableau de bord
         if: success()
         run: |
-          for n in $(gh issue list --state open --author app/github-actions --limit 100 --json number,title \
+          for n in $(gh issue list --state open --author app/github-actions --search 'in:title "tableau-de-bord-en-panne"' --limit 100 --json number,title \
             --jq '.[] | select(.title | startswith("[tableau-de-bord-en-panne]")) | .number'); do
             gh issue close "$n" --comment "Le tableau de bord s'écrit de nouveau."
           done

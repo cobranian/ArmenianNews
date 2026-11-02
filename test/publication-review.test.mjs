@@ -168,3 +168,16 @@ test('social-check.yml : les secrets ne sont visibles que de l’étape qui mesu
   assert.match(y, /- name: Mesurer\n\s*env:[\s\S]*GEMINI_API_KEY/)
   assert.match(y, /\[tableau-de-bord-en-panne\]/)
 })
+
+// `gh issue list --author app/github-actions` SANS --search ne rend RIEN : le
+// filtre GraphQL n'accepte pas une app. Le tableau de bord a ainsi créé un
+// doublon de son issue (#131, 2 nov. 2026). Avec --search, l'API de
+// recherche comprend « author:app/github-actions ».
+test('workflows : tout filtre --author app/... passe par --search', async () => {
+  const { readdirSync } = await import('node:fs')
+  for (const f of readdirSync('.github/workflows')) {
+    const y = readFileSync(`.github/workflows/${f}`, 'utf8')
+    for (const line of y.split('\n').filter((l) => /gh issue list[^\n]*--author app\//.test(l)))
+      assert.match(line, /--search /, `${f} : ${line.trim().slice(0, 80)}`)
+  }
+})
