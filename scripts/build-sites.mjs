@@ -171,10 +171,10 @@ async function writeBriefs(site, briefs) {
 // a déjà été écarté par loadCulture (avertissement au log) — le build ne
 // casse jamais à cause du contenu. Voir scripts/lib/culture-pages.mjs.
 const CULTURE_DIR = path.join(root, 'src/data/culture')
-async function writeCulture(site, culture, videos) {
+async function writeCulture(site, culture, videos, seoTitles) {
   const dist = path.join(root, 'dist', site.id)
   const built = await readFile(path.join(dist, 'index.html'), 'utf-8')
-  const n = await writeCulturePages(site, dist, culture, cssHrefFrom(built), CULTURE_DIR, Date.now(), videos)
+  const n = await writeCulturePages(site, dist, culture, cssHrefFrom(built), CULTURE_DIR, Date.now(), videos, seoTitles)
   console.log(`  → dist/${site.id} : ${n} pages Culture`)
 }
 
@@ -223,6 +223,11 @@ const briefs = await loadBriefs(path.join(root, 'src/data/briefs'))
 const culture = await loadCulture(CULTURE_DIR)
 const pays = await loadAgendaPays()
 const videos = await loadCultureVideos(path.join(root, 'src/data/culture-videos.json'))
+// Titres courts des articles Culture trop longs (cultureHeadFor). Absent ou
+// illisible = titres complets, jamais un build cassé.
+const seoTitles = await readFile(path.join(root, 'src/data/culture-seo-titles.json'), 'utf-8')
+  .then(JSON.parse)
+  .catch(() => ({}))
 const cultureStale = unpublishedLine(culture)
 if (cultureStale) console.warn(`\n${cultureStale}\n`)
 
@@ -231,7 +236,7 @@ for (const site of Object.values(SITES)) {
   await derivePages(site)
   await copyStandalone(site)
   await writeBriefs(site, briefs)
-  await writeCulture(site, culture, videos)
+  await writeCulture(site, culture, videos, seoTitles)
   await writeAgendaPays(site, pays)
   await writeSeoFiles(site, stamp, briefs, culture, pays)
 }

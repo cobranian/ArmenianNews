@@ -402,7 +402,12 @@ export function briefHeadFor({ siteId, lang, date = null, brief = null, byDate, 
 // balises que les vues et la brève, via composeHead ; hreflang limité aux
 // langues présentes pour cet article (culture-links.mjs), og:type article,
 // carte de partage propre à l'article quand il a une image.
-export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySlug, robots = null, video = null }) {
+// `seoTitle` : titre court du <title> pour un article dont le titre dépasse
+// TITLE_MAX (src/data/culture-seo-titles.json). Google coupait ces titres à
+// ~60 caractères. Il sert aussi à og:title et twitter:title ; le <h1>, le
+// fil d'Ariane et le JSON-LD gardent le titre complet. Ignoré si le titre de l'article tient déjà, ou si
+// le titre court lui-même dépasse.
+export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySlug, robots = null, video = null, seoTitle = null }) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   const s = CULTURE_STRINGS[lang]
@@ -410,7 +415,9 @@ export function cultureHeadFor({ siteId, lang, slug = null, article = null, bySl
   const url = cultureUrl(lang, slug)
   const a = slug ? article?.langs?.[lang] : null
   if (slug && !a) throw new Error(`article ${slug} absent en ${lang}`)
-  const title = a ? withBrand(a.title, site.brand) : `${s.title} · ${site.brand}`
+  const court =
+    a && seoTitle && [...a.title].length > TITLE_MAX && [...seoTitle].length <= TITLE_MAX ? seoTitle : null
+  const title = a ? withBrand(court ?? a.title, site.brand) : `${s.title} · ${site.brand}`
   const description = a ? a.description : s.description
   const ogImage = a && article.image ? `${site.host}${cultureImagePath(slug, 'jpg')}` : null
   const graph = siteGraph(site, lang)
