@@ -118,6 +118,15 @@ test('statut explicite respecté', () => {
   assert.equal(JSON.parse(init.body).status, 'about_to_send')
 })
 
+test('envoi réel : l’en-tête de confirmation Buttondown, et seulement là', () => {
+  // Mesuré le 2 nov. 2026 : sans lui, about_to_send répond 400
+  // « sending_requires_confirmation » sur les sept clés.
+  const live = buttondownRequest(digest(), { key: 'k', status: 'about_to_send' }).init.headers
+  assert.equal(live['X-Buttondown-Live-Dangerously'], 'true')
+  const brouillon = buttondownRequest(digest(), { key: 'k' }).init.headers
+  assert.equal(brouillon['X-Buttondown-Live-Dangerously'], undefined)
+})
+
 test('checkCreated : le statut rendu doit être celui demandé', () => {
   assert.equal(checkCreated('draft', { id: 'e1', status: 'draft' }), null)
   assert.equal(checkCreated('about_to_send', { status: 'about_to_send' }), null)
