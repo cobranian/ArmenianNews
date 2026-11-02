@@ -125,6 +125,11 @@ test('checkCreated : le statut rendu doit être celui demandé', () => {
   assert.equal(checkCreated('draft', { id: 'e1' }), 'Buttondown a répondu « aucun statut » au lieu de « draft »')
   assert.equal(checkCreated('draft', null), 'Buttondown a répondu « aucun statut » au lieu de « draft »')
   assert.match(checkCreated('about_to_send', { status: 'draft' }), /« draft » au lieu de « about_to_send »/)
+  // L'envoi réel avance tout seul (diagramme d'états Buttondown) : la réponse
+  // peut déjà dire « in_flight » ou « sent », et le numéro est bien parti.
+  assert.equal(checkCreated('about_to_send', { status: 'in_flight' }), null)
+  assert.equal(checkCreated('about_to_send', { status: 'sent' }), null)
+  assert.match(checkCreated('about_to_send', { status: 'scheduled' }), /« scheduled »/)
 })
 
 test('workflow : planifié seulement si NEWSLETTER_ENABLED, à :50 (hors du push horaire)', async () => {
