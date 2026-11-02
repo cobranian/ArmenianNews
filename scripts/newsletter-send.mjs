@@ -9,7 +9,10 @@
 //        un numéro, il n'en double jamais.
 //   node scripts/newsletter-send.mjs send --plan <plan.json>
 //        Envoie le plan. Une réponse non 2xx fait échouer l'étape, corps de la
-//        réponse au log.
+//        réponse au log, et REND la lettre au registre (rollbackRegistry) pour
+//        que le passage suivant la renvoie. `--report` écrit les numéros créés.
+//   node scripts/newsletter-send.mjs verify --report <report.json>
+//        Relit chaque numéro créé chez Buttondown jusqu'à « sent » (~10 min).
 //   --dry (sur les deux) : n'écrit rien, n'envoie rien, imprime le Markdown.
 //        En `plan --dry`, ni l'absence de clé ni l'absence de compte
 //        Buttondown (`buttondown: null`) n'écartent une vitrine : c'est
@@ -17,7 +20,7 @@
 //
 // Variables : BUTTONDOWN_API_KEY_<ID> par lettre — CH (fr), ORG (en), DE, IT,
 // HY, RU, ES (une lettre sans clé est ignorée) et NEWSLETTER_STATUS (statut Buttondown, `draft` par défaut).
-import { readFile, writeFile } from 'node:fs/promises'
+import { appendFile, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { newsletterLetters } from '../sites.config.js'
@@ -68,9 +71,35 @@ export function planSends({
     // Premier numéro d'une lettre (aucune ligne au registre) : toujours en
     // brouillon, quel que soit NEWSLETTER_STATUS, pour qu'une langue nouvelle
     // soit relue une fois avant de partir seule.
-    sends.push({ id, digest, first: typeof deja !== 'string' })
+    // `prev` : la valeur du registre AVANT ce plan, rendue si Buttondown
+    // refuse le numéro (rollbackRegistry).
+    sends.push({ id, digest, first: typeof deja !== 'string', prev: typeof deja === 'string' ? deja : null })
   }
   return sends
+}
+
+// Un numéro REFUSÉ par Buttondown (réponse non 2xx : rien n'a été créé) est
+// rendu au registre, pour que le passage du lendemain le renvoie — le workflow
+// en a trois par semaine pour cela. Payé le 2 nov. 2026 : sept numéros refusés
+// (400) restaient inscrits, donc perdus pour la semaine. Seul le refus franc
+// est rendu : une erreur réseau ou un statut inattendu laissent un doute (le
+// numéro a peut-être été créé), et un doublon coûte plus qu'un oubli.
+export function rollbackRegistry(registry, refused) {
+  const next = { ...registry }
+  for (const { id, prev } of refused) {
+    if (prev) next[id] = prev
+    else delete next[id]
+  }
+  return next
+}
+
+// La livraison, lue quelques minutes après la création : `about_to_send`
+// avance seul vers `in_flight` puis `sent` ; tout autre état est un échec.
+export function deliveryVerdict(requested, got) {
+  if (requested !== 'about_to_send') return got === requested ? 'ok' : 'failed'
+  if (got === 'sent') return 'ok'
+  if (got === 'about_to_send' || got === 'in_flight') return 'pending'
+  return 'failed'
 }
 
 // La requête, sans l'envoyer (testable sans réseau).
@@ -174,10 +203,12 @@ async function doPlan(opt, dry) {
 
 async function doSend(opt, dry) {
   const file = opt('--plan')
-  if (!file) throw new Error('usage : send --plan <fichier> [--dry]')
+  if (!file) throw new Error('usage : send --plan <fichier> [--report <fichier>] [--dry]')
   const { sends } = JSON.parse(await readFile(file, 'utf8'))
   const global = process.env.NEWSLETTER_STATUS || 'draft'
   let failed = 0
+  const refused = [] // rien de créé chez Buttondown : rendu au registre
+  const created = [] // relus par `verify`
   for (const s of sends) {
     if (dry) {
       console.log(preview(s))
@@ -188,13 +219,19 @@ async function doSend(opt, dry) {
     if (!key) {
       console.log(`✗ newsletter/${s.id}: clé disparue entre le plan et l'envoi`)
       failed++
+      refused.push(s)
       continue
     }
     const { url, init } = buttondownRequest(s.digest, { key, status })
     try {
       const res = await fetch(url, { ...init, signal: AbortSignal.timeout(30000) })
       const text = await res.text()
-      if (!res.ok) throw new Error(`HTTP ${res.status} — ${text.slice(0, 2000)}`)
+      if (!res.ok) {
+        failed++
+        refused.push(s)
+        console.log(`✗ newsletter/${s.id}: ${s.digest.week} — HTTP ${res.status} — ${redact(text.slice(0, 2000), key)}`)
+        continue
+      }
       let json = null
       try {
         json = JSON.parse(text)
@@ -208,12 +245,72 @@ async function doSend(opt, dry) {
         continue
       }
       const id = json?.id ?? null
+      if (id) created.push({ id: s.id, week: s.digest.week, email: id, status })
       console.log(`✓ newsletter/${s.id}: ${s.digest.week} créé en « ${status} » (${id ?? 'sans identifiant'})`)
     } catch (e) {
+      // Erreur réseau ou délai : le numéro a PEUT-ÊTRE été créé — pas rendu.
       failed++
       console.log(`✗ newsletter/${s.id}: ${s.digest.week} — ${redact(e.message, key)}`)
     }
   }
+  if (refused.length) {
+    await writeFile(REGISTRY, JSON.stringify(rollbackRegistry(await readRegistry(), refused), null, 2) + '\n')
+    for (const s of refused) console.log(`↺ newsletter/${s.id}: rendu au registre (${s.prev ?? 'aucune ligne'}) — renvoyé au prochain passage`)
+  }
+  const report = opt('--report')
+  if (report && !dry) await writeFile(report, JSON.stringify({ created }, null, 2))
+  if (failed) process.exitCode = 1
+}
+
+// Relit chaque numéro créé jusqu'à ce qu'il soit livré (`sent`), au plus
+// ~10 min. Un 2xx à la création ne prouve pas l'envoi : une file bloquée ou
+// un compte suspendu laissent le numéro en route, sans erreur.
+async function doVerify(opt) {
+  const file = opt('--report')
+  if (!file) throw new Error('usage : verify --report <fichier>')
+  let created = []
+  try {
+    created = JSON.parse(await readFile(file, 'utf8')).created || []
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e
+  }
+  if (!created.length) return console.log('· newsletter : rien à vérifier')
+  let reste = created
+  let failed = 0
+  for (let tour = 0; reste.length && tour < 20; tour++) {
+    if (tour) await new Promise((r) => setTimeout(r, 30000))
+    const suivant = []
+    for (const c of reste) {
+      const key = keyFor(c.id)
+      let got
+      try {
+        const res = await fetch(`${BUTTONDOWN_EMAILS}/${c.email}`, {
+          headers: { Authorization: `Token ${key}`, 'User-Agent': UA },
+          signal: AbortSignal.timeout(30000),
+        })
+        got = res.ok ? (await res.json())?.status : `HTTP ${res.status}`
+      } catch (e) {
+        got = redact(e.message, key)
+      }
+      const v = deliveryVerdict(c.status, got)
+      // Un 5xx ou une coupure réseau ne disent rien du numéro : on relit.
+      const douteux = typeof got !== 'string' || /^HTTP 5|timeout|fetch failed/i.test(got)
+      if (v === 'pending' || (v === 'failed' && douteux)) suivant.push({ ...c, got })
+      else if (v === 'ok') console.log(`✓ newsletter/${c.id}: ${c.week} livré (« ${got} »)`)
+      else {
+        failed++
+        console.log(`✗ newsletter/${c.id}: ${c.week} — état « ${got} » chez Buttondown (${c.email})`)
+      }
+    }
+    reste = suivant
+  }
+  for (const c of reste) {
+    failed++
+    console.log(`✗ newsletter/${c.id}: ${c.week} — toujours « ${c.got} » après 10 min (${c.email})`)
+  }
+  // Le workflow ne referme l'alerte que si un numéro a VRAIMENT été livré :
+  // un passage sans rien à envoyer ne prouve pas que la panne est réparée.
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `delivered=${created.length - failed}\n`)
   if (failed) process.exitCode = 1
 }
 
@@ -223,9 +320,9 @@ async function main(args) {
     return i >= 0 ? args[i + 1] : null
   }
   const dry = args.includes('--dry')
-  const run = { plan: doPlan, send: doSend }[args[0]]
+  const run = { plan: doPlan, send: doSend, verify: doVerify }[args[0]]
   if (!run) {
-    console.error('usage : newsletter-send.mjs plan|send … [--dry]')
+    console.error('usage : newsletter-send.mjs plan|send|verify … [--dry]')
     process.exit(2)
   }
   await run(opt, dry)

@@ -33,6 +33,7 @@ jobs:
     environment: newsletter
     permissions:
       contents: write # pousser le registre src/data/newsletter-sent.json
+      issues: write # ouvrir/refermer l'alerte [newsletter-down]
     env:
       NEWSLETTER_STATUS: ${{ vars.NEWSLETTER_STATUS }}
       BUTTONDOWN_API_KEY_CH: ${{ secrets.BUTTONDOWN_API_KEY_CH }}
@@ -76,4 +77,53 @@ jobs:
           fi
 
       - name: Envoyer
-        run: node scripts/newsletter-send.mjs send --plan "$RUNNER_TEMP/newsletter-plan.json"
+        id: send
+        run: node scripts/newsletter-send.mjs send --plan "$RUNNER_TEMP/newsletter-plan.json" --report "$RUNNER_TEMP/newsletter-report.json"
+
+      # Un numéro REFUSÉ par Buttondown a été rendu au registre par `send` :
+      # le pousser fait repartir la lettre au passage du lendemain (mardi,
+      # mercredi). Payé le 2 nov. 2026 : sept refus restés inscrits à W45.
+      - name: Rendre au registre les numéros refusés
+        if: always()
+        run: |
+          git add src/data/newsletter-sent.json
+          if git diff --cached --quiet; then
+            echo "Aucun numéro rendu."
+          else
+            git commit -m "newsletter: numéros refusés rendus au registre $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase
+            git push
+          fi
+
+      # Un 2xx à la création ne prouve pas la livraison.
+      - name: Vérifier la livraison
+        id: verify
+        if: always() && steps.send.conclusion != 'skipped'
+        run: node scripts/newsletter-send.mjs verify --report "$RUNNER_TEMP/newsletter-report.json"
+
+      # Alerte dédoublonnée sur le marqueur du titre, ASSIGNÉE (un assigné est
+      # toujours notifié), refermée seule au premier passage sans échec —
+      # même mécanique que [prerender-down] dans hourly.yml.
+      - name: Alerter (issue [newsletter-down])
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ECHEC: ${{ job.status != 'success' }}
+          LIVRES: ${{ steps.verify.outputs.delivered || 0 }}
+        run: |
+          ouverte=$(gh issue list --state open --author app/github-actions --search 'in:title "[newsletter-down]"' \
+            --json number,title --jq '[.[] | select(.title | contains("[newsletter-down]"))] | .[0].number // empty')
+          if [ "$ECHEC" = "true" ]; then
+            corps="La lettre hebdomadaire n'est pas partie entièrement. Log : $RUN_URL
+
+          Un numéro refusé par Buttondown est rendu au registre et repart au passage suivant (lundi, mardi, mercredi à 05:50 UTC). Lire les lignes ✗ newsletter/ du log."
+            if [ -n "$ouverte" ]; then
+              gh issue comment "$ouverte" --body "$corps"
+            else
+              gh issue create --title "[newsletter-down] La lettre hebdomadaire n'est pas partie" \
+                --assignee cobranian --body "$corps"
+            fi
+          elif [ -n "$ouverte" ] && [ "$LIVRES" -gt 0 ]; then
+            gh issue close "$ouverte" --comment "Lettre partie et livrée : $RUN_URL"
+          fi

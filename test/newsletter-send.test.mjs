@@ -7,7 +7,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { planSends, buttondownRequest, checkCreated } from '../scripts/newsletter-send.mjs'
+import { planSends, buttondownRequest, checkCreated, rollbackRegistry, deliveryVerdict } from '../scripts/newsletter-send.mjs'
 import { SITES } from '../sites.config.js'
 
 const digest = (week = '2026-W45') => ({ week, subject: `Sujet ${week}`, body: '# Corps' })
@@ -57,7 +57,7 @@ test('par défaut, le compte est lu dans sites.config.js', () => {
 test('semaine suivante = envoi', () => {
   const d = digest()
   const r = planSends({ registry: { ch: '2026-W44' }, digests: { ch: d }, hasKey: keys, hasAccount: keys, log: quiet })
-  assert.deepEqual(r, [{ id: 'ch', digest: d, first: false }])
+  assert.deepEqual(r, [{ id: 'ch', digest: d, first: false, prev: '2026-W44' }])
 })
 
 test('registre vide = envoi des deux vitrines', () => {
@@ -159,4 +159,38 @@ test('premier numéro d’une lettre : marqué « first » (brouillon forcé), l
 test('envoi : un premier numéro part en brouillon même si NEWSLETTER_STATUS dit autre chose', async () => {
   const src = await readFile(new URL('../scripts/newsletter-send.mjs', import.meta.url), 'utf-8')
   assert.match(src, /const status = s\.first \? 'draft' : global/)
+})
+
+test('plan : chaque envoi garde la valeur précédente du registre (pour la rendre en cas de refus)', () => {
+  const r = planSends({ registry: { ch: '2026-W44' }, digests: { ch: digest(), de: digest() }, hasKey: keys, hasAccount: keys, log: quiet })
+  assert.deepEqual(r.map((s) => [s.id, s.prev]), [['ch', '2026-W44'], ['de', null]])
+})
+
+test('refus Buttondown : la lettre est rendue au registre, le passage suivant la renvoie', () => {
+  // Payé le 2 nov. 2026 : les sept numéros refusés (400) restaient inscrits
+  // à W45, donc perdus pour la semaine sans intervention à la main.
+  const avant = { ch: '2026-W45', de: '2026-W45', it: '2026-W45' }
+  const apres = rollbackRegistry(avant, [{ id: 'ch', prev: '2026-W44' }, { id: 'de', prev: null }])
+  assert.deepEqual(apres, { ch: '2026-W44', it: '2026-W45' })
+  assert.deepEqual(avant, { ch: '2026-W45', de: '2026-W45', it: '2026-W45' }) // pas de mutation
+  // Le registre rendu fait bien repartir la semaine.
+  assert.equal(planSends({ registry: apres, digests: { ch: digest(), de: digest(), it: digest() }, hasKey: keys, hasAccount: keys, log: quiet }).length, 2)
+})
+
+test('vérification après envoi : seul « sent » est livré ; un brouillon voulu est en ordre', () => {
+  assert.equal(deliveryVerdict('about_to_send', 'sent'), 'ok')
+  assert.equal(deliveryVerdict('about_to_send', 'in_flight'), 'pending')
+  assert.equal(deliveryVerdict('about_to_send', 'about_to_send'), 'pending')
+  assert.equal(deliveryVerdict('draft', 'draft'), 'ok')
+  for (const st of ['paused', 'throttled', 'partially_sent', 'draft', undefined]) assert.equal(deliveryVerdict('about_to_send', st), 'failed')
+})
+
+test('workflow : rend le registre, vérifie la livraison, alerte par issue [newsletter-down]', async () => {
+  const yml = await readFile(new URL('../.github/workflows/newsletter.yml', import.meta.url), 'utf-8')
+  assert.match(yml, /issues: write/)
+  assert.match(yml, /newsletter-send\.mjs verify --report/)
+  assert.match(yml, /\[newsletter-down\]/)
+  assert.match(yml, /--assignee cobranian/)
+  // Le registre rendu après un refus doit être poussé même si l'envoi a échoué.
+  assert.match(yml, /name: Rendre au registre les numéros refusés\s+if: always\(\)/)
 })

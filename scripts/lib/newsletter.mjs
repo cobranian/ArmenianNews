@@ -133,7 +133,7 @@ export function digestFor(siteId, { briefs, culture, events, now, lang = SITES[s
       lesArticles
         .map((a) => {
           const { title, description } = a.langs[lang]
-          return `- ${lien(title, cultureUrl(lang, a.slug) + utm)}${description ? `\n  ${echappe(description)}` : ''}`
+          return `- ${lien(title, cultureUrl(lang, a.slug) + utm)}${description ? `<br>\n  ${echappe(description)}` : ''}`
         })
         .join('\n'),
     )
