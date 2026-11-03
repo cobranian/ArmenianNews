@@ -31,6 +31,12 @@ export const ARMENIEINFOTV_SECTIONS = [
   { key: 'geopolitique', slug: 'geopolitique' },
   { key: 'politique', slug: 'politique' },
   { key: 'un-autre-regard', slug: 'un-autre-regard-par-marie-taffoureau' },
+  // « Non classé » LAST: since 30 Oct. 2026 the site files almost every new
+  // article there (alongside free tags), and none in the rubrics above. Without
+  // it the source froze for four days, every rubric ✓ and dated, the only sign
+  // a [sources-down] issue. Last in the list, so dedupe keeps an article under
+  // its real rubric when it has one; RUBRIC_MAP classifies the rest (mixed).
+  { key: 'non-classe', slug: 'non-classe' },
 ]
 
 function decodeEntities(html) {

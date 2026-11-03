@@ -86,6 +86,7 @@ export const RUBRIC_MAP = {
     geopolitique: 'politique',
     politique: 'politique',
     'un-autre-regard': 'opinion',
+    'non-classe': mixed('armenie'),
   },
   // Deux éditions (en, hy) sous une même table : leurs clés ne se recouvrent pas.
   asbarez: {
