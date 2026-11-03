@@ -258,6 +258,10 @@ for (const site of Object.values(SITES)) {
     const kos = [
       [`<html lang="${primaryLang(site.id)}">`, nf.includes(`<html lang="${primaryLang(site.id)}">`)],
       ['noindex', /<meta name="robots" content="noindex/.test(nf)],
+      // Mesurée comme le reste de la vitrine : sans balise, les visiteurs
+      // arrivés par un lien cassé seraient invisibles, sans aucun signe.
+      ['ID GA de la vitrine', !site.gaMeasurementId || nf.includes(`data-ga-id="${site.gaMeasurementId}"`)],
+      ['jeton Cloudflare de la vitrine', !site.cfBeaconToken || nf.includes(`"token": "${site.cfBeaconToken}"`)],
       [
         'aucun host du voisin',
         Object.values(SITES)

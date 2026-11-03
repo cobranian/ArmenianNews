@@ -22,6 +22,7 @@ import { SITES, pathFor, primaryLang, LANGS, briefPath, culturePath } from '../.
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
 import { VIEW_SEO } from '../../src/seo.js'
+import { beaconTag, gaTag } from './site-meta.mjs'
 
 // Les chaînes de la page, par langue. Courtes et factuelles : c'est une page
 // qu'on quitte aussitôt. Un titre manquant ne retombe PAS sur le français en
@@ -92,6 +93,10 @@ export function notFoundHtml(siteId) {
     })
     .join('\n      ')
 
+  // Mesure d'audience : les mêmes balises que le reste de la vitrine (son ID
+  // GA, son jeton Cloudflare), produites par le même générateur. Sans elles,
+  // les visiteurs tombés sur un lien cassé étaient invisibles.
+  //
   // Le thème suit le même interrupteur que le site (clé `theme` en
   // localStorage, posée par /theme-init.js — script externe, parce que la CSP
   // est en script-src 'self' sans 'unsafe-inline'). Nuit par défaut, comme le
@@ -103,6 +108,7 @@ export function notFoundHtml(siteId) {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(s.title)} · ${esc(site.brand)}</title>
 <meta name="robots" content="noindex, follow">
+${gaTag(siteId)}
 <meta name="theme-color" content="#100f0d">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -139,6 +145,7 @@ li a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-bot
       ${rows}
   </ul>
 </main>
+${beaconTag(siteId)}
 </body>
 </html>
 `
