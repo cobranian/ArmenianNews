@@ -196,6 +196,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Géopolitique',
     'aitcats.politique': 'Politique',
     'aitcats.un-autre-regard': 'Un autre regard',
+    'aitcats.non-classe': 'Actualité',
 
     'browser.subtitle': 'Toutes les rubriques, source par source',
     'news.sources': '{n} rédactions arméniennes',
@@ -473,6 +474,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Geopolitik',
     'aitcats.politique': 'Politik',
     'aitcats.un-autre-regard': 'Ein anderer Blick',
+    'aitcats.non-classe': 'Aktuelles',
     'browser.subtitle': 'Alle Rubriken, Quelle für Quelle',
     'news.sources': '{n} armenische Redaktionen',
     'browser.armradio': 'Öffentlicher Rundfunk Armeniens',
@@ -722,6 +724,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Geopolitica',
     'aitcats.politique': 'Politica',
     'aitcats.un-autre-regard': 'Un altro sguardo',
+    'aitcats.non-classe': 'Attualità',
     'browser.subtitle': 'Tutte le rubriche, fonte per fonte',
     'news.sources': '{n} redazioni armene',
     'browser.armradio': 'Radio pubblica armena',
@@ -989,6 +992,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Geopolitics',
     'aitcats.politique': 'Politics',
     'aitcats.un-autre-regard': 'Another view',
+    'aitcats.non-classe': 'News',
 
     'browser.subtitle': 'Every rubric, source by source',
     'news.sources': '{n} Armenian newsrooms',
@@ -1284,6 +1288,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Աշխարհաքաղաքականություն',
     'aitcats.politique': 'Քաղաքականություն',
     'aitcats.un-autre-regard': 'Այլ հայացք',
+    'aitcats.non-classe': 'Լուրեր',
 
     'browser.subtitle': 'Բոլոր բաժինները՝ ըստ աղբյուրի',
     'news.sources': '{n} հայկական խմբագրություն',
@@ -1571,6 +1576,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Геополитика',
     'aitcats.politique': 'Политика',
     'aitcats.un-autre-regard': 'Другой взгляд',
+    'aitcats.non-classe': 'Новости',
 
     'browser.subtitle': 'Все рубрики, источник за источником',
     'news.sources': '{n} армянских редакций',
@@ -1841,6 +1847,7 @@ const STRINGS = {
     'aitcats.geopolitique': 'Geopolítica',
     'aitcats.politique': 'Política',
     'aitcats.un-autre-regard': 'Otra mirada',
+    'aitcats.non-classe': 'Actualidad',
 
     'browser.subtitle': 'Todas las secciones, fuente por fuente',
     'news.sources': '{n} redacciones armenias',
