@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T17:57:04.045Z",
+  "generatedAt": "2026-11-03T18:25:01.783Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Նամականիշի մարում և գալա-համերգ․ Հայկական ռադիոն նշում է 100-ամյակը",
+            "url": "https://hy.armradio.am/archives/768456",
+            "date": "2026-11-03T17:51:06.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/b0ccdfa5-1bc1-4374-879a-72ac4bec9741-300x193.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Նոր բացիկ՝ նվիրված ««Սիլիկոնային սարեր 2026» տեխնոլոգիական գագաթնաժողովին և ցուցահանդեսին",
             "url": "https://hy.armradio.am/archives/768452",
             "date": "2026-11-03T16:55:45.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/768311",
             "date": "2026-11-03T09:01:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/QIP-Shot-Screen-3815-768x611.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ի՞նչ անել, եթե հին անձնագրում վիզա կա. ՆԳՆ մամուլի քարտուղարի պարզաբանումը",
-            "url": "https://hy.armradio.am/archives/768299",
-            "date": "2026-11-03T08:10:44.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/narek-sargsyan-e1700930558310-768x511.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -3178,18 +3178,18 @@
           "rubric": "politique"
         },
         {
-          "title": "Lancement d’une nouvelle ère de numérisation en Arménie",
-          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
-          "date": "2026-11-03T11:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793586811-1518.jpg",
-          "rubric": "economie"
-        },
-        {
           "title": "Un soldat arménien retrouvé mort alors que les décès hors combat se multiplient",
           "url": "https://armenieinfo.tv/un-soldat-armenien-retrouve-mort-alors-que-les-deces-hors-combat-se-multiplient/",
           "date": "2026-11-03T11:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793673282-2531.jpg",
           "rubric": "societe"
+        },
+        {
+          "title": "Lancement d’une nouvelle ère de numérisation en Arménie",
+          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
+          "date": "2026-11-03T11:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793586811-1518.jpg",
+          "rubric": "economie"
         },
         {
           "title": "Le gouvernement arménien commence à mettre en œuvre le projet TRIPP",
@@ -4203,6 +4203,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Մենք որդեգրել ենք հավասարակշռված արտաքին քաղաքականություն. Փաշինյանը` հայ-ռուսական հարաբերությունների մասին",
+            "url": "https://armenpress.am/hy/article/1264676",
+            "date": "2026-11-03T18:20:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/6fOcoEhlpF1uvOEsh1ErRdbN7OkVlb7c1VF37TQw.webp"
+          },
+          {
             "title": "Տեղի է ունեցել Հաշմանդամություն ունեցող անձանց հիմնահարցերով զբաղվող միջգերատեսչական հանձնաժողովի նիստը",
             "url": "https://armenpress.am/hy/article/1264675",
             "date": "2026-11-03T17:50:00.000Z",
@@ -4255,12 +4261,6 @@
             "url": "https://armenpress.am/hy/article/1264656",
             "date": "2026-11-03T13:55:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/03/rfgt7PSMURpYMW52ppeJsJvlxGzbVBg6fkgnXin1.webp"
-          },
-          {
-            "title": "Առողջապահության նախարարության բյուջեն նախատեսվում է ավելացնել 136 միլիարդ դրամով",
-            "url": "https://armenpress.am/hy/article/1264655",
-            "date": "2026-11-03T13:54:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/03/2308xUinYHHJsKdXBRcchK2p9A4np0er7i3sAUuK.webp"
           }
         ]
       },
@@ -9103,6 +9103,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Azerbaijan ordered to compensate family of killed Armenian serviceman",
+            "url": "https://civilnet.am/en/news/1015170",
+            "date": "2026-11-03T18:05:00.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/03/FKyinLCBV018UQK3.webp"
+          },
+          {
             "title": "New agreement to help Kremlin track assets of Russians in post-Soviet countries, not including Armenia",
             "url": "https://civilnet.am/en/news/1015147",
             "date": "2026-11-03T10:50:40.000Z",
@@ -9155,12 +9161,6 @@
             "url": "https://civilnet.am/en/news/1015102",
             "date": "2026-10-30T11:11:04.000Z",
             "image": "https://civilnet.am/storage/media/26/10/30/WNVuUWgr2BHDhJnd.webp"
-          },
-          {
-            "title": "Parliament speaker urges opposition to let voters decide on new constitution",
-            "url": "https://civilnet.am/en/news/1015101",
-            "date": "2026-10-30T10:55:00.000Z",
-            "image": "https://civilnet.am/storage/media/26/10/30/zfh87qYTOvXXY5Pt.webp"
           }
         ]
       },
@@ -10801,6 +10801,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Demi Moore, 63, Stuns in Plunging Denim Dress at Star-Studded CFDA Fashion Awards",
+            "url": "https://style.news.am/eng/news/116958/",
+            "date": "2026-11-03T18:08:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116958.jpg"
+          },
+          {
             "title": "Barbara Palvin Opens Up About Returning to the Victoria’s Secret Runway Just Six Weeks After Giving Birth: ‘Every Postpartum Journey Looks Different’",
             "url": "https://style.news.am/eng/news/116951/",
             "date": "2026-11-03T17:30:00.000Z",
@@ -10853,12 +10859,6 @@
             "url": "https://style.news.am/eng/news/116950/",
             "date": "2026-11-03T09:18:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/116950.jpg"
-          },
-          {
-            "title": "Influencer Liam Fitzgerald’s Family Says Creator ‘Battled with Alcohol’ in Tribute 2 Days After His Fatal Motorcycle Crash",
-            "url": "https://style.news.am/eng/news/116949/",
-            "date": "2026-11-03T08:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/116949.jpg"
           }
         ]
       },
@@ -11331,6 +11331,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ՀՖՖ արտահերթ ժողովը՝ նոյեմբերի 4-ին, 12։00-ին",
+            "url": "https://sport.news.am/arm/news/170020/",
+            "date": "2026-11-03T18:12:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170020.jpg"
+          },
+          {
             "title": "Էլմիրա Կարապետյանը՝ աշխարհի փոխչեմպիոն",
             "url": "https://sport.news.am/arm/news/170019/",
             "date": "2026-11-03T17:43:00.000Z",
@@ -11383,12 +11389,6 @@
             "url": "https://sport.news.am/arm/news/170006/",
             "date": "2026-11-03T13:02:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170006.jpg"
-          },
-          {
-            "title": "Ֆրանսիաի Լիգա 1․ 9-րդ տուրի արդյունքներն ու մրցաշարային դրությունը",
-            "url": "https://sport.news.am/arm/news/170005/",
-            "date": "2026-11-03T12:31:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170005.jpg"
           }
         ]
       },
@@ -11396,6 +11396,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Ամերիկացի միլիարդատեր Բոելիի կոնսորցիումը մտադիր է գնել «Լուկօյլի» արտասահմանյան ակտիվները. Reuters",
+            "url": "https://news.am/hy/news/1072348",
+            "date": "2026-11-03T18:06:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/9jmRGU8BQ97zICjw.webp"
+          },
           {
             "title": "Իսրայելի ֆինանսների նախարարությունում զարմացել են ռազմական օգնությունը դադարեցնելու մասին Թրամփի հայտարարությունից",
             "url": "https://news.am/hy/news/1072331",
@@ -11449,12 +11455,6 @@
             "url": "https://news.am/hy/news/1072253",
             "date": "2026-11-03T12:00:00.000Z",
             "image": "https://news.am/storage/media/26/11/03/HERPuTIv7rrFsfoB.webp"
-          },
-          {
-            "title": "Ռուսաստանից միգրացիայի ներկայիս փուլը տարբերվում է նախորդներից․ Գալստյան",
-            "url": "https://news.am/hy/news/1072251",
-            "date": "2026-11-03T11:50:13.000Z",
-            "image": "https://news.am/storage/media/26/11/03/b9CdOmaVKVOI1Ijl.webp"
           }
         ]
       },
@@ -11462,6 +11462,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "63-ամյա Դեմի Մուրը հիացրել է ներկաներին՝ CFDA Fashion Awards մրցանակաբաշխությանը ներկայանալով խորը բացվածքով ջինսե զգեստով",
+            "url": "https://style.news.am/arm/news/116958/",
+            "date": "2026-11-03T18:08:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116958.jpg"
+          },
           {
             "title": "Բարբարա Պալվինը պատմել է ծննդաբերությունից ընդամենը վեց շաբաթ անց Victoria’s Secret-ի պոդիում վերադառնալու մասին․«Հետծննդյան շրջանը յուրաքանչյուր կնոջ համար տարբեր է»",
             "url": "https://style.news.am/arm/news/116951/",
@@ -11515,12 +11521,6 @@
             "url": "https://style.news.am/arm/news/116949/",
             "date": "2026-11-03T08:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/116949.jpg"
-          },
-          {
-            "title": "Ջոնի Դեփը յոթ տարվա դադարից հետո վերադառնում է հոլիվուդյան մեծ կինոարտադրություն՝ Էբենեզեր Սքրուջի կերպարում անճանաչելի դառնալով",
-            "url": "https://style.news.am/arm/news/116948/",
-            "date": "2026-11-03T07:29:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/116948.jpg"
           }
         ]
       },
@@ -12059,6 +12059,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Reuters: консорциум американского миллиардера Боэли готовится купить зарубежные активы «Лукойла»",
+            "url": "https://news.am/ru/news/1072348",
+            "date": "2026-11-03T18:06:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/9jmRGU8BQ97zICjw.webp"
+          },
+          {
             "title": "В Минфине Израиля удивились заявлению Трампа о прекращении военной помощи",
             "url": "https://news.am/ru/news/1072331",
             "date": "2026-11-03T16:49:00.000Z",
@@ -12111,12 +12117,6 @@
             "url": "https://news.am/ru/news/1072251",
             "date": "2026-11-03T11:50:13.000Z",
             "image": "https://news.am/storage/media/26/11/03/b9CdOmaVKVOI1Ijl.webp"
-          },
-          {
-            "title": "ЦБ Армении: Банкам послан сигнал для формирования резервов в случае изменений на рынке недвижимости",
-            "url": "https://news.am/ru/news/1072239",
-            "date": "2026-11-03T11:14:10.000Z",
-            "image": "https://news.am/storage/media/26/05/25/jEbwRgHMLfSlcy7P.webp"
           }
         ]
       },
@@ -12124,6 +12124,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Деми Мур в 63 года произвела фурор в откровенном джинсовом платье на церемонии CFDA Fashion Awards",
+            "url": "https://style.news.am/rus/news/116958/",
+            "date": "2026-11-03T18:08:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116958.jpg"
+          },
           {
             "title": "Барбара Палвин рассказала о возвращении на подиум Victoria’s Secret всего через шесть недель после родов: «Послеродовой период у каждой женщины проходит по-разному»",
             "url": "https://style.news.am/rus/news/116951/",
@@ -12177,12 +12183,6 @@
             "url": "https://style.news.am/rus/news/116950/",
             "date": "2026-11-03T09:18:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/116950.jpg"
-          },
-          {
-            "title": "Семья инфлюенсера Лиама Фицджеральда рассказала, что он боролся с алкогольной зависимостью: близкие почтили его память спустя два дня после смертельной аварии",
-            "url": "https://style.news.am/rus/news/116949/",
-            "date": "2026-11-03T08:30:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/116949.jpg"
           }
         ]
       },
