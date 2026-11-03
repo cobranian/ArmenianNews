@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T09:23:29.165Z",
+  "generatedAt": "2026-11-03T09:44:16.894Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Նիկոլ Փաշինյանը ժամանել է Բրյուսել",
+            "url": "https://hy.armradio.am/archives/768314",
+            "date": "2026-11-03T09:31:28.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/13A6156-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ՀՀ ԿԲ խորհուրդը որոշել է բարձրացնել քաղաքականության տոկոսադրույքը 0.25 տոկոսային կետով՝ սահմանելով 7.0%",
             "url": "https://hy.armradio.am/archives/768307",
             "date": "2026-11-03T08:37:03.000Z",
@@ -1135,13 +1142,6 @@
             "url": "https://hy.armradio.am/archives/767831",
             "date": "2026-10-31T10:51:40.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/10/871253266_1547897884034370_8964773705622907525_n-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Արարատ Միրզոյանը կմասնակցի Բահրեյնում անցկացվող «Մանամայի երկխոսություն» անվտանգության ֆորումին",
-            "url": "https://hy.armradio.am/archives/767747",
-            "date": "2026-10-30T17:34:01.000Z",
-            "image": null,
             "category": "Կարևոր"
           }
         ]
@@ -1677,6 +1677,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "В Армении с 1 января 2027 года запретят отчуждение полиэтиленовых пакетов и одноразовых пластиковых изделий",
+            "url": "https://ru.armradio.am/2026/11/03/%d0%b2-%d0%b0%d1%80%d0%bc%d0%b5%d0%bd%d0%b8%d0%b8-%d1%81-1-%d1%8f%d0%bd%d0%b2%d0%b0%d1%80%d1%8f-2027-%d0%b3%d0%be%d0%b4%d0%b0-%d0%b7%d0%b0%d0%bf%d1%80%d0%b5%d1%82%d1%8f%d1%82-%d0%be%d1%82/",
+            "date": "2026-11-03T09:25:00.000Z",
+            "image": "https://ru.armradio.am/wp-content/uploads/2026/11/ataselljueq7xj95sl6qudfwikkn5yys-768x527.jpg",
+            "category": "Все новости"
+          },
+          {
             "title": "Для борьбы с незаконной парковкой в Ереване потребуется 30–40 эвакуаторов: водителей ждут штрафы и штрафные баллы",
             "url": "https://ru.armradio.am/2026/11/02/%d0%b4%d0%bb%d1%8f-%d0%b1%d0%be%d1%80%d1%8c%d0%b1%d1%8b-%d1%81-%d0%bd%d0%b5%d0%b7%d0%b0%d0%ba%d0%be%d0%bd%d0%bd%d0%be%d0%b9-%d0%bf%d0%b0%d1%80%d0%ba%d0%be%d0%b2%d0%ba%d0%be%d0%b9-%d0%b2-%d0%b5%d1%80/",
             "date": "2026-11-02T13:26:00.000Z",
@@ -1737,13 +1744,6 @@
             "url": "https://ru.armradio.am/2026/10/29/%d0%b3%d0%b5%d0%b2%d0%be%d1%80%d0%b3-%d0%bf%d0%b0%d0%bf%d0%be%d1%8f%d0%bd-%d0%bd%d0%b0-%d0%be%d0%b4%d0%bd%d0%be%d0%b9-%d0%b8%d0%b7-%d1%81%d0%be%d1%86%d0%b8%d0%b0%d0%bb%d1%8c%d0%bd%d1%8b%d1%85-%d0%bf/",
             "date": "2026-10-29T07:00:00.000Z",
             "image": "https://ru.armradio.am/wp-content/uploads/2026/10/03132355db425c61424be68dc8be0747128dda-2-768x513.jpg",
-            "category": "Главная"
-          },
-          {
-            "title": "МВД РА: с 15 ноября обязательна эксплуатация автомобилей на зимних шинах",
-            "url": "https://ru.armradio.am/2026/10/27/%d0%bc%d0%b2%d0%b4-%d1%80%d0%b0-%d1%81-15-%d0%bd%d0%be%d1%8f%d0%b1%d1%80%d1%8f-%d0%be%d0%b1%d1%8f%d0%b7%d0%b0%d1%82%d0%b5%d0%bb%d1%8c%d0%bd%d0%b0-%d1%8d%d0%ba%d1%81%d0%bf%d0%bb%d1%83%d0%b0%d1%82/",
-            "date": "2026-10-27T14:32:00.000Z",
-            "image": "https://ru.armradio.am/wp-content/uploads/2026/10/images-2026-10-27T173332.353-300x168.jpg",
             "category": "Главная"
           }
         ]
@@ -2172,18 +2172,18 @@
           "rubric": "economie"
         },
         {
-          "title": "L’Arménie conserve l’intégralité de ses prérogatives douanières dans le cadre du projet TRIPP, affirme le président du Comité des recettes publiques",
-          "url": "https://www.armenews.com/larmenie-conserve-lintegralite-de-ses-prerogatives-douanieres-dans-le-cadre-du-projet-tripp-affirme-le-president-du-comite-des-recettes-publiques/",
-          "date": "2026-11-03T07:30:21.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-03-a-07.36.17.png",
-          "rubric": "armenie"
-        },
-        {
           "title": "Hrazdan, la ville dont les princes sont des enfants, par Myriam Gaume et Max Sivaslian (2)",
           "url": "https://www.armenews.com/hrazdan-la-ville-dont-les-princes-sont-des-enfants-par-myriam-gaume-et-max-sivaslian-2/",
           "date": "2026-11-03T07:30:21.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/11/Artak-01-scaled.jpg",
           "rubric": "societe"
+        },
+        {
+          "title": "L’Arménie conserve l’intégralité de ses prérogatives douanières dans le cadre du projet TRIPP, affirme le président du Comité des recettes publiques",
+          "url": "https://www.armenews.com/larmenie-conserve-lintegralite-de-ses-prerogatives-douanieres-dans-le-cadre-du-projet-tripp-affirme-le-president-du-comite-des-recettes-publiques/",
+          "date": "2026-11-03T07:30:21.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-03-a-07.36.17.png",
+          "rubric": "armenie"
         },
         {
           "title": "Moscou renforce sa coopération militaire avec Bakou",
@@ -3657,6 +3657,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Kam Ghaffarian’s contribution to transforming human life is invaluable, says Hovik Musayelyan",
+            "url": "https://armenpress.am/en/article/1264590",
+            "date": "2026-11-03T09:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/lNj3Rf6w8hWauux3ZJCnpXgkGn9k5fDCcDLMGmPg.webp"
+          },
+          {
             "title": "Makunts explains when Armenia will withdraw international claims against Azerbaijan",
             "url": "https://armenpress.am/en/article/1264575",
             "date": "2026-11-03T09:09:00.000Z",
@@ -3709,12 +3715,6 @@
             "url": "https://armenpress.am/en/article/1264551",
             "date": "2026-11-03T07:21:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/03/yihHPi9bpJNCVA7ZB1Hx6lPydw7nZX49Vt9pmB17.webp"
-          },
-          {
-            "title": "Karen Vardanyan has donated AMD 122 million for the renovation and modernization of the National Gallery",
-            "url": "https://armenpress.am/en/article/1264570",
-            "date": "2026-11-03T07:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/03/EQZLuaDc6QpwGzACGxltY6YwUdRL7CqILXhzxQkc.webp"
           }
         ]
       },
@@ -4134,6 +4134,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Քամ Ղաֆարիանը երազում է տիեզերական քաղաք ստեղծելու և Արեգակնային համակարգից այն կողմ հասնելու մասին. Global High-Tech Award-ի 17-րդ դափնեկիրը Հայաստանում է",
+            "url": "https://armenpress.am/hy/article/1264598",
+            "date": "2026-11-03T09:21:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/qijL7B6Qe4DIdBbVjHLkdfpVAUOhWMX6xBwtjUxV.webp"
+          },
+          {
             "title": "Գեղարքունիքի բուժհիմնարկներում 2026 թվականի հոկտեմբերին ծնվել է 122 երեխա",
             "url": "https://armenpress.am/hy/article/1264592",
             "date": "2026-11-03T09:06:00.000Z",
@@ -4186,12 +4192,6 @@
             "url": "https://armenpress.am/hy/article/1264580",
             "date": "2026-11-03T07:50:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/03/U5PKczAC70P9piDcGoVow2QRvW0jDFax1cnfhc5s.webp"
-          },
-          {
-            "title": "Արենի համայնքին կհատուցվի 5 միլիոն 251 հազար դրամ. Դատախազության՝ պետշահերի հերթական հայցը բավարարվել է",
-            "url": "https://armenpress.am/hy/article/1264577",
-            "date": "2026-11-03T07:41:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/03/d3scRyFJBB3R4WbaJWEcCLi5HwFe0BX5fXiLXffU.webp"
           }
         ]
       },
@@ -4264,6 +4264,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ռուսաստանում արջերի հարձակումների զոհերի թիվը հասել է 31-ի",
+            "url": "https://armenpress.am/hy/article/1264600",
+            "date": "2026-11-03T09:35:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/oYTudYXa1HDPzfYH5u3X2QdBP5ejStjjoohKslCF.webp"
+          },
+          {
             "title": "ԱՄՆ-ում նոյեմբերի 3-ին կկայանան Կոնգրեսի միջանկյալ ընտրությունները",
             "url": "https://armenpress.am/hy/article/1264585",
             "date": "2026-11-03T08:15:00.000Z",
@@ -4316,12 +4322,6 @@
             "url": "https://armenpress.am/hy/article/1264543",
             "date": "2026-11-02T17:40:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/02/hGZljFtSxUDJFFd1Zi5bu1k1q9pP0I5k1IAQDFSI.webp"
-          },
-          {
-            "title": "Լեհաստանը Ռուսաստանի հետ սահմանամերձ շրջաններում հատուկ գործողություն է իրականացնում",
-            "url": "https://armenpress.am/hy/article/1264542",
-            "date": "2026-11-02T17:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/02/f0BbHgzBjIzcdApnU3TCSIIZObctZ5QiWVNG6Tvx.webp"
           }
         ]
       },
@@ -10468,6 +10468,36 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Latvia calls emergency UN Security Council meeting",
+            "url": "https://news.am/en/news/1072123",
+            "date": "2026-11-03T09:14:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/QijrFme0Z9837IDn.webp"
+          },
+          {
+            "title": "The Prime Minister arrives in Brussels",
+            "url": "https://news.am/en/news/1072190",
+            "date": "2026-11-03T09:00:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/piqp3a2QRaQ0bvGY.webp"
+          },
+          {
+            "title": "Hamik Sayadyan to be appointed Armenia military attaché in China effective November 23",
+            "url": "https://news.am/en/news/1072160",
+            "date": "2026-11-03T07:42:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/XyIqnriwUYlIfcHX.webp"
+          },
+          {
+            "title": "Turkey will not open border with Armenia amid tensions with Baku: T24",
+            "url": "https://news.am/en/news/1072153",
+            "date": "2026-11-03T07:34:26.000Z",
+            "image": "https://news.am/storage/media/26/11/03/GBdEPOXvIwEzrtM7.jfif"
+          },
+          {
+            "title": "NA President Ruben Rubinyan receives Ambassador of United States of Mexico",
+            "url": "https://news.am/en/news/1072142",
+            "date": "2026-11-03T07:01:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/sG1cmDVZa9XQ9LGL.webp"
+          },
+          {
             "title": "Zatulin: We did not use every opportunity to prevent loss of Nagorno-Karabakh",
             "url": "https://news.am/en/news/1072015",
             "date": "2026-11-02T14:32:10.000Z",
@@ -10496,36 +10526,6 @@
             "url": "https://news.am/en/news/1071914",
             "date": "2026-11-02T08:55:00.000Z",
             "image": "https://news.am/storage/media/26/11/02/heYdVbz5dg9fYU8a.webp"
-          },
-          {
-            "title": "Galyan: Provisions related to the church must be retained unchanged in the new constitution",
-            "url": "https://news.am/en/news/1071908",
-            "date": "2026-11-02T08:47:00.000Z",
-            "image": "https://news.am/storage/media/26/11/02/fHsKh2Jorm2VHdtE.webp"
-          },
-          {
-            "title": "Armenia’s Justice Minister: We must discuss everything; Constitutional Reform Council is fully informed — there is nothing secret",
-            "url": "https://news.am/en/news/1071899",
-            "date": "2026-11-02T08:18:00.000Z",
-            "image": "https://i.ytimg.com/vi/GSKgRSkaxR4/hqdefault.jpg"
-          },
-          {
-            "title": "Pashinyan: Armenian government has effectively already begun implementing TRIPP project",
-            "url": "https://news.am/en/news/1071878",
-            "date": "2026-11-02T07:44:00.000Z",
-            "image": "https://news.am/storage/media/26/11/02/KLF7VstQVaTUndfA.webp"
-          },
-          {
-            "title": "Pashinyan: Armenia’s border guard service to gradually take full control of state borders",
-            "url": "https://news.am/en/news/1071871",
-            "date": "2026-11-02T07:12:00.000Z",
-            "image": "https://news.am/storage/media/26/11/02/hEEKVPNVhJoeK170.webp"
-          },
-          {
-            "title": "Nikol Pashinyan: opposition activities under the protection of guarantors will end in political disaster",
-            "url": "https://news.am/en/news/1071879",
-            "date": "2026-11-02T07:12:00.000Z",
-            "image": "https://i.ytimg.com/vi/bByVkzvu_Eg/hqdefault.jpg"
           }
         ]
       },
@@ -11130,10 +11130,22 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Մալդիվների նախկին արտգործնախարարին ձերբակալել են երեխայի նկատմամբ սեռական բռնության մեղադրանքով․ The Edition",
+            "url": "https://news.am/hy/news/1072146",
+            "date": "2026-11-03T09:44:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/5Hingh4F8GEApOWj.webp"
+          },
+          {
             "title": "Լատվիան ՄԱԿ-ի Անվտանգության խորհրդի արտահերթ նիստ է նախաձեռնել",
             "url": "https://news.am/hy/news/1072123",
             "date": "2026-11-03T09:14:00.000Z",
             "image": "https://news.am/storage/media/26/11/03/QijrFme0Z9837IDn.webp"
+          },
+          {
+            "title": "Անընդունելի է զոհվածների հիշատակի օրը համերգ հեռարձակել. Ավետիք Չալաբյան",
+            "url": "https://news.am/hy/news/1072188",
+            "date": "2026-11-03T09:11:03.000Z",
+            "image": "https://i.ytimg.com/vi/B5T03S3C4Ek/hqdefault.jpg"
           },
           {
             "title": "Ո՞ր դեպքում Հայաստանը հետ կկանչի միջազգային ատյաններում Ադրբեջանի դեմ ներկայացված հայցերը․ Մակունցը ներկայացրել է պայմանները",
@@ -11176,18 +11188,6 @@
             "url": "https://news.am/hy/news/1072105",
             "date": "2026-11-03T08:43:00.000Z",
             "image": "https://news.am/storage/media/26/11/03/B9cPL7DFY6evRbld.webp"
-          },
-          {
-            "title": "Աննա Հակոբյանի ավտոմեքենան ՊՊԾ-ի ուղեկցությամբ ուղևորվում է Սևան (վիդեո)",
-            "url": "https://news.am/hy/news/1072177",
-            "date": "2026-11-03T08:24:00.000Z",
-            "image": "https://news.am/storage/media/26/11/03/95DUBnJ6JQ4VPL7C.webp"
-          },
-          {
-            "title": "Հարկատուները ստիպված կլինեն վճարել սխալ որոշումների համար․ Ֆարմանյան",
-            "url": "https://news.am/hy/news/1072167",
-            "date": "2026-11-03T08:13:37.000Z",
-            "image": "https://news.am/storage/media/26/11/03/9wLFrQ6nHogtVGo6.webp"
           }
         ]
       },
@@ -11262,6 +11262,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Ռոնալդուի որդին առաջին անգամ հրավիրվել է Պորտուգալիայի Մ-17 հավաքական",
+            "url": "https://sport.news.am/arm/news/170007/",
+            "date": "2026-11-03T09:40:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170007.jpg"
+          },
+          {
             "title": "«Բարսելոնան» ցանկանում է ձեռք բերել «Ինտերի» խաղացողին",
             "url": "https://sport.news.am/arm/news/169994/",
             "date": "2026-11-03T09:09:00.000Z",
@@ -11314,12 +11320,6 @@
             "url": "https://sport.news.am/arm/news/169995/",
             "date": "2026-11-03T05:04:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/169995.jpg"
-          },
-          {
-            "title": "«Մասթերս»․ Կարեն Խաչանովը դուրս եկավ երկրորդ շրջան",
-            "url": "https://sport.news.am/arm/news/169993/",
-            "date": "2026-11-02T20:49:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/169993.jpg"
           }
         ]
       },
@@ -11327,6 +11327,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Բանգլադեշում ավելի քան 260 կարի ֆաբրիկաներում տեղի ունեցած բողոքի ակցիաների պատճառով ոչ աշխատանքային օր է հայտարարել",
+            "url": "https://news.am/hy/news/1072128",
+            "date": "2026-11-03T09:29:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/FqJNkfqqg2t7OvJu.webp"
+          },
           {
             "title": "Հայաստանում տնտեսական ակտիվությունը որոշակիորեն դանդաղել է. ՀՀ Կենտրոնական բանկ",
             "url": "https://news.am/hy/news/1072197",
@@ -11380,12 +11386,6 @@
             "url": "https://news.am/hy/news/1072084",
             "date": "2026-11-03T06:34:00.000Z",
             "image": "https://news.am/storage/media/26/11/03/jZFsikEVS80JL5Vd.webp"
-          },
-          {
-            "title": "ՌԴ-ն արգելել է ֆիզիկական անձանց ԵԱՏՄ երկրներ ավելի քան 1 մլն ռուբլի կանխիկ գումար արտահանել",
-            "url": "https://news.am/hy/news/1072121",
-            "date": "2026-11-03T06:09:00.000Z",
-            "image": "https://news.am/storage/media/26/11/03/yZE42ApIrA7c4Gvw.webp"
           }
         ]
       },
@@ -11526,6 +11526,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Ռուսաստանում «մկնային տենդի» բռնկում է արձանագրվել",
+            "url": "https://med.news.am/arm/news/42252/rusastanum-mknayin-tendi-brnkum-e-ardzanagrvel.html",
+            "date": "2026-11-03T08:28:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/11/42252.jpg"
+          },
+          {
             "title": "Միտոքոնդրիումների ակտիվացումը կարող է դանդաղեցնել ուռուցքային բջիջների աճը․ հետազոտություն",
             "url": "https://med.news.am/arm/news/42251/mitoqondriumneri-aktivacumy-karox-e-dandaxecnel-urucqayin-bjijneri-atchy%E2%80%A4-hetazotutyun.html",
             "date": "2026-11-03T06:21:00.000Z",
@@ -11578,12 +11584,6 @@
             "url": "https://med.news.am/arm/news/42243/mettl13-fermenty-npastum-e-qaxckexayin-urucqneri-atchin%E2%80%A4-nature-cb.html",
             "date": "2026-11-02T07:50:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/11/42243.jpg"
-          },
-          {
-            "title": "Մշակվել է արյան մաքրման նոր տեխնոլոգիա, որը կարող է բարելավել ծանր թունավորումների բուժման արդյունավետությունը",
-            "url": "https://med.news.am/arm/news/42242/mshakvel-e-aryan-maqrman-nor-tekhnologia-ory-karox-e-barelavel-tsanr-tunavorumneri-buzhman-ardyunavetutyuny.html",
-            "date": "2026-11-02T04:47:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/11/42242.jpg"
           }
         ]
       },
@@ -11792,6 +11792,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "The Edition: экс-главу МИД Мальдив задержали за сексуальное насилие над ребенком",
+            "url": "https://news.am/ru/news/1072146",
+            "date": "2026-11-03T09:44:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/5Hingh4F8GEApOWj.webp"
+          },
+          {
+            "title": "В Ереване прошла акция с требованием отставки руководства Совета Общественного вещателя и Общественного телевидения Армении",
+            "url": "https://news.am/ru/news/1072188",
+            "date": "2026-11-03T09:39:29.000Z",
+            "image": "https://i.ytimg.com/vi/B5T03S3C4Ek/hqdefault.jpg"
+          },
+          {
             "title": "Латвия инициировала экстренное заседание Совбеза ООН",
             "url": "https://news.am/ru/news/1072123",
             "date": "2026-11-03T09:14:00.000Z",
@@ -11838,18 +11850,6 @@
             "url": "https://news.am/ru/news/1072105",
             "date": "2026-11-03T08:43:00.000Z",
             "image": "https://news.am/storage/media/26/11/03/B9cPL7DFY6evRbld.webp"
-          },
-          {
-            "title": "Автомобиль супруги премьер-министра Армении направляется в сторону Севана в сопровождении Службы государственной охраны",
-            "url": "https://news.am/ru/news/1072177",
-            "date": "2026-11-03T08:24:00.000Z",
-            "image": "https://news.am/storage/media/26/11/03/95DUBnJ6JQ4VPL7C.webp"
-          },
-          {
-            "title": "«Сильная Армения»: Налогоплательщики вынуждены будут заплатить за ошибочные решения",
-            "url": "https://news.am/ru/news/1072167",
-            "date": "2026-11-03T08:13:37.000Z",
-            "image": "https://news.am/storage/media/26/11/03/9wLFrQ6nHogtVGo6.webp"
           }
         ]
       },
@@ -11924,6 +11924,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Сын Роналду впервые вызван в сборную Португалии до 17-и лет",
+            "url": "https://sport.news.am/rus/news/170007/",
+            "date": "2026-11-03T09:40:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170007.jpg"
+          },
+          {
             "title": "«Барселона» хочет приобрести защитника «Интера»",
             "url": "https://sport.news.am/rus/news/169994/",
             "date": "2026-11-03T09:09:00.000Z",
@@ -11976,12 +11982,6 @@
             "url": "https://sport.news.am/rus/news/169984/",
             "date": "2026-11-02T13:07:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/169984.jpg"
-          },
-          {
-            "title": "Артур Алексанян женится",
-            "url": "https://sport.news.am/rus/news/169986/",
-            "date": "2026-11-02T12:16:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/169986.jpg"
           }
         ]
       },
@@ -11989,6 +11989,18 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Расходы на нужды Минюста Армении в 2027 году увеличат почти на 3 млрд. драмов",
+            "url": "https://news.am/ru/news/1072200",
+            "date": "2026-11-03T09:42:47.000Z",
+            "image": "https://news.am/storage/media/26/11/03/BeKLedFWvxt3LwmN.webp"
+          },
+          {
+            "title": "Более 260 швейных фабрик в Бангладеш объявили выходной из-за протестов",
+            "url": "https://news.am/ru/news/1072128",
+            "date": "2026-11-03T09:29:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/FqJNkfqqg2t7OvJu.webp"
+          },
           {
             "title": "Центральный банк Армении повысил процентную ставку политики",
             "url": "https://news.am/ru/news/1072176",
@@ -12036,18 +12048,6 @@
             "url": "https://news.am/ru/news/1072121",
             "date": "2026-11-03T06:09:00.000Z",
             "image": "https://news.am/storage/media/26/11/03/yZE42ApIrA7c4Gvw.webp"
-          },
-          {
-            "title": "В комиссиях парламента Армении продолжается обсуждение проекта госбюджета на 2027 год",
-            "url": "https://news.am/ru/news/1072051",
-            "date": "2026-11-03T05:55:00.000Z",
-            "image": "https://news.am/storage/media/26/11/02/ztmYYD5uqkJg7iAn.webp"
-          },
-          {
-            "title": "Нефть Brent подорожала до $105,23 за баррель после обвала накануне",
-            "url": "https://news.am/ru/news/1072109",
-            "date": "2026-11-03T05:52:49.000Z",
-            "image": "https://news.am/storage/media/26/05/19/XspNiO3EE95GcWNS.webp"
           }
         ]
       },
@@ -12260,6 +12260,12 @@
             "image": "https://news.am/storage/media/26/11/03/5I6OwKC276XCudog.webp"
           },
           {
+            "title": "Минздрав Армении: Ребенка, пострадавшего в ДТП в Арагацотнской области, выписали из больницы",
+            "url": "https://news.am/ru/news/1072172",
+            "date": "2026-11-03T08:15:00.000Z",
+            "image": "https://news.am/storage/media/26/11/03/L3RZztzvBGLxl6z9.webp"
+          },
+          {
             "title": "Индийское судно атаковали с воздуха у берегов Омана",
             "url": "https://news.am/ru/news/1072120",
             "date": "2026-11-03T06:15:41.000Z",
@@ -12306,12 +12312,6 @@
             "url": "https://news.am/ru/news/1071995",
             "date": "2026-11-02T13:50:00.000Z",
             "image": "https://news.am/storage/media/26/11/02/vdlPX2pc9lrlW5C7.webp"
-          },
-          {
-            "title": "На азербайджано-иранской границе произошла перестрелка",
-            "url": "https://news.am/ru/news/1071991",
-            "date": "2026-11-02T13:26:00.000Z",
-            "image": "https://news.am/storage/media/26/11/02/073SoJRK1KBXNrYV.webp"
           }
         ]
       },
