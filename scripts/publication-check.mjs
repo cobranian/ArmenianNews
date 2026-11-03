@@ -22,6 +22,7 @@ import { parseServiceAccount, jwtAssertion, listUrl, TOKEN_URL } from './lib/gsc
 import { SITES } from '../sites.config.js'
 import { ledgerFailures, redact } from './lib/social.mjs'
 import { WHATSAPP_CHANNELS } from './lib/linkedin-pending.mjs'
+import { checkNews, checkClassify, checkAgenda, staleHours } from './lib/health.mjs'
 import {
   checkModels,
   checkWorkflows,
@@ -31,6 +32,8 @@ import {
   checkManual,
   checkDeadlines,
   checkIndexing,
+  checkScraper,
+  scrapeFailures,
   lastOutcome,
   renderDashboard,
   notification,
@@ -165,6 +168,44 @@ async function googleAccess() {
   return out
 }
 
+// --- Le scrape horaire : les données du dépôt (le checkout est `main`, où le
+// job horaire commite chaque instantané) et le journal du dernier scrape.
+const data = async (f) => JSON.parse(await readFile(path.join(root, 'src/data', f), 'utf8'))
+// Le journal brut d'un job : l'API répond par une redirection vers un lien
+// signé (fetch la suit, et ne renvoie pas l'en-tête d'autorisation ailleurs).
+async function jobLog(jobId) {
+  const res = await fetch(`https://api.github.com/repos/${repo}/actions/jobs/${jobId}/logs`, {
+    headers: { accept: 'application/vnd.github+json', ...(env.GH_TOKEN ? { authorization: `Bearer ${env.GH_TOKEN}` } : {}) },
+    signal: AbortSignal.timeout(60_000),
+  })
+  if (!res.ok) throw new Error(`journal du job ${jobId} : HTTP ${res.status}`)
+  return res.text()
+}
+// Le dernier run horaire qui a SCRAPÉ : un push sur main rebâtit sans scraper.
+async function lastScrapeLog() {
+  const { workflow_runs: runs = [] } = await gh('/actions/workflows/hourly.yml/runs?status=completed&per_page=20')
+  const run = runs.find((r) => r.event === 'schedule' || r.event === 'workflow_dispatch')
+  if (!run) return { failures: {}, logUrl: '' }
+  const { jobs = [] } = await gh(`/actions/runs/${run.id}/jobs`)
+  const job = jobs.find((j) => j.name === 'snapshot') ?? jobs[0]
+  return { failures: scrapeFailures(await jobLog(job.id)), logUrl: run.html_url }
+}
+async function scraper() {
+  const news = await data('news.json')
+  const problems = [
+    ...checkNews(news, now),
+    ...checkClassify(news, await data('rubric-cache.json').catch(() => ({}))),
+    ...checkAgenda(await data('agenda.json'), now),
+  ]
+  let tracked = 0
+  for (const [source, v] of Object.entries(news)) {
+    if (source === 'generatedAt') continue
+    for (const lang of Array.isArray(v) ? ['-'] : Object.keys(v ?? {})) if (staleHours(source, lang) !== null) tracked++
+  }
+  const log = await lastScrapeLog().catch(() => ({ failures: null, logUrl: '' }))
+  return checkScraper({ generatedAt: (await data('meta.json')).generatedAt, problems, tracked, ...log, now })
+}
+
 async function manual() {
   const videos = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
   return checkManual({ articles: await articles(), videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
@@ -173,6 +214,7 @@ async function manual() {
 const sections = [
   await guarded('🤖 Rédaction et traduction', models),
   await guarded('📰 Articles', articleRows),
+  await guarded('🛰️ Sources (scrape horaire)', scraper),
   await guarded('📣 Réseaux (envoi automatique : Facebook, Instagram, Telegram, Bluesky)', social),
   await guarded('✋ Publication à la main', manual),
   await guarded('🔎 Référencement', async () => checkIndexing({ google: await googleAccess() })),

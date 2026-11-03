@@ -20,6 +20,8 @@ import {
   previousAlertKeys,
   alertKeys,
   DASHBOARD_TITLE,
+  checkScraper,
+  scrapeFailures,
 } from '../scripts/lib/publication-check.mjs'
 
 const now = new Date('2026-11-02T12:00:00Z')
@@ -139,4 +141,59 @@ test('chaque workflow d’articles relance le tableau de bord en cas d’échec'
     assert.match(y, /gh workflow run social-check\.yml --ref main/, f)
     assert.match(y, /actions: write/, `${f} : permission de lancer un workflow`)
   }
+})
+
+test('checkScraper : instantané frais, sources fraîches, scrape sans échec → tout vert', () => {
+  const rows = checkScraper({ generatedAt: '2026-11-02T11:23:00Z', problems: [], tracked: 30, failures: {}, now })
+  assert.deepEqual(rows.map((r) => r.level), ['ok', 'ok', 'ok'])
+  assert.match(rows[0].text, /37 min/)
+})
+
+test('checkScraper : instantané vieux de plus de 3 h → le scrape horaire ne tourne plus', () => {
+  const [r] = checkScraper({ generatedAt: '2026-11-02T07:00:00Z', failures: {}, now })
+  assert.equal(r.level, 'faire')
+  assert.equal(r.key, 'scrape-stale')
+  assert.match(r.action, /GH_TOKEN/)
+})
+
+test('checkScraper : une source figée devient une action, à clé stable par source', () => {
+  const p = '**armenieinfotv** : article le plus récent il y a 4 j (seuil 4 j)'
+  const rows = checkScraper({ generatedAt: '2026-11-02T11:23:00Z', problems: [p], failures: {}, now })
+  const src = rows.find((r) => r.key.startsWith('src-'))
+  assert.equal(src.key, 'src-armenieinfotv')
+  assert.equal(src.level, 'faire')
+  assert.ok(!rows.some((r) => r.key === 'src-ok'))
+  // La même source sous une autre durée garde la même clé : pas de nouvelle notification.
+  const again = checkScraper({ generatedAt: '2026-11-02T11:23:00Z', problems: [p.replace('4 j (', '5 j (')], failures: {}, now })
+  assert.equal(again.find((r) => r.key.startsWith('src-')).key, 'src-armenieinfotv')
+})
+
+test('checkScraper : les échecs partiels sont une info, jamais une alerte', () => {
+  const rows = checkScraper({ generatedAt: '2026-11-02T11:23:00Z', failures: { armradio: 3, asbarez: 1 }, now })
+  const r = rows.find((x) => x.key === 'scrape-partial')
+  assert.equal(r.level, 'info')
+  assert.match(r.text, /armradio ×3, asbarez ×1/)
+  assert.equal(checkScraper({ generatedAt: '2026-11-02T11:23:00Z', failures: null, now }).at(-1).level, 'info')
+})
+
+test('scrapeFailures : compte les ✗ par source, ignore la synthèse « santé »', () => {
+  const log = [
+    '2026-11-03T15:24:33Z   ✓ armenieinfotv/armenie (10, 10 datés)',
+    '2026-11-03T15:24:40Z   ✗ armradio/news: 403 [Just a moment…]',
+    '2026-11-03T15:24:41Z   ✗ armradio/politics: 403',
+    '2026-11-03T15:30:05Z   ✗ résumé/hy: alphabet — https://x',
+    '2026-11-03T15:31:54Z ✗ santé : 1 problème(s)',
+  ].join('\n')
+  assert.deepEqual(scrapeFailures(log), { armradio: 2, 'résumé': 1 })
+  // Dans un journal de job, seule l'étape du scrape compte : un test qui cite
+  // « ✗ au log » ou un script d'alerte qui affiche « grep '✗' » n'est pas une panne.
+  const job = [
+    '##[group]Run npm test',
+    '✔ summarizeAgenda : une réponse vide laisse un ✗ au log',
+    '##[group]Run npm run scrape',
+    '  ✗ armradio/news: 403',
+    '##[group]Run node scripts/health.mjs',
+    '✗ brief/hy: alphabet',
+  ].join('\n')
+  assert.deepEqual(scrapeFailures(job), { armradio: 1 })
 })
