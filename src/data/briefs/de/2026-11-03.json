@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-03",
+  "lang": "de",
+  "generatedAt": "2026-11-03T03:29:00.221Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über innenpolitische Reformen, wirtschaftliche Entwicklungen sowie kulturelle und sportliche Ereignisse.",
+  "topics": [
+    {
+      "title": "Verfassungsreform und Visaliberalisierung mit der EU",
+      "text": "Die Regierung plant, den Entwurf einer neuen Verfassung im November zu veröffentlichen. Gleichzeitig stehen Reformen für die Visaliberalisierung mit der Europäischen Union im Mittelpunkt der Gespräche.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/gevorg-papoyan-je-ne-me-laisserai-pas-guider-par-lhypothese-de-la-folie-exclure-larmenie-de-lueea-est-illegal/",
+          "title": "Gevorg Papoyan : Je ne me laisserai pas guider par l’hypothèse de la folie ; exclure l’Arménie de l’UEE est illégal"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264450",
+          "title": "Le Gouvernement prévoit de publier le projet de nouvelle Constitution en novembre"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/armenie-ue-les-reformes-pour-la-liberalisation-des-visas-au-coeur-des-discussions",
+          "title": "Arménie-UE : les réformes pour la libéralisation des visas au cœur des discussions"
+        }
+      ]
+    },
+    {
+      "title": "Steuereinnahmen und Energiemarktreformen",
+      "text": "Die Staatseinnahmen stiegen in den ersten zehn Monaten um 325,6 Milliarden Dram. Mit Unterstützung der EU werden Reformen des Energiemarktes vorangetrieben.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264473",
+          "title": "Réformes du marché énergétique arménien avec le soutien de l'UE et échange d'expériences internationals"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264475",
+          "title": "Les recettes fiscales du budget de l’État arménien ont augmenté de 325,6 milliards de drams en dix mois"
+        }
+      ]
+    },
+    {
+      "title": "Lohnentwicklung und Gaslieferungen",
+      "text": "Der durchschnittliche Monatslohn erhöhte sich 2026 um 5,6 Prozent auf 312 000 Dram. Gazprom Armenia bestätigt, dass die Gaslieferungen aus Russland planmässig weiterlaufen.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-salaire-moyen-en-armenie-a-augmente-de-56-en-2026-atteignant-312-000-drams-selon-le-ministere-des-finances/",
+          "title": "Le salaire moyen en Arménie a augmenté de 5,6 % en 2026, atteignant 312 000 drams selon le Ministère des Finances"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-livraisons-de-gaz-de-la-russie-a-larmenie-se-poursuivent-normalement-indique-gazprom-armenia/",
+          "title": "Les livraisons de gaz de la Russie à l’Arménie se poursuivent normalement indique Gazprom Armenia"
+        }
+      ]
+    },
+    {
+      "title": "KI-Investition und Technologiekonferenz",
+      "text": "Eleveight AI will zwei Milliarden Dollar in eine KI-Fabrik in Armenien investieren. Anfang November findet die Konferenz Silicon Mountains 2026 statt.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/eleveight-ai-prevoit-dinvestir-2-milliards-de-dollars-dans-une-usine-dintelligence-artificielle-en-armenie/",
+          "title": "Eleveight AI prévoit d’investir 2 milliards de dollars dans une usine d’intelligence artificielle en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/silicon-mountains-2026-du-3-au-4-novembre-en-armenie-technologie-innovation-et-investissements-sur-une-seule-plateforme/",
+          "title": "Silicon Mountains 2026 du 3 au 4 novembre en Arménie : Technologie, innovation et investissements sur une seule plateforme"
+        }
+      ]
+    },
+    {
+      "title": "Neue biometrische Ausweise und UNESCO-Kandidatur",
+      "text": "Biometrische Pässe und Identitätskarten sind in Kraft getreten. Die Höhle Areni-1 wurde auf die Tentativliste der UNESCO gesetzt.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-candidature-de-la-grotte-dareni-1-inscrite-sur-la-liste-indicative-de-lunesco/",
+          "title": "La candidature de la grotte d’Areni-1 inscrite sur la liste indicative de l’UNESCO"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/les-nouveaux-passeports-biometriques-et-cartes-didentite-entrent-en-vigueur-en-armenie",
+          "title": "Les nouveaux passeports biométriques et cartes d’identité entrent en vigueur en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Sportliche Erfolge und Ehrungen",
+      "text": "Olympiasieger Artur Aleksanyan heiratet am Wochenende und wurde erneut UNICEF-Botschafter. Bei den Weltmeisterschaften im Gewichtheben belegten Rafik Harutjunjan und Poghosjan die Ränge 22 und 23.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-champion-olympique-armenien-artur-aleksanyan-se-marie-ce-week-end/",
+          "title": "Le champion olympique arménien Artur Aleksanyan se marie ce week-end"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264531",
+          "title": "L’haltérophile Rafik Haroutunian se classe 22e aux Championnats du monde, Poghosian 23e"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/artur-aleksanyan-reconduit-comme-ambassadeur-national-de-lunicef-en-armenie",
+          "title": "Artur Aleksanyan reconduit comme ambassadeur national de l’UNICEF en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Reisehinweise und regionale Diplomatie",
+      "text": "Eriwan gilt für Russen als günstigste Auslandsdestination. Am Flughafen Swartnoz werden tagsüber Flüge Anfang November ausfallen. Der Sicherheitsratssekretär nahm an einer Regionalkonferenz teil.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264544",
+          "title": "Le Secrétaire du Conseil de sécurité a participé à une conférence consacrée aux évolutions régionales et géopolitiques"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/erevan-est-devenue-la-destination-etrangere-la-plus-abordable-pour-les-vacances-des-russes/",
+          "title": "Erevan est devenue la destination étrangère la plus abordable pour les vacances des Russes"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/aeroport-zvartnots-derevan-vols-de-jour-annules-du-2-au-7-novembre/",
+          "title": "Aéroport Zvartnots d’Erevan : vols de jour annulés du 2 au 7 novembre"
+        }
+      ]
+    }
+  ]
+}

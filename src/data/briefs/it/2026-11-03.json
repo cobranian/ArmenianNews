@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-03",
+  "lang": "it",
+  "generatedAt": "2026-11-03T03:29:00.221Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna odierna evidenzia i progressi nei rapporti internazionali dell'Armenia, le riforme interne e gli sviluppi economici, con attenzione anche a cultura e società.",
+  "topics": [
+    {
+      "title": "Progetto di corridoio TRIPP con l'Iran",
+      "text": "L'ambasciatore armeno a Teheran ha illustrato ai deputati del Majles gli ultimi accordi relativi al progetto di via di trasporto TRIPP. L'iniziativa mira a rafforzare la connettività regionale attraverso il territorio iraniano.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264541",
+          "title": "L’ambassadeur d’Arménie en Iran a présenté aux députés du Majles les derniers accords concernant le projet de voie TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Riforme del mercato energetico con supporto UE",
+      "text": "L'Armenia sta attuando riforme nel settore energetico con l'assistenza dell'Unione Europea, includendo lo scambio di esperienze internazionali. L'obiettivo è modernizzare l'infrastruttura e migliorare l'efficienza del mercato.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264473",
+          "title": "Réformes du marché énergétique arménien avec le soutien de l'UE et échange d'expériences internationals"
+        }
+      ]
+    },
+    {
+      "title": "Dialogo su liberalizzazione visti Armenia-UE",
+      "text": "Le riforme necessarie per la liberalizzazione dei visti con l'Unione Europea sono al centro dei colloqui tra Yerevan e Bruxelles. Il processo richiede l'allineamento degli standard normativi armeni a quelli comunitari.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/armenie-ue-les-reformes-pour-la-liberalisation-des-visas-au-coeur-des-discussions",
+          "title": "Arménie-UE : les réformes pour la libéralisation des visas au cœur des discussions"
+        }
+      ]
+    },
+    {
+      "title": "Entrata in vigore dei nuovi documenti biometrici",
+      "text": "I nuovi passaporti biometrici e le carte d'identità sono diventati operativi in Armenia. Le autorità prevedono una maggiore sicurezza e una semplificazione delle procedure di identificazione per i cittadini.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/les-nouveaux-passeports-biometriques-et-cartes-didentite-entrent-en-vigueur-en-armenie",
+          "title": "Les nouveaux passeports biométriques et cartes d’identité entrent en vigueur en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Crescita delle entrate fiscali e dei salari",
+      "text": "Nei primi dieci mesi dell'anno le entrate fiscali del bilancio statale sono aumentate di 325,6 miliardi di dram. Parallelamente, il salario medio ha registrato un incremento del 5,6% nel 2026, raggiungendo 312.000 dram secondo il Ministero delle Finanze.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-salaire-moyen-en-armenie-a-augmente-de-56-en-2026-atteignant-312-000-drams-selon-le-ministere-des-finances/",
+          "title": "Le salaire moyen en Arménie a augmenté de 5,6 % en 2026, atteignant 312 000 drams selon le Ministère des Finances"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264475",
+          "title": "Les recettes fiscales du budget de l’État arménien ont augmenté de 325,6 milliards de drams en dix mois"
+        }
+      ]
+    },
+    {
+      "title": "Investimenti nel settore tecnologico",
+      "text": "Eleveight AI ha annunciato un investimento di due miliardi di dollari per la costruzione di una fabbrica di intelligenza artificiale in Armenia. A novembre si terrà inoltre l'evento Silicon Mountains 2026, dedicato a tecnologia, innovazione e investimenti.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/eleveight-ai-prevoit-dinvestir-2-milliards-de-dollars-dans-une-usine-dintelligence-artificielle-en-armenie/",
+          "title": "Eleveight AI prévoit d’investir 2 milliards de dollars dans une usine d’intelligence artificielle en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/silicon-mountains-2026-du-3-au-4-novembre-en-armenie-technologie-innovation-et-investissements-sur-une-seule-plateforme/",
+          "title": "Silicon Mountains 2026 du 3 au 4 novembre en Arménie : Technologie, innovation et investissements sur une seule plateforme"
+        }
+      ]
+    },
+    {
+      "title": "Grotta di Areni-1 candidata all'UNESCO",
+      "text": "La candidatura della grotta di Areni-1 è stata iscritta nella lista indicativa dell'UNESCO. Il sito archeologico è noto per i reperti che testimoniano antiche pratiche vitivinicole e la più antica scarpa di cuoio conosciuta.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-candidature-de-la-grotte-dareni-1-inscrite-sur-la-liste-indicative-de-lunesco/",
+          "title": "La candidature de la grotte d’Areni-1 inscrite sur la liste indicative de l’UNESCO"
+        }
+      ]
+    }
+  ]
+}

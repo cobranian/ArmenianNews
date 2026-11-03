@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-03",
+  "lang": "fr",
+  "generatedAt": "2026-11-03T03:29:00.221Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La presse arménienne couvre ce jour les avancées diplomatiques régionales, les réformes économiques et constitutionnelles, ainsi que des actualités culturelles et sportives.",
+  "topics": [
+    {
+      "title": "Projet de corridor TRIPP et diplomatie régionale",
+      "text": "L'ambassadeur d'Arménie en Iran a présenté aux députés du Majles les derniers accords concernant le projet de voie TRIPP. Parallèlement, le Secrétaire du Conseil de sécurité arménien a participé à une conférence sur les évolutions géopolitiques régionales, tandis que le président russe a discuté de la situation au Moyen-Orient avec son homologue iranien.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264541",
+          "title": "L’ambassadeur d’Arménie en Iran a présenté aux députés du Majles les derniers accords concernant le projet de voie TRIPP"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264544",
+          "title": "Le Secrétaire du Conseil de sécurité a participé à une conférence consacrée aux évolutions régionales et géopolitiques"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264537",
+          "title": "Le président russe a examiné la situation au Moyen-Orient avec le secrétaire du Conseil suprême de sécurité nationale iranien"
+        }
+      ]
+    },
+    {
+      "title": "Réformes du marché de l'énergie avec l'appui de l'UE",
+      "text": "L'Arménie engage des réformes de son marché énergétique avec le soutien de l'Union européenne, incluant un échange d'expériences internationales. Dans le même temps, Gazprom Armenia confirme la poursuite normale des livraisons de gaz russe vers le pays.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-livraisons-de-gaz-de-la-russie-a-larmenie-se-poursuivent-normalement-indique-gazprom-armenia/",
+          "title": "Les livraisons de gaz de la Russie à l’Arménie se poursuivent normalement indique Gazprom Armenia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264473",
+          "title": "Réformes du marché énergétique arménien avec le soutien de l'UE et échange d'expériences internationals"
+        }
+      ]
+    },
+    {
+      "title": "Projet de nouvelle Constitution attendu en novembre",
+      "text": "Le Gouvernement arménien prévoit de publier le projet de nouvelle Constitution au cours du mois de novembre. Cette annonce s'inscrit dans un contexte de débats politiques, un député affirmant qu'exclure l'Arménie de l'UEE serait illégal.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/gevorg-papoyan-je-ne-me-laisserai-pas-guider-par-lhypothese-de-la-folie-exclure-larmenie-de-lueea-est-illegal/",
+          "title": "Gevorg Papoyan : Je ne me laisserai pas guider par l’hypothèse de la folie ; exclure l’Arménie de l’UEE est illégal"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264450",
+          "title": "Le Gouvernement prévoit de publier le projet de nouvelle Constitution en novembre"
+        }
+      ]
+    },
+    {
+      "title": "Hausse des recettes fiscales et du salaire moyen",
+      "text": "Les recettes fiscales du budget de l'État ont augmenté de 325,6 milliards de drams sur les dix premiers mois de l'année. Le Ministère des Finances indique par ailleurs que le salaire moyen a progressé de 5,6 % en 2026 pour atteindre 312 000 drams.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-salaire-moyen-en-armenie-a-augmente-de-56-en-2026-atteignant-312-000-drams-selon-le-ministere-des-finances/",
+          "title": "Le salaire moyen en Arménie a augmenté de 5,6 % en 2026, atteignant 312 000 drams selon le Ministère des Finances"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264475",
+          "title": "Les recettes fiscales du budget de l’État arménien ont augmenté de 325,6 milliards de drams en dix mois"
+        }
+      ]
+    },
+    {
+      "title": "Investissements technologiques et événement Silicon Mountains",
+      "text": "La société Eleveight AI annonce un investissement prévu de 2 milliards de dollars dans une usine d'intelligence artificielle en Arménie. Le pays accueillera également la conférence Silicon Mountains les 3 et 4 novembre, axée sur la technologie, l'innovation et les investissements.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/eleveight-ai-prevoit-dinvestir-2-milliards-de-dollars-dans-une-usine-dintelligence-artificielle-en-armenie/",
+          "title": "Eleveight AI prévoit d’investir 2 milliards de dollars dans une usine d’intelligence artificielle en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/silicon-mountains-2026-du-3-au-4-novembre-en-armenie-technologie-innovation-et-investissements-sur-une-seule-plateforme/",
+          "title": "Silicon Mountains 2026 du 3 au 4 novembre en Arménie : Technologie, innovation et investissements sur une seule plateforme"
+        }
+      ]
+    },
+    {
+      "title": "Libéralisation des visas et nouveaux documents d'identité",
+      "text": "Les discussions entre l'Arménie et l'UE portent sur les réformes nécessaires à la libéralisation des visas. Sur le plan intérieur, de nouveaux passeports biométriques et cartes d'identité entrent en vigueur dans le pays.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/les-nouveaux-passeports-biometriques-et-cartes-didentite-entrent-en-vigueur-en-armenie",
+          "title": "Les nouveaux passeports biométriques et cartes d’identité entrent en vigueur en Arménie"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/armenie-ue-les-reformes-pour-la-liberalisation-des-visas-au-coeur-des-discussions",
+          "title": "Arménie-UE : les réformes pour la libéralisation des visas au cœur des discussions"
+        }
+      ]
+    },
+    {
+      "title": "Culture et sport : UNESCO, UNICEF et championnats du monde",
+      "text": "La grotte d'Areni-1 a été inscrite sur la liste indicative de l'UNESCO. Le champion olympique Artur Aleksanyan est reconduit ambassadeur national de l'UNICEF en Arménie, alors qu'il se marie ce week-end. En haltérophilie, Rafik Haroutunian et Poghosian se classent 22e et 23e aux Championnats du monde.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-champion-olympique-armenien-artur-aleksanyan-se-marie-ce-week-end/",
+          "title": "Le champion olympique arménien Artur Aleksanyan se marie ce week-end"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264531",
+          "title": "L’haltérophile Rafik Haroutunian se classe 22e aux Championnats du monde, Poghosian 23e"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-candidature-de-la-grotte-dareni-1-inscrite-sur-la-liste-indicative-de-lunesco/",
+          "title": "La candidature de la grotte d’Areni-1 inscrite sur la liste indicative de l’UNESCO"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/artur-aleksanyan-reconduit-comme-ambassadeur-national-de-lunicef-en-armenie",
+          "title": "Artur Aleksanyan reconduit comme ambassadeur national de l’UNICEF en Arménie"
+        }
+      ]
+    }
+  ]
+}

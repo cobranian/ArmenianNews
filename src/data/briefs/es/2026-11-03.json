@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-03",
+  "lang": "es",
+  "generatedAt": "2026-11-03T03:29:00.221Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca los avances en la reforma constitucional, la estabilidad macroeconómica y la proyección internacional de Armenia, junto a hitos culturales y diplomáticos.",
+  "topics": [
+    {
+      "title": "Reforma constitucional y debate público",
+      "text": "El Gobierno publicará en noviembre el borrador de la nueva Constitución y abrirá un debate público antes del referéndum. El presidente de la Asamblea Nacional, Artur Hovhannisyan, aclaró que la adopción de una nueva Carta Magna no anula la Declaración de Independencia y acusó a la oposición de intentar frustrar el acuerdo de paz con Azerbaiyán.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264469",
+          "title": "Artur Hovhannisyan: “La adopción de una nueva Constitución no implica la anulación de la Declaración de Independencia”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264474",
+          "title": "Artur Hovhannisyan asegura que la oposición intenta frustrar la firma del acuerdo de paz con Azerbaiyán"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-publicara-borrador-nueva-constitucion-noviembre/",
+          "title": "El Gobierno de Armenia publicará el borrador de la nueva Constitución en noviembre e iniciará un debate público antes del referéndum"
+        }
+      ]
+    },
+    {
+      "title": "Estabilización de la deuda pública y crecimiento de ingresos fiscales",
+      "text": "Las autoridades proyectan estabilizar la deuda pública en torno al 47 % del PIB para 2027. En los primeros diez meses del año, los ingresos tributarios del presupuesto estatal aumentaron en 325.600 millones de drams, mientras el presupuesto del Ministerio de Trabajo y Bienestar Social ascenderá a 1,084 billones de drams para 2027.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-deuda-publica-pib-presupuesto-2027/",
+          "title": "Proyectan estabilizar la deuda pública de Armenia en torno al 47% del PIB para 2027"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-publicara-borrador-nueva-constitucion-noviembre/",
+          "title": "El Gobierno de Armenia publicará el borrador de la nueva Constitución en noviembre e iniciará un debate público antes del referéndum"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264475",
+          "title": "Ingresos tributarios del presupuesto estatal de Armenia aumentaron en 325.600 millones de drams en 10 meses"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264511",
+          "title": "Presupuesto del Ministerio de Trabajo y Bienestar Social de Armenia ascenderá a 1,084 billones de drams para 2027"
+        }
+      ]
+    },
+    {
+      "title": "Proyecto TRIPP y corredores de transporte",
+      "text": "El primer ministro Nikol Pashinyan anunció la puesta en marcha ejecutiva de la ruta TRIPP para desbloquear las conexiones de Armenia. El partido Armenia Fuerte considera necesario más de un garante para implementar el proyecto, mientras la mayoría parlamentaria aprobó la denominada \"Ruta Trump\".",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264459",
+          "title": "Armenia Fuerte considera necesario más de un garante para implementar el proyecto TRIPP"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-armenia-anuncia-ruta-tripp/",
+          "title": "Nikol Pashinyan anuncia la puesta en marcha ejecutiva de la ruta TRIPP para desbloquear las conexiones de Armenia"
+        },
+        {
+          "source": "norsevan",
+          "url": "https://www.norsevan.com/post/la-mayoria-parlamentaria-oficialista-de-armenia-aprobo-la-ruta-trump",
+          "title": "La mayoría parlamentaria oficialista de Armenia aprobó la \"Ruta Trump\""
+        }
+      ]
+    },
+    {
+      "title": "Cooperación energética y regulatoria con la Unión Europea",
+      "text": "Armenia y la UE impulsan en Ereván un taller internacional para la liberalización del mercado eléctrico. Paralelamente, se discute un nuevo paquete legislativo para regular el comercio electrónico conforme a las directivas europeas, y el ministro de Economía calificó de ilegal la expulsión de la UEE, confiando en negociar los desacuerdos.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-union-europea-taller-liberalizacion-mercado-electrico/",
+          "title": "Armenia y la Unión Europea impulsan en Ereván un taller internacional para la liberalización del mercado eléctrico"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-expulsion-uee-ilegal/",
+          "title": "El ministro de Economía de Armenia califica de ilegal la expulsión de la UEE y confía en negociar los desacuerdos"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/comercio-electronico-armenia-directivas-union-europea/",
+          "title": "Discuten nuevo paquete legislativo para regular el comercio electrónico en Armenia conforme a las directivas de la Unión Europea"
+        }
+      ]
+    },
+    {
+      "title": "Inversión tecnológica y remesas récord",
+      "text": "Eleveight AI proyecta una inversión de 2.000 millones de dólares para expandir su fábrica de inteligencia artificial en Armenia. Las remesas al país se duplicaron entre enero y septiembre de 2026, superando los 2.000 millones de dólares.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/eleveight-ai-inversion-armenia-gagarin-nvidia/",
+          "title": "Eleveight AI proyecta inversión de US$2.000 millones para expandir su fábrica de inteligencia artificial en Armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/remesas-armenia-se-duplican-septiembre-2026/",
+          "title": "Las remesas a Armenia se duplican entre enero y septiembre de 2026 y supera los US$2.000 millones"
+        }
+      ]
+    },
+    {
+      "title": "Patrimonio cultural y presencia internacional",
+      "text": "Armenia ingresó al Comité del Patrimonio Mundial de la UNESCO e inscribió la cueva Areni-1 en su lista provisional. En Ereván se celebra el III Festival Internacional de Flauta con virtuosos de 16 ciudades de Europa y Asia, y la Fundación Green Rock recibió en París el Premio Stevie de Plata por su modelo de renovación urbana en Dilijan.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/festival-internacional-flauta-erevan-2026/",
+          "title": "El III Festival Internacional de Flauta de Ereván reúne en Armenia a virtuosos de 16 ciudades de Europa y Asia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/fundacion-green-rock-premio-stevie-paris/",
+          "title": "La Fundación Green Rock recibe en París el Premio Stevie de Plata por su modelo de renovación urbana e inclusión social en Dilijan"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-elegida-comite-patrimonio-mundial-unesco/",
+          "title": "Armenia ingresa al Comité del Patrimonio Mundial de la UNESCO e inscribe la cueva Areni-1 en su lista provisional"
+        }
+      ]
+    },
+    {
+      "title": "Conmemoración y memoria de la diáspora",
+      "text": "En Vicente López, Argentina, se conmemoró el 11° aniversario del jachkar como símbolo de la presencia y la identidad armenia. Además, se recuerda la masacre de armenios en Bakú de 1918, evocando la memoria de una ciudad que perdió a su comunidad armenia.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/soledad-martinez-en-el-11-aniversario-del-jachkar-de-vicente-lopez-es-un-simbolo-de-la-presencia-y-la-identidad-armenia-en-argentina/",
+          "title": "Soledad Martínez en el 11° aniversario del jachkar de Vicente López: “Es un símbolo de la presencia y la identidad armenia en Argentina”"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/baku-1918-masacre-armenios-paz-armenia/",
+          "title": "Bakú 1918: la memoria de una ciudad que perdió a sus armenios en una masacre"
+        }
+      ]
+    }
+  ]
+}

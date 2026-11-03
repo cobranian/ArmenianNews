@@ -1,0 +1,233 @@
+{
+  "date": "2026-11-03",
+  "lang": "en",
+  "generatedAt": "2026-11-03T03:29:00.221Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian political debate centers on constitutional reform and the status of the Declaration of Independence, while the government advances the TRIPP transport project and presents the 2027 state budget. In sports, Armenia prepares for a UEFA Nations League match against Cyprus and athletes compete at world championships.",
+  "topics": [
+    {
+      "title": "Constitutional reform and Declaration of Independence debated",
+      "text": "Justice Minister Grigor Minasyan and MP Arman Galyan described the 1990 Declaration of Independence as outdated, while Prime Minister Nikol Pashinyan vowed to pass a new constitution at all costs. The government plans to publish the draft constitution in November, with the Parliament Speaker stating it would make Armenian the unamendable sole state language.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/armenias-declaration-of-independence-is-outdated-justice-minister-says/",
+          "title": "Armenia’s Declaration of Independence is ‘Outdated,’ Justice Minister Says"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/pashinyan-again-threatens-public-pressure-to-pass-constitution-at-all-costs/",
+          "title": "Pashinyan Again Threatens ‘Public Pressure’ to Pass Constitution at All Costs"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264539",
+          "title": "New Constitution to make Armenian’s status as sole state language unamendable, says Parliament Speaker"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071914",
+          "title": "Galyan: We have no goal of uniting Nagorno-Karabakh with Armenia — the goals of the declaration of independence are outdated"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/02/armenia-plans-to-publish-draft-of-new-constitution-in-november/",
+          "title": "Armenia plans to publish draft of new Constitution in November"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071899",
+          "title": "Armenia’s Justice Minister: We must discuss everything; Constitutional Reform Council is fully informed — there is nothing secret"
+        }
+      ]
+    },
+    {
+      "title": "Government advances TRIPP transport corridor project",
+      "text": "Prime Minister Pashinyan said preparatory work on the TRIPP infrastructure project has begun and that the government has effectively started implementation. The Armenian ambassador briefed Iranian MPs on the latest route agreements, and Foreign Minister Ararat Mirzoyan highlighted the project at the Manama Dialogue.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264541",
+          "title": "Armenian ambassador briefs Iranian MPs on latest TRIPP route agreements"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/02/armenia-begins-preparatory-work-on-tripp-infrastructure-project-pashinyan-says/",
+          "title": "Armenia begins preparatory work on TRIPP infrastructure project, Pashinyan says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071878",
+          "title": "Pashinyan: Armenian government has effectively already begun implementing TRIPP project"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/02/mirzoyan-highlights-armenias-commitment-to-peace-and-regional-connectivity-at-manama-dialogue/",
+          "title": "Mirzoyan highlights Armenia’s commitment to peace and regional connectivity at Manama Dialogue"
+        }
+      ]
+    },
+    {
+      "title": "2027 state budget projects record revenues and spending",
+      "text": "The draft budget envisages expenditures of 4.072 trillion drams, with revenues projected at $10 billion. Allocations include nearly 674 billion drams for pensions and 614 billion for defense, while tax revenues rose 14.5% in the first ten months of 2026.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264511",
+          "title": "2027 state budget envisages 1.084 trillion drams for Labor and Welfare Ministry"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071861",
+          "title": "Armenia’s 2027 budget allocates nearly 674 billion drams to pensions and almost 614 billion to defense"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071858",
+          "title": "Armenia’s state budget expenditure to reach 4.072 trillion drams in 2027"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264445",
+          "title": "Pashinyan administration projects Armenia’s 2027 state budget revenues at $10 billion"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071850",
+          "title": "Armenian parliamentary committees begin reviewing 2027 state budget draft"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264475",
+          "title": "Armenia’s tax revenues rise 14.5% in January-October 2026"
+        }
+      ]
+    },
+    {
+      "title": "Armenia prepares for UEFA Nations League match against Cyprus",
+      "text": "Ticket sales have opened for the Armenia-Cyprus UEFA Nations League fixture. The Football Federation and the Ministry of Education, Science, Culture and Sport both confirmed availability, while Ararat-Armenia appealed to Armenians in Europe for support.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169983/",
+          "title": "Ticket sales for Armenia-Cyprus match now open"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/02/tickets-on-sale-for-armenia-cyprus-uefa-nations-league-match/",
+          "title": "Tickets on Sale for Armenia-Cyprus UEFA Nations League Match"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264468",
+          "title": "Tickets for Armenia-Cyprus UEFA Nations League match out now"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169991/",
+          "title": "Ararat-Armenia to Armenians living in Europe: We need your support"
+        }
+      ]
+    },
+    {
+      "title": "Armenian athletes compete at world championships",
+      "text": "Weightlifters Rafik Harutyunyan and Martin Poghosyan placed 22nd and 23rd respectively at the World Championships in China. Armenian shooters are set to begin competition at the ISSF World Championship in Qatar, and the women's U17 football team lost to Montenegro in European Championship qualifying.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264531",
+          "title": "Rafik Harutyunyan finishes 22nd at World Championships, Poghosyan 23rd"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169981/",
+          "title": "World Championships: Results of Rafik Arutyunyan and Martin Pogosyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264431",
+          "title": "Armenian weightlifters continue campaign at World Championships in China"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264430",
+          "title": "Armenian team set to begin competition at ISSF World Championship in Qatar"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/169984/",
+          "title": "European Championship: Armenia women’s U17 national team loses to Montenegro"
+        }
+      ]
+    },
+    {
+      "title": "Pension reforms and social protection measures outlined",
+      "text": "Officials confirmed pensions will increase in 2027, with any changes to the cashback programme only raising benefits. Lawmakers proposed mandatory notification of heirs about deceased citizens' pension savings, and a new vulnerability assessment system was presented.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264535",
+          "title": "Any changes to pension cashback programme will only increase benefits, minister says"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264529",
+          "title": "Benefits cannot bring prosperity, says Torosyan, explaining new vulnerability assessment system"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1072009",
+          "title": "Minister: Pensions in Armenia to increase"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264522",
+          "title": "Lawmakers propose mandatory notification of heirs about deceased citizens’ pension savings"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264516",
+          "title": "2027 state budget envisages new care program for seniors"
+        }
+      ]
+    },
+    {
+      "title": "Cultural events mark anniversaries and festivals",
+      "text": "Meghri concluded its tenure as CIS Cultural Capital, handing the title to Maladzyechna, Belarus. UNESCO events in Paris marked Hrachia Acharian's 150th birth anniversary and the centenary of Republic Square, while Yerevan hosts the third International Flute Festival with world-renowned musicians.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264457",
+          "title": "Meghri concludes its 2026 tenure as CIS Cultural Capital"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1071854",
+          "title": "Meghri hands over CIS Cultural Capital title to Belarusian city of Maladzyechna"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264441",
+          "title": "UNESCO events marking Hrachia Acharian’s 150th birth anniversary and centenary of Republic Square conclude in Paris"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264499",
+          "title": "Yerevan International Flute Festival brings world-renowned musicians to Armenia for third edition"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/02/yerevan-to-host-3rd-international-c-bringing-world-renowned-musicians-together/",
+          "title": "Yerevan to host 3rd International Flute Festival, bringing world-renowned musicians together"
+        }
+      ]
+    }
+  ]
+}
