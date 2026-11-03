@@ -244,6 +244,76 @@ export function checkDeadlines(now = new Date(), list = DEADLINES) {
   })
 }
 
+// Le scrape horaire. Une source qui tombe ne vide rien : le backfill ressert
+// l'instantané précédent, tous les runs restent verts. ArménieInfo.tv s'est
+// ainsi figé quatre jours (30 oct.–3 nov. 2026, rubriques désertées par le
+// site) ; seule l'issue [sources-down] l'a dit. Le tableau de bord reprend ces
+// mesures pour que TOUT ce qui demande d'agir tienne sur une page :
+// - `generatedAt` : l'heure du dernier instantané (meta.json) — au-delà de
+//   SNAPSHOT_STALE_HOURS, le scrape horaire lui-même ne tourne plus ;
+// - `problems` : les phrases de scripts/lib/health.mjs (fraîcheur par source ×
+//   langue, classement, agenda), chacune une action ;
+// - `failures` : { source: nombre } des « ✗ » du dernier scrape (lus dans son
+//   journal) — des échecs partiels que le backfill rattrape : une info, pas
+//   une alerte, sinon chaque hoquet passager notifierait.
+export const SNAPSHOT_STALE_HOURS = 3
+
+// Les « ✗ source/… : » de l'étape `npm run scrape` d'un journal de job,
+// comptés par source. Le journal entier ne convient pas : les tests (« un ✗
+// au log ») et les scripts d'alerte en citent dans leur texte. Sans
+// marqueur d'étape (journal d'un autre format), on lit tout. La ligne de
+// synthèse « ✗ santé » n'est pas un échec de source.
+export function scrapeFailures(log) {
+  const out = {}
+  let text = String(log ?? '')
+  const start = text.indexOf('##[group]Run npm run scrape')
+  if (start >= 0) {
+    const end = text.indexOf('##[group]Run', start + 1)
+    text = text.slice(start, end < 0 ? undefined : end)
+  }
+  for (const m of text.matchAll(/✗\s+([^\s:/]+)/g)) {
+    if (m[1] === 'santé') continue
+    out[m[1]] = (out[m[1]] ?? 0) + 1
+  }
+  return out
+}
+
+export function checkScraper({ generatedAt, problems = [], tracked = 0, failures = null, logUrl = '', now = new Date() }) {
+  const out = []
+  const t = Date.parse(generatedAt)
+  const h = Number.isFinite(t) ? (now - t) / 3_600_000 : Infinity
+  const when = Number.isFinite(t) ? ` (${generatedAt.slice(0, 16).replace('T', ' ')} UTC)` : ''
+  if (h > SNAPSHOT_STALE_HOURS)
+    out.push({
+      key: 'scrape-stale',
+      level: 'faire',
+      text: Number.isFinite(t) ? `Dernier instantané il y a ${Math.floor(h)} h${when} : le scrape horaire ne tourne plus` : 'Aucun instantané daté (meta.json illisible)',
+      action: 'Lire `gh run list --workflow=hourly.yml`, puis les logs du Worker hourly-trigger (un 401 = jeton GH_TOKEN expiré)',
+    })
+  else out.push({ key: 'scrape-fresh', level: 'ok', text: `Scrape horaire : dernier instantané il y a ${Math.max(0, Math.round(h * 60))} min${when}` })
+  for (const p of problems) {
+    const name = (/\*\*(.+?)\*\*/.exec(p)?.[1] ?? p).replace(/[^\w/-]+/g, '-')
+    out.push({
+      key: `src-${name}`,
+      level: 'faire',
+      text: p,
+      action: "Voir si la source publie encore ; si oui, `gh run view <id> --log | grep '✗'` et le skill toucher-une-source",
+    })
+  }
+  if (!problems.length) out.push({ key: 'src-ok', level: 'ok', text: `Les ${tracked} fils (source × langue) sont frais, l'agenda a des événements, les rubriques sont classées` })
+  if (failures === null) out.push({ key: 'scrape-log', level: 'info', text: 'Journal du dernier scrape illisible : échecs partiels non comptés' })
+  else {
+    const list = Object.entries(failures).sort((a, b) => b[1] - a[1])
+    const link = logUrl ? ` — [journal](${logUrl})` : ''
+    out.push(
+      list.length
+        ? { key: 'scrape-partial', level: 'info', text: `Dernier scrape : échecs partiels rattrapés par le backfill — ${list.map(([s, n]) => `${s} ×${n}`).join(', ')}${link}` }
+        : { key: 'scrape-partial', level: 'ok', text: `Dernier scrape : aucun échec${link}` },
+    )
+  }
+  return out
+}
+
 // --- Le rendu ---------------------------------------------------------------
 
 export const ALERT_LEVELS = new Set(['bloquant', 'faire'])
