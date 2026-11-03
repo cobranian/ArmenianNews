@@ -37,6 +37,21 @@ for (const site of Object.values(SITES)) {
     }
   })
 
+  // Sans mesure, les visiteurs arrivés par un lien cassé étaient invisibles :
+  // ni GA ni Cloudflare ne disaient quelles URL mortes on nous demande.
+  test(`404 ${site.id} : mesurée par SA propriété GA et SON beacon, jamais ceux du voisin`, () => {
+    assert.ok(html.includes(`data-ga-id="${site.gaMeasurementId}"`), 'ID GA de la vitrine')
+    assert.ok(html.includes(`"token": "${site.cfBeaconToken}"`), 'jeton Cloudflare de la vitrine')
+    const init = html.indexOf('/ga-init.js')
+    const gtag = html.indexOf('googletagmanager.com/gtag/js')
+    assert.ok(init > -1 && gtag > init, 'ga-init.js précède gtag.js (consentement avant le premier hit)')
+    for (const other of Object.values(SITES)) {
+      if (other.id === site.id) continue
+      assert.ok(!html.includes(other.gaMeasurementId), `pas l'ID GA de ${other.id}`)
+      assert.ok(!html.includes(other.cfBeaconToken), `pas le jeton de ${other.id}`)
+    }
+  })
+
   test(`404 ${site.id} : aucune URL du voisin`, () => {
     for (const other of Object.values(SITES)) {
       if (other.id === site.id) continue
