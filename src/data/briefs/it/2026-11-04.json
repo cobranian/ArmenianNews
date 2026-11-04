@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-04",
+  "lang": "it",
+  "generatedAt": "2026-11-04T03:29:20.764Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è dominata dalla visita del premier Pashinyan a Bruxelles, dove ha illustrato le aspirazioni europee dell'Armenia e discusso relazioni bilaterali e regionali. In ambito interno si segnalano i piani per una nuova Costituzione, progetti infrastrutturali e digitali, mentre nello sport brilla l'argento di Elmira Karapetyan ai Mondiali di tiro.",
+  "topics": [
+    {
+      "title": "Visita di Pashinyan a Bruxelles e prospettive di adesione all'UE",
+      "text": "Il primo ministro armeno Nikol Pashinyan è arrivato a Bruxelles per una visita di lavoro e ha presentato le aspirazioni europee del paese, fissando scadenze realistiche per una futura candidatura all'adesione all'Unione europea. Durante gli incontri con Roberta Metsola e Gert Jan Koopman ha affrontato anche la questione dei privilegi commerciali per l'Armenia e la cooperazione con la Georgia. Fonti armene indicano che una candidatura ufficiale potrebbe essere presentata già nel 2027.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-soutiendra-de-toutes-ses-forces-les-aspirations-europeennes-de-la-georgie-affirme-le-premier-ministre-armenien-a-bruxelles/",
+          "title": "L’Arménie soutiendra de toutes ses forces les aspirations européennes de la Géorgie affirme le Premier ministre arménien à Bruxelles"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-nikol-pachinian-a-fixe-des-echeances-realistes-pour-la-candidature-de-larmenie-a-ladhesion-a-lue/",
+          "title": "Le Premier ministre arménien Nikol Pachinian a fixé des échéances réalistes pour la candidature de l’Arménie à l’adhésion à l’UE"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-nikol-pachinian-a-presente-les-aspirations-europeennes-de-larmenie-a-bruxelles/",
+          "title": "Le Premier ministre arménien Nikol Pachinian a présenté les aspirations européennes de l’Arménie à Bruxelles"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/larmenie-envisage-une-candidature-officielle-a-lunion-europeenne-des-2027/",
+          "title": "L’Arménie envisage une candidature officielle à l’Union européenne dès 2027"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-a-repondu-aux-questions-de-la-journaliste-deuronews-a-bruxelles/",
+          "title": "Le Premier ministre arménien a répondu aux questions de la journaliste d’Euronews à Bruxelles"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264653",
+          "title": "Nikol Pashinyan s’est entretenu avec Gert Jan Koopman"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-sa-rencontre-avec-roberta-metsola-nikol-pachinian-a-souligne-la-position-du-parlement-europeen-concernant-loctroi-de-privileges-commerciaux-a-larmenie-pour-une-duree-de-deux-ans/",
+          "title": "Lors de sa rencontre avec Roberta Metsola, Nikol Pachinian a souligné la position du Parlement européen concernant l’octroi de privilèges commerciaux à l’Arménie pour une durée de deux ans"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264632",
+          "title": "Le Premier ministre Pashinyan s’est entretenu avec Roberta Metsola"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-nikol-pachinian-est-arrive-a-bruxelles/",
+          "title": "Le Premier ministre arménien Nikol Pachinian est arrivé à Bruxelles"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264545",
+          "title": "Le Premier ministre s’est rendu à Bruxelles pour une visite de travail"
+        }
+      ]
+    },
+    {
+      "title": "Politica estera equilibrata e dialogo con la Russia",
+      "text": "Pashinyan ha ribadito che l'Armenia persegue una politica estera equilibrata, riferendosi in particolare ai rapporti con la Russia. La dichiarazione arriva in concomitanza con la missione a Bruxelles, a sottolineare il tentativo di mantenere canali aperti su più fronti.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264676",
+          "title": "« Nous avons adopté une politique étrangère équilibrée »: Pashinyan évoque les relations entre l’Arménie et la Russie"
+        }
+      ]
+    },
+    {
+      "title": "Progetto di nuova Costituzione e riforme istituzionali",
+      "text": "Il premier ha annunciato che il progetto di nuova Costituzione sarà pubblicato a novembre, mentre il ministero della Giustizia assumerà la responsabilità del processo. Un rapporto dell'Unione economica eurasiatica redatto in Armenia è stato definito errato da Papoyan, evidenziando tensioni tecniche in ambito normativo.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-rapport-de-luee-redige-en-armenie-est-errone-selon-papoyan/",
+          "title": "Le rapport de l’UEE rédigé en Arménie est erroné, selon Papoyan"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-projet-de-nouvelle-constitution-sera-publie-en-novembre-selon-nikol-pachinian/",
+          "title": "Le projet de nouvelle Constitution sera publié en novembre, selon Nikol Pachinian"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-ministere-de-la-justice-assumera-la-responsabilite-du-projet-de-nouvelle-constitution",
+          "title": "Le ministère de la Justice assumera la responsabilité du projet de nouvelle Constitution"
+        }
+      ]
+    },
+    {
+      "title": "Infrastrutture idriche, digitalizzazione e progetto TRIPP",
+      "text": "Il governo ha avviato l'implementazione del progetto TRIPP, garantendo il mantenimento delle prerogative doganali armene, e ha lanciato una nuova fase di digitalizzazione. Parallelamente è prevista la costruzione di dieci serbatoi entro il 2033, di cui quattro da completare in tempi più brevi.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/construction-de-10-reservoirs-en-armenie-lancement-prevu-dici-2033-dont-4-a-achever/",
+          "title": "Construction de 10 réservoirs en Arménie : lancement prévu d’ici 2033, dont 4 à achever"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
+          "title": "Lancement d’une nouvelle ère de numérisation en Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-gouvernement-armenien-commence-a-mettre-en-oeuvre-le-projet-tripp/",
+          "title": "Le gouvernement arménien commence à mettre en œuvre le projet TRIPP"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/tripp-larmenie-conservera-lensemble-de-ses-prerogatives-douanieres",
+          "title": "TRIPP : l’Arménie conservera l’ensemble de ses prérogatives douanières"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione di difesa con la Georgia e iniziativa iraniana per un parco transfrontaliero",
+      "text": "I ministri della difesa di Armenia e Georgia hanno discusso la cooperazione bilaterale nel settore, con l'arrivo a Erevan del comandante delle forze di difesa georgiane. L'Iran ha proposto la creazione di un parco transfrontaliero di pace e amicizia con l'Armenia, segnalando un interesse per progetti di fiducia nella regione.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/liran-propose-un-parc-transfrontalier-de-paix-et-damitie-avec-larmenie/",
+          "title": "L’Iran propose un parc transfrontalier de paix et d’amitié avec l’Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/suren-papikyan-et-giorgi-matiashvili-ont-discute-de-questions-relatives-a-la-cooperation-entre-larmenie-et-la-georgie-dans-le-secteur-de-la-defense/",
+          "title": "Suren Papikyan et Giorgi Matiashvili ont discuté de questions relatives à la coopération entre l’Arménie et la Géorgie dans le secteur de la défense"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264554",
+          "title": "Le commandant des Forces de défense géorgiennes est arrivé en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Argento mondiale per Elmira Karapetyan nel tiro a segno",
+      "text": "La tiratrice armena Elmira Karapetyan ha conquistato la medaglia d'argento nella pistola 50 metri ai Campionati mondiali di tiro a Doha. È il principale risultato sportivo armeno emerso dai titoli odierni.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/elmira-karapetyan-armenie-decroche-la-medaille-dargent-au-pistolet-50-metres-aux-championnats-du-monde-de-tir-a-doha/",
+          "title": "Elmira Karapetyan (Arménie) décroche la médaille d’argent au pistolet 50 mètres aux Championnats du monde de tir à Doha"
+        }
+      ]
+    },
+    {
+      "title": "Eventi culturali e iniziative della diaspora",
+      "text": "Un concerto benefico a favore dell'Armenia si terrà il 19 novembre a Créteil, mentre all'UNESCO un evento musicale celebra il patrimonio culturale armeno. In Francia sono in programma vendite di maglie del Sardarapat FC a Parigi e quiz sull'Armenia a Bourg-lès-Valence, a cura di associazioni diasporiche.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/arman-tadevosyan-portrait-dun-artiste-armenien-et-diasporique",
+          "title": "Arman Tadevosyan, portrait d'un artiste arménien et diasporique"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/concert-caritatif-au-profit-de-larmenie-le-19-novembre-a-creteil/",
+          "title": "Concert caritatif au profit de l’Arménie le 19 novembre à Créteil"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/vente-de-maillots-du-sardarapat-fc-a-paris-les-13-et-14-novembre/",
+          "title": "Vente de maillots du Sardarapat FC à Paris les 13 et 14 novembre"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/lunesco-un-concert-celebre-le-patrimoine-culturel-armenien",
+          "title": "À l’UNESCO, un concert célèbre le patrimoine culturel arménien"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lassociation-armenia-propose-des-quiz-dedies-a-larmenie-ce-samedi-7-novembre-a-bourg-les-valence/",
+          "title": "L’association Arménia propose des quiz dédiés à l’Arménie ce samedi 7 novembre à Bourg-lès-Valence"
+        }
+      ]
+    }
+  ]
+}
