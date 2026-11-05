@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T03:23:34.879Z",
+  "generatedAt": "2026-11-05T04:23:28.952Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Հայաստանն ընդգծել է ՄԱԿ-ի հետ գործընկերության և համակարգված զարգացման աջակցության կարևորությունը",
+            "url": "https://hy.armradio.am/archives/768715",
+            "date": "2026-11-05T04:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_5779-768x576.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Վարչապետ Փաշինյանը Բարձր տեխնոլոգիաների ոլորտում համաշխարհային ներդրման համար ՀՀ պետական մրցանակը հանձնել է Քեմ Ղաֆֆարիանին",
             "url": "https://hy.armradio.am/archives/768697",
             "date": "2026-11-04T19:10:28.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/768633",
             "date": "2026-11-04T13:54:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/l-grBdZ2en0W-768x333.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Հներն այլևս չեն տպագրվում․ ինչպե՞ս ստանալ նոր կենսաչափական փաստաթղթեր",
-            "url": "https://hy.armradio.am/archives/768635",
-            "date": "2026-11-04T13:38:10.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/885096932_1157141553666975_9214454195754186752_n-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -3192,18 +3192,18 @@
           "rubric": "politique"
         },
         {
-          "title": "Lancement d’une nouvelle ère de numérisation en Arménie",
-          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
-          "date": "2026-11-03T11:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793586811-1518.jpg",
-          "rubric": "economie"
-        },
-        {
           "title": "Un soldat arménien retrouvé mort alors que les décès hors combat se multiplient",
           "url": "https://armenieinfo.tv/un-soldat-armenien-retrouve-mort-alors-que-les-deces-hors-combat-se-multiplient/",
           "date": "2026-11-03T11:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793673282-2531.jpg",
           "rubric": "societe"
+        },
+        {
+          "title": "Lancement d’une nouvelle ère de numérisation en Arménie",
+          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
+          "date": "2026-11-03T11:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793586811-1518.jpg",
+          "rubric": "economie"
         },
         {
           "title": "Le gouvernement arménien commence à mettre en œuvre le projet TRIPP",
@@ -5143,6 +5143,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "La Fiscalía presentó ante el tribunal una solicitud de prisión preventiva para Samvel Karapetyan",
+            "url": "https://armenpress.am/es/article/1264794",
+            "date": "2026-11-05T03:42:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/fpjKxjyatX8mJ0XYVeelS1wMgbCmb75C7fXpT3GE.webp"
+          },
+          {
+            "title": "El primer ministro recibió a Kem Ghaffarian, distinguido con el Premio Estatal de Armenia",
+            "url": "https://armenpress.am/es/article/1264793",
+            "date": "2026-11-05T03:37:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/djI6wqt5aEzrozLrfHYRWYpjbYjZqjhSjzZYyj3E.webp"
+          },
+          {
+            "title": "Diputados de “Contrato Civil” se reunieron con el encargado de negocios interino de Estados Unidos en Armenia",
+            "url": "https://armenpress.am/es/article/1264789",
+            "date": "2026-11-05T03:29:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/sQDmDppsHjw5CFl0k7fkEXfXYAJoUiSfPsPqJfRH.webp"
+          },
+          {
             "title": "Samvel Karapetyan fue detenido",
             "url": "https://armenpress.am/es/article/1264756",
             "date": "2026-11-04T14:57:00.000Z",
@@ -5183,24 +5201,6 @@
             "url": "https://armenpress.am/es/article/1264725",
             "date": "2026-11-04T11:09:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/04/RmNEdLbOg4DCTT3k8vqgJOLOSsJrKbOVNd8h1WVt.webp"
-          },
-          {
-            "title": "El jefe del Estado Mayor se refirió a las causas de las muertes en el Ejército y a las medidas de prevención",
-            "url": "https://armenpress.am/es/article/1264719",
-            "date": "2026-11-04T10:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/04/WF5CNiyIA3hP5DBSUIgX3iN8ocdIjK2vxxk37bno.webp"
-          },
-          {
-            "title": "El Ministerio del Interior prevé endurecer las sanciones por infracciones de tránsito y exigir capacitación obligatoria",
-            "url": "https://armenpress.am/es/article/1264717",
-            "date": "2026-11-04T09:46:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/04/KnQjohFu2H9DyvwZ13Zp4o46KNcYzSAsQKw3exGh.webp"
-          },
-          {
-            "title": "La Asamblea Nacional guardó un minuto de silencio en memoria de las víctimas del accidente de tránsito ocurrido en la ruta Aparan-Ashtarak",
-            "url": "https://armenpress.am/es/article/1264698",
-            "date": "2026-11-04T08:17:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/04/G65Y0gcQcjSIDO7GX8uaQZtBEAEEBI9e7AWKTl4p.webp"
           }
         ]
       },
@@ -7376,13 +7376,6 @@
           "rubric": "politique"
         },
         {
-          "title": "Soledad Martínez en el 11° aniversario del jachkar de Vicente López: “Es un símbolo de la presencia y la identidad armenia en Argentina”",
-          "url": "https://www.diarioarmenia.org.ar/soledad-martinez-en-el-11-aniversario-del-jachkar-de-vicente-lopez-es-un-simbolo-de-la-presencia-y-la-identidad-armenia-en-argentina/",
-          "date": "2026-11-02T19:26:05.000Z",
-          "image": "/da/e3f8c9fdf3be8863.webp",
-          "rubric": "diaspora"
-        },
-        {
           "title": "Sillazos en el Parlamento de Armenia: diputados del partido de Nikol Pashinyan provocaron una pelea que dejó legisladores opositores heridos",
           "url": "https://www.diarioarmenia.org.ar/sillazos-en-el-parlamento-de-armenia-diputados-del-partido-de-nikol-pashinyan-provocaron-una-pelea-que-dejo-legisladores-opositores-heridos/",
           "date": "2026-10-29T11:40:19.000Z",
@@ -7437,6 +7430,13 @@
           "date": "2026-10-16T03:33:42.000Z",
           "image": "/da/0c6167cab62ad6cc.webp",
           "rubric": "diaspora"
+        },
+        {
+          "title": "Nikol Pashinyan propuso intercambiar territorios con Azerbaiyán para eliminar los enclaves",
+          "url": "https://www.diarioarmenia.org.ar/nikol-pashinyan-propuso-intercambiar-territorios-con-azerbaiyan-para-eliminar-los-enclaves/",
+          "date": "2026-10-14T12:16:30.000Z",
+          "image": "/da/66ae2cffd0ded864.webp",
+          "rubric": "politique"
         }
       ]
     },
@@ -11185,64 +11185,64 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Լիլիթ Մակունցը այսօրվանից 2 շաբաթով արձակուրդ է մեկնում",
+            "url": "https://news.am/hy/news/1072694",
+            "date": "2026-11-05T04:33:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/eBFOkMNJsW0n9YuZ.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ Իշխանությունն անհանգիստ է ԹՐԻՓՓ-ի համար",
+            "url": "https://news.am/hy/news/1072699",
+            "date": "2026-11-05T04:32:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/kCXBsVMpHMiWwmim.webp"
+          },
+          {
+            "title": "Իրանի Անվտանգության խորհրդի քարտուղարը հայտարարել է Թրամփի քաղաքական պարտության մասին",
+            "url": "https://news.am/hy/news/1072698",
+            "date": "2026-11-05T04:31:00.000Z",
+            "image": "https://news.am/storage/media/26/08/23/8XhdJL7yWhwQysIO.webp"
+          },
+          {
+            "title": "Վերահաստատվել է ՀՀ–ի աջակցությունը ՄԱԿ-ի մշտական համակարգողների անկախ ֆինանսավորմամբ ապահովված համակարգին",
+            "url": "https://news.am/hy/news/1072701",
+            "date": "2026-11-05T04:29:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/XzRQS4ZYoy8gksC2.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ Կմասնակցի Երեւանի ընտրություններին",
+            "url": "https://news.am/hy/news/1072697",
+            "date": "2026-11-05T04:14:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/5Is19CjCR3w58BZJ.webp"
+          },
+          {
+            "title": "«Ժողովուրդ». ՀԱՊԿ-ը Հայաստանից գումար է պահանջում. Նոր քաղաքական ճնշման գործիք",
+            "url": "https://news.am/hy/news/1072691",
+            "date": "2026-11-05T04:08:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/Lwm1wHEQxsDZIYYT.webp"
+          },
+          {
+            "title": "«Փաստ». Ովքե՞ր և ինչո՞ւ են լռեցնում արցախցու ձայնը",
+            "url": "https://news.am/hy/news/1072690",
+            "date": "2026-11-05T04:01:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/iClQeqpAU6wfY0D1.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ ԱԱԾ պադվալում շինարարություն են անում, ի՞նչ են կառուցում",
+            "url": "https://news.am/hy/news/1072695",
+            "date": "2026-11-05T03:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/mXH539jnGXt1hrL3.webp"
+          },
+          {
+            "title": "«Փաստ». Ինչո՞ւ է Անկախության հռչակագիրը հայտնվել Բաքվի նշանառության տակ",
+            "url": "https://news.am/hy/news/1072688",
+            "date": "2026-11-05T03:40:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/DmqowEJd0J6YfU3d.webp"
+          },
+          {
             "title": "Թրամփը հայտարարել է, որ հանրապետականների պարտությունից հետո իմպիչմենթից չի վախենում",
             "url": "https://news.am/hy/news/1072687",
             "date": "2026-11-04T21:17:02.000Z",
             "image": "https://news.am/storage/media/26/11/03/1WMU0LjxWQVXFhiX.webp"
-          },
-          {
-            "title": "Դեմոկրատներն ակնկալում են պատմական մեծամասնություն ստանալ ԱՄՆ Ներկայացուցիչների պալատում",
-            "url": "https://news.am/hy/news/1072675",
-            "date": "2026-11-04T20:55:00.000Z",
-            "image": "https://news.am/storage/media/26/11/04/znWmH5JIWbLTzup7.webp"
-          },
-          {
-            "title": "Ռեկորդային ներկայացվածություն. յոթ մահմեդական ընտրվել է ԱՄՆ Կոնգրեսում",
-            "url": "https://news.am/hy/news/1072685",
-            "date": "2026-11-04T20:50:42.000Z",
-            "image": "https://news.am/storage/media/26/06/04/WXXkI0Bp9qf0RslP.webp"
-          },
-          {
-            "title": "Իրանում հայտարարել են մարտադաշտում և Վաշինգտոնում Թրամփի ռազմավարական պարտության մասին",
-            "url": "https://news.am/hy/news/1072661",
-            "date": "2026-11-04T20:25:00.000Z",
-            "image": "https://news.am/storage/media/26/08/23/8XhdJL7yWhwQysIO.webp"
-          },
-          {
-            "title": "Ուկրաինայի հակակոռուպցիոն բյուրոյի քննությամբ անցնող անվտանգության ծառայության երկու աշխատակից ազատվել են պաշտոնից",
-            "url": "https://news.am/hy/news/1072655",
-            "date": "2026-11-04T20:10:00.000Z",
-            "image": "https://news.am/storage/media/26/11/04/hT0aVIuZ1kBgo7tt.webp"
-          },
-          {
-            "title": "Գերմանիայի ծայրահեղ աջ ընդդիմությունն ԱՄՆ-ում հանրապետականների պարտության պատճառ է համարում Իրանի պատերազմի հետևանքները",
-            "url": "https://news.am/hy/news/1072651",
-            "date": "2026-11-04T19:54:00.000Z",
-            "image": "https://news.am/storage/media/26/11/04/A7YqIz6SRnNMRyo8.webp"
-          },
-          {
-            "title": "ԱՄՆ Կոնգրեսի նոր կազմը կարող է խստացնել տվյալների կենտրոնների կառուցման կանոնները. Politico",
-            "url": "https://news.am/hy/news/1072650",
-            "date": "2026-11-04T19:39:00.000Z",
-            "image": "https://news.am/storage/media/26/05/13/aLcCbUbt3LmH2KnT.webp"
-          },
-          {
-            "title": "Դեսանտիսը չի բացառել, որ հանրապետականները Կոնգրեսի նկատմամբ վերահսկողությունը մինչև 2030-ականները հազիվ թե վերականգնեն",
-            "url": "https://news.am/hy/news/1072649",
-            "date": "2026-11-04T19:24:00.000Z",
-            "image": "https://news.am/storage/media/26/11/04/wFxkA9S6ikRS8qdw.webp"
-          },
-          {
-            "title": "Ավարտվեց «Ուժեղ Հայաստան» կուսակցության գլխամասային գրասենյակի խուզարկությունը. փաստաբան",
-            "url": "https://news.am/hy/news/1072670",
-            "date": "2026-11-04T18:58:44.000Z",
-            "image": "https://news.am/storage/media/26/11/04/0mdnm8JE1WuEoGN4.webp"
-          },
-          {
-            "title": "Որ ուժերն են Սամվել Կարապետյանի տանը մասնակցում քաղաքական հավաքին",
-            "url": "https://news.am/hy/news/1072667",
-            "date": "2026-11-04T18:52:11.000Z",
-            "image": "https://news.am/storage/media/26/11/04/aVLp3gfmexHZh0rQ.jfif"
           }
         ]
       },
@@ -11383,6 +11383,12 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "«Փաստ». «Արտահանում ենք պարտք, ներմուծում ենք հույս». 2027-ի բյուջեի ֆինանսական իլյուզիոնիզմը",
+            "url": "https://news.am/hy/news/1072693",
+            "date": "2026-11-05T04:20:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/jXMSb6PwOKCxXqdl.webp"
+          },
+          {
             "title": "Լեհաստանում սկսել են HOMAR-K համակարգերի համար հրթիռների արտադրության գործարանի կառուցումը",
             "url": "https://news.am/hy/news/1072647",
             "date": "2026-11-04T19:09:00.000Z",
@@ -11435,12 +11441,6 @@
             "url": "https://news.am/hy/news/1072569",
             "date": "2026-11-04T12:37:20.000Z",
             "image": "https://news.am/storage/media/26/11/04/Mn3WRInzPntn8Eb6.webp"
-          },
-          {
-            "title": "Համաշխարհային բանկի հետ քննարկվել են Հայաստանում բիզնեսի կարգավորման և պետական ռեգիստրի թվայնացման հարցերը",
-            "url": "https://news.am/hy/news/1072568",
-            "date": "2026-11-04T12:31:00.000Z",
-            "image": "https://news.am/storage/media/26/11/04/VrgStHAvEd6Y56HF.webp"
           }
         ]
       },
@@ -11847,6 +11847,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Секретарь Совбеза Ирана заявил о политическом поражении Трампа",
+            "url": "https://news.am/ru/news/1072698",
+            "date": "2026-11-05T04:31:00.000Z",
+            "image": "https://news.am/storage/media/26/08/23/8XhdJL7yWhwQysIO.webp"
+          },
+          {
+            "title": "В Белом доме заявили, что демократам не удастся свернуть реформы Трампа",
+            "url": "https://news.am/ru/news/1072696",
+            "date": "2026-11-05T04:16:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/b2CUHn64QjAi9r6r.webp"
+          },
+          {
             "title": "Трамп заявил, что не боится импичмента после поражения республиканцев",
             "url": "https://news.am/ru/news/1072687",
             "date": "2026-11-04T21:17:02.000Z",
@@ -11893,18 +11905,6 @@
             "url": "https://news.am/ru/news/1072649",
             "date": "2026-11-04T19:24:00.000Z",
             "image": "https://news.am/storage/media/26/11/04/wFxkA9S6ikRS8qdw.webp"
-          },
-          {
-            "title": "Адвокат: Завершился обыск в главном офисе партии «Сильная Армения»",
-            "url": "https://news.am/ru/news/1072670",
-            "date": "2026-11-04T18:58:44.000Z",
-            "image": "https://news.am/storage/media/26/11/04/0mdnm8JE1WuEoGN4.webp"
-          },
-          {
-            "title": "Какие силы участвуют в политическом собрании в доме Самвела Карапетяна",
-            "url": "https://news.am/ru/news/1072667",
-            "date": "2026-11-04T18:52:11.000Z",
-            "image": "https://news.am/storage/media/26/11/04/aVLp3gfmexHZh0rQ.jfif"
           }
         ]
       },

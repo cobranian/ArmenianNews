@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-05",
+  "lang": "it",
+  "generatedAt": "2026-11-05T04:36:14.068Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna odierna evidenzia i passi dell'Armenia verso l'integrazione europea, le conseguenze umanitarie dello sfollamento dal Nagorno-Karabakh e gli sviluppi diplomatici e giudiziari regionali.",
+  "topics": [
+    {
+      "title": "L'Armenia accelera verso l'adesione all'UE",
+      "text": "Il Primo Ministro Nikol Pashinyan ha incontrato il Direttore Generale della DG NEAR Gert Jan Koopman a Bruxelles per discutere le relazioni bilaterali. Secondo fonti europee, Erevan potrebbe presentare la domanda formale entro due anni, sebbene i progressi dipendano anche dalla traiettoria georgiana. La scelta strategica tra Bruxelles e Mosca rimane un nodo centrale per la leadership armena.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-premier-ministre-armenien-nikol-pachinian-rencontre-gert-jan-koopman-a-bruxelles/",
+          "title": "Le Premier ministre arménien Nikol Pachinian rencontre Gert Jan Koopman à Bruxelles"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/eu-today-larmenie-se-rapproche-de-ladhesion-a-lue-pachinian-est-confronte-a-un-choix-difficile-entre-bruxelles-et-moscou/",
+          "title": "EU Today : L’Arménie se rapproche de l’adhésion à l’UE, Pachinian est confronté à un choix difficile entre Bruxelles et Moscou"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015179",
+          "title": "Pachinian: l’Arménie pourrait déposer sa candidature à l’UE dans les deux prochaines années, mais son avancée dépend de la Géorgie"
+        }
+      ]
+    },
+    {
+      "title": "Oltre 53.000 sfollati del Nagorno-Karabakh chiedono la cittadinanza",
+      "text": "Al 1° novembre, più di 53.000 persone sfollate con la forza dal Nagorno-Karabakh hanno presentato domanda per ottenere la cittadinanza armena. Il dato conferma l'entità della crisi umanitaria seguita all'offensiva azera del 2023 e la risposta legislativa di Erevan per garantire diritti e protezione legale ai rifugiati.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/au-1er-novembre-plus-de-53-000-personnes-deplacees-de-force-du-haut-karabakh-ont-depose-une-demande-de-citoyennete-armenienne/",
+          "title": "Au 1er novembre, plus de 53 000 personnes déplacées de force du Haut-Karabakh ont déposé une demande de citoyenneté arménienne"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/plus-de-53-000-personnes-deplacees-du-haut-karabagh-demandent-la-citoyennete-armenienne/",
+          "title": "Plus de 53 000 personnes déplacées du Haut-Karabagh demandent la citoyenneté arménienne"
+        }
+      ]
+    },
+    {
+      "title": "La CEDH respinge il ricorso dell'Azerbaigian sul verdetto del 2016",
+      "text": "La Corte Europea dei Diritti dell'Uomo ha rigettato l'appello presentato da Baku, confermando la sentenza storica che condannava l'Azerbaigian per le atrocità commesse durante la guerra dei quattro giorni dell'aprile 2016. La decisione rafforza il quadro giuridico internazionale sulle violazioni dei diritti umani nel conflitto.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-cedh-rejette-lappel-de-lazerbaidjan-validant-le-jugement-historique-sur-les-atrocites-de-la-guerre-dartsakh-de-2016/",
+          "title": "La CEDH rejette l’appel de l’Azerbaïdjan, validant le jugement historique sur les atrocités de la guerre d’Artsakh de 2016"
+        }
+      ]
+    },
+    {
+      "title": "Mosca prepara una proposta sull'Armenia per l'OTSC",
+      "text": "Secondo il vice segretario del Consiglio di Sicurezza armeno Armen Masadikov, la Russia ha elaborato una proposta riguardante l'Armenia da sottoporre agli stati membri dell'Organizzazione del Trattato di Sicurezza Collettiva. L'iniziativa segnala un tentativo russo di ridefinire il ruolo di Erevan all'interno dell'alleanza militare guidata dal Cremlino.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/moscou-a-prepare-une-proposition-concernant-larmenie-pour-les-pays-membres-de-lotsc-selon-masadikov/",
+          "title": "Moscou a préparé une proposition concernant l’Arménie pour les pays membres de l’OTSC, selon Masadikov"
+        }
+      ]
+    },
+    {
+      "title": "Erevan lega il ritiro dei ricorsi internazionali alla firma della pace",
+      "text": "Il governo armeno ha condizionato il ritiro delle cause pendenti presso le corti internazionali alla firma definitiva del trattato di pace con l'Azerbaigian. La mossa mira a usare i procedimenti legali come leva negoziale per ottenere garanzie concrete nell'accordo finale.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/erevan-conditionne-le-retrait-des-recours-internationaux-la-signature-definitive-du-traite-de-paix",
+          "title": "Erevan conditionne le retrait des recours internationaux à la signature définitive du traité de paix"
+        }
+      ]
+    },
+    {
+      "title": "Mortale incidente stradale sulla tratta Aparan-Asharak",
+      "text": "Nove persone hanno perso la vita e tre sono rimaste ferite in un grave incidente avvenuto la sera scorsa vicino a Ohanavan, sulla strada che collega Aparan ad Asharak. Le autorità hanno avviato un'inchiesta per accertare le cause dello scontro, uno dei più gravi degli ultimi mesi nel paese.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/9-morts-et-3-blesses-hier-soir-dans-un-accident-pres-dohanavan-sur-la-route-aparan-asharak-en-armenie/",
+          "title": "9 morts et 3 blessés hier soir dans un accident près d’Ohanavan sur la route Aparan-Asharak en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Avvistato l'ottavo leopardo del Caucaso nella riserva faunistica",
+      "text": "Le fototrappole installate nella Riserva Faunistica del Caucaso hanno ripreso per l'ottava volta un esemplare di leopardo del Caucaso, specie in via di estinzione. Il monitoraggio costante conferma la presenza stabile del grande felino nell'area protetta armena, frutto degli sforzi di conservazione degli ultimi anni.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/capture-des-images-en-armenie-dun-8e-leopard-du-caucase-grace-a-des-pieges-video-dans-la-reserve-faunique-du-caucase/",
+          "title": "Capture des images en Arménie d’un 8e léopard du Caucase grâce à des pièges vidéo dans la Réserve faunique du Caucase"
+        }
+      ]
+    }
+  ]
+}
