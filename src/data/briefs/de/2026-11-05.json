@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-05",
+  "lang": "de",
+  "generatedAt": "2026-11-05T03:29:19.756Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Heute Morgen werfen wir einen Blick auf die wichtigsten Nachrichten aus Armenien und der Region.",
+  "topics": [
+    {
+      "title": "Leopard im Kaukasus gefilmt",
+      "text": "In der Wildreserve Kaukasus sind Aufnahmen eines achtjährigen Leoparden des Kaukasus gelungen. Dies wurde durch Videofallen gesichert.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/capture-des-images-en-armenie-dun-8e-leopard-du-caucase-grace-a-des-pieges-video-dans-la-reserve-faunique-du-caucase/",
+          "title": "Capture des images en Arménie d’un 8e léopard du Caucase grâce à des pièges vidéo dans la Réserve faunique du Caucase"
+        }
+      ]
+    },
+    {
+      "title": "Pashinian trifft Koopman in Brüssel",
+      "text": "Der armenische Ministerpräsident Nikol Paschinjan hat sich in Brüssel mit Gert Jan Koopman getroffen. Es ging um aktuelle Entwicklungen zwischen Jerewan und der EU.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-premier-ministre-armenien-nikol-pachinian-rencontre-gert-jan-koopman-a-bruxelles/",
+          "title": "Le Premier ministre arménien Nikol Pachinian rencontre Gert Jan Koopman à Bruxelles"
+        }
+      ]
+    },
+    {
+      "title": "Unfall bei Ohanavan fordert neun Tote",
+      "text": "Bei einem Verkehrsunfall nahe Ohanavan auf der Straße Aparan-Asharak sind gestern neun Menschen getötet und drei weitere verletzt worden.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/9-morts-et-3-blesses-hier-soir-dans-un-accident-pres-dohanavan-sur-la-route-aparan-asharak-en-armenie/",
+          "title": "9 morts et 3 blessés hier soir dans un accident près d’Ohanavan sur la route Aparan-Asharak en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Armenien rückt der EU-Annäherung näher",
+      "text": "Nach Berichten der EU rückt Armenien der Mitgliedschaft näher. Paschinjan stehe vor einer schwierigen Entscheidung zwischen Brüssel und Moskau.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/eu-today-larmenie-se-rapproche-de-ladhesion-a-lue-pachinian-est-confronte-a-un-choix-difficile-entre-bruxelles-et-moscou/",
+          "title": "EU Today : L’Arménie se rapproche de l’adhésion à l’UE, Pachinian est confronté à un choix difficile entre Bruxelles et Moscou"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015179",
+          "title": "Pachinian: l’Arménie pourrait déposer sa candidature à l’UE dans les deux prochaines années, mais son avancée dépend de la Géorgie"
+        }
+      ]
+    },
+    {
+      "title": "Zivilisten aus Bergkarabach beantragen Pass",
+      "text": "Seit dem 1. November haben über 53.000 zwangsweise Vertriebene aus Bergkarabach einen Antrag auf armenische Staatsbürgerschaft gestellt.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/au-1er-novembre-plus-de-53-000-personnes-deplacees-de-force-du-haut-karabakh-ont-depose-une-demande-de-citoyennete-armenienne/",
+          "title": "Au 1er novembre, plus de 53 000 personnes déplacées de force du Haut-Karabakh ont déposé une demande de citoyenneté arménienne"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/plus-de-53-000-personnes-deplacees-du-haut-karabagh-demandent-la-citoyennete-armenienne/",
+          "title": "Plus de 53 000 personnes déplacées du Haut-Karabagh demandent la citoyenneté arménienne"
+        }
+      ]
+    },
+    {
+      "title": "Neuer Vize-Minister für Bildung",
+      "text": "Tigran Simonyan wurde zum Vize-Minister für Bildung, Wissenschaft, Kultur und Sport Armeniens ernannt.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/tigran-simonyan-nomme-vice-ministre-de-leducation-des-sciences-de-la-culture-et-des-sports-darmenie/",
+          "title": "Tigran Simonyan nommé vice-ministre de l’Éducation, des Sciences, de la Culture et des Sports d’Arménie"
+        }
+      ]
+    }
+  ]
+}

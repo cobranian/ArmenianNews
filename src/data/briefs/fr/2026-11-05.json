@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-05",
+  "lang": "fr",
+  "generatedAt": "2026-11-05T03:29:19.756Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "L'actualité arménienne du jour est marquée par des développements politiques majeurs, des faits divers tragiques et des événements culturels variés.",
+  "topics": [
+    {
+      "title": "Accident routier mortel près d'Ohanavan",
+      "text": "Hier soir, un accident s'est produit sur la route Aparan-Asharak en direction d'Ohanavan, faisant 9 morts et 3 blessés. Les circonstances de la collision font l'objet d'enquêtes.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/9-morts-et-3-blesses-hier-soir-dans-un-accident-pres-dohanavan-sur-la-route-aparan-asharak-en-armenie/",
+          "title": "9 morts et 3 blessés hier soir dans un accident près d’Ohanavan sur la route Aparan-Asharak en Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Évolution vers l'adhésion à l'Union européenne",
+      "text": "Le Premier ministre Nikol Pachinian rencontre des responsables européens à Bruxelles. L'Arménie se rapproche de l'adhésion à l'UE, bien que le chemin soit semé d'embûches géopolitiques entre influences russes et exigences européennes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-premier-ministre-armenien-nikol-pachinian-rencontre-gert-jan-koopman-a-bruxelles/",
+          "title": "Le Premier ministre arménien Nikol Pachinian rencontre Gert Jan Koopman à Bruxelles"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/eu-today-larmenie-se-rapproche-de-ladhesion-a-lue-pachinian-est-confronte-a-un-choix-difficile-entre-bruxelles-et-moscou/",
+          "title": "EU Today : L’Arménie se rapproche de l’adhésion à l’UE, Pachinian est confronté à un choix difficile entre Bruxelles et Moscou"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015179",
+          "title": "Pachinian: l’Arménie pourrait déposer sa candidature à l’UE dans les deux prochaines années, mais son avancée dépend de la Géorgie"
+        }
+      ]
+    },
+    {
+      "title": "Situation des déplacés du Haut-Karabakh",
+      "text": "À compter du 1er novembre, plus de 53 000 personnes déplacées de force du Haut-Karabakh ont déposé une demande de citoyenneté arménienne. Cette vague d'inscriptions fait suite au conflit récent dans la région.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/au-1er-novembre-plus-de-53-000-personnes-deplacees-de-force-du-haut-karabakh-ont-depose-une-demande-de-citoyennete-armenienne/",
+          "title": "Au 1er novembre, plus de 53 000 personnes déplacées de force du Haut-Karabakh ont déposé une demande de citoyenneté arménienne"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/plus-de-53-000-personnes-deplacees-du-haut-karabagh-demandent-la-citoyennete-armenienne/",
+          "title": "Plus de 53 000 personnes déplacées du Haut-Karabagh demandent la citoyenneté arménienne"
+        }
+      ]
+    },
+    {
+      "title": "Nomination ministérielle",
+      "text": "Tigran Simonyan a été nommé vice-ministre de l'Éducation, des Sciences, de la Culture et des Sports d'Arménie. Cette nomination s'inscrit dans la continuité des réformes du gouvernement en cours.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/tigran-simonyan-nomme-vice-ministre-de-leducation-des-sciences-de-la-culture-et-des-sports-darmenie/",
+          "title": "Tigran Simonyan nommé vice-ministre de l’Éducation, des Sciences, de la Culture et des Sports d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Hommage à la Radio publique arménienne",
+      "text": "La Poste arménienne a émis un timbre à l'occasion du Centenaire de la Radio publique d'Arménie. L'événement marque un siècle d'existence de cette institution culturelle majeure du pays.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-poste-armenienne-honore-par-une-emission-postale-le-centenaire-de-la-radio-publique-darmenie/",
+          "title": "La Poste arménienne honore par une émission postale le Centenaire de la Radio publique d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Rejet de l'appel azerbaïdjanais par la CEDH",
+      "text": "La Cour européenne des droits a rejeté l'appel de l'Azerbaïdjan concernant le jugement historique sur les atrocités de la guerre d'Artsakh de 2016. La décision valide les conclusions précédentes sur ces événements.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-cedh-rejette-lappel-de-lazerbaidjan-validant-le-jugement-historique-sur-les-atrocites-de-la-guerre-dartsakh-de-2016/",
+          "title": "La CEDH rejette l’appel de l’Azerbaïdjan, validant le jugement historique sur les atrocités de la guerre d’Artsakh de 2016"
+        }
+      ]
+    },
+    {
+      "title": "Renforcement de la coopération avec l'Iran",
+      "text": "Des représentants du Comité de l'urbanisme de la République d'Arménie ont discuté avec l'ambassadeur d'Iran de renforcement de la coopération sectorielle. Les échanges portent sur des projets communs de développement urbain.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264766",
+          "title": "Les représentants du Comité de l'urbanisme de la République d'Arménie ont discuté du renforcement de la coopération sectorielle avec l'ambassadeur d'Iran"
+        }
+      ]
+    }
+  ]
+}

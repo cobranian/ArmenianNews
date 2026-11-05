@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-05",
+  "lang": "es",
+  "generatedAt": "2026-11-05T03:29:19.756Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Las principales noticias de Armenia y la región para hoy incluyen tensiones geopolíticas, desarrollos económicos y acontecimientos sociales.",
+  "topics": [
+    {
+      "title": "Presupuesto militar y vivienda en Azerbaiyán",
+      "text": "Azerbaiyán proyecta un gasto militar de 2.350 millones de dólares para 2027 y reduce la financiación de vivienda para sus soldados, según reportes de la región.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/azerbaiyan-presupuesto-defensa-2027/",
+          "title": "Azerbaiyán proyecta 2.350 millones de dólares en gasto militar para 2027 y reduce la financiación de vivienda a los soldados"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-procesa-samvel-karapetyan-fraude-red-electrica/",
+          "title": "Armenia procesa al multimillonario Samvel Karapetyan y a 36 ejecutivos por un fraude de 180 millones de dólares en la red eléctrica"
+        }
+      ]
+    },
+    {
+      "title": "Estatus de candidato de Georgia a la UE",
+      "text": "La Comisión Europea advierte que Georgia perderá el estatus de candidato a la Unión Europea si mantiene su deriva autoritaria.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/georgia-riesgo-perder-estatus-candidato-union-europea/",
+          "title": "La Comisión Europea advierte que Georgia perderá el estatus de candidato a la UE si mantiene su deriva autoritaria"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación militar Armenia-Georgia",
+      "text": "Armenia y Georgia refuerzan su cooperación militar e intercambiarán experiencias en reformas de defensa, según reportes políticos.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-georgia-cooperacion-defensa-2026/",
+          "title": "Armenia y Georgia refuerzan su cooperación militar e intercambiarán experiencias en reformas de defensa"
+        }
+      ]
+    },
+    {
+      "title": "Detención de Samvel Karapetyan",
+      "text": "Armenia procesa al multimillonario Samvel Karapetyan y a 36 ejecutivos por un fraude de 180 millones de dólares en la red eléctrica, y el régimen de Nikol Pashinyan volvió a detener al empresario opositor.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-procesa-samvel-karapetyan-fraude-red-electrica/",
+          "title": "Armenia procesa al multimillonario Samvel Karapetyan y a 36 ejecutivos por un fraude de 180 millones de dólares en la red eléctrica"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/desplazados-artsaj-solicitan-ciudadania-armenia-2026/",
+          "title": "Más de 53.000 desplazados de Artsaj solicitaron la ciudadanía armenia"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/el-regimen-de-nikol-pashinyan-volvio-a-detener-al-empresario-opositor-samvel-karapetyan/",
+          "title": "El régimen de Nikol Pashinyan volvió a detener al empresario opositor Samvel Karapetyan"
+        }
+      ]
+    },
+    {
+      "title": "Residencia de extranjeros y tasas",
+      "text": "Armenia eleva las tasas y cambia a permisos temporales o permanentes la residencia de extranjeros, además de derogar la normativa sobre médicos de familia para integrar el expediente electrónico de salud.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-permisos-residencia-extranjeros/",
+          "title": "Armenia eleva las tasas y cambia a permisos temporales o permanentes la residencia de extranjeros"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-medicos-de-familia-expediente-electronico/",
+          "title": "Armenia deroga la normativa sobre los médicos de familia vigente desde 2004 para integrar el expediente electrónico de salud"
+        }
+      ]
+    },
+    {
+      "title": "Criptomonedas y licencias oficiales",
+      "text": "El Banco Central de Armenia concede a Meta-X Markets la primera licencia oficial para operar con criptoactivos en el país.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-meta-x-markets-licencia-oficial-criptoactivos/",
+          "title": "El Banco Central de Armenia concede a Meta-X Markets la primera licencia oficial para operar con criptoactivos en el país"
+        }
+      ]
+    },
+    {
+      "title": "Festival de Cine de Animación en Ereván",
+      "text": "La 18ª edición del Festival Internacional de Cine de Animación «ReA» convierte a Ereván en la capital mundial de la animación del 7 al 14 de noviembre.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/festival-animacion-rea-2026-erevan-reanimania/",
+          "title": "La 18ª edición del Festival Internacional de Cine de Animación «ReA» convierte a Ereván en la capital mundial de la animación del 7 al 14 de noviembre"
+        }
+      ]
+    }
+  ]
+}

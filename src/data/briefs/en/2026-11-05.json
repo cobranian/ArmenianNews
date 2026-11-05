@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-05",
+  "lang": "en",
+  "generatedAt": "2026-11-05T03:29:19.756Z",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "intro": "Daily overview of Armenian and international news, focusing on topics covered by multiple outlets.",
+  "topics": [
+    {
+      "title": "Armenian State Award for Kam Ghaffarian",
+      "text": "Kam Ghaffarian received the Armenian State Award for Global Contribution to High Technologies. The president and prime minister presented the honor, recognizing his contributions to the sector.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264796",
+          "title": "Nikol Pashinyan presents Armenian State Award for Global Contribution to High Technologies to Kam Ghaffarian"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264793",
+          "title": "Prime minister receives Armenian State Award laureate Kam Ghaffarian"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/04/pashinyan-meets-2026-global-high-tech-award-laureate-cam-ghaffarian/",
+          "title": "Pashinyan meets 2026 Global High-Tech Award laureate Cam Ghaffarian"
+        }
+      ]
+    },
+    {
+      "title": "Political developments and arrests involving Karapetyan",
+      "text": "Samvel Karapetyan was arrested again and detained in the ENA case involving 64.5 billion drams in damages. Opposition figures and legal observers commented on the repeated detentions.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015192",
+          "title": "Opposition billionaire Karapetyan arrested again"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/04/samvel-karapetyan-detained-in-ena-case-involving-64-5-billion-drams-in-alleged-damages/",
+          "title": "Samvel Karapetyan detained in ENA case involving 64.5 billion drams in damages"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015186",
+          "title": "Samvel Karapetyan arrested on charges of economic crimes"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/04/nine-killed-three-injured-in-four-car-crash-in-armenias-aragatsotn-province/",
+          "title": "Nine killed, three injured in four-car crash in Armenia’s Aragatsotn province"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1072424",
+          "title": "Pashinyan has ordered new searches and arrests out of fear, Strong Armenia says"
+        }
+      ]
+    },
+    {
+      "title": "International legal and political affairs",
+      "text": "The ECHR rejected Azerbaijan's appeal regarding the 2016 Artsakh war atrocities judgment. Khamenei stated no change in US policy is expected after congressional elections. Hungary plans to phase out Russian gas by 2027.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "californiacourier",
+          "url": "https://www.thecaliforniacourier.com/echr-rejects-azerbaijans-appeal-validating-landmark-2016-artsakh-war-atrocities-judgment/",
+          "title": "ECHR Rejects Azerbaijan’s Appeal, Validating Landmark 2016 Artsakh War Atrocities Judgment"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264764",
+          "title": "Khamenei says no change in US policy should be expected after congressional elections"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264760",
+          "title": "Hungary to phase out Russian gas by autumn 2027"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264715",
+          "title": "US withdraws troops from military base in Somalia"
+        }
+      ]
+    },
+    {
+      "title": "Economy and business updates",
+      "text": "CUBE Invest became the first investment firm to list bonds on the Armenia Stock Exchange. The Central Bank published exchange rates for precious metals. Armenia plans a 40% increase in Interior Ministry spending for 2027.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/khachkar-studios-publishes-week-8-of-weekly-tap-reporting-across-26-pilots/",
+          "title": "Khachkar Studios Publishes Week #8 of Weekly T•A•P Reporting Across 26 Pilots"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1072609",
+          "title": "CUBE Invest becomes first investment firm to list bonds on Armenia Stock Exchange"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264774",
+          "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 04-11-26"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1072433",
+          "title": "Armenia to increase Interior Ministry spending by 40% in 2027: Draft state budget"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264684",
+          "title": "“Building Armenia’s Next Phase of Growth”: the first Financial Times FT Live forum in Armenia, in partnership with Wilco Wealth Managemen"
+        }
+      ]
+    },
+    {
+      "title": "Cultural and societal news",
+      "text": "The Armenian American Museum hosted a donor reception. A festival in Vienna was canceled after the exclusion of Artsakh artists. New research links cannabis use to higher stroke risk. Overtraining may disrupt dopamine regulation.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/armenian-american-museum-hosts-major-donor-appreciation-reception/",
+          "title": "Armenian American Museum Hosts Major Donor Appreciation Reception"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/festival-in-vienna-cancelled-after-controversial-exclusion-of-artsakh-artists/",
+          "title": "Festival in Vienna Canceled After Controversial Exclusion of Artsakh Artists"
+        },
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/eng/news/42261/cannabis-use-linked-to-higher-stroke-risk-study-reveals-unexpected-pattern.html",
+          "title": "Cannabis Use Linked to Higher Stroke Risk, Study Reveals Unexpected Pattern"
+        },
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/eng/news/42259/overtraining-may-disrupt-dopamine-regulation-in-the-brain-study-finds.html",
+          "title": "Overtraining May Disrupt Dopamine Regulation in the Brain, Study Finds"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1072415",
+          "title": "Criminal proceedings launched over fatal crash on Ushi bends"
+        }
+      ]
+    },
+    {
+      "title": "Sports results and updates",
+      "text": "Manchester City and Arsenal won in the Champions League. Real Madrid secured a stoppage-time victory while Liverpool lost in Turkey. Armenia has 58 participants in the European U8-U18 Chess Championship. Shooter Elmira Karapetyan won World Championship silver.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170049/",
+          "title": "Champions League: Wins for Manchester City and Arsenal, all the day's results (video)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170047/",
+          "title": "Champions League: Real Madrid secure victory in stoppage time, Liverpool lose in Turkey (video)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170038/",
+          "title": "European Championship: Armenia U17 squad announced"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170033/",
+          "title": "Luis Enrique: Our goal is to reach the final and win"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170032/",
+          "title": "European U8-U18 Chess Championship: Armenia has 58 participants"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264680",
+          "title": "Shooter Elmira Karapetyan wins World Championship silver"
+        }
+      ]
+    },
+    {
+      "title": "Diaspora and international relations",
+      "text": "The Armenian American Museum held a major donor appreciation reception. The diaspora is discussed in opinion pieces regarding Pashinyan. Stephen Elmasian is to be honored with the Vahan Cardashian Award at the ANCA ER gala.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/armenian-american-museum-hosts-major-donor-appreciation-reception/",
+          "title": "Armenian American Museum Hosts Major Donor Appreciation Reception"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/11/04/stephen-elmasian-to-be-honored-with-vahan-cardashian-award-at-anca-er-gala/",
+          "title": "Stephen Elmasian to be honored with Vahan Cardashian Award at ANCA ER gala"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/11/04/the-diaspora-is-not-a-photo-opportunity/",
+          "title": "The diaspora is not a photo opportunity"
+        }
+      ]
+    }
+  ]
+}
