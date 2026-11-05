@@ -244,6 +244,48 @@ export function checkDeadlines(now = new Date(), list = DEADLINES) {
   })
 }
 
+// Les radios. Un flux qui se tait ne fait rien échouer : le dépôt ne garde
+// qu'une URL, et le premier signalement venait d'un lecteur (Im Radio, août
+// 2026). `results` vient de sonderTout (scripts/radio-check.mjs) : { id, url,
+// offAir, vivant, detail }, sondé DEPUIS LA CI — d'où RADIO_CI_BLOCKED : ces
+// stations refusent les IP de datacenter, leur silence ici ne prouve rien
+// (seul `npm run radio-check` en local tranche). Le verdict est celui de
+// radio-check, dans les deux sens : muette non marquée, ou marquée qui rediffuse.
+export const RADIO_CI_BLOCKED = new Set(['vov'])
+export function checkRadios(results, blocked = RADIO_CI_BLOCKED) {
+  const out = []
+  const local = 'lancer `npm run radio-check` en local'
+  let live = 0
+  for (const r of results) {
+    if (r.vivant && !r.offAir) live++
+    else if (!r.vivant && r.offAir)
+      out.push({ key: `radio-${r.id}-offair`, level: 'info', text: `${r.id} : hors antenne (marquée \`offAir\`), toujours muette` })
+    else if (!r.vivant && blocked.has(r.id))
+      out.push({ key: `radio-${r.id}-ci`, level: 'info', text: `${r.id} : injoignable depuis la CI (refuse les IP de datacenter) — se vérifie seulement en local` })
+    else if (!r.vivant)
+      out.push({
+        key: `radio-${r.id}-panne`,
+        level: 'faire',
+        text: `${r.id} : MUETTE — ${r.detail}`,
+        action: `Radio ${r.id} muette : ${local} ; si elle le reste, la marquer \`offAir: true\` dans src/components/Radio.jsx`,
+      })
+    else
+      out.push({
+        key: `radio-${r.id}-retour`,
+        level: 'faire',
+        text: `${r.id} : rediffuse alors qu'elle est marquée \`offAir\``,
+        action: `Radio ${r.id} de retour : retirer son \`offAir: true\` dans src/components/Radio.jsx`,
+      })
+  }
+  const silent = results.filter((r) => !r.vivant && !r.offAir && !blocked.has(r.id)).length
+  out.unshift({
+    key: 'radios',
+    level: silent ? 'info' : 'ok',
+    text: `${live}/${results.length} flux diffusent (contrôle depuis la CI, premier octet d'audio reçu)`,
+  })
+  return out
+}
+
 // Le scrape horaire. Une source qui tombe ne vide rien : le backfill ressert
 // l'instantané précédent, tous les runs restent verts. ArménieInfo.tv s'est
 // ainsi figé quatre jours (30 oct.–3 nov. 2026, rubriques désertées par le
