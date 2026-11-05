@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T21:23:28.888Z",
+  "generatedAt": "2026-11-05T22:23:27.393Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -3205,18 +3205,18 @@
           "rubric": "politique"
         },
         {
-          "title": "Lancement d’une nouvelle ère de numérisation en Arménie",
-          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
-          "date": "2026-11-03T11:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793586811-1518.jpg",
-          "rubric": "economie"
-        },
-        {
           "title": "Un soldat arménien retrouvé mort alors que les décès hors combat se multiplient",
           "url": "https://armenieinfo.tv/un-soldat-armenien-retrouve-mort-alors-que-les-deces-hors-combat-se-multiplient/",
           "date": "2026-11-03T11:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793673282-2531.jpg",
           "rubric": "societe"
+        },
+        {
+          "title": "Lancement d’une nouvelle ère de numérisation en Arménie",
+          "url": "https://armenieinfo.tv/lancement-dune-nouvelle-ere-de-numerisation-en-armenie/",
+          "date": "2026-11-03T11:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793586811-1518.jpg",
+          "rubric": "economie"
         }
       ]
     }
@@ -3704,6 +3704,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Third Global Armenian Summit opens with formal ceremony",
+            "url": "https://armenpress.am/en/article/1264927",
+            "date": "2026-11-05T22:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/05/mpYGQslKXl3dN9Aeq9J7iJBS9L7xBMyZDh0QPMD2.webp"
+          },
+          {
             "title": "Gurgen Arsenyan awarded Russian Foreign Ministry’s “For Cooperation” badge",
             "url": "https://armenpress.am/en/article/1264922",
             "date": "2026-11-05T16:13:00.000Z",
@@ -3756,12 +3762,6 @@
             "url": "https://armenpress.am/en/article/1264890",
             "date": "2026-11-05T14:12:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/05/7JTKP4W6KDCHVP26hCXCYEy1QoSOrMGOC7bHmL6u.webp"
-          },
-          {
-            "title": "Armenian Investigative Committee staff attend training on combating cross-border crime in China",
-            "url": "https://armenpress.am/en/article/1264888",
-            "date": "2026-11-05T12:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/05/XHwWzJVOvVeTD8EskSQFfOf0yhCBfLjGZFrrtLf8.webp"
           }
         ]
       },
@@ -5608,6 +5608,20 @@
         "label": "Top Stories",
         "articles": [
           {
+            "title": "$300,000 Donation Announced to Homenetmen In Memory of Hrair Soghomonian",
+            "url": "https://asbarez.com/300000-donation-announced-to-homenetmen-in-memory-of-hrair-soghomonian/",
+            "date": "2026-11-05T21:46:49.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/11/05124758/SoghomonianHMEM1-300x221.jpg",
+            "rubric": "diaspora"
+          },
+          {
+            "title": "Massis Kabob Celebrates 50 Years With Community Festival and Landmark Expansion At Hollywood Burbank Airport",
+            "url": "https://asbarez.com/massis-kabob-celebrates-50-years-with-community-festival-and-landmark-expansion-at-hollywood-burbank-airport/",
+            "date": "2026-11-05T21:45:55.000Z",
+            "image": "https://media.asbarez.com/wp-content/uploads/2026/11/05133359/Masis-50th-2026-580-300x200.jpeg",
+            "rubric": "sports"
+          },
+          {
             "title": "COAF’s 23rd Annual Holiday Gala to Celebrate Armenian Heritage and Honor Distinguished Leaders in NYC",
             "url": "https://asbarez.com/coafs-23rd-annual-holiday-gala-to-celebrate-armenian-heritage-and-honor-distinguished-leaders-in-nyc/",
             "date": "2026-11-05T21:17:28.000Z",
@@ -5662,20 +5676,6 @@
             "date": "2026-11-04T18:37:29.000Z",
             "image": "https://media.asbarez.com/wp-content/uploads/2026/11/04132648/AEMRC_Dadrian_Archive_flyer-crop-300x174.jpg",
             "rubric": "monde"
-          },
-          {
-            "title": "The Importance of Voting",
-            "url": "https://asbarez.com/importance-of-voting/",
-            "date": "2026-11-03T23:47:17.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/11/03162145/HyeVotes-Interns-Graphics-16-1-300x201.png",
-            "rubric": "opinion"
-          },
-          {
-            "title": "Azerbaijani Soldier who Breached Armenia’s Border ‘Had No Intent to Kill,’ Top Security Officials Says",
-            "url": "https://asbarez.com/azerbaijani-soldier-who-breached-armenias-border-had-no-intent-to-kill-top-security-officials-says/",
-            "date": "2026-11-03T21:37:44.000Z",
-            "image": "https://media.asbarez.com/wp-content/uploads/2026/10/02123010/AzerisoldierArpiAvedisyan-300x159.jpg",
-            "rubric": "politique"
           }
         ]
       },
@@ -6092,64 +6092,64 @@
         "label": "Հայաստան",
         "articles": [
           {
+            "title": "Պատգամաւորները Ուժայիններուն Հետ Փակ Հանդիպումի Ընթացքին Քննարկեցին Շաքիի Դէպքը",
+            "url": "https://asbarez.am/archives/512152",
+            "date": "2026-11-05T22:13:55.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05141304/1106SHAKI.jpg"
+          },
+          {
+            "title": "Նիկոլ Փաշինեան Պիտի Մեկնի Թուրքիա՝ Մասնակցելու COP 31ին",
+            "url": "https://asbarez.am/archives/512149",
+            "date": "2026-11-05T22:11:41.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05141107/1106COP.jpg"
+          },
+          {
+            "title": "Միրզոյեան Յոյս Յայտնեց, Որ Յառաջիկային Ռուս Սահմապահները Դուրս Կու Գան Հայաստանէն",
+            "url": "https://asbarez.am/archives/512145",
+            "date": "2026-11-05T22:10:00.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05140942/1106ROUS.jpg"
+          },
+          {
+            "title": "Ըստ Փաշինեանի՝ Ներկայ Դրութեամբ Չկան Այլընտրանքներ, Որպէսզի Հայաստան Դուրս Ելլէ ԵԱՏՄէն",
+            "url": "https://asbarez.am/archives/512142",
+            "date": "2026-11-05T22:08:05.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05140734/1106EU.jpg"
+          },
+          {
+            "title": "Նոր Կենսաչափական Անցագիրները Հայաստանը Պիտի Մօտեցնեն Առանց Վիզայի Եւրոպային. Մարթա Քոս",
+            "url": "https://asbarez.am/archives/512139",
+            "date": "2026-11-05T21:54:55.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05135350/1106Passport.jpg"
+          },
+          {
+            "title": "Մինչ Մոսկուա Կը Յայտարարէ, որ Երեւան Ուզած Ատեն Կրնայ Վերադառնալ ՀԱՊԿ, Փաշիեան Կը Պնդէ՝ Շահ Չունին ՀԱՊԿէն",
+            "url": "https://asbarez.am/archives/512135",
+            "date": "2026-11-05T21:52:46.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05135003/1106HA-1.jpg"
+          },
+          {
+            "title": "Մինչ Ընդդիմութիւնը Կը Համախմբուի Եւ Կը Մերժէ Վարչապետ Փաշինեանի Առաջարկը, Ան Կը Վերահաստատէ Նոյն Առաջարկը",
+            "url": "https://asbarez.am/archives/512131",
+            "date": "2026-11-05T21:40:15.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/19143634/ArmeniaConstiution-1.jpeg"
+          },
+          {
+            "title": "Ըստ Արթուր Խաչատրեանի՝ Արտակարգ Ընտրութիւններ Կատարելու Միակ Տարբերակը Փաշինեանի Հրաժարականն Է",
+            "url": "https://asbarez.am/archives/512125",
+            "date": "2026-11-05T21:35:16.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05133506/1106Arthur.png"
+          },
+          {
+            "title": "«Սփիւռքի Վերջնանպատակը Պէտք Է Լինի Հայրենադարձութիւնը». Փաշինեան",
+            "url": "https://asbarez.am/archives/512121",
+            "date": "2026-11-05T21:09:27.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05130745/1105sadmanatroutioun.jpg"
+          },
+          {
             "title": "Սամուէլ Կարապետեան Կրկին Ձերբակալուեցաւ",
             "url": "https://asbarez.am/archives/512045",
             "date": "2026-11-04T23:43:17.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04144014/aaa.jpeg"
-          },
-          {
-            "title": "Ջնջուեցաւ Վիեննայի Այն Փառատօնը, Որուն Պիտի Մասնակցէին Արցախեան Համոյթները",
-            "url": "https://asbarez.am/archives/512071",
-            "date": "2026-11-04T23:25:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04152422/1104Artsakh-Vienna.jpg"
-          },
-          {
-            "title": "Հայ Զինուորին Սպանութեան Համար Պաքուի Պատասխանատուութիւնը Հաստատող ՄԻԵԴի Վճիռը Վերջնականացաւ",
-            "url": "https://asbarez.am/archives/512051",
-            "date": "2026-11-04T22:50:17.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04145009/1105Tadaran.jpg"
-          },
-          {
-            "title": "Կաթողիկոսին Առաջնորդութիւնն Ու Անխախտ Կորովը Կը Զօրացնէ Բոլորը․ Մայր Աթոռ",
-            "url": "https://asbarez.am/archives/512042",
-            "date": "2026-11-04T22:30:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04142917/1105Gatoghigos.jpg"
-          },
-          {
-            "title": "ՀՅԴ Երիտասարդականը IUSY-ի Ժողովին Բարձրաձայնեց Հայ Պատանդներու Եւ Արցախի Հայաթափման Հարցերը",
-            "url": "https://asbarez.am/archives/512068",
-            "date": "2026-11-04T20:28:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04152201/1104ARFY.jpeg"
-          },
-          {
-            "title": "Բարձրաստիճան Հոգեւորականին Դատէն Հրաժարած Դատաւորը Նկատողութիւն Ստացաւ",
-            "url": "https://asbarez.am/archives/511987",
-            "date": "2026-11-03T23:24:46.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/03152424/1104Tadavor.jpg"
-          },
-          {
-            "title": "Փաշինեան Հաւանական Կը Նկատէ 2027ին Դիմել Եւրոպական Միութեան Անդամակցութեան",
-            "url": "https://asbarez.am/archives/511982",
-            "date": "2026-11-03T23:22:35.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/03152933/PashinyanEuronews1.jpg"
-          },
-          {
-            "title": "Թուրքիոյ Մէջ «Հայկական Հարց»ին Մասին Վաւերագրական Ֆիլմաշար Պատրաստած Են",
-            "url": "https://asbarez.am/archives/511979",
-            "date": "2026-11-03T23:20:17.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/03151948/1104Film.png"
-          },
-          {
-            "title": "Թուրքիան Հայաստանի Հետ Սահմանը Պիտի Չբանայ՝ Նկատի Ունենալով Պաքուի Հետ Լարուածութիւնը. T24",
-            "url": "https://asbarez.am/archives/511971",
-            "date": "2026-11-03T23:15:27.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/03151623/1104Sahman.jpg"
-          },
-          {
-            "title": "Քննչական Կոմիտէին Համոզումով՝ Շաքի Ներթափանցած Ատրպէյճանցին Սպաննելու Դիտաւորութիւն Չէ Ունեցած",
-            "url": "https://asbarez.am/archives/511968",
-            "date": "2026-11-03T23:12:51.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/03151158/1104AZ.jpg"
           }
         ]
       },
@@ -6158,74 +6158,74 @@
         "label": "Գլխաւոր Լուրեր",
         "articles": [
           {
+            "title": "Պատգամաւորները Ուժայիններուն Հետ Փակ Հանդիպումի Ընթացքին Քննարկեցին Շաքիի Դէպքը",
+            "url": "https://asbarez.am/archives/512152",
+            "date": "2026-11-05T22:13:55.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05141304/1106SHAKI.jpg",
+            "rubric": "societe"
+          },
+          {
+            "title": "Նիկոլ Փաշինեան Պիտի Մեկնի Թուրքիա՝ Մասնակցելու COP 31ին",
+            "url": "https://asbarez.am/archives/512149",
+            "date": "2026-11-05T22:11:41.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05141107/1106COP.jpg",
+            "rubric": "politique"
+          },
+          {
+            "title": "Միրզոյեան Յոյս Յայտնեց, Որ Յառաջիկային Ռուս Սահմապահները Դուրս Կու Գան Հայաստանէն",
+            "url": "https://asbarez.am/archives/512145",
+            "date": "2026-11-05T22:10:00.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05140942/1106ROUS.jpg",
+            "rubric": "politique"
+          },
+          {
+            "title": "Ըստ Փաշինեանի՝ Ներկայ Դրութեամբ Չկան Այլընտրանքներ, Որպէսզի Հայաստան Դուրս Ելլէ ԵԱՏՄէն",
+            "url": "https://asbarez.am/archives/512142",
+            "date": "2026-11-05T22:08:05.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05140734/1106EU.jpg",
+            "rubric": "politique"
+          },
+          {
+            "title": "Նոր Կենսաչափական Անցագիրները Հայաստանը Պիտի Մօտեցնեն Առանց Վիզայի Եւրոպային. Մարթա Քոս",
+            "url": "https://asbarez.am/archives/512139",
+            "date": "2026-11-05T21:54:55.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05135350/1106Passport.jpg",
+            "rubric": "economie"
+          },
+          {
+            "title": "Մինչ Մոսկուա Կը Յայտարարէ, որ Երեւան Ուզած Ատեն Կրնայ Վերադառնալ ՀԱՊԿ, Փաշիեան Կը Պնդէ՝ Շահ Չունին ՀԱՊԿէն",
+            "url": "https://asbarez.am/archives/512135",
+            "date": "2026-11-05T21:52:46.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05135003/1106HA-1.jpg",
+            "rubric": "politique"
+          },
+          {
+            "title": "Մինչ Ընդդիմութիւնը Կը Համախմբուի Եւ Կը Մերժէ Վարչապետ Փաշինեանի Առաջարկը, Ան Կը Վերահաստատէ Նոյն Առաջարկը",
+            "url": "https://asbarez.am/archives/512131",
+            "date": "2026-11-05T21:40:15.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/19143634/ArmeniaConstiution-1.jpeg",
+            "rubric": "politique"
+          },
+          {
+            "title": "Ըստ Արթուր Խաչատրեանի՝ Արտակարգ Ընտրութիւններ Կատարելու Միակ Տարբերակը Փաշինեանի Հրաժարականն Է",
+            "url": "https://asbarez.am/archives/512125",
+            "date": "2026-11-05T21:35:16.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05133506/1106Arthur.png",
+            "rubric": "politique"
+          },
+          {
+            "title": "«Սփիւռքի Վերջնանպատակը Պէտք Է Լինի Հայրենադարձութիւնը». Փաշինեան",
+            "url": "https://asbarez.am/archives/512121",
+            "date": "2026-11-05T21:09:27.000Z",
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05130745/1105sadmanatroutioun.jpg",
+            "rubric": "opinion"
+          },
+          {
             "title": "Ցուրտ – Բ.",
             "url": "https://asbarez.am/archives/512113",
             "date": "2026-11-05T20:51:27.000Z",
             "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05125534/1107par-1.jpg",
             "rubric": "sports"
-          },
-          {
-            "title": "Հրայր Սողոմոնեանի Յիշատակին՝ 300,000 Տոլարի Նուիրատուութիւն ՀՄԸՄին",
-            "url": "https://asbarez.am/archives/512100",
-            "date": "2026-11-05T20:16:18.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05123957/SoghomonianHMEM-1-1.jpg",
-            "rubric": "politique"
-          },
-          {
-            "title": "Փրոֆ. Վահագն Տատրեանի Թուայնացուած Արխիւի Պաշտօնական Բացումը՝ Նոյեմբեր 15ին",
-            "url": "https://asbarez.am/archives/512091",
-            "date": "2026-11-05T19:42:44.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05120210/1105Dadrian_Archive_flyer-1.jpg",
-            "rubric": "politique"
-          },
-          {
-            "title": "Հայ Դատի Զօրակցութիւնը Ապահոված Թեկնածուներուն 90 Տոկոսը Յաղթանակներ Արձանագրեց Միջանկեալ Ընտրութիւններուն",
-            "url": "https://asbarez.am/archives/512079",
-            "date": "2026-11-05T19:20:54.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05112206/1105Midterms_pressrelease.jpg",
-            "rubric": "politique"
-          },
-          {
-            "title": "Սամուէլ Կարապետեան Կրկին Ձերբակալուեցաւ",
-            "url": "https://asbarez.am/archives/512045",
-            "date": "2026-11-04T23:43:17.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04144014/aaa.jpeg",
-            "rubric": "societe"
-          },
-          {
-            "title": "Ջնջուեցաւ Վիեննայի Այն Փառատօնը, Որուն Պիտի Մասնակցէին Արցախեան Համոյթները",
-            "url": "https://asbarez.am/archives/512071",
-            "date": "2026-11-04T23:25:43.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04152422/1104Artsakh-Vienna.jpg",
-            "rubric": "diaspora"
-          },
-          {
-            "title": "Ընտրական Ջախջախիչ Յաղթանակէն Ետք Դեմոկրատները Իրենց Վերահսկողութեան Տակ Պիտի Առնեն Քոնկրեսը",
-            "url": "https://asbarez.am/archives/512026",
-            "date": "2026-11-04T23:18:36.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04140257/1104elect.jpg",
-            "rubric": "politique"
-          },
-          {
-            "title": "«Ատրպէյճան Կը Փորձէ Երաշխաւորել Անպատժելիութիւնը». Սիրանոյշ Սահակեան՝ Միջազգային Դատերուն Մասին",
-            "url": "https://asbarez.am/archives/512057",
-            "date": "2026-11-04T23:00:26.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04150809/Siranush-Sahakyan.jpg",
-            "rubric": "opinion"
-          },
-          {
-            "title": "Հայ Զինուորին Սպանութեան Համար Պաքուի Պատասխանատուութիւնը Հաստատող ՄԻԵԴի Վճիռը Վերջնականացաւ",
-            "url": "https://asbarez.am/archives/512051",
-            "date": "2026-11-04T22:50:17.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04145009/1105Tadaran.jpg",
-            "rubric": "politique"
-          },
-          {
-            "title": "Կաթողիկոսին Առաջնորդութիւնն Ու Անխախտ Կորովը Կը Զօրացնէ Բոլորը․ Մայր Աթոռ",
-            "url": "https://asbarez.am/archives/512042",
-            "date": "2026-11-04T22:30:00.000Z",
-            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04142917/1105Gatoghigos.jpg",
-            "rubric": "armenie"
           }
         ]
       },
@@ -10647,6 +10647,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Europa League: Ararat-Armenia lost in Portugal (video)",
+            "url": "https://sport.news.am/eng/news/170082/",
+            "date": "2026-11-05T21:59:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170082.jpg"
+          },
+          {
             "title": "Champions League: Favorites named after the fourth round",
             "url": "https://sport.news.am/eng/news/170062/",
             "date": "2026-11-05T14:02:00.000Z",
@@ -10699,12 +10705,6 @@
             "url": "https://sport.news.am/eng/news/170057/",
             "date": "2026-11-05T08:28:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170057.jpg"
-          },
-          {
-            "title": "Comon has equaled a European cup record",
-            "url": "https://sport.news.am/eng/news/170052/",
-            "date": "2026-11-05T07:01:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170052.jpg"
           }
         ]
       },
@@ -11309,6 +11309,24 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ԿԼ․ Երրորդ տուրի արդյունքներն ու մրցաշարային դրությունը",
+            "url": "https://sport.news.am/arm/news/170084/",
+            "date": "2026-11-05T22:21:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170084.jpg"
+          },
+          {
+            "title": "ԵԼ․ Օրվա բոլոր արդյունքներն ու մրցաշարային դրությունը",
+            "url": "https://sport.news.am/arm/news/170083/",
+            "date": "2026-11-05T22:07:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170083.jpg"
+          },
+          {
+            "title": "ԵԼ․ «Արարատ-Արմենիան» պարտվեց Պորտուգալիայում (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/170082/",
+            "date": "2026-11-05T21:59:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170082.jpg"
+          },
+          {
             "title": "ԵԼ․ «Միլանի» անսպասելի պարտությունը, օրվա արդյունքներ (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/170076/",
             "date": "2026-11-05T19:42:00.000Z",
@@ -11349,24 +11367,6 @@
             "url": "https://sport.news.am/arm/news/170068/",
             "date": "2026-11-05T16:03:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170068.jpg"
-          },
-          {
-            "title": "ՊՖՖ. Ռոնալդուի կարիերային արժանի հրաժեշտի միջոցառում կանցկացնենք",
-            "url": "https://sport.news.am/arm/news/170067/",
-            "date": "2026-11-05T15:05:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170067.jpg"
-          },
-          {
-            "title": "Չեմպիոնների լիգայի ֆավորիտները չորրորդ տուրից հետո",
-            "url": "https://sport.news.am/arm/news/170062/",
-            "date": "2026-11-05T14:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170062.jpg"
-          },
-          {
-            "title": "«Բարսելոնան» երկարաձգեց պայմանագիրը Ռաֆինյայի հետ",
-            "url": "https://sport.news.am/arm/news/170065/",
-            "date": "2026-11-05T13:16:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170065.jpg"
           }
         ]
       },
@@ -11971,6 +11971,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "ЛЕ: Все результаты дня и турнирное положение",
+            "url": "https://sport.news.am/rus/news/170083/",
+            "date": "2026-11-05T22:07:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170083.jpg"
+          },
+          {
+            "title": "ЛЕ: «Арарат-Армения» уступил в Португалии (видео)",
+            "url": "https://sport.news.am/rus/news/170082/",
+            "date": "2026-11-05T21:59:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170082.jpg"
+          },
+          {
             "title": "ЛЕ: Стал известен стартовый состав «Арарат-Армении»",
             "url": "https://sport.news.am/rus/news/170074/",
             "date": "2026-11-05T18:50:00.000Z",
@@ -12017,18 +12029,6 @@
             "url": "https://sport.news.am/rus/news/170064/",
             "date": "2026-11-05T12:52:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170064.jpg"
-          },
-          {
-            "title": "Харри Кейн стал самым высокооплачиваемым футболистом Европы",
-            "url": "https://sport.news.am/rus/news/170059/",
-            "date": "2026-11-05T11:21:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170059.jpg"
-          },
-          {
-            "title": "Роналду объявил о завершении карьеры в сборной Португалии",
-            "url": "https://sport.news.am/rus/news/170063/",
-            "date": "2026-11-05T10:56:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170063.jpg"
           }
         ]
       },
