@@ -17,6 +17,7 @@ import { parseArgs } from 'node:util'
 import { ALL_LANGS } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { checkPause } from './lib/culture-pause.mjs'
+import { sonderTout } from './radio-check.mjs'
 import { chat, llmConfig, explain, CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL } from './lib/culture-llm.mjs'
 import { checkAccounts } from './lib/account-check.mjs'
 import { parseServiceAccount, jwtAssertion, listUrl, TOKEN_URL } from './lib/gsc.mjs'
@@ -32,6 +33,7 @@ import {
   checkSocial,
   checkManual,
   checkDeadlines,
+  checkRadios,
   checkIndexing,
   checkScraper,
   scrapeFailures,
@@ -207,6 +209,19 @@ async function scraper() {
   return checkScraper({ generatedAt: (await data('meta.json')).generatedAt, problems, tracked, ...log, now })
 }
 
+// Les radios, sondées d'ici (la CI). Une station muette est re-sondée une fois
+// après 5 s : un hoquet passager ne doit pas notifier.
+async function radios() {
+  const first = await sonderTout()
+  const again = first.filter((r) => !r.vivant && !r.offAir)
+  if (again.length) {
+    await new Promise((ok) => setTimeout(ok, 5000))
+    const retry = new Map((await sonderTout(again.map(({ id, url, offAir }) => ({ id, url, offAir })))).map((r) => [r.id, r]))
+    return checkRadios(first.map((r) => retry.get(r.id) ?? r))
+  }
+  return checkRadios(first)
+}
+
 async function manual() {
   const videos = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
   return checkManual({ articles: await articles(), videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
@@ -217,6 +232,7 @@ const sections = [
   await guarded('📰 Articles', articleRows),
   await guarded('🛰️ Sources (scrape horaire)', scraper),
   await guarded('📣 Réseaux (envoi automatique : Facebook, Instagram, Telegram, Bluesky)', social),
+  await guarded('📻 Radios', radios),
   await guarded('✋ Publication à la main', manual),
   await guarded('🔎 Référencement', async () => checkIndexing({ google: await googleAccess() })),
   await guarded('📅 Échéances', async () => checkDeadlines(now)),

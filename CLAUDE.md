@@ -87,7 +87,7 @@ npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans ré
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 npm run hydration-check # après build + prerender : les 28 pages s'hydratent-elles sans écart ? (local, Chrome)
-npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (local, réseau — jamais en CI ni dans npm test)
+npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (réseau, jamais dans npm test ; le tableau de bord le relance 2×/jour depuis la CI, section 📻 Radios)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```

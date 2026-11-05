@@ -61,7 +61,7 @@ import net from 'node:net'
 import tls from 'node:tls'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -83,7 +83,7 @@ const CONCURRENCE = 4
 // `YERAZ_PROXY`) déclarée au-dessus du tableau : on les résout, sinon le
 // contrôle sauterait en silence les trois flux les plus fragiles du lot — ceux
 // qui dépendent d'un Worker Cloudflare que personne ne redéploie jamais.
-function lireStations() {
+export function lireStations() {
   const src = readFileSync(path.join(root, 'src/components/Radio.jsx'), 'utf-8')
 
   const constantes = new Map()
@@ -112,7 +112,7 @@ function lireStations() {
 // Résout { vivant, detail }. Ne rejette jamais : une panne réseau est un
 // résultat, pas une exception — le rapport doit rester complet même si trois
 // hôtes sont injoignables.
-function sonder(url, sauts = 0) {
+export function sonder(url, sauts = 0) {
   return new Promise((resolve) => {
     let cible
     try {
@@ -237,10 +237,9 @@ function sonder(url, sauts = 0) {
 
 const SIGNES = { ok: '  ok  ', panne: ' PANNE', retour: 'RETOUR', prevu: ' prévu' }
 
-async function main() {
-  const stations = lireStations()
-  console.log(`\nContrôle des ${stations.length} flux radio…\n`)
-
+// Sonde toutes les stations (4 à la fois), dans l'ordre de STATIONS. Aussi
+// appelée par le tableau de bord (scripts/publication-check.mjs), depuis la CI.
+export async function sonderTout(stations = lireStations()) {
   const resultats = []
   let curseur = 0
   await Promise.all(
@@ -251,9 +250,15 @@ async function main() {
       }
     }),
   )
-  resultats.sort(
+  return resultats.sort(
     (a, b) => stations.findIndex((s) => s.id === a.id) - stations.findIndex((s) => s.id === b.id),
   )
+}
+
+async function main() {
+  const stations = lireStations()
+  console.log(`\nContrôle des ${stations.length} flux radio…\n`)
+  const resultats = await sonderTout(stations)
 
   const aCorriger = []
   for (const r of resultats) {
@@ -287,7 +292,10 @@ async function main() {
   process.exitCode = 1
 }
 
-main().catch((err) => {
-  console.error(`\nradio-check a échoué : ${err.message}\n`)
-  process.exitCode = 1
-})
+// Lancé en ligne de commande seulement : importé, le module ne sonde rien.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((err) => {
+    console.error(`\nradio-check a échoué : ${err.message}\n`)
+    process.exitCode = 1
+  })
+}
