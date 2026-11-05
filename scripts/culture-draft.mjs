@@ -8,6 +8,7 @@
  * ouvertes), --out-body (corps de la PR), --out-ideas (corps de l'issue
  * d'idées) et --ideas-open (une issue d'idées attend déjà : n'en rien générer).
  * Écrit dans $GITHUB_OUTPUT : `skipped=queue` (file de relecture pleine),
+ * `skipped=pause` (rédaction en pause, scripts/lib/culture-pause.mjs),
  * `slug` et `title` (brouillon écrit), `ideas=1` (idées à proposer).
  * Toute panne du modèle pendant la rédaction lève : pas de PR, relance manuelle.
  * Un sujet sans page Wikipédia fr ni en utilisable (absente, homonymie, autre
@@ -36,6 +37,7 @@ import { makeImages } from './lib/culture-image.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { serializeFrontMatter } from './lib/culture-markdown.mjs'
 import { buildPrBody, ideasIssueBody } from './lib/culture-pr.mjs'
+import { CULTURE_PAUSE, culturePaused } from './lib/culture-pause.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIR = path.join(root, 'src/data/culture')
@@ -73,8 +75,15 @@ if (queueFull(openBranches)) {
 const agenda = JSON.parse(await readFile(path.join(root, 'src/data/agenda.json'), 'utf-8'))
 const existing = await articleSlugs(DIR)
 
+// En pause (scripts/lib/culture-pause.mjs) : aucun article, mais les idées de
+// sujets plus bas continuent. Un --topic explicite passe outre.
+const paused = !values.topic && culturePaused()
 let tries
-if (values.topic) {
+if (paused) {
+  console.log(`Rédaction en pause jusqu'au ${CULTURE_PAUSE.until} inclus : pas de brouillon cette nuit.`)
+  await output('skipped', 'pause')
+  tries = []
+} else if (values.topic) {
   const topic = sujets.topics.find((t) => t.slug === values.topic)
   if (!topic) throw new Error(`sujet inconnu : ${values.topic}`)
   tries = [{ topic, event: null }]
@@ -91,8 +100,9 @@ for (const t of tries) {
   }
   console.warn(`✗ sujet ${t.topic.slug} sauté : ${skipped}`)
 }
-if (!tries.length) console.log('Aucun sujet disponible : pas de brouillon cette nuit.')
-else if (!pick) {
+if (!tries.length) {
+  if (!paused) console.log('Aucun sujet disponible : pas de brouillon cette nuit.')
+} else if (!pick) {
   console.error(`✗ aucun des ${tries.length} sujet(s) essayé(s) n’a de page Wikipédia fr ni en utilisable — vérifiez leur qid dans sujets.json.`)
   process.exit(1)
 }

@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 import { ALL_LANGS } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
+import { checkPause } from './lib/culture-pause.mjs'
 import { chat, llmConfig, explain, CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL } from './lib/culture-llm.mjs'
 import { checkAccounts } from './lib/account-check.mjs'
 import { parseServiceAccount, jwtAssertion, listUrl, TOKEN_URL } from './lib/gsc.mjs'
@@ -130,7 +131,7 @@ async function articleRows() {
     p.check = statuses.find((x) => x.context === 'culture-check') ?? null
   }
   const open = new Set(prs.map((p) => p.head.ref))
-  const rows = [...checkPullRequests(prs, now), ...(await workflows(open))]
+  const rows = [...checkPause(now), ...checkPullRequests(prs, now), ...(await workflows(open))]
   return [...rows, ...checkTranslations(await articles(), others)]
 }
 
