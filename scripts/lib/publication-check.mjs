@@ -244,6 +244,48 @@ export function checkDeadlines(now = new Date(), list = DEADLINES) {
   })
 }
 
+// Les flux RSS servis en production, un par langue (feedUrl, sites.config.js).
+// Ils nourrissent les lecteurs de flux ET les lettres hebdomadaires : un flux
+// cassé ou figé ne fait échouer aucun build. `feeds` : [{ lang, url, status,
+// body }] lus en ligne (status 0 = injoignable). Le plus récent élément doit
+// avoir moins de FEED_STALE_HOURS : une brève paraît chaque jour.
+export const FEED_STALE_HOURS = 48
+export function feedState({ status, body = '' }, now = new Date()) {
+  if (status !== 200) return { ok: false, why: status ? `HTTP ${status}` : 'injoignable' }
+  if (!/<rss[\s>]/.test(body) || !/<\/rss>\s*$/.test(body)) return { ok: false, why: 'XML incomplet (pas de <rss>…</rss>)' }
+  const items = (body.match(/<item>/g) ?? []).length
+  if (!items) return { ok: false, why: 'aucun élément' }
+  const dates = [...body.matchAll(/<pubDate>([^<]+)<\/pubDate>/g)].map((m) => new Date(m[1])).filter((d) => !isNaN(d))
+  const newest = dates.length ? Math.max(...dates) : null
+  const age = newest === null ? Infinity : (now - newest) / 3_600_000
+  return { ok: age <= FEED_STALE_HOURS, items, age, why: newest === null ? 'aucune date' : `dernier élément il y a ${Math.floor(age)} h` }
+}
+
+export function checkFeeds(feeds, now = new Date()) {
+  const out = []
+  let fine = 0
+  for (const f of feeds) {
+    const s = feedState(f, now)
+    if (s.ok) fine++
+    else
+      out.push({
+        key: `rss-${f.lang}`,
+        level: 'faire',
+        text: `Flux RSS ${f.lang} : ${s.why} — [flux](${f.url})`,
+        action:
+          s.age > FEED_STALE_HOURS
+            ? `Flux RSS ${f.lang} figé : vérifier la brève du jour (\`gh run view <id> --log | grep brief\`)`
+            : `Flux RSS ${f.lang} : relancer le déploiement (\`gh workflow run hourly.yml\`) et lire son journal`,
+      })
+  }
+  out.unshift({
+    key: 'rss',
+    level: fine === feeds.length ? 'ok' : 'info',
+    text: `${fine}/${feeds.length} flux RSS en ligne et frais (dernier élément de moins de ${FEED_STALE_HOURS} h)`,
+  })
+  return out
+}
+
 // Les radios. Un flux qui se tait ne fait rien échouer : le dépôt ne garde
 // qu'une URL, et le premier signalement venait d'un lecteur (Im Radio, août
 // 2026). `results` vient de sonderTout (scripts/radio-check.mjs) : { id, url,
