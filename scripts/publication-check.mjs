@@ -14,7 +14,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
-import { ALL_LANGS } from '../sites.config.js'
+import { ALL_LANGS, feedUrl } from '../sites.config.js'
 import { loadCulture } from './lib/culture-load.mjs'
 import { checkPause } from './lib/culture-pause.mjs'
 import { sonderTout } from './radio-check.mjs'
@@ -34,6 +34,7 @@ import {
   checkManual,
   checkDeadlines,
   checkRadios,
+  checkFeeds,
   checkIndexing,
   checkScraper,
   scrapeFailures,
@@ -222,6 +223,23 @@ async function radios() {
   return checkRadios(first)
 }
 
+// Les flux RSS tels que la production les sert (un par langue). Une panne de
+// réseau devient une ligne « injoignable », jamais une section absente.
+async function feeds() {
+  const list = await Promise.all(
+    ALL_LANGS.map(async (lang) => {
+      const url = feedUrl(lang)
+      try {
+        const r = await fetch(url, { signal: AbortSignal.timeout(15_000) })
+        return { lang, url, status: r.status, body: await r.text() }
+      } catch {
+        return { lang, url, status: 0, body: '' }
+      }
+    }),
+  )
+  return checkFeeds(list, now)
+}
+
 async function manual() {
   const videos = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
   return checkManual({ articles: await articles(), videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
@@ -232,6 +250,7 @@ const sections = [
   await guarded('📰 Articles', articleRows),
   await guarded('🛰️ Sources (scrape horaire)', scraper),
   await guarded('📣 Réseaux (envoi automatique : Facebook, Instagram, Telegram, Bluesky)', social),
+  await guarded('📡 Flux RSS', feeds),
   await guarded('📻 Radios', radios),
   await guarded('✋ Publication à la main', manual),
   await guarded('🔎 Référencement', async () => checkIndexing({ google: await googleAccess() })),
