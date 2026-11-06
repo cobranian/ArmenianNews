@@ -30,7 +30,8 @@
     "og-image": "node scripts/og-image.mjs",
     "prerender": "node scripts/prerender.mjs",
     "fonts-sync": "node scripts/fonts-sync.mjs",
-    "hydration-check": "node scripts/hydration-check.mjs"
+    "hydration-check": "node scripts/hydration-check.mjs",
+    "videos:add": "node scripts/videos-add.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

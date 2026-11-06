@@ -22,6 +22,8 @@ import {
   DASHBOARD_TITLE,
   checkScraper,
   scrapeFailures,
+  checkVideos,
+  VIDEO_LATE_DAYS,
 } from '../scripts/lib/publication-check.mjs'
 
 const now = new Date('2026-11-02T12:00:00Z')
@@ -196,4 +198,30 @@ test('scrapeFailures : compte les ✗ par source, ignore la synthèse « santé 
     '✗ brief/hy: alphabet',
   ].join('\n')
   assert.deepEqual(scrapeFailures(job), { armradio: 1 })
+})
+
+// Les Shorts : un retard par langue est une file (info) ; un article sans
+// AUCUN Short après VIDEO_LATE_DAYS est une action — l'oubli des Mékhitaristes.
+const art = (slug, date) => ({ slug, date })
+const vid = { youtube: 'b-WvRlj1DdU' }
+
+test('checkVideos : les comptes par langue sont une info tant que la file n’est pas vide', () => {
+  const rows = checkVideos({ articles: [art('ani', '2026-10-20')], videos: { ani: { fr: vid } }, langs: ['fr', 'de'], now })
+  assert.equal(rows[0].level, 'info')
+  assert.match(rows[0].text, /fr 1\/1 · de 0\/1/)
+  assert.equal(rows.length, 1)
+})
+
+test('checkVideos : toutes les langues complètes → vert', () => {
+  const rows = checkVideos({ articles: [art('ani', '2026-10-20')], videos: { ani: { fr: vid, de: vid } }, langs: ['fr', 'de'], now })
+  assert.equal(rows[0].level, 'ok')
+})
+
+test('checkVideos : un article sans aucun Short devient une action après le délai, pas avant', () => {
+  const old = new Date(now.getTime() - VIDEO_LATE_DAYS * 86_400_000).toISOString().slice(0, 10)
+  const rows = checkVideos({ articles: [art('mekhitaristes', old), art('neuf', now.toISOString().slice(0, 10))], videos: {}, langs: ['fr'], now })
+  const late = rows.find((r) => r.key === 'yt-none-mekhitaristes')
+  assert.equal(late.level, 'faire')
+  assert.match(late.action, /mekhitaristes/)
+  assert.equal(rows.find((r) => r.key === 'yt-none-neuf').level, 'info')
 })
