@@ -163,7 +163,7 @@ export function checkTranslations(articles, langs) {
   return out
 }
 
-export function checkSocial({ live, accounts, tokens, failures }) {
+export function checkSocial({ live, accounts, tokens, failures, reels = [] }) {
   const out = []
   if (!live)
     out.push({ key: 'social-not-live', level: 'bloquant', text: 'SOCIAL_LIVE ≠ 1 : le job horaire SIMULE, rien ne part sur les réseaux', action: 'GitHub → Settings → Environments → social → SOCIAL_LIVE = 1' })
@@ -196,7 +196,25 @@ export function checkSocial({ live, accounts, tokens, failures }) {
       })
     else out.push({ key: `retry-${f.channel}-${f.id}`, level: 'info', text: `${f.channel} : ${f.id} sera retenté (échec ${f.attempts}) — ${f.error}` })
   }
+  for (const r of reels) out.push({ key: `reels-${r.channel}`, level: 'info', text: `**${r.channel}** : Reels ${r.posted}/${r.total}` })
   return out
+}
+
+// Les Reels, compte par compte (Facebook et Instagram seulement) : `posted`,
+// les `reel:*` du registre marqués d'un horodatage ISO — un envoi réel, même
+// incertain ; ni « seed » ni « abandonné … » — ; `total`, les Reels prêts
+// dans la langue du compte (reelItems). Un par jour : l'écart dit combien de
+// jours de file il reste.
+export function reelCounts({ ledger, items, channels }) {
+  return channels
+    .filter((c) => c.platform === 'facebook' || c.platform === 'instagram')
+    .map((c) => {
+      const posted = Object.entries(ledger?.channels?.[c.id]?.posted ?? {}).filter(
+        ([id, v]) => id.startsWith('reel:') && /^\d{4}-\d{2}-\d{2}T/.test(v),
+      ).length
+      const total = items.filter((it) => it.kind === 'reel' && it.lang === c.lang).length
+      return { channel: c.id, posted, total }
+    })
 }
 
 export function checkManual({ whatsappChannels }) {

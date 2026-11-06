@@ -31,7 +31,8 @@
     "prerender": "node scripts/prerender.mjs",
     "fonts-sync": "node scripts/fonts-sync.mjs",
     "hydration-check": "node scripts/hydration-check.mjs",
-    "videos:add": "node scripts/videos-add.mjs"
+    "videos:add": "node scripts/videos-add.mjs",
+    "reels:add": "node scripts/reels-add.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

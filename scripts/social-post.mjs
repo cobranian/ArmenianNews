@@ -40,6 +40,8 @@ import {
   briefItems,
   announceItems,
   cultureItems,
+  reelItems,
+  supports,
   plan,
   settle,
   compose,
@@ -47,6 +49,7 @@ import {
   MAX_ATTEMPTS,
   redact,
 } from './lib/social.mjs'
+import { readReels } from './lib/reels-add.mjs'
 import { send, isUncertain } from './lib/social-send.mjs'
 import { checkAccounts } from './lib/account-check.mjs'
 
@@ -64,7 +67,8 @@ async function loadItems() {
   const briefs = await loadBriefs(path.join(root, 'src/data/briefs'), quiet)
   const culture = await loadCulture(path.join(root, 'src/data/culture'), quiet)
   const announces = JSON.parse(await readFile(path.join(root, 'src/data/social-announcements.json'), 'utf8'))
-  return [...cultureItems(culture), ...briefItems(briefs), ...announceItems(announces)]
+  const reels = await readReels(path.join(root, 'src/data/reels.json'))
+  return [...cultureItems(culture), ...briefItems(briefs), ...announceItems(announces), ...reelItems(culture, reels)]
 }
 
 async function readLedger() {
@@ -207,6 +211,7 @@ async function doTest() {
   const wanted = opt('--item')
   const item = wanted ? items.find((it) => it.id === wanted) : items.find((it) => it.kind === 'culture')
   if (!item) throw new Error(`aucun élément ${wanted ?? 'culture'} en ${channel.lang}`)
+  if (item.kind === 'reel' && !supports(channel.platform, item)) throw new Error(`${item.id} : un Reel ne part que sur Facebook ou Instagram, pas sur ${channel.platform}`)
   console.log(JSON.stringify(compose(channel.platform, item), null, 2))
   if (!args.includes('--yes')) return console.log('· aperçu seulement — ajoutez --yes pour publier pour de vrai')
   const creds = credentials(channel, process.env)
