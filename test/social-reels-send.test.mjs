@@ -195,3 +195,40 @@ test('(e) fetchReel : un code autre que 200, ou un fichier trop lourd, est refus
   const toHttp = async () => new Response(null, { status: 302, headers: { location: 'http://objects.githubusercontent.com/x' } })
   assert.ok((await fetchReel(REEL_BASE + 'x.mp4', toHttp).catch((x) => x)) instanceof Error)
 })
+
+// Un 5xx dont le corps dit « not available » est AMBIGU : la plateforme a pu
+// publier. On ne le retente jamais (doublon possible sur un compte public).
+test('(c) Instagram : 503 « not available » sur publish = un seul appel, uncertain', async () => {
+  const route = igRoute(['FINISHED'])
+  let publishes = 0
+  const { f } = fake((url, init) => {
+    if (url.endsWith('/media_publish')) {
+      publishes++
+      return new Response(JSON.stringify({ error: { message: 'Media ID is not available' } }), { status: 503 })
+    }
+    return route(url, init)
+  })
+  const e = await send(chan('instagram-ch'), reel(), { userId: '7', token: 'T' }, { fetch: f, wait: noWait }).catch((x) => x)
+  assert.equal(publishes, 1)
+  assert.equal(isUncertain(e), true)
+})
+
+test('(c) Instagram : 400 « not available » sur publish est retenté (refus net)', async () => {
+  const route = igRoute(['FINISHED'])
+  let publishes = 0
+  const { f } = fake((url, init) => {
+    if (url.endsWith('/media_publish') && ++publishes === 1)
+      return new Response(JSON.stringify({ error: { message: 'Media ID is not available' } }), { status: 400 })
+    return route(url, init)
+  })
+  assert.equal(await send(chan('instagram-ch'), reel(), { userId: '7', token: 'T' }, { fetch: f, wait: noWait }), 'M1')
+  assert.equal(publishes, 2)
+})
+
+test('(b) Facebook : finish 200 { success: false } = refus net, pas de video_id', async () => {
+  const { f } = fake(fbRoute(() => ok({ success: false })))
+  const e = await send(chan('facebook-ch'), reel(), { pageId: '42', token: 'U' }, { fetch: f, wait: noWait }).catch((x) => x)
+  assert.ok(e instanceof Error)
+  assert.match(e.message, /facebook-reel\/finish/)
+  assert.equal(isUncertain(e), false)
+})

@@ -151,14 +151,17 @@ async function igReady(id, c, f, wait, { readyMs, what }) {
 
 // Même FINISHED, Meta répond parfois « not available » une ou deux secondes
 // encore : le conteneur n'est pas publié, on peut réessayer sans risque de
-// doublon. Tout autre échec remonte tel quel (`what` est dans FINAL).
+// doublon. Seul un refus NET (4xx) se retente : `call` met le corps de la
+// réponse dans le message, donc un 5xx ou une coupure APRÈS la publication
+// peut lui aussi dire « not available » — celui-là reste ambigu, jamais
+// retenté. Tout autre échec remonte tel quel (`what` est dans FINAL).
 async function igPublish(id, c, f, wait, what) {
   for (let i = 1; ; i++) {
     try {
       const { json: r } = await call(f, `${GRAPH}/${c.userId}/media_publish`, form({ creation_id: id, access_token: c.token }), what)
       return r?.id
     } catch (e) {
-      if (i >= IG_PUBLISH_TRIES || !/not available|not ready/i.test(e.message)) throw e
+      if (i >= IG_PUBLISH_TRIES || isUncertain(e) || !/not available|not ready/i.test(e.message)) throw e
       await wait(IG_POLL_MS)
     }
   }
@@ -240,12 +243,15 @@ const REEL_SENDERS = {
     )
     if (!s?.video_id) throw new Error('facebook-reel/start : pas de video_id')
     await rupload(f, 'video-upload', s.video_id, token, video, 'facebook-reel/upload')
-    await call(
+    const { json: done } = await call(
       f,
       `${GRAPH}/${c.pageId}/video_reels`,
       form({ upload_phase: 'finish', video_id: s.video_id, video_state: 'PUBLISHED', description: p.description, access_token: token }),
       'facebook-reel/finish',
     )
+    // Un 200 { success: false } est une réponse que la plateforme A DONNÉE :
+    // un refus net, pas un doute (sans `final`, donc jamais `uncertain`).
+    if (done?.success === false) throw new Error('facebook-reel/finish : publication refusée (success: false)')
     return s.video_id
   },
 
