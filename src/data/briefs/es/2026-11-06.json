@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-06",
+  "lang": "es",
+  "generatedAt": "2026-11-06T03:30:12.674Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada está marcada por la tensión política interna en Armenia, donde la oposición se une contra la reforma constitucional impulsada por el gobierno, y por fallos internacionales que condenan crímenes de guerra de Azerbaiyán. En el plano exterior, avanzan las conversaciones con Turquía y la UE, mientras se anuncian inversiones en tecnología y decisiones económicas relevantes.",
+  "topics": [
+    {
+      "title": "Oposición unida contra la reforma constitucional",
+      "text": "Trece fuerzas opositoras conformaron una \"unificación nacional\" para frenar la reforma constitucional impulsada por Nikol Pashinyan, a la que denominan \"Constitución de Aliyev\". El primer ministro calificó a los manifestantes de \"antipatrióticos\" y aseguró que buscan encubrir actos de corrupción pasados.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/la-oposicion-de-armenia-se-unio-contra-la-constitucion-de-aliyev-y-rechazo-la-reforma-impulsada-por-nikol-pashinyan-bajo-las-exigencias-de-azerbaiyan/",
+          "title": "La oposición de Armenia se unió contra la “Constitución de Aliyev” y rechazó la reforma impulsada por Nikol Pashinyan bajo las exigencias de Azerbaiyán"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/baku-reivindica-erevan-mientras-pashinyan-intenta-cambiar-la-constitucion/",
+          "title": "Bakú reivindica Ereván mientras Pashinyan intenta cambiar la Constitución"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-armenia-uee-adhesion-ue/",
+          "title": "Nikol Pashinyan aclara que Armenia mantendrá su pertenencia a la UEE mientras prepara las bases para un referéndum de adhesión a la UE"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264890",
+          "title": "Pashinyan afirmó sobre la unidad de la oposición: “Son personas antipatrióticas que solo quieren encubrir lo que robaron”"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/fuerzas-opositoras-armenia-karapetyan-reforma-constitucional/",
+          "title": "Trece fuerzas opositoras crean en Armenia una “unificación nacional” en la mansión de Samvel Karapetyan para frenar la reforma constitucional"
+        }
+      ]
+    },
+    {
+      "title": "El TEDH condena a Azerbaiyán por tortura y decapitación de un militar armenio",
+      "text": "El Tribunal Europeo de Derechos Humanos confirmó que Azerbaiyán torturó y decapitó al soldado armenio Hayk Toroyan durante la guerra de Artsaj de 2016. La sentencia establece la responsabilidad estatal en crímenes de guerra documentados.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/el-tribunal-europeo-de-derechos-humanos-confirmo-que-azerbaiyan-torturo-y-decapito-al-militar-armenio-hayk-toroyan-durante-la-guerra-de-artsaj-de-2016/",
+          "title": "El Tribunal Europeo de Derechos Humanos confirmó que Azerbaiyán torturó y decapitó al militar armenio Hayk Toroyan durante la guerra de Artsaj de 2016"
+        }
+      ]
+    },
+    {
+      "title": "Armenia y Turquía ultiman la normalización fronteriza y comercial para 2027",
+      "text": "Ambos países trabajan en la normalización de su frontera común y el establecimiento de comercio directo con horizonte en 2027. El proceso forma parte de los esfuerzos de normalización de relaciones bilaterales.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-turquia-normalizacion-comercio-directo/",
+          "title": "Armenia y Turquía ultiman la normalización de la frontera y el comercio directo a partir de 2027"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan declara agotado el interés de Armenia en la OTSC",
+      "text": "El primer ministro Nikol Pashinyan afirmó que el interés de Armenia en la Organización del Tratado de Seguridad Colectiva (OTSC) se ha agotado por completo. La declaración refuerza el giro de la política exterior armenia hacia Occidente.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-interes-armenia-otsc-agotado/",
+          "title": "Nikol Pashinyan afirma que el interés de Armenia en la OTSC se agotó por completo"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264873",
+          "title": "Nikol Pashinyan: “No tenemos más interés en la OTSC”"
+        }
+      ]
+    },
+    {
+      "title": "Inversión estatal en Inteligencia Artificial Física y robótica",
+      "text": "El gobierno armenio destinará 14 millones de dólares en un programa de siete años para posicionar al país como líder en Inteligencia Artificial Física y robótica. La iniciativa busca impulsar el desarrollo tecnológico nacional.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-inversion-inteligencia-artificial-fisica-robotica/",
+          "title": "Armenia invertirá 14 millones de dólares en un programa de siete años para liderar en Inteligencia Artificial Física y robótica"
+        }
+      ]
+    },
+    {
+      "title": "Reino Unido elimina aranceles a productos armenios y Armenia avanza en acuerdos fiscales con la UE",
+      "text": "El Reino Unido suprimió los aranceles aduaneros para importaciones de origen armenio. Paralelamente, el gobierno armenio aprobó la firma de acuerdos para participar en programas fiscales y aduaneros de la Unión Europea.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/reino-unido-exportaciones-productos-armenios-2026/",
+          "title": "El Reino Unido elimina los aranceles aduaneros para la importación de productos de origen armenio"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264816",
+          "title": "El Gobierno aprobó la firma de los acuerdos para participar en los programas fiscales y aduaneros de la Unión Europea"
+        }
+      ]
+    },
+    {
+      "title": "Escándalo en la Federación Armenia de Fútbol por enmiendas estatutarias",
+      "text": "La aprobación de enmiendas estatutarias en medio de protestas generó un escándalo en la Federación Armenia de Fútbol, relacionado con la candidatura de Denis Djorkaeff. La situación refleja tensiones internas en el organismo deportivo.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/escandalo-federacion-futbol-armenia-estatutos/",
+          "title": "Escándalo en la Federación Armenia de Fútbol: Aprueban enmiendas estatutarias en medio de protestas por la candidatura de Denis Djorkaeff"
+        }
+      ]
+    }
+  ]
+}
