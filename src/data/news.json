@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T03:23:29.909Z",
+  "generatedAt": "2026-11-06T04:23:31.139Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -80,6 +80,12 @@
       "sectionKey": "societe",
       "articles": [
         {
+          "title": "« Le sport doit être un environnement sûr et un pont vers la paix et la compréhension mutuelle »",
+          "url": "https://courrier.am/le-sport-doit-etre-un-environnement-sur-et-un-pont-vers-la-paix-et-la-comprehension-mutuelle",
+          "date": "2026-11-06T12:00:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/05.jpg.avif?itok=UKRtI3T5"
+        },
+        {
           "title": "L’Arménie et le Portugal envisagent de renforcer leur coopération dans le domaine du sport",
           "url": "https://courrier.am/larmenie-et-le-portugal-envisagent-de-renforcer-leur-cooperation-dans-le-domaine-du-sport",
           "date": "2026-11-05T09:38:00.000Z",
@@ -132,12 +138,6 @@
           "url": "https://courrier.am/loeuvre-dorient-celebre-170-ans-dengagement-avec-la-soiree-de-generosite-unis-pour-lorient",
           "date": "2026-10-23T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Screenshot_3_3.png.avif?itok=3ggeeb4R"
-        },
-        {
-          "title": "Prisonniers arméniens détenus à Bakou : le droit international et les défis de la réinsertion au cœur d’une conférence",
-          "url": "https://courrier.am/prisonniers-armeniens-detenus-bakou-le-droit-international-et-les-defis-de-la-reinsertion-au-coeur",
-          "date": "2026-10-23T11:01:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/854316167_122315157092029287_1490370250107810490_n.jpg.avif?itok=m4Q42pf0"
         }
       ]
     },
@@ -234,16 +234,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/20261030_session2mainstage_photo22_55621159039_o.jpg.avif?itok=hx3uu5wu"
         },
         {
-          "title": "L’Arménie débloque 148,5 millions de drams pour acquérir deux manuscrits médiévaux exceptionnels",
-          "url": "https://courrier.am/larmenie-debloque-1485-millions-de-drams-pour-acquerir-deux-manuscrits-medievaux-exceptionnels",
-          "date": "2026-10-30T08:11:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/144aba6c568fde2fce1a77afef2ebf5c_L.jpg.avif?itok=wd_s8eEB"
-        },
-        {
           "title": "À l’UNESCO, Paris célèbre le patrimoine arménien et rend hommage à Hrachya Acharyan",
           "url": "https://courrier.am/lunesco-paris-celebre-le-patrimoine-armenien-et-rend-hommage-hrachya-acharyan",
           "date": "2026-10-30T08:27:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/5411503977028852060.jpg.avif?itok=Yxg2L9aU"
+        },
+        {
+          "title": "L’Arménie débloque 148,5 millions de drams pour acquérir deux manuscrits médiévaux exceptionnels",
+          "url": "https://courrier.am/larmenie-debloque-1485-millions-de-drams-pour-acquerir-deux-manuscrits-medievaux-exceptionnels",
+          "date": "2026-10-30T08:11:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/144aba6c568fde2fce1a77afef2ebf5c_L.jpg.avif?itok=wd_s8eEB"
         },
         {
           "title": "L’Arménie renforce la protection de ses fresques historiques",
@@ -275,17 +275,24 @@
       "sectionKey": "francophonie",
       "articles": [
         {
-          "title": "SunChild : le cinéma au service de la biodiversité en marge de la COP17",
-          "url": "https://courrier.am/sunchild-le-cinema-au-service-de-la-biodiversite-en-marge-de-la-cop17",
-          "date": "2026-10-29T06:19:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1_1.jpg.avif?itok=VN86Ode8",
-          "rubric": "monde"
+          "title": "France-Arménie : un chantier-école inédit pour la restauration de peintures au Musée d’Histoire de l’Arménie",
+          "url": "https://courrier.am/france-armenie-un-chantier-ecole-inedit-pour-la-restauration-de-peintures-au-musee-dhistoire-de",
+          "date": "2026-11-06T12:00:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/2014_Erywa%C5%84%2C_Narodowa_Galeria_Armenii_i_Muzeum_Historii_Armenii_%2808%29.jpg.avif?itok=8LwGozan",
+          "rubric": "culture"
         },
         {
           "title": "Cinq films français pour changer notre regard sur la biodiversité",
           "url": "https://courrier.am/cinq-films-francais-pour-changer-notre-regard-sur-la-biodiversite",
           "date": "2026-10-29T06:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image2.jpg.avif?itok=9Ctx20AP",
+          "rubric": "monde"
+        },
+        {
+          "title": "SunChild : le cinéma au service de la biodiversité en marge de la COP17",
+          "url": "https://courrier.am/sunchild-le-cinema-au-service-de-la-biodiversite-en-marge-de-la-cop17",
+          "date": "2026-10-29T06:19:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1_1.jpg.avif?itok=VN86Ode8",
           "rubric": "monde"
         },
         {
@@ -336,13 +343,6 @@
           "date": "2026-09-29T12:14:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-09/4G3A0564_0.jpg.avif?itok=_JdrKSSK",
           "rubric": "societe"
-        },
-        {
-          "title": "Jeux de la Francophonie 2027 : l’Arménie poursuit ses préparatifs",
-          "url": "https://courrier.am/jeux-de-la-francophonie-2027-larmenie-poursuit-ses-preparatifs",
-          "date": "2026-09-28T15:13:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-09/4G3A9426.jpg.avif?itok=vUbiq0ER",
-          "rubric": "sports"
         }
       ]
     },
@@ -457,16 +457,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/786071064_122327790854224244_5767225921196492757_n.jpg.avif?itok=N9QIyYdv"
         },
         {
-          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
-          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
-          "date": "2026-07-24T11:22:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
-        },
-        {
           "title": "La Géorgie et l'Azerbaïdjan lancent un système numérique pour le transport routier de marchandises",
           "url": "https://courrier.am/la-georgie-et-l-azerbaidjan-lancent-un-systeme-numerique-pour-le-transport-routier-de-marchandises",
           "date": "2026-07-24T11:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/cp20170612-astrata-georgi-transporte.jpg.avif?itok=SnZNS7fh"
+        },
+        {
+          "title": "Merz et Pashinyan évoquent l'impact de la guerre en Ukraine sur le Caucase du Sud",
+          "url": "https://courrier.am/merz-et-pashinyan-evoquent-l-impact-de-la-guerre-en-ukraine-sur-le-caucase-du-sud",
+          "date": "2026-07-24T11:22:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/l-0x50wh-1200x700z-0.655-11.jpeg.avif?itok=aGIKdIWW"
         },
         {
           "title": "Port d'Anaklia : une délégation géorgienne s'inspire de Rotterdam, mais les doutes persistent",
@@ -1375,6 +1375,20 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Թրամփը Պենտագոնի ղեկավարին փոխարինելու հնարավորությունն է քննարկում. NBC News",
+            "url": "https://hy.armradio.am/archives/768977",
+            "date": "2026-11-06T04:14:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/trump-hegset-768x432.jpg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "ԱՄՆ պետքարտուղար Մարկո Ռուբիոն հերքել է իր պաշտոնանկության մասին լուրերը",
+            "url": "https://hy.armradio.am/archives/768974",
+            "date": "2026-11-06T04:00:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/Marco-Rubio-768x512.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Դեմոկրատները լայնածավալ հետաքննություն են պատրաստում Թրամփի և Մասկի դեմ․ Reuters",
             "url": "https://hy.armradio.am/archives/768963",
             "date": "2026-11-05T18:48:00.000Z",
@@ -1428,20 +1442,6 @@
             "url": "https://hy.armradio.am/archives/768615",
             "date": "2026-11-04T12:49:18.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2025/10/melania-trump-768x406.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Սերբիայի նախկին նախագահի համախոհների Մոսկվա մեկնող ինքնաթիռը հետ են վերադարձրել Բելգրադ",
-            "url": "https://hy.armradio.am/archives/768576",
-            "date": "2026-11-04T09:00:34.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/Air_Serbia_A319-768x430.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Թրամփը խոստանում է վետո. դեմոկրատները վերահսկողության տակ են վերցնում նաեւ Ներկայացուցիչների պալատը",
-            "url": "https://hy.armradio.am/archives/768559",
-            "date": "2026-11-04T08:12:22.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2025/04/US-Congress-56-768x432.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -5135,6 +5135,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Comenzó la tercera Cumbre Mundial Armenia",
+            "url": "https://armenpress.am/es/article/1264927",
+            "date": "2026-11-06T03:42:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/05/mpYGQslKXl3dN9Aeq9J7iJBS9L7xBMyZDh0QPMD2.webp"
+          },
+          {
             "title": "El comisionado para Asuntos de la Diáspora está a favor de endurecer los requisitos para obtener la ciudadanía",
             "url": "https://armenpress.am/es/article/1264909",
             "date": "2026-11-05T13:33:00.000Z",
@@ -5187,12 +5193,6 @@
             "url": "https://armenpress.am/es/article/1264873",
             "date": "2026-11-05T12:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/05/l4SlW6LexYNu2DMleCfjlGLqQqSfwmtxGmybqUR4.webp"
-          },
-          {
-            "title": "“No pienso resignarme a esta situación”: Pashinyan sobre las muertes registradas en el Ejército",
-            "url": "https://armenpress.am/es/article/1264868",
-            "date": "2026-11-05T12:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/05/2Va4m6FLIT2Tv0TPGI6N8c0MgVcUqXEshOSuaB5h.webp"
           }
         ]
       },
@@ -11177,6 +11177,48 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "«Իրավունք». Սարգսյան եղբայրները չեն մասնակցի ավագանու ընտրություններին",
+            "url": "https://news.am/hy/news/1073004",
+            "date": "2026-11-06T04:26:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/2p7xPEUawxnqKfQM.webp"
+          },
+          {
+            "title": "«Ժողովուրդ». Աթոռի համար՝ մետրո․ Ավինյանն ակտիվացել է իշխանական մրցակիցների ֆոնին",
+            "url": "https://news.am/hy/news/1073002",
+            "date": "2026-11-06T04:20:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/RmIbc3FdrmjKcR7R.webp"
+          },
+          {
+            "title": "Թրամփն իր թիմի հետ Իրանի հարցով ընտրություններից հետո առաջին խորհրդակցությունն է անցկացրել",
+            "url": "https://news.am/hy/news/1072992",
+            "date": "2026-11-06T04:17:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/vFNhVAexSI7DA73y.webp"
+          },
+          {
+            "title": "«Իրավունք». Առաջիկա օրերին նոր աղմկոտ ձերբակալություններ են սպասվում",
+            "url": "https://news.am/hy/news/1072997",
+            "date": "2026-11-06T04:08:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/cQpd91DxdDflM6g8.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ Աննախադեպ նիստ է եղել. Վիլեն Գաբրիելյանը կաշվից դուրս է եկել",
+            "url": "https://news.am/hy/news/1072995",
+            "date": "2026-11-06T03:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/PdehkIwvDPDSJi30.webp"
+          },
+          {
+            "title": "«Իրավունք». «ԹՐԻՓՓ-ը բարով-խերով անենք, պլոտնի անցնելու ենք եկեղեցուն»",
+            "url": "https://news.am/hy/news/1072991",
+            "date": "2026-11-06T03:47:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/OIZAdkeJaXhlx7pX.webp"
+          },
+          {
+            "title": "«Ժողովուրդ». ՍԴ նախագահի ընտրության շուրջ խաղաթղթերը խառնվել են․ ինչ է սպասվում այսօր",
+            "url": "https://news.am/hy/news/1072990",
+            "date": "2026-11-06T03:40:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/uEvPyoG9ektOoE3g.webp"
+          },
+          {
             "title": "Սերբիայում պաշտոնապես հաստատել են խորհրդարանական ընտրությունների արդյունքները․ ուսանողական ցուցակը ստացել է 140 մանդատ",
             "url": "https://news.am/hy/news/1072989",
             "date": "2026-11-05T21:05:38.000Z",
@@ -11193,48 +11235,6 @@
             "url": "https://news.am/hy/news/1072985",
             "date": "2026-11-05T20:37:00.000Z",
             "image": "https://news.am/storage/media/26/11/05/RpWBlSXKl44tKyZN.webp"
-          },
-          {
-            "title": "Սլովակիայի նախագահը հայտարարել է, որ Ուկրաինայի պատերազմը հյուծում է Եվրոպան",
-            "url": "https://news.am/hy/news/1072982",
-            "date": "2026-11-05T20:22:00.000Z",
-            "image": "https://news.am/storage/media/26/11/05/nWMDyqDcW3El0yOE.webp"
-          },
-          {
-            "title": "Պարզ երկնքում ճայթած ամպրոպ. Հերցոգն արձագանքել է Իսրայելին ռազմական օգնությունը դադարեցնելու մասին Թրամփի հայտարարությանը",
-            "url": "https://news.am/hy/news/1072980",
-            "date": "2026-11-05T19:51:00.000Z",
-            "image": "https://news.am/storage/media/26/06/14/Szv8fYkaNtjgDvhw.webp"
-          },
-          {
-            "title": "Թրամփի վարչակազմը պատերազմի ընթացքում Իրանի հետ գաղտնի քննարկել է Իրանի քաղաքացիների արտաքսումը. Associated Press",
-            "url": "https://news.am/hy/news/1072988",
-            "date": "2026-11-05T19:21:07.000Z",
-            "image": "https://news.am/storage/media/26/11/05/YwX4yf7jgWt5MkJb.webp"
-          },
-          {
-            "title": "Ֆոն դեր Լայենը հրաժարվել է Լեհաստանի նախագահի հետ ասուլիսից՝ հաջակցություն Տուսկի. Bloomberg",
-            "url": "https://news.am/hy/news/1072970",
-            "date": "2026-11-05T19:06:00.000Z",
-            "image": "https://news.am/storage/media/26/09/23/JdeoX03WVKec5u6Z.webp"
-          },
-          {
-            "title": "Պարագվայի նախագահը հրաժարական է տվել բանկային ճգնաժամի ֆոնին",
-            "url": "https://news.am/hy/news/1072964",
-            "date": "2026-11-05T18:35:00.000Z",
-            "image": "https://news.am/storage/media/26/11/05/LY4VlgfhJQufCrPV.webp"
-          },
-          {
-            "title": "Մոսկվայի հերթական կտրուկ պատասխանը Փաշինյանին. «Օրվա ամփոփում»՝ ռուսերեն",
-            "url": "https://news.am/hy/news/1072984",
-            "date": "2026-11-05T18:32:10.000Z",
-            "image": "https://img.youtube.com/vi/bkg4uU7B7bE/maxresdefault.jpg"
-          },
-          {
-            "title": "ՄԱԿ-ի խաղաղապահները 2026 թվականի վերջին կհեռանան Լիբանանի հարավից՝ չնայած նրանց մանդատը երկարաձգելու կոչերին",
-            "url": "https://news.am/hy/news/1072961",
-            "date": "2026-11-05T18:20:00.000Z",
-            "image": "https://news.am/storage/media/26/05/15/1ZEBK1V6IKYDugir.webp"
           }
         ]
       },
@@ -11639,6 +11639,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "«Հրապարակ»․ Աննախադեպ նիստ է եղել. Վիլեն Գաբրիելյանը կաշվից դուրս է եկել",
+            "url": "https://news.am/hy/news/1072995",
+            "date": "2026-11-06T03:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/PdehkIwvDPDSJi30.webp"
+          },
+          {
             "title": "Ֆրանսիան հետաքննություն է սկսել ռումբի սպառնալիքի պատճառով ռազմաբազայում վայրէջք կատարելուց հրաժարված օդաչուի գործով",
             "url": "https://news.am/hy/news/1072981",
             "date": "2026-11-05T20:07:00.000Z",
@@ -11691,12 +11697,6 @@
             "url": "https://news.am/hy/news/1072906",
             "date": "2026-11-05T13:03:00.000Z",
             "image": "https://news.am/storage/media/26/11/05/Xsj9fc75wkQadbg9.webp"
-          },
-          {
-            "title": "Թուրքիան և Իրանը հետաքննում են սահմանին թուրք զինծառայողի մահվան հանգամանքները",
-            "url": "https://news.am/hy/news/1072901",
-            "date": "2026-11-05T13:00:00.000Z",
-            "image": "https://news.am/storage/media/26/11/05/xmEV2SRbKZ1rAGmM.webp"
           }
         ]
       },
@@ -11839,6 +11839,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Трамп провел первое после выборов совещание по Ирану со своей командой",
+            "url": "https://news.am/ru/news/1072992",
+            "date": "2026-11-06T04:17:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/vFNhVAexSI7DA73y.webp"
+          },
+          {
             "title": "В Сербии официально утвердили результаты парламентских выборов: Студенческий список получил 140 мест",
             "url": "https://news.am/ru/news/1072989",
             "date": "2026-11-05T21:05:38.000Z",
@@ -11891,12 +11897,6 @@
             "url": "https://news.am/ru/news/1072984",
             "date": "2026-11-05T18:31:32.000Z",
             "image": "https://img.youtube.com/vi/bkg4uU7B7bE/maxresdefault.jpg"
-          },
-          {
-            "title": "Миротворцы ООН покинут юг Ливана в конце 2026 года, несмотря на призывы продлить их мандат",
-            "url": "https://news.am/ru/news/1072961",
-            "date": "2026-11-05T18:20:00.000Z",
-            "image": "https://news.am/storage/media/26/05/15/1ZEBK1V6IKYDugir.webp"
           }
         ]
       },
