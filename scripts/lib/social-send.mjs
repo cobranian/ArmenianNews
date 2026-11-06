@@ -3,7 +3,7 @@
 //
 // Aucun jeton dans une URL écrite au log : Telegram met le sien dans le
 // chemin, d'où l'interdiction d'imprimer `url` dans les erreurs.
-import { compose, oauth1Header } from './social.mjs'
+import { compose, oauth1Header, REEL_BASE } from './social.mjs'
 import { SITES } from '../../sites.config.js'
 
 // Versions d'API figées. À relever quand une plateforme retire la sienne
@@ -16,6 +16,18 @@ const TELEGRAM = 'https://api.telegram.org'
 export const IG_READY_MS = 90_000
 export const IG_POLL_MS = 5_000
 export const IG_PUBLISH_TRIES = 4
+// Une vidéo se prépare bien plus lentement qu'une image côté Meta
+// (transcodage) : 5 min avant de renoncer, au même pas d'interrogation.
+export const IG_REEL_READY_MS = 300_000
+// Le dépôt d'une vidéo de plusieurs Mo ne tient pas dans les 30 s d'un appel
+// ordinaire. 3 min couvrent un Reel de 100 Mo (REEL_MAX_BYTES) à ~5 Mbit/s,
+// bien en dessous du débit d'un runner GitHub : au-delà, c'est une panne.
+const UPLOAD_MS = 180_000
+const REEL_MAX_BYTES = 100 * 1024 * 1024
+// Hôte de dépôt des vidéos chez Meta (Facebook et Instagram), versionné comme
+// le Graph.
+const RUPLOAD = 'https://rupload.facebook.com'
+const GRAPH_VERSION = GRAPH.slice(GRAPH.lastIndexOf('/') + 1)
 
 // Les appels qui PUBLIENT. Une erreur y est ambiguë si elle n'est pas un refus
 // net (4xx) : un délai dépassé, une coupure, un 5xx peuvent arriver APRÈS que
@@ -23,16 +35,18 @@ export const IG_PUBLISH_TRIES = 4
 // sur un compte de marque se voit plus qu'un oubli) : `uncertain`, à vérifier
 // à la main. Partout ailleurs (préparation, session, vignette), rien n'est
 // encore parti : l'échec est sûr, le run suivant retente.
-const FINAL = new Set(['facebook', 'instagram/publish', 'bluesky', 'telegram', 'linkedin', 'x'])
+// Les dépôts de vidéo (`*-reel/upload`) n'y sont PAS : ils ne publient rien,
+// la vidéo attend `finish` (Facebook) ou `media_publish` (Instagram).
+const FINAL = new Set(['facebook', 'instagram/publish', 'facebook-reel/finish', 'instagram-reel/publish', 'bluesky', 'telegram', 'linkedin', 'x'])
 export function isUncertain(err) {
   if (!err?.final) return false
   return !(err.status >= 400 && err.status < 500)
 }
 
-async function call(f, url, init, what) {
+async function call(f, url, init, what, ms = 30_000) {
   let res
   try {
-    res = await f(url, { ...init, signal: AbortSignal.timeout(30_000) })
+    res = await f(url, { ...init, signal: AbortSignal.timeout(ms) })
   } catch (e) {
     throw Object.assign(new Error(`${what} : ${e.name === 'TimeoutError' ? 'délai dépassé' : e.message}`), { final: FINAL.has(what) })
   }
@@ -113,6 +127,145 @@ export async function blueskyThumb(url, jwt, f) {
   }
 }
 
+// Le conteneur se prépare côté Meta (téléchargement de l'image, transcodage
+// d'une vidéo) ; le publier trop tôt répond « Media ID is not available ».
+// Avant le 2 nov. 2026, la boucle s'arrêtait après 30 s et publiait QUAND
+// MÊME : quatre posts perdus ce jour-là (duduk ×2, Sayat-Nova, tapis), alors
+// que huit comptes publiaient en parallèle et chargeaient Meta. On attend donc
+// FINISHED jusqu'à `readyMs`, et sans FINISHED on ne publie pas.
+// Compté en essais et non en horloge : les tests injectent `wait`.
+async function igReady(id, c, f, wait, { readyMs, what }) {
+  for (let polls = 0; ; polls++) {
+    const { json: st } = await call(
+      f,
+      `${GRAPH}/${id}?fields=status_code`,
+      { headers: { authorization: `Bearer ${c.token}` } },
+      `${what}/status`,
+    )
+    if (st?.status_code === 'FINISHED') return
+    if (st?.status_code === 'ERROR' || st?.status_code === 'EXPIRED') throw new Error(`${what} : conteneur ${st.status_code}`)
+    if (polls * IG_POLL_MS >= readyMs) throw new Error(`${what} : conteneur pas prêt après ${readyMs / 1000} s (${st?.status_code ?? 'statut inconnu'})`)
+    await wait(IG_POLL_MS)
+  }
+}
+
+// Même FINISHED, Meta répond parfois « not available » une ou deux secondes
+// encore : le conteneur n'est pas publié, on peut réessayer sans risque de
+// doublon. Tout autre échec remonte tel quel (`what` est dans FINAL).
+async function igPublish(id, c, f, wait, what) {
+  for (let i = 1; ; i++) {
+    try {
+      const { json: r } = await call(f, `${GRAPH}/${c.userId}/media_publish`, form({ creation_id: id, access_token: c.token }), what)
+      return r?.id
+    } catch (e) {
+      if (i >= IG_PUBLISH_TRIES || !/not available|not ready/i.test(e.message)) throw e
+      await wait(IG_POLL_MS)
+    }
+  }
+}
+
+// La vidéo d'un Reel ne vient QUE de la release du dépôt (REEL_BASE) : aucun
+// contenu publié ne fait télécharger une adresse arbitraire. L'URL est
+// normalisée avant le contrôle (un `../` sortirait sinon de la release).
+// GitHub redirige vers son CDN (objects/release-assets.githubusercontent.com,
+// URL signée) : la redirection est suivie à la main, en https seulement, et
+// sans aucune clé — rien d'authentifié ne part vers ces hôtes.
+// Un échec ici est toujours sûr : rien n'est encore parti chez Meta.
+export async function fetchReel(url, f = fetch) {
+  let u
+  try {
+    u = new URL(url).href
+  } catch {
+    throw new Error('reel/vidéo : URL invalide')
+  }
+  if (!u.startsWith(REEL_BASE)) throw new Error(`reel/vidéo : hors de la release, refusée (${new URL(u).host})`)
+  let res
+  for (let hops = 0; ; hops++) {
+    try {
+      res = await f(u, { redirect: 'manual', signal: AbortSignal.timeout(UPLOAD_MS) })
+    } catch (e) {
+      throw new Error(`reel/vidéo : ${e.name === 'TimeoutError' ? 'délai dépassé' : e.message}`)
+    }
+    if (![301, 302, 303, 307, 308].includes(res.status)) break
+    if (hops >= 5) throw new Error('reel/vidéo : trop de redirections')
+    const next = new URL(res.headers.get('location') ?? '', u)
+    if (next.protocol !== 'https:') throw new Error('reel/vidéo : redirection hors https refusée')
+    u = next.href
+  }
+  if (res.status !== 200) throw new Error(`reel/vidéo : HTTP ${res.status}`)
+  const announced = Number(res.headers.get('content-length')) || 0
+  if (announced > REEL_MAX_BYTES) throw new Error(`reel/vidéo : fichier trop lourd (${announced} octets)`)
+  const buf = Buffer.from(await res.arrayBuffer())
+  if (buf.length > REEL_MAX_BYTES) throw new Error(`reel/vidéo : fichier trop lourd (${buf.length} octets)`)
+  if (!buf.length) throw new Error('reel/vidéo : fichier vide')
+  return buf
+}
+
+// Le dépôt « resumable » de Meta : les octets en un seul envoi (offset 0), la
+// clé dans l'en-tête Authorization, jamais dans l'URL. Même protocole pour
+// Facebook (video-upload) et Instagram (ig-api-upload).
+async function rupload(f, path, id, token, video, what) {
+  const { json: r } = await call(
+    f,
+    `${RUPLOAD}/${path}/${GRAPH_VERSION}/${id}`,
+    {
+      method: 'POST',
+      headers: {
+        authorization: `OAuth ${token}`,
+        offset: '0',
+        file_size: String(video.length),
+        'content-type': 'application/octet-stream',
+      },
+      body: video,
+    },
+    what,
+    UPLOAD_MS,
+  )
+  if (r?.success === false) throw new Error(`${what} : dépôt refusé`)
+}
+
+// Les Reels (Shorts Culture en musique). La vidéo est téléchargée AVANT
+// d'ouvrir quoi que ce soit chez Meta : une release injoignable ne laisse
+// aucune session orpheline.
+const REEL_SENDERS = {
+  // Reels Publishing API des Pages : start → dépôt → finish (qui publie).
+  async facebook(p, c, f) {
+    const video = await fetchReel(p.videoUrl, f)
+    const token = await pageToken(c, f)
+    const { json: s } = await call(
+      f,
+      `${GRAPH}/${c.pageId}/video_reels`,
+      form({ upload_phase: 'start', access_token: token }),
+      'facebook-reel/start',
+    )
+    if (!s?.video_id) throw new Error('facebook-reel/start : pas de video_id')
+    await rupload(f, 'video-upload', s.video_id, token, video, 'facebook-reel/upload')
+    await call(
+      f,
+      `${GRAPH}/${c.pageId}/video_reels`,
+      form({ upload_phase: 'finish', video_id: s.video_id, video_state: 'PUBLISHED', description: p.description, access_token: token }),
+      'facebook-reel/finish',
+    )
+    return s.video_id
+  },
+
+  // Content Publishing, media_type=REELS en dépôt « resumable » : conteneur →
+  // dépôt → FINISHED → media_publish (qui publie).
+  async instagram(p, c, f, wait) {
+    const video = await fetchReel(p.videoUrl, f)
+    const { json: box } = await call(
+      f,
+      `${GRAPH}/${c.userId}/media`,
+      form({ media_type: 'REELS', upload_type: 'resumable', caption: p.caption, share_to_feed: 'true', access_token: c.token }),
+      'instagram-reel/media',
+    )
+    if (!box?.id) throw new Error('instagram-reel/media : pas d’id de conteneur')
+    await rupload(f, 'ig-api-upload', box.id, c.token, video, 'instagram-reel/upload')
+    await igReady(box.id, c, f, wait, { readyMs: IG_REEL_READY_MS, what: 'instagram-reel' })
+    return igPublish(box.id, c, f, wait, 'instagram-reel/publish')
+  },
+}
+
 const SENDERS = {
   async facebook(p, c, f) {
     const token = await pageToken(c, f)
@@ -127,43 +280,8 @@ const SENDERS = {
       form({ image_url: p.imageUrl, caption: p.caption, access_token: c.token }),
       'instagram/media',
     )
-    // Le conteneur se prépare côté Meta (téléchargement de l'image) ; le
-    // publier trop tôt répond « Media ID is not available ». Avant le 2 nov.
-    // 2026, la boucle s'arrêtait après 30 s et publiait QUAND MÊME : quatre
-    // posts perdus ce jour-là (duduk ×2, Sayat-Nova, tapis), alors que huit
-    // comptes publiaient en parallèle et chargeaient Meta. On attend donc
-    // FINISHED jusqu'à IG_READY_MS, et sans FINISHED on ne publie pas.
-    // Compté en essais et non en horloge : les tests injectent `wait`.
-    for (let polls = 0; ; polls++) {
-      const { json: st } = await call(
-        f,
-        `${GRAPH}/${box.id}?fields=status_code`,
-        { headers: { authorization: `Bearer ${c.token}` } },
-        'instagram/status',
-      )
-      if (st?.status_code === 'FINISHED') break
-      if (st?.status_code === 'ERROR' || st?.status_code === 'EXPIRED')
-        throw new Error(`instagram : conteneur ${st.status_code}`)
-      if (polls * IG_POLL_MS >= IG_READY_MS) throw new Error(`instagram : conteneur pas prêt après ${IG_READY_MS / 1000} s (${st?.status_code ?? 'statut inconnu'})`)
-      await wait(IG_POLL_MS)
-    }
-    // Même FINISHED, Meta répond parfois « not available » une ou deux
-    // secondes encore : le conteneur n'est pas publié, on peut réessayer sans
-    // risque de doublon.
-    for (let i = 1; ; i++) {
-      try {
-        const { json: r } = await call(
-          f,
-          `${GRAPH}/${c.userId}/media_publish`,
-          form({ creation_id: box.id, access_token: c.token }),
-          'instagram/publish',
-        )
-        return r?.id
-      } catch (e) {
-        if (i >= IG_PUBLISH_TRIES || !/not available|not ready/i.test(e.message)) throw e
-        await wait(IG_POLL_MS)
-      }
-    }
+    await igReady(box.id, c, f, wait, { readyMs: IG_READY_MS, what: 'instagram' })
+    return igPublish(box.id, c, f, wait, 'instagram/publish')
   },
 
   async linkedin(p, c, f) {
@@ -309,7 +427,7 @@ export async function verify(channel, creds, { fetch: f = fetch } = {}) {
 }
 
 export async function send(channel, item, creds, { fetch: f = fetch, wait = (ms) => new Promise((r) => setTimeout(r, ms)) } = {}) {
-  const sender = SENDERS[channel.platform]
+  const sender = (item.kind === 'reel' ? REEL_SENDERS : SENDERS)[channel.platform]
   if (!sender) throw new Error(`plateforme inconnue : ${channel.platform}`)
   return sender(compose(channel.platform, item), creds, f, wait)
 }
