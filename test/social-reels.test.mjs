@@ -4,7 +4,7 @@
 // tournés, un par jour, au lieu de les perdre dans l'archive.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { CHANNELS, parseKinds, plan, settle, supports, reelItems, cultureItems, yerevanDay, REEL_BASE } from '../scripts/lib/social.mjs'
+import { CHANNELS, parseKinds, plan, settle, supports, reelItems, cultureItems, yerevanDay, REEL_BASE, compose, tagged } from '../scripts/lib/social.mjs'
 
 const fb = CHANNELS.find((c) => c.id === 'facebook-ch')
 const bare = { version: 1, channels: { 'facebook-ch': { seededAt: 'x', posted: {} } } }
@@ -103,4 +103,36 @@ test('(g) un échec sûr est replanifié le même jour', () => {
   const settled = settle(r1.ledger, [{ channel: 'facebook-ch', id: 'reel:a', ok: false, error: '400' }], new Date('2026-11-07T08:05:00Z'), r1.posts)
   const r2 = plan({ items, channels: [fb], ledger: settled, kinds: ['reel'], now: new Date('2026-11-07T09:00:00Z') })
   assert.deepEqual(r2.posts.map((p) => p.item.id), ['reel:a'])
+})
+
+const reelCredit = { ...reel('duduk'), image: { url: 'https://armenieinfo.ch/i.jpg', author: 'Auteur', license: 'CC BY' } }
+
+test('(h) légende FB d’un reel : lien utm_medium=reel, crédit, musique', () => {
+  const c = compose('facebook', reelCredit)
+  assert.equal(c.videoUrl, reelCredit.video.url)
+  assert.ok(c.description.startsWith('T duduk\n\nD duduk\n\nhttps://'))
+  assert.ok(c.description.includes('utm_medium=reel'))
+  assert.ok(c.description.includes('utm_source=facebook'))
+  assert.ok(c.description.includes('Auteur, CC BY'))
+  assert.ok(c.description.endsWith('♪ x'))
+})
+
+test('(i) légende IG d’un reel : lien dans la bio, musique avant les hashtags', () => {
+  const c = compose('instagram', reelCredit)
+  assert.equal(c.videoUrl, reelCredit.video.url)
+  assert.equal(c.imageUrl, undefined)
+  assert.ok(c.caption.includes('lien dans la bio'))
+  assert.ok(c.caption.includes('#Arménie'))
+  assert.ok(c.caption.indexOf('♪ x') > -1 && c.caption.indexOf('♪ x') < c.caption.indexOf('#'))
+  assert.ok(!c.caption.includes('utm_'))
+})
+
+test('(j) légende IG d’un reel hy', () => {
+  const c = compose('instagram', { ...reelCredit, lang: 'hy', url: 'https://armenianews.org/hy/culture/duduk/' })
+  assert.ok(c.caption.includes('Ամբողջական հոդվածը՝'))
+})
+
+test('(k) tagged garde utm_medium=social par défaut', () => {
+  assert.ok(tagged('https://a.ch/x/', 'telegram').includes('utm_medium=social'))
+  assert.ok(tagged('https://a.ch/x/', 'facebook', 'reel').includes('utm_medium=reel'))
 })

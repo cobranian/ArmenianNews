@@ -16,7 +16,8 @@
 // 2. JAMAIS D'ARCHIVE. Un canal absent du registre (nouveau, ou registre
 //    effacé) est d'abord AMORCÉ : tout ce qui existe déjà y est marqué « vu »,
 //    rien n'est publié. Sans cela, brancher un compte publierait d'un coup les
-//    treize articles Culture et toutes les brèves.
+//    treize articles Culture et toutes les brèves. Exception : les Reels ne
+//    sont JAMAIS amorcés — un canal reçoit le catalogue de Reels un par jour.
 // 3. AUCUN TEXTE LIBRE. Tout ce qui part vient de fichiers déjà en ligne
 //    (titre, description, URL), assemblé par gabarit. Aucun modèle ne rédige
 //    un message, et la brève (synthèse automatique non relue) n'est publiée
@@ -399,10 +400,10 @@ function credit(item, s) {
 // savoir quel réseau vaut l'effort. Le canonical des pages ignore la query,
 // donc rien ne change pour l'indexation. Instagram n'a pas de lien cliquable
 // dans un post (« lien dans la bio ») : son texte reste nu.
-export function tagged(url, platform) {
+export function tagged(url, platform, medium = 'social') {
   const u = new URL(url)
   u.searchParams.set('utm_source', platform)
-  u.searchParams.set('utm_medium', 'social')
+  u.searchParams.set('utm_medium', medium)
   return u.toString()
 }
 
@@ -410,9 +411,14 @@ export function compose(platform, item) {
   const s = STRINGS[item.lang]
   if (!s) throw new Error(`pas de gabarit social en ${item.lang}`)
   const head = `${item.title}\n\n${item.description}`
-  if (platform !== 'instagram') item = { ...item, url: tagged(item.url, platform) }
+  const reel = item.kind === 'reel'
+  if (platform !== 'instagram') item = { ...item, url: tagged(item.url, platform, reel ? 'reel' : 'social') }
   switch (platform) {
     case 'facebook':
+      if (reel) {
+        const tail = [credit(item, s), item.video.music].filter(Boolean).join('\n')
+        return { videoUrl: item.video.url, description: [head, item.url, tail].filter(Boolean).join('\n\n') }
+      }
       return { message: head, link: item.url }
     case 'linkedin':
       return {
@@ -442,8 +448,9 @@ export function compose(platform, item) {
       return { text: `${head}\n\n${item.url}` }
     case 'instagram': {
       const link = `${item.cta ?? s.read}${s.colon}${item.url.replace(/^https:\/\//, '')} (${s.bio})`
-      const parts = [head, link, credit(item, s), s.tags].filter(Boolean)
-      return { imageUrl: item.image.url, caption: truncate(parts.join('\n\n'), 2200) }
+      const parts = [head, link, credit(item, s), reel ? item.video.music : null, s.tags].filter(Boolean)
+      const caption = truncate(parts.join('\n\n'), 2200)
+      return reel ? { videoUrl: item.video.url, caption } : { imageUrl: item.image.url, caption }
     }
     default:
       throw new Error(`plateforme inconnue : ${platform}`)
