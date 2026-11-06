@@ -39,7 +39,8 @@ export const SITES = {
     // Les comptes propres à une langue (ouverts le 31 oct. 2026) : au pied de
     // page de CETTE langue, ils remplacent ceux de la vitrine plateforme par
     // plateforme (socialFor). Une plateforme absente garde le compte de la
-    // vitrine — LinkedIn et YouTube n'existent qu'en un exemplaire.
+    // vitrine — LinkedIn n'existe qu'en un exemplaire ; YouTube n'a de chaîne
+    // par langue que là où des Shorts y sont publiés.
     socialByLang: {
       de: {
         facebook: 'https://www.facebook.com/61596218245485',
@@ -47,6 +48,7 @@ export const SITES = {
         telegram: 'https://t.me/armenieinfo_de',
         whatsapp: 'https://whatsapp.com/channel/0029Vb9vZgXC6ZvmgkLTjd1B',
         bluesky: 'https://bsky.app/profile/de.armenieinfo.ch',
+        youtube: 'https://www.youtube.com/@armenieinfo-de',
       },
       it: {
         facebook: 'https://www.facebook.com/61595804863665',
