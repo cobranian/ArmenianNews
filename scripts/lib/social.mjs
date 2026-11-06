@@ -86,7 +86,7 @@ export function credentials(channel, env) {
   return out
 }
 
-export const KINDS = ['culture', 'brief']
+export const KINDS = ['culture', 'brief', 'reel']
 
 export function parseKinds(raw) {
   const kinds = String(raw ?? 'culture')
@@ -178,6 +178,28 @@ export function cultureItems(articles) {
   return out
 }
 
+// Les Reels : les Shorts Culture en musique, servis depuis une release GitHub
+// (une vidéo par langue n'a rien à faire dans le dépôt ni dans dist/).
+// `reels` (src/data/reels.json) : { [slug]: { [lang]: { asset, music } } }.
+// Un Reel n'existe que si l'article ET sa vidéo existent dans la langue :
+// URL, titre, description et image sont ceux de l'article, jamais réécrits.
+export const REEL_BASE = 'https://github.com/cobranian/ArmenianNews/releases/download/reels-1/'
+
+export function reelItems(articles, reels) {
+  return cultureItems(articles).flatMap((it) => {
+    const slug = it.id.slice('culture:'.length)
+    const r = reels?.[slug]?.[it.lang]
+    if (!r) return []
+    return [{ ...it, id: `reel:${slug}`, kind: 'reel', video: { url: REEL_BASE + r.asset, music: r.music } }]
+  })
+}
+
+// Le jour civil à Erevan (UTC+4, sans heure d'été) : c'est lui qui borne
+// « un Reel par jour », pas le jour UTC du runner.
+export function yerevanDay(iso) {
+  return new Date(Date.parse(iso) + 4 * 3_600_000).toISOString().slice(0, 10)
+}
+
 // Instagram refuse une image hors de 4:5 à 1,91:1 — et un post sans image.
 export function fitsInstagram(image) {
   if (!image?.width || !image?.height) return false
@@ -186,6 +208,9 @@ export function fitsInstagram(image) {
 }
 
 export function supports(platform, item) {
+  // Un Reel est une vidéo : seuls Facebook et Instagram en publient, et
+  // l'image n'y joue aucun rôle.
+  if (item.kind === 'reel') return platform === 'facebook' || platform === 'instagram'
   return platform !== 'instagram' || fitsInstagram(item.image)
 }
 
@@ -224,14 +249,24 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
       // article ancien pour neuf (revue du 1er nov. 2026). Pas de règle de date :
       // un article garde la date de son brouillon, souvent antérieure à sa
       // publication.
+      // Sauf les Reels : ils partent un par jour, donc un compte neuf peut
+      // rattraper sans rafale les Shorts déjà tournés.
       next.channels[ch.id] = {
         seededAt: stamp,
-        posted: Object.fromEntries(items.map((it) => [it.id, 'seed'])),
+        posted: Object.fromEntries(items.filter((it) => it.kind !== 'reel').map((it) => [it.id, 'seed'])),
       }
       seeded.push(ch.id)
       continue
     }
     const failed = entry.failed ?? {}
+    // Un Reel par jour d'Erevan et par compte. Compte tout horodatage ISO du
+    // jour — y compris un envoi incertain, que `settle` laisse au registre ;
+    // un échec sûr en est retiré, et son Reel repart donc le jour même.
+    // Ni « seed » ni « abandonné … » ne commencent par un chiffre.
+    const today = yerevanDay(stamp)
+    let reelDone = Object.entries(entry.posted).some(
+      ([id, v]) => id.startsWith('reel:') && /^\d{4}-\d{2}-\d{2}T/.test(v) && yerevanDay(v) === today,
+    )
     const fresh = mine
       .filter((it) => !(it.id in entry.posted))
       .filter((it) => (failed[it.id]?.attempts ?? 0) < MAX_ATTEMPTS)
@@ -239,6 +274,9 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
       .filter((it) => supports(ch.platform, it))
       .filter((it) => it.kind !== 'brief' || ageDays(it.date, now) <= BRIEF_MAX_AGE_DAYS)
       .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))
+      // Avant le plafond : un Reel écarté ne doit pas prendre la place d'un
+      // article.
+      .filter((it) => it.kind !== 'reel' || (!reelDone && (reelDone = true)))
       .slice(0, max)
     for (const it of fresh) {
       entry.posted[it.id] = stamp
