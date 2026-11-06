@@ -1,1 +1,416 @@
-{}
+{
+  "alphabet-armenien": {
+    "en": {
+      "asset": "en-alphabet-armenien.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "fr": {
+      "asset": "fr-alphabet-armenien.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "hy": {
+      "asset": "hy-alphabet-armenien.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "ru": {
+      "asset": "ru-alphabet-armenien.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    }
+  },
+  "ani": {
+    "en": {
+      "asset": "en-ani.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-ani.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-ani.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-ani.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "aram-khatchatourian": {
+    "en": {
+      "asset": "en-aram-khatchatourian.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-aram-khatchatourian.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-aram-khatchatourian.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-aram-khatchatourian.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "art-du-tapis-armenien": {
+    "en": {
+      "asset": "en-art-du-tapis-armenien.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-art-du-tapis-armenien.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-art-du-tapis-armenien.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-art-du-tapis-armenien.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "bataille-d-avarayr-et-vardan-mamikonian": {
+    "en": {
+      "asset": "en-bataille-d-avarayr-et-vardan-mamikonian.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-bataille-d-avarayr-et-vardan-mamikonian.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-bataille-d-avarayr-et-vardan-mamikonian.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-bataille-d-avarayr-et-vardan-mamikonian.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "bataille-de-sardarapat": {
+    "en": {
+      "asset": "en-bataille-de-sardarapat.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-bataille-de-sardarapat.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-bataille-de-sardarapat.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-bataille-de-sardarapat.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "cave-viticole-d-areni-1": {
+    "en": {
+      "asset": "en-cave-viticole-d-areni-1.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-cave-viticole-d-areni-1.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-cave-viticole-d-areni-1.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-cave-viticole-d-areni-1.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "charles-aznavour": {
+    "en": {
+      "asset": "en-charles-aznavour.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-charles-aznavour.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-charles-aznavour.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-charles-aznavour.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "duduk": {
+    "en": {
+      "asset": "en-duduk.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-duduk.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-duduk.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-duduk.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "epopee-de-david-de-sassoun": {
+    "en": {
+      "asset": "en-epopee-de-david-de-sassoun.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-epopee-de-david-de-sassoun.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-epopee-de-david-de-sassoun.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-epopee-de-david-de-sassoun.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "fete-paienne-et-chretienne-de-vardavar": {
+    "en": {
+      "asset": "en-fete-paienne-et-chretienne-de-vardavar.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-fete-paienne-et-chretienne-de-vardavar.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-fete-paienne-et-chretienne-de-vardavar.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-fete-paienne-et-chretienne-de-vardavar.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "khatchkar": {
+    "en": {
+      "asset": "en-khatchkar.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "fr": {
+      "asset": "fr-khatchkar.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "hy": {
+      "asset": "hy-khatchkar.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "ru": {
+      "asset": "ru-khatchkar.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    }
+  },
+  "kochari": {
+    "en": {
+      "asset": "en-kochari.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-kochari.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-kochari.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-kochari.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "komitas": {
+    "en": {
+      "asset": "en-komitas.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "fr": {
+      "asset": "fr-komitas.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "hy": {
+      "asset": "hy-komitas.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "ru": {
+      "asset": "ru-komitas.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    }
+  },
+  "lavash": {
+    "en": {
+      "asset": "en-lavash.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-lavash.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-lavash.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-lavash.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "matenadaran-et-les-manuscrits-enlumines": {
+    "en": {
+      "asset": "en-matenadaran-et-les-manuscrits-enlumines.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "fr": {
+      "asset": "fr-matenadaran-et-les-manuscrits-enlumines.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "hy": {
+      "asset": "hy-matenadaran-et-les-manuscrits-enlumines.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "ru": {
+      "asset": "ru-matenadaran-et-les-manuscrits-enlumines.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    }
+  },
+  "monastere-de-khor-virap-au-pied-du-mont-ararat": {
+    "en": {
+      "asset": "en-monastere-de-khor-virap-au-pied-du-mont-ararat.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "fr": {
+      "asset": "fr-monastere-de-khor-virap-au-pied-du-mont-ararat.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "hy": {
+      "asset": "hy-monastere-de-khor-virap-au-pied-du-mont-ararat.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "ru": {
+      "asset": "ru-monastere-de-khor-virap-au-pied-du-mont-ararat.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    }
+  },
+  "monastere-de-tatev": {
+    "en": {
+      "asset": "en-monastere-de-tatev.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "fr": {
+      "asset": "fr-monastere-de-tatev.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "hy": {
+      "asset": "hy-monastere-de-tatev.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "ru": {
+      "asset": "ru-monastere-de-tatev.mp4",
+      "music": "♪ Sound of Armenian Duduk — I. Mazia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    }
+  },
+  "royaume-armenien-de-cilicie": {
+    "en": {
+      "asset": "en-royaume-armenien-de-cilicie.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-royaume-armenien-de-cilicie.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-royaume-armenien-de-cilicie.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-royaume-armenien-de-cilicie.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "sayat-nova-et-la-tradition-des-ashoughs": {
+    "en": {
+      "asset": "en-sayat-nova-et-la-tradition-des-ashoughs.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "fr": {
+      "asset": "fr-sayat-nova-et-la-tradition-des-ashoughs.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "hy": {
+      "asset": "hy-sayat-nova-et-la-tradition-des-ashoughs.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    },
+    "ru": {
+      "asset": "ru-sayat-nova-et-la-tradition-des-ashoughs.mp4",
+      "music": "♪ Duduk Music (Otar Amayi Champeqi Vra) — Ikuzusotnek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "serguei-paradjanov": {
+    "en": {
+      "asset": "en-serguei-paradjanov.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-serguei-paradjanov.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-serguei-paradjanov.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-serguei-paradjanov.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "temple-paien-de-garni": {
+    "en": {
+      "asset": "en-temple-paien-de-garni.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-temple-paien-de-garni.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-temple-paien-de-garni.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-temple-paien-de-garni.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  },
+  "tigrane-le-grand-et-l-empire-armenien": {
+    "en": {
+      "asset": "en-tigrane-le-grand-et-l-empire-armenien.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "fr": {
+      "asset": "fr-tigrane-le-grand-et-l-empire-armenien.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "hy": {
+      "asset": "hy-tigrane-le-grand-et-l-empire-armenien.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "ru": {
+      "asset": "ru-tigrane-le-grand-et-l-empire-armenien.mp4",
+      "music": "♪ duduk-improvisation2 — SERGO.TEL · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    }
+  }
+}
