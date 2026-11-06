@@ -232,6 +232,22 @@ export function emptyLedger() {
   return { version: 1, channels: {} }
 }
 
+// Inscrit à la main qu'un élément est parti (un Reel d'essai envoyé par
+// `social-post.mjs test`, hors registre — sinon le robot le republierait).
+// Rend un NOUVEAU registre. Refuse : canal inconnu, canal sans entrée (il
+// serait amorcé au prochain plan, ce n'est pas à `mark` d'en créer une), et un
+// horodatage ISO déjà posé. « seed » et « abandonné … » s'écrasent.
+export function markPosted(ledger, channel, id, at = new Date().toISOString()) {
+  if (!CHANNELS.some((c) => c.id === channel)) throw new Error(`canal inconnu : ${channel}`)
+  const entry = ledger?.channels?.[channel]
+  if (!entry) throw new Error(`${channel} n'a pas encore d'entrée au registre (le prochain plan l'amorcera) : rien à inscrire`)
+  const had = entry.posted?.[id]
+  if (typeof had === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(had)) throw new Error(`${channel} : ${id} est déjà parti (${had})`)
+  const next = structuredClone(ledger)
+  next.channels[channel].posted[id] = at
+  return next
+}
+
 // Rend { ledger, posts, seeded } sans muter le registre reçu.
 export function plan({ items, channels, ledger, kinds, now = new Date(), max = MAX_PER_RUN }) {
   const next = structuredClone(ledger ?? emptyLedger())

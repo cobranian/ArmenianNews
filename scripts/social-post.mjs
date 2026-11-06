@@ -17,6 +17,9 @@
 //        réglée : efface son échec et sa marque « parti ». À pousser (PR).
 //        --drop : y renoncer (ou confirmer qu'un envoi INCERTAIN est bien
 //        parti) : l'article reste « parti », l'alerte disparaît.
+//   node scripts/social-post.mjs mark --channel facebook-ch --item reel:duduk [--at <ISO>]
+//        Inscrit au registre un élément envoyé HORS registre (un Reel d'essai de
+//        `test`) : sans cela le robot le republierait. À pousser (PR).
 //   node --env-file=.env scripts/social-post.mjs test --channel facebook-ch [--item culture:komitas] [--yes]
 //        Local : aperçu d'un message, et avec --yes, un envoi réel hors
 //        registre — pour vérifier des identifiants neufs, ou publier une
@@ -44,6 +47,7 @@ import {
   supports,
   plan,
   settle,
+  markPosted,
   compose,
   emptyLedger,
   MAX_ATTEMPTS,
@@ -203,6 +207,17 @@ async function doRetry() {
   console.log(`· ${channel} : ${id} ${drop ? 'classé (ne repartira pas)' : 'remis en file'} — poussez src/data/social-posted.json`)
 }
 
+async function doMark() {
+  const channel = opt('--channel')
+  const id = opt('--item')
+  if (!channel || !id) throw new Error('usage : mark --channel <canal> --item <id> [--at <ISO>]')
+  const at = opt('--at') ?? new Date().toISOString()
+  if (Number.isNaN(Date.parse(at))) throw new Error(`--at : date ISO attendue, reçu « ${at} »`)
+  const next = markPosted(await readLedger(), channel, id, new Date(at).toISOString())
+  await writeFile(LEDGER, JSON.stringify(next, null, 2) + '\n')
+  console.log(`· ${channel} : ${id} inscrit comme parti — poussez src/data/social-posted.json (PR)`)
+}
+
 async function doTest() {
   const id = opt('--channel')
   const channel = CHANNELS.find((c) => c.id === id)
@@ -218,6 +233,10 @@ async function doTest() {
   if (!creds) throw new Error(`secrets manquants : ${Object.values(channel.env).join(', ')}`)
   try {
     console.log(`✓ publié : ${await send(channel, item, creds)}`)
+    if (item.kind === 'reel')
+      console.log(`⚠ Reel envoyé HORS registre : sans inscription le robot le republiera.
+  node scripts/social-post.mjs mark --channel ${channel.id} --item ${item.id}
+  puis poussez src/data/social-posted.json par PR.`)
   } catch (e) {
     throw new Error(redact(e.message, Object.values(creds)))
   }
@@ -249,9 +268,9 @@ async function doCheck() {
   if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `problems=${lines.length}\n`)
 }
 
-const run = { plan: doPlan, post: doPost, settle: doSettle, retry: doRetry, test: doTest, check: doCheck }[cmd]
+const run = { plan: doPlan, post: doPost, settle: doSettle, retry: doRetry, mark: doMark, test: doTest, check: doCheck }[cmd]
 if (!run) {
-  console.error('usage : social-post.mjs plan|post|settle|retry|test|check …')
+  console.error('usage : social-post.mjs plan|post|settle|retry|mark|test|check …')
   process.exit(2)
 }
 run().catch((e) => {

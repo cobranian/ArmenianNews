@@ -136,3 +136,32 @@ test('(k) tagged garde utm_medium=social par défaut', () => {
   assert.ok(tagged('https://a.ch/x/', 'telegram').includes('utm_medium=social'))
   assert.ok(tagged('https://a.ch/x/', 'facebook', 'reel').includes('utm_medium=reel'))
 })
+
+// markPosted : un Reel envoyé par `social-post.mjs test` est hors registre ;
+// `mark` l'y inscrit, sinon le robot le republierait quelques jours plus tard.
+import { markPosted } from '../scripts/lib/social.mjs'
+
+test('markPosted : inscrit l’horodatage, le robot ne rejoue ni ce jour ni jamais ce Reel', () => {
+  const now = new Date('2026-11-06T10:00:00Z')
+  const marked = markPosted(bare, 'facebook-ch', 'reel:duduk', now.toISOString())
+  assert.equal(marked.channels['facebook-ch'].posted['reel:duduk'], now.toISOString())
+  assert.deepEqual(bare.channels['facebook-ch'].posted, {}, 'entrée non mutée')
+  const items = [reel('duduk'), reel('komitas')]
+  const kinds = ['reel']
+  const today = plan({ items, channels: [fb], ledger: marked, kinds, now })
+  assert.equal(reelsOf(today).length, 0, 'jour bloqué')
+  const later = plan({ items: [reel('duduk')], channels: [fb], ledger: marked, kinds, now: new Date('2026-11-12T10:00:00Z') })
+  assert.equal(reelsOf(later).length, 0, 'jamais rejoué')
+})
+
+test('markPosted : refus (canal inconnu, sans registre, horodatage existant) ; seed/abandonné écrasables', () => {
+  const at = '2026-11-06T10:00:00.000Z'
+  assert.throws(() => markPosted(bare, 'nope', 'reel:x', at), /canal inconnu/)
+  assert.throws(() => markPosted({ version: 1, channels: {} }, 'facebook-ch', 'reel:x', at), /registre/)
+  const done = markPosted(bare, 'facebook-ch', 'reel:x', at)
+  assert.throws(() => markPosted(done, 'facebook-ch', 'reel:x', at), /déjà/)
+  for (const v of ['seed', 'abandonné 2026-11-01T00:00:00.000Z']) {
+    const l = { version: 1, channels: { 'facebook-ch': { seededAt: 'x', posted: { 'reel:x': v } } } }
+    assert.equal(markPosted(l, 'facebook-ch', 'reel:x', at).channels['facebook-ch'].posted['reel:x'], at)
+  }
+})

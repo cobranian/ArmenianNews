@@ -38,3 +38,28 @@ test('addReels : un asset mal nommé lève une erreur', () => {
   assert.throws(() => addReels({}, [{ ...duduk, music: '' }]), /musique/)
   assert.equal(assetName('fr', 'duduk'), 'fr-duduk.mp4')
 })
+
+// --force : un Short re-rendu à musique inchangée a le même manifeste, mais
+// son MP4 doit repartir dans la release (--clobber).
+import { toUpload } from '../scripts/lib/reels-add.mjs'
+
+test('toUpload : sans --force, seul ce que le manifeste change repart', () => {
+  const found = [duduk, { slug: 'komitas', lang: 'fr', asset: 'fr-komitas.mp4', music: '♪ y' }]
+  const { reels, added } = addReels({ duduk: { fr: { asset: 'fr-duduk.mp4', music: '♪ x' } } }, found)
+  assert.deepEqual(toUpload(found, added, false).map((f) => f.slug), ['komitas'])
+  assert.deepEqual(toUpload(found, added, true).map((f) => f.slug), ['duduk', 'komitas'])
+  assert.ok(reels.duduk.fr)
+})
+
+// Une faute de frappe à la main dans le manifeste arrêterait toute la
+// publication : on le lit tel qu'il est dans le dépôt.
+import { readFileSync } from 'node:fs'
+
+test('src/data/reels.json : asset = <lang>-<slug>.mp4 et musique non vide', () => {
+  const reels = JSON.parse(readFileSync(new URL('../src/data/reels.json', import.meta.url), 'utf8'))
+  for (const [slug, langs] of Object.entries(reels))
+    for (const [lang, e] of Object.entries(langs)) {
+      assert.equal(e.asset, `${lang}-${slug}.mp4`, `${slug}/${lang}`)
+      assert.ok(typeof e.music === 'string' && e.music.trim(), `${slug}/${lang} : musique`)
+    }
+})

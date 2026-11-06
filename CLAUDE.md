@@ -834,7 +834,7 @@ de production servent toujours depuis la racine de leur domaine.
   sans entrée y est amorcé, jamais servi l'archive — sauf les **Reels**, jamais
   amorcés : un compte neuf reçoit tout le catalogue, un par jour. Leur
   manifeste `src/data/reels.json` fait foi, et le MP4 doit être dans la release
-  `reels-1` **avant** son entrée (`npm run reels:add`). Un jeu de comptes par
+  `reels-1` **avant** son entrée (`npm run reels:add`). Un Reel envoyé par `social-test` est hors registre : `social-post.mjs mark` puis PR, sinon il est republié. Un jeu de comptes par
   langue (`ACCOUNT_SETS`, `scripts/lib/social.mjs`) : `ch`/`org` gardent ces
   noms pour fr/en — les renommer ré-amorcerait les comptes. Un secret de canal
   se déclare dans les TROIS workflows (`hourly.yml`, `social-test.yml`,

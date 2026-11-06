@@ -48,3 +48,10 @@ export function addReels(reels, adds) {
   }
   return { reels: sorted(next), added }
 }
+
+// Ce qui part dans la release : ce que le manifeste change, ou — avec
+// --force — tout ce qui a été trouvé (un Short re-rendu à musique inchangée
+// laisse le manifeste identique mais son MP4 a changé). `added` vient d'addReels.
+export function toUpload(found, added, force = false) {
+  return force ? found : found.filter((f) => added.includes(`${f.slug}/${f.lang}`))
+}

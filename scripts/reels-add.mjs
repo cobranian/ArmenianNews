@@ -1,4 +1,4 @@
-// npm run reels:add -- [--lang xx] [--slug s] [--dry]
+// npm run reels:add -- [--lang xx] [--slug s] [--dry] [--force]
 //
 // Envoie les Shorts rendus (../armenie-video/out/<lang>/<slug>.mp4) dans la
 // release GitHub `reels-1`, sous le nom <lang>-<slug>.mp4, puis les inscrit
@@ -9,7 +9,9 @@
 // Sans --lang / --slug : toutes les langues, tous les articles qui ont leur
 // MP4. L'envoi précède l'écriture : une entrée sans vidéo dans la release
 // servirait un 404 aux plateformes. --dry : dit ce qui serait envoyé et
-// écrit, sans appeler gh ni toucher au fichier.
+// écrit, sans appeler gh ni toucher au fichier. --force : ré-envoie (--clobber)
+// chaque MP4 trouvé même si son entrée du manifeste est inchangée (Short
+// re-rendu, même musique).
 import { access, copyFile, mkdtemp, readdir, rm, writeFile } from 'node:fs/promises'
 import { execFileSync } from 'node:child_process'
 import os from 'node:os'
@@ -17,7 +19,7 @@ import path from 'node:path'
 import { parseArgs } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import { ALL_LANGS } from '../sites.config.js'
-import { addReels, assetName, readReels } from './lib/reels-add.mjs'
+import { addReels, assetName, readReels, toUpload } from './lib/reels-add.mjs'
 import { musicCredit } from '../../armenie-video/scripts/music.mjs'
 
 const RELEASE = 'reels-1'
@@ -28,6 +30,7 @@ const { values } = parseArgs({
     slug: { type: 'string' },
     out: { type: 'string', default: path.join(root, '..', 'armenie-video', 'out') },
     dry: { type: 'boolean', default: false },
+    force: { type: 'boolean', default: false },
   },
 })
 if (values.lang && !ALL_LANGS.includes(values.lang)) throw new Error(`--lang attendu parmi ${ALL_LANGS.join(', ')}`)
@@ -48,7 +51,7 @@ if (!found.length) throw new Error(`aucun Short trouvé (${values.out}/<lang>/<s
 
 const file = path.join(root, 'src/data/reels.json')
 const { reels, added } = addReels(await readReels(file), found)
-const todo = found.filter((f) => added.includes(`${f.slug}/${f.lang}`))
+const todo = toUpload(found, added, values.force)
 for (const f of todo) console.log(`  ↑ ${path.relative(root, f.mp4)} → ${RELEASE}/${f.asset}\n    ${f.music}`)
 if (values.dry) {
   console.log(`${todo.length} Reel(s) à envoyer et inscrire — --dry : rien envoyé, rien écrit`)
