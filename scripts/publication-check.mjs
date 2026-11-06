@@ -22,7 +22,8 @@ import { chat, llmConfig, explain, CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL 
 import { checkAccounts } from './lib/account-check.mjs'
 import { parseServiceAccount, jwtAssertion, listUrl, TOKEN_URL } from './lib/gsc.mjs'
 import { SITES } from '../sites.config.js'
-import { ledgerFailures, redact } from './lib/social.mjs'
+import { CHANNELS, ledgerFailures, redact, reelItems } from './lib/social.mjs'
+import { readReels } from './lib/reels-add.mjs'
 import { WHATSAPP_CHANNELS } from './lib/linkedin-pending.mjs'
 import { checkNews, checkClassify, checkAgenda, staleHours } from './lib/health.mjs'
 import {
@@ -31,6 +32,7 @@ import {
   checkPullRequests,
   checkTranslations,
   checkSocial,
+  reelCounts,
   checkManual,
   checkDeadlines,
   checkRadios,
@@ -149,7 +151,9 @@ const others = ALL_LANGS.filter((l) => l !== 'fr')
 async function social() {
   const ledger = JSON.parse(await readFile(path.join(root, 'src/data/social-posted.json'), 'utf8'))
   const { accounts, tokens } = await checkAccounts(env, { now })
-  return checkSocial({ live: env.SOCIAL_LIVE === '1', accounts, tokens, failures: ledgerFailures(ledger) })
+  const items = reelItems(await articles(), await readReels(path.join(root, 'src/data/reels.json')))
+  const reels = reelCounts({ ledger, items, channels: CHANNELS })
+  return checkSocial({ live: env.SOCIAL_LIVE === '1', accounts, tokens, failures: ledgerFailures(ledger), reels })
 }
 // Google : une vraie connexion, en LECTURE seule (liste des sitemaps).
 async function googleAccess() {

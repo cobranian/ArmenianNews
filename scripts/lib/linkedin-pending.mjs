@@ -7,7 +7,7 @@
 // Même choix d'articles que le job horaire (`plan`, social.mjs) : mêmes
 // types (SOCIAL_KINDS, Culture par défaut), même ordre, même plafond.
 import { SITES, socialFor } from '../../sites.config.js'
-import { CHANNELS, plan, tagged } from './social.mjs'
+import { CHANNELS, plan, supports, tagged } from './social.mjs'
 
 // Pages entreprise créées le 28 oct. 2026 : id d'organisation pour l'URL
 // d'administration, d'où l'on publie au nom de la page.
@@ -52,7 +52,8 @@ export function pending({ items, ledger, kinds, now = new Date(), channels = LIN
   for (const id of r.seeded) {
     const ch = channels.find((c) => c.id === id)
     const last = items
-      .filter((it) => it.lang === ch.lang && kinds.includes(it.kind))
+      // `supports` comme `plan` : un Reel (vidéo FB/IG) n'a rien à faire ici.
+      .filter((it) => it.lang === ch.lang && kinds.includes(it.kind) && supports(ch.platform, it))
       .sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id))[0]
     if (last) {
       delete r.ledger.channels[id].posted[last.id]

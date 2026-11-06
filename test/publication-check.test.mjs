@@ -24,6 +24,7 @@ import {
   scrapeFailures,
   checkVideos,
   VIDEO_LATE_DAYS,
+  reelCounts,
 } from '../scripts/lib/publication-check.mjs'
 
 const now = new Date('2026-11-02T12:00:00Z')
@@ -224,4 +225,37 @@ test('checkVideos : un article sans aucun Short devient une action après le dé
   assert.equal(late.level, 'faire')
   assert.match(late.action, /mekhitaristes/)
   assert.equal(rows.find((r) => r.key === 'yt-none-neuf').level, 'info')
+})
+
+// Les Reels : une ligne par compte Facebook/Instagram, Reels partis / Reels
+// prêts dans sa langue. Ni « seed » ni « abandonné » ne comptent pour partis.
+test('checkSocial : une ligne Reels par compte', () => {
+  const rows = checkSocial({ live: true, accounts: [], tokens: [], failures: [], reels: [{ channel: 'facebook-ch', posted: 3, total: 23 }] })
+  const row = rows.find((r) => r.key === 'reels-facebook-ch')
+  assert.equal(row.level, 'info')
+  assert.match(row.text, /\*\*facebook-ch\*\* : Reels 3\/23/)
+  assert.ok(!checkSocial({ live: true, accounts: [], tokens: [], failures: [] }).some((r) => r.key.startsWith('reels-')))
+})
+
+test('reelCounts : Facebook et Instagram seulement, horodatages ISO seulement', () => {
+  const channels = [
+    { id: 'facebook-ch', platform: 'facebook', lang: 'fr' },
+    { id: 'instagram-org', platform: 'instagram', lang: 'en' },
+    { id: 'bluesky-ch', platform: 'bluesky', lang: 'fr' },
+  ]
+  const items = [
+    { id: 'reel:a', kind: 'reel', lang: 'fr' },
+    { id: 'reel:b', kind: 'reel', lang: 'fr' },
+    { id: 'reel:a', kind: 'reel', lang: 'en' },
+    { id: 'culture:a', kind: 'culture', lang: 'fr' },
+  ]
+  const ledger = {
+    channels: {
+      'facebook-ch': { posted: { 'reel:a': '2026-11-06T10:23:00.000Z', 'reel:b': 'abandonné 2026-11-06T10:00:00Z', 'reel:c': 'seed', 'culture:a': '2026-11-01T00:00:00Z' } },
+    },
+  }
+  assert.deepEqual(reelCounts({ ledger, items, channels }), [
+    { channel: 'facebook-ch', posted: 1, total: 2 },
+    { channel: 'instagram-org', posted: 0, total: 1 },
+  ])
 })

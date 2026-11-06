@@ -16,7 +16,8 @@
 // 2. JAMAIS D'ARCHIVE. Un canal absent du registre (nouveau, ou registre
 //    effacé) est d'abord AMORCÉ : tout ce qui existe déjà y est marqué « vu »,
 //    rien n'est publié. Sans cela, brancher un compte publierait d'un coup les
-//    treize articles Culture et toutes les brèves.
+//    treize articles Culture et toutes les brèves. Exception : les Reels ne
+//    sont JAMAIS amorcés — un canal reçoit le catalogue de Reels un par jour.
 // 3. AUCUN TEXTE LIBRE. Tout ce qui part vient de fichiers déjà en ligne
 //    (titre, description, URL), assemblé par gabarit. Aucun modèle ne rédige
 //    un message, et la brève (synthèse automatique non relue) n'est publiée
@@ -86,7 +87,7 @@ export function credentials(channel, env) {
   return out
 }
 
-export const KINDS = ['culture', 'brief']
+export const KINDS = ['culture', 'brief', 'reel']
 
 export function parseKinds(raw) {
   const kinds = String(raw ?? 'culture')
@@ -178,6 +179,28 @@ export function cultureItems(articles) {
   return out
 }
 
+// Les Reels : les Shorts Culture en musique, servis depuis une release GitHub
+// (une vidéo par langue n'a rien à faire dans le dépôt ni dans dist/).
+// `reels` (src/data/reels.json) : { [slug]: { [lang]: { asset, music } } }.
+// Un Reel n'existe que si l'article ET sa vidéo existent dans la langue :
+// URL, titre, description et image sont ceux de l'article, jamais réécrits.
+export const REEL_BASE = 'https://github.com/cobranian/ArmenianNews/releases/download/reels-1/'
+
+export function reelItems(articles, reels) {
+  return cultureItems(articles).flatMap((it) => {
+    const slug = it.id.slice('culture:'.length)
+    const r = reels?.[slug]?.[it.lang]
+    if (!r) return []
+    return [{ ...it, id: `reel:${slug}`, kind: 'reel', video: { url: REEL_BASE + r.asset, music: r.music } }]
+  })
+}
+
+// Le jour civil à Erevan (UTC+4, sans heure d'été) : c'est lui qui borne
+// « un Reel par jour », pas le jour UTC du runner.
+export function yerevanDay(iso) {
+  return new Date(Date.parse(iso) + 4 * 3_600_000).toISOString().slice(0, 10)
+}
+
 // Instagram refuse une image hors de 4:5 à 1,91:1 — et un post sans image.
 export function fitsInstagram(image) {
   if (!image?.width || !image?.height) return false
@@ -186,6 +209,9 @@ export function fitsInstagram(image) {
 }
 
 export function supports(platform, item) {
+  // Un Reel est une vidéo : seuls Facebook et Instagram en publient, et
+  // l'image n'y joue aucun rôle.
+  if (item.kind === 'reel') return platform === 'facebook' || platform === 'instagram'
   return platform !== 'instagram' || fitsInstagram(item.image)
 }
 
@@ -206,6 +232,22 @@ export function emptyLedger() {
   return { version: 1, channels: {} }
 }
 
+// Inscrit à la main qu'un élément est parti (un Reel d'essai envoyé par
+// `social-post.mjs test`, hors registre — sinon le robot le republierait).
+// Rend un NOUVEAU registre. Refuse : canal inconnu, canal sans entrée (il
+// serait amorcé au prochain plan, ce n'est pas à `mark` d'en créer une), et un
+// horodatage ISO déjà posé. « seed » et « abandonné … » s'écrasent.
+export function markPosted(ledger, channel, id, at = new Date().toISOString()) {
+  if (!CHANNELS.some((c) => c.id === channel)) throw new Error(`canal inconnu : ${channel}`)
+  const entry = ledger?.channels?.[channel]
+  if (!entry) throw new Error(`${channel} n'a pas encore d'entrée au registre (le prochain plan l'amorcera) : rien à inscrire`)
+  const had = entry.posted?.[id]
+  if (typeof had === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(had)) throw new Error(`${channel} : ${id} est déjà parti (${had})`)
+  const next = structuredClone(ledger)
+  next.channels[channel].posted[id] = at
+  return next
+}
+
 // Rend { ledger, posts, seeded } sans muter le registre reçu.
 export function plan({ items, channels, ledger, kinds, now = new Date(), max = MAX_PER_RUN }) {
   const next = structuredClone(ledger ?? emptyLedger())
@@ -224,14 +266,24 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
       // article ancien pour neuf (revue du 1er nov. 2026). Pas de règle de date :
       // un article garde la date de son brouillon, souvent antérieure à sa
       // publication.
+      // Sauf les Reels : ils partent un par jour, donc un compte neuf peut
+      // rattraper sans rafale les Shorts déjà tournés.
       next.channels[ch.id] = {
         seededAt: stamp,
-        posted: Object.fromEntries(items.map((it) => [it.id, 'seed'])),
+        posted: Object.fromEntries(items.filter((it) => it.kind !== 'reel').map((it) => [it.id, 'seed'])),
       }
       seeded.push(ch.id)
       continue
     }
     const failed = entry.failed ?? {}
+    // Un Reel par jour d'Erevan et par compte. Compte tout horodatage ISO du
+    // jour — y compris un envoi incertain, que `settle` laisse au registre ;
+    // un échec sûr en est retiré, et son Reel repart donc le jour même.
+    // Ni « seed » ni « abandonné … » ne commencent par un chiffre.
+    const today = yerevanDay(stamp)
+    let reelDone = Object.entries(entry.posted).some(
+      ([id, v]) => id.startsWith('reel:') && /^\d{4}-\d{2}-\d{2}T/.test(v) && yerevanDay(v) === today,
+    )
     const fresh = mine
       .filter((it) => !(it.id in entry.posted))
       .filter((it) => (failed[it.id]?.attempts ?? 0) < MAX_ATTEMPTS)
@@ -239,6 +291,9 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
       .filter((it) => supports(ch.platform, it))
       .filter((it) => it.kind !== 'brief' || ageDays(it.date, now) <= BRIEF_MAX_AGE_DAYS)
       .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))
+      // Avant le plafond : un Reel écarté ne doit pas prendre la place d'un
+      // article.
+      .filter((it) => it.kind !== 'reel' || (!reelDone && (reelDone = true)))
       .slice(0, max)
     for (const it of fresh) {
       entry.posted[it.id] = stamp
@@ -361,10 +416,10 @@ function credit(item, s) {
 // savoir quel réseau vaut l'effort. Le canonical des pages ignore la query,
 // donc rien ne change pour l'indexation. Instagram n'a pas de lien cliquable
 // dans un post (« lien dans la bio ») : son texte reste nu.
-export function tagged(url, platform) {
+export function tagged(url, platform, medium = 'social') {
   const u = new URL(url)
   u.searchParams.set('utm_source', platform)
-  u.searchParams.set('utm_medium', 'social')
+  u.searchParams.set('utm_medium', medium)
   return u.toString()
 }
 
@@ -372,9 +427,14 @@ export function compose(platform, item) {
   const s = STRINGS[item.lang]
   if (!s) throw new Error(`pas de gabarit social en ${item.lang}`)
   const head = `${item.title}\n\n${item.description}`
-  if (platform !== 'instagram') item = { ...item, url: tagged(item.url, platform) }
+  const reel = item.kind === 'reel'
+  if (platform !== 'instagram') item = { ...item, url: tagged(item.url, platform, reel ? 'reel' : 'social') }
   switch (platform) {
     case 'facebook':
+      if (reel) {
+        const tail = [credit(item, s), item.video.music].filter(Boolean).join('\n')
+        return { videoUrl: item.video.url, description: [head, item.url, tail].filter(Boolean).join('\n\n') }
+      }
       return { message: head, link: item.url }
     case 'linkedin':
       return {
@@ -404,8 +464,9 @@ export function compose(platform, item) {
       return { text: `${head}\n\n${item.url}` }
     case 'instagram': {
       const link = `${item.cta ?? s.read}${s.colon}${item.url.replace(/^https:\/\//, '')} (${s.bio})`
-      const parts = [head, link, credit(item, s), s.tags].filter(Boolean)
-      return { imageUrl: item.image.url, caption: truncate(parts.join('\n\n'), 2200) }
+      const parts = [head, link, credit(item, s), reel ? item.video.music : null, s.tags].filter(Boolean)
+      const caption = truncate(parts.join('\n\n'), 2200)
+      return reel ? { videoUrl: item.video.url, caption } : { imageUrl: item.image.url, caption }
     }
     default:
       throw new Error(`plateforme inconnue : ${platform}`)

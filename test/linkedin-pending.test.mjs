@@ -85,3 +85,16 @@ test('le hook sépare LinkedIn et WhatsApp', () => {
   assert.match(msg, /RAPPEL WHATSAPP : 1 publication.*\n- whatsapp-org \(Armenia News\)/)
   assert.match(msg, /publier-whatsapp/)
 })
+
+// Un Reel est une vidéo pour Facebook et Instagram : jamais proposé à la main
+// sur LinkedIn ni WhatsApp, même comme « dernier article » d'un canal neuf.
+test('un Reel n’est jamais proposé sur LinkedIn ni WhatsApp', async () => {
+  const { MANUAL_CHANNELS } = await import('../scripts/lib/linkedin-pending.mjs')
+  const reel = (lang) => ({ ...item('z', '2026-11-05', lang), id: 'reel:z', kind: 'reel', video: { url: 'https://x/fr-z.mp4', music: '♪' } })
+  const all = [...items, reel('fr'), reel('en')]
+  const r = pending({ items: all, ledger: emptyLedger(), kinds: ['culture', 'reel'], channels: MANUAL_CHANNELS })
+  assert.ok(r.posts.length > 0)
+  assert.ok(!r.posts.some((p) => p.item.kind === 'reel'))
+  const again = pending({ items: all, ledger: r.ledger, kinds: ['culture', 'reel'], channels: MANUAL_CHANNELS })
+  assert.ok(!again.posts.some((p) => p.item.kind === 'reel'))
+})
