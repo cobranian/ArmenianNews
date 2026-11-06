@@ -199,11 +199,41 @@ export function checkSocial({ live, accounts, tokens, failures }) {
   return out
 }
 
-export function checkManual({ articles, videos, langs, whatsappChannels }) {
-  const out = []
-  const counts = langs.map((l) => `${l} ${articles.filter((a) => videos[a.slug]?.[l]).length}/${articles.length}`)
-  out.push({ key: 'yt', level: 'info', text: `YouTube (envoi à la main, ~10 par jour et par compte Google) — vidéos par langue : ${counts.join(' · ')}` })
-  out.push({ key: 'wa', level: 'info', text: `WhatsApp (${whatsappChannels} chaînes) et LinkedIn : pas d'API, publiés pendant les séances Claude Code, sur le rappel d'ouverture de séance` })
+export function checkManual({ whatsappChannels }) {
+  return [
+    { key: 'wa', level: 'info', text: `WhatsApp (${whatsappChannels} chaînes) et LinkedIn : pas d'API, publiés pendant les séances Claude Code, sur le rappel d'ouverture de séance` },
+  ]
+}
+
+// Les Shorts. Leur envoi sur YouTube se fait à la main (~10 par jour et par
+// compte Google), donc un retard par langue est normal : c'est une file, pas
+// une panne — une info. Ce qui doit se voir, c'est un article qu'AUCUNE langue
+// n'a encore en vidéo après VIDEO_LATE_DAYS : son Short n'a pas été rendu, et
+// rien d'autre ne le dirait (l'article des Mékhitaristes, 6 nov. 2026).
+// `videos` : src/data/culture-videos.json (slug → langue → entrée).
+export const VIDEO_LATE_DAYS = 3
+export function checkVideos({ articles, videos, langs, now = new Date() }) {
+  const total = articles.length
+  const counts = langs.map((l) => `${l} ${articles.filter((a) => videos[a.slug]?.[l]).length}/${total}`)
+  const complete = langs.filter((l) => articles.every((a) => videos[a.slug]?.[l]))
+  const out = [
+    {
+      key: 'yt',
+      level: complete.length === langs.length ? 'ok' : 'info',
+      text: `YouTube (envoi à la main, ~10 par jour et par compte Google) — Shorts par langue : ${counts.join(' · ')}`,
+    },
+  ]
+  for (const a of articles) {
+    if (Object.keys(videos[a.slug] ?? {}).length) continue
+    const age = days(now, Date.parse(a.date))
+    const late = age >= VIDEO_LATE_DAYS
+    out.push({
+      key: `yt-none-${a.slug}`,
+      level: late ? 'faire' : 'info',
+      text: `${a.slug} : aucun Short, dans aucune langue${late ? ` (article du ${a.date})` : ' — encore récent'}`,
+      ...(late && { action: `Rendre le Short de \`${a.slug}\` dans les 7 langues (projet armenie-video), puis l'envoyer` }),
+    })
+  }
   return out
 }
 

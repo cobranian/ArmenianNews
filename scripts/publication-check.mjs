@@ -35,6 +35,7 @@ import {
   checkDeadlines,
   checkRadios,
   checkFeeds,
+  checkVideos,
   checkIndexing,
   checkScraper,
   scrapeFailures,
@@ -241,8 +242,12 @@ async function feeds() {
 }
 
 async function manual() {
-  const videos = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
-  return checkManual({ articles: await articles(), videos, langs: ALL_LANGS, whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
+  return checkManual({ whatsappChannels: WHATSAPP_CHANNELS.filter((c) => c.url).length })
+}
+
+async function videos() {
+  const list = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
+  return checkVideos({ articles: await articles(), videos: list, langs: ALL_LANGS, now })
 }
 
 const sections = [
@@ -252,6 +257,7 @@ const sections = [
   await guarded('📣 Réseaux (envoi automatique : Facebook, Instagram, Telegram, Bluesky)', social),
   await guarded('📡 Flux RSS', feeds),
   await guarded('📻 Radios', radios),
+  await guarded('🎬 Vidéos', videos),
   await guarded('✋ Publication à la main', manual),
   await guarded('🔎 Référencement', async () => checkIndexing({ google: await googleAccess() })),
   await guarded('📅 Échéances', async () => checkDeadlines(now)),
