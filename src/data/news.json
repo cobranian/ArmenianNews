@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T08:00:36.733Z",
+  "generatedAt": "2026-11-06T08:23:29.567Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -548,6 +548,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Armenia, UK sign 2026-2027 Defense Cooperation Program",
+            "url": "https://en.armradio.am/2026/11/06/armenia-uk-sign-2026-2027-defense-cooperation-program/",
+            "date": "2026-11-06T08:08:09.000Z",
+            "image": "https://en.armradio.am/wp-content/uploads/2026/11/892811143_1472038625079265_6351360213184427746_n-768x576.jpg",
+            "category": "Politics"
+          },
+          {
             "title": "Armenians one step closer to visa-free travel to EU – Marta Kos",
             "url": "https://en.armradio.am/2026/11/05/armenians-one-step-closer-to-visa-free-travel-to-eu-marta-kos/",
             "date": "2026-11-05T13:12:22.000Z",
@@ -608,13 +615,6 @@
             "url": "https://en.armradio.am/2026/11/03/armenian-croatian-prime-ministers-meet-in-brussels/",
             "date": "2026-11-03T11:32:23.000Z",
             "image": "https://en.armradio.am/wp-content/uploads/2026/11/ScreenShot-3885-768x433.jpg",
-            "category": "Politics"
-          },
-          {
-            "title": "Armenian PM off to Brussels for 2026 EU Enlargement Summit",
-            "url": "https://en.armradio.am/2026/11/03/armenian-pm-off-to-brussels-for-2026-eu-enlargement-summit/",
-            "date": "2026-11-03T06:44:28.000Z",
-            "image": "https://en.armradio.am/wp-content/uploads/2026/03/Nikol-Pashinyan-European-Parliament-1-768x512.jpg",
             "category": "Politics"
           }
         ]
@@ -2137,18 +2137,18 @@
           "rubric": "politique"
         },
         {
-          "title": "Turquie : un soldat tué dans des tirs à la frontière avec l’Iran",
-          "url": "https://www.armenews.com/turquie-un-soldat-tue-dans-des-tirs-a-la-frontiere-avec-liran/",
-          "date": "2026-11-06T07:30:50.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-06-a-07.10.06.png",
-          "rubric": "monde"
-        },
-        {
           "title": "Hrazdan, la ville dont les princes sont des enfants, par Myriam Gaume et Max Sivaslian (5)",
           "url": "https://www.armenews.com/hrazdan-la-ville-dont-les-princes-sont-des-enfants-par-myriam-gaume-et-max-sivaslian-5/",
           "date": "2026-11-06T07:30:50.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/11/Vahe-Edgar-01-scaled.jpg",
           "rubric": "societe"
+        },
+        {
+          "title": "Turquie : un soldat tué dans des tirs à la frontière avec l’Iran",
+          "url": "https://www.armenews.com/turquie-un-soldat-tue-dans-des-tirs-a-la-frontiere-avec-liran/",
+          "date": "2026-11-06T07:30:50.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-06-a-07.10.06.png",
+          "rubric": "monde"
         },
         {
           "title": "Selon M. Mirzoyan, une réconciliation totale entre l’Arménie et l’Azerbaïdjan est impossible sans régler les questions des prisonniers de guerre et des personnes disparues.",
@@ -2179,18 +2179,18 @@
           "rubric": "diaspora"
         },
         {
-          "title": "Décryptage – Un avertissement sans détour adressé à l’Arménie depuis Téhéran, par Hakob Badalyan",
-          "url": "https://www.armenews.com/decryptage-un-avertissement-sans-detour-adresse-a-larmenie-depuis-teheran-par-hakob-badalyan/",
-          "date": "2026-11-06T07:30:25.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/HWaHaRJbAAApniR.jpeg",
-          "rubric": "monde"
-        },
-        {
           "title": "Pachinian réaffirme sa volonté de concilier le maintien de l’Arménie au sein de l’Union économique eurasiatique avec son processus d’adhésion à l’Union européenne",
           "url": "https://www.armenews.com/pachinian-reaffirme-sa-volonte-de-concilier-le-maintien-de-larmenie-au-sein-de-lunion-economique-eurasiatique-avec-son-processus-dadhesion-a-lunion-europeenne/",
           "date": "2026-11-06T07:30:25.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-06-a-06.51.16.png",
           "rubric": "politique"
+        },
+        {
+          "title": "Décryptage – Un avertissement sans détour adressé à l’Arménie depuis Téhéran, par Hakob Badalyan",
+          "url": "https://www.armenews.com/decryptage-un-avertissement-sans-detour-adresse-a-larmenie-depuis-teheran-par-hakob-badalyan/",
+          "date": "2026-11-06T07:30:25.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/HWaHaRJbAAApniR.jpeg",
+          "rubric": "monde"
         },
         {
           "title": "Le Jerusalem Post dénonce des accusations de « complot juif » autour du projet TRIPP en Arménie",
@@ -6802,6 +6802,34 @@
         "label": "Վերջին Լուրեր",
         "articles": [
           {
+            "title": "Դադիվանքի Տէր Յովհաննէսը օրհնութիւն կը մատուցի նոյեմբերի 8-ին Գլենդելում կայանալիք հանրահաւաքին",
+            "url": "https://www.oragark.com/hy/dadivank-priest-fr-hovhannes-to-offer-prayers-and-blessing-at-november-8-united-for-artsakh-rally-in-glendale-hye/",
+            "date": "2026-11-06T08:26:08.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/11/ter-hovhannes-ayf-819x1024-1-768x960.jpg",
+            "rubric": "societe"
+          },
+          {
+            "title": "«Կոմպրոմատների մտրակը» եւ «փառասիրութեան քաղցրաբլիթը»",
+            "url": "https://www.oragark.com/hy/the-whip-of-kompromat-and-the-sweet-pancake-of-ambition/",
+            "date": "2026-11-06T08:18:07.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/11/3-300x197.png",
+            "rubric": "economie"
+          },
+          {
+            "title": "Հայաստանի տնտեսական կեանքից դուրս մնացած իրանահայ համայնքը",
+            "url": "https://www.oragark.com/hy/the-iranian-armenian-community-excluded-from-armenias-economic-life/",
+            "date": "2026-11-06T08:11:29.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/11/%D5%8D%D4%BB%D5%8A%D4%B1%D5%86-768x463.jpg",
+            "rubric": "economie"
+          },
+          {
+            "title": "Հայ դատի Ամերիկայի յանձնախմբի աջակցութիւնը վայելող թեկնածուների 90 տոկոսը յաղթել է",
+            "url": "https://www.oragark.com/hy/anca-endorsed-candidates-win-big/",
+            "date": "2026-11-06T08:05:44.000Z",
+            "image": "https://www.oragark.com/wp-content/uploads/2026/11/110426_Midterms_pressrelease_4x3-768x576.jpg",
+            "rubric": "politique"
+          },
+          {
             "title": "ՀՄԸՄ-ի Կենտրոնական վարչութեան լիագումար նիստերը Երեւանում",
             "url": "https://www.oragark.com/hy/homenetmen-central-board-plenary-sessions-in-yerevan/",
             "date": "2026-11-06T07:59:29.000Z",
@@ -6841,34 +6869,6 @@
             "url": "https://www.oragark.com/hy/publication-of-the-armenian-diocese-of-atrpatakan/",
             "date": "2026-11-04T07:25:54.000Z",
             "image": "https://www.oragark.com/wp-content/uploads/2026/11/a1-218x300.png",
-            "rubric": "politique"
-          },
-          {
-            "title": "Միացեալ Նահանգներում տեղի ունեցան միջանկեալ ընտրութիւնները",
-            "url": "https://www.oragark.com/hy/midterm-elections-were-held-in-the-united-states/",
-            "date": "2026-11-04T06:08:04.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/11/download-768x545.jpg",
-            "rubric": "diaspora"
-          },
-          {
-            "title": "ՀՅԴ Արցախի պատանեկան միութեան եռօրեայ սեմինար-բանակում Բիւրականում",
-            "url": "https://www.oragark.com/hy/arf-artsakh-youth-unions-three-day-seminar-camp-in-byurakan/",
-            "date": "2026-11-04T06:00:50.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/11/881793603_18146799067578475_4214200215713882556_n-2048x1365-1-768x512.jpg",
-            "rubric": "societe"
-          },
-          {
-            "title": "Թշնամիները՝ դրսից, Փաշինեանը՝ ներսից․ Հայաստանը սպառնալիքների առջեւ է երկու ճակատում",
-            "url": "https://www.oragark.com/hy/enemies-from-outside-pashinyan-from-within-armenia-faces-threats-on-two-fronts/",
-            "date": "2026-11-03T08:32:45.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/09/harut-sasunyan-768x463.jpg",
-            "rubric": "politique"
-          },
-          {
-            "title": "Գեղամ Մանուկեան. «Սահմանադրութեան փոփոխութեամբ իշխանութիւնը կ՚ընդառաջէ Պաքուի պահանջներուն»",
-            "url": "https://www.oragark.com/hy/by-amending-the-constitution-the-government-is-meeting-bakus-demands/",
-            "date": "2026-11-03T08:30:38.000Z",
-            "image": "https://www.oragark.com/wp-content/uploads/2026/11/Gegham-768x497.jpg",
             "rubric": "politique"
           }
         ]
@@ -9625,6 +9625,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "ՍԴ նախագահ է ընտրվել Վլադիմիր Վարդանյանը",
+            "url": "https://civilnet.am/hy/news/1015230",
+            "date": "2026-11-06T08:24:39.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/06/wM8DRuAolxG6ICmC.webp"
+          },
+          {
             "title": "Փաշինյանը համոզված է, որ Հայաստանի և Թուրքիայի միջև առաջիկայում դիվանագիտական հարաբերություններ կհաստատվեն",
             "url": "https://civilnet.am/hy/news/1015229",
             "date": "2026-11-06T07:48:51.000Z",
@@ -9677,12 +9683,6 @@
             "url": "https://civilnet.am/hy/news/1015208",
             "date": "2026-11-05T09:44:54.000Z",
             "image": "https://civilnet.am/storage/media/26/11/05/sbLwlOSZVRFmjSWm.webp"
-          },
-          {
-            "title": "Գագիկ Ծառուկյանի կալանքը ևս երեք ամսով երկարաձգվեց",
-            "url": "https://civilnet.am/hy/news/1015202",
-            "date": "2026-11-05T07:29:55.000Z",
-            "image": "https://civilnet.am/storage/media/26/11/05/WokDnh2M2iDClwQQ.webp"
           }
         ]
       },
@@ -10773,6 +10773,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Stallone Reveals How His Long-Running Feud with Schwarzenegger Finally Ended — Politics Changed Everything",
+            "url": "https://style.news.am/eng/news/117015/",
+            "date": "2026-11-06T08:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117015.jpg"
+          },
+          {
             "title": "Met Gala 2027: New Theme Sparks Backlash Following John Galliano Exhibition Controversy",
             "url": "https://style.news.am/eng/news/117014/",
             "date": "2026-11-06T07:39:00.000Z",
@@ -10825,12 +10831,6 @@
             "url": "https://style.news.am/eng/news/117011/",
             "date": "2026-11-05T14:49:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117011.jpg"
-          },
-          {
-            "title": "Jude Bellingham’s Calvin Klein Underwear Ad Brings New York Traffic to a Standstill",
-            "url": "https://style.news.am/eng/news/117005/",
-            "date": "2026-11-05T12:18:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117005.jpg"
           }
         ]
       },
@@ -11171,6 +11171,24 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "WSJ. դեմոկրատները ցանկանում են հանրապետականներին իրենց կողմը գրավել Կանադայի նկատմամբ մաքսատուրքերի հարցում",
+            "url": "https://news.am/hy/news/1073029",
+            "date": "2026-11-06T08:21:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/RAvSpQF6nq9Co5cR.webp"
+          },
+          {
+            "title": "Վլադիմիր Վարդանյանն ընտրվեց ՍԴ նախագահ",
+            "url": "https://news.am/hy/news/1073070",
+            "date": "2026-11-06T08:11:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/B5wIJwCUXTJu3e4N.webp"
+          },
+          {
+            "title": "Զելենսկին հայտարարել է Կոնգրեսի ընտրություններում դեմոկրատների հաղթանակից հետո ԱՄՆ-ից 16 միլիարդ դոլարի օգնություն ստանալու մտադրության մասին",
+            "url": "https://news.am/hy/news/1073027",
+            "date": "2026-11-06T08:06:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/aLJAvS8ZKDB2moCM.webp"
+          },
+          {
             "title": "Ես սկանդալային գրառումներ չեմ անում. Շիրակի մարզպետ Դավիթ Առուշանյանը՝ ՌԴ–ի արձագանքին արժանացած իր գրառման մասին",
             "url": "https://news.am/hy/news/1073064",
             "date": "2026-11-06T07:52:00.000Z",
@@ -11211,24 +11229,6 @@
             "url": "https://news.am/hy/news/1073014",
             "date": "2026-11-06T07:20:00.000Z",
             "image": "https://news.am/storage/media/26/11/06/MT8Ws2eG9OZwTEje.webp"
-          },
-          {
-            "title": "Միածինն էլ միամիտ չէր և գիտեր՝ որտեղ իջնի. Փաշինյանը՝ «Իրական Հայաստանի» և Մայր Աթոռի գտնվելու վայրի մասին",
-            "url": "https://news.am/hy/news/1073051",
-            "date": "2026-11-06T07:11:00.000Z",
-            "image": "https://news.am/storage/media/26/11/06/Pv8OZHdEXaEyaPEe.webp"
-          },
-          {
-            "title": "Պենտագոնի ղեկավար Հեգսեթը հայտարարել է, որ կոնգրեսականները չեն կարողանա իրեն իմփիչմենթի ենթարկել",
-            "url": "https://news.am/hy/news/1073013",
-            "date": "2026-11-06T07:05:00.000Z",
-            "image": "https://news.am/storage/media/26/11/06/5qIDS2wp31jp9wZi.webp"
-          },
-          {
-            "title": "Փաշինյանը «Համաշխարհային հայկական գագաթնաժողով 2026»-ին հանդես է գալիս բանախոսությամբ",
-            "url": "https://news.am/hy/news/1073039",
-            "date": "2026-11-06T06:17:52.000Z",
-            "image": "https://i.ytimg.com/vi/3K415XtlByc/hqdefault.jpg?v=6aed7223"
           }
         ]
       },
@@ -11369,6 +11369,18 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "WSJ. դեմոկրատները ցանկանում են հանրապետականներին իրենց կողմը գրավել Կանադայի նկատմամբ մաքսատուրքերի հարցում",
+            "url": "https://news.am/hy/news/1073029",
+            "date": "2026-11-06T08:21:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/RAvSpQF6nq9Co5cR.webp"
+          },
+          {
+            "title": "Էկոնոմիկայի նախարար․ Հայաստանը կատարել և շարունակում է կատարել ԵԱՏՄ-ի առջև ստանձնած բոլոր պարտավորությունները",
+            "url": "https://news.am/hy/news/1073062",
+            "date": "2026-11-06T07:56:32.000Z",
+            "image": "https://news.am/storage/media/26/11/06/lVaGiONpzxlxSutq.webp"
+          },
+          {
             "title": "Թրամփն ազդարարել է առաջիկա շաբաթներին սպասվող «բազմաթիվ իրադարձությունների» մասին",
             "url": "https://news.am/hy/news/1073023",
             "date": "2026-11-06T07:50:00.000Z",
@@ -11415,18 +11427,6 @@
             "url": "https://news.am/hy/news/1072986",
             "date": "2026-11-06T05:55:00.000Z",
             "image": "https://news.am/storage/media/26/11/05/8awUK0F7yTJwYbCt.webp"
-          },
-          {
-            "title": "Brent նավթի գինը բարձրացել է՝ մեկ բարելը 99,66 դոլար",
-            "url": "https://news.am/hy/news/1073025",
-            "date": "2026-11-06T05:50:28.000Z",
-            "image": "https://news.am/storage/media/26/05/19/XspNiO3EE95GcWNS.webp"
-          },
-          {
-            "title": "Սլովակիայի նախագահը հայտարարել է, որ Ուկրաինայի պատերազմը հյուծում է Եվրոպան",
-            "url": "https://news.am/hy/news/1072982",
-            "date": "2026-11-05T20:22:00.000Z",
-            "image": "https://news.am/storage/media/26/11/05/nWMDyqDcW3El0yOE.webp"
           }
         ]
       },
@@ -11434,6 +11434,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Ստալոնեն բացահայտել է, թե ինչպես է ավարտվել Շվարցենեգերի հետ իր երկարատև թշնամությունը. նրա մուտքը քաղաքականություն որոշեց ամեն ինչ",
+            "url": "https://style.news.am/arm/news/117015/",
+            "date": "2026-11-06T08:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117015.jpg"
+          },
           {
             "title": "Met Gala 2027. Ջոն Գալիանոյի հետ կապված սկանդալից հետո նորաձևության աշխարհը պառակտել է պարահանդեսի նոր թեման",
             "url": "https://style.news.am/arm/news/117014/",
@@ -11487,12 +11493,6 @@
             "url": "https://style.news.am/arm/news/117006/",
             "date": "2026-11-05T15:36:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117006.jpg"
-          },
-          {
-            "title": "UFC-ի մարտիկ Մելսիկ Բաղդասարյանը կնկարահանվի Ժան-Կլոդ Վան Դամի նոր մարտաֆիլմում",
-            "url": "https://style.news.am/arm/news/117011/",
-            "date": "2026-11-05T14:49:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117011.jpg"
           }
         ]
       },
@@ -11833,6 +11833,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "WSJ: демократы хотят переманить республиканцев в теме пошлин для Канады",
+            "url": "https://news.am/ru/news/1073029",
+            "date": "2026-11-06T08:21:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/RAvSpQF6nq9Co5cR.webp"
+          },
+          {
             "title": "Зеленский заявил о намерении получить от США $16 миллиардов помощи после победы демократов на выборах в Конгресс",
             "url": "https://news.am/ru/news/1073027",
             "date": "2026-11-06T08:06:00.000Z",
@@ -11849,6 +11855,12 @@
             "url": "https://news.am/ru/news/1073061",
             "date": "2026-11-06T07:47:00.000Z",
             "image": "https://news.am/storage/media/26/11/06/pc3Q8vOGvEtD9aqO.webp"
+          },
+          {
+            "title": "Пашинян: Говорят, в США «police», могут вытащить оружие и выстрелить в лоб, а в Армении выходят в прямой эфир",
+            "url": "https://news.am/ru/news/1073060",
+            "date": "2026-11-06T07:40:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/2cgrYb6rN94NaDKd.webp"
           },
           {
             "title": "В Турции экс-министр оказалась за решеткой",
@@ -11879,18 +11891,6 @@
             "url": "https://news.am/ru/news/1073013",
             "date": "2026-11-06T07:05:00.000Z",
             "image": "https://news.am/storage/media/26/11/06/5qIDS2wp31jp9wZi.webp"
-          },
-          {
-            "title": "В комиссиях парламента Армении продолжается обсуждение проекта госбюджета на 2027 год",
-            "url": "https://news.am/ru/news/1072986",
-            "date": "2026-11-06T05:55:00.000Z",
-            "image": "https://news.am/storage/media/26/11/05/8awUK0F7yTJwYbCt.webp"
-          },
-          {
-            "title": "Трамп вывесил на своем рабочем столе красную кепку с надписью VETO",
-            "url": "https://news.am/ru/news/1073003",
-            "date": "2026-11-06T05:48:00.000Z",
-            "image": "https://news.am/storage/media/26/11/06/mYlQPf0mv8oWxdP9.webp"
           }
         ]
       },
@@ -12031,6 +12031,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "WSJ: демократы хотят переманить республиканцев в теме пошлин для Канады",
+            "url": "https://news.am/ru/news/1073029",
+            "date": "2026-11-06T08:21:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/RAvSpQF6nq9Co5cR.webp"
+          },
+          {
             "title": "Министр экономики: Армения выполнила и продолжает выполнять все свои обязательства перед ЕАЭС",
             "url": "https://news.am/ru/news/1073062",
             "date": "2026-11-06T07:56:32.000Z",
@@ -12083,12 +12089,6 @@
             "url": "https://news.am/ru/news/1072986",
             "date": "2026-11-06T05:55:00.000Z",
             "image": "https://news.am/storage/media/26/11/05/8awUK0F7yTJwYbCt.webp"
-          },
-          {
-            "title": "Нефть Brent подорожала до $99,66 за баррель",
-            "url": "https://news.am/ru/news/1073025",
-            "date": "2026-11-06T05:50:28.000Z",
-            "image": "https://news.am/storage/media/26/05/19/XspNiO3EE95GcWNS.webp"
           }
         ]
       },
@@ -12096,6 +12096,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Сталлоне раскрыл, как закончилась его многолетняя вражда со Шварценеггером: все решил уход в политику",
+            "url": "https://style.news.am/rus/news/117015/",
+            "date": "2026-11-06T08:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117015.jpg"
+          },
           {
             "title": "Met Gala — 2027: новая тема бала расколола модный мир после скандала с Джоном Гальяно",
             "url": "https://style.news.am/rus/news/117014/",
@@ -12149,12 +12155,6 @@
             "url": "https://style.news.am/rus/news/117006/",
             "date": "2026-11-05T15:36:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117006.jpg"
-          },
-          {
-            "title": "Боец UFC Мелсик Багдасарян снимется в новом боевике с Жан-Клодом Ван Даммом",
-            "url": "https://style.news.am/rus/news/117011/",
-            "date": "2026-11-05T14:49:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117011.jpg"
           }
         ]
       },
@@ -12361,6 +12361,12 @@
         "label": "Общество",
         "articles": [
           {
+            "title": "Пашинян: Говорят, в США «police», могут вытащить оружие и выстрелить в лоб, а в Армении выходят в прямой эфир",
+            "url": "https://news.am/ru/news/1073060",
+            "date": "2026-11-06T07:40:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/2cgrYb6rN94NaDKd.webp"
+          },
+          {
             "title": "Министерству труда и благосостояния Армении выделены дополнительные 1,1 млн. долларов",
             "url": "https://news.am/ru/news/1072832",
             "date": "2026-11-05T10:02:02.000Z",
@@ -12413,12 +12419,6 @@
             "url": "https://news.am/ru/news/1071613",
             "date": "2026-10-31T17:00:00.000Z",
             "image": "https://news.am/storage/media/26/10/31/m422SLmhI30dJkSP.webp"
-          },
-          {
-            "title": "В Париже из-за протестов против дороговизны закрыли более 40 станций метро",
-            "url": "https://news.am/ru/news/1071652",
-            "date": "2026-10-31T14:56:00.000Z",
-            "image": "https://news.am/storage/media/26/10/31/Ouc5f41ERPW0caRD.webp"
           }
         ]
       },
