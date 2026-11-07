@@ -651,13 +651,6 @@
         "culture:art-du-tapis-armenien": "2026-11-02T18:32:04.503Z",
         "reel:khatchkar": "2026-11-07T09:05:47.491Z",
         "reel:kochari": "2026-11-07T21:32:48.521Z"
-      },
-      "failed": {
-        "reel:kochari": {
-          "attempts": 1,
-          "last": "2026-11-07T20:33:08.455Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        }
       }
     },
     "facebook-hy": {
@@ -737,13 +730,6 @@
         "culture:art-du-tapis-armenien": "2026-11-02T18:32:04.503Z",
         "reel:khatchkar": "2026-11-07T09:05:47.491Z",
         "reel:kochari": "2026-11-07T21:32:48.521Z"
-      },
-      "failed": {
-        "reel:kochari": {
-          "attempts": 1,
-          "last": "2026-11-07T20:33:08.455Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        }
       }
     },
     "instagram-it": {
