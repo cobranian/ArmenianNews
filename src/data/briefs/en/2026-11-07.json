@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-07",
+  "lang": "en",
+  "generatedAt": "2026-11-07T03:29:18.646Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenia's diplomatic agenda features prominently with border talks with Georgia, Kazakhstan cooperation, and UK defense agreements. Domestic developments include constitutional reforms, judicial appointments, and economic assessments regarding EAEU membership.",
+  "topics": [
+    {
+      "title": "Armenia-Georgia border commissions meet for delimitation talks",
+      "text": "Armenian and Georgian border delimitation and demarcation commissions held a meeting to discuss border issues. The talks represent continued diplomatic engagement between the two neighboring countries.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265034",
+          "title": "Armenian and Georgian border delimitation and demarcation commissions meet"
+        }
+      ]
+    },
+    {
+      "title": "Armenia and Kazakhstan strengthen transport and economic ties",
+      "text": "Armenian and Kazakh officials discussed development of transport hubs and regional connectivity during meetings in Yerevan. Deputy Prime Ministers Mher Grigoryan and Asel Zhanasova reviewed bilateral relations and cooperation prospects.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265020",
+          "title": "Armenia and Kazakhstan discuss development of transport hubs and regional connectivity"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265010",
+          "title": "Mher Grigoryan and Asel Zhanasova discuss Armenia–Kazakhstan relations"
+        }
+      ]
+    },
+    {
+      "title": "Economy minister warns of growth slowdown if Armenia leaves EAEU",
+      "text": "The Economy Minister outlined potential economic slowdown risks should Armenia exit the Eurasian Economic Union. The minister also reported a 51% rise in exports to the EU market, highlighting current trade diversification.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265009",
+          "title": "Economy minister outlines potential slowdown in growth if Armenia leaves EAEU"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265005",
+          "title": "Economy minister reports 51% rise in exports to EU market"
+        }
+      ]
+    },
+    {
+      "title": "Constitutional Reform Council convenes as vice-president resigns",
+      "text": "The Constitutional Reform Council held a regular meeting amid leadership changes at the Constitutional Court. Vice-President Edgar Shatiryan announced his resignation while Vladimir Vardanyan was elected as the new Court President.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265032",
+          "title": "Constitutional Reform Council holds regular meeting"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264989",
+          "title": "Edgar Shatiryan announces resignation as Constitutional Court vice-president"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/06/vladimir-vardanyan-elected-president-of-armenias-constitutional-court/",
+          "title": "Vladimir Vardanyan elected President of Armenia’s Constitutional Court"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1073070",
+          "title": "Vladimir Vardanyan elected President of Constitutional Court"
+        }
+      ]
+    },
+    {
+      "title": "Armenia and UK sign defense cooperation program for 2026-2027",
+      "text": "Armenia and the United Kingdom signed a Defense Cooperation Program covering 2026-2027. Bilateral defense consultations were also held between the two countries, deepening security ties.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/06/armenia-uk-sign-2026-2027-defense-cooperation-program/",
+          "title": "Armenia, UK sign 2026-2027 Defense Cooperation Program"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1073037",
+          "title": "Bilateral defence consultations took place between the Republic of Armenia and the United Kingdom"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan presents 'Real Armenia' vision at Global Armenian Summit",
+      "text": "Prime Minister Nikol Pashinyan presented the 'Real Armenia' vision at the Third Global Armenian Summit, stating 'our state is our identity.' The address outlined the government's strategic perspective on national development.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/06/our-state-is-our-identity-pashinyan-presents-real-armenia-vision-at-third-global-armenian-summit/",
+          "title": "Our state is our identity: Pashinyan presents Real Armenia vision at Third Global Armenian Summit"
+        }
+      ]
+    },
+    {
+      "title": "Armenia announces squad for final Nations League matches",
+      "text": "The Armenian national football team head coach announced the squad for the final two Nations League matches. The announcement comes as Armenia prepares to conclude its Nations League campaign.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170091/",
+          "title": "Nations League: Armenia’s squad announced"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1264975",
+          "title": "Armenia head coach announces squad for final two Nations League matches"
+        }
+      ]
+    }
+  ]
+}

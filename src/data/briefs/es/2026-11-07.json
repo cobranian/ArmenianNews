@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-07",
+  "lang": "es",
+  "generatedAt": "2026-11-07T03:29:18.646Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca los avances en la cooperación regional con Kazajistán, el proceso de demarcación fronteriza con Georgia y las nuevas declaraciones del primer ministro Nikol Pashinyan sobre la relación con la diáspora y la oposición. También se reportan hitos en patrimonio cultural, turismo y cooperación internacional.",
+  "topics": [
+    {
+      "title": "Cooperación estratégica y transporte entre Armenia y Kazajistán",
+      "text": "Autoridades de ambos países analizaron el desarrollo de centros de transporte y la conectividad regional, impulsando la cooperación bilateral en infraestructura estratégica.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-kazajstan-conectividad-transporte-encrucijada-paz/",
+          "title": "Armenia y Kazajstán impulsan la conectividad regional y la cooperación en transporte estratégico"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265020",
+          "title": "Armenia y Kazajistán analizaron el desarrollo de centros de transporte y la conectividad regional"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265010",
+          "title": "Armenia y Kazajistán analizaron el desarrollo de sus relaciones bilaterales"
+        }
+      ]
+    },
+    {
+      "title": "Reanudación de la demarcación fronteriza entre Armenia y Georgia",
+      "text": "Ambos países han reiniciado los trabajos técnicos para delimitar sus fronteras estatales, un proceso clave para la estabilidad regional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-georgia-reunion-delimitacion-fronteras/",
+          "title": "Armenia y Georgia reanudan los trabajos de demarcación de sus fronteras estatales"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan redefine la relación con la diáspora y la consagra en la nueva Constitución",
+      "text": "El primer ministro afirmó que la repatriación será el objetivo final en el borrador constitucional y declaró que el Estado solo puede ofrecerse a sí mismo a la diáspora, en declaraciones realizadas en la Cumbre Mundial Armenia.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-repatriacion-diaspora-constitucion-armenia/",
+          "title": "Nikol Pashinyan afirma que la repatriación de la diáspora será consagrada como el objetivo final en el borrador de la nueva Constitución"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/nikol-pashinyan-en-la-cumbre-mundial-armenia-la-republica-de-armenia-solo-puede-ofrecer-a-la-diaspora-una-cosa-a-si-misma/",
+          "title": "Nikol Pashinyan en la 'Cumbre Mundial Armenia': “La República de Armenia solo puede ofrecer a la diáspora una cosa: a sí misma”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264976",
+          "title": "Nikol Pashinyan: “Armenia redefine hoy sus relaciones con la diáspora”"
+        }
+      ]
+    },
+    {
+      "title": "Armenia retoma la presentación de monumentos a la UNESCO tras tres décadas",
+      "text": "El país reinicia el proceso para incluir nuevos sitios en la Lista del Patrimonio Mundial y ha concedido categoría de monumento a doce estructuras en Ereván y cinco provincias.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-doce-estructuras-historicas-monumento/",
+          "title": "Armenia concede la categoría de monumento a doce estructuras históricas en Ereván y cinco provincias"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-inclusion-monumentos-unesco-patrimonio-mundial/",
+          "title": "Armenia reinicia tras tres décadas el proceso para incluir nuevos monumentos en la Lista del Patrimonio Mundial de la UNESCO"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264959",
+          "title": "Armenia retoma la presentación de monumentos a la UNESCO tras casi 30 años"
+        }
+      ]
+    },
+    {
+      "title": "Crecimiento turístico y exportaciones a la Unión Europea",
+      "text": "Armenia recibió 1,75 millones de turistas entre enero y septiembre, liderados por Rusia, Georgia e Irán, mientras las exportaciones a la UE aumentaron un 51 % según el ministro de Economía.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-turistas-rusia-georgia-iran-2026/",
+          "title": "Armenia recibió a 1,75 millones de turistas entre enero y septiembre de 2026: Rusia, Georgia e Irán lideran los flujos de visitantes"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265005",
+          "title": "Ministro de Economía informa de un aumento del 51% en las exportaciones a la Unión Europea"
+        }
+      ]
+    },
+    {
+      "title": "Avances hacia la exención de visados con la UE y cooperación en defensa con el Reino Unido",
+      "text": "La UE y Armenia progresan en la liberalización de visados con la implementación de pasaportes biométricos, y se acordó un programa de cooperación en defensa con el Reino Unido para 2026-2027.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-union-europea-visados-pasaportes-biometricos/",
+          "title": "La Unión Europea y Armenia avanzan hacia la exención de visados con la implantación de los nuevos pasaportes biométricos"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1264970",
+          "title": "Armenia y el Reino Unido acuerdan un programa de cooperación en defensa para 2026-2027"
+        }
+      ]
+    },
+    {
+      "title": "Tensión política interna: Pashinyan califica de \"antiestatal\" a la alianza opositora",
+      "text": "El primer ministro acusó a la oposición de buscar encubrir un desfalco millonario en la empresa ENA, mientras un estudio revela el desplazamiento de las instituciones por las redes sociales en la política armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/estudio-redes-sociales-politica-armenia-2026/",
+          "title": "Un estudio del Centro de Investigación Regional revela cómo las redes sociales desplazan a las instituciones en la política armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-oposicion-antiestatal-ena-2026/",
+          "title": "Nikol Pashinyan tilda de “antiestatal” la alianza opositora y asegura que busca encubrir el desfalco millonario de ENA"
+        }
+      ]
+    }
+  ]
+}

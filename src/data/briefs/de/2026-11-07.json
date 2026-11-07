@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-07",
+  "lang": "de",
+  "generatedAt": "2026-11-07T03:29:18.646Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über den Weltarmenischen Gipfel, die Beziehungen zu Nachbarstaaten sowie wirtschaftliche und kulturelle Entwicklungen.",
+  "topics": [
+    {
+      "title": "Weltarmenischer Gipfel: Identität und Diaspora",
+      "text": "Premierminister Nikol Paschinjan stellte die Ideologie des „wahren Armenien“ vor, die den Schutz der nationalen Identität zum Ziel hat. Er rief zudem zu einer Neugestaltung der Beziehungen zwischen Armenien und seiner Diaspora auf.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-je-suis-convaincu-que-larmenie-et-la-turquie-etabliront-des-relations-diplomatiques-prochainement/",
+          "title": "Nikol Pachinian : Je suis convaincu que l’Arménie et la Turquie établiront des relations diplomatiques prochainement"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-lors-du-3e-sommet-mondial-pan-armenien-affirme-lideologie-de-la-veritable-armenie-vise-a-proteger-notre-identite/",
+          "title": "Nikol Pachinian lors du 3e Sommet mondial pan-arménien affirme : l’idéologie de la « véritable Arménie » vise à protéger notre identité"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/sommet-mondial-armenien-nikol-pashinyan-appelle-repenser-les-relations-entre-larmenie-et-sa-diaspora",
+          "title": "Sommet mondial arménien : Nikol Pashinyan appelle à repenser les relations entre l’Arménie et sa diaspora"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/sommet-mondial-armenien-pachinian-etat-identite-nationale/",
+          "title": "Sommet mondial arménien : Pachinian place l’État au cœur de l’identité nationale"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264958",
+          "title": "Le Premier ministre a présenté l’idéologie de l’Arménie réelle lors du Sommet mondial arménien"
+        }
+      ]
+    },
+    {
+      "title": "Grenzkommission mit Georgien tagt",
+      "text": "Die zuständigen Kommissionen Armeniens und Georgiens haben eine Sitzung zur Abgrenzung und Markierung der gemeinsamen Staatsgrenze abgehalten. Ziel ist die Fortsetzung des bilateralen Abgrenzungsprozesses.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265034",
+          "title": "Une réunion des commissions chargées de la délimitation et de la démarcation de la frontière d’État entre l’Arménie et la Géorgie s’est tenue"
+        }
+      ]
+    },
+    {
+      "title": "Verstärkte Zusammenarbeit mit Kasachstan",
+      "text": "Armenien und Kasachstan haben die Entwicklung von Transportkorridoren und regionaler Konnektivität erörtert. Vizepremierminister Mher Grigorjan und Assel Schanassowa besprachen konkrete Kooperationsfragen.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265020",
+          "title": "L’Arménie et le Kazakhstan ont examiné le développement des plateformes de transport et de la connectivité régionale"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265010",
+          "title": "Mher Grigoryan et Assel Zhanassova ont examiné des questions relatives aux relations entre l’Arménie et le Kazakhstan"
+        }
+      ]
+    },
+    {
+      "title": "Wirtschaftliche Perspektiven und EU-Handel",
+      "text": "Der Wirtschaftsminister warnte vor einem möglichen Wachstumsrückzug bei einem Austritt aus der Eurasischen Wirtschaftsunion. Gleichzeitig stiegen die Exporte in die Europäische Union im Vergleich zum Vorjahr um 51 Prozent.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265009",
+          "title": "Le ministre de l’Économie a présenté l’ampleur du possible ralentissement de la croissance économique en cas de retrait de l’UEE"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265005",
+          "title": "Le ministre de l’Économie a fait état d’une hausse de 51 % des exportations vers le marché de l’Union européenne"
+        }
+      ]
+    },
+    {
+      "title": "Kulturdenkmäler neu unter Schutz gestellt",
+      "text": "Zwölf historische und kulturelle Bauwerke in Armenien erhielten den Status von Denkmälern. Nach fast 30 Jahren Unterbrechung nahm Armenien zudem die Nominierung von Stätten für die UNESCO-Vorschlagsliste wieder auf.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/douze-edifices-historiques-et-culturels-en-armenie-viennent-detre-classes-monuments-historiques/",
+          "title": "Douze édifices historiques et culturels en Arménie, viennent d’être classés monuments historiques"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264959",
+          "title": "Après près de 30 ans d’interruption, l’inscription de monuments arméniens sur la liste indicative de l’UNESCO a repris"
+        }
+      ]
+    },
+    {
+      "title": "Neue Goethe-Institut-Stelle in Jerewan eröffnet",
+      "text": "Das Goethe-Institut hat ein neues Büro in der armenischen Hauptstadt eröffnet. Die Einrichtung soll den kulturellen Austausch und die deutsche Sprache fördern.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ouverture-du-nouveau-bureau-de-linstitut-goethe-a-erevan/",
+          "title": "Ouverture du nouveau bureau de l’Institut Goethe à Erevan"
+        }
+      ]
+    },
+    {
+      "title": "Verteidigungszusammenarbeit mit Grossbritannien",
+      "text": "Armenien und das Vereinigte Königreich unterzeichneten ein Kooperationsprogramm im Verteidigungsbereich für die Jahre 2026 bis 2027. Die Vereinbarung regelt gemeinsame Ausbildungs- und Planungsmassnahmen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1264970",
+          "title": "L’Arménie et le Royaume-Uni signent le programme de coopération dans le domaine de la défense pour 2026-2027"
+        }
+      ]
+    }
+  ]
+}
