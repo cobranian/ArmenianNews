@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07T15:23:30.876Z",
+  "generatedAt": "2026-11-07T15:47:13.371Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -3165,6 +3165,13 @@
       "categoryKey": "non-classe",
       "articles": [
         {
+          "title": "Les joueurs d’échecs arméniens remportent des places primées",
+          "url": "https://armenieinfo.tv/les-joueurs-dechecs-armeniens-remportent-des-places-primees/",
+          "date": "2026-11-07T15:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794018849-8029.jpg",
+          "rubric": "sports"
+        },
+        {
           "title": "Quitter l’UEE pourrait réduire la croissance économique de l’Arménie de 0,65 point de pourcentage, selon Papoyan",
           "url": "https://armenieinfo.tv/quitter-luee-pourrait-reduire-la-croissance-economique-de-larmenie-de-065-point-de-pourcentage-selon-papoyan/",
           "date": "2026-11-07T11:30:00.000Z",
@@ -3212,13 +3219,6 @@
           "date": "2026-11-05T07:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793788490-9951.jpg",
           "rubric": "politique"
-        },
-        {
-          "title": "Mkhitaryan dépasse Messi, Buffon et Müller",
-          "url": "https://armenieinfo.tv/mkhitaryan-depasse-messi-buffon-et-muller/",
-          "date": "2026-11-05T06:00:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1793788505-4546.jpg",
-          "rubric": "sports"
         }
       ]
     }
@@ -5137,6 +5137,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Armenia participa en la 9ª Exposición Internacional de Importaciones de China",
+            "url": "https://armenpress.am/es/article/1265061",
+            "date": "2026-11-07T15:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/07/cT2OKpr8B7jEjN6llU3ZHEA552pzfMcVyFNnzZe3.webp"
+          },
+          {
+            "title": "“Debemos dejarles paz como legado a nuestros hijos, no venganza”: Alen Simonyan",
+            "url": "https://armenpress.am/es/article/1265057",
+            "date": "2026-11-07T15:31:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/07/tYlPqS5MaCodlyOJNha1mzTbVMh9r7v2zrB4u1pi.webp"
+          },
+          {
+            "title": "“Mi tarea es entregar a las nuevas generaciones una Armenia con sus territorios internacionalmente reconocidos y fronteras abiertas”: Nikol Pashinyan",
+            "url": "https://armenpress.am/es/article/1265052",
+            "date": "2026-11-07T15:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/07/q1yIDt3iOzXIHo86xn48G0RuE4nwkSN2iNGgy0IB.webp"
+          },
+          {
             "title": "Estados Unidos, Armenia y Azerbaiyán avanzan en la implementación del TRIPP",
             "url": "https://armenpress.am/es/article/1265044",
             "date": "2026-11-07T15:22:00.000Z",
@@ -5177,30 +5195,18 @@
             "url": "https://armenpress.am/es/article/1265009",
             "date": "2026-11-06T12:54:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/06/MW5Y996y6QauqXkVZwPXcOrk0zDAtSp1tq5HyVxh.webp"
-          },
-          {
-            "title": "Ministro de Economía informa de un aumento del 51% en las exportaciones a la Unión Europea",
-            "url": "https://armenpress.am/es/article/1265005",
-            "date": "2026-11-06T12:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/06/mzgvfnNuma7FxQ7WOUgrfvVaZ83ohZej1RZi6DHJ.webp"
-          },
-          {
-            "title": "Armenia y Chipre firman un memorando de entendimiento en educación, deporte y juventud",
-            "url": "https://armenpress.am/es/article/1264980",
-            "date": "2026-11-06T09:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/06/xzuzzYPyVKM8xGS3OKBh3yhASFJCKIk4E48ElIYn.webp"
-          },
-          {
-            "title": "Nikol Pashinyan: “Armenia redefine hoy sus relaciones con la diáspora”",
-            "url": "https://armenpress.am/es/article/1264976",
-            "date": "2026-11-06T09:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/06/Q4csgE5khU6pgBS1aTeKR2tj10Z7ezwg4cPGT1Jd.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Armenia participa en la 9ª Exposición Internacional de Importaciones de China",
+            "url": "https://armenpress.am/es/article/1265061",
+            "date": "2026-11-07T15:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/07/cT2OKpr8B7jEjN6llU3ZHEA552pzfMcVyFNnzZe3.webp"
+          },
           {
             "title": "Armenia y Kazajistán analizaron el desarrollo de centros de transporte y la conectividad regional",
             "url": "https://armenpress.am/es/article/1265020",
@@ -5254,12 +5260,6 @@
             "url": "https://armenpress.am/es/article/1264511",
             "date": "2026-11-02T14:27:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/02/iJCe3xGAehRlRNeFsTVGbh6Ccc9N1X887pWugMGJ.webp"
-          },
-          {
-            "title": "Sevak Mikayelyan fue elegido miembro del Consejo del Banco Central",
-            "url": "https://armenpress.am/es/article/1264313",
-            "date": "2026-10-30T09:32:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/30/UPOzwsabDMpksZIzjutIKakqcbRNOe9lguQmt5bI.webp"
           }
         ]
       },
@@ -5397,6 +5397,12 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "La pesista Emma Poghosyan terminó octava en el Mundial de Halterofilia",
+            "url": "https://armenpress.am/es/article/1265072",
+            "date": "2026-11-07T15:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/07/iqkp9yx29EBEpve3suSIOYpW18lDmczhgBqht356.webp"
+          },
+          {
             "title": "Armenia contará con dos representantes en el Mundial de Halterofilia",
             "url": "https://armenpress.am/es/article/1265040",
             "date": "2026-11-07T15:20:00.000Z",
@@ -5449,12 +5455,6 @@
             "url": "https://armenpress.am/es/article/1264683",
             "date": "2026-11-04T06:45:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/04/zk4qRJOwSq97uf2GXU7aZ6qrGylTcClJw0b5nSba.webp"
-          },
-          {
-            "title": "Tiradora Elmira Karapetyan ganó medalla de plata en el Campeonato Mundial de Tiro",
-            "url": "https://armenpress.am/es/article/1264680",
-            "date": "2026-11-04T05:25:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/04/s2f5lykxzLST2J7jfw06bfbRtiS9tuvxRB8cgJXH.webp"
           }
         ]
       },
@@ -6145,7 +6145,7 @@
             "title": "Հայ Դատը Կ՛ընդդիմանայ ՄԱԿի Ընդհանուր Քարտուղարի Պաշտօնին Առաջադրուած Թուրքիոյ Թեկնածուին",
             "url": "https://asbarez.am/archives/512232",
             "date": "2026-11-06T23:11:28.000Z",
-            "image": null
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/06150936/cropped-ANC-International-Website-Header-3-2-1.png"
           },
           {
             "title": "Արցախի Ուսանողներուն Ի Նպաստ Ձեռնարկ Փասատինայի Մէջ",
@@ -6257,7 +6257,7 @@
             "title": "«Մասիս Քեպապ»ը Տօնեց Իր Յիսնամեակը Եւ Մասնաճիւղ Մը Բացաւ Հոլիվուտ-Պըրպենք Օդակայանին Մէջ",
             "url": "https://asbarez.am/archives/512171",
             "date": "2026-11-06T19:58:30.000Z",
-            "image": null
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/06114805/1106Masis-50th1.jpeg"
           },
           {
             "title": "Էտուըրտ Եւ Փեմըլա Աւետիսեաններ Եւ Սեւ Օհանեան Պիտի Մեծարուին COAF-ի 23րդ Տարեկան Ձեռնարկին Ընթացքին",
@@ -6281,13 +6281,13 @@
             "title": "Հայ Դատի Զօրակցութիւնը Ապահոված Թեկնածուներուն 90 Տոկոսը Յաղթանակներ Արձանագրեց Միջանկեալ Ընտրութիւններուն",
             "url": "https://asbarez.am/archives/512079",
             "date": "2026-11-05T19:20:54.000Z",
-            "image": null
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/05112206/1105Midterms_pressrelease.jpg"
           },
           {
             "title": "Ընտրական Ջախջախիչ Յաղթանակէն Ետք Դեմոկրատները Իրենց Վերահսկողութեան Տակ Պիտի Առնեն Քոնկրեսը",
             "url": "https://asbarez.am/archives/512026",
             "date": "2026-11-04T23:18:36.000Z",
-            "image": null
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/11/04140257/1104elect.jpg"
           },
           {
             "title": "«Ատրպէյճան Կը Փորձէ Երաշխաւորել Անպատժելիութիւնը». Սիրանոյշ Սահակեան՝ Միջազգային Դատերուն Մասին",
@@ -6399,7 +6399,7 @@
             "title": "Զաւէն Խանճեանի Գրութիւններն Ու Յօդուածները Ամփոփուեցան Տպաւորիչ Նոր Հատորի Մը Մէջ",
             "url": "https://asbarez.am/archives/511724",
             "date": "2026-10-30T18:52:08.000Z",
-            "image": null,
+            "image": "https://media.asbarez.am/wp-content/uploads/2026/10/30141813/1030Zavan-4.jpg",
             "rubric": "culture"
           },
           {
@@ -9633,6 +9633,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Ադրբեջանը չի ցանկանում խաղաղության պայմանագիր ստորագրել գործող Սահմանադրության պայմաններում․ Փաշինյան",
+            "url": "https://civilnet.am/hy/news/1015262",
+            "date": "2026-11-07T15:43:02.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/07/L7ccMZZe2srHzgDb.webp"
+          },
+          {
             "title": "ԱԺ վարչատնտեսական վարչության պետի նկատմամբ ծառայողական քննություն կանցկացվի",
             "url": "https://civilnet.am/hy/news/1015258",
             "date": "2026-11-07T08:28:45.000Z",
@@ -9685,12 +9691,6 @@
             "url": "https://civilnet.am/hy/news/1015236",
             "date": "2026-11-06T11:02:33.000Z",
             "image": "https://civilnet.am/storage/media/26/11/06/7O8DjZz0BVGW7Ihk.webp"
-          },
-          {
-            "title": "ՍԴ նախագահ է ընտրվել Վլադիմիր Վարդանյանը",
-            "url": "https://civilnet.am/hy/news/1015230",
-            "date": "2026-11-06T08:24:39.000Z",
-            "image": "https://civilnet.am/storage/media/26/11/06/wM8DRuAolxG6ICmC.webp"
           }
         ]
       },
