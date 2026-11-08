@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T15:23:29.371Z",
+  "generatedAt": "2026-11-08T16:23:25.971Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1157,6 +1157,13 @@
             "category": "Կարևոր"
           },
           {
+            "title": "Ավարտվել է Հայկական ռադիոյի 100-ամյակին նվիրված միջազգային մեդիա կոնֆերանսը",
+            "url": "https://hy.armradio.am/archives/769331",
+            "date": "2026-11-08T13:49:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/hr-100-768x535.jpg",
+            "category": "Հայկական ռադիո 100"
+          },
+          {
             "title": "Սպասվում են տեղումներ",
             "url": "https://hy.armradio.am/archives/769316",
             "date": "2026-11-08T12:04:32.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/769211",
             "date": "2026-11-07T10:09:31.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/8804b387-5870-475b-b4bc-006900a5f120-1-768x512.jpeg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Կանադական թխկիներ Կոմիտասի անվան զբոսայգում. Հայաստանն ու Կանադան ամրապնդում են կապերը խորհրդանշական ծառատունկով",
-            "url": "https://hy.armradio.am/archives/769208",
-            "date": "2026-11-07T09:53:02.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/QIP-Shot-Screen-3826-300x169.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2130,6 +2130,13 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "J’espère obtenir des résultats concrets à l’issue du processus de normalisation des relations avec l’Arménie affirme Aliyev à Chouchi en Artsakh occupé",
+          "url": "https://www.armenews.com/jespere-obtenir-des-resultats-concrets-a-lissue-du-processus-de-normalisation-des-relations-avec-larmenie-affirme-aliyev-a-chouchi-en-artsakh-occupe/",
+          "date": "2026-11-08T16:04:00.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/8896.png",
+          "rubric": "politique"
+        },
+        {
           "title": "Exercices militaires des unités de défense anti-aérienne de l’Armée arménienne avec le système de missiles « Scorpion »",
           "url": "https://www.armenews.com/exercices-militaires-des-unites-de-defense-anti-aerienne-de-larmee-armenienne-avec-le-systeme-de-missiles-scorpion/",
           "date": "2026-11-08T12:36:06.000Z",
@@ -2191,19 +2198,18 @@
           "date": "2026-11-08T07:30:21.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-07-a-07.31.38.png",
           "rubric": "politique"
-        },
-        {
-          "title": "Le Fonds arménien de France mobilise ses bénévoles pour faire revivre le Syunik",
-          "url": "https://www.armenews.com/le-fonds-armenien-de-france-mobilise-ses-benevoles-pour-faire-revivre-le-syunik/",
-          "date": "2026-11-08T07:30:19.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/DSC09786-scaled.jpg",
-          "rubric": "economie"
         }
       ]
     },
     {
       "categoryKey": "sport",
       "articles": [
+        {
+          "title": "Le drapeau des Championnats du monde d’haltérophilie de la Fédération internationale d’haltérophilie a été transféré à Arménie qui organisera les compétitions mondiales en 2027",
+          "url": "https://www.armenews.com/le-drapeau-des-championnats-du-monde-dhalterophilie-de-la-federation-internationale-dhalterophilie-a-ete-transfere-a-armenie-qui-organisera-les-competitions-mondiales-en-2027/",
+          "date": "2026-11-08T15:57:34.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/8975.jpg"
+        },
         {
           "title": "Varazdat Lalayan (Arménie) décroche le bronze aux Championnats du monde d’haltérophilie à Ningbo (Chine)",
           "url": "https://www.armenews.com/varazdat-lalayan-armenie-decroche-le-bronze-aux-championnats-du-monde-dhalterophilie-a-ningbo-chine/",
@@ -2257,12 +2263,6 @@
           "url": "https://www.armenews.com/vazgen-tevanyan-armenie-est-vice-champion-du-monde-de-lutte-libre-a-astana-kazakhstan/",
           "date": "2026-10-30T15:08:39.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/9896-1.jpg"
-        },
-        {
-          "title": "Samvel Gevorgyan : Nous rêvions depuis longtemps d’une médaille d’or avec Karen Aslanyan",
-          "url": "https://www.armenews.com/samvel-gevorgyan-nous-revions-depuis-longtemps-dune-medaille-dor-avec-karen-aslanyan/",
-          "date": "2026-10-30T09:47:36.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/10/7885-3.jpg"
         }
       ]
     },
@@ -4183,6 +4183,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Արարատ Միրզոյանն աշխատանքային այցով կմեկնի Էստոնիա",
+            "url": "https://armenpress.am/hy/article/1265097",
+            "date": "2026-11-08T16:21:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/08/DfI3ao6lCWWN36fVrpkGioeDrZtlxHOgMCz9atWT.webp"
+          },
+          {
             "title": "Հոգեբուժարանում հաշվառված անձը կասկածվում է 29-ամյա երիտասարդին դանակահարելու և սպանելու մեջ․ Ոստիկանությունը ձերբակալել է կասկածյալին",
             "url": "https://armenpress.am/hy/article/1265096",
             "date": "2026-11-08T13:55:00.000Z",
@@ -4235,12 +4241,6 @@
             "url": "https://armenpress.am/hy/article/1265087",
             "date": "2026-11-08T08:17:49.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/08/D4jH6NS7b11ZP1lmXJLfrrPfgNpCoGuFxJUGtuqF.webp"
-          },
-          {
-            "title": "Լրագրողների անվտանգությունը՝ աղետների լուսաբանման առաջնահերթություն․ ՀԿԽԸ-ն անցկացրեց երկօրյա դասընթաց",
-            "url": "https://armenpress.am/hy/article/1265086",
-            "date": "2026-11-08T08:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/08/2CZd6QdRlSSeifZYLR3Z8ohjPpFbIiUb9IqbISSA.webp"
           }
         ]
       },
@@ -10781,6 +10781,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Armenian Heritage in the World of Luxury: From Petrossian Caviar to a Schiaparelli Sweater",
+            "url": "https://style.news.am/eng/news/117040/",
+            "date": "2026-11-08T15:37:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117040.jpg"
+          },
+          {
             "title": "Richard Branson and Ray Dalio Have No Tolerance for Office Gossip: Why Some Billionaires Are Willing to Fire Employees Over It",
             "url": "https://style.news.am/eng/news/117037/",
             "date": "2026-11-07T14:18:00.000Z",
@@ -10833,12 +10839,6 @@
             "url": "https://style.news.am/eng/news/117030/",
             "date": "2026-11-07T06:30:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117030.jpg"
-          },
-          {
-            "title": "Kering’s Creative Shake-Up: Pierpaolo Piccioli Exits Balenciaga After Two Other Designers Leave",
-            "url": "https://style.news.am/eng/news/117027/",
-            "date": "2026-11-06T19:01:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117027.jpg"
           }
         ]
       },
@@ -11179,6 +11179,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Ինչպես են համաշխարհային առաջնորդներն արձագանքել Կրակովի զանգվածային սպանությանը",
+            "url": "https://news.am/hy/news/1073490",
+            "date": "2026-11-08T16:22:00.000Z",
+            "image": "https://news.am/storage/media/26/11/07/G5rUQIfGr4uQ48dn.webp"
+          },
+          {
+            "title": "Ամստերդամում 200 հազար մարդ է դուրս եկել ցույցի՝ ընդդեմ Իսրայելի նկատմամբ Նիդերլանդների քաղաքականության",
+            "url": "https://news.am/hy/news/1073489",
+            "date": "2026-11-08T16:07:00.000Z",
+            "image": "https://news.am/storage/media/26/11/08/PD2DvWBLzLXbf1DL.webp"
+          },
+          {
             "title": "Կանարյան կղզիներում արտակարգ իրավիճակ է հայտարարվել միգրանտների հոսքի պատճառով․ Իսպանիայի վարչապետը արտահերթ նիստ կհրավիրի",
             "url": "https://news.am/hy/news/1073486",
             "date": "2026-11-08T15:21:00.000Z",
@@ -11225,18 +11237,6 @@
             "url": "https://news.am/hy/news/1073473",
             "date": "2026-11-08T13:25:00.000Z",
             "image": "https://news.am/storage/media/26/08/11/TkkHKs0cY3cP2FOG.webp"
-          },
-          {
-            "title": "Իսրայելի պաշտպանության նախարար․ Իրանը չի հրաժարվել միջուկային զենք ձեռք բերելու ծրագրերից",
-            "url": "https://news.am/hy/news/1073457",
-            "date": "2026-11-08T12:54:00.000Z",
-            "image": "https://news.am/storage/media/26/04/30/qmUlOLm9xCj0gp9j.webp"
-          },
-          {
-            "title": "Էրդողանն ու Ալիևը հայտարարել են Թուրքիայի և Ադրբեջանի «անսասան դաշինքի» մասին",
-            "url": "https://news.am/hy/news/1073468",
-            "date": "2026-11-08T12:31:45.000Z",
-            "image": "https://news.am/storage/media/26/11/08/VWZISZyU50x5dpNC.webp"
           }
         ]
       },
@@ -11311,6 +11311,30 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Միլանն» ուժեղ էր «Ջենոայից», «Ատալանտան»՝ «Մոնցայից» (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/170133/",
+            "date": "2026-11-08T16:09:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170133.jpg"
+          },
+          {
+            "title": "«Բրայթոնի» եւ «Լիվերպուլի» հաղթանակները, «Չելսիի» պարտությունը (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/170132/",
+            "date": "2026-11-08T16:01:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170132.jpg"
+          },
+          {
+            "title": "«Ինտերի» մեկնարկային կազմը",
+            "url": "https://sport.news.am/arm/news/170131/",
+            "date": "2026-11-08T15:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170131.jpg"
+          },
+          {
+            "title": "Մանուել Նոյերը չի խաղա 2 ամիս",
+            "url": "https://sport.news.am/arm/news/170130/",
+            "date": "2026-11-08T15:22:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170130.jpg"
+          },
+          {
             "title": "«Նապոլին» ու «Լացիոն» խաղացին ոչ ոքի (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/170129/",
             "date": "2026-11-08T13:30:00.000Z",
@@ -11329,7 +11353,7 @@
             "image": "https://sport.news.am/static/news/s/2026/11/170127.jpg"
           },
           {
-            "title": "Ծանրամրատի ԱԱ․ Հայաստանի հավաքականի ձախողումը՝ երկամարտի մեկ բրոնզե մեդալով",
+            "title": "Ծանրամարտի ԱԱ․ Հայաստանի հավաքականի ձախողումը՝ երկամարտի մեկ բրոնզե մեդալով",
             "url": "https://sport.news.am/arm/news/170126/",
             "date": "2026-11-08T10:03:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170126.jpg"
@@ -11345,30 +11369,6 @@
             "url": "https://sport.news.am/arm/news/170124/",
             "date": "2026-11-08T07:10:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170124.jpg"
-          },
-          {
-            "title": "ՄԼՍ․ 1/8 եզրափակիչի զույգերը",
-            "url": "https://sport.news.am/arm/news/170123/",
-            "date": "2026-11-08T07:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170123.jpg"
-          },
-          {
-            "title": "ՄԼՍ․ Մեսին՝ 26 գոլով «Ոսկե խաղակոշիկի» դափնեկիր (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/170122/",
-            "date": "2026-11-08T06:43:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170122.jpg"
-          },
-          {
-            "title": "Օրվա հանդիպումների անոնս",
-            "url": "https://sport.news.am/arm/news/170118/",
-            "date": "2026-11-08T05:07:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170118.jpg"
-          },
-          {
-            "title": "«Ռեալը» պարտության մատնեց «Վալենսիային» (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/170121/",
-            "date": "2026-11-07T21:58:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170121.jpg"
           }
         ]
       },
@@ -11443,6 +11443,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Հայկական ԴՆԹ-ն լյուքսի աշխարհում. Petrossian խավիարից մինչև Schiaparelli-ի սվիտեր",
+            "url": "https://style.news.am/arm/news/117040/",
+            "date": "2026-11-08T15:37:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117040.jpg"
+          },
+          {
             "title": "Թույլ նյարդեր ունեցողների համար չէ. լոգանքի տհաճ սովորությունը կօգնի ավելի հազվադեպ հիվանդանալ",
             "url": "https://style.news.am/arm/news/117039/",
             "date": "2026-11-08T14:22:00.000Z",
@@ -11495,12 +11501,6 @@
             "url": "https://style.news.am/arm/news/117035/",
             "date": "2026-11-07T12:37:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117035.jpg"
-          },
-          {
-            "title": "Ջեսիկա Սիմփսոնի սեքսուալ վերածնունդը. 46-ամյա աստղը խելքահան է լինում երիտասարդ սիրելիի համար",
-            "url": "https://style.news.am/arm/news/117034/",
-            "date": "2026-11-07T11:29:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117034.jpg"
           }
         ]
       },
@@ -11641,6 +11641,24 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Ինչպես են համաշխարհային առաջնորդներն արձագանքել Կրակովի զանգվածային սպանությանը",
+            "url": "https://news.am/hy/news/1073490",
+            "date": "2026-11-08T16:22:00.000Z",
+            "image": "https://news.am/storage/media/26/11/07/G5rUQIfGr4uQ48dn.webp"
+          },
+          {
+            "title": "Եգիպտոսում երկու գնացքների բախման հետևանքով չորս մարդ է զոհվել, 88-ը՝ տուժել",
+            "url": "https://news.am/hy/news/1073504",
+            "date": "2026-11-08T16:11:32.000Z",
+            "image": "https://news.am/storage/media/26/11/08/7Fy9XlZwvCFo31HT.webp"
+          },
+          {
+            "title": "Գերմանիայում ավտոբուսը վրաերթի է ենթարկել արոտավայրից փախած ուղտին",
+            "url": "https://news.am/hy/news/1073488",
+            "date": "2026-11-08T15:51:00.000Z",
+            "image": "https://news.am/storage/media/26/11/08/E7tjyLaLmwxcNKIp.webp"
+          },
+          {
             "title": "Ընտանիքների հետ ճաշող բժիշկները Կրակովում հրաձգությունից հետո շտապել են փրկել մարդկանց",
             "url": "https://news.am/hy/news/1073491",
             "date": "2026-11-08T14:54:00.000Z",
@@ -11681,24 +11699,6 @@
             "url": "https://news.am/hy/news/1073459",
             "date": "2026-11-08T11:49:18.000Z",
             "image": "https://news.am/storage/media/26/11/03/H40GCffZMiZ0XVM3.webp"
-          },
-          {
-            "title": "«Անպատկերացնելի և միանգամայն խորթ». ԱՄՆ դեսպանն անդրադարձել է Կրակովում տեղի ունեցած զանգվածային սպանությանը",
-            "url": "https://news.am/hy/news/1073458",
-            "date": "2026-11-08T11:40:53.000Z",
-            "image": "https://news.am/storage/media/26/11/08/S2dGaHHVVXGv05mA.webp"
-          },
-          {
-            "title": "Ալբանիայի ոստիկանությունը Տիրանայում ջրցան մեքենաներով ցրել է ցուցարարներին՝ Մոլոտովի կոկտեյլներով հարձակումներից հետո",
-            "url": "https://news.am/hy/news/1073443",
-            "date": "2026-11-08T11:23:00.000Z",
-            "image": "https://news.am/storage/media/26/11/08/Lkh9pQNZoRfJDJzm.webp"
-          },
-          {
-            "title": "AFP. Էր Ռիադում հութիների հրթիռային հարձակումից վնասվել է Aramco-ի աշտարակը",
-            "url": "https://news.am/hy/news/1073433",
-            "date": "2026-11-08T08:57:16.000Z",
-            "image": "https://news.am/storage/media/26/11/08/ONenKsIuJIbtUIC8.webp"
           }
         ]
       },
@@ -11841,6 +11841,24 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Президент Израиля официально поручил Гади Айзенкоту сформировать правительство",
+            "url": "https://news.am/ru/news/1073507",
+            "date": "2026-11-08T16:27:59.000Z",
+            "image": "https://news.am/storage/media/26/11/08/ynJlANPa6WnKZZKh.webp"
+          },
+          {
+            "title": "Как мировые лидеры отреагировали на массовое убийство в Кракове",
+            "url": "https://news.am/ru/news/1073490",
+            "date": "2026-11-08T16:22:00.000Z",
+            "image": "https://news.am/storage/media/26/11/07/G5rUQIfGr4uQ48dn.webp"
+          },
+          {
+            "title": "В Амстердаме на акцию против политики Нидерландов в отношении Израиля вышли 200 тысяч человек",
+            "url": "https://news.am/ru/news/1073489",
+            "date": "2026-11-08T16:07:00.000Z",
+            "image": "https://news.am/storage/media/26/11/08/PD2DvWBLzLXbf1DL.webp"
+          },
+          {
             "title": "На Канарах объявлена чрезвычайная ситуация из-за наплыва мигрантов: премьер Испании созовёт экстренное совещание",
             "url": "https://news.am/ru/news/1073486",
             "date": "2026-11-08T15:21:00.000Z",
@@ -11881,24 +11899,6 @@
             "url": "https://news.am/ru/news/1073475",
             "date": "2026-11-08T13:55:00.000Z",
             "image": "https://news.am/storage/media/26/06/07/wvnyXxqDBmadlTQo.webp"
-          },
-          {
-            "title": "Саакашвили считает, что его дочь может стать президентом США",
-            "url": "https://news.am/ru/news/1073473",
-            "date": "2026-11-08T13:25:00.000Z",
-            "image": "https://news.am/storage/media/26/08/11/TkkHKs0cY3cP2FOG.webp"
-          },
-          {
-            "title": "Министр обороны Израиля: Иран не отказался от планов получить ядерное оружие",
-            "url": "https://news.am/ru/news/1073457",
-            "date": "2026-11-08T12:54:00.000Z",
-            "image": "https://news.am/storage/media/26/04/30/qmUlOLm9xCj0gp9j.webp"
-          },
-          {
-            "title": "Эрдоган и Алиев заявили о «непоколебимом союзе» Турции и Азербайджана",
-            "url": "https://news.am/ru/news/1073468",
-            "date": "2026-11-08T12:31:45.000Z",
-            "image": "https://news.am/storage/media/26/11/08/VWZISZyU50x5dpNC.webp"
           }
         ]
       },
@@ -11973,6 +11973,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Победы «Брайтона» и «Ливерпуля», поражение «Челси» (видео)",
+            "url": "https://sport.news.am/rus/news/170132/",
+            "date": "2026-11-08T16:01:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170132.jpg"
+          },
+          {
+            "title": "Объявлен стартовый состав «Интера»",
+            "url": "https://sport.news.am/rus/news/170131/",
+            "date": "2026-11-08T15:53:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170131.jpg"
+          },
+          {
             "title": "Нойер выбыл на неопределенный срок",
             "url": "https://sport.news.am/rus/news/170130/",
             "date": "2026-11-08T15:22:00.000Z",
@@ -12019,18 +12031,6 @@
             "url": "https://sport.news.am/rus/news/170120/",
             "date": "2026-11-07T21:56:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170120.jpg"
-          },
-          {
-            "title": "«Рома» разгромила «Сассуоло» (видео)",
-            "url": "https://sport.news.am/rus/news/170119/",
-            "date": "2026-11-07T21:37:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170119.jpg"
-          },
-          {
-            "title": "«Манчестер Сити» проиграл «Ноттингем Форест» (видео)",
-            "url": "https://sport.news.am/rus/news/170117/",
-            "date": "2026-11-07T19:26:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170117.jpg"
           }
         ]
       },
@@ -12105,6 +12105,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Армянское ДНК в мире люкса: от икры Petrossian до свитера Schiaparelli",
+            "url": "https://style.news.am/rus/news/117040/",
+            "date": "2026-11-08T15:37:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117040.jpg"
+          },
+          {
             "title": "Не для слабонервных: неприятная привычка в душе поможет реже болеть",
             "url": "https://style.news.am/rus/news/117039/",
             "date": "2026-11-08T14:22:00.000Z",
@@ -12157,12 +12163,6 @@
             "url": "https://style.news.am/rus/news/117026/",
             "date": "2026-11-07T10:23:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117026.jpg"
-          },
-          {
-            "title": "Бросила в лицо тарелку спагетти: невеста взбесилась, когда подруга отказалась толстеть",
-            "url": "https://style.news.am/rus/news/117033/",
-            "date": "2026-11-07T09:23:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117033.jpg"
           }
         ]
       },
@@ -12303,6 +12303,24 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Как мировые лидеры отреагировали на массовое убийство в Кракове",
+            "url": "https://news.am/ru/news/1073490",
+            "date": "2026-11-08T16:22:00.000Z",
+            "image": "https://news.am/storage/media/26/11/07/G5rUQIfGr4uQ48dn.webp"
+          },
+          {
+            "title": "В Египте при столкновении двух поездов погибли четыре человека: 88 пострадали",
+            "url": "https://news.am/ru/news/1073504",
+            "date": "2026-11-08T16:11:32.000Z",
+            "image": "https://news.am/storage/media/26/11/08/7Fy9XlZwvCFo31HT.webp"
+          },
+          {
+            "title": "В Германии автобус сбил верблюда, сбежавшего с пастбища",
+            "url": "https://news.am/ru/news/1073488",
+            "date": "2026-11-08T15:51:00.000Z",
+            "image": "https://news.am/storage/media/26/11/08/E7tjyLaLmwxcNKIp.webp"
+          },
+          {
             "title": "Врачи, обедавшие с семьями, бросились спасать людей после стрельбы в Кракове",
             "url": "https://news.am/ru/news/1073491",
             "date": "2026-11-08T14:54:00.000Z",
@@ -12343,24 +12361,6 @@
             "url": "https://news.am/ru/news/1073459",
             "date": "2026-11-08T11:49:18.000Z",
             "image": "https://news.am/storage/media/26/11/03/H40GCffZMiZ0XVM3.webp"
-          },
-          {
-            "title": "«Немыслимо и совершенно чуждо»: посол США высказался о массовом убийстве в Кракове",
-            "url": "https://news.am/ru/news/1073458",
-            "date": "2026-11-08T11:40:53.000Z",
-            "image": "https://news.am/storage/media/26/11/08/S2dGaHHVVXGv05mA.webp"
-          },
-          {
-            "title": "Полиция Албании разогнала протестующих в Тиране водометами после атак коктейлями Молотова",
-            "url": "https://news.am/ru/news/1073443",
-            "date": "2026-11-08T11:23:00.000Z",
-            "image": "https://news.am/storage/media/26/11/08/Lkh9pQNZoRfJDJzm.webp"
-          },
-          {
-            "title": "AFP: В Эр-Рияде повреждена башня Aramco после ракетной атаки хуситов",
-            "url": "https://news.am/ru/news/1073433",
-            "date": "2026-11-08T08:57:16.000Z",
-            "image": "https://news.am/storage/media/26/11/08/ONenKsIuJIbtUIC8.webp"
           }
         ]
       },
