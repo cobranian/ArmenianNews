@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-08",
+  "lang": "en",
+  "generatedAt": "2026-11-08T03:29:47.069Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Today's headlines highlight key diplomatic developments between Armenia, Azerbaijan, and the U.S., alongside domestic economic shifts and a major diaspora milestone. Sports and cultural coverage also feature prominently across outlets.",
+  "topics": [
+    {
+      "title": "U.S., Armenia, Azerbaijan Launch TRIPP Technical Group",
+      "text": "The United States, Armenia, and Azerbaijan have established a trilateral technical group to launch the TRIPP initiative. Both Armenpress and News.am report on the beginning of technical planning for the project.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265044",
+          "title": "US, Armenia and Azerbaijan establish trilateral technical group to launch TRIPP"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1073257",
+          "title": "U.S., Armenia and Azerbaijan Begin Technical Planning for TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Armenia's Central Bank Raises Key Interest Rate to 7%",
+      "text": "The Central Bank of Armenia has increased its key interest rate to 7%, as reported in CivilNet's weekly business review. The move reflects ongoing monetary policy adjustments amid economic conditions.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015234",
+          "title": "Armenia’s Central Bank raises interest rates to 7%: THIS WEEK IN BUSINESS"
+        }
+      ]
+    },
+    {
+      "title": "Historic Donation Establishes Glendale's First Armenian High School",
+      "text": "A $9.6 million donation by Alex and Lina Megerdechian will fund the establishment of the first Armenian high school in Glendale, California. Asbarez reports this marks a historic milestone for the local diaspora community.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/glendales-first-armenian-high-school-to-be-established-after-historic-9-6-million-donation-by-alex-and-lina-megerdechian/",
+          "title": "Glendale’s First Armenian High School to Be Established after Historic $9.6 Million Donation by Alex and Lina Megerdechian"
+        }
+      ]
+    },
+    {
+      "title": "Prime Minister Outlines Vision for Armenia's Future at MaskOFF Panel",
+      "text": "Prime Minister Nikol Pashinyan stated his goal is to hand over an Armenia with internationally recognized borders and open borders to the younger generation. The remarks were made during a MaskOFF panel discussion, according to Armenpress.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265052",
+          "title": "My task is to hand Armenia over to young people with its internationally recognised territory and open borders, says prime minister at MaskOFF panel discussion"
+        }
+      ]
+    },
+    {
+      "title": "Yerevan–Sofia Flights Resume; Armenia Participates in China Import Expo",
+      "text": "Direct flights between Yerevan and Sofia have resumed, Armenpress reports. Separately, Armenia is participating in the ninth China International Import Expo with a joint national pavilion, showcasing export potential.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265076",
+          "title": "Yerevan–Sofia–Yerevan flights resume"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265061",
+          "title": "Armenia participates in ninth China International Import Expo with a joint national pavilion"
+        }
+      ]
+    },
+    {
+      "title": "Armenian Athletes Compete in Futsal World Cup and Weightlifting Championships",
+      "text": "The Armenian national futsal team drew with Sweden in the Futsal World Cup, News.am reports. Additionally, two Armenian weightlifters are competing at the World Weightlifting Championships on November 7, per Armenpress.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170108/",
+          "title": "Futsal World Cup: Armenia draws with Sweden"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265040",
+          "title": "Armenia has two competitors at World Weightlifting Championships on 7 November"
+        }
+      ]
+    },
+    {
+      "title": "Alen Simonyan Calls for Legacy of Peace at Diaspora Summit",
+      "text": "National Assembly President Alen Simonyan emphasized the need to leave future generations a legacy of peace rather than revenge. Sevana Zadorian also highlighted the diversity of the Armenian diaspora and the summit's role in fostering connections, according to Armenpress.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265057",
+          "title": "We must leave our children a legacy of peace, not revenge, says Alen Simonyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265053",
+          "title": "Armenian diaspora is diverse, and summit is the best opportunity to get to know one another, says Sevana Zadorian"
+        }
+      ]
+    }
+  ]
+}

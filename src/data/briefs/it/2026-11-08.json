@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-08",
+  "lang": "it",
+  "generatedAt": "2026-11-08T03:29:47.069Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata da dichiarazioni politiche interne, sviluppi economici e appuntamenti internazionali che coinvolgono l'Armenia.",
+  "topics": [
+    {
+      "title": "Pashinyan: missione per un'Armenia riconosciuta e confini aperti",
+      "text": "Il Primo Ministro ha ribadito che il suo compito è consegnare alle nuove generazioni un paese con territori riconosciuti a livello internazionale e frontiere aperte. Ha inoltre precisato che per ora non è prevista l'uscita dall'Unione economica eurasiatica, mentre una candidatura all'UE potrebbe essere valutata tra il 2027 e il 2028.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pachinian-aliyev-ma-dit-quil-reconnaissait-que-la-modification-de-la-constitution-relevait-des-affaires-interieures-de-larmenie/",
+          "title": "Pachinian : Aliyev m’a dit qu’il reconnaissait que la modification de la Constitution relevait des affaires intérieures de l’Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/pachinian-maskoff-remettre-armenie-aux-jeunes/",
+          "title": "Nikol Pachinian : « Ma tâche est de remettre l’Arménie aux jeunes avec son territoire internationalement reconnu et ses frontières ouvertes »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-ma-mission-est-de-leguer-a-la-jeunesse-larmenie-avec-ses-territoires-internationalement-reconnus-et-ses-frontieres-ouvertes-a-la-jeunesse/",
+          "title": "Nikol Pachinian : Ma mission est de léguer à la jeunesse, l’Arménie, avec ses territoires internationalement reconnus et ses frontières ouvertes"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35859/",
+          "title": "Pachinian: pas de sortie de l’UEE pour l’instant, candidature à l’UE possible en 2027-2028"
+        }
+      ]
+    },
+    {
+      "title": "Partecipazione armena alla fiera CIIE di Shanghai",
+      "text": "L'Armenia prende parte alla nona edizione dell'Esposizione internazionale delle importazioni della Cina con un padiglione nazionale unificato. Quattordici imprese armene presentano i propri prodotti a Shanghai.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265061",
+          "title": "L’Arménie participe à la 9e édition de l’Exposition internationale des importations de Chine avec un pavillon national unifié"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/salon-international-dimportation-de-chine-ciie-2026-14-entreprises-armeniennes-presentent-leurs-produits-a-shanghai/",
+          "title": "Salon international d’importation de Chine – CIIE 2026. 14 entreprises arméniennes présentent leurs produits à Shanghai"
+        }
+      ]
+    },
+    {
+      "title": "Vladimir Vardanyan eletto presidente della Corte costituzionale",
+      "text": "Vladimir Vardanyan è stato scelto come nuovo presidente della Corte costituzionale dell'Armenia. La nomina segna un passaggio istituzionale rilevante per il sistema giudiziario del paese.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/vladimir-vardanyan-elu-president-de-la-cour-constitutionnelle-darmenie/",
+          "title": "Vladimir Vardanyan élu président de la Cour constitutionnelle d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Rischi economici di un'uscita dall'UEE e visita a stabilimento industriale",
+      "text": "Secondo il ministro Papoyan, lasciare l'Unione economica eurasiatica potrebbe ridurre la crescita economica armena di 0,65 punti percentuali. Nel frattempo, Papoyan ha visitato lo stabilimento \"Hexa Machinery\", dove è previsto un investimento di 8-10 milioni di dollari e la creazione di nuovi posti di lavoro.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/quitter-luee-pourrait-reduire-la-croissance-economique-de-larmenie-de-065-point-de-pourcentage-selon-papoyan/",
+          "title": "Quitter l’UEE pourrait réduire la croissance économique de l’Arménie de 0,65 point de pourcentage, selon Papoyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/investissement-de-8-a-10-millions-de-dollars-et-creation-demplois-gevorg-papoyan-visite-lusine-hexa-machinery/",
+          "title": "Investissement de 8 à 10 millions de dollars et création d’emplois : Gevorg Papoyan visite l’usine « Hexa Machinery »"
+        }
+      ]
+    },
+    {
+      "title": "Gruppo tecnico trilaterale USA-Armenia-Azerbaigian per il progetto TRIPP",
+      "text": "Stati Uniti, Armenia e Azerbaigian hanno istituito un gruppo tecnico trilaterale incaricato di attuare il progetto TRIPP. L'iniziativa mira a favorire la cooperazione pratica tra le parti.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265044",
+          "title": "Les États-Unis, l’Arménie et l’Azerbaïdjan ont créé un groupe technique trilatéral chargé de la mise en œuvre du projet TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Simonyan: eredità di pace e avvertimento su minaccia turca",
+      "text": "Alen Simonyan ha dichiarato che si deve lasciare ai figli un'eredità di pace e non di vendetta. Ha inoltre affermato che, in caso di attacco turco, l'Armenia non avrebbe il tempo per rafforzarsi o reagire.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-nous-devons-leguer-a-nos-enfants-un-heritage-de-paix-non-de-vengeance/",
+          "title": "Alen Simonyan : Nous devons léguer à nos enfants un héritage de paix, non de vengeance"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/si-les-turcs-veulent-attaquer-nous-naurons-pas-le-temps-de-nous-renforcer-nous-naurons-pas-le-temps-de-faire-quoi-que-ce-soit-affirme-alen-simonyan/",
+          "title": "Si les Turcs veulent attaquer, nous n’aurons pas le temps de nous renforcer, nous n’aurons pas le temps de faire quoi que ce soit affirme Alen Simonyan"
+        }
+      ]
+    },
+    {
+      "title": "Mélenchon cita i diritti degli armeni del Karabakh in campagna",
+      "text": "Jean-Luc Mélenchon è il primo candidato alla presidenza francese a menzionare nei propri discorsi i diritti degli armeni del Karabakh. La presa di posizione inserisce la questione armena nel dibattito elettorale d'Oltralpe.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/jean-luc-melenchon-premier-candidat-a-la-presidentielle-a-evoquer-dans-son-discours-les-droits-des-armeniens-du-karabakh/",
+          "title": "Jean-Luc Mélenchon, premier candidat à la présidentielle à évoquer dans son discours les droits des Arméniens du Karabakh"
+        }
+      ]
+    }
+  ]
+}

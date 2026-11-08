@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-08",
+  "lang": "es",
+  "generatedAt": "2026-11-08T03:29:47.069Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la nueva fase del proyecto TRIPP con grupos técnicos trilaterales, las declaraciones de Nikol Pashinyan sobre el reconocimiento del Genocidio Armenio, la reanudación de negociaciones fronterizas entre Armenia y Georgia, y el crecimiento económico proyectado hasta 2026, entre otros temas relevantes.",
+  "topics": [
+    {
+      "title": "Avances en el proyecto TRIPP con grupos técnicos trilaterales",
+      "text": "Estados Unidos, Armenia y Azerbaiyán avanzan en la implementación del proyecto TRIPP con la creación de grupos técnicos trilaterales. La iniciativa entra en una nueva fase de trabajo conjunto entre las tres naciones.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/tripp-grupos-tecnicos-armenia-estados-unidos-azerbaiyan/",
+          "title": "El proyecto TRIPP entra en una nueva fase con la creación de grupos técnicos trilaterales entre Armenia, Estados Unidos y Azerbaiyán"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265044",
+          "title": "Estados Unidos, Armenia y Azerbaiyán avanzan en la implementación del TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan cuestiona el reconocimiento internacional del Genocidio Armenio",
+      "text": "El primer ministro Nikol Pashinyan pidió abandonar el reconocimiento internacional del Genocidio Armenio y lo calificó como una \"moneda de cambio\". Sus declaraciones generan debate sobre la política exterior y la memoria histórica.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/nikol-pashinyan-pidio-abandonar-el-reconocimiento-internacional-del-genocidio-armenio-y-lo-califico-como-una-moneda-de-cambio/",
+          "title": "Nikol Pashinyan pidió abandonar el reconocimiento internacional del Genocidio Armenio y lo calificó como una “moneda de cambio”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265052",
+          "title": "“Mi tarea es entregar a las nuevas generaciones una Armenia con sus territorios internacionalmente reconocidos y fronteras abiertas”: Nikol Pashinyan"
+        }
+      ]
+    },
+    {
+      "title": "Armenia y Georgia retoman negociaciones de delimitación fronteriza",
+      "text": "Ambos países reanudaron las negociaciones para la delimitación de sus fronteras comunes. El proceso busca resolver cuestiones territoriales pendientes entre las naciones vecinas.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265034",
+          "title": "Armenia y Georgia reanudaron las negociaciones sobre la delimitación de sus fronteras"
+        }
+      ]
+    },
+    {
+      "title": "Proyección de crecimiento económico armenio hasta 2026",
+      "text": "La firma de inversión Galt & Taggart publicó un informe exhaustivo que proyecta el crecimiento económico de Armenia hasta 2026. El análisis ofrece perspectivas macroeconómicas para los próximos años.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/galt-and-taggart-informe-economia-armenia-2026/",
+          "title": "La firma de inversión Galt & Taggart publica un informe exhaustivo que proyecta el crecimiento económico de Armenia hasta 2026"
+        }
+      ]
+    },
+    {
+      "title": "Agricultura armenia crece pero enfrenta restricciones rusas",
+      "text": "El sector agrícola de Armenia mostró crecimiento en el tercer trimestre, aunque sufre por las restricciones impuestas por Rusia. Las limitaciones comerciales afectan el desarrollo del sector.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/agricultura-armenia-restricciones-rusia-2026/",
+          "title": "La agricultura de Armenia crece en el tercer trimestre pero sufre por las restricciones de Rusia"
+        }
+      ]
+    },
+    {
+      "title": "Simonyan replantea la seguridad nacional y cuestiona narrativa de amenaza turca",
+      "text": "Alen Simonyan replantea la seguridad de Armenia y cuestiona el mito de la amenaza turca de los últimos 70 años. Participó en un debate sobre paz, seguridad y transformaciones regionales, abogando por dejar paz como legado a las nuevas generaciones.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/alen-simonyan-seguridad-armenia-mito-amenaza-turca/",
+          "title": "Alen Simonyan replantea la seguridad de Armenia y cuestiona el mito de la amenaza turca de los últimos 70 años"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265057",
+          "title": "“Debemos dejarles paz como legado a nuestros hijos, no venganza”: Alen Simonyan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265036",
+          "title": "Alen Simonyan participó en un debate sobre paz, seguridad y transformaciones regionales"
+        }
+      ]
+    },
+    {
+      "title": "Armenia participa en la Exposición Internacional de Importaciones de China",
+      "text": "Armenia está presente en la 9ª Exposición Internacional de Importaciones de China, fortaleciendo lazos comerciales con el gigante asiático. La participación busca ampliar oportunidades de mercado para productos armenios.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265061",
+          "title": "Armenia participa en la 9ª Exposición Internacional de Importaciones de China"
+        }
+      ]
+    }
+  ]
+}

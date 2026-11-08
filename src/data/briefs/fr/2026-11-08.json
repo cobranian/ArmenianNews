@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-08",
+  "lang": "fr",
+  "generatedAt": "2026-11-08T03:29:47.069Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "L'actualité du jour est marquée par les déclarations du Premier ministre Nikol Pachinian sur la politique étrangère et la Constitution, la participation arménienne à la foire de Shanghai, ainsi que par des développements institutionnels et économiques internes.",
+  "topics": [
+    {
+      "title": "Pachinian : Constitution, UEE et perspectives d'adhésion à l'UE",
+      "text": "Le Premier ministre Nikol Pachinian a indiqué que le président azerbaïdjanais Ilham Aliyev a reconnu que la révision de la Constitution arménienne relevait des affaires intérieures de l'Arménie. Il a par ailleurs exclu une sortie immédiate de l'Union économique eurasiatique (UEE), estimant qu'elle coûterait 0,65 point de croissance, tout en évoquant une éventuelle candidature à l'Union européenne pour 2027-2028. Son objectif affiché reste de transmettre aux jeunes une Arménie aux frontières internationalement reconnues et ouvertes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pachinian-aliyev-ma-dit-quil-reconnaissait-que-la-modification-de-la-constitution-relevait-des-affaires-interieures-de-larmenie/",
+          "title": "Pachinian : Aliyev m’a dit qu’il reconnaissait que la modification de la Constitution relevait des affaires intérieures de l’Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/quitter-luee-pourrait-reduire-la-croissance-economique-de-larmenie-de-065-point-de-pourcentage-selon-papoyan/",
+          "title": "Quitter l’UEE pourrait réduire la croissance économique de l’Arménie de 0,65 point de pourcentage, selon Papoyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-ma-mission-est-de-leguer-a-la-jeunesse-larmenie-avec-ses-territoires-internationalement-reconnus-et-ses-frontieres-ouvertes-a-la-jeunesse/",
+          "title": "Nikol Pachinian : Ma mission est de léguer à la jeunesse, l’Arménie, avec ses territoires internationalement reconnus et ses frontières ouvertes"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35859/",
+          "title": "Pachinian: pas de sortie de l’UEE pour l’instant, candidature à l’UE possible en 2027-2028"
+        }
+      ]
+    },
+    {
+      "title": "Forte présence arménienne à l'Exposition internationale des importations de Chine (CIIE)",
+      "text": "L'Arménie participe à la 9e édition de la CIIE à Shanghai avec un pavillon national unifié. Quatorze entreprises arméniennes y présentent leurs produits, illustrant la volonté de diversifier les partenariats commerciaux et de promouvoir le « Made in Armenia » sur le marché chinois.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265061",
+          "title": "L’Arménie participe à la 9e édition de l’Exposition internationale des importations de Chine avec un pavillon national unifié"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/salon-international-dimportation-de-chine-ciie-2026-14-entreprises-armeniennes-presentent-leurs-produits-a-shanghai/",
+          "title": "Salon international d’importation de Chine – CIIE 2026. 14 entreprises arméniennes présentent leurs produits à Shanghai"
+        }
+      ]
+    },
+    {
+      "title": "Vladimir Vardanyan élu président de la Cour constitutionnelle",
+      "text": "Vladimir Vardanyan a été élu à la présidence de la Cour constitutionnelle d'Arménie. Cette nomination intervient dans un contexte de débat sur la révision constitutionnelle et les relations avec l'Azerbaïdjan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/vladimir-vardanyan-elu-president-de-la-cour-constitutionnelle-darmenie/",
+          "title": "Vladimir Vardanyan élu président de la Cour constitutionnelle d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Création d'un groupe technique trilatéral États-Unis – Arménie – Azerbaïdjan",
+      "text": "Washington, Erevan et Bakou ont mis en place un groupe technique trilatéral chargé de la mise en œuvre du projet TRIPP (Transport Corridors Initiative). Cette structure vise à faciliter la connectivité régionale et la mise en œuvre d'accords de délimitation frontalière.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265044",
+          "title": "Les États-Unis, l’Arménie et l’Azerbaïdjan ont créé un groupe technique trilatéral chargé de la mise en œuvre du projet TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "L'Arménie ne participe plus aux travaux de l'OTSC, selon le Kremlin",
+      "text": "Le porte-parole de la présidence russe, Dmitri Peskov, a déclaré qu'Erevan ne prend plus part aux activités de l'Organisation du traité de sécurité collective (OTSC). Cette annonce confirme le gel de la participation arménienne à l'alliance militaire dirigée par Moscou.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/erevan-ne-participe-plus-aux-travaux-de-lotsc-selon-peskov/",
+          "title": "Erevan ne participe plus aux travaux de l’OTSC, selon Peskov"
+        }
+      ]
+    },
+    {
+      "title": "Investissement de 8 à 10 millions de dollars dans l'usine « Hexa Machinery »",
+      "text": "Le ministre de l'Industrie Gevorg Papoyan a visité l'usine « Hexa Machinery », où un investissement de 8 à 10 millions de dollars est prévu, accompagné de créations d'emplois. Ce projet s'inscrit dans la stratégie de développement du secteur industriel et technologique arménien.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/investissement-de-8-a-10-millions-de-dollars-et-creation-demplois-gevorg-papoyan-visite-lusine-hexa-machinery/",
+          "title": "Investissement de 8 à 10 millions de dollars et création d’emplois : Gevorg Papoyan visite l’usine « Hexa Machinery »"
+        }
+      ]
+    },
+    {
+      "title": "Jean-Luc Mélenchon évoque les droits des Arméniens du Karabakh",
+      "text": "Le candidat à l'élection présidentielle française Jean-Luc Mélenchon est devenu le premier à mentionner explicitement les droits des Arméniens du Haut-Karabakh dans son discours de campagne. Cette prise de position intervient dans un contexte de sensibilisation internationale sur le sort de la population arménienne de la région.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/jean-luc-melenchon-premier-candidat-a-la-presidentielle-a-evoquer-dans-son-discours-les-droits-des-armeniens-du-karabakh/",
+          "title": "Jean-Luc Mélenchon, premier candidat à la présidentielle à évoquer dans son discours les droits des Arméniens du Karabakh"
+        }
+      ]
+    }
+  ]
+}

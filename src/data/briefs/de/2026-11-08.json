@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-08",
+  "lang": "de",
+  "generatedAt": "2026-11-08T03:29:47.069Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Die heutige Berichterstattung umfasst innenpolitische Entwicklungen, wirtschaftliche Analysen, internationale Beziehungen sowie kulturelle und gesellschaftliche Themen mit Armenien-Bezug.",
+  "topics": [
+    {
+      "title": "Verfassungsgericht: Neuer Präsident gewählt",
+      "text": "Wladimir Wardanjan wurde zum Präsidenten des Verfassungsgerichts Armeniens gewählt. Die Wahl erfolgte im Rahmen der laufenden institutionellen Neuordnung.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/vladimir-vardanyan-elu-president-de-la-cour-constitutionnelle-darmenie/",
+          "title": "Vladimir Vardanyan élu président de la Cour constitutionnelle d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Pashinjan zu Verfassung, Grenzen und EU-Perspektive",
+      "text": "Ministerpräsident Nikol Pashinjan betonte, seine Aufgabe sei es, Armenien mit international anerkannten Gebieten und offenen Grenzen an die Jugend zu übergeben. Er bestätigte zudem, dass Aserbaidschans Präsident Aliyev die Verfassungsänderung als innere Angelegenheit Armeniens akzeptiere. Ein Austritt aus der Eurasischen Wirtschaftsunion sei derzeit nicht geplant, eine EU-Beitrittskandidatur werde für 2027 bis 2028 in Betracht gezogen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pachinian-aliyev-ma-dit-quil-reconnaissait-que-la-modification-de-la-constitution-relevait-des-affaires-interieures-de-larmenie/",
+          "title": "Pachinian : Aliyev m’a dit qu’il reconnaissait que la modification de la Constitution relevait des affaires intérieures de l’Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/pachinian-maskoff-remettre-armenie-aux-jeunes/",
+          "title": "Nikol Pachinian : « Ma tâche est de remettre l’Arménie aux jeunes avec son territoire internationalement reconnu et ses frontières ouvertes »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-ma-mission-est-de-leguer-a-la-jeunesse-larmenie-avec-ses-territoires-internationalement-reconnus-et-ses-frontieres-ouvertes-a-la-jeunesse/",
+          "title": "Nikol Pachinian : Ma mission est de léguer à la jeunesse, l’Arménie, avec ses territoires internationalement reconnus et ses frontières ouvertes"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-35859/",
+          "title": "Pachinian: pas de sortie de l’UEE pour l’instant, candidature à l’UE possible en 2027-2028"
+        }
+      ]
+    },
+    {
+      "title": "Wirtschaftliche Folgen eines UEEA-Austritts und neue Analysen",
+      "text": "Laut Wirtschaftsminister Geworg Papojan könnte ein Austritt aus der Eurasischen Wirtschaftsunion das Wirtschaftswachstum um 0,65 Prozentpunkte senken. Gleichzeitig veröffentlichte Galt & Taggart eine erweiterte Regionalanalyse der armenischen Wirtschaft. Papojan besuchte zudem das Werk «Hexa Machinery», wo eine Investition von 8 bis 10 Millionen Dollar und neue Arbeitsplätze angekündigt wurden.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/quitter-luee-pourrait-reduire-la-croissance-economique-de-larmenie-de-065-point-de-pourcentage-selon-papoyan/",
+          "title": "Quitter l’UEE pourrait réduire la croissance économique de l’Arménie de 0,65 point de pourcentage, selon Papoyan"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/galt-taggart-publie-une-nouvelle-recherche-sur-leconomie-de-larmenie-elargissant-sa-couverture-regionale/",
+          "title": "Galt & Taggart publie une nouvelle recherche sur l’économie de l’Arménie, élargissant sa couverture régionale"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/investissement-de-8-a-10-millions-de-dollars-et-creation-demplois-gevorg-papoyan-visite-lusine-hexa-machinery/",
+          "title": "Investissement de 8 à 10 millions de dollars et création d’emplois : Gevorg Papoyan visite l’usine « Hexa Machinery »"
+        }
+      ]
+    },
+    {
+      "title": "Trilaterale technische Gruppe USA-Armenien-Aserbaidschan",
+      "text": "Die USA, Armenien und Aserbaidschan haben eine trilaterale technische Arbeitsgruppe zur Umsetzung des TRIPP-Projekts eingerichtet. Dies signalisiert eine Fortsetzung der diplomatischen Bemühungen in der Region.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265044",
+          "title": "Les États-Unis, l’Arménie et l’Azerbaïdjan ont créé un groupe technique trilatéral chargé de la mise en œuvre du projet TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Präsenz auf der China International Import Expo",
+      "text": "Armenien nimmt mit einem nationalen Pavillon an der 9. China International Import Expo teil. 14 armenische Unternehmen präsentieren ihre Produkte in Shanghai.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265061",
+          "title": "L’Arménie participe à la 9e édition de l’Exposition internationale des importations de Chine avec un pavillon national unifié"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/salon-international-dimportation-de-chine-ciie-2026-14-entreprises-armeniennes-presentent-leurs-produits-a-shanghai/",
+          "title": "Salon international d’importation de Chine – CIIE 2026. 14 entreprises arméniennes présentent leurs produits à Shanghai"
+        }
+      ]
+    },
+    {
+      "title": "Neuer Flugverbindung Sofia–Jerewan und OTSC-Status",
+      "text": "Der erste Direktflug von Sofia nach Jerewan landete auf dem Flughafen Swartnoz. Gleichzeitig erklärte der russische Präsidialsprecher Peskow, Jerewan nehme nicht mehr an den Arbeiten der OVKS teil.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-vol-sofia-erevan-a-atterri-a-laeroport-zvartnots/",
+          "title": "Le premier vol Sofia-Erevan a atterri à l’aéroport Zvartnots"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/erevan-ne-participe-plus-aux-travaux-de-lotsc-selon-peskov/",
+          "title": "Erevan ne participe plus aux travaux de l’OTSC, selon Peskov"
+        }
+      ]
+    },
+    {
+      "title": "Kulturelle und gesellschaftliche Veranstaltungen der Diaspora",
+      "text": "In Bourg-lès-Valence fand ein Quiz-Abend rund um Armenien statt. In Aix-en-Provence wird am 29. November die Aufführung «Sacrées F'AMES» zu Ehren von Anouch Apetjan gezeigt. Die Armenisch-Evangelische Kirche veranstaltet am 28. November einen Weihnachtsmarkt.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nouveau-succes-darmenia-pour-la-rencontre-autour-des-quiz-dedies-a-larmenie-ce-samedi-7-novembre-a-bourg-les-valence/",
+          "title": "Nouveau succès d’Arménia pour la rencontre autour des quiz dédiés à l’Arménie ce samedi 7 novembre à Bourg-lès-Valence"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/representation-de-sacrees-fames-dediee-a-anouch-apetyan-le-29-novembre-a-aix-en-provence/",
+          "title": "Représentation de Sacrées F’AMES, dédiée à Anouch Apetyan le 29 novembre à Aix en Provence"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/village-de-noel-de-leglise-evangelique-armenienne-le-28-novembre/",
+          "title": "Village de Noël de l’Eglise Evangélique Arménienne le 28 novembre"
+        }
+      ]
+    }
+  ]
+}
