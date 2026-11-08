@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T05:23:31.318Z",
+  "generatedAt": "2026-11-08T06:23:48.094Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Կրակոցներ Կրակովի կենտրոնում․ զոհերի թիվը հասել է 6-ի, կա 15 վիրավոր",
+            "url": "https://hy.armradio.am/archives/769260",
+            "date": "2026-11-08T06:15:49.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_5817-768x432.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "20 միլիոն դոլար՝ Իրանի միջուկային ծրագրի մասին տեղեկատվության համար",
             "url": "https://hy.armradio.am/archives/769204",
             "date": "2026-11-07T09:29:37.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/768963",
             "date": "2026-11-05T18:48:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/1750275224795263_OTAgwbfM-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Կիբեռհարձակում Եվրոպայում․ հաքերները թիրախավորել են սուպերմարկետներն ու արյան բանկերը",
-            "url": "https://hy.armradio.am/archives/768920",
-            "date": "2026-11-05T18:01:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/ScreenShot-3897-768x516.jpeg",
             "category": "Կարևոր"
           }
         ]
@@ -11179,6 +11179,30 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "FT. ԱՄՆ Կոնգրեսի դեմոկրատները Ուկրաինայի համար 15 մլրդ դոլարի օգնություն են պատրաստում և ցանկանում են խստացնել Ռուսաստանի դեմ պատժամիջոցները",
+            "url": "https://news.am/hy/news/1073401",
+            "date": "2026-11-08T06:18:00.000Z",
+            "image": "https://news.am/storage/media/26/06/04/WXXkI0Bp9qf0RslP.webp"
+          },
+          {
+            "title": "The Telegraph. Մակրոնի համար գաղտնի բունկեր են պատրաստել Ելիսեյան պալատի գրոհի դեպքում",
+            "url": "https://news.am/hy/news/1073400",
+            "date": "2026-11-08T06:03:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/3DKEv4EiatoAQsuD.webp"
+          },
+          {
+            "title": "The Washington Post. Ընտրություններում պարտությունից հետո Թրամփը կփորձի ավարտել պատերազմներն Իրանում և Ուկրաինայում",
+            "url": "https://news.am/hy/news/1073399",
+            "date": "2026-11-08T05:47:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/vFNhVAexSI7DA73y.webp"
+          },
+          {
+            "title": "Մոսկվայի կենտրոնում հարյուրից ավելի մարդու են բերման ենթարկել. ոմանց զինկոմիսարիատ ներկայանալու ծանուցագրեր են հանձնել",
+            "url": "https://news.am/hy/news/1073396",
+            "date": "2026-11-08T05:12:42.000Z",
+            "image": "https://news.am/storage/media/26/11/08/DIEsvvHSEJs8cztg.webp"
+          },
+          {
             "title": "Թրամփը նշել է այն պայմանը, որի դեպքում կարող էր կես տարի չվիրավորել դեմոկրատներին",
             "url": "https://news.am/hy/news/1073393",
             "date": "2026-11-07T20:54:00.000Z",
@@ -11213,30 +11237,6 @@
             "url": "https://news.am/hy/news/1073387",
             "date": "2026-11-07T19:38:00.000Z",
             "image": "https://news.am/storage/media/26/10/30/MPmMjq1RksMXvad0.webp"
-          },
-          {
-            "title": "ԱՄՆ-ը հատուկ խումբ է ստեղծում՝ ցամաքային սահմաններով և Կասպից ծովով մատակարարումներն Իրան կասեցնելու համար",
-            "url": "https://news.am/hy/news/1073389",
-            "date": "2026-11-07T19:34:14.000Z",
-            "image": "https://news.am/storage/media/26/09/24/MzhOJNU9DZ3NpYLK.webp"
-          },
-          {
-            "title": "Թրամփն առաջարկել է UFC-ի ղեկավար Դանա Ուայթին դառնալ Սպիտակ տան մամուլի քարտուղար և թիմում ներգրավել Մախաչևին ու Նուրմագոմեդովին",
-            "url": "https://news.am/hy/news/1073388",
-            "date": "2026-11-07T19:08:41.000Z",
-            "image": "https://news.am/storage/media/26/11/04/Wqffl1VSTNgeZcmW.webp"
-          },
-          {
-            "title": "Իրանը Պուտինին հայտնել է Հորմուզի նեղուցն ամբողջությամբ բացելու պայմանը",
-            "url": "https://news.am/hy/news/1073380",
-            "date": "2026-11-07T19:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/19/70ZI9ZxI1Z3sj413.webp"
-          },
-          {
-            "title": "Axios. Սպիտակ տան աշխատակազմի նոր ղեկավար Միլլերը Թրամփին նախապատրաստում է քաղաքական պատերազմի դեմոկրատների դեմ",
-            "url": "https://news.am/hy/news/1073379",
-            "date": "2026-11-07T18:51:00.000Z",
-            "image": "https://news.am/storage/media/26/11/07/n1upyA9ih29X0Q39.webp"
           }
         ]
       },
@@ -11641,6 +11641,36 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Փրկարարները քարը հեռացրել են Հրազդան կիրճի ճանապարհի երթևեկելի հատվածից՝ վերականգնելով երթևեկությունը",
+            "url": "https://news.am/hy/news/1073407",
+            "date": "2026-11-08T06:20:57.000Z",
+            "image": "https://news.am/storage/media/26/11/08/8kI3popbEaf3RE8w.webp"
+          },
+          {
+            "title": "Կրակովի կենտրոնում հրաձգություն իրականացրած տղամարդու տանը երեք դի է հայտնաբերվել․ ենթադրաբար՝ նրա ընտանիքի անդամներինը",
+            "url": "https://news.am/hy/news/1073403",
+            "date": "2026-11-08T05:51:34.000Z",
+            "image": "https://news.am/storage/media/26/11/08/wnfhF3ys791svsbK.webp"
+          },
+          {
+            "title": "Ողբերգական վթար Կոտայքի մարզում. 23-ամյա աղջիկը տեղում մահացել է",
+            "url": "https://news.am/hy/news/1073402",
+            "date": "2026-11-08T05:48:13.000Z",
+            "image": "https://news.am/storage/media/26/11/08/lxHCuxyAsEO75bi3.webp"
+          },
+          {
+            "title": "Իրանի ԻՀՊԿ-ն հայտարարել է Հորմուզի նեղուցում երկու լցանավի՝ ականների վրա պայթելու մասին",
+            "url": "https://news.am/hy/news/1073398",
+            "date": "2026-11-08T05:32:00.000Z",
+            "image": "https://news.am/storage/media/26/10/31/sJ6irl3LYno9qORP.webp"
+          },
+          {
+            "title": "Հյուսիսային Կարոլինայում 76-ամյա վարորդը վրաերթի է ենթարկել մի խումբ հեծանվորդների․ մեկ մարդ զոհվել է, առնվազն 12-ը՝ տուժել",
+            "url": "https://news.am/hy/news/1073397",
+            "date": "2026-11-08T05:27:00.000Z",
+            "image": "https://news.am/storage/media/26/11/08/emVcbIijHxqEhfH7.webp"
+          },
+          {
             "title": "Լեհաստանի ներքին գործերի նախարարը հայտարարել է Կրակովում զանգվածային հրաձգության մեջ կասկածվողի արմատական հայացքների մասին",
             "url": "https://news.am/hy/news/1073394",
             "date": "2026-11-07T20:38:15.000Z",
@@ -11669,36 +11699,6 @@
             "url": "https://news.am/hy/news/1073373",
             "date": "2026-11-07T17:38:37.000Z",
             "image": "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjU2NDZ8MHwxfHNlYXJjaHwxMHx8aG9zcGl0YWx8ZW58MHx8fHwxNzk0MDczMDg1fDA&ixlib=rb-4.1.0&q=80&w=1080"
-          },
-          {
-            "title": "Փարիզում բողոքի ակցիայի է դուրս եկել 46 հազար մարդ",
-            "url": "https://news.am/hy/news/1073362",
-            "date": "2026-11-07T17:36:00.000Z",
-            "image": "https://news.am/storage/media/26/11/07/JqDCDmsFinDwvE21.webp"
-          },
-          {
-            "title": "Վանաձորում 35-ամյա վարորդը «Mercedes GLE»-ով վրաերթի է ենթարկել 54-ամյա հետիոտնին․ նա մաhացել է",
-            "url": "https://news.am/hy/news/1073371",
-            "date": "2026-11-07T17:30:06.000Z",
-            "image": "https://news.am/storage/media/26/11/07/lH74S25p8GkX3qcz.webp"
-          },
-          {
-            "title": "Կրակովի կենտրոնում հրաձգության հետևանքով զոհվածերի թիվը հասել է հինգի",
-            "url": "https://news.am/hy/news/1073360",
-            "date": "2026-11-07T16:08:01.000Z",
-            "image": "https://news.am/storage/media/26/11/07/G5rUQIfGr4uQ48dn.webp"
-          },
-          {
-            "title": "Կրակովի Շուկայի գլխավոր հրապարակում հրաձգության հետևանքով երկու մարդ է զոհվել, կան վիրավորներ",
-            "url": "https://news.am/hy/news/1073354",
-            "date": "2026-11-07T15:15:16.000Z",
-            "image": "https://news.am/storage/media/26/11/07/PjT9CWlnAX18PW4q.webp"
-          },
-          {
-            "title": "Սպшնություն Լոռու մարզում. կասկածյալը հարեւանի տղան է",
-            "url": "https://news.am/hy/news/1073334",
-            "date": "2026-11-07T12:09:26.000Z",
-            "image": "https://news.am/storage/media/26/11/07/0zS3rOdg1ikGQ6x4.webp"
           }
         ]
       },
@@ -11841,6 +11841,24 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "FT: Демократы в Конгрессе США готовят Украине помощь на $15 млрд и хотят ужесточить санкции против России",
+            "url": "https://news.am/ru/news/1073401",
+            "date": "2026-11-08T06:18:00.000Z",
+            "image": "https://news.am/storage/media/26/06/04/WXXkI0Bp9qf0RslP.webp"
+          },
+          {
+            "title": "The Telegraph: Макрону подготовили секретный бункер на случай штурма Елисейского дворца",
+            "url": "https://news.am/ru/news/1073400",
+            "date": "2026-11-08T06:03:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/3DKEv4EiatoAQsuD.webp"
+          },
+          {
+            "title": "The Washington Post: После поражения на выборах Трамп попытается завершить войны в Иране и Украине",
+            "url": "https://news.am/ru/news/1073399",
+            "date": "2026-11-08T05:47:00.000Z",
+            "image": "https://news.am/storage/media/26/10/17/vFNhVAexSI7DA73y.webp"
+          },
+          {
             "title": "В центре Москвы задержали более ста человек: некоторым вручили повестки в военкомат",
             "url": "https://news.am/ru/news/1073396",
             "date": "2026-11-08T05:12:42.000Z",
@@ -11881,24 +11899,6 @@
             "url": "https://news.am/ru/news/1073387",
             "date": "2026-11-07T19:38:00.000Z",
             "image": "https://news.am/storage/media/26/10/30/MPmMjq1RksMXvad0.webp"
-          },
-          {
-            "title": "США создают спецгруппу для перехвата поставок в Иран через сухопутные границы и Каспийское море",
-            "url": "https://news.am/ru/news/1073389",
-            "date": "2026-11-07T19:33:46.000Z",
-            "image": "https://news.am/storage/media/26/09/24/MzhOJNU9DZ3NpYLK.webp"
-          },
-          {
-            "title": "Трамп предложил главе UFC Дане Уайту стать пресс-секретарем Белого дома и привлечь в команду Махачева и Нурмагомедова",
-            "url": "https://news.am/ru/news/1073388",
-            "date": "2026-11-07T19:08:41.000Z",
-            "image": "https://news.am/storage/media/26/11/04/Wqffl1VSTNgeZcmW.webp"
-          },
-          {
-            "title": "Иран назвал Путину условие полного открытия Ормузского пролива",
-            "url": "https://news.am/ru/news/1073380",
-            "date": "2026-11-07T19:08:00.000Z",
-            "image": "https://news.am/storage/media/26/10/19/70ZI9ZxI1Z3sj413.webp"
           }
         ]
       },
@@ -12303,6 +12303,24 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В доме устроившего стрельбу в центре Кракова нашли три тела, предположительно, членов его семьи",
+            "url": "https://news.am/ru/news/1073403",
+            "date": "2026-11-08T05:51:34.000Z",
+            "image": "https://news.am/storage/media/26/11/08/wnfhF3ys791svsbK.webp"
+          },
+          {
+            "title": "Трагическое ДТП в Котайкской области: 23-летняя девушка погибла на месте",
+            "url": "https://news.am/ru/news/1073402",
+            "date": "2026-11-08T05:48:13.000Z",
+            "image": "https://news.am/storage/media/26/11/08/lxHCuxyAsEO75bi3.webp"
+          },
+          {
+            "title": "КСИР Ирана заявил о подрыве двух танкеров на минах в Ормузском проливе",
+            "url": "https://news.am/ru/news/1073398",
+            "date": "2026-11-08T05:32:00.000Z",
+            "image": "https://news.am/storage/media/26/10/31/sJ6irl3LYno9qORP.webp"
+          },
+          {
             "title": "В Северной Каролине 76-летний водитель сбил группу велосипедистов: один человек погиб, не менее 12 пострадали",
             "url": "https://news.am/ru/news/1073397",
             "date": "2026-11-08T05:27:00.000Z",
@@ -12343,24 +12361,6 @@
             "url": "https://news.am/ru/news/1073362",
             "date": "2026-11-07T17:36:00.000Z",
             "image": "https://news.am/storage/media/26/11/07/JqDCDmsFinDwvE21.webp"
-          },
-          {
-            "title": "В Ванадзоре 35-летний водитель Mercedes GLE сбил 54-летнюю женщину: она погибла",
-            "url": "https://news.am/ru/news/1073371",
-            "date": "2026-11-07T17:30:06.000Z",
-            "image": "https://news.am/storage/media/26/11/07/lH74S25p8GkX3qcz.webp"
-          },
-          {
-            "title": "Число погибших при стрельбе в центре Кракова возросло до пяти",
-            "url": "https://news.am/ru/news/1073360",
-            "date": "2026-11-07T16:08:01.000Z",
-            "image": "https://news.am/storage/media/26/11/07/G5rUQIfGr4uQ48dn.webp"
-          },
-          {
-            "title": "В Кракове при стрельбе на Главной рыночной площади погибли два человека, есть раненые",
-            "url": "https://news.am/ru/news/1073354",
-            "date": "2026-11-07T15:15:16.000Z",
-            "image": "https://news.am/storage/media/26/11/07/PjT9CWlnAX18PW4q.webp"
           }
         ]
       },
