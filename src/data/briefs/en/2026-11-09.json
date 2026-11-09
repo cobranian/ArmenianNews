@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-09",
+  "lang": "en",
+  "generatedAt": "2026-11-09T05:29:46.743Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Today's headlines highlight key diplomatic movements, domestic political debates, and notable sports achievements involving Armenian athletes.",
+  "topics": [
+    {
+      "title": "Armenian Foreign Minister Visits Estonia",
+      "text": "Ararat Mirzoyan is scheduled to pay a working visit to Estonia. The trip underscores ongoing diplomatic engagement between Yerevan and Tallinn.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265097",
+          "title": "Ararat Mirzoyan to pay working visit to Estonia"
+        }
+      ]
+    },
+    {
+      "title": "Debate Over Diaspora Voting Rights Intensifies",
+      "text": "CivilNet examines why Armenia needs to rethink voting rights for its diaspora. The analysis comes amid broader discussions on constitutional reforms and opposition strategies.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015274",
+          "title": "Why Armenia needs to rethink diaspora voting rights"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015271",
+          "title": "How Armenia’s opposition could force a constitutional dilemma"
+        }
+      ]
+    },
+    {
+      "title": "Azerbaijani and Turkish Leaders Meet in Shushi",
+      "text": "Ilham Aliyev and Recep Tayyip Erdogan held a meeting in Shushi, referred to as Azerbaijan-occupied Nagorno-Karabakh by the source. Aliyev also marked the sixth anniversary of the Azerbaijani takeover of Karabakh with remarks referencing 'war criminals'.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1073455",
+          "title": "Aliyev, Erdogan meet in Azerbaijan-occupied Nagorno-Karabakh’s Shushi"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1073430",
+          "title": "Aliyev speaks – on 6th anniversary of Azerbaijani occupation of Karabakh – about “war criminals” who “served punishment”"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan Offers Condolences for Krakow Shooting",
+      "text": "Prime Minister Nikol Pashinyan expressed condolences following a deadly shooting incident in Krakow, Poland. The gesture was reported by Armenpress.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265092",
+          "title": "Pashinyan expresses condolences over deadly shooting in Poland’s Krakow"
+        }
+      ]
+    },
+    {
+      "title": "Armenia National Team Begins Training Camp",
+      "text": "The Armenia national football team has commenced its training camp. Preparations are underway for upcoming international fixtures.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170127/",
+          "title": "The Armenia national team has begun its training camp"
+        }
+      ]
+    },
+    {
+      "title": "Varazdat Lalayan Wins Bronze at World Championships",
+      "text": "Armenian weightlifter Varazdat Lalayan secured a bronze medal at the World Championships. The achievement adds to Armenia's tally in international strength sports.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170125/",
+          "title": "World Championships: Varazdat Lalayan – bronze medalist"
+        }
+      ]
+    },
+    {
+      "title": "Armenian Heritage Featured in Luxury Sector",
+      "text": "A cultural piece explores the presence of Armenian heritage in the global luxury market, citing examples from Petrossian Caviar to a Schiaparelli sweater. The article highlights the cultural footprint of Armenian brands and craftsmanship.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/117040/",
+          "title": "Armenian Heritage in the World of Luxury: From Petrossian Caviar to a Schiaparelli Sweater"
+        }
+      ]
+    }
+  ]
+}
