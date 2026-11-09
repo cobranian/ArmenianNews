@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-09",
+  "lang": "de",
+  "generatedAt": "2026-11-09T03:29:17.367Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über Sport, Aussenpolitik, Wirtschaft und Diaspora-Themen.",
+  "topics": [
+    {
+      "title": "Armenien richtet Gewichtheber-WM 2027 aus",
+      "text": "Die Flagge der Weltmeisterschaften wurde an Armenien übergeben. Bei der laufenden WM in Ningbo gewann Varazdat Lalayan die Bronzemedaille.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265098",
+          "title": "Le drapeau des Championnats du monde d’haltérophilie a été remis à l’Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-drapeau-des-championnats-du-monde-dhalterophilie-de-la-federation-internationale-dhalterophilie-a-ete-transfere-a-armenie-qui-organisera-les-competitions-mondiales-en-2027/",
+          "title": "Le drapeau des Championnats du monde d’haltérophilie de la Fédération internationale d’haltérophilie a été transféré à Arménie qui organisera les compétitions mondiales en 2027"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/varazdat-lalayan-armenie-decroche-le-bronze-aux-championnats-du-monde-dhalterophilie-a-ningbo-chine/",
+          "title": "Varazdat Lalayan (Arménie) décroche le bronze aux Championnats du monde d’haltérophilie à Ningbo (Chine)"
+        }
+      ]
+    },
+    {
+      "title": "Aserbaidschan und Türkei demonstrieren Präsenz in Bergkarabach",
+      "text": "Präsident Aliyev und Präsident Erdogan trafen sich in Schuschi. Aliyev äusserte die Hoffnung auf konkrete Ergebnisse im Normalisierungsprozess mit Armenien.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/jespere-obtenir-des-resultats-concrets-a-lissue-du-processus-de-normalisation-des-relations-avec-larmenie-affirme-aliyev-a-chouchi-en-artsakh-occupe/",
+          "title": "J’espère obtenir des résultats concrets à l’issue du processus de normalisation des relations avec l’Arménie affirme Aliyev à Chouchi en Artsakh occupé"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/aliyev-et-erdogan-se-sont-rencontres-ce-dimanche-8-novembre-en-tete-a-tete-aujourdhui-a-chouchi-en-artsakh-occupe/",
+          "title": "Aliyev et Erdogan se sont rencontrés ce dimanche 8 novembre en tête à tête à Chouchi, en Artsakh occupé"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/erdogan-attendu-au-karabakh-pour-celebrer-la-victoire-de-lazerbaidjan/",
+          "title": "Erdogan attendu au Karabakh pour célébrer la « victoire » de l’Azerbaïdjan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-caucase-du-sud-nest-plus-considere-comme-une-region-de-conflits-erdogan-felicite-aliyev/",
+          "title": "« Le Caucase du Sud n’est plus considéré comme une région de conflits » : Erdogan félicite Aliyev"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Exporte nach Europa steigen stark an",
+      "text": "Laut einem Bericht wuchsen die Ausfuhren um 67 Prozent. Dies deutet auf eine zunehmende wirtschaftliche Integration hin.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/les-produits-armeniens-conquierent-leurope-les-exportations-augmentent-de-67-video/",
+          "title": "Les produits arméniens conquièrent l’Europe : les exportations augmentent de 67 % (VIDÉO)"
+        }
+      ]
+    },
+    {
+      "title": "Aussenminister Mirsojan reist nach Estland",
+      "text": "Ararat Mirsojan wird einen Arbeitsbesuch in Estland absolvieren. Ziel sind politische Gespräche und die Vertiefung der bilateralen Beziehungen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265097",
+          "title": "Ararat Mirzoyan effectuera une visite de travail en Estonie"
+        }
+      ]
+    },
+    {
+      "title": "Neuer Präsident des Verfassungsgerichts gewählt",
+      "text": "Ein ehemaliges Mitglied der Partei Zivilvertrag wurde ohne Druck zum Präsidenten gewählt. Beobachter sprechen von einer Rückkehr zum Ausgangspunkt.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/il-ny-a-pas-eu-de-pressions-retour-a-la-case-depart-un-ancien-membre-du-contrat-civil-elu-president-de-la-cour-constitutionnelle/",
+          "title": "« Il n’y a pas eu de pressions » / « Retour à la case départ » : un ancien membre du Contrat civil élu président de la Cour constitutionnelle"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Schule in Glendale erhält Grossspende",
+      "text": "Dank einer Spende von 9,6 Millionen Dollar wird das erste armenische Gymnasium in Glendale errichtet. Die armenische Gemeinschaft in den USA stärkt damit ihre Bildungsinfrastruktur.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-lycee-armenien-de-glendale-va-voir-le-jour-grace-a-un-don-historique-de-96-millions-de-dollars-dalex-et-lina-megerdechian/",
+          "title": "Le premier lycée arménien de Glendale va voir le jour grâce à un don historique de 9,6 millions de dollars d’Alex et Lina Megerdechian"
+        }
+      ]
+    },
+    {
+      "title": "Frage der OTSC-Mitgliedschaft bleibt intern",
+      "text": "Kreml-Sprecher Peskow erklärte, die Mitgliedschaft Armeniens in der OVKS werde durch interne Diskussionen geklärt. Dies spiegelt anhaltende Unsicherheiten wider.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-question-de-ladhesion-de-larmenie-a-lotsc-sera-resolue-par-des-discussions-internes-selon-peskov/",
+          "title": "La question de l’adhésion de l’Arménie à l’OTSC sera résolue par des discussions internes, selon Peskov"
+        }
+      ]
+    }
+  ]
+}

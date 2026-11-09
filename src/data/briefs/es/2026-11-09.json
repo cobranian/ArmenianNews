@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-09",
+  "lang": "es",
+  "generatedAt": "2026-11-09T03:29:17.367Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada está marcada por la conmemoración de la limpieza étnica en Artsaj, con declaraciones de líderes azerbaiyanos y el respaldo de la embajada israelí, mientras que en Armenia se posterga el juicio al Catolicós Karekin II y se anuncian avances en conectividad aérea y educación.",
+  "topics": [
+    {
+      "title": "Conmemoración de la limpieza étnica en Artsaj",
+      "text": "El presidente de Azerbaiyán, Ilham Aliyev, y el presidente de Turquía, Recep Tayyip Erdogan, conmemoraron un nuevo aniversario de la limpieza étnica en Artsaj, ocasión en la que Aliyev se burló de los prisioneros armenios. La embajada de Israel en Azerbaiyán felicitó a Bakú por estas acciones contra la población armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/la-embajada-de-israel-en-azerbaiyan-felicito-a-azerbaiyan-por-la-limpieza-etnica-contra-la-poblacion-armenia-de-artsaj/",
+          "title": "La Embajada de Israel en Azerbaiyán felicitó a Azerbaiyán por la limpieza étnica contra la población armenia de Artsaj"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/junto-con-recep-tayyip-erdogan-ilham-aliyev-festejo-un-nuevo-aniversario-de-la-limpieza-etnica-de-artsaj-y-se-burlo-de-los-prisioneros-armenios-les-demostramos-quien-mandaba/",
+          "title": "Junto con Recep Tayyip Erdogan, Ilham Aliyev festejó un nuevo aniversario de la limpieza étnica de Artsaj y se burló de los prisioneros armenios: “Les demostramos quién mandaba”"
+        }
+      ]
+    },
+    {
+      "title": "Aplazan el juicio penal contra el Catolicós Karekin II",
+      "text": "El juicio penal contra el Catolicós Karekin II en Armenia fue aplazado debido a la inasistencia de los fiscales. La decisión judicial pospone el proceso contra el líder de la Iglesia Apostólica Armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/aplazan-juicio-penal-catolicos-karekin-ii-armenia/",
+          "title": "Aplazan el juicio penal contra el Catolicós Karekin II en Armenia tras la inasistencia de los fiscales"
+        }
+      ]
+    },
+    {
+      "title": "Nuevo vuelo directo entre Sofía y Ereván",
+      "text": "La aerolínea GullivAir inauguró el primer vuelo directo que conecta Sofía con el Aeropuerto Internacional de Zvartnots en Ereván. La nueva ruta busca fortalecer la conectividad aérea entre Bulgaria y Armenia.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/primer-vuelo-directo-sofia-erevan-gullivair/",
+          "title": "GullivAir inaugura el primer vuelo directo entre Sofía y Ereván en el Aeropuerto Internacional de Zvartnots"
+        }
+      ]
+    },
+    {
+      "title": "Creación del «TOEFL armenio» e impulso a la IA lingüística",
+      "text": "Armenia anunció la creación de un examen de competencia lingüística propio, denominado «TOEFL armenio», y planes para impulsar la inteligencia artificial aplicada al lenguaje para 2027. La iniciativa forma parte de una estrategia educativa y tecnológica nacional.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-creara-toefl-armenio-educacion/",
+          "title": "Armenia creará el «TOEFL armenio» e impulsará la inteligencia artificial lingüística en 2027"
+        }
+      ]
+    },
+    {
+      "title": "Acuerdo energético y de defensa entre Azerbaiyán y Ucrania",
+      "text": "Azerbaiyán y Ucrania firmaron en Uzhhorod un acuerdo histórico de cooperación en materia energética y de defensa. El pacto refuerza los lazos bilaterales en sectores estratégicos.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/azerbaiyan-ucrania-acuerdo-cooperacion-energetica-defensa/",
+          "title": "Azerbaiyán y Ucrania firman un histórico acuerdo de cooperación energética y de defensa en Uzhhorod"
+        }
+      ]
+    }
+  ]
+}
