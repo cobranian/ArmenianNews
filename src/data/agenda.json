@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T20:54:56.376Z",
+  "generatedAt": "2026-11-10T21:23:38.689Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -470,6 +470,23 @@
       "rawDate": "NOV 13 17:30",
       "image": "https://armenopole.com/images/events/hayashen-armenian-youth-club-make-your-own-slime.jpg?v=76700",
       "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Armenians in Film Fresno 2026",
+      "url": "https://armenopole.com/armenians-in-film-fresno-2026.html",
+      "location": "California",
+      "date": "2026-11-13T17:30",
+      "rawDate": "NOV 13 17:30",
+      "image": "https://armenopole.com/images/events/armenians-in-film-fresno-2026.jpg?v=103033",
+      "country": "usa",
       "resumeLangs": [
         "fr",
         "de",
@@ -1180,23 +1197,6 @@
         "en",
         "es",
         "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Badarak in Tucson, AZ",
-      "url": "https://armenopole.com/badarak-in-tucson-az.html",
-      "location": "Arizona",
-      "date": "2026-11-15T11:00",
-      "rawDate": "NOV 15 11:00",
-      "image": "https://armenopole.com/images/events/badarak-in-tucson-az.jpg?v=89265",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
         "ru"
       ]
     },
