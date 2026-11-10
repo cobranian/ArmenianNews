@@ -179,7 +179,14 @@ export function checkSocial({ live, accounts, tokens, failures, reels = [] }) {
     else if (t.warning) out.push({ key: `token-${t.secret}-warn`, level: 'faire', text: `Clé ${t.secret} : ${t.warning}`, action: 'Renouveler la clé avant l’échéance (docs/social-setup.md)' })
     else out.push({ key: `token-${t.secret}`, level: 'ok', text: `Clé ${t.secret} (${t.channels.length} comptes) : droits de publication présents, ${exp}` })
   }
+  // Une clé refusée ne brûle aucun essai (isAuthFailure) : une ligne par
+  // compte, pas une par élément — la clé est déjà signalée plus haut.
+  const waiting = new Map()
+  for (const f of failures) if (f.auth && !f.uncertain) waiting.set(f.channel, (waiting.get(f.channel) ?? 0) + 1)
+  for (const [channel, n] of waiting)
+    out.push({ key: `auth-wait-${channel}`, level: 'info', text: `**${channel}** : ${n} élément(s) attendent une clé valide — ils repartiront seuls à leur rythme habituel` })
   for (const f of failures) {
+    if (f.auth && !f.uncertain) continue
     if (f.uncertain)
       out.push({
         key: `uncertain-${f.channel}-${f.id}`,

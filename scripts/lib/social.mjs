@@ -221,6 +221,18 @@ export const MAX_PER_RUN = 2
 // Trois essais, une heure d'écart : de quoi passer une panne passagère de la
 // plateforme, pas de quoi publier en boucle un post qu'elle refuse.
 export const MAX_ATTEMPTS = 3
+// Une clé refusée (mot de passe changé, session révoquée, clé expirée) est la
+// panne du COMPTE, pas de l'élément : elle ne compte aucun essai. Avant
+// (10 nov. 2026), chaque heure brûlait les trois essais d'un Reel puis passait
+// au suivant — 136 éléments abandonnés sur les 14 comptes Meta en quelques
+// jours. Lu sur le texte de l'erreur, donc valable aussi pour les échecs déjà
+// inscrits au registre : ils repartent seuls une fois la clé recollée.
+// Le tableau de bord signale déjà la clé (« Recoller la clé »).
+export function isAuthFailure(error) {
+  return /Error validating access token|Invalid OAuth access token|session has been invalidated|access token has expired/i.test(String(error ?? ''))
+}
+const attemptsOf = (f) => (f && !isAuthFailure(f.error) ? (f.attempts ?? 0) : 0)
+
 // Une brève de la veille vaut encore d'être partagée ; au-delà, c'est du passé.
 const BRIEF_MAX_AGE_DAYS = 1
 
@@ -286,7 +298,7 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
     )
     const fresh = mine
       .filter((it) => !(it.id in entry.posted))
-      .filter((it) => (failed[it.id]?.attempts ?? 0) < MAX_ATTEMPTS)
+      .filter((it) => attemptsOf(failed[it.id]) < MAX_ATTEMPTS)
       .filter((it) => kinds.includes(it.kind))
       .filter((it) => supports(ch.platform, it))
       .filter((it) => it.kind !== 'brief' || ageDays(it.date, now) <= BRIEF_MAX_AGE_DAYS)
@@ -338,7 +350,11 @@ export function settle(ledger, results, now = new Date(), planned = []) {
       continue
     }
     delete entry.posted[r.id]
-    const attempts = (entry.failed[r.id]?.attempts ?? 0) + 1
+    if (isAuthFailure(error)) {
+      entry.failed[r.id] = { attempts: 0, last: now.toISOString(), error }
+      continue
+    }
+    const attempts = attemptsOf(entry.failed[r.id]) + 1
     entry.failed[r.id] = { attempts, last: now.toISOString(), error }
   }
   return next
@@ -350,7 +366,7 @@ export function ledgerFailures(ledger) {
   const out = []
   for (const [channel, entry] of Object.entries(ledger?.channels ?? {}))
     for (const [id, f] of Object.entries(entry.failed ?? {}))
-      out.push({ channel, id, ...f, abandoned: !f.uncertain && f.attempts >= MAX_ATTEMPTS })
+      out.push({ channel, id, ...f, auth: isAuthFailure(f.error), abandoned: !f.uncertain && attemptsOf(f) >= MAX_ATTEMPTS })
   return out.sort((a, b) => a.channel.localeCompare(b.channel) || a.id.localeCompare(b.id))
 }
 
