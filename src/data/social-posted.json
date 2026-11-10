@@ -1718,14 +1718,13 @@
         "culture:art-du-tapis-armenien": "2026-11-02T20:44:07.733Z",
         "reel:khatchkar": "2026-11-07T00:32:17.242Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
-        "reel:komitas": "2026-11-10T19:32:45.336Z",
-        "reel:alphabet-armenien": "2026-11-10T21:03:30.962Z"
+        "reel:komitas": "2026-11-10T19:32:45.336Z"
       },
       "failed": {
         "reel:alphabet-armenien": {
-          "attempts": 2,
-          "last": "2026-11-10T20:33:43.975Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
+          "attempts": 3,
+          "last": "2026-11-10T21:03:45.473Z",
+          "error": "instagram-reel/media : HTTP 400 You cannot access the app till you log in to www.facebook.com and follow the instructions given."
         },
         "reel:duduk": {
           "attempts": 3,
