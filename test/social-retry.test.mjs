@@ -183,3 +183,46 @@ test('hourly.yml : le job social n’est jamais annulé par un run plus récent'
   const snapshot = hourly.slice(hourly.indexOf('\n  snapshot:'), hourly.indexOf('\n  social:'))
   assert.match(snapshot, /concurrency:\s*\n\s*group: deploy\s*\n\s*cancel-in-progress: true/)
 })
+
+// 10 nov. 2026 : Meta invalide la session (mot de passe changé). Chaque heure
+// brûlait les trois essais d'un Reel puis passait au suivant — 136 éléments
+// abandonnés sur 14 comptes. Une clé refusée est la panne du compte : elle ne
+// compte aucun essai, et les échecs déjà inscrits repartent seuls.
+const AUTH = 'facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.'
+
+test('une clé refusée ne brûle aucun essai : l’élément reste en tête de file', () => {
+  let ledger = base()
+  for (let i = 0; i < MAX_ATTEMPTS + 2; i++) {
+    const r = plan({ items: [item('duduk'), item('lavash')], channels: [tg], ledger, kinds: ['culture'], now, max: 1 })
+    assert.deepEqual(r.posts.map((p) => p.item.id), ['culture:duduk'], `passage ${i + 1}`)
+    ledger = settle(r.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: AUTH }], now)
+  }
+  const f = ledgerFailures(ledger)
+  assert.equal(f.length, 1)
+  assert.equal(f[0].abandoned, false)
+  assert.equal(f[0].auth, true)
+})
+
+test('un élément déjà « abandonné » sur une clé refusée repart sans commande', () => {
+  const l = base()
+  l.channels['telegram-ch'].failed = { 'culture:duduk': { attempts: 3, last: 'x', error: AUTH } }
+  assert.deepEqual(plan({ items: [item('duduk')], channels: [tg], ledger: l, kinds: ['culture'], now }).posts.map((p) => p.item.id), ['culture:duduk'])
+  assert.equal(ledgerFailures(l)[0].abandoned, false)
+})
+
+test('un refus ordinaire après une clé refusée compte à partir de zéro', () => {
+  const l = base()
+  l.channels['telegram-ch'].failed = { 'culture:duduk': { attempts: 3, last: 'x', error: AUTH } }
+  const after = settle(l, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: 'HTTP 500' }], now)
+  assert.equal(after.channels['telegram-ch'].failed['culture:duduk'].attempts, 1)
+})
+
+test('le tableau de bord résume les clés refusées en une ligne par compte', async () => {
+  const { checkSocial } = await import('../scripts/lib/publication-check.mjs')
+  const failures = ['a', 'b', 'c'].map((s) => ({ channel: 'facebook-ch', id: `reel:${s}`, attempts: 3, error: AUTH, auth: true, abandoned: false }))
+  const out = checkSocial({ live: true, accounts: [], tokens: [], failures })
+  const mine = out.filter((o) => o.text.includes('facebook-ch'))
+  assert.equal(mine.length, 1)
+  assert.match(mine[0].text, /3 élément/)
+  assert.equal(mine[0].level, 'info')
+})
