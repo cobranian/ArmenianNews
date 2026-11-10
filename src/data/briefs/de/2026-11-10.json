@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-10",
+  "lang": "de",
+  "generatedAt": "2026-11-10T03:30:05.611Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über die Reise von Premierminister Nikol Paschinjan nach Frankreich, die bilateralen Beziehungen zu Iran und Indien sowie über Wetterbedingte Einsätze und wirtschaftliche Vorhaben.",
+  "topics": [
+    {
+      "title": "Paschinjan nimmt am Pariser Friedensforum teil",
+      "text": "Der armenische Premierminister Nikol Paschinjan reist nach Frankreich, um am 9. Forum von Paris für den Frieden teilzunehmen. Während des Aufenthalts sind auch bilaterale Gespräche geplant.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/nikol-pachinian-en-france-pour-participer-au-9%e1%b5%89-forum-de-paris-pour-la-paix/",
+          "title": "Nikol Pachinian en France pour participer au 9ᵉ Forum de Paris pour la paix"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265195",
+          "title": "Déplacement du Premier ministre en France"
+        }
+      ]
+    },
+    {
+      "title": "Armenien und Iran vertiefen Zusammenarbeit",
+      "text": "Premierminister Paschinjan empfing eine iranische Delegation unter Leitung des Vizepräsidenten. Beide Seiten bereiteten die kommende Sitzung der zwischenstaatlichen Kommission vor und betonten, dass das TRIPP-Projekt die regionale Geopolitik nicht verändere. Der Handel zwischen den beiden Ländern habe in den letzten Jahren zugenommen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-a-recu-une-delegation-conduite-par-le-vice-president-de-la-republique-islamique-diran/",
+          "title": "Le Premier ministre arménien a reçu une délégation conduite par le vice-président de la République islamique d’Iran"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265172",
+          "title": "Erevan a assuré Téhéran que le projet TRIPP ne modifierait pas la géopolitique de la région, selon le ministère iranien des Affaires étrangères"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265167",
+          "title": "Le Premier ministre a reçu une délégation conduite par le vice-président de la République islamique d’Iran"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/erevan-se-prepare-a-la-session-de-la-commission-intergouvernementale-armenie-iran/",
+          "title": "Erevan se prépare à la session de la commission intergouvernementale Arménie-Iran"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265159",
+          "title": "Les échanges commerciaux entre l’Arménie et l’Iran ont augmenté ces dernières années : Mher Grigorian a reçu Pourmohammadi"
+        }
+      ]
+    },
+    {
+      "title": "Armenien und Indien prüfen erweiterte Kooperation",
+      "text": "Vertreter Armeniens und Indiens erörterten Perspektiven für eine Ausweitung der Zusammenarbeit in Bildung, Wissenschaft und Kultur. Konkrete Vereinbarungen wurden in den Meldungen nicht genannt.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265186",
+          "title": "L’Arménie et l’Inde ont examiné les perspectives d’élargissement de leur coopération dans les domaines de l’éducation, de la science et de la culture"
+        }
+      ]
+    },
+    {
+      "title": "Armenien und Estland wollen diplomatische Präsenz stärken",
+      "text": "Armenien und Estland unterstrichen die Bedeutung einer dauerhaften diplomatischen Vertretung in Jerewan und Tallinn. Details zur Umsetzung wurden nicht veröffentlicht.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265199",
+          "title": "L’Arménie et l’Estonie soulignent l’importance de renforcer leur présence diplomatique permanente à Erevan et à Tallinn"
+        }
+      ]
+    },
+    {
+      "title": "Rettungskräfte befreien Fahrzeuge nach Schnee und Glatteis",
+      "text": "Wegen Schneefall, Glatteis und unpassierbarer Strassen rückten armenische Rettungskräfte aus. Sie bargen 45 festgefahrene Fahrzeuge und halfen 106 Personen.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-raison-de-la-neige-du-verglas-de-la-boue-et-de-routes-impraticables-en-armenie-les-secouristes-ont-degage-45-vehicules-bloques-et-porte-assistance-a-106-personnes/",
+          "title": "En raison de la neige, du verglas, de la boue et de routes impraticables en Arménie, Les secouristes ont dégagé 45 véhicules bloqués et porté assistance à 106 personnes"
+        }
+      ]
+    },
+    {
+      "title": "Kartierung des KI-Ökosystems in Armenien veröffentlicht",
+      "text": "Die Armenian Innovation Foundation erfasste 118 Unternehmen im Bereich künstliche Intelligenz. Die Bestandsaufnahme soll die Entwicklung des Sektors unterstützen.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-fondation-armenienne-pour-linnovation-aif-a-realise-une-cartographie-de-lecosysteme-de-lintelligence-artificielle-en-armenie-qui-recense-118-entreprises-dans-le-secteur-de-lia/",
+          "title": "La Fondation arménienne pour l’innovation (AIF) a réalisé une cartographie de l’écosystème de l’intelligence artificielle en Arménie qui recense 118 entreprises dans le secteur de l’IA"
+        }
+      ]
+    },
+    {
+      "title": "Armenien und USA prüfen gemeinsame Rettungsübungen",
+      "text": "Das armenische Aussenministerium und die US-Seite erörterten die Möglichkeit gemeinsamer Trainings für Rettungsteams. Ein Zeitplan wurde nicht genannt.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265193",
+          "title": "L’Arménie et les États-Unis ont examiné la possibilité d’organiser des exercices conjoints de formation des équipes de secours"
+        }
+      ]
+    }
+  ]
+}

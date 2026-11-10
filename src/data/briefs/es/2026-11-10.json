@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-10",
+  "lang": "es",
+  "generatedAt": "2026-11-10T03:30:05.611Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La agenda del día destaca el fortalecimiento de los lazos entre Armenia e Irán, los avances en la lucha contra la corrupción y la situación de los desplazados de Karabaj, junto con temas de política internacional y deporte.",
+  "topics": [
+    {
+      "title": "Visita del vicepresidente iraní a Ereván y profundización bilateral",
+      "text": "El primer ministro Nikol Pashinyan y el viceprimer ministro Mher Grigoryan recibieron al vicepresidente iraní Seyed Hamid Pourmohammadi. Las partes analizaron la expansión del comercio y la cooperación estratégica, y la Cancillería iraní indicó que Ereván aseguró que el corredor TRIPP no alterará la geopolítica regional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-iran-dialogo-estrategico-visita-pourmohammadi/",
+          "title": "Armenia e Irán intensifican su diálogo estratégico bilateral con la llegada de Seyed Hamid Pourmohammadi a Ereván"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265172",
+          "title": "Cancillería iraní: Ereván aseguró a Teherán que el TRIPP no modificará la geopolítica regional"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265167",
+          "title": "El primer ministro de Armenia recibió a la delegación encabezada por el vicepresidente de Irán"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265159",
+          "title": "Mher Grigoryan recibió a Pourmohammadi: El comercio entre Armenia e Irán creció en los últimos años"
+        }
+      ]
+    },
+    {
+      "title": "Lucha contra la corrupción: prioridad gubernamental y resultados del Comité Anticorrupción",
+      "text": "Pashinyan afirmó que la prevención de la corrupción es una prioridad absoluta y anunció la construcción de un nuevo complejo para el Comité Anticorrupción. Este organismo remitió 1.050 causas penales a los tribunales durante sus primeros cinco años de gestión.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/comite-anticorrupcion-armenia-causas-penales/",
+          "title": "El Comité Anticorrupción de Armenia remitió 1.050 causas penales a los tribunales durante sus cinco años de gestión"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-prioridad-prevencion-corrupcion-armenia/",
+          "title": "Nikol Pashinyan afirma que la prevención de la corrupción es una prioridad absoluta para Armenia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265142",
+          "title": "Primer ministro: \"La visión de un Estado libre de corrupción es una prioridad absoluta para nosotros\""
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265137",
+          "title": "Pashinyan: \"Se acordó construir un nuevo complejo para el Comité Anticorrupción\""
+        }
+      ]
+    },
+    {
+      "title": "Nuevas medidas para los desplazados de Karabaj",
+      "text": "El gobierno prevé cambios en los programas de vivienda, asistencia social y empleo destinados a las personas desplazadas de Nagorno-Karabaj.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265143",
+          "title": "Se prevén cambios en los programas de vivienda, asistencia social y empleo para las personas desplazadas de Karabaj"
+        }
+      ]
+    },
+    {
+      "title": "Alianza turco-azerbaiyana y objeción armenia a candidato turco en la ONU",
+      "text": "Los presidentes Erdoğan y Aliyev ratificaron en Bakú una alianza descrita como inquebrantable. Paralelamente, el Consejo Nacional Armenio solicitó rechazar la candidatura del diplomático turco Feridun Sinirlioğlu a la Secretaría General de la ONU.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/consejo-nacional-armenio-rechaza-feridun-sinirlioglu-onu/",
+          "title": "El Consejo Nacional Armenio solicita rechazar la candidatura de Feridun Sinirlioğlu a la Secretaría General de la ONU"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/ratifican-alianza-turquia-azerbaiyan-baku/",
+          "title": "Recep Tayyip Erdoğan e Ilham Aliyev ratifican la alianza “inquebrantable” entre Turquía y Azerbaiyán en Bakú"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación Armenia-India en educación, ciencia y cultura",
+      "text": "Autoridades de ambos países analizaron la ampliación de la cooperación en los ámbitos educativo, científico y cultural.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265186",
+          "title": "Armenia e India analizaron la ampliación de la cooperación en educación, ciencia y cultura"
+        }
+      ]
+    },
+    {
+      "title": "Armenia en el Índice de Miseria de Hanke y centenario de la Radio Pública",
+      "text": "El país ocupa el puesto 52 en el índice debido al alto costo de los créditos bancarios. En el plano cultural, la Radio Pública de Armenia celebró su centenario con una conferencia internacional de medios en Ereván.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-indice-miseria-de-hanke-creditos-bancarios/",
+          "title": "Armenia ocupa el puesto 52 en el Índice de Miseria de Hanke debido al alto costo de los créditos bancarios"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/radio-publica-armenia-celebra-centenario-erevan/",
+          "title": "La Radio Pública de Armenia celebra su centenario con una conferencia internacional de medios en Ereván"
+        }
+      ]
+    },
+    {
+      "title": "Bronce para Varazdat Lalayan en el Mundial de Halterofilia",
+      "text": "El halterófilo armenio Varazdat Lalayan obtuvo la medalla de bronce en el Campeonato Mundial de Halterofilia.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265089",
+          "title": "Varazdat Lalayan gana la medalla de bronce en el Campeonato Mundial de Halterofilia"
+        }
+      ]
+    }
+  ]
+}
