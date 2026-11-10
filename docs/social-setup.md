@@ -91,7 +91,7 @@ publié — et le tableau de bord demande d'aller voir sur le compte.
 
 Une **clé refusée** (mot de passe changé, session révoquée) ne compte aucun
 essai : c'est la panne du compte, pas de l'article. Les éléments attendent,
-en tête de file, et repartent seuls une fois la clé recollée — aucun 
+en tête de file, et repartent seuls une fois la clé recollée — aucun `retry`
 à faire (10 nov. 2026 : avant, 136 Reels avaient été abandonnés ainsi).
 
 ```bash
