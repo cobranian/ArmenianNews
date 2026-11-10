@@ -1071,11 +1071,6 @@
           "last": "2026-11-09T02:53:44.899Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
-        "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "reel/vidéo : HTTP 504"
-        },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
           "last": "2026-11-09T08:32:36.558Z",
@@ -1195,11 +1190,6 @@
           "last": "2026-11-09T02:53:44.899Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
-        "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "reel/vidéo : HTTP 504"
-        },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
           "last": "2026-11-09T08:32:36.558Z",
@@ -1311,11 +1301,6 @@
           "attempts": 3,
           "last": "2026-11-09T02:53:44.899Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
-        "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "reel/vidéo : HTTP 504"
         },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
@@ -1699,11 +1684,6 @@
           "attempts": 3,
           "last": "2026-11-09T02:53:44.899Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
-        "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "reel/vidéo : HTTP 504"
         },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
