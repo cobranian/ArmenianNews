@@ -1604,11 +1604,6 @@
           "last": "2026-11-10T20:10:33.280Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
-        "reel:alphabet-armenien": {
-          "attempts": 3,
-          "last": "2026-11-09T00:33:15.114Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:duduk": {
           "attempts": 3,
           "last": "2026-11-09T02:53:44.899Z",
@@ -1723,13 +1718,12 @@
         "culture:art-du-tapis-armenien": "2026-11-02T20:44:07.733Z",
         "reel:khatchkar": "2026-11-07T00:32:17.242Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
-        "reel:komitas": "2026-11-10T19:32:45.336Z",
-        "reel:alphabet-armenien": "2026-11-10T20:32:56.541Z"
+        "reel:komitas": "2026-11-10T19:32:45.336Z"
       },
       "failed": {
         "reel:alphabet-armenien": {
-          "attempts": 1,
-          "last": "2026-11-10T20:10:33.280Z",
+          "attempts": 2,
+          "last": "2026-11-10T20:33:43.975Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:duduk": {
