@@ -1727,9 +1727,9 @@
           "error": "instagram-reel/media : HTTP 400 You cannot access the app till you log in to www.facebook.com and follow the instructions given."
         },
         "reel:duduk": {
-          "attempts": 0,
-          "last": "2026-11-11T15:44:12.626Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+          "attempts": 1,
+          "last": "2026-11-11T16:33:32.619Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:aram-khatchatourian": {
           "attempts": 3,
