@@ -80,10 +80,15 @@ pilier de plus, qu'on peut indexer.
   que `urlSalle` (`protocole.js`) met dans les liens d'invitation. Vite copie
   `public/` dans les **deux** `dist/`. Ici c'est voulu : un jeu n'a pas de
   langue de vitrine, et un lien d'invitation s'ouvre sur l'hôte qui l'a créé.
-- La couche de salles de lokolok est copiée sous **`public/assets/net/`** :
+- La couche de salles de lokolok est copiée sous **`public/play/net/`** :
   `salle.js`, `salle2.js`, `protocole.js`, `journal.js`, `messages.js`,
-  `qrcode.js`. Il faut garder ce chemin, parce que les jeux l'importent en
-  **absolu** (`import('/assets/net/salle2.js')`). Le `config.js` est **propre à
+  `qrcode.js`. Les jeux l'importent en **absolu**
+  (`import('/assets/net/salle2.js')`, et `salle.js` charge
+  `/assets/net/qrcode.js`). `jeux:sync` réécrit donc `/assets/net/` en
+  `/play/net/` dans les fichiers copiés. Ce choix de Claude tient à une raison
+  précise : sous `/assets/`, ces fichiers sans empreinte tomberaient sous le
+  cache `immutable` d'un an du site. Tout ce qui touche aux jeux vit ainsi sous
+  `/play/**`, qui a ses propres en-têtes. Le `config.js` est **propre à
   Arménie Info**. `classement.js` n'est pas copié.
 - Le **dépôt ne lit jamais `../Games` ni `../lokolok` en CI** : ce sont
   d'autres dépôts. Un script local, `npm run jeux:sync`, recopie les jeux sans
@@ -101,11 +106,15 @@ pilier de plus, qu'on peut indexer.
    chemin est déduit de l'hôte et de la langue, à partir de `sites.config.js`
    (table générée par `jeux:sync`, ou écrite au build). Il ne doit masquer
    **aucune** commande du jeu, ni en portrait à 360 px, ni en paysage.
-2. **Statistiques.** `/assets/stats.js` de lokolok (bouton « Partager »,
-   événements GA du portail) est remplacé par une **cale** qui définit
-   `window.lokolokStat` et envoie `partie_debut`, `partie_fin`, `salle_creee`
-   et `salle_rejointe` au GA4 de la vitrine, **sous le consentement déjà en
-   place** (`ga-init.js`). Pas de bouton « Partager ».
+2. **Statistiques** (choix de Claude, révisé). La balise
+   `<script src="/assets/stats.js">` de lokolok est **retirée**. Elle portait le
+   bouton « Partager » et les événements GA du portail. Les jeux tolèrent son
+   absence (`window.lokolokStat` est facultatif, voir `main.js`). Pour faire
+   mieux, il faudrait poser GA et son consentement dans les pages des jeux,
+   c'est-à-dire refaire `ga-init.js` hors du bundle : trop cher pour ce
+   chantier. La mesure se fait donc **sur la vue Jeux**, par un événement GA
+   `jeu_ouvert { jeu }` au clic sur « Jouer », sous le consentement déjà en
+   place.
 
 3. **Script en ligne des échecs** (choix de Claude). `Games/Chess/index.html`
    contient `<script>LokoI18n.appliquer();</script>`, que la CSP du site
@@ -183,17 +192,21 @@ Les textes et leurs sources vivent dans un **module plat** (même raison que
   Les pages `/play/*` suivent la même CSP. Il faut vérifier que les jeux n'ont
   **aucun script en ligne** (la CSP n'a pas `'unsafe-inline'`) et que leurs
   workers modules se chargent (`worker-src` retombe sur `script-src 'self'`).
-- **Cache** (choix de Claude) : `firebase.json` sert `assets/**` en
-  `immutable` pour un an. Or `/assets/net/*.js`, la cale de statistiques et
-  les fichiers de `/play/**` ne portent pas d'empreinte dans leur nom. Sans un
-  en-tête plus précis pour ces chemins, posé **dans les deux blocs**, un
-  correctif de `config.js` ou une resynchronisation n'atteindrait jamais les
-  joueurs qui reviennent.
+- **Cache et indexation** (choix de Claude) : `firebase.json` sert
+  `assets/**` en `immutable` pour un an. C'est pour cela que tout ce qui
+  touche aux jeux vit sous `play/**`, **hors** de ce motif. Il reçoit dans
+  **les deux blocs** un en-tête `Cache-Control: no-cache`, revalidé à chaque
+  visite, et un `X-Robots-Tag: noindex`. Sans cela, un correctif de
+  `config.js` ou une resynchronisation n'atteindrait jamais les joueurs qui
+  reviennent.
 - **Garde-fous de test**, parce que ces pannes-là seraient muettes :
-  - `public/assets/net/config.js` ne désigne **jamais** le projet
+  - `public/play/net/config.js` ne désigne **jamais** le projet
     `lokolok-com` ;
   - les deux blocs CSP contiennent les hôtes Firebase ;
-  - chaque jeu copié contient `index.html` et son `retour.js` ;
+  - aucun fichier copié ne référence encore `/assets/net/` ou
+    `/assets/stats.js` ;
+  - chaque `index.html` de jeu charge `/play/retour.js` et ne contient aucun
+    script en ligne ;
   - aucun fichier de `public/play/` n'est importé par `src/`.
 
 ### Étapes manuelles de Nareg (une fois)
