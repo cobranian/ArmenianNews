@@ -4,8 +4,8 @@
 //
 //   node scripts/salles-purge.mjs        (hourly.yml, étape « Effacer les salles de jeu »)
 //
-// Identité : le compte de service de la CI (secret
-// FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO, passé en FIREBASE_SERVICE_ACCOUNT),
+// Identité : un compte de service réservé à la purge (secret
+// FIREBASE_SERVICE_ACCOUNT_PURGE, passé en FIREBASE_SERVICE_ACCOUNT),
 // qui doit porter le rôle « Firebase Realtime Database Admin » sur
 // `armenie-info`. Sans ce rôle, la base répond 401/403 : le seul signe est
 // « ✗ purge » au log, et la ligne « effacement des salles » de l'issue
