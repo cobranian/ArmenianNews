@@ -114,6 +114,14 @@ test('checkSteps : une capture d’écran en échec est signalée, un succès ou
   assert.deepEqual(checkSteps({}), [])
 })
 
+test('checkSteps : une purge des salles en échec est signalée, et nomme le rôle IAM', () => {
+  const [ligne, ...reste] = checkSteps({ purge: 'failure', screenshot: 'success' })
+  assert.deepEqual(reste, [])
+  assert.match(ligne, /salles/)
+  assert.match(ligne, /Realtime Database Admin/)
+  assert.deepEqual(checkSteps({ purge: 'success' }), [])
+})
+
 // Le site ne fait que REMÉLANGER le pool ; seule une récolte locale
 // (npm run ig-scrape) apporte des posts neufs. Rien ne le rappelait.
 test('checkHarvest : une récolte de moins de trois semaines ne dit rien', () => {

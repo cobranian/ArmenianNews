@@ -145,6 +145,39 @@ const MODE_AMI = {
   ru: 'с другом',
 }
 
+// Depuis le 11 nov. 2026, une étape horaire efface les salles de plus de 24 h
+// (scripts/salles-purge.mjs) : une salle disparaît donc NORMALEMENT ~25 h
+// après sa création. Le texte doit le dire — sans promesse ferme (« au plus
+// tard ») : la chaîne horaire peut sauter un passage (main cassé, jeton du
+// Worker expiré, rôle IAM retiré), et l'effacement a alors lieu au suivant.
+// Le compte anonyme Firebase, lui, est supprimé après 30 jours (Auto clean-up).
+const PROMESSE_FERME = {
+  fr: /au plus tard/i, de: /spätestens/i, it: /al più tardi/i, en: /at the latest/i,
+  es: /a más tardar/i, hy: /առավելագույնը/, ru: /не позднее/i,
+}
+test('la confidentialité dit que les salles s’effacent seules, normalement ~25 h après leur création, sans promesse ferme', () => {
+  assert.deepEqual(Object.keys(PROMESSE_FERME).sort(), [...BLOC_LANGS].sort())
+  for (const l of BLOC_LANGS) {
+    for (const cle of ['privacy.games.body', 'privacy.rights.body']) {
+      const v = valeur(l, cle) ?? ''
+      assert.match(v, /\b25\b/, `${l} : ${cle} ne dit pas « 25 h »`)
+      assert.doesNotMatch(v, PROMESSE_FERME[l], `${l} : ${cle} promet un délai ferme`)
+    }
+    assert.match(valeur(l, 'privacy.games.body') ?? '', /\b30\b/, `${l} : les 30 jours du compte anonyme manquent`)
+  }
+})
+
+// La description Google de /jeux/ dit qu'on peut jouer à deux. Même tournure
+// que MODE_AMI là où elle se glisse dans la phrase ; fr, de et en l'écrivent
+// « avec un ami » plutôt que par le nom du mode.
+const AVEC_UN_AMI = { ...MODE_AMI, fr: 'avec un ami', de: 'mit einem Freund', en: 'with a friend' }
+test('VIEW_SEO.games : chaque description cite le jeu avec un ami', () => {
+  assert.deepEqual(Object.keys(AVEC_UN_AMI).sort(), [...BLOC_LANGS].sort())
+  for (const l of BLOC_LANGS) {
+    assert.ok(VIEW_SEO.games[l].description.includes(AVEC_UN_AMI[l]), `${l} : « ${AVEC_UN_AMI[l]} » absent de la description`)
+  }
+})
+
 test('l’intro et les droits de la confidentialité citent le mode ami, dans chaque langue', () => {
   assert.deepEqual(Object.keys(MODE_AMI).sort(), [...BLOC_LANGS].sort())
   for (const l of BLOC_LANGS) {

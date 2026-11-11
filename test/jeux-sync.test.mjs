@@ -199,11 +199,19 @@ test('la couche net est copiée, sans classement.js, avec SA config', () => {
   const config = readFileSync(join(PLAY, 'net', 'config.js'), 'utf-8')
   assert.ok(!config.includes('lokolok-com'))
   assert.ok(config.includes("projectId: 'armenie-info'"))
-  // databaseURL vide (premier temps) ou celle du projet armenie-info — jamais
-  // celle d'un autre projet, qui mettrait les parties chez le voisin.
+  // databaseURL exacte du projet armenie-info — jamais celle d'un autre projet,
+  // qui mettrait les parties chez le voisin.
   const db = config.match(/databaseURL:\s*'([^']*)'/)
   assert.ok(db, 'databaseURL absent de net/config.js')
-  assert.ok(db[1] === '' || db[1].includes('armenie-info'), `databaseURL inattendu : ${db[1]}`)
+  assert.match(db[1], /^https:\/\/armenie-info-default-rtdb\.europe-west1\.firebasedatabase\.app$/)
+  const cle = config.match(/apiKey:\s*'([^']*)'/)
+  assert.ok(cle && cle[1].length > 0, 'apiKey vide')
+  const app = config.match(/appId:\s*'([^']*)'/)
+  assert.ok(app && app[1].startsWith('1:95859451112:web:'), 'appId inattendu')
+  // Les règles RTDB testées (test/regles/outils.js) visent la même base.
+  const outils = readFileSync(join(RACINE, 'test', 'regles', 'outils.js'), 'utf-8')
+  const ns = outils.match(/const NS = '([^']+)'/)[1]
+  assert.equal(`https://${ns}.europe-west1.firebasedatabase.app`, db[1])
 })
 
 test('aucun fichier de src/ ne référence public/play ni /play/net', () => {
