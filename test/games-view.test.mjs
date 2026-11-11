@@ -129,3 +129,29 @@ test('la confidentialité a sa section Jeux, qui nomme Firebase, dans chaque lan
   const jeux = footer.indexOf("t('privacy.games.body')")
   assert.ok(stockage > 0 && jeux > stockage, 'la section Jeux suit « Conservé sur votre appareil »')
 })
+
+// L'intro disait « ni compte, ni base de données » et les droits « se limitent
+// aux mesures d'audience » : faux dès que le mode ami existe. Garde mécanique :
+// le nom localisé du mode ami — celui du titre privacy.games.title — doit
+// figurer dans l'intro ET dans les droits de chaque langue. Une intro ou des
+// droits réécrits sans lui ont oublié l'exception.
+const MODE_AMI = {
+  fr: 'mode ami',
+  de: 'Freundesmodus',
+  it: 'con un amico',
+  en: 'friend mode',
+  es: 'con un amigo',
+  hy: 'ընկերոջ հետ',
+  ru: 'с другом',
+}
+
+test('l’intro et les droits de la confidentialité citent le mode ami, dans chaque langue', () => {
+  assert.deepEqual(Object.keys(MODE_AMI).sort(), [...BLOC_LANGS].sort())
+  for (const l of BLOC_LANGS) {
+    const m = MODE_AMI[l]
+    assert.ok((valeur(l, 'privacy.games.title') ?? '').includes(m), `${l} : « ${m} » absent du titre`)
+    for (const cle of ['privacy.intro', 'privacy.rights.body']) {
+      assert.ok((valeur(l, cle) ?? '').includes(m), `${l} : ${cle} ne cite pas « ${m} »`)
+    }
+  }
+})

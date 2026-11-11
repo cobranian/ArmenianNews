@@ -357,13 +357,13 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   documenté en tête du module et figé par `test/agenda-events.test.mjs`.
 
 **Les vues.** Une page n'est plus seulement un couple (vitrine, langue) mais un
-**triplet** (vitrine, langue, vue). Quatre vues existent : `home` (l'accueil,
+**triplet** (vitrine, langue, vue). Cinq vues existent : `home` (l'accueil,
 déjà là sans porter de nom jusqu'ici), `radio` et `agenda` — les deux pages
 piliers qui donnent une URL propre aux deux jeux de données que ce site est
 seul à agréger — et `about` (`/a-propos/`, `/about/`), la page qui dit qui
 édite, d'où, avec quelles sources et quelles règles (ajoutée après l'audit
 SEO du 21 août 2026 : un agrégateur que personne ne signe se lit comme une
-ferme de liens). **Ajouter une vue touche sept endroits**, et deux d'entre
+ferme de liens), puis `games` (`/jeux/`, `/games/`). **Ajouter une vue touche sept endroits**, et deux d'entre
 eux ne préviennent pas : `VIEWS` (`sites.config.js`), `VIEW_SEO` (`src/seo.js`,
 sinon `site-meta` lance), la route d'`App.jsx`, le composant, `SANS_AGENDA`
 dans `scripts/lib/agenda-guard.mjs` (une vue inconnue fait échouer `check`,
