@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T21:23:31.673Z",
+  "generatedAt": "2026-11-11T22:23:32.097Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -745,7 +745,14 @@
       "rawDate": "NOV 14 12:00",
       "image": "https://armenopole.com/images/events/holiday-market.jpg?v=159773",
       "country": "usa",
-      "resumeLangs": []
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Armênia, por onde terra, montanhas",
@@ -2821,6 +2828,7 @@
         "it",
         "en",
         "es",
+        "hy",
         "ru"
       ]
     },
