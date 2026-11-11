@@ -62,7 +62,8 @@ test('nav.games existe dans chaque bloc de langue', () => {
 test('App route la vue ; Nav, pied de page et 404 la lient', () => {
   assert.match(lire('../src/App.jsx'), /view === 'games' \? \(\s*<GamesPage \/>/)
   assert.match(lire('../src/components/Footer.jsx'), /pathFor\(lang, 'games'\)/)
-  assert.match(lire('../src/components/Nav.jsx'), /pathFor\(lang, 'games'\)/)
+  assert.match(lire('../src/navLinks.js'), /pathFor\(lang, 'games'\)/)
+  assert.match(lire('../src/components/Nav.jsx'), /navLinks\(lang,/)
   for (const site of Object.values(SITES)) {
     const html = notFoundHtml(site.id)
     for (const page of site.pages) {

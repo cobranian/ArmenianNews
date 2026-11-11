@@ -23,6 +23,9 @@ export const BRIEF_STRINGS = {
     home: 'Accueil',
     radio: 'En direct',
     agenda: 'Agenda',
+    news: 'Actualités',
+    games: 'Jeux',
+    social: 'Réseaux',
   },
   // « In Kürze » / « In breve » : le nom usuel d'une rubrique de brèves dans la
   // presse de langue allemande et italienne. Pas « Notizie » en italien, qui
@@ -44,6 +47,9 @@ export const BRIEF_STRINGS = {
     home: 'Startseite',
     radio: 'Live',
     agenda: 'Agenda',
+    news: 'Nachrichten',
+    games: 'Spiele',
+    social: 'Social Media',
   },
   it: {
     title: 'Il giorno in breve',
@@ -62,6 +68,9 @@ export const BRIEF_STRINGS = {
     home: 'Home',
     radio: 'In diretta',
     agenda: 'Eventi',
+    news: 'Notizie',
+    games: 'Giochi',
+    social: 'Social',
   },
   en: {
     title: 'The daily brief',
@@ -80,6 +89,9 @@ export const BRIEF_STRINGS = {
     home: 'Home',
     radio: 'Live',
     agenda: 'Events',
+    news: 'News',
+    games: 'Games',
+    social: 'Social',
   },
   hy: {
     title: 'Օրվա ամփոփում',
@@ -98,6 +110,9 @@ export const BRIEF_STRINGS = {
     home: 'Գլխավոր էջ',
     radio: 'Ուղիղ',
     agenda: 'Միջոցառումներ',
+    news: 'Լուրեր',
+    games: 'Խաղեր',
+    social: 'Ցանցեր',
   },
   ru: {
     title: 'Сводка дня',
@@ -116,6 +131,9 @@ export const BRIEF_STRINGS = {
     home: 'Главная',
     radio: 'В эфире',
     agenda: 'Афиша',
+    news: 'Новости',
+    games: 'Игры',
+    social: 'Соцсети',
   },
   es: {
     title: 'El resumen del día',
@@ -134,5 +152,8 @@ export const BRIEF_STRINGS = {
     home: 'Inicio',
     radio: 'En vivo',
     agenda: 'Eventos',
+    news: 'Noticias',
+    games: 'Juegos',
+    social: 'Redes',
   },
 }
