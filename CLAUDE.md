@@ -42,7 +42,7 @@ Où va le reste : le **récit** d'un chantier dans son message de commit ; le
 deux vitrines d'un **même instantané horaire** de la vie arménienne, servies
 depuis une seule base de code. Le .ch sert le français (`/`), l'allemand
 (`/de/`) et l'italien (`/it/`) ; le .org l'anglais (`/`), l'espagnol (`/es/`), l'arménien
-(`/hy/`) et le russe (`/ru/`) — sept langues, 28 pages (7 × 4 vues). Actualités, agenda
+(`/hy/`) et le russe (`/ru/`) — sept langues, 35 pages (7 × 5 vues). Actualités, agenda
 et réseaux sociaux, esthétique de journal « Apricot Press » (basalte éclairé
 d'abricot), bascule **jour / nuit**.
 
@@ -70,8 +70,8 @@ npm install          # installer les dépendances
 npm run dev          # serveur de développement sur http://localhost:5173 (vitrine .ch, français)
 npm run build        # bâtit les deux vitrines dans dist/ch/ et dist/org/
 npm run build:one    # build Vite unique dans dist/ (dépannage — pas ce qui part en prod)
-npm run check        # contrôle les 28 pages produites (7 langues × 4 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les pages Agenda par pays (hreflang, Event, sitemap ⇔ noindex), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
-npm run prerender    # cuit les 28 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
+npm run check        # contrôle les 35 pages produites (7 langues × 5 vues : lang, canonical, hreflang réciproques), les pages de brève, les pages Culture (index + articles, hreflang, image), les pages Agenda par pays (hreflang, Event, sitemap ⇔ noindex), les 3 cartes de liens, les 2 pages 404 et les 2 sitemaps/robots
+npm run prerender    # cuit les 35 pages avec Puppeteer (après npm run build) pour que les crawlers lisent du HTML rempli
 npm run preview      # prévisualise dist/ch (la vitrine que sert armenie-info.web.app)
 npm run preview:org  # prévisualise dist/org
 npm test             # toute la suite (~855 tests), sans réseau
@@ -86,10 +86,11 @@ npm run culture:check     # contrôle strict des articles Culture (celui des PR)
 npm run ig-select    # re-tirer le mur Instagram depuis le pool (local, sans réseau)
 npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais en CI)
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
-npm run hydration-check # après build + prerender : les 28 pages s'hydratent-elles sans écart ? (local, Chrome)
+npm run hydration-check # après build + prerender : les 35 pages s'hydratent-elles sans écart ? (local, Chrome)
 npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (réseau, jamais dans npm test ; le tableau de bord le relance 2×/jour depuis la CI, section 📻 Radios)
 npm run videos:add -- --lang de slug=id # inscrire des Shorts publiés dans culture-videos.json (LA trace de ce qui est sur YouTube ; métadonnées tirées de ../armenie-video/out/youtube)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
+npm run jeux:sync    # recopier les jeux de ../Games et la couche net de ../lokolok dans public/play/ (local, jamais en CI ; README « Jeux »)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
@@ -190,7 +191,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
 - `scripts/lib/site-meta.mjs` génère le `<head>` d'un couple (site, langue).
   Appelé par le plugin `siteMeta()` de `vite.config.js` pour la page par défaut
   de chaque site, **et** par `scripts/build-sites.mjs` pour dériver les autres.
-  Un seul générateur pour les 28 pages : des `hreflang` divergents
+  Un seul générateur pour les 35 pages : des `hreflang` divergents
   sont ignorés en bloc par Google. Il pose aussi la balise **Cloudflare Web
   Analytics** (marqueur `<!--CF_BEACON-->` dans `index.html`) à partir du
   `cfBeaconToken` de la vitrine : **un jeton par site**, donc deux tableaux de
@@ -248,7 +249,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   desquels WhatsApp cesse de chercher l'image.
 
   **Ce bloc doit être écrit DEUX fois, et l'oublier une fois ne se voit
-  nulle part.** `site-meta.mjs` le pose sur les 28 pages React — et il ne
+  nulle part.** `site-meta.mjs` le pose sur les 35 pages React — et il ne
   voit **pas** `pages/`, dont les cartes de liens sont des HTML complets hors
   du bundle. Le bloc y a donc été recopié à la main, et il faut le tenir à
   jour des deux côtés. Le défaut a réellement été commis : l'accueil décrivait
@@ -257,7 +258,7 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   signaler : la page était valide, simplement moins bien décrite que sa
   jumelle, et le seul symptôme était une petite carte chez un lecteur.
   `check-build.mjs` exige désormais les six balises sur **chaque** carte de
-  liens, en plus des 28 pages.
+  liens, en plus des 35 pages.
 
   **Ne concluez pas d'une seule capture.** Un aperçu petit après un aperçu
   grand peut n'être qu'un changement de client : mesurez la largeur de la
@@ -356,13 +357,13 @@ sitemaps, cibles Firebase, ordre du sélecteur de langue, jeton d'audience.
   documenté en tête du module et figé par `test/agenda-events.test.mjs`.
 
 **Les vues.** Une page n'est plus seulement un couple (vitrine, langue) mais un
-**triplet** (vitrine, langue, vue). Quatre vues existent : `home` (l'accueil,
+**triplet** (vitrine, langue, vue). Cinq vues existent : `home` (l'accueil,
 déjà là sans porter de nom jusqu'ici), `radio` et `agenda` — les deux pages
 piliers qui donnent une URL propre aux deux jeux de données que ce site est
 seul à agréger — et `about` (`/a-propos/`, `/about/`), la page qui dit qui
 édite, d'où, avec quelles sources et quelles règles (ajoutée après l'audit
 SEO du 21 août 2026 : un agrégateur que personne ne signe se lit comme une
-ferme de liens). **Ajouter une vue touche sept endroits**, et deux d'entre
+ferme de liens), puis `games` (`/jeux/`, `/games/`). **Ajouter une vue touche sept endroits**, et deux d'entre
 eux ne préviennent pas : `VIEWS` (`sites.config.js`), `VIEW_SEO` (`src/seo.js`,
 sinon `site-meta` lance), la route d'`App.jsx`, le composant, `SANS_AGENDA`
 dans `scripts/lib/agenda-guard.mjs` (une vue inconnue fait échouer `check`,
@@ -820,7 +821,7 @@ de production servent toujours depuis la racine de leur domaine.
   partis : en retirer une ligne renvoie cette semaine aux abonnés, et il est poussé
   AVANT l'envoi. (2) `check-build.mjs` compte les alternates AVEC `hreflang=` : le
   lien d'autodécouverte RSS est aussi un `rel="alternate"`, un compte sur le
-  `rel="alternate"` nu ferait échouer les 28 pages.
+  `rel="alternate"` nu ferait échouer les 35 pages.
 - **Réseaux sociaux : le registre `src/data/social-posted.json` est la seule
   mémoire de ce qui est parti** (`scripts/social-post.mjs`, guide
   `docs/social-setup.md`). Le supprimer ne republie rien — chaque compte est
@@ -894,22 +895,6 @@ de production servent toujours depuis la racine de leur domaine.
   que des `notes`, jamais d'erreur, et la garde du français dans une brève de/it
   (`brief-script.mjs`) ne compte que les marqueurs en **minuscules** — une
   citation française en minuscules fait écarter son sujet (`✗ brief/de: alphabet`).
-- **Les `hreflang` d'une page de vue héritaient d'un générateur pensé pour les
-  accueils, et le bloc entier en aurait payé le prix.** `headFor` composait ses
-  alternates depuis `LANG_URL`, donc toujours vers les accueils : recopié tel
-  quel sur une page de vue, `/radio/` du .ch aurait déclaré comme équivalent
-  anglais **l'accueil** du .org, et non `/radio/` du .org. Google, plutôt que
-  d'arbitrer entre deux pages incompatibles, **ignore alors le bloc entier** —
-  silencieusement, sur toutes les pages, puisqu'un seul générateur les produit
-  toutes. `headFor` / `applyMeta` / `replaceMeta` (`scripts/lib/site-meta.mjs`)
-  prennent désormais `{ siteId, lang, view }` (`view` vaut `'home'` par défaut,
-  ce qui garde les appels existants valides) et composent chaque alternate avec
-  `urlFor(l, view)`, jamais `LANG_URL[l]` directement. `xDefaultFor(view)` suit
-  la même règle : sur `/radio` le `x-default` pointe le `/radio` anglais, pas
-  l'accueil anglais — un `x-default` qui changerait de page au milieu d'un
-  bloc d'alternates le rendrait incohérent. Gardé par `test/views.test.mjs` et
-  `test/site-meta.test.mjs`, dont le test « une page de vue ne cite jamais
-  l'accueil dans ses alternates » échoue précisément sur ce mode de panne.
 - **La garde `data-view` du prérendu est la jumelle de la garde de langue déjà
   en place.** `scripts/prerender.mjs` vérifiait déjà que
   `document.documentElement.lang` correspond à la langue attendue ; il vérifie
@@ -1070,6 +1055,15 @@ de production servent toujours depuis la racine de leur domaine.
   groupe) : renvoyez-la. (9) Une branche `culture/*` ouverte avant ce chantier
   n'a pas `scripts/culture-revise.mjs` : `/corrige` y échoue jusqu'au rebase.
   Le pourquoi : `docs/superpowers/specs/2026-10-16-articles-culture-design.md`.
+- **`public/play/` est une COPIE, jamais éditée à la main.** Les échecs et le
+  backgammon viennent de `Games/`, la couche de salles de `lokolok/assets/net/`,
+  recopiés par `npm run jeux:sync` (quatre transformations, README « Jeux ») :
+  une retouche faite ici disparaît au sync suivant — corrigez dans `Games/`,
+  puis resynchronisez. Deux exceptions que le sync ne touche jamais :
+  `vignettes/`, et `net/config.js`, qui vise le projet Firebase
+  **`armenie-info`** et non lokolok — le remplacer par celui de lokolok
+  enverrait les salles d'Arménie Info dans la base d'un autre site, sans
+  erreur. Le mode ami est décrit dans `privacy.games.*` : il doit suivre.
 - **Pièges de rendu vus en production** (titre d'étagère qui élargit la page,
   `scrollIntoView`, `visibility: hidden`, `loading="lazy"` avant `src`, cible
   tactile de 44px tenue par `pointer: coarse`, Ararat de la marque) :

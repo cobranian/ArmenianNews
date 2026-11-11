@@ -20,6 +20,9 @@ const STRINGS = {
     'nav.news': 'Actualités',
     'nav.radio': 'En direct',
     'nav.agenda': 'Agenda',
+    'nav.games': 'Jeux',
+    'games.play': 'Jouer',
+    'games.rules': 'Les règles',
     'nav.social': 'Réseaux',
     // Maillage interne (audit SEO du 21 août 2026) : les trois pages du site,
     // liées depuis chaque page — pied de page et « Voir aussi » des vues.
@@ -140,7 +143,7 @@ const STRINGS = {
     // sept langues.
     'privacy.title': 'Politique de confidentialité',
     'privacy.intro':
-      "Ce site est un instantané statique : ni compte, ni base de données. Le lire ne demande rien, et il ne conserve rien qui vous identifie personnellement — la seule donnée personnelle est l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site.",
+      "Ce site est un instantané statique : le lire, comme jouer contre le robot, ne demande ni compte ni base de données. Il ne conserve rien qui vous identifie personnellement, sauf l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site. Seule exception : le mode ami des jeux, qui utilise un identifiant anonyme et, si vous le saisissez, votre prénom (voir « Jeux et mode ami » ci-dessous).",
     'privacy.analytics.title': "Mesure d'audience",
     'privacy.analytics.body':
       "Nous utilisons Google Analytics et Cloudflare Web Analytics pour compter les visites et savoir quelles rubriques sont lues. Hors Espace économique européen et Royaume-Uni — en Suisse notamment —, Google Analytics dépose un cookie qui permet de reconnaître un visiteur d'une visite à l'autre. Depuis l'EEE et le Royaume-Uni, ce cookie n'est pas déposé : la mesure y est anonyme et sans cookie, comme l'exige le RGPD. Cloudflare Web Analytics ne dépose aucun cookie, où que vous soyez.",
@@ -148,7 +151,10 @@ const STRINGS = {
       "Pour refuser ce cookie, bloquez-le dans votre navigateur. Le site fonctionne à l'identique sans lui.",
     'privacy.storage.title': 'Conservé sur votre appareil',
     'privacy.storage.body':
-      "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Il ne quitte jamais votre appareil et ne nous est jamais transmis.",
+      "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Les jeux y gardent aussi la partie en cours, le niveau, la couleur ou la longueur du match et le videau, la langue du jeu, le prénom facultatif du mode ami et, au backgammon, les secrets de dés d'une salle. Ces données restent dans votre navigateur et ne nous sont jamais transmises. Seul le mode ami, décrit ci-dessous, en envoie une partie.",
+    'privacy.games.title': 'Jeux et mode ami',
+    'privacy.games.body':
+      "Contre le robot, les échecs et le backgammon tournent entièrement dans votre navigateur. Le mode « avec un ami » passe par Firebase, un service de Google, et seulement après un clic sur ce mode. Une connexion anonyme, sans compte ni adresse e-mail, crée alors un identifiant aléatoire gardé dans votre navigateur. Les coups — au backgammon, avec les secrets de dés révélés après chaque lancer — et votre prénom, si vous en saisissez un, transitent par une base Firebase Realtime Database hébergée en Europe (europe-west1), où votre ami les lit. Après 24 heures, une salle ne peut plus être rejointe. Elle n'est pas effacée automatiquement : elle reste dans la base jusqu'à ce qu'une nouvelle salle reprenne son code et l'écrase.",
     'privacy.newsletter.title': "Lettre d'information",
     'privacy.newsletter.body':
       "Si vous vous abonnez, votre adresse e-mail est confiée à Buttondown, un service hébergé aux États-Unis : elle est donc traitée à l'étranger, selon la politique de confidentialité de Buttondown, qui peut mesurer l'ouverture des lettres et les clics. Elle ne sert qu'à cet envoi ; chaque lettre contient un lien de désinscription, et une demande à l'adresse ci-dessous la fait effacer.",
@@ -157,7 +163,7 @@ const STRINGS = {
       "Les articles, événements et publications proviennent de sites tiers, cités et liés. Suivre un lien vous conduit chez l'éditeur concerné, dont la politique de confidentialité s'applique alors.",
     'privacy.rights.title': 'Vos droits',
     'privacy.rights.body':
-      "Vous pouvez demander l'accès aux données vous concernant, leur rectification ou leur effacement. En dehors de l'adresse e-mail confiée pour la lettre — effacée sur demande ou par le lien de désinscription —, cela se limite en pratique aux mesures d'audience agrégées.",
+      "Vous pouvez demander l'accès aux données vous concernant, leur rectification ou leur effacement. Cela couvre l'adresse e-mail confiée pour la lettre — effacée sur demande ou par le lien de désinscription — et, pour le mode ami, les salles de jeu (identifiant anonyme, prénom facultatif, coups), effacées sur demande à l'adresse ci-dessous si vous indiquez le code de la salle. Pour le reste, il s'agit en pratique de mesures d'audience agrégées.",
     'privacy.contact': 'Pour toute question :',
 
     'sections.actualite': 'Actualités',
@@ -327,6 +333,9 @@ const STRINGS = {
     'nav.news': 'Nachrichten',
     'nav.radio': 'Live',
     'nav.agenda': 'Agenda',
+    'nav.games': 'Spiele',
+    'games.play': 'Spielen',
+    'games.rules': 'Die Regeln',
     'nav.social': 'Social Media',
     'footer.pages': 'Seiten der Website',
     'footer.home': 'Startseite',
@@ -423,7 +432,7 @@ const STRINGS = {
     'footer.sources': 'Quellen',
     'privacy.title': 'Datenschutzerklärung',
     'privacy.intro':
-      'Diese Website ist eine statische Momentaufnahme: kein Konto, keine Datenbank. Das Lesen verlangt nichts von Ihnen, und sie speichert nichts, was Sie persönlich identifiziert – einziges personenbezogenes Datum ist die E-Mail-Adresse, die Sie für den Newsletter angeben können; sie wird von Buttondown gespeichert, nicht von der Website.',
+      'Diese Website ist eine statische Momentaufnahme: Lesen und Spielen gegen den Roboter funktionieren ohne Konto und ohne Datenbank. Sie speichert nichts, was Sie persönlich identifiziert, ausser der E-Mail-Adresse, die Sie für den Newsletter angeben können; sie wird von Buttondown gespeichert, nicht von der Website. Einzige Ausnahme ist der Freundesmodus der Spiele, mit einer anonymen Kennung und, falls Sie ihn eingeben, Ihrem Vornamen (siehe «Spiele und Freundesmodus» unten).',
     'privacy.analytics.title': 'Reichweitenmessung',
     'privacy.analytics.body':
       'Wir verwenden Google Analytics und Cloudflare Web Analytics, um Besuche zu zählen und zu erfahren, welche Rubriken gelesen werden. Ausserhalb des Europäischen Wirtschaftsraums und des Vereinigten Königreichs – also auch in der Schweiz – setzt Google Analytics ein Cookie, das einen Besucher von einem Besuch zum nächsten wiedererkennt. Im EWR und im Vereinigten Königreich wird dieses Cookie nicht gesetzt: Die Messung erfolgt dort anonym und ohne Cookie, wie es die DSGVO verlangt. Cloudflare Web Analytics setzt keinerlei Cookie, wo immer Sie sich befinden.',
@@ -431,7 +440,10 @@ const STRINGS = {
       'Um dieses Cookie abzulehnen, blockieren Sie es in Ihrem Browser. Die Website funktioniert auch ohne dieses Cookie genau gleich.',
     'privacy.storage.title': 'Auf Ihrem Gerät gespeichert',
     'privacy.storage.body':
-      'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Sie verlässt Ihr Gerät nie und wird uns nie übermittelt.',
+      'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Die Spiele speichern dort auch die laufende Partie, die Spielstufe, die Farbe oder die Matchlänge und den Doppelwürfel, die Sprache des Spiels, den freiwilligen Vornamen des Freundesmodus und beim Backgammon die Würfelgeheimnisse eines Raums. Diese Daten bleiben in Ihrem Browser und werden uns nie übermittelt. Nur der unten beschriebene Freundesmodus sendet einen Teil davon.',
+    'privacy.games.title': 'Spiele und Freundesmodus',
+    'privacy.games.body':
+      'Gegen den Roboter laufen Schach und Backgammon vollständig in Ihrem Browser. Der Modus «mit einem Freund» nutzt Firebase, einen Dienst von Google, und zwar erst nach einem Klick auf diesen Modus. Eine anonyme Anmeldung, ohne Konto und ohne E-Mail-Adresse, erzeugt dann eine zufällige Kennung, die in Ihrem Browser gespeichert wird. Die Züge – beim Backgammon mit den Würfelgeheimnissen, die nach jedem Wurf offengelegt werden – und Ihr Vorname, falls Sie einen eingeben, laufen über eine Firebase Realtime Database in Europa (europe-west1), wo Ihr Freund sie liest. Nach 24 Stunden kann ein Raum nicht mehr betreten werden. Er wird nicht automatisch gelöscht: Er bleibt in der Datenbank, bis ein neuer Raum seinen Code übernimmt und ihn überschreibt.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
       'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse dem Dienst Buttondown anvertraut, der in den USA gehostet wird: Sie wird also im Ausland verarbeitet, gemäss der Datenschutzerklärung von Buttondown, die Öffnungen und Klicks messen kann. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und es genügt eine Anfrage an die untenstehende Adresse, um sie löschen zu lassen.',
@@ -440,7 +452,7 @@ const STRINGS = {
       'Die Artikel, Veranstaltungen und Beiträge stammen von Websites Dritter, die genannt und verlinkt sind. Ein Link führt Sie zum jeweiligen Anbieter, dessen Datenschutzerklärung dann gilt.',
     'privacy.rights.title': 'Ihre Rechte',
     'privacy.rights.body':
-      'Sie können Auskunft über die Sie betreffenden Daten, deren Berichtigung oder Löschung verlangen. Abgesehen von der für den Newsletter angegebenen E-Mail-Adresse – auf Anfrage oder über den Abmeldelink gelöscht – beschränkt sich dies in der Praxis auf die zusammengefasste Reichweitenmessung.',
+      'Sie können Auskunft über die Sie betreffenden Daten, deren Berichtigung oder Löschung verlangen. Das betrifft die für den Newsletter angegebene E-Mail-Adresse – auf Anfrage oder über den Abmeldelink gelöscht – und, im Freundesmodus, die Spielräume (anonyme Kennung, freiwilliger Vorname, Züge): Sie werden auf Anfrage an die unten stehende Adresse gelöscht, wenn Sie den Code des Raums angeben. Ansonsten geht es in der Praxis um die zusammengefasste Reichweitenmessung.',
     'privacy.contact': 'Bei Fragen:',
     'sections.actualite': 'Aktuell',
     'sections.societe': 'Gesellschaft',
@@ -577,6 +589,9 @@ const STRINGS = {
     'nav.news': 'Notizie',
     'nav.radio': 'In diretta',
     'nav.agenda': 'Eventi',
+    'nav.games': 'Giochi',
+    'games.play': 'Gioca',
+    'games.rules': 'Le regole',
     'nav.social': 'Social',
     'footer.pages': 'Pagine del sito',
     'footer.home': 'Home',
@@ -673,7 +688,7 @@ const STRINGS = {
     'footer.sources': 'Fonti',
     'privacy.title': 'Informativa sulla privacy',
     'privacy.intro':
-      'Questo sito è un’istantanea statica: niente account, niente database. Leggerlo non richiede nulla, e non conserva nulla che vi identifichi personalmente — l’unico dato personale è l’indirizzo e-mail che sceglieste di fornire per la newsletter, conservato da Buttondown e non dal sito.',
+      'Questo sito è un’istantanea statica: leggerlo e giocare contro il robot non richiedono né account né database. Non conserva nulla che vi identifichi personalmente, salvo l’indirizzo e-mail che sceglieste di fornire per la newsletter, conservato da Buttondown e non dal sito. Unica eccezione: la modalità con un amico dei giochi, con un identificativo anonimo e, se lo inserite, il vostro nome (vedi «Giochi e modalità con un amico» qui sotto).',
     'privacy.analytics.title': 'Misurazione del pubblico',
     'privacy.analytics.body':
       'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, quindi anche in Svizzera, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Nel SEE e nel Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
@@ -681,7 +696,10 @@ const STRINGS = {
       'Per rifiutare questo cookie, bloccatelo nel vostro browser. Il sito funziona allo stesso modo anche senza.',
     'privacy.storage.title': 'Conservato sul vostro dispositivo',
     'privacy.storage.body':
-      'La vostra scelta del tema giorno / notte è salvata localmente dal browser. Non lascia mai il vostro dispositivo e non ci viene mai trasmessa.',
+      'La vostra scelta del tema giorno / notte è salvata localmente dal browser. I giochi vi conservano anche la partita in corso, il livello, il colore o la durata del match e il cubo del raddoppio, la lingua del gioco, il nome facoltativo della modalità con un amico e, nel backgammon, i segreti dei dadi di una stanza. Questi dati restano nel vostro browser e non ci vengono mai trasmessi. Solo la modalità con un amico, descritta qui sotto, ne invia una parte.',
+    'privacy.games.title': 'Giochi e modalità con un amico',
+    'privacy.games.body':
+      'Contro il robot, gli scacchi e il backgammon funzionano interamente nel vostro browser. La modalità «con un amico» passa per Firebase, un servizio di Google, e solo dopo un clic su questa modalità. Un accesso anonimo, senza account né indirizzo e-mail, crea allora un identificativo casuale conservato nel vostro browser. Le mosse — nel backgammon, con i segreti dei dadi rivelati dopo ogni lancio — e il vostro nome, se lo inserite, passano per una base Firebase Realtime Database ospitata in Europa (europe-west1), dove il vostro amico li legge. Dopo 24 ore non è più possibile entrare in una stanza. La stanza non viene cancellata automaticamente: resta nella base finché una nuova stanza non riprende il suo codice e la sovrascrive.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
       'Se vi iscrivete, il vostro indirizzo e-mail è affidato a Buttondown, un servizio ospitato negli Stati Uniti: viene quindi trattato all’estero, secondo l’informativa sulla privacy di Buttondown, che può misurare aperture e clic. Serve soltanto a questo invio; ogni newsletter contiene un link di disiscrizione, e una richiesta all’indirizzo qui sotto lo fa cancellare.',
@@ -690,7 +708,7 @@ const STRINGS = {
       'Articoli, eventi e pubblicazioni provengono da siti di terzi, citati e collegati. Seguendo un link si arriva presso l’editore interessato, alla cui informativa sulla privacy si è allora soggetti.',
     'privacy.rights.title': 'I vostri diritti',
     'privacy.rights.body':
-      'Potete chiedere l’accesso ai dati che vi riguardano, la loro rettifica o la loro cancellazione. A parte l’indirizzo e-mail fornito per la newsletter — cancellato su richiesta o tramite il link di disiscrizione —, in pratica ciò riguarda soltanto le misurazioni aggregate del pubblico.',
+      'Potete chiedere l’accesso ai dati che vi riguardano, la loro rettifica o la loro cancellazione. Ciò riguarda l’indirizzo e-mail fornito per la newsletter — cancellato su richiesta o tramite il link di disiscrizione — e, nella modalità con un amico, le stanze di gioco (identificativo anonimo, nome facoltativo, mosse), cancellate su richiesta all’indirizzo qui sotto se indicate il codice della stanza. Per il resto, in pratica si tratta di misurazioni aggregate del pubblico.',
     'privacy.contact': 'Per qualsiasi domanda:',
     'sections.actualite': 'Attualità',
     'sections.societe': 'Società',
@@ -830,6 +848,9 @@ const STRINGS = {
     'nav.news': 'News',
     'nav.radio': 'Live',
     'nav.agenda': 'Events',
+    'nav.games': 'Games',
+    'games.play': 'Play',
+    'games.rules': 'The rules',
     'nav.social': 'Social',
     'footer.pages': 'Site pages',
     'footer.home': 'Home',
@@ -936,7 +957,7 @@ const STRINGS = {
 
     'privacy.title': 'Privacy policy',
     'privacy.intro':
-      'This site is a static snapshot: no accounts, no database. Reading it asks nothing of you, and it keeps nothing that identifies you personally — the only personal data is the email address you may choose to give for the newsletter, held by Buttondown, not by the site.',
+      'This site is a static snapshot: reading it and playing against the robot need no account and no database. It keeps nothing that identifies you personally, except the email address you may choose to give for the newsletter, held by Buttondown, not by the site. The one exception is the games’ friend mode, which uses an anonymous ID and, if you enter it, your first name (see “Games and friend mode” below).',
     'privacy.analytics.title': 'Audience measurement',
     'privacy.analytics.body':
       'We use Google Analytics and Cloudflare Web Analytics to count visits and see which sections are read. Outside the European Economic Area and the United Kingdom — Switzerland included — Google Analytics sets a cookie that lets it recognise a visitor from one visit to the next. From the EEA and the UK that cookie is not set: measurement there is anonymous and cookieless, as the GDPR requires. Cloudflare Web Analytics sets no cookie anywhere.',
@@ -944,7 +965,10 @@ const STRINGS = {
       'To refuse that cookie, block it in your browser. The site works exactly the same without it.',
     'privacy.storage.title': 'Kept on your device',
     'privacy.storage.body':
-      'Your day / night theme choice is stored locally by your browser. It never leaves your device and is never sent to us.',
+      'Your day / night theme choice is stored locally by your browser. The games also keep there the current game, the level, the colour or match length and the doubling cube, the game language, the optional first name for friend mode and, in backgammon, the dice secrets of a room. This data stays in your browser and is never sent to us. Only friend mode, described below, sends part of it.',
+    'privacy.games.title': 'Games and friend mode',
+    'privacy.games.body':
+      'Against the robot, chess and backgammon run entirely in your browser. The “play a friend” mode uses Firebase, a Google service, and only after you click on that mode. An anonymous sign-in, with no account and no email address, then creates a random ID kept in your browser. The moves (in backgammon, with the dice secrets revealed after each roll) and your first name, if you enter one, go through a Firebase Realtime Database hosted in Europe (europe-west1), where your friend reads them. After 24 hours, a room can no longer be joined. It is not deleted automatically: it stays in the database until a new room takes over its code and overwrites it.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
       'If you subscribe, your email address is entrusted to Buttondown, a service hosted in the United States: it is therefore processed abroad, under Buttondown’s privacy policy, and Buttondown may measure opens and clicks. It is used for this mailing only; every issue contains an unsubscribe link, and a request to the address below has it deleted.',
@@ -953,7 +977,7 @@ const STRINGS = {
       'Articles, events and posts come from third-party sites, credited and linked. Following a link takes you to that publisher, whose own privacy policy then applies.',
     'privacy.rights.title': 'Your rights',
     'privacy.rights.body':
-      'You may request access to data concerning you, its correction or its deletion. Apart from the email address given for the newsletter — deleted on request or via the unsubscribe link — in practice this is limited to aggregated audience measurement.',
+      'You may request access to data concerning you, its correction or its deletion. This covers the email address given for the newsletter — deleted on request or via the unsubscribe link — and, in friend mode, the game rooms (anonymous ID, optional first name, moves), deleted on request to the address below if you give the room code. Beyond that, in practice this is aggregated audience measurement.',
     'privacy.contact': 'Questions:',
 
     'sections.actualite': 'News',
@@ -1126,6 +1150,9 @@ const STRINGS = {
     'nav.news': 'Լուրեր',
     'nav.radio': 'Ուղիղ',
     'nav.agenda': 'Միջոցառումներ',
+    'nav.games': 'Խաղեր',
+    'games.play': 'Խաղալ',
+    'games.rules': 'Կանոնները',
     'nav.social': 'Ցանցեր',
     'footer.pages': 'Կայքի էջերը',
     'footer.home': 'Գլխավոր էջ',
@@ -1232,7 +1259,7 @@ const STRINGS = {
 
     'privacy.title': 'Գաղտնիության քաղաքականություն',
     'privacy.intro':
-      'Այս կայքը ստատիկ պատկեր է՝ առանց հաշիվների և տվյալների բազայի։ Ընթերցելու համար ձեզնից ոչինչ չի պահանջվում, և կայքը չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի․ միակ անձնական տվյալը էլ. փոստի հասցեն է, որը կարող եք տրամադրել տեղեկագրի համար, և այն պահվում է Buttondown-ում, ոչ թե կայքում։',
+      'Այս կայքը ստատիկ պատկեր է․ ընթերցելը և ռոբոտի դեմ խաղալը չեն պահանջում ոչ հաշիվ, ոչ տվյալների բազա։ Կայքը չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի, բացի էլ. փոստի հասցեից, որը կարող եք տրամադրել տեղեկագրի համար։ Այն պահվում է Buttondown-ում, ոչ թե կայքում։ Միակ բացառությունը ընկերոջ հետ խաղն է, որն օգտագործում է անանուն նույնացուցիչ և ձեր անունը, եթե այն գրեք (տե՛ս «Խաղեր և խաղ ընկերոջ հետ» ստորև)։',
     'privacy.analytics.title': 'Այցելությունների չափում',
     'privacy.analytics.body':
       'Մենք օգտագործում ենք Google Analytics և Cloudflare Web Analytics՝ այցելությունները հաշվելու և իմանալու, թե որ բաժիններն են կարդացվում։ Եվրոպական տնտեսական տարածքից և Միացյալ Թագավորությունից դուրս, այդ թվում՝ Շվեյցարիայում, Google Analytics-ը տեղադրում է cookie, որը թույլ է տալիս ճանաչել այցելուին մեկ այցից մյուսը։ ԵՏՏ-ից և Միացյալ Թագավորությունից այդ cookie-ն չի տեղադրվում. չափումն այնտեղ անանուն է և առանց cookie-ի, ինչպես պահանջում է GDPR-ը։ Cloudflare Web Analytics-ը ոչ մի տեղ cookie չի տեղադրում։',
@@ -1240,7 +1267,10 @@ const STRINGS = {
       'Այդ cookie-ն մերժելու համար արգելափակեք այն ձեր դիտարկիչում։ Կայքն առանց դրա աշխատում է ճիշտ նույն կերպ։',
     'privacy.storage.title': 'Պահվում է ձեր սարքում',
     'privacy.storage.body':
-      'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Այն երբեք չի հեռանում ձեր սարքից և երբեք մեզ չի փոխանցվում։',
+      'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Խաղերը նույնպես այնտեղ են պահում ընթացիկ պարտիան, մակարդակը, գույնը կամ մրցախաղի երկարությունը և կրկնապատկման խորանարդը, խաղի լեզուն, ընկերոջ հետ խաղի կամընտիր անունը, իսկ բեքգեմոնում՝ սենյակի զառերի գաղտնիքները։ Այս տվյալները մնում են ձեր դիտարկիչում և երբեք մեզ չեն փոխանցվում։ Դրանց մի մասն ուղարկվում է միայն ընկերոջ հետ խաղի ժամանակ, որը նկարագրված է ստորև։',
+    'privacy.games.title': 'Խաղեր և խաղ ընկերոջ հետ',
+    'privacy.games.body':
+      'Ռոբոտի դեմ շախմատը և բեքգեմոնը ամբողջությամբ աշխատում են ձեր դիտարկիչում։ «Ընկերոջ հետ» ռեժիմն օգտագործում է Firebase-ը՝ Google-ի ծառայությունը, և միայն այդ ռեժիմի վրա սեղմելուց հետո։ Այդ ժամանակ անանուն մուտքը, առանց հաշվի և առանց էլ. փոստի, ստեղծում է պատահական նույնացուցիչ, որը պահվում է ձեր դիտարկիչում։ Քայլերը (բեքգեմոնում՝ զառերի գաղտնիքների հետ, որոնք բացվում են յուրաքանչյուր նետումից հետո) և ձեր անունը, եթե այն գրեք, անցնում են Firebase Realtime Database տվյալների բազայով, որը գտնվում է Եվրոպայում (europe-west1)։ Այնտեղ դրանք կարդում է ձեր ընկերը։ 24 ժամ անց սենյակին այլևս հնարավոր չէ միանալ։ Սենյակն ինքնաբերաբար չի ջնջվում։ Այն մնում է բազայում, մինչև նոր սենյակը վերցնի նրա կոդը և գրի դրա վրա։',
     'privacy.newsletter.title': 'Տեղեկագիր',
     'privacy.newsletter.body':
       'Եթե բաժանորդագրվեք, ձեր էլ. փոստի հասցեն կվստահվի Buttondown-ին՝ Միացյալ Նահանգներում տեղակայված ծառայության, ուստի այն մշակվում է արտերկրում՝ Buttondown-ի գաղտնիության քաղաքականության համաձայն, և Buttondown-ը կարող է հաշվել նամակների բացումներն ու հղումների սեղմումները։ Այն ծառայում է միայն այդ առաքմանը. յուրաքանչյուր նամակ պարունակում է բաժանորդագրությունը դադարեցնելու հղում, իսկ ստորև նշված հասցեին ուղղված խնդրանքով այն կջնջվի։',
@@ -1249,7 +1279,7 @@ const STRINGS = {
       'Հոդվածները, միջոցառումները և հրապարակումները գալիս են երրորդ կողմի կայքերից՝ նշված և հղումով։ Հղմանը հետևելը ձեզ տանում է տվյալ հրատարակչի մոտ, որտեղ գործում է նրա գաղտնիության քաղաքականությունը։',
     'privacy.rights.title': 'Ձեր իրավունքները',
     'privacy.rights.body':
-      'Դուք կարող եք պահանջել ձեզ վերաբերող տվյալների հասանելիություն, ուղղում կամ ջնջում։ Բացի տեղեկագրի համար տրամադրված էլ. փոստի հասցեից, որը ջնջվում է խնդրանքով կամ բաժանորդագրությունը դադարեցնելու հղումով, գործնականում դա սահմանափակվում է ամփոփ չափումներով։',
+      'Դուք կարող եք պահանջել ձեզ վերաբերող տվյալների հասանելիություն, ուղղում կամ ջնջում։ Դա վերաբերում է տեղեկագրի համար տրամադրված էլ. փոստի հասցեին, որը ջնջվում է խնդրանքով կամ բաժանորդագրությունը դադարեցնելու հղումով։ Դա վերաբերում է նաև ընկերոջ հետ խաղի սենյակներին (անանուն նույնացուցիչ, կամընտիր անուն, քայլեր)։ Դրանք ջնջվում են ստորև նշված հասցեով խնդրանքի դեպքում, եթե նշեք սենյակի կոդը։ Մնացածը գործնականում ամփոփ չափումներ են։',
     'privacy.contact': 'Հարցերի համար՝',
 
     'sections.actualite': 'Լուրեր',
@@ -1404,6 +1434,9 @@ const STRINGS = {
     'nav.news': 'Новости',
     'nav.radio': 'В эфире',
     'nav.agenda': 'Афиша',
+    'nav.games': 'Игры',
+    'games.play': 'Играть',
+    'games.rules': 'Правила',
     'nav.social': 'Соцсети',
     'footer.pages': 'Страницы сайта',
     'footer.home': 'Главная',
@@ -1520,7 +1553,7 @@ const STRINGS = {
 
     'privacy.title': 'Политика конфиденциальности',
     'privacy.intro':
-      'Этот сайт — статический снимок: без учётных записей и базы данных. Для чтения от вас ничего не требуется, и сайт не хранит ничего, что позволяло бы вас лично идентифицировать; единственные персональные данные — адрес электронной почты, который вы можете указать для рассылки, и хранит его Buttondown, а не сайт.',
+      'Этот сайт — статический снимок: для чтения и игры против робота не нужны ни учётная запись, ни база данных. Сайт не хранит ничего, что позволяло бы вас лично идентифицировать, кроме адреса электронной почты, который вы можете указать для рассылки; его хранит Buttondown, а не сайт. Единственное исключение — игра с другом: она использует анонимный идентификатор и ваше имя, если вы его ввели (см. «Игры и игра с другом» ниже).',
     'privacy.analytics.title': 'Измерение аудитории',
     'privacy.analytics.body':
       'Мы используем Google Analytics и Cloudflare Web Analytics, чтобы считать посещения и понимать, какие разделы читают. За пределами Европейской экономической зоны и Великобритании, в том числе в Швейцарии, Google Analytics устанавливает cookie, позволяющий узнавать посетителя от визита к визиту. Из ЕЭЗ и Великобритании этот cookie не устанавливается: измерение там анонимное и без cookie, как того требует GDPR. Cloudflare Web Analytics не устанавливает cookie нигде.',
@@ -1528,7 +1561,10 @@ const STRINGS = {
       'Чтобы отказаться от этого cookie, заблокируйте его в браузере. Сайт работает точно так же и без него.',
     'privacy.storage.title': 'Хранится на вашем устройстве',
     'privacy.storage.body':
-      'Ваш выбор дневной / ночной темы сохраняется локально браузером. Он никогда не покидает ваше устройство и не передаётся нам.',
+      'Ваш выбор дневной / ночной темы сохраняется локально браузером. Игры тоже хранят там текущую партию, уровень, цвет или длину матча и куб удвоения, язык игры, необязательное имя для игры с другом и, в бэкгаммоне, секреты костей комнаты. Эти данные остаются в вашем браузере и никогда не передаются нам. Только игра с другом, описанная ниже, отправляет их часть.',
+    'privacy.games.title': 'Игры и игра с другом',
+    'privacy.games.body':
+      'Против робота шахматы и бэкгаммон работают полностью в вашем браузере. Режим «с другом» использует Firebase, сервис Google, и только после нажатия на этот режим. Тогда анонимный вход, без аккаунта и без электронной почты, создаёт случайный идентификатор, который хранится в вашем браузере. Ходы (в бэкгаммоне — вместе с секретами костей, которые раскрываются после каждого броска) и ваше имя, если вы его ввели, проходят через базу Firebase Realtime Database в Европе (europe-west1). Там их читает ваш друг. Через 24 часа к комнате больше нельзя присоединиться. Комната не удаляется автоматически: она остаётся в базе, пока новая комната не займёт её код и не перезапишет её.',
     'privacy.newsletter.title': 'Рассылка',
     'privacy.newsletter.body':
       'Если вы подпишетесь, ваш адрес электронной почты будет доверен Buttondown — сервису, размещённому в США: поэтому он обрабатывается за рубежом в соответствии с политикой конфиденциальности Buttondown, и Buttondown может учитывать открытия писем и переходы по ссылкам. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
@@ -1537,7 +1573,7 @@ const STRINGS = {
       'Статьи, события и публикации поступают со сторонних сайтов — со ссылкой и указанием источника. Переход по ссылке ведёт к соответствующему изданию, где действует его собственная политика конфиденциальности.',
     'privacy.rights.title': 'Ваши права',
     'privacy.rights.body':
-      'Вы можете запросить доступ к касающимся вас данным, их исправление или удаление. Помимо адреса электронной почты, указанного для рассылки (он удаляется по запросу или по ссылке для отписки), на практике это ограничивается сводными показателями аудитории.',
+      'Вы можете запросить доступ к касающимся вас данным, их исправление или удаление. Это касается адреса электронной почты, указанного для рассылки (он удаляется по запросу или по ссылке для отписки). Это касается и комнат игры с другом (анонимный идентификатор, необязательное имя, ходы): они удаляются по запросу на адрес ниже, если вы укажете код комнаты. В остальном это на практике сводные показатели аудитории.',
     'privacy.contact': 'Вопросы:',
 
     'sections.actualite': 'Новости',
@@ -1685,6 +1721,9 @@ const STRINGS = {
     'nav.news': 'Noticias',
     'nav.radio': 'En vivo',
     'nav.agenda': 'Eventos',
+    'nav.games': 'Juegos',
+    'games.play': 'Jugar',
+    'games.rules': 'Las reglas',
     'nav.social': 'Redes',
     'footer.pages': 'Páginas del sitio',
     'footer.home': 'Inicio',
@@ -1791,7 +1830,7 @@ const STRINGS = {
 
     'privacy.title': 'Política de privacidad',
     'privacy.intro':
-      'Este sitio es una instantánea estática: sin cuentas ni base de datos. Leerlo no le pide nada, y no conserva nada que lo identifique personalmente: el único dato personal es la dirección de correo electrónico que usted decida dar para el boletín semanal, conservada por Buttondown y no por el sitio.',
+      'Este sitio es una instantánea estática: leerlo y jugar contra el robot no requieren cuenta ni base de datos. No conserva nada que lo identifique personalmente, salvo la dirección de correo electrónico que usted decida dar para el boletín semanal, conservada por Buttondown y no por el sitio. La única excepción es el modo con un amigo de los juegos, con un identificador anónimo y, si lo escribe, su nombre (vea «Juegos y modo con un amigo» abajo).',
     'privacy.analytics.title': 'Medición de audiencia',
     'privacy.analytics.body':
       'Usamos Google Analytics y Cloudflare Web Analytics para contar las visitas y saber qué secciones se leen. Fuera del Espacio Económico Europeo y del Reino Unido —en Suiza, por ejemplo—, Google Analytics deposita una cookie que permite reconocer a un visitante de una visita a otra. Desde el EEE y el Reino Unido esa cookie no se deposita: la medición es allí anónima y sin cookies, como exige el RGPD. Cloudflare Web Analytics no deposita ninguna cookie, esté donde esté.',
@@ -1799,7 +1838,10 @@ const STRINGS = {
       'Para rechazar esa cookie, bloquéela en su navegador. El sitio funciona exactamente igual sin ella.',
     'privacy.storage.title': 'Guardado en su dispositivo',
     'privacy.storage.body':
-      'Su elección de tema día / noche se guarda localmente en su navegador. Nunca sale de su dispositivo y nunca se nos transmite.',
+      'Su elección de tema día / noche se guarda localmente en su navegador. Los juegos guardan allí también la partida en curso, el nivel, el color o la duración del match y el cubo de doblaje, el idioma del juego, el nombre opcional del modo con un amigo y, en el backgammon, los secretos de dados de una sala. Estos datos se quedan en su navegador y nunca se nos transmiten. Solo el modo con un amigo, descrito abajo, envía una parte.',
+    'privacy.games.title': 'Juegos y modo con un amigo',
+    'privacy.games.body':
+      'Contra el robot, el ajedrez y el backgammon funcionan por completo en su navegador. El modo «con un amigo» usa Firebase, un servicio de Google, y solo después de un clic en ese modo. Un inicio de sesión anónimo, sin cuenta ni correo electrónico, crea entonces un identificador aleatorio guardado en su navegador. Las jugadas (en el backgammon, con los secretos de dados revelados después de cada tirada) y su nombre, si lo escribe, pasan por una base Firebase Realtime Database alojada en Europa (europe-west1), donde su amigo las lee. Pasadas 24 horas, ya no se puede entrar en una sala. La sala no se borra automáticamente: queda en la base hasta que una nueva sala retoma su código y la sobrescribe.',
     'privacy.newsletter.title': 'Boletín semanal',
     'privacy.newsletter.body':
       'Si se suscribe, su dirección de correo electrónico se confía a Buttondown, un servicio alojado en Estados Unidos: se trata, por lo tanto, en el extranjero, conforme a la política de privacidad de Buttondown, que puede medir la apertura de los boletines y los clics. Solo se usa para ese envío; cada boletín incluye un enlace para cancelar la suscripción, y una solicitud a la dirección indicada abajo la hace borrar.',
@@ -1808,7 +1850,7 @@ const STRINGS = {
       'Los artículos, eventos y publicaciones provienen de sitios de terceros, citados y enlazados. Seguir un enlace lo lleva al editor correspondiente, cuya política de privacidad se aplica entonces.',
     'privacy.rights.title': 'Sus derechos',
     'privacy.rights.body':
-      'Puede solicitar el acceso a los datos que le conciernen, su rectificación o su supresión. Aparte de la dirección de correo electrónico confiada para el boletín —borrada a solicitud o mediante el enlace de cancelación—, en la práctica esto se limita a las mediciones de audiencia agregadas.',
+      'Puede solicitar el acceso a los datos que le conciernen, su rectificación o su supresión. Esto cubre la dirección de correo electrónico confiada para el boletín —borrada a solicitud o mediante el enlace de cancelación— y, en el modo con un amigo, las salas de juego (identificador anónimo, nombre opcional, jugadas), borradas a solicitud en la dirección de abajo si indica el código de la sala. Por lo demás, en la práctica se trata de mediciones de audiencia agregadas.',
     'privacy.contact': 'Para cualquier pregunta:',
 
     'sections.actualite': 'Noticias',

@@ -15,6 +15,7 @@ import { SocialSection } from './components/SocialSection.jsx'
 import { RadioPage } from './components/RadioPage.jsx'
 import { AgendaPage } from './components/AgendaPage.jsx'
 import { AboutPage } from './components/AboutPage.jsx'
+import { GamesPage } from './components/GamesPage.jsx'
 import { Footer } from './components/Footer.jsx'
 
 // La vue vient de l'URL, comme la langue — lue une fois au montage. Il n'y a pas
@@ -47,6 +48,8 @@ export default function App() {
         <AgendaPage />
       ) : view === 'about' ? (
         <AboutPage />
+      ) : view === 'games' ? (
+        <GamesPage />
       ) : (
         <>
           <Hero />

@@ -218,6 +218,47 @@ VIEW_SEO.about = {
   },
 }
 
+// La page « Jeux » : échecs et backgammon en ligne. Titres en langage simple,
+// sans nombre écrit en toutes lettres. Le jeu à deux (mode ami) reviendra
+// dans les descriptions avec la phase 2, quand il sera en service.
+VIEW_SEO.games = {
+  fr: {
+    title: 'Échecs et backgammon en ligne',
+    description:
+      'Jouez aux échecs et au backgammon en ligne, contre l’ordinateur, directement dans votre navigateur : gratuit, sans publicité ni compte.',
+  },
+  de: {
+    title: 'Schach und Backgammon online',
+    description:
+      'Spielen Sie Schach und Backgammon online, gegen den Computer, direkt im Browser: kostenlos, ohne Werbung und ohne Konto.',
+  },
+  it: {
+    title: 'Scacchi e backgammon online',
+    description:
+      'Gioca a scacchi e a backgammon online, contro il computer, direttamente nel browser: gratis, senza pubblicità e senza account.',
+  },
+  en: {
+    title: 'Chess and backgammon online',
+    description:
+      'Play chess and backgammon online, against the computer, right in your browser: free, with no ads and no account.',
+  },
+  hy: {
+    title: 'Շախմատ և նարդի առցանց',
+    description:
+      'Խաղացեք շախմատ և նարդի առցանց՝ համակարգչի դեմ, անմիջապես զննարկչում․ անվճար, առանց գովազդի և հաշվի։',
+  },
+  ru: {
+    title: 'Шахматы и нарды онлайн',
+    description:
+      'Играйте в шахматы и нарды онлайн, против компьютера, прямо в браузере: бесплатно, без рекламы и регистрации.',
+  },
+  es: {
+    title: 'Ajedrez y backgammon en línea',
+    description:
+      'Juega al ajedrez y al backgammon en línea, contra el ordenador, directamente en tu navegador: gratis, sin anuncios ni cuenta.',
+  },
+}
+
 // Codes de locale Open Graph, un par langue.
 export const OG_LOCALE = {
   fr: 'fr_FR',

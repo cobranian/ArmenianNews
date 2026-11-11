@@ -1,0 +1,372 @@
+/* Le texte garde la taille prévue : sans ça, le navigateur du téléphone
+   peut l'agrandir et le faire déborder des cases du jeu. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Backgammon — un plateau de marqueterie posé contre un mur ardoise.
+   La seule audace est le plateau (placages appariés, frise de losanges,
+   rose des vents sur la barre) ; tout autour reste sobre : texte ivoire,
+   plaques d'ébène cerclées de laiton pour les commandes. */
+:root {
+  --mur: #3B4654;
+  --mur-fonce: #2C3540;
+  --texte: #F1E7D0;
+  --texte-doux: #C9C3B4;
+  --sienne: #A0522D;
+  --sienne-fonce: #86411F;
+  --erable: #E6CF9F;
+  --palissandre: #3A2318;
+  --ebene: #221A16;
+  --ivoire: #F4ECD9;
+  --laiton: #D9B44A;
+  --titre: 'Marcellus', 'Georgia', system-ui, serif;
+  --police: 'Alegreya Sans', 'Segoe UI', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  color: var(--texte);
+  font: 400 clamp(14px, 2.3vmin, 19px)/1.4 var(--police);
+  background: radial-gradient(120% 90% at 50% 40%, #44505F, var(--mur) 55%, var(--mur-fonce));
+  background-color: var(--mur);
+  overflow: hidden;
+}
+[hidden] { display: none !important; }
+button { font: inherit; }
+
+/* ----------------------------------------------------------------- partie */
+#partie {
+  height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 10px 16px;
+}
+#panneau {
+  width: min(100%, calc((100dvh - 190px) * 10 / 7), 1100px);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .1em 1.1em;
+}
+#panneau p { margin: 0; }
+#score { font-size: 1.15em; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
+#manche, #videau-texte { color: var(--texte-doux); }
+#crawford { color: var(--laiton); font-weight: 700; }
+#btn-menu { margin-left: auto; }
+/* Mode ami : le prénom, sur la ligne du score. */
+#ligne-pseudo { display: flex; align-items: center; gap: .5em; font-size: .9em; color: var(--texte-doux); }
+#pseudo {
+  width: 8em; min-width: 0; min-height: 34px; font: inherit; font-weight: 700; color: var(--palissandre);
+  background: var(--ivoire); border: 0; border-radius: 4px; padding: .2em .45em;
+  box-shadow: inset 0 0 0 1.5px var(--sienne);
+}
+#pseudo:focus-visible { outline: 3px solid var(--laiton); outline-offset: 2px; }
+
+#plateau {
+  position: relative;
+  container-type: inline-size;
+  width: min(100%, calc((100dvh - 190px) * 10 / 7), 1100px);
+  aspect-ratio: 10 / 7;
+  flex: none;
+  touch-action: none;
+  -webkit-user-select: none; user-select: none;
+  filter: drop-shadow(0 1.2cqw 1.6cqw rgb(10 14 22 / .55));
+}
+#plateau:focus { outline: none; }
+#plateau .dessin { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.dessin .lueur { fill: rgb(217 180 74 / .26); }
+.dessin .losange { fill: var(--laiton); stroke: var(--ebene); stroke-width: 1.5; }
+.dessin .bac-lueur { fill: rgb(217 180 74 / .12); stroke: var(--laiton); stroke-width: 4; }
+.dessin .anneau { fill: none; stroke: var(--laiton); stroke-width: 5; }
+.dessin .dame.choisie { transform: translate(0, -3px); }
+.dessin .dame.portee { opacity: .3; }
+.dessin text { font-family: var(--police); }
+
+.cases { position: absolute; inset: 0; }
+.case {
+  position: absolute; margin: 0; padding: 0; border: 0; background: none;
+  cursor: default; -webkit-tap-highlight-color: transparent;
+}
+.case.jouable { cursor: pointer; }
+.case:focus-visible { outline: 3px solid var(--laiton); outline-offset: -3px; border-radius: 4px; }
+
+/* ------------------------------------------------------------------- dés */
+.des {
+  position: absolute; top: 50%; height: 0;
+  display: flex; align-items: center; justify-content: center; gap: 2.2cqw;
+  pointer-events: none;
+  --d: 5.8cqw;
+}
+.des.gauche { left: 2.2%; width: 40.8%; }
+.des.droite { left: 48.6%; width: 40.8%; }
+.des:has(.de:nth-child(3)) { --d: 4.8cqw; gap: 1.4cqw; }
+.de { position: relative; width: var(--d); height: var(--d); perspective: calc(var(--d) * 8); flex: none; transition: opacity .2s; }
+.de::after {
+  content: ''; position: absolute; left: 6%; right: -4%; bottom: -22%; height: 26%;
+  border-radius: 50%; background: rgb(25 10 0 / .35); filter: blur(2px); z-index: -1;
+}
+.cube {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  --demi: calc(var(--d) / 2);
+  transform: translateX(0) translateY(0) rotateX(-16deg) rotateY(20deg) rotateX(var(--rx)) rotateY(var(--ry));
+}
+.face {
+  position: absolute; inset: 0;
+  display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  padding: 13%;
+  background: radial-gradient(circle at 35% 30%, #FFFDF6, #EDE3CC);
+  border-radius: 17%;
+  box-shadow: inset 0 0 0 1px rgb(120 95 60 / .35), inset 0 -.12em .2em rgb(120 95 60 / .18);
+  backface-visibility: hidden;
+}
+.face i { width: 72%; aspect-ratio: 1; place-self: center; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #A0522D, #5E2A12); }
+.cube.roule { animation: rouler .7s cubic-bezier(.2, .7, .3, 1) both; }
+.gauche .cube.roule { --sens: -1; }
+@keyframes rouler {
+  from {
+    transform: translateX(calc(var(--tx) * var(--d) * var(--sens, 1))) translateY(calc(var(--d) * -.7))
+      rotateX(-16deg) rotateY(20deg) rotateX(calc(var(--rx) + var(--tours-x))) rotateY(calc(var(--ry) + var(--tours-y)));
+  }
+  to {
+    transform: translateX(0) translateY(0) rotateX(-16deg) rotateY(20deg) rotateX(var(--rx)) rotateY(var(--ry));
+  }
+}
+.de.joue { opacity: .38; }
+/* Mode ami : un dé dont l'ami n'a pas encore révélé la valeur tourne sur lui-même. */
+.cube.tourne { animation: tourner 1.1s linear infinite; }
+@keyframes tourner {
+  from { transform: rotateX(-16deg) rotateY(20deg) rotateX(0deg) rotateY(0deg); }
+  to { transform: rotateX(-16deg) rotateY(20deg) rotateX(360deg) rotateY(720deg); }
+}
+.de.attend { opacity: .8; }
+
+.fantome {
+  position: fixed; left: 0; top: 0; z-index: 50; pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 53%, var(--ebene) 54% 66%, transparent 67%),
+    radial-gradient(circle at 38% 32%, #FFFBF0, var(--ivoire) 60%, #D8CBAE);
+  box-shadow: 0 .4em .8em rgb(0 0 0 / .45);
+}
+.fantome.noire {
+  background:
+    radial-gradient(circle, transparent 0 85%, rgb(255 240 220 / .14) 86% 89%, transparent 90%),
+    radial-gradient(circle at 38% 30%, #4A3B33, var(--ebene) 55%, #0E0A08);
+}
+
+/* ------------------------------------------------- annonce et commandes */
+#annonce {
+  margin: 0; min-height: 1.4em; max-width: min(100%, 44em);
+  text-align: center; font-weight: 500;
+  transition: opacity .2s;
+}
+/* Vide, il reste dans l'arbre d'accessibilité : seulement transparent. */
+#annonce:empty { opacity: 0; }
+/* Un ami qui ne joue plus : le texte, puis le bouton sur la même ligne si la place y est. */
+#reclamation {
+  margin: 0; max-width: min(100%, 44em);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px;
+  text-align: center; font-weight: 500;
+}
+#reclamation[hidden] { display: none; }
+#commandes {
+  margin: 0; min-height: 48px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px;
+}
+
+.plaque {
+  min-height: 44px; padding: .4em 1.25em .45em;
+  font-weight: 700; letter-spacing: .01em;
+  color: var(--ivoire); background: linear-gradient(#33261E, var(--ebene));
+  border: 0; border-radius: 7px; cursor: pointer;
+  box-shadow: inset 0 0 0 2px var(--ebene), inset 0 0 0 3.5px var(--laiton), 0 3px 0 #0F0B09;
+  transition: transform .08s, box-shadow .08s;
+}
+.plaque:hover { background: linear-gradient(#45332A, #2B211C); }
+.plaque:active { transform: translateY(2px); box-shadow: inset 0 0 0 2px var(--ebene), inset 0 0 0 3.5px var(--laiton), 0 1px 0 #0F0B09; }
+.plaque.claire {
+  color: var(--palissandre); background: linear-gradient(#F0DCB0, var(--erable));
+  box-shadow: inset 0 0 0 2px var(--erable), inset 0 0 0 3.5px var(--sienne), 0 3px 0 #9B8257;
+}
+.plaque.claire:active { box-shadow: inset 0 0 0 2px var(--erable), inset 0 0 0 3.5px var(--sienne), 0 1px 0 #9B8257; }
+.plaque:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.plaque:focus-visible, .discret:focus-visible { outline: 3px solid var(--laiton); outline-offset: 3px; }
+.plaque.grande { font-size: 1.2em; min-width: 9em; }
+.discret {
+  min-height: 44px; padding: .2em .6em; border: 0; background: none; cursor: pointer;
+  color: var(--texte); text-decoration: underline 1px; text-underline-offset: .25em;
+}
+.discret:hover { color: var(--laiton); }
+
+/* ----------------------------------------------------------------- écrans */
+.ecran {
+  position: fixed; inset: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px; overflow: auto;
+}
+/* margin:auto plutôt que le seul centrage flex : quand la carte dépasse la
+   fenêtre (téléphone couché), son haut reste atteignable au défilement. */
+.ecran > * { margin: auto; }
+#ecran-menu, #ecran-invite, #ecran-attente { background: radial-gradient(120% 90% at 50% 40%, #44505F, var(--mur) 55%, var(--mur-fonce)); }
+.carte-menu {
+  display: flex; flex-direction: column; align-items: center; gap: 1.1em;
+  width: min(100%, 26em); text-align: center;
+}
+h1 {
+  margin: 0; font: 400 clamp(2.4em, 11vw, 4em)/1 var(--titre);
+  color: var(--ivoire); letter-spacing: .01em;
+}
+/* La frise du cadre, en petit. */
+.frise {
+  width: min(16em, 80%); height: 10px; margin-top: -.3em;
+  background:
+    linear-gradient(135deg, var(--erable) 25%, transparent 25%) -7px 0 / 14px 10px,
+    linear-gradient(225deg, var(--erable) 25%, transparent 25%) -7px 0 / 14px 10px,
+    linear-gradient(315deg, var(--erable) 25%, transparent 25%) 0 0 / 14px 10px,
+    linear-gradient(45deg, var(--erable) 25%, transparent 25%) 0 0 / 14px 10px,
+    var(--palissandre);
+  box-shadow: 0 0 0 1.5px var(--laiton);
+}
+fieldset { margin: 0; padding: 0; border: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+legend { width: 100%; margin-bottom: .45em; padding: 0; font-family: var(--titre); font-size: 1.15em; color: var(--texte-doux); }
+fieldset label {
+  position: relative; min-height: 44px; display: inline-flex; align-items: center;
+  padding: .3em 1em; border-radius: 7px; cursor: pointer;
+  border: 1.5px solid rgb(241 231 208 / .35);
+}
+fieldset input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+fieldset label:has(input:checked) { background: var(--sienne); border-color: var(--laiton); color: var(--ivoire); font-weight: 700; }
+fieldset label:has(input:focus-visible) { outline: 3px solid var(--laiton); outline-offset: 3px; }
+.case-videau { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .1em; }
+.case-videau label { min-height: 44px; display: inline-flex; align-items: center; gap: .5em; cursor: pointer; font-size: 1.05em; }
+.case-videau input { width: 1.2em; height: 1.2em; accent-color: var(--sienne); cursor: pointer; }
+#videau-note { color: var(--texte-doux); }
+#videau-note.active { color: var(--laiton); }
+
+/* ------------------------------------------------- invitation et attente */
+h2 { margin: 0; font: 400 clamp(1.9em, 9vw, 2.6em)/1.05 var(--titre); color: var(--ivoire); }
+.consigne { margin: 0; color: var(--texte-doux); max-width: 22em; }
+#attente-statut { margin: 0; font: 400 1.3em/1.3 var(--titre); color: var(--ivoire); max-width: 20em; }
+/* Le QR code, sur une carte d'ivoire cerclée de palissandre et de laiton. */
+#qr {
+  width: min(34dvh, 58vw, 15em); aspect-ratio: 1; flex: none;
+  display: grid; place-items: center; padding: 6px;
+  color: var(--palissandre); background: #fff; border-radius: 4px; font-size: .85em;
+  box-shadow: 0 0 0 3px var(--palissandre), 0 0 0 4.5px var(--laiton), 0 8px 16px rgb(10 14 22 / .45);
+}
+#qr svg { width: 100%; height: 100%; display: block; }
+.ligne-lien { margin: 0; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+#lien {
+  flex: 1 1 12em; min-width: 0; max-width: 22em; min-height: 44px;
+  font: 14px/1.2 ui-monospace, Consolas, monospace;
+  color: var(--palissandre); background: var(--ivoire); border: 0; border-radius: 4px; padding: .5em .6em;
+  box-shadow: inset 0 0 0 1.5px var(--sienne);
+}
+#lien:focus-visible { outline: 3px solid var(--laiton); outline-offset: 2px; }
+
+.voile { background: rgb(28 33 42 / .6); }
+.cartouche {
+  width: min(100%, 26em); padding: 1.3em 1.4em 1.2em;
+  text-align: center;
+  color: var(--ivoire); background: linear-gradient(#33261E, var(--ebene));
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 3px var(--ebene), inset 0 0 0 5px var(--laiton), inset 0 0 0 8px var(--ebene), inset 0 0 0 9px rgb(217 180 74 / .5), 0 1em 2.5em rgb(0 0 0 / .5);
+}
+.cartouche p { margin: 0; }
+#double-texte, #fin-texte { font: 400 1.45em/1.25 var(--titre); }
+#fin-score { margin-top: .4em; color: var(--texte-doux); font-variant-numeric: tabular-nums; }
+.cartouche .boutons { margin-top: 1em; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+/* Téléphone debout : le plateau, plus large que haut, laisse beaucoup de
+   hauteur libre. On en met un tiers au-dessus et deux tiers au-dessous, pour
+   que la partie ne flotte pas au milieu de l'écran. L'annonce garde la place
+   de deux lignes, pour que le plateau ne saute pas quand elle s'allonge. */
+@media (orientation: portrait) {
+  #partie { justify-content: flex-start; }
+  #partie::before, #partie::after { content: ''; flex: 1 1 0; min-height: 0; }
+  #partie::after { flex-grow: 2; }
+  #annonce { min-height: 2.8em; }
+}
+
+/* Téléphone étroit et debout : le plateau tourne d'un quart de tour
+   (plateau.js, même requête : DEBOUT) et prend la hauteur libre. Environ
+   250 px restent pour le score, l'annonce et les commandes. */
+@media (orientation: portrait) and (max-aspect-ratio: 2/3) {
+  #plateau, #panneau { width: min(100%, calc((100dvh - 250px) * 7 / 10)); }
+  #plateau { aspect-ratio: 7 / 10; }
+  /* « Menu » en haut à droite, sur la ligne du score : une ligne de gagnée. */
+  #panneau { position: relative; padding-right: 4.2em; }
+  #btn-menu { position: absolute; top: -.55em; right: -.6em; margin: 0; }
+}
+/* Debout, les dés se rangent en colonne dans l'allée entre les deux rangées
+   de flèches : en haut ceux de l'adversaire, en bas les tiens. */
+#plateau.debout .des {
+  top: 2.2%; left: 50%; width: 0; height: 40.8%;
+  flex-direction: column; gap: 3.1cqw;
+  --d: 8.3cqw;
+}
+#plateau.debout .des.droite { top: 48.6%; left: 50%; width: 0; }
+#plateau.debout .des:has(.de:nth-child(3)) { --d: 6.9cqw; gap: 2cqw; }
+/* Le repère tourne : soulever la dame vers le haut de l'écran. */
+#plateau.debout .dessin .dame.choisie { transform: translate(-3px, 0); }
+
+@media (max-width: 480px) {
+  #partie { gap: 6px; padding: 8px 10px; }
+  #panneau { gap: 0 .8em; font-size: .92em; }
+  #pseudo { width: 6.5em; }
+  .plaque { padding: .35em 1em .4em; }
+}
+
+/* Téléphone couché : la hauteur manque. Le panneau, l'annonce et les
+   commandes passent à droite du plateau, qui prend toute la hauteur. */
+@media (orientation: landscape) and (max-height: 500px) {
+  #partie {
+    --cote: 10.5em;
+    display: grid;
+    grid-template-columns: auto var(--cote);
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "plateau panneau" "plateau annonce" "plateau reclamation" "plateau commandes";
+    align-items: center; justify-content: center;
+    gap: 6px 12px; padding: 8px 16px;
+    font-size: .92em;
+  }
+  #plateau {
+    grid-area: plateau;
+    width: min(calc((100dvh - 16px) * 10 / 7), calc(100vw - 44px - var(--cote)), 1100px);
+  }
+  #panneau {
+    grid-area: panneau; align-self: start;
+    width: auto; flex-direction: column; align-items: flex-start; gap: 0;
+  }
+  #score { font-size: 1.05em; }
+  #btn-menu { margin-left: -.6em; min-height: 36px; }
+  #ligne-pseudo { flex-direction: column; align-items: flex-start; gap: 0; width: 100%; }
+  #pseudo { width: 100%; min-height: 30px; }
+  .carte-menu { gap: .7em; }
+  /* Le menu en deux colonnes : le titre à gauche, les réglages à droite. */
+  #ecran-menu { padding: 12px 16px; }
+  #ecran-menu .carte-menu {
+    display: grid; width: min(100%, 40em); gap: .5em 2em;
+    grid-template-columns: 1fr 1fr; align-items: center; justify-items: center;
+  }
+  #ecran-menu h1 { grid-column: 1; grid-row: 1; align-self: end; font-size: 2.8em; }
+  #ecran-menu .frise { grid-column: 1; grid-row: 2; margin-top: 0; }
+  #ecran-menu #choix-mode { grid-column: 1; grid-row: 3; }
+  #ecran-menu #btn-jouer { grid-column: 1; grid-row: 4; }
+  #ecran-menu #choix-niveau { grid-column: 2; grid-row: 1 / span 2; }
+  #ecran-menu fieldset:not(#choix-mode):not(#choix-niveau) { grid-column: 2; grid-row: 3; }
+  #ecran-menu .case-videau { grid-column: 2; grid-row: 4; margin: 0; }
+  #ecran-menu fieldset { flex-wrap: nowrap; }
+  #qr { width: min(46dvh, 15em); }
+  #annonce { grid-area: annonce; text-align: start; max-width: none; }
+  #commandes { grid-area: commandes; align-self: end; justify-content: flex-start; gap: 6px; }
+  #reclamation { grid-area: reclamation; justify-content: flex-start; text-align: start; max-width: none; }
+  .plaque { padding: .3em .8em .35em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cube.roule, .cube.tourne { animation: none; }
+  .plaque, #annonce, .de { transition: none; }
+}
+
+/* Mode vignette (?vignette=1) : seule la toile reste. */
+body.vignette { overflow: auto; }
+body.vignette #page { display: none; }
+body.vignette canvas { display: block; }
