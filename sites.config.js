@@ -334,6 +334,10 @@ export const VIEWS = {
   about: {
     slugs: { fr: 'a-propos/', de: 'ueber-uns/', it: 'chi-siamo/', en: 'about/', es: 'acerca-de/', hy: 'about/', ru: 'about/' },
   },
+  // Jeux (échecs, backgammon) — slug latin partout, traduit là où le mot change.
+  games: {
+    slugs: { fr: 'jeux/', de: 'spiele/', it: 'giochi/', en: 'games/', es: 'juegos/', hy: 'games/', ru: 'games/' },
+  },
 }
 
 // Un slug sans ses slashes de bord. Sert à COMPARER (viewFromPath) là où

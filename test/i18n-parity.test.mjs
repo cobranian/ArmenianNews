@@ -38,7 +38,7 @@ const tables = {
 }
 
 test('les vues de VIEW_SEO sont toutes couvertes ci-dessus', () => {
-  assert.deepEqual(Object.keys(VIEW_SEO).sort(), ['about', 'agenda', 'radio'])
+  assert.deepEqual(Object.keys(VIEW_SEO).sort(), ['about', 'agenda', 'games', 'radio'])
 })
 
 test('chaque module plat porte les mêmes clés que fr, dans chaque langue', () => {

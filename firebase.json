@@ -24,6 +24,21 @@
           "type": 301
         },
         {
+          "regex": "^/games/?$",
+          "destination": "/jeux/",
+          "type": 301
+        },
+        {
+          "regex": "^/de/games/?$",
+          "destination": "/de/spiele/",
+          "type": 301
+        },
+        {
+          "regex": "^/it/games/?$",
+          "destination": "/it/giochi/",
+          "type": 301
+        },
+        {
           "regex": "^/es/?$",
           "destination": "https://armenianews.org/es/",
           "type": 301
@@ -110,6 +125,16 @@
         {
           "regex": "^/es/(?:events|agenda)/?$",
           "destination": "/es/eventos/",
+          "type": 301
+        },
+        {
+          "regex": "^/jeux/?$",
+          "destination": "/games/",
+          "type": 301
+        },
+        {
+          "regex": "^/es/(?:games|jeux)/?$",
+          "destination": "/es/juegos/",
           "type": 301
         },
         {

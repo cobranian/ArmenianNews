@@ -43,6 +43,7 @@ export function Footer() {
     [briefPath(lang), BRIEF_STRINGS[lang].title],
     [culturePath(lang), CULTURE_STRINGS[lang].title],
     [pathFor(lang, 'about'), VIEW_SEO.about[lang].title],
+    [pathFor(lang, 'games'), VIEW_SEO.games[lang].title],
     [feedPath(lang), t('footer.rss')],
   ]
   // Une lettre par langue (sites.config.js, `newsletter.lists`) : le
