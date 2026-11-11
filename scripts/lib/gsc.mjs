@@ -44,10 +44,11 @@ export function listUrl(host) {
 const b64url = (v) => Buffer.from(typeof v === 'string' ? v : JSON.stringify(v)).toString('base64url')
 
 // L'assertion JWT (RS256) échangée contre un jeton d'accès : sans dépendance,
-// node:crypto suffit. Valable une heure.
-export function jwtAssertion(sa, now = Math.floor(Date.now() / 1000)) {
+// node:crypto suffit. Valable une heure. `scope` : la Search Console par
+// défaut ; la purge des salles (salles-purge.mjs) y passe ses deux portées.
+export function jwtAssertion(sa, now = Math.floor(Date.now() / 1000), scope = GSC_SCOPE) {
   const head = b64url({ alg: 'RS256', typ: 'JWT' })
-  const claims = b64url({ iss: sa.client_email, scope: GSC_SCOPE, aud: TOKEN_URL, iat: now, exp: now + 3600 })
+  const claims = b64url({ iss: sa.client_email, scope, aud: TOKEN_URL, iat: now, exp: now + 3600 })
   const sig = createSign('RSA-SHA256').update(`${head}.${claims}`).sign(sa.private_key).toString('base64url')
   return `${head}.${claims}.${sig}`
 }

@@ -4,6 +4,7 @@
     ".write": false,
     "salles": {
       "$jeu": {
+        ".indexOn": ["creeLe"],
         "$code": {
           ".read": "auth != null",
           ".write": "auth != null && (!data.exists() || data.child('creeLe').val() < (now - 86400000)) && newData.child('v').val() === 2",

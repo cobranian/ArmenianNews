@@ -900,6 +900,43 @@ téléchargé. Pour l'allumer, dans la console du projet `armenie-info` :
    npx --yes firebase-tools@15.34.2 deploy --only database --project armenie-info
    ```
 
+Les règles portent un index `".indexOn": ["creeLe"]` sous `salles/$jeu`, dont
+la purge ci-dessous se sert ; tant qu'elles ne sont pas déployées, la purge
+lit les salles une par une (même résultat, plus d'appels).
+
+### Le mode ami : effacement des salles (purge horaire)
+
+Les salles **s'effacent d'elles-mêmes** (décision de Nareg, 11 nov. 2026).
+L'étape « Effacer les salles de jeu de plus de 24 h » de `hourly.yml` lance
+`scripts/salles-purge.mjs` à chaque passage planifié : pour `echecs` et
+`backgammon`, elle lit `salles/<jeu>` trié par `creeLe` jusqu'à « maintenant
+− 24 h », puis, par une lecture `shallow`, le `creeLe` des autres salles une
+par une, et efface d'un `PATCH` à `null` celles de plus de 24 h et celles sans
+`creeLe` numérique. Une salle disparaît donc **au plus tard environ 25 h**
+après sa création — c'est ce que dit la politique de confidentialité.
+
+Elle s'authentifie avec le compte de service de la CI
+(`FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO`, celui du déploiement Hosting), en
+OAuth2 (portées `userinfo.email` et `firebase.database`). **Ce compte doit
+porter le rôle « Firebase Realtime Database Admin » sur le projet
+`armenie-info`** (console Cloud → IAM → le compte `github-action-…` →
+Modifier → Ajouter un rôle). Sans ce rôle, la base répond 401/403 : rien ne
+casse, l'étape est en `continue-on-error`, et le seul signe est `✗ purge` au
+log — plus une ligne « effacement des salles de jeu » dans l'issue
+`[sources-down]`, d'où la place de l'étape, juste **avant** le contrôle de
+santé qui lit son résultat. Succès : `purge : N salle(s) effacée(s)`.
+
+Essai contre l'émulateur (aucune donnée de production) :
+
+```bash
+npm run test:regles   # test/regles/purge.test.js
+# ou à la main, l'émulateur lancé :
+SALLES_BASE_URL=http://127.0.0.1:9000 SALLES_NS=armenie-info-default-rtdb   SALLES_JETON=owner node scripts/salles-purge.mjs
+```
+
+Firebase efface de son côté les comptes anonymes de plus de 30 jours (option
+« Auto clean-up » d'Authentication).
+
 La politique de confidentialité (`privacy.games.*`, `src/i18n.jsx`, sept
 langues) décrit ce mode : elle nomme Firebase, la région et la durée de vie
 d'une salle. Toute évolution du mode ami doit la suivre.

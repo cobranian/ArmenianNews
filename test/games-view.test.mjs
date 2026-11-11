@@ -145,6 +145,19 @@ const MODE_AMI = {
   ru: 'с другом',
 }
 
+// Depuis le 11 nov. 2026, une étape horaire efface les salles de plus de 24 h
+// (scripts/salles-purge.mjs) : une salle disparaît donc au plus tard ~25 h
+// après sa création. Le texte doit le dire — et ne plus dire qu'elle reste
+// jusqu'à être écrasée. Le « 25 » est la borne vraie ; « 24 » seul serait faux
+// d'une heure (purge horaire).
+test('la confidentialité dit que les salles s’effacent seules, au plus tard ~25 h après leur création', () => {
+  for (const l of BLOC_LANGS) {
+    for (const cle of ['privacy.games.body', 'privacy.rights.body']) {
+      assert.match(valeur(l, cle) ?? '', /\b25\b/, `${l} : ${cle} ne dit pas « 25 h »`)
+    }
+  }
+})
+
 test('l’intro et les droits de la confidentialité citent le mode ami, dans chaque langue', () => {
   assert.deepEqual(Object.keys(MODE_AMI).sort(), [...BLOC_LANGS].sort())
   for (const l of BLOC_LANGS) {
