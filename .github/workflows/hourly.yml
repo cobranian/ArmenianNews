@@ -141,9 +141,12 @@ jobs:
         run: npm run screenshot
 
       # Les salles du mode ami s'effacent d'elles-mêmes (décision de Nareg,
-      # 11 nov. 2026) : celles de plus de 24 h, et celles sans creeLe, avec le
-      # compte de service de la CI — qui doit porter le rôle « Firebase
-      # Realtime Database Admin » sur armenie-info (README « Jeux »). Sans lui,
+      # 11 nov. 2026) : celles de plus de 24 h, et celles sans creeLe, avec un
+      # compte de service RÉSERVÉ à la purge (secret
+      # FIREBASE_SERVICE_ACCOUNT_PURGE), seul à porter « Firebase Realtime
+      # Database Admin » sur armenie-info (README « Jeux »). Ce rôle contourne
+      # les règles de toute la base : il ne doit JAMAIS revenir sur une clé de
+      # déploiement, ni cette clé servir à autre chose. Sans lui,
       # rien ne casse : « ✗ purge » au log, et une ligne dans l'issue
       # [sources-down] — c'est pour elle que la purge passe AVANT la santé,
       # qui lit steps.purge.outcome. continue-on-error : un nettoyage manqué
@@ -154,7 +157,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         env:
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PURGE }}
         run: node scripts/salles-purge.mjs
 
       # Ce que le backfill cache : une source figée (Armenpress treize jours,
@@ -341,56 +344,53 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         env:
-          # Dedicated deploy identity (github-action-*). The old secret held the
-          # firebase-adminsdk key, which could also bypass database security
-          # rules and mint tokens for other service accounts — far more than
-          # publishing a static site needs. Rôles aujourd'hui : Firebase Hosting
-          # Admin (les deux projets, ci-dessous) ET, depuis le 11 nov. 2026,
-          # « Firebase Realtime Database Admin » sur armenie-info, pour la purge
-          # des salles (étape « Effacer les salles de jeu »). Ce second rôle
-          # lit et écrit TOUTE la Realtime Database en contournant ses règles :
-          # une fuite de la clé expose aussi les salles du mode ami. Compromis
-          # assumé, comme le rôle croisé : une seule clé à entretenir, au prix
-          # d'une portée plus large ; une seconde clé réservée à la purge la
-          # cloisonnerait. Toujours sans création de jetons (pas d'adminsdk).
+          # UNE CLÉ PAR VITRINE, chacune Firebase Hosting Admin sur SON projet
+          # seulement — et rien d'autre (cloisonnement du 11 nov. 2026). Avant,
+          # une seule clé portait Hosting Admin sur les deux projets (rôle
+          # croisé) plus « Realtime Database Admin » pour la purge : une fuite
+          # livrait les deux sites ET toute la base. Désormais une fuite ne
+          # touche qu'une vitrine ; la base a sa propre clé (étape « Effacer
+          # les salles de jeu »). Jamais de clé firebase-adminsdk ici : elle
+          # contourne les règles et crée des jetons pour d'autres comptes.
           #
-          # UN SEUL secret pour DEUX projets, et ce n'est pas un oubli : ce
-          # compte de service appartient à `armenie-info` et s'est vu accorder
-          # le rôle Firebase Hosting Admin **sur `armenia-news-b146e` aussi**
-          # (console Cloud → IAM du second projet → Accorder l'accès).
-          #
-          # Un compte de service n'a par défaut de droits que sur son propre
-          # projet : sans cette autorisation croisée, le déploiement du .org
-          # échouerait sur une erreur d'autorisation. Si vous révoquez ce rôle,
-          # il faudra un second secret et un credential par vitrine.
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
+          # Ne remettez pas de rôle croisé « pour simplifier » : c'est
+          # exactement la portée qu'on vient de retirer.
+          FIREBASE_SA_CH: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CH }}
+          FIREBASE_SA_ORG: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ORG }}
         run: |
-          # Échouer tôt et clairement si le secret manque. Sans cette garde, un
+          # Échouer tôt et clairement si un secret manque. Sans cette garde, un
           # credential vide produit un fichier vide, et firebase-tools répond
           # une erreur d'authentification générique qui n'indique pas la cause.
-          if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
-            echo "::error::Secret FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO absent ou vide — impossible de déployer."
+          if [ -z "$FIREBASE_SA_CH" ]; then
+            echo "::error::Secret FIREBASE_SERVICE_ACCOUNT_CH absent ou vide — impossible de déployer."
+            exit 1
+          fi
+          if [ -z "$FIREBASE_SA_ORG" ]; then
+            echo "::error::Secret FIREBASE_SERVICE_ACCOUNT_ORG absent ou vide — impossible de déployer."
             exit 1
           fi
 
-          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
-
           set +e
           fail=0
-          # Un couple par vitrine : site | projet. Le nom de site suffirait à
-          # firebase deploy (il est unique mondialement), mais --project est
-          # nécessaire parce que les deux vitrines vivent dans deux projets.
+          # Un triplet par vitrine : site | projet | variable de sa clé. Le nom
+          # de site suffirait à firebase deploy (il est unique mondialement),
+          # mais --project est nécessaire parce que les deux vitrines vivent
+          # dans deux projets, et chaque clé n'a de droits que sur le sien.
           #
           # `while read` alimenté par un here-doc s'exécute dans le shell courant
           # (contrairement à un pipe), donc `fail` survit aux itérations.
-          while IFS='|' read -r site project; do
+          while IFS='|' read -r site project credvar; do
             [ -z "$site" ] && continue
             echo "▸ déploiement de $site (projet $project)"
+            # La clé de CETTE vitrine seulement, réécrite à chaque tour, et
+            # `env -u` ôte les deux variables à firebase-tools : il ne voit
+            # que le fichier du site en cours, jamais la clé du voisin.
+            printf '%s' "${!credvar}" > "$RUNNER_TEMP/sa.json"
+            export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
             # Pinned, not @latest: this runs with the deploy service account in
             # its environment, so a single malicious release would hand over the
             # credential. Bump deliberately.
-            out=$(npx --yes firebase-tools@15.23.0 deploy \
+            out=$(env -u FIREBASE_SA_CH -u FIREBASE_SA_ORG npx --yes firebase-tools@15.23.0 deploy \
               --only "hosting:$site" --project "$project" --non-interactive 2>&1)
             code=$?
             echo "$out"
@@ -408,9 +408,10 @@ jobs:
               fail=1
             fi
           done <<EOF
-          armenie-info|armenie-info
-          armenia-news-org|armenia-news-b146e
+          armenie-info|armenie-info|FIREBASE_SA_CH
+          armenia-news-org|armenia-news-b146e|FIREBASE_SA_ORG
           EOF
+          rm -f "$RUNNER_TEMP/sa.json"
           exit $fail
 
       # Ce que `npm run check` ne peut PAS voir : un code HTTP. Il compare des

@@ -85,7 +85,7 @@ test('hourly.yml : purge en continue-on-error, avant la santé qui lit son résu
   const etape = y.slice(p, h)
   assert.match(etape, /id: purge\n/)
   assert.match(etape, /continue-on-error: true\n/)
-  assert.match(etape, /FIREBASE_SERVICE_ACCOUNT: \$\{\{ secrets\.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO \}\}/)
+  assert.match(etape, /FIREBASE_SERVICE_ACCOUNT: \$\{\{ secrets\.FIREBASE_SERVICE_ACCOUNT_PURGE \}\}/)
   assert.match(etape, /run: node scripts\/salles-purge\.mjs/)
   assert.doesNotMatch(etape, /echo[^\n]*FIREBASE_SERVICE_ACCOUNT/, 'le secret n’est jamais affiché')
   assert.match(y.slice(h), /PURGE_OUTCOME: \$\{\{ steps\.purge\.outcome \}\}/)

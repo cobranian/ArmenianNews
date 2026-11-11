@@ -118,7 +118,7 @@ export function checkClassify(news, cache, map = RUBRIC_MAP) {
 // (steps.<id>.outcome — l'API rend « success » pour une étape tolérée en échec).
 const STEP_LABELS = {
   screenshot: '**capture Don Narek** : l’étape a échoué, les PNG de armenie-info.web.app ne sont plus rafraîchis',
-  purge: '**effacement des salles de jeu** : l’étape a échoué (« ✗ purge » au log) — rôle « Firebase Realtime Database Admin » du compte de service de la CI ? Les salles de plus de 24 h restent dans la base, alors que la confidentialité les dit effacées',
+  purge: '**effacement des salles de jeu** : l’étape a échoué (« ✗ purge » au log) — secret FIREBASE_SERVICE_ACCOUNT_PURGE et son rôle « Firebase Realtime Database Admin » ? Les salles de plus de 24 h restent dans la base, alors que la confidentialité les dit effacées',
 }
 export function checkSteps(outcomes = {}) {
   return Object.entries(STEP_LABELS).filter(([id]) => outcomes[id] === 'failure').map(([, label]) => label)

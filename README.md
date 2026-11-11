@@ -136,26 +136,20 @@ from the other's benign no-op.
 
   A service account only has rights on its own project by default, and the
   workflow deploys both sites unconditionally — so `armenieinfo.ch` would
-  publish fine while the job still went red on the `.org`. Rather than a second
-  credential, the existing `armenie-info` service account was granted **Firebase
-  Hosting Admin on `armenia-news-b146e` as well** (Cloud console → that
-  project's IAM → Grant access). One secret,
-  `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO`, therefore covers both.
+  publish fine while the job still went red on the `.org`. Since 11 Nov 2026 each
+  showcase has **its own** service account, Firebase Hosting Admin on its own
+  project only: `FIREBASE_SERVICE_ACCOUNT_CH` (`armenie-info`) and
+  `FIREBASE_SERVICE_ACCOUNT_ORG` (`armenia-news-b146e`). A third key,
+  `FIREBASE_SERVICE_ACCOUNT_PURGE`, is the only one holding Firebase Realtime
+  Database Admin (hourly purge of game rooms, see « Jeux »). Before that, a
+  single key held Hosting Admin on both projects plus the whole database — one
+  leak gave away everything.
 
-  The workflow checks that secret is non-empty before its first deploy command,
+  The workflow checks each secret is non-empty before its first deploy command,
   so a missing one fails immediately with a message naming it rather than
   surfacing later as an opaque authorization error.
 
-  > **The trade-off, stated plainly.** One key carrying Hosting Admin on two
-  > projects widens the blast radius if it leaks; two scoped keys would contain
-  > it but double the upkeep. The current choice is the former. Since
-  > 11 Nov 2026 the same account also holds **Firebase Realtime Database Admin**
-  > on `armenie-info`, for the hourly purge of game rooms (see « Jeux »): it
-  > reads and writes the whole Realtime Database, bypassing its rules, so a
-  > leaked key would expose the friend-mode rooms too. Same trade-off, same
-  > choice — one key to maintain rather than a second key reserved for the
-  > purge. What is *not*
-  > acceptable either way is the **`firebase-adminsdk` key** the Firebase
+  > What is *not* acceptable is the **`firebase-adminsdk` key** the Firebase
   > console offers under *Project settings → Service accounts → Generate new
   > private key*: that identity can bypass database security rules and mint auth
   > tokens for other service accounts — far beyond publishing static files. This
@@ -725,7 +719,10 @@ project.
 
 | Name | Kind | Purpose |
 |---|---|---|
-| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for **both** showcases. The account belongs to `armenie-info` and was additionally granted Firebase Hosting Admin on `armenia-news-b146e` — see [The two domains](#the-two-domains). Hosting Admin on both, plus Firebase Realtime Database Admin on `armenie-info` (hourly purge of game rooms, see « Jeux »). |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Replaced on 11 Nov 2026 by the three keys below — delete it once they work. |
+| `FIREBASE_SERVICE_ACCOUNT_CH` | secret | Deploy key for armenieinfo.ch: Firebase Hosting Admin on `armenie-info` only. |
+| `FIREBASE_SERVICE_ACCOUNT_ORG` | secret | Deploy key for armenianews.org: Firebase Hosting Admin on `armenia-news-b146e` only. |
+| `FIREBASE_SERVICE_ACCOUNT_PURGE` | secret | Hourly purge of game rooms: Firebase Realtime Database Admin on `armenie-info` only, never a deploy role (see « Jeux »). |
 | `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
 | `ASBAREZ_PROXY` | variable | URL of the Asbarez Cloudflare Worker proxy. **Required** from CI — both Asbarez editions 403 datacenter IPs outright, so without it the Asbarez feed comes back empty every hour (no direct fallback, unlike armradio). |
 
@@ -900,8 +897,8 @@ serait jamais téléchargé. Étapes faites dans la console du projet `armenie-i
 4. Si la clé d'API est restreinte par référent, y ajouter les deux domaines
    (`armenieinfo.ch` et `armenianews.org`).
 5. *(second temps — après la tâche 8)* Déployer les règles **à la main** —
-   la CI ne déploie que Hosting (son rôle Realtime Database Admin sert à la
-   seule purge des salles, ci-dessous) :
+   la CI ne déploie que Hosting (la clé de la purge, ci-dessous, ne sert qu'à
+   effacer les salles) :
 
    ```bash
    npx --yes firebase-tools@15.34.2 deploy --only database --project armenie-info
@@ -933,15 +930,11 @@ tri (400) : la purge relit alors les salles une par une, **500 au plus par
 jeu et par passage** ; le reste attend le passage suivant (`· purge/<jeu> :
 … restantes au passage suivant`).
 
-Elle s'authentifie avec le compte de service de la CI
-(`FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO`, celui du déploiement Hosting), en
-OAuth2 (portées `userinfo.email` et `firebase.database`). **Ce compte doit
-porter le rôle « Firebase Realtime Database Admin » sur le projet
-`armenie-info`** (console Cloud → IAM → le compte `github-action-…` →
-Modifier → Ajouter un rôle). Ce rôle lit et écrit toute la base en
-contournant les règles : une fuite de la clé exposerait aussi les salles.
-Compromis assumé (une clé à entretenir plutôt qu'une seconde réservée à la
-purge), comme le rôle Hosting croisé (« The two domains »). Sans ce rôle, la base répond 401/403 : rien ne
+Elle s'authentifie avec **sa propre** clé (`FIREBASE_SERVICE_ACCOUNT_PURGE`),
+en OAuth2 (portées `userinfo.email` et `firebase.database`). **Ce compte porte
+le rôle « Firebase Realtime Database Admin » sur `armenie-info`, et lui seul** :
+ce rôle lit et écrit toute la base en contournant les règles, il ne doit
+jamais revenir sur une clé de déploiement (cloisonnement du 11 nov. 2026). Sans ce rôle, la base répond 401/403 : rien ne
 casse, l'étape est en `continue-on-error`, et le seul signe est `✗ purge` au
 log — plus une ligne « effacement des salles de jeu » dans l'issue
 `[sources-down]`, d'où la place de l'étape, juste **avant** le contrôle de
