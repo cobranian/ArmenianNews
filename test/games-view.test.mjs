@@ -167,6 +167,17 @@ test('la confidentialité dit que les salles s’effacent seules, normalement ~2
   }
 })
 
+// La description Google de /jeux/ dit qu'on peut jouer à deux. Même tournure
+// que MODE_AMI là où elle se glisse dans la phrase ; fr, de et en l'écrivent
+// « avec un ami » plutôt que par le nom du mode.
+const AVEC_UN_AMI = { ...MODE_AMI, fr: 'avec un ami', de: 'mit einem Freund', en: 'with a friend' }
+test('VIEW_SEO.games : chaque description cite le jeu avec un ami', () => {
+  assert.deepEqual(Object.keys(AVEC_UN_AMI).sort(), [...BLOC_LANGS].sort())
+  for (const l of BLOC_LANGS) {
+    assert.ok(VIEW_SEO.games[l].description.includes(AVEC_UN_AMI[l]), `${l} : « ${AVEC_UN_AMI[l]} » absent de la description`)
+  }
+})
+
 test('l’intro et les droits de la confidentialité citent le mode ami, dans chaque langue', () => {
   assert.deepEqual(Object.keys(MODE_AMI).sort(), [...BLOC_LANGS].sort())
   for (const l of BLOC_LANGS) {
