@@ -144,6 +144,9 @@ export function Footer() {
             <h3>{t('privacy.storage.title')}</h3>
             <p>{t('privacy.storage.body')}</p>
 
+            <h3>{t('privacy.games.title')}</h3>
+            <p>{t('privacy.games.body')}</p>
+
             <h3>{t('privacy.newsletter.title')}</h3>
             <p>{t('privacy.newsletter.body')}</p>
 

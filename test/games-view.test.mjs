@@ -6,7 +6,7 @@ import { VIEW_SEO } from '../src/seo.js'
 import { headFor } from '../scripts/lib/site-meta.mjs'
 import { agendaGuardChecks } from '../scripts/lib/agenda-guard.mjs'
 import { notFoundHtml } from '../scripts/lib/not-found.mjs'
-import { BLOC_LANGS } from './helpers/i18n-blocks.mjs'
+import { BLOC_LANGS, clesDe, valeur } from './helpers/i18n-blocks.mjs'
 
 // La vue « games » (onglet Jeux). Même câblage que `about` : on garde ici ce
 // qu'aucun autre contrôle ne verrait en silence — le texte dans toutes les
@@ -111,4 +111,21 @@ test('games.play et games.rules existent dans chaque bloc de langue', () => {
     const n = (i18n.match(new RegExp(`'${cle.replace('.', '\\.')}':`, 'g')) || []).length
     assert.equal(n, BLOC_LANGS.length, cle)
   }
+})
+
+// La politique de confidentialité doit dire ce que font les jeux : le mode ami
+// passe par Firebase (Google), et Nareg a décidé de le NOMMER. Une langue sans
+// la section retomberait en silence sur le français (t() replie sur fr).
+test('la confidentialité a sa section Jeux, qui nomme Firebase, dans chaque langue', () => {
+  for (const l of BLOC_LANGS) {
+    for (const cle of ['privacy.games.title', 'privacy.games.body']) {
+      assert.ok(clesDe(l).has(cle), `${l} : ${cle}`)
+    }
+    assert.match(valeur(l, 'privacy.games.body') ?? '', /Firebase/, `${l} : Firebase non nommé`)
+    assert.match(valeur(l, 'privacy.games.body') ?? '', /europe-west1/, `${l} : région non dite`)
+  }
+  const footer = lire('../src/components/Footer.jsx')
+  const stockage = footer.indexOf("t('privacy.storage.body')")
+  const jeux = footer.indexOf("t('privacy.games.body')")
+  assert.ok(stockage > 0 && jeux > stockage, 'la section Jeux suit « Conservé sur votre appareil »')
 })

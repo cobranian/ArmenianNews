@@ -151,7 +151,10 @@ const STRINGS = {
       "Pour refuser ce cookie, bloquez-le dans votre navigateur. Le site fonctionne à l'identique sans lui.",
     'privacy.storage.title': 'Conservé sur votre appareil',
     'privacy.storage.body':
-      "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Il ne quitte jamais votre appareil et ne nous est jamais transmis.",
+      "Votre choix de thème jour / nuit est enregistré localement par votre navigateur. Les jeux y gardent aussi la partie en cours, le niveau, la couleur ou la longueur du match et le videau, la langue du jeu, le prénom facultatif du mode ami et, au backgammon, les secrets de dés d'une salle. Ces données restent dans votre navigateur et ne nous sont jamais transmises. Seul le mode ami, décrit ci-dessous, en envoie une partie.",
+    'privacy.games.title': 'Jeux et mode ami',
+    'privacy.games.body':
+      "Contre le robot, les échecs et le backgammon tournent entièrement dans votre navigateur. Le mode « avec un ami » passe par Firebase, un service de Google, et seulement après un clic sur ce mode. Une connexion anonyme, sans compte ni adresse e-mail, crée alors un identifiant aléatoire gardé dans votre navigateur. Les coups — au backgammon, avec les secrets de dés révélés après chaque lancer — et votre prénom, si vous en saisissez un, transitent par une base Firebase Realtime Database hébergée en Europe (europe-west1), où votre ami les lit. Après 24 heures, une salle ne peut plus être rejointe. Elle n'est pas effacée automatiquement : elle reste dans la base jusqu'à ce qu'une nouvelle salle reprenne son code et l'écrase.",
     'privacy.newsletter.title': "Lettre d'information",
     'privacy.newsletter.body':
       "Si vous vous abonnez, votre adresse e-mail est confiée à Buttondown, un service hébergé aux États-Unis : elle est donc traitée à l'étranger, selon la politique de confidentialité de Buttondown, qui peut mesurer l'ouverture des lettres et les clics. Elle ne sert qu'à cet envoi ; chaque lettre contient un lien de désinscription, et une demande à l'adresse ci-dessous la fait effacer.",
@@ -437,7 +440,10 @@ const STRINGS = {
       'Um dieses Cookie abzulehnen, blockieren Sie es in Ihrem Browser. Die Website funktioniert auch ohne dieses Cookie genau gleich.',
     'privacy.storage.title': 'Auf Ihrem Gerät gespeichert',
     'privacy.storage.body':
-      'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Sie verlässt Ihr Gerät nie und wird uns nie übermittelt.',
+      'Ihre Wahl zwischen Tag- und Nachtmodus speichert Ihr Browser lokal. Die Spiele speichern dort auch die laufende Partie, die Spielstufe, die Farbe oder die Matchlänge und den Doppelwürfel, die Sprache des Spiels, den freiwilligen Vornamen des Freundesmodus und beim Backgammon die Würfelgeheimnisse eines Raums. Diese Daten bleiben in Ihrem Browser und werden uns nie übermittelt. Nur der unten beschriebene Freundesmodus sendet einen Teil davon.',
+    'privacy.games.title': 'Spiele und Freundesmodus',
+    'privacy.games.body':
+      'Gegen den Roboter laufen Schach und Backgammon vollständig in Ihrem Browser. Der Modus «mit einem Freund» nutzt Firebase, einen Dienst von Google, und zwar erst nach einem Klick auf diesen Modus. Eine anonyme Anmeldung, ohne Konto und ohne E-Mail-Adresse, erzeugt dann eine zufällige Kennung, die in Ihrem Browser gespeichert wird. Die Züge – beim Backgammon mit den Würfelgeheimnissen, die nach jedem Wurf offengelegt werden – und Ihr Vorname, falls Sie einen eingeben, laufen über eine Firebase Realtime Database in Europa (europe-west1), wo Ihr Freund sie liest. Nach 24 Stunden kann ein Raum nicht mehr betreten werden. Er wird nicht automatisch gelöscht: Er bleibt in der Datenbank, bis ein neuer Raum seinen Code übernimmt und ihn überschreibt.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
       'Wenn Sie sich anmelden, wird Ihre E-Mail-Adresse dem Dienst Buttondown anvertraut, der in den USA gehostet wird: Sie wird also im Ausland verarbeitet, gemäss der Datenschutzerklärung von Buttondown, die Öffnungen und Klicks messen kann. Sie dient einzig diesem Versand; jeder Newsletter enthält einen Abmeldelink, und es genügt eine Anfrage an die untenstehende Adresse, um sie löschen zu lassen.',
@@ -690,7 +696,10 @@ const STRINGS = {
       'Per rifiutare questo cookie, bloccatelo nel vostro browser. Il sito funziona allo stesso modo anche senza.',
     'privacy.storage.title': 'Conservato sul vostro dispositivo',
     'privacy.storage.body':
-      'La vostra scelta del tema giorno / notte è salvata localmente dal browser. Non lascia mai il vostro dispositivo e non ci viene mai trasmessa.',
+      'La vostra scelta del tema giorno / notte è salvata localmente dal browser. I giochi vi conservano anche la partita in corso, il livello, il colore o la durata del match e il cubo del raddoppio, la lingua del gioco, il nome facoltativo della modalità con un amico e, nel backgammon, i segreti dei dadi di una stanza. Questi dati restano nel vostro browser e non ci vengono mai trasmessi. Solo la modalità con un amico, descritta qui sotto, ne invia una parte.',
+    'privacy.games.title': 'Giochi e modalità con un amico',
+    'privacy.games.body':
+      'Contro il robot, gli scacchi e il backgammon funzionano interamente nel vostro browser. La modalità «con un amico» passa per Firebase, un servizio di Google, e solo dopo un clic su questa modalità. Un accesso anonimo, senza account né indirizzo e-mail, crea allora un identificativo casuale conservato nel vostro browser. Le mosse — nel backgammon, con i segreti dei dadi rivelati dopo ogni lancio — e il vostro nome, se lo inserite, passano per una base Firebase Realtime Database ospitata in Europa (europe-west1), dove il vostro amico li legge. Dopo 24 ore non è più possibile entrare in una stanza. La stanza non viene cancellata automaticamente: resta nella base finché una nuova stanza non riprende il suo codice e la sovrascrive.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
       'Se vi iscrivete, il vostro indirizzo e-mail è affidato a Buttondown, un servizio ospitato negli Stati Uniti: viene quindi trattato all’estero, secondo l’informativa sulla privacy di Buttondown, che può misurare aperture e clic. Serve soltanto a questo invio; ogni newsletter contiene un link di disiscrizione, e una richiesta all’indirizzo qui sotto lo fa cancellare.',
@@ -956,7 +965,10 @@ const STRINGS = {
       'To refuse that cookie, block it in your browser. The site works exactly the same without it.',
     'privacy.storage.title': 'Kept on your device',
     'privacy.storage.body':
-      'Your day / night theme choice is stored locally by your browser. It never leaves your device and is never sent to us.',
+      'Your day / night theme choice is stored locally by your browser. The games also keep there the current game, the level, the colour or match length and the doubling cube, the game language, the optional first name for friend mode and, in backgammon, the dice secrets of a room. This data stays in your browser and is never sent to us. Only friend mode, described below, sends part of it.',
+    'privacy.games.title': 'Games and friend mode',
+    'privacy.games.body':
+      'Against the robot, chess and backgammon run entirely in your browser. The “play a friend” mode uses Firebase, a Google service, and only after you click on that mode. An anonymous sign-in, with no account and no email address, then creates a random ID kept in your browser. The moves (in backgammon, with the dice secrets revealed after each roll) and your first name, if you enter one, go through a Firebase Realtime Database hosted in Europe (europe-west1), where your friend reads them. After 24 hours, a room can no longer be joined. It is not deleted automatically: it stays in the database until a new room takes over its code and overwrites it.',
     'privacy.newsletter.title': 'Newsletter',
     'privacy.newsletter.body':
       'If you subscribe, your email address is entrusted to Buttondown, a service hosted in the United States: it is therefore processed abroad, under Buttondown’s privacy policy, and Buttondown may measure opens and clicks. It is used for this mailing only; every issue contains an unsubscribe link, and a request to the address below has it deleted.',
@@ -1255,7 +1267,10 @@ const STRINGS = {
       'Այդ cookie-ն մերժելու համար արգելափակեք այն ձեր դիտարկիչում։ Կայքն առանց դրա աշխատում է ճիշտ նույն կերպ։',
     'privacy.storage.title': 'Պահվում է ձեր սարքում',
     'privacy.storage.body':
-      'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Այն երբեք չի հեռանում ձեր սարքից և երբեք մեզ չի փոխանցվում։',
+      'Ցերեկ / գիշեր ձևավորման ձեր ընտրությունը պահվում է տեղում՝ ձեր դիտարկիչի կողմից։ Խաղերը նույնպես այնտեղ են պահում ընթացիկ պարտիան, մակարդակը, գույնը կամ մրցախաղի երկարությունը և կրկնապատկման խորանարդը, խաղի լեզուն, ընկերոջ հետ խաղի կամընտիր անունը, իսկ բեքգեմոնում՝ սենյակի զառերի գաղտնիքները։ Այս տվյալները մնում են ձեր դիտարկիչում և երբեք մեզ չեն փոխանցվում։ Դրանց մի մասն ուղարկվում է միայն ընկերոջ հետ խաղի ժամանակ, որը նկարագրված է ստորև։',
+    'privacy.games.title': 'Խաղեր և խաղ ընկերոջ հետ',
+    'privacy.games.body':
+      'Ռոբոտի դեմ շախմատը և բեքգեմոնը ամբողջությամբ աշխատում են ձեր դիտարկիչում։ «Ընկերոջ հետ» ռեժիմն օգտագործում է Firebase-ը՝ Google-ի ծառայությունը, և միայն այդ ռեժիմի վրա սեղմելուց հետո։ Այդ ժամանակ անանուն մուտքը, առանց հաշվի և առանց էլ. փոստի, ստեղծում է պատահական նույնացուցիչ, որը պահվում է ձեր դիտարկիչում։ Քայլերը (բեքգեմոնում՝ զառերի գաղտնիքների հետ, որոնք բացվում են յուրաքանչյուր նետումից հետո) և ձեր անունը, եթե այն գրեք, անցնում են Firebase Realtime Database տվյալների բազայով, որը գտնվում է Եվրոպայում (europe-west1)։ Այնտեղ դրանք կարդում է ձեր ընկերը։ 24 ժամ անց սենյակին այլևս հնարավոր չէ միանալ։ Սենյակն ինքնաբերաբար չի ջնջվում։ Այն մնում է բազայում, մինչև նոր սենյակը վերցնի նրա կոդը և գրի դրա վրա։',
     'privacy.newsletter.title': 'Տեղեկագիր',
     'privacy.newsletter.body':
       'Եթե բաժանորդագրվեք, ձեր էլ. փոստի հասցեն կվստահվի Buttondown-ին՝ Միացյալ Նահանգներում տեղակայված ծառայության, ուստի այն մշակվում է արտերկրում՝ Buttondown-ի գաղտնիության քաղաքականության համաձայն, և Buttondown-ը կարող է հաշվել նամակների բացումներն ու հղումների սեղմումները։ Այն ծառայում է միայն այդ առաքմանը. յուրաքանչյուր նամակ պարունակում է բաժանորդագրությունը դադարեցնելու հղում, իսկ ստորև նշված հասցեին ուղղված խնդրանքով այն կջնջվի։',
@@ -1546,7 +1561,10 @@ const STRINGS = {
       'Чтобы отказаться от этого cookie, заблокируйте его в браузере. Сайт работает точно так же и без него.',
     'privacy.storage.title': 'Хранится на вашем устройстве',
     'privacy.storage.body':
-      'Ваш выбор дневной / ночной темы сохраняется локально браузером. Он никогда не покидает ваше устройство и не передаётся нам.',
+      'Ваш выбор дневной / ночной темы сохраняется локально браузером. Игры тоже хранят там текущую партию, уровень, цвет или длину матча и куб удвоения, язык игры, необязательное имя для игры с другом и, в бэкгаммоне, секреты костей комнаты. Эти данные остаются в вашем браузере и никогда не передаются нам. Только игра с другом, описанная ниже, отправляет их часть.',
+    'privacy.games.title': 'Игры и игра с другом',
+    'privacy.games.body':
+      'Против робота шахматы и бэкгаммон работают полностью в вашем браузере. Режим «с другом» использует Firebase, сервис Google, и только после нажатия на этот режим. Тогда анонимный вход, без аккаунта и без электронной почты, создаёт случайный идентификатор, который хранится в вашем браузере. Ходы (в бэкгаммоне — вместе с секретами костей, которые раскрываются после каждого броска) и ваше имя, если вы его ввели, проходят через базу Firebase Realtime Database в Европе (europe-west1). Там их читает ваш друг. Через 24 часа к комнате больше нельзя присоединиться. Комната не удаляется автоматически: она остаётся в базе, пока новая комната не займёт её код и не перезапишет её.',
     'privacy.newsletter.title': 'Рассылка',
     'privacy.newsletter.body':
       'Если вы подпишетесь, ваш адрес электронной почты будет доверен Buttondown — сервису, размещённому в США: поэтому он обрабатывается за рубежом в соответствии с политикой конфиденциальности Buttondown, и Buttondown может учитывать открытия писем и переходы по ссылкам. Он используется только для этой рассылки; в каждом письме есть ссылка для отписки, а по запросу на указанный ниже адрес он будет удалён.',
@@ -1820,7 +1838,10 @@ const STRINGS = {
       'Para rechazar esa cookie, bloquéela en su navegador. El sitio funciona exactamente igual sin ella.',
     'privacy.storage.title': 'Guardado en su dispositivo',
     'privacy.storage.body':
-      'Su elección de tema día / noche se guarda localmente en su navegador. Nunca sale de su dispositivo y nunca se nos transmite.',
+      'Su elección de tema día / noche se guarda localmente en su navegador. Los juegos guardan allí también la partida en curso, el nivel, el color o la duración del match y el cubo de doblaje, el idioma del juego, el nombre opcional del modo con un amigo y, en el backgammon, los secretos de dados de una sala. Estos datos se quedan en su navegador y nunca se nos transmiten. Solo el modo con un amigo, descrito abajo, envía una parte.',
+    'privacy.games.title': 'Juegos y modo con un amigo',
+    'privacy.games.body':
+      'Contra el robot, el ajedrez y el backgammon funcionan por completo en su navegador. El modo «con un amigo» usa Firebase, un servicio de Google, y solo después de un clic en ese modo. Un inicio de sesión anónimo, sin cuenta ni correo electrónico, crea entonces un identificador aleatorio guardado en su navegador. Las jugadas (en el backgammon, con los secretos de dados revelados después de cada tirada) y su nombre, si lo escribe, pasan por una base Firebase Realtime Database alojada en Europa (europe-west1), donde su amigo las lee. Pasadas 24 horas, ya no se puede entrar en una sala. La sala no se borra automáticamente: queda en la base hasta que una nueva sala retoma su código y la sobrescribe.',
     'privacy.newsletter.title': 'Boletín semanal',
     'privacy.newsletter.body':
       'Si se suscribe, su dirección de correo electrónico se confía a Buttondown, un servicio alojado en Estados Unidos: se trata, por lo tanto, en el extranjero, conforme a la política de privacidad de Buttondown, que puede medir la apertura de los boletines y los clics. Solo se usa para ese envío; cada boletín incluye un enlace para cancelar la suscripción, y una solicitud a la dirección indicada abajo la hace borrar.',

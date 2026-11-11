@@ -845,6 +845,65 @@ figurer dans `STREAMS` ou `SANS_TITRE` du Worker, ce que
 `test/now-playing.test.mjs` vérifie. Le Worker doit ensuite être **redéployé**.
 L'hôte du Worker figure dans `connect-src`, sur les deux CSP de `firebase.json`.
 
+## Jeux
+
+La vue Jeux (`/jeux/`, `/games/`…) mène aux échecs et au backgammon de Nareg,
+servis sous `/play/echecs/` et `/play/backgammon/`. Ce ne sont pas des
+composants React : ce sont les jeux de `Games/` (et la couche de salles
+multijoueur de `lokolok/assets/net/`), **recopiés** dans `public/play/`.
+
+```bash
+npm run jeux:sync
+```
+
+À lancer **au poste, à la main**, après chaque changement d'un jeu dans
+`Games/` ou de la couche `net/` dans `lokolok` — jamais en CI (il refuse de
+tourner sous `CI`) : ce sont deux autres dépôts, absents du runner. Il les
+cherche à côté du dépôt **principal**, même lancé depuis un worktree ;
+`JEUX_GAMES_DIR` (le dossier qui contient `Chess/` et `Backgammon/`) et
+`JEUX_LOKOLOK_DIR` le redirigent. Il affiche à la fin les commits copiés :
+citez-les dans le message de commit de `public/play/`.
+
+La copie subit **quatre transformations, et rien d'autre**
+(`scripts/lib/jeux-sync.mjs`) :
+
+1. `/assets/net/` devient `/play/net/` — sous `/assets/`, ces fichiers sans
+   empreinte tomberaient sous le cache immuable d'un an du site ;
+2. la balise `/assets/stats.js` de lokolok est retirée ;
+3. le script en ligne des échecs part dans `js/appliquer.js` — la CSP
+   `script-src 'self'` le bloquerait sans le moindre signe ;
+4. `retour.js`, le bouton de retour vers la vue Jeux, est ajouté avant `</body>`.
+
+Un motif attendu absent **arrête** le sync plutôt que de publier une copie
+cassée. Deux fichiers ne sont jamais touchés : `public/play/vignettes/` (les
+images de la vue, une par langue) et `public/play/net/config.js`, la
+configuration Firebase **d'Arménie Info** — celle de lokolok vise un autre
+projet.
+
+### Le mode ami : configuration Firebase (une fois)
+
+Le mode « avec un ami » passe par une Realtime Database du projet Firebase
+`armenie-info`. Tant que `apiKey` est vide dans `public/play/net/config.js`, le
+bouton affiche « pas encore configuré » et le SDK Firebase n'est jamais
+téléchargé. Pour l'allumer, dans la console du projet `armenie-info` :
+
+1. Créer la **Realtime Database**, en `europe-west1` et en mode verrouillé.
+2. Activer l'authentification **Anonyme** (Authentication → Sign-in method).
+3. Ajouter une **application Web**, puis copier `apiKey`, `appId` et
+   `databaseURL` dans `public/play/net/config.js`.
+4. Si la clé d'API est restreinte par référent, y ajouter les deux domaines
+   (`armenieinfo.ch` et `armenianews.org`).
+5. Déployer les règles **à la main** — la CI garde son seul rôle Hosting
+   Admin :
+
+   ```bash
+   npx --yes firebase-tools@15.34.2 deploy --only database --project armenie-info
+   ```
+
+La politique de confidentialité (`privacy.games.*`, `src/i18n.jsx`, sept
+langues) décrit ce mode : elle nomme Firebase, la région et la durée de vie
+d'une salle. Toute évolution du mode ami doit la suivre.
+
 ## Notes & caveats
 
 - Scrapers depend on the source sites' current HTML; if a site redesigns, the

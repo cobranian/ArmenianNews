@@ -90,6 +90,7 @@ npm run hydration-check # après build + prerender : les 28 pages s'hydratent-el
 npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (réseau, jamais dans npm test ; le tableau de bord le relance 2×/jour depuis la CI, section 📻 Radios)
 npm run videos:add -- --lang de slug=id # inscrire des Shorts publiés dans culture-videos.json (LA trace de ce qui est sur YouTube ; métadonnées tirées de ../armenie-video/out/youtube)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
+npm run jeux:sync    # recopier les jeux de ../Games et la couche net de ../lokolok dans public/play/ (local, jamais en CI ; README « Jeux »)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
 ```
 
@@ -894,22 +895,6 @@ de production servent toujours depuis la racine de leur domaine.
   que des `notes`, jamais d'erreur, et la garde du français dans une brève de/it
   (`brief-script.mjs`) ne compte que les marqueurs en **minuscules** — une
   citation française en minuscules fait écarter son sujet (`✗ brief/de: alphabet`).
-- **Les `hreflang` d'une page de vue héritaient d'un générateur pensé pour les
-  accueils, et le bloc entier en aurait payé le prix.** `headFor` composait ses
-  alternates depuis `LANG_URL`, donc toujours vers les accueils : recopié tel
-  quel sur une page de vue, `/radio/` du .ch aurait déclaré comme équivalent
-  anglais **l'accueil** du .org, et non `/radio/` du .org. Google, plutôt que
-  d'arbitrer entre deux pages incompatibles, **ignore alors le bloc entier** —
-  silencieusement, sur toutes les pages, puisqu'un seul générateur les produit
-  toutes. `headFor` / `applyMeta` / `replaceMeta` (`scripts/lib/site-meta.mjs`)
-  prennent désormais `{ siteId, lang, view }` (`view` vaut `'home'` par défaut,
-  ce qui garde les appels existants valides) et composent chaque alternate avec
-  `urlFor(l, view)`, jamais `LANG_URL[l]` directement. `xDefaultFor(view)` suit
-  la même règle : sur `/radio` le `x-default` pointe le `/radio` anglais, pas
-  l'accueil anglais — un `x-default` qui changerait de page au milieu d'un
-  bloc d'alternates le rendrait incohérent. Gardé par `test/views.test.mjs` et
-  `test/site-meta.test.mjs`, dont le test « une page de vue ne cite jamais
-  l'accueil dans ses alternates » échoue précisément sur ce mode de panne.
 - **La garde `data-view` du prérendu est la jumelle de la garde de langue déjà
   en place.** `scripts/prerender.mjs` vérifiait déjà que
   `document.documentElement.lang` correspond à la langue attendue ; il vérifie
@@ -1070,6 +1055,15 @@ de production servent toujours depuis la racine de leur domaine.
   groupe) : renvoyez-la. (9) Une branche `culture/*` ouverte avant ce chantier
   n'a pas `scripts/culture-revise.mjs` : `/corrige` y échoue jusqu'au rebase.
   Le pourquoi : `docs/superpowers/specs/2026-10-16-articles-culture-design.md`.
+- **`public/play/` est une COPIE, jamais éditée à la main.** Les échecs et le
+  backgammon viennent de `Games/`, la couche de salles de `lokolok/assets/net/`,
+  recopiés par `npm run jeux:sync` (quatre transformations, README « Jeux ») :
+  une retouche faite ici disparaît au sync suivant — corrigez dans `Games/`,
+  puis resynchronisez. Deux exceptions que le sync ne touche jamais :
+  `vignettes/`, et `net/config.js`, qui vise le projet Firebase
+  **`armenie-info`** et non lokolok — le remplacer par celui de lokolok
+  enverrait les salles d'Arménie Info dans la base d'un autre site, sans
+  erreur. Le mode ami est décrit dans `privacy.games.*` : il doit suivre.
 - **Pièges de rendu vus en production** (titre d'étagère qui élargit la page,
   `scrollIntoView`, `visibility: hidden`, `loading="lazy"` avant `src`, cible
   tactile de 44px tenue par `pointer: coarse`, Ararat de la marque) :
