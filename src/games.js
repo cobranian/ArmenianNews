@@ -28,7 +28,8 @@ export const GAMES = [
       {
         // « Since the 2011–12 school year » (Wikipédia) ; « The plan took
         // effect beginning with the current academic year », article du
-        // 19 septembre 2011 (RFE/RL). D'où « depuis la rentrée 2011 ».
+        // 19 septembre 2011 (RFE/RL). D'où « depuis la rentrée 2011 ». Les deux
+        // sources parlent des petites classes : « école primaire », pas « l'école ».
         id: 'ecole-2011',
         sources: [
           'https://en.wikipedia.org/wiki/Chess_in_Armenia',
@@ -55,7 +56,7 @@ export const GAMES = [
         title: 'Échecs',
         intro: [
           {
-            text: "En Arménie, les échecs s'apprennent à l'école : depuis la rentrée 2011, ils y sont une matière obligatoire.",
+            text: "En Arménie, les échecs s'apprennent à l'école primaire : depuis la rentrée 2011, ils y sont une matière obligatoire.",
             facts: ['ecole-2011'],
           },
           {
@@ -79,7 +80,7 @@ export const GAMES = [
         title: 'Schach',
         intro: [
           {
-            text: 'In Armenien lernt man Schach in der Schule: Seit dem Schuljahr 2011 ist es dort Pflichtfach.',
+            text: 'In Armenien lernt man Schach in der Grundschule: Seit dem Schuljahr 2011 ist es dort Pflichtfach.',
             facts: ['ecole-2011'],
           },
           {
@@ -103,7 +104,7 @@ export const GAMES = [
         title: 'Scacchi',
         intro: [
           {
-            text: "In Armenia gli scacchi si imparano a scuola: dall'anno scolastico 2011 vi sono materia obbligatoria.",
+            text: "In Armenia gli scacchi si imparano alla scuola primaria: dall'anno scolastico 2011 vi sono materia obbligatoria.",
             facts: ['ecole-2011'],
           },
           {
@@ -127,7 +128,7 @@ export const GAMES = [
         title: 'Chess',
         intro: [
           {
-            text: 'In Armenia, chess is learned at school: since the 2011 school year, it has been a compulsory subject.',
+            text: 'In Armenia, chess is learned in primary school: since the 2011 school year, it has been a compulsory subject there.',
             facts: ['ecole-2011'],
           },
           {
@@ -151,7 +152,7 @@ export const GAMES = [
         title: 'Ajedrez',
         intro: [
           {
-            text: 'En Armenia, el ajedrez se aprende en la escuela: desde el curso 2011 es una asignatura obligatoria.',
+            text: 'En Armenia, el ajedrez se aprende en la escuela primaria: desde el curso 2011 es allí una asignatura obligatoria.',
             facts: ['ecole-2011'],
           },
           {
@@ -175,7 +176,7 @@ export const GAMES = [
         title: 'Շախմատ',
         intro: [
           {
-            text: 'Հայաստանում շախմատ սովորում են դպրոցում։ 2011 թվականից այն պարտադիր առարկա է։',
+            text: 'Հայաստանում շախմատ սովորում են տարրական դպրոցում։ 2011 թվականից այն պարտադիր առարկա է։',
             facts: ['ecole-2011'],
           },
           {
@@ -199,7 +200,7 @@ export const GAMES = [
         title: 'Шахматы',
         intro: [
           {
-            text: 'В Армении шахматам учат в школе: с 2011 года это обязательный предмет.',
+            text: 'В Армении шахматам учат в начальной школе: с 2011 года это там обязательный предмет.',
             facts: ['ecole-2011'],
           },
           {

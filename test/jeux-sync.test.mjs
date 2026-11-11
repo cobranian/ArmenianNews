@@ -199,6 +199,11 @@ test('la couche net est copiée, sans classement.js, avec SA config', () => {
   const config = readFileSync(join(PLAY, 'net', 'config.js'), 'utf-8')
   assert.ok(!config.includes('lokolok-com'))
   assert.ok(config.includes("projectId: 'armenie-info'"))
+  // databaseURL vide (premier temps) ou celle du projet armenie-info — jamais
+  // celle d'un autre projet, qui mettrait les parties chez le voisin.
+  const db = config.match(/databaseURL:\s*'([^']*)'/)
+  assert.ok(db, 'databaseURL absent de net/config.js')
+  assert.ok(db[1] === '' || db[1].includes('armenie-info'), `databaseURL inattendu : ${db[1]}`)
 })
 
 test('aucun fichier de src/ ne référence public/play ni /play/net', () => {

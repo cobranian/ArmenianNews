@@ -197,6 +197,12 @@ test('firebase.json redirige les slugs de/it vers leur vue et vers le .ch', () =
     'probe "https://armenieinfo.ch/de/events/" 301 "/de/veranstaltungen/"',
     'probe "https://armenianews.org/de" 301 "https://armenieinfo.ch/de/"',
     'probe "https://armenianews.org/it/eventi/" 301 "https://armenieinfo.ch/it/eventi/"',
+    'probe "https://armenieinfo.ch/jeux/" 200',
+    'probe "https://armenianews.org/games/" 200',
+    'probe "https://armenieinfo.ch/games/" 301 "/jeux/"',
+    'probe "https://armenianews.org/jeux/" 301 "/games/"',
+    'probe "https://armenianews.org/es/jeux/" 301 "/es/juegos/"',
+    'probe "https://armenieinfo.ch/play/echecs/" 200',
   ]) assert.ok(wf.includes(line), line)
 
   // Les deux blocs `headers` restent identiques (CSP comprise) : voir CLAUDE.md.

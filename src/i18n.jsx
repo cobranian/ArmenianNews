@@ -143,7 +143,7 @@ const STRINGS = {
     // sept langues.
     'privacy.title': 'Politique de confidentialité',
     'privacy.intro':
-      "Ce site est un instantané statique. Le lire ne demande rien : le lire, comme jouer contre le robot, se fait sans compte ni base de données. Il ne conserve rien qui vous identifie personnellement, sauf l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site. Seule exception : le mode ami des jeux, qui utilise un identifiant anonyme et, si vous le saisissez, votre prénom (voir « Jeux et mode ami » ci-dessous).",
+      "Ce site est un instantané statique : le lire, comme jouer contre le robot, ne demande ni compte ni base de données. Il ne conserve rien qui vous identifie personnellement, sauf l'adresse e-mail que vous choisiriez de donner pour la lettre, conservée par Buttondown et non par le site. Seule exception : le mode ami des jeux, qui utilise un identifiant anonyme et, si vous le saisissez, votre prénom (voir « Jeux et mode ami » ci-dessous).",
     'privacy.analytics.title': "Mesure d'audience",
     'privacy.analytics.body':
       "Nous utilisons Google Analytics et Cloudflare Web Analytics pour compter les visites et savoir quelles rubriques sont lues. Hors Espace économique européen et Royaume-Uni — en Suisse notamment —, Google Analytics dépose un cookie qui permet de reconnaître un visiteur d'une visite à l'autre. Depuis l'EEE et le Royaume-Uni, ce cookie n'est pas déposé : la mesure y est anonyme et sans cookie, comme l'exige le RGPD. Cloudflare Web Analytics ne dépose aucun cookie, où que vous soyez.",
@@ -432,7 +432,7 @@ const STRINGS = {
     'footer.sources': 'Quellen',
     'privacy.title': 'Datenschutzerklärung',
     'privacy.intro':
-      'Diese Website ist eine statische Momentaufnahme. Das Lesen verlangt nichts von Ihnen: Lesen und Spielen gegen den Roboter funktionieren ohne Konto und ohne Datenbank. Sie speichert nichts, was Sie persönlich identifiziert, ausser der E-Mail-Adresse, die Sie für den Newsletter angeben können; sie wird von Buttondown gespeichert, nicht von der Website. Einzige Ausnahme ist der Freundesmodus der Spiele, mit einer anonymen Kennung und, falls Sie ihn eingeben, Ihrem Vornamen (siehe «Spiele und Freundesmodus» unten).',
+      'Diese Website ist eine statische Momentaufnahme: Lesen und Spielen gegen den Roboter funktionieren ohne Konto und ohne Datenbank. Sie speichert nichts, was Sie persönlich identifiziert, ausser der E-Mail-Adresse, die Sie für den Newsletter angeben können; sie wird von Buttondown gespeichert, nicht von der Website. Einzige Ausnahme ist der Freundesmodus der Spiele, mit einer anonymen Kennung und, falls Sie ihn eingeben, Ihrem Vornamen (siehe «Spiele und Freundesmodus» unten).',
     'privacy.analytics.title': 'Reichweitenmessung',
     'privacy.analytics.body':
       'Wir verwenden Google Analytics und Cloudflare Web Analytics, um Besuche zu zählen und zu erfahren, welche Rubriken gelesen werden. Ausserhalb des Europäischen Wirtschaftsraums und des Vereinigten Königreichs – also auch in der Schweiz – setzt Google Analytics ein Cookie, das einen Besucher von einem Besuch zum nächsten wiedererkennt. Im EWR und im Vereinigten Königreich wird dieses Cookie nicht gesetzt: Die Messung erfolgt dort anonym und ohne Cookie, wie es die DSGVO verlangt. Cloudflare Web Analytics setzt keinerlei Cookie, wo immer Sie sich befinden.',
@@ -688,7 +688,7 @@ const STRINGS = {
     'footer.sources': 'Fonti',
     'privacy.title': 'Informativa sulla privacy',
     'privacy.intro':
-      'Questo sito è un’istantanea statica. Leggerlo non richiede nulla: leggerlo e giocare contro il robot non richiedono né account né database. Non conserva nulla che vi identifichi personalmente, salvo l’indirizzo e-mail che sceglieste di fornire per la newsletter, conservato da Buttondown e non dal sito. Unica eccezione: la modalità con un amico dei giochi, con un identificativo anonimo e, se lo inserite, il vostro nome (vedi «Giochi e modalità con un amico» qui sotto).',
+      'Questo sito è un’istantanea statica: leggerlo e giocare contro il robot non richiedono né account né database. Non conserva nulla che vi identifichi personalmente, salvo l’indirizzo e-mail che sceglieste di fornire per la newsletter, conservato da Buttondown e non dal sito. Unica eccezione: la modalità con un amico dei giochi, con un identificativo anonimo e, se lo inserite, il vostro nome (vedi «Giochi e modalità con un amico» qui sotto).',
     'privacy.analytics.title': 'Misurazione del pubblico',
     'privacy.analytics.body':
       'Utilizziamo Google Analytics e Cloudflare Web Analytics per contare le visite e sapere quali rubriche vengono lette. Al di fuori dello Spazio economico europeo e del Regno Unito, quindi anche in Svizzera, Google Analytics installa un cookie che permette di riconoscere un visitatore da una visita all’altra. Nel SEE e nel Regno Unito questo cookie non viene installato: la misurazione è anonima e senza cookie, come richiede il GDPR. Cloudflare Web Analytics non installa alcun cookie, ovunque vi troviate.',
@@ -957,7 +957,7 @@ const STRINGS = {
 
     'privacy.title': 'Privacy policy',
     'privacy.intro':
-      'This site is a static snapshot. Reading it asks nothing of you: reading it and playing against the robot need no account and no database. It keeps nothing that identifies you personally, except the email address you may choose to give for the newsletter, held by Buttondown, not by the site. The one exception is the games’ friend mode, which uses an anonymous ID and, if you enter it, your first name (see “Games and friend mode” below).',
+      'This site is a static snapshot: reading it and playing against the robot need no account and no database. It keeps nothing that identifies you personally, except the email address you may choose to give for the newsletter, held by Buttondown, not by the site. The one exception is the games’ friend mode, which uses an anonymous ID and, if you enter it, your first name (see “Games and friend mode” below).',
     'privacy.analytics.title': 'Audience measurement',
     'privacy.analytics.body':
       'We use Google Analytics and Cloudflare Web Analytics to count visits and see which sections are read. Outside the European Economic Area and the United Kingdom — Switzerland included — Google Analytics sets a cookie that lets it recognise a visitor from one visit to the next. From the EEA and the UK that cookie is not set: measurement there is anonymous and cookieless, as the GDPR requires. Cloudflare Web Analytics sets no cookie anywhere.',
@@ -1259,7 +1259,7 @@ const STRINGS = {
 
     'privacy.title': 'Գաղտնիության քաղաքականություն',
     'privacy.intro':
-      'Այս կայքը ստատիկ պատկեր է։ Ընթերցելու համար ձեզնից ոչինչ չի պահանջվում։ Ընթերցելը և ռոբոտի դեմ խաղալը չեն պահանջում ոչ հաշիվ, ոչ տվյալների բազա։ Կայքը չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի, բացի էլ. փոստի հասցեից, որը կարող եք տրամադրել տեղեկագրի համար։ Այն պահվում է Buttondown-ում, ոչ թե կայքում։ Միակ բացառությունը ընկերոջ հետ խաղն է, որն օգտագործում է անանուն նույնացուցիչ և ձեր անունը, եթե այն գրեք (տե՛ս «Խաղեր և խաղ ընկերոջ հետ» ստորև)։',
+      'Այս կայքը ստատիկ պատկեր է․ ընթերցելը և ռոբոտի դեմ խաղալը չեն պահանջում ոչ հաշիվ, ոչ տվյալների բազա։ Կայքը չի պահպանում որևէ բան, որ անձնապես ձեզ նույնականացնի, բացի էլ. փոստի հասցեից, որը կարող եք տրամադրել տեղեկագրի համար։ Այն պահվում է Buttondown-ում, ոչ թե կայքում։ Միակ բացառությունը ընկերոջ հետ խաղն է, որն օգտագործում է անանուն նույնացուցիչ և ձեր անունը, եթե այն գրեք (տե՛ս «Խաղեր և խաղ ընկերոջ հետ» ստորև)։',
     'privacy.analytics.title': 'Այցելությունների չափում',
     'privacy.analytics.body':
       'Մենք օգտագործում ենք Google Analytics և Cloudflare Web Analytics՝ այցելությունները հաշվելու և իմանալու, թե որ բաժիններն են կարդացվում։ Եվրոպական տնտեսական տարածքից և Միացյալ Թագավորությունից դուրս, այդ թվում՝ Շվեյցարիայում, Google Analytics-ը տեղադրում է cookie, որը թույլ է տալիս ճանաչել այցելուին մեկ այցից մյուսը։ ԵՏՏ-ից և Միացյալ Թագավորությունից այդ cookie-ն չի տեղադրվում. չափումն այնտեղ անանուն է և առանց cookie-ի, ինչպես պահանջում է GDPR-ը։ Cloudflare Web Analytics-ը ոչ մի տեղ cookie չի տեղադրում։',
@@ -1553,7 +1553,7 @@ const STRINGS = {
 
     'privacy.title': 'Политика конфиденциальности',
     'privacy.intro':
-      'Этот сайт — статический снимок. Для чтения от вас ничего не требуется. Для чтения и игры против робота не нужны ни учётная запись, ни база данных. Сайт не хранит ничего, что позволяло бы вас лично идентифицировать, кроме адреса электронной почты, который вы можете указать для рассылки; его хранит Buttondown, а не сайт. Единственное исключение — игра с другом: она использует анонимный идентификатор и ваше имя, если вы его ввели (см. «Игры и игра с другом» ниже).',
+      'Этот сайт — статический снимок: для чтения и игры против робота не нужны ни учётная запись, ни база данных. Сайт не хранит ничего, что позволяло бы вас лично идентифицировать, кроме адреса электронной почты, который вы можете указать для рассылки; его хранит Buttondown, а не сайт. Единственное исключение — игра с другом: она использует анонимный идентификатор и ваше имя, если вы его ввели (см. «Игры и игра с другом» ниже).',
     'privacy.analytics.title': 'Измерение аудитории',
     'privacy.analytics.body':
       'Мы используем Google Analytics и Cloudflare Web Analytics, чтобы считать посещения и понимать, какие разделы читают. За пределами Европейской экономической зоны и Великобритании, в том числе в Швейцарии, Google Analytics устанавливает cookie, позволяющий узнавать посетителя от визита к визиту. Из ЕЭЗ и Великобритании этот cookie не устанавливается: измерение там анонимное и без cookie, как того требует GDPR. Cloudflare Web Analytics не устанавливает cookie нигде.',
@@ -1830,7 +1830,7 @@ const STRINGS = {
 
     'privacy.title': 'Política de privacidad',
     'privacy.intro':
-      'Este sitio es una instantánea estática. Leerlo no le pide nada: leerlo y jugar contra el robot no requieren cuenta ni base de datos. No conserva nada que lo identifique personalmente, salvo la dirección de correo electrónico que usted decida dar para el boletín semanal, conservada por Buttondown y no por el sitio. La única excepción es el modo con un amigo de los juegos, con un identificador anónimo y, si lo escribe, su nombre (vea «Juegos y modo con un amigo» abajo).',
+      'Este sitio es una instantánea estática: leerlo y jugar contra el robot no requieren cuenta ni base de datos. No conserva nada que lo identifique personalmente, salvo la dirección de correo electrónico que usted decida dar para el boletín semanal, conservada por Buttondown y no por el sitio. La única excepción es el modo con un amigo de los juegos, con un identificador anónimo y, si lo escribe, su nombre (vea «Juegos y modo con un amigo» abajo).',
     'privacy.analytics.title': 'Medición de audiencia',
     'privacy.analytics.body':
       'Usamos Google Analytics y Cloudflare Web Analytics para contar las visitas y saber qué secciones se leen. Fuera del Espacio Económico Europeo y del Reino Unido —en Suiza, por ejemplo—, Google Analytics deposita una cookie que permite reconocer a un visitante de una visita a otra. Desde el EEE y el Reino Unido esa cookie no se deposita: la medición es allí anónima y sin cookies, como exige el RGPD. Cloudflare Web Analytics no deposita ninguna cookie, esté donde esté.',

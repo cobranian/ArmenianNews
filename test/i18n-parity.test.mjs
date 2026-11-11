@@ -32,6 +32,7 @@ const tables = {
   'VIEW_SEO.radio': VIEW_SEO.radio,
   'VIEW_SEO.agenda': VIEW_SEO.agenda,
   'VIEW_SEO.about': VIEW_SEO.about,
+  'VIEW_SEO.games': VIEW_SEO.games,
   BRIEF_STRINGS,
   CULTURE_STRINGS,
   RUBRIC_LABELS,

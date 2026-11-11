@@ -396,7 +396,7 @@ jobs:
       # slug jumeau de l'autre langue doit rediriger. Quelques essais espacés,
       # parce que le CDN met parfois une dizaine de secondes à servir la
       # nouvelle version.
-      - name: Sonder la production (404 francs, slugs jumeaux, brève, culture, de/it)
+      - name: Sonder la production (404 francs, slugs jumeaux, brève, culture, de/it, jeux)
         run: |
           # url, code attendu[, Location attendu tel que Firebase l'écrit —
           # relatif pour une destination relative (/agenda/), absolu sinon].
@@ -436,6 +436,14 @@ jobs:
           probe "https://armenianews.org/es/eventos/" 200 || fail=1
           probe "https://armenianews.org/es/events/" 301 "/es/eventos/" || fail=1
           probe "https://armenieinfo.ch/es/" 301 "https://armenianews.org/es/" || fail=1
+          # Jeux (2026-11-11) : la page des deux vitrines, ses slugs jumeaux, et
+          # un jeu copié sous /play/ (hors du bundle React).
+          probe "https://armenieinfo.ch/jeux/" 200 || fail=1
+          probe "https://armenianews.org/games/" 200 || fail=1
+          probe "https://armenieinfo.ch/games/" 301 "/jeux/" || fail=1
+          probe "https://armenianews.org/jeux/" 301 "/games/" || fail=1
+          probe "https://armenianews.org/es/jeux/" 301 "/es/juegos/" || fail=1
+          probe "https://armenieinfo.ch/play/echecs/" 200 || fail=1
           exit $fail
 
       # IndexNow, second temps : prévenir Bing des pages nouvelles ou changées

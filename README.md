@@ -893,8 +893,8 @@ téléchargé. Pour l'allumer, dans la console du projet `armenie-info` :
    `databaseURL` dans `public/play/net/config.js`.
 4. Si la clé d'API est restreinte par référent, y ajouter les deux domaines
    (`armenieinfo.ch` et `armenianews.org`).
-5. Déployer les règles **à la main** — la CI garde son seul rôle Hosting
-   Admin :
+5. *(second temps — après la tâche 8)* Déployer les règles **à la main** —
+   la CI garde son seul rôle Hosting Admin :
 
    ```bash
    npx --yes firebase-tools@15.34.2 deploy --only database --project armenie-info

@@ -380,8 +380,21 @@ flèche avec un `aria-label` traduit (« Retour à Arménie Info » et ses
   - `curl -sI https://armenieinfo.ch/jeux/` donne 200 ;
   - `curl -sI https://armenianews.org/hy/games/` donne 200 ;
   - `curl -sI https://armenieinfo.ch/play/echecs/` porte `x-robots-tag:
-    noindex` et `cache-control: no-cache` ;
+    noindex` et un `cache-control` acceptable (voir la note ci-dessous) ;
+  - `curl -sI https://armenieinfo.ch/play/net/config.js` et
+    `curl -sI https://armenieinfo.ch/play/echecs/js/main.js` portent
+    `cache-control: no-cache` ;
+  - `curl -sI https://armenianews.org/play/backgammon/` : mêmes en-têtes que
+    sur le .ch (`x-robots-tag: noindex`, `cache-control`, CSP) ;
+  - `curl -sI https://armenieinfo.ch/play/echecs/ | grep -i
+    content-security-policy` contient `https://www.gstatic.com` ;
   - `curl -sI https://armenieinfo.ch/games` donne un 301 vers `/jeux/`.
+
+  Note : pour une URL de répertoire ou en `.html`, `cache-control: no-cache`
+  **ou** `max-age=0, s-maxage=3600` sont acceptables — la priorité entre deux
+  règles d'en-têtes Firebase qui se recouvrent n'est pas documentée, et le CDN
+  est purgé à chaque déploiement. La sonde permanente de `hourly.yml` ne lit
+  que le code et le `Location` : elle ne contrôle pas ces en-têtes.
 
 ---
 
