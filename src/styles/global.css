@@ -3418,10 +3418,15 @@ html:lang(hy) .nav__brand {
    prolongent. Cercle de 44px pour TOUS les pointeurs (plancher tactile tenu
    sans passer par le bloc pointer: coarse). Trait abricot discret au repos,
    plein au survol : ce sont des invitations, pas des sources. */
+/* `flex-wrap` obligatoire : 7 pastilles de 44px + 6 écarts de 14px = 392px
+   incompressibles. Sans retour à la ligne, sous ~432px d'écran la dernière
+   (YouTube) dépasse à droite et le téléphone dézoome toute la page — une bande
+   vide à droite (11 nov. 2026). Le `overflow-x: hidden` du body ne l'empêche pas. */
 .footer__social {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
+  gap: 12px 14px;
   list-style: none;
   margin: 0 0 22px;
   padding: 0;
