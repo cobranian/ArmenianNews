@@ -19,8 +19,8 @@ const news = await json('news.json')
 const problems = [
   ...checkNews(news, now),
   ...checkClassify(news, await json('rubric-cache.json').catch(() => ({}))),
-  // Posé par le job (hourly.yml) depuis steps.screenshot.outcome.
-  ...checkSteps({ screenshot: process.env.SCREENSHOT_OUTCOME }),
+  // Posés par le job (hourly.yml) depuis steps.screenshot/purge.outcome.
+  ...checkSteps({ screenshot: process.env.SCREENSHOT_OUTCOME, purge: process.env.PURGE_OUTCOME }),
   ...checkBriefs(dates, now),
   ...checkAgenda(await json('agenda.json'), now),
   ...checkHarvest(await json('instagram.json'), now),

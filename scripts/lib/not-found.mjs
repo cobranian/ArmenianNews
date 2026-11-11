@@ -86,6 +86,7 @@ export function notFoundHtml(siteId) {
         [briefPath(p.lang), BRIEF_STRINGS[p.lang].title],
         [culturePath(p.lang), CULTURE_STRINGS[p.lang].title],
         [pathFor(p.lang, 'about'), VIEW_SEO.about[p.lang].title],
+        [pathFor(p.lang, 'games'), VIEW_SEO.games[p.lang].title],
       ]
         .map(([href, label]) => `<a href="${href}" hreflang="${p.lang}">${esc(label)}</a>`)
         .join('')

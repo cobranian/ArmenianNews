@@ -12,6 +12,7 @@
     "preview:org": "vite preview --outDir dist/org",
     "lint": "eslint .",
     "test": "node --test test/*.mjs",
+    "test:regles": "npx --yes firebase-tools@15.34.2 emulators:exec --only database --project demo-armenie-info \"node --test --test-concurrency=1 test/regles/*.test.js\"",
     "check": "node scripts/check-build.mjs",
     "culture:draft": "node --env-file-if-exists=.env scripts/culture-draft.mjs",
     "culture:translate": "node --env-file-if-exists=.env scripts/culture-translate.mjs",
@@ -32,7 +33,8 @@
     "fonts-sync": "node scripts/fonts-sync.mjs",
     "hydration-check": "node scripts/hydration-check.mjs",
     "videos:add": "node scripts/videos-add.mjs",
-    "reels:add": "node scripts/reels-add.mjs"
+    "reels:add": "node scripts/reels-add.mjs",
+    "jeux:sync": "node scripts/jeux-sync.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -16,7 +16,7 @@ const links = (txt) => [...txt.matchAll(/\]\((https:\/\/[^)]+)\)/g)].map((m) => 
 test('llms.txt du .ch nomme /de/ et /it/, leurs vues et leurs sections', () => {
   const t = llmsFor('ch', { briefs, culture })
   for (const l of ['de', 'it']) {
-    for (const v of ['home', 'radio', 'agenda', 'about']) assert.ok(links(t).includes(urlFor(l, v)), `${l}/${v}`)
+    for (const v of ['home', 'radio', 'agenda', 'games', 'about']) assert.ok(links(t).includes(urlFor(l, v)), `${l}/${v}`)
     assert.ok(links(t).includes(briefUrl(l)), `brève ${l}`)
     assert.ok(links(t).includes(cultureUrl(l)), `culture ${l}`)
     // L'article n'existe ni en de ni en it : il n'est pas listé sous ces langues.
@@ -28,7 +28,7 @@ test('llms.txt du .ch nomme /de/ et /it/, leurs vues et leurs sections', () => {
 test('llms.txt du .ch : marque, vues, brève datée, articles — sans l’anglais', () => {
   const t = llmsFor('ch', { briefs, culture })
   assert.ok(t.startsWith('# Arménie Info\n'))
-  for (const u of [urlFor('fr'), urlFor('fr', 'radio'), urlFor('fr', 'agenda'), urlFor('fr', 'about'),
+  for (const u of [urlFor('fr'), urlFor('fr', 'radio'), urlFor('fr', 'agenda'), urlFor('fr', 'games'), urlFor('fr', 'about'),
     briefUrl('fr'), briefUrl('fr', '2026-10-17'), cultureUrl('fr'), cultureUrl('fr', 'duduk')])
     assert.ok(links(t).includes(u), u)
   assert.ok(!t.includes('The duduk'))

@@ -58,6 +58,7 @@ export function Nav({ view = 'home' }) {
     [view === 'home' ? '#direct' : pathFor(lang, 'radio'), t('nav.radio')],
     [`${home}#actualites`, t('nav.news')],
     [view === 'home' ? '#agenda' : pathFor(lang, 'agenda'), t('nav.agenda')],
+    [pathFor(lang, 'games'), t('nav.games')],
     [briefPath(lang), BRIEF_STRINGS[lang].nav],
     [culturePath(lang), CULTURE_STRINGS[lang].nav],
     [`${home}#reseaux`, t('nav.social')],

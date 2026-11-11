@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Échecs — échiquier de bois</title>
+  <meta name="description" content="Échecs sur un échiquier d'érable et de noyer : pièces d'ivoire et d'ébène, contre un robot à quatre niveaux ou avec un ami à distance.">
+  <meta name="theme-color" content="#4A1D1C">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="fonts/polices.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js"></script>
+</head>
+<body>
+  <main id="page">
+    <section id="partie" aria-label="Partie" data-i18n-aria="aria.partie">
+      <div id="entete" data-rtl>
+        <p id="ligne">Toi (blancs) contre le robot · Moyen</p>
+        <p id="ligne-pseudo" hidden><label for="pseudo" data-i18n="tonPrenom">Ton prénom</label><input id="pseudo" type="text" maxlength="20" autocomplete="nickname" spellcheck="false"></p>
+      </div>
+
+      <!-- Mode ami avec pendule : celle de l'ami en haut, la mienne en bas. -->
+      <div id="pendule-haut" class="pendule" hidden role="timer" aria-label="Pendule de ton ami" data-i18n-aria="aria.penduleAmi"><span class="pendule-nom" data-rtl data-i18n="tonAmi">Ton ami</span><span class="pendule-temps">00:00</span></div>
+
+      <div id="echiquier" tabindex="-1" role="group" aria-label="Échiquier" data-i18n-aria="aria.echiquier">
+        <!-- Le SVG et les 64 boutons des cases sont construits par echiquier.js. -->
+      </div>
+
+      <div id="pendule-bas" class="pendule" hidden role="timer" aria-label="Ta pendule" data-i18n-aria="aria.taPendule"><span class="pendule-nom" data-rtl data-i18n="toi">Toi</span><span class="pendule-temps">00:00</span></div>
+
+      <p id="bandeau" data-rtl role="status" aria-live="polite"></p>
+
+      <div id="feuille">
+        <p class="entetes" aria-hidden="true"><span data-i18n="blancs">Blancs</span><span data-i18n="noirs">Noirs</span></p>
+        <ol id="coups" aria-label="Coups joués" data-i18n-aria="aria.coups" tabindex="-1"></ol>
+      </div>
+
+      <p id="commandes">
+        <button type="button" id="btn-annuler" class="plaque claire" disabled data-i18n="annulerCoup">Annuler</button>
+        <button type="button" id="btn-reprendre" class="plaque claire" hidden data-i18n="reprendre">Reprendre</button>
+        <button type="button" id="btn-nulle" class="plaque claire" hidden aria-label="Proposer la nulle" data-i18n-aria="aria.nulle" data-i18n="nulle">Nulle</button>
+        <button type="button" id="btn-accepter" class="plaque" hidden data-i18n="accepter">Accepter</button>
+        <button type="button" id="btn-refuser" class="plaque claire" hidden data-i18n="refuser">Refuser</button>
+        <button type="button" id="btn-abandonner" class="plaque" data-i18n="abandonner">Abandonner</button>
+        <button type="button" id="btn-menu" class="discret" data-i18n="menu">Menu</button>
+      </p>
+
+      <section id="ecran-fin" hidden aria-label="Fin de partie" data-i18n-aria="aria.fin">
+        <button type="button" id="btn-nouvelle" class="plaque" data-i18n="nouvelle">Nouvelle partie</button>
+        <button type="button" id="btn-fin-annuler" class="plaque claire" hidden data-i18n="annulerCoup">Annuler</button>
+        <button type="button" id="btn-fin-menu" class="discret" data-i18n="menu">Menu</button>
+      </section>
+    </section>
+
+    <section class="ecran plein" id="ecran-menu" aria-labelledby="menu-titre">
+      <div class="carte-menu" data-rtl>
+        <h1 id="menu-titre" data-i18n="nomJeu">Échecs</h1>
+        <div class="filet" aria-hidden="true"></div>
+        <button type="button" id="btn-robot" class="plaque grande" data-i18n="contreRobot">Contre le robot</button>
+        <button type="button" id="btn-ami" class="plaque grande" data-i18n="avecAmi">Avec un ami</button>
+      </div>
+    </section>
+
+    <section class="ecran plein" id="ecran-robot" hidden aria-labelledby="robot-titre">
+      <div class="carte-menu" data-rtl>
+        <h2 id="robot-titre" data-i18n="contreRobot">Contre le robot</h2>
+        <div class="filet" aria-hidden="true"></div>
+        <fieldset>
+          <legend data-i18n="niveau">Niveau</legend>
+          <label><input type="radio" name="niveau" value="facile"> <span data-i18n="niv.facile">Facile</span></label>
+          <label><input type="radio" name="niveau" value="intermediaire"> <span data-i18n="niv.intermediaire">Intermédiaire</span></label>
+          <label><input type="radio" name="niveau" value="moyen"> <span data-i18n="niv.moyen">Moyen</span></label>
+          <label><input type="radio" name="niveau" value="fort"> <span data-i18n="niv.fort">Fort</span></label>
+        </fieldset>
+        <fieldset>
+          <legend data-i18n="couleur">Couleur</legend>
+          <label><input type="radio" name="couleur" value="blancs"> <span data-i18n="blancs">Blancs</span></label>
+          <label><input type="radio" name="couleur" value="noirs"> <span data-i18n="noirs">Noirs</span></label>
+          <label><input type="radio" name="couleur" value="hasard"> <span data-i18n="auHasard">Au hasard</span></label>
+        </fieldset>
+        <button type="button" id="btn-jouer" class="plaque grande" data-i18n="jouer">Jouer</button>
+        <button type="button" id="btn-robot-retour" class="discret" data-i18n="retour">Retour</button>
+      </div>
+    </section>
+
+    <section class="ecran plein" id="ecran-ami" hidden aria-labelledby="ami-titre">
+      <div class="carte-menu" data-rtl>
+        <h2 id="ami-titre" data-i18n="avecAmi">Avec un ami</h2>
+        <div class="filet" aria-hidden="true"></div>
+        <fieldset class="cadences">
+          <legend data-i18n="pendule">Pendule</legend>
+          <label><input type="radio" name="cadence" value="0"> <span data-i18n="cad.0">Sans pendule</span></label>
+          <label><input type="radio" name="cadence" value="60"> <span data-i18n="cad.60">Bullet 1 min</span></label>
+          <label><input type="radio" name="cadence" value="180"> <span data-i18n="cad.180">Blitz 3 min</span></label>
+          <label><input type="radio" name="cadence" value="300"> <span data-i18n="cad.300">Blitz 5 min</span></label>
+          <label><input type="radio" name="cadence" value="600"> <span data-i18n="cad.600">Rapide 10 min</span></label>
+          <label><input type="radio" name="cadence" value="1800"> <span data-i18n="cad.1800">Rapide 30 min</span></label>
+        </fieldset>
+        <p class="consigne" data-i18n="consigneCadence">Temps par joueur, sans ajout. Chaque pendule part au premier coup de son joueur.</p>
+        <button type="button" id="btn-creer" class="plaque grande" data-i18n="creerSalle">Créer la salle</button>
+        <button type="button" id="btn-ami-retour" class="discret" data-i18n="retour">Retour</button>
+      </div>
+    </section>
+
+    <section class="ecran plein" id="ecran-invite" hidden aria-labelledby="invite-titre">
+      <div class="carte-menu" data-rtl>
+        <h2 id="invite-titre" data-i18n="inviteTitre">Invite ton ami</h2>
+        <p class="consigne" data-i18n="inviteConsigne">Envoie ce lien à ton ami, ou montre-lui le QR code.</p>
+        <p id="invite-cadence" class="consigne"></p>
+        <div id="qr" role="img" aria-label="QR code du lien d'invitation" data-i18n-aria="aria.qr"></div>
+        <p class="ligne-lien"><input id="lien" type="text" readonly aria-label="Lien d'invitation" data-i18n-aria="aria.lien" dir="ltr"><button type="button" id="copier" class="plaque claire" data-i18n="copierLien">Copier le lien</button></p>
+        <button type="button" id="invite-annuler" class="discret" data-i18n="annuler">Annuler</button>
+      </div>
+    </section>
+
+    <section class="ecran plein" id="ecran-attente" hidden>
+      <div class="carte-menu" data-rtl>
+        <p id="attente-statut" role="status" aria-live="polite"></p>
+        <button type="button" id="attente-retour" class="plaque" data-i18n="menu">Menu</button>
+      </div>
+    </section>
+
+    <section class="ecran voile" id="ecran-promo" hidden role="dialog" aria-modal="true" aria-labelledby="promo-titre">
+      <div class="cartouche" data-rtl>
+        <p id="promo-titre" data-i18n="promoTitre">Promotion du pion</p>
+        <p class="boutons promo" id="promo-choix">
+          <button type="button" class="plaque piece-promo" data-promo="q"><span data-i18n="promo.q">Dame</span></button>
+          <button type="button" class="plaque piece-promo" data-promo="r"><span data-i18n="promo.r">Tour</span></button>
+          <button type="button" class="plaque piece-promo" data-promo="b"><span data-i18n="promo.b">Fou</span></button>
+          <button type="button" class="plaque piece-promo" data-promo="n"><span data-i18n="promo.n">Cavalier</span></button>
+        </p>
+        <p class="boutons">
+          <button type="button" id="btn-promo-annuler" class="discret" data-i18n="annuler">Annuler</button>
+        </p>
+      </div>
+    </section>
+
+    <section class="ecran voile" id="ecran-abandon" hidden role="dialog" aria-modal="true" aria-labelledby="abandon-texte">
+      <div class="cartouche" data-rtl>
+        <p id="abandon-texte" data-i18n="abandonQuestion">Abandonner la partie ?</p>
+        <p class="boutons">
+          <button type="button" id="btn-oui" class="plaque" data-i18n="oui">Oui</button>
+          <button type="button" id="btn-non" class="plaque claire" data-i18n="non">Non</button>
+        </p>
+      </div>
+    </section>
+  </main>
+  <script src="js/appliquer.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script src="/play/retour.js" defer></script>
+</body>
+</html>

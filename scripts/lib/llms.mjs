@@ -28,7 +28,7 @@ const line = (title, url, description) => `- [${title}](${url})${description ? `
 
 function pagesFor(lang, briefs) {
   const out = [line(SEO[lang].tagline, urlFor(lang, 'home'), SEO[lang].description)]
-  for (const view of ['radio', 'agenda', 'about']) {
+  for (const view of ['radio', 'agenda', 'games', 'about']) {
     const v = VIEW_SEO[view]?.[lang]
     if (v) out.push(line(v.title, urlFor(lang, view), v.description))
   }

@@ -396,11 +396,11 @@ test('les hreflang sont reciproques PAR VUE', () => {
   }
 })
 
-// Le compte de ce chantier : sept langues × quatre vues. Chaque page porte
+// Le compte de ce chantier : sept langues × cinq vues. Chaque page porte
 // ALL_LANGS.length + 1 alternates (x-default compris) et se cite elle-même.
-test('vingt-huit pages, chacune se citant elle-même dans ses alternates', () => {
+test('trente-cinq pages, chacune se citant elle-même dans ses alternates', () => {
   const pages = ALL_LANGS.flatMap((lang) => ALL_VIEWS.map((view) => ({ lang, view })))
-  assert.equal(pages.length, 28)
+  assert.equal(pages.length, 35)
   assert.equal(X_DEFAULT, LANG_URL.en)
   for (const { lang, view } of pages) {
     const head = headFor({ siteId: siteOf(lang), lang, view })

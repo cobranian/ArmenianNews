@@ -1,4 +1,7 @@
 {
+  "database": {
+    "rules": "database.rules.json"
+  },
   "hosting": [
     {
       "public": "dist/ch",
@@ -21,6 +24,21 @@
         {
           "regex": "^/it/events/?$",
           "destination": "/it/eventi/",
+          "type": 301
+        },
+        {
+          "regex": "^/games/?$",
+          "destination": "/jeux/",
+          "type": 301
+        },
+        {
+          "regex": "^/de/games/?$",
+          "destination": "/de/spiele/",
+          "type": 301
+        },
+        {
+          "regex": "^/it/games/?$",
+          "destination": "/it/giochi/",
           "type": 301
         },
         {
@@ -60,7 +78,7 @@
             },
             {
               "key": "Content-Security-Policy",
-              "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; form-action 'self' https://buttondown.com; script-src 'self' https://static.cloudflareinsights.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://eu1.stream4cast.com https://eu.stream4cast.com https://icecast.worldweb.services https://s8.myradiostream.com:15554 https://radio-mariam-proxy.cobranian.workers.dev https://radio-yeraz-proxy.cobranian.workers.dev https://vovan.s3ming.com https://am.radioaurora.am https://cast5.asurahosting.com https://stream.votreradiosurlenet.eu https://stric6.streamakaci.com; connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://radio-now-playing.cobranian.workers.dev; upgrade-insecure-requests"
+              "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; form-action 'self' https://buttondown.com; script-src 'self' https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://eu1.stream4cast.com https://eu.stream4cast.com https://icecast.worldweb.services https://s8.myradiostream.com:15554 https://radio-mariam-proxy.cobranian.workers.dev https://radio-yeraz-proxy.cobranian.workers.dev https://vovan.s3ming.com https://am.radioaurora.am https://cast5.asurahosting.com https://stream.votreradiosurlenet.eu https://stric6.streamakaci.com; connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://radio-now-playing.cobranian.workers.dev https://*.firebasedatabase.app wss://*.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; upgrade-insecure-requests"
             }
           ]
         },
@@ -90,6 +108,19 @@
               "value": "public, max-age=31536000, immutable"
             }
           ]
+        },
+        {
+          "source": "play/**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
         }
       ],
       "site": "armenie-info"
@@ -110,6 +141,16 @@
         {
           "regex": "^/es/(?:events|agenda)/?$",
           "destination": "/es/eventos/",
+          "type": 301
+        },
+        {
+          "regex": "^/jeux/?$",
+          "destination": "/games/",
+          "type": 301
+        },
+        {
+          "regex": "^/es/(?:games|jeux)/?$",
+          "destination": "/es/juegos/",
           "type": 301
         },
         {
@@ -154,7 +195,7 @@
             },
             {
               "key": "Content-Security-Policy",
-              "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; form-action 'self' https://buttondown.com; script-src 'self' https://static.cloudflareinsights.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://eu1.stream4cast.com https://eu.stream4cast.com https://icecast.worldweb.services https://s8.myradiostream.com:15554 https://radio-mariam-proxy.cobranian.workers.dev https://radio-yeraz-proxy.cobranian.workers.dev https://vovan.s3ming.com https://am.radioaurora.am https://cast5.asurahosting.com https://stream.votreradiosurlenet.eu https://stric6.streamakaci.com; connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://radio-now-playing.cobranian.workers.dev; upgrade-insecure-requests"
+              "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; form-action 'self' https://buttondown.com; script-src 'self' https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://eu1.stream4cast.com https://eu.stream4cast.com https://icecast.worldweb.services https://s8.myradiostream.com:15554 https://radio-mariam-proxy.cobranian.workers.dev https://radio-yeraz-proxy.cobranian.workers.dev https://vovan.s3ming.com https://am.radioaurora.am https://cast5.asurahosting.com https://stream.votreradiosurlenet.eu https://stric6.streamakaci.com; connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://radio-now-playing.cobranian.workers.dev https://*.firebasedatabase.app wss://*.firebasedatabase.app https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; upgrade-insecure-requests"
             }
           ]
         },
@@ -182,6 +223,19 @@
             {
               "key": "Cache-Control",
               "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "play/**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
             }
           ]
         }

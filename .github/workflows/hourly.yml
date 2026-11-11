@@ -140,6 +140,23 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: npm run screenshot
 
+      # Les salles du mode ami s'effacent d'elles-mêmes (décision de Nareg,
+      # 11 nov. 2026) : celles de plus de 24 h, et celles sans creeLe, avec le
+      # compte de service de la CI — qui doit porter le rôle « Firebase
+      # Realtime Database Admin » sur armenie-info (README « Jeux »). Sans lui,
+      # rien ne casse : « ✗ purge » au log, et une ligne dans l'issue
+      # [sources-down] — c'est pour elle que la purge passe AVANT la santé,
+      # qui lit steps.purge.outcome. continue-on-error : un nettoyage manqué
+      # ne retient jamais le déploiement. Le secret n'est jamais affiché.
+      - name: Effacer les salles de jeu de plus de 24 h
+        id: purge
+        if: github.event_name != 'push'
+        continue-on-error: true
+        timeout-minutes: 5
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO }}
+        run: node scripts/salles-purge.mjs
+
       # Ce que le backfill cache : une source figée (Armenpress treize jours,
       # Courrier onze, septembre 2026 — tous les runs « success »), une brève
       # absente, un agenda vide. Même mécanique que l'alerte de prérendu plus
@@ -156,6 +173,7 @@ jobs:
         env:
           # outcome, pas conclusion : l'étape est en continue-on-error.
           SCREENSHOT_OUTCOME: ${{ steps.screenshot.outcome }}
+          PURGE_OUTCOME: ${{ steps.purge.outcome }}
         run: node scripts/health.mjs --out "$RUNNER_TEMP/sante.md"
 
       - name: Alerter ou refermer — sources figées
@@ -323,10 +341,18 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         env:
-          # Dedicated deploy identity (github-action-*), Firebase Hosting Admin
-          # and nothing else. The old secret held the firebase-adminsdk key,
-          # which could also bypass database security rules and mint tokens for
-          # other service accounts — far more than publishing a static site needs.
+          # Dedicated deploy identity (github-action-*). The old secret held the
+          # firebase-adminsdk key, which could also bypass database security
+          # rules and mint tokens for other service accounts — far more than
+          # publishing a static site needs. Rôles aujourd'hui : Firebase Hosting
+          # Admin (les deux projets, ci-dessous) ET, depuis le 11 nov. 2026,
+          # « Firebase Realtime Database Admin » sur armenie-info, pour la purge
+          # des salles (étape « Effacer les salles de jeu »). Ce second rôle
+          # lit et écrit TOUTE la Realtime Database en contournant ses règles :
+          # une fuite de la clé expose aussi les salles du mode ami. Compromis
+          # assumé, comme le rôle croisé : une seule clé à entretenir, au prix
+          # d'une portée plus large ; une seconde clé réservée à la purge la
+          # cloisonnerait. Toujours sans création de jetons (pas d'adminsdk).
           #
           # UN SEUL secret pour DEUX projets, et ce n'est pas un oubli : ce
           # compte de service appartient à `armenie-info` et s'est vu accorder
@@ -396,7 +422,7 @@ jobs:
       # slug jumeau de l'autre langue doit rediriger. Quelques essais espacés,
       # parce que le CDN met parfois une dizaine de secondes à servir la
       # nouvelle version.
-      - name: Sonder la production (404 francs, slugs jumeaux, brève, culture, de/it)
+      - name: Sonder la production (404 francs, slugs jumeaux, brève, culture, de/it, jeux)
         run: |
           # url, code attendu[, Location attendu tel que Firebase l'écrit —
           # relatif pour une destination relative (/agenda/), absolu sinon].
@@ -436,6 +462,14 @@ jobs:
           probe "https://armenianews.org/es/eventos/" 200 || fail=1
           probe "https://armenianews.org/es/events/" 301 "/es/eventos/" || fail=1
           probe "https://armenieinfo.ch/es/" 301 "https://armenianews.org/es/" || fail=1
+          # Jeux (2026-11-11) : la page des deux vitrines, ses slugs jumeaux, et
+          # un jeu copié sous /play/ (hors du bundle React).
+          probe "https://armenieinfo.ch/jeux/" 200 || fail=1
+          probe "https://armenianews.org/games/" 200 || fail=1
+          probe "https://armenieinfo.ch/games/" 301 "/jeux/" || fail=1
+          probe "https://armenianews.org/jeux/" 301 "/games/" || fail=1
+          probe "https://armenianews.org/es/jeux/" 301 "/es/juegos/" || fail=1
+          probe "https://armenieinfo.ch/play/echecs/" 200 || fail=1
           exit $fail
 
       # IndexNow, second temps : prévenir Bing des pages nouvelles ou changées

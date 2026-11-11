@@ -9,8 +9,9 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 // before any module loads. One flat config per world, narrowest last.
 export default [
   // .cache holds the logged-in Chrome profiles the manual fb/ig scrapes drive —
-  // someone else's extension code, not ours.
-  { ignores: ['dist/**', 'src/data/**', '.firebase/**', '.cache/**'] },
+  // someone else's extension code, not ours. public/play holds the games that
+  // npm run jeux:sync copies from two other repos — vendored, linted there.
+  { ignores: ['dist/**', 'src/data/**', '.firebase/**', '.cache/**', 'public/play/**'] },
 
   // The app: browser + React.
   {
@@ -56,6 +57,25 @@ export default [
       globals: { ...globals.node, ...globals.browser },
     },
     rules: js.configs.recommended.rules,
+  },
+
+  // The RTDB rules tests (test/regles/, run on the Firebase emulator by
+  // npm run test:regles, never by npm test): copied from lokolok, CommonJS
+  // (their own package.json says so). salle.js runs inside them, so the few
+  // page globals it touches (location, history) are stubbed there.
+  {
+    files: ['test/regles/**/*.js'],
+    ...js.configs.recommended,
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'commonjs',
+      globals: globals.node,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      // ({ provisoire, ...r }) => r : drop a key by destructuring, kept as in lokolok.
+      'no-unused-vars': ['error', { ignoreRestSiblings: true }],
+    },
   },
 
   // theme-init.js and ga-init.js run from plain <script> tags (not the bundle):

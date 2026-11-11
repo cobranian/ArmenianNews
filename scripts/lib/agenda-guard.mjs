@@ -71,7 +71,7 @@ export function agendaGuardChecks(view, html, { agendaAttendu, agendaAVenir }) {
   // cause, et il oblige à trancher les deux états plutôt qu'à en hériter un.
   // Les vues SANS agenda : ni graphe du plugin, ni Event d'aucune sorte. Une
   // vue nouvelle doit être classée ici explicitement — le repli est l'échec.
-  const SANS_AGENDA = ['radio', 'about']
+  const SANS_AGENDA = ['radio', 'about', 'games']
   if (!['home', 'agenda', ...SANS_AGENDA].includes(view)) {
     return [[`vue « ${view} » : son état d'agenda n'est pas décidé ici`, false]]
   }

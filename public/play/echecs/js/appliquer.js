@@ -1,0 +1,1 @@
+LokoI18n.appliquer();

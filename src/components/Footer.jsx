@@ -43,6 +43,7 @@ export function Footer() {
     [briefPath(lang), BRIEF_STRINGS[lang].title],
     [culturePath(lang), CULTURE_STRINGS[lang].title],
     [pathFor(lang, 'about'), VIEW_SEO.about[lang].title],
+    [pathFor(lang, 'games'), VIEW_SEO.games[lang].title],
     [feedPath(lang), t('footer.rss')],
   ]
   // Une lettre par langue (sites.config.js, `newsletter.lists`) : le
@@ -142,6 +143,9 @@ export function Footer() {
 
             <h3>{t('privacy.storage.title')}</h3>
             <p>{t('privacy.storage.body')}</p>
+
+            <h3>{t('privacy.games.title')}</h3>
+            <p>{t('privacy.games.body')}</p>
 
             <h3>{t('privacy.newsletter.title')}</h3>
             <p>{t('privacy.newsletter.body')}</p>

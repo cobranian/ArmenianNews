@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-11",
+  "lang": "es",
+  "generatedAt": "2026-11-11T03:29:51.243Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca la reunión entre Nikol Pashinyan y Emmanuel Macron en París, el respaldo iraní al gobierno armenio y al proyecto 'Encrucijada de la Paz', y la denuncia opositora por la muerte en prisión de Arsen Gevorgyan. También sobresalen avances en infraestructura energética con Georgia, negociaciones con el grupo MSC y actividades culturales en Ereván.",
+  "topics": [
+    {
+      "title": "Reunión Pashinyan-Macron en París",
+      "text": "Nikol Pashinyan y Emmanuel Macron se reunieron en el Palacio del Elíseo para consolidar la alianza estratégica entre Armenia y Francia y analizar la asociación bilateral. La visita incluyó la participación del primer ministro armenio en la IX Conferencia de Paz de París, donde impulsó la cooperación con la Unión Europea contra amenazas híbridas.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-amenazas-hibridas-conferencia-paz-union-europea/",
+          "title": "Nikol Pashinyan impulsa la cooperación con la Unión Europea contra las amenazas híbridas en la IX Conferencia de Paz de París"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-macron-alianza-estrategica-armenia-francia/",
+          "title": "Nikol Pashinyan y Emmanuel Macron consolidan la alianza estratégica entre Armenia y Francia en el Palacio del Elíseo"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/nikol-pashinyan-y-emmanuel-macron-se-reunieron-en-paris-para-analizar-la-asociacion-estrategica-entre-armenia-y-francia/",
+          "title": "Nikol Pashinyan y Emmanuel Macron se reunieron en París para analizar la asociación estratégica entre Armenia y Francia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265292",
+          "title": "Pashinyan y Macron se reúnen en el Palacio del Elíseo"
+        }
+      ]
+    },
+    {
+      "title": "Irán reafirma su respaldo a Armenia",
+      "text": "Durante la 19.ª Comisión Intergubernamental celebrada en Ereván, Irán reafirmó su apoyo al gobierno de Nikol Pashinyan y al proyecto 'Encrucijada de la Paz'. La reunión bilateral subraya el acercamiento diplomático entre ambos países en medio de tensiones regionales.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/iran-respaldo-pashinyan-comision-intergubernamental/",
+          "title": "Irán reafirma su respaldo al gobierno de Nikol Pashinyan y al proyecto Encrucijada de la Paz en la 19.ª Comisión Intergubernamental en Ereván"
+        }
+      ]
+    },
+    {
+      "title": "Muerte en prisión de Arsen Gevorgyan y denuncias opositoras",
+      "text": "El candidato opositor Arsen Gevorgyan falleció tras 20 días detenido, lo que la oposición atribuye a una persecución política autoritaria del gobierno de Pashinyan. Las fuerzas opositoras responsabilizan directamente al ejecutivo por lo ocurrido y denuncian un deterioro del estado de derecho.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/la-oposicion-armenia-responsabilizo-al-gobierno-de-nikol-pashinyan-por-la-muerte-en-prision-de-arsen-gevorgyan-y-denuncio-persecucion-politica/",
+          "title": "La oposición armenia responsabilizó al gobierno de Nikol Pashinyan por la muerte en prisión de Arsen Gevorgyan y denunció persecución política"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/el-candidato-opositor-arsen-gevorgyan-fallecio-en-armenia-tras-20-dias-detenido-por-la-persecucion-autoritaria-de-nikol-pashinyan/",
+          "title": "El candidato opositor Arsen Gevorgyan falleció en Armenia tras 20 días detenido por la persecución autoritaria de Nikol Pashinyan"
+        }
+      ]
+    },
+    {
+      "title": "Proyecto de línea eléctrica de alta tensión con Georgia",
+      "text": "La construcción de la línea eléctrica de alta tensión entre Armenia y Georgia está programada para iniciar en 2027. El proyecto forma parte de los esfuerzos para fortalecer la infraestructura energética regional y la integración de redes.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/linea-electrica-alta-tension-armenia-georgia-2027/",
+          "title": "La construcción de la línea eléctrica de alta tensión entre Armenia y Georgia iniciará en 2027"
+        }
+      ]
+    },
+    {
+      "title": "Negociaciones con MSC para alianza logística",
+      "text": "Armenia negocia una alianza estratégica con el gigante de la logística MSC durante encuentros en Ginebra. La eventual asociación buscaría potenciar las capacidades de transporte y comercio exterior del país.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-negocia-alianza-logistica-msc-ginebra/",
+          "title": "Armenia negocia una alianza estratégica con el gigante de la logística MSC en Ginebra"
+        }
+      ]
+    },
+    {
+      "title": "Actividades culturales en Ereván",
+      "text": "Artistas de Armenia y Turquía inauguraron la exposición colectiva NORARALIK en Ereván, mientras la Mezquita Azul acogió un homenaje al compositor Loris Chknavorian y la sala Charents fue bautizada en honor al poeta Yeghishe Charents. La soprano Asmik Grigorian se presentará en el Teatro Colón de Buenos Aires el 8 de diciembre.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/la-soprano-asmik-grigorian-se-presentara-en-el-teatro-colon-8-12/",
+          "title": "La soprano Asmik Grigorian se presentará en el Teatro Colón – 8/12"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/artistas-armenia-turquia-exposicion-noraralik/",
+          "title": "Artistas de Armenia y Turquía se reúnen en Ereván para inaugurar la exposición colectiva NORARALIK"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/bautizan-sala-charents-mezquita-azul-erevan/",
+          "title": "Bautizan la Sala Charents en la Mezquita Azul de Ereván en homenaje al célebre poeta armenio"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/mezquita-azul-erevan-homenaje-compositor-loris-chknavorian/",
+          "title": "La Mezquita Azul de Ereván acoge una velada de homenaje al compositor iraní-armenio Loris Chknavorian"
+        }
+      ]
+    },
+    {
+      "title": "Turquía finaliza preparativos para apertura de pasos fronterizos",
+      "text": "Turquía completó los preparativos para la apertura de los pasos fronterizos con Armenia, según informó Armenpress. El avance podría facilitar el tránsito de personas y mercancías entre ambos países, aún sin relaciones diplomáticas formales.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265294",
+          "title": "Turquía finalizó los preparativos para la apertura de los pasos fronterizos con Armenia"
+        }
+      ]
+    }
+  ]
+}
