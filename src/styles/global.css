@@ -562,14 +562,19 @@ html:lang(hy) {
    pastille ES (31 oct. 2026) a pris au sélecteur juste assez pour que les six
    liens manquent de 3px (fr) à 12px (de, « Social Media »). Le dernier lien
    partait au second rang à TOUTES les largeurs de bureau, 1600px compris
-   (mesuré le 1er nov. 2026). */
+   (mesuré le 1er nov. 2026).
+   Septième lien (Jeux, 11 nov. 2026) : le dernier lien repartait au second
+   rang à toutes les largeurs de bureau, dans six langues sur sept. Écart fixé
+   à 14px et chasse des liens ramenée de 0.16em à 0.12em : un rang à 1240px
+   et au-delà, avec 24px (de) à 148px (en) de marge — mesuré par langue. Entre
+   960 et ~1200px, deux rangs, comme avant. */
 .nav__links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-width: 0;
-  gap: 2px clamp(12px, 2.6vw, 26px);
+  gap: 2px 14px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -580,9 +585,14 @@ html:lang(hy) {
    pages du .org. Un écart resserré pour l'arménien seul rend la ligne d'avant
    (mesuré : 21px de marge à 1400), sans toucher en ni ru. La pastille ES et
    le lien Réseaux ont repris cette marge : il manquait 18px à 22px d'écart,
-   d'où 16px (12px de marge, mesuré le 1er nov. 2026). */
+   d'où 16px (12px de marge, mesuré le 1er nov. 2026). Le lien Jeux (11 nov.)
+   l'a reprise à son tour : 12px d'écart et une chasse de 0.06em, 26px de
+   marge à 1240px (0.08em et 14px n'en laissaient que 2). */
 html:lang(hy) .nav__links {
-  column-gap: clamp(12px, 1.6vw, 16px);
+  column-gap: 12px;
+}
+html:lang(hy) .nav__links a {
+  letter-spacing: 0.06em;
 }
 .nav__links a {
   position: relative;
@@ -590,7 +600,7 @@ html:lang(hy) .nav__links {
   font-family: var(--font-mono);
   font-size-adjust: var(--fsa-util);
   font-size: 0.74rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
   padding: 6px 1px;
@@ -2911,6 +2921,155 @@ html:lang(hy) .nav__brand {
   color: var(--text-soft);
   margin: 0;
   text-align: right;
+}
+
+/* ============================================================
+   Vue /jeux — un bloc par jeu : la vignette, l'angle arménien, « Jouer »,
+   les règles repliées. Le style du site, pas celui des jeux (servis à part
+   sous /play/). Les blocs sont séparés par un filet de manchette, et la
+   vignette change de côté d'un jeu à l'autre — la seule mise en scène.
+   ============================================================ */
+/* Le filet est un élément de la grille, pas une bordure du conteneur : il
+   s'arrête aux marges du texte au lieu de courir dans le rembourrage. */
+.game + .game {
+  padding-top: 0;
+}
+.game + .game .game__inner::before {
+  content: '';
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+}
+.game__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+.game:nth-of-type(even) .game__shot {
+  order: 2;
+}
+.game__shot {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.game__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s var(--ease);
+}
+@media (hover: hover) {
+  .game__shot:hover img {
+    transform: scale(1.02);
+  }
+}
+.game__title {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  color: var(--text);
+  margin: 0 0 16px;
+}
+.game__intro {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+  max-width: 60ch;
+  margin: 0 0 10px;
+}
+.game__actions {
+  margin: 22px 0 6px;
+}
+/* « Jouer » : le bouton abricot du site, en lien. 44px de haut à toute
+   largeur — pas seulement sous pointer: coarse : c'est l'action de la page. */
+.game__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 28px;
+  text-decoration: none;
+}
+.game__play span {
+  display: inline-block;
+  transition: transform 0.25s var(--ease);
+}
+@media (hover: hover) {
+  .game__play:hover span {
+    transform: translateX(4px);
+  }
+}
+/* Jeton de focus — voir `.newsfeed__tab:focus-visible`. */
+.game__play:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 4px;
+}
+/* Les règles, repliées : même registre que la politique de confidentialité
+   (.privacy) — mono, majuscules, chevron qui pivote. Le summary fait 44px de
+   haut quelle que soit l'écriture (min-height, pas seulement le rembourrage :
+   l'arménien a sa propre hauteur de ligne). */
+.game__rules {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  max-width: 60ch;
+}
+.game__rules > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size-adjust: var(--fsa-util);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--apricot-ink);
+}
+.game__rules > summary::-webkit-details-marker {
+  display: none;
+}
+.game__rules > summary::after {
+  content: '▸';
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.18s var(--ease);
+}
+.game__rules[open] > summary::after {
+  transform: rotate(90deg);
+}
+.game__rules > summary:hover {
+  color: var(--apricot-ink-strong);
+}
+.game__rules > summary:focus-visible {
+  outline: 2px solid var(--apricot-ink-strong);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.game__rules ol {
+  margin: 4px 0 0;
+  padding-left: 1.4em;
+}
+.game__rules li {
+  font-family: var(--font-body);
+  font-size-adjust: var(--fsa-body);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0 0 8px;
+}
+.game__rules li::marker {
+  color: var(--apricot-ink);
+}
+@media (max-width: 640px) {
+  .game__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .game:nth-of-type(even) .game__shot {
+    order: 0;
+  }
 }
 
 /* ============================================================

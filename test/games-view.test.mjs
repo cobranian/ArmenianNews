@@ -81,3 +81,21 @@ test('firebase.json redirige les slugs jumeaux vers la vue du domaine', () => {
   va(org, '^/jeux/?$', '/games/')
   va(org, '^/es/(?:games|jeux)/?$', '/es/juegos/')
 })
+
+test('GamesPage lit GAMES, lie chaque jeu dans la langue de la page, compte le clic', () => {
+  const src = lire('../src/components/GamesPage.jsx')
+  assert.match(src, /import \{[^}]*\bGAMES\b[^}]*\} from '\.\.\/games\.js'/)
+  assert.ok(src.includes('?lang=${lang}'), 'le lien « Jouer » porte ?lang=${lang}')
+  assert.ok(src.includes("'jeu_ouvert'"), 'le clic envoie jeu_ouvert à GA')
+  // Les jeux sont servis à part, hors du bundle : rien n'en est importé.
+  assert.doesNotMatch(src, /from\s+['"][^'"]*public\/play/)
+  assert.doesNotMatch(src, /import\(\s*['"][^'"]*public\/play/)
+})
+
+test('games.play et games.rules existent dans chaque bloc de langue', () => {
+  const i18n = lire('../src/i18n.jsx')
+  for (const cle of ['games.play', 'games.rules']) {
+    const n = (i18n.match(new RegExp(`'${cle.replace('.', '\\.')}':`, 'g')) || []).length
+    assert.equal(n, BLOC_LANGS.length, cle)
+  }
+})
