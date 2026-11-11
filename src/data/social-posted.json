@@ -159,14 +159,14 @@
       },
       "failed": {
         "reel:alphabet-armenien": {
-          "attempts": 2,
-          "last": "2026-11-11T22:01:08.648Z",
+          "attempts": 3,
+          "last": "2026-11-11T22:18:48.507Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+          "attempts": 2,
+          "last": "2026-11-11T23:03:25.628Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
@@ -1569,8 +1569,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:duduk": {
-          "attempts": 2,
-          "last": "2026-11-11T22:01:08.648Z",
+          "attempts": 3,
+          "last": "2026-11-11T22:18:48.507Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:bataille-de-sardarapat": {
@@ -1642,6 +1642,11 @@
           "attempts": 3,
           "last": "2026-11-10T18:32:20.209Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:aram-khatchatourian": {
+          "attempts": 2,
+          "last": "2026-11-11T23:03:25.628Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         }
       }
     },
@@ -1701,14 +1706,14 @@
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:bataille-de-sardarapat": {
-          "attempts": 1,
-          "last": "2026-11-11T22:01:08.648Z",
+          "attempts": 3,
+          "last": "2026-11-11T22:32:39.891Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+          "attempts": 1,
+          "last": "2026-11-11T23:03:25.628Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:monastere-de-tatev": {
           "attempts": 3,
@@ -2137,14 +2142,14 @@
       },
       "failed": {
         "reel:duduk": {
-          "attempts": 2,
-          "last": "2026-11-11T22:01:08.648Z",
+          "attempts": 3,
+          "last": "2026-11-11T22:18:48.507Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+          "attempts": 2,
+          "last": "2026-11-11T23:03:25.628Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
