@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T18:23:35.558Z",
+  "generatedAt": "2026-11-11T19:23:32.230Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Կերպարվեստի երկրորդ կյանքը․ ի՞նչ շերտեր է թաքցնում ժամանակի փոշին",
+            "url": "https://hy.armradio.am/archives/770080",
+            "date": "2026-11-11T19:01:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/ScreenShot-3926-768x424.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Նախագահ Վահագն Խաչատուրյանը ստորագրել է TRIPP–ի մասին օրենքը",
             "url": "https://hy.armradio.am/archives/770093",
             "date": "2026-11-11T17:30:28.000Z",
@@ -1162,6 +1169,13 @@
             "date": "2026-11-11T16:43:15.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/4G3A3105-768x512.jpg",
             "category": "Կարևոր"
+          },
+          {
+            "title": "Երևանի երգող սիրտը․ Հանրային ռադիոյի արձանը՝ 24-ժամյա համերգի բեմ",
+            "url": "https://hy.armradio.am/archives/770071",
+            "date": "2026-11-11T16:30:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/ScreenShot-3924-768x414.jpg",
+            "category": "Հասարակություն"
           },
           {
             "title": "Ինչ է պարզվել անչափահասին ավտոբուսից իջեցնելու դեպքի մասին. նոր մանրամասներ",
@@ -1203,20 +1217,6 @@
             "url": "https://hy.armradio.am/archives/769929",
             "date": "2026-11-11T08:09:13.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/MHM0167300-768x499.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Առանց տեղումների եղանակ. Երեւանի ամենատաք ու ամենացուրտ նոյեմբերի 11- ը",
-            "url": "https://hy.armradio.am/archives/769828",
-            "date": "2026-11-11T04:43:16.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2023/03/exanak-300x199.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Վարչապետը ներկա է գտնվել երեխաների բարեկեցության թեմայով գագաթնաժողովի բացմանը",
-            "url": "https://hy.armradio.am/archives/769801",
-            "date": "2026-11-10T18:26:13.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/70961_b-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Աբու Դաբիում բանակցություններն ավարտվել են․ գլխավոր արդյունքը գերիների նոր փոխանակումն է",
+            "url": "https://hy.armradio.am/archives/770105",
+            "date": "2026-11-11T18:49:30.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/e587bbd0-ddd0-11f1-9053-236ccb99630c.jpg-768x432.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Արհեստական բանականության գինը․ տվյալների նոր կենտրոններ՝ բնապահպանական հին խնդիրներով",
             "url": "https://hy.armradio.am/archives/770055",
             "date": "2026-11-11T17:10:00.000Z",
@@ -1436,13 +1443,6 @@
             "date": "2026-11-10T15:15:20.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/abu-dabi-erakoxm-768x336.webp",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Դավաճանություն կնոջն ու սեփական երկրի՞ն․ Nvidia-ի տնօրենը հայտնվել է ԱՄՆ-Չինաստան տեխնոլոգիական սկանդալի կենտրոնում",
-            "url": "https://hy.armradio.am/archives/769766",
-            "date": "2026-11-10T15:10:31.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/nvidia-768x454.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1468,7 +1468,7 @@
             "url": "https://hy.armradio.am/archives/769439",
             "date": "2026-11-09T15:19:35.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/erkir-haykakan-768x446.jpg",
-            "category": "Կարևոր"
+            "category": "Մշակույթ"
           },
           {
             "title": "«Պահանջված ավելորդը»․ Ջուլիետա Ստեփանյանի 75-ամյա ուղու կայարանները, նոր գիրքն ու բեմական երազանքը",
@@ -8598,6 +8598,13 @@
         "label": "Latest news",
         "articles": [
           {
+            "title": "Opposition Mayoral Candidate Dies In Prison In Armenia",
+            "url": "https://www.thecaliforniacourier.com/opposition-mayoral-candidate-dies-in-prison-in-armenia/",
+            "date": "2026-11-11T18:32:39.000Z",
+            "image": "/cc/2c32f5bc84da293c.webp",
+            "rubric": "politique"
+          },
+          {
             "title": "Փաշինյանի ան​իմաստ ելույթը Համաշխարհային հայկական գագաթնաժողովում",
             "url": "https://www.thecaliforniacourier.com/%d6%83%d5%a1%d5%b7%d5%ab%d5%b6%d5%b5%d5%a1%d5%b6%d5%ab-%d5%a1%d5%b6%d5%ab%d5%b4%d5%a1%d5%bd%d5%bf-%d5%a5%d5%ac%d5%b8%d6%82%d5%b5%d5%a9%d5%a8-%d5%b0%d5%a1%d5%b4%d5%a1%d5%b7%d5%ad%d5%a1%d6%80/",
             "date": "2026-11-11T07:09:21.000Z",
@@ -8658,13 +8665,6 @@
             "url": "https://www.thecaliforniacourier.com/enemies-abroad-pashinyan-within-armenia-faces-threats-on-both-fronts-by-harut-sassounian/",
             "date": "2026-11-02T19:08:00.000Z",
             "image": "/cc/32838b0ed1fc5dbd.webp",
-            "rubric": "politique"
-          },
-          {
-            "title": "Armenia is considering purchasing gas from Azerbaijan, along with supplies from Russia and Iran",
-            "url": "https://www.thecaliforniacourier.com/armenia-is-considering-purchasing-gas-from-azerbaijan-along-with-supplies-from-russia-and-iran/",
-            "date": "2026-10-30T17:06:23.000Z",
-            "image": "/cc/15128c5068162ebc.webp",
             "rubric": "politique"
           }
         ]
@@ -9657,6 +9657,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Փաշինյանը կմեկնի Դուբլին՝ մասնակցելու Եվրոպական քաղաքական համայնքի գագաթնաժողովին",
+            "url": "https://civilnet.am/hy/news/1015351",
+            "date": "2026-11-11T18:55:41.000Z",
+            "image": "https://civilnet.am/storage/media/26/10/06/lfrsz1gs6JYN6Xf3.webp"
+          },
+          {
             "title": "Նախագահը ստորագրել է TRIPP-ի համաձայնագիրը վավերացնելու օրենքը",
             "url": "https://civilnet.am/hy/news/1015350",
             "date": "2026-11-11T17:31:37.000Z",
@@ -9709,12 +9715,6 @@
             "url": "https://civilnet.am/hy/news/1015330",
             "date": "2026-11-11T05:53:28.000Z",
             "image": "https://civilnet.am/storage/media/26/11/11/QKjaDAtZLCKz4Ld6.jfif"
-          },
-          {
-            "title": "Փաշինյանն ու Մակրոնը քննարկել են վիզաների ազատականացման գործընթացն ու տարածաշրջանային զարգացումները",
-            "url": "https://civilnet.am/hy/news/1015324",
-            "date": "2026-11-10T15:18:06.000Z",
-            "image": "https://civilnet.am/storage/media/26/11/10/EUdWaj6e8gUfFytZ.webp"
           }
         ]
       },
@@ -11203,10 +11203,46 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Զիջումները չեն դադարեցնի Բաքվի պահանջները, իսկ ՀՀ իշխանությունն անվտանգությունը զոհաբերում է հանուն պատրանքների. պրոֆեսոր",
+            "url": "https://news.am/hy/news/1074257",
+            "date": "2026-11-11T19:21:48.000Z",
+            "image": "https://news.am/storage/media/26/10/22/YzNNsMHEIelwrNBs.webp"
+          },
+          {
+            "title": "Թրամփի հայտարարությունից հետո Նեթանյահուն խոսել է ԱՄՆ-ի ռազմական աջակցությունից աստիճանաբար հրաժարվելու ծրագրերից",
+            "url": "https://news.am/hy/news/1074242",
+            "date": "2026-11-11T19:10:00.000Z",
+            "image": "https://news.am/storage/media/26/10/19/D2pCzKMEeuzKXi4N.webp"
+          },
+          {
+            "title": "TRIPP-ը նախևառաջ Ռուսաստանն ու Իրանը մեկուսացնելու աշխարհաքաղաքական նախագիծ է. պրոֆեսոր Արման Գրիգորյան",
+            "url": "https://news.am/hy/news/1074253",
+            "date": "2026-11-11T18:54:06.000Z",
+            "image": "https://news.am/storage/media/26/11/02/WSa3AYb4C7Kj94VH.webp"
+          },
+          {
+            "title": "«Ամբողջ աշխարհն ավելի անվտանգ կդառնա». Թրամփը Արլինգթոնի գերեզմանատանը հայտարարել է Իրանի հետ պատերազմի մոտալուտ ավարտի մասին",
+            "url": "https://news.am/hy/news/1074250",
+            "date": "2026-11-11T18:36:17.000Z",
+            "image": "https://news.am/storage/media/26/11/09/CisKI7LXQanZzqCD.webp"
+          },
+          {
+            "title": "Թոշակների բարձրացումը Հայաստանում չեղարկվեց, Փաշինյանի և Էրդողանի հանդիպումը. «Օրվա ամփոփում»՝ ռուսերեն",
+            "url": "https://news.am/hy/news/1074249",
+            "date": "2026-11-11T18:32:59.000Z",
+            "image": "https://img.youtube.com/vi/zZ8a0dxMnI4/maxresdefault.jpg"
+          },
+          {
             "title": "Փաշինյանը վաղը կմեկնի Իռլանդիա",
             "url": "https://news.am/hy/news/1074245",
             "date": "2026-11-11T18:19:53.000Z",
             "image": "https://news.am/storage/media/26/11/11/2CPA7yL7fODwBvQQ.webp"
+          },
+          {
+            "title": "Գրիգորյանը Հայաստանի եվրոպական ուղղության ռիսկերի մասին. «Դա միակ խոսակցությունն է, որից հառորեն խուսափում են»",
+            "url": "https://news.am/hy/news/1074244",
+            "date": "2026-11-11T18:13:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/AnNLG9Acgt05xF9e.webp"
           },
           {
             "title": "Բայդենը խոստովանել է, որ եթե իմանար իր քաղցկեղի մասին, կրկին չէր առաջադրվի",
@@ -11225,42 +11261,6 @@
             "url": "https://news.am/hy/news/1074226",
             "date": "2026-11-11T17:38:00.000Z",
             "image": "https://news.am/storage/media/26/11/11/lf0rchhOiC6KKWst.webp"
-          },
-          {
-            "title": "Նիկոլ Փաշինյանը կարճ զրույց է ունեցել Վրաստանի նախագահի հետ",
-            "url": "https://news.am/hy/news/1074237",
-            "date": "2026-11-11T17:26:33.000Z",
-            "image": "https://news.am/storage/media/26/11/11/XdyPQzr8DhNwq4JS.webp"
-          },
-          {
-            "title": "Սերբիայում ձերբակալել են էկոնոմիկայի նախկին նախարարին՝ տասնյակ միլիոնավոր դինարների վնաս պատճառելու կասկածանքով",
-            "url": "https://news.am/hy/news/1074225",
-            "date": "2026-11-11T17:23:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/UJbjENe3iWfZgm0a.webp"
-          },
-          {
-            "title": "Նախագահ Վահագն Խաչատուրյանը ստորագրել է TRIPP–ի մասին օրենքը",
-            "url": "https://news.am/hy/news/1074233",
-            "date": "2026-11-11T17:10:43.000Z",
-            "image": "https://news.am/storage/media/26/11/11/pUFnjv7mkpQIukv2.jfif"
-          },
-          {
-            "title": "Գերմանիայում ժողովրդավարությունից գոհունակությունը նվազել է՝ հասնելով ռեկորդային ցածր մակարդակի. հետազոտություն",
-            "url": "https://news.am/hy/news/1074223",
-            "date": "2026-11-11T16:52:00.000Z",
-            "image": "https://news.am/storage/media/26/09/26/GUoFOlbjWdUIKV7F.webp"
-          },
-          {
-            "title": "Քնեսեթի առանցքային հանձնաժողովում Նեթանյահուի և Այզենկոտի դաշինքները ստացել են 9-ական տեղ, արաբական կուսակցությունները՝ 4",
-            "url": "https://news.am/hy/news/1074219",
-            "date": "2026-11-11T16:22:00.000Z",
-            "image": "https://news.am/storage/media/26/07/20/PN48fvb3i23H2ZUZ.webp"
-          },
-          {
-            "title": "Հակառակորդը պետք է ընդունի Թեհրանի պահանջները կամ կապիտուլյացիայի ենթարկվի. Իրանի ՊՆ",
-            "url": "https://news.am/hy/news/1074212",
-            "date": "2026-11-11T16:07:00.000Z",
-            "image": "https://news.am/storage/media/26/09/24/fWhqPVIXeUCKLpVS.webp"
           }
         ]
       },
@@ -11335,6 +11335,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Քեյնը կգերազանցի Շիլթոնի ռեկորդն Անգլիայի հավաքականում",
+            "url": "https://sport.news.am/arm/news/170207/",
+            "date": "2026-11-11T19:16:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170207.jpg"
+          },
+          {
             "title": "Տոնի Կրոս․ Այս խաղաոճով «Բարսելոնայի» համար շատ դժվար կլինի հաղթել Չեմպիոնների լիգայում",
             "url": "https://sport.news.am/arm/news/170206/",
             "date": "2026-11-11T17:55:00.000Z",
@@ -11387,12 +11393,6 @@
             "url": "https://sport.news.am/arm/news/170196/",
             "date": "2026-11-11T12:55:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170196.jpg"
-          },
-          {
-            "title": "ՀՖՖ պատվիրակությունը մասնակցեց ՈՒԵՖԱ ակումբների արտոնագրման և ֆինանսական կայունության համաժողովին",
-            "url": "https://sport.news.am/arm/news/170194/",
-            "date": "2026-11-11T12:11:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170194.jpg"
           }
         ]
       },
@@ -11400,6 +11400,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Volkswagen-ը հրաժարվել է Գերմանիայում իր գլխավոր գործարանի արդիականացման լայնածավալ նախագծից",
+            "url": "https://news.am/hy/news/1074232",
+            "date": "2026-11-11T18:39:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/5IGPFPFEB7rcia8Z.webp"
+          },
           {
             "title": "«Գազպրոմը» և Սերբիան քննարկել են ռուսական գազի մատակարարումների երկարաձգումը",
             "url": "https://news.am/hy/news/1074231",
@@ -11453,12 +11459,6 @@
             "url": "https://news.am/hy/news/1074167",
             "date": "2026-11-11T12:06:00.000Z",
             "image": "https://news.am/storage/media/26/11/11/y7UCbQ1YWXCZCp5f.webp"
-          },
-          {
-            "title": "Դեպի Հայաստան դրամական փոխանցումներ կատարվում էին նաև մինչև երկրի՝ ԵԱՏՄ-ին անդամակցելը․ Ֆիննախ",
-            "url": "https://news.am/hy/news/1074159",
-            "date": "2026-11-11T11:51:28.000Z",
-            "image": "https://news.am/storage/media/26/11/11/tVh5bfGqXelYU4qK.webp"
           }
         ]
       },
@@ -11466,6 +11466,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Ոսկի պարունակող 2 հազար դոլարանոց քսուք․ The Times-ն առանձնացրել է մաշկը խոնավեցնող լավագույն լյուքս դասի միջոցները",
+            "url": "https://style.news.am/arm/news/117093/",
+            "date": "2026-11-11T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117093.jpg"
+          },
           {
             "title": "«Տղամարդիկ ամեն ինչի պատրաստ են՝ հանուն սանտիմետրերի». BBC-ի վավերագրական ֆիլմը բացահայտել է առնանդամի մեծացման ինդուստրիայի հակառակ կողմը",
             "url": "https://style.news.am/arm/news/117092/",
@@ -11519,12 +11525,6 @@
             "url": "https://style.news.am/arm/news/117087/",
             "date": "2026-11-11T11:40:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117087.jpg"
-          },
-          {
-            "title": "4 մլն դոլարի շքեղություն և չորս շաբաթ ծովում. Mercedes-Maybach-ը ստեղծում է լողացող ակումբ էլիտայի համար",
-            "url": "https://style.news.am/arm/news/117086/",
-            "date": "2026-11-11T11:15:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117086.jpg"
           }
         ]
       },
@@ -11599,6 +11599,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Շնչառությունը վերականգնվել է, իսկ քաշի ավելացումը շարունակվում է. ինչ է կատարվում քնի ապնոեի բուժումից հետո. Scientific Reports",
+            "url": "https://med.news.am/arm/news/42320/shncharutyuny-verakangnvel-e-isk-qashi-avelacumy-sharunakvum-e-inch-e-katarvum-qni-apnoei-buzhumic-heto-scientific-reports.html",
+            "date": "2026-11-11T18:44:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/11/42320.jpg"
+          },
+          {
             "title": "Երգչախմբային երգեցողությունը բարելավում է սրտի ծանր արատից տառապող երեխաների շնչառությունն ու հուզական վիճակը. Pediatric Cardiology",
             "url": "https://med.news.am/arm/news/42319/ergchakhmbayin-ergecoxutyuny-barelavum-e-srti-tsanr-aratic-tarapox-erekhaneri-shncharutyunn-u-huzakan-vitchaky-pediatric-cardiology.html",
             "date": "2026-11-11T16:41:00.000Z",
@@ -11651,12 +11657,6 @@
             "url": "https://med.news.am/arm/news/42311/arhestakan-%E2%80%8B%E2%80%8Bbanakanutyuny-sovorel-e-mardu-qaylvatsqov-bacahaytel-aroxjutyan-grete-1900-cucanishneri-nshanner-nature-medicine.html",
             "date": "2026-11-10T16:43:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/11/42311.jpg"
-          },
-          {
-            "title": "Շաբաթական 30 բույս. արդյոք սննդամթերքի բազմազանությունն իրոք բարելավում է առողջությունը",
-            "url": "https://med.news.am/arm/news/42310/shabatakan-30-buys-ardyoq-snndamterqi-bazmazanutyunn-iroq-barelavum-e-aroxjutyuny.html",
-            "date": "2026-11-10T14:34:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/11/42310.jpg"
           }
         ]
       },
@@ -11664,6 +11664,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "Բեռնատարը Գործարանային մետրոյի մոտ բախվել է կամրջի բետոնե ծածկին, կոնտեյներն ընկել է. վարդորդը վրացի է",
+            "url": "https://news.am/hy/news/1074251",
+            "date": "2026-11-11T18:47:05.000Z",
+            "image": "https://news.am/storage/media/26/11/11/NLI24ldffzqTgxDt.webp"
+          },
           {
             "title": "Վիճաբանություն-ծեծկռտուք Արմավիրում. ծննդյան արարողությունը վերածվել է «տուրուդմփոցի». կան ձերբակալվածներ",
             "url": "https://news.am/hy/news/1074236",
@@ -11717,12 +11723,6 @@
             "url": "https://news.am/hy/news/1074131",
             "date": "2026-11-11T10:02:00.000Z",
             "image": "https://news.am/storage/media/26/11/11/VPyuEuUOQciiN7k4.webp"
-          },
-          {
-            "title": "Կրասնոյարսկ-Երևան չվերթի օդանավում կին է մահացել",
-            "url": "https://news.am/hy/news/1074105",
-            "date": "2026-11-11T08:45:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/2gGbT4Ph5EODMP7f.webp"
           }
         ]
       },
@@ -11797,6 +11797,12 @@
         "label": "Մշակույթ",
         "articles": [
           {
+            "title": "Պեկինում ավարտվել է Արամ Խաչատրյանի անվան պատանեկան միջազգային մրցույթը",
+            "url": "https://news.am/hy/news/1074252",
+            "date": "2026-11-11T18:50:59.000Z",
+            "image": "https://img.youtube.com/vi/McLH3bui_VA/maxresdefault.jpg"
+          },
+          {
             "title": "Գագիկ Ծառուկյան Հիմնադրամի աջակցությամբ հիմնադրվում է «Ոսկե վարդ» ամենամյա միջազգային կինոմրցանակը",
             "url": "https://news.am/hy/news/1074117",
             "date": "2026-11-11T08:57:00.000Z",
@@ -11849,12 +11855,6 @@
             "url": "https://news.am/hy/news/1073454",
             "date": "2026-11-09T01:43:00.000Z",
             "image": "https://news.am/storage/media/26/11/08/UQTBTC7CPbGpYcgP.webp"
-          },
-          {
-            "title": "Չինական մեծ պատ․ հրաշք, որը պետք է տեսնել կյանքում գոնե մեկ անգամ",
-            "url": "https://news.am/hy/news/1073463",
-            "date": "2026-11-08T11:53:39.000Z",
-            "image": "https://i.ytimg.com/vi/LG5hzC8D8Bs/hqdefault.jpg"
           }
         ]
       }
@@ -11864,6 +11864,48 @@
         "categoryKey": "politics",
         "label": "Политика",
         "articles": [
+          {
+            "title": "Австрия ужесточит наказание за шпионаж и впервые введет ответственность за шпионаж против международных организаций",
+            "url": "https://news.am/ru/news/1074246",
+            "date": "2026-11-11T19:25:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/vGbbnwADI5nFUsEw.webp"
+          },
+          {
+            "title": "Профессор: Уступки Азербайджану не остановят его требования, а власти Армении жертвуют безопасностью ради иллюзий",
+            "url": "https://news.am/ru/news/1074257",
+            "date": "2026-11-11T19:21:48.000Z",
+            "image": "https://news.am/storage/media/26/10/22/YzNNsMHEIelwrNBs.webp"
+          },
+          {
+            "title": "После заявления Трампа о прекращении помощи Нетаньяху объявил о планах постепенно отказаться от военной поддержки США",
+            "url": "https://news.am/ru/news/1074242",
+            "date": "2026-11-11T19:10:00.000Z",
+            "image": "https://news.am/storage/media/26/10/19/D2pCzKMEeuzKXi4N.webp"
+          },
+          {
+            "title": "Профессор Арман Григорян: TRIPP — это прежде всего геополитический проект по изоляции России и Ирана",
+            "url": "https://news.am/ru/news/1074253",
+            "date": "2026-11-11T18:54:06.000Z",
+            "image": "https://news.am/storage/media/26/11/02/WSa3AYb4C7Kj94VH.webp"
+          },
+          {
+            "title": "«Весь мир станет безопаснее»: Трамп в День ветеранов на Арлингтонском кладбище заявил о скором завершении войны с Ираном",
+            "url": "https://news.am/ru/news/1074250",
+            "date": "2026-11-11T18:36:17.000Z",
+            "image": "https://news.am/storage/media/26/11/09/CisKI7LXQanZzqCD.webp"
+          },
+          {
+            "title": "Повышение пенсий в Армении отменено, встреча Пашинян-Эрдоган: «Итоги дня» – видеоновости на русском",
+            "url": "https://news.am/ru/news/1074249",
+            "date": "2026-11-11T18:32:29.000Z",
+            "image": "https://img.youtube.com/vi/zZ8a0dxMnI4/maxresdefault.jpg"
+          },
+          {
+            "title": "Пашинян завтра отправится в Ирландию",
+            "url": "https://news.am/ru/news/1074245",
+            "date": "2026-11-11T18:19:53.000Z",
+            "image": "https://news.am/storage/media/26/11/11/2CPA7yL7fODwBvQQ.webp"
+          },
           {
             "title": "Григорян о рисках европейского курса Армении: «Это единственный разговор, которого упорно избегают»",
             "url": "https://news.am/ru/news/1074244",
@@ -11881,48 +11923,6 @@
             "url": "https://news.am/ru/news/1074229",
             "date": "2026-11-11T17:53:00.000Z",
             "image": "https://news.am/storage/media/26/09/21/tRWe0N7gkC6VBQRV.webp"
-          },
-          {
-            "title": "Президент Польши принял участие в марше независимости в Варшаве под лозунгом «Поляк — хозяин в Польше»",
-            "url": "https://news.am/ru/news/1074226",
-            "date": "2026-11-11T17:38:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/lf0rchhOiC6KKWst.webp"
-          },
-          {
-            "title": "Никол Пашинян провел краткую беседу с президентом Грузии",
-            "url": "https://news.am/ru/news/1074237",
-            "date": "2026-11-11T17:26:33.000Z",
-            "image": "https://news.am/storage/media/26/11/11/XdyPQzr8DhNwq4JS.webp"
-          },
-          {
-            "title": "В Сербии задержали экс- министра экономики по подозрению в ущербе на десятки миллионов динаров",
-            "url": "https://news.am/ru/news/1074225",
-            "date": "2026-11-11T17:23:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/UJbjENe3iWfZgm0a.webp"
-          },
-          {
-            "title": "Президент Армении подписал закон о TRIPP",
-            "url": "https://news.am/ru/news/1074233",
-            "date": "2026-11-11T17:10:43.000Z",
-            "image": "https://news.am/storage/media/26/11/11/pUFnjv7mkpQIukv2.jfif"
-          },
-          {
-            "title": "Исследование: Удовлетворенность демократией в Германии упала до рекордно низкого уровня",
-            "url": "https://news.am/ru/news/1074223",
-            "date": "2026-11-11T16:52:00.000Z",
-            "image": "https://news.am/storage/media/26/09/26/GUoFOlbjWdUIKV7F.webp"
-          },
-          {
-            "title": "Кнессет Израиля утвердил состав ключевого комитета: по 9 мест получили блоки Нетаньяху и Айзенкота, 4 — арабские партии",
-            "url": "https://news.am/ru/news/1074219",
-            "date": "2026-11-11T16:22:00.000Z",
-            "image": "https://news.am/storage/media/26/07/20/PN48fvb3i23H2ZUZ.webp"
-          },
-          {
-            "title": "Минобороны Ирана: Противник должен принять требования Тегерана или капитулировать",
-            "url": "https://news.am/ru/news/1074212",
-            "date": "2026-11-11T16:07:00.000Z",
-            "image": "https://news.am/storage/media/26/09/24/fWhqPVIXeUCKLpVS.webp"
           }
         ]
       },
@@ -12063,6 +12063,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Volkswagen отказался от масштабного проекта модернизации своего главного завода в Германии",
+            "url": "https://news.am/ru/news/1074232",
+            "date": "2026-11-11T18:39:00.000Z",
+            "image": "https://news.am/storage/media/26/09/07/5IGPFPFEB7rcia8Z.webp"
+          },
+          {
             "title": "«Газпром» и Сербия обсудили продление поставок российского газа",
             "url": "https://news.am/ru/news/1074231",
             "date": "2026-11-11T18:24:00.000Z",
@@ -12115,12 +12121,6 @@
             "url": "https://news.am/ru/news/1074167",
             "date": "2026-11-11T12:06:00.000Z",
             "image": "https://news.am/storage/media/26/11/11/y7UCbQ1YWXCZCp5f.webp"
-          },
-          {
-            "title": "Минфин: Денежные переводы в Армению осуществлялись и до вступления страны в ЕАЭС",
-            "url": "https://news.am/ru/news/1074159",
-            "date": "2026-11-11T11:51:28.000Z",
-            "image": "https://news.am/storage/media/26/11/11/tVh5bfGqXelYU4qK.webp"
           }
         ]
       },
@@ -12128,6 +12128,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Крем за $2 тысячи и золото в составе: The Times назвала лучшие люксовые средства для увлажнения кожи",
+            "url": "https://style.news.am/rus/news/117093/",
+            "date": "2026-11-11T19:01:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117093.jpg"
+          },
           {
             "title": "«Мужчины готовы на все ради сантиметров»: документальный фильм BBC показал изнанку индустрии увеличения пениса",
             "url": "https://style.news.am/rus/news/117092/",
@@ -12181,12 +12187,6 @@
             "url": "https://style.news.am/rus/news/117086/",
             "date": "2026-11-11T11:15:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117086.jpg"
-          },
-          {
-            "title": "Max Mara решила одевать женщин на каждый день: модный гигант запустил новый бренд с ценами до $465",
-            "url": "https://style.news.am/rus/news/117085/",
-            "date": "2026-11-11T10:43:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117085.jpg"
           }
         ]
       },
@@ -12261,6 +12261,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Дыхание восстановилось, а набор веса продолжается: что происходит после лечения апноэ сна",
+            "url": "https://med.news.am/rus/news/42320/diykhanie-vosstanovilos-a-nabor-vesa-prodolzhaetsya-chto-proiskhodit-posle-lecheniya-apnoe-sna.html",
+            "date": "2026-11-11T18:44:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/11/42320.jpg"
+          },
+          {
             "title": "Pediatric Cardiology: Хоровое пение улучшает дыхание и эмоциональное состояние детей с тяжелым пороком сердца",
             "url": "https://med.news.am/rus/news/42319/pediatric-cardiology-khorovoe-penie-uluchshaet-diykhanie-i-emocionalnoe-sostoyanie-deteiy-s-tyazheliym-porokom-serdca.html",
             "date": "2026-11-11T16:41:00.000Z",
@@ -12313,12 +12319,6 @@
             "url": "https://med.news.am/rus/news/42311/ii-nauchilsya-viyyavlyat-priznaki-pochti-1900-pokazateleiy-zdorovya-po-pokhodke-cheloveka.html",
             "date": "2026-11-10T16:43:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/11/42311.jpg"
-          },
-          {
-            "title": "30 растений в неделю: действительно ли разнообразие продуктов улучшает здоровье",
-            "url": "https://med.news.am/rus/news/42310/30-rasteniiy-v-nedelyu-deiystvitelno-li-raznoobrazie-produktov-uluchshaet-zdorove.html",
-            "date": "2026-11-10T14:34:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/11/42310.jpg"
           }
         ]
       },
@@ -12326,6 +12326,12 @@
         "categoryKey": "incidents",
         "label": "Происшествия",
         "articles": [
+          {
+            "title": "Грузовик у станции метро «Горцаранаин» врезался в бетонное перекрытие моста, контейнер упал: водитель — грузин",
+            "url": "https://news.am/ru/news/1074251",
+            "date": "2026-11-11T18:47:05.000Z",
+            "image": "https://news.am/storage/media/26/11/11/NLI24ldffzqTgxDt.webp"
+          },
           {
             "title": "Ссора и драка в Армавире: празднование дня рождения переросло в потасовку, есть задержанные",
             "url": "https://news.am/ru/news/1074236",
@@ -12379,12 +12385,6 @@
             "url": "https://news.am/ru/news/1074105",
             "date": "2026-11-11T08:45:00.000Z",
             "image": "https://news.am/storage/media/26/11/11/2gGbT4Ph5EODMP7f.webp"
-          },
-          {
-            "title": "Три человека погибли при наезде автомобиля на пешеходов в Лос-Анджелесе",
-            "url": "https://news.am/ru/news/1074085",
-            "date": "2026-11-11T08:29:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/2GuoGu4dy10T9GEw.webp"
           }
         ]
       },
@@ -12459,6 +12459,12 @@
         "label": "Культура",
         "articles": [
           {
+            "title": "В Пекине завершился Международный юношеский конкурс имени Арама Хачатуряна",
+            "url": "https://news.am/ru/news/1074252",
+            "date": "2026-11-11T18:50:59.000Z",
+            "image": "https://img.youtube.com/vi/McLH3bui_VA/maxresdefault.jpg"
+          },
+          {
             "title": "При поддержке Фонда Гагика Царукяна будет учреждена ежегодная международная кинопремия «Золотая роза»",
             "url": "https://news.am/ru/news/1074117",
             "date": "2026-11-11T08:57:00.000Z",
@@ -12511,12 +12517,6 @@
             "url": "https://news.am/ru/news/1073310",
             "date": "2026-11-07T09:18:25.000Z",
             "image": "https://news.am/storage/media/26/11/07/xGzDDKubLbEOwyCx.webp"
-          },
-          {
-            "title": "Секретарь Совбеза Армении: «Почему мы болезненно реагируем, когда кто-то называет Севан Гёйча? Это культурное явление»",
-            "url": "https://news.am/ru/news/1073285",
-            "date": "2026-11-07T07:08:00.000Z",
-            "image": "https://i.ytimg.com/vi/STJoF25pt1E/hqdefault.jpg"
           }
         ]
       }
