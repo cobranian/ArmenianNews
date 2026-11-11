@@ -422,19 +422,73 @@ flèche avec un `aria-label` traduit (« Retour à Arménie Info » et ses
 - [ ] **Step 4 : commit** « Jeux : règles RTDB (échecs, backgammon) et leurs
   tests ».
 
-### Task 9 : point d'arrêt humain, la configuration Firebase
+### Task 8b : les salles s'effacent d'elles-mêmes (décidé par Nareg, 11 nov.)
 
-- [ ] **Step 1 :** demander à Nareg de faire les 5 étapes du README. Il colle
-  ensuite `apiKey`, `appId` et `databaseURL`. Ces valeurs ne sont pas des
-  secrets, mais ne pas les répéter dans le chat.
-- [ ] **Step 2 :** Nareg déploie les règles **à la main** :
-  `! npx --yes firebase-tools@15.34.2 deploy --only database --project
-  armenie-info`. C'est le choix retenu : la CI garde son seul rôle Hosting
-  Admin. Le README le dit.
-- [ ] **Step 3 :** remplir `public/play/net/config.js`. Ajouter au test de la
-  tâche 4 : `databaseURL` matche
+Nareg a décidé que les salles doivent s'effacer seules. Le compte de service
+de la CI reçoit pour cela le rôle « Firebase Realtime Database Admin » sur
+`armenie-info`, ajouté par Nareg lui-même.
+
+**Files :**
+- Create : `scripts/salles-purge.mjs` (entrées et sorties réseau) et
+  `scripts/lib/salles-purge.mjs` (fonctions pures)
+- Modify :
+  - `database.rules.json` : `".indexOn": ["creeLe"]` sous `salles/$jeu` ;
+  - `.github/workflows/hourly.yml` : une étape après le déploiement, en
+    `continue-on-error`, avec un `✗ purge` au log en cas d'échec ;
+  - `scripts/lib/health.mjs` si `[sources-down]` peut lire ce `✗` sans
+    nouvelle machinerie ;
+  - `src/i18n.jsx` (`privacy.games.body` et `privacy.rights.body`, 7 blocs) ;
+  - `README.md`.
+- Test : `test/salles-purge.test.mjs`
+
+**Interfaces :**
+- `sallesPerimees(salles, maintenant)` : rend les codes dont `creeLe` a plus
+  de 24 h, ou dont `creeLe` manque. Le seuil est `PEREMPTION_MS`, la même
+  valeur que `protocole.js`, 86 400 000 ms. Il faut l'importer ou le
+  recopier, avec un test qui compare la valeur à celle de
+  `public/play/net/protocole.js`.
+- Le script s'authentifie avec le compte de service déjà présent en CI
+  (`FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO`), en OAuth2 avec les portées
+  `userinfo.email` et `firebase.database`. Il lit, pour chaque jeu
+  (`echecs`, `backgammon`),
+  `salles/<jeu>.json?orderBy="creeLe"&endAt=<maintenant-24h>`, puis efface
+  chaque salle par un PATCH à `null`.
+- La lecture via `orderBy` ne voit pas une salle sans `creeLe`. Le script fait
+  donc aussi une lecture `shallow=true`, puis lit `creeLe` salle par salle,
+  **seulement** pour les codes absents du premier lot.
+- Pas de nouvelle dépendance npm. Si `google-auth-library` n'est pas déjà
+  dans `node_modules`, signer le JWT avec `node:crypto`.
+
+- [ ] **Step 1 : tests** de `sallesPerimees`, sur ces cas : une salle de
+  23 h 59 gardée, une de 24 h 01 effacée, une sans `creeLe` effacée, une
+  entrée qui n'est pas un objet ignorée.
+- [ ] **Step 2 :** implémenter. Le script affiche `purge : N salle(s)
+  effacée(s)` et ne fait jamais échouer le job : un échec du nettoyage ne
+  doit pas retenir le déploiement.
+- [ ] **Step 3 : confidentialité.** Les salles sont effacées automatiquement
+  dans l'heure qui suit leurs 24 h, en 7 langues. Le texte doit rester vrai :
+  il dit « au plus tard environ 25 h après sa création ». Le README décrit la
+  purge et le rôle IAM qu'elle exige.
+- [ ] **Step 4 : commit** « Jeux : purge horaire des salles de plus de
+  24 h ».
+
+### Task 9 : configuration Firebase (faite le 11 nov. par Claude, sauf l'IAM)
+
+État : la base `armenie-info-default-rtdb` est créée en europe-west1, en mode
+verrouillé. La connexion anonyme est activée, avec le nettoyage automatique
+des comptes anonymes de plus de 30 jours. L'application Web existe déjà
+(`1:95859451112:web:9ffab14950fb89f0a3955d`) ; sa configuration se lit par
+`firebase apps:sdkconfig web <appId> --project armenie-info`.
+
+- [ ] **Step 1 :** remplir `public/play/net/config.js` avec `apiKey`, `appId`
+  et `databaseURL`, lus par `apps:sdkconfig`. Ces valeurs sont publiques ; ne
+  pas les répéter dans le chat. Ajouter au test de la tâche 4 : `databaseURL`
+  matche
   `^https://armenie-info-default-rtdb\.europe-west1\.firebasedatabase\.app$`.
-- [ ] **Step 4 : commit** « Jeux : configuration Firebase d'Arménie Info ».
+- [ ] **Step 2 :** déployer les règles depuis le poste, avec le CLI connecté :
+  `npx --yes firebase-tools@15.34.2 deploy --only database --project
+  armenie-info`.
+- [ ] **Step 3 : commit** « Jeux : configuration Firebase d'Arménie Info ».
 
 ### Task 10 : mode ami de bout en bout, puis PR 2
 

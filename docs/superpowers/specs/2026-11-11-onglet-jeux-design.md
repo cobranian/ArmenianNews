@@ -239,6 +239,16 @@ Le README d'ArmenianNews reçoit cette procédure.
 
 Chaque temps est une PR à part, et a ses propres vérifications.
 
+## Effacement des salles (décidé par Nareg le 11 novembre 2026)
+
+Les salles du mode ami **s'effacent d'elles-mêmes**. Une étape horaire de
+`hourly.yml` efface les salles de plus de 24 h, ainsi que celles sans
+`creeLe`. Elle utilise le compte de service de la CI, à qui Nareg a donné le
+rôle « Firebase Realtime Database Admin » sur `armenie-info`. Firebase efface
+de son côté les comptes anonymes de plus de 30 jours (option « Auto
+clean-up », activée). Un échec de la purge ne bloque jamais le déploiement :
+il se lit `✗ purge` au log. Détail : plan, tâche 8b.
+
 ## Politique de confidentialité (décidé par Nareg)
 
 Les textes `privacy.*` de `src/i18n.jsx` (sept langues) sont mis à jour dans le
