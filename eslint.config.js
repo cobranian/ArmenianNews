@@ -9,8 +9,9 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 // before any module loads. One flat config per world, narrowest last.
 export default [
   // .cache holds the logged-in Chrome profiles the manual fb/ig scrapes drive —
-  // someone else's extension code, not ours.
-  { ignores: ['dist/**', 'src/data/**', '.firebase/**', '.cache/**'] },
+  // someone else's extension code, not ours. public/play holds the games that
+  // npm run jeux:sync copies from two other repos — vendored, linted there.
+  { ignores: ['dist/**', 'src/data/**', '.firebase/**', '.cache/**', 'public/play/**'] },
 
   // The app: browser + React.
   {

@@ -1,0 +1,390 @@
+/* Le texte garde la taille prévue : sans ça, le navigateur du téléphone
+   peut l'agrandir et le faire déborder des cases du jeu. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Échecs — un échiquier de bois posé sur le cuir d'un bureau.
+   La seule audace est l'échiquier (érable et noyer, cadre sombre aux
+   coordonnées gravées de laiton) et, à côté, la feuille de partie sur papier
+   ivoire. Tout le reste est sobre : texte ivoire, plaques de noyer cerclées
+   de laiton pour les commandes. */
+:root {
+  --cuir: #4A1D1C;
+  --cuir-clair: #5E2826;
+  --cuir-fonce: #2C1010;
+  --texte: #F1E6CF;
+  --texte-doux: #D3C2A6;
+  --erable: #E2C796;
+  --noyer: #8A5B39;
+  --cadre: #3A2415;
+  --ebene: #241A15;
+  --ivoire: #F3E9D2;
+  --papier: #F2E7CE;
+  --encre: #2B1D14;
+  --laiton: #C9A227;
+  --titre: 'Fraunces', 'Georgia', serif, system-ui, sans-serif;
+  --police: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  --gouttiere: 4px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  color: var(--texte);
+  font: 400 clamp(14px, 2.2vmin, 18px)/1.4 var(--police);
+  background: radial-gradient(130% 100% at 35% 25%, var(--cuir-clair), var(--cuir) 50%, var(--cuir-fonce));
+  background-color: var(--cuir);
+  overflow: hidden;
+}
+[hidden] { display: none !important; }
+button { font: inherit; }
+
+/* ----------------------------------------------------------------- partie
+   Debout : la ligne, l'échiquier à pleine largeur, le bandeau, les
+   commandes, puis la feuille de partie qui prend la hauteur restante. */
+#partie {
+  --plateau: min(calc(100vw - 2 * var(--gouttiere)), calc(100dvh - 230px), 680px);
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: var(--plateau);
+  grid-template-rows: auto auto auto auto minmax(0, 1fr);
+  grid-template-areas: "ligne" "plateau" "bandeau" "commandes" "feuille";
+  justify-content: center; align-content: start;
+  gap: 6px; padding: 8px var(--gouttiere);
+}
+@media (min-width: 420px) { :root { --gouttiere: 12px; } }
+/* Mode ami avec pendule : celle de l'ami au-dessus de l'échiquier, la mienne
+   en dessous ; l'échiquier cède la hauteur des deux. */
+#partie.avec-pendule {
+  --plateau: min(calc(100vw - 2 * var(--gouttiere)), calc(100dvh - 230px - 2 * var(--h-pendule) - 12px), 680px);
+  grid-template-rows: auto auto auto auto auto auto minmax(0, 1fr);
+  grid-template-areas: "ligne" "phaut" "plateau" "pbas" "bandeau" "commandes" "feuille";
+}
+:root { --h-pendule: 34px; }
+
+#entete {
+  grid-area: ligne; margin: 0 4px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px;
+}
+#ligne { margin: 0; color: var(--texte-doux); overflow-wrap: anywhere; }
+/* Mode ami : le prénom, sur la ligne des joueurs. */
+#ligne-pseudo { margin: 0; display: flex; align-items: center; gap: .5em; font-size: .9em; color: var(--texte-doux); }
+#pseudo {
+  width: 8em; min-width: 0; min-height: 34px; font: inherit; font-weight: 700; color: var(--encre);
+  background: var(--papier); border: 0; border-radius: 4px; padding: .2em .45em;
+  box-shadow: inset 0 0 0 1.5px var(--noyer);
+}
+#pseudo:focus-visible { outline: 3px solid var(--laiton); outline-offset: 2px; }
+
+#echiquier {
+  grid-area: plateau;
+  position: relative;
+  width: var(--plateau);
+  aspect-ratio: 1;
+  touch-action: none;
+  -webkit-user-select: none; user-select: none;
+  filter: drop-shadow(0 8px 14px rgb(20 4 4 / .55));
+}
+#echiquier:focus { outline: none; }
+#echiquier .dessin { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.dessin .coord {
+  fill: var(--laiton); font: 600 21px var(--titre);
+  text-anchor: middle; dominant-baseline: central;
+}
+.dessin .dernier { fill: rgb(201 162 39 / .42); }
+.dessin .choisie { fill: rgb(201 162 39 / .22); stroke: var(--laiton); stroke-width: 7; }
+.dessin .point { fill: var(--laiton); stroke: rgb(43 29 20 / .55); stroke-width: 3; }
+.dessin .anneau { fill: none; stroke: var(--laiton); stroke-width: 7; opacity: .92; }
+.dessin .piece.portee { opacity: .3; }
+
+/* Les boutons des cases, sur les 800 × 800 unités centrales des 860. */
+.cases { position: absolute; left: 3.4884%; top: 3.4884%; width: 93.0233%; height: 93.0233%; }
+.case {
+  position: absolute; width: 12.5%; height: 12.5%;
+  margin: 0; padding: 0; border: 0; background: none;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.case:focus { outline: none; }
+.case:focus-visible { outline: 3px solid var(--laiton); outline-offset: -3px; box-shadow: inset 0 0 0 6px rgb(36 26 21 / .5); }
+
+.fantome {
+  position: fixed; left: 0; top: 0; z-index: 50; pointer-events: none;
+  filter: drop-shadow(0 6px 6px rgb(0 0 0 / .45));
+}
+.fantome svg { width: 100%; height: 100%; display: block; }
+
+/* ------------------------------------------------------------- pendules
+   Une réglette de noyer : le nom à gauche, le temps à droite dans un
+   cadran ivoire. Au trait : cerclée de laiton ; sous 10 s : rouge. */
+.pendule {
+  min-width: 0; height: var(--h-pendule);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 0 4px 0 10px;
+  color: var(--texte-doux);
+  background: rgb(36 26 21 / .55); border-radius: 6px;
+  box-shadow: inset 0 0 0 1.5px rgb(241 230 207 / .18);
+}
+#pendule-haut { grid-area: phaut; }
+#pendule-bas { grid-area: pbas; }
+.pendule-nom { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pendule-temps {
+  flex: none; min-width: 5.2em; padding: .05em .5em; text-align: center;
+  font: 700 1.2em/1.3 var(--police); font-variant-numeric: tabular-nums;
+  color: rgb(43 29 20 / .75); background: rgb(242 231 206 / .55); border-radius: 4px;
+}
+.pendule.au-trait { color: var(--ivoire); box-shadow: inset 0 0 0 2px var(--laiton); }
+.pendule.au-trait .pendule-temps { color: var(--encre); background: var(--papier); }
+.pendule.urgent .pendule-temps { color: #fff; background: #B3261E; }
+
+/* ------------------------------------------------------------- bandeau */
+#bandeau {
+  grid-area: bandeau;
+  margin: 0 4px; min-height: 1.4em;
+  font-weight: 700;
+}
+#bandeau.reflechit::after {
+  content: ''; display: inline-block; width: .45em; height: .45em; margin-left: .55em;
+  border-radius: 50%; background: var(--laiton); vertical-align: .1em;
+  animation: battre .9s ease-in-out infinite alternate;
+}
+@keyframes battre { from { opacity: .25; transform: scale(.7); } to { opacity: 1; transform: scale(1.15); } }
+#bandeau.fin { font: 600 1.3em/1.25 var(--titre); color: var(--ivoire); }
+
+/* -------------------------------------------------------- feuille de partie */
+#feuille {
+  grid-area: feuille;
+  min-height: 0;
+  display: flex; flex-direction: column;
+  color: var(--encre);
+  background: var(--papier);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgb(20 4 4 / .45), inset 0 0 0 1px rgb(43 29 20 / .15);
+}
+.entetes, #coups li {
+  display: grid; grid-template-columns: 2.8em 1fr 1fr; align-items: baseline;
+}
+.entetes {
+  margin: 0; padding: .35em .6em .25em;
+  font-size: .85em; color: rgb(43 29 20 / .7);
+  border-bottom: 1.5px solid rgb(43 29 20 / .45);
+}
+.entetes span:first-child { grid-column: 2; }
+#coups {
+  margin: 0; padding: 0 .6em .3em; list-style: none;
+  flex: 1 1 auto; min-height: 2.2em;
+  overflow-y: auto; overscroll-behavior: contain;
+  counter-reset: coup;
+  font: 500 1.02em/1.85 var(--titre);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+#coups:focus-visible { outline: 3px solid var(--laiton); outline-offset: 2px; }
+#coups li { counter-increment: coup; border-bottom: 1px solid rgb(43 29 20 / .12); }
+#coups li::before { content: counter(coup) "."; color: rgb(43 29 20 / .55); }
+#coups span { justify-self: start; padding: 0 .3em; margin-left: -.3em; border-radius: 3px; }
+#coups span.dernier { background: rgb(201 162 39 / .38); }
+
+/* ------------------------------------------------------------ commandes */
+#commandes, #ecran-fin {
+  grid-area: commandes;
+  margin: 0; min-height: 44px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+}
+#btn-menu, #btn-fin-menu { margin-left: auto; }
+
+.plaque {
+  min-height: 44px; padding: .4em 1.1em .45em;
+  font-weight: 700;
+  color: var(--ivoire); background: linear-gradient(#4A2F1C, var(--cadre));
+  border: 0; border-radius: 6px; cursor: pointer;
+  box-shadow: inset 0 0 0 2px var(--cadre), inset 0 0 0 3.5px var(--laiton), 0 3px 0 #1A0E07;
+  transition: transform .08s, box-shadow .08s;
+}
+.plaque:hover { background: linear-gradient(#5C3B24, #43291A); }
+.plaque:active { transform: translateY(2px); box-shadow: inset 0 0 0 2px var(--cadre), inset 0 0 0 3.5px var(--laiton), 0 1px 0 #1A0E07; }
+.plaque.claire {
+  color: var(--encre); background: linear-gradient(#EED8AE, var(--erable));
+  box-shadow: inset 0 0 0 2px var(--erable), inset 0 0 0 3.5px var(--noyer), 0 3px 0 #8E7149;
+}
+.plaque.claire:active { box-shadow: inset 0 0 0 2px var(--erable), inset 0 0 0 3.5px var(--noyer), 0 1px 0 #8E7149; }
+.plaque:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.plaque:focus-visible, .discret:focus-visible { outline: 3px solid var(--laiton); outline-offset: 3px; }
+.plaque.grande { font-size: 1.2em; min-width: 9em; }
+.discret {
+  min-height: 44px; padding: .2em .6em; border: 0; background: none; cursor: pointer;
+  color: var(--texte); text-decoration: underline 1px; text-underline-offset: .25em;
+}
+.discret:hover { color: var(--laiton); }
+
+/* ----------------------------------------------------------------- écrans */
+.ecran {
+  position: fixed; inset: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px; overflow: auto;
+}
+.ecran.plein { background: radial-gradient(130% 100% at 35% 25%, var(--cuir-clair), var(--cuir) 50%, var(--cuir-fonce)); }
+.carte-menu {
+  display: flex; flex-direction: column; align-items: center; gap: 1.1em;
+  width: min(100%, 26em); text-align: center;
+}
+h1 {
+  margin: 0; font: 600 clamp(2.6em, 13vw, 4.4em)/1 var(--titre);
+  color: var(--ivoire); letter-spacing: -.01em;
+}
+/* Huit cases d'érable et de noyer, cerclées de laiton : le bord de l'échiquier. */
+.filet {
+  width: min(12em, 70%); height: .8em; margin-top: -.3em;
+  background: repeating-linear-gradient(90deg, var(--erable) 0 12.5%, var(--noyer) 12.5% 25%);
+  box-shadow: 0 0 0 2px var(--cadre), 0 0 0 3.5px var(--laiton);
+}
+h2 { margin: 0; font: 600 clamp(1.9em, 9vw, 2.6em)/1.05 var(--titre); color: var(--ivoire); }
+.carte-menu .plaque.grande { min-width: 12em; }
+.consigne { margin: 0; color: var(--texte-doux); max-width: 22em; }
+#attente-statut { margin: 0; font: 600 1.25em/1.3 var(--titre); color: var(--ivoire); max-width: 20em; }
+
+/* L'invitation : le QR code sur une carte de papier cerclée de laiton. */
+#qr {
+  width: min(34dvh, 58vw, 15em); aspect-ratio: 1; flex: none;
+  display: grid; place-items: center; padding: 6px;
+  color: var(--encre); background: #fff; border-radius: 4px; font-size: .85em;
+  box-shadow: 0 0 0 3px var(--cadre), 0 0 0 4.5px var(--laiton), 0 8px 16px rgb(20 4 4 / .45);
+}
+#qr svg { width: 100%; height: 100%; display: block; }
+.ligne-lien { margin: 0; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+#lien {
+  flex: 1 1 12em; min-width: 0; max-width: 22em; min-height: 44px;
+  font: 14px/1.2 ui-monospace, Consolas, monospace;
+  color: var(--encre); background: var(--papier); border: 0; border-radius: 4px; padding: .5em .6em;
+  box-shadow: inset 0 0 0 1.5px var(--noyer);
+}
+#lien:focus-visible { outline: 3px solid var(--laiton); outline-offset: 2px; }
+
+fieldset { margin: 0; padding: 0; border: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+legend { width: 100%; margin-bottom: .45em; padding: 0; font: 500 1.15em var(--titre); color: var(--texte-doux); }
+fieldset label {
+  position: relative; min-height: 44px; display: inline-flex; align-items: center;
+  padding: .3em 1em; border-radius: 6px; cursor: pointer;
+  border: 1.5px solid rgb(241 230 207 / .35);
+}
+fieldset input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+fieldset label:has(input:checked) { background: var(--cadre); border-color: var(--laiton); color: var(--ivoire); font-weight: 700; }
+fieldset label:has(input:focus-visible) { outline: 3px solid var(--laiton); outline-offset: 3px; }
+/* Petit téléphone : les quatre niveaux tiennent sur une ligne. */
+@media (max-width: 380px) {
+  fieldset { gap: 6px; }
+  fieldset label { padding-inline: .7em; }
+}
+
+.voile { background: rgb(30 8 8 / .62); }
+.cartouche {
+  width: min(100%, 28em); padding: 1.3em 1.2em 1.1em;
+  text-align: center;
+  color: var(--ivoire); background: linear-gradient(#3A2618, var(--ebene));
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 3px var(--ebene), inset 0 0 0 5px var(--laiton), 0 1em 2.5em rgb(0 0 0 / .5);
+}
+.cartouche p { margin: 0; }
+#promo-titre, #abandon-texte { font: 600 1.4em/1.25 var(--titre); }
+.cartouche .boutons { margin-top: 1em; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.boutons.promo { gap: 8px; }
+.piece-promo {
+  display: inline-flex; flex-direction: column; align-items: center; gap: .1em;
+  min-width: 5em; padding: .4em .6em .5em;
+}
+.piece-promo svg { width: 46px; height: 46px; }
+
+@media (max-width: 360px) {
+  #partie { gap: 5px; padding-top: 6px; padding-bottom: 6px; }
+  #commandes, #ecran-fin { gap: 6px; }
+  #pseudo { width: 6.5em; }
+  .plaque { padding: .35em .85em .4em; }
+  .piece-promo { min-width: 4.3em; }
+}
+
+/* Couché : l'échiquier à gauche sur toute la hauteur, la ligne, le bandeau,
+   la feuille de partie et les commandes à droite (le cadre 4:3). */
+@media (orientation: landscape) {
+  #partie {
+    --cote: clamp(15rem, 28vw, 22rem);
+    --plateau: min(calc(100dvh - 32px), calc(100vw - var(--cote) - 56px));
+    grid-template-columns: var(--plateau) var(--cote);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-areas: "plateau ligne" "plateau bandeau" "plateau feuille" "plateau commandes";
+    align-content: center;
+    gap: 10px 20px; padding: 16px;
+  }
+  #partie.avec-pendule {
+    --plateau: min(calc(100dvh - 32px), calc(100vw - var(--cote) - 56px));
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "plateau ligne" "plateau phaut" "plateau bandeau" "plateau feuille" "plateau pbas" "plateau commandes";
+  }
+  #echiquier { align-self: start; }
+  #entete, #bandeau { margin: 0; }
+  .carte-menu { gap: .8em; }
+  #feuille { align-self: stretch; }
+}
+
+/* Téléphone couché : la hauteur manque, tout se resserre. */
+@media (orientation: landscape) and (max-height: 500px) {
+  #partie {
+    --cote: 13.5em;
+    --plateau: min(calc(100dvh - 16px), calc(100vw - var(--cote) - 40px));
+    gap: 5px 14px; padding: 8px 12px;
+    font-size: .92em;
+  }
+  #partie.avec-pendule { --plateau: min(calc(100dvh - 16px), calc(100vw - var(--cote) - 40px)); }
+  :root { --h-pendule: 30px; }
+  #bandeau.fin { font-size: 1.1em; }
+  #commandes, #ecran-fin { gap: 6px; }
+  .plaque { padding: .3em .75em .35em; min-height: 40px; }
+  .discret { min-height: 40px; }
+  #coups { line-height: 1.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bandeau.reflechit::after { animation: none; }
+  .plaque { transition: none; }
+}
+
+/* Mode vignette (?vignette=1) : seule la toile reste. */
+body.vignette { overflow: auto; }
+body.vignette #page { display: none; }
+body.vignette canvas { display: block; }
+
+/* ------------------------------------------- disposition façon chess.com
+   Plus de feuille de partie : l'adversaire au-dessus de l'échiquier, toi en
+   dessous, puis le bandeau et les commandes. Le tout centré dans l'écran. */
+#feuille { display: none !important; }
+#partie.mode-robot #entete { display: none; }
+#partie.sans-temps .pendule-temps { display: none; }
+#partie.sans-temps .pendule-nom { font-weight: 700; }
+
+#partie, #partie.avec-pendule {
+  --plateau: min(calc(100vw - 2 * var(--gouttiere)), calc(100dvh - 150px - 2 * var(--h-pendule)), 720px);
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-areas: "ligne" "phaut" "plateau" "pbas" "bandeau" "commandes";
+  align-content: center;
+}
+
+@media (orientation: landscape) {
+  /* Couché : l'échiquier à gauche sur toute la hauteur ; à droite,
+     l'adversaire en haut, toi en bas, le bandeau et les commandes entre. */
+  #partie, #partie.avec-pendule {
+    --pad: 16px;
+    --cote: clamp(14rem, 26vw, 20rem);
+    --plateau: min(calc(100dvh - 2 * var(--pad)), calc(100vw - var(--cote) - 56px));
+    height: calc(var(--plateau) + 2 * var(--pad));
+    margin-top: calc((100dvh - var(--plateau) - 2 * var(--pad)) / 2);
+    padding: var(--pad);
+    grid-template-columns: var(--plateau) var(--cote);
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto auto;
+    grid-template-areas: "plateau phaut" "plateau ligne" "plateau ." "plateau bandeau" "plateau commandes" "plateau pbas";
+    align-content: stretch;
+  }
+  #echiquier { align-self: center; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  #partie, #partie.avec-pendule {
+    --pad: 8px;
+    --cote: 13.5em;
+    --plateau: min(calc(100dvh - 2 * var(--pad)), calc(100vw - var(--cote) - 40px));
+  }
+}
