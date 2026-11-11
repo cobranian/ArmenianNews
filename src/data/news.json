@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T04:23:31.404Z",
+  "generatedAt": "2026-11-11T05:23:25.590Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -86,16 +86,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/05.jpg.avif?itok=UKRtI3T5"
         },
         {
-          "title": "L’Arménie et le Portugal envisagent de renforcer leur coopération dans le domaine du sport",
-          "url": "https://courrier.am/larmenie-et-le-portugal-envisagent-de-renforcer-leur-cooperation-dans-le-domaine-du-sport",
-          "date": "2026-11-05T09:38:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/IMG_8711.jpeg.avif?itok=B5ULb16m"
-        },
-        {
           "title": "Douze forces politiques d’opposition annoncent la formation d’une coalition nationale en Arménie",
           "url": "https://courrier.am/douze-forces-politiques-dopposition-annoncent-la-formation-dune-coalition-nationale-en-armenie",
           "date": "2026-11-05T07:30:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/Screenshot_2_2.png.avif?itok=OqAnZxr8"
+        },
+        {
+          "title": "L’Arménie et le Portugal envisagent de renforcer leur coopération dans le domaine du sport",
+          "url": "https://courrier.am/larmenie-et-le-portugal-envisagent-de-renforcer-leur-cooperation-dans-le-domaine-du-sport",
+          "date": "2026-11-05T09:38:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/IMG_8711.jpeg.avif?itok=B5ULb16m"
         },
         {
           "title": "Zhanna Andreasyan rencontre le directeur général de l’Agence mondiale antidopage",
@@ -210,16 +210,16 @@
       "sectionKey": "arts-et-culture",
       "articles": [
         {
-          "title": "« Eden » : trois artistes gyumretsi réunis autour d’un même imaginaire",
-          "url": "https://courrier.am/eden-trois-artistes-gyumretsi-reunis-autour-dun-meme-imaginaire",
-          "date": "2026-11-04T05:49:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/3%2011%20Eden.jpg.avif?itok=67m0xqxs"
-        },
-        {
           "title": "Meghri clôt son année de Capitale culturelle de la CEI et passe le relais à la Biélorussie",
           "url": "https://courrier.am/meghri-clot-son-annee-de-capitale-culturelle-de-la-cei-et-passe-le-relais-la-bielorussie",
           "date": "2026-11-04T05:20:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/06.jpg.avif?itok=gzBzZ0eQ"
+        },
+        {
+          "title": "« Eden » : trois artistes gyumretsi réunis autour d’un même imaginaire",
+          "url": "https://courrier.am/eden-trois-artistes-gyumretsi-reunis-autour-dun-meme-imaginaire",
+          "date": "2026-11-04T05:49:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/3%2011%20Eden.jpg.avif?itok=67m0xqxs"
         },
         {
           "title": "À l’UNESCO, un concert célèbre le patrimoine culturel arménien",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Առանց տեղումների եղանակ. Երեւանի ամենատաք ու ամենացուրտ նոյեմբերի 11- ը",
+            "url": "https://hy.armradio.am/archives/769828",
+            "date": "2026-11-11T04:43:16.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2023/03/exanak-300x199.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Վարչապետը ներկա է գտնվել երեխաների բարեկեցության թեմայով գագաթնաժողովի բացմանը",
             "url": "https://hy.armradio.am/archives/769801",
             "date": "2026-11-10T18:26:13.000Z",
@@ -1211,13 +1218,6 @@
             "date": "2026-11-10T11:54:16.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_5882-768x512.jpeg",
             "category": "Հասարակություն"
-          },
-          {
-            "title": "ՄԻՊ-ն ուսումնասիրում է «Նուբարաշեն» ՔԿՀ-ում կալանավորի մահվան դեպքը. պարզաբանումներ կպահանջվեն պետական մարմիններից",
-            "url": "https://hy.armradio.am/archives/769675",
-            "date": "2026-11-10T11:41:47.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2023/02/332397794_1081541456566809_2794233794929775679_n-768x512.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Իսրայելում առաջարկում են հետաքննել Նեթանյահուի կառավարության ձախողումները եւ չեղարկել նրա օրոք ընդունված օրենքները",
+            "url": "https://hy.armradio.am/archives/769825",
+            "date": "2026-11-11T04:32:40.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/745768-768x432.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Մեծ Բրիտանիայում ձերբակալվել է ամերիկացի զինծառայող՝ Ռուսաստանի օգտին աշխատելու կասկածանքով",
             "url": "https://hy.armradio.am/archives/769822",
             "date": "2026-11-11T04:00:00.000Z",
@@ -1436,13 +1443,6 @@
             "date": "2026-11-09T18:55:48.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/897774693_4644257099192732_6078120180518491249_n-768x432.jpg",
             "category": "Միջազգային"
-          },
-          {
-            "title": "Սառնարանային համակարգերի կիբերհարձակումների մեջ Ֆրանսիան մեղադրել է Իրանին",
-            "url": "https://hy.armradio.am/archives/769510",
-            "date": "2026-11-09T17:26:55.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/eec149b0-dc5d-11f1-8fe6-5becaee5408f.jpg-768x432.webp",
-            "category": "Կարևոր"
           }
         ]
       },
@@ -2759,16 +2759,16 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794220365-9339.jpg"
         },
         {
-          "title": "Tribune : Haroutioun Kalaydjian veut que les ambassadeurs d’Arménie deviennent « commissaires » de la diaspora",
-          "url": "https://armenieinfo.tv/mer-oughin-35909/",
-          "date": "2026-11-10T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-35909.jpg"
-        },
-        {
           "title": "L’Arménie, l’Azerbaïdjan et les États-Unis lancent des groupes de planification technique pour avancer sur la Route Trump",
           "url": "https://armenieinfo.tv/larmenie-lazerbaidjan-et-les-etats-unis-lancent-des-groupes-de-planification-technique-pour-avancer-sur-la-route-trump/",
           "date": "2026-11-10T06:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794220474-2281.jpg"
+        },
+        {
+          "title": "Tribune : Haroutioun Kalaydjian veut que les ambassadeurs d’Arménie deviennent « commissaires » de la diaspora",
+          "url": "https://armenieinfo.tv/mer-oughin-35909/",
+          "date": "2026-11-10T06:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-35909.jpg"
         },
         {
           "title": "Mourad Papazian : une polémique en contre-feu pour tenter de survivre politiquement",
@@ -3721,7 +3721,7 @@
             "title": "Pashinyan arrives in Türkiye",
             "url": "https://armenpress.am/en/article/1265321",
             "date": "2026-11-11T04:19:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/11/QwR5XiLVHYRtRFRFIVp0b993CI6vNYOiK8eLbrzA.webp"
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/FRDC6YopibhbJVbrTZLv3hF8BEiMONZUXh8OQIS0.webp"
           },
           {
             "title": "Pashinyan to visit Türkiye on November 11",
@@ -3783,6 +3783,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "European Stocks - 10-11-26",
+            "url": "https://armenpress.am/en/article/1265325",
+            "date": "2026-11-11T04:55:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/IEGhS7CI3vk533dn8U6BP5QFd4bdsCsEifwrtyhP.webp"
+          },
+          {
+            "title": "Oil Prices Up - 10-11-26",
+            "url": "https://armenpress.am/en/article/1265322",
+            "date": "2026-11-11T04:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/c1cd4JfptLSU2AtF8ocsRC60vxoODM9himmvkQ19.webp"
+          },
+          {
+            "title": "NYMEX: Precious Metals Prices Down - 10-11-26",
+            "url": "https://armenpress.am/en/article/1265323",
+            "date": "2026-11-11T04:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/3QAHWrerq68wT6C95yNVFpFYM41h66HwNLH9xJfd.webp"
+          },
+          {
+            "title": "US stocks down - 10-11-26",
+            "url": "https://armenpress.am/en/article/1265324",
+            "date": "2026-11-11T04:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/O7scU7FgNujoptm8QSRFKLAwiFLsxPg2tJnRh5DW.webp"
+          },
+          {
             "title": "Armenian deputy economy minister discusses potential cooperation with Lion Economics founder",
             "url": "https://armenpress.am/en/article/1265314",
             "date": "2026-11-10T17:15:00.000Z",
@@ -3817,30 +3841,6 @@
             "url": "https://armenpress.am/en/article/1265214",
             "date": "2026-11-10T06:07:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/31/AOlsVwPhxuqCIreGgv6xZOvVO99H3VjmnaYFeHyE.webp"
-          },
-          {
-            "title": "US stocks up - 09-11-26",
-            "url": "https://armenpress.am/en/article/1265213",
-            "date": "2026-11-10T06:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "NYMEX: Precious Metals Prices Up - 09-11-26",
-            "url": "https://armenpress.am/en/article/1265212",
-            "date": "2026-11-10T06:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/30/g0AaIvD0t7w28RlTa78YPRvVjHqarCmzJAogpHnN.webp"
-          },
-          {
-            "title": "Oil Prices Down - 09-11-26",
-            "url": "https://armenpress.am/en/article/1265211",
-            "date": "2026-11-10T06:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
-          },
-          {
-            "title": "Asian Stocks down - 09-11-26",
-            "url": "https://armenpress.am/en/article/1265173",
-            "date": "2026-11-09T13:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/09/xqfTBb19AWo9ySrs1ePvZygzUEPtxWjmpwHQ5ajj.webp"
           }
         ]
       },
@@ -4195,10 +4195,16 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Աղվեսը գողացավ չրերը, իժը թաքնվեց մեքենայի անիվի մեջ. Բերտա Մարտիրոսյանի հանդիպումները վայրի բնության հետ",
+            "url": "https://armenpress.am/hy/article/1265278",
+            "date": "2026-11-11T05:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/10/XqQVUxTsQom7GS5EkYekI9A0RNZPVGoMT8voj2ZB.webp"
+          },
+          {
             "title": "Նիկոլ Փաշինյանն աշխատանքային այցով ժամանել է Թուրքիա",
             "url": "https://armenpress.am/hy/article/1265321",
-            "date": "2026-11-11T03:57:33.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/11/QwR5XiLVHYRtRFRFIVp0b993CI6vNYOiK8eLbrzA.webp"
+            "date": "2026-11-11T03:57:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/FRDC6YopibhbJVbrTZLv3hF8BEiMONZUXh8OQIS0.webp"
           },
           {
             "title": "Նիկոլ Փաշինյանը նոյեմբերի 11-ին աշխատանքային այցով կգտնվի Թուրքիայում",
@@ -4247,18 +4253,36 @@
             "url": "https://armenpress.am/hy/article/1265312",
             "date": "2026-11-10T16:43:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/10/pqqIeU9MKgm4opLaxOw8wtGcrnBroiDLuMBetctB.webp"
-          },
-          {
-            "title": "Հանրապետության տարածքում առաջիկա օրերին օդի ջերմաստիճանը կբարձրանա",
-            "url": "https://armenpress.am/hy/article/1265311",
-            "date": "2026-11-10T16:28:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/10/ujG6be79kZQEHQheu6YAp054q0N9mKRHGggWi7Mc.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Եվրոպական ինդեքսներ - 10/11/26",
+            "url": "https://armenpress.am/hy/article/1265325",
+            "date": "2026-11-11T04:54:17.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/IEGhS7CI3vk533dn8U6BP5QFd4bdsCsEifwrtyhP.webp"
+          },
+          {
+            "title": "Ամերիկյան ինդեքսները նվազել են - 10/11/26",
+            "url": "https://armenpress.am/hy/article/1265324",
+            "date": "2026-11-11T04:53:28.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/O7scU7FgNujoptm8QSRFKLAwiFLsxPg2tJnRh5DW.webp"
+          },
+          {
+            "title": "NYMEX. Թանկարժեք մետաղների գները նվազել են - 10/11/26",
+            "url": "https://armenpress.am/hy/article/1265323",
+            "date": "2026-11-11T04:52:39.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/3QAHWrerq68wT6C95yNVFpFYM41h66HwNLH9xJfd.webp"
+          },
+          {
+            "title": "Նավթի գներն աճել են - 10/11/26",
+            "url": "https://armenpress.am/hy/article/1265322",
+            "date": "2026-11-11T04:51:54.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/c1cd4JfptLSU2AtF8ocsRC60vxoODM9himmvkQ19.webp"
+          },
           {
             "title": "ՀՀ էկոնոմիկայի նախարարի տեղակալը Lion Economics ընկերության հիմնադիրի հետ քննարկել է համագործակցության հնարավորությունները",
             "url": "https://armenpress.am/hy/article/1265314",
@@ -4294,30 +4318,6 @@
             "url": "https://armenpress.am/hy/article/1265280",
             "date": "2026-11-10T12:46:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/10/8j6K3vpkfoZiw1zk32Ani4yN7Fk0Yf8lnTboADft.webp"
-          },
-          {
-            "title": "35-ամյակին՝ 35% զեղչ IDBank-ի նշված քարտերի համար",
-            "url": "https://armenpress.am/hy/article/1265272",
-            "date": "2026-11-10T12:12:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/10/Y3Zi6JLKYgRNlyQDvgikDuWEyQ7HYy46eXeq5wTm.webp"
-          },
-          {
-            "title": "Եվրոպական ինդեքսներ - 09/11/26",
-            "url": "https://armenpress.am/hy/article/1265214",
-            "date": "2026-11-10T06:07:34.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/31/AOlsVwPhxuqCIreGgv6xZOvVO99H3VjmnaYFeHyE.webp"
-          },
-          {
-            "title": "Ամերիկյան ինդեքսներն աճել են - 09/11/26",
-            "url": "https://armenpress.am/hy/article/1265213",
-            "date": "2026-11-10T06:06:29.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "NYMEX. Թանկարժեք մետաղների գներն աճել են - 09/11/26",
-            "url": "https://armenpress.am/hy/article/1265212",
-            "date": "2026-11-10T06:05:07.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/30/g0AaIvD0t7w28RlTa78YPRvVjHqarCmzJAogpHnN.webp"
           }
         ]
       },
@@ -4672,6 +4672,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Никол Пашинян прибыл в Турцию с рабочим визитом",
+            "url": "https://armenpress.am/ru/article/1265321",
+            "date": "2026-11-11T05:02:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/FRDC6YopibhbJVbrTZLv3hF8BEiMONZUXh8OQIS0.webp"
+          },
+          {
+            "title": "Никол Пашинян 11 ноября с рабочим визитом посетит Турцию",
+            "url": "https://armenpress.am/ru/article/1265320",
+            "date": "2026-11-11T04:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/RrAlEJCQ6dVIfsp6QmeUOsZmeSLXGWnaJpkqoFMZ.webp"
+          },
+          {
             "title": "Премьер-министр Пашинян присутствовал на открытии саммита «Дети прежде всего: глобальная приверженность благополучию детей»",
             "url": "https://armenpress.am/ru/article/1265317",
             "date": "2026-11-10T17:57:00.000Z",
@@ -4718,24 +4730,36 @@
             "url": "https://armenpress.am/ru/article/1265298",
             "date": "2026-11-10T14:26:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/10/oD72x8QK3ObvAQpIxuagTOhCfZeFBLCLkqy6C1Ov.webp"
-          },
-          {
-            "title": "Турция завершила подготовку к открытию пунктов пропуска на границе с Арменией",
-            "url": "https://armenpress.am/ru/article/1265294",
-            "date": "2026-11-10T14:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/10/vOO2kUvx4r3agcGAnYdm48f4scLMdikCtMzJGHDT.webp"
-          },
-          {
-            "title": "Бесконечная энергия и преданность делу: в Союзе писателей Армении отметили 80-летие Левона Ананяна",
-            "url": "https://armenpress.am/ru/article/1265291",
-            "date": "2026-11-10T13:40:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/10/aQevsgvzvcwsEsHjm5p0Bjvbz2buNk7ViYs7RGkm.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Европейские индексы - 10-11-26",
+            "url": "https://armenpress.am/ru/article/1265325",
+            "date": "2026-11-11T04:54:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/IEGhS7CI3vk533dn8U6BP5QFd4bdsCsEifwrtyhP.webp"
+          },
+          {
+            "title": "Американские индексы снизились - 10-11-26",
+            "url": "https://armenpress.am/ru/article/1265324",
+            "date": "2026-11-11T04:53:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/O7scU7FgNujoptm8QSRFKLAwiFLsxPg2tJnRh5DW.webp"
+          },
+          {
+            "title": "Цены на драгоценные металлы снизились - 10-11-26",
+            "url": "https://armenpress.am/ru/article/1265323",
+            "date": "2026-11-11T04:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/3QAHWrerq68wT6C95yNVFpFYM41h66HwNLH9xJfd.webp"
+          },
+          {
+            "title": "Цены на нефть выросли - 10-11-26",
+            "url": "https://armenpress.am/ru/article/1265322",
+            "date": "2026-11-11T04:51:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/11/c1cd4JfptLSU2AtF8ocsRC60vxoODM9himmvkQ19.webp"
+          },
           {
             "title": "Замминистра экономики Армении обсудил с основателем компании Lion Economics возможности сотрудничества",
             "url": "https://armenpress.am/ru/article/1265314",
@@ -4771,30 +4795,6 @@
             "url": "https://armenpress.am/ru/article/1265272",
             "date": "2026-11-10T12:16:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/10/Y3Zi6JLKYgRNlyQDvgikDuWEyQ7HYy46eXeq5wTm.webp"
-          },
-          {
-            "title": "Европейские индексы - 09-11-26",
-            "url": "https://armenpress.am/ru/article/1265214",
-            "date": "2026-11-10T06:07:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/31/AOlsVwPhxuqCIreGgv6xZOvVO99H3VjmnaYFeHyE.webp"
-          },
-          {
-            "title": "Американские индексы выросли - 09-11-26",
-            "url": "https://armenpress.am/ru/article/1265213",
-            "date": "2026-11-10T06:06:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/08/05/zKk3GoMcFbsLMlJ0zN6SwrlF1UlGF3iOijrzOFjK.webp"
-          },
-          {
-            "title": "Цены на драгоценные металлы выросли - 09-11-26",
-            "url": "https://armenpress.am/ru/article/1265212",
-            "date": "2026-11-10T06:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/30/g0AaIvD0t7w28RlTa78YPRvVjHqarCmzJAogpHnN.webp"
-          },
-          {
-            "title": "Цены на нефть снизились - 09-11-26",
-            "url": "https://armenpress.am/ru/article/1265211",
-            "date": "2026-11-10T06:03:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
           }
         ]
       },
@@ -10529,6 +10529,24 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia PM arrives in Turkey (VIDEO)",
+            "url": "https://news.am/en/news/1074022",
+            "date": "2026-11-11T03:35:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/AwAov5lgeycxuZS4.webp"
+          },
+          {
+            "title": "Armenia’s Pashinyan attends official dinner hosted by France’s Macron at Elysee Palace (PHOTOS)",
+            "url": "https://news.am/en/news/1074023",
+            "date": "2026-11-11T03:30:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/DLfI3OAuyZ4XWnpL.webp"
+          },
+          {
+            "title": "Pashinyan, Macron discuss Armenia-France strategic partnership agenda",
+            "url": "https://news.am/en/news/1073969",
+            "date": "2026-11-10T15:08:00.000Z",
+            "image": "https://news.am/storage/media/26/11/10/Jgop1vCWUxSKUVLL.webp"
+          },
+          {
             "title": "FM Lavrov: Russia not going to expel Armenia from CSTO",
             "url": "https://news.am/en/news/1073916",
             "date": "2026-11-10T12:01:00.000Z",
@@ -10569,24 +10587,6 @@
             "url": "https://news.am/en/news/1073891",
             "date": "2026-11-10T10:52:00.000Z",
             "image": "https://news.am/storage/media/26/11/10/lhCpR70Kati6QSB3.webp"
-          },
-          {
-            "title": "Daily work being done to have Armenian prisoners in Azerbaijan returned to Armenia, justice minister says",
-            "url": "https://news.am/en/news/1073888",
-            "date": "2026-11-10T10:44:00.000Z",
-            "image": "https://news.am/storage/media/26/11/10/fIlrN9GauyCmheum.webp"
-          },
-          {
-            "title": "Armenia premier sends diaspora commissioner to Turkey for 3 days",
-            "url": "https://news.am/en/news/1073872",
-            "date": "2026-11-10T09:38:00.000Z",
-            "image": "https://news.am/storage/media/26/11/10/DTMAMJYM3jLkItBt.webp"
-          },
-          {
-            "title": "Armenia has not announced intention to withdraw from CIS, secretary general says",
-            "url": "https://news.am/en/news/1073867",
-            "date": "2026-11-10T09:37:00.000Z",
-            "image": "https://news.am/storage/media/26/06/24/J3RLThkaqouawAxl.webp"
           }
         ]
       },
@@ -11191,6 +11191,54 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Պենտագոնը հայտարարել է «լիակատար հաղթանակի» մասին՝ Հեգսեթին իմփիչմենթ հայտարարելու անհաջող փորձից հետո",
+            "url": "https://news.am/hy/news/1074040",
+            "date": "2026-11-11T05:11:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/em71WBUl5VB8Pbmn.webp"
+          },
+          {
+            "title": "Թրամփը կոչ է արել կանգնեցնել Հեգսեթին պաշտոնանկ անել փորձող դեմոկրատներին",
+            "url": "https://news.am/hy/news/1074039",
+            "date": "2026-11-11T04:56:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/YYFaNCp0exgxN62s.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ Աշոտյանն առաջարկում է Փաշինյանին մտցնել «Մագնիցկու ցուցակ»",
+            "url": "https://news.am/hy/news/1074036",
+            "date": "2026-11-11T04:44:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/9weMzotkRa1sWjVF.webp"
+          },
+          {
+            "title": "Սպիտակ տունը պաշտպանել է Հեգսեթին՝ նրան իմփիչմենթ հայտարարելու փորձի կապակցությամբ",
+            "url": "https://news.am/hy/news/1074037",
+            "date": "2026-11-11T04:41:20.000Z",
+            "image": "https://news.am/storage/media/26/11/11/WgCfLCIkdgfqOK3a.webp"
+          },
+          {
+            "title": "«Ժողովուրդ». ՔՊ-ի դերասան պատգամավորը 2 տարում 3 տուն է գնել հեղափոխությունից հետո",
+            "url": "https://news.am/hy/news/1074035",
+            "date": "2026-11-11T04:38:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/vgToD9DJdsRoZNku.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ ՌԴ-ն կոնտրքայլ է մտածել",
+            "url": "https://news.am/hy/news/1074034",
+            "date": "2026-11-11T04:32:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/VVWXh9GzrcLEwdJj.webp"
+          },
+          {
+            "title": "Հանրապետականները որոշել են Սենատում և Ներկայացուցիչների պալատում իրենց առաջնորդներին",
+            "url": "https://news.am/hy/news/1074032",
+            "date": "2026-11-11T04:26:45.000Z",
+            "image": "https://news.am/storage/media/26/11/11/Ifabvozhe6vbmycT.webp"
+          },
+          {
+            "title": "«Իրավունք». Ապօրինության դեմ պայքա՞ր, թե՞ սոցիալական հարված",
+            "url": "https://news.am/hy/news/1074033",
+            "date": "2026-11-11T04:26:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/A3aDeA7F1DVhfw30.webp"
+          },
+          {
             "title": "«Ժողովուրդ». Կառավարությունն է որոշելու՝ որ ՀԿ-ն ու լրատվամիջոցն են անկախ, ում կարելի է ֆինանսավորել",
             "url": "https://news.am/hy/news/1074030",
             "date": "2026-11-11T04:20:00.000Z",
@@ -11201,54 +11249,6 @@
             "url": "https://news.am/hy/news/1074027",
             "date": "2026-11-11T04:08:00.000Z",
             "image": "https://news.am/storage/media/26/11/11/jELOFyI3o9kCRAqS.webp"
-          },
-          {
-            "title": "«Հրապարակ»․ Փաշինյանը կթողնի, որ իրար «փոր թափեն», թեև թիմում վստահ են, թե ով է իրենց թեկնածուն",
-            "url": "https://news.am/hy/news/1074028",
-            "date": "2026-11-11T03:54:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/3pXyILWO8yrxlBlM.webp"
-          },
-          {
-            "title": "«Իրավունք». «Ժամանակավոր ուստուպկեքի պիտի գնանք». Ինչ է հանձնարարել Փաշինյանը",
-            "url": "https://news.am/hy/news/1074025",
-            "date": "2026-11-11T03:47:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/67GqZfgqPAJO9cMb.webp"
-          },
-          {
-            "title": "«Ժողովուրդ». Ալեն Սիմոնյանի քայլը ՔՊ-ում դժգոհություն ու զայրույթ է առաջացրել",
-            "url": "https://news.am/hy/news/1074024",
-            "date": "2026-11-11T03:40:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/JDKhB4D5ONJHoJ9c.webp"
-          },
-          {
-            "title": "Նիկոլ Փաշինյանը ժամանել է Թուրքիա (վիդեո)",
-            "url": "https://news.am/hy/news/1074022",
-            "date": "2026-11-11T03:35:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/AwAov5lgeycxuZS4.webp"
-          },
-          {
-            "title": "Փաշինյանը Ելիսեյան պալատում մասնակցել է Մակրոնի անունից տրված պաշտոնական ընթրիքին (ֆոտո)",
-            "url": "https://news.am/hy/news/1074023",
-            "date": "2026-11-11T03:30:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/DLfI3OAuyZ4XWnpL.webp"
-          },
-          {
-            "title": "Պուտինը կբացի ՀԱՊԿ գագաթնաժողովը, որտեղ կքննարկեն կազմակերպությունում Հայաստանի ապագան. ТАСС",
-            "url": "https://news.am/hy/news/1074021",
-            "date": "2026-11-10T21:08:44.000Z",
-            "image": "https://news.am/storage/media/26/11/07/3efnFUGTQsPY5to6.webp"
-          },
-          {
-            "title": "Պենտագոնը հավանություն է տվել Լեհաստանում ԱՄՆ մշտական ռազմաբազայի ստեղծմանը",
-            "url": "https://news.am/hy/news/1074014",
-            "date": "2026-11-10T20:55:00.000Z",
-            "image": "https://news.am/storage/media/26/10/30/JaIucMy0Q1d3cqyM.webp"
-          },
-          {
-            "title": "ԱՄՆ Կոնգրեսի հետաքննությունը. Էփշտեյնի՝ 2005 թվականից հետո կատարած հանցագործությունները հնարավոր էր կանխել",
-            "url": "https://news.am/hy/news/1074011",
-            "date": "2026-11-10T20:40:00.000Z",
-            "image": "https://news.am/storage/media/26/08/25/NlXHO1kLGUspjQG0.webp"
           }
         ]
       },
@@ -11323,6 +11323,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Հայաստանի թիմը Բելգրադում մասնակցում է միջազգային հավաքի",
+            "url": "https://sport.news.am/arm/news/170184/",
+            "date": "2026-11-11T05:06:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170184.jpg"
+          },
+          {
             "title": "Օրելիեն Տչուամենին վնասվածք է ստացել Ֆրանսիայի հավաքակնում",
             "url": "https://sport.news.am/arm/news/170183/",
             "date": "2026-11-10T20:59:00.000Z",
@@ -11375,12 +11381,6 @@
             "url": "https://sport.news.am/arm/news/170175/",
             "date": "2026-11-10T11:13:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170175.jpg"
-          },
-          {
-            "title": "Գեւորգ Ղազարյանը՝ ՀՖՖ նախագահի թեկնածու (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/170174/",
-            "date": "2026-11-10T10:34:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170174.jpg"
           }
         ]
       },
@@ -11388,6 +11388,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "«Ժողովուրդ». ՔՊ-ի դերասան պատգամավորը 2 տարում 3 տուն է գնել հեղափոխությունից հետո",
+            "url": "https://news.am/hy/news/1074035",
+            "date": "2026-11-11T04:38:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/vgToD9DJdsRoZNku.webp"
+          },
           {
             "title": "«Ժողովուրդ». Կառավարությունն է որոշելու՝ որ ՀԿ-ն ու լրատվամիջոցն են անկախ, ում կարելի է ֆինանսավորել",
             "url": "https://news.am/hy/news/1074030",
@@ -11441,12 +11447,6 @@
             "url": "https://news.am/hy/news/1073945",
             "date": "2026-11-10T13:30:00.000Z",
             "image": "https://news.am/storage/media/26/11/10/zr3m4to1fRxeFXqm.webp"
-          },
-          {
-            "title": "Երկաթուղու կոնցեսիոն կառավարումը Ղազախստանին փոխանցելու հարց չենք քննարկել. Մհեր Գրիգորյան",
-            "url": "https://news.am/hy/news/1073931",
-            "date": "2026-11-10T12:48:20.000Z",
-            "image": "https://img.youtube.com/vi/GwIBkc-2NRM/maxresdefault.jpg"
           }
         ]
       },
@@ -11454,6 +11454,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "ՆՈՅԵՄԲԵՐԻ 11-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
+            "url": "https://style.news.am/arm/news/116971/",
+            "date": "2026-11-11T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116971.jpg"
+          },
           {
             "title": "Հարթ ճակատից մինչև «տիկնիկային» շուրթեր․ ինչպես «Մար-ա-Լագոյի դեմքը» քաղաքական զենք դարձավ Թրամփի շրջապատում",
             "url": "https://style.news.am/arm/news/117075/",
@@ -11507,12 +11513,6 @@
             "url": "https://style.news.am/arm/news/117067/",
             "date": "2026-11-10T10:17:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117067.jpg"
-          },
-          {
-            "title": "Բիանկա Սենսորին կրկին ցնցել է իր համարձակ կերպարով՝ Լոս Անջելեսում գնումներ անելիս",
-            "url": "https://style.news.am/arm/news/117065/",
-            "date": "2026-11-10T09:43:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117065.jpg"
           }
         ]
       },
@@ -11719,6 +11719,12 @@
         "label": "Հասարակություն",
         "articles": [
           {
+            "title": "«Իրավունք». Ապօրինության դեմ պայքա՞ր, թե՞ սոցիալական հարված",
+            "url": "https://news.am/hy/news/1074033",
+            "date": "2026-11-11T04:26:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/A3aDeA7F1DVhfw30.webp"
+          },
+          {
             "title": "Ինչու պարտադիր չէ, որ բարի արարքները անշահախնդիր լինեն",
             "url": "https://news.am/hy/news/1073851",
             "date": "2026-11-10T23:42:00.000Z",
@@ -11771,12 +11777,6 @@
             "url": "https://news.am/hy/news/1073060",
             "date": "2026-11-06T07:40:00.000Z",
             "image": "https://news.am/storage/media/26/11/06/2cgrYb6rN94NaDKd.webp"
-          },
-          {
-            "title": "Աշխատանքի և բարեկեցության նախարարությանը լրացուցիչ 1,1 մլն դոլար է հատկացվել",
-            "url": "https://news.am/hy/news/1072832",
-            "date": "2026-11-05T10:02:02.000Z",
-            "image": "https://news.am/storage/media/26/11/05/ikw2szg5GjyppBy9.webp"
           }
         ]
       },
@@ -11853,10 +11853,46 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Палата представителей США отложила рассмотрение импичмента Хегсету",
+            "url": "https://news.am/ru/news/1074041",
+            "date": "2026-11-11T05:26:00.000Z",
+            "image": "https://news.am/storage/media/26/06/04/WXXkI0Bp9qf0RslP.webp"
+          },
+          {
+            "title": "Пентагон объявил о «полной победе» после неудачной попытки импичмента Хегсета",
+            "url": "https://news.am/ru/news/1074040",
+            "date": "2026-11-11T05:11:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/em71WBUl5VB8Pbmn.webp"
+          },
+          {
+            "title": "Трамп призвал остановить демократов, пытающихся отправить в отставку Хегсета",
+            "url": "https://news.am/ru/news/1074039",
+            "date": "2026-11-11T04:56:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/YYFaNCp0exgxN62s.webp"
+          },
+          {
+            "title": "Белый дом выступил в защиту Хегсета из-за попытки объявить ему импичмент",
+            "url": "https://news.am/ru/news/1074037",
+            "date": "2026-11-11T04:41:20.000Z",
+            "image": "https://news.am/storage/media/26/11/11/WgCfLCIkdgfqOK3a.webp"
+          },
+          {
             "title": "Республиканцы определились с лидерами в Сенате и Палате представителей",
             "url": "https://news.am/ru/news/1074032",
             "date": "2026-11-11T04:26:45.000Z",
             "image": "https://news.am/storage/media/26/11/11/Ifabvozhe6vbmycT.webp"
+          },
+          {
+            "title": "Никол Пашинян прибыл в Турцию (видео)",
+            "url": "https://news.am/ru/news/1074022",
+            "date": "2026-11-11T03:35:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/AwAov5lgeycxuZS4.webp"
+          },
+          {
+            "title": "Пашинян принял участие в официальном ужине от имени Макрона в Елисейском дворце (фото)",
+            "url": "https://news.am/ru/news/1074023",
+            "date": "2026-11-11T03:30:00.000Z",
+            "image": "https://news.am/storage/media/26/11/11/DLfI3OAuyZ4XWnpL.webp"
           },
           {
             "title": "ТАСС: Путин откроет саммит ОДКБ, на котором обсудят будущее Армении в организации",
@@ -11875,42 +11911,6 @@
             "url": "https://news.am/ru/news/1074011",
             "date": "2026-11-10T20:40:00.000Z",
             "image": "https://news.am/storage/media/26/08/25/NlXHO1kLGUspjQG0.webp"
-          },
-          {
-            "title": "Пашинян отправится из Парижа в Анталью",
-            "url": "https://news.am/ru/news/1074018",
-            "date": "2026-11-10T20:30:26.000Z",
-            "image": "https://news.am/storage/media/26/11/11/J4KVoLhT60ZHeEyp.webp"
-          },
-          {
-            "title": "Байден раскрыл содержание письма Трампа, оставленного в Белом доме в день инаугурации",
-            "url": "https://news.am/ru/news/1074007",
-            "date": "2026-11-10T20:25:00.000Z",
-            "image": "https://news.am/storage/media/26/07/31/hEV1WhAvJo7PnjiI.webp"
-          },
-          {
-            "title": "Бангладеш отказал экс-премьеру Хасине в паспорте и потребовал ее экстрадиции из Индии",
-            "url": "https://news.am/ru/news/1074003",
-            "date": "2026-11-10T19:39:00.000Z",
-            "image": "https://news.am/storage/media/26/06/28/dNtghZAwsFLpKB6P.webp"
-          },
-          {
-            "title": "Смерть за решеткой доведенного до инфаркта оппозиционера в Армении: «Итоги дня» – видеоновости на русском",
-            "url": "https://news.am/ru/news/1074016",
-            "date": "2026-11-10T19:38:36.000Z",
-            "image": "https://img.youtube.com/vi/R_wKHClDfSE/maxresdefault.jpg"
-          },
-          {
-            "title": "Путин пригласил Лукашенко на домашний ужин после встречи в Ново-Огарево",
-            "url": "https://news.am/ru/news/1074015",
-            "date": "2026-11-10T19:38:30.000Z",
-            "image": "https://news.am/storage/media/26/06/26/hg9uwjz8PE46cxNy.webp"
-          },
-          {
-            "title": "Республиканцы избрали Джима Джордана лидером меньшинства в Палате представителей США",
-            "url": "https://news.am/ru/news/1074013",
-            "date": "2026-11-10T19:29:28.000Z",
-            "image": "https://news.am/storage/media/26/11/10/qkMrmAVPSNH3TZTd.webp"
           }
         ]
       },
@@ -12117,6 +12117,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 11 НОЯБРЯ",
+            "url": "https://style.news.am/rus/news/116971/",
+            "date": "2026-11-11T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116971.jpg"
+          },
+          {
             "title": "От гладкого лба до «кукольных» губ: как «лицо Мар-а-Лаго» стало политическим оружием в окружении Трампа",
             "url": "https://style.news.am/rus/news/117075/",
             "date": "2026-11-10T19:01:00.000Z",
@@ -12169,12 +12175,6 @@
             "url": "https://style.news.am/rus/news/117067/",
             "date": "2026-11-10T10:17:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117067.jpg"
-          },
-          {
-            "title": "Бьянка Цензори вновь шокировала откровенным нарядом во время шопинга в Лос-Анджелесе",
-            "url": "https://style.news.am/rus/news/117065/",
-            "date": "2026-11-10T09:43:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117065.jpg"
           }
         ]
       },
@@ -12249,6 +12249,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "ABR: Детские травмы могут повышать риск развития зависимости от азартных игр",
+            "url": "https://med.news.am/rus/news/42313/abr-detskie-travmiy-mogut-poviyshat-risk-razvitiya-zavisimosti-ot-azartniykh-igr.html",
+            "date": "2026-11-11T04:32:00.000Z",
+            "image": "https://med.news.am/static/news/s/2026/11/42313.jpg"
+          },
+          {
             "title": "Ученые испытали новый метод перенаправления крови к сердцу и мозгу при остановке сердца",
             "url": "https://med.news.am/rus/news/42312/ucheniye-ispiytali-noviyiy-metod-perenapravleniya-krovi-k-serdcu-i-mozgu-pri-ostanovke-serdca.html",
             "date": "2026-11-10T18:38:00.000Z",
@@ -12301,12 +12307,6 @@
             "url": "https://med.news.am/rus/news/42305/issledovanie-zamena-molochniykh-produktov-alternativami-rastitelnogo-proiskhozhdeniya-opasna-dlya-zdorovya.html",
             "date": "2026-11-09T17:50:00.000Z",
             "image": "https://med.news.am/static/news/s/2026/11/42305.jpg"
-          },
-          {
-            "title": "Одобрены испытания двух новых вакцин от Эболы на фоне вспышки в Африке",
-            "url": "https://med.news.am/rus/news/42304/odobreniy-ispiytaniya-dvukh-noviykh-vakcin-ot-eboliy-na-fone-vspiyshki-v-afrike.html",
-            "date": "2026-11-09T15:53:00.000Z",
-            "image": "https://med.news.am/static/news/s/2026/11/42304.jpg"
           }
         ]
       },
