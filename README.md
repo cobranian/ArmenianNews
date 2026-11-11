@@ -889,9 +889,9 @@ projet.
 ### Le mode ami : configuration Firebase (une fois)
 
 Le mode « avec un ami » passe par une Realtime Database du projet Firebase
-`armenie-info`. Tant que `apiKey` est vide dans `public/play/net/config.js`, le
-bouton affiche « pas encore configuré » et le SDK Firebase n'est jamais
-téléchargé. Pour l'allumer, dans la console du projet `armenie-info` :
+`armenie-info`. La configuration est remplie dans `public/play/net/config.js` ; si `apiKey` y
+était vide, le bouton afficherait « pas encore configuré » et le SDK Firebase ne
+serait jamais téléchargé. Étapes faites dans la console du projet `armenie-info` :
 
 1. Créer la **Realtime Database**, en `europe-west1` et en mode verrouillé.
 2. Activer l'authentification **Anonyme** (Authentication → Sign-in method).

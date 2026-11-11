@@ -23,7 +23,8 @@ const BASE = 'http://' + EMU;
 // Le namespace que vise le SDK : celui de databaseURL dans public/play/net/
 // config.js (base armenie-info-default-rtdb, europe-west1). Uniquement dans
 // l'émulateur (projet demo-armenie-info) : rien ne touche la prod. Tant que
-// config.js est vide, sdk/crochets.mjs y pose DATABASE_URL.
+// config.js est vide (jamais en prod), sdk/crochets.mjs y pose DATABASE_URL.
+// test/jeux-sync.test.mjs exige que NS égale celui de config.js.
 const NS = 'armenie-info-default-rtdb';
 const DATABASE_URL = 'https://' + NS + '.europe-west1.firebasedatabase.app';
 const JOUR = 24 * 60 * 60 * 1000;
