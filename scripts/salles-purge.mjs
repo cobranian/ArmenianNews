@@ -39,54 +39,93 @@ async function jetonOAuth(sa) {
   return body.access_token
 }
 
-async function appel(methode, url, jeton, corps) {
-  const res = await fetch(url, {
-    method: methode,
-    headers: { authorization: `Bearer ${jeton}`, 'content-type': 'application/json' },
-    body: corps === undefined ? undefined : JSON.stringify(corps),
-    signal: AbortSignal.timeout(DELAI),
-  })
-  const texte = await res.text()
-  if (!res.ok) {
-    const e = new Error(`${methode} ${new URL(url).pathname} : HTTP ${res.status} ${texte.slice(0, 200)}`)
-    e.statut = res.status
-    e.texte = texte
-    throw e
+
+// Repli sans index : au plus PLAFOND salles relues une par une, par jeu et
+// par passage ; le reste attend le passage suivant.
+export const PLAFOND = 500
+
+function melanger(t) {
+  for (let i = t.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [t[i], t[j]] = [t[j], t[i]]
   }
-  return texte ? JSON.parse(texte) : null
+  return t
 }
 
+const sansIndex = (e) => e.statut === 400 && /index/i.test(e.texte ?? '')
+
 // cible : { base, ns? } ; rend le nombre de salles effacées.
-export async function purger({ base = BASE_PROD, ns, jeton, maintenant = Date.now(), journal = console.log } = {}) {
+//
+// Deux lectures triées par creeLe couvrent TOUTES les salles, parce que
+// l'ordre de la Realtime Database est total : null (creeLe absent), false,
+// true, nombres, chaînes, objets. `endAt=<limite>` rend null → nombres ≤
+// limite (les vieilles et celles sans creeLe) ; `startAt=<limite+1>` rend
+// nombres > limite → chaînes → objets (les jeunes, et celles à creeLe non
+// numérique). Une jeune n'est donc jamais relue à part. La lecture shallow
+// ne sert plus que de filet : un code absent des deux lots (salle écrite
+// entre les lectures) est relu seul.
+export async function purger({
+  base = BASE_PROD, ns, jeton, maintenant = Date.now(), journal = console.log,
+  fetch: f = globalThis.fetch, plafond = PLAFOND,
+} = {}) {
+  const appel = async (methode, url, corps) => {
+    const res = await f(url, {
+      method: methode,
+      headers: { authorization: `Bearer ${jeton}`, 'content-type': 'application/json' },
+      body: corps === undefined ? undefined : JSON.stringify(corps),
+      signal: AbortSignal.timeout(DELAI),
+    })
+    const texte = await res.text()
+    if (!res.ok) {
+      const e = new Error(`${methode} ${new URL(url).pathname} : HTTP ${res.status} ${texte.slice(0, 200)}`)
+      e.statut = res.status
+      e.texte = texte
+      throw e
+    }
+    return texte ? JSON.parse(texte) : null
+  }
   const cible = { base, ns }
+  const limite = maintenant - PEREMPTION_MS
   let total = 0
   for (const jeu of JEUX) {
-    // 1. Les salles dont creeLe ≤ maintenant − 24 h (index creeLe, règles).
+    // 1. Les deux lots triés (index creeLe des règles).
     let lot = {}
+    let indexe = true
     try {
-      lot = await appel('GET', urlSalles(cible, jeu, { orderBy: '"creeLe"', endAt: String(maintenant - PEREMPTION_MS) }), jeton) ?? {}
+      const vieux = await appel('GET', urlSalles(cible, jeu, { orderBy: '"creeLe"', endAt: String(limite) }))
+      const jeunes = await appel('GET', urlSalles(cible, jeu, { orderBy: '"creeLe"', startAt: String(limite + 1) }))
+      lot = { ...(jeunes ?? {}), ...(vieux ?? {}) }
     } catch (e) {
-      // Règles sans `.indexOn` (pas encore déployées) : la base refuse le
-      // tri. Tout passe alors par la lecture salle par salle — plus lent,
-      // même résultat.
-      if (e.statut !== 400 || !/index/i.test(e.texte ?? '')) throw e
+      // Règles sans `.indexOn` (pas encore déployées) : la base refuse le tri.
+      if (!sansIndex(e)) throw e
+      indexe = false
       journal(`· purge/${jeu} : index creeLe absent des règles en ligne — lecture salle par salle`)
     }
     const aEffacer = new Set(sallesPerimees(lot, maintenant))
 
-    // 2. Ce que le tri ne garantit pas (creeLe absent ou non numérique) : la
-    // liste des codes, puis creeLe seul, pour les codes absents du premier lot.
-    const shallow = await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }), jeton)
-    for (const code of codesAVerifier(shallow, Object.keys(lot ?? {}))) {
-      const creeLe = await appel('GET', urlSalles(cible, jeu, {}, `${code}/creeLe`), jeton)
-      for (const c of sallesPerimees({ [code]: { creeLe: creeLe ?? undefined } }, maintenant)) aEffacer.add(c)
+    // 2. Le filet (ou, sans index, tout) : la liste des codes, puis creeLe
+    // seul pour les codes absents des lots — tirés au hasard et plafonnés,
+    // pour que des jeunes relues à chaque passage ne bloquent pas le reste.
+    const shallow = await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }))
+    const aVerifier = melanger(codesAVerifier(shallow, Object.keys(lot)))
+    if (aVerifier.length > plafond) {
+      journal(`· purge/${jeu} : ${aVerifier.length} salles à relire, ${aVerifier.length - plafond} restantes au passage suivant`)
+    }
+    if (indexe && aVerifier.length) journal(`· purge/${jeu} : ${aVerifier.length} salle(s) hors des lots triés, relue(s) une par une`)
+    for (const code of aVerifier.slice(0, plafond)) {
+      const creeLe = await appel('GET', urlSalles(cible, jeu, {}, `${code}/creeLe`))
+      // creeLe vide : salle sans horodatage, ou enfant primitif (que le
+      // shallow du parent rend aussi `true`, mesuré sur l'émulateur) —
+      // le shallow de l'enfant tranche : un objet rend {clé: true}.
+      const salle = creeLe === null ? await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }, code)) : { creeLe }
+      for (const c of sallesPerimees({ [code]: salle }, maintenant)) aEffacer.add(c)
     }
 
     // 3. Un PATCH à null par paquet de 200 codes.
     const codes = [...aEffacer]
     for (let i = 0; i < codes.length; i += 200) {
       const corps = Object.fromEntries(codes.slice(i, i + 200).map((c) => [c, null]))
-      await appel('PATCH', urlSalles(cible, jeu), jeton, corps)
+      await appel('PATCH', urlSalles(cible, jeu), corps)
     }
     if (codes.length) journal(`· purge/${jeu} : ${codes.length} salle(s) effacée(s)`)
     total += codes.length
@@ -94,16 +133,26 @@ export async function purger({ base = BASE_PROD, ns, jeton, maintenant = Date.no
   return total
 }
 
+// Le secret est une clé privée : un JSON.parse en échec citerait un morceau
+// de l'entrée dans son message. Message générique, rien de l'entrée.
+function compteDeService(brut) {
+  let sa
+  try {
+    sa = parseServiceAccount(brut)
+  } catch {
+    throw new Error('secret du compte de service illisible')
+  }
+  if (!sa) throw new Error('FIREBASE_SERVICE_ACCOUNT absent')
+  return sa
+}
+
 async function main() {
   let jeton = process.env.SALLES_JETON
-  if (!jeton) {
-    const sa = parseServiceAccount(process.env.FIREBASE_SERVICE_ACCOUNT)
-    if (!sa) throw new Error('FIREBASE_SERVICE_ACCOUNT absent')
-    jeton = await jetonOAuth(sa)
-  }
+  if (!jeton) jeton = await jetonOAuth(compteDeService(process.env.FIREBASE_SERVICE_ACCOUNT))
   const n = await purger({ base: process.env.SALLES_BASE_URL || BASE_PROD, ns: process.env.SALLES_NS || undefined, jeton })
   console.log(`purge : ${n} salle(s) effacée(s)`)
 }
+
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   main().catch((e) => {

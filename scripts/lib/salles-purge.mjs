@@ -33,9 +33,10 @@ export function sallesPerimees(salles, maintenant) {
     .map(([code]) => code)
 }
 
-// Une lecture `shallow=true` rend `true` pour un enfant objet, et la valeur
-// elle-même pour un enfant primitif. Seuls les objets hors du premier lot
-// (lecture orderBy) restent à vérifier un par un.
+// Une lecture `shallow=true` rend `true` pour chaque enfant — y compris un
+// enfant primitif, mesuré sur l'émulateur ; une autre valeur est écartée par
+// prudence. Seuls les codes hors des lots triés restent à vérifier un par un
+// (scripts/salles-purge.mjs relit alors l'enfant pour écarter un primitif).
 export function codesAVerifier(shallow, dejaVus) {
   if (!objet(shallow)) return []
   const vus = new Set(dejaVus)

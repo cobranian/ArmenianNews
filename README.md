@@ -148,7 +148,13 @@ from the other's benign no-op.
 
   > **The trade-off, stated plainly.** One key carrying Hosting Admin on two
   > projects widens the blast radius if it leaks; two scoped keys would contain
-  > it but double the upkeep. The current choice is the former. What is *not*
+  > it but double the upkeep. The current choice is the former. Since
+  > 11 Nov 2026 the same account also holds **Firebase Realtime Database Admin**
+  > on `armenie-info`, for the hourly purge of game rooms (see « Jeux »): it
+  > reads and writes the whole Realtime Database, bypassing its rules, so a
+  > leaked key would expose the friend-mode rooms too. Same trade-off, same
+  > choice — one key to maintain rather than a second key reserved for the
+  > purge. What is *not*
   > acceptable either way is the **`firebase-adminsdk` key** the Firebase
   > console offers under *Project settings → Service accounts → Generate new
   > private key*: that identity can bypass database security rules and mint auth
@@ -719,7 +725,7 @@ project.
 
 | Name | Kind | Purpose |
 |---|---|---|
-| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for **both** showcases. The account belongs to `armenie-info` and was additionally granted Firebase Hosting Admin on `armenia-news-b146e` — see [The two domains](#the-two-domains). Hosting Admin only, on both. |
+| `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` | secret | Deploy credentials for **both** showcases. The account belongs to `armenie-info` and was additionally granted Firebase Hosting Admin on `armenia-news-b146e` — see [The two domains](#the-two-domains). Hosting Admin on both, plus Firebase Realtime Database Admin on `armenie-info` (hourly purge of game rooms, see « Jeux »). |
 | `ARMRADIO_PROXY` | variable | URL of the armradio Cloudflare Worker proxy (see [Newswire source chain](#newswire-source-chain-armradio)). Optional — the scraper falls back without it. |
 | `ASBAREZ_PROXY` | variable | URL of the Asbarez Cloudflare Worker proxy. **Required** from CI — both Asbarez editions 403 datacenter IPs outright, so without it the Asbarez feed comes back empty every hour (no direct fallback, unlike armradio). |
 
@@ -894,7 +900,8 @@ téléchargé. Pour l'allumer, dans la console du projet `armenie-info` :
 4. Si la clé d'API est restreinte par référent, y ajouter les deux domaines
    (`armenieinfo.ch` et `armenianews.org`).
 5. *(second temps — après la tâche 8)* Déployer les règles **à la main** —
-   la CI garde son seul rôle Hosting Admin :
+   la CI ne déploie que Hosting (son rôle Realtime Database Admin sert à la
+   seule purge des salles, ci-dessous) :
 
    ```bash
    npx --yes firebase-tools@15.34.2 deploy --only database --project armenie-info
@@ -909,18 +916,30 @@ lit les salles une par une (même résultat, plus d'appels).
 Les salles **s'effacent d'elles-mêmes** (décision de Nareg, 11 nov. 2026).
 L'étape « Effacer les salles de jeu de plus de 24 h » de `hourly.yml` lance
 `scripts/salles-purge.mjs` à chaque passage planifié : pour `echecs` et
-`backgammon`, elle lit `salles/<jeu>` trié par `creeLe` jusqu'à « maintenant
-− 24 h », puis, par une lecture `shallow`, le `creeLe` des autres salles une
-par une, et efface d'un `PATCH` à `null` celles de plus de 24 h et celles sans
-`creeLe` numérique. Une salle disparaît donc **au plus tard environ 25 h**
-après sa création — c'est ce que dit la politique de confidentialité.
+`backgammon`, elle lit `salles/<jeu>` trié par `creeLe` en deux lots — jusqu'à
+« maintenant − 24 h » (les vieilles, et celles sans `creeLe`), puis au-delà
+(les jeunes, et celles à `creeLe` non numérique) —, contrôle par une lecture
+`shallow` qu'aucun code n'a échappé aux deux (relu alors un par un), et
+efface d'un `PATCH` à `null` celles de plus de 24 h et celles sans `creeLe`
+numérique. Une salle disparaît donc **normalement environ 25 h** après sa
+création ; si la chaîne horaire saute un passage (main cassé, jeton du Worker
+expiré, rôle IAM retiré), au passage suivant. C'est ce que dit la politique
+de confidentialité — sans promesse ferme, à dessein.
+
+Si les règles en ligne n'ont pas encore l'index `creeLe`, la base refuse le
+tri (400) : la purge relit alors les salles une par une, **500 au plus par
+jeu et par passage** ; le reste attend le passage suivant (`· purge/<jeu> :
+… restantes au passage suivant`).
 
 Elle s'authentifie avec le compte de service de la CI
 (`FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO`, celui du déploiement Hosting), en
 OAuth2 (portées `userinfo.email` et `firebase.database`). **Ce compte doit
 porter le rôle « Firebase Realtime Database Admin » sur le projet
 `armenie-info`** (console Cloud → IAM → le compte `github-action-…` →
-Modifier → Ajouter un rôle). Sans ce rôle, la base répond 401/403 : rien ne
+Modifier → Ajouter un rôle). Ce rôle lit et écrit toute la base en
+contournant les règles : une fuite de la clé exposerait aussi les salles.
+Compromis assumé (une clé à entretenir plutôt qu'une seconde réservée à la
+purge), comme le rôle Hosting croisé (« The two domains »). Sans ce rôle, la base répond 401/403 : rien ne
 casse, l'étape est en `continue-on-error`, et le seul signe est `✗ purge` au
 log — plus une ligne « effacement des salles de jeu » dans l'issue
 `[sources-down]`, d'où la place de l'étape, juste **avant** le contrôle de

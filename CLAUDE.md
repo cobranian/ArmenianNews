@@ -1064,7 +1064,7 @@ de production servent toujours depuis la racine de leur domaine.
   **`armenie-info`** et non lokolok — le remplacer par celui de lokolok
   enverrait les salles d'Arménie Info dans la base d'un autre site, sans
   erreur. Le mode ami est décrit dans `privacy.games.*` : il doit suivre.
-  Ce texte promet l'effacement des salles sous ~25 h : la purge horaire
+  Ce texte annonce l'effacement des salles vers ~25 h : la purge horaire
   (`scripts/salles-purge.mjs`) exige le rôle « Firebase Realtime Database
   Admin » du compte de service de la CI — retiré, elle échoue sans casser
   rien (`✗ purge`, ligne dans `[sources-down]`) et le texte ment.

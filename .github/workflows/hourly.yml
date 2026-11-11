@@ -341,10 +341,18 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         env:
-          # Dedicated deploy identity (github-action-*), Firebase Hosting Admin
-          # and nothing else. The old secret held the firebase-adminsdk key,
-          # which could also bypass database security rules and mint tokens for
-          # other service accounts — far more than publishing a static site needs.
+          # Dedicated deploy identity (github-action-*). The old secret held the
+          # firebase-adminsdk key, which could also bypass database security
+          # rules and mint tokens for other service accounts — far more than
+          # publishing a static site needs. Rôles aujourd'hui : Firebase Hosting
+          # Admin (les deux projets, ci-dessous) ET, depuis le 11 nov. 2026,
+          # « Firebase Realtime Database Admin » sur armenie-info, pour la purge
+          # des salles (étape « Effacer les salles de jeu »). Ce second rôle
+          # lit et écrit TOUTE la Realtime Database en contournant ses règles :
+          # une fuite de la clé expose aussi les salles du mode ami. Compromis
+          # assumé, comme le rôle croisé : une seule clé à entretenir, au prix
+          # d'une portée plus large ; une seconde clé réservée à la purge la
+          # cloisonnerait. Toujours sans création de jetons (pas d'adminsdk).
           #
           # UN SEUL secret pour DEUX projets, et ce n'est pas un oubli : ce
           # compte de service appartient à `armenie-info` et s'est vu accorder

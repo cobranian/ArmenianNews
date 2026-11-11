@@ -64,6 +64,56 @@ test('purger : efface vieille, sans creeLe et creeLe texte ; garde jeune, 23 h 5
   await vider();
 });
 
+// Un fetch espion : les URL appelées, dans l'ordre.
+function espion() {
+  const urls = [];
+  const f = (url, init) => { urls.push(`${(init && init.method) || 'GET'} ${new URL(url).pathname}`); return fetch(url, init); };
+  return { urls, f };
+}
+
+test('purger : aucune salle n’est relue une par une quand l’index est là (jeunes comprises)', async () => {
+  const { purger } = await import(pathToFileURL(SCRIPT).href);
+  const { maintenant, plan } = await semer();
+  const { urls, f } = espion();
+  const n = await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: () => {}, fetch: f });
+  assert.strictEqual(n, 6);
+  assert.ok(urls.length >= 6, 'l’espion n’a rien vu : purger ignore son option fetch');
+  const parSalle = urls.filter((u) => /\/creeLe\.json$/.test(u));
+  assert.deepStrictEqual(parSalle, [], 'lectures salle par salle : ' + parSalle.join(', '));
+  for (const p of Object.values(plan)) {
+    assert.ok(!urls.some((u) => u.includes(p.jeune) || u.includes(p.limite)), 'une jeune a été lue à part');
+  }
+  await vider();
+});
+
+test('purger sans index : repli salle par salle, plafonné par passage', async () => {
+  const { purger } = await import(pathToFileURL(SCRIPT).href);
+  const sansIndex = reglesDuDepot();
+  delete sansIndex.rules.salles.$jeu['.indexOn'];
+  await poserRegles(sansIndex);
+  try {
+    const { maintenant, plan } = await semer();
+    const journal = [];
+    // Plafond de 2 : 5 salles-objets par jeu à relire, 2 seulement par passage.
+    const n1 = await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: (l) => journal.push(l), plafond: 2 });
+    assert.ok(journal.some((l) => /index creeLe absent/.test(l)), journal.join('\n'));
+    assert.ok(journal.some((l) => /restantes au passage suivant/.test(l)), journal.join('\n'));
+    assert.ok(n1 <= 4, `plafond dépassé : ${n1} effacées en un passage (2 lectures par jeu au plus)`);
+    // Les codes relus sont tirés au hasard : les jeunes, gardées, ne bloquent
+    // pas indéfiniment les mêmes places du plafond.
+    let total = n1;
+    for (let i = 0; i < 60 && total < 6; i++) total += await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: () => {}, plafond: 2 });
+    assert.strictEqual(total, 6, 'au fil des passages, les 6 périmées sont effacées');
+    for (const [jeu, p] of Object.entries(plan)) {
+      const reste = await etat(jeu);
+      for (const k of ['limite', 'jeune', 'primitif']) assert.ok(p[k] in reste, `${jeu} : ${k} effacée à tort`);
+    }
+  } finally {
+    await poserRegles(reglesDuDepot());
+    await vider();
+  }
+});
+
 test('le script en ligne de commande : « purge : N salle(s) effacée(s) », code 0', async () => {
   await semer();
   const r = spawnSync(process.execPath, [SCRIPT], {

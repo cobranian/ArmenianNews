@@ -7,6 +7,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
 import { PEREMPTION_MS as CLIENT } from '../public/play/net/protocole.js'
 import { PEREMPTION_MS, JEUX, sallesPerimees, codesAVerifier, urlSalles, SCOPES } from '../scripts/lib/salles-purge.mjs'
 
@@ -87,4 +89,18 @@ test('hourly.yml : purge en continue-on-error, avant la santé qui lit son résu
   assert.match(etape, /run: node scripts\/salles-purge\.mjs/)
   assert.doesNotMatch(etape, /echo[^\n]*FIREBASE_SERVICE_ACCOUNT/, 'le secret n’est jamais affiché')
   assert.match(y.slice(h), /PURGE_OUTCOME: \$\{\{ steps\.purge\.outcome \}\}/)
+})
+
+// Un secret mal formé : JSON.parse citerait un morceau de l'entrée dans son
+// message (Node ≥ 20), donc un morceau de la clé privée au log public.
+test('secret illisible : message générique, rien de l’entrée au log, code 1', () => {
+  const script = fileURLToPath(new URL('../scripts/salles-purge.mjs', import.meta.url))
+  for (const secret of ['{"private_key":"CLE-SECRETE-XYZ",', 'CLE-SECRETE-XYZ', '{"client_email":"CLE-SECRETE-XYZ"}']) {
+    const env = { ...process.env, FIREBASE_SERVICE_ACCOUNT: secret, SALLES_BASE_URL: 'http://127.0.0.1:1' }
+    delete env.SALLES_JETON
+    const r = spawnSync(process.execPath, [script], { encoding: 'utf8', env })
+    assert.equal(r.status, 1, r.stdout + r.stderr)
+    assert.match(r.stdout, /^✗ purge : secret du compte de service illisible$/m)
+    assert.ok(!(r.stdout + r.stderr).includes('CLE-SECRETE-XYZ'), 'le secret a fuité')
+  }
 })
