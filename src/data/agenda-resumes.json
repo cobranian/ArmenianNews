@@ -1851,12 +1851,41 @@
   },
   "https://armenopole.com/holiday-market.html": {
     "attempts": 1,
-    "checkedAt": "2026-11-11T19:29:32.926Z",
+    "checkedAt": "2026-11-11T21:29:26.673Z",
     "hash": "bd05c0a59a6b"
   },
   "https://armenopole.com/armenian-traditional-christmas-bazaar-lebanon-2025-12-11.html": {
+    "attempts": 2,
+    "checkedAt": "2026-11-11T21:29:26.673Z",
+    "hash": "efc47093529b",
+    "fr": "Le Bazar de Noël arménien traditionnel se tient à Mont-Liban sous le patronage de May El Khalil, fondatrice de l'Association du Marathon de Beyrouth. L'événement propose gastronomie, artisanat, décorations, ateliers festifs et animations pour enfants.",
+    "de": "Der traditionelle armenische Weihnachtsbasar in Mont-Liban steht unter der Schirmherrschaft von May El Khalil, Gründerin des Beirut Marathon Association. Angeboten werden Speisen, Handwerk, Dekorationen, Workshops und Kinderprogramm.",
+    "it": "Il tradizionale Bazar di Natale armeno a Mont-Liban è sotto il patronato di May El Khalil, fondatrice della Beirut Marathon Association. L'evento offre cibo, artigianato, decorazioni, laboratori festivi e intrattenimento per bambini.",
+    "en": "The Armenian Traditional Christmas Bazaar at Mont-Liban is held under the patronage of May El Khalil, Founder and President of the Beirut Marathon Association. It features food, crafts, decorations, festive workshops, and children's activities.",
+    "es": "El Bazar de Navidad Armenio Tradicional en Mont-Libán se realiza bajo el patronato de May El Khalil, fundadora de la Beirut Marathon Association. Ofrece gastronomía, artesanía, decoraciones, talleres festivos y actividades para niños.",
+    "ru": "Армянский традиционный Рождественский базар в Мон-Ливане проходит под покровительством Мэй Эль Халиль, основательницы и президента Ассоциации марафона Бейрута. На базаре представлены еда, ремесла, украшения, мастер-классы и детская программа."
+  },
+  "https://armenopole.com/armenischer-gottesdienst.html": {
     "attempts": 1,
-    "checkedAt": "2026-11-11T19:29:32.926Z",
-    "hash": "efc47093529b"
+    "checkedAt": "2026-11-11T21:29:26.673Z",
+    "hash": "c3964379189f",
+    "fr": "Un office arménien se tient à l'église Saint-Pie de Brême, célébré par le père Biliciyan Hratsch.",
+    "de": "Ein armenischer Gottesdienst findet in der Sankt Pius Kirche Bremen statt, geleitet von Pfarrer Biliciyan Hratsch.",
+    "it": "Una funzione armena si svolge nella chiesa di San Pio a Brema, officiata da padre Biliciyan Hratsch.",
+    "en": "An Armenian church service takes place at St. Pius Church in Bremen, led by Reverend Biliciyan Hratsch.",
+    "es": "Un oficio armenio se celebra en la iglesia de San Pío en Bremen, oficiado por el padre Biliciyan Hratsch.",
+    "hy": "Բրեմենի Սուրբ Պիոս եկեղեցում կայանա հայկական տոնական, որը կղեկավարի Բիլիցյան Հրաչը։",
+    "ru": "В церкви Святого Пия в Бремене пройдет армянская богослужба, которую возглавит священник Билиджян Храч."
+  },
+  "https://armenopole.com/family-christmas-concert.html": {
+    "attempts": 1,
+    "checkedAt": "2026-11-11T21:29:26.673Z",
+    "hash": "b9182d5ea3f5",
+    "fr": "Concert de Noël familial festif mettant en vedette Yang et l'Orchestre philharmonique arménien au Concert Hall Aram Khachaturian.",
+    "de": "Festliches Familien-Weihnachtskonzert mit Yang und dem Armenischen Nationalphilharmonischen Orchester im Aram-Chachaturian-Konzertsaal.",
+    "it": "Concerto natalizio familiare festivo con Yang e l'Orchestra Filarmonica Armena all'Aram Khachaturian Concert Hall.",
+    "en": "A festive family Christmas concert featuring Yang and the Armenian National Philharmonic Orchestra at the Aram Khachaturian Concert Hall.",
+    "es": "Un concierto navideño familiar festivo con Yang y la Orquesta Filarmónica Nacional Armenia en el Aram Khachaturian Concert Hall.",
+    "ru": "Фестивльный семейный новогодний концерт с Yang и Армянским национальным филармоническим оркестром в Концертном зале Арма Хачатуряна."
   }
 }

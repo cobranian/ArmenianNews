@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T19:23:32.230Z",
+  "generatedAt": "2026-11-11T21:23:31.673Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -1221,6 +1221,24 @@
       "rawDate": "NOV 15 12:30",
       "image": "https://armenopole.com/images/events/697zubeo.jpg?v=168717",
       "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Armenischer Gottesdienst",
+      "url": "https://armenopole.com/armenischer-gottesdienst.html",
+      "location": "Brême",
+      "date": "2026-11-15T13:00",
+      "rawDate": "NOV 15 13:00",
+      "image": "https://armenopole.com/images/events/armenischer-gottesdienst.jpg?v=148881",
+      "country": "germany",
       "resumeLangs": [
         "fr",
         "de",
@@ -2671,7 +2689,14 @@
       "rawDate": "DÉC 11 18:00",
       "image": "https://armenopole.com/images/events/armenian-traditional-christmas-bazaar-lebanon-2025-12-11.jpg?v=124151",
       "country": "lebanon",
-      "resumeLangs": []
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Kerstmarkt Dusseldorf",
@@ -2781,6 +2806,23 @@
       "image": "/da/da461e37b29ccea7.webp",
       "country": "argentina",
       "resumeLangs": []
+    },
+    {
+      "title": "Family Christmas Concert",
+      "url": "https://armenopole.com/family-christmas-concert.html",
+      "location": "Erevan",
+      "date": "2026-12-25T19:00",
+      "rawDate": "DÉC 25 19:00",
+      "image": "https://armenopole.com/images/events/family-christmas-concert.jpg?v=89026",
+      "country": "armenia",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Koko Asayan - Weihnachtsfeier",
