@@ -1718,8 +1718,7 @@
         "culture:art-du-tapis-armenien": "2026-11-02T20:44:07.733Z",
         "reel:khatchkar": "2026-11-07T00:32:17.242Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
-        "reel:komitas": "2026-11-10T19:32:45.336Z",
-        "reel:duduk": "2026-11-11T17:40:25.314Z"
+        "reel:komitas": "2026-11-10T19:32:45.336Z"
       },
       "failed": {
         "reel:alphabet-armenien": {
@@ -1728,8 +1727,8 @@
           "error": "instagram-reel/media : HTTP 400 You cannot access the app till you log in to www.facebook.com and follow the instructions given."
         },
         "reel:duduk": {
-          "attempts": 2,
-          "last": "2026-11-11T17:28:51.569Z",
+          "attempts": 3,
+          "last": "2026-11-11T17:40:42.648Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:aram-khatchatourian": {
