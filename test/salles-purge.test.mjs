@@ -104,3 +104,66 @@ test('secret illisible : message générique, rien de l’entrée au log, code 1
     assert.ok(!(r.stdout + r.stderr).includes('CLE-SECRETE-XYZ'), 'le secret a fuité')
   }
 })
+
+// purger() contre une fausse base (fetch injecté) : même un serveur qui
+// rendrait à tort une jeune dans le lot trié (réponse mal formée, endAt mal
+// lu) ne la fait jamais effacer — sallesPerimees refiltre. Un lot sans
+// périmée ne coûte aucun PATCH, et le PATCH vise exactement salles/<jeu>.json.
+function fausseBase(lots) {
+  const appels = []
+  const f = async (url, init = {}) => {
+    const u = new URL(url)
+    const methode = init.method ?? 'GET'
+    appels.push({ methode, chemin: u.pathname, requete: u.searchParams, corps: init.body ? JSON.parse(init.body) : undefined })
+    const jeu = u.pathname.match(/^\/salles\/(\w+)\.json$/)?.[1]
+    const corps = methode === 'GET' ? (lots[jeu] ?? null) : {}
+    return new Response(JSON.stringify(corps), { status: 200 })
+  }
+  return { appels, f }
+}
+
+test('purger : une jeune rendue à tort par la base n’est jamais dans le PATCH', async () => {
+  const { purger } = await import('../scripts/salles-purge.mjs')
+  const lots = {
+    echecs: {
+      VIEIL1: { creeLe: MAINTENANT - 30 * H },
+      SANSCR: { jeu: 'echecs' },
+      JEUNE1: { creeLe: MAINTENANT - (23 * H + 59 * M) }, // 23 h 59 : hors de endAt, rendue à tort
+      JEUNE2: { creeLe: MAINTENANT - H },
+    },
+    backgammon: { VIEIL2: { creeLe: MAINTENANT - 25 * H } },
+  }
+  const { appels, f } = fausseBase(lots)
+  const n = await purger({ base: 'https://exemple.test', jeton: 'x', maintenant: MAINTENANT, journal: () => {}, fetch: f })
+  assert.equal(n, 3)
+  const gets = appels.filter((a) => a.methode === 'GET')
+  assert.equal(gets.length, 2, 'un GET trié par jeu, ni shallow ni lecture salle par salle')
+  for (const g of gets) {
+    assert.equal(g.requete.get('orderBy'), '"creeLe"')
+    assert.equal(g.requete.get('endAt'), String(MAINTENANT - PEREMPTION_MS))
+    assert.equal(g.requete.get('limitToFirst'), '500')
+    assert.equal(g.requete.get('startAt'), null)
+  }
+  const patchs = appels.filter((a) => a.methode === 'PATCH')
+  assert.deepEqual(patchs.map((p) => p.chemin), ['/salles/echecs.json', '/salles/backgammon.json'])
+  assert.deepEqual(patchs[0].corps, { VIEIL1: null, SANSCR: null })
+  assert.deepEqual(patchs[1].corps, { VIEIL2: null })
+  for (const p of patchs) assert.ok(!('JEUNE1' in p.corps) && !('JEUNE2' in p.corps))
+})
+
+test('purger : rien à effacer, aucun PATCH', async () => {
+  const { purger } = await import('../scripts/salles-purge.mjs')
+  for (const lots of [{}, { echecs: { JEUNE1: { creeLe: MAINTENANT - H } }, backgammon: {} }]) {
+    const { appels, f } = fausseBase(lots)
+    assert.equal(await purger({ base: 'https://exemple.test', jeton: 'x', maintenant: MAINTENANT, journal: () => {}, fetch: f }), 0)
+    assert.deepEqual(appels.filter((a) => a.methode !== 'GET'), [])
+  }
+})
+
+test('purger : lot plein = plafond atteint, signalé au log', async () => {
+  const { purger } = await import('../scripts/salles-purge.mjs')
+  const { f } = fausseBase({ echecs: { A: { creeLe: 1 }, B: { creeLe: 2 } }, backgammon: {} })
+  const journal = []
+  assert.equal(await purger({ base: 'https://exemple.test', jeton: 'x', maintenant: MAINTENANT, journal: (l) => journal.push(l), fetch: f, plafond: 2 }), 2)
+  assert.ok(journal.some((l) => /purge\/echecs : plafond de 2 salles atteint/.test(l)), journal.join('\n'))
+})

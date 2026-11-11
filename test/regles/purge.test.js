@@ -1,6 +1,7 @@
 // La purge horaire des salles (scripts/salles-purge.mjs) contre l'émulateur :
-// les vraies requêtes REST (orderBy creeLe + endAt, shallow, creeLe salle par
-// salle, PATCH à null), avec les règles du dépôt — donc avec leur
+// les vraies requêtes REST (orderBy creeLe + endAt + limitToFirst, PATCH à
+// null ; shallow et creeLe salle par salle dans le seul repli sans index),
+// avec les règles du dépôt — donc avec leur
 // `.indexOn`. « Bearer owner » tient lieu du jeton OAuth2 du compte de
 // service (administrateur de l'émulateur). Sauté sans émulateur, comme le
 // reste de ce dossier.
@@ -48,41 +49,63 @@ async function semer() {
 
 async function etat(jeu) { return (await lire(`salles/${jeu}`)).val || {}; }
 
-test('purger : efface vieille, sans creeLe et creeLe texte ; garde jeune, 23 h 59 et le primitif', async () => {
+// Le creeLe texte (rangé après les nombres) échappe au lot trié : les règles
+// imposent un nombre, seul un administrateur peut en écrire un — accepté.
+test('purger : efface vieille et sans creeLe ; garde jeune, 23 h 59 et le primitif', async () => {
   const { purger } = await import(pathToFileURL(SCRIPT).href);
   const { maintenant, plan } = await semer();
   const journal = [];
   const n = await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: (l) => journal.push(l) });
-  assert.strictEqual(n, 6, journal.join('\n'));
+  assert.strictEqual(n, 4, journal.join('\n'));
   for (const [jeu, p] of Object.entries(plan)) {
     const reste = await etat(jeu);
-    for (const k of ['vieille', 'sans', 'texte']) assert.ok(!(p[k] in reste), `${jeu} : ${k} non effacée`);
-    for (const k of ['limite', 'jeune', 'primitif']) assert.ok(p[k] in reste, `${jeu} : ${k} effacée à tort`);
+    for (const k of ['vieille', 'sans']) assert.ok(!(p[k] in reste), `${jeu} : ${k} non effacée`);
+    for (const k of ['limite', 'jeune', 'primitif', 'texte']) assert.ok(p[k] in reste, `${jeu} : ${k} effacée à tort`);
   }
   // Second passage : plus rien à effacer.
   assert.strictEqual(await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: () => {} }), 0);
   await vider();
 });
 
-// Un fetch espion : les URL appelées, dans l'ordre.
+// Un fetch espion : les requêtes, dans l'ordre, et le corps des réponses.
 function espion() {
   const urls = [];
-  const f = (url, init) => { urls.push(`${(init && init.method) || 'GET'} ${new URL(url).pathname}`); return fetch(url, init); };
-  return { urls, f };
+  const corps = [];
+  const f = async (url, init) => {
+    urls.push(`${(init && init.method) || 'GET'} ${new URL(url).pathname}${new URL(url).search}`);
+    const res = await fetch(url, init);
+    corps.push(await res.clone().text());
+    return res;
+  };
+  return { urls, corps, f };
 }
 
-test('purger : aucune salle n’est relue une par une quand l’index est là (jeunes comprises)', async () => {
+test('purger : les jeunes salles ne sont pas téléchargées quand l’index est là', async () => {
   const { purger } = await import(pathToFileURL(SCRIPT).href);
   const { maintenant, plan } = await semer();
-  const { urls, f } = espion();
+  const { urls, corps, f } = espion();
   const n = await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: () => {}, fetch: f });
-  assert.strictEqual(n, 6);
-  assert.ok(urls.length >= 6, 'l’espion n’a rien vu : purger ignore son option fetch');
-  const parSalle = urls.filter((u) => /\/creeLe\.json$/.test(u));
-  assert.deepStrictEqual(parSalle, [], 'lectures salle par salle : ' + parSalle.join(', '));
+  assert.strictEqual(n, 4);
+  // Par jeu : un GET trié, un PATCH — ni shallow, ni lecture salle par salle.
+  assert.strictEqual(urls.length, 4, urls.join('\n'));
+  assert.ok(urls.every((u) => !/shallow|\/creeLe\.json/.test(u)), urls.join('\n'));
   for (const p of Object.values(plan)) {
-    assert.ok(!urls.some((u) => u.includes(p.jeune) || u.includes(p.limite)), 'une jeune a été lue à part');
+    for (const c of corps) assert.ok(!c.includes(p.jeune) && !c.includes(p.limite), 'une jeune a été téléchargée');
   }
+  await vider();
+});
+
+test('purger : lot trié plafonné, la suite au passage suivant', async () => {
+  const { purger } = await import(pathToFileURL(SCRIPT).href);
+  const { maintenant } = await semer();
+  const journal = [];
+  // Plafond de 2 : par jeu, le lot rend 2 des 3 premières (sans, primitif, vieille).
+  const n1 = await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: (l) => journal.push(l), plafond: 2 });
+  assert.ok(journal.some((l) => /plafond de 2 salles atteint/.test(l)), journal.join('\n'));
+  assert.ok(n1 <= 4, `plafond dépassé : ${n1}`);
+  let total = n1;
+  for (let i = 0; i < 5 && total < 4; i++) total += await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: () => {}, plafond: 2 });
+  assert.strictEqual(total, 4, 'au fil des passages, les 4 périmées sont effacées');
   await vider();
 });
 
@@ -95,6 +118,7 @@ test('purger sans index : repli salle par salle, plafonné par passage', async (
     const { maintenant, plan } = await semer();
     const journal = [];
     // Plafond de 2 : 5 salles-objets par jeu à relire, 2 seulement par passage.
+    // Relues une par une, les salles à creeLe texte sont effacées aussi (6).
     const n1 = await purger({ base: 'http://' + EMU, ns: NS, jeton: 'owner', maintenant, journal: (l) => journal.push(l), plafond: 2 });
     assert.ok(journal.some((l) => /index creeLe absent/.test(l)), journal.join('\n'));
     assert.ok(journal.some((l) => /restantes au passage suivant/.test(l)), journal.join('\n'));
@@ -121,7 +145,7 @@ test('le script en ligne de commande : « purge : N salle(s) effacée(s) », cod
     env: { ...process.env, SALLES_BASE_URL: 'http://' + EMU, SALLES_NS: NS, SALLES_JETON: 'owner', FIREBASE_SERVICE_ACCOUNT: '' },
   });
   assert.strictEqual(r.status, 0, r.stdout + r.stderr);
-  assert.match(r.stdout, /^purge : 6 salle\(s\) effacée\(s\)$/m);
+  assert.match(r.stdout, /^purge : 4 salle\(s\) effacée\(s\)$/m);
   await vider();
 });
 

@@ -40,8 +40,8 @@ async function jetonOAuth(sa) {
 }
 
 
-// Repli sans index : au plus PLAFOND salles relues une par une, par jeu et
-// par passage ; le reste attend le passage suivant.
+// Au plus PLAFOND salles par jeu et par passage — lues dans le lot trié, ou
+// relues une par une sans index ; le reste attend le passage suivant.
 export const PLAFOND = 500
 
 function melanger(t) {
@@ -56,14 +56,14 @@ const sansIndex = (e) => e.statut === 400 && /index/i.test(e.texte ?? '')
 
 // cible : { base, ns? } ; rend le nombre de salles effacées.
 //
-// Deux lectures triées par creeLe couvrent TOUTES les salles, parce que
-// l'ordre de la Realtime Database est total : null (creeLe absent), false,
-// true, nombres, chaînes, objets. `endAt=<limite>` rend null → nombres ≤
-// limite (les vieilles et celles sans creeLe) ; `startAt=<limite+1>` rend
-// nombres > limite → chaînes → objets (les jeunes, et celles à creeLe non
-// numérique). Une jeune n'est donc jamais relue à part. La lecture shallow
-// ne sert plus que de filet : un code absent des deux lots (salle écrite
-// entre les lectures) est relu seul.
+// UNE lecture triée par creeLe par jeu : `endAt=<limite>` rend, dans l'ordre
+// total de la Realtime Database, null (creeLe absent) → booléens → nombres ≤
+// limite — les vieilles et celles sans creeLe —, plafonnée à PLAFOND. Les
+// jeunes ne sont JAMAIS téléchargées : l'API REST ne sait pas choisir les
+// champs, et une salle vivante peut peser des Mo. Une salle à creeLe texte ou
+// objet (rangée après les nombres) échappe à cette lecture : les règles
+// imposent un creeLe nombre (heure du serveur), seul un administrateur peut
+// en écrire une. La lecture shallow ne sert qu'au repli SANS index.
 export async function purger({
   base = BASE_PROD, ns, jeton, maintenant = Date.now(), journal = console.log,
   fetch: f = globalThis.fetch, plafond = PLAFOND,
@@ -88,41 +88,23 @@ export async function purger({
   const limite = maintenant - PEREMPTION_MS
   let total = 0
   for (const jeu of JEUX) {
-    // 1. Les deux lots triés (index creeLe des règles).
-    let lot = {}
-    let indexe = true
+    let codes
     try {
-      const vieux = await appel('GET', urlSalles(cible, jeu, { orderBy: '"creeLe"', endAt: String(limite) }))
-      const jeunes = await appel('GET', urlSalles(cible, jeu, { orderBy: '"creeLe"', startAt: String(limite + 1) }))
-      lot = { ...(jeunes ?? {}), ...(vieux ?? {}) }
+      // 1. Le lot trié (index creeLe des règles). sallesPerimees refiltre :
+      // une jeune qu'un serveur rendrait à tort n'est jamais effacée.
+      const lot = await appel('GET', urlSalles(cible, jeu, { orderBy: '"creeLe"', endAt: String(limite), limitToFirst: String(plafond) }))
+      if (Object.keys(lot ?? {}).length >= plafond) {
+        journal(`· purge/${jeu} : plafond de ${plafond} salles atteint, la suite au passage suivant`)
+      }
+      codes = sallesPerimees(lot, maintenant)
     } catch (e) {
       // Règles sans `.indexOn` (pas encore déployées) : la base refuse le tri.
       if (!sansIndex(e)) throw e
-      indexe = false
       journal(`· purge/${jeu} : index creeLe absent des règles en ligne — lecture salle par salle`)
-    }
-    const aEffacer = new Set(sallesPerimees(lot, maintenant))
-
-    // 2. Le filet (ou, sans index, tout) : la liste des codes, puis creeLe
-    // seul pour les codes absents des lots — tirés au hasard et plafonnés,
-    // pour que des jeunes relues à chaque passage ne bloquent pas le reste.
-    const shallow = await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }))
-    const aVerifier = melanger(codesAVerifier(shallow, Object.keys(lot)))
-    if (aVerifier.length > plafond) {
-      journal(`· purge/${jeu} : ${aVerifier.length} salles à relire, ${aVerifier.length - plafond} restantes au passage suivant`)
-    }
-    if (indexe && aVerifier.length) journal(`· purge/${jeu} : ${aVerifier.length} salle(s) hors des lots triés, relue(s) une par une`)
-    for (const code of aVerifier.slice(0, plafond)) {
-      const creeLe = await appel('GET', urlSalles(cible, jeu, {}, `${code}/creeLe`))
-      // creeLe vide : salle sans horodatage, ou enfant primitif (que le
-      // shallow du parent rend aussi `true`, mesuré sur l'émulateur) —
-      // le shallow de l'enfant tranche : un objet rend {clé: true}.
-      const salle = creeLe === null ? await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }, code)) : { creeLe }
-      for (const c of sallesPerimees({ [code]: salle }, maintenant)) aEffacer.add(c)
+      codes = await salleParSalle(appel, cible, jeu, maintenant, plafond, journal)
     }
 
-    // 3. Un PATCH à null par paquet de 200 codes.
-    const codes = [...aEffacer]
+    // 2. Un PATCH à null par paquet de 200 codes.
     for (let i = 0; i < codes.length; i += 200) {
       const corps = Object.fromEntries(codes.slice(i, i + 200).map((c) => [c, null]))
       await appel('PATCH', urlSalles(cible, jeu), corps)
@@ -131,6 +113,27 @@ export async function purger({
     total += codes.length
   }
   return total
+}
+
+// Repli sans index : la liste des codes (shallow), puis creeLe seul pour
+// chacun — tirés au hasard et plafonnés, pour que des jeunes relues à chaque
+// passage ne bloquent pas le reste.
+async function salleParSalle(appel, cible, jeu, maintenant, plafond, journal) {
+  const shallow = await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }))
+  const aVerifier = melanger(codesAVerifier(shallow, []))
+  if (aVerifier.length > plafond) {
+    journal(`· purge/${jeu} : ${aVerifier.length} salles à relire, ${aVerifier.length - plafond} restantes au passage suivant`)
+  }
+  const codes = []
+  for (const code of aVerifier.slice(0, plafond)) {
+    const creeLe = await appel('GET', urlSalles(cible, jeu, {}, `${code}/creeLe`))
+    // creeLe vide : salle sans horodatage, ou enfant primitif (que le
+    // shallow du parent rend aussi `true`, mesuré sur l'émulateur) —
+    // le shallow de l'enfant tranche : un objet rend {clé: true}.
+    const salle = creeLe === null ? await appel('GET', urlSalles(cible, jeu, { shallow: 'true' }, code)) : { creeLe }
+    codes.push(...sallesPerimees({ [code]: salle }, maintenant))
+  }
+  return codes
 }
 
 // Le secret est une clé privée : un JSON.parse en échec citerait un morceau

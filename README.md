@@ -916,12 +916,14 @@ lit les salles une par une (même résultat, plus d'appels).
 Les salles **s'effacent d'elles-mêmes** (décision de Nareg, 11 nov. 2026).
 L'étape « Effacer les salles de jeu de plus de 24 h » de `hourly.yml` lance
 `scripts/salles-purge.mjs` à chaque passage planifié : pour `echecs` et
-`backgammon`, elle lit `salles/<jeu>` trié par `creeLe` en deux lots — jusqu'à
-« maintenant − 24 h » (les vieilles, et celles sans `creeLe`), puis au-delà
-(les jeunes, et celles à `creeLe` non numérique) —, contrôle par une lecture
-`shallow` qu'aucun code n'a échappé aux deux (relu alors un par un), et
-efface d'un `PATCH` à `null` celles de plus de 24 h et celles sans `creeLe`
-numérique. Une salle disparaît donc **normalement environ 25 h** après sa
+`backgammon`, elle lit `salles/<jeu>` trié par `creeLe` jusqu'à « maintenant
+− 24 h » (`endAt`, les vieilles et celles sans `creeLe`, **500 au plus** par
+jeu et par passage — le reste au suivant, `· purge/<jeu> : plafond … atteint`),
+et efface d'un `PATCH` à `null` celles de plus de 24 h et celles sans
+`creeLe`. Les jeunes salles ne sont **jamais téléchargées** : l'API REST ne
+choisit pas les champs, et une salle vivante peut peser des Mo. Une salle à
+`creeLe` texte ou objet échappe à la lecture ; les règles imposent un nombre
+(heure du serveur), seul un administrateur peut en écrire une. Une salle disparaît donc **normalement environ 25 h** après sa
 création ; si la chaîne horaire saute un passage (main cassé, jeton du Worker
 expiré, rôle IAM retiré), au passage suivant. C'est ce que dit la politique
 de confidentialité — sans promesse ferme, à dessein.
