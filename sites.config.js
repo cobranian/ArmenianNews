@@ -56,6 +56,7 @@ export const SITES = {
         telegram: 'https://t.me/armenieinfo_it',
         whatsapp: 'https://whatsapp.com/channel/0029Vb9L8jsF6smuUOyG0N2n',
         bluesky: 'https://bsky.app/profile/it.armenieinfo.ch',
+        youtube: 'https://www.youtube.com/@armenieinfo-it',
       },
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
@@ -173,6 +174,7 @@ export const SITES = {
         telegram: 'https://t.me/armenianews_es',
         whatsapp: 'https://whatsapp.com/channel/0029VbDbwntAojYorCFVdw1M',
         bluesky: 'https://bsky.app/profile/es.armenianews.org',
+        youtube: 'https://www.youtube.com/@armenianews-es',
       },
       hy: {
         facebook: 'https://www.facebook.com/61596095491007',
