@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { ALL_LANGS, ALL_VIEWS, VIEWS, SITES, urlFor, viewFromPath } from '../sites.config.js'
 import { VIEW_SEO } from '../src/seo.js'
 import { headFor } from '../scripts/lib/site-meta.mjs'
@@ -90,6 +90,19 @@ test('GamesPage lit GAMES, lie chaque jeu dans la langue de la page, compte le c
   // Les jeux sont servis à part, hors du bundle : rien n'en est importé.
   assert.doesNotMatch(src, /from\s+['"][^'"]*public\/play/)
   assert.doesNotMatch(src, /import\(\s*['"][^'"]*public\/play/)
+})
+
+test('chaque jeu a sa vignette 640×400 dans chaque langue, et GamesPage la prend dans la langue de la page', async () => {
+  const { GAMES } = await import('../src/games.js')
+  assert.ok(lire('../src/components/GamesPage.jsx').includes('/play/vignettes/${lang}/${g.id}.png'))
+  for (const l of BLOC_LANGS) {
+    for (const g of GAMES) {
+      const p = `../public/play/vignettes/${l}/${g.id}.png`
+      assert.ok(existsSync(new URL(p, import.meta.url)), `${l}/${g.id}.png absent`)
+      const b = readFileSync(new URL(p, import.meta.url))
+      assert.deepEqual([b.readUInt32BE(16), b.readUInt32BE(20)], [640, 400], `${l}/${g.id}.png`)
+    }
+  }
 })
 
 test('games.play et games.rules existent dans chaque bloc de langue', () => {

@@ -3926,8 +3926,15 @@ html.js .reveal.is-visible {
     overflow: hidden;
     transition: max-height 0.32s var(--ease);
   }
+  /* Plafond de la transition, pas une hauteur voulue : il doit dépasser le
+     menu ouvert, sinon le dernier lien est rogné sans le moindre signe.
+     Mesuré à 360px (pointer: coarse) avec sept liens (Jeux, 11 nov. 2026) :
+     scrollHeight 203px dans les sept langues — les liens sont en ligne, leur
+     rembourrage de 14px ne s'empile pas. Si un jour ils passent en bloc
+     (45px chacun), 7 × 45 + 16 = 331px : 400 garde une vraie marge dans les
+     deux cas. */
   .nav__links.is-open {
-    max-height: 340px;
+    max-height: 400px;
   }
   .nav__links a {
     width: 100%;

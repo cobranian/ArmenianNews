@@ -34,7 +34,8 @@ export function GamesPage() {
                   lien. Pas de chargement différé : la première est au premier
                   écran, et il n'y en a que deux. */}
               <a className="game__shot" href={href} onClick={open} tabIndex={-1} aria-hidden="true">
-                <img src={`/play/vignettes/${g.id}.png`} width="640" height="400" alt="" />
+                {/* Vignette de la langue de la page : le nom du jeu y est écrit. */}
+                <img src={`/play/vignettes/${lang}/${g.id}.png`} width="640" height="400" alt="" />
               </a>
               <div className="game__body">
                 <h2 className="game__title" id={titleId}>
