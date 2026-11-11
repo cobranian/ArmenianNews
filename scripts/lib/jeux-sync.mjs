@@ -130,11 +130,29 @@ export function retourCible(table, o) {
 //
 // Le coin haut-gauche d'abord. Mais le backgammon en paysage (640 × 360) n'y
 // laisse aucun vide : le plateau touche le bord, et le bouton couvrait la
-// flèche du point 13 (mesuré le 11 nov. 2026). Le script essaie donc les
-// quatre coins dans l'ordre et garde le premier dont aucun point d'essai ne
-// tombe sur une commande, un texte ou un dessin du jeu ; il refait ce choix
-// quand l'écran tourne ou qu'un écran du jeu s'ouvre ou se ferme (attribut
-// hidden), jamais pendant un coup.
+// flèche du point 13 (mesuré le 11 nov. 2026). Le script mesure donc
+// l'occupation de chaque coin (9 points d'essai : 3 par commande touchée,
+// 1 par texte ou dessin) et choisit par choisirCoin ci-dessous.
+
+// Le coin du bouton, parmi les quatre (haut-gauche, haut-droit, bas-gauche,
+// bas-droit). `occupations[i]` : occupation mesurée du coin i, 0 = libre.
+// `actuel` : le coin où il est déjà (-1 au premier placement).
+//   - le coin actuel encore libre est GARDÉ : le bouton ne saute pas d'un coin
+//     à l'autre pendant un tour, quand Lancer/Valider/Annuler apparaissent ;
+//   - sinon le premier coin libre ;
+//   - sinon le MOINS occupé (à égalité, le premier) — jamais haut-gauche
+//     d'office, qui est justement le coin couvert en paysage.
+// Copiée dans retour.js par Function#toString, comme retourCible.
+export function choisirCoin(occupations, actuel) {
+  if (actuel >= 0 && occupations[actuel] === 0) return actuel
+  var meilleur = 0
+  for (var i = 0; i < occupations.length; i++) {
+    if (occupations[i] === 0) return i
+    if (occupations[i] < occupations[meilleur]) meilleur = i
+  }
+  return meilleur
+}
+
 export function retourJs(table) {
   return `// Généré par scripts/jeux-sync.mjs (npm run jeux:sync) — ne pas éditer.
 // Le bouton de retour des jeux vers la vue Jeux d'Arménie Info / Armenia News.
@@ -143,47 +161,59 @@ export function retourJs(table) {
   var TABLE = ${JSON.stringify(table)};
   var retourLangue = ${retourLangue.toString()};
   var retourCible = ${retourCible.toString()};
+  var choisirCoin = ${choisirCoin.toString()};
 
   var COINS = [['top', 'left'], ['top', 'right'], ['bottom', 'left'], ['bottom', 'right']];
-  var OBSTACLE = 'button, a[href], input, select, textarea, label, [role=button], [role=timer], [role=img], [tabindex], svg, img, canvas';
+  var COMMANDE = 'button, a[href], input, select, textarea, label, [role=button], [tabindex]:not([tabindex="-1"])';
+  var DESSIN = '[role=timer], [role=img], [tabindex], svg, img, canvas';
+  var actuel = -1;
 
-  // Le premier élément sous (x, y), hors du bouton, est-il une chose du jeu ?
-  // Un conteneur sans texte propre (body, main, section, fond d'écran) est du vide.
-  function occupe(a, x, y) {
+  // Ce qu'il y a sous (x, y), hors du bouton : 3 pour une commande, 1 pour un
+  // texte ou un dessin du jeu, 0 pour du vide (un conteneur sans texte propre :
+  // body, main, section, fond d'écran).
+  function poids(a, x, y) {
     var pile = document.elementsFromPoint(x, y);
     for (var i = 0; i < pile.length; i++) {
       var e = pile[i];
       if (e === a || a.contains(e)) continue;
-      if (e.closest(OBSTACLE)) return true;
+      if (e.closest(COMMANDE)) return 3;
+      if (e.closest(DESSIN)) return 1;
       for (var n = e.firstChild; n; n = n.nextSibling) {
-        if (n.nodeType === 3 && n.nodeValue.trim()) return true;
+        if (n.nodeType === 3 && n.nodeValue.trim()) return 1;
       }
-      return false;
+      return 0;
     }
-    return false;
+    return 0;
   }
 
-  function libre(a) {
+  function occupation(a) {
     var r = a.getBoundingClientRect();
     var xs = [r.left + 4, r.left + r.width / 2, r.right - 4];
     var ys = [r.top + 4, r.top + r.height / 2, r.bottom - 4];
-    for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) if (occupe(a, xs[i], ys[j])) return false;
-    return true;
+    var total = 0;
+    for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) total += poids(a, xs[i], ys[j]);
+    return total;
   }
 
-  function placer(a, coin) {
-    var s = a.style;
+  function placer(a, i) {
+    var s = a.style, coin = COINS[i];
     s.top = s.bottom = s.left = s.right = 'auto';
     s[coin[0]] = 'env(safe-area-inset-' + coin[0] + ', 0px)';
     s[coin[1]] = 'env(safe-area-inset-' + coin[1] + ', 0px)';
   }
 
+  // Le coin actuel encore libre ne se remesure même pas ailleurs : le bouton
+  // ne bouge que si quelque chose du jeu vient sous lui, ou si l'écran tourne.
+  // Les essais sont synchrones : aucun rendu n'a lieu entre deux placements.
   function choisir(a) {
+    if (actuel >= 0 && occupation(a) === 0) return;
+    var occ = [];
     for (var i = 0; i < COINS.length; i++) {
-      placer(a, COINS[i]);
-      if (libre(a)) return;
+      placer(a, i);
+      occ.push(occupation(a));
     }
-    placer(a, COINS[0]);
+    actuel = choisirCoin(occ, actuel);
+    placer(a, actuel);
   }
 
   function poser() {
@@ -213,6 +243,9 @@ export function retourJs(table) {
     document.body.appendChild(a);
     choisir(a);
 
+    // Un écran qui s'ouvre, un bouton du jeu qui apparaît (attribut hidden) :
+    // choisir() ne déplace le bouton que si son coin est désormais occupé.
+    // Écran tourné : tout est remesuré, mais le coin actuel resté libre gagne.
     var minuteur = null;
     function plusTard() {
       clearTimeout(minuteur);

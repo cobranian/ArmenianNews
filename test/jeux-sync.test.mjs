@@ -9,6 +9,7 @@ import {
   retourTable,
   retourCible,
   retourJs,
+  choisirCoin,
 } from '../scripts/lib/jeux-sync.mjs'
 
 // La copie des jeux (npm run jeux:sync). Ce qu'aucun autre contrôle ne
@@ -126,6 +127,33 @@ test('retourCible : chemin sur sa vitrine, URL absolue ailleurs, langue de tête
   // Hôte inconnu (préversion Firebase…) : jamais un chemin qui y ferait 404.
   assert.equal(retourCible(t, { lang: 'it', hostname: 'armenie-info.web.app' }), 'https://armenieinfo.ch/it/giochi/')
   assert.equal(retourCible(t, { lang: '', hostname: 'exemple.test' }), 'https://armenieinfo.ch/jeux/')
+})
+
+// Coins : 0 haut-gauche, 1 haut-droit, 2 bas-gauche, 3 bas-droit.
+test('choisirCoin : premier placement, le premier coin libre', () => {
+  assert.equal(choisirCoin([0, 0, 0, 0], -1), 0)
+  // Backgammon en paysage : le plateau sous haut-gauche et bas-gauche, le score
+  // sous haut-droit (mesuré le 11 nov. 2026).
+  assert.equal(choisirCoin([12, 4, 15, 0], -1), 3)
+})
+
+test('choisirCoin : le coin actuel resté libre est gardé (pas de saut pendant un tour)', () => {
+  // Un coin plus haut dans l'ordre s'est libéré (écran de menu fermé…) : on ne bouge pas.
+  assert.equal(choisirCoin([0, 0, 0, 0], 3), 3)
+  assert.equal(choisirCoin([0, 5, 0, 0], 2), 2)
+})
+
+test('choisirCoin : coin actuel occupé, on part vers un coin libre', () => {
+  assert.equal(choisirCoin([12, 0, 15, 6], 3), 1)
+  assert.equal(choisirCoin([0, 4, 15, 6], 3), 0)
+})
+
+test('choisirCoin : aucun coin libre → le MOINS occupé, jamais haut-gauche d office', () => {
+  assert.equal(choisirCoin([12, 4, 15, 6], -1), 1)
+  assert.equal(choisirCoin([12, 9, 15, 3], 0), 3)
+  assert.equal(choisirCoin([3, 3, 9, 3], -1), 0) // à égalité : le premier
+  // Le coin actuel occupé ne gagne pas par inertie s'il est pire qu'un autre.
+  assert.equal(choisirCoin([12, 9, 15, 3], 1), 3)
 })
 
 test('public/play/retour.js est celui que rend la table courante (garde la dérive)', () => {
