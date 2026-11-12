@@ -875,7 +875,11 @@ La copie subit **quatre transformations, et rien d'autre**
 2. la balise `/assets/stats.js` de lokolok est retirée ;
 3. le script en ligne des échecs part dans `js/appliquer.js` — la CSP
    `script-src 'self'` le bloquerait sans le moindre signe ;
-4. `retour.js`, le bouton de retour vers la vue Jeux, est ajouté avant `</body>`.
+4. `retour.js` est ajouté avant `</body>` : le bouton de retour vers la vue
+   Jeux et, là où le navigateur le permet (pas sur iPhone), un bouton plein
+   écran. Sur téléphone, le premier bouton touché dans le jeu passe aussi en
+   plein écran, comme sur lokolok ; une fois que le joueur en est sorti
+   lui-même, seul le bouton l'y ramène.
 
 Un motif attendu absent **arrête** le sync plutôt que de publier une copie
 cassée. Deux fichiers ne sont jamais touchés : `public/play/vignettes/` (les

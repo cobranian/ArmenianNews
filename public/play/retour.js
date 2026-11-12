@@ -2,7 +2,7 @@
 // Le bouton de retour des jeux vers la vue Jeux d'Arménie Info / Armenia News.
 (function () {
   'use strict';
-  var TABLE = {"fr":{"host":"https://armenieinfo.ch","path":"/jeux/","label":"Retour à Arménie Info"},"de":{"host":"https://armenieinfo.ch","path":"/de/spiele/","label":"Zurück zu Arménie Info"},"it":{"host":"https://armenieinfo.ch","path":"/it/giochi/","label":"Torna ad Arménie Info"},"en":{"host":"https://armenianews.org","path":"/games/","label":"Back to Armenia News"},"es":{"host":"https://armenianews.org","path":"/es/juegos/","label":"Volver a Armenia News"},"hy":{"host":"https://armenianews.org","path":"/hy/games/","label":"Վերադառնալ Արմենիա Ինֆո"},"ru":{"host":"https://armenianews.org","path":"/ru/games/","label":"Вернуться на Armenia News"}};
+  var TABLE = {"fr":{"host":"https://armenieinfo.ch","path":"/jeux/","label":"Retour à Arménie Info","plein":"Plein écran","quitter":"Quitter le plein écran"},"de":{"host":"https://armenieinfo.ch","path":"/de/spiele/","label":"Zurück zu Arménie Info","plein":"Vollbild","quitter":"Vollbild verlassen"},"it":{"host":"https://armenieinfo.ch","path":"/it/giochi/","label":"Torna ad Arménie Info","plein":"Schermo intero","quitter":"Esci dallo schermo intero"},"en":{"host":"https://armenianews.org","path":"/games/","label":"Back to Armenia News","plein":"Fullscreen","quitter":"Exit fullscreen"},"es":{"host":"https://armenianews.org","path":"/es/juegos/","label":"Volver a Armenia News","plein":"Pantalla completa","quitter":"Salir de pantalla completa"},"hy":{"host":"https://armenianews.org","path":"/hy/games/","label":"Վերադառնալ Արմենիա Ինֆո","plein":"Ամբողջ էկրան","quitter":"Դուրս գալ ամբողջ էկրանի ռեժիմից"},"ru":{"host":"https://armenianews.org","path":"/ru/games/","label":"Вернуться на Armenia News","plein":"Полный экран","quitter":"Выйти из полноэкранного режима"}};
   var retourLangue = function retourLangue(table, o) {
   var h = String(o.hostname || '').toLowerCase().replace(/^www\./, '')
   var l = String(o.lang || '').toLowerCase().split('-')[0]
@@ -94,32 +94,114 @@
     placer(a, actuel);
   }
 
-  function poser() {
-    if (document.getElementById('retour-vitrine')) return;
-    var o = { lang: document.documentElement.lang, hostname: location.hostname };
-    var a = document.createElement('a');
-    a.id = 'retour-vitrine';
-    a.href = retourCible(TABLE, o);
-    a.setAttribute('aria-label', TABLE[retourLangue(TABLE, o)].label);
-    a.title = TABLE[retourLangue(TABLE, o)].label;
-    a.textContent = '\u2190';
-    var s = a.style;
-    s.position = 'fixed';
-    s.zIndex = '2147483000';
+  // Un rond de 44 px, commun au lien de retour et au bouton plein écran.
+  function rond(el) {
+    var s = el.style;
     s.width = '44px';
     s.height = '44px';
+    s.flex = 'none';
     s.display = 'flex';
     s.alignItems = 'center';
     s.justifyContent = 'center';
     s.boxSizing = 'border-box';
+    s.margin = '0';
+    s.padding = '0';
+    s.border = '0';
     s.borderRadius = '50%';
     s.background = 'rgba(20, 14, 10, 0.55)';
     s.color = '#fff';
     s.font = '22px/1 system-ui, sans-serif';
     s.textDecoration = 'none';
+    s.cursor = 'pointer';
     s.boxShadow = '0 1px 4px rgba(0, 0, 0, 0.35)';
-    document.body.appendChild(a);
-    choisir(a);
+  }
+
+  // Les quatre coins d'un cadre, tournés vers l'extérieur (entrer) ou vers
+  // l'intérieur (quitter). Construits nœud par nœud, sans HTML en texte.
+  var SVG = 'http://www.w3.org/2000/svg';
+  var COINS_DEHORS = 'M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5';
+  var COINS_DEDANS = 'M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5';
+  function icone() {
+    var svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '22');
+    svg.setAttribute('height', '22');
+    svg.setAttribute('aria-hidden', 'true');
+    var p = document.createElementNS(SVG, 'path');
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', 'currentColor');
+    p.setAttribute('stroke-width', '2.2');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(p);
+    return { svg: svg, chemin: p };
+  }
+
+  // Le plein écran, comme le bouton de lokolok — mais ici le jeu EST la page,
+  // donc c'est la page entière qui passe en plein écran. Absent de l'iPhone
+  // (WebKit n'y met en plein écran que les <video>) : le bouton n'y est pas
+  // posé, plutôt que de ne rien faire au toucher.
+  var racine = document.documentElement;
+  var demander = racine.requestFullscreen || racine.webkitRequestFullscreen;
+  var sortir = document.exitFullscreen || document.webkitExitFullscreen;
+  var PERMIS = !!(demander && (document.fullscreenEnabled || document.webkitFullscreenEnabled));
+  var CHANGEMENT = 'onfullscreenchange' in document ? 'fullscreenchange' : 'webkitfullscreenchange';
+  function elementPlein() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  function entrer() {
+    // Une exception synchrone ou un refus (geste manquant) : rien à faire.
+    try {
+      var p = demander.call(racine, { navigationUI: 'hide' });
+      if (p && p.catch) p.catch(function () {});
+    } catch (e) { /* refusé */ }
+  }
+
+  function poser() {
+    if (document.getElementById('retour-vitrine')) return;
+    var o = { lang: document.documentElement.lang, hostname: location.hostname };
+    var T = TABLE[retourLangue(TABLE, o)];
+
+    // Le groupe se place d'un bloc dans un coin : choisir() mesure le groupe.
+    var boite = document.createElement('div');
+    boite.id = 'retour-vitrine';
+    var b = boite.style;
+    b.position = 'fixed';
+    b.zIndex = '2147483000';
+    b.display = 'flex';
+    b.gap = '8px';
+
+    var a = document.createElement('a');
+    a.href = retourCible(TABLE, o);
+    a.setAttribute('aria-label', T.label);
+    a.title = T.label;
+    a.textContent = '\u2190';
+    rond(a);
+    boite.appendChild(a);
+
+    var plein = null, dessin = null;
+    function majBouton() {
+      var actif = !!elementPlein();
+      var nom = actif ? T.quitter : T.plein;
+      plein.setAttribute('aria-label', nom);
+      plein.setAttribute('aria-pressed', actif ? 'true' : 'false');
+      plein.title = nom;
+      dessin.chemin.setAttribute('d', actif ? COINS_DEDANS : COINS_DEHORS);
+    }
+    if (PERMIS) {
+      plein = document.createElement('button');
+      plein.type = 'button';
+      plein.id = 'plein-ecran';
+      rond(plein);
+      dessin = icone();
+      plein.appendChild(dessin.svg);
+      majBouton();
+      plein.addEventListener('click', function () {
+        if (elementPlein()) { if (sortir) sortir.call(document); } else entrer();
+      });
+      boite.appendChild(plein);
+    }
+
+    document.body.appendChild(boite);
+    choisir(boite);
 
     // Un écran qui s'ouvre, un bouton du jeu qui apparaît (attribut hidden) :
     // choisir() ne déplace le bouton que si son coin est désormais occupé.
@@ -127,12 +209,33 @@
     var minuteur = null;
     function plusTard() {
       clearTimeout(minuteur);
-      minuteur = setTimeout(function () { choisir(a); }, 150);
+      minuteur = setTimeout(function () { choisir(boite); }, 150);
     }
     window.addEventListener('resize', plusTard);
     if (window.MutationObserver) {
       new MutationObserver(plusTard).observe(document.body, { attributes: true, attributeFilter: ['hidden'], subtree: true });
     }
+
+    if (!PERMIS) return;
+    // Sur un téléphone, le premier bouton touché dans le jeu (« Contre le
+    // robot », « Jouer »…) fait passer en plein écran : c'est le geste que
+    // l'API exige. Une fois que le joueur en est SORTI lui-même (geste retour,
+    // bouton), on ne l'y remet plus d'office : seul le bouton l'y ramène.
+    var tactile = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    var sorti = false, etait = false;
+    document.addEventListener('click', function (e) {
+      if (!tactile || sorti || elementPlein()) return;
+      var t = e.target;
+      if (!t || !t.closest || !t.closest('button') || boite.contains(t)) return;
+      entrer();
+    }, true);
+    document.addEventListener(CHANGEMENT, function () {
+      var actif = !!elementPlein();
+      if (etait && !actif) sorti = true;
+      etait = actif;
+      majBouton();
+      plusTard();
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', poser);
