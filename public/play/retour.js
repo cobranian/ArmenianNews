@@ -35,6 +35,11 @@
   var COMMANDE = 'button, a[href], input, select, textarea, label, [role=button], [tabindex]:not([tabindex="-1"])';
   var DESSIN = '[role=timer], [role=img], [tabindex], svg, img, canvas';
   var actuel = -1;
+  // Le bouton se tient à RETRAIT px du bord (en plus de l'encoche) : collé au
+  // coin, l'arrondi de l'écran du téléphone le rognait (captures du 12 nov.
+  // 2026). Et un coin n'est libre que si rien ne vient à MARGE px du bouton :
+  // le score du backgammon debout le touchait sans être sous un point d'essai.
+  var RETRAIT = 8, MARGE = 6;
 
   // Ce qu'il y a sous (x, y), hors du bouton : 3 pour une commande, 1 pour un
   // texte ou un dessin du jeu, 0 pour du vide (un conteneur sans texte propre :
@@ -56,18 +61,23 @@
 
   function occupation(a) {
     var r = a.getBoundingClientRect();
-    var xs = [r.left + 4, r.left + r.width / 2, r.right - 4];
-    var ys = [r.top + 4, r.top + r.height / 2, r.bottom - 4];
+    // 5 × 5 points, espacés de 14 px : une grille de 3 × 3 (22 px) laissait
+    // passer entre deux rangées le score d'une ligne du backgammon couché
+    // (19 px de haut, italien, 640 × 300).
     var total = 0;
-    for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) total += poids(a, xs[i], ys[j]);
+    for (var i = 0; i < 5; i++) for (var j = 0; j < 5; j++) {
+      var x = r.left - MARGE + i * (r.width + 2 * MARGE) / 4;
+      var y = r.top - MARGE + j * (r.height + 2 * MARGE) / 4;
+      total += poids(a, x, y);
+    }
     return total;
   }
 
   function placer(a, i) {
     var s = a.style, coin = COINS[i];
     s.top = s.bottom = s.left = s.right = 'auto';
-    s[coin[0]] = 'env(safe-area-inset-' + coin[0] + ', 0px)';
-    s[coin[1]] = 'env(safe-area-inset-' + coin[1] + ', 0px)';
+    s[coin[0]] = 'calc(env(safe-area-inset-' + coin[0] + ', 0px) + ' + RETRAIT + 'px)';
+    s[coin[1]] = 'calc(env(safe-area-inset-' + coin[1] + ', 0px) + ' + RETRAIT + 'px)';
   }
 
   // Le coin actuel encore libre ne se remesure même pas ailleurs : le bouton

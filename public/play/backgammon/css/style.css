@@ -45,7 +45,9 @@ button { font: inherit; }
   display: flex; flex-wrap: wrap; align-items: baseline; gap: .1em 1.1em;
 }
 #panneau p { margin: 0; }
-#score { font-size: 1.15em; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
+/* Équilibré : sur la colonne étroite du téléphone couché, « match en 3 »
+   laissait le chiffre seul sur sa ligne. */
+#score { font-size: 1.15em; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; text-wrap: balance; }
 #manche, #videau-texte { color: var(--texte-doux); }
 #crawford { color: var(--laiton); font-weight: 700; }
 #btn-menu { margin-left: auto; }
