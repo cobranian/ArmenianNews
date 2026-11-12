@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-12",
+  "lang": "it",
+  "generatedAt": "2026-11-12T03:30:22.977Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è dominata dalla partecipazione del premier armeno Nikol Pashinyan al vertice COP31 ad Antalya, dove ha incontrato i leader di Turchia, Iran e Montenegro, mentre sul fronte interno si discute della sospensione dei diritti di voto dell'Armenia nell'OTSC e di tensioni sociali a Erevan.",
+  "topics": [
+    {
+      "title": "Vertice COP31 ad Antalya: incontri bilaterali del premier armeno",
+      "text": "Nikol Pashinyan ha incontrato il presidente turco Recep Tayyip Erdoğan per discutere le relazioni bilaterali e l'accordo TRIPP. Il premier ha anche colloquiato con il presidente iraniano Masoud Pezeshkian sull'avanzamento dei progetti congiunti e con il presidente del Montenegro.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-et-le-president-turc-ont-discute-a-antalya-des-relations-entre-larmenie-et-la-turquie-ainsi-que-de-laccord-sur-la-tripp/",
+          "title": "Le Premier ministre arménien et le Président turc ont discuté à Antalya des relations entre l’Arménie et la Turquie, ainsi que de l’Accord sur la TRIPP"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265412",
+          "title": "Le Premier ministre arménien et le président turc se sont rencontrés à Antalya"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265405",
+          "title": "Nikol Pashinyan et Massoud Pezeshkian se sont entretenus à Antalya"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265401",
+          "title": "Entretien entre le Premier ministre arménien Nikol Pashinyan et le président turc Recep Tayyip Erdoğan en cours à Antalya"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265365",
+          "title": "Rencontre entre le Premier ministre d'Arménie et le Président du Monténégro"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-ceremonie-daccueil-officielle-du-premier-ministre-de-la-republique-darmenie-nikol-pachinian-sest-deroulee-dans-le-cadre-de-la-cop31-a-antalya-en-turquie/",
+          "title": "La cérémonie d’accueil officielle du Premier ministre de la République d’Arménie, Nikol Pachinian, s’est déroulée dans le cadre de la COP31 à Antalya en Turquie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265321",
+          "title": "Le Premier ministre est arrivé à Antalya"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265320",
+          "title": "Le Premier ministre participera au Sommet des dirigeants d’Antalya dans le cadre de la COP31"
+        }
+      ]
+    },
+    {
+      "title": "Armenia privata del diritto di voto nell'OTSC",
+      "text": "L'Armenia ha perso il diritto di voto all'interno dell'Organizzazione del Trattato di Sicurezza Collettiva. Mosca conferma che Yerevan non può più nominare propri rappresentanti ai posti di responsabilità nell'organizzazione.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-privee-de-son-droit-de-vote-au-sein-de-lotsc/",
+          "title": "L’Arménie privée de son droit de vote au sein de l’OTSC"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265409",
+          "title": "Peskov։ la Russie affirme que l’Arménie a perdu le droit de nommer ses représentants aux postes à responsabilité au sein de l’OTSC"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/armenie-privee-droit-de-vote-otsc/",
+          "title": "L’Arménie privée de son droit de vote au sein de l’OTSC"
+        }
+      ]
+    },
+    {
+      "title": "Dialogo strategico tra Pashinyan e Macron a Parigi",
+      "text": "Il primo ministro armeno ha tenuto discussioni strategiche con il presidente francese Emmanuel Macron al Palazzo dell'Eliseo. Pashinyan ha sottolineato l'importanza del dialogo diretto per contrastare la disinformazione.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-premier-ministre-armenien-souligne-limportance-du-dialogue-direct-face-a-la-desinformation/",
+          "title": "Le Premier ministre arménien souligne l’importance du dialogue direct face à la désinformation"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/pachinian-et-macron-tiennent-des-discussions-strategiques-au-palais-de-lelysee/",
+          "title": "Pachinian et Macron tiennent des discussions stratégiques au Palais de l’Élysée"
+        }
+      ]
+    },
+    {
+      "title": "Accuse di aggressione contro soldati russi di base in Armenia",
+      "text": "Militari russi di stanza in Armenia sono accusati di aver aggredito un cittadino ucraino. L'episodio solleva interrogativi sulla presenza militare russa nel paese.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/des-soldats-russes-bases-en-armenie-accuses-davoir-agresse-un-ukrainien/",
+          "title": "Des soldats russes basés en Arménie accusés d’avoir agressé un Ukrainien"
+        }
+      ]
+    },
+    {
+      "title": "Nuovo regime commerciale preferenziale del Regno Unito per l'Armenia",
+      "text": "Londra ha introdotto un regime commerciale preferenziale per diversi prodotti armeni. Nel frattempo, Armenia e Finlandia stanno esaminando le prospettive di cooperazione economica e commerciale.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265375",
+          "title": "L’Arménie et la Finlande examinent les perspectives de coopération commerciale et économique"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-royaume-uni-a-instaure-un-regime-commercial-preferentiel-pour-plusieurs-produits-darmenie/",
+          "title": "Le Royaume-Uni a instauré un régime commercial préférentiel pour plusieurs produits d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Questioni sociali a Erevan: traffico e condizioni di vita",
+      "text": "Anna Hakobyan evidenzia le gravi difficoltà degli spostamenti nella capitale a causa del traffico. La consigliera Anna Akopian interpella il sindaco sul deterioramento delle condizioni di vita a Erevan.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/il-faut-une-sante-dastronaute-pour-se-deplacer-dun-point-a-a-un-point-b-anna-hakobyan-sur-les-embouteillages-a-erevan/",
+          "title": "Il faut une santé d’astronaute pour se déplacer d’un point A à un point B : Anna Hakobyan sur les embouteillages à Erevan"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/anna-akopian-interpelle-le-maire-derevan-sur-la-degradation-des-conditions-de-vie-dans-la-capitale",
+          "title": "Anna Akopian interpelle le maire d’Erevan sur la dégradation des conditions de vie dans la capitale"
+        }
+      ]
+    },
+    {
+      "title": "Prigionieri armeni in Azerbaigian: interrogazione alla Commissione europea",
+      "text": "Marina Mesure ha rivolto domande alla Commissione europea sulla situazione dei prigionieri armeni detenuti in Azerbaigian. La questione rimane un punto critico nelle relazioni regionali.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/prisonniers-armeniens-les-questions-de-marina-mesure-a-la-commission-europeenne/",
+          "title": "Prisonniers arméniens en Azerbaïdjan : les questions de Marina Mesure à la Commission européenne"
+        }
+      ]
+    }
+  ]
+}
