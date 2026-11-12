@@ -151,8 +151,7 @@
         "reel:duduk": "2026-11-06T23:33:17.000Z",
         "reel:khatchkar": "2026-11-07T20:32:10.259Z",
         "reel:kochari": "2026-11-10T19:32:45.336Z",
-        "reel:komitas": "2026-11-10T20:09:40.783Z",
-        "reel:sayat-nova-et-la-tradition-des-ashoughs": "2026-11-12T21:06:34.776Z"
+        "reel:komitas": "2026-11-10T20:09:40.783Z"
       },
       "failed": {
         "reel:alphabet-armenien": {
@@ -206,8 +205,8 @@
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
-          "attempts": 2,
-          "last": "2026-11-12T20:57:15.902Z",
+          "attempts": 3,
+          "last": "2026-11-12T21:07:32.120Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:tigrane-le-grand-et-l-empire-armenien": {
@@ -390,8 +389,7 @@
         "reel:kochari": "2026-11-07T20:32:10.259Z",
         "reel:komitas": "2026-11-10T19:12:33.137Z",
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
-        "reel:duduk": "2026-11-11T21:32:37.069Z",
-        "reel:bataille-de-sardarapat": "2026-11-12T21:06:34.776Z"
+        "reel:duduk": "2026-11-11T21:32:37.069Z"
       },
       "failed": {
         "reel:aram-khatchatourian": {
@@ -400,9 +398,9 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:bataille-de-sardarapat": {
-          "attempts": 3,
-          "last": "2026-11-09T08:32:36.558Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+          "attempts": 1,
+          "last": "2026-11-12T21:07:32.120Z",
+          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:charles-aznavour": {
           "attempts": 3,
@@ -1433,8 +1431,7 @@
         "reel:khatchkar": "2026-11-07T09:05:47.491Z",
         "reel:kochari": "2026-11-07T21:32:48.521Z",
         "reel:komitas": "2026-11-10T20:09:40.783Z",
-        "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z",
-        "reel:aram-khatchatourian": "2026-11-12T21:06:34.776Z"
+        "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z"
       },
       "failed": {
         "reel:duduk": {
@@ -1443,9 +1440,9 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-09T05:32:52.538Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+          "attempts": 1,
+          "last": "2026-11-12T21:07:32.120Z",
+          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:bataille-de-sardarapat": {
           "attempts": 3,
@@ -1550,8 +1547,7 @@
         "culture:art-du-tapis-armenien": "2026-11-02T18:32:04.503Z",
         "reel:khatchkar": "2026-11-07T09:05:47.491Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
-        "reel:alphabet-armenien": "2026-11-10T20:32:56.541Z",
-        "reel:sayat-nova-et-la-tradition-des-ashoughs": "2026-11-12T21:06:34.776Z"
+        "reel:alphabet-armenien": "2026-11-10T20:32:56.541Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1605,8 +1601,8 @@
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
-          "attempts": 2,
-          "last": "2026-11-12T20:57:15.902Z",
+          "attempts": 3,
+          "last": "2026-11-12T21:07:32.120Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:tigrane-le-grand-et-l-empire-armenien": {
@@ -1678,8 +1674,7 @@
         "culture:art-du-tapis-armenien": "2026-11-02T20:44:07.733Z",
         "reel:khatchkar": "2026-11-07T00:32:17.242Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
-        "reel:komitas": "2026-11-10T19:32:45.336Z",
-        "reel:temple-paien-de-garni": "2026-11-12T21:06:34.776Z"
+        "reel:komitas": "2026-11-10T19:32:45.336Z"
       },
       "failed": {
         "reel:alphabet-armenien": {
@@ -1748,8 +1743,8 @@
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:temple-paien-de-garni": {
-          "attempts": 1,
-          "last": "2026-11-12T20:57:15.902Z",
+          "attempts": 2,
+          "last": "2026-11-12T21:07:32.120Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:bataille-d-avarayr-et-vardan-mamikonian": {
@@ -2126,8 +2121,7 @@
         "reel:khatchkar": "2026-11-07T00:32:17.242Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
         "reel:komitas": "2026-11-10T19:32:45.336Z",
-        "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
-        "reel:sayat-nova-et-la-tradition-des-ashoughs": "2026-11-12T21:06:34.776Z"
+        "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z"
       },
       "failed": {
         "reel:duduk": {
@@ -2181,8 +2175,8 @@
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
-          "attempts": 2,
-          "last": "2026-11-12T20:57:15.902Z",
+          "attempts": 3,
+          "last": "2026-11-12T21:07:32.120Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         },
         "reel:tigrane-le-grand-et-l-empire-armenien": {
