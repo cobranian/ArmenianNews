@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T00:23:27.206Z",
+  "generatedAt": "2026-11-12T01:23:39.687Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -1212,7 +1212,14 @@
       "rawDate": "NOV 15 13:30",
       "image": "https://armenopole.com/images/events/st-sarkis-church-luncheon.jpg?v=104884",
       "country": "usa",
-      "resumeLangs": []
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Culte Spécial - 180ème Anniversaire de l'Église Évangélique Arménienne",
@@ -1280,6 +1287,7 @@
         "fr",
         "de",
         "en",
+        "hy",
         "ru"
       ]
     },
@@ -1314,7 +1322,9 @@
         "de",
         "it",
         "en",
-        "es"
+        "es",
+        "hy",
+        "ru"
       ]
     },
     {
