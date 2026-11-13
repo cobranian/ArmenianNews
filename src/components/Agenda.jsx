@@ -29,6 +29,17 @@ const NO_EVENTS = []
 // un vrai lien vers armenopole : sans JavaScript, dans le HTML prérendu que lit
 // Google, et au clic du milieu ou avec Ctrl/Cmd (nouvel onglet), elle mène
 // directement à l'événement — seul le clic simple est intercepté.
+// Le domaine que nomme le bouton de sortie : « armenopole » pour les
+// événements scrapés, le vrai site pour ceux ajoutés à la main.
+function ctaHost(url) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '')
+    return host.endsWith('armenopole.com') ? 'armenopole' : host
+  } catch {
+    return 'armenopole'
+  }
+}
+
 function EventCard({ ev, place, onOpen }) {
   const { formatDayNum, formatMonthAbbr, formatWeekdayTime } = useI18n()
   const d = ev.date ? new Date(ev.date) : null
@@ -153,12 +164,18 @@ export function Agenda() {
         const day = d ? `${formatDayNum(d)} ${formatMonthAbbr(d)}` : ''
         const when = d ? formatWeekdayTime(d) : ''
         return {
-          img: ev.image || null,
+          // `poster` (événements ajoutés à la main, agenda-manual.json) :
+          // l'affiche entière pour la visionneuse, quand `image` n'en est
+          // qu'un recadrage au format de la carte.
+          img: ev.poster || ev.image || null,
           alt: ev.title,
           title: ev.title,
           sub: [placeLabel(ev.location, lang), day, when].filter(Boolean).join(' · '),
           href: ev.url,
-          cta: t('agenda.armenopole'),
+          // Un événement ajouté à la main peut mener ailleurs qu'armenopole :
+          // le bouton nomme alors le vrai domaine (les sept libellés
+          // contiennent « armenopole » tel quel, d'où le simple remplacement).
+          cta: t('agenda.armenopole').replace('armenopole', ctaHost(ev.url)),
           // Boutons de partage (src/share.js) : l'accueil de CE site, ancré
           // sur l'événement (#e-…). À l'arrivée, l'effet ci-dessous choisit
           // son pays, descend au carrousel et ouvre la visionneuse dessus —

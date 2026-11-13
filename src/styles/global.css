@@ -4486,9 +4486,19 @@ html.js .reveal.is-visible {
     box-shadow: none;
     background: transparent;
   }
+  /* L'image est posée en absolu sur tout le cadre, et `contain` l'y ajuste.
+     Un `max-height: 100%` ne suffisait pas : le cadre est une grille à piste
+     de hauteur automatique, le pourcentage n'y résout pas, et une affiche en
+     portrait gardait sa hauteur naturelle — le cadre la coupait en bas
+     (mesuré sur téléphone, nov. 2026 : Artzakank, Kermesse, Tesson). */
   .lb__img {
-    max-width: 100%;
-    max-height: 100%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
   }
   .lb__corner {
     display: none;
