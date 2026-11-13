@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T20:23:31.543Z",
+  "generatedAt": "2026-11-13T21:23:30.501Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -44,7 +44,8 @@
       "date": "2026-11-22T17:00",
       "rawDate": "NOV 22 17:00",
       "image": "/agenda/babayan-geneve-2026-11-22.jpg",
-      "country": "switzerland"
+      "country": "switzerland",
+      "resumeLangs": []
     },
     {
       "title": "Ballet Sheherezade - Khachaturian, Korskakov",
@@ -2227,6 +2228,22 @@
       "image": "https://armenopole.com/images/events/avetis-khachatrian-theatre-of-emotions.jpg?v=106394",
       "country": "lebanon",
       "resumeLangs": []
+    },
+    {
+      "title": "Ottoman Armenians: Life, Culture, Society, Vol. II",
+      "url": "https://armenopole.com/ottoman-armenians-life-culture-society-vol-ii.html",
+      "location": "Beyrouth",
+      "date": "2026-11-27T18:00",
+      "rawDate": "NOV 27 18:00",
+      "image": "https://armenopole.com/images/events/ottoman-armenians-life-culture-society-vol-ii.jpg?v=88425",
+      "country": "lebanon",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es"
+      ]
     },
     {
       "title": "AGBU 120th Anniversary November Meal Night",
