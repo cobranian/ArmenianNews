@@ -321,6 +321,20 @@ async function main() {
     }
   }
 
+  // Événements ajoutés à la main (src/data/agenda-manual.json, images dans
+  // public/agenda/) : fusionnés à chaque passage, sinon le scrape les
+  // effacerait dans l'heure. Dédoublonnés par URL, rangés par date. Un
+  // événement passé disparaît seul (filtre « à venir » de l'agenda).
+  const manualAgenda = (await readJson('agenda-manual.json')) || {}
+  const manualUrls = new Set()
+  for (const key of ['switzerland', 'world']) {
+    const extra = manualAgenda[key] || []
+    extra.forEach((e) => manualUrls.add(e.url))
+    const seen = new Set(extra.map((e) => e.url))
+    agenda[key] = [...(agenda[key] || []).filter((e) => !seen.has(e.url)), ...extra]
+      .sort((a, b) => String(a.date).localeCompare(String(b.date)))
+  }
+
   // Diario Armenia, catégorie Agenda : la communauté d'Argentine, fusionnée dans
   // `world` (dédoublonnage par URL). Un échec resert les événements de
   // l'instantané précédent — images déjà en /da/ — au lieu de les effacer.
@@ -404,7 +418,8 @@ async function main() {
   const resumeCache = await summarizeAgenda({
     // Les résumés lisent une page armenopole : les annonces de Diario Armenia
     // n'en ont pas (elles échoueraient toutes, en mangeant le budget).
-    events: [...agenda.switzerland, ...agenda.world].filter((e) => !isDiarioEvent(e)),
+    // Idem pour les événements ajoutés à la main.
+    events: [...agenda.switzerland, ...agenda.world].filter((e) => !isDiarioEvent(e) && !manualUrls.has(e.url)),
     cache: (await readJson('agenda-resumes.json')) || {},
   })
   await writeJson('agenda-resumes.json', resumeCache)
