@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T21:23:30.501Z",
+  "generatedAt": "2026-11-13T22:23:27.052Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -44,9 +44,9 @@
       "date": "2026-11-22T17:00",
       "rawDate": "NOV 22 17:00",
       "image": "/agenda/babayan-geneve-2026-11-22.jpg",
+      "poster": "/agenda/babayan-geneve-2026-11-22-affiche.jpg",
       "country": "switzerland",
-      "resumeLangs": [],
-      "poster": "/agenda/babayan-geneve-2026-11-22-affiche.jpg"
+      "resumeLangs": []
     },
     {
       "title": "Ballet Sheherezade - Khachaturian, Korskakov",
@@ -2243,7 +2243,8 @@
         "de",
         "it",
         "en",
-        "es"
+        "es",
+        "ru"
       ]
     },
     {
