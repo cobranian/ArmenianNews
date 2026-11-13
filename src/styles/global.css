@@ -4210,6 +4210,81 @@ html.js .reveal.is-visible {
   max-height: 74vh;
   object-fit: contain;
 }
+/* L'image est un bouton : la toucher l'ouvre en plein écran (ZoomView). */
+.lb__zoom {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.lb__zoom:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: -4px;
+}
+
+/* --- le plein écran de l'image (ZoomView.jsx) ------------------------------
+   Contenu par .lb (backdrop-filter), plein écran elle aussi. `touch-action:
+   none` : le pincement est capté ici, la PAGE ne zoome jamais — elle
+   resterait agrandie après fermeture sur iPhone. L'image couvre tout l'écran
+   en `contain`, ce que suppose la mesure de ZoomView (src/zoomMath.js). */
+.zv {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  touch-action: none;
+  background: color-mix(in srgb, var(--basalt) 96%, transparent);
+  cursor: zoom-in;
+}
+.zv__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+.zv__img--anim {
+  transition: transform 0.25s var(--ease);
+}
+.zv__close {
+  position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  right: calc(12px + env(safe-area-inset-right, 0px));
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--apricot-ink);
+  cursor: pointer;
+}
+.zv__close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.zv__close:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .zv__img--anim {
+    transition: none;
+  }
+}
 .lb__frame--motif {
   aspect-ratio: 4 / 5;
   width: min(440px, 78vw);
@@ -4499,6 +4574,12 @@ html.js .reveal.is-visible {
     max-width: none;
     max-height: none;
     object-fit: contain;
+  }
+  /* Le bouton qui porte l'image couvre le cadre : c'est lui le bloc de
+     l'image absolue ci-dessus. */
+  .lb__zoom {
+    position: absolute;
+    inset: 0;
   }
   .lb__corner {
     display: none;
