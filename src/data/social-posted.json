@@ -411,8 +411,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:monastere-de-tatev": {
-          "attempts": 1,
-          "last": "2026-11-13T20:33:19.311Z",
+          "attempts": 3,
+          "last": "2026-11-13T21:33:35.785Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:lavash": {
@@ -1197,8 +1197,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:bataille-de-sardarapat": {
-          "attempts": 1,
-          "last": "2026-11-13T20:33:19.311Z",
+          "attempts": 3,
+          "last": "2026-11-13T21:33:35.785Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:charles-aznavour": {
@@ -1438,8 +1438,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:monastere-de-tatev": {
-          "attempts": 1,
-          "last": "2026-11-13T20:33:19.311Z",
+          "attempts": 3,
+          "last": "2026-11-13T21:33:35.785Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:lavash": {
