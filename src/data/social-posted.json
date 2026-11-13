@@ -397,8 +397,7 @@
         "reel:komitas": "2026-11-10T19:12:33.137Z",
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
-        "reel:charles-aznavour": "2026-11-13T01:32:26.024Z",
-        "reel:lavash": "2026-11-13T22:32:42.841Z"
+        "reel:charles-aznavour": "2026-11-13T01:32:26.024Z"
       },
       "failed": {
         "reel:aram-khatchatourian": {
@@ -417,8 +416,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:lavash": {
-          "attempts": 2,
-          "last": "2026-11-13T22:22:34.159Z",
+          "attempts": 3,
+          "last": "2026-11-13T22:33:33.710Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:serguei-paradjanov": {
@@ -1189,8 +1188,7 @@
         "reel:kochari": "2026-11-07T21:32:48.521Z",
         "reel:komitas": "2026-11-10T20:09:40.783Z",
         "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z",
-        "reel:aram-khatchatourian": "2026-11-12T21:06:34.776Z",
-        "reel:charles-aznavour": "2026-11-13T22:32:42.841Z"
+        "reel:aram-khatchatourian": "2026-11-12T21:06:34.776Z"
       },
       "failed": {
         "reel:duduk": {
@@ -1204,8 +1202,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:charles-aznavour": {
-          "attempts": 2,
-          "last": "2026-11-13T22:22:34.159Z",
+          "attempts": 3,
+          "last": "2026-11-13T22:33:33.710Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:monastere-de-tatev": {
@@ -1421,8 +1419,7 @@
         "reel:kochari": "2026-11-07T21:32:48.521Z",
         "reel:komitas": "2026-11-10T20:09:40.783Z",
         "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z",
-        "reel:charles-aznavour": "2026-11-13T02:33:23.740Z",
-        "reel:lavash": "2026-11-13T22:32:42.841Z"
+        "reel:charles-aznavour": "2026-11-13T02:33:23.740Z"
       },
       "failed": {
         "reel:duduk": {
@@ -1446,8 +1443,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:lavash": {
-          "attempts": 2,
-          "last": "2026-11-13T22:22:34.159Z",
+          "attempts": 3,
+          "last": "2026-11-13T22:33:33.710Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:serguei-paradjanov": {
