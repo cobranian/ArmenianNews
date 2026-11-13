@@ -31,11 +31,23 @@ export function clampPan(state, box) {
   }
 }
 
+// Pincement : `view0` et `mid0` sont l'état et le milieu des doigts au DÉBUT
+// du geste, `mid` le milieu actuel, `ratio` l'écart actuel / l'écart de
+// départ. Le point de l'image qui était sous `mid0` se retrouve sous `mid` :
+// glisser à deux doigts déplace, écarter zoome, les deux ensemble se composent.
+export function pinchTo(view0, mid0, mid, ratio, box) {
+  const scale = clampScale(view0.scale * ratio)
+  const k = scale / view0.scale
+  return clampPan(
+    { x: mid.x - (mid0.x - view0.x) * k, y: mid.y - (mid0.y - view0.y) * k, scale },
+    box,
+  )
+}
+
 // Le point de l'image sous (px, py) y reste après le changement d'échelle.
 export function zoomAt(state, newScale, px, py, box) {
-  const scale = clampScale(newScale)
-  const k = scale / state.scale
-  return clampPan({ x: px - (px - state.x) * k, y: py - (py - state.y) * k, scale }, box)
+  const p = { x: px, y: py }
+  return pinchTo(state, p, p, newScale / state.scale, box)
 }
 
 export function toggleZoom(state, px, py, box) {

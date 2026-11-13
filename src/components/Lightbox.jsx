@@ -172,7 +172,9 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
               className="lb__zoom"
               type="button"
               onClick={() => setZoom(true)}
-              aria-label={t('lb.zoom')}
+              // L'action ET ce que montre l'image : un aria-label remplace
+              // l'alt de l'<img> dans le nom accessible.
+              aria-label={item.alt ? `${t('lb.zoom')}, ${item.alt}` : t('lb.zoom')}
             >
               <img className="lb__img" src={item.img} alt={item.alt} />
             </button>

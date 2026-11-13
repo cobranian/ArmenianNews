@@ -19,7 +19,8 @@ const css = read('src/styles/global.css')
 test("la Lightbox ouvre le zoom par un bouton autour de l'image", () => {
   assert.match(lightbox, /import \{ ZoomView \} from '\.\/ZoomView\.jsx'/)
   assert.match(lightbox, /className="lb__zoom"/)
-  assert.match(lightbox, /aria-label=\{t\('lb\.zoom'\)\}/)
+  // Le nom accessible garde ce que montre l'image (l'alt), pas la seule action.
+  assert.match(lightbox, /aria-label=\{item\.alt \? `\$\{t\('lb\.zoom'\)\}, \$\{item\.alt\}`/)
 })
 
 test("changer d'image referme le zoom", () => {

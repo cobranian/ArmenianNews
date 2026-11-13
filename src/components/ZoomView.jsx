@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { clampPan, zoomAt, toggleZoom } from '../zoomMath.js'
+import { clampPan, pinchTo, zoomAt, toggleZoom } from '../zoomMath.js'
 
 /* ------------------------------------------------------------------ *
  * ZoomView — l'image de la visionneuse en plein écran, pour LIRE une
@@ -82,14 +82,22 @@ export function ZoomView({ src, alt, closeLabel, onClose }) {
   // (Re)part d'un état de geste à partir des pointeurs présents : appelé à
   // chaque doigt posé ou levé, pour que le doigt restant d'un pincement
   // enchaîne un déplacement sans saut.
+  // Les points sont COPIÉS : onPointerMove modifie les objets de `pointers`,
+  // et un départ qui serait le même objet donnerait un écart toujours nul
+  // (défaut relevé en relecture : aucun déplacement ne bougeait l'image).
   const anchor = () => {
     const pts = [...pointers.current.values()]
     const v = viewRef.current
     if (pts.length >= 2) {
       const [a, b] = pts
-      gesture.current = { kind: 'pinch', dist: Math.hypot(a.x - b.x, a.y - b.y) || 1, view: v }
+      gesture.current = {
+        kind: 'pinch',
+        dist: Math.hypot(a.x - b.x, a.y - b.y) || 1,
+        mid: rel({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, boxRef.current),
+        view: v,
+      }
     } else if (pts.length === 1) {
-      gesture.current = { kind: 'pan', start: pts[0], view: v }
+      gesture.current = { kind: 'pan', start: { x: pts[0].x, y: pts[0].y }, view: v }
     } else {
       gesture.current = null
     }
@@ -114,7 +122,7 @@ export function ZoomView({ src, alt, closeLabel, onClose }) {
       const [a, b] = [...pointers.current.values()]
       const dist = Math.hypot(a.x - b.x, a.y - b.y)
       const mid = rel({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, box)
-      apply(zoomAt(g.view, (g.view.scale * dist) / g.dist, mid.x, mid.y, box))
+      apply(pinchTo(g.view, g.mid, mid, dist / g.dist, box))
     } else if (g.view.scale > 1) {
       apply(
         clampPan(
