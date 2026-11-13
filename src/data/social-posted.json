@@ -151,8 +151,7 @@
         "reel:duduk": "2026-11-06T23:33:17.000Z",
         "reel:khatchkar": "2026-11-07T20:32:10.259Z",
         "reel:kochari": "2026-11-10T19:32:45.336Z",
-        "reel:komitas": "2026-11-10T20:09:40.783Z",
-        "reel:fete-paienne-et-chretienne-de-vardavar": "2026-11-13T16:34:15.120Z"
+        "reel:komitas": "2026-11-10T20:09:40.783Z"
       },
       "failed": {
         "reel:alphabet-armenien": {
@@ -243,6 +242,11 @@
         "reel:cave-viticole-d-areni-1": {
           "attempts": 3,
           "last": "2026-11-13T15:34:43.414Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+        },
+        "reel:fete-paienne-et-chretienne-de-vardavar": {
+          "attempts": 1,
+          "last": "2026-11-13T16:34:31.364Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         }
       }
@@ -1550,8 +1554,7 @@
         "culture:art-du-tapis-armenien": "2026-11-02T18:32:04.503Z",
         "reel:khatchkar": "2026-11-07T09:05:47.491Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
-        "reel:alphabet-armenien": "2026-11-10T20:32:56.541Z",
-        "reel:fete-paienne-et-chretienne-de-vardavar": "2026-11-13T16:34:15.120Z"
+        "reel:alphabet-armenien": "2026-11-10T20:32:56.541Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1647,6 +1650,11 @@
         "reel:cave-viticole-d-areni-1": {
           "attempts": 3,
           "last": "2026-11-13T15:34:43.414Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+        },
+        "reel:fete-paienne-et-chretienne-de-vardavar": {
+          "attempts": 1,
+          "last": "2026-11-13T16:34:31.364Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         }
       }
@@ -2150,8 +2158,7 @@
         "reel:khatchkar": "2026-11-07T00:32:17.242Z",
         "reel:kochari": "2026-11-07T20:32:10.259Z",
         "reel:komitas": "2026-11-10T19:32:45.336Z",
-        "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
-        "reel:fete-paienne-et-chretienne-de-vardavar": "2026-11-13T16:34:15.120Z"
+        "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z"
       },
       "failed": {
         "reel:duduk": {
@@ -2242,6 +2249,11 @@
         "reel:cave-viticole-d-areni-1": {
           "attempts": 3,
           "last": "2026-11-13T15:34:43.414Z",
+          "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+        },
+        "reel:fete-paienne-et-chretienne-de-vardavar": {
+          "attempts": 1,
+          "last": "2026-11-13T16:34:31.364Z",
           "error": "instagram-reel/media : HTTP 400 Unsupported post request. Object with ID '***' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
         }
       }
