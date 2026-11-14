@@ -31,6 +31,22 @@ test('sitemap : un index de langue sans article n’est pas listé (il est noind
   assert.ok(ch.includes('<loc>https://armenieinfo.ch/culture/x/</loc>'))
 })
 
+// Une vidéo ajoutée à un article déjà publié change la page : sans un lastmod
+// qui bouge, IndexNow (écart de sitemap au jour près) n'en dit rien aux moteurs
+// — c'est arrivé le 14 nov. 2026 (« rien de nouveau » pour 10 pages vidéo).
+test('sitemap : la mise en ligne d’une vidéo avance le lastmod de SA page, pas des autres langues', () => {
+  const lm = (xml, loc) => xml.split('<url>').find((b) => b.includes(`<loc>${loc}</loc>`)).match(/<lastmod>([^<]+)</)[1]
+  const videos = { duduk: { en: { uploadDate: '2026-11-14' } } }
+  const xml = sitemapFor('org', '2026-10-27T10:00:00Z', {}, culture, new Map(), videos)
+  assert.equal(lm(xml, 'https://armenianews.org/culture/duduk/'), '2026-11-14')
+  assert.equal(lm(xml, 'https://armenianews.org/hy/culture/duduk/'), '2026-10-26')
+  // Une vidéo PLUS ANCIENNE que l'article ne recule pas sa date.
+  const old = sitemapFor('org', '2026-10-27T10:00:00Z', {}, culture, new Map(), { duduk: { en: { uploadDate: '2026-10-01' } } })
+  assert.equal(lm(old, 'https://armenianews.org/culture/duduk/'), '2026-10-26')
+  // L'index de la langue suit sa page la plus récente.
+  assert.equal(lm(xml, 'https://armenianews.org/culture/'), '2026-11-14')
+})
+
 test('sitemap sans culture : inchangé', () => {
   assert.equal(sitemapFor('ch', '2026-10-27T10:00:00Z', {}), sitemapFor('ch', '2026-10-27T10:00:00Z', {}, []))
 })
