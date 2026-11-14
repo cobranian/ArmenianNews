@@ -397,8 +397,7 @@
         "reel:komitas": "2026-11-10T19:12:33.137Z",
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
-        "reel:charles-aznavour": "2026-11-13T01:32:26.024Z",
-        "reel:serguei-paradjanov": "2026-11-14T00:33:54.499Z"
+        "reel:charles-aznavour": "2026-11-13T01:32:26.024Z"
       },
       "failed": {
         "reel:aram-khatchatourian": {
@@ -422,8 +421,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:serguei-paradjanov": {
-          "attempts": 2,
-          "last": "2026-11-13T23:53:20.665Z",
+          "attempts": 3,
+          "last": "2026-11-14T00:34:48.391Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:ani": {
@@ -1206,11 +1205,6 @@
         "reel:charles-aznavour": {
           "attempts": 3,
           "last": "2026-11-13T22:33:33.710Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:monastere-de-tatev": {
-          "attempts": 2,
-          "last": "2026-11-13T23:53:20.665Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:lavash": {
