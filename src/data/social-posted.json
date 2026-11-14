@@ -436,11 +436,6 @@
           "last": "2026-11-14T06:32:44.350Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
-        "reel:epopee-de-david-de-sassoun": {
-          "attempts": 3,
-          "last": "2026-11-10T02:32:51.823Z",
-          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
           "attempts": 3,
           "last": "2026-11-10T04:49:40.047Z",
