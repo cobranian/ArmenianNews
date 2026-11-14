@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T11:23:32.458Z",
+  "generatedAt": "2026-11-14T12:23:30.585Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Փաշինյանը դեկտեմբերին երեք անգամ կմեկնի Ռուսաստան",
+            "url": "https://hy.armradio.am/archives/770680",
+            "date": "2026-11-14T11:40:22.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/71105_b-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Նիկոլ Փաշինյանը նոյեմբերի 14-16-ն աշխատանքային այցով կգտնվի Կամբոջայի Թագավորությունում",
             "url": "https://hy.armradio.am/archives/770660",
             "date": "2026-11-14T08:08:43.000Z",
@@ -1136,19 +1143,19 @@
             "date": "2026-11-12T16:13:52.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/ScreenShot-3933-300x195.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Փարիզից Անթալիա, Անթալիայից՝ Դուբլին․ Փաշինյանի աշխատանքային այցերի օրակարգը",
-            "url": "https://hy.armradio.am/archives/770344",
-            "date": "2026-11-12T16:10:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/ScreenShot-3932-768x511.jpg",
-            "category": "Կարևոր"
           }
         ]
       },
       {
         "categoryKey": "society",
         "articles": [
+          {
+            "title": "Ձերբակալվել է տրոլեյբուսի վարորդի նկատմամբ բռնություն գործադրելու մեջ կասկածվող անձը",
+            "url": "https://hy.armradio.am/archives/770685",
+            "date": "2026-11-14T11:44:02.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2019/11/troleybus5-300x200.jpeg",
+            "category": "Հասարակություն"
+          },
           {
             "title": "Ինչպե՞ս բեռնաթափել Երևանի երթևեկությունը․ քաղաքապետարանը տարբերակներ է քննարկում",
             "url": "https://hy.armradio.am/archives/770520",
@@ -1211,13 +1218,6 @@
             "date": "2026-11-13T12:47:51.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2025/04/Nikol-Pashinyan-1-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Իրանի քաղաքացու փախուստի և հայտնաբերման դեպքի վերաբերյալ ՊԵԿ-ը պարզաբանում է տարածել",
-            "url": "https://hy.armradio.am/archives/770486",
-            "date": "2026-11-13T11:45:54.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/pek-768x355.jpg",
-            "category": "Հասարակություն"
           }
         ]
       },
@@ -2151,6 +2151,13 @@
           "rubric": "politique"
         },
         {
+          "title": "La visite de Pachinian en Turquie et la perte de poids diplomatique de l’Arménie",
+          "url": "https://www.armenews.com/comment-voulez-vous-etre-pris-au-serieux-un-predateur-comme-erdogan-ne-peut-respecter-quelquun-qui-renie-lararat-symbole-de-sa-propre-nation-ataturk-vous-a-deja-re/",
+          "date": "2026-11-14T07:30:52.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-14-a-07.16.37.png",
+          "rubric": "politique"
+        },
+        {
           "title": "Une lettre d’un prisonnier politique azerbaïdjanais incarcéré révèle les conséquences mortelles du silence",
           "url": "https://www.armenews.com/une-lettre-dun-prisonnier-politique-azerbaidjanais-incarcere-revele-les-consequences-mortelles-du-silence/",
           "date": "2026-11-14T07:30:52.000Z",
@@ -2162,13 +2169,6 @@
           "url": "https://www.armenews.com/decryptage-un-sujet-dangereux-lors-de-la-rencontre-pachinian-aliyev-par-hakob-badalyan/",
           "date": "2026-11-14T07:30:52.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/11/71086_b.jpeg",
-          "rubric": "politique"
-        },
-        {
-          "title": "La visite de Pachinian en Turquie et la perte de poids diplomatique de l’Arménie",
-          "url": "https://www.armenews.com/comment-voulez-vous-etre-pris-au-serieux-un-predateur-comme-erdogan-ne-peut-respecter-quelquun-qui-renie-lararat-symbole-de-sa-propre-nation-ataturk-vous-a-deja-re/",
-          "date": "2026-11-14T07:30:52.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-14-a-07.16.37.png",
           "rubric": "politique"
         },
         {
@@ -2270,6 +2270,12 @@
       "categoryKey": "communaute",
       "articles": [
         {
+          "title": "Jean-Christophe Buisson : « Il n’y a plus que vous, nous, pour entretenir cette petite flamme de la mauvaise conscience. »",
+          "url": "https://www.armenews.com/jean-christophe-buisson-il-ny-a-plus-que-vous-nous-pour-entretenir-cette-petite-flamme-de-la-mauvaise-conscience/",
+          "date": "2026-11-14T11:31:58.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-14-a-12.20.37.png"
+        },
+        {
           "title": "A Valence la pièce musicale « Anouche » d’Hovhannès Toumanian par les élèves de l’école Arévi Chogher a conquis le public",
           "url": "https://www.armenews.com/a-valence-la-piece-musicale-anouche-dhovhannes-toumanian-par-les-eleves-de-lecole-arevi-chogher-a-conquis-le-public/",
           "date": "2026-11-14T07:52:36.000Z",
@@ -2322,12 +2328,6 @@
           "url": "https://www.armenews.com/conference-de-lassociation-de-soutien-a-lartsakh-a-paris-le-16-novembre/",
           "date": "2026-11-09T07:30:16.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/10/Capture-decran-2026-10-26-a-15.58.25.png"
-        },
-        {
-          "title": "Le Fonds arménien de France mobilise ses bénévoles pour faire revivre le Syunik",
-          "url": "https://www.armenews.com/le-fonds-armenien-de-france-mobilise-ses-benevoles-pour-faire-revivre-le-syunik/",
-          "date": "2026-11-08T07:30:19.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/DSC09786-scaled.jpg"
         }
       ]
     },
@@ -3750,6 +3750,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Artwork created using AI to be presented for the first time at National Gallery of Armenia",
+            "url": "https://armenpress.am/en/article/1265675",
+            "date": "2026-11-14T12:03:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/QCuOuOzzlALySVFb7hp9ZQLjFa4irYXreuc24aoO.webp"
+          },
+          {
             "title": "Temperatures to rise by 2-4 degrees in Armenia over the weekend",
             "url": "https://armenpress.am/en/article/1265670",
             "date": "2026-11-14T11:05:00.000Z",
@@ -3802,12 +3808,6 @@
             "url": "https://armenpress.am/en/article/1265662",
             "date": "2026-11-14T09:05:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/oCpYfdISMc79pXx3kQMXEtyrkS3P2RXisPkqCeFq.webp"
-          },
-          {
-            "title": "Business Olympiad 2026 winners awarded at World Education Fair in Yerevan",
-            "url": "https://armenpress.am/en/article/1265660",
-            "date": "2026-11-14T08:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/WzyagAq9qEtDNLuYErHpYt9tY4Qw3D0uBgfnA1bl.webp"
           }
         ]
       },
@@ -3880,6 +3880,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Trump, Putin and Xi plan joint meeting in China next week",
+            "url": "https://armenpress.am/en/article/1265674",
+            "date": "2026-11-14T11:33:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/5HOqZ3i42YJqwHCElj6HzeALDZUQmjLII9q366nr.webp"
+          },
+          {
+            "title": "Tanker collides with cruise ship in New Orleans, 32 hospitalized",
+            "url": "https://armenpress.am/en/article/1265673",
+            "date": "2026-11-14T11:26:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/76qmstpMm3dvHTPmURdlWgL9cukzsbhlFiVYB9qX.webp"
+          },
+          {
             "title": "Trump says he wants to ‘get Cuba done’ before leaving office",
             "url": "https://armenpress.am/en/article/1265581",
             "date": "2026-11-13T08:55:00.000Z",
@@ -3926,18 +3938,6 @@
             "url": "https://armenpress.am/en/article/1265439",
             "date": "2026-11-12T06:33:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/12/jAYpOtRV7jDTphlFLHSqaQIxZ7q3CN1IrLWPszfe.webp"
-          },
-          {
-            "title": "Nvidia board meets to decide CEO Huang's future as leadership crisis deepens",
-            "url": "https://armenpress.am/en/article/1265423",
-            "date": "2026-11-12T04:27:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/2T1tVIxHb1uee555aC74I0UGga7fVhCEBzXlAYpg.webp"
-          },
-          {
-            "title": "AI to add a net 1.7 million jobs worldwide by 2030, Gartner forecasts",
-            "url": "https://armenpress.am/en/article/1265418",
-            "date": "2026-11-11T17:38:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/11/cyVFgVYtHpEcQh4zqZVzVRwxFpPS2D0C59U3hkmV.webp"
           }
         ]
       },
@@ -4227,6 +4227,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Հայաստանի ազգային պատկերասրահում առաջին անգամ կներկայացվի արհեստական բանականությամբ ստեղծված արվեստի գործ",
+            "url": "https://armenpress.am/hy/article/1265675",
+            "date": "2026-11-14T11:52:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/QCuOuOzzlALySVFb7hp9ZQLjFa4irYXreuc24aoO.webp"
+          },
+          {
             "title": "Հայաստանում արհեստական բանականության զարգացումը պետք է հիմնված լինի մարդկանց իրական կարիքների վրա. Երևանում անցկացվել է «ԱԲ Ագորա»-ն",
             "url": "https://armenpress.am/hy/article/1265671",
             "date": "2026-11-14T10:58:00.000Z",
@@ -4279,12 +4285,6 @@
             "url": "https://armenpress.am/hy/article/1265663",
             "date": "2026-11-14T09:07:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/fEpE72Cj28Vn13W7spg8jQ2OJlVZO9CU7GUD6ead.webp"
-          },
-          {
-            "title": "Նիկոլ Փաշինյանը դեկտեմբերին երեք անգամ կմեկնի Ռուսաստան բանակցությունների համար",
-            "url": "https://armenpress.am/hy/article/1265662",
-            "date": "2026-11-14T08:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/oCpYfdISMc79pXx3kQMXEtyrkS3P2RXisPkqCeFq.webp"
           }
         ]
       },
@@ -4357,6 +4357,30 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "ԱՄՆ-ում վերացվել է օդանավերի մեկնումների համազգային սահմանափակումը",
+            "url": "https://armenpress.am/hy/article/1265678",
+            "date": "2026-11-14T12:21:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/4rU5gyzw9mJoXV2X5DPexzQ5dNWgdoYEdQQWTzq9.webp"
+          },
+          {
+            "title": "Զապորոժիեում ռուսական հարվածներից յոթ մարդ է վիրավորվել այդ թվում՝ նորածին․ մարզային վարչակազմ",
+            "url": "https://armenpress.am/hy/article/1265677",
+            "date": "2026-11-14T12:09:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/MFEKLkypdemOyvQfbuMo5ptNPcj5BXsmIaug2niM.webp"
+          },
+          {
+            "title": "ԱՄՆ-ն բարձրացրել է Դոնբասից զորքերի դուրսբերման դիմաց Ուկրաինայի՝ ՆԱՏՕ-ին անդամակցելու հարցը․ Զելենսկի",
+            "url": "https://armenpress.am/hy/article/1265676",
+            "date": "2026-11-14T12:00:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/ePWoJJPAs3oGxn7kYdvLJMCB9QKGEdBGZZyKxY2I.webp"
+          },
+          {
+            "title": "Չինաստանում կկայանա Թրամփ-Պուտին-Սի Ծինփին հանդիպումը",
+            "url": "https://armenpress.am/hy/article/1265674",
+            "date": "2026-11-14T11:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/5HOqZ3i42YJqwHCElj6HzeALDZUQmjLII9q366nr.webp"
+          },
+          {
             "title": "Հրաշք Միսիսիպիի վրա. զբոսանավի և տանկերի բախումից հետո փրկվել է շուրջ 180 մարդ",
             "url": "https://armenpress.am/hy/article/1265673",
             "date": "2026-11-14T11:12:00.000Z",
@@ -4391,30 +4415,6 @@
             "url": "https://armenpress.am/hy/article/1265626",
             "date": "2026-11-13T13:51:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/13/a9QlBZQL87Ppewe7HEy2KYaKUUAHvSFnPPKzc1Dr.webp"
-          },
-          {
-            "title": "Մոլդովայի նախագահը ԵՔՀ գագաթնաժողովի շրջանակում քննարկումներ է անցկացրել տարբեր երկրների ղեկավարների հետ. Moldpres",
-            "url": "https://armenpress.am/hy/article/1265624",
-            "date": "2026-11-13T13:36:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/8pnpCtQJ1ghhpfapA0SHHSoot4ztAkgVj2nkZJz4.webp"
-          },
-          {
-            "title": "Թրամփի Խաղաղության խորհուրդը մշակել է Գազայի բնակիչների անվտանգության ապահովման ծրագիր",
-            "url": "https://armenpress.am/hy/article/1265615",
-            "date": "2026-11-13T12:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/ax0504NSG9AIGThQoxEv1oFvpHjjbUKyN3BLJGV0.webp"
-          },
-          {
-            "title": "ԻՀՊԿ-ն հայտնել է Հորմուզի նեղուցի մոտ ամերիկյան ԱԹՍ ոչնչացնելու մասին",
-            "url": "https://armenpress.am/hy/article/1265610",
-            "date": "2026-11-13T12:16:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/vn0LTF01jbO1IfvtuecXQ2dUmOKVpdUukJ2INdjU.webp"
-          },
-          {
-            "title": "Իրանում ավելի քան 400 կգ հարստացված ուրանի գտնվելու վայրը հայտնի չէ. ԱԷՄԳ",
-            "url": "https://armenpress.am/hy/article/1265607",
-            "date": "2026-11-13T11:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/03Q0bEUJKcgZOhQtDCWukMuthQT6CqgO0msxZahR.webp"
           }
         ]
       },
@@ -4704,6 +4704,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Развитие искусственного интеллекта в Армении должно опираться на реальные потребности людей: в Ереване состоялось мероприятие AI Agora",
+            "url": "https://armenpress.am/ru/article/1265671",
+            "date": "2026-11-14T11:57:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/jyPSzujY1I8pn4651fSm4tqe18VrbZQi3el3yR7s.webp"
+          },
+          {
+            "title": "В ближайшие дни температура воздуха в Армении повысится на 2–4 градуса",
+            "url": "https://armenpress.am/ru/article/1265670",
+            "date": "2026-11-14T11:28:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/31/C5Y3xSuA6LWzxrr3GP58EuXyLMdvJo1ywbYMsxwJ.webp"
+          },
+          {
             "title": "Задержан подозреваемый в применении насилия к водителю троллейбуса",
             "url": "https://armenpress.am/ru/article/1265669",
             "date": "2026-11-14T11:19:00.000Z",
@@ -4750,18 +4762,6 @@
             "url": "https://armenpress.am/ru/article/1265662",
             "date": "2026-11-14T09:25:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/oCpYfdISMc79pXx3kQMXEtyrkS3P2RXisPkqCeFq.webp"
-          },
-          {
-            "title": "Единственной надежной гарантией безопасности Армении Пашинян считает мир",
-            "url": "https://armenpress.am/ru/article/1265658",
-            "date": "2026-11-14T09:13:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/xhvAToFuFvuygnPQG21KaZheV8nrTksZp5tcojFE.webp"
-          },
-          {
-            "title": "В Москве состоялся Второй армяно-российский научно-образовательный форум: в нем приняли участие министры образования обеих стран",
-            "url": "https://armenpress.am/ru/article/1265654",
-            "date": "2026-11-14T08:37:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/U81eyyTlOr22LwbwoCBgAKkSwACYNN0ceIpXTLQI.webp"
           }
         ]
       },
@@ -4834,6 +4834,18 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "США подняли вопрос о членстве Украины в НАТО — в обмен на вывод войск из Донбасса: Зеленский",
+            "url": "https://armenpress.am/ru/article/1265676",
+            "date": "2026-11-14T12:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/ePWoJJPAs3oGxn7kYdvLJMCB9QKGEdBGZZyKxY2I.webp"
+          },
+          {
+            "title": "Встреча Трампа, Путина и Си Цзиньпина состоится в Китае",
+            "url": "https://armenpress.am/ru/article/1265674",
+            "date": "2026-11-14T12:01:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/5HOqZ3i42YJqwHCElj6HzeALDZUQmjLII9q366nr.webp"
+          },
+          {
             "title": "В Великобритании впервые открыли для посетителей секретный бункер Черчилля",
             "url": "https://armenpress.am/ru/article/1265641",
             "date": "2026-11-13T17:29:00.000Z",
@@ -4880,18 +4892,6 @@
             "url": "https://armenpress.am/ru/article/1265605",
             "date": "2026-11-13T11:50:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/10/30/s4ni8ooqeIrOPrCnrl1QdxE5276XmLsmhTRGnSYq.webp"
-          },
-          {
-            "title": "Европа не должна попасться на российские ловушки на переговорах по Украине - Кая Каллас",
-            "url": "https://armenpress.am/ru/article/1265597",
-            "date": "2026-11-13T11:15:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/FBZy5HT0wNUrmYupYk5rrHgIvSqASBxwSfNKTm3i.webp"
-          },
-          {
-            "title": "Урсула фон дер Ляйен считает присутствие Европы на российско-украинских переговорах понятным и приветствует предстоящий обмен пленными",
-            "url": "https://armenpress.am/ru/article/1265594",
-            "date": "2026-11-13T10:47:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/uqpsOn2fXFTHV376F8I05V1EXsoIUbuPnnAzFgBJ.webp"
           }
         ]
       },
@@ -7273,6 +7273,12 @@
       "label": "Mundo",
       "articles": [
         {
+          "title": "Emiratos Árabes Unidos blanqueó 651 toneladas de oro proveniente de zonas de guerra en 2024, según SWISSAID",
+          "url": "https://soyarmenio.com/emiratos-arabes-unidos-blanqueo-650-toneladas-oro/",
+          "date": "2026-11-14T11:40:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/04/Armenia-oro-diamantes.jpg"
+        },
+        {
           "title": "Irán impulsa una reforma estructural del Ministerio de Inteligencia para reforzar la contrainteligencia",
           "url": "https://soyarmenio.com/iran-reestructuracion-ministerio-inteligencia/",
           "date": "2026-11-14T10:40:00.000Z",
@@ -7325,12 +7331,6 @@
           "url": "https://soyarmenio.com/iran-aumento-deficit-gas-periodo-invernal/",
           "date": "2026-11-13T12:00:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/gas-iran.jpeg"
-        },
-        {
-          "title": "El 88 % de los países registra tasas de natalidad inferior al reemplazo generacional global",
-          "url": "https://soyarmenio.com/tasa-natalidad-inferior-global-estadisticas-2026/",
-          "date": "2026-11-13T10:00:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/tasa-natalidad-global-767x477.jpg"
         }
       ]
     },
@@ -10017,6 +10017,12 @@
         "label": "Աշխարհ",
         "articles": [
           {
+            "title": "ԱՄՆ-ն առաջին անգամ հարցրել է՝ արդյոք Կիևը պատրաստ է հանձնել Դոնբասը հանուն ՆԱՏՕ-ի անդամակցության. Զելենսկի",
+            "url": "https://civilnet.am/hy/news/1015400",
+            "date": "2026-11-14T12:28:10.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/14/CtddmyieY7GULx4a.webp"
+          },
+          {
             "title": "Հայաստանը չի միացել Դուբլինում ընդունված՝ Ռուսաստանի գործողությունները դատապարտող հռչակագրին",
             "url": "https://civilnet.am/hy/news/1015381",
             "date": "2026-11-13T11:19:20.000Z",
@@ -10069,12 +10075,6 @@
             "url": "https://civilnet.am/hy/news/1015176",
             "date": "2026-11-04T06:26:32.000Z",
             "image": "https://civilnet.am/storage/media/26/11/04/ErK0nIQjwzKeLoKu.webp"
-          },
-          {
-            "title": "Թրամփը կարևորում է Ռուսաստանի մասնակցությունը G20-ի բանակցություններին․ Ռուբիո",
-            "url": "https://civilnet.am/hy/news/1015133",
-            "date": "2026-10-31T18:53:07.000Z",
-            "image": "https://civilnet.am/storage/media/26/10/31/bjWx7MFEV3BJzkzb.webp"
           }
         ]
       },
@@ -11223,10 +11223,28 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Թրամփը մտադիր չէ Սի Ծինփինի հետ քննարկել Nvidia-ի նախկին ղեկավարի շուրջ լրտեսության մեղադրանքները․ CNBC",
+            "url": "https://news.am/hy/news/1074806",
+            "date": "2026-11-14T11:39:00.000Z",
+            "image": "https://news.am/storage/media/26/11/10/5zXzkbEiYAXqWyys.webp"
+          },
+          {
+            "title": "ԱՄՆ-ն առաջին անգամ հարց է բարձրացրել Դոնբասի զիջման դիմաց ՆԱՏՕ-ին անդամակցելու շուրջ․ Զելենսկի",
+            "url": "https://news.am/hy/news/1074803",
+            "date": "2026-11-14T11:24:00.000Z",
+            "image": "https://news.am/storage/media/26/11/06/aLJAvS8ZKDB2moCM.webp"
+          },
+          {
             "title": "Առաջարկում եմ իշխանություններին և միջազգային կազմակերպություններին՝ նախաձեռնել եռակողմ բանակցային հանձնախմբի ստեղծում. Իսկանդարյան",
             "url": "https://news.am/hy/news/1074816",
             "date": "2026-11-14T11:20:29.000Z",
             "image": "https://news.am/storage/media/26/11/14/cDzkQcHS7BnNrOkV.webp"
+          },
+          {
+            "title": "Վրաստանի նախագահի աշխատակազմի ղեկավարը լքել է պաշտոնը չինական պատվիրակության հետ հանդիպման ժամանակ տեղի ունեցած սկանդալից հետո․ ԶԼՄ",
+            "url": "https://news.am/hy/news/1074794",
+            "date": "2026-11-14T10:53:00.000Z",
+            "image": "https://news.am/storage/media/26/11/14/KuZkmMy4ObOZVT23.webp"
           },
           {
             "title": "ՌԴ ԱԳՆ-ում մեկնաբանել են, թե ինչու Զելենսկին չի մեկնում Մոսկվա բանակցությունների",
@@ -11263,24 +11281,6 @@
             "url": "https://news.am/hy/news/1074786",
             "date": "2026-11-14T09:22:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/Dr2QJRlfQIX7gNGV.webp"
-          },
-          {
-            "title": "Սպիտակ տունը հայտնել է Ռուսաստանի և Ուկրաինայի միջև ռազմագերիների աննախադեպ մասշտաբի փոխանակման աշխատանքների մասին",
-            "url": "https://news.am/hy/news/1074791",
-            "date": "2026-11-14T08:58:56.000Z",
-            "image": "https://news.am/storage/media/26/07/21/YUVsTFuP3afub81g.webp"
-          },
-          {
-            "title": "Չինաստանին ԱԲ չիպեր մատակարարելու սկանդալի պատճառով ԱՄՆ առևտրի նախարարին կանչել են Սենատ",
-            "url": "https://news.am/hy/news/1074784",
-            "date": "2026-11-14T08:51:00.000Z",
-            "image": "https://news.am/storage/media/26/05/15/F84SwzqyeTRLrfgP.webp"
-          },
-          {
-            "title": "Կոնգրեսում հետաքննում են Փոյնդեքսթերի նկատմամբ սեռական ոտնձգությունների մեղադրանքները",
-            "url": "https://news.am/hy/news/1074781",
-            "date": "2026-11-14T08:06:00.000Z",
-            "image": "https://news.am/storage/media/26/06/04/WXXkI0Bp9qf0RslP.webp"
           }
         ]
       },
@@ -11288,6 +11288,12 @@
         "categoryKey": "business",
         "label": "Բիզնես",
         "articles": [
+          {
+            "title": "«Նրան պետք էր ազատել աշխատանքից դեռ խորանի մոտ». Դուրովը ծաղրել է Nvidia-ի նախկին ղեկավարին",
+            "url": "https://news.am/hy/news/1074810",
+            "date": "2026-11-14T11:54:00.000Z",
+            "image": "https://news.am/storage/media/26/05/16/f6rrK5E3Hj9U9dmc.webp"
+          },
           {
             "title": "Metrum Invest-ը ներկայացնում է իր նախագծերի պորտֆելն ու զարգացման արդյունքները TOON EXPO–ում",
             "url": "https://news.am/hy/news/1074725",
@@ -11341,12 +11347,6 @@
             "url": "https://news.am/hy/news/1074350",
             "date": "2026-11-12T10:37:00.000Z",
             "image": "https://news.am/storage/media/26/11/12/AQJUo5AKoCApIolC.webp"
-          },
-          {
-            "title": "Nvidia-ն թեկնածուներ է փնտրում ընկերության ղեկավարի պաշտոնի համար․ Bloomberg",
-            "url": "https://news.am/hy/news/1074343",
-            "date": "2026-11-12T10:07:00.000Z",
-            "image": "https://news.am/storage/media/26/11/12/oaBlw0GRkBXHOurQ.webp"
           }
         ]
       },
@@ -11421,6 +11421,12 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "Թրամփը մտադիր չէ Սի Ծինփինի հետ քննարկել Nvidia-ի նախկին ղեկավարի շուրջ լրտեսության մեղադրանքները․ CNBC",
+            "url": "https://news.am/hy/news/1074806",
+            "date": "2026-11-14T11:39:00.000Z",
+            "image": "https://news.am/storage/media/26/11/10/5zXzkbEiYAXqWyys.webp"
+          },
+          {
             "title": "Գերմանիային ֆինանսական ճգնաժամ է սպառնում. պետական ծախսերի յուրաքանչյուր երրորդ եվրոն փոխառված է",
             "url": "https://news.am/hy/news/1074792",
             "date": "2026-11-14T10:23:00.000Z",
@@ -11473,12 +11479,6 @@
             "url": "https://news.am/hy/news/1074729",
             "date": "2026-11-13T20:21:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/1BNqOmvxA4t2alxz.webp"
-          },
-          {
-            "title": "Թրամփը երկարաձգել է ԱՄՆ-ի ներսում նավթ փոխադրելու՝ օտարերկրյա նավերին տրված թույլտվությունը. Bloomberg",
-            "url": "https://news.am/hy/news/1074727",
-            "date": "2026-11-13T19:49:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/YrQoOLpbQ3sSyW3e.webp"
           }
         ]
       },
@@ -11685,6 +11685,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "ԱՄՆ-ում ռումբի հայտնաբերման պատճառով տարհանել են գործարանի շուրջ մեկ մղոն շառավղով բնակվող անձանց",
+            "url": "https://news.am/hy/news/1074819",
+            "date": "2026-11-14T12:04:25.000Z",
+            "image": "https://news.am/storage/media/26/11/06/GyOk3DrdbAjPnxFX.webp"
+          },
+          {
             "title": "Ձերբակալվել է տրոլեյբուսի վարորդի նկատմամբ բռնություն գործադրելու մեջ կասկածվող անձը",
             "url": "https://news.am/hy/news/1074795",
             "date": "2026-11-14T09:33:45.000Z",
@@ -11737,12 +11743,6 @@
             "url": "https://news.am/hy/news/1074708",
             "date": "2026-11-13T16:53:49.000Z",
             "image": "https://news.am/storage/media/26/10/26/IxKJap4T8ajj2D9N.webp"
-          },
-          {
-            "title": "Նիդեռլանդներում 3D տպիչով զենքի պատրաստման արհեստանոց են հայտնաբերել",
-            "url": "https://news.am/hy/news/1074671",
-            "date": "2026-11-13T14:31:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/9fSeBQgN9mXek1IV.webp"
           }
         ]
       },
@@ -11885,6 +11885,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "CNBC: Трамп не намерен обсуждать с Си Цзиньпином обвинения в шпионаже вокруг экс-главы Nvidia",
+            "url": "https://news.am/ru/news/1074806",
+            "date": "2026-11-14T11:39:00.000Z",
+            "image": "https://news.am/storage/media/26/11/10/5zXzkbEiYAXqWyys.webp"
+          },
+          {
             "title": "Зеленский: США впервые предложили обсудить вступление Украины в НАТО в обмен на выход из Донбасса",
             "url": "https://news.am/ru/news/1074803",
             "date": "2026-11-14T11:24:00.000Z",
@@ -11937,12 +11943,6 @@
             "url": "https://news.am/ru/news/1074786",
             "date": "2026-11-14T09:22:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/Dr2QJRlfQIX7gNGV.webp"
-          },
-          {
-            "title": "Белый дом сообщил о подготовке крупнейшего обмена пленными между Россией и Украиной",
-            "url": "https://news.am/ru/news/1074791",
-            "date": "2026-11-14T08:58:56.000Z",
-            "image": "https://news.am/storage/media/26/07/21/YUVsTFuP3afub81g.webp"
           }
         ]
       },
@@ -11950,6 +11950,12 @@
         "categoryKey": "business",
         "label": "Бизнес",
         "articles": [
+          {
+            "title": "«Его следовало уволить еще у алтаря»: Дуров высмеял экс-главу Nvidia",
+            "url": "https://news.am/ru/news/1074810",
+            "date": "2026-11-14T11:54:00.000Z",
+            "image": "https://news.am/storage/media/26/05/16/f6rrK5E3Hj9U9dmc.webp"
+          },
           {
             "title": "Давид Тадевосян представил ведущим американским компаниям технологический и промышленный потенциал Армении",
             "url": "https://news.am/ru/news/1074676",
@@ -12003,12 +12009,6 @@
             "url": "https://news.am/ru/news/1073925",
             "date": "2026-11-10T12:56:00.000Z",
             "image": "https://news.am/storage/media/26/11/10/F9yLYuMl2EymB0YF.webp"
-          },
-          {
-            "title": "В Сингапуре арестовали круизный лайнер Villa Vie Odyssey",
-            "url": "https://news.am/ru/news/1073890",
-            "date": "2026-11-10T12:11:00.000Z",
-            "image": "https://news.am/storage/media/26/11/10/JyYgvPYX5IZpaPyt.webp"
           }
         ]
       },
@@ -12083,6 +12083,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "CNBC: Трамп не намерен обсуждать с Си Цзиньпином обвинения в шпионаже вокруг экс-главы Nvidia",
+            "url": "https://news.am/ru/news/1074806",
+            "date": "2026-11-14T11:39:00.000Z",
+            "image": "https://news.am/storage/media/26/11/10/5zXzkbEiYAXqWyys.webp"
+          },
+          {
             "title": "Германии грозит финансовый кризис: каждый третий евро госрасходов взят в долг",
             "url": "https://news.am/ru/news/1074792",
             "date": "2026-11-14T10:23:00.000Z",
@@ -12135,12 +12141,6 @@
             "url": "https://news.am/ru/news/1074729",
             "date": "2026-11-13T20:21:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/1BNqOmvxA4t2alxz.webp"
-          },
-          {
-            "title": "Bloomberg: Трамп продлил разрешение иностранным судам возить нефть внутри США",
-            "url": "https://news.am/ru/news/1074727",
-            "date": "2026-11-13T19:49:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/YrQoOLpbQ3sSyW3e.webp"
           }
         ]
       },
@@ -12347,6 +12347,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В США эвакуировали жителей в радиусе мили от завода после обнаружения бомбы",
+            "url": "https://news.am/ru/news/1074819",
+            "date": "2026-11-14T12:04:25.000Z",
+            "image": "https://news.am/storage/media/26/11/06/GyOk3DrdbAjPnxFX.webp"
+          },
+          {
             "title": "Задержан подозреваемый в применении насилия в отношении водителя троллейбуса",
             "url": "https://news.am/ru/news/1074795",
             "date": "2026-11-14T09:33:45.000Z",
@@ -12399,12 +12405,6 @@
             "url": "https://news.am/ru/news/1074671",
             "date": "2026-11-13T14:31:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/9fSeBQgN9mXek1IV.webp"
-          },
-          {
-            "title": "В Бруклине при обрушении трехэтажного жилого дома погибли двое детей",
-            "url": "https://news.am/ru/news/1074670",
-            "date": "2026-11-13T14:16:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/oqAtPnKpHJcvCg5q.webp"
           }
         ]
       },
