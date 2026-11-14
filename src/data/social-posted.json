@@ -397,8 +397,7 @@
         "reel:komitas": "2026-11-10T19:12:33.137Z",
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
-        "reel:charles-aznavour": "2026-11-13T01:32:26.024Z",
-        "reel:ani": "2026-11-14T03:34:15.136Z"
+        "reel:charles-aznavour": "2026-11-13T01:32:26.024Z"
       },
       "failed": {
         "reel:aram-khatchatourian": {
@@ -427,8 +426,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:ani": {
-          "attempts": 2,
-          "last": "2026-11-14T02:35:19.270Z",
+          "attempts": 3,
+          "last": "2026-11-14T03:35:04.337Z",
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:matenadaran-et-les-manuscrits-enlumines": {
