@@ -44,13 +44,12 @@
         "reel:komitas": "2026-11-10T20:09:40.783Z",
         "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
@@ -292,13 +291,12 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
@@ -400,8 +398,7 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:charles-aznavour": "2026-11-13T01:32:26.024Z",
-        "reel:epopee-de-david-de-sassoun": "2026-11-14T06:56:53.570Z",
-        "reel:sayat-nova-et-la-tradition-des-ashoughs": "2026-11-14T20:32:50.033Z"
+        "reel:epopee-de-david-de-sassoun": "2026-11-14T06:56:53.570Z"
       },
       "failed": {
         "reel:aram-khatchatourian": {
@@ -440,8 +437,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
-          "attempts": 3,
-          "last": "2026-11-10T04:49:40.047Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:tigrane-le-grand-et-l-empire-armenien": {
@@ -876,13 +873,12 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
@@ -989,13 +985,12 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
@@ -1094,13 +1089,12 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
@@ -1191,8 +1185,7 @@
         "reel:komitas": "2026-11-10T20:09:40.783Z",
         "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T21:06:34.776Z",
-        "reel:monastere-de-tatev": "2026-11-14T00:33:54.499Z",
-        "reel:lavash": "2026-11-14T20:32:50.033Z"
+        "reel:monastere-de-tatev": "2026-11-14T00:33:54.499Z"
       },
       "failed": {
         "reel:duduk": {
@@ -1211,8 +1204,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:lavash": {
-          "attempts": 3,
-          "last": "2026-11-09T16:33:02.408Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:serguei-paradjanov": {
@@ -1315,13 +1308,12 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
@@ -1420,8 +1412,7 @@
         "reel:komitas": "2026-11-10T20:09:40.783Z",
         "reel:alphabet-armenien": "2026-11-11T21:32:37.069Z",
         "reel:charles-aznavour": "2026-11-13T02:33:23.740Z",
-        "reel:serguei-paradjanov": "2026-11-13T23:33:50.578Z",
-        "reel:ani": "2026-11-14T20:32:50.033Z"
+        "reel:serguei-paradjanov": "2026-11-13T23:33:50.578Z"
       },
       "failed": {
         "reel:duduk": {
@@ -1450,8 +1441,8 @@
           "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
         },
         "reel:ani": {
-          "attempts": 3,
-          "last": "2026-11-09T21:51:55.098Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:matenadaran-et-les-manuscrits-enlumines": {
@@ -1973,13 +1964,12 @@
         "reel:alphabet-armenien": "2026-11-10T20:09:40.783Z",
         "reel:duduk": "2026-11-11T21:32:37.069Z",
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
-        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
-        "reel:charles-aznavour": "2026-11-14T20:32:50.033Z"
+        "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z"
       },
       "failed": {
         "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-09T11:32:27.371Z",
+          "attempts": 0,
+          "last": "2026-11-14T20:33:06.468Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         },
         "reel:monastere-de-tatev": {
