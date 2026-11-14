@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T06:45:59.903Z",
+  "generatedAt": "2026-11-14T07:23:34.338Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1182,7 +1182,7 @@
             "url": "https://hy.armradio.am/archives/770528",
             "date": "2026-11-13T13:33:15.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/71098_b-768x512.jpg",
-            "category": "Կարևոր"
+            "category": "Հասարակություն"
           },
           {
             "title": "Ուրբաթ 13․ քանի՞ անգամ է հետաձգվել աշխարհի վերջը ու կհետաձգվի՞ նաև այսօր",
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "ԱՄՆ-ում ավիացիոն խափանումը պայմանավորված եղել հնացած սարքավորումներով",
+            "url": "https://hy.armradio.am/archives/770646",
+            "date": "2026-11-14T06:53:47.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_5989-300x189.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Թրամփը Պուտինի և Սի Ծինփինի հետ եռակողմ հանդիպում կանցկացնի․ Ուկրաինայի հարցը չի քննարկվի",
             "url": "https://hy.armradio.am/archives/770643",
             "date": "2026-11-14T06:39:31.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/770414",
             "date": "2026-11-13T06:37:57.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/6u67h7JXS7twPlNNQdPSQ2985MLMWnmWhTykuupS-300x174.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Microsoft-ի ծառայությունները խափանվել են ողջ աշխարհում արդեն մի քանի ժամ",
-            "url": "https://hy.armradio.am/archives/770409",
-            "date": "2026-11-13T06:13:43.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/OB57335CJJNCPGCVGEMCB3T7UQ-768x512.avif",
             "category": "Կարևոր"
           }
         ]
@@ -2789,10 +2789,10 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794220365-9339.jpg"
         },
         {
-          "title": "Tribune : Haroutioun Kalaydjian veut que les ambassadeurs d’Arménie deviennent « commissaires » de la diaspora",
-          "url": "https://armenieinfo.tv/mer-oughin-35909/",
+          "title": "L’Arménie, l’Azerbaïdjan et les États-Unis lancent des groupes de planification technique pour avancer sur la Route Trump",
+          "url": "https://armenieinfo.tv/larmenie-lazerbaidjan-et-les-etats-unis-lancent-des-groupes-de-planification-technique-pour-avancer-sur-la-route-trump/",
           "date": "2026-11-10T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-35909.jpg"
+          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794220474-2281.jpg"
         }
       ]
     },
@@ -3100,6 +3100,12 @@
     {
       "categoryKey": "politique",
       "articles": [
+        {
+          "title": "Tribune : Haroutioun Kalaydjian veut que les ambassadeurs d’Arménie deviennent « commissaires » de la diaspora",
+          "url": "https://armenieinfo.tv/mer-oughin-35909/",
+          "date": "2026-11-10T06:30:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-35909.jpg"
+        },
         {
           "title": "Hakob Movses : la décolonisation de l’Arménie passe par une nouvelle intelligentsia",
           "url": "https://armenieinfo.tv/mer-oughin-35895/",
@@ -3809,6 +3815,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "European Stocks - 13/11/26",
+            "url": "https://armenpress.am/en/article/1265648",
+            "date": "2026-11-14T07:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/9NXlOZ7dtGb6lmtAqiDSCzmI9fjEFrAiR7LZEoAn.webp"
+          },
+          {
+            "title": "US stocks - 13/11/26",
+            "url": "https://armenpress.am/en/article/1265647",
+            "date": "2026-11-14T07:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/17/skDNgfOVIdZVPqVmJ1aPH4Y57ziivfdgv14jFWK1.webp"
+          },
+          {
+            "title": "NYMEX: Precious Metals Prices - 13/11/26",
+            "url": "https://armenpress.am/en/article/1265646",
+            "date": "2026-11-14T07:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/23/yTeHGcFUeN0BUd1qXLhnBmtRVvpv2D9c2lQAiJbx.webp"
+          },
+          {
+            "title": "Oil Prices Up - 13/11/26",
+            "url": "https://armenpress.am/en/article/1265645",
+            "date": "2026-11-14T07:05:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
+          },
+          {
             "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 13-11-26",
             "url": "https://armenpress.am/en/article/1265620",
             "date": "2026-11-13T13:21:00.000Z",
@@ -3843,30 +3873,6 @@
             "url": "https://armenpress.am/en/article/1265554",
             "date": "2026-11-13T04:50:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/13/Ya0S2Q8EsEIoCBAO6ru7LiopbA0doc8B4zIdteW8.webp"
-          },
-          {
-            "title": "Oil Prices Up - 12-11-26",
-            "url": "https://armenpress.am/en/article/1265551",
-            "date": "2026-11-13T04:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/7Eycbd86PpviR9hvfHxKOQU4Q9uoTfFcJNSq3m21.webp"
-          },
-          {
-            "title": "NYMEX: Precious Metals Prices - 12-11-26",
-            "url": "https://armenpress.am/en/article/1265552",
-            "date": "2026-11-13T04:49:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/zW3Kc3WVFxS3vFDoWm3lmWTHYYsm5USdGMN1hV36.webp"
-          },
-          {
-            "title": "AraratBank unveils promotional 9.9% SME loan offer in Gyumri",
-            "url": "https://armenpress.am/en/article/1265522",
-            "date": "2026-11-12T15:08:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/nIZlJ0T5D4hVrdtB7E8ghwgMyhGLQvzslFMzqEg4.webp"
-          },
-          {
-            "title": "Rate.Trading: Large transactions with digital management of exchange rate risks",
-            "url": "https://armenpress.am/en/article/1265510",
-            "date": "2026-11-12T12:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/CCi26fr3hmvOyE2FhFB8t747bkRQSuTUodZPdw8a.webp"
           }
         ]
       },
@@ -4221,6 +4227,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Կձևավորվի Շիրակի և Արագածոտնի մարզերն ընդգրկող էկոպարեկային մարզային վարչություն",
+            "url": "https://armenpress.am/hy/article/1265651",
+            "date": "2026-11-14T07:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/Q3Kafcb1YqOhT5j3imd4w9tVaqHaVosDuP3AiN84.webp"
+          },
+          {
+            "title": "Գյումրիում սուբվենցիոն ծրագրի շրջանակում հիմնանորոգված չորս փողոց հանձնվել է շահագործման",
+            "url": "https://armenpress.am/hy/article/1265650",
+            "date": "2026-11-14T07:23:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/nqcju6ILjKs0MRHqylz637NiJ41zNEh5egJzS6Cv.webp"
+          },
+          {
+            "title": "ԿԸՀ-ն հերթական համարներ է դեկտեմբերի 13-ին կայանալիք ՏԻՄ ընտրություններին մասնակցող քաղաքական ուժերին",
+            "url": "https://armenpress.am/hy/article/1265649",
+            "date": "2026-11-14T07:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/Ya5H2aQsY8QhL8oSwEhy4iOYXHDA3A7Rof9aElBN.webp"
+          },
+          {
             "title": "Բնակարաններից մինչև ներդրումային նախագծեր․ TOON EXPO-ն համախմբել է ոլորտի առաջատար ընկերություններին",
             "url": "https://armenpress.am/hy/article/1265642",
             "date": "2026-11-13T17:38:00.000Z",
@@ -4261,30 +4285,36 @@
             "url": "https://armenpress.am/hy/article/1265633",
             "date": "2026-11-13T14:42:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/13/uOBmrvlTo8YsJ3CDUQUWDZcm0gf9yWSy4cDlxDCf.webp"
-          },
-          {
-            "title": "ՀԷՑ-ում տեղի է ունեցել ընդլայնված կազմով աշխատանքային խորհրդակցություն",
-            "url": "https://armenpress.am/hy/article/1265632",
-            "date": "2026-11-13T14:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/3wmfgNBV2GobEuuEC2sKWeopnWsxzSB065VBr4Ga.webp"
-          },
-          {
-            "title": "Ամանորին ընդառաջ Հայաստանն ու Վրաստանը քննարկել են սննդամթերքի անվտանգության վերահսկողության խստացումը",
-            "url": "https://armenpress.am/hy/article/1265631",
-            "date": "2026-11-13T14:23:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/yTsm93QfOjXj4pVzRlngz1bUQlQYpOIqEfCwub5k.webp"
-          },
-          {
-            "title": "«COP17-ի կապն ամենաբացառիկներից մեկն էր, որ երբևէ ունեցել ենք». Team-ի ծառայությունների որակը բարձր է գնահատվել ՄԱԿ-ի ներկայացուցչի կողմից",
-            "url": "https://armenpress.am/hy/article/1265630",
-            "date": "2026-11-13T14:11:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/qVn2KJ7ZVCXySINbbOC4DtuDKs1vMvoSlyqsl6Js.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Եվրոպական ինդեքսներ - 13/11/26",
+            "url": "https://armenpress.am/hy/article/1265648",
+            "date": "2026-11-14T07:10:22.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/9NXlOZ7dtGb6lmtAqiDSCzmI9fjEFrAiR7LZEoAn.webp"
+          },
+          {
+            "title": "Ամերիկյան ինդեքսներ - 13/11/26",
+            "url": "https://armenpress.am/hy/article/1265647",
+            "date": "2026-11-14T07:08:46.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/17/skDNgfOVIdZVPqVmJ1aPH4Y57ziivfdgv14jFWK1.webp"
+          },
+          {
+            "title": "NYMEX. Թանկարժեք մետաղների գներ - 13/11/26",
+            "url": "https://armenpress.am/hy/article/1265646",
+            "date": "2026-11-14T07:07:16.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/23/yTeHGcFUeN0BUd1qXLhnBmtRVvpv2D9c2lQAiJbx.webp"
+          },
+          {
+            "title": "Նավթի գներն աճել են - 13/11/26",
+            "url": "https://armenpress.am/hy/article/1265645",
+            "date": "2026-11-14T07:05:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
+          },
           {
             "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ-13/11/26",
             "url": "https://armenpress.am/hy/article/1265620",
@@ -4320,30 +4350,6 @@
             "url": "https://armenpress.am/hy/article/1265554",
             "date": "2026-11-13T04:46:35.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/13/Ya0S2Q8EsEIoCBAO6ru7LiopbA0doc8B4zIdteW8.webp"
-          },
-          {
-            "title": "Ամերիկյան ինդեքսները նվազել են - 12/11/26",
-            "url": "https://armenpress.am/hy/article/1265553",
-            "date": "2026-11-13T04:45:23.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/3WztzcbjbDb6mPbBGPzQYyixPQKOcQgmfiQW93Or.webp"
-          },
-          {
-            "title": "NYMEX. Թանկարժեք մետաղների գներ - 12/11/26",
-            "url": "https://armenpress.am/hy/article/1265552",
-            "date": "2026-11-13T04:44:16.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/zW3Kc3WVFxS3vFDoWm3lmWTHYYsm5USdGMN1hV36.webp"
-          },
-          {
-            "title": "Նավթի գներն աճել են - 12/11/26",
-            "url": "https://armenpress.am/hy/article/1265551",
-            "date": "2026-11-13T04:43:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/7Eycbd86PpviR9hvfHxKOQU4Q9uoTfFcJNSq3m21.webp"
-          },
-          {
-            "title": "ԱրարատԲանկը Գյումրիում ներկայացել է ՓՄՁ ֆինանսավորման աննախադեպ՝ 9.9% բիզնես վարկի առաջարկով",
-            "url": "https://armenpress.am/hy/article/1265522",
-            "date": "2026-11-12T13:56:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/nIZlJ0T5D4hVrdtB7E8ghwgMyhGLQvzslFMzqEg4.webp"
           }
         ]
       },
@@ -4483,7 +4489,7 @@
           {
             "title": "Հայկ Մարտիրոսյանը երկու պարտիաների արդյունքով գերազանցել է ՖԻԴԵ-ի դասակարգման աղյուսակի առաջատար Մագնուս Կարլսենին",
             "url": "https://armenpress.am/hy/article/1265644",
-            "date": "2026-11-14T06:13:45.000Z",
+            "date": "2026-11-14T06:13:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/C8PNM6HSINSEsZcq3UQIigoA5DYCPWckFudMpe1J.webp"
           },
           {
@@ -4763,6 +4769,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "Европейские индексы - 13/11/26",
+            "url": "https://armenpress.am/ru/article/1265648",
+            "date": "2026-11-14T07:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/9NXlOZ7dtGb6lmtAqiDSCzmI9fjEFrAiR7LZEoAn.webp"
+          },
+          {
+            "title": "Американские индексы - 13/11/26",
+            "url": "https://armenpress.am/ru/article/1265647",
+            "date": "2026-11-14T07:08:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/17/skDNgfOVIdZVPqVmJ1aPH4Y57ziivfdgv14jFWK1.webp"
+          },
+          {
+            "title": "Цены на драгоценные металлы - 13/11/26",
+            "url": "https://armenpress.am/ru/article/1265646",
+            "date": "2026-11-14T07:07:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/23/yTeHGcFUeN0BUd1qXLhnBmtRVvpv2D9c2lQAiJbx.webp"
+          },
+          {
+            "title": "Цены на нефть выросли - 13/11/26",
+            "url": "https://armenpress.am/ru/article/1265645",
+            "date": "2026-11-14T07:05:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
+          },
+          {
             "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 13-11-26",
             "url": "https://armenpress.am/ru/article/1265620",
             "date": "2026-11-13T13:21:00.000Z",
@@ -4797,30 +4827,6 @@
             "url": "https://armenpress.am/ru/article/1265553",
             "date": "2026-11-13T04:45:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/13/3WztzcbjbDb6mPbBGPzQYyixPQKOcQgmfiQW93Or.webp"
-          },
-          {
-            "title": "Цены на драгоценные металлы - 12-11-26",
-            "url": "https://armenpress.am/ru/article/1265552",
-            "date": "2026-11-13T04:44:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/zW3Kc3WVFxS3vFDoWm3lmWTHYYsm5USdGMN1hV36.webp"
-          },
-          {
-            "title": "Цены на нефть выросли - 12-11-26",
-            "url": "https://armenpress.am/ru/article/1265551",
-            "date": "2026-11-13T04:43:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/13/7Eycbd86PpviR9hvfHxKOQU4Q9uoTfFcJNSq3m21.webp"
-          },
-          {
-            "title": "Rate.Trading: Крупные сделки с цифровыми инструментами управления валютными рисками",
-            "url": "https://armenpress.am/ru/article/1265510",
-            "date": "2026-11-12T13:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/CCi26fr3hmvOyE2FhFB8t747bkRQSuTUodZPdw8a.webp"
-          },
-          {
-            "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 12-11-26",
-            "url": "https://armenpress.am/ru/article/1265508",
-            "date": "2026-11-12T12:51:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/fhWfSPsNo9vVXCdHTnzBpYl4BFpLc1FDsjnOrwib.webp"
           }
         ]
       },
@@ -4958,6 +4964,12 @@
         "categoryKey": "sports",
         "articles": [
           {
+            "title": "По итогам двух партий Айк Мартиросян лидирует в отношении Магнуса Карлсена — лидера рейтинга ФИДЕ",
+            "url": "https://armenpress.am/ru/article/1265644",
+            "date": "2026-11-14T07:13:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/14/C8PNM6HSINSEsZcq3UQIigoA5DYCPWckFudMpe1J.webp"
+          },
+          {
             "title": "Айк Мартиросян по результатам двух партий сыграл вничью с Анишем Гири",
             "url": "https://armenpress.am/ru/article/1265569",
             "date": "2026-11-13T07:21:00.000Z",
@@ -5010,12 +5022,6 @@
             "url": "https://armenpress.am/ru/article/1265082",
             "date": "2026-11-08T08:33:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/08/3FnHQZmW51t98VOlfYxRPPXZLcpemaxE92F2DfgB.webp"
-          },
-          {
-            "title": "7 ноября на чемпионате мира по тяжелой атлетике Армению представят 2 участника",
-            "url": "https://armenpress.am/ru/article/1265040",
-            "date": "2026-11-07T07:16:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/07/1k2sXO0N5VimvFHltyP6fDogb31anhGJnV6jviVX.webp"
           }
         ]
       },
@@ -10819,6 +10825,18 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Australia’s Prime Minister Caught on a Hot Mic: His Joke About His Manhood Heard Around the World",
+            "url": "https://style.news.am/eng/news/117139/",
+            "date": "2026-11-14T07:21:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117139.jpg"
+          },
+          {
+            "title": "Kim Only Skimps on Advent Calendars: The Lavish Gifts Kardashian Gives Her ‘All’s Fair’ Co-Stars",
+            "url": "https://style.news.am/eng/news/117130/",
+            "date": "2026-11-14T06:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117130.jpg"
+          },
+          {
             "title": "Royal Secrets and $430,000 Pearls: The Story of a Necklace That Concealed a Family Mystery",
             "url": "https://style.news.am/eng/news/117127/",
             "date": "2026-11-13T18:21:00.000Z",
@@ -10865,18 +10883,6 @@
             "url": "https://style.news.am/eng/news/117119/",
             "date": "2026-11-13T10:14:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117119.jpg"
-          },
-          {
-            "title": "$2.5 Million Watch: How One Unique Serial Number Turned a Patek Philippe into the Auction's Most Coveted Treasure",
-            "url": "https://style.news.am/eng/news/117118/",
-            "date": "2026-11-13T09:28:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117118.jpg"
-          },
-          {
-            "title": "Billionaire Ted Turner Leaves Jane Fonda Out of His Will: Who Will Inherit the CNN Founder's $2.5 Billion Fortune?",
-            "url": "https://style.news.am/eng/news/117117/",
-            "date": "2026-11-13T08:37:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117117.jpg"
           }
         ]
       },
@@ -11217,10 +11223,34 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Փաշինյանը եռօրյա այցով մեկնում է Կամբոջա` մասնակցելու Ֆրանկոֆոնիայի 20-րդ գագաթնաժողովին",
+            "url": "https://news.am/hy/news/1074775",
+            "date": "2026-11-14T07:28:19.000Z",
+            "image": "https://news.am/storage/media/26/11/14/BCB5kN5YckwVSpI0.webp"
+          },
+          {
+            "title": "Շատ դրական հանդիպում եմ ունեցել Էրդողանի հետ, շատ մոտ ենք վերջին քայլին. Փաշինյանը՝ Դուբլինում",
+            "url": "https://news.am/hy/news/1074770",
+            "date": "2026-11-14T06:30:31.000Z",
+            "image": "https://i.ytimg.com/vi/vYjvzt1ON9E/hqdefault.jpg"
+          },
+          {
+            "title": "Մոսկվայի դատարանը հեռակա կալանավորել է Ուկրաինայի պաշտպանության նախկին նախարար Ռեզնիկովին",
+            "url": "https://news.am/hy/news/1074761",
+            "date": "2026-11-14T06:19:00.000Z",
+            "image": "https://news.am/storage/media/26/11/14/kLzoChVnCvr9IBAC.webp"
+          },
+          {
             "title": "Մեզնից կախված ամեն ինչ անելու ենք, որ այդ մարդիկ բանտից ազատ արձակվեն. Փաշինյանը գերիների մասին",
             "url": "https://news.am/hy/news/1074766",
             "date": "2026-11-14T06:09:17.000Z",
             "image": "https://i.ytimg.com/vi/ZM6mtHoTRls/hqdefault.jpg"
+          },
+          {
+            "title": "Տնտեսական ճնշման շնորհիվ ԱՄՆ-ն Իրանի դեմ նոր ռազմական գործողությունների կարիք չունի․ Ռուբիո",
+            "url": "https://news.am/hy/news/1074759",
+            "date": "2026-11-14T05:48:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/0cFEbUhDvODDSYVp.webp"
           },
           {
             "title": "Փաշինյանը դեկտեմբերին 3 անգամ Ռուսաստան կայցելի",
@@ -11251,30 +11281,6 @@
             "url": "https://news.am/hy/news/1074746",
             "date": "2026-11-14T04:14:00.000Z",
             "image": "https://news.am/storage/media/26/11/14/yGGOqLxBO8IYqiFW.webp"
-          },
-          {
-            "title": "«Փաստ». Նոր լարվածություն հայ-ռուսական հարաբերությունների օրակարգում",
-            "url": "https://news.am/hy/news/1074742",
-            "date": "2026-11-14T04:01:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/zl5PgnVF89W5keSx.webp"
-          },
-          {
-            "title": "«Հրապարակ»․ Նախարարների նկատմամբ վարույթ կհարուցվի՞",
-            "url": "https://news.am/hy/news/1074743",
-            "date": "2026-11-14T03:54:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/poNA44YqZKI8reUN.webp"
-          },
-          {
-            "title": "«Ժողովուրդ». Բացառիկ. Ալեն Սիմոնյանը նոր սահմանադրությամբ կզրկվի նաև ԱԽ քարտուղարի պաշտոնից․ լուծարում",
-            "url": "https://news.am/hy/news/1074741",
-            "date": "2026-11-14T03:47:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/L9Tqfx1GsZiLMznX.webp"
-          },
-          {
-            "title": "«Փաստ». Երևանից Արցախի հարցով նամակներ են հղել Շվեյցարիայի նախագահին և խորհրդարանին",
-            "url": "https://news.am/hy/news/1074740",
-            "date": "2026-11-14T03:40:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/i34nso3cUVc6n0Ny.webp"
           }
         ]
       },
@@ -11349,6 +11355,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Էրիկ Բազինյանը հաղթել է Սթիվեն Բաթլերին (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/170259/",
+            "date": "2026-11-14T07:20:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170259.jpg"
+          },
+          {
             "title": "Ազգերի լիգա․ Օրվա հանդիպումները",
             "url": "https://sport.news.am/arm/news/170256/",
             "date": "2026-11-14T05:08:00.000Z",
@@ -11401,12 +11413,6 @@
             "url": "https://sport.news.am/arm/news/170250/",
             "date": "2026-11-13T16:05:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170250.jpg"
-          },
-          {
-            "title": "«Մանչեսթեր Յունայթեդը» պայմանագիր կնքեց Մաուրիսիո Պոչետինոյի հետ",
-            "url": "https://sport.news.am/arm/news/170249/",
-            "date": "2026-11-13T15:02:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170249.jpg"
           }
         ]
       },
@@ -11414,6 +11420,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Տնտեսական ճնշման շնորհիվ ԱՄՆ-ն Իրանի դեմ նոր ռազմական գործողությունների կարիք չունի․ Ռուբիո",
+            "url": "https://news.am/hy/news/1074759",
+            "date": "2026-11-14T05:48:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/0cFEbUhDvODDSYVp.webp"
+          },
           {
             "title": "«Հրապարակ»․ Խաղողագործներին փող չեն տալիս. նախորդ տարիներին գոնե գումարի կեսը տալիս էին անմիջապես",
             "url": "https://news.am/hy/news/1074751",
@@ -11467,12 +11479,6 @@
             "url": "https://news.am/hy/news/1074629",
             "date": "2026-11-13T10:46:26.000Z",
             "image": "https://news.am/storage/media/26/11/13/rPmYPDcro8lXlqsp.webp"
-          },
-          {
-            "title": "Եվրահանձնակատար Կոս․ ԵՄ-ը նոյեմբերին Ուկրաինային կտրամադրի գրեթե 12 մլրդ եվրոյի ֆինանսական օգնություն",
-            "url": "https://news.am/hy/news/1074618",
-            "date": "2026-11-13T10:18:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/GQPwqxa9WYEsTyzG.webp"
           }
         ]
       },
@@ -11480,6 +11486,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Միացված խոսափողը դավաճանեց Ավստրալիայի վարչապետին․ տղամարդկային արժանապատվության մասին նրա զրույցը լսեց ողջ աշխարհը",
+            "url": "https://style.news.am/arm/news/117139/",
+            "date": "2026-11-14T07:21:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117139.jpg"
+          },
           {
             "title": "Քիմը խնայում է միայն ադվենտ օրացույցների վրա. ի՞նչ շռայլ նվերներով է Քարդաշյանը երես տալիս «All’s Fair»-ի իր խաղընկերներին",
             "url": "https://style.news.am/arm/news/117130/",
@@ -11533,12 +11545,6 @@
             "url": "https://style.news.am/arm/news/117122/",
             "date": "2026-11-13T12:16:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117122.jpg"
-          },
-          {
-            "title": "Կարմիր գորգից մինչև Chanel-ի փակ ընթրիք. ինչպե՞ս են Ռոբերտ Դե Նիրոն ու նրա երիտասարդ ընտրյալը վայելում Նյու Յորքի աստղային գիշերները",
-            "url": "https://style.news.am/arm/news/117126/",
-            "date": "2026-11-13T11:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117126.jpg"
           }
         ]
       },
@@ -11679,6 +11685,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Միսիսիպի գետում չորաբեռնատար նավը բախվել է զբոսանավին․ ավելի քան 30 մարդ հոսպիտալացվել է",
+            "url": "https://news.am/hy/news/1074768",
+            "date": "2026-11-14T06:49:00.000Z",
+            "image": "https://news.am/storage/media/26/11/14/2maMNqw8CvaSlUH8.webp"
+          },
+          {
             "title": "Մեծ Բրիտանիայի ամերիկյան ավիաբազայում տագնապ է հայտարարվել ԱԹՍ-ների կասկածելի ակտիվության պատճառով",
             "url": "https://news.am/hy/news/1074757",
             "date": "2026-11-14T05:33:00.000Z",
@@ -11731,12 +11743,6 @@
             "url": "https://news.am/hy/news/1074669",
             "date": "2026-11-13T14:01:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/yuAQoQxbTtlpZjDi.webp"
-          },
-          {
-            "title": "Գերմանիայում անհայտ անձինք այրել են Bild թերթի նախկին գլխավոր խմբագրի ավտոմեքենան",
-            "url": "https://news.am/hy/news/1074662",
-            "date": "2026-11-13T13:46:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/YRfveu0JdPJbOeUX.webp"
           }
         ]
       },
@@ -11879,10 +11885,22 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Президент Кубы заявил о подготовке к отражению возможной военной атаки США",
+            "url": "https://news.am/ru/news/1074771",
+            "date": "2026-11-14T07:05:00.000Z",
+            "image": "https://news.am/storage/media/26/05/15/MqEHYQQ8QrBxy3wa.webp"
+          },
+          {
             "title": "WSJ: Демократы потребовали от Маска сохранить документы об ограничениях Starlink для Украины",
             "url": "https://news.am/ru/news/1074767",
             "date": "2026-11-14T06:34:00.000Z",
             "image": "https://news.am/storage/media/26/10/21/BbuhHDw0B4j9qbWC.webp"
+          },
+          {
+            "title": "Пашинян: У меня была очень позитивная встреча с Эрдоганом, мы очень близки к последнему шагу",
+            "url": "https://news.am/ru/news/1074770",
+            "date": "2026-11-14T06:30:00.000Z",
+            "image": "https://i.ytimg.com/vi/vYjvzt1ON9E/hqdefault.jpg"
           },
           {
             "title": "Суд в Москве заочно арестовал бывшего министра обороны Украины Резникова",
@@ -11925,18 +11943,6 @@
             "url": "https://news.am/ru/news/1074730",
             "date": "2026-11-13T20:36:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/X3GYzyGE3KIZstRQ.webp"
-          },
-          {
-            "title": "Washington Sun: главврач конгресса уволился из-за скандала со стрижкой ногтей",
-            "url": "https://news.am/ru/news/1074728",
-            "date": "2026-11-13T20:06:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/znruAd7juK4vGyP0.webp"
-          },
-          {
-            "title": "Пашинян и «путешествующий» с ним банан добрались до «Эревана»: пользователи критикуют премьера",
-            "url": "https://news.am/ru/news/1074732",
-            "date": "2026-11-13T19:46:07.000Z",
-            "image": "https://news.am/storage/media/26/11/13/DvVQ5YkbnacDNGDa.webp"
           }
         ]
       },
@@ -12077,6 +12083,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Фон дер Ляйен: ЕС необходимо 500 млрд евро для развития искусственного интеллекта",
+            "url": "https://news.am/ru/news/1074774",
+            "date": "2026-11-14T07:20:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/m7Q3rudfpfZGwZ29.webp"
+          },
+          {
             "title": "Рубио: США не нуждаются в новых военных действиях против Ирана благодаря экономическому давлению",
             "url": "https://news.am/ru/news/1074759",
             "date": "2026-11-14T05:48:00.000Z",
@@ -12129,12 +12141,6 @@
             "url": "https://news.am/ru/news/1074618",
             "date": "2026-11-13T10:18:00.000Z",
             "image": "https://news.am/storage/media/26/11/13/GQPwqxa9WYEsTyzG.webp"
-          },
-          {
-            "title": "Европейские рынки акций не показали единой динамики",
-            "url": "https://news.am/ru/news/1074565",
-            "date": "2026-11-13T07:05:00.000Z",
-            "image": "https://news.am/storage/media/26/10/28/ZV49SvCEG5OSnASD.webp"
           }
         ]
       },
@@ -12142,6 +12148,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "Включенный микрофон подвел премьера Австралии: его разговор о мужском достоинстве услышал весь мир",
+            "url": "https://style.news.am/rus/news/117139/",
+            "date": "2026-11-14T07:21:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117139.jpg"
+          },
           {
             "title": "Ким экономит только на адвент-календарях: какими роскошными подарками Кардашьян балует коллег по сериалу «All’s Fair»",
             "url": "https://style.news.am/rus/news/117130/",
@@ -12195,12 +12207,6 @@
             "url": "https://style.news.am/rus/news/117122/",
             "date": "2026-11-13T12:16:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117122.jpg"
-          },
-          {
-            "title": "От красной дорожки до закрытого ужина Chanel: как Роберт Де Ниро и его молодая избранница наслаждаются звездными ночами Нью-Йорка",
-            "url": "https://style.news.am/rus/news/117126/",
-            "date": "2026-11-13T11:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117126.jpg"
           }
         ]
       },
