@@ -42,8 +42,11 @@ export const SITES = {
     // Les comptes propres à une langue (ouverts le 31 oct. 2026) : au pied de
     // page de CETTE langue, ils remplacent ceux de la vitrine plateforme par
     // plateforme (socialFor). Une plateforme absente garde le compte de la
-    // vitrine — LinkedIn n'existe qu'en un exemplaire ; YouTube n'a de chaîne
-    // par langue que là où des Shorts y sont publiés.
+    // vitrine. LinkedIn : une PAGE VITRINE (/showcase/) par langue sous la Page
+    // principale (15 nov. 2026 : de, it, es) — jamais un compte, LinkedIn n'en
+    // permet qu'un par personne ; hy et ru gardent la Page de la vitrine
+    // jusqu'à leur création (LinkedIn limite à 3 pages neuves par semaine).
+    // YouTube n'a de chaîne par langue que là où des Shorts y sont publiés.
     socialByLang: {
       de: {
         facebook: 'https://www.facebook.com/61596218245485',
@@ -52,6 +55,7 @@ export const SITES = {
         whatsapp: 'https://whatsapp.com/channel/0029Vb9vZgXC6ZvmgkLTjd1B',
         bluesky: 'https://bsky.app/profile/de.armenieinfo.ch',
         youtube: 'https://www.youtube.com/@armenieinfo-de',
+        linkedin: 'https://www.linkedin.com/showcase/armenieinfo-de/',
       },
       it: {
         facebook: 'https://www.facebook.com/61595804863665',
@@ -60,6 +64,7 @@ export const SITES = {
         whatsapp: 'https://whatsapp.com/channel/0029Vb9L8jsF6smuUOyG0N2n',
         bluesky: 'https://bsky.app/profile/it.armenieinfo.ch',
         youtube: 'https://www.youtube.com/@armenieinfo-it',
+        linkedin: 'https://www.linkedin.com/showcase/armenieinfo-it/',
       },
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
@@ -178,6 +183,7 @@ export const SITES = {
         whatsapp: 'https://whatsapp.com/channel/0029VbDbwntAojYorCFVdw1M',
         bluesky: 'https://bsky.app/profile/es.armenianews.org',
         youtube: 'https://www.youtube.com/@armenianews-es',
+        linkedin: 'https://www.linkedin.com/showcase/armenianews-es/',
       },
       hy: {
         facebook: 'https://www.facebook.com/61596095491007',
