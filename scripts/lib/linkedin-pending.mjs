@@ -6,13 +6,31 @@
 //
 // Même choix d'articles que le job horaire (`plan`, social.mjs) : mêmes
 // types (SOCIAL_KINDS, Culture par défaut), même ordre, même plafond.
-import { SITES, socialFor } from '../../sites.config.js'
+import { SITES, siteOf, socialFor } from '../../sites.config.js'
 import { CHANNELS, plan, supports, tagged } from './social.mjs'
 
 // Pages entreprise créées le 28 oct. 2026 : id d'organisation pour l'URL
 // d'administration, d'où l'on publie au nom de la page.
 export const LINKEDIN_ORG = { ch: '146900320', org: '146899338' }
-export const LINKEDIN_CHANNELS = CHANNELS.filter((c) => c.platform === 'linkedin')
+// Pages VITRINES par langue (15 nov. 2026), sous la Page de leur site : id
+// pour l'URL d'administration. Un canal n'existe que si la langue déclare sa
+// vitrine dans sites.config.js (`linkedin` de socialByLang, en /showcase/) —
+// le lien du pied de page et la file de publication vont ensemble. hy et ru
+// viendront quand LinkedIn le permettra (3 pages neuves par semaine).
+// Hors de CHANNELS, comme WhatsApp : aucun secret, le job horaire les ignore.
+export const LINKEDIN_SHOWCASE = { de: '146995898', it: '146974798', es: '146994900' }
+const SHOWCASE_CHANNELS = Object.entries(LINKEDIN_SHOWCASE).map(([lang, showcase]) => ({
+  id: `linkedin-${lang}`,
+  platform: 'linkedin',
+  siteId: siteOf(lang),
+  lang,
+  showcase,
+  url: socialFor(siteOf(lang), lang).linkedin ?? null,
+}))
+export const LINKEDIN_CHANNELS = [
+  ...CHANNELS.filter((c) => c.platform === 'linkedin'),
+  ...SHOWCASE_CHANNELS.filter((c) => /\/showcase\//.test(c.url ?? '')),
+]
 
 // WhatsApp, même régime que LinkedIn : aucune API ne publie dans une chaîne
 // (l'API Business ne sert que les conversations), et automatiser un compte
@@ -35,7 +53,10 @@ export const WHATSAPP_CHANNELS = WA_KEYS.map(([key, lang, siteId]) => ({
 export const MANUAL_CHANNELS = [...LINKEDIN_CHANNELS, ...WHATSAPP_CHANNELS.filter((c) => c.url)]
 const channelOf = (id) => [...LINKEDIN_CHANNELS, ...WHATSAPP_CHANNELS].find((c) => c.id === id)
 
-export const adminUrl = (siteId) => `https://www.linkedin.com/company/${LINKEDIN_ORG[siteId]}/admin/dashboard/`
+export const adminUrl = (ch) =>
+  ch.showcase
+    ? `https://www.linkedin.com/showcase/${ch.showcase}/admin/dashboard/`
+    : `https://www.linkedin.com/company/${LINKEDIN_ORG[ch.siteId]}/admin/dashboard/`
 
 // Le texte à coller : en clair (pas le « little text » échappé de l'API),
 // lien marqué pour GA4. LinkedIn tire l'aperçu de l'URL.

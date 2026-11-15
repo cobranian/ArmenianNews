@@ -29,8 +29,11 @@ et annonce ce qui attend.
    d'administration, le texte exact et la commande `--mark`.
 2. Chrome (outils `mcp__claude-in-chrome__*`, onglet neuf) : ouvrir l'URL
    d'administration de la page — `linkedin-ch` = « Arménie Info » (français),
-   `linkedin-org` = « Armenia News » (anglais). Vérifier le nom de la page en
-   haut à gauche : on publie AU NOM DE LA PAGE, pas du profil personnel.
+   `linkedin-org` = « Armenia News » (anglais), et les pages VITRINES par
+   langue : `linkedin-de` « Arménie Info – Deutsch », `linkedin-it`
+   « Arménie Info – Italiano », `linkedin-es` « Armenia News en Español ».
+   Vérifier le nom de la page en haut à gauche : on publie AU NOM DE LA PAGE
+   (ou de la vitrine), pas du profil personnel.
 3. « + Créer » → « Commencer un post ». Coller le texte (taper le texte de
    `--list` tel quel). Attendre l'aperçu du lien (image + titre de l'article).
 4. Faire valider à l'utilisateur ce qui est à l'écran si c'est le premier
@@ -41,6 +44,12 @@ et annonce ce qui attend.
 
 - Pages : linkedin.com/company/armenieinfo (org 146900320),
   linkedin.com/company/armenianews (org 146899338).
+- Vitrines (15 nov. 2026) : /showcase/armenieinfo-de (146995898),
+  /showcase/armenieinfo-it (146974798), /showcase/armenianews-es
+  (146994900). Ajouter une vitrine = son id dans `LINKEDIN_SHOWCASE`
+  (`scripts/lib/linkedin-pending.mjs`) ET son lien `/showcase/` dans
+  `socialByLang` (sites.config.js) : un test exige les deux ensemble.
+  LinkedIn limite la création à ~3 pages par semaine.
 - Registre local : `.cache/linkedin-posted.json` (hors git). Le supprimer
   ré-amorce : seul le dernier article serait reproposé.
 - Types publiés : ceux de `SOCIAL_KINDS` (Culture par défaut), comme le job

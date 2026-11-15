@@ -1,7 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { pending, hookMessage, postText, LINKEDIN_CHANNELS } from '../scripts/lib/linkedin-pending.mjs'
+import { pending, hookMessage, postText, adminUrl, LINKEDIN_CHANNELS, LINKEDIN_SHOWCASE } from '../scripts/lib/linkedin-pending.mjs'
+import { SITES, socialFor } from '../sites.config.js'
 import { emptyLedger } from '../scripts/lib/social.mjs'
 
 const item = (slug, date, lang = 'fr') => ({
@@ -16,14 +17,44 @@ const item = (slug, date, lang = 'fr') => ({
 })
 const items = [item('a', '2026-10-01'), item('b', '2026-10-02'), item('a', '2026-10-01', 'en'), item('b', '2026-10-02', 'en')]
 const kinds = ['culture']
+// Les deux Pages principales (fr, en) ; les vitrines ont leurs tests plus bas.
+const PAGES = LINKEDIN_CHANNELS.filter((c) => !c.showcase)
 
-test('les canaux LinkedIn sont les deux pages', () => {
-  assert.deepEqual(LINKEDIN_CHANNELS.map((c) => c.id).sort(), ['linkedin-ch', 'linkedin-org'])
+test('les canaux LinkedIn : les deux Pages, puis une vitrine par langue qui en déclare une', () => {
+  assert.deepEqual(LINKEDIN_CHANNELS.map((c) => c.id), ['linkedin-ch', 'linkedin-org', 'linkedin-de', 'linkedin-it', 'linkedin-es'])
+})
+
+// Une vitrine liée au pied de page sans id d'administration n'aurait aucune
+// file de publication — et l'inverse publierait sur une page que le site ne
+// cite pas. Les deux vont ensemble.
+test('vitrines : lien du pied de page ⇔ id d’administration', () => {
+  for (const site of Object.values(SITES))
+    for (const p of site.pages) {
+      const url = socialFor(site.id, p.lang).linkedin
+      const isShowcase = /\/showcase\//.test(url)
+      assert.equal(isShowcase, p.lang in LINKEDIN_SHOWCASE, `${p.lang} : vitrine au pied de page sans id, ou id sans vitrine`)
+    }
+  for (const c of LINKEDIN_CHANNELS.filter((x) => x.showcase)) {
+    assert.equal(c.siteId, ['de', 'it'].includes(c.lang) ? 'ch' : 'org', c.id)
+    assert.equal(adminUrl(c), `https://www.linkedin.com/showcase/${LINKEDIN_SHOWCASE[c.lang]}/admin/dashboard/`)
+  }
+  assert.equal(adminUrl(LINKEDIN_CHANNELS[0]), 'https://www.linkedin.com/company/146900320/admin/dashboard/')
+})
+
+test('vitrine neuve : comme une Page, amorce l’archive de SA langue et propose son dernier article', () => {
+  const de = [item('a', '2026-10-01', 'de'), item('b', '2026-10-02', 'de'), item('c', '2026-10-03')]
+  const r = pending({ items: de, ledger: emptyLedger(), kinds, channels: LINKEDIN_CHANNELS.filter((c) => c.id === 'linkedin-de') })
+  assert.deepEqual(r.posts.map((p) => `${p.channel}/${p.item.id}/${p.item.lang}`), ['linkedin-de/culture:b/de'])
+})
+
+test('les vitrines restent hors du job horaire', async () => {
+  const { CHANNELS } = await import('../scripts/lib/social.mjs')
+  for (const c of LINKEDIN_CHANNELS.filter((x) => x.showcase)) assert.ok(!CHANNELS.some((x) => x.id === c.id), c.id)
 })
 
 // Une page neuve : l'archive est amorcée, sauf le dernier article, proposé.
 test('premier passage : amorce l’archive, propose le dernier article seulement', () => {
-  const r = pending({ items, ledger: emptyLedger(), kinds })
+  const r = pending({ items, ledger: emptyLedger(), kinds, channels: PAGES })
   assert.deepEqual(r.seeded.sort(), ['linkedin-ch', 'linkedin-org'])
   assert.deepEqual(r.posts.map((p) => `${p.channel}/${p.item.id}`).sort(), ['linkedin-ch/culture:b', 'linkedin-org/culture:b'])
   assert.deepEqual(Object.keys(r.ledger.channels['linkedin-ch'].posted), ['culture:a'])
@@ -31,8 +62,8 @@ test('premier passage : amorce l’archive, propose le dernier article seulement
 
 // Proposer n'est pas publier : tant que --mark n'a pas noté le post, il revient.
 test('une proposition ne marque rien : elle revient à la session suivante', () => {
-  const first = pending({ items, ledger: emptyLedger(), kinds })
-  const again = pending({ items, ledger: first.ledger, kinds })
+  const first = pending({ items, ledger: emptyLedger(), kinds, channels: PAGES })
+  const again = pending({ items, ledger: first.ledger, kinds, channels: PAGES })
   assert.deepEqual(again.seeded, [])
   assert.equal(again.posts.length, 2)
   assert.ok(!('culture:b' in again.ledger.channels['linkedin-ch'].posted))
