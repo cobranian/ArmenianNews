@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T11:23:48.041Z",
+  "generatedAt": "2026-11-15T12:23:30.414Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Նիկոլ Փաշինյանը Պնոմ Պենում այցելել է Ֆրանկոֆոնիայի ավանում բացված Հայաստանի տաղավար",
+            "url": "https://hy.armradio.am/archives/770785",
+            "date": "2026-11-15T11:58:28.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/13A3481-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Նիկոլ Փաշինյանը մասնակցել է ՖՄԿ լիագումար նիստերին",
             "url": "https://hy.armradio.am/archives/770771",
             "date": "2026-11-15T10:49:07.000Z",
@@ -1136,13 +1143,6 @@
             "date": "2026-11-13T17:26:31.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/71078_b-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Վարչապետը կմեկնի Կամբոջա` մասնակցելու Ֆրանկոֆոնիայի գագաթնաժողովին",
-            "url": "https://hy.armradio.am/archives/770583",
-            "date": "2026-11-13T16:27:26.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/francophonie-768x511.jpg",
-            "category": "Քաղաքական"
           }
         ]
       },
@@ -2130,6 +2130,20 @@
       "categoryKey": "actualites",
       "articles": [
         {
+          "title": "Le Premier ministre arménien participe à Phnom Penh aux séances plénières de l’Organisation internationale de la Francophonie et discute de la paix entre l’Arménie et l’Azerbaïdjan",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-participe-a-phnom-penh-aux-seances-plenieres-de-lorganisation-internationale-de-la-francophonie-et-discute-de-la-paix-entre-larmenie-et-lazerbaidjan/",
+          "date": "2026-11-15T11:46:09.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/347706.jpg",
+          "rubric": "politique"
+        },
+        {
+          "title": "Les Premiers ministres d’Arménie et de Moldavie ont discuté de la nécessité d’établir des vols directs entre Erevan et Chișinău",
+          "url": "https://www.armenews.com/les-premiers-ministres-darmenie-et-de-moldavie-ont-discute-de-la-necessite-detablir-des-vols-directs-entre-erevan-et-chisinau/",
+          "date": "2026-11-15T11:38:25.000Z",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/347707.jpg",
+          "rubric": "politique"
+        },
+        {
           "title": "Une réunion opérationnelle de la direction du ministère de la Défense et des Forces armées d’Arménie s’est tenue sous l’égide du chef d’état-major général",
           "url": "https://www.armenews.com/une-reunion-operationnelle-de-la-direction-du-ministere-de-la-defense-et-des-forces-armees-darmenie-sest-tenue-sous-legide-du-chef-detat-major-general/",
           "date": "2026-11-15T10:10:30.000Z",
@@ -2184,20 +2198,6 @@
           "date": "2026-11-15T07:30:28.000Z",
           "image": "https://www.armenews.com/wp-content/uploads/2026/11/Pelerin-Les-chretiens-de-Mossoul-9-scaled.jpg",
           "rubric": "culture"
-        },
-        {
-          "title": "Le médiateur chargé du patrimoine culturel de la République du Nagorno-Karabakh : la destruction du patrimoine de l’Artsakh se poursuit dans le silence de l’UNESCO",
-          "url": "https://www.armenews.com/le-mediateur-charge-du-patrimoine-culturel-de-la-republique-du-nagorno-karabakh-la-destruction-du-patrimoine-de-lartsakh-se-poursuit-dans-le-silence-de-lunesco/",
-          "date": "2026-11-15T07:30:15.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-14-a-08.15.49.png",
-          "rubric": "culture"
-        },
-        {
-          "title": "Pashinian envisage l’adhésion de l’Arménie à l’UE d’ici 20 ans",
-          "url": "https://www.armenews.com/pashinian-envisage-ladhesion-de-larmenie-a-lue-dici-20-ans/",
-          "date": "2026-11-15T07:30:03.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-15-a-06.33.24.png",
-          "rubric": "politique"
         }
       ]
     },
@@ -4215,6 +4215,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Վարչապետը մասնակցել է ՖՄԿ լիագումար նիստերին",
+            "url": "https://armenpress.am/hy/article/1265701",
+            "date": "2026-11-15T11:34:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/15/xbskVi9C9Na3v30f3a3U7D0ev8FEaCyjQktBXvTZ.webp"
+          },
+          {
+            "title": "Պնոմ Պենում տեղի է ունեցել Հայաստանի և Մոլդովայի վարչապետների հանդիպումը",
+            "url": "https://armenpress.am/hy/article/1265700",
+            "date": "2026-11-15T11:32:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/15/UTSOyZhxW3tMYiMjmHYxW3TaHDD83fQRuonvCWNz.webp"
+          },
+          {
             "title": "Նոյեմբերի 14-ից հասանելի են կենսաչափական անձնագրերի և նույնականացման քարտերի ամենասեղմ ժամկետում տրամադրման ծառայությունները",
             "url": "https://armenpress.am/hy/article/1265698",
             "date": "2026-11-15T10:14:00.000Z",
@@ -4261,18 +4273,6 @@
             "url": "https://armenpress.am/hy/article/1265691",
             "date": "2026-11-14T16:22:21.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/SwlBjn3Fs4SAjz1os8TQ12oZ0kNjy7ihUCdOkE2N.webp"
-          },
-          {
-            "title": "Հայաստանը ներառվել է հեղինակավոր Condé Nast Traveller Middle East-ի՝ 2027 թվականին այցելելու աշխարհի լավագույն ուղղությունների ցանկում",
-            "url": "https://armenpress.am/hy/article/1265688",
-            "date": "2026-11-14T14:00:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/JpkOQknp4rXv3N3UaB9pUYAFYGjTp9cr2BA3kNCb.webp"
-          },
-          {
-            "title": "Փաշինյանն ու Ջայշանկարը քննարկել են Հայաստան-Հնդկաստան համագործակցությանը վերաբերող հարցեր",
-            "url": "https://armenpress.am/hy/article/1265684",
-            "date": "2026-11-14T13:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/3YrRDl0UQdcv4ifi3dIiwk1IHlDpS7FnzJ8nTGf9.webp"
           }
         ]
       },
@@ -4692,6 +4692,24 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Премьер-министр принял участие в пленарных заседаниях МОФ",
+            "url": "https://armenpress.am/ru/article/1265701",
+            "date": "2026-11-15T12:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/15/xbskVi9C9Na3v30f3a3U7D0ev8FEaCyjQktBXvTZ.webp"
+          },
+          {
+            "title": "В Пномпене состоялась встреча премьер-министров Армении и Молдовы",
+            "url": "https://armenpress.am/ru/article/1265700",
+            "date": "2026-11-15T12:15:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/15/UTSOyZhxW3tMYiMjmHYxW3TaHDD83fQRuonvCWNz.webp"
+          },
+          {
+            "title": "С 14 ноября доступны услуги по предоставлению биометрических паспортов и идентификационных карт в максимально сжатые сроки",
+            "url": "https://armenpress.am/ru/article/1265698",
+            "date": "2026-11-15T11:27:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/15/t3yR7yqTGlmergvl1ulW2TZPp7HWQiIUrTL5nAJt.webp"
+          },
+          {
             "title": "Совершенствование практических навыков: в школе села Малышка прошло специальное тактическое учение",
             "url": "https://armenpress.am/ru/article/1265697",
             "date": "2026-11-15T10:10:00.000Z",
@@ -4732,24 +4750,6 @@
             "url": "https://armenpress.am/ru/article/1265683",
             "date": "2026-11-14T13:38:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/NCTubYVvS57AKX522LW0aDhL68jCC5lQynpIdwAM.webp"
-          },
-          {
-            "title": "Никол Пашинян в Нью-Дели встретился с министром иностранных дел Индии",
-            "url": "https://armenpress.am/ru/article/1265682",
-            "date": "2026-11-14T13:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/Bzx4GW5BIAUzMcAdDnwdEk0ETcoubxXlw7XKXhkb.webp"
-          },
-          {
-            "title": "Роберт Плант, вокалист рок-группы Led Zeppelin, впервые даст концерт в Армении",
-            "url": "https://armenpress.am/ru/article/1265680",
-            "date": "2026-11-14T13:13:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/wDu0zJDaNEK0uTR8qS6BRilOTs75ZYFblnBWsIqo.webp"
-          },
-          {
-            "title": "Развитие искусственного интеллекта в Армении должно опираться на реальные потребности людей: в Ереване состоялось мероприятие AI Agora",
-            "url": "https://armenpress.am/ru/article/1265671",
-            "date": "2026-11-14T11:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/jyPSzujY1I8pn4651fSm4tqe18VrbZQi3el3yR7s.webp"
           }
         ]
       },
@@ -5169,6 +5169,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "TOON EXPO reunió a las empresas líderes del sector inmobiliario",
+            "url": "https://armenpress.am/es/article/1265642",
+            "date": "2026-11-15T12:15:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/13/KHIviSkHzjCENuss23K0hHBM7rh6hgh22YiuiD3C.webp"
+          },
+          {
             "title": "Pashinyan analizó con expertos irlandeses el proceso de paz entre Armenia y Azerbaiyán",
             "url": "https://armenpress.am/es/article/1265629",
             "date": "2026-11-13T14:40:00.000Z",
@@ -5221,12 +5227,6 @@
             "url": "https://armenpress.am/es/article/1265541",
             "date": "2026-11-13T04:01:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/12/iTvNT1fvBdjJT3KlcA914JsE0iNxvzyRQfVGjHCZ.webp"
-          },
-          {
-            "title": "Pashinyan y Kobakhidze analizaron las relaciones entre Armenia y Georgia",
-            "url": "https://armenpress.am/es/article/1265536",
-            "date": "2026-11-13T03:58:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/12/tN6Hwx4Rguk6OPFvS8vKEQe22xbUlIHvkuvkd7Cc.webp"
           }
         ]
       },
@@ -6921,11 +6921,18 @@
       "label": "Armenia",
       "articles": [
         {
+          "title": "Nikol Pashinyan participa en la ceremonia de apertura de la XX Cumbre de la Francofonía en Phnom Penh",
+          "url": "https://soyarmenio.com/nikol-pashinyan-xx-cumbre-francofonia-phnom-penh/",
+          "date": "2026-11-15T12:16:45.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/francofonia-phnom-penh-767x511.jpg",
+          "rubric": "politique"
+        },
+        {
           "title": "Condé Nast Traveller incluye a Armenia entre los 27 mejores destinos turísticos del mundo para visitar en 2027",
           "url": "https://soyarmenio.com/conde-nast-traveller-armenia-destinos-turisticos-2027/",
           "date": "2026-11-15T10:02:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2024/03/tatev-4.jpg",
-          "rubric": "armenie"
+          "rubric": "economie"
         },
         {
           "title": "Armenia actualiza el estándar educativo: ¿Cuántos idiomas extranjeros aprenderán los niños y desde qué grado?",
@@ -6981,13 +6988,6 @@
           "url": "https://soyarmenio.com/pashinyan-viajara-rusia-armenia-negociaciones-bilaterales/",
           "date": "2026-11-14T17:30:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2026/10/pashinyan-firma-paz-Azerbaiyan-767x431.jpg",
-          "rubric": "politique"
-        },
-        {
-          "title": "Nikol Pashinyan proyecta a Armenia dentro de la Unión Europea en veinte años",
-          "url": "https://soyarmenio.com/armenia-parte-union-europea-20-anos-pashinyan/",
-          "date": "2026-11-14T17:00:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/pashinyan-rusia-armenia-768x512.jpg",
           "rubric": "politique"
         }
       ]
@@ -11211,6 +11211,30 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Մակրոնի վարկանիշը հասել է պատմական նվազագույնին․ նրա գործունեությանը հավանություն է տալիս ֆրանսիացիների ընդամենը 14%-ը",
+            "url": "https://news.am/hy/news/1074942",
+            "date": "2026-11-15T12:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/3DKEv4EiatoAQsuD.webp"
+          },
+          {
+            "title": "WP. Ի՞նչ դեր է խաղացել Մարկո Ռուբիոն Nvidia-ի ղեկավարի պաշտոնից Ջենսեն Հուանգի հրաժարականի հարցում",
+            "url": "https://news.am/hy/news/1074938",
+            "date": "2026-11-15T12:07:00.000Z",
+            "image": "https://news.am/storage/media/26/06/22/2BALROSvdclFXOTI.webp"
+          },
+          {
+            "title": "Պեսկով. Ռուսաստանն ուժով կհասնի Ուկրաինայում իր նպատակներին, եթե համաձայնության չգա Եվրոպայի հետ",
+            "url": "https://news.am/hy/news/1074934",
+            "date": "2026-11-15T11:36:00.000Z",
+            "image": "https://news.am/storage/media/26/05/29/3TlMo0F1TFEnjqDK.webp"
+          },
+          {
+            "title": "Հայաստանը Պաղեստինին խաղաղություն և բարգավաճում է մաղթել․ Իրանը շնորհակալություն է հայտնել",
+            "url": "https://news.am/hy/news/1074947",
+            "date": "2026-11-15T11:34:29.000Z",
+            "image": "https://news.am/storage/media/26/11/15/bCNgIfDR2wtM8dId.jfif"
+          },
+          {
             "title": "Israel Hayom. «Մոսադը» ԿՀՎ-ին նախազգուշացրել է Թրամփի վրա ԱԹՍ-ներով Իրանի հնարավոր հարձակման մասին",
             "url": "https://news.am/hy/news/1074931",
             "date": "2026-11-15T11:21:00.000Z",
@@ -11245,30 +11269,6 @@
             "url": "https://news.am/hy/news/1074911",
             "date": "2026-11-15T09:04:00.000Z",
             "image": "https://news.am/storage/media/26/08/14/Zi0Ty0ygRnlXKsM7.webp"
-          },
-          {
-            "title": "Նյու Յորքի սոցիալիստները Ալեքսանդրիա Օկասիո-Կորտեսին կոչ են արել 2028 թվականին առաջադրվել ԱՄՆ նախագահի պաշտոնում",
-            "url": "https://news.am/hy/news/1074900",
-            "date": "2026-11-15T07:17:00.000Z",
-            "image": "https://news.am/storage/media/26/11/15/s2jyttG82gD0XHBn.webp"
-          },
-          {
-            "title": "Իրանի ԻՀՊԿ-ն հերքել է Ֆրանսիայում հովացման համակարգերի վրա հարձակման մեղադրանքները և հայտարարել Իսրայելի սադրանքի մասին",
-            "url": "https://news.am/hy/news/1074899",
-            "date": "2026-11-15T07:02:00.000Z",
-            "image": "https://news.am/storage/media/26/05/08/mcA0gGBkc7Gozm85.webp"
-          },
-          {
-            "title": "Միլեյը հայտարարել է 2027 թվականին երկրորդ նախագահական ժամկետի համար առաջադրվելու մտադրության մասին",
-            "url": "https://news.am/hy/news/1074898",
-            "date": "2026-11-15T06:46:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/wDX42gzmVx8aCjqp.webp"
-          },
-          {
-            "title": "Մակրոն․ Ուկրաինան ՆԱՏՕ-ի հետ առանցքային դեր է խաղում Եվրոպայի անվտանգության ապահովման գործում",
-            "url": "https://news.am/hy/news/1074896",
-            "date": "2026-11-15T06:31:00.000Z",
-            "image": "https://news.am/storage/media/26/10/22/lbXZltI2ljN80ns7.webp"
           }
         ]
       },
@@ -11475,6 +11475,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Երբ ողբերգությունն այլևս փոքր չէ․ մարդու անվերջ վերադարձը դեպի ինքն իրեն",
+            "url": "https://style.news.am/arm/news/117144/",
+            "date": "2026-11-15T12:21:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117144.jpg"
+          },
+          {
             "title": "30 հազար դոլար արժողությամբ Louis Vuitton պայուսակներ. աճուրդի կհանվեն Մուրակամիի, Կուսամայի և Ֆրենկ Գերիի ավելի քան 100 հազվագյուտ ստեղծագործությունները",
             "url": "https://style.news.am/arm/news/117143/",
             "date": "2026-11-15T10:30:00.000Z",
@@ -11527,12 +11533,6 @@
             "url": "https://style.news.am/arm/news/117136/",
             "date": "2026-11-14T11:14:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117136.jpg"
-          },
-          {
-            "title": "Բրիթնի Սփիրսը որոշել է նոր կյանք սկսել. երգչուհին անակնկալ է պատրաստում, որի մասին երազում էր ավելի քան 20 տարի",
-            "url": "https://style.news.am/arm/news/117135/",
-            "date": "2026-11-14T10:16:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117135.jpg"
           }
         ]
       },
@@ -11673,6 +11673,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Գերմանիայում կողոպտիչներն ավտոմեքենայով մխրճվել են ոսկու խանութ և փախուստի դիմել․ ոստիկանությունը փնտրում է երրորդ կասկածյալին",
+            "url": "https://news.am/hy/news/1074936",
+            "date": "2026-11-15T11:51:00.000Z",
+            "image": "https://news.am/storage/media/26/11/15/PQ3b1CUmiVQnJqRF.webp"
+          },
+          {
             "title": "Հորդանանում երեք մարդու մահապատժի են դատապարտել եկեղեցու վրա հարձակման համար",
             "url": "https://news.am/hy/news/1074925",
             "date": "2026-11-15T10:35:00.000Z",
@@ -11725,12 +11731,6 @@
             "url": "https://news.am/hy/news/1074883",
             "date": "2026-11-14T19:44:43.000Z",
             "image": "https://news.am/storage/media/26/11/14/NTNjfnZg9rXNj7vH.webp"
-          },
-          {
-            "title": "Սամբոյի Ռուսաստանի առաջնության մրցանակակիրը զոհվել է Մախաչկալայում հարսանիքի ժամանակ տեղի ունեցած փոխհրաձգության հետևանքով",
-            "url": "https://news.am/hy/news/1074874",
-            "date": "2026-11-14T19:40:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/oPNOVUa1WvxKMTHZ.webp"
           }
         ]
       },
@@ -11873,6 +11873,30 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Рейтинг Макрона рухнул до исторического минимума: его действия одобряют лишь 14% французов",
+            "url": "https://news.am/ru/news/1074942",
+            "date": "2026-11-15T12:22:00.000Z",
+            "image": "https://news.am/storage/media/26/10/21/3DKEv4EiatoAQsuD.webp"
+          },
+          {
+            "title": "WP: Какую роль сыграл Марко Рубио в отставке Дженсена Хуанга с поста главы Nvidia?",
+            "url": "https://news.am/ru/news/1074938",
+            "date": "2026-11-15T12:07:00.000Z",
+            "image": "https://news.am/storage/media/26/06/22/2BALROSvdclFXOTI.webp"
+          },
+          {
+            "title": "Песков: Россия добьется своих целей на Украине силой, если не договорится с Европой",
+            "url": "https://news.am/ru/news/1074934",
+            "date": "2026-11-15T11:36:00.000Z",
+            "image": "https://news.am/storage/media/26/05/29/3TlMo0F1TFEnjqDK.webp"
+          },
+          {
+            "title": "Армения пожелала Палестине мира и процветания: Иран выразил благодарность",
+            "url": "https://news.am/ru/news/1074947",
+            "date": "2026-11-15T11:34:29.000Z",
+            "image": "https://news.am/storage/media/26/11/15/bCNgIfDR2wtM8dId.jfif"
+          },
+          {
             "title": "Israel Hayom: «Моссад» предупредил ЦРУ о возможной атаке Ирана на Трампа с помощью беспилотников",
             "url": "https://news.am/ru/news/1074931",
             "date": "2026-11-15T11:21:00.000Z",
@@ -11907,30 +11931,6 @@
             "url": "https://news.am/ru/news/1074911",
             "date": "2026-11-15T09:04:00.000Z",
             "image": "https://news.am/storage/media/26/08/14/Zi0Ty0ygRnlXKsM7.webp"
-          },
-          {
-            "title": "Социалисты Нью-Йорка призвали Александрию Окасио-Кортес баллотироваться в президенты США в 2028 году",
-            "url": "https://news.am/ru/news/1074900",
-            "date": "2026-11-15T07:17:00.000Z",
-            "image": "https://news.am/storage/media/26/11/15/s2jyttG82gD0XHBn.webp"
-          },
-          {
-            "title": "КСИР Ирана отверг обвинения в атаке на системы охлаждения во Франции и заявил о провокации Израиля",
-            "url": "https://news.am/ru/news/1074899",
-            "date": "2026-11-15T07:02:00.000Z",
-            "image": "https://news.am/storage/media/26/05/08/mcA0gGBkc7Gozm85.webp"
-          },
-          {
-            "title": "Милей объявил о намерении баллотироваться на второй президентский срок в 2027 году",
-            "url": "https://news.am/ru/news/1074898",
-            "date": "2026-11-15T06:46:00.000Z",
-            "image": "https://news.am/storage/media/26/10/21/wDX42gzmVx8aCjqp.webp"
-          },
-          {
-            "title": "Макрон: Украина играет ключевую роль в обеспечении безопасности Европы наряду с НАТО",
-            "url": "https://news.am/ru/news/1074896",
-            "date": "2026-11-15T06:31:00.000Z",
-            "image": "https://news.am/storage/media/26/10/22/lbXZltI2ljN80ns7.webp"
           }
         ]
       },
@@ -12335,6 +12335,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Германии грабители протаранили магазин золота автомобилем и скрылись: полиция ищет третьего",
+            "url": "https://news.am/ru/news/1074936",
+            "date": "2026-11-15T11:51:00.000Z",
+            "image": "https://news.am/storage/media/26/11/15/PQ3b1CUmiVQnJqRF.webp"
+          },
+          {
             "title": "В Иордании трех человек приговорили к смертной казни за нападение на церковь",
             "url": "https://news.am/ru/news/1074925",
             "date": "2026-11-15T10:35:00.000Z",
@@ -12387,12 +12393,6 @@
             "url": "https://news.am/ru/news/1074883",
             "date": "2026-11-14T19:44:43.000Z",
             "image": "https://news.am/storage/media/26/11/14/NTNjfnZg9rXNj7vH.webp"
-          },
-          {
-            "title": "Призер чемпионата России по самбо погиб в перестрелке на свадьбе в Махачкале",
-            "url": "https://news.am/ru/news/1074874",
-            "date": "2026-11-14T19:40:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/oPNOVUa1WvxKMTHZ.webp"
           }
         ]
       },
