@@ -69,16 +69,26 @@ ${xhtml(briefAlternates(b.date, byDate))}
 // Les articles Culture : l'index d'une langue s'il a au moins un article (vide,
 // il est en noindex — le lister serait contradictoire), et chaque article
 // présent dans cette langue, avec les mêmes alternates que son <head>.
-// lastmod = la date de l'article (il ne change plus une fois publié).
-function cultureEntries(site, culture) {
+// lastmod = la date de l'article, ou celle de la vidéo de CETTE langue si elle
+// est plus récente : une vidéo ajoutée change la page, et IndexNow ne soumet
+// que les URL dont le jour de lastmod a bougé (scripts/lib/indexnow.mjs). Sans
+// cela, 10 pages vidéo sont restées « rien de nouveau » le 14 nov. 2026.
+// Comparaison de chaînes AAAA-MM-JJ : l'ordre lexical est l'ordre des dates.
+const pageDate = (a, lang, videos) => {
+  const v = videos?.[a.slug]?.[lang]?.uploadDate
+  return v && v > a.date ? v : a.date
+}
+
+function cultureEntries(site, culture, videos) {
   const bySlug = cultureLangsBySlug(culture)
   return site.pages.flatMap(({ lang }) => {
     const mine = culture.filter((a) => a.langs[lang])
     if (!mine.length) return []
+    const newest = mine.map((a) => pageDate(a, lang, videos)).sort().at(-1)
     return [
       `  <url>
     <loc>${cultureUrl(lang)}</loc>
-    <lastmod>${mine[0].date}</lastmod>
+    <lastmod>${newest}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
 ${xhtml(cultureAlternates(null, bySlug, lang))}
@@ -86,7 +96,7 @@ ${xhtml(cultureAlternates(null, bySlug, lang))}
       ...mine.map(
         (a) => `  <url>
     <loc>${cultureUrl(lang, a.slug)}</loc>
-    <lastmod>${a.date}</lastmod>
+    <lastmod>${pageDate(a, lang, videos)}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
 ${xhtml(cultureAlternates(a.slug, bySlug))}
@@ -113,7 +123,7 @@ ${xhtml(agendaPaysAlternates(k))}
   )
 }
 
-export function sitemapFor(siteId, lastmod, briefs = {}, culture = [], pays = new Map()) {
+export function sitemapFor(siteId, lastmod, briefs = {}, culture = [], pays = new Map(), videos = {}) {
   const site = SITES[siteId]
   if (!site) throw new Error(`site inconnu : ${siteId}`)
   if (!lastmod) throw new Error('lastmod manquant — attendu meta.json → generatedAt')
@@ -131,7 +141,7 @@ ${alternates(view)}
       ),
     ),
     ...briefEntries(site, lastmod, briefs),
-    ...cultureEntries(site, culture),
+    ...cultureEntries(site, culture, videos),
     ...agendaPaysEntries(site, lastmod, pays),
   ].join('\n')
 

@@ -194,9 +194,9 @@ async function loadAgendaPays() {
   return paysDeLAgenda(evenementsAVenir([...(a.switzerland || []), ...(a.world || [])]))
 }
 
-async function writeSeoFiles(site, stamp, briefs, culture, pays) {
+async function writeSeoFiles(site, stamp, briefs, culture, pays, videos) {
   const dist = path.join(root, 'dist', site.id)
-  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs, culture, pays), 'utf-8')
+  await writeFile(path.join(dist, 'sitemap.xml'), sitemapFor(site.id, stamp, briefs, culture, pays, videos), 'utf-8')
   console.log(`  → dist/${site.id}/sitemap.xml`)
   await writeFile(path.join(dist, 'robots.txt'), robotsFor(site.id), 'utf-8')
   console.log(`  → dist/${site.id}/robots.txt`)
@@ -238,7 +238,7 @@ for (const site of Object.values(SITES)) {
   await writeBriefs(site, briefs)
   await writeCulture(site, culture, videos, seoTitles)
   await writeAgendaPays(site, pays)
-  await writeSeoFiles(site, stamp, briefs, culture, pays)
+  await writeSeoFiles(site, stamp, briefs, culture, pays, videos)
 }
 
 console.log(
