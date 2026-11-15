@@ -110,6 +110,13 @@ test('notification : une alerte nouvelle notifie, la même ne notifie plus', () 
   assert.equal(notification(s, previousAlertKeys(body)), null)
 })
 
+test('previousAlertKeys lit le DERNIER marqueur, celui que pose renderDashboard', () => {
+  const body = renderDashboard(sections([{ key: 'k', level: 'faire', text: 't', action: 'a' }]), { now })
+  assert.deepEqual(previousAlertKeys(`- <!-- alertes: forge|autre -->\n${body}`), ['k'])
+  assert.deepEqual(previousAlertKeys(body), ['k'])
+  assert.deepEqual(previousAlertKeys(''), [])
+})
+
 test('notification : retour au vert annoncé une fois', () => {
   const green = sections([{ key: 'x', level: 'ok', text: 'ok' }])
   assert.match(notification(green, ['llm-primary-402']), /levées/)
