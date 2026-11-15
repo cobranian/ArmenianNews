@@ -74,6 +74,8 @@ test('comptes par langue : langue de la vitrine, URL valides, aucun doublon', ()
       if (accounts.instagram) assert.match(accounts.instagram, /^https:\/\/www\.instagram\.com\/[a-z0-9_.]+\/$/)
       if (accounts.telegram) assert.match(accounts.telegram, /^https:\/\/t\.me\/[a-z0-9_]+$/)
       if (accounts.bluesky) assert.match(accounts.bluesky, /^https:\/\/bsky\.app\/profile\/[a-z0-9.-]+$/)
+      // Une langue n'a qu'une page VITRINE, jamais une Page entreprise à part.
+      if (accounts.linkedin) assert.match(accounts.linkedin, /^https:\/\/www\.linkedin\.com\/showcase\/[a-z0-9-]+\/$/)
     }
   }
 })
@@ -81,12 +83,15 @@ test('comptes par langue : langue de la vitrine, URL valides, aucun doublon', ()
 test('socialFor : la langue remplace la vitrine plateforme par plateforme, le reste suit', () => {
   const es = socialFor('org', 'es')
   assert.equal(es.telegram, 'https://t.me/armenianews_es')
-  assert.equal(es.linkedin, SITES.org.social.linkedin)
+  assert.equal(es.linkedin, 'https://www.linkedin.com/showcase/armenianews-es/')
   assert.deepEqual(Object.keys(es), Object.keys(SITES.org.social))
   assert.deepEqual(socialFor('org', 'en'), SITES.org.social)
   assert.equal(socialFor('ch', 'de').facebook, 'https://www.facebook.com/61596218245485')
   assert.equal(socialFor('org', 'ru').instagram, 'https://www.instagram.com/armenianews.ru/')
   assert.equal(socialFor('ch', 'it').bluesky, 'https://bsky.app/profile/it.armenieinfo.ch')
+  assert.equal(socialFor('ch', 'de').linkedin, 'https://www.linkedin.com/showcase/armenieinfo-de/')
+  // Sans vitrine propre (hy, ru), la langue garde la Page de sa vitrine.
+  assert.equal(socialFor('org', 'ru').linkedin, SITES.org.social.linkedin)
 })
 
 test('le JSON-LD d’une page de langue déclare aussi les comptes de cette langue', () => {
