@@ -3590,6 +3590,18 @@ html:lang(hy) .nav__brand {
   margin: 0 0 22px;
   padding: 0;
 }
+/* Équilibre des rangs. Le retour à la ligne (bloc ci-dessus) empêche le
+   débordement, mais laissé à lui-même il coupe où la place s'épuise : 6 + 1
+   de 390 à 435px d'écran (YouTube seul sur sa ligne), 5 + 2 vers 360px. Les
+   sept ne tiennent sur une ligne qu'à partir de 436px (mesuré, 15 nov. 2026).
+   En dessous, une largeur max de quatre cercles (4×44 + 3×14 = 218px, bordure
+   comprise grâce au border-box global) force partout un 4 + 3. */
+@media (max-width: 435px) {
+  .footer__social {
+    max-width: calc(4 * 44px + 3 * 14px);
+    margin-inline: auto;
+  }
+}
 .footer__social a {
   display: grid;
   place-items: center;
