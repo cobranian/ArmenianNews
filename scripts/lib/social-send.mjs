@@ -175,6 +175,13 @@ async function igPublish(id, c, f, wait, what) {
 // sans aucune clé — rien d'authentifié ne part vers ces hôtes.
 // Un échec ici est toujours sûr : rien n'est encore parti chez Meta.
 export async function fetchReel(url, f = fetch) {
+  return (await downloadReel(url, f)).video
+}
+
+// Rend aussi l'adresse FINALE, celle du CDN après redirection : c'est elle que
+// le repli Instagram (`video_url`) donne à Meta, pour ne pas dépendre de la
+// redirection 302 de GitHub (la raison du dépôt en octets, spec des Reels).
+async function downloadReel(url, f) {
   let u
   try {
     u = new URL(url).href
@@ -201,7 +208,7 @@ export async function fetchReel(url, f = fetch) {
   const buf = Buffer.from(await res.arrayBuffer())
   if (buf.length > REEL_MAX_BYTES) throw new Error(`reel/vidéo : fichier trop lourd (${buf.length} octets)`)
   if (!buf.length) throw new Error('reel/vidéo : fichier vide')
-  return buf
+  return { video: buf, url: u }
 }
 
 // Le dépôt « resumable » de Meta : les octets en un seul envoi (offset 0), la
@@ -257,18 +264,35 @@ const REEL_SENDERS = {
 
   // Content Publishing, media_type=REELS en dépôt « resumable » : conteneur →
   // dépôt → FINISHED → media_publish (qui publie).
+  // Repli : si Meta refuse le DÉPÔT des octets, un second conteneur reçoit
+  // l'adresse finale de la vidéo (`video_url`) et Meta la télécharge lui-même.
+  // Du 12 au 14 nov. 2026, ~50 dépôts sur ~57 ont été refusés
+  // (« ProcessingFailedError », retriable: false), par vagues et quels que
+  // soient le compte ou le fichier — le même MP4 passait sur Facebook, et sur
+  // un autre compte Instagram une heure plus tard. Sans repli, 15 Reels ont
+  // été abandonnés. Un dépôt refusé n'a rien publié : le repli ne peut pas
+  // faire de doublon. Le conteneur abandonné expire seul chez Meta.
   async instagram(p, c, f, wait) {
-    const video = await fetchReel(p.videoUrl, f)
-    const { json: box } = await call(
-      f,
-      `${GRAPH}/${c.userId}/media`,
-      form({ media_type: 'REELS', upload_type: 'resumable', caption: p.caption, share_to_feed: 'true', access_token: c.token }),
-      'instagram-reel/media',
-    )
-    if (!box?.id) throw new Error('instagram-reel/media : pas d’id de conteneur')
-    await rupload(f, 'ig-api-upload', box.id, c.token, video, 'instagram-reel/upload')
-    await igReady(box.id, c, f, wait, { readyMs: IG_REEL_READY_MS, what: 'instagram-reel' })
-    return igPublish(box.id, c, f, wait, 'instagram-reel/publish')
+    const { video, url } = await downloadReel(p.videoUrl, f)
+    const container = async (extra) => {
+      const { json: box } = await call(
+        f,
+        `${GRAPH}/${c.userId}/media`,
+        form({ media_type: 'REELS', ...extra, caption: p.caption, share_to_feed: 'true', access_token: c.token }),
+        'instagram-reel/media',
+      )
+      if (!box?.id) throw new Error('instagram-reel/media : pas d’id de conteneur')
+      return box.id
+    }
+    let id = await container({ upload_type: 'resumable' })
+    try {
+      await rupload(f, 'ig-api-upload', id, c.token, video, 'instagram-reel/upload')
+    } catch (e) {
+      console.log(`⚠ instagram-reel : dépôt refusé (${e.message}) — repli sur video_url`)
+      id = await container({ video_url: url })
+    }
+    await igReady(id, c, f, wait, { readyMs: IG_REEL_READY_MS, what: 'instagram-reel' })
+    return igPublish(id, c, f, wait, 'instagram-reel/publish')
   },
 }
 

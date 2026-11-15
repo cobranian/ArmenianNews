@@ -124,7 +124,7 @@ test('(c) Instagram : media, upload, status ×2, publish', async () => {
   assert.equal(box.get('upload_type'), 'resumable')
   assert.equal(box.get('share_to_feed'), 'true')
   assert.match(box.get('caption'), /T duduk/)
-  assert.equal(box.get('video_url'), null, 'la vidéo part en octets, jamais par URL')
+  assert.equal(box.get('video_url'), null, 'la vidéo part d’abord en octets, pas par URL')
   assert.match(m[1].url, /^https:\/\/rupload\.facebook\.com\/ig-api-upload\/v\d+\.\d+\/C1$/)
   assert.equal(m[1].init.headers.authorization, 'OAuth IG-SECRET')
   assert.equal(m[1].init.headers.offset, '0')
@@ -133,6 +133,57 @@ test('(c) Instagram : media, upload, status ×2, publish', async () => {
   assert.equal(new URLSearchParams(m[4].init.body).get('creation_id'), 'C1')
   assert.equal(waits.length, 1)
   for (const c of calls) assert.ok(!c.url.includes('SECRET'), c.url)
+})
+
+// 12-14 nov. 2026 : Meta refusait ~50 dépôts sur ~57 (ProcessingFailedError).
+const REFUS = '{"debug_info":{"retriable":false,"type":"ProcessingFailedError","message":"Request processing failed"}}'
+const CDN = 'https://release-assets.githubusercontent.com/github-production-release-asset/1/abc?sig=x'
+function fallbackRoute(statuses) {
+  let boxes = 0
+  let n = 0
+  return (url) => {
+    if (/\/7\/media$/.test(url)) return ok({ id: `C${++boxes}` })
+    if (url.startsWith('https://rupload.facebook.com/ig-api-upload/')) return new Response(REFUS, { status: 400 })
+    if (url.includes('/C2?fields=status_code')) return ok({ status_code: statuses[Math.min(n++, statuses.length - 1)] })
+    if (/\/7\/media_publish$/.test(url)) return ok({ id: 'M2' })
+    return new Response('{"error":{"message":"inattendu"}}', { status: 404 })
+  }
+}
+// La release redirige vers le CDN, comme en production.
+function fakeCdn(route) {
+  const calls = []
+  const f = async (url, init = {}) => {
+    calls.push({ url, init })
+    if (url.startsWith(REEL_BASE)) return new Response(null, { status: 302, headers: { location: CDN } })
+    if (url === CDN) return new Response(VIDEO, { status: 200 })
+    return route(url, init)
+  }
+  return { f, calls }
+}
+
+test('(c) Instagram : dépôt refusé → second conteneur par video_url (adresse du CDN), puis publication', async () => {
+  const { f, calls } = fakeCdn(fallbackRoute(['IN_PROGRESS', 'FINISHED']))
+  const id = await send(chan('instagram-ch'), reel(), { userId: '7', token: 'IG-SECRET' }, { fetch: f, wait: noWait })
+  assert.equal(id, 'M2')
+  const boxes = calls.filter((c) => /\/7\/media$/.test(c.url)).map((c) => new URLSearchParams(c.init.body))
+  assert.equal(boxes.length, 2)
+  assert.equal(boxes[0].get('upload_type'), 'resumable')
+  assert.equal(boxes[1].get('upload_type'), null)
+  // L'adresse FINALE : Meta ne suit pas la redirection de GitHub.
+  assert.equal(boxes[1].get('video_url'), CDN)
+  assert.equal(boxes[1].get('media_type'), 'REELS')
+  assert.match(boxes[1].get('caption'), /T duduk/)
+  assert.equal(new URLSearchParams(calls.find((c) => c.url.endsWith('/media_publish')).init.body).get('creation_id'), 'C2')
+  assert.ok(!calls.some((c) => c.url.includes('/C1?fields')), 'le conteneur refusé est laissé à lui-même')
+  for (const c of calls) assert.ok(!c.url.includes('SECRET'), c.url)
+})
+
+test('(c) Instagram : repli en ERROR = échec sûr, sans publication', async () => {
+  const { f, calls } = fakeCdn(fallbackRoute(['ERROR']))
+  const e = await send(chan('instagram-ch'), reel(), { userId: '7', token: 'T' }, { fetch: f, wait: noWait }).catch((x) => x)
+  assert.match(e.message, /ERROR/)
+  assert.equal(isUncertain(e), false)
+  assert.ok(!calls.some((c) => c.url.endsWith('/media_publish')))
 })
 
 test('(c) Instagram : un conteneur ERROR lève sans publier', async () => {

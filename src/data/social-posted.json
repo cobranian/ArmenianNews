@@ -260,41 +260,6 @@
         "reel:epopee-de-david-de-sassoun": "2026-11-14T06:56:53.570Z"
       },
       "failed": {
-        "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-12T20:57:15.902Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:bataille-de-sardarapat": {
-          "attempts": 3,
-          "last": "2026-11-12T22:33:07.117Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-13T21:33:35.785Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:lavash": {
-          "attempts": 3,
-          "last": "2026-11-13T22:33:33.710Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:serguei-paradjanov": {
-          "attempts": 3,
-          "last": "2026-11-14T00:34:48.391Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:ani": {
-          "attempts": 3,
-          "last": "2026-11-14T03:35:04.337Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:matenadaran-et-les-manuscrits-enlumines": {
-          "attempts": 3,
-          "last": "2026-11-14T06:32:44.350Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
           "attempts": 1,
           "last": "2026-11-15T00:35:13.456Z",
@@ -1035,21 +1000,6 @@
         "reel:monastere-de-tatev": "2026-11-14T00:33:54.499Z"
       },
       "failed": {
-        "reel:duduk": {
-          "attempts": 3,
-          "last": "2026-11-12T20:57:15.902Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:bataille-de-sardarapat": {
-          "attempts": 3,
-          "last": "2026-11-13T21:33:35.785Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:charles-aznavour": {
-          "attempts": 3,
-          "last": "2026-11-13T22:33:33.710Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
         "reel:lavash": {
           "attempts": 1,
           "last": "2026-11-15T00:35:13.456Z",
@@ -1258,31 +1208,6 @@
         "reel:serguei-paradjanov": "2026-11-13T23:33:50.578Z"
       },
       "failed": {
-        "reel:duduk": {
-          "attempts": 3,
-          "last": "2026-11-12T20:57:15.902Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:aram-khatchatourian": {
-          "attempts": 3,
-          "last": "2026-11-12T22:33:07.117Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:bataille-de-sardarapat": {
-          "attempts": 3,
-          "last": "2026-11-13T01:33:22.384Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-13T21:33:35.785Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
-        "reel:lavash": {
-          "attempts": 3,
-          "last": "2026-11-13T22:33:33.710Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        },
         "reel:ani": {
           "attempts": 1,
           "last": "2026-11-15T00:35:13.456Z",
