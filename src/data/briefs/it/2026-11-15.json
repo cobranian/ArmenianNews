@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-15",
+  "lang": "it",
+  "generatedAt": "2026-11-15T03:29:45.680Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna stampa odierna evidenzia l'intensa attività diplomatica del Primo Ministro Nikol Pashinyan, le tensioni persistenti con l'Azerbaigian e i successi degli atleti armeni nelle competizioni internazionali.",
+  "topics": [
+    {
+      "title": "Visite diplomatiche del Primo Ministro in India e Cambogia",
+      "text": "Nikol Pashinyan ha incontrato a New Delhi il Ministro degli Esteri indiano per discutere la cooperazione multisettoriale tra i due paesi. Successivamente, il Premier si è recato in Cambogia per una visita di lavoro ufficiale.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-et-le-ministre-indien-des-affaires-etrangeres-discutent-de-la-cooperation-multisectorielle-armeno-indienne/",
+          "title": "Nikol Pachinian et le ministre indien des Affaires étrangères discutent de la coopération multisectorielle arméno-indienne"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265684",
+          "title": "Rencontre à New Delhi entre le Premier ministre arménien et le ministre indien des Affaires étrangères"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265653",
+          "title": "Le Premier ministre s’est rendu au Cambodge pour une visite de travail"
+        }
+      ]
+    },
+    {
+      "title": "Prospettive di adesione all'Unione Europea e relazioni con la Russia",
+      "text": "Pashinyan ha dichiarato di vedere l'Armenia come membro dell'Unione Europea entro vent'anni. È inoltre prevista una serie di tre visite in Russia nel mese di dicembre, a conferma del dialogo in corso con Mosca.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-se-rendra-en-russie-a-trois-reprises-en-decembre/",
+          "title": "Le Premier ministre arménien se rendra en Russie à trois reprises en décembre"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-je-vois-larmenie-comme-membre-de-lunion-europeenne-dans-20-ans/",
+          "title": "Nikol Pachinian : Je vois l’Arménie comme membre de l’Union européenne dans 20 ans"
+        }
+      ]
+    },
+    {
+      "title": "Tensioni con l'Azerbaigian su territori e prigionieri",
+      "text": "Il Primo Ministro ha sottolineato che la detenzione di prigionieri armeni in Azerbaigian testimonia un clima di ostilità. Samvel Babayan ha affermato categoricamente che Baku non restituirà i territori occupati in Armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/je-laffirme-categoriquement-lazerbaidjan-ne-restituera-pas-les-territoires-occupes-en-armenie-affirme-samvel-babayan/",
+          "title": "Je l’affirme catégoriquement : l’Azerbaïdjan ne restituera pas les territoires occupés en Arménie affirme Samvel Babayan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-presence-de-prisonniers-temoigne-dun-climat-dhostilite-declare-nikol-pachinian-a-propos-des-prisonniers-armeniens-detenus-en-azerbaidjan/",
+          "title": "La présence de prisonniers témoigne d’un climat d’hostilité déclare Nikol Pachinian à propos des prisonniers Arméniens détenus en Azerbaïdjan"
+        }
+      ]
+    },
+    {
+      "title": "L'Armenia non aderisce alla dichiarazione sulla sicurezza europea a Dublino",
+      "text": "In occasione del vertice di Dublino, l'Armenia ha scelto di non associarsi alla dichiarazione congiunta sulla sicurezza europea. La decisione solleva interrogativi sul peso diplomatico del paese, secondo alcune analisi.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-ne-sassocie-pas-a-la-declaration-sur-la-securite-europeenne-lors-du-sommet-de-dublin/",
+          "title": "L’Arménie ne s’associe pas à la déclaration sur la sécurité européenne lors du sommet de Dublin"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/comment-voulez-vous-etre-pris-au-serieux-un-predateur-comme-erdogan-ne-peut-respecter-quelquun-qui-renie-lararat-symbole-de-sa-propre-nation-ataturk-vous-a-deja-re/",
+          "title": "La visite de Pachinian en Turquie et la perte de poids diplomatique de l’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Successi sportivi: kickboxing e scacchi",
+      "text": "Tigran Harutyunyan ha conquistato il titolo europeo di kickboxing sconfiggendo un avversario turco in finale. Negli scacchi, Haik Martirosyan ha ottenuto una vittoria di prestigio battendo il campione del mondo Magnus Carlsen in due partite.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/tigran-harutyunyan-armenie-bat-son-adversaire-turc-et-devient-champion-deurope-de-kickboxing/",
+          "title": "Tigran Harutyunyan (Arménie) bat son adversaire turc et devient champion d’Europe de kickboxing"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenien-haik-martirosyan-simpose-face-a-magnus-carlsen-en-deux-parties/",
+          "title": "L’Arménien Haik Martirosyan s’impose face à Magnus Carlsen en deux parties"
+        }
+      ]
+    },
+    {
+      "title": "L'Armenia tra le migliori destinazioni di viaggio per il 2027",
+      "text": "La rivista Condé Nast Traveller Middle East ha inserito l'Armenia nell'elenco delle 27 migliori destinazioni al mondo da visitare nel 2027. Il riconoscimento valorizza l'attrattiva turistica e culturale del paese.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265688",
+          "title": "L’Arménie figure parmi les 27 meilleures destinations au monde à visiter en 2027, selon le prestigieux magazine Condé Nast Traveller Middle East"
+        }
+      ]
+    },
+    {
+      "title": "Attività culturali e commemorative nella diaspora",
+      "text": "A Valencia, gli allievi della scuola Arévi Chogher hanno rappresentato con successo l'opera musicale 'Anouche' di Hovhannes Toumanian. Ad Alfortville sono in programma le 'Giornate per l'Artsakh' dal 3 al 6 dicembre.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/a-valence-la-piece-musicale-anouche-dhovhannes-toumanian-par-les-eleves-de-lecole-arevi-chogher-a-conquis-le-public/",
+          "title": "A Valence la pièce musicale « Anouche » d’Hovhannès Toumanian par les élèves de l’école Arévi Chogher a conquis le public"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/journees-pour-lartsakh-du-3-au-6-decembre-a-alfortville/",
+          "title": "Journées pour l’Artsakh du 3 au 6 décembre à Alfortville"
+        }
+      ]
+    }
+  ]
+}

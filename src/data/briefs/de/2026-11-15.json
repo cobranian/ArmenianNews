@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-15",
+  "lang": "de",
+  "generatedAt": "2026-11-15T03:29:45.680Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über die Aussenpolitik des Premierministers, sportliche Erfolge und kulturelle Veranstaltungen in der Diaspora.",
+  "topics": [
+    {
+      "title": "Paschinjans Aussenpolitik und EU-Perspektive",
+      "text": "Der armenische Premierminister Nikol Paschinjan wird im Dezember zu drei Besuchen in Russland erwartet. Er äusserte ausserdem die Erwartung, dass Armenien in 20 Jahren Mitglied der Europäischen Union sein könnte. Bei einem Gipfel in Dublin verzichtete Armenien auf die Unterzeichnung einer Erklärung zur europäischen Sicherheit.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-se-rendra-en-russie-a-trois-reprises-en-decembre/",
+          "title": "Le Premier ministre arménien se rendra en Russie à trois reprises en décembre"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-je-vois-larmenie-comme-membre-de-lunion-europeenne-dans-20-ans/",
+          "title": "Nikol Pachinian : Je vois l’Arménie comme membre de l’Union européenne dans 20 ans"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-ne-sassocie-pas-a-la-declaration-sur-la-securite-europeenne-lors-du-sommet-de-dublin/",
+          "title": "L’Arménie ne s’associe pas à la déclaration sur la sécurité européenne lors du sommet de Dublin"
+        }
+      ]
+    },
+    {
+      "title": "Verstärkte Zusammenarbeit mit Indien",
+      "text": "Premierminister Paschinjan traf in Neu-Delhi den indischen Aussenminister, um die vielseitige Zusammenarbeit zwischen Armenien und Indien zu erörtern. Beide Seiten bekräftigten ihr Interesse an einer Ausweitung der bilateralen Beziehungen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-et-le-ministre-indien-des-affaires-etrangeres-discutent-de-la-cooperation-multisectorielle-armeno-indienne/",
+          "title": "Nikol Pachinian et le ministre indien des Affaires étrangères discutent de la coopération multisectorielle arméno-indienne"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265684",
+          "title": "Rencontre à New Delhi entre le Premier ministre arménien et le ministre indien des Affaires étrangères"
+        }
+      ]
+    },
+    {
+      "title": "Gefangene und besetzte Gebiete im Fokus",
+      "text": "Paschinjan verwies auf die in Aserbaidschan inhaftierten Armenier als Indikator für ein feindseliges Klima. Der frühere Befehlshaber Samwel Babajan erklärte kategorisch, dass Aserbaidschan die besetzten Gebiete nicht zurückgeben werde.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/je-laffirme-categoriquement-lazerbaidjan-ne-restituera-pas-les-territoires-occupes-en-armenie-affirme-samvel-babayan/",
+          "title": "Je l’affirme catégoriquement : l’Azerbaïdjan ne restituera pas les territoires occupés en Arménie affirme Samvel Babayan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-presence-de-prisonniers-temoigne-dun-climat-dhostilite-declare-nikol-pachinian-a-propos-des-prisonniers-armeniens-detenus-en-azerbaidjan/",
+          "title": "La présence de prisonniers témoigne d’un climat d’hostilité déclare Nikol Pachinian à propos des prisonniers Arméniens détenus en Azerbaïdjan"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Sportler feiern internationale Siege",
+      "text": "Der Kickboxer Tigran Harutjunjan besiegte seinen türkischen Gegner und wurde Europameister. Schach-Grossmeister Haik Martirosjan gewann zwei Partien gegen Weltmeister Magnus Carlsen.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/tigran-harutyunyan-armenie-bat-son-adversaire-turc-et-devient-champion-deurope-de-kickboxing/",
+          "title": "Tigran Harutyunyan (Arménie) bat son adversaire turc et devient champion d’Europe de kickboxing"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenien-haik-martirosyan-simpose-face-a-magnus-carlsen-en-deux-parties/",
+          "title": "L’Arménien Haik Martirosyan s’impose face à Magnus Carlsen en deux parties"
+        }
+      ]
+    },
+    {
+      "title": "Kulturelle Veranstaltungen der Diaspora in Europa",
+      "text": "In Valencia führte die armenische Schule Arevi Chogher das Musikstück \"Anusch\" von Howhannes Tumanjan auf. In Alfortville finden Anfang Dezember die \"Tage für Artsach\" statt.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/a-valence-la-piece-musicale-anouche-dhovhannes-toumanian-par-les-eleves-de-lecole-arevi-chogher-a-conquis-le-public/",
+          "title": "A Valence la pièce musicale « Anouche » d’Hovhannès Toumanian par les élèves de l’école Arévi Chogher a conquis le public"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/journees-pour-lartsakh-du-3-au-6-decembre-a-alfortville/",
+          "title": "Journées pour l’Artsakh du 3 au 6 décembre à Alfortville"
+        }
+      ]
+    },
+    {
+      "title": "Armenien als Reisedestination 2027 empfohlen",
+      "text": "Das Magazin Condé Nast Traveller Middle East listet Armenien unter den 27 besten Reisezielen weltweit für das Jahr 2027. Die Einstufung unterstreicht die wachsende touristische Attraktivität des Landes.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265688",
+          "title": "L’Arménie figure parmi les 27 meilleures destinations au monde à visiter en 2027, selon le prestigieux magazine Condé Nast Traveller Middle East"
+        }
+      ]
+    },
+    {
+      "title": "Francophonie als Dialograhmen hervorgehoben",
+      "text": "Robert Abissoghomojan betonte die Rolle der Internationalen Organisation der Francophonie als Rahmen für Dialog und Zusammenarbeit. Die Aussage erfolgte im Zusammenhang mit aktuellen diplomatischen Aktivitäten.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265683",
+          "title": "Robert Abisoghomonyan souligne le rôle de l’Organisation internationale de la Francophonie en tant que cadre de dialogue et de cooperation"
+        }
+      ]
+    }
+  ]
+}

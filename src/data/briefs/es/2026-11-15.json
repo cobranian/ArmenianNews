@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-15",
+  "lang": "es",
+  "generatedAt": "2026-11-15T03:29:45.680Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La agenda política armenia se centra en las declaraciones del primer ministro Nikol Pashinyan sobre soberanía, relaciones con Rusia y perspectivas europeas, mientras la Fiscal General viaja a Argentina y se anuncian medidas económicas y de seguridad.",
+  "topics": [
+    {
+      "title": "Declaraciones de Pashinyan sobre soberanía, Rusia y la UE",
+      "text": "El primer ministro Nikol Pashinyan afirmó que el conflicto de Karabaj obstaculizó la soberanía de Armenia motivado por los rusos soviéticos y proyectó la integración de Armenia en la Unión Europea dentro de veinte años. Además, advirtió que la presencia de prisioneros armenios en Bakú refleja un clima de hostilidad regional, mientras su asesor Armen Grigoryan alertó que la adhesión a la UE podría sustituir una dependencia externa por otra.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-conflicto-karabaj-soberania-armenia/",
+          "title": "Nikol Pashinyan: el conflicto de Karabaj obstaculizó la soberanía de Armenia motivado por los rusos soviéticos"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-parte-union-europea-20-anos-pashinyan/",
+          "title": "Nikol Pashinyan proyecta a Armenia dentro de la Unión Europea en veinte años"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-prisioneros-armenios-baku-hostilidad-regional/",
+          "title": "Para Nikol Pashinyan que haya prisioneros armenios en Bakú refleja el clima de hostilidad regional"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armen-grigoryan-armenia-sustituye-dependencia/",
+          "title": "Armen Grigoryan advierte que la adhesión de Armenia a la Unión Europea sustituiría una dependencia externa por otra"
+        }
+      ]
+    },
+    {
+      "title": "Tres viajes a Rusia en diciembre para negociaciones bilaterales",
+      "text": "Nikol Pashinyan anunció que realizará tres viajes a Rusia durante diciembre para mantener negociaciones bilaterales, en un contexto de redefinición de las relaciones entre ambos países.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-viajara-rusia-armenia-negociaciones-bilaterales/",
+          "title": "Nikol Pashinyan anuncia tres viajes a Rusia en diciembre para negociaciones bilaterales"
+        }
+      ]
+    },
+    {
+      "title": "Segundo foro científico y educativo Armenia-Rusia en Moscú",
+      "text": "Armenia y Rusia celebraron en Moscú el segundo foro científico y educativo con la participación de los ministros de ambos países, en el marco de la cooperación bilateral en materia académica e investigativa.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/segundo-foro-cientifico-educativo-armenia-rusia/",
+          "title": "Armenia y Rusia celebran en Moscú el segundo foro científico y educativo con la participación de ambos ministros"
+        }
+      ]
+    },
+    {
+      "title": "La Fiscal General Anna Vardapetyan viaja a Argentina",
+      "text": "La Fiscal General de Armenia, Anna Vardapetyan, viajó a Argentina para participar en el Comité Ejecutivo de la Asociación Internacional de Fiscales, fortaleciendo la cooperación judicial internacional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/fiscal-general-armenia-anna-vardapetyan-argentina/",
+          "title": "La Fiscal General de Armenia, Anna Vardapetyan, viaja a Argentina para participar en el Comité Ejecutivo de la Asociación Internacional de Fiscales"
+        }
+      ]
+    },
+    {
+      "title": "Concesión del monitoreo unificado de apuestas por 15 años",
+      "text": "Armenia adjudicó por 15 años el monitoreo unificado de apuestas a una empresa privada con complejos vínculos internacionales, según informó la prensa local.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-adjudica-monitoreo-unificado-apuestas/",
+          "title": "Armenia adjudica por 15 años el monitoreo unificado de apuestas a una empresa privada con complejos vínculos internacionales"
+        }
+      ]
+    },
+    {
+      "title": "Acuerdo Armenia-Georgia para reforzar controles fronterizos y seguridad alimentaria",
+      "text": "Armenia y Georgia acordaron reforzar los controles fronterizos y ampliar su cooperación en materia de seguridad alimentaria, en una muestra de profundización de las relaciones bilaterales.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-georgia-cooperacion-seguridad-alimentaria/",
+          "title": "Armenia y Georgia acuerdan reforzar los controles fronterizos y ampliar su cooperación en seguridad alimentaria"
+        }
+      ]
+    },
+    {
+      "title": "Inauguración del Archivo Digital Vahakn Dadrian sobre el Genocidio Armenio",
+      "text": "Se inauguró el Archivo Digital Vahakn Dadrian, que utiliza inteligencia artificial para documentar y preservar la memoria del Genocidio Armenio, como una iniciativa de la diáspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/archivo-digital-vahakn-dadrian-genocidio-armenio/",
+          "title": "Se inaugura el Archivo Digital Vahakn Dadrian con inteligencia artificial sobre el Genocidio Armenio"
+        }
+      ]
+    }
+  ]
+}
