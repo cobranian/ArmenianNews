@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T05:23:27.326Z",
+  "generatedAt": "2026-11-15T06:23:34.827Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "Նիկոլ Փաշինյանը մասնակցել է ՖՄԿ 20-րդ գագաթնաժողովի բացման արարողությանը",
+            "url": "https://hy.armradio.am/archives/770731",
+            "date": "2026-11-15T06:01:35.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/12A7749-768x512.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Նյու Դելիում տեղի է ունեցել ՀՀ վարչապետի և Հնդկաստանի ԱԳ նախարարի հանդիպումը",
             "url": "https://hy.armradio.am/archives/770711",
             "date": "2026-11-14T13:42:35.000Z",
@@ -1135,13 +1142,6 @@
             "url": "https://hy.armradio.am/archives/770362",
             "date": "2026-11-12T17:26:51.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/904562636_1447757614113496_7338249501875858998_n-768x512.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Տարանցիկ կապեր, էներգետիկա և ջրային ռեսուրսներ. ինչ են քննարկել Փաշինյանն ու Ալիևը Դուբլինում",
-            "url": "https://hy.armradio.am/archives/770359",
-            "date": "2026-11-12T17:21:02.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/13A2402-768x512.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -2193,10 +2193,10 @@
           "rubric": "politique"
         },
         {
-          "title": "La visite de Pachinian en Turquie et la perte de poids diplomatique de l’Arménie",
-          "url": "https://www.armenews.com/comment-voulez-vous-etre-pris-au-serieux-un-predateur-comme-erdogan-ne-peut-respecter-quelquun-qui-renie-lararat-symbole-de-sa-propre-nation-ataturk-vous-a-deja-re/",
+          "title": "Décryptage – Un sujet dangereux lors de la rencontre Pachinian–Aliyev Par Hakob Badalyan",
+          "url": "https://www.armenews.com/decryptage-un-sujet-dangereux-lors-de-la-rencontre-pachinian-aliyev-par-hakob-badalyan/",
           "date": "2026-11-14T07:30:52.000Z",
-          "image": "https://www.armenews.com/wp-content/uploads/2026/11/Capture-decran-2026-11-14-a-07.16.37.png",
+          "image": "https://www.armenews.com/wp-content/uploads/2026/11/71086_b.jpeg",
           "rubric": "politique"
         }
       ]
@@ -2789,10 +2789,10 @@
           "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794220365-9339.jpg"
         },
         {
-          "title": "L’Arménie, l’Azerbaïdjan et les États-Unis lancent des groupes de planification technique pour avancer sur la Route Trump",
-          "url": "https://armenieinfo.tv/larmenie-lazerbaidjan-et-les-etats-unis-lancent-des-groupes-de-planification-technique-pour-avancer-sur-la-route-trump/",
+          "title": "Tribune : Haroutioun Kalaydjian veut que les ambassadeurs d’Arménie deviennent « commissaires » de la diaspora",
+          "url": "https://armenieinfo.tv/mer-oughin-35909/",
           "date": "2026-11-10T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/visual-1794220474-2281.jpg"
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-35909.jpg"
         }
       ]
     },
@@ -3100,12 +3100,6 @@
     {
       "categoryKey": "politique",
       "articles": [
-        {
-          "title": "Tribune : Haroutioun Kalaydjian veut que les ambassadeurs d’Arménie deviennent « commissaires » de la diaspora",
-          "url": "https://armenieinfo.tv/mer-oughin-35909/",
-          "date": "2026-11-10T06:30:00.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-35909.jpg"
-        },
         {
           "title": "Hakob Movses : la décolonisation de l’Arménie passe par une nouvelle intelligentsia",
           "url": "https://armenieinfo.tv/mer-oughin-35895/",
@@ -7273,6 +7267,12 @@
       "label": "Mundo",
       "articles": [
         {
+          "title": "Carta desde prisión del activista azerbaiyano Bahruz Samadov denuncia el silencio diplomático ante la represión en Bakú",
+          "url": "https://soyarmenio.com/carta-preso-politico-azerbaiyano-bahruz-samadov/",
+          "date": "2026-11-15T06:02:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/carta-bahruz-samadov-768x432.jpg"
+        },
+        {
           "title": "Emiratos Árabes Unidos blanqueó 651 toneladas de oro proveniente de zonas de guerra en 2024, según SWISSAID",
           "url": "https://soyarmenio.com/emiratos-arabes-unidos-blanqueo-650-toneladas-oro/",
           "date": "2026-11-14T11:40:00.000Z",
@@ -7325,12 +7325,6 @@
           "url": "https://soyarmenio.com/falla-global-microsoft-outlook-74-paises-2026/",
           "date": "2026-11-13T12:30:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2026/11/falla-global-microsoft-768x384.jpg"
-        },
-        {
-          "title": "Irán enfrentará un severo déficit invernal de gas natural tras sufrir daños en su infraestructura energética",
-          "url": "https://soyarmenio.com/iran-aumento-deficit-gas-periodo-invernal/",
-          "date": "2026-11-13T12:00:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/gas-iran.jpeg"
         }
       ]
     },
@@ -9127,6 +9121,12 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "Armenia’s new constitution to drop some “super-prime-ministerial” elements, justice minister says",
+            "url": "https://civilnet.am/en/news/1015409",
+            "date": "2026-11-15T06:14:36.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/15/MeJjUQm6pq0JnQNc.webp"
+          },
+          {
             "title": "Pashinyan, Aliyev hold talks at European summit in Ireland",
             "url": "https://civilnet.am/en/news/1015389",
             "date": "2026-11-13T18:05:00.000Z",
@@ -9179,12 +9179,6 @@
             "url": "https://civilnet.am/en/news/1015333",
             "date": "2026-11-11T08:53:18.000Z",
             "image": "https://civilnet.am/storage/media/26/11/11/ddLymd09QJ9yCDbF.webp"
-          },
-          {
-            "title": "Opposition politician dies of heart attack in jail",
-            "url": "https://civilnet.am/en/news/1015326",
-            "date": "2026-11-10T18:05:00.000Z",
-            "image": "https://civilnet.am/storage/media/26/11/10/rNel5KuM7eZZYJqe.webp"
           }
         ]
       },
@@ -10561,10 +10555,28 @@
         "label": "Politics",
         "articles": [
           {
+            "title": "The Prime Minister arrives in Cambodia",
+            "url": "https://news.am/en/news/1074881",
+            "date": "2026-11-14T19:10:00.000Z",
+            "image": "https://news.am/storage/media/26/11/14/BTdTtiWiXvrMm3z8.webp"
+          },
+          {
             "title": "Statement by the Council of the SINJAR NGO on Ethnically Motivated Attacks Against Boris Murazi",
             "url": "https://news.am/en/news/1074843",
             "date": "2026-11-14T14:21:51.000Z",
             "image": "https://news.am/storage/media/26/11/14/G1Qgk2x6dvkmiGQ8.webp"
+          },
+          {
+            "title": "Armenian PM meets with Indian FM in New Delhi",
+            "url": "https://news.am/en/news/1074831",
+            "date": "2026-11-14T11:14:00.000Z",
+            "image": "https://news.am/storage/media/26/11/14/r7g09dmVzDNbvGly.webp"
+          },
+          {
+            "title": "The Prime Minister departs for Cambodia on a working visit",
+            "url": "https://news.am/en/news/1074775",
+            "date": "2026-11-14T07:28:00.000Z",
+            "image": "https://news.am/storage/media/26/11/14/BCB5kN5YckwVSpI0.webp"
           },
           {
             "title": "The meeting of the Armenia-United States Comprehensive Strategic Partnership Charter Working Group",
@@ -10601,24 +10613,6 @@
             "url": "https://news.am/en/news/1074811",
             "date": "2026-11-13T11:28:00.000Z",
             "image": "https://news.am/storage/media/26/11/14/8HwBlOdklOqBR8xL.webp"
-          },
-          {
-            "title": "Russia Federation Council explains how Armenia can restore its voting rights in Collective Security Treaty Organization",
-            "url": "https://news.am/en/news/1074631",
-            "date": "2026-11-13T11:03:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/cnNIBrxYuxQxzxFC.webp"
-          },
-          {
-            "title": "Yonhap: North Korea changes national flag proportions for first time since 1948",
-            "url": "https://news.am/en/news/1074622",
-            "date": "2026-11-13T10:33:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/zlrrDdPn2Xf5UxE8.webp"
-          },
-          {
-            "title": "US State Department revokes over 6,000 visas, in last 3 months, in fight against “birth tourism”",
-            "url": "https://news.am/en/news/1074628",
-            "date": "2026-11-13T10:30:00.000Z",
-            "image": "https://news.am/storage/media/26/11/13/FML6CZKnv7vZtvne.webp"
           }
         ]
       },
@@ -11223,6 +11217,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Փաշինյանը ներկա է գտնվել ՖՄԿ 20-րդ գագաթնաժողովի բացման արարողությանը",
+            "url": "https://news.am/hy/news/1074897",
+            "date": "2026-11-15T05:52:39.000Z",
+            "image": "https://news.am/storage/media/26/11/15/42V9OcIctdLbkVQd.webp"
+          },
+          {
+            "title": "ՌԴ ԱԳՆ-ն հայտնել է Մայամիի G20-ի գագաթնաժողովին ռուսաստանյան պատվիրակություն ձևավորելու մասին",
+            "url": "https://news.am/hy/news/1074888",
+            "date": "2026-11-15T05:15:20.000Z",
+            "image": "https://news.am/storage/media/26/09/22/LF5OJQdh82EYJHoW.webp"
+          },
+          {
             "title": "Սպիտակ տունը պատրաստվում է պատերազմի Կոնգրեսի հետ. Թրամփը դեմոկրատներին սպառնում է քրեական գործերով․ NYT",
             "url": "https://news.am/hy/news/1074880",
             "date": "2026-11-14T20:56:00.000Z",
@@ -11269,18 +11275,6 @@
             "url": "https://news.am/hy/news/1074868",
             "date": "2026-11-14T18:54:00.000Z",
             "image": "https://news.am/storage/media/26/11/14/dGXHkMwFFmaoEgb8.webp"
-          },
-          {
-            "title": "Կադիրովը Սաուդյան Արաբիայի՝ Չեչնիա այցելած արքայազնին ցույց է տվել կառուցվող Պուտինի անվան թաղամասը",
-            "url": "https://news.am/hy/news/1074864",
-            "date": "2026-11-14T18:24:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/1eeAKV6myr2JKXCI.webp"
-          },
-          {
-            "title": "Իրանի նախագահը խոստացել է կոշտ պայքար մղել կոռուպցիան արմատախիլ անելու համար",
-            "url": "https://news.am/hy/news/1074863",
-            "date": "2026-11-14T18:09:00.000Z",
-            "image": "https://news.am/storage/media/26/05/18/gB9sZmN8y5IR3mbh.webp"
           }
         ]
       },
@@ -11685,6 +11679,24 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Ծեծկռտուք «Վայոց ձոր» ԲԿ–ում՝ բժիշկների եւ հիվանդի հարազատի միջեւ․ բժիշկներից մեկը ստացել է մարմնական վնասվածք",
+            "url": "https://news.am/hy/news/1074903",
+            "date": "2026-11-15T06:20:11.000Z",
+            "image": "https://news.am/storage/media/26/05/15/ONV1EDezHhvJxTRY.webp"
+          },
+          {
+            "title": "Նոր Օռլեանում հայց է ներկայացվել լցանավի և ուղևորատար նավի բախումից հետո. վնասը գերազանցել է 1 մլն դոլարը",
+            "url": "https://news.am/hy/news/1074892",
+            "date": "2026-11-15T06:01:00.000Z",
+            "image": "https://news.am/storage/media/26/11/15/ZZhBAVCk53fwNE8H.webp"
+          },
+          {
+            "title": "Կանադայում մահացել է զորավարժությունների ժամանակ բռնկված հրդեհից տուժած հինգերորդ զինծառայողը",
+            "url": "https://news.am/hy/news/1074890",
+            "date": "2026-11-15T05:45:00.000Z",
+            "image": "https://news.am/storage/media/26/10/18/4hEuGoARQe4iJLP9.webp"
+          },
+          {
             "title": "Հնդկաստանում տղամարդը մահացել է բերանում ռումբի պայթյունից, որը քողարկված էր քաղցրավենիքի մեջ",
             "url": "https://news.am/hy/news/1074804",
             "date": "2026-11-15T02:54:00.000Z",
@@ -11725,24 +11737,6 @@
             "url": "https://news.am/hy/news/1074878",
             "date": "2026-11-14T18:10:16.000Z",
             "image": "https://news.am/storage/media/26/11/14/vKRNBaXpGxoPHWKZ.webp"
-          },
-          {
-            "title": "Տեղի է ունեցել փլուզում. փրկարարները քաղաքացուն անվնաս դուրս են բերել տնից",
-            "url": "https://news.am/hy/news/1074856",
-            "date": "2026-11-14T15:49:20.000Z",
-            "image": "https://news.am/storage/media/26/11/14/NLdx3d7i7sHht6FU.webp"
-          },
-          {
-            "title": "Դուբլինի կենտրոնում ինքնաշեն պայթուցիկ սարք են վնասազերծել այն վայրի մոտ, որտեղ ընթրել էին համաշխարհային առաջնորդները",
-            "url": "https://news.am/hy/news/1074853",
-            "date": "2026-11-14T15:31:17.000Z",
-            "image": "https://news.am/storage/media/26/11/14/8B5fGqpLGk3W61RG.webp"
-          },
-          {
-            "title": "Կոտայքի մարզում բախվել են «Nissan Tiida»-ն և «BMW X5»-ը․ 3 վիրավորներից երկուսն անչափահասներ են",
-            "url": "https://news.am/hy/news/1074824",
-            "date": "2026-11-14T12:51:04.000Z",
-            "image": "https://news.am/storage/media/26/11/14/VeqNTJZpCoOfUF58.webp"
           }
         ]
       },
@@ -11750,6 +11744,12 @@
         "categoryKey": "society",
         "label": "Հասարակություն",
         "articles": [
+          {
+            "title": "Այսօրվանից ձմեռային անվադողերով երթևեկելը պարտադիր պահանջ է",
+            "url": "https://news.am/hy/news/1074891",
+            "date": "2026-11-15T05:35:55.000Z",
+            "image": "https://news.am/storage/media/26/11/15/gtxorLJOchideqBF.webp"
+          },
           {
             "title": "Ֆրանսիայում բողոքի ցույցերը վերաճել են ոստիկանության հետ բախումների․ ձերբակալվել է 121 մարդ",
             "url": "https://news.am/hy/news/1074878",
@@ -11803,12 +11803,6 @@
             "url": "https://news.am/hy/news/1074238",
             "date": "2026-11-11T17:30:32.000Z",
             "image": "https://news.am/storage/media/26/11/11/AMKCD5qf7e7rfK9I.webp"
-          },
-          {
-            "title": "Ժամանակն է վախենալ այս մթնոլորտից. Վահե Հովհաննիսյան",
-            "url": "https://news.am/hy/news/1074064",
-            "date": "2026-11-11T07:12:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/fgA928pDzYm2Vlr2.webp"
           }
         ]
       },
@@ -11885,6 +11879,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Суд запретил администрации Трампа закрывать парк в Вашингтоне ради реконструкции гольф-поля",
+            "url": "https://news.am/ru/news/1074893",
+            "date": "2026-11-15T06:16:00.000Z",
+            "image": "https://news.am/storage/media/26/11/15/OGTrBqXJcNsFaavv.webp"
+          },
+          {
+            "title": "Пашинян присутствовал на церемонии открытия 20-го саммита МОФ",
+            "url": "https://news.am/ru/news/1074897",
+            "date": "2026-11-15T05:52:39.000Z",
+            "image": "https://news.am/storage/media/26/11/15/42V9OcIctdLbkVQd.webp"
+          },
+          {
             "title": "МИД РФ сообщил о подготовке российской делегации к саммиту G20 в Майами",
             "url": "https://news.am/ru/news/1074888",
             "date": "2026-11-15T05:15:20.000Z",
@@ -11931,18 +11937,6 @@
             "url": "https://news.am/ru/news/1074871",
             "date": "2026-11-14T19:10:00.000Z",
             "image": "https://news.am/storage/media/26/11/05/ABKBbdADkcNSuVch.webp"
-          },
-          {
-            "title": "В Варшаве осквернили два памятника лозунгом в честь УПА, виновной в массовых убийствах поляков",
-            "url": "https://news.am/ru/news/1074868",
-            "date": "2026-11-14T18:54:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/dGXHkMwFFmaoEgb8.webp"
-          },
-          {
-            "title": "Кадыров показал посетившему Чечню принцу Саудовской Аравии строящийся район имени Путина",
-            "url": "https://news.am/ru/news/1074864",
-            "date": "2026-11-14T18:24:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/1eeAKV6myr2JKXCI.webp"
           }
         ]
       },
@@ -12347,6 +12341,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Новом Орлеане подали иск после столкновения танкера с пассажирским судном: ущерб превысил $1 млн",
+            "url": "https://news.am/ru/news/1074892",
+            "date": "2026-11-15T06:01:00.000Z",
+            "image": "https://news.am/storage/media/26/11/15/ZZhBAVCk53fwNE8H.webp"
+          },
+          {
+            "title": "В Канаде умер пятый военнослужащий, пострадавший при пожаре во время учений",
+            "url": "https://news.am/ru/news/1074890",
+            "date": "2026-11-15T05:45:00.000Z",
+            "image": "https://news.am/storage/media/26/10/18/4hEuGoARQe4iJLP9.webp"
+          },
+          {
             "title": "В Индии мужчина погиб после взрыва во рту бомбы, замаскированной под сладость",
             "url": "https://news.am/ru/news/1074804",
             "date": "2026-11-15T02:54:00.000Z",
@@ -12393,18 +12399,6 @@
             "url": "https://news.am/ru/news/1074856",
             "date": "2026-11-14T15:49:20.000Z",
             "image": "https://news.am/storage/media/26/11/14/NLdx3d7i7sHht6FU.webp"
-          },
-          {
-            "title": "В центре Дублина обезвредили самодельное взрывное устройство рядом с местом, где ужинали мировые лидеры",
-            "url": "https://news.am/ru/news/1074853",
-            "date": "2026-11-14T15:31:17.000Z",
-            "image": "https://news.am/storage/media/26/11/14/8B5fGqpLGk3W61RG.webp"
-          },
-          {
-            "title": "ДТП в Котайкской области: двое из троих пострадавших - несовершеннолетние",
-            "url": "https://news.am/ru/news/1074824",
-            "date": "2026-11-14T12:51:00.000Z",
-            "image": "https://news.am/storage/media/26/11/14/VeqNTJZpCoOfUF58.webp"
           }
         ]
       },
@@ -12412,6 +12406,12 @@
         "categoryKey": "society",
         "label": "Общество",
         "articles": [
+          {
+            "title": "С сегодняшнего дня использование зимних шин обязательно",
+            "url": "https://news.am/ru/news/1074891",
+            "date": "2026-11-15T05:35:55.000Z",
+            "image": "https://news.am/storage/media/26/11/15/gtxorLJOchideqBF.webp"
+          },
           {
             "title": "Во Франции протесты переросли в столкновения с полицией: задержан 121 человек",
             "url": "https://news.am/ru/news/1074878",
@@ -12465,12 +12465,6 @@
             "url": "https://news.am/ru/news/1074238",
             "date": "2026-11-11T17:30:32.000Z",
             "image": "https://news.am/storage/media/26/11/11/AMKCD5qf7e7rfK9I.webp"
-          },
-          {
-            "title": "Эксперт: Приоритетом широкой консолидации в Армении должно стать приостановление работы судебно-правовой машины арестов",
-            "url": "https://news.am/ru/news/1074064",
-            "date": "2026-11-11T07:12:00.000Z",
-            "image": "https://news.am/storage/media/26/11/11/fgA928pDzYm2Vlr2.webp"
           }
         ]
       },
