@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T14:23:32.990Z",
+  "generatedAt": "2026-11-15T15:23:38.169Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Յեմենի կառավարական ուժերը նահանջել են Բաբ էլ-Մանդեբի նեղուցից՝ դիրքերը զիջելով հութիներին",
+            "url": "https://hy.armradio.am/archives/770806",
+            "date": "2026-11-15T14:57:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/QIP-Shot-Screen-3849-300x199.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Գաղտնի մանրամասներ, գերիների փոխանակում, ՆԱՏՕ-ի փոփոխվող ապագա․ ի՞նչ է փոխվում ռուս-ուկրաինական բանակցություններում",
             "url": "https://hy.armradio.am/archives/770774",
             "date": "2026-11-15T12:30:00.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/770630",
             "date": "2026-11-14T04:30:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_5987-768x432.jpeg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Եվրոպան Ռուսաստանի և Ուկրաինայի բանակցություններին կներգրավի ազգային անվտանգության հարցերով խորհրդականներին. Bloomberg",
-            "url": "https://hy.armradio.am/archives/770625",
-            "date": "2026-11-13T18:38:51.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/JgXw912LIzMg38Spg6zGWKQ8Uxo3qYhGoDaqd97q-768x403.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -4692,6 +4692,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Температура воздуха в республике понизится: ожидаются осадки",
+            "url": "https://armenpress.am/ru/article/1265703",
+            "date": "2026-11-15T14:36:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/15/sZpIBgVTyQXSTBnH2ciJVK0eJW5lAs2A98eeMEBw.webp"
+          },
+          {
             "title": "Премьер-министр посетил открывшийся в деревне Франкофонии павильон Армении",
             "url": "https://armenpress.am/ru/article/1265702",
             "date": "2026-11-15T13:05:00.000Z",
@@ -4744,12 +4750,6 @@
             "url": "https://armenpress.am/ru/article/1265693",
             "date": "2026-11-15T06:57:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/14/SJWEyXmv2CUBAbhZApKygp4aCohhpyHeJqrt88oz.webp"
-          },
-          {
-            "title": "Пашинян и Джайшанкар обсудили вопросы, касающиеся армяно-индийского сотрудничества",
-            "url": "https://armenpress.am/ru/article/1265684",
-            "date": "2026-11-14T14:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/14/3YrRDl0UQdcv4ifi3dIiwk1IHlDpS7FnzJ8nTGf9.webp"
           }
         ]
       },
@@ -6921,6 +6921,13 @@
       "label": "Armenia",
       "articles": [
         {
+          "title": "Anna Vardapetyan es elegida por unanimidad vicepresidenta de la Asociación Internacional de Fiscales en Buenos Aires",
+          "url": "https://soyarmenio.com/anna-vardapetyan-vicepresidenta-asociacion-internacional-fiscales/",
+          "date": "2026-11-15T15:16:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/anna-vardapetyan-vicepresidenta-768x512.jpg",
+          "rubric": "politique"
+        },
+        {
           "title": "La huella rusa de Tashir: contratos públicos cuestionados, litigios multimillonarios y activos prendados ante la banca estatal",
           "url": "https://soyarmenio.com/huella-rusa-tashir-contratos-multimillonarios/",
           "date": "2026-11-15T13:00:00.000Z",
@@ -6982,13 +6989,6 @@
           "date": "2026-11-14T18:30:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2023/11/Nikol-Pashinyan-y-Jensen-Huang.jpg",
           "rubric": "economie"
-        },
-        {
-          "title": "Nikol Pashinyan: el conflicto de Karabaj obstaculizó la soberanía de Armenia motivado por los rusos soviéticos",
-          "url": "https://soyarmenio.com/pashinyan-conflicto-karabaj-soberania-armenia/",
-          "date": "2026-11-14T18:00:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/karabaj-soberania-armenia-768x512.jpg",
-          "rubric": "politique"
         }
       ]
     },
@@ -11211,6 +11211,30 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Սաակաշվիլին հրաժարվել է աջակցել Վրաստանի հավաքականին՝ ֆուտբոլիստներին մեղադրելով քաղաքականացվածության և կոռուպցիայի մեջ",
+            "url": "https://news.am/hy/news/1074959",
+            "date": "2026-11-15T15:25:00.000Z",
+            "image": "https://news.am/storage/media/26/04/30/y3jUSJj8mKDUHULS.webp"
+          },
+          {
+            "title": "«Պատմական սպառնալիք». Ռուբիոն Իրանին մեղադրել է Մերձավոր Արևելքն ապակայունացնելու մեջ",
+            "url": "https://news.am/hy/news/1074979",
+            "date": "2026-11-15T15:07:31.000Z",
+            "image": "https://news.am/storage/media/26/10/07/wrRkvaMrML4YnO1M.webp"
+          },
+          {
+            "title": "Մոսկվայում ընթացող միջազգային համաժողովի ժամանակ չէի կարող չանդրադառնալ հրեշավոր ընտրակեղծիքներին. Արման Աբովյան",
+            "url": "https://news.am/hy/news/1074968",
+            "date": "2026-11-15T14:47:38.000Z",
+            "image": "https://news.am/storage/media/26/10/23/J0iiJ4z1T6nALuJY.webp"
+          },
+          {
+            "title": "Տասնյակ հազարավոր չեխեր բողոքի են դուրս եկել հանրային լրատվամիջոցների ֆինանսավորման կրճատման դեմ",
+            "url": "https://news.am/hy/news/1074966",
+            "date": "2026-11-15T14:36:47.000Z",
+            "image": "https://news.am/storage/media/26/11/15/how0KuTZYq3sqkVu.webp"
+          },
+          {
             "title": "«Ո՛չ պատերազմ, ո՛չ խաղաղություն». Իրանը կրկին ԱՄՆ-ից պահանջել է կատարել համաձայնության հասնելու յոթ պայմանները",
             "url": "https://news.am/hy/news/1074950",
             "date": "2026-11-15T14:09:00.000Z",
@@ -11245,30 +11269,6 @@
             "url": "https://news.am/hy/news/1074938",
             "date": "2026-11-15T12:07:00.000Z",
             "image": "https://news.am/storage/media/26/06/22/2BALROSvdclFXOTI.webp"
-          },
-          {
-            "title": "Պեսկով. Ռուսաստանն ուժով կհասնի Ուկրաինայում իր նպատակներին, եթե համաձայնության չգա Եվրոպայի հետ",
-            "url": "https://news.am/hy/news/1074934",
-            "date": "2026-11-15T11:36:00.000Z",
-            "image": "https://news.am/storage/media/26/05/29/3TlMo0F1TFEnjqDK.webp"
-          },
-          {
-            "title": "Հայաստանը Պաղեստինին խաղաղություն և բարգավաճում է մաղթել․ Իրանը շնորհակալություն է հայտնել",
-            "url": "https://news.am/hy/news/1074947",
-            "date": "2026-11-15T11:34:29.000Z",
-            "image": "https://news.am/storage/media/26/11/15/bCNgIfDR2wtM8dId.jfif"
-          },
-          {
-            "title": "Israel Hayom. «Մոսադը» ԿՀՎ-ին նախազգուշացրել է Թրամփի վրա ԱԹՍ-ներով Իրանի հնարավոր հարձակման մասին",
-            "url": "https://news.am/hy/news/1074931",
-            "date": "2026-11-15T11:21:00.000Z",
-            "image": "https://news.am/storage/media/26/10/30/MPmMjq1RksMXvad0.webp"
-          },
-          {
-            "title": "Ձյուդոյի օլիմպիական հնգակի չեմպիոն Թեդի Ռիները որոշել է առաջադրվել Ֆրանսիայի նախագահի պաշտոնում",
-            "url": "https://news.am/hy/news/1074926",
-            "date": "2026-11-15T10:50:00.000Z",
-            "image": "https://news.am/storage/media/26/11/15/MCnIyh9Zv4Bjeju2.webp"
           }
         ]
       },
@@ -11343,6 +11343,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Ազգերի լիգա․ Լատվիա - Հայաստան՝ առաջին խաղակեսում ոչ ոքի",
+            "url": "https://sport.news.am/arm/news/170275/",
+            "date": "2026-11-15T14:50:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170275.jpg"
+          },
+          {
             "title": "Ազգերի լիգա․ Հայաստանի հավաքականի մեկնարկային կազմը",
             "url": "https://sport.news.am/arm/news/170274/",
             "date": "2026-11-15T12:45:00.000Z",
@@ -11395,12 +11401,6 @@
             "url": "https://sport.news.am/arm/news/170265/",
             "date": "2026-11-14T17:02:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170265.jpg"
-          },
-          {
-            "title": "Եղիշե Մելիքյանի և Արթուր Սերոբյանի նախախաղային ասուլիսը Լատվիայում (տեսանյութ)",
-            "url": "https://sport.news.am/arm/news/170264/",
-            "date": "2026-11-14T16:48:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170264.jpg"
           }
         ]
       },
@@ -11873,6 +11873,30 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Саакашвили отказался поддерживать сборную Грузии, обвинив футболистов в политизации и коррупции",
+            "url": "https://news.am/ru/news/1074959",
+            "date": "2026-11-15T15:25:00.000Z",
+            "image": "https://news.am/storage/media/26/04/30/y3jUSJj8mKDUHULS.webp"
+          },
+          {
+            "title": "«Историческая угроза»: Рубио обвинил Иран в дестабилизации Ближнего Востока",
+            "url": "https://news.am/ru/news/1074979",
+            "date": "2026-11-15T15:07:31.000Z",
+            "image": "https://news.am/storage/media/26/10/07/wrRkvaMrML4YnO1M.webp"
+          },
+          {
+            "title": "Арман Абовян: На международном форуме в Москве я не мог не затронуть тему чудовищных фальсификаций на выборах",
+            "url": "https://news.am/ru/news/1074968",
+            "date": "2026-11-15T14:47:38.000Z",
+            "image": "https://news.am/storage/media/26/10/23/J0iiJ4z1T6nALuJY.webp"
+          },
+          {
+            "title": "Десятки тысяч чехов вышли на протест против сокращения финансирования общественных СМИ",
+            "url": "https://news.am/ru/news/1074966",
+            "date": "2026-11-15T14:36:47.000Z",
+            "image": "https://news.am/storage/media/26/11/15/how0KuTZYq3sqkVu.webp"
+          },
+          {
             "title": "«Ни войны, ни мира»: Иран вновь потребовал от США выполнения семи условий для соглашения",
             "url": "https://news.am/ru/news/1074950",
             "date": "2026-11-15T14:09:00.000Z",
@@ -11907,30 +11931,6 @@
             "url": "https://news.am/ru/news/1074938",
             "date": "2026-11-15T12:07:00.000Z",
             "image": "https://news.am/storage/media/26/06/22/2BALROSvdclFXOTI.webp"
-          },
-          {
-            "title": "Песков: Россия добьется своих целей на Украине силой, если не договорится с Европой",
-            "url": "https://news.am/ru/news/1074934",
-            "date": "2026-11-15T11:36:00.000Z",
-            "image": "https://news.am/storage/media/26/05/29/3TlMo0F1TFEnjqDK.webp"
-          },
-          {
-            "title": "Армения пожелала Палестине мира и процветания: Иран выразил благодарность",
-            "url": "https://news.am/ru/news/1074947",
-            "date": "2026-11-15T11:34:29.000Z",
-            "image": "https://news.am/storage/media/26/11/15/bCNgIfDR2wtM8dId.jfif"
-          },
-          {
-            "title": "Israel Hayom: «Моссад» предупредил ЦРУ о возможной атаке Ирана на Трампа с помощью беспилотников",
-            "url": "https://news.am/ru/news/1074931",
-            "date": "2026-11-15T11:21:00.000Z",
-            "image": "https://news.am/storage/media/26/10/30/MPmMjq1RksMXvad0.webp"
-          },
-          {
-            "title": "Пятикратный олимпийский чемпион по дзюдо Тедди Ринер решил баллотироваться в президенты Франции",
-            "url": "https://news.am/ru/news/1074926",
-            "date": "2026-11-15T10:50:00.000Z",
-            "image": "https://news.am/storage/media/26/11/15/MCnIyh9Zv4Bjeju2.webp"
           }
         ]
       },
@@ -12005,6 +12005,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Сборные Армении и Латвии не забили голов в первом тайме",
+            "url": "https://sport.news.am/rus/news/170275/",
+            "date": "2026-11-15T14:50:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170275.jpg"
+          },
+          {
             "title": "Лига наций: Назван стартовый состав сборной Армении",
             "url": "https://sport.news.am/rus/news/170274/",
             "date": "2026-11-15T12:45:00.000Z",
@@ -12057,12 +12063,6 @@
             "url": "https://sport.news.am/rus/news/170256/",
             "date": "2026-11-14T05:08:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170256.jpg"
-          },
-          {
-            "title": "Лига наций։ Победы Нидерландов и Германии, все результаты дня (видео)",
-            "url": "https://sport.news.am/rus/news/170258/",
-            "date": "2026-11-13T21:41:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170258.jpg"
           }
         ]
       },
@@ -12149,12 +12149,6 @@
             "image": "https://style.news.am/static/news/s/2026/11/117143.jpg"
           },
           {
-            "title": "Ким Кардашьян стала медсестрой Louis Vuitton",
-            "url": "https://style.news.am/rus/news/117151/",
-            "date": "2026-11-15T08:40:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117151.jpg"
-          },
-          {
             "title": "Армянский стиль в лицах: галстуки, кожа и модные правила, которые пора нарушить",
             "url": "https://style.news.am/rus/news/117141/",
             "date": "2026-11-15T08:39:00.000Z",
@@ -12195,6 +12189,12 @@
             "url": "https://style.news.am/rus/news/117136/",
             "date": "2026-11-14T11:14:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117136.jpg"
+          },
+          {
+            "title": "Бритни Спирс решила начать новую жизнь: певица готовит сюрприз, о котором мечтала более 20 лет",
+            "url": "https://style.news.am/rus/news/117135/",
+            "date": "2026-11-14T10:16:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117135.jpg"
           }
         ]
       },
