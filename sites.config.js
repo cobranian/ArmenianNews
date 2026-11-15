@@ -26,11 +26,12 @@ export const SITES = {
     // site renvoie aux siens : un lien du .ch vers les comptes anglais ferait
     // suivre au lecteur une marque qu'il ne lit pas. Facebook : l'adresse de
     // profil vers laquelle redirige l'id de Page de l'API (1301521739721369).
-    // Instagram RETIRÉ le 14 nov. 2026 : @armenieinfo_ch, _it, @armenianews_hy
-    // et _ru ont été piratés (détachés des Pages, plus à nous). Ne remettez
-    // aucun de ces quatre noms ; les nouveaux comptes viendront ici.
+    // Instagram ch/it/hy/ru RECRÉÉS le 15 nov. 2026, avec un POINT : les
+    // anciens (@armenieinfo_ch, _it, @armenianews_hy, _ru, tiret bas) ont été
+    // piratés le 14 nov. et ne sont plus à nous. Ne les remettez jamais.
     social: {
       facebook: 'https://www.facebook.com/61595719987355',
+      instagram: 'https://www.instagram.com/armenieinfo.ch/',
       bluesky: 'https://bsky.app/profile/armenieinfo.ch',
       telegram: 'https://t.me/armenieinfo_ch',
       whatsapp: 'https://whatsapp.com/channel/0029Vb90wT859PwWxvIZvr2z',
@@ -54,6 +55,7 @@ export const SITES = {
       },
       it: {
         facebook: 'https://www.facebook.com/61595804863665',
+        instagram: 'https://www.instagram.com/armenieinfo.it/',
         telegram: 'https://t.me/armenieinfo_it',
         whatsapp: 'https://whatsapp.com/channel/0029Vb9L8jsF6smuUOyG0N2n',
         bluesky: 'https://bsky.app/profile/it.armenieinfo.ch',
@@ -179,6 +181,7 @@ export const SITES = {
       },
       hy: {
         facebook: 'https://www.facebook.com/61596095491007',
+        instagram: 'https://www.instagram.com/armenianews.hy/',
         telegram: 'https://t.me/armenianews_hy',
         youtube: 'https://www.youtube.com/@armenianews-hy',
         whatsapp: 'https://whatsapp.com/channel/0029VbDTnRK6mYPSuckkko0s',
@@ -186,6 +189,7 @@ export const SITES = {
       },
       ru: {
         facebook: 'https://www.facebook.com/61596338480535',
+        instagram: 'https://www.instagram.com/armenianews.ru/',
         telegram: 'https://t.me/armenianews_ru',
         youtube: 'https://www.youtube.com/@armenianews-ru',
         whatsapp: 'https://whatsapp.com/channel/0029VbE1aLv11ulUZyEnvf0r',

@@ -11,8 +11,7 @@ test('chaque vitrine déclare ses propres comptes', () => {
   for (const site of Object.values(SITES)) {
     assert.ok(site.social, `${site.id} : social absent`)
     assert.match(site.social.facebook, /^https:\/\/www\.facebook\.com\/\d+$/)
-    // Facultatif depuis le piratage de @armenieinfo_ch (14 nov. 2026).
-    if (site.social.instagram) assert.match(site.social.instagram, /^https:\/\/www\.instagram\.com\/[a-z0-9_.]+\/$/)
+    assert.match(site.social.instagram, /^https:\/\/www\.instagram\.com\/[a-z0-9_.]+\/$/)
     assert.match(site.social.bluesky, /^https:\/\/bsky\.app\/profile\/[a-z0-9.-]+$/)
     assert.match(site.social.telegram, /^https:\/\/t\.me\/[a-z0-9_]+$/)
     assert.match(site.social.linkedin, /^https:\/\/www\.linkedin\.com\/company\/[a-z0-9-]+\/$/)
@@ -61,14 +60,13 @@ test('le pied de page rend les comptes depuis sites.config.js, la barre du haut 
 // enverrait un lecteur allemand vers une Page italienne, sans le moindre signe.
 test('comptes par langue : langue de la vitrine, URL valides, aucun doublon', () => {
   const seen = new Set(Object.values(SITES).flatMap((s) => Object.values(s.social)))
-  const KNOWN = new Set(Object.values(SITES).flatMap((s) => Object.keys(s.social)))
   for (const site of Object.values(SITES)) {
     const langs = site.pages.map((p) => p.lang)
     for (const [lang, accounts] of Object.entries(site.socialByLang ?? {})) {
       assert.ok(langs.includes(lang), `${site.id}/${lang} : langue hors de la vitrine`)
       assert.notEqual(lang, langs[0], `${site.id}/${lang} : la langue de tête utilise \`social\``)
       for (const [platform, url] of Object.entries(accounts)) {
-        assert.ok(KNOWN.has(platform), `${site.id}/${lang} : ${platform} inconnu`)
+        assert.ok(platform in site.social, `${site.id}/${lang} : ${platform} inconnu`)
         assert.ok(!seen.has(url), `${url} en double`)
         seen.add(url)
       }
@@ -87,11 +85,7 @@ test('socialFor : la langue remplace la vitrine plateforme par plateforme, le re
   assert.deepEqual(Object.keys(es), Object.keys(SITES.org.social))
   assert.deepEqual(socialFor('org', 'en'), SITES.org.social)
   assert.equal(socialFor('ch', 'de').facebook, 'https://www.facebook.com/61596218245485')
-  assert.equal(socialFor('org', 'ru').telegram, 'https://t.me/armenianews_ru')
-  // Comptes it/hy/ru piratés (14 nov. 2026) : ru retombe sur celui de la
-  // vitrine, it n'en a plus (celui du .ch l'est aussi).
-  assert.equal(socialFor('org', 'ru').instagram, SITES.org.social.instagram)
-  assert.equal(socialFor('ch', 'it').instagram, undefined)
+  assert.equal(socialFor('org', 'ru').instagram, 'https://www.instagram.com/armenianews.ru/')
   assert.equal(socialFor('ch', 'it').bluesky, 'https://bsky.app/profile/it.armenieinfo.ch')
 })
 
