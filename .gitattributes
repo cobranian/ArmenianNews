@@ -1,0 +1,14 @@
+# Fins de ligne : LF partout, y compris dans les copies de travail Windows.
+#
+# Sans cette règle, core.autocrlf=true (le défaut de Git pour Windows) sort les
+# sources en CRLF au poste de travail, et tout code qui recopie son propre
+# source en sort changé. Le cas qui l'a imposé : retourJs()
+# (scripts/lib/jeux-sync.mjs) recopie trois fonctions par Function#toString
+# dans public/play/retour.js. En CRLF, l'attendu portait des \r que le fichier
+# écrit en LF n'a pas : test/jeux-sync.test.mjs échouait à chaque `npm test`
+# local, vert en CI (Linux, LF). L'index était déjà tout en LF : cette règle
+# ne réécrit aucun fichier versionné, elle aligne le poste sur la CI.
+#
+# `text=auto` laisse Git reconnaître les binaires (images, polices, MP4) et
+# n'y touche pas.
+* text=auto eol=lf
