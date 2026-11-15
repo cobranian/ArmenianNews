@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T19:23:32.230Z",
+  "generatedAt": "2026-11-15T14:23:32.990Z",
   "switzerland": [
     {
       "title": "55e Grande Fête Arménienne",
@@ -36,6 +36,17 @@
         "hy",
         "ru"
       ]
+    },
+    {
+      "title": "Sergei Babayan — récital de piano, concert de clôture du Festival Ponticello",
+      "url": "https://www.ponticello.ch/",
+      "location": "Genève",
+      "date": "2026-11-22T17:00",
+      "rawDate": "NOV 22 17:00",
+      "image": "/agenda/babayan-geneve-2026-11-22.jpg",
+      "poster": "/agenda/babayan-geneve-2026-11-22-affiche.jpg",
+      "country": "switzerland",
+      "resumeLangs": []
     },
     {
       "title": "Ballet Sheherezade - Khachaturian, Korskakov",
@@ -162,834 +173,6 @@
   ],
   "world": [
     {
-      "title": "Armenchik live concert",
-      "url": "https://armenopole.com/armenchik-life-concert.html",
-      "location": "Grand-Est",
-      "date": "2026-11-11T18:30",
-      "rawDate": "NOV 11 18:30",
-      "image": "https://armenopole.com/images/events/armenchik-life-concert.jpg?v=67294",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "La cuisine des Arméniens à Paris 9è",
-      "url": "https://armenopole.com/la-cuisine-des-armeniens-a-paris-9e.html",
-      "location": "Île-de-France",
-      "date": "2026-11-11T18:30",
-      "rawDate": "NOV 11 18:30",
-      "image": "https://armenopole.com/images/events/la-cuisine-des-armeniens-a-paris-9e.jpg?v=83162",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Retreat Without Song",
-      "url": "https://armenopole.com/retreat-without-song.html",
-      "location": "California",
-      "date": "2026-11-11T19:30",
-      "rawDate": "NOV 11 19:30",
-      "image": "https://armenopole.com/images/events/retreat-without-song.jpg?v=70505",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Echoes of the Past, Voices of the Present - An in-conversation event with Maureen Freely, Andrew Finkel and Tamara Wilson",
-      "url": "https://armenopole.com/echoes-of-the-past-voices-of-the-present-an-in-conversation-event-with-maureen-freely-andrew-finkel-and-tamara-wilson.html",
-      "location": "Angleterre",
-      "date": "2026-11-12T18:30",
-      "rawDate": "NOV 12 18:30",
-      "image": "https://armenopole.com/images/events/echoes-of-the-past-voices-of-the-present-an-in-conversation-event-with-maureen-freely-andrew-finkel-and-tamara-wilson.jpg?v=139511",
-      "country": "unitedkingdom",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Strengthening Community Awareness and Response to Domestic Violence",
-      "url": "https://armenopole.com/strengthening-community-awareness-and-response-to-domestic-violence.html",
-      "location": "California",
-      "date": "2026-11-12T18:30",
-      "rawDate": "NOV 12 18:30",
-      "image": "https://armenopole.com/images/events/strengthening-community-awareness-and-response-to-domestic-violence.jpg?v=193034",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Beyond the Visible — A Solo Exhibition by Nune Shakhnazaryan",
-      "url": "https://armenopole.com/948mtwih.html",
-      "location": "California",
-      "date": "2026-11-12T18:30",
-      "rawDate": "NOV 12 18:30",
-      "image": "https://armenopole.com/images/events/948mtwih.jpg?v=133582",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Paint & Sip Night instructing Artist Garine Joukhajian",
-      "url": "https://armenopole.com/paint-sip-night-instructing-artist-garine-joukhajian.html",
-      "location": "California",
-      "date": "2026-11-12T19:00",
-      "rawDate": "NOV 12 19:00",
-      "image": "https://armenopole.com/images/events/paint-sip-night-instructing-artist-garine-joukhajian.jpg?v=112029",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Concert",
-      "url": "https://armenopole.com/concert-armenia.html",
-      "location": "Erevan",
-      "date": "2026-11-12T20:00",
-      "rawDate": "NOV 12 20:00",
-      "image": "https://armenopole.com/images/events/concert-armenia.jpg?v=124709",
-      "country": "armenia",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Camp d'Automne 2026",
-      "url": "https://armenopole.com/camp-d-automne-2026.html",
-      "location": "Bruxelles",
-      "date": "2026-11-13T00:00",
-      "rawDate": "NOV 13 0:00",
-      "image": "https://armenopole.com/images/events/camp-d-automne-2026.jpg?v=104369",
-      "country": "belgium",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Hayashen Community Lunch Club",
-      "url": "https://armenopole.com/hayashen-community-lunch-club-unitedkingdom-2026-11-13.html",
-      "location": "Angleterre",
-      "date": "2026-11-13T12:00",
-      "rawDate": "NOV 13 12:00",
-      "image": "https://armenopole.com/images/events/hayashen-community-lunch-club-unitedkingdom-2026-11-13.jpg?v=221053",
-      "country": "unitedkingdom",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Conférence sur la Légion d’Orient et la libération de la Cilicie, sur le thème de La Légion d’Orient et Les Tirailleurs Maghrébins",
-      "url": "https://armenopole.com/conference-sur-la-legion-d-orient-et-la-liberation-de-la-cilicie-sur-le-theme-de-la-legion-d-orient-et-les-tirailleurs-maghrebins.html",
-      "location": "Provence-Alpes-Côte-d’Azur",
-      "date": "2026-11-13T15:00",
-      "rawDate": "NOV 13 15:00",
-      "image": "https://armenopole.com/images/events/conference-sur-la-legion-d-orient-et-la-liberation-de-la-cilicie-sur-le-theme-de-la-legion-d-orient-et-les-tirailleurs-maghrebins.jpg?v=71354",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "In the Land of Arto",
-      "url": "https://armenopole.com/in-the-land-of-arto.html",
-      "location": "Beyrouth",
-      "date": "2026-11-13T17:00",
-      "rawDate": "NOV 13 17:00",
-      "image": "https://armenopole.com/images/events/in-the-land-of-arto.jpg?v=87028",
-      "country": "lebanon",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Hayashen Armenian Youth Club - Make your own slime!",
-      "url": "https://armenopole.com/hayashen-armenian-youth-club-make-your-own-slime.html",
-      "location": "Angleterre",
-      "date": "2026-11-13T17:30",
-      "rawDate": "NOV 13 17:30",
-      "image": "https://armenopole.com/images/events/hayashen-armenian-youth-club-make-your-own-slime.jpg?v=76700",
-      "country": "unitedkingdom",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Armenians in Film Fresno 2026",
-      "url": "https://armenopole.com/armenians-in-film-fresno-2026.html",
-      "location": "California",
-      "date": "2026-11-13T17:30",
-      "rawDate": "NOV 13 17:30",
-      "image": "https://armenopole.com/images/events/armenians-in-film-fresno-2026.jpg?v=103033",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Kebab Night with Drinks",
-      "url": "https://armenopole.com/kebab-night-with-drinks.html",
-      "location": "Nouvelle-Galles du Sud",
-      "date": "2026-11-13T18:00",
-      "rawDate": "NOV 13 18:00",
-      "image": "https://armenopole.com/images/events/kebab-night-with-drinks.jpg?v=151602",
-      "country": "australia",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "🎄✨ La magie de Noël s’invite au Marché des Fêtes ! ✨🎄",
-      "url": "https://armenopole.com/wrsu9xqg.html",
-      "location": "Québec",
-      "date": "2026-11-13T18:00",
-      "rawDate": "NOV 13 18:00",
-      "image": "https://armenopole.com/images/events/wrsu9xqg.jpg?v=149310",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Boston Child Care Event",
-      "url": "https://armenopole.com/boston-child-care-event.html",
-      "location": "Massachusetts",
-      "date": "2026-11-13T18:00",
-      "rawDate": "NOV 13 18:00",
-      "image": "https://armenopole.com/images/events/boston-child-care-event.jpg?v=127515",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Secrets of Armenia in Sydney",
-      "url": "https://armenopole.com/secrets-of-armenia-in-sydney.html",
-      "location": "Nouvelle-Galles du Sud",
-      "date": "2026-11-13T19:00",
-      "rawDate": "NOV 13 19:00",
-      "image": "https://armenopole.com/images/events/secrets-of-armenia-in-sydney.jpg?v=89248",
-      "country": "australia",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Art Exhibition - Sculptures by Megerditch Tarakdjian",
-      "url": "https://armenopole.com/art-exhibition-sculptures-by-megerditch-tarakdjian.html",
-      "location": "Québec",
-      "date": "2026-11-13T19:00",
-      "rawDate": "NOV 13 19:00",
-      "image": "https://armenopole.com/images/events/art-exhibition-sculptures-by-megerditch-tarakdjian.jpg?v=70640",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "An Autumn Evening",
-      "url": "https://armenopole.com/an-autumn-evening.html",
-      "location": "Nevada",
-      "date": "2026-11-13T19:00",
-      "rawDate": "NOV 13 19:00",
-      "image": "https://armenopole.com/images/events/an-autumn-evening.jpg?v=83802",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "A Perfect Match",
-      "url": "https://armenopole.com/a-perfect-match.html",
-      "location": "Colombie-Britannique",
-      "date": "2026-11-13T19:30",
-      "rawDate": "NOV 13 19:30",
-      "image": "https://armenopole.com/images/events/a-perfect-match.jpg?v=100461",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "The Naghash Ensemble of Armenia at Camp Concert Hall, Modlin Center for the Arts",
-      "url": "https://armenopole.com/the-naghash-ensemble-of-armenia-at-camp-concert-hall-modlin-center-for-the-arts.html",
-      "location": "Virginia",
-      "date": "2026-11-13T19:30",
-      "rawDate": "NOV 13 19:30",
-      "image": "https://armenopole.com/images/events/the-naghash-ensemble-of-armenia-at-camp-concert-hall-modlin-center-for-the-arts.jpg?v=111421",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Գոդոյին Սպասելիս",
-      "url": "https://armenopole.com/y1uxg6mt.html",
-      "location": "California",
-      "date": "2026-11-13T19:30",
-      "rawDate": "NOV 13 19:30",
-      "image": "https://armenopole.com/images/events/y1uxg6mt.jpg?v=137034",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Anouche",
-      "url": "https://armenopole.com/anouche.html",
-      "location": "Auvergne-Rhône-Alpes",
-      "date": "2026-11-13T20:00",
-      "rawDate": "NOV 13 20:00",
-      "image": "https://armenopole.com/images/events/anouche.jpg?v=101727",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "95e anniversaire de la consécration de la Cathédrale apostolique arménienne des Saints Traducteurs de Marseille",
-      "url": "https://armenopole.com/95e-anniversaire-de-la-consecration-de-la-cathedrale-apostolique-armenienne-des-saints-traducteurs-de-marseille.html",
-      "location": "Provence-Alpes-Côte-d’Azur",
-      "date": "2026-11-14T10:00",
-      "rawDate": "NOV 14 10:00",
-      "image": "https://armenopole.com/images/events/95e-anniversaire-de-la-consecration-de-la-cathedrale-apostolique-armenienne-des-saints-traducteurs-de-marseille.jpg?v=94224",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "POP-UP STORE SARDARAPAT FC",
-      "url": "https://armenopole.com/pop-up-store-sardarapat-fc.html",
-      "location": "Île-de-France",
-      "date": "2026-11-14T10:00",
-      "rawDate": "NOV 14 10:00",
-      "image": "https://armenopole.com/images/events/pop-up-store-sardarapat-fc.jpg?v=105713",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Vide Grenier",
-      "url": "https://armenopole.com/vide-grenier.html",
-      "location": "Île-de-France",
-      "date": "2026-11-14T10:30",
-      "rawDate": "NOV 14 10:30",
-      "image": "https://armenopole.com/images/events/vide-grenier.jpg?v=290886",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Visite guidée de la cathédrale arménienne à Paris",
-      "url": "https://armenopole.com/visite-guidee-de-la-cathedrale-armenienne-a-paris.html",
-      "location": "Île-de-France",
-      "date": "2026-11-14T10:30",
-      "rawDate": "NOV 14 10:30",
-      "image": "https://armenopole.com/images/events/visite-guidee-de-la-cathedrale-armenienne-a-paris.jpg?v=95938",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Salon du Livre Arménien - Marseille",
-      "url": "https://armenopole.com/salon-du-livre-armenien-marseille.html",
-      "location": "Provence-Alpes-Côte-d’Azur",
-      "date": "2026-11-14T11:00",
-      "rawDate": "NOV 14 11:00",
-      "image": "https://armenopole.com/images/events/salon-du-livre-armenien-marseille.jpg?v=56865",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Les Matins de l'art",
-      "url": "https://armenopole.com/les-matins-de-l-art.html",
-      "location": "Île-de-France",
-      "date": "2026-11-14T11:00",
-      "rawDate": "NOV 14 11:00",
-      "image": "https://armenopole.com/images/events/les-matins-de-l-art.jpg?v=126371",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Holy Archangels Annual Fall Bazaar",
-      "url": "https://armenopole.com/annual-fall-bazaar-usa.html",
-      "location": "Massachusetts",
-      "date": "2026-11-14T12:00",
-      "rawDate": "NOV 14 12:00",
-      "image": "https://armenopole.com/images/events/annual-fall-bazaar-usa.jpg?v=195160",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Orlando Armenian Annual Food Festival",
-      "url": "https://armenopole.com/orlando-armenian-annual-food-festival.html",
-      "location": "Floride",
-      "date": "2026-11-14T12:00",
-      "rawDate": "NOV 14 12:00",
-      "image": "https://armenopole.com/images/events/orlando-armenian-annual-food-festival.jpg?v=226452",
-      "country": "usa",
-      "resumeLangs": []
-    },
-    {
-      "title": "Hovhannes Toumanyan's \"Paregentan\" Theatrical Production",
-      "url": "https://armenopole.com/hovhannes-toumanyan-s-paregentan-theatrical-production.html",
-      "location": "New Jersey",
-      "date": "2026-11-14T12:00",
-      "rawDate": "NOV 14 12:00",
-      "image": "https://armenopole.com/images/events/hovhannes-toumanyan-s-paregentan-theatrical-production.jpg?v=192178",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Holiday Market",
-      "url": "https://armenopole.com/holiday-market.html",
-      "location": "New York",
-      "date": "2026-11-14T12:00",
-      "rawDate": "NOV 14 12:00",
-      "image": "https://armenopole.com/images/events/holiday-market.jpg?v=159773",
-      "country": "usa",
-      "resumeLangs": []
-    },
-    {
-      "title": "Armênia, por onde terra, montanhas",
-      "url": "https://armenopole.com/armenia-por-onde-terra-montanhas.html",
-      "location": "São Paulo",
-      "date": "2026-11-14T14:00",
-      "rawDate": "NOV 14 14:00",
-      "image": "https://armenopole.com/images/events/armenia-por-onde-terra-montanhas.jpg?v=63471",
-      "country": "brazil",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "La Roseraie de Garabed à Levallois",
-      "url": "https://armenopole.com/la-roseraie-de-garabed-a-levallois-france.html",
-      "location": "Île-de-France",
-      "date": "2026-11-14T14:00",
-      "rawDate": "NOV 14 14:00",
-      "image": "https://armenopole.com/images/events/la-roseraie-de-garabed-a-levallois-france.jpg?v=61732",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "A Masterclass by Karine Hovhannissyan",
-      "url": "https://armenopole.com/a-masterclass-by-karine-hovhannissyan.html",
-      "location": "Mont-Liban",
-      "date": "2026-11-14T14:00",
-      "rawDate": "NOV 14 14:00",
-      "image": "https://armenopole.com/images/events/a-masterclass-by-karine-hovhannissyan.jpg?v=75324",
-      "country": "lebanon",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Conférence \"L'Arménie, la francophonie au coeur\"",
-      "url": "https://armenopole.com/conference-l-armenie-la-francophonie-au-coeur.html",
-      "location": "Centre-Val de Loire",
-      "date": "2026-11-14T14:30",
-      "rawDate": "NOV 14 14:30",
-      "image": "https://armenopole.com/images/events/conference-l-armenie-la-francophonie-au-coeur.jpg?v=112320",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Double Bass Recital \"Schubertmiddag\"",
-      "url": "https://armenopole.com/double-bass-recital-schubertmiddag.html",
-      "location": "Hollande-Septentrionale",
-      "date": "2026-11-14T15:00",
-      "rawDate": "NOV 14 15:00",
-      "image": "https://armenopole.com/images/events/double-bass-recital-schubertmiddag.jpg?v=107057",
-      "country": "netherlands",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "De Gaulle - Part I: Resistance & Part II: Liberty",
-      "url": "https://armenopole.com/de-gaulle-part-i-resistance-part-ii-liberty.html",
-      "location": "California",
-      "date": "2026-11-14T17:00",
-      "rawDate": "NOV 14 17:00",
-      "image": "https://armenopole.com/images/events/de-gaulle-part-i-resistance-part-ii-liberty.jpg?v=59519",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Annual Gala Fundraiser",
-      "url": "https://armenopole.com/annual-gala-fundraiser-usa-2026-11-14.html",
-      "location": "California",
-      "date": "2026-11-14T17:30",
-      "rawDate": "NOV 14 17:30",
-      "image": "https://armenopole.com/images/events/annual-gala-fundraiser-usa-2026-11-14.jpg?v=82015",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy"
-      ]
-    },
-    {
-      "title": "Finissage TROCADANCE 14e édition ∞ Virginie Anouch Kechmanian, Révolution d'une poétesse",
-      "url": "https://armenopole.com/26dpn09d.html",
-      "location": "Provence-Alpes-Côte-d’Azur",
-      "date": "2026-11-14T18:00",
-      "rawDate": "NOV 14 18:00",
-      "image": "https://armenopole.com/images/events/26dpn09d.jpg?v=122966",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
-      "title": "Classical Music Concert",
-      "url": "https://armenopole.com/classical-music-concert.html",
-      "location": "Washington",
-      "date": "2026-11-14T18:00",
-      "rawDate": "NOV 14 18:00",
-      "image": "https://armenopole.com/images/events/classical-music-concert.jpg?v=78041",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Apéro Concert par Ani Arzumanyan",
-      "url": "https://armenopole.com/apero-concert-par-ani-arzumanyan.html",
-      "location": "Hauts-de-France",
-      "date": "2026-11-14T18:30",
-      "rawDate": "NOV 14 18:30",
-      "image": "https://armenopole.com/images/events/apero-concert-par-ani-arzumanyan.jpg?v=125886",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Yerevan Nights in Sydney",
-      "url": "https://armenopole.com/yerevan-nights-in-sydney-australia.html",
-      "location": "Nouvelle-Galles du Sud",
-      "date": "2026-11-14T19:00",
-      "rawDate": "NOV 14 19:00",
-      "image": "https://armenopole.com/images/events/yerevan-nights-in-sydney-australia.jpg?v=95641",
-      "country": "australia",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "ru"
-      ]
-    },
-    {
-      "title": "Bones in the Desert - Performance and Discussion with writer Joe Nerssessian, co-hosted by the Armenian Institute",
-      "url": "https://armenopole.com/bones-in-the-desert-performance-and-discussion-with-writer-joe-nerssessian-co-hosted-by-the-armenian-institute.html",
-      "location": "Angleterre",
-      "date": "2026-11-14T19:00",
-      "rawDate": "NOV 14 19:00",
-      "image": "https://armenopole.com/images/events/bones-in-the-desert-performance-and-discussion-with-writer-joe-nerssessian-co-hosted-by-the-armenian-institute.jpg?v=89307",
-      "country": "unitedkingdom",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Komitas: Arménie, Allemagne, Québec",
-      "url": "https://armenopole.com/komitas-armenie-allemagne-quebec.html",
-      "location": "Québec",
-      "date": "2026-11-14T19:30",
-      "rawDate": "NOV 14 19:30",
-      "image": "https://armenopole.com/images/events/komitas-armenie-allemagne-quebec.jpg?v=100495",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "ru"
-      ]
-    },
-    {
-      "title": "Գոդոյին Սպասելիս",
-      "url": "https://armenopole.com/nqac27ou.html",
-      "location": "California",
-      "date": "2026-11-14T19:30",
-      "rawDate": "NOV 14 19:30",
-      "image": "https://armenopole.com/images/events/nqac27ou.jpg?v=137015",
-      "country": "usa",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
       "title": "“¡Parev!”, la obra sobre la memoria armenia y los vínculos familiares, regresa con tres últimas funciones",
       "url": "https://www.diarioarmenia.org.ar/parev-la-obra-sobre-la-memoria-armenia-y-los-vinculos-familiares-regresa-con-tres-ultimas-funciones/",
       "location": "Argentine",
@@ -1000,112 +183,6 @@
       "resumeLangs": []
     },
     {
-      "title": "Dîner dansant amical",
-      "url": "https://armenopole.com/diner-dansant-amical.html",
-      "location": "Québec",
-      "date": "2026-11-14T20:00",
-      "rawDate": "NOV 14 20:00",
-      "image": "https://armenopole.com/images/events/diner-dansant-amical.jpg?v=76773",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Vahé Berberian - Payts",
-      "url": "https://armenopole.com/vahe-berberian-payts-3-dari-hedo.html",
-      "location": "Québec",
-      "date": "2026-11-14T20:00",
-      "rawDate": "NOV 14 20:00",
-      "image": "https://armenopole.com/images/events/vahe-berberian-payts-3-dari-hedo.jpg?v=114608",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "ru"
-      ]
-    },
-    {
-      "title": "L'Arche et le Château - Seul en Scène",
-      "url": "https://armenopole.com/l-arche-et-le-chateau-seul-en-scene.html",
-      "location": "Auvergne-Rhône-Alpes",
-      "date": "2026-11-14T20:00",
-      "rawDate": "NOV 14 20:00",
-      "image": "https://armenopole.com/images/events/l-arche-et-le-chateau-seul-en-scene.jpg?v=90539",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Cours Religieux",
-      "url": "https://armenopole.com/cours-religieux.html",
-      "location": "Provence-Alpes-Côte-d’Azur",
-      "date": "2026-11-14T20:00",
-      "rawDate": "NOV 14 20:00",
-      "image": "https://armenopole.com/images/events/cours-religieux.jpg?v=85690",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Concert KERAM",
-      "url": "https://armenopole.com/concert-keram-france.html",
-      "location": "Provence-Alpes-Côte-d’Azur",
-      "date": "2026-11-14T20:30",
-      "rawDate": "NOV 14 20:30",
-      "image": "https://armenopole.com/images/events/concert-keram-france.jpg?v=76600",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
-      "title": "Concert symphonique de l'Ensemble orchestral Eric Van Lauwe",
-      "url": "https://armenopole.com/concert-symphonique-de-l-ensemble-orchestral-eric-van-lauwe-france-2026-11-14.html",
-      "location": "Île-de-France",
-      "date": "2026-11-14T20:30",
-      "rawDate": "NOV 14 20:30",
-      "image": "https://armenopole.com/images/events/concert-symphonique-de-l-ensemble-orchestral-eric-van-lauwe-france-2026-11-14.jpg?v=99183",
-      "country": "france",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
       "title": "Breakfast Fundraising Event",
       "url": "https://armenopole.com/breakfast-fundraising-event.html",
       "location": "California",
@@ -1114,6 +191,24 @@
       "image": "https://armenopole.com/images/events/breakfast-fundraising-event.jpg?v=109354",
       "country": "usa",
       "resumeLangs": []
+    },
+    {
+      "title": "Breakfast Fundraising Event",
+      "url": "https://armenopole.com/breakfast-fundraising-event-usa.html",
+      "location": "California",
+      "date": "2026-11-15T10:00",
+      "rawDate": "NOV 15 10:00",
+      "image": "https://armenopole.com/images/events/breakfast-fundraising-event-usa.jpg?v=110042",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
     },
     {
       "title": "Madagh - Solemne Misa y Tradicional",
@@ -1232,6 +327,41 @@
       ]
     },
     {
+      "title": "Armenischer Gottesdienst",
+      "url": "https://armenopole.com/armenischer-gottesdienst.html",
+      "location": "Brême",
+      "date": "2026-11-15T13:00",
+      "rawDate": "NOV 15 13:00",
+      "image": "https://armenopole.com/images/events/armenischer-gottesdienst.jpg?v=148881",
+      "country": "germany",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "St. Sarkis Church Luncheon",
+      "url": "https://armenopole.com/st-sarkis-church-luncheon.html",
+      "location": "California",
+      "date": "2026-11-15T13:30",
+      "rawDate": "NOV 15 13:30",
+      "image": "https://armenopole.com/images/events/st-sarkis-church-luncheon.jpg?v=104884",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
       "title": "Culte Spécial - 180ème Anniversaire de l'Église Évangélique Arménienne",
       "url": "https://armenopole.com/culte-special-180eme-anniversaire-de-l-eglise-evangelique-armenienne.html",
       "location": "Bruxelles",
@@ -1286,6 +416,22 @@
       ]
     },
     {
+      "title": "Héritiers du génocide : entre silence et résilience",
+      "url": "https://armenopole.com/heritiers-du-genocide-entre-silence-et-resilience.html",
+      "location": "Auvergne-Rhône-Alpes",
+      "date": "2026-11-15T16:00",
+      "rawDate": "NOV 15 16:00",
+      "image": "https://armenopole.com/images/events/heritiers-du-genocide-entre-silence-et-resilience.jpg?v=82951",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "en",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Duduk-Konzert für den Frieden",
       "url": "https://armenopole.com/duduk-konzert-fur-den-frieden.html",
       "location": "Rhénanie-du-Nord-Westphalie",
@@ -1293,6 +439,59 @@
       "rawDate": "NOV 15 16:00",
       "image": "https://armenopole.com/images/events/duduk-konzert-fur-den-frieden.jpg?v=75098",
       "country": "germany",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Performance In Solo by Kariné Poghosyan",
+      "url": "https://armenopole.com/performance-in-solo-by-karine-poghosyan.html",
+      "location": "Massachusetts",
+      "date": "2026-11-15T16:00",
+      "rawDate": "NOV 15 16:00",
+      "image": "https://armenopole.com/images/events/performance-in-solo-by-karine-poghosyan.jpg?v=104678",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Kariné Poghosyan - Performance in Solo",
+      "url": "https://armenopole.com/karine-poghosyan-performance-in-solo.html",
+      "location": "Massachusetts",
+      "date": "2026-11-15T16:00",
+      "rawDate": "NOV 15 16:00",
+      "image": "https://armenopole.com/images/events/karine-poghosyan-performance-in-solo.jpg?v=83398",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Concert symphonique de l'Ensemble orchestral Eric Van Lauwe",
+      "url": "https://armenopole.com/concert-symphonique-de-l-ensemble-orchestral-eric-van-lauwe-france-2026-11-15.html",
+      "location": "Île-de-France",
+      "date": "2026-11-15T17:00",
+      "rawDate": "NOV 15 17:00",
+      "image": "https://armenopole.com/images/events/concert-symphonique-de-l-ensemble-orchestral-eric-van-lauwe-france-2026-11-15.jpg?v=99183",
+      "country": "france",
       "resumeLangs": [
         "fr",
         "de",
@@ -1340,6 +539,24 @@
       ]
     },
     {
+      "title": "Secrets of Armenia in Melbourne",
+      "url": "https://armenopole.com/secrets-of-armenia-in-melbourne.html",
+      "location": "Victoria",
+      "date": "2026-11-15T19:00",
+      "rawDate": "NOV 15 19:00",
+      "image": "https://armenopole.com/images/events/secrets-of-armenia-in-melbourne.jpg?v=90092",
+      "country": "australia",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Concert in London Celebration of Armenian Music",
       "url": "https://armenopole.com/kcca-concert-sperndiaryan-babajanian-achemyan-aivazyan.html",
       "location": "Angleterre",
@@ -1347,6 +564,24 @@
       "rawDate": "NOV 15 19:00",
       "image": "https://armenopole.com/images/events/kcca-concert-sperndiaryan-babajanian-achemyan-aivazyan.jpg?v=174865",
       "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "The Naghash Ensemble of Armenia at Stetson Chapel, Kalamazoo College",
+      "url": "https://armenopole.com/the-naghash-ensemble-of-armenia-at-stetson-chapel-kalamazoo-college.html",
+      "location": "Michigan",
+      "date": "2026-11-15T19:00",
+      "rawDate": "NOV 15 19:00",
+      "image": "https://armenopole.com/images/events/the-naghash-ensemble-of-armenia-at-stetson-chapel-kalamazoo-college.jpg?v=111922",
+      "country": "usa",
       "resumeLangs": [
         "fr",
         "de",
@@ -1410,6 +645,16 @@
         "hy",
         "ru"
       ]
+    },
+    {
+      "title": "Ազգագրական պարերու դասընթացք",
+      "url": "https://armenopole.com/wzcjy01n.html",
+      "location": "California",
+      "date": "2026-11-16T19:00",
+      "rawDate": "NOV 16 19:00",
+      "image": "https://armenopole.com/images/events/wzcjy01n.jpg?v=153789",
+      "country": "usa",
+      "resumeLangs": []
     },
     {
       "title": "La Bataille de Gaulle - L'âge de fer",
@@ -1494,6 +739,129 @@
       ]
     },
     {
+      "title": "Song and Dance Workshop with Hasmik Harutyunyan",
+      "url": "https://armenopole.com/song-and-dance-workshop-with-hasmik-harutyunyan-usa.html",
+      "location": "California",
+      "date": "2026-11-17T19:00",
+      "rawDate": "NOV 17 19:00",
+      "image": "https://armenopole.com/images/events/song-and-dance-workshop-with-hasmik-harutyunyan-usa.jpg?v=201573",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "The Naghash Ensemble of Armenia",
+      "url": "https://armenopole.com/the-naghash-ensemble-of-armenia-usa.html",
+      "location": "Washington",
+      "date": "2026-11-17T19:30",
+      "rawDate": "NOV 17 19:30",
+      "image": "https://armenopole.com/images/events/the-naghash-ensemble-of-armenia-usa.jpg?v=95349",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "The Naghash Ensemble of Armenia at Town Hall Seattle",
+      "url": "https://armenopole.com/the-naghash-ensemble-of-armenia-at-town-hall-seattle.html",
+      "location": "Washington",
+      "date": "2026-11-17T19:30",
+      "rawDate": "NOV 17 19:30",
+      "image": "https://armenopole.com/images/events/the-naghash-ensemble-of-armenia-at-town-hall-seattle.jpg?v=112698",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Les Dialogues d'Alfortville",
+      "url": "https://armenopole.com/les-dialogues-d-alfortville-france-2025-11-17.html",
+      "location": "Île-de-France",
+      "date": "2026-11-17T20:15",
+      "rawDate": "NOV 17 20:15",
+      "image": "https://armenopole.com/images/events/les-dialogues-d-alfortville-france-2025-11-17.jpg?v=82733",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Hearing & Reading Scripture Together: The Daily Program",
+      "url": "https://armenopole.com/hearing-reading-scripture-together-the-daily-program-usa-2026-11-2.html",
+      "location": "New York",
+      "date": "2026-11-18T12:30",
+      "rawDate": "NOV 18 12:30",
+      "image": "https://armenopole.com/images/events/hearing-reading-scripture-together-the-daily-program-usa-2026-11-2.jpg?v=89597",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Keron Impact Gala Paris 2026 - Uniting Lights for Armenia",
+      "url": "https://armenopole.com/keron-impact-gala-paris-2026-uniting-lights-for-armenia.html",
+      "location": "Île-de-France",
+      "date": "2026-11-18T18:30",
+      "rawDate": "NOV 18 18:30",
+      "image": "https://armenopole.com/images/events/keron-impact-gala-paris-2026-uniting-lights-for-armenia.jpg?v=84136",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Necla Kelek - Glückskind",
+      "url": "https://armenopole.com/necla-kelek-gluckskind.html",
+      "location": "Saxe",
+      "date": "2026-11-18T18:30",
+      "rawDate": "NOV 18 18:30",
+      "image": "https://armenopole.com/images/events/necla-kelek-gluckskind.jpg?v=86494",
+      "country": "germany",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Алексей Ракша. \"Прогнозы в эпоху неопределённости\"",
       "url": "https://armenopole.com/8evnh23n.html",
       "location": "Erevan",
@@ -1530,6 +898,41 @@
       ]
     },
     {
+      "title": "The Naghash Ensemble of Armenia at The Wallis, Beverly Hills",
+      "url": "https://armenopole.com/the-naghash-ensemble-of-armenia-at-the-wallis-beverly-hills.html",
+      "location": "California",
+      "date": "2026-11-18T19:30",
+      "rawDate": "NOV 18 19:30",
+      "image": "https://armenopole.com/images/events/the-naghash-ensemble-of-armenia-at-the-wallis-beverly-hills.jpg?v=111421",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "7-Part Bible Study Program on The First Epistle of John",
+      "url": "https://armenopole.com/the-first-epistle-of-john-usa.html",
+      "location": "New York",
+      "date": "2026-11-18T19:30",
+      "rawDate": "NOV 18 19:30",
+      "image": "https://armenopole.com/images/events/the-first-epistle-of-john-usa.jpg?v=77202",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
       "title": "El Consejo Nacional Armenio de Sudamérica convocó a un homenaje por los 20 años de la Ley 26.199 que reconoce el Genocidio Armenio en Argentina",
       "url": "https://www.diarioarmenia.org.ar/el-consejo-nacional-armenio-de-sudamerica-convoco-a-un-homenaje-por-los-20-anos-de-la-ley-26-199-que-reconoce-el-genocidio-armenio-en-argentina/",
       "location": "Argentine",
@@ -1538,6 +941,41 @@
       "image": "/da/06bdf87a38d5cf3a.webp",
       "country": "argentina",
       "resumeLangs": []
+    },
+    {
+      "title": "Phonéthon 2026",
+      "url": "https://armenopole.com/phonethon-2026.html",
+      "location": "Auvergne-Rhône-Alpes",
+      "date": "2026-11-19T00:00",
+      "rawDate": "NOV 19 0:00",
+      "image": "https://armenopole.com/images/events/phonethon-2026.jpg?v=167614",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "La bibliothèque et le survivant avec Boris Adjémian",
+      "url": "https://armenopole.com/la-bibliotheque-et-le-survivant-avec-boris-adjemian.html",
+      "location": "Auvergne-Rhône-Alpes",
+      "date": "2026-11-19T18:30",
+      "rawDate": "NOV 19 18:30",
+      "image": "https://armenopole.com/images/events/la-bibliotheque-et-le-survivant-avec-boris-adjemian.jpg?v=97920",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Armenia's House Museums on Screen: Parajanov, Charents and Aguletsi - Short Films Screening with their Director and Producer, Christopher Atamian",
@@ -1555,6 +993,40 @@
         "es",
         "hy",
         "ru"
+      ]
+    },
+    {
+      "title": "Desde el silencio a la calle y ahora al quirófano",
+      "url": "https://armenopole.com/desde-el-silencio-a-la-calle-y-ahora-al-quirofano.html",
+      "location": "Uruguay",
+      "date": "2026-11-19T19:00",
+      "rawDate": "NOV 19 19:00",
+      "image": "https://armenopole.com/images/events/desde-el-silencio-a-la-calle-y-ahora-al-quirofano.jpg?v=107570",
+      "country": "uruguay",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Concert JAZZ MAZZ - Louis Matute & Gabi Hartmann",
+      "url": "https://armenopole.com/concert-jazz-mazz-louis-matute-gabi-hartmann.html",
+      "location": "Île-de-France",
+      "date": "2026-11-19T19:30",
+      "rawDate": "NOV 19 19:30",
+      "image": "https://armenopole.com/images/events/concert-jazz-mazz-louis-matute-gabi-hartmann.jpg?v=155438",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es"
       ]
     },
     {
@@ -1576,6 +1048,24 @@
       ]
     },
     {
+      "title": "A Talk with diasporan writer Maroush Yeramian",
+      "url": "https://armenopole.com/a-talk-with-diasporan-writer-maroush-yeramian.html",
+      "location": "California",
+      "date": "2026-11-19T20:00",
+      "rawDate": "NOV 19 20:00",
+      "image": "https://armenopole.com/images/events/a-talk-with-diasporan-writer-maroush-yeramian.jpg?v=58983",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "El Conjunto Masís presentará su Festival de Danzas Armenias en el Teatro Avenida",
       "url": "https://www.diarioarmenia.org.ar/el-conjunto-masis-presentara-su-festival-de-danzas-armenias-en-el-teatro-avenida/",
       "location": "Argentine",
@@ -1584,6 +1074,23 @@
       "image": "/da/3783d9152b73cc5e.webp",
       "country": "argentina",
       "resumeLangs": []
+    },
+    {
+      "title": "La voce del popolo armeno",
+      "url": "https://armenopole.com/la-voce-del-popolo-armeno.html",
+      "location": "Émilie-Romagne",
+      "date": "2026-11-19T21:00",
+      "rawDate": "NOV 19 21:00",
+      "image": "https://armenopole.com/images/events/la-voce-del-popolo-armeno.jpg?v=77605",
+      "country": "italy",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy"
+      ]
     },
     {
       "title": "UGAB Buenos Aires organizará una “Mesaza” con empresarios e industriales de origen armenio",
@@ -1603,6 +1110,41 @@
       "rawDate": "NOV 20 12:00",
       "image": "https://armenopole.com/images/events/hayashen-community-lunch-club-unitedkingdom-2026-11-20.jpg?v=221053",
       "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Golden Gate Armenian Film Festival 3rd edition",
+      "url": "https://armenopole.com/golden-gate-armenian-film-festival-3rd-edition.html",
+      "location": "California",
+      "date": "2026-11-20T12:00",
+      "rawDate": "NOV 20 12:00",
+      "image": "https://armenopole.com/images/events/golden-gate-armenian-film-festival-3rd-edition.jpg?v=244556",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Armenian Food Festival",
+      "url": "https://armenopole.com/armenian-food-festival-usa-2026-11-20.html",
+      "location": "Massachusetts",
+      "date": "2026-11-20T16:00",
+      "rawDate": "NOV 20 16:00",
+      "image": "https://armenopole.com/images/events/armenian-food-festival-usa-2026-11-20.jpg?v=127527",
+      "country": "usa",
       "resumeLangs": [
         "fr",
         "de",
@@ -1649,6 +1191,40 @@
       ]
     },
     {
+      "title": "Exil au Féminin - festival littéraire et artistique participatif",
+      "url": "https://armenopole.com/exil-au-feminin-festival-litteraire-et-artistique-participatif.html",
+      "location": "Bretagne",
+      "date": "2026-11-20T19:00",
+      "rawDate": "NOV 20 19:00",
+      "image": "https://armenopole.com/images/events/exil-au-feminin-festival-litteraire-et-artistique-participatif.jpg?v=101052",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Conférence exceptionnelle de Haïk Der Haroutounian",
+      "url": "https://armenopole.com/conference-exceptionnelle-de-haik-der-haroutounian.html",
+      "location": "Île-de-France",
+      "date": "2026-11-20T19:00",
+      "rawDate": "NOV 20 19:00",
+      "image": "https://armenopole.com/images/events/conference-exceptionnelle-de-haik-der-haroutounian.jpg?v=73761",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
       "title": "Armenians in Film Milan 2026",
       "url": "https://armenopole.com/armenians-in-film-milan-2026.html",
       "location": "Lombardie",
@@ -1667,6 +1243,23 @@
       ]
     },
     {
+      "title": "Récital de piano Nicolas Mazmanian Pianimaginary",
+      "url": "https://armenopole.com/recital-de-piano-nicolas-mazmanian-pianimaginary-france.html",
+      "location": "Île-de-France",
+      "date": "2026-11-20T19:30",
+      "rawDate": "NOV 20 19:30",
+      "image": "https://armenopole.com/images/events/recital-de-piano-nicolas-mazmanian-pianimaginary-france.jpg?v=166897",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
       "title": "Arus Adjemian - Piano Concert",
       "url": "https://armenopole.com/arus-adjemian-piano-concert.html",
       "location": "Rhénanie-du-Nord-Westphalie",
@@ -1680,6 +1273,42 @@
         "it",
         "en",
         "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Hovhannes Davtyan stand-up / Improviz",
+      "url": "https://armenopole.com/hovhannes-davtyan-stand-up-improviz.html",
+      "location": "Massachusetts",
+      "date": "2026-11-20T19:30",
+      "rawDate": "NOV 20 19:30",
+      "image": "https://armenopole.com/images/events/hovhannes-davtyan-stand-up-improviz.jpg?v=64429",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "90's Night at Watertown Yacht Club",
+      "url": "https://armenopole.com/90-s-night-at-watertown-yacht-club.html",
+      "location": "Massachusetts",
+      "date": "2026-11-20T19:30",
+      "rawDate": "NOV 20 19:30",
+      "image": "https://armenopole.com/images/events/90-s-night-at-watertown-yacht-club.jpg?v=184004",
+      "country": "usa",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
         "ru"
       ]
     },
@@ -1718,6 +1347,76 @@
       ]
     },
     {
+      "title": "Dégustation du Beaujolais Nouveau",
+      "url": "https://armenopole.com/degustation-du-beaujolais-nouveau-france-2026-11-20.html",
+      "location": "Île-de-France",
+      "date": "2026-11-20T20:00",
+      "rawDate": "NOV 20 20:00",
+      "image": "https://armenopole.com/images/events/degustation-du-beaujolais-nouveau-france-2026-11-20.jpg?v=218585",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Tigran Hamasyan",
+      "url": "https://armenopole.com/tigran-hamasyan-france-2026-11-20.html",
+      "location": "Île-de-France",
+      "date": "2026-11-20T20:30",
+      "rawDate": "NOV 20 20:30",
+      "image": "https://armenopole.com/images/events/tigran-hamasyan-france-2026-11-20.jpg?v=73926",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "La cuisine des Arméniens — Recettes et histoires de la diaspora à travers le monde",
+      "url": "https://armenopole.com/cepyca34.html",
+      "location": "Île-de-France",
+      "date": "2026-11-20T20:30",
+      "rawDate": "NOV 20 20:30",
+      "image": "https://armenopole.com/images/events/cepyca34.jpg?v=101266",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "RAP'PHONY ou quand le Rap se fait Symphonique",
+      "url": "https://armenopole.com/rap-phony-ou-quand-le-rap-se-fait-symphonique.html",
+      "location": "Île-de-France",
+      "date": "2026-11-20T20:30",
+      "rawDate": "NOV 20 20:30",
+      "image": "https://armenopole.com/images/events/rap-phony-ou-quand-le-rap-se-fait-symphonique.jpg?v=114391",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Concert tour Italy",
       "url": "https://armenopole.com/concert-tour-italy.html",
       "location": "Italie",
@@ -1726,6 +1425,76 @@
       "image": "https://armenopole.com/images/events/concert-tour-italy.jpg?v=119083",
       "country": "italy",
       "resumeLangs": []
+    },
+    {
+      "title": "Tribute to Armenian & Lebanese Music",
+      "url": "https://armenopole.com/tribute-to-armenian-lebanese-music.html",
+      "location": "Beyrouth",
+      "date": "2026-11-20T20:30",
+      "rawDate": "NOV 20 20:30",
+      "image": "https://armenopole.com/images/events/tribute-to-armenian-lebanese-music.jpg?v=69048",
+      "country": "lebanon",
+      "resumeLangs": [
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "La cuisine des Arméniens à Décines",
+      "url": "https://armenopole.com/la-cuisine-des-armeniens-a-decines.html",
+      "location": "Auvergne-Rhône-Alpes",
+      "date": "2026-11-21T10:00",
+      "rawDate": "NOV 21 10:00",
+      "image": "https://armenopole.com/images/events/la-cuisine-des-armeniens-a-decines.jpg?v=60835",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Journée du livre",
+      "url": "https://armenopole.com/journee-du-livre-france-2026-11-21.html",
+      "location": "Île-de-France",
+      "date": "2026-11-21T10:00",
+      "rawDate": "NOV 21 10:00",
+      "image": "https://armenopole.com/images/events/journee-du-livre-france-2026-11-21.jpg?v=126459",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "La Cuisine des Arméniens à Aubagne",
+      "url": "https://armenopole.com/la-cuisine-des-armeniens-a-aubagne.html",
+      "location": "Provence-Alpes-Côte-d’Azur",
+      "date": "2026-11-21T10:30",
+      "rawDate": "NOV 21 10:30",
+      "image": "https://armenopole.com/images/events/la-cuisine-des-armeniens-a-aubagne.jpg?v=60759",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
     },
     {
       "title": "Homenetmen Buenos Aires organizará una jornada de encuentros deportivos formativos para niños de 5 a 12 años",
@@ -1746,6 +1515,42 @@
       "image": "https://armenopole.com/images/events/yearly-bazar.jpg?v=108035",
       "country": "canada",
       "resumeLangs": []
+    },
+    {
+      "title": "Cérémonie officielle de commémoration - Wagon des déportés - Margny-lès-Compiègne",
+      "url": "https://armenopole.com/ceremonie-officielle-de-commemoration-wagon-des-deportes-margny-les-compiegne.html",
+      "location": "Île-de-France",
+      "date": "2026-11-21T11:00",
+      "rawDate": "NOV 21 11:00",
+      "image": "https://armenopole.com/images/events/ceremonie-officielle-de-commemoration-wagon-des-deportes-margny-les-compiegne.jpg?v=163225",
+      "country": "france",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Listening Inwards",
+      "url": "https://armenopole.com/listening-inwards.html",
+      "location": "Angleterre",
+      "date": "2026-11-21T14:00",
+      "rawDate": "NOV 21 14:00",
+      "image": "https://armenopole.com/images/events/listening-inwards.jpg?v=128470",
+      "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
     },
     {
       "title": "Սուրբ Պատարագ - Divine Liturgy",
@@ -1838,16 +1643,6 @@
       ]
     },
     {
-      "title": "AGBU 120th Anniversary",
-      "url": "https://armenopole.com/agbu-120th-anniversary.html",
-      "location": "Nouvelle-Galles du Sud",
-      "date": "2026-11-21T19:00",
-      "rawDate": "NOV 21 19:00",
-      "image": "https://armenopole.com/images/events/agbu-120th-anniversary.jpg?v=139397",
-      "country": "australia",
-      "resumeLangs": []
-    },
-    {
       "title": "AGBU 120th Anniversary Celebration",
       "url": "https://armenopole.com/agbu-120th-anniversary-celebration.html",
       "location": "Nouvelle-Galles du Sud",
@@ -1914,6 +1709,23 @@
         "en",
         "es",
         "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Tribute to American & Armenian Composers",
+      "url": "https://armenopole.com/tribute-to-american-armenian-composers.html",
+      "location": "Beyrouth",
+      "date": "2026-11-21T20:30",
+      "rawDate": "NOV 21 20:30",
+      "image": "https://armenopole.com/images/events/tribute-to-american-armenian-composers.jpg?v=73614",
+      "country": "lebanon",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
         "ru"
       ]
     },
@@ -2016,24 +1828,6 @@
       ]
     },
     {
-      "title": "DUO RECITAL — Piano & Saxophone",
-      "url": "https://armenopole.com/8xig2nf4.html",
-      "location": "Erevan",
-      "date": "2026-11-24T19:00",
-      "rawDate": "NOV 24 19:00",
-      "image": "https://armenopole.com/images/events/8xig2nf4.jpg?v=83865",
-      "country": "armenia",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
       "title": "Book Talk : The Long Dark Night of K. Levonovich",
       "url": "https://armenopole.com/book-talk-the-long-dark-night-of-k-levonovich.html",
       "location": "Québec",
@@ -2088,14 +1882,21 @@
       ]
     },
     {
-      "title": "Arshag Chobanian 155",
-      "url": "https://armenopole.com/arshag-chobanian-155.html",
-      "location": "Nouvelle-Galles du Sud",
-      "date": "2026-11-25T19:00",
-      "rawDate": "NOV 25 19:00",
-      "image": "https://armenopole.com/images/events/arshag-chobanian-155.jpg?v=149729",
-      "country": "australia",
-      "resumeLangs": []
+      "title": "Armen-Levon Manaseryan",
+      "url": "https://armenopole.com/armen-levon-manaseryan.html",
+      "location": "Rhénanie-du-Nord-Westphalie",
+      "date": "2026-11-25T19:30",
+      "rawDate": "NOV 25 19:30",
+      "image": "https://armenopole.com/images/events/armen-levon-manaseryan.jpg?v=62356",
+      "country": "germany",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Մոցարտ 270",
@@ -2170,24 +1971,6 @@
       ]
     },
     {
-      "title": "Exhibition of Marine Zuloyan",
-      "url": "https://armenopole.com/exhibition-of-marine-zuloyan.html",
-      "location": "Québec",
-      "date": "2026-11-27T18:00",
-      "rawDate": "NOV 27 18:00",
-      "image": "https://armenopole.com/images/events/exhibition-of-marine-zuloyan.jpg?v=101868",
-      "country": "canada",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "hy",
-        "ru"
-      ]
-    },
-    {
       "title": "Avetis Khachatrian - Theatre of Emotions",
       "url": "https://armenopole.com/avetis-khachatrian-theatre-of-emotions.html",
       "location": "Beyrouth",
@@ -2196,6 +1979,23 @@
       "image": "https://armenopole.com/images/events/avetis-khachatrian-theatre-of-emotions.jpg?v=106394",
       "country": "lebanon",
       "resumeLangs": []
+    },
+    {
+      "title": "Ottoman Armenians: Life, Culture, Society, Vol. II",
+      "url": "https://armenopole.com/ottoman-armenians-life-culture-society-vol-ii.html",
+      "location": "Beyrouth",
+      "date": "2026-11-27T18:00",
+      "rawDate": "NOV 27 18:00",
+      "image": "https://armenopole.com/images/events/ottoman-armenians-life-culture-society-vol-ii.jpg?v=88425",
+      "country": "lebanon",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "AGBU 120th Anniversary November Meal Night",
@@ -2221,6 +2021,40 @@
       "date": "2026-11-27T19:00",
       "rawDate": "NOV 27 19:00",
       "image": "https://armenopole.com/images/events/christmas-ladies-night-canada.jpg?v=95035",
+      "country": "canada",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Exposition Personelle de l'artiste Meruzhan Khachatryan",
+      "url": "https://armenopole.com/exposition-personelle-de-l-artiste-meruzhan-khachatryan.html",
+      "location": "Québec",
+      "date": "2026-11-27T19:30",
+      "rawDate": "NOV 27 19:30",
+      "image": "https://armenopole.com/images/events/exposition-personelle-de-l-artiste-meruzhan-khachatryan.jpg?v=133638",
+      "country": "canada",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Exhibition of Marine Zuloyan",
+      "url": "https://armenopole.com/exhibition-of-marine-zuloyan-canada.html",
+      "location": "Québec",
+      "date": "2026-11-27T20:00",
+      "rawDate": "NOV 27 20:00",
+      "image": "https://armenopole.com/images/events/exhibition-of-marine-zuloyan-canada.jpg?v=102586",
       "country": "canada",
       "resumeLangs": [
         "fr",
@@ -2357,6 +2191,24 @@
       ]
     },
     {
+      "title": "AZNAVOUR UND ICH",
+      "url": "https://armenopole.com/aznavour-und-ich.html",
+      "location": "Autriche",
+      "date": "2026-11-28T19:00",
+      "rawDate": "NOV 28 19:00",
+      "image": "https://armenopole.com/images/events/aznavour-und-ich.jpg?v=154871",
+      "country": "austria",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "A spectacular concert by Serouj Kradjian and Band to celebrate AGBU's 120th Anniversary",
       "url": "https://armenopole.com/a-spectacular-concert-by-serouj-kradjian-and-band-to-celebrate-agbu-s-120th-anniversary.html",
       "location": "Ontario",
@@ -2467,6 +2319,24 @@
       ]
     },
     {
+      "title": "Wine Tasting",
+      "url": "https://armenopole.com/wine-tasting-canada-2026-11-29.html",
+      "location": "Ontario",
+      "date": "2026-11-29T14:00",
+      "rawDate": "NOV 29 14:00",
+      "image": "https://armenopole.com/images/events/wine-tasting-canada-2026-11-29.jpg?v=78290",
+      "country": "canada",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Christmas Party",
       "url": "https://armenopole.com/christmas-party-australia-2026-11-29.html",
       "location": "Nouvelle-Galles du Sud",
@@ -2474,6 +2344,24 @@
       "rawDate": "NOV 29 18:00",
       "image": "https://armenopole.com/images/events/christmas-party-australia-2026-11-29.jpg?v=123912",
       "country": "australia",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Documentary screening",
+      "url": "https://armenopole.com/documentary-screening.html",
+      "location": "Québec",
+      "date": "2026-11-29T18:30",
+      "rawDate": "NOV 29 18:30",
+      "image": "https://armenopole.com/images/events/documentary-screening.jpg?v=157428",
+      "country": "canada",
       "resumeLangs": [
         "fr",
         "de",
@@ -2505,7 +2393,7 @@
     {
       "title": "Agulis Pigments - Terre naturali dall'Armenia",
       "url": "https://armenopole.com/agulis-pigments-terre-naturali-dall-armenia.html",
-      "location": "Italie",
+      "location": "Latium",
       "date": "2026-11-30T15:00",
       "rawDate": "NOV 30 15:00",
       "image": "https://armenopole.com/images/events/agulis-pigments-terre-naturali-dall-armenia.jpg?v=85520",
@@ -2609,7 +2497,7 @@
       ]
     },
     {
-      "title": "CHRISTAMS BAZAAR",
+      "title": "Christmas Bazaar",
       "url": "https://armenopole.com/christams-bazaar.html",
       "location": "Mont-Liban",
       "date": "2026-12-04T10:00",
@@ -2654,6 +2542,121 @@
       "resumeLangs": []
     },
     {
+      "title": "Annual Bazar",
+      "url": "https://armenopole.com/annual-bazar-canada-2027-1-5.html",
+      "location": "Québec",
+      "date": "2026-12-05T10:00",
+      "rawDate": "DÉC 5 10:00",
+      "image": "https://armenopole.com/images/events/annual-bazar-canada-2027-1-5.jpg?v=81738",
+      "country": "canada",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Christmas Event",
+      "url": "https://armenopole.com/christmas-event-uae.html",
+      "location": "Émirats arabes unis",
+      "date": "2026-12-05T16:00",
+      "rawDate": "DÉC 5 16:00",
+      "image": "https://armenopole.com/images/events/christmas-event-uae.jpg?v=104031",
+      "country": "uae",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Holiday Cheer Suite Life",
+      "url": "https://armenopole.com/holiday-cheer-suite-life.html",
+      "location": "Ontario",
+      "date": "2026-12-05T19:30",
+      "rawDate": "DÉC 5 19:30",
+      "image": "https://armenopole.com/images/events/holiday-cheer-suite-life.jpg?v=120921",
+      "country": "canada",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Julmarknad på Hay Doun",
+      "url": "https://armenopole.com/julmarknad-pa-hay-doun.html",
+      "location": "Suède",
+      "date": "2026-12-06T11:00",
+      "rawDate": "DÉC 6 11:00",
+      "image": "https://armenopole.com/images/events/julmarknad-pa-hay-doun.jpg?v=96128",
+      "country": "sweden",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Soirée Cocktail Artistique",
+      "url": "https://armenopole.com/soiree-cocktail-artistique-canada.html",
+      "location": "Québec",
+      "date": "2026-12-06T19:00",
+      "rawDate": "DÉC 6 19:00",
+      "image": "https://armenopole.com/images/events/soiree-cocktail-artistique-canada.jpg?v=69048",
+      "country": "canada",
+      "resumeLangs": []
+    },
+    {
+      "title": "Art exhibition",
+      "url": "https://armenopole.com/art-exhibition-unitedkingdom.html",
+      "location": "Angleterre",
+      "date": "2026-12-07T08:00",
+      "rawDate": "DÉC 7 8:00",
+      "image": "https://armenopole.com/images/events/art-exhibition-unitedkingdom.jpg?v=113225",
+      "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
+      "title": "Children’s Christmas Party",
+      "url": "https://armenopole.com/children-s-christmas-party-unitedkingdom-2026-12-10.html",
+      "location": "Angleterre",
+      "date": "2026-12-10T10:00",
+      "rawDate": "DÉC 10 10:00",
+      "image": "https://armenopole.com/images/events/children-s-christmas-party-unitedkingdom-2026-12-10.jpg?v=136832",
+      "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Guy Manoukian",
       "url": "https://armenopole.com/guy-manoukian-uae.html",
       "location": "Émirats arabes unis",
@@ -2664,6 +2667,23 @@
       "resumeLangs": []
     },
     {
+      "title": "Armenian Senior Citizens Christmas Party",
+      "url": "https://armenopole.com/armenian-senior-citizens-christmas-party-unitedkingdom-2026-12-11.html",
+      "location": "Angleterre",
+      "date": "2026-12-11T13:00",
+      "rawDate": "DÉC 11 13:00",
+      "image": "https://armenopole.com/images/events/armenian-senior-citizens-christmas-party-unitedkingdom-2026-12-11.jpg?v=110993",
+      "country": "unitedkingdom",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
+    },
+    {
       "title": "Armenian Traditional Christmas Bazaar",
       "url": "https://armenopole.com/armenian-traditional-christmas-bazaar-lebanon-2025-12-11.html",
       "location": "Mont-Liban",
@@ -2671,7 +2691,14 @@
       "rawDate": "DÉC 11 18:00",
       "image": "https://armenopole.com/images/events/armenian-traditional-christmas-bazaar-lebanon-2025-12-11.jpg?v=124151",
       "country": "lebanon",
-      "resumeLangs": []
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Kerstmarkt Dusseldorf",
@@ -2724,6 +2751,23 @@
         "en",
         "es",
         "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Deutsch-Armenische 15. Jubiläumskonzertreihe",
+      "url": "https://armenopole.com/deutsch-armenische-15-jubilaumskonzertreihe-germany.html",
+      "location": "Baden-Wurtemberg",
+      "date": "2026-12-13T18:00",
+      "rawDate": "DÉC 13 18:00",
+      "image": "https://armenopole.com/images/events/deutsch-armenische-15-jubilaumskonzertreihe-germany.jpg?v=104795",
+      "country": "germany",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
         "ru"
       ]
     },
@@ -2783,6 +2827,42 @@
       "resumeLangs": []
     },
     {
+      "title": "Schaaksimultaan voor De Warmste Week",
+      "url": "https://armenopole.com/schaaksimultaan-voor-de-warmste-week.html",
+      "location": "Belgique",
+      "date": "2026-12-20T14:00",
+      "rawDate": "DÉC 20 14:00",
+      "image": "https://armenopole.com/images/events/schaaksimultaan-voor-de-warmste-week.jpg?v=88590",
+      "country": "belgium",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "Family Christmas Concert",
+      "url": "https://armenopole.com/family-christmas-concert.html",
+      "location": "Erevan",
+      "date": "2026-12-25T19:00",
+      "rawDate": "DÉC 25 19:00",
+      "image": "https://armenopole.com/images/events/family-christmas-concert.jpg?v=89026",
+      "country": "armenia",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "Koko Asayan - Weihnachtsfeier",
       "url": "https://armenopole.com/koko-asayan-weihnachtsfeier.html",
       "location": "Rhénanie-du-Nord-Westphalie",
@@ -2803,7 +2883,7 @@
     {
       "title": "Komitas Concert",
       "url": "https://armenopole.com/komitas-concert.html",
-      "location": "Belgique",
+      "location": "Anvers",
       "date": "2026-12-26T11:00",
       "rawDate": "DÉC 26 11:00",
       "image": "https://armenopole.com/images/events/komitas-concert.jpg?v=95856",
@@ -2819,23 +2899,6 @@
       ]
     },
     {
-      "title": "New Year’s Eve Gala Dinner Event",
-      "url": "https://armenopole.com/new-year-s-eve-gala-dinner-event.html",
-      "location": "Nouvelle-Galles du Sud",
-      "date": "2026-12-31T18:00",
-      "rawDate": "DÉC 31 18:00",
-      "image": "https://armenopole.com/images/events/new-year-s-eve-gala-dinner-event.jpg?v=332730",
-      "country": "australia",
-      "resumeLangs": [
-        "fr",
-        "de",
-        "it",
-        "en",
-        "es",
-        "ru"
-      ]
-    },
-    {
       "title": "Silvester Gala Night",
       "url": "https://armenopole.com/silvester-gala-night.html",
       "location": "Rhénanie-du-Nord-Westphalie",
@@ -2843,6 +2906,24 @@
       "rawDate": "DÉC 31 18:00",
       "image": "https://armenopole.com/images/events/silvester-gala-night.jpg?v=113925",
       "country": "germany",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
+      "title": "New Year’s Eve Sparkling Gala Dinner Dance",
+      "url": "https://armenopole.com/sparkling-gala-dinner-dance.html",
+      "location": "Nouvelle-Galles du Sud",
+      "date": "2026-12-31T18:01",
+      "rawDate": "DÉC 31 18:01",
+      "image": "https://armenopole.com/images/events/sparkling-gala-dinner-dance.jpg?v=332730",
+      "country": "australia",
       "resumeLangs": [
         "fr",
         "de",
@@ -2907,6 +2988,24 @@
       ]
     },
     {
+      "title": "Armeens Nieuwjaarsfeest 2027",
+      "url": "https://armenopole.com/armeens-nieuwjaarsfeest-2027.html",
+      "location": "Hollande-Septentrionale",
+      "date": "2026-12-31T20:00",
+      "rawDate": "DÉC 31 20:00",
+      "image": "https://armenopole.com/images/events/armeens-nieuwjaarsfeest-2027.jpg?v=95815",
+      "country": "netherlands",
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "hy",
+        "ru"
+      ]
+    },
+    {
       "title": "La Agrupación Scout Ararat de Homenetmen Buenos Aires realizará su Campamento de Verano 2027 en Río Negro",
       "url": "https://www.diarioarmenia.org.ar/la-agrupacion-scout-ararat-de-homenetmen-buenos-aires-realizara-su-campamento-de-verano-2027-en-rio-negro/",
       "location": "Argentine",
@@ -2945,7 +3044,7 @@
       ]
     },
     {
-      "title": "ՃԱՇԿԵՐՈՅԹ-ՊԱՐԱՀԱՆԴԷՍ",
+      "title": "Ճաշկերոյթ-պարահանդէս",
       "url": "https://armenopole.com/rjepsq7f.html",
       "location": "Beyrouth",
       "date": "2027-01-05T21:00",

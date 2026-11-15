@@ -574,24 +574,24 @@ déploiement :
 
 | Vitrine | Site Firebase | Projet | Secret CI |
 |---|---|---|---|
-| armenieinfo.ch | `armenie-info` | `armenie-info` | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` |
-| armenianews.org | `armenia-news-org` | `armenia-news-b146e` | `FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO` (le même) |
+| armenieinfo.ch | `armenie-info` | `armenie-info` | `FIREBASE_SERVICE_ACCOUNT_CH` |
+| armenianews.org | `armenia-news-org` | `armenia-news-b146e` | `FIREBASE_SERVICE_ACCOUNT_ORG` |
 
 **Trois conséquences qu'il faut avoir en tête avant de toucher au déploiement.**
 
-*Un compte de service n'a **par défaut** de droits que sur son propre projet.*
-Ici, **un seul secret dessert les deux** : le compte appartient à `armenie-info`
-et s'est vu accorder le rôle Firebase Hosting Admin **sur `armenia-news-b146e`
-aussi** (console Cloud → IAM du second projet → Accorder l'accès). Sans cette
-autorisation croisée, le déploiement du `.org` échouerait sur une erreur
-d'autorisation muette sur sa cause — d'où la garde qui vérifie le secret avant
-la première commande.
-
-> Si ce rôle croisé est un jour révoqué, il faudra un second secret et un
-> `GOOGLE_APPLICATION_CREDENTIALS` réassigné à chaque tour de boucle. Le
-> compromis : une clé unique portant Hosting Admin sur deux projets élargit la
-> portée en cas de fuite ; deux clés distinctes la cloisonnent mais doublent
-> l'entretien. Le choix actuel est le premier, assumé.
+*Trois clés, cloisonnées (11 nov. 2026), et aucune ne doit regagner de rôle.*
+Chaque vitrine a **son** compte de service, Firebase Hosting Admin sur **son
+seul** projet ; la purge des salles de jeu a le troisième, seul à porter
+« Firebase Realtime Database Admin » (`FIREBASE_SERVICE_ACCOUNT_PURGE`). Avant,
+une clé unique portait Hosting Admin sur les deux projets **et** l'accès à
+toute la base : une fuite livrait tout. La boucle de déploiement réécrit
+`GOOGLE_APPLICATION_CREDENTIALS` à chaque vitrine et ôte les deux variables à
+`firebase-tools` (`env -u`). Un compte de service n'a de droits que sur son
+propre projet : une clé mal rangée (celle du .ch dans le secret du .org)
+échoue sur une erreur d'autorisation muette sur sa cause — d'où la garde qui
+vérifie chaque secret avant la première commande.
+`test/deploy-config.test.mjs` tient le cloisonnement (une clé par site, la
+clé de purge hors du déploiement, l'ancien secret commun disparu).
 
 *`firebase.json` désigne ses entrées par `site`, pas par `target`.* Les cibles
 `.firebaserc` se déclarent **par projet**, ce qui obligerait à en tenir deux
@@ -1066,7 +1066,7 @@ de production servent toujours depuis la racine de leur domaine.
   erreur. Le mode ami est décrit dans `privacy.games.*` : il doit suivre.
   Ce texte annonce l'effacement des salles vers ~25 h : la purge horaire
   (`scripts/salles-purge.mjs`) exige le rôle « Firebase Realtime Database
-  Admin » du compte de service de la CI — retiré, elle échoue sans casser
+  Admin » de SA clé (`FIREBASE_SERVICE_ACCOUNT_PURGE`) — retiré, elle échoue sans casser
   rien (`✗ purge`, ligne dans `[sources-down]`) et le texte ment.
 - **Pièges de rendu vus en production** (titre d'étagère qui élargit la page,
   `scrollIntoView`, `visibility: hidden`, `loading="lazy"` avant `src`, cible

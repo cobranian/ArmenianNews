@@ -26,9 +26,12 @@ export const SITES = {
     // site renvoie aux siens : un lien du .ch vers les comptes anglais ferait
     // suivre au lecteur une marque qu'il ne lit pas. Facebook : l'adresse de
     // profil vers laquelle redirige l'id de Page de l'API (1301521739721369).
+    // Instagram ch/it/hy/ru RECRÉÉS le 15 nov. 2026, avec un POINT : les
+    // anciens (@armenieinfo_ch, _it, @armenianews_hy, _ru, tiret bas) ont été
+    // piratés le 14 nov. et ne sont plus à nous. Ne les remettez jamais.
     social: {
       facebook: 'https://www.facebook.com/61595719987355',
-      instagram: 'https://www.instagram.com/armenieinfo_ch/',
+      instagram: 'https://www.instagram.com/armenieinfo.ch/',
       bluesky: 'https://bsky.app/profile/armenieinfo.ch',
       telegram: 'https://t.me/armenieinfo_ch',
       whatsapp: 'https://whatsapp.com/channel/0029Vb90wT859PwWxvIZvr2z',
@@ -39,8 +42,11 @@ export const SITES = {
     // Les comptes propres à une langue (ouverts le 31 oct. 2026) : au pied de
     // page de CETTE langue, ils remplacent ceux de la vitrine plateforme par
     // plateforme (socialFor). Une plateforme absente garde le compte de la
-    // vitrine — LinkedIn n'existe qu'en un exemplaire ; YouTube n'a de chaîne
-    // par langue que là où des Shorts y sont publiés.
+    // vitrine. LinkedIn : une PAGE VITRINE (/showcase/) par langue sous la Page
+    // principale (15 nov. 2026 : de, it, es) — jamais un compte, LinkedIn n'en
+    // permet qu'un par personne ; hy et ru gardent la Page de la vitrine
+    // jusqu'à leur création (LinkedIn limite à 3 pages neuves par semaine).
+    // YouTube n'a de chaîne par langue que là où des Shorts y sont publiés.
     socialByLang: {
       de: {
         facebook: 'https://www.facebook.com/61596218245485',
@@ -49,13 +55,16 @@ export const SITES = {
         whatsapp: 'https://whatsapp.com/channel/0029Vb9vZgXC6ZvmgkLTjd1B',
         bluesky: 'https://bsky.app/profile/de.armenieinfo.ch',
         youtube: 'https://www.youtube.com/@armenieinfo-de',
+        linkedin: 'https://www.linkedin.com/showcase/armenieinfo-de/',
       },
       it: {
         facebook: 'https://www.facebook.com/61595804863665',
-        instagram: 'https://www.instagram.com/armenieinfo_it/',
+        instagram: 'https://www.instagram.com/armenieinfo.it/',
         telegram: 'https://t.me/armenieinfo_it',
         whatsapp: 'https://whatsapp.com/channel/0029Vb9L8jsF6smuUOyG0N2n',
         bluesky: 'https://bsky.app/profile/it.armenieinfo.ch',
+        youtube: 'https://www.youtube.com/@armenieinfo-it',
+        linkedin: 'https://www.linkedin.com/showcase/armenieinfo-it/',
       },
     },
     // Autres noms sous lesquels un lecteur pourrait chercher ce site. Sur un
@@ -173,10 +182,12 @@ export const SITES = {
         telegram: 'https://t.me/armenianews_es',
         whatsapp: 'https://whatsapp.com/channel/0029VbDbwntAojYorCFVdw1M',
         bluesky: 'https://bsky.app/profile/es.armenianews.org',
+        youtube: 'https://www.youtube.com/@armenianews-es',
+        linkedin: 'https://www.linkedin.com/showcase/armenianews-es/',
       },
       hy: {
         facebook: 'https://www.facebook.com/61596095491007',
-        instagram: 'https://www.instagram.com/armenianews_hy/',
+        instagram: 'https://www.instagram.com/armenianews.hy/',
         telegram: 'https://t.me/armenianews_hy',
         youtube: 'https://www.youtube.com/@armenianews-hy',
         whatsapp: 'https://whatsapp.com/channel/0029VbDTnRK6mYPSuckkko0s',
@@ -184,7 +195,7 @@ export const SITES = {
       },
       ru: {
         facebook: 'https://www.facebook.com/61596338480535',
-        instagram: 'https://www.instagram.com/armenianews_ru/',
+        instagram: 'https://www.instagram.com/armenianews.ru/',
         telegram: 'https://t.me/armenianews_ru',
         youtube: 'https://www.youtube.com/@armenianews-ru',
         whatsapp: 'https://whatsapp.com/channel/0029VbE1aLv11ulUZyEnvf0r',

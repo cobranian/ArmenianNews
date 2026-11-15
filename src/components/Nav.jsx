@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useI18n, LANGS } from '../i18n.jsx'
 import { orderedLangs, SITE_ID } from '../site.js'
-import { LANG_SWITCH_LABEL, langPath, pathFor, urlFor, briefPath, culturePath } from '../../sites.config.js'
-import { BRIEF_STRINGS } from '../briefStrings.js'
-import { CULTURE_STRINGS } from '../cultureStrings.js'
+import { LANG_SWITCH_LABEL, langPath, urlFor } from '../../sites.config.js'
+import { navLinks } from '../navLinks.js'
 import { KnotMark } from './Ornament.jsx'
 import { HYDRATING, PRERENDERING } from '../renderClock.js'
 
@@ -48,21 +47,10 @@ export function Nav({ view = 'home' }) {
   // pages de vue ont une nav morte, et une page sans lien entrant interne ne
   // circule pas.
   const home = view === 'home' ? '' : langPath(SITE_ID, lang)
-  // Sur l'accueil, « En direct » et « Agenda » font défiler vers leur section
-  // (qui porte elle-même le lien vers la page pilier). Hors de l'accueil, ils
-  // mènent à la PAGE pilier de la langue courante (/radio/, /agenda/), pas à
-  // une ancre de l'accueil : c'est là qu'est la matière, et c'est ce qui relie
-  // radio ⇄ agenda entre elles — l'audit du 21 août 2026 avait mesuré qu'aucune
-  // des deux ne liait l'autre.
-  const links = [
-    [view === 'home' ? '#direct' : pathFor(lang, 'radio'), t('nav.radio')],
-    [`${home}#actualites`, t('nav.news')],
-    [view === 'home' ? '#agenda' : pathFor(lang, 'agenda'), t('nav.agenda')],
-    [pathFor(lang, 'games'), t('nav.games')],
-    [briefPath(lang), BRIEF_STRINGS[lang].nav],
-    [culturePath(lang), CULTURE_STRINGS[lang].nav],
-    [`${home}#reseaux`, t('nav.social')],
-  ]
+  // Liens et ORDRE partagés avec les pages statiques (src/navLinks.js) : sur
+  // l'accueil, « En direct » et « Agenda » font défiler vers leur section,
+  // ailleurs ils mènent à la page pilier.
+  const links = navLinks(lang, { home, onHome: view === 'home' })
 
   return (
     <nav className="nav">

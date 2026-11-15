@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { useI18n } from '../i18n.jsx'
 import { Motif } from './motifs.jsx'
 import { ShareBar } from './ShareBar.jsx'
+import { ZoomView } from './ZoomView.jsx'
 
 /* ------------------------------------------------------------------ *
  * Lightbox — the social cards enlarge in place instead of leaving the
@@ -34,11 +35,21 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
   // `null` = pas de résumé : la ligne disparaît pour cet item.
   const [sumOpen, setSumOpen] = useState(false)
   const [sums, setSums] = useState(() => new Map())
+  // Le plein écran de l'image (ZoomView) ; `zoomBtnRef` reprend le focus à
+  // sa fermeture.
+  const [zoom, setZoom] = useState(false)
+  const zoomBtnRef = useRef(null)
+  const closeZoom = useCallback(() => {
+    setZoom(false)
+    requestAnimationFrame(() => zoomBtnRef.current?.focus())
+  }, [])
 
   // Changer d'image replie le résumé : l'affiche reste le cœur de la visionneuse.
+  // Elle referme aussi le zoom, qui montrerait sinon l'image précédente.
   const go = useCallback(
     (d) => {
       setSumOpen(false)
+      setZoom(false)
       setCur((i) => (i + d + n) % n)
     },
     [n],
@@ -156,7 +167,17 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
           }
         >
           {showPhoto ? (
-            <img className="lb__img" src={item.img} alt={item.alt} />
+            <button
+              ref={zoomBtnRef}
+              className="lb__zoom"
+              type="button"
+              onClick={() => setZoom(true)}
+              // L'action ET ce que montre l'image : un aria-label remplace
+              // l'alt de l'<img> dans le nom accessible.
+              aria-label={item.alt ? `${t('lb.zoom')}, ${item.alt}` : t('lb.zoom')}
+            >
+              <img className="lb__img" src={item.img} alt={item.alt} />
+            </button>
           ) : (
             <svg className="lb__motif" viewBox="0 0 100 100" aria-hidden="true">
               <Motif index={item.seed} />
@@ -243,6 +264,10 @@ export function Lightbox({ items, startIndex = 0, onClose }) {
         <p className="lb__count" aria-hidden="true">
           {cur + 1} <span>/</span> {n}
         </p>
+      )}
+
+      {zoom && showPhoto && (
+        <ZoomView src={item.img} alt={item.alt} closeLabel={t('lb.zoomClose')} onClose={closeZoom} />
       )}
     </div>,
     document.body,

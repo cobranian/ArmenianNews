@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-12",
+  "lang": "es",
+  "generatedAt": "2026-11-12T03:30:22.977Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La agenda del día está marcada por la participación del primer ministro Nikol Pashinyan en la cumbre COP31 en Turquía, donde se reunió con Erdogan y otros líderes, junto con avances en la normalización fronteriza y proyectos energéticos regionales.",
+  "topics": [
+    {
+      "title": "Pashinyan en la COP31 y reunión con Erdogan",
+      "text": "El primer ministro armenio Nikol Pashinyan fue recibido por el presidente turco Recep Tayyip Erdoğan y el secretario general de la ONU António Guterres en Antalya para la cumbre COP31. Durante el encuentro bilateral, Pashinyan y Erdogan analizaron la cooperación y la normalización de relaciones, en un contexto donde Erdogan criticó las guerras y denunció un genocidio en Gaza pese a su historial de apoyo a Azerbaiyán y negacionismo del Genocidio Armenio.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/ante-pashinyan-en-la-cop31-erdogan-critico-las-guerras-y-denuncio-un-genocidio-en-gaza-pese-a-su-apoyo-a-la-limpieza-etnica-de-artsaj-y-su-negacionismo-del-genocidio-armenio/",
+          "title": "Ante Pashinyan en la COP31, Erdogan criticó las guerras y denunció un genocidio en Gaza pese a su apoyo a la limpieza étnica de Artsaj y su negacionismo del Genocidio Armenio"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265401",
+          "title": "Pashinyan y Erdogan se reunieron en Antalya"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-recep-tayyip-erdogan-antonio-guterres/",
+          "title": "Nikol Pashinyan es recibido por Recep Tayyip Erdoğan y António Guterres en Antalya para la cumbre de la COP31"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265320",
+          "title": "Nikol Pashinyan viajará a Turquía en visita oficial"
+        }
+      ]
+    },
+    {
+      "title": "Reapertura de pasos fronterizos Turquía-Armenia",
+      "text": "Turquía concluyó los preparativos para la reapertura de los pasos fronterizos con Armenia en Margara y Alijan, un avance concreto en el proceso de normalización diplomática entre ambos países.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/turquia-reapertura-pasos-fronterizos-armenia/",
+          "title": "Turquía concluye los preparativos para la reapertura de los pasos fronterizos con Armenia en Margara y Alijan"
+        }
+      ]
+    },
+    {
+      "title": "Corredor de energía verde en la COP31",
+      "text": "Azerbaiyán, Turquía, Georgia y Bulgaria firmaron un acuerdo estratégico para crear un corredor de energía verde durante la COP31, reforzando la cooperación energética regional sin participación armenia.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/azerbaiyan-turquia-georgia-bulgaria-acuerdo-energia-limpia/",
+          "title": "Azerbaiyán, Turquía, Georgia y Bulgaria firman un acuerdo estratégico para crear un corredor de energía verde en la COP31"
+        }
+      ]
+    },
+    {
+      "title": "Diversificación energética de Armenia",
+      "text": "Se analizan opciones reales de diversificación energética para Armenia, destacando el potencial del gas de Irán y Turkmenistán frente a la dependencia del suministro ruso, mientras Armenia e Irán revisan el avance de proyectos conjuntos.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-diversificacion-energetica-gas-iran-turkmenistan/",
+          "title": "Opciones reales de diversificación energética para Armenia: el potencial del gas de Irán y Turkmenistán frente al suministro ruso"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265341",
+          "title": "Armenia e Irán analizaron el avance de proyectos conjuntos"
+        }
+      ]
+    },
+    {
+      "title": "Financiamiento del proyecto TRIPP",
+      "text": "Armenia recurre a capitales de Estados Unidos e inversión privada para financiar el proyecto TRIPP sin cargas presupuestarias estatales, aunque el proyecto es calificado como un acuerdo forzado que avanza lentamente y genera desconfianza generalizada.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/proyecto-tripp-un-acuerdo-forzado-que-avanza-a-paso-lento-y-en-el-que-todos-desconfian-de-todos/",
+          "title": "Proyecto TRIPP: un acuerdo forzado que avanza a paso lento y en el que todos desconfían de todos"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/fondos-construccion-proyecto-tripp-armenia/",
+          "title": "Mecanismos de financiamiento para el proyecto TRIPP: Armenia recurre a capitales de EE. UU. e inversión privada sin cargas presupuestarias estatales"
+        }
+      ]
+    },
+    {
+      "title": "Fallecimiento de opositor en prisión genera controversia",
+      "text": "El fallecimiento del opositor Arsen Gevorgyan en la cárcel desató controversia sobre las medidas de prisión preventiva en Armenia, mientras el vicepresidente de la Asamblea Nacional no descarta el apoyo de la oposición al referéndum sobre la nueva Constitución.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265389",
+          "title": "El vicepresidente de la Asamblea Nacional no descarta el apoyo de la oposición al referéndum sobre la nueva Constitución"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/fallecimiento-arsen-gevorgyan-prision-preventiva-armenia/",
+          "title": "Fallecimiento del opositor Arsen Gevorgyan en la cárcel desata controversia sobre las medidas de prisión preventiva en Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Patriarca armenio recibe al alto comisionado de Diáspora",
+      "text": "El patriarca armenio de Constantinopla recibió en Estambul al alto comisionado de Asuntos de la Diáspora de Armenia, en un encuentro que subraya los lazos entre la Iglesia y las instituciones estatales en materia de diáspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265373",
+          "title": "El patriarca armenio de Constantinopla recibió al alto comisionado de Asuntos de la Diáspora de Armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/patriarca-armenio-constantinopla-comisionado-diaspora/",
+          "title": "El Patriarca armenio de Constantinopla recibe en Estambul al Alto Comisionado para Asuntos de la Diáspora"
+        }
+      ]
+    }
+  ]
+}

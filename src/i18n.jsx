@@ -127,6 +127,8 @@ const STRINGS = {
     'ig.zoom': 'Agrandir',
     'lb.dialog': 'Image agrandie',
     'lb.close': 'Fermer',
+    'lb.zoom': "Agrandir l'image",
+    'lb.zoomClose': "Fermer l'agrandissement",
     'lb.prev': 'Image précédente',
     'lb.next': 'Image suivante',
 
@@ -424,6 +426,8 @@ const STRINGS = {
     'ig.zoom': 'Vergrössern',
     'lb.dialog': 'Vergrössertes Bild',
     'lb.close': 'Schliessen',
+    'lb.zoom': 'Bild vergrössern',
+    'lb.zoomClose': 'Vergrösserung schliessen',
     'lb.prev': 'Vorheriges Bild',
     'lb.next': 'Nächstes Bild',
     'footer.built': 'Statische Momentaufnahme · Quellen mit ihren Originalseiten verlinkt',
@@ -680,6 +684,8 @@ const STRINGS = {
     'ig.zoom': 'Ingrandisci',
     'lb.dialog': 'Immagine ingrandita',
     'lb.close': 'Chiudi',
+    'lb.zoom': "Ingrandisci l'immagine",
+    'lb.zoomClose': "Chiudi l'ingrandimento",
     'lb.prev': 'Immagine precedente',
     'lb.next': 'Immagine successiva',
     'footer.built': 'Istantanea statica · fonti collegate ai loro siti d’origine',
@@ -947,6 +953,8 @@ const STRINGS = {
     'ig.zoom': 'Enlarge',
     'lb.dialog': 'Enlarged image',
     'lb.close': 'Close',
+    'lb.zoom': 'Enlarge image',
+    'lb.zoomClose': 'Close enlarged view',
     'lb.prev': 'Previous image',
     'lb.next': 'Next image',
 
@@ -1249,6 +1257,8 @@ const STRINGS = {
     'ig.zoom': 'Խոշորացնել',
     'lb.dialog': 'Խոշորացված պատկեր',
     'lb.close': 'Փակել',
+    'lb.zoom': 'Մեծացնել պատկերը',
+    'lb.zoomClose': 'Փակել մեծացումը',
     'lb.prev': 'Նախորդ պատկերը',
     'lb.next': 'Հաջորդ պատկերը',
 
@@ -1543,6 +1553,8 @@ const STRINGS = {
     'ig.zoom': 'Увеличить',
     'lb.dialog': 'Увеличенное изображение',
     'lb.close': 'Закрыть',
+    'lb.zoom': 'Увеличить изображение',
+    'lb.zoomClose': 'Закрыть увеличение',
     'lb.prev': 'Предыдущее изображение',
     'lb.next': 'Следующее изображение',
 
@@ -1820,6 +1832,8 @@ const STRINGS = {
     'ig.zoom': 'Ampliar',
     'lb.dialog': 'Imagen ampliada',
     'lb.close': 'Cerrar',
+    'lb.zoom': 'Ampliar la imagen',
+    'lb.zoomClose': 'Cerrar la ampliación',
     'lb.prev': 'Imagen anterior',
     'lb.next': 'Imagen siguiente',
 

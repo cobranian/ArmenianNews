@@ -3577,10 +3577,15 @@ html:lang(hy) .nav__brand {
    prolongent. Cercle de 44px pour TOUS les pointeurs (plancher tactile tenu
    sans passer par le bloc pointer: coarse). Trait abricot discret au repos,
    plein au survol : ce sont des invitations, pas des sources. */
+/* `flex-wrap` obligatoire : 7 pastilles de 44px + 6 écarts de 14px = 392px
+   incompressibles. Sans retour à la ligne, sous ~432px d'écran la dernière
+   (YouTube) dépasse à droite et le téléphone dézoome toute la page — une bande
+   vide à droite (11 nov. 2026). Le `overflow-x: hidden` du body ne l'empêche pas. */
 .footer__social {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
+  gap: 12px 14px;
   list-style: none;
   margin: 0 0 22px;
   padding: 0;
@@ -4218,6 +4223,81 @@ html.js .reveal.is-visible {
   max-height: 74vh;
   object-fit: contain;
 }
+/* L'image est un bouton : la toucher l'ouvre en plein écran (ZoomView). */
+.lb__zoom {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.lb__zoom:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: -4px;
+}
+
+/* --- le plein écran de l'image (ZoomView.jsx) ------------------------------
+   Contenu par .lb (backdrop-filter), plein écran elle aussi. `touch-action:
+   none` : le pincement est capté ici, la PAGE ne zoome jamais — elle
+   resterait agrandie après fermeture sur iPhone. L'image couvre tout l'écran
+   en `contain`, ce que suppose la mesure de ZoomView (src/zoomMath.js). */
+.zv {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  touch-action: none;
+  background: color-mix(in srgb, var(--basalt) 96%, transparent);
+  cursor: zoom-in;
+}
+.zv__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+.zv__img--anim {
+  transition: transform 0.25s var(--ease);
+}
+.zv__close {
+  position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  right: calc(12px + env(safe-area-inset-right, 0px));
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--apricot-ink);
+  cursor: pointer;
+}
+.zv__close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.zv__close:focus-visible {
+  outline: 2px solid var(--apricot);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .zv__img--anim {
+    transition: none;
+  }
+}
 .lb__frame--motif {
   aspect-ratio: 4 / 5;
   width: min(440px, 78vw);
@@ -4494,9 +4574,25 @@ html.js .reveal.is-visible {
     box-shadow: none;
     background: transparent;
   }
+  /* L'image est posée en absolu sur tout le cadre, et `contain` l'y ajuste.
+     Un `max-height: 100%` ne suffisait pas : le cadre est une grille à piste
+     de hauteur automatique, le pourcentage n'y résout pas, et une affiche en
+     portrait gardait sa hauteur naturelle — le cadre la coupait en bas
+     (mesuré sur téléphone, nov. 2026 : Artzakank, Kermesse, Tesson). */
   .lb__img {
-    max-width: 100%;
-    max-height: 100%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+  }
+  /* Le bouton qui porte l'image couvre le cadre : c'est lui le bloc de
+     l'image absolue ci-dessus. */
+  .lb__zoom {
+    position: absolute;
+    inset: 0;
   }
   .lb__corner {
     display: none;

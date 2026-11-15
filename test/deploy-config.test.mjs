@@ -46,11 +46,11 @@ test('.firebaserc ne déclare plus de cibles hosting', () => {
 })
 
 test('le here-doc de déploiement couvre chaque vitrine, avec son projet', () => {
-  // Les lignes ont la forme `site|projet`.
+  // Les lignes ont la forme `site|projet|variable de sa clé`.
   const lignes = workflow
     .split('\n')
     .map((l) => l.trim())
-    .filter((l) => /^[a-z0-9-]+\|[a-z0-9-]+$/.test(l))
+    .filter((l) => /^[a-z0-9-]+\|[a-z0-9-]+\|[A-Z_]+$/.test(l))
 
   assert.equal(
     lignes.length,
@@ -65,29 +65,57 @@ test('le here-doc de déploiement couvre chaque vitrine, avec son projet', () =>
   assert.deepEqual(reel, attendu)
 })
 
+// L'étape de déploiement seule, de son nom à l'étape suivante.
+const etapeDeploiement = (() => {
+  const w = workflow.replace(/\r\n/g, '\n')
+  const d = w.indexOf('- name: Deploy to Firebase Hosting')
+  assert.ok(d > 0, 'étape de déploiement introuvable')
+  const f = w.indexOf('\n      - name:', d + 1)
+  return w.slice(d, f > 0 ? f : undefined)
+})()
+
+test('une clé par vitrine : chaque site se déploie avec SA clé, jamais celle du voisin', () => {
+  // Cloisonnement du 11 nov. 2026 : une clé unique portait Hosting Admin sur
+  // les deux projets ET Realtime Database Admin. Une fuite livrait tout.
+  // Chaque vitrine a désormais son secret, Hosting Admin sur son seul projet.
+  const lignes = etapeDeploiement
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => /^[a-z0-9-]+\|[a-z0-9-]+\|[A-Z_]+$/.test(l))
+    .map((l) => l.split('|'))
+  const vars = lignes.map((l) => l[2])
+  assert.equal(new Set(vars).size, lignes.length, 'deux vitrines partagent la même clé')
+  for (const v of vars) {
+    assert.match(
+      etapeDeploiement,
+      new RegExp(`\\b${v}: \\$\\{\\{ secrets\\.FIREBASE_SERVICE_ACCOUNT_[A-Z]+ \\}\\}`),
+      `${v} n'est alimentée par aucun secret`,
+    )
+  }
+  const secrets = [...etapeDeploiement.matchAll(/secrets\.(FIREBASE_SERVICE_ACCOUNT_[A-Z_]+)/g)].map((m) => m[1])
+  assert.equal(new Set(secrets).size, lignes.length, 'un secret par vitrine, pas plus, pas moins')
+  // firebase-tools ne doit voir aucune des clés en variable d'environnement.
+  assert.match(etapeDeploiement, new RegExp(`env ${vars.map((v) => `-u ${v}`).join(' ')} npx`))
+})
+
+test('la clé de la purge ne sert qu’à la purge, et l’ancienne clé commune a disparu', () => {
+  // « Realtime Database Admin » contourne les règles de toute la base : sa clé
+  // ne doit jamais atteindre le déploiement, ni une clé de déploiement la purge.
+  assert.doesNotMatch(workflow, /FIREBASE_SERVICE_ACCOUNT_ARMENIE_INFO/, 'l’ancienne clé commune est encore référencée')
+  assert.doesNotMatch(etapeDeploiement, /FIREBASE_SERVICE_ACCOUNT_PURGE/)
+  const usages = [...workflow.matchAll(/secrets\.FIREBASE_SERVICE_ACCOUNT_PURGE/g)]
+  assert.equal(usages.length, 1, 'la clé de purge sert ailleurs que dans la purge')
+})
+
 test('le credential de déploiement est vérifié avant la première commande', () => {
-  // UN SEUL secret dessert les DEUX projets : le compte de service appartient
-  // à `armenie-info` et s'est vu accorder Firebase Hosting Admin sur
-  // `armenia-news-b146e` aussi. Sans cette autorisation croisée, un compte de
-  // service n'a de droits que sur son propre projet, et le déploiement du .org
-  // échouerait sur une erreur d'autorisation.
-  //
-  // Ce test ne vérifie donc PAS un secret par vitrine — ce serait figer un
-  // choix qui a changé. Il vérifie l'invariant qui, lui, tient dans les deux
-  // modèles : tout secret Firebase utilisé est contrôlé non vide avant que la
+  // Tout secret Firebase de l'étape est contrôlé non vide avant que la
   // première commande de déploiement ne parte, faute de quoi l'échec arrive
   // plus tard sous forme d'erreur d'authentification opaque.
-  const secrets = [
-    ...new Set(
-      [...workflow.matchAll(/secrets\.(FIREBASE_SERVICE_ACCOUNT_[A-Z_]+)/g)].map((m) => m[1]),
-    ),
-  ]
-  assert.ok(secrets.length >= 1, 'aucun secret Firebase référencé par le workflow')
-
-  const gardes = [...workflow.matchAll(/if \[ -z "\$\{?!?([A-Z_]+)\}?" \]/g)].map((m) => m[1])
-  const enGarde = [...workflow.matchAll(/([A-Z_]+): \$\{\{ secrets\.FIREBASE_SERVICE_ACCOUNT/g)].map(
+  const gardes = [...etapeDeploiement.matchAll(/if \[ -z "\$\{?!?([A-Z_]+)\}?" \]/g)].map((m) => m[1])
+  const enGarde = [...etapeDeploiement.matchAll(/([A-Z_]+): \$\{\{ secrets\.FIREBASE_SERVICE_ACCOUNT/g)].map(
     (m) => m[1],
   )
+  assert.ok(enGarde.length >= 1, 'aucun secret Firebase dans l’étape de déploiement')
   for (const v of enGarde) {
     assert.ok(
       gardes.includes(v),

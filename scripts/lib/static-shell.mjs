@@ -1,9 +1,9 @@
 // La coquille HTML des pages statiques (brève, Culture) : même feuille CSS
 // hachée, theme-init.js, balises GA et Cloudflare de la vitrine, et une nav
 // commune. Une seule copie — deux coquilles divergeraient (nav, balises).
-import { LANGS, LANG_SWITCH_LABEL, pathFor, langPath, briefPath, culturePath, orderLangsFor } from '../../sites.config.js'
+import { LANGS, LANG_SWITCH_LABEL, langPath, orderLangsFor } from '../../sites.config.js'
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
-import { CULTURE_STRINGS } from '../../src/cultureStrings.js'
+import { navLinks } from '../../src/navLinks.js'
 import { beaconTag, gaTag } from './site-meta.mjs'
 import { esc } from './culture-markdown.mjs'
 
@@ -26,13 +26,10 @@ function langSwitch(siteId, lang, langHrefs) {
 
 export function pageShell({ siteId, lang, head, cssHref, body, langHrefs = null, scripts = [] }) {
   const s = BRIEF_STRINGS[lang]
-  const nav = [
-    [langPath(siteId, lang), s.home],
-    [pathFor(lang, 'radio'), s.radio],
-    [pathFor(lang, 'agenda'), s.agenda],
-    [briefPath(lang), s.nav],
-    [culturePath(lang), CULTURE_STRINGS[lang].nav],
-  ]
+  // La MÊME liste, dans le même ordre, que la barre de l'accueil
+  // (src/navLinks.js) : les ancres pointent sur l'accueil de la langue, et la
+  // marque y ramène aussi — pas de lien « Accueil » en plus.
+  const nav = navLinks(lang, { home: langPath(siteId, lang) })
     .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`)
     .join('')
   return `<!doctype html>

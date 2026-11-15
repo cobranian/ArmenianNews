@@ -4,9 +4,11 @@ import { readFile } from 'node:fs/promises'
 
 // Node ne sait pas importer du JSX : on lit les composants comme du texte,
 // comme test/img-lazy.test.mjs. Une page sans lien interne ne circule pas.
-for (const f of ['Nav.jsx', 'Footer.jsx']) {
+// La barre de navigation lit ses liens dans src/navLinks.js (partagé avec les
+// pages statiques) ; le pied de page les écrit lui-même.
+for (const f of ['navLinks.js', 'components/Footer.jsx']) {
   test(`${f} lie la brève`, async () => {
-    const src = await readFile(new URL(`../src/components/${f}`, import.meta.url), 'utf-8')
+    const src = await readFile(new URL(`../src/${f}`, import.meta.url), 'utf-8')
     assert.match(src, /briefPath\(lang\)/)
     assert.match(src, /BRIEF_STRINGS\[lang\]/)
   })

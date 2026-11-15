@@ -9,7 +9,7 @@ import { notFoundHtml } from '../scripts/lib/not-found.mjs'
 // reçoit ni lecteur ni PageRank interne.
 const src = (f) => readFile(new URL(`../src/${f}`, import.meta.url), 'utf-8')
 
-for (const f of ['components/Nav.jsx', 'components/Footer.jsx']) {
+for (const f of ['navLinks.js', 'components/Footer.jsx']) {
   test(`${f} lie la section Culture`, async () => {
     const s = await src(f)
     assert.match(s, /culturePath\(lang\)/)

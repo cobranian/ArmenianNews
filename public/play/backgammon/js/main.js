@@ -265,7 +265,9 @@ function renduPanneau(p = partie) {
   const ou = p.cube.proprietaire === null ? 'videauCentre' : p.cube.proprietaire === 'b' ? 'videauToi' : ami ? 'videauAmi' : 'videauRobot';
   $('videau-texte').textContent = t(ou, { v: p.cube.valeur });
 }
-const texteScore = (p) => t('score', { b: p.score.b, n: p.score.n, nom: nomScore(), l: p.longueur });
+// Le « · » reste accroché au nom : sur une colonne étroite, la ligne se coupe
+// APRÈS lui, jamais devant (« · match en 3 » ouvrait la seconde ligne).
+const texteScore = (p) => t('score', { b: p.score.b, n: p.score.n, nom: nomScore(), l: p.longueur }).replace(' · ', ' · ');
 
 function renduBoutons() {
   const a = attente ? attente.types : [];

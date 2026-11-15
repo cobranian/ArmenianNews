@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-15",
+  "lang": "en",
+  "generatedAt": "2026-11-15T03:29:45.680Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Today's briefing covers Armenia's growing international cultural profile, high-level diplomatic engagement with India, domestic infrastructure and energy challenges, and notable achievements in sports.",
+  "topics": [
+    {
+      "title": "Robert Plant to perform in Armenia in 2027",
+      "text": "Led Zeppelin frontman Robert Plant is scheduled to perform in Armenia for the first time in September 2027. The concert was announced by multiple Armenian news outlets.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/led-zeppelins-robert-plant-to-perform-in-armenia-in-september-2027/",
+          "title": "Led Zeppelin’s Robert Plant to Perform in Armenia in September 2027"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265680",
+          "title": "Led Zeppelin legend Robert Plant to perform in Armenia for first time in 2027"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan holds talks with Indian Foreign Minister in New Delhi",
+      "text": "Prime Minister Nikol Pashinyan met with Indian External Affairs Minister S. Jaishankar in New Delhi to discuss bilateral cooperation. The Armenian Deputy Foreign Minister also highlighted the role of La Francophonie as a platform for dialogue.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265684",
+          "title": "Pashinyan, Jaishankar discuss Armenia-India cooperation"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265683",
+          "title": "Armenian Deputy FM highlights La Francophonie’s role as platform for dialogue and cooperation"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265682",
+          "title": "Pashinyan meets Indian FM in New Delhi"
+        }
+      ]
+    },
+    {
+      "title": "Armenia named a top travel destination for 2027",
+      "text": "Condé Nast Traveller Middle East included Armenia among its 27 best places to visit in 2027. The recognition highlights the country's growing appeal to international tourists.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265688",
+          "title": "Armenia named among 27 best places to visit in 2027 by Condé Nast Traveller Middle East"
+        }
+      ]
+    },
+    {
+      "title": "Solar energy boom reveals power grid deficiencies",
+      "text": "Armenia's rapid expansion of solar energy capacity has exposed costly gaps in the national power grid infrastructure. The government also allocated $5.5 million for the expansion of the Yerevan metro system this week.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015305",
+          "title": "Armenia's solar boom exposes costly gaps in its power grid"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015378",
+          "title": "Armenia to allocate $5.5M for Yerevan metro expansion: THIS WEEK IN BUSINESS"
+        }
+      ]
+    },
+    {
+      "title": "Armenian athletes secure international medals",
+      "text": "Nare Isakhanyan won a silver medal at the European Championships, fulfilling a promise of international success. In chess, Haik Martirosyan outperformed world champion Magnus Carlsen over two games.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265672",
+          "title": "Nare Isakhanyan fulfills promise of international success with European silver medal"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265644",
+          "title": "Armenia's Haik Martirosyan outperforms Magnus Carlsen over two games"
+        }
+      ]
+    },
+    {
+      "title": "Armenia and Russia sign cultural cooperation program",
+      "text": "The two countries signed a cultural cooperation program covering the years 2027 to 2029. The agreement aims to strengthen ties in the cultural sphere.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265659",
+          "title": "Armenia, Russia sign 2027–2029 cultural cooperation program"
+        }
+      ]
+    },
+    {
+      "title": "Prosecutors seek criminal proceedings against two judges",
+      "text": "The Prosecutor General's Office has requested consent to initiate criminal proceedings against two judges. Separately, the Police Guard reported uncovering around 1,000 crimes over the past year.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265681",
+          "title": "Police Guard uncovers around 1,000 crimes in one year, ensures security at major events"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265668",
+          "title": "Prosecutors seek consent to initiate criminal proceedings against two judges"
+        }
+      ]
+    }
+  ]
+}

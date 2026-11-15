@@ -53,7 +53,7 @@ try {
     if (!posts.length) console.log('Rien à publier sur LinkedIn ni WhatsApp.')
     for (const p of posts) {
       const ch = MANUAL_CHANNELS.find((c) => c.id === p.channel)
-      const where = ch.platform === 'whatsapp' ? `Chaîne : ${ch.url}` : `Page : ${adminUrl(ch.siteId)}`
+      const where = ch.platform === 'whatsapp' ? `Chaîne : ${ch.url}` : `Page : ${adminUrl(ch)}`
       console.log(`=== ${p.channel} · ${p.item.id}\n${where}\nNoter ensuite : node scripts/linkedin-pending.mjs --mark ${p.channel} ${p.item.id}\n--- texte ---\n${postText(p.item, ch.platform)}\n`)
     }
   } else if (args[0] === '--mark') {

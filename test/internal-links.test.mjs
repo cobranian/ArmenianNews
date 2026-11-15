@@ -24,9 +24,10 @@ test('le pied de page lie les trois pages du site, dans la langue de la page', (
 })
 
 test('hors de l’accueil, la nav mène aux pages piliers et non aux ancres', () => {
-  const src = lire('../src/components/Nav.jsx')
-  assert.match(src, /view === 'home' \? '#direct' : pathFor\(lang, 'radio'\)/)
-  assert.match(src, /view === 'home' \? '#agenda' : pathFor\(lang, 'agenda'\)/)
+  const src = lire('../src/navLinks.js')
+  assert.match(src, /onHome \? '#direct' : pathFor\(lang, 'radio'\)/)
+  assert.match(src, /onHome \? '#agenda' : pathFor\(lang, 'agenda'\)/)
+  assert.match(lire('../src/components/Nav.jsx'), /navLinks\(lang, \{ home, onHome: view === 'home' \}\)/)
 })
 
 test('radio ⇄ agenda : chaque page pilier lie l’autre', () => {

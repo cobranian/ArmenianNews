@@ -30,3 +30,13 @@ test('radio et agenda concordent avec nav.radio / nav.agenda d’i18n.jsx', asyn
     assert.equal(BRIEF_STRINGS[l].agenda, valeur(l, 'nav.agenda'), `${l}.agenda`)
   }
 })
+
+// Les deux barres de navigation (Nav.jsx et les pages statiques) lisent ces
+// libellés via src/navLinks.js : ils doivent rester ceux d'i18n.jsx.
+test('news, games et social concordent avec nav.* d’i18n.jsx', () => {
+  for (const l of BLOC_LANGS) {
+    for (const k of ['news', 'games', 'social']) {
+      assert.equal(BRIEF_STRINGS[l][k], valeur(l, `nav.${k}`), `${l}.${k}`)
+    }
+  }
+})
