@@ -86,7 +86,10 @@ const STATIONS = [
   // stream4cast mounts above (verified live). Radio Fama's stream4cast account
   // is 'rmirzakh'; Yerevan Nights and Armenian Gospel Radio use their own hosts.
   { id: 'lav', stream: 'https://eu.stream4cast.com/proxy/lavradio/stream' },
-  { id: 'fama', stream: 'https://eu.stream4cast.com/proxy/rmirzakh/stream' },
+  // Hors antenne depuis le 15 nov. 2026 : le proxy répond 502 et le DNAS du
+  // compte (`:2199/rpc/rmirzakh/streaminfo.get`) dit `server: Offline`,
+  // `sourcestate: false`. radiofama.am sert toujours ce compte : l'URL est bonne.
+  { id: 'fama', stream: 'https://eu.stream4cast.com/proxy/rmirzakh/stream', offAir: true },
   { id: 'yerevannights', stream: 'https://icecast.worldweb.services/Web' },
   // Direct port URL: the path form (/15554/listen.mp3) 302-redirects here, and
   // the CSP host-source must name the non-default port explicitly.
