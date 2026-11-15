@@ -221,6 +221,14 @@ export const MAX_PER_RUN = 2
 // Trois essais, une heure d'écart : de quoi passer une panne passagère de la
 // plateforme, pas de quoi publier en boucle un post qu'elle refuse.
 export const MAX_ATTEMPTS = 3
+// L'heure d'écart n'était qu'une intention : les runs de push (un par fusion)
+// renvoient eux aussi, et les trois essais d'un Reel partaient en 25 min
+// (12 nov. 2026 : 20:32, 20:35, 20:57) — une seule mauvaise passe de Meta
+// suffisait à l'abandonner. Un échec sûr attend donc ce délai avant de
+// repartir. 50 min et non 60 : le run horaire suivant (déclenché à :23, pas à
+// la seconde près) doit toujours le trouver mûr.
+export const RETRY_GAP_MS = 50 * 60_000
+const ripe = (f, now) => !f || f.uncertain || !(now - Date.parse(f.last) < RETRY_GAP_MS)
 // Une clé refusée (mot de passe changé, session révoquée, clé expirée) est la
 // panne du COMPTE, pas de l'élément : elle ne compte aucun essai. Avant
 // (10 nov. 2026), chaque heure brûlait les trois essais d'un Reel puis passait
@@ -299,6 +307,7 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
     const fresh = mine
       .filter((it) => !(it.id in entry.posted))
       .filter((it) => attemptsOf(failed[it.id]) < MAX_ATTEMPTS)
+      .filter((it) => ripe(failed[it.id], now))
       .filter((it) => kinds.includes(it.kind))
       .filter((it) => supports(ch.platform, it))
       .filter((it) => it.kind !== 'brief' || ageDays(it.date, now) <= BRIEF_MAX_AGE_DAYS)

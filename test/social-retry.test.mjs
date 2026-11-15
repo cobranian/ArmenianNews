@@ -6,7 +6,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { CHANNELS, plan, settle, ledgerFailures, MAX_ATTEMPTS } from '../scripts/lib/social.mjs'
+import { CHANNELS, plan, settle, ledgerFailures, MAX_ATTEMPTS, RETRY_GAP_MS } from '../scripts/lib/social.mjs'
 import { send, tokenHealth, instagramQuota, IG_READY_MS, IG_POLL_MS } from '../scripts/lib/social-send.mjs'
 import { checkAccounts } from '../scripts/lib/account-check.mjs'
 
@@ -23,6 +23,8 @@ const item = (slug) => ({
   image: { url: `https://armenieinfo.ch/culture/${slug}/image.jpg`, width: 1200, height: 868 },
 })
 const now = new Date('2026-11-02T12:00:00Z')
+// Le run horaire suivant : un échec sûr n'y repart qu'après RETRY_GAP_MS.
+const hour = (n) => new Date(now.getTime() + n * 3_600_000)
 const base = () => ({ version: 1, channels: { 'telegram-ch': { seededAt: 'x', posted: {} } } })
 
 test('un échec dit par la plateforme est retenté au run suivant', () => {
@@ -31,18 +33,37 @@ test('un échec dit par la plateforme est retenté au run suivant', () => {
   const after = settle(r1.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: 'HTTP 500' }], now)
   assert.equal('culture:duduk' in after.channels['telegram-ch'].posted, false)
   assert.equal(after.channels['telegram-ch'].failed['culture:duduk'].attempts, 1)
-  const r2 = plan({ items: [item('duduk')], channels: [tg], ledger: after, kinds: ['culture'], now })
+  const r2 = plan({ items: [item('duduk')], channels: [tg], ledger: after, kinds: ['culture'], now: hour(1) })
   assert.deepEqual(r2.posts.map((p) => p.item.id), ['culture:duduk'])
+})
+
+// 12 nov. 2026 : trois runs en 25 min (deux de push) ont brûlé les trois
+// essais d'un Reel pendant une seule mauvaise passe de Meta.
+test('un échec sûr attend RETRY_GAP_MS : un run de push ne le renvoie pas', () => {
+  const r1 = plan({ items: [item('duduk')], channels: [tg], ledger: base(), kinds: ['culture'], now })
+  const after = settle(r1.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: 'HTTP 400' }], now)
+  const at = (ms) => plan({ items: [item('duduk')], channels: [tg], ledger: after, kinds: ['culture'], now: new Date(now.getTime() + ms) }).posts.length
+  assert.equal(at(3 * 60_000), 0, '3 min après')
+  assert.equal(at(RETRY_GAP_MS - 1), 0, 'juste avant le délai')
+  assert.equal(at(RETRY_GAP_MS), 1, 'au délai')
+  assert.ok(RETRY_GAP_MS < 60 * 60_000, 'le run horaire suivant doit toujours le trouver mûr')
+})
+
+test('un échec en attente ne bloque pas le reste de la file', () => {
+  const l = base()
+  l.channels['telegram-ch'].failed = { 'culture:duduk': { attempts: 1, last: now.toISOString(), error: 'HTTP 400' } }
+  const r = plan({ items: [item('duduk'), item('lavash')], channels: [tg], ledger: l, kinds: ['culture'], now, max: 1 })
+  assert.deepEqual(r.posts.map((p) => p.item.id), ['culture:lavash'])
 })
 
 test('après MAX_ATTEMPTS échecs, l’article est abandonné — et signalé', () => {
   let ledger = base()
   for (let i = 0; i < MAX_ATTEMPTS; i++) {
-    const r = plan({ items: [item('duduk')], channels: [tg], ledger, kinds: ['culture'], now })
+    const r = plan({ items: [item('duduk')], channels: [tg], ledger, kinds: ['culture'], now: hour(i) })
     assert.equal(r.posts.length, 1, `essai ${i + 1}`)
-    ledger = settle(r.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: 'refus' }], now)
+    ledger = settle(r.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: 'refus' }], hour(i))
   }
-  assert.deepEqual(plan({ items: [item('duduk')], channels: [tg], ledger, kinds: ['culture'], now }).posts, [])
+  assert.deepEqual(plan({ items: [item('duduk')], channels: [tg], ledger, kinds: ['culture'], now: hour(MAX_ATTEMPTS) }).posts, [])
   const f = ledgerFailures(ledger)
   assert.equal(f.length, 1)
   assert.equal(f[0].abandoned, true)
@@ -193,9 +214,9 @@ const AUTH = 'facebook-reel/start : HTTP 400 Error validating access token: The 
 test('une clé refusée ne brûle aucun essai : l’élément reste en tête de file', () => {
   let ledger = base()
   for (let i = 0; i < MAX_ATTEMPTS + 2; i++) {
-    const r = plan({ items: [item('duduk'), item('lavash')], channels: [tg], ledger, kinds: ['culture'], now, max: 1 })
+    const r = plan({ items: [item('duduk'), item('lavash')], channels: [tg], ledger, kinds: ['culture'], now: hour(i), max: 1 })
     assert.deepEqual(r.posts.map((p) => p.item.id), ['culture:duduk'], `passage ${i + 1}`)
-    ledger = settle(r.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: AUTH }], now)
+    ledger = settle(r.ledger, [{ channel: 'telegram-ch', id: 'culture:duduk', ok: false, error: AUTH }], hour(i))
   }
   const f = ledgerFailures(ledger)
   assert.equal(f.length, 1)
