@@ -349,6 +349,23 @@ export function checkFeeds(feeds, now = new Date()) {
 // (seul `npm run radio-check` en local tranche). Le verdict est celui de
 // radio-check, dans les deux sens : muette non marquée, ou marquée qui rediffuse.
 export const RADIO_CI_BLOCKED = new Set(['vov'])
+
+// Le détail d'une station muette est écrit par SON SERVEUR (ligne de statut,
+// en-tête icy-notice2 — sonder(), scripts/radio-check.mjs) : un tiers. Il part
+// dans le corps de l'issue, que le run suivant relit (previousAlertKeys). D'où
+// trois gardes : ni `<` ni `>` (un `<!-- alertes: … -->` forgé taisait des
+// alertes, un `<!--` nu masquait la suite de la page), ni caractère de contrôle
+// (un saut de ligne lui ouvrirait une ligne Markdown), et une longueur bornée —
+// le texte paraît deux fois dans le corps, que GitHub plafonne à 65 536
+// caractères : un en-tête géant ferait échouer `gh issue edit`. Remplacement un
+// pour un, jamais par une entité (`&lt;` quadruplerait la taille).
+export const RADIO_DETAIL_MAX = 200
+function inerte(detail) {
+  const s = String(detail).replace(/\p{Cc}+/gu, ' ').replace(/</g, '‹').replace(/>/g, '›')
+  const c = [...s]
+  return c.length > RADIO_DETAIL_MAX ? `${c.slice(0, RADIO_DETAIL_MAX - 1).join('')}…` : s
+}
+
 export function checkRadios(results, blocked = RADIO_CI_BLOCKED) {
   const out = []
   const local = 'lancer `npm run radio-check` en local'
@@ -363,7 +380,7 @@ export function checkRadios(results, blocked = RADIO_CI_BLOCKED) {
       out.push({
         key: `radio-${r.id}-panne`,
         level: 'faire',
-        text: `${r.id} : MUETTE — ${r.detail}`,
+        text: `${r.id} : MUETTE — ${inerte(r.detail)}`,
         action: `Radio ${r.id} muette : ${local} ; si elle le reste, la marquer \`offAir: true\` dans src/components/Radio.jsx`,
       })
     else
@@ -456,13 +473,15 @@ export function checkScraper({ generatedAt, problems = [], tracked = 0, failures
 // --- Le rendu ---------------------------------------------------------------
 
 export const ALERT_LEVELS = new Set(['bloquant', 'faire'])
-const MARK = /<!-- alertes: (.*?) -->/
+const MARK = /<!-- alertes: (.*?) -->/g
 
 export function alertKeys(sections) {
   return sections.flatMap((s) => s.rows).filter((r) => ALERT_LEVELS.has(r.level)).map((r) => r.key).sort()
 }
+// Le DERNIER marqueur : renderDashboard pose le vrai en toute fin de corps, et
+// un texte venu d'un tiers plus haut dans la page ne doit pas pouvoir le devancer.
 export function previousAlertKeys(body) {
-  const m = String(body ?? '').match(MARK)
+  const m = [...String(body ?? '').matchAll(MARK)].at(-1)
   return m ? m[1].split('|').filter(Boolean) : []
 }
 
