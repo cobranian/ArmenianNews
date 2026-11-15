@@ -49,11 +49,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -160,11 +155,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -706,11 +696,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -815,11 +800,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -916,11 +896,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -1119,11 +1094,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -1471,11 +1441,6 @@
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
-        "reel:monastere-de-tatev": {
-          "attempts": 3,
-          "last": "2026-11-09T13:31:42.602Z",
-          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
         "reel:lavash": {
           "attempts": 3,
           "last": "2026-11-09T16:33:02.408Z",
@@ -1640,13 +1605,6 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z"
-      },
-      "failed": {
-        "reel:khatchkar": {
-          "attempts": 1,
-          "last": "2026-11-15T00:35:13.456Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        }
       }
     },
     "instagram-it": {
@@ -1775,13 +1733,6 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z"
-      },
-      "failed": {
-        "reel:khatchkar": {
-          "attempts": 1,
-          "last": "2026-11-15T00:35:13.456Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        }
       }
     },
     "instagram-ru": {
@@ -1846,13 +1797,6 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z"
-      },
-      "failed": {
-        "reel:khatchkar": {
-          "attempts": 1,
-          "last": "2026-11-15T00:35:13.456Z",
-          "error": "instagram-reel/upload : HTTP 400 {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}"
-        }
       }
     }
   }
