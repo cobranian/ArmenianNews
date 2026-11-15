@@ -30,7 +30,7 @@ import { TRANSLATED, OPTIONAL, chosenImage } from './lib/culture-validate.mjs'
 import { setTopicStatus } from './lib/culture-topic.mjs'
 import { chatResilient, explain } from './lib/culture-llm.mjs'
 import { translationScriptProblem } from './lib/brief-script.mjs'
-import { buildTranslateMessages, parseArticleJson } from './lib/culture-prompts.mjs'
+import { buildTranslateMessages, parseArticleJson, plainName } from './lib/culture-prompts.mjs'
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
@@ -89,6 +89,12 @@ for (const lang of langs) {
     const nameHint = optional
       ? (meta.sources ?? []).find((s) => (s?.kind ?? 'wikipedia') === 'wikipedia' && s.lang === lang)?.title ?? null
       : null
+    // Un titre écarté par plainName n'est PAS recopié ici : il vient d'un tiers
+    // et ce résumé part dans le corps de la PR.
+    if (nameHint && !plainName(nameHint)) {
+      lines.push(`- ⚠️ ${lang} — titre de la Wikipédia ${lang} écarté (pas un simple nom) : traduit sans nom en usage ; vérifiez cette source dans meta.json`)
+      console.warn(`  ⚠️ ${slug}/${lang} : titre Wikipédia écarté (pas un simple nom)`)
+    }
     const res = await chatResilient({
       sticky,
       temperature: 0.2,
