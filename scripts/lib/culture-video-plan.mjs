@@ -1,7 +1,8 @@
-// Quelles vidéos un article attend — à partir du résultat de validateArticle.
-// Module pur, partagé par articles-publish.yml (Shorts à traduire avant la
-// fusion) et video.yml (Shorts à rendre après).
+// Ce qu'un article attend encore — traductions, Shorts, vidéos — à partir du
+// résultat de validateArticle. Module pur, partagé par articles-publish.yml
+// (quoi traduire avant la fusion) et video.yml (quoi rendre après).
 import { ALL_LANGS } from '../../sites.config.js'
+import { TRANSLATED, chosenImage } from './culture-validate.mjs'
 
 const online = (videos, slug, lang) => Boolean(videos?.[slug]?.[lang])
 
@@ -18,4 +19,29 @@ export function videoLangs(result, { slug, videos, queue }) {
 export function shortsToTranslate(result, { slug, videos }) {
   if (!result.shorts?.fr) return []
   return ALL_LANGS.filter((l) => l !== 'fr' && result.langs?.[l] && !result.shorts?.[l] && !online(videos, slug, l))
+}
+
+// Les passages de culture-translate qu'il faut à une PR de publication — une
+// liste d'arguments par passage, [] = rien à traduire. Règle : un <lang>.md à
+// jour, déjà relu, n'est JAMAIS retraduit (un Short fr retouché par /corrige
+// rendait autrefois périmés les shorts en/hy/ru, culture-check échouait, et
+// les six articles repartaient au modèle — de secours, parfois).
+//   - articles : les seules langues dont le .md est absent, périmé ou refusé
+//     (pas quand le contrôle passe : de/it/es absentes n'y sont que des notes) ;
+//     leur Short suit dans le même passage ;
+//   - Shorts : --short-only sur les langues à article publiable dont le Short
+//     ne l'est pas ;
+//   - image changée (imageChoice) sans autre travail : un --short-only seul,
+//     qui synchronise l'image et ne traduit que ce qui doit l'être.
+// Sans fr.md lisible (result.langs.fr absent), aucune traduction n'y peut rien.
+export function translationRuns(result, { slug, videos, meta, checkPassed }) {
+  if (!result.langs?.fr) return []
+  const articles = checkPassed ? [] : TRANSLATED.filter((l) => !result.langs[l])
+  const shorts = shortsToTranslate(result, { slug, videos })
+  const imageChanged = (chosenImage(meta)?.commonsUrl ?? null) !== (meta?.image?.commonsUrl ?? null)
+  const runs = []
+  if (articles.length) runs.push(['--langs', articles.join(',')])
+  if (shorts.length) runs.push(['--short-only', '--langs', shorts.join(',')])
+  else if (imageChanged && !articles.length) runs.push(['--short-only'])
+  return runs
 }

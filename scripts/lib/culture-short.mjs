@@ -99,6 +99,15 @@ export function validateShort(short, { lang, articleText } = {}) {
   return errors
 }
 
+// Le short d'une traduction est-il à (re)faire ? Absent ou illisible (null),
+// périmé (sourceHash ≠ `want`, l'empreinte du short fr) ou non conforme à son
+// article — le même verdict que culture-check, qui lit le .md brut.
+export function shortNeedsTranslation(current, { want, lang, articleText }) {
+  if (!current || typeof current !== 'object') return true
+  if (current.sourceHash !== want) return true
+  return validateShort(current, { lang, articleText }).length > 0
+}
+
 // La réponse d'un modèle : JSON nu ou dans un bloc ```json```. null si ce
 // n'est pas un objet.
 export function parseShortJson(text) {

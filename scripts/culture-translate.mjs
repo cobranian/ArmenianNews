@@ -25,7 +25,7 @@
  * son <lang>.md, contre CET article (culture-short-translate.mjs). Un échec de
  * la vidéo n'ôte rien à l'article et ne compte pas dans le code de sortie : il
  * ajoute une ligne « ✗ <lang> vidéo ». `--short-only` ne retraduit PAS les
- * articles : il traduit les seuls shorts absents ou périmés, contre les
+ * articles : il traduit les seuls shorts absents, périmés ou non conformes, contre les
  * <lang>.md à jour déjà présents.
  */
 import { readFile, writeFile, rm } from 'node:fs/promises'
@@ -41,7 +41,7 @@ import { buildTranslateMessages, parseArticleJson, plainName } from './lib/cultu
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
-import { validateShort, shortHash, parseShortJson } from './lib/culture-short.mjs'
+import { validateShort, shortHash, parseShortJson, shortNeedsTranslation } from './lib/culture-short.mjs'
 import { translateShort } from './lib/culture-short-translate.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -125,28 +125,25 @@ async function translateVideo(lang, t) {
   }
 }
 
-// --short-only : les articles ne sont pas retraduits ; seuls les shorts absents
-// ou périmés le sont, contre les <lang>.md déjà à jour.
+// --short-only : les articles ne sont pas retraduits ; seuls les shorts absents,
+// périmés ou non conformes le sont, contre les <lang>.md déjà à jour.
 if (values['short-only'] && shortFr) {
   const want = shortHash(shortFr)
   for (const lang of langs) {
+    let mdText, md
     try {
-      const current = JSON.parse(await readFile(path.join(base, `short.${lang}.json`), 'utf-8'))
-      if (current?.sourceHash === want) continue
+      mdText = await readFile(path.join(base, `${lang}.md`), 'utf-8')
+      md = parseFrontMatter(mdText)
     } catch {
-      // absent : à traduire
-    }
-    let md
-    try {
-      md = parseFrontMatter(await readFile(path.join(base, `${lang}.md`), 'utf-8'))
-    } catch {
-      lines.push(`- ✗ ${lang} vidéo — pas de ${lang}.md : traduisez d'abord l'article`)
+      lines.push(`- ✗ ${lang} vidéo — pas de ${lang}.md lisible : traduisez d'abord l'article`)
       continue
     }
     if (md.data.sourceHash !== hash) {
       lines.push(`- ✗ ${lang} vidéo — ${lang}.md périmé : retraduisez d'abord l'article`)
       continue
     }
+    const current = parseShortJson(await readFile(path.join(base, `short.${lang}.json`), 'utf-8').catch(() => ''))
+    if (!shortNeedsTranslation(current, { want, lang, articleText: mdText })) continue
     await translateVideo(lang, { title: md.data.title, description: md.data.description, body: md.body })
   }
 }

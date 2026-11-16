@@ -77,9 +77,13 @@ test('articles-publish.yml : la vidéo part APRÈS la fusion', async () => {
   assert.ok(y.indexOf('gh pr merge') < y.indexOf('gh workflow run video.yml'))
 })
 
-test('articles-publish.yml : Shorts manquants traduits seuls, avant le contrôle final', async () => {
+test('articles-publish.yml : seuls les passages du plan sont traduits, avant le contrôle final', async () => {
   const y = await read('articles-publish.yml')
   const prep = y.slice(y.indexOf('- name: Contrôler, traduire si besoin'), y.indexOf('- name: Contrôle final'))
-  assert.match(prep, /culture-translate\.mjs "\$SLUG" --short-only --langs "\$TODO" --summary/)
+  assert.match(prep, /culture-translate-plan\.mjs "\$SLUG" \$PASSED/)
+  assert.match(prep, /culture-translate\.mjs "\$SLUG" \$args --summary/)
+  // Jamais de traduction de tous les articles : chaque passage vient du plan.
+  assert.doesNotMatch(prep, /culture-translate\.mjs "\$SLUG" --summary/)
+  assert.match(prep, /cat "\$RUNNER_TEMP"\/summary-\*\.md > "\$RUNNER_TEMP\/summary\.md"/)
   assert.match(prep, /modèle de secours/, 'un Short traduit par le secours retient aussi la fusion')
 })

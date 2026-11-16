@@ -89,29 +89,31 @@ jobs:
           SLUG="${BRANCH#culture/}"
           printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
           if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then
-            # Conforme — mais un Short absent ou périmé n'est qu'une note : sans
-            # rattrapage, l'article partirait sans sa vidéo dans cette langue.
-            # On ne traduit alors QUE ces Shorts, contre les articles déjà relus.
-            TODO="$(node --input-type=module -e '
-              import { readArticle, readVideos } from "./scripts/lib/culture-load.mjs"
-              import { validateArticle } from "./scripts/lib/culture-validate.mjs"
-              import { shortsToTranslate } from "./scripts/lib/culture-video-plan.mjs"
-              const [slug] = process.argv.slice(1), dir = "src/data/culture", videos = await readVideos(dir)
-              const result = validateArticle({ ...(await readArticle(dir, slug)), videos })
-              console.log(shortsToTranslate(result, { slug, videos }).join(","))
-            ' "$SLUG")"
-            if [ -z "$TODO" ]; then
-              echo "Déjà conforme : pas de traduction."
-              exit 0
-            fi
-            echo "Conforme, Shorts à traduire : $TODO"
-            node scripts/culture-translate.mjs "$SLUG" --short-only --langs "$TODO" --summary "$RUNNER_TEMP/summary.md" || true
+            PASSED=--check-passed
           else
+            PASSED=
             cat "$RUNNER_TEMP/check.txt"
-            # Traductions absentes ou périmées (ou autre défaut) : on traduit le
-            # français ACTUEL. Une langue en échec n'arrête pas les autres.
-            node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md" || true
           fi
+          # Ce qu'il faut traduire, et rien de plus (culture-translate-plan.mjs) :
+          # un article à jour, déjà relu, n'est JAMAIS retraduit — un Short
+          # périmé ou non conforme ne relance que son Short (--short-only), et
+          # même conforme, un Short absent est rattrapé (sinon pas de vidéo).
+          node scripts/culture-translate-plan.mjs "$SLUG" $PASSED > "$RUNNER_TEMP/plan.txt"
+          if [ ! -s "$RUNNER_TEMP/plan.txt" ]; then
+            echo "Rien à traduire${PASSED:+ : déjà conforme}."
+            exit 0
+          fi
+          echo "Passages de traduction :"
+          cat "$RUNNER_TEMP/plan.txt"
+          # Un passage par ligne (« --langs ru », « --short-only --langs en ») ;
+          # $args non cité exprès : des options et des codes de langue. Un
+          # passage ou une langue en échec n'arrête pas les autres.
+          n=0
+          while read -r args; do
+            n=$((n + 1))
+            node scripts/culture-translate.mjs "$SLUG" $args --summary "$RUNNER_TEMP/summary-$n.md" < /dev/null || true
+          done < "$RUNNER_TEMP/plan.txt"
+          cat "$RUNNER_TEMP"/summary-*.md > "$RUNNER_TEMP/summary.md" 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data/culture
