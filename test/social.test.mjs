@@ -66,13 +66,16 @@ test('la brève ne part que si demandée, et seulement fraîche', () => {
   assert.deepEqual(r.posts.map((p) => p.item.id), ['brief:2026-10-24', 'brief:2026-10-25'])
 })
 
-test('Instagram exige une image au bon format', () => {
+test('Instagram ne reçoit plus aucune image : seulement des Reels', () => {
   assert.equal(fitsInstagram({ width: 1200, height: 868 }), true)
   assert.equal(fitsInstagram({ width: 800, height: 1400 }), false)
   assert.equal(fitsInstagram(null), false)
   const ledger = { version: 1, channels: { 'instagram-ch': { seededAt: 'x', posted: {} } } }
-  const items = [culture('sans', '2026-10-20', null), culture('haut', '2026-10-21', { width: 600, height: 1200 }), culture('ok', '2026-10-22')]
-  assert.deepEqual(plan({ items, channels: [ig], ledger, kinds: ['culture'], now }).posts.map((p) => p.item.id), ['culture:ok'])
+  const brief = { id: 'brief:2026-10-22', kind: 'brief', lang: 'fr', date: '2026-10-22', url: 'u', title: 't', description: 'd', image: { width: 1200, height: 630 } }
+  const items = [culture('sans', '2026-10-20', null), culture('ok', '2026-10-22'), brief]
+  assert.deepEqual(plan({ items, channels: [ig], ledger, kinds: ['culture', 'brief'], now }).posts, [])
+  const reel = { ...culture('ok', '2026-10-22'), id: 'reel:ok', kind: 'reel', video: { url: 'v', music: 'm' } }
+  assert.deepEqual(plan({ items: [...items, reel], channels: [ig], ledger, kinds: ['culture', 'brief', 'reel'], now }).posts.map((p) => p.item.id), ['reel:ok'])
 })
 
 test('les canaux ne sont actifs qu’avec TOUS leurs secrets', () => {

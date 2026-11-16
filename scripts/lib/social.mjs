@@ -212,7 +212,10 @@ export function supports(platform, item) {
   // Un Reel est une vidéo : seuls Facebook et Instagram en publient, et
   // l'image n'y joue aucun rôle.
   if (item.kind === 'reel') return platform === 'facebook' || platform === 'instagram'
-  return platform !== 'instagram' || fitsInstagram(item.image)
+  // Instagram ne reçoit PLUS d'image, seulement des Reels (consigne du 16 nov.
+  // 2026) : un article Culture y part en vidéo, le jour où son Reel passe.
+  // `fitsInstagram` reste pour les annonces envoyées à la main.
+  return platform !== 'instagram'
 }
 
 // --- Le plan ---------------------------------------------------------------
