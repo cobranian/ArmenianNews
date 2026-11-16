@@ -247,8 +247,27 @@ const attemptsOf = (f) => (f && !isAuthFailure(f.error) ? (f.attempts ?? 0) : 0)
 // Une brève de la veille vaut encore d'être partagée ; au-delà, c'est du passé.
 const BRIEF_MAX_AGE_DAYS = 1
 
+// Un Reel dont l'article a moins de cette limite passe avant le catalogue
+// ancien : l'article qui vient de paraître est celui qu'on veut montrer.
+export const FRESH_REEL_DAYS = 7
+
 function ageDays(date, now) {
   return (Date.parse(now.toISOString().slice(0, 10)) - Date.parse(date)) / 86_400_000
+}
+
+// Ne réordonne QUE les Reels : ils occupent leurs positions d'origine, les
+// articles et les brèves gardent les leurs. Parmi les Reels, les articles neufs
+// d'abord (le plus récent en tête), puis l'ordre de date ancien.
+function orderReels(list, now) {
+  const slots = list.flatMap((it, i) => (it.kind === 'reel' ? [i] : []))
+  const rank = (it) => (ageDays(it.date, now) <= FRESH_REEL_DAYS ? 0 : 1)
+  const reels = slots.map((i) => list[i]).sort((a, b) =>
+    rank(a) - rank(b)
+    || (rank(a) === 0 ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date))
+    || a.id.localeCompare(b.id))
+  const out = [...list]
+  slots.forEach((slot, k) => { out[slot] = reels[k] })
+  return out
 }
 
 export function emptyLedger() {
@@ -307,7 +326,7 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
     let reelDone = Object.entries(entry.posted).some(
       ([id, v]) => id.startsWith('reel:') && /^\d{4}-\d{2}-\d{2}T/.test(v) && yerevanDay(v) === today,
     )
-    const fresh = mine
+    const candidates = mine
       .filter((it) => !(it.id in entry.posted))
       .filter((it) => attemptsOf(failed[it.id]) < MAX_ATTEMPTS)
       .filter((it) => ripe(failed[it.id], now))
@@ -315,6 +334,7 @@ export function plan({ items, channels, ledger, kinds, now = new Date(), max = M
       .filter((it) => supports(ch.platform, it))
       .filter((it) => it.kind !== 'brief' || ageDays(it.date, now) <= BRIEF_MAX_AGE_DAYS)
       .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))
+    const fresh = orderReels(candidates, now)
       // Avant le plafond : un Reel écarté ne doit pas prendre la place d'un
       // article.
       .filter((it) => it.kind !== 'reel' || (!reelDone && (reelDone = true)))
