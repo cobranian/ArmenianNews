@@ -763,11 +763,6 @@
           "attempts": 3,
           "last": "2026-11-10T18:32:20.209Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
-        },
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": {
-          "attempts": 1,
-          "last": "2026-11-16T11:38:38.279Z",
-          "error": "facebook : HTTP 400 The url you supplied is invalid"
         }
       }
     },
