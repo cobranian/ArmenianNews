@@ -23,3 +23,9 @@ test('jobs({langs:["fr"],slugs:["duduk"]}) rend le seul couple Fr-duduk', () => 
     { composition: 'Fr-duduk', out: 'out/fr/duduk.mp4' },
   ])
 })
+
+test('jobs() ne rend que les langues dont le Short a un texte', () => {
+  assert.deepEqual(jobs({ slugs: ['duduk'], has: (_, lang) => lang === 'fr' }), [
+    { composition: 'Fr-duduk', out: 'out/fr/duduk.mp4' },
+  ])
+})

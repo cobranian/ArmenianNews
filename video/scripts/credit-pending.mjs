@@ -1,5 +1,6 @@
 // Ajoute le crédit musical (♪ …) à la description de chaque méta
-// out/youtube/<slug>-<lang>.json pas encore publiée sur YouTube. Une vidéo déjà
+// youtube-meta/<slug>-<lang>.json pas encore publiée sur YouTube (describe.mjs
+// l'écrit déjà : ceci ne rattrape que les plus anciennes). Une vidéo déjà
 // en ligne (présente dans culture-videos.json) garde sa description : la
 // modifier ici ne changerait rien sur YouTube.
 // Usage : node scripts/credit-pending.mjs [--dry]
@@ -16,7 +17,7 @@ export const withCredit = (description, slug) =>
 
 function main() {
   const dry = process.argv.includes('--dry')
-  const dir = new URL('../out/youtube/', import.meta.url)
+  const dir = new URL('../youtube-meta/', import.meta.url)
   const published = JSON.parse(
     readFileSync(new URL('../../src/data/culture-videos.json', import.meta.url), 'utf8'),
   )
@@ -33,7 +34,6 @@ function main() {
     if (next === meta.description) continue
     n++
     console.log(`${dry ? '[dry] ' : ''}${slug}-${lang}`)
-    if (!dry) writeFileSync(path, JSON.stringify(meta, null, 2) + '\n')
     if (!dry) {
       meta.description = next
       writeFileSync(path, JSON.stringify(meta, null, 2) + '\n')

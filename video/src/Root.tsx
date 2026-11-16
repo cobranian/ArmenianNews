@@ -44,10 +44,12 @@ export const RemotionRoot: React.FC = () => (
     </Folder>
     {/* Un Short par article Culture (src/shorts/data/, puis scripts/sync.mjs).
         Identifiant : Fr-, En-, Hy-, Ru-, De-, It- et Es-<slug> (Remotion n'accepte ni accent ni
-        espace, et le tiret du slug passe). */}
+        espace, et le tiret du slug passe). Seules les langues dont sync.mjs a
+        trouvé le short.<lang>.json sont déclarées : un article neuf peut
+        n'avoir que le français, et shortDuration planterait sur les autres. */}
     <Folder name="Articles">
       {SHORTS.flatMap((s) =>
-        (["fr", "en", "hy", "ru", "de", "it", "es"] as const).map((lang) => (
+        (["fr", "en", "hy", "ru", "de", "it", "es"] as const).filter((lang) => lang in s).map((lang) => (
           <Composition
             key={`${lang}-${s.slug}`}
             id={`${lang[0].toUpperCase()}${lang[1]}-${s.slug}`}

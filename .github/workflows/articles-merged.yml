@@ -62,6 +62,8 @@ jobs:
           for l in en hy ru de it es; do [ -f "$D/$l.md" ] || missing="$missing $l"; done
           if [ -z "$missing" ] && node scripts/culture-check.mjs "$SLUG"; then
             echo "Traductions présentes et à jour : rien à faire."
+            # Les Shorts de l'article (video.yml), sans retenir la publication.
+            gh workflow run video.yml --ref main -f slug="$SLUG" || true
             exit 0
           fi
           echo "À traduire (manquantes :${missing:- aucune}, ou périmées)"
@@ -78,6 +80,8 @@ jobs:
             if git pull --rebase origin main && git push origin HEAD:main; then
               # Un push par GITHUB_TOKEN ne déclenche pas le déploiement.
               gh workflow run hourly.yml --ref main
+              # Les traductions sont sur main : les Shorts peuvent partir.
+              gh workflow run video.yml --ref main -f slug="$SLUG" || true
               {
                 echo "Fusionnée avant ses traductions : elles ont été faites sur main et déployées."
                 echo

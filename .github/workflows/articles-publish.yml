@@ -89,13 +89,29 @@ jobs:
           SLUG="${BRANCH#culture/}"
           printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
           if node scripts/culture-check.mjs --pr-body "$RUNNER_TEMP/body.md" "$SLUG" > "$RUNNER_TEMP/check.txt"; then
-            echo "Déjà conforme : pas de traduction."
-            exit 0
+            # Conforme — mais un Short absent ou périmé n'est qu'une note : sans
+            # rattrapage, l'article partirait sans sa vidéo dans cette langue.
+            # On ne traduit alors QUE ces Shorts, contre les articles déjà relus.
+            TODO="$(node --input-type=module -e '
+              import { readArticle, readVideos } from "./scripts/lib/culture-load.mjs"
+              import { validateArticle } from "./scripts/lib/culture-validate.mjs"
+              import { shortsToTranslate } from "./scripts/lib/culture-video-plan.mjs"
+              const [slug] = process.argv.slice(1), dir = "src/data/culture", videos = await readVideos(dir)
+              const result = validateArticle({ ...(await readArticle(dir, slug)), videos })
+              console.log(shortsToTranslate(result, { slug, videos }).join(","))
+            ' "$SLUG")"
+            if [ -z "$TODO" ]; then
+              echo "Déjà conforme : pas de traduction."
+              exit 0
+            fi
+            echo "Conforme, Shorts à traduire : $TODO"
+            node scripts/culture-translate.mjs "$SLUG" --short-only --langs "$TODO" --summary "$RUNNER_TEMP/summary.md" || true
+          else
+            cat "$RUNNER_TEMP/check.txt"
+            # Traductions absentes ou périmées (ou autre défaut) : on traduit le
+            # français ACTUEL. Une langue en échec n'arrête pas les autres.
+            node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md" || true
           fi
-          cat "$RUNNER_TEMP/check.txt"
-          # Traductions absentes ou périmées (ou autre défaut) : on traduit le
-          # français ACTUEL. Une langue en échec n'arrête pas les autres.
-          node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md" || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data/culture
@@ -118,7 +134,7 @@ jobs:
       - name: Traductions de secours — attendre le relecteur
         if: steps.prep.outputs.fallback == '1'
         run: |
-          gh pr comment "$PR" --body "⏸️ **Pas encore fusionné.** Gemini n'a pas répondu : les traductions viennent du modèle de secours (voir le commentaire ci-dessus). Jetez un œil à en/hy/ru dans l'onglet *Files changed*, puis **décochez et recochez « Faits vérifiés »** : l'article partira aussitôt, sans nouvelle traduction." || true
+          gh pr comment "$PR" --body "⏸️ **Pas encore fusionné.** Gemini n'a pas répondu : les traductions viennent du modèle de secours (voir le commentaire ci-dessus). Jetez un œil à en/hy/ru (articles et textes des vidéos, short.*.json) dans l'onglet *Files changed*, puis **décochez et recochez « Faits vérifiés »** : l'article partira aussitôt, sans nouvelle traduction." || true
 
       - name: Contrôle final, fusion, déploiement
         if: steps.prep.outputs.fallback != '1'
@@ -145,6 +161,9 @@ jobs:
           # basculer le clone local sur main, absent d'un checkout superficiel.
           gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$BRANCH" || true
           gh workflow run hourly.yml --ref main
+          # Les Shorts de l'article : rendus, déposés et mis en file par video.yml.
+          # Un échec ici ne retient pas l'article, déjà fusionné.
+          gh workflow run video.yml --ref main -f slug="$SLUG" || true
           gh pr comment "$PR" --body "✅ Fusionné : l'article sera en ligne sur armenieinfo.ch et armenianews.org dans 5 à 10 minutes (déploiement lancé)." || true
 
       # Un échec ici ne doit plus attendre qu'on le découvre : le tableau de
