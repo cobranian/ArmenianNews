@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { findUnsupported } from '../scripts/lib/culture-prompts.mjs'
-import { mechanicalClaims, entityTexts, splitClaims, EDITORIAL_TERMS, editorialAlerts, verifyClaims } from '../scripts/lib/culture-checks.mjs'
+import { mechanicalClaims, entityTexts, splitClaims, EDITORIAL_TERMS, editorialAlerts, verifyClaims, draftShort, reviseShort } from '../scripts/lib/culture-checks.mjs'
 
 test('mechanicalClaims : années, nombres, dates en toutes lettres ; ignore les chiffres isolés', () => {
   const c = mechanicalClaims('Né le 12 mars 1915, il part en mars 1920 avec 1 200 livres, en 1915 et 3 amis. Il a 45 ans.')
@@ -60,4 +60,78 @@ test('verifyClaims : faits introuvables, repli annoncé, panne → null sans lev
 
   const bad = await verifyClaims({ body, haystack: [], chat: async () => ({ text: 'pas du JSON', model: 'm', fellBack: false }) })
   assert.equal(bad.unsupported, null, 'réponse illisible : null, jamais « rien à signaler »')
+})
+
+// Le Short : un appel à part, deux essais, jamais d'exception — un article ne
+// tombe pas pour sa vidéo.
+const ARTICLE = '---\ntitle: "Le duduk"\n---\n\nNé au Ve siècle, inscrit en 2005, long de 28 à 40 cm.'
+const sfact = (over = {}) => ({ eyebrow: 'Arménie', title: 'Un titre', text: 'Un texte court.', big: false, ...over })
+const goodShort = (over = {}) => ({
+  facts: Array.from({ length: 7 }, () => sfact()),
+  outroTitle: 'Le duduk',
+  ytTitle: 'Le duduk, depuis 2005',
+  ytLead: 'Une phrase.',
+  music: 'otar',
+  ...over,
+})
+const reply = (o) => ({ text: '```json\n' + JSON.stringify(o) + '\n```', model: 'gemini', fellBack: false })
+const args = { title: 'Le duduk', description: 'D', body: 'B', articleText: ARTICLE }
+
+test('draftShort : second essai après un Short invalide ; champs inconnus retirés', async () => {
+  const calls = []
+  const answers = [reply(goodShort({ ytTitle: 'Inventé en 1999' })), reply({ ...goodShort(), bavard: 'x' })]
+  const r = await draftShort({ ...args, chat: async (o) => (calls.push(o), answers.shift()) })
+  assert.equal(calls.length, 2)
+  assert.deepEqual(r.short, goodShort())
+  assert.equal(r.error, null)
+  assert.deepEqual(r.warnings, [])
+})
+
+test('draftShort : deux échecs → pas de Short, la raison ; une panne ne lève pas', async () => {
+  const bad = await draftShort({ ...args, chat: async () => reply(goodShort({ music: 'jazz' })) })
+  assert.equal(bad.short, null)
+  assert.match(bad.error, /music/)
+  const down = await draftShort({ ...args, chat: async () => { throw new Error('HTTP 503 (gemini)') } })
+  assert.equal(down.short, null)
+  assert.match(down.error, /HTTP 503/)
+  const prose = await draftShort({ ...args, chat: async () => ({ text: 'non', model: 'm', fellBack: false }) })
+  assert.match(prose.error, /JSON illisible/)
+})
+
+test('draftShort : repli de modèle annoncé', async () => {
+  const r = await draftShort({ ...args, chat: async () => ({ ...reply(goodShort()), model: 'secours', fellBack: true }) })
+  assert.ok(r.short)
+  assert.match(r.warnings.join(), /secours/)
+})
+
+// Révision : un texte de vidéo périmé ne doit pas survivre en silence.
+test('reviseShort : Short rendu valide → réécrit', () => {
+  const r = reviseShort({ oldShort: goodShort(), returned: goodShort({ outroTitle: 'Duduk' }), oldText: ARTICLE, newText: ARTICLE })
+  assert.equal(r.action, 'updated')
+  assert.equal(r.short.outroTitle, 'Duduk')
+})
+
+test('reviseShort : rendu absent ou invalide, ancien encore fidèle → gardé', () => {
+  const newText = ARTICLE.replace('long de', 'mesurant')
+  for (const returned of [undefined, goodShort({ music: 'jazz' })]) {
+    const r = reviseShort({ oldShort: goodShort(), returned, oldText: ARTICLE, newText })
+    assert.equal(r.action, 'kept')
+    assert.deepEqual(r.short, goodShort())
+  }
+})
+
+test('reviseShort : article changé, ancien Short plus fidèle → supprimé, avec la raison', () => {
+  const newText = ARTICLE.replace('2005', '2008')
+  const r = reviseShort({ oldShort: goodShort(), returned: undefined, oldText: ARTICLE, newText })
+  assert.equal(r.action, 'deleted')
+  assert.equal(r.short, null)
+  assert.match(r.reason, /2005/)
+})
+
+test('reviseShort : article inchangé → l’ancien est gardé tel quel ; pas d’ancien → rien', () => {
+  const stale = goodShort({ ytTitle: 'Inventé en 1999' })
+  assert.equal(reviseShort({ oldShort: stale, returned: undefined, oldText: ARTICLE, newText: ARTICLE }).action, 'kept')
+  const none = reviseShort({ oldShort: null, returned: goodShort(), oldText: ARTICLE, newText: ARTICLE })
+  assert.equal(none.action, 'none')
+  assert.equal(none.short, null)
 })

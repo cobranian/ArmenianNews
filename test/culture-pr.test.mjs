@@ -1,7 +1,7 @@
 // test/culture-pr.test.mjs
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { AUTO_START, AUTO_END, buildPrBody, replaceAutoSection, isChecked, uncheck, ideasIssueBody } from '../scripts/lib/culture-pr.mjs'
+import { AUTO_START, AUTO_END, buildAutoSection, buildPrBody, replaceAutoSection, isChecked, uncheck, ideasIssueBody } from '../scripts/lib/culture-pr.mjs'
 import { factsChecked } from '../scripts/lib/culture-validate.mjs'
 import { meta } from './helpers/culture-fixture.mjs'
 
@@ -193,4 +193,29 @@ test('issue d’idées : numérotée, JSON avec n/qid/status proposed, mode d’
   assert.deepEqual(json[1].wikipedia, { en: 'Lavash' })
   assert.match(body, /`\/ajoute 1 4 7`/)
   assert.match(body, /`\/rejette 2 3`/)
+})
+
+const SHORT = {
+  facts: Array.from({ length: 7 }, (_, i) => ({ eyebrow: `Sur ${i}`, title: `Titre ${i + 1}`, text: `Texte ${i + 1}.`, big: i === 2 })),
+  outroTitle: 'Komitas',
+  ytTitle: 'Komitas, le père de la musique arménienne',
+  ytLead: 'Une phrase.',
+  music: 'otar',
+}
+
+test('section vidéo : piste, les 7 faits, le titre YouTube, dans la partie robot', () => {
+  const auto = buildAutoSection({ ...base, short: SHORT })
+  assert.match(auto, /🎬/)
+  assert.match(auto, /otar/)
+  for (let i = 1; i <= 7; i++) assert.match(auto, new RegExp(`\\*\\*Titre ${i}\\*\\* — Texte ${i}\\.`))
+  assert.match(auto, /Komitas, le père de la musique arménienne/)
+  assert.doesNotMatch(auto, /Pas de vidéo/)
+  const body = buildPrBody({ ...base, short: SHORT })
+  assert.ok(body.indexOf('🎬') > body.indexOf('### Texte'))
+  assert.ok(body.indexOf('🎬') < body.indexOf(AUTO_END))
+})
+
+test('section vidéo : sans Short, l’avertissement et sa raison', () => {
+  assert.match(buildAutoSection(base), /⚠️ Pas de vidéo/)
+  assert.match(buildAutoSection({ ...base, shortError: 'JSON illisible' }), /⚠️ Pas de vidéo : JSON illisible/)
 })

@@ -23,7 +23,9 @@ function sourceLabel(s) {
 }
 
 // La partie que le robot réécrit à chaque révision (entre les marqueurs).
-export function buildAutoSection({ title, frBody = '', meta, unsupported, editorial = [], overlap, warnings = [] }) {
+// `short` : le texte de la vidéo (short.fr.json) ; sans lui, `shortError` dit
+// pourquoi il manque.
+export function buildAutoSection({ title, frBody = '', meta, unsupported, editorial = [], overlap, warnings = [], short = null, shortError = null }) {
   const lines = [`## ${title}`, '']
   // Les alertes passent avant tout : c'est ce que le relecteur doit voir d'abord.
   const alerts = []
@@ -45,6 +47,19 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
     const shown = names.slice(0, MAX_NAMES)
     const more = names.length - shown.length
     lines.push(`<details><summary>Noms à confirmer (${names.length})</summary>`, '', ...shown.map((n) => `- ${n}`), ...(more ? [`- … (${more} de plus)`] : []), '', '</details>', '')
+  }
+  lines.push('### 🎬 La vidéo')
+  if (short) {
+    lines.push(
+      `Piste : \`${short.music}\``,
+      '',
+      ...short.facts.map((f, i) => `${i + 1}. **${f.title}** — ${f.text}`),
+      '',
+      `Titre YouTube : ${short.ytTitle}`,
+      '',
+    )
+  } else {
+    lines.push(`⚠️ Pas de vidéo : ${shortError ?? 'aucun texte de Short (short.fr.json absent)'}. L’article se publie sans elle.`, '')
   }
   lines.push('### Image')
   if (meta.candidates?.length) {

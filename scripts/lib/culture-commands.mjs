@@ -46,7 +46,16 @@ export function newAlerts(prBody, facts) {
 
 // La réponse postée sous le commentaire. Une erreur n'y porte que son message
 // (statut HTTP, modèle) : le client LLM n'écrit jamais la clé dans une erreur.
-export function reviseReply({ error, model, fellBack = false, changed = 0, alerts = [], unchecked = false }) {
+// `video` : ce qu'est devenu short.fr.json (reviseShort, culture-checks.mjs) ;
+// `same` : le Short rendu est identique à l'ancien.
+const VIDEO_LINE = {
+  updated: (v) => (v.same ? 'Texte de la vidéo inchangé.' : 'Texte de la vidéo mis à jour (section 🎬 de la PR).'),
+  kept: (v) => `Texte de la vidéo gardé tel quel : la réponse du modèle n’était pas utilisable (${v.reason}).`,
+  deleted: (v) =>
+    `**Texte de la vidéo supprimé** : il ne correspondait plus à l’article révisé (${v.reason}). Pas de vidéo pour cet article tant qu’un nouveau \`short.fr.json\` n’est pas écrit.`,
+}
+
+export function reviseReply({ error, model, fellBack = false, changed = 0, alerts = [], unchecked = false, video = null }) {
   if (error) {
     return [
       `❌ Révision non appliquée : ${error}`,
@@ -61,6 +70,7 @@ export function reviseReply({ error, model, fellBack = false, changed = 0, alert
     `- ${changed} ${changed > 1 ? 'paragraphes changés' : 'paragraphe changé'}.`,
   ]
   if (alerts.length) lines.push('- Nouveaux points à vérifier :', ...alerts.map((a) => `  - ⚠️ ${a}`))
+  if (VIDEO_LINE[video?.action]) lines.push(`- 🎬 ${VIDEO_LINE[video.action](video)}`)
   if (unchecked) lines.push('- **Case décochée : recochez pour publier** (le texte a changé depuis votre vérification).')
   lines.push('', 'La section automatique de la PR a été mise à jour.', '')
   return lines.join('\n')
