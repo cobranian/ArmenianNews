@@ -23,6 +23,7 @@ import {
   checkScraper,
   scrapeFailures,
   checkVideos,
+  checkYoutubeQueue,
   VIDEO_LATE_DAYS,
   reelCounts,
 } from '../scripts/lib/publication-check.mjs'
@@ -265,4 +266,62 @@ test('reelCounts : Facebook et Instagram seulement, horodatages ISO seulement', 
     { channel: 'facebook-ch', posted: 1, total: 2 },
     { channel: 'instagram-org', posted: 0, total: 1 },
   ])
+})
+
+// --- La file YouTube
+const it = (slug, lang, addedAt = '2026-11-01T00:00:00Z') => ({ slug, lang, asset: 'x', title: 't', description: 'd', addedAt })
+const led = (posted = {}, failed = {}) => ({ version: 1, posted, failed })
+const yt = (o) => checkYoutubeQueue({ queue: { version: 1, items: [] }, ledger: led(), auto: '1', now, ...o })
+
+test('checkYoutubeQueue : sans YOUTUBE_AUTO, la file à téléverser en séance est une info', () => {
+  const rows = yt({ auto: undefined, queue: { items: [it('ani', 'fr'), it('ani', 'de'), it('vieux', 'en')] }, ledger: led({ 'vieux:en': { at: 'x', id: 'abcdefghijk' } }) })
+  const r = rows.find((x) => x.key === 'yt-queue-manual')
+  assert.equal(r.level, 'info')
+  assert.match(r.text, /^2 vidéo\(s\) à téléverser en séance \(Chrome\)/)
+  assert.match(r.text, /ani\/fr/)
+  assert.doesNotMatch(r.text, /vieux/)
+  assert.equal(yt({ queue: { items: [it('ani', 'fr')] } }).some((x) => x.key === 'yt-queue-manual'), false)
+})
+
+test('checkYoutubeQueue : file trop longue ou trop vieille devient une action', () => {
+  const many = Array.from({ length: 15 }, (_, i) => it(`s${i}`, 'fr', '2026-11-02T00:00:00Z'))
+  assert.equal(yt({ queue: { items: many } }).find((x) => x.key === 'yt-queue-late').level, 'faire')
+  const ok = yt({ queue: { items: many.slice(0, 14) } })
+  assert.equal(ok.some((x) => x.key === 'yt-queue-late'), false)
+  const old = yt({ queue: { items: [it('a', 'fr', '2026-10-25T00:00:00Z')] } })
+  assert.match(old.find((x) => x.key === 'yt-queue-late').text, /8 j/)
+  assert.equal(yt({ queue: { items: [it('a', 'fr', '2026-10-28T12:00:00Z')] } }).some((x) => x.key === 'yt-queue-late'), false)
+})
+
+test('checkYoutubeQueue : un envoi abandonné donne la commande retry', () => {
+  const rows = yt({ ledger: led({}, { 'ani:fr': { attempts: 3, last: '2026-11-02T00:00:00Z', error: 'HTTP 400' }, 'b:de': { attempts: 2, last: 'x', error: 'e' } }) })
+  const r = rows.find((x) => x.key === 'yt-abandoned-ani:fr')
+  assert.equal(r.level, 'faire')
+  assert.match(r.action, /youtube-post\.mjs retry ani:fr/)
+  assert.equal(rows.some((x) => x.key === 'yt-abandoned-b:de'), false)
+})
+
+test('checkYoutubeQueue : un jeton refusé donne la commande youtube-auth, une alerte par langue', () => {
+  const f = { attempts: 0, last: '2026-11-02T00:00:00Z', error: 'jeton : invalid_grant' }
+  const rows = yt({ ledger: led({}, { 'a:hy': f, 'b:hy': f, 'c:ru': f }) })
+  const auth = rows.filter((x) => x.key.startsWith('yt-auth-'))
+  assert.deepEqual(auth.map((x) => x.key), ['yt-auth-hy', 'yt-auth-ru'])
+  assert.equal(auth[0].action, 'Recoller le jeton YouTube hy : `node scripts/youtube-auth.mjs --lang hy`')
+})
+
+test('checkYoutubeQueue : une vidéo restée privée signale l’audit non accordé', () => {
+  const rows = yt({ ledger: led({ 'ani:fr': { at: 'x', id: 'abcdefghijk', private: true } }) })
+  const r = rows.find((x) => x.key === 'yt-private')
+  assert.equal(r.level, 'faire')
+  assert.match(r.text, /Audit YouTube non accordé/)
+})
+
+test('checkYoutubeQueue : un envoi incertain demande vérification (mark ou retry --drop)', () => {
+  const rows = yt({ ledger: led({}, { 'ani:fr': { uncertain: true, last: 'x', error: 'e' } }) })
+  assert.match(rows.find((x) => x.key === 'yt-uncertain-ani:fr').action, /mark ani fr .*retry ani:fr --drop/)
+})
+
+test('checkWorkflows : un échec de video.yml lève son alerte', () => {
+  const rows = checkWorkflows({ 'video.yml': { conclusion: 'failure', at: '2026-11-02T00:00:00Z', url: 'u' } }, { now })
+  assert.ok(rows.some((r) => r.key === 'wf-video-failure' && r.level === 'faire'))
 })

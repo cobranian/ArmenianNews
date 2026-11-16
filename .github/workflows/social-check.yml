@@ -62,6 +62,7 @@ jobs:
           # liste des sitemaps des deux propriétés, sans rien modifier.
           GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
           SOCIAL_LIVE: ${{ vars.SOCIAL_LIVE }}
+          YOUTUBE_AUTO: ${{ vars.YOUTUBE_AUTO }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ARTICLES_BASE_URL: ${{ vars.ARTICLES_BASE_URL }}

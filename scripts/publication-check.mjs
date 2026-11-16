@@ -38,6 +38,7 @@ import {
   checkRadios,
   checkFeeds,
   checkVideos,
+  checkYoutubeQueue,
   checkIndexing,
   checkScraper,
   scrapeFailures,
@@ -251,7 +252,12 @@ async function manual() {
 
 async function videos() {
   const list = JSON.parse(await readFile(path.join(root, 'src/data/culture-videos.json'), 'utf8'))
-  return checkVideos({ articles: await articles(), videos: list, langs: ALL_LANGS, now })
+  const queue = await data('youtube-queue.json')
+  const ledger = await data('youtube-posted.json')
+  return [
+    ...checkVideos({ articles: await articles(), videos: list, langs: ALL_LANGS, now }),
+    ...checkYoutubeQueue({ queue, ledger, auto: env.YOUTUBE_AUTO, now }),
+  ]
 }
 
 const sections = [
