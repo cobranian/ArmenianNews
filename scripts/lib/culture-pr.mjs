@@ -49,13 +49,17 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
     lines.push(`<details><summary>Noms à confirmer (${names.length})</summary>`, '', ...shown.map((n) => `- ${n}`), ...(more ? [`- … (${more} de plus)`] : []), '', '</details>', '')
   }
   lines.push('### 🎬 La vidéo')
+  // TOUT ce qui sera publié est montré : cocher « Faits vérifiés » approuve
+  // aussi ce texte (ytLead part tel quel dans la description YouTube).
   if (short) {
     lines.push(
       `Piste : \`${short.music}\``,
       '',
-      ...short.facts.map((f, i) => `${i + 1}. **${f.title}** — ${f.text}`),
+      ...short.facts.map((f, i) => `${i + 1}. ${f.eyebrow} · **${f.title}** — ${f.text}`),
       '',
+      `Titre de fin : ${short.outroTitle}`,
       `Titre YouTube : ${short.ytTitle}`,
+      `Description YouTube : ${short.ytLead}`,
       '',
     )
   } else {

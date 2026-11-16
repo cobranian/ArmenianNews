@@ -41,7 +41,9 @@ export function shortHash(shortFr) {
 const normalizeNumbers = (s) => String(s ?? '').replace(/(\d)[ \u00a0\u202f\u2009,.'\u2019](?=\d{3}(?!\d))/g, '$1')
 const numbersOf = (s) => normalizeNumbers(s).match(/\d+/g) ?? []
 
-const isText = (v) => typeof v === 'string' && v.trim() !== ''
+const URL_RE = /https?:\/\/|\bwww\./i
+
+const isText =(v) => typeof v === 'string' && v.trim() !== ''
 
 // Les erreurs d'un short, en clair ; [] = conforme.
 export function validateShort(short, { lang, articleText } = {}) {
@@ -87,6 +89,12 @@ export function validateShort(short, { lang, articleText } = {}) {
   ]
   const missing = [...new Set(texts.flatMap(numbersOf))].filter((d) => !known.has(d))
   if (missing.length) errors.push(`nombres absents de l’article : ${missing.join(', ')}`)
+
+  // Aucune URL : le prompt l'interdit, le code l'exige (texte publié sur
+  // YouTube et à l'écran).
+  if ([...texts, short.outroTitle].some((s) => typeof s === 'string' && URL_RE.test(s))) {
+    errors.push('URL interdite dans le texte (http://, https:// ou www.)')
+  }
 
   return errors
 }

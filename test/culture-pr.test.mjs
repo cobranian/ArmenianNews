@@ -207,8 +207,11 @@ test('section vidéo : piste, les 7 faits, le titre YouTube, dans la partie robo
   const auto = buildAutoSection({ ...base, short: SHORT })
   assert.match(auto, /🎬/)
   assert.match(auto, /otar/)
-  for (let i = 1; i <= 7; i++) assert.match(auto, new RegExp(`\\*\\*Titre ${i}\\*\\* — Texte ${i}\\.`))
-  assert.match(auto, /Komitas, le père de la musique arménienne/)
+  for (let i = 1; i <= 7; i++) assert.match(auto, new RegExp(`^${i}\\. Sur ${i - 1} · \\*\\*Titre ${i}\\*\\* — Texte ${i}\\.$`, 'm'))
+  // Tout ce qui sera publié est montré au relecteur.
+  assert.match(auto, /^Titre de fin : Komitas$/m)
+  assert.match(auto, /^Titre YouTube : Komitas, le père de la musique arménienne$/m)
+  assert.match(auto, /^Description YouTube : Une phrase\.$/m)
   assert.doesNotMatch(auto, /Pas de vidéo/)
   const body = buildPrBody({ ...base, short: SHORT })
   assert.ok(body.indexOf('🎬') > body.indexOf('### Texte'))

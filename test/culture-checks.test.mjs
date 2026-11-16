@@ -98,6 +98,19 @@ test('draftShort : deux échecs → pas de Short, la raison ; une panne ne lève
   assert.match(prose.error, /JSON illisible/)
 })
 
+test('draftShort : un Short qui porte une URL n’est jamais retenu', async () => {
+  const r = await draftShort({ ...args, chat: async () => reply(goodShort({ ytLead: 'Tout sur https://duduk.am.' })) })
+  assert.equal(r.short, null)
+  assert.match(r.error, /URL interdite/)
+})
+
+test('reviseShort : une URL dans le Short rendu → l’ancien est gardé, jamais celui-là', () => {
+  const r = reviseShort({ oldShort: goodShort(), returned: goodShort({ outroTitle: 'www.duduk.am' }), oldText: ARTICLE, newText: ARTICLE.replace('long de', 'mesurant') })
+  assert.equal(r.action, 'kept')
+  assert.deepEqual(r.short, goodShort())
+  assert.match(r.reason, /URL interdite/)
+})
+
 test('draftShort : repli de modèle annoncé', async () => {
   const r = await draftShort({ ...args, chat: async () => ({ ...reply(goodShort()), model: 'secours', fellBack: true }) })
   assert.ok(r.short)

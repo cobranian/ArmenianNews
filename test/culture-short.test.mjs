@@ -86,6 +86,21 @@ test('validateShort refuse un big non booléen', () => {
   assert.ok(check(short({ facts: [fact({ big: 'true' }), ...Array.from({ length: 6 }, () => fact())] })).length > 0)
 })
 
+// Le prompt interdit les URL ; le code l'exige, dans chaque champ publié.
+test('validateShort refuse une URL dans n’importe quel champ', () => {
+  const URL_ERR = /URL interdite/
+  const withFact = (over) => short({ facts: [fact(over), ...Array.from({ length: 6 }, () => fact())] })
+  for (const s of [
+    withFact({ eyebrow: 'Voir https://x.am' }),
+    withFact({ title: 'www.armenpress.am' }),
+    withFact({ text: 'Lire sur http://exemple.org la suite.' }),
+    short({ outroTitle: 'www.khorvirap.am' }),
+    short({ ytTitle: 'Khor Virap https://youtu.be/x' }),
+    short({ ytLead: 'Plus sur WWW.Armenie.ch.' }),
+  ]) assert.ok(check(s).some((e) => URL_ERR.test(e)), JSON.stringify(s).slice(0, 80))
+  assert.ok(!check(short({ ytLead: 'Un site www-libre, sans adresse.' })).some((e) => URL_ERR.test(e)))
+})
+
 test('validateShort refuse un objet qui n’en est pas un, ou un champ manquant', () => {
   assert.ok(check(null).length > 0)
   assert.ok(check([]).length > 0)
