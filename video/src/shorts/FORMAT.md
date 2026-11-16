@@ -1,7 +1,18 @@
-# Format d'un Short : `src/shorts/data/<slug>.json`
+# Format d'un Short
+
+**Depuis le 16 nov. 2026, le texte d'un Short vit à côté de son article** :
+`src/data/culture/<slug>/short.<lang>.json` (racine du dépôt), une langue par
+fichier — `{ facts, outroTitle, ytTitle, ytLead }`, plus `music`
+(`mazia`/`sergo`/`otar`) dans `short.fr.json` et `sourceHash` (empreinte du
+short fr, `scripts/lib/culture-short.mjs`) dans les autres. Les règles sont
+contrôlées par `validateShort` du même module.
+
+`src/shorts/data/<slug>.json` (ci-dessous) est désormais **généré** par
+`scripts/sync.mjs` à partir de ces fichiers, et hors git : une correction faite
+ici serait écrasée au prochain `sync`.
 
 Un fichier par article Culture d'ArmenianNews
-(`../ArmenianNews/src/data/culture/<slug>/{fr,en,hy,ru,de,it,es}.md`).
+(`src/data/culture/<slug>/{fr,en,hy,ru,de,it,es}.md`).
 
 `hy` et `ru` (chaîne Armenia News) : mêmes 7 faits que fr/en, traduits avec les
 noms et termes de `hy.md` / `ru.md` ; `ytTitle` et `ytLead` viennent de
