@@ -1,6 +1,6 @@
 // npm run reels:add -- [--lang xx] [--slug s] [--dry] [--force]
 //
-// Envoie les Shorts rendus (../armenie-video/out/<lang>/<slug>.mp4) dans la
+// Envoie les Shorts rendus (video/out/<lang>/<slug>.mp4) dans la
 // release GitHub `reels-1`, sous le nom <lang>-<slug>.mp4, puis les inscrit
 // dans src/data/reels.json — le manifeste qui fait foi pour les Reels
 // Facebook et Instagram (scripts/lib/reels-add.mjs). LOCAL seulement, jamais
@@ -20,7 +20,7 @@ import { parseArgs } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import { ALL_LANGS } from '../sites.config.js'
 import { addReels, assetName, readReels, toUpload } from './lib/reels-add.mjs'
-import { musicCredit } from '../../armenie-video/scripts/music.mjs'
+import { musicCredit } from '../video/scripts/music.mjs'
 
 const RELEASE = 'reels-1'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -28,7 +28,7 @@ const { values } = parseArgs({
   options: {
     lang: { type: 'string' },
     slug: { type: 'string' },
-    out: { type: 'string', default: path.join(root, '..', 'armenie-video', 'out') },
+    out: { type: 'string', default: path.join(root, 'video', 'out') },
     dry: { type: 'boolean', default: false },
     force: { type: 'boolean', default: false },
   },

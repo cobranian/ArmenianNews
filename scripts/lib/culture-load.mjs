@@ -3,7 +3,7 @@
 import { readdir, readFile, access } from 'node:fs/promises'
 import path from 'node:path'
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
-import { validateArticle, REQUIRED, ABSENT_NOTE } from './culture-validate.mjs'
+import { validateArticle, REQUIRED, ABSENT_NOTE, SHORT_ABSENT } from './culture-validate.mjs'
 
 export async function readArticle(dir, slug) {
   const base = path.join(dir, slug)
@@ -20,7 +20,10 @@ export async function readArticle(dir, slug) {
   }
   const texts = {}
   for (const l of ALL_LANGS) texts[l] = await read(`${l}.md`)
-  return { slug, meta, texts, images: { webp: await has('image.webp'), jpg: await has('image.jpg') } }
+  // short.<lang>.json : texte brut, null si absent (validateArticle l'analyse).
+  const shorts = {}
+  for (const l of ALL_LANGS) shorts[l] = await read(`short.${l}.json`)
+  return { slug, meta, texts, shorts, images: { webp: await has('image.webp'), jpg: await has('image.jpg') } }
 }
 
 async function dirNames(dir) {
@@ -62,16 +65,26 @@ export function unpublishedLine(articles) {
     : null
 }
 
+// Les vidéos déjà publiées (src/data/culture-videos.json, voisin du dossier).
+export async function readVideos(dir) {
+  try {
+    return JSON.parse(await readFile(path.join(dir, '..', 'culture-videos.json'), 'utf-8'))
+  } catch {
+    return {}
+  }
+}
+
 export async function loadCulture(dir, log = console) {
   const out = []
+  const videos = await readVideos(dir)
   for (const name of await invalidDirs(dir)) log.warn(`  ⚠ ${invalidDirMessage(name)}`)
   for (const slug of await articleSlugs(dir)) {
     const raw = await readArticle(dir, slug)
-    const { errors, notes, langs } = validateArticle(raw)
+    const { errors, notes, langs } = validateArticle({ ...raw, videos })
     for (const e of errors) log.warn(`  ⚠ culture/${slug} : ${e}`)
     // Une de/it absente est le cas normal (deux lignes par article et par
     // heure) ; une de/it périmée ou invalide quitte une URL déjà en ligne.
-    for (const n of notes) if (!n.endsWith(ABSENT_NOTE)) log.warn(`  ⚠ culture/${slug} : ${n}`)
+    for (const n of notes) if (!n.endsWith(ABSENT_NOTE) && !SHORT_ABSENT.test(n)) log.warn(`  ⚠ culture/${slug} : ${n}`)
     if (!langs.fr) continue
     out.push({
       slug,

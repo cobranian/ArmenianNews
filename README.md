@@ -603,6 +603,18 @@ brouillon vide ou un mauvais article.
 Commandes locales : `npm run culture:draft -- --topic slug --dry`,
 `npm run culture:translate -- slug`, `npm run culture:check`.
 
+## Vidéos
+
+Chaque article Culture publié donne un Short vertical, rendu par le paquet
+`video/` (Remotion). Le flux : brouillon → PR → relecture et publication de
+l'article → `video.yml` rend les Shorts (une vidéo par langue) → Reels (release
+`reels-1`) et file YouTube (`src/data/youtube-queue.json`) → envoi horaire par
+`youtube-post.mjs` quand `YOUTUBE_AUTO` vaut 1, ou, tant que l'audit de l'API
+n'est pas accordé, envoi à la main puis `node scripts/youtube-post.mjs mark
+<slug> <lang> <videoId>`. Mise en service (projet Google, audit, jetons par
+langue) : [`docs/youtube-setup.md`](docs/youtube-setup.md). Tests du paquet :
+`npm run video:test`.
+
 ## Newswire source chain (armradio)
 
 `en.armradio.am` is a WordPress site behind Cloudflare, which serves an

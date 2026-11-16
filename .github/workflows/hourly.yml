@@ -649,3 +649,101 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run social-check.yml --ref main || true
+
+  # Envoi des Shorts sur YouTube (scripts/youtube-post.mjs) : vide la file
+  # src/data/youtube-queue.json. Job À PART, comme `social` : ses jetons ne sont
+  # visibles que de lui. Après `social` (quel que soit son sort), pour que les
+  # deux ne se disputent pas le push sur main.
+  #
+  # Rien ne part tant que la variable YOUTUBE_AUTO ne vaut pas « 1 » (l'audit
+  # de l'API n'est pas accordé : une vidéo envoyée resterait privée) : chaque
+  # étape le dit en une ligne et n'écrit rien. Au plus 2 envois par run, 6 par
+  # jour du Pacifique (quota). Même mécanique que `social` : le registre
+  # src/data/youtube-posted.json est poussé AVANT l'envoi — YouTube ne
+  # dédoublonne pas.
+  youtube:
+    needs: [snapshot, social]
+    if: always() && needs.snapshot.result == 'success'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: youtube
+      cancel-in-progress: false
+    permissions:
+      contents: write # registre, file et culture-videos.json
+      actions: write # relancer le tableau de bord après un échec
+    env:
+      YOUTUBE_AUTO: ${{ vars.YOUTUBE_AUTO }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN_FR: ${{ secrets.YT_REFRESH_TOKEN_FR }}
+      YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
+      YT_REFRESH_TOKEN_HY: ${{ secrets.YT_REFRESH_TOKEN_HY }}
+      YT_REFRESH_TOKEN_RU: ${{ secrets.YT_REFRESH_TOKEN_RU }}
+      YT_REFRESH_TOKEN_DE: ${{ secrets.YT_REFRESH_TOKEN_DE }}
+      YT_REFRESH_TOKEN_IT: ${{ secrets.YT_REFRESH_TOKEN_IT }}
+      YT_REFRESH_TOKEN_ES: ${{ secrets.YT_REFRESH_TOKEN_ES }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+
+      # Aucune dépendance npm : Node seul suffit.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      - name: Choisir quoi envoyer
+        run: node scripts/youtube-post.mjs plan --out "$RUNNER_TEMP/youtube-plan.json"
+
+      # AVANT l'envoi : un run coupé ensuite perd au pire un envoi, il n'en
+      # double jamais. Un push refusé fait échouer l'étape, donc rien ne part.
+      - name: Enregistrer le registre avant l'envoi
+        if: env.YOUTUBE_AUTO == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/youtube-posted.json
+          if git diff --cached --quiet; then
+            echo "Registre inchangé."
+          else
+            git commit -m "youtube: registre $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            if ! { git pull --rebase && git push; }; then
+              git rebase --abort 2>/dev/null || true
+              exit 1
+            fi
+          fi
+
+      - name: Téléverser
+        id: post
+        if: env.YOUTUBE_AUTO == '1'
+        continue-on-error: true
+        run: node scripts/youtube-post.mjs post --plan "$RUNNER_TEMP/youtube-plan.json" --results "$RUNNER_TEMP/youtube-results.jsonl"
+
+      # Même après un échec de « Téléverser ». Comme pour `social` : en cas de
+      # course avec un autre push, on repart de main et on REFAIT le report
+      # (registre, file, culture-videos.json), sans rebase.
+      - name: Reporter les résultats
+        if: always() && env.YOUTUBE_AUTO == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            node scripts/youtube-post.mjs settle --results "$RUNNER_TEMP/youtube-results.jsonl" --plan "$RUNNER_TEMP/youtube-plan.json"
+            git add src/data/youtube-posted.json src/data/youtube-queue.json src/data/culture-videos.json
+            if git diff --cached --quiet; then
+              echo "Rien à reporter."
+              exit 0
+            fi
+            git commit -q -m "youtube: résultats $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push -q origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1
+
+      - name: Prévenir le tableau de bord
+        if: failure() || steps.post.outcome == 'failure' || fromJSON(steps.post.outputs.failures || '0') > 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run social-check.yml --ref main || true

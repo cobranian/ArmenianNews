@@ -1,0 +1,146 @@
+# Les Shorts d'un article Culture publié : rendus ici, déposés dans la release
+# `reels-1`, inscrits dans src/data/reels.json (Reels Facebook et Instagram) et
+# mis en file pour YouTube (src/data/youtube-queue.json).
+#
+# Lancé par articles-publish.yml et articles-merged.yml juste après la fusion
+# (une fusion par GITHUB_TOKEN ne déclenche aucun workflow : workflow_dispatch
+# est la seule voie), ou à la main :
+#   gh workflow run video.yml -f slug=<slug>
+#
+# Ne sont rendues que les langues de validateArticle(...).shorts qui ne sont
+# pas déjà sur YouTube ni en file (scripts/video-publish.mjs --plan). Une langue dont le
+# rendu échoue n'arrête pas les autres : render-all.mjs efface son MP4, elle
+# n'est ni déposée ni mise en file, et un nouveau lancement la reprendra.
+name: Vidéos — rendre, déposer, mettre en file
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Slug de l'article Culture (dossier src/data/culture/<slug>/)"
+        type: string
+        required: true
+
+permissions:
+  contents: write
+  actions: write
+
+# Un seul run à la fois, sans annuler celui en cours : deux articles fusionnés
+# coup sur coup écrivent les mêmes deux fichiers sur main.
+concurrency:
+  group: video-main
+  cancel-in-progress: false
+
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      # Le slug n'atteint les run: que par cette variable (jamais interpolé).
+      SLUG: ${{ inputs.slug }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            video/package-lock.json
+
+      - name: Dépendances
+        run: |
+          npm ci
+          npm --prefix video ci
+
+      - name: Langues à rendre
+        id: plan
+        run: |
+          LANGS="$(node scripts/video-publish.mjs "$SLUG" --plan)"
+          echo "langs=$LANGS" >> "$GITHUB_OUTPUT"
+          if [ -z "$LANGS" ]; then
+            echo "::notice::$SLUG : aucun Short à rendre (absent, non conforme, déjà en file ou sur YouTube)."
+          else
+            echo "À rendre : $LANGS"
+          fi
+
+      - name: ffmpeg et navigateur de Remotion
+        if: steps.plan.outputs.langs != ''
+        run: |
+          ffprobe -version || { sudo apt-get update && sudo apt-get install -y ffmpeg; }
+          cd video && npx remotion browser ensure
+
+      - name: Rendre
+        id: render
+        if: steps.plan.outputs.langs != ''
+        env:
+          LANGS: ${{ steps.plan.outputs.langs }}
+        run: |
+          node video/scripts/sync.mjs
+          FAILED=""
+          for l in ${LANGS//,/ }; do
+            node video/scripts/render-all.mjs --slug "$SLUG" --lang "$l" || { echo "::warning::$SLUG/$l : rendu en échec, langue sautée"; FAILED="$FAILED $l"; }
+          done
+          # Le job ne tombe pas ici : les langues rendues sont déposées et
+          # mises en file. L'étape finale rougit le run pour les autres.
+          echo "failed=${FAILED# }" >> "$GITHUB_OUTPUT"
+
+      - name: Déposer dans la release, inscrire, mettre en file
+        if: steps.plan.outputs.langs != ''
+        run: node scripts/video-publish.mjs "$SLUG" --dir video/out
+
+      - name: Pousser sur main, déployer
+        if: steps.plan.outputs.langs != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/reels.json src/data/youtube-queue.json
+          if git diff --cached --quiet; then
+            echo "Rien de neuf à inscrire."
+            exit 0
+          fi
+          git commit -m "data: vidéos de « $SLUG »"
+          # sync.mjs a réécrit video/src/shorts/music.json : sans ce ménage, le
+          # rebase refuserait de partir d'un arbre modifié.
+          git checkout -- .
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              # Un push par GITHUB_TOKEN ne déclenche pas le déploiement.
+              gh workflow run hourly.yml --ref main
+              exit 0
+            fi
+            # Refusé (le settle horaire a réécrit la file entre-temps : trois
+            # rebases identiques échoueraient pareil). On repart de main et on
+            # refait l'inscription, sans renvoyer les MP4 — déjà dans la release.
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/video-publish.mjs "$SLUG" --dir video/out --register-only
+            git add src/data/reels.json src/data/youtube-queue.json
+            if git diff --cached --quiet; then
+              echo "Déjà inscrit sur main : rien à pousser."
+              exit 0
+            fi
+            git commit -m "data: vidéos de « $SLUG »"
+          done
+          echo "::error::Push sur main impossible après 3 essais : les MP4 sont dans la release, relancez le workflow pour les inscrire."
+          exit 1
+
+      # Une langue qui n'a pas rendu doit se voir sur #128 : le run finit rouge,
+      # APRÈS le dépôt et le push des langues réussies.
+      - name: Signaler les langues en échec
+        if: always() && steps.render.outputs.failed != ''
+        env:
+          FAILED: ${{ steps.render.outputs.failed }}
+        run: |
+          echo "::error::$SLUG : rendu en échec pour : $FAILED"
+          exit 1
+
+      # Le tableau de bord (social-check.yml) est relancé et notifie s'il y a du neuf.
+      - name: Prévenir le tableau de bord
+        if: failure()
+        run: gh workflow run social-check.yml --ref main || true

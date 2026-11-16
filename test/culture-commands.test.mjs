@@ -54,6 +54,18 @@ test('reviseReply : modèle, paragraphes, nouveaux ⚠️, case décochée ; err
   assert.match(fail, /inchangé/)
 })
 
+// Le sort du texte de la vidéo est toujours dit : supprimé surtout.
+test('reviseReply : ce qu’est devenu le texte de la vidéo', () => {
+  const r = (video) => reviseReply({ model: 'm', changed: 1, video })
+  assert.match(r({ action: 'updated', same: false }), /🎬 Texte de la vidéo mis à jour/)
+  assert.match(r({ action: 'updated', same: true }), /🎬 Texte de la vidéo inchangé/)
+  assert.match(r({ action: 'kept', reason: 'music doit valoir' }), /🎬 Texte de la vidéo gardé tel quel[^\n]*music doit valoir/)
+  const del = r({ action: 'deleted', reason: 'nombres absents de l’article : 2005' })
+  assert.match(del, /🎬 \*\*Texte de la vidéo supprimé\*\*[^\n]*2005/)
+  assert.doesNotMatch(r({ action: 'none' }), /🎬/)
+  assert.doesNotMatch(r(undefined), /🎬/)
+})
+
 test('culture-revise : commande vide ou mal écrite → réponse d’aide, sortie 0, sans modèle', async () => {
   const dir = await mkdtemp(path.join(tmpdir(), 'revise-'))
   for (const [i, text] of ['/corrige', '/CORRIGE retire le plat', '/corrigez le titre'].entries()) {

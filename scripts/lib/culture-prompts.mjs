@@ -3,6 +3,8 @@
 // fournit AUCUNE URL publiée : sources, liens et événement sont ajoutés par
 // le code (leçon de la brève). Ses réponses sont des JSON qu'on extrait d'un
 // texte éventuellement enrobé (clôtures ```json, phrase d'introduction).
+import { SHORT_FACTS, SHORT_MAX_TEXT, YT_TITLE_MAX, TRACK_IDS, HASHTAG } from './culture-short.mjs'
+
 export const MAX_EXTRACT = 24000
 
 const LANG_NAME = {
@@ -94,8 +96,94 @@ export function buildDraftMessages({ topic, entity = null, sources, facts = [], 
   ]
 }
 
-// Révision demandée par le propriétaire (commentaire « /corrige »).
-export function buildReviseMessages({ title, description, body, instruction, entity = null, sources = [] }) {
+// Le texte du Short (src/data/culture/<slug>/short.fr.json), rédigé par un
+// appel À PART, après l'article et depuis lui seul : la vidéo ne fait jamais
+// échouer l'article, et elle ne peut dire que ce que l'article dit déjà.
+// Les thèmes des pistes : video/ (mazia, sergo, otar).
+export const TRACK_THEMES = {
+  mazia: 'foi, écrit, pierre (églises, monastères, manuscrits, alphabet, khatchkars)',
+  sergo: 'histoire, batailles (rois, guerres, royaumes, résistances)',
+  otar: 'vie, fête, arts (musique, danse, cuisine, artisanat, artistes)',
+}
+
+const SHORT_EXAMPLE = {
+  facts: [
+    { eyebrow: 'Arménie · Ve siècle', title: 'Le duduk', text: "Moïse de Khorène le mentionnait déjà sous le nom de dziranapogh, le « tube d'abricotier ».", big: false },
+    { eyebrow: "L'anche double", title: '9 à 14 cm', text: 'Sa large anche double, le ghamish, est taillée dans une pièce de roseau aplatie.', big: true },
+    { eyebrow: 'Aram Khatchatourian', title: '« Il me fait pleurer »', text: '« Le duduk est le seul instrument dont le jeu me fait pleurer », disait le compositeur.', big: false },
+  ],
+  outroTitle: 'Le duduk',
+  ytTitle: "Le duduk, le hautbois d'abricotier qui faisait pleurer Khatchatourian",
+  ytLead: "Taillé dans le bois d'abricotier, le duduk est un hautbois arménien à anche double, mentionné dès le Ve siècle. L'UNESCO l'a proclamé patrimoine culturel immatériel de l'humanité en 2005.",
+  music: 'otar',
+}
+
+const SHORT_SHAPE = `{"facts": [{"eyebrow": "…", "title": "…", "text": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…", "music": "${TRACK_IDS.join('|')}"}`
+// Le mot-dièse est ajouté au titre YouTube par le code : la limite le compte.
+const YT_TITLE_ROOM = YT_TITLE_MAX - HASHTAG.fr.length - 1
+
+// Règles du Short : rédaction ET révision.
+const SHORT_RULES = [
+  `- Exactement ${SHORT_FACTS} faits, dans l'ordre de la vidéo : le premier présente le sujet, le dernier conclut.`,
+  '- eyebrow : le contexte en quelques mots (lieu, époque, thème, personne).',
+  '- title : court, quelques mots, lisible d’un coup d’œil sur un téléphone.',
+  `- text : une seule phrase, ${SHORT_MAX_TEXT} caractères au plus, espaces comprises.`,
+  '- big : true seulement quand le title est un nombre ou une courte donnée chiffrée (« 9 à 14 cm », « 1915 ») ; 1 à 3 faits par vidéo, false pour les autres.',
+  "- Uniquement des faits présents dans l'ARTICLE. Chaque nombre (dates et siècles compris) doit figurer tel quel dans l'ARTICLE : n'en calcule, n'en arrondis et n'en ajoute aucun.",
+  RULE_POINT_DE_VUE,
+  '- outroTitle : le nom du sujet, court.',
+  `- ytTitle : le titre YouTube, accrocheur et exact, ${YT_TITLE_ROOM} caractères au plus (le mot-dièse ${HASHTAG.fr} est ajouté ensuite).`,
+  '- ytLead : deux phrases qui présentent le sujet.',
+  `- music : la piste dont le thème convient au sujet — ${TRACK_IDS.map((id) => `${id} : ${TRACK_THEMES[id]}`).join(' ; ')}.`,
+  '- Aucun lien, aucune URL, aucun mot-dièse.',
+]
+
+export function buildShortMessages({ title, description, body }) {
+  const system = [
+    "Tu écris le texte d'un Short (vidéo verticale d'une minute) tiré d'un article de fond de la section Culture d'un site d'information arménien francophone.",
+    'Règles absolues :',
+    ...SHORT_RULES,
+    `Exemple de ton et de longueur (3 faits sur ${SHORT_FACTS}) :\n${JSON.stringify(SHORT_EXAMPLE)}`,
+    `Réponds UNIQUEMENT par un objet JSON ${SHORT_SHAPE}, sans aucun texte autour.`,
+  ].join('\n')
+  const user = `ARTICLE :\nTITRE : ${title}\nDESCRIPTION : ${description}\nCORPS :\n${body}`
+  return [
+    { role: 'system', content: system },
+    { role: 'user', content: user },
+  ]
+}
+
+// Le texte du Short traduit dans une autre langue. L'ARTICLE fourni est celui
+// de la langue cible (<lang>.md qui vient d'être écrit) : les noms et les
+// nombres du Short doivent s'y lire tels quels. `music` n'est pas traduit : la
+// piste est celle du short français.
+export function buildShortTranslateMessages({ lang, short, articleText }) {
+  const name = LANG_NAME[lang]
+  const room = YT_TITLE_MAX - (HASHTAG[lang] ?? '').length - 1
+  const system = [
+    `Tu traduis le texte d'un Short (vidéo verticale d'une minute) du français vers ${/^[aeiouyéèh]/.test(name) ? 'l’' : 'le '}${name}.`,
+    'Règles absolues :',
+    `- Garde exactement les mêmes ${SHORT_FACTS} faits, dans le même ordre, avec le même champ big pour chacun.`,
+    "- Noms propres : l'orthographe de l'ARTICLE fourni, qui est déjà dans la langue cible ; ne la change pas.",
+    "- Chaque nombre (dates et siècles compris) doit figurer tel quel dans l'ARTICLE fourni : n'en calcule, n'en arrondis et n'en ajoute aucun.",
+    `- text : une seule phrase, ${SHORT_MAX_TEXT} caractères au plus, espaces comprises.`,
+    `- ytTitle : ${room} caractères au plus (le mot-dièse ${HASHTAG[lang] ?? ''} est ajouté ensuite).`,
+    "- N'ajoute aucun fait absent du Short français, ne retire rien, ne commente rien.",
+    '- Aucun lien, aucune URL, aucun mot-dièse.',
+    `Réponds UNIQUEMENT par un objet JSON {"facts": [{"eyebrow": "…", "title": "…", "text": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…"}, sans aucun texte autour.`,
+  ].join('\n')
+  const { facts, outroTitle, ytTitle, ytLead } = short
+  const user = `ARTICLE (${name}) :\n${articleText}\n\nSHORT À TRADUIRE :\n${JSON.stringify({ facts, outroTitle, ytTitle, ytLead }, null, 2)}`
+  return [
+    { role: 'system', content: system },
+    { role: 'user', content: user },
+  ]
+}
+
+// Révision demandée par le propriétaire (commentaire « /corrige »). Avec un
+// `short` (le texte de la vidéo), le modèle le rend mis à jour dans `short` :
+// un texte de vidéo resté sur l'ancien article mentirait.
+export function buildReviseMessages({ title, description, body, instruction, entity = null, sources = [], short = null }) {
   const system = [
     "Tu révises un article de fond pour la section Culture d'un site d'information arménien francophone.",
     "Applique la CONSIGNE DU RELECTEUR au texte, et rien d'autre. La consigne fait foi sur les sources.",
@@ -103,12 +191,20 @@ export function buildReviseMessages({ title, description, body, instruction, ent
     'Conserve le plan, le ton et tout ce que la consigne ne vise pas.',
     'Règles absolues :',
     ...SHARED_RULES,
-    JSON_SHAPE,
+    ...(short
+      ? [
+          "Le message contient aussi le SHORT ACTUEL, le texte de la vidéo tirée de l'article. Rends-le mis à jour : fidèle au texte révisé (l'ARTICLE de ses règles), et la consigne s'y applique si elle vise la vidéo. Garde tel quel ce que rien ne demande de changer, music comprise.",
+          'Règles du Short :',
+          ...SHORT_RULES,
+          `Réponds UNIQUEMENT par un objet JSON {"title": "…", "description": "… (160 caractères au plus)", "body": "… (Markdown)", "short": ${SHORT_SHAPE}}, sans aucun texte autour.`,
+        ]
+      : [JSON_SHAPE]),
   ].join('\n')
   const user = [
     entityLine(entity),
     ...sourceBlocks(sources),
     `TEXTE ACTUEL :\nTITRE : ${title}\nDESCRIPTION : ${description}\nCORPS :\n${body}`,
+    short ? `SHORT ACTUEL :\n${JSON.stringify(short, null, 2)}` : '',
     `CONSIGNE DU RELECTEUR :\n${instruction}`,
   ]
     .filter(Boolean)

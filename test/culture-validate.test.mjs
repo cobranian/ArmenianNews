@@ -2,6 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { validateArticle, chosenImage, factsChecked, OPTIONAL, TRANSLATED, REQUIRED, pageSources, draftSources } from '../scripts/lib/culture-validate.mjs'
 import { serializeFrontMatter, bodyHash } from '../scripts/lib/culture-markdown.mjs'
+import { shortHash } from '../scripts/lib/culture-short.mjs'
 import { meta, texts, candidate, FR_BODY } from './helpers/culture-fixture.mjs'
 
 const ok = (over = {}) => ({ slug: 'komitas', meta: meta('komitas'), texts: texts(), images: { webp: true, jpg: true }, ...over })
@@ -22,7 +23,7 @@ test('de, it et es facultatives : leur absence est une note, pas une erreur', ()
   assert.deepEqual(REQUIRED, ['en', 'hy', 'ru'])
   const r = validateArticle(ok())
   assert.deepEqual(r.errors, [])
-  assert.equal(r.notes.length, 3)
+  assert.equal(r.notes.filter((n) => !n.startsWith('short.')).length, 3)
   assert.deepEqual(Object.keys(r.langs), ['fr', 'en', 'hy', 'ru'])
 })
 
@@ -35,7 +36,7 @@ test('de valide : publiée ; de périmée ou cassée : note, jamais erreur', () 
   const good = validateArticle(ok({ texts: { ...t, de: trDe(frBody) } }))
   assert.deepEqual(good.errors, [])
   assert.deepEqual(Object.keys(good.langs), ['fr', 'de', 'en', 'hy', 'ru'])
-  assert.equal(good.notes.length, 2) // it et es absentes
+  assert.equal(good.notes.filter((n) => !n.startsWith('short.')).length, 2) // it et es absentes
   const stale = validateArticle(ok({ texts: { ...t, de: trDe(frBody, 'deadbeef'), it: 'cassé' } }))
   assert.deepEqual(stale.errors, [])
   const notes = stale.notes.join(' | ')
@@ -146,4 +147,61 @@ test('traduction : un lien absent du français relu retire la langue', () => {
   assert.deepEqual(Object.keys(r.langs), ['fr', 'en'])
   assert.ok(r.errors.includes('hy.md : liens absents du français relu'))
   assert.ok(r.errors.includes('ru.md : liens absents du français relu'))
+})
+
+// --- Shorts (short.<lang>.json) ---
+const shortFr = () => ({
+  facts: Array.from({ length: 7 }, (_, i) => ({ eyebrow: 'Titre', title: 'Fait', text: 'Un fait.', big: i === 0 })),
+  outroTitle: 'Fin', ytTitle: 'Komitas', ytLead: 'Le père.', music: 'mazia',
+})
+const shortTr = (fr, over = {}) => ({ ...fr, music: undefined, sourceHash: shortHash(fr), ...over })
+const js = (o) => JSON.stringify(o)
+const withShorts = (shorts, over = {}) => ok({ shorts, ...over })
+
+test('short.fr.json absent : note, aucune erreur, aucun short', () => {
+  const r = validateArticle(withShorts({}))
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.notes.includes('short.fr.json absent : pas de vidéo'))
+  assert.ok(r.notes.includes('short.hy.json absent : pas de vidéo hy'))
+  assert.deepEqual(r.shorts, {})
+})
+
+test('short.fr.json invalide : erreur bloquante', () => {
+  const bad = { ...shortFr(), music: 'inconnue' }
+  const r = validateArticle(withShorts({ fr: js(bad) }))
+  assert.ok(r.errors.some((e) => e.startsWith('short.fr.json : music')))
+  assert.deepEqual(r.shorts, {})
+  assert.ok(validateArticle(withShorts({ fr: '{pas du json' })).errors.some((e) => /^short\.fr\.json : JSON illisible/.test(e)))
+})
+
+test('shorts conformes : fr et traductions publiables', () => {
+  const fr = shortFr()
+  const r = validateArticle(withShorts({ fr: js(fr), en: js(shortTr(fr)), de: js(shortTr(fr)) }))
+  assert.deepEqual(r.errors, [])
+  // de n'a pas de de.md publiable : pas de short de.
+  assert.deepEqual(Object.keys(r.shorts), ['fr', 'en'])
+})
+
+test('traduction de short périmée : erreur en/hy/ru, note de/it/es', () => {
+  const fr = shortFr()
+  const r = validateArticle(withShorts({ fr: js(fr), hy: js(shortTr(fr, { sourceHash: 'vieux' })), de: js(shortTr(fr, { sourceHash: 'vieux' })) }))
+  assert.ok(r.errors.includes('short.hy.json : traduction périmée'))
+  assert.ok(r.notes.includes('short.de.json : traduction périmée'))
+  assert.ok(!r.errors.some((e) => e.startsWith('short.de')))
+  assert.deepEqual(Object.keys(r.shorts), ['fr'])
+})
+
+test('article hy.md refusé : pas de short hy même conforme', () => {
+  const fr = shortFr()
+  const r = validateArticle(withShorts({ fr: js(fr), hy: js(shortTr(fr)) }, { texts: { ...texts(), hy: null } }))
+  assert.equal(r.shorts.hy, undefined)
+  assert.ok(r.shorts.fr)
+})
+
+test('vidéo déjà publiée : l’erreur du short devient une note, short non retenu', () => {
+  const bad = { ...shortFr(), music: 'inconnue' }
+  const r = validateArticle(withShorts({ fr: js(bad) }, { videos: { komitas: { fr: { youtube: 'x' } } } }))
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.notes.some((n) => n.startsWith('short.fr.json : music')))
+  assert.deepEqual(r.shorts, {})
 })

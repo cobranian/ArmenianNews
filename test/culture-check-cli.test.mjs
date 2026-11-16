@@ -68,5 +68,6 @@ test('de/it/es absentes : notes imprimées, exit 0, résumé vert', async () => 
   assert.match(r.stdout, /· komitas — de\.md absent/)
   assert.match(r.stdout, /· komitas — it\.md absent/)
   assert.match(r.stdout, /· komitas — es\.md absent/)
-  assert.match(last(r), /^✓ .*3 note\(s\)/)
+  assert.match(r.stdout, /· komitas — short.fr.json absent : pas de vidéo/)
+  assert.match(last(r), /^✓ .*10 note\(s\)/)
 })

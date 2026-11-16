@@ -4,7 +4,7 @@
 // tournés, un par jour, au lieu de les perdre dans l'archive.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { CHANNELS, parseKinds, plan, settle, supports, reelItems, cultureItems, yerevanDay, REEL_BASE, compose, tagged } from '../scripts/lib/social.mjs'
+import { CHANNELS, FRESH_REEL_DAYS, parseKinds, plan, settle, supports, reelItems, cultureItems, yerevanDay, REEL_BASE, compose, tagged } from '../scripts/lib/social.mjs'
 
 const fb = CHANNELS.find((c) => c.id === 'facebook-ch')
 const bare = { version: 1, channels: { 'facebook-ch': { seededAt: 'x', posted: {} } } }
@@ -164,4 +164,17 @@ test('markPosted : refus (canal inconnu, sans registre, horodatage existant) ; s
     const l = { version: 1, channels: { 'facebook-ch': { seededAt: 'x', posted: { 'reel:x': v } } } }
     assert.equal(markPosted(l, 'facebook-ch', 'reel:x', at).channels['facebook-ch'].posted['reel:x'], at)
   }
+})
+
+// Un Reel d'un article neuf (≤ FRESH_REEL_DAYS) passe avant le catalogue
+// ancien, même si l'ancien est plus vieux donc premier dans l'ordre de date.
+test('(l) un reel d’article neuf passe avant le catalogue', () => {
+  assert.equal(FRESH_REEL_DAYS, 7)
+  const now = new Date('2026-11-16T08:00:00Z')
+  const items = [reel('a', '2026-10-01'), reel('neuf', '2026-11-14')]
+  const r = plan({ items, channels: [fb], ledger: bare, kinds: ['reel'], now })
+  assert.deepEqual(r.posts.map((p) => p.item.id), ['reel:neuf'])
+  const old = [reel('a', '2026-10-01'), reel('neuf', '2026-11-08')]
+  const r2 = plan({ items: old, channels: [fb], ledger: bare, kinds: ['reel'], now })
+  assert.deepEqual(r2.posts.map((p) => p.item.id), ['reel:a'])
 })

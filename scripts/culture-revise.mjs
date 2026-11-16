@@ -9,12 +9,15 @@
  * leur révision enregistrée, réécrit fr.md (date conservée), relance les
  * contrôles du brouillon, réécrit la section automatique du corps de PR — et
  * décoche « Faits vérifiés » : ce qui a été vérifié n'est plus ce qui est écrit.
+ * Le texte de la vidéo (short.fr.json), s'il existe, est révisé dans le même
+ * appel ; inutilisable, l'ancien n'est gardé que s'il reste fidèle à l'article
+ * révisé, sinon il est supprimé — et la réponse le dit (reviseShort).
  *
  * Commentaire qui n'est pas une commande : sortie 0, aucun appel au modèle,
  * une réponse d'aide.
  * Panne du modèle : sortie 1, fr.md inchangé, réponse avec l'erreur.
  */
-import { readFile, writeFile } from 'node:fs/promises'
+import { readFile, writeFile, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
@@ -27,7 +30,8 @@ import { fetchEntity, refetchSources } from './lib/culture-sources.mjs'
 import { loadUnesco } from './lib/culture-unesco.mjs'
 import { draftSources } from './lib/culture-validate.mjs'
 import { checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
-import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
+import { entityTexts, editorialAlerts, verifyClaims, reviseShort } from './lib/culture-checks.mjs'
+import { parseShortJson, shortHash } from './lib/culture-short.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { parseFrontMatter, serializeFrontMatter } from './lib/culture-markdown.mjs'
 import { buildAutoSection, replaceAutoSection, isChecked, uncheck } from './lib/culture-pr.mjs'
@@ -64,7 +68,11 @@ const fail = async (message) => {
 
 const base = path.join(DIR, slug)
 const frPath = path.join(base, 'fr.md')
-const fr = parseFrontMatter(await readFile(frPath, 'utf-8'))
+const frRaw = await readFile(frPath, 'utf-8')
+const fr = parseFrontMatter(frRaw)
+const shortPath = path.join(base, 'short.fr.json')
+// Absent ou illisible : aucun Short n'est révisé (culture-check signale l'illisible).
+const oldShort = parseShortJson(await readFile(shortPath, 'utf-8').catch(() => null))
 const meta = JSON.parse(await readFile(path.join(base, 'meta.json'), 'utf-8'))
 const prBody = await readFile(values['pr-body'], 'utf-8')
 
@@ -82,7 +90,7 @@ if (missing > 0) warnings.push(`${missing} source(s) non relue(s) à leur révis
 let res
 try {
   res = await chatDraft({
-    messages: buildReviseMessages({ title: fr.data.title, description: fr.data.description, body: fr.body, instruction, entity, sources }),
+    messages: buildReviseMessages({ title: fr.data.title, description: fr.data.description, body: fr.body, instruction, entity, sources, short: oldShort }),
   })
 } catch (e) {
   await fail(e.message)
@@ -102,7 +110,15 @@ const editorial = editorialAlerts(revised.body)
 const overlap = overlapRatio(revised.body, sources.filter(measuresOverlap).map((s) => s.extract))
 
 // Tout le front-matter est gardé (la date d'abord) ; seuls titre et description suivent la révision.
-await writeFile(frPath, serializeFrontMatter({ ...fr.data, title: revised.title, description: revised.description }, revised.body))
+const frText = serializeFrontMatter({ ...fr.data, title: revised.title, description: revised.description }, revised.body)
+await writeFile(frPath, frText)
+
+const video = reviseShort({ oldShort, returned: parseShortJson(res.text)?.short, oldText: frRaw, newText: frText })
+if (video.action === 'updated') await writeFile(shortPath, `${JSON.stringify(video.short, null, 2)}\n`)
+if (video.action === 'deleted') {
+  await rm(shortPath)
+  console.warn(`✗ short supprimé : ${video.reason}`)
+}
 
 const auto = buildAutoSection({
   title: revised.title,
@@ -112,6 +128,8 @@ const auto = buildAutoSection({
   editorial,
   overlap,
   warnings,
+  short: video.action === 'none' ? oldShort : video.short,
+  shortError: video.action === 'deleted' ? `texte supprimé à la révision, il ne correspondait plus à l’article (${video.reason})` : null,
 })
 const checked = isChecked(prBody)
 let body = replaceAutoSection(prBody, auto)
@@ -125,6 +143,7 @@ await writeFile(
     changed: changedParagraphs(fr.body, revised.body),
     alerts: newAlerts(prBody, unsupported?.facts ?? []),
     unchecked: checked,
+    video: { ...video, same: video.action === 'updated' && shortHash(video.short) === shortHash(oldShort) },
   }),
 )
 console.log(`Révision de ${slug} appliquée (${res.model}).`)

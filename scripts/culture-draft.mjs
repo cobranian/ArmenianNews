@@ -11,6 +11,8 @@
  * `skipped=pause` (rédaction en pause, scripts/lib/culture-pause.mjs),
  * `slug` et `title` (brouillon écrit), `ideas=1` (idées à proposer).
  * Toute panne du modèle pendant la rédaction lève : pas de PR, relance manuelle.
+ * Le texte de la vidéo (short.fr.json) suit, par un appel à part : son échec
+ * ne lève pas — pas de fichier, et « ⚠️ Pas de vidéo » dans la PR.
  * Un sujet sans page Wikipédia fr ni en utilisable (absente, homonymie, autre
  * entité Wikidata) est sauté (« ✗ sujet … sauté ») et le suivant est essayé,
  * MAX_TRIES au plus ; si aucun n'aboutit, sortie 1.
@@ -32,7 +34,7 @@ import {
 import { OPTIONAL } from './lib/culture-validate.mjs'
 import { loadUnesco, unescoSource } from './lib/culture-unesco.mjs'
 import { fetchPeopleofarSources, checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
-import { entityTexts, editorialAlerts, verifyClaims } from './lib/culture-checks.mjs'
+import { entityTexts, editorialAlerts, verifyClaims, draftShort } from './lib/culture-checks.mjs'
 import { makeImages } from './lib/culture-image.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { serializeFrontMatter } from './lib/culture-markdown.mjs'
@@ -163,7 +165,10 @@ async function draftArticle({ topic, event }) {
     search: `${titles.en || topic.title} Armenian`,
   }).catch((e) => (warnings.push(`Commons indisponible (${e.message}).`), []))
 
-  const draftRes = await chatDraft({ messages: buildDraftMessages({ topic, entity, sources, facts, event }) })
+  // Partagé par l'article et sa vidéo : après un repli, le Short va droit au
+  // modèle de secours qui a répondu (même ton, pas de délai perdu).
+  const sticky = {}
+  const draftRes = await chatDraft({ messages: buildDraftMessages({ topic, entity, sources, facts, event }), sticky })
   if (draftRes.fellBack) warnings.push(`Rédigé par le modèle de secours ${draftRes.model} (Gemini indisponible).`)
   const draft = parseArticleJson(draftRes.text)
   if (!draft) throw new Error(`brouillon illisible (JSON attendu) — modèle ${draftRes.model}`)
@@ -205,10 +210,18 @@ async function draftArticle({ topic, event }) {
 
   const date = new Date().toISOString().slice(0, 10)
   const frText = serializeFrontMatter({ title: draft.title, description: draft.description, date }, draft.body)
-  const body = buildPrBody({ title: draft.title, frBody: draft.body, meta, unsupported, editorial, overlap, warnings })
+  // La vidéo, par un appel à part et depuis l'article tel qu'il sera écrit :
+  // son échec ne coûte que la vidéo (pas de short.fr.json, ⚠️ dans la PR).
+  const video = await draftShort({
+    title: draft.title, description: draft.description, body: draft.body, articleText: frText,
+    chat: (o) => chatDraft({ ...o, sticky }),
+  })
+  if (video.error) console.warn(`✗ short : ${video.error}`)
+  warnings.push(...video.warnings)
+  const body = buildPrBody({ title: draft.title, frBody: draft.body, meta, unsupported, editorial, overlap, warnings, short: video.short, shortError: video.error })
 
   if (values.dry) {
-    console.log(`\n${frText}\n----\n${body}`)
+    console.log(`\n${frText}\n----\n${video.short ? `${JSON.stringify(video.short, null, 2)}\n----\n` : ''}${body}`)
     return null
   }
 
@@ -220,6 +233,7 @@ async function draftArticle({ topic, event }) {
   await mkdir(base, { recursive: true })
   await writeFile(path.join(base, 'fr.md'), frText)
   await writeFile(path.join(base, 'meta.json'), `${JSON.stringify(meta, null, 2)}\n`)
+  if (video.short) await writeFile(path.join(base, 'short.fr.json'), `${JSON.stringify(video.short, null, 2)}\n`)
   if (images) {
     await writeFile(path.join(base, 'image.webp'), images.webp)
     await writeFile(path.join(base, 'image.jpg'), images.jpg)

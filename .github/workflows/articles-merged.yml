@@ -60,16 +60,36 @@ jobs:
           [ -f "$D/fr.md" ] || { echo "Pas d'article $SLUG sur main : rien à faire."; exit 0; }
           missing=""
           for l in en hy ru de it es; do [ -f "$D/$l.md" ] || missing="$missing $l"; done
-          if [ -z "$missing" ] && node scripts/culture-check.mjs "$SLUG"; then
+          # Contrôle « tout présent et conforme » : il ne décide plus QUOI
+          # traduire, seulement si les articles absents de/it/es (simples notes)
+          # comptent. Le quoi vient du plan, comme dans articles-publish.yml :
+          # un article relu et à jour n'est JAMAIS retraduit ni poussé sur main
+          # à cause de sa vidéo — un Short absent, périmé ou non conforme ne
+          # relance que son Short (--short-only).
+          if [ -z "$missing" ] && node scripts/culture-check.mjs "$SLUG"; then PASSED=--check-passed; else PASSED=; fi
+          node scripts/culture-translate-plan.mjs "$SLUG" $PASSED > "$RUNNER_TEMP/plan.txt"
+          if [ ! -s "$RUNNER_TEMP/plan.txt" ]; then
             echo "Traductions présentes et à jour : rien à faire."
+            # Les Shorts de l'article (video.yml), sans retenir la publication.
+            gh workflow run video.yml --ref main -f slug="$SLUG" || true
             exit 0
           fi
-          echo "À traduire (manquantes :${missing:- aucune}, ou périmées)"
-          node scripts/culture-translate.mjs "$SLUG" --summary "$RUNNER_TEMP/summary.md" || true
+          echo "Passages de traduction (manquantes :${missing:- aucune}) :"
+          cat "$RUNNER_TEMP/plan.txt"
+          # Un passage par ligne ; $args non cité exprès (options et codes de
+          # langue). Un passage en échec n'arrête pas les autres.
+          n=0
+          while read -r args; do
+            n=$((n + 1))
+            node scripts/culture-translate.mjs "$SLUG" $args --summary "$RUNNER_TEMP/summary-$n.md" < /dev/null || true
+          done < "$RUNNER_TEMP/plan.txt"
+          cat "$RUNNER_TEMP"/summary-*.md > "$RUNNER_TEMP/summary.md" 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$D"
           if git diff --cached --quiet; then
+            # Les langues déjà prêtes partent quand même en vidéo.
+            gh workflow run video.yml --ref main -f slug="$SLUG" || true
             gh pr comment "$PR" --body "⚠️ Fusionnée sans traductions, et la traduction automatique n'a rien produit : relancez \`npm run culture:translate $SLUG\`." || true
             exit 1
           fi
@@ -78,6 +98,8 @@ jobs:
             if git pull --rebase origin main && git push origin HEAD:main; then
               # Un push par GITHUB_TOKEN ne déclenche pas le déploiement.
               gh workflow run hourly.yml --ref main
+              # Les traductions sont sur main : les Shorts peuvent partir.
+              gh workflow run video.yml --ref main -f slug="$SLUG" || true
               {
                 echo "Fusionnée avant ses traductions : elles ont été faites sur main et déployées."
                 echo

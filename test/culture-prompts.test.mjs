@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages, buildReviseMessages, plainName,
+  buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages, buildReviseMessages, buildShortMessages, buildShortTranslateMessages, plainName,
   parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts, MAX_EXTRACT,
 } from '../scripts/lib/culture-prompts.mjs'
 
@@ -215,4 +215,47 @@ test('plainName : un nom passe, une consigne non', () => {
     'Komitas Neu', 'Komitas​X', '"Komitas"', '`Komitas`', '[Komitas](https://x)',
     'K'.repeat(61), '1894', '', null, undefined,
   ]) assert.equal(plainName(ko), null, String(ko))
+})
+
+// Le texte du Short est rédigé par un appel À PART, après l'article : la
+// vidéo ne doit jamais faire échouer l'article.
+test('buildShortMessages : 7 faits, 130 caractères, nombres de l’article, pistes et leurs thèmes, JSON seul', () => {
+  const [sys, user] = buildShortMessages({ title: 'Le duduk', description: 'Un hautbois.', body: 'Corps de l’article, en 2005.' })
+  assert.equal(sys.role, 'system')
+  assert.match(sys.content, /7 faits/)
+  assert.match(sys.content, /130 caractères/)
+  assert.match(sys.content, /nombre[^\n]*ARTICLE/)
+  assert.match(sys.content, /mazia[^\n]*foi[^\n]*écrit[^\n]*pierre/)
+  assert.match(sys.content, /sergo[^\n]*histoire[^\n]*batailles/)
+  assert.match(sys.content, /otar[^\n]*vie[^\n]*fête[^\n]*arts/)
+  assert.match(sys.content, /UNIQUEMENT[^\n]*JSON/)
+  assert.match(sys.content, /"facts"/)
+  assert.match(user.content, /Corps de l’article, en 2005\./)
+  assert.match(user.content, /Le duduk/)
+})
+
+test('buildReviseMessages : le Short courant est transmis et demandé en retour', () => {
+  const short = { facts: [{ eyebrow: 'E', title: 'Titre du fait', text: 'T', big: false }], outroTitle: 'O', ytTitle: 'Titre YouTube', ytLead: 'L', music: 'otar' }
+  const [sys, user] = buildReviseMessages({ title: 'T', description: 'D', body: 'B', instruction: 'I', sources, short })
+  assert.match(user.content, /SHORT ACTUEL/)
+  assert.match(user.content, /Titre du fait/)
+  assert.match(sys.content, /"short"/)
+  const [sysSans, userSans] = buildReviseMessages({ title: 'T', description: 'D', body: 'B', instruction: 'I', sources })
+  assert.doesNotMatch(userSans.content, /SHORT ACTUEL/)
+  assert.doesNotMatch(sysSans.content, /"short"/)
+})
+
+test('buildShortTranslateMessages : article traduit, mêmes 7 faits, noms de l’article, « ss » suisse en de', () => {
+  const short = { facts: [{ eyebrow: 'E', title: 'T', text: 'X', big: true }], outroTitle: 'Le duduk', ytTitle: 'Titre', ytLead: 'Lead', music: 'otar' }
+  const [sys, user] = buildShortTranslateMessages({ lang: 'de', short, articleText: 'Die Duduk, seit 2005 Welterbe.' })
+  assert.match(sys.content, /allemand de Suisse/)
+  assert.match(sys.content, /jamais « ß »/)
+  assert.match(sys.content, /mêmes 7 faits[^\n]*même ordre/)
+  assert.match(sys.content, /orthographe de l'ARTICLE/)
+  assert.match(sys.content, /nombre[^\n]*ARTICLE/)
+  assert.match(sys.content, /UNIQUEMENT[^\n]*JSON/)
+  assert.doesNotMatch(sys.content, /"music"/)
+  assert.match(user.content, /Die Duduk, seit 2005 Welterbe\./)
+  assert.match(user.content, /"outroTitle": "Le duduk"/)
+  assert.doesNotMatch(user.content, /otar/)
 })

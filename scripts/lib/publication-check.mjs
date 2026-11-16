@@ -13,6 +13,9 @@
 // `faire` (ça part encore, mais une action est due), `ok`. Plus `info`, qui
 // ne déclenche rien.
 
+import { ytKey, isYtAuthFailure, MAX_ATTEMPTS } from './youtube.mjs'
+import { videoLangs } from './culture-video-plan.mjs'
+
 export const DASHBOARD_TITLE = '[tableau-de-bord] Publication des articles'
 const ICON = { bloquant: '🔴', faire: '🟠', ok: '✅', info: 'ℹ️' }
 
@@ -86,6 +89,7 @@ const WORKFLOWS = {
   translate: { file: 'articles-translate.yml', label: 'Traduction (étiquette « traduire »)' },
   backfill: { file: 'articles-backfill.yml', label: 'Rattrapage hebdomadaire de/it/es' },
   hourly: { file: 'hourly.yml', label: 'Déploiement et envoi aux réseaux' },
+  video: { file: 'video.yml', label: 'Rendu des Shorts' },
 }
 export const WATCHED_WORKFLOWS = Object.values(WORKFLOWS).map((w) => w.file)
 
@@ -259,6 +263,92 @@ export function checkVideos({ articles, videos, langs, now = new Date() }) {
       ...(late && { action: `Rendre le Short de \`${a.slug}\` dans les 7 langues (projet armenie-video), puis l'envoyer` }),
     })
   }
+  return out
+}
+
+// Le rattrapage des vidéos. video.yml n'est lancé qu'une fois, à la fusion,
+// et plusieurs voies le privent de son travail sans rien dire : un dispatch
+// annulé par la concurrence (GitHub ne garde qu'UN run en attente), un Short
+// traduit plus tard (rattrapage de/it/es, traduction en échec à la
+// publication), un dépôt refusé au push. Une seule sonde les couvre toutes :
+// un article dont une langue a un Short publiable, ni sur YouTube ni en file
+// (videoLangs, la règle même de video.yml), attend un lancement à la main.
+// `articles` : [{ slug, result }] (result = validateArticle) ; `rendering` :
+// un run de video.yml en cours ou en attente — son travail n'est pas encore
+// inscrit, une ligne serait une fausse alerte.
+export function checkVideoCatchup({ articles, videos, queue, rendering = false }) {
+  if (rendering) return []
+  const out = []
+  for (const { slug, result } of articles) {
+    const langs = videoLangs(result, { slug, videos, queue })
+    if (!langs.length) continue
+    out.push({
+      key: `yt-catchup-${slug}`,
+      level: 'faire',
+      text: `${slug} : Short prêt, ni rendu ni en ligne (${langs.join(', ')})`,
+      action: `\`! gh workflow run video.yml --ref main -f slug=${slug}\``,
+    })
+  }
+  return out
+}
+
+// La file YouTube (src/data/youtube-queue.json) et son registre. Une vidéo
+// privée ou incertaine reste en file : « en attente » = absente de `posted`.
+// `auto` : la variable YOUTUBE_AUTO (« 1 » = envoi automatique en service).
+export const YT_QUEUE_MAX = 14
+export const YT_QUEUE_STALE_DAYS = 5
+export function checkYoutubeQueue({ queue, ledger, auto, now = new Date() }) {
+  const posted = ledger?.posted ?? {}
+  const failed = ledger?.failed ?? {}
+  const pending = (queue?.items ?? []).filter((it) => !(ytKey(it.slug, it.lang) in posted))
+  const out = []
+  if (auto !== '1' && pending.length)
+    out.push({
+      key: 'yt-queue-manual',
+      level: 'info',
+      text: `${pending.length} vidéo(s) à téléverser en séance (Chrome) : ${pending.map((it) => `${it.slug}/${it.lang}`).join(', ')}`,
+    })
+  const oldest = pending.map((it) => days(now, Date.parse(it.addedAt))).filter(Number.isFinite).reduce((a, b) => Math.max(a, b), 0)
+  if (pending.length > YT_QUEUE_MAX || oldest > YT_QUEUE_STALE_DAYS)
+    out.push({
+      key: 'yt-queue-late',
+      level: 'faire',
+      text: `File YouTube en retard : ${pending.length} en attente, la plus ancienne depuis ${Math.floor(oldest)} j`,
+      action: auto === '1' ? 'Lire le journal du dernier envoi YouTube (quota, jetons)' : 'Téléverser la file en séance (Chrome), puis `node scripts/youtube-post.mjs mark <slug> <lang> <videoId>`',
+    })
+  const authLangs = new Set()
+  for (const [key, f] of Object.entries(failed)) {
+    if (isYtAuthFailure(f.error)) authLangs.add(key.slice(key.lastIndexOf(':') + 1))
+    else if (f.uncertain)
+      out.push({
+        key: `yt-uncertain-${key}`,
+        level: 'faire',
+        text: `YouTube ${key} : envoi incertain${f.id ? ` (${f.id})` : ''}, à vérifier sur la chaîne`,
+        action: `\`node scripts/youtube-post.mjs mark ${key.replace(':', ' ')} <videoId>\` si elle est en ligne, sinon \`node scripts/youtube-post.mjs retry ${key} --drop\``,
+      })
+    else if ((f.attempts ?? 0) >= MAX_ATTEMPTS)
+      out.push({
+        key: `yt-abandoned-${key}`,
+        level: 'faire',
+        text: `YouTube ${key} : envoi abandonné après ${f.attempts} essais — ${String(f.error ?? '').slice(0, 120)}`,
+        action: `\`node scripts/youtube-post.mjs retry ${key}\``,
+      })
+  }
+  for (const lang of [...authLangs].sort())
+    out.push({
+      key: `yt-auth-${lang}`,
+      level: 'faire',
+      text: `Jeton YouTube ${lang} refusé : plus aucun envoi sur cette chaîne`,
+      action: `Recoller le jeton YouTube ${lang} : \`node scripts/youtube-auth.mjs --lang ${lang}\``,
+    })
+  const priv = Object.entries(posted).filter(([, v]) => v && typeof v === 'object' && v.private).map(([k]) => k)
+  if (priv.length)
+    out.push({
+      key: 'yt-private',
+      level: 'faire',
+      text: `Audit YouTube non accordé : ${priv.length} vidéo(s) restée(s) privée(s) (${priv.join(', ')})`,
+      action: 'Demander l’audit de l’API YouTube ; en attendant, publier ces vidéos à la main puis `node scripts/youtube-post.mjs mark <slug> <lang> <videoId>`',
+    })
   return out
 }
 

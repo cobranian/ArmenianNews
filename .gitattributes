@@ -12,3 +12,6 @@
 # `text=auto` laisse Git reconnaître les binaires (images, polices, MP4) et
 # n'y touche pas.
 * text=auto eol=lf
+
+# Pistes audio du projet Remotion (video/) : binaires, jamais de diff ni de conversion.
+*.mp3 binary
