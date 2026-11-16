@@ -11,6 +11,7 @@
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
 import { parseFrontMatter, bodyHash } from './culture-markdown.mjs'
 import { isFreeLicense } from './culture-license.mjs'
+import { validateShort, shortHash, parseShortJson } from './culture-short.mjs'
 
 // TRANSLATED : toutes les langues que culture-translate produit depuis le
 // français. de et it y sont FACULTATIVES (spec 2026-10-23, « Culture de/it ») :
@@ -24,6 +25,9 @@ export const REQUIRED = TRANSLATED.filter((l) => !OPTIONAL.includes(l))
 // La note d'une langue facultative simplement pas encore traduite : le cas
 // normal d'un article antérieur à de/it, que le build ne répète pas au log.
 export const ABSENT_NOTE = 'absent (traduction facultative)'
+// La note d'un Short simplement pas encore rédigé : le cas normal des articles
+// antérieurs aux vidéos, que le build ne répète pas au log.
+export const SHORT_ABSENT = /^short\.\w+\.json absent : pas de vidéo/
 
 // Les pages Wikipédia de/it (sitelinks du qid) ne servent QU'À leur
 // traduction : nom en usage et contrôle de recouvrement. Le brouillon
@@ -78,8 +82,49 @@ export function chosenImage(meta) {
   return Number.isInteger(meta?.imageChoice) ? (c[meta.imageChoice] ?? null) : null
 }
 
-export function validateArticle({ slug, meta, texts, images }) {
-  if (!CULTURE_SLUG.test(slug ?? '')) return { errors: [`slug invalide : ${slug}`], notes: [], langs: {} }
+// Les Shorts d'un article (spec vidéo auto). Même partage que les .md : fr et
+// en/hy/ru en erreur, de/it/es en note ; un Short absent n'est jamais qu'une
+// note (l'article se publie sans vidéo). Si la vidéo d'une langue est DÉJÀ en
+// ligne (`videos[slug][lang]`), toute erreur devient une note : la republier
+// est hors sujet. `out` ne retient que les Shorts sans aucune erreur.
+function checkShorts({ slug, texts, shorts, videos, langs, errors, notes }) {
+  const out = {}
+  const published = (l) => Boolean(videos?.[slug]?.[l])
+  const parse = (raw) => (raw == null ? null : parseShortJson(raw))
+
+  const frRaw = shorts?.fr ?? null
+  const frShort = parse(frRaw)
+  if (frRaw == null) notes.push('short.fr.json absent : pas de vidéo')
+  else {
+    const problems = frShort ? validateShort(frShort, { lang: 'fr', articleText: texts?.fr }) : ['JSON illisible']
+    const report = published('fr') ? notes : errors
+    for (const p of problems) report.push(`short.fr.json : ${p}`)
+    if (!problems.length) out.fr = frShort
+  }
+
+  for (const l of TRANSLATED) {
+    const raw = shorts?.[l] ?? null
+    if (raw == null) {
+      notes.push(`short.${l}.json absent : pas de vidéo ${l}`)
+      continue
+    }
+    const t = parse(raw)
+    // Sans français lisible il n'y a rien à comparer : l'erreur du français suffit.
+    if (!frShort && t) continue
+    const report = published(l) || OPTIONAL.includes(l) ? notes : errors
+    let problems
+    if (!t) problems = ['JSON illisible']
+    else if (t.sourceHash !== shortHash(frShort)) problems = ['traduction périmée']
+    else problems = validateShort(t, { lang: l, articleText: texts?.[l] })
+    for (const p of problems) report.push(`short.${l}.json : ${p}`)
+    // La langue de l'article doit elle-même être publiable.
+    if (!problems.length && langs[l] && out.fr) out[l] = t
+  }
+  return out
+}
+
+export function validateArticle({ slug, meta, texts, images, shorts, videos }) {
+  if (!CULTURE_SLUG.test(slug ?? '')) return { errors: [`slug invalide : ${slug}`], notes: [], langs: {}, shorts: {} }
   const fatal = []
   const errors = []
   if (!meta || meta.slug !== slug) fatal.push('meta.json absent, illisible ou de slug incohérent')
@@ -105,7 +150,7 @@ export function validateArticle({ slug, meta, texts, images }) {
   } catch (e) {
     fatal.push(`fr.md : ${e.message}`)
   }
-  if (fatal.length) return { errors: [...fatal, ...errors], notes: [], langs: {} }
+  if (fatal.length) return { errors: [...fatal, ...errors], notes: [], langs: {}, shorts: {} }
 
   const langs = { fr }
   const hash = bodyHash(fr.body)
@@ -137,7 +182,8 @@ export function validateArticle({ slug, meta, texts, images }) {
     }
     langs[l] = t
   }
-  return { errors, notes, langs }
+  const publishable = checkShorts({ slug, texts, shorts, videos, langs, errors, notes })
+  return { errors, notes, langs, shorts: publishable }
 }
 
 // La case « Faits vérifiés » cochée, hors de la section du robot : définie

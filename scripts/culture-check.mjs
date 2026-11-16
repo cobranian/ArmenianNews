@@ -15,7 +15,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
-import { readArticle, articleSlugs, invalidDirs, invalidDirMessage } from './lib/culture-load.mjs'
+import { readArticle, readVideos, articleSlugs, invalidDirs, invalidDirMessage } from './lib/culture-load.mjs'
 import { validateArticle, factsChecked } from './lib/culture-validate.mjs'
 import { validateTopics } from './lib/culture-topic.mjs'
 
@@ -36,9 +36,10 @@ try {
   errors.push(`sujets.json illisible : ${e.message}`)
 }
 errors.push(...(await invalidDirs(values.dir)).map(invalidDirMessage))
+const videos = await readVideos(values.dir)
 const slugs = positionals.length ? positionals : await articleSlugs(values.dir)
 for (const slug of slugs) {
-  const { errors: errs, notes: ns } = validateArticle(await readArticle(values.dir, slug))
+  const { errors: errs, notes: ns } = validateArticle({ ...(await readArticle(values.dir, slug)), videos })
   errors.push(...errs.map((e) => `${slug} — ${e}`))
   notes.push(...ns.map((n) => `${slug} — ${n}`))
 }
@@ -51,6 +52,6 @@ for (const n of notes) console.log(`· ${n}`)
 for (const e of errors) console.log(`✗ ${e}`)
 const summary = errors.length
   ? `✗ ${errors.length} problème(s) : ${errors[0]}`
-  : `✓ culture : ${slugs.length} article(s) conforme(s)${notes.length ? ` · ${notes.length} note(s) de/it` : ''}`
+  : `✓ culture : ${slugs.length} article(s) conforme(s)${notes.length ? ` · ${notes.length} note(s)` : ''}`
 console.log(summary.length > 140 ? `${summary.slice(0, 139)}…` : summary)
 process.exit(errors.length ? 1 : 0)
