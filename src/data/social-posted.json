@@ -705,8 +705,7 @@
         "reel:aram-khatchatourian": "2026-11-12T20:31:59.778Z",
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
-        "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
+        "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z"
       },
       "failed": {
         "reel:lavash": {
@@ -763,6 +762,11 @@
           "attempts": 3,
           "last": "2026-11-10T18:32:20.209Z",
           "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": {
+          "attempts": 1,
+          "last": "2026-11-16T11:38:38.279Z",
+          "error": "facebook : HTTP 400 The url you supplied is invalid"
         }
       }
     },
