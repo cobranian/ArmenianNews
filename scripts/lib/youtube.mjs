@@ -29,6 +29,18 @@ export function checkChannel(expected, got) {
   return `Mauvaise chaîne : attendue ${expected}, obtenue ${got || '(aucune)'}. Relancez et choisissez la bonne chaîne sur l'écran de consentement.`
 }
 
+// Le retour de l'écran de consentement sur le serveur local (youtube-auth.mjs).
+// Seul un retour au bon `state` décide : { code } ou { error } (refus de
+// Google, texte passé par JSON.stringify — il vient d'une URL et part au
+// terminal). Tout le reste (onglet rouvert, requête parasite, state faux) rend
+// null : réponse 400, et le serveur attend encore le vrai retour.
+export function consentOutcome(params, state) {
+  if (params.get('state') !== state) return null
+  if (params.get('code')) return { code: params.get('code') }
+  if (params.get('error')) return { error: JSON.stringify(params.get('error')) }
+  return null
+}
+
 // --- L'envoi automatique : la partie PURE ----------------------------------
 // L'envoi lui-même est dans youtube-send.mjs, l'orchestration dans
 // scripts/youtube-post.mjs. Même règle que les réseaux (social.mjs) : AU PLUS

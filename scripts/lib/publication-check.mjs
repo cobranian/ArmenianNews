@@ -14,6 +14,7 @@
 // ne déclenche rien.
 
 import { ytKey, isYtAuthFailure, MAX_ATTEMPTS } from './youtube.mjs'
+import { videoLangs } from './culture-video-plan.mjs'
 
 export const DASHBOARD_TITLE = '[tableau-de-bord] Publication des articles'
 const ICON = { bloquant: '🔴', faire: '🟠', ok: '✅', info: 'ℹ️' }
@@ -260,6 +261,32 @@ export function checkVideos({ articles, videos, langs, now = new Date() }) {
       level: late ? 'faire' : 'info',
       text: `${a.slug} : aucun Short, dans aucune langue${late ? ` (article du ${a.date})` : ' — encore récent'}`,
       ...(late && { action: `Rendre le Short de \`${a.slug}\` dans les 7 langues (projet armenie-video), puis l'envoyer` }),
+    })
+  }
+  return out
+}
+
+// Le rattrapage des vidéos. video.yml n'est lancé qu'une fois, à la fusion,
+// et plusieurs voies le privent de son travail sans rien dire : un dispatch
+// annulé par la concurrence (GitHub ne garde qu'UN run en attente), un Short
+// traduit plus tard (rattrapage de/it/es, traduction en échec à la
+// publication), un dépôt refusé au push. Une seule sonde les couvre toutes :
+// un article dont une langue a un Short publiable, ni sur YouTube ni en file
+// (videoLangs, la règle même de video.yml), attend un lancement à la main.
+// `articles` : [{ slug, result }] (result = validateArticle) ; `rendering` :
+// un run de video.yml en cours ou en attente — son travail n'est pas encore
+// inscrit, une ligne serait une fausse alerte.
+export function checkVideoCatchup({ articles, videos, queue, rendering = false }) {
+  if (rendering) return []
+  const out = []
+  for (const { slug, result } of articles) {
+    const langs = videoLangs(result, { slug, videos, queue })
+    if (!langs.length) continue
+    out.push({
+      key: `yt-catchup-${slug}`,
+      level: 'faire',
+      text: `${slug} : Short prêt, ni rendu ni en ligne (${langs.join(', ')})`,
+      action: `\`! gh workflow run video.yml --ref main -f slug=${slug}\``,
     })
   }
   return out

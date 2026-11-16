@@ -15,7 +15,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 import { ALL_LANGS, feedUrl } from '../sites.config.js'
-import { loadCulture } from './lib/culture-load.mjs'
+import { loadCulture, articleSlugs, readArticle } from './lib/culture-load.mjs'
+import { validateArticle } from './lib/culture-validate.mjs'
 import { checkPause } from './lib/culture-pause.mjs'
 import { sonderTout } from './radio-check.mjs'
 import { chat, llmConfig, explain, CULTURE_FALLBACK_MODELS, OPENROUTER_BASE_URL } from './lib/culture-llm.mjs'
@@ -39,6 +40,7 @@ import {
   checkFeeds,
   checkVideos,
   checkYoutubeQueue,
+  checkVideoCatchup,
   checkIndexing,
   checkScraper,
   scrapeFailures,
@@ -257,7 +259,25 @@ async function videos() {
   return [
     ...checkVideos({ articles: await articles(), videos: list, langs: ALL_LANGS, now }),
     ...checkYoutubeQueue({ queue, ledger, auto: env.YOUTUBE_AUTO, now }),
+    ...checkVideoCatchup({ articles: await shortResults(list), videos: list, queue, rendering: await videoRendering() }),
   ]
+}
+// Chaque article et ses Shorts publiables (validateArticle, comme video.yml).
+async function shortResults(videos) {
+  const dir = path.join(root, 'src/data/culture')
+  const out = []
+  for (const slug of await articleSlugs(dir)) out.push({ slug, result: validateArticle({ ...(await readArticle(dir, slug)), videos }) })
+  return out
+}
+// Un video.yml en cours ou en attente n'a pas encore inscrit son travail. Sans
+// accès à l'API (poste local), on tient le rendu pour fini.
+async function videoRendering() {
+  try {
+    const { workflow_runs: runs = [] } = await gh('/actions/workflows/video.yml/runs?per_page=5')
+    return runs.some((r) => r.status !== 'completed')
+  } catch {
+    return false
+  }
 }
 
 const sections = [

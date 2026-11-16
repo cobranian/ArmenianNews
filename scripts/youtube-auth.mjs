@@ -11,7 +11,7 @@ import crypto from 'node:crypto'
 import path from 'node:path'
 import { spawn, spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
-import { YT_CHANNELS, YT_SCOPES, ytLangs, checkChannel } from './lib/youtube.mjs'
+import { YT_CHANNELS, YT_SCOPES, ytLangs, checkChannel, consentOutcome } from './lib/youtube.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 try {
@@ -57,18 +57,24 @@ const code = new Promise((resolve, reject) => {
       res.writeHead(404).end()
       return
     }
-    const ok = u.searchParams.get('state') === state && u.searchParams.get('code')
-    res.writeHead(ok ? 200 : 400, { 'content-type': 'text/plain; charset=utf-8' })
-    res.end(ok ? 'Consentement reçu. Vous pouvez fermer cet onglet.' : 'Retour invalide.')
-    if (ok) resolve(u.searchParams.get('code'))
-    else reject(new Error(u.searchParams.get('error') || 'état (state) ou code manquant'))
+    // Une requête sans le bon state (onglet rouvert, sonde) ne doit pas
+    // abandonner le consentement en cours : 400, et on attend encore.
+    const out = consentOutcome(u.searchParams, state)
+    res.writeHead(out?.code ? 200 : 400, { 'content-type': 'text/plain; charset=utf-8' })
+    res.end(out?.code ? 'Consentement reçu. Vous pouvez fermer cet onglet.' : 'Retour invalide.')
+    if (out?.code) resolve(out.code)
+    else if (out?.error) reject(new Error(out.error))
   })
 })
 
 console.log(`Chaîne visée : ${lang} (${YT_CHANNELS[lang]})`)
 console.log('Ouvrez cette adresse si le navigateur ne s\'ouvre pas :\n' + consentUrl + '\n')
+// Un échec de lancement (pas de `cmd`, hors Windows) arrive en événement
+// asynchrone : sans écouteur il tuerait le processus. L'adresse est affichée.
 try {
-  spawn('cmd', ['/c', 'start', '', consentUrl.replace(/&/g, '^&')], { stdio: 'ignore', detached: true }).unref()
+  const opener = spawn('cmd', ['/c', 'start', '', consentUrl.replace(/&/g, '^&')], { stdio: 'ignore', detached: true })
+  opener.on('error', () => console.log('(navigateur non ouvert : ouvrez l\'adresse ci-dessus)'))
+  opener.unref()
 } catch {
   // l'adresse est affichée ci-dessus
 }

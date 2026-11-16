@@ -112,8 +112,20 @@ jobs:
               gh workflow run hourly.yml --ref main
               exit 0
             fi
+            # Refusé (le settle horaire a réécrit la file entre-temps : trois
+            # rebases identiques échoueraient pareil). On repart de main et on
+            # refait l'inscription, sans renvoyer les MP4 — déjà dans la release.
             git rebase --abort 2>/dev/null || true
             sleep 10
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/video-publish.mjs "$SLUG" --dir video/out --register-only
+            git add src/data/reels.json src/data/youtube-queue.json
+            if git diff --cached --quiet; then
+              echo "Déjà inscrit sur main : rien à pousser."
+              exit 0
+            fi
+            git commit -m "data: vidéos de « $SLUG »"
           done
           echo "::error::Push sur main impossible après 3 essais : les MP4 sont dans la release, relancez le workflow pour les inscrire."
           exit 1

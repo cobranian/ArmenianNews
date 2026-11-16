@@ -38,6 +38,26 @@ const langBlock = (s) =>
   ['outroTitle', 'ytTitle', 'ytLead'].map((k) => `    ${json(k)}: ${json(s[k])}`).join(',\n') +
   '\n  }'
 
+// de/it/es sont facultatives (une simple note pour culture-check) : un Short
+// illisible ou incomplet dans l'une d'elles est sauté, avec un avertissement,
+// au lieu de casser le rendu de TOUS les articles. Root.tsx ne déclare que les
+// langues présentes. fr/en/hy/ru, elles, restent bloquantes.
+const OPTIONAL = new Set(['de', 'it', 'es'])
+const isText = (v) => typeof v === 'string' && v.length > 0
+async function readShort(file, lang) {
+  let short
+  try {
+    short = JSON.parse(await readFile(file, 'utf-8'))
+    if (!Array.isArray(short?.facts) || !short.facts.length || !['outroTitle', 'ytTitle', 'ytLead'].every((k) => isText(short[k])))
+      throw new Error('facts, outroTitle, ytTitle ou ytLead manquant')
+  } catch (e) {
+    if (!OPTIONAL.has(lang)) throw new Error(`${path.relative(culture, file)} : ${e.message}`)
+    console.warn(`⚠ ${path.relative(culture, file)} sauté : ${e.message}`)
+    return null
+  }
+  return short
+}
+
 const music = JSON.parse(await readFile(musicPath, 'utf-8'))
 await rm(dataDir, { recursive: true, force: true })
 await mkdir(dataDir, { recursive: true })
@@ -46,7 +66,8 @@ for (const slug of slugs) {
   for (const lang of LANGS) {
     const file = path.join(culture, slug, `short.${lang}.json`)
     if (!existsSync(file)) continue
-    const short = JSON.parse(await readFile(file, 'utf-8'))
+    const short = await readShort(file, lang)
+    if (!short) continue
     if (lang === 'fr') {
       if (!TRACK_IDS.includes(short.music)) throw new Error(`${slug} : music « ${short.music} » inconnue (short.fr.json)`)
       music.BY_SLUG[slug] = short.music

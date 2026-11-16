@@ -24,6 +24,7 @@ import {
   scrapeFailures,
   checkVideos,
   checkYoutubeQueue,
+  checkVideoCatchup,
   VIDEO_LATE_DAYS,
   reelCounts,
 } from '../scripts/lib/publication-check.mjs'
@@ -324,4 +325,32 @@ test('checkYoutubeQueue : un envoi incertain demande vérification (mark ou retr
 test('checkWorkflows : un échec de video.yml lève son alerte', () => {
   const rows = checkWorkflows({ 'video.yml': { conclusion: 'failure', at: '2026-11-02T00:00:00Z', url: 'u' } }, { now })
   assert.ok(rows.some((r) => r.key === 'wf-video-failure' && r.level === 'faire'))
+})
+
+// Le rattrapage : une langue à Short publiable, ni en ligne ni en file, n'a
+// plus aucun chemin vers YouTube (dispatch annulé, Short traduit plus tard…).
+const shortsOf = (...langs) => ({ shorts: Object.fromEntries(langs.map((l) => [l, { ok: true }])) })
+test('checkVideoCatchup : une langue prête, ni en ligne ni en file → action avec la commande', () => {
+  const rows = checkVideoCatchup({
+    articles: [{ slug: 'ani', result: shortsOf('fr', 'en', 'hy') }],
+    videos: { ani: { fr: { id: 'x' } } },
+    queue: { items: [{ slug: 'ani', lang: 'en' }] },
+  })
+  assert.equal(rows.length, 1)
+  assert.equal(rows[0].key, 'yt-catchup-ani', 'clé stable par article, sans les langues')
+  assert.equal(rows[0].level, 'faire')
+  assert.match(rows[0].text, /\(hy\)$/)
+  assert.equal(rows[0].action, '`! gh workflow run video.yml --ref main -f slug=ani`')
+})
+test('checkVideoCatchup : tout en ligne ou en file → rien', () => {
+  const rows = checkVideoCatchup({
+    articles: [{ slug: 'ani', result: shortsOf('fr', 'en') }, { slug: 'vide', result: shortsOf() }],
+    videos: { ani: { fr: { id: 'x' } } },
+    queue: { items: [{ slug: 'ani', lang: 'en' }] },
+  })
+  assert.deepEqual(rows, [])
+})
+test('checkVideoCatchup : un video.yml en cours n’a pas encore inscrit son travail → rien', () => {
+  const rows = checkVideoCatchup({ articles: [{ slug: 'ani', result: shortsOf('fr') }], videos: {}, queue: { items: [] }, rendering: true })
+  assert.deepEqual(rows, [])
 })

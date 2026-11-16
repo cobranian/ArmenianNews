@@ -101,3 +101,38 @@ test('video.yml : une langue qui échoue au rendu rougit le run, après le dép�
   assert.ok(y.indexOf('video-publish.mjs "$SLUG" --dir') < y.indexOf('- name: Signaler'), 'dépôt avant signalement')
   assert.ok(y.indexOf('- name: Signaler') < y.indexOf('- name: Prévenir'), 'signalement avant alerte')
 })
+
+// Fusion humaine malgré un statut rouge à cause d'un Short : autrefois les six
+// articles relus étaient retraduits et poussés sur main sans relecture.
+test('articles-merged.yml : seuls les passages du plan sont traduits, rattrapage des Shorts compris', async () => {
+  const y = await read('articles-merged.yml')
+  const step = y.slice(y.indexOf('- name: Traduire ce qui manque'))
+  assert.match(step, /culture-check\.mjs "\$SLUG"; then PASSED=--check-passed; else PASSED=; fi/)
+  assert.match(step, /culture-translate-plan\.mjs "\$SLUG" \$PASSED > "\$RUNNER_TEMP\/plan\.txt"/)
+  assert.match(step, /culture-translate\.mjs "\$SLUG" \$args --summary/)
+  assert.doesNotMatch(step, /culture-translate\.mjs "\$SLUG" --summary/, 'jamais de traduction de tous les articles')
+  // « Rien à faire » = plan vide : un Short à rattraper (--short-only) est
+  // donc traduit AVANT que video.yml ne parte.
+  const nothing = step.slice(step.indexOf('if [ ! -s "$RUNNER_TEMP/plan.txt" ]'), step.indexOf('while read -r args'))
+  assert.match(nothing, /rien à faire/)
+  assert.ok(step.indexOf('culture-translate-plan.mjs') < step.indexOf('if [ ! -s "$RUNNER_TEMP/plan.txt" ]'))
+})
+
+// Le push refusé par un conflit (le settle horaire retire un voisin de la
+// file) : trois rebases identiques échoueraient pareil. On repart de main et
+// on rejoue l'inscription seule, sans renvoyer les MP4.
+test('video.yml : push refusé → reset sur origin/main, inscription rejouée sans envoi', async () => {
+  const y = await read('video.yml')
+  const loop = y.slice(y.indexOf('for i in 1 2 3; do'), y.indexOf('done', y.indexOf('for i in 1 2 3; do')))
+  const steps = ['git rebase --abort', 'git fetch origin main', 'git reset --hard origin/main', 'video-publish.mjs "$SLUG" --dir video/out --register-only', 'git add src/data/reels.json src/data/youtube-queue.json', 'git commit -m "data: vidéos de « $SLUG »"']
+  const pos = steps.map((s) => loop.indexOf(s))
+  for (const [i, p] of pos.entries()) assert.ok(p > loop.indexOf('git push origin HEAD:main'), steps[i])
+  assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'ordre de la reprise')
+})
+
+test('video-publish.mjs : --register-only n’appelle jamais gh release upload', async () => {
+  const src = (await readFile(new URL('../scripts/video-publish.mjs', import.meta.url), 'utf-8')).replace(/\r\n/g, '\n')
+  assert.match(src, /'register-only': \{ type: 'boolean', default: false \}/)
+  assert.match(src, /for \(const f of values\['register-only'\] \? \[\] : found\)/)
+  assert.ok(src.indexOf("values['register-only'] ? [] : found") < src.indexOf("'release', 'upload'"))
+})

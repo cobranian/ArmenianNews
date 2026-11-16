@@ -13,6 +13,9 @@
  *      entrée sans vidéo servirait un 404 à Facebook et Instagram ;
  *   3. mise en file dans src/data/youtube-queue.json (enqueue).
  * --dry : dit ce qui serait envoyé et écrit, sans appeler gh ni écrire.
+ * --register-only : étapes 2 et 3 seules, les MP4 étant déjà dans la release —
+ *   la reprise de video.yml quand son push sur main est refusé (repartie de
+ *   main, elle refait l'inscription sans renvoyer les vidéos).
  * Le commit est l'affaire du workflow (video.yml).
  */
 import { copyFile, mkdtemp, rm, writeFile } from 'node:fs/promises'
@@ -38,10 +41,15 @@ const QUEUE = path.join(root, 'src/data/youtube-queue.json')
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
-  options: { dir: { type: 'string' }, dry: { type: 'boolean', default: false }, plan: { type: 'boolean', default: false } },
+  options: {
+    dir: { type: 'string' },
+    dry: { type: 'boolean', default: false },
+    plan: { type: 'boolean', default: false },
+    'register-only': { type: 'boolean', default: false },
+  },
 })
 const [slug] = positionals
-if (!slug || !CULTURE_SLUG.test(slug)) throw new Error('usage : video-publish <slug> --plan | --dir <mp4s> [--dry]')
+if (!slug || !CULTURE_SLUG.test(slug)) throw new Error('usage : video-publish <slug> --plan | --dir <mp4s> [--dry | --register-only]')
 if (!values.plan && !values.dir) throw new Error('--dir <dossier des rendus> (ou --plan)')
 
 const videos = await readVideos(DIR)
@@ -94,7 +102,7 @@ if (values.dry) {
 // La release nomme le fichier d'après son nom sur disque : copie renommée.
 const tmp = await mkdtemp(path.join(os.tmpdir(), 'video-'))
 try {
-  for (const f of found) {
+  for (const f of values['register-only'] ? [] : found) {
     const copy = path.join(tmp, assetName(f.lang, slug))
     await copyFile(f.mp4, copy)
     execFileSync('gh', ['release', 'upload', RELEASE, copy, '--clobber'], { cwd: root, stdio: ['ignore', 'inherit', 'inherit'] })
@@ -105,4 +113,4 @@ try {
 }
 await writeFile(REELS, `${JSON.stringify(reels, null, 2)}\n`)
 await writeFile(QUEUE, `${JSON.stringify(queue, null, 2)}\n`)
-console.log(`${found.length} Short(s) envoyé(s) ; ${added.length} Reel(s) et ${queued.length} envoi(s) YouTube inscrits`)
+console.log(`${found.length} Short(s) ${values['register-only'] ? 'déjà dans la release' : 'envoyé(s)'} ; ${added.length} Reel(s) et ${queued.length} envoi(s) YouTube inscrits`)
