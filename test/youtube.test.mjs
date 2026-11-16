@@ -343,3 +343,59 @@ test('CLI mark : registre + culture-videos.json (uploadDate du jour, PT44S) + re
   assert.throws(() => run(['mark', 'a', 'fr', 'iFGIKaDCy88', '--data', dir], {}), /déjà/)
   assert.throws(() => run(['mark', 'b', 'fr', 'pas-bon', '--data', dir], {}))
 })
+
+// --- Revue, tour 1 -------------------------------------------------------
+
+test('planUploads : un jeton refusé met sa langue de côté jusqu’au jour PT suivant, les autres continuent', () => {
+  const queue = queueOf(item('a', 'hy'), item('b', 'hy'), item('c', 'fr'), item('d', 'fr'))
+  const l = emptyYtLedger()
+  const refused = { attempts: 0, last: '2026-11-16T18:00:00.000Z', error: 'jeton : HTTP 400 invalid_grant — Token has been expired or revoked.' }
+  l.failed['a:hy'] = refused
+  l.failed['b:hy'] = refused
+  assert.deepEqual(keys(planUploads({ queue, ledger: l, tokens: ALL, now: NOW })), ['c:fr', 'd:fr'])
+  // Un élément hy jamais tenté est lui aussi mis de côté ce jour-là.
+  const q2 = queueOf(item('e', 'hy'), item('c', 'fr'))
+  assert.deepEqual(keys(planUploads({ queue: q2, ledger: l, tokens: ALL, now: NOW })), ['c:fr'])
+  // Le lendemain PT : UN envoi hy reteste le jeton, l'autre place va au fr.
+  assert.deepEqual(keys(planUploads({ queue, ledger: l, tokens: ALL, now: new Date('2026-11-17T09:00:00Z') })), ['a:hy', 'c:fr'])
+})
+
+// Envoyée, statut illisible : settle garde { at, id } et un échec incertain.
+const statusFailed = () => settleUploads(planned(), [{ key: 'a:fr', ok: false, uncertain: true, id: 'qixjDSmLxfE', error: 'statut : HTTP 500 boom' }], NOW)
+
+test('markUpload : confirme un envoi en doute avec l’id inscrit, refuse un autre id', () => {
+  const l = statusFailed()
+  assert.deepEqual(l.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE' })
+  assert.throws(() => markUpload(l, 'a:fr', 'iFGIKaDCy88', NOW), /qixjDSmLxfE/)
+  const m = markUpload(l, 'a:fr', 'qixjDSmLxfE', NOW)
+  assert.deepEqual(m.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE' })
+  assert.equal(m.failed['a:fr'], undefined)
+  // Vidéo restée privée, rendue publique après l'audit : même règle.
+  const p = settleUploads(planned(), [{ key: 'b:en', ok: true, id: 'iFGIKaDCy88', private: true }], NOW)
+  assert.throws(() => markUpload(p, 'b:en', 'qixjDSmLxfE', NOW), /iFGIKaDCy88/)
+  assert.deepEqual(markUpload(p, 'b:en', 'iFGIKaDCy88', NOW).posted['b:en'], { at: NOW.toISOString(), id: 'iFGIKaDCy88' })
+})
+
+test('retryUpload : refuse sans --drop une vidéo privée ou un envoi incertain (avec ou sans id)', () => {
+  const noId = settleUploads(planned(), [{ key: 'a:fr', ok: false, uncertain: true, error: 'envoi : délai dépassé' }], NOW)
+  const priv = settleUploads(planned(), [{ key: 'a:fr', ok: true, id: 'qixjDSmLxfE', private: true }], NOW)
+  for (const l of [statusFailed(), noId, priv]) {
+    assert.throws(() => retryUpload(l, 'a:fr'), /mark|--drop/)
+    const d = retryUpload(l, 'a:fr', { drop: true, now: NOW })
+    assert.equal(d.failed['a:fr'], undefined)
+    assert.ok(d.posted['a:fr'], 'reste au registre : ne repartira pas')
+  }
+})
+
+test('CLI mark : confirme un envoi au statut illisible — culture-videos.json et retrait de la file', async () => {
+  const dir = await dataDir()
+  await writeFile(path.join(dir, 'youtube-posted.json'), JSON.stringify(statusFailed()))
+  assert.throws(() => run(['mark', 'a', 'fr', 'iFGIKaDCy88', '--data', dir]), /qixjDSmLxfE/)
+  run(['mark', 'a', 'fr', 'qixjDSmLxfE', '--data', dir])
+  const ledger = JSON.parse(await readFile(path.join(dir, 'youtube-posted.json'), 'utf8'))
+  assert.equal(ledger.failed['a:fr'], undefined)
+  const videos = JSON.parse(await readFile(path.join(dir, 'culture-videos.json'), 'utf8'))
+  assert.equal(videos.a.fr.youtube, 'qixjDSmLxfE')
+  const queue = JSON.parse(await readFile(path.join(dir, 'youtube-queue.json'), 'utf8'))
+  assert.deepEqual(queue.items.map((i) => i.slug), ['b'])
+})
