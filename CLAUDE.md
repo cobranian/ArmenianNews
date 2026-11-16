@@ -88,7 +88,10 @@ npm run fb-scrape    # rafraîchir Don Narek (local, Chrome connecté — jamais
 npm run screenshot   # après un build : capturer le carrousel Don Narek dans dist/ch/don-narek-{desktop,mobile}.png
 npm run hydration-check # après build + prerender : les 35 pages s'hydratent-elles sans écart ? (local, Chrome)
 npm run radio-check  # les 17 flux radio diffusent-ils vraiment ? (réseau, jamais dans npm test ; le tableau de bord le relance 2×/jour depuis la CI, section 📻 Radios)
-npm run videos:add -- --lang de slug=id # inscrire des Shorts publiés dans culture-videos.json (LA trace de ce qui est sur YouTube ; métadonnées tirées de ../armenie-video/out/youtube)
+npm run videos:add -- --lang de slug=id # inscrire à la main un Short déjà publié dans culture-videos.json
+node scripts/youtube-post.mjs mark <slug> <lang> <videoId> # Short envoyé à la main : registre + culture-videos.json + retrait de la file (docs/youtube-setup.md)
+node scripts/youtube-auth.mjs --lang fr --set # jeton YouTube d'une langue (local, une fois par langue ; docs/youtube-setup.md)
+npm run video:test   # tests du paquet video/ (le lint et `npm test` de la racine l'ignorent)
 npm run og-image     # régénérer la carte de partage du .org (local, Chrome + Google Fonts — jamais en CI)
 npm run jeux:sync    # recopier les jeux de ../Games et la couche net de ../lokolok dans public/play/ (local, jamais en CI ; README « Jeux »)
 npm run fonts-sync   # re-télécharger les polices auto-hébergées (public/fonts/, src/styles/fonts.css + fonts.json) depuis Google Fonts (local, réseau)
@@ -1029,6 +1032,16 @@ de production servent toujours depuis la racine de leur domaine.
   textes qui écrivent « dix-sept » en toutes lettres dans sept langues,
   descriptions Google comprises, et tout serait à refaire à l'envers au retour.
   `offAir: true` rend la puce inerte sans toucher au compte.
+- **Vidéo automatique : quatre pièges muets** (`docs/youtube-setup.md`, spec
+  `docs/superpowers/specs/2026-11-16-video-auto-design.md`). (1) `video/` est un
+  paquet npm À PART : lint et tests de la racine l'ignorent, `npm --prefix video ci`
+  d'abord. (2) Le texte d'un Short vit dans `src/data/culture/<slug>/short.<lang>.json` ;
+  `video/src/shorts/data/` est généré et ignoré par git — ne l'éditez jamais.
+  (3) `src/data/youtube-posted.json` est la seule mémoire de ce qui est parti sur
+  YouTube : retirer une ligne renvoie le Short (même règle que `social-posted.json`).
+  (4) Sans l'audit de l'API YouTube, un envoi reste PRIVÉ : `YOUTUBE_AUTO` ne doit
+  pas être posée avant l'audit ; la file se vide à la main en séance
+  (`youtube-post.mjs mark`).
 - **Articles Culture : neuf pièges silencieux** (un brouillon par jour,
   03:00 UTC). (1) Un commit ou une PR poussés avec le `GITHUB_TOKEN` ne
   déclenchent aucun autre workflow : `articles.yml` et
