@@ -12,7 +12,14 @@ import { shortHash, shortNeedsTranslation } from '../scripts/lib/culture-short.m
 
 const DIR = fileURLToPath(new URL('../src/data/culture/', import.meta.url))
 const SLUG = 'khorovats-et-la-tradition-du-barbecue-armenien'
-const load = async () => ({ article: await readArticle(DIR, SLUG), videos: await readVideos(DIR) })
+// L'article sert de cas « vidéo pas encore publiée » : ses entrées de
+// culture-videos.json sont retirées, sinon un Short fautif n'y est plus
+// qu'une note (vidéo déjà en ligne) et ces tests suivraient la publication.
+const load = async () => {
+  const videos = await readVideos(DIR)
+  delete videos[SLUG]
+  return { article: await readArticle(DIR, SLUG), videos }
+}
 const plan = (article, videos, checkPassed) =>
   translationRuns(validateArticle({ ...article, videos }), { slug: SLUG, videos, meta: article.meta, checkPassed })
 
