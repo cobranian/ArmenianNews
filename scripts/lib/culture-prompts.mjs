@@ -153,6 +153,33 @@ export function buildShortMessages({ title, description, body }) {
   ]
 }
 
+// Le texte du Short traduit dans une autre langue. L'ARTICLE fourni est celui
+// de la langue cible (<lang>.md qui vient d'être écrit) : les noms et les
+// nombres du Short doivent s'y lire tels quels. `music` n'est pas traduit : la
+// piste est celle du short français.
+export function buildShortTranslateMessages({ lang, short, articleText }) {
+  const name = LANG_NAME[lang]
+  const room = YT_TITLE_MAX - (HASHTAG[lang] ?? '').length - 1
+  const system = [
+    `Tu traduis le texte d'un Short (vidéo verticale d'une minute) du français vers ${/^[aeiouyéèh]/.test(name) ? 'l’' : 'le '}${name}.`,
+    'Règles absolues :',
+    `- Garde exactement les mêmes ${SHORT_FACTS} faits, dans le même ordre, avec le même champ big pour chacun.`,
+    "- Noms propres : l'orthographe de l'ARTICLE fourni, qui est déjà dans la langue cible ; ne la change pas.",
+    "- Chaque nombre (dates et siècles compris) doit figurer tel quel dans l'ARTICLE fourni : n'en calcule, n'en arrondis et n'en ajoute aucun.",
+    `- text : une seule phrase, ${SHORT_MAX_TEXT} caractères au plus, espaces comprises.`,
+    `- ytTitle : ${room} caractères au plus (le mot-dièse ${HASHTAG[lang] ?? ''} est ajouté ensuite).`,
+    "- N'ajoute aucun fait absent du Short français, ne retire rien, ne commente rien.",
+    '- Aucun lien, aucune URL, aucun mot-dièse.',
+    `Réponds UNIQUEMENT par un objet JSON {"facts": [{"eyebrow": "…", "title": "…", "text": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…"}, sans aucun texte autour.`,
+  ].join('\n')
+  const { facts, outroTitle, ytTitle, ytLead } = short
+  const user = `ARTICLE (${name}) :\n${articleText}\n\nSHORT À TRADUIRE :\n${JSON.stringify({ facts, outroTitle, ytTitle, ytLead }, null, 2)}`
+  return [
+    { role: 'system', content: system },
+    { role: 'user', content: user },
+  ]
+}
+
 // Révision demandée par le propriétaire (commentaire « /corrige »). Avec un
 // `short` (le texte de la vidéo), le modèle le rend mis à jour dans `short` :
 // un texte de vidéo resté sur l'ancien article mentirait.

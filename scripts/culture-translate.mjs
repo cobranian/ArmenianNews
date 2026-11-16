@@ -20,6 +20,13 @@
  * est comparée à l'extrait de cette page — au-dessus de OVERLAP_THRESHOLD,
  * elle n'est pas écrite. Le code de sortie ne vaut 1 que si une langue
  * REQUIRED ou l'image a échoué : un échec de/it seul ne retient pas la PR.
+ *
+ * Le texte du Short (short.fr.json) est traduit dans chaque langue juste après
+ * son <lang>.md, contre CET article (culture-short-translate.mjs). Un échec de
+ * la vidéo n'ôte rien à l'article et ne compte pas dans le code de sortie : il
+ * ajoute une ligne « ✗ <lang> vidéo ». `--short-only` ne retraduit PAS les
+ * articles : il traduit les seuls shorts absents ou périmés, contre les
+ * <lang>.md à jour déjà présents.
  */
 import { readFile, writeFile, rm } from 'node:fs/promises'
 import path from 'node:path'
@@ -34,12 +41,14 @@ import { buildTranslateMessages, parseArticleJson, plainName } from './lib/cultu
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
+import { validateShort, shortHash, parseShortJson } from './lib/culture-short.mjs'
+import { translateShort } from './lib/culture-short-translate.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIR = path.join(root, 'src/data/culture')
 const { values, positionals } = parseArgs({
   allowPositionals: true,
-  options: { summary: { type: 'string' }, langs: { type: 'string' } },
+  options: { summary: { type: 'string' }, langs: { type: 'string' }, 'short-only': { type: 'boolean' } },
 })
 const [slug] = positionals
 if (!slug) throw new Error('usage : culture-translate <slug> [--langs de,it]')
@@ -82,7 +91,66 @@ if ((chosen?.commonsUrl ?? null) !== (meta.image?.commonsUrl ?? null)) {
 
 // Partagé entre les langues : après un repli, toutes vont au même modèle.
 const sticky = {}
-for (const lang of langs) {
+
+// Le Short français : sans lui (absent, illisible, non conforme), aucune vidéo
+// n'est traduite et une seule ligne le dit.
+let shortFr = null
+try {
+  const parsed = parseShortJson(await readFile(path.join(base, 'short.fr.json'), 'utf-8'))
+  const frText = [fr.data.title, fr.data.description, fr.body].join('\n')
+  if (parsed && validateShort(parsed, { lang: 'fr', articleText: frText }).length === 0) shortFr = parsed
+} catch {
+  // absent : traité comme invalide
+}
+if (!shortFr) lines.push('- ⚠️ vidéo — pas de short.fr.json valide : aucune traduction de la vidéo')
+
+// La vidéo d'une langue, contre l'article de CETTE langue. Ne lève jamais :
+// l'article est déjà écrit, un échec n'est qu'une ligne du résumé.
+async function translateVideo(lang, t) {
+  if (!shortFr) return
+  try {
+    const r = await translateShort({
+      lang, shortFr, sticky, chat: chatResilient,
+      articleText: [t.title, t.description, t.body].join('\n'),
+    })
+    await writeFile(path.join(base, `short.${lang}.json`), `${JSON.stringify(r.short, null, 2)}\n`)
+    lines.push(`- ✓ ${lang} vidéo — \`${r.model}\``)
+    console.log(`  ✓ ${slug}/${lang} vidéo`)
+  } catch (e) {
+    const why = e.primaryError
+      ? `${explain(e.primaryError)} ; secours sans réponse (${e.message})`
+      : e.status || e.empty ? explain(e) : e.message
+    lines.push(`- ✗ ${lang} vidéo — ${why}`)
+    console.warn(`  ✗ ${slug}/${lang} vidéo : ${e.message}`)
+  }
+}
+
+// --short-only : les articles ne sont pas retraduits ; seuls les shorts absents
+// ou périmés le sont, contre les <lang>.md déjà à jour.
+if (values['short-only'] && shortFr) {
+  const want = shortHash(shortFr)
+  for (const lang of langs) {
+    try {
+      const current = JSON.parse(await readFile(path.join(base, `short.${lang}.json`), 'utf-8'))
+      if (current?.sourceHash === want) continue
+    } catch {
+      // absent : à traduire
+    }
+    let md
+    try {
+      md = parseFrontMatter(await readFile(path.join(base, `${lang}.md`), 'utf-8'))
+    } catch {
+      lines.push(`- ✗ ${lang} vidéo — pas de ${lang}.md : traduisez d'abord l'article`)
+      continue
+    }
+    if (md.data.sourceHash !== hash) {
+      lines.push(`- ✗ ${lang} vidéo — ${lang}.md périmé : retraduisez d'abord l'article`)
+      continue
+    }
+    await translateVideo(lang, { title: md.data.title, description: md.data.description, body: md.body })
+  }
+}
+for (const lang of values['short-only'] ? [] : langs) {
   const optional = OPTIONAL.includes(lang)
   try {
     // Le nom en usage : le titre de la Wikipédia de la langue cible (sitelink du qid).
@@ -123,6 +191,7 @@ for (const lang of langs) {
     )
     lines.push(`- ✓ ${lang} — \`${res.model}\``)
     console.log(`  ✓ ${slug}/${lang}`)
+    await translateVideo(lang, t)
   } catch (e) {
     if (optional) optionalFailed++
     else failed++

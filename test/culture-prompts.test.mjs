@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages, buildReviseMessages, buildShortMessages, plainName,
+  buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages, buildReviseMessages, buildShortMessages, buildShortTranslateMessages, plainName,
   parseArticleJson, parseClaims, parseIdeas, findUnsupported, eventFacts, MAX_EXTRACT,
 } from '../scripts/lib/culture-prompts.mjs'
 
@@ -243,4 +243,19 @@ test('buildReviseMessages : le Short courant est transmis et demandé en retour'
   const [sysSans, userSans] = buildReviseMessages({ title: 'T', description: 'D', body: 'B', instruction: 'I', sources })
   assert.doesNotMatch(userSans.content, /SHORT ACTUEL/)
   assert.doesNotMatch(sysSans.content, /"short"/)
+})
+
+test('buildShortTranslateMessages : article traduit, mêmes 7 faits, noms de l’article, « ss » suisse en de', () => {
+  const short = { facts: [{ eyebrow: 'E', title: 'T', text: 'X', big: true }], outroTitle: 'Le duduk', ytTitle: 'Titre', ytLead: 'Lead', music: 'otar' }
+  const [sys, user] = buildShortTranslateMessages({ lang: 'de', short, articleText: 'Die Duduk, seit 2005 Welterbe.' })
+  assert.match(sys.content, /allemand de Suisse/)
+  assert.match(sys.content, /jamais « ß »/)
+  assert.match(sys.content, /mêmes 7 faits[^\n]*même ordre/)
+  assert.match(sys.content, /orthographe de l'ARTICLE/)
+  assert.match(sys.content, /nombre[^\n]*ARTICLE/)
+  assert.match(sys.content, /UNIQUEMENT[^\n]*JSON/)
+  assert.doesNotMatch(sys.content, /"music"/)
+  assert.match(user.content, /Die Duduk, seit 2005 Welterbe\./)
+  assert.match(user.content, /"outroTitle": "Le duduk"/)
+  assert.doesNotMatch(user.content, /otar/)
 })
