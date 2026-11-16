@@ -1,0 +1,104 @@
+{
+  "slug": "khorovats-et-la-tradition-du-barbecue-armenien",
+  "qid": "Q5959435",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Khorovats",
+      "url": "https://fr.wikipedia.org/wiki/Khorovats",
+      "revision": 204968993,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Khorovats",
+      "url": "https://en.wikipedia.org/wiki/Khorovats",
+      "revision": 1346141418,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Հայկական խորոված",
+      "url": "https://hy.wikipedia.org/wiki/%D5%80%D5%A1%D5%B5%D5%AF%D5%A1%D5%AF%D5%A1%D5%B6_%D5%AD%D5%B8%D6%80%D5%B8%D5%BE%D5%A1%D5%AE",
+      "revision": 10123513,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Хоровац",
+      "url": "https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D1%80%D0%BE%D0%B2%D0%B0%D1%86",
+      "revision": 154120879,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "it",
+      "title": "Khorovats",
+      "url": "https://it.wikipedia.org/wiki/Khorovats",
+      "revision": 145466059,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "es",
+      "title": "Khorovats",
+      "url": "https://es.wikipedia.org/wiki/Khorovats",
+      "revision": 143321744,
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Khorovats in Sevan.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Khorovats_in_Sevan.jpg/1920px-Khorovats_in_Sevan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2048,
+      "height": 1367,
+      "mime": "image/jpeg",
+      "author": "2colored",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Khorovats_in_Sevan.jpg"
+    },
+    {
+      "file": "File:Armenian Cool Ass Khorovats.JPG",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Armenian_Cool_Ass_Khorovats.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1600,
+      "height": 1200,
+      "mime": "image/jpeg",
+      "author": "Narek75",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Armenian_Cool_Ass_Khorovats.JPG"
+    },
+    {
+      "file": "File:Khorovats in the making.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Khorovats_in_the_making.jpg/1920px-Khorovats_in_the_making.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3024,
+      "height": 4032,
+      "mime": "image/jpeg",
+      "author": "Narek Avetisyan /Narek75/",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Khorovats_in_the_making.jpg"
+    }
+  ],
+  "imageChoice": 1,
+  "image": {
+    "file": "File:Armenian Cool Ass Khorovats.JPG",
+    "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Armenian_Cool_Ass_Khorovats.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 900,
+    "mime": "image/jpeg",
+    "author": "Narek75",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Armenian_Cool_Ass_Khorovats.JPG"
+  },
+  "agendaEvent": null,
+  "overlap": 0.01,
+  "model": "gemini-flash-latest"
+}
