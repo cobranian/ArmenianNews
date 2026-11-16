@@ -11,7 +11,7 @@ export default [
   // .cache holds the logged-in Chrome profiles the manual fb/ig scrapes drive —
   // someone else's extension code, not ours. public/play holds the games that
   // npm run jeux:sync copies from two other repos — vendored, linted there.
-  { ignores: ['dist/**', 'src/data/**', '.firebase/**', '.cache/**', 'public/play/**'] },
+  { ignores: ['dist/**', 'src/data/**', '.firebase/**', '.cache/**', 'public/play/**', 'video/**'] },
 
   // The app: browser + React.
   {

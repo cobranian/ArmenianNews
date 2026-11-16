@@ -1,0 +1,52 @@
+{
+  "TRACKS": {
+    "mazia": {
+      "file": "music/mazia-sound-of-armenian-duduk.mp3",
+      "title": "Sound of Armenian Duduk",
+      "author": "I. Mazia",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Sound_of_Armenian_Duduk.ogg"
+    },
+    "sergo": {
+      "file": "music/sergo-tel-duduk-improvisation2.mp3",
+      "title": "duduk-improvisation2",
+      "author": "SERGO.TEL",
+      "license": "CC BY 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:SERGO.TEL_-_April_-_duduk-improvisation2.ogg"
+    },
+    "otar": {
+      "file": "music/ikuzusotnek-duduk-music.mp3",
+      "title": "Duduk Music (Otar Amayi Champeqi Vra)",
+      "author": "Ikuzusotnek",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Duduk_Music.wav"
+    }
+  },
+  "BY_SLUG": {
+    "alphabet-armenien": "mazia",
+    "matenadaran-et-les-manuscrits-enlumines": "mazia",
+    "khatchkar": "mazia",
+    "komitas": "mazia",
+    "monastere-de-tatev": "mazia",
+    "monastere-de-khor-virap-au-pied-du-mont-ararat": "mazia",
+    "ani": "sergo",
+    "bataille-d-avarayr-et-vardan-mamikonian": "sergo",
+    "bataille-de-sardarapat": "sergo",
+    "tigrane-le-grand-et-l-empire-armenien": "sergo",
+    "royaume-armenien-de-cilicie": "sergo",
+    "epopee-de-david-de-sassoun": "sergo",
+    "serguei-paradjanov": "sergo",
+    "temple-paien-de-garni": "sergo",
+    "duduk": "otar",
+    "kochari": "otar",
+    "lavash": "otar",
+    "cave-viticole-d-areni-1": "otar",
+    "fete-paienne-et-chretienne-de-vardavar": "otar",
+    "art-du-tapis-armenien": "otar",
+    "sayat-nova-et-la-tradition-des-ashoughs": "otar",
+    "charles-aznavour": "otar",
+    "aram-khatchatourian": "otar",
+    "congregation-des-peres-mekhitaristes-de-venise-et-vienne": "mazia",
+    "khorovats-et-la-tradition-du-barbecue-armenien": "otar"
+  }
+}
