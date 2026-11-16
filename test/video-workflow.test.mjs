@@ -87,3 +87,17 @@ test('articles-publish.yml : seuls les passages du plan sont traduits, avant le 
   assert.match(prep, /cat "\$RUNNER_TEMP"\/summary-\*\.md > "\$RUNNER_TEMP\/summary\.md"/)
   assert.match(prep, /modèle de secours/, 'un Short traduit par le secours retient aussi la fusion')
 })
+
+test('video.yml : une langue qui échoue au rendu rougit le run, après le dépôt', async () => {
+  const y = await read('video.yml')
+  const render = y.slice(y.indexOf('- name: Rendre'), y.indexOf('- name: Déposer'))
+  assert.match(render, /id: render/)
+  assert.match(render, /failed=.*>> "\$GITHUB_OUTPUT"/, 'les échecs sont consignés')
+  assert.doesNotMatch(render, /\bexit 1\b/, 'le rendu lui-même ne fait pas tomber le job')
+  const sig = y.slice(y.indexOf('- name: Signaler les langues en échec'), y.indexOf('- name: Prévenir'))
+  assert.match(sig, /if: always\(\) && steps\.render\.outputs\.failed != ''/)
+  assert.match(sig, /::error::/)
+  assert.match(sig, /exit 1/)
+  assert.ok(y.indexOf('video-publish.mjs "$SLUG" --dir') < y.indexOf('- name: Signaler'), 'dépôt avant signalement')
+  assert.ok(y.indexOf('- name: Signaler') < y.indexOf('- name: Prévenir'), 'signalement avant alerte')
+})

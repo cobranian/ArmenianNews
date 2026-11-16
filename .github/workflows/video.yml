@@ -74,14 +74,19 @@ jobs:
           cd video && npx remotion browser ensure
 
       - name: Rendre
+        id: render
         if: steps.plan.outputs.langs != ''
         env:
           LANGS: ${{ steps.plan.outputs.langs }}
         run: |
           node video/scripts/sync.mjs
+          FAILED=""
           for l in ${LANGS//,/ }; do
-            node video/scripts/render-all.mjs --slug "$SLUG" --lang "$l" || echo "::warning::$SLUG/$l : rendu en échec, langue sautée"
+            node video/scripts/render-all.mjs --slug "$SLUG" --lang "$l" || { echo "::warning::$SLUG/$l : rendu en échec, langue sautée"; FAILED="$FAILED $l"; }
           done
+          # Le job ne tombe pas ici : les langues rendues sont déposées et
+          # mises en file. L'étape finale rougit le run pour les autres.
+          echo "failed=${FAILED# }" >> "$GITHUB_OUTPUT"
 
       - name: Déposer dans la release, inscrire, mettre en file
         if: steps.plan.outputs.langs != ''
@@ -111,6 +116,16 @@ jobs:
             sleep 10
           done
           echo "::error::Push sur main impossible après 3 essais : les MP4 sont dans la release, relancez le workflow pour les inscrire."
+          exit 1
+
+      # Une langue qui n'a pas rendu doit se voir sur #128 : le run finit rouge,
+      # APRÈS le dépôt et le push des langues réussies.
+      - name: Signaler les langues en échec
+        if: always() && steps.render.outputs.failed != ''
+        env:
+          FAILED: ${{ steps.render.outputs.failed }}
+        run: |
+          echo "::error::$SLUG : rendu en échec pour : $FAILED"
           exit 1
 
       # Le tableau de bord (social-check.yml) est relancé et notifie s'il y a du neuf.
