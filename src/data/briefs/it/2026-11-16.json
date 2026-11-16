@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-16",
+  "lang": "it",
+  "generatedAt": "2026-11-16T03:29:50.783Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Il Primo Ministro armeno Nikol Pashinyan è in visita in Cambogia per il 20° Vertice della Francofonia, dove ha tenuto incontri bilaterali e visitato il padiglione nazionale. In patria si discute di relazioni con l'UE, questioni energetiche e casi giudiziari che coinvolgono figure dell'opposizione.",
+  "topics": [
+    {
+      "title": "Pashinyan al Vertice della Francofonia a Phnom Penh",
+      "text": "Il Primo Ministro armeno ha partecipato alla cerimonia di apertura e alle sessioni plenarie del 20° Vertice dell'Organizzazione Internazionale della Francofonia in Cambogia. A margine dei lavori, Pashinyan ha visitato il padiglione armeno allestito al Villaggio della Francofonia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-a-visite-le-pavillon-de-larmenie-inaugure-au-village-de-la-francophonie-a-phnom-penh-cambodge/",
+          "title": "Nikol Pachinian a visité le pavillon de l’Arménie inauguré au Village de la Francophonie à Phnom Penh (Cambodge)"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265702",
+          "title": "Le Premier ministre visite le pavillon arménien installé au Village de la Francophonie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265701",
+          "title": "Le Premier ministre a participé aux séances plénières de l’OIF"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-participe-a-phnom-penh-aux-seances-plenieres-de-lorganisation-internationale-de-la-francophonie-et-discute-de-la-paix-entre-larmenie-et-lazerbaidjan/",
+          "title": "Le Premier ministre arménien participe à Phnom Penh aux séances plénières de l’Organisation internationale de la Francophonie et discute de la paix entre l’Arménie et l’Azerbaïdjan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-participe-a-la-ceremonie-douverture-du-20e-sommet-de-la-francophonie-au-cambodge/",
+          "title": "Le Premier ministre arménien participe à la cérémonie d’ouverture du 20e Sommet de la Francophonie au Cambodge"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265694",
+          "title": "Le Premier ministre a assisté à la cérémonie d’ouverture du 20e Sommet de l’OIF"
+        }
+      ]
+    },
+    {
+      "title": "Incontro bilaterale tra Armenia e Moldavia",
+      "text": "I Primi Ministri di Armenia e Moldavia si sono incontrati a Phnom Penh a margine del Vertice della Francofonia. I due leader hanno discusso la necessità di stabilire voli diretti tra Erevan e Chișinău per rafforzare i legami.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265700",
+          "title": "Rencontre entre les Premiers ministres arménien et moldave à Phnom Penh"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-premiers-ministres-darmenie-et-de-moldavie-ont-discute-de-la-necessite-detablir-des-vols-directs-entre-erevan-et-chisinau/",
+          "title": "Les Premiers ministres d’Arménie et de Moldavie ont discuté de la nécessité d’établir des vols directs entre Erevan et Chișinău"
+        }
+      ]
+    },
+    {
+      "title": "Evoluzione delle relazioni tra Armenia e Unione Europea",
+      "text": "Secondo fonti politiche, i rapporti tra Erevan e Bruxelles hanno subito un'evoluzione significativa e l'Armenia si sentirebbe a proprio agio con l'Unione Europea. Un analista sottolinea come l'apertura energetica ed europea stia riducendo la dipendenza del paese dalla Russia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36025/",
+          "title": "Selon l’analyste Bagrat Arakelian, l’ouverture énergétique et européenne réduit la dépendance de l’Arménie à la Russie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/les-relations-armenie-ue-ont-considerablement-evolue-nous-nous-sentons-a-laise-avec-lunion-europeenne/",
+          "title": "Les relations Arménie-UE ont considérablement évolué : nous nous sentons à l’aise avec l’Union européenne"
+        }
+      ]
+    },
+    {
+      "title": "Candidatura dell'Armenia per ospitare la COP29 nel 2029",
+      "text": "L'Armenia ha presentato ufficialmente la propria candidatura per ospitare la Conferenza delle Nazioni Unite sui cambiamenti climatici (COP) nel 2029. La proposta segna l'ambizione del paese di assumere un ruolo centrale nei negoziati climatici globali.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-se-porte-candidate-pour-accueillir-la-cop-climat-en-2029/",
+          "title": "L’Arménie se porte candidate pour accueillir la COP Climat en 2029"
+        }
+      ]
+    },
+    {
+      "title": "Preoccupazioni per la detenzione di Samvel Karapetyan",
+      "text": "Un gruppo politico dell'Assemblea Parlamentare del Consiglio d'Europa (APCE) ha espresso preoccupazione per la detenzione di Samvel Karapetyan. La famiglia denuncia che l'uomo è entrato in carcere in buona salute ed è stato restituito senza vita dopo poche settimane.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/il-est-entre-dans-la-forteresse-en-pleine-forme-et-quelques-semaines-plus-tard-ils-nous-ont-rendu-un-homme-sans-vie-karapetyan/",
+          "title": "« Il est entré dans la prison en pleine forme, et quelques semaines plus tard, ils nous ont rendu un homme sans vie. » Karapetyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-groupe-politique-de-lapce-exprime-ses-inquietudes-concernant-la-detention-de-samvel-karapetyan/",
+          "title": "Un groupe politique de l’APCE exprime ses inquiétudes concernant la détention de Samvel Karapetyan"
+        }
+      ]
+    },
+    {
+      "title": "Risultati sportivi: calcio e arti marziali miste",
+      "text": "La nazionale armena di calcio ha pareggiato 0-0 contro la Lettonia a Riga, chiudendo il girone di Nations League al penultimo posto. Nelle arti marziali miste, Arman Tsarukyan ha ottenuto una vittoria rapida nel primo round all'evento RAF 10.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ligue-des-nations-match-nul-entre-larmenie-et-la-lettonie-0-0-a-riga-la-selection-armenienne-termine-avant-derniere-du-groupe/",
+          "title": "Ligue des nations : Match nul entre l’Arménie et la Lettonie (0-0) à Riga, la sélection arménienne termine avant-dernière du groupe"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/arman-tsarukyan-armenie-simpose-rapidement-en-raf-10-des-le-premier-round-par-10-0/",
+          "title": "Arman Tsarukyan (Arménie) s’impose rapidement en RAF 10, dès le premier round par 10-0"
+        }
+      ]
+    },
+    {
+      "title": "L'Armenia tra i principali paesi d'origine dei migranti in Russia",
+      "text": "Secondo dati recenti, l'Armenia figura tra i primi sei paesi per numero di cittadini lavoratori migranti in Russia, con oltre 111.000 persone registrate. Il dato conferma l'importanza dei flussi migratori verso la Federazione Russa per l'economia armena.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-avec-111235-citoyens-figure-parmi-les-six-premiers-pays-dorigine-des-travailleurs-migrants-en-russie/",
+          "title": "L’Arménie avec 111235 citoyens, figure parmi les six premiers pays d’origine des travailleurs migrants en Russie"
+        }
+      ]
+    }
+  ]
+}

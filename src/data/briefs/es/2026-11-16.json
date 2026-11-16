@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-16",
+  "lang": "es",
+  "generatedAt": "2026-11-16T03:29:50.783Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca la elección de la fiscal general armenia a un cargo internacional, la polémica en la UNESCO por el bordado de Aintab y las actualizaciones en legislación educativa y familiar en Armenia.",
+  "topics": [
+    {
+      "title": "Anna Vardapetyan elegida vicepresidenta de la Asociación Internacional de Fiscales",
+      "text": "La fiscal general de Armenia, Anna Vardapetyan, fue elegida por unanimidad vicepresidenta de la Asociación Internacional de Fiscales durante su reunión en Buenos Aires. El nombramiento refuerza la presencia armenia en organismos jurídicos globales.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/anna-vardapetyan-vicepresidenta-asociacion-internacional-fiscales/",
+          "title": "Anna Vardapetyan es elegida por unanimidad vicepresidenta de la Asociación Internacional de Fiscales en Buenos Aires"
+        }
+      ]
+    },
+    {
+      "title": "Polémica en la UNESCO por el registro del bordado de Aintab",
+      "text": "La UNESCO ha generado controversia al inscribir el bordado de Aintab como patrimonio cultural inmaterial de Turquía. La decisión ha provocado reacciones por la atribución de este arte tradicional a la cultura turca.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/polemica-unesco-bordado-aintab-patrimonio-turquia/",
+          "title": "La UNESCO desata polémica por el registro del bordado de Aintab como patrimonio de Turquía"
+        }
+      ]
+    },
+    {
+      "title": "Actualización del estándar educativo: idiomas extranjeros obligatorios",
+      "text": "Armenia ha actualizado su estándar educativo nacional definiendo la cantidad de idiomas extranjeros que aprenderán los estudiantes y desde qué grado comenzarán a cursarlos. La reforma busca fortalecer las competencias lingüísticas desde edades tempranas.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-idiomas-extranjeros-escuelas-estandar-educativo/",
+          "title": "Armenia actualiza el estándar educativo: ¿Cuántos idiomas extranjeros aprenderán los niños y desde qué grado?"
+        }
+      ]
+    },
+    {
+      "title": "Nuevas prohibiciones absolutas en el Código de Familia para contraer matrimonio",
+      "text": "El Código de Familia de Armenia establece ahora cuatro prohibiciones absolutas para contraer matrimonio. La medida endurece los requisitos legales para la unión conyugal en el país.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/el-codigo-de-familia-de-armenia-establece-cuatro-prohibiciones-absolutas-para-contraer-matrimonio/",
+          "title": "El Código de Familia de Armenia establece cuatro prohibiciones absolutas para contraer matrimonio"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan participa en la Cumbre de la Francofonía en Phnom Penh",
+      "text": "El primer ministro Nikol Pashinyan asistió a la ceremonia de apertura de la XX Cumbre de la Francofonía celebrada en Phnom Penh. Su presencia subraya el compromiso de Armenia con la organización internacional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-xx-cumbre-francofonia-phnom-penh/",
+          "title": "Nikol Pashinyan participa en la ceremonia de apertura de la XX Cumbre de la Francofonía en Phnom Penh"
+        }
+      ]
+    },
+    {
+      "title": "Armenia entre los 27 mejores destinos turísticos para 2027 según Condé Nast Traveller",
+      "text": "La revista Condé Nast Traveller ha incluido a Armenia en su lista de los 27 mejores destinos turísticos del mundo para visitar en 2027. El reconocimiento destaca el creciente atractivo internacional del país.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/conde-nast-traveller-armenia-destinos-turisticos-2027/",
+          "title": "Condé Nast Traveller incluye a Armenia entre los 27 mejores destinos turísticos del mundo para visitar en 2027"
+        }
+      ]
+    },
+    {
+      "title": "Carta desde prisión del activista azerbaiyano Bahruz Samadov",
+      "text": "El activista azerbaiyano Bahruz Samadov envió una carta desde prisión denunciando el silencio diplomático internacional ante la represión en Bakú. El documento expone la situación de los derechos humanos en Azerbaiyán.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/carta-preso-politico-azerbaiyano-bahruz-samadov/",
+          "title": "Carta desde prisión del activista azerbaiyano Bahruz Samadov denuncia el silencio diplomático ante la represión en Bakú"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-16",
+  "lang": "en",
+  "generatedAt": "2026-11-16T03:29:50.783Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Today's headlines focus on Armenia's Nations League campaign and domestic political developments, alongside a regular update on Artsakh.",
+  "topics": [
+    {
+      "title": "Armenia draws with Latvia in Nations League",
+      "text": "The Armenian national football team played out a draw against Latvia in their latest Nations League fixture. Coverage includes a match summary and post-match comments from head coach Yeghishe Melikyan, who expressed dissatisfaction with the result, and player Alexander Mishiev, who described his debut as surreal.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170278/",
+          "title": "Alexander Mishiev: It feels surreal to play for the national team (video)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170277/",
+          "title": "Yeghishe Melikyan: I cannot be happy"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170276/",
+          "title": "Nations League: Armenia draws with Latvia"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170266/",
+          "title": "Nations League: Latvia vs. Armenia and other matches of the day"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan to visit Russia three times in December",
+      "text": "Prime Minister Nikol Pashinyan is planning three visits to Russia in December, according to CivilNet. The trips come amid reports of growing ties between Armenia and the European Union, signaling a continued balancing act in foreign policy.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015410",
+          "title": "Pashinyan plans three visits to Russia in December amid growing ties with EU"
+        }
+      ]
+    },
+    {
+      "title": "New constitution to limit prime ministerial powers",
+      "text": "Armenia's Justice Minister has stated that the draft for a new constitution will remove certain \"super-prime-ministerial\" elements. The proposal aims to redistribute powers that were concentrated in the premiership under the current framework.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015409",
+          "title": "Armenia’s new constitution to drop some “super-prime-ministerial” elements, justice minister says"
+        }
+      ]
+    },
+    {
+      "title": "Hrayr Maroukhian Foundation joins European progressive network",
+      "text": "The Hrayr Maroukhian Foundation has had its membership approved by the Foundation for European Progressive Studies (FEPS). The affiliation links the Armenian organization to a wider network of European social democratic foundations.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/hrayr-maroukhian-foundations-membership-in-the-foundation-for-european-progressive-studies-approved/",
+          "title": "Hrayr Maroukhian Foundation’s Membership in the Foundation for European Progressive Studies Approved"
+        }
+      ]
+    },
+    {
+      "title": "Weekly report on Artsakh situation published",
+      "text": "Oragark has released its regular weekly report covering the latest developments regarding Artsakh. The update provides a summary of the ongoing situation in the region.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/the-artsakh-weekly-report-9/",
+          "title": "The Artsakh Weekly Report"
+        }
+      ]
+    },
+    {
+      "title": "Feature highlights Armenian inventions and luxury auction",
+      "text": "A cultural feature lists five inventions and popularizations attributed to Armenians globally. Separately, a luxury auction is set to feature over 100 rare Louis Vuitton bags designed by artists such as Murakami, Kusama, and Frank Gehry, with values reaching up to $30,000.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/117142/",
+          "title": "Made by Armenians: Five Things Armenians Invented and Helped Popularize Around the World"
+        },
+        {
+          "source": "newsam",
+          "url": "https://style.news.am/eng/news/117143/",
+          "title": "Louis Vuitton Bags Worth Up to $30,000: More Than 100 Rare Creations by Murakami, Kusama and Frank Gehry Head to Auction"
+        }
+      ]
+    }
+  ]
+}
