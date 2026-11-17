@@ -1,0 +1,35 @@
+---
+title: "Catedral de Zvartnots: la obra maestra rota de la arquitectura armenia"
+description: "Construida en el siglo VII por el catolicós Nersés III, la catedral circular de Zvartnots sigue siendo un hito excepcional del arte medieval armenio."
+date: "2026-11-17"
+sourceHash: "6da04dc189373c06"
+model: "gemini-flash-latest"
+---
+
+A poca distancia de Ereván y de Vagharshapat, en la provincia de Armavir, se alzan las majestuosas ruinas de la Catedral de Zvartnots, cuyos alrededores colindan hoy con el aeropuerto internacional del mismo nombre. Inscrito desde el año 2000 en la lista del Patrimonio Mundial de la UNESCO junto con los santuarios de Echmiadzin, este importante yacimiento arqueológico ilustra la audacia técnica y el refinamiento espiritual de la Armenia del siglo VII. Dedicada a san Gregorio el Iluminador, esta catedral excepcional fue erigida en una época convulsa por las primeras incursiones árabes musulmanas a expensas de los imperios bizantino y sasánida.
+
+## En los orígenes del santuario de los vigilantes
+
+La edificación de este grandioso monumento se debió a la iniciativa del catolicós Nersés III, apodado «el Constructor» (Shinogh o Tayetsi), originario de Ishjan en Tayk. Las obras comenzaron entre 641 y 643. Según el historiador medieval Movsés Kaghankatvatsí, la catedral fue consagrada en 652 durante una ceremonia solemne en presencia del emperador bizantino Constante II. Entre 653 y 659, mientras Nersés permanecía en Tayk, la dirección de los trabajos continuó bajo la conducción de Anastas Akoratsí. Enfrentado a los estragos de la toma de Dvin y a los enfrentamientos militares, Nersés optó por trasladar la sede patriarcal desde Dvin hasta la Catedral de Zvartnots, integrando allí un gran palacio patriarcal.
+
+La elección del sitio se inscribe en el corazón de la memoria sagrada del país. Según el historiador Sebeos, fue precisamente en este lugar donde el rey Tiridates III y san Gregorio el Iluminador se habrían encontrado en el año 301. Las excavaciones llevadas a cabo en el lugar confirmaron una ocupación mucho más antigua, sacando a la luz estructuras paganas de los siglos IV y V, posiblemente dedicadas al dios Tir, así como una estela urartiana decorada con una inscripción cuneiforme del rey Rusa II de 0,63 metros por 2,7 metros.
+
+Sebeos es el primer cronista en dar al edificio el nombre de Zvartnots, en referencia a la multitud de soldados o vigilantes celestiales que se le aparecieron en una visión a san Gregorio. Como destaca Kamsar Avetisian, la palabra *zvartun* significaba «ángel» en armenio antiguo, otorgando al monumento el sentido de «morada de los ángeles», aunque la tradición histórica también la llamaba iglesia de San Gregorio de Vagharshapat. En uno de los muros, Nersés dejó una inscripción en griego que decía: «Nersés lo construyó, recuérdenlo», mientras que un relieve ha conservado el nombre de Yohan, que muy probablemente designa al arquitecto del santuario.
+
+## Una proeza arquitectónica sin equivalente
+
+La Catedral de Zvartnots se distingue por una planta que revolucionó los cánones de la época. En el centro, un tetracónquido que forma una cruz griega está rodeado por una galería circular. Visto desde el exterior, el edificio se apoyaba sobre un zócalo de siete gradas y presentaba un polígono de treinta y dos lados que, de lejos, parecía perfectamente circular, con un diámetro en la base de 35,75 metros. Esta estructura se elevaba en tres niveles cilíndricos armoniosamente escalonados y coronados por una majestuosa cúpula sostenida por cuatro pilares macizos unidos mediante arcos y pechinas.
+
+Para la mampostería, los constructores combinaron tobas de diversos matices con piedra pómez, mortero de cal y obsidiana. La catedral contaba con cinco portales de acceso. La fachada del primer nivel estaba ceñida por un friso esculpido con pámpanos de vid y ramas de granado, coronado por arquerías en las que se ubicaban treinta y dos altorrelieves de dignatarios laicos y religiosos, de los cuales aún se conservan nueve. En el interior, los capiteles lucían volutas jónicas de cesta y águilas con las alas desplegadas, lo que recordaba inspiraciones sirias y mesopotámicas cercanas a la iglesia de Apamea. Mosaicos, frescos y un reloj de sol esculpido enriquecían este programa decorativo. Al suroeste del templo, las excavaciones también revelaron los aposentos del catolicós, celdas monásticas, baños y un extenso lagar.
+
+## Ruina, redescubrimiento y debates arqueológicos
+
+Tras trescientos veinte años de existencia, la catedral se derrumbó en el siglo X. La causa más aceptada sigue siendo un violento terremoto que quebró la resistencia de los soportes del segundo piso, aunque también se ha planteado la hipótesis de daños derivados de incursiones árabes. En el siglo XI, cuando el historiador Stepán Taronetsí la menciona, ya no era más que un montón de escombros.
+
+El santuario permaneció sepultado hasta principios del siglo XX. Entre 1901 y 1907, extensas campañas de excavación emprendidas por el vardapet Jachik Dadián sacaron a la luz los cimientos del conjunto. A partir de 1904, el arquitecto Toros Toramanyan asumió la dirección científica y elaboró en 1905 una célebre reconstrucción de tres plantas a partir de los elementos originales. Aunque esta restitución se convirtió en un referente, suscitó controversias: especialistas como Stepán Mnatsakanián o A. Kuznetsov cuestionaron su viabilidad técnica para la época, planteando propuestas alternativas. En la actualidad, los visitantes pueden contemplar los vestigios consolidados del primer nivel, que reflejan la magnitud de la columnata.
+
+## La memoria viva de un modelo arquitectónico
+
+El renombre de la Catedral de Zvartnots marcó profundamente los siglos posteriores. Hacia el año 1000, bajo el reinado del rey Gagik I Bagratuní, el arquitecto Trdat reprodujo fielmente la planta de Zvartnots para construir la iglesia de Gagkashen (San Gregorio) en Ani. La huella de este modelo tetracónquido circular se encuentra también en las iglesias contemporáneas de Ishjan y Banak fundadas por Nersés III, en Lyakit en Aghvank, así como en la arquitectura de los edificios de Aruch, Talin, Yeghvard o de los monasterios de Marmashen y Jtskonk.
+
+Esta notoriedad incluso alimentó hipótesis lejanas: algunos creyeron reconocer la silueta de Zvartnots coronando el Arca de Noé en dos bajorrelieves de la Sainte-Chapelle de París, una comparación descartada por el historiador Jean-Michel Thierry dada la naturaleza común de estos motivos medievales. En Armenia, el dibujo de la catedral ilustró la primera emisión de los billetes de 100 drams y una maqueta se exhibe de forma destacada en el Museo de Historia de Ereván. Su legado arquitectónico incluso inspiró la iglesia de la Santísima Trinidad construida en 2003 por Baghdasar Arzoumanian en el distrito de Malatia-Sebastia en Ereván. La Catedral de Zvartnots conserva así su resonancia intacta, como lo resumió el poeta Ósip Mandelshtam ante su reloj de sol, al ver en estas piedras el testimonio de un pueblo que vivía al ritmo profundo del sol.
