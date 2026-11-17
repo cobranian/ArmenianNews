@@ -87,6 +87,25 @@ test('draftShort : second essai après un Short invalide ; champs inconnus retir
   assert.deepEqual(r.warnings, [])
 })
 
+test('draftShort : l’essai suivant reçoit la raison du refus', async () => {
+  const calls = []
+  const answers = [reply(goodShort({ ytTitle: 'Inventé en 1999' })), reply(goodShort())]
+  const r = await draftShort({ ...args, chat: async (o) => (calls.push(o), answers.shift()) })
+  assert.deepEqual(r.short, goodShort())
+  assert.equal(calls[0].messages.length, 2)
+  const last = calls[1].messages.at(-1)
+  assert.equal(last.role, 'user')
+  assert.match(last.content, /1999/)
+  assert.equal(calls[1].messages.at(-2).role, 'assistant')
+})
+
+test('draftShort : trois essais au plus', async () => {
+  let n = 0
+  const r = await draftShort({ ...args, chat: async () => (n++, reply(goodShort({ music: 'jazz' }))) })
+  assert.equal(n, 3)
+  assert.equal(r.short, null)
+})
+
 test('draftShort : deux échecs → pas de Short, la raison ; une panne ne lève pas', async () => {
   const bad = await draftShort({ ...args, chat: async () => reply(goodShort({ music: 'jazz' })) })
   assert.equal(bad.short, null)

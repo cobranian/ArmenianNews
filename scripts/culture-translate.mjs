@@ -43,6 +43,8 @@ import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
 import { validateShort, shortHash, parseShortJson, shortNeedsTranslation } from './lib/culture-short.mjs'
 import { translateShort } from './lib/culture-short-translate.mjs'
+import { draftShort } from './lib/culture-checks.mjs'
+import { readVideos } from './lib/culture-load.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIR = path.join(root, 'src/data/culture')
@@ -101,6 +103,24 @@ try {
   if (parsed && validateShort(parsed, { lang: 'fr', articleText: frText }).length === 0) shortFr = parsed
 } catch {
   // absent : traité comme invalide
+}
+// Le brouillon n'a pas pu l'écrire (garde des nombres, panne) : on le rédige
+// ici, contre le fr.md relu, plutôt que de publier l'article sans vidéo pour
+// toujours. Sauf si la vidéo française est déjà en ligne (Garni).
+if (!shortFr && !(await readVideos(DIR))?.[slug]?.fr) {
+  const frText = [fr.data.title, fr.data.description, fr.body].join('\n')
+  const r = await draftShort({
+    title: fr.data.title, description: fr.data.description, body: fr.body, articleText: frText,
+    chat: (o) => chatResilient({ ...o, sticky }),
+  })
+  if (r.short) {
+    shortFr = r.short
+    await writeFile(path.join(base, 'short.fr.json'), `${JSON.stringify(r.short, null, 2)}\n`)
+    lines.push('- ✓ fr vidéo — rédigée (absente du brouillon)', ...r.warnings.map((w) => `- ⚠️ ${w}`))
+    console.log(`  ✓ ${slug}/fr vidéo rédigée`)
+  } else {
+    console.warn(`  ✗ ${slug}/fr vidéo : ${r.error}`)
+  }
 }
 if (!shortFr) lines.push('- ⚠️ vidéo — pas de short.fr.json valide : aucune traduction de la vidéo')
 

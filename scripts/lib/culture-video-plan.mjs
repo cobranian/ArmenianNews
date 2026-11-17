@@ -16,9 +16,18 @@ export function videoLangs(result, { slug, videos, queue }) {
 // Les langues dont l'article est publiable mais le Short ne l'est pas (absent,
 // périmé ou non conforme) : une traduction --short-only les rattrape sans
 // retoucher les articles déjà relus. Sans Short français valide, rien à traduire.
+// Sans Short français valide (le brouillon n'a pas pu l'écrire), toutes ces
+// langues en ont besoin : culture-translate le rédige d'abord, puis les traduit.
 export function shortsToTranslate(result, { slug, videos }) {
-  if (!result.shorts?.fr) return []
-  return ALL_LANGS.filter((l) => l !== 'fr' && result.langs?.[l] && !result.shorts?.[l] && !online(videos, slug, l))
+  const frMissing = !result.shorts?.fr
+  return ALL_LANGS.filter((l) => l !== 'fr' && result.langs?.[l] && (frMissing || !result.shorts?.[l]) && !online(videos, slug, l))
+}
+
+// Le Short français manque et sa vidéo n'est pas en ligne : il faut le
+// rédiger (culture-translate s'en charge avant toute traduction). Garni, dont
+// les vidéos précèdent ce format, n'a pas de short.fr.json et n'en veut pas.
+export function frShortMissing(result, { slug, videos }) {
+  return Boolean(result.langs?.fr) && !result.shorts?.fr && !online(videos, slug, 'fr')
 }
 
 // Les passages de culture-translate qu'il faut à une PR de publication — une
@@ -42,6 +51,6 @@ export function translationRuns(result, { slug, videos, meta, checkPassed }) {
   const runs = []
   if (articles.length) runs.push(['--langs', articles.join(',')])
   if (shorts.length) runs.push(['--short-only', '--langs', shorts.join(',')])
-  else if (imageChanged && !articles.length) runs.push(['--short-only'])
+  else if ((imageChanged || frShortMissing(result, { slug, videos })) && !articles.length) runs.push(['--short-only'])
   return runs
 }
