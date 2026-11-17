@@ -86,8 +86,9 @@ test('videoLangs : les Shorts publiables, moins ceux déjà sur YouTube, dans l�
   assert.deepEqual(videoLangs(r, { slug: 'duduk', videos: {}, queue }), ['fr', 'en', 'ru'], 'déjà en file : pas rendu deux fois')
 })
 
-test('shortsToTranslate : article à jour sans Short valide, hors vidéos publiées ; rien sans Short français', () => {
+test('shortsToTranslate : article à jour sans Short valide, hors vidéos publiées ; sans Short français, toutes (il sera rédigé)', () => {
   const r = result(['fr', 'en', 'hy', 'ru', 'de'], ['fr', 'en'])
   assert.deepEqual(shortsToTranslate(r, { slug: 'duduk', videos: { duduk: { ru: { youtube: 'x' } } } }), ['de', 'hy'])
-  assert.deepEqual(shortsToTranslate(result(['fr', 'en'], []), { slug: 'duduk', videos: {} }), [])
+  assert.deepEqual(shortsToTranslate(result(['fr', 'en'], []), { slug: 'duduk', videos: {} }), ['en'])
+  assert.deepEqual(shortsToTranslate(result(['fr', 'en'], []), { slug: 'duduk', videos: { duduk: { en: { youtube: 'x' } } } }), [])
 })

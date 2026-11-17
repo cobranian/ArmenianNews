@@ -87,3 +87,29 @@ test('shortNeedsTranslation : absent, périmé, non conforme → oui ; à jour e
   assert.equal(shortNeedsTranslation({ ...en, sourceHash: 'x' }, ctx), true)
   assert.equal(shortNeedsTranslation({ ...en, facts: [] }, ctx), true)
 })
+
+// Zvartnots (17 nov. 2026) : le brouillon n'avait pas pu écrire short.fr.json
+// (garde des nombres) et rien ne le rattrapait — l'article partait sans vidéo.
+test('Short fr absent, vidéos pas en ligne : --short-only sur toutes les langues (fr rédigé d’abord)', async () => {
+  const { article, videos } = await load()
+  const shorts = { ...article.shorts }
+  delete shorts.fr
+  assert.deepEqual(plan({ ...article, shorts }, videos, false), [['--short-only', '--langs', 'de,it,en,es,hy,ru']])
+})
+
+test('Short fr absent, mais les vidéos sont en ligne (Garni) : rien', async () => {
+  const videos = await readVideos(DIR)
+  const article = await readArticle(DIR, SLUG)
+  const shorts = { ...article.shorts }
+  delete shorts.fr
+  assert.deepEqual(plan({ ...article, shorts }, videos, false), [])
+})
+
+test('Short fr absent, seules les autres langues en ligne : --short-only seul', async () => {
+  const videos = await readVideos(DIR)
+  videos[SLUG] = Object.fromEntries(Object.entries(videos[SLUG]).filter(([l]) => l !== 'fr'))
+  const article = await readArticle(DIR, SLUG)
+  const shorts = { ...article.shorts }
+  delete shorts.fr
+  assert.deepEqual(plan({ ...article, shorts }, videos, false), [['--short-only']])
+})

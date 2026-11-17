@@ -78,12 +78,17 @@ const pickShort = (s) => ({
 // Même contrat que verifyClaims : ne lève jamais. `short` vaut null après
 // `attempts` échecs, `error` dit le dernier — la PR l'affiche
 // (« ⚠️ Pas de vidéo : … ») et l'article part sans vidéo.
-export async function draftShort({ title, description, body, articleText, chat, attempts = 2 }) {
+// Un essai refusé repart AVEC sa raison : redemandé à l'aveugle, le modèle
+// refaisait la même faute (Zvartnots, 17 nov. 2026 : « 320 » absent de
+// l'article aux deux essais — l'article est parti sans vidéo).
+export async function draftShort({ title, description, body, articleText, chat, attempts = 3 }) {
   const warnings = []
   let error = null
+  const base = buildShortMessages({ title, description, body })
+  let messages = base
   for (let i = 0; i < attempts; i++) {
     try {
-      const res = await chat({ messages: buildShortMessages({ title, description, body }) })
+      const res = await chat({ messages })
       const parsed = parseShortJson(res.text)
       const problems = parsed ? validateShort(parsed, { lang: 'fr', articleText }) : ['JSON illisible']
       if (!problems.length) {
@@ -91,6 +96,11 @@ export async function draftShort({ title, description, body, articleText, chat, 
         return { short: pickShort(parsed), warnings, error: null }
       }
       error = problems.join(' ; ')
+      messages = [
+        ...base,
+        { role: 'assistant', content: String(res.text ?? '') },
+        { role: 'user', content: `Réponse refusée : ${error}. Corrige ces points en respectant toutes les règles (chaque nombre doit figurer tel quel dans l'article) et renvoie l'objet JSON complet, sans texte autour.` },
+      ]
     } catch (e) {
       error = e.message
     }

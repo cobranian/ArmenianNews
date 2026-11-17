@@ -17,6 +17,13 @@ name: Culture — traductions après fusion
 on:
   pull_request:
     types: [closed]
+  # Rattrapage à la main d'un article déjà publié (traductions ou Short
+  # manquants) : gh workflow run articles-merged.yml -f slug=<slug>
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Article à rattraper (dossier de src/data/culture)
+        required: true
 
 permissions:
   contents: write
@@ -30,6 +37,7 @@ concurrency:
 jobs:
   translate:
     if: >-
+      github.event_name == 'workflow_dispatch' ||
       github.event.pull_request.merged == true &&
       startsWith(github.head_ref, 'culture/') &&
       !startsWith(github.head_ref, 'culture/backfill-')
@@ -37,7 +45,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       PR: ${{ github.event.pull_request.number }}
-      BRANCH: ${{ github.head_ref }}
+      BRANCH: ${{ github.head_ref || format('culture/{0}', inputs.slug) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -56,6 +64,7 @@ jobs:
           ARTICLES_MODEL: ${{ vars.ARTICLES_MODEL }}
         run: |
           SLUG="${BRANCH#culture/}"
+          [[ "$SLUG" =~ ^[a-z0-9-]+$ ]] || { echo "slug invalide : $SLUG"; exit 1; }
           D="src/data/culture/$SLUG"
           [ -f "$D/fr.md" ] || { echo "Pas d'article $SLUG sur main : rien à faire."; exit 0; }
           missing=""
@@ -90,7 +99,7 @@ jobs:
           if git diff --cached --quiet; then
             # Les langues déjà prêtes partent quand même en vidéo.
             gh workflow run video.yml --ref main -f slug="$SLUG" || true
-            gh pr comment "$PR" --body "⚠️ Fusionnée sans traductions, et la traduction automatique n'a rien produit : relancez \`npm run culture:translate $SLUG\`." || true
+            [ -n "$PR" ] && gh pr comment "$PR" --body "⚠️ Fusionnée sans traductions, et la traduction automatique n'a rien produit : relancez \`npm run culture:translate $SLUG\`." || true
             exit 1
           fi
           git commit -m "Culture : traductions de « $SLUG » (après fusion)"
@@ -105,7 +114,7 @@ jobs:
                 echo
                 [ -f "$RUNNER_TEMP/summary.md" ] && cat "$RUNNER_TEMP/summary.md"
               } > "$RUNNER_TEMP/comment.md"
-              gh pr comment "$PR" --body-file "$RUNNER_TEMP/comment.md" || true
+              [ -n "$PR" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/comment.md" || true
               exit 0
             fi
             sleep 10
