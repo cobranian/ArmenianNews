@@ -47,8 +47,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -115,6 +114,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -165,8 +169,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -233,6 +236,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -276,8 +284,7 @@
         "reel:epopee-de-david-de-sassoun": "2026-11-14T06:56:53.570Z",
         "reel:aram-khatchatourian": "2026-11-15T00:44:03.709Z",
         "reel:bataille-de-sardarapat": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:sayat-nova-et-la-tradition-des-ashoughs": {
@@ -323,6 +330,11 @@
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
@@ -753,8 +765,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T12:35:39.088Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T12:35:39.088Z"
       },
       "failed": {
         "reel:lavash": {
@@ -821,6 +832,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -869,8 +885,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -937,6 +952,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -977,8 +997,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -1045,6 +1064,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -1077,8 +1101,7 @@
         "reel:monastere-de-tatev": "2026-11-14T00:33:54.499Z",
         "reel:duduk": "2026-11-15T00:44:03.709Z",
         "reel:bataille-de-sardarapat": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -1145,6 +1168,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -1199,8 +1227,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -1267,6 +1294,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -1307,8 +1339,7 @@
         "reel:serguei-paradjanov": "2026-11-13T23:33:50.578Z",
         "reel:duduk": "2026-11-15T00:44:03.709Z",
         "reel:aram-khatchatourian": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:ani": {
@@ -1364,6 +1395,11 @@
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
@@ -1578,8 +1614,7 @@
         "reel:bataille-de-sardarapat": "2026-11-13T20:32:30.738Z",
         "reel:charles-aznavour": "2026-11-15T00:34:20.314Z",
         "reel:monastere-de-tatev": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:lavash": {
@@ -1646,6 +1681,11 @@
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
           "error": "facebook : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
+          "error": "facebook-reel/start : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
     },
@@ -1758,8 +1798,7 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1775,6 +1814,11 @@
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
@@ -1841,8 +1885,7 @@
         "annonce:whatsapp": "seed",
         "reel:khatchkar": "2026-11-15T00:34:20.314Z",
         "reel:kochari": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1853,6 +1896,11 @@
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
@@ -1919,8 +1967,7 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1936,6 +1983,11 @@
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
@@ -2002,8 +2054,7 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:site-archeologique-de-zvartnots": "2026-11-17T22:23:23.464Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -2019,6 +2070,11 @@
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
           "attempts": 0,
           "last": "2026-11-17T21:43:33.002Z",
+          "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+        },
+        "reel:site-archeologique-de-zvartnots": {
+          "attempts": 0,
+          "last": "2026-11-17T22:23:41.127Z",
           "error": "instagram-reel/media : HTTP 400 Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
         }
       }
