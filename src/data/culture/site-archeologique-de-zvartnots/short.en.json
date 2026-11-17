@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Armenia · 7th century",
+      "title": "Zvartnots",
+      "text": "Built by Catholicos Nerses III, this circular cathedral was dedicated to Saint Gregory the Illuminator.",
+      "big": false
+    },
+    {
+      "eyebrow": "Sacred site",
+      "title": "In 301",
+      "text": "According to Sebeos, King Tiridates III and Saint Gregory the Illuminator allegedly met at this sacred site.",
+      "big": true
+    },
+    {
+      "eyebrow": "Technical feat",
+      "title": "35.75 meters",
+      "text": "The building rested on a seven-stepped plinth with this base diameter, rising in three cylindrical tiers.",
+      "big": true
+    },
+    {
+      "eyebrow": "Sculpted ornaments",
+      "title": "Eagles and baskets",
+      "text": "The basket capitals displayed Ionic volutes and eagles with spread wings carved into tuff.",
+      "big": false
+    },
+    {
+      "eyebrow": "Catastrophe",
+      "title": "The 10th century",
+      "text": "After three hundred and twenty years of existence, a violent earthquake caused the sanctuary to collapse.",
+      "big": false
+    },
+    {
+      "eyebrow": "Archaeological excavations",
+      "title": "Toros Toramanian",
+      "text": "In 1905, the architect drew up his famous three-tiered reconstruction based on the unearthed elements.",
+      "big": false
+    },
+    {
+      "eyebrow": "Sacred legacy",
+      "title": "The church of Ani",
+      "text": "Around the year 1000, the architect Trdat faithfully reproduced its plan to build the Gagkashen church in Ani.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Zvartnots",
+  "ytTitle": "Zvartnots, the Circular Cathedral of Medieval Armenia",
+  "ytLead": "Built in the 7th century by Catholicos Nerses III, the circular cathedral of Zvartnots overturned the canons of Armenian medieval architecture before collapsing in the 10th century.",
+  "sourceHash": "2662bd856d8094f87dca7910c6f2af3dab6fd071e09c239c2d79c2c60bd6b006",
+  "model": "gemini-flash-latest"
+}
