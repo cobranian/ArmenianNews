@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-17",
+  "lang": "es",
+  "generatedAt": "2026-11-17T03:33:37.315Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca por la actividad diplomática de Armenia con socios europeos y asiáticos, la apertura de una nueva ruta aérea de carga con Turquía y los avances en cooperación económica y judicial.",
+  "topics": [
+    {
+      "title": "Nuevo vuelo regular de carga entre Estambul y Ereván",
+      "text": "Turkish Cargo ha inaugurado el primer vuelo regular de carga que conecta Estambul con la capital armenia. La nueva ruta busca facilitar el comercio y la logística entre ambos países.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/primer-vuelo-carga-turkish-cargo-estambul-erevan/",
+          "title": "Turkish Cargo inaugura el primer vuelo regular de carga entre Estambul y Ereván"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265743",
+          "title": "Primer vuelo regular de carga entre Estambul y Ereván"
+        }
+      ]
+    },
+    {
+      "title": "Diplomacia armenia en Bruselas y Nueva Delhi",
+      "text": "El ministro de Exteriores Ararat Mirzoyan se reunió en Bruselas con su homólogo griego y discutió cooperación en defensa con la UE. Paralelamente, India intensifica su diálogo diplomático con Armenia tras el encuentro entre Pashinyan y Jaishankar.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265778",
+          "title": "Ararat Mirzoyan se reunió en Bruselas con el ministro de Asuntos Exteriores de Grecia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265782",
+          "title": "Papikyan y Maragos discutieron sobre la cooperación entre Armenia y la Unión Europea en defensa"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/india-diplomacia-armenia-pashinyan-jaishankar/",
+          "title": "India intensifica su diplomacia con Armenia tras el encuentro entre Pashinyan y Jaishankar en Nueva Delhi"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación económica con Alemania y Hungría",
+      "text": "Se celebró una consulta intergubernamental intermedia entre Armenia y Alemania en el Ministerio de Economía. Además, el Consejo Empresarial Armenio-Húngaro inició actividades en Ereván para impulsar exportaciones hacia Europa.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/consejo-empresarial-armenio-hungaro-actividades-erevan/",
+          "title": "El Consejo Empresarial Armenio-Húngaro inicia sus actividades en Ereván para impulsar las exportaciones hacia Europa"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265767",
+          "title": "Se celebró una consulta intergubernamental intermedia entre Armenia y Alemania en el Ministerio de Economía"
+        }
+      ]
+    },
+    {
+      "title": "Procesos penales contra dos jueces por abuso de autoridad",
+      "text": "La justicia armenia ha abierto procesos penales contra dos magistrados acusados de presunto abuso de autoridad y daño procesal. El caso subraya los esfuerzos por reforzar la rendición de cuentas judicial.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/procesos-penales-dos-jueces-armenia/",
+          "title": "Procesos penales contra dos jueces en Armenia por presunto abuso de autoridad y daño procesal"
+        }
+      ]
+    },
+    {
+      "title": "Modernización urbana en Ereván: retiro de cables aéreos",
+      "text": "El alcalde de Ereván ordenó la retirada total de las líneas eléctricas aéreas para modernizar la imagen urbana de la capital. La medida forma parte de un plan más amplio de mejora del espacio público.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/erevan-retirada-lineas-electricas-aereas-ciudad/",
+          "title": "El alcalde de Ereván ordena la retirada total de las líneas eléctricas aéreas para modernizar la imagen urbana de la capital"
+        }
+      ]
+    },
+    {
+      "title": "Críticas a la TV pública por emisión de violencia e insultos",
+      "text": "La Comisión de Televisión y Radio de Armenia criticó la difusión de contenidos violentos e insultos en la televisión pública. El organismo instó al cumplimiento de los estándares éticos de radiodifusión.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/comision-television-radio-armenia-critica-violencia-tv-publica/",
+          "title": "La Comisión de Televisión y Radio de Armenia critica la emisión de violencia e insultos en la TV pública"
+        }
+      ]
+    },
+    {
+      "title": "Iniciativa Puente de Paz y reunión con Camboya",
+      "text": "Está previsto el próximo encuentro de la iniciativa Puente de Paz en Armenia. Asimismo, los primeros ministros de Armenia y Camboya se reunieron para explorar áreas de cooperación bilateral.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265793",
+          "title": "El próximo encuentro de la iniciativa Puente de Paz está previsto en Armenia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265708",
+          "title": "Se reunieron los primeros ministros de Armenia y Camboya"
+        }
+      ]
+    }
+  ]
+}
