@@ -1735,8 +1735,7 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:duduk": "2026-11-18T08:32:21.758Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1757,6 +1756,11 @@
         "reel:site-archeologique-de-zvartnots": {
           "attempts": 3,
           "last": "2026-11-18T01:32:37.926Z",
+          "error": "instagram-reel/media : HTTP 400 User access is restricted"
+        },
+        "reel:duduk": {
+          "attempts": 1,
+          "last": "2026-11-18T08:32:36.889Z",
           "error": "instagram-reel/media : HTTP 400 User access is restricted"
         }
       }
