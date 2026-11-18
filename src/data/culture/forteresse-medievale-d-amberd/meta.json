@@ -1,0 +1,112 @@
+{
+  "slug": "forteresse-medievale-d-amberd",
+  "qid": "Q457057",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "lang": "fr",
+      "title": "Amberd",
+      "url": "https://fr.wikipedia.org/wiki/Amberd",
+      "revision": 241238897,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "en",
+      "title": "Amberd",
+      "url": "https://en.wikipedia.org/wiki/Amberd",
+      "revision": 1379504176,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "hy",
+      "title": "Ամբերդ (ամրոց)",
+      "url": "https://hy.wikipedia.org/wiki/%D4%B1%D5%B4%D5%A2%D5%A5%D6%80%D5%A4_(%D5%A1%D5%B4%D6%80%D5%B8%D6%81)",
+      "revision": 10934405,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "ru",
+      "title": "Амберд",
+      "url": "https://ru.wikipedia.org/wiki/%D0%90%D0%BC%D0%B1%D0%B5%D1%80%D0%B4",
+      "revision": 155655251,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "de",
+      "title": "Amberd",
+      "url": "https://de.wikipedia.org/wiki/Amberd",
+      "revision": 212772030,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "it",
+      "title": "Fortezza di Amberd",
+      "url": "https://it.wikipedia.org/wiki/Fortezza_di_Amberd",
+      "revision": 150794162,
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "kind": "wikipedia",
+      "lang": "es",
+      "title": "Amberd",
+      "url": "https://es.wikipedia.org/wiki/Amberd",
+      "revision": 174425938,
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "File:Amberd 2015.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Amberd_2015.jpg/1920px-Amberd_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 5312,
+      "height": 2988,
+      "mime": "image/jpeg",
+      "author": "Yerevantsi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Amberd_2015.jpg"
+    },
+    {
+      "file": "File:ARM Amberd 4038 Panorama.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/ARM_Amberd_4038_Panorama.jpg/1920px-ARM_Amberd_4038_Panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 7747,
+      "height": 6008,
+      "mime": "image/jpeg",
+      "author": "Thomas Wozniak",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:ARM_Amberd_4038_Panorama.jpg"
+    },
+    {
+      "file": "File:Amberd .jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Amberd_.jpg/1920px-Amberd_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 5036,
+      "height": 2232,
+      "mime": "image/jpeg",
+      "author": "Vardik9",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Amberd_.jpg"
+    }
+  ],
+  "imageChoice": 0,
+  "image": {
+    "file": "File:Amberd 2015.jpg",
+    "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Amberd_2015.jpg/1920px-Amberd_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 675,
+    "mime": "image/jpeg",
+    "author": "Yerevantsi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "commonsUrl": "https://commons.wikimedia.org/wiki/File:Amberd_2015.jpg"
+  },
+  "agendaEvent": null,
+  "overlap": 0,
+  "model": "gemini-flash-latest"
+}
