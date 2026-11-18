@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Mount Aragats",
+      "title": "2,300 meters",
+      "text": "Perched on a rocky promontory, the Amberd fortress once controlled access routes to the Ararat plain.",
+      "big": true
+    },
+    {
+      "eyebrow": "Etymology",
+      "title": "Fortress of the clouds",
+      "text": "In Armenian, combining amp (cloud) and berd (fortress) evokes the mists enveloping the citadel.",
+      "big": false
+    },
+    {
+      "eyebrow": "Feudal origins",
+      "title": "7th century",
+      "text": "Built by the Kamsarakan princes, the site became under the Bagratunis a strategic fort defending Ani.",
+      "big": true
+    },
+    {
+      "eyebrow": "Vahramashen",
+      "title": "1026",
+      "text": "Prince Vahram Pahlavuni erected this volcanic tuff church as well as the complex's baths.",
+      "big": true
+    },
+    {
+      "eyebrow": "Hydraulic engineering",
+      "title": "Underground aqueduct",
+      "text": "Terracotta pipes conveyed water from reservoirs located 4 to 5 kilometers away.",
+      "big": false
+    },
+    {
+      "eyebrow": "Reconquest",
+      "title": "The Zakarian epic",
+      "text": "In 1196, the brothers Zakare and Ivane Zakarian liberated the fortress, a prelude to taking back Ani.",
+      "big": false
+    },
+    {
+      "eyebrow": "Preservation",
+      "title": "Europa Nostra",
+      "text": "In 2024, the organization listed Amberd among the seven most endangered heritage sites in Europe.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Amberd",
+  "ytTitle": "Amberd, the Impregnable Armenian Fortress Suspended Above the Clouds",
+  "ytLead": "Perched at 2,300 meters on the slopes of Mount Aragats, the medieval fortress of Amberd once defended the approaches to Ani. Its castle, baths, and church bear witness to the military and architectural grandeur of ancient Armenia.",
+  "sourceHash": "216346b30967c5aa42c119fe80c4ccc9bb12c01e5d2a05fcc65afae0d9ad6832",
+  "model": "gemini-flash-latest"
+}
