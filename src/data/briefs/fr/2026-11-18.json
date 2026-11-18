@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-18",
+  "lang": "fr",
+  "generatedAt": "2026-11-18T03:29:42.279Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "L'actualité est marquée par l'intensification des relations entre l'Arménie et l'Union européenne, la visite du chef de la diplomatie allemande dans le Caucase du Sud, ainsi que par les débats internes sur la politique étrangère et les questions judiciaires.",
+  "topics": [
+    {
+      "title": "Renforcement du partenariat stratégique Arménie-UE",
+      "text": "Le ministre des Affaires étrangères Ararat Mirzoyan a rencontré la commissaire européenne Marta Kos à Bruxelles pour discuter de la mise en œuvre du programme de partenariat stratégique. Les discussions ont également porté sur la coopération en matière de défense à Erevan, dans un contexte de volonté affichée de contrer les menaces hybrides avec des partenaires partageant les mêmes valeurs.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/ararat-mirzoyan-et-martha-kos-ont-discute-des-enjeux-de-la-mise-en-oeuvre-du-programme-strategique-du-partenariat-armenie-ue/",
+          "title": "Ararat Mirzoyan et Martha Kos ont discuté des enjeux de la mise en œuvre du programme stratégique du partenariat Arménie-UE"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265900",
+          "title": "Ararat Mirzoyan a rencontré Marta Kos à Bruxelles"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/larmenie-prete-a-contrer-les-menaces-hybrides-avec-des-partenaires-partageant-les-memes-idees/",
+          "title": "L’Arménie prête à contrer les menaces hybrides avec des partenaires partageant les mêmes idées"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/larmenie-et-lue-discutent-de-la-cooperation-en-matiere-de-defense-a-erevan/",
+          "title": "L’Arménie et l’UE discutent de la coopération en matière de défense à Erevan"
+        }
+      ]
+    },
+    {
+      "title": "Visite du ministre allemand des Affaires étrangères dans la région",
+      "text": "Johann Wadephul se rend dans le Caucase du Sud, Berlin affirmant sa volonté d'être un partenaire fiable pour l'Arménie et l'Azerbaïdjan. Parallèlement, le Royaume-Uni a salué les progrès accomplis vers l'instauration de la paix dans la région.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/berlin-prete-a-etre-un-partenaire-fiable-pour-larmenie-et-lazerbaidjan-le-ministre-allemand-des-affaires-etrangeres-johann-wadephul-se-rend-dans-la-region/",
+          "title": "Berlin prête à être un partenaire fiable pour l’Arménie et l’Azerbaïdjan : le ministre allemand des Affaires étrangères, Johann Wadephul, se rend dans la région"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1265892",
+          "title": "Le Royaume-Uni salue les progrès accomplis en vue de l’instauration de la paix dans le Caucase du Sud"
+        }
+      ]
+    },
+    {
+      "title": "Débats sur la politique étrangère et les relations avec la Russie",
+      "text": "Le président du parlement Ruben Rubinyan a souligné l'existence de problèmes avec Moscou tout en refusant l'isolement. Des voix critiques, dont celle d'Armen Grigoryan, alertent sur les risques du non-alignement pour la sécurité nationale, tandis que le Premier ministre Pachinian prévoit trois déplacements en Russie en décembre pour négocier et préserver les liens bilatéraux.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nous-navons-rien-contre-la-russie-mais-il-y-a-des-problemes-et-nous-ne-voulons-pas-rester-isoles-affirme-le-president-du-parlement-armenien-ruben-rubinyan/",
+          "title": "Nous n’avons rien contre la Russie, mais il y a des problèmes et nous ne voulons pas rester isolés affirme le Président du parlement arménien Ruben Rubinyan"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/en-reponse-a-armen-grigoryan-le-non-alignement-un-risque-pour-la-securite-de-larmenie/",
+          "title": "En réponse à Armen Grigoryan : le non-alignement, un risque pour la sécurité de l’Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/grigoryan-nous-considere-comme-une-peripherie-il-faut-negocier-avec-la-russie-pour-eviter-une-situation-dangereuse/",
+          "title": "Grigoryan nous considère comme une périphérie : il faut négocier avec la Russie pour éviter une situation dangereuse"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/notre-objectif-nest-pas-de-saper-nos-relations-pachinian-se-rendra-trois-fois-en-russie-en-decembre/",
+          "title": "« Notre objectif n’est pas de saper nos relations » : Pachinian se rendra trois fois en Russie en décembre"
+        }
+      ]
+    },
+    {
+      "title": "Projet de raffinerie iranienne et enjeux économiques",
+      "text": "Le ministre iranien du Pétrole a déclaré que Téhéran est prêt à construire une raffinerie de pétrole en Arménie. Cette annonce s'inscrit dans une réflexion plus large sur la transformation de l'Arménie, d'un point de transit vers une destination pour les capitaux, selon des experts économiques.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/liran-pret-a-construire-une-raffinerie-de-petrole-en-armenie-declare-le-ministre-iranien-du-petrole/",
+          "title": "L’Iran prêt à construire une raffinerie de pétrole en Arménie déclare le ministre iranien du Pétrole"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/irina-belysheva-transformer-larmenie-dun-point-de-transit-en-une-destination-pour-les-capitaux",
+          "title": "Irina Belysheva : « Transformer l’Arménie d’un point de transit en une destination pour les capitaux »"
+        }
+      ]
+    },
+    {
+      "title": "Affaire du juge Hakob Manukyan devant le Conseil supérieur de la magistrature",
+      "text": "Le Conseil supérieur de la magistrature examine le cas du juge Hakob Manukyan, soulevant la question de savoir si son déport a discrédité l'institution judiciaire. Cette procédure intervient dans un contexte de scrutin sur l'indépendance de la justice.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-deport-du-juge-hakob-manukyan-a-t-il-discredite-la-justice-le-conseil-superieur-de-la-magistrature-examine-son-cas/",
+          "title": "Le déport du juge Hakob Manukyan a-t-il discrédité la justice ? Le Conseil supérieur de la magistrature examine son cas"
+        }
+      ]
+    },
+    {
+      "title": "COP17 en Arménie : mobilisation financière pour la biodiversité",
+      "text": "La conférence COP17 organisée en Arménie a permis de mobiliser près de 4,46 milliards de dollars pour la conservation de la biodiversité. Barbara Pompili a souligné que cet événement aide à mettre en cohérence l'économie et l'environnement.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-cop17-qui-sest-tenue-en-armenie-a-mobilise-pres-de-446-milliards-de-dollars-pour-la-conservation-de-la-biodiversite/",
+          "title": "La COP17 qui s’est tenue en Arménie a mobilisé près de 4,46 milliards de dollars pour la conservation de la biodiversité"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/barbara-pompili-larmenie-travers-la-cop17-nous-aide-mettre-en-coherence-leconomie-et-lenvironnement",
+          "title": "Barbara Pompili : « L’Arménie, à travers la COP17, nous aide à mettre en cohérence l’économie et l’environnement »"
+        }
+      ]
+    },
+    {
+      "title": "Découverte archéologique et patrimoine culturel",
+      "text": "Un sceptre royal a été découvert en Arménie, mettant au jour de nouveaux vestiges du royaume médiéval du Syunik. Par ailleurs, douze nouveaux biens historiques et culturels ont été classés monuments nationaux.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/douze-nouveaux-biens-historiques-et-culturels-classes-monuments-en-armenie",
+          "title": "Douze nouveaux biens historiques et culturels classés monuments en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-sceptre-royal-decouvert-en-armenie-les-vestiges-du-royaume-medieval-du-syunik-refont-surface/",
+          "title": "Un sceptre royal découvert en Arménie : les vestiges du royaume médiéval du Syunik refont surface"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-18",
+  "lang": "es",
+  "generatedAt": "2026-11-18T03:29:42.279Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la tensión política interna en Armenia, los avances en el proceso de paz con Azerbaiyán, la cooperación internacional y temas económicos y sociales relevantes.",
+  "topics": [
+    {
+      "title": "Tensión política en la Asamblea Nacional de Armenia",
+      "text": "Diputados abandonaron una sesión tras críticas al Catholicos Karekin II, mientras el presidente de la Asamblea afirmó que no hay presos políticos en el país y que el líder religioso debe renunciar. Rubén Rubinyan condenó además los ataques contra familiares de políticos y periodistas.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/diputados-abandonan-asamblea-nacional-karekin/",
+          "title": "Tensión en la Asamblea Nacional de Armenia: diputados abandonan la sesión tras críticas al Catholicos Karekin II"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265885",
+          "title": "Presidente de la Asamblea Nacional afirmó que Armenia no hay presos políticos"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265889",
+          "title": "Presidente de la Asamblea Nacional de Armenia afirmó que Karekin II debe abandonar su cargo"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265893",
+          "title": "Rubén Rubinyan condenó los ataques contra familiares de políticos y periodistas"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265842",
+          "title": "Aram Vardevanyan: “La presidencia de la Asamblea Nacional no debe promover una agenda política al dirigir las sesiones”"
+        }
+      ]
+    },
+    {
+      "title": "Proceso de paz entre Armenia y Azerbaiyán",
+      "text": "Un estudio de IntelliNews señala visiones opuestas entre Nikol Pashinyan e Ilham Aliyev sobre el proceso de paz. Simultáneamente, se imputaron nueve cargos penales al militar azerbaiyano Nasimi Musayev por un ataque armado en Shaki, y un funcionario armenio minimizó la intención homicida en otro caso judicial contra un militar azerbaiyano.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/juicio-contra-el-militar-azerbaiyano-que-disparo-seis-veces-contra-una-madre-armenia-frente-a-sus-hijos-un-funcionario-de-pashinyan-afirmo-que-no-tenia-intencion-de-matar/",
+          "title": "Juicio contra el militar azerbaiyano que disparó seis veces contra una madre armenia frente a sus hijos: un funcionario de Pashinyan afirmó que “no tenía intención de matar”"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-aliyev-visiones-diferentes-proceso-paz-intellinews/",
+          "title": "Nikol Pashinyan e Ilham Aliyev mantienen visiones opuestas sobre el proceso de paz según un estudio de IntelliNews"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nasimi-musayev-mujer-shaki-acusado-armenia/",
+          "title": "Imputan nueve cargos penales al militar azerbaiyano Nasimi Musayev tras el ataque armado en la localidad de Shaki"
+        }
+      ]
+    },
+    {
+      "title": "Diplomacia armenia en Bruselas y Moscú",
+      "text": "El canciller Ararat Mirzoyan finalizó su visita a Bruselas, donde se reunió con Marta Kos y analizó con el enviado de la OTAN la ampliación de la cooperación bilateral. Gevorg Papoyan participará en consultas de la Unión Económica Euroasiática en Moscú.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265931",
+          "title": "Mirzoyan finalizó su visita a Bruselas"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265922",
+          "title": "Gevorg Papoyan participará en consultas de la Unión Económica Euroasiática en Moscú"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/bruselas-ampliacion-cooperacion-armenia-otan/",
+          "title": "El canciller de Armenia y el enviado de la OTAN analizan en Bruselas la ampliación de la cooperación bilateral"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265900",
+          "title": "Ararat Mirzoyan se reunió con Marta Kos en Bruselas"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación regional con Irán y países nórdicos",
+      "text": "Davit Khudatyan se reunió en Teherán con el vicepresidente de Irán y los ministros de Energía y Petróleo. En Ereván, el Grupo de Amistad Armenia-Finlandia y Noruega recibió a la embajadora de Finlandia.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265927",
+          "title": "Davit Khudatyan se reunió con el vicepresidente de Irán y ministros de Energía y Petróleo"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265930",
+          "title": "Grupo de Amistad Armenia-Finlandia y Noruega de la Asamblea Nacional se reunieron con la embajadora de Finlandia"
+        }
+      ]
+    },
+    {
+      "title": "Armenia apuesta por la inteligencia artificial y la ciberseguridad",
+      "text": "El país se posiciona como centro mundial de IA tras publicarse el programa oficial de Digitec 2026. Además, Armenia y Kazajistán acordaron reforzar la protección de la información clasificada.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-centro-mundial-ia-conferencia-digitec-2026/",
+          "title": "Armenia se posiciona como centro mundial de la inteligencia artificial tras publicarse el programa oficial de Digitec 2026"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-kazajistan-proteccion-informacion-clasificada/",
+          "title": "Armenia y Kazajistán reforzarán la protección de la información clasificada"
+        }
+      ]
+    },
+    {
+      "title": "Crecimiento demográfico y cambios en el comercio energético",
+      "text": "La población permanente de Armenia supera los 3,11 millones, con Ereván y Kotayk liderando el crecimiento. Turquía desplazó a Rusia como principal proveedor de productos petrolíferos en el primer semestre de 2026, mientras Azerbaiyán invierte 250 millones en la mina fronteriza de Sotk generando preocupaciones ambientales.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/poblacion-armenia-aumenta-erevan-kotayk/",
+          "title": "La población permanente de Armenia supera los 3,11 millones de habitantes con Ereván y Kotayk liderando el crecimiento"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/azerbaiyan-invierte-mina-sotk-medidas-armenia/",
+          "title": "Azerbaiyán invierte 250 millones de dólares en la mina fronteriza de Sotk y genera interrogantes ambientales en Armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/turquia-supera-rusia-productos-petroliferos-armenia/",
+          "title": "Turquía supera a Rusia como principal proveedor de productos petrolíferos de Armenia durante el primer semestre de 2026"
+        }
+      ]
+    },
+    {
+      "title": "Eventos culturales y nombramientos en la diáspora",
+      "text": "Culminaron los Días de la Cultura Armenia en Rusia. En la diáspora, el padre Martín Poladian fue designado administrador parroquial de Nuestra Señora de Narek.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/el-padre-martin-poladian-fue-designado-administrador-parroquial-de-nuestra-senora-de-narek/",
+          "title": "El padre Martín Poladian fue designado administrador parroquial de Nuestra Señora de Narek"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265890",
+          "title": "Culminaron los Días de la Cultura Armenia en Rusia"
+        }
+      ]
+    }
+  ]
+}
