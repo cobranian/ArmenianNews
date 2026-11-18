@@ -31,7 +31,7 @@ export const SITES = {
     // piratés le 14 nov. et ne sont plus à nous. Ne les remettez jamais.
     social: {
       facebook: 'https://www.facebook.com/61595719987355',
-      instagram: 'https://www.instagram.com/armenieinfo.ch/',
+      instagram: 'https://www.instagram.com/armenieinfo_ch_fr/',
       bluesky: 'https://bsky.app/profile/armenieinfo.ch',
       telegram: 'https://t.me/armenieinfo_ch',
       whatsapp: 'https://whatsapp.com/channel/0029Vb90wT859PwWxvIZvr2z',
