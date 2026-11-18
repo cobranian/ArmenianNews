@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Monte Aragats",
+      "title": "2300 metros",
+      "text": "Erigida sobre un espolón, la fortaleza de Amberd controlaba antiguamente los accesos a la llanura del Ararat.",
+      "big": true
+    },
+    {
+      "eyebrow": "Etimología",
+      "title": "El fuerte de las nubes",
+      "text": "En armenio, la unión de amp, la nube, y berd, la fortaleza, evoca las brumas que envuelven la ciudadela.",
+      "big": false
+    },
+    {
+      "eyebrow": "Orígenes feudales",
+      "title": "Siglo VII",
+      "text": "Construida por los Kamsarakan, la plaza fue bajo los Bagratuni un enclave estratégico que defendía Ani.",
+      "big": true
+    },
+    {
+      "eyebrow": "Vahramashen",
+      "title": "1026",
+      "text": "El príncipe Vahram Pahlavuni mandó edificar esta iglesia de toba volcánica y los baños del complejo señorial.",
+      "big": true
+    },
+    {
+      "eyebrow": "Ingeniería hidráulica",
+      "title": "Acueducto subterráneo",
+      "text": "Canalizaciones de terracota transportaban el agua desde depósitos situados a 4 o 5 kilómetros de distancia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Reconquista",
+      "title": "La epopeya zakárida",
+      "text": "En 1196, los hermanos Zakaré e Ivané Zakarian liberaron la fortaleza, preludio de la recuperación de Ani.",
+      "big": false
+    },
+    {
+      "eyebrow": "Conservación",
+      "title": "Europa Nostra",
+      "text": "En 2024, la organización incluyó a Amberd entre los siete sitios patrimoniales más amenazados de Europa.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Amberd",
+  "ytTitle": "Amberd, la inexpugnable fortaleza armenia suspendida sobre las nubes",
+  "ytLead": "A 2300 metros de altitud, en las laderas del monte Aragats, la fortaleza medieval de Amberd custodiaba los accesos a Ani. Su castillo, sus baños y su iglesia atestiguan la grandeza militar y arquitectónica de la antigua Armenia.",
+  "sourceHash": "216346b30967c5aa42c119fe80c4ccc9bb12c01e5d2a05fcc65afae0d9ad6832",
+  "model": "gemini-flash-latest"
+}

@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Berg Aragats",
+      "title": "2300 Meter",
+      "text": "Auf einem Felssporn thronend, kontrollierte die Festung Amberd einst die Zugangswege zur Ararat-Ebene.",
+      "big": true
+    },
+    {
+      "eyebrow": "Etymologie",
+      "title": "Die Wolkenburg",
+      "text": "Auf Armenisch bedeutet amp Wolke und berd Festung, Sinnbild für die Nebel um die Zitadelle.",
+      "big": false
+    },
+    {
+      "eyebrow": "Feudale Ursprünge",
+      "title": "7. Jahrhundert",
+      "text": "Unter den Kamsarakan erbaut, wurde die Festung unter den Bagratuni zum strategischen Riegel vor Ani.",
+      "big": true
+    },
+    {
+      "eyebrow": "Vahramashen",
+      "title": "1026",
+      "text": "Fürst Vahram Pahlawuni liess diese Tuffsteinkirche sowie die Bäder der Anlage errichten.",
+      "big": true
+    },
+    {
+      "eyebrow": "Wasserbaukunst",
+      "title": "Unterirdisches Aquädukt",
+      "text": "Ein Aquädukt aus Tonrohren leitete Wasser von vier bis fünf Kilometer entfernten Reservoirs herbei.",
+      "big": false
+    },
+    {
+      "eyebrow": "Rückeroberung",
+      "title": "Die Zakarian-Epoche",
+      "text": "1196 befreiten die Brüder Zakare und Ivane Zakarian die Festung, ein Auftakt zur Rückeroberung Anis.",
+      "big": false
+    },
+    {
+      "eyebrow": "Erhaltung",
+      "title": "Europa Nostra",
+      "text": "Europa Nostra stufte Amberd 2024 als eines der sieben am meisten gefährdeten Denkmäler Europas ein.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Amberd",
+  "ytTitle": "Amberd, Armeniens uneinnehmbare Festung über den Wolken",
+  "ytLead": "Auf 2300 Metern Höhe an den Hängen des Aragats verteidigte die Festung Amberd einst die Zugänge nach Ani. Burg, Bäder und Kirche zeugen von Armeniens historischer Grösse.",
+  "sourceHash": "216346b30967c5aa42c119fe80c4ccc9bb12c01e5d2a05fcc65afae0d9ad6832",
+  "model": "gemini-flash-latest"
+}
