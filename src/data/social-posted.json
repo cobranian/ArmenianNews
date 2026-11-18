@@ -1735,8 +1735,7 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:bataille-de-sardarapat": "2026-11-18T14:32:53.720Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1767,6 +1766,11 @@
         "reel:aram-khatchatourian": {
           "attempts": 3,
           "last": "2026-11-18T13:33:02.318Z",
+          "error": "instagram-reel/media : HTTP 400 User access is restricted"
+        },
+        "reel:bataille-de-sardarapat": {
+          "attempts": 1,
+          "last": "2026-11-18T14:33:14.291Z",
           "error": "instagram-reel/media : HTTP 400 User access is restricted"
         }
       }
