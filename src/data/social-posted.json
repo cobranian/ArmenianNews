@@ -1735,8 +1735,7 @@
         "annonce:whatsapp": "seed",
         "reel:kochari": "2026-11-15T00:44:03.709Z",
         "reel:khatchkar": "2026-11-15T20:32:39.408Z",
-        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z",
-        "reel:alphabet-armenien": "2026-11-18T06:33:05.538Z"
+        "culture:khorovats-et-la-tradition-du-barbecue-armenien": "2026-11-16T11:38:00.154Z"
       },
       "failed": {
         "reel:komitas": {
@@ -1745,8 +1744,8 @@
           "error": "instagram-reel/media : HTTP 400 User access is restricted"
         },
         "reel:alphabet-armenien": {
-          "attempts": 1,
-          "last": "2026-11-18T04:43:44.374Z",
+          "attempts": 2,
+          "last": "2026-11-18T06:33:21.463Z",
           "error": "instagram-reel/media : HTTP 400 User access is restricted"
         },
         "reel:khorovats-et-la-tradition-du-barbecue-armenien": {
