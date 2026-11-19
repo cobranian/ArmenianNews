@@ -23,12 +23,15 @@ const BASE = 'https://armenopole.com'
 // become real pages. Re-check it against the nav when ✗ armenopole/<slug>
 // lines persist: `curl -s https://armenopole.com/armenian/events | grep -o
 // 'armenian/events/[a-z-]*' | sort -u`.
+//
+// 19 Nov 2026: china had gone generic (302), while cyprus, denmark, egypt and
+// greece were back in the nav as real pages.
 const WORLD_COUNTRIES = [
   'argentina', 'armenia', 'australia', 'austria', 'belgium',
-  'brazil', 'canada', 'china', 'france', 'germany',
-  'italy', 'lebanon', 'netherlands', 'russia', 'spain',
-  'sweden', 'turkey', 'uae', 'unitedkingdom', 'uruguay',
-  'usa',
+  'brazil', 'canada', 'cyprus', 'denmark', 'egypt',
+  'france', 'germany', 'greece', 'italy', 'lebanon',
+  'netherlands', 'russia', 'spain', 'sweden', 'turkey',
+  'uae', 'unitedkingdom', 'uruguay', 'usa',
 ]
 
 function parseEventsPage(html) {
