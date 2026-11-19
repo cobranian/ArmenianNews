@@ -95,6 +95,21 @@ test('checkSocial : simulation, compte mort, clé sans droit, envoi abandonné',
   assert.match(rows.find((r) => r.key.startsWith('abandon')).action, /social-post\.mjs retry --channel instagram-hy --item culture:duduk/)
 })
 
+test('checkSocial : « attendent une clé valide » seulement si la clé est encore refusée', () => {
+  const auth = (channel) => ({ channel, id: 'reel:ani', attempts: 0, error: 'session invalidated', auth: true })
+  const rows = checkSocial({
+    live: true,
+    accounts: [{ channel: 'facebook-ch', problem: 'HTTP 401' }, { channel: 'facebook-org' }, { channel: 'instagram-de' }],
+    tokens: [{ secret: 'FB_PAGE_TOKEN_DE', channels: ['instagram-de'], expiresAt: null, problem: 'clé expirée' }],
+    failures: [auth('facebook-ch'), auth('facebook-org'), auth('instagram-de')],
+  })
+  const text = (k) => rows.find((r) => r.key === k).text
+  assert.match(text('auth-wait-facebook-ch'), /attendent une clé valide/)
+  assert.match(text('auth-wait-instagram-de'), /attendent une clé valide/)
+  assert.doesNotMatch(text('auth-wait-facebook-org'), /attendent une clé valide/)
+  assert.match(text('auth-wait-facebook-org'), /la clé marche/)
+})
+
 test('checkDeadlines : 30 jours avant, l’échéance devient une action ; passée, bloquante', () => {
   const list = [{ key: 'k', what: 'Jeton', date: '2026-11-20', how: 'renouveler' }]
   assert.equal(checkDeadlines(now, list)[0].level, 'faire')

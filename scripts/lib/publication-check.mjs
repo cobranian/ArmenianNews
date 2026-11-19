@@ -185,10 +185,23 @@ export function checkSocial({ live, accounts, tokens, failures, reels = [] }) {
   }
   // Une clé refusée ne brûle aucun essai (isAuthFailure) : une ligne par
   // compte, pas une par élément — la clé est déjà signalée plus haut.
+  // L'erreur de clé reste inscrite dans `failed` jusqu'au prochain envoi de
+  // l'élément : une fois la clé recollée, « attendent une clé valide » serait
+  // faux (19 nov. 2026 : 11 Reels par compte annoncés en attente, clé valide).
+  const keyBroken = new Set([
+    ...accounts.filter((a) => a.problem).map((a) => a.channel),
+    ...tokens.filter((t) => t.problem).flatMap((t) => t.channels),
+  ])
   const waiting = new Map()
   for (const f of failures) if (f.auth && !f.uncertain) waiting.set(f.channel, (waiting.get(f.channel) ?? 0) + 1)
   for (const [channel, n] of waiting)
-    out.push({ key: `auth-wait-${channel}`, level: 'info', text: `**${channel}** : ${n} élément(s) attendent une clé valide — ils repartiront seuls à leur rythme habituel` })
+    out.push({
+      key: `auth-wait-${channel}`,
+      level: 'info',
+      text: keyBroken.has(channel)
+        ? `**${channel}** : ${n} élément(s) attendent une clé valide — ils repartiront seuls à leur rythme habituel`
+        : `**${channel}** : ${n} élément(s) refusé(s) jadis par une clé invalide — la clé marche, ils repartent seuls à leur tour, sans essai perdu`,
+    })
   for (const f of failures) {
     if (f.auth && !f.uncertain) continue
     if (f.uncertain)
