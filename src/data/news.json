@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T04:23:31.376Z",
+  "generatedAt": "2026-11-19T05:23:33.183Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -80,16 +80,16 @@
       "sectionKey": "societe",
       "articles": [
         {
-          "title": "La population de l’Arménie dépasse les 3,1 millions d’habitants",
-          "url": "https://courrier.am/la-population-de-larmenie-depasse-les-31-millions-dhabitants",
-          "date": "2026-11-18T08:15:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/images.png.avif?itok=OCE5LcMh"
-        },
-        {
           "title": "Les premiers logements de la « Cité universitaire » prévus pour 2027",
           "url": "https://courrier.am/les-premiers-logements-de-la-cite-universitaire-prevus-pour-2027",
           "date": "2026-11-18T09:04:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/IMG_8962.jpeg.avif?itok=f4PMG66v"
+        },
+        {
+          "title": "La population de l’Arménie dépasse les 3,1 millions d’habitants",
+          "url": "https://courrier.am/la-population-de-larmenie-depasse-les-31-millions-dhabitants",
+          "date": "2026-11-18T08:15:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/images.png.avif?itok=OCE5LcMh"
         },
         {
           "title": "L’Arménie envisage de repousser à 32 ans la limite d’âge du report du service militaire pour certains étudiants",
@@ -199,10 +199,10 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/drapeau-europeen.jpg.avif?itok=h9KCjeNA"
         },
         {
-          "title": "Le premier hôtel Hyatt Regency d'Arménie ouvrira ses portes à Dilijan",
-          "url": "https://courrier.am/le-premier-hotel-hyatt-regency-d-armenie-ouvrira-ses-portes-a-dilijan",
-          "date": "2026-07-30T04:58:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/65qfqtr74n0g2dzbz8hww7we2k41rbsx.jpg.avif?itok=RhZrwxjf"
+          "title": "L'Arménie et l'Iran discutent de l'extension du programme « Gaz contre électricité »",
+          "url": "https://courrier.am/l-armenie-et-l-iran-discutent-de-l-extension-du-programme-gaz-contre-electricite-",
+          "date": "2026-07-30T04:46:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/imported/iran-armenia.jpg.avif?itok=ohtXDHtY"
         }
       ]
     },
@@ -421,16 +421,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/au-fil-du-rail.jpeg.avif?itok=FLH27BSf"
         },
         {
-          "title": "Arménie-Russie : les perspectives de coopération culturelle et éducative au cœur d’une rencontre ministérielle",
-          "url": "https://courrier.am/armenie-russie-les-perspectives-de-cooperation-culturelle-et-educative-au-coeur-dune-rencontre",
-          "date": "2026-11-12T06:46:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/4G3A2931.jpg.avif?itok=5VXUDmay"
-        },
-        {
           "title": "Arménie-Iran : de nouvelles perspectives de coopération culturelle",
           "url": "https://courrier.am/armenie-iran-de-nouvelles-perspectives-de-cooperation-culturelle",
           "date": "2026-11-12T07:03:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/d9d2c036-bc95-4411-9f7a-71f428fb07b6.jpg.avif?itok=2gEQSbpN"
+        },
+        {
+          "title": "Arménie-Russie : les perspectives de coopération culturelle et éducative au cœur d’une rencontre ministérielle",
+          "url": "https://courrier.am/armenie-russie-les-perspectives-de-cooperation-culturelle-et-educative-au-coeur-dune-rencontre",
+          "date": "2026-11-12T06:46:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/4G3A2931.jpg.avif?itok=5VXUDmay"
         },
         {
           "title": "Ilham Aliyev ne participera pas au sommet de l’Organisation des États turcophones",
@@ -1375,6 +1375,34 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ռուսաստանը բաց է աշխարհի համար. Պուտին",
+            "url": "https://hy.armradio.am/archives/771582",
+            "date": "2026-11-19T05:16:12.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_6116-768x512.webp",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Թրամփը գովեստի խոսքեր է հղել Սի Ծինփինին և հայտարարել նոր առևտրային համաձայնագրերի մասին",
+            "url": "https://hy.armradio.am/archives/771579",
+            "date": "2026-11-19T05:11:47.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_6114-768x512.jpeg",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Միջուկային զենքից մինչև արհեստական բանականություն․ ԱՄՆ-ի և Չինաստանի առաջնորդների հայտարարությունները",
+            "url": "https://hy.armradio.am/archives/771574",
+            "date": "2026-11-19T04:58:54.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_6109-768x512.webp",
+            "category": "Կարևոր"
+          },
+          {
+            "title": "Ղրիմի կամուրջը մեկ շաբաթվա ընթացքում երրորդ անգամ հարձակման է ենթարկվել",
+            "url": "https://hy.armradio.am/archives/771569",
+            "date": "2026-11-19T04:45:12.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_6107-300x222.jpeg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Վան Գոգի կտավը աճուրդում վաճառվել է 190,4 միլիոն դոլարով",
             "url": "https://hy.armradio.am/archives/771566",
             "date": "2026-11-19T04:13:17.000Z",
@@ -1415,34 +1443,6 @@
             "date": "2026-11-18T06:19:17.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/nvidia-1-rt-jef-261110_1794341041275_hpMain-768x512.avif",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Պուտինն ու Ծինփինը խոսել են «արդար աշխարհակարգի» եւ «միջազգային հարաբերությունների ժողովրդավարացման» մասին",
-            "url": "https://hy.armradio.am/archives/771373",
-            "date": "2026-11-18T05:23:30.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/1794977601975773_VgzQvHo6-300x191.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Apple-ի համակարգերի ներքին թարմացումը լայնածավալ խափանումների պատճառ է դարձել",
-            "url": "https://hy.armradio.am/archives/771370",
-            "date": "2026-11-18T05:06:54.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/apple_macos_full_disk_access-featured-300x169.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Լատվիայի նոր կոալիցիոն կառավարության վարչապետը եւ հինգ նախարար անկուսակցական են",
-            "url": "https://hy.armradio.am/archives/771355",
-            "date": "2026-11-18T04:02:33.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/1320x942-768x548.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ռուսաստանում ռազմական ինքնաթիռ է կnրծանվել․ 17 մարդ է զnհվել",
-            "url": "https://hy.armradio.am/archives/771296",
-            "date": "2026-11-17T17:05:45.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/2132199801_0_0_790_965_1440x900_80_0_1_628f913f220f4a71e8403f6cfb69ac3a.png-e1794935125367-300x198.webp",
-            "category": "Միջազգային"
           }
         ]
       },
@@ -3718,6 +3718,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Armenian serviceman found dead with gunshot wound, says Defense Ministry",
+            "url": "https://armenpress.am/en/article/1266071",
+            "date": "2026-11-19T04:40:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/19/4GJkfrITWHUCH3Y9leibVo4GBFI6sEX7grWXtKRZ.webp"
+          },
+          {
             "title": "Seda Ghukasyan appointed head of Central Bank’s public relations division",
             "url": "https://armenpress.am/en/article/1266068",
             "date": "2026-11-18T18:20:00.000Z",
@@ -3770,18 +3776,36 @@
             "url": "https://armenpress.am/en/article/1266054",
             "date": "2026-11-18T17:07:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/18/hSOI6oTc6c2tkm9dmimeZcyiM3c5J1CSFmWB2ZOQ.webp"
-          },
-          {
-            "title": "Armenia and Panama express readiness to deepen environmental cooperation",
-            "url": "https://armenpress.am/en/article/1266055",
-            "date": "2026-11-18T17:02:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/vSzfFfEkoQTgysEj3BBeQyes2O6z1lQF6F1c5jMa.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "European Stocks down - 18/11/26",
+            "url": "https://armenpress.am/en/article/1266076",
+            "date": "2026-11-19T05:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/9NXlOZ7dtGb6lmtAqiDSCzmI9fjEFrAiR7LZEoAn.webp"
+          },
+          {
+            "title": "US stocks - 18/11/26",
+            "url": "https://armenpress.am/en/article/1266075",
+            "date": "2026-11-19T05:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/22/37QQBPrsHCLsdHD24xNHFDQ0nqGMvQVUTNV0tPs1.webp"
+          },
+          {
+            "title": "NYMEX: Precious Metals Prices Down - 18/11/26",
+            "url": "https://armenpress.am/en/article/1266074",
+            "date": "2026-11-19T05:15:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/20/wJ4kTdOFuTPcmEmjTCqG4lop4loW7BURgRD2oi83.webp"
+          },
+          {
+            "title": "Oil Prices Down - 18/11/26",
+            "url": "https://armenpress.am/en/article/1266073",
+            "date": "2026-11-19T05:13:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
+          },
           {
             "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 18/11/26",
             "url": "https://armenpress.am/en/article/1266018",
@@ -3817,30 +3841,6 @@
             "url": "https://armenpress.am/en/article/1265976",
             "date": "2026-11-18T09:03:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/18/QBaiR7xvJOdDHCZUyTC1h772N2plV4OANZHXkEOZ.webp"
-          },
-          {
-            "title": "Narek Karapetyan calls for prioritizing production development and jobs in 2027 budget",
-            "url": "https://armenpress.am/en/article/1265974",
-            "date": "2026-11-18T08:31:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/J1W7PUU3R0gde1Ma7KkBGbKV12ijWDHRCjqUSfxH.webp"
-          },
-          {
-            "title": "Government plans to raise micro-entrepreneurship turnover threshold to 50 million drams",
-            "url": "https://armenpress.am/en/article/1265973",
-            "date": "2026-11-18T08:24:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/wfel1dy7sQVvGZQdIIn2QLusKaJ1RsMqnZejujPF.webp"
-          },
-          {
-            "title": "Armenia’s nominal GDP projected to reach 13.6 trillion drams in 2027, twice 2021 level",
-            "url": "https://armenpress.am/en/article/1265969",
-            "date": "2026-11-18T08:09:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/gYXr3s9LW3rOojyVoAGPzPYVJapTO1oKglVif0r5.webp"
-          },
-          {
-            "title": "Armenia plans to secure EBRD loan to modernize border crossing points",
-            "url": "https://armenpress.am/en/article/1265957",
-            "date": "2026-11-18T07:10:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/3nnpoAN4Ezjux6a99116EBF5kUaBRuL8NW7Wbu3h.webp"
           }
         ]
       },
@@ -4260,6 +4260,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "Եվրոպական ինդեքսները նվազել են - 18/11/26",
+            "url": "https://armenpress.am/hy/article/1266076",
+            "date": "2026-11-19T05:18:35.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/9NXlOZ7dtGb6lmtAqiDSCzmI9fjEFrAiR7LZEoAn.webp"
+          },
+          {
+            "title": "Ամերիկյան ինդեքսներ - 18/11/26",
+            "url": "https://armenpress.am/hy/article/1266075",
+            "date": "2026-11-19T05:16:50.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/22/37QQBPrsHCLsdHD24xNHFDQ0nqGMvQVUTNV0tPs1.webp"
+          },
+          {
+            "title": "NYMEX. Թանկարժեք մետաղների գները նվազել են - 18/11/26",
+            "url": "https://armenpress.am/hy/article/1266074",
+            "date": "2026-11-19T05:15:18.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/20/wJ4kTdOFuTPcmEmjTCqG4lop4loW7BURgRD2oi83.webp"
+          },
+          {
+            "title": "Նավթի գները նվազել են - 18/11/26",
+            "url": "https://armenpress.am/hy/article/1266073",
+            "date": "2026-11-19T05:13:53.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
+          },
+          {
             "title": "ՀՀ ԿԲ. թանկարժեք մետաղների գներ և փոխարժեքներ -18/11/26",
             "url": "https://armenpress.am/hy/article/1266018",
             "date": "2026-11-18T12:40:14.000Z",
@@ -4294,36 +4318,18 @@
             "url": "https://armenpress.am/hy/article/1265979",
             "date": "2026-11-18T09:14:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/18/GtkPsDTVJ4c9c0fZcPmZkymFWNEibQ5soJa2fBvv.webp"
-          },
-          {
-            "title": "Կապիտալ ծախսեր իրականացնելու կարողություններն էապես զարգացել են․ Վահե Հովհաննիսյան",
-            "url": "https://armenpress.am/hy/article/1265976",
-            "date": "2026-11-18T08:57:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/QBaiR7xvJOdDHCZUyTC1h772N2plV4OANZHXkEOZ.webp"
-          },
-          {
-            "title": "Նարեկ Կարապետյանն առաջարկում է բյուջեում առաջնահերթություն տալ արտադրության զարգացմանն ու աշխատատեղերի ստեղծմանը",
-            "url": "https://armenpress.am/hy/article/1265974",
-            "date": "2026-11-18T08:26:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/J1W7PUU3R0gde1Ma7KkBGbKV12ijWDHRCjqUSfxH.webp"
-          },
-          {
-            "title": "Կառավարությունը նախատեսում է բարձրացնել միկրոձեռնարկատիրության շեմը",
-            "url": "https://armenpress.am/hy/article/1265973",
-            "date": "2026-11-18T08:21:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/wfel1dy7sQVvGZQdIIn2QLusKaJ1RsMqnZejujPF.webp"
-          },
-          {
-            "title": "Հայաստանի անվանական ՀՆԱ-ն 2027 թվականին կկազմի 13.6 տրիլիոն դրամ. Վահե Հովհաննիսյան",
-            "url": "https://armenpress.am/hy/article/1265969",
-            "date": "2026-11-18T08:04:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/gYXr3s9LW3rOojyVoAGPzPYVJapTO1oKglVif0r5.webp"
           }
         ]
       },
       {
         "categoryKey": "world",
         "articles": [
+          {
+            "title": "«Նա իմ ընկերն է». Թրամփը՝ Պուտինի հետ հանդիպմանը",
+            "url": "https://armenpress.am/hy/article/1266077",
+            "date": "2026-11-19T05:22:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/19/qJS9m86tMTACuSG9gjTNZa3aoKFAw36VzU0qFTnV.webp"
+          },
           {
             "title": "Պերուն արտակարգ դրություն է հայտարարել վառելիքի պակասի սպառնալիքի պատճառով",
             "url": "https://armenpress.am/hy/article/1266070",
@@ -4377,12 +4383,6 @@
             "url": "https://armenpress.am/hy/article/1266023",
             "date": "2026-11-18T12:52:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/18/i6ec0mUxcOF4AUwOuDXyyTSsl5LzNocw0lh82Mhu.webp"
-          },
-          {
-            "title": "Իրանը հայտնել է Հորմուզի նեղուցի արևելքում ամերիկյան MQ-9 ԱԹՍ խոցելու մասին",
-            "url": "https://armenpress.am/hy/article/1266020",
-            "date": "2026-11-18T12:43:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/mKFIO5916ROfoC699ZjH6uYfL5cpe4qXGOQ3edFY.webp"
           }
         ]
       },
@@ -4737,6 +4737,30 @@
         "categoryKey": "economy",
         "articles": [
           {
+            "title": "Европейские индексы снизились - 18/11/26",
+            "url": "https://armenpress.am/ru/article/1266076",
+            "date": "2026-11-19T05:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/04/9NXlOZ7dtGb6lmtAqiDSCzmI9fjEFrAiR7LZEoAn.webp"
+          },
+          {
+            "title": "Американские индексы - 18/11/26",
+            "url": "https://armenpress.am/ru/article/1266075",
+            "date": "2026-11-19T05:16:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/09/22/37QQBPrsHCLsdHD24xNHFDQ0nqGMvQVUTNV0tPs1.webp"
+          },
+          {
+            "title": "Цены на драгоценные металлы снизились - 18/11/26",
+            "url": "https://armenpress.am/ru/article/1266074",
+            "date": "2026-11-19T05:15:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/10/20/wJ4kTdOFuTPcmEmjTCqG4lop4loW7BURgRD2oi83.webp"
+          },
+          {
+            "title": "Цены на нефть снизились - 18/11/26",
+            "url": "https://armenpress.am/ru/article/1266073",
+            "date": "2026-11-19T05:13:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/03/CRdSyFwmDasjzyGCly7RI5cEUqwLHT4Pc7vWvgtH.webp"
+          },
+          {
             "title": "Центробанк Армении: Цены на драгоценные металлы и курсы валют - 18/11/26",
             "url": "https://armenpress.am/ru/article/1266018",
             "date": "2026-11-18T12:40:00.000Z",
@@ -4771,30 +4795,6 @@
             "url": "https://armenpress.am/ru/article/1265974",
             "date": "2026-11-18T08:39:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/18/J1W7PUU3R0gde1Ma7KkBGbKV12ijWDHRCjqUSfxH.webp"
-          },
-          {
-            "title": "Правительство Армении планирует повысить порог для микропредпринимательства",
-            "url": "https://armenpress.am/ru/article/1265973",
-            "date": "2026-11-18T08:33:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/wfel1dy7sQVvGZQdIIn2QLusKaJ1RsMqnZejujPF.webp"
-          },
-          {
-            "title": "Номинальный ВВП Армении в 2027 году составит 13,6 трлн драмов: министр финансов Ваге Ованнисян",
-            "url": "https://armenpress.am/ru/article/1265969",
-            "date": "2026-11-18T08:05:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/18/gYXr3s9LW3rOojyVoAGPzPYVJapTO1oKglVif0r5.webp"
-          },
-          {
-            "title": "Европейские индексы - 17/11/26",
-            "url": "https://armenpress.am/ru/article/1265942",
-            "date": "2026-11-18T05:14:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/11/IEGhS7CI3vk533dn8U6BP5QFd4bdsCsEifwrtyhP.webp"
-          },
-          {
-            "title": "Американские индексы снизились - 17/11/26",
-            "url": "https://armenpress.am/ru/article/1265941",
-            "date": "2026-11-18T05:12:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/10/29/hRTIJ6ka7S06dKXtAgtDymPwxqxiLhmHxGJPRNPd.webp"
           }
         ]
       },
@@ -11184,6 +11184,24 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Թրամփը հայտարարել է Պուտինի հետ երկրորդ հանդիպման մասին",
+            "url": "https://news.am/hy/news/1075787",
+            "date": "2026-11-19T04:48:29.000Z",
+            "image": "https://news.am/storage/media/26/11/19/2JUBj7Bo5phUdTDv.webp"
+          },
+          {
+            "title": "Թրամփը հայտարարել է, որ մտադիր չէ Իրանի հետ հակամարտության կարգավորման հարցում օգնություն խնդրել ՌԴ-ից և Չինաստանից",
+            "url": "https://news.am/hy/news/1075755",
+            "date": "2026-11-19T04:33:00.000Z",
+            "image": "https://news.am/storage/media/26/11/19/zJXHq1Fc63uWxlRB.webp"
+          },
+          {
+            "title": "Պուտինն ու Թրամփը երկկողմ հանդիպում են անցկացրել ԱԽՏՀ գագաթնաժողովի շրջանակում",
+            "url": "https://news.am/hy/news/1075782",
+            "date": "2026-11-19T04:29:16.000Z",
+            "image": "https://news.am/storage/media/26/11/19/dLU6ZO8wYedZaBWe.webp"
+          },
+          {
             "title": "Դեմոկրատները Ջեֆրիսի թեկնածությունն են առաջադրել Ներկայացուցիչների պալատի նոր խոսնակի պաշտոնում",
             "url": "https://news.am/hy/news/1075754",
             "date": "2026-11-19T04:18:00.000Z",
@@ -11224,24 +11242,6 @@
             "url": "https://news.am/hy/news/1075758",
             "date": "2026-11-19T03:20:00.000Z",
             "image": "https://news.am/storage/media/26/11/19/uZi3M9ngmtbmCiit.webp"
-          },
-          {
-            "title": "Թրամփը խոստացել է ոչնչացնել Իրանը, եթե այն փորձի «կեղտոտ ռումբ» կիրառել",
-            "url": "https://news.am/hy/news/1075760",
-            "date": "2026-11-19T03:10:47.000Z",
-            "image": "https://news.am/storage/media/26/11/19/aTQwNt9mq7waG087.webp"
-          },
-          {
-            "title": "Շենչժենում այսօր կկայանա Ռուսաստանի, Չինաստանի և ԱՄՆ-ի ղեկավարների պատմական եռակողմ հանդիպումը",
-            "url": "https://news.am/hy/news/1075562",
-            "date": "2026-11-19T01:58:45.000Z",
-            "image": "https://news.am/storage/media/26/11/18/g6zfkZKZVKWJshPZ.webp"
-          },
-          {
-            "title": "Մենք հանրային քննարկման ենք դնելու կոնկրետ տեսակի ավտոմեքենաների սահմանափակումներ․ Ավինյան",
-            "url": "https://news.am/hy/news/1075751",
-            "date": "2026-11-18T20:56:05.000Z",
-            "image": "https://news.am/storage/media/26/11/19/m0NKUmmAHNsiDHc3.webp"
           }
         ]
       },
@@ -11382,6 +11382,12 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "Թրամփ․ ԱՄՆ-ը զգալի շահույթ է ստանում Եվրոպային զենքի մատակարարումներից",
+            "url": "https://news.am/hy/news/1075757",
+            "date": "2026-11-19T05:04:00.000Z",
+            "image": "https://news.am/storage/media/26/11/19/2pCNd0vG0AflaI9b.webp"
+          },
+          {
             "title": "«Ժողովուրդ». Պապոյանի խառը հայտարարությունները․ Ռուսաստան չի մեկնել՝ սահմանափակումները չեն վերացվի",
             "url": "https://news.am/hy/news/1075773",
             "date": "2026-11-19T03:43:00.000Z",
@@ -11434,12 +11440,6 @@
             "url": "https://news.am/hy/news/1075631",
             "date": "2026-11-18T12:28:00.000Z",
             "image": "https://news.am/storage/media/26/11/18/F6lhWL2h5vadm6sb.webp"
-          },
-          {
-            "title": "Գյումրիում մեկնարկել են ԵԱՏՄ երկրների մաքսային ծառայությունների միավորված կոլեգիայի նիստի փորձագիտական խմբի աշխատանքները",
-            "url": "https://news.am/hy/news/1075630",
-            "date": "2026-11-18T12:14:00.000Z",
-            "image": "https://news.am/storage/media/26/11/18/9jXSxgQI9jPD14ma.webp"
           }
         ]
       },
@@ -11447,6 +11447,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "ՆՈՅԵՄԲԵՐԻ 19-Ի ՁԵՐ ՌՈՄԱՆՏԻԿ ՀՈՐՈՍԿՈՊԸ",
+            "url": "https://style.news.am/arm/news/116979/",
+            "date": "2026-11-19T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116979.jpg"
+          },
           {
             "title": "Բեզոսի կինն է որոշել, թե ով է դառնալու նոր Ջեյմս Բոնդը. ինչպես է Լորեն Սանչեսը «առաջ մղել» Ռոբերտ Փաթինսոնի թեկնածությունը",
             "url": "https://style.news.am/arm/news/117193/",
@@ -11500,12 +11506,6 @@
             "url": "https://style.news.am/arm/news/117187/",
             "date": "2026-11-18T11:14:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117187.jpg"
-          },
-          {
-            "title": "«Ես հենարան էի փնտրում և վախենում էի միայնությունից». Ջենիֆեր Լոպեսն անկեղծացել է չորս ամուսնությունների ու սիրային հիասթափությունների մասին",
-            "url": "https://style.news.am/arm/news/117186/",
-            "date": "2026-11-18T10:22:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117186.jpg"
           }
         ]
       },
@@ -11646,6 +11646,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "ԻՀՊԿ-ն հայտնել է Հորմուզի նեղուցի շրջանում երեք լցանավի՝ ականների վրա պայթելու մասին",
+            "url": "https://news.am/hy/news/1075756",
+            "date": "2026-11-19T04:48:00.000Z",
+            "image": "https://news.am/storage/media/26/10/31/sJ6irl3LYno9qORP.webp"
+          },
+          {
             "title": "Ուկրաինան հարձակվել է Ղրիմի կամրջի վրա Թրամփ–Պուտին–Սի հանդիպմանը նախորդող գիշերը․ սա արդեն 3–րդ հարձակումն է մեկ շաբաթվա ընթացքում",
             "url": "https://news.am/hy/news/1075753",
             "date": "2026-11-19T02:42:12.000Z",
@@ -11698,12 +11704,6 @@
             "url": "https://news.am/hy/news/1075571",
             "date": "2026-11-18T09:24:00.000Z",
             "image": "https://news.am/storage/media/26/11/18/uou3PniIOFDvHrKm.webp"
-          },
-          {
-            "title": "Ծեծկռտուք՝ Օշականում. 36-ամյա տղամարդը գանգուղեղային վնասվածքով հոսպիտալացվել է․ կասկածյալները հայր ու նրա 2 որդիներն են",
-            "url": "https://news.am/hy/news/1075567",
-            "date": "2026-11-18T09:17:00.000Z",
-            "image": "https://news.am/storage/media/26/11/18/xCac9vCoSQkXXNqD.webp"
           }
         ]
       },
@@ -11846,6 +11846,30 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Встреча Путина и Трампа продлилась меньше часа: от публичных заявлений они отказались",
+            "url": "https://news.am/ru/news/1075790",
+            "date": "2026-11-19T05:19:13.000Z",
+            "image": "https://news.am/storage/media/26/11/19/WdTfxnLI9qh3JISl.webp"
+          },
+          {
+            "title": "Трамп заявил, что у него с Владимиром Путиным отличные отношения: «Кто это? Это мой друг»",
+            "url": "https://news.am/ru/news/1075788",
+            "date": "2026-11-19T04:57:33.000Z",
+            "image": "https://news.am/storage/media/26/11/19/OlJWWSun7OCG7ifq.webp"
+          },
+          {
+            "title": "Трамп анонсировал вторую встречу с Путиным",
+            "url": "https://news.am/ru/news/1075787",
+            "date": "2026-11-19T04:48:29.000Z",
+            "image": "https://news.am/storage/media/26/11/19/2JUBj7Bo5phUdTDv.webp"
+          },
+          {
+            "title": "Трамп заявил, что не намерен просить помощи РФ и Китая в урегулировании конфликта с Ираном",
+            "url": "https://news.am/ru/news/1075755",
+            "date": "2026-11-19T04:33:00.000Z",
+            "image": "https://news.am/storage/media/26/11/19/zJXHq1Fc63uWxlRB.webp"
+          },
+          {
             "title": "Путин и Трамп провели двустороннюю встречу на полях саммита АТЭС",
             "url": "https://news.am/ru/news/1075782",
             "date": "2026-11-19T04:29:16.000Z",
@@ -11880,30 +11904,6 @@
             "url": "https://news.am/ru/news/1075562",
             "date": "2026-11-19T01:58:45.000Z",
             "image": "https://news.am/storage/media/26/11/18/g6zfkZKZVKWJshPZ.webp"
-          },
-          {
-            "title": "Мэр Еревана: Мы вынесем на общественное обсуждение ограничения для определенных типов автомобилей",
-            "url": "https://news.am/ru/news/1075751",
-            "date": "2026-11-18T20:56:05.000Z",
-            "image": "https://news.am/storage/media/26/11/19/m0NKUmmAHNsiDHc3.webp"
-          },
-          {
-            "title": "Сагателян: Не предлагайте нам с провинциальной пронырливостью стать вашими соучастниками во всех уступках",
-            "url": "https://news.am/ru/news/1075750",
-            "date": "2026-11-18T20:46:03.000Z",
-            "image": "https://news.am/storage/media/26/11/19/EAVpT8QfWB9XvS2z.webp"
-          },
-          {
-            "title": "AFP: Власти Ливана предъявили обвинения пяти предполагаемым членам «Хезболлы»",
-            "url": "https://news.am/ru/news/1075736",
-            "date": "2026-11-18T20:40:00.000Z",
-            "image": "https://news.am/storage/media/26/09/02/FOaNULcFLFpIU58V.webp"
-          },
-          {
-            "title": "СМИ: Израиль рассматривает возможность удара по Ирану в ближайшие дни",
-            "url": "https://news.am/ru/news/1075748",
-            "date": "2026-11-18T20:27:06.000Z",
-            "image": "https://news.am/storage/media/26/09/11/nqGKYESPfjWACtKx.webp"
           }
         ]
       },
@@ -12044,6 +12044,12 @@
         "label": "Экономика",
         "articles": [
           {
+            "title": "Трамп: США получают значительную прибыль от поставок вооружений Европе",
+            "url": "https://news.am/ru/news/1075757",
+            "date": "2026-11-19T05:04:00.000Z",
+            "image": "https://news.am/storage/media/26/11/19/2pCNd0vG0AflaI9b.webp"
+          },
+          {
             "title": "Путин назвал партнерство с экономиками АТР стратегическим курсом России",
             "url": "https://news.am/ru/news/1075780",
             "date": "2026-11-19T04:24:27.000Z",
@@ -12096,12 +12102,6 @@
             "url": "https://news.am/ru/news/1075631",
             "date": "2026-11-18T12:28:00.000Z",
             "image": "https://news.am/storage/media/26/11/18/F6lhWL2h5vadm6sb.webp"
-          },
-          {
-            "title": "В Гюмри началась работа экспертной группы заседания Объединенной коллегии таможенных служб стран-членов ЕАЭС",
-            "url": "https://news.am/ru/news/1075630",
-            "date": "2026-11-18T12:14:00.000Z",
-            "image": "https://news.am/storage/media/26/11/18/9jXSxgQI9jPD14ma.webp"
           }
         ]
       },
@@ -12109,6 +12109,12 @@
         "categoryKey": "style",
         "label": "NEWS.am Style",
         "articles": [
+          {
+            "title": "ВАШ РОМАНТИЧЕСКИЙ ГОРОСКОП НА 19 НОЯБРЯ",
+            "url": "https://style.news.am/rus/news/116979/",
+            "date": "2026-11-19T05:00:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/116979.jpg"
+          },
           {
             "title": "Жена Безоса решила, кто станет новым Джеймсом Бондом: Как Лорен Санчес «протолкнула» Роберта Паттинсона",
             "url": "https://style.news.am/rus/news/117193/",
@@ -12162,12 +12168,6 @@
             "url": "https://style.news.am/rus/news/117186/",
             "date": "2026-11-18T10:22:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117186.jpg"
-          },
-          {
-            "title": "Джефф Безос лично выбрал нового Джеймса Бонда: миллиардер признался, что был активно вовлечен в кастинг Роберта Паттинсона",
-            "url": "https://style.news.am/rus/news/117185/",
-            "date": "2026-11-18T09:17:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117185.jpg"
           }
         ]
       },
@@ -12308,6 +12308,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "КСИР сообщил о подрыве на минах трех танкеров в районе Ормузского пролива",
+            "url": "https://news.am/ru/news/1075756",
+            "date": "2026-11-19T04:48:00.000Z",
+            "image": "https://news.am/storage/media/26/10/31/sJ6irl3LYno9qORP.webp"
+          },
+          {
             "title": "Украина атаковала Крымский мост в ночь перед встречей Трампа, Путина и Си: Это уже третья атака за неделю",
             "url": "https://news.am/ru/news/1075753",
             "date": "2026-11-19T02:42:12.000Z",
@@ -12360,12 +12366,6 @@
             "url": "https://news.am/ru/news/1075571",
             "date": "2026-11-18T09:24:00.000Z",
             "image": "https://news.am/storage/media/26/11/18/uou3PniIOFDvHrKm.webp"
-          },
-          {
-            "title": "Драка в Ошакане: 36-летний мужчина госпитализирован с черепно-мозговой травмой",
-            "url": "https://news.am/ru/news/1075567",
-            "date": "2026-11-18T09:17:00.000Z",
-            "image": "https://news.am/storage/media/26/11/18/xCac9vCoSQkXXNqD.webp"
           }
         ]
       },
