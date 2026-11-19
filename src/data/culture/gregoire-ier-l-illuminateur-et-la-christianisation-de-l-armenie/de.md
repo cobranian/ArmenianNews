@@ -1,0 +1,31 @@
+---
+title: "Gregor der Erleuchter und das christliche Erwachen Armeniens"
+description: "Als Gründergestalt der armenischen Kirche führte Gregor der Erleuchter das Land 301 zur historischen Taufe. Die Geschichte eines unerschütterlichen Glaubens."
+date: "2026-11-19"
+sourceHash: "cb20a99d7815b9d5"
+model: "gemini-flash-latest"
+---
+
+## Vom Land Kappadokien zur Prüfung von Chor Virap
+
+Im 3. Jahrhundert im parthischen Adelsgeschlecht des Anak geboren, entging der junge Gregor der Auslöschung seiner Familie nur knapp dank seiner Amme Sophia und eines Vornehmen namens Euthalios. Nach Caesarea in Kappadokien gebracht, erhielt er dort eine strenge und gründliche christliche Erziehung, namentlich bei Erzbischof Firmilian. Er vermählte sich mit Mariam – in manchen Fassungen Julitta genannt –, der Tochter eines Christen namens David. Aus dieser Verbindung gingen zwei Söhne hervor, Aristakes und Vertanes, die später ebenfalls berufen sein sollten, die armenische Kirche zu leiten.
+
+Beseelt von dem Willen, dem arsakidischen Herrscher Tiridates III. zu dienen, schloss sich Gregor dem armenischen Hof an. Die Treue des Dieners stiess jedoch frontal mit den religiösen Forderungen des Königtums zusammen. Als Tiridates in Eriza ein feierliches Fest zu Ehren der Göttin Anahit ausrichtete, weigerte sich Gregor öffentlich, an den heidnischen Opfern teilzunehmen. Der Geschichtsschreiber Agathangelos berichtet, dass der Bekenner zwölf verschiedene Qualen erduldete, die der mittelalterliche Theologe Gregor von Tatew später mit den Prüfungen der zwölf Apostel vergleichen sollte. Als der Monarch zudem von Gregors Abstammung erfuhr – verbunden mit dem Mord an seinem Vater Chosroes II. –, befahl er, ihn in die finstere Grube von Chor Virap nahe Artaxata zu werfen. Dieses unterirdische Gefängnis, das als von Skorpionen und Schlangen verseucht galt, wurde dreizehn bis vierzehn Jahre lang zur wundersamen Zuflucht des Heiligen, heimlich ernährt mit dem täglichen Brot einer frommen Witwe.
+
+## Die Heilung des Königs und die souveräne Entscheidung von 301
+
+Die Geschichte wendete sich nach dem Martyrium der heiligen Hripsime, ihrer Oberin Gajane und ihrer christlichen Gefährtinnen, die aus dem Westen geflohen waren, um den diokletianischen Verfolgungen zu entgehen. Tiridates versank unter der Last von Gewissensbissen und Qualen in einer tragischen Umnachtung, die die Überlieferung als tierische Verwandlung beschreibt: Der König irrte wie ein Wildschwein durch das Schilf. Weder seine Ärzte noch seine Wahrsager vermochten es, ihm den Verstand zurückzugeben.
+
+Da empfing Prinzessin Chosroviducht, die Schwester des Königs, fünfmal eine himmlische Vision, die ihr offenbarte, dass nur das Gebet des Eingeschlossenen von Chor Virap den Hof erlösen könne. An den Ort entsandt, liess Oda Amatuni Gregor aus der Tiefe heraufholen. Nachdem er die Leiber der heiligen Märtyrerinnen fromm bestattet und dem Volk ein vorbereitendes Fasten auferlegt hatte, heilte der Heilige den Herrscher auf wundersame Weise. Voller Dankbarkeit nahm Tiridates III. gemeinsam mit seinem Hof und seinem Heer den Glauben an Christus an. Armenien erhob das Christentum bereits im Jahr 301 offiziell zur Staatsreligion und kam damit allen Reichen der antiken Welt zuvor.
+
+## Die Vision von Etschmiadsin und die Gründung der Kirche
+
+Begleitet von einer Delegation armenischer Fürsten begab sich Gregor nach Caesarea in Kappadokien, wo er von Leontius zum Bischof geweiht wurde. Nach seiner Rückkehr in die Heimat taufte er König Tiridates, das Heer und das Volk in den Wassern des Euphrat bei Bagawan. Zudem brachte er die kostbaren Reliquien des heiligen Johannes des Täufers und des Märtyrers Athenogenes mit, um die ersten armenischen Heiligtümer zu weihen, insbesondere in Aschtischat und im Kloster Surp Karapet in Taron.
+
+In Wagharschapat, der königlichen Hauptstadt, wurde Gregor einer denkwürdigen Theophanie zuteil: Christus stieg, umgeben von Engeln, vom Himmel herab und schlug mit einem goldenen Hammer auf die Erde, um die Stätte zu bezeichnen, an der das oberste Heiligtum erstehen sollte. So entstand die Mutterkathedrale von Etschmiadsin, «Herabkunft des Einziggeborenen», die 303 am Tag der Entschlafung der Jungfrau Maria geweiht wurde. Gregor errichtete auch Votivkapellen an den Stätten des Martyriums der heiligen Hripsime, der heiligen Gajane und von Schoghakat. Als erster Katholikos aller Armenier strukturierte Gregor die kirchliche Hierarchie, indem er Bischöfe weihte, die oft aus der alten Priesterkaste stammten und deren Söhne er in Schulen unterrichten liess, die Unterricht auf Griechisch und Syrisch erteilten.
+
+## Der asketische Rückzug und das universelle Erbe
+
+Nachdem er das institutionelle und geistliche Fundament des Landes gelegt hatte, übertrug Gregor das Amt des Katholikos seinem jüngeren Sohn Aristakes, der Armenien 325 auf dem Konzil von Nicäa vertreten sollte. Gregor zog sich daraufhin in die kontemplative Einsamkeit in der Höhle von Mane auf dem Berg Sepuh im Kanton Daranali zurück. Dort gab er seine Seele um 326 oder 331 an Gott zurück; Hirten, die seine erhabene Identität nicht kannten, fanden und bestatteten ihn notdürftig.
+
+Seine heiligen Gebeine, die zunächst in Tordan beigesetzt wurden, erfuhren ein Schicksal, das weit über die Grenzen Armeniens hinausreichte. Während seine Heilige Rechte – das heilige Relikt des rechten Arms – bis heute das jahrhundertealte Symbol der pontifikalen Autorität am Heiligen Stuhl von Etschmiadsin und im Grossen Haus von Kilikien darstellt und alle sieben Jahre zur Weihe des heiligen Myrons dient, wurden andere Fragmente in ganz Europa verehrt. Im 8. Jahrhundert brachten Ordensfrauen, die vor dem Ikonoklasmus flohen, sein Haupt und seine Ketten nach Neapel und gründeten die Kirche San Gregorio Armeno. Im Jahr 1743 schrieb die italienische Stadt Nardò ihm ihre Bewahrung vor einem verheerenden Erdbeben zu. Im Jahr 2000 übergab Papst Johannes Paul II. dem Katholikos Garegin II. in Neapel aufbewahrte Reliquien, die heute in der Kathedrale des Heiligen Gregor des Erleuchters in Jerewan gefasst sind. Vom Mosaik in der Hagia Sophia bis zur ihm geweihten Kapelle auf dem Roten Platz in Moskau verkörpert das Andenken an den «Lusaworitsch» weiterhin den geistlichen Leuchtturm der armenischen Nation.

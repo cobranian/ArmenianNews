@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Cappadocia and Armenia",
+      "title": "Refusing the Idols",
+      "text": "At Eriza, Gregory refuses to sacrifice to Anahit and endures twelve tortures inflicted by King Tiridates III.",
+      "big": false
+    },
+    {
+      "eyebrow": "Khor Virap",
+      "title": "The Dark Dungeon",
+      "text": "Cast into a pit infested with scorpions and snakes, he miraculously survives thanks to a widow's bread.",
+      "big": false
+    },
+    {
+      "eyebrow": "Royal Healing",
+      "title": "The King Delivered",
+      "text": "Guided by a vision of Princess Khosrovidukht, Oda Amatuni frees Gregory, who cures the sovereign.",
+      "big": false
+    },
+    {
+      "eyebrow": "First Christian Nation",
+      "title": "301",
+      "text": "Grateful, Tiridates III embraces the faith of Christ and makes Armenia the first Christian state in the world.",
+      "big": true
+    },
+    {
+      "eyebrow": "Vagharshapat",
+      "title": "303",
+      "text": "Following a vision of Christ striking the earth with a golden hammer, Gregory consecrates Etchmiadzin Cathedral.",
+      "big": true
+    },
+    {
+      "eyebrow": "Holy See of Etchmiadzin",
+      "title": "The Holy Right Hand",
+      "text": "The holy relic of the confessor's right arm is used for the blessing of the holy chrism every seven years.",
+      "big": false
+    },
+    {
+      "eyebrow": "Spiritual Beacon",
+      "title": "The Lusavorich",
+      "text": "Having become the first Catholicos of All Armenians, Saint Gregory remains the nation's immortal guide.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Gregory the Illuminator",
+  "ytTitle": "Gregory the Illuminator, the Apostle Who Led Armenia to Baptism in 301",
+  "ytLead": "Cast into the pit of Khor Virap then freed to heal King Tiridates III, Saint Gregory is the founding father of the Armenian Church. In 301, his actions made Armenia the first nation to officially embrace Christianity.",
+  "sourceHash": "e378d8f75e8b03f6d58f1c8bf04316d5f1d6e8b531b199ab5cc13b9c55929111",
+  "model": "gemini-flash-latest"
+}

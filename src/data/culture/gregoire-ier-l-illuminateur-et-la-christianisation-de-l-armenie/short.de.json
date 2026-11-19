@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Kappadokien und Armenien",
+      "title": "Die Ablehnung der Götzen",
+      "text": "In Eriza weigert sich Gregor, Anahit zu opfern, und erleidet zwölf Qualen durch König Tiridates III.",
+      "big": false
+    },
+    {
+      "eyebrow": "Chor Virap",
+      "title": "Die finstere Grube",
+      "text": "In eine von Skorpionen und Schlangen verseuchte Grube geworfen, überlebt er dank dem Brot einer Witwe.",
+      "big": false
+    },
+    {
+      "eyebrow": "Heilung des Königs",
+      "title": "Der erlöste König",
+      "text": "Geleitet von einer Vision der Prinzessin Chosroviducht befreit Oda Amatuni Gregor, der den Herrscher heilt.",
+      "big": false
+    },
+    {
+      "eyebrow": "Erste christliche Nation",
+      "title": "301",
+      "text": "Aus Dankbarkeit nimmt Tiridates III. den Glauben an und erhebt Armenien zum ersten christlichen Staat.",
+      "big": true
+    },
+    {
+      "eyebrow": "Wagharschapat",
+      "title": "303",
+      "text": "Nach einer Vision von Christus mit einem goldenen Hammer weiht Gregor die Kathedrale von Etschmiadsin.",
+      "big": true
+    },
+    {
+      "eyebrow": "Heiliger Stuhl von Etschmiadsin",
+      "title": "Die Heilige Rechte",
+      "text": "Die heilige Reliquie seines rechten Arms dient alle sieben Jahre zur Weihe des heiligen Myrons.",
+      "big": false
+    },
+    {
+      "eyebrow": "Geistlicher Leuchtturm",
+      "title": "Der Lusaworitsch",
+      "text": "Als erster Katholikos aller Armenier bleibt der heilige Gregor der unvergängliche Wegweiser der Nation.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Gregor der Erleuchter",
+  "ytTitle": "Gregor der Erleuchter führte Armenien im Jahr 301 zur historischen Taufe",
+  "ytLead": "In die Grube von Chor Virap geworfen und zur Heilung von König Tiridates III. befreit, begründete der heilige Gregor die armenische Kirche. Bereits 301 erhob Armenien das Christentum offiziell zur Staatsreligion.",
+  "sourceHash": "e378d8f75e8b03f6d58f1c8bf04316d5f1d6e8b531b199ab5cc13b9c55929111",
+  "model": "gemini-flash-latest"
+}
