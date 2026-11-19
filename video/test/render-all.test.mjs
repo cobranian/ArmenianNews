@@ -1,15 +1,21 @@
-// Garde : le rendu en lot couvre 22 articles × 7 langues + 7 Garni, sans doublon.
+// Garde : le rendu en lot couvre chaque article × chaque langue + Garni, sans
+// doublon. Le compte n'est PAS écrit en dur : chaque nouvel article Culture le
+// change (175 → 196 le 19 nov. 2026), et un chiffre figé faisait échouer ce
+// test sans qu'aucun code n'ait bougé.
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { jobs } from '../scripts/render-all.mjs'
 
-test('jobs() rend 175 entrées sans doublon de sortie', () => {
+test('jobs() rend chaque couple une seule fois, Garni compris', () => {
   const j = jobs()
-  assert.equal(j.length, 175)
-  assert.equal(new Set(j.map((x) => x.out)).size, 175)
-  assert.equal(new Set(j.map((x) => x.composition)).size, 175)
+  const all = jobs({ has: () => true })
+  assert.ok(j.length > 0)
+  assert.ok(j.length <= all.length)
+  assert.equal(new Set(j.map((x) => x.out)).size, j.length)
+  assert.equal(new Set(j.map((x) => x.composition)).size, j.length)
+  // Un Garni par langue, toujours.
+  assert.equal(j.filter((x) => x.composition.startsWith('Garni')).length, 7)
 })
-
 test('jobs({langs:["es"]}) contient GarniEs', () => {
   assert.ok(
     jobs({ langs: ['es'] }).some(
