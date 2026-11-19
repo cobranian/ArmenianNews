@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-19",
+  "lang": "it",
+  "generatedAt": "2026-11-19T03:30:40.712Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata dalla visita del ministro degli Esteri tedesco in Armenia, dai colloqui sul processo di pace con l'Azerbaigian e dagli sviluppi nella cooperazione internazionale in ambito difesa, trasporti e società.",
+  "topics": [
+    {
+      "title": "Visita del ministro degli Esteri tedesco in Armenia",
+      "text": "Johann Wadephul ha visitato il Memoriale del genocidio armeno e ha incontrato il primo ministro Pashinyan e il ministro degli Esteri Mirzoyan. Le parti hanno definito il programma di cooperazione militare per il 2027.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/visite-dune-delegation-menee-par-le-ministre-allemand-des-affaires-etrangeres-au-memorial-du-genocide-des-armeniens/",
+          "title": "Visite d’une délégation menée par le ministre allemand des Affaires étrangères au Mémorial du génocide des Arméniens"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/entretien-entre-ararat-mirzoyan-et-le-ministre-allemand-des-affaires-etrangeres-johann-wadephul/",
+          "title": "Entretien entre Ararat Mirzoyan et le ministre allemand des Affaires étrangères Johann Wadephul"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266021",
+          "title": "Le Premier ministre a reçu une délégation conduite par le ministre allemand des Affaires étrangères"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266012",
+          "title": "Le ministre allemand des Affaires étrangères est arrivé en Arménie"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-et-lallemagne-definissent-leur-programme-de-cooperation-militaire-pour-2027",
+          "title": "L’Arménie et l’Allemagne définissent leur programme de coopération militaire pour 2027"
+        }
+      ]
+    },
+    {
+      "title": "Processo di pace e relazioni con l'Azerbaigian",
+      "text": "Pashinyan ha difeso la politica di cooperazione con Baku e Ankara, affermando che la rete ferroviaria armena dovrebbe connettersi a quella azerbaigiana. Da Baku si segnala un avanzamento accelerato dei lavori per estendere la linea ferroviaria fino al confine armeno.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-suite-a-la-declaration-de-jeyhun-bayramov-nous-pensons-que-notre-reseau-ferroviaire-devrait-etre-connecte-au-reseau-azerbaidjanais/",
+          "title": "Nikol Pachinian suite à la déclaration de Jeyhun Bayramov : Nous pensons que notre réseau ferroviaire devrait être connecté au réseau azerbaïdjanais"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266047",
+          "title": "Le Premier ministre a défendu la politique du Gouvernement visant à développer la coopération avec l’Azerbaïdjan et la Turquie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-travaux-dextension-de-la-ligne-ferroviaire-dazerbaidjan-jusqua-la-frontiere-de-larmenie-progressent-a-un-rythme-accelere-indique-bakou/",
+          "title": "Les travaux d’extension de la ligne ferroviaire d’Azerbaïdjan jusqu’à la frontière de l’Arménie progressent à un rythme accéléré indique Bakou"
+        }
+      ]
+    },
+    {
+      "title": "Nuova Costituzione e ratifica dell'accordo di pace",
+      "text": "Il primo ministro ha dichiarato che l'adozione di una nuova Costituzione garantirà la firma e la ratifica dell'accordo di pace. Ha inoltre spiegato i motivi per cui l'Armenia non ha aderito alla Dichiarazione di Dublino.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266069",
+          "title": "Pashinyan : l’adoption d’une nouvelle Constitution garantira la signature et la ratification de l’accord de paix"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266066",
+          "title": "Le Premier ministre a expliqué pourquoi l’Arménie n’a pas adhéré à la Déclaration de Dublin"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione in ambito difesa con India e Svezia",
+      "text": "Il ministro della Difesa Suren Papikyan ha discusso le prospettive di cooperazione con il ministro di Stato indiano alla Difesa e con l'omologo svedese Pål Jonson.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266056",
+          "title": "Suren Papikian a discuté avec Pål Jonson des perspectives de coopération entre l’Arménie et la Suède"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/suren-papikyan-le-ministre-armenien-de-la-defense-et-le-ministre-detat-indien-a-la-defense-discutent-de-la-cooperation/",
+          "title": "Suren Papikyan le ministre arménien de la Défense et le ministre d’État indien à la Défense discutent de la coopération"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266006",
+          "title": "L’Arménie et l’Inde discutent de leur coopération dans le domaine de la défense"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione ferroviaria Armenia-Russia",
+      "text": "È stato creato un gruppo di lavoro bilaterale per la gestione delle ferrovie armene, nell'ambito del rafforzamento dei legami economici e infrastrutturali con Mosca.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-et-la-russie-creent-un-groupe-de-travail-sur-la-gestion-des-chemins-de-fer-armeniens",
+          "title": "L’Arménie et la Russie créent un groupe de travail sur la gestion des chemins de fer arméniens"
+        }
+      ]
+    },
+    {
+      "title": "Questioni sociali e demografiche",
+      "text": "La popolazione armena ha superato i 3,1 milioni di abitanti. Il governo sta valutando di innalzare a 32 anni il limite d'età per il rinvio del servizio militare per certi studenti, mentre sono previsti i primi alloggi della 'Città universitaria' per il 2027.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-envisage-de-repousser-32-ans-la-limite-dage-du-report-du-service-militaire-pour-certains",
+          "title": "L’Arménie envisage de repousser à 32 ans la limite d’âge du report du service militaire pour certains étudiants"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/les-premiers-logements-de-la-cite-universitaire-prevus-pour-2027",
+          "title": "Les premiers logements de la « Cité universitaire » prévus pour 2027"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-population-de-larmenie-depasse-les-31-millions-dhabitants",
+          "title": "La population de l’Arménie dépasse les 3,1 millions d’habitants"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione locale e integrazione europea",
+      "text": "È stato firmato un memorandum per rafforzare i legami tra le collettività locali armene e georgiane attorno a una visione comune di integrazione europea. Armenia e Panama hanno espresso la volontà di approfondire la cooperazione nella protezione dell'ambiente.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266055",
+          "title": "L’Arménie et le Panama se sont déclarés prêts à approfondir leur coopération dans le domaine de la protection de l’environnement"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266043",
+          "title": "Renforcement des liens entre les collectivités arméniennes et géorgiennes autour d’une vision commune de l’intégration européenne : un mémorandum de coopération a été signé"
+        }
+      ]
+    }
+  ]
+}

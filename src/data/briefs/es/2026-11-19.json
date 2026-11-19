@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-19",
+  "lang": "es",
+  "generatedAt": "2026-11-19T03:30:40.712Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada está marcada por las declaraciones del primer ministro Nikol Pashinyan sobre el proceso de paz con Azerbaiyán, la delimitación fronteriza y una eventual nueva Constitución, junto con avances en cooperación económica y ferroviaria con Rusia e Irán.",
+  "topics": [
+    {
+      "title": "Pashinyan defiende el proceso de paz y la delimitación fronteriza con Azerbaiyán",
+      "text": "El primer ministro armenio aseguró que el país no cederá territorio y defendió el reglamento de delimitación fronteriza, considerando indispensable la firma de un tratado de paz con Ilham Aliyev. También justificó la coordinación técnica del proyecto ferroviario TRIPP con Bakú como paso necesario para la interconexión regional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-armenia-ceder-territorio-azerbaiyan/",
+          "title": "Pashinyan asegura que Armenia no cederá territorio a Azerbaiyán y defiende el reglamento de delimitación fronteriza"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-firmar-acuerdo-aliyev-paz-irreversible/",
+          "title": "Pashinyan sostiene que firmar un tratado con Ilham Aliyev resulta indispensable para lograr una paz irreversible"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-explica-acuerdos-tripp-azerbaiyan/",
+          "title": "Pashinyan justifica la coordinación técnica del proyecto TRIPP con Azerbaiyán por la interconexión ferroviaria"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266062",
+          "title": "Mirzoyan vinculó la resolución de la cuestión de los prisioneros armenios con la firma del acuerdo de paz y la cooperación con Azerbaiyán"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/parametros-tecnicos-tripp-acordarse-azerbaiyan/",
+          "title": "Azerbaiyán exige acordar los parámetros técnicos del proyecto TRIPP antes de su ejecución regional"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266028",
+          "title": "Pashinyan explicó que los aspectos técnicos de TRIPP deben coordinarse con Azerbaiyán para conectar las redes ferroviarias"
+        }
+      ]
+    },
+    {
+      "title": "Debate interno sobre una nueva Constitución orientada a la paz",
+      "text": "Pashinyan defendió la necesidad de una nueva Constitución para garantizar la paz, lo que generó críticas de la oposición que denuncia un brote autoritario y acusa al gobierno de ceder a exigencias azerbaiyanas. El oficialismo sostiene que el cambio constitucional es vital para la estabilidad regional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-actual-constitucion-armenia-conflicto/",
+          "title": "Pashinyan defiende una nueva Constitución para Armenia orientada a la paz frente a críticas de la oposición"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-reafirma-abandono-movimiento-karabaj/",
+          "title": "Pashinyan reafirma el abandono del movimiento de Karabaj y denuncia propiedades de exfuncionarios en Armenia"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/nuevo-brote-autoritario-de-nikol-pashinyan-amenazo-con-excluir-a-la-oposicion-del-parlamento-para-imponer-la-nueva-constitucion-exigida-por-azerbaiyan/",
+          "title": "Nuevo brote autoritario de Nikol Pashinyan: amenazó con excluir a la oposición del Parlamento para imponer la nueva Constitución exigida por Azerbaiyán"
+        }
+      ]
+    },
+    {
+      "title": "Avances en cooperación ferroviaria y energética con Rusia, Irán y la UE",
+      "text": "Se celebró en Ereván la primera reunión sobre la gestión concesionaria del Ferrocarril del Cáucaso Meridional entre Armenia y Rusia, proyecto clave para la conectividad regional. Paralelamente, Irán manifestó su disposición a construir una refinería de petróleo y ampliar el comercio de gas con Armenia, mientras la UE analiza apoyar la diversificación del suministro energético invernal.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/reunion-armenia-rusia-gestion-ferrocarril-caucaso/",
+          "title": "Armenia y Rusia celebran en Ereván la primera reunión sobre la gestión concesionaria del Ferrocarril del Cáucaso Meridional"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/iran-participar-construccion-refineria-petroleo-armenia/",
+          "title": "Irán expresa su disposición a construir una refinería de petróleo y ampliar el comercio de gas con Armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/union-europea-armenia-diversificacion-suministro-energetico/",
+          "title": "La Unión Europea y Armenia analizan el respaldo comunitario para diversificar el suministro energético invernal"
+        }
+      ]
+    },
+    {
+      "title": "Proyecciones económicas: exportaciones, migración laboral y presupuesto de defensa",
+      "text": "Armenia proyecta incrementar sus exportaciones hacia la UE, la UEE y Oriente Medio para 2027, y se ubica sexta en migración laboral hacia Rusia en 2026. El Ministerio de Finanzas indicó que el presupuesto de defensa se elabora analizando los gastos militares de países vecinos, y se propuso priorizar la producción y la creación de empleo.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-proyecta-incrementar-exportaciones-2027/",
+          "title": "Armenia proyecta incrementar exportaciones hacia la Unión Europea, la UEE y Oriente Medio en 2027"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-paises-ciudadanos-migracion-laboral-rusia/",
+          "title": "Armenia ocupa el sexto lugar entre los países con mayor migración laboral hacia Rusia en 2026"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265999",
+          "title": "Ministro de Finanzas: “Armenia analiza presupuestos militares de los países vecinos al elaborar su presupuesto de defensa”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1265974",
+          "title": "Narek Karapetyan propone priorizar el desarrollo de la producción y creación de empleos en el presupuesto"
+        }
+      ]
+    },
+    {
+      "title": "Hallazgo de un militar muerto y cooperación en defensa con India y Alemania",
+      "text": "El Ministerio de Defensa informó el hallazgo del cuerpo de un soldado armenio con una herida de bala, sin precisar las circunstancias. En el plano diplomático, Armenia discutió cooperación en defensa con India y recibió al ministro de Exteriores de Alemania, en medio de tensiones regionales.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266071",
+          "title": "Ministerio de Defensa informó sobre el hallazgo del cuerpo de un militar armenio con una herida de bala"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266021",
+          "title": "Nikol Pashinyan recibió a la delegación encabezada por el ministro de Asuntos Exteriores de Alemania"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266006",
+          "title": "Suren Papikyan y Sanjay Seth discutieron sobre la cooperación entre Armenia e India en defensa"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266012",
+          "title": "Ministro de Asuntos Exteriores de Alemania llegó a Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Declaraciones incendiarias desde Bakú y revelaciones sobre financiamiento azerbaiyano",
+      "text": "Un diputado azerbaiyano llamó a \"golpear bien a los armenios\", afirmando que solo responden \"bajo golpes y miedo\", lo que eleva la retórica de odio. Una investigación de Le Monde reveló transferencias de la trama de lavado de dinero de Azerbaiyán a empresas vinculadas a Donald Trump.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/una-investigacion-de-le-monde-revelo-transferencias-de-la-trama-de-lavado-de-dinero-de-azerbaiyan-a-empresas-de-donald-trump/",
+          "title": "Una investigación de Le Monde reveló transferencias de la trama de lavado de dinero de Azerbaiyán a empresas de Donald Trump"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/el-diputado-de-azerbaiyan-aziz-alakbarli-llamo-a-golpear-bien-a-los-armenios-y-afirmo-que-solo-responden-bajo-golpes-y-miedo/",
+          "title": "El diputado de Azerbaiyán Aziz Alakbarli llamó a “golpear bien a los armenios” y afirmó que solo responden “bajo golpes y miedo”"
+        }
+      ]
+    },
+    {
+      "title": "Actos conmemorativos y culturales en la diáspora y Argentina",
+      "text": "La comunidad armenia en Venecia celebró los 350 años del natalicio de Mkhitar Sebastatsi, fundador de la congregación mequitarista en San Lázaro. En Argentina, se destacó el reconocimiento del Genocidio Armenio por ley como una decisión de valentía política, y en Mar del Plata se realizó un torneo en la Casa Armenia.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/san-lazaro-armenios-venecia-350-anos-mkhitar-sebastatsi/",
+          "title": "San Lázaro de los Armenios en Venecia celebra 350 años del natalicio de su fundador Mkhitar Sebastatsi"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/hagop-tabakian-sobre-el-reconocimiento-del-genocidio-armenio-por-ley-en-argentina-fue-una-decision-de-enorme-valentia-politica-adoptada-frente-a-presiones-externas/",
+          "title": "Hagop Tabakian sobre el reconocimiento del Genocidio Armenio por ley en Argentina: “Fue una decisión de enorme valentía política adoptada frente a presiones externas”"
+        },
+        {
+          "source": "norsevan",
+          "url": "https://www.norsevan.com/post/mar-del-plata-otro-exitoso-torneo-en-la-casa-armenia",
+          "title": "Mar del Plata: otro exitoso torneo en la Casa Armenia"
+        }
+      ]
+    }
+  ]
+}

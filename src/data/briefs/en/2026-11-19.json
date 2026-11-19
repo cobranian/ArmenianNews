@@ -1,0 +1,278 @@
+{
+  "date": "2026-11-19",
+  "lang": "en",
+  "generatedAt": "2026-11-19T03:30:40.712Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian Prime Minister Nikol Pashinyan's statements on a new constitution, potential resignation, and peace talks with Azerbaijan dominate coverage across multiple outlets. Economic developments, including the 2027 budget draft and trade disputes with Russia, also feature prominently.",
+  "topics": [
+    {
+      "title": "Pashinyan links new constitution to peace deal and threatens snap elections",
+      "text": "Prime Minister Nikol Pashinyan stated that signing an agreement with Azerbaijan is necessary to make peace irreversible and outlined two paths for adopting a new constitution. He claimed he would resign regardless of a referendum outcome and threatened snap elections to push through the Azerbaijan-demanded constitutional changes. Pashinyan also reaffirmed his position on abandoning the Karabakh movement and said there are guarantees the peace agreement will be signed and ratified after the new constitution is adopted.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/pashinyan-threatens-snap-elections-offers-resignation-in-bid-to-push-through-azerbaijan-demanded-constitution/",
+          "title": "Pashinyan Threatens Snap Elections, Offers Resignation in Bid to Push Through Azerbaijan-Demanded Constitution"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/pashinyan-pledges-to-resign-regardless-of-constitutional-referendum-outcome/",
+          "title": "Pashinyan Claims He Will Resign Regardless of Constitutional Referendum Outcome"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266069",
+          "title": "Pashinyan says there are guarantees peace agreement will be signed and ratified after adoption of new constitution"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266064",
+          "title": "Pashinyan outlines two ways to advance plans for a new constitution"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266058",
+          "title": "Pashinyan says signing agreement with Aliyev is necessary to make peace irreversible"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266054",
+          "title": "Pashinyan reaffirms his position on abandoning the Karabakh movement"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/18/pashinyan-says-armenias-new-constitution-aims-to-close-chapter-of-conflicts-and-make-peace-irreversible/",
+          "title": "Pashinyan says Armenia’s new Constitution aims to close chapter of conflicts and make peace irreversible"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075602",
+          "title": "RFE/RL: Draft of Armenia’s new constitution to be publicized in coming days – but premier to address people first"
+        }
+      ]
+    },
+    {
+      "title": "Armenia considers legal action against Russian trade restrictions",
+      "text": "Armenian officials announced the country may appeal Russian trade curbs at the Eurasian Economic Union's court. The Economy Minister stated Armenia plans to sue Russia over the restrictions and confirmed he will not attend EAEU consultations in Moscow. Officials emphasized maintaining Armenia-Russia relations at the highest level despite the dispute.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/yerevan-may-appeal-russian-trade-curbs-at-eurasian-blocs-court/",
+          "title": "Yerevan May Appeal Russian Trade Curbs at Eurasian Bloc’s Court"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015492",
+          "title": "Armenia considers court action over Russian trade restrictions"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015476",
+          "title": "Armenia may sue Russia over trade restrictions, minister says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075607",
+          "title": "We shall maintain Armenia-Russia relations at highest level, Armenian economy minister says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075604",
+          "title": "Armenia economy minister to not attend Eurasian Economic Union consultations in Moscow"
+        }
+      ]
+    },
+    {
+      "title": "Government presents 2027 state budget draft with increased defense spending",
+      "text": "Armenia's parliament began discussing the 2027 state budget draft, which projects nominal GDP to reach 13.6 trillion drams, double the 2021 level. Defense spending is projected to rise by 53 billion drams in 2027. The Finance Minister highlighted reforms boosting capacity for capital expenditures and called for scrutiny of the widening gap between bank deposit and loan interest rates.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266018",
+          "title": "Central Bank of Armenia: exchange rates and prices of precious metals - 18/11/26"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075626",
+          "title": "US dollar exchange rate slightly down, euro continues falling in Armenia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265996",
+          "title": "Finance minister says widening gap between bank deposit and loan interest rates needs scrutiny"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265993",
+          "title": "Armenia’s defense spending projected to rise by 53 billion drams in 2027"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075583",
+          "title": "One needs to have quality flowers to export to EU, Armenia economy minister says"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265979",
+          "title": "Armenia aims to increase exports of homegrown products to all markets"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265976",
+          "title": "Finance minister says reforms have boosted capacity to implement capital expenditures"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265974",
+          "title": "Narek Karapetyan calls for prioritizing production development and jobs in 2027 budget"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265973",
+          "title": "Government plans to raise micro-entrepreneurship turnover threshold to 50 million drams"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265969",
+          "title": "Armenia’s nominal GDP projected to reach 13.6 trillion drams in 2027, twice 2021 level"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075531",
+          "title": "Armenia 2027 state budget draft main indicators announced"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075522",
+          "title": "Armenia parliament discussing 2027 state budget draft"
+        }
+      ]
+    },
+    {
+      "title": "Armenia deepens defense and economic ties with European partners",
+      "text": "Armenia and Germany discussed measures for economic diversification during the German Foreign Minister's visit to Yerevan. Defense cooperation was discussed with Sweden and India at the Brussels Security Conference. The Economy Minister denied intentions to replace the EAEU with the EU, emphasizing the need for quality products to export to European markets.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266056",
+          "title": "Suren Papikyan and Pål Jonson discuss prospects for Armenian–Swedish defence cooperation"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/18/armenia-india-discuss-defense-cooperation-at-brussels-security-conference/",
+          "title": "Armenia, India discuss defense cooperation at Brussels Security Conference"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075644",
+          "title": "Armenia premier: We are entering practical phase of TRIPP project implementation"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075638",
+          "title": "PM Pashinyan, Germany FM talk about measures being taken towards Armenia's economic diversification (PHOTOS)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075632",
+          "title": "Armenia, Germany FMs meet in Yerevan"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/18/armenia-japan-discuss-expanding-bilateral-ties-as-japanese-ambassador-completes-mission/",
+          "title": "Armenia, Japan discuss expanding bilateral ties as Japanese Ambassador completes mission"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075590",
+          "title": "Outgoing Japan ambassador meets with PM Pashinyan, welcomes Armenia’s anti-corruption policy"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075586",
+          "title": "Armenia economy minister: Who said we shall produce good products for Europeans, bring whatever remains to Armenian market?"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1075558",
+          "title": "Armenia economy minister: And who said that we want to replace EAEU with EU?"
+        }
+      ]
+    },
+    {
+      "title": "Diaspora institutions honor benefactors and support education initiatives",
+      "text": "The Armenian Relief Society (ARS) unveiled a commemorative plaque honoring benefactor Hrayr Soghomonian. Camp Haiastan received an unprecedented $1.5 million gift from the Manguikian family. Glendale opened enrollment for the nation's first Western Armenian public school immersion program, while community leaders highlighted collective responsibility and the role of Armenian schools in national survival.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/glendale-opens-enrollment-for-nations-first-western-armenian-public-school-immersion-program/",
+          "title": "Glendale Opens Enrollment for Nation’s First Western Armenian Public School Immersion Program"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/ars-unveils-commemorative-plaque-in-honor-of-hrayr-soghomonian/",
+          "title": "ARS Unveils Plaque In Honor of Benefactor Hrayr Soghomonian"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/camp-haiastan-receives-unprecedented-1-5-million-gift-from-manguikian-family/",
+          "title": "Camp Haiastan Receives Unprecedented $1.5 Million Gift from Manguikian Family"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/11/18/the-armenian-school-and-the-survival-of-a-nation/",
+          "title": "The Armenian school and the survival of a nation"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/11/18/ars-unveils-commemorative-plaque-in-honor-of-hrayr-soghomonian/",
+          "title": "ARS unveils commemorative plaque in honor of Hrayr Soghomonian"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/11/18/george-aghjayan-highlights-collective-responsibility-at-detroit-arf-anniversary/",
+          "title": "George Aghjayan highlights collective responsibility at Detroit ARF anniversary"
+        }
+      ]
+    },
+    {
+      "title": "ANCA endorsement logic explained in opinion pieces",
+      "text": "Multiple outlets published opinion pieces explaining the rationale behind Armenian National Committee of America (ANCA) candidate endorsements. The articles detail the logic and criteria used by the organization in selecting candidates to support.",
+      "rubric": "opinion",
+      "sources": [
+        {
+          "source": "oragark",
+          "url": "https://www.oragark.com/why-this-candidate-the-logic-behind-anca-endorsements/",
+          "title": "Why This Candidate: The Logic Behind ANCA Endorsements"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/why-this-candidate-the-logic-behind-anca-endorsements/",
+          "title": "Why This Candidate?: The Logic Behind ANCA Endorsements"
+        }
+      ]
+    },
+    {
+      "title": "Armenian students win medals at International Astronomy Olympiad",
+      "text": "Armenian students secured six medals at the International Astronomy Olympiad. In chess, Haik Martirosyan defeated Richard Rapport in the Total Chess knockout stage.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/18/armenian-students-win-six-medals-at-international-astronomy-olympiad/",
+          "title": "Armenian students win six medals at International Astronomy Olympiad"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1265944",
+          "title": "Haik Martirosyan defeats Richard Rapport in Total Chess knockout stage"
+        }
+      ]
+    }
+  ]
+}

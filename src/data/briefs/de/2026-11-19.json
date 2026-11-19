@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-19",
+  "lang": "de",
+  "generatedAt": "2026-11-19T03:30:40.712Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über den Besuch des deutschen Aussenministers Johann Wadephul in Jerewan sowie über neue Impulse in den Beziehungen zu Aserbaidschan und der Türkei. Auch innenpolitische Themen wie eine mögliche Verfassungsreform und demografische Entwicklungen stehen im Fokus.",
+  "topics": [
+    {
+      "title": "Deutscher Aussenminister in Armenien",
+      "text": "Johann Wadephul traf in Jerewan ein und führte Gespräche mit Premierminister Nikol Paschinjan und Aussenminister Ararat Mirsojan. Eine Delegation besuchte zudem das Völkermord-Mahnmal. Beide Seiten vereinbarten ein militärisches Kooperationsprogramm bis 2027.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/visite-dune-delegation-menee-par-le-ministre-allemand-des-affaires-etrangeres-au-memorial-du-genocide-des-armeniens/",
+          "title": "Visite d’une délégation menée par le ministre allemand des Affaires étrangères au Mémorial du génocide des Arméniens"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/entretien-entre-ararat-mirzoyan-et-le-ministre-allemand-des-affaires-etrangeres-johann-wadephul/",
+          "title": "Entretien entre Ararat Mirzoyan et le ministre allemand des Affaires étrangères Johann Wadephul"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266021",
+          "title": "Le Premier ministre a reçu une délégation conduite par le ministre allemand des Affaires étrangères"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266012",
+          "title": "Le ministre allemand des Affaires étrangères est arrivé en Arménie"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-et-lallemagne-definissent-leur-programme-de-cooperation-militaire-pour-2027",
+          "title": "L’Arménie et l’Allemagne définissent leur programme de coopération militaire pour 2027"
+        }
+      ]
+    },
+    {
+      "title": "Neue Verfassung und Friedensabkommen",
+      "text": "Premierminister Paschinjan erklärte, die Annahme einer neuen Verfassung garantiere die Unterzeichnung und Ratifizierung eines Friedensvertrags mit Aserbaidschan. Er verteidigte die Kooperationspolitik der Regierung gegenüber Baku und Ankara.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266069",
+          "title": "Pashinyan : l’adoption d’une nouvelle Constitution garantira la signature et la ratification de l’accord de paix"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266047",
+          "title": "Le Premier ministre a défendu la politique du Gouvernement visant à développer la coopération avec l’Azerbaïdjan et la Turquie"
+        }
+      ]
+    },
+    {
+      "title": "Eisenbahnverbindung nach Aserbaidschan",
+      "text": "Paschinjan bekräftigte, Armeniens Schienennetz solle an das aserbaidschanische angeschlossen werden. Laut Baku schreiten die Erweiterungsarbeiten an der Strecke bis zur armenischen Grenze beschleunigt voran.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-suite-a-la-declaration-de-jeyhun-bayramov-nous-pensons-que-notre-reseau-ferroviaire-devrait-etre-connecte-au-reseau-azerbaidjanais/",
+          "title": "Nikol Pachinian suite à la déclaration de Jeyhun Bayramov : Nous pensons que notre réseau ferroviaire devrait être connecté au réseau azerbaïdjanais"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-travaux-dextension-de-la-ligne-ferroviaire-dazerbaidjan-jusqua-la-frontiere-de-larmenie-progressent-a-un-rythme-accelere-indique-bakou/",
+          "title": "Les travaux d’extension de la ligne ferroviaire d’Azerbaïdjan jusqu’à la frontière de l’Arménie progressent à un rythme accéléré indique Bakou"
+        }
+      ]
+    },
+    {
+      "title": "Verteidigungskooperation mit Indien",
+      "text": "Verteidigungsminister Suren Papikjan traf sich mit dem indischen Staatsminister für Verteidigung, um die bilaterale Zusammenarbeit im Rüstungsbereich zu vertiefen. Auch Armenpress berichtet über die Gespräche.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/suren-papikyan-le-ministre-armenien-de-la-defense-et-le-ministre-detat-indien-a-la-defense-discutent-de-la-cooperation/",
+          "title": "Suren Papikyan le ministre arménien de la Défense et le ministre d’État indien à la Défense discutent de la coopération"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266006",
+          "title": "L’Arménie et l’Inde discutent de leur coopération dans le domaine de la défense"
+        }
+      ]
+    },
+    {
+      "title": "Bevölkerung wächst auf über 3,1 Millionen",
+      "text": "Nach Angaben des Statistikamts hat die Einwohnerzahl Armeniens die Marke von 3,1 Millionen überschritten. Die Daten wurden von Courrier d'Erevan veröffentlicht.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-population-de-larmenie-depasse-les-31-millions-dhabitants",
+          "title": "La population de l’Arménie dépasse les 3,1 millions d’habitants"
+        }
+      ]
+    },
+    {
+      "title": "Wehrdienstaufschub für Studenten geplant",
+      "text": "Die Regierung erwägt, die Altersgrenze für den Aufschub der Wehrpflicht bei bestimmten Studentengruppen auf 32 Jahre anzuheben. Der entsprechende Gesetzentwurf wird derzeit geprüft.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-envisage-de-repousser-32-ans-la-limite-dage-du-report-du-service-militaire-pour-certains",
+          "title": "L’Arménie envisage de repousser à 32 ans la limite d’âge du report du service militaire pour certains étudiants"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Mannschaft siegt bei Astronomie-Olympiade",
+      "text": "Bei den Internationalen Astronomie-Olympiaden in Sirius (Russland) gewann das armenische Team sechs Medaillen und belegte den ersten Platz im Gesamtranking.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lequipe-darmenie-a-remporte-6-medailles-et-termine-en-tete-des-olympiades-internationales-dastronomie-a-sirius-russie/",
+          "title": "L’équipe d’Arménie a remporté 6 médailles et termine en tête des Olympiades internationales d’astronomie à Sirius (Russie)"
+        }
+      ]
+    }
+  ]
+}
