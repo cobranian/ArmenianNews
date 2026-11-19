@@ -188,7 +188,12 @@ résidentielle et 403 à un runner.
     vidéo), et l'id est **propre à son édition** — un id anglais sous `/hy/`
     fait 404. Images hotlinkées en direct (pas de protection anti-hotlink,
     contrairement à ArmRadio).
-- `newsam.mjs` — NEWS.am, le principal groupe de presse privé d'Erevan, servi
+- `newsam.mjs` — NEWS.am. **Depuis le 19 novembre 2026, `med.news.am` est
+  sur l'app Inertia de news.am** : `/eng/news/` répond 301 vers `/en/news`,
+  flux dans `props.feed.data.hits`, dates en secondes, ids partagés. Le
+  parseur HTML de med (date recomposée depuis `<time>` et le chemin d'image)
+  a été retiré ; ce qui suit sur med décrit l'ancien site, les pièges de
+  sport/style restent valables. NEWS.am, le principal groupe de presse privé d'Erevan, servi
   sous **en/hy/ru** (pas d'édition française). C'est la source la plus
   hétérogène du dépôt, parce que ce ne sont pas un site mais **quatre** :
   `news.am` (la rédaction moderne, 7 rubriques) et **trois verticales
@@ -253,7 +258,7 @@ résidentielle et 403 à un runner.
     hotlinkées en direct sur les quatre hôtes (aucune protection anti-hotlink,
     vérifié avec un `Referer` étranger) — donc ni proxy, ni wsrv.
 - `armenopole.mjs` — Agenda (Suisse + monde). Scrape **les vraies pages pays
-  d'armenopole** (21, hors Suisse gérée à part ; la liste suit la navigation du site, qui bouge — voir le commentaire de `WORLD_COUNTRIES`), en plafonnant chaque pays à 20
+  d'armenopole** (24, hors Suisse gérée à part ; la liste suit la navigation du site, qui bouge — voir le commentaire de `WORLD_COUNTRIES`), en plafonnant chaque pays à 20
   événements, puis dédoublonne par URL. **Un slug inconnu redirige (302) vers
   le flux générique** `/armenian/events` — brazil, egypt, iraq, israel, jordan,
   qatar, syria, turkey le 30 sept. 2026, greece/belgium avant. Ses événements

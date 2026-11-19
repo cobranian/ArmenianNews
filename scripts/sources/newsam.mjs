@@ -46,7 +46,11 @@ const MAX_AGE_DAYS = 60
 // presents them.
 //   kind 'main'   — Inertia payload on news.am
 //   kind 'rss'    — the vertical's RSS feed (title/url/date), image derived
-//   kind 'html'   — the vertical's HTML feed page (RSS is dead — see above)
+//   kind 'main' + host — a vertical already moved onto the Inertia app: med.
+//                 Its feed lives at /{lang}/news (no rubric slug), with the
+//                 same props.feed.data.hits and the same shared article ids.
+//                 The old HTML grid (/eng/news/, no datetime, year derived
+//                 from the image path) has 301'd to it since 19 Nov. 2026.
 // `label` is fixed for the verticals because "NEWS.am Sport" / "Style" /
 // "Medicine" are the sites' own brand names, identical under all three
 // languages; the modern rubrics take their label from the payload, already
@@ -59,7 +63,7 @@ const SECTIONS = [
   { key: 'economics', kind: 'main', slug: 'economics' },
   { key: 'style', kind: 'rss', host: 'style.news.am', label: 'NEWS.am Style' },
   { key: 'analytics', kind: 'main', slug: 'analytics' },
-  { key: 'medicine', kind: 'html', host: 'med.news.am', label: 'NEWS.am Medicine' },
+  { key: 'medicine', kind: 'main', host: 'med.news.am', slug: null, label: 'NEWS.am Medicine' },
   { key: 'incidents', kind: 'main', slug: 'incidents' },
   { key: 'society', kind: 'main', slug: 'society' },
   { key: 'culture', kind: 'main', slug: 'culture' },
@@ -86,7 +90,7 @@ function pagePayload(html) {
 // from CivilNet worth knowing: news.am's `article_id` is **shared across
 // editions**, so /hy/news/{id} serves the Armenian translation of the same
 // story. CivilNet's ids are per-edition and 404 across languages.
-function parseHits(hits, lang, limit) {
+function parseHits(hits, lang, limit, host = MAIN_HOST) {
   return hits
     .slice(0, limit)
     .map((h) => {
@@ -95,7 +99,7 @@ function parseHits(hits, lang, limit) {
       if (!title || !id) return null
       return {
         title,
-        url: `https://${MAIN_HOST}/${lang}/news/${id}`,
+        url: `https://${host}/${lang}/news/${id}`,
         // published_at is Unix *seconds*; without ×1000 everything lands in 1970.
         date: iso(h.published_at ? new Date(h.published_at * 1000) : null),
         image: safeUrl(clean(h.thumbnail)),
@@ -104,8 +108,9 @@ function parseHits(hits, lang, limit) {
     .filter(Boolean)
 }
 
-async function scrapeMain(lang, slug, limit) {
-  const page = pagePayload(await fetchTextNode(MAIN_HOST, `/${lang}/news/${slug}`))
+async function scrapeMain(lang, slug, limit, host = MAIN_HOST) {
+  const path = slug ? `/${lang}/news/${slug}` : `/${lang}/news`
+  const page = pagePayload(await fetchTextNode(host, path))
   const hits = page.props?.feed?.data?.hits
   if (!Array.isArray(hits)) throw new Error('payload has no props.feed.data.hits')
   // Serving Russian copy under the Armenian tab would be worse than serving
@@ -114,7 +119,7 @@ async function scrapeMain(lang, slug, limit) {
   if (got && got !== lang) throw new Error(`asked for ${lang}, payload is ${got}`)
   return {
     label: clean(page.props?.structure?.tag?.name) || slug,
-    articles: parseHits(hits, lang, limit),
+    articles: parseHits(hits, lang, limit, host),
   }
 }
 
@@ -184,64 +189,17 @@ async function scrapeRss(host, lang, limit) {
   return articles
 }
 
-// med.news.am only. Its RSS is dead (see MAX_AGE_DAYS), so the feed page is the
-// live source. The markup is schema.org-flavoured but carries no `datetime`
-// attribute and no JSON-LD, so the date is reassembled from two halves:
-//   • year + month — from the thumbnail's own path, which is machine-readable
-//   • day + HH:MM  — from the <time> text, read **numerically**
-// Reading it numerically is the point: "July 29, 20:34" / "30 հուլիսի, 17:30" /
-// "30 июля, 16:24" all give up their day and time without ever parsing a month
-// name, so one rule covers all three languages.
-export function parseTimeText(text, imgSrc) {
-  const t = clean(text)
-  const hm = t.match(/(\d{1,2}):(\d{2})/)
-  if (!hm) return null
-  // Strip the clock, then the only 1-2 digit number left is the day.
-  const dayMatch = t.replace(hm[0], ' ').match(/\b(\d{1,2})\b/)
-  const ym = String(imgSrc || '').match(/\/static\/news\/\w+\/(\d{4})\/(\d{2})\//)
-  if (!dayMatch || !ym) return null
-  const ms = Date.UTC(+ym[1], +ym[2] - 1, +dayMatch[1], +hm[1], +hm[2]) - YEREVAN_OFFSET_MS
-  return iso(new Date(ms))
-}
-
-function parseMedFeed(html, host, limit) {
-  const $ = cheerio.load(html)
-  const out = []
-  $('article[itemtype]').each((_, el) => {
-    if (out.length >= limit) return
-    const $a = $(el)
-    const href = $a.find('a[href]').first().attr('href')
-    const title = clean($a.find('.title, h1, h2, h3').first().text())
-    const url = safeUrl(href, `https://${host}`)
-    if (!title || !url) return
-    const imgSrc = $a.find('img[src]').first().attr('src')
-    out.push({
-      title,
-      url,
-      date: parseTimeText($a.find('time, .time').first().text(), imgSrc),
-      image: safeUrl(imgSrc, `https://${host}`),
-    })
-  })
-  return out
-}
-
-async function scrapeMed(host, lang, limit) {
-  const html = await fetchTextNode(host, `/${LEGACY_SEG[lang]}/news/`)
-  const articles = parseMedFeed(html, host, limit)
-  if (!articles.length) throw new Error('no article[itemtype] cards on the feed page')
-  assertFresh(host, articles)
-  return articles
-}
-
 // ─── orchestration ──────────────────────────────────────────────────────────
 
 async function scrapeSection(sec, lang, limit) {
-  if (sec.kind === 'main') return scrapeMain(lang, sec.slug, limit)
-  const articles =
-    sec.kind === 'rss'
-      ? await scrapeRss(sec.host, lang, limit)
-      : await scrapeMed(sec.host, lang, limit)
-  return { label: sec.label, articles }
+  if (sec.kind === 'main') {
+    const res = await scrapeMain(lang, sec.slug, limit, sec.host)
+    // A vertical keeps its brand name; the payload's tag name is empty there.
+    if (!sec.label) return res
+    assertFresh(sec.host, res.articles)
+    return { label: sec.label, articles: res.articles }
+  }
+  return { label: sec.label, articles: await scrapeRss(sec.host, lang, limit) }
 }
 
 // The legacy verticals throw the odd HTTP 500 — med.news.am most often, and on

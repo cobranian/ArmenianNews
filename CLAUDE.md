@@ -160,7 +160,7 @@ composants importent au build :
   |---|---|---|---|
   | `armenpress` | fr/en/hy/ru/es | Inertia, `props.data.data.hits` | `fetchTextNode` obligatoire (undici → 403) |
   | `civilnet` | fr/en/hy/ru | Inertia, `props.feed.data.hits` | idem ; id propre à chaque édition |
-  | `newsam` | en/hy/ru | Inertia + 3 verticales héritées | med : RSS mort depuis 2013 (garde de fraîcheur) |
+  | `newsam` | en/hy/ru | Inertia (+ med) + 2 verticales héritées | sport/style : garde de fraîcheur ; med passé sur Inertia (19 nov. 2026) |
   | `californiacourier` | fr/en/hy/ru | WordPress REST | images recopiées dans `public/cc/` (Cloudflare) |
   | `armradio` | en/hy/ru | Worker + KV, chaîne de replis | la CI est défiée : cron du Worker |
   | `soyarmenio` | es | WordPress REST (`_fields`+media) | Cloudflare ; `_embed` pèse 2,4 Mo |
@@ -171,7 +171,7 @@ composants importent au build :
   | `armenianweekly` | en | WordPress REST | sous-catégories résolues depuis l'arbre |
   | `courrier` | fr | grille HTML + sitemap | dates par appariement d'URL (`www.`, accents) |
   | `armenews`, `artzakank`, `armenieinfotv` | fr | WordPress / HTML | artzakank publie par numéros |
-  | `armenopole` | agenda | 21 pages pays | slug inconnu = 302 générique (`redirect: 'manual'`) |
+  | `armenopole` | agenda | 24 pages pays | slug inconnu = 302 générique (`redirect: 'manual'`) |
   | `instagram` | mur | tirage à la ronde par brin | voir « Données » |
 
   **Trois règles valent pour toutes** : le User-Agent ne se dit **jamais**
@@ -452,7 +452,7 @@ résolu depuis le texte `location`**, pas par le slug de la page : le même
 événement est recensé sur plusieurs pages pays (donc `country` est souvent la
 communauté qui organise, pas le lieu), et Agenda **dédoublonne par URL** pour ne
 pas resservir 2-3 copies du même événement. `scripts/sources/armenopole.mjs`
-scrape **les 21 vraies pages pays d'armenopole** (plafonnées à 20 événements chacune)
+scrape **les 24 vraies pages pays d'armenopole** (plafonnées à 20 événements chacune)
 et dédoublonne aussi à la source — le menu couvre donc tout ce que le site
 propose, en se purgeant des pays sans événement.
 

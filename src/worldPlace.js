@@ -30,6 +30,7 @@ export const COUNTRIES = {
   unitedkingdom: { fr: 'Royaume-Uni', de: 'Vereinigtes Königreich', it: 'Regno Unito', en: 'United Kingdom', hy: 'Մեծ Բրիտանիա',   ru: 'Великобритания', es: 'Reino Unido', flag: '🇬🇧' },
   belgium:       { fr: 'Belgique',    de: 'Belgien', it: 'Belgio', en: 'Belgium',        hy: 'Բելգիա',         ru: 'Бельгия', es: 'Bélgica',        flag: '🇧🇪' },
   netherlands:   { fr: 'Pays-Bas',    de: 'Niederlande', it: 'Paesi Bassi', en: 'Netherlands',    hy: 'Նիդեռլանդներ',   ru: 'Нидерланды', es: 'Países Bajos',     flag: '🇳🇱' },
+  denmark:       { fr: 'Danemark',    de: 'Dänemark', it: 'Danimarca', en: 'Denmark',        hy: 'Դանիա',          ru: 'Дания', es: 'Dinamarca',      flag: '🇩🇰' },
   cyprus:        { fr: 'Chypre',      de: 'Zypern', it: 'Cipro', en: 'Cyprus',         hy: 'Կիպրոս',         ru: 'Кипр', es: 'Chipre',           flag: '🇨🇾' },
   argentina:     { fr: 'Argentine',   de: 'Argentinien', it: 'Argentina', en: 'Argentina',      hy: 'Արգենտինա',      ru: 'Аргентина', es: 'Argentina',      flag: '🇦🇷' },
   australia:     { fr: 'Australie',   de: 'Australien', it: 'Australia', en: 'Australia',      hy: 'Ավստրալիա',      ru: 'Австралия', es: 'Australia',      flag: '🇦🇺' },
@@ -71,7 +72,7 @@ export const PLACE_TO_COUNTRY = {
   // the rest
   france: 'france', allemagne: 'germany', russie: 'russia', liban: 'lebanon',
   canada: 'canada', grece: 'greece', italie: 'italy', belgique: 'belgium',
-  'pays-bas': 'netherlands', gueldre: 'netherlands', chypre: 'cyprus', cyprus: 'cyprus',
+  'pays-bas': 'netherlands', gueldre: 'netherlands', chypre: 'cyprus', cyprus: 'cyprus', danemark: 'denmark', attique: 'greece',
   argentine: 'argentina', australie: 'australia', bresil: 'brazil', bulgarie: 'bulgaria',
   egypte: 'egypt', irak: 'iraq', israel: 'israel', jordanie: 'jordan', pologne: 'poland',
   qatar: 'qatar', singapour: 'singapore', syrie: 'syria', turquie: 'turkey',
@@ -155,6 +156,8 @@ export const PLACES = {
   'sao paulo':     { de: 'São Paulo', it: 'San Paolo', en: 'São Paulo', hy: 'Սան Պաուլու', ru: 'Сан-Паулу', es: 'São Paulo' },
   shanghai:        { de: 'Shanghai', it: 'Shanghai', en: 'Shanghai', hy: 'Շանհայ', ru: 'Шанхай', es: 'Shanghái' },
   catalogne:       { de: 'Katalonien', it: 'Catalogna', en: 'Catalonia', hy: 'Կատալոնիա', ru: 'Каталония', es: 'Cataluña' },
+  // Grèce (page rouverte en novembre 2026)
+  attique:         { de: 'Attika', it: 'Attica', en: 'Attica', hy: 'Ատտիկա', ru: 'Аттика', es: 'Ática' },
   'communaute de madrid': { de: 'Autonome Gemeinschaft Madrid', it: 'Comunità di Madrid', en: 'Community of Madrid', hy: 'Մադրիդի համայնք', ru: 'Сообщество Мадрида', es: 'Comunidad de Madrid' },
 }
 // Variantes d'écriture d'un même lieu : une seule entrée, pas deux copies.
