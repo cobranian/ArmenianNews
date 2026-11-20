@@ -3,6 +3,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
+import { SHORT_DRAFTED_MARK } from '../scripts/lib/culture-short.mjs'
 
 const FILES = ['articles.yml', 'articles-translate.yml', 'articles-check.yml', 'articles-closed.yml', 'articles-publish.yml', 'articles-revise.yml', 'articles-ideas.yml', 'articles-backfill.yml']
 // Fins de ligne normalisées : sous Windows (core.autocrlf), git extrait les
@@ -172,4 +173,28 @@ test('articles.yml : les PR de forks ne comptent pas dans la file de relecture',
   assert.ok(line, 'étape « Branches des PR ouvertes » introuvable')
   assert.match(line, /select\(\.isCrossRepository == false\)/)
   assert.doesNotMatch(line, /--author/, 'les PR de correction ouvertes à la main doivent compter')
+})
+
+// Revue du 20 nov. 2026 : un short.fr.json absent du brouillon est rédigé À LA
+// PUBLICATION (culture-translate). La case « Faits vérifiés » ne l'a pas
+// approuvé : la fusion attend un second geste, et la fusion à la main ne rend
+// pas de vidéo. La marque relie trois fichiers ; un seul renommé, et le texte
+// partirait sur YouTube sans relecture, sans qu'aucun contrôle ne tombe.
+test('texte de vidéo rédigé à la publication : la fusion attend, la fusion à la main ne rend rien', async () => {
+  const src = (await readFile(new URL('../scripts/culture-translate.mjs', import.meta.url), 'utf-8')).replace(/\r\n/g, '\n')
+  assert.match(src, /\$\{SHORT_DRAFTED_MARK\}/)
+  // Seul un short.fr.json ABSENT est rédigé ; présent, il n'est jamais réécrit.
+  const writes = [...src.matchAll(/writeFile\(path\.join\(base, 'short\.fr\.json'\)/g)]
+  assert.equal(writes.length, 1)
+  const guard = src.lastIndexOf('if (frState.draft) {', writes[0].index)
+  assert.ok(guard > 0 && !src.slice(guard, writes[0].index).includes('\n}\n'), 'l’écriture de short.fr.json doit rester sous « if (frState.draft) »')
+
+  const pub = await read('articles-publish.yml')
+  assert.ok(pub.includes(`grep -q "${SHORT_DRAFTED_MARK}"`))
+  assert.match(pub, /shortdrafted=1/)
+  assert.match(pub, /- name: Contrôle final, fusion, déploiement\n\s*if: steps\.prep\.outputs\.fallback != '1' && steps\.prep\.outputs\.shortdrafted != '1'/)
+
+  const merged = (await readFile(new URL('../.github/workflows/articles-merged.yml', import.meta.url), 'utf-8')).replace(/\r\n/g, '\n')
+  assert.ok(merged.includes(`grep -q "${SHORT_DRAFTED_MARK}"`))
+  assert.match(merged, /if \[ -z "\$drafted" \]; then gh workflow run video\.yml/)
 })

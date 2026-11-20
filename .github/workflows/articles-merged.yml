@@ -103,15 +103,26 @@ jobs:
             exit 1
           fi
           git commit -m "Culture : traductions de « $SLUG » (après fusion)"
+          # Le texte de la vidéo française rédigé ICI (absent de la PR) :
+          # personne ne l'a lu. Il est sur main, mais aucune vidéo n'en est
+          # rendue avant relecture. La marque est SHORT_DRAFTED_MARK
+          # (scripts/lib/culture-short.mjs).
+          drafted=
+          if grep -q "texte de la vidéo rédigé à la publication" "$RUNNER_TEMP/summary.md" 2>/dev/null; then drafted=1; fi
           for i in 1 2 3; do
             if git pull --rebase origin main && git push origin HEAD:main; then
               # Un push par GITHUB_TOKEN ne déclenche pas le déploiement.
               gh workflow run hourly.yml --ref main
-              # Les traductions sont sur main : les Shorts peuvent partir.
-              gh workflow run video.yml --ref main -f slug="$SLUG" || true
+              # Les traductions sont sur main : les Shorts peuvent partir —
+              # sauf d'un texte de vidéo que personne n'a relu.
+              if [ -z "$drafted" ]; then gh workflow run video.yml --ref main -f slug="$SLUG" || true; fi
               {
                 echo "Fusionnée avant ses traductions : elles ont été faites sur main et déployées."
                 echo
+                if [ -n "$drafted" ]; then
+                  echo "⏸️ **Vidéos non rendues** : le texte de la vidéo (\`src/data/culture/$SLUG/short.fr.json\`, recopié ci-dessous) vient d'être rédigé sur main, sans relecture. Relisez-le (corrigez-le par une PR au besoin), puis lancez \`gh workflow run video.yml --ref main -f slug=$SLUG\`."
+                  echo
+                fi
                 [ -f "$RUNNER_TEMP/summary.md" ] && cat "$RUNNER_TEMP/summary.md"
               } > "$RUNNER_TEMP/comment.md"
               [ -n "$PR" ] && gh pr comment "$PR" --body-file "$RUNNER_TEMP/comment.md" || true

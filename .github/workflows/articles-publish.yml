@@ -132,14 +132,26 @@ jobs:
           if grep -q "modèle de secours" "$RUNNER_TEMP/summary.md" 2>/dev/null; then
             echo "fallback=1" >> "$GITHUB_OUTPUT"
           fi
+          # Le texte de la vidéo française rédigé PENDANT cette publication
+          # (short.fr.json absent du brouillon) : la case cochée ne l'a pas
+          # approuvé, et il partirait sur YouTube tel quel. Même second geste.
+          # La marque est SHORT_DRAFTED_MARK (scripts/lib/culture-short.mjs).
+          if grep -q "texte de la vidéo rédigé à la publication" "$RUNNER_TEMP/summary.md" 2>/dev/null; then
+            echo "shortdrafted=1" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Traductions de secours — attendre le relecteur
         if: steps.prep.outputs.fallback == '1'
         run: |
           gh pr comment "$PR" --body "⏸️ **Pas encore fusionné.** Gemini n'a pas répondu : les traductions viennent du modèle de secours (voir le commentaire ci-dessus). Jetez un œil à en/hy/ru (articles et textes des vidéos, short.*.json) dans l'onglet *Files changed*, puis **décochez et recochez « Faits vérifiés »** : l'article partira aussitôt, sans nouvelle traduction." || true
 
+      - name: Texte de la vidéo rédigé à la publication — attendre le relecteur
+        if: steps.prep.outputs.shortdrafted == '1' && steps.prep.outputs.fallback != '1'
+        run: |
+          gh pr comment "$PR" --body "⏸️ **Pas encore fusionné.** Le brouillon n'avait pas de texte de vidéo : le robot vient d'en rédiger un (short.fr.json, recopié dans le commentaire ci-dessus), que la case cochée n'a donc pas approuvé. Relisez-le (corrigez-le au besoin dans l'onglet *Files changed*), puis **décochez et recochez « Faits vérifiés »** : l'article partira avec sa vidéo, sans nouvelle rédaction." || true
+
       - name: Contrôle final, fusion, déploiement
-        if: steps.prep.outputs.fallback != '1'
+        if: steps.prep.outputs.fallback != '1' && steps.prep.outputs.shortdrafted != '1'
         run: |
           SLUG="${BRANCH#culture/}"
           SHA="$(git rev-parse HEAD)"

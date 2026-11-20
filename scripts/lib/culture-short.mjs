@@ -6,6 +6,7 @@
 // Module pur : aucun accès disque ni réseau. Le rendu (video/scripts/sync.mjs)
 // recompose à partir de ces fichiers les données que lit Remotion.
 import { createHash } from 'node:crypto'
+import { parseFrontMatter } from './culture-markdown.mjs'
 
 export const SHORT_FACTS = 7
 // Une phrase lue en six secondes sur un téléphone.
@@ -99,9 +100,52 @@ export function validateShort(short, { lang, articleText } = {}) {
   return errors
 }
 
+// Le texte contre lequel un Short est validé : titre, description et corps de
+// son article — JAMAIS le .md brut. Son front-matter porte sourceHash (64
+// chiffres hexadécimaux), model et date : autant de nombres qu'aucun lecteur
+// ne lit, et qu'un nombre inventé par le modèle y trouvait (revue du 20 nov.
+// 2026). Le même texte partout : brouillon, /corrige, culture-check,
+// culture-translate — sinon un Short accepté ici est refusé là, et réécrit.
+export const shortReference = ({ title, description, body } = {}) => [title, description, body].map((s) => s ?? '').join('\n')
+
+// La même référence depuis un .md entier ; '' s'il est illisible (le Short
+// échouera alors sur ses nombres, et le .md sur sa propre erreur).
+export function shortReferenceOf(md) {
+  try {
+    const { data, body } = parseFrontMatter(md)
+    return shortReference({ title: data.title, description: data.description, body })
+  } catch {
+    return ''
+  }
+}
+
+// Le Short français à la publication (culture-translate). `raw` : le contenu
+// de short.fr.json, null s'il est absent ; `reference` : shortReference du
+// fr.md ; `published` : la vidéo française est déjà en ligne.
+// Rend { short, draft, problems } :
+//   - présent et conforme : short ;
+//   - présent mais non conforme : problems, et JAMAIS draft — un fichier relu
+//     (ou corrigé à la main) n'est pas réécrit en silence : changer son texte
+//     changerait shortHash, rendrait périmés les Shorts traduits, et ferait
+//     partir un texte que personne n'a vu ;
+//   - absent : draft, sauf si la vidéo française est déjà en ligne (Garni).
+export function frShortAtPublish({ raw, reference, published = false }) {
+  if (raw == null) return { short: null, draft: !published, problems: [] }
+  const parsed = parseShortJson(raw)
+  const problems = parsed ? validateShort(parsed, { lang: 'fr', articleText: reference }) : ['JSON illisible']
+  return { short: problems.length ? null : parsed, draft: false, problems }
+}
+
+// La marque, dans le résumé de culture-translate, d'un Short français rédigé
+// PENDANT la publication : personne ne l'a relu. articles-publish.yml la
+// cherche pour suspendre la fusion, articles-merged.yml pour ne pas lancer
+// video.yml (test/culture-workflows.test.mjs garde les trois côtés).
+export const SHORT_DRAFTED_MARK = 'texte de la vidéo rédigé à la publication'
+
 // Le short d'une traduction est-il à (re)faire ? Absent ou illisible (null),
 // périmé (sourceHash ≠ `want`, l'empreinte du short fr) ou non conforme à son
-// article — le même verdict que culture-check, qui lit le .md brut.
+// article (`articleText` : shortReference de son .md) — le même verdict que
+// culture-check.
 export function shortNeedsTranslation(current, { want, lang, articleText }) {
   if (!current || typeof current !== 'object') return true
   if (current.sourceHash !== want) return true

@@ -9,6 +9,7 @@ import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 import {
   SHORT_MAX_TEXT, TRACK_IDS, HASHTAG, shortHash, validateShort, parseShortJson,
+  shortReference, shortReferenceOf, frShortAtPublish,
 } from '../scripts/lib/culture-short.mjs'
 
 const CULTURE = new URL('../src/data/culture/', import.meta.url)
@@ -109,7 +110,7 @@ test('validateShort refuse un objet qui n’en est pas un, ou un champ manquant'
 
 test('validateShort accepte le vrai Short fr de Khor Virap contre le vrai fr.md', async () => {
   const s = JSON.parse(await read(KHOR, 'short.fr.json'))
-  assert.deepEqual(validateShort(s, { lang: 'fr', articleText: await read(KHOR, 'fr.md') }), [])
+  assert.deepEqual(validateShort(s, { lang: 'fr', articleText: shortReferenceOf(await read(KHOR, 'fr.md')) }), [])
 })
 
 // Shorts publiés avant la règle des nombres, dont un nombre n'est pas écrit en
@@ -117,6 +118,9 @@ test('validateShort accepte le vrai Short fr de Khor Virap contre le vrai fr.md'
 // ou n'y figure pas du tout (Komitas « 1914 », Cilicie en « 300 »). Ils sont
 // déjà en ligne : on ne réécrit pas leurs faits ici, on les fige. Un nouveau
 // nom dans cette liste est une régression ; un nom qui en sort, une correction.
+// Tatev hy/ru « 9 » et Sayat-Nova es/hy/it/ru « 12 » n'y sont entrés qu'à la
+// revue du 20 nov. 2026 : ces nombres n'étaient « dans l'article » que par le
+// front-matter (date, sourceHash), qui ne compte plus (shortReference).
 const gap = (slug, langs, numbers) => langs.map((l) => [`${slug}/short.${l}.json`, numbers])
 const ALL = ['fr', 'en', 'hy', 'ru', 'de', 'it', 'es']
 const KNOWN_NUMBER_GAPS = {
@@ -124,10 +128,10 @@ const KNOWN_NUMBER_GAPS = {
   ...Object.fromEntries(gap('komitas', ALL, '3000, 1914')),
   ...Object.fromEntries(gap('lavash', ['fr', 'ru', 'it', 'es'], '6')),
   ...Object.fromEntries(gap('monastere-de-tatev', ['fr', 'en', 'de'], '10000')),
-  'monastere-de-tatev/short.hy.json': '10000, 14',
-  'monastere-de-tatev/short.ru.json': '8, 10000',
+  'monastere-de-tatev/short.hy.json': '10000, 9, 14',
+  'monastere-de-tatev/short.ru.json': '8, 9, 10000',
   'royaume-armenien-de-cilicie/short.en.json': '300',
-  'sayat-nova-et-la-tradition-des-ashoughs/short.fr.json': '12',
+  ...Object.fromEntries(gap('sayat-nova-et-la-tradition-des-ashoughs', ['fr', 'es', 'hy', 'it', 'ru'], '12')),
 }
 
 test('chaque short.<lang>.json migré est conforme à l’article de sa langue (écarts connus figés)', async () => {
@@ -137,7 +141,7 @@ test('chaque short.<lang>.json migré est conforme à l’article de sa langue (
     const files = (await readdir(new URL(`${slug}/`, CULTURE)).catch(() => [])).filter((f) => /^short\.\w+\.json$/.test(f))
     for (const f of files) {
       const lang = f.split('.')[1]
-      const errs = validateShort(JSON.parse(await read(slug, f)), { lang, articleText: await read(slug, `${lang}.md`) })
+      const errs = validateShort(JSON.parse(await read(slug, f)), { lang, articleText: shortReferenceOf(await read(slug, `${lang}.md`)) })
       for (const e of errs) {
         const m = e.match(/^nombres absents de l’article : (.+)$/)
         if (m) gaps[`${slug}/${f}`] = m[1]
@@ -165,4 +169,32 @@ test('parseShortJson : JSON nu, bloc ```json```, et refus de ce qui n’est pas 
   assert.equal(parseShortJson('[1,2]'), null)
   assert.equal(parseShortJson(''), null)
   assert.equal(parseShortJson(undefined), null)
+})
+
+// --- Revue du 20 nov. 2026 : une seule référence, et jamais de réécriture ---
+
+const MD = '---\ntitle: "Komitas"\ndescription: "Le père."\ndate: 2026-10-19\nsourceHash: 4f1c9d27e8b3a6051c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b\nmodel: gemini-2.5-pro\n---\nNé en 1869.\n'
+
+test('shortReferenceOf : titre, description, corps — jamais les chiffres du front-matter', () => {
+  const ref = shortReferenceOf(MD)
+  assert.equal(ref, shortReference({ title: 'Komitas', description: 'Le père.', body: 'Né en 1869.' }))
+  assert.doesNotMatch(ref, /2026|4f1c9d27|2\.5/)
+  // Des nombres que seul le front-matter « contenait » sont refusés.
+  const s = short({ facts: [fact({ text: 'Né en 1869, 2026 et 4.' }), ...short().facts.slice(1)] })
+  assert.match(validateShort(s, { lang: 'fr', articleText: ref }).join(), /nombres absents de l’article : 2026, 4/)
+  assert.deepEqual(validateShort(s, { lang: 'fr', articleText: MD }), [], 'contre le .md brut, ils passaient')
+  assert.equal(shortReferenceOf('pas de front-matter'), '')
+})
+
+test('frShortAtPublish : présent mais non conforme → jamais rédigé à nouveau ; absent → rédigé, sauf vidéo en ligne', () => {
+  const ref = shortReferenceOf(MD)
+  const bad = frShortAtPublish({ raw: JSON.stringify({ ...short(), music: 'inconnue' }), reference: ref })
+  assert.equal(bad.draft, false)
+  assert.equal(bad.short, null)
+  assert.match(bad.problems.join(), /music/)
+  assert.deepEqual(frShortAtPublish({ raw: '{pas du json', reference: ref }), { short: null, draft: false, problems: ['JSON illisible'] })
+  assert.deepEqual(frShortAtPublish({ raw: null, reference: ref }), { short: null, draft: true, problems: [] })
+  assert.equal(frShortAtPublish({ raw: null, reference: ref, published: true }).draft, false)
+  const good = short()
+  assert.deepEqual(frShortAtPublish({ raw: JSON.stringify(good), reference: ref }).short, good)
 })
