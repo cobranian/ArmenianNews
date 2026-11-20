@@ -198,3 +198,16 @@ test('texte de vidéo rédigé à la publication : la fusion attend, la fusion �
   assert.ok(merged.includes(`grep -q "${SHORT_DRAFTED_MARK}"`))
   assert.match(merged, /if \[ -z "\$drafted" \]; then gh workflow run video\.yml/)
 })
+
+// Le résumé n'est écrit qu'à la fin de culture-translate : un passage qui
+// meurt après avoir écrit short.fr.json n'en laisse aucun, donc aucune marque.
+// La retenue doit aussi se décider sur l'état du fichier (avant / après).
+test('texte de vidéo rédigé : la retenue se décide aussi sur le fichier, pas seulement sur le résumé', async () => {
+  const pub = await read('articles-publish.yml')
+  assert.match(pub, /short_avant=; \[ -f "\$SHORT_FR" \] && short_avant=1/)
+  assert.ok(pub.indexOf('short_avant=;') < pub.indexOf('node scripts/culture-translate.mjs'), 'mesuré avant la traduction')
+  assert.match(pub, /if \[ -z "\$short_avant" \] && \[ -f "\$SHORT_FR" \]; then\n\s*echo "shortdrafted=1"/)
+  const merged = await read('articles-merged.yml')
+  assert.ok(merged.indexOf('short_avant=;') < merged.indexOf('node scripts/culture-translate.mjs'), 'mesuré avant la traduction')
+  assert.match(merged, /if \[ -z "\$short_avant" \] && \[ -f "\$D\/short\.fr\.json" \]; then drafted=1; fi/)
+})

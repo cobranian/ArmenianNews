@@ -108,12 +108,20 @@ jobs:
           # Un passage par ligne (« --langs ru », « --short-only --langs en ») ;
           # $args non cité exprès : des options et des codes de langue. Un
           # passage ou une langue en échec n'arrête pas les autres.
+          # L'état du fichier fait foi, pas le résumé : un passage qui meurt
+          # après avoir écrit short.fr.json mais avant son résumé ne doit pas
+          # laisser partir un texte de vidéo que personne n'a lu.
+          SHORT_FR="src/data/culture/$SLUG/short.fr.json"
+          short_avant=; [ -f "$SHORT_FR" ] && short_avant=1
           n=0
           while read -r args; do
             n=$((n + 1))
             node scripts/culture-translate.mjs "$SLUG" $args --summary "$RUNNER_TEMP/summary-$n.md" < /dev/null || true
           done < "$RUNNER_TEMP/plan.txt"
           cat "$RUNNER_TEMP"/summary-*.md > "$RUNNER_TEMP/summary.md" 2>/dev/null || true
+          if [ -z "$short_avant" ] && [ -f "$SHORT_FR" ]; then
+            echo "shortdrafted=1" >> "$GITHUB_OUTPUT"
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data/culture

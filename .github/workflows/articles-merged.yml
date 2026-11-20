@@ -87,6 +87,8 @@ jobs:
           cat "$RUNNER_TEMP/plan.txt"
           # Un passage par ligne ; $args non cité exprès (options et codes de
           # langue). Un passage en échec n'arrête pas les autres.
+          # L'état du fichier fait foi, pas le résumé (voir articles-publish.yml).
+          short_avant=; [ -f "$D/short.fr.json" ] && short_avant=1
           n=0
           while read -r args; do
             n=$((n + 1))
@@ -109,6 +111,7 @@ jobs:
           # (scripts/lib/culture-short.mjs).
           drafted=
           if grep -q "texte de la vidéo rédigé à la publication" "$RUNNER_TEMP/summary.md" 2>/dev/null; then drafted=1; fi
+          if [ -z "$short_avant" ] && [ -f "$D/short.fr.json" ]; then drafted=1; fi
           for i in 1 2 3; do
             if git pull --rebase origin main && git push origin HEAD:main; then
               # Un push par GITHUB_TOKEN ne déclenche pas le déploiement.
