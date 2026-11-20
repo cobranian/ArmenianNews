@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T19:23:28.472Z",
+  "generatedAt": "2026-11-20T20:23:32.234Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -86,16 +86,16 @@
           "image": null
         },
         {
-          "title": "La population de l’Arménie dépasse les 3,1 millions d’habitants",
-          "url": "https://courrier.am/la-population-de-larmenie-depasse-les-31-millions-dhabitants",
-          "date": "2026-11-18T08:15:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/images.png.avif?itok=OCE5LcMh"
-        },
-        {
           "title": "Les premiers logements de la « Cité universitaire » prévus pour 2027",
           "url": "https://courrier.am/les-premiers-logements-de-la-cite-universitaire-prevus-pour-2027",
           "date": "2026-11-18T09:04:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/IMG_8962.jpeg.avif?itok=f4PMG66v"
+        },
+        {
+          "title": "La population de l’Arménie dépasse les 3,1 millions d’habitants",
+          "url": "https://courrier.am/la-population-de-larmenie-depasse-les-31-millions-dhabitants",
+          "date": "2026-11-18T08:15:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/images.png.avif?itok=OCE5LcMh"
         },
         {
           "title": "L’Arménie envisage de repousser à 32 ans la limite d’âge du report du service militaire pour certains étudiants",
@@ -128,16 +128,16 @@
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/05.jpg.avif?itok=UKRtI3T5"
         },
         {
-          "title": "Douze forces politiques d’opposition annoncent la formation d’une coalition nationale en Arménie",
-          "url": "https://courrier.am/douze-forces-politiques-dopposition-annoncent-la-formation-dune-coalition-nationale-en-armenie",
-          "date": "2026-11-05T07:30:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/Screenshot_2_2.png.avif?itok=OqAnZxr8"
-        },
-        {
           "title": "L’Arménie et le Portugal envisagent de renforcer leur coopération dans le domaine du sport",
           "url": "https://courrier.am/larmenie-et-le-portugal-envisagent-de-renforcer-leur-cooperation-dans-le-domaine-du-sport",
           "date": "2026-11-05T09:38:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/IMG_8711.jpeg.avif?itok=B5ULb16m"
+        },
+        {
+          "title": "Douze forces politiques d’opposition annoncent la formation d’une coalition nationale en Arménie",
+          "url": "https://courrier.am/douze-forces-politiques-dopposition-annoncent-la-formation-dune-coalition-nationale-en-armenie",
+          "date": "2026-11-05T07:30:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-11/Screenshot_2_2.png.avif?itok=OqAnZxr8"
         }
       ]
     },
@@ -289,17 +289,17 @@
           "rubric": "culture"
         },
         {
-          "title": "Cinq films français pour changer notre regard sur la biodiversité",
-          "url": "https://courrier.am/cinq-films-francais-pour-changer-notre-regard-sur-la-biodiversite",
-          "date": "2026-10-29T06:19:00.000Z",
-          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image2.jpg.avif?itok=9Ctx20AP",
-          "rubric": "monde"
-        },
-        {
           "title": "SunChild : le cinéma au service de la biodiversité en marge de la COP17",
           "url": "https://courrier.am/sunchild-le-cinema-au-service-de-la-biodiversite-en-marge-de-la-cop17",
           "date": "2026-10-29T06:19:00.000Z",
           "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image1_1.jpg.avif?itok=VN86Ode8",
+          "rubric": "monde"
+        },
+        {
+          "title": "Cinq films français pour changer notre regard sur la biodiversité",
+          "url": "https://courrier.am/cinq-films-francais-pour-changer-notre-regard-sur-la-biodiversite",
+          "date": "2026-10-29T06:19:00.000Z",
+          "image": "https://courrier.am/sites/default/files/styles/original_webp/public/2026-10/Image2.jpg.avif?itok=9Ctx20AP",
           "rubric": "monde"
         },
         {
@@ -8580,6 +8580,13 @@
         "label": "Latest news",
         "articles": [
           {
+            "title": "Pashinyan Clarifies Resignation Offer To Opposition",
+            "url": "https://www.thecaliforniacourier.com/pashinyan-clarifies-resignation-offer-to-opposition/",
+            "date": "2026-11-20T19:39:01.000Z",
+            "image": "/cc/b8f4e60b6d8010b7.webp",
+            "rubric": "politique"
+          },
+          {
             "title": "Azerbaijan’s constitution refers to its Declarations of Independence, yet this is not discussed in Armenia, Vardevanyan says",
             "url": "https://www.thecaliforniacourier.com/azerbaijans-constitution-refers-to-its-declarations-of-independence-yet-this-is-not-discussed-in-armenia-vardevanyan-says/",
             "date": "2026-11-19T22:30:09.000Z",
@@ -8641,13 +8648,6 @@
             "date": "2026-11-09T16:24:10.000Z",
             "image": "/cc/ebc24bdb6756511b.webp",
             "rubric": "opinion"
-          },
-          {
-            "title": "Mirzoyan: full reconciliation with Azerbaijan impossible without resolving humanitarian issues",
-            "url": "https://www.thecaliforniacourier.com/mirzoyan-full-reconciliation-with-azerbaijan-impossible-without-resolving-humanitarian-issues/",
-            "date": "2026-11-06T19:07:28.000Z",
-            "image": "/cc/f786cb45f606dfc0.webp",
-            "rubric": "politique"
           }
         ]
       }
@@ -10655,6 +10655,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Al Ahli claim comeback victory after Ronaldo's goal, Spertsyan features in the match (video)",
+            "url": "https://sport.news.am/eng/news/170383/",
+            "date": "2026-11-20T19:29:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170383.jpg"
+          },
+          {
             "title": "The greatest footballers in history by shirt number",
             "url": "https://sport.news.am/eng/news/170379/",
             "date": "2026-11-20T18:15:00.000Z",
@@ -10707,12 +10713,6 @@
             "url": "https://sport.news.am/eng/news/170370/",
             "date": "2026-11-20T08:28:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170370.jpg"
-          },
-          {
-            "title": "Three Armenian weightlifters will participate in the Olympic qualifying tournament",
-            "url": "https://sport.news.am/eng/news/170369/",
-            "date": "2026-11-20T07:55:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170369.jpg"
           }
         ]
       },
@@ -11185,6 +11185,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "ԱՄՆ օրինակով․ Գերմանիան և Ավստրիան ցանկանում են TikTok-ի եվրոպական բիզնեսը հանձնել ԵՄ-ից սեփականատերերի վերահսկողությանը",
+            "url": "https://news.am/hy/news/1076196",
+            "date": "2026-11-20T19:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/20/22nJIXkvmIQm11eT.webp"
+          },
+          {
             "title": "Եվրամիությունը պատրաստվում է նոր անդամների համար 10-ամյա փորձաշրջան սահմանել",
             "url": "https://news.am/hy/news/1076201",
             "date": "2026-11-20T19:02:00.000Z",
@@ -11237,12 +11243,6 @@
             "url": "https://news.am/hy/news/1076240",
             "date": "2026-11-20T17:19:39.000Z",
             "image": "https://news.am/storage/media/26/11/20/4wdpmjGxw1oLahCH.webp"
-          },
-          {
-            "title": "Հաջողություններում ուրանալ Գագիկ Ծառուկյանի ներդրումը՝ ուղղակի հնարավոր չէ, պատվաբեր չէ. Ռոստոմյանը` Հարությունյանին",
-            "url": "https://news.am/hy/news/1076239",
-            "date": "2026-11-20T17:16:45.000Z",
-            "image": "https://news.am/storage/media/26/11/20/KaRHQu60uQ5j0kLj.webp"
           }
         ]
       },
@@ -11317,6 +11317,18 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "Մ-23 ԵԱ․ Դավիթ Սիմոնյանն ապահովեց Հայաստանի թիմի առաջին մեդալը (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/170384/",
+            "date": "2026-11-20T20:20:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170384.jpg"
+          },
+          {
+            "title": "«Ալ Ահլին» Սպերցյանի հետ կամային հաղթանակ տարավ Ռոնալդուից գոլ բաց թողնելուց հետո (տեսանյութ)",
+            "url": "https://sport.news.am/arm/news/170383/",
+            "date": "2026-11-20T19:29:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170383.jpg"
+          },
+          {
             "title": "Ռոնալդուն խփեց 986-րդ գոլը (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/170382/",
             "date": "2026-11-20T18:19:00.000Z",
@@ -11363,18 +11375,6 @@
             "url": "https://sport.news.am/arm/news/170375/",
             "date": "2026-11-20T12:33:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170375.jpg"
-          },
-          {
-            "title": "Ազգերի լիգա․ Քառորդ եզրափակիչի զույգերը",
-            "url": "https://sport.news.am/arm/news/170374/",
-            "date": "2026-11-20T11:49:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170374.jpg"
-          },
-          {
-            "title": "Ֆրանսիայի առաջնություն․ Մեկնարկում է 11-րդ տուրը",
-            "url": "https://sport.news.am/arm/news/170371/",
-            "date": "2026-11-20T11:06:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170371.jpg"
           }
         ]
       },
@@ -11382,6 +11382,12 @@
         "categoryKey": "economics",
         "label": "Տնտեսություն",
         "articles": [
+          {
+            "title": "Կանխատեսում․ աշխարհում տավարի մսի արտադրությունը փոքր-ինչ կնվազի",
+            "url": "https://news.am/hy/news/1076193",
+            "date": "2026-11-20T20:24:00.000Z",
+            "image": "https://news.am/storage/media/26/11/20/WbfksuE0KGVZ5TrF.webp"
+          },
           {
             "title": "ԵԱՏՄ մաքսային օրենսգրքում փոփոխություններ կկատարվեն. ինչ կփոխվի բիզնեսի համար",
             "url": "https://news.am/hy/news/1076200",
@@ -11435,12 +11441,6 @@
             "url": "https://news.am/hy/news/1076215",
             "date": "2026-11-20T14:32:26.000Z",
             "image": "https://news.am/storage/media/26/11/20/xnBCcrtKiLuEbUyn.webp"
-          },
-          {
-            "title": "Միլանում 20 հազար մարդ կյանքի արժեքի թանկացման դեմ բողոքի է դուրս եկել",
-            "url": "https://news.am/hy/news/1076178",
-            "date": "2026-11-20T13:58:00.000Z",
-            "image": "https://news.am/storage/media/26/11/20/g4PDP0S94BBeZgtA.webp"
           }
         ]
       },
@@ -11847,6 +11847,12 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "По примеру США: Германия и Австрия хотят передать европейский бизнес TikTok под контроль владельцев из ЕС",
+            "url": "https://news.am/ru/news/1076196",
+            "date": "2026-11-20T19:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/20/22nJIXkvmIQm11eT.webp"
+          },
+          {
             "title": "Евросоюз собирается ввести 10‑летний испытательный срок для новых членов",
             "url": "https://news.am/ru/news/1076201",
             "date": "2026-11-20T19:02:00.000Z",
@@ -11899,12 +11905,6 @@
             "url": "https://news.am/ru/news/1076240",
             "date": "2026-11-20T17:19:39.000Z",
             "image": "https://news.am/storage/media/26/11/20/4wdpmjGxw1oLahCH.webp"
-          },
-          {
-            "title": "Ростомян: Отрицать вклад Гагика Царукяна в успехи спорта просто невозможно",
-            "url": "https://news.am/ru/news/1076239",
-            "date": "2026-11-20T17:16:45.000Z",
-            "image": "https://news.am/storage/media/26/11/20/KaRHQu60uQ5j0kLj.webp"
           }
         ]
       },
@@ -11979,6 +11979,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Аль-Ахли» одержал волевую победу после гола Роналду, Сперцян принял участие в матче (видео)",
+            "url": "https://sport.news.am/rus/news/170383/",
+            "date": "2026-11-20T19:29:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170383.jpg"
+          },
+          {
             "title": "Названы лучшие футболисты в истории по игровым номерам",
             "url": "https://sport.news.am/rus/news/170379/",
             "date": "2026-11-20T18:15:00.000Z",
@@ -12031,12 +12037,6 @@
             "url": "https://sport.news.am/rus/news/170372/",
             "date": "2026-11-20T09:49:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170372.jpg"
-          },
-          {
-            "title": "NBA: Результаты и лучшие эпизоды дня (видео)",
-            "url": "https://sport.news.am/rus/news/170367/",
-            "date": "2026-11-20T09:04:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170367.jpg"
           }
         ]
       },
@@ -12044,6 +12044,12 @@
         "categoryKey": "economics",
         "label": "Экономика",
         "articles": [
+          {
+            "title": "Прогноз: Производство говядины в мире немного сократится",
+            "url": "https://news.am/ru/news/1076193",
+            "date": "2026-11-20T20:24:00.000Z",
+            "image": "https://news.am/storage/media/26/11/20/WbfksuE0KGVZ5TrF.webp"
+          },
           {
             "title": "В Таможенный кодекс ЕАЭС внесут поправки: Что изменится для бизнеса?",
             "url": "https://news.am/ru/news/1076200",
@@ -12097,12 +12103,6 @@
             "url": "https://news.am/ru/news/1076178",
             "date": "2026-11-20T13:58:00.000Z",
             "image": "https://news.am/storage/media/26/11/20/g4PDP0S94BBeZgtA.webp"
-          },
-          {
-            "title": "Продавцы рассчитывают стоимость тары по цене приобретенных продуктов: КЗКИП Армении призвала предпринимателей решить проблему",
-            "url": "https://news.am/ru/news/1076176",
-            "date": "2026-11-20T12:42:00.000Z",
-            "image": "https://news.am/storage/media/26/11/20/O5Txj1bFm2WYrtPE.webp"
           }
         ]
       },
