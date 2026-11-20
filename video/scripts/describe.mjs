@@ -11,12 +11,12 @@ import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { youtubeMeta } from '../../scripts/lib/youtube-meta.mjs'
+import { musicFor } from './music.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const lang = process.argv[2] ?? 'fr'
 const read = async (f) => JSON.parse(await readFile(f, 'utf-8'))
 const credits = await read(path.join(root, 'src/shorts/credits.json'))
-const { BY_SLUG } = await read(path.join(root, 'src/shorts/music.json'))
 const published = await read(path.join(root, '../src/data/culture-videos.json'))
 const outDir = path.join(root, 'youtube-meta')
 await mkdir(outDir, { recursive: true })
@@ -30,7 +30,8 @@ for (const f of (await readdir(path.join(root, 'src/shorts/data'))).filter((x) =
     lang,
     short: data[lang],
     credit: credits[data.slug],
-    music: BY_SLUG[data.slug] ?? 'otar',
+    // La piste de l'article (short.fr.json), jamais « otar » par défaut.
+    music: musicFor(data.slug),
   })
   await writeFile(path.join(outDir, `${data.slug}-${lang}.json`), `${JSON.stringify({ slug: data.slug, title, description }, null, 2)}\n`)
   n++
