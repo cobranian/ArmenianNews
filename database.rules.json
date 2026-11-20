@@ -7,7 +7,7 @@
         ".indexOn": ["creeLe"],
         "$code": {
           ".read": "auth != null",
-          ".write": "auth != null && (!data.exists() || data.child('creeLe').val() < (now - 86400000)) && newData.child('v').val() === 2",
+          ".write": "auth != null && newData.child('v').val() === 2 && (!data.exists() || data.child('creeLe').val() < (now - 86400000) && newData.child('creeLe').val() === now && newData.child('siege1').val() === auth.uid && !newData.child('siege2').exists() && !newData.child('s2').exists() && !newData.child('s1').child('j').exists() && (!data.child('siege1').isString() || data.child('siege1').val() === auth.uid || !newData.child('joueurs').child(data.child('siege1').val()).exists()) && (!data.child('siege2').isString() || !newData.child('joueurs').child(data.child('siege2').val()).exists()))",
           ".validate": "$code.matches(/^[A-HJ-NP-Z2-9]{6}$/) && $jeu.matches(/^(echecs|backgammon)$/) && newData.child('v').val() === 2 && newData.hasChildren(['jeu', 'creeLe', 'siege1', 'joueurs'])",
           "v": {
             ".validate": "newData.val() === 2 && (data.val() === 2 || !data.parent().child('creeLe').exists() || data.parent().child('creeLe').val() < now - 86400000)"
@@ -26,11 +26,26 @@
             ".validate": "newData.isString() && (newData.val() === data.val() || (!data.exists() && newData.val() === auth.uid)) && (newData.parent().child('v').val() !== 2 || newData.parent().child('creeLe').val() >= now - 86400000)"
           },
           "partage": {
-            ".validate": "newData.parent().child('v').val() === 2 && newData.hasChildren()"
+            ".validate": "newData.parent().child('v').val() === 2 && ($jeu === 'echecs' && newData.hasChildren(['cadence']) || $jeu === 'backgammon' && newData.hasChildren(['longueur', 'videau', 'engage']))",
+            "cadence": {
+              ".validate": "$jeu === 'echecs' && newData.isNumber() && (newData.val() === 0 || newData.val() === 60 || newData.val() === 180 || newData.val() === 300 || newData.val() === 600 || newData.val() === 1800)"
+            },
+            "longueur": {
+              ".validate": "$jeu === 'backgammon' && newData.isNumber() && (newData.val() === 1 || newData.val() === 3 || newData.val() === 5)"
+            },
+            "videau": {
+              ".validate": "$jeu === 'backgammon' && newData.isBoolean() && (newData.val() === false || newData.parent().child('longueur').val() !== 1)"
+            },
+            "engage": {
+              ".validate": "$jeu === 'backgammon' && newData.isString() && newData.val().matches(/^[0-9a-f]{64}$/)"
+            },
+            "$autre": {
+              ".validate": false
+            }
           },
           "joueurs": {
             "$uid": {
-              ".write": "auth != null && $uid === auth.uid && data.parent().parent().child('v').val() === 2 && newData.exists() && (data.parent().parent().child('siege1').val() === $uid || newData.parent().parent().child('siege2').val() === $uid)",
+              ".write": "auth != null && $uid === auth.uid && data.parent().parent().child('v').val() === 2 && data.parent().parent().child('creeLe').val() >= now - 86400000 && newData.exists() && (data.parent().parent().child('siege1').val() === $uid || newData.parent().parent().child('siege2').val() === $uid)",
               ".validate": "newData.hasChild('siege')",
               "siege": {
                 ".validate": "newData.val() === data.val() || (!data.exists() && $uid === auth.uid && ((newData.val() === 1 && (!data.parent().parent().parent().child('creeLe').exists() || data.parent().parent().parent().child('creeLe').val() < now - 86400000)) || (newData.val() === 2 && newData.parent().parent().parent().child('siege2').val() === $uid)))"
@@ -49,7 +64,7 @@
           "s1": {
             ".validate": "newData.parent().child('v').val() === 2",
             "etat": {
-              ".write": "auth != null && data.parent().parent().child('v').val() === 2 && data.parent().parent().child('siege1').val() === auth.uid && newData.exists() && (!data.exists() || newData.child('manche').val() === data.child('manche').val() + 1 || newData.child('manche').val() === data.child('manche').val() && (!data.child('pret').exists() || newData.child('pret').val() === data.child('pret').val()) && (!data.child('fin').exists() || newData.child('fin').val() === data.child('fin').val() && newData.child('statut').val() === data.child('statut').val() && newData.child('prog').val() === data.child('prog').val() && newData.child('liste').val() === data.child('liste').val()))",
+              ".write": "auth != null && data.parent().parent().child('v').val() === 2 && data.parent().parent().child('creeLe').val() >= now - 86400000 && data.parent().parent().child('siege1').val() === auth.uid && newData.exists() && (!data.exists() || newData.child('manche').val() === data.child('manche').val() + 1 || newData.child('manche').val() === data.child('manche').val() && (!data.child('pret').exists() || newData.child('pret').val() === data.child('pret').val()) && (!data.child('fin').exists() || newData.child('fin').val() === data.child('fin').val() && newData.child('statut').val() === data.child('statut').val() && newData.child('prog').val() === data.child('prog').val() && newData.child('liste').val() === data.child('liste').val()))",
               ".validate": "newData.hasChildren(['manche', 'statut', 'prog'])",
               "manche": {
                 ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 9999"
@@ -75,7 +90,7 @@
             },
             "j": {
               "$n": {
-                ".write": "auth != null && data.parent().parent().parent().child('v').val() === 2 && data.parent().parent().parent().child('siege1').val() === auth.uid && !data.exists() && newData.exists()",
+                ".write": "auth != null && data.parent().parent().parent().child('v').val() === 2 && data.parent().parent().parent().child('creeLe').val() >= now - 86400000 && data.parent().parent().parent().child('siege1').val() === auth.uid && !data.exists() && newData.exists()",
                 ".validate": "$n.matches(/^(0|[1-9][0-9]{0,4})$/) && newData.hasChildren(['a', 't'])",
                 "a": {
                   ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 400"
@@ -95,7 +110,7 @@
           "s2": {
             ".validate": "newData.parent().child('v').val() === 2 && newData.parent().child('siege2').exists()",
             "etat": {
-              ".write": "auth != null && data.parent().parent().child('v').val() === 2 && data.parent().parent().child('siege2').val() === auth.uid && newData.exists() && (!data.exists() || newData.child('manche').val() === data.child('manche').val() + 1 || newData.child('manche').val() === data.child('manche').val() && (!data.child('pret').exists() || newData.child('pret').val() === data.child('pret').val()) && (!data.child('fin').exists() || newData.child('fin').val() === data.child('fin').val() && newData.child('statut').val() === data.child('statut').val() && newData.child('prog').val() === data.child('prog').val() && newData.child('liste').val() === data.child('liste').val()))",
+              ".write": "auth != null && data.parent().parent().child('v').val() === 2 && data.parent().parent().child('creeLe').val() >= now - 86400000 && data.parent().parent().child('siege2').val() === auth.uid && newData.exists() && (!data.exists() || newData.child('manche').val() === data.child('manche').val() + 1 || newData.child('manche').val() === data.child('manche').val() && (!data.child('pret').exists() || newData.child('pret').val() === data.child('pret').val()) && (!data.child('fin').exists() || newData.child('fin').val() === data.child('fin').val() && newData.child('statut').val() === data.child('statut').val() && newData.child('prog').val() === data.child('prog').val() && newData.child('liste').val() === data.child('liste').val()))",
               ".validate": "newData.hasChildren(['manche', 'statut', 'prog'])",
               "manche": {
                 ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 9999"
@@ -121,7 +136,7 @@
             },
             "j": {
               "$n": {
-                ".write": "auth != null && data.parent().parent().parent().child('v').val() === 2 && data.parent().parent().parent().child('siege2').val() === auth.uid && !data.exists() && newData.exists()",
+                ".write": "auth != null && data.parent().parent().parent().child('v').val() === 2 && data.parent().parent().parent().child('creeLe').val() >= now - 86400000 && data.parent().parent().parent().child('siege2').val() === auth.uid && !data.exists() && newData.exists()",
                 ".validate": "$n.matches(/^(0|[1-9][0-9]{0,4})$/) && newData.hasChildren(['a', 't'])",
                 "a": {
                   ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 400"

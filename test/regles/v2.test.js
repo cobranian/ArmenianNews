@@ -17,11 +17,13 @@ const salle = (c, jeu = JEU) => `salles/${jeu}/${c}`;
 const etat = (c, s) => `${salle(c)}/s${s}/etat`;
 const entree = (uid) => ({ siege2: uid, [`joueurs/${uid}`]: { siege: 2, pseudo: '', enLigne: true } });
 const noeud = (extra = {}) => ({ manche: 1, statut: 'enCours', prog: 0, ...extra });
+// Ce qu'écrit le backgammon (remote.js, partageInitial) : engage = SHA-256 en hexadécimal.
+const PARTAGE_BG = { longueur: 3, videau: true, engage: 'ab'.repeat(32) };
 
 // Ce qu'écrit creerSalle (salle2.js).
-function salleV2(uid, { creeLe = HEURE, partage = { niveau: 'expert', graine: 7 }, mien = noeud({ pret: HEURE }) } = {}) {
+function salleV2(uid, { creeLe = HEURE, jeu = JEU, partage = jeu === 'backgammon' ? PARTAGE_BG : { cadence: 300 }, mien = noeud({ pret: HEURE }) } = {}) {
   const s = {
-    v: 2, jeu: JEU, creeLe, siege1: uid,
+    v: 2, jeu, creeLe, siege1: uid,
     joueurs: { [uid]: { siege: 1, pseudo: '', enLigne: true } },
   };
   if (partage) s.partage = partage;
@@ -138,15 +140,15 @@ test('v2 membres : rien d\'écrit à la racine de la salle', async () => {
   const c = await pleine();
   for (const qui of ['hote', 'ami']) {
     assert.ok(!(await fusionner(salle(c), { creeLe: HEURE }, qui)).ok, qui + ' : creeLe');
-    assert.ok(!(await poser(salle(c) + '/partage/graine', 8, qui)).ok, qui + ' : partage');
-    assert.ok(!(await poser(salle(c) + '/partage', { niveau: 'debutant', graine: 1 }, qui)).ok, qui + ' : partage entier');
+    assert.ok(!(await poser(salle(c) + '/partage/cadence', 60, qui)).ok, qui + ' : partage');
+    assert.ok(!(await poser(salle(c) + '/partage', { cadence: 60 }, qui)).ok, qui + ' : partage entier');
     assert.ok(!(await poser(salle(c) + '/v', 2, qui)).ok, qui + ' : v');
     assert.ok(!(await poser(salle(c) + '/jeu', JEU, qui)).ok, qui + ' : jeu');
     assert.ok(!(await poser(salle(c) + '/course', { x: 1 }, qui)).ok, qui + ' : course');
     assert.ok(!(await effacer(salle(c), qui)).ok, qui + ' : salle effacée');
     assert.ok(!(await poser(salle(c), salleV2(qui), qui)).ok, qui + ' : salle réécrite');
   }
-  assert.strictEqual((await lire(salle(c) + '/partage/graine')).val, 7);
+  assert.strictEqual((await lire(salle(c) + '/partage/cadence')).val, 300);
 });
 
 test('v2 joueurs : chacun écrit sa fiche, pas celle de l\'autre', async () => {
@@ -279,6 +281,10 @@ test('v2 journal : forme d\'une entrée', async () => {
   for (const n of ['01', '-1', 'a', '100000', '1.5']) {
     assert.ok(!(await poser(jn(c, 1, n), { a: 'c4', t: HEURE }, 'hote')).ok, 'numéro ' + n);
   }
+  // Les règles ne savent pas calculer n − 1 ($n est un texte, « - » exige un
+  // nombre) : le trou reste permis. C'est journal.js qui le désamorce — une
+  // entrée écrite derrière un trou est plus ancienne que celles qui le
+  // comblent, et lireJournal coupe à la première entrée antidatée.
   assert.ok((await poser(jn(c, 1, 99999), { a: 'c4', t: HEURE }, 'hote')).ok, 'numéro 99999 (le trou ne gêne que son auteur)');
 });
 
@@ -288,4 +294,87 @@ test('v2 journal : pas de journal dans une salle ancienne, ni avant d\'être ass
   assert.ok(!(await poser(jn(c, 1, 0), { a: 'c4', t: HEURE }, 'hote')).ok, 'salle ancienne');
   const d = await creer();
   assert.ok(!(await poser(jn(d, 2, 0), { a: 'c4', t: HEURE }, 'ami')).ok, 'siège 2 libre');
+});
+
+// ------------------------------------------------------------- revue de sécurité (20 nov. 2026)
+// F1 (entrée antidatée derrière un trou) se règle dans journal.js, pas ici :
+// voir le test « numéro 99999 » ci-dessus.
+
+// F2 : écrire sur une salle de plus de 24 h, c'est la remettre à neuf — pas
+// prolonger l'ancienne en gardant ses sièges et ses journaux.
+async function pleineAgee(age) {
+  const c = code();
+  const t = Date.now() - age;
+  const s = salleV2('hote', { creeLe: t, mien: noeud({ pret: t }) });
+  s.siege2 = 'ami';
+  s.joueurs.ami = { siege: 2, pseudo: '', enLigne: true };
+  s.s1.j = { 0: { a: 'c4', t } };
+  s.s2 = { etat: noeud({ pret: t }), j: { 0: { a: 'c0', t } } };
+  const r = await poser(salle(c), s, 'owner');
+  assert.ok(r.ok, 'préparation : ' + JSON.stringify(r.val));
+  return c;
+}
+
+test('F2 salle périmée : pas de mise à jour partielle qui garde les sièges', async () => {
+  const c = await pleineAgee(JOUR + 60000);
+  for (const qui of ['intrus', 'hote', 'ami']) {
+    assert.ok(!(await fusionner(salle(c), { creeLe: HEURE }, qui)).ok, qui + ' : creeLe seul');
+    assert.ok(!(await fusionner(salle(c), { creeLe: HEURE, 's1/j/1': { a: 'c8', t: HEURE } }, qui)).ok, qui + ' : creeLe + journal');
+    assert.ok(!(await fusionner(salle(c), { creeLe: HEURE, 's2/j/1': { a: 'c8', t: HEURE } }, qui)).ok, qui + ' : creeLe + journal 2');
+  }
+  assert.ok(!(await fusionner(salle(c), {
+    creeLe: HEURE, siege1: 'intrus', 'joueurs/intrus': { siege: 1, pseudo: '', enLigne: true },
+  }, 'intrus')).ok, 'siège 1 repris, siège 2 gardé');
+  assert.ok(!(await fusionner(salle(c), {
+    creeLe: HEURE, siege1: 'intrus', siege2: null, s2: null, 's1/j': null,
+    'joueurs/intrus': { siege: 1, pseudo: '', enLigne: true },
+  }, 'intrus')).ok, 'fiches des anciens joueurs gardées');
+  // Ce que fait creerSalle (un set entier) passe toujours.
+  assert.ok((await poser(salle(c), salleV2('intrus'), 'intrus')).ok, 'remise à neuf');
+  const s = (await lire(salle(c))).val;
+  assert.strictEqual(s.siege1, 'intrus');
+  assert.strictEqual(s.siege2, undefined);
+  assert.strictEqual(s.s2, undefined);
+  assert.deepStrictEqual(Object.keys(s.joueurs), ['intrus']);
+});
+
+test('F2 salle périmée : plus d\'écriture des membres (nœud, journal, fiche)', async () => {
+  const c = await pleineAgee(JOUR + 60000);
+  assert.ok(!(await fusionner(etat(c, 1), { prog: 5 }, 'hote')).ok, 'hôte : s1/etat');
+  assert.ok(!(await fusionner(etat(c, 2), { prog: 5 }, 'ami')).ok, 'invité : s2/etat');
+  assert.ok(!(await poser(jn(c, 1, 1), { a: 'c8', t: HEURE }, 'hote')).ok, 'hôte : journal');
+  assert.ok(!(await poser(jn(c, 2, 1), { a: 'c8', t: HEURE }, 'ami')).ok, 'invité : journal');
+  assert.ok(!(await poser(salle(c) + '/joueurs/hote/pseudo', 'X', 'hote')).ok, 'hôte : fiche');
+  // Juste avant 24 h, tout passe encore.
+  const d = await pleineAgee(JOUR - 60000);
+  assert.ok((await fusionner(etat(d, 1), { prog: 5 }, 'hote')).ok, 'hôte : s1/etat');
+  assert.ok((await poser(jn(d, 2, 1), { a: 'c8', t: HEURE }, 'ami')).ok, 'invité : journal');
+  assert.ok((await poser(salle(d) + '/joueurs/ami/pseudo', 'X', 'ami')).ok, 'invité : fiche');
+});
+
+// F4 : partage a un schéma par jeu, plus un objet quelconque.
+test('F4 partage : échecs = { cadence } d\'une valeur connue', async () => {
+  const ok = (p) => poser(salle(code()), salleV2('hote', { partage: p }), 'hote');
+  for (const cadence of [0, 60, 180, 300, 600, 1800]) assert.ok((await ok({ cadence })).ok, 'cadence ' + cadence);
+  assert.ok(!(await ok({ cadence: 301 })).ok, 'cadence inconnue');
+  assert.ok(!(await ok({ cadence: '300' })).ok, 'cadence texte');
+  assert.ok(!(await ok({ cadence: 300, x: 1 })).ok, 'champ en trop');
+  assert.ok(!(await ok({ cadence: 300, gros: { a: { b: { c: 'x'.repeat(1000) } } } })).ok, 'objet imbriqué');
+  assert.ok(!(await ok({ niveau: 'expert', graine: 7 })).ok, 'autre schéma');
+  assert.ok(!(await ok(PARTAGE_BG)).ok, 'partage du backgammon');
+});
+
+test('F4 partage : backgammon = { longueur, videau, engage }', async () => {
+  const ok = (p) => poser(salle(code(), 'backgammon'), salleV2('hote', { jeu: 'backgammon', partage: p }), 'hote');
+  assert.ok((await ok(PARTAGE_BG)).ok, 'partage de remote.js');
+  assert.ok((await ok({ ...PARTAGE_BG, longueur: 1, videau: false })).ok, 'match en 1 sans videau');
+  assert.ok((await ok({ ...PARTAGE_BG, longueur: 5 })).ok, 'match en 5');
+  assert.ok(!(await ok({ ...PARTAGE_BG, longueur: 1 })).ok, 'videau dans un match en 1');
+  assert.ok(!(await ok({ ...PARTAGE_BG, longueur: 7 })).ok, 'longueur inconnue');
+  assert.ok(!(await ok({ ...PARTAGE_BG, videau: 'oui' })).ok, 'videau pas booléen');
+  assert.ok(!(await ok({ ...PARTAGE_BG, engage: 'AB'.repeat(32) })).ok, 'engage en majuscules');
+  assert.ok(!(await ok({ ...PARTAGE_BG, engage: 'ab'.repeat(33) })).ok, 'engage trop long');
+  assert.ok(!(await ok({ longueur: 3, videau: true })).ok, 'sans engage');
+  assert.ok(!(await ok({ ...PARTAGE_BG, x: 1 })).ok, 'champ en trop');
+  assert.ok(!(await ok({ cadence: 300 })).ok, 'partage des échecs');
 });
