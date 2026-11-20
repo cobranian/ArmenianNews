@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { useReveal } from '../hooks/useReveal.js'
+import { hashId } from '../hashId.js'
 import { Carousel } from './Carousel.jsx'
 import { Lightbox } from './Lightbox.jsx'
 import { Motif, hash, THEMES } from './motifs.jsx'
@@ -289,7 +290,7 @@ export function SocialWall() {
   // Seulement au premier montage, peu après le chargement : passé ce délai, le
   // lecteur a pu défiler ailleurs, et on ne le déplace pas d'autorité.
   useEffect(() => {
-    const id = decodeURIComponent(window.location.hash.slice(1))
+    const id = hashId(window.location.hash)
     const wall = wallRef.current
     if (!id || !wall || performance.now() > 15000) return
     const el = document.getElementById(id)

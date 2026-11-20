@@ -8,7 +8,12 @@ export const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 export const LONGUEUR_CODE = 6;
 export const PEREMPTION_MS = 24 * 60 * 60 * 1000;
 
-export function genererCode(rng = Math.random) {
+// Tirage cryptographique : 32 divise 2^32, donc aucun biais de modulo.
+function aleaCrypto() {
+  return crypto.getRandomValues(new Uint32Array(1))[0] / 4294967296;
+}
+
+export function genererCode(rng = aleaCrypto) {
   let code = '';
   for (let i = 0; i < LONGUEUR_CODE; i++) {
     code += ALPHABET[Math.floor(rng() * ALPHABET.length)];

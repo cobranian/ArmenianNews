@@ -36,11 +36,11 @@ test('salle2 : une course de bout en bout', async () => {
   const NetH = await nouveau('h-v2');
   const debut = { manche: 1, statut: 'enCours', prog: 0 };
   const hote = await NetH.creerSalle('echecs', {
-    partage: { niveau: 'expert', graine: 42 },
+    partage: { cadence: 300 },
     mien: { ...debut, pret: NetH.HEURE },
   });
   assert.strictEqual(hote.siege, 1);
-  assert.deepStrictEqual(hote.partage, { niveau: 'expert', graine: 42 });
+  assert.deepStrictEqual(hote.partage, { cadence: 300 });
   const base = `salles/echecs/${hote.code}`;
   assert.strictEqual((await lire(base + '/v')).val, 2);
   assert.ok(await attendre(async () => (await lire(base + '/joueurs/h-v2/enLigne')).val === true), 'présence de l\'hôte');
@@ -48,7 +48,7 @@ test('salle2 : une course de bout en bout', async () => {
   const NetA = await nouveau('a-v2');
   const ami = await NetA.rejoindreSalle('echecs', hote.code);
   assert.strictEqual(ami.siege, 2);
-  assert.deepStrictEqual(ami.partage, { niveau: 'expert', graine: 42 });
+  assert.deepStrictEqual(ami.partage, { cadence: 300 });
   await ami.poserPseudo('Ami');
   await ami.ecrireMien({ ...debut, pret: NetA.HEURE }, { remplacer: true });
 
@@ -145,11 +145,12 @@ test('socle : creerSalle passe au code suivant si le premier est occupé (refus 
   assert.ok((await poser('salles/backgammon/AAAAAA', gelee, 'owner')).ok);
   const Net = await nouveau('gel');
   await Net.connecter();
-  const vrai = Math.random;
+  // genererCode tire avec crypto.getRandomValues (un appel par caractère).
+  const vrai = crypto.getRandomValues;
   let n = 0;
-  Math.random = () => (n++ < 6 ? 0 : vrai());   // premier code tiré : AAAAAA
+  crypto.getRandomValues = (t) => (n++ < 6 ? t.fill(0) : vrai.call(crypto, t));   // premier code tiré : AAAAAA
   let s;
-  try { s = await Net.creerSalle('backgammon', {}); } finally { Math.random = vrai; }
+  try { s = await Net.creerSalle('backgammon', {}); } finally { crypto.getRandomValues = vrai; }
   assert.ok(n > 6, 'un second code a été tiré');
   assert.notStrictEqual(s.code, 'AAAAAA');
   assert.strictEqual(s.siege, 1);
