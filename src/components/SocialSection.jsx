@@ -1,6 +1,7 @@
 import { Component, Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n.jsx'
 import { SectionHead } from './SectionHead.jsx'
+import { hashId } from '../hashId.js'
 
 // Le mur Instagram · Facebook arrive APRÈS l'affichage de l'accueil (1er nov.
 // 2026). Il pesait 122 ko sur les 285 ko du HTML prérendu, et ses données, ses
@@ -24,7 +25,7 @@ const SocialWall = lazy(() => import('./Social.jsx').then((m) => ({ default: m.S
 // page) charge aussi le mur d'emblée : il la repousserait sinon de plusieurs
 // milliers de pixels pendant la lecture. Social.jsx rejoue ensuite l'ancre.
 function wantsWallNow(section) {
-  const id = decodeURIComponent(window.location.hash.slice(1))
+  const id = hashId(window.location.hash)
   if (!id) return false
   const el = document.getElementById(id)
   if (!el) return true

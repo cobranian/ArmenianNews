@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useReveal } from './hooks/useReveal.js'
 import { useI18n } from './i18n.jsx'
 import { SITE_ID } from './site.js'
+import { hashId } from './hashId.js'
 import { viewFromPath } from '../sites.config.js'
 import { Nav } from './components/Nav.jsx'
 import { Hero } from './components/Hero.jsx'
@@ -31,7 +32,7 @@ export default function App() {
   // la cible pendant que #root est encore vide, renonce, et ne réessaie jamais.
   // On rejoue le hash une fois les sections montées.
   useEffect(() => {
-    const id = decodeURIComponent(window.location.hash.slice(1))
+    const id = hashId(window.location.hash)
     if (!id) return
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView())
   }, [])
