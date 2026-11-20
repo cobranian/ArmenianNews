@@ -21,7 +21,9 @@ export const MAX_ACTION = 400;
 // son heure AVANT des entrées auxquelles l'autre joueur a déjà répondu — un
 // coup repris aux échecs, un double ou des dés choisis après coup au
 // backgammon. Un journal honnête s'écrit dans l'ordre, donc ses heures
-// serveur ne décroissent jamais (les règles exigent en outre n − 1 avant n).
+// serveur ne décroissent jamais. Les règles, elles, PERMETTENT le trou : elles
+// ne savent pas exiger n − 1 avant n ($n est un texte, « - » veut un nombre).
+// C'est cette coupure à la première entrée antidatée qui le désamorce.
 //
 // `provisoires` : Set des n de ce journal pas encore confirmés par le
 // serveur. Leur t est une estimation locale, qui peut tomber un peu avant la
