@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-20",
+  "lang": "es",
+  "generatedAt": "2026-11-20T03:30:52.674Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la agenda diplomática de Armenia con Italia, Argentina y Azerbaiyán, junto a proyecciones económicas oficiales y temas de política interior como la reforma constitucional y la liberalización de visados con la UE.",
+  "topics": [
+    {
+      "title": "Armenia e Italia firman programa de cooperación en defensa para 2027",
+      "text": "Ambos países celebraron consultas de defensa en Roma y rubricaron el programa bilateral para 2027. La firma refuerza la colaboración en materia de seguridad entre Ereván y Roma.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266144",
+          "title": "Armenia e Italia celebraron consultas de defensa en Roma y firmaron el programa de cooperación para 2027"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-italia-firman-programa-cooperacion-defensa/",
+          "title": "Armenia e Italia firman en Roma un programa bilateral de cooperación en defensa para 2027"
+        }
+      ]
+    },
+    {
+      "title": "Delegación de Córdoba avanza en inversiones y comercio agroindustrial con Armenia",
+      "text": "Autoridades y empresarios de la provincia argentina se reunieron con funcionarios armenios, incluido Vahan Kostanyan, para impulsar inversiones y exportaciones. El diálogo incluyó también aspectos de cooperación agroindustrial.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/una-delegacion-de-cordoba-se-reunio-con-autoridades-de-armenia-para-impulsar-inversiones-y-exportaciones-argentinas/",
+          "title": "Una delegación de Córdoba se reunió con autoridades de Armenia para impulsar inversiones y exportaciones argentinas"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266150",
+          "title": "Vahan Kostanyan recibió a una delegación empresarial de la provincia argentina de Córdoba"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-argentina-dialogaron-comercio-cooperacion-economica/",
+          "title": "Armenia y Argentina dialogan sobre comercio agroindustrial mientras Karekin II recibe a una delegación de Córdoba"
+        }
+      ]
+    },
+    {
+      "title": "Alen Simonyan visitará Azerbaiyán en diciembre para tratar cooperación y temas técnicos",
+      "text": "El presidente de la Asamblea Nacional armenia anunció una visita recíproca a Bakú en diciembre. El objetivo es abordar asuntos de cooperación y cuestiones técnicas entre ambos países.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/alen-simonyan-visitara-azerbaiyan-diciembre/",
+          "title": "Alen Simonyan anuncia una visita recíproca a Azerbaiyán en diciembre para abordar cooperación y asuntos técnicos"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266086",
+          "title": "Alen Simonyan visitará Azerbaiyán en diciembre"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan prevé tres viajes a Rusia en diciembre y reunión bilateral con Putin",
+      "text": "El primer ministro armenio confirmó que viajará a Rusia en tres ocasiones durante diciembre. Una de esas visitas incluirá un encuentro bilateral con el presidente Vladimir Putin.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/nikol-pashinyan-anuncia-tres-viajes-rusia-diciembre/",
+          "title": "Nikol Pashinyan anuncia tres viajes a Rusia en diciembre y confirma una reunión bilateral con Vladimir Putin"
+        }
+      ]
+    },
+    {
+      "title": "Gobierno armenio proyecta liberalización de visados con la UE para 2029",
+      "text": "Nikol Pashinyan considera realista alcanzar la exención de visados con la Unión Europea en 2029. Armenia presentó en Viena las prioridades de su política migratoria y destacó el diálogo de visados con Europa.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/prioridades-politica-migratoria-armenia-viena/",
+          "title": "Armenia presenta en Viena las prioridades de su política migratoria y destaca el diálogo de visados con Europa"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266119",
+          "title": "Pashinyan considera realista alcanzar la liberalización de visados con la Unión Europea en 2029"
+        }
+      ]
+    },
+    {
+      "title": "Crecimiento salarial y proyecciones de PIB marcan la agenda económica armenia",
+      "text": "El salario promedio alcanzó los 303 mil drams en 2025, frente a 204 mil en 2021. Las proyecciones oficiales estiman que el PIB nominal llegará a 13,61 billones de drams en 2027.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/salario-promedio-armenia-303-mil-drams-2025/",
+          "title": "El salario promedio en Armenia alcanzó los 303 mil drams en 2025 frente a los 204 mil registrados en 2021"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pib-nominal-armenia-proyecciones-oficiales/",
+          "title": "El PIB nominal de Armenia alcanzará los 13,61 billones de drams en 2027 según las proyecciones oficiales"
+        }
+      ]
+    },
+    {
+      "title": "Reforma constitucional: Pashinyan explica disolución del Consejo de Seguridad y no se presentará a la reelección",
+      "text": "El primer ministro detalló las razones para disolver el Consejo de Seguridad bajo la nueva Constitución. Además, prometió no postularse como candidato a primer ministro en las próximas elecciones si la reforma se aprueba.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266124",
+          "title": "Nikol Pashinyan explicó las razones para disolver el Consejo de Seguridad con la nueva Constitución"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266094",
+          "title": "Alen Simonyan se refirió a rumores sobre la disolución del Consejo de Seguridad"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266100",
+          "title": "Pashinyan promete no presentarse como candidato a primer ministro en las próximas elecciones si se aprueba la nueva Constitución"
+        }
+      ]
+    }
+  ]
+}

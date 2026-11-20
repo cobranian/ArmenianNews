@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-20",
+  "lang": "de",
+  "generatedAt": "2026-11-20T03:30:52.674Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über innenpolitische Reformen, aussenpolitische Kontakte und kulturelle Ereignisse.",
+  "topics": [
+    {
+      "title": "Neuer Verfassungsentwurf und Referendum",
+      "text": "Premierminister Paschinjan hat angekündigt, dass der Entwurf einer neuen Verfassung in der kommenden Woche veröffentlicht wird. Er stellte klar, dass er im Falle einer Ablehnung durch das Volk bei einem Referendum zurücktreten werde. Mehrere Quellen bestätigen den Zeitplan und die politische Bedeutung des Vorhabens.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/larmenie-devra-organiser-un-referendum-sur-ladhesion-a-lunion-europeenne-selon-pachinian/",
+          "title": "L’Arménie devra organiser un référendum sur l’adhésion à l’Union européenne, selon Pachinian"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015505",
+          "title": "Pachinian annonce la publication d’un projet de nouvelle Constitution"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-peuple-armenien-se-rendra-au-referendum-et-votera-massivement-en-faveur-de-la-nouvelle-constitution-selon-pachinian/",
+          "title": "Le peuple arménien se rendra au référendum et votera massivement en faveur de la nouvelle Constitution, selon Pachinian"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-le-projet-de-constitution-sera-publie-la-semaine-prochaine-si-le-peuple-le-rejette-par-referendum-je-demissionnerai/",
+          "title": "Nikol Pachinian : Le projet de Constitution sera publié la semaine prochaine. Si le peuple le rejette par référendum, je démissionnerai"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-projet-de-nouvelle-constitution-sera-publie-fin-novembre",
+          "title": "Le projet de nouvelle Constitution sera publié fin novembre"
+        }
+      ]
+    },
+    {
+      "title": "Mögliche vorgezogene Parlamentswahlen",
+      "text": "Juri Mowsessjan sprach von möglichen Neuordnungen in der politischen Landschaft und deutete vorgezogene Parlamentswahlen an. Dies wird im Zusammenhang mit dem Verfassungsprozess diskutiert.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36117/",
+          "title": "Politique arménienne : Youri Movsessian évoque de possibles recompositions et des législatives anticipées"
+        }
+      ]
+    },
+    {
+      "title": "Sicherheitsratschef reist nach Aserbaidschan",
+      "text": "Alen Simonjan, Sekretär des Sicherheitsrats, wird im Dezember nach Aserbaidschan reisen. Gleichzeitig betonte er, dass Armenien keine Feinde in der Region habe und warnte vor ausländischen Agenten im Land.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015500",
+          "title": "Le secrétaire du Conseil de sécurité, Alen Simonyan, se rendra en Azerbaïdjan en décembre"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-na-pas-dennemis-dans-sa-region-son-principal-ennemi-ce-sont-les-agents-etrangers-qui-operent-en-armenie-indique-alen-simonyan/",
+          "title": "L’Arménie n’a pas d’ennemis dans sa région. Son principal ennemi, ce sont les agents étrangers qui opèrent en Arménie indique Alen Simonyan"
+        }
+      ]
+    },
+    {
+      "title": "Verteidigungskooperation mit Italien",
+      "text": "In Rom fanden bilaterale Konsultationen im Verteidigungsbereich statt, bei denen ein Kooperationsprogramm für 2027 unterzeichnet wurde. Dies markiert eine Vertiefung der militärisch-technischen Zusammenarbeit.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266144",
+          "title": "Des consultations bilatérales entre l’Arménie et l’Italie dans le domaine de la défense se sont tenues à Rome, un programme de coopération pour 2027 a été signé"
+        }
+      ]
+    },
+    {
+      "title": "Wirtschaftliche Kontakte mit Argentinien",
+      "text": "Wahan Kostanjan empfing eine Geschäftsdelegation aus der argentinischen Provinz Córdoba. Ziel war die Ausweitung der Handels- und Investitionsbeziehungen.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266150",
+          "title": "Vahan Kostanyan a reçu une délégation d’hommes d’affaires en provenance de la province argentine de Córdoba"
+        }
+      ]
+    },
+    {
+      "title": "Kulturerbe im Athener Akropolismuseum",
+      "text": "Das kulturelle Erbe des antiken Armeniens wird in einer Ausstellung im Akropolismuseum in Athen präsentiert. Zwei Quellen berichten über die Eröffnung und die gezeigten Artefakte.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-patrimoine-culturel-de-larmenie-antique-expose-au-musee-de-lacropole-dathenes/",
+          "title": "Le patrimoine culturel de l’Arménie antique exposé au musée de l’Acropole d’Athènes"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-patrimoine-de-larmenie-antique-lhonneur-au-musee-de-lacropole-dathenes",
+          "title": "Le patrimoine de l’Arménie antique à l’honneur au musée de l’Acropole d’Athènes"
+        }
+      ]
+    },
+    {
+      "title": "Phonethon 2026 gestartet",
+      "text": "Der jährliche Phonethon zur Unterstützung Armeniens und der Diaspora ist für das Jahr 2026 angelaufen. Die Kampagne ruft zu Spenden und Engagement auf.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/cest-parti-pour-le-phonethon-2026/",
+          "title": "C’est parti pour le Phonéthon 2026 !"
+        }
+      ]
+    }
+  ]
+}
