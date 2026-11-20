@@ -66,6 +66,22 @@ test('youtubeMeta : domaine public traduit, pas de ligne de même licence hors B
   assert.ok(description.endsWith(`\n\n${musicLine('sergo')}`))
 })
 
+// Revue du 20 nov. 2026 : une piste CC BY-SA (mazia, otar) oblige elle aussi
+// la vidéo à la même licence — la description le taisait sous une photo CC BY.
+test('youtubeMeta : piste CC BY-SA sous une photo CC BY → ligne de même licence après la musique', () => {
+  const short = { ytTitle: 'Titre', ytLead: 'Chapeau.' }
+  const credit = { author: 'A', license: 'CC BY 4.0', commonsUrl: 'https://commons.wikimedia.org/wiki/File:X.jpg' }
+  const { description } = youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit, music: 'mazia' })
+  assert.ok(description.endsWith(`\n\n${musicLine('mazia')}\nCette vidéo est diffusée sous la même licence (CC BY-SA 4.0).`))
+  assert.equal(description.match(/même licence/g).length, 1)
+  // Piste CC BY (sergo) : rien à ajouter.
+  assert.doesNotMatch(youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit, music: 'sergo' }).description, /même licence/)
+  // Photo ET piste BY-SA : une seule ligne, sous la photo (texte des Shorts déjà publiés).
+  const both = youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit: { ...credit, license: 'CC BY-SA 3.0' }, music: 'mazia' }).description
+  assert.equal(both.match(/même licence/g).length, 1)
+  assert.ok(both.endsWith(musicLine('mazia')))
+})
+
 test('youtubeMeta : titre de plus de 100 caractères refusé, piste inconnue refusée', () => {
   const credit = { author: 'A', license: 'CC0', commonsUrl: 'https://commons.wikimedia.org/wiki/File:X.jpg' }
   assert.throws(() => youtubeMeta({ slug: 'duduk', lang: 'fr', short: { ytTitle: 'x'.repeat(95), ytLead: 'y' }, credit, music: 'mazia' }), /100/)

@@ -27,6 +27,11 @@
  * ajoute une ligne « ✗ <lang> vidéo ». `--short-only` ne retraduit PAS les
  * articles : il traduit les seuls shorts absents, périmés ou non conformes, contre les
  * <lang>.md à jour déjà présents.
+ *
+ * short.fr.json ABSENT (le brouillon n'a pas pu l'écrire) : il est rédigé ici,
+ * et le résumé le montre en entier sous la marque SHORT_DRAFTED_MARK — la
+ * fusion attend alors un second geste du relecteur (articles-publish.yml).
+ * Présent mais non conforme, il n'est JAMAIS réécrit : la PR le dit.
  */
 import { readFile, writeFile, rm } from 'node:fs/promises'
 import path from 'node:path'
@@ -41,7 +46,8 @@ import { buildTranslateMessages, parseArticleJson, plainName } from './lib/cultu
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
-import { validateShort, shortHash, parseShortJson, shortNeedsTranslation } from './lib/culture-short.mjs'
+import { shortHash, parseShortJson, shortNeedsTranslation, shortReference, shortReferenceOf, frShortAtPublish, SHORT_DRAFTED_MARK } from './lib/culture-short.mjs'
+import { shortLines } from './lib/culture-pr.mjs'
 import { translateShort } from './lib/culture-short-translate.mjs'
 import { draftShort } from './lib/culture-checks.mjs'
 import { readVideos } from './lib/culture-load.mjs'
@@ -95,29 +101,36 @@ if ((chosen?.commonsUrl ?? null) !== (meta.image?.commonsUrl ?? null)) {
 const sticky = {}
 
 // Le Short français : sans lui (absent, illisible, non conforme), aucune vidéo
-// n'est traduite et une seule ligne le dit.
-let shortFr = null
-try {
-  const parsed = parseShortJson(await readFile(path.join(base, 'short.fr.json'), 'utf-8'))
-  const frText = [fr.data.title, fr.data.description, fr.body].join('\n')
-  if (parsed && validateShort(parsed, { lang: 'fr', articleText: frText }).length === 0) shortFr = parsed
-} catch {
-  // absent : traité comme invalide
-}
-// Le brouillon n'a pas pu l'écrire (garde des nombres, panne) : on le rédige
-// ici, contre le fr.md relu, plutôt que de publier l'article sans vidéo pour
-// toujours. Sauf si la vidéo française est déjà en ligne (Garni).
-if (!shortFr && !(await readVideos(DIR))?.[slug]?.fr) {
-  const frText = [fr.data.title, fr.data.description, fr.body].join('\n')
+// n'est traduite et une seule ligne le dit. Il se lit contre shortReference du
+// fr.md — la référence même de culture-check et du brouillon.
+const frRef = shortReference({ title: fr.data.title, description: fr.data.description, body: fr.body })
+const frRaw = await readFile(path.join(base, 'short.fr.json'), 'utf-8').catch(() => null)
+const frState = frShortAtPublish({ raw: frRaw, reference: frRef, published: Boolean((await readVideos(DIR))?.[slug]?.fr) })
+let shortFr = frState.short
+// Présent mais non conforme : il n'est JAMAIS réécrit ici (il a été relu, ou
+// corrigé à la main) — culture-check le refuse, la PR le dit.
+if (frState.problems.length)
+  lines.push(`- ✗ fr vidéo — short.fr.json non conforme (${frState.problems.join(' ; ')}) : corrigez-le dans la PR ; il n'est pas réécrit`)
+// ABSENT : le brouillon n'a pas pu l'écrire (garde des nombres, panne). On le
+// rédige ici plutôt que de publier l'article sans vidéo pour toujours — mais
+// personne ne l'a lu : le résumé le montre en entier, et la marque
+// SHORT_DRAFTED_MARK suspend la fusion (articles-publish.yml) ou le rendu
+// (articles-merged.yml) jusqu'à la relecture.
+if (frState.draft) {
   const r = await draftShort({
-    title: fr.data.title, description: fr.data.description, body: fr.body, articleText: frText,
+    title: fr.data.title, description: fr.data.description, body: fr.body, articleText: frRef,
     chat: (o) => chatResilient({ ...o, sticky }),
   })
   if (r.short) {
     shortFr = r.short
     await writeFile(path.join(base, 'short.fr.json'), `${JSON.stringify(r.short, null, 2)}\n`)
-    lines.push('- ✓ fr vidéo — rédigée (absente du brouillon)', ...r.warnings.map((w) => `- ⚠️ ${w}`))
-    console.log(`  ✓ ${slug}/fr vidéo rédigée`)
+    lines.push(
+      `- ⏸️ fr vidéo — ${SHORT_DRAFTED_MARK} (absent du brouillon) : relisez-le, il n'a pas été approuvé avec l'article`,
+      ...r.warnings.map((w) => `- ⚠️ ${w}`),
+      '',
+      ...shortLines(r.short),
+    )
+    console.log(`  ✓ ${slug}/fr vidéo rédigée (à relire)`)
   } else {
     console.warn(`  ✗ ${slug}/fr vidéo : ${r.error}`)
   }
@@ -131,7 +144,7 @@ async function translateVideo(lang, t) {
   try {
     const r = await translateShort({
       lang, shortFr, sticky, chat: chatResilient,
-      articleText: [t.title, t.description, t.body].join('\n'),
+      articleText: shortReference(t),
     })
     await writeFile(path.join(base, `short.${lang}.json`), `${JSON.stringify(r.short, null, 2)}\n`)
     lines.push(`- ✓ ${lang} vidéo — \`${r.model}\``)
@@ -163,7 +176,7 @@ if (values['short-only'] && shortFr) {
       continue
     }
     const current = parseShortJson(await readFile(path.join(base, `short.${lang}.json`), 'utf-8').catch(() => ''))
-    if (!shortNeedsTranslation(current, { want, lang, articleText: mdText })) continue
+    if (!shortNeedsTranslation(current, { want, lang, articleText: shortReferenceOf(mdText) })) continue
     await translateVideo(lang, { title: md.data.title, description: md.data.description, body: md.body })
   }
 }

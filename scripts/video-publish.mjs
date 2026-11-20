@@ -76,7 +76,7 @@ for (const lang of langs) {
 if (!found.length) throw new Error(`${slug} : aucun rendu trouvé dans ${dir}/<lang>/${slug}.mp4`)
 
 // Le Short français porte la piste ; meta.json, le crédit de la photo.
-const music = musicLine(result.shorts.fr.music)
+const music = musicLine(result.frShort.music)
 if (!article.meta.image) throw new Error(`${slug} : l'article n'a pas d'image, pas de Short possible`)
 const { author, license, commonsUrl } = article.meta.image
 const credit = { author, license, commonsUrl }
@@ -84,7 +84,7 @@ const items = found.map(({ lang }) => ({
   slug,
   lang,
   asset: assetName(lang, slug),
-  ...youtubeMeta({ slug, lang, short: result.shorts[lang], credit, music: result.shorts.fr.music }),
+  ...youtubeMeta({ slug, lang, short: result.shorts[lang], credit, music: result.frShort.music }),
 }))
 const { reels, added } = addReels(await readReels(REELS), items.map(({ lang, asset }) => ({ slug, lang, asset, music })))
 const queue = enqueue(before, items, new Date(), { videos })

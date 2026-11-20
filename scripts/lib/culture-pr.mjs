@@ -22,6 +22,21 @@ function sourceLabel(s) {
   return `Wikipédia ${s.lang}, révision ${s.revision}`
 }
 
+// Le texte d'un Short tel que la PR le montre (aussi le résumé de
+// culture-translate quand il le rédige à la publication).
+export function shortLines(short) {
+  return [
+    `Piste : \`${short.music}\``,
+    '',
+    ...short.facts.map((f, i) => `${i + 1}. ${f.eyebrow} · **${f.title}** — ${f.text}`),
+    '',
+    `Titre de fin : ${short.outroTitle}`,
+    `Titre YouTube : ${short.ytTitle}`,
+    `Description YouTube : ${short.ytLead}`,
+    '',
+  ]
+}
+
 // La partie que le robot réécrit à chaque révision (entre les marqueurs).
 // `short` : le texte de la vidéo (short.fr.json) ; sans lui, `shortError` dit
 // pourquoi il manque.
@@ -51,19 +66,12 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
   lines.push('### 🎬 La vidéo')
   // TOUT ce qui sera publié est montré : cocher « Faits vérifiés » approuve
   // aussi ce texte (ytLead part tel quel dans la description YouTube).
-  if (short) {
-    lines.push(
-      `Piste : \`${short.music}\``,
-      '',
-      ...short.facts.map((f, i) => `${i + 1}. ${f.eyebrow} · **${f.title}** — ${f.text}`),
-      '',
-      `Titre de fin : ${short.outroTitle}`,
-      `Titre YouTube : ${short.ytTitle}`,
-      `Description YouTube : ${short.ytLead}`,
-      '',
-    )
-  } else {
-    lines.push(`⚠️ Pas de vidéo : ${shortError ?? 'aucun texte de Short (short.fr.json absent)'}. L’article se publie sans elle.`, '')
+  if (short) lines.push(...shortLines(short))
+  else {
+    // Sans texte, la publication en rédigera un (culture-translate) : la
+    // case cochée ne l'aura donc PAS approuvé, et le robot le soumet avant de
+    // fusionner (SHORT_DRAFTED_MARK, articles-publish.yml).
+    lines.push(`⚠️ Pas de vidéo : ${shortError ?? 'aucun texte de Short (short.fr.json absent)'}. À la publication, le robot en rédigera un et vous le soumettra avant de fusionner ; sans texte valide, l’article part sans vidéo.`, '')
   }
   lines.push('### Image')
   if (meta.candidates?.length) {

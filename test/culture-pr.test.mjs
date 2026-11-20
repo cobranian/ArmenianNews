@@ -1,7 +1,7 @@
 // test/culture-pr.test.mjs
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { AUTO_START, AUTO_END, buildAutoSection, buildPrBody, replaceAutoSection, isChecked, uncheck, ideasIssueBody } from '../scripts/lib/culture-pr.mjs'
+import { AUTO_START, AUTO_END, buildAutoSection, buildPrBody, replaceAutoSection, isChecked, uncheck, ideasIssueBody, shortLines } from '../scripts/lib/culture-pr.mjs'
 import { factsChecked } from '../scripts/lib/culture-validate.mjs'
 import { meta } from './helpers/culture-fixture.mjs'
 
@@ -221,4 +221,15 @@ test('section vidéo : piste, les 7 faits, le titre YouTube, dans la partie robo
 test('section vidéo : sans Short, l’avertissement et sa raison', () => {
   assert.match(buildAutoSection(base), /⚠️ Pas de vidéo/)
   assert.match(buildAutoSection({ ...base, shortError: 'JSON illisible' }), /⚠️ Pas de vidéo : JSON illisible/)
+  // Revue du 20 nov. 2026 : la publication en rédige un, que la case cochée
+  // n'approuve pas — la PR ne doit plus promettre « sans elle ».
+  assert.doesNotMatch(buildAutoSection(base), /se publie sans elle/)
+  assert.match(buildAutoSection(base), /le robot en rédigera un et vous le soumettra avant de fusionner/)
+})
+
+test('shortLines : le texte d’une vidéo, tel que la PR et le résumé de publication le montrent', () => {
+  const lines = shortLines(SHORT)
+  assert.equal(lines[0], 'Piste : `otar`')
+  assert.ok(lines.includes('Titre YouTube : Komitas, le père de la musique arménienne'))
+  assert.ok(buildAutoSection({ ...base, short: SHORT }).includes(lines.join('\n')))
 })

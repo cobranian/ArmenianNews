@@ -2,6 +2,7 @@
 // automatique (plan, règlement, registre). Aucun réseau.
 import { RETRY_GAP_MS, MAX_ATTEMPTS } from './social.mjs'
 import { entryFromMeta, addVideos } from './videos-add.mjs'
+import { pruneOnline } from './youtube-queue.mjs'
 
 export { MAX_ATTEMPTS }
 
@@ -51,7 +52,10 @@ export function consentOutcome(params, state) {
 // « <slug>:<lang> ». `posted` vaut l'horodatage ISO du plan (écrit et poussé
 // AVANT l'envoi), puis { at, id } une fois la vidéo en ligne — { at, id,
 // private: true } si YouTube l'a verrouillée en privé (projet non audité) :
-// elle reste au registre, la renvoyer ferait un doublon.
+// elle reste au registre, la renvoyer ferait un doublon. `api: true` marque
+// les entrées réglées par l'API (un `mark` n'en a pas) ; `inserts` :
+// { <jour PT>: n }, les envois tentés ce jour-là (usedToday). Une vidéo
+// privée abandonnée (`retry --drop`) devient { at, id, abandoned }.
 
 // Quota : 10 000 unités par jour et par projet, un envoi en coûte 1 600.
 export const PER_DAY = 6
@@ -105,9 +109,7 @@ export function planUploads({ queue, ledger, tokens, now = new Date(), perDay = 
   next.failed ??= {}
   const today = ptDay(now)
   if (Object.values(next.failed).some((f) => isQuotaFailure(f.error) && ptDay(f.last) === today)) return { ledger: next, uploads: [] }
-  // Tout envoi tenté ce jour PT a consommé du quota : plan en cours, en
-  // ligne, privé ou incertain. « abandonné … » n'est pas un horodatage.
-  const done = Object.values(next.posted).filter((v) => ISO.test(atOf(v) ?? '') && ptDay(atOf(v)) === today).length
+  const done = usedToday(next, today)
   const room = Math.max(0, Math.min(perDay - done, max))
   // Jeton refusé : la langue est mise de côté pour le reste du jour PT, et
   // le lendemain un SEUL de ses envois la reteste. Sans cela, deux envois
@@ -129,7 +131,25 @@ export function planUploads({ queue, ledger, tokens, now = new Date(), perDay = 
     next.posted[k] = stamp
     uploads.push(it)
   }
+  // Le compteur du jour PT, seul gardé : un envoi refusé à l'étape « envoi »
+  // sort de `posted` (settleUploads), mais son insert a coûté du quota. Rien
+  // de prévu : le registre reste tel quel (pas de commit pour rien).
+  if (uploads.length) next.inserts = { [today]: done + uploads.length }
   return { ledger: next, uploads }
+}
+
+// Le quota déjà consommé ce jour PT : les envois TENTÉS par l'API, comptés au
+// plan (`inserts`). Jamais les `mark` (une vidéo envoyée à la main, depuis
+// Chrome, ne coûte rien au projet) : ils prenaient la place des envois
+// automatiques. Le décompte des entrées de `posted` (plan en cours, ou
+// réglées par l'API : `api: true`) ne sert que de plancher, pour un registre
+// antérieur au compteur.
+export function usedToday(ledger, today) {
+  const counted = ledger?.inserts?.[today] ?? 0
+  const fromPosted = Object.values(ledger?.posted ?? {}).filter(
+    (v) => (typeof v === 'string' || v?.api) && ISO.test(atOf(v) ?? '') && ptDay(atOf(v)) === today,
+  ).length
+  return Math.max(counted, fromPosted)
 }
 
 // `results` : [{ key, ok, id?, private?, uncertain?, error? }] ; `planned` :
@@ -148,15 +168,17 @@ export function settleUploads(ledger, results, now = new Date(), planned = []) {
   for (const r of [...results, ...missing]) {
     const at = atOf(next.posted[r.key])
     const stamp = ISO.test(at ?? '') ? at : last
+    // `api: true` : un envoi de l'API, qui a coûté du quota (usedToday) — un
+    // `mark` n'en porte pas.
     if (r.ok) {
-      next.posted[r.key] = { at: stamp, id: r.id, ...(r.private ? { private: true } : {}) }
+      next.posted[r.key] = { at: stamp, id: r.id, api: true, ...(r.private ? { private: true } : {}) }
       delete next.failed[r.key]
       continue
     }
     const error = String(r.error ?? '').slice(0, 300)
     if (r.uncertain) {
       // Envoyée mais statut illisible : l'id est gardé, pour vérifier.
-      if (r.id) next.posted[r.key] = { at: stamp, id: r.id }
+      if (r.id) next.posted[r.key] = { at: stamp, id: r.id, api: true }
       next.failed[r.key] = { uncertain: true, last, error, ...(r.id ? { id: r.id } : {}) }
       continue
     }
@@ -171,9 +193,15 @@ export function settleUploads(ledger, results, now = new Date(), planned = []) {
 // est en ligne) et sortent de la file. Une vidéo privée ou incertaine reste en
 // file : le registre l'empêche de repartir, et son texte sert à `mark`.
 // Rend { queue, videos, added, warnings } sans muter les entrées.
+// Une entrée que culture-videos.json refuse (cleanVideo : titre vide, id mal
+// formé) n'est qu'un AVERTISSEMENT : levée, elle interrompait le règlement
+// avant l'écriture du registre, et l'id d'une vidéo bel et bien en ligne
+// était perdu. Elle reste alors en file, son id au registre.
+// La file sort aussi de ses éléments déjà en ligne par une autre voie
+// (`npm run videos:add`, pruneOnline) : sinon ils y attendaient pour toujours.
 export function applyUploads({ queue, videos, results, today }) {
   let out = structuredClone(videos ?? {})
-  const items = structuredClone(queue.items)
+  let items = structuredClone(queue.items)
   const added = []
   const warnings = []
   for (const r of results.filter((x) => x.ok && !x.private)) {
@@ -183,19 +211,26 @@ export function applyUploads({ queue, videos, results, today }) {
     const had = out[slug]?.[lang]
     if (had && had.youtube !== r.id) warnings.push(`${slug}/${lang} : culture-videos.json a déjà ${had.youtube}, ${r.id} non inscrit`)
     else {
-      const res = addVideos(out, [{ slug, lang, entry: entryFromMeta(meta, { youtube: r.id, uploadDate: today }) }])
-      out = res.videos
-      added.push(...res.added)
+      try {
+        const res = addVideos(out, [{ slug, lang, entry: entryFromMeta(meta, { youtube: r.id, uploadDate: today }) }])
+        out = res.videos
+        added.push(...res.added)
+      } catch (e) {
+        warnings.push(`${slug}/${lang} : ${r.id} en ligne mais non inscrit dans culture-videos.json (${e.message}) — à inscrire à la main`)
+        continue
+      }
     }
     if (i >= 0) items.splice(i, 1)
   }
+  items = pruneOnline({ items }, out).items
   return { queue: { ...queue, items }, videos: out, added, warnings }
 }
 
 // En doute : un envoi incertain (avec ou sans id) ou une vidéo restée privée.
 // Elle existe peut-être déjà sur YouTube : on ne la renvoie pas, on la
-// confirme (`mark`) ou on y renonce (`retry --drop`).
-const inDoubt = (v, f) => Boolean(f?.uncertain || (v && typeof v === 'object' && v.private))
+// confirme (`mark`) ou on y renonce (`retry --drop`). Une vidéo privée
+// abandonnée le reste : elle est sur la chaîne, la renvoyer ferait un doublon.
+const inDoubt = (v, f) => Boolean(f?.uncertain || (v && typeof v === 'object' && (v.private || v.abandoned)))
 const online = (v, f) => Boolean(v && typeof v === 'object' && v.id && !inDoubt(v, f))
 
 // Une vidéo envoyée à la main (Chrome), ou un envoi en doute vérifié sur la
@@ -228,7 +263,14 @@ export function retryUpload(ledger, key, { drop = false, now = new Date() } = {}
   if (!drop && online(v, f)) throw new Error(`${key} est en ligne (${v.id}) : le renvoyer ferait un doublon`)
   if (!drop && inDoubt(v, f)) throw new Error(`${key} est peut-être déjà sur YouTube (${f?.uncertain ? 'envoi incertain' : 'vidéo privée'}) : confirmez-la par mark, ou renoncez par retry --drop`)
   delete next.failed[key]
-  if (drop) next.posted[key] ??= `abandonné ${now.toISOString()}`
+  // Une vidéo PRIVÉE abandonnée garde son id (elle existe sur la chaîne),
+  // mais perd `private` : sans quoi le tableau de bord la réclamait encore
+  // (« Audit YouTube non accordé ») après le renoncement.
+  if (drop && v && typeof v === 'object' && v.private) {
+    const rest = { ...v, abandoned: now.toISOString() }
+    delete rest.private
+    next.posted[key] = rest
+  } else if (drop) next.posted[key] ??= `abandonné ${now.toISOString()}`
   else delete next.posted[key]
   return next
 }

@@ -74,7 +74,8 @@ const pickShort = (s) => ({
 })
 
 // Le texte du Short, rédigé APRÈS l'article et validé contre lui
-// (`articleText` : le fr.md tel qu'il sera écrit, celui que lit culture-check).
+// (`articleText` : shortReference de l'article — titre, description, corps —,
+// la référence même de culture-check et de culture-translate).
 // Même contrat que verifyClaims : ne lève jamais. `short` vaut null après
 // `attempts` échecs, `error` dit le dernier — la PR l'affiche
 // (« ⚠️ Pas de vidéo : … ») et l'article part sans vidéo.

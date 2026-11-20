@@ -5,9 +5,9 @@
 // la main (historique : video/youtube-meta/<slug>-<lang>.json).
 //
 // Description = chapeau, lien vers l'article (utm), crédit de la photo,
-// mots-dièse, puis crédit de la musique. La licence de la photo décide de sa
-// dernière ligne : une photo CC BY-SA oblige la vidéo à la même licence
-// (partage dans les mêmes conditions) ; domaine public, CC0 et CC BY
+// mots-dièse, puis crédit de la musique. Une œuvre CC BY-SA — la photo OU la
+// piste — oblige la vidéo à la même licence (partage dans les mêmes
+// conditions), et la description le dit ; domaine public, CC0 et CC BY
 // n'imposent que la mention de l'auteur.
 import { readFileSync } from 'node:fs'
 import { cultureUrl } from '../../sites.config.js'
@@ -69,10 +69,22 @@ export function musicLine(trackId) {
   return `♪ ${t.title} — ${t.author} · ${t.license} · ${t.url}`
 }
 
-function photoLines(lang, credit) {
+// La licence CC BY-SA qu'impose à la vidéo l'une de ses œuvres, null si
+// aucune. Celle de la photo d'abord : c'est la ligne des Shorts déjà publiés
+// (Khor Virap : photo BY-SA 3.0, piste BY-SA 4.0), que la file doit redire à
+// l'identique ; sinon celle de la piste (mazia, otar).
+const isBySa = (l) => /BY-SA/i.test(l ?? '')
+export function shareAlikeLicense(photoLicense, musicLicense) {
+  if (isBySa(photoLicense)) return photoLicense
+  return isBySa(musicLicense) ? musicLicense : null
+}
+
+// `same` : la licence imposée (shareAlikeLicense). Sous le crédit de la photo
+// quand c'est elle qui l'impose : le texte des Shorts déjà envoyés ne change pas.
+function photoLines(lang, credit, same) {
   const lic = PD[lang] && /^public domain$/i.test(credit.license) ? PD[lang] : credit.license
   const lines = [PHOTO[lang](credit.author, lic), credit.commonsUrl]
-  if (/BY-SA/i.test(credit.license)) lines.push(SAME[lang](credit.license))
+  if (same && same === credit.license) lines.push(SAME[lang](same))
   return lines
 }
 
@@ -83,16 +95,21 @@ export function youtubeMeta({ slug, lang, short, credit, music }) {
   const title = `${short.ytTitle} ${HASHTAG[lang]}`
   if (title.length > YT_TITLE_MAX) throw new Error(`${slug}/${lang} : titre de ${title.length} caractères (YouTube : ${YT_TITLE_MAX} max)`)
   const url = `${cultureUrl(lang, slug)}?utm_source=youtube&utm_medium=video`
+  const track = musicLine(music)
+  // Une piste CC BY-SA (mazia, otar) oblige elle aussi la vidéo à la même
+  // licence, quelle que soit la photo : la ligne suit alors son crédit.
+  const same = shareAlikeLicense(credit.license, TRACKS[music].license)
   const description = [
     short.ytLead,
     '',
     `${FULL[lang]} ${url}`,
     '',
-    ...photoLines(lang, credit),
+    ...photoLines(lang, credit, same),
     '',
     TAGS[lang],
     '',
-    musicLine(music),
+    track,
+    ...(same && same !== credit.license ? [SAME[lang](same)] : []),
   ].join('\n')
   return { title, description }
 }

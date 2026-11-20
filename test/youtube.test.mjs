@@ -25,9 +25,11 @@ import {
   isYtAuthFailure,
   isQuotaFailure,
   MAX_UPLOADS_PER_RUN,
+  usedToday,
 } from '../scripts/lib/youtube.mjs'
 import { uploadShort, isUploadUncertain } from '../scripts/lib/youtube-send.mjs'
 import { REEL_BASE } from '../scripts/lib/social.mjs'
+import { pruneOnline } from '../scripts/lib/youtube-queue.mjs'
 
 const NOW = new Date('2026-11-16T20:00:00Z') // 12:00 à Los Angeles
 const item = (slug, lang) => ({ slug, lang, asset: `${lang}-${slug}.mp4`, title: `Titre ${slug} ${lang} #Arménie`, description: `Chapeau ${slug}.\n\nL'article complet : https://x`, addedAt: '2026-11-15T00:00:00.000Z' })
@@ -53,10 +55,10 @@ test('planUploads : 8 en file, rien aujourd’hui → 6 ; 4 déjà envoyés ce j
   const ledger = emptyYtLedger()
   // Quatre envois ce jour PT, dont un à 00:30 heure de Los Angeles (08:30Z),
   // un plan en cours (horodatage nu) et une vidéo restée privée.
-  ledger.posted['w:fr'] = { at: '2026-11-16T08:30:00.000Z', id: 'aaaaaaaaaaa' }
+  ledger.posted['w:fr'] = { at: '2026-11-16T08:30:00.000Z', id: 'aaaaaaaaaaa', api: true }
   ledger.posted['x:fr'] = '2026-11-16T10:00:00.000Z'
-  ledger.posted['y:fr'] = { at: '2026-11-16T11:00:00.000Z', id: 'bbbbbbbbbbb', private: true }
-  ledger.posted['z:fr'] = { at: '2026-11-16T12:00:00.000Z', id: 'ccccccccccc' }
+  ledger.posted['y:fr'] = { at: '2026-11-16T11:00:00.000Z', id: 'bbbbbbbbbbb', api: true, private: true }
+  ledger.posted['z:fr'] = { at: '2026-11-16T12:00:00.000Z', id: 'ccccccccccc', api: true }
   // La veille PT (le 16 à 07:00Z = le 15 à 23:00 PT) : ne compte pas.
   ledger.posted['v:fr'] = { at: '2026-11-16T07:00:00.000Z', id: 'ddddddddddd' }
   ledger.posted['u:fr'] = 'abandonné 2026-11-16T12:00:00.000Z'
@@ -160,8 +162,8 @@ test('settleUploads : succès → { at, id } et l’échec passé s’efface ; p
     { key: 'a:fr', ok: true, id: 'qixjDSmLxfE' },
     { key: 'b:en', ok: true, id: 'iFGIKaDCy88', private: true },
   ], new Date(+NOW + 60_000))
-  assert.deepEqual(l.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE' })
-  assert.deepEqual(l.posted['b:en'], { at: NOW.toISOString(), id: 'iFGIKaDCy88', private: true })
+  assert.deepEqual(l.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE', api: true })
+  assert.deepEqual(l.posted['b:en'], { at: NOW.toISOString(), id: 'iFGIKaDCy88', api: true, private: true })
   assert.equal(l.failed['a:fr'], undefined)
 })
 
@@ -365,7 +367,7 @@ const statusFailed = () => settleUploads(planned(), [{ key: 'a:fr', ok: false, u
 
 test('markUpload : confirme un envoi en doute avec l’id inscrit, refuse un autre id', () => {
   const l = statusFailed()
-  assert.deepEqual(l.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE' })
+  assert.deepEqual(l.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE', api: true })
   assert.throws(() => markUpload(l, 'a:fr', 'iFGIKaDCy88', NOW), /qixjDSmLxfE/)
   const m = markUpload(l, 'a:fr', 'qixjDSmLxfE', NOW)
   assert.deepEqual(m.posted['a:fr'], { at: NOW.toISOString(), id: 'qixjDSmLxfE' })
@@ -398,4 +400,79 @@ test('CLI mark : confirme un envoi au statut illisible — culture-videos.json e
   assert.equal(videos.a.fr.youtube, 'qixjDSmLxfE')
   const queue = JSON.parse(await readFile(path.join(dir, 'youtube-queue.json'), 'utf8'))
   assert.deepEqual(queue.items.map((i) => i.slug), ['b'])
+})
+
+// --- Revue du 20 nov. 2026 ----------------------------------------------
+
+test('quota : un `mark` (envoi à la main) ne prend pas la place d’un envoi de l’API', () => {
+  const queue = queueOf(...['a', 'b', 'c', 'd'].map((s) => item(s, 'fr')))
+  const ledger = emptyYtLedger()
+  // Cinq vidéos inscrites à la main ce jour PT : aucune n'a coûté de quota.
+  for (const s of ['m1', 'm2', 'm3', 'm4', 'm5']) ledger.posted[`${s}:fr`] = { at: '2026-11-16T12:00:00.000Z', id: 'qixjDSmLxfE' }
+  assert.equal(usedToday(ledger, ptDay(NOW)), 0)
+  assert.deepEqual(keys(planUploads({ queue, ledger, tokens: ALL, now: NOW })), ['a:fr', 'b:fr'])
+})
+
+test('quota : un envoi refusé à l’étape « envoi » sort de `posted` mais reste compté ce jour PT', () => {
+  const queue = queueOf(...['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map((s) => item(s, 'fr')))
+  const r1 = planUploads({ queue, ledger: emptyYtLedger(), tokens: ALL, now: NOW, max: 4 })
+  assert.equal(r1.ledger.inserts[ptDay(NOW)], 4)
+  // Les quatre refusés net (4xx sur le PUT) : échecs sûrs, hors de `posted`.
+  const settled = settleUploads(r1.ledger, r1.uploads.map((u) => ({ key: `${u.slug}:${u.lang}`, ok: false, error: 'envoi : HTTP 400 boom' })), NOW)
+  assert.equal(Object.keys(settled.posted).length, 0)
+  assert.equal(usedToday(settled, ptDay(NOW)), 4)
+  const r2 = planUploads({ queue, ledger: settled, tokens: ALL, now: NOW, max: 10 })
+  assert.equal(r2.uploads.length, 2, 'six par jour PT, quatre déjà consommés')
+  // Le lendemain PT, le compteur repart de zéro (seul le jour courant est gardé).
+  const r3 = planUploads({ queue, ledger: r2.ledger, tokens: ALL, now: new Date('2026-11-17T20:00:00Z'), max: 10 })
+  assert.deepEqual(Object.keys(r3.ledger.inserts), ['2026-11-17'])
+})
+
+test('applyUploads : une vidéo déjà inscrite par videos:add sort de la file', () => {
+  const queue = queueOf(item('a', 'fr'), item('b', 'en'))
+  const videos = { a: { fr: { youtube: 'qixjDSmLxfE', title: 'A', description: 'A', uploadDate: '2026-11-15', duration: 'PT44S' } } }
+  const r = applyUploads({ queue, videos, results: [], today: '2026-11-16' })
+  assert.deepEqual(r.queue.items.map((i) => `${i.slug}:${i.lang}`), ['b:en'])
+  assert.deepEqual(pruneOnline(queue, videos).items.map((i) => i.slug), ['b'])
+})
+
+test('applyUploads : une entrée refusée par culture-videos.json est un avertissement, pas une exception', () => {
+  // Titre réduit à son mot-dièse : entryFromMeta le vide, cleanVideo le refuse.
+  const bad = { ...item('a', 'fr'), title: '#Arménie' }
+  const queue = queueOf(bad, item('b', 'fr'))
+  const r = applyUploads({ queue, videos: {}, results: [{ key: 'a:fr', ok: true, id: 'qixjDSmLxfE' }, { key: 'b:fr', ok: true, id: 'iFGIKaDCy88' }], today: '2026-11-16' })
+  assert.match(r.warnings.join(), /a\/fr : qixjDSmLxfE en ligne mais non inscrit/)
+  assert.deepEqual(r.added, ['b/fr'])
+  assert.deepEqual(r.queue.items.map((i) => i.slug), ['a'], 'reste en file, son id au registre')
+})
+
+test('CLI settle : le registre est écrit même si culture-videos.json refuse une entrée', async () => {
+  const dir = await dataDir()
+  await writeFile(path.join(dir, 'youtube-queue.json'), JSON.stringify(queueOf({ ...item('a', 'fr'), title: '#Arménie' })))
+  const l = emptyYtLedger()
+  l.posted['a:fr'] = NOW.toISOString()
+  await writeFile(path.join(dir, 'youtube-posted.json'), JSON.stringify(l))
+  await writeFile(path.join(dir, 'results.jsonl'), JSON.stringify({ key: 'a:fr', slug: 'a', lang: 'fr', ok: true, id: 'qixjDSmLxfE' }) + '\n')
+  const out = run(['settle', '--results', path.join(dir, 'results.jsonl'), '--data', dir], { YOUTUBE_AUTO: '1' })
+  assert.match(out, /non inscrit/)
+  const ledger = JSON.parse(await readFile(path.join(dir, 'youtube-posted.json'), 'utf8'))
+  assert.equal(ledger.posted['a:fr'].id, 'qixjDSmLxfE')
+})
+
+test('CLI settle sans résultat : la file perd ses vidéos déjà en ligne', async () => {
+  const dir = await dataDir()
+  await writeFile(path.join(dir, 'culture-videos.json'), JSON.stringify({ a: { fr: { youtube: 'qixjDSmLxfE', title: 'A', description: 'A', uploadDate: '2026-11-15', duration: 'PT44S' } } }))
+  run(['settle', '--results', path.join(dir, 'absent.jsonl'), '--data', dir], { YOUTUBE_AUTO: '1' })
+  const queue = JSON.parse(await readFile(path.join(dir, 'youtube-queue.json'), 'utf8'))
+  assert.deepEqual(queue.items.map((i) => i.slug), ['b'])
+})
+
+test('retryUpload --drop d’une vidéo privée : plus `private`, l’id gardé, et toujours pas de renvoi', () => {
+  const priv = settleUploads(planned(), [{ key: 'a:fr', ok: true, id: 'qixjDSmLxfE', private: true }], NOW)
+  const d = retryUpload(priv, 'a:fr', { drop: true, now: NOW })
+  assert.equal(d.posted['a:fr'].private, undefined)
+  assert.equal(d.posted['a:fr'].id, 'qixjDSmLxfE')
+  assert.equal(d.posted['a:fr'].abandoned, NOW.toISOString())
+  assert.throws(() => retryUpload(d, 'a:fr'), /--drop/)
+  assert.deepEqual(keys(planUploads({ queue: queueOf(item('a', 'fr')), ledger: d, tokens: ALL, now: NOW })), [])
 })

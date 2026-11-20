@@ -198,6 +198,29 @@ test('article hy.md refusé : pas de short hy même conforme', () => {
   assert.ok(r.shorts.fr)
 })
 
+// Revue du 20 nov. 2026. Le front-matter d'une traduction porte sourceHash
+// (64 hex), date et model : lus comme « l'article », leurs chiffres
+// blanchissaient un nombre inventé. Le Short se lit contre titre, description
+// et corps.
+test('short traduit : un nombre présent dans le seul front-matter (sourceHash, date) est refusé', () => {
+  const fr = shortFr()
+  const t = texts()
+  // Le 19 (date 2026-10-19) n'est écrit que dans le front-matter de en.md.
+  const en = shortTr(fr, { ytLead: 'Mort un 19, en 2026.' })
+  const r = validateArticle(withShorts({ fr: js(fr), en: js(en) }, { texts: t }))
+  assert.ok(r.errors.some((e) => /^short\.en\.json : nombres absents de l’article : 19, 2026/.test(e)), r.errors.join(' / '))
+  assert.equal(r.shorts.en, undefined)
+})
+
+test('vidéo française déjà en ligne, short fr en note : les autres langues restent publiables', () => {
+  const fr = { ...shortFr(), ytLead: 'Né en 1234.' } // nombre absent de fr.md : une note, la vidéo est en ligne
+  const r = validateArticle(withShorts({ fr: js(fr), en: js(shortTr(fr, { ytLead: 'Born.' })) }, { videos: { komitas: { fr: { youtube: 'x' } } } }))
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.notes.some((n) => n.startsWith('short.fr.json : nombres absents')))
+  assert.deepEqual(Object.keys(r.shorts), ['en'])
+  assert.deepEqual(r.frShort, fr, 'la référence (et sa piste) reste exposée')
+})
+
 test('vidéo déjà publiée : l’erreur du short devient une note, short non retenu', () => {
   const bad = { ...shortFr(), music: 'inconnue' }
   const r = validateArticle(withShorts({ fr: js(bad) }, { videos: { komitas: { fr: { youtube: 'x' } } } }))

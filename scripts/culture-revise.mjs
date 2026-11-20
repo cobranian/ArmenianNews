@@ -31,7 +31,7 @@ import { loadUnesco } from './lib/culture-unesco.mjs'
 import { draftSources } from './lib/culture-validate.mjs'
 import { checksFacts, measuresOverlap } from './lib/culture-peopleofar.mjs'
 import { entityTexts, editorialAlerts, verifyClaims, reviseShort } from './lib/culture-checks.mjs'
-import { parseShortJson, shortHash } from './lib/culture-short.mjs'
+import { parseShortJson, shortHash, shortReference } from './lib/culture-short.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { parseFrontMatter, serializeFrontMatter } from './lib/culture-markdown.mjs'
 import { buildAutoSection, replaceAutoSection, isChecked, uncheck } from './lib/culture-pr.mjs'
@@ -113,7 +113,9 @@ const overlap = overlapRatio(revised.body, sources.filter(measuresOverlap).map((
 const frText = serializeFrontMatter({ ...fr.data, title: revised.title, description: revised.description }, revised.body)
 await writeFile(frPath, frText)
 
-const video = reviseShort({ oldShort, returned: parseShortJson(res.text)?.short, oldText: frRaw, newText: frText })
+// Les références du Short (shortReference), pas les .md bruts : le front-matter
+// n'est pas l'article.
+const video = reviseShort({ oldShort, returned: parseShortJson(res.text)?.short, oldText: shortReference({ title: fr.data.title, description: fr.data.description, body: fr.body }), newText: shortReference(revised) })
 if (video.action === 'updated') await writeFile(shortPath, `${JSON.stringify(video.short, null, 2)}\n`)
 if (video.action === 'deleted') {
   await rm(shortPath)

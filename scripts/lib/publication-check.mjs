@@ -310,10 +310,12 @@ export function checkVideoCatchup({ articles, videos, queue, rendering = false }
 // `auto` : la variable YOUTUBE_AUTO (« 1 » = envoi automatique en service).
 export const YT_QUEUE_MAX = 14
 export const YT_QUEUE_STALE_DAYS = 5
-export function checkYoutubeQueue({ queue, ledger, auto, now = new Date() }) {
+// `videos` : culture-videos.json — une vidéo qui y figure est en ligne, même
+// absente du registre (inscrite par `npm run videos:add`) : elle n'attend plus.
+export function checkYoutubeQueue({ queue, ledger, auto, now = new Date(), videos = {} }) {
   const posted = ledger?.posted ?? {}
   const failed = ledger?.failed ?? {}
-  const pending = (queue?.items ?? []).filter((it) => !(ytKey(it.slug, it.lang) in posted))
+  const pending = (queue?.items ?? []).filter((it) => !(ytKey(it.slug, it.lang) in posted) && !videos?.[it.slug]?.[it.lang])
   const out = []
   if (auto !== '1' && pending.length)
     out.push({
@@ -329,9 +331,34 @@ export function checkYoutubeQueue({ queue, ledger, auto, now = new Date() }) {
       text: `File YouTube en retard : ${pending.length} en attente, la plus ancienne depuis ${Math.floor(oldest)} j`,
       action: auto === '1' ? 'Lire le journal du dernier envoi YouTube (quota, jetons)' : 'Téléverser la file en séance (Chrome), puis `node scripts/youtube-post.mjs mark <slug> <lang> <videoId>`',
     })
-  const authLangs = new Set()
+  // Un refus de jeton reste inscrit dans `failed` jusqu'au prochain envoi de
+  // CET élément : le jeton recollé, « refusé » serait faux (même piège que les
+  // clés des réseaux, PR #201). Un envoi réussi par l'API dans la langue
+  // APRÈS le dernier refus prouve que le jeton marche : la ligne devient une
+  // info, et ces éléments repartent seuls (aucun essai n'a été compté).
+  const langOf = (key) => key.slice(key.lastIndexOf(':') + 1)
+  const lastOk = new Map()
+  for (const [key, v] of Object.entries(posted))
+    if (v && typeof v === 'object' && v.api && v.id && !(failed[key]?.uncertain)) {
+      const l = langOf(key)
+      if (!lastOk.has(l) || v.at > lastOk.get(l)) lastOk.set(l, v.at)
+    }
+  const authLast = new Map()
+  for (const [key, f] of Object.entries(failed))
+    if (isYtAuthFailure(f.error)) {
+      const l = langOf(key)
+      authLast.set(l, [...(authLast.get(l) ?? []), f.last])
+    }
+  const authLangs = new Set([...authLast].filter(([l, lasts]) => !lastOk.has(l) || lasts.some((t) => t > lastOk.get(l))).map(([l]) => l))
+  for (const [lang, lasts] of [...authLast].sort())
+    if (!authLangs.has(lang))
+      out.push({
+        key: `yt-auth-ok-${lang}`,
+        level: 'info',
+        text: `YouTube ${lang} : ${lasts.length} envoi(s) refusé(s) jadis par un jeton invalide — le jeton marche, ils repartent seuls à leur tour, sans essai perdu`,
+      })
   for (const [key, f] of Object.entries(failed)) {
-    if (isYtAuthFailure(f.error)) authLangs.add(key.slice(key.lastIndexOf(':') + 1))
+    if (isYtAuthFailure(f.error)) continue
     else if (f.uncertain)
       out.push({
         key: `yt-uncertain-${key}`,

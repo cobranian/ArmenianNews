@@ -38,6 +38,7 @@ import { entityTexts, editorialAlerts, verifyClaims, draftShort } from './lib/cu
 import { makeImages } from './lib/culture-image.mjs'
 import { overlapRatio } from './lib/culture-overlap.mjs'
 import { serializeFrontMatter } from './lib/culture-markdown.mjs'
+import { shortReference } from './lib/culture-short.mjs'
 import { buildPrBody, ideasIssueBody } from './lib/culture-pr.mjs'
 import { CULTURE_PAUSE, culturePaused } from './lib/culture-pause.mjs'
 
@@ -212,8 +213,9 @@ async function draftArticle({ topic, event }) {
   const frText = serializeFrontMatter({ title: draft.title, description: draft.description, date }, draft.body)
   // La vidéo, par un appel à part et depuis l'article tel qu'il sera écrit :
   // son échec ne coûte que la vidéo (pas de short.fr.json, ⚠️ dans la PR).
+  // Validée contre shortReference (titre, description, corps), comme partout.
   const video = await draftShort({
-    title: draft.title, description: draft.description, body: draft.body, articleText: frText,
+    title: draft.title, description: draft.description, body: draft.body, articleText: shortReference(draft),
     chat: (o) => chatDraft({ ...o, sticky }),
   })
   if (video.error) console.warn(`✗ short : ${video.error}`)
