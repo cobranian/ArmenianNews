@@ -13,16 +13,34 @@ export const MAX_ACTION = 400;
 
 // Un journal tel que lu dans la salle (objet { "0": {a, t}, … }, ou tableau
 // quand Firebase le rend ainsi) → ses entrées valides, de n = 0 jusqu'au
-// premier trou ou à la première entrée mal formée (exclus).
-export function lireJournal(brut, siege) {
+// premier trou, à la première entrée mal formée, ou à la première entrée
+// ANTIDATÉE — plus ancienne que la précédente (exclus).
+//
+// Pourquoi l'antidatage : une entrée écrite tôt derrière un trou (n + 1 avant
+// n) reste invisible jusqu'à ce que le trou soit comblé, puis se trierait par
+// son heure AVANT des entrées auxquelles l'autre joueur a déjà répondu — un
+// coup repris aux échecs, un double ou des dés choisis après coup au
+// backgammon. Un journal honnête s'écrit dans l'ordre, donc ses heures
+// serveur ne décroissent jamais (les règles exigent en outre n − 1 avant n).
+//
+// `provisoires` : Set des n de ce journal pas encore confirmés par le
+// serveur. Leur t est une estimation locale, qui peut tomber un peu avant la
+// précédente : ils ne sont pas coupés, mais ramenés à l'heure de la dernière
+// entrée confirmée, et ne servent pas de référence aux suivantes.
+export function lireJournal(brut, siege, provisoires = null) {
   const res = [];
   if (!brut || typeof brut !== 'object') return res;
+  let dernier = -Infinity;
   for (let n = 0; n <= MAX_N; n++) {
     const e = brut[n];
     if (!e || typeof e !== 'object' || Array.isArray(e)) break;
-    const { a, t } = e;
+    const { a } = e;
+    let { t } = e;
     if (typeof a !== 'string' || a.length < 1 || a.length > MAX_ACTION) break;
     if (typeof t !== 'number' || !Number.isFinite(t)) break;
+    if (provisoires && provisoires.has(n)) t = Math.max(t, dernier);
+    else if (t < dernier) break;
+    else dernier = t;
     res.push({ siege, n, a, t });
   }
   return res;
@@ -32,7 +50,10 @@ export function lireJournal(brut, siege) {
 // `provisoires` : Set des n de MON journal pas encore confirmés par le
 // serveur (leur t est une estimation locale) ; `monSiege` les désigne.
 export function fusionner(brut1, brut2, { monSiege = 0, provisoires = null } = {}) {
-  const tout = [...lireJournal(brut1, 1), ...lireJournal(brut2, 2)];
+  const tout = [
+    ...lireJournal(brut1, 1, monSiege === 1 ? provisoires : null),
+    ...lireJournal(brut2, 2, monSiege === 2 ? provisoires : null),
+  ];
   for (const e of tout) e.provisoire = !!(provisoires && e.siege === monSiege && provisoires.has(e.n));
   tout.sort((x, y) => x.t - y.t || x.siege - y.siege || x.n - y.n);
   return tout;

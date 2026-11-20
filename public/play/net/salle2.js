@@ -179,7 +179,7 @@ function ouvrir(jeu, code, siege, ctx, partage) {
     async ajouter(action) {
       await suivreJournaux();
       for (let essai = 0; essai < 3; essai++) {
-        const n = lireJournal(bruts[siege], siege).length;
+        const n = lireJournal(bruts[siege], siege, provisoires).length;
         provisoires.add(n);
         try {
           await set(ref(db, base + '/s' + siege + '/j/' + n), { a: String(action), t: HEURE });
@@ -197,7 +197,7 @@ function ouvrir(jeu, code, siege, ctx, partage) {
     },
     // cb(entrees) à chaque changement des journaux : [{ siege, n, a, t,
     // provisoire }] triées par (t, siège, n), chaque journal coupé à son
-    // premier trou. Rend la fonction de désabonnement.
+    // premier trou ou à sa première entrée antidatée (journal.js). Rend la fonction de désabonnement.
     surJournal(cb) {
       ecouteurs.add(cb);
       suivreJournaux().then(() => { if (ecouteurs.has(cb)) cb(fusionner(bruts[1], bruts[2], { monSiege: siege, provisoires })); });
