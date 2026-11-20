@@ -20,6 +20,14 @@ export async function readQueue(file) {
   }
 }
 
+// La file sans ses éléments déjà en ligne (culture-videos.json) — inscrits
+// par une autre voie que l'envoi (`npm run videos:add`, vidéo envoyée à la
+// main) : ils n'en sortaient jamais, et le tableau de bord les comptait en
+// attente. Rend une NOUVELLE file.
+export function pruneOnline(queue, videos) {
+  return { ...queue, items: (queue?.items ?? []).filter((i) => !videos?.[i.slug]?.[i.lang]) }
+}
+
 // `adds` : [{ slug, lang, asset, title, description }]. Rend une NOUVELLE file
 // (l'entrée n'est pas mutée), les ajouts à la fin, dans l'ordre d'arrivée.
 export function enqueue(queue, adds, now, { videos = {} } = {}) {

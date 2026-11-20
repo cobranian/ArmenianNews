@@ -258,7 +258,7 @@ async function videos() {
   const ledger = await data('youtube-posted.json')
   return [
     ...checkVideos({ articles: await articles(), videos: list, langs: ALL_LANGS, now }),
-    ...checkYoutubeQueue({ queue, ledger, auto: env.YOUTUBE_AUTO, now }),
+    ...checkYoutubeQueue({ queue, ledger, auto: env.YOUTUBE_AUTO, now, videos: list }),
     ...checkVideoCatchup({ articles: await shortResults(list), videos: list, queue, rendering: await videoRendering() }),
   ]
 }

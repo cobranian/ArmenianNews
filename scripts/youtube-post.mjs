@@ -39,7 +39,7 @@ import {
   zurichDay,
   MAX_ATTEMPTS,
 } from './lib/youtube.mjs'
-import { readQueue } from './lib/youtube-queue.mjs'
+import { readQueue, pruneOnline } from './lib/youtube-queue.mjs'
 import { uploadShort, isUploadUncertain } from './lib/youtube-send.mjs'
 import { redact } from './lib/social.mjs'
 
@@ -140,11 +140,20 @@ async function doSettle() {
     if (e.code !== 'ENOENT') throw e
   }
   const results = text.split('\n').filter(Boolean).map((l) => JSON.parse(l))
-  if (!results.length && !planned.length) return console.log('· youtube : aucun résultat à reporter')
+  if (!results.length && !planned.length) {
+    // Rien d'envoyé, mais la file peut porter des vidéos inscrites par une
+    // autre voie (videos:add) : elles en sortent ici.
+    const queue = await readQueue(QUEUE)
+    const pruned = pruneOnline(queue, await readVideos())
+    if (pruned.items.length !== queue.items.length) await writeJson(QUEUE, pruned)
+    return console.log(`· youtube : aucun résultat à reporter${pruned.items.length !== queue.items.length ? ` ; ${queue.items.length - pruned.items.length} vidéo(s) déjà en ligne retirée(s) de la file` : ''}`)
+  }
   const now = new Date()
+  // Le registre D'ABORD : c'est lui qui garde l'id d'une vidéo en ligne. Une
+  // erreur ensuite (file, culture-videos.json) ne doit pas le perdre.
   const ledger = settleUploads(await readLedger(), results, now, planned)
-  const applied = applyUploads({ queue: await readQueue(QUEUE), videos: await readVideos(), results, today: zurichDay(now) })
   await writeJson(LEDGER, ledger)
+  const applied = applyUploads({ queue: await readQueue(QUEUE), videos: await readVideos(), results, today: zurichDay(now) })
   await writeJson(QUEUE, applied.queue)
   if (applied.added.length) await writeJson(VIDEOS, applied.videos)
   for (const a of applied.added) console.log(`  + culture-videos.json : ${a}`)

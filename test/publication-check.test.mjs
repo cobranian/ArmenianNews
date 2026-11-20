@@ -28,6 +28,7 @@ import {
   VIDEO_LATE_DAYS,
   reelCounts,
 } from '../scripts/lib/publication-check.mjs'
+import { retryUpload } from '../scripts/lib/youtube.mjs'
 
 const now = new Date('2026-11-02T12:00:00Z')
 const gemini402 = { label: 'Gemini', model: 'gemini-flash-latest', ok: false, status: 402, explain: 'Gemini : crédit épuisé (HTTP 402) — rechargez' }
@@ -335,6 +336,33 @@ test('checkYoutubeQueue : une vidéo restée privée signale l’audit non accor
 test('checkYoutubeQueue : un envoi incertain demande vérification (mark ou retry --drop)', () => {
   const rows = yt({ ledger: led({}, { 'ani:fr': { uncertain: true, last: 'x', error: 'e' } }) })
   assert.match(rows.find((x) => x.key === 'yt-uncertain-ani:fr').action, /mark ani fr .*retry ani:fr --drop/)
+})
+
+// Revue du 20 nov. 2026 : trois lignes qui restaient vraies après les faits.
+test('checkYoutubeQueue : une vidéo déjà dans culture-videos.json (videos:add) n’est plus en attente', () => {
+  const videos = { ani: { fr: { youtube: 'abcdefghijk' } } }
+  const rows = yt({ auto: undefined, videos, queue: { items: [it('ani', 'fr'), it('ani', 'de')] } })
+  assert.match(rows.find((x) => x.key === 'yt-queue-manual').text, /^1 vidéo\(s\) .*ani\/de$/)
+  const old = [it('ani', 'fr', '2026-10-01T00:00:00Z')]
+  assert.equal(yt({ videos, queue: { items: old } }).some((x) => x.key === 'yt-queue-late'), false)
+})
+
+test('checkYoutubeQueue : jeton recollé — un envoi réussi APRÈS le refus éteint « refusé »', () => {
+  const f = { attempts: 0, last: '2026-11-02T00:00:00Z', error: 'jeton : invalid_grant' }
+  // Un envoi de l'API réussi le lendemain : le jeton marche.
+  const ok = { at: '2026-11-03T10:00:00.000Z', id: 'abcdefghijk', api: true }
+  const rows = yt({ ledger: led({ 'z:hy': ok }, { 'a:hy': f, 'b:hy': f }) })
+  assert.equal(rows.some((x) => x.key === 'yt-auth-hy'), false)
+  assert.match(rows.find((x) => x.key === 'yt-auth-ok-hy').text, /2 envoi\(s\) refusé\(s\) jadis .*le jeton marche/)
+  // Un `mark` (envoi à la main) ne prouve rien du jeton ; un succès ANTÉRIEUR non plus.
+  assert.ok(yt({ ledger: led({ 'z:hy': { at: '2026-11-03T10:00:00.000Z', id: 'abcdefghijk' } }, { 'a:hy': f }) }).some((x) => x.key === 'yt-auth-hy'))
+  assert.ok(yt({ ledger: led({ 'z:hy': { ...ok, at: '2026-11-01T10:00:00.000Z' } }, { 'a:hy': f }) }).some((x) => x.key === 'yt-auth-hy'))
+})
+
+test('checkYoutubeQueue : une vidéo privée abandonnée (retry --drop) ne réclame plus l’audit', () => {
+  const priv = { 'ani:fr': { at: '2026-11-02T00:00:00.000Z', id: 'abcdefghijk', api: true, private: true } }
+  const dropped = retryUpload(led(priv), 'ani:fr', { drop: true, now })
+  assert.equal(yt({ ledger: dropped }).some((x) => x.key === 'yt-private'), false)
 })
 
 test('checkWorkflows : un échec de video.yml lève son alerte', () => {

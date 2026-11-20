@@ -12,6 +12,7 @@ import { parseArgs } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import { ALL_LANGS } from '../sites.config.js'
 import { addVideos, entryFromMeta, parseIdLines } from './lib/videos-add.mjs'
+import { readQueue, pruneOnline } from './lib/youtube-queue.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const { values, positionals } = parseArgs({
@@ -54,4 +55,12 @@ const { videos, added, skipped } = addVideos(JSON.parse(await readFile(file, 'ut
 for (const a of added) console.log(`  + ${a}`)
 for (const s of skipped) console.log(`  = ${s} (déjà là)`)
 if (!values.dry && added.length) await writeFile(file, JSON.stringify(videos, null, 2) + '\n')
+// Les vidéos inscrites sortent aussi de la file YouTube : sinon elles y
+// attendaient pour toujours, comptées « à téléverser » par le tableau de bord.
+const queueFile = path.join(root, 'src/data/youtube-queue.json')
+const queue = await readQueue(queueFile)
+const pruned = pruneOnline(queue, videos)
+const left = queue.items.length - pruned.items.length
+if (left) console.log(`  - youtube-queue.json : ${left} élément(s) déjà en ligne retiré(s)`)
+if (!values.dry && left) await writeFile(queueFile, JSON.stringify(pruned, null, 2) + '\n')
 console.log(`${added.length} ajoutée(s), ${skipped.length} déjà présente(s)${values.dry ? ' — --dry : rien écrit' : ''}`)
