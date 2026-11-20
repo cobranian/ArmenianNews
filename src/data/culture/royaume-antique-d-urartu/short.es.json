@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Altiplano armenio",
+      "title": "El reino de Biaineli",
+      "text": "En el siglo IX a. C. nació Urartu, imperio surgido en torno a los lagos Van, Seván y Urmia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Lago Van",
+      "title": "Tushpa",
+      "text": "Hacia el 832 a. C., el rey Sarduri I estableció su capital al pie de la imponente roca de Van.",
+      "big": false
+    },
+    {
+      "eyebrow": "Argishti I",
+      "title": "782 a. C.",
+      "text": "El rey Argishti I fundó la fortaleza de Erebuni, antecesora directa de la actual capital Ereván.",
+      "big": true
+    },
+    {
+      "eyebrow": "Canal de Menua",
+      "title": "Más de 50 km",
+      "text": "Esta red transportaba agua dulce hasta Tushpa y continúa en funcionamiento hoy en día.",
+      "big": true
+    },
+    {
+      "eyebrow": "Trabajo del bronce",
+      "title": "Maestros del metal",
+      "text": "Con la cera perdida crearon calderos rituales, yelmos y escudos ricamente decorados.",
+      "big": false
+    },
+    {
+      "eyebrow": "Inscripción de Behistún",
+      "title": "Armina",
+      "text": "Hacia el 520 a. C., el rey Darío I tradujo el nombre babilonio Urashtu por Armina, Armenia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Continuidad histórica",
+      "title": "El legado de Urartu",
+      "text": "Sus fortalezas mantuvieron una ocupación continua bajo la dinastía oróntida armenia.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Urartu",
+  "ytTitle": "Urartu, el poderoso imperio del altiplano y cuna de Armenia",
+  "ytLead": "Potencia soberana de la Edad del Hierro, el reino de Urartu dominó en torno a los lagos Van, Seván y Urmia. Cuna del altiplano armenio, legó fortalezas y canales milenarios.",
+  "sourceHash": "a081cef8ce9102aa8531e3698471b6d85cfc8321129dad175a460f8bc2e8f51a",
+  "model": "gemini-flash-latest"
+}

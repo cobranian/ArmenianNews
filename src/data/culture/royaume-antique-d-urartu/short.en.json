@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Armenian Highlands",
+      "title": "The Kingdom of Biaineli",
+      "text": "In the 9th century BCE, Urartu arose as a major power around Lakes Van, Sevan, and Urmia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Lake Van",
+      "title": "Tushpa",
+      "text": "Around 832 BCE, King Sarduri I founded his royal capital at the foot of the Rock of Van.",
+      "big": false
+    },
+    {
+      "eyebrow": "Argishti I",
+      "title": "782 BCE",
+      "text": "King Argishti I founded the fortress of Erebuni in 782 BCE, the direct ancestor of modern Yerevan.",
+      "big": true
+    },
+    {
+      "eyebrow": "Menua Canal",
+      "title": "Over 50 km",
+      "text": "This ancient irrigation network conveyed fresh water to Tushpa and remains in use today.",
+      "big": true
+    },
+    {
+      "eyebrow": "Bronze Metallurgy",
+      "title": "Masters of Metal",
+      "text": "Using the lost-wax technique, artisans crafted ritual cauldrons, helmets, and engraved shields.",
+      "big": false
+    },
+    {
+      "eyebrow": "Behistun Inscription",
+      "title": "Armina",
+      "text": "Around 520 BCE, King Darius translated the Babylonian name Urashtu as Armina, meaning Armenia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Historical Continuity",
+      "title": "The Legacy of Urartu",
+      "text": "Its major fortresses saw continuous occupation under the Armenian Orontid dynasty.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Urartu",
+  "ytTitle": "Urartu: The Mighty Highland Empire Ancestor to Armenia",
+  "ytLead": "A sovereign Iron Age power, the Kingdom of Urartu reigned around Lakes Van, Sevan, and Urmia, shaping the cradle of the Armenian Highlands.",
+  "sourceHash": "a081cef8ce9102aa8531e3698471b6d85cfc8321129dad175a460f8bc2e8f51a",
+  "model": "gemini-flash-latest"
+}

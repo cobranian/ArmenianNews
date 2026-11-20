@@ -1,0 +1,37 @@
+---
+title: "Urartäisches Reich: Souveräne Grossmacht und Wiege des armenischen Hochlands"
+description: "Geschichte, Architektur und Ausstrahlung des Urartäischen Reichs (Biaineli), einer Grossmacht der Eisenzeit rund um den Van-, Urmia- und Sewansee."
+date: "2026-11-20"
+sourceHash: "751285ff8e3b2273"
+model: "gemini-flash-latest"
+---
+
+## Die Entstehung eines Königreichs auf dem armenischen Hochland
+
+Im 9. Jahrhundert vor unserer Zeitrechnung, um 860 v. Chr., bildete sich auf dem armenischen Hochland eine der bemerkenswertesten Zivilisationen des Alten Orients heraus: das Urartäische Reich. Von seinen eigenen Herrschern in ihren Inschriften als *Biaineli* bezeichnet, fand dieser Staat seine geografische Wiege inmitten der gewaltigen Gebirgsmassive und Seebecken der Region, rund um den Vansee, den Urmiasee und den Sewansee.
+
+Die ältesten Erwähnungen dieses Gebiets stammen aus assyrischen Annalen. Bereits im 13. Jahrhundert v. Chr., unter Salmanassar I., berichten mesopotamische Texte von Feldzügen gegen die acht Länder von «Uruatri», die als Konföderation von Fürstentümern beschrieben werden. Salmanassars I. Nachfolger, Tukulti-Ninurta I., verwendet die Bezeichnung «Land Nairi», ein Begriff, den auch Tiglat-Pileser I. aufgreift, der behauptet, «60 Könige von Nairi» bekämpft zu haben. Angesichts des wiederholten Drucks durch das assyrische Reich im Süden schlossen sich diese verschiedenen Stammesgebilde schrittweise zusammen. Dieser politische Einigungsprozess fand seinen Abschluss unter der Führung von Arame (ca. 860–843 v. Chr.), dem ersten bezeugten König des Urartäischen Reichs, dessen Zentren Sugunia und Arzaschkun von Salmanassar III. angegriffen wurden.
+
+Eine neue Dynastie setzte sich daraufhin mit Sarduri I., Sohn von Lutipri, um 832 v. Chr. durch. Dieser Monarch verlegte die königliche Hauptstadt nach Tuschpa (das heutige Van) am Ostufer des Vansees. Am Fusse des imposanten Burgfelsens von Van liess er eine gewaltige Mauer aus zyklopischen Blöcken mit akkadischen Inschriften errichten, in denen er sich die Titel «Grosser König» und «König von Nairi» beilegte.
+
+## Der militärische und territoriale Höhepunkt von Biaineli
+
+Unter den aufeinanderfolgenden Regierungszeiten von Ischpuini und seinem Sohn Menua an der Wende vom 9. zum 8. Jahrhundert v. Chr. entwickelte sich das Reich zu einer bedeutenden expansionistischen Macht. Ischpuini gliederte die heilige Stadt Musasir (Ardini) ein, das Kultzentrum des Haldi, der von da an zur obersten Gottheit des urartäischen Pantheons wurde. Unter seiner Herrschaft gingen die Herrscher zudem dazu über, für offizielle Keilschrifttexte ihre eigene Sprache zu verwenden, und gaben den ausschliesslichen Gebrauch des Assyrischen auf.
+
+Menua (ca. 810–786 v. Chr.) festigte diese Eroberungen, indem er seine Armeen zum Oberen Euphrat, in die Region Melid und in das fruchtbare Araxtal im Norden führte. Sein Nachfolger Argishti I. (ca. 786–764 v. Chr.) führte das Königreich zu seiner vollen Blüte. Wie seine in den Felsen von Van eingemeisselten Annalen bezeugen, drang Argishti I. in den Kaukasus vor und unterwarf weite Gebiete. Im Jahr 782 v. Chr. gründete er die berühmte Festung Erebuni – die direkte Vorläuferin der heutigen armenischen Hauptstadt Jerewan –, wo er 6600 Gefangene und Krieger aus den Ländern Hatti und Supani ansiedelte.
+
+Das Urartäische Reich entwickelte sich daraufhin zur führenden politischen Macht im Vorderen Orient. Bei seiner maximalen Ausdehnung unter Argishti I. und Sarduri II. reichte seine Autorität von den Ausläufern des Kaukasus und dem Süden Georgiens bis zu den Quellen des Tigris und vom Oberen Euphrat bis östlich des Urmiasees. Im Jahr 753 v. Chr. fügte Sarduri II. dem assyrischen König Assur-nirari V. eine vernichtende Niederlage zu. Der militärische Wiederaufstieg Assyriens unter Tiglat-Pileser III. im Jahr 743 v. Chr. bei Samosata und der achte Feldzug von Sargon II. im Jahr 714 v. Chr. – gekennzeichnet durch die brutale Plünderung des Heiligtums von Musasir – setzten den südlichen Ambitionen von Rusa I. jedoch ein Ende.
+
+## Meisterhafte Architektur, Metallurgie und religiöses Leben
+
+Die urartäische Zivilisation zeichnet sich durch einen wehrhaften Städtebau aus, der an die Härten des Reliefs angepasst war. Die Könige errichteten imposante Festungen aus Werkstein und Lehmziegeln auf felsigen Bergspornen, wie etwa Teischebaini (Karmir Blur), Argishtihinili (Armawir), Altintepe, Bastam oder Ayanis. Um diese landwirtschaftliche Wirtschaft in den engen Tälern zu sichern, bauten die Herrscher monumentale Bewässerungsnetze auf. Der über 50 Kilometer lange Menua-Kanal leitete Frischwasser vom Süden des Vansees nach Tuschpa und ist bis heute in Betrieb.
+
+Archäologische Ausgrabungen haben zudem die ausserordentliche Raffinesse der Bronzekunsthandwerker offenbart. In der Technik der verlorenen Form fertigten die Metallhandwerker grosse rituelle Kessel mit figürlichen Attaschen, mit konzentrischen Registern von Löwen und Stieren verzierte Schilde sowie reich gravierte spitze Helme an. Die Zitadellen von Erebuni und Teischebaini haben lebendige polychrome Fresken bewahrt, die königliche Jagdszenen oder heilige Gestalten darstellen, wie etwa jene in Erebuni, die eine Person mit der für die Bevölkerung des Hochlands charakteristischen weichen spitzen Mütze zeigt.
+
+Das religiöse Leben organisierte sich um eine vorherrschende Triade: den obersten Gott Haldi, Teischeba (Gott des Wetters und des Krieges) und Schiwini (Sonnengott). Ihre Kulte und die Opfervorschriften sind auf der grossen Felsinschrift von Meher Kapısı («Tor von Mher») nahe der Festung von Van festgehalten.
+
+## Von der modernen Wiederentdeckung zu historischen Kontinuitäten
+
+Von den klassischen griechischen Autoren vergessen, überlebte das Urartäische Reich im schriftlichen Gedächtnis durch die Bibel, die das Königreich oder Land Ararat erwähnt. Der mittelalterliche armenische Historiker Moses von Choren überlieferte die Tradition monumentaler Bauten an den Ufern des Vansees, die er Ara dem Schönen und Königin Semiramis zuschrieb. Die moderne Archäologie erwachte 1827, als die Société asiatique in Paris den Wissenschaftler Friedrich Eduard Schulz beauftragte, der die ersten Keilschriftinschriften in Van aufnahm und die zweisprachige Kelischin-Stele identifizierte, bevor diese 1840 veröffentlicht wurden. Im 20. Jahrhundert ermöglichten die methodischen Ausgrabungen von Boris Piotrowski in Karmir Blur ab 1939 und anschliessend auf dem Areal von Arin-Berd (Erebuni), das gesamte Ausmass dieser materiellen Kultur zu rekonstruieren.
+
+Epigraphische Quellen werfen ein bemerkenswertes Licht auf den Übergang vom Urartäischen Reich zu Armenien. Auf der dreisprachigen Behistun-Inschrift, die um 520 v. Chr. unter dem persischen Herrscher Dareios I. eingemeisselt wurde, wird der babylonische Ortsname *Uraschtu* (abgeleitet von Urartu) im Altpersischen mit *Armina* (Armenien) übersetzt, und der babylonische Begriff *urartaya* entspricht exakt *arminiya* («Armenier»). Weit davon entfernt, nach den Einfällen der Skythen und Meder zu Beginn des 6. Jahrhunderts v. Chr. schlagartig zu verschwinden, zeugen grosse Festungen wie Erebuni, Körzüt, Aramus oder der Burgfelsen von Aralesk/Kalecik von einer kontinuierlichen Besiedlung unter der armenischen Dynastie der Orontiden sowie in der Achämenidenzeit, wodurch das Erbe eines der glanzvollsten Reiche des Hochlands über die Jahrhunderte hinweg fortlebte.

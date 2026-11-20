@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Armenisches Hochland",
+      "title": "Das Reich Biaineli",
+      "text": "Im 9. Jahrhundert vor unserer Zeitrechnung entsteht das Reich rund um den Van-, Urmia- und Sewansee.",
+      "big": false
+    },
+    {
+      "eyebrow": "Vansee",
+      "title": "Tuschpa",
+      "text": "Um 832 v. Chr. verlegt König Sarduri I. seine Hauptstadt an den Fuss des imposanten Burgfelsens von Van.",
+      "big": false
+    },
+    {
+      "eyebrow": "Argishti I.",
+      "title": "782 v. Chr.",
+      "text": "König Argishti I. gründet die Festung Erebuni, die direkte Vorläuferin der heutigen Hauptstadt Jerewan.",
+      "big": true
+    },
+    {
+      "eyebrow": "Menua-Kanal",
+      "title": "Über 50 km",
+      "text": "Dieses antike Bewässerungsnetz leitet Frischwasser nach Tuschpa und ist bis heute in Betrieb.",
+      "big": true
+    },
+    {
+      "eyebrow": "Bronzekunsthandwerk",
+      "title": "Meister des Metalls",
+      "text": "In der verlorenen Form fertigen Handwerker rituelle Kessel, gravierte Helme und verzierte Schilde an.",
+      "big": false
+    },
+    {
+      "eyebrow": "Behistun-Inschrift",
+      "title": "Armina",
+      "text": "Um 520 v. Chr. übersetzt Dareios I. den babylonischen Namen Uraschtu mit Armina für Armenien.",
+      "big": false
+    },
+    {
+      "eyebrow": "Historische Kontinuität",
+      "title": "Das urartäische Erbe",
+      "text": "Grosse Festungen zeugen von einer kontinuierlichen Besiedlung unter der armenischen Dynastie der Orontiden.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Das Urartäische Reich",
+  "ytTitle": "Das Urartäische Reich, Grossmacht des Hochlands und Wiege Armeniens",
+  "ytLead": "Als Grossmacht der Eisenzeit herrschte das Urartäische Reich rund um den Van-, Urmia- und Sewansee. Als Wiege des armenischen Hochlands hinterliess es monumentale Festungen und Jahrtausende alte Kanäle.",
+  "sourceHash": "a081cef8ce9102aa8531e3698471b6d85cfc8321129dad175a460f8bc2e8f51a",
+  "model": "gemini-flash-latest"
+}
