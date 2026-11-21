@@ -1,0 +1,188 @@
+{
+  "date": "2026-11-21",
+  "lang": "en",
+  "generatedAt": "2026-11-21T03:32:23.856Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian media cover political tensions around a new draft constitution and opposition demands, alongside economic updates on GDP growth and creative sector expansion. International developments include diplomatic appointments and regional security discussions.",
+  "topics": [
+    {
+      "title": "Draft constitution publication and referendum debate",
+      "text": "Armenia is set to publish a draft new constitution on November 23, according to multiple sources. Prime Minister Pashinyan has suggested the parliamentary opposition secure six votes to hold a referendum on the document, while opposition leaders have rejected his resignation offer and vowed to remove him regardless.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015543",
+          "title": "Draft constitution to be published on Monday"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/20/armenia-to-publish-draft-new-constitution-on-november-23/",
+          "title": "Armenia to publish draft new Constitution on November 23"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076141",
+          "title": "Armenia PM suggests parliamentary opposition secure 6 votes to hold referendum on new constitution"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076198",
+          "title": "PM Pashinyan responds to First Ter-Petrosyan: He who turned Armenia into outpost, founded Yerablur Military Pantheon"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076170",
+          "title": "Opposition Strong Armenia Party leader Samvel Karapetyan responds to PM Pashinyan: We will remove him even without his proposal"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076148",
+          "title": "First President Ter-Petrosyan on PM Pashinyan: No leader of Armenia has ever allowed himself to appear before the people with such vulgar conduct"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076139",
+          "title": "Armenia parliament opposition faction leader on PM Pashinyan: Allow me not to believe his “honest word” of resignation, that man is a chronic liar"
+        }
+      ]
+    },
+    {
+      "title": "Armenia's GDP growth and creative economy expansion",
+      "text": "Armenia's GDP reached 3.38 trillion drams in the third quarter, representing a 5.8% increase compared to the same period in 2025. The number of creative economy businesses has nearly doubled over three years, with the first statistical bulletin on the sector now published.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266262",
+          "title": "Armenia’s GDP reaches 3.379757 trillion drams in third quarter"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076146",
+          "title": "Armenia GDP up 5.8% compared to same period in 2025"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266243",
+          "title": "Number of creative economy businesses in Armenia nearly doubles in three years"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266211",
+          "title": "First statistical bulletin on creative economy in Armenia published"
+        }
+      ]
+    },
+    {
+      "title": "New ambassadorial appointments to Russia and Poland",
+      "text": "Samvel Mkrtchyan has been appointed as Armenia's new ambassador to Russia, while Vahan Hunanyan has been named ambassador to Poland. The appointments come as Russia's MFA spokesperson confirmed neither Armenia nor Azerbaijan have recalled their signatures under the 2020 ceasefire statement.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076177",
+          "title": "Vahan Hunanyan appointed Armenia Ambassador to Poland"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076172",
+          "title": "Samvel Mkrtchyan appointed new Armenia Ambassador to Russia"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076160",
+          "title": "Russia MFA spox: Neither Armenia nor Azerbaijan have recalled their signatures under 2020 statement"
+        }
+      ]
+    },
+    {
+      "title": "Capitol Hill hearing highlights Turkish-Azerbaijani threat to Armenia",
+      "text": "A Capitol Hill hearing has raised alarm over what participants describe as an existential threat to Armenia from Turkey and Azerbaijan. The session was covered by multiple Armenian diaspora outlets, emphasizing concerns over regional security and the rights of Artsakh Armenians.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/capitol-hill-hearing-raises-alarm-over-existential-threat-to-armenia-from-turkey-and-azerbaijan/",
+          "title": "Capitol Hill Hearing Raises Alarm over Existential Threat to Armenia from Turkey and Azerbaijan"
+        },
+        {
+          "source": "armenianweekly",
+          "url": "https://armenianweekly.com/2026/11/20/capitol-hill-hearing-over-turkish-azerbaijani-threat-to-armenia/",
+          "title": "Capitol Hill hearing over Turkish-Azerbaijani threat to Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Armenia receives Palestinian children from Gaza for medical care",
+      "text": "Armenia has received three Palestinian children from Gaza for urgently needed specialist medical care. The humanitarian gesture was announced by the Foreign Ministry and reflects Armenia's engagement in international medical assistance.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266281",
+          "title": "Armenia receives three Palestinian children from Gaza for urgently needed specialist medical care"
+        }
+      ]
+    },
+    {
+      "title": "EAEU customs meeting hosted in Armenia and AI hub ambitions",
+      "text": "Armenia hosted the 56th meeting of the EAEU Joint Board of Customs Services, focusing on regional trade cooperation. Separately, a government minister stated Armenia aims to become a global AI hub, with a new National Center for Robotics and Physical AI launched and a technology college planned for Hrazdan by 2027.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266273",
+          "title": "Armenia hosts 56th meeting of the EAEU Joint Board of Customs Services"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076215",
+          "title": "Armenia hosts joint council meeting of Eurasian Economic Union countries’ customs services"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/20/armenia-aims-to-become-a-global-ai-hub-minister-says/",
+          "title": "Armenia aims to become a global AI hub, Minister says"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/20/armenia-launches-national-center-for-robotics-and-physical-ai/",
+          "title": "Armenia launches National Center for Robotics and Physical AI"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266271",
+          "title": "Technology college to be established in Hrazdan, with first intake planned for 2027"
+        }
+      ]
+    },
+    {
+      "title": "Armenian athletes compete internationally in weightlifting, chess, and football",
+      "text": "Three Armenian weightlifters will compete in a Doha qualifier for the LA2028 Olympics, while Haik Martirosyan defeated Arjun Erigaisi at the Total Chess World Championship Tour Pilot 2026. In football, Ararat-Armenia defeated Van, and Eduard Spertsyan featured in a match for Al Ahli alongside Cristiano Ronaldo.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266184",
+          "title": "Three Armenian weightlifters to compete in Doha IWF qualifier for LA2028"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266189",
+          "title": "Haik Martirosyan defeats Arjun Erigaisi at Total Chess World Championship Tour Pilot 2026"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170376/",
+          "title": "Ararat-Armenia defeats Van (video)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170383/",
+          "title": "Al Ahli claim comeback victory after Ronaldo's goal, Spertsyan features in the match (video)"
+        }
+      ]
+    }
+  ]
+}

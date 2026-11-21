@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-21",
+  "lang": "de",
+  "generatedAt": "2026-11-21T03:32:23.856Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Die heutige Berichterstattung konzentriert sich stark auf innenpolitische Entwicklungen in Armenien, insbesondere auf den Verfassungsprozess und diplomatische Personalentscheidungen.",
+  "topics": [
+    {
+      "title": "Neue Verfassung und Referendum",
+      "text": "Premierminister Nikol Paschinjan hat angekündigt, dass der Entwurf der neuen Verfassung am Montag veröffentlicht wird. Er ist bereit, zurückzutreten, sollte die Verfassungsänderung scheitern, und benötigt für ein Referendum sechs Stimmen der Opposition.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-texte-du-projet-de-la-nouvelle-constitution-de-larmenie-sera-publie-ce-lundi-affirme-nikol-pachinian/",
+          "title": "Le texte du projet de la nouvelle Constitution de l’Arménie sera publié ce lundi affirme Nikol Pachinian"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015532",
+          "title": "Pachinian attend six voix de l’opposition pour organiser un référendum constitutionnel et promet de quitter le pouvoir"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/pachinian-pret-a-demissionner-si-le-changement-constitutionnel-echoue/",
+          "title": "Pachinian prêt à démissionner si le changement constitutionnel échoue"
+        }
+      ]
+    },
+    {
+      "title": "Neue Botschafter in Russland und Polen",
+      "text": "Samwel Mkrttschjan wurde zum ausserordentlichen und bevollmächtigten Botschafter Armeniens in Russland ernannt. Wahan Hounanjan übernimmt den entsprechenden Posten in Polen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266244",
+          "title": "Samvel Mkrtchyan nommé ambassadeur extraordinaire et plénipotentiaire de la République d’Arménie en Russie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266246",
+          "title": "Vahan Hounanyan nommé ambassadeur extraordinaire et plénipotentiaire d’Arménie en Pologne"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/samvel-mkrtchyan-vient-detre-nomme-ambassadeur-darmenie-en-russie/",
+          "title": "Samvel Mkrtchyan vient d’être nommé ambassadeur d’Arménie en Russie"
+        }
+      ]
+    },
+    {
+      "title": "Armenisch-europäisches Partnerschaftskomitee tagt",
+      "text": "Die siebte Sitzung des armenisch-europäischen Partnerschaftskomitees fand statt. Dabei ging es um eine Vertiefung der Zusammenarbeit in wirtschaftlichen und sicherheitspolitischen Fragen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-comite-de-partenariat-armenie-union-europeenne-tient-sa-septieme-reunion/",
+          "title": "Le Comité de partenariat Arménie-Union européenne tient sa septième réunion"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/armenie-ue-un-partenariat-renforce-autour-des-enjeux-economiques-et-de-securite",
+          "title": "Arménie-UE : un partenariat renforcé autour des enjeux économiques et de sécurité"
+        }
+      ]
+    },
+    {
+      "title": "Vorwürfe politischer Repression und Medienfeindlichkeit",
+      "text": "Mehrere Quellen berichten über eine Verschärfung der politischen Repression seit den Wahlen, darunter der missbräuchliche Einsatz von Untersuchungshaft und Vermögensbeschlagnahmungen. Der Journalistenverband wirft dem Premierminister vor, einen Krieg gegen die Presse erklärt zu haben.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/armenie-la-repression-politique-sintensifie-depuis-les-elections-par-un-recours-abusif-a-la-detention-provisoire-et-par-la-confiscation-davoirs/",
+          "title": "Arménie : La répression politique s’intensifie depuis les élections par un recours abusif à la détention provisoire et par la confiscation d’avoirs"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lunion-des-journalistes-denonce-les-attaques-de-nikol-pachinian-contre-la-presse-le-premier-ministre-a-declare-la-guerre-aux-journalistes/",
+          "title": "L’Union des journalistes dénonce les attaques de Nikol Pachinian contre la presse : « Le Premier ministre a déclaré la guerre aux journalistes »"
+        }
+      ]
+    },
+    {
+      "title": "Gedenkraum für gefallene Helden in Jerewan geplant",
+      "text": "Im Siegspark in Jerewan soll ein Gedenkraum für Albert Howhannisjan und weitere gefallene Helden eingerichtet werden. Der Bürgermeister Tigran Awinian gab dies bekannt.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-espace-commemoratif-dedie-a-albert-hovhannisyan-et-aux-autres-heros-tombes-au-combat-sera-amenage-dans-le-parc-de-la-victoire-a-erevan-a-indique-le-maire-de-la-capitale-armenienne-tigran-avinyan/",
+          "title": "Un espace commémoratif dédié à Albert Hovhannisyan et aux autres héros tombés au combat sera aménagé dans le parc de la Victoire à Erevan a indiqué le maire de la capitale arménienne Tigran Avinyan"
+        }
+      ]
+    },
+    {
+      "title": "Modernisierung der Grenzstrassen nach Türkei über Georgien",
+      "text": "Die Strassenverbindungen zur armenisch-türkischen Grenze über die georgische Region Samzche-Dschawachetien, in der viele Armenier leben, werden modernisiert.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-routes-menant-a-la-frontiere-armeno-turque-via-samtskhe-djavakhetie-la-region-a-forte-population-armenienne-de-georgie-sont-en-cours-de-modernisation/",
+          "title": "Les routes menant à la frontière arméno-turque via Samtskhé-Djavakhétie la région à forte population arménienne de Géorgie sont en cours de modernisation"
+        }
+      ]
+    },
+    {
+      "title": "Abgeschobene Armenier aus Deutschland eingetroffen",
+      "text": "Ein Flugzeug mit armenischen Staatsbürgern, die aus Deutschland abgeschoben wurden, ist in Armenien eingetroffen.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-avion-transportant-des-citoyens-armeniens-expulses-est-arrive-en-armenie-en-provenance-dallemagne/",
+          "title": "Un avion transportant des citoyens arméniens expulsés est arrivé en Arménie en provenance d’Allemagne"
+        }
+      ]
+    }
+  ]
+}

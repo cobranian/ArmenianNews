@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-21",
+  "lang": "it",
+  "generatedAt": "2026-11-21T03:32:23.856Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è dominata dal dibattito sulla riforma costituzionale e dalle nomine diplomatiche, mentre proseguono i lavori infrastrutturali alla frontiera turca e le tensioni politiche interne.",
+  "topics": [
+    {
+      "title": "Nuova Costituzione e possibile referendum",
+      "text": "Il Primo ministro Nikol Pashinyan ha annunciato che il testo del progetto di nuova Costituzione sarà pubblicato lunedì. Secondo fonti parlamentari, Pashinyan cercherebbe sei voti dell'opposizione per indire un referendum e ha dichiarato di essere pronto a dimettersi se la riforma non dovesse passare.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-texte-du-projet-de-la-nouvelle-constitution-de-larmenie-sera-publie-ce-lundi-affirme-nikol-pachinian/",
+          "title": "Le texte du projet de la nouvelle Constitution de l’Arménie sera publié ce lundi affirme Nikol Pachinian"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015532",
+          "title": "Pachinian attend six voix de l’opposition pour organiser un référendum constitutionnel et promet de quitter le pouvoir"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/pachinian-pret-a-demissionner-si-le-changement-constitutionnel-echoue/",
+          "title": "Pachinian prêt à démissionner si le changement constitutionnel échoue"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-apporte-des-precisions-sur-sa-proposition-de-demission-adressee-a-lopposition/",
+          "title": "Le Premier ministre arménien apporte des précisions sur sa proposition de démission adressée à l’opposition"
+        }
+      ]
+    },
+    {
+      "title": "Nomine di nuovi ambasciatori a Mosca e Varsavia",
+      "text": "Samvel Mkrtchyan è stato nominato ambasciatore straordinario e plenipotenziario della Repubblica d'Armenia in Russia. Contestualmente, Vahan Hovhannisyan è stato designato per lo stesso ruolo in Polonia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266244",
+          "title": "Samvel Mkrtchyan nommé ambassadeur extraordinaire et plénipotentiaire de la République d’Arménie en Russie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266246",
+          "title": "Vahan Hounanyan nommé ambassadeur extraordinaire et plénipotentiaire d’Arménie en Pologne"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/samvel-mkrtchyan-vient-detre-nomme-ambassadeur-darmenie-en-russie/",
+          "title": "Samvel Mkrtchyan vient d’être nommé ambassadeur d’Arménie en Russie"
+        }
+      ]
+    },
+    {
+      "title": "Critiche internazionali e interne sullo stato della democrazia",
+      "text": "Sarah Leah Whitson accusa il governo armeno di indebolire la democrazia e denuncia il silenzio degli occidentali. L'Unione dei giornalisti afferma che il Primo ministro ha dichiarato guerra alla stampa, mentre un rapporto segnala un'intensificazione della repressione politica tramite detenzioni preventive e confische di beni.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015521",
+          "title": "Sarah Leah Whitson accuse le gouvernement arménien de fragiliser la démocratie et dénonce le silence des Occidentaux"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/armenie-la-repression-politique-sintensifie-depuis-les-elections-par-un-recours-abusif-a-la-detention-provisoire-et-par-la-confiscation-davoirs/",
+          "title": "Arménie : La répression politique s’intensifie depuis les élections par un recours abusif à la détention provisoire et par la confiscation d’avoirs"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lunion-des-journalistes-denonce-les-attaques-de-nikol-pachinian-contre-la-presse-le-premier-ministre-a-declare-la-guerre-aux-journalistes/",
+          "title": "L’Union des journalistes dénonce les attaques de Nikol Pachinian contre la presse : « Le Premier ministre a déclaré la guerre aux journalistes »"
+        }
+      ]
+    },
+    {
+      "title": "Modernizzazione delle vie d'accesso alla frontiera armeno-turca",
+      "text": "Sono in corso lavori di ammodernamento delle strade che portano al confine armeno-turco attraverso la regione georgiana di Samtskhe-Javakheti, area a forte presenza armena. L'intervento mira a migliorare i collegamenti infrastrutturali strategici.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-routes-menant-a-la-frontiere-armeno-turque-via-samtskhe-djavakhetie-la-region-a-forte-population-armenienne-de-georgie-sont-en-cours-de-modernisation/",
+          "title": "Les routes menant à la frontière arméno-turque via Samtskhé-Djavakhétie la région à forte population arménienne de Géorgie sont en cours de modernisation"
+        }
+      ]
+    },
+    {
+      "title": "Spazio commemorativo per gli eroi caduti a Erevan",
+      "text": "Il sindaco di Erevan, Tigran Avinyan, ha annunciato la creazione di uno spazio commemorativo dedicato ad Albert Hovhannisyan e agli altri eroi caduti in combattimento all'interno del Parco della Vittoria.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-espace-commemoratif-dedie-a-albert-hovhannisyan-et-aux-autres-heros-tombes-au-combat-sera-amenage-dans-le-parc-de-la-victoire-a-erevan-a-indique-le-maire-de-la-capitale-armenienne-tigran-avinyan/",
+          "title": "Un espace commémoratif dédié à Albert Hovhannisyan et aux autres héros tombés au combat sera aménagé dans le parc de la Victoire à Erevan a indiqué le maire de la capitale arménienne Tigran Avinyan"
+        }
+      ]
+    },
+    {
+      "title": "Partenariato rafforzato tra Armenia e Unione Europea",
+      "text": "Si è tenuta la settima riunione del Comitato di partenariato Armenia-UE, focalizzata sul rafforzamento della cooperazione economica e di sicurezza. Le parti confermano l'intenzione di approfondire i legami bilaterali su questi fronti.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/le-comite-de-partenariat-armenie-union-europeenne-tient-sa-septieme-reunion/",
+          "title": "Le Comité de partenariat Arménie-Union européenne tient sa septième réunion"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/armenie-ue-un-partenariat-renforce-autour-des-enjeux-economiques-et-de-securite",
+          "title": "Arménie-UE : un partenariat renforcé autour des enjeux économiques et de sécurité"
+        }
+      ]
+    }
+  ]
+}

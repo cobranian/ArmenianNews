@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-21",
+  "lang": "es",
+  "generatedAt": "2026-11-21T03:32:23.856Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la tensión política interna en torno a la reforma constitucional y el registro de lugares de nacimiento, junto con avances económicos y movimientos diplomáticos.",
+  "topics": [
+    {
+      "title": "Debate sobre la reforma constitucional y referéndum",
+      "text": "El primer ministro Nikol Pashinyan reiteró su propuesta a la oposición para celebrar un referéndum constitucional, mientras que el proyecto de la nueva Constitución se publicará el 23 de noviembre. Una diputada de la FRA utilizó el ejemplo de las Malvinas para rechazar la reforma exigida por Azerbaiyán.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/una-diputada-armenia-de-la-fra-recurrio-al-ejemplo-de-malvinas-para-rechazar-la-reforma-constitucional-exigida-por-aliyev/",
+          "title": "Una diputada armenia de la FRA recurrió al ejemplo de Malvinas para rechazar la reforma constitucional exigida por Aliyev"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266218",
+          "title": "El proyecto de la nueva Constitución de Armenia se publicará el 23 de noviembre"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266222",
+          "title": "Pashinyan reiteró su propuesta a la oposición para celebrar un referéndum constitucional"
+        }
+      ]
+    },
+    {
+      "title": "Registro de 'Azerbaiyán' como lugar de nacimiento de desplazados de Artsaj",
+      "text": "El gobierno armenio registró 'Azerbaiyán' como lugar de nacimiento de los armenios desplazados por la fuerza de Artsaj, medida que también se refleja en los nuevos pasaportes biométricos emitidos para estos ciudadanos.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/el-gobierno-de-nikol-pashinyan-registro-azerbaiyan-como-lugar-de-nacimiento-de-los-armenios-desplazados-por-la-fuerza-de-artsaj/",
+          "title": "El gobierno de Nikol Pashinyan registró “Azerbaiyán” como lugar de nacimiento de los armenios desplazados por la fuerza de Artsaj"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pasaportes-biometricos-azerbaiyan-nacimiento-karabaj/",
+          "title": "Los nuevos pasaportes biométricos de Armenia registran Azerbaiyán como lugar de nacimiento para desplazados de Karabaj"
+        }
+      ]
+    },
+    {
+      "title": "Reservas internacionales alcanzan máximo histórico",
+      "text": "Las reservas internacionales de Armenia llegaron a un récord de 7.200 millones de dólares a finales de octubre, según datos oficiales.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/reservas-internacionales-armenia-octubre-2026/",
+          "title": "Las reservas internacionales de Armenia alcanzan un récord de US$7.200 millones a finales de octubre"
+        }
+      ]
+    },
+    {
+      "title": "Expansión de infraestructura de inteligencia artificial",
+      "text": "La empresa Firebird amplió su infraestructura de inteligencia artificial en Armenia en asociación con Dell Technologies.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/firebird-infraestructura-ia-armenia-dell-technologies/",
+          "title": "Firebird amplía su infraestructura de inteligencia artificial en Armenia junto a Dell Technologies"
+        }
+      ]
+    },
+    {
+      "title": "Nuevos nombramientos diplomáticos y agenda bilateral",
+      "text": "Se anunciaron los nombramientos de Vahan Hunanyan como embajador en Polonia y Samvel Mkrtchyan en Rusia. El embajador en EE. UU. discutió la agenda bilateral con congresistas, y el viceprimer ministro revisó proyectos con el embajador checo.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266215",
+          "title": "Embajador armenio en EEUU discutió sobre la agenda bilateral con miembros de la Cámara de Representantes"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266246",
+          "title": "Vahan Hunanyan fue nombrado embajador de Armenia en Polonia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266244",
+          "title": "Samvel Mkrtchyan fue nombrado embajador de Armenia en Rusia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266208",
+          "title": "Viceprimer ministro de Armenia y embajador checo analizaron los avances de proyectos en comercio, transporte y minería"
+        }
+      ]
+    },
+    {
+      "title": "Votación en la ONU y análisis sobre genocidio",
+      "text": "Armenia votó junto a otros cinco países en contra de una resolución de la ONU sobre cooperación con la OCI. Paralelamente, se publicó un análisis sobre lo que exige el derecho internacional para probar un delito de genocidio ante un tribunal.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-contra-resolucion-onu-cooperacion-oci/",
+          "title": "Armenia vota junto a otros cinco países contra la resolución de la ONU sobre cooperación con la OCI"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/probar-genocidio-tribunal-derecho-internacional/",
+          "title": "Qué exige el derecho internacional para probar un delito de genocidio ante un tribunal"
+        }
+      ]
+    },
+    {
+      "title": "Atención médica a niños palestinos y condolencias por explosión en Tiflis",
+      "text": "Armenia brinda atención médica especializada a tres niños palestinos evacuados de Gaza. El gobierno expresó condolencias a las familias de las víctimas de la explosión en el barrio de Ponichala, en Tiflis.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-atencion-medica-ninos-palestinos-gaza/",
+          "title": "Armenia brinda atención médica especializada a tres niños palestinos evacuados de Gaza"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266233",
+          "title": "Armenia expresó sus condolencias a las familias de las víctimas de la explosión en el barrio de Ponichala, en Tiflis"
+        }
+      ]
+    }
+  ]
+}
