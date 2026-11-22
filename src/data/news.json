@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T15:23:47.262Z",
+  "generatedAt": "2026-11-22T16:28:25.436Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1154,7 +1154,7 @@
             "url": "https://hy.armradio.am/archives/772179",
             "date": "2026-11-22T14:33:26.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/17953562239034-768x512.jpeg",
-            "category": "Հասարակություն"
+            "category": "Կարևոր"
           },
           {
             "title": "Սպասվում են տեղումներ",
@@ -2735,6 +2735,12 @@
       "categoryKey": "armenie",
       "articles": [
         {
+          "title": "Référendum constitutionnel : Vahram Atanessian juge systémique la panique de l’opposition",
+          "url": "https://armenieinfo.tv/mer-oughin-36193/",
+          "date": "2026-11-22T16:00:00.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-36193.jpg"
+        },
+        {
           "title": "Vous rêvez de quelqu’un d’autre, et quelqu’un d’autre rêve de vous : Nikol Pachinian à la FRA",
           "url": "https://armenieinfo.tv/vous-revez-de-quelquun-dautre-et-quelquun-dautre-reve-de-vous-nikol-pachinian-a-la-fra/",
           "date": "2026-11-21T12:00:00.000Z",
@@ -2787,12 +2793,6 @@
           "url": "https://armenieinfo.tv/mer-oughin-36061/",
           "date": "2026-11-18T09:17:39.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-36061.jpg"
-        },
-        {
-          "title": "En réponse à Armen Grigoryan : le non-alignement, un risque pour la sécurité de l’Arménie",
-          "url": "https://armenieinfo.tv/en-reponse-a-armen-grigoryan-le-non-alignement-un-risque-pour-la-securite-de-larmenie/",
-          "date": "2026-11-17T09:46:09.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/3239b170-3134-4c47-a535-e2ee552f05ff.png"
         }
       ]
     },
@@ -2923,6 +2923,12 @@
     {
       "categoryKey": "diaspora",
       "articles": [
+        {
+          "title": "En réponse à Armen Grigoryan : le non-alignement, un risque pour la sécurité de l’Arménie",
+          "url": "https://armenieinfo.tv/en-reponse-a-armen-grigoryan-le-non-alignement-un-risque-pour-la-securite-de-larmenie/",
+          "date": "2026-11-17T09:46:09.000Z",
+          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/3239b170-3134-4c47-a535-e2ee552f05ff.png"
+        },
         {
           "title": "Arméniens : passeurs sans passe-droit",
           "url": "https://armenieinfo.tv/armeniens-passeurs-sans-passe-droit/",
@@ -3111,12 +3117,6 @@
           "url": "https://armenieinfo.tv/mer-oughin-36030/",
           "date": "2026-11-15T09:30:00.000Z",
           "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-36030.jpg"
-        },
-        {
-          "title": "Sona Ghazaryan défend le droit d’Armen Grigoryan à critiquer la voie européenne de l’Arménie",
-          "url": "https://armenieinfo.tv/mer-oughin-36013/",
-          "date": "2026-11-13T11:38:33.000Z",
-          "image": "https://armenieinfo.tv/wp-content/uploads/2026/11/mer-oughin-36013.jpg"
         }
       ]
     },
@@ -3248,6 +3248,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Le Premier ministre a tenu un petit-déjeuner de travail avec les dirigeants des entreprises du secteur des technologies de l'information participant au salon « Digitec 2026 »",
+            "url": "https://armenpress.am/fr/article/1266324",
+            "date": "2026-11-22T16:25:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/22/1KgtGiBxA6zq1m2AUqhI9XIlO3HcaLwQ6Yx5GqXg.webp"
+          },
+          {
             "title": "Firebird étend son infrastructure d'intelligence artificielle en Arménie avec Dell Technologies",
             "url": "https://armenpress.am/fr/article/1266269",
             "date": "2026-11-21T15:38:00.000Z",
@@ -3300,12 +3306,6 @@
             "url": "https://armenpress.am/fr/article/1266144",
             "date": "2026-11-19T12:37:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/19/LDJ1MrWa1akG7oFr7pTWmwGNJVUwFW9vid3a86t8.webp"
-          },
-          {
-            "title": "Le Premier ministre a participé à la conférence intitulée « Le sort des personnes disparues : dialogue humanitaire et coopération »",
-            "url": "https://armenpress.am/fr/article/1266083",
-            "date": "2026-11-19T07:27:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/19/bmUm9jaMqLrbRwBHCfGWWXBj8W5BnqsKMu8S7Gkp.webp"
           }
         ]
       },
@@ -4202,6 +4202,18 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "Հայաստանն ու Եգիպտոսը քննարկել են առևտրի ոլորտում համագործակցությունը խորացնելու հեռանկարները",
+            "url": "https://armenpress.am/hy/article/1266339",
+            "date": "2026-11-22T16:18:39.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/22/7sso8e4XE2I7JBk5ZdRfA0tiHLIEIliCJQsl9WcB.webp"
+          },
+          {
+            "title": "Հայաստանի պատմության թանգարանն ու Աթենքի ազգային հնագիտական թանգարանը համատեղ ցուցահանդեսներ կիրականացնեն",
+            "url": "https://armenpress.am/hy/article/1266338",
+            "date": "2026-11-22T15:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/22/8DJuM4esHIqi7idoZgrBEE13mnEFVtkR8u4zSCSL.webp"
+          },
+          {
             "title": "Վահան Կոստանյանը հանդիպել է ՄԱԿ-ի գլխավոր քարտուղարի՝ Սիրիայի հարցերով հատուկ բանագնացի տեղակալի հետ",
             "url": "https://armenpress.am/hy/article/1266337",
             "date": "2026-11-22T15:14:31.000Z",
@@ -4248,24 +4260,18 @@
             "url": "https://armenpress.am/hy/article/1266330",
             "date": "2026-11-22T10:33:17.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/22/JInRX1rWu3hg1OEb90XEJSyztq0WUQQwPc1Cf1BV.webp"
-          },
-          {
-            "title": "Ինչու են մայրամուտի և արևածագի ժամանակ ամպերը կարմիր կամ կարմրանարնջագույն երանգ ստանում․ մանրամասնում է Գագիկ Սուրենյանը",
-            "url": "https://armenpress.am/hy/article/1266328",
-            "date": "2026-11-22T09:36:31.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/22/vkod5d8sI87zrJtxj2byFrYe9q2kPZe7v3STJd1i.webp"
-          },
-          {
-            "title": "Հայաստանն ու Իրանը քննարկել են բարձր տեխնոլոգիաների ոլորտում համագործակցությունը զարգացնելու հեռանկարները",
-            "url": "https://armenpress.am/hy/article/1266327",
-            "date": "2026-11-22T09:03:56.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/22/kF1uORUuehQ1yCt8Op8jTqRHLPVUv80sOXiXsiQh.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "Հայաստանն ու Եգիպտոսը քննարկել են առևտրի ոլորտում համագործակցությունը խորացնելու հեռանկարները",
+            "url": "https://armenpress.am/hy/article/1266339",
+            "date": "2026-11-22T16:18:39.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/22/7sso8e4XE2I7JBk5ZdRfA0tiHLIEIliCJQsl9WcB.webp"
+          },
           {
             "title": "Եվրոպական ինդեքսները նվազել են - 20/11/26",
             "url": "https://armenpress.am/hy/article/1266292",
@@ -4319,12 +4325,6 @@
             "url": "https://armenpress.am/hy/article/1266211",
             "date": "2026-11-20T09:11:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/20/nmeAK9XBoddeT6DmpnK0GvONGSExuFMkxDZswaHx.webp"
-          },
-          {
-            "title": "ՀՀ փոխվարչապետն ու Չեխիայի դեսպանը քննարկել են առևտրի, տրանսպորտի, հանքարդյունաբերության ոլորտներում իրականացվող ծրագրերի ընթացքը",
-            "url": "https://armenpress.am/hy/article/1266208",
-            "date": "2026-11-20T08:30:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/20/NhwbD9EymNiChZBqbsjRkTVIo023p5WElSEIlsyS.webp"
           }
         ]
       },
@@ -4397,6 +4397,12 @@
         "categoryKey": "culture",
         "articles": [
           {
+            "title": "Հայաստանի պատմության թանգարանն ու Աթենքի ազգային հնագիտական թանգարանը համատեղ ցուցահանդեսներ կիրականացնեն",
+            "url": "https://armenpress.am/hy/article/1266338",
+            "date": "2026-11-22T15:39:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/22/8DJuM4esHIqi7idoZgrBEE13mnEFVtkR8u4zSCSL.webp"
+          },
+          {
             "title": "Կայացավ ՀՆՄ 21-րդ համագումարը",
             "url": "https://armenpress.am/hy/article/1266314",
             "date": "2026-11-21T13:16:00.000Z",
@@ -4449,12 +4455,6 @@
             "url": "https://armenpress.am/hy/article/1265868",
             "date": "2026-11-17T10:21:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/17/Qv3CzorJfx2X7CKqQolK1FPa7fz1Fp5hUTFhfSBt.webp"
-          },
-          {
-            "title": "Դասական երաժշտությունը պետք է հասանելի դարձնել ամբողջ հանրությանը. Դանիել Դանիելյանը՝ Ազգային ֆիլհարմոնիկ նվագախմբի ռազմավարության մասին",
-            "url": "https://armenpress.am/hy/article/1265790",
-            "date": "2026-11-17T05:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/16/vCJvgMwqMLJrur9al2SDLItAichTJenn0I9SCdRP.webp"
           }
         ]
       },
@@ -7050,6 +7050,18 @@
       "label": "Diáspora",
       "articles": [
         {
+          "title": "Los directores de escuelas armenias en Turquía enfrentan posibles sanciones por aceptar niños de Armenia",
+          "url": "https://soyarmenio.com/directores-escuelas-armenias-turquia-sancionados/",
+          "date": "2026-11-22T16:00:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/escuelas-armenias-Turquia-767x510.jpg"
+        },
+        {
+          "title": "Dos artistas de origen armenio destacan entre los nominados a la 69.ª edición de los Premios Grammy",
+          "url": "https://soyarmenio.com/69-edicion-premios-grammy-dos-artistas-armenios/",
+          "date": "2026-11-22T15:30:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/grammy-artistas-armenios-768x432.jpg"
+        },
+        {
           "title": "Una campaña mediática de 100 millones de dólares en Estados Unidos vincula los sucesos de 1915 con la baja asistencia a iglesias armenias",
           "url": "https://soyarmenio.com/campana-100-millones-dolares-sucesos-1915-iglesias-armenias/",
           "date": "2026-11-19T10:25:00.000Z",
@@ -7096,18 +7108,6 @@
           "url": "https://soyarmenio.com/restaurante-bozar-karen-torosyan-mejores-mundo/",
           "date": "2026-11-07T10:00:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2026/11/bozar-karen-torosyan-767x399.jpg"
-        },
-        {
-          "title": "Nikol Pashinyan afirma que la repatriación de la diáspora será consagrada como el objetivo final en el borrador de la nueva Constitución",
-          "url": "https://soyarmenio.com/pashinyan-repatriacion-diaspora-constitucion-armenia/",
-          "date": "2026-11-06T23:00:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/repatriacion-diaspora-armenia-767x511.jpg"
-        },
-        {
-          "title": "El obispo armenio Hovakim Manukyan correrá la media maratón en Londres por los cristianos perseguidos",
-          "url": "https://soyarmenio.com/obispo-armenio-londres-media-maraton/",
-          "date": "2026-11-05T16:30:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/obispo-armenio-maraton-767x397.jpg"
         }
       ]
     },
@@ -7248,6 +7248,12 @@
       "label": "Mundo",
       "articles": [
         {
+          "title": "Los directores de escuelas armenias en Turquía enfrentan posibles sanciones por aceptar niños de Armenia",
+          "url": "https://soyarmenio.com/directores-escuelas-armenias-turquia-sancionados/",
+          "date": "2026-11-22T16:00:00.000Z",
+          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/escuelas-armenias-Turquia-767x510.jpg"
+        },
+        {
           "title": "Una oleada de huelgas y protestas recorre Europa desde Roma hasta los países bálticos",
           "url": "https://soyarmenio.com/oleada-huelgas-protestas-recorre-europa/",
           "date": "2026-11-21T07:20:00.000Z",
@@ -7300,12 +7306,6 @@
           "url": "https://soyarmenio.com/campana-100-millones-dolares-sucesos-1915-iglesias-armenias/",
           "date": "2026-11-19T10:25:00.000Z",
           "image": "https://soyarmenio.com/wp-content/uploads/2026/11/campana-iglesias-armenias-768x512.jpg"
-        },
-        {
-          "title": "Donald Trump, Vladimir Putin y Xi Jinping se reúnen en Shenzhen en una cumbre trilateral comparada con Yalta",
-          "url": "https://soyarmenio.com/cumbre-trilateral-trump-putin-xi-jinping-shenzhen-yalta/",
-          "date": "2026-11-18T21:35:00.000Z",
-          "image": "https://soyarmenio.com/wp-content/uploads/2026/11/trump-putin-xi-jinping-shenzhen-768x432.jpg"
         }
       ]
     },
@@ -9645,6 +9645,12 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Չեխիայի վարչապետը դեմ է Ուկրաինային ԵՄ բյուջեից 100 մլրդ եվրո հատկացնելուն",
+            "url": "https://civilnet.am/hy/news/1015565",
+            "date": "2026-11-22T16:24:38.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/22/td4RNoJo2MPbrrWX.webp"
+          },
+          {
             "title": "ԱՄՆ Սենատում դեմոկրատների առաջնորդի պաշտոնի համար պայքար է սկսվել",
             "url": "https://civilnet.am/hy/news/1015564",
             "date": "2026-11-22T15:05:48.000Z",
@@ -9667,12 +9673,6 @@
             "url": "https://civilnet.am/hy/news/1015558",
             "date": "2026-11-22T12:47:27.000Z",
             "image": "https://civilnet.am/storage/media/26/11/22/z0HAp8gkStsSctgB.webp"
-          },
-          {
-            "title": "Բելգիայում համազգային գործադուլի պատճառով սպասվում են ավիաչվերթների զանգվածային չեղարկումներ",
-            "url": "https://civilnet.am/hy/news/1015557",
-            "date": "2026-11-22T12:33:59.000Z",
-            "image": "https://civilnet.am/storage/media/26/11/22/RKdKnvdpwghx4i6o.webp"
           },
           {
             "title": "Իրանը կասկածի տակ է դրել Պակիստանի միջնորդական դերը",
@@ -9985,6 +9985,12 @@
         "label": "Աշխարհ",
         "articles": [
           {
+            "title": "Չեխիայի վարչապետը դեմ է Ուկրաինային ԵՄ բյուջեից 100 մլրդ եվրո հատկացնելուն",
+            "url": "https://civilnet.am/hy/news/1015565",
+            "date": "2026-11-22T16:24:38.000Z",
+            "image": "https://civilnet.am/storage/media/26/11/22/td4RNoJo2MPbrrWX.webp"
+          },
+          {
             "title": "ԱՄՆ Սենատում դեմոկրատների առաջնորդի պաշտոնի համար պայքար է սկսվել",
             "url": "https://civilnet.am/hy/news/1015564",
             "date": "2026-11-22T15:05:48.000Z",
@@ -10037,12 +10043,6 @@
             "url": "https://civilnet.am/hy/news/1015405",
             "date": "2026-11-14T19:06:31.000Z",
             "image": "https://civilnet.am/storage/media/26/11/14/cSrhI2dm9fFjczDB.webp"
-          },
-          {
-            "title": "ԱՄՆ-ն առաջին անգամ հարցրել է՝ արդյոք Կիևը պատրաստ է դուրս գալ Դոնբասից հանուն ՆԱՏՕ-ի անդամակցության. Զելենսկի",
-            "url": "https://civilnet.am/hy/news/1015400",
-            "date": "2026-11-14T12:28:10.000Z",
-            "image": "https://civilnet.am/storage/media/26/11/14/CtddmyieY7GULx4a.webp"
           }
         ]
       },
@@ -11191,6 +11191,18 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Թրամփը դեմ է արտահայտվել Սենատի մեծամասնության առաջնորդի պաշտոնում Չակ Շումերի ընտրվելուն",
+            "url": "https://news.am/hy/news/1076448",
+            "date": "2026-11-22T16:19:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/ZDhAQoJ7jredc2mb.webp"
+          },
+          {
+            "title": "«Ընդունեք բրեքսիթը և առաջ շարժվեք». Մեծ Բրիտանիայի նախկին վարչապետը դեմ է արտահայտվել ԵՄ-ի հետ հարաբերությունների նոր վերանայմանը",
+            "url": "https://news.am/hy/news/1076446",
+            "date": "2026-11-22T16:04:00.000Z",
+            "image": "https://news.am/storage/media/26/11/22/4fPZEVJtlTXdgztb.webp"
+          },
+          {
             "title": "Politico. Ուկրաինային անվտանգության երաշխիքներ տրամադրելու ԱՄՆ-ի առաջարկը Եվրոպայում զգուշավոր լավատեսություն է առաջացրել",
             "url": "https://news.am/hy/news/1076443",
             "date": "2026-11-22T15:26:00.000Z",
@@ -11237,18 +11249,6 @@
             "url": "https://news.am/hy/news/1076413",
             "date": "2026-11-22T11:07:00.000Z",
             "image": "https://news.am/storage/media/26/09/13/B3GiWyxuT4yL9gLj.webp"
-          },
-          {
-            "title": "Մելոնին Զելենսկուց պարզաբանում է պահանջել՝ Իտալիայի փոխվարչապետին «Միրոտվորեցում» ընդգրկելու առնչությամբ",
-            "url": "https://news.am/hy/news/1076410",
-            "date": "2026-11-22T10:51:00.000Z",
-            "image": "https://news.am/storage/media/26/05/20/sE9GaKZqlbDOc2JM.webp"
-          },
-          {
-            "title": "Հրապարակվել են նոյեմբերի 29-ին կայանալիք ՏԻՄ ընտրությունների վերջնական ցուցակները",
-            "url": "https://news.am/hy/news/1076409",
-            "date": "2026-11-22T09:13:46.000Z",
-            "image": "https://news.am/storage/media/26/11/22/VPmeb58vxODlG6xD.webp"
           }
         ]
       },
@@ -11455,6 +11455,12 @@
         "label": "NEWS.am Style",
         "articles": [
           {
+            "title": "Շուշաննա Թովմասյանի նոր ֆոտոշարքը, Սիուշոյի նորությունը, Հայաստանը՝ Our Generation մրցույթում. Instagram-ը՝ այս շաբաթ",
+            "url": "https://style.news.am/arm/news/117251/",
+            "date": "2026-11-22T16:30:00.000Z",
+            "image": "https://style.news.am/static/news/s/2026/11/117251.jpg"
+          },
+          {
             "title": "Որտե՞ղ զգալ տոնական տրամադրությունն ու ինչպե՞ս անցկացնել ձմռան առաջին օրը Երևանում",
             "url": "https://style.news.am/arm/news/117248/",
             "date": "2026-11-22T14:30:00.000Z",
@@ -11507,12 +11513,6 @@
             "url": "https://style.news.am/arm/news/117244/",
             "date": "2026-11-21T15:23:00.000Z",
             "image": "https://style.news.am/static/news/s/2026/11/117244.jpg"
-          },
-          {
-            "title": "Մահացել է լեգենդար ոսկերիչ Պաոլո Բուլգարին, ով ընտանեկան բիզնեսը վերածել էր համաշխարհային շքեղության",
-            "url": "https://style.news.am/arm/news/117247/",
-            "date": "2026-11-21T15:10:00.000Z",
-            "image": "https://style.news.am/static/news/s/2026/11/117247.jpg"
           }
         ]
       },
@@ -11653,6 +11653,18 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Լիբանանի բանակը երեք մարդու է ձերբակալել Սիրիայից ավելի քան 260 կգ պայթուցիկ նյութի մաքսանենգության համար",
+            "url": "https://news.am/hy/news/1076444",
+            "date": "2026-11-22T15:41:00.000Z",
+            "image": "https://news.am/storage/media/26/11/22/ccPbdLgJj2hrGgZt.webp"
+          },
+          {
+            "title": "Շղթայական վթար Երևանյան լճի մոտ. կա 1 զոհ, 3 վիրավոր",
+            "url": "https://news.am/hy/news/1076449",
+            "date": "2026-11-22T15:36:19.000Z",
+            "image": "https://news.am/storage/media/26/11/22/CWifzsH8qsm0q8tS.webp"
+          },
+          {
             "title": "Գերմանիայում գնացքի ուղևորներն ազդանշանային ատրճանակը մարտական զենքի տեղ են դրել․ ոստիկանությունը հատուկ գործողություն է իրականացրել",
             "url": "https://news.am/hy/news/1076440",
             "date": "2026-11-22T14:55:00.000Z",
@@ -11699,18 +11711,6 @@
             "url": "https://news.am/hy/news/1076392",
             "date": "2026-11-22T08:19:00.000Z",
             "image": "https://news.am/storage/media/26/11/19/rE0jPkM81z8hT76z.webp"
-          },
-          {
-            "title": "Ֆիննական ծոցում հրդեհվել է ռուսաստանյան չորաբեռնանավը․ Ֆինլանդիան կասկածում է Ուկրաինային",
-            "url": "https://news.am/hy/news/1076396",
-            "date": "2026-11-22T07:43:45.000Z",
-            "image": "https://news.am/storage/media/26/11/22/thPUSsJjOVeRfTlz.webp"
-          },
-          {
-            "title": "Հրեա տղամարդը թքել է Երուսաղեմի հայկական վանքի վրա",
-            "url": "https://news.am/hy/news/1076393",
-            "date": "2026-11-22T07:16:12.000Z",
-            "image": "https://news.am/storage/media/26/11/22/CnlyeINpv3wRhgJa.webp"
           }
         ]
       },
@@ -11853,6 +11853,18 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "Трамп выступил против возможного избрания Чака Шумера лидером большинства в Сенате",
+            "url": "https://news.am/ru/news/1076448",
+            "date": "2026-11-22T16:19:00.000Z",
+            "image": "https://news.am/storage/media/26/11/05/ZDhAQoJ7jredc2mb.webp"
+          },
+          {
+            "title": "«Примите брекзит и двигайтесь дальше»: экс-премьер Британии выступила против нового пересмотра отношений с ЕС",
+            "url": "https://news.am/ru/news/1076446",
+            "date": "2026-11-22T16:04:00.000Z",
+            "image": "https://news.am/storage/media/26/11/22/4fPZEVJtlTXdgztb.webp"
+          },
+          {
             "title": "Politico: Предложение США о гарантиях безопасности Украине вызвало осторожный оптимизм в Европе",
             "url": "https://news.am/ru/news/1076443",
             "date": "2026-11-22T15:26:00.000Z",
@@ -11899,18 +11911,6 @@
             "url": "https://news.am/ru/news/1076413",
             "date": "2026-11-22T11:07:00.000Z",
             "image": "https://news.am/storage/media/26/09/13/B3GiWyxuT4yL9gLj.webp"
-          },
-          {
-            "title": "Мелони потребовала от Зеленского объяснений из-за внесения вице-премьера Италии в «Миротворец»",
-            "url": "https://news.am/ru/news/1076410",
-            "date": "2026-11-22T10:51:00.000Z",
-            "image": "https://news.am/storage/media/26/05/20/sE9GaKZqlbDOc2JM.webp"
-          },
-          {
-            "title": "Опубликованы окончательные списки избирателей на выборах в органы местного самоуправления 29 ноября",
-            "url": "https://news.am/ru/news/1076409",
-            "date": "2026-11-22T09:13:46.000Z",
-            "image": "https://news.am/storage/media/26/11/22/VPmeb58vxODlG6xD.webp"
           }
         ]
       },
@@ -12315,6 +12315,18 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "Армия Ливана задержала трех человек за контрабанду более 260 кг взрывчатки из Сирии",
+            "url": "https://news.am/ru/news/1076444",
+            "date": "2026-11-22T15:41:00.000Z",
+            "image": "https://news.am/storage/media/26/11/22/ccPbdLgJj2hrGgZt.webp"
+          },
+          {
+            "title": "Массовое ДТП у Ереванского озера: один человек погиб, трое пострадали",
+            "url": "https://news.am/ru/news/1076449",
+            "date": "2026-11-22T15:36:19.000Z",
+            "image": "https://news.am/storage/media/26/11/22/CWifzsH8qsm0q8tS.webp"
+          },
+          {
             "title": "В Германии пассажиры поезда приняли сигнальный пистолет за боевое оружие: полиция провела спецоперацию",
             "url": "https://news.am/ru/news/1076440",
             "date": "2026-11-22T14:55:00.000Z",
@@ -12361,18 +12373,6 @@
             "url": "https://news.am/ru/news/1076392",
             "date": "2026-11-22T08:19:00.000Z",
             "image": "https://news.am/storage/media/26/11/19/rE0jPkM81z8hT76z.webp"
-          },
-          {
-            "title": "В Финском заливе загорелся связанный с российскими военными сухогруз: Финляндия подозревает Украину",
-            "url": "https://news.am/ru/news/1076396",
-            "date": "2026-11-22T07:43:45.000Z",
-            "image": "https://news.am/storage/media/26/11/22/thPUSsJjOVeRfTlz.webp"
-          },
-          {
-            "title": "Журналист Балян сообщил об осквернении армянского монастыря в Иерусалиме: на инцидент отреагировала Мартина Навратилова",
-            "url": "https://news.am/ru/news/1076393",
-            "date": "2026-11-22T07:16:12.000Z",
-            "image": "https://news.am/storage/media/26/11/22/CnlyeINpv3wRhgJa.webp"
           }
         ]
       },
