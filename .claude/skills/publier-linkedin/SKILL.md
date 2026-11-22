@@ -46,7 +46,8 @@ et annonce ce qui attend.
   linkedin.com/company/armenianews (org 146899338).
 - Vitrines (15 nov. 2026) : /showcase/armenieinfo-de (146995898),
   /showcase/armenieinfo-it (146974798), /showcase/armenianews-es
-  (146994900). Ajouter une vitrine = son id dans `LINKEDIN_SHOWCASE`
+  (146994900) ; (22 nov.) /showcase/armenianews-hy (147006331),
+  /showcase/armenianews-ru (147005417). Ajouter une vitrine = son id dans `LINKEDIN_SHOWCASE`
   (`scripts/lib/linkedin-pending.mjs`) ET son lien `/showcase/` dans
   `socialByLang` (sites.config.js) : un test exige les deux ensemble.
   LinkedIn limite la création à ~3 pages par semaine.

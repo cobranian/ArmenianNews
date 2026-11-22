@@ -43,9 +43,9 @@ export const SITES = {
     // page de CETTE langue, ils remplacent ceux de la vitrine plateforme par
     // plateforme (socialFor). Une plateforme absente garde le compte de la
     // vitrine. LinkedIn : une PAGE VITRINE (/showcase/) par langue sous la Page
-    // principale (15 nov. 2026 : de, it, es) — jamais un compte, LinkedIn n'en
-    // permet qu'un par personne ; hy et ru gardent la Page de la vitrine
-    // jusqu'à leur création (LinkedIn limite à 3 pages neuves par semaine).
+    // principale (15 nov. 2026 : de, it, es ; 22 nov. : hy, ru) — jamais un
+    // compte, LinkedIn n'en permet qu'un par personne (et limite à 3 pages
+    // neuves par semaine).
     // YouTube n'a de chaîne par langue que là où des Shorts y sont publiés.
     socialByLang: {
       de: {
@@ -192,6 +192,7 @@ export const SITES = {
         youtube: 'https://www.youtube.com/@armenianews-hy',
         whatsapp: 'https://whatsapp.com/channel/0029VbDTnRK6mYPSuckkko0s',
         bluesky: 'https://bsky.app/profile/hy.armenianews.org',
+        linkedin: 'https://www.linkedin.com/showcase/armenianews-hy/',
       },
       ru: {
         facebook: 'https://www.facebook.com/61596338480535',
@@ -200,6 +201,7 @@ export const SITES = {
         youtube: 'https://www.youtube.com/@armenianews-ru',
         whatsapp: 'https://whatsapp.com/channel/0029VbE1aLv11ulUZyEnvf0r',
         bluesky: 'https://bsky.app/profile/ru.armenianews.org',
+        linkedin: 'https://www.linkedin.com/showcase/armenianews-ru/',
       },
     },
     // Idem : le .org est la vitrine la plus récente (le rebranding), donc le

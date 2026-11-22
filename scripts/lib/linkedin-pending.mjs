@@ -12,13 +12,12 @@ import { CHANNELS, plan, supports, tagged } from './social.mjs'
 // Pages entreprise créées le 28 oct. 2026 : id d'organisation pour l'URL
 // d'administration, d'où l'on publie au nom de la page.
 export const LINKEDIN_ORG = { ch: '146900320', org: '146899338' }
-// Pages VITRINES par langue (15 nov. 2026), sous la Page de leur site : id
+// Pages VITRINES par langue (de/it/es le 15 nov. 2026, hy/ru le 22), sous la Page de leur site : id
 // pour l'URL d'administration. Un canal n'existe que si la langue déclare sa
 // vitrine dans sites.config.js (`linkedin` de socialByLang, en /showcase/) —
-// le lien du pied de page et la file de publication vont ensemble. hy et ru
-// viendront quand LinkedIn le permettra (3 pages neuves par semaine).
+// le lien du pied de page et la file de publication vont ensemble.
 // Hors de CHANNELS, comme WhatsApp : aucun secret, le job horaire les ignore.
-export const LINKEDIN_SHOWCASE = { de: '146995898', it: '146974798', es: '146994900' }
+export const LINKEDIN_SHOWCASE = { de: '146995898', it: '146974798', es: '146994900', hy: '147006331', ru: '147005417' }
 const SHOWCASE_CHANNELS = Object.entries(LINKEDIN_SHOWCASE).map(([lang, showcase]) => ({
   id: `linkedin-${lang}`,
   platform: 'linkedin',

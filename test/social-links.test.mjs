@@ -90,8 +90,10 @@ test('socialFor : la langue remplace la vitrine plateforme par plateforme, le re
   assert.equal(socialFor('org', 'ru').instagram, 'https://www.instagram.com/armenianews.ru/')
   assert.equal(socialFor('ch', 'it').bluesky, 'https://bsky.app/profile/it.armenieinfo.ch')
   assert.equal(socialFor('ch', 'de').linkedin, 'https://www.linkedin.com/showcase/armenieinfo-de/')
-  // Sans vitrine propre (hy, ru), la langue garde la Page de sa vitrine.
-  assert.equal(socialFor('org', 'ru').linkedin, SITES.org.social.linkedin)
+  assert.equal(socialFor('org', 'hy').linkedin, 'https://www.linkedin.com/showcase/armenianews-hy/')
+  assert.equal(socialFor('org', 'ru').linkedin, 'https://www.linkedin.com/showcase/armenianews-ru/')
+  // Sans vitrine propre (fr, en), la langue garde la Page de sa vitrine.
+  assert.equal(socialFor('org', 'en').linkedin, SITES.org.social.linkedin)
 })
 
 test('le JSON-LD d’une page de langue déclare aussi les comptes de cette langue', () => {
