@@ -1,0 +1,35 @@
+---
+title: "Howhannes Tumanjan, die brüderliche und unsterbliche Stimme der armenischen Literatur"
+description: "Rückblick auf Leben und Werk von Howhannes Tumanjan (1869–1923), Nationaldichter Armeniens, Schöpfer des Wernatun und unermüdlicher Beschützer seines Volkes."
+date: "2026-11-22"
+sourceHash: "94f3124702640a17"
+model: "gemini-flash-latest"
+---
+
+Geboren in den wilden und majestätischen Landschaften der Provinz Lori, etablierte sich Howhannes Tumanjan als eine der leuchtendsten Gestalten der armenischen Kultur. Völlig zu Recht als «Dichter aller Armenier» bezeichnet, verstand es dieser Schriftsteller von volksnaher und authentischer Feinfühligkeit, die ländlichen Dramen, die uralten Märchen und die historischen Prüfungen seiner Nation an der Wende vom 19. zum 20. Jahrhundert in eine reine Sprache zu fassen.
+
+## Von den Bergen von Lori zum pulsierenden Leben in Tiflis
+
+Howhannes Tumanjan erblickte am 19. Februar 1869 im historischen Dorf Dsegh das Licht der Welt, das damals im Gouvernement Tiflis innerhalb des Russischen Kaiserreichs lag. Der Familientradition zufolge stammt das Geschlecht der Tumanjans von einem Zweig des Fürstenhauses der Mamikonjan ab, das sich nach dem Verlassen seines Lehnsguts Taron bereits im 10. und 11. Jahrhundert in Lori niedergelassen hatte. Sein Vater Aslan (1839–1898), der unter dem Namen Ter-Tadewos Gemeindepriester wurde, vermittelte ihm den Respekt vor Glaube und Kultur, während seine Mutter Sona (1842–1936), eine leidenschaftliche Geschichtenerzählerin aus dem Clan der Kotscharjan, seine Kindheit mit traditionellen Erzählungen und Fabeln begleitete. Als Ältester von acht Geschwistern sog Howhannes so von seinen frühesten Jahren an die Volkslieder seiner Heimat in sich auf.
+
+Der junge Knabe besuchte von 1877 bis 1879 zunächst die Pfarrschule in Dsegh, bevor er von 1879 bis 1883 an die gemischte Schule von Tigran Ter-Dawtjan in Dschalaloghli wechselte. An dieser Einrichtung verfasste er im Alter von zwölf Jahren sein allererstes Gedicht. Ab 1883 liess er sich in Tiflis nieder, dem bedeutendsten Zentrum des armenischen Geisteslebens unter zaristischer Herrschaft, und besuchte bis 1887 die renommierte Nersisjan-Schule. Materielle Zwänge zwangen ihn jedoch, seine Ausbildung abzubrechen. Anschliessend arbeitete er am armenischen geistlichen Gericht und danach bis 1893 bei der Union der armenischen Verleger, während er zugleich aktiv an verschiedenen Literaturzeitschriften wie *Aghbjur*, *Murdtsch*, *Hasker* und *Horizon* mitwirkte. 1888 heiratete er im Alter von neunzehn Jahren Olga Matschkaljan; aus ihrer Verbindung gingen zehn Kinder hervor.
+
+## Der Kreis des Wernatun und dichterische Grösse
+
+Im Jahr 1899 versammelte Howhannes Tumanjan die grossen Geister seiner Zeit und gründete in der Mansarde seiner Wohnung an der Bebutow-Strasse in Tiflis den berühmten literarischen Zirkel *Wernatun* («die Mansarde» auf Armenisch). Dieses Zentrum intellektueller Inspiration, das mit einigen Unterbrechungen bis 1908 aktiv war, vereinte bedeutende Persönlichkeiten wie Awetik Issahakjan, Derenik Demirtschjan, Lewon Schant, Ghasaros Aghajan, Pertsch Proschjan, Nikol Aghbaljan, Alexander Schirwansade oder Wahan Terjan.
+
+Tumanjans Werk zeichnet sich durch einen tief menschlichen Realismus und eine ausserordentlich flüssige Sprache aus, die oft von der heimischen Folklore inspiriert ist. Viele seiner Verse und Wendungen sind im Übrigen in den armenischen Sprachalltag eingegangen. Schon mit dem Erscheinen seiner ersten Gedichtbände zwischen 1890 und 1892 schilderte er die rauen Lebensbedingungen auf dem Land in bedeutenden erzählenden Gedichten wie *Maro* (1887), *Sako von Lori* (1889) oder auch *Anusch* (1890). Letzteres Werk, das Anfang der 1900er-Jahre in seiner endgültigen Fassung erschien, inspirierte den Komponisten Armen Tigranjan 1912 zu seinem gleichnamigen lyrischen Meisterwerk. Ebenso diente sein Heldengedicht *Die Einnahme der Festung Tmkabert* (1902) als Grundlage für Alexander Spendarjans Oper *Almast* im Jahr 1930.
+
+Tumanjan beherrschte sämtliche literarischen Register: die Ballade mit *Achtamar* (1892) und *Parwana* (1903), die treffsichere Satire mit *Ein Tropfen Honig* (1909), das Nationalepos mit seiner Bearbeitung von *David von Sassun* (1902) oder auch die ergreifende Prosa mit der Novelle *Gikor* (1895). Zudem bereicherte er das armenische Kulturerbe durch Übersetzungen von Byron, Goethe und Puschkin und veröffentlichte bemerkenswerte lyrische wie philosophische Vierzeiler.
+
+## Bürgerschaftliches Engagement und nationale Solidarität
+
+Über sein schriftstellerisches Talent hinaus war Howhannes Tumanjan eine engagierte Persönlichkeit des öffentlichen Lebens und ein unermüdlicher Friedensstifter. Während der armenisch-tatarischen Pogrome von 1905–1906 bemühte er sich um eine Versöhnung der verfeindeten Gemeinschaften – eine Initiative, die ihm zwei Festnahmen durch die zaristischen Behörden eintrug. Später, im Jahr 1918, kritisierte er den armenisch-georgischen Grenzkrieg scharf.
+
+1912 an die Spitze des Verbands armenischer Schriftsteller des Kaukasus gewählt, widmete sich Tumanjan ganz dem Schicksal seiner Landsleute. Im Oktober 1914 trat er dem Unterstützungskomitee für die Kriegsopfer bei und begab sich nach Etschmiadsin, um den Flüchtlingen beizustehen, die vor dem Völkermord an den Armeniern flohen. Als kirchliche Stellen den Zugang zu bestimmten Gebäuden einschränken wollten, forderte Tumanjan die Aufnahme der Überlebenden im Namen des «Dichters aller Armenier», in Anlehnung an den Titel des Katholikos. 1921 übernahm er nach der Gründung des Hauses der armenischen Kunst in Tiflis den Vorsitz des Hilfskomitees für Armenien. Im Herbst desselben Jahres reiste er nach Konstantinopel, um Hilfsmassnahmen für Flüchtlinge zu organisieren – eine kräftezehrende Mission, die seine Gesundheit schwer beeinträchtigte.
+
+## Ein im kollektiven Gedächtnis fortlebendes Erbe
+
+Schwer erkrankt und 1922 operiert, wurde Howhannes Tumanjan nach Moskau verlegt, wo er am 23. März 1923 im Alter von 54 Jahren verstarb. Seine sterblichen Überreste ruhen in Tiflis im armenischen Pantheon von Chodschiwank. Die persönliche Lebensgeschichte des Dichters blieb von den Tragödien seines Jahrhunderts gezeichnet: Sein Sohn Artawasd fiel 1918 bei Kämpfen an der Kaukasusfront, während drei weitere seiner Söhne – Muschegh, Hamlik und Areg – während der sowjetischen Säuberungen der 1930er-Jahre hingerichtet wurden.
+
+Tumanjans Nachwirkung ist immens. Im September 1969 wurde sein 100. Geburtstag in Jerewan und Dsegh mit grossen Feierlichkeiten begangen. Zwei Museen in Armenien sind ihm gewidmet, in seinem Geburtsort sowie seit 1953 in der Hauptstadt, ganz zu schweigen von der 2017 zum Kulturzentrum restaurierten Wohnung in Tiflis. Sein Name ziert Strassen, einen Park, das Puppentheater von Jerewan und die Stadt Tumanjan in Lori. Seine Fabeln und Volksmärchen inspirierten über die Jahrzehnte hinweg zahlreiche Filme und animierte Kurzfilme und schrieben sein Werk für immer in die Herzen von Generationen von Armeniern ein.
