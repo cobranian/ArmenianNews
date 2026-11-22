@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Lori · 1869",
+      "title": "El poeta nacional",
+      "text": "Hovhannes Tumanyan nace en Dsegh y se consolida como el «Poeta de todos los armenios».",
+      "big": false
+    },
+    {
+      "eyebrow": "Tiflis · 1899",
+      "title": "El Vernatun",
+      "text": "En su buhardilla reúne a la élite literaria armenia, como Avetik Isahakyan y Levon Shant.",
+      "big": false
+    },
+    {
+      "eyebrow": "Inspiración musical",
+      "title": "1912",
+      "text": "Su poema Anush inspira al compositor Armen Tigranian su obra maestra lírica.",
+      "big": true
+    },
+    {
+      "eyebrow": "Folclore y relatos",
+      "title": "Fábulas y epopeyas",
+      "text": "Adapta la epopeya de David de Sasún y escribe la sátira Una gota de miel.",
+      "big": false
+    },
+    {
+      "eyebrow": "Echmiadzín · 1914",
+      "title": "Junto a su pueblo",
+      "text": "Se une al socorro de los refugiados y exige su acogida en nombre del «Poeta de todos los armenios».",
+      "big": false
+    },
+    {
+      "eyebrow": "Desaparición",
+      "title": "54 años",
+      "text": "Afectado por una grave enfermedad, el escritor fallece en Moscú el 23 de marzo de 1923.",
+      "big": true
+    },
+    {
+      "eyebrow": "Memoria colectiva",
+      "title": "Un legado vivo",
+      "text": "Dos museos están dedicados a su memoria en Armenia y una ciudad de Lori lleva su nombre.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Hovhannes Tumanyan",
+  "ytTitle": "Hovhannes Tumanyan, el poeta de todos los armenios",
+  "ytLead": "Conocido como el «Poeta de todos los armenios», Hovhannes Tumanyan marcó la cultura nacional con sus baladas, fábulas y epopeyas. Hombre de letras comprometido, consagró su vida a reconciliar a los pueblos y socorrer a los refugiados.",
+  "sourceHash": "cef2f3c8c93c4827c4395b67d14d3b16548343219f0ea3fcf395f1f2bab32fff",
+  "model": "gemini-flash-latest"
+}

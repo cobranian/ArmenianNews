@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Lori · 1869",
+      "title": "The National Poet",
+      "text": "Born in Dsegh, Hovhannes Toumanian became the Poet of All Armenians.",
+      "big": false
+    },
+    {
+      "eyebrow": "Tiflis · 1899",
+      "title": "Vernatun",
+      "text": "In his attic, he gathered Armenia's literary elite, including Avetik Isahakyan and Levon Shant.",
+      "big": false
+    },
+    {
+      "eyebrow": "Musical Inspiration",
+      "title": "1912",
+      "text": "His poem Anush inspired composer Armen Tigranian's operatic masterpiece.",
+      "big": true
+    },
+    {
+      "eyebrow": "Folklore and Tales",
+      "title": "Fables and Epics",
+      "text": "He adapted the epic David of Sasun and authored the satire A Drop of Honey.",
+      "big": false
+    },
+    {
+      "eyebrow": "Etchmiadzin · 1914",
+      "title": "At His People's Side",
+      "text": "He joined relief efforts for refugees, demanding shelter as the Poet of All Armenians.",
+      "big": false
+    },
+    {
+      "eyebrow": "Passing",
+      "title": "54 Years Old",
+      "text": "Afflicted by a serious illness, the writer passed away in Moscow on March 23, 1923.",
+      "big": true
+    },
+    {
+      "eyebrow": "Collective Memory",
+      "title": "A Living Legacy",
+      "text": "Two museums are dedicated to him in Armenia, and his name graces a town in Lori.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Hovhannes Toumanian",
+  "ytTitle": "Hovhannes Toumanian, the Poet of All Armenians",
+  "ytLead": "Known as the \"Poet of All Armenians,\" Hovhannes Toumanian shaped national culture through his ballads, fables, and epics. A committed writer, he devoted his life to reconciling peoples and helping refugees.",
+  "sourceHash": "cef2f3c8c93c4827c4395b67d14d3b16548343219f0ea3fcf395f1f2bab32fff",
+  "model": "gemini-flash-latest"
+}
