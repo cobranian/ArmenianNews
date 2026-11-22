@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-22",
+  "lang": "es",
+  "generatedAt": "2026-11-22T03:31:18.182Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca la apuesta de Armenia por la inteligencia artificial y la robótica, junto con avances en infraestructura ferroviaria regional y reconocimientos a figuras de la diáspora.",
+  "topics": [
+    {
+      "title": "Armenia impulsa su desarrollo en inteligencia artificial y robótica",
+      "text": "El país crea el centro nacional ARPI dedicado a la robótica y la inteligencia artificial física. Además, apuesta por convertirse en un centro mundial de IA con una infraestructura de cien mil GPU, mientras el evento FEMINNO 2026 promueve la innovación femenina en las regiones.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-centro-nacional-robotica-fisica-arpi/",
+          "title": "Armenia crea el centro nacional de robótica e inteligencia artificial física ARPI"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/feminno-2026-impulsa-innovacion-femenina-armenia/",
+          "title": "FEMINNO 2026 impulsa la innovación femenina e inteligencia artificial en las regiones de Armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-centro-mundial-inteligencia-artificial/",
+          "title": "Armenia apuesta por convertirse en un centro mundial de inteligencia artificial con cien mil GPU"
+        }
+      ]
+    },
+    {
+      "title": "Estudio preliminar para conectar ferrocarriles de Armenia y Azerbaiyán",
+      "text": "AECOM presentó los resultados preliminares del estudio TRIPP que analiza la conexión ferroviaria entre ambos países. La iniciativa forma parte de los esfuerzos de infraestructura y conectividad regional.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/aecom-resultados-preliminares-tripp-armenia-azerbaiyan/",
+          "title": "AECOM presenta los resultados preliminares del estudio TRIPP para conectar los ferrocarriles de Armenia y Azerbaiyán"
+        }
+      ]
+    },
+    {
+      "title": "Nuevas normas de franquicias aduaneras para alcohol y tabaco",
+      "text": "Se detallan las cantidades de litros de alcohol y paquetes de cigarrillos que pueden ingresarse libres de impuestos a Armenia. La información es relevante para viajeros y comercio fronterizo.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/alcohol-cigarrillos-libre-impuestos-armenia/",
+          "title": "Cuántos litros de alcohol y paquetes de cigarrillos se pueden ingresar libres de impuestos a Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Eduardo Eurnekian recibe el premio Fratelium",
+      "text": "El empresario de la diáspora armenia fue distinguido por su labor humanitaria y su compromiso con la causa de Malvinas. El reconocimiento destaca su trayectoria solidaria.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/eduardo-eurnekian-recibio-el-premio-fratelium-por-su-labor-humanitaria-y-su-compromiso-con-malvinas/",
+          "title": "Eduardo Eurnekian recibió el premio Fratelium por su labor humanitaria y su compromiso con Malvinas"
+        }
+      ]
+    },
+    {
+      "title": "Oleada de huelgas y protestas en Europa",
+      "text": "Desde Roma hasta los países bálticos se registra una serie de movilizaciones laborales y sociales. El fenómeno refleja tensiones económicas y políticas en el continente.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/oleada-huelgas-protestas-recorre-europa/",
+          "title": "Una oleada de huelgas y protestas recorre Europa desde Roma hasta los países bálticos"
+        }
+      ]
+    },
+    {
+      "title": "Reino Unido y UE retoman relaciones con nuevos acuerdos",
+      "text": "Ambas partes inician una nueva etapa de cooperación mediante una serie de acuerdos bilaterales. El proceso busca normalizar y ampliar los vínculos tras el Brexit.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/reino-unido-union-europea-reanudan-relaciones/",
+          "title": "El Reino Unido y la Unión Europea reanudan sus relaciones mediante una nueva serie de acuerdos bilaterales"
+        }
+      ]
+    }
+  ]
+}

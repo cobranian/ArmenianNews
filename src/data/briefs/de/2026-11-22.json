@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-22",
+  "lang": "de",
+  "generatedAt": "2026-11-22T03:31:18.182Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über Fortschritte im KI-Sektor, neue politische Programme, Sport-Erfolge sowie aktuelle Diskussionen in der Diaspora und der Innenpolitik.",
+  "topics": [
+    {
+      "title": "Ausbau der KI-Infrastruktur in Armenien",
+      "text": "Firebird AI plant den Bau von acht Rechenzentren mit einer Investition von acht Milliarden Dollar, was bis zu zehn Prozent des Bruttoinlandsprodukts beitragen könnte. Premierminister Nikol Paschinjan nahm an einer offenen Diskussion über die Chancen Armeniens im Bereich künstliche Intelligenz teil. Die Erweiterung erfolgt in Zusammenarbeit mit Dell Technologies.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/firebird-ai-prevoit-une-contribution-au-pib-armenien-pouvant-atteindre-10-avec-8-centre-dia-et-un-investissement-de-8-milliards-de-dollars/",
+          "title": "Firebird AI prévoit une contribution au PIB arménien pouvant atteindre 10 % avec 8 centres d’IA et un investissement de 8 milliards de dollars"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266269",
+          "title": "Firebird étend son infrastructure d'intelligence artificielle en Arménie avec Dell Technologies"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266310",
+          "title": "Le Premier ministre participe à une discussion ouverte sur le thème « Les opportunités de l'Arménie dans le domaine de l'intelligence artificielle"
+        }
+      ]
+    },
+    {
+      "title": "Start des TRIPP-Programms angekündigt",
+      "text": "Der armenische Premierminister kündigte an, das TRIPP-Programm offiziell zu lancieren. Details zum Inhalt des Programms wurden in den Meldungen nicht genannt. Die Ankündigung erfolgte im Rahmen aktueller Regierungstätigkeiten.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-demain-nous-annoncerons-officiellement-le-lancement-du-programme-tripp/",
+          "title": "Le Premier ministre arménien : demain, nous annoncerons officiellement le lancement du programme TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "EU liefert zweites Entminungsfahrzeug",
+      "text": "Die Europäische Union stellt Armenien ein zweites Fahrzeug für die Minenräumung zur Verfügung. Zudem werden armenische Spezialisten für diese Aufgabe ausgebildet. Die Massnahme dient der humanitären Entminung im Land.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lue-fournit-a-larmenie-un-deuxieme-vehicule-de-deminage-et-forme-des-specialistes-armeniens/",
+          "title": "L’UE fournit à l’Arménie un deuxième véhicule de déminage et forme des spécialistes arméniens"
+        }
+      ]
+    },
+    {
+      "title": "Iran will Grenzübergang zu Armenien als Haupthandelsroute nutzen",
+      "text": "Der Iran strebt an, den Grenzübergang mit Armenien zu seinem wichtigsten Landhandelskorridor auszubauen. Dies unterstreicht die wachsende wirtschaftliche Bedeutung der bilateralen Verbindung. Konkrete Massnahmen oder Zeitpläne wurden nicht genannt.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/liran-desire-faire-du-poste-frontiere-avec-larmenie-son-principal-point-de-passage-terrestre-pour-le-commerce/",
+          "title": "L’Iran désire faire du poste frontière avec l’Arménie son principal point de passage terrestre pour le commerce"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Boxer und Fussballer erfolgreich",
+      "text": "David Simonjan gewann bei der U23-Europameisterschaft im Boxen durch K.o. gegen einen englischen Gegner und sicherte Armenien die erste Medaille. Im slowakischen Fussball erzielte Tigran Barseghjan den Siegtreffer für Slovan Bratislava gegen Ružomberok. Denis Djorkaeff kandidiert zudem für das Präsidentenamt des armenischen Fussballverbands.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-la-15e-journee-du-championnat-slovaque-le-slovan-bratislava-a-battu-le-ruzomberok-par-un-but-de-larmenien-tigran-barseghyan/",
+          "title": "Lors de la 15e journée du championnat slovaque, le Slovan Bratislava a battu le Ružomberok par un but de l’Arménien Tigran Barseghyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnat-deurope-u23-de-boxe-david-simonyan-met-ko-son-adversaire-anglais-et-offre-a-larmenie-sa-premiere-medaille/",
+          "title": "Championnat d’Europe U23 de boxe : David Simonyan met KO son adversaire anglais et offre à l’Arménie sa première médaille"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/denis-djorkaeff-candidat-a-la-presidence-de-la-federation-armenienne-de-football/",
+          "title": "Denis Djorkaeff candidat à la présidence de la Fédération arménienne de football"
+        }
+      ]
+    },
+    {
+      "title": "Diskussionen um Integration und politische Vorwürfe in der Diaspora",
+      "text": "In Bourg-lès-Valence fand eine lebhafte Debatte über Integration und Assimilation französischer Armenier statt. Gleichzeitig wird der FRA vorgeworfen, den Konsens durch Angriffe auf Araïk Harutjunjan zu brechen. Auch die Frage der Geburtsortangabe «Aserbaidschan» in Pässen von Artsach-Bewohnern wird als politische Entscheidung der armenischen Behörden thematisiert.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-debat-tres-anime-d-armenia-sur-lintegration-et-lassimilation-des-armeniens-de-france-a-bourg-les-valence/",
+          "title": "Le débat très animé d’« Arménia » sur l’intégration et l’assimilation des Arméniens de France à Bourg-lès-Valence"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36144/",
+          "title": "Un auteur accuse la FRA de rompre le consensus en visant Araïk Haroutiounian, dont Kotcharian se réjouissait"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-mention-azerbaidjan-comme-lieu-de-naissance-dans-les-passeports-des-habitants-de-lartsakh-est-le-resultat-dune-decision-politique-des-autorites-armenienne/",
+          "title": "« La mention “Azerbaïdjan” comme lieu de naissance dans les passeports des habitants de l’Artsakh est le résultat d’une décision politique des autorités arméniennes. »"
+        }
+      ]
+    },
+    {
+      "title": "Internationales Gerichtsurteil, Türkei und Kultur",
+      "text": "Die historische Entscheidung des Internationalen Gerichtshofs im Fall der Rohingya wird als möglicher Präzedenzfall für Artsach gewertet. In der Türkei wird das Urteil gegen den Bürgermeister von Istanbul von der Opposition als Feigheit kritisiert. Ein neuer Kinderband erzählt die Legende von Hayk, dem Stammvater der Armenier.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-arret-historique-de-la-cour-internationale-de-justice-un-precedent-qui-pourrait-aussi-compter-pour-lartsakh/",
+          "title": "Un arrêt historique de la Cour Internationale de Justice sur les Rohingyas : un précédent qui pourrait aussi compter pour l’Artsakh"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/decision-judiciaire-contre-le-maire-distanbul-de-la-lachete-dit-lopposition/",
+          "title": "Décision judiciaire contre le maire d’Istanbul: de la « lâcheté », dit l’opposition"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/nouveau-livre-pour-enfants-hayk-lhistoire-legendaire-du-peuple-armenien/",
+          "title": "Nouveau livre pour enfants : « Hayk – L’histoire légendaire du peuple arménien »"
+        }
+      ]
+    }
+  ]
+}

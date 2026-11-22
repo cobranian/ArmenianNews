@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-22",
+  "lang": "fr",
+  "generatedAt": "2026-11-22T03:31:18.182Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "L'actualité du jour est marquée par le développement du secteur de l'intelligence artificielle en Arménie, les relations frontalières avec l'Iran et plusieurs événements sportifs et politiques nationaux.",
+  "topics": [
+    {
+      "title": "Expansion de l'infrastructure d'intelligence artificielle en Arménie",
+      "text": "Firebird AI prévoit une contribution au PIB arménien pouvant atteindre 10 % grâce à la création de 8 centres d'IA et un investissement de 8 milliards de dollars. L'entreprise étend par ailleurs son infrastructure en partenariat avec Dell Technologies. Le Premier ministre a participé à une discussion ouverte sur les opportunités de l'Arménie dans ce domaine.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/firebird-ai-prevoit-une-contribution-au-pib-armenien-pouvant-atteindre-10-avec-8-centre-dia-et-un-investissement-de-8-milliards-de-dollars/",
+          "title": "Firebird AI prévoit une contribution au PIB arménien pouvant atteindre 10 % avec 8 centres d’IA et un investissement de 8 milliards de dollars"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266269",
+          "title": "Firebird étend son infrastructure d'intelligence artificielle en Arménie avec Dell Technologies"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266310",
+          "title": "Le Premier ministre participe à une discussion ouverte sur le thème « Les opportunités de l'Arménie dans le domaine de l'intelligence artificielle"
+        }
+      ]
+    },
+    {
+      "title": "L'Iran veut faire de sa frontière avec l'Arménie son principal corridor commercial terrestre",
+      "text": "Téhéran exprime le souhait de transformer le poste frontière avec l'Arménie en son point de passage terrestre principal pour le commerce. Des analyses rappellent par ailleurs que Moscou jugeait auparavant « sans efficacité » le projet de chemin de fer reliant l'Iran à l'Arménie.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/liran-desire-faire-du-poste-frontiere-avec-larmenie-son-principal-point-de-passage-terrestre-pour-le-commerce/",
+          "title": "L’Iran désire faire du poste frontière avec l’Arménie son principal point de passage terrestre pour le commerce"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36151/",
+          "title": "Pourquoi Moscou jugeait « sans efficacité » le projet de chemin de fer Iran-Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Deuxième véhicule de déminage fourni par l'UE à l'Arménie",
+      "text": "L'Union européenne a livré un deuxième véhicule de déminage à l'Arménie et assure la formation de spécialistes arméniens pour son utilisation. Cette aide s'inscrit dans le cadre du soutien européen aux efforts de déminage humanitaire.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lue-fournit-a-larmenie-un-deuxieme-vehicule-de-deminage-et-forme-des-specialistes-armeniens/",
+          "title": "L’UE fournit à l’Arménie un deuxième véhicule de déminage et forme des spécialistes arméniens"
+        }
+      ]
+    },
+    {
+      "title": "Succès arméniens en boxe U23 et en football slovaque",
+      "text": "David Simonyan a remporté la première médaille de l'Arménie aux Championnats d'Europe U23 de boxe en mettant KO son adversaire anglais. En Slovaquie, Tigran Barseghyan a inscrit le but de la victoire du Slovan Bratislava face au Ružomberok lors de la 15e journée de championnat.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnat-deurope-u23-de-boxe-david-simonyan-met-ko-son-adversaire-anglais-et-offre-a-larmenie-sa-premiere-medaille/",
+          "title": "Championnat d’Europe U23 de boxe : David Simonyan met KO son adversaire anglais et offre à l’Arménie sa première médaille"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-la-15e-journee-du-championnat-slovaque-le-slovan-bratislava-a-battu-le-ruzomberok-par-un-but-de-larmenien-tigran-barseghyan/",
+          "title": "Lors de la 15e journée du championnat slovaque, le Slovan Bratislava a battu le Ružomberok par un but de l’Arménien Tigran Barseghyan"
+        }
+      ]
+    },
+    {
+      "title": "Candidature de Denis Djorkaeff à la présidence de la Fédération arménienne de football",
+      "text": "L'ancien international français Denis Djorkaeff a officialisé sa candidature pour diriger la Fédération arménienne de football. Cette annonce intervient dans un contexte de renouvellement des instances du football national.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/denis-djorkaeff-candidat-a-la-presidence-de-la-federation-armenienne-de-football/",
+          "title": "Denis Djorkaeff candidat à la présidence de la Fédération arménienne de football"
+        }
+      ]
+    },
+    {
+      "title": "Polémiques politiques autour de la FRA et du statut de l'Artsakh",
+      "text": "Le Premier ministre Nikol Pachinian a critiqué la FRA lors d'un rassemblement, tandis qu'un auteur accuse le parti de rompre le consensus en ciblant Araïk Haroutiounian. Par ailleurs, une source affirme que la mention « Azerbaïdjan » comme lieu de naissance dans les passeports des habitants de l'Artsakh résulte d'une décision politique des autorités arméniennes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/vous-revez-de-quelquun-dautre-et-quelquun-dautre-reve-de-vous-nikol-pachinian-a-la-fra/",
+          "title": "Vous rêvez de quelqu’un d’autre, et quelqu’un d’autre rêve de vous : Nikol Pachinian à la FRA"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36144/",
+          "title": "Un auteur accuse la FRA de rompre le consensus en visant Araïk Haroutiounian, dont Kotcharian se réjouissait"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-mention-azerbaidjan-comme-lieu-de-naissance-dans-les-passeports-des-habitants-de-lartsakh-est-le-resultat-dune-decision-politique-des-autorites-armenienne/",
+          "title": "« La mention “Azerbaïdjan” comme lieu de naissance dans les passeports des habitants de l’Artsakh est le résultat d’une décision politique des autorités arméniennes. »"
+        }
+      ]
+    },
+    {
+      "title": "Débat sur l'intégration des Arméniens de France à Bourg-lès-Valence",
+      "text": "La revue « Arménie » a organisé un débat animé à Bourg-lès-Valence sur les questions d'intégration et d'assimilation des Arméniens de France. L'événement s'inscrit dans une série de rencontres de la diaspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-debat-tres-anime-d-armenia-sur-lintegration-et-lassimilation-des-armeniens-de-france-a-bourg-les-valence/",
+          "title": "Le débat très animé d’« Arménia » sur l’intégration et l’assimilation des Arméniens de France à Bourg-lès-Valence"
+        }
+      ]
+    }
+  ]
+}

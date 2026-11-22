@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-22",
+  "lang": "en",
+  "generatedAt": "2026-11-22T03:31:18.182Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian outlets report on domestic political and economic developments, while international wires cover health research and entertainment news.",
+  "topics": [
+    {
+      "title": "Pashinyan meets Nobel laureate Kailash Satyarthi",
+      "text": "Prime Minister Nikol Pashinyan held a meeting with Nobel Peace Prize laureate Kailash Satyarthi in Yerevan. The discussion focused on children's rights and education initiatives.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266317",
+          "title": "Pashinyan meets Nobel Peace Prize laureate Kailash Satyarthi"
+        }
+      ]
+    },
+    {
+      "title": "Armenia to establish cybersecurity campus with French and EU support",
+      "text": "Armenia announced plans to create a cybersecurity campus backed by France and the European Union. The project aims to strengthen the country's digital security infrastructure and expertise.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266315",
+          "title": "Armenia to establish cybersecurity campus with support from France and the EU"
+        }
+      ]
+    },
+    {
+      "title": "Ancient Armenia exhibition opens at Acropolis Museum",
+      "text": "An exceptional exhibition dedicated to ancient Armenia has opened at Greece's Acropolis Museum. The display showcases archaeological artifacts highlighting Armenia's historical heritage.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266312",
+          "title": "Exceptional exhibition on ancient Armenia opens at the Acropolis Museum, Greece’s most prestigious museum"
+        }
+      ]
+    },
+    {
+      "title": "NVIDIA vice-president says Armenia could emerge on global AI stage",
+      "text": "During a discussion with Prime Minister Pashinyan, an NVIDIA vice-president stated that Armenia has the potential to become a significant player in the global artificial intelligence sector. The conversation explored opportunities for AI development in the country.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266310",
+          "title": "Armenia could emerge on the global AI stage, NVIDIA vice-president says at discussion with Pashinyan"
+        }
+      ]
+    },
+    {
+      "title": "Passport policy lists Azerbaijan as birthplace for Karabakh-born citizens",
+      "text": "Armenia's new passport regulations designate Azerbaijan as the birthplace for citizens born in Nagorno-Karabakh. The policy change has drawn criticism from various quarters.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015541",
+          "title": "Armenia lists Azerbaijan as birthplace for Karabakh-born citizens in new passports, drawing criticism"
+        }
+      ]
+    },
+    {
+      "title": "AraratBank to place Armenia's first social bonds issued by Farm Credit Armenia",
+      "text": "AraratBank will facilitate the placement of Armenia's inaugural social bonds issued by Farm Credit Armenia. The bonds aim to support agricultural development and rural communities.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266267",
+          "title": "AraratBank to Place Armenia’s First Social Bonds Issued by Farm Credit Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Yerevan to host Under-16 European Basketball Championship",
+      "text": "Yerevan has been selected to host the Under-16 European Basketball Championship. The tournament will bring youth teams from across Europe to the Armenian capital.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266306",
+          "title": "Yerevan to host Under-16 European Basketball Championship"
+        }
+      ]
+    }
+  ]
+}

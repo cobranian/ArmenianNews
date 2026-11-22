@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-22",
+  "lang": "it",
+  "generatedAt": "2026-11-22T03:31:18.182Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna odierna evidenzia sviluppi significativi nell'intelligenza artificiale, nella politica interna, nelle relazioni regionali e nello sport, con diverse testate che convergono sui medesimi temi.",
+  "topics": [
+    {
+      "title": "Espansione dell'infrastruttura di intelligenza artificiale in Armenia",
+      "text": "Firebird AI prevede un contributo al PIL fino al 10% attraverso otto centri di intelligenza artificiale e un investimento di 8 miliardi di dollari. La società sta estendendo la propria infrastruttura in Armenia in collaborazione con Dell Technologies, mentre il Primo ministro ha partecipato a una discussione pubblica sulle opportunità del settore.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/firebird-ai-prevoit-une-contribution-au-pib-armenien-pouvant-atteindre-10-avec-8-centre-dia-et-un-investissement-de-8-milliards-de-dollars/",
+          "title": "Firebird AI prévoit une contribution au PIB arménien pouvant atteindre 10 % avec 8 centres d’IA et un investissement de 8 milliards de dollars"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266269",
+          "title": "Firebird étend son infrastructure d'intelligence artificielle en Arménie avec Dell Technologies"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266310",
+          "title": "Le Premier ministre participe à une discussion ouverte sur le thème « Les opportunités de l'Arménie dans le domaine de l'intelligence artificielle"
+        }
+      ]
+    },
+    {
+      "title": "Situazione energetica e programma TRIPP",
+      "text": "Il Primo ministro ha dichiarato che l'Armenia, che otto mesi fa registrava un surplus di produzione elettrica, deve ora importare energia a causa di investimenti. È stato inoltre annunciato il lancio ufficiale del programma TRIPP per domani.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-il-y-a-huit-mois-larmenie-disposait-dun-excedent-de-production-delectricite-aujourdhui-elle-doit-en-importer-en-raison-dinvestissements/",
+          "title": "Nikol Pachinian : Il y a huit mois, l’Arménie disposait d’un excédent de production d’électricité ; aujourd’hui, elle doit en importer en raison d’investissements"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-demain-nous-annoncerons-officiellement-le-lancement-du-programme-tripp/",
+          "title": "Le Premier ministre arménien : demain, nous annoncerons officiellement le lancement du programme TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione UE-Armenia per lo sminamento",
+      "text": "L'Unione Europea ha fornito all'Armenia un secondo veicolo per lo sminamento e sta formando specialisti armeni nel settore, rafforzando la cooperazione in materia di sicurezza.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lue-fournit-a-larmenie-un-deuxieme-vehicule-de-deminage-et-forme-des-specialistes-armeniens/",
+          "title": "L’UE fournit à l’Arménie un deuxième véhicule de déminage et forme des spécialistes arméniens"
+        }
+      ]
+    },
+    {
+      "title": "Relazioni commerciali tra Iran e Armenia",
+      "text": "L'Iran intende trasformare il valico di frontiera con l'Armenia nel suo principale punto di passaggio terrestre per il commercio. In passato Mosca aveva giudicato privo di efficacia il progetto ferroviario Iran-Armenia.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/liran-desire-faire-du-poste-frontiere-avec-larmenie-son-principal-point-de-passage-terrestre-pour-le-commerce/",
+          "title": "L’Iran désire faire du poste frontière avec l’Arménie son principal point de passage terrestre pour le commerce"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36151/",
+          "title": "Pourquoi Moscou jugeait « sans efficacité » le projet de chemin de fer Iran-Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Dinamiche politiche interne e posizione della FRA",
+      "text": "Il Primo ministro si è rivolto alla FRA durante un evento, mentre un autore accusa il partito di aver rotto il consenso prendendo di mira Araik Harutiunian, cosa che avrebbe compiaciuto Kocharian. Secondo un analista, la Russia avrebbe perso una leva chiave sull'Armenia con la fine del conflitto.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/vous-revez-de-quelquun-dautre-et-quelquun-dautre-reve-de-vous-nikol-pachinian-a-la-fra/",
+          "title": "Vous rêvez de quelqu’un d’autre, et quelqu’un d’autre rêve de vous : Nikol Pachinian à la FRA"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36156/",
+          "title": "Selon Edgar Vardanian, la Russie a perdu un levier clé sur l’Arménie avec la fin du conflit"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36144/",
+          "title": "Un auteur accuse la FRA de rompre le consensus en visant Araïk Haroutiounian, dont Kotcharian se réjouissait"
+        }
+      ]
+    },
+    {
+      "title": "Successi sportivi armeni",
+      "text": "Tigran Barseghyan ha segnato il gol decisivo nella vittoria dello Slovan Bratislava nel campionato slovacco. Ai Campionati europei U23 di boxe, David Simonyan ha messo KO l'avversario inglese conquistando la prima medaglia per l'Armenia. Denis Djorkaeff è candidato alla presidenza della Federazione armena di calcio.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lors-de-la-15e-journee-du-championnat-slovaque-le-slovan-bratislava-a-battu-le-ruzomberok-par-un-but-de-larmenien-tigran-barseghyan/",
+          "title": "Lors de la 15e journée du championnat slovaque, le Slovan Bratislava a battu le Ružomberok par un but de l’Arménien Tigran Barseghyan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnat-deurope-u23-de-boxe-david-simonyan-met-ko-son-adversaire-anglais-et-offre-a-larmenie-sa-premiere-medaille/",
+          "title": "Championnat d’Europe U23 de boxe : David Simonyan met KO son adversaire anglais et offre à l’Arménie sa première médaille"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/denis-djorkaeff-candidat-a-la-presidence-de-la-federation-armenienne-de-football/",
+          "title": "Denis Djorkaeff candidat à la présidence de la Fédération arménienne de football"
+        }
+      ]
+    },
+    {
+      "title": "Questioni legate all'Artsakh e alla diaspora",
+      "text": "Una fonte afferma che l'indicazione 'Azerbaigian' come luogo di nascita nei passaporti degli abitanti dell'Artsakh deriverebbe da una decisione politica delle autorità armene. Un verdetto storico della Corte Internazionale di Giustizia sui Rohingya potrebbe costituire un precedente rilevante anche per l'Artsakh.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-arret-historique-de-la-cour-internationale-de-justice-un-precedent-qui-pourrait-aussi-compter-pour-lartsakh/",
+          "title": "Un arrêt historique de la Cour Internationale de Justice sur les Rohingyas : un précédent qui pourrait aussi compter pour l’Artsakh"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-mention-azerbaidjan-comme-lieu-de-naissance-dans-les-passeports-des-habitants-de-lartsakh-est-le-resultat-dune-decision-politique-des-autorites-armenienne/",
+          "title": "« La mention “Azerbaïdjan” comme lieu de naissance dans les passeports des habitants de l’Artsakh est le résultat d’une décision politique des autorités arméniennes. »"
+        }
+      ]
+    }
+  ]
+}
