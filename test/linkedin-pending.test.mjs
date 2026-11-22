@@ -21,7 +21,7 @@ const kinds = ['culture']
 const PAGES = LINKEDIN_CHANNELS.filter((c) => !c.showcase)
 
 test('les canaux LinkedIn : les deux Pages, puis une vitrine par langue qui en déclare une', () => {
-  assert.deepEqual(LINKEDIN_CHANNELS.map((c) => c.id), ['linkedin-ch', 'linkedin-org', 'linkedin-de', 'linkedin-it', 'linkedin-es'])
+  assert.deepEqual(LINKEDIN_CHANNELS.map((c) => c.id), ['linkedin-ch', 'linkedin-org', 'linkedin-de', 'linkedin-it', 'linkedin-es', 'linkedin-hy', 'linkedin-ru'])
 })
 
 // Une vitrine liée au pied de page sans id d'administration n'aurait aucune
