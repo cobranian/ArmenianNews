@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Urartu · Arin Berd",
+      "title": "The Birthplace of Yerevan",
+      "text": "In 782 BC, King Argishti I founded Erebuni Fortress to secure his northern border.",
+      "big": false
+    },
+    {
+      "eyebrow": "Ancient Settlement",
+      "title": "6,600",
+      "text": "The king settled 6,600 captives from Khate and Tsupani to build and populate this citadel.",
+      "big": true
+    },
+    {
+      "eyebrow": "Royal Reserves",
+      "title": "24,100 kapis",
+      "text": "Granaries stored over 24,100 kapis of grain, alongside giant jars of wine and beer.",
+      "big": true
+    },
+    {
+      "eyebrow": "Cults and Treasures",
+      "title": "The Temple of Khaldi",
+      "text": "This major sanctuary featured blue frescoes depicting deities, hunting scenes, and trees of life.",
+      "big": false
+    },
+    {
+      "eyebrow": "6th Century BC",
+      "title": "Peaceful Evacuation",
+      "text": "Urartians peacefully evacuated Erebuni for Teishebaini, allowing exceptional preservation of the site.",
+      "big": false
+    },
+    {
+      "eyebrow": "Archaeology · 1950",
+      "title": "Carved in Basalt",
+      "text": "The discovery of the foundation inscription confirmed the site of the fortress that gave Yerevan its name.",
+      "big": false
+    },
+    {
+      "eyebrow": "Living Heritage",
+      "title": "2,750th",
+      "text": "In September 1968, the 2,750th anniversary of Erebuni formalized the venerable age of the capital.",
+      "big": true
+    }
+  ],
+  "outroTitle": "Erebuni Fortress",
+  "ytTitle": "Erebuni, the Ancient Urartian Fortress That Became Yerevan",
+  "ytLead": "Founded in 782 BC by King Argishti I, Erebuni Fortress is the historical birthplace of the Armenian capital. Its basalt ramparts and royal frescoes bear witness to the power of the Urartian civilization.",
+  "sourceHash": "951706f85e783e6d7f6d16ff917350284ae79f3a27a9c1d22257da0195786e2a",
+  "model": "gemini-flash-latest"
+}
