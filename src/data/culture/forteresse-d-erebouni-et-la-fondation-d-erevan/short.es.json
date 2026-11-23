@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Urartu · Arin Berd",
+      "title": "La cuna de Ereván",
+      "text": "El rey Argishti I fundó la fortaleza de Erebuni en 782 antes de nuestra era para asegurar su frontera septentrional.",
+      "big": false
+    },
+    {
+      "eyebrow": "Poblamiento antiguo",
+      "title": "6 600",
+      "text": "El monarca urarteo instaló a 6 600 cautivos de Jate y Tsupani para edificar y poblar esta imponente ciudadela.",
+      "big": true
+    },
+    {
+      "eyebrow": "Reservas reales",
+      "title": "24 100 kapis",
+      "text": "Los graneros acumulaban más de 24 100 kapis de cereales, junto a vasijas gigantes con vino y cerveza de cebada.",
+      "big": true
+    },
+    {
+      "eyebrow": "Cultos y tesoros",
+      "title": "El templo de Haldi",
+      "text": "Este santuario mayor lucía frescos sobre fondo azul con procesiones de divinidades, árboles de la vida y cacerías.",
+      "big": false
+    },
+    {
+      "eyebrow": "Siglo VI a. C.",
+      "title": "Evacuación pacífica",
+      "text": "Los urarteos desalojaron pacíficamente Erebuni hacia Teishebaini, lo que permitió una conservación excepcional del sitio.",
+      "big": false
+    },
+    {
+      "eyebrow": "Arqueología · 1950",
+      "title": "Grabado en basalto",
+      "text": "El hallazgo de la inscripción de fundación confirmó la ubicación de la fortaleza que dio su nombre a Ereván.",
+      "big": false
+    },
+    {
+      "eyebrow": "Herencia viva",
+      "title": "2750.º",
+      "text": "En septiembre de 1968, los festejos del 2750.º aniversario de Erebuni oficializaron la milenaria historia de Ereván.",
+      "big": true
+    }
+  ],
+  "outroTitle": "El Castillo de Erebuni",
+  "ytTitle": "Erebuni, la fortaleza antigua de Urartu que dio origen a Ereván",
+  "ytLead": "Fundado en 782 antes de nuestra era por el rey Argishti I, el Castillo de Erebuni es la cuna histórica de la capital armenia. Sus murallas de basalto y frescos reales atestiguan el esplendor de Urartu.",
+  "sourceHash": "951706f85e783e6d7f6d16ff917350284ae79f3a27a9c1d22257da0195786e2a",
+  "model": "gemini-flash-latest"
+}
