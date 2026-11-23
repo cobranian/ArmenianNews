@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-23",
+  "lang": "en",
+  "generatedAt": "2026-11-23T05:32:07.898Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian media highlight diplomatic engagement with Lebanon and Romania, a constitutional reform debate, and sports achievements at the U23 European Championships.",
+  "topics": [
+    {
+      "title": "Armenia–Lebanon diplomatic dialogue",
+      "text": "Prime Minister Nikol Pashinyan sent a congratulatory message to his Lebanese counterpart and emphasized the importance of strengthening high-level political dialogue between the two countries.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266322",
+          "title": "Nikol Pashinyan sends congratulatory message to the Prime Minister of Lebanon"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076389",
+          "title": "PM Pashinyan to Lebanese colleague: Armenia attaches great importance to strengthening high-level political dialogue with Lebanon"
+        }
+      ]
+    },
+    {
+      "title": "Strategic partnership with Romania",
+      "text": "Analyst Sergey Minasyan says a new strategic partnership agreement will elevate Armenia–Romania relations to a new level.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266329",
+          "title": "Strategic partnership to take Armenia-Romania relations to a new level: Sergey Minasyan"
+        }
+      ]
+    },
+    {
+      "title": "Call for a new constitution",
+      "text": "A CivilNet commentary argues that Armenia needs a new constitution to end one-man rule and reform governance.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015559",
+          "title": "Yes, Armenia needs a new constitution that will end one-man rule"
+        }
+      ]
+    },
+    {
+      "title": "Armenia wins two medals at U23 European Championships",
+      "text": "Armenian athletes secured two medals at the U23 European Championships, marking a notable performance for the national team.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170418/",
+          "title": "U23 European Championships: Armenia wins 2 medals"
+        }
+      ]
+    },
+    {
+      "title": "Armenia–UK healthcare cooperation",
+      "text": "Wigmore has established a strategic partnership with Great Ormond Street Hospital, deepening Armenia–United Kingdom cooperation in the medical sector.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266321",
+          "title": "Armenia–UK Cooperation: Wigmore Establishes Strategic Partnership with Great Ormond Street Hospital"
+        }
+      ]
+    },
+    {
+      "title": "Incident at Armenian monastery in Jerusalem",
+      "text": "A Jewish man spat on an Armenian monastery in Jerusalem, drawing attention to tensions around religious sites in the city.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076393",
+          "title": "Jewish man spits on Armenian monastery in Jerusalem"
+        }
+      ]
+    }
+  ]
+}
