@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-23",
+  "lang": "es",
+  "generatedAt": "2026-11-23T03:34:38.141Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la destitución del embajador armenio en Rusia, los avances en inteligencia artificial y cooperación tecnológica con Irán, y la situación de las escuelas armenias en Turquía.",
+  "topics": [
+    {
+      "title": "Cambio en la embajada armenia en Rusia",
+      "text": "Gurgen Arsenyan fue destituido como embajador de Armenia en Rusia y será reemplazado por Samvel Mkrtchyan. El anuncio marca un movimiento diplomático significativo en las relaciones bilaterales.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/destituyen-gurgen-arsenyan-embajador-armenia-rusia/",
+          "title": "Destituyen a Gurgen Arsenyan como embajador de Armenia en Rusia y nombran a Samvel Mkrtchyan"
+        }
+      ]
+    },
+    {
+      "title": "Impulso a la inteligencia artificial en Armenia",
+      "text": "El evento DigiTec 2026 reunió a líderes tecnológicos para promover las ambiciones de Armenia en inteligencia artificial. El primer ministro Nikol Pashinyan participó en uno de los paneles del encuentro.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/digitec-2026-lideres-tecnologicos-armenia/",
+          "title": "DigiTec 2026 reúne a líderes tecnológicos para impulsar las ambiciones de Armenia en inteligencia artificial"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-inteligencia-artificial-pashinyan-digitec-2026/",
+          "title": "Oportunidades de Armenia en inteligencia artificial: Nikol Pashinyan participó en el panel de DigiTec 2026"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación tecnológica entre Armenia e Irán",
+      "text": "Ambos países acordaron formar un grupo de trabajo conjunto en altas tecnologías y telecomunicaciones. La iniciativa busca fortalecer la colaboración en sectores estratégicos.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-iran-grupo-trabajo-conjunto-altas-tecnologias/",
+          "title": "Armenia e Irán formarán un grupo de trabajo conjunto en altas tecnologías y telecomunicaciones"
+        }
+      ]
+    },
+    {
+      "title": "Escuelas armenias en Turquía bajo presión",
+      "text": "Los directores de escuelas armenias en Turquía enfrentan posibles sanciones por haber aceptado niños procedentes de Armenia. La medida refleja tensiones en el ámbito educativo de la diáspora.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/directores-escuelas-armenias-turquia-sancionados/",
+          "title": "Los directores de escuelas armenias en Turquía enfrentan posibles sanciones por aceptar niños de Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Artistas armenios nominados a los Grammy",
+      "text": "Dos artistas de origen armenio figuran entre los nominados a la 69.ª edición de los Premios Grammy. La nominación destaca la presencia cultural armenia en la escena musical internacional.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/69-edicion-premios-grammy-dos-artistas-armenios/",
+          "title": "Dos artistas de origen armenio destacan entre los nominados a la 69.ª edición de los Premios Grammy"
+        }
+      ]
+    },
+    {
+      "title": "Elecciones en la Federación de Fútbol de Armenia",
+      "text": "Gevorg Ghazaryan y Denis Djorkaeff competirán por la presidencia de la Federación de Fútbol de Armenia. El proceso definirá el nuevo liderazgo del fútbol nacional.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/ghazaryan-djorkaeff-federacion-armenia-futbol/",
+          "title": "Gevorg Ghazaryan y Denis Djorkaeff competirán por la presidencia de la Federación de Fútbol de Armenia"
+        }
+      ]
+    }
+  ]
+}

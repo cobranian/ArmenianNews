@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-23",
+  "lang": "fr",
+  "generatedAt": "2026-11-23T03:34:38.141Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La presse arménienne couvre ce jour les tensions persistantes avec l'Azerbaïdjan, l'actualité politique intérieure autour du référendum constitutionnel, ainsi que plusieurs événements culturels et diasporiques.",
+  "topics": [
+    {
+      "title": "Revendications territoriales et occupation azerbaïdjanaise",
+      "text": "Tatev Hayrapetyan affirme que l'Azerbaïdjan intègre ses falsifications historiques et revendications territoriales à sa politique d'État. Par ailleurs, Hetq.am indique que 37 % de la réserve hydrologique de Jermuk serait occupée par l'Azerbaïdjan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/tatev-hayrapetyan-lazerbaidjan-non-seulement-ne-renonce-pas-a-ses-falsifications-historiques-et-a-ses-revendications-territoriales-envers-larmenie-mais-les-integre-egalement-a-sa-politique-de/",
+          "title": "Tatev Hayrapetyan : L’Azerbaïdjan non seulement ne renonce pas à ses falsifications historiques et à ses revendications territoriales envers l’Arménie, mais les intègre également à sa politique d’État"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lazerbaidjan-occupe-37-de-la-reserve-hydrologique-de-jermuk-en-armenie-indique-hetq-am/",
+          "title": "L’Azerbaïdjan occupe 37 % de la réserve hydrologique de Jermuk en Arménie indique Hetq.am"
+        }
+      ]
+    },
+    {
+      "title": "Référendum constitutionnel et débats institutionnels",
+      "text": "Vahram Atanessian qualifie de systémique la panique de l'opposition face au référendum constitutionnel. Un article critique par ailleurs l'ingérence présumée d'un ministre allemand dans ce processus constitutionnel arménien.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36193/",
+          "title": "Référendum constitutionnel : Vahram Atanessian juge systémique la panique de l’opposition"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/monsieur-le-ministre-allemand-de-quoi-vous-melez-vous/",
+          "title": "Constitution de l’Arménie : Monsieur le ministre allemand, de quoi vous mêlez-vous ?"
+        }
+      ]
+    },
+    {
+      "title": "Forum européen de la jeunesse arménienne à Paris",
+      "text": "La deuxième édition du Forum européen de la jeunesse arménienne se tiendra le 29 novembre à Paris, à la Mairie du 16e arrondissement. L'événement rassemble des jeunes de la diaspora autour de thématiques communes.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/paris-accueillera-la-deuxieme-edition-du-forum-europeen-de-la-jeunesse-armenienne-le-29-novembre/",
+          "title": "Paris accueillera la deuxième édition du Forum européen de la jeunesse arménienne le 29 novembre"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/g2ia-forum-europeen-de-la-jeunesse-armenienne-mairie-du-16eme/",
+          "title": "G2IA – Forum Européen de la Jeunesse Arménienne : Mairie du 16eme"
+        }
+      ]
+    },
+    {
+      "title": "Développement du secteur technologique et intelligence artificielle",
+      "text": "Le Premier ministre a rencontré les dirigeants d'entreprises IT participant au salon Digitec 2026 lors d'un petit-déjeuner de travail. Une analyse distincte examine les opportunités offertes par l'intelligence artificielle pour l'économie arménienne.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266324",
+          "title": "Le Premier ministre a tenu un petit-déjeuner de travail avec les dirigeants des entreprises du secteur des technologies de l'information participant au salon « Digitec 2026 »"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/lopportunite-de-lia-en-armenie-de-lidee-a-laction/",
+          "title": "L’opportunité de l’IA en Arménie : de l’idée à l’action"
+        }
+      ]
+    },
+    {
+      "title": "Relations arméno-libanaises et soutien à la souveraineté",
+      "text": "Le Catholicos Aram I a réaffirmé au président libanais Joseph Aoun le soutien de la communauté arménienne à l'indépendance du Liban. Le Premier ministre arménien a également adressé un message de félicitations à son homologue libanais.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-catholicos-aram-i-reaffirma-a-joseph-aoun-que-le-catholicosat-de-la-grande-maison-de-cilicie-et-la-communaute-armenienne-soutiennent-lindependance-et-la-souverainete-du-liban/",
+          "title": "Le Catholicos Aram I réaffirme à Joseph Aoun que le Catholicosat de la Grande Maison de Cilicie et la communauté arménienne soutiennent l’indépendance et la souveraineté du Liban"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266322",
+          "title": "Le Premier ministre adresse un message de félicitations à son homologue libanais"
+        }
+      ]
+    },
+    {
+      "title": "Intempéries dans les régions de Gegharkunik et Lori",
+      "text": "De violents vents ont causé des dégâts matériels dans les régions arméniennes de Gegharkunik et Lori. Les autorités locales évaluent l'ampleur des dommages sur les infrastructures et l'agriculture.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-armenie-de-violents-vents-sement-les-degats-dans-les-regions-de-gegharkunik-et-lori/",
+          "title": "En Arménie, de violents vents sèment les dégâts dans les régions de Gegharkunik et Lori"
+        }
+      ]
+    },
+    {
+      "title": "Actualité culturelle : patrimoine, lithographie et spectacles",
+      "text": "Une conférence internationale sur la lithographie se tient à Erevan, tandis que Narine Poladian milite pour la préservation vivante des khatchkars hors des livres d'histoire. Un concert Komitas-Debussy est programmé le 5 décembre à Vienne et la naissance de la comédienne Rosy Varte est commémorée.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/narine-poladian-je-ne-veux-pas-voir-les-khatchkars-uniquement-dans-les-livres-dhistoire",
+          "title": "Narine Poladian : “Je ne veux pas voir les khatchkars uniquement dans les livres d’histoire”"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/quand-les-pierres-parlent-conference-internationale-sur-la-lithographie-a-erevan/",
+          "title": "Quand les pierres parlent : Conférence internationale sur la lithographie à Erevan"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/ce-jour-dans-lhistoire-armenienne-2026-11-22/",
+          "title": "Figure arménienne — Naissance de la comédienne Rosy Varte"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/concert-komitas-debussy-un-armenien-a-paris-le-5-decembre-a-vienne/",
+          "title": "Concert Komitas & Debussy « Un Arménien à Paris » le 5 décembre à Vienne"
+        }
+      ]
+    }
+  ]
+}

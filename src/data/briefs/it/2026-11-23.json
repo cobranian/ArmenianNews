@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-23",
+  "lang": "it",
+  "generatedAt": "2026-11-23T03:34:38.141Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna stampa odierna evidenzia tensioni geopolitiche con l'Azerbaigian, sviluppi interni su referendum e tecnologia, appuntamenti culturali e iniziative della diaspora.",
+  "topics": [
+    {
+      "title": "Tensioni con l'Azerbaigian su storia e territorio",
+      "text": "Secondo Tatev Hayrapetyan, Baku non rinuncia alle falsificazioni storiche e alle rivendicazioni territoriali, integrandole nella politica di Stato. Hetq.am segnala inoltre che l'Azerbaigian occupa il 37% della riserva idrologica di Jermuk in Armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/tatev-hayrapetyan-lazerbaidjan-non-seulement-ne-renonce-pas-a-ses-falsifications-historiques-et-a-ses-revendications-territoriales-envers-larmenie-mais-les-integre-egalement-a-sa-politique-de/",
+          "title": "Tatev Hayrapetyan : L’Azerbaïdjan non seulement ne renonce pas à ses falsifications historiques et à ses revendications territoriales envers l’Arménie, mais les intègre également à sa politique d’État"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lazerbaidjan-occupe-37-de-la-reserve-hydrologique-de-jermuk-en-armenie-indique-hetq-am/",
+          "title": "L’Azerbaïdjan occupe 37 % de la réserve hydrologique de Jermuk en Arménie indique Hetq.am"
+        }
+      ]
+    },
+    {
+      "title": "Referendum costituzionale e dibattito interno",
+      "text": "Vahram Atanessian definisce sistemica la reazione di panico dell'opposizione rispetto al referendum costituzionale. Un articolo critica inoltre l'ingerenza di un ministro tedesco sulla Costituzione armena.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36193/",
+          "title": "Référendum constitutionnel : Vahram Atanessian juge systémique la panique de l’opposition"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/monsieur-le-ministre-allemand-de-quoi-vous-melez-vous/",
+          "title": "Constitution de l’Arménie : Monsieur le ministre allemand, de quoi vous mêlez-vous ?"
+        }
+      ]
+    },
+    {
+      "title": "Settore tecnologico e intelligenza artificiale",
+      "text": "Il Primo ministro ha incontrato i dirigenti delle imprese IT partecipanti al salone Digitec 2026. Un'analisi separata esplora le opportunità dell'intelligenza artificiale in Armenia, dall'idea all'azione.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266324",
+          "title": "Le Premier ministre a tenu un petit-déjeuner de travail avec les dirigeants des entreprises du secteur des technologies de l'information participant au salon « Digitec 2026 »"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/lopportunite-de-lia-en-armenie-de-lidee-a-laction/",
+          "title": "L’opportunité de l’IA en Arménie : de l’idée à l’action"
+        }
+      ]
+    },
+    {
+      "title": "Maltempo e danni nelle regioni di Gegharkunik e Lori",
+      "text": "Violenti venti hanno causato ingenti danni nelle regioni armene di Gegharkunik e Lori. La situazione è monitorata dalle autorità locali.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-armenie-de-violents-vents-sement-les-degats-dans-les-regions-de-gegharkunik-et-lori/",
+          "title": "En Arménie, de violents vents sèment les dégâts dans les régions de Gegharkunik et Lori"
+        }
+      ]
+    },
+    {
+      "title": "Patrimonio culturale: khatchkars e conferenza sulla litografia",
+      "text": "Narine Poladian sottolinea la necessità di preservare i khatchkars oltre i libri di storia. A Erevan si svolge una conferenza internazionale sulla litografia armena.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/narine-poladian-je-ne-veux-pas-voir-les-khatchkars-uniquement-dans-les-livres-dhistoire",
+          "title": "Narine Poladian : “Je ne veux pas voir les khatchkars uniquement dans les livres d’histoire”"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/quand-les-pierres-parlent-conference-internationale-sur-la-lithographie-a-erevan/",
+          "title": "Quand les pierres parlent : Conférence internationale sur la lithographie à Erevan"
+        }
+      ]
+    },
+    {
+      "title": "Incidente a Gerusalemme contro monastero armeno",
+      "text": "Un ebreo ultra-ortodosso ha sputato su un monastero armeno a Gerusalemme. L'episodio solleva preoccupazioni per la sicurezza dei luoghi di culto armeni nella Città Vecchia.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/un-juif-ultra-orthodoxe-crache-sur-un-monastere-armenien-a-jerusalem/",
+          "title": "Un ultra-orthodoxe Juif crache sur un monastère arménien à Jérusalem"
+        }
+      ]
+    }
+  ]
+}
