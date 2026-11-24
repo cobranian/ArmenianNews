@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Geschichtsschreibung · 5. Jahrhundert",
+      "title": "Der Patmahayr",
+      "text": "Als «Vater der armenischen Geschichte» verfasste Moses von Choren die erste zusammenhängende Chronik seiner Nation.",
+      "big": false
+    },
+    {
+      "eyebrow": "Jugend · Wagharschapat",
+      "title": "Um 410",
+      "text": "Um 410 geboren, lernte er bei Mesrop Maschtoz und studierte das Griechische, Syrische sowie Mittelpersische.",
+      "big": true
+    },
+    {
+      "eyebrow": "Ausbildung · Mittelmeer",
+      "title": "Alexandria",
+      "text": "In Alexandria vertiefte er Rhetorik, Grammatik und Philosophie, ehe er wieder nach Armenien zurückkehrte.",
+      "big": false
+    },
+    {
+      "eyebrow": "Meisterwerk · Nationalepos",
+      "title": "Geschichte Armeniens",
+      "text": "Sein von Sahak Bagratuni erbetenes Hauptwerk reicht von den biblischen Ursprüngen um Hayk bis ins 5. Jahrhundert.",
+      "big": false
+    },
+    {
+      "eyebrow": "Alte Mythen · Epen",
+      "title": "Die Gusanen",
+      "text": "Indem er heidnischen Gusanen lauschte, bewahrte er Legenden wie das Lied über die Geburt des Gottes Vahagn.",
+      "big": false
+    },
+    {
+      "eyebrow": "Archäologie · Urartu",
+      "title": "Die Stadt Van",
+      "text": "Seine Schilderungen von Van und den Keilschriften führten zur Wiederentdeckung der urartäischen Sprache.",
+      "big": false
+    },
+    {
+      "eyebrow": "Würdigung · Armenien",
+      "title": "1993",
+      "text": "Armenien stiftete 1993 die renommierte Movses-Chorenazi-Medaille zur Auszeichnung von Kulturschaffenden.",
+      "big": true
+    }
+  ],
+  "outroTitle": "Moses von Choren",
+  "ytTitle": "Moses von Choren: Vater der armenischen Geschichtsschreibung",
+  "ytLead": "Als Schüler von Mesrop Maschtoz im 5. Jahrhundert verfasste Moses von Choren das erste grosse Geschichtswerk seiner Nation. Seine Geschichte Armeniens hielt die Mythen, Könige und das Gedächtnis des armenischen Volkes für immer fest.",
+  "sourceHash": "247360159a8031e98b463c62b066d5573095d70a1a785adcd43a1a50c5ae5100",
+  "model": "gemini-flash-latest"
+}
