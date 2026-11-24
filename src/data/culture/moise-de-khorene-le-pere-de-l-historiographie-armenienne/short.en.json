@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Historiography · 5th Century",
+      "title": "The Patmahayr",
+      "text": "Known as the \"father of Armenian history\", Moses of Chorene wrote the first continuous history of his nation.",
+      "big": false
+    },
+    {
+      "eyebrow": "Early Life · Vagharshapat",
+      "title": "Around 410",
+      "text": "Born around 410, he studied under Mesrop Mashtots and learned Greek, Syriac, and Pahlavi.",
+      "big": true
+    },
+    {
+      "eyebrow": "Education · Mediterranean",
+      "title": "Alexandria",
+      "text": "Sent to Alexandria, he studied rhetoric, grammar, and philosophy before returning to Armenia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Masterpiece · National Narrative",
+      "title": "History of Armenia",
+      "text": "Commissioned by Sahak Bagratuni, his major work traces from the biblical origins of Hayk to the 5th century.",
+      "big": false
+    },
+    {
+      "eyebrow": "Ancient Myths · Epics",
+      "title": "The Gusans",
+      "text": "By listening to pagan minstrels, he preserved unique legends such as the song of the birth of Vahagn.",
+      "big": false
+    },
+    {
+      "eyebrow": "Archaeology · Urartu",
+      "title": "The City of Van",
+      "text": "His accounts of Van and its cuneiform inscriptions led to the rediscovery of the Urartian language.",
+      "big": false
+    },
+    {
+      "eyebrow": "Tribute · Republic of Armenia",
+      "title": "1993",
+      "text": "In 1993, Armenia established the prestigious Movses Khorenatsi Medal to honor figures in culture.",
+      "big": true
+    }
+  ],
+  "outroTitle": "Moses of Chorene",
+  "ytTitle": "Moses of Chorene: The Founding Father of Armenian History",
+  "ytLead": "A disciple of Mesrop Mashtots in the 5th century, Moses of Chorene composed the first great historical chronicle of his nation. His History of Armenia immortalized the myths, kings, and memory of the Armenian people.",
+  "sourceHash": "247360159a8031e98b463c62b066d5573095d70a1a785adcd43a1a50c5ae5100",
+  "model": "gemini-flash-latest"
+}

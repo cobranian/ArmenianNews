@@ -1,0 +1,51 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Historiografía · Siglo V",
+      "title": "El Patmahayr",
+      "text": "Apodado el «padre de la historia armenia», Moisés de Corene escribió la primera historia continua de su nación.",
+      "big": false
+    },
+    {
+      "eyebrow": "Juventud · Vagharshapat",
+      "title": "Hacia el 410",
+      "text": "Nacido hacia el 410, estudió junto a Mesrop Mashtots y se formó en las lenguas griega, siriaca y pahlavi.",
+      "big": true
+    },
+    {
+      "eyebrow": "Formación · Mediterráneo",
+      "title": "Alejandría",
+      "text": "Enviado a Alejandría, estudió retórica, gramática y filosofía antes de regresar a Armenia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Obra cumbre · Relato nacional",
+      "title": "Historia de Armenia",
+      "text": "Por encargo de Sahak Bagratuní, su obra cumbre abarca desde el origen bíblico con Hayk hasta el siglo V.",
+      "big": false
+    },
+    {
+      "eyebrow": "Mitos antiguos · Epopeyas",
+      "title": "Los gusans",
+      "text": "Al escuchar a los ministriles paganos, rescató leyendas únicas como el canto del nacimiento de Vahagn.",
+      "big": false
+    },
+    {
+      "eyebrow": "Arqueología · Urartu",
+      "title": "La ciudad de Van",
+      "text": "Sus relatos sobre Van y sus inscripciones cuneiformes llevaron al redescubrimiento de la lengua urartiana.",
+      "big": false
+    },
+    {
+      "eyebrow": "Homenaje · República de Armenia",
+      "title": "1993",
+      "text": "Armenia creó en 1993 la prestigiosa medalla Movsès Khorenatsi para distinguir a los creadores culturales.",
+      "big": true
+    }
+  ],
+  "outroTitle": "Moisés de Corene",
+  "ytTitle": "Moisés de Corene, el padre fundador de la historia armenia",
+  "ytLead": "Discípulo de Mesrop Mashtots en el siglo V, Moisés de Corene forjó la primera gran crónica histórica de su nación. Su Historia de Armenia inmortalizó los mitos, los reyes y la memoria del pueblo armenio.",
+  "sourceHash": "247360159a8031e98b463c62b066d5573095d70a1a785adcd43a1a50c5ae5100",
+  "model": "gemini-flash-latest"
+}
