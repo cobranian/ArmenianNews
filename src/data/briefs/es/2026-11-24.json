@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-24",
+  "lang": "es",
+  "generatedAt": "2026-11-24T03:33:28.141Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca por el avance del proyecto de asociación estratégica entre Armenia y Estados Unidos (TRIPP), la publicación del borrador de la nueva Constitución armenia y las reacciones políticas que genera, así como la visita del primer ministro a Rumania y cambios en el cuerpo diplomático.",
+  "topics": [
+    {
+      "title": "Lanzamiento oficial del proyecto TRIPP entre Armenia y EE. UU.",
+      "text": "Armenia y Estados Unidos lanzaron oficialmente la Ruta Trump (TRIPP) con mensajes conjuntos del primer ministro Nikol Pashinyan y el presidente Donald Trump. La iniciativa busca profundizar la asociación estratégica bilateral y fue anunciada mediante comunicados oficiales de ambos gobiernos.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-estados-unidos-lanzan-ruta-trump-tripp/",
+          "title": "Armenia y Estados Unidos lanzan oficialmente la Ruta Trump (TRIPP) con mensajes conjuntos de Nikol Pashinyan y Donald Trump"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-estados-unidos-asociacion-estrategica-tripp/",
+          "title": "Armenia y Estados Unidos profundizan su asociación estratégica y el proyecto TRIPP con invitación de Donald Trump"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266382",
+          "title": "Nikol Pashinyan anunció el inicio del proyecto TRIPP mediante un mensaje a la ciudadanía"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266384",
+          "title": "Presidente de Estados Unidos envió un mensaje con motivo del inicio del proyecto TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Publicado el borrador de la nueva Constitución de Armenia",
+      "text": "Se dio a conocer el borrador de la nueva Constitución, que incluye claves de la reforma, cambios institucionales y un plazo de debate público. La oposición rechazó la celebración de un referéndum sobre el proyecto, mientras que el canciller azerbaiyano calificó el proceso como asunto interno de Armenia.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/borrador-nueva-constitucion-armenia-cambios/",
+          "title": "Se publicó el borrador de la nueva Constitución de Armenia: claves de la reforma, cambios institucionales y plazo de debate público"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266407",
+          "title": "Canciller de Azerbaiyán: “La adopción de una nueva Constitución es un asunto interno de Armenia”"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/nikol-pashinyan-presento-un-proyecto-de-constitucion-sin-referencia-a-la-declaracion-de-independencia-de-armenia-como-exigio-azerbaiyan/",
+          "title": "Nikol Pashinyan presentó un proyecto de Constitución sin referencia a la Declaración de Independencia de Armenia, como exigió Azerbaiyán"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266378",
+          "title": "Oposición rechaza un referéndum por el proyecto de la nueva Constitución"
+        }
+      ]
+    },
+    {
+      "title": "El primer ministro armenio viaja a Rumania",
+      "text": "Nikol Pashinyan realizó una visita oficial a Rumania, en el marco de las relaciones bilaterales y la cooperación regional. El viaje forma parte de la agenda diplomática del gobierno armenio.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266434",
+          "title": "Primer ministro de Armenia viajó a Rumania"
+        }
+      ]
+    },
+    {
+      "title": "Remoción de seis embajadores y del jefe de misión ante la OTAN",
+      "text": "El gobierno armenio retiró de sus cargos a seis embajadores y al jefe de su misión ante la OTAN. La medida implica una reestructuración en la representación diplomática exterior del país.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266429",
+          "title": "Armenia retira de sus cargos a seis embajadores y al jefe de su misión ante la OTAN"
+        }
+      ]
+    },
+    {
+      "title": "Declaraciones italianas sobre la paz entre Armenia y Azerbaiyán",
+      "text": "El ministro de Exteriores italiano, Antonio Tajani, afirmó que la paz entre Armenia y Azerbaiyán favorecerá el aumento de las inversiones italianas en la región. La declaración se produce en el contexto de las negociaciones de paz en curso.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266404",
+          "title": "Tajani: “La paz entre Armenia y Azerbaiyán favorecerá el aumento de las inversiones italianas en la región”"
+        }
+      ]
+    },
+    {
+      "title": "Armenia obtiene dos bronces en el Europeo Sub-23 de Boxeo",
+      "text": "La delegación armenia consiguió dos medallas de bronce en el Campeonato Europeo Sub-23 de Boxeo, sumando logros deportivos para el país en competiciones internacionales.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266348",
+          "title": "Armenia obtuvo dos medallas de bronce en el Campeonato Europeo Sub-23 de Boxeo"
+        }
+      ]
+    }
+  ]
+}

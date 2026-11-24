@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-24",
+  "lang": "de",
+  "generatedAt": "2026-11-24T03:33:28.141Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Die heutige Berichterstattung konzentriert sich auf die innenpolitische Debatte um eine neue Verfassung, den Besuch des Premierministers in Rumänien sowie Fortschritte bei Sicherheits- und Wirtschaftskooperationen.",
+  "topics": [
+    {
+      "title": "Debatte um neue Verfassung spaltet Armenien",
+      "text": "Premierminister Paschinjan stellt den Verfassungsentwurf als Grundlage für eine Vierte Republik und dauerhaften Frieden dar. Kritiker wie Gohar Meloyan werfen der Regierung vor, äusseren Druck nachzugeben, während Analysten vor einer neuen Konfrontationsphase warnen. Die Beschreibung von Flagge und Wappen wurde aus dem Entwurf gestrichen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/nikol-pachinian-presente-la-nouvelle-constitution-comme-le-fondement-de-la-quatrieme-republique-et",
+          "title": "Nikol Pachinian présente la nouvelle Constitution comme le fondement de la Quatrième République et d’une paix durable"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-apres-ladoption-de-la-nouvelle-constitution-nous-ne-nous-contenterons-pas-de-signer-et-de-ratifier-laccord-de-paix-avec-lazerbaidjan-mais-nous-instaurerons-une-paix-irreversi/",
+          "title": "Nikol Pachinian : après l’adoption de la nouvelle Constitution, nous ne nous contenterons pas de signer et de ratifier l’accord de paix avec l’Azerbaïdjan, mais nous instaurerons une paix irréversible"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/gohar-meloyan-comme-prevu-le-projet-de-constitution-daliyev-ne-presente-aucune-autre-raison-justifiant-ladoption-dune-nouvelle-constitution/",
+          "title": "Gohar Meloyan : Comme prévu, le projet de constitution d’Aliyev ne présente aucune autre raison justifiant l’adoption d’une nouvelle Constitution"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/la-description-du-drapeau-et-des-armoiries-de-larmenie-sont-retires-du-projet-de-nouvelle-constitution/",
+          "title": "La description du drapeau et des armoiries de l’Arménie sont retirés du projet de nouvelle Constitution"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266357",
+          "title": "Message du Premier ministre Nikol Pashinyan concernant le projet de nouvelle Constitution"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015572",
+          "title": "Nouvelle Constitution en Arménie: Pachinian rejette les accusations de pressions extérieures sur fond de tensions avec l’opposition"
+        }
+      ]
+    },
+    {
+      "title": "Offizieller Besuch des Premierministers in Rumänien",
+      "text": "Nikol Paschinjan ist mit einer Delegation in Bukarest eingetroffen, um die bilateralen Beziehungen zu vertiefen. Begleitend fand ein Treffen mit den Botschaftern der EU-Mitgliedstaaten in Jerewan statt, um die armenisch-europäische Zusammenarbeit zu erörtern.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266438",
+          "title": "La délégation conduite par le Premier ministre arménien est arrivée en Roumanie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266434",
+          "title": "Le Premier ministre s’est rendu en Roumanie pour une visite officielle"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-et-les-ambassadeurs-de-lue-accredites-en-armenie-discutent-des-questions-relatives-au-developpement-des-relations-armeno-europeennes/",
+          "title": "Nikol Pachinian et les ambassadeurs de l’UE accrédités en Arménie discutent des questions relatives au développement des relations arméno-européennes"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266427",
+          "title": "Le Premier ministre a reçu les Ambassadeurs des États membres de l’Union européenne"
+        }
+      ]
+    },
+    {
+      "title": "TRIPP-Projekt und Sicherheitskooperationen im Fokus",
+      "text": "Der Premierminister bezeichnet das TRIPP-Projekt als grösstes Kommunikationsvorhaben seit der Unabhängigkeit und als massgeblichen Sicherheitsgewinn. Zudem diskutierte der Sicherheitsratssekretär mit dem litauischen Berater über eine engere Kooperation, während die Verteidigungsminister Armeniens und Montenegros Gespräche führten.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-mise-en-oeuvre-de-tripp-renforcera-considerablement-la-securite-de-larmenie-selon-le-premier-ministre/",
+          "title": "La mise en œuvre de TRIPP renforcera considérablement la sécurité de l’Arménie, selon le Premier ministre"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266435",
+          "title": "Le Secrétaire du Conseil de sécurité de la RA et le conseiller du président lituanien ont discuté du renforcement de la coopération dans le domaine de la sécurité"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266409",
+          "title": "Le Premier ministre a reçu le conseiller principal de l’envoyé spécial des États-Unis pour les missions de paix"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266383",
+          "title": "Les ministres de la Défense de l’Arménie et du Monténégro ont eu un entretien en tête-à-tête"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnats-deurope-u23-a-porec-croatie-lequipe-armenienne-de-boxe-decroche-deux-medailles-de-bronze/",
+          "title": "Championnats d’Europe U23 à Porec (Croatie) : L’équipe arménienne de boxe décroche deux médailles de bronze"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266382",
+          "title": "Messages du Premier ministre de la République d’Arménie et du président des États-Unis à l’occasion du lancement de la phase opérationnelle du projet TRIPP"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/tripp-est-le-plus-grand-projet-de-communication-depuis-lindependance-de-larmenie-kostanyan/",
+          "title": "TRIPP est le plus grand projet de communication depuis l’indépendance de l’Arménie : Kostanyan"
+        }
+      ]
+    },
+    {
+      "title": "Italien erwartet Investitionsschub durch Friedensschluss",
+      "text": "Aussenminister Antonio Tajani schätzt, dass ein Friedensvertrag zwischen Armenien und Aserbaidschan italienische Investitionen in der Region deutlich erhöhen würde. Die Aussage unterstreicht die wirtschaftliche Dimension der laufenden Friedensbemühungen.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266404",
+          "title": "La paix entre l’Arménie et l’Azerbaïdjan favorisera l’augmentation des investissements italiens dans la région, estime Antonio Tajani"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Unternehmen liefert Drohnentechnologie nach Nigeria",
+      "text": "Das KI-Unternehmen Zee AI wird an der Produktion militärischer Drohnen in Nigeria beteiligt sein. Dies markiert einen neuen Auslandseinsatz der armenischen Rüstungs- und Technologieindustrie.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/zee-ai-une-entreprise-armenienne-participera-a-la-production-de-drones-militaires-au-nigeria/",
+          "title": "Zee AI, une entreprise arménienne participera à la production de drones militaires au Nigéria"
+        }
+      ]
+    },
+    {
+      "title": "Arbeitsmarkt zeigt positives Wachstum im Oktober 2026",
+      "text": "Die Zahl der einkommensgenerierenden Arbeitsplätze stieg im Oktober 2026 auf 849'741, was einem Anstieg von 4,9 Prozent gegenüber dem Vorjahresmonat entspricht. Die Daten deuten auf eine anhaltende Erholung des Arbeitsmarktes hin.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/en-armenie-le-nombre-demplois-generateurs-de-revenus-en-octobre-2026-selevait-a-849-741-soit-une-hausse-de-49-par-rapport-au-meme-mois-de-lannee-precedente/",
+          "title": "En Arménie, le nombre d’emplois générateurs de revenus en octobre 2026 s’élevait à 849 741, soit une hausse de 4,9 % par rapport au même mois de l’année précédente"
+        }
+      ]
+    },
+    {
+      "title": "Armenische Sportlerinnen und Sportler international erfolgreich",
+      "text": "Henrikh Mchitarjan stand beim 4:4 von Inter Mailand in der Startelf. Der Vertrag von Nationaltrainer Jeghische Melikjan wurde verlängert. Im Boxen gewann das U23-Team bei den Europameisterschaften in Kroatien zwei Bronzemedaillen, und Briasco Balekyan schoss seinen Verein in Argentinien ins Viertelfinale.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/linter-milan-avec-larmenien-henrikh-mkhitaryan-titulaire-et-latalanta-ont-font-match-nul-4-4-dans-une-rencontre-riche-en-buts-de-la-12e-journee-du-championnat-ditalie/",
+          "title": "L’Inter Milan avec l’Arménien Henrikh Mkhitaryan titulaire et l’Atalanta ont font match nul 4-4 dans une rencontre riche en buts de la 12e journée du championnat d’Italie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/prolongation-du-contrat-du-selectionneur-armenien-yeghishe-melikyan-avec-lequipe-nationale-darmenie/",
+          "title": "Prolongation du contrat du sélectionneur arménien Yeghishe Melikyan avec l’équipe nationale d’Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-but-de-linternational-armenien-briasco-balekyan-qualifie-le-barracas-central-pour-les-quarts-de-finale-du-championnat-dargentine/",
+          "title": "Le but de l’international arménien Briasco Balekyan qualifie le Barracas Central pour les quarts de finale du championnat d’Argentine"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/championnats-deurope-u23-a-porec-croatie-lequipe-armenienne-de-boxe-decroche-deux-medailles-de-bronze/",
+          "title": "Championnats d’Europe U23 à Porec (Croatie) : L’équipe arménienne de boxe décroche deux médailles de bronze"
+        }
+      ]
+    }
+  ]
+}
