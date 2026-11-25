@@ -35,7 +35,32 @@ test('isDailyQuota : seulement un 429 « per day »', () => {
   assert.equal(isDailyQuota(429, '{"quotaId": "GenerateRequestsPerMinutePerProjectPerModel"}'), false)
 })
 
-for (const status of [400, 401, 403, 404]) {
+// Modèle retiré : 404 sur le principal → le secours aussitôt, sans attente.
+test('synthesize : 404 sur le principal → secours immédiat', async () => {
+  const f = seq(errRes(404, 'model not found'), okRes())
+  const waits = []
+  const r = await synthesize({ text: 't', voice: 'Kore', fetch: f, sleep: async (ms) => waits.push(ms), apiKey: 'k' })
+  assert.deepEqual(f.calls, [PRIMARY, FALLBACK])
+  assert.equal(r.model, FALLBACK)
+  assert.deepEqual(waits, [])
+})
+
+test('synthesize : 404 sur les deux modèles → rejet, statut et extrait sans la clé', async () => {
+  const f = seq(errRes(404, 'model not found for SECRET-123'))
+  const waits = []
+  await assert.rejects(
+    synthesize({ text: 't', voice: 'Kore', fetch: f, sleep: async (ms) => waits.push(ms), apiKey: 'SECRET-123' }),
+    (e) => {
+      assert.match(e.message, /HTTP 404 model not found for \*\*\*/)
+      assert.doesNotMatch(e.message, /SECRET-123/)
+      return true
+    },
+  )
+  assert.deepEqual(f.calls, [PRIMARY, FALLBACK])
+  assert.deepEqual(waits, [])
+})
+
+for (const status of [400, 401, 403]) {
   test(`synthesize : HTTP ${status} → arrêt immédiat, un seul appel, sans la clé dans le message`, async () => {
     const f = seq(errRes(status, `{"error": {"message": "refusé pour la clé SECRET-123"}}`), okRes())
     const waits = []

@@ -3,9 +3,10 @@
 //
 // Quotas Tier 1, par modèle : 10 requêtes/minute, 100 requêtes/jour. Un 429
 // « per day » bascule sur le secours (quota séparé) sans nouvel essai ; un 429
-// « per minute » attend puis réessaie le même modèle. Un autre 4xx (400, 401,
-// 403, 404 : requête, clé ou modèle refusés) ne s'arrange pas en réessayant :
-// arrêt immédiat. Les 5xx et les pannes réseau sont réessayés.
+// « per minute » attend puis réessaie le même modèle. Un 404 (modèle retiré)
+// passe aussitôt au modèle suivant. Un autre 4xx (400, 401, 403 : requête ou
+// clé refusées, les mêmes pour les deux modèles) ne s'arrange pas en
+// réessayant : arrêt immédiat. Les 5xx et les pannes réseau sont réessayés.
 
 export const PRIMARY = 'gemini-3.8-flash-tts'
 export const FALLBACK = 'gemini-3.8-flash-lite-tts'
@@ -30,7 +31,7 @@ export function extractAudio(json) {
 // « per day », « per_day », « PerDay » (GenerateRequestsPerDayPerProjectPerModel) :
 // le corps réel d'un 429 Gemini varie selon la forme du message.
 export const isDailyQuota = (status, body) => status === 429 && /per[\s_-]?day/i.test(String(body))
-// 4xx hors 429 : définitif, ni nouvel essai ni secours.
+// 4xx hors 429 et 404 : définitif, ni nouvel essai ni secours.
 export const isFatal = (status) => status >= 400 && status < 500 && status !== 429
 // Un extrait du corps d'erreur, sans jamais la clé (si le serveur la renvoyait).
 const excerpt = (body, apiKey) => {
@@ -64,6 +65,9 @@ export async function synthesize({ text, voice, fetch: doFetch = fetch, models =
         last = `${model} : réponse sans audio`
       } else {
         last = `${model} : HTTP ${res.status} ${excerpt(body, apiKey)}`
+        // 404 : CE modèle n'existe plus (les modèles se retirent) — au secours,
+        // sans attente ni nouvel essai ; après le dernier, l'erreur ci-dessous.
+        if (res.status === 404) break
         if (isFatal(res.status)) throw new Error(`synthèse refusée (${last})`)
         if (isDailyQuota(res.status, body)) break // quota du jour : au secours
       }
