@@ -7,7 +7,7 @@ import assert from 'node:assert/strict'
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { voiceLines, voiceShort } from '../scripts/voice.mjs'
+import { cultureArticles, voiceLines, voiceShort } from '../scripts/voice.mjs'
 
 const cta = { fr: { spoken: 'Fin fr', screen: 'x' } }
 const facts = (n = 7) => Array.from({ length: n }, (_, i) => ({ text: `T${i}`, spoken: `Dit ${i}` }))
@@ -95,4 +95,23 @@ test('voice.mjs ignore une langue absente des données', async () => {
   const r = await voiceShort({ ...base, dir, lang: 'es', fetch: f })
   assert.equal(r.skipped, true)
   assert.equal(f.calls.length, 0)
+})
+
+test('cultureArticles : date entre guillemets doubles, simples ou sans ; sans date ou sans fr.md, ignoré', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'culture-'))
+  const article = (slug, front) => {
+    mkdirSync(join(dir, slug))
+    if (front != null) writeFileSync(join(dir, slug, 'fr.md'), `---\ntitle: "T"\n${front}\n---\nCorps.\n`)
+  }
+  article('doubles', 'date: "2026-11-01"')
+  article('simples', "date: '2026-11-02'")
+  article('nues', 'date: 2026-11-03')
+  article('sans-date', 'model: "m"')
+  article('sans-md', null)
+  const got = cultureArticles(dir).sort((a, b) => a.slug.localeCompare(b.slug))
+  assert.deepEqual(got, [
+    { slug: 'doubles', date: '2026-11-01' },
+    { slug: 'nues', date: '2026-11-03' },
+    { slug: 'simples', date: '2026-11-02' },
+  ])
 })

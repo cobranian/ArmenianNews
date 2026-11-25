@@ -4,7 +4,7 @@
 // longue, un WAV corrompu, ne doit pas étirer la vidéo sans fin).
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { LEAD, TAIL, fitsScene, maxSpeechSeconds, narratedDuration, outroFrames, sceneFrames, speechWindows } from '../src/shorts/timing.mjs'
+import { LEAD, MAX_TOTAL, TAIL, fitsReel, fitsScene, maxSpeechSeconds, narratedDuration, outroFrames, sceneFrames, speechWindows } from '../src/shorts/timing.mjs'
 
 const FPS = 30
 const FADE = 12
@@ -53,4 +53,20 @@ test('fitsScene : une phrase plus longue que 12 s − LEAD − TAIL ne tient pas
   assert.equal(fitsScene(4, FPS), true)
   // Au plafond exact, la phrase entière tient dans sa séquence.
   assert.ok(Math.round((LEAD + maxSpeechSeconds(FPS)) * FPS) <= sceneFrames(maxSpeechSeconds(FPS), FPS))
+})
+
+test('fitsReel : un Short narré de plus de 89 s est refusé (Reels Facebook : 90 s)', () => {
+  assert.equal(MAX_TOTAL, 89)
+  assert.equal(fitsReel(lines, FPS, FADE), true) // ~51 s : un Short réel
+  const long = (s) => Array.from({ length: 8 }, (_, i) => ({ file: `${i}.wav`, seconds: s }))
+  // 8 séquences de 12 s, moins 7 fondus : 93,2 s — atteignable sous les plafonds de scène.
+  assert.equal(narratedDuration(long(11.2), FPS, FADE), 8 * 360 - 7 * FADE)
+  assert.equal(fitsReel(long(11.2), FPS, FADE), false)
+  // À la limite : 7 scènes plafonnées + une fin de 7 s = 89 s pile (passe) ;
+  // une image de fin en plus, non.
+  const edge = (outro) => [...long(11.2).slice(0, 7), { file: '7.wav', seconds: outro }]
+  assert.equal(narratedDuration(edge(7), FPS, FADE), 89 * FPS)
+  assert.equal(fitsReel(edge(7), FPS, FADE), true)
+  assert.equal(narratedDuration(edge(7.04), FPS, FADE), 89 * FPS + 1)
+  assert.equal(fitsReel(edge(7.04), FPS, FADE), false)
 })

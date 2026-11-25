@@ -18,7 +18,7 @@ import credits from './credits.json'
 import cta from './cta.json'
 import type { Credit } from './types'
 import { ShortMusic } from './music'
-import { fitsScene, LEAD, maxSpeechSeconds, narratedDuration, outroFrames, sceneFrames, speechWindows, type VoiceLine } from './timing.mjs'
+import { fitsReel, fitsScene, LEAD, MAX_TOTAL, maxSpeechSeconds,narratedDuration, outroFrames, sceneFrames, speechWindows, type VoiceLine } from './timing.mjs'
 
 // hy, ru et es partent sur la chaîne Armenia News (le .org), de et it sur
 // Arménie Info (le .ch) — chaque langue suit le domaine qui la sert
@@ -114,6 +114,11 @@ export const voicedLines = (slug: string, lang: Lang): VoiceLine[] => {
         `Short ${slug}/${lang} : phrase ${i} trop longue (${l.seconds} s > ${maxSpeechSeconds(FPS)} s) — raccourcir le texte parlé et relancer video/scripts/voice.mjs`,
       )
   })
+  // Facebook refuse un Reel de plus de 90 s : refusé ici, pas à l'envoi.
+  if (!fitsReel(lines, FPS, FADE))
+    throw new Error(
+      `Short ${slug}/${lang} : ${(narratedDuration(lines, FPS, FADE) / FPS).toFixed(1)} s au total (max ${MAX_TOTAL} s, limite des Reels) — raccourcir le texte parlé et relancer video/scripts/voice.mjs`,
+    )
   return lines
 }
 

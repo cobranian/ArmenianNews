@@ -29,6 +29,35 @@ test('isDailyQuota : seulement un 429 « per day »', () => {
   assert.equal(isDailyQuota(429, 'limit: 100 requests per day'), true)
   assert.equal(isDailyQuota(429, 'limit: 10 requests per minute'), false)
   assert.equal(isDailyQuota(500, 'per day'), false)
+  // Les formes réelles d'un corps 429 Gemini (revue finale du 25 nov. 2026).
+  assert.equal(isDailyQuota(429, '{"quotaId": "GenerateRequestsPerDayPerProjectPerModel"}'), true)
+  assert.equal(isDailyQuota(429, 'quota_metric: generate_requests_per_day'), true)
+  assert.equal(isDailyQuota(429, '{"quotaId": "GenerateRequestsPerMinutePerProjectPerModel"}'), false)
+})
+
+for (const status of [400, 401, 403, 404]) {
+  test(`synthesize : HTTP ${status} → arrêt immédiat, un seul appel, sans la clé dans le message`, async () => {
+    const f = seq(errRes(status, `{"error": {"message": "refusé pour la clé SECRET-123"}}`), okRes())
+    const waits = []
+    await assert.rejects(
+      synthesize({ text: 't', voice: 'Kore', fetch: f, sleep: async (ms) => waits.push(ms), apiKey: 'SECRET-123' }),
+      (e) => {
+        assert.match(e.message, new RegExp(`HTTP ${status}`))
+        assert.match(e.message, /refusé pour la clé \*\*\*/)
+        assert.doesNotMatch(e.message, /SECRET-123/)
+        return true
+      },
+    )
+    assert.deepEqual(f.calls, [PRIMARY])
+    assert.deepEqual(waits, [])
+  })
+}
+
+test('synthesize : 5xx puis succès → réessayé sur le même modèle', async () => {
+  const f = seq(errRes(503, 'unavailable'), okRes())
+  const r = await synthesize({ text: 't', voice: 'Kore', fetch: f, sleep: noSleep, apiKey: 'k' })
+  assert.deepEqual(f.calls, [PRIMARY, PRIMARY])
+  assert.equal(r.model, PRIMARY)
 })
 
 test('synthesize : 429 per day sur le principal → un seul appel puis le secours', async () => {

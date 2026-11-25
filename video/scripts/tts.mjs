@@ -3,7 +3,9 @@
 //
 // Quotas Tier 1, par modèle : 10 requêtes/minute, 100 requêtes/jour. Un 429
 // « per day » bascule sur le secours (quota séparé) sans nouvel essai ; un 429
-// « per minute » attend puis réessaie le même modèle.
+// « per minute » attend puis réessaie le même modèle. Un autre 4xx (400, 401,
+// 403, 404 : requête, clé ou modèle refusés) ne s'arrange pas en réessayant :
+// arrêt immédiat. Les 5xx et les pannes réseau sont réessayés.
 
 export const PRIMARY = 'gemini-3.8-flash-tts'
 export const FALLBACK = 'gemini-3.8-flash-lite-tts'
@@ -25,7 +27,16 @@ export function extractAudio(json) {
   return audio ? Buffer.from(audio.data, 'base64') : null
 }
 
-export const isDailyQuota = (status, body) => status === 429 && /per day/i.test(String(body))
+// « per day », « per_day », « PerDay » (GenerateRequestsPerDayPerProjectPerModel) :
+// le corps réel d'un 429 Gemini varie selon la forme du message.
+export const isDailyQuota = (status, body) => status === 429 && /per[\s_-]?day/i.test(String(body))
+// 4xx hors 429 : définitif, ni nouvel essai ni secours.
+export const isFatal = (status) => status >= 400 && status < 500 && status !== 429
+// Un extrait du corps d'erreur, sans jamais la clé (si le serveur la renvoyait).
+const excerpt = (body, apiKey) => {
+  const s = String(body ?? '')
+  return (apiKey ? s.split(apiKey).join('***') : s).slice(0, 120).replace(/\s+/g, ' ')
+}
 
 // → { wav, model }. Rejette si les deux modèles échouent.
 export async function synthesize({ text, voice, fetch: doFetch = fetch, models = [PRIMARY, FALLBACK], sleep, apiKey = process.env.GEMINI_API_KEY }) {
@@ -52,7 +63,8 @@ export async function synthesize({ text, voice, fetch: doFetch = fetch, models =
         if (wav) return { wav, model }
         last = `${model} : réponse sans audio`
       } else {
-        last = `${model} : HTTP ${res.status} ${body.slice(0, 120).replace(/\s+/g, ' ')}`
+        last = `${model} : HTTP ${res.status} ${excerpt(body, apiKey)}`
+        if (isFatal(res.status)) throw new Error(`synthèse refusée (${last})`)
         if (isDailyQuota(res.status, body)) break // quota du jour : au secours
       }
       await wait(res.status === 429 ? 15000 : 5000 * attempt)

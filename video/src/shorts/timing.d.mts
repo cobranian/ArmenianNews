@@ -9,3 +9,5 @@ export declare function narratedDuration(lines: VoiceLine[], fps: number, fade: 
 export declare function speechWindows(lines: VoiceLine[], fps: number, fade: number): [number, number][]
 export declare function maxSpeechSeconds(fps: number): number
 export declare function fitsScene(seconds: number, fps: number): boolean
+export declare const MAX_TOTAL: number
+export declare function fitsReel(lines: VoiceLine[], fps: number, fade: number): boolean

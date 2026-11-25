@@ -79,13 +79,15 @@ export async function voiceShort({ slug, lang, dir = ROOT, fetch: doFetch, sleep
   return { skipped: false, voice: data[lang].voice, results }
 }
 
-// Tous les articles Culture qui ont un fr.md daté.
+// Tous les articles Culture qui ont un fr.md daté. La date s'écrit avec ou
+// sans guillemets (doubles ou simples) : un fr.md corrigé à la main ne doit pas
+// sortir en silence de l'alternance des voix.
 export function cultureArticles(cultureDir) {
   const out = []
   for (const d of readdirSync(cultureDir, { withFileTypes: true })) {
     const md = join(cultureDir, d.name, 'fr.md')
     if (!d.isDirectory() || !existsSync(md)) continue
-    const m = readFileSync(md, 'utf8').match(/^date: "(\d{4}-\d{2}-\d{2})"/m)
+    const m = readFileSync(md, 'utf8').match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})/m)
     if (m) out.push({ slug: d.name, date: m[1] })
   }
   return out

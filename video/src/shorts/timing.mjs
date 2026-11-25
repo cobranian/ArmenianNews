@@ -40,6 +40,14 @@ const durations = (lines, fps) =>
 export const narratedDuration = (lines, fps, fade) =>
   durations(lines, fps).reduce((s, d) => s + d, 0) - (lines.length - 1) * fade
 
+// Le plafond d'un Reel Facebook : 90 s par l'API. Un Short plus long serait
+// rendu, déposé, puis refusé à l'envoi : ShortVideo (voicedLines) le refuse
+// donc au rendu, une seconde sous la limite (marge d'encodage).
+export const MAX_TOTAL = 89 // s
+
+/** @param {{ seconds: number }[]} lines @param {number} fps @param {number} fade @returns {boolean} */
+export const fitsReel = (lines, fps, fade) => narratedDuration(lines, fps, fade) <= MAX_TOTAL * fps
+
 /**
  * Les images où la voix parle, [début, fin[ en images de la composition :
  * la musique baisse dessous. Une séquence commence FADE images avant la fin
