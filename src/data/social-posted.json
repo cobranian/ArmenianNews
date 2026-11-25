@@ -733,6 +733,13 @@
         "culture:forteresse-d-erebouni-et-la-fondation-d-erevan": "2026-11-23T16:40:59.571Z",
         "culture:moise-de-khorene-le-pere-de-l-historiographie-armenienne": "2026-11-24T21:48:00.628Z",
         "culture:djivan-gasparyan-et-le-rayonnement-international-du-doudouk": "2026-11-25T16:43:46.710Z"
+      },
+      "failed": {
+        "culture:djivan-gasparyan-et-le-rayonnement-international-du-doudouk": {
+          "uncertain": true,
+          "last": "2026-11-25T16:44:10.204Z",
+          "error": "telegram : fetch failed"
+        }
       }
     },
     "telegram-ru": {
