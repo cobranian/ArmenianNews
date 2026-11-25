@@ -15,10 +15,22 @@ export const SHORT_MAX_TEXT = 130
 export const SHORT_MAX_SPOKEN = 90
 // Les articles datés de ce jour ou après portent un `spoken` par fait. Les
 // plus anciens n'en ont pas, et leur vidéo (déjà en ligne) reste muette.
-// Provisoire : à remplacer par la date de fusion du chantier.
+// À poser à la fusion : la date du PREMIER brouillon écrit par le code fusionné
+// (jour J si fusionné avant 03:00 UTC, J+1 sinon — plan, Task 7). Trop tard ne
+// coûte rien ; trop tôt, un article rédigé par l'ancien code se publie sans
+// vidéo (video.yml échoue alors, au lieu de se taire).
 export const SPOKEN_SINCE = '2026-11-26'
 // Dates AAAA-MM-JJ : la comparaison de chaînes suit l'ordre chronologique.
 export const spokenRequired = (date) => typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date) && date >= SPOKEN_SINCE
+// LE verdict « ce Short (et ses traductions) doit-il porter un `spoken` ? »,
+// pris en un seul endroit : un Short français qui en porte un l'exige de ses
+// traductions, un article daté de SPOKEN_SINCE ou après l'exige de tous.
+// culture-check et culture-translate (traduction, rattrapage --short-only,
+// Short français à la publication) le lisent ici — un verdict
+// différent d'un côté faisait refaire, ou inventer, la phrase dite.
+export const needSpoken = (shortFr, frDate) =>
+  (Array.isArray(shortFr?.facts) && shortFr.facts.some((f) => f && typeof f === 'object' && f.spoken !== undefined)) ||
+  spokenRequired(frDate)
 // Limite d'un titre YouTube, mot-dièse compris.
 export const YT_TITLE_MAX = 100
 export const TRACK_IDS = ['mazia', 'sergo', 'otar']
@@ -136,7 +148,8 @@ export function shortReferenceOf(md) {
 
 // Le Short français à la publication (culture-translate). `raw` : le contenu
 // de short.fr.json, null s'il est absent ; `reference` : shortReference du
-// fr.md ; `published` : la vidéo française est déjà en ligne.
+// fr.md ; `published` : la vidéo française est déjà en ligne ; `frDate` : la
+// date du fr.md (needSpoken).
 // Rend { short, draft, problems } :
 //   - présent et conforme : short ;
 //   - présent mais non conforme : problems, et JAMAIS draft — un fichier relu
@@ -144,10 +157,12 @@ export function shortReferenceOf(md) {
 //     changerait shortHash, rendrait périmés les Shorts traduits, et ferait
 //     partir un texte que personne n'a vu ;
 //   - absent : draft, sauf si la vidéo française est déjà en ligne (Garni).
-export function frShortAtPublish({ raw, reference, published = false }) {
+export function frShortAtPublish({ raw, reference, published = false, frDate }) {
   if (raw == null) return { short: null, draft: !published, problems: [] }
   const parsed = parseShortJson(raw)
-  const problems = parsed ? validateShort(parsed, { lang: 'fr', articleText: reference }) : ['JSON illisible']
+  const problems = parsed
+    ? validateShort(parsed, { lang: 'fr', articleText: reference, requireSpoken: needSpoken(parsed, frDate) })
+    : ['JSON illisible']
   return { short: problems.length ? null : parsed, draft: false, problems }
 }
 
@@ -160,11 +175,12 @@ export const SHORT_DRAFTED_MARK = 'texte de la vidéo rédigé à la publication
 // Le short d'une traduction est-il à (re)faire ? Absent ou illisible (null),
 // périmé (sourceHash ≠ `want`, l'empreinte du short fr) ou non conforme à son
 // article (`articleText` : shortReference de son .md) — le même verdict que
-// culture-check.
-export function shortNeedsTranslation(current, { want, lang, articleText }) {
+// culture-check. `requireSpoken` : needSpoken du Short français — une
+// traduction sans `spoken` d'un français qui en porte est à refaire.
+export function shortNeedsTranslation(current, { want, lang, articleText, requireSpoken = false }) {
   if (!current || typeof current !== 'object') return true
   if (current.sourceHash !== want) return true
-  return validateShort(current, { lang, articleText }).length > 0
+  return validateShort(current, { lang, articleText, requireSpoken }).length > 0
 }
 
 // La réponse d'un modèle : JSON nu ou dans un bloc ```json```. null si ce

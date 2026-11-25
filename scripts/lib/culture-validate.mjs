@@ -11,7 +11,7 @@
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
 import { parseFrontMatter, bodyHash } from './culture-markdown.mjs'
 import { isFreeLicense } from './culture-license.mjs'
-import { validateShort, shortHash, parseShortJson, shortReference, shortReferenceOf, spokenRequired } from './culture-short.mjs'
+import { validateShort, shortHash, parseShortJson, shortReference, shortReferenceOf, needSpoken } from './culture-short.mjs'
 
 // TRANSLATED : toutes les langues que culture-translate produit depuis le
 // français. de et it y sont FACULTATIVES (spec 2026-10-23, « Culture de/it ») :
@@ -97,13 +97,15 @@ function checkShorts({ slug, texts, shorts, videos, langs, errors, notes }) {
   const out = {}
   const published = (l) => Boolean(videos?.[slug]?.[l])
   const parse = (raw) => (raw == null ? null : parseShortJson(raw))
-  // `spoken` est exigé selon la date de l'article FRANÇAIS, pour toutes les langues.
+  // `spoken` est exigé selon l'article FRANÇAIS, pour toutes les langues :
+  // needSpoken (sa date, ou un Short français qui porte déjà sa phrase dite),
+  // le même verdict que culture-translate.
   const frDate = langs.fr?.date ?? (() => { try { return parseFrontMatter(texts?.fr).data.date } catch { return undefined } })()
-  const requireSpoken = spokenRequired(frDate)
   const refOf = (l) => (langs[l] ? shortReference(langs[l]) : shortReferenceOf(texts?.[l]))
 
   const frRaw = shorts?.fr ?? null
   const frShort = parse(frRaw)
+  const requireSpoken = needSpoken(frShort, frDate)
   let frRef = null
   if (frRaw == null) notes.push('short.fr.json absent : pas de vidéo')
   else {

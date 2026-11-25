@@ -8,7 +8,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 import {
-  SHORT_MAX_TEXT, SHORT_MAX_SPOKEN, SPOKEN_SINCE, spokenRequired, TRACK_IDS, HASHTAG, shortHash, validateShort, parseShortJson,
+  SHORT_MAX_TEXT, SHORT_MAX_SPOKEN, SPOKEN_SINCE, spokenRequired, needSpoken,TRACK_IDS, HASHTAG, shortHash, validateShort, parseShortJson,
   shortReference, shortReferenceOf, frShortAtPublish,
 } from '../scripts/lib/culture-short.mjs'
 
@@ -233,4 +233,19 @@ test('spokenRequired : à partir de SPOKEN_SINCE', () => {
   assert.equal(spokenRequired(SPOKEN_SINCE), true)
   assert.equal(spokenRequired('2026-10-17'), false)
   assert.equal(spokenRequired(undefined), false)
+})
+
+test('needSpoken : la date OU un Short français qui porte déjà sa phrase dite', () => {
+  assert.equal(needSpoken(short(), '2026-10-17'), false)
+  assert.equal(needSpoken(short(), SPOKEN_SINCE), true)
+  assert.equal(needSpoken(spoken(short()), '2026-10-17'), true)
+  assert.equal(needSpoken(null, undefined), false)
+  assert.equal(needSpoken(null, SPOKEN_SINCE), true)
+})
+
+test('frShortAtPublish : un article daté de SPOKEN_SINCE exige le spoken du Short français', () => {
+  const ref = shortReferenceOf(MD)
+  const raw = JSON.stringify(short())
+  assert.deepEqual(frShortAtPublish({ raw, reference: ref, frDate: '2026-10-17' }).problems, [])
+  assert.match(frShortAtPublish({ raw, reference: ref, frDate: SPOKEN_SINCE }).problems.join(), /spoken manquant/)
 })

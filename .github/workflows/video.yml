@@ -59,10 +59,18 @@ jobs:
       - name: Langues à rendre
         id: plan
         run: |
-          LANGS="$(node scripts/video-publish.mjs "$SLUG" --plan)"
+          # Plan vide faute de Short conforme (ex. article rédigé par l'ancien
+          # code, sans `spoken`) : --plan sort en 1, ses erreurs sur stderr.
+          # C'est une panne, pas un « rien à faire » : l'étape échoue en les
+          # nommant, au lieu de publier l'article sans vidéo derrière un notice vert.
+          ERR="$RUNNER_TEMP/plan-errors.txt"
+          if ! LANGS="$(node scripts/video-publish.mjs "$SLUG" --plan 2>"$ERR")"; then
+            while IFS= read -r line; do echo "::error::$SLUG : $line"; done < "$ERR"
+            exit 1
+          fi
           echo "langs=$LANGS" >> "$GITHUB_OUTPUT"
           if [ -z "$LANGS" ]; then
-            echo "::notice::$SLUG : aucun Short à rendre (absent, non conforme, déjà en file ou sur YouTube)."
+            echo "::notice::$SLUG : aucun Short à rendre (absent, déjà en file ou sur YouTube)."
           else
             echo "À rendre : $LANGS"
           fi

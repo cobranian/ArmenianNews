@@ -157,8 +157,9 @@ export function buildShortMessages({ title, description, body }) {
 // Le texte du Short traduit dans une autre langue. L'ARTICLE fourni est celui
 // de la langue cible (<lang>.md qui vient d'être écrit) : les noms et les
 // nombres du Short doivent s'y lire tels quels. `music` n'est pas traduit : la
-// piste est celle du short français.
-export function buildShortTranslateMessages({ lang, short, articleText }) {
+// piste est celle du short français. `spoken` : la phrase dite est demandée
+// (needSpoken) ; sans elle, la traduction d'un article ancien n'en écrit pas.
+export function buildShortTranslateMessages({ lang, short, articleText, spoken = (short?.facts ?? []).some((f) => f?.spoken !== undefined) }) {
   const name = LANG_NAME[lang]
   const room = YT_TITLE_MAX - (HASHTAG[lang] ?? '').length - 1
   const system = [
@@ -168,11 +169,11 @@ export function buildShortTranslateMessages({ lang, short, articleText }) {
     "- Noms propres : l'orthographe de l'ARTICLE fourni, qui est déjà dans la langue cible ; ne la change pas.",
     "- Chaque nombre (dates et siècles compris) doit figurer tel quel dans l'ARTICLE fourni : n'en calcule, n'en arrondis et n'en ajoute aucun.",
     `- text : une seule phrase, ${SHORT_MAX_TEXT} caractères au plus, espaces comprises.`,
-    `- spoken : traduis-le en phrase parlée, ${SHORT_MAX_SPOKEN} caractères au plus, nombres en chiffres.`,
+    ...(spoken ? [`- spoken : traduis-le en phrase parlée, ${SHORT_MAX_SPOKEN} caractères au plus, nombres en chiffres.`] : []),
     `- ytTitle : ${room} caractères au plus (le mot-dièse ${HASHTAG[lang] ?? ''} est ajouté ensuite).`,
     "- N'ajoute aucun fait absent du Short français, ne retire rien, ne commente rien.",
     '- Aucun lien, aucune URL, aucun mot-dièse.',
-    `Réponds UNIQUEMENT par un objet JSON {"facts": [{"eyebrow": "…", "title": "…", "text": "…", "spoken": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…"}, sans aucun texte autour.`,
+    `Réponds UNIQUEMENT par un objet JSON {"facts": [{"eyebrow": "…", "title": "…", "text": "…", ${spoken ? '"spoken": "…", ' : ''}"big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…"}, sans aucun texte autour.`,
   ].join('\n')
   const { facts, outroTitle, ytTitle, ytLead } = short
   const user = `ARTICLE (${name}) :\n${articleText}\n\nSHORT À TRADUIRE :\n${JSON.stringify({ facts, outroTitle, ytTitle, ytLead }, null, 2)}`

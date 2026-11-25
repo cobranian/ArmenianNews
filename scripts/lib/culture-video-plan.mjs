@@ -13,6 +13,18 @@ export function videoLangs(result, { slug, videos, queue }) {
   return ALL_LANGS.filter((l) => result.shorts?.[l] && !online(videos, slug, l) && !queued.has(l))
 }
 
+// Un plan vide est-il une PANNE ? Oui quand validateArticle a refusé un Short
+// (erreur `short.<lang>.json : …`) : rien à rendre parce que le texte est
+// non conforme, pas parce que tout est déjà fait. Le cas réel : un article
+// rédigé par l'ancien code, sans `spoken`, fusionné après SPOKEN_SINCE — il
+// partait sans vidéo derrière un ::notice:: vert (revue finale du 25 nov. 2026).
+// Rend ces erreurs ; [] = plan vide légitime (Short absent, déjà sur YouTube
+// ou en file : ceux-là ne sont que des notes), ou plan non vide.
+export function planBlockers(result, langs) {
+  if (langs.length) return []
+  return (result.errors ?? []).filter((e) => /^short\.[a-z]{2}\.json : /.test(e))
+}
+
 // Les langues dont l'article est publiable mais le Short ne l'est pas (absent,
 // périmé ou non conforme) : une traduction --short-only les rattrape sans
 // retoucher les articles déjà relus. Sans Short français valide, rien à traduire.
