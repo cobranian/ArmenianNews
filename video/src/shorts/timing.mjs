@@ -11,8 +11,20 @@
 export const LEAD = 0.3 // s
 export const TAIL = 0.5 // s
 
+const MAX_SCENE = 12 // s, pour une scène comme pour la fin
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v))
-const frames = (seconds, fps, minSeconds) => clamp(Math.round((LEAD + seconds + TAIL) * fps), minSeconds * fps, 12 * fps)
+const frames = (seconds, fps, minSeconds) =>
+  clamp(Math.round((LEAD + seconds + TAIL) * fps), minSeconds * fps, MAX_SCENE * fps)
+
+// La plus longue phrase qui tient entière dans une scène plafonnée. Au-delà,
+// le plafond la couperait en plein mot : ShortVideo (voicedLines) refuse alors
+// le rendu plutôt que de publier une phrase tronquée — le plafond n'est qu'un
+// filet de sécurité.
+/** @param {number} fps @returns {number} */
+export const maxSpeechSeconds = (fps) => (MAX_SCENE * fps - Math.round(LEAD * fps) - Math.round(TAIL * fps)) / fps
+
+/** @param {number} seconds @param {number} fps @returns {boolean} */
+export const fitsScene = (seconds, fps) => Math.round((LEAD + seconds + TAIL) * fps) <= MAX_SCENE * fps
 
 /** @param {number} seconds @param {number} fps @returns {number} */
 export const sceneFrames = (seconds, fps) => frames(seconds, fps, 6)

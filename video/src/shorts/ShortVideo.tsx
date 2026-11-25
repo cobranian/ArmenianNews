@@ -18,7 +18,7 @@ import credits from './credits.json'
 import cta from './cta.json'
 import type { Credit } from './types'
 import { ShortMusic } from './music'
-import { LEAD, narratedDuration, outroFrames, sceneFrames, speechWindows, type VoiceLine } from './timing.mjs'
+import { fitsScene, LEAD, maxSpeechSeconds, narratedDuration, outroFrames, sceneFrames, speechWindows, type VoiceLine } from './timing.mjs'
 
 // hy, ru et es partent sur la chaîne Armenia News (le .org), de et it sur
 // Arménie Info (le .ch) — chaque langue suit le domaine qui la sert
@@ -106,6 +106,14 @@ const voiceOf = (slug: string, lang: Lang): VoiceLine[] | null => {
 export const voicedLines = (slug: string, lang: Lang): VoiceLine[] => {
   const lines = voiceOf(slug, lang)
   if (!lines) throw new Error(`Short sans voix : ${slug}/${lang} — lancer video/scripts/voice.mjs --slug ${slug} --lang ${lang}`)
+  // Une phrase trop longue serait coupée en plein mot par le plafond de la
+  // scène : un Short publié n'est jamais re-rendu, donc on refuse ici.
+  lines.forEach((l, i) => {
+    if (!fitsScene(l.seconds, FPS))
+      throw new Error(
+        `Short ${slug}/${lang} : phrase ${i} trop longue (${l.seconds} s > ${maxSpeechSeconds(FPS)} s) — raccourcir le texte parlé et relancer video/scripts/voice.mjs`,
+      )
+  })
   return lines
 }
 

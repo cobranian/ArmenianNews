@@ -7,3 +7,5 @@ export declare function sceneFrames(seconds: number, fps: number): number
 export declare function outroFrames(seconds: number, fps: number): number
 export declare function narratedDuration(lines: VoiceLine[], fps: number, fade: number): number
 export declare function speechWindows(lines: VoiceLine[], fps: number, fade: number): [number, number][]
+export declare function maxSpeechSeconds(fps: number): number
+export declare function fitsScene(seconds: number, fps: number): boolean

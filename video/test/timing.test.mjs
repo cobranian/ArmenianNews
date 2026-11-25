@@ -4,7 +4,7 @@
 // longue, un WAV corrompu, ne doit pas étirer la vidéo sans fin).
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { LEAD, TAIL, narratedDuration, outroFrames, sceneFrames, speechWindows } from '../src/shorts/timing.mjs'
+import { LEAD, TAIL, fitsScene, maxSpeechSeconds, narratedDuration, outroFrames, sceneFrames, speechWindows } from '../src/shorts/timing.mjs'
 
 const FPS = 30
 const FADE = 12
@@ -43,4 +43,14 @@ test('speechWindows : la voix de la scène i part à LEAD après le début de sa
   const start1 = sceneFrames(lines[0].seconds, FPS) - FADE
   assert.equal(w[1][0], start1 + Math.round(LEAD * FPS))
   assert.equal(w[1][1], start1 + Math.round(LEAD * FPS) + Math.round(lines[1].seconds * FPS))
+})
+
+test('fitsScene : une phrase plus longue que 12 s − LEAD − TAIL ne tient pas (elle serait coupée)', () => {
+  assert.equal(maxSpeechSeconds(FPS), 11.2)
+  assert.equal(fitsScene(11.2, FPS), true)
+  assert.equal(fitsScene(11.25, FPS), false)
+  assert.equal(fitsScene(30, FPS), false)
+  assert.equal(fitsScene(4, FPS), true)
+  // Au plafond exact, la phrase entière tient dans sa séquence.
+  assert.ok(Math.round((LEAD + maxSpeechSeconds(FPS)) * FPS) <= sceneFrames(maxSpeechSeconds(FPS), FPS))
 })
