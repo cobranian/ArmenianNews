@@ -46,7 +46,7 @@ import { buildTranslateMessages, parseArticleJson, plainName } from './lib/cultu
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
-import { shortHash, parseShortJson, shortNeedsTranslation, shortReference, shortReferenceOf, frShortAtPublish, SHORT_DRAFTED_MARK } from './lib/culture-short.mjs'
+import { shortHash, parseShortJson, shortNeedsTranslation, shortReference, shortReferenceOf, frShortAtPublish, needSpoken, SHORT_DRAFTED_MARK } from './lib/culture-short.mjs'
 import { shortLines } from './lib/culture-pr.mjs'
 import { translateShort } from './lib/culture-short-translate.mjs'
 import { draftShort } from './lib/culture-checks.mjs'
@@ -105,7 +105,7 @@ const sticky = {}
 // fr.md — la référence même de culture-check et du brouillon.
 const frRef = shortReference({ title: fr.data.title, description: fr.data.description, body: fr.body })
 const frRaw = await readFile(path.join(base, 'short.fr.json'), 'utf-8').catch(() => null)
-const frState = frShortAtPublish({ raw: frRaw, reference: frRef, published: Boolean((await readVideos(DIR))?.[slug]?.fr) })
+const frState = frShortAtPublish({ raw: frRaw, reference: frRef, published: Boolean((await readVideos(DIR))?.[slug]?.fr), frDate: fr.data.date })
 let shortFr = frState.short
 // Présent mais non conforme : il n'est JAMAIS réécrit ici (il a été relu, ou
 // corrigé à la main) — culture-check le refuse, la PR le dit.
@@ -145,6 +145,7 @@ async function translateVideo(lang, t) {
     const r = await translateShort({
       lang, shortFr, sticky, chat: chatResilient,
       articleText: shortReference(t),
+      requireSpoken: needSpoken(shortFr, fr.data.date),
     })
     await writeFile(path.join(base, `short.${lang}.json`), `${JSON.stringify(r.short, null, 2)}\n`)
     lines.push(`- ✓ ${lang} vidéo — \`${r.model}\``)
@@ -176,7 +177,7 @@ if (values['short-only'] && shortFr) {
       continue
     }
     const current = parseShortJson(await readFile(path.join(base, `short.${lang}.json`), 'utf-8').catch(() => ''))
-    if (!shortNeedsTranslation(current, { want, lang, articleText: shortReferenceOf(mdText) })) continue
+    if (!shortNeedsTranslation(current, { want, lang, articleText: shortReferenceOf(mdText), requireSpoken: needSpoken(shortFr, fr.data.date) })) continue
     await translateVideo(lang, { title: md.data.title, description: md.data.description, body: md.body })
   }
 }

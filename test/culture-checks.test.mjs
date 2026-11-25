@@ -65,7 +65,7 @@ test('verifyClaims : faits introuvables, repli annoncé, panne → null sans lev
 // Le Short : un appel à part, deux essais, jamais d'exception — un article ne
 // tombe pas pour sa vidéo.
 const ARTICLE = '---\ntitle: "Le duduk"\n---\n\nNé au Ve siècle, inscrit en 2005, long de 28 à 40 cm.'
-const sfact = (over = {}) => ({ eyebrow: 'Arménie', title: 'Un titre', text: 'Un texte court.', big: false, ...over })
+const sfact = (over = {}) => ({ eyebrow: 'Arménie', title: 'Un titre', text: 'Un texte court.', spoken: 'Un fait dit en 2005.', big: false, ...over })
 const goodShort = (over = {}) => ({
   facts: Array.from({ length: 7 }, () => sfact()),
   outroTitle: 'Le duduk',
@@ -166,4 +166,24 @@ test('reviseShort : article inchangé → l’ancien est gardé tel quel ; pas d
   const none = reviseShort({ oldShort: null, returned: goodShort(), oldText: ARTICLE, newText: ARTICLE })
   assert.equal(none.action, 'none')
   assert.equal(none.short, null)
+})
+
+// La voix : un Short neuf ou révisé porte `spoken` (requireSpoken), et pickShort le garde.
+const sansSpoken = () => goodShort({ facts: Array.from({ length: 7 }, () => { const f = sfact(); delete f.spoken; return f }) })
+
+test('draftShort : spoken conservé dans le Short rendu, et exigé', async () => {
+  const r = await draftShort({ ...args, chat: async () => reply(goodShort()) })
+  assert.equal(r.short.facts[0].spoken, 'Un fait dit en 2005.')
+  const bad = await draftShort({ ...args, attempts: 1, chat: async () => reply(sansSpoken()) })
+  assert.equal(bad.short, null)
+  assert.match(bad.error, /spoken/)
+})
+
+test('reviseShort : spoken conservé ; rendu sans spoken refusé, ancien sans spoken gardé', () => {
+  const r = reviseShort({ oldShort: goodShort(), returned: goodShort({ outroTitle: 'Duduk' }), oldText: ARTICLE, newText: ARTICLE })
+  assert.equal(r.short.facts[3].spoken, 'Un fait dit en 2005.')
+  const vieux = sansSpoken()
+  const k = reviseShort({ oldShort: vieux, returned: vieux, oldText: ARTICLE, newText: ARTICLE.replace('long de', 'mesurant') })
+  assert.equal(k.action, 'kept')
+  assert.deepEqual(k.short, vieux)
 })

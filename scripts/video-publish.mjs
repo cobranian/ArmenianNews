@@ -2,7 +2,8 @@
 /**
  * Les Shorts rendus d'un article : release, manifeste des Reels, file YouTube.
  *
- *   node scripts/video-publish.mjs <slug> --plan              langues à rendre (« fr,en,… », vide si aucune)
+ *   node scripts/video-publish.mjs <slug> --plan              langues à rendre (« fr,en,… », vide si aucune ;
+ *                                                             vide faute de Short conforme : erreurs sur stderr, code 1)
  *   node scripts/video-publish.mjs <slug> --dir video/out [--dry]
  *
  * Les langues sont celles de validateArticle(...).shorts, moins celles déjà
@@ -28,7 +29,7 @@ import { parseArgs } from 'node:util'
 import { CULTURE_SLUG } from '../sites.config.js'
 import { readArticle, readVideos } from './lib/culture-load.mjs'
 import { validateArticle } from './lib/culture-validate.mjs'
-import { videoLangs } from './lib/culture-video-plan.mjs'
+import { planBlockers, videoLangs } from './lib/culture-video-plan.mjs'
 import { addReels, assetName, readReels } from './lib/reels-add.mjs'
 import { enqueue, readQueue } from './lib/youtube-queue.mjs'
 import { musicLine, youtubeMeta } from './lib/youtube-meta.mjs'
@@ -59,7 +60,11 @@ const before = await readQueue(QUEUE)
 const langs = videoLangs(result, { slug, videos, queue: before })
 if (values.plan) {
   console.log(langs.join(','))
-  process.exit(0)
+  // Plan vide faute de Short conforme : les erreurs sur stderr, une par ligne,
+  // et un code de sortie non nul — video.yml en fait des ::error::.
+  const blockers = planBlockers(result, langs)
+  for (const e of blockers) console.error(e)
+  process.exit(blockers.length ? 1 : 0)
 }
 if (!langs.length) {
   console.log(`${slug} : aucun Short à publier (absent, non conforme, déjà en file ou sur YouTube)`)

@@ -8,7 +8,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 import {
-  SHORT_MAX_TEXT, TRACK_IDS, HASHTAG, shortHash, validateShort, parseShortJson,
+  SHORT_MAX_TEXT, SHORT_MAX_SPOKEN, SPOKEN_SINCE, spokenRequired, needSpoken,TRACK_IDS, HASHTAG, shortHash, validateShort, parseShortJson,
   shortReference, shortReferenceOf, frShortAtPublish,
 } from '../scripts/lib/culture-short.mjs'
 
@@ -197,4 +197,55 @@ test('frShortAtPublish : présent mais non conforme → jamais rédigé à nouve
   assert.equal(frShortAtPublish({ raw: null, reference: ref, published: true }).draft, false)
   const good = short()
   assert.deepEqual(frShortAtPublish({ raw: JSON.stringify(good), reference: ref }).short, good)
+})
+
+// --- spoken : la phrase dite, une par fait ---
+
+const spoken = (s) => ({ ...s, facts: s.facts.map((f) => ({ ...f, spoken: 'Une phrase dite.' })) })
+
+test('validateShort : spoken exigé quand requireSpoken', () => {
+  assert.equal(SHORT_MAX_SPOKEN, 90)
+  assert.deepEqual(validateShort(spoken(short()), { lang: 'fr', articleText: ARTICLE, requireSpoken: true }), [])
+  assert.ok(validateShort(short(), { lang: 'fr', articleText: ARTICLE, requireSpoken: true }).some((e) => /fait 1 : spoken manquant/.test(e)))
+  assert.deepEqual(check(short()), []) // ancien short, sans exigence : toujours valide
+})
+
+test('validateShort : spoken trop long, nombre inventé', () => {
+  const s = spoken(short()); s.facts[0].spoken = 'x'.repeat(91)
+  assert.ok(check(s).some((e) => /fait 1 : spoken de 91 caractères \(max 90\)/.test(e)))
+  const n = spoken(short()); n.facts[2].spoken = 'En 1999, rien.'
+  assert.ok(check(n).some((e) => /nombres absents de l’article : 1999/.test(e)))
+})
+
+test('validateShort : spoken présent sur un fait impose les 7', () => {
+  const s = short(); s.facts[0] = { ...s.facts[0], spoken: 'Dit.' }
+  assert.ok(check(s).some((e) => /fait 2 : spoken manquant/.test(e)))
+})
+
+test('shortHash : inchangé pour un short sans spoken, changé avec', async () => {
+  const fr = JSON.parse(await read(KHOR, 'short.fr.json'))
+  const en = JSON.parse(await read(KHOR, 'short.en.json'))
+  assert.equal(shortHash(fr), en.sourceHash)
+  assert.notEqual(shortHash(spoken(fr)), shortHash(fr))
+})
+
+test('spokenRequired : à partir de SPOKEN_SINCE', () => {
+  assert.equal(spokenRequired(SPOKEN_SINCE), true)
+  assert.equal(spokenRequired('2026-10-17'), false)
+  assert.equal(spokenRequired(undefined), false)
+})
+
+test('needSpoken : la date OU un Short français qui porte déjà sa phrase dite', () => {
+  assert.equal(needSpoken(short(), '2026-10-17'), false)
+  assert.equal(needSpoken(short(), SPOKEN_SINCE), true)
+  assert.equal(needSpoken(spoken(short()), '2026-10-17'), true)
+  assert.equal(needSpoken(null, undefined), false)
+  assert.equal(needSpoken(null, SPOKEN_SINCE), true)
+})
+
+test('frShortAtPublish : un article daté de SPOKEN_SINCE exige le spoken du Short français', () => {
+  const ref = shortReferenceOf(MD)
+  const raw = JSON.stringify(short())
+  assert.deepEqual(frShortAtPublish({ raw, reference: ref, frDate: '2026-10-17' }).problems, [])
+  assert.match(frShortAtPublish({ raw, reference: ref, frDate: SPOKEN_SINCE }).problems.join(), /spoken manquant/)
 })

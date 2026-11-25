@@ -1032,7 +1032,7 @@ de production servent toujours depuis la racine de leur domaine.
   textes qui écrivent « dix-sept » en toutes lettres dans sept langues,
   descriptions Google comprises, et tout serait à refaire à l'envers au retour.
   `offAir: true` rend la puce inerte sans toucher au compte.
-- **Vidéo automatique : quatre pièges muets** (`docs/youtube-setup.md`, spec
+- **Vidéo automatique : cinq pièges muets** (`docs/youtube-setup.md`, spec
   `docs/superpowers/specs/2026-11-16-video-auto-design.md`). (1) `video/` est un
   paquet npm À PART : lint et tests de la racine l'ignorent, `npm --prefix video ci`
   d'abord. (2) Le texte d'un Short vit dans `src/data/culture/<slug>/short.<lang>.json` ;
@@ -1041,7 +1041,7 @@ de production servent toujours depuis la racine de leur domaine.
   YouTube : retirer une ligne renvoie le Short (même règle que `social-posted.json`).
   (4) Sans l'audit de l'API YouTube, un envoi reste PRIVÉ : `YOUTUBE_AUTO` ne doit
   pas être posée avant l'audit ; la file se vide à la main en séance
-  (`youtube-post.mjs mark`).
+  (`youtube-post.mjs mark`). (5) La voix (voice.mjs) consomme 8 requêtes Gemini TTS par langue, 56 par sujet, sur un quota de 100/jour : deux sujets le même jour basculent sur flash-lite-tts, au-delà la langue est sautée (relancer video.yml le lendemain).
 - **Articles Culture : neuf pièges silencieux** (un brouillon par jour,
   03:00 UTC). (1) Un commit ou une PR poussés avec le `GITHUB_TOKEN` ne
   déclenchent aucun autre workflow : `articles.yml` et
