@@ -13,13 +13,15 @@ export type Fact = {
   text: string;
   focus?: string;
   big?: boolean; // titre en très grand (une date, un chiffre)
+  spoken?: string; // ce que dit la voix (Shorts narrés) ; jamais affiché
 };
 
 export type Copy = {
   brand: string;
   section: string;
   facts: Fact[];
-  outro: { kicker: string; title: string; url: string };
+  // subscribe : l'appel à s'abonner sous l'URL (Shorts narrés, cta.json#screen).
+  outro: { kicker: string; title: string; url: string; subscribe?: string };
   credit: string;
   // La langue règle l'approche et l'interlignage des titres (Scenes.tsx).
   lang?: Lang;

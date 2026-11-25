@@ -35,6 +35,9 @@ const useEnter = (delay: number) => {
   };
 };
 
+// L'état final d'une entrée, pour ce qui doit être là dès l'image 0.
+const STILL = { opacity: 1, translate: "0px 0px" };
+
 // Le fond : la photo floutée et assombrie, plein cadre. Le flou cache
 // l'agrandissement (la photo ne fait que 1200 px de large).
 export const Backdrop: React.FC<{ focus?: string; src: string }> = ({ focus = "50% 50%", src }) => (
@@ -118,10 +121,12 @@ const typo = (s: string) =>
 export const FactScene: React.FC<{ fact: Fact; copy: Copy; first?: boolean }> = ({ fact, copy, first = false }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
-  // La première scène est le crochet : son titre est là dès l'image 0.
-  const eyebrow = useEnter(first ? 0 : 0.2);
-  const title = useEnter(first ? 0 : 0.4);
-  const text = useEnter(first ? 0.5 : 0.9);
+  // La première scène est le crochet : tout est là dès l'image 0, sans
+  // fondu ni montée (les hooks restent appelés dans le même ordre).
+  const enter = { eyebrow: useEnter(0.2), title: useEnter(0.4), text: useEnter(0.9) };
+  const eyebrow = first ? STILL : enter.eyebrow;
+  const title = first ? STILL : enter.title;
+  const text = first ? STILL : enter.text;
   const t = tune(copy);
 
   return (
@@ -213,6 +218,7 @@ export const Outro: React.FC<{ copy: Copy }> = ({ copy }) => {
   const kicker = useEnter(0.25);
   const title = useEnter(0.45);
   const url = useEnter(0.8);
+  const subscribe = useEnter(1.1);
   const t = tune(copy);
   return (
     <AbsoluteFill>
@@ -271,6 +277,22 @@ export const Outro: React.FC<{ copy: Copy }> = ({ copy }) => {
         >
           {copy.outro.url}
         </div>
+        {copy.outro.subscribe ? (
+          <div
+            style={{
+              ...subscribe,
+              fontFamily: F.mono,
+              fontWeight: 700,
+              fontSize: 42,
+              letterSpacing: t?.capsTrack ?? "0.12em",
+              textTransform: "uppercase",
+              color: C.apricot,
+              marginTop: 48,
+            }}
+          >
+            {copy.outro.subscribe}
+          </div>
+        ) : null}
       </AbsoluteFill>
       <Chrome copy={copy} />
     </AbsoluteFill>

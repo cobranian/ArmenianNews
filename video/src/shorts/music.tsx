@@ -41,21 +41,27 @@ export const musicCredit = (slug: string) => {
 
 const FADE_IN = 0.6 // s
 const FADE_OUT = 3 // s
+// Sous la voix : 0,3 (≈ −10 dB), rampes de 0,25 s de part et d'autre.
+const DUCK = 0.3
+const RAMP = 0.25 // s
 
 // Posée sous le TransitionSeries : la composition entière, fondu au début et
-// à la fin calés sur sa durée réelle.
-export const ShortMusic: React.FC<{ slug: string }> = ({ slug }) => {
+// à la fin calés sur sa durée réelle. `speech` : les fenêtres où la voix
+// parle (timing.mjs#speechWindows) ; absent (Garni), la musique reste pleine.
+export const ShortMusic: React.FC<{ slug: string; speech?: [number, number][] }> = ({ slug, speech = [] }) => {
   const { fps, durationInFrames } = useVideoConfig()
   const end = durationInFrames
+  const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const
+  const r = RAMP * fps
+  const duck = (f: number) =>
+    speech.reduce(
+      (v, [from, to]) => Math.min(v, interpolate(f, [from - r, from, to, to + r], [1, DUCK, DUCK, 1], clamp)),
+      1,
+    )
   return (
     <Audio
       src={staticFile(trackFor(slug).file)}
-      volume={(f) =>
-        interpolate(f, [0, FADE_IN * fps, end - FADE_OUT * fps, end], [0, 1, 1, 0], {
-          extrapolateLeft: 'clamp',
-          extrapolateRight: 'clamp',
-        })
-      }
+      volume={(f) => interpolate(f, [0, FADE_IN * fps, end - FADE_OUT * fps, end], [0, 1, 1, 0], clamp) * duck(f)}
     />
   )
 }
