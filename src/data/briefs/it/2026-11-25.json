@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-25",
+  "lang": "it",
+  "generatedAt": "2026-11-25T03:30:39.537Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è dominata dalla visita del premier armeno Nikol Pashinyan in Romania, con la firma di una dichiarazione di partenariato strategico, mentre proseguono i contatti con la Russia e l'Unione europea e si discute della riforma costituzionale interna.",
+  "topics": [
+    {
+      "title": "Partenariato strategico Armenia-Romania",
+      "text": "Il primo ministro armeno Nikol Pashinyan e il presidente rumeno Nicușor Dan hanno firmato una dichiarazione congiunta che sancisce un partenariato strategico tra i due paesi. I colloqui hanno riguardato lo sviluppo della cooperazione in molteplici settori, con particolare enfasi sulle relazioni commerciali ed economiche. Pashinyan ha incontrato anche il presidente del Senato rumeno.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266537",
+          "title": "Nikol Pashinyan et Luca Niculescu ont souligné l’importance du développement des relations commerciales et économiques entre l’Arménie et la Roumanie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266544",
+          "title": "Rencontre entre le Premier ministre arménien et le président du Sénat roumain"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266538",
+          "title": "Les Premiers ministres arménien et roumain ont fait des déclarations à l’issue de leur rencontre"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266522",
+          "title": "Nikol Pashinyan et Nicușor Dan ont signé une déclaration conjointe sur le partenariat stratégique entre les deux pays et font des déclarations à la presse"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-premier-ministre-armenien-nikol-pachinian-et-le-president-roumain-nicusor-dan-ont-discute-de-questions-visant-a-developper-la-cooperation-armeno-roumaine/",
+          "title": "Le Premier ministre arménien Nikol Pachinian et le président roumain Nicușor Dan ont discuté de questions visant à développer la coopération arméno-roumaine"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266513",
+          "title": "Nikol Pashinyan et Nicușor Dan ont examiné plusieurs questions relatives au développement de la coopération entre l’Arménie et la Roumanie dans de nombreux domaines"
+        }
+      ]
+    },
+    {
+      "title": "Cooperazione commerciale ed economica Armenia-Russia",
+      "text": "Il vicepremier Mher Grigoryan ha compiuto una visita di lavoro a Mosca dove ha incontrato il vicepremier russo Alexey Overchouk. Al centro dei colloqui le questioni relative alla cooperazione commerciale, economica e umanitaria tra Armenia e Russia. La visita conferma il mantenimento di stretti legami bilaterali.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266552",
+          "title": "Grigoryan et Overchouk ont examiné des questions relatives à la coopération commerciale, économique et humanitaire entre l’Arménie et la Russie"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266453",
+          "title": "Mher Grigoryan s’est rendu à Moscou pour une visite de travail"
+        }
+      ]
+    },
+    {
+      "title": "Riforma costituzionale e referendum",
+      "text": "Il progetto di nuova Costituzione prevede la raccolta di 200.000 firme in 120 giorni per indire un referendum. La ministra della Giustizia Srbuhi Galyan ha spiegato le modifiche terminologiche, come la sostituzione di 'popolo armeno' con 'popolo della Repubblica d'Armenia', e ha chiarito che i poteri del premier sulle forze armate rimangono invariati.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/pourquoi-lexpression-peuple-armenien-a-t-elle-ete-remplacee-par-peuple-de-la-republique-darmenie-dans-le-projet-de-constitution-la-reponse-de-la-ministre-de-la-justic/",
+          "title": "Pourquoi l’expression « peuple arménien » a-t-elle été remplacée par « peuple de la République d’Arménie » dans le projet de Constitution ? La réponse de la ministre de la Justice"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/srbuhi-galyan-ministre-de-la-justice-darmenie-il-est-presente-comme-un-droit-dutiliser-les-forces-armees-confere-au-premier-ministre-dans-la-nouvelle-constitution-or-aujourdhui-ce-dr/",
+          "title": "Srbuhi Galyan, ministre de la Justice d’Arménie : Il est présenté comme un droit d’utiliser les forces armées conféré au Premier ministre dans la nouvelle Constitution, or aujourd’hui, ce droit lui appartient également"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-nouvelle-constitution-propose-de-recueillir-200-000-signatures-en-120-jours-pour-initier-un-referendum/",
+          "title": "La nouvelle Constitution propose de recueillir 200 000 signatures en 120 jours pour initier un référendum"
+        }
+      ]
+    },
+    {
+      "title": "Corridoio di Zangezur e posizione azera",
+      "text": "Il presidente azero Ilham Aliyev ha ribadito che il 'corridoio di Zangezur', avviato su iniziativa di Baku, garantirà un collegamento diretto tra l'Azerbaigian continentale e l'exclave del Nakhichevan. La dichiarazione arriva in un contesto di persistenti tensioni regionali sui collegamenti di trasporto.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/aliyev-le-corridor-de-zangezur-mis-en-oeuvre-a-linitiative-de-lazerbaidjan-garantira-une-liaison-directe-entre-lazerbaidjan-continental-et-le-nakhitchevan/",
+          "title": "Aliyev : Le « corridor de Zangezur », mis en œuvre à l’initiative de l’Azerbaïdjan, garantira une liaison directe entre l’Azerbaïdjan continental et le Nakhitchevan"
+        }
+      ]
+    },
+    {
+      "title": "Progetto TRIPP e reazioni internazionali",
+      "text": "L'ex presidente statunitense Donald Trump ha inviato un messaggio video per congratularsi con l'Armenia per il lancio dell'Accordo TRIPP. L'Iran ha dichiarato di aver ricevuto garanzie dall'Armenia riguardo al progetto, che mira a migliorare i collegamenti di trasporto regionali.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/trump-felicite-larmenie-pour-le-lancement-de-laccord-sur-les-tripp-dans-un-message-video/",
+          "title": "Trump félicite l’Arménie pour le lancement de l’Accord sur les TRIPP dans un message vidéo"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/liran-affirme-avoir-recu-des-garanties-de-larmenie-concernant-le-projet-tripp",
+          "title": "L’Iran affirme avoir reçu des garanties de l’Arménie concernant le projet TRIPP"
+        }
+      ]
+    },
+    {
+      "title": "Relazioni con l'Unione europea e sicurezza",
+      "text": "Il ministro dell'Interno armeno ha incontrato gli ambasciatori degli Stati membri dell'Unione europea a Yerevan. Separatamente, il segretario del Consiglio di sicurezza armeno ha ricevuto il consigliere per la sicurezza nazionale del premier lituano e il viceministro della Difesa lituano, discutendo questioni di cooperazione in materia di sicurezza.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266546",
+          "title": "Le Secrétaire du Conseil de sécurité de l’Arménie a rencontré le conseiller à la sécurité nationale du Premier ministre lituanien et le vice-ministre de la Défense nationale"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266458",
+          "title": "Le ministre de l’Intérieur de la République d’Arménie a rencontré les ambassadeurs des États membres de l’Union européenne"
+        }
+      ]
+    },
+    {
+      "title": "Cultura e diaspora: eventi in Francia e Grecia",
+      "text": "Si terrà una messa in onore di re Leone di Lusignan il 29 novembre a Saint-Denis, mentre a Menton è prevista una firma con l'artista Frédérique Nalbandian il 5 dicembre. Ad Atene ha aperto un'esposizione eccezionale sull'Armenia antica presso il Museo dell'Acropoli.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/messe-en-lhonneur-du-roi-leon-de-lusignan-le-29-novembre-a-saint-denis/",
+          "title": "Messe en l’honneur du roi Léon de Lusignan le 29 novembre à Saint Denis"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/rencontre-signature-avec-frederique-nalbandian-le-5-decembre-a-menton/",
+          "title": "Rencontre signature avec Frédérique Nalbandian le 5 décembre à Menton"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/une-exposition-exceptionnelle-sur-larmenie-antique-souvre-au-musee-de-lacropole-le-plus-prestigieux-musee-de-grece/",
+          "title": "Une exposition exceptionnelle sur l’Arménie antique s’ouvre au musée de l’Acropole, le plus prestigieux musée de Grèce"
+        }
+      ]
+    }
+  ]
+}

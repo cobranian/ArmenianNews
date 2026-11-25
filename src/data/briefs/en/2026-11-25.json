@@ -1,0 +1,233 @@
+{
+  "date": "2026-11-25",
+  "lang": "en",
+  "generatedAt": "2026-11-25T03:30:39.537Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenia's political landscape is dominated by the release of a new draft constitution and Prime Minister Pashinyan's visit to Romania, while economic discussions focus on trade diversification and an AI education initiative.",
+  "topics": [
+    {
+      "title": "New Draft Constitution Sparks Political Debate",
+      "text": "Prime Minister Pashinyan has released a new draft constitution, prompting Ankara and Baku to hail the document while the domestic opposition coalition rejects it. Reports indicate the draft could allow courts to strip citizenship and removes a constitutional phrase that previously caused disputes with Turkey. Former President Robert Kocharyan, currently imprisoned, has reportedly not been given the opportunity to review the draft.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/ankara-and-baku-hail-armenias-draft-constitution/",
+          "title": "Ankara and Baku Hail Armenia’s Draft Constitution"
+        },
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/opposition-coalition-rejects-draft-constitution/",
+          "title": "Opposition Coalition Rejects Draft Constitution"
+        },
+        {
+          "source": "californiacourier",
+          "url": "https://www.thecaliforniacourier.com/pashinian-releases-new-draft-constitution-for-armenia/",
+          "title": "Pashinian Releases New Draft Constitution For Armenia"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015612",
+          "title": "Courts could strip citizenship under new Armenian draft constitution"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076917",
+          "title": "Armenia ex-President Robert Kocharyan – who is in prison – not yet given opportunity to familiarize himself with draft of country's new constitution (VIDEO)"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076889",
+          "title": "Turkey representative for Armenia normalization: Historic change to Armenian constitution, phrase that caused dispute with Turkey removed"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan Visits Romania to Strengthen Ties",
+      "text": "Prime Minister Pashinyan is on an official visit to Bucharest, where Armenia and Romania signed a strategic partnership declaration. Leaders from both countries emphasized the importance of developing trade and economic ties, with Romanian officials stating support for Armenia's EU integration and calling the visit a historic moment. An official welcoming ceremony was held ahead of the high-level meetings.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266544",
+          "title": "Pashinyan meets Romanian Senate President Mircea Abrudean"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266538",
+          "title": "Pashinyan’s Bucharest visit a historic moment for the people of both countries, Romanian prime minister says"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266537",
+          "title": "Pashinyan and Niculescu stress importance of further developing Armenia–Romania trade and economic ties"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266536",
+          "title": "Romania is an important partner in diversifying Armenia’s export markets, Pashinyan says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076938",
+          "title": "PM Pashinyan: Romania is important partner for Armenia in diversifying export markets"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076921",
+          "title": "Official welcoming ceremony held before visiting Armenia premier’s meeting with Romania counterpart (VIDEO)"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/armenia-romania-sign-strategic-partnership-declaration/",
+          "title": "Armenia, Romania sign strategic partnership declaration"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076891",
+          "title": "PM Pashinyan, President Dan confer on Armenia-Romania multisectoral cooperation (PHOTOS)"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/armenian-romanian-leaders-discuss-trade-regional-peace-and-connectivity/",
+          "title": "Armenian, Romanian leaders discuss trade, regional peace and connectivity"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076879",
+          "title": "It’s in Romania's strategic interests for Armenia to become EU member, President Dan says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076864",
+          "title": "President: Romania supports Armenia in all phases of dialogue with EU"
+        }
+      ]
+    },
+    {
+      "title": "Armenia-Russia Economic and Humanitarian Cooperation Discussed",
+      "text": "Armenian and Russian deputy prime ministers met in Moscow to discuss trade, economic, and humanitarian cooperation. Separately, the Armenian Deputy Prime Minister traveled to Moscow for a Eurasian Economic Commission Council meeting. Armenian infrastructure officials also held meetings in Ashgabat, Turkmenistan.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/armenian-russian-deputy-pms-discuss-trade-economic-and-humanitarian-cooperation-in-moscow/",
+          "title": "Armenian, Russian Deputy PMs discuss trade, economic and humanitarian cooperation in Moscow"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266552",
+          "title": "Grigoryan and Overchuk discuss Armenian–Russian trade, economic and humanitarian cooperation"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266551",
+          "title": "Armenian infrastructure minister attends conference and holds meetings in Ashgabat"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/armenian-deputy-pm-travels-to-moscow-for-eurasian-economic-commission-council-meeting/",
+          "title": "Armenian Deputy PM travels to Moscow for Eurasian Economic Commission Council meeting"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076785",
+          "title": "Armenia deputy premier leaves for Moscow on working visit"
+        }
+      ]
+    },
+    {
+      "title": "Armenia Advances EU Integration and Visa Liberalization",
+      "text": "Foreign Minister Mirzoyan briefed EU ambassadors on Armenia's approaches to signing a peace agreement with Azerbaijan and underscored the TRIPP project. The Interior Minister expects the first phase of the EU visa liberalization assessment to be fully completed by mid-2027. Discussions on deepening interparliamentary cooperation with Greece were also held.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/mirzoyan-discusses-armenia-eu-partnership-agenda-with-eu-ambassadors/",
+          "title": "Mirzoyan discusses Armenia-EU partnership agenda with EU ambassadors"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076880",
+          "title": "Armenia interior minister expects EU visa liberalization assessment 1st phase full completion by mid-2027"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076868",
+          "title": "FM briefs EU ambassadors on Armenia's approaches to signing peace agreement with Azerbaijan, underscores TRIPP project"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076854",
+          "title": "Deepening of Armenia-Greece interparliamentary cooperation discussed"
+        }
+      ]
+    },
+    {
+      "title": "Firebird and UATE to Launch AI Education Hub in Hrazdan",
+      "text": "Firebird and the Union of Advanced Technology Enterprises (UATE) announced plans to launch an AI Education Hub in Hrazdan. In other technology news, AraratBank signed an MoU to implement an AI-powered CRM system, and discussions were held with SpaceX regarding the development of Starlink internet services in Armenia.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/firebird-and-uate-to-launch-ai-education-hub-in-hrazdan/",
+          "title": "Firebird and UATE to Launch AI Education Hub in Hrazdan"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266486",
+          "title": "AraratBank to implement an AI-powered CRM system: MoU signed with Stamina and Pipedrive"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/armenia-spacex-discuss-development-of-starlink-internet-services/",
+          "title": "Armenia, SpaceX discuss development of Starlink internet services"
+        }
+      ]
+    },
+    {
+      "title": "Armenia to Host Major Basketball Championships in 2027 and 2028",
+      "text": "Armenia has been selected to host two FIBA European basketball championships in 2027 and 2028. The national shooting team is also preparing to compete in the Polish Open Kaliber 2026. Ararat-Armenia football club has departed for a training camp in Austria.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266494",
+          "title": "Armenia to host major basketball tournaments in 2027 and 2028"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/24/armenia-to-host-two-fiba-european-basketball-championships-in-2027-and-2028/",
+          "title": "Armenia to host two FIBA European basketball championships in 2027 and 2028"
+        },
+        {
+          "source": "newsam",
+          "url": "https://sport.news.am/eng/news/170455/",
+          "title": "Ararat-Armenia have departed for Austria (video)"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266496",
+          "title": "Armenia’s shooting team to compete in Polish Open Kaliber 2026"
+        }
+      ]
+    },
+    {
+      "title": "Iran Warns Armenia Over 'Trump Route' Corridor",
+      "text": "Another Iranian official has issued a warning to Yerevan regarding the so-called 'Trump Route' transport corridor. Meanwhile, Azerbaijan's leader stated that the 'Zangezur Corridor' will contribute to the revival of the Silk Road, highlighting ongoing regional tensions over connectivity projects.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "asbarez",
+          "url": "https://asbarez.com/another-iranian-official-warns-yerevan-over-trump-route/",
+          "title": "Another Iranian Official Warns Yerevan Over ‘Trump Route’"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1076896",
+          "title": "\"Zangezur Corridor\" will contribute to Silk Road’s revival, Azerbaijan leader says"
+        }
+      ]
+    }
+  ]
+}
