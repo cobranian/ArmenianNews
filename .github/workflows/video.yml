@@ -78,11 +78,14 @@ jobs:
         if: steps.plan.outputs.langs != ''
         env:
           LANGS: ${{ steps.plan.outputs.langs }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
+          # sync.mjs efface les blocs `voice` des données : il passe UNE fois,
+          # avant la boucle ; la voix de chaque langue est faite juste avant son rendu.
           node video/scripts/sync.mjs
           FAILED=""
           for l in ${LANGS//,/ }; do
-            node video/scripts/render-all.mjs --slug "$SLUG" --lang "$l" || { echo "::warning::$SLUG/$l : rendu en échec, langue sautée"; FAILED="$FAILED $l"; }
+            node video/scripts/voice.mjs --slug "$SLUG" --lang "$l" && node video/scripts/render-all.mjs --slug "$SLUG" --lang "$l" || { echo "::warning::$SLUG/$l : voix ou rendu en échec, langue sautée"; FAILED="$FAILED $l"; }
           done
           # Le job ne tombe pas ici : les langues rendues sont déposées et
           # mises en file. L'étape finale rougit le run pour les autres.
