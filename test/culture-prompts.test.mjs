@@ -1,4 +1,5 @@
 import { test } from 'node:test'
+import { validateShort, SHORT_MAX_SPOKEN } from '../scripts/lib/culture-short.mjs'
 import assert from 'node:assert/strict'
 import {
   buildDraftMessages, buildClaimsMessages, buildTranslateMessages, buildIdeasMessages, buildReviseMessages, buildShortMessages, buildShortTranslateMessages, plainName,
@@ -232,6 +233,31 @@ test('buildShortMessages : 7 faits, 130 caractères, nombres de l’article, pis
   assert.match(sys.content, /"facts"/)
   assert.match(user.content, /Corps de l’article, en 2005\./)
   assert.match(user.content, /Le duduk/)
+})
+
+test('Short : accroche, spoken (90 caractères, nombres en chiffres), exemple valide', () => {
+  const [sys] = buildShortMessages({ title: 'Le duduk', description: 'Un hautbois.', body: 'Corps.' })
+  assert.match(sys.content, /spoken/)
+  assert.match(sys.content, new RegExp(`${SHORT_MAX_SPOKEN} caractères`))
+  assert.match(sys.content, /en chiffres/i)
+  assert.match(sys.content, /accroche/i)
+  assert.match(sys.content, /sans exagérer/)
+  assert.match(sys.content, /"spoken": "…"/)
+  const ex = JSON.parse(sys.content.match(/\n(\{"facts".*\})\n/)[1])
+  assert.ok(ex.facts.every((f) => f.spoken))
+  const article = 'Le duduk, cité au Ve siècle, mesure 9 à 14 cm, inscrit en 2005. Moïse de Khorène, Aram Khatchatourian.'
+  const facts = Array.from({ length: 7 }, (_, i) => ex.facts[i % 3])
+  const errs = validateShort({ ...ex, facts }, { lang: 'fr', articleText: article, requireSpoken: true })
+  assert.deepEqual(errs.filter((e) => /spoken/.test(e)), [])
+})
+
+test('Short : traduction et révision demandent spoken', () => {
+  const short = { facts: [{ eyebrow: 'E', title: 'T', text: 'X', spoken: 'Dit', big: true }], outroTitle: 'O', ytTitle: 'Y', ytLead: 'L', music: 'otar' }
+  const [sys] = buildShortTranslateMessages({ lang: 'en', short, articleText: 'A 2005.' })
+  assert.match(sys.content, /"spoken": "…"/)
+  assert.match(sys.content, /spoken[^\n]*90 caractères/)
+  const [rev] = buildReviseMessages({ title: 'T', description: 'D', body: 'B', instruction: 'I', sources, short })
+  assert.match(rev.content, /spoken/)
 })
 
 test('buildReviseMessages : le Short courant est transmis et demandé en retour', () => {

@@ -3,7 +3,7 @@
 // fournit AUCUNE URL publiée : sources, liens et événement sont ajoutés par
 // le code (leçon de la brève). Ses réponses sont des JSON qu'on extrait d'un
 // texte éventuellement enrobé (clôtures ```json, phrase d'introduction).
-import { SHORT_FACTS, SHORT_MAX_TEXT, YT_TITLE_MAX, TRACK_IDS, HASHTAG } from './culture-short.mjs'
+import { SHORT_FACTS, SHORT_MAX_TEXT, SHORT_MAX_SPOKEN, YT_TITLE_MAX, TRACK_IDS, HASHTAG } from './culture-short.mjs'
 
 export const MAX_EXTRACT = 24000
 
@@ -108,9 +108,9 @@ export const TRACK_THEMES = {
 
 const SHORT_EXAMPLE = {
   facts: [
-    { eyebrow: 'Arménie · Ve siècle', title: 'Le duduk', text: "Moïse de Khorène le mentionnait déjà sous le nom de dziranapogh, le « tube d'abricotier ».", big: false },
-    { eyebrow: "L'anche double", title: '9 à 14 cm', text: 'Sa large anche double, le ghamish, est taillée dans une pièce de roseau aplatie.', big: true },
-    { eyebrow: 'Aram Khatchatourian', title: '« Il me fait pleurer »', text: '« Le duduk est le seul instrument dont le jeu me fait pleurer », disait le compositeur.', big: false },
+    { eyebrow: 'Arménie · Ve siècle', title: 'Le duduk', text: "Moïse de Khorène le mentionnait déjà sous le nom de dziranapogh, le « tube d'abricotier ».", spoken: 'Au Ve siècle déjà, Moïse de Khorène le nommait « tube d’abricotier ».', big: false },
+    { eyebrow: "L'anche double", title: '9 à 14 cm', text: 'Sa large anche double, le ghamish, est taillée dans une pièce de roseau aplatie.', spoken: 'Son anche double mesure 9 à 14 cm et est taillée dans un roseau aplati.', big: true },
+    { eyebrow: 'Aram Khatchatourian', title: '« Il me fait pleurer »', text: '« Le duduk est le seul instrument dont le jeu me fait pleurer », disait le compositeur.', spoken: 'Aram Khatchatourian disait que le duduk le faisait pleurer.', big: false },
   ],
   outroTitle: 'Le duduk',
   ytTitle: "Le duduk, le hautbois d'abricotier qui faisait pleurer Khatchatourian",
@@ -118,16 +118,17 @@ const SHORT_EXAMPLE = {
   music: 'otar',
 }
 
-const SHORT_SHAPE = `{"facts": [{"eyebrow": "…", "title": "…", "text": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…", "music": "${TRACK_IDS.join('|')}"}`
+const SHORT_SHAPE = `{"facts": [{"eyebrow": "…", "title": "…", "text": "…", "spoken": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…", "music": "${TRACK_IDS.join('|')}"}`
 // Le mot-dièse est ajouté au titre YouTube par le code : la limite le compte.
 const YT_TITLE_ROOM = YT_TITLE_MAX - HASHTAG.fr.length - 1
 
 // Règles du Short : rédaction ET révision.
 const SHORT_RULES = [
-  `- Exactement ${SHORT_FACTS} faits, dans l'ordre de la vidéo : le premier présente le sujet, le dernier conclut.`,
+  `- Exactement ${SHORT_FACTS} faits. Le premier est l'ACCROCHE : le fait le plus surprenant de l'ARTICLE (un chiffre, un paradoxe, une question à laquelle la vidéo répond), compréhensible sans contexte, avec le nom du sujet en eyebrow ou en title ; il donne envie de rester sans exagérer ni promettre plus que la vidéo ne dit. Le dernier conclut.`,
   '- eyebrow : le contexte en quelques mots (lieu, époque, thème, personne).',
   '- title : court, quelques mots, lisible d’un coup d’œil sur un téléphone.',
   `- text : une seule phrase, ${SHORT_MAX_TEXT} caractères au plus, espaces comprises.`,
+  `- spoken : la phrase DITE par la voix pendant ce fait, ${SHORT_MAX_SPOKEN} caractères au plus : le même fait que text, plus court, écrit pour l'oreille (pas de parenthèses ni d'abréviations, nombres EN CHIFFRES tels que dans l'ARTICLE).`,
   '- big : true seulement quand le title est un nombre ou une courte donnée chiffrée (« 9 à 14 cm », « 1915 ») ; 1 à 3 faits par vidéo, false pour les autres.',
   "- Uniquement des faits présents dans l'ARTICLE. Chaque nombre (dates et siècles compris) doit figurer tel quel dans l'ARTICLE : n'en calcule, n'en arrondis et n'en ajoute aucun.",
   RULE_POINT_DE_VUE,
@@ -167,10 +168,11 @@ export function buildShortTranslateMessages({ lang, short, articleText }) {
     "- Noms propres : l'orthographe de l'ARTICLE fourni, qui est déjà dans la langue cible ; ne la change pas.",
     "- Chaque nombre (dates et siècles compris) doit figurer tel quel dans l'ARTICLE fourni : n'en calcule, n'en arrondis et n'en ajoute aucun.",
     `- text : une seule phrase, ${SHORT_MAX_TEXT} caractères au plus, espaces comprises.`,
+    `- spoken : traduis-le en phrase parlée, ${SHORT_MAX_SPOKEN} caractères au plus, nombres en chiffres.`,
     `- ytTitle : ${room} caractères au plus (le mot-dièse ${HASHTAG[lang] ?? ''} est ajouté ensuite).`,
     "- N'ajoute aucun fait absent du Short français, ne retire rien, ne commente rien.",
     '- Aucun lien, aucune URL, aucun mot-dièse.',
-    `Réponds UNIQUEMENT par un objet JSON {"facts": [{"eyebrow": "…", "title": "…", "text": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…"}, sans aucun texte autour.`,
+    `Réponds UNIQUEMENT par un objet JSON {"facts": [{"eyebrow": "…", "title": "…", "text": "…", "spoken": "…", "big": false}, … ${SHORT_FACTS} faits], "outroTitle": "…", "ytTitle": "…", "ytLead": "…"}, sans aucun texte autour.`,
   ].join('\n')
   const { facts, outroTitle, ytTitle, ytLead } = short
   const user = `ARTICLE (${name}) :\n${articleText}\n\nSHORT À TRADUIRE :\n${JSON.stringify({ facts, outroTitle, ytTitle, ytLead }, null, 2)}`

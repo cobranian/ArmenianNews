@@ -8,11 +8,11 @@ import { translateShort } from '../scripts/lib/culture-short-translate.mjs'
 import { shortHash, validateShort } from '../scripts/lib/culture-short.mjs'
 
 const fr = {
-  facts: Array.from({ length: 7 }, (_, i) => ({ eyebrow: 'Arménie', title: `Fait ${"abcdefg"[i]}`, text: 'Un texte en 2005.', big: false })),
+  facts: Array.from({ length: 7 }, (_, i) => ({ eyebrow: 'Arménie', title: `Fait ${"abcdefg"[i]}`, text: 'Un texte en 2005.', spoken: 'Un texte dit en 2005.', big: false })),
   outroTitle: 'Le duduk', ytTitle: 'Le duduk', ytLead: 'Un hautbois.', music: 'otar',
 }
 const en = {
-  facts: Array.from({ length: 7 }, (_, i) => ({ eyebrow: 'Armenia', title: `Fact ${"abcdefg"[i]}`, text: 'A short text from 2005.', big: false })),
+  facts: Array.from({ length: 7 }, (_, i) => ({ eyebrow: 'Armenia', title: `Fact ${"abcdefg"[i]}`, text: 'A short text from 2005.', spoken: 'A text said in 2005.', big: false })),
   outroTitle: 'The duduk', ytTitle: 'The duduk', ytLead: 'An oboe from Armenia.',
 }
 const article = 'The duduk, listed by UNESCO in 2005.'
@@ -44,4 +44,14 @@ test('translateShort : le sticky est transmis au modèle injecté, et fellBack r
   const r = await translateShort({ lang: 'en', shortFr: fr, articleText: article, chat, sticky })
   assert.equal(seen.sticky, sticky)
   assert.equal(r.fellBack, true)
+})
+
+test('translateShort : traduction sans spoken refusée ; latin dans le spoken arménien refusé', async () => {
+  const sans = { ...en, facts: en.facts.map((f) => ({ ...f, spoken: undefined })) }
+  await assert.rejects(translateShort({ lang: 'en', shortFr: fr, articleText: article, chat: chatOf(sans) }), /spoken/)
+  const hy = {
+    facts: en.facts.map((f) => ({ ...f, eyebrow: 'Հայաստան', title: 'Դուդուկ', text: 'Դուդուկը 2005 թվականին։', spoken: 'Դուդուկը 2005 թվականին the oboe whistle։' })),
+    outroTitle: 'Դուդուկ', ytTitle: 'Դուդուկ', ytLead: 'Հոբոյ։',
+  }
+  await assert.rejects(translateShort({ lang: 'hy', shortFr: fr, articleText: article, chat: chatOf(hy) }), /alphabet/)
 })

@@ -51,10 +51,15 @@ Polices latines de la marque (Fraunces / Hanken / Space Mono couvrent ä ö ü �
    pour `fr`, `en.md` pour `en`). Pas de connaissance extérieure, pas d'arrondi
    qui change le sens, pas de superlatif que l'article n'emploie pas. Chiffres et
    dates recopiés tels quels. En cas de doute sur un fait : on ne le met pas.
-2. **7 faits exactement.** Le premier est le crochet : le fait le plus frappant
-   de l'article, compréhensible sans contexte, avec le nom du sujet en `title`.
-   Ensuite, un ordre qui raconte (souvent chronologique). Le dernier ferme
+2. **7 faits exactement.** Le premier est l'ACCROCHE : le fait le plus surprenant
+   de l'article (un chiffre, un paradoxe, une question à laquelle la vidéo répond),
+   compréhensible sans contexte, avec le nom du sujet en `eyebrow` ou en `title` ;
+   il donne envie de rester sans exagérer ni promettre plus que la vidéo ne dit.
+   Ensuite, un ordre qui raconte (souvent chronologique). Le dernier conclut
    l'histoire (héritage, reconnaissance, ce qui reste aujourd'hui).
+   **`spoken`** : la phrase DITE par la voix pendant ce fait, 90 caractères au
+   plus : le même fait que `text`, plus court, écrit pour l'oreille (pas de
+   parenthèses ni d'abréviations, nombres EN CHIFFRES tels que dans l'article).
 3. **Longueurs maximales** (la vidéo est lue sur un téléphone, en 6 secondes par fait) :
    - `eyebrow` ≤ 24 caractères : un repère court (« Où », « 1915 », « En chiffres »,
      « Erevan · 1937 »). Il est affiché en capitales.

@@ -66,7 +66,7 @@ export async function verifyClaims({ body, haystack, chat }) {
 // Le Short ne garde que ses champs : ce qu'un modèle ajoute n'entre pas dans
 // short.fr.json.
 const pickShort = (s) => ({
-  facts: s.facts.map(({ eyebrow, title, text, big }) => ({ eyebrow, title, text, big })),
+  facts: s.facts.map(({ eyebrow, title, text, spoken, big }) => ({ eyebrow, title, text, ...(spoken === undefined ? {} : { spoken }), big })),
   outroTitle: s.outroTitle,
   ytTitle: s.ytTitle,
   ytLead: s.ytLead,
@@ -91,7 +91,7 @@ export async function draftShort({ title, description, body, articleText, chat, 
     try {
       const res = await chat({ messages })
       const parsed = parseShortJson(res.text)
-      const problems = parsed ? validateShort(parsed, { lang: 'fr', articleText }) : ['JSON illisible']
+      const problems = parsed ? validateShort(parsed, { lang: 'fr', articleText, requireSpoken: true }) : ['JSON illisible']
       if (!problems.length) {
         if (res.fellBack) warnings.push(`Texte de la vidéo rédigé par le modèle de secours ${res.model} (Gemini indisponible).`)
         return { short: pickShort(parsed), warnings, error: null }
@@ -117,7 +117,7 @@ export async function draftShort({ title, description, body, articleText, chat, 
 // `action` : updated | kept | deleted | none (aucun Short avant la révision).
 export function reviseShort({ oldShort, returned, oldText, newText }) {
   if (!oldShort) return { short: null, action: 'none', reason: null }
-  const fresh = returned && typeof returned === 'object' ? validateShort(returned, { lang: 'fr', articleText: newText }) : ['absent de la réponse']
+  const fresh = returned && typeof returned === 'object' ? validateShort(returned, { lang: 'fr', articleText: newText, requireSpoken: true }) : ['absent de la réponse']
   if (!fresh.length) return { short: pickShort(returned), action: 'updated', reason: null }
   if (oldText === newText) return { short: oldShort, action: 'kept', reason: fresh.join(' ; ') }
   const stale = validateShort(oldShort, { lang: 'fr', articleText: newText })
