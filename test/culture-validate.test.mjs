@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { validateArticle, chosenImage, factsChecked, OPTIONAL, TRANSLATED, REQUIRED, pageSources, draftSources } from '../scripts/lib/culture-validate.mjs'
 import { serializeFrontMatter, bodyHash } from '../scripts/lib/culture-markdown.mjs'
-import { shortHash } from '../scripts/lib/culture-short.mjs'
+import { shortHash, SPOKEN_SINCE } from '../scripts/lib/culture-short.mjs'
 import { meta, texts, candidate, FR_BODY } from './helpers/culture-fixture.mjs'
 
 const ok = (over = {}) => ({ slug: 'komitas', meta: meta('komitas'), texts: texts(), images: { webp: true, jpg: true }, ...over })
@@ -227,4 +227,13 @@ test('vidéo déjà publiée : l’erreur du short devient une note, short non r
   assert.deepEqual(r.errors, [])
   assert.ok(r.notes.some((n) => n.startsWith('short.fr.json : music')))
   assert.deepEqual(r.shorts, {})
+})
+
+// spoken : exigé seulement pour un article daté de SPOKEN_SINCE ou après.
+test('short.fr.json sans spoken : erreur dès SPOKEN_SINCE, aucune avant', () => {
+  const fr = js(shortFr())
+  const recent = validateArticle(withShorts({ fr }, { texts: texts({ date: SPOKEN_SINCE }) }))
+  assert.ok(recent.errors.includes('short.fr.json : fait 1 : spoken manquant'), recent.errors.join(' | '))
+  const old = validateArticle(withShorts({ fr }, { texts: texts({ date: '2026-10-17' }) }))
+  assert.ok(!old.errors.some((e) => /spoken/.test(e)), old.errors.join(' | '))
 })

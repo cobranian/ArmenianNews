@@ -11,7 +11,7 @@
 import { ALL_LANGS, CULTURE_SLUG } from '../../sites.config.js'
 import { parseFrontMatter, bodyHash } from './culture-markdown.mjs'
 import { isFreeLicense } from './culture-license.mjs'
-import { validateShort, shortHash, parseShortJson, shortReference, shortReferenceOf } from './culture-short.mjs'
+import { validateShort, shortHash, parseShortJson, shortReference, shortReferenceOf, spokenRequired } from './culture-short.mjs'
 
 // TRANSLATED : toutes les langues que culture-translate produit depuis le
 // français. de et it y sont FACULTATIVES (spec 2026-10-23, « Culture de/it ») :
@@ -97,6 +97,9 @@ function checkShorts({ slug, texts, shorts, videos, langs, errors, notes }) {
   const out = {}
   const published = (l) => Boolean(videos?.[slug]?.[l])
   const parse = (raw) => (raw == null ? null : parseShortJson(raw))
+  // `spoken` est exigé selon la date de l'article FRANÇAIS, pour toutes les langues.
+  const frDate = langs.fr?.date ?? (() => { try { return parseFrontMatter(texts?.fr).data.date } catch { return undefined } })()
+  const requireSpoken = spokenRequired(frDate)
   const refOf = (l) => (langs[l] ? shortReference(langs[l]) : shortReferenceOf(texts?.[l]))
 
   const frRaw = shorts?.fr ?? null
@@ -104,7 +107,7 @@ function checkShorts({ slug, texts, shorts, videos, langs, errors, notes }) {
   let frRef = null
   if (frRaw == null) notes.push('short.fr.json absent : pas de vidéo')
   else {
-    const problems = frShort ? validateShort(frShort, { lang: 'fr', articleText: refOf('fr') }) : ['JSON illisible']
+    const problems = frShort ? validateShort(frShort, { lang: 'fr', articleText: refOf('fr'), requireSpoken }) : ['JSON illisible']
     const report = published('fr') ? notes : errors
     for (const p of problems) report.push(`short.fr.json : ${p}`)
     if (!problems.length) out.fr = frShort
@@ -124,7 +127,7 @@ function checkShorts({ slug, texts, shorts, videos, langs, errors, notes }) {
     let problems
     if (!t) problems = ['JSON illisible']
     else if (t.sourceHash !== shortHash(frShort)) problems = ['traduction périmée']
-    else problems = validateShort(t, { lang: l, articleText: refOf(l) })
+    else problems = validateShort(t, { lang: l, articleText: refOf(l), requireSpoken })
     for (const p of problems) report.push(`short.${l}.json : ${p}`)
     // La langue de l'article doit elle-même être publiable.
     if (!problems.length && langs[l] && frRef) out[l] = t
