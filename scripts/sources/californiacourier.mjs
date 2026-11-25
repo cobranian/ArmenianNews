@@ -9,15 +9,16 @@ import { clean, safeUrl } from '../lib/util.mjs'
 // copied to public/cc/ by scrape.mjs (scripts/lib/mirror-images.mjs) — never
 // hotlinked, they would 403 in every reader's browser. Its distinctive asset: Harut Sassounian's Column is translated into
 // separate, fresh, illustrated categories per language — so this is the only
-// source besides Armenpress to serve all four UI languages, and the only second
-// source the fr and ru editions ever get.
+// source besides Armenpress to serve fr, en and hy, and the only second source
+// the fr edition ever gets.
 //
 // Per-language mapping (each language shows ONE category):
 //   en → mainpost          the Courier's main English news feed (incl. his
 //                          English column, which has no clean fresh category of
 //                          its own — the English `sas-column` stopped in 2021)
 //   fr → french            Sassounian's Column, French
-//   ru → russian           Sassounian's Column, Russian
+//   (ru → russian, Sassounian's Column in Russian: retired 25 Nov 2026 — the
+//   category stopped on 21 Oct 2026 while fr/hy kept their weekly column)
 //   hy → eastern-armenian  Sassounian's Column, Eastern Armenian
 //
 // The label is hand-set (the WordPress category names are language names —
@@ -28,7 +29,6 @@ const BASE = 'https://www.thecaliforniacourier.com'
 const SECTIONS = {
   en: { slug: 'mainpost', label: 'Latest news' },
   fr: { slug: 'french', label: 'La chronique de Harut Sassounian' },
-  ru: { slug: 'russian', label: 'Колонка Арута Сасуняна' },
   hy: { slug: 'eastern-armenian', label: 'Հարություն Սասունյանի սյունակ' },
 }
 

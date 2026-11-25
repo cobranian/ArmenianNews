@@ -69,7 +69,7 @@ export const TAB_ORDER = {
     'oragark',
     'norsevan',
   ],
-  ru: ['armenpress', 'armradio', 'newsam', 'californiacourier', 'civilnet'],
+  ru: ['armenpress', 'armradio', 'newsam', 'civilnet'],
   // L'espagnol (armenianews.org/es/) : chaque tâche source y ajoute son id
   // (armenpress, soyarmenio, diarioarmenia, norsevan).
   es: [

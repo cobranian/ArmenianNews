@@ -247,18 +247,19 @@ async function main() {
   const armenianweekly = backfillSections(awSecs, prevNews?.armenianweekly, 'categoryKey')
 
   // The California Courier — the Glendale Armenian weekly. Sassounian's Column is
-  // translated into a fresh category per language, so this source serves all four
-  // UI languages (en = main news feed; fr/ru/hy = his column). Backfilled per
+  // translated into a fresh category per language, so this source serves fr, en
+  // and hy (en = main news feed; fr/hy = his column — the Russian
+  // translation stopped on 21 Oct 2026 and was retired on 25 Nov). Backfilled per
   // language, like armenpress.
-  console.log('\nThe California Courier — thecaliforniacourier.com (fr/en/hy/ru):')
-  let ccLangs = { fr: [], en: [], hy: [], ru: [] }
+  console.log('\nThe California Courier — thecaliforniacourier.com (fr/en/hy):')
+  let ccLangs = { fr: [], en: [], hy: [] }
   try {
     ccLangs = await scrapeCaliforniaCourier(10)
   } catch (err) {
     console.error('  californiacourier failed wholesale:', err.message)
   }
   const californiacourier = {}
-  for (const lang of ['fr', 'en', 'hy', 'ru']) {
+  for (const lang of ['fr', 'en', 'hy']) {
     californiacourier[lang] = backfillSections(
       ccLangs[lang],
       prevNews?.californiacourier?.[lang],
