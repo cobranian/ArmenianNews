@@ -161,7 +161,7 @@ composants importent au build :
   | `armenpress` | fr/en/hy/ru/es | Inertia, `props.data.data.hits` | `fetchTextNode` obligatoire (undici → 403) |
   | `civilnet` | fr/en/hy/ru | Inertia, `props.feed.data.hits` | idem ; id propre à chaque édition |
   | `newsam` | en/hy/ru | Inertia (+ med) + 2 verticales héritées | sport/style : garde de fraîcheur ; med passé sur Inertia (19 nov. 2026) |
-  | `californiacourier` | fr/en/hy/ru | WordPress REST | images recopiées dans `public/cc/` (Cloudflare) |
+  | `californiacourier` | fr/en/hy | WordPress REST | images recopiées dans `public/cc/` (Cloudflare) |
   | `armradio` | en/hy/ru | Worker + KV, chaîne de replis | la CI est défiée : cron du Worker |
   | `soyarmenio` | es | WordPress REST (`_fields`+media) | Cloudflare ; `_embed` pèse 2,4 Mo |
   | `diarioarmenia` | es + agenda | WordPress REST | placeholder anti-hotlink, images dans `public/da/` |
