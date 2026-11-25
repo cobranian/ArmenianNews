@@ -15,8 +15,8 @@ export const SHORT_MAX_TEXT = 130
 export const SHORT_MAX_SPOKEN = 90
 // Les articles datés de ce jour ou après portent un `spoken` par fait. Les
 // plus anciens n'en ont pas, et leur vidéo (déjà en ligne) reste muette.
-// À poser à la fusion : la date du PREMIER brouillon écrit par le code fusionné
-// (jour J si fusionné avant 03:00 UTC, J+1 sinon — plan, Task 7). Trop tard ne
+// Posée à la fusion (25 nov. 2026, 23:00 UTC) : la date du PREMIER brouillon
+// écrit par le code fusionné, celui du 26 nov. à 03:00 UTC. Trop tard ne
 // coûte rien ; trop tôt, un article rédigé par l'ancien code se publie sans
 // vidéo (video.yml échoue alors, au lieu de se taire).
 export const SPOKEN_SINCE = '2026-11-26'
