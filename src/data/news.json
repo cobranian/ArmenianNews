@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T03:23:35.923Z",
+  "generatedAt": "2026-11-26T04:23:32.035Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1150,6 +1150,13 @@
         "categoryKey": "society",
         "articles": [
           {
+            "title": "Եգիպտոսում վառելիք տեղափոխող բեռնատարի վթարի հետևանքով 31 մարդ է զոհվել",
+            "url": "https://hy.armradio.am/archives/772944",
+            "date": "2026-11-26T04:20:21.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_6258-300x169.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ՀՌՀ-ն՝ նոր կարգավիճակով, ԶԼՄ-ները՝ նոր պահանջների առաջ․ ի՞նչ է փոխում նոր Սահմանադրությունը",
             "url": "https://hy.armradio.am/archives/772883",
             "date": "2026-11-25T16:10:00.000Z",
@@ -1210,13 +1217,6 @@
             "url": "https://hy.armradio.am/archives/772802",
             "date": "2026-11-25T10:19:49.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/Eurovote-civic-initiative-768x432.jpg",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "Ջերմուկի խաչմերուկից մինչեւ Սիսիանի խաչմերուկ ճանապարհը փակ է կցորդով տրանսպորտային միջոցների համար",
-            "url": "https://hy.armradio.am/archives/772784",
-            "date": "2026-11-25T09:12:58.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/928926553_1812534300027443_264409889325956629_n-300x197.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Իսրայելցի դատավորները առաջարկել են վերանայել Նեթանյահուի դեմ կոռուպցիոն մեղադրանքները",
+            "url": "https://hy.armradio.am/archives/772940",
+            "date": "2026-11-26T04:09:12.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/IMG_6256-768x431.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "ԱՄՆ-ն մտադիր է մինչև 20% նոր մաքսատուրքեր սահմանել 14 տնտեսությունների, այդ թվում՝ ԵՄ-ի և Չինաստանի համար",
             "url": "https://hy.armradio.am/archives/772927",
             "date": "2026-11-25T18:48:00.000Z",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/772736",
             "date": "2026-11-25T04:00:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/1536x864_cmsv2_af6866d3-e523-5301-9cee-e60eca450954-10006552-768x432.webp",
-            "category": "Միջազգային"
-          },
-          {
-            "title": "Երեք հանդիպում սատանայի հետ․ հրապարակվել են Հռոմի պապ Ֆրանցիսկոսի անձնական օրագրերը",
-            "url": "https://hy.armradio.am/archives/772717",
-            "date": "2026-11-24T17:10:24.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/papa-768x442.jpg",
             "category": "Միջազգային"
           }
         ]
@@ -5163,6 +5163,12 @@
         "categoryKey": "armenia",
         "articles": [
           {
+            "title": "El ministro de Economía destaca el papel de Emiratos Árabes Unidos en el desarrollo de los vínculos económicos regionales",
+            "url": "https://armenpress.am/es/article/1266648",
+            "date": "2026-11-26T03:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/25/dEvMldtlLfOPEv7YWsu97poRpnfsQNOJV5Rqvjqw.webp"
+          },
+          {
             "title": "La fiscal general de Armenia y el embajador de la Unión Europea analizaron las perspectivas de ampliar la cooperación",
             "url": "https://armenpress.am/es/article/1266624",
             "date": "2026-11-25T13:12:00.000Z",
@@ -5215,18 +5221,18 @@
             "url": "https://armenpress.am/es/article/1266549",
             "date": "2026-11-25T03:44:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/24/c6V6qqz30DJu8RIaq5bP3m8DXpXFqCtrto5fKSSE.webp"
-          },
-          {
-            "title": "Luca Niculescu: “Rumania está dispuesta a apoyar a Armenia en el fortalecimiento de sus relaciones con la Unión Europea”",
-            "url": "https://armenpress.am/es/article/1266541",
-            "date": "2026-11-25T03:39:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/24/XQDMMx4IuSbVWM5Lrph4ZXuUyq1NyFazOHZjIfGr.webp"
           }
         ]
       },
       {
         "categoryKey": "economy",
         "articles": [
+          {
+            "title": "El ministro de Economía destaca el papel de Emiratos Árabes Unidos en el desarrollo de los vínculos económicos regionales",
+            "url": "https://armenpress.am/es/article/1266648",
+            "date": "2026-11-26T03:45:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/25/dEvMldtlLfOPEv7YWsu97poRpnfsQNOJV5Rqvjqw.webp"
+          },
           {
             "title": "Mher Grigoryan participó en la reunión del Consejo de la Unión Económica Euroasiática, en la que se analizaron más de 40 asuntos",
             "url": "https://armenpress.am/es/article/1266606",
@@ -5280,12 +5286,6 @@
             "url": "https://armenpress.am/es/article/1265341",
             "date": "2026-11-11T07:43:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/11/7Po3MSNiz0mX6OkSLDJw8ECW6s6ZJM3I40Xh6D3g.webp"
-          },
-          {
-            "title": "Armenia participa en la 9ª Exposición Internacional de Importaciones de China",
-            "url": "https://armenpress.am/es/article/1265061",
-            "date": "2026-11-07T15:45:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/07/cT2OKpr8B7jEjN6llU3ZHEA552pzfMcVyFNnzZe3.webp"
           }
         ]
       },
@@ -11127,6 +11127,42 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "«Հրապարակ»․ Չեն տրվել Փաշինյանի շանտաժին. Հույս ունեն, որ կարող են գաղտնի կոմպրոմիսի գնալ",
+            "url": "https://news.am/hy/news/1077256",
+            "date": "2026-11-26T04:32:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/IOssvqZEseh8TsZB.webp"
+          },
+          {
+            "title": "«Ժողովուրդ». Նավասարդ արք. Կճոյանին նպատակ կա քննիչ հանձնաժողով հրավիրել․ իշխանությունը եկեղեցու հարցով բաց նիստի կանի",
+            "url": "https://news.am/hy/news/1077253",
+            "date": "2026-11-26T04:26:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/82c73NqaKVYdDMq3.webp"
+          },
+          {
+            "title": "«Փաստ». Կալանավորում է բոլորին, ովքեր խոչընդոտում են Ալիևի ծրագրին",
+            "url": "https://news.am/hy/news/1077251",
+            "date": "2026-11-26T04:20:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/WlXYvwUAjVF3WBei.webp"
+          },
+          {
+            "title": "«Հրապարակ»․ Վերջնագրից առաջ՝ շրջագայություն",
+            "url": "https://news.am/hy/news/1077254",
+            "date": "2026-11-26T04:14:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/KvCTkhr5Wp6ZGIpD.webp"
+          },
+          {
+            "title": "«Փաստ». «Միջանցք», թե՞ «ճանապարհ». ինչո՞ւ է թուրք-ադրբեջանական տանդեմը համառորեն պնդում իր բառապաշարը",
+            "url": "https://news.am/hy/news/1077249",
+            "date": "2026-11-26T04:01:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/uX9LiCLTQp7CAebZ.webp"
+          },
+          {
+            "title": "«Փաստ». Հաջորդ կանգառը՝ խորհրդարանական ընտրություննե՞ր",
+            "url": "https://news.am/hy/news/1077247",
+            "date": "2026-11-26T03:40:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/J1PvEuTPKAItrNmo.webp"
+          },
+          {
             "title": "Ֆինլանդիան և Նորվեգիան գաղտնի փորձել են կանխել Ռուսաստանի հետ ռազմական բախումը Բալթիկ ծովում. WSJ",
             "url": "https://news.am/hy/news/1077230",
             "date": "2026-11-25T20:08:00.000Z",
@@ -11149,42 +11185,6 @@
             "url": "https://news.am/hy/news/1077241",
             "date": "2026-11-25T19:26:55.000Z",
             "image": "https://news.am/storage/media/26/11/25/C94CAJZpRFREYkE7.webp"
-          },
-          {
-            "title": "Գրիգորյանը քննադատել է Սահմանադրության նախագծի հակառակորդներին. «Ինչպե՞ս կարող է ընդդիմությունը վախենալ ժողովրդից»",
-            "url": "https://news.am/hy/news/1077236",
-            "date": "2026-11-25T19:05:25.000Z",
-            "image": "https://news.am/storage/media/26/11/13/nbipIACRZ93qyXds.webp"
-          },
-          {
-            "title": "ԱՄՆ-ը շահագրգռված է Հարավային Կովկասի ապաշրջափակմամբ, իսկ ՌԴ-ն հրաժարվել է ՀՀ-ի առաջարկած սկզբունքներից. Գրիգորյան",
-            "url": "https://news.am/hy/news/1077235",
-            "date": "2026-11-25T18:56:19.000Z",
-            "image": "https://news.am/storage/media/26/11/11/v15qFX40x87rGiX5.webp"
-          },
-          {
-            "title": "Հայտնի է, թե երբ Հայաստանը պետք է վերջնական պատասխան տա Եվրասիական միության մյուս երկրներին. «Օրվա ամփոփում»՝ ռուսերեն",
-            "url": "https://news.am/hy/news/1077232",
-            "date": "2026-11-25T18:32:33.000Z",
-            "image": "https://img.youtube.com/vi/o5T5NV9LaL0/maxresdefault.jpg"
-          },
-          {
-            "title": "Թրամփն ամերիկյան ֆոնդային շուկայի անկումը բացատրել է նոյեմբերի 3-ի ընտրությունների արդյունքներով",
-            "url": "https://news.am/hy/news/1077231",
-            "date": "2026-11-25T18:29:50.000Z",
-            "image": "https://news.am/storage/media/26/11/19/HuAg7hcczkInGXat.webp"
-          },
-          {
-            "title": "Սերբական Informer հեռուստաալիքի սեփականատիրոջը ձերբակալել են անկարգություններ հրահրելու կասկածանքով",
-            "url": "https://news.am/hy/news/1077203",
-            "date": "2026-11-25T18:26:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/G6lQaJ0a1frbrVQn.webp"
-          },
-          {
-            "title": "«Երբեք գործնական կապեր չեմ ունեցել իշխանության ներկայացուցիչների հետ»․ գործարար Գրիգոր Տեր-Ղազարյան",
-            "url": "https://news.am/hy/news/1077222",
-            "date": "2026-11-25T17:32:43.000Z",
-            "image": "https://news.am/storage/media/26/11/25/bvnsNWrYIzK7mXdL.webp"
           }
         ]
       },
@@ -11523,64 +11523,64 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
-            "title": "Սերբիայում ուսումնասիրում են հին աղբյուրներում հիշատակված հռոմեական կայսեր առեղծվածային պալատը",
-            "url": "https://med.news.am/hy/news/1077103",
-            "date": "2026-11-26T02:52:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/89yOZyrnt1Dsj1nb.webp"
+            "title": "Փլուզման վտանգով պայմանավորված՝ Կորեայի ձորի ճանապարհահատվածը ժամանակավորապես փակ է",
+            "url": "https://med.news.am/hy/news/1077260",
+            "date": "2026-11-26T04:35:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/zEw5l6YsCjjxEIzW.webp"
           },
           {
-            "title": "Ինչ ենք անտեսում բնական ռիսկերը գնահատելիս․ պատրաստ ենք արդյոք հաջորդ աղետին",
-            "url": "https://med.news.am/hy/news/1077096",
-            "date": "2026-11-26T01:46:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/dDgCGwugjukma2xA.webp"
+            "title": "«Հրապարակ»․ Չեն տրվել Փաշինյանի շանտաժին. Հույս ունեն, որ կարող են գաղտնի կոմպրոմիսի գնալ",
+            "url": "https://med.news.am/hy/news/1077256",
+            "date": "2026-11-26T04:32:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/IOssvqZEseh8TsZB.webp"
           },
           {
-            "title": "Ընկերություն և կայունություն․ գիտնականները պարզել են, թե որ դելֆինները կարող են ավելի երկար ապրել",
-            "url": "https://med.news.am/hy/news/1077093",
-            "date": "2026-11-26T00:39:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/h2PE5xJJ2zoiClyB.webp"
+            "title": "«Ժողովուրդ». Նավասարդ արք. Կճոյանին նպատակ կա քննիչ հանձնաժողով հրավիրել․ իշխանությունը եկեղեցու հարցով բաց նիստի կանի",
+            "url": "https://med.news.am/hy/news/1077253",
+            "date": "2026-11-26T04:26:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/82c73NqaKVYdDMq3.webp"
           },
           {
-            "title": "Անտարկտիդայում փնտրում են Երկրի կլիմայի պատմությունը պահպանած՝ միլիոնավոր տարիների վաղեմության սառույց",
-            "url": "https://med.news.am/hy/news/1077092",
-            "date": "2026-11-25T23:45:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/iAIQETnNsY2DuNdH.webp"
+            "title": "«Փաստ». Կալանավորում է բոլորին, ովքեր խոչընդոտում են Ալիևի ծրագրին",
+            "url": "https://med.news.am/hy/news/1077251",
+            "date": "2026-11-26T04:20:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/WlXYvwUAjVF3WBei.webp"
           },
           {
-            "title": "Ծաղիկների գաղտնի լեզուն Չելլինիի հայտնի քանդակում. ինչ էին թաքցնում Մեդիչիները",
-            "url": "https://med.news.am/hy/news/1077091",
-            "date": "2026-11-25T22:37:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/aB58O4f5K6Ier27b.webp"
+            "title": "«Հրապարակ»․ Վերջնագրից առաջ՝ շրջագայություն",
+            "url": "https://med.news.am/hy/news/1077254",
+            "date": "2026-11-26T04:14:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/KvCTkhr5Wp6ZGIpD.webp"
           },
           {
-            "title": "Հունաստանում Արտեմիսի պաշտամունքի հետ կապված 2900-ամյա լեռնային սրբավայր են հայտնաբերել",
-            "url": "https://med.news.am/hy/news/1077088",
-            "date": "2026-11-25T21:43:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/StpF5pHv0R1WhvMZ.webp"
+            "title": "«Ժողովուրդ». Եթովպիայում երկպարով քննարկվել է հիվանդությունների կանխարգելման թեման. ովքեր են մասնակցել ՀՀ-ից",
+            "url": "https://med.news.am/hy/news/1077250",
+            "date": "2026-11-26T04:08:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/QFrym6DUvlF0DtX0.webp"
           },
           {
-            "title": "Դրական եզրակացություն է տրվել հնագիտական պեղումների 14 հաշվետվության",
-            "url": "https://med.news.am/hy/news/1077246",
-            "date": "2026-11-25T21:20:12.000Z",
-            "image": "https://news.am/storage/media/26/11/26/ZUknP7KZZng12eNV.webp"
+            "title": "«Փաստ». «Միջանցք», թե՞ «ճանապարհ». ինչո՞ւ է թուրք-ադրբեջանական տանդեմը համառորեն պնդում իր բառապաշարը",
+            "url": "https://med.news.am/hy/news/1077249",
+            "date": "2026-11-26T04:01:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/uX9LiCLTQp7CAebZ.webp"
           },
           {
-            "title": "Աթենքում գրեթե 20 տարվա ընդմիջումից հետո բացվել է Ակրոպոլիսի հին թանգարանը",
-            "url": "https://med.news.am/hy/news/1077245",
-            "date": "2026-11-25T20:53:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/i4skyJuqMJHvfBef.webp"
+            "title": "Ճապոնական թյունինգ-արհեստանոցը Toyota Land Cruiser FJ-ը վերածել է արտաճանապարհային փոքրիկ հրեշի",
+            "url": "https://med.news.am/hy/news/1077105",
+            "date": "2026-11-26T04:00:00.000Z",
+            "image": "https://news.am/storage/media/26/11/25/XEQpewdZx1ZD3QV0.webp"
           },
           {
-            "title": "Գոհաբանության օրվա նախաշեմին ԱՄՆ-ում փոթորիկ է մոլեգնել․ միլիոնավոր ճանապարհորդներ կբախվեն խափանումների",
-            "url": "https://med.news.am/hy/news/1077242",
-            "date": "2026-11-25T20:38:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/8HHFxagcx6oOYT17.webp"
+            "title": "«Հրապարակ»․ ՊՆ-ն ինքնավնասման դեպքե՞ր է կոծկում",
+            "url": "https://med.news.am/hy/news/1077252",
+            "date": "2026-11-26T03:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/3zXKb5rJqZ4tYXUq.webp"
           },
           {
-            "title": "Արքայազն Ուիլյամի նստավայրից ճարմանդներ և ժամացույց են գողացել. ալբանացի երկու անօրինական ներգաղթյալ կալանավորվել է",
-            "url": "https://med.news.am/hy/news/1077240",
-            "date": "2026-11-25T20:23:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/2wnh7KkGqTeGHkJx.webp"
+            "title": "«Ժողովուրդ». Հայաստանը չունի Երդվյալ ատենակալների դահլիճ. ի՞նչ լրացուցիչ ծախսեր է պահանջում նախագիծը",
+            "url": "https://med.news.am/hy/news/1077248",
+            "date": "2026-11-26T03:47:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/53JiFtMYO494w6C4.webp"
           }
         ]
       },
@@ -11588,6 +11588,12 @@
         "categoryKey": "incidents",
         "label": "Պատահարներ",
         "articles": [
+          {
+            "title": "«Հրապարակ»․ ՊՆ-ն ինքնավնասման դեպքե՞ր է կոծկում",
+            "url": "https://news.am/hy/news/1077252",
+            "date": "2026-11-26T03:54:00.000Z",
+            "image": "https://news.am/storage/media/26/11/26/3zXKb5rJqZ4tYXUq.webp"
+          },
           {
             "title": "Եգիպտոսում ավտովթարի և դրան հաջորդած հրդեհի հետևանքով 30 մարդ է զոհվել, ևս 15-ը՝ տուժել",
             "url": "https://news.am/hy/news/1077244",
@@ -11641,12 +11647,6 @@
             "url": "https://news.am/hy/news/1077132",
             "date": "2026-11-25T11:44:20.000Z",
             "image": "https://i.ytimg.com/vi/R7ujX-Zn5e4/hqdefault.jpg"
-          },
-          {
-            "title": "Սյունիքում Volvo կցորիդչով բեռնատարով դուրս է եկել ճանապարհից և կողաշրջված հայտնվել ծառերի մեջ. Իրանցի վարորդը վիրավոր է",
-            "url": "https://news.am/hy/news/1077124",
-            "date": "2026-11-25T11:18:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/MZoNwnvRGT43Oyz4.webp"
           }
         ]
       },
@@ -12185,6 +12185,12 @@
         "label": "NEWS.am Medicine",
         "articles": [
           {
+            "title": "Японское ателье превратило Toyota Land Cruiser FJ в маленького монстра для бездорожья",
+            "url": "https://med.news.am/ru/news/1077105",
+            "date": "2026-11-26T04:00:00.000Z",
+            "image": "https://news.am/storage/media/26/11/25/XEQpewdZx1ZD3QV0.webp"
+          },
+          {
             "title": "В Сербии исследуют загадочный дворец римского императора, упомянутый в древних источниках",
             "url": "https://med.news.am/ru/news/1077103",
             "date": "2026-11-26T02:52:00.000Z",
@@ -12237,12 +12243,6 @@
             "url": "https://med.news.am/ru/news/1077240",
             "date": "2026-11-25T20:23:00.000Z",
             "image": "https://news.am/storage/media/26/11/25/2wnh7KkGqTeGHkJx.webp"
-          },
-          {
-            "title": "WSJ: Финляндия и Норвегия тайно пытались предотвратить военное столкновение с Россией в Балтийском море",
-            "url": "https://med.news.am/ru/news/1077230",
-            "date": "2026-11-25T20:08:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/UiHx37SWacTuULc3.webp"
           }
         ]
       },
