@@ -1,0 +1,58 @@
+{
+  "facts": [
+    {
+      "eyebrow": "William Saroyan",
+      "title": "Pulitzer Rejected",
+      "text": "In 1940, he rejected the Pulitzer Prize for The Time of Your Life, stating commerce had no business judging art.",
+      "spoken": "In 1940, he refused the Pulitzer Prize, saying commerce should not judge art.",
+      "big": false
+    },
+    {
+      "eyebrow": "California",
+      "title": "1922",
+      "text": "His calling began when his mother gave him manuscripts in Armenian written by his late father.",
+      "spoken": "In 1922, finding his father's Armenian writings sparked his calling.",
+      "big": true
+    },
+    {
+      "eyebrow": "Broadway",
+      "title": "The Time of Your Life",
+      "text": "He wrote this masterpiece in just six days before it triumphed on New York stages.",
+      "spoken": "He wrote his major play in just six days before triumphing on Broadway.",
+      "big": false
+    },
+    {
+      "eyebrow": "Hollywood",
+      "title": "The Oscar",
+      "text": "His screenplay for The Human Comedy earned him the Academy Award for Best Story in 1943.",
+      "spoken": "His screenplay for The Human Comedy won the Academy Award for Best Story.",
+      "big": false
+    },
+    {
+      "eyebrow": "Music",
+      "title": "Come On-a My House",
+      "text": "With his cousin Ross Bagdasarian, he turned an Armenian folk song into a hit for Rosemary Clooney.",
+      "spoken": "In 1951, his take on an Armenian song became a hit for Rosemary Clooney.",
+      "big": false
+    },
+    {
+      "eyebrow": "Journeys",
+      "title": "Ancestral Land",
+      "text": "He visited Soviet Armenia four times starting in 1935 and traveled to Bitlis in 1964.",
+      "spoken": "He visited Soviet Armenia four times and traveled to Bitlis in 1964.",
+      "big": false
+    },
+    {
+      "eyebrow": "Legacy",
+      "title": "1981",
+      "text": "Upon his death in 1981, his ashes were divided between Ararat Cemetery in Fresno and Yerevan's Komitas Pantheon.",
+      "spoken": "Upon his death in 1981, his ashes were shared between California and Yerevan.",
+      "big": true
+    }
+  ],
+  "outroTitle": "William Saroyan",
+  "ytTitle": "William Saroyan, the Armenian Writer from Fresno Who Rejected the Pulitzer Prize",
+  "ytLead": "Born in California to a family from Bitlis, William Saroyan conquered Broadway and Hollywood with his vibrant humanism. From Fresno to the Komitas Pantheon in Yerevan, his work remains a monument of Armenian culture.",
+  "sourceHash": "8dd3554d4376491a999bb6c1d8034bf74514201d0a50e88b0bf28207899f5c8c",
+  "model": "gemini-flash-latest"
+}

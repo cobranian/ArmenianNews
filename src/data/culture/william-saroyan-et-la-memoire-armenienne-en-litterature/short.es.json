@@ -1,0 +1,58 @@
+{
+  "facts": [
+    {
+      "eyebrow": "William Saroyan",
+      "title": "El Pulitzer rechazado",
+      "text": "En 1940 rechazó el Premio Pulitzer por The Time of Your Life, afirmando que el comercio no debe juzgar las artes.",
+      "spoken": "En 1940 rechazó el Pulitzer, afirmando que el comercio no debe juzgar el arte.",
+      "big": false
+    },
+    {
+      "eyebrow": "California",
+      "title": "1922",
+      "text": "Su vocación nació cuando su madre le entregó manuscritos en armenio escritos por su difunto padre.",
+      "spoken": "En 1922, hallar los escritos armenios de su padre encendió su vocación.",
+      "big": true
+    },
+    {
+      "eyebrow": "Broadway",
+      "title": "The Time of Your Life",
+      "text": "Escribió en apenas seis días esta obra maestra que triunfó rápidamente en los escenarios neoyorquinos.",
+      "spoken": "Escribió su gran obra en apenas seis días antes de triunfar en Broadway.",
+      "big": false
+    },
+    {
+      "eyebrow": "Hollywood",
+      "title": "El Óscar",
+      "text": "Su guion The Human Comedy le valió en 1943 el Óscar a la mejor historia original.",
+      "spoken": "Su guion The Human Comedy le valió el Óscar a la mejor historia original.",
+      "big": false
+    },
+    {
+      "eyebrow": "Música",
+      "title": "Come On-a My House",
+      "text": "Junto a su primo Ross Bagdasarian, transformó un canto tradicional armenio en un éxito para Rosemary Clooney.",
+      "spoken": "En 1951, su adaptación de un canto armenio triunfó con Rosemary Clooney.",
+      "big": false
+    },
+    {
+      "eyebrow": "Viajes",
+      "title": "Tierra ancestral",
+      "text": "Viajó en cuatro ocasiones a la Armenia soviética desde 1935 y visitó Bitlis en 1964.",
+      "spoken": "Viajó en cuatro ocasiones a la Armenia soviética y visitó Bitlis en 1964.",
+      "big": false
+    },
+    {
+      "eyebrow": "Posteridad",
+      "title": "1981",
+      "text": "Al morir en 1981, sus cenizas se dividieron entre el cementerio Ararat de Fresno y el Panteón de Komitas de Ereván.",
+      "spoken": "A su muerte en 1981, sus cenizas se dividieron entre California y Ereván.",
+      "big": true
+    }
+  ],
+  "outroTitle": "William Saroyan",
+  "ytTitle": "William Saroyan, el autor armenio de Fresno que rechazó el Pulitzer",
+  "ytLead": "Nacido en California en una familia de Bitlis, William Saroyan conquistó Broadway y Hollywood con un humanismo vibrante. De Fresno al Panteón de Komitas de Ereván, su obra perdura como un monumento de la cultura armenia.",
+  "sourceHash": "8dd3554d4376491a999bb6c1d8034bf74514201d0a50e88b0bf28207899f5c8c",
+  "model": "gemini-flash-latest"
+}
