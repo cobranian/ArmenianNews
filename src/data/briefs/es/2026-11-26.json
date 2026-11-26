@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-26",
+  "lang": "es",
+  "generatedAt": "2026-11-26T03:02:38.313Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca la extensión de la protección a desplazados de Nagorno-Karabaj, el avance del proyecto ferroviario TRIPP con participación estadounidense, las advertencias del Congreso de EE. UU. sobre amenazas regionales y el crecimiento económico armenio impulsado por construcción y servicios.",
+  "topics": [
+    {
+      "title": "Armenia prorroga la protección temporal para desplazados de Nagorno-Karabaj",
+      "text": "El gobierno armenio extendió hasta finales de 2027 los certificados de protección temporal para las personas desplazadas de Nagorno-Karabaj. La medida busca garantizar la continuidad de la asistencia a esta población.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/certificados-personas-desplazadas-nagorno-karabaj-2027/",
+          "title": "Armenia prorroga hasta finales de 2027 los certificados de protección temporal para las personas desplazadas de Nagorno-Karabaj"
+        }
+      ]
+    },
+    {
+      "title": "Estados Unidos tendrá participación mayoritaria en el proyecto ferroviario TRIPP",
+      "text": "Nikol Pashinyan y Donald Trump anunciaron el inicio del proyecto TRIPP en Armenia, mediante el cual Estados Unidos tendrá el 74% de la empresa que administrará la ruta. Un asesor estadounidense advirtió que el control ruso de los ferrocarriles armenios podría afectar la iniciativa.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/control-ruso-ferrocarriles-armenios-afectara-proyecto-tripp/",
+          "title": "El control ruso de los ferrocarriles armenios «afectará al proyecto TRIPP», afirma asesor estadounidense"
+        },
+        {
+          "source": "diarioarmenia",
+          "url": "https://www.diarioarmenia.org.ar/nikol-pashinyan-y-donald-trump-anunciaron-el-inicio-del-proyecto-tripp-en-armenia-estados-unidos-tendra-el-74-de-la-empresa-que-administrara-la-ruta/",
+          "title": "Nikol Pashinyan y Donald Trump anunciaron el inicio del proyecto TRIPP en Armenia: Estados Unidos tendrá el 74% de la empresa que administrará la ruta"
+        }
+      ]
+    },
+    {
+      "title": "Congreso de EE. UU. alerta sobre amenaza existencial de Turquía y Azerbaiyán",
+      "text": "Audiencias en el Congreso de Estados Unidos advirtieron que Turquía y Azerbaiyán representan una amenaza existencial para Armenia. La advertencia se produce en un contexto de tensiones regionales persistentes.",
+      "rubric": "diaspora",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/congreso-eeuu-turquia-azerbaiyan-amenaza-armenia/",
+          "title": "Audiencias en el Congreso de Estados Unidos advierten que Turquía y Azerbaiyán representan una amenaza existencial para Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Crecimiento económico del 6,4% en Armenia entre enero y octubre",
+      "text": "El índice de actividad económica de Armenia creció un 6,4% en los primeros diez meses del año, impulsado principalmente por los sectores de la construcción y los servicios. El dato refleja una expansión sostenida de la economía nacional.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/indice-actividad-economica-armenia-aumento-2026/",
+          "title": "El índice de actividad económica de Armenia creció 6,4% entre enero y octubre impulsado por la construcción y los servicios"
+        }
+      ]
+    },
+    {
+      "title": "Nuevo centro de datos Firebird en Hrazdan será quince veces mayor que el primero",
+      "text": "El segundo complejo de centros de datos de Firebird en Hrazdan tendrá una capacidad quince veces superior al primero y podría aportar hasta un 10% del PIB de Armenia. El proyecto refuerza la apuesta del país por la infraestructura tecnológica.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/complejo-firebird-armenia-hrazdan-pib/",
+          "title": "El segundo complejo de centros de datos de Firebird en Hrazdan será quince veces mayor que el primero y aportará hasta 10% del PIB de Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Lanzan plataforma armenia.dealroom.app para el ecosistema de startups",
+      "text": "Se puso en marcha armenia.dealroom.app, una plataforma abierta que centraliza en un solo espacio al ecosistema de startups de Armenia. La iniciativa busca facilitar la visibilidad y el acceso a oportunidades de inversión.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/lanzan-armenia-dealroom-app-plataforma-startups-armenia/",
+          "title": "Lanzan armenia.dealroom.app, la plataforma abierta que reúne en un solo espacio al ecosistema de startups de Armenia"
+        }
+      ]
+    },
+    {
+      "title": "Armenia será sede de los Campeonatos Europeos Femeninos de Baloncesto 2027 y 2028",
+      "text": "FIBA Europa designó a Armenia como sede de los Campeonatos Europeos Femeninos de Baloncesto para 2027 y 2028. La decisión marca un hito para el deporte armenio en el ámbito internacional.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/fiba-europa-armenia-campeonatos-baloncesto-femenino/",
+          "title": "FIBA Europa designa a Armenia como sede de los Campeonatos Europeos Femeninos de Baloncesto de 2027 y 2028"
+        }
+      ]
+    }
+  ]
+}

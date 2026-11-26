@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-26",
+  "lang": "it",
+  "generatedAt": "2026-11-26T03:02:38.313Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna odierna evidenzia sviluppi diplomatici, economici e culturali che coinvolgono l'Armenia e la sua diaspora, con particolare attenzione ai rapporti regionali e alle questioni legate all'Artsakh.",
+  "topics": [
+    {
+      "title": "Armenia ed Emirati Arabi Uniti verso un memorandum di cooperazione",
+      "text": "I due paesi prevedono di firmare all'inizio del 2027 un memorandum per lo scambio di esperienze tra i rispettivi governi. L'iniziativa rientra nel rafforzamento dei legami bilaterali.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266651",
+          "title": "L’Arménie et les Émirats arabes unis prévoient de signer, début 2027, un mémorandum sur l’échange d’expériences entre leurs gouvernements"
+        }
+      ]
+    },
+    {
+      "title": "Vertice della Commissione economica eurasiatica con partecipazione armena",
+      "text": "Mher Grigoryan ha preso parte alla sessione del Consiglio dove sono state esaminate oltre quaranta questioni, tra cui la regolamentazione doganale e le relazioni esterne dell'unione. L'incontro conferma l'impegno armeno nel quadro dell'UEE.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/mher-grigoryan-a-participe-a-la-session-du-conseil-de-la-commission-economique-eurasienne-ou-furent-discutees-la-reglementation-douaniere-et-relations-exterieures/",
+          "title": "Mhér Grigoryan a participé à la session du Conseil de la Commission économique eurasienne où furent discutées la réglementation douanière et relations extérieures"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266606",
+          "title": "Mher Grigoryan a participé à la réunion du Conseil de la Commission économique eurasienne de l’UEE, au cours de laquelle plus de 40 questions ont été examinées"
+        }
+      ]
+    },
+    {
+      "title": "Procuratrice generale armena incontra diplomatici iraniano ed europeo",
+      "text": "La procuratrice ha ricevuto l'ambasciatore iraniano e ha discusso con il rappresentante dell'Unione europea le prospettive di ampliare la cooperazione. I colloqui toccano temi giudiziari e di collaborazione internazionale.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266628",
+          "title": "La procureure générale de l’Arménie a reçu l’ambassadeur d’Iran"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266624",
+          "title": "La procureure générale de l’Arménie et l’ambassadeur de l’Union européenne ont discuté des perspectives d’élargissement de la coopération"
+        }
+      ]
+    },
+    {
+      "title": "Lituania auspica la firma dell'accordo di pace tra Armenia e Azerbaigian",
+      "text": "Vilnius esprime speranza che il trattato di pace venga concluso, segnalando l'interesse europeo per la stabilità nel Caucaso meridionale. La posizione lituana si allinea agli appelli internazionali per una soluzione negoziata.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266611",
+          "title": "La Lituanie espère que l’accord de paix entre l’Arménie et l’Azerbaïdjan sera signé"
+        }
+      ]
+    },
+    {
+      "title": "Rapporto di ONG denuncia cancellazione culturale azerbaigiana in Artsakh",
+      "text": "Un rapporto congiunto accusa Baku di un sistematico effacement culturale e di impedire il ritorno degli armeni nella regione. Le organizzazioni chiedono garanzie per la tutela del patrimonio e i diritti dei sfollati.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/un-rapport-conjoint-dong-accuse-lazerbaidjan-deffacement-culturel-systematique-et-dempecher-le-retour-des-armeniens-en-artsakh/",
+          "title": "Un rapport conjoint d’ONG accuse l’Azerbaïdjan d’effacement culturel systématique et d’empêcher le retour des Arméniens en Artsakh"
+        }
+      ]
+    },
+    {
+      "title": "Prolungata la validità dei documenti degli sfollati dell'Artsakh",
+      "text": "I documenti delle persone desplazate dall'Artsakh rimarranno validi fino alla fine del 2027. La misura offre una certezza amministrativa mentre proseguono i negoziati sul futuro della regione.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-validite-des-documents-des-personnes-deplacees-dartsakh-prolongee-jusqua-fin-2027",
+          "title": "La validité des documents des personnes déplacées d’Artsakh prolongée jusqu’à fin 2027"
+        }
+      ]
+    },
+    {
+      "title": "Indice dell'attività economica armena in crescita del 3,5% a ottobre",
+      "text": "L'indicatore mostra un'espansione su base annua, segnalando una dinamica positiva dell'economia nazionale. Il dato riflette la tenuta dei settori produttivi nonostante le incertezze regionali.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lindice-dactivite-economique-de-larmenie-progresse-de-35-en-octobre/",
+          "title": "L’indice d’activité économique de l’Arménie progresse de 3,5 % en octobre"
+        }
+      ]
+    }
+  ]
+}
