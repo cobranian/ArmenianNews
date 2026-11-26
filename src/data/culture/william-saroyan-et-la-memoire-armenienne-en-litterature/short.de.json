@@ -1,0 +1,58 @@
+{
+  "facts": [
+    {
+      "eyebrow": "William Saroyan",
+      "title": "Der abgelehnte Pulitzer",
+      "text": "1940 lehnt er den Pulitzer-Preis für The Time of Your Life ab, da der Handel die Künste nicht zu beurteilen habe.",
+      "spoken": "1940 lehnt er den Pulitzer-Preis ab: Handel habe Künste nicht zu beurteilen.",
+      "big": false
+    },
+    {
+      "eyebrow": "Kalifornien",
+      "title": "1922",
+      "text": "Seine Berufung erwacht, als seine Mutter ihm Manuskripte auf Armenisch seines verstorbenen Vaters übergibt.",
+      "spoken": "1922 wecken armenische Schriften seines Vaters seine literarische Berufung.",
+      "big": true
+    },
+    {
+      "eyebrow": "Broadway",
+      "title": "The Time of Your Life",
+      "text": "Er verfasst dieses Meisterwerk in nur sechs Tagen, bevor es auf den New Yorker Bühnen triumphiert.",
+      "spoken": "In nur sechs Tagen verfasst er sein Hauptwerk vor dem Broadway-Triumph.",
+      "big": false
+    },
+    {
+      "eyebrow": "Hollywood",
+      "title": "Der Oscar",
+      "text": "Sein Drehbuch The Human Comedy bringt ihm 1943 den Oscar für die beste Originalgeschichte ein.",
+      "spoken": "Sein Drehbuch The Human Comedy bringt ihm den Oscar für die beste Story ein.",
+      "big": false
+    },
+    {
+      "eyebrow": "Musik",
+      "title": "Come On-a My House",
+      "text": "Mit seinem Cousin Ross Bagdasarian macht er ein armenisches Lied zum Hit für Rosemary Clooney.",
+      "spoken": "1951 wird sein armenisch inspiriertes Lied zum Hit für Rosemary Clooney.",
+      "big": false
+    },
+    {
+      "eyebrow": "Reisen",
+      "title": "Land der Vorfahren",
+      "text": "Er reist ab 1935 viermal in die Sowjetrepublik Armenien und pilgert 1964 nach Bitlis.",
+      "spoken": "Ab 1935 reist er viermal nach Armenien und besucht 1964 Bitlis.",
+      "big": false
+    },
+    {
+      "eyebrow": "Nachwelt",
+      "title": "1981",
+      "text": "Nach seinem Tod 1981 ruht seine Asche auf dem Ararat-Friedhof in Fresno und im Komitas-Pantheon in Jerewan.",
+      "spoken": "1981 wird seine Asche zwischen Kalifornien und Jerewan aufgeteilt.",
+      "big": true
+    }
+  ],
+  "outroTitle": "William Saroyan",
+  "ytTitle": "William Saroyan: Der armenische Autor, der den Pulitzer ablehnte",
+  "ytLead": "Geboren in Kalifornien als Sohn von Einwanderern aus Bitlis, eroberte William Saroyan Broadway und Hollywood mit herzlicher Menschlichkeit. Von Fresno bis Jerewan bleibt sein Werk ein Monument armenischer Kultur.",
+  "sourceHash": "8dd3554d4376491a999bb6c1d8034bf74514201d0a50e88b0bf28207899f5c8c",
+  "model": "gemini-flash-latest"
+}

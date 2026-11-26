@@ -235,11 +235,11 @@ test('buildShortMessages : 7 faits, 130 caractères, nombres de l’article, pis
   assert.match(user.content, /Le duduk/)
 })
 
-test('Short : accroche, spoken (90 caractères, nombres en chiffres), exemple valide', () => {
+test('Short : accroche, spoken (90 caractères, nombres écrits comme dans l’article), exemple valide', () => {
   const [sys] = buildShortMessages({ title: 'Le duduk', description: 'Un hautbois.', body: 'Corps.' })
   assert.match(sys.content, /spoken/)
   assert.match(sys.content, new RegExp(`${SHORT_MAX_SPOKEN} caractères`))
-  assert.match(sys.content, /en chiffres/i)
+  assert.match(sys.content, /spoken[^\n]*COMME dans l'ARTICLE[^\n]*en toutes lettres/)
   assert.match(sys.content, /accroche/i)
   assert.match(sys.content, /sans exagérer/)
   assert.match(sys.content, /"spoken": "…"/)
@@ -256,6 +256,12 @@ test('Short : traduction et révision demandent spoken', () => {
   const [sys] = buildShortTranslateMessages({ lang: 'en', short, articleText: 'A 2005.' })
   assert.match(sys.content, /"spoken": "…"/)
   assert.match(sys.content, /spoken[^\n]*90 caractères/)
+  // William Saroyan (26 nov. 2026) : « nombres en chiffres » tout court
+  // faisait écrire « 6 days » d'un article qui dit « six days » ; la garde
+  // des nombres (validateShort) écartait alors les six traductions, et la
+  // vidéo ne partait qu'en français.
+  assert.match(sys.content, /spoken[^\n]*COMME dans l'ARTICLE[^\n]*en toutes lettres/)
+  assert.doesNotMatch(sys.content, /nombres en chiffres\./)
   const [rev] = buildReviseMessages({ title: 'T', description: 'D', body: 'B', instruction: 'I', sources, short })
   assert.match(rev.content, /spoken/)
 })
