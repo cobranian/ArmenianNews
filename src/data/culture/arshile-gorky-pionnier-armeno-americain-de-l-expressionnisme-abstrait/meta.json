@@ -113,5 +113,73 @@
     "location": "Argentine"
   },
   "overlap": 0.009,
-  "model": "gemini-flash-latest"
+  "model": "gemini-flash-latest",
+  "shortImages": [
+    {
+      "file": "File:Arshile Gorky 2020 stampsheet of Armenia.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/2/21/Arshile_Gorky_2020_stampsheet_of_Armenia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1184,
+      "height": 1082,
+      "mime": "image/jpeg",
+      "author": "Vahagn Mkrtchyan (HayPost)",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Arshile_Gorky_2020_stampsheet_of_Armenia.jpg"
+    },
+    {
+      "file": "File:Archives of American Art - Arshile Gorky - 3043.jpg",
+      "thumbUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Archives_of_American_Art_-_Arshile_Gorky_-_3043.jpg/1920px-Archives_of_American_Art_-_Arshile_Gorky_-_3043.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3773,
+      "height": 2964,
+      "mime": "image/jpeg",
+      "author": "Unknown photographerUnknown photographer",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Archives_of_American_Art_-_Arshile_Gorky_-_3043.jpg"
+    },
+    {
+      "file": "File:Arshile Gorky, The Artist and His Mother.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Arshile_Gorky%2C_The_Artist_and_His_Mother.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1024,
+      "height": 1227,
+      "mime": "image/jpeg",
+      "author": "Arshile Gorky",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Arshile_Gorky,_The_Artist_and_His_Mother.jpg"
+    },
+    {
+      "file": "File:Composition. Horse and Figures.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Composition._Horse_and_Figures.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1280,
+      "height": 991,
+      "mime": "image/jpeg",
+      "author": "Arshile Gorky",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Composition._Horse_and_Figures.jpg"
+    },
+    {
+      "file": "File:Garden in Sochi3.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Garden_in_Sochi3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1280,
+      "height": 904,
+      "mime": "image/jpeg",
+      "author": "Arshile Gorky",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Garden_in_Sochi3.jpg"
+    },
+    {
+      "file": "File:Love of the New Gun.jpg",
+      "thumbUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Love_of_the_New_Gun.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1280,
+      "height": 1010,
+      "mime": "image/jpeg",
+      "author": "Arshile Gorky",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "commonsUrl": "https://commons.wikimedia.org/wiki/File:Love_of_the_New_Gun.jpg"
+    }
+  ]
 }
