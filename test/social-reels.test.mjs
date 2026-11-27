@@ -178,3 +178,24 @@ test('(l) un reel d’article neuf passe avant le catalogue', () => {
   const r2 = plan({ items: old, channels: [fb], ledger: bare, kinds: ['reel'], now })
   assert.deepEqual(r2.posts.map((p) => p.item.id), ['reel:a'])
 })
+
+// Une image par fait (revue du 27 nov.) : la légende d'un Reel crédite toutes
+// les photos de la vidéo, pas seulement celle de l'article — les mêmes que
+// l'écran (creditedShortImages : entrées à jour, sans doublon).
+test('(r) Reel à plusieurs images : chaque photo créditée dans la légende, une fois', () => {
+  const extra = (f, author, license) => ({ file: `File:${f}.jpg`, commonsUrl: `https://commons.wikimedia.org/wiki/File:${f}.jpg`, author, license })
+  const a = {
+    ...article('gorky'),
+    meta: { image: { commonsUrl: 'https://commons.wikimedia.org/wiki/File:P.jpg' }, shortImages: [extra('B', 'Auteur B', 'CC BY 2.0'), extra('B', 'Auteur B', 'CC BY 2.0'), { ...extra('C', 'Auteur C', 'Public domain'), file: 'File:Autre.jpg' }] },
+  }
+  const [r] = reelItems([a], { gorky: { fr: { asset: 'fr-gorky.mp4', music: '♪ x' } } })
+  for (const p of ['facebook', 'instagram']) {
+    const text = Object.values(compose(p, r)).join('\n')
+    assert.match(text, /Image : A, CC BY-SA 4\.0/, p)
+    assert.equal(text.split('Auteur B, CC BY 2.0').length - 1, 1, p)
+    assert.doesNotMatch(text, /Auteur C/, p)
+  }
+  // Sans images de vidéo : la légende d'avant, inchangée.
+  const [plain] = reelItems([article('duduk')], { duduk: { fr: { asset: 'fr-duduk.mp4', music: '♪ x' } } })
+  assert.doesNotMatch(compose('facebook', plain).description, /Auteur/)
+})

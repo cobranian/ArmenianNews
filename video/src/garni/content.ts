@@ -28,6 +28,10 @@ export type Copy = {
   // Facultatifs : Garni garde ses valeurs d'origine (garni.jpg, planche 4:3).
   photo?: string;
   plate?: number;
+  // Shorts Culture : le cadre épouse l'image, centré (shorts/slides.mjs),
+  // et le texte commence à textTop. Absents (Garni) : la planche d'origine.
+  box?: { top: number; left: number; width: number; height: number };
+  textTop?: number;
 };
 
 const CREDIT_FR = "Photo : Katsiaryna Naliuka · CC BY-SA 4.0 · Wikimedia Commons";

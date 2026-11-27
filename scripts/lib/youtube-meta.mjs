@@ -79,6 +79,14 @@ export function shareAlikeLicense(photoLicense, musicLicense) {
   return isBySa(musicLicense) ? musicLicense : null
 }
 
+// La BY-SA de version la plus haute : une œuvre qui combine du BY-SA 3.0 et
+// du 4.0 peut être diffusée en 4.0 (clause « version ultérieure »), jamais
+// l'inverse.
+const bySaVersion = (l) => Number(/BY-SA[- ](\d+(?:\.\d+)?)/i.exec(l ?? '')?.[1] ?? 0)
+export function highestBySa(licenses) {
+  return licenses.filter(isBySa).sort((a, b) => bySaVersion(b) - bySaVersion(a))[0] ?? null
+}
+
 // `same` : la licence imposée (shareAlikeLicense). Sous le crédit de la photo
 // quand c'est elle qui l'impose : le texte des Shorts déjà envoyés ne change pas.
 function photoLines(lang, credit, same) {
@@ -96,20 +104,35 @@ export function youtubeMeta({ slug, lang, short, credit, music }) {
   if (title.length > YT_TITLE_MAX) throw new Error(`${slug}/${lang} : titre de ${title.length} caractères (YouTube : ${YT_TITLE_MAX} max)`)
   const url = `${cultureUrl(lang, slug)}?utm_source=youtube&utm_medium=video`
   const track = musicLine(music)
+  // `credit` : une photo, ou toutes celles du Short (une par fait),
+  // dédoublonnées par page Commons.
+  const credits = [...new Map((Array.isArray(credit) ? credit : [credit]).map((c) => [c.commonsUrl, c])).values()]
   // Une piste CC BY-SA (mazia, otar) oblige elle aussi la vidéo à la même
-  // licence, quelle que soit la photo : la ligne suit alors son crédit.
-  const same = shareAlikeLicense(credit.license, TRACKS[music].license)
+  // licence, quelle que soit la photo : la ligne suit alors son crédit. Une
+  // seule photo garde la règle d'origine (texte des Shorts déjà publiés).
+  const same =
+    credits.length === 1
+      ? shareAlikeLicense(credits[0].license, TRACKS[music].license)
+      : highestBySa([...credits.map((c) => c.license), TRACKS[music].license])
+  // La ligne de même licence, une seule fois : sous la première photo qui
+  // l'impose, sinon après la musique.
+  let placed = false
+  const photos = credits.flatMap((c, i) => {
+    const here = !placed && same != null && same === c.license
+    if (here) placed = true
+    return [...(i ? [''] : []), ...photoLines(lang, c, here ? same : null)]
+  })
   const description = [
     short.ytLead,
     '',
     `${FULL[lang]} ${url}`,
     '',
-    ...photoLines(lang, credit, same),
+    ...photos,
     '',
     TAGS[lang],
     '',
     track,
-    ...(same && same !== credit.license ? [SAME[lang](same)] : []),
+    ...(same && !placed ? [SAME[lang](same)] : []),
   ].join('\n')
   return { title, description }
 }

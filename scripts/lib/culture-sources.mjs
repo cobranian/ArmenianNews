@@ -14,13 +14,13 @@ import { overlapRatio } from './culture-overlap.mjs'
 export const WIKI_UA = 'ArmenieInfo/1.0 (https://armenieinfo.ch/a-propos/; contact@armenieinfo.ch)'
 const HEADERS = { 'User-Agent': WIKI_UA, 'Api-User-Agent': WIKI_UA }
 
-async function getJson(url, fetchImpl) {
+export async function getJson(url, fetchImpl) {
   const res = await fetchImpl(String(url), { headers: HEADERS, signal: AbortSignal.timeout(30000) })
   if (!res.ok) throw new Error(`HTTP ${res.status} ${new URL(url).host}`)
   return res.json()
 }
 
-function api(host, params) {
+export function api(host, params) {
   const u = new URL(`https://${host}/w/api.php`)
   for (const [k, v] of Object.entries({ action: 'query', format: 'json', formatversion: '2', ...params }))
     u.searchParams.set(k, v)
@@ -273,7 +273,8 @@ export const stripHtml = (s) =>
 const MIN_WIDTH = 800
 const MIME = /^image\/(jpeg|png|webp)$/
 
-export async function fetchCommonsCandidates({ files = [], search = '', limit = 3 } = {}, fetchImpl = fetch) {
+// `max` : le plafond de titres envoyés à Commons (50 au plus par requête).
+export async function fetchCommonsCandidates({ files = [], search = '', limit = 3, max = 15 } = {}, fetchImpl = fetch) {
   const titles = files.filter(Boolean).map((f) => (f.startsWith('File:') ? f : `File:${f}`))
   if (search) {
     const j = await getJson(
@@ -282,7 +283,7 @@ export async function fetchCommonsCandidates({ files = [], search = '', limit = 
     )
     for (const r of j?.query?.search ?? []) titles.push(r.title)
   }
-  const unique = [...new Set(titles)].slice(0, 15)
+  const unique = [...new Set(titles)].slice(0, Math.min(max, 50))
   if (!unique.length) return []
   const j = await getJson(
     api('commons.wikimedia.org', {

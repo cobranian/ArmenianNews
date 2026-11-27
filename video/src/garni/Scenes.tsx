@@ -7,6 +7,10 @@ import type { Copy, Fact } from "./content";
 // valeurs d'origine, pour que sa vidéo publiée reste reproductible.
 const photoOf = (copy: Copy) => staticFile(copy.photo ?? "garni.jpg");
 const plateOf = (copy: Copy) => copy.plate ?? 690;
+// Le cadre de la photo : celui du Copy (Shorts Culture), sinon la planche
+// d'origine de Garni.
+const boxOf = (copy: Copy) => copy.box ?? { top: 250, left: 80, width: 920, height: plateOf(copy) };
+const textTopOf = (copy: Copy) => copy.textTop ?? 250 + plateOf(copy) + 110;
 
 // Réglages par écriture, repris de global.css (html:lang(hy) / html:lang(ru)) :
 // l'approche négative des titres latins referme les contrepoinçons de
@@ -93,9 +97,9 @@ const Credit: React.FC<{ copy: Copy }> = ({ copy }) => (
   <div
     style={{
       position: "absolute",
-      top: 250 + plateOf(copy) + 28,
-      left: 80,
-      right: 80,
+      top: boxOf(copy).top + boxOf(copy).height + 28,
+      left: boxOf(copy).left,
+      right: 1080 - boxOf(copy).left - boxOf(copy).width,
       fontFamily: F.mono,
       fontSize: 21,
       color: C.muted,
@@ -137,10 +141,7 @@ export const FactScene: React.FC<{ fact: Fact; copy: Copy; first?: boolean }> = 
       <div
         style={{
           position: "absolute",
-          top: 250,
-          left: 80,
-          width: 920,
-          height: plateOf(copy),
+          ...boxOf(copy),
           overflow: "hidden",
           borderRadius: 6,
           boxShadow: "0 30px 80px rgba(0,0,0,0.55)",
@@ -155,7 +156,7 @@ export const FactScene: React.FC<{ fact: Fact; copy: Copy; first?: boolean }> = 
             height: "100%",
             objectFit: "cover",
             objectPosition: fact.focus ?? "50% 50%",
-            scale: interpolate(frame, [0, durationInFrames], [1.0, 1.14], {
+            scale: interpolate(frame, [0, durationInFrames], [1.0, copy.box ? 1.05 : 1.14], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -166,7 +167,7 @@ export const FactScene: React.FC<{ fact: Fact; copy: Copy; first?: boolean }> = 
       <Chrome copy={copy} />
       <Credit copy={copy} />
 
-      <div style={{ position: "absolute", top: 250 + plateOf(copy) + 110, left: 80, right: 80 }}>
+      <div style={{ position: "absolute", top: textTopOf(copy), left: 80, right: 80 }}>
         <div
           style={{
             ...eyebrow,

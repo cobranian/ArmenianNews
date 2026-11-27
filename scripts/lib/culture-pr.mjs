@@ -85,6 +85,18 @@ export function buildAutoSection({ title, frBody = '', meta, unsupported, editor
   } else {
     lines.push('Aucune image libre trouvée : la page affichera un motif.')
   }
+  // Une image par fait dans le Short (culture-short-images.mjs) : cocher la
+  // case les approuve aussi, donc toutes sont montrées.
+  lines.push('', '### 🎬 Images de la vidéo', '')
+  if (meta.shortImages?.length) {
+    lines.push('1. photo de l’article (ci-dessus)')
+    meta.shortImages.forEach((c, i) => {
+      lines.push(`${i + 2}. [${c.file}](${c.commonsUrl}) — ${c.author}, ${c.license}`, `   <img src="${c.thumbUrl}" width="160">`)
+    })
+    lines.push('', 'Pour en remplacer une : changez son `"file"` dans `meta.json` → `shortImages` par un autre fichier Commons (`File:…`), **avant** de cocher la case.')
+  } else {
+    lines.push('Le Short n’aura que la photo de l’article.')
+  }
   lines.push('', '### Sources', ...meta.sources.map((s) => `- [${s.title}](${s.url}) — ${sourceLabel(s)}`))
   const ev = meta.agendaEvent
   if (ev) lines.push('', '### Événement lié', `- [${ev.title}](${ev.url}) — ${String(ev.date).slice(0, 10)}${ev.location ? `, ${ev.location}` : ''}`)

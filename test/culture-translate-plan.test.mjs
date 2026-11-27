@@ -73,6 +73,17 @@ test('image changée sans autre travail : un --short-only seul (synchronise l’
   assert.deepEqual(plan({ ...article, meta }, videos, false), [['--short-only']])
 })
 
+// Revue du 27 nov. : une image de vidéo remplacée à la main dans la PR, sans
+// autre travail, laissait le plan vide — la publication ne la relisait
+// jamais, et le Short partait sans le choix du relecteur.
+test('image de vidéo remplacée à la main sans autre travail : un --short-only seul', async () => {
+  const { article, videos } = await load()
+  const meta = { ...article.meta, shortImages: [{ file: 'File:Choisie.jpg', commonsUrl: 'https://commons.wikimedia.org/wiki/File:Ancienne.jpg' }] }
+  assert.deepEqual(plan({ ...article, meta }, videos, false), [['--short-only']])
+  const synced = { ...article.meta, shortImages: [{ file: 'File:Choisie.jpg', commonsUrl: 'https://commons.wikimedia.org/wiki/File:Choisie.jpg' }] }
+  assert.deepEqual(plan({ ...article, meta: synced }, videos, false), [])
+})
+
 test('fr.md illisible : aucune traduction n’y peut rien', () => {
   assert.deepEqual(translationRuns({ langs: {}, shorts: {} }, { slug: 'x', videos: {}, meta: {}, checkPassed: false }), [])
 })

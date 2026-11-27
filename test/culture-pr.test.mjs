@@ -233,3 +233,23 @@ test('shortLines : le texte d’une vidéo, tel que la PR et le résumé de publ
   assert.ok(lines.includes('Titre YouTube : Komitas, le père de la musique arménienne'))
   assert.ok(buildAutoSection({ ...base, short: SHORT }).includes(lines.join('\n')))
 })
+
+// Une image par fait : les 7 sont montrées à la relecture, avec la façon d'en
+// remplacer une — cocher la case les approuve aussi.
+test('corps : les images de la vidéo, numérotées, avec la consigne de remplacement', () => {
+  const img = (f) => ({ file: `File:${f}.jpg`, thumbUrl: `https://u/${f}.jpg`, author: 'A', license: 'CC BY 2.0', commonsUrl: `https://c/File:${f}.jpg` })
+  const m = meta('komitas')
+  const body = buildPrBody({ ...base, meta: { ...m, shortImages: ['B', 'C', 'D', 'E', 'F', 'G [x] '].map(img) } })
+  const section = body.slice(body.indexOf('### 🎬 Images de la vidéo'), body.indexOf('### Sources'))
+  assert.match(section, /^1\. photo de l’article/m)
+  for (const n of [2, 3, 4, 5, 6, 7]) assert.ok(section.includes(`\n${n}. [File:`), `ligne ${n}`)
+  assert.match(section, /<img src="https:\/\/u\/B\.jpg" width="160">/)
+  assert.match(section, /`"file"`.*`shortImages`.*\*\*avant\*\* de cocher/)
+  assert.doesNotMatch(body, /G \[x\] /)
+  assert.ok(body.indexOf('### Image') < body.indexOf('### 🎬 Images de la vidéo'))
+})
+
+test('corps : sans images de vidéo, le Short n’aura que la photo de l’article', () => {
+  const body = buildPrBody(base)
+  assert.match(body, /### 🎬 Images de la vidéo\n+Le Short n’aura que la photo de l’article\./)
+})

@@ -46,6 +46,7 @@ import { buildTranslateMessages, parseArticleJson, plainName } from './lib/cultu
 import { downloadImage, translationOverlap } from './lib/culture-sources.mjs'
 import { OVERLAP_THRESHOLD } from './lib/culture-overlap.mjs'
 import { makeImages } from './lib/culture-image.mjs'
+import { syncShortImages } from './lib/culture-short-images.mjs'
 import { shortHash, parseShortJson, shortNeedsTranslation, shortReference, shortReferenceOf, frShortAtPublish, needSpoken, SHORT_DRAFTED_MARK } from './lib/culture-short.mjs'
 import { shortLines } from './lib/culture-pr.mjs'
 import { translateShort } from './lib/culture-short-translate.mjs'
@@ -95,6 +96,19 @@ if ((chosen?.commonsUrl ?? null) !== (meta.image?.commonsUrl ?? null)) {
     failed++
     lines.push(`- ✗ image : ${e.message}`)
   }
+}
+
+// Les images de la vidéo (une par fait) : un fichier remplacé à la main dans
+// la PR est relu et téléchargé. Jamais bloquant — au pire, le Short n'a que
+// les images valides, et la ligne ⚠️ le dit.
+try {
+  // gatherIfMissing: false — un article sans liste (publié avant les images
+  // par fait) n'en reçoit jamais que personne n'a revues.
+  const shortSync = await syncShortImages(base, meta, { gatherIfMissing: false })
+  await writeFile(metaPath, `${JSON.stringify(meta, null, 2)}\n`)
+  if (shortSync.failed) lines.push(...shortSync.lines.filter((l) => l.includes('✗')).map((l) => l.replace('- ✗', '- ⚠️')))
+} catch (e) {
+  lines.push(`- ⚠️ images de la vidéo : ${e.message}`)
 }
 
 // Partagé entre les langues : après un repli, toutes vont au même modèle.

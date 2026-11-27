@@ -18,6 +18,7 @@ import credits from './credits.json'
 import cta from './cta.json'
 import type { Credit } from './types'
 import { ShortMusic } from './music'
+import { frameBox, slideFocus, slideImages, TEXT_TOP } from './slides.mjs'
 import { fitsReel, fitsScene, LEAD, MAX_TOTAL, maxSpeechSeconds,narratedDuration, outroFrames, sceneFrames, speechWindows, type VoiceLine } from './timing.mjs'
 
 // hy, ru et es partent sur la chaîne Armenia News (le .org), de et it sur
@@ -122,8 +123,17 @@ export const voicedLines = (slug: string, lang: Lang): VoiceLine[] => {
   return lines
 }
 
-export function copyFor(slug: string, lang: Lang): Copy {
-  const credit = (credits as Record<string, Credit>)[slug]
+// Les images du Short, la photo de l'article en tête (credits.json).
+const imagesOf = (slug: string): Credit[] => {
+  const list = (credits as Record<string, Credit[]>)[slug]
+  if (!list?.length) throw new Error(`Short sans image : ${slug} — lancer video/scripts/sync.mjs`)
+  return list
+}
+
+// `image` : l'index dans imagesOf (0 = la photo de l'article, <slug>.jpg ;
+// k = <slug>-k.jpg). Le crédit suit l'image : c'est celui de la photo à l'écran.
+export function copyFor(slug: string, lang: Lang, image = 0): Copy {
+  const credit = imagesOf(slug)[image]
   const d = dataFor(slug, lang)
   return {
     brand: BRAND[lang],
@@ -132,10 +142,10 @@ export function copyFor(slug: string, lang: Lang): Copy {
     facts: d.facts,
     outro: { kicker: KICKER[lang], title: d.outroTitle, url: URL[lang], subscribe: cta[lang].screen },
     credit: creditLine(credit, lang),
-    photo: `photos/${slug}.jpg`,
-    // Les photos du site sont en 1200×630 : une planche de 920×540 les montre
-    // presque entières, sans agrandissement.
-    plate: 540,
+    photo: image === 0 ? `photos/${slug}.jpg` : `photos/${slug}-${image}.jpg`,
+    // Le cadre épouse l'image, entière et centrée (slides.mjs).
+    box: frameBox(credit),
+    textTop: TEXT_TOP,
   }
 }
 
@@ -161,6 +171,9 @@ export const ShortVideo: React.FC<{ slug: string; lang: Lang }> = ({ slug, lang 
   const lines = voicedLines(slug, lang)
   const copy = copyFor(slug, lang)
   const outro = lines[copy.facts.length]
+  // Une image par fait (slides.mjs) ; l'écran de fin garde la photo de l'article.
+  const images = imagesOf(slug)
+  const slides = slideImages(copy.facts.length, images.length)
   return (
     <>
       <ShortMusic slug={slug} speech={speechWindows(lines, fps, FADE)} />
@@ -168,7 +181,11 @@ export const ShortVideo: React.FC<{ slug: string; lang: Lang }> = ({ slug, lang 
         {copy.facts.map((fact, i) => (
           <React.Fragment key={i}>
             <TransitionSeries.Sequence durationInFrames={sceneFrames(lines[i].seconds, fps)} name={`Fait ${i + 1}`}>
-              <FactScene fact={fact} copy={copy} first={i === 0} />
+              <FactScene
+                fact={{ ...fact, focus: slideFocus(images[slides[i]], fact.focus) }}
+                copy={copyFor(slug, lang, slides[i])}
+                first={i === 0}
+              />
               <Voice line={lines[i]} />
             </TransitionSeries.Sequence>
             <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />

@@ -47,3 +47,15 @@ async function cardJpeg(base, wanted, { width: w, height: h }) {
   }
   return img.toColourspace('srgb').jpeg({ quality: 82, mozjpeg: true }).toBuffer()
 }
+
+// Une image d'un Short (short-<n>.jpg) : 1200 px de large au plus, jamais
+// agrandie, sRGB sans profil ICC (même règle que la carte). Pas de recadrage :
+// la planche de la vidéo cadre elle-même.
+export async function makeShortImage(buf) {
+  return sharp(buf)
+    .rotate()
+    .resize({ width: PAGE_WIDTH, withoutEnlargement: true })
+    .toColourspace('srgb')
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toBuffer()
+}
