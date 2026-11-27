@@ -122,3 +122,15 @@ export async function syncShortImages(base, meta, deps = {}) {
     if (/^short-\d+\.jpg$/.test(f) && !keep.has(f)) await rm(path.join(base, f))
   return { lines, failed }
 }
+
+// Les images d'un fait réellement utilisables : un crédit à jour ET leur
+// fichier. La vidéo (video/scripts/sync.mjs) et la description YouTube
+// (video-publish.mjs) lisent CETTE liste, pour que l'écran et la description
+// créditent les mêmes photos. Une entrée remplacée à la main mais pas encore
+// relue est écartée : son fichier montrerait l'ancienne image sous le
+// nouveau crédit.
+export function usableShortImages(base, meta) {
+  return (meta.shortImages ?? [])
+    .map((entry, i) => ({ entry, src: path.join(base, shortImageFile(i + 1)) }))
+    .filter(({ entry, src }) => !isStale(entry) && existsSync(src))
+}

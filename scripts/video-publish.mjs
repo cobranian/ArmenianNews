@@ -33,6 +33,7 @@ import { planBlockers, videoLangs } from './lib/culture-video-plan.mjs'
 import { addReels, assetName, readReels } from './lib/reels-add.mjs'
 import { enqueue, readQueue } from './lib/youtube-queue.mjs'
 import { musicLine, youtubeMeta } from './lib/youtube-meta.mjs'
+import { usableShortImages } from './lib/culture-short-images.mjs'
 
 const RELEASE = 'reels-1'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -83,8 +84,11 @@ if (!found.length) throw new Error(`${slug} : aucun rendu trouvé dans ${dir}/<l
 // Le Short français porte la piste ; meta.json, le crédit de la photo.
 const music = musicLine(result.frShort.music)
 if (!article.meta.image) throw new Error(`${slug} : l'article n'a pas d'image, pas de Short possible`)
-const { author, license, commonsUrl } = article.meta.image
-const credit = { author, license, commonsUrl }
+// Toutes les photos du Short (une par fait), dans l'ordre de l'écran : la
+// même liste que video/scripts/sync.mjs (usableShortImages).
+const credit = [article.meta.image, ...usableShortImages(path.join(DIR, slug), article.meta).map((u) => u.entry)].map(
+  ({ author, license, commonsUrl }) => ({ author, license, commonsUrl }),
+)
 const items = found.map(({ lang }) => ({
   slug,
   lang,

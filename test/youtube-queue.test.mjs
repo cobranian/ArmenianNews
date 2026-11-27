@@ -108,3 +108,30 @@ test('shortsToTranslate : article à jour sans Short valide, hors vidéos publi�
   assert.deepEqual(shortsToTranslate(result(['fr', 'en'], []), { slug: 'duduk', videos: {} }), ['en'])
   assert.deepEqual(shortsToTranslate(result(['fr', 'en'], []), { slug: 'duduk', videos: { duduk: { en: { youtube: 'x' } } } }), [])
 })
+
+// Une image par fait (spec 2026-11-27) : chaque photo est créditée, une fois,
+// et la licence imposée est la BY-SA de version la plus haute (une œuvre
+// dérivée de BY-SA 3.0 peut passer en 4.0, jamais l'inverse).
+test('youtubeMeta : plusieurs photos → un bloc chacune, dédoublonnées, une seule ligne de même licence', () => {
+  const short = { ytTitle: 'Titre', ytLead: 'Chapeau.' }
+  const c = (f, license) => ({ author: `Auteur ${f}`, license, commonsUrl: `https://commons.wikimedia.org/wiki/File:${f}.jpg` })
+  const credits = [c('A', 'Public domain'), c('B', 'CC BY 2.0'), c('C', 'CC BY-SA 3.0'), c('B', 'CC BY 2.0')]
+  const { description } = youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit: credits, music: 'mazia' })
+  for (const f of ['A', 'B', 'C']) assert.equal(description.split(`Auteur ${f}`).length - 1, 1, f)
+  assert.match(description, /Photo : Auteur A, domaine public, via Wikimedia Commons :/)
+  assert.equal(description.match(/même licence/g).length, 1)
+  assert.match(description, /même licence \(CC BY-SA 4\.0\)/)
+  // Photos seules en BY-SA 3.0 et piste CC BY : la 3.0, sous sa photo.
+  const sergo = youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit: [c('A', 'CC0'), c('C', 'CC BY-SA 3.0')], music: 'sergo' }).description
+  assert.match(sergo, /File:C\.jpg\nCette vidéo est diffusée sous la même licence \(CC BY-SA 3\.0\)\./)
+})
+
+test('youtubeMeta : un tableau d’une photo = la description d’une photo seule, octet pour octet', () => {
+  const short = { ytTitle: 'Titre', ytLead: 'Chapeau.' }
+  const credit = { author: 'A', license: 'CC BY-SA 3.0', commonsUrl: 'https://commons.wikimedia.org/wiki/File:X.jpg' }
+  for (const music of ['mazia', 'sergo'])
+    assert.equal(
+      youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit: [credit], music }).description,
+      youtubeMeta({ slug: 'duduk', lang: 'fr', short, credit, music }).description,
+    )
+})

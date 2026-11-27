@@ -18,7 +18,7 @@ import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promi
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { isStale, shortImageFile } from '../../scripts/lib/culture-short-images.mjs'
+import { usableShortImages } from '../../scripts/lib/culture-short-images.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const culture = path.resolve(root, '../src/data/culture')
@@ -89,16 +89,12 @@ for (const slug of slugs) {
   await copyFile(path.join(culture, slug, 'image.jpg'), path.join(root, 'public/photos', `${slug}.jpg`))
   // Image 1 : la carte image.jpg, toujours 1200×630 (culture-image.mjs).
   const list = [{ author: meta.image.author, license: meta.image.license, commonsUrl: meta.image.commonsUrl, width: 1200, height: 630 }]
-  // Les suivantes (une par fait) : seulement celles qui ont un crédit à jour
-  // ET leur fichier. Une entrée remplacée à la main mais pas encore relue
-  // (culture-short-images.mjs) est sautée : son fichier montrerait l'ancienne
-  // image sous le nouveau crédit.
-  for (const [i, entry] of (meta.shortImages ?? []).entries()) {
-    const src = path.join(culture, slug, shortImageFile(i + 1))
-    if (isStale(entry) || !existsSync(src)) {
-      console.warn(`⚠ ${slug} : image ${i + 2} (${entry.file}) sautée — lancer node scripts/culture-short-images.mjs ${slug}`)
-      continue
-    }
+  // Les suivantes (une par fait) : celles qu'usableShortImages garde — la
+  // liste même que crédite la description YouTube (video-publish.mjs).
+  const usable = usableShortImages(path.join(culture, slug), meta)
+  const skipped = (meta.shortImages?.length ?? 0) - usable.length
+  if (skipped) console.warn(`⚠ ${slug} : ${skipped} image(s) de la vidéo sautée(s) — lancer node scripts/culture-short-images.mjs ${slug}`)
+  for (const { entry, src } of usable) {
     await copyFile(src, path.join(root, 'public/photos', `${slug}-${list.length}.jpg`))
     list.push({ author: entry.author, license: entry.license, commonsUrl: entry.commonsUrl, width: entry.width, height: entry.height })
   }

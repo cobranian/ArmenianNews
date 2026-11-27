@@ -140,3 +140,13 @@ test('syncShortImages : la liste raccourcit → les short-<n>.jpg en trop dispar
   await syncShortImages(dir, meta, fakes([]))
   assert.deepEqual((await readdir(dir)).sort(), ['image.jpg', 'short-1.jpg', 'short-2.jpg'])
 })
+
+test('usableShortImages : crédit à jour ET fichier présent, sinon écartée', async () => {
+  const { usableShortImages } = await import('../scripts/lib/culture-short-images.mjs')
+  const dir = await tmp()
+  await write(path.join(dir, 'short-1.jpg'), 'x')
+  await write(path.join(dir, 'short-2.jpg'), 'x')
+  const meta = { shortImages: [info('File:A.jpg'), { ...info('File:B.jpg'), file: 'File:Remplacée.jpg' }, info('File:C.jpg')] }
+  assert.deepEqual(usableShortImages(dir, meta).map((u) => u.entry.file), ['File:A.jpg'])
+  assert.deepEqual(usableShortImages(dir, {}), [])
+})
