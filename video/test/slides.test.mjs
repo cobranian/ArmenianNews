@@ -28,3 +28,31 @@ test('slideFocus : portrait cadré en haut, paysage inchangé, focus du fait pri
   assert.equal(slideFocus({}, undefined), undefined)
   assert.equal(slideFocus({ width: 1024, height: 1227 }, '30% 60%'), '30% 60%')
 })
+
+// Retour de Nareg sur l'essai Gorky (27 nov.) : cadre trop petit, image
+// recadrée, bas de l'écran vide. Le cadre épouse désormais l'image, entière,
+// centrée dans une zone de 1000×740 ; le texte descend sous la zone.
+import { frameBox, FRAME_ZONE, TEXT_TOP } from '../src/shorts/slides.mjs'
+
+test('frameBox : paysage → toute la largeur, centré verticalement', () => {
+  const b = frameBox({ width: 1200, height: 630 })
+  assert.equal(b.width, FRAME_ZONE.width)
+  assert.equal(b.height, Math.round(1000 / (1200 / 630)))
+  assert.equal(b.left, FRAME_ZONE.left)
+  assert.equal(b.top, FRAME_ZONE.top + Math.round((FRAME_ZONE.height - b.height) / 2))
+})
+
+test('frameBox : portrait → toute la hauteur, centré horizontalement, jamais coupé', () => {
+  const b = frameBox({ width: 1024, height: 1227 })
+  assert.equal(b.height, FRAME_ZONE.height)
+  assert.equal(b.width, Math.round(740 * (1024 / 1227)))
+  assert.equal(b.left, FRAME_ZONE.left + Math.round((FRAME_ZONE.width - b.width) / 2))
+  assert.equal(b.top, FRAME_ZONE.top)
+})
+
+test('frameBox : taille inconnue → la zone entière ; le texte commence sous la zone', () => {
+  assert.deepEqual(frameBox({}), { ...FRAME_ZONE })
+  assert.ok(TEXT_TOP > FRAME_ZONE.top + FRAME_ZONE.height)
+  // Centré dans l'image 1080 de large.
+  assert.equal(FRAME_ZONE.left * 2 + FRAME_ZONE.width, 1080)
+})

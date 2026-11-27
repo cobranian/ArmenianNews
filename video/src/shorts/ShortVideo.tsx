@@ -18,7 +18,7 @@ import credits from './credits.json'
 import cta from './cta.json'
 import type { Credit } from './types'
 import { ShortMusic } from './music'
-import { slideFocus, slideImages } from './slides.mjs'
+import { frameBox, slideFocus, slideImages, TEXT_TOP } from './slides.mjs'
 import { fitsReel, fitsScene, LEAD, MAX_TOTAL, maxSpeechSeconds,narratedDuration, outroFrames, sceneFrames, speechWindows, type VoiceLine } from './timing.mjs'
 
 // hy, ru et es partent sur la chaîne Armenia News (le .org), de et it sur
@@ -143,9 +143,9 @@ export function copyFor(slug: string, lang: Lang, image = 0): Copy {
     outro: { kicker: KICKER[lang], title: d.outroTitle, url: URL[lang], subscribe: cta[lang].screen },
     credit: creditLine(credit, lang),
     photo: image === 0 ? `photos/${slug}.jpg` : `photos/${slug}-${image}.jpg`,
-    // Les photos du site sont en 1200×630 : une planche de 920×540 les montre
-    // presque entières, sans agrandissement.
-    plate: 540,
+    // Le cadre épouse l'image, entière et centrée (slides.mjs).
+    box: frameBox(credit),
+    textTop: TEXT_TOP,
   }
 }
 
