@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-27",
+  "lang": "fr",
+  "generatedAt": "2026-11-27T03:30:11.192Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "L'actualité arménienne est marquée par les débats autour du projet de nouvelle Constitution et des relations internationales, notamment l'adhésion à l'UE et le corridor TRIPP. Plusieurs sources reviennent également sur la transformation des gardes-frontières et la coopération régionale.",
+  "topics": [
+    {
+      "title": "Projet de nouvelle Constitution : débats et inquiétudes",
+      "text": "Un expert estime qu'Erevan doit exiger des garanties de paix avec Bakou dans le cadre de la révision constitutionnelle, tandis qu'une tribune y voit un changement de pensée étatique. Des experts soulèvent par ailleurs des inquiétudes quant à la transparence du financement et à l'indépendance des médias. Le Courrier international précise que l'Arménie n'envisage pas de modifier ses armoiries ni d'y retirer le mont Ararat.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36306/",
+          "title": "Constitution : un expert juge que Erevan doit exiger des garanties sur la paix avec Bakou"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36295/",
+          "title": "Nouvelle Constitution : une tribune y voit le signe d’un changement de pensée étatique en Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/armenie-les-principaux-changements-du-projet-de-nouvelle-constitution/",
+          "title": "Arménie : les principaux changements du projet de nouvelle Constitution"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-nenvisage-pas-de-modifier-ses-armoiries-ni-den-retirer-le-mont-ararat",
+          "title": "L’Arménie n’envisage pas de modifier ses armoiries ni d’en retirer le mont Ararat"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015625",
+          "title": "Le projet de Constitution arménienne suscite des inquiétudes quant à la transparence du financement et à l’indépendance des médias"
+        }
+      ]
+    },
+    {
+      "title": "Processus d'adhésion de l'Arménie à l'Union européenne",
+      "text": "Le Premier ministre Nikol Pachinian affirme qu'il n'est pas possible d'abroger la loi relative au lancement du processus d'adhésion à l'UE. La société civile arménienne a été récompensée pour son initiative en faveur de cette adhésion. Le ministre allemand des Affaires étrangères a appelé à modifier la Constitution arménienne, ce que Moscou qualifie d'ingérence inacceptable.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-je-ne-considere-pas-possible-dabroger-la-loi-relative-au-lancement-du-processus-dadhesion-de-larmenie-a-lue/",
+          "title": "Nikol Pachinian Je ne considère pas possible d’abroger la loi relative au lancement du processus d’adhésion de l’Arménie à l’UE"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/il-sagit-dune-ingerence-inacceptable-dans-les-affaires-interieures-dun-etat-souverain-reaction-de-zakharova-a-lappel-du-ministre-allemand-des-affaires-etrangeres-a-modifier-la-constitution-ar/",
+          "title": "Il s’agit d’une ingérence inacceptable dans les affaires intérieures d’un État souverain. Réaction de Zakharova à l’appel du ministre allemand des Affaires étrangères à modifier la Constitution arménienne"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-societe-civile-armenienne-recompensee-pour-son-initiative-dadhesion-a-lue/",
+          "title": "La société civile arménienne récompensée pour son initiative d’adhésion à l’UE"
+        }
+      ]
+    },
+    {
+      "title": "Corridor TRIPP : approbation gouvernementale et démarrage des travaux",
+      "text": "Le gouvernement arménien a approuvé le projet TRIPP, l'Arménie détenant 26 % des parts contre 74 % pour les États-Unis. Nikol Pachinian assure que l'accord respecte les lignes rouges de l'Iran. Le ministre Khoudatian indique que les travaux préparatoires ont débuté dans le Syunik.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gouvernement-armenien-a-approuve-la-tripp-larmenie-detiendra-26-des-parts-les-etats-unis-74/",
+          "title": "Le gouvernement arménien a approuvé la TRIPP : l’Arménie détiendra 26 % des parts, les États-Unis 74 %"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-nous-respectons-les-lignes-rouges-de-liran-et-laccord-tripp-ne-les-a-pas-franchies-et-ne-les-franchira-en-aucune-facon/",
+          "title": "Nikol Pachinian : Nous respectons les lignes rouges de l’Iran, et l’accord TRIPP ne les a pas franchies et ne les franchira en aucune façon"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36285/",
+          "title": "TRIPP : les travaux préparatoires ont débuté dans le Syunik, selon le ministre Khoudatian"
+        }
+      ]
+    },
+    {
+      "title": "Transformation du Service des gardes-frontières et dialogue régional",
+      "text": "Le Premier ministre a présidé une réunion consacrée à la transformation du Service des gardes-frontières. Des experts azerbaïdjanais se rendent en Arménie après deux mois de report pour poursuivre le dialogue. Un analyste azerbaïdjanais estime que la poursuite de ce dialogue constitue en soi un acquis.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266773",
+          "title": "Le Premier ministre a présidé une réunion consacrée aux questions relatives à la transformation du Service des gardes-frontières"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266765",
+          "title": "La poursuite du dialogue entre l’Arménie et l’Azerbaïdjan constitue en soi un acquis, estime Farhad Mammadov"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015654",
+          "title": "Des experts azerbaïdjanais se rendent en Arménie après deux mois de report"
+        }
+      ]
+    },
+    {
+      "title": "Coopération financière avec la BERD pour les infrastructures frontalières",
+      "text": "La Banque européenne pour la reconstruction et le développement accordera à l'Arménie un prêt de 19,6 millions d'euros pour moderniser les infrastructures des postes-frontières. Le Premier ministre a également reçu le ministre géorgien de la Justice pour évoquer la coopération bilatérale.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266777",
+          "title": "La BERD accordera à l’Arménie un prêt de 19,6 millions d’euros pour moderniser les infrastructures des postes-frontières"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266739",
+          "title": "Le Premier ministre a reçu le ministre géorgien de la Justice"
+        }
+      ]
+    },
+    {
+      "title": "Relations arméno-azerbaïdjanaises : passeports et société civile",
+      "text": "Le président de l'Assemblée nationale Alen Simonyan a rencontré des représentants de la société civile des deux pays et a réagi à l'inscription de l'Azerbaïdjan sur les passeports des habitants de l'Artsakh. L'organisation « Auto-reconnaissance » dénonce par ailleurs les agissements de Bakou dans une lettre ouverte aux institutions européennes.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-rencontre-des-representants-de-la-societe-civile-azerbaidjanaise-et-armenienne/",
+          "title": "Alen Simonyan rencontre des représentants de la société civile azerbaïdjanaise et arménienne"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-reagit-a-linscription-de-lazerbaidjan-sur-les-passeports-des-habitants-de-lartsakh/",
+          "title": "Alen Simonyan réagit à l’inscription de l’Azerbaïdjan sur les passeports des habitants de l’Artsakh"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lorganisation-auto-reconnaissance-mouvement-panarmenien-denonce-les-agissements-de-lazerbaidjan-par-une-lettre-ouverte-aux-institutions-europeennes/",
+          "title": "L’organisation « Auto-reconnaissance », Mouvement panarménien, dénonce les agissements de l’Azerbaïdjan par une lettre ouverte aux institutions européennes"
+        }
+      ]
+    },
+    {
+      "title": "Succès arménien aux Olympiades internationales d'astronomie",
+      "text": "L'Arménie a remporté six médailles lors des Olympiades internationales d'astronomie. Par ailleurs, la Défenseure des droits affirme qu'aucune forme de violence ne peut être justifiée par des traditions.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-remporte-six-medailles-aux-olympiades-internationales-dastronomie",
+          "title": "L’Arménie remporte six médailles aux Olympiades internationales d’astronomie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/aucune-forme-de-violence-ne-peut-etre-justifiee-par-des-traditions-selon-la-defenseure-des-droits/",
+          "title": "Aucune forme de violence ne peut être justifiée par des traditions, selon la Défenseure des droits"
+        }
+      ]
+    }
+  ]
+}

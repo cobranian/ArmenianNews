@@ -1,0 +1,233 @@
+{
+  "date": "2026-11-27",
+  "lang": "en",
+  "generatedAt": "2026-11-27T03:30:11.192Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Armenian media focus on constitutional reform debates, EU integration steps, and cross-border dialogue with Azerbaijan, while also reporting on economic agreements and international developments.",
+  "topics": [
+    {
+      "title": "Constitutional reform and snap election debate",
+      "text": "Prime Minister Nikol Pashinyan has floated the possibility of snap parliamentary elections while defending the draft constitution, stating that not all proposals will be accepted and outlining his red lines. CivilNet reports that Yerevan is drafting a new constitution, and the Justice Minister clarified that Armenian Genocide recognition was never an explicit constitutional provision.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015662",
+          "title": "Pashinyan floats snap elections amid constitution debate"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/en/news/1015661",
+          "title": "Ohh Hell No! Yerevan Drafts New Constitution"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077421",
+          "title": "Nothing prevents from going with snap parliamentary election scenario, Armenia’s Pashinyan says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077394",
+          "title": "Premier comments on proposed constitution’s provision on revoking Armenia citizenship"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/26/pashinyan-says-new-constitution-draft-is-open-to-discussion-but-not-all-proposals-will-be-accepted/",
+          "title": "Pashinyan says new Constitution draft is open to discussion but not all proposals will be accepted"
+        },
+        {
+          "source": "californiacourier",
+          "url": "https://www.thecaliforniacourier.com/armenian-genocide-recognition-was-never-an-explicit-constitutional-provision-justice-minister-says/",
+          "title": "Armenian Genocide Recognition Was Never an Explicit Constitutional Provision, Justice Minister Says"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077339",
+          "title": "Armenia premier voices his \"red lines\" on proposed constitution"
+        }
+      ]
+    },
+    {
+      "title": "Armenia–Azerbaijan dialogue and border talks",
+      "text": "Officials from both countries continue engagement under the \"Peace Bridge\" initiative, with civil society representatives holding a fifth meeting and the Security Council secretary planning a visit to Azerbaijan in early December. Alen Simonyan noted that bilateral relations will be discussed during a planned visit, while Farhad Mammadov called the continued dialogue an achievement in itself.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/26/armenia-azerbaijan-wconomic-cooperation-could-open-new-opportunities-alen-simonyan-says/",
+          "title": "Armenia-Azerbaijan economic cooperation could open new opportunities Alen Simonyan says"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266766",
+          "title": "Areg Kochinyan says dialogue between Armenian and Azerbaijani societies aims to shape a peaceful future"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266765",
+          "title": "Farhad Mammadov says continued Armenian–Azerbaijani dialogue is an achievement in itself"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266764",
+          "title": "Alen Simonyan says bilateral relations will be discussed during planned visit to Azerbaijan"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077430",
+          "title": "Armenia Security Council secretary meets with “Peace Bridge” initiative roundtable discussion participants, including from Azerbaijan (PHOTOS)"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/26/armenian-and-azerbaijani-civil-society-representatives-hold-fifth-meeting-under-bridge-of-peace-initiative/",
+          "title": "Armenian and Azerbaijani civil society representatives hold fifth meeting under “Bridge of Peace” initiative"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077350",
+          "title": "Armenia Security council head: I will visit Azerbaijan in early December, but it will not be Baku (VIDEO)"
+        }
+      ]
+    },
+    {
+      "title": "EU integration and border modernization",
+      "text": "The European Bank for Reconstruction and Development will lend Armenia up to €19.6 million to modernize border checkpoints. Prime Minister Pashinyan ruled out repealing the EU accession law, and the head of the EU delegation met with Armenian officials to discuss cooperation.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266777",
+          "title": "EBRD to lend Armenia up to €19.6 million to modernise border checkpoints"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266771",
+          "title": "Arsen Torosyan receives head of EU delegation to Armenia"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077361",
+          "title": "Armenia PM rules out repealing EU accession law"
+        }
+      ]
+    },
+    {
+      "title": "Economic cooperation and trade updates",
+      "text": "Azerbaijan exported products worth nearly $23.7 million to Armenia in January–October, and the economy minister said Armenia will appeal to a Eurasian court over Russian restrictions on goods. The government allocated 4.47 billion drams for agricultural export support, and a new data center will be established in Aragatsotn Province.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077432",
+          "title": "Customs committee: Azerbaijan exported products worth nearly $23.7M to Armenia in January-October"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077383",
+          "title": "Economy minister: We will appeal to Eurasian court – which countries to vote in favor of lifting Russia restrictions on Armenia goods?"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266685",
+          "title": "New data center to be established in Aragatsotn Province"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266683",
+          "title": "Government allocates 4.47 billion drams for agricultural export support"
+        }
+      ]
+    },
+    {
+      "title": "International incidents: Egypt fire and SpaceX authorization",
+      "text": "At least 31 people were killed in Egypt after a fuel tanker crash ignited a huge fire near Cairo, prompting Armenia to offer condolences. The US authorized SpaceX to deploy one million satellites for data centers in space.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266726",
+          "title": "Putin yet to decide whether to attend G20 summit in Miami"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/26/putin-yet-to-decide-on-attending-g20-summit-in-miami-peskov/",
+          "title": "Putin yet to decide on attending G20 summit in Miami – Peskov"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/26/at-least-31-killed-in-egypt-as-fuel-tanker-crash-ignites-huge-fire-near-cairo/",
+          "title": "At least 31 killed in Egypt as fuel tanker crash ignites huge fire near Cairo"
+        },
+        {
+          "source": "armradio",
+          "url": "https://en.armradio.am/2026/11/26/us-approves-spacex-plan-to-send-a-million-data-satellites-to-space/",
+          "title": "US approves SpaceX plan to send a million data satellites to space"
+        },
+        {
+          "source": "newsam",
+          "url": "https://med.news.am/en/news/43220",
+          "title": "An Ozempic alternative in chocolate form launches in the US"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266664",
+          "title": "Thirty-one killed in fire after vehicle overturns in Egypt"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266662",
+          "title": "US authorizes SpaceX to deploy 1 million satellites for data centers in space"
+        }
+      ]
+    },
+    {
+      "title": "Domestic economic measures and banking news",
+      "text": "Ardshinbank offers 10% cashback to premium cardholders for Black Friday and won \"Armenia Deal of the Year\" at the Global Banking & Markets Awards 2026. Unibank announced 50% off card issuance, and Armeconombank provides 10% cashback at cinemas with its Visa Student Card.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077454",
+          "title": "Ardshinbank Offers 10% Cashback to Premium Cardholders for Black Friday"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077428",
+          "title": "Ardshinbank wins “Armenia Deal of the Year” at the Global Banking & Markets Awards 2026"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077425",
+          "title": "10% Cashback at Cinemas and Valuable Prizes with Armeconombank’s Visa Student Card"
+        },
+        {
+          "source": "newsam",
+          "url": "https://news.am/en/news/1077415",
+          "title": "Black Friday - 50% Off Unibank Card Issuance"
+        }
+      ]
+    },
+    {
+      "title": "Cultural events and sports appointments",
+      "text": "The Khachaturian International Festival brings 20 days of music to Yerevan, and Olympic champion Elen Bunatyants was appointed head coach of Armenia's U20 women's basketball team. The European Deaf Wrestling Championships opened in Tsaghkadzor.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266759",
+          "title": "European Deaf Wrestling Championships open in Tsaghkadzor"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266740",
+          "title": "Olympic champion Elen Bunatyants appointed head coach of Armenia’s U20 women’s basketball team"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/en/article/1266731",
+          "title": "Khachaturian International Festival brings 20 days of music to Yerevan"
+        }
+      ]
+    }
+  ]
+}

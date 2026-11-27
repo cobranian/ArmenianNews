@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-27",
+  "lang": "it",
+  "generatedAt": "2026-11-27T03:30:11.192Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La giornata è segnata dal dibattito sulla nuova Costituzione, dall'avanzamento del progetto TRIPP con gli Stati Uniti e dalle relazioni con l'Unione Europea e l'Azerbaigian.",
+  "topics": [
+    {
+      "title": "Dibattito sul progetto di nuova Costituzione",
+      "text": "Esperti e osservatori esprimono preoccupazioni sulla trasparenza del finanziamento e sull'indipendenza dei media nel testo proposto. Una tribuna sottolinea che il documento segnerebbe un cambiamento nel pensiero statale armeno, mentre Erevan viene invitata a chiedere garanzie di pace a Baku in questo contesto.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36306/",
+          "title": "Constitution : un expert juge que Erevan doit exiger des garanties sur la paix avec Bakou"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36295/",
+          "title": "Nouvelle Constitution : une tribune y voit le signe d’un changement de pensée étatique en Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/armenie-les-principaux-changements-du-projet-de-nouvelle-constitution/",
+          "title": "Arménie : les principaux changements du projet de nouvelle Constitution"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015625",
+          "title": "Le projet de Constitution arménienne suscite des inquiétudes quant à la transparence du financement et à l’indépendance des médias"
+        }
+      ]
+    },
+    {
+      "title": "Avanzamento del corridoio TRIPP con gli USA",
+      "text": "Il governo ha approvato l'accordo che prevede una quota armena del 26% e una statunitense del 74%. Pashinyan assicura che l'intesa non viola le linee rosse dell'Iran, mentre i lavori preparatori sono già iniziati nella regione del Syunik.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gouvernement-armenien-a-approuve-la-tripp-larmenie-detiendra-26-des-parts-les-etats-unis-74/",
+          "title": "Le gouvernement arménien a approuvé la TRIPP : l’Arménie détiendra 26 % des parts, les États-Unis 74 %"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-nous-respectons-les-lignes-rouges-de-liran-et-laccord-tripp-ne-les-a-pas-franchies-et-ne-les-franchira-en-aucune-facon/",
+          "title": "Nikol Pachinian : Nous respectons les lignes rouges de l’Iran, et l’accord TRIPP ne les a pas franchies et ne les franchira en aucune façon"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36285/",
+          "title": "TRIPP : les travaux préparatoires ont débuté dans le Syunik, selon le ministre Khoudatian"
+        }
+      ]
+    },
+    {
+      "title": "Processo di adesione all'Unione Europea",
+      "text": "Il Primo Ministro Pashinyan esclude l'abrogazione della legge che avvia il percorso di adesione all'UE. Nel frattempo, la società civile armena è stata premiata per la sua iniziativa a favore dell'integrazione europea e si è svolto un incontro con il capo della delegazione UE a Erevan.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-je-ne-considere-pas-possible-dabroger-la-loi-relative-au-lancement-du-processus-dadhesion-de-larmenie-a-lue/",
+          "title": "Nikol Pachinian Je ne considère pas possible d’abroger la loi relative au lancement du processus d’adhésion de l’Arménie à l’UE"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266771",
+          "title": "Arsen Torosyan a reçu le chef de la délégation de l’Union européenne en Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-societe-civile-armenienne-recompensee-pour-son-initiative-dadhesion-a-lue/",
+          "title": "La société civile arménienne récompensée pour son initiative d’adhésion à l’UE"
+        }
+      ]
+    },
+    {
+      "title": "Dialogo e tensioni con l'Azerbaigian",
+      "text": "Esperti azeri si sono recati in Armenia dopo un rinvio di due mesi, e la prosecuzione del dialogo viene considerata un risultato in sé. Tuttavia, un movimento panarmeno denuncia le azioni di Baku presso le istituzioni europee, e il Presidente del Parlamento reagisce alla questione dei passaporti per i residenti dell'Artsakh.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266765",
+          "title": "La poursuite du dialogue entre l’Arménie et l’Azerbaïdjan constitue en soi un acquis, estime Farhad Mammadov"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015654",
+          "title": "Des experts azerbaïdjanais se rendent en Arménie après deux mois de report"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-reagit-a-linscription-de-lazerbaidjan-sur-les-passeports-des-habitants-de-lartsakh/",
+          "title": "Alen Simonyan réagit à l’inscription de l’Azerbaïdjan sur les passeports des habitants de l’Artsakh"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/lorganisation-auto-reconnaissance-mouvement-panarmenien-denonce-les-agissements-de-lazerbaidjan-par-une-lettre-ouverte-aux-institutions-europeennes/",
+          "title": "L’organisation « Auto-reconnaissance », Mouvement panarménien, dénonce les agissements de l’Azerbaïdjan par une lettre ouverte aux institutions européennes"
+        }
+      ]
+    },
+    {
+      "title": "Riforma del Servizio guardie di frontiera e prestito BERS",
+      "text": "Il Primo Ministro ha presieduto una riunione sulla trasformazione del Servizio guardie di frontiera. La BERS concederà un prestito di 19,6 milioni di euro per ammodernare le infrastrutture dei valichi di frontiera.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266777",
+          "title": "La BERD accordera à l’Arménie un prêt de 19,6 millions d’euros pour moderniser les infrastructures des postes-frontières"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266773",
+          "title": "Le Premier ministre a présidé une réunion consacrée aux questions relatives à la transformation du Service des gardes-frontières"
+        }
+      ]
+    },
+    {
+      "title": "Reazione russa alle pressioni sulla Costituzione",
+      "text": "Maria Zakharova ha definito inaccettabile l'ingerenza negli affari interni dell'Armenia, rispondendo all'appello del ministro degli Esteri tedesco a modificare la Costituzione armena.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/il-sagit-dune-ingerence-inacceptable-dans-les-affaires-interieures-dun-etat-souverain-reaction-de-zakharova-a-lappel-du-ministre-allemand-des-affaires-etrangeres-a-modifier-la-constitution-ar/",
+          "title": "Il s’agit d’une ingérence inacceptable dans les affaires intérieures d’un État souverain. Réaction de Zakharova à l’appel du ministre allemand des Affaires étrangères à modifier la Constitution arménienne"
+        }
+      ]
+    },
+    {
+      "title": "Successi scientifici e culturali",
+      "text": "L'Armenia ha vinto sei medaglie alle Olimpiadi internazionali di astronomia. A Parigi è stato presentato il film biografico su Monte Melkonian e si terrà un recital di canti nuziali armeni.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-remporte-six-medailles-aux-olympiades-internationales-dastronomie",
+          "title": "L’Arménie remporte six médailles aux Olympiades internationales d’astronomie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/simon-abkarian-un-geant-de-la-scene-a-la-tete-du-theatre-du-soleil/",
+          "title": "Simon Abkarian, un géant de la scène à la tête du Théâtre du Soleil"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nouveau-disque-et-recital-chants-de-mariage-armenien-le-19-decembre-a-paris/",
+          "title": "Nouveau disque et récital « Chants de mariage arménien » le 19 décembre à Paris"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-film-biographique-monte-consacre-monte-melkonyan-presente-erevan",
+          "title": "Le film biographique « Monte », consacré à Monte Melkonyan, présenté à Erevan"
+        }
+      ]
+    }
+  ]
+}

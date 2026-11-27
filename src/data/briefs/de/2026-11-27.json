@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-27",
+  "lang": "de",
+  "generatedAt": "2026-11-27T03:30:11.192Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über Verfassungsreformen, EU-Annäherung, Grenzfragen und kulturelle Ereignisse.",
+  "topics": [
+    {
+      "title": "Verfassungsreform und staatlicher Denkwandel",
+      "text": "Ein Experte fordert, dass Jerewan Sicherheitsgarantien für einen Frieden mit Baku einfordert. Eine Kolumne sieht im Verfassungsentwurf einen Wandel des staatlichen Denkens. Die wichtigsten Änderungen des Entwurfs werden zusammengefasst.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36306/",
+          "title": "Constitution : un expert juge que Erevan doit exiger des garanties sur la paix avec Bakou"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36295/",
+          "title": "Nouvelle Constitution : une tribune y voit le signe d’un changement de pensée étatique en Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/armenie-les-principaux-changements-du-projet-de-nouvelle-constitution/",
+          "title": "Arménie : les principaux changements du projet de nouvelle Constitution"
+        }
+      ]
+    },
+    {
+      "title": "EU-Beitrittsprozess und Zivilgesellschaft",
+      "text": "Premierminister Paschinjan hält eine Aufhebung des EU-Beitrittsgesetzes für unmöglich. Die Zivilgesellschaft wurde für ihre Initiative zur EU-Annäherung ausgezeichnet. Ausserdem traf Arsen Torossjan den Leiter der EU-Delegation in Armenien.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-je-ne-considere-pas-possible-dabroger-la-loi-relative-au-lancement-du-processus-dadhesion-de-larmenie-a-lue/",
+          "title": "Nikol Pachinian Je ne considère pas possible d’abroger la loi relative au lancement du processus d’adhésion de l’Arménie à l’UE"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266771",
+          "title": "Arsen Torosyan a reçu le chef de la délégation de l’Union européenne en Arménie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/la-societe-civile-armenienne-recompensee-pour-son-initiative-dadhesion-a-lue/",
+          "title": "La société civile arménienne récompensée pour son initiative d’adhésion à l’UE"
+        }
+      ]
+    },
+    {
+      "title": "TRIPP-Abkommen und US-Beziehungen",
+      "text": "Die Regierung billigte das TRIPP-Abkommen: Armenien hält 26 Prozent, die USA 74 Prozent. Paschinjan betonte, dass Irans rote Linien respektiert würden. Vorbereitende Arbeiten haben in Sjunik begonnen.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-gouvernement-armenien-a-approuve-la-tripp-larmenie-detiendra-26-des-parts-les-etats-unis-74/",
+          "title": "Le gouvernement arménien a approuvé la TRIPP : l’Arménie détiendra 26 % des parts, les États-Unis 74 %"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/nikol-pachinian-nous-respectons-les-lignes-rouges-de-liran-et-laccord-tripp-ne-les-a-pas-franchies-et-ne-les-franchira-en-aucune-facon/",
+          "title": "Nikol Pachinian : Nous respectons les lignes rouges de l’Iran, et l’accord TRIPP ne les a pas franchies et ne les franchira en aucune façon"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36285/",
+          "title": "TRIPP : les travaux préparatoires ont débuté dans le Syunik, selon le ministre Khoudatian"
+        }
+      ]
+    },
+    {
+      "title": "Grenzschutz und Infrastrukturmodernisierung",
+      "text": "Paschinjan leitete eine Sitzung zur Umwandlung des Grenzschutzdienstes. Die EBRD gewährt einen Kredit von 19,6 Millionen Euro zur Modernisierung der Grenzübergänge. Aserbaidschanische Experten reisen nach zweimonatiger Verzögerung nach Armenien.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266773",
+          "title": "Le Premier ministre a présidé une réunion consacrée aux questions relatives à la transformation du Service des gardes-frontières"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266777",
+          "title": "La BERD accordera à l’Arménie un prêt de 19,6 millions d’euros pour moderniser les infrastructures des postes-frontières"
+        },
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015654",
+          "title": "Des experts azerbaïdjanais se rendent en Arménie après deux mois de report"
+        }
+      ]
+    },
+    {
+      "title": "Aserbaidschan-Pässe für Artsach-Bewohner und Dialog",
+      "text": "Alen Simonian reagierte auf die Eintragung Aserbaidschans in die Pässe der Artsach-Bewohner. Farhad Mammadov wertet die Fortsetzung des Dialogs zwischen Armenien und Aserbaidschan als Erfolg.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/alen-simonyan-reagit-a-linscription-de-lazerbaidjan-sur-les-passeports-des-habitants-de-lartsakh/",
+          "title": "Alen Simonyan réagit à l’inscription de l’Azerbaïdjan sur les passeports des habitants de l’Artsakh"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266765",
+          "title": "La poursuite du dialogue entre l’Arménie et l’Azerbaïdjan constitue en soi un acquis, estime Farhad Mammadov"
+        }
+      ]
+    },
+    {
+      "title": "Internationale Astronomie-Olympiade und Kultur",
+      "text": "Armenien gewann sechs Medaille an den Internationalen Astronomie-Olympiaden. Der Film \"Monte\" über Monte Melkonjan wurde in Jerewan vorgestellt. Simon Abkarian leitet das Théâtre du Soleil.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-remporte-six-medailles-aux-olympiades-internationales-dastronomie",
+          "title": "L’Arménie remporte six médailles aux Olympiades internationales d’astronomie"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/le-film-biographique-monte-consacre-monte-melkonyan-presente-erevan",
+          "title": "Le film biographique « Monte », consacré à Monte Melkonyan, présenté à Erevan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/simon-abkarian-un-geant-de-la-scene-a-la-tete-du-theatre-du-soleil/",
+          "title": "Simon Abkarian, un géant de la scène à la tête du Théâtre du Soleil"
+        }
+      ]
+    },
+    {
+      "title": "Wirtschaftliche Massnahmen und Diaspora",
+      "text": "Armenische Exporteure erhalten 4,47 Milliarden Dram zur Begleichung ihrer Oktober-Schulden. Die Stiftung KERON mobilisierte in Paris zwei Millionen Dollar für die Medizin in Armenien. Ein Porträt von Max Sivaslian erschien zum 69. Jahrestag des Monte.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-exportateurs-armeniens-recevront-447-milliards-de-drams-pour-regler-leurs-dettes-doctobre/",
+          "title": "Les exportateurs arméniens recevront 4,47 milliards de drams pour régler leurs dettes d’octobre"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/paris-la-fondation-keron-mobilise-2-millions-de-dollars-pour-lavenir-de-la-medecine-en-armenie",
+          "title": "À Paris, la Fondation KERON mobilise 2 millions de dollars pour l’avenir de la médecine en Arménie"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/69-ans-monte-par-max-sivaslian/",
+          "title": "69 ans Monté, par Max Sivaslian"
+        }
+      ]
+    }
+  ]
+}

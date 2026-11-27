@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-27",
+  "lang": "es",
+  "generatedAt": "2026-11-27T03:30:11.192Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada destaca por los avances en la iniciativa Puente de Paz entre Armenia y Azerbaiyán, el debate constitucional interno y nuevos acuerdos económicos con socios regionales.",
+  "topics": [
+    {
+      "title": "Quinta reunión de la iniciativa Puente de Paz en Armenia",
+      "text": "Sesenta representantes de la sociedad civil de ambos países se reunieron en territorio armenio para la quinta sesión de este formato de diálogo. El presidente de la Asamblea Nacional, Alen Simonyan, recibió a los participantes del encuentro.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/quinta-reunion-puente-de-la-paz-armenia-azerbaiyan/",
+          "title": "Sesenta representantes de la sociedad civil de Armenia y Azerbaiyán celebran en territorio armenio la quinta reunión de la iniciativa «Puente de la Paz»"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266743",
+          "title": "Alen Simonyan se reunió con los participantes de la iniciativa Puente de Paz"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266693",
+          "title": "Comenzó el quinto encuentro de la iniciativa Puente de Paz"
+        }
+      ]
+    },
+    {
+      "title": "Debate sobre el proyecto de nueva Constitución y ciudadanía",
+      "text": "El primer ministro Nikol Pashinyan defendió el borrador constitucional y explicó el artículo que permite la privación de la ciudadanía, precisando que el texto se perfeccionará bajo el concepto de “Armenia Real”. El proyecto será remitido a la Comisión de Venecia para su análisis.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266723",
+          "title": "El primer ministro de Armenia explicó la disposición del nuevo proyecto de Constitución sobre la posibilidad de privar a una persona de su ciudadanía"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266716",
+          "title": "El proyecto de nueva Constitución será enviado a la Comisión de Venecia"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266708",
+          "title": "Según el primer ministro, el proyecto de nueva Constitución se perfeccionará dentro del marco ideológico de la “Armenia Real”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266699",
+          "title": "Galyan se refirió a la disposición propuesta en el nuevo proyecto de Constitución sobre la privación de la ciudadanía"
+        }
+      ]
+    },
+    {
+      "title": "Pashinyan descarta derogar la ley de adhesión a la UE y aboga por diálogo constitucional",
+      "text": "El primer ministro consideró inviable derogar la ley que inicia el proceso de adhesión a la Unión Europea y subrayó la necesidad de un diálogo con la sociedad sobre la reforma constitucional. También calificó de extraña la postura de Armen Grigoryan sobre las relaciones con el bloque europeo.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266718",
+          "title": "Pashinyan considera inviable derogar la ley sobre el inicio del proceso de adhesión a la Unión Europea"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266714",
+          "title": "Nikol Pashinyan calificó de extraña la postura de Armen Grigoryan sobre las relaciones con la Unión Europea"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266706",
+          "title": "Pashinyan considera necesario entablar un diálogo con la sociedad sobre el proyecto de nueva Constitución"
+        }
+      ]
+    },
+    {
+      "title": "Relaciones bilaterales con Rusia y control fronterizo",
+      "text": "Pashinyan afirmó que Armenia no busca perjudicar a Rusia y que las tensiones bilaterales están disminuyendo, al tiempo que anunció que el país asumirá plenamente el control de sus fronteras en los próximos años. En Moscú, Armen Grigoryan trató la soberanía económica con el viceprimer ministro ruso Alexei Overchuk.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-armenia-no-perjudicar-rusia-tensiones/",
+          "title": "Nikol Pashinyan afirma que Armenia no busca perjudicar a Rusia y sostiene que las tensiones bilaterales están disminuyendo"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/pashinyan-armenia-responsabilidad-proteger-fronteras/",
+          "title": "Nikol Pashinyan anuncia que Armenia asumirá plenamente el control de sus fronteras en los próximos años"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/moscu-conversaciones-grigoryan-overchuk/",
+          "title": "La soberanía económica de Armenia centra las conversaciones entre Grigoryan y Overchuk en Moscú"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación energética y de transporte con Turkmenistán",
+      "text": "Tras la XI Comisión Intergubernamental celebrada en Asjabad, Armenia y Turkmenistán acordaron profundizar su colaboración en los sectores de energía y transporte.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-turkmenistan-cooperacion-energia-transporte/",
+          "title": "Armenia y Turkmenistán acuerdan profundizar su cooperación en energía y transporte tras la XI Comisión Intergubernamental en Asjabad"
+        }
+      ]
+    },
+    {
+      "title": "Nuevas cuotas aduaneras y regulación del almacenamiento energético",
+      "text": "El gobierno aprobó nuevas cuotas aduaneras que definen cantidades libres de aranceles para teléfonos, calzado y perfumes. Además, se reguló el almacenamiento de energía abriendo su construcción a inversores privados.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-telefonos-zapatos-perfumes-sin-aranceles/",
+          "title": "Nuevas cuotas aduaneras en Armenia: cuántos teléfonos, zapatos y perfumes ingresan sin aranceles"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/armenia-regula-almacenamiento-energia-inversores/",
+          "title": "Armenia regula el almacenamiento de energía y abre su construcción a inversores"
+        }
+      ]
+    },
+    {
+      "title": "Azerbaiyán invierte en el Archivo Apostólico Vaticano y ONG piden rechazar su candidatura a la OSCE 2027",
+      "text": "Medios armenios informan que Azerbaiyán financia proyectos en el Archivo Apostólico Vaticano, lo que genera interrogantes en Ereván y Etchmiadzin. Paralelamente, más de 40 ONG solicitan rechazar la postulación azerbaiyana para presidir la OSCE en 2027.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/azerbaiyan-invierte-en-el-archivo-apostolico-vaticano/",
+          "title": "Azerbaiyán invierte en el Archivo Apostólico Vaticano para reescribir el pasado: ¿qué hacen Ereván y Etchmiadzin?"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/ong-rechazan-candidatura-azerbaiyan-osce-2027/",
+          "title": "Más de 40 ONG piden rechazar la candidatura de Azerbaiyán para presidir la OSCE en 2027"
+        }
+      ]
+    }
+  ]
+}
