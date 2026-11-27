@@ -1,0 +1,58 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Arshile Gorky",
+      "title": "Breton begeistert",
+      "text": "1944 entdeckt André Breton Gorkys Gemälde und würdigt ihn als wahrhaften Surrealisten.",
+      "spoken": "1944 in New York würdigt André Breton ihn als wahrhaften Surrealisten.",
+      "big": false
+    },
+    {
+      "eyebrow": "Vansee · 15. April 1904",
+      "title": "Khorkom",
+      "text": "Geboren als Vosdanik Manoug Adoian im Osmanischen Reich, wuchs der Maler am Vansee auf.",
+      "spoken": "Geboren am Vansee, hiess er damals noch Vosdanik Manoug Adoian.",
+      "big": false
+    },
+    {
+      "eyebrow": "Völkermord an den Armeniern",
+      "title": "1915",
+      "text": "Nach der Flucht 1915 verlor er seine Mutter im harten Winter 1918–1919 in Jerewan durch Hunger.",
+      "spoken": "Nach der Flucht 1915 verhungert seine Mutter in Jerewan.",
+      "big": true
+    },
+    {
+      "eyebrow": "Boston und New York",
+      "title": "1920",
+      "text": "1920 kam er im Alter von sechzehn Jahren in die USA und nahm in New York den Namen Arshile Gorky an.",
+      "spoken": "1920 mit sechzehn angekommen, wählt er in New York den Namen Arshile Gorky.",
+      "big": true
+    },
+    {
+      "eyebrow": "Von 1926 bis 1936",
+      "title": "Der Künstler und seine Mutter",
+      "text": "Jahrelang arbeitete er an diesem Doppelporträt nach einer Fotografie aus seiner Kindheit in Van.",
+      "spoken": "Er malt an diesem Porträt, inspiriert von einem Foto seiner Kindheit.",
+      "big": false
+    },
+    {
+      "eyebrow": "New York School",
+      "title": "Ein neuer Stil",
+      "text": "Als Freund von Willem de Kooning schuf er biomorphe Formen und prägte die moderne Malerei.",
+      "spoken": "Mit Willem de Kooning ebnet er dem abstrakten Expressionismus den Weg.",
+      "big": false
+    },
+    {
+      "eyebrow": "Connecticut · 21. Juli 1948",
+      "title": "vierundvierzig Jahre",
+      "text": "Mit vierundvierzig Jahren verstorben, hängen seine Werke heute im Centre Pompidou und in der Tate.",
+      "spoken": "Mit vierundvierzig Jahren verstorben, werden seine Werke weltweit bewundert.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Arshile Gorky",
+  "ytTitle": "Arshile Gorky: Vom Völkermord zur modernen Kunst",
+  "ytLead": "Als Flüchtling nach dem Völkermord von 1915 wurde Vosdanik Adoian in den USA zum Maler Arshile Gorky und Pionier des abstrakten Expressionismus.",
+  "sourceHash": "3bc72dae972cd68dbd5c1e6b18ae23e05a38b7eac1ebc619b166ad9b91bfb919",
+  "model": "gemini-flash-latest"
+}
