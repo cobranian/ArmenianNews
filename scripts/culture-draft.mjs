@@ -213,10 +213,13 @@ async function draftArticle({ topic, event }) {
   // Une image par fait dans le Short : rassemblées ici pour être montrées
   // dans la PR ; leur échec ne coûte que la variété (la photo de l'article
   // reste).
-  meta.shortImages = await gatherShortImages(meta).catch((e) => {
-    warnings.push(`Images de la vidéo non trouvées (${e.message}) : le Short n’aura que la photo de l’article.`)
-    return []
-  })
+  // Un échec laisse la liste ABSENTE (pas vide) : `culture-short-images <slug>`
+  // pourra la rassembler plus tard, ce qu'une liste vide interdirait.
+  try {
+    meta.shortImages = await gatherShortImages(meta)
+  } catch (e) {
+    warnings.push(`Images de la vidéo non trouvées (${e.message}) : le Short n’aura que la photo de l’article. Pour réessayer : \`npm run culture:short-images -- ${topic.slug}\`.`)
+  }
 
   const date = new Date().toISOString().slice(0, 10)
   const frText = serializeFrontMatter({ title: draft.title, description: draft.description, date }, draft.body)
@@ -245,7 +248,7 @@ async function draftArticle({ topic, event }) {
   await writeFile(path.join(base, 'fr.md'), frText)
   // Téléchargées une fois ; un échec est repris à la publication
   // (culture-translate), la liste reste celle de la PR.
-  const shortSync = await syncShortImages(base, meta).catch((e) => ({ lines: [`- ✗ images de la vidéo : ${e.message}`], failed: 1 }))
+  const shortSync = await syncShortImages(base, meta, { gatherIfMissing: false }).catch((e) => ({ lines: [`- ✗ images de la vidéo : ${e.message}`], failed: 1 }))
   if (shortSync.failed) console.warn(shortSync.lines.filter((l) => l.includes('✗')).join('\n'))
   await writeFile(path.join(base, 'meta.json'), `${JSON.stringify(meta, null, 2)}\n`)
   if (video.short) await writeFile(path.join(base, 'short.fr.json'), `${JSON.stringify(video.short, null, 2)}\n`)

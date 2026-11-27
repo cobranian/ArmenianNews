@@ -3,6 +3,7 @@
 // (quoi traduire avant la fusion) et video.yml (quoi rendre après).
 import { ALL_LANGS } from '../../sites.config.js'
 import { TRANSLATED, chosenImage } from './culture-validate.mjs'
+import { shortImagesNeedSync } from './culture-short-credits.mjs'
 
 const online = (videos, slug, lang) => Boolean(videos?.[slug]?.[lang])
 
@@ -52,14 +53,15 @@ export function frShortMissing(result, { slug, videos }) {
 //     leur Short suit dans le même passage ;
 //   - Shorts : --short-only sur les langues à article publiable dont le Short
 //     ne l'est pas ;
-//   - image changée (imageChoice) sans autre travail : un --short-only seul,
-//     qui synchronise l'image et ne traduit que ce qui doit l'être.
+//   - image changée (imageChoice), ou image de vidéo remplacée à la main
+//     (meta.shortImages), sans autre travail : un --short-only seul, qui
+//     synchronise les images et ne traduit que ce qui doit l'être.
 // Sans fr.md lisible (result.langs.fr absent), aucune traduction n'y peut rien.
 export function translationRuns(result, { slug, videos, meta, checkPassed }) {
   if (!result.langs?.fr) return []
   const articles = checkPassed ? [] : TRANSLATED.filter((l) => !result.langs[l])
   const shorts = shortsToTranslate(result, { slug, videos })
-  const imageChanged = (chosenImage(meta)?.commonsUrl ?? null) !== (meta?.image?.commonsUrl ?? null)
+  const imageChanged = (chosenImage(meta)?.commonsUrl ?? null) !== (meta?.image?.commonsUrl ?? null) || shortImagesNeedSync(meta)
   const runs = []
   if (articles.length) runs.push(['--langs', articles.join(',')])
   if (shorts.length) runs.push(['--short-only', '--langs', shorts.join(',')])

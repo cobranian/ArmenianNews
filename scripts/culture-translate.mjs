@@ -99,10 +99,12 @@ if ((chosen?.commonsUrl ?? null) !== (meta.image?.commonsUrl ?? null)) {
 }
 
 // Les images de la vidéo (une par fait) : un fichier remplacé à la main dans
-// la PR est relu et retéléchargé. Jamais bloquant — au pire, le Short n'a que
+// la PR est relu et téléchargé. Jamais bloquant — au pire, le Short n'a que
 // les images valides, et la ligne ⚠️ le dit.
 try {
-  const shortSync = await syncShortImages(base, meta)
+  // gatherIfMissing: false — un article sans liste (publié avant les images
+  // par fait) n'en reçoit jamais que personne n'a revues.
+  const shortSync = await syncShortImages(base, meta, { gatherIfMissing: false })
   await writeFile(metaPath, `${JSON.stringify(meta, null, 2)}\n`)
   if (shortSync.failed) lines.push(...shortSync.lines.filter((l) => l.includes('✗')).map((l) => l.replace('- ✗', '- ⚠️')))
 } catch (e) {

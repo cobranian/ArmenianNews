@@ -3,8 +3,9 @@
 // Les images d'un Short Culture : une par fait, pour le rythme (une seule
 // photo pendant ~50 s rendait la vidéo monotone). Image 1 = la photo de
 // l'article (meta.image, image.jpg) ; les SHORT_EXTRA suivantes sont
-// rangées dans meta.shortImages et téléchargées en short-<n>.jpg à côté de
-// l'article — un nom que le site ne publie pas (il ne lit que image.*).
+// rangées dans meta.shortImages et téléchargées en short-<empreinte>.jpg à
+// côté de l'article — un nom que le site ne publie pas (il ne lit que image.*).
+// Quelles entrées sont montrées et créditées : culture-short-credits.mjs.
 //
 // Source : les images des articles Wikipédia du sujet (fr, en, hy, ru) et les
 // candidates du brouillon — dans le sujet par construction. JAMAIS la
@@ -17,6 +18,9 @@ import { readdir, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { api, downloadImage, fetchCommonsCandidates as commons, getJson } from './culture-sources.mjs'
 import { makeShortImage as shrink } from './culture-image.mjs'
+import { isStale, SHORT_FILE, shortImageFile } from './culture-short-credits.mjs'
+
+export { isStale, shortImageFile, creditedShortImages, usableShortImages, shortImagesNeedSync } from './culture-short-credits.mjs'
 
 export const SHORT_EXTRA = 6
 const PAGE_LANGS = ['fr', 'en', 'hy', 'ru']
@@ -25,6 +29,8 @@ const BITMAP = /\.(jpe?g|png|webp)$/i
 const NOT_A_PICTURE = /\b(icon|logo|flag|signature|pictogram|coat of arms|map)\b/i
 // Ni bandeau ni bâton : la planche du Short est en 920×540.
 const RATIO = { min: 0.5, max: 2.5 }
+// Commons ne décrit que 50 titres par requête.
+const COMMONS_MAX = 50
 
 const pause = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -61,34 +67,37 @@ export function pickShortImages({ articleImage, candidates = [], infos = [] }) {
   return out
 }
 
+// Les pages en échec (429 de Wikimedia, page absente) sont sautées : les
+// autres langues suffisent souvent. Les titres sont pris à tour de rôle dans
+// chaque page, pour que la française (souvent la plus fournie, et la première)
+// ne remplisse pas seule les 50 places de la requête Commons.
 export async function gatherShortImages(meta, { fetchCommonsCandidates = commons, fetchImpl = fetch, wait = 1000 } = {}) {
-  const files = (meta.candidates ?? []).map((c) => c.file)
+  const pages = []
   for (const page of wikiImageTitles(meta.sources)) {
     await pause(wait)
-    files.push(...(await fetchPageImageFiles(page, fetchImpl)))
+    try {
+      pages.push(await fetchPageImageFiles(page, fetchImpl))
+    } catch (e) {
+      console.warn(`  ✗ images de ${page.lang}:${page.title} : ${e.message}`)
+    }
   }
+  const files = new Set((meta.candidates ?? []).map((c) => c.file))
+  for (let i = 0; files.size < COMMONS_MAX && pages.some((p) => i < p.length); i++)
+    for (const p of pages) if (i < p.length && files.size < COMMONS_MAX) files.add(p[i])
   await pause(wait)
-  const infos = await fetchCommonsCandidates({ files: [...new Set(files)], limit: 50, max: 50 }, fetchImpl)
+  const infos = await fetchCommonsCandidates({ files: [...files], limit: COMMONS_MAX, max: COMMONS_MAX }, fetchImpl)
   return pickShortImages({ articleImage: meta.image, candidates: meta.candidates, infos })
 }
 
-// Vrai si l'entrée doit être relue sur Commons : Nareg a remplacé son `file`
-// à la main dans la PR (le commonsUrl ne finit plus par ce fichier), ou
-// l'entrée n'a jamais été résolue.
-export function isStale(entry) {
-  if (!entry?.commonsUrl || !entry.file) return true
-  const tail = decodeURIComponent(entry.commonsUrl.split('/wiki/').pop() ?? '')
-  return tail.replace(/_/g, ' ') !== entry.file.replace(/_/g, ' ')
-}
-
-export const shortImageFile = (n) => `short-${n}.jpg`
-
-// meta.shortImages ⇔ short-<n>.jpg dans `base`. Sans liste (ou `refresh`),
-// elle est rassemblée ; une entrée remplacée à la main est relue sur Commons
-// par son `file` — introuvable ou non libre = échec en clair, jamais une
-// image sans crédit. Les fichiers manquants ou périmés sont téléchargés, ceux
-// au-delà de la liste supprimés (sync les recopierait sans crédit). Modifie
-// `meta` ; à l'appelant d'écrire meta.json.
+// meta.shortImages ⇔ short-<empreinte>.jpg dans `base`. Sans liste, elle est
+// rassemblée — sauf `gatherIfMissing: false` (la publication : un article
+// déjà publié ne reçoit jamais d'images que personne n'a revues). `refresh`
+// rassemble à nouveau. Une entrée remplacée à la main est relue sur Commons
+// par son `file` — refusée = échec en clair, jamais une image sans crédit.
+// Le nom du fichier suit la page Commons : une entrée retirée, déplacée ou
+// renouvelée ne peut pas garder l'image d'une autre. Les fichiers qu'aucune
+// entrée ne nomme sont supprimés. Modifie `meta` ; à l'appelant d'écrire
+// meta.json.
 export async function syncShortImages(base, meta, deps = {}) {
   const {
     fetchCommonsCandidates = commons,
@@ -96,41 +105,35 @@ export async function syncShortImages(base, meta, deps = {}) {
     makeShortImage = shrink,
     gather = (m) => gatherShortImages(m, { fetchCommonsCandidates }),
     refresh = false,
+    gatherIfMissing = true,
+    wait = 1000,
   } = deps
+  if (!Array.isArray(meta.shortImages) && !gatherIfMissing && !refresh) return { lines: [], failed: 0 }
   const lines = []
   let failed = 0
   if (!Array.isArray(meta.shortImages) || refresh) meta.shortImages = await gather(meta)
+  let downloads = 0
   for (const [i, entry] of meta.shortImages.entries()) {
-    const n = i + 1
-    const file = path.join(base, shortImageFile(n))
     try {
-      const stale = isStale(entry)
-      if (stale) {
+      if (isStale(entry)) {
         const [fresh] = await fetchCommonsCandidates({ files: [entry.file], limit: 1 })
-        if (!fresh) throw new Error('introuvable ou licence non libre')
+        // fetchCommonsCandidates écarte aussi ce qui fait moins de 800 px.
+        if (!fresh) throw new Error('introuvable, trop petit ou licence non libre')
         meta.shortImages[i] = fresh
       }
-      if (stale || !existsSync(file)) await writeFile(file, await makeShortImage(await download(meta.shortImages[i].thumbUrl)))
-      lines.push(`- ✓ image ${n + 1} : ${meta.shortImages[i].file}`)
+      const file = path.join(base, shortImageFile(meta.shortImages[i]))
+      if (!existsSync(file)) {
+        // Un téléchargement à la fois, espacés : Wikimedia limite les IP des runners.
+        if (downloads++) await pause(wait)
+        await writeFile(file, await makeShortImage(await download(meta.shortImages[i].thumbUrl)))
+      }
+      lines.push(`- ✓ image ${i + 2} : ${meta.shortImages[i].file}`)
     } catch (e) {
       failed++
-      lines.push(`- ✗ image ${n + 1} (${entry.file}) : ${e.message}`)
+      lines.push(`- ✗ image ${i + 2} (${entry.file}) : ${e.message}`)
     }
   }
-  const keep = new Set(meta.shortImages.map((_, i) => shortImageFile(i + 1)))
-  for (const f of await readdir(base))
-    if (/^short-\d+\.jpg$/.test(f) && !keep.has(f)) await rm(path.join(base, f))
+  const keep = new Set(meta.shortImages.filter((e) => !isStale(e)).map(shortImageFile))
+  for (const f of await readdir(base)) if (SHORT_FILE.test(f) && !keep.has(f)) await rm(path.join(base, f))
   return { lines, failed }
-}
-
-// Les images d'un fait réellement utilisables : un crédit à jour ET leur
-// fichier. La vidéo (video/scripts/sync.mjs) et la description YouTube
-// (video-publish.mjs) lisent CETTE liste, pour que l'écran et la description
-// créditent les mêmes photos. Une entrée remplacée à la main mais pas encore
-// relue est écartée : son fichier montrerait l'ancienne image sous le
-// nouveau crédit.
-export function usableShortImages(base, meta) {
-  return (meta.shortImages ?? [])
-    .map((entry, i) => ({ entry, src: path.join(base, shortImageFile(i + 1)) }))
-    .filter(({ entry, src }) => !isStale(entry) && existsSync(src))
 }

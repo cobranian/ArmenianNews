@@ -33,7 +33,7 @@ import { planBlockers, videoLangs } from './lib/culture-video-plan.mjs'
 import { addReels, assetName, readReels } from './lib/reels-add.mjs'
 import { enqueue, readQueue } from './lib/youtube-queue.mjs'
 import { musicLine, youtubeMeta } from './lib/youtube-meta.mjs'
-import { usableShortImages } from './lib/culture-short-images.mjs'
+import { usableShortImages } from './lib/culture-short-credits.mjs'
 
 const RELEASE = 'reels-1'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')

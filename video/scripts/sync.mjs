@@ -18,7 +18,7 @@ import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promi
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { usableShortImages } from '../../scripts/lib/culture-short-images.mjs'
+import { usableShortImages } from '../../scripts/lib/culture-short-credits.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const culture = path.resolve(root, '../src/data/culture')

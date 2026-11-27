@@ -26,6 +26,7 @@ import { SITES, siteOf, briefUrl, cultureUrl, cultureImagePath } from '../../sit
 import { BRIEF_STRINGS } from '../../src/briefStrings.js'
 import { longDate } from './brief-links.mjs'
 import { createHmac, randomBytes } from 'node:crypto'
+import { creditedShortImages } from './culture-short-credits.mjs'
 
 // Un canal = un compte sur une plateforme, pour UNE langue. Les noms sont ceux
 // des secrets GitHub : un canal n'est actif que si TOUS ses secrets sont posés.
@@ -187,11 +188,15 @@ export function cultureItems(articles) {
 export const REEL_BASE = 'https://github.com/cobranian/ArmenianNews/releases/download/reels-1/'
 
 export function reelItems(articles, reels) {
+  const metaOf = new Map(articles.map((a) => [a.slug, a.meta]))
   return cultureItems(articles).flatMap((it) => {
     const slug = it.id.slice('culture:'.length)
     const r = reels?.[slug]?.[it.lang]
     if (!r) return []
-    return [{ ...it, id: `reel:${slug}`, kind: 'reel', video: { url: REEL_BASE + r.asset, music: r.music } }]
+    // Les autres photos de la vidéo (une par fait) : celles que l'écran
+    // crédite (culture-short-credits.mjs). Absentes : la légende d'avant.
+    const more = creditedShortImages(metaOf.get(slug)).map(({ author, license }) => ({ author: author ?? null, license: license ?? null }))
+    return [{ ...it, id: `reel:${slug}`, kind: 'reel', video: { url: REEL_BASE + r.asset, music: r.music }, ...(more.length ? { moreImages: more } : {}) }]
   })
 }
 
@@ -454,9 +459,12 @@ export function escapeLittleText(s) {
 }
 
 function credit(item, s) {
-  const img = item.image
-  if (!img?.author && !img?.license) return null
-  return `${s.image}${s.colon}${[img.author, img.license].filter(Boolean).join(', ')}`
+  // Un Reel à plusieurs images crédite chacune, une ligne par photo, dans
+  // l'ordre de la vidéo.
+  const lines = [item.image, ...(item.moreImages ?? [])]
+    .filter((img) => img?.author || img?.license)
+    .map((img) => `${s.image}${s.colon}${[img.author, img.license].filter(Boolean).join(', ')}`)
+  return [...new Set(lines)].join('\n') || null
 }
 
 // Chaque lien publié dit de quel réseau il vient : sans ce marqueur, GA4
