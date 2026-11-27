@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T19:01:09.769Z",
+  "generatedAt": "2026-11-27T19:49:04.920Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1153,7 +1153,7 @@
             "title": "Հանրային փոխադրամիջոցների մի շարք երթուղիներում փոփոխություններ կլինեն",
             "url": "https://hy.armradio.am/archives/773387",
             "date": "2026-11-27T17:54:55.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2025/01/avtobus-768x440.jpg",
+            "image": "https://hy.armradio.am/wp-content/uploads/2023/08/367906359_845810603313542_8380265254850631963_n-768x510.jpg",
             "category": "Կարևոր"
           },
           {
@@ -1375,6 +1375,13 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Մելանյա Թրամփի միջնորդությամբ ուկրաինացի 9 երեխա վերադարձվել է հայրենիք",
+            "url": "https://hy.armradio.am/archives/773403",
+            "date": "2026-11-27T19:03:00.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/b1f27aa7-f06f-477d-b58b-6a87b2f893a9.jpg-768x432.webp",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Գերմանիայի Բունդեսթագը հաստատել է 2027 թվականի բյուջեն` ռեկորդային պաշտպանական ծախսերով",
             "url": "https://hy.armradio.am/archives/773383",
             "date": "2026-11-27T17:37:29.000Z",
@@ -1382,11 +1389,11 @@
             "category": "Միջազգային"
           },
           {
-            "title": "Դիվանագիտական լարվածություն՝ Թուրքիայի և Վրաստանի միջև․ թուրքիան սատարել է «Բեշիքթաշին»",
+            "title": "Դիվանագիտական լարվածություն՝ Թուրքիայի և Վրաստանի միջև․ Թուրքիան սատարել է «Բեշիքթաշին»",
             "url": "https://hy.armradio.am/archives/773380",
             "date": "2026-11-27T17:19:52.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/80072900_1004-768x336.webp",
-            "category": "Կարևոր"
+            "category": "Միջազգային"
           },
           {
             "title": "Բեռլինի տեխնիկական համալսարանի ուսանողները գրավել են շենքի մի մասը՝ պահանջելով վերանորոգել այն",
@@ -1435,13 +1442,6 @@
             "url": "https://hy.armradio.am/archives/773162",
             "date": "2026-11-26T18:51:00.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/53_main-v1790193994-768x488.webp",
-            "category": "Կարևոր"
-          },
-          {
-            "title": "ՉԹՕ-ների գաղտնիքը բացահայտվո՞ւմ է․ Պենտագոնը նոր տեսանյութեր է հրապարակել, բայց հարցերն ավելի են շատանում",
-            "url": "https://hy.armradio.am/archives/773170",
-            "date": "2026-11-26T17:40:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/4649332-300x189.jpg",
             "category": "Կարևոր"
           }
         ]
@@ -11126,6 +11126,30 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Պենտագոնը քննարկել է Սառը պատերազմի ժամանակների օրենքի կիրառումը՝ Հուանգին Nvidia վերադարձնելու համար",
+            "url": "https://news.am/hy/news/1077674",
+            "date": "2026-11-27T19:56:00.000Z",
+            "image": "https://news.am/storage/media/26/11/17/PPCuFPyR8VFdQTBR.webp"
+          },
+          {
+            "title": "Պուտինը նոր «Պերմ» ատոմային ստորջրյա հածանավը համաշխարհային նշանակության զենք է անվանել",
+            "url": "https://news.am/hy/news/1077711",
+            "date": "2026-11-27T19:44:54.000Z",
+            "image": "https://news.am/storage/media/26/11/27/j6XUDhbhWwEWdo0O.webp"
+          },
+          {
+            "title": "Ռումինիան Գերմանիային խնդրել է ավելի շատ զինվորականներ ուղարկել ՆԱՏՕ-ի արևելյան թև",
+            "url": "https://news.am/hy/news/1077677",
+            "date": "2026-11-27T19:34:00.000Z",
+            "image": "https://news.am/storage/media/26/10/22/OvRrhdyuLiq3DGpm.webp"
+          },
+          {
+            "title": "Իրանում կասկածում են, որ Ուկրաինան Քուվեյթին հարվածել է կեղծ դրոշի ներքո իրականացված գործողության շրջանակում",
+            "url": "https://news.am/hy/news/1077710",
+            "date": "2026-11-27T19:32:35.000Z",
+            "image": "https://news.am/storage/media/26/07/16/tRxppMwnwkfRmuMm.webp"
+          },
+          {
             "title": "Իսրայելական ընդդիմությունը նպատակ ունի կառավարություն ձևավորել առանց Նեթանյահուի մասնակցության",
             "url": "https://news.am/hy/news/1077708",
             "date": "2026-11-27T19:02:05.000Z",
@@ -11160,30 +11184,6 @@
             "url": "https://news.am/hy/news/1077702",
             "date": "2026-11-27T17:07:56.000Z",
             "image": "https://news.am/storage/media/26/11/27/tiAQDhl9P3aMC5KH.webp"
-          },
-          {
-            "title": "Կիմ Չեն Ընը կասեցրել է ՌԴ-ին տրամադրվող օգնությունը. ուկրաինական հետախուզություն",
-            "url": "https://news.am/hy/news/1077686",
-            "date": "2026-11-27T17:01:00.000Z",
-            "image": "https://news.am/storage/media/26/05/11/4cfRlkZdD5qvg7nf.webp"
-          },
-          {
-            "title": "Ընտրություններից 16 օր առաջ ընդդիմության թեկնածուին դատական ակտով ընտրվելու իրավունքից զրկելն ուղղակի միջամտություն է ընտրական գործընթացին. ՀՀԿ",
-            "url": "https://news.am/hy/news/1077700",
-            "date": "2026-11-27T16:41:33.000Z",
-            "image": "https://news.am/storage/media/26/11/27/sFPla7av2w7cE947.webp"
-          },
-          {
-            "title": "Թրամփը Պուտինի նկատմամբ բարեկամական վերաբերմունքը բացատրել է կարգավորման հասնելու փորձով",
-            "url": "https://news.am/hy/news/1077688",
-            "date": "2026-11-27T15:34:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/nEWlnbRUgbyEg94A.webp"
-          },
-          {
-            "title": "Պատմություն չունեցող պետություն. եվրապատգամավորը Թուրքիային մեղադրել է Հայոց ցեղասպանությունը ճանաչելուց հրաժարվելու մեջ",
-            "url": "https://news.am/hy/news/1077691",
-            "date": "2026-11-27T15:16:00.000Z",
-            "image": "https://news.am/storage/media/26/11/27/K39wNEcQO196feaw.webp"
           }
         ]
       },
@@ -11258,6 +11258,12 @@
         "label": "NEWS.am Sport",
         "articles": [
           {
+            "title": "«Արսենալը» ցանկանում է ձեռք բերել Նիկո Պասին",
+            "url": "https://sport.news.am/arm/news/170536/",
+            "date": "2026-11-27T19:38:00.000Z",
+            "image": "https://sport.news.am/static/news/s/2026/11/170536.jpg"
+          },
+          {
             "title": "ISU Grand Prix. Կարինա Ակոպովան և Նիկիտա Ռախմանինը երրորդն են կարճ ծրագրում (տեսանյութ)",
             "url": "https://sport.news.am/arm/news/170534/",
             "date": "2026-11-27T18:01:00.000Z",
@@ -11310,12 +11316,6 @@
             "url": "https://sport.news.am/arm/news/170526/",
             "date": "2026-11-27T12:19:00.000Z",
             "image": "https://sport.news.am/static/news/s/2026/11/170526.jpg"
-          },
-          {
-            "title": "Ֆրանսիայի առաջնություն․ Մեկնարկում է 12-րդ տուր",
-            "url": "https://sport.news.am/arm/news/170512/",
-            "date": "2026-11-27T11:45:00.000Z",
-            "image": "https://sport.news.am/static/news/s/2026/11/170512.jpg"
           }
         ]
       },
@@ -11588,6 +11588,12 @@
         "label": "Պատահարներ",
         "articles": [
           {
+            "title": "Իրանում կասկածում են, որ Ուկրաինան Քուվեյթին հարվածել է կեղծ դրոշի ներքո իրականացված գործողության շրջանակում",
+            "url": "https://news.am/hy/news/1077710",
+            "date": "2026-11-27T19:32:35.000Z",
+            "image": "https://news.am/storage/media/26/07/16/tRxppMwnwkfRmuMm.webp"
+          },
+          {
             "title": "Վրաստանի վարչապետն անդրադարձել է ուժայինների և թուրք երկրպագուների միջև բախումներին",
             "url": "https://news.am/hy/news/1077707",
             "date": "2026-11-27T18:43:56.000Z",
@@ -11640,12 +11646,6 @@
             "url": "https://news.am/hy/news/1077561",
             "date": "2026-11-27T07:54:00.000Z",
             "image": "https://news.am/storage/media/26/11/27/4c3QhVbYt7bhpKMR.webp"
-          },
-          {
-            "title": "Mercedes-ի վարորդն ու ուղևորը փորձել են փախուստի դիմել և մեքենայով մոտ 500 մետր քարշ են տվել ոստիկանին․ վերջինս հոսպիտալացվել է",
-            "url": "https://news.am/hy/news/1077549",
-            "date": "2026-11-27T07:34:00.000Z",
-            "image": "https://news.am/storage/media/26/11/27/LkdhuPsLnW2kWBKc.webp"
           }
         ]
       },
@@ -11788,6 +11788,30 @@
         "label": "Политика",
         "articles": [
           {
+            "title": "СМИ: Пентагон обсуждал использование закона времен холодной войны для возвращения Хуанга в Nvidia",
+            "url": "https://news.am/ru/news/1077674",
+            "date": "2026-11-27T19:56:00.000Z",
+            "image": "https://news.am/storage/media/26/11/17/PPCuFPyR8VFdQTBR.webp"
+          },
+          {
+            "title": "Путин назвал новый атомный подводный крейсер «Пермь» оружием глобального значения",
+            "url": "https://news.am/ru/news/1077711",
+            "date": "2026-11-27T19:44:54.000Z",
+            "image": "https://news.am/storage/media/26/11/27/j6XUDhbhWwEWdo0O.webp"
+          },
+          {
+            "title": "Румыния попросила Германию направить больше военных на восточный фланг НАТО",
+            "url": "https://news.am/ru/news/1077677",
+            "date": "2026-11-27T19:34:00.000Z",
+            "image": "https://news.am/storage/media/26/10/22/OvRrhdyuLiq3DGpm.webp"
+          },
+          {
+            "title": "В Иране заподозрили Украину в ударе по Кувейту в рамках операции под ложным флагом",
+            "url": "https://news.am/ru/news/1077710",
+            "date": "2026-11-27T19:32:35.000Z",
+            "image": "https://news.am/storage/media/26/07/16/tRxppMwnwkfRmuMm.webp"
+          },
+          {
             "title": "Израильская оппозиция нацелена на формирование правительства без участия Нетаньяху",
             "url": "https://news.am/ru/news/1077708",
             "date": "2026-11-27T19:02:05.000Z",
@@ -11822,30 +11846,6 @@
             "url": "https://news.am/ru/news/1077686",
             "date": "2026-11-27T17:01:00.000Z",
             "image": "https://news.am/storage/media/26/05/11/4cfRlkZdD5qvg7nf.webp"
-          },
-          {
-            "title": "РП: Лишение кандидата от оппозиции права быть избранным судебным актом за 16 дней до выборов — прямое вмешательство в избирательный процесс",
-            "url": "https://news.am/ru/news/1077700",
-            "date": "2026-11-27T16:41:33.000Z",
-            "image": "https://news.am/storage/media/26/11/27/sFPla7av2w7cE947.webp"
-          },
-          {
-            "title": "Трамп объяснил дружеское расположение к Путину попыткой добиться урегулирования",
-            "url": "https://news.am/ru/news/1077688",
-            "date": "2026-11-27T15:34:00.000Z",
-            "image": "https://news.am/storage/media/26/11/25/nEWlnbRUgbyEg94A.webp"
-          },
-          {
-            "title": "«Государство без истории»: Евродепутат обвинила Турцию в отказе признать Геноцид армян",
-            "url": "https://news.am/ru/news/1077691",
-            "date": "2026-11-27T15:16:00.000Z",
-            "image": "https://news.am/storage/media/26/11/27/K39wNEcQO196feaw.webp"
-          },
-          {
-            "title": "Лебедев: Азербайджан и Армения готовы по очереди взять на себя председательство в СНГ",
-            "url": "https://news.am/ru/news/1077696",
-            "date": "2026-11-27T14:57:51.000Z",
-            "image": "https://news.am/storage/media/26/05/29/wzyJT5j67bXwjQIB.webp"
           }
         ]
       },
@@ -12250,6 +12250,12 @@
         "label": "Происшествия",
         "articles": [
           {
+            "title": "В Иране заподозрили Украину в ударе по Кувейту в рамках операции под ложным флагом",
+            "url": "https://news.am/ru/news/1077710",
+            "date": "2026-11-27T19:32:35.000Z",
+            "image": "https://news.am/storage/media/26/07/16/tRxppMwnwkfRmuMm.webp"
+          },
+          {
             "title": "Премьер-министр Грузии прокомментировал столкновения силовиков с турецкими болельщиками",
             "url": "https://news.am/ru/news/1077707",
             "date": "2026-11-27T18:43:56.000Z",
@@ -12302,12 +12308,6 @@
             "url": "https://news.am/ru/news/1077561",
             "date": "2026-11-27T07:54:00.000Z",
             "image": "https://news.am/storage/media/26/11/27/4c3QhVbYt7bhpKMR.webp"
-          },
-          {
-            "title": "Водитель и пассажир «Mercedes» попытались скрыться и протащили полицейского за машиной около 500 метров: он госпитализирован",
-            "url": "https://news.am/ru/news/1077549",
-            "date": "2026-11-27T07:34:00.000Z",
-            "image": "https://news.am/storage/media/26/11/27/LkdhuPsLnW2kWBKc.webp"
           }
         ]
       },
