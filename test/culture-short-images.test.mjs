@@ -82,3 +82,61 @@ test('isStale : entrée intacte, fichier changé à la main, espaces ↔ _', () 
   assert.equal(isStale({ file: 'File:Été.jpg', commonsUrl: 'https://commons.wikimedia.org/wiki/File:%C3%89t%C3%A9.jpg' }), false)
   assert.equal(shortImageFile(3), 'short-3.jpg')
 })
+
+// La synchronisation : meta.shortImages ⇔ short-<n>.jpg, sur un vrai dossier.
+import { mkdtemp, readdir, writeFile as write } from 'node:fs/promises'
+import os from 'node:os'
+import path from 'node:path'
+import { syncShortImages } from '../scripts/lib/culture-short-images.mjs'
+
+const fakes = (known) => {
+  const downloads = []
+  return {
+    downloads,
+    fetchCommonsCandidates: async ({ files }) => files.filter((f) => known.includes(f)).map((f) => info(f)),
+    download: async (url) => (downloads.push(url), Buffer.from('img')),
+    makeShortImage: async (b) => b,
+    gather: async () => ['File:G1.jpg', 'File:G2.jpg'].map((f) => info(f)),
+  }
+}
+const tmp = () => mkdtemp(path.join(os.tmpdir(), 'short-img-'))
+
+test('syncShortImages : sans liste, la rassemble et télécharge short-1..n', async () => {
+  const dir = await tmp()
+  const f = fakes([])
+  const meta = { image: info('File:A.jpg') }
+  const r = await syncShortImages(dir, meta, f)
+  assert.equal(r.failed, 0)
+  assert.deepEqual(meta.shortImages.map((c) => c.file), ['File:G1.jpg', 'File:G2.jpg'])
+  assert.deepEqual((await readdir(dir)).sort(), ['short-1.jpg', 'short-2.jpg'])
+})
+
+test('syncShortImages : un fichier remplacé à la main est relu et retéléchargé, les autres non', async () => {
+  const dir = await tmp()
+  await write(path.join(dir, 'short-1.jpg'), 'old')
+  await write(path.join(dir, 'short-2.jpg'), 'old')
+  const f = fakes(['File:Neuf.jpg'])
+  const meta = { shortImages: [info('File:G1.jpg'), { ...info('File:G2.jpg'), file: 'File:Neuf.jpg' }] }
+  const r = await syncShortImages(dir, meta, f)
+  assert.equal(r.failed, 0)
+  assert.equal(meta.shortImages[1].commonsUrl, 'https://commons.wikimedia.org/wiki/File:Neuf.jpg')
+  assert.equal(f.downloads.length, 1)
+})
+
+test('syncShortImages : fichier introuvable ou licence non libre → échec en clair, rien de faux écrit', async () => {
+  const dir = await tmp()
+  const meta = { shortImages: [{ file: 'File:Refusé.jpg' }] }
+  const r = await syncShortImages(dir, meta, fakes([]))
+  assert.equal(r.failed, 1)
+  assert.match(r.lines.join('\n'), /✗ .*File:Refusé\.jpg.*introuvable ou licence non libre/)
+  assert.equal(meta.shortImages[0].commonsUrl, undefined)
+})
+
+test('syncShortImages : la liste raccourcit → les short-<n>.jpg en trop disparaissent', async () => {
+  const dir = await tmp()
+  for (const n of [1, 2, 3, 4]) await write(path.join(dir, `short-${n}.jpg`), 'x')
+  await write(path.join(dir, 'image.jpg'), 'x')
+  const meta = { shortImages: [info('File:G1.jpg'), info('File:G2.jpg')] }
+  await syncShortImages(dir, meta, fakes([]))
+  assert.deepEqual((await readdir(dir)).sort(), ['image.jpg', 'short-1.jpg', 'short-2.jpg'])
+})

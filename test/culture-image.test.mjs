@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import sharp from 'sharp'
-import { makeImages, PAGE_WIDTH } from '../scripts/lib/culture-image.mjs'
+import { makeImages, makeShortImage, PAGE_WIDTH } from '../scripts/lib/culture-image.mjs'
 
 const src = (w, h) =>
   sharp({ create: { width: w, height: h, channels: 3, background: '#c86a3a' } }).withIccProfile('p3').jpeg().toBuffer()
@@ -26,4 +26,14 @@ test('petite image : la page ne s’agrandit pas, la carte garde 1200×630', asy
   const card = await sharp(out.jpg).metadata()
   assert.equal(card.width, 1200)
   assert.equal(card.height, 630)
+})
+
+test('image de Short : JPEG ≤ 1200 px de large, sans ICC, jamais agrandie', async () => {
+  const big = await sharp(await makeShortImage(await src(2400, 1600))).metadata()
+  assert.equal(big.format, 'jpeg')
+  assert.equal(big.width, 1200)
+  assert.equal(big.height, 800)
+  assert.equal(big.icc, undefined)
+  const small = await sharp(await makeShortImage(await src(900, 700))).metadata()
+  assert.equal(small.width, 900)
 })

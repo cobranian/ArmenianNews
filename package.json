@@ -35,7 +35,8 @@
     "hydration-check": "node scripts/hydration-check.mjs",
     "videos:add": "node scripts/videos-add.mjs",
     "reels:add": "node scripts/reels-add.mjs",
-    "jeux:sync": "node scripts/jeux-sync.mjs"
+    "jeux:sync": "node scripts/jeux-sync.mjs",
+    "culture:short-images": "node scripts/culture-short-images.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -12,7 +12,11 @@
 // « Kochari ». Wikipédia référence aussi du bruit (icônes, drapeaux, et une
 // « Mona Lisa detail eyes.jpg » sur la page de Gorky) : d'où les filtres, et
 // la revue des images dans la PR avant publication.
-import { api, getJson } from './culture-sources.mjs'
+import { existsSync } from 'node:fs'
+import { readdir, rm, writeFile } from 'node:fs/promises'
+import path from 'node:path'
+import { api, downloadImage, fetchCommonsCandidates as commons, getJson } from './culture-sources.mjs'
+import { makeShortImage as shrink } from './culture-image.mjs'
 
 export const SHORT_EXTRA = 6
 const PAGE_LANGS = ['fr', 'en', 'hy', 'ru']
@@ -57,7 +61,7 @@ export function pickShortImages({ articleImage, candidates = [], infos = [] }) {
   return out
 }
 
-export async function gatherShortImages(meta, { fetchCommonsCandidates, fetchImpl = fetch, wait = 1000 } = {}) {
+export async function gatherShortImages(meta, { fetchCommonsCandidates = commons, fetchImpl = fetch, wait = 1000 } = {}) {
   const files = (meta.candidates ?? []).map((c) => c.file)
   for (const page of wikiImageTitles(meta.sources)) {
     await pause(wait)
@@ -78,3 +82,43 @@ export function isStale(entry) {
 }
 
 export const shortImageFile = (n) => `short-${n}.jpg`
+
+// meta.shortImages ⇔ short-<n>.jpg dans `base`. Sans liste (ou `refresh`),
+// elle est rassemblée ; une entrée remplacée à la main est relue sur Commons
+// par son `file` — introuvable ou non libre = échec en clair, jamais une
+// image sans crédit. Les fichiers manquants ou périmés sont téléchargés, ceux
+// au-delà de la liste supprimés (sync les recopierait sans crédit). Modifie
+// `meta` ; à l'appelant d'écrire meta.json.
+export async function syncShortImages(base, meta, deps = {}) {
+  const {
+    fetchCommonsCandidates = commons,
+    download = downloadImage,
+    makeShortImage = shrink,
+    gather = (m) => gatherShortImages(m, { fetchCommonsCandidates }),
+    refresh = false,
+  } = deps
+  const lines = []
+  let failed = 0
+  if (!Array.isArray(meta.shortImages) || refresh) meta.shortImages = await gather(meta)
+  for (const [i, entry] of meta.shortImages.entries()) {
+    const n = i + 1
+    const file = path.join(base, shortImageFile(n))
+    try {
+      const stale = isStale(entry)
+      if (stale) {
+        const [fresh] = await fetchCommonsCandidates({ files: [entry.file], limit: 1 })
+        if (!fresh) throw new Error('introuvable ou licence non libre')
+        meta.shortImages[i] = fresh
+      }
+      if (stale || !existsSync(file)) await writeFile(file, await makeShortImage(await download(meta.shortImages[i].thumbUrl)))
+      lines.push(`- ✓ image ${n + 1} : ${meta.shortImages[i].file}`)
+    } catch (e) {
+      failed++
+      lines.push(`- ✗ image ${n + 1} (${entry.file}) : ${e.message}`)
+    }
+  }
+  const keep = new Set(meta.shortImages.map((_, i) => shortImageFile(i + 1)))
+  for (const f of await readdir(base))
+    if (/^short-\d+\.jpg$/.test(f) && !keep.has(f)) await rm(path.join(base, f))
+  return { lines, failed }
+}
