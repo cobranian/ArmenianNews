@@ -1,0 +1,58 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Arshile Gorky",
+      "title": "Breton conquistato",
+      "text": "Nel 1944, André Breton scopre le tele di Arshile Gorky e lo saluta come un autentico surrealista.",
+      "spoken": "Nel 1944 a New York, André Breton lo saluta come un autentico surrealista.",
+      "big": false
+    },
+    {
+      "eyebrow": "Lago di Van · 15 aprile 1904",
+      "title": "Khorkom",
+      "text": "Nato Vosdanik Manoug Adoian nell'Impero ottomano, il futuro pittore cresce sulle rive del lago di Van.",
+      "spoken": "Nato vicino al lago di Van, si chiamava allora Vosdanik Manoug Adoian.",
+      "big": false
+    },
+    {
+      "eyebrow": "Genocidio armeno",
+      "title": "1915",
+      "text": "Costretto a fuggire nel 1915, vede la madre morire di fame a Erevan durante il rigido inverno del 1918-1919.",
+      "spoken": "Dopo essere fuggito nel 1915, perde la madre per la fame a Erevan.",
+      "big": true
+    },
+    {
+      "eyebrow": "Boston e New York",
+      "title": "1920",
+      "text": "Arrivato negli Stati Uniti a sedici anni nel 1920, adotta poi a New York lo pseudonimo di Arshile Gorky.",
+      "spoken": "Arrivato nel 1920 a sedici anni, prende a New York il nome di Arshile Gorky.",
+      "big": true
+    },
+    {
+      "eyebrow": "Dal 1926 al 1936",
+      "title": "L'artista e sua madre",
+      "text": "Dal 1926 al 1936 lavora a questo doppio ritratto ispirato a una fotografia della sua infanzia a Van.",
+      "spoken": "Dal 1926 al 1936 dipinge questo ritratto ispirato a una foto d'infanzia.",
+      "big": false
+    },
+    {
+      "eyebrow": "Scuola di New York",
+      "title": "Uno stile innovativo",
+      "text": "Amico di Willem de Kooning, inventa forme biomorfiche che aprono la strada all'espressionismo astratto.",
+      "spoken": "Con Willem de Kooning, apre la strada all'espressionismo astratto.",
+      "big": false
+    },
+    {
+      "eyebrow": "Connecticut · 21 luglio 1948",
+      "title": "quarantaquattro anni",
+      "text": "Scomparso a quarantaquattro anni, lascia un'opera oggi esposta al Centre Pompidou e alla Tate.",
+      "spoken": "Scomparso a quarantaquattro anni, le sue tele sono ammirate in tutto il mondo.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Arshile Gorky",
+  "ytTitle": "Arshile Gorky: dal genocidio armeno ai vertici dell'arte moderna",
+  "ytLead": "Rifugiatosi negli Stati Uniti dopo il genocidio del 1915, Vosdanik Adoian è diventato il celebre pittore Arshile Gorky. Si è affermato come uno dei padri fondatori dell'espressionismo astratto.",
+  "sourceHash": "3bc72dae972cd68dbd5c1e6b18ae23e05a38b7eac1ebc619b166ad9b91bfb919",
+  "model": "gemini-flash-latest"
+}

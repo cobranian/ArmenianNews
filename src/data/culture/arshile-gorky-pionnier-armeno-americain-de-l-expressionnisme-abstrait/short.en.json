@@ -1,0 +1,58 @@
+{
+  "facts": [
+    {
+      "eyebrow": "Arshile Gorky",
+      "title": "Breton Won Over",
+      "text": "In 1944, André Breton discovered Arshile Gorky's paintings and hailed him as a true Surrealist.",
+      "spoken": "In 1944 in New York, André Breton hailed him as a true Surrealist.",
+      "big": false
+    },
+    {
+      "eyebrow": "Lake Van · April 15, 1904",
+      "title": "Khorkom",
+      "text": "Born Vosdanik Manoug Adoian in the Ottoman Empire, the future painter grew up on the shores of Lake Van.",
+      "spoken": "Born near Lake Van, his name was then Vosdanik Manoug Adoian.",
+      "big": false
+    },
+    {
+      "eyebrow": "Armenian Genocide",
+      "title": "1915",
+      "text": "Forced to flee in 1915, he saw his mother die of starvation in Yerevan during the winter of 1918–1919.",
+      "spoken": "After fleeing in 1915, he lost his mother to starvation in Yerevan.",
+      "big": true
+    },
+    {
+      "eyebrow": "Boston and New York",
+      "title": "1920",
+      "text": "Arriving in the United States at the age of sixteen in 1920, he adopted the name Arshile Gorky in New York.",
+      "spoken": "Arriving in 1920 at the age of sixteen, he took the name Arshile Gorky.",
+      "big": true
+    },
+    {
+      "eyebrow": "From 1926 to 1936",
+      "title": "The Artist and His Mother",
+      "text": "He worked patiently on this double portrait inspired by a childhood photograph taken in Van.",
+      "spoken": "He painted this portrait inspired by a childhood photo.",
+      "big": false
+    },
+    {
+      "eyebrow": "New York School",
+      "title": "An Innovative Style",
+      "text": "A friend of Willem de Kooning, he invented biomorphic forms that paved the way for Abstract Expressionism.",
+      "spoken": "With Willem de Kooning, he paved the way for Abstract Expressionism.",
+      "big": false
+    },
+    {
+      "eyebrow": "Connecticut · July 21, 1948",
+      "title": "Forty-four years",
+      "text": "Passing away at forty-four, his work is now exhibited at the Centre Pompidou and Tate.",
+      "spoken": "Passing away at forty-four, his paintings are admired worldwide.",
+      "big": false
+    }
+  ],
+  "outroTitle": "Arshile Gorky",
+  "ytTitle": "Arshile Gorky: From the Armenian Genocide to the Heights of Modern Art",
+  "ytLead": "Refugee in the United States after the 1915 genocide, Vosdanik Adoian became the celebrated painter Arshile Gorky. He established himself as one of the founding fathers of Abstract Expressionism.",
+  "sourceHash": "3bc72dae972cd68dbd5c1e6b18ae23e05a38b7eac1ebc619b166ad9b91bfb919",
+  "model": "gemini-flash-latest"
+}
