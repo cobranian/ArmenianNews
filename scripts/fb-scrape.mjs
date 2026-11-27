@@ -302,7 +302,24 @@ const fullImageFor = async (permalink) => {
     await page.goto(permalink, { waitUntil: 'domcontentloaded', timeout: 45000 })
     await sleep(1800)
     await dismiss()
-    return await page.evaluate(() => {
+    // Le nom du peintre s'hydrate parfois APRÈS l'image : lu une seule fois à
+    // 1,8 s, il revenait null, et la carte retombait sur l'acteur du fil —
+    // toujours « Don Narek ». Récolte du 19 nov. : six toiles d'Artsrun
+    // Asatryan et de Hrant Vardanyan signées « Don Narek » sur le site. On
+    // relit donc la page jusqu'à ce que l'auteur apparaisse (≈ 6 s au plus).
+    let got = { src: null, author: null }
+    for (let attempt = 0; attempt < 5; attempt++) {
+      if (attempt) await sleep(1200)
+      got = await readPhotoPage()
+      if (got.author) break
+    }
+    return got
+  } catch {
+    return { src: null, author: null }
+  }
+}
+const readPhotoPage = () =>
+    page.evaluate(() => {
       let best = null
       let area = 0
       for (const im of document.querySelectorAll('img')) {
@@ -345,10 +362,6 @@ const fullImageFor = async (permalink) => {
       }
       return { src: best, author }
     })
-  } catch {
-    return { src: null, author: null }
-  }
-}
 
 // Le fichier précédent, lu AVANT d'être réécrit : c'est de là que vient la
 // photo épinglée quand la récolte du jour ne la ramène pas.
@@ -360,11 +373,19 @@ const previous = await readFile(path.join(root, 'src/data/facebook.json'), 'utf-
 const posts = []
 let pinned = null
 let n = 0
+const setAuthors = new Map()
 for (const p of found.slice(0, WANT)) {
   // Visit the photo page once — it gives both the full-res image and the real
   // author. Read the author before the download so a failed image still keeps it.
   const { src, author } = await fullImageFor(p.permalink)
-  const by = author || p.author || AUTHOR
+  // Repli dans cet ordre : la page photo ; une autre photo de la MÊME
+  // publication (`set=pcb.…`), déjà résolue — un album partagé a un seul
+  // peintre ; et seulement ensuite l'acteur du fil, qui est presque toujours
+  // la page elle-même.
+  const set = (p.permalink.match(/set=(pcb\.\d+)/) || [])[1]
+  if (author && set) setAuthors.set(set, author)
+  const by = author || (set && setAuthors.get(set)) || p.author || AUTHOR
+  if (!author) console.log(`  ⚠ auteur non lu sur la page photo — repli sur « ${by} »`)
   // Le mur est surtout fait de partages : une publication signée de la page
   // elle-même est une photo de Don Narek. La première rencontrée est épinglée
   // (l'ordre est chronologique, donc c'est la plus récente).
