@@ -4,7 +4,7 @@
 //     que lit Remotion, sept langues par fichier ; dossier régénéré, hors git) ;
 //   - la piste choisie dans short.fr.json (`music`) → music.json#BY_SLUG (les
 //     slugs sans short, comme Garni, gardent leur entrée écrite à la main) ;
-//   - la photo de l'article → public/photos/<slug>.jpg, et les images d'un
+//   - la photo de l'article (image.webp entière, en JPEG) → public/photos/<slug>.jpg, et les images d'un
 //     fait chacune (short-<n>.jpg, meta.shortImages) → <slug>-<k>.jpg ;
 //   - leurs crédits (auteur, licence, page Commons, taille), image 1 en tête
 //     → src/shorts/credits.json (un tableau par slug) ;
@@ -18,6 +18,7 @@ import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promi
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import sharp from 'sharp'
 import { usableShortImages } from '../../scripts/lib/culture-short-credits.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -86,9 +87,17 @@ const credits = {}
 for (const slug of slugs) {
   const meta = JSON.parse(await readFile(path.join(culture, slug, 'meta.json'), 'utf-8'))
   if (!meta.image) throw new Error(`${slug} : l'article n'a pas d'image`)
-  await copyFile(path.join(culture, slug, 'image.jpg'), path.join(root, 'public/photos', `${slug}.jpg`))
-  // Image 1 : la carte image.jpg, toujours 1200×630 (culture-image.mjs).
-  const list = [{ author: meta.image.author, license: meta.image.license, commonsUrl: meta.image.commonsUrl, width: 1200, height: 630 }]
+  // Image 1 : la photo de l'article ENTIÈRE (image.webp, celle de la page),
+  // pas la carte image.jpg recadrée en 1200×630 — le cadre du Short épouse
+  // l'image (slides.mjs) et couperait sinon un portrait. Repli : la carte.
+  const webp = path.join(culture, slug, 'image.webp')
+  const first = path.join(root, 'public/photos', `${slug}.jpg`)
+  let size = { width: 1200, height: 630 }
+  if (existsSync(webp)) {
+    const info = await sharp(webp).jpeg({ quality: 88 }).toFile(first)
+    size = { width: info.width, height: info.height }
+  } else await copyFile(path.join(culture, slug, 'image.jpg'), first)
+  const list = [{ author: meta.image.author, license: meta.image.license, commonsUrl: meta.image.commonsUrl, ...size }]
   // Les suivantes (une par fait) : celles qu'usableShortImages garde — la
   // liste même que crédite la description YouTube (video-publish.mjs).
   const usable = usableShortImages(path.join(culture, slug), meta)
