@@ -15,4 +15,6 @@ export type ShortLangData = {
 
 export type ShortData = { slug: string } & Record<Lang, ShortLangData>
 
-export type Credit = { author: string; license: string; commonsUrl: string }
+// Une entrée par image du Short, la photo de l'article en tête
+// (credits.json, écrit par scripts/sync.mjs).
+export type Credit = { author: string; license: string; commonsUrl: string; width?: number; height?: number }

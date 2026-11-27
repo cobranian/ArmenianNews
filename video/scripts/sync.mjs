@@ -4,8 +4,10 @@
 //     que lit Remotion, sept langues par fichier ; dossier régénéré, hors git) ;
 //   - la piste choisie dans short.fr.json (`music`) → music.json#BY_SLUG (les
 //     slugs sans short, comme Garni, gardent leur entrée écrite à la main) ;
-//   - la photo de l'article → public/photos/<slug>.jpg ;
-//   - son crédit (auteur, licence, page Commons) → src/shorts/credits.json ;
+//   - la photo de l'article → public/photos/<slug>.jpg, et les images d'un
+//     fait chacune (short-<n>.jpg, meta.shortImages) → <slug>-<k>.jpg ;
+//   - leurs crédits (auteur, licence, page Commons, taille), image 1 en tête
+//     → src/shorts/credits.json (un tableau par slug) ;
 //   - la liste des Shorts → src/shorts/all.ts (imports statiques : le bundler
 //     de Remotion ne lit pas un dossier à l'exécution).
 //
@@ -16,6 +18,7 @@ import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promi
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { isStale, shortImageFile } from '../../scripts/lib/culture-short-images.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const culture = path.resolve(root, '../src/data/culture')
@@ -84,7 +87,22 @@ for (const slug of slugs) {
   const meta = JSON.parse(await readFile(path.join(culture, slug, 'meta.json'), 'utf-8'))
   if (!meta.image) throw new Error(`${slug} : l'article n'a pas d'image`)
   await copyFile(path.join(culture, slug, 'image.jpg'), path.join(root, 'public/photos', `${slug}.jpg`))
-  credits[slug] = { author: meta.image.author, license: meta.image.license, commonsUrl: meta.image.commonsUrl }
+  // Image 1 : la carte image.jpg, toujours 1200×630 (culture-image.mjs).
+  const list = [{ author: meta.image.author, license: meta.image.license, commonsUrl: meta.image.commonsUrl, width: 1200, height: 630 }]
+  // Les suivantes (une par fait) : seulement celles qui ont un crédit à jour
+  // ET leur fichier. Une entrée remplacée à la main mais pas encore relue
+  // (culture-short-images.mjs) est sautée : son fichier montrerait l'ancienne
+  // image sous le nouveau crédit.
+  for (const [i, entry] of (meta.shortImages ?? []).entries()) {
+    const src = path.join(culture, slug, shortImageFile(i + 1))
+    if (isStale(entry) || !existsSync(src)) {
+      console.warn(`⚠ ${slug} : image ${i + 2} (${entry.file}) sautée — lancer node scripts/culture-short-images.mjs ${slug}`)
+      continue
+    }
+    await copyFile(src, path.join(root, 'public/photos', `${slug}-${list.length}.jpg`))
+    list.push({ author: entry.author, license: entry.license, commonsUrl: entry.commonsUrl, width: entry.width, height: entry.height })
+  }
+  credits[slug] = list
 }
 await writeFile(path.join(root, 'src/shorts/credits.json'), `${JSON.stringify(credits, null, 2)}\n`)
 
