@@ -3,7 +3,7 @@
 // borné à MAX_TEXT, et `null` quand il n'y a rien à résumer. Aucun réseau.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { extractArticleText, fetchArticle, isAllowedArticleUrl, MIN_TEXT, MAX_TEXT, NODE_HOSTS } from '../scripts/lib/article-text.mjs'
+import { extractArticleText, fetchArticle, isAllowedArticleUrl, isNoResumeUrl, NO_RESUME_HOSTS, FETCH_DEADLINE_MS, MIN_TEXT, MAX_TEXT, NODE_HOSTS } from '../scripts/lib/article-text.mjs'
 
 const para = (n, len = 120) => `Paragraphe ${n} ` + 'x'.repeat(len - 12)
 
@@ -91,4 +91,28 @@ test('fetchArticle : www. ôté pour NODE_HOSTS seulement, hôte d’origine con
   const deps = { fetchTextNode: async (...a) => (calls.push(a), ''), fetchText: async () => '' }
   await fetchArticle('https://www.armenpress.am/x', deps)
   assert.deepEqual(calls[0], ['www.armenpress.am', '/x'])
+})
+
+test('fetchArticle : délai global, même si la page distille ses octets', async () => {
+  assert.equal(FETCH_DEADLINE_MS, 20000)
+  const never = () => new Promise(() => {})
+  const deps = { fetchTextNode: never, fetchText: never }
+  const t0 = Date.now()
+  await assert.rejects(fetchArticle('https://www.armenews.com/x', deps, { deadlineMs: 30 }), /délai/)
+  await assert.rejects(fetchArticle('https://armenpress.am/x', deps, { deadlineMs: 30 }), /délai/)
+  assert.ok(Date.now() - t0 < 2000)
+})
+
+test('fetchArticle : une page à temps passe le délai', async () => {
+  const deps = { fetchTextNode: async () => 'a', fetchText: async () => 'b' }
+  assert.equal(await fetchArticle('https://www.armenews.com/x', deps, { deadlineMs: 1000 }), 'b')
+})
+
+test('NO_RESUME_HOSTS : domaine et sous-domaines, rien d’autre', () => {
+  assert.deepEqual(NO_RESUME_HOSTS, ['thecaliforniacourier.com'])
+  assert.equal(isNoResumeUrl('https://thecaliforniacourier.com/a'), true)
+  assert.equal(isNoResumeUrl('https://www.thecaliforniacourier.com/a'), true)
+  assert.equal(isNoResumeUrl('https://notthecaliforniacourier.com/a'), false)
+  assert.equal(isNoResumeUrl('https://armenews.com/a'), false)
+  assert.equal(isNoResumeUrl('pas une url'), false)
 })

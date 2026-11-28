@@ -32,7 +32,7 @@ export const NODE_HOSTS = new Set([
 // Un hôte est admis s'il est égal à une entrée ou s'en est un sous-domaine.
 // UNE SOURCE NOUVELLE DOIT AJOUTER SON DOMAINE ICI : sinon ses articles restent
 // sans résumé, en silence — la ligne `✗ résumé-article: … URL refusée` au log
-// est le seul signe. Cette liste ferme aussi la porte au SSRF : l'URL vient
+// est le seul signe en CI ; en local, test/article-hosts.test.mjs échoue. Cette liste ferme aussi la porte au SSRF : l'URL vient
 // d'un flux tiers, et le runner de la CI ne doit pas aller chercher
 // 169.254.169.254, localhost ou un hôte interne.
 export const SOURCE_HOSTS = new Set([
@@ -53,6 +53,24 @@ export const SOURCE_HOSTS = new Set([
   'soyarmenio.com',
   'thecaliforniacourier.com',
 ])
+
+// Hôtes qu'on ne tente même pas : injoignables depuis la CI, à coup sûr (403
+// Cloudflare partout, mesuré le 28 nov. 2026). Leurs articles ne prennent pas de
+// place dans le plafond du passage, et la santé les sort de son dénominateur.
+// Les hôtes injoignables PAR INTERMITTENCE (armradio, asbarez) n'y sont pas : le
+// disjoncteur de summarizeArticles les écarte pour le seul passage où ils
+// échouent.
+export const NO_RESUME_HOSTS = ['thecaliforniacourier.com']
+
+export function isNoResumeUrl(url) {
+  let h
+  try {
+    h = new URL(url).hostname
+  } catch {
+    return false
+  }
+  return NO_RESUME_HOSTS.some((d) => h === d || h.endsWith('.' + d))
+}
 
 export function isAllowedArticleUrl(url) {
   let u
@@ -126,13 +144,28 @@ export function extractArticleText(html) {
   return text.slice(0, MAX_TEXT)
 }
 
+// Délai GLOBAL d'une page : le délai des clients HTTP est un délai d'inactivité,
+// qu'un hôte qui distille ses octets ne déclenche jamais.
+export const FETCH_DEADLINE_MS = 20000
+
+function withDeadline(promise, ms, url) {
+  let timer
+  const deadline = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`délai de ${Math.round(ms / 1000)} s dépassé pour ${url}`)), ms)
+    timer.unref?.()
+  })
+  return Promise.race([promise, deadline]).finally(() => clearTimeout(timer))
+}
+
 // Le HTML de la page. Redirection REFUSÉE pour les hôtes hors NODE_HOSTS : un
 // article retiré renvoie souvent (302) vers une page générique, qu'on résumerait
 // à sa place (même parade que summarizeAgenda).
-export async function fetchArticle(url, deps = { fetchTextNode, fetchText }) {
+export async function fetchArticle(url, deps = { fetchTextNode, fetchText }, { deadlineMs = FETCH_DEADLINE_MS } = {}) {
   if (!isAllowedArticleUrl(url)) throw new Error('URL refusée')
   const u = new URL(url)
   // Le `www.` n'est ôté que pour la recherche : la requête garde l'hôte d'origine.
-  if (NODE_HOSTS.has(u.hostname.replace(/^www\./, ''))) return deps.fetchTextNode(u.hostname, u.pathname + u.search)
-  return deps.fetchText(url, { redirect: 'manual' })
+  const req = NODE_HOSTS.has(u.hostname.replace(/^www\./, ''))
+    ? deps.fetchTextNode(u.hostname, u.pathname + u.search)
+    : deps.fetchText(url, { redirect: 'manual' })
+  return withDeadline(Promise.resolve(req), deadlineMs, url)
 }
