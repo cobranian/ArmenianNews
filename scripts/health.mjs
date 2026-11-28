@@ -3,7 +3,8 @@
 // l'issue `[sources-down]`. `--out fichier` écrit le rapport Markdown.
 import { readFile, readdir, writeFile, appendFile } from 'node:fs/promises'
 import { ALL_LANGS } from '../sites.config.js'
-import { checkNews, checkBriefs, checkAgenda, checkClassify, checkSteps, checkHarvest, healthReport } from './lib/health.mjs'
+import { checkNews, checkBriefs, checkAgenda, checkClassify, checkArticleResumes, checkSteps, checkHarvest, healthReport } from './lib/health.mjs'
+import { listArticles, readArchive } from './lib/article-resumes.mjs'
 
 const root = new URL('../src/data/', import.meta.url)
 const json = async (f) => JSON.parse(await readFile(new URL(f, root), 'utf-8'))
@@ -19,6 +20,7 @@ const news = await json('news.json')
 const problems = [
   ...checkNews(news, now),
   ...checkClassify(news, await json('rubric-cache.json').catch(() => ({}))),
+  ...checkArticleResumes(listArticles(news), await readArchive(new URL('article-resumes/', root)), now),
   // Posés par le job (hourly.yml) depuis steps.screenshot/purge.outcome.
   ...checkSteps({ screenshot: process.env.SCREENSHOT_OUTCOME, purge: process.env.PURGE_OUTCOME }),
   ...checkBriefs(dates, now),
