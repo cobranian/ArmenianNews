@@ -164,8 +164,11 @@ export async function fetchArticle(url, deps = { fetchTextNode, fetchText }, { d
   if (!isAllowedArticleUrl(url)) throw new Error('URL refusée')
   const u = new URL(url)
   // Le `www.` n'est ôté que pour la recherche : la requête garde l'hôte d'origine.
+  // L'échéance descend jusqu'au client, qui détruit la socket : la course de
+  // withDeadline n'est qu'un filet. Sans cela une socket restée ouverte
+  // garderait Node en vie, et le scrape (qui finit sans process.exit) pendrait.
   const req = NODE_HOSTS.has(u.hostname.replace(/^www\./, ''))
-    ? deps.fetchTextNode(u.hostname, u.pathname + u.search)
-    : deps.fetchText(url, { redirect: 'manual' })
-  return withDeadline(Promise.resolve(req), deadlineMs, url)
+    ? deps.fetchTextNode(u.hostname, u.pathname + u.search, { deadline: deadlineMs })
+    : deps.fetchText(url, { redirect: 'manual', timeout: deadlineMs, retries: 1, deadline: deadlineMs })
+  return withDeadline(Promise.resolve(req), deadlineMs + 1000, url)
 }

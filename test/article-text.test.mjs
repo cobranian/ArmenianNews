@@ -57,8 +57,12 @@ test('fetchArticle route selon l’hôte', async () => {
   }
   await fetchArticle('https://armenpress.am/fr/article/1', deps)
   await fetchArticle('https://www.armenews.com/x', deps)
-  assert.deepEqual(calls[0], ['node', 'armenpress.am', '/fr/article/1'])
-  assert.deepEqual(calls[1], ['text', 'https://www.armenews.com/x', { redirect: 'manual' }])
+  // L'échéance de 20 s descend jusqu'au client des deux chemins (socket détruite).
+  assert.deepEqual(calls[0], ['node', 'armenpress.am', '/fr/article/1', { deadline: FETCH_DEADLINE_MS }])
+  assert.deepEqual(calls[1], [
+    'text', 'https://www.armenews.com/x',
+    { redirect: 'manual', timeout: FETCH_DEADLINE_MS, retries: 1, deadline: FETCH_DEADLINE_MS },
+  ])
   assert.ok(NODE_HOSTS.has('med.news.am'))
 })
 
@@ -90,17 +94,19 @@ test('fetchArticle : www. ôté pour NODE_HOSTS seulement, hôte d’origine con
   const calls = []
   const deps = { fetchTextNode: async (...a) => (calls.push(a), ''), fetchText: async () => '' }
   await fetchArticle('https://www.armenpress.am/x', deps)
-  assert.deepEqual(calls[0], ['www.armenpress.am', '/x'])
+  assert.deepEqual(calls[0].slice(0, 2), ['www.armenpress.am', '/x'])
 })
 
-test('fetchArticle : délai global, même si la page distille ses octets', async () => {
+// Le client coupe lui-même la socket (test/http-deadline.test.mjs) ; ici, un
+// client qui ne rend jamais la main est rattrapé par le filet, à deadline + 1 s.
+test('fetchArticle : délai global, même si le client ne rend jamais la main', async () => {
   assert.equal(FETCH_DEADLINE_MS, 20000)
   const never = () => new Promise(() => {})
   const deps = { fetchTextNode: never, fetchText: never }
   const t0 = Date.now()
   await assert.rejects(fetchArticle('https://www.armenews.com/x', deps, { deadlineMs: 30 }), /délai/)
   await assert.rejects(fetchArticle('https://armenpress.am/x', deps, { deadlineMs: 30 }), /délai/)
-  assert.ok(Date.now() - t0 < 2000)
+  assert.ok(Date.now() - t0 < 4000)
 })
 
 test('fetchArticle : une page à temps passe le délai', async () => {
