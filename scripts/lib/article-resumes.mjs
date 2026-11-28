@@ -7,6 +7,7 @@
 //
 // Ce module est PUR jusqu'à `summarizeArticles`, qui seule touche le réseau —
 // par des fonctions injectées, pour que les tests n'en touchent aucun.
+import { readdir, readFile, writeFile, unlink, mkdir } from 'node:fs/promises'
 import { strayWords, allowedWords, frenchWords } from './brief-script.mjs'
 import { ENDPOINT } from './classify-rubrics.mjs'
 import { LANG_NAMES, parseResumeReply, sourceHash, resumeModels } from './agenda-resumes.mjs'
@@ -53,6 +54,66 @@ export function listArticles(news) {
     }
   }
   return out
+}
+
+// Le jour (UTC, AAAA-MM-JJ) du fichier où se range une entrée : sa date, à
+// défaut le jour de `now`.
+export function shardDay(entry, now) {
+  const t = entry?.date ? Date.parse(entry.date) : NaN
+  return new Date(Number.isFinite(t) ? t : now.getTime()).toISOString().slice(0, 10)
+}
+
+// Garde une entrée si l'article est encore au fil, ou si sa date (à défaut
+// checkedAt) a moins de ARCHIVE_DAYS jours.
+export function pruneArchive(archive, liveUrls, now) {
+  const limit = now.getTime() - ARCHIVE_DAYS * DAY
+  const out = {}
+  for (const [url, e] of Object.entries(archive || {})) {
+    const t = Date.parse(e?.date || e?.checkedAt)
+    if (liveUrls.has(url) || (Number.isFinite(t) && t >= limit)) out[url] = e
+  }
+  return out
+}
+
+const DAY_FILE = /^\d{4}-\d{2}-\d{2}\.json$/
+
+// Fusionne tous les fichiers de jour du dossier ; dossier absent => {}.
+export async function readArchive(dir) {
+  let names
+  try {
+    names = await readdir(dir)
+  } catch (err) {
+    if (err.code === 'ENOENT') return {}
+    throw err
+  }
+  const archive = {}
+  for (const n of names.filter((n) => DAY_FILE.test(n)).sort())
+    Object.assign(archive, JSON.parse(await readFile(new URL(n, dir), 'utf8')))
+  return archive
+}
+
+// Un fichier par jour (clés triées), sans réécrire un contenu identique ; les
+// fichiers de jour sans entrée sont supprimés, tout autre fichier est laissé.
+export async function writeArchive(dir, archive, now = new Date()) {
+  const days = {}
+  for (const url of Object.keys(archive).sort()) {
+    const day = shardDay(archive[url], now)
+    ;(days[day] ||= {})[url] = archive[url]
+  }
+  await mkdir(dir, { recursive: true })
+  for (const n of await readdir(dir))
+    if (DAY_FILE.test(n) && !days[n.slice(0, -5)]) await unlink(new URL(n, dir))
+  for (const [day, entries] of Object.entries(days)) {
+    const file = new URL(`${day}.json`, dir)
+    const text = JSON.stringify(entries, null, 2) + '\n'
+    let old = null
+    try {
+      old = await readFile(file, 'utf8')
+    } catch {
+      /* fichier absent */
+    }
+    if (old !== text) await writeFile(file, text)
+  }
 }
 
 // Un article français est résumé aussi en allemand et en italien (CONTENT_LANG).

@@ -3,6 +3,10 @@
 // répondu, s'arrête net au 429 et ne lève jamais. Aucun réseau (tout est injecté).
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { mkdtemp, rm, readdir, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import {
   listArticles,
   summaryLangs,
@@ -10,6 +14,10 @@ import {
   vetArticleResumes,
   summarizeArticles,
   buildArticleMessages,
+  shardDay,
+  pruneArchive,
+  readArchive,
+  writeArchive,
 } from '../scripts/lib/article-resumes.mjs'
 
 const NOW = new Date('2026-11-28T12:00:00Z')
@@ -167,4 +175,56 @@ test('texte modifié : résumés vidés puis réécrits', async () => {
   assert.deepEqual(out[a.url].resumes, { fr: FR, de: DE, it: IT })
   assert.equal(out[a.url].attempts, 1)
   assert.notEqual(out[a.url].hash, 'ancien')
+})
+
+test('shardDay : jour UTC de la date, sinon jour de now', () => {
+  assert.equal(shardDay({ date: '2026-11-27T23:30:00.000Z' }, NOW), '2026-11-27')
+  assert.equal(shardDay({ date: null }, NOW), '2026-11-28')
+})
+
+test('pruneArchive : garde les URL vivantes et les moins de 30 jours', () => {
+  const mk = (url, date) => ({ url, date, resumes: {} })
+  const archive = {
+    a: mk('a', '2026-10-20T10:00:00Z'),
+    b: mk('b', '2026-10-20T10:00:00Z'),
+    c: mk('c', '2026-11-01T10:00:00Z'),
+  }
+  const out = pruneArchive(archive, new Set(['b']), NOW)
+  assert.deepEqual(Object.keys(out).sort(), ['b', 'c'])
+})
+
+const withDir = async (fn) => {
+  const d = await mkdtemp(join(tmpdir(), 'resumes-'))
+  try {
+    await fn(d, pathToFileURL(d + '/'))
+  } finally {
+    await rm(d, { recursive: true, force: true })
+  }
+}
+
+test('writeArchive / readArchive : aller-retour, un fichier par jour', async () => {
+  await withDir(async (d, url) => {
+    const e = (u, date) => ({ url: u, date, resumes: { fr: 'x' } })
+    const archive = {
+      'https://x/2': e('https://x/2', '2026-11-28T01:00:00Z'),
+      'https://x/1': e('https://x/1', '2026-11-27T01:00:00Z'),
+      'https://x/3': e('https://x/3', '2026-11-27T05:00:00Z'),
+    }
+    await writeArchive(url, archive)
+    assert.deepEqual((await readdir(d)).sort(), ['2026-11-27.json', '2026-11-28.json'])
+    assert.deepEqual(await readArchive(url), archive)
+  })
+})
+
+test('writeArchive supprime un jour vidé, mais jamais un autre fichier', async () => {
+  await withDir(async (d, url) => {
+    await writeFile(join(d, '2026-10-01.json'), '{}\n')
+    await writeFile(join(d, '.gitkeep'), '')
+    await writeArchive(url, { u: { url: 'u', date: '2026-11-28T01:00:00Z', resumes: {} } })
+    assert.deepEqual((await readdir(d)).sort(), ['.gitkeep', '2026-11-28.json'])
+  })
+})
+
+test('readArchive : dossier absent => {}', async () => {
+  assert.deepEqual(await readArchive(pathToFileURL(join(tmpdir(), 'absent-' + Date.now()) + '/')), {})
 })
