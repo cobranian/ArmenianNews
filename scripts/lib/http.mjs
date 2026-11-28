@@ -42,7 +42,12 @@ async function describe(res) {
   return ` [${hdr}${body ? ` « ${body} »` : ''}]`
 }
 
-export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 'follow' } = {}) {
+// `timeout` ne couvre que l'attente des en-têtes, à chaque essai. `deadline`
+// (ms, facultatif — absent, rien ne change pour les autres appelants) borne
+// l'appel ENTIER, lecture du corps et essais compris : un hôte qui distille ses
+// octets est coupé net, et rien n'est retenté après.
+export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 'follow', deadline } = {}) {
+  const overall = deadline ? AbortSignal.timeout(deadline) : null
   let lastErr
   for (let attempt = 0; attempt <= retries; attempt++) {
     const ctrl = new AbortController()
@@ -54,7 +59,7 @@ export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 
           Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
           'Accept-Language': 'fr,en;q=0.8,hy;q=0.5',
         },
-        signal: ctrl.signal,
+        signal: overall ? AbortSignal.any([ctrl.signal, overall]) : ctrl.signal,
         redirect,
       })
       clearTimeout(timer)
@@ -63,6 +68,7 @@ export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 
     } catch (err) {
       clearTimeout(timer)
       lastErr = err
+      if (overall?.aborted) throw new Error(`deadline for ${url}`)
       if (attempt < retries) await new Promise((r) => setTimeout(r, 600 * (attempt + 1)))
     }
   }
@@ -84,32 +90,66 @@ export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 
 // Moving either caller to fetchText 403s every page, and the empty result is
 // then silently backfilled from the previous snapshot — it reads as "the site
 // went quiet", not as a scraper failure. Do not "simplify" it away.
-export function fetchTextNode(host, path, { retries = 2, timeout = 20000 } = {}) {
+//
+// `timeout` est un délai d'INACTIVITÉ de la socket : un hôte qui envoie un octet
+// toutes les quelques secondes ne le déclenche jamais. `deadline` (ms,
+// facultatif — absent, rien ne change pour les autres appelants) borne la
+// requête entière, essais compris : à l'échéance la socket est détruite, et rien
+// n'est retenté. `request` n'existe que pour les tests (serveur local en http).
+export function fetchTextNode(host, path, { retries = 2, timeout = 20000, deadline, request = https.request } = {}) {
+  const end = deadline ? Date.now() + deadline : null
   return new Promise((resolve, reject) => {
-    const req = https.request(
+    let timer = null
+    let expired = false
+    let settled = false
+    const finish = (fn, v) => {
+      if (settled) return
+      settled = true
+      clearTimeout(timer)
+      fn(v)
+    }
+    const req = request(
       { host, path, method: 'GET', headers: { 'User-Agent': UA, Accept: '*/*' }, timeout },
       (res) => {
         if (res.statusCode !== 200) {
           res.resume()
-          return reject(new Error(`HTTP ${res.statusCode} for ${path}`))
+          return finish(reject, new Error(`HTTP ${res.statusCode} for ${path}`))
         }
         let body = ''
         res.setEncoding('utf8')
         res.on('data', (c) => (body += c))
-        res.on('end', () => resolve(body))
+        res.on('end', () => finish(resolve, body))
+        // Une socket détruite en plein corps émet sur la RÉPONSE : sans écouteur,
+        // l'échéance ferait planter le processus. Posé avec `deadline` seulement.
+        if (end) {
+          res.on('error', onError)
+          res.on('aborted', () => onError(new Error(`aborted for ${path}`)))
+        }
       },
     )
-    req.on('timeout', () => req.destroy(new Error(`timeout for ${path}`)))
-    req.on('error', async (err) => {
-      if (retries > 0) {
+    if (end) {
+      timer = setTimeout(() => {
+        expired = true
+        req.destroy(new Error(`deadline for ${path}`))
+      }, Math.max(0, end - Date.now()))
+    }
+    const onError = async (err) => {
+      if (settled) return
+      if (expired) return finish(reject, new Error(`deadline for ${path}`))
+      const left = end ? end - Date.now() : null
+      if (retries > 0 && (left === null || left > 600)) {
+        settled = true
+        clearTimeout(timer)
         await new Promise((r) => setTimeout(r, 600))
         try {
-          resolve(await fetchTextNode(host, path, { retries: retries - 1, timeout }))
+          resolve(await fetchTextNode(host, path, { retries: retries - 1, timeout, deadline: end ? Math.max(1, end - Date.now()) : undefined, request }))
         } catch (e) {
           reject(e)
         }
-      } else reject(err)
-    })
+      } else finish(reject, err)
+    }
+    req.on('timeout', () => req.destroy(new Error(`timeout for ${path}`)))
+    req.on('error', onError)
     req.end()
   })
 }

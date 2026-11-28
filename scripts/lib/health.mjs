@@ -13,6 +13,8 @@ import { evenementsAVenir } from '../../src/agendaEvents.js'
 import { yerevanClock } from './brief-select.mjs'
 import { mixedArticles } from './classify-rubrics.mjs'
 import { RUBRIC_MAP } from '../../src/rubrics.js'
+import { summaryLangs } from './article-resumes.mjs'
+import { isNoResumeUrl } from './article-text.mjs'
 
 // Silence toléré, en heures, avant qu'une source soit dite figée. Mesuré sur
 // trois semaines d'instantanés (4–24 octobre 2026) : chaque seuil vaut à peu
@@ -111,6 +113,32 @@ export function checkClassify(news, cache, map = RUBRIC_MAP) {
   const n = all.filter(({ article }) => !(article.url in (cache ?? {}))).length
   return n > MAX_UNCLASSIFIED
     ? [`**classement des rubriques** : ${n} articles sur ${all.length} non classés (« ✗ classify » au log)`]
+    : []
+}
+
+// Les résumés d'articles : un modèle :free en panne (clé, quota, modèles
+// retirés) ne casse rien, les cartes restent simplement sans résumé. On regarde
+// donc la couverture des articles datés des dernières 24 h ; un article compte
+// s'il a TOUTES ses langues de résumé.
+export const MIN_RESUME_COVERAGE = 0.3
+export const MIN_RESUME_SAMPLE = 20
+// Au lancement, l'archive se remplit à ~30 articles par passage : la couverture
+// des 24 h y est basse par construction. Pas d'alerte avant ce nombre d'entrées.
+export const MIN_RESUME_ARCHIVE = 150
+
+// Les hôtes de NO_RESUME_HOSTS ne sont jamais résumés : hors du dénominateur.
+export function checkArticleResumes(articles, archive, now = new Date()) {
+  if (Object.keys(archive ?? {}).length < MIN_RESUME_ARCHIVE) return []
+  const since = now.getTime() - 864e5
+  const recent = (articles ?? []).filter((a) => {
+    if (isNoResumeUrl(a.url)) return false
+    const t = Date.parse(a.date)
+    return Number.isFinite(t) && t >= since
+  })
+  if (recent.length < MIN_RESUME_SAMPLE) return []
+  const done = recent.filter((a) => summaryLangs(a.lang).every((l) => archive?.[a.url]?.resumes?.[l])).length
+  return done / recent.length < MIN_RESUME_COVERAGE
+    ? [`**résumés d'articles** : ${done} sur ${recent.length} articles des dernières 24 h ont leurs résumés (« ✗ résumé-article » au log)`]
     : []
 }
 

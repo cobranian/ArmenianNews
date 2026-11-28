@@ -2,7 +2,7 @@
 // une brève absente ou un agenda vide ouvrent une issue. Sans réseau.
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { STALE_HOURS, staleHours, checkNews, checkBriefs, checkAgenda, checkClassify, checkSteps, checkHarvest, healthReport, MAX_UNCLASSIFIED, MAX_HARVEST_DAYS } from '../scripts/lib/health.mjs'
+import { STALE_HOURS, staleHours, checkNews, checkBriefs, checkAgenda, checkClassify, checkArticleResumes, MIN_RESUME_SAMPLE, MIN_RESUME_ARCHIVE, checkSteps, checkHarvest, healthReport, MAX_UNCLASSIFIED, MAX_HARVEST_DAYS } from '../scripts/lib/health.mjs'
 import { ALL_LANGS } from '../sites.config.js'
 
 const NOW = new Date('2026-10-24T12:00:00Z') // 16 h à Erevan
@@ -134,4 +134,48 @@ test('checkHarvest : au-delà de MAX_HARVEST_DAYS, un rappel de récolte', () =>
 })
 test('checkHarvest : un pool sans date de récolte n’alerte pas (on ne devine pas)', () => {
   assert.deepEqual(checkHarvest({}, NOW), [])
+})
+
+// --- Résumés d'articles ---------------------------------------------------
+const RNOW = new Date('2026-11-28T12:00:00Z')
+const rArticles = (n) =>
+  Array.from({ length: n }, (_, i) => ({ url: `https://x.test/${i}`, lang: 'en', date: '2026-11-28T06:00:00Z' }))
+// Des entrées anciennes, hors des 24 h, pour franchir MIN_RESUME_ARCHIVE.
+const rFiller = () =>
+  Object.fromEntries(Array.from({ length: MIN_RESUME_ARCHIVE }, (_, i) => [`https://old.test/${i}`, { resumes: { en: 'x' } }]))
+const rArchive = (k) => ({
+  ...rFiller(),
+  ...Object.fromEntries(rArticles(k).map((a) => [a.url, { resumes: { en: 'texte' } }])),
+})
+
+test('checkArticleResumes : couverture sous 30 % signalée, avec le compte et le signe au log', () => {
+  const p = checkArticleResumes(rArticles(30), rArchive(5), RNOW)
+  assert.equal(p.length, 1)
+  assert.ok(p[0].startsWith("**résumés d'articles**"))
+  assert.match(p[0], /5 sur 30/)
+  assert.match(p[0], /« ✗ résumé-article » au log/)
+})
+test('checkArticleResumes : couverture suffisante, rien', () => {
+  assert.deepEqual(checkArticleResumes(rArticles(30), rArchive(20), RNOW), [])
+})
+test('checkArticleResumes : échantillon trop petit, rien', () => {
+  assert.ok(10 < MIN_RESUME_SAMPLE)
+  assert.deepEqual(checkArticleResumes(rArticles(10), {}, RNOW), [])
+})
+test('checkArticleResumes : un article français exige fr, de et it', () => {
+  const arts = rArticles(30).map((a) => ({ ...a, lang: 'fr' }))
+  const arch = { ...rFiller(), ...Object.fromEntries(arts.map((a) => [a.url, { resumes: { fr: 'a' } }])) }
+  assert.equal(checkArticleResumes(arts, arch, RNOW).length, 1)
+})
+test('checkArticleResumes : archive au lancement (< MIN_RESUME_ARCHIVE entrées), rien', () => {
+  const small = Object.fromEntries(rArticles(5).map((a) => [a.url, { resumes: { en: 'texte' } }]))
+  assert.ok(Object.keys(small).length < MIN_RESUME_ARCHIVE)
+  assert.deepEqual(checkArticleResumes(rArticles(30), small, RNOW), [])
+})
+test('checkArticleResumes : les hôtes de NO_RESUME_HOSTS sortent du dénominateur', () => {
+  const cc = Array.from({ length: 60 }, (_, i) => ({
+    url: `https://www.thecaliforniacourier.com/${i}`, lang: 'en', date: '2026-11-28T06:00:00Z',
+  }))
+  // 20 articles résumés sur 20 joignables : couverture pleine malgré 60 Courier (25 % sans la sortie).
+  assert.deepEqual(checkArticleResumes([...rArticles(20), ...cc], rArchive(20), RNOW), [])
 })

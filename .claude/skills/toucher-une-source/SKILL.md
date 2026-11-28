@@ -14,6 +14,10 @@ depuis le poste (`gh workflow run hourly.yml`, puis
 `gh run view <id> --log | grep '✗'`) : plusieurs sites répondent 200 à une IP
 résidentielle et 403 à un runner.
 
+**Une source nouvelle** : son domaine va dans `SOURCE_HOSTS`
+(`scripts/lib/article-text.mjs`), sinon ses articles n'ont jamais de résumé
+(`test/article-hosts.test.mjs` le dit en local, la CI le saute).
+
 ## Les modules de `scripts/sources/`, un par un
 
 - `armenpress.mjs` — Armenpress, l'agence de presse nationale, et la seule
