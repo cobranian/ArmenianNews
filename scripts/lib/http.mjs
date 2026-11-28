@@ -142,7 +142,7 @@ export function fetchTextNode(host, path, { retries = 2, timeout = 20000, deadli
         clearTimeout(timer)
         await new Promise((r) => setTimeout(r, 600))
         try {
-          resolve(await fetchTextNode(host, path, { retries: retries - 1, timeout, deadline: end ? end - Date.now() : undefined, request }))
+          resolve(await fetchTextNode(host, path, { retries: retries - 1, timeout, deadline: end ? Math.max(1, end - Date.now()) : undefined, request }))
         } catch (e) {
           reject(e)
         }

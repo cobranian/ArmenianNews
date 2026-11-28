@@ -350,6 +350,8 @@ export async function summarizeArticles({
         const missing = missingLangs(entry, a.lang)
         if (!missing.length || entry.attempts >= MAX_ATTEMPTS) return entry
 
+        // Délai global passé : l'appel ne serait plus compté dans le plafond.
+        if (ctl.closed) return entry
         // Vérifié et compté AVANT l'await : deux tâches ne peuvent pas franchir le
         // plafond ensemble.
         if (calledToday.size >= maxCallsPerDay) {

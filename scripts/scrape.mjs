@@ -435,7 +435,7 @@ async function main() {
 
   // Les résumés des articles (scripts/lib/article-resumes.mjs), EN DERNIER :
   // ils partagent le quota OpenRouter avec la brève, les rubriques et l'agenda,
-  // qui doivent passer d'abord. 20 articles au plus par instantané. Un échec
+  // qui doivent passer d'abord. MAX_PER_SNAPSHOT articles au plus par instantané. Un échec
   // n'arrête rien ; le seul signe est « ✗ résumé-article ». Le dossier doit
   // figurer dans le `git add` de hourly.yml, sinon les résumés sont refaits
   // chaque heure (test/article-resumes-wiring.test.mjs). UN SEUL `now` : il
