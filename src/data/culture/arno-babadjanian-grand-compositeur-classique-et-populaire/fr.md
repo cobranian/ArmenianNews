@@ -1,0 +1,31 @@
+---
+title: "Arno Babadjanian : le souffle vibrant d'un maître arménien entre classique et mélodie populaire"
+description: "Retour sur la vie et l'œuvre d'Arno Babadjanian, figure majeure de la musique arménienne, du Trio avec piano aux mélodies populaires."
+date: "2026-11-28"
+---
+
+Né à Erevan le 22 janvier 1921 — son père ayant consigné cette date à la suite de la disparition de Lénine survenue un 21 janvier —, Arno Babadjanian s’est imposé comme l'une des personnalités les plus singulières et chaleureuses du paysage musical arménien et soviétique. Pianiste virtuose salué en son temps par Dmitri Chostakovitch comme un « brillant pédagogue du piano », il a su faire dialoguer la tradition modale et populaire arménienne avec la virtuosité romantique d’un Rachmaninov et les audaces expressives de son siècle. Disparu le 11 novembre 1983 à Moscou des suites d'une leucémie, reposant désormais à Erevan au cimetière de Tokhmakh, Babadjanian a laissé derrière lui une œuvre lumineuse où la musique de chambre la plus exigeante côtoie des pages symphoniques et des chansons fredonnées par des générations entières.
+
+## Une formation d'exception et la ferveur des débuts
+
+L'éveil musical d'Arno Babadjanian prend racine dans un foyer attentif où son père, professeur de mathématiques, jouait de divers instruments traditionnels arméniens, et sa mère enseignait le russe. Dès l'âge de trois ans, l'enfant s'essaie à l'harmonium familial. Deux ans plus tard, alors qu'il s'amuse au piano d'un jardin d'enfants en battant la mesure, il attire l'attention d'Aram Khatchatourian, qui conseille aussitôt de lui faire suivre un enseignement sérieux.
+
+En 1928, il rejoint le groupe des enfants doués auprès du Conservatoire d'Erevan tout en suivant sa scolarité à l'école Gorki. À neuf ans, il compose sa *Valse des Pionniers*, éditée en 1932 sous forme de marche. À douze ans, interprétant la Quatrième sonate de Beethoven et le *Rondo capriccioso* de Mendelssohn, il remporte le premier prix du concours des jeunes musiciens d'Arménie. Il étudie ensuite avec Sargis Barkhoudarian et V. Talyan, avant de poursuivre ses études à Moscou en 1938 à l'école Gnessine, auprès d'Elena Gnessina et de Vissarion Chebaline. Malgré l'interruption de la guerre — où il participe aux travaux défensifs près de Smolensk puis à l'évacuation du Conservatoire de Moscou à Saratov —, il se perfectionne avec Constantin Igoumnov et Boris Berlin, tout en travaillant à la Maison de la culture arménienne de Moscou avec Heinrich Litinsky. Babadjanian tisse alors des liens indéfectibles avec ses confrères Alexandre Aroutiounian, Edvard Mirzoyan et Ghazaros Saryan, formant ce que l'histoire retient sous le nom de « Puissant Groupe arménien ».
+
+## Les grands chefs-d'œuvre de la musique de chambre et de concert
+
+De retour en Arménie, où il enseigne le piano au Conservatoire d'Erevan de 1950 à 1956 avant de recevoir le titre de dozent et d'emménager à Moscou, Arno Babadjanian affirme un langage musical percutant. En 1950, sa *Ballade héroïque* pour piano et orchestre rencontre un succès éclatant et lui vaut le Prix Staline de troisième classe en 1951. La même année, en collaboration étroite avec Alexandre Aroutiounian, il compose la célèbre *Rhapsodie arménienne* pour deux pianos, bientôt suivie en 1960 par les *Pièces festives* avec percussions.
+
+L’année 1952 voit naître son *Trio avec piano en fa dièse mineur*, unanimement célébré dès sa création et gravé notamment aux côtés du violoniste David Oïstrakh et du violoncelliste Sviatoslav Knouchevitski. En 1958, il achève sa *Sonate pour violon et piano*, dédiée à Chostakovitch, puis conçoit son *Concerto pour violoncelle* (1962), dédié à son ami Mstislav Rostropovitch. Ses *Six tableaux* pour piano solo (1963–1964), couronnés en 1967 par le Prix d'État de la RSS d'Arménie, marient de manière novatrice l'intonation traditionnelle et les techniques sérielles. En 1965, son *Poème* pour piano est choisi comme pièce obligatoire du second tour du prestigieux Concours international Tchaïkovski de 1966. Interprétées par des maîtres tels qu'Emil Gilels, Lev Vlassenko, Medea Abrahamyan, Svetlana Navasardyan ou Jean Ter-Merguerian, ses œuvres instrumentales demeurent un sommet de la modernité arménienne.
+
+## Un maître de la mélodie et du cinéma
+
+Arno Babadjanian possédait le rare privilège d'émouvoir aussi bien dans les grandes salles philharmoniques que sur les ondes de la radio populaire. Compositeur de plus de deux cents chansons, il conquiert une renommée immense à partir de 1958 grâce à la musique du film *The Song of First Love* (*Le Chant du premier amour*), devenue un hymne à la capitale arménienne. Son catalogue cinématographique s'enrichit ensuite de partitions marquantes pour *Bride from the North* (1975), *My heart is in the Highlands* (1975), *Baghdasar's divorce* (1976) ou encore *The Mechanics of happiness* (1982), qui lui vaudra un prix d'État à titre posthume.
+
+Travaillant avec de grands poètes comme Robert Rojdestvenski, Evgueni Evtouchenko et Andreï Voznessenski, il donne naissance à des titres universellement diffusés, tels que *Nocturne*, *Le Mariage* (*Svadba*) ou *La Meilleure Ville du monde* (*Loutchchi gorod Zemli*), portés au sommet par la voix de Muslim Magomayev. En 1973, sa chanson *Ferris wheel* (*La Grande Roue*) remporte le premier prix du concours mondial de Tokyo.
+
+## Perpétuer la flamme à Madrid
+
+Honoré des titres d'Artiste du peuple de la RSS d'Arménie en 1962 puis d'Artiste du peuple de l'URSS en 1971, récipiendaire de l'ordre du Drapeau rouge du Travail (1956) et de l'ordre de Lénine (1981), Babadjanian a laissé une empreinte immortelle. À Erevan, où une statue le représentant au clavier a été érigée au centre-ville et où une salle de concert porte son nom, sa musique résonne toujours comme l'expression éclatante de l'âme de son pays.
+
+Cet héritage continuera de rayonner sur les scènes internationales lors du concert du **« Duo Tanja Becker-Bender, violin & Sofya Melikyan, piano »**, qui aura lieu le **2 décembre 2026** dans la **Communauté de Madrid**. Une occasion privilégiée de retrouver l'intensité et le lyrisme ardent d'un répertoire où violon et piano dialoguent au plus haut niveau d'expression.
