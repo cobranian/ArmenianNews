@@ -440,8 +440,7 @@ async function main() {
   // figurer dans le `git add` de hourly.yml, sinon les résumés sont refaits
   // chaque heure (test/article-resumes-wiring.test.mjs). UN SEUL `now` : il
   // décide du fichier de jour de chaque entrée.
-  console.log('
-Résumés des articles:')
+  console.log('\nRésumés des articles:')
   try {
     const dir = new URL('../src/data/article-resumes/', import.meta.url)
     const now = new Date()
