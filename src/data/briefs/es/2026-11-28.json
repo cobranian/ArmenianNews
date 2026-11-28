@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-28",
+  "lang": "es",
+  "generatedAt": "2026-11-28T03:30:27.037Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La jornada informativa destaca los avances en los procesos de paz entre Armenia y Azerbaiyán, la cooperación bilateral con Rusia y Emiratos Árabes, y temas de salud pública y cultura en Armenia.",
+  "topics": [
+    {
+      "title": "Institucionalización de la paz entre Armenia y Azerbaiyán",
+      "text": "Funcionarios de ambos países coinciden en la necesidad de institucionalizar la paz, según declaraciones en la iniciativa Puente de Paz y reuniones parlamentarias. Se destaca el papel de la conectividad vial y la complementariedad económica para consolidar la estabilidad regional.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266839",
+          "title": "Vahan Kostanyan: “Armenia y Azerbaiyán acordaron que es necesario institucionalizar la paz”"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266835",
+          "title": "En el quinto encuentro de la iniciativa Puente de Paz se debatieron las posibilidades de fortalecer e institucionalizar la paz"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/puente-de-la-paz-armenia-azerbaiyan-comites/",
+          "title": "La iniciativa «Puente de la Paz» avanza en Armenia con formato de comités y la proyección de seis grupos temáticos"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/alen-simonyan-cooperacion-armenia-azerbaiyan/",
+          "title": "Alen Simonyan destaca el papel de las carreteras y la complementariedad económica entre Armenia y Azerbaiyán"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266766",
+          "title": "Areg Kochinyan: “El diálogo entre las sociedades armenia y azerbaiyana está orientado a construir un futuro de paz”"
+        }
+      ]
+    },
+    {
+      "title": "Cooperación estratégica Armenia-Rusia en ferrocarriles y base militar",
+      "text": "Se celebró la segunda reunión del grupo de trabajo armenio-ruso en Ereván para discutir la operación y modernización del ferrocarril. Paralelamente, el primer ministro Pashinyan y el presidente Putin abordarán la situación de la base militar rusa en territorio armenio.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266840",
+          "title": "Pashinyan y Putin abordarán la cuestión de la base militar rusa en Armenia"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/segunda-reunion-grupo-trabajo-armenia-rusia-ferrocarril/",
+          "title": "Segunda reunión del grupo de trabajo armenio-ruso en Ereván sobre la operación y modernización del ferrocarril"
+        }
+      ]
+    },
+    {
+      "title": "Profundización de lazos entre Armenia y Emiratos Árabes Unidos",
+      "text": "En Abu Dabi se debatieron las vías para profundizar la cooperación bilateral, en el marco de una visita oficial que busca fortalecer las relaciones políticas y económicas entre ambas naciones.",
+      "rubric": "armenie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266871",
+          "title": "En Abu Dabi se debatieron las vías para profundizar la cooperación entre Armenia y los Emiratos Árabes Unidos"
+        }
+      ]
+    },
+    {
+      "title": "Iniciativa Puente de Paz avanza con formato de comités temáticos",
+      "text": "El quinto encuentro de la iniciativa continuó bajo un formato de trabajo de comisiones, proyectando seis grupos temáticos para fortalecer el diálogo social y la construcción de paz entre las sociedades armenia y azerbaiyana.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266835",
+          "title": "En el quinto encuentro de la iniciativa Puente de Paz se debatieron las posibilidades de fortalecer e institucionalizar la paz"
+        },
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/puente-de-la-paz-armenia-azerbaiyan-comites/",
+          "title": "La iniciativa «Puente de la Paz» avanza en Armenia con formato de comités y la proyección de seis grupos temáticos"
+        },
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/es/article/1266787",
+          "title": "El encuentro de la iniciativa Puente de Paz continúa bajo el formato de trabajo de comisiones"
+        }
+      ]
+    },
+    {
+      "title": "Preocupación por consumo de narguile en escolares armenios",
+      "text": "Un estudio revela que el 35% de los escolares en Armenia ha usado narguile al menos una vez, lo que ha llevado a las autoridades de salud a proponer la prohibición de su uso y venta en espacios públicos.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/escolares-armenia-uso-narguiles-salud/",
+          "title": "El 35% de los escolares en Armenia usó narguile al menos una vez: Salud propone prohibir su uso y venta en espacios públicos"
+        }
+      ]
+    },
+    {
+      "title": "Crecimiento del turismo interno y feria \"Conoce Armenia\"",
+      "text": "El interés por el turismo interno en Armenia sigue en aumento, celebrándose por quinto año consecutivo la feria \"Conoce Armenia\" para promover destinos nacionales.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/turismo-interno-quinta-feria-conoce-armenia/",
+          "title": "Crece el interés por el turismo interno en Armenia y se celebra por quinto año la feria «Conoce Armenia»"
+        }
+      ]
+    },
+    {
+      "title": "Hallazgo arqueológico armenio en iglesia rupestre de Italia",
+      "text": "Arqueólogos descubrieron un \"tonir\" (horno tradicional armenio) en una iglesia rupestre medieval del sur de Italia, reforzando el registro histórico de la presencia armenia en la región.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "soyarmenio",
+          "url": "https://soyarmenio.com/tonir-armenio-iglesia-medieval-italia-calabria/",
+          "title": "Arqueólogos hallan un «tonir» armenio en una iglesia rupestre medieval de Italia y refuerzan el registro histórico armenio en el sur italiano"
+        }
+      ]
+    }
+  ]
+}

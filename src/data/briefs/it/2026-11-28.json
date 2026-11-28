@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-28",
+  "lang": "it",
+  "generatedAt": "2026-11-28T03:30:27.037Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La rassegna stampa odierna evidenzia i colloqui tra società civili di Armenia e Azerbaigian, l'incontro previsto tra Putin e Pashinyan, le tensioni geopolitiche tra UE e alleanza guidata da Mosca, un massiccio investimento in un data center per l'IA, la questione della presidenza azera dell'OSCE e l'avvio del festival musicale Khachaturian a Erevan.",
+  "topics": [
+    {
+      "title": "Dialogo tra società civili armena e azera a Dilijan",
+      "text": "Rappresentanti delle società civili di Armenia e Azerbaigian si sono incontrati a Dilijan per discutere il programma di pace e le questioni relative alla fiducia reciproca. L'incontro rientra negli sforzi per costruire un clima di confidenza tra le due parti.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-representants-de-la-societe-civile-armenienne-et-azerbaidjanaise-ont-discute-a-dilijan-armenie-du-programme-de-paix-et-des-questions-de-confiance-mutuelle/",
+          "title": "Des représentants de la société civile arménienne et azerbaïdjanaise ont discuté à Dilijan (Arménie) du programme de paix et des questions de confiance mutuelle"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/a-erevan-rencontre-entre-les-representants-des-societes-civiles-dazerbaidjan-et-darmenie/",
+          "title": "À Erevan, rencontre entre les représentants des sociétés civiles d’Azerbaïdjan et d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Incontro Putin-Pashinyan su sicurezza e base russa",
+      "text": "Secondo il portavoce del Cremlino Dmitry Peskov, i presidenti di Russia e Armenia discuteranno di sicurezza e della base militare russa in Armenia. Il colloquio avviene in un contesto di ridefinizione degli equilibri regionali.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/poutine-et-pachinian-discuteront-de-la-securite-et-de-la-base-militaire-russe-en-armenie-indique-dimitri-peskov/",
+          "title": "Poutine et Pachinian discuteront de la sécurité et de la base militaire russe en Arménie indique Dimitri Peskov"
+        }
+      ]
+    },
+    {
+      "title": "Pressione geopolitica: UE contro alleanza economica guidata da Mosca",
+      "text": "Il Cremlino ha esortato l'Armenia a scegliere tra l'Unione Europea e un'alleanza economica guidata da Mosca. La richiesta riflette la competizione per l'influenza nel Caucaso meridionale.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-kremlin-exhorte-larmenie-a-choisir-entre-lue-et-une-alliance-economique-dirigee-par-moscou/",
+          "title": "Le Kremlin exhorte l’Arménie à choisir entre l’UE et une alliance économique dirigée par Moscou"
+        }
+      ]
+    },
+    {
+      "title": "Investimento da 8 miliardi di dollari in data center IA",
+      "text": "La società Firebird ha raddoppiato l'investimento previsto per un centro dati dedicato all'intelligenza artificiale in Armenia, portandolo a 8 miliardi di dollari. L'operazione segnala un forte interesse per lo sviluppo tecnologico del paese.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/firebird-double-linvestissement-prevu-dans-le-centre-de-donnees-ia-en-armenie-a-8-milliards-de-dollars/",
+          "title": "Firebird double l’investissement prévu dans le centre de données IA en Arménie à 8 milliards de dollars"
+        }
+      ]
+    },
+    {
+      "title": "Opposizione alla candidatura azera alla presidenza OSCE",
+      "text": "Oltre 40 ONG si oppongono alla candidatura dell'Azerbaigian per guidare l'OSCE, definendola 'inadeguata'. La presa di posizione evidenzia preoccupazioni per il rispetto degli standard dell'organizzazione.",
+      "rubric": "monde",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/inapte-a-presider-plus-de-40-ong-sopposent-a-la-candidature-de-lazerbaidjan-pour-diriger-losce/",
+          "title": "« Inapte à présider » : Plus de 40 ONG s’opposent à la candidature de l’Azerbaïdjan pour diriger l’OSCE"
+        }
+      ]
+    },
+    {
+      "title": "Al via il Festival internazionale Khachaturian a Erevan",
+      "text": "Il Festival internazionale Khachaturian propone 20 giorni di musica a Erevan. L'evento conferma la vitalità della scena culturale armena e la sua apertura a collaborazioni internazionali.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-festival-international-khatchatourian-propose-20-jours-de-musique-a-erevan/",
+          "title": "Le Festival international Khatchatourian propose 20 jours de musique à Erevan"
+        }
+      ]
+    }
+  ]
+}

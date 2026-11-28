@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-28",
+  "lang": "fr",
+  "generatedAt": "2026-11-28T03:30:27.037Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "La journée est marquée par les discussions sur le processus de paix avec l'Azerbaïdjan, les relations diplomatiques avec la Russie et l'Union européenne, ainsi que par des développements économiques et sociétaux en Arménie.",
+  "topics": [
+    {
+      "title": "Processus de paix et dialogue avec l'Azerbaïdjan",
+      "text": "L'Arménie et l'Azerbaïdjan ont convenu de la nécessité d'institutionnaliser la paix, selon Vahan Kostanyan. Parallèlement, des représentants des sociétés civiles des deux pays se sont rencontrés à Dilijan et à Erevan pour discuter du programme de paix et des questions de confiance mutuelle. Plus de 40 ONG s'opposent par ailleurs à la candidature de l'Azerbaïdjan pour diriger l'OSCE.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266839",
+          "title": "Vahan Kostanyan: l’Arménie et l’Azerbaïdjan ont convenu de la nécessité d’institutionnaliser la paix"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-representants-de-la-societe-civile-armenienne-et-azerbaidjanaise-ont-discute-a-dilijan-armenie-du-programme-de-paix-et-des-questions-de-confiance-mutuelle/",
+          "title": "Des représentants de la société civile arménienne et azerbaïdjanaise ont discuté à Dilijan (Arménie) du programme de paix et des questions de confiance mutuelle"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/inapte-a-presider-plus-de-40-ong-sopposent-a-la-candidature-de-lazerbaidjan-pour-diriger-losce/",
+          "title": "« Inapte à présider » : Plus de 40 ONG s’opposent à la candidature de l’Azerbaïdjan pour diriger l’OSCE"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/a-erevan-rencontre-entre-les-representants-des-societes-civiles-dazerbaidjan-et-darmenie/",
+          "title": "À Erevan, rencontre entre les représentants des sociétés civiles d’Azerbaïdjan et d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Relations avec la Russie : sécurité et choix géopolitiques",
+      "text": "Le Kremlin a indiqué que Vladimir Poutine et Nikol Pachinian discuteront de la sécurité et de la base militaire russe en Arménie. Dans le même temps, Moscou exhorte l'Arménie à choisir entre l'Union européenne et une alliance économique dirigée par la Russie.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/poutine-et-pachinian-discuteront-de-la-securite-et-de-la-base-militaire-russe-en-armenie-indique-dimitri-peskov/",
+          "title": "Poutine et Pachinian discuteront de la sécurité et de la base militaire russe en Arménie indique Dimitri Peskov"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-kremlin-exhorte-larmenie-a-choisir-entre-lue-et-une-alliance-economique-dirigee-par-moscou/",
+          "title": "Le Kremlin exhorte l’Arménie à choisir entre l’UE et une alliance économique dirigée par Moscou"
+        }
+      ]
+    },
+    {
+      "title": "Investissement majeur dans un centre de données IA",
+      "text": "La société Firebird a annoncé doubler son investissement prévu dans un centre de données dédié à l'intelligence artificielle en Arménie, portant le montant à 8 milliards de dollars.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/firebird-double-linvestissement-prevu-dans-le-centre-de-donnees-ia-en-armenie-a-8-milliards-de-dollars/",
+          "title": "Firebird double l’investissement prévu dans le centre de données IA en Arménie à 8 milliards de dollars"
+        }
+      ]
+    },
+    {
+      "title": "Coopération avec la Banque européenne pour la reconstruction et le développement",
+      "text": "David Tadevosyan a reçu une délégation de la BERD, signe d'une poursuite de la coopération financière et technique entre l'Arménie et l'institution européenne.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266848",
+          "title": "David Tadevosyan a reçu une délégation de la Banque européenne pour la reconstruction et le développement (BERD)"
+        }
+      ]
+    },
+    {
+      "title": "Enquête sur l'utilisation de biens appartenant à Gagik Tsarukyan par la mairie d'Erevan",
+      "text": "Une enquête du média Azatutyun révèle que la municipalité d'Erevan utilise des biens appartenant à l'homme d'affaires et homme politique Gagik Tsarukyan sans convention de garde formelle.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015678",
+          "title": "La mairie d’Erevan utilise des biens appartenant à Tsarukyan sans convention de garde, révèle une enquête d’Azatutyun"
+        }
+      ]
+    },
+    {
+      "title": "Mobilisation des « Mères en noir » devant le gouvernement",
+      "text": "Le mouvement des « Mères en noir » a de nouveau manifesté devant le bâtiment du gouvernement à Erevan, poursuivant leur action pour la vérité sur les soldats disparus ou capturés.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-meres-en-noir-de-nouveau-devant-le-batiment-du-gouvernement/",
+          "title": "Les « Mères en noir », de nouveau devant le bâtiment du gouvernement"
+        }
+      ]
+    },
+    {
+      "title": "Festival international Khatchatourian à Erevan",
+      "text": "Le Festival international Khatchatourian propose vingt jours de programmation musicale à Erevan, mettant à l'honneur le répertoire classique arménien et international.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-festival-international-khatchatourian-propose-20-jours-de-musique-a-erevan/",
+          "title": "Le Festival international Khatchatourian propose 20 jours de musique à Erevan"
+        }
+      ]
+    }
+  ]
+}

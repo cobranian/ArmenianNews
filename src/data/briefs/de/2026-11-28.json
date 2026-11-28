@@ -1,0 +1,173 @@
+{
+  "date": "2026-11-28",
+  "lang": "de",
+  "generatedAt": "2026-11-28T03:30:27.037Z",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "intro": "Mehrere armenische Medien berichten heute über Fortschritte im Friedensprozess mit Aserbaidschan, innenpolitische Spannungen, wirtschaftliche Grossprojekte sowie kulturelle und gesellschaftliche Themen.",
+  "topics": [
+    {
+      "title": "Friedensprozess mit Aserbaidschan",
+      "text": "Armenien und Aserbaidschan haben sich laut Vahan Kostanyan auf die Notwendigkeit geeinigt, den Frieden zu institutionalisieren. Vertreter der Zivilgesellschaft beider Länder trafen sich in Dilijan und in Eriwan, um über Vertrauensbildung und das Friedensprogramm zu diskutieren. Mehr als 40 NGOs lehnen indes die aserbaidschanische Kandidatur für den OSZE-Vorsitz ab.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266839",
+          "title": "Vahan Kostanyan: l’Arménie et l’Azerbaïdjan ont convenu de la nécessité d’institutionnaliser la paix"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-representants-de-la-societe-civile-armenienne-et-azerbaidjanaise-ont-discute-a-dilijan-armenie-du-programme-de-paix-et-des-questions-de-confiance-mutuelle/",
+          "title": "Des représentants de la société civile arménienne et azerbaïdjanaise ont discuté à Dilijan (Arménie) du programme de paix et des questions de confiance mutuelle"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/inapte-a-presider-plus-de-40-ong-sopposent-a-la-candidature-de-lazerbaidjan-pour-diriger-losce/",
+          "title": "« Inapte à présider » : Plus de 40 ONG s’opposent à la candidature de l’Azerbaïdjan pour diriger l’OSCE"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/a-erevan-rencontre-entre-les-representants-des-societes-civiles-dazerbaidjan-et-darmenie/",
+          "title": "À Erevan, rencontre entre les représentants des sociétés civiles d’Azerbaïdjan et d’Arménie"
+        }
+      ]
+    },
+    {
+      "title": "Russischer Druck und EU-Annäherung",
+      "text": "Der Kreml fordert Armenien auf, sich zwischen der EU und einer von Moskau geführten Wirtschaftsallianz zu entscheiden. Putin und Paschinjan wollen laut Dmitri Peskow über Sicherheitsfragen und den russischen Militärstützpunkt in Armenien sprechen. Paschinjan äusserte sich zudem zur Haltung von Armen Grigorian im Zusammenhang mit dem EU-Gesetz.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/poutine-et-pachinian-discuteront-de-la-securite-et-de-la-base-militaire-russe-en-armenie-indique-dimitri-peskov/",
+          "title": "Poutine et Pachinian discuteront de la sécurité et de la base militaire russe en Arménie indique Dimitri Peskov"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-kremlin-exhorte-larmenie-a-choisir-entre-lue-et-une-alliance-economique-dirigee-par-moscou/",
+          "title": "Le Kremlin exhorte l’Arménie à choisir entre l’UE et une alliance économique dirigée par Moscou"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/si-armen-grigorian-avait-une-telle-position-il-aurait-du-demissionner-lors-de-ladoption-de-la-loi-de-lue-selon-pachinian/",
+          "title": "Si Armen Grigorian avait une telle position, il aurait dû démissionner lors de l’adoption de la loi de l’UE, selon Pachinian"
+        }
+      ]
+    },
+    {
+      "title": "Grossinvestition in KI-Rechenzentrum",
+      "text": "Firebird verdoppelt die geplante Investition in ein KI-Rechenzentrum in Armenien auf 8 Milliarden Dollar. Premierminister Tadewosjan empfing eine Delegation der Europäischen Bank für Wiederaufbau und Entwicklung. Armenien und die VAE planen für 2027 ein Abkommen zum Austausch von Regierungserfahrungen.",
+      "rubric": "economie",
+      "sources": [
+        {
+          "source": "armenpress",
+          "url": "https://armenpress.am/fr/article/1266848",
+          "title": "David Tadevosyan a reçu une délégation de la Banque européenne pour la reconstruction et le développement (BERD)"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/firebird-double-linvestissement-prevu-dans-le-centre-de-donnees-ia-en-armenie-a-8-milliards-de-dollars/",
+          "title": "Firebird double l’investissement prévu dans le centre de données IA en Arménie à 8 milliards de dollars"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/larmenie-et-les-emirats-arabes-unis-prevoient-un-accord-sur-lechange-dexperiences-gouvernementales",
+          "title": "L’Arménie et les Émirats arabes unis prévoient un accord sur l’échange d’expériences gouvernementales en 2027"
+        }
+      ]
+    },
+    {
+      "title": "Innenpolitische Kontroversen in Eriwan",
+      "text": "Eine Untersuchung von Azatutyun deckt auf, dass die Stadtverwaltung Eriwan Immobilien der Familie Tsarukjan ohne Verwahrungsvereinbarung nutzt. Ein Verfassungsexperte warnt davor, dass das Parlament zur Zuflucht finanzeller Grossmächte werden könnte. Die Kandidatur von Denis Djorkaeff für den Fussballverbandsvorsitz löste einen Cyberangriff auf seine Facebook-Seite aus.",
+      "rubric": "politique",
+      "sources": [
+        {
+          "source": "civilnet",
+          "url": "https://civilnet.am/fr/news/1015678",
+          "title": "La mairie d’Erevan utilise des biens appartenant à Tsarukyan sans convention de garde, révèle une enquête d’Azatutyun"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/denis-djorkaeff-apres-lannonce-de-ma-candidature-a-la-presidence-de-la-federation-armenienne-de-football-ma-page-facebook-a-ete-soudainement-la-cible-dune-attaque/",
+          "title": "Denis Djorkaeff : « Après l’annonce de ma candidature à la présidence de la Fédération arménienne de football, ma page Facebook a été soudainement la cible d’une attaque »"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/mer-oughin-36302/",
+          "title": "Constitution : l’expert Tumassian veut éviter que le Parlement ne devienne le refuge des géants financiers"
+        }
+      ]
+    },
+    {
+      "title": "Gesellschaftliche Proteste und Gesundheitsdaten",
+      "text": "Die Gruppe 'Mütter in Schwarz' demonstrierte erneut vor dem Regierungsgebäude. Laut Worldometer belegt Armenien weltweit Rang 116 bei der Lebenserwartung. Der Internationale Tag der Französischlehrer 2026 in Eriwan steht unter dem Motto Sport und Gemeinschaft.",
+      "rubric": "societe",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/larmenie-se-classe-a-la-116e-place-mondiale-en-termes-desperance-de-vie-selon-worldometer/",
+          "title": "L’Arménie se classe à la 116e place mondiale en termes d’espérance de vie selon Worldometer"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/la-journee-internationale-des-professeurs-de-francais-2026-erevan-le-gout-du-sport-en-francais",
+          "title": "La journée internationale des professeurs de français 2026 à Erevan : « Le goût du sport en français, jouons collectif »"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/les-meres-en-noir-de-nouveau-devant-le-batiment-du-gouvernement/",
+          "title": "Les « Mères en noir », de nouveau devant le bâtiment du gouvernement"
+        }
+      ]
+    },
+    {
+      "title": "Kulturelle Veranstaltungen und Diaspora-Aktivitäten",
+      "text": "Das internationale Chatschaturjan-Festival bietet 20 Tage Musik in Eriwan. Internationale Influencer werden zur Beleuchtung des Hauptweihnachtsbaums in Eriwan erwartet. Die UACE organisiert am 13. Dezember eine Konferenz in Cannes, und armenische Studienzentren in Venedig wollen ihre internationale Zusammenarbeit stärken.",
+      "rubric": "culture",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/des-influenceurs-internationaux-de-renom-sont-attendus-en-armenie-pour-participer-a-lillumination-du-sapin-de-noel-principal-a-erevan/",
+          "title": "Des influenceurs internationaux de renom sont attendus en Arménie pour participer à l’illumination du sapin de Noël principal à Erevan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/le-festival-international-khatchatourian-propose-20-jours-de-musique-a-erevan/",
+          "title": "Le Festival international Khatchatourian propose 20 jours de musique à Erevan"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/conference-organisee-par-luace-le-13-decembre-a-cannes/",
+          "title": "Conférence organisée par l’UACE le 13 décembre à Cannes"
+        },
+        {
+          "source": "courrier",
+          "url": "https://courrier.am/venise-les-centres-detudes-armeniennes-veulent-renforcer-leur-cooperation-internationale",
+          "title": "À Venise, les centres d’études arméniennes veulent renforcer leur coopération internationale"
+        }
+      ]
+    },
+    {
+      "title": "Sportliche Themen und Kontroversen",
+      "text": "16 türkische Fussballfans wurden nach Ausschreitungen bei einem Spiel in Georgien freigelassen. Der politische Aktivismus des armenischen Fussballers Gevorg Ghazaryan sorgt für Diskussionen. Der französische Basketballer Evan Fournier wies einen türkischen Trainer wegen eines rassistischen Vorwurfs zurecht.",
+      "rubric": "sports",
+      "sources": [
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/foot-16-supporters-turcs-liberes-apres-des-violences-lors-dun-match-en-georgie/",
+          "title": "Foot: 16 supporters turcs libérés après des violences lors d’un match en Géorgie"
+        },
+        {
+          "source": "armenieinfotv",
+          "url": "https://armenieinfo.tv/football-armenien-lengagement-politique-de-gevorg-ghazaryan-fait-polemique/",
+          "title": "Football arménien : l’engagement politique de Gevorg Ghazaryan fait polémique"
+        },
+        {
+          "source": "armenews",
+          "url": "https://www.armenews.com/basket-si-tu-es-noir-tu-ne-peux-pas-etre-francais-fournier-recadre-le-selectionneur-turc/",
+          "title": "Basket: « Si tu es noir, tu ne peux pas être français ? », Fournier recadre le sélectionneur turc"
+        }
+      ]
+    }
+  ]
+}
