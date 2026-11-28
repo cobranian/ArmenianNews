@@ -63,11 +63,19 @@ export async function fetchText(url, { retries = 2, timeout = 20000, redirect = 
         redirect,
       })
       clearTimeout(timer)
-      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}${await describe(res)}`)
+      if (!res.ok) {
+        const err = new Error(`HTTP ${res.status} for ${url}${await describe(res)}`)
+        err.status = res.status
+        err.location = res.headers.get('location')
+        // Une redirection ne change pas à la seconde tentative.
+        if (err.location) throw Object.assign(err, { final: true })
+        throw err
+      }
       return await res.text()
     } catch (err) {
       clearTimeout(timer)
       lastErr = err
+      if (err.final) throw err
       if (overall?.aborted) throw new Error(`deadline for ${url}`)
       if (attempt < retries) await new Promise((r) => setTimeout(r, 600 * (attempt + 1)))
     }
@@ -113,7 +121,10 @@ export function fetchTextNode(host, path, { retries = 2, timeout = 20000, deadli
       (res) => {
         if (res.statusCode !== 200) {
           res.resume()
-          return finish(reject, new Error(`HTTP ${res.statusCode} for ${path}`))
+          const err = new Error(`HTTP ${res.statusCode} for ${path}`)
+          err.status = res.statusCode
+          err.location = res.headers?.location ?? null
+          return finish(reject, err)
         }
         let body = ''
         res.setEncoding('utf8')

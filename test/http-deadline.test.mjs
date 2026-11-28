@@ -15,6 +15,10 @@ const hits = {}
 before(async () => {
   server = http.createServer((req, res) => {
     hits[req.url] = (hits[req.url] || 0) + 1
+    if (req.url.startsWith('/moved')) {
+      res.writeHead(301, { Location: 'http://example.test/news/12345/slug.html' })
+      return res.end()
+    }
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     if (req.url.startsWith('/trickle')) {
       // Un octet toutes les 50 ms, sans fin.
@@ -69,4 +73,14 @@ test('fetchText : deadline couvre la lecture du corps, sans nouvel essai', async
 
 test('fetchText sans deadline : comportement inchangé', async () => {
   assert.equal(await fetchText(`http://127.0.0.1:${port}/ok-text`), 'yyyyy')
+})
+
+test('une redirection rend status et location, sans nouvel essai', async () => {
+  const e1 = await fetchText(`http://127.0.0.1:${port}/moved-text`, { redirect: 'manual', retries: 2 }).catch((e) => e)
+  assert.equal(e1.status, 301)
+  assert.equal(e1.location, 'http://example.test/news/12345/slug.html')
+  assert.equal(hits['/moved-text'], 1)
+  const e2 = await fetchTextNode('x', '/moved-node', { request: local, retries: 2 }).catch((e) => e)
+  assert.equal(e2.status, 301)
+  assert.equal(e2.location, 'http://example.test/news/12345/slug.html')
 })

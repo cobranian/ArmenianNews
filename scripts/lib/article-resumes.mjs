@@ -25,6 +25,12 @@ export const BUDGET_MS = 150000
 export const MAX_ATTEMPTS = 3
 export const MIN_LEN = 200
 export const MAX_LEN = 800
+// Les mots russes et arméniens sont plus longs : à quatre phrases, leurs résumés
+// passaient 800 caractères là où le français n'y arrivait pas (5 écartés sur le
+// premier passage, 28 nov. 2026).
+export const MAX_LEN_LONG = 1000
+const LONG_LANGS = new Set(['hy', 'ru'])
+export const maxLen = (lang) => (LONG_LANGS.has(lang) ? MAX_LEN_LONG : MAX_LEN)
 // La clé :free permet ~1000 requêtes par jour, PARTAGÉES avec le classement des
 // rubriques, la brève et les résumés de l'agenda : les articles n'en prennent
 // pas plus de 400 (entrées dont `lastCallAt` tombe le jour UTC courant).
@@ -199,7 +205,7 @@ export function vetArticleResumes(byLang, { title = '', text = '' } = {}) {
   const rejected = []
   for (const [lang, s] of Object.entries(byLang)) {
     let reason = null
-    if (s.length < MIN_LEN || s.length > MAX_LEN) reason = 'longueur'
+    if (s.length < MIN_LEN || s.length > maxLen(lang)) reason = 'longueur'
     // Un lien, une adresse ou une balise n'a rien à faire dans un résumé : c'est
     // la trace d'un texte injecté dans la page source.
     else if (/https?:\/\/|www\.|@|</i.test(s)) reason = 'lien'
