@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T08:08:20.754Z",
+  "generatedAt": "2026-11-28T08:23:33.754Z",
   "courrier": [
     {
       "sectionKey": "actualite",
@@ -1075,6 +1075,13 @@
         "categoryKey": "politics",
         "articles": [
           {
+            "title": "ՀԱՊԿ-ը Հայաստանի հեռացման հարցը չի բարձրացնում. Մասադիկով",
+            "url": "https://hy.armradio.am/archives/773443",
+            "date": "2026-11-28T08:08:56.000Z",
+            "image": "https://hy.armradio.am/wp-content/uploads/2022/06/ODKB-1-300x199.jpg",
+            "category": "Կարևոր"
+          },
+          {
             "title": "Կիրակի ՏԻՄ ընտրություններ են․ ինչպես են դիրքավորվել քաղաքական ուժերը",
             "url": "https://hy.armradio.am/archives/773318",
             "date": "2026-11-27T14:00:57.000Z",
@@ -1136,13 +1143,6 @@
             "date": "2026-11-26T12:10:39.000Z",
             "image": "https://hy.armradio.am/wp-content/uploads/2026/11/13A1164-768x512.jpg",
             "category": "Կարևոր"
-          },
-          {
-            "title": "Խորհրդարանում քննարկվել են Շվեյցարիայի հետ համագործակցության հեռանկարները",
-            "url": "https://hy.armradio.am/archives/773096",
-            "date": "2026-11-26T11:40:00.000Z",
-            "image": "https://hy.armradio.am/wp-content/uploads/2026/11/Hov-7132-768x512.jpg",
-            "category": "Քաղաքական"
           }
         ]
       },
@@ -3861,6 +3861,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Uganda begins Africa's first mRNA Ebola vaccine trial",
+            "url": "https://armenpress.am/en/article/1266885",
+            "date": "2026-11-28T08:18:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/28/du76npKTCD1uWF87rrcSFjz5qjpXAFmr2buqlBQA.webp"
+          },
+          {
             "title": "Drone violates Latvian airspace",
             "url": "https://armenpress.am/en/article/1266873",
             "date": "2026-11-27T16:36:00.000Z",
@@ -3913,12 +3919,6 @@
             "url": "https://armenpress.am/en/article/1266639",
             "date": "2026-11-25T15:36:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/25/7MTFNr9D3ESeqErWLaX0MJY3OAvSjfJvgJKFuuVD.webp"
-          },
-          {
-            "title": "Von der Leyen outlines preconditions that would show Moscow is serious about talks",
-            "url": "https://armenpress.am/en/article/1266617",
-            "date": "2026-11-25T12:53:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/25/W5X7A3HypVE4XU2Yl0OZK2e1hlrFkWs3T9p8HopW.webp"
           }
         ]
       },
@@ -4338,6 +4338,12 @@
         "categoryKey": "world",
         "articles": [
           {
+            "title": "Ուգանդայում մեկնարկել են աֆրիկյան աշխարհամասում Էբոլայի դեմ պատվաստանյութի առաջին կլինիկական փորձարկումները",
+            "url": "https://armenpress.am/hy/article/1266885",
+            "date": "2026-11-28T08:10:00.000Z",
+            "image": "https://armenpress.am/storage/images/articles/2026/11/28/du76npKTCD1uWF87rrcSFjz5qjpXAFmr2buqlBQA.webp"
+          },
+          {
             "title": "Ֆիլիպիններում նախատեսում են ավարտին հասցնել գործող փոխնախագահի դատավարությունը",
             "url": "https://armenpress.am/hy/article/1266876",
             "date": "2026-11-27T17:28:00.000Z",
@@ -4390,12 +4396,6 @@
             "url": "https://armenpress.am/hy/article/1266842",
             "date": "2026-11-27T12:49:00.000Z",
             "image": "https://armenpress.am/storage/images/articles/2026/11/27/NjEk65QmRRZDRMpnn9D1c36hNmfacHTyQjUtQqk7.webp"
-          },
-          {
-            "title": "ԱՊՀ տնտեսական խորհուրդը քննարկել է «ԱՊՀ+» ձևաչափի ստեղծման հարցը. Օվերչուկ",
-            "url": "https://armenpress.am/hy/article/1266838",
-            "date": "2026-11-27T12:33:00.000Z",
-            "image": "https://armenpress.am/storage/images/articles/2026/11/27/cO3kNL6pevVrX7HHDqh4Ri0sjYXuinDiWlplRFwX.webp"
           }
         ]
       },
@@ -11126,10 +11126,22 @@
         "label": "Քաղաքականություն",
         "articles": [
           {
+            "title": "Մասիսում նախընտրական պաստառներն առավել տեսանելի դարձնելու նպատակով փորձել են ծառեր հատել․ 3 անձ ձերբակալվել է",
+            "url": "https://news.am/hy/news/1077770",
+            "date": "2026-11-28T08:26:06.000Z",
+            "image": "https://news.am/storage/media/26/11/28/AV2tJs16J0zyXhJC.webp"
+          },
+          {
             "title": "ՔՊ խմբակցությունը Փաշինյանի հետ քննարկել է նոր Սահմանադրության նախագիծը",
             "url": "https://news.am/hy/news/1077768",
             "date": "2026-11-28T08:09:57.000Z",
             "image": "https://news.am/storage/media/26/11/28/kKP99PR55hCOpvRv.webp"
+          },
+          {
+            "title": "Թրամփի որոշումները բարդացրել են Վենսի և Ռուբիոյի քաղաքական հեռանկարները 2028 թվականի ընտրություններից առաջ․ Axios",
+            "url": "https://news.am/hy/news/1077751",
+            "date": "2026-11-28T07:49:00.000Z",
+            "image": "https://news.am/storage/media/26/06/26/RwaaDjotoIoO20qd.webp"
           },
           {
             "title": "Մոսկվան Արևմուտքին մեղադրել է ՆԱՏՕ-ի երկրների օդային տարածքը խախտելու վերաբերյալ անհիմն հայտարարություններ անելու մեջ",
@@ -11172,18 +11184,6 @@
             "url": "https://news.am/hy/news/1077723",
             "date": "2026-11-28T04:40:00.000Z",
             "image": "https://news.am/storage/media/26/11/28/bGsycXhMSk2fEGBI.webp"
-          },
-          {
-            "title": "Թրամփը հրապարակել է Չինաստանում Պուտինի և Սի Ծինփինի հետ հանդիպումների նոր լուսանկարներ",
-            "url": "https://news.am/hy/news/1077728",
-            "date": "2026-11-28T04:32:00.000Z",
-            "image": "https://news.am/storage/media/26/11/19/jEWbrgYTW49Iehx5.webp"
-          },
-          {
-            "title": "«Հրապարակ»․ Ալիեւից շատ է ուզում",
-            "url": "https://news.am/hy/news/1077726",
-            "date": "2026-11-28T04:28:00.000Z",
-            "image": "https://news.am/storage/media/26/11/28/Z4piwSoFS94vQ7OT.webp"
           }
         ]
       },
@@ -11324,6 +11324,12 @@
         "label": "Տնտեսություն",
         "articles": [
           {
+            "title": "Մերձավոր Արևելքի հակամարտությունը բարդացրել է Թուրքիայի տնտեսական իրավիճակը․ ԱՄՀ",
+            "url": "https://news.am/hy/news/1077752",
+            "date": "2026-11-28T08:05:00.000Z",
+            "image": "https://news.am/storage/media/26/10/20/XbI0fcKeggIWFDFc.webp"
+          },
+          {
             "title": "«Փաստ». Ի՞նչ է կատարվում «Վայլդբերրիզի» հետ, ինչո՞ւ են ուշանում պատվերները",
             "url": "https://news.am/hy/news/1077716",
             "date": "2026-11-28T03:58:00.000Z",
@@ -11376,12 +11382,6 @@
             "url": "https://news.am/hy/news/1077689",
             "date": "2026-11-27T15:01:00.000Z",
             "image": "https://news.am/storage/media/26/08/19/Di0q8cX3FFF8cxvH.webp"
-          },
-          {
-            "title": "Գերմանիայի պաշտպանական ծախսերը կհասնեն ռեկորդային մակարդակի․ Ուկրաինան 12 միլիարդ եվրո կստանա",
-            "url": "https://news.am/hy/news/1077694",
-            "date": "2026-11-27T14:26:15.000Z",
-            "image": "https://news.am/storage/media/26/11/13/47hLYz6jZVb6awjQ.webp"
           }
         ]
       },
@@ -11621,7 +11621,7 @@
             "title": "«Ժողովուրդ». Քննիչները խուզարկել են Նարեկ Նալբանդյանի՝ Հովիկ Աբրահամյանից գնած առանձնատունը. ինչ է հայտնաբերվել",
             "url": "https://news.am/hy/news/1077719",
             "date": "2026-11-28T04:22:00.000Z",
-            "image": "https://news.am/storage/media/26/11/28/yvmcEQKLcVACb0dy.webp"
+            "image": "https://news.am/storage/media/26/11/28/8WVcmGYifzrs0c63.webp"
           },
           {
             "title": "Գիշերվա ընթացքում Մոսկվայի մատույցներում 69 անօդաչու թռչող սարք է խոցվել",
