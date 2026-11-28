@@ -10,6 +10,7 @@ import { pathToFileURL } from 'node:url'
 import {
   listArticles,
   summaryLangs,
+  maxLen,
   pendingArticles,
   vetArticleResumes,
   summarizeArticles,
@@ -138,6 +139,17 @@ test('vetArticleResumes : alphabet et longueur', () => {
   assert.deepEqual(rejected, [['hy', 'alphabet']])
   const r2 = vetArticleResumes({ fr: 'Trop court.' }, { title: '', text: '' })
   assert.deepEqual(r2.rejected, [['fr', 'longueur']])
+})
+
+test('vetArticleResumes : 1000 caractères admis en hy/ru, 800 ailleurs', () => {
+  assert.equal(maxLen('ru'), 1000)
+  assert.equal(maxLen('hy'), 1000)
+  assert.equal(maxLen('fr'), 800)
+  const ru900 = (RU + ' ').repeat(10).slice(0, 900)
+  assert.deepEqual(vetArticleResumes({ ru: ru900 }, {}).rejected, [])
+  const fr900 = (FR + ' ').repeat(10).slice(0, 900)
+  assert.deepEqual(vetArticleResumes({ fr: fr900 }, {}).rejected, [['fr', 'longueur']])
+  assert.deepEqual(vetArticleResumes({ ru: (RU + ' ').repeat(10).slice(0, 1001) }, {}).rejected, [['ru', 'longueur']])
 })
 
 test('vetArticleResumes : lien, adresse, arobase ou balise écartés (texte injecté)', () => {

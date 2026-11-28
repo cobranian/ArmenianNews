@@ -3,7 +3,7 @@
 // borné à MAX_TEXT, et `null` quand il n'y a rien à résumer. Aucun réseau.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { extractArticleText, fetchArticle, isAllowedArticleUrl, isNoResumeUrl, NO_RESUME_HOSTS, FETCH_DEADLINE_MS, MIN_TEXT, MAX_TEXT, NODE_HOSTS } from '../scripts/lib/article-text.mjs'
+import { extractArticleText, fetchArticle, followableRedirect, isAllowedArticleUrl, isNoResumeUrl, NO_RESUME_HOSTS, FETCH_DEADLINE_MS, MIN_TEXT, MAX_TEXT, NODE_HOSTS } from '../scripts/lib/article-text.mjs'
 
 const para = (n, len = 120) => `Paragraphe ${n} ` + 'x'.repeat(len - 12)
 
@@ -121,4 +121,46 @@ test('NO_RESUME_HOSTS : domaine et sous-domaines, rien d’autre', () => {
   assert.equal(isNoResumeUrl('https://notthecaliforniacourier.com/a'), false)
   assert.equal(isNoResumeUrl('https://armenews.com/a'), false)
   assert.equal(isNoResumeUrl('pas une url'), false)
+})
+
+test('followableRedirect : même hôte, même numéro, http passé en https ; sinon null', () => {
+  const st = 'https://style.news.am/eng/news/117348/'
+  assert.equal(
+    followableRedirect(st, 'http://style.news.am/eng/news/117348/monica.html'),
+    'https://style.news.am/eng/news/117348/monica.html',
+  )
+  assert.equal(followableRedirect('https://civilnet.am/ru/news/1015692', 'https://civilnet.am/ru/video/1015692'),
+    'https://civilnet.am/ru/video/1015692')
+  assert.equal(followableRedirect('https://civilnet.am/ru/news/1015692', '/ru/video/1015692'),
+    'https://civilnet.am/ru/video/1015692')
+  // Article retiré → page générique, autre article, autre hôte, rien, boucle.
+  assert.equal(followableRedirect(st, 'https://style.news.am/'), null)
+  assert.equal(followableRedirect(st, 'https://style.news.am/eng/news/117349/'), null)
+  assert.equal(followableRedirect(st, 'https://news.am/eng/news/117348/'), null)
+  assert.equal(followableRedirect(st, 'https://evil.example/117348'), null)
+  assert.equal(followableRedirect(st, 'http://169.254.169.254/117348'), null)
+  assert.equal(followableRedirect(st, null), null)
+  assert.equal(followableRedirect(st, st), null)
+  assert.equal(followableRedirect('https://www.armenews.com/x', 'https://www.armenews.com/y'), null)
+})
+
+test('fetchArticle suit UNE redirection vers le même article, pas deux', async () => {
+  const redirect = (location) => Object.assign(new Error('HTTP 301'), { status: 301, location })
+  const routes = {
+    '/ru/news/1015692': () => { throw redirect('https://civilnet.am/ru/video/1015692') },
+    '/ru/video/1015692': () => '<html>ok</html>',
+    '/ru/a/55555': () => { throw redirect('/ru/b/55555') },
+    '/ru/b/55555': () => { throw redirect('/ru/c/55555') },
+    '/ru/c/55555': () => '<html>trop loin</html>',
+  }
+  const calls = []
+  const deps = {
+    fetchTextNode: async (host, path) => (calls.push(path), routes[path]()),
+    fetchText: async () => '<html/>',
+  }
+  assert.equal(await fetchArticle('https://civilnet.am/ru/news/1015692', deps), '<html>ok</html>')
+  assert.deepEqual(calls, ['/ru/news/1015692', '/ru/video/1015692'])
+  calls.length = 0
+  await assert.rejects(fetchArticle('https://civilnet.am/ru/a/55555', deps), /301/)
+  assert.deepEqual(calls, ['/ru/a/55555', '/ru/b/55555'])
 })

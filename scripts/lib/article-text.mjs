@@ -5,8 +5,11 @@
 // SANS RÉSUMÉ (sonde `npm run resumes:probe`, 28 nov. 2026) : californiacourier
 // (Cloudflare répond 403 « Just a moment » au fetch du runner, 0/3 dans les trois
 // langues). Asbarez, attendu en échec, extrait en fait 3/3 depuis le poste ; sa
-// réussite en CI reste à lire au log (✗ résumé-article). Les 301/302 de civilnet
-// et news.am sont des articles déplacés ou retirés : refusés à dessein.
+// réussite en CI reste à lire au log (✗ résumé-article). Une redirection n'est
+// suivie qu'une fois, sur le même hôte et vers le même numéro d'article
+// (`followableRedirect`) : style.news.am renvoie vers sa version http://, civilnet
+// déplace /news/N vers /video/N (mesuré en CI le 28 nov. 2026). Toute autre
+// redirection (article retiré → page générique) reste refusée.
 import * as cheerio from 'cheerio'
 import { fetchText, fetchTextNode } from './http.mjs'
 
@@ -157,11 +160,50 @@ function withDeadline(promise, ms, url) {
   return Promise.race([promise, deadline]).finally(() => clearTimeout(timer))
 }
 
-// Le HTML de la page. Redirection REFUSÉE pour les hôtes hors NODE_HOSTS : un
-// article retiré renvoie souvent (302) vers une page générique, qu'on résumerait
-// à sa place (même parade que summarizeAgenda).
+// Le numéro d'article d'une URL : la plus longue suite d'au moins 4 chiffres du
+// chemin. Sans numéro, aucune redirection n'est suivie.
+function articleNumber(pathname) {
+  const runs = pathname.match(/\d{4,}/g) || []
+  return runs.sort((a, b) => b.length - a.length)[0] ?? null
+}
+
+// La cible d'une redirection, si elle désigne le MÊME article : même hôte, même
+// numéro, et admise par isAllowedArticleUrl une fois passée en https. Sinon null :
+// un article retiré renvoie souvent (302) vers une page générique, qu'on
+// résumerait à sa place (même parade que summarizeAgenda).
+export function followableRedirect(from, location) {
+  if (!location) return null
+  let src, dst
+  try {
+    src = new URL(from)
+    dst = new URL(location, from)
+  } catch {
+    return null
+  }
+  if (dst.protocol === 'http:') dst.protocol = 'https:'
+  if (dst.hostname !== src.hostname) return null
+  const n = articleNumber(src.pathname)
+  if (!n || articleNumber(dst.pathname) !== n) return null
+  if (dst.href === src.href) return null
+  return isAllowedArticleUrl(dst.href) ? dst.href : null
+}
+
+// Le HTML de la page, en suivant au plus UNE redirection vers le même article.
+// L'échéance couvre les deux requêtes.
 export async function fetchArticle(url, deps = { fetchTextNode, fetchText }, { deadlineMs = FETCH_DEADLINE_MS } = {}) {
   if (!isAllowedArticleUrl(url)) throw new Error('URL refusée')
+  const start = Date.now()
+  try {
+    return await fetchOnce(url, deps, deadlineMs)
+  } catch (err) {
+    const next = followableRedirect(url, err?.location)
+    const left = deadlineMs - (Date.now() - start)
+    if (!next || left <= 0) throw err
+    return fetchOnce(next, deps, left)
+  }
+}
+
+function fetchOnce(url, deps, deadlineMs) {
   const u = new URL(url)
   // Le `www.` n'est ôté que pour la recherche : la requête garde l'hôte d'origine.
   // L'échéance descend jusqu'au client, qui détruit la socket : la course de
