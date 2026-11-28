@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T07:23:29.860Z",
+  "generatedAt": "2026-11-28T08:08:20.754Z",
   "switzerland": [
     {
       "title": "Ballet Sheherezade - Khachaturian, Korskakov",
@@ -984,7 +984,14 @@
       "rawDate": "NOV 30 19:00",
       "image": "https://armenopole.com/images/events/diaspora-en-movimiento.jpg?v=94903",
       "country": "argentina",
-      "resumeLangs": []
+      "resumeLangs": [
+        "fr",
+        "de",
+        "it",
+        "en",
+        "es",
+        "ru"
+      ]
     },
     {
       "title": "Ազգագրական Պարերու Դասընթացք",
@@ -2930,12 +2937,12 @@
       ]
     },
     {
-      "title": "Theatrical Performance - Beyond the Ocean",
-      "url": "https://armenopole.com/theatrical-performance-beyond-the-ocean.html",
+      "title": "Hrant Dink 20th Anniversary Commemoration",
+      "url": "https://armenopole.com/hrant-dink-20th-anniversary-commemoration.html",
       "location": "Nouvelle-Galles du Sud",
-      "date": "2027-04-04T19:00",
-      "rawDate": "AVR 4 19:00",
-      "image": "https://armenopole.com/images/events/theatrical-performance-beyond-the-ocean.jpg?v=65328",
+      "date": "2027-04-02T19:30",
+      "rawDate": "AVR 2 19:30",
+      "image": "https://armenopole.com/images/events/hrant-dink-20th-anniversary-commemoration.jpg?v=51054",
       "country": "australia",
       "resumeLangs": [
         "fr",
@@ -2943,7 +2950,6 @@
         "it",
         "en",
         "es",
-        "hy",
         "ru"
       ]
     },
