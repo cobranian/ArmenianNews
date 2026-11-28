@@ -22,6 +22,47 @@ export const NODE_HOSTS = new Set([
   'style.news.am',
 ])
 
+// Domaines des articles que le site stocke (mesuré sur news.json, 28 nov. 2026).
+// Un hôte est admis s'il est égal à une entrée ou s'en est un sous-domaine.
+// UNE SOURCE NOUVELLE DOIT AJOUTER SON DOMAINE ICI : sinon ses articles restent
+// sans résumé, en silence — la ligne `✗ résumé-article: … URL refusée` au log
+// est le seul signe. Cette liste ferme aussi la porte au SSRF : l'URL vient
+// d'un flux tiers, et le runner de la CI ne doit pas aller chercher
+// 169.254.169.254, localhost ou un hôte interne.
+export const SOURCE_HOSTS = new Set([
+  'armenews.com',
+  'armenianweekly.com',
+  'armenieinfo.tv',
+  'armenpress.am',
+  'artzakank-echo.ch',
+  'asbarez.am',
+  'asbarez.com',
+  'civilnet.am',
+  'courrier.am',
+  'diarioarmenia.org.ar',
+  'armradio.am',
+  'news.am',
+  'norsevan.com',
+  'oragark.com',
+  'soyarmenio.com',
+  'thecaliforniacourier.com',
+])
+
+export function isAllowedArticleUrl(url) {
+  let u
+  try {
+    u = new URL(url)
+  } catch {
+    return false
+  }
+  if (u.protocol !== 'https:' || u.username || u.password) return false
+  if (u.port && u.port !== '443') return false
+  const h = u.hostname
+  if (h.startsWith('[') || /^\d+(\.\d+){3}$/.test(h)) return false
+  for (const d of SOURCE_HOSTS) if (h === d || h.endsWith('.' + d)) return true
+  return false
+}
+
 const NOISE = 'script, style, nav, header, footer, aside, form, figure, noscript'
 const CONTAINERS = [
   '[itemprop="articleBody"]',
@@ -82,8 +123,10 @@ export function extractArticleText(html) {
 // Le HTML de la page. Redirection REFUSÉE pour les hôtes hors NODE_HOSTS : un
 // article retiré renvoie souvent (302) vers une page générique, qu'on résumerait
 // à sa place (même parade que summarizeAgenda).
-export function fetchArticle(url, deps = { fetchTextNode, fetchText }) {
+export async function fetchArticle(url, deps = { fetchTextNode, fetchText }) {
+  if (!isAllowedArticleUrl(url)) throw new Error('URL refusée')
   const u = new URL(url)
-  if (NODE_HOSTS.has(u.hostname)) return deps.fetchTextNode(u.hostname, u.pathname + u.search)
+  // Le `www.` n'est ôté que pour la recherche : la requête garde l'hôte d'origine.
+  if (NODE_HOSTS.has(u.hostname.replace(/^www\./, ''))) return deps.fetchTextNode(u.hostname, u.pathname + u.search)
   return deps.fetchText(url, { redirect: 'manual' })
 }
