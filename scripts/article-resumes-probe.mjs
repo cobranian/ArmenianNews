@@ -40,7 +40,7 @@ if (flag('--model')) {
       models: resumeModels(),
       temperature: 0.3,
       reasoning: { enabled: false },
-      messages: buildArticleMessages(a, text, summaryLangs(a.lang)),
+      messages: buildArticleMessages(a, text, summaryLangs(a.lang, a.source)),
     }),
     signal: AbortSignal.timeout(60000),
   })

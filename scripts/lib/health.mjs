@@ -136,7 +136,7 @@ export function checkArticleResumes(articles, archive, now = new Date()) {
     return Number.isFinite(t) && t >= since
   })
   if (recent.length < MIN_RESUME_SAMPLE) return []
-  const done = recent.filter((a) => summaryLangs(a.lang).every((l) => archive?.[a.url]?.resumes?.[l])).length
+  const done = recent.filter((a) => summaryLangs(a.lang, a.source).every((l) => archive?.[a.url]?.resumes?.[l])).length
   return done / recent.length < MIN_RESUME_COVERAGE
     ? [`**résumés d'articles** : ${done} sur ${recent.length} articles des dernières 24 h ont leurs résumés (« ✗ résumé-article » au log)`]
     : []

@@ -134,10 +134,15 @@ export async function writeArchive(dir, archive, now = new Date()) {
   }
 }
 
-// Un article français est résumé aussi en allemand et en italien (CONTENT_LANG).
-export const summaryLangs = (lang) => (lang === 'fr' ? ['fr', 'de', 'it'] : [lang])
+// Un article français est résumé aussi en allemand et en italien (CONTENT_LANG),
+// et, par décision du 28 nov. 2026, ceux de l'édition anglaise des sources de
+// DE_IT_SOURCES_EN : /de/ et /it/ n'ont que 4 articles Armenpress français par
+// jour contre ~23 en anglais. Même appel au modèle, deux langues de plus.
+export const DE_IT_SOURCES_EN = ['armenpress']
+export const summaryLangs = (lang, source) =>
+  lang === 'fr' || (lang === 'en' && DE_IT_SOURCES_EN.includes(source)) ? [lang, 'de', 'it'] : [lang]
 
-const missingLangs = (entry, lang) => summaryLangs(lang).filter((l) => !entry?.resumes?.[l])
+const missingLangs = (a, entry) => summaryLangs(a.lang, a.source).filter((l) => !entry?.resumes?.[l])
 
 // Les articles à (re)traiter, comme pendingEvents : d'abord les jamais vus, puis
 // les incomplets avec moins de MAX_ATTEMPTS essais — dans chaque groupe les plus
@@ -157,7 +162,7 @@ export function pendingArticles(articles, archive, now, max = MAX_PER_SNAPSHOT) 
     const e = archive[a.url]
     const item = { a, t: Number.isFinite(t) ? t : Infinity }
     if (!e) fresh.push(item)
-    else if (missingLangs(e, a.lang).length && (e.attempts ?? 0) < MAX_ATTEMPTS) incomplete.push(item)
+    else if (missingLangs(a, e).length && (e.attempts ?? 0) < MAX_ATTEMPTS) incomplete.push(item)
   }
   const byDate = (x, y) => y.t - x.t
   return [...fresh.sort(byDate), ...incomplete.sort(byDate)].slice(0, max).map((x) => x.a)
@@ -347,7 +352,7 @@ export async function summarizeArticles({
           entry.attempts = 0
         }
         entry.hash = hash
-        const missing = missingLangs(entry, a.lang)
+        const missing = missingLangs(a, entry)
         if (!missing.length || entry.attempts >= MAX_ATTEMPTS) return entry
 
         // Délai global passé : l'appel ne serait plus compté dans le plafond.
