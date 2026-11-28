@@ -91,7 +91,7 @@ export const RECHECK_DAYS = 7
 const MIN_LEN = 80
 const MAX_LEN = 700
 
-const LANG_NAMES = {
+export const LANG_NAMES = {
   fr: 'French',
   de: 'German',
   it: 'Italian',
