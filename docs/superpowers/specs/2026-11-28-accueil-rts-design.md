@@ -181,6 +181,19 @@ téléphone comme sur ordinateur.
   la page** (de/it) à partir de l'article français, avec la mention « Article
   original en français » près du bouton. Même garde d'alphabet que la brève
   de/it.
+- **de / it reçoivent aussi l'édition anglaise d'Armenpress** *(décision de
+  Nareg, 28 nov. 2026)* : Armenpress publie ~23 articles par jour en anglais
+  contre ~4 en français (mesuré le 28 nov.). Ses articles anglais sont donc
+  résumés aussi en de/it (`DE_IT_SOURCES_EN`, même appel au modèle) et
+  paraissent sur /de/ et /it/ (Actualités, rubriques, une), avec
+  « Article original en anglais » près du bouton. Le même article existe
+  souvent dans les deux éditions, sous le **même numéro** (`/fr/article/N` et
+  `/en/article/N`) : dédoublonner par ce numéro, l'édition française gagne.
+  À l'étape 2, `lightData()` doit embarquer ces articles anglais dans le
+  bundle du .ch (aujourd'hui il n'y met que le français). D'autres sources
+  pourront suivre, une à la fois, en surveillant le quota.
+- **Mention « résumé automatique » dans les sept langues** *(confirmée par
+  Nareg le 28 nov. 2026, après lecture d'un résumé arménien imparfait)*.
 - **Partage du quota gratuit** *(choix de Claude)* : les résumés passent
   **en dernier** dans le scrape, après classification, brève et résumés
   d'agenda, avec un plafond par run. Mieux vaut des articles sans résumé

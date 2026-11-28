@@ -75,9 +75,21 @@ test('listArticles dédoublonne par URL, langue de contenu et source renseignée
   assert.equal(out.find((x) => x.url === b.url).rubric, 'societe')
 })
 
-test('summaryLangs : fr donne fr/de/it, les autres leur langue', () => {
-  assert.deepEqual(summaryLangs('fr'), ['fr', 'de', 'it'])
-  assert.deepEqual(summaryLangs('hy'), ['hy'])
+test('summaryLangs : fr et Armenpress en donnent aussi de/it, les autres leur langue', () => {
+  assert.deepEqual(summaryLangs('fr', 'courrier'), ['fr', 'de', 'it'])
+  assert.deepEqual(summaryLangs('en', 'armenpress'), ['en', 'de', 'it'])
+  assert.deepEqual(summaryLangs('en', 'asbarez'), ['en'])
+  assert.deepEqual(summaryLangs('hy', 'armenpress'), ['hy'])
+})
+
+test('pendingArticles : un article Armenpress en résumé en anglais seul reste à compléter (de/it)', () => {
+  const ap = art('ap', '2026-11-27T10:00:00Z', { lang: 'en', source: 'armenpress' })
+  const as = art('as', '2026-11-27T10:00:00Z', { lang: 'en', source: 'asbarez' })
+  const archive = {
+    [ap.url]: { resumes: { en: 'x' }, attempts: 0 },
+    [as.url]: { resumes: { en: 'x' }, attempts: 0 },
+  }
+  assert.deepEqual(pendingArticles([ap, as], archive, NOW).map((a) => a.url), [ap.url])
 })
 
 test('pendingArticles : fenêtre, complétude, essais, tri, plafond', () => {
