@@ -36,6 +36,7 @@
     "videos:add": "node scripts/videos-add.mjs",
     "reels:add": "node scripts/reels-add.mjs",
     "jeux:sync": "node scripts/jeux-sync.mjs",
+    "resumes:probe": "node scripts/article-resumes-probe.mjs",
     "culture:short-images": "node scripts/culture-short-images.mjs"
   },
   "dependencies": {

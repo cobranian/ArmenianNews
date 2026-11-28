@@ -1,6 +1,12 @@
 // Texte d'un article, toutes sources confondues : sert de matière aux résumés
 // écrits par un modèle. Pur jusqu'à `fetchArticle`, qui reçoit ses fonctions de
 // réseau en paramètre pour que les tests n'en touchent aucune.
+//
+// SANS RÉSUMÉ (sonde `npm run resumes:probe`, 28 nov. 2026) : californiacourier
+// (Cloudflare répond 403 « Just a moment » au fetch du runner, 0/3 dans les trois
+// langues). Asbarez, attendu en échec, extrait en fait 3/3 depuis le poste ; sa
+// réussite en CI reste à lire au log (✗ résumé-article). Les 301/302 de civilnet
+// et news.am sont des articles déplacés ou retirés : refusés à dessein.
 import * as cheerio from 'cheerio'
 import { fetchText, fetchTextNode } from './http.mjs'
 
