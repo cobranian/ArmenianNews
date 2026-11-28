@@ -29,6 +29,7 @@ import { selectInstagram } from './sources/instagram.mjs'
 import { classifyRubrics, applyRubrics } from './lib/classify-rubrics.mjs'
 import { generateBriefs } from './lib/brief-generate.mjs'
 import { summarizeAgenda, withResumeLangs, resumesFor } from './lib/agenda-resumes.mjs'
+import { listArticles, summarizeArticles, readArchive, pruneArchive, writeArchive } from './lib/article-resumes.mjs'
 import { ALL_LANGS } from '../sites.config.js'
 import { unmappedKeys } from '../src/rubrics.js'
 
@@ -431,6 +432,25 @@ async function main() {
   await writeJson('agenda.json', { generatedAt, ...agenda })
   await writeJson('instagram-feed.json', { generatedAt, posts: igPosts })
   await writeJson('meta.json', { generatedAt })
+
+  // Les résumés des articles (scripts/lib/article-resumes.mjs), EN DERNIER :
+  // ils partagent le quota OpenRouter avec la brève, les rubriques et l'agenda,
+  // qui doivent passer d'abord. 20 articles au plus par instantané. Un échec
+  // n'arrête rien ; le seul signe est « ✗ résumé-article ». Le dossier doit
+  // figurer dans le `git add` de hourly.yml, sinon les résumés sont refaits
+  // chaque heure (test/article-resumes-wiring.test.mjs). UN SEUL `now` : il
+  // décide du fichier de jour de chaque entrée.
+  console.log('
+Résumés des articles:')
+  try {
+    const dir = new URL('../src/data/article-resumes/', import.meta.url)
+    const now = new Date()
+    const articles = listArticles(newsOut)
+    const archive = await summarizeArticles({ articles, archive: await readArchive(dir), now })
+    await writeArchive(dir, pruneArchive(archive, new Set(articles.map((a) => a.url)), now), now)
+  } catch (err) {
+    console.warn(`  ✗ résumé-article: ${err.message}`)
+  }
 
   console.log('\n✅ Snapshot complete.\n')
 }
